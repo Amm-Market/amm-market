@@ -1,342 +1,427 @@
 "use client"
-import Link from "next/link"
+
+import { useState } from "react"
 import Header from "@/components/header"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+
+// FAQ categories and their questions
+const faqCategories = [
+  {
+    name: "Getting Started",
+    questions: [
+      {
+        q: "What do I need to get started with Dex Mini?",
+        a: "You'll need an Ethereum web3 wallet. Dex Mini supports a variety of popular wallets, including MetaMask, Uniswap Wallet, Coinbase Wallet, and any wallet that is WalletConnect-enabled.",
+      },
+      {
+        q: "How do I get started using Dex Mini?",
+        a: "Simply connect your preferred wallet (from our supported list) to our platform. Once connected, you'll have full access to Dex Mini's features, including lending, borrowing, staking, and market-making strategies across multiple blockchain networks.",
+      },
+      {
+        q: "Which blockchain networks, markets, and wallets are supported by Dex Mini?",
+        a: "While primarily deployed on Unichain, Mini also extends its reach across multiple EVM-compatible networks, providing extensive market coverage for lending, leverage, and liquidity.",
+      },
+      {
+        q: "Can I use Dex Mini in my country?",
+        a: "Yes, you can access Dex Mini from anywhere with internet access and your private key.",
+      },
+      {
+        q: "How can I contact the Dex Mini team?",
+        a: "Have questions, suggestions, or feedback? Connect with us on Twitter! We're always happy to hear from you.",
+      },
+    ],
+  },
+  {
+    name: "Core Functionality",
+    questions: [
+      {
+        q: "What sets Dex Mini apart from traditional liquidity protocols?",
+        a: "Dex Mini offers a unique DeFi experience by:\n• Consolidating fragmented yield strategies into a single interface.\n• Implementing gasless swaps with dynamic fees that protect users from MEV.\n• Intelligently auto-compounding rewards to maximize APY.\n• Allowing lenders to customize collateral ranges to earn additional fees.\n• Providing a composable architecture for custom functionality without sacrificing security.",
+      },
+      {
+        q: "How do liquidity pools work on Dex Mini?",
+        a: "Each market in Dex Mini maintains its own liquidity pool. When you provide liquidity, you earn a proportional share of trading fees, benefit from automatic fee distributions, and maintain granular control over your capital allocation. Additionally, each pool's dynamic reward structure compensates you based on the risk and volatility of that market.",
+      },
+      {
+        q: "What is concentrated liquidity and why is it important?",
+        a: "Concentrated liquidity allows liquidity providers to allocate funds within a specific price range. This targeted approach increases capital efficiency and enhances fee generation compared to traditional, uniformly distributed liquidity models.",
+      },
+      {
+        q: "How does the dynamic reward structure operate on Dex Mini?",
+        a: "Dex Mini uses an intelligent risk–reward framework that adjusts yields based on market maturity and liquidity. Newer, less liquid markets offer higher rewards for taking on extra risk, while mature markets benefit from lower fees driven by increased competition among liquidity providers.",
+      },
+      {
+        q: "What fees should I expect when using Dex Mini?",
+        a: 'Dex Mini\'s modular design means fees vary by service—whether trading, lending, or leveraging. Fees are transparently outlined in the interface and dynamically adjusted based on market conditions, ensuring competitive rates while rewarding liquidity providers. For a detailed breakdown, please refer to the "Dex Mini Fee Structure" section.',
+      },
+      {
+        q: "Who holds my assets on Dex Mini?",
+        a: "Dex Mini uses smart contracts for secure transactions. Your assets are stored within the pool you interact with on the Uniswap singleton contract. All transactions are traceable and irreversible.",
+      },
+    ],
+  },
+  {
+    name: "Protocol Overview",
+    questions: [
+      {
+        q: "What is the Dex Mini Router?",
+        a: "The Dex Mini Router streamlines liquidity management by enabling one-click migrations of positions across protocols. It automatically harvests rewards, calculates fees, and reconfigures your positions to maintain optimal parameters while handling ETH/WETH conversions seamlessly.",
+      },
+      {
+        q: "How does auto-compounding work on Dex Mini?",
+        a: "Auto-compounding in Dex Mini continuously reinvests your earned fees and rewards. The protocol collects DEX fees multiple times a day and uses smart algorithms to reinvest them into your liquidity position, reducing the need for manual harvesting and helping to maximize your returns.",
+      },
+      {
+        q: "What is Gasless Swap and v2onv4?",
+        a: "• Gasless Swap: A feature powered by our secure Uniswap V4 hooks that allows users to perform swaps without paying gas fees directly, by leveraging MEV profit sharing and optimized execution strategies.\n• v2onv4: A compatibility layer that recreates the classic Uniswap v2 experience (fungible LP tokens, auto-compounding fees) on the gas-efficient Uniswap V4 infrastructure.",
+      },
+      {
+        q: "What are Mini Points?",
+        a: "Mini Points are a dynamic reward mechanism that tracks your activity across liquidity provision, borrowing/lending, and leverage use. They are used to rank users and adjust rewards in real time, ensuring transparent and adaptive incentive distribution.",
+      },
+      {
+        q: "What incentive programs does Dex Mini offer?",
+        a: "Dex Mini supports sustainable yield farming programs that reward liquidity providers without depleting token reserves. These incentives are automatically distributed based on your participation in liquidity, borrowing, and leverage activities.",
+      },
+      {
+        q: "What is Mini AVS and Mini AI Agent?",
+        a: "• Mini AVS: A cutting-edge monitoring system that validates pool performance in real-time, using decentralized data from EigenLayer AVS. It detects issues early and adjusts user rewards dynamically to ensure optimal performance.\n• Mini AI Agent: An intelligent, adaptive tool that learns from market conditions, refines trading strategies, and optimizes liquidity management using advanced machine learning techniques.",
+      },
+      {
+        q: "How does Mini AI improve my investment decisions?",
+        a: "Mini AI taps into both real-time and historical data from thousands of DeFi protocols. Through its natural language interface, it instantly provides actionable insights to help you make smarter, more informed investment choices.",
+      },
+      {
+        q: "How much does Mini cost, and does it provide financial advice?",
+        a: "Mini is completely free for all users. Access the reactive chat feature directly from the home page, with Mini continuously delivering timely market insights throughout your investment journey on Dex Mini. However, Mini is not a financial advisor. It provides comprehensive market data, insights, and analysis to help you make your own informed decisions but does not offer personalized financial advice.",
+      },
+    ],
+  },
+  {
+    name: "Advanced Features",
+    questions: [
+      {
+        q: "How does lending and borrowing work on Dex Mini?",
+        a: "Dex Mini lets you either lend your assets to earn fee revenue or borrow against your crypto collateral without selling your holdings. Lenders deposit funds into specific markets and earn fees from trading and borrowing activities, while borrowers can unlock liquidity by over-collateralizing their positions with deposited assets.",
+      },
+      {
+        q: "What are the risks for borrowers and lenders?",
+        a: "• For Borrowers: The primary risk is liquidation—if your collateral value falls relative to your borrowed amount, your position might be closed. Dex Mini's risk management tools (like health factors, asset caps, and auto-deleverage) help mitigate this risk.\n• For Lenders: While you earn yield from borrowers' fees, there is always a risk if borrowers default. Dex Mini mitigates this by maintaining over-collateralization and socializing losses only among lenders for a specific asset.",
+      },
+      {
+        q: "How do liquidations work in Dex Mini?",
+        a: "Liquidations occur when your account's health factor drops below a safe threshold (typically near 1). In such cases, automated liquidation software closes positions to protect lenders. Any losses are then socialized among the lenders in that market, and a portion of fees is reserved to act as an insurance fund.",
+      },
+      {
+        q: "How can I repay my borrowed position?",
+        a: 'Repaying your borrow is straightforward: navigate to your dashboard, select the specific debt, choose "Repay with Collateral" if desired, verify the exchange rate and slippage, then follow the prompts to approve and execute the transaction. Once processed, your collateral will be adjusted accordingly.',
+      },
+      {
+        q: "Do borrowers need to specify their position within the LPs' range in Oracleless lending?",
+        a: "Yes, that's correct! While Dex Mini lending/borrowing systems don't inherently require inverse range orders, borrowers must specify their position within the liquidity providers' (LPs) range.",
+      },
+      {
+        q: "Why do borrowers need to specify a position within the LPs' range?",
+        a: "In Uniswap v4 (or any concentrated liquidity AMM), liquidity exists within specific price ranges set by LPs. Borrowers interact with this liquidity when depositing collateral and borrowing assets. Here's why their position matters:\n• Liquidity Availability: Borrowing is only possible if liquidity exists in the specified price range (tickLower, tickUpper). If no liquidity is available in that range, the transaction fails.\n• Collateral Efficiency: Aligning a borrowing position with the LPs' active range ensures efficient use of collateral, maximizing successful trades and minimizing slippage.\n• Risk Management: If a borrower's position moves outside the LPs' liquidity range, it may become undercollateralized, triggering liquidation. Staying within the range mitigates this risk.",
+      },
+    ],
+  },
+  {
+    name: "Risk and Safety",
+    questions: [
+      {
+        q: "How does Dex Mini protect users from market risks?",
+        a: "Dex Mini employs a multi-layered security framework:\n• Continuous Monitoring: Automated vulnerability scanning and audits keep our smart contracts secure.\n• Auto-Deleverage & Liquidation Controls: These mechanisms ensure that if your health factor declines, your position is systematically unwound to protect the system.\n• Health Factor Management: A numerical indicator that helps you track the safety of your borrow positions, ensuring you're alerted before risks become critical.",
+      },
+      {
+        q: "What is the Health Factor?",
+        a: "The Health Factor is a metric representing the safety of your borrow position. A higher number means a safer position, while values nearing 1 indicate a higher risk of liquidation. Maintaining a robust Health Factor is key to protecting your collateral.",
+      },
+      {
+        q: "Are there insurance funds in Dex Mini?",
+        a: "While there is no full insurance fund, Dex Mini reserves a portion (10% of fees) to act as a buffer against losses. In the event of bad debt, these losses are socialized among lenders in the affected asset's market.",
+      },
+      {
+        q: "Is Dex Mini's code open-source and audited?",
+        a: "Yes, Dex Mini's smart contracts are open-source and have undergone rigorous audits. We continuously test and update our protocols to ensure the highest standards of security and reliability.",
+      },
+    ],
+  },
+  {
+    name: "For Liquidity Providers",
+    questions: [
+      {
+        q: "How does Dex Mini help liquidity providers (LPs) amplify their yields?",
+        a: "Dex Mini combines multiple strategies to boost LP returns:\n• Leveraged LP Positions: You can strategically borrow against your concentrated liquidity to multiply your yield.\n• Strategy Automation: Advanced algorithms automatically manage your positions, rebalance liquidity, and reinvest fees.\n• Dynamic Rewards: Earn a share of both trading and borrowing fees, with higher rewards in riskier or emerging markets.",
+      },
+      {
+        q: "What is a leveraged LP position?",
+        a: "Leveraged LP positions let you use your existing liquidity as collateral to borrow additional funds. This enables you to amplify your exposure and potentially earn higher yields. However, it requires careful risk management to avoid liquidation.",
+      },
+      {
+        q: "What analytics and management tools are available for LPs and Traders?",
+        a: "Dex Mini provides a professional analytics dashboard that displays impermanent loss projections, fee accrual rates, and real-time health indicators for your positions, empowering you to make informed decisions.",
+      },
+      {
+        q: "How do I remove liquidity from a Dex Mini pool?",
+        a: "Liquidity removal is subject to market open interest and reserved tokens. If the available liquidity is capped, you may need to wait until positions close or additional liquidity is deposited. The process is clearly guided through our interface.",
+      },
+    ],
+  },
+  {
+    name: "For Developers",
+    questions: [
+      {
+        q: "How can I integrate Dex Mini functionality into my app?",
+        a: "Dex Mini is built on a suite of permissionless, modular smart contracts that can be easily integrated. We provide comprehensive developer documentation and APIs that let you interact with our lending, borrowing, and liquidity management functions.",
+      },
+      {
+        q: "What is Jit Loan and how does it work?",
+        a: "Jit Loan is a feature that enables just-in-time borrowing via recursive swaps. It allows your application to request liquidity on demand, optimizing asset utilization without having to maintain excess collateral at all times.",
+      },
+      {
+        q: "Can DAOs build custom markets on Dex Mini?",
+        a: "Absolutely. Dex Mini's composable architecture and permissionless hooks allow DAOs to create bespoke lending markets and liquidity solutions. You can customize parameters, integrate unique risk management features, and deploy full-stack trading infrastructure using our platform.",
+      },
+      {
+        q: "Are there developer resources available?",
+        a: "Yes, we offer extensive documentation, sample code, and integration guides to help you build on Dex Mini. Our open-source repositories and community forums are great places to get started and collaborate with other developers.",
+      },
+    ],
+  },
+  {
+    name: "Hooks Fee Structure",
+    questions: [
+      {
+        q: "What is the Dex Mini Unified Fee Structure?",
+        a: "The Dex Mini Unified Fee Structure consolidates the fee structures for all Dex Mini products, ensuring clarity and consistency across the platform.",
+      },
+      {
+        q: "What are the core principles behind Dex Mini's fee structure?",
+        a: "The core principles are:\n• Transparency: All fees and their allocations are publicly verifiable on-chain.\n• Dynamic Adjustment: Fees are adaptable based on asset volatility, market conditions, and pool utilization.\n• LP-Centric Rewards: A significant portion of fees directly benefits Liquidity Providers (LPs).\n• Protocol Sustainability: A portion of fees supports ongoing protocol development, security audits, and operational costs.\n• Risk Mitigation: Fees contribute to risk management mechanisms, including EigenLayer operator protection and hook reserves.\n• Governance: Fee parameters and allocations are subject to governance votes, allowing for community-driven adjustments.",
+      },
+      {
+        q: "What are the fees associated with managing liquidity positions?",
+        a: "There is a liquidity management fee of 0.15% - 0.35% per transaction when adding, removing, or adjusting liquidity positions. This fee scales with asset volatility. For example, stablecoin pools like ETH-USDC have a fee of around 0.15%, while volatile pools like ETH-MEME can have fees up to 0.35%.\nAllocation: 70% goes to the Dex Mini Protocol for audits, development, and operations, and 30% goes to the EigenLayer Operator to support real-time risk mitigation.",
+      },
+      {
+        q: "What are the trading fees (swap fees) on Dex Mini?",
+        a: "Trading fees range from 0.05% to 0.6%, depending on the pool's volatility. Low-volatility pools like DAI/USDC have fees around 0.05%, stable/blue-chip pools like ETH-USDC have fees around 0.3%, and high-volatility pools like BTC/ETH or ETH-MEME can have fees up to 0.6%.\nAllocation: 90% goes to Liquidity Providers (LPs), and 10% goes to the Dex Mini Hook Reserve to fund audits, development, MEV-resistant mechanisms, and user rebates.",
+      },
+      {
+        q: "What are the fees for depositing and withdrawing collateral?",
+        a: "There is a flat collateral deposit and withdrawal fee of 0.1% - 0.25%, scaling with collateral volatility. Stable collateral like USDC has a fee around 0.1%, while volatile collateral like ETH can have fees up to 0.25%.\nAllocation: 70% goes to Liquidity Providers (LPs), and 30% goes to the Dex Mini Protocol to support operational costs, margin monitoring, and oracle costs.",
+      },
+      {
+        q: "What are the borrowing fees on Dex Mini?",
+        a: "Borrowing fees are variable, ranging from 0.1% to 100% APY, and adjust based on pool utilization. Stable pools like USDT/GHO have an APY of 0.1% - 6%, while volatile pools like ARB/OP have an APY of 5% - 50%.\nAllocation: 100% goes to Liquidity Providers (LPs).",
+      },
+      {
+        q: "What are funding fees for long/short positions?",
+        a: "Funding fees for maintaining leveraged long/short positions are 0.01% - 0.1% per 8 hours, based on pool utilization.\nAllocation: 100% goes to Liquidity Providers (LPs).",
+      },
+      {
+        q: "What are the liquidation penalty fees?",
+        a: "If a position becomes undercollateralized or moves out of range, a liquidation penalty fee of 0.2% - 0.5% of the position size is applied, scaling with pair volatility. Stable pairs like ETH-USDC have a penalty around 0.2%, while volatile pairs like ETH-MEME can have penalties up to 0.5%.\nAllocation: 70% goes to Liquidity Providers (LPs), and 30% goes to the Dex Mini Protocol to build risk reserves.",
+      },
+      {
+        q: "Does auto-compounding have additional fees?",
+        a: "No, auto-compounding actions utilize the existing Liquidity Management and Trading fees. The auto-compounding feature itself does not add extra fees.",
+      },
+      {
+        q: "How are Dex Mini fees adjusted?",
+        a: "Fees are adjusted dynamically based on market conditions through automated triggers (e.g., volatility thresholds tracked via Chainlink). Additionally, pool creators can propose and vote on fee changes based on market conditions through governance.",
+      },
+      {
+        q: "Where can I find the most up-to-date fee rates?",
+        a: "Always refer to the Dex Mini dApp for the most current fee rates.",
+      },
+      {
+        q: "Can borrowers offset borrowing costs?",
+        a: "Yes, borrowers can offset borrowing costs by strategically setting liquidity ranges to earn trading fees.",
+      },
+      {
+        q: "Why do fees scale with asset volatility?",
+        a: "Fees scale with asset volatility to ensure fair compensation for Liquidity Providers who take on higher risk when providing liquidity for volatile assets. It also helps with protocol sustainability.",
+      },
+      {
+        q: "How does Dex Mini protect against MEV?",
+        a: "10% of trading fees are allocated to the Dex Mini Hook Reserve, which funds MEV-resistant mechanisms and user rebates to protect against front-running and other MEV attacks.",
+      },
+    ],
+  },
+]
 
 export default function ResearchPage() {
+  const [activeCategory, setActiveCategory] = useState("Getting Started")
+  const [searchTerm, setSearchTerm] = useState("")
+
+  // Get questions for the active category or filter by search term
+  const filteredQuestions = searchTerm
+    ? faqCategories
+        .flatMap((category) => category.questions.map((q) => ({ ...q, category: category.name })))
+        .filter(
+          (q) =>
+            q.q.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            q.a.toLowerCase().includes(searchTerm.toLowerCase()),
+        )
+    : faqCategories.find((cat) => cat.name === activeCategory)?.questions || []
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Header activePage="research" />
 
-      <main className="flex-1 pt-8 pb-16">
-        <div className="max-w-[650px] mx-auto px-4 sm:px-6 space-y-16">
-          {/* About Section */}
-          <section>
-            <h1 className="text-4xl font-bold mb-4">Say hello to Dex Mini</h1>
-            <p className="text-gray-700 mb-4">
-              Dex Mini Protocol is building a comprehensive suite of DeFi tools, seamlessly integrating advanced
-              liquidity management, versatile lending markets, and strategic leverage opportunities.
-            </p>
+      <main className="flex-1 py-12">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+          {/* Main header section with all elements on the same line */}
+          <div className="flex flex-col lg:flex-row gap-8 mb-12 items-center">
+            {/* Title and description - now on the left */}
+            <div className="lg:w-1/2 text-left">
+              <h1 className="text-3xl lg:text-4xl font-bold mb-3">Platform Insight</h1>
+              <p className="text-gray-600 max-w-md">Quick answers about Dex Mini features and functionality.</p>
+            </div>
 
-            <p className="text-gray-700 mb-4">
-              Our groundbreaking "Money Legos" approach leverages multiple Uniswap v4 hooks as the core liquidity
-              backbone, integrates Across Bridge for seamless interoperability, and employs EigenLayer for advanced risk
-              analytics and dynamic risk management. This powerful combination creates a completely new unimaginary DeFi
-              platform that reduces risk, and enhances capital efficiency—making Dex Mini the clear choice for both new
-              beginner retail and institutional investors seeking optimized returns and sustainable yield generation.
-            </p>
-
-            <div className="my-10">
-              <h3 className="text-sm text-gray-500 mb-4">Powered By</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                <div className="flex justify-center">
-                  <img src="/images/unichain-logo.svg" alt="Unichain" className="h-10 object-contain" />
+            {/* Search bar - on the right */}
+            <div className="lg:w-1/2">
+              <div className="relative">
+                <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                      fillRule="evenodd"
+                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
                 </div>
-                <div className="flex justify-center">
-                  <img src="/images/eigenlayer-logo.png" alt="Eigenlayer" className="h-16 object-contain" />
-                </div>
-                <div className="flex justify-center">
-                  <img
-                    src="https://assets-global.website-files.com/5f6b7190899f41fb70882d08/5f760a499b56c47b8fa74fbb_chainlink-logo.svg"
-                    alt="Chainlink"
-                    className="h-10 object-contain"
-                  />
-                </div>
+                <input
+                  type="text"
+                  placeholder="Search for answers..."
+                  className="w-full pl-12 pr-10 py-3 bg-white border-2 border-blue-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-300 text-gray-800"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <button
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  onClick={() => setSearchTerm("")}
+                >
+                  {searchTerm && (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  )}
+                </button>
               </div>
             </div>
-          </section>
+          </div>
 
-          {/* Medical Imaging Section */}
-          <section>
-            <h2 className="text-4xl font-bold mb-6">Flagship Products</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Visage 7 */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" className="w-8 h-8 text-gray-600">
-                      <path
-                        fill="currentColor"
-                        d="M21 16V4H3v12h18m0-14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-7v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2h18M5 6h14v8H5V6z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">Swap</h3>
-                    <Link href="#" className="text-blue-600 hover:text-blue-800 text-sm">
-                      View Code →
-                    </Link>
-                  </div>
-                </div>
-                <p className="text-gray-700">
-                  Execute gasless trades with zero fees, slippage, and MEV exposure. Our hook combines limit order
-                  functionality with Toxic MEV filtering, fostering a sustainable ecosystem where traders, liquidity
-                  providers, and searchers all benefit.
-                </p>
-              </div>
-
-              {/* Falcon MD */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" className="w-8 h-8 text-purple-600">
-                      <path
-                        fill="currentColor"
-                        d="M15.5 14l5 5-1.5 1.5-5-5v-.79l-.27-.28A6.471 6.471 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3 6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.57 4.23l.28.27h.79m-6 0C12 14 14 12 14 9.5S12 5 9.5 5 5 7 5 9.5 7 14 9.5 14"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">Earn</h3>
-                    <Link href="#" className="text-blue-600 hover:text-blue-800 text-sm">
-                      View Code →
-                    </Link>
-                  </div>
-                </div>
-                <p className="text-gray-700">
-                  Maximize returns by providing liquidity to Uniswap pools. Our dynamic fee hook adjusts swap fees in
-                  real-time based on market volatility and conditions, ensuring optimal performance.
-                </p>
-              </div>
-
-              {/* MIM */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" className="w-8 h-8 text-gray-600">
-                      <path
-                        fill="currentColor"
-                        d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">Automate</h3>
-                    <Link href="#" className="text-blue-600 hover:text-blue-800 text-sm">
-                      View Code →
-                    </Link>
-                  </div>
-                </div>
-                <p className="text-gray-700">
-                  Enjoy fully automated liquidity management. Our hook automatically sets, rebalances, and compounds
-                  your positions, reinvesting accrued LP fees effortlessly for compounded yields.
-                </p>
-              </div>
-
-              {/* OsiriX MD */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" className="w-8 h-8 text-blue-600">
-                      <path
-                        fill="currentColor"
-                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">Mitigate</h3>
-                    <Link href="#" className="text-blue-600 hover:text-blue-800 text-sm">
-                      View Code →
-                    </Link>
-                  </div>
-                </div>
-                <p className="text-gray-700">
-                  Safeguard your investments with our MEV Hook. It optimizes liquidity by enforcing cooldown periods,
-                  protecting against front-running, sandwich attacks, and rapid-swap exploits.
-                </p>
-              </div>
-
-              {/* New Card 5 */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" className="w-8 h-8 text-green-600">
-                      <path
-                        fill="currentColor"
-                        d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m11 8a2 2 0 0 0-2-2H10a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-6m-2 0v6h-4v-6h4z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">Borrow</h3>
-                    <Link href="#" className="text-blue-600 hover:text-blue-800 text-sm">
-                      View Code →
-                    </Link>
-                  </div>
-                </div>
-                <p className="text-gray-700">
-                  Strategically select a price range for your collateral to earn Uniswap trading fees, transforming your
-                  debt into a dynamic, income-generating asset.
-                </p>
-              </div>
-
-              {/* New Card 6 */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" className="w-8 h-8 text-yellow-600">
-                      <path
-                        fill="currentColor"
-                        d="M6.5 10h-2v7h2v-7m6 0h-2v7h2v-7m8.5 9H2v2h19v-2m-2.5-9h-2v7h2v-7m-7-6.74V1h-2v2.26A8 8 0 0 0 2.5 11h19a8 8 0 0 0-6.5-7.74Z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">Bridge</h3>
-                    <Link href="#" className="text-blue-600 hover:text-blue-800 text-sm">
-                      View Code →
-                    </Link>
-                  </div>
-                </div>
-                <p className="text-gray-700">
-                  Trade with leverage in a single click. Our hook allows you to long or short assets with up to 10x
-                  leverage, using Just-In-Time loans and automated risk management.
-                </p>
-              </div>
+          {/* Category pills for quick selection */}
+          <div
+            className="mb-8 overflow-x-auto"
+            style={{
+              scrollbarWidth: "thin",
+              scrollbarColor: "#93c5fd transparent",
+            }}
+          >
+            <style jsx>{`
+              div::-webkit-scrollbar {
+                height: 6px;
+              }
+              div::-webkit-scrollbar-track {
+                background: transparent;
+              }
+              div::-webkit-scrollbar-thumb {
+                background-color: #93c5fd;
+                border-radius: 20px;
+              }
+            `}</style>
+            <div className="flex space-x-2 pb-2">
+              {faqCategories.map((category) => (
+                <button
+                  key={category.name}
+                  onClick={() => {
+                    setActiveCategory(category.name)
+                    setSearchTerm("")
+                  }}
+                  className={`whitespace-nowrap px-4 py-2 rounded-full transition-all duration-200 ${
+                    activeCategory === category.name && !searchTerm
+                      ? "bg-blue-500 text-white shadow-md"
+                      : "bg-blue-50 text-gray-700 hover:bg-blue-100 hover:shadow-sm"
+                  }`}
+                >
+                  {category.name}
+                </button>
+              ))}
             </div>
-          </section>
+          </div>
 
-          {/* Protocol Vision Section */}
-          <section>
-            <h2 className="text-4xl font-bold mb-6">Protocol Vision</h2>
-            <p className="text-gray-700 mb-4">
-              While decentralized finance promises open, permissionless access to financial markets, it's still held
-              back by fragmented liquidity, high transaction costs, and persistent risks like MEV-driven front-running.
-              These challenges disproportionately impact investors across Unichain, Ethereum, Arbitrum, and
-              Base—resulting in capital inefficiencies, delayed settlements, and reduced profits.
-            </p>
-            <p className="text-gray-700 mb-4">
-              Dex Mini's vision is to eliminate these barriers by creating permissionless products built on an
-              intelligent framework that unifies liquidity pools into a single, optimized ecosystem. We believe access
-              to powerful financial tools shouldn't be reserved for a select few—it should be available to everyone.
-              This philosophy drives everything we do at Dex Mini.
-            </p>
-            <p className="text-gray-700 mb-4">
-              Leveraging the cutting-edge capabilities of Uniswap V4 hooks, Dex Mini seamlessly integrates a
-              high-performance liquidity layer, lending markets, leverage engine, risk management system, and smart
-              router contract. The result is a frictionless and efficient DeFi experience—from our user-friendly dApp to
-              our easily accessible smart contracts.
-            </p>
-            <p className="text-gray-700 mb-4">
-              Our mission is clear: to simplify the crypto industry by empowering users with the tools to overcome DeFi
-              challenges. By reimagining liquidity management and capital efficiency, we are paving the way for a more
-              sustainable, scalable, and profitable DeFi ecosystem.
-            </p>
-          </section>
-
-          {/* Career Section */}
-          <section>
-            <h2 className="text-4xl font-bold mb-6">Career</h2>
-            <p className="text-gray-700 mb-4">
-              At Dex Mini, our culture thrives on meritocracy and is fueled by innovation. We celebrate individuals who
-              take ownership, tackling complex challenges with determination and creativity. With a bold vision and a
-              deep passion for Uniswap, we are dedicated to developing transformative Uniswap hook products that drive
-              efficiency in DeFi markets. Join us as we shape the future of Uniswap and leave a lasting impact on the
-              DeFi ecosystem.
-            </p>
-            <p className="text-gray-700 mb-4">
-              While we don't have open roles at the moment, we're always reviewing applications from talented
-              developers. If you're interested, don't hesitate to reach out to us on Twitter for more information.
-            </p>
-          </section>
-
-          {/* Engage Section */}
-          <section>
-            <h2 className="text-4xl font-bold mb-6">Engage with Dex Mini</h2>
-            <p className="text-gray-700 mb-4">
-              For media inquiries and interview requests, please email{" "}
-              <Link href="mailto:contact@dexmini.com" className="text-blue-600 hover:text-blue-800">
-                contact@dexmini.com
-              </Link>
-            </p>
-            <p className="text-gray-700 mb-6">You can also engage with us on social media.</p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Link
-                href="http://twitter.com/_dexmini"
-                className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" className="w-6 h-6 text-blue-500">
-                    <path
-                      fill="currentColor"
-                      d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-medium">Twitter</div>
-                  <div className="text-sm text-gray-500">@_dexmini</div>
-                </div>
-              </Link>
-
-              <Link
-                href="http://twitter.com/_josuempia"
-                className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" className="w-6 h-6 text-blue-500">
-                    <path
-                      fill="currentColor"
-                      d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-medium">Core Dev</div>
-                  <div className="text-sm text-gray-500">@_josuempia</div>
-                </div>
-              </Link>
-
-              <Link
-                href="http://t.me/dexmini"
-                className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" className="w-6 h-6 text-blue-500">
-                    <path
-                      fill="currentColor"
-                      d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-medium">Telegram</div>
-                  <div className="text-sm text-gray-500">t.me/dexmini</div>
-                </div>
-              </Link>
-
-              <Link
-                href="http://discord.gg/dexmini"
-                className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" className="w-6 h-6 text-indigo-500">
-                    <path
-                      fill="currentColor"
-                      d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-medium">Discord</div>
-                  <div className="text-sm text-gray-500">discord.gg/dexmini</div>
-                </div>
-              </Link>
+          <div>
+            {/* Main content */}
+            <div>
+              {searchTerm ? (
+                <>
+                  <h2 className="text-2xl font-medium mb-6">Search Results</h2>
+                  {filteredQuestions.length === 0 ? (
+                    <div className="text-center py-10">
+                      <p className="text-gray-500">No results found for "{searchTerm}"</p>
+                      <button className="mt-4 text-blue-600 hover:text-blue-800" onClick={() => setSearchTerm("")}>
+                        Clear search
+                      </button>
+                    </div>
+                  ) : (
+                    <Accordion type="single" collapsible className="w-full space-y-6">
+                      {filteredQuestions.map((faq, index) => (
+                        <AccordionItem
+                          key={index}
+                          value={`item-${index}`}
+                          className="border border-gray-200 rounded-lg overflow-hidden shadow-sm"
+                        >
+                          <AccordionTrigger className="px-6 py-3 hover:no-underline bg-gray-50 text-left">
+                            <div className="flex justify-between items-center w-full">
+                              <div className="text-left">
+                                <span className="text-base font-medium text-gray-800">{faq.q}</span>
+                                <div className="text-sm text-blue-600 mt-1">Category: {faq.category}</div>
+                              </div>
+                            </div>
+                          </AccordionTrigger>
+                          <AccordionContent className="px-6 py-4 text-gray-700 whitespace-pre-line text-base leading-relaxed">
+                            {faq.a}
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  )}
+                </>
+              ) : (
+                <>
+                  <h2 className="text-2xl font-medium mb-6">{activeCategory}</h2>
+                  <Accordion type="single" collapsible className="w-full space-y-6">
+                    {filteredQuestions.map((faq, index) => (
+                      <AccordionItem
+                        key={index}
+                        value={`item-${index}`}
+                        className="border border-gray-200 rounded-lg overflow-hidden shadow-sm"
+                      >
+                        <AccordionTrigger className="px-6 py-3 hover:no-underline bg-gray-50 text-left">
+                          <div className="flex justify-between items-center w-full">
+                            <span className="text-base font-medium text-gray-800">{faq.q}</span>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="px-6 py-4 text-gray-700 whitespace-pre-line text-base leading-relaxed">
+                          {faq.a}
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </>
+              )}
             </div>
-          </section>
+          </div>
         </div>
       </main>
     </div>
   )
 }
-
