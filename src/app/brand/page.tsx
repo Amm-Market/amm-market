@@ -13,11 +13,19 @@ export default function BrandPage() {
     setTimeout(() => setCopiedColor(null), 2000)
   }
 
-  // Placeholder function for download (in a real implementation, this would trigger actual file downloads)
   const downloadLogo = (type: string, color: string, format: string) => {
-    alert(`Downloading ${type} logo in ${color} color as ${format}`)
-    // In a real implementation, this would be:
-    // window.location.href = `/downloads/logos/${type}-${color}.${format.toLowerCase()}`
+    // Download functionality - in production, this would trigger actual file downloads
+    // For now, we'll use a programmatic download approach if files exist
+    const filename = `${type}-${color}.${format.toLowerCase()}`
+    const filePath = `/downloads/logos/${filename}`
+    
+    // Attempt to download the file
+    const link = document.createElement("a")
+    link.href = filePath
+    link.download = filename
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   return (

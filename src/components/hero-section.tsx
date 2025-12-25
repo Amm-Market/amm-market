@@ -1,10 +1,12 @@
+import Image from "next/image"
+
 export default function HeroSection() {
   return (
     <section className="pb-16 md:pb-32">
       <div className="mx-auto max-w-5xl space-y-12 px-6 lg:px-0">
         <div className="relative z-10 grid items-center gap-4 md:grid-cols-2 md:gap-12">
-          <h2 className="text-4xl font-semibold">Simplifying DeFi Investing for Everyone</h2>
-          <p className="max-w-sm sm:ml-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold">Simplifying DeFi Investing for Everyone</h2>
+          <p className="max-w-sm sm:ml-auto text-sm sm:text-base">
             We empower everyday investors with institutional-grade DeFi tools – including automation, borrowing,
             earning, leveraging, and swapping – through our intuitive AI platform.
           </p>
@@ -12,13 +14,17 @@ export default function HeroSection() {
 
         <div className="relative rounded-3xl p-3 md:-mx-8 lg:col-span-3">
           <div className="aspect-88/36 relative">
-            <img
+            <Image
               alt="Drive web app interface"
-              loading="lazy"
-              width="1024"
-              height="612"
+              width={1024}
+              height={612}
               className="w-full h-full object-cover rounded-xl"
               src="https://studio.uxpincdn.com/studio/wp-content/uploads/2024/01/drive-web-app-1024x612.png.webp"
+              priority
+              onError={(e) => {
+                // Fallback handling
+                e.currentTarget.style.display = "none"
+              }}
             />
           </div>
         </div>
