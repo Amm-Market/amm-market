@@ -57,12 +57,6 @@ export default function Header({ activePage }: HeaderProps) {
                 >
                   Insight
                 </Link>
-                <Link
-                  href="/community"
-                  className={`text-gray-600 hover:text-gray-900 font-medium ${activePage === "community" ? "text-gray-900" : ""}`}
-                >
-                  Community
-                </Link>
                 <div className="relative">
                   <button
                     onClick={() => setResourcesMenuOpen(!resourcesMenuOpen)}
@@ -86,6 +80,12 @@ export default function Header({ activePage }: HeaderProps) {
                   </button>
                   {resourcesMenuOpen && (
                     <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-md border border-gray-100 w-48 py-2 z-20">
+                      <Link
+                        href="/community"
+                        className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                      >
+                        Community
+                      </Link>
                       <Link
                         href="https://aave.com/investors"
                         className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
@@ -147,15 +147,21 @@ export default function Header({ activePage }: HeaderProps) {
                     </div>
                   )}
                 </div>
+                <Link
+                  href="/developers"
+                  className={`text-gray-600 hover:text-gray-900 font-medium ${activePage === "developers" ? "text-gray-900" : ""}`}
+                >
+                  Developers
+                </Link>
               </div>
             </nav>
 
             <div className="flex items-center">
               <Link
-                href="/developers"
+                href="/early-access"
                 className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg inline-block"
               >
-                Developers
+                Get Early Access
               </Link>
             </div>
           </div>

@@ -12,7 +12,7 @@ export default function CTASection() {
             <p className="text-gray-600 text-lg mb-6">
               Check out the Help & Support center for more information and detailed guides on Dex Mini.
             </p>
-            <Link href="/insight" className="inline-flex items-center text-blue-500 hover:text-blue-700 font-medium">
+            <Link href="/research" className="inline-flex items-center text-blue-500 hover:text-blue-700 font-medium">
               Help & Support <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>
