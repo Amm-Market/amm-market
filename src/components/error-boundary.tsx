@@ -12,7 +12,7 @@ export default function ErrorBoundary({ children }: ErrorBoundaryProps) {
 
   useEffect(() => {
     const errorHandler = (event: ErrorEvent) => {
-      console.log("Error caught by boundary:", event.error)
+      console.error("Error caught by boundary:", event.error)
       setHasError(true)
       // Prevent the error from bubbling up
       event.preventDefault()

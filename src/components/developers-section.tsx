@@ -4,11 +4,15 @@ export default function DevelopersSection() {
       {/* Background image with blue overlay */}
       <div className="absolute inset-0 z-0">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-gray-400"
           style={{
             backgroundImage: 'url("https://www.muravie.com/wp-content/uploads/aktarim/LSS0055.jpg")',
             filter: "blur(8px)",
             transform: "scale(1.1)", // Prevents blur from showing edges
+          }}
+          onError={(e) => {
+            // Fallback to solid color if image fails to load
+            e.currentTarget.style.backgroundImage = "none"
           }}
         ></div>
         <div className="absolute inset-0 bg-blue-500 bg-opacity-70"></div>
@@ -18,9 +22,9 @@ export default function DevelopersSection() {
       <div className="relative z-10 mx-8 my-8 bg-white rounded-3xl p-8 shadow-lg">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="lg:w-1/2">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Launch v4 on Mini</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 leading-tight">Launch v4 on Mini</h2>
 
-            <p className="text-gray-600 mb-8">
+            <p className="text-gray-600 mb-8 text-sm sm:text-base">
               Our platform is open to all sizes of developers, from solo-coders to a group of hackers to globally-scaled
               teams to build extensible Uniswap v4 hooks on top of Dex Mini Protocol.
             </p>
@@ -88,7 +92,7 @@ export default function DevelopersSection() {
                   <div className="font-mono text-sm">
                     <div className="flex">
                       <div className="text-gray-400 w-8 text-right pr-2">1</div>
-                      <div>{"import { Tiger } from '@tiger/server'"}</div>
+                      <div>{"import { PoolManager } from '@uniswap/v4-sdk'"}</div>
                     </div>
                     <div className="flex">
                       <div className="text-gray-400 w-8 text-right pr-2">2</div>

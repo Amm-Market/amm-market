@@ -11,9 +11,9 @@ export default function FeaturesSection() {
     <div className="pb-16 md:pb-32 max-w-5xl mx-auto">
       {/* Add the new section here */}
       <div className="grid gap-6 md:grid-cols-2 md:gap-12 mb-12">
-        <h2 className="text-4xl font-medium">The Lyra ecosystem brings together our models, products and platforms.</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium leading-tight">The Lyra ecosystem brings together our models, products and platforms.</h2>
         <div className="space-y-6">
-          <p>
+          <p className="text-sm sm:text-base">
             Lyra is evolving to be more than just the models. It supports an entire ecosystem — from products to the
             APIs and platforms helping developers and businesses innovate.
           </p>
@@ -163,15 +163,9 @@ export default function FeaturesSection() {
               className="size-full overflow-hidden rounded-2xl border bg-zinc-900 shadow-md"
               style={{ opacity: 1, transform: "none" }}
             >
-              <img
-                alt="Database visualization"
-                loading="lazy"
-                width="1207"
-                height="929"
-                className="size-full object-cover object-left-top dark:mix-blend-lighten"
-                style={{ color: "transparent" }}
-                src="/placeholder.svg?height=929&width=1207"
-              />
+              <div className="size-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
+                <div className="text-gray-400 dark:text-gray-600 text-sm">Database Visualization</div>
+              </div>
             </div>
           </div>
           <div className="pointer-events-none absolute inset-0 rounded-[inherit] border border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)]">
