@@ -19,6 +19,11 @@ const nextConfig: NextConfig = {
         hostname: "www.muravie.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
     ],
   },
 };

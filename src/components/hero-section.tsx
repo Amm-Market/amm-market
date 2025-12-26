@@ -1,17 +1,71 @@
 import Image from "next/image"
+import Link from "next/link"
+import { Playfair_Display } from "next/font/google"
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "900"],
+  variable: "--font-playfair"
+})
 
 export default function HeroSection() {
   return (
     <section className="pb-16 md:pb-32">
-      <div className="mx-auto max-w-5xl space-y-12 px-6 lg:px-0">
-        <div className="relative z-10 grid items-center gap-4 md:grid-cols-2 md:gap-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold">Simplifying DeFi Investing for Everyone</h2>
-          <p className="max-w-sm sm:ml-auto text-sm sm:text-base">
-            We empower everyday investors with institutional-grade DeFi tools – including automation, borrowing,
-            earning, leveraging, and swapping – through our intuitive AI platform.
-          </p>
-        </div>
+      {/* New Promotional Banner Section */}
+      <div className="mb-8 md:mb-12">
+        <div className="mx-auto max-w-5xl space-y-6 px-6 lg:px-0 text-center">
+          {/* Headline */}
+          <h1 className={`${playfairDisplay.className} text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl tracking-tighter leading-[0.9] text-gray-900 font-normal mb-8 md:mb-12`}>
+            Borrow up to <span className="font-black">70%</span>
+            <br />
+            of your LP portfolio
+          </h1>
 
+          {/* Supporting Text */}
+          <p className="text-sm sm:text-base text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Get access to funds at 5% APR by using your LP positions as collateral.
+            <br />
+            Keep earning trading fees while your assets remain productive.
+          </p>
+
+          {/* Testnet Live Logo Section */}
+          <div className="mt-8 md:mt-10">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6">
+              <p className="text-xs sm:text-sm text-gray-500">Testnet Live with:</p>
+              <div className="flex flex-wrap lg:flex-nowrap items-center justify-center gap-6 md:gap-8">
+                <img
+                  src="https://raw.githubusercontent.com/Uniswap/brand-kit/main/logo/logo.svg"
+                  alt="Uniswap"
+                  className="h-8 md:h-10 opacity-80 hover:opacity-100 transition-opacity"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none"
+                  }}
+                />
+                <img
+                  src="https://raw.githubusercontent.com/balancer-labs/frontend-v2/master/public/logo.svg"
+                  alt="Balancer"
+                  className="h-8 md:h-10 opacity-80 hover:opacity-100 transition-opacity"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none"
+                  }}
+                />
+                <img
+                  src="https://curve.fi/logo.svg"
+                  alt="Curve"
+                  className="h-8 md:h-10 opacity-80 hover:opacity-100 transition-opacity"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none"
+                  }}
+                />
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Existing Content */}
+      <div className="mx-auto max-w-5xl space-y-12 px-6 lg:px-0">
         <div className="relative rounded-3xl p-3 md:-mx-8 lg:col-span-3">
           <div className="aspect-88/36 relative">
             <Image
