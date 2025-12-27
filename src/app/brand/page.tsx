@@ -1,6 +1,5 @@
 "use client"
 
-import Header from "@/components/header"
 import { Download, Copy, Check } from "lucide-react"
 import { useState } from "react"
 
@@ -18,7 +17,7 @@ export default function BrandPage() {
     // For now, we'll use a programmatic download approach if files exist
     const filename = `${type}-${color}.${format.toLowerCase()}`
     const filePath = `/downloads/logos/${filename}`
-    
+
     // Attempt to download the file
     const link = document.createElement("a")
     link.href = filePath
@@ -30,7 +29,6 @@ export default function BrandPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <Header activePage="brand" />
 
       <main className="flex-1 py-12 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-24">

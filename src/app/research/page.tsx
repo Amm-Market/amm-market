@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Header from "@/components/header"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 // FAQ categories and their questions
@@ -269,8 +268,6 @@ export default function ResearchPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <Header activePage="research" />
-
       <main className="flex-1 py-12">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           {/* Main header section with all elements on the same line */}

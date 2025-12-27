@@ -1,10 +1,8 @@
 import Link from "next/link"
-import Header from "@/components/header"
 
 export default function NotFound() {
   return (
     <>
-      <Header />
       <div className="relative flex flex-col items-center justify-center min-h-[80vh] overflow-hidden bg-gradient-to-b from-blue-400 to-blue-600">
         {/* Animated cloud background */}
         <div className="absolute inset-0 overflow-hidden">
