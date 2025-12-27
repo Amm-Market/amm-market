@@ -2,10 +2,10 @@
 import Link from "next/link"
 import Header from "@/components/header"
 
-export default function InsightPage() {
+export default function ProductsPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <Header activePage="insight" />
+      <Header activePage="products" />
 
       <main className="flex-1 pt-8 pb-16">
         <div className="max-w-[650px] mx-auto px-4 sm:px-6 space-y-16">

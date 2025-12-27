@@ -1,6 +1,10 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 import { Playfair_Display } from "next/font/google"
+import { TrendingUp, Zap, Blocks, Coins, ChevronLeft, ChevronRight } from "lucide-react"
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -8,7 +12,56 @@ const playfairDisplay = Playfair_Display({
   variable: "--font-playfair"
 })
 
+const testimonials = [
+  {
+    quote: "Using LP tokens as collateral is a natural step",
+    highlight: "toward composable, efficient, and scalable decentralized finance.",
+    ending: "",
+    author: "Vitalik Buterin – Ethereum",
+    image: "https://i.pravatar.cc/435?img=1"
+  },
+  {
+    quote: "Enabling LP tokens to be used as collateral",
+    highlight: "unlocks new avenues for liquidity and capital efficiency.",
+    ending: "",
+    author: "Stani Kulechov – Aave",
+    image: "https://i.pravatar.cc/435?img=2"
+  },
+  {
+    quote: "LP tokens aren't just positions—they're assets.",
+    highlight: "Unlocking their potential as collateral will change how people use DeFi.",
+    ending: "",
+    author: "Andre Cronje – Yearn Finance",
+    image: "https://i.pravatar.cc/435?img=3"
+  },
+  {
+    quote: "Tokenized positions, like LP tokens, can serve as powerful collateral,",
+    highlight: "creating more flexible and efficient lending markets.",
+    ending: "",
+    author: "Marcus – Balancer",
+    image: "https://i.pravatar.cc/435?img=4"
+  },
+  {
+    quote: "LP tokens are the backbone of capital-efficient DeFi strategies,",
+    highlight: "allowing users to do more with the liquidity they already provide.",
+    ending: "",
+    author: "Robert Leshner – Compound Finance",
+    image: "https://i.pravatar.cc/435?img=5"
+  }
+]
+
 export default function HeroSection() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0)
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
+  }
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  }
+
+  const testimonial = testimonials[currentTestimonial]
   return (
     <section className="pb-16 md:pb-32">
       {/* New Promotional Banner Section */}
@@ -83,111 +136,460 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="relative mx-auto grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-8 lg:grid-cols-4">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-zap size-4"
-              >
-                <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>
-              </svg>
-              <h3 className="text-sm font-medium">Oracleless Lending</h3>
+        {/* Stake Growth Section */}
+        <div className="flex flex-col pt-24 md:pt-32 gap-8 md:gap-12" style={{ opacity: 1, transform: 'none' }}>
+          <div className="flex flex-col gap-6">
+            <div className="flex max-w-[600px] flex-col gap-2">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">Borrow Across DEXs</h2>
+              <p className="text-sm md:text-base text-gray-600">
+                Momo unlocks $25B of previously locked Liquidity Pools positions and puts them to work via Aave-Spokes rails.
+              </p>
             </div>
-            <p className="text-muted-foreground text-sm">
-              Set your collateral's price range and earn trading fees while you borrow.
-            </p>
           </div>
 
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-cpu size-4"
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 md:grid-cols-3 md:gap-4">
+            {/* Card 1 */}
+            <div className="flex flex-col gap-4">
+              <div className="relative aspect-[4/3] w-full max-w-[400px] self-center overflow-hidden border border-gray-200 rounded-lg sm:max-w-full">
+                <Image
+                  alt="LST as a distribution flywheel."
+                  src="/images/saas/stake-growth/grow-1.png"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none"
+                  }}
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="text-sm md:text-base font-semibold text-gray-900">Uniswap – Top DEX Liquidity</span>
+                <span className="text-sm md:text-base text-gray-600">Uniswap remains one of the largest liquidity hubs in DeFi, with over $3.9B locked in LP positions across its pools.</span>
+              </div>
+              <Link
+                href="https://sanctum.so/blog/jupsol-solana-liquid-staking-jupiter"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-sm md:text-base text-gray-900 underline underline-offset-4 hover:text-blue-600 transition-colors"
               >
-                <rect width="16" height="16" x="4" y="4" rx="2"></rect>
-                <rect width="6" height="6" x="9" y="9" rx="1"></rect>
-                <path d="M15 2v2"></path>
-                <path d="M15 20v2"></path>
-                <path d="M2 15h2"></path>
-                <path d="M2 9h2"></path>
-                <path d="M20 15h2"></path>
-                <path d="M20 9h2"></path>
-                <path d="M9 2v2"></path>
-                <path d="M9 20v2"></path>
-              </svg>
-              <h3 className="text-sm font-medium">Up to 10X Leverage</h3>
+                How JupSOL grew to 5M SOL
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="ml-1"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </Link>
             </div>
-            <p className="text-muted-foreground text-sm">
-              Increase your exposure by effectively trading on margin with borrowed capital.
-            </p>
+
+            {/* Card 2 */}
+            <div className="flex flex-col gap-4">
+              <div className="relative aspect-[4/3] w-full max-w-[400px] self-center overflow-hidden border border-gray-200 rounded-lg sm:max-w-full">
+                <Image
+                  alt="Potential strategic delegations."
+                  src="/images/saas/stake-growth/grow-2.png"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none"
+                  }}
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="text-sm md:text-base font-semibold text-gray-900">Balancer – Multi‑Asset LP Capital</span>
+                <span className="text-sm md:text-base text-gray-600">Balancer’s multi‑asset pools hold hundreds of millions in locked capital, now unleashed to fuel productive LP strategies.</span>
+              </div>
+              <Link
+                href="https://sanctum.so/blog/inf-guide"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-sm md:text-base text-gray-900 underline underline-offset-4 hover:text-blue-600 transition-colors"
+              >
+                Learn more about INF
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="ml-1"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </Link>
+            </div>
+
+            {/* Card 3 */}
+            <div className="flex flex-col gap-4">
+              <div className="relative aspect-[4/3] w-full max-w-[400px] self-center overflow-hidden border border-gray-200 rounded-lg sm:max-w-full">
+                <Image
+                  alt="Guided access to delegation programs."
+                  src="/images/saas/stake-growth/grow-3.png"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none"
+                  }}
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="text-sm md:text-base font-semibold text-gray-900">Curve – Deep Stablecoin Pools</span>
+                <span className="text-sm md:text-base text-gray-600">Curve’s stablecoin‑focused pools hold over $2.1B in liquidity, making it one of the most capital‑efficient markets in DeFi.</span>
+              </div>
+              <Link
+                href="https://solana.org/delegation-program"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-sm md:text-base text-gray-900 underline underline-offset-4 hover:text-blue-600 transition-colors"
+              >
+                Learn more about SFDP
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="ml-1"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="relative flex w-full flex-col gap-8 md:flex-row md:gap-12">
+          {/* Left Column: Title & Description */}
+          <div className="top-0 flex flex-1 flex-col pt-24 gap-4 md:sticky md:self-start">
+            <div className="flex flex-col gap-2">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+                Borrow with Confidence
+              </h2>
+              <p className="text-sm md:text-base text-gray-600">
+                Tap into Solana's native revenue streams: inflation, MEV, block rewards, and staking rewards every epoch.
+              </p>
+            </div>
           </div>
 
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-lock size-4"
-              >
-                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-              </svg>
-              <h3 className="text-sm font-medium">Secure and Seamless</h3>
+          {/* Right Column: Reward Cards */}
+          <div className="grid w-full sm:grid-cols-2 sm:gap-6 md:max-w-[480px] md:grid-cols-1 md:gap-0 md:pt-24">
+
+            {/* Inflation Rewards */}
+            <div className="flex flex-row border-b border-gray-200 pb-6 gap-3 sm:flex-col md:flex-row md:px-3 pt-0">
+              <div className="flex h-12 w-12 min-w-[48px] items-center justify-center rounded-md bg-blue-100">
+                <TrendingUp className="h-6 w-6 text-blue-600" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="text-sm md:text-base font-semibold text-gray-900">Secure and Seamless</span>
+                <span className="text-sm md:text-base text-gray-600">Momo dynamically tracks pool composition and volatility to adjust loan-to-value ratios appropriately.</span>
+              </div>
             </div>
-            <p className="text-muted-foreground text-sm">
-              Integrated MEV protection and auto-compounding for worry-free gains.
+
+            {/* MEV Rewards */}
+            <div className="flex flex-row border-b border-gray-200 pb-6 gap-3 sm:flex-col md:flex-row md:px-3 pt-6 sm:pt-0">
+              <div className="flex h-12 w-12 min-w-[48px] items-center justify-center rounded-md bg-yellow-100">
+                <Zap className="h-6 w-6 text-yellow-600" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="text-sm md:text-base font-semibold text-gray-900">Up to 10X Leverage</span>
+                <span className="text-sm md:text-base text-gray-600">Increase your exposure by effectively trading on margin with borrowed capital.</span>
+              </div>
+            </div>
+
+            {/* Block Rewards */}
+            <div className="flex flex-row border-b border-gray-200 pb-6 gap-3 sm:flex-col md:flex-row md:px-3 pt-6 sm:pt-0">
+              <div className="flex h-12 w-12 min-w-[48px] items-center justify-center rounded-md bg-green-100">
+                <Blocks className="h-6 w-6 text-green-600" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="text-sm md:text-base font-semibold text-gray-900">Trading Fees</span>
+                <span className="text-sm md:text-base text-gray-600">Set your collateral's price range and earn trading fees while you borrow.</span>
+              </div>
+            </div>
+
+            {/* Staking Rewards */}
+            <div className="flex flex-row border-b-0 pb-6 gap-3 sm:flex-col md:flex-row md:px-3 pt-6 sm:pt-0">
+              <div className="flex h-12 w-12 min-w-[48px] items-center justify-center rounded-md bg-purple-100">
+                <Coins className="h-6 w-6 text-purple-600" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="text-sm md:text-base font-semibold text-gray-900">Instant Refinance</span>
+                <span className="text-sm md:text-base text-gray-600">Switch positions to take advantage of rates, liquidations and more.</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Partner Revenue Section */}
+        <div className="flex flex-col pb-[50px] pt-[100px] gap-8 md:gap-12" style={{ opacity: 1, transform: 'none' }}>
+          <div className="flex flex-col gap-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+              Borrow From Any Pool
+            </h2>
+            <p className="text-sm md:text-base text-gray-600">
+              Unlock liquidity from a wide range of supported LP pools.
             </p>
           </div>
-
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-sparkles size-4"
-              >
-                <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
-                <path d="M20 3v4"></path>
-                <path d="M22 5h-4"></path>
-                <path d="M4 17v2"></path>
-                <path d="M5 18H3"></path>
-              </svg>
-              <h3 className="text-sm font-medium">Instant Refinance</h3>
+          <div className="flex flex-1 items-stretch gap-2 flex-col sm:flex-row">
+            <div className="grid w-full flex-1 grid-cols-3 gap-2">
+              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#111727]"></div>
+              </div>
+              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#FFFFFF]"></div>
+              </div>
+              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#000827]"></div>
+              </div>
+              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[linear-gradient(45deg,#FC6901_0%,#F3B900_100%)]"></div>
+              </div>
+              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#000000]"></div>
+              </div>
+              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#F5F5F5]"></div>
+              </div>
             </div>
-            <p className="text-muted-foreground text-sm">
-              Switch positions to take advantage of rates, liquidations and more.
+            <div className="flex w-full flex-1">
+              <div className="flex w-full flex-col items-center justify-center bg-gradient-to-b from-[#FFE5AE] to-[#FFD069] p-2 text-center rounded-lg h-[150px] sm:h-auto">
+                <div className="flex size-full flex-col items-center justify-center bg-[#FFC547] rounded-md">
+                  <h4 className="text-base font-medium leading-normal text-yellow-600 md:text-lg">
+                    <span>Over</span>
+                    <div className="flex items-center text-[32px] font-bold text-gray-900 md:gap-1 md:text-[56px]">
+                      <svg width="40" height="75" viewBox="0 0 40 75" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-10 md:h-[75px]">
+                        <path d="M10.2927 18.5664C9.54631 24.3143 14.1566 29.6482 14.1566 29.6482C14.1566 29.6482 19.9771 25.6628 20.7233 19.9149C21.4699 14.1669 16.8597 8.83301 16.8597 8.83301C16.8597 8.83301 11.0391 12.8184 10.2927 18.5664Z" stroke="black" strokeWidth="4" strokeLinejoin="round"></path>
+                        <path d="M4.82219 37.8831C7.25837 43.1446 14.0075 45.2096 14.0075 45.2096C14.0075 45.2096 16.8065 38.7434 14.3705 33.4818C11.9343 28.22 5.18525 26.1553 5.18525 26.1553C5.18525 26.1553 2.38602 32.6212 4.82219 37.8831Z" stroke="black" strokeWidth="4" strokeLinejoin="round"></path>
+                        <path d="M19.2649 58.4754C19.2649 58.4754 12.3428 59.8568 7.69438 56.3806C3.04603 52.9048 2.43164 45.888 2.43164 45.888C2.43164 45.888 9.35376 44.5069 14.0023 47.9827C18.6506 51.4589 19.2649 58.4754 19.2649 58.4754ZM19.2649 58.4754H30.4586C34.3114 58.4754 37.4348 61.5988 37.4348 65.4516C37.4348 69.3044 34.3114 72.4278 30.4586 72.4278H23.4348" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"></path>
+                        <path d="M26.1663 5.81449C21.9295 9.77977 22.0926 16.8214 22.0926 16.8214C22.0926 16.8214 29.1252 17.4341 33.3619 13.4688C37.5987 9.50352 37.4352 2.46187 37.4352 2.46187C37.4352 2.46187 30.403 1.84923 26.1663 5.81449Z" stroke="black" strokeWidth="4" strokeLinejoin="round"></path>
+                      </svg>
+                      $5M
+                      <svg width="40" height="75" viewBox="0 0 40 75" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-10 md:h-[75px]">
+                        <path d="M30.0794 18.5664C30.8258 24.3143 26.2154 29.6482 26.2154 29.6482C26.2154 29.6482 20.3949 25.6628 19.6487 19.9149C18.9022 14.1669 23.5124 8.83301 23.5124 8.83301C23.5124 8.83301 29.333 12.8184 30.0794 18.5664Z" stroke="black" strokeWidth="4" strokeLinejoin="round"></path>
+                        <path d="M35.5499 37.8831C33.1137 43.1446 26.3645 45.2096 26.3645 45.2096C26.3645 45.2096 23.5656 38.7434 26.0016 33.4818C28.4378 28.22 35.1868 26.1553 35.1868 26.1553C35.1868 26.1553 37.9861 32.6212 35.5499 37.8831Z" stroke="black" strokeWidth="4" strokeLinejoin="round"></path>
+                        <path d="M21.1072 58.4754C21.1072 58.4754 28.0293 59.8568 32.6777 56.3806C37.326 52.9048 37.9404 45.888 37.9404 45.888C37.9404 45.888 31.0183 44.5069 26.3698 47.9827C21.7214 51.4589 21.1072 58.4754 21.1072 58.4754ZM21.1072 58.4754H9.9135C6.0607 58.4754 2.9373 61.5988 2.9373 65.4516C2.9373 69.3044 6.0607 72.4278 9.9135 72.4278H16.9373" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"></path>
+                        <path d="M14.2058 5.81449C18.4425 9.77977 18.2794 16.8214 18.2794 16.8214C18.2794 16.8214 11.2469 17.4341 7.01015 13.4688C2.7734 9.50352 2.93685 2.46187 2.93685 2.46187C2.93685 2.46187 9.96905 1.84923 14.2058 5.81449Z" stroke="black" strokeWidth="4" strokeLinejoin="round"></path>
+                      </svg>
+                    </div>
+                    <span>in partner revenue</span>
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <div className="grid w-full flex-1 grid-cols-3 gap-2">
+              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#7D00FF]"></div>
+              </div>
+              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#000000]"></div>
+              </div>
+              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#F3EFCD]"></div>
+              </div>
+              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#061121]"></div>
+              </div>
+              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[linear-gradient(90deg,#E35930_-6.83%,#E84125_100%)]"></div>
+              </div>
+              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#F1F7FF]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Trust Built by Design Section */}
+        <div className="space-y-6 md:space-y-8 pt-12 md:pt-16">
+          <div className="flex flex-col gap-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+              Trust Built by Design
+            </h2>
+            <p className="text-sm md:text-base text-gray-600">
+              Every component is designed with trust and safety as the foundation.
             </p>
+          </div>
+          <div className="block">
+            <div className="flex flex-col lg:flex-row gap-6">
+              {/* Reliable price integrity */}
+              <div className="w-full lg:w-[275px] xl:w-[353px] bg-white rounded-xl shadow-[6px_8px_0.6px_0_rgba(0,0,0,0.15)] overflow-hidden" style={{ opacity: 1, transform: 'none' }}>
+                <div className="xl:pt-9 xl:px-9 pt-6 px-6 flex flex-col gap-6">
+                  <div className="space-y-4">
+                    <div className="block">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900">
+                        Reliable Price
+                      </h3>
+                    </div>
+                    <div className="block">
+                      <p className="text-sm md:text-base text-gray-600">
+                        Chainlink's decentralized oracle network delivers accurate, tamper-resistant pricing for LP collateral.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="relative w-full aspect-[4/3] mt-4">
+                    <Image
+                      fill
+                      alt="Reliable price integrity visualization"
+                      src="https://via.placeholder.com/288x216?text=Reliable+Price+Integrity"
+                      className="object-contain rounded-lg"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none"
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Secure at every layer */}
+              <div className="w-full lg:w-[275px] xl:w-[353px] bg-white rounded-xl shadow-[6px_8px_0.6px_0_rgba(0,0,0,0.15)] overflow-hidden" style={{ opacity: 1, transform: 'none' }}>
+                <div className="xl:pt-9 xl:px-9 pt-6 px-6 flex flex-col gap-6">
+                  <div className="space-y-4">
+                    <div className="block">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900">
+                        Secure Deposit
+                      </h3>
+                    </div>
+                    <div className="block">
+                      <p className="text-sm md:text-base text-gray-600">
+                        Multiple layers of protocol-level security protect LP positions, from risk controls to battle-tested smart contract architecture.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="relative w-full aspect-[4/3] mt-4">
+                    <Image
+                      fill
+                      alt="Secure at every layer visualization"
+                      src="https://via.placeholder.com/288x216?text=Secure+at+Every+Layer"
+                      className="object-contain rounded-lg"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none"
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Built on trusted foundations */}
+              <div className="w-full lg:w-[275px] xl:w-[353px] bg-white rounded-xl shadow-[6px_8px_0.6px_0_rgba(0,0,0,0.15)] overflow-hidden" style={{ opacity: 1, transform: 'none' }}>
+                <div className="xl:pt-9 xl:px-9 pt-6 px-6 flex flex-col gap-6">
+                  <div className="space-y-4">
+                    <div className="block">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900">
+                        Built on Trust
+                      </h3>
+                    </div>
+                    <div className="block">
+                      <p className="text-sm md:text-base text-gray-600">
+                        Built on Aave v4—one of DeFi's most tested and trusted frameworks—designed to support advanced collateral types.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="relative w-full aspect-[4/3] mt-4">
+                    <Image
+                      fill
+                      alt="Built on trusted foundations visualization"
+                      src="https://via.placeholder.com/288x216?text=Built+on+Trusted+Foundations"
+                      className="object-contain rounded-lg"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none"
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonial Section */}
+        <div className="flex flex-col items-center gap-14 lg:gap-20 pt-12 md:pt-16 pb-6">
+          <div className="flex flex-col gap-2 w-full px-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+              What DeFi Leaders Say
+            </h2>
+            <p className="text-sm md:text-base text-gray-600">
+              Hear from the community building the future of decentralized finance.
+            </p>
+          </div>
+          <div className="grid lg:grid-cols-2 max-w-[870px] xl:max-w-[1100px] mx-auto justify-items-center lg:justify-items-start gap-y-6 sm:gap-y-12 min-h-[490px] xl:min-h-[405px] w-full px-6">
+            <div className="flex flex-col text-gray-900 gap-8 md:gap-10 order-last lg:order-first justify-between w-full">
+              <div style={{ opacity: 1 }} className="transition-opacity duration-300">
+                <div className="space-y-6">
+                  <div className="block">
+                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-900">
+                      "{testimonial.quote}{testimonial.highlight && <span className="font-semibold"> {testimonial.highlight}</span>}{testimonial.ending}"
+                    </p>
+                  </div>
+                  <div className="block">
+                    <p className="text-xs md:text-sm leading-tight font-semibold tracking-wider uppercase text-gray-600">
+                      {testimonial.author}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-row gap-3 mx-auto md:mx-0">
+                <button
+                  aria-label="Previous testimonial"
+                  onClick={prevTestimonial}
+                  className="bg-purple-100 text-blue-600 rounded-full w-[32px] h-[32px] flex items-center justify-center hover:bg-purple-200 transition-colors"
+                  type="button"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <button
+                  aria-label="Next testimonial"
+                  onClick={nextTestimonial}
+                  className="bg-purple-100 text-blue-600 rounded-full w-[32px] h-[32px] flex items-center justify-center hover:bg-purple-200 transition-colors"
+                  type="button"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+            <div className="lg:justify-self-end w-full flex justify-center lg:justify-end">
+              <div style={{ opacity: 1 }} className="transition-opacity duration-300">
+                <div className="relative w-full max-w-[435px] aspect-square">
+                  <Image
+                    width={435}
+                    height={435}
+                    alt="Image of a client"
+                    src={testimonial.image}
+                    className="object-cover rounded-lg w-full h-full"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none"
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
