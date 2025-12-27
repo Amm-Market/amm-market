@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { Playfair_Display } from "next/font/google"
 import { TrendingUp, Zap, Blocks, Coins, ChevronLeft, ChevronRight } from "lucide-react"
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -590,6 +591,171 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="flex flex-col pt-24 md:pt-32 gap-8 sm:pb-24 md:flex-row md:gap-12" style={{ opacity: 1, transform: 'none' }}>
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 md:pt-8 md:flex-shrink-0 md:w-[300px]">
+            Frequently asked questions.
+          </h3>
+          <div className="md:w-[600px] md:flex-shrink-0">
+            <Accordion type="single" collapsible orientation="vertical" className="w-full">
+              <AccordionItem value="item-1" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  What is Momo's LP token lending?
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                  >
+                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                  >
+                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                </AccordionTrigger>
+                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  Momo allows you to use your Liquidity Pool (LP) tokens from Uniswap, Balancer, and Curve as collateral to borrow funds at competitive rates, while still earning trading fees from your LP positions.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  What are the borrowing costs and loan-to-value ratios?
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                  >
+                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                  >
+                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                </AccordionTrigger>
+                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  You can borrow up to 70% of your LP portfolio value at 5% APR. Loan-to-value ratios are dynamically adjusted based on pool composition and volatility to ensure security.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  How quickly can I borrow against my LP positions?
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                  >
+                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                  >
+                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                </AccordionTrigger>
+                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  Once you connect your wallet and deposit LP tokens, you can borrow funds instantly. The process is seamless and requires no waiting periods.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  Is it safe to use LP tokens as collateral?
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                  >
+                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                  >
+                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                </AccordionTrigger>
+                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  Yes. Momo is built on Aave v4, one of DeFi's most tested and trusted frameworks. We use Chainlink oracles for reliable price feeds and implement multiple layers of protocol-level security to protect your positions.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-5" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  Can I still earn trading fees while borrowing?
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                  >
+                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                  >
+                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                </AccordionTrigger>
+                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  Absolutely. Your LP tokens remain in their original pools, so you continue earning trading fees while using them as collateral. This allows you to maximize capital efficiency.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </div>
