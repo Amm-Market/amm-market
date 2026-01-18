@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Playfair_Display } from "next/font/google"
 import { TrendingUp, Zap, Blocks, Coins, ChevronLeft, ChevronRight } from "lucide-react"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
@@ -12,6 +12,69 @@ const playfairDisplay = Playfair_Display({
   weight: ["400", "900"],
   variable: "--font-playfair"
 })
+
+// LP Pool data for the ticker
+const pools = [
+  // Row 1 - Mixed DEXs
+  { token0: { symbol: "ETH", color: "#627EEA" }, token1: { symbol: "USDC", color: "#2775CA" }, dex: "Uniswap v3", tvl: "$245.8M" },
+  { token0: { symbol: "WBTC", color: "#F7931A" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Curve", tvl: "$189.2M" },
+  { token0: { symbol: "DAI", color: "#F5AC37" }, token1: { symbol: "USDC", color: "#2775CA" }, dex: "Aerodrome", tvl: "$312.5M" },
+  { token0: { symbol: "USDT", color: "#26A17B" }, token1: { symbol: "USDC", color: "#2775CA" }, dex: "Curve", tvl: "$428.1M" },
+  { token0: { symbol: "stETH", color: "#00A3FF" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Uniswap v2", tvl: "$567.3M" },
+  { token0: { symbol: "LINK", color: "#2A5ADA" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Aerodrome", tvl: "$45.6M" },
+  // Row 2 - Mixed DEXs
+  { token0: { symbol: "UNI", color: "#FF007A" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Uniswap v3", tvl: "$78.4M" },
+  { token0: { symbol: "AAVE", color: "#B6509E" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Curve", tvl: "$34.2M" },
+  { token0: { symbol: "CRV", color: "#40649F" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Uniswap v2", tvl: "$52.8M" },
+  { token0: { symbol: "MKR", color: "#1AAB9B" }, token1: { symbol: "DAI", color: "#F5AC37" }, dex: "Aerodrome", tvl: "$28.9M" },
+  { token0: { symbol: "COMP", color: "#00D395" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Curve", tvl: "$19.4M" },
+  { token0: { symbol: "SNX", color: "#00D1FF" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Uniswap v3", tvl: "$15.7M" },
+  // Row 3 - Mixed DEXs
+  { token0: { symbol: "rETH", color: "#EC6F2D" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Curve", tvl: "$234.5M" },
+  { token0: { symbol: "cbETH", color: "#0052FF" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Aerodrome", tvl: "$156.8M" },
+  { token0: { symbol: "FRAX", color: "#000000" }, token1: { symbol: "USDC", color: "#2775CA" }, dex: "Uniswap v2", tvl: "$89.3M" },
+  { token0: { symbol: "LDO", color: "#F69988" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Uniswap v3", tvl: "$42.1M" },
+  { token0: { symbol: "RPL", color: "#E8705B" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Curve", tvl: "$31.6M" },
+  { token0: { symbol: "OP", color: "#FF0420" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Aerodrome", tvl: "$67.4M" },
+  // Row 4 - Mixed DEXs
+  { token0: { symbol: "GRT", color: "#6747ED" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Uniswap v2", tvl: "$23.8M" },
+  { token0: { symbol: "ARB", color: "#28A0F0" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Uniswap v3", tvl: "$118.5M" },
+  { token0: { symbol: "USDC", color: "#2775CA" }, token1: { symbol: "USDT", color: "#26A17B" }, dex: "Curve", tvl: "$512.9M" },
+  { token0: { symbol: "wstETH", color: "#00A3FF" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Aerodrome", tvl: "$345.2M" },
+  { token0: { symbol: "WETH", color: "#627EEA" }, token1: { symbol: "AERO", color: "#0052FF" }, dex: "Aerodrome", tvl: "$88.7M" },
+  { token0: { symbol: "MATIC", color: "#8247E5" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Uniswap v3", tvl: "$76.3M" },
+]
+
+// Pool Card component for the ticker
+function PoolCard({ pool }: { pool: typeof pools[0] }) {
+  return (
+    <div className="flex-shrink-0 box-border flex flex-row items-center justify-center gap-3 no-underline bg-white hover:bg-gray-50 rounded-lg border border-solid border-gray-200 h-[66px] shadow-sm hover:shadow-md transition duration-150 ease-out px-3 py-2.5">
+      <div className="flex flex-col items-start justify-center gap-0.5">
+        <div className="flex flex-row items-center gap-1.5">
+          {/* Dual token icons */}
+          <div className="relative flex items-center flex-shrink-0">
+            <div
+              className="w-6 h-6 rounded-full border-2 border-white z-10"
+              style={{ backgroundColor: pool.token0.color }}
+            />
+            <div
+              className="w-6 h-6 rounded-full border-2 border-white -ml-2"
+              style={{ backgroundColor: pool.token1.color }}
+            />
+          </div>
+          <span className="whitespace-nowrap">
+            <span className="mr-1 text-gray-900 text-sm font-medium">{pool.token0.symbol} / {pool.token1.symbol}</span>
+            <span className="text-gray-500 text-sm">{pool.dex}</span>
+          </span>
+        </div>
+        <div className="flex flex-row items-center gap-1">
+          <span className="text-gray-600 text-sm">TVL</span>
+          <span className="text-gray-900 text-sm font-medium">{pool.tvl}</span>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 const testimonials = [
   {
@@ -53,6 +116,8 @@ const testimonials = [
 
 export default function HeroSection() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
@@ -330,283 +395,459 @@ export default function HeroSection() {
             <div className="flex max-w-[600px] flex-col gap-2">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">Borrow Across DEXs</h2>
               <p className="text-sm md:text-base text-gray-600">
-                Momo unlocks $25B of previously locked Liquidity Pools positions and puts them to work via Aave-Spokes rails.
+                Borrow from 500+ supported liquidity pools.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 md:grid-cols-3 md:gap-4">
-            {/* Card 1 */}
-            <div className="flex flex-col gap-4">
-              <div className="relative aspect-[4/3] w-full max-w-[400px] self-center overflow-hidden border border-gray-200 rounded-lg sm:max-w-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
-                <div className="text-4xl">🔄</div>
+          {/* LP Pool Ticker */}
+          <div className="w-full flex flex-col gap-4 overflow-hidden py-6 [mask-image:linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)]">
+            {/* Row 1 - scroll left */}
+            <div className="flex overflow-hidden">
+              <div className="flex gap-4 animate-scroll-left">
+                {pools.slice(0, 6).map((pool, i) => (
+                  <PoolCard key={`r1-a-${i}`} pool={pool} />
+                ))}
+                {pools.slice(0, 6).map((pool, i) => (
+                  <PoolCard key={`r1-b-${i}`} pool={pool} />
+                ))}
               </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-sm md:text-base font-semibold text-gray-900">Uniswap – Top DEX Liquidity</span>
-                <span className="text-sm md:text-base text-gray-600">Uniswap remains one of the largest liquidity hubs in DeFi, with over $3.9B locked in LP positions across its pools.</span>
-              </div>
-              <Link
-                href="https://sanctum.so/blog/jupsol-solana-liquid-staking-jupiter"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 text-sm md:text-base text-gray-900 underline underline-offset-4 hover:text-blue-600 transition-colors"
-              >
-                How JupSOL grew to 5M SOL
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="ml-1"
-                >
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </Link>
             </div>
-
-            {/* Card 2 */}
-            <div className="flex flex-col gap-4">
-              <div className="relative aspect-[4/3] w-full max-w-[400px] self-center overflow-hidden border border-gray-200 rounded-lg sm:max-w-full bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
-                <div className="text-4xl">⚖️</div>
+            {/* Row 2 - scroll right */}
+            <div className="flex overflow-hidden">
+              <div className="flex gap-4 animate-scroll-right">
+                {pools.slice(6, 12).map((pool, i) => (
+                  <PoolCard key={`r2-a-${i}`} pool={pool} />
+                ))}
+                {pools.slice(6, 12).map((pool, i) => (
+                  <PoolCard key={`r2-b-${i}`} pool={pool} />
+                ))}
               </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-sm md:text-base font-semibold text-gray-900">Balancer – Multi‑Asset LP Capital</span>
-                <span className="text-sm md:text-base text-gray-600">Balancer’s multi‑asset pools hold hundreds of millions in locked capital, now unleashed to fuel productive LP strategies.</span>
-              </div>
-              <Link
-                href="https://sanctum.so/blog/inf-guide"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 text-sm md:text-base text-gray-900 underline underline-offset-4 hover:text-blue-600 transition-colors"
-              >
-                Learn more about INF
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="ml-1"
-                >
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </Link>
             </div>
+            {/* Row 3 - scroll left */}
+            <div className="flex overflow-hidden">
+              <div className="flex gap-4 animate-scroll-left-slow">
+                {pools.slice(12, 18).map((pool, i) => (
+                  <PoolCard key={`r3-a-${i}`} pool={pool} />
+                ))}
+                {pools.slice(12, 18).map((pool, i) => (
+                  <PoolCard key={`r3-b-${i}`} pool={pool} />
+                ))}
+              </div>
+            </div>
+            {/* Row 4 - scroll right */}
+            <div className="flex overflow-hidden">
+              <div className="flex gap-4 animate-scroll-right-slow">
+                {pools.slice(18, 24).map((pool, i) => (
+                  <PoolCard key={`r4-a-${i}`} pool={pool} />
+                ))}
+                {pools.slice(18, 24).map((pool, i) => (
+                  <PoolCard key={`r4-b-${i}`} pool={pool} />
+                ))}
+              </div>
+            </div>
+          </div>
 
-            {/* Card 3 */}
-            <div className="flex flex-col gap-4">
-              <div className="relative aspect-[4/3] w-full max-w-[400px] self-center overflow-hidden border border-gray-200 rounded-lg sm:max-w-full bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center">
-                <div className="text-4xl">📈</div>
+          {/* Get More Section */}
+          <div className="mt-16 md:mt-24">
+            <div className="flex flex-col gap-6">
+              <div className="flex max-w-[600px] flex-col gap-2">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+                  Get more out of your LPs
+                </h2>
+                <p className="text-sm md:text-base text-gray-600">
+                  Maximize capital efficiency while keeping your positions active.
+                </p>
               </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-sm md:text-base font-semibold text-gray-900">Curve – Deep Stablecoin Pools</span>
-                <span className="text-sm md:text-base text-gray-600">Curve’s stablecoin‑focused pools hold over $2.1B in liquidity, making it one of the most capital‑efficient markets in DeFi.</span>
+            </div>
+            <div className="flex flex-col lg:flex-row justify-start gap-y-10 gap-x-5 mt-10 md:mt-16">
+              {/* Card 1 - Borrow Amount */}
+              <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
+                <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-[radial-gradient(circle_at_55%_130%,rgba(59,130,246,0.3)_0%,rgba(255,255,255,1)_56%)]">
+                  <div className="absolute top-[50px] left-1/2 -translate-x-1/2 px-8 py-5 text-center text-5xl font-bold rounded-full bg-blue-500 text-white">
+                    80%
+                  </div>
+                  <div className="absolute bottom-[46px] text-sm font-medium left-1/2 -translate-x-1/2">
+                    <span className="flex gap-2 items-center">
+                      LTV Ratio
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" fill="currentColor" viewBox="0 0 16 17" className="w-5 h-5">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.333 8.783h9.334m0 0-4-4m4 4-4 4"></path>
+                      </svg>
+                    </span>
+                  </div>
+                  {/* Gauge marks */}
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[394px]">
+                    <div className="relative">
+                      {[50, 55, 60, 65, 70, 75, 80].map((val, idx) => (
+                        <div key={val} className="absolute top-0 left-0 flex justify-start w-full" style={{ rotate: `${18 + idx * 16}deg` }}>
+                          <span className="text-[10px] font-semibold w-8 text-right">{val}</span>
+                          <div className="bg-blue-500 w-[30px] h-[14px] rounded-full ml-1.5 mt-1"></div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Maximize your capital</div>
+                <div className="text-base text-gray-600 text-center mt-2">Borrow up to 80% of your LP value</div>
               </div>
-              <Link
-                href="https://solana.org/delegation-program"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 text-sm md:text-base text-gray-900 underline underline-offset-4 hover:text-blue-600 transition-colors"
-              >
-                Learn more about SFDP
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="ml-1"
-                >
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </Link>
+
+              {/* Card 2 - Earnings */}
+              <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
+                <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-[radial-gradient(circle_at_56%_130%,rgba(59,130,246,0.3)_0%,rgba(255,255,255,1)_56%)]">
+                  <div className="absolute top-[50px] left-1/2 -translate-x-1/2 w-[243px] h-[240px] bg-white rounded-[10px] border border-gray-200">
+                    <div className="flex justify-center items-center gap-1 px-2 py-1 w-fit mx-auto mt-9 rounded-full bg-blue-500 text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" className="w-4 h-4">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"></path>
+                      </svg>
+                      <span className="text-[10px] font-semibold">Trading Fees</span>
+                    </div>
+                    <div className="flex justify-center mt-4">
+                      <span className="text-5xl font-bold">+12.4%</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-1.5 mt-4">
+                      <span className="text-gray-500 text-xs">APY</span>
+                      <div className="w-10 h-0.5 rounded bg-blue-500"></div>
+                      <div className="flex items-center justify-center w-4 h-4 bg-blue-500 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 16 16" className="fill-white text-white">
+                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="m3 9 7-7c.15-.15.4.01.33.21L8.77 6.4a.2.2 0 0 0 .19.27h3.9a.2.2 0 0 1 .14.34l-7 7c-.15.15-.4-.01-.33-.21l1.58-4.2a.2.2 0 0 0-.19-.27H3.15a.2.2 0 0 1-.14-.34"></path>
+                        </svg>
+                      </div>
+                      <div className="w-3.5 h-0.5 rounded bg-blue-500"></div>
+                      <span className="text-gray-500 text-xs">Earned</span>
+                    </div>
+                    <div className="mx-auto mt-6 w-36 border px-4 py-1 border-gray-300 rounded-full text-center">
+                      <span className="text-sm font-medium">Keep Earning</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Keep earning fees</div>
+                <div className="text-base text-gray-600 text-center mt-2">Your LP stays active while you borrow</div>
+              </div>
+              {/* Card 3 - Use Cases */}
+              <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
+                <div className="relative overflow-hidden rounded-[20px] w-full h-[340px] bg-[radial-gradient(circle_at_55%_130%,rgba(59,130,246,0.3)_0%,rgba(255,255,255,1)_55%)]">
+                  <div className="absolute top-[50px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
+                    <div className="flex gap-3 w-[280px] px-4 py-3 bg-white rounded-lg border border-gray-200 items-center">
+                      <div className="flex items-center justify-center w-11 h-11">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v20m5-17H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"></path>
+                        </svg>
+                      </div>
+                      <span className="text-sm font-medium">Leverage trading</span>
+                    </div>
+                    <div className="flex gap-3 w-[300px] px-4 py-3 bg-blue-500 text-white rounded-lg shadow-sm items-center">
+                      <div className="flex items-center justify-center w-11 h-11">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"></path>
+                        </svg>
+                      </div>
+                      <span className="text-sm font-medium">Yield farming</span>
+                    </div>
+                    <div className="flex gap-3 w-[280px] px-4 py-3 bg-white rounded-lg border border-gray-200 items-center">
+                      <div className="flex items-center justify-center w-11 h-11">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M22 10v7.4a1.6 1.6 0 0 1-1.6 1.6H3.6A1.6 1.6 0 0 1 2 17.4V10m20 0V6.6A1.6 1.6 0 0 0 20.4 5H3.6A1.6 1.6 0 0 0 2 6.6V10m20 0H2m4 5h3"></path>
+                        </svg>
+                      </div>
+                      <span className="text-sm font-medium">Pay off debt</span>
+                    </div>
+                    <div className="flex gap-3 w-[280px] px-4 py-3 bg-white rounded-lg border border-gray-200 items-center">
+                      <div className="flex items-center justify-center w-11 h-11">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 3v18h18M7 16l4-4 4 4 5-6"></path>
+                        </svg>
+                      </div>
+                      <span className="text-sm font-medium">New positions</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Unlock new strategies</div>
+                <div className="text-base text-gray-600 text-center mt-2">Use borrowed funds however you want</div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="relative flex w-full flex-col gap-8 md:flex-row md:gap-12">
-          {/* Left Column: Title & Description */}
-          <div className="top-0 flex flex-1 flex-col pt-24 gap-4 md:sticky md:self-start">
-            <div className="flex flex-col gap-2">
+        {/* Borrow with Confidence Section */}
+        <div className="mt-16 md:mt-24">
+          <div className="flex flex-col gap-6">
+            <div className="flex max-w-[600px] flex-col gap-2">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
                 Borrow with Confidence
               </h2>
               <p className="text-sm md:text-base text-gray-600">
-                Tap into Solana's native revenue streams: inflation, MEV, block rewards, and staking rewards every epoch.
+                Every component is designed with trust and safety as the foundation.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col lg:flex-row justify-start gap-y-10 gap-x-5 mt-10 md:mt-16">
+            {/* Card 1 - LP-aware risk models - Concentric Rings */}
+            <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
+              <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-[radial-gradient(circle_at_55%_130%,rgba(59,130,246,0.3)_0%,rgba(255,255,255,1)_56%)]">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Concentric rings */}
+                  <div className="relative w-[180px] h-[180px]">
+                    {/* Outer ring */}
+                    <div className="absolute inset-0 rounded-full border-2 border-blue-200"></div>
+                    {/* Middle ring */}
+                    <div className="absolute inset-[20px] rounded-full border-2 border-blue-300"></div>
+                    {/* Inner ring */}
+                    <div className="absolute inset-[40px] rounded-full border-2 border-blue-400"></div>
+                    {/* Center shield icon */}
+                    <div className="absolute inset-[55px] rounded-full bg-blue-500 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-white">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                {/* Stats at bottom */}
+                <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3 px-4">
+                  <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
+                    <span className="text-[10px] text-gray-500 uppercase tracking-wider">Pool Depth</span>
+                    <span className="text-sm font-semibold text-gray-900">$24.5M</span>
+                  </div>
+                  <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
+                    <span className="text-[10px] text-gray-500 uppercase tracking-wider">Volatility</span>
+                    <span className="text-sm font-semibold text-green-600">Low</span>
+                  </div>
+                  <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
+                    <span className="text-[10px] text-gray-500 uppercase tracking-wider">Oracle</span>
+                    <span className="text-sm font-semibold text-blue-600">98/100</span>
+                  </div>
+                </div>
+              </div>
+              <div className="text-2xl font-semibold mt-5 text-center text-gray-900">LP-aware risk models</div>
+              <div className="text-base text-gray-600 text-center mt-2">Track pool composition, volatility, and oracle quality.</div>
+            </div>
+
+            {/* Card 2 - Price-range aware oracles - Chart with range bands */}
+            <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
+              <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-[radial-gradient(circle_at_56%_130%,rgba(59,130,246,0.3)_0%,rgba(255,255,255,1)_56%)]">
+                <div className="absolute top-[40px] left-1/2 -translate-x-1/2 w-[260px]">
+                  {/* LIVE badge */}
+                  <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-green-100 border border-green-200 w-fit mx-auto mb-3">
+                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                    <span className="text-[10px] font-semibold text-green-700 uppercase tracking-wider">Live</span>
+                  </div>
+                  {/* Price display */}
+                  <div className="text-center mb-3">
+                    <span className="text-3xl font-bold text-gray-900">$1,847.52</span>
+                    <div className="text-xs text-gray-500 mt-1">ETH / USD</div>
+                  </div>
+                  {/* Chart area */}
+                  <div className="relative w-full h-[100px] bg-white rounded-lg border border-gray-200 p-2">
+                    {/* Safe range band */}
+                    <div className="absolute top-[30%] left-2 right-2 h-[40%] bg-blue-50 border-y border-blue-200"></div>
+                    {/* Stylized line chart */}
+                    <svg className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)]" viewBox="0 0 300 80" preserveAspectRatio="none">
+                      <path d="M0,60 Q30,50 60,55 T120,35 T180,40 T240,25 T300,30" fill="none" stroke="#3b82f6" strokeWidth="2" />
+                      {/* Current price dot */}
+                      <circle cx="240" cy="25" r="5" fill="#3b82f6" />
+                      <circle cx="240" cy="25" r="2" fill="white" />
+                    </svg>
+                  </div>
+                  {/* Range labels */}
+                  <div className="flex justify-between w-full mt-2 px-1">
+                    <div className="text-xs text-gray-500">$1,720</div>
+                    <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-green-100">
+                      <span className="text-xs text-green-700 font-medium">In Range</span>
+                    </div>
+                    <div className="text-xs text-gray-500">$1,950</div>
+                  </div>
+                </div>
+              </div>
+              <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Price-range aware oracles</div>
+              <div className="text-base text-gray-600 text-center mt-2">Industry-leading security protects your investments.</div>
+            </div>
+
+            {/* Card 3 - Per-position health checks - Circular gauge */}
+            <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
+              <div className="relative overflow-hidden rounded-[20px] w-full h-[340px] bg-[radial-gradient(circle_at_55%_130%,rgba(59,130,246,0.3)_0%,rgba(255,255,255,1)_55%)]">
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  {/* Circular gauge */}
+                  <div className="relative w-[160px] h-[160px]">
+                    <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                      {/* Background arc */}
+                      <circle cx="50" cy="50" r="42" fill="none" stroke="#e5e7eb" strokeWidth="8" strokeLinecap="round" strokeDasharray="198 66" />
+                      {/* Blue arc - 92% filled */}
+                      <circle cx="50" cy="50" r="42" fill="none" stroke="#3b82f6" strokeWidth="8" strokeLinecap="round" strokeDasharray="182 82" />
+                    </svg>
+                    {/* Center content */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <span className="text-4xl font-bold text-gray-900">92%</span>
+                      <span className="text-xs text-green-600 font-medium">Healthy</span>
+                    </div>
+                  </div>
+                  {/* Status indicators */}
+                  <div className="flex gap-3 mt-6">
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200">
+                      <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                      <span className="text-xs text-gray-700">LTV 75%</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200">
+                      <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                      <span className="text-xs text-gray-700">Buffer 42%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Per-position health checks</div>
+              <div className="text-base text-gray-600 text-center mt-2">Dynamically adjust loan-to-value ratios and liquidation thresholds.</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Your LPs Section with Video */}
+        <div className="mt-16 md:mt-24">
+          <div className="flex flex-col gap-6">
+            <div className="flex max-w-[600px] flex-col gap-2">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+                Your LPs don't have to sit idle anymore
+              </h2>
+              <p className="text-sm md:text-base text-gray-600">
+                Get one giant credit line from all your combined liquidity pools.
               </p>
             </div>
           </div>
 
-          {/* Right Column: Reward Cards */}
-          <div className="grid w-full sm:grid-cols-2 sm:gap-6 md:max-w-[480px] md:grid-cols-1 md:gap-0 md:pt-24">
-
-            {/* Inflation Rewards */}
-            <div className="flex flex-row border-b border-gray-200 pb-6 gap-3 sm:flex-col md:flex-row md:px-3 pt-0">
-              <div className="flex h-12 w-12 min-w-[48px] items-center justify-center rounded-md bg-blue-100">
-                <TrendingUp className="h-6 w-6 text-blue-600" />
+          {/* Video Player */}
+          <div className="relative my-12">
+            <div className="flex flex-col gap-2 p-3 rounded-lg bg-neutral-900">
+              <div className="group relative overflow-hidden rounded">
+                {!isPlaying && (
+                  <div
+                    className="absolute inset-0 z-10 flex items-center justify-center bg-black/30 cursor-pointer"
+                    onClick={() => videoRef.current?.play()}
+                  >
+                    <div className="bg-white/80 backdrop-blur rounded-full p-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                )}
+                <video
+                  ref={videoRef}
+                  className="w-full aspect-video"
+                  src="https://cdn-front.freepik.com/home/anon-rvmp/spaces/spaces_op.webm"
+                  loop
+                  muted
+                  playsInline
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                />
+                {/* Hover overlay */}
+                <div className="absolute top-0 left-0 w-full h-full group-hover:opacity-100 opacity-0 transition-opacity duration-300 bg-gradient-to-t from-black/50 via-transparent to-black/50 pointer-events-none">
+                  <div className="absolute top-0 left-0 p-4 text-white group-hover:translate-y-0 -translate-y-2 transition-transform duration-300">Momo features</div>
+                  <div className="absolute bottom-0 left-0 p-4 text-2xl text-white group-hover:translate-y-0 translate-y-2 transition-transform duration-300 w-full flex flex-row gap-4 items-center">
+                    <div className="cursor-pointer hover:bg-white/20 bg-transparent p-2 rounded transition-colors duration-300 pointer-events-auto">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
+                      </svg>
+                    </div>
+                    <div className="flex flex-row gap-2 w-full">
+                      {[18, 17, 17, 30, 17, 17, 13].map((width, idx) => (
+                        <div key={idx} className="h-[6px] rounded-lg bg-neutral-500 overflow-hidden relative cursor-pointer hover:opacity-100 opacity-50 transition-opacity duration-300 pointer-events-auto" style={{ width: `${width}%` }}>
+                          <div className="absolute top-0 left-0 w-full h-full bg-white rounded-lg origin-left scale-x-0"></div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="cursor-pointer hover:bg-white/20 bg-transparent p-2 rounded transition-colors duration-300 pointer-events-auto">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                        <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                        <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                        <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+                        <rect width="10" height="8" x="7" y="8" rx="1"></rect>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-sm md:text-base font-semibold text-gray-900">Secure and Seamless</span>
-                <span className="text-sm md:text-base text-gray-600">Momo dynamically tracks pool composition and volatility to adjust loan-to-value ratios appropriately.</span>
+              {/* Feature tags / Video chapters */}
+              <div className="flex flex-row gap-2 lg:whitespace-nowrap overflow-x-auto">
+                {[
+                  { icon: "layers", label: "LP Collateral", time: 0 },
+                  { icon: "git-pull-request", label: "Borrow", time: 4.3 },
+                  { icon: "shield", label: "Risk Models", time: 8.6 },
+                  { icon: "activity", label: "Oracles", time: 12.9 },
+                  { icon: "heart-pulse", label: "Health Checks", time: 17.2 },
+                  { icon: "git-merge", label: "Multi-DEX", time: 21.5 },
+                  { icon: "zap", label: "Instant Access", time: 25.8 }
+                ].map((chapter, idx) => (
+                  <div
+                    key={idx}
+                    className="group flex flex-col lg:flex-row gap-1 lg:gap-2 bg-black w-full rounded px-2 py-1 md:px-2 md:py-2 hover:bg-white hover:text-black transition-all duration-300 cursor-pointer lg:items-center text-neutral-100"
+                    onClick={() => {
+                      if (videoRef.current) {
+                        videoRef.current.currentTime = chapter.time
+                        videoRef.current.play()
+                      }
+                    }}
+                  >
+                    <div className="[&>svg]:sm:size-4 [&>svg]:size-3 text-neutral-500">
+                      {chapter.icon === "layers" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path>
+                          <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
+                          <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path>
+                        </svg>
+                      )}
+                      {chapter.icon === "git-pull-request" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="18" cy="18" r="3"></circle>
+                          <circle cx="6" cy="6" r="3"></circle>
+                          <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+                          <line x1="6" x2="6" y1="9" y2="21"></line>
+                        </svg>
+                      )}
+                      {chapter.icon === "shield" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                      )}
+                      {chapter.icon === "activity" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                      )}
+                      {chapter.icon === "heart-pulse" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                          <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"></path>
+                        </svg>
+                      )}
+                      {chapter.icon === "git-merge" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="18" cy="18" r="3"></circle>
+                          <circle cx="6" cy="6" r="3"></circle>
+                          <path d="M6 21V9a9 9 0 0 0 9 9"></path>
+                        </svg>
+                      )}
+                      {chapter.icon === "zap" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                      )}
+                    </div>
+                    <div className="text-xs leading-none group-hover:text-gray-600 transition-colors duration-300">{chapter.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
-
-            {/* MEV Rewards */}
-            <div className="flex flex-row border-b border-gray-200 pb-6 gap-3 sm:flex-col md:flex-row md:px-3 pt-6 sm:pt-0">
-              <div className="flex h-12 w-12 min-w-[48px] items-center justify-center rounded-md bg-yellow-100">
-                <Zap className="h-6 w-6 text-yellow-600" />
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-sm md:text-base font-semibold text-gray-900">Up to 10X Leverage</span>
-                <span className="text-sm md:text-base text-gray-600">Increase your exposure by effectively trading on margin with borrowed capital.</span>
-              </div>
-            </div>
-
-            {/* Block Rewards */}
-            <div className="flex flex-row border-b border-gray-200 pb-6 gap-3 sm:flex-col md:flex-row md:px-3 pt-6 sm:pt-0">
-              <div className="flex h-12 w-12 min-w-[48px] items-center justify-center rounded-md bg-green-100">
-                <Blocks className="h-6 w-6 text-green-600" />
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-sm md:text-base font-semibold text-gray-900">Trading Fees</span>
-                <span className="text-sm md:text-base text-gray-600">Set your collateral's price range and earn trading fees while you borrow.</span>
-              </div>
-            </div>
-
-            {/* Staking Rewards */}
-            <div className="flex flex-row border-b-0 pb-6 gap-3 sm:flex-col md:flex-row md:px-3 pt-6 sm:pt-0">
-              <div className="flex h-12 w-12 min-w-[48px] items-center justify-center rounded-md bg-purple-100">
-                <Coins className="h-6 w-6 text-purple-600" />
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-sm md:text-base font-semibold text-gray-900">Instant Refinance</span>
-                <span className="text-sm md:text-base text-gray-600">Switch positions to take advantage of rates, liquidations and more.</span>
-              </div>
-            </div>
-
           </div>
         </div>
 
-        {/* Trust Built by Design Section */}
+        {/* Over the top crypto protection Section */}
         <div className="space-y-6 md:space-y-8 pt-12 md:pt-16">
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
-              Trust Built by Design
+              Over the top crypto protection
             </h2>
             <p className="text-sm md:text-base text-gray-600">
-              Every component is designed with trust and safety as the foundation.
+              Keep your assets and privacy safe with the highest standards of security in crypto. Think 2FA, passkeys, and armed guards protecting the servers.
             </p>
-          </div>
-          <div className="block">
-            <div className="flex flex-col lg:flex-row gap-6">
-              {/* Reliable price integrity */}
-              <div className="w-full lg:w-[275px] xl:w-[353px] bg-white rounded-xl shadow-[6px_8px_0.6px_0_rgba(0,0,0,0.15)] overflow-hidden" style={{ opacity: 1, transform: 'none' }}>
-                <div className="xl:pt-9 xl:px-9 pt-6 px-6 flex flex-col gap-6">
-                  <div className="space-y-4">
-                    <div className="block">
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900">
-                        Reliable Price
-                      </h3>
-                    </div>
-                    <div className="block">
-                      <p className="text-sm md:text-base text-gray-600">
-                        Chainlink's decentralized oracle network delivers accurate, tamper-resistant pricing for LP collateral.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="relative w-full aspect-[4/3] mt-4">
-                    <Image
-                      fill
-                      alt="Reliable price integrity visualization"
-                      src="https://via.placeholder.com/288x216?text=Reliable+Price+Integrity"
-                      className="object-contain rounded-lg"
-                      loading="lazy"
-                      onError={(e) => {
-                        e.currentTarget.style.display = "none"
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Secure at every layer */}
-              <div className="w-full lg:w-[275px] xl:w-[353px] bg-white rounded-xl shadow-[6px_8px_0.6px_0_rgba(0,0,0,0.15)] overflow-hidden" style={{ opacity: 1, transform: 'none' }}>
-                <div className="xl:pt-9 xl:px-9 pt-6 px-6 flex flex-col gap-6">
-                  <div className="space-y-4">
-                    <div className="block">
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900">
-                        Secure Deposit
-                      </h3>
-                    </div>
-                    <div className="block">
-                      <p className="text-sm md:text-base text-gray-600">
-                        Multiple layers of protocol-level security protect LP positions, from risk controls to battle-tested smart contract architecture.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="relative w-full aspect-[4/3] mt-4">
-                    <Image
-                      fill
-                      alt="Secure at every layer visualization"
-                      src="https://via.placeholder.com/288x216?text=Secure+at+Every+Layer"
-                      className="object-contain rounded-lg"
-                      loading="lazy"
-                      onError={(e) => {
-                        e.currentTarget.style.display = "none"
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Built on trusted foundations */}
-              <div className="w-full lg:w-[275px] xl:w-[353px] bg-white rounded-xl shadow-[6px_8px_0.6px_0_rgba(0,0,0,0.15)] overflow-hidden" style={{ opacity: 1, transform: 'none' }}>
-                <div className="xl:pt-9 xl:px-9 pt-6 px-6 flex flex-col gap-6">
-                  <div className="space-y-4">
-                    <div className="block">
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900">
-                        Built on Trust
-                      </h3>
-                    </div>
-                    <div className="block">
-                      <p className="text-sm md:text-base text-gray-600">
-                        Built on Aave v4—one of DeFi's most tested and trusted frameworks—designed to support advanced collateral types.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="relative w-full aspect-[4/3] mt-4">
-                    <Image
-                      fill
-                      alt="Built on trusted foundations visualization"
-                      src="https://via.placeholder.com/288x216?text=Built+on+Trusted+Foundations"
-                      className="object-contain rounded-lg"
-                      loading="lazy"
-                      onError={(e) => {
-                        e.currentTarget.style.display = "none"
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -675,6 +916,37 @@ export default function HeroSection() {
           </div>
         </div>
 
+        {/* About Aave v4 Section */}
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16 pt-16 md:pt-24 items-center">
+          <div className="flex-1 space-y-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+              More about Aave v4
+            </h2>
+            <p className="text-sm md:text-base text-gray-600 max-w-lg">
+              Aave v4 is a next-generation DeFi lending protocol featuring a Hub-and-Spoke architecture that enables cross-chain liquidity and modular risk management. Amm Market leverages Aave v4's infrastructure to provide secure, permissionless borrowing against LP positions. All loan terms, liquidations, and interest rates are enforced on-chain through battle-tested smart contracts and transparent oracle systems.
+            </p>
+            <a
+              href="https://docs.aave.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
+            >
+              Learn more
+            </a>
+          </div>
+          <div className="flex-shrink-0">
+            <div className="w-[300px] h-[200px] md:w-[400px] md:h-[250px] rounded-2xl border border-gray-200 flex items-center justify-center bg-white">
+              <div className="flex items-center gap-3">
+                <svg width="48" height="48" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0z" fill="#B6509E" />
+                  <path d="M186.7 168.5c-7.5 0-14.2-4.3-17.4-11l-25.9-56.8c-1.4-3.1-4.5-5.1-7.9-5.1h-14.9c-3.4 0-6.5 2-7.9 5.1l-25.9 56.8c-3.2 6.7-9.9 11-17.4 11-10.6 0-19.2-8.6-19.2-19.2 0-2.9.7-5.8 2-8.4l38.3-83.8c5.7-12.5 18.2-20.5 32-20.5h23.2c13.8 0 26.3 8 32 20.5l38.3 83.8c1.3 2.6 2 5.5 2 8.4 0 10.6-8.6 19.2-19.2 19.2z" fill="white" />
+                </svg>
+                <span className="text-2xl md:text-3xl font-semibold text-gray-900">Aave</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* FAQ Section */}
         <div className="flex flex-col pt-24 md:pt-32 gap-8 sm:pb-24 md:flex-row md:gap-12" style={{ opacity: 1, transform: 'none' }}>
           <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 md:pt-8 md:flex-shrink-0 md:w-[300px]">
@@ -684,7 +956,7 @@ export default function HeroSection() {
             <Accordion type="single" collapsible orientation="vertical" className="w-full">
               <AccordionItem value="item-1" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
                 <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  What is Momo's LP token lending?
+                  Do I have to sell or exit my LP position?
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -709,13 +981,13 @@ export default function HeroSection() {
                   </svg>
                 </AccordionTrigger>
                 <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Momo allows you to use your Liquidity Pool (LP) tokens from Uniswap, Balancer, and Curve as collateral to borrow funds at competitive rates, while still earning trading fees from your LP positions.
+                  No. Your LP remains in the pool and continues earning trading fees. Amm Market uses your LP shares as collateral without removing liquidity.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-2" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
                 <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  What are the borrowing costs and loan-to-value ratios?
+                  Which LPs are supported?
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -740,13 +1012,13 @@ export default function HeroSection() {
                   </svg>
                 </AccordionTrigger>
                 <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  You can borrow up to 70% of your LP portfolio value at 5% APR. Loan-to-value ratios are dynamically adjusted based on pool composition and volatility to ensure security.
+                  LP positions from Uniswap, Balancer, and Curve. Supported pools depend on oracle availability and risk parameters.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-3" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
                 <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  How quickly can I borrow against my LP positions?
+                  What can I borrow?
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -771,13 +1043,13 @@ export default function HeroSection() {
                   </svg>
                 </AccordionTrigger>
                 <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Once you connect your wallet and deposit LP tokens, you can borrow funds instantly. The process is seamless and requires no waiting periods.
+                  Stable assets like USDC and GHO, sourced from Aave v4 liquidity hubs.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-4" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
                 <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  Is it safe to use LP tokens as collateral?
+                  What is the borrowing limit?
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -802,13 +1074,13 @@ export default function HeroSection() {
                   </svg>
                 </AccordionTrigger>
                 <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Yes. Momo is built on Aave v4, one of DeFi's most tested and trusted frameworks. We use Chainlink oracles for reliable price feeds and implement multiple layers of protocol-level security to protect your positions.
+                  Up to 70% of your LP's value, depending on pool type, volatility, and oracle confidence. No minimum amounts—$10M in collateral means up to $7M available to borrow.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-5" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
                 <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  Can I still earn trading fees while borrowing?
+                  What is the interest rate?
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -833,10 +1105,177 @@ export default function HeroSection() {
                   </svg>
                 </AccordionTrigger>
                 <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Absolutely. Your LP tokens remain in their original pools, so you continue earning trading fees while using them as collateral. This allows you to maximize capital efficiency.
+                  Rates start around 5% APR and adjust dynamically based on market utilization.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-6" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  Are there any Amm Market fees?
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                  >
+                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                  >
+                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                </AccordionTrigger>
+                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  Yes. A frontend fee applies to each borrow transaction, including additions to existing loans.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-7" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  What happens if my LP value drops?
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                  >
+                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                  >
+                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                </AccordionTrigger>
+                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  If your loan-to-value ratio exceeds the liquidation threshold, part of your position may be liquidated to maintain system solvency.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-8" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  How are LP positions valued?
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                  >
+                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                  >
+                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                </AccordionTrigger>
+                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  Using advanced oracles that factor in token prices, pool composition, and active price ranges for real-time valuation.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-9" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  Is my risk isolated?
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                  >
+                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                  >
+                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                </AccordionTrigger>
+                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  Yes. Each LP position is managed independently with isolated risk. System-wide safety is enforced through Aave v4's Hub-and-Spoke architecture.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-10" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  Can I repay early or close my position?
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                  >
+                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    color="currentColor"
+                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                  >
+                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
+                </AccordionTrigger>
+                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  Yes. Repay anytime, reduce your borrow, or withdraw your LP once debt is cleared.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
+          </div>
+        </div>
+
+        {/* Disclaimer */}
+        <div className="pt-16 md:pt-24 border-t border-gray-200 mt-16">
+          <div className="space-y-4 text-xs text-gray-500">
+            <p>
+              Borrowing against LP tokens involves risk, including liquidation if market conditions move against your position. Amm Market does not custody your funds, rehypothecate LP positions, or alter how your liquidity operates on underlying AMMs. Loan terms, interest rates, and collateral values are enforced on-chain using transparent oracle systems and automated risk parameters. You remain in full control of your position at all times and can repay or adjust collateral whenever you choose. Only borrow amounts you are comfortable maintaining through market volatility.
+            </p>
+            <p>
+              This material is for informational purposes only, and is not (i) an offer, or solicitation of an offer, to invest in, or to buy or sell, any interests or shares, or to participate in any investment or trading strategy, (ii) intended to provide accounting, legal, or tax advice, or investment recommendations or (iii) an official statement of Coinbase. Consult your advisors before making any investment decision. No representation or warranty is made, expressed or implied with respect to the accuracy of the information or to the future performance of any digital asset, financial instrument or other market or economic measure. Coinbase may have financial interests in, or relationships with, some of the entities and/or publications discussed or referenced in the materials. Coinbase does not endorse or approve links or third-party websites that may be provided in the materials.
+            </p>
           </div>
         </div>
       </div>
