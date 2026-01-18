@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Playfair_Display } from "next/font/google"
 import { TrendingUp, Zap, Blocks, Coins, ChevronLeft, ChevronRight } from "lucide-react"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
@@ -78,53 +78,86 @@ function PoolCard({ pool }: { pool: typeof pools[0] }) {
 
 const testimonials = [
   {
-    quote: "Using LP tokens as collateral is a natural step",
-    highlight: "toward composable, efficient, and scalable decentralized finance.",
-    ending: "",
-    author: "Vitalik Buterin – Ethereum",
-    image: "https://i.pravatar.cc/435?img=1"
+    protocol: "Ethereum",
+    quote: "Using LP tokens as collateral is a natural step toward composable finance.",
+    highlight: "This unlocks efficient and scalable decentralized financial systems.",
+    author: "Vitalik Buterin",
+    title: "CO-FOUNDER, ETHEREUM",
+    image: "https://i.pravatar.cc/80?img=1"
   },
   {
-    quote: "Enabling LP tokens to be used as collateral",
-    highlight: "unlocks new avenues for liquidity and capital efficiency.",
-    ending: "",
-    author: "Stani Kulechov – Aave",
-    image: "https://i.pravatar.cc/435?img=2"
+    protocol: "Aave",
+    quote: "Enabling LP tokens to be used as collateral is a game-changer for DeFi.",
+    highlight: "It unlocks new avenues for liquidity and capital efficiency.",
+    author: "Stani Kulechov",
+    title: "FOUNDER & CEO, AAVE",
+    image: "https://i.pravatar.cc/80?img=2"
   },
   {
-    quote: "LP tokens aren't just positions—they're assets.",
+    protocol: "Yearn Finance",
+    quote: "LP tokens aren't just positions—they're productive assets in their own right.",
     highlight: "Unlocking their potential as collateral will change how people use DeFi.",
-    ending: "",
-    author: "Andre Cronje – Yearn Finance",
-    image: "https://i.pravatar.cc/435?img=3"
+    author: "Andre Cronje",
+    title: "FOUNDER, YEARN FINANCE",
+    image: "https://i.pravatar.cc/80?img=3"
   },
   {
-    quote: "Tokenized positions, like LP tokens, can serve as powerful collateral,",
-    highlight: "creating more flexible and efficient lending markets.",
-    ending: "",
-    author: "Marcus – Balancer",
-    image: "https://i.pravatar.cc/435?img=4"
+    protocol: "Balancer",
+    quote: "Tokenized positions like LP tokens can serve as powerful collateral.",
+    highlight: "This creates more flexible and efficient lending markets for everyone.",
+    author: "Marcus",
+    title: "CONTRIBUTOR, BALANCER",
+    image: "https://i.pravatar.cc/80?img=4"
   },
   {
-    quote: "LP tokens are the backbone of capital-efficient DeFi strategies,",
-    highlight: "allowing users to do more with the liquidity they already provide.",
-    ending: "",
-    author: "Robert Leshner – Compound Finance",
-    image: "https://i.pravatar.cc/435?img=5"
+    protocol: "Compound",
+    quote: "LP tokens are the backbone of capital-efficient DeFi strategies today.",
+    highlight: "They allow users to do more with the liquidity they already provide.",
+    author: "Robert Leshner",
+    title: "FOUNDER, COMPOUND FINANCE",
+    image: "https://i.pravatar.cc/80?img=5"
   }
 ]
 
 export default function HeroSection() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const [progress, setProgress] = useState(0)
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
 
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-  }
+  const TESTIMONIAL_DURATION = 6000 // 6 seconds per testimonial
 
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  // Progress bar animation and auto-advance
+  useEffect(() => {
+    setProgress(0)
+    const startTime = Date.now()
+
+    const progressInterval = setInterval(() => {
+      const elapsed = Date.now() - startTime
+      const newProgress = Math.min((elapsed / TESTIMONIAL_DURATION) * 100, 100)
+      setProgress(newProgress)
+
+      if (newProgress >= 100) {
+        clearInterval(progressInterval)
+        setIsAnimating(true)
+        setTimeout(() => {
+          setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
+          setIsAnimating(false)
+        }, 300)
+      }
+    }, 50)
+
+    return () => clearInterval(progressInterval)
+  }, [currentTestimonial])
+
+  const handleTestimonialChange = (idx: number) => {
+    if (idx === currentTestimonial) return
+    setIsAnimating(true)
+    setTimeout(() => {
+      setCurrentTestimonial(idx)
+      setIsAnimating(false)
+    }, 300)
   }
 
   const testimonial = testimonials[currentTestimonial]
@@ -307,17 +340,313 @@ export default function HeroSection() {
         </h2>
       </div>
 
+      {/* How It Works Section */}
+      <div className="mx-auto max-w-5xl px-6 lg:px-0 pt-16 md:pt-24 pb-8">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+            How It Works
+          </h2>
+          <p className="text-sm md:text-base text-gray-600">
+            Two steps to unlock your LP's potential.
+          </p>
+        </div>
+      </div>
+
+      {/* LP Discovery Section */}
+      <div className="relative h-[700px] w-full border-b border-gray-200 sm:h-[750px] md:h-[850px] lg:h-[900px] overflow-hidden">
+
+        {/* Top text block - upper left */}
+        <div className="absolute left-4 top-4 z-20 max-w-[200px] sm:max-w-[220px] md:left-[6%] md:top-8 md:max-w-[260px] lg:left-[10%] lg:top-12 lg:max-w-[280px]">
+          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-1 md:mb-2">
+            Deposit LP tokens
+          </h3>
+          <p className="text-xs sm:text-sm text-gray-600 leading-snug">
+            Add Uniswap or Balancer positions. Keep earning fees while deposited.
+          </p>
+        </div>
+
+        {/* Mobile/Small curved arrow - from top text to first phone */}
+        <svg className="absolute left-[30%] top-[80px] block sm:left-[28%] md:hidden" width="80" height="100" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M5 5 C 50 5, 75 40, 75 95"
+            stroke="#9CA3AF"
+            strokeWidth="1"
+            fill="none"
+          />
+          <polygon points="68,90 82,98 75,87" fill="#9CA3AF" />
+        </svg>
+
+        {/* iPhone 16 Mockups - overlapping, second phone BEHIND first */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[45%] w-[280px] sm:w-[320px] md:w-[450px] lg:w-[520px] h-[400px] sm:h-[450px] md:h-[580px] lg:h-[650px]">
+          {/* Desktop/Tablet curved arrow - TOP LEFT pointing to first phone */}
+          <svg className="absolute -left-[70px] -top-[50px] hidden md:block" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M5 5 C 70 5, 95 40, 95 95"
+              stroke="#9CA3AF"
+              strokeWidth="1.2"
+              fill="none"
+            />
+            <polygon points="88,90 102,98 95,87" fill="#9CA3AF" />
+          </svg>
+
+          {/* Desktop/Tablet curved arrow - BOTTOM RIGHT pointing to second phone */}
+          <svg className="absolute -right-[70px] -bottom-[50px] hidden md:block" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M95 95 C 30 95, 5 60, 5 5"
+              stroke="#9CA3AF"
+              strokeWidth="1.2"
+              fill="none"
+            />
+            <polygon points="-2,12 12,2 5,15" fill="#9CA3AF" />
+          </svg>
+
+          {/* Second iPhone 16 - BEHIND, lower position, linked to second text (bottom-right) */}
+          <div className="absolute right-0 top-[20%] sm:top-[18%] md:top-[15%] w-[140px] sm:w-[160px] md:w-[220px] lg:w-[250px] rotate-[-4deg] z-10">
+            {/* iPhone 16 Frame */}
+            <div className="relative bg-[#1a1a1a] rounded-[32px] sm:rounded-[36px] md:rounded-[46px] lg:rounded-[50px] p-[5px] sm:p-[6px] md:p-[9px] lg:p-[10px] shadow-2xl">
+              {/* Side button - right */}
+              <div className="absolute -right-[2px] top-[70px] sm:top-[80px] md:top-[110px] lg:top-[120px] w-[2px] md:w-[3px] h-[40px] sm:h-[50px] md:h-[65px] lg:h-[70px] bg-[#2a2a2a] rounded-r-sm" />
+              {/* Volume buttons - left */}
+              <div className="absolute -left-[2px] top-[55px] sm:top-[65px] md:top-[85px] lg:top-[95px] w-[2px] md:w-[3px] h-[20px] sm:h-[25px] md:h-[32px] lg:h-[35px] bg-[#2a2a2a] rounded-l-sm" />
+              <div className="absolute -left-[2px] top-[85px] sm:top-[100px] md:top-[125px] lg:top-[140px] w-[2px] md:w-[3px] h-[20px] sm:h-[25px] md:h-[32px] lg:h-[35px] bg-[#2a2a2a] rounded-l-sm" />
+              {/* Action button - left */}
+              <div className="absolute -left-[2px] top-[38px] sm:top-[45px] md:top-[55px] lg:top-[60px] w-[2px] md:w-[3px] h-[14px] sm:h-[16px] md:h-[20px] lg:h-[22px] bg-[#2a2a2a] rounded-l-sm" />
+
+              {/* Screen container */}
+              <div className="relative bg-black rounded-[27px] sm:rounded-[30px] md:rounded-[38px] lg:rounded-[42px] overflow-hidden">
+                {/* Dynamic Island */}
+                <div className="absolute top-[5px] sm:top-[6px] md:top-[9px] lg:top-[10px] left-1/2 -translate-x-1/2 w-[50px] sm:w-[60px] md:w-[90px] lg:w-[100px] h-[16px] sm:h-[20px] md:h-[27px] lg:h-[30px] bg-black rounded-full z-10" />
+
+                {/* Screen placeholder */}
+                <div className="relative w-full aspect-[9/19.5] bg-gradient-to-b from-gray-100 to-gray-200">
+                  <Image
+                    src="/images/phone-screen-2.png"
+                    alt="Unlock credit line"
+                    fill
+                    className="object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none"
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-[10px] sm:text-xs md:text-sm">
+                    Screen 2
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* First iPhone 16 - IN FRONT, linked to first text (top-left) */}
+          <div className="absolute left-0 top-0 w-[140px] sm:w-[160px] md:w-[220px] lg:w-[250px] rotate-[6deg] z-20">
+            {/* iPhone 16 Frame */}
+            <div className="relative bg-[#1a1a1a] rounded-[32px] sm:rounded-[36px] md:rounded-[46px] lg:rounded-[50px] p-[5px] sm:p-[6px] md:p-[9px] lg:p-[10px] shadow-2xl">
+              {/* Side button - right */}
+              <div className="absolute -right-[2px] top-[70px] sm:top-[80px] md:top-[110px] lg:top-[120px] w-[2px] md:w-[3px] h-[40px] sm:h-[50px] md:h-[65px] lg:h-[70px] bg-[#2a2a2a] rounded-r-sm" />
+              {/* Volume buttons - left */}
+              <div className="absolute -left-[2px] top-[55px] sm:top-[65px] md:top-[85px] lg:top-[95px] w-[2px] md:w-[3px] h-[20px] sm:h-[25px] md:h-[32px] lg:h-[35px] bg-[#2a2a2a] rounded-l-sm" />
+              <div className="absolute -left-[2px] top-[85px] sm:top-[100px] md:top-[125px] lg:top-[140px] w-[2px] md:w-[3px] h-[20px] sm:h-[25px] md:h-[32px] lg:h-[35px] bg-[#2a2a2a] rounded-l-sm" />
+              {/* Action button - left */}
+              <div className="absolute -left-[2px] top-[38px] sm:top-[45px] md:top-[55px] lg:top-[60px] w-[2px] md:w-[3px] h-[14px] sm:h-[16px] md:h-[20px] lg:h-[22px] bg-[#2a2a2a] rounded-l-sm" />
+
+              {/* Screen container */}
+              <div className="relative bg-black rounded-[27px] sm:rounded-[30px] md:rounded-[38px] lg:rounded-[42px] overflow-hidden">
+                {/* Dynamic Island */}
+                <div className="absolute top-[5px] sm:top-[6px] md:top-[9px] lg:top-[10px] left-1/2 -translate-x-1/2 w-[50px] sm:w-[60px] md:w-[90px] lg:w-[100px] h-[16px] sm:h-[20px] md:h-[27px] lg:h-[30px] bg-black rounded-full z-10" />
+
+                {/* Screen placeholder */}
+                <div className="relative w-full aspect-[9/19.5] bg-gradient-to-b from-gray-100 to-gray-200">
+                  <Image
+                    src="/images/phone-screen-1.png"
+                    alt="Deposit LP tokens"
+                    fill
+                    className="object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none"
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-[10px] sm:text-xs md:text-sm">
+                    Screen 1
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom text block - lower right */}
+        <div className="absolute right-4 bottom-4 z-20 max-w-[200px] sm:max-w-[220px] text-right md:right-[6%] md:bottom-8 md:max-w-[260px] lg:right-[10%] lg:bottom-12 lg:max-w-[280px]">
+          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-1 md:mb-2">
+            Unlock credit line
+          </h3>
+          <p className="text-xs sm:text-sm text-gray-600 leading-snug">
+            Borrow instantly via Aave v4. Repay anytime, collect fees freely.
+          </p>
+        </div>
+
+        {/* Mobile/Small curved arrow - from bottom text to second phone */}
+        <svg className="absolute right-[30%] bottom-[70px] block sm:right-[28%] md:hidden" width="80" height="100" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M75 95 C 25 95, 5 60, 5 5"
+            stroke="#9CA3AF"
+            strokeWidth="1"
+            fill="none"
+          />
+          <polygon points="-2,10 12,2 5,13" fill="#9CA3AF" />
+        </svg>
+      </div>
+
+      {/* See It In Action - Video Section */}
+      <div className="mx-auto max-w-5xl px-6 lg:px-0 py-16 md:py-24">
+        <div className="flex flex-col gap-6">
+          <div className="flex max-w-[600px] flex-col gap-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+              See It In Action
+            </h2>
+            <p className="text-sm md:text-base text-gray-600">
+              Watch how Amm Market turns your LP positions into borrowing power.
+            </p>
+          </div>
+        </div>
+
+        {/* Video Player */}
+        <div className="relative my-12">
+          <div className="flex flex-col gap-2 p-3 rounded-lg bg-neutral-900">
+            <div className="group relative overflow-hidden rounded">
+              {!isPlaying && (
+                <div
+                  className="absolute inset-0 z-10 flex items-center justify-center bg-black/30 cursor-pointer"
+                  onClick={() => videoRef.current?.play()}
+                >
+                  <div className="bg-white/80 backdrop-blur rounded-full p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
+                    </svg>
+                  </div>
+                </div>
+              )}
+              <video
+                ref={videoRef}
+                className="w-full aspect-video"
+                src="https://cdn-front.freepik.com/home/anon-rvmp/spaces/spaces_op.webm"
+                loop
+                muted
+                playsInline
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+              />
+              {/* Hover overlay */}
+              <div className="absolute top-0 left-0 w-full h-full group-hover:opacity-100 opacity-0 transition-opacity duration-300 bg-gradient-to-t from-black/50 via-transparent to-black/50 pointer-events-none">
+                <div className="absolute top-0 left-0 p-4 text-white group-hover:translate-y-0 -translate-y-2 transition-transform duration-300">Amm Market features</div>
+                <div className="absolute bottom-0 left-0 p-4 text-2xl text-white group-hover:translate-y-0 translate-y-2 transition-transform duration-300 w-full flex flex-row gap-4 items-center">
+                  <div className="cursor-pointer hover:bg-white/20 bg-transparent p-2 rounded transition-colors duration-300 pointer-events-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
+                    </svg>
+                  </div>
+                  <div className="flex flex-row gap-2 w-full">
+                    {[18, 17, 17, 30, 17, 17, 13].map((width, idx) => (
+                      <div key={idx} className="h-[6px] rounded-lg bg-neutral-500 overflow-hidden relative cursor-pointer hover:opacity-100 opacity-50 transition-opacity duration-300 pointer-events-auto" style={{ width: `${width}%` }}>
+                        <div className="absolute top-0 left-0 w-full h-full bg-white rounded-lg origin-left scale-x-0"></div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="cursor-pointer hover:bg-white/20 bg-transparent p-2 rounded transition-colors duration-300 pointer-events-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                      <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                      <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                      <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+                      <rect width="10" height="8" x="7" y="8" rx="1"></rect>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Feature tags / Video chapters */}
+            <div className="flex flex-row gap-2 lg:whitespace-nowrap overflow-x-auto">
+              {[
+                { icon: "layers", label: "LP Collateral", time: 0 },
+                { icon: "git-pull-request", label: "Borrow", time: 4.3 },
+                { icon: "shield", label: "Risk Models", time: 8.6 },
+                { icon: "activity", label: "Oracles", time: 12.9 },
+                { icon: "heart-pulse", label: "Health Checks", time: 17.2 },
+                { icon: "git-merge", label: "Multi-DEX", time: 21.5 },
+                { icon: "zap", label: "Instant Access", time: 25.8 }
+              ].map((chapter, idx) => (
+                <div
+                  key={idx}
+                  className="group flex flex-col lg:flex-row gap-1 lg:gap-2 bg-black w-full rounded px-2 py-1 md:px-2 md:py-2 hover:bg-white hover:text-black transition-all duration-300 cursor-pointer lg:items-center text-neutral-100"
+                  onClick={() => {
+                    if (videoRef.current) {
+                      videoRef.current.currentTime = chapter.time
+                      videoRef.current.play()
+                    }
+                  }}
+                >
+                  <div className="[&>svg]:sm:size-4 [&>svg]:size-3 text-neutral-500">
+                    {chapter.icon === "layers" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path>
+                        <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
+                        <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path>
+                      </svg>
+                    )}
+                    {chapter.icon === "git-pull-request" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="18" cy="18" r="3"></circle>
+                        <circle cx="6" cy="6" r="3"></circle>
+                        <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+                        <line x1="6" x2="6" y1="9" y2="21"></line>
+                      </svg>
+                    )}
+                    {chapter.icon === "shield" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      </svg>
+                    )}
+                    {chapter.icon === "activity" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                      </svg>
+                    )}
+                    {chapter.icon === "heart-pulse" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                        <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"></path>
+                      </svg>
+                    )}
+                    {chapter.icon === "git-merge" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="18" cy="18" r="3"></circle>
+                        <circle cx="6" cy="6" r="3"></circle>
+                        <path d="M6 21V9a9 9 0 0 0 9 9"></path>
+                      </svg>
+                    )}
+                    {chapter.icon === "zap" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                      </svg>
+                    )}
+                  </div>
+                  <div className="text-xs leading-none group-hover:text-gray-600 transition-colors duration-300">{chapter.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Existing Content */}
       <div className="mx-auto max-w-5xl space-y-12 px-6 lg:px-0">
 
-        {/* Partner Revenue Section */}
-        <div className="flex flex-col pb-[50px] pt-24 md:pt-32 gap-8 md:gap-12" style={{ opacity: 1, transform: 'none' }}>
+        {/* Borrow Across DEXs Section */}
+        <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12" style={{ opacity: 1, transform: 'none' }}>
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
-              Borrow From Any Pool
+              Borrow Across DEXs
             </h2>
             <p className="text-sm md:text-base text-gray-600">
-              Unlock liquidity from a wide range of supported LP pools.
+              We integrate with the leading decentralized exchanges in DeFi.
             </p>
           </div>
           <div className="flex flex-1 items-stretch gap-2 flex-col sm:flex-row">
@@ -342,26 +671,13 @@ export default function HeroSection() {
               </div>
             </div>
             <div className="flex w-full flex-1">
-              <div className="flex w-full flex-col items-center justify-center bg-gradient-to-b from-[#FFE5AE] to-[#FFD069] p-2 text-center rounded-lg h-[150px] sm:h-auto">
-                <div className="flex size-full flex-col items-center justify-center bg-[#FFC547] rounded-md">
-                  <h4 className="text-base font-medium leading-normal text-yellow-600 md:text-lg">
-                    <span>Over</span>
-                    <div className="flex items-center text-[32px] font-bold text-gray-900 md:gap-1 md:text-[56px]">
-                      <svg width="40" height="75" viewBox="0 0 40 75" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-10 md:h-[75px]">
-                        <path d="M10.2927 18.5664C9.54631 24.3143 14.1566 29.6482 14.1566 29.6482C14.1566 29.6482 19.9771 25.6628 20.7233 19.9149C21.4699 14.1669 16.8597 8.83301 16.8597 8.83301C16.8597 8.83301 11.0391 12.8184 10.2927 18.5664Z" stroke="black" strokeWidth="4" strokeLinejoin="round"></path>
-                        <path d="M4.82219 37.8831C7.25837 43.1446 14.0075 45.2096 14.0075 45.2096C14.0075 45.2096 16.8065 38.7434 14.3705 33.4818C11.9343 28.22 5.18525 26.1553 5.18525 26.1553C5.18525 26.1553 2.38602 32.6212 4.82219 37.8831Z" stroke="black" strokeWidth="4" strokeLinejoin="round"></path>
-                        <path d="M19.2649 58.4754C19.2649 58.4754 12.3428 59.8568 7.69438 56.3806C3.04603 52.9048 2.43164 45.888 2.43164 45.888C2.43164 45.888 9.35376 44.5069 14.0023 47.9827C18.6506 51.4589 19.2649 58.4754 19.2649 58.4754ZM19.2649 58.4754H30.4586C34.3114 58.4754 37.4348 61.5988 37.4348 65.4516C37.4348 69.3044 34.3114 72.4278 30.4586 72.4278H23.4348" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"></path>
-                        <path d="M26.1663 5.81449C21.9295 9.77977 22.0926 16.8214 22.0926 16.8214C22.0926 16.8214 29.1252 17.4341 33.3619 13.4688C37.5987 9.50352 37.4352 2.46187 37.4352 2.46187C37.4352 2.46187 30.403 1.84923 26.1663 5.81449Z" stroke="black" strokeWidth="4" strokeLinejoin="round"></path>
-                      </svg>
-                      $5M
-                      <svg width="40" height="75" viewBox="0 0 40 75" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-10 md:h-[75px]">
-                        <path d="M30.0794 18.5664C30.8258 24.3143 26.2154 29.6482 26.2154 29.6482C26.2154 29.6482 20.3949 25.6628 19.6487 19.9149C18.9022 14.1669 23.5124 8.83301 23.5124 8.83301C23.5124 8.83301 29.333 12.8184 30.0794 18.5664Z" stroke="black" strokeWidth="4" strokeLinejoin="round"></path>
-                        <path d="M35.5499 37.8831C33.1137 43.1446 26.3645 45.2096 26.3645 45.2096C26.3645 45.2096 23.5656 38.7434 26.0016 33.4818C28.4378 28.22 35.1868 26.1553 35.1868 26.1553C35.1868 26.1553 37.9861 32.6212 35.5499 37.8831Z" stroke="black" strokeWidth="4" strokeLinejoin="round"></path>
-                        <path d="M21.1072 58.4754C21.1072 58.4754 28.0293 59.8568 32.6777 56.3806C37.326 52.9048 37.9404 45.888 37.9404 45.888C37.9404 45.888 31.0183 44.5069 26.3698 47.9827C21.7214 51.4589 21.1072 58.4754 21.1072 58.4754ZM21.1072 58.4754H9.9135C6.0607 58.4754 2.9373 61.5988 2.9373 65.4516C2.9373 69.3044 6.0607 72.4278 9.9135 72.4278H16.9373" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"></path>
-                        <path d="M14.2058 5.81449C18.4425 9.77977 18.2794 16.8214 18.2794 16.8214C18.2794 16.8214 11.2469 17.4341 7.01015 13.4688C2.7734 9.50352 2.93685 2.46187 2.93685 2.46187C2.93685 2.46187 9.96905 1.84923 14.2058 5.81449Z" stroke="black" strokeWidth="4" strokeLinejoin="round"></path>
-                      </svg>
+              <div className="flex w-full flex-col items-center justify-center bg-gradient-to-b from-blue-50 to-blue-100 p-2 text-center rounded-lg h-[150px] sm:h-auto">
+                <div className="flex size-full flex-col items-center justify-center bg-white border border-blue-200 rounded-md">
+                  <h4 className="text-base font-medium leading-normal text-blue-600 md:text-lg">
+                    <div className="flex items-center text-[32px] font-bold text-gray-900 md:text-[48px]">
+                      12+
                     </div>
-                    <span>in partner revenue</span>
+                    <span>DEX Integrations</span>
                   </h4>
                 </div>
               </div>
@@ -389,13 +705,13 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Stake Growth Section */}
-        <div className="flex flex-col pt-24 md:pt-32 gap-8 md:gap-12" style={{ opacity: 1, transform: 'none' }}>
+        {/* 500+ Supported Pools Section */}
+        <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12 border-t border-gray-100" style={{ opacity: 1, transform: 'none' }}>
           <div className="flex flex-col gap-6">
             <div className="flex max-w-[600px] flex-col gap-2">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">Borrow Across DEXs</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">500+ Supported Pools</h2>
               <p className="text-sm md:text-base text-gray-600">
-                Borrow from 500+ supported liquidity pools.
+                Access liquidity from 500+ pools across all integrated DEXs.
               </p>
             </div>
           </div>
@@ -449,7 +765,7 @@ export default function HeroSection() {
           </div>
 
           {/* Get More Section */}
-          <div className="mt-16 md:mt-24">
+          <div className="pt-16 md:pt-20 border-t border-gray-100">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
@@ -568,7 +884,7 @@ export default function HeroSection() {
           </div>
         </div>
         {/* Borrow with Confidence Section */}
-        <div className="mt-16 md:mt-24">
+        <div className="pt-16 md:pt-20 border-t border-gray-100">
           <div className="flex flex-col gap-6">
             <div className="flex max-w-[600px] flex-col gap-2">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
@@ -698,226 +1014,8 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Your LPs Section with Video */}
-        <div className="mt-16 md:mt-24">
-          <div className="flex flex-col gap-6">
-            <div className="flex max-w-[600px] flex-col gap-2">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
-                Your LPs don't have to sit idle anymore
-              </h2>
-              <p className="text-sm md:text-base text-gray-600">
-                Get one giant credit line from all your combined liquidity pools.
-              </p>
-            </div>
-          </div>
-
-          {/* Video Player */}
-          <div className="relative my-12">
-            <div className="flex flex-col gap-2 p-3 rounded-lg bg-neutral-900">
-              <div className="group relative overflow-hidden rounded">
-                {!isPlaying && (
-                  <div
-                    className="absolute inset-0 z-10 flex items-center justify-center bg-black/30 cursor-pointer"
-                    onClick={() => videoRef.current?.play()}
-                  >
-                    <div className="bg-white/80 backdrop-blur rounded-full p-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
-                      </svg>
-                    </div>
-                  </div>
-                )}
-                <video
-                  ref={videoRef}
-                  className="w-full aspect-video"
-                  src="https://cdn-front.freepik.com/home/anon-rvmp/spaces/spaces_op.webm"
-                  loop
-                  muted
-                  playsInline
-                  onPlay={() => setIsPlaying(true)}
-                  onPause={() => setIsPlaying(false)}
-                />
-                {/* Hover overlay */}
-                <div className="absolute top-0 left-0 w-full h-full group-hover:opacity-100 opacity-0 transition-opacity duration-300 bg-gradient-to-t from-black/50 via-transparent to-black/50 pointer-events-none">
-                  <div className="absolute top-0 left-0 p-4 text-white group-hover:translate-y-0 -translate-y-2 transition-transform duration-300">Momo features</div>
-                  <div className="absolute bottom-0 left-0 p-4 text-2xl text-white group-hover:translate-y-0 translate-y-2 transition-transform duration-300 w-full flex flex-row gap-4 items-center">
-                    <div className="cursor-pointer hover:bg-white/20 bg-transparent p-2 rounded transition-colors duration-300 pointer-events-auto">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
-                      </svg>
-                    </div>
-                    <div className="flex flex-row gap-2 w-full">
-                      {[18, 17, 17, 30, 17, 17, 13].map((width, idx) => (
-                        <div key={idx} className="h-[6px] rounded-lg bg-neutral-500 overflow-hidden relative cursor-pointer hover:opacity-100 opacity-50 transition-opacity duration-300 pointer-events-auto" style={{ width: `${width}%` }}>
-                          <div className="absolute top-0 left-0 w-full h-full bg-white rounded-lg origin-left scale-x-0"></div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="cursor-pointer hover:bg-white/20 bg-transparent p-2 rounded transition-colors duration-300 pointer-events-auto">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
-                        <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
-                        <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
-                        <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
-                        <rect width="10" height="8" x="7" y="8" rx="1"></rect>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Feature tags / Video chapters */}
-              <div className="flex flex-row gap-2 lg:whitespace-nowrap overflow-x-auto">
-                {[
-                  { icon: "layers", label: "LP Collateral", time: 0 },
-                  { icon: "git-pull-request", label: "Borrow", time: 4.3 },
-                  { icon: "shield", label: "Risk Models", time: 8.6 },
-                  { icon: "activity", label: "Oracles", time: 12.9 },
-                  { icon: "heart-pulse", label: "Health Checks", time: 17.2 },
-                  { icon: "git-merge", label: "Multi-DEX", time: 21.5 },
-                  { icon: "zap", label: "Instant Access", time: 25.8 }
-                ].map((chapter, idx) => (
-                  <div
-                    key={idx}
-                    className="group flex flex-col lg:flex-row gap-1 lg:gap-2 bg-black w-full rounded px-2 py-1 md:px-2 md:py-2 hover:bg-white hover:text-black transition-all duration-300 cursor-pointer lg:items-center text-neutral-100"
-                    onClick={() => {
-                      if (videoRef.current) {
-                        videoRef.current.currentTime = chapter.time
-                        videoRef.current.play()
-                      }
-                    }}
-                  >
-                    <div className="[&>svg]:sm:size-4 [&>svg]:size-3 text-neutral-500">
-                      {chapter.icon === "layers" && (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path>
-                          <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
-                          <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path>
-                        </svg>
-                      )}
-                      {chapter.icon === "git-pull-request" && (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="18" cy="18" r="3"></circle>
-                          <circle cx="6" cy="6" r="3"></circle>
-                          <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
-                          <line x1="6" x2="6" y1="9" y2="21"></line>
-                        </svg>
-                      )}
-                      {chapter.icon === "shield" && (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
-                      )}
-                      {chapter.icon === "activity" && (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                        </svg>
-                      )}
-                      {chapter.icon === "heart-pulse" && (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                          <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"></path>
-                        </svg>
-                      )}
-                      {chapter.icon === "git-merge" && (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="18" cy="18" r="3"></circle>
-                          <circle cx="6" cy="6" r="3"></circle>
-                          <path d="M6 21V9a9 9 0 0 0 9 9"></path>
-                        </svg>
-                      )}
-                      {chapter.icon === "zap" && (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                        </svg>
-                      )}
-                    </div>
-                    <div className="text-xs leading-none group-hover:text-gray-600 transition-colors duration-300">{chapter.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Over the top crypto protection Section */}
-        <div className="space-y-6 md:space-y-8 pt-12 md:pt-16">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
-              Over the top crypto protection
-            </h2>
-            <p className="text-sm md:text-base text-gray-600">
-              Keep your assets and privacy safe with the highest standards of security in crypto. Think 2FA, passkeys, and armed guards protecting the servers.
-            </p>
-          </div>
-        </div>
-
-        {/* Testimonial Section */}
-        <div className="flex flex-col items-center gap-14 lg:gap-20 pt-12 md:pt-16 pb-6">
-          <div className="flex flex-col gap-2 w-full px-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
-              What DeFi Leaders Say
-            </h2>
-            <p className="text-sm md:text-base text-gray-600">
-              Hear from the community building the future of decentralized finance.
-            </p>
-          </div>
-          <div className="grid lg:grid-cols-2 max-w-[870px] xl:max-w-[1100px] mx-auto justify-items-center lg:justify-items-start gap-y-6 sm:gap-y-12 min-h-[490px] xl:min-h-[405px] w-full px-6">
-            <div className="flex flex-col text-gray-900 gap-8 md:gap-10 order-last lg:order-first justify-between w-full">
-              <div style={{ opacity: 1 }} className="transition-opacity duration-300">
-                <div className="space-y-6">
-                  <div className="block">
-                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-900">
-                      "{testimonial.quote}{testimonial.highlight && <span className="font-semibold"> {testimonial.highlight}</span>}{testimonial.ending}"
-                    </p>
-                  </div>
-                  <div className="block">
-                    <p className="text-xs md:text-sm leading-tight font-semibold tracking-wider uppercase text-gray-600">
-                      {testimonial.author}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-row gap-3 mx-auto md:mx-0">
-                <button
-                  aria-label="Previous testimonial"
-                  onClick={prevTestimonial}
-                  className="bg-purple-100 text-blue-600 rounded-full w-[32px] h-[32px] flex items-center justify-center hover:bg-purple-200 transition-colors"
-                  type="button"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-                <button
-                  aria-label="Next testimonial"
-                  onClick={nextTestimonial}
-                  className="bg-purple-100 text-blue-600 rounded-full w-[32px] h-[32px] flex items-center justify-center hover:bg-purple-200 transition-colors"
-                  type="button"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-              </div>
-            </div>
-            <div className="lg:justify-self-end w-full flex justify-center lg:justify-end">
-              <div style={{ opacity: 1 }} className="transition-opacity duration-300">
-                <div className="relative w-full max-w-[435px] aspect-square">
-                  <Image
-                    width={435}
-                    height={435}
-                    alt="Image of a client"
-                    src={testimonial.image}
-                    className="object-cover rounded-lg w-full h-full"
-                    loading="lazy"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none"
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* About Aave v4 Section */}
-        <div className="flex flex-col md:flex-row gap-8 md:gap-16 pt-16 md:pt-24 items-center">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16 pt-16 md:pt-20 items-center border-t border-gray-100">
           <div className="flex-1 space-y-6">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
               More about Aave v4
@@ -947,8 +1045,72 @@ export default function HeroSection() {
           </div>
         </div>
 
+        {/* Testimonial Section */}
+        <div className="py-16 md:py-20 border-t border-gray-100">
+          <div className="flex flex-col lg:flex-row">
+            {/* Left: Protocol list */}
+            <div className="lg:w-2/5 lg:border-r border-gray-200 lg:pr-8">
+              {testimonials.map((t, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => handleTestimonialChange(idx)}
+                  className="cursor-pointer py-4 border-b border-gray-100 last:border-b-0"
+                >
+                  <div className="flex justify-between items-center">
+                    <span className={`text-base transition-all duration-300 ${currentTestimonial === idx ? "font-semibold text-gray-900" : "text-gray-500"}`}>
+                      {t.protocol}
+                    </span>
+                    <span className={`text-sm transition-all duration-300 ${currentTestimonial === idx ? "text-blue-600 font-medium" : "text-gray-400"}`}>
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <div className="h-0.5 mt-3 w-full bg-gray-200 overflow-hidden">
+                    <div
+                      className={`h-full bg-blue-600 transition-none ${currentTestimonial === idx ? '' : 'w-0'}`}
+                      style={{ width: currentTestimonial === idx ? `${progress}%` : '0%' }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Right: Quote content */}
+            <div className="lg:w-3/5 lg:pl-12 pt-8 lg:pt-0 flex flex-col">
+              <div className={`min-h-[200px] md:min-h-[180px] transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+                <blockquote className="text-xl md:text-2xl lg:text-3xl text-gray-900 leading-relaxed">
+                  &ldquo;{testimonial.quote} <span className="font-semibold">{testimonial.highlight}</span>&rdquo;
+                </blockquote>
+              </div>
+              <div className={`flex items-center gap-3 mt-8 transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+                <Image
+                  src={testimonial.image}
+                  alt={testimonial.author}
+                  width={48}
+                  height={48}
+                  className="rounded-full object-cover"
+                />
+                <div>
+                  <p className="font-semibold text-gray-900">{testimonial.author}</p>
+                  <p className="text-xs text-gray-500 uppercase tracking-wider">{testimonial.title}</p>
+                </div>
+              </div>
+              {/* Pagination dots */}
+              <div className="flex gap-2 mt-8 justify-end">
+                {testimonials.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleTestimonialChange(idx)}
+                    className={`w-3 h-3 transition-colors duration-300 ${currentTestimonial === idx ? 'bg-blue-600' : 'bg-gray-300'}`}
+                    aria-label={`Go to testimonial ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* FAQ Section */}
-        <div className="flex flex-col pt-24 md:pt-32 gap-8 sm:pb-24 md:flex-row md:gap-12" style={{ opacity: 1, transform: 'none' }}>
+        <div className="flex flex-col py-16 md:py-20 gap-8 md:flex-row md:gap-12 border-t border-gray-100" style={{ opacity: 1, transform: 'none' }}>
           <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 md:pt-8 md:flex-shrink-0 md:w-[300px]">
             Frequently asked questions.
           </h3>
@@ -987,69 +1149,7 @@ export default function HeroSection() {
 
               <AccordionItem value="item-2" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
                 <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  Which LPs are supported?
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
-                  >
-                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
-                  >
-                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  LP positions from Uniswap, Balancer, and Curve. Supported pools depend on oracle availability and risk parameters.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-3" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  What can I borrow?
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
-                  >
-                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
-                  >
-                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Stable assets like USDC and GHO, sourced from Aave v4 liquidity hubs.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-4" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  What is the borrowing limit?
+                  How much can I borrow?
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1078,69 +1178,7 @@ export default function HeroSection() {
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-5" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  What is the interest rate?
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
-                  >
-                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
-                  >
-                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Rates start around 5% APR and adjust dynamically based on market utilization.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-6" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  Are there any Amm Market fees?
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
-                  >
-                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
-                  >
-                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Yes. A frontend fee applies to each borrow transaction, including additions to existing loans.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-7" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+              <AccordionItem value="item-3" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
                 <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
                   What happens if my LP value drops?
                   <svg
@@ -1171,38 +1209,7 @@ export default function HeroSection() {
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-8" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  How are LP positions valued?
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
-                  >
-                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
-                  >
-                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Using advanced oracles that factor in token prices, pool composition, and active price ranges for real-time valuation.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-9" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+              <AccordionItem value="item-4" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
                 <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
                   Is my risk isolated?
                   <svg
@@ -1233,7 +1240,7 @@ export default function HeroSection() {
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-10" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+              <AccordionItem value="item-5" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
                 <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
                   Can I repay early or close my position?
                   <svg
@@ -1267,8 +1274,33 @@ export default function HeroSection() {
           </div>
         </div>
 
+        {/* Final CTA Section */}
+        <div className="py-16 md:py-20 border-t border-gray-100">
+          <div className="flex flex-col items-center text-center gap-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+              Ready to unlock your LP's potential?
+            </h2>
+            <p className="text-sm md:text-base text-gray-600 max-w-lg">
+              Join the waitlist and be first to access LP-backed borrowing on Aave v4.
+            </p>
+            <form className="flex flex-col sm:flex-row gap-3 w-full max-w-md mt-4">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 rounded-full border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+              <button
+                type="submit"
+                className="px-6 py-3 bg-gray-900 text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-colors whitespace-nowrap"
+              >
+                Join waitlist
+              </button>
+            </form>
+          </div>
+        </div>
+
         {/* Disclaimer */}
-        <div className="pt-16 md:pt-24 border-t border-gray-200 mt-16">
+        <div className="py-12 md:py-16 border-t border-gray-200">
           <div className="space-y-4 text-xs text-gray-500">
             <p>
               Borrowing against LP tokens involves risk, including liquidation if market conditions move against your position. Amm Market does not custody your funds, rehypothecate LP positions, or alter how your liquidity operates on underlying AMMs. Loan terms, interest rates, and collateral values are enforced on-chain using transparent oracle systems and automated risk parameters. You remain in full control of your position at all times and can repay or adjust collateral whenever you choose. Only borrow amounts you are comfortable maintaining through market volatility.
