@@ -118,6 +118,149 @@ export default function HeroSection() {
         </div>
       </div>
 
+      {/* LP Discovery Section */}
+      <div className="relative h-[700px] w-full border-b border-gray-200 sm:h-[750px] md:h-[850px] lg:h-[900px] overflow-hidden">
+
+        {/* Top text block - upper left */}
+        <div className="absolute left-4 top-4 z-20 max-w-[200px] sm:max-w-[220px] md:left-[6%] md:top-8 md:max-w-[260px] lg:left-[10%] lg:top-12 lg:max-w-[280px]">
+          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-1 md:mb-2">
+            Deposit LP tokens
+          </h3>
+          <p className="text-xs sm:text-sm text-gray-600 leading-snug">
+            Add Uniswap or Balancer positions. Keep earning fees while deposited.
+          </p>
+        </div>
+
+        {/* Mobile/Small curved arrow - from top text to first phone */}
+        <svg className="absolute left-[30%] top-[80px] block sm:left-[28%] md:hidden" width="80" height="100" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M5 5 C 50 5, 75 40, 75 95"
+            stroke="#9CA3AF"
+            strokeWidth="1"
+            fill="none"
+          />
+          <polygon points="68,90 82,98 75,87" fill="#9CA3AF" />
+        </svg>
+
+        {/* iPhone 16 Mockups - overlapping, second phone BEHIND first */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[45%] w-[280px] sm:w-[320px] md:w-[450px] lg:w-[520px] h-[400px] sm:h-[450px] md:h-[580px] lg:h-[650px]">
+          {/* Desktop/Tablet curved arrow - TOP LEFT pointing to first phone */}
+          <svg className="absolute -left-[70px] -top-[50px] hidden md:block" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M5 5 C 70 5, 95 40, 95 95"
+              stroke="#9CA3AF"
+              strokeWidth="1.2"
+              fill="none"
+            />
+            <polygon points="88,90 102,98 95,87" fill="#9CA3AF" />
+          </svg>
+
+          {/* Desktop/Tablet curved arrow - BOTTOM RIGHT pointing to second phone */}
+          <svg className="absolute -right-[70px] -bottom-[50px] hidden md:block" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M95 95 C 30 95, 5 60, 5 5"
+              stroke="#9CA3AF"
+              strokeWidth="1.2"
+              fill="none"
+            />
+            <polygon points="-2,12 12,2 5,15" fill="#9CA3AF" />
+          </svg>
+
+          {/* Second iPhone 16 - BEHIND, lower position, linked to second text (bottom-right) */}
+          <div className="absolute right-0 top-[20%] sm:top-[18%] md:top-[15%] w-[140px] sm:w-[160px] md:w-[220px] lg:w-[250px] rotate-[-4deg] z-10">
+            {/* iPhone 16 Frame */}
+            <div className="relative bg-[#1a1a1a] rounded-[32px] sm:rounded-[36px] md:rounded-[46px] lg:rounded-[50px] p-[5px] sm:p-[6px] md:p-[9px] lg:p-[10px] shadow-2xl">
+              {/* Side button - right */}
+              <div className="absolute -right-[2px] top-[70px] sm:top-[80px] md:top-[110px] lg:top-[120px] w-[2px] md:w-[3px] h-[40px] sm:h-[50px] md:h-[65px] lg:h-[70px] bg-[#2a2a2a] rounded-r-sm" />
+              {/* Volume buttons - left */}
+              <div className="absolute -left-[2px] top-[55px] sm:top-[65px] md:top-[85px] lg:top-[95px] w-[2px] md:w-[3px] h-[20px] sm:h-[25px] md:h-[32px] lg:h-[35px] bg-[#2a2a2a] rounded-l-sm" />
+              <div className="absolute -left-[2px] top-[85px] sm:top-[100px] md:top-[125px] lg:top-[140px] w-[2px] md:w-[3px] h-[20px] sm:h-[25px] md:h-[32px] lg:h-[35px] bg-[#2a2a2a] rounded-l-sm" />
+              {/* Action button - left */}
+              <div className="absolute -left-[2px] top-[38px] sm:top-[45px] md:top-[55px] lg:top-[60px] w-[2px] md:w-[3px] h-[14px] sm:h-[16px] md:h-[20px] lg:h-[22px] bg-[#2a2a2a] rounded-l-sm" />
+
+              {/* Screen container */}
+              <div className="relative bg-black rounded-[27px] sm:rounded-[30px] md:rounded-[38px] lg:rounded-[42px] overflow-hidden">
+                {/* Dynamic Island */}
+                <div className="absolute top-[5px] sm:top-[6px] md:top-[9px] lg:top-[10px] left-1/2 -translate-x-1/2 w-[50px] sm:w-[60px] md:w-[90px] lg:w-[100px] h-[16px] sm:h-[20px] md:h-[27px] lg:h-[30px] bg-black rounded-full z-10" />
+
+                {/* Screen placeholder */}
+                <div className="relative w-full aspect-[9/19.5] bg-gradient-to-b from-gray-100 to-gray-200">
+                  <Image
+                    src="/images/phone-screen-2.png"
+                    alt="Unlock credit line"
+                    fill
+                    className="object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none"
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-[10px] sm:text-xs md:text-sm">
+                    Screen 2
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* First iPhone 16 - IN FRONT, linked to first text (top-left) */}
+          <div className="absolute left-0 top-0 w-[140px] sm:w-[160px] md:w-[220px] lg:w-[250px] rotate-[6deg] z-20">
+            {/* iPhone 16 Frame */}
+            <div className="relative bg-[#1a1a1a] rounded-[32px] sm:rounded-[36px] md:rounded-[46px] lg:rounded-[50px] p-[5px] sm:p-[6px] md:p-[9px] lg:p-[10px] shadow-2xl">
+              {/* Side button - right */}
+              <div className="absolute -right-[2px] top-[70px] sm:top-[80px] md:top-[110px] lg:top-[120px] w-[2px] md:w-[3px] h-[40px] sm:h-[50px] md:h-[65px] lg:h-[70px] bg-[#2a2a2a] rounded-r-sm" />
+              {/* Volume buttons - left */}
+              <div className="absolute -left-[2px] top-[55px] sm:top-[65px] md:top-[85px] lg:top-[95px] w-[2px] md:w-[3px] h-[20px] sm:h-[25px] md:h-[32px] lg:h-[35px] bg-[#2a2a2a] rounded-l-sm" />
+              <div className="absolute -left-[2px] top-[85px] sm:top-[100px] md:top-[125px] lg:top-[140px] w-[2px] md:w-[3px] h-[20px] sm:h-[25px] md:h-[32px] lg:h-[35px] bg-[#2a2a2a] rounded-l-sm" />
+              {/* Action button - left */}
+              <div className="absolute -left-[2px] top-[38px] sm:top-[45px] md:top-[55px] lg:top-[60px] w-[2px] md:w-[3px] h-[14px] sm:h-[16px] md:h-[20px] lg:h-[22px] bg-[#2a2a2a] rounded-l-sm" />
+
+              {/* Screen container */}
+              <div className="relative bg-black rounded-[27px] sm:rounded-[30px] md:rounded-[38px] lg:rounded-[42px] overflow-hidden">
+                {/* Dynamic Island */}
+                <div className="absolute top-[5px] sm:top-[6px] md:top-[9px] lg:top-[10px] left-1/2 -translate-x-1/2 w-[50px] sm:w-[60px] md:w-[90px] lg:w-[100px] h-[16px] sm:h-[20px] md:h-[27px] lg:h-[30px] bg-black rounded-full z-10" />
+
+                {/* Screen placeholder */}
+                <div className="relative w-full aspect-[9/19.5] bg-gradient-to-b from-gray-100 to-gray-200">
+                  <Image
+                    src="/images/phone-screen-1.png"
+                    alt="Deposit LP tokens"
+                    fill
+                    className="object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none"
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-[10px] sm:text-xs md:text-sm">
+                    Screen 1
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom text block - lower right */}
+        <div className="absolute right-4 bottom-4 z-20 max-w-[200px] sm:max-w-[220px] text-right md:right-[6%] md:bottom-8 md:max-w-[260px] lg:right-[10%] lg:bottom-12 lg:max-w-[280px]">
+          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-1 md:mb-2">
+            Unlock credit line
+          </h3>
+          <p className="text-xs sm:text-sm text-gray-600 leading-snug">
+            Borrow instantly via Aave v4. Repay anytime, collect fees freely.
+          </p>
+        </div>
+
+        {/* Mobile/Small curved arrow - from bottom text to second phone */}
+        <svg className="absolute right-[30%] bottom-[70px] block sm:right-[28%] md:hidden" width="80" height="100" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M75 95 C 25 95, 5 60, 5 5"
+            stroke="#9CA3AF"
+            strokeWidth="1"
+            fill="none"
+          />
+          <polygon points="-2,10 12,2 5,13" fill="#9CA3AF" />
+        </svg>
+      </div>
+
       {/* Existing Content */}
       <div className="mx-auto max-w-5xl space-y-12 px-6 lg:px-0">
         <div className="relative rounded-3xl p-3 md:-mx-8 lg:col-span-3">
@@ -151,17 +294,8 @@ export default function HeroSection() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 md:grid-cols-3 md:gap-4">
             {/* Card 1 */}
             <div className="flex flex-col gap-4">
-              <div className="relative aspect-[4/3] w-full max-w-[400px] self-center overflow-hidden border border-gray-200 rounded-lg sm:max-w-full">
-                <Image
-                  alt="LST as a distribution flywheel."
-                  src="/images/saas/stake-growth/grow-1.png"
-                  fill
-                  className="object-cover"
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none"
-                  }}
-                />
+              <div className="relative aspect-[4/3] w-full max-w-[400px] self-center overflow-hidden border border-gray-200 rounded-lg sm:max-w-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
+                <div className="text-4xl">🔄</div>
               </div>
               <div className="flex flex-col gap-2">
                 <span className="text-sm md:text-base font-semibold text-gray-900">Uniswap – Top DEX Liquidity</span>
@@ -195,17 +329,8 @@ export default function HeroSection() {
 
             {/* Card 2 */}
             <div className="flex flex-col gap-4">
-              <div className="relative aspect-[4/3] w-full max-w-[400px] self-center overflow-hidden border border-gray-200 rounded-lg sm:max-w-full">
-                <Image
-                  alt="Potential strategic delegations."
-                  src="/images/saas/stake-growth/grow-2.png"
-                  fill
-                  className="object-cover"
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none"
-                  }}
-                />
+              <div className="relative aspect-[4/3] w-full max-w-[400px] self-center overflow-hidden border border-gray-200 rounded-lg sm:max-w-full bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
+                <div className="text-4xl">⚖️</div>
               </div>
               <div className="flex flex-col gap-2">
                 <span className="text-sm md:text-base font-semibold text-gray-900">Balancer – Multi‑Asset LP Capital</span>
@@ -239,17 +364,8 @@ export default function HeroSection() {
 
             {/* Card 3 */}
             <div className="flex flex-col gap-4">
-              <div className="relative aspect-[4/3] w-full max-w-[400px] self-center overflow-hidden border border-gray-200 rounded-lg sm:max-w-full">
-                <Image
-                  alt="Guided access to delegation programs."
-                  src="/images/saas/stake-growth/grow-3.png"
-                  fill
-                  className="object-cover"
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none"
-                  }}
-                />
+              <div className="relative aspect-[4/3] w-full max-w-[400px] self-center overflow-hidden border border-gray-200 rounded-lg sm:max-w-full bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center">
+                <div className="text-4xl">📈</div>
               </div>
               <div className="flex flex-col gap-2">
                 <span className="text-sm md:text-base font-semibold text-gray-900">Curve – Deep Stablecoin Pools</span>
