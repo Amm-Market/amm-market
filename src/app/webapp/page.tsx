@@ -1,5 +1,6 @@
 "use client"
 import Link from "next/link"
+import Image from "next/image"
 import WaitlistCTA from "@/components/waitlist-cta"
 
 export default function WebappPage() {
@@ -108,6 +109,161 @@ export default function WebappPage() {
                   Connect Wallet
                 </button>
               </div>
+            </div>
+          </section>
+
+          {/* How It Works Section */}
+          <section className="pt-8">
+            <div className="flex flex-col gap-2 mb-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+                How It Works
+              </h2>
+              <p className="text-sm md:text-base text-gray-600">
+                Two steps to unlock your LP's potential.
+              </p>
+            </div>
+
+            {/* LP Discovery Section */}
+            <div className="relative h-[700px] w-full border border-gray-200 rounded-2xl sm:h-[750px] md:h-[850px] lg:h-[900px] overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+
+              {/* Top text block - upper left */}
+              <div className="absolute left-4 top-4 z-20 max-w-[200px] sm:max-w-[220px] md:left-[6%] md:top-8 md:max-w-[260px] lg:left-[10%] lg:top-12 lg:max-w-[280px]">
+                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-1 md:mb-2">
+                  Deposit LP tokens
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600 leading-snug">
+                  Add Uniswap or Balancer positions. Keep earning fees while deposited.
+                </p>
+              </div>
+
+              {/* Mobile/Small curved arrow - from top text to first phone */}
+              <svg className="absolute left-[30%] top-[80px] block sm:left-[28%] md:hidden" width="80" height="100" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M5 5 C 50 5, 75 40, 75 95"
+                  stroke="#9CA3AF"
+                  strokeWidth="1"
+                  fill="none"
+                />
+                <polygon points="68,90 82,98 75,87" fill="#9CA3AF" />
+              </svg>
+
+              {/* iPhone 16 Mockups - overlapping, second phone BEHIND first */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[45%] w-[280px] sm:w-[320px] md:w-[450px] lg:w-[520px] h-[400px] sm:h-[450px] md:h-[580px] lg:h-[650px]">
+                {/* Desktop/Tablet curved arrow - TOP LEFT pointing to first phone */}
+                <svg className="absolute -left-[70px] -top-[50px] hidden md:block" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5 5 C 70 5, 95 40, 95 95"
+                    stroke="#9CA3AF"
+                    strokeWidth="1.2"
+                    fill="none"
+                  />
+                  <polygon points="88,90 102,98 95,87" fill="#9CA3AF" />
+                </svg>
+
+                {/* Desktop/Tablet curved arrow - BOTTOM RIGHT pointing to second phone */}
+                <svg className="absolute -right-[70px] -bottom-[50px] hidden md:block" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M95 95 C 30 95, 5 60, 5 5"
+                    stroke="#9CA3AF"
+                    strokeWidth="1.2"
+                    fill="none"
+                  />
+                  <polygon points="-2,12 12,2 5,15" fill="#9CA3AF" />
+                </svg>
+
+                {/* Second iPhone 16 - BEHIND, lower position, linked to second text (bottom-right) */}
+                <div className="absolute right-0 top-[20%] sm:top-[18%] md:top-[15%] w-[140px] sm:w-[160px] md:w-[220px] lg:w-[250px] rotate-[-4deg] z-10">
+                  {/* iPhone 16 Frame */}
+                  <div className="relative bg-[#1a1a1a] rounded-[32px] sm:rounded-[36px] md:rounded-[46px] lg:rounded-[50px] p-[5px] sm:p-[6px] md:p-[9px] lg:p-[10px] shadow-2xl">
+                    {/* Side button - right */}
+                    <div className="absolute -right-[2px] top-[70px] sm:top-[80px] md:top-[110px] lg:top-[120px] w-[2px] md:w-[3px] h-[40px] sm:h-[50px] md:h-[65px] lg:h-[70px] bg-[#2a2a2a] rounded-r-sm" />
+                    {/* Volume buttons - left */}
+                    <div className="absolute -left-[2px] top-[55px] sm:top-[65px] md:top-[85px] lg:top-[95px] w-[2px] md:w-[3px] h-[20px] sm:h-[25px] md:h-[32px] lg:h-[35px] bg-[#2a2a2a] rounded-l-sm" />
+                    <div className="absolute -left-[2px] top-[85px] sm:top-[100px] md:top-[125px] lg:top-[140px] w-[2px] md:w-[3px] h-[20px] sm:h-[25px] md:h-[32px] lg:h-[35px] bg-[#2a2a2a] rounded-l-sm" />
+                    {/* Action button - left */}
+                    <div className="absolute -left-[2px] top-[38px] sm:top-[45px] md:top-[55px] lg:top-[60px] w-[2px] md:w-[3px] h-[14px] sm:h-[16px] md:h-[20px] lg:h-[22px] bg-[#2a2a2a] rounded-l-sm" />
+
+                    {/* Screen container */}
+                    <div className="relative bg-black rounded-[27px] sm:rounded-[30px] md:rounded-[38px] lg:rounded-[42px] overflow-hidden">
+                      {/* Dynamic Island */}
+                      <div className="absolute top-[5px] sm:top-[6px] md:top-[9px] lg:top-[10px] left-1/2 -translate-x-1/2 w-[50px] sm:w-[60px] md:w-[90px] lg:w-[100px] h-[16px] sm:h-[20px] md:h-[27px] lg:h-[30px] bg-black rounded-full z-10" />
+
+                      {/* Screen placeholder */}
+                      <div className="relative w-full aspect-[9/19.5] bg-gradient-to-b from-gray-100 to-gray-200">
+                        <Image
+                          src="/images/phone-screen-2.png"
+                          alt="Unlock credit line"
+                          fill
+                          className="object-cover"
+                          onError={(e) => {
+                            e.currentTarget.style.display = "none"
+                          }}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-[10px] sm:text-xs md:text-sm">
+                          Screen 2
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* First iPhone 16 - IN FRONT, linked to first text (top-left) */}
+                <div className="absolute left-0 top-0 w-[140px] sm:w-[160px] md:w-[220px] lg:w-[250px] rotate-[6deg] z-20">
+                  {/* iPhone 16 Frame */}
+                  <div className="relative bg-[#1a1a1a] rounded-[32px] sm:rounded-[36px] md:rounded-[46px] lg:rounded-[50px] p-[5px] sm:p-[6px] md:p-[9px] lg:p-[10px] shadow-2xl">
+                    {/* Side button - right */}
+                    <div className="absolute -right-[2px] top-[70px] sm:top-[80px] md:top-[110px] lg:top-[120px] w-[2px] md:w-[3px] h-[40px] sm:h-[50px] md:h-[65px] lg:h-[70px] bg-[#2a2a2a] rounded-r-sm" />
+                    {/* Volume buttons - left */}
+                    <div className="absolute -left-[2px] top-[55px] sm:top-[65px] md:top-[85px] lg:top-[95px] w-[2px] md:w-[3px] h-[20px] sm:h-[25px] md:h-[32px] lg:h-[35px] bg-[#2a2a2a] rounded-l-sm" />
+                    <div className="absolute -left-[2px] top-[85px] sm:top-[100px] md:top-[125px] lg:top-[140px] w-[2px] md:w-[3px] h-[20px] sm:h-[25px] md:h-[32px] lg:h-[35px] bg-[#2a2a2a] rounded-l-sm" />
+                    {/* Action button - left */}
+                    <div className="absolute -left-[2px] top-[38px] sm:top-[45px] md:top-[55px] lg:top-[60px] w-[2px] md:w-[3px] h-[14px] sm:h-[16px] md:h-[20px] lg:h-[22px] bg-[#2a2a2a] rounded-l-sm" />
+
+                    {/* Screen container */}
+                    <div className="relative bg-black rounded-[27px] sm:rounded-[30px] md:rounded-[38px] lg:rounded-[42px] overflow-hidden">
+                      {/* Dynamic Island */}
+                      <div className="absolute top-[5px] sm:top-[6px] md:top-[9px] lg:top-[10px] left-1/2 -translate-x-1/2 w-[50px] sm:w-[60px] md:w-[90px] lg:w-[100px] h-[16px] sm:h-[20px] md:h-[27px] lg:h-[30px] bg-black rounded-full z-10" />
+
+                      {/* Screen placeholder */}
+                      <div className="relative w-full aspect-[9/19.5] bg-gradient-to-b from-gray-100 to-gray-200">
+                        <Image
+                          src="/images/phone-screen-1.png"
+                          alt="Deposit LP tokens"
+                          fill
+                          className="object-cover"
+                          onError={(e) => {
+                            e.currentTarget.style.display = "none"
+                          }}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-[10px] sm:text-xs md:text-sm">
+                          Screen 1
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom text block - lower right */}
+              <div className="absolute right-4 bottom-4 z-20 max-w-[200px] sm:max-w-[220px] text-right md:right-[6%] md:bottom-8 md:max-w-[260px] lg:right-[10%] lg:bottom-12 lg:max-w-[280px]">
+                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-1 md:mb-2">
+                  Unlock credit line
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-600 leading-snug">
+                  Borrow instantly via Aave v4. Repay anytime, collect fees freely.
+                </p>
+              </div>
+
+              {/* Mobile/Small curved arrow - from bottom text to second phone */}
+              <svg className="absolute right-[30%] bottom-[70px] block sm:right-[28%] md:hidden" width="80" height="100" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M75 95 C 25 95, 5 60, 5 5"
+                  stroke="#9CA3AF"
+                  strokeWidth="1"
+                  fill="none"
+                />
+                <polygon points="-2,10 12,2 5,13" fill="#9CA3AF" />
+              </svg>
             </div>
           </section>
 
