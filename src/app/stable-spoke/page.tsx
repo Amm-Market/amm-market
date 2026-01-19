@@ -88,7 +88,7 @@ export default function StableSpokePage() {
                   <h3 className="text-lg font-semibold">Concentrated Stable Curve</h3>
                 </div>
                 <p className="text-gray-600">
-                  Custom bonding curve optimized for assets that trade at 1:1 parity, enabling trades with 
+                  Custom bonding curve optimized for assets that trade at 1:1 parity, enabling trades with
                   near-zero price impact even for large volumes.
                 </p>
               </div>
@@ -104,7 +104,7 @@ export default function StableSpokePage() {
                   <h3 className="text-lg font-semibold">Auto-Rebalancing</h3>
                 </div>
                 <p className="text-gray-600">
-                  Intelligent rebalancing mechanism that maintains optimal pool ratios and automatically 
+                  Intelligent rebalancing mechanism that maintains optimal pool ratios and automatically
                   arbitrages depegging events for LP profit.
                 </p>
               </div>
@@ -121,7 +121,7 @@ export default function StableSpokePage() {
                   <h3 className="text-lg font-semibold">Multi-Asset Pools</h3>
                 </div>
                 <p className="text-gray-600">
-                  Support for pools with 2-8 stablecoins, enabling efficient routing and reduced 
+                  Support for pools with 2-8 stablecoins, enabling efficient routing and reduced
                   transaction costs for complex stable swaps.
                 </p>
               </div>

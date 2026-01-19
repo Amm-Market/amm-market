@@ -44,7 +44,7 @@ export default function Header() {
   }, [lastScrollY])
 
   // Determine active page from pathname
-  const activePage = pathname?.startsWith("/products")
+  const activePage = pathname?.startsWith("/lightpaper") || pathname?.startsWith("/open-spoke") || pathname?.startsWith("/stable-spoke") || pathname?.startsWith("/webapp")
     ? "products"
     : pathname?.startsWith("/developers")
       ? "developers"
@@ -127,7 +127,7 @@ export default function Header() {
                   {/* Left Column - Menu Items */}
                   <div className="flex-1">
                     <Link
-                      href="/products/open-spoke"
+                      href="/open-spoke"
                       className="flex relative gap-4 items-center justify-between px-4 pr-12 py-2.5 text-base text-gray-900 hover:bg-black/5 transition-all rounded-lg group"
                       onClick={() => setProductsMenuOpen(false)}
                     >
@@ -157,7 +157,7 @@ export default function Header() {
                     </Link>
 
                     <Link
-                      href="/products/stable-spoke"
+                      href="/stable-spoke"
                       className="flex relative gap-4 items-center justify-between px-4 pr-12 py-2.5 text-base text-gray-900 hover:bg-black/5 transition-all rounded-lg group"
                       onClick={() => setProductsMenuOpen(false)}
                     >
@@ -187,7 +187,7 @@ export default function Header() {
                     </Link>
 
                     <Link
-                      href="/products/webapp"
+                      href="/webapp"
                       className="flex relative gap-4 items-center justify-between px-4 pr-12 py-2.5 text-base text-gray-900 hover:bg-black/5 transition-all rounded-lg group"
                       onClick={() => setProductsMenuOpen(false)}
                     >
@@ -220,7 +220,7 @@ export default function Header() {
                   {/* Right Column - Featured Content */}
                   <div className="flex-1 flex">
                     <Link
-                      href="/products"
+                      href="/lightpaper"
                       className="block p-4 bg-white rounded-lg hover:bg-black/5 transition-colors group flex-1"
                       onClick={() => setProductsMenuOpen(false)}
                     >
@@ -238,18 +238,20 @@ export default function Header() {
                             strokeLinejoin="round"
                             className="text-blue-600"
                           >
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-                            <line x1="12" y1="22.08" x2="12" y2="12" />
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                            <polyline points="10 9 9 9 8 9" />
                           </svg>
                         </div>
                       </div>
                       <div className="flex flex-col gap-1">
                         <div className="font-medium text-gray-900 text-base leading-tight">
-                          All Products
+                          Lightpaper
                         </div>
                         <div className="text-sm text-gray-500 group-hover:text-gray-900 transition">
-                          Explore our complete DeFi suite
+                          Learn in depth about the platform
                         </div>
                       </div>
                     </Link>
@@ -652,7 +654,7 @@ export default function Header() {
               >
                 <div className="pl-4 py-2 flex flex-col gap-1">
                   <Link
-                    href="/products/open-spoke"
+                    href="/open-spoke"
                     className="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-black/5 rounded-lg transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -678,7 +680,7 @@ export default function Header() {
                     </div>
                   </Link>
                   <Link
-                    href="/products/stable-spoke"
+                    href="/stable-spoke"
                     className="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-black/5 rounded-lg transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -704,7 +706,7 @@ export default function Header() {
                     </div>
                   </Link>
                   <Link
-                    href="/products/webapp"
+                    href="/webapp"
                     className="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-black/5 rounded-lg transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -730,7 +732,7 @@ export default function Header() {
                     </div>
                   </Link>
                   <Link
-                    href="/products"
+                    href="/lightpaper"
                     className="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-black/5 rounded-lg transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -747,12 +749,14 @@ export default function Header() {
                         strokeLinejoin="round"
                         className="text-gray-600"
                       >
-                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
                       </svg>
                     </div>
                     <div>
-                      <span className="block">All Products</span>
-                      <span className="text-xs text-gray-400">View all</span>
+                      <span className="block">Lightpaper</span>
+                      <span className="text-xs text-gray-400">Learn more</span>
                     </div>
                   </Link>
                 </div>

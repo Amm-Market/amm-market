@@ -18,8 +18,8 @@ export default function Footer() {
           <div className="flex flex-col text-sm font-medium text-gray-900 gap-4">
             <span>Products</span>
             <div className="flex flex-col opacity-70 gap-2">
-              <Link href="/products" className="hover:text-blue-600 transition-colors">
-                Products
+              <Link href="/lightpaper" className="hover:text-blue-600 transition-colors">
+                Lightpaper
               </Link>
               <Link href="/early-access" className="hover:text-blue-600 transition-colors">
                 Early Access
@@ -81,10 +81,10 @@ export default function Footer() {
               </Link>
             </div>
             <div className="flex items-center text-xs text-gray-500 gap-2">
-              <Link href="/developers/security/legal" className="hover:text-blue-600 transition-colors">
+              <Link href="/privacy" className="hover:text-blue-600 transition-colors">
                 Privacy
               </Link>
-              <Link href="/developers/security/terms" className="hover:text-blue-600 transition-colors">
+              <Link href="/terms" className="hover:text-blue-600 transition-colors">
                 Terms
               </Link>
             </div>
