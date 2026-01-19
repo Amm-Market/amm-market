@@ -423,6 +423,57 @@ export default function HeroSection() {
         <div className="border-t border-gray-100"></div>
       </div>
 
+      {/* How Borrowing Works Section */}
+      <div className="mx-auto max-w-5xl px-6 lg:px-0 py-16 md:py-24">
+        <div className="flex flex-col gap-6">
+          <div className="flex max-w-[600px] flex-col gap-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+              How borrowing works
+            </h2>
+            <p className="text-sm md:text-base text-gray-600">
+              Get liquidity from your LP positions in three simple steps.
+            </p>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 md:mt-16">
+          {/* Step 1 */}
+          <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
+            <span className="text-5xl md:text-6xl font-bold text-gray-300">1</span>
+            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
+              Deposit your LP position
+            </h3>
+            <p className="text-sm md:text-base text-gray-600">
+              Deposit your LP tokens from any supported DEX. Your position stays active and continues earning trading fees.
+            </p>
+          </div>
+          {/* Step 2 */}
+          <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
+            <span className="text-5xl md:text-6xl font-bold text-gray-300">2</span>
+            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
+              Receive your loan instantly
+            </h3>
+            <p className="text-sm md:text-base text-gray-600">
+              USDC will be deposited into your wallet. Borrow up to 80% of your LP value based on pool risk parameters.
+            </p>
+          </div>
+          {/* Step 3 */}
+          <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
+            <span className="text-5xl md:text-6xl font-bold text-gray-300">3</span>
+            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
+              Repay on your timeline
+            </h3>
+            <p className="text-sm md:text-base text-gray-600">
+              There are no repayment schedules or deadlines. Your loan-to-value ratio must remain under the liquidation threshold to avoid automatic liquidation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="mx-auto max-w-5xl px-6 lg:px-0">
+        <div className="border-t border-gray-100"></div>
+      </div>
+
       {/* Dashboard Section - Tabbed Video */}
       <div id="dashboard" className="mx-auto max-w-5xl px-6 lg:px-0 py-16 md:py-24">
         {/* Header Row - Title left, Tabs right on lg+ */}
@@ -762,12 +813,12 @@ export default function HeroSection() {
             <div className="flex flex-col lg:flex-row justify-start gap-y-10 gap-x-5 mt-10 md:mt-16">
               {/* Card 1 - Borrow Amount */}
               <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-                <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-[radial-gradient(circle_at_55%_130%,rgba(59,130,246,0.3)_0%,rgba(255,255,255,1)_56%)]">
-                  <div className="absolute top-[50px] left-1/2 -translate-x-1/2 px-8 py-5 text-center text-5xl font-bold rounded-full bg-blue-500 text-white">
+                <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-gray-50">
+                  <div className="absolute top-[50px] left-1/2 animate-float px-8 py-5 text-center text-5xl font-bold rounded-full bg-blue-500 text-white">
                     80%
                   </div>
                   <div className="absolute bottom-[46px] text-sm font-medium left-1/2 -translate-x-1/2">
-                    <span className="flex gap-2 items-center">
+                    <span className="flex gap-2 items-center text-blue-600">
                       LTV Ratio
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" fill="currentColor" viewBox="0 0 16 17" className="w-5 h-5">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.333 8.783h9.334m0 0-4-4m4 4-4 4"></path>
@@ -778,9 +829,9 @@ export default function HeroSection() {
                   <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[394px]">
                     <div className="relative">
                       {[50, 55, 60, 65, 70, 75, 80].map((val, idx) => (
-                        <div key={val} className="absolute top-0 left-0 flex justify-start w-full" style={{ rotate: `${18 + idx * 16}deg` }}>
+                        <div key={val} className="absolute top-0 left-0 flex justify-start w-full animate-pulse-soft" style={{ rotate: `${18 + idx * 16}deg`, animationDelay: `${idx * 0.1}s` }}>
                           <span className="text-[10px] font-semibold w-8 text-right">{val}</span>
-                          <div className="bg-blue-500 w-[30px] h-[14px] rounded-full ml-1.5 mt-1"></div>
+                          <div className="bg-blue-400 w-[30px] h-[14px] rounded-full ml-1.5 mt-1"></div>
                         </div>
                       ))}
                     </div>
@@ -792,8 +843,8 @@ export default function HeroSection() {
 
               {/* Card 2 - Earnings */}
               <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-                <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-[radial-gradient(circle_at_56%_130%,rgba(59,130,246,0.3)_0%,rgba(255,255,255,1)_56%)]">
-                  <div className="absolute top-[50px] left-1/2 -translate-x-1/2 w-[243px] h-[240px] bg-white rounded-[10px] border border-gray-200">
+                <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-gray-50">
+                  <div className="absolute top-[50px] left-1/2 animate-float w-[243px] h-[240px] bg-white rounded-[10px] border border-gray-200">
                     <div className="flex justify-center items-center gap-1 px-2 py-1 w-fit mx-auto mt-9 rounded-full bg-blue-500 text-white">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" className="w-4 h-4">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"></path>
@@ -801,21 +852,21 @@ export default function HeroSection() {
                       <span className="text-[10px] font-semibold">Trading Fees</span>
                     </div>
                     <div className="flex justify-center mt-4">
-                      <span className="text-5xl font-bold">+12.4%</span>
+                      <span className="text-5xl font-bold text-blue-600 animate-pulse-soft">+12.4%</span>
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-4">
                       <span className="text-gray-500 text-xs">APY</span>
-                      <div className="w-10 h-0.5 rounded bg-blue-500"></div>
-                      <div className="flex items-center justify-center w-4 h-4 bg-blue-500 rounded-full">
+                      <div className="w-10 h-0.5 rounded bg-blue-300"></div>
+                      <div className="flex items-center justify-center w-4 h-4 bg-blue-500 rounded-full animate-pulse">
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 16 16" className="fill-white text-white">
                           <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="m3 9 7-7c.15-.15.4.01.33.21L8.77 6.4a.2.2 0 0 0 .19.27h3.9a.2.2 0 0 1 .14.34l-7 7c-.15.15-.4-.01-.33-.21l1.58-4.2a.2.2 0 0 0-.19-.27H3.15a.2.2 0 0 1-.14-.34"></path>
                         </svg>
                       </div>
-                      <div className="w-3.5 h-0.5 rounded bg-blue-500"></div>
+                      <div className="w-3.5 h-0.5 rounded bg-blue-300"></div>
                       <span className="text-gray-500 text-xs">Earned</span>
                     </div>
-                    <div className="mx-auto mt-6 w-36 border px-4 py-1 border-gray-300 rounded-full text-center">
-                      <span className="text-sm font-medium">Keep Earning</span>
+                    <div className="mx-auto mt-6 w-36 border px-4 py-1 border-blue-300 rounded-full text-center">
+                      <span className="text-sm font-medium text-blue-600">Keep Earning</span>
                     </div>
                   </div>
                 </div>
@@ -824,9 +875,9 @@ export default function HeroSection() {
               </div>
               {/* Card 3 - Use Cases */}
               <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-                <div className="relative overflow-hidden rounded-[20px] w-full h-[340px] bg-[radial-gradient(circle_at_55%_130%,rgba(59,130,246,0.3)_0%,rgba(255,255,255,1)_55%)]">
+                <div className="relative overflow-hidden rounded-[20px] w-full h-[340px] bg-gray-50">
                   <div className="absolute top-[50px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
-                    <div className="flex gap-3 w-[280px] px-4 py-3 bg-white rounded-lg border border-gray-200 items-center">
+                    <div className="flex gap-3 w-[280px] px-4 py-3 bg-white rounded-lg border border-gray-200 items-center animate-float-simple" style={{ animationDelay: '0s' }}>
                       <div className="flex items-center justify-center w-11 h-11">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
                           <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v20m5-17H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"></path>
@@ -834,7 +885,7 @@ export default function HeroSection() {
                       </div>
                       <span className="text-sm font-medium">Leverage trading</span>
                     </div>
-                    <div className="flex gap-3 w-[300px] px-4 py-3 bg-blue-500 text-white rounded-lg shadow-sm items-center">
+                    <div className="flex gap-3 w-[300px] px-4 py-3 bg-blue-500 text-white rounded-lg shadow-sm items-center animate-float-simple" style={{ animationDelay: '0.15s' }}>
                       <div className="flex items-center justify-center w-11 h-11">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
                           <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"></path>
@@ -842,7 +893,7 @@ export default function HeroSection() {
                       </div>
                       <span className="text-sm font-medium">Yield farming</span>
                     </div>
-                    <div className="flex gap-3 w-[280px] px-4 py-3 bg-white rounded-lg border border-gray-200 items-center">
+                    <div className="flex gap-3 w-[280px] px-4 py-3 bg-white rounded-lg border border-gray-200 items-center animate-float-simple" style={{ animationDelay: '0.3s' }}>
                       <div className="flex items-center justify-center w-11 h-11">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
                           <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M22 10v7.4a1.6 1.6 0 0 1-1.6 1.6H3.6A1.6 1.6 0 0 1 2 17.4V10m20 0V6.6A1.6 1.6 0 0 0 20.4 5H3.6A1.6 1.6 0 0 0 2 6.6V10m20 0H2m4 5h3"></path>
@@ -850,7 +901,7 @@ export default function HeroSection() {
                       </div>
                       <span className="text-sm font-medium">Pay off debt</span>
                     </div>
-                    <div className="flex gap-3 w-[280px] px-4 py-3 bg-white rounded-lg border border-gray-200 items-center">
+                    <div className="flex gap-3 w-[280px] px-4 py-3 bg-white rounded-lg border border-gray-200 items-center animate-float-simple" style={{ animationDelay: '0.45s' }}>
                       <div className="flex items-center justify-center w-11 h-11">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
                           <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 3v18h18M7 16l4-4 4 4 5-6"></path>
@@ -881,18 +932,18 @@ export default function HeroSection() {
           <div className="flex flex-col lg:flex-row justify-start gap-y-10 gap-x-5 mt-10 md:mt-16">
             {/* Card 1 - LP-aware risk models - Concentric Rings */}
             <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-              <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-[radial-gradient(circle_at_55%_130%,rgba(59,130,246,0.3)_0%,rgba(255,255,255,1)_56%)]">
+              <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-gray-50">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Concentric rings */}
                   <div className="relative w-[180px] h-[180px]">
                     {/* Outer ring */}
-                    <div className="absolute inset-0 rounded-full border-2 border-blue-200"></div>
+                    <div className="absolute inset-0 rounded-full border-2 border-blue-200 animate-spin-slow"></div>
                     {/* Middle ring */}
-                    <div className="absolute inset-[20px] rounded-full border-2 border-blue-300"></div>
+                    <div className="absolute inset-[20px] rounded-full border-2 border-blue-300 animate-spin-slow-reverse"></div>
                     {/* Inner ring */}
-                    <div className="absolute inset-[40px] rounded-full border-2 border-blue-400"></div>
+                    <div className="absolute inset-[40px] rounded-full border-2 border-blue-400 animate-spin-slow"></div>
                     {/* Center shield icon */}
-                    <div className="absolute inset-[55px] rounded-full bg-blue-500 flex items-center justify-center">
+                    <div className="absolute inset-[55px] rounded-full bg-blue-500 flex items-center justify-center animate-pulse-soft">
                       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-white">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4"></path>
@@ -904,7 +955,7 @@ export default function HeroSection() {
                 <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3 px-4">
                   <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
                     <span className="text-[10px] text-gray-500 uppercase tracking-wider">Pool Depth</span>
-                    <span className="text-sm font-semibold text-gray-900">$24.5M</span>
+                    <span className="text-sm font-semibold text-blue-600">$24.5M</span>
                   </div>
                   <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
                     <span className="text-[10px] text-gray-500 uppercase tracking-wider">Volatility</span>
@@ -922,16 +973,16 @@ export default function HeroSection() {
 
             {/* Card 2 - Price-range aware oracles - Chart with range bands */}
             <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-              <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-[radial-gradient(circle_at_56%_130%,rgba(59,130,246,0.3)_0%,rgba(255,255,255,1)_56%)]">
+              <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-gray-50">
                 <div className="absolute top-[40px] left-1/2 -translate-x-1/2 w-[260px]">
                   {/* LIVE badge */}
-                  <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-green-100 border border-green-200 w-fit mx-auto mb-3">
-                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                    <span className="text-[10px] font-semibold text-green-700 uppercase tracking-wider">Live</span>
+                  <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-blue-100 border border-blue-200 w-fit mx-auto mb-3">
+                    <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
+                    <span className="text-[10px] font-semibold text-blue-700 uppercase tracking-wider">Live</span>
                   </div>
                   {/* Price display */}
                   <div className="text-center mb-3">
-                    <span className="text-3xl font-bold text-gray-900">$1,847.52</span>
+                    <span className="text-3xl font-bold text-blue-600 animate-pulse-soft">$1,847.52</span>
                     <div className="text-xs text-gray-500 mt-1">ETH / USD</div>
                   </div>
                   {/* Chart area */}
@@ -940,9 +991,9 @@ export default function HeroSection() {
                     <div className="absolute top-[30%] left-2 right-2 h-[40%] bg-blue-50 border-y border-blue-200"></div>
                     {/* Stylized line chart */}
                     <svg className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)]" viewBox="0 0 300 80" preserveAspectRatio="none">
-                      <path d="M0,60 Q30,50 60,55 T120,35 T180,40 T240,25 T300,30" fill="none" stroke="#3b82f6" strokeWidth="2" />
+                      <path className="animate-draw-line" d="M0,60 Q30,50 60,55 T120,35 T180,40 T240,25 T300,30" fill="none" stroke="#3b82f6" strokeWidth="2" />
                       {/* Current price dot */}
-                      <circle cx="240" cy="25" r="5" fill="#3b82f6" />
+                      <circle cx="240" cy="25" r="5" fill="#3b82f6" className="animate-pulse" />
                       <circle cx="240" cy="25" r="2" fill="white" />
                     </svg>
                   </div>
@@ -962,7 +1013,7 @@ export default function HeroSection() {
 
             {/* Card 3 - Per-position health checks - Circular gauge */}
             <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-              <div className="relative overflow-hidden rounded-[20px] w-full h-[340px] bg-[radial-gradient(circle_at_55%_130%,rgba(59,130,246,0.3)_0%,rgba(255,255,255,1)_55%)]">
+              <div className="relative overflow-hidden rounded-[20px] w-full h-[340px] bg-gray-50">
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   {/* Circular gauge */}
                   <div className="relative w-[160px] h-[160px]">
@@ -974,7 +1025,7 @@ export default function HeroSection() {
                     </svg>
                     {/* Center content */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <span className="text-4xl font-bold text-gray-900">92%</span>
+                      <span className="text-4xl font-bold text-blue-600 animate-pulse-soft">92%</span>
                       <span className="text-xs text-green-600 font-medium">Healthy</span>
                     </div>
                   </div>
