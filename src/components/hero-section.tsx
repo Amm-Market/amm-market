@@ -119,12 +119,27 @@ const testimonials = [
   }
 ]
 
+// Tab configuration for dashboard section
+const dashboardTabs = [
+  { id: 'deposit' as const, label: 'Deposit', video: 'https://cdn-front.freepik.com/home/anon-rvmp/spaces/spaces_op.webm' },
+  { id: 'borrow' as const, label: 'Borrow', video: 'https://cdn-front.freepik.com/home/anon-rvmp/spaces/spaces_op.webm' },
+  { id: 'monitor' as const, label: 'Monitor', video: 'https://cdn-front.freepik.com/home/anon-rvmp/spaces/spaces_op.webm' },
+  { id: 'claim' as const, label: 'Claim Fees', video: 'https://cdn-front.freepik.com/home/anon-rvmp/spaces/spaces_op.webm' },
+]
+
 export default function HeroSection() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const [progress, setProgress] = useState(0)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [activeTab, setActiveTab] = useState<'deposit' | 'borrow' | 'monitor' | 'claim'>('deposit')
+
+  // Video control state
+  const [isPlaying, setIsPlaying] = useState(true)
+  const [isMuted, setIsMuted] = useState(true)
+  const [volume, setVolume] = useState(1)
+  const [currentTime, setCurrentTime] = useState(0)
+  const [duration, setDuration] = useState(0)
 
   const TESTIMONIAL_DURATION = 6000 // 6 seconds per testimonial
 
@@ -158,6 +173,69 @@ export default function HeroSection() {
       setCurrentTestimonial(idx)
       setIsAnimating(false)
     }, 300)
+  }
+
+  // Video control handlers
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause()
+      } else {
+        videoRef.current.play()
+      }
+      setIsPlaying(!isPlaying)
+    }
+  }
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted
+      setIsMuted(!isMuted)
+    }
+  }
+
+  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = parseFloat(e.target.value)
+    setVolume(newVolume)
+    if (videoRef.current) {
+      videoRef.current.volume = newVolume
+      if (newVolume === 0) {
+        setIsMuted(true)
+        videoRef.current.muted = true
+      } else if (isMuted) {
+        setIsMuted(false)
+        videoRef.current.muted = false
+      }
+    }
+  }
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      setCurrentTime(videoRef.current.currentTime)
+    }
+  }
+
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+      setDuration(videoRef.current.duration)
+    }
+  }
+
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (videoRef.current && duration > 0) {
+      const rect = e.currentTarget.getBoundingClientRect()
+      const clickX = e.clientX - rect.left
+      const percentage = clickX / rect.width
+      const newTime = percentage * duration
+      videoRef.current.currentTime = newTime
+      setCurrentTime(newTime)
+    }
+  }
+
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60)
+    const seconds = Math.floor(time % 60)
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`
   }
 
   const testimonial = testimonials[currentTestimonial]
@@ -340,145 +418,205 @@ export default function HeroSection() {
         </h2>
       </div>
 
-      {/* See It In Action - Video Section */}
-      <div className="mx-auto max-w-5xl px-6 lg:px-0 py-16 md:py-24">
-        <div className="flex flex-col gap-6">
-          <div className="flex max-w-[600px] flex-col gap-2">
+      {/* Divider */}
+      <div className="mx-auto max-w-5xl px-6 lg:px-0">
+        <div className="border-t border-gray-100"></div>
+      </div>
+
+      {/* Dashboard Section - Tabbed Video */}
+      <div id="dashboard" className="mx-auto max-w-5xl px-6 lg:px-0 py-16 md:py-24">
+        {/* Header Row - Title left, Tabs right on lg+ */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8 lg:mb-12">
+          <div className="flex flex-col gap-2">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
               See It In Action
             </h2>
             <p className="text-sm md:text-base text-gray-600">
-              Watch how Amm Market turns your LP positions into borrowing power.
+              Manage your LP positions without leaving the dashboard.
             </p>
+          </div>
+
+          {/* Tab Buttons - Desktop (lg+) */}
+          <div className="hidden lg:flex gap-2" role="tablist">
+            {dashboardTabs.map((tab) => (
+              <button
+                key={tab.id}
+                aria-selected={activeTab === tab.id}
+                role="tab"
+                onClick={() => setActiveTab(tab.id)}
+                className={`py-2 px-6 border rounded-full bg-white text-sm transition-all hover:border-gray-400 hover:text-gray-900 whitespace-nowrap ${
+                  activeTab === tab.id
+                    ? 'opacity-100 border-gray-900 text-gray-900 font-medium'
+                    : 'opacity-80 border-gray-300 text-gray-600'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Video Player */}
-        <div className="relative my-12">
-          <div className="flex flex-col gap-2 p-3 rounded-lg bg-neutral-900">
-            <div className="group relative overflow-hidden rounded">
-              {!isPlaying && (
+        {/* Tab Buttons - Mobile */}
+        <div className="flex lg:hidden justify-center gap-1.5 sm:gap-2 mb-6" role="tablist">
+          {dashboardTabs.map((tab) => (
+            <button
+              key={`mobile-${tab.id}`}
+              aria-selected={activeTab === tab.id}
+              role="tab"
+              onClick={() => setActiveTab(tab.id)}
+              className={`py-1.5 px-2.5 sm:py-2 sm:px-5 border rounded-full bg-white text-xs sm:text-sm transition-all hover:border-gray-400 hover:text-gray-900 whitespace-nowrap ${
+                activeTab === tab.id
+                  ? 'opacity-100 border-gray-900 text-gray-900 font-medium'
+                  : 'opacity-80 border-gray-300 text-gray-600'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="relative flex flex-col gap-6 md:gap-8 items-center">
+          {/* Video Container */}
+          <div className="w-full aspect-video overflow-hidden rounded-xl md:rounded-2xl bg-black">
+              <div className="relative w-full max-w-full h-full group">
+                <video
+                  key={activeTab}
+                  ref={videoRef}
+                  className="relative z-10 block w-full h-full object-cover"
+                  height="100%"
+                  width="100%"
+                  loop
+                  autoPlay
+                  muted={isMuted}
+                  playsInline
+                  src={dashboardTabs.find((tab) => tab.id === activeTab)?.video}
+                  onTimeUpdate={handleTimeUpdate}
+                  onLoadedMetadata={handleLoadedMetadata}
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                />
+
+                {/* Center Play/Pause Overlay */}
                 <div
-                  className="absolute inset-0 z-10 flex items-center justify-center bg-black/30 cursor-pointer"
-                  onClick={() => videoRef.current?.play()}
+                  className="absolute inset-0 z-20 flex items-center justify-center cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  onClick={togglePlayPause}
                 >
-                  <div className="bg-white/80 backdrop-blur rounded-full p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
-                    </svg>
+                  <div className="bg-black/40 backdrop-blur-sm rounded-full p-4 hover:bg-black/60 transition-colors">
+                    {isPlaying ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="6" y="4" width="4" height="16"></rect>
+                        <rect x="14" y="4" width="4" height="16"></rect>
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                      </svg>
+                    )}
                   </div>
                 </div>
-              )}
-              <video
-                ref={videoRef}
-                className="w-full aspect-video"
-                src="https://cdn-front.freepik.com/home/anon-rvmp/spaces/spaces_op.webm"
-                loop
-                muted
-                playsInline
-                onPlay={() => setIsPlaying(true)}
-                onPause={() => setIsPlaying(false)}
-              />
-              {/* Hover overlay */}
-              <div className="absolute top-0 left-0 w-full h-full group-hover:opacity-100 opacity-0 transition-opacity duration-300 bg-gradient-to-t from-black/50 via-transparent to-black/50 pointer-events-none">
-                <div className="absolute top-0 left-0 p-4 text-white group-hover:translate-y-0 -translate-y-2 transition-transform duration-300">Amm Market features</div>
-                <div className="absolute bottom-0 left-0 p-4 text-2xl text-white group-hover:translate-y-0 translate-y-2 transition-transform duration-300 w-full flex flex-row gap-4 items-center">
-                  <div className="cursor-pointer hover:bg-white/20 bg-transparent p-2 rounded transition-colors duration-300 pointer-events-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
-                    </svg>
-                  </div>
-                  <div className="flex flex-row gap-2 w-full">
-                    {[18, 17, 17, 30, 17, 17, 13].map((width, idx) => (
-                      <div key={idx} className="h-[6px] rounded-lg bg-neutral-500 overflow-hidden relative cursor-pointer hover:opacity-100 opacity-50 transition-opacity duration-300 pointer-events-auto" style={{ width: `${width}%` }}>
-                        <div className="absolute top-0 left-0 w-full h-full bg-white rounded-lg origin-left scale-x-0"></div>
+
+                {/* Bottom Control Bar */}
+                <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/80 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex flex-col gap-2">
+                    {/* Timeline/Progress Bar */}
+                    <div
+                      className="w-full h-1.5 bg-white/30 rounded-full cursor-pointer group/timeline"
+                      onClick={handleSeek}
+                    >
+                      <div
+                        className="h-full bg-blue-500 rounded-full relative"
+                        style={{ width: duration > 0 ? `${(currentTime / duration) * 100}%` : '0%' }}
+                      >
+                        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 group-hover/timeline:opacity-100 transition-opacity"></div>
                       </div>
-                    ))}
-                  </div>
-                  <div className="cursor-pointer hover:bg-white/20 bg-transparent p-2 rounded transition-colors duration-300 pointer-events-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
-                      <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
-                      <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
-                      <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
-                      <rect width="10" height="8" x="7" y="8" rx="1"></rect>
-                    </svg>
+                    </div>
+
+                    {/* Controls Row */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        {/* Play/Pause Button */}
+                        <button
+                          onClick={togglePlayPause}
+                          className="text-white hover:text-blue-400 transition-colors"
+                        >
+                          {isPlaying ? (
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <rect x="6" y="4" width="4" height="16"></rect>
+                              <rect x="14" y="4" width="4" height="16"></rect>
+                            </svg>
+                          ) : (
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                          )}
+                        </button>
+
+                        {/* Time Display */}
+                        <span className="text-white text-xs font-mono">
+                          {formatTime(currentTime)} / {formatTime(duration)}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-3">
+                        {/* Volume Controls */}
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={toggleMute}
+                            className="text-white hover:text-blue-400 transition-colors"
+                          >
+                            {isMuted || volume === 0 ? (
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <line x1="23" y1="9" x2="17" y2="15"></line>
+                                <line x1="17" y1="9" x2="23" y2="15"></line>
+                              </svg>
+                            ) : volume < 0.5 ? (
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                              </svg>
+                            ) : (
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                              </svg>
+                            )}
+                          </button>
+                          <input
+                            type="range"
+                            min="0"
+                            max="1"
+                            step="0.1"
+                            value={isMuted ? 0 : volume}
+                            onChange={handleVolumeChange}
+                            className="w-16 h-1 bg-white/30 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer"
+                          />
+                        </div>
+
+                        {/* Fullscreen Button */}
+                        <button
+                          onClick={() => videoRef.current?.requestFullscreen()}
+                          className="text-white hover:text-blue-400 transition-colors"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
+                            <path d="M21 8V5a2 2 0 0 0-2-2h-3"></path>
+                            <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
+                            <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            {/* Feature tags / Video chapters */}
-            <div className="flex flex-row gap-2 lg:whitespace-nowrap overflow-x-auto">
-              {[
-                { icon: "layers", label: "LP Collateral", time: 0 },
-                { icon: "git-pull-request", label: "Borrow", time: 4.3 },
-                { icon: "shield", label: "Risk Models", time: 8.6 },
-                { icon: "activity", label: "Oracles", time: 12.9 },
-                { icon: "heart-pulse", label: "Health Checks", time: 17.2 },
-                { icon: "git-merge", label: "Multi-DEX", time: 21.5 },
-                { icon: "zap", label: "Instant Access", time: 25.8 }
-              ].map((chapter, idx) => (
-                <div
-                  key={idx}
-                  className="group flex flex-col lg:flex-row gap-1 lg:gap-2 bg-black w-full rounded px-2 py-1 md:px-2 md:py-2 hover:bg-white hover:text-black transition-all duration-300 cursor-pointer lg:items-center text-neutral-100"
-                  onClick={() => {
-                    if (videoRef.current) {
-                      videoRef.current.currentTime = chapter.time
-                      videoRef.current.play()
-                    }
-                  }}
-                >
-                  <div className="[&>svg]:sm:size-4 [&>svg]:size-3 text-neutral-500">
-                    {chapter.icon === "layers" && (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path>
-                        <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
-                        <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path>
-                      </svg>
-                    )}
-                    {chapter.icon === "git-pull-request" && (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="18" cy="18" r="3"></circle>
-                        <circle cx="6" cy="6" r="3"></circle>
-                        <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
-                        <line x1="6" x2="6" y1="9" y2="21"></line>
-                      </svg>
-                    )}
-                    {chapter.icon === "shield" && (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                      </svg>
-                    )}
-                    {chapter.icon === "activity" && (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                      </svg>
-                    )}
-                    {chapter.icon === "heart-pulse" && (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                        <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"></path>
-                      </svg>
-                    )}
-                    {chapter.icon === "git-merge" && (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="18" cy="18" r="3"></circle>
-                        <circle cx="6" cy="6" r="3"></circle>
-                        <path d="M6 21V9a9 9 0 0 0 9 9"></path>
-                      </svg>
-                    )}
-                    {chapter.icon === "zap" && (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                      </svg>
-                    )}
-                  </div>
-                  <div className="text-xs leading-none group-hover:text-gray-600 transition-colors duration-300">{chapter.label}</div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Divider */}
+      <div className="mx-auto max-w-5xl px-6 lg:px-0">
+        <div className="border-t border-gray-100"></div>
       </div>
 
       {/* Existing Content */}
