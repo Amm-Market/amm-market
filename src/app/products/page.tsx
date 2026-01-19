@@ -6,22 +6,24 @@ export default function ProductsPage() {
     <div className="flex flex-col min-h-screen bg-white">
 
       <main className="flex-1 pt-8 pb-16">
-        <div className="max-w-[650px] mx-auto px-4 sm:px-6 space-y-16">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 space-y-16">
           {/* About Section */}
           <section>
-            <h1 className="text-4xl font-bold mb-4">Say hello to Dex Mini</h1>
-            <p className="text-gray-700 mb-4">
-              Dex Mini Protocol is building a comprehensive suite of DeFi tools, seamlessly integrating advanced
-              liquidity management, versatile lending markets, and strategic leverage opportunities.
-            </p>
+            <div className="max-w-[650px]">
+              <h1 className="text-4xl font-bold mb-4">Say hello to Dex Mini</h1>
+              <p className="text-gray-700 mb-4">
+                Dex Mini Protocol is building a comprehensive suite of DeFi tools, seamlessly integrating advanced
+                liquidity management, versatile lending markets, and strategic leverage opportunities.
+              </p>
 
-            <p className="text-gray-700 mb-4">
-              Our groundbreaking "Money Legos" approach leverages multiple Uniswap v4 hooks as the core liquidity
-              backbone, integrates Across Bridge for seamless interoperability, and employs EigenLayer for advanced risk
-              analytics and dynamic risk management. This powerful combination creates a completely new unimaginary DeFi
-              platform that reduces risk, and enhances capital efficiency—making Dex Mini the clear choice for both new
-              beginner retail and institutional investors seeking optimized returns and sustainable yield generation.
-            </p>
+              <p className="text-gray-700 mb-4">
+                Our groundbreaking "Money Legos" approach leverages multiple Uniswap v4 hooks as the core liquidity
+                backbone, integrates Across Bridge for seamless interoperability, and employs EigenLayer for advanced risk
+                analytics and dynamic risk management. This powerful combination creates a completely new unimaginary DeFi
+                platform that reduces risk, and enhances capital efficiency—making Dex Mini the clear choice for both new
+                beginner retail and institutional investors seeking optimized returns and sustainable yield generation.
+              </p>
+            </div>
 
             <div className="my-10">
               <h3 className="text-sm text-gray-500 mb-4">Powered By</h3>
@@ -43,11 +45,13 @@ export default function ProductsPage() {
             </div>
           </section>
 
-          {/* Medical Imaging Section */}
+          {/* Flagship Products Section */}
           <section>
-            <h2 className="text-4xl font-bold mb-6">Flagship Products</h2>
+            <div className="max-w-[650px] mb-8">
+              <h2 className="text-4xl font-bold">Flagship Products</h2>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Visage 7 */}
               <div className="flex flex-col">
                 <div className="flex items-center gap-3 mb-3">
@@ -197,60 +201,66 @@ export default function ProductsPage() {
 
           {/* Protocol Vision Section */}
           <section>
-            <h2 className="text-4xl font-bold mb-6">Protocol Vision</h2>
-            <p className="text-gray-700 mb-4">
-              While decentralized finance promises open, permissionless access to financial markets, it's still held
-              back by fragmented liquidity, high transaction costs, and persistent risks like MEV-driven front-running.
-              These challenges disproportionately impact investors across Unichain, Ethereum, Arbitrum, and
-              Base—resulting in capital inefficiencies, delayed settlements, and reduced profits.
-            </p>
-            <p className="text-gray-700 mb-4">
-              Dex Mini's vision is to eliminate these barriers by creating permissionless products built on an
-              intelligent framework that unifies liquidity pools into a single, optimized ecosystem. We believe access
-              to powerful financial tools shouldn't be reserved for a select few—it should be available to everyone.
-              This philosophy drives everything we do at Dex Mini.
-            </p>
-            <p className="text-gray-700 mb-4">
-              Leveraging the cutting-edge capabilities of Uniswap V4 hooks, Dex Mini seamlessly integrates a
-              high-performance liquidity layer, lending markets, leverage engine, risk management system, and smart
-              router contract. The result is a frictionless and efficient DeFi experience—from our user-friendly dApp to
-              our easily accessible smart contracts.
-            </p>
-            <p className="text-gray-700 mb-4">
-              Our mission is clear: to simplify the crypto industry by empowering users with the tools to overcome DeFi
-              challenges. By reimagining liquidity management and capital efficiency, we are paving the way for a more
-              sustainable, scalable, and profitable DeFi ecosystem.
-            </p>
+            <div className="max-w-[650px]">
+              <h2 className="text-4xl font-bold mb-6">Protocol Vision</h2>
+              <p className="text-gray-700 mb-4">
+                While decentralized finance promises open, permissionless access to financial markets, it's still held
+                back by fragmented liquidity, high transaction costs, and persistent risks like MEV-driven front-running.
+                These challenges disproportionately impact investors across Unichain, Ethereum, Arbitrum, and
+                Base—resulting in capital inefficiencies, delayed settlements, and reduced profits.
+              </p>
+              <p className="text-gray-700 mb-4">
+                Dex Mini's vision is to eliminate these barriers by creating permissionless products built on an
+                intelligent framework that unifies liquidity pools into a single, optimized ecosystem. We believe access
+                to powerful financial tools shouldn't be reserved for a select few—it should be available to everyone.
+                This philosophy drives everything we do at Dex Mini.
+              </p>
+              <p className="text-gray-700 mb-4">
+                Leveraging the cutting-edge capabilities of Uniswap V4 hooks, Dex Mini seamlessly integrates a
+                high-performance liquidity layer, lending markets, leverage engine, risk management system, and smart
+                router contract. The result is a frictionless and efficient DeFi experience—from our user-friendly dApp to
+                our easily accessible smart contracts.
+              </p>
+              <p className="text-gray-700 mb-4">
+                Our mission is clear: to simplify the crypto industry by empowering users with the tools to overcome DeFi
+                challenges. By reimagining liquidity management and capital efficiency, we are paving the way for a more
+                sustainable, scalable, and profitable DeFi ecosystem.
+              </p>
+            </div>
           </section>
 
           {/* Career Section */}
           <section>
-            <h2 className="text-4xl font-bold mb-6">Career</h2>
-            <p className="text-gray-700 mb-4">
-              At Dex Mini, our culture thrives on meritocracy and is fueled by innovation. We celebrate individuals who
-              take ownership, tackling complex challenges with determination and creativity. With a bold vision and a
-              deep passion for Uniswap, we are dedicated to developing transformative Uniswap hook products that drive
-              efficiency in DeFi markets. Join us as we shape the future of Uniswap and leave a lasting impact on the
-              DeFi ecosystem.
-            </p>
-            <p className="text-gray-700 mb-4">
-              While we don't have open roles at the moment, we're always reviewing applications from talented
-              developers. If you're interested, don't hesitate to reach out to us on Twitter for more information.
-            </p>
+            <div className="max-w-[650px]">
+              <h2 className="text-4xl font-bold mb-6">Career</h2>
+              <p className="text-gray-700 mb-4">
+                At Dex Mini, our culture thrives on meritocracy and is fueled by innovation. We celebrate individuals who
+                take ownership, tackling complex challenges with determination and creativity. With a bold vision and a
+                deep passion for Uniswap, we are dedicated to developing transformative Uniswap hook products that drive
+                efficiency in DeFi markets. Join us as we shape the future of Uniswap and leave a lasting impact on the
+                DeFi ecosystem.
+              </p>
+              <p className="text-gray-700 mb-4">
+                While we don't have open roles at the moment, we're always reviewing applications from talented
+                developers. If you're interested, don't hesitate to reach out to us on Twitter for more information.
+              </p>
+            </div>
           </section>
 
           {/* Engage Section */}
           <section>
-            <h2 className="text-4xl font-bold mb-6">Engage with Dex Mini</h2>
-            <p className="text-gray-700 mb-4">
-              For media inquiries and interview requests, please email{" "}
-              <Link href="mailto:contact@dexmini.com" className="text-blue-600 hover:text-blue-800">
-                contact@dexmini.com
-              </Link>
-            </p>
-            <p className="text-gray-700 mb-6">You can also engage with us on social media.</p>
+            <div className="max-w-[650px] mb-8">
+              <h2 className="text-4xl font-bold mb-6">Engage with Dex Mini</h2>
+              <p className="text-gray-700 mb-4">
+                For media inquiries and interview requests, please email{" "}
+                <Link href="mailto:contact@dexmini.com" className="text-blue-600 hover:text-blue-800">
+                  contact@dexmini.com
+                </Link>
+              </p>
+              <p className="text-gray-700">You can also engage with us on social media.</p>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <Link
                 href="http://twitter.com/_dexmini"
                 className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"

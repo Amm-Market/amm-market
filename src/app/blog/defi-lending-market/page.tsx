@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import WaitlistCTA from "@/components/waitlist-cta"
 
 export default function BlogPost() {
   return (
@@ -488,16 +489,7 @@ export default function BlogPost() {
         </div>
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-yellow-500 to-amber-600 rounded-xl p-8 my-10 shadow-lg text-center">
-          <h2 className="text-2xl font-bold mb-4 text-white">Ready to Experience the Future of DeFi Lending?</h2>
-          <p className="text-lg text-yellow-50 mb-6">
-            Join the Dex Mini ecosystem today and discover how price range-based collateralization can transform your
-            DeFi experience.
-          </p>
-          <button className="bg-white text-yellow-600 hover:bg-yellow-50 font-bold py-3 px-8 rounded-full shadow-md transition duration-300">
-            Get Started
-          </button>
-        </div>
+        <WaitlistCTA />
       </div>
     </div>
   )

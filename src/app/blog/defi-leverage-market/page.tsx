@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import WaitlistCTA from "@/components/waitlist-cta"
 
 export default function BlogPost() {
   return (
@@ -281,16 +282,7 @@ export default function BlogPost() {
         </div>
 
         {/* CTA section */}
-        <div className="bg-gradient-to-r from-red-500 to-pink-600 p-8 rounded-xl mb-12 shadow-lg text-white text-center">
-          <h2 className="text-2xl font-bold mb-4">Experience the Future of Leveraged Trading</h2>
-          <p className="mb-6 max-w-2xl mx-auto">
-            Ready to explore the cutting-edge capabilities of Dex Mini's Leverage Hook? Join our community and be among
-            the first to experience the next generation of decentralized leveraged trading.
-          </p>
-          <button className="bg-white text-red-600 hover:bg-red-50 font-bold py-3 px-8 rounded-full shadow-md transition duration-300">
-            Get Started
-          </button>
-        </div>
+        <WaitlistCTA />
       </div>
     </div>
   )

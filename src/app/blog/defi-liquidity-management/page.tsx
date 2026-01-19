@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import WaitlistCTA from "@/components/waitlist-cta"
 
 export default function LiquidityManagementPage() {
   return (
@@ -307,16 +308,7 @@ export default function LiquidityManagementPage() {
         </div>
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl p-8 mb-10 shadow-lg text-center">
-          <h2 className="text-2xl font-bold mb-4 text-white">Ready to Optimize Your Liquidity?</h2>
-          <p className="text-lg text-purple-50 mb-6">
-            Join the Dex Mini ecosystem today and discover how our advanced tools can transform your DeFi liquidity
-            management.
-          </p>
-          <button className="bg-white text-purple-600 hover:bg-purple-50 font-bold py-3 px-8 rounded-full shadow-md transition duration-300">
-            Get Started
-          </button>
-        </div>
+        <WaitlistCTA />
       </div>
     </div>
   )

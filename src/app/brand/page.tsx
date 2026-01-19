@@ -31,7 +31,7 @@ export default function BrandPage() {
     <div className="flex flex-col min-h-screen bg-white">
 
       <main className="flex-1 py-12 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-24">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 space-y-24">
           {/* Hero Section with cloud background */}
           <div className="relative mb-20 py-16 px-6 rounded-3xl overflow-hidden bg-gradient-to-b from-sky-500 to-blue-600 text-white">
             {/* More realistic cloud effect with multiple layers and blur */}

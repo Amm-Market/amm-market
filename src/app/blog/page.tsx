@@ -56,7 +56,7 @@ const blogs = [
 
 export default function Community() {
   return (
-    <div className="py-12 px-4 max-w-7xl mx-auto">
+    <div className="py-12 px-4 max-w-[1200px] mx-auto">
       <div className="relative mb-20 py-16 px-6 rounded-3xl overflow-hidden bg-gradient-to-b from-sky-500 to-blue-600 text-white">
         {/* More realistic cloud effect with multiple layers and blur */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJza3kiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHdpZHRoPSI2MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgNjAwIDYwMCI+PGNpcmNsZSBmaWxsPSIjZmZmIiBjeD0iMTAwIiBjeT0iMTAwIiByPSI0MCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBmaWxsPSIjZmZmIiBjeD0iMzAwIiBjeT0iMjAwIiByPSI1MCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBmaWxsPSIjZmZmIiBjeD0iNTAwIiBjeT0iMTUwIiByPSI2MCIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBmaWxsPSIjZmZmIiBjeD0iMjAwIiBjeT0iMzAwIiByPSI1NSIgb3BhY2l0eT0iMC4zIi8+PGNpcmNsZSBmaWxsPSIjZmZmIiBjeD0iNDAwIiBjeT0iMzUwIiByPSI0NSIgb3BhY2l0eT0iMC4zIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3NreSkiLz48L3N2Zz4=')] opacity-70"></div>
@@ -115,7 +115,7 @@ export default function Community() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogs.map((blog) => (
           <Link
-            href={`/community/${blog.slug}`}
+            href={`/blog/${blog.slug}`}
             key={blog.id}
             className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
           >
