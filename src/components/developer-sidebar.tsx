@@ -2,470 +2,267 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState, useEffect, useRef } from "react"
+import { useRef, useState, useCallback } from "react"
 import {
   BookOpen,
-  FileText,
-  Code,
-  Repeat,
-  CreditCard,
-  TrendingUp,
-  Zap,
-  ArrowUpDown,
-  Bot,
-  Workflow,
-  Search,
-  Database,
-  Award,
-  Router,
+  Rocket,
+  Layers,
+  AlertTriangle,
+  Plug,
   Shield,
-  BarChart,
+  Scale,
+  FileText,
+  Lightbulb,
+  Map as MapIcon,
+  BookMarked,
+  Download,
+  Coins,
+  Settings,
+  CreditCard,
+  LogOut,
+  Gift,
+  Workflow,
+  Percent,
+  Heart,
+  DollarSign,
+  Award,
+  Flame,
+  ArrowRight,
+  ListChecks,
+  Server,
+  Droplets,
+  Router,
+  BarChart3,
+  Gauge,
+  Building,
   Umbrella,
-  FileCheck,
-  ShieldAlert,
+  FileWarning,
+  Gavel,
 } from "lucide-react"
+
+// Navigation structure
+const navigationSections = [
+  {
+    id: "introduction",
+    title: "Introduction",
+    icon: BookOpen,
+    items: [
+      { href: "/developers/introduction", label: "Overview", icon: FileText },
+      { href: "/developers/introduction/key-concepts", label: "Key Concepts", icon: Lightbulb },
+      { href: "/developers/introduction/testnet-roadmap", label: "Testnet & Roadmap", icon: MapIcon },
+      { href: "/developers/introduction/glossary", label: "Glossary", icon: BookMarked },
+    ],
+  },
+  {
+    id: "getting-started",
+    title: "Getting Started",
+    icon: Rocket,
+    items: [
+      { href: "/developers/getting-started", label: "Deposit LP", icon: Download },
+      { href: "/developers/getting-started/borrow-assets", label: "Borrow Assets", icon: Coins },
+      { href: "/developers/getting-started/manage-loans", label: "Manage Loans", icon: Settings },
+      { href: "/developers/getting-started/repay-loans", label: "Repay Loans", icon: CreditCard },
+      { href: "/developers/getting-started/withdraw-collateral", label: "Withdraw Collateral", icon: LogOut },
+      { href: "/developers/getting-started/claim-lp-fees", label: "Claim LP Fees", icon: Gift },
+    ],
+  },
+  {
+    id: "architecture",
+    title: "Protocol Architecture",
+    icon: Layers,
+    items: [
+      { href: "/developers/architecture", label: "Spokes Design", icon: Workflow },
+      { href: "/developers/architecture/collateral-factors", label: "Collateral Factors", icon: Percent },
+      { href: "/developers/architecture/health-factor", label: "Health Factor", icon: Heart },
+      { href: "/developers/architecture/platform-fees", label: "Platform Fees", icon: DollarSign },
+      { href: "/developers/architecture/incentives", label: "Incentives Programs", icon: Award },
+    ],
+  },
+  {
+    id: "liquidation",
+    title: "Liquidation Framework",
+    icon: AlertTriangle,
+    items: [
+      { href: "/developers/liquidation", label: "Liquidation Design", icon: Flame },
+      { href: "/developers/liquidation/flow", label: "Liquidation Flow", icon: ArrowRight },
+      { href: "/developers/liquidation/examples", label: "Liquidation Examples", icon: ListChecks },
+    ],
+  },
+  {
+    id: "integrations",
+    title: "Supported Integrations",
+    icon: Plug,
+    items: [
+      { href: "/developers/integrations", label: "Supported DEXes", icon: Server },
+      { href: "/developers/integrations/allowed-pools", label: "Allowed LP Pools", icon: Droplets },
+      { href: "/developers/integrations/router-contract", label: "Router Contract", icon: Router },
+      { href: "/developers/integrations/price-oracles", label: "Price Oracles", icon: BarChart3 },
+    ],
+  },
+  {
+    id: "safety",
+    title: "Safety Mechanisms",
+    icon: Shield,
+    items: [
+      { href: "/developers/safety", label: "Risk Parameters", icon: Gauge },
+      { href: "/developers/safety/contracts", label: "Smart Contract", icon: Building },
+      { href: "/developers/safety/insurance", label: "Insurance Funds", icon: Umbrella },
+    ],
+  },
+  {
+    id: "legal",
+    title: "Legal & Compliance",
+    icon: Scale,
+    items: [
+      { href: "/developers/legal", label: "Security Disclosures", icon: FileWarning },
+      { href: "/developers/legal/disclaimer", label: "Legal Disclaimer", icon: Gavel },
+    ],
+  },
+]
+
+// Color palette per section
+const sectionColors: Record<string, { headerBg: string; headerText: string; itemBg: string; itemText: string; icon: string }> = {
+  introduction: { headerBg: "bg-blue-50", headerText: "text-blue-700", itemBg: "bg-blue-100", itemText: "text-blue-700", icon: "text-blue-600" },
+  "getting-started": { headerBg: "bg-emerald-50", headerText: "text-emerald-700", itemBg: "bg-emerald-100", itemText: "text-emerald-700", icon: "text-emerald-600" },
+  architecture: { headerBg: "bg-violet-50", headerText: "text-violet-700", itemBg: "bg-violet-100", itemText: "text-violet-700", icon: "text-violet-600" },
+  liquidation: { headerBg: "bg-amber-50", headerText: "text-amber-700", itemBg: "bg-amber-100", itemText: "text-amber-700", icon: "text-amber-600" },
+  integrations: { headerBg: "bg-cyan-50", headerText: "text-cyan-700", itemBg: "bg-cyan-100", itemText: "text-cyan-700", icon: "text-cyan-600" },
+  safety: { headerBg: "bg-rose-50", headerText: "text-rose-700", itemBg: "bg-rose-100", itemText: "text-rose-700", icon: "text-rose-600" },
+  legal: { headerBg: "bg-slate-100", headerText: "text-slate-700", itemBg: "bg-slate-200", itemText: "text-slate-700", icon: "text-slate-600" },
+}
 
 export default function DeveloperSidebar() {
   const pathname = usePathname()
-  const sidebarRef = useRef<HTMLElement>(null)
-  const [scrollPosition, setScrollPosition] = useState(0)
+  const sidebarRef = useRef<HTMLDivElement>(null)
+  const [scrollProgress, setScrollProgress] = useState(0)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (sidebarRef.current) {
-        setScrollPosition(sidebarRef.current.scrollTop)
-      }
-    }
-
-    const sidebarElement = sidebarRef.current
-    if (sidebarElement) {
-      sidebarElement.addEventListener("scroll", handleScroll)
-    }
-
-    return () => {
-      if (sidebarElement) {
-        sidebarElement.removeEventListener("scroll", handleScroll)
-      }
+  const handleScroll = useCallback(() => {
+    if (!sidebarRef.current) return
+    const { scrollTop, scrollHeight, clientHeight } = sidebarRef.current
+    const maxScroll = scrollHeight - clientHeight
+    if (maxScroll > 0) {
+      setScrollProgress((scrollTop / maxScroll) * 100)
     }
   }, [])
 
-  const isActive = (path: string) => {
-    return pathname === path || pathname?.startsWith(path + "/")
+  const isActive = (href: string) => {
+    return pathname === href
+  }
+
+  const isSectionActive = (section: (typeof navigationSections)[0]) => {
+    return section.items.some((item) => pathname === item.href || pathname?.startsWith(item.href + "/"))
   }
 
   return (
-    <aside
-      ref={sidebarRef}
-      className="hidden md:block w-56 border-r border-gray-200 h-[calc(100vh-73px)] overflow-y-auto sticky top-[73px]"
-      style={{
-        scrollbarWidth: "none",
-        msOverflowStyle: "none",
-      }}
-    >
-      <style jsx>{`
-        aside::-webkit-scrollbar {
-          display: none;
-          width: 0;
-        }
-      `}</style>
-      <div className="pt-4">{/* Sidebar content starts below */}</div>
+    <aside className="hidden md:block w-64 border-r border-gray-200 h-[calc(100vh-73px)] sticky top-[73px] relative">
+      {/* Scroll progress bar */}
+      <div className="absolute right-0 top-0 bottom-0 w-1 bg-gray-200">
+        <div
+          className="w-full bg-blue-500 transition-all duration-150 ease-out rounded-full"
+          style={{ height: `${scrollProgress}%` }}
+        />
+      </div>
 
-      <nav className="px-4 pb-4">
-        <div className="mb-6">
-          <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Getting Started</div>
+      {/* Scrollable content */}
+      <div
+        ref={sidebarRef}
+        onScroll={handleScroll}
+        className="h-full overflow-y-auto pr-2"
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+      >
+        <style jsx>{`
+          div::-webkit-scrollbar {
+            display: none;
+          }
+          @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-12deg); }
+            75% { transform: rotate(12deg); }
+          }
+          @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+          }
+          .hover-wiggle:hover {
+            animation: wiggle 0.4s ease-in-out;
+          }
+          .hover-pulse:hover {
+            animation: pulse 0.3s ease-in-out;
+          }
+          .group:hover .group-hover-wiggle {
+            animation: wiggle 0.4s ease-in-out;
+          }
+          .group:hover .group-hover-pulse {
+            animation: pulse 0.3s ease-in-out;
+          }
+        `}</style>
+        <nav className="py-6 px-4">
+        {navigationSections.map((section) => {
+          const SectionIcon = section.icon
+          const sectionActive = isSectionActive(section)
+          const colors = sectionColors[section.id]
 
-          <ul className="space-y-1">
-            <li>
-              <Link
-                href="/developers/getting-started/overview"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/getting-started/overview")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
+          return (
+            <div key={section.id} className="mb-2">
+              {/* Section Header */}
+              <div
+                className={`flex items-center py-2 px-3 rounded-lg text-sm font-medium transition-all duration-200 group cursor-default ${
+                  sectionActive
+                    ? `${colors.headerBg} ${colors.headerText}`
+                    : "text-gray-700 hover:bg-gray-50"
+                }`}
               >
-                <BookOpen
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/getting-started/overview")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 0 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Overview
-              </Link>
-            </li>
-          </ul>
-        </div>
+                <div className="flex items-center gap-2.5">
+                  <SectionIcon
+                    className={`h-4 w-4 transition-all duration-300 group-hover-wiggle ${
+                      sectionActive ? colors.icon : "text-gray-500 group-hover:text-gray-700"
+                    }`}
+                  />
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">
+                    {section.title}
+                  </span>
+                </div>
+              </div>
 
-        <div className="mb-6">
-          <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Uniswap v4 Hooks</div>
+              {/* Section Items */}
+              <ul className="mt-1 ml-3 pl-3 border-l border-gray-200 space-y-0.5">
+                {section.items.map((item) => {
+                  const ItemIcon = item.icon
+                  const itemActive = isActive(item.href)
 
-          <ul className="space-y-1">
-            <li>
-              <Link
-                href="/developers/hooks/mev-protection"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/hooks/mev-protection")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <Shield
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/hooks/mev-protection")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 150 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                MEV Protection
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/hooks/auto-compound"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/hooks/auto-compound")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <Repeat
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/hooks/auto-compound")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 200 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Auto Compound
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/hooks/supply-and-borrow"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/hooks/supply-and-borrow")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <CreditCard
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/hooks/supply-and-borrow")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 250 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Supply and Borrow
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/hooks/long-and-short"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/hooks/long-and-short")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <TrendingUp
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/hooks/long-and-short")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 300 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Long and Short
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/hooks/gasless-swap"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/hooks/gasless-swap")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <Zap
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/hooks/gasless-swap")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 350 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Gasless Swap
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/hooks/long-tail-assets"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/hooks/long-tail-assets")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <ArrowUpDown
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/hooks/long-tail-assets")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 400 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Long Tail Assets
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        <div className="mb-6">
-          <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Mini Copilot</div>
-
-          <ul className="space-y-1">
-            <li>
-              <Link
-                href="/developers/copilot/ai-introduction"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/copilot/ai-introduction")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <Bot
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/copilot/ai-introduction")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 450 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                AI Introduction
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/copilot/workflow"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/copilot/workflow")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <Workflow
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/copilot/workflow")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 500 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Generalized Workflow
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/copilot/query-example"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/copilot/query-example")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <Search
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/copilot/query-example")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 550 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Query Example
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/copilot/protocols"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/copilot/protocols")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <Database
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/copilot/protocols")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 600 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Protocol Supported
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        <div className="mb-6">
-          <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Eigenlayer AVS</div>
-
-          <ul className="space-y-1">
-            <li>
-              <Link
-                href="/developers/eigenlayer/technical-spec"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/eigenlayer/technical-spec")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <FileText
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/eigenlayer/technical-spec")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 650 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Technical Spec
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/eigenlayer/risk-framework"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/eigenlayer/risk-framework")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <ShieldAlert
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/eigenlayer/risk-framework")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 750 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Risk Framework
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/eigenlayer/rewards"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/eigenlayer/rewards")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <Award
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/eigenlayer/rewards")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 800 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Rewards Programs
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/eigenlayer/router"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/eigenlayer/router")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <Router
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/eigenlayer/router")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 850 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Router Contract
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        <div className="mb-6">
-          <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Security & Compliance</div>
-
-          <ul className="space-y-1">
-            <li>
-              <Link
-                href="/developers/security/smart-contracts"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/security/smart-contracts")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <Code
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/security/smart-contracts")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 900 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Smart Contracts
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/security/price-oracle"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/security/price-oracle")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <BarChart
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/security/price-oracle")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 950 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Price Oracle
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/security/insurance"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/security/insurance")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <Umbrella
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/security/insurance")
-                      ? "text-blue-600"
-                      : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 1000 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Insurance Funds
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/developers/security/legal"
-                className={`flex items-center text-sm ${
-                  isActive("/developers/security/legal")
-                    ? "text-blue-600 bg-blue-50 font-medium"
-                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                } py-1 px-2 rounded-md group transition-all duration-200`}
-              >
-                <FileCheck
-                  className={`h-4 w-4 mr-2 transition-transform duration-300 ${
-                    isActive("/developers/security/legal") ? "text-blue-600" : "text-gray-500 group-hover:text-blue-500"
-                  } ${scrollPosition > 1050 ? "transform translate-y-[1px]" : ""} group-hover:scale-110`}
-                />
-                Legal Disclaimer
-              </Link>
-            </li>
-          </ul>
-        </div>
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        className={`flex items-center gap-2 py-1.5 px-2.5 rounded-md text-sm transition-all duration-200 group ${
+                          itemActive
+                            ? `${colors.itemBg} ${colors.itemText} font-medium`
+                            : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                        }`}
+                      >
+                        <ItemIcon
+                          className={`h-3.5 w-3.5 transition-all duration-300 group-hover-pulse ${
+                            itemActive
+                              ? colors.icon
+                              : "text-gray-400 group-hover:text-gray-600"
+                          }`}
+                        />
+                        <span className="transition-transform duration-200 group-hover:translate-x-1">
+                          {item.label}
+                        </span>
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          )
+        })}
       </nav>
+      </div>
     </aside>
   )
 }
-

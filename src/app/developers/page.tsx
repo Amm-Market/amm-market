@@ -1,95 +1,183 @@
 import Link from "next/link"
+import {
+  BookOpen,
+  Rocket,
+  Layers,
+  AlertTriangle,
+  Plug,
+  Shield,
+  Scale,
+  ArrowRight,
+} from "lucide-react"
+
+const sections = [
+  {
+    title: "Introduction",
+    description: "High-level overview of AMM Market Spoke and how LP tokens are used as collateral within Aave v4.",
+    href: "/developers/introduction",
+    icon: BookOpen,
+    color: "blue",
+  },
+  {
+    title: "Getting Started",
+    description: "Learn how to deposit LP tokens, borrow assets, manage loans, and claim fees.",
+    href: "/developers/getting-started",
+    icon: Rocket,
+    color: "green",
+  },
+  {
+    title: "Protocol Architecture",
+    description: "Understand spokes design, collateral factors, health factor calculations, and fee structures.",
+    href: "/developers/architecture",
+    icon: Layers,
+    color: "purple",
+  },
+  {
+    title: "Liquidation Framework",
+    description: "Learn about liquidation conditions, flow, and see concrete examples of liquidation scenarios.",
+    href: "/developers/liquidation",
+    icon: AlertTriangle,
+    color: "orange",
+  },
+  {
+    title: "Supported Integrations",
+    description: "Explore supported DEXes, allowed LP pools, router contracts, and price oracle systems.",
+    href: "/developers/integrations",
+    icon: Plug,
+    color: "cyan",
+  },
+  {
+    title: "Safety Mechanisms",
+    description: "Review risk parameters, smart contract architecture, and insurance fund mechanisms.",
+    href: "/developers/safety",
+    icon: Shield,
+    color: "emerald",
+  },
+  {
+    title: "Legal & Compliance",
+    description: "Security disclosures, known risks, and legal disclaimers for protocol usage.",
+    href: "/developers/legal",
+    icon: Scale,
+    color: "gray",
+  },
+]
+
+const colorClasses: Record<string, { bg: string; text: string; border: string; hover: string }> = {
+  blue: {
+    bg: "bg-blue-50",
+    text: "text-blue-600",
+    border: "border-blue-100",
+    hover: "hover:border-blue-300 hover:bg-blue-50/80",
+  },
+  green: {
+    bg: "bg-green-50",
+    text: "text-green-600",
+    border: "border-green-100",
+    hover: "hover:border-green-300 hover:bg-green-50/80",
+  },
+  purple: {
+    bg: "bg-purple-50",
+    text: "text-purple-600",
+    border: "border-purple-100",
+    hover: "hover:border-purple-300 hover:bg-purple-50/80",
+  },
+  orange: {
+    bg: "bg-orange-50",
+    text: "text-orange-600",
+    border: "border-orange-100",
+    hover: "hover:border-orange-300 hover:bg-orange-50/80",
+  },
+  cyan: {
+    bg: "bg-cyan-50",
+    text: "text-cyan-600",
+    border: "border-cyan-100",
+    hover: "hover:border-cyan-300 hover:bg-cyan-50/80",
+  },
+  emerald: {
+    bg: "bg-emerald-50",
+    text: "text-emerald-600",
+    border: "border-emerald-100",
+    hover: "hover:border-emerald-300 hover:bg-emerald-50/80",
+  },
+  gray: {
+    bg: "bg-gray-50",
+    text: "text-gray-600",
+    border: "border-gray-200",
+    hover: "hover:border-gray-300 hover:bg-gray-100/80",
+  },
+}
 
 export default function DevelopersPage() {
   return (
     <div className="max-w-4xl">
-      <h1 className="text-3xl font-bold mb-6">Developer Documentation</h1>
-      <div className="w-full max-w-3xl mx-auto py-8 px-4">
-        {/* Notification banner */}
-        <div className="w-full bg-gray-100 rounded-lg mb-6 p-3 flex justify-between items-center">
-          <p className="text-sm text-gray-700">AAVE staking is live, stake yours today!</p>
+      {/* Header */}
+      <div className="mb-10">
+        <h1 className="text-3xl font-bold text-gray-900 mb-3">AMM Market Documentation</h1>
+        <p className="text-lg text-gray-600 leading-relaxed">
+          Complete technical documentation for integrating with AMM Market, the Aave v4 Spoke that enables 
+          borrowing against LP positions. Learn how to deposit collateral, manage loans, and build on top 
+          of the protocol.
+        </p>
+      </div>
+
+      {/* Quick Start Banner */}
+      <div className="mb-10 p-6 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h2 className="text-xl font-semibold mb-1">New to AMM Market?</h2>
+            <p className="text-blue-100">Start with the Introduction to understand core concepts.</p>
+          </div>
           <Link
-            href="/stake"
-            className="bg-blue-600 text-white text-sm px-3 py-1 rounded-full hover:bg-blue-700 transition-colors"
+            href="/developers/introduction"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-blue-600 rounded-lg font-medium hover:bg-blue-50 transition-colors whitespace-nowrap"
           >
-            Stake Now
+            Get Started
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <h1 className="text-4xl font-bold mb-4">Welcome to Dex Mini</h1>
+      </div>
 
-        <p className="text-gray-700 mb-6">
-          Whether you're a retail investor, developer, or simply exploring, this guide is designed to get you up to
-          speed quickly. Dex Mini is a consumer DeFi platform that combines multiple DeFi tools into one seamless
-          platform, integrating advanced liquidity management, versatile lending markets, and leverage opportunities.
-        </p>
+      {/* Section Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {sections.map((section) => {
+          const Icon = section.icon
+          const colors = colorClasses[section.color]
 
-        <p className="text-gray-700 mb-8">
-          Our mission is to empower users with the tools to master crypto and unlock DeFi's full potential. By
-          revolutionizing Uniswap beyond a simple DEX, we are building the premier capital markets infrastructure for
-          crypto. Prioritizing long-term liquidity sustainability over short-term yield farming paves the way for mass
-          DeFi adoption.
-        </p>
+          return (
+            <Link
+              key={section.href}
+              href={section.href}
+              className={`group p-5 rounded-xl border ${colors.border} ${colors.hover} transition-all duration-200`}
+            >
+              <div className="flex items-start gap-4">
+                <div className={`p-2.5 rounded-lg ${colors.bg}`}>
+                  <Icon className={`h-5 w-5 ${colors.text}`} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">
+                    {section.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {section.description}
+                  </p>
+                </div>
+                <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all mt-1 flex-shrink-0" />
+              </div>
+            </Link>
+          )
+        })}
+      </div>
 
-        <h2 className="text-2xl font-bold mb-4">High-level Core Innovations</h2>
-
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <li className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-            <h3 className="font-semibold text-gray-800 mb-2">Unified DeFi Layer</h3>
-            <p className="text-gray-700">
-              Integrate diverse yield strategies into a single, cohesive interface that eliminates protocol-hopping and
-              maximizes capital efficiency.
-            </p>
-          </li>
-          <li className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-            <h3 className="font-semibold text-gray-800 mb-2">Composable Architecture</h3>
-            <p className="text-gray-700">
-              Build confidently on our security-audited, permissionless foundation that extends functionality while
-              preserving core protocol safety.
-            </p>
-          </li>
-          <li className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-            <h3 className="font-semibold text-gray-800 mb-2">Capital-Efficient Lending</h3>
-            <p className="text-gray-700">
-              Access flexible lending markets with collateral range selection for concentrated liquidity positions,
-              supported by automated risk management.
-            </p>
-          </li>
-          <li className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-            <h3 className="font-semibold text-gray-800 mb-2">Liquidity Strategy</h3>
-            <p className="text-gray-700">
-              Deploy advanced liquidity management techniques that were once exclusive to professional market makers.
-              Amplify your returns with competitive rates and minimal collateral requirements.
-            </p>
-          </li>
-          <li className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-            <h3 className="font-semibold text-gray-800 mb-2">Analytics Dashboard</h3>
-            <p className="text-gray-700">
-              Monitor performance with institutional-grade metrics, including impermanent loss projections, fee accrual
-              rates, and detailed position health indicators.
-            </p>
-          </li>
-          <li className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-            <h3 className="font-semibold text-gray-800 mb-2">AI-Powered Optimization</h3>
-            <p className="text-gray-700">
-              Leverage machine learning algorithms to optimize your positions in real-time, adapting to market
-              conditions and maximizing returns while minimizing risks through predictive analytics.
-            </p>
-          </li>
-        </ul>
-
-        <h2 className="text-2xl font-bold mb-4">Current Development</h2>
-
-        <p className="text-gray-700 mb-6">
-          As we approach our mainnet launch, you can experience Dex Mini today on the Unichain and Base Sepolia
-          testnets. Our documentation is designed for full protocol exploration in under 15 minutes, ensuring you
-          quickly grasp the powerful capabilities of our platform.
-        </p>
-
-        <p className="text-gray-700 italic">
-          Thank you for joining us on this journey as we redefine the future of Uniswap with Dex Mini.
-        </p>
+      {/* Version Info */}
+      <div className="mt-10 pt-6 border-t border-gray-200">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full font-medium">
+            Testnet
+          </span>
+          <span>Built on Aave v4</span>
+          <span>Last updated: January 2026</span>
+        </div>
       </div>
     </div>
   )
 }
-
