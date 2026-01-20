@@ -250,3 +250,56 @@
 .animate-pulse-soft {
   animation: pulse-soft 2s ease-in-out infinite;
 }
+
+/* Developer documentation typography */
+.developer-content h1 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.developer-content h2 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.developer-content h3 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.developer-content p {
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: #4b5563;
+}
+
+.developer-content li {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.developer-content code {
+  font-size: 0.75rem;
+}
+
+.developer-content table {
+  font-size: 0.875rem;
+}
+
+.developer-content th {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.developer-content td {
+  font-size: 0.875rem;
+}

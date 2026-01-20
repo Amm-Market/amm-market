@@ -9,12 +9,27 @@ interface Section {
 
 interface ScrollSpySidebarProps {
   sections: Section[]
+  pageSummary?: string
+  sectionColor?: "blue" | "emerald" | "violet" | "amber" | "cyan" | "rose" | "slate"
 }
 
-export function ScrollSpySidebar({ sections }: ScrollSpySidebarProps) {
+// Color classes for each section
+const colorClasses = {
+  blue: { bar: "bg-blue-500", dot: "bg-blue-500", text: "text-blue-600" },
+  emerald: { bar: "bg-emerald-500", dot: "bg-emerald-500", text: "text-emerald-600" },
+  violet: { bar: "bg-violet-500", dot: "bg-violet-500", text: "text-violet-600" },
+  amber: { bar: "bg-amber-500", dot: "bg-amber-500", text: "text-amber-600" },
+  cyan: { bar: "bg-cyan-500", dot: "bg-cyan-500", text: "text-cyan-600" },
+  rose: { bar: "bg-rose-500", dot: "bg-rose-500", text: "text-rose-600" },
+  slate: { bar: "bg-slate-500", dot: "bg-slate-500", text: "text-slate-600" },
+}
+
+export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" }: ScrollSpySidebarProps) {
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || "")
   const [scrollProgress, setScrollProgress] = useState(0)
   const sidebarRef = useRef<HTMLDivElement>(null)
+
+  const colors = colorClasses[sectionColor]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +73,6 @@ export function ScrollSpySidebar({ sections }: ScrollSpySidebarProps) {
   }, [sections])
 
   const activeIndex = sections.findIndex((s) => s.id === activeSection)
-  const progressPerSection = 100 / sections.length
   const barProgress = ((activeIndex + 1) / sections.length) * 100
 
   return (
@@ -66,12 +80,19 @@ export function ScrollSpySidebar({ sections }: ScrollSpySidebarProps) {
       ref={sidebarRef}
       className="hidden lg:flex flex-col items-start justify-start gap-0 lg:sticky lg:top-44 self-start"
     >
+      {/* Page summary at top */}
+      {pageSummary && (
+        <p className="text-xs text-gray-500 leading-relaxed mb-4 max-w-[220px] pl-6">
+          {pageSummary}
+        </p>
+      )}
+
       <div className="relative pl-6">
         {/* Progress bar track */}
         <div className="absolute left-0 top-0 bottom-0 w-1 overflow-hidden rounded-full bg-gray-200">
           {/* Animated progress fill */}
           <div
-            className="absolute left-0 top-0 w-full rounded-full bg-blue-500 transition-all duration-300 ease-out"
+            className={`absolute left-0 top-0 w-full rounded-full ${colors.bar} transition-all duration-300 ease-out`}
             style={{ height: `${barProgress}%` }}
           />
         </div>
@@ -87,9 +108,9 @@ export function ScrollSpySidebar({ sections }: ScrollSpySidebarProps) {
               <div
                 className={`absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 h-2 w-2 rounded-full transition-all duration-300 ${
                   isActive
-                    ? "bg-blue-500 scale-125"
+                    ? `${colors.dot} scale-125`
                     : isPast
-                      ? "bg-blue-500"
+                      ? colors.dot
                       : "bg-gray-300"
                 }`}
               />
