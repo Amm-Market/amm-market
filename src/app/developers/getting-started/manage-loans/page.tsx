@@ -36,13 +36,10 @@ export default function ManageLoansPage() {
             If a loan remains healthy and the maximum borrowing limit has not been reached, 
             additional funds can be borrowed.
           </p>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h3 className="font-semibold text-blue-900 mb-2">Partial Repayments</h3>
-            <p className="text-blue-800 text-sm">
-              To reduce exposure, users may make partial repayments at any time. This improves 
-              the health factor and reduces interest accrual.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Partial Repayments:</strong> To reduce exposure, users may make partial repayments at any time. 
+            This improves the health factor and reduces interest accrual.
+          </p>
         </section>
 
         <section id="monitoring-health" className="mb-12">
@@ -52,37 +49,34 @@ export default function ManageLoansPage() {
           </p>
           
           <div className="space-y-3 mb-6">
-            <div className="p-4 rounded-lg border-l-4 border-green-500 bg-green-50">
+            <div className="border-l-4 border-green-500 pl-4 py-2">
               <div className="flex items-center justify-between">
-                <span className="font-semibold text-green-900">Safe Zone</span>
-                <span className="text-green-700 font-mono text-sm">HF &gt; 1.5</span>
+                <span className="font-semibold text-gray-900">Safe Zone</span>
+                <span className="text-gray-600 font-mono text-sm">HF &gt; 1.5</span>
               </div>
-              <p className="text-green-800 text-sm mt-1">Comfortable buffer. Normal operations.</p>
+              <p className="text-gray-600 text-sm mt-1">Comfortable buffer. Normal operations.</p>
             </div>
-            <div className="p-4 rounded-lg border-l-4 border-yellow-500 bg-yellow-50">
+            <div className="border-l-4 border-amber-500 pl-4 py-2">
               <div className="flex items-center justify-between">
-                <span className="font-semibold text-yellow-900">Caution Zone</span>
-                <span className="text-yellow-700 font-mono text-sm">1.0 &lt; HF &lt; 1.5</span>
+                <span className="font-semibold text-gray-900">Caution Zone</span>
+                <span className="text-gray-600 font-mono text-sm">1.0 &lt; HF &lt; 1.5</span>
               </div>
-              <p className="text-yellow-800 text-sm mt-1">Monitor closely. Consider adding collateral or repaying debt.</p>
+              <p className="text-gray-600 text-sm mt-1">Monitor closely. Consider adding collateral or repaying debt.</p>
             </div>
-            <div className="p-4 rounded-lg border-l-4 border-red-500 bg-red-50">
+            <div className="border-l-4 border-red-500 pl-4 py-2">
               <div className="flex items-center justify-between">
-                <span className="font-semibold text-red-900">Danger Zone</span>
-                <span className="text-red-700 font-mono text-sm">HF ≤ 1.0</span>
+                <span className="font-semibold text-gray-900">Danger Zone</span>
+                <span className="text-gray-600 font-mono text-sm">HF ≤ 1.0</span>
               </div>
-              <p className="text-red-800 text-sm mt-1">Position is liquidatable. Take immediate action.</p>
+              <p className="text-gray-600 text-sm mt-1">Position is liquidatable. Take immediate action.</p>
             </div>
           </div>
 
-          <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <h3 className="font-semibold text-amber-900 mb-2">Proactive Warnings</h3>
-            <p className="text-amber-800 text-sm">
-              If the value of the LP NFT decreases and loan health declines, the application issues 
-              warnings. This proactive monitoring enables users to respond before a position becomes 
-              critical and subject to liquidation.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Proactive Warnings:</strong> If the value of the LP NFT decreases and loan health declines, 
+            the application issues warnings. This proactive monitoring enables users to respond before a position 
+            becomes critical and subject to liquidation.
+          </p>
         </section>
 
         <section id="operational-control" className="mb-12">
@@ -91,26 +85,26 @@ export default function ManageLoansPage() {
             Users retain operational control of LPs even while they are collateralized, provided 
             the loan remains healthy. You can:
           </p>
-          <div className="space-y-3">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Collect and Compound Fees</h3>
-              <p className="text-gray-600 text-sm">
+          <ul className="space-y-4">
+            <li>
+              <span className="font-semibold text-gray-900">Collect and Compound Fees</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Claim accrued trading fees and optionally compound them back into your position.
               </p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Add or Withdraw Liquidity</h3>
-              <p className="text-gray-600 text-sm">
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Add or Withdraw Liquidity</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Adjust liquidity as long as the updated collateral value remains above the protocol's requirement.
               </p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Full Withdrawal</h3>
-              <p className="text-gray-600 text-sm">
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Full Withdrawal</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Fully withdraw the position by repaying all outstanding debt.
               </p>
-            </div>
-          </div>
+            </li>
+          </ul>
         </section>
 
         <section id="position-changes" className="mb-12">
@@ -119,43 +113,38 @@ export default function ManageLoansPage() {
             You can make changes to your LP position while it's collateralized:
           </p>
           <div className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Change Price Range</h3>
-              <p className="text-blue-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Change Price Range</h3>
+              <p className="text-gray-600 text-sm">
                 To change a position's price range, users must first withdraw liquidity and then 
                 create a new position at the desired range.
               </p>
             </div>
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">Reallocate to Different Pair</h3>
-              <p className="text-purple-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Reallocate to Different Pair</h3>
+              <p className="text-gray-600 text-sm">
                 Liquidity can also be reallocated to a different asset pair. In both cases, the 
                 new pair must be approved as valid collateral by the protocol.
               </p>
             </div>
           </div>
-          <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <p className="text-amber-800 text-sm">
-              <strong>Important:</strong> The resulting collateral value must be sufficient to 
-              maintain a healthy loan status after any position changes.
-            </p>
-          </div>
+          <p className="text-amber-700 text-sm border-l-4 border-amber-400 pl-3 mt-4">
+            <strong>Important:</strong> The resulting collateral value must be sufficient to 
+            maintain a healthy loan status after any position changes.
+          </p>
         </section>
 
         <section id="key-constraints" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Key Constraints</h2>
-          <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-            <h3 className="font-semibold text-red-900 mb-2">Collateral Threshold Protection</h3>
-            <p className="text-red-800 text-sm mb-3">
-              Any modification that reduces collateral below the required threshold is either 
-              blocked or must be paired with:
-            </p>
-            <ul className="text-red-800 text-sm space-y-1 ml-4">
-              <li>• Additional collateral deposit</li>
-              <li>• Partial repayment of debt</li>
-            </ul>
-          </div>
-          <p className="text-gray-600 text-sm mt-4">
+          <p className="text-gray-600 text-sm mb-3">
+            <strong>Collateral Threshold Protection:</strong> Any modification that reduces collateral 
+            below the required threshold is either blocked or must be paired with:
+          </p>
+          <ul className="text-gray-600 text-sm space-y-1 ml-4 mb-4">
+            <li>• Additional collateral deposit</li>
+            <li>• Partial repayment of debt</li>
+          </ul>
+          <p className="text-gray-500 text-sm">
             These safeguards ensure loan stability and reduce liquidation risk.
           </p>
         </section>

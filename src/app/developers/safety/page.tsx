@@ -29,34 +29,32 @@ export default function RiskParametersPage() {
             protocol from adverse market conditions. These parameters are configurable through 
             governance and can be adjusted in response to changing market dynamics.
           </p>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <p className="text-blue-800 text-sm">
-              <strong>Core Principle:</strong> The health factor is enforced after every user action, 
-              providing the first layer of protection at the position level.
-            </p>
-          </div>
+          <p className="text-gray-500 text-sm">
+            <strong>Core Principle:</strong> The health factor is enforced after every user action, 
+            providing the first layer of protection at the position level.
+          </p>
         </section>
 
         <section id="multi-layer-risk" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Multi-Layer Risk Management</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">Layer 1: Position-Level Health Factor</h3>
-              <p className="text-purple-800 text-sm">
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Layer 1: Position-Level Health Factor</h3>
+              <p className="text-gray-600 text-sm">
                 The health factor is enforced after every user action. This ensures that each 
                 individual position maintains adequate collateralization at all times.
               </p>
             </div>
 
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Layer 2: Spoke Risk Premium Integration</h3>
-              <p className="text-blue-800 text-sm mb-2">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Layer 2: Spoke Risk Premium Integration</h3>
+              <p className="text-gray-600 text-sm mb-2">
                 The Spoke integrates with Aave v4's Risk Premium system. While the Spoke calculates 
                 its own internal interest rate for users, the rate it pays to the Hub is influenced 
                 by a "Spoke Risk Premium."
               </p>
-              <p className="text-blue-700 text-xs">
+              <p className="text-gray-500 text-xs">
                 If the Hub detects that the Spoke's collateral (the basket of all its Uniswap NFTs) 
                 is becoming riskier—perhaps due to a market-wide drop in stablecoin liquidity—it can 
                 increase the premium it charges the Spoke. The Spoke can then pass this cost on to 
@@ -65,9 +63,9 @@ export default function RiskParametersPage() {
               </p>
             </div>
 
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">Layer 3: Hard Caps & Circuit Breakers</h3>
-              <p className="text-green-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Layer 3: Hard Caps & Circuit Breakers</h3>
+              <p className="text-gray-600 text-sm">
                 Global debt limits and per-token debt ceilings prevent the Spoke from growing too 
                 large or becoming overexposed to a single asset.
               </p>
@@ -78,33 +76,31 @@ export default function RiskParametersPage() {
         <section id="hard-caps" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Hard Caps</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="space-y-6">
+            <div>
               <h3 className="font-semibold text-gray-900 mb-2">globalDebtLimit</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Prevents the Spoke from amassing too much outstanding borrow across all Hubs.
+              <p className="text-gray-600 text-sm">
+                Prevents the Spoke from amassing too much outstanding borrow across all Hubs — 
+                a hard cap on total protocol debt exposure.
               </p>
-              <div className="p-2 bg-gray-100 rounded text-gray-700 text-xs">
-                A hard cap on total protocol debt exposure.
-              </div>
             </div>
 
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div>
               <h3 className="font-semibold text-gray-900 mb-2">maxDebtCeiling (Per Token)</h3>
               <p className="text-gray-600 text-sm mb-2">
                 Prevents a single token category from concentrating too much drawn debt.
               </p>
-              <div className="p-2 bg-amber-50 rounded text-amber-700 text-xs">
+              <p className="text-gray-500 text-xs">
                 <strong>Example:</strong> A maxDebtCeiling of $100M for ETH collateral means that 
                 the total debt from all loans backed by ETH (e.g., ETH/USDC, ETH/WBTC) can never 
                 exceed $100M, providing a circuit breaker against catastrophic failure in that asset.
-              </div>
+              </p>
             </div>
 
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div>
               <h3 className="font-semibold text-gray-900 mb-2">Per Hub Draw Caps</h3>
               <p className="text-gray-600 text-sm">
-                Respected by calling <code className="bg-gray-200 px-1 rounded">getSpokeDrawCap</code> for 
+                Respected by calling <code className="bg-gray-100 px-1 rounded text-gray-800">getSpokeDrawCap</code> for 
                 a Hub asset id. The code also rejects token deposits that have zero liquidity and 
                 rejects borrow operations when the health check would fail, using conservative rounding.
               </p>
@@ -121,12 +117,12 @@ export default function RiskParametersPage() {
             characteristics of the underlying assets.
           </p>
           
-          <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <h3 className="font-semibold text-amber-900 mb-2">Concentrated Range Risk</h3>
-            <p className="text-amber-800 text-sm mb-2">
+          <div className="border-l-4 border-amber-400 pl-3">
+            <h3 className="font-semibold text-gray-900 mb-2">Concentrated Range Risk</h3>
+            <p className="text-gray-600 text-sm mb-2">
               <strong>Risk:</strong> Narrow ranges can make a position effectively single-sided and illiquid.
             </p>
-            <p className="text-amber-700 text-xs">
+            <p className="text-gray-500 text-xs">
               <strong>Mitigation:</strong> Require full-range positions (min=0, max=∞) for initial 
               collateral acceptance; allow concentrated ranges only after per-pool review and tighter LTVs.
             </p>
@@ -142,23 +138,23 @@ export default function RiskParametersPage() {
             sense if IL has eroded $200 of value.
           </p>
           
-          <div className="p-4 bg-red-50 rounded-lg border border-red-200 mb-4">
-            <h3 className="font-semibold text-red-900 mb-2">The Challenge</h3>
-            <p className="text-red-800 text-sm">
+          <div className="border-l-4 border-red-400 pl-3 mb-4">
+            <h3 className="font-semibold text-gray-900 mb-2">The Challenge</h3>
+            <p className="text-gray-600 text-sm">
               Pricing IL accurately, especially for volatile pairs, is incredibly complex. AMM Market 
               risk management must price the <em>tokens</em> but model the <em>position's</em> historical 
               and potential future IL.
             </p>
           </div>
 
-          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-            <h3 className="font-semibold text-green-900 mb-2">Mitigation Strategies</h3>
-            <ul className="text-green-800 text-sm space-y-1">
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-2">Mitigation Strategies</h3>
+            <ul className="text-gray-600 text-sm space-y-1">
               <li>• <strong>Tiered LTVs:</strong> Different LTV ratios based on pair volatility</li>
               <li>• <strong>Conservative Initial LTVs:</strong> Lower starting LTVs for volatile pairs</li>
               <li>• <strong>Dynamic LTV Adjustments:</strong> Using realized volatility metrics to adjust parameters</li>
             </ul>
-            <p className="text-green-700 text-xs mt-2">
+            <p className="text-gray-500 text-xs mt-2">
               <strong>Risk:</strong> LP value can fall faster than single assets when tokens diverge.
             </p>
           </div>
@@ -173,18 +169,18 @@ export default function RiskParametersPage() {
             discounted amount, with the difference being the penalty.
           </p>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Purpose 1: Deterrent Against Manipulation</h3>
-              <p className="text-blue-800 text-sm">
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Purpose 1: Deterrent Against Manipulation</h3>
+              <p className="text-gray-600 text-sm">
                 Acts as a deterrent against malicious actors attempting to manipulate the market to 
                 trigger liquidations, as the cost of the attack is higher than the potential reward.
               </p>
             </div>
 
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">Purpose 2: Protocol Buffer</h3>
-              <p className="text-purple-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Purpose 2: Protocol Buffer</h3>
+              <p className="text-gray-600 text-sm">
                 The penalty is effectively a fee paid by the undercollateralized borrower, which is 
                 used to offset any potential shortfall in the collateral. In the event that the value 
                 of the collateral extracted during liquidation is slightly less than the debt repaid 
@@ -193,9 +189,9 @@ export default function RiskParametersPage() {
               </p>
             </div>
 
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-2">Dynamic Penalty Size</h3>
-              <p className="text-amber-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Dynamic Penalty Size</h3>
+              <p className="text-gray-600 text-sm">
                 The size of the penalty is not fixed; it is often dynamic, meaning it can increase 
                 if the loan is significantly undercollateralized or if the system is under stress, 
                 ensuring that the incentive for liquidators is always sufficient to maintain system health.
@@ -203,7 +199,7 @@ export default function RiskParametersPage() {
             </div>
           </div>
 
-          <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="mt-6">
             <h3 className="font-semibold text-gray-900 mb-2">Liquidation Complexity</h3>
             <p className="text-gray-600 text-sm mb-2">
               <strong>Risk:</strong> Liquidator must sell both sides into the debt asset, increasing 
@@ -222,32 +218,32 @@ export default function RiskParametersPage() {
             In extreme market conditions, the protocol can activate emergency measures:
           </p>
           
-          <div className="space-y-3">
-            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-              <h3 className="font-semibold text-red-900 mb-1">Pause Borrowing</h3>
-              <p className="text-red-800 text-sm">
+          <ul className="space-y-4">
+            <li>
+              <span className="font-semibold text-gray-900">Pause Borrowing</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Temporarily halt new borrows while allowing repayments and liquidations.
               </p>
-            </div>
-            <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-              <h3 className="font-semibold text-orange-900 mb-1">Freeze LP Type</h3>
-              <p className="text-orange-800 text-sm">
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Freeze LP Type</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Disable deposits for specific LP tokens experiencing issues.
               </p>
-            </div>
-            <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-              <h3 className="font-semibold text-yellow-900 mb-1">Adjust Parameters</h3>
-              <p className="text-yellow-800 text-sm">
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Adjust Parameters</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Emergency parameter changes (LTV reduction, threshold changes) via guardian.
               </p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Full Pause</h3>
-              <p className="text-gray-600 text-sm">
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Full Pause</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Complete protocol pause in case of critical vulnerability. Requires multi-sig.
               </p>
-            </div>
-          </div>
+            </li>
+          </ul>
         </section>
       </div>
 

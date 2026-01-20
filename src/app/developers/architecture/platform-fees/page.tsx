@@ -27,14 +27,11 @@ export default function PlatformFeesPage() {
             AMM Market charges a single, flat frontend fee of <strong>0.20%</strong> on each user 
             action that interacts with our interface.
           </p>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h3 className="font-semibold text-blue-900 mb-2">Interface Fee, Not Protocol Fee</h3>
-            <p className="text-blue-800 text-sm">
-              The fee is not embedded into the lending protocol itself; it is an interface charge 
-              that funds the maintenance and improvement of AMM Market's user experience, infrastructure, 
-              security, and community initiatives.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Interface Fee, Not Protocol Fee:</strong> The fee is not embedded into the lending protocol itself; it is an interface charge 
+            that funds the maintenance and improvement of AMM Market's user experience, infrastructure, 
+            security, and community initiatives.
+          </p>
         </section>
 
         <section id="frontend-fee" className="mb-12">
@@ -62,14 +59,11 @@ export default function PlatformFeesPage() {
             </div>
           </div>
 
-          <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-            <h3 className="font-semibold text-purple-900 mb-2">Industry Standard</h3>
-            <p className="text-purple-800 text-sm">
-              In the same way leading DeFi frontends have separated interface charges from protocol-level 
-              economics, this fee applies only to transactions routed through the official AMM Market 
-              interface and does not affect calls made directly to the underlying smart contracts.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Industry Standard:</strong> In the same way leading DeFi frontends have separated interface charges from protocol-level 
+            economics, this fee applies only to transactions routed through the official AMM Market 
+            interface and does not affect calls made directly to the underlying smart contracts.
+          </p>
         </section>
 
         <section id="fee-disclosure" className="mb-12">
@@ -84,22 +78,17 @@ export default function PlatformFeesPage() {
             <p className="text-gray-600 text-sm mb-2">
               The fee is computed as <strong>0.20%</strong> of the fiat value of the asset being transacted.
             </p>
-            <div className="p-3 bg-blue-50 rounded border border-blue-200">
-              <p className="text-blue-800 text-sm">
-                <strong>Example:</strong> A $50,000 borrow initiated through the AMM Market app will 
-                show a fee of $100. The signed transaction will include an on-chain or off-chain 
-                transfer that routes that $100 to the AMM Market fee wallet.
-              </p>
-            </div>
-          </div>
-
-          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-            <h3 className="font-semibold text-green-900 mb-2">Transparency</h3>
-            <p className="text-green-800 text-sm">
-              We surface the fee as both a dollar amount and a percentage so users can instantly 
-              understand cost impact and check the exact transfer before approving the wallet signature.
+            <p className="text-gray-500 text-sm">
+              <strong>Example:</strong> A $50,000 borrow initiated through the AMM Market app will 
+              show a fee of $100. The signed transaction will include an on-chain or off-chain 
+              transfer that routes that $100 to the AMM Market fee wallet.
             </p>
           </div>
+
+          <p className="text-gray-600 text-sm">
+            <strong>Transparency:</strong> We surface the fee as both a dollar amount and a percentage so users can instantly 
+            understand cost impact and check the exact transfer before approving the wallet signature.
+          </p>
         </section>
 
         <section id="treasury-usage" className="mb-12">
@@ -136,15 +125,12 @@ export default function PlatformFeesPage() {
             </div>
           </div>
 
-          <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <h3 className="font-semibold text-amber-900 mb-2">Governance Oversight</h3>
-            <p className="text-amber-800 text-sm">
-              Treasury disbursements are managed under the protocol's governance framework. Major 
-              allocations and programmatic changes (e.g., turning fees into rebates, launching 
-              promotions, or reallocating budget to security audits) are subject to governance 
-              proposals and timelocked execution.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Governance Oversight:</strong> Treasury disbursements are managed under the protocol's governance framework. Major 
+            allocations and programmatic changes (e.g., turning fees into rebates, launching 
+            promotions, or reallocating budget to security audits) are subject to governance 
+            proposals and timelocked execution.
+          </p>
         </section>
 
         <section id="zero-fee-paths" className="mb-12">
@@ -153,32 +139,29 @@ export default function PlatformFeesPage() {
             We recognize that some users and integrators prefer zero-fee paths:
           </p>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">Direct Contract Calls</h3>
-              <p className="text-green-800 text-sm">
+          <ul className="space-y-4 mb-4">
+            <li>
+              <span className="font-semibold text-gray-900">Direct Contract Calls</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Transactions submitted directly to the underlying protocol contracts will not pay 
                 the 0.20% fee.
               </p>
-            </div>
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Third-Party Frontends</h3>
-              <p className="text-blue-800 text-sm">
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Third-Party Frontends</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Transactions routed through third-party frontends that do not levy the AMM Market 
                 interface charge will not pay the fee.
               </p>
-            </div>
-          </div>
+            </li>
+          </ul>
 
-          <div className="mt-4 p-4 bg-purple-50 rounded-lg border border-purple-200">
-            <h3 className="font-semibold text-purple-900 mb-2">Official Frontend Registry</h3>
-            <p className="text-purple-800 text-sm">
-              To preserve choice and composability while protecting the integrity of the AMM Market 
-              interface, we will publish a public registry of AMM Market-official frontends. Official 
-              frontends will display a verified badge and a plain language explanation of the fee 
-              policy; integrations not on the registry will be marked as third-party.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Official Frontend Registry:</strong> To preserve choice and composability while protecting the integrity of the AMM Market 
+            interface, we will publish a public registry of AMM Market-official frontends. Official 
+            frontends will display a verified badge and a plain language explanation of the fee 
+            policy; integrations not on the registry will be marked as third-party.
+          </p>
         </section>
 
         <section id="commitment" className="mb-12">
@@ -188,23 +171,17 @@ export default function PlatformFeesPage() {
             improvements.
           </p>
           
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
-            <h3 className="font-semibold text-blue-900 mb-2">Design Philosophy</h3>
-            <p className="text-blue-800 text-sm">
-              The 0.20% frontend fee is designed to be low enough that it does not materially change 
-              user behavior for typical DeFi actions, while generating a sustainable revenue stream 
-              to fund security, reliability, and continued product innovation.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm mb-4">
+            <strong>Design Philosophy:</strong> The 0.20% frontend fee is designed to be low enough that it does not materially change 
+            user behavior for typical DeFi actions, while generating a sustainable revenue stream 
+            to fund security, reliability, and continued product innovation.
+          </p>
 
-          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-            <h3 className="font-semibold text-green-900 mb-2">Community Governance</h3>
-            <p className="text-green-800 text-sm">
-              As market conditions change, the community can propose and vote on fee adjustments. 
-              Until then, we will publish regular treasury reports showing collections, allocations, 
-              and the tangible outcomes those funds supported.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Community Governance:</strong> As market conditions change, the community can propose and vote on fee adjustments. 
+            Until then, we will publish regular treasury reports showing collections, allocations, 
+            and the tangible outcomes those funds supported.
+          </p>
         </section>
       </div>
 

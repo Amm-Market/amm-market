@@ -28,12 +28,10 @@ export default function ContractsArchitecturePage() {
             access loans, unlocking new capital efficiency in DeFi. With this innovation comes a 
             heightened responsibility to ensure the security of both user assets and the broader ecosystem.
           </p>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <p className="text-blue-800 text-sm">
-              <strong>Core Principle:</strong> Security is not just a feature—it is the foundation 
-              of trust that enables users to confidently participate in these markets.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Core Principle:</strong> Security is not just a feature—it is the foundation 
+            of trust that enables users to confidently participate in these markets.
+          </p>
         </section>
 
         <section id="security-challenges" className="mb-12">
@@ -44,15 +42,12 @@ export default function ContractsArchitecturePage() {
             by bad actors for theft, fraud, or illicit activity.
           </p>
           
-          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-            <h3 className="font-semibold text-green-900 mb-2">On-Chain Transparency</h3>
-            <p className="text-green-800 text-sm">
-              While traditional safeguards like KYC and AML are often less applicable, the transparency 
-              of on-chain transactions provides opportunities to monitor, identify, and mitigate malicious 
-              behavior. AMM Markets leverage this transparency through advanced blockchain analytics, 
-              proactive monitoring, and community-driven security initiatives.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>On-Chain Transparency:</strong> While traditional safeguards like KYC and AML are often less applicable, the transparency 
+            of on-chain transactions provides opportunities to monitor, identify, and mitigate malicious 
+            behavior. AMM Markets leverage this transparency through advanced blockchain analytics, 
+            proactive monitoring, and community-driven security initiatives.
+          </p>
         </section>
 
         <section id="multi-layer-security" className="mb-12">
@@ -62,88 +57,86 @@ export default function ContractsArchitecturePage() {
             are essential:
           </p>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">Rigorous Smart Contract Audits</h3>
-              <p className="text-purple-800 text-sm">
+          <ul className="space-y-4">
+            <li>
+              <span className="font-semibold text-gray-900">Rigorous Smart Contract Audits</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Core protocols and collateral logic undergo thorough third-party audits to ensure 
                 correctness, robustness, and resistance to exploits.
               </p>
-            </div>
+            </li>
 
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Economic Security Stress Testing</h3>
-              <p className="text-blue-800 text-sm">
+            <li>
+              <span className="font-semibold text-gray-900">Economic Security Stress Testing</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Simulation environments are used to test the resilience of markets under extreme 
                 conditions, including price volatility, liquidity shocks, and systemic stress.
               </p>
-            </div>
+            </li>
 
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">Community-Driven Bug Bounty Programs</h3>
-              <p className="text-green-800 text-sm">
+            <li>
+              <span className="font-semibold text-gray-900">Community-Driven Bug Bounty Programs</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Ethical hackers and developers are incentivized to identify vulnerabilities, ensuring 
                 continuous improvement and rapid mitigation of potential threats.
               </p>
-            </div>
-          </div>
+            </li>
+          </ul>
 
-          <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <p className="text-amber-800 text-sm">
-              While no system can claim absolute invulnerability, the combination of transparency, 
-              rigorous audits, economic simulations, and community engagement ensures that AMM Markets 
-              remain a secure and trusted environment for liquidity providers and borrowers alike.
-            </p>
-          </div>
+          <p className="mt-4 text-gray-500 text-sm">
+            While no system can claim absolute invulnerability, the combination of transparency, 
+            rigorous audits, economic simulations, and community engagement ensures that AMM Markets 
+            remain a secure and trusted environment for liquidity providers and borrowers alike.
+          </p>
         </section>
 
         <section id="core-contracts" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Core Contracts</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">AMMMarketSpoke</h3>
-              <p className="text-blue-800 text-sm mb-2">
+          <div className="space-y-6">
+            <div className="border-b border-gray-100 pb-4">
+              <h3 className="font-semibold text-gray-900 mb-2">AMMMarketSpoke</h3>
+              <p className="text-gray-600 text-sm mb-2">
                 Main entry point for user interactions. Handles deposits, withdrawals, and 
                 coordinates with the Aave v4 Hub.
               </p>
-              <ul className="text-blue-700 text-xs space-y-1">
+              <ul className="text-gray-500 text-xs space-y-1">
                 <li>• Upgradeable proxy pattern</li>
                 <li>• Access control via roles</li>
                 <li>• Pausable functionality</li>
               </ul>
             </div>
 
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">LPCollateralManager</h3>
-              <p className="text-purple-800 text-sm mb-2">
+            <div className="border-b border-gray-100 pb-4">
+              <h3 className="font-semibold text-gray-900 mb-2">LPCollateralManager</h3>
+              <p className="text-gray-600 text-sm mb-2">
                 Manages LP token custody, valuation, and collateral accounting.
               </p>
-              <ul className="text-purple-700 text-xs space-y-1">
+              <ul className="text-gray-500 text-xs space-y-1">
                 <li>• Holds deposited LP tokens</li>
                 <li>• Tracks user balances</li>
                 <li>• Interfaces with oracle adapters</li>
               </ul>
             </div>
 
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">LPOracleAdapter</h3>
-              <p className="text-green-800 text-sm mb-2">
+            <div className="border-b border-gray-100 pb-4">
+              <h3 className="font-semibold text-gray-900 mb-2">LPOracleAdapter</h3>
+              <p className="text-gray-600 text-sm mb-2">
                 DEX-specific contracts that calculate LP token values from underlying prices.
               </p>
-              <ul className="text-green-700 text-xs space-y-1">
+              <ul className="text-gray-500 text-xs space-y-1">
                 <li>• Uniswap v3 adapter</li>
                 <li>• Balancer adapter</li>
                 <li>• Curve adapter (planned)</li>
               </ul>
             </div>
 
-            <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-              <h3 className="font-semibold text-orange-900 mb-2">LiquidationManager</h3>
-              <p className="text-orange-800 text-sm mb-2">
+            <div className="border-b border-gray-100 pb-4">
+              <h3 className="font-semibold text-gray-900 mb-2">LiquidationManager</h3>
+              <p className="text-gray-600 text-sm mb-2">
                 Handles liquidation logic, bonus calculations, and collateral seizure.
               </p>
-              <ul className="text-orange-700 text-xs space-y-1">
+              <ul className="text-gray-500 text-xs space-y-1">
                 <li>• Health factor validation</li>
                 <li>• Close factor enforcement</li>
                 <li>• Liquidation event emission</li>
@@ -159,25 +152,25 @@ export default function ContractsArchitecturePage() {
           </p>
           
           <div className="space-y-3">
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-1">Trustless</h3>
-              <ul className="text-green-800 text-sm space-y-1">
+            <div className="border-l-4 border-green-500 pl-3 py-1">
+              <h3 className="font-semibold text-gray-900 mb-1">Trustless</h3>
+              <ul className="text-gray-600 text-sm space-y-1">
                 <li>• User funds custody (held by smart contracts)</li>
                 <li>• Liquidation execution (permissionless)</li>
                 <li>• Interest calculations (on-chain math)</li>
               </ul>
             </div>
-            <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-              <h3 className="font-semibold text-yellow-900 mb-1">Semi-Trusted</h3>
-              <ul className="text-yellow-800 text-sm space-y-1">
+            <div className="border-l-4 border-amber-500 pl-3 py-1">
+              <h3 className="font-semibold text-gray-900 mb-1">Semi-Trusted</h3>
+              <ul className="text-gray-600 text-sm space-y-1">
                 <li>• Oracle price feeds (Chainlink + TWAP)</li>
                 <li>• Parameter updates (governance + timelock)</li>
                 <li>• LP token whitelisting (governance)</li>
               </ul>
             </div>
-            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-              <h3 className="font-semibold text-red-900 mb-1">Trusted</h3>
-              <ul className="text-red-800 text-sm space-y-1">
+            <div className="border-l-4 border-red-500 pl-3 py-1">
+              <h3 className="font-semibold text-gray-900 mb-1">Trusted</h3>
+              <ul className="text-gray-600 text-sm space-y-1">
                 <li>• Emergency pause (guardian multi-sig)</li>
                 <li>• Contract upgrades (governance + timelock)</li>
                 <li>• Initial parameter setting (team)</li>

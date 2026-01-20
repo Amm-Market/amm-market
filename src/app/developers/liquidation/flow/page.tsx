@@ -35,55 +35,52 @@ export default function LiquidationFlowPage() {
             clear incentive structure, it encourages active participation from liquidators while protecting 
             the interests of position owners by ensuring the return of the maximum possible value post-liquidation.
           </p>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h3 className="font-semibold text-blue-900 mb-2">Key Principle</h3>
-            <p className="text-blue-800 text-sm">
-              Initially, the debt value and any applicable liquidation penalties are deducted from 
-              the total value of the liquidated position. This deduction is first made from any 
-              uncollected fees and subsequently from the principal assets of the position.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Key Principle:</strong> Initially, the debt value and any applicable liquidation penalties are deducted from 
+            the total value of the liquidated position. This deduction is first made from any 
+            uncollected fees and subsequently from the principal assets of the position.
+          </p>
         </section>
 
         <section id="liquidation-process" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Liquidation Process</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-              <h3 className="font-semibold text-red-900 mb-2">1. Liquidation Mode Enabled</h3>
-              <p className="text-red-800 text-sm">
+          <div className="space-y-6">
+            <div className="border-b border-gray-100 pb-4">
+              <h3 className="font-semibold text-gray-900 mb-2">1. Liquidation Mode Enabled</h3>
+              <p className="text-gray-600 text-sm">
                 Any keeper can attempt liquidation once a position's accrued debt exceeds its 
                 borrowing capacity.
               </p>
             </div>
 
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-2">2. Use Uncollected Fees First</h3>
-              <p className="text-amber-800 text-sm">
+            <div className="border-b border-gray-100 pb-4">
+              <h3 className="font-semibold text-gray-900 mb-2">2. Use Uncollected Fees First</h3>
+              <p className="text-gray-600 text-sm">
                 If collected fees cover the debt, fees are used and the position remains live 
                 (remainder returned to owner).
               </p>
             </div>
 
-            <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-              <h3 className="font-semibold text-orange-900 mb-2">3. Extract Principal If Insufficient</h3>
-              <p className="text-orange-800 text-sm">
+            <div className="border-b border-gray-100 pb-4">
+              <h3 className="font-semibold text-gray-900 mb-2">3. Extract Principal If Insufficient</h3>
+              <p className="text-gray-600 text-sm">
                 The protocol determines the minimum assets to withdraw from the LP (burn LP tokens 
                 if needed) and swaps them into the debt asset(s) using on-chain liquidity routes.
               </p>
             </div>
 
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">4. Liquidator Reward</h3>
-              <p className="text-green-800 text-sm">
+            <div className="border-b border-gray-100 pb-4">
+              <h3 className="font-semibold text-gray-900 mb-2">4. Liquidator Reward</h3>
+              <p className="text-gray-600 text-sm">
                 Liquidator receives a premium (liquidation bonus) paid from the proceeds. 
                 Suggested range: 2%–10% depending on debt-to-value and pool risk.
               </p>
             </div>
 
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">5. Residual Value Returned</h3>
-              <p className="text-blue-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">5. Residual Value Returned</h3>
+              <p className="text-gray-600 text-sm">
                 Any leftover value after debt + premium is preserved for the original owner and 
                 the (possibly modified) position is returned.
               </p>
@@ -94,138 +91,62 @@ export default function LiquidationFlowPage() {
         <section id="step-by-step" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Step-by-Step Flow</h2>
           
-          <div className="space-y-4">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">1</div>
-              <div className="flex-1 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-2">Continuous Monitoring</h3>
-                <p className="text-gray-600 text-sm">
-                  Spoke oracles track LP collateral values and compute HF. If HF &lt; 1 or below warning 
-                  threshold, self-liquidation triggers.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">2</div>
-              <div className="flex-1 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-2">Compute Minimal Debt Repayment</h3>
-                <p className="text-gray-600 text-sm mb-2">
-                  Use the HF formula to determine the exact debt portion to cover:
-                </p>
-                <code className="text-xs bg-gray-200 px-2 py-1 rounded block">
-                  x = (HF_target × D − C × LT) / HF_target
-                </code>
-                <p className="text-gray-500 text-xs mt-1">
-                  Supports variable close factors per Spoke configuration.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">3</div>
-              <div className="flex-1 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-2">Protocol Flashloan Execution</h3>
-                <p className="text-gray-600 text-sm">
-                  Borrow debt token (e.g., GHO) via Aave v4 Hub flashloan. Enables repayment of borrower's 
-                  debt without upfront capital.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">4</div>
-              <div className="flex-1 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-2">Repay Debt on Spoke</h3>
-                <p className="text-gray-600 text-sm">
-                  Debt is repaid on the Spoke, marking LP collateral withdrawable.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">5</div>
-              <div className="flex-1 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-2">Withdraw and Unwrap LP Collateral</h3>
-                <p className="text-gray-600 text-sm">
-                  Extract the minimum required assets from the LP position based on LP type 
-                  (see LP Unwrapping section below).
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">6</div>
-              <div className="flex-1 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-2">Swap Tokens to Repay Flashloan</h3>
-                <p className="text-gray-600 text-sm">
-                  Convert underlying tokens into flashloan asset. Use multi-DEX routing, TWAPs, and 
-                  slippage bounds for safety.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">7</div>
-              <div className="flex-1 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-2">Repay Flashloan</h3>
-                <p className="text-gray-600 text-sm">
-                  Repay principal + fees within the same atomic transaction. Failure reverts the entire 
-                  liquidation to prevent losses.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">8</div>
-              <div className="flex-1 p-4 bg-green-50 rounded-lg border border-green-200">
-                <h3 className="font-semibold text-green-900 mb-2">Distribute Profit & Update State</h3>
-                <p className="text-green-800 text-sm">
-                  Any leftover tokens go to the liquidator (protocol if self-liquidation). HF recalculated 
-                  and dashboard updated.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-red-100 text-red-600 rounded-full flex items-center justify-center font-bold">9</div>
-              <div className="flex-1 p-4 bg-red-50 rounded-lg border border-red-200">
-                <h3 className="font-semibold text-red-900 mb-2">Escalation</h3>
-                <p className="text-red-800 text-sm">
-                  If HF still &lt; 1.2, protocol escalates to full liquidation.
-                </p>
-              </div>
-            </div>
-          </div>
+          <ol className="space-y-4 list-decimal list-inside">
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Continuous Monitoring</strong> — Spoke oracles track LP collateral values and compute HF. If HF &lt; 1 or below warning threshold, self-liquidation triggers.
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Compute Minimal Debt Repayment</strong> — Use the HF formula: <code className="text-xs bg-gray-100 px-1 rounded text-gray-800">x = (HF_target × D − C × LT) / HF_target</code>. Supports variable close factors per Spoke configuration.
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Protocol Flashloan Execution</strong> — Borrow debt token (e.g., GHO) via Aave v4 Hub flashloan. Enables repayment of borrower's debt without upfront capital.
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Repay Debt on Spoke</strong> — Debt is repaid on the Spoke, marking LP collateral withdrawable.
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Withdraw and Unwrap LP Collateral</strong> — Extract the minimum required assets from the LP position based on LP type.
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Swap Tokens to Repay Flashloan</strong> — Convert underlying tokens into flashloan asset. Use multi-DEX routing, TWAPs, and slippage bounds for safety.
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Repay Flashloan</strong> — Repay principal + fees within the same atomic transaction. Failure reverts the entire liquidation to prevent losses.
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Distribute Profit & Update State</strong> — Any leftover tokens go to the liquidator (protocol if self-liquidation). HF recalculated and dashboard updated.
+            </li>
+            <li className="text-gray-600 text-sm border-l-4 border-red-400 pl-3">
+              <strong className="text-gray-900">Escalation</strong> — If HF still &lt; 1.2, protocol escalates to full liquidation.
+            </li>
+          </ol>
         </section>
 
         <section id="lp-unwrapping" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">LP Unwrapping by Type</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">ERC-20 LPs (V2, Balancer, Curve)</h3>
-              <p className="text-blue-800 text-sm">
-                Withdraw LP, approve router, call <code className="bg-blue-100 px-1 rounded">removeLiquidity</code>. 
+          <ul className="space-y-4">
+            <li>
+              <span className="font-semibold text-gray-900">ERC-20 LPs (V2, Balancer, Curve)</span>
+              <p className="text-gray-600 text-sm mt-0.5">
+                Withdraw LP, approve router, call <code className="bg-gray-100 px-1 rounded text-gray-800">removeLiquidity</code>. 
                 Receive underlying tokens directly.
               </p>
-            </div>
-
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">NFT LPs (V3)</h3>
-              <p className="text-purple-800 text-sm">
-                Withdraw NFT, call <code className="bg-purple-100 px-1 rounded">decreaseLiquidity</code> and 
-                <code className="bg-purple-100 px-1 rounded ml-1">collect</code> to retrieve underlying tokens.
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">NFT LPs (V3)</span>
+              <p className="text-gray-600 text-sm mt-0.5">
+                Withdraw NFT, call <code className="bg-gray-100 px-1 rounded text-gray-800">decreaseLiquidity</code> and 
+                <code className="bg-gray-100 px-1 rounded text-gray-800 ml-1">collect</code> to retrieve underlying tokens.
               </p>
-            </div>
-
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">V4 LPs (Hooks/Custom Pools)</h3>
-              <p className="text-green-800 text-sm">
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">V4 LPs (Hooks/Custom Pools)</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Withdraw LP, call pool manager/hook API to unwrap. Custom logic may differ per pool.
               </p>
-            </div>
-          </div>
+            </li>
+          </ul>
         </section>
 
         <section id="liquidator-reward" className="mb-12">
@@ -316,38 +237,27 @@ export default function LiquidationFlowPage() {
         <section id="additional-considerations" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Additional Considerations</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-2">Oracle Accuracy</h3>
-              <p className="text-amber-800 text-sm">
-                Must cross-check Aave pricing with DEX TWAPs to prevent manipulation.
-              </p>
-            </div>
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-2">Liquidity Risks</h3>
-              <p className="text-amber-800 text-sm">
-                Thin LP pools require chunked swaps to minimize slippage impact.
-              </p>
-            </div>
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-2">Gas & Stack Limits</h3>
-              <p className="text-amber-800 text-sm">
-                Complex multi-step transactions may hit EVM limits; optimize calldata.
-              </p>
-            </div>
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-2">Token Peculiarities</h3>
-              <p className="text-amber-800 text-sm">
-                Fee-on-transfer, rebasing, and nonstandard ERC-20 tokens require SafeERC20 handling.
-              </p>
-            </div>
-            <div className="p-4 bg-red-50 rounded-lg border border-red-200 md:col-span-2">
-              <h3 className="font-semibold text-red-900 mb-2">MEV / Front-running Risks</h3>
-              <p className="text-red-800 text-sm">
-                Consider private relay or Flashbots for large liquidations to prevent sandwich attacks.
-              </p>
-            </div>
-          </div>
+          <ul className="space-y-4 mb-4">
+            <li>
+              <span className="font-semibold text-gray-900">Oracle Accuracy</span>
+              <p className="text-gray-600 text-sm mt-0.5">Must cross-check Aave pricing with DEX TWAPs to prevent manipulation.</p>
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Liquidity Risks</span>
+              <p className="text-gray-600 text-sm mt-0.5">Thin LP pools require chunked swaps to minimize slippage impact.</p>
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Gas & Stack Limits</span>
+              <p className="text-gray-600 text-sm mt-0.5">Complex multi-step transactions may hit EVM limits; optimize calldata.</p>
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Token Peculiarities</span>
+              <p className="text-gray-600 text-sm mt-0.5">Fee-on-transfer, rebasing, and nonstandard ERC-20 tokens require SafeERC20 handling.</p>
+            </li>
+          </ul>
+          <p className="text-gray-600 text-sm border-l-4 border-red-400 pl-3">
+            <strong>MEV / Front-running Risks:</strong> Consider private relay or Flashbots for large liquidations to prevent sandwich attacks.
+          </p>
         </section>
 
         <section id="integration-guide" className="mb-12">
@@ -391,14 +301,14 @@ export default function LiquidationFlowPage() {
             </div>
           </div>
 
-          <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <h3 className="font-semibold text-amber-900 mb-2">Gas Considerations</h3>
-            <ul className="text-amber-800 text-sm space-y-1">
+          <div className="mt-4">
+            <h3 className="font-semibold text-gray-900 mb-2">Gas Considerations</h3>
+            <ul className="text-gray-600 text-sm space-y-1">
               <li>• Simple Liquidation: ~300,000 gas</li>
               <li>• Flash Liquidation: ~500,000 gas</li>
               <li>• Multi-collateral Liquidation: ~400,000+ gas</li>
             </ul>
-            <p className="text-amber-700 text-xs mt-2">
+            <p className="text-gray-500 text-xs mt-2">
               Gas costs vary with network conditions. Factor gas into profitability calculations.
             </p>
           </div>

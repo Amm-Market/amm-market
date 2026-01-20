@@ -39,15 +39,12 @@ export default function RouterContractPage() {
             Spoke logic. It ensures that operations such as depositing LP tokens, swapping underlying 
             assets, refinancing positions, or executing liquidations occur in a reliable and atomic manner.
           </p>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h3 className="font-semibold text-blue-900 mb-2">Multi-DEX Integration</h3>
-            <p className="text-blue-800 text-sm">
-              By integrating with multiple DEXes—Uniswap V2/V3, Balancer, Curve, SushiSwap, Camelot, 
-              Kyber, Trader Joe, Aerodrome, PancakeSwap, and others—the router allows developers and 
-              integrators to manage liquidity and collateral without needing to implement custom adapters 
-              for each protocol.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Multi-DEX Integration:</strong> By integrating with multiple DEXes—Uniswap V2/V3, Balancer, Curve, SushiSwap, Camelot, 
+            Kyber, Trader Joe, Aerodrome, PancakeSwap, and others—the router allows developers and 
+            integrators to manage liquidity and collateral without needing to implement custom adapters 
+            for each protocol.
+          </p>
         </section>
 
         <section id="key-functionalities" className="mb-12">
@@ -95,46 +92,27 @@ export default function RouterContractPage() {
         <section id="how-it-works" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">How the Router Works</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">1. Register Adapters</h3>
-              <p className="text-purple-800 text-sm">
-                Each supported DEX or protocol implements a protocol-specific adapter. These adapters 
-                expose standardized functions for liquidity withdrawal, deposits, and swaps, which the 
-                router calls to interact with the protocol safely.
-              </p>
-            </div>
+          <ol className="space-y-4 list-decimal list-inside">
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Register Adapters</strong> — Each supported DEX or protocol implements a protocol-specific adapter. These adapters 
+              expose standardized functions for liquidity withdrawal, deposits, and swaps, which the 
+              router calls to interact with the protocol safely.
+            </li>
 
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">2. Initiate Operation</h3>
-              <p className="text-blue-800 text-sm">
-                Users specify the action (swap, migration, or liquidation), the source and destination 
-                pools, the LP token or asset amounts, and any parameters such as slippage limits or tick ranges.
-              </p>
-            </div>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Initiate Operation</strong> — Users specify the action (swap, migration, or liquidation), the source and destination 
+              pools, the LP token or asset amounts, and any parameters such as slippage limits or tick ranges.
+            </li>
 
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">3. Atomic Execution</h3>
-              <p className="text-green-800 text-sm mb-2">
-                The router executes the full operation in a single transaction:
-              </p>
-              <ul className="text-green-800 text-sm space-y-1 ml-4">
-                <li>• Withdraws from the source pool via the adapter</li>
-                <li>• Applies fees and validates balances</li>
-                <li>• Executes swaps or conversions if required</li>
-                <li>• Deposits liquidity into the target pool</li>
-                <li>• Updates collateral accounting in the AMM Market Spoke</li>
-              </ul>
-            </div>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Atomic Execution</strong> — The router executes the full operation in a single transaction: withdraws from the source pool via the adapter, applies fees and validates balances, executes swaps or conversions if required, deposits liquidity into the target pool, and updates collateral accounting in the AMM Market Spoke.
+            </li>
 
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-2">4. Finalization</h3>
-              <p className="text-amber-800 text-sm">
-                The user receives the updated position, and any protocol fees are sent to the designated 
-                recipient. The router ensures that all steps succeed or fail together, eliminating partial executions.
-              </p>
-            </div>
-          </div>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Finalization</strong> — The user receives the updated position, and any protocol fees are sent to the designated 
+              recipient. The router ensures that all steps succeed or fail together, eliminating partial executions.
+            </li>
+          </ol>
         </section>
 
         <section id="operations" className="mb-12">
@@ -200,34 +178,34 @@ export default function RouterContractPage() {
         <section id="security" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Security & Efficiency</h2>
           
-          <div className="space-y-3">
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-1">Atomic Transactions</h3>
-              <p className="text-green-800 text-sm">
+          <ul className="space-y-3">
+            <li>
+              <span className="font-semibold text-gray-900">Atomic Transactions</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Prevents partial fund movements or errors during multi-step operations.
               </p>
-            </div>
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-1">Reentrancy Protection</h3>
-              <p className="text-blue-800 text-sm">
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Reentrancy Protection</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Ensures safety against common attack vectors in DeFi.
               </p>
-            </div>
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-1">Adapter Abstraction</h3>
-              <p className="text-purple-800 text-sm">
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Adapter Abstraction</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Isolates protocol-specific logic, enabling safe integration with hundreds of pools 
                 and multiple DEXes.
               </p>
-            </div>
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-1">Capital Efficiency</h3>
-              <p className="text-amber-800 text-sm">
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Capital Efficiency</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Automatically handles token conversions (ETH/WETH or others) to maximize efficiency 
                 and minimize unnecessary swaps.
               </p>
-            </div>
-          </div>
+            </li>
+          </ul>
 
           <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
             <h3 className="font-semibold text-gray-900 mb-2">Developer Notes</h3>
@@ -244,48 +222,46 @@ export default function RouterContractPage() {
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Contract Addresses</h2>
           
           <div className="space-y-4">
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+            <div className="border-l-4 border-green-500 pl-3">
               <div className="flex items-center gap-2 mb-2">
-                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                <h3 className="font-semibold text-green-900">Base Sepolia (Testnet)</h3>
+                <h3 className="font-semibold text-gray-900">Base Sepolia (Testnet)</h3>
               </div>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between items-center">
-                  <span className="text-green-800">Router</span>
-                  <code className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-mono">
+                  <span className="text-gray-600">Router</span>
+                  <code className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded font-mono">
                     0x1234...5678
                   </code>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-green-800">AMM Market Spoke</span>
-                  <code className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-mono">
+                  <span className="text-gray-600">AMM Market Spoke</span>
+                  <code className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded font-mono">
                     0xabcd...ef01
                   </code>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-green-800">Oracle Adapter</span>
-                  <code className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-mono">
+                  <span className="text-gray-600">Oracle Adapter</span>
+                  <code className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded font-mono">
                     0x2345...6789
                   </code>
                 </div>
               </div>
             </div>
 
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <div className="border-l-4 border-gray-400 pl-3">
               <div className="flex items-center gap-2 mb-2">
-                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                <h3 className="font-semibold text-blue-900">Unichain Sepolia (Testnet)</h3>
+                <h3 className="font-semibold text-gray-900">Unichain Sepolia (Testnet)</h3>
               </div>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between items-center">
-                  <span className="text-blue-800">Router</span>
-                  <code className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded font-mono">
+                  <span className="text-gray-600">Router</span>
+                  <code className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded font-mono">
                     0x3456...7890
                   </code>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-blue-800">AMM Market Spoke</span>
-                  <code className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded font-mono">
+                  <span className="text-gray-600">AMM Market Spoke</span>
+                  <code className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded font-mono">
                     0xbcde...f012
                   </code>
                 </div>

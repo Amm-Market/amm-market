@@ -34,39 +34,37 @@ export default function DepositLPPage() {
             checks that the resulting loan is safe given the configured collateral factors, and then 
             draws the requested asset from the chosen Hub.
           </p>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <p className="text-blue-800 text-sm">
-              <strong>Note:</strong> Your LP position remains active in the underlying pool. 
-              AMM Market holds your LP tokens but does not remove liquidity from the DEX.
-            </p>
-          </div>
+          <p className="text-gray-500 text-sm">
+            <strong>Note:</strong> Your LP position remains active in the underlying pool. 
+            AMM Market holds your LP tokens but does not remove liquidity from the DEX.
+          </p>
         </section>
 
         <section id="deposit-flow" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Deposit Flow</h2>
-          <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="space-y-6">
+            <div className="border-b border-gray-100 pb-4">
               <h3 className="font-semibold text-gray-900 mb-2">Step 1: Call deposit(tokenId)</h3>
               <p className="text-gray-600 text-sm mb-2">
-                Inside the Spoke, a user calls <code className="bg-gray-200 px-1 rounded">deposit(tokenId)</code>, 
-                which internally triggers a <code className="bg-gray-200 px-1 rounded">safeTransferFrom</code> call 
+                Inside the Spoke, a user calls <code className="bg-gray-100 px-1 rounded text-gray-800">deposit(tokenId)</code>, 
+                which internally triggers a <code className="bg-gray-100 px-1 rounded text-gray-800">safeTransferFrom</code> call 
                 to the Uniswap NonfungiblePositionManager.
               </p>
-              <code className="text-xs bg-gray-200 px-2 py-1 rounded block overflow-x-auto">
+              <code className="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded block overflow-x-auto">
                 spoke.deposit(tokenId)
               </code>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="border-b border-gray-100 pb-4">
               <h3 className="font-semibold text-gray-900 mb-2">Step 2: NFT Transfer</h3>
               <p className="text-gray-600 text-sm">
                 The NFT moves from the user's wallet into the Spoke's custody. This action fires the 
-                <code className="bg-gray-200 px-1 rounded ml-1">onERC721Received</code> hook.
+                <code className="bg-gray-100 px-1 rounded text-gray-800 ml-1">onERC721Received</code> hook.
               </p>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div>
               <h3 className="font-semibold text-gray-900 mb-2">Step 3: Initialization Logic</h3>
               <p className="text-gray-600 text-sm">
-                The Spoke performs its initialization logic in the <code className="bg-gray-200 px-1 rounded">onERC721Received</code> hook:
+                The Spoke performs its initialization logic in the <code className="bg-gray-100 px-1 rounded text-gray-800">onERC721Received</code> hook:
               </p>
               <ul className="text-gray-600 text-sm mt-2 space-y-1 ml-4">
                 <li>• Records the NFT's ownership</li>
@@ -79,19 +77,21 @@ export default function DepositLPPage() {
 
         <section id="technical-details" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Technical Details</h2>
-          <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 mb-4">
-            <h3 className="font-semibold text-purple-900 mb-2">Oracle Valuation</h3>
-            <p className="text-purple-800 text-sm">
-              The NFT is valued by an oracle that returns the full position value plus accumulated fees. 
-              This valuation is used to determine borrowing power.
-            </p>
-          </div>
-          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-            <h3 className="font-semibold text-green-900 mb-2">Per-Position Accounting</h3>
-            <p className="text-green-800 text-sm">
-              Each LP position (tokenId) has its own loan entry. This means you can have multiple 
-              distinct loans from different LP positions, each tracked independently.
-            </p>
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Oracle Valuation</h3>
+              <p className="text-gray-600 text-sm">
+                The NFT is valued by an oracle that returns the full position value plus accumulated fees. 
+                This valuation is used to determine borrowing power.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Per-Position Accounting</h3>
+              <p className="text-gray-600 text-sm">
+                Each LP position (tokenId) has its own loan entry. This means you can have multiple 
+                distinct loans from different LP positions, each tracked independently.
+              </p>
+            </div>
           </div>
         </section>
 

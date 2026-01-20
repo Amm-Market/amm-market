@@ -23,15 +23,13 @@ export default function LegalDisclaimerPage() {
           Legal notices governing use of the protocol and documentation.
         </p>
 
-        <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-200 mb-8">
-          <p className="text-yellow-800 text-sm">
-            <strong>Important:</strong> Please read this disclaimer carefully before using 
-            AMM Market. By using the protocol, you acknowledge that you have read, understood, 
-            and agree to be bound by these terms. For complete terms, please review our{" "}
-            <Link href="/terms" className="text-yellow-900 underline hover:text-yellow-700">Terms of Service</Link> and{" "}
-            <Link href="/privacy" className="text-yellow-900 underline hover:text-yellow-700">Privacy Policy</Link>.
-          </p>
-        </div>
+        <p className="text-gray-600 text-sm border-l-4 border-amber-400 pl-3 mb-8">
+          <strong>Important:</strong> Please read this disclaimer carefully before using 
+          AMM Market. By using the protocol, you acknowledge that you have read, understood, 
+          and agree to be bound by these terms. For complete terms, please review our{" "}
+          <Link href="/terms" className="text-blue-600 underline hover:text-blue-700">Terms of Service</Link> and{" "}
+          <Link href="/privacy" className="text-blue-600 underline hover:text-blue-700">Privacy Policy</Link>.
+        </p>
 
         <section id="overview" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
@@ -103,9 +101,9 @@ export default function LegalDisclaimerPage() {
           </p>
           
           <div className="space-y-4">
-            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-              <h3 className="font-semibold text-red-900 mb-2">Experimental Technology</h3>
-              <p className="text-red-800 text-sm">
+            <div className="border-l-4 border-red-400 pl-3">
+              <h3 className="font-semibold text-gray-900 mb-2">Experimental Technology</h3>
+              <p className="text-gray-600 text-sm">
                 "The Services may incorporate experimental and novel technology and the use of such 
                 technology involves a high degree of risk. There are numerous reasons the Services or 
                 underlying blockchain networks could fail in an unexpected way, resulting in the total 
@@ -113,9 +111,9 @@ export default function LegalDisclaimerPage() {
               </p>
             </div>
 
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-2">Operational Challenges</h3>
-              <p className="text-amber-800 text-sm">
+            <div className="border-l-4 border-amber-400 pl-3">
+              <h3 className="font-semibold text-gray-900 mb-2">Operational Challenges</h3>
+              <p className="text-gray-600 text-sm">
                 "The Services and/or underlying blockchain networks may experience or be the subject 
                 of cyber-attacks, unexpected surges in transaction volume, or other operational or 
                 technical difficulties or vulnerabilities that may cause interruptions related to 
@@ -123,9 +121,9 @@ export default function LegalDisclaimerPage() {
               </p>
             </div>
 
-            <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-              <h3 className="font-semibold text-orange-900 mb-2">Regulatory Uncertainty</h3>
-              <p className="text-orange-800 text-sm">
+            <div className="border-l-4 border-amber-400 pl-3">
+              <h3 className="font-semibold text-gray-900 mb-2">Regulatory Uncertainty</h3>
+              <p className="text-gray-600 text-sm">
                 "The Services, the AMM Market Protocol and/or any underlying blockchain networks may 
                 not be available or appropriate for use in all jurisdictions and you may be subject 
                 to legal and regulatory compliance obligations in connection with your use of the 
@@ -133,7 +131,7 @@ export default function LegalDisclaimerPage() {
               </p>
             </div>
 
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div>
               <h3 className="font-semibold text-gray-900 mb-2">LP-Specific Risks</h3>
               <ul className="text-gray-600 text-sm space-y-1">
                 <li>• Impermanent loss can reduce collateral value</li>
@@ -190,25 +188,25 @@ export default function LegalDisclaimerPage() {
           </p>
           
           <div className="space-y-3">
-            <Link href="/terms" className="block p-4 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors">
-              <h3 className="font-semibold text-blue-900 mb-1">Terms of Service</h3>
-              <p className="text-blue-800 text-sm">
+            <Link href="/terms" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50/50 transition-colors">
+              <h3 className="font-semibold text-gray-900 mb-1">Terms of Service</h3>
+              <p className="text-gray-600 text-sm">
                 The complete legally binding agreement governing your use of AMM Market, including 
                 eligibility, prohibited activities, intellectual property, dispute resolution, and more.
               </p>
             </Link>
 
-            <Link href="/privacy" className="block p-4 bg-purple-50 rounded-lg border border-purple-200 hover:bg-purple-100 transition-colors">
-              <h3 className="font-semibold text-purple-900 mb-1">Privacy Policy</h3>
-              <p className="text-purple-800 text-sm">
+            <Link href="/privacy" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50/50 transition-colors">
+              <h3 className="font-semibold text-gray-900 mb-1">Privacy Policy</h3>
+              <p className="text-gray-600 text-sm">
                 How we collect, use, and protect your personal information, including data retention, 
                 cookies, and your rights under GDPR, CCPA, and other privacy regulations.
               </p>
             </Link>
 
-            <Link href="/developers/legal" className="block p-4 bg-amber-50 rounded-lg border border-amber-200 hover:bg-amber-100 transition-colors">
-              <h3 className="font-semibold text-amber-900 mb-1">Restricted Territories</h3>
-              <p className="text-amber-800 text-sm">
+            <Link href="/developers/legal" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50/50 transition-colors">
+              <h3 className="font-semibold text-gray-900 mb-1">Restricted Territories</h3>
+              <p className="text-gray-600 text-sm">
                 Current list of jurisdictions restricted from accessing AMM Market services.
               </p>
             </Link>

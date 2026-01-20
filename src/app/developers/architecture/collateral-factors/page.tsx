@@ -61,13 +61,11 @@ export default function CollateralFactorsPage() {
             the user to borrow up to $75 (before applying liquidation rules, reserve factors, and 
             other risk buffers).
           </p>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <p className="text-blue-800 text-sm">
-              <strong>Key Principle:</strong> We align our single-token CFs with industry standards 
-              (similar to Aave), then apply LP-specific pool-level risk adjustments when the collateral 
-              is an LP token. This hybrid approach balances capital efficiency and protocol safety.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Key Principle:</strong> We align our single-token CFs with industry standards 
+            (similar to Aave), then apply LP-specific pool-level risk adjustments when the collateral 
+            is an LP token. This hybrid approach balances capital efficiency and protocol safety.
+          </p>
         </section>
 
         <section id="how-cf-works" className="mb-12">
@@ -88,14 +86,14 @@ export default function CollateralFactorsPage() {
             </p>
           </div>
 
-          <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-            <h3 className="font-semibold text-purple-900 mb-2">Token-Level Granularity</h3>
-            <p className="text-purple-800 text-sm mb-2">
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-2">Token-Level Granularity</h3>
+            <p className="text-gray-600 text-sm mb-2">
               Inside the Spoke, collateral factors are not applied to the Spoke as a whole but to 
               the individual tokens that compose the LP positions. The Spoke maintains a 
-              <code className="bg-purple-100 px-1 rounded ml-1">tokenConfigs</code> mapping.
+              <code className="bg-gray-100 px-1 rounded text-gray-800 ml-1">tokenConfigs</code> mapping.
             </p>
-            <p className="text-purple-800 text-sm">
+            <p className="text-gray-600 text-sm">
               When a loan is checked for health, the Spoke calculates the <strong>minimum collateral 
               factor</strong> between the two tokens in the LP pair. For an ETH/USDC position with 
               ETH at 77.5% and USDC at 85%, this would be 77.5%.
@@ -143,12 +141,12 @@ export default function CollateralFactorsPage() {
                 <li>• High-volatility / small LPs → 0.70</li>
               </ul>
             </div>
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">Step 4: Compute Borrowable Amount</h3>
-              <code className="text-sm text-green-800">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Step 4: Compute Borrowable Amount</h3>
+              <code className="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded block">
                 Borrowable USD = Position USD Value × Lower Token CF × Pool-Level Risk
               </code>
-              <p className="text-green-700 text-xs mt-2">
+              <p className="text-gray-500 text-xs mt-2">
                 Liquidation thresholds, bonuses, and reserve factors are applied after borrowable LTV.
               </p>
             </div>
@@ -163,51 +161,20 @@ export default function CollateralFactorsPage() {
             from the borrowable LTV and do not reduce the initial amount a user can borrow.
           </p>
           
-          <div className="space-y-4">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">1</div>
-              <div className="flex-1 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                <h3 className="font-semibold text-blue-900 mb-2">Compute Borrowable LTV</h3>
-                <p className="text-blue-800 text-sm">
-                  Calculate using <strong>Lower Token CF × Pool-Level Risk</strong>. This determines the 
-                  maximum amount a user can borrow against their LP collateral.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center font-bold">2</div>
-              <div className="flex-1 p-4 bg-amber-50 rounded-lg border border-amber-200">
-                <h3 className="font-semibold text-amber-900 mb-2">Apply Liquidation Threshold</h3>
-                <p className="text-amber-800 text-sm">
-                  Determine the point at which a position becomes eligible for liquidation. Set slightly 
-                  above the borrowable LTV to provide a safety buffer.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">3</div>
-              <div className="flex-1 p-4 bg-green-50 rounded-lg border border-green-200">
-                <h3 className="font-semibold text-green-900 mb-2">Incentivize Liquidators</h3>
-                <p className="text-green-800 text-sm">
-                  Apply the <strong>Liquidation Bonus</strong> to encourage timely liquidation when 
-                  positions exceed the threshold.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold">4</div>
-              <div className="flex-1 p-4 bg-purple-50 rounded-lg border border-purple-200">
-                <h3 className="font-semibold text-purple-900 mb-2">Allocate Reserve Factor</h3>
-                <p className="text-purple-800 text-sm">
-                  A portion of interest payments is allocated to the <strong>Reserve Factor</strong> for 
-                  protocol reserves and insurance.
-                </p>
-              </div>
-            </div>
-          </div>
+          <ol className="space-y-4 list-decimal list-inside">
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Compute Borrowable LTV</strong> — Calculate using Lower Token CF × Pool-Level Risk. This determines the maximum amount a user can borrow against their LP collateral.
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Apply Liquidation Threshold</strong> — Determine the point at which a position becomes eligible for liquidation. Set slightly above the borrowable LTV to provide a safety buffer.
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Incentivize Liquidators</strong> — Apply the Liquidation Bonus to encourage timely liquidation when positions exceed the threshold.
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Allocate Reserve Factor</strong> — A portion of interest payments is allocated to the Reserve Factor for protocol reserves and insurance.
+            </li>
+          </ol>
 
           <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
             <p className="text-gray-700 text-sm">
@@ -279,29 +246,29 @@ export default function CollateralFactorsPage() {
         <section id="examples" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example Calculations</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Example A — Single Token (USDC)</h3>
-              <ul className="text-blue-800 text-sm space-y-1">
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Example A — Single Token (USDC)</h3>
+              <ul className="text-gray-600 text-sm space-y-1">
                 <li>• User deposits $10,000 USDC</li>
                 <li>• Target LTV: 85%</li>
                 <li>• <strong>Borrowable = $10,000 × 85% = $8,500</strong></li>
               </ul>
-              <p className="text-blue-700 text-xs mt-2">
+              <p className="text-gray-500 text-xs mt-2">
                 (Subject to liquidation thresholds and reserve factors)
               </p>
             </div>
 
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">Example B — ETH/USDC LP</h3>
-              <ul className="text-purple-800 text-sm space-y-1">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Example B — ETH/USDC LP</h3>
+              <ul className="text-gray-600 text-sm space-y-1">
                 <li>• LP Position Value: $963.51</li>
                 <li>• Single-token CFs: WETH 77.5%, USDC 85%</li>
                 <li>• Lower token CF = 77.5%</li>
                 <li>• Pool-Level Risk Factor = 0.85</li>
                 <li>• <strong>Final Borrowable = $963.51 × 77.5% × 0.85 ≈ $634.88</strong></li>
               </ul>
-              <p className="text-purple-700 text-xs mt-2">
+              <p className="text-gray-500 text-xs mt-2">
                 Liquidation threshold, bonus, and reserve factor are applied separately.
               </p>
             </div>

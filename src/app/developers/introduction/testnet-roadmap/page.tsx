@@ -28,31 +28,11 @@ export default function TestnetRoadmapPage() {
             a wide range of wallets.
           </p>
           
-          <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-green-500">✓</span>
-                <h3 className="font-semibold text-green-900">Ethereum</h3>
-              </div>
-            </div>
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-green-500">✓</span>
-                <h3 className="font-semibold text-green-900">Unichain</h3>
-              </div>
-            </div>
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-green-500">✓</span>
-                <h3 className="font-semibold text-green-900">Arbitrum</h3>
-              </div>
-            </div>
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-green-500">✓</span>
-                <h3 className="font-semibold text-green-900">Base</h3>
-              </div>
-            </div>
+          <div className="flex flex-wrap gap-4 text-sm">
+            <span className="border-l-4 border-green-500 pl-3 font-medium text-gray-900">Ethereum</span>
+            <span className="border-l-4 border-green-500 pl-3 font-medium text-gray-900">Unichain</span>
+            <span className="border-l-4 border-green-500 pl-3 font-medium text-gray-900">Arbitrum</span>
+            <span className="border-l-4 border-green-500 pl-3 font-medium text-gray-900">Base</span>
           </div>
         </section>
 
@@ -105,52 +85,30 @@ export default function TestnetRoadmapPage() {
         <section id="getting-started" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Getting Started on Testnet</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">1. Claim Mock ETH</h3>
-              <p className="text-blue-800 text-sm">
-                Get ETH Sepolia from an external faucet.
-              </p>
-            </div>
-
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">2. Claim Mock USDC</h3>
-              <p className="text-blue-800 text-sm">
-                Visit our Circle USDC faucet to receive 100 mock USDC.
-              </p>
-            </div>
-
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">3. Add Liquidity</h3>
-              <p className="text-blue-800 text-sm mb-2">
-                Go to the Trade page on AMM Market Testnet and click "Add Liquidity":
-              </p>
-              <ul className="text-blue-800 text-sm space-y-1 ml-4">
-                <li>✓ Connect to AMM Market</li>
-                <li>✓ Deposit both your testnet ETH and your mock USDC</li>
-              </ul>
-            </div>
-
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">4. Try Borrow</h3>
-              <p className="text-green-800 text-sm">
-                You're now ready to execute your first trade on AMM Market!
-              </p>
-            </div>
-          </div>
+          <ol className="space-y-4 list-decimal list-inside">
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Claim Mock ETH</strong> — Get ETH Sepolia from an external faucet.
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Claim Mock USDC</strong> — Visit our Circle USDC faucet to receive 100 mock USDC.
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Add Liquidity</strong> — Go to the Trade page on AMM Market Testnet and click "Add Liquidity": connect to AMM Market and deposit both your testnet ETH and your mock USDC.
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Try Borrow</strong> — You're now ready to execute your first trade on AMM Market!
+            </li>
+          </ol>
         </section>
 
         <section id="rewards-program" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Rewards Program</h2>
           
-          <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 mb-4">
-            <h3 className="font-semibold text-purple-900 mb-2">Eligibility & Compliance</h3>
-            <p className="text-purple-800 text-sm">
-              Any user who can access and deposit liquidity is eligible for Mini rewards. Our system 
-              adheres to strict compliance standards—including geo-blocking and AML requirements—enforced 
-              directly within our web application and smart contracts.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm mb-4">
+            <strong>Eligibility & Compliance:</strong> Any user who can access and deposit liquidity is eligible for Mini rewards. Our system 
+            adheres to strict compliance standards—including geo-blocking and AML requirements—enforced 
+            directly within our web application and smart contracts.
+          </p>
 
           <p className="text-gray-600 leading-relaxed mb-4">
             Our robust points engine enables us to reward actions at a granular level, applying distinct 
@@ -202,25 +160,22 @@ export default function TestnetRoadmapPage() {
             </div>
           </div>
 
-          <div className="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <h3 className="font-semibold text-amber-900 mb-2">Coming Soon</h3>
-            <p className="text-amber-800 text-sm mb-2">
+          <div className="mt-6">
+            <h3 className="font-semibold text-gray-900 mb-2">Coming Soon</h3>
+            <p className="text-gray-600 text-sm mb-2">
               As we expand our partnerships and integrations, expect new programs to earn points for:
             </p>
-            <ul className="text-amber-800 text-sm space-y-1 ml-4">
+            <ul className="text-gray-600 text-sm space-y-1 ml-4">
               <li>• LP'ing into integrated DeFi protocols</li>
               <li>• Completing quests on Layer 2</li>
               <li>• And more...</li>
             </ul>
           </div>
 
-          <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h3 className="font-semibold text-blue-900 mb-2">Note</h3>
-            <p className="text-blue-800 text-sm">
-              Loyalty points will only be accrued if your wallet holds eETH, weETH, or follows one of 
-              the designated ecosystem paths outlined on our official ecosystems page.
-            </p>
-          </div>
+          <p className="mt-4 text-gray-600 text-sm">
+            <strong>Note:</strong> Loyalty points will only be accrued if your wallet holds eETH, weETH, or follows one of 
+            the designated ecosystem paths outlined on our official ecosystems page.
+          </p>
         </section>
       </div>
 
