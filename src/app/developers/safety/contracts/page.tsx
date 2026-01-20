@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Smart Contract Security",
+  description: "AMM Market smart contract security - security challenges, multi-layer security architecture, core contracts, trust boundaries, and audits.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

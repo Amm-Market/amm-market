@@ -1,3 +1,25 @@
+/**
+ * Tabs Component Suite
+ * 
+ * @description
+ * Accessible tabs component built on Radix UI Tabs primitive.
+ * Provides keyboard navigation and ARIA attributes out of the box.
+ * 
+ * @example
+ * ```tsx
+ * <Tabs defaultValue="tab1">
+ *   <TabsList>
+ *     <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+ *     <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+ *   </TabsList>
+ *   <TabsContent value="tab1">Content for tab 1</TabsContent>
+ *   <TabsContent value="tab2">Content for tab 2</TabsContent>
+ * </Tabs>
+ * ```
+ * 
+ * @module components/ui/tabs
+ */
+
 "use client"
 
 import * as React from "react"

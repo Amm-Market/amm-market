@@ -1,5 +1,18 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+/**
+ * Lightpaper page metadata for SEO
+ */
+export const metadata: Metadata = {
+  title: "Lightpaper - Technical Overview",
+  description: "Deep dive into AMM Market architecture, risk models, collateral factors, liquidation engine, and financial projections. Learn how LP token collateral works on Aave v4.",
+  openGraph: {
+    title: "Lightpaper - AMM Market Technical Overview",
+    description: "Comprehensive technical documentation on AMM Market's Hub-and-Spoke design, risk management, and economic model.",
+  },
+}
 
 const sections = [
   { id: "motivation", title: "A) Motivation" },

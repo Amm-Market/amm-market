@@ -1,13 +1,41 @@
 "use client"
 
+/**
+ * ErrorBoundary - A client-side error boundary component.
+ * 
+ * @description
+ * Catches unhandled JavaScript errors in child components and displays
+ * a user-friendly error message instead of crashing the entire app.
+ * 
+ * Uses a window error event listener since React 18 error boundaries
+ * require class components, and this provides similar functionality
+ * for functional components.
+ * 
+ * @features
+ * - Catches unhandled errors via window.addEventListener
+ * - Displays friendly error UI with retry option
+ * - Prevents error from bubbling up
+ * - Logs errors to console (consider adding Sentry in production)
+ * 
+ * @param children - Child components to wrap and protect
+ * 
+ * @example
+ * <ErrorBoundary>
+ *   <ComponentThatMightError />
+ * </ErrorBoundary>
+ * 
+ * @todo Integrate with Sentry or similar error tracking service
+ * @todo Add option to report error to support
+ */
 import type React from "react"
 import { useEffect, useState } from "react"
 
 interface ErrorBoundaryProps {
+  /** Child components to wrap and protect from errors */
   children: React.ReactNode
 }
 
-export default function ErrorBoundary({ children }: ErrorBoundaryProps) {
+export default function ErrorBoundary({ children }: ErrorBoundaryProps): React.JSX.Element {
   const [hasError, setHasError] = useState(false)
 
   useEffect(() => {

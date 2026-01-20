@@ -1,8 +1,30 @@
+/**
+ * Footer - The site-wide footer component.
+ * 
+ * @description
+ * Renders the page footer with:
+ * - Logo linking to homepage
+ * - Navigation links organized in three columns (Products, Resources, Developers)
+ * - Social media links (Twitter, Discord, GitHub)
+ * - Legal links (Privacy, Terms)
+ * - Copyright notice with dynamic year
+ * 
+ * @layout
+ * - Mobile: 2-column grid
+ * - Tablet: 3-column grid  
+ * - Desktop: Auto + 1fr with 3-column nested grid for links
+ * 
+ * @example
+ * // Used in root layout
+ * <Footer />
+ * 
+ * @see src/app/layout.tsx - Where this component is rendered
+ */
 import Link from "next/link"
 import Image from "next/image"
 import { Github, Twitter, DiscIcon as Discord } from "lucide-react"
 
-export default function Footer() {
+export default function Footer(): React.JSX.Element {
   const currentYear = new Date().getFullYear()
 
   return (

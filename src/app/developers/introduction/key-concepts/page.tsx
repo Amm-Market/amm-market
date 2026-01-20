@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Key Concepts",
+  description: "Understand core concepts of AMM Market: LP positions as collateral, oracle valuation, borrowing process, health monitoring, and fee collection.",
+}
 
 const sections = [
   { id: "core-insight", title: "Core Insight" },

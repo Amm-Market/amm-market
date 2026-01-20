@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Price Oracles",
+  description: "AMM Market price oracle architecture - multi-layer design, DEX-specific handling, TWAP computation, and manipulation prevention.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

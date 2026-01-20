@@ -262,7 +262,8 @@ export default function FaqPage() {
   const [searchTerm, setSearchTerm] = useState("")
 
   // Get questions for the active category or filter by search term
-  const filteredQuestions = searchTerm
+  // When searching, include category name for display
+  const searchResults = searchTerm
     ? faqCategories
         .flatMap((category) => category.questions.map((q) => ({ ...q, category: category.name })))
         .filter(
@@ -270,7 +271,11 @@ export default function FaqPage() {
             q.q.toLowerCase().includes(searchTerm.toLowerCase()) ||
             q.a.toLowerCase().includes(searchTerm.toLowerCase()),
         )
-    : faqCategories.find((cat) => cat.name === activeCategory)?.questions || []
+    : []
+  
+  const categoryQuestions = !searchTerm 
+    ? faqCategories.find((cat) => cat.name === activeCategory)?.questions || []
+    : []
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
@@ -365,16 +370,16 @@ export default function FaqPage() {
               {searchTerm ? (
                 <>
                   <h2 className="text-2xl font-medium mb-6">Search Results</h2>
-                  {filteredQuestions.length === 0 ? (
+                  {searchResults.length === 0 ? (
                     <div className="text-center py-10">
-                      <p className="text-gray-500">No results found for "{searchTerm}"</p>
+                      <p className="text-gray-500">No results found for &quot;{searchTerm}&quot;</p>
                       <button className="mt-4 text-blue-600 hover:text-blue-800" onClick={() => setSearchTerm("")}>
                         Clear search
                       </button>
                     </div>
                   ) : (
                     <Accordion type="single" collapsible className="w-full">
-                      {filteredQuestions.map((faq, index) => (
+                      {searchResults.map((faq, index) => (
                         <AccordionItem
                           key={index}
                           value={`item-${index}`}
@@ -418,7 +423,7 @@ export default function FaqPage() {
                 <>
                   <h2 className="text-2xl font-medium mb-6">{activeCategory}</h2>
                   <Accordion type="single" collapsible className="w-full">
-                    {filteredQuestions.map((faq, index) => (
+                    {categoryQuestions.map((faq, index) => (
                       <AccordionItem
                         key={index}
                         value={`item-${index}`}

@@ -1,6 +1,11 @@
-"use client"
+import type { Metadata } from "next"
 import Link from "next/link"
 import WaitlistCTA from "@/components/waitlist-cta"
+
+export const metadata: Metadata = {
+  title: "Stable Spoke - Stablecoin LP Collateral",
+  description: "AMM Market Stable Spoke for stablecoin-stablecoin LP positions. Highest LTV ratios and lowest risk for stable pairs.",
+}
 
 export default function StableSpokePage() {
   return (

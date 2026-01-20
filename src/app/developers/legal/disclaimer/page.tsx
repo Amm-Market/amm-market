@@ -1,7 +1,11 @@
-"use client"
-
+import type { Metadata } from "next"
 import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Legal Disclaimer",
+  description: "AMM Market legal disclaimer - general disclaimer, no financial advice, risks, warranties, and limitation of liability.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

@@ -1,3 +1,20 @@
+/**
+ * Page Navigation Component
+ * 
+ * @description
+ * Provides previous/next navigation links for developer documentation pages.
+ * Automatically determines navigation based on the current pathname and
+ * the flattened navigation structure from developer-sidebar.
+ * 
+ * @example
+ * ```tsx
+ * // Place at the bottom of any developer documentation page
+ * <PageNavigation />
+ * ```
+ * 
+ * @module components/page-navigation
+ */
+
 "use client"
 
 import Link from "next/link"

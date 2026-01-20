@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Getting Started - Deposit LP",
+  description: "Learn how to deposit LP positions as collateral on AMM Market. Step-by-step guide covering deposit flow, supported tokens, and technical details.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

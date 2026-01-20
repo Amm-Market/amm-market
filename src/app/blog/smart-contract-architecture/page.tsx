@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
+
+export const metadata: Metadata = {
+  title: "Smart Contract Architecture: AMM Market Technical Reference",
+  description: "Deep technical reference for AMM Market's smart contract architecture—Hub and Spoke design, oracle integration, key functions, and integration patterns.",
+}
 
 const tableOfContents = [
   { id: "overview", title: "Architecture Overview" },

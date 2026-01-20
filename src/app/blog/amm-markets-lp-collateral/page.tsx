@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
+
+export const metadata: Metadata = {
+  title: "AMM Markets Empowering Liquidity Providers With Collateral",
+  description: "How LP tokens can function as productive collateral, unlocking capital efficiency and layered yield strategies.",
+}
 
 const tableOfContents = [
   { id: "introduction", title: "Introduction" },

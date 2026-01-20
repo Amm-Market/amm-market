@@ -136,7 +136,7 @@ export default function BrandPage() {
             <div className="grid md:grid-cols-2 gap-8 items-start">
               {/* Left - Logo variants list */}
               <div className="flex flex-col gap-0">
-                {logoVariants.map((variant, index) => (
+                {logoVariants.map((variant) => (
                   <div
                     key={variant.id}
                     className={`flex flex-col gap-3 py-5 border-t border-gray-200 cursor-pointer transition-all duration-200 ${

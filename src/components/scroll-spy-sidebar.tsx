@@ -1,15 +1,59 @@
 "use client"
 
+/**
+ * ScrollSpySidebar - A navigation sidebar that tracks scroll position.
+ * 
+ * @description
+ * Renders a sticky sidebar with links to page sections that:
+ * - Highlights the currently visible section based on scroll position
+ * - Shows visual progress through the page via a colored bar
+ * - Provides smooth-scroll navigation when clicking links
+ * - Supports multiple color themes
+ * 
+ * @features
+ * - Scroll-spy: Automatically detects which section is in view
+ * - Progress bar: Visual indicator of position through document
+ * - Smooth scrolling: Animated scroll to sections on click
+ * - Sticky positioning: Stays visible while scrolling content
+ * - Color themes: 7 color options for section accents
+ * 
+ * @param sections - Array of section IDs and titles to track
+ * @param pageSummary - Optional brief description shown above nav
+ * @param sectionColor - Theme color for active indicators (default: blue)
+ * 
+ * @example
+ * const sections = [
+ *   { id: "overview", title: "Overview" },
+ *   { id: "features", title: "Features" },
+ *   { id: "usage", title: "Usage" },
+ * ]
+ * 
+ * <ScrollSpySidebar
+ *   sections={sections}
+ *   pageSummary="Learn about our key features"
+ *   sectionColor="violet"
+ * />
+ * 
+ * @note Hidden on mobile/tablet (lg:flex), only visible on desktop
+ * @see src/app/developers - Used in documentation pages
+ */
 import { useEffect, useState, useRef } from "react"
 
+/** Represents a trackable section on the page */
 interface Section {
+  /** HTML element ID to track (must match an id attribute on the page) */
   id: string
+  /** Display title shown in the sidebar navigation */
   title: string
 }
 
+/** Props for the ScrollSpySidebar component */
 interface ScrollSpySidebarProps {
+  /** Array of sections to track and display in navigation */
   sections: Section[]
+  /** Optional brief description shown above the navigation links */
   pageSummary?: string
+  /** Color theme for active section indicators */
   sectionColor?: "blue" | "emerald" | "violet" | "amber" | "cyan" | "rose" | "slate"
 }
 
@@ -26,7 +70,6 @@ const colorClasses = {
 
 export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" }: ScrollSpySidebarProps) {
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || "")
-  const [scrollProgress, setScrollProgress] = useState(0)
   const sidebarRef = useRef<HTMLDivElement>(null)
 
   const colors = colorClasses[sectionColor]
@@ -46,23 +89,15 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
       const scrollPosition = window.scrollY + 200 // Offset for header
 
       let currentSection = sectionElements[0].id
-      let currentIndex = 0
 
       for (let i = 0; i < sectionElements.length; i++) {
         const { id, element } = sectionElements[i]
         if (element && element.offsetTop <= scrollPosition) {
           currentSection = id
-          currentIndex = i
         }
       }
 
       setActiveSection(currentSection)
-
-      // Calculate scroll progress through the document
-      const documentHeight = document.documentElement.scrollHeight - window.innerHeight
-      const scrolled = window.scrollY
-      const progress = Math.min(Math.max(scrolled / documentHeight, 0), 1)
-      setScrollProgress(progress)
     }
 
     // Initial check

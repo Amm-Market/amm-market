@@ -1,3 +1,29 @@
+/**
+ * Card Component Suite
+ * 
+ * @description
+ * A composable card component with multiple sub-components for flexible layouts.
+ * Includes Card, CardHeader, CardTitle, CardDescription, CardAction, CardContent, and CardFooter.
+ * 
+ * @example
+ * ```tsx
+ * <Card>
+ *   <CardHeader>
+ *     <CardTitle>Card Title</CardTitle>
+ *     <CardDescription>Card description text</CardDescription>
+ *   </CardHeader>
+ *   <CardContent>
+ *     Main card content here
+ *   </CardContent>
+ *   <CardFooter>
+ *     <Button>Action</Button>
+ *   </CardFooter>
+ * </Card>
+ * ```
+ * 
+ * @module components/ui/card
+ */
+
 import * as React from "react"
 
 import { cn } from "@/lib/utils"

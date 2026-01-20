@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
+
+export const metadata: Metadata = {
+  title: "How AMM Market Solves DeFi User Experience Challenges",
+  description: "Unifying trading, liquidity, and lending into a single human-centered system for accessible DeFi.",
+}
 
 const tableOfContents = [
   { id: "the-problem", title: "The Problem with DeFi UX" },

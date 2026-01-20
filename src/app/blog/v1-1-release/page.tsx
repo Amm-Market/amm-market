@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
+
+export const metadata: Metadata = {
+  title: "AMM Market v1.1: New Features and Improvements",
+  description: "Announcing AMM Market v1.1—multi-position collateral, improved oracles, gas optimizations, and a refreshed dashboard experience.",
+}
 
 const tableOfContents = [
   { id: "introduction", title: "Introduction" },

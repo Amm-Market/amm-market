@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
+
+export const metadata: Metadata = {
+  title: "Beginner's Guide to LP Collateral: Risks and Rewards",
+  description: "Understanding LP positions as collateral—LTV, impermanent loss, liquidation, and fee harvesting explained for new users.",
+}
 
 const tableOfContents = [
   { id: "what-is-lp-position", title: "What is an LP position, really?" },

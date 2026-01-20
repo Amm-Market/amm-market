@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Incentives Programs",
+  description: "AMM Market incentives and rewards - emission programs, reward mechanics, how to claim rewards, and future incentive programs.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

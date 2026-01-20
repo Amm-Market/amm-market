@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Collateral Factors",
+  description: "Understanding collateral factors (CF) in AMM Market. Learn how LTV is calculated for LP positions, single token CFs, and LP pair CFs.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

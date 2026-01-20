@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Withdraw Collateral",
+  description: "How to withdraw LP collateral from AMM Market after repaying your loan. Understand the withdrawal process and position modifications.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

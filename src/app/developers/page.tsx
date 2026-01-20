@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import {
   BookOpen,
@@ -9,6 +10,11 @@ import {
   Scale,
   ArrowRight,
 } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Developer Documentation",
+  description: "Complete technical documentation for AMM Market. Learn about LP collateral, health factors, liquidation, integrations, and smart contract architecture.",
+}
 
 const sections = [
   {
