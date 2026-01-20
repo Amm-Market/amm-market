@@ -505,4 +505,3 @@ export const protocols = [
     textColor: "text-emerald-600",
   },
 ]
-
