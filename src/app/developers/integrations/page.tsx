@@ -31,42 +31,42 @@ export default function SupportedDexesPage() {
         <section id="supported-dexes" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Supported DEXes</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-pink-50 rounded-lg border border-pink-200">
+          <div className="space-y-6">
+            <div className="border-b border-gray-100 pb-4">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="font-semibold text-pink-900">Uniswap v3</h3>
+                <h3 className="font-semibold text-gray-900">Uniswap v3</h3>
                 <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded font-medium">ACTIVE</span>
               </div>
-              <p className="text-pink-800 text-sm mb-2">
+              <p className="text-gray-600 text-sm mb-2">
                 Concentrated liquidity positions represented as NFTs. Supports full-range and 
                 custom price range positions.
               </p>
-              <ul className="text-pink-700 text-xs space-y-1">
+              <ul className="text-gray-500 text-xs space-y-1">
                 <li>• Token Standard: ERC-721 (NFT)</li>
                 <li>• Chains: Ethereum, Base, Arbitrum, Optimism</li>
                 <li>• Fee Tiers: 0.01%, 0.05%, 0.3%, 1%</li>
               </ul>
             </div>
 
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <div className="border-b border-gray-100 pb-4">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="font-semibold text-blue-900">Aerodrome</h3>
+                <h3 className="font-semibold text-gray-900">Aerodrome</h3>
                 <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded font-medium">ACTIVE</span>
               </div>
-              <p className="text-blue-800 text-sm mb-2">
+              <p className="text-gray-600 text-sm mb-2">
                 Base's leading DEX with volatile and stable pool types. LP tokens are standard ERC-20.
               </p>
-              <ul className="text-blue-700 text-xs space-y-1">
+              <ul className="text-gray-500 text-xs space-y-1">
                 <li>• Token Standard: ERC-20</li>
                 <li>• Chains: Base</li>
                 <li>• Pool Types: Volatile (x*y=k), Stable (Curve-style)</li>
               </ul>
             </div>
 
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="border-b border-gray-100 pb-4">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-semibold text-gray-900">Curve Finance</h3>
-                <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded font-medium">COMING SOON</span>
+                <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded font-medium">COMING SOON</span>
               </div>
               <p className="text-gray-600 text-sm mb-2">
                 Specialized for stablecoin and pegged asset swaps with low slippage.
@@ -78,10 +78,10 @@ export default function SupportedDexesPage() {
               </ul>
             </div>
 
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="border-b border-gray-100 pb-4">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-semibold text-gray-900">Balancer v2</h3>
-                <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded font-medium">COMING SOON</span>
+                <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded font-medium">COMING SOON</span>
               </div>
               <p className="text-gray-600 text-sm mb-2">
                 Multi-asset pools with customizable weights and composable pool types.
@@ -93,10 +93,10 @@ export default function SupportedDexesPage() {
               </ul>
             </div>
 
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div>
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-semibold text-gray-900">Velodrome</h3>
-                <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded font-medium">COMING SOON</span>
+                <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded font-medium">COMING SOON</span>
               </div>
               <p className="text-gray-600 text-sm mb-2">
                 Optimism's leading DEX, similar architecture to Aerodrome.

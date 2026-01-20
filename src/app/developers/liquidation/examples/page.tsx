@@ -27,9 +27,9 @@ export default function LiquidationExamplesPage() {
         <section id="partial-liquidation" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Partial Liquidation Example</h2>
           
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
-            <h3 className="font-semibold text-blue-900 mb-2">Scenario</h3>
-            <ul className="text-blue-800 text-sm space-y-1">
+          <div className="mb-4">
+            <h3 className="font-semibold text-gray-900 mb-2">Scenario</h3>
+            <ul className="text-gray-600 text-sm space-y-1">
               <li>• <strong>LP collateral:</strong> $7,071 (V3 NFTs: ETH/USDC + WETH/DAI)</li>
               <li>• <strong>Debt:</strong> $5,000 (GHO)</li>
               <li>• <strong>Liquidation threshold:</strong> 70%</li>
@@ -72,9 +72,9 @@ export default function LiquidationExamplesPage() {
             </ol>
           </div>
 
-          <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <h3 className="font-semibold text-amber-900 mb-2">Key Edge Cases</h3>
-            <ul className="text-amber-800 text-sm space-y-1">
+          <div className="mt-4">
+            <h3 className="font-semibold text-gray-900 mb-2">Key Edge Cases</h3>
+            <ul className="text-gray-600 text-sm space-y-1">
               <li>• <strong>Position out-of-range (V3):</strong> Only one token returned → requires multi-hop swap</li>
               <li>• <strong>V4 hooks:</strong> Custom unwrap API may differ per pool</li>
               <li>• <strong>Low liquidity:</strong> Multi-step swaps or DEX fallback routes needed</li>
@@ -86,9 +86,9 @@ export default function LiquidationExamplesPage() {
         <section id="curve-lp" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Scenario 1: Curve LP Collateral</h2>
           
-          <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 mb-4">
-            <h3 className="font-semibold text-purple-900 mb-2">Setup</h3>
-            <ul className="text-purple-800 text-sm space-y-1">
+          <div className="mb-4">
+            <h3 className="font-semibold text-gray-900 mb-2">Setup</h3>
+            <ul className="text-gray-600 text-sm space-y-1">
               <li>• <strong>LP collateral:</strong> 3Pool (DAI/USDC/USDT) LP tokens (ERC-20)</li>
               <li>• <strong>Debt:</strong> 10,000 GHO</li>
               <li>• <strong>Liquidation threshold:</strong> 75%</li>
@@ -135,9 +135,9 @@ export default function LiquidationExamplesPage() {
             </ol>
           </div>
 
-          <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <h3 className="font-semibold text-amber-900 mb-2">Edge Cases / Notes</h3>
-            <ul className="text-amber-800 text-sm space-y-1">
+          <div className="mt-4">
+            <h3 className="font-semibold text-gray-900 mb-2">Edge Cases / Notes</h3>
+            <ul className="text-gray-600 text-sm space-y-1">
               <li>• Imbalance in pool may cause slippage → set minAmounts to prevent under-repayment</li>
               <li>• Multi-step swaps required if Curve pool token isn't directly GHO-compatible</li>
               <li>• HF may require partial liquidation only; full liquidation avoided unless HF still &lt; 1</li>
@@ -148,9 +148,9 @@ export default function LiquidationExamplesPage() {
         <section id="balancer-lp" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Scenario 2: Balancer Weighted Pool LP Collateral</h2>
           
-          <div className="p-4 bg-green-50 rounded-lg border border-green-200 mb-4">
-            <h3 className="font-semibold text-green-900 mb-2">Setup</h3>
-            <ul className="text-green-800 text-sm space-y-1">
+          <div className="mb-4">
+            <h3 className="font-semibold text-gray-900 mb-2">Setup</h3>
+            <ul className="text-gray-600 text-sm space-y-1">
               <li>• <strong>LP collateral:</strong> Balancer 50/50 ETH/USDC LP (ERC-20)</li>
               <li>• <strong>Debt:</strong> 8,000 GHO</li>
               <li>• <strong>Liquidation threshold:</strong> 70%</li>
@@ -197,9 +197,9 @@ export default function LiquidationExamplesPage() {
             </ol>
           </div>
 
-          <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <h3 className="font-semibold text-amber-900 mb-2">Edge Cases / Notes</h3>
-            <ul className="text-amber-800 text-sm space-y-1">
+          <div className="mt-4">
+            <h3 className="font-semibold text-gray-900 mb-2">Edge Cases / Notes</h3>
+            <ul className="text-gray-600 text-sm space-y-1">
               <li>• Low pool liquidity → multi-step swaps or aggregator needed</li>
               <li>• Fee-on-transfer tokens must use removeLiquiditySupportingFeeOnTransferTokens</li>
               <li>• HF recalculation may trigger additional liquidation if ETH drops further</li>
@@ -210,10 +210,10 @@ export default function LiquidationExamplesPage() {
         <section id="multi-pool" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Scenario 3: Multi-Pool LP Collateral</h2>
           
-          <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 mb-4">
-            <h3 className="font-semibold text-amber-900 mb-2">Setup</h3>
-            <p className="text-amber-800 text-sm mb-2">Borrower has mixed collateral:</p>
-            <ul className="text-amber-800 text-sm space-y-1">
+          <div className="mb-4">
+            <h3 className="font-semibold text-gray-900 mb-2">Setup</h3>
+            <p className="text-gray-600 text-sm mb-2">Borrower has mixed collateral:</p>
+            <ul className="text-gray-600 text-sm space-y-1">
               <li>• Uniswap V3 ETH/USDC NFT (range liquidity)</li>
               <li>• Curve 3Pool LP (ERC-20)</li>
               <li>• Balancer 50/50 ETH/USDC LP (ERC-20)</li>
@@ -287,9 +287,9 @@ export default function LiquidationExamplesPage() {
             </ol>
           </div>
 
-          <div className="mt-4 p-4 bg-red-50 rounded-lg border border-red-200">
-            <h3 className="font-semibold text-red-900 mb-2">Edge Cases / Notes</h3>
-            <ul className="text-red-800 text-sm space-y-1">
+          <div className="mt-4 border-l-4 border-red-400 pl-3">
+            <h3 className="font-semibold text-gray-900 mb-2">Edge Cases / Notes</h3>
+            <ul className="text-gray-600 text-sm space-y-1">
               <li>• V3 liquidity may be out-of-range → only one token returned → adjust swaps</li>
               <li>• Multi-pool swaps increase slippage risk → set minReturn carefully</li>
               <li>• Gas limits may require chunked liquidation or modular calls</li>
@@ -301,12 +301,9 @@ export default function LiquidationExamplesPage() {
         <section id="uniswap-v2" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Uniswap V2 LP Tokens</h2>
           
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
-            <h3 className="font-semibold text-blue-900 mb-2">Scenario</h3>
-            <p className="text-blue-800 text-sm">
-              A user provides liquidity to a Uniswap V2 ETH/USDC pool and borrows GHO against their LP tokens.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm mb-4">
+            A user provides liquidity to a Uniswap V2 ETH/USDC pool and borrows GHO against their LP tokens.
+          </p>
 
           <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
             <h3 className="font-semibold text-gray-900 mb-3">Liquidation Process</h3>
@@ -350,13 +347,10 @@ export default function LiquidationExamplesPage() {
         <section id="uniswap-v3" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Uniswap V3 LP Tokens</h2>
           
-          <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 mb-4">
-            <h3 className="font-semibold text-purple-900 mb-2">Scenario</h3>
-            <p className="text-purple-800 text-sm">
-              A user provides liquidity to a Uniswap V3 ETH/USDC pool within a specific price range 
-              and borrows GHO against their LP tokens (NFT position).
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm mb-4">
+            A user provides liquidity to a Uniswap V3 ETH/USDC pool within a specific price range 
+            and borrows GHO against their LP tokens (NFT position).
+          </p>
 
           <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
             <h3 className="font-semibold text-gray-900 mb-3">Liquidation Process</h3>
@@ -400,13 +394,10 @@ export default function LiquidationExamplesPage() {
         <section id="uniswap-v4" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">3. Uniswap V4 LP Tokens</h2>
           
-          <div className="p-4 bg-green-50 rounded-lg border border-green-200 mb-4">
-            <h3 className="font-semibold text-green-900 mb-2">Scenario</h3>
-            <p className="text-green-800 text-sm">
-              A user provides liquidity to a Uniswap V4 ETH/USDC pool (with hooks enabled) and 
-              borrows GHO against their LP tokens.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm mb-4">
+            A user provides liquidity to a Uniswap V4 ETH/USDC pool (with hooks enabled) and 
+            borrows GHO against their LP tokens.
+          </p>
 
           <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
             <h3 className="font-semibold text-gray-900 mb-3">Liquidation Process</h3>
@@ -450,66 +441,42 @@ export default function LiquidationExamplesPage() {
         <section id="edge-cases" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Edge Cases & Potential Issues</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-2">1. Impermanent Loss</h3>
-              <p className="text-amber-800 text-sm mb-2">
-                <strong>Issue:</strong> Providing liquidity to volatile pairs can lead to impermanent loss, 
-                affecting the value of LP tokens.
+          <ul className="space-y-4">
+            <li className="border-b border-gray-100 pb-4">
+              <span className="font-semibold text-gray-900">1. Impermanent Loss</span>
+              <p className="text-gray-600 text-sm mt-1">
+                Providing liquidity to volatile pairs can lead to impermanent loss, affecting the value of LP tokens. A user may experience a significant price movement that triggers liquidation.
               </p>
-              <p className="text-amber-700 text-xs">
-                <strong>Example:</strong> A user provides liquidity to a volatile ETH/USDC pair and 
-                experiences a significant price movement, leading to impermanent loss that triggers liquidation.
-              </p>
-            </div>
+            </li>
 
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-2">2. Slippage</h3>
-              <p className="text-amber-800 text-sm mb-2">
-                <strong>Issue:</strong> Large transactions can cause slippage, impacting the profitability 
-                of the liquidation.
+            <li className="border-b border-gray-100 pb-4">
+              <span className="font-semibold text-gray-900">2. Slippage</span>
+              <p className="text-gray-600 text-sm mt-1">
+                Large transactions can cause slippage, impacting the profitability of the liquidation. A liquidator executing a large swap may experience significant price movement.
               </p>
-              <p className="text-amber-700 text-xs">
-                <strong>Example:</strong> A liquidator executes a large swap, causing significant price 
-                movement and reducing the expected profit.
-              </p>
-            </div>
+            </li>
 
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-2">3. Flash Loan Fees</h3>
-              <p className="text-amber-800 text-sm mb-2">
-                <strong>Issue:</strong> Flash loan fees can reduce the profitability of the liquidation.
+            <li className="border-b border-gray-100 pb-4">
+              <span className="font-semibold text-gray-900">3. Flash Loan Fees</span>
+              <p className="text-gray-600 text-sm mt-1">
+                Flash loan fees can reduce the profitability of the liquidation, potentially leaving little profit after repaying the loan.
               </p>
-              <p className="text-amber-700 text-xs">
-                <strong>Example:</strong> A flash loan incurs high fees, leaving little profit after 
-                repaying the loan.
-              </p>
-            </div>
+            </li>
 
-            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-              <h3 className="font-semibold text-red-900 mb-2">4. Oracle Manipulation</h3>
-              <p className="text-red-800 text-sm mb-2">
-                <strong>Issue:</strong> Manipulated price oracles can lead to incorrect valuations, 
-                affecting liquidation decisions.
+            <li className="border-l-4 border-red-400 pl-3 pb-4">
+              <span className="font-semibold text-gray-900">4. Oracle Manipulation</span>
+              <p className="text-gray-600 text-sm mt-1">
+                Manipulated price oracles can lead to incorrect valuations, affecting liquidation decisions and potentially causing bad debt.
               </p>
-              <p className="text-red-700 text-xs">
-                <strong>Example:</strong> An attacker manipulates the price oracle, causing incorrect 
-                valuations and potential bad debt.
-              </p>
-            </div>
+            </li>
 
-            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-              <h3 className="font-semibold text-red-900 mb-2">5. Smart Contract Risks</h3>
-              <p className="text-red-800 text-sm mb-2">
-                <strong>Issue:</strong> Vulnerabilities in smart contracts can be exploited, leading 
-                to loss of funds.
+            <li className="border-l-4 border-red-400 pl-3">
+              <span className="font-semibold text-gray-900">5. Smart Contract Risks</span>
+              <p className="text-gray-600 text-sm mt-1">
+                Vulnerabilities in smart contracts can be exploited, leading to loss of funds or assets.
               </p>
-              <p className="text-red-700 text-xs">
-                <strong>Example:</strong> A smart contract vulnerability is exploited, resulting in 
-                loss of assets.
-              </p>
-            </div>
-          </div>
+            </li>
+          </ul>
         </section>
 
         <section id="summary" className="mb-12">
@@ -536,9 +503,9 @@ export default function LiquidationExamplesPage() {
                 logic for integration.
               </p>
             </div>
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-1">Aave v4 Integration</h3>
-              <p className="text-blue-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-1">Aave v4 Integration</h3>
+              <p className="text-gray-600 text-sm">
                 Aave v4's Spoke pools are designed to interact with these LP tokens, enabling them 
                 to be used as collateral and facilitating their liquidation when necessary.
               </p>

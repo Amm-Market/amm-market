@@ -27,52 +27,50 @@ export default function IncentivesPage() {
             early adopters, and encourage healthy protocol usage. These programs distribute 
             rewards to users who deposit collateral and borrow responsibly.
           </p>
-          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-            <p className="text-green-800 text-sm">
-              <strong>Testnet Rewards:</strong> Participate in testnet to earn points that may 
-              convert to mainnet rewards at launch.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Testnet Rewards:</strong> Participate in testnet to earn points that may 
+            convert to mainnet rewards at launch.
+          </p>
         </section>
 
         <section id="emission-programs" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Emission Programs</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+          <div className="space-y-6">
+            <div className="border-b border-gray-100 pb-4">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs bg-blue-200 text-blue-800 px-2 py-0.5 rounded font-medium">ACTIVE</span>
-                <h3 className="font-semibold text-blue-900">Depositor Rewards</h3>
+                <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded font-medium">ACTIVE</span>
+                <h3 className="font-semibold text-gray-900">Depositor Rewards</h3>
               </div>
-              <p className="text-blue-800 text-sm mb-2">
+              <p className="text-gray-600 text-sm mb-2">
                 Earn rewards for depositing LP tokens as collateral. Rewards scale with:
               </p>
-              <ul className="text-blue-700 text-sm space-y-1">
+              <ul className="text-gray-500 text-sm space-y-1">
                 <li>• Amount deposited (larger deposits = more rewards)</li>
                 <li>• Duration (longer deposits = bonus multiplier)</li>
                 <li>• LP type (higher-risk LPs may have boosted rewards)</li>
               </ul>
             </div>
 
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+            <div className="border-b border-gray-100 pb-4">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs bg-purple-200 text-purple-800 px-2 py-0.5 rounded font-medium">ACTIVE</span>
-                <h3 className="font-semibold text-purple-900">Borrower Rewards</h3>
+                <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded font-medium">ACTIVE</span>
+                <h3 className="font-semibold text-gray-900">Borrower Rewards</h3>
               </div>
-              <p className="text-purple-800 text-sm mb-2">
+              <p className="text-gray-600 text-sm mb-2">
                 Earn rewards for active borrowing. Designed to offset interest costs during 
                 bootstrap phase.
               </p>
-              <ul className="text-purple-700 text-sm space-y-1">
+              <ul className="text-gray-500 text-sm space-y-1">
                 <li>• Proportional to borrow amount</li>
                 <li>• Requires maintaining healthy HF (&gt; 1.2)</li>
                 <li>• Capped per user to ensure fair distribution</li>
               </ul>
             </div>
 
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs bg-gray-200 text-gray-700 px-2 py-0.5 rounded font-medium">PLANNED</span>
+                <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded font-medium">PLANNED</span>
                 <h3 className="font-semibold text-gray-900">Liquidator Incentives</h3>
               </div>
               <p className="text-gray-600 text-sm">
@@ -139,12 +137,10 @@ export default function IncentivesPage() {
               </code>
             </div>
 
-            <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-              <p className="text-yellow-800 text-sm">
-                <strong>Gas Optimization:</strong> Rewards don't expire. Consider batching claims 
-                to save on gas costs.
-              </p>
-            </div>
+            <p className="text-gray-600 text-sm">
+              <strong>Gas Optimization:</strong> Rewards don't expire. Consider batching claims 
+              to save on gas costs.
+            </p>
           </div>
         </section>
 

@@ -48,29 +48,29 @@ export default function IntroductionOverviewPage() {
 
         <section id="how-it-works" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">How It Works</h2>
-          <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="space-y-6">
+            <div className="border-b border-gray-100 pb-4">
               <h3 className="font-semibold text-gray-900 mb-2">1. Deposit LP Tokens</h3>
               <p className="text-gray-600 text-sm">
                 Supply your LP tokens from supported DEXes (Uniswap v3/v4, Balancer) to the AMM Market Spoke. 
                 Your LP positions remain active and continue earning fees.
               </p>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="border-b border-gray-100 pb-4">
               <h3 className="font-semibold text-gray-900 mb-2">2. Receive Borrowing Power</h3>
               <p className="text-gray-600 text-sm">
                 Your LP tokens are valued using secure price oracles, and you receive borrowing power based 
                 on collateral factors. The Spoke calculates the maximum borrowable amount.
               </p>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="border-b border-gray-100 pb-4">
               <h3 className="font-semibold text-gray-900 mb-2">3. Borrow Assets</h3>
               <p className="text-gray-600 text-sm">
                 Borrow stablecoins or other assets from the Aave v4 Hub against your LP collateral. 
                 The Spoke sources funds from the Hub on your behalf.
               </p>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div>
               <h3 className="font-semibold text-gray-900 mb-2">4. Keep Earning</h3>
               <p className="text-gray-600 text-sm">
                 Your LP positions remain active and continue accruing trading fees while serving as collateral. 
@@ -85,27 +85,18 @@ export default function IntroductionOverviewPage() {
           <p className="text-gray-600 leading-relaxed mb-4">
             Unlocking LP collateral means:
           </p>
-          <ul className="space-y-3">
-            <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-medium">1</span>
-              <div>
-                <span className="font-medium text-gray-900">More Capital Efficiency</span>
-                <p className="text-gray-600 text-sm mt-0.5">LPs don't need to exit pools to access liquidity.</p>
-              </div>
+          <ul className="space-y-4">
+            <li>
+              <span className="font-medium text-gray-900">More Capital Efficiency</span>
+              <p className="text-gray-600 text-sm mt-0.5">LPs don't need to exit pools to access liquidity.</p>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-medium">2</span>
-              <div>
-                <span className="font-medium text-gray-900">More Resilient Credit Markets</span>
-                <p className="text-gray-600 text-sm mt-0.5">Loans backed by fee-earning, deep-liquidity assets.</p>
-              </div>
+            <li>
+              <span className="font-medium text-gray-900">More Resilient Credit Markets</span>
+              <p className="text-gray-600 text-sm mt-0.5">Loans backed by fee-earning, deep-liquidity assets.</p>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-medium">3</span>
-              <div>
-                <span className="font-medium text-gray-900">More Protocol Adoption</span>
-                <p className="text-gray-600 text-sm mt-0.5">AMM Market turns static LP capital into productive, composable collateral across DeFi.</p>
-              </div>
+            <li>
+              <span className="font-medium text-gray-900">More Protocol Adoption</span>
+              <p className="text-gray-600 text-sm mt-0.5">AMM Market turns static LP capital into productive, composable collateral across DeFi.</p>
             </li>
           </ul>
         </section>
@@ -115,24 +106,24 @@ export default function IntroductionOverviewPage() {
           <p className="text-gray-600 leading-relaxed mb-4">
             AMM Market operates as a Spoke in Aave v4's Hub-and-Spoke architecture:
           </p>
-          <div className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Collateral Model</h3>
-              <p className="text-blue-800 text-sm">
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Collateral Model</h3>
+              <p className="text-gray-600 text-sm">
                 Uniswap v3/v4 LP positions (NFT positions) are transferred into a Vault, where they remain 
                 usable by their owner but are accounted as collateral.
               </p>
             </div>
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">Per-Position Accounting</h3>
-              <p className="text-purple-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Per-Position Accounting</h3>
+              <p className="text-gray-600 text-sm">
                 Debt, collateral value, and health are tracked per LP position (not per account) so owners 
                 can hold multiple distinct loans.
               </p>
             </div>
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">Spoke Architecture</h3>
-              <p className="text-green-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Spoke Architecture</h3>
+              <p className="text-gray-600 text-sm">
                 Each chain runs a DEX Spoke that enforces oracle feeds, LTVs, and liquidations locally while 
                 the Hub provides liquidity and capital coordination (Hub & Spoke model).
               </p>
@@ -142,11 +133,9 @@ export default function IntroductionOverviewPage() {
 
         <section id="current-development" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Current Development</h2>
-          <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 mb-4">
-            <p className="text-amber-800 text-sm">
-              As we approach our mainnet launch, you can experience AMM Market today on the Ethereum testnets.
-            </p>
-          </div>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            As we approach our mainnet launch, you can experience AMM Market today on the Ethereum testnets.
+          </p>
           <p className="text-gray-600 leading-relaxed">
             Thank you for joining us on this journey as we redefine the future of LP with AMM Market.
           </p>

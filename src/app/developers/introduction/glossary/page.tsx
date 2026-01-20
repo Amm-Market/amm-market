@@ -177,8 +177,8 @@ export default function GlossaryPage() {
           <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
             Disclaimers
           </h2>
-          <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <ul className="text-amber-800 text-sm space-y-2">
+          <div className="border-l-4 border-amber-400 pl-4">
+            <ul className="text-gray-600 text-sm space-y-2">
               <li><strong>No Investment Advice:</strong> AMM Market is a software protocol. This documentation does not constitute investment advice.</li>
               <li><strong>Risk of Loss:</strong> Users can lose funds through smart contract vulnerabilities, market volatility, liquidation, or oracle manipulation.</li>
               <li><strong>Regulatory Status:</strong> The regulatory status of AMM Market and its tokens (if any) is not guaranteed and may vary by jurisdiction.</li>

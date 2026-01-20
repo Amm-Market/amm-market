@@ -34,12 +34,10 @@ export default function AllowedPoolsPage() {
             Balancer, and Uniswap V2/V3. These pools are carefully curated to ensure sufficient liquidity, 
             predictable pricing, and risk management, enabling LP tokens to be safely used as collateral.
           </p>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <p className="text-blue-800 text-sm">
-              <strong>Scalability:</strong> The protocol can accommodate hundreds of pools. New pools 
-              may be added after review of liquidity, volatility, and oracle support.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Scalability:</strong> The protocol can accommodate hundreds of pools. New pools 
+            may be added after review of liquidity, volatility, and oracle support.
+          </p>
         </section>
 
         <section id="pool-categories" className="mb-12">
@@ -49,88 +47,68 @@ export default function AllowedPoolsPage() {
             their stability, liquidity, and risk profile:
           </p>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">1. Stable / Stable Pools</h3>
-              <div className="grid grid-cols-2 gap-4 mb-3 text-sm">
+          <div className="space-y-6">
+            <div className="border-l-4 border-green-500 pl-3 pb-4">
+              <h3 className="font-semibold text-gray-900 mb-2">1. Stable / Stable Pools</h3>
+              <div className="flex gap-6 mb-3 text-sm">
                 <div>
-                  <span className="text-green-700 font-medium">Example Protocol:</span>
-                  <span className="text-green-800 ml-2">Curve</span>
+                  <span className="text-gray-500">Protocol:</span>
+                  <span className="text-gray-700 ml-1">Curve</span>
                 </div>
                 <div>
-                  <span className="text-green-700 font-medium">LP Token Type:</span>
-                  <span className="text-green-800 ml-2">ERC-20</span>
+                  <span className="text-gray-500">LP Type:</span>
+                  <span className="text-gray-700 ml-1">ERC-20</span>
                 </div>
               </div>
-              <p className="text-green-800 text-sm mb-2">
-                <strong>Assets:</strong> USD-pegged stablecoins (USDC, DAI, USDT)
+              <p className="text-gray-600 text-sm mb-2">
+                <strong>Assets:</strong> USD-pegged stablecoins (USDC, DAI, USDT). Minimal volatility, extremely low impermanent loss, deep liquidity.
               </p>
-              <p className="text-green-800 text-sm mb-2">
-                <strong>Characteristics:</strong> Minimal volatility, extremely low impermanent loss, deep liquidity.
-              </p>
-              <p className="text-green-800 text-sm">
-                <strong>Usage:</strong> Ideal for users seeking low-risk collateral. Provides high capital 
-                efficiency, allowing for higher LTV ratios and lower risk premiums.
-              </p>
-              <div className="mt-3 p-2 bg-green-100 rounded text-green-700 text-xs">
+              <p className="text-gray-500 text-xs">
                 Stable pools are the foundation of the AMM Market collateral system. All stable pools 
                 must have verified oracle feeds to report accurate pricing.
-              </div>
+              </p>
             </div>
 
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">2. Blue-Chip Pools</h3>
-              <div className="grid grid-cols-2 gap-4 mb-3 text-sm">
+            <div className="border-l-4 border-gray-400 pl-3 pb-4">
+              <h3 className="font-semibold text-gray-900 mb-2">2. Blue-Chip Pools</h3>
+              <div className="flex gap-6 mb-3 text-sm">
                 <div>
-                  <span className="text-blue-700 font-medium">Example Protocols:</span>
-                  <span className="text-blue-800 ml-2">Uniswap V2/V3, Balancer</span>
+                  <span className="text-gray-500">Protocols:</span>
+                  <span className="text-gray-700 ml-1">Uniswap V2/V3, Balancer</span>
                 </div>
                 <div>
-                  <span className="text-blue-700 font-medium">LP Token Type:</span>
-                  <span className="text-blue-800 ml-2">ERC-20 / NFT (V3)</span>
+                  <span className="text-gray-500">LP Type:</span>
+                  <span className="text-gray-700 ml-1">ERC-20 / NFT</span>
                 </div>
               </div>
-              <p className="text-blue-800 text-sm mb-2">
-                <strong>Assets:</strong> ETH, WBTC, LINK, UNI, AAVE, LDO, and other large-cap tokens
+              <p className="text-gray-600 text-sm mb-2">
+                <strong>Assets:</strong> ETH, WBTC, LINK, UNI, AAVE, LDO, and other large-cap tokens. Deep liquidity, established adoption, moderate volatility.
               </p>
-              <p className="text-blue-800 text-sm mb-2">
-                <strong>Characteristics:</strong> Deep liquidity, established adoption, moderate volatility
-              </p>
-              <p className="text-blue-800 text-sm">
-                <strong>Usage:</strong> Provides collateral for users seeking to leverage high-quality assets 
-                while maintaining reasonable safety margins.
-              </p>
-              <div className="mt-3 p-2 bg-blue-100 rounded text-blue-700 text-xs">
+              <p className="text-gray-500 text-xs">
                 Includes both standard ERC-20 LPs and Uniswap V3 NFT-based positions, which require 
                 additional handling due to concentrated liquidity and discrete price ranges.
-              </div>
+              </p>
             </div>
 
-            <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-              <h3 className="font-semibold text-orange-900 mb-2">3. Emerging or Experimental Pools</h3>
-              <div className="grid grid-cols-2 gap-4 mb-3 text-sm">
+            <div className="border-l-4 border-amber-500 pl-3">
+              <h3 className="font-semibold text-gray-900 mb-2">3. Emerging or Experimental Pools</h3>
+              <div className="flex gap-6 mb-3 text-sm">
                 <div>
-                  <span className="text-orange-700 font-medium">Example Protocols:</span>
-                  <span className="text-orange-800 ml-2">Uniswap V2/V3, Balancer</span>
+                  <span className="text-gray-500">Protocols:</span>
+                  <span className="text-gray-700 ml-1">Uniswap V2/V3, Balancer</span>
                 </div>
                 <div>
-                  <span className="text-orange-700 font-medium">LP Token Type:</span>
-                  <span className="text-orange-800 ml-2">ERC-20 / NFT</span>
+                  <span className="text-gray-500">LP Type:</span>
+                  <span className="text-gray-700 ml-1">ERC-20 / NFT</span>
                 </div>
               </div>
-              <p className="text-orange-800 text-sm mb-2">
-                <strong>Assets:</strong> Smaller-cap or newly launched tokens with sufficient liquidity
+              <p className="text-gray-600 text-sm mb-2">
+                <strong>Assets:</strong> Smaller-cap or newly launched tokens with sufficient liquidity. Higher volatility, lower liquidity, higher impermanent loss.
               </p>
-              <p className="text-orange-800 text-sm mb-2">
-                <strong>Characteristics:</strong> Higher volatility, lower liquidity, higher impermanent loss
-              </p>
-              <p className="text-orange-800 text-sm">
-                <strong>Usage:</strong> Allows risk-tolerant users to provide collateral while limiting systemic exposure.
-              </p>
-              <div className="mt-3 p-2 bg-orange-100 rounded text-orange-700 text-xs">
+              <p className="text-gray-500 text-xs">
                 Emerging pools are carefully vetted. The protocol assigns lower LTVs and higher risk 
                 premiums, with liquidation thresholds set conservatively.
-              </div>
+              </p>
             </div>
           </div>
         </section>
@@ -233,12 +211,10 @@ export default function AllowedPoolsPage() {
               <span>Integrates protocol-specific considerations, like oracles and router support</span>
             </li>
           </ul>
-          <div className="mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
-            <p className="text-green-800 text-sm">
-              This approach ensures that AMM Market remains robust, flexible, and scalable, while providing 
-              clear guidance to developers integrating new pools or building applications on top of the protocol.
-            </p>
-          </div>
+          <p className="mt-4 text-gray-600 text-sm">
+            This approach ensures that AMM Market remains robust, flexible, and scalable, while providing 
+            clear guidance to developers integrating new pools or building applications on top of the protocol.
+          </p>
         </section>
       </div>
 

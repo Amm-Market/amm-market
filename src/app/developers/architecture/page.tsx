@@ -43,14 +43,11 @@ export default function SpokesDesignPage() {
             Users can navigate to the core functions of the protocol: supplying their collateral, 
             borrowing assets, managing their loans, and claiming their earned fees.
           </p>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h3 className="font-semibold text-blue-900 mb-2">Transaction Transparency</h3>
-            <p className="text-blue-800 text-sm">
-              Every action is accompanied by clear confirmations and detailed breakdowns of the transaction, 
-              including estimated gas costs and the impact on their loan health, empowering users to interact 
-              with the protocol with confidence and transparency.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">
+            <strong>Transaction Transparency:</strong> Every action is accompanied by clear confirmations and 
+            detailed breakdowns of the transaction, including estimated gas costs and the impact on their loan 
+            health, empowering users to interact with the protocol with confidence and transparency.
+          </p>
         </section>
 
         <section id="example-flow" className="mb-12">
@@ -59,8 +56,8 @@ export default function SpokesDesignPage() {
             A practical example of the onboarding flow:
           </p>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="space-y-6">
+            <div className="border-b border-gray-100 pb-4">
               <h3 className="font-semibold text-gray-900 mb-2">Step 1: Initial Deposit</h3>
               <p className="text-gray-600 text-sm">
                 Alice has 5 Uniswap v3 LP positions. She deposits her first LP as collateral: 10,000 USDC 
@@ -68,7 +65,7 @@ export default function SpokesDesignPage() {
                 in total value.
               </p>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="border-b border-gray-100 pb-4">
               <h3 className="font-semibold text-gray-900 mb-2">Step 2: Borrowing Power Calculated</h3>
               <p className="text-gray-600 text-sm">
                 The app displays her NFT ETH-USDC and shows that, with a 70% collateral factor, she can 
@@ -76,16 +73,16 @@ export default function SpokesDesignPage() {
                 pool risk adjustment.
               </p>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="border-b border-gray-100 pb-4">
               <h3 className="font-semibold text-gray-900 mb-2">Step 3: Borrow Multiple Assets</h3>
               <p className="text-gray-600 text-sm">
                 Alice borrows $6,000 USDT, $500 WBTC, $2,000 LINK, $500 UNI, $1,000 AVAX. Her total borrow 
                 is $10,000. She has $4,000 left to borrow but her health factor is now in the yellow zone.
               </p>
             </div>
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">Step 4: Add More Collateral</h3>
-              <p className="text-green-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Step 4: Add More Collateral</h3>
+              <p className="text-gray-600 text-sm">
                 Alice deposits 4 more Uniswap pools worth $50,000 combined. After each LP gets valued, 
                 she can borrow up to 50% or $25,000 of that. Her global collateral is now $4,000 from 
                 her first LP plus $25,000 from new LPs = $29,000 borrowable amount. She still has $10,000 
@@ -101,25 +98,25 @@ export default function SpokesDesignPage() {
             The architecture is a clear, three-tiered flow:
           </p>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Top: Users</h3>
-              <p className="text-blue-800 text-sm">
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Top: Users</h3>
+              <p className="text-gray-600 text-sm">
                 Users interact exclusively with the Spoke contract. They deposit NFTs, borrow funds, 
                 repay debt, and claim fees.
               </p>
             </div>
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">Middle: Spoke (AMM Market)</h3>
-              <p className="text-purple-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Middle: Spoke (AMM Market)</h3>
+              <p className="text-gray-600 text-sm">
                 This is the intelligent layer that understands Liquidity Pools such as Balancer v3 or 
                 Uniswap v3. It manages NFT custody, calculates position-specific risk, and enforces 
                 loan-level health checks.
               </p>
             </div>
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">Bottom: Aave v4 Hubs</h3>
-              <p className="text-green-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Bottom: Aave v4 Hubs</h3>
+              <p className="text-gray-600 text-sm">
                 Hubs provide the raw liquidity and handle the macro-level risk for the capital pool.
               </p>
             </div>
@@ -132,44 +129,28 @@ export default function SpokesDesignPage() {
             The high-level flow and data flow is unidirectional and well-defined:
           </p>
           
-          <div className="space-y-3">
-            <div className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-medium">1</span>
-              <div className="p-3 bg-gray-50 rounded-lg border border-gray-200 flex-1">
-                <span className="font-medium text-gray-900">LP Position Manager transfers NFT to AMM Market</span>
-                <p className="text-gray-600 text-sm mt-0.5">AMM Market caches basic position data</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-medium">2</span>
-              <div className="p-3 bg-gray-50 rounded-lg border border-gray-200 flex-1">
-                <span className="font-medium text-gray-900">Owners borrow against their NFT</span>
-                <p className="text-gray-600 text-sm mt-0.5">The Spoke draws assets from one or more configured Hubs</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-medium">3</span>
-              <div className="p-3 bg-gray-50 rounded-lg border border-gray-200 flex-1">
-                <span className="font-medium text-gray-900">Debt represented as debt shares</span>
-                <p className="text-gray-600 text-sm mt-0.5">Exchange rate is a global value denominated in Ray that compounds based on interest rate model</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-medium">4</span>
-              <div className="p-3 bg-gray-50 rounded-lg border border-gray-200 flex-1">
-                <span className="font-medium text-gray-900">Liquidations when necessary</span>
-                <p className="text-gray-600 text-sm mt-0.5">Hubs or external liquidators cause the Spoke to extract LP liquidity and either send tokens to the liquidator or swap tokens into the debt asset to repay the Hub</p>
-              </div>
-            </div>
-          </div>
+          <ol className="space-y-4 list-decimal list-inside mb-6">
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">LP Position Manager transfers NFT to AMM Market</strong> — AMM Market caches basic position data
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Owners borrow against their NFT</strong> — The Spoke draws assets from one or more configured Hubs
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Debt represented as debt shares</strong> — Exchange rate is a global value denominated in Ray that compounds based on interest rate model
+            </li>
+            <li className="text-gray-600 text-sm">
+              <strong className="text-gray-900">Liquidations when necessary</strong> — Hubs or external liquidators cause the Spoke to extract LP liquidity and either send tokens to the liquidator or swap tokens into the debt asset to repay the Hub
+            </li>
+          </ol>
 
-          <div className="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <h3 className="font-semibold text-amber-900 mb-2">Hub Interaction</h3>
-            <ul className="text-amber-800 text-sm space-y-1">
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-2">Hub Interaction</h3>
+            <ul className="text-gray-600 text-sm space-y-1">
               <li>• <strong>Borrow:</strong> Spoke issues a draw call to the Hub</li>
               <li>• <strong>Repay:</strong> Spoke issues a restore call to the Hub to return funds</li>
-              <li>• <strong>Health Check:</strong> Hub calls Spoke's <code className="bg-amber-100 px-1 rounded">getCollateralData</code> to fetch total NFT value</li>
-              <li>• <strong>Liquidation:</strong> If Spoke's aggregate LTV breaches threshold, Hub calls <code className="bg-amber-100 px-1 rounded">handleLiquidation</code></li>
+              <li>• <strong>Health Check:</strong> Hub calls Spoke's <code className="bg-gray-100 px-1 rounded text-gray-800">getCollateralData</code> to fetch total NFT value</li>
+              <li>• <strong>Liquidation:</strong> If Spoke's aggregate LTV breaches threshold, Hub calls <code className="bg-gray-100 px-1 rounded text-gray-800">handleLiquidation</code></li>
             </ul>
           </div>
         </section>
@@ -198,14 +179,14 @@ export default function SpokesDesignPage() {
             </table>
           </div>
 
-          <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-            <h3 className="font-semibold text-purple-900 mb-2">LiquidationAdapter Functions</h3>
-            <ul className="text-purple-800 text-sm space-y-2">
-              <li><code className="bg-purple-100 px-1 rounded">applyPenalty(user)</code> — Compute and record accrued penalty</li>
-              <li><code className="bg-purple-100 px-1 rounded">softUnwind(user, maxUsd)</code> — Execute partial decrease → collect → swap → repay (atomic per step)</li>
-              <li><code className="bg-purple-100 px-1 rounded">liquidate(user)</code> — Execute hard liquidation if needed</li>
+          <div className="mt-4">
+            <h3 className="font-semibold text-gray-900 mb-2">LiquidationAdapter Functions</h3>
+            <ul className="text-gray-600 text-sm space-y-2">
+              <li><code className="bg-gray-100 px-1 rounded text-gray-800">applyPenalty(user)</code> — Compute and record accrued penalty</li>
+              <li><code className="bg-gray-100 px-1 rounded text-gray-800">softUnwind(user, maxUsd)</code> — Execute partial decrease → collect → swap → repay (atomic per step)</li>
+              <li><code className="bg-gray-100 px-1 rounded text-gray-800">liquidate(user)</code> — Execute hard liquidation if needed</li>
             </ul>
-            <p className="text-purple-700 text-xs mt-3">
+            <p className="text-gray-500 text-xs mt-3">
               Events: PenaltyAccrued, SoftUnwindExecuted, HardLiquidationExecuted
             </p>
           </div>
@@ -218,26 +199,26 @@ export default function SpokesDesignPage() {
             decentralized non-custodial liquidity market.
           </p>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Capital Supply</h3>
-              <p className="text-blue-800 text-sm">
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Capital Supply</h3>
+              <p className="text-gray-600 text-sm">
                 Users deposit assets such as USDC, DAI, or ETH into Aave v4 Hubs via other spokes 
                 such as Core or Prime Spoke. Aave Hubs set interest rates based on supply and demand, 
                 and handle the accounting of debt and collateral.
               </p>
             </div>
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">Credit Lines</h3>
-              <p className="text-green-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Credit Lines</h3>
+              <p className="text-gray-600 text-sm">
                 The Hub grants each Spoke a credit line which defines the maximum borrowing capacity 
                 that Aave will accept from that Spoke. For example, Aave Core Hub may grant AMM Market 
                 Uniswap v3 Spoke a $100 million credit line by borrowing GHO, USDT and ETH.
               </p>
             </div>
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-2">Independent Health Factors</h3>
-              <p className="text-amber-800 text-sm">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Independent Health Factors</h3>
+              <p className="text-gray-600 text-sm">
                 A user with $10,000 in LP collateral within the Uniswap v3 Spoke and $300,000 in the 
                 Balancer v3 Spoke will have two independent health factor calculations. A deficit in 
                 one Spoke cannot be offset by collateral in another. To move collateral between Spokes, 

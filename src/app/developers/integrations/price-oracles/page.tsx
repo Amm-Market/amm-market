@@ -38,13 +38,11 @@ export default function PriceOraclesPage() {
             Curve, SushiSwap, Aerodrome, PancakeSwap, and other AMMs. Each has different LP structures, 
             risk profiles, and data access methods, which requires a flexible, layered oracle system.
           </p>
-          <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-            <p className="text-red-800 text-sm">
-              <strong>Critical:</strong> Oracles are the linchpin of collateral security. Inaccurate or 
-              manipulable pricing exposes the Spoke to immediate risk. AMM Market's oracle architecture 
-              integrates Chainlink and on-chain DEX data, providing reliable, tamper-resistant valuation.
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm border-l-4 border-red-400 pl-3">
+            <strong>Critical:</strong> Oracles are the linchpin of collateral security. Inaccurate or 
+            manipulable pricing exposes the Spoke to immediate risk. AMM Market's oracle architecture 
+            integrates Chainlink and on-chain DEX data, providing reliable, tamper-resistant valuation.
+          </p>
         </section>
 
         <section id="oracle-interface" className="mb-12">
@@ -79,39 +77,37 @@ export default function PriceOraclesPage() {
             </div>
           </div>
 
-          <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <p className="text-blue-800 text-sm">
-              This interface abstracts DEX-specific differences, allowing the Spoke to handle ERC-20 LPs, 
-              NFT LPs, and multi-asset pools uniformly in lending, liquidation, and fee claims.
-            </p>
-          </div>
+          <p className="mt-4 text-gray-600 text-sm">
+            This interface abstracts DEX-specific differences, allowing the Spoke to handle ERC-20 LPs, 
+            NFT LPs, and multi-asset pools uniformly in lending, liquidation, and fee claims.
+          </p>
         </section>
 
         <section id="multi-layer-architecture" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Multi-Layer Architecture</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">Layer 1: DEX-Specific Position Data</h3>
-              <ul className="text-purple-800 text-sm space-y-1">
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Layer 1: DEX-Specific Position Data</h3>
+              <ul className="text-gray-600 text-sm space-y-1">
                 <li>• <strong>Uniswap V2 / Curve / Balancer ERC-20 LPs:</strong> Fetch raw liquidity balances, token amounts, and pool composition</li>
                 <li>• <strong>Uniswap V3 NFT LPs:</strong> Retrieve liquidity in range, position tick data, and accrued fees</li>
                 <li>• <strong>Balancer Multi-Asset Pools:</strong> Include weighted token balances and pool weights for accurate USD conversion</li>
               </ul>
             </div>
 
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Layer 2: TWAP & Time-Weighted Aggregation</h3>
-              <ul className="text-blue-800 text-sm space-y-1">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Layer 2: TWAP & Time-Weighted Aggregation</h3>
+              <ul className="text-gray-600 text-sm space-y-1">
                 <li>• Calculate Time-Weighted Average Prices (TWAPs) for each underlying token using DEX-native oracles</li>
                 <li>• TWAP windows (e.g., 1 hour) mitigate flash loan and short-term price manipulation</li>
                 <li>• For NFT LPs, TWAP is computed over the NFT's active range, combining pool liquidity and token TWAPs</li>
               </ul>
             </div>
 
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">Layer 3: Cross-DEX Verification with Chainlink</h3>
-              <ul className="text-green-800 text-sm space-y-1">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Layer 3: Cross-DEX Verification with Chainlink</h3>
+              <ul className="text-gray-600 text-sm space-y-1">
                 <li>• Aggregate token prices using trusted Chainlink feeds</li>
                 <li>• Verify DEX TWAPs against Chainlink: if deviation is within bounds, use DEX price</li>
                 <li>• If deviation exceeds threshold, fallback to Chainlink feed</li>
@@ -190,33 +186,33 @@ export default function PriceOraclesPage() {
         <section id="safety-measures" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Safety & Manipulation Prevention</h2>
           
-          <div className="space-y-3">
-            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-              <h3 className="font-semibold text-red-900 mb-1">Deviation Thresholds</h3>
-              <p className="text-red-800 text-sm">
-                Pauses new loans or liquidations if TWAP vs Chainlink diverges beyond <code className="bg-red-100 px-1 rounded">maxDifference</code>.
+          <ul className="space-y-3">
+            <li className="border-l-4 border-red-400 pl-3">
+              <span className="font-semibold text-gray-900">Deviation Thresholds</span>
+              <p className="text-gray-600 text-sm mt-0.5">
+                Pauses new loans or liquidations if TWAP vs Chainlink diverges beyond <code className="bg-gray-100 px-1 rounded text-gray-800">maxDifference</code>.
               </p>
-            </div>
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="font-semibold text-amber-900 mb-1">maxPoolPriceDifference</h3>
-              <p className="text-amber-800 text-sm">
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">maxPoolPriceDifference</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Ensures pool-implied price aligns with underlying token prices, preventing instantaneous 
                 pool manipulation.
               </p>
-            </div>
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-1">Open Interest Caps</h3>
-              <p className="text-blue-800 text-sm">
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Open Interest Caps</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Dynamically limit exposure to low-liquidity pools or highly leveraged positions.
               </p>
-            </div>
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-1">Oracle Sentinel</h3>
-              <p className="text-purple-800 text-sm">
+            </li>
+            <li>
+              <span className="font-semibold text-gray-900">Oracle Sentinel</span>
+              <p className="text-gray-600 text-sm mt-0.5">
                 Monitors feed health; triggers fallback if feeds are stale or compromised.
               </p>
-            </div>
-          </div>
+            </li>
+          </ul>
         </section>
 
         <section id="configurable-parameters" className="mb-12">
@@ -266,15 +262,12 @@ export default function PriceOraclesPage() {
             </table>
           </div>
 
-          <div className="mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
-            <h3 className="font-semibold text-green-900 mb-2">Summary</h3>
-            <p className="text-green-800 text-sm">
-              AMM Market's multi-DEX, dual-oracle system delivers accurate valuation for ERC-20 and NFT LPs, 
-              safe handling of multi-asset pools, dynamic fallback to Chainlink when TWAP data is unreliable, 
-              protection against price manipulation and flash loan attacks, and developer configurability 
-              for hundreds of pools with varying liquidity and volatility.
-            </p>
-          </div>
+          <p className="mt-4 text-gray-600 text-sm">
+            <strong>Summary:</strong> AMM Market's multi-DEX, dual-oracle system delivers accurate valuation for ERC-20 and NFT LPs, 
+            safe handling of multi-asset pools, dynamic fallback to Chainlink when TWAP data is unreliable, 
+            protection against price manipulation and flash loan attacks, and developer configurability 
+            for hundreds of pools with varying liquidity and volatility.
+          </p>
         </section>
       </div>
 

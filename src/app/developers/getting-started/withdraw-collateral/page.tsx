@@ -25,32 +25,30 @@ export default function WithdrawCollateralPage() {
             Once a loan is fully repaid, the collateral is no longer needed. The "Withdraw" function 
             allows you to reclaim your original LP share.
           </p>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <p className="text-blue-800 text-sm">
-              <strong>Note:</strong> As explained in the Repay Loans section, the NFT withdrawal is 
-              intrinsically tied to full loan repayment via the <code className="bg-blue-100 px-1 rounded">_cleanupLoan</code> function.
-            </p>
-          </div>
+          <p className="text-gray-500 text-sm">
+            <strong>Note:</strong> As explained in the Repay Loans section, the NFT withdrawal is 
+            intrinsically tied to full loan repayment via the <code className="bg-gray-100 px-1 rounded text-gray-800">_cleanupLoan</code> function.
+          </p>
         </section>
 
         <section id="withdrawal-process" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Withdrawal Process</h2>
-          <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="space-y-6">
+            <div className="border-b border-gray-100 pb-4">
               <h3 className="font-semibold text-gray-900 mb-2">Step 1: Repay All Debt</h3>
               <p className="text-gray-600 text-sm">
                 Ensure all outstanding debt including accrued interest is fully repaid. Use 
-                <code className="bg-gray-200 px-1 rounded ml-1">type(uint256).max</code> to repay the full amount.
+                <code className="bg-gray-100 px-1 rounded text-gray-800 ml-1">type(uint256).max</code> to repay the full amount.
               </p>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="border-b border-gray-100 pb-4">
               <h3 className="font-semibold text-gray-900 mb-2">Step 2: Automatic Cleanup</h3>
               <p className="text-gray-600 text-sm">
-                When debt reaches zero, the <code className="bg-gray-200 px-1 rounded">_cleanupLoan</code> function 
+                When debt reaches zero, the <code className="bg-gray-100 px-1 rounded text-gray-800">_cleanupLoan</code> function 
                 is automatically triggered, which clears loan data and initiates the NFT transfer.
               </p>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div>
               <h3 className="font-semibold text-gray-900 mb-2">Step 3: Receive LP Share</h3>
               <p className="text-gray-600 text-sm">
                 After confirming the withdrawal, the Spoke contract will transfer the LP share back 
@@ -65,18 +63,18 @@ export default function WithdrawCollateralPage() {
           <p className="text-gray-600 leading-relaxed mb-4">
             You can also modify positions while maintaining collateral, as long as health checks pass:
           </p>
-          <div className="space-y-4">
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">Change Tick Range</h3>
-              <p className="text-purple-800 text-sm">
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Change Tick Range</h3>
+              <p className="text-gray-600 text-sm">
                 Close the existing position and create a new one (e.g., change tick range) as long 
                 as both assets in the new position are approved collateral and the post-change 
                 collateral value maintains loan health.
               </p>
             </div>
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Requirements for New Positions</h3>
-              <ul className="text-blue-800 text-sm space-y-1 ml-4">
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-2">Requirements for New Positions</h3>
+              <ul className="text-gray-600 text-sm space-y-1 ml-4">
                 <li>• Both assets must be approved collateral</li>
                 <li>• Post-change collateral value must maintain loan health</li>
                 <li>• Health checks must pass before and after the modification</li>
@@ -90,42 +88,24 @@ export default function WithdrawCollateralPage() {
           <p className="text-gray-600 leading-relaxed mb-4">
             Once your LP share is back in your wallet, you have full control:
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 text-center">
-              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                <span className="text-blue-600 text-lg">1</span>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Keep in Pool</h3>
-              <p className="text-gray-600 text-xs">
-                Continue earning trading fees in the DEX
-              </p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 text-center">
-              <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                <span className="text-purple-600 text-lg">2</span>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Adjust Parameters</h3>
-              <p className="text-gray-600 text-xs">
-                Modify price range or liquidity amount
-              </p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 text-center">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                <span className="text-green-600 text-lg">3</span>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Full Exit</h3>
-              <p className="text-gray-600 text-xs">
-                Withdraw from Uniswap or Balancer entirely
-              </p>
-            </div>
-          </div>
-          <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
-            <h3 className="font-semibold text-green-900 mb-2">Re-deposit Anytime</h3>
-            <p className="text-green-800 text-sm">
-              You can always deposit your LP share back into AMM Market to open a new loan 
-              whenever you need liquidity again.
-            </p>
-          </div>
+          <ul className="space-y-3 mb-6">
+            <li>
+              <span className="font-medium text-gray-900">Keep in Pool</span>
+              <span className="text-gray-600 text-sm"> — Continue earning trading fees in the DEX</span>
+            </li>
+            <li>
+              <span className="font-medium text-gray-900">Adjust Parameters</span>
+              <span className="text-gray-600 text-sm"> — Modify price range or liquidity amount</span>
+            </li>
+            <li>
+              <span className="font-medium text-gray-900">Full Exit</span>
+              <span className="text-gray-600 text-sm"> — Withdraw from Uniswap or Balancer entirely</span>
+            </li>
+          </ul>
+          <p className="text-gray-600 text-sm">
+            <strong>Re-deposit Anytime:</strong> You can always deposit your LP share back into AMM Market 
+            to open a new loan whenever you need liquidity again.
+          </p>
         </section>
       </div>
 

@@ -38,12 +38,10 @@ export default function SecurityDisclosuresPage() {
             in certain jurisdictions. This page provides the current list of restricted territories and explains 
             the access restrictions in place.
           </p>
-          <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-            <p className="text-red-800 text-sm">
-              <strong>Important:</strong> Any attempt to access the AMM Market platform from a Restricted 
-              Jurisdiction will result in immediate redirection to the Terms of Use and a denial of access.
-            </p>
-          </div>
+          <p className="text-red-700 text-sm border-l-4 border-red-400 pl-3">
+            <strong>Important:</strong> Any attempt to access the AMM Market platform from a Restricted 
+            Jurisdiction will result in immediate redirection to the Terms of Use and a denial of access.
+          </p>
         </section>
 
         <section id="access-restrictions" className="mb-12">
@@ -96,13 +94,11 @@ export default function SecurityDisclosuresPage() {
             </table>
           </div>
 
-          <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
-            <p className="text-amber-800 text-sm">
-              <strong>Note:</strong> This list may be updated from time to time in response to changes in 
-              applicable laws, regulations, or sanctions programs. Users are responsible for ensuring their 
-              continued compliance with these restrictions.
-            </p>
-          </div>
+          <p className="mt-4 text-gray-500 text-sm">
+            <strong>Note:</strong> This list may be updated from time to time in response to changes in 
+            applicable laws, regulations, or sanctions programs. Users are responsible for ensuring their 
+            continued compliance with these restrictions.
+          </p>
         </section>
 
         <section id="compliance" className="mb-12">
@@ -136,25 +132,25 @@ export default function SecurityDisclosuresPage() {
           </p>
           
           <div className="space-y-3">
-            <Link href="/terms" className="block p-4 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors">
-              <h3 className="font-semibold text-blue-900 mb-1">Terms of Service</h3>
-              <p className="text-blue-800 text-sm">
+            <Link href="/terms" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50/50 transition-colors">
+              <h3 className="font-semibold text-gray-900 mb-1">Terms of Service</h3>
+              <p className="text-gray-600 text-sm">
                 Complete terms and conditions governing your use of AMM Market services, including 
                 eligibility requirements, prohibited activities, and dispute resolution.
               </p>
             </Link>
 
-            <Link href="/privacy" className="block p-4 bg-purple-50 rounded-lg border border-purple-200 hover:bg-purple-100 transition-colors">
-              <h3 className="font-semibold text-purple-900 mb-1">Privacy Policy</h3>
-              <p className="text-purple-800 text-sm">
+            <Link href="/privacy" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50/50 transition-colors">
+              <h3 className="font-semibold text-gray-900 mb-1">Privacy Policy</h3>
+              <p className="text-gray-600 text-sm">
                 Information about how we collect, use, and protect your personal information when 
                 you use our services.
               </p>
             </Link>
 
-            <Link href="/developers/legal/disclaimer" className="block p-4 bg-amber-50 rounded-lg border border-amber-200 hover:bg-amber-100 transition-colors">
-              <h3 className="font-semibold text-amber-900 mb-1">Legal Disclaimer</h3>
-              <p className="text-amber-800 text-sm">
+            <Link href="/developers/legal/disclaimer" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50/50 transition-colors">
+              <h3 className="font-semibold text-gray-900 mb-1">Legal Disclaimer</h3>
+              <p className="text-gray-600 text-sm">
                 Important disclaimers regarding risks, warranties, and liability limitations.
               </p>
             </Link>
