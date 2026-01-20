@@ -4,10 +4,12 @@ import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 const sections = [
   { id: "overview", title: "Overview" },
+  { id: "core-role", title: "Core Role" },
+  { id: "key-functionalities", title: "Key Functionalities" },
+  { id: "how-it-works", title: "How It Works" },
+  { id: "operations", title: "Supported Operations" },
+  { id: "security", title: "Security & Efficiency" },
   { id: "contract-addresses", title: "Contract Addresses" },
-  { id: "core-functions", title: "Core Functions" },
-  { id: "events", title: "Events" },
-  { id: "integration-example", title: "Integration Example" },
 ]
 
 export default function RouterContractPage() {
@@ -17,16 +19,225 @@ export default function RouterContractPage() {
       <div className="max-w-3xl">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Router Contract</h1>
         <p className="text-lg text-gray-600 mb-8">
-          Contract responsible for interacting with DEX liquidity and handling LP operations.
+          The central engine for managing liquidity, swaps, collateral, and liquidations across multiple DEXes.
         </p>
 
         <section id="overview" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            The AMM Market Router is the main entry point for user interactions. It handles 
-            deposits, withdrawals, borrows, repayments, and liquidations. The router coordinates 
-            with the Aave v4 Hub and DEX-specific adapters.
+            The AMM Market Router Contract is the central engine for managing liquidity, swaps, collateral, 
+            and liquidations across multiple DEXes and AMM pools. It provides a single, atomic interface 
+            for interacting with ERC-20 and NFT LP tokens, abstracting the complexities of different 
+            protocols while maintaining security, efficiency, and consistency.
           </p>
+        </section>
+
+        <section id="core-role" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Core Role in AMM Market</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            The router serves as the unifying layer between users, liquidity pools, and the AMM Market 
+            Spoke logic. It ensures that operations such as depositing LP tokens, swapping underlying 
+            assets, refinancing positions, or executing liquidations occur in a reliable and atomic manner.
+          </p>
+          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <h3 className="font-semibold text-blue-900 mb-2">Multi-DEX Integration</h3>
+            <p className="text-blue-800 text-sm">
+              By integrating with multiple DEXes—Uniswap V2/V3, Balancer, Curve, SushiSwap, Camelot, 
+              Kyber, Trader Joe, Aerodrome, PancakeSwap, and others—the router allows developers and 
+              integrators to manage liquidity and collateral without needing to implement custom adapters 
+              for each protocol.
+            </p>
+          </div>
+        </section>
+
+        <section id="key-functionalities" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Key Functionalities</h2>
+          
+          <div className="space-y-4">
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Liquidity Migration</h3>
+              <p className="text-gray-600 text-sm">
+                Users can move LP tokens or collateral between pools and protocols. The router handles 
+                withdrawals from the source pool, applies any protocol fees, and deposits the liquidity 
+                into the destination pool. All operations are atomic.
+              </p>
+            </div>
+
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Swaps</h3>
+              <p className="text-gray-600 text-sm">
+                The router enables token swaps across supported DEXes. For ERC-20 LPs, it can swap 
+                underlying tokens to rebalance positions. For Uniswap V3 NFT LPs, it can execute swaps 
+                while respecting tick ranges and position liquidity.
+              </p>
+            </div>
+
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Liquidation Execution</h3>
+              <p className="text-gray-600 text-sm">
+                During liquidations, the router coordinates asset transfers from the undercollateralized 
+                position to the protocol or keeper, performs swaps if necessary, and ensures all steps 
+                comply with health factor and collateral rules defined in the Spoke.
+              </p>
+            </div>
+
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Collateral Management</h3>
+              <p className="text-gray-600 text-sm">
+                The router can handle refinancing or rebalancing positions by withdrawing, converting, 
+                and redepositing LP tokens while preserving accrued fees and protocol accounting. It 
+                abstracts complex multi-step interactions into a single contract call.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="how-it-works" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">How the Router Works</h2>
+          
+          <div className="space-y-4">
+            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+              <h3 className="font-semibold text-purple-900 mb-2">1. Register Adapters</h3>
+              <p className="text-purple-800 text-sm">
+                Each supported DEX or protocol implements a protocol-specific adapter. These adapters 
+                expose standardized functions for liquidity withdrawal, deposits, and swaps, which the 
+                router calls to interact with the protocol safely.
+              </p>
+            </div>
+
+            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <h3 className="font-semibold text-blue-900 mb-2">2. Initiate Operation</h3>
+              <p className="text-blue-800 text-sm">
+                Users specify the action (swap, migration, or liquidation), the source and destination 
+                pools, the LP token or asset amounts, and any parameters such as slippage limits or tick ranges.
+              </p>
+            </div>
+
+            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+              <h3 className="font-semibold text-green-900 mb-2">3. Atomic Execution</h3>
+              <p className="text-green-800 text-sm mb-2">
+                The router executes the full operation in a single transaction:
+              </p>
+              <ul className="text-green-800 text-sm space-y-1 ml-4">
+                <li>• Withdraws from the source pool via the adapter</li>
+                <li>• Applies fees and validates balances</li>
+                <li>• Executes swaps or conversions if required</li>
+                <li>• Deposits liquidity into the target pool</li>
+                <li>• Updates collateral accounting in the AMM Market Spoke</li>
+              </ul>
+            </div>
+
+            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
+              <h3 className="font-semibold text-amber-900 mb-2">4. Finalization</h3>
+              <p className="text-amber-800 text-sm">
+                The user receives the updated position, and any protocol fees are sent to the designated 
+                recipient. The router ensures that all steps succeed or fail together, eliminating partial executions.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="operations" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Supported Operations</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Deposit & Borrow</h3>
+              <ul className="text-gray-600 text-xs space-y-1">
+                <li>• Accept ERC-20 and NFT LPs as collateral</li>
+                <li>• Calculate max borrowable using LTV and IL risk</li>
+                <li>• Cross-DEX aggregation in unified transaction</li>
+              </ul>
+            </div>
+
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Swap & Rebalance</h3>
+              <ul className="text-gray-600 text-xs space-y-1">
+                <li>• Convert assets while preserving LP ownership</li>
+                <li>• Adjust tick ranges for NFT positions</li>
+                <li>• Atomic operations prevent slippage risks</li>
+              </ul>
+            </div>
+
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Position Migration</h3>
+              <ul className="text-gray-600 text-xs space-y-1">
+                <li>• Move LP tokens between pools/DEXes</li>
+                <li>• Preserve collateral status during migration</li>
+                <li>• Automatic fee harvesting during migration</li>
+              </ul>
+            </div>
+
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Liquidation Support</h3>
+              <ul className="text-gray-600 text-xs space-y-1">
+                <li>• Automatic liquidation execution</li>
+                <li>• Multi-DEX liquidation handling</li>
+                <li>• Keeper integration for timely liquidations</li>
+              </ul>
+            </div>
+
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Fee & Reward Management</h3>
+              <ul className="text-gray-600 text-xs space-y-1">
+                <li>• Claim accrued fees from LP positions</li>
+                <li>• Apply reward tokens during swaps/rollovers</li>
+                <li>• Track fees separately from principal</li>
+              </ul>
+            </div>
+
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Complex Strategies</h3>
+              <ul className="text-gray-600 text-xs space-y-1">
+                <li>• Rollover positions in single atomic tx</li>
+                <li>• Automated rebalancing for safe LTV</li>
+                <li>• Batch operations for gas efficiency</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="security" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Security & Efficiency</h2>
+          
+          <div className="space-y-3">
+            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+              <h3 className="font-semibold text-green-900 mb-1">Atomic Transactions</h3>
+              <p className="text-green-800 text-sm">
+                Prevents partial fund movements or errors during multi-step operations.
+              </p>
+            </div>
+            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <h3 className="font-semibold text-blue-900 mb-1">Reentrancy Protection</h3>
+              <p className="text-blue-800 text-sm">
+                Ensures safety against common attack vectors in DeFi.
+              </p>
+            </div>
+            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+              <h3 className="font-semibold text-purple-900 mb-1">Adapter Abstraction</h3>
+              <p className="text-purple-800 text-sm">
+                Isolates protocol-specific logic, enabling safe integration with hundreds of pools 
+                and multiple DEXes.
+              </p>
+            </div>
+            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
+              <h3 className="font-semibold text-amber-900 mb-1">Capital Efficiency</h3>
+              <p className="text-amber-800 text-sm">
+                Automatically handles token conversions (ETH/WETH or others) to maximize efficiency 
+                and minimize unnecessary swaps.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <h3 className="font-semibold text-gray-900 mb-2">Developer Notes</h3>
+            <ul className="text-gray-600 text-sm space-y-1">
+              <li>• The router is DEX-agnostic: adding a new protocol requires implementing a standard adapter</li>
+              <li>• Supports hundreds of pools, including ERC-20 and NFT LP tokens</li>
+              <li>• Enables complex operations in a single contract call, reducing gas and simplifying integration</li>
+              <li>• Works in concert with AMM Market Spoke logic, enforcing health factors, LTVs, and liquidation thresholds</li>
+            </ul>
+          </div>
         </section>
 
         <section id="contract-addresses" className="mb-12">
@@ -90,168 +301,12 @@ export default function RouterContractPage() {
             </div>
           </div>
         </section>
-
-        <section id="core-functions" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Core Functions</h2>
-          
-          <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">deposit</h3>
-              <p className="text-gray-600 text-sm mb-2">Deposit LP tokens as collateral.</p>
-              <div className="p-3 bg-gray-900 rounded">
-                <code className="text-green-400 text-xs">
-                  function deposit(<br/>
-                  &nbsp;&nbsp;address lpToken,<br/>
-                  &nbsp;&nbsp;uint256 amount,<br/>
-                  &nbsp;&nbsp;address onBehalfOf<br/>
-                  ) external;
-                </code>
-              </div>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">withdraw</h3>
-              <p className="text-gray-600 text-sm mb-2">Withdraw LP tokens from collateral.</p>
-              <div className="p-3 bg-gray-900 rounded">
-                <code className="text-green-400 text-xs">
-                  function withdraw(<br/>
-                  &nbsp;&nbsp;address lpToken,<br/>
-                  &nbsp;&nbsp;uint256 amount,<br/>
-                  &nbsp;&nbsp;address to<br/>
-                  ) external returns (uint256);
-                </code>
-              </div>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">borrow</h3>
-              <p className="text-gray-600 text-sm mb-2">Borrow assets against LP collateral.</p>
-              <div className="p-3 bg-gray-900 rounded">
-                <code className="text-green-400 text-xs">
-                  function borrow(<br/>
-                  &nbsp;&nbsp;address asset,<br/>
-                  &nbsp;&nbsp;uint256 amount,<br/>
-                  &nbsp;&nbsp;uint256 interestRateMode,<br/>
-                  &nbsp;&nbsp;address onBehalfOf<br/>
-                  ) external;
-                </code>
-              </div>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">repay</h3>
-              <p className="text-gray-600 text-sm mb-2">Repay borrowed assets.</p>
-              <div className="p-3 bg-gray-900 rounded">
-                <code className="text-green-400 text-xs">
-                  function repay(<br/>
-                  &nbsp;&nbsp;address asset,<br/>
-                  &nbsp;&nbsp;uint256 amount,<br/>
-                  &nbsp;&nbsp;uint256 interestRateMode,<br/>
-                  &nbsp;&nbsp;address onBehalfOf<br/>
-                  ) external returns (uint256);
-                </code>
-              </div>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">liquidationCall</h3>
-              <p className="text-gray-600 text-sm mb-2">Liquidate an underwater position.</p>
-              <div className="p-3 bg-gray-900 rounded">
-                <code className="text-green-400 text-xs">
-                  function liquidationCall(<br/>
-                  &nbsp;&nbsp;address collateralAsset,<br/>
-                  &nbsp;&nbsp;address debtAsset,<br/>
-                  &nbsp;&nbsp;address user,<br/>
-                  &nbsp;&nbsp;uint256 debtToCover,<br/>
-                  &nbsp;&nbsp;bool receiveAToken<br/>
-                  ) external;
-                </code>
-              </div>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">getUserHealthFactor</h3>
-              <p className="text-gray-600 text-sm mb-2">Query a user's current health factor.</p>
-              <div className="p-3 bg-gray-900 rounded">
-                <code className="text-green-400 text-xs">
-                  function getUserHealthFactor(<br/>
-                  &nbsp;&nbsp;address user<br/>
-                  ) external view returns (uint256);
-                </code>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="events" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Events</h2>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Event</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Description</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">Deposit</td>
-                  <td className="px-4 py-2 text-gray-600">LP tokens deposited as collateral</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">Withdraw</td>
-                  <td className="px-4 py-2 text-gray-600">LP tokens withdrawn from collateral</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">Borrow</td>
-                  <td className="px-4 py-2 text-gray-600">Assets borrowed against collateral</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">Repay</td>
-                  <td className="px-4 py-2 text-gray-600">Debt repaid</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">LiquidationCall</td>
-                  <td className="px-4 py-2 text-gray-600">Position liquidated</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section id="integration-example" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Integration Example</h2>
-          
-          <div className="p-4 bg-gray-900 rounded-lg">
-            <code className="text-green-400 text-xs whitespace-pre">
-{`// Example: Deposit LP and Borrow USDC
-import { ethers } from "ethers";
-
-const router = new ethers.Contract(ROUTER_ADDRESS, ROUTER_ABI, signer);
-const lpToken = new ethers.Contract(LP_TOKEN_ADDRESS, ERC20_ABI, signer);
-
-// 1. Approve LP token
-await lpToken.approve(ROUTER_ADDRESS, depositAmount);
-
-// 2. Deposit LP as collateral
-await router.deposit(LP_TOKEN_ADDRESS, depositAmount, userAddress);
-
-// 3. Borrow USDC (variable rate = 2)
-await router.borrow(USDC_ADDRESS, borrowAmount, 2, userAddress);
-
-// 4. Check health factor
-const hf = await router.getUserHealthFactor(userAddress);
-console.log("Health Factor:", ethers.formatUnits(hf, 18));`}
-            </code>
-          </div>
-        </section>
       </div>
 
       {/* Right scroll-spy sidebar */}
       <ScrollSpySidebar 
         sections={sections} 
-        pageSummary="Contract responsible for interacting with DEX liquidity and handling LP operations."
+        pageSummary="The central engine for managing liquidity, swaps, collateral, and liquidations across multiple DEXes."
         sectionColor="cyan"
       />
     </div>

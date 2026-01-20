@@ -1,13 +1,16 @@
 "use client"
 
+import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 const sections = [
+  { id: "overview", title: "Overview" },
   { id: "general-disclaimer", title: "General Disclaimer" },
   { id: "no-financial-advice", title: "No Financial Advice" },
+  { id: "risks", title: "Risks" },
   { id: "no-warranties", title: "No Warranties" },
   { id: "limitation-of-liability", title: "Limitation of Liability" },
-  { id: "jurisdiction", title: "Jurisdiction" },
+  { id: "related-policies", title: "Related Policies" },
 ]
 
 export default function LegalDisclaimerPage() {
@@ -24,9 +27,29 @@ export default function LegalDisclaimerPage() {
           <p className="text-yellow-800 text-sm">
             <strong>Important:</strong> Please read this disclaimer carefully before using 
             AMM Market. By using the protocol, you acknowledge that you have read, understood, 
-            and agree to be bound by these terms.
+            and agree to be bound by these terms. For complete terms, please review our{" "}
+            <Link href="/terms" className="text-yellow-900 underline hover:text-yellow-700">Terms of Service</Link> and{" "}
+            <Link href="/privacy" className="text-yellow-900 underline hover:text-yellow-700">Privacy Policy</Link>.
           </p>
         </div>
+
+        <section id="overview" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            This disclaimer supplements and should be read in conjunction with our full{" "}
+            <Link href="/terms" className="text-blue-600 hover:underline">Terms of Service</Link>. 
+            The Terms of Service constitute a legally binding agreement between you and AMM Market 
+            concerning your access to and use of the protocol and related services.
+          </p>
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <p className="text-gray-700 text-sm">
+              <strong>From our homepage:</strong> "Borrowing against LP tokens involves risk, including 
+              liquidation if market conditions move against your position. AMM Market does not custody 
+              your funds, rehypothecate LP positions, or alter how your liquidity operates on underlying 
+              AMMs. Only borrow amounts you are comfortable maintaining through market volatility."
+            </p>
+          </div>
+        </section>
 
         <section id="general-disclaimer" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">General Disclaimer</h2>
@@ -36,10 +59,12 @@ export default function LegalDisclaimerPage() {
             express or implied.
           </p>
           <p className="text-gray-600 leading-relaxed mb-4">
-            The information contained in this documentation is for general informational 
-            purposes only. While we strive to keep the information up to date and correct, 
-            we make no representations or warranties of any kind about the completeness, 
-            accuracy, reliability, suitability, or availability of the information.
+            As stated in our Terms of Service (Section 2): "The AMM Market Protocol includes 
+            functionality whereby certain open source smart contracts can receive and hold certain 
+            digital currency or other crypto assets. There is a risk that the open source software, 
+            including any upgrades, may introduce bugs, viruses, Trojan horses, or other vulnerabilities 
+            or changes that could result in a partial or complete disruption of the protocol or loss, 
+            damage, or destruction of your crypto assets."
           </p>
           <p className="text-gray-600 leading-relaxed">
             Any reliance you place on such information is strictly at your own risk. We will 
@@ -51,12 +76,17 @@ export default function LegalDisclaimerPage() {
         <section id="no-financial-advice" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">No Financial Advice</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Nothing in this documentation or the AMM Market protocol constitutes financial, 
-            investment, legal, or tax advice. The content is provided for informational 
-            purposes only.
+            As stated prominently in our Terms of Service: "THE SERVICES INCLUDE, AMONG OTHER THINGS, 
+            THE INFORMATIONAL RESOURCES, WHICH MAY PROVIDE INFORMATION RELATED TO AMM MARKET. AMM MARKET 
+            IS NOT A BROKER, DEALER, EXCHANGE, INVESTMENT ADVISER, CUSTODIAN OR FINANCIAL SERVICE PROVIDER 
+            OF ANY KIND. WE DO NOT HAVE A FIDUCIARY RELATIONSHIP WITH, OR OBLIGATION TO, YOU IN CONNECTION 
+            WITH THE SERVICES."
           </p>
           <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
             <ul className="text-gray-600 text-sm space-y-2">
+              <li>• This material is for informational purposes only</li>
+              <li>• It is not an offer or solicitation to invest in, buy, or sell any interests or shares</li>
+              <li>• It is not intended to provide accounting, legal, tax advice, or investment recommendations</li>
               <li>• We are not registered investment advisors or broker-dealers</li>
               <li>• We do not provide personalized financial recommendations</li>
               <li>• Past performance does not guarantee future results</li>
@@ -66,74 +96,123 @@ export default function LegalDisclaimerPage() {
           </div>
         </section>
 
+        <section id="risks" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Risks</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            Section 8 of our Terms of Service outlines the risks associated with using AMM Market:
+          </p>
+          
+          <div className="space-y-4">
+            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+              <h3 className="font-semibold text-red-900 mb-2">Experimental Technology</h3>
+              <p className="text-red-800 text-sm">
+                "The Services may incorporate experimental and novel technology and the use of such 
+                technology involves a high degree of risk. There are numerous reasons the Services or 
+                underlying blockchain networks could fail in an unexpected way, resulting in the total 
+                and absolute loss of any crypto assets held in your digital wallet."
+              </p>
+            </div>
+
+            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
+              <h3 className="font-semibold text-amber-900 mb-2">Operational Challenges</h3>
+              <p className="text-amber-800 text-sm">
+                "The Services and/or underlying blockchain networks may experience or be the subject 
+                of cyber-attacks, unexpected surges in transaction volume, or other operational or 
+                technical difficulties or vulnerabilities that may cause interruptions related to 
+                your use of the Services."
+              </p>
+            </div>
+
+            <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+              <h3 className="font-semibold text-orange-900 mb-2">Regulatory Uncertainty</h3>
+              <p className="text-orange-800 text-sm">
+                "The Services, the AMM Market Protocol and/or any underlying blockchain networks may 
+                not be available or appropriate for use in all jurisdictions and you may be subject 
+                to legal and regulatory compliance obligations in connection with your use of the 
+                Services in certain jurisdictions."
+              </p>
+            </div>
+
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">LP-Specific Risks</h3>
+              <ul className="text-gray-600 text-sm space-y-1">
+                <li>• Impermanent loss can reduce collateral value</li>
+                <li>• Liquidation risk if market conditions move against your position</li>
+                <li>• Underlying DEX smart contract risk</li>
+                <li>• Concentrated liquidity positions can become worthless out of range</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <section id="no-warranties" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">No Warranties</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            THE PROTOCOL IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY 
-            KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING BUT NOT 
-            LIMITED TO:
+            As stated in Section 9.1 of our Terms of Service:
           </p>
-          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <ul className="text-gray-600 text-sm space-y-2">
-              <li>• Warranties of merchantability</li>
-              <li>• Fitness for a particular purpose</li>
-              <li>• Non-infringement</li>
-              <li>• Accuracy or completeness of information</li>
-              <li>• Uninterrupted or error-free operation</li>
-              <li>• Security or safety of funds</li>
-              <li>• Compatibility with other software or systems</li>
-            </ul>
+          <div className="p-4 bg-gray-900 rounded-lg">
+            <p className="text-gray-300 text-sm">
+              "THE SERVICES ARE ISSUED ON AN 'AS-IS' AND 'AS AVAILABLE' BASIS AND AMM MARKET DOES NOT 
+              MAKE ANY WARRANTIES WITH RESPECT TO SUCH 'AS-IS' AND 'AS AVAILABLE' BASIS OR OTHERWISE 
+              IN CONNECTION WITH THE TERMS AND AMM MARKET HEREBY DISCLAIMS ANY AND ALL EXPRESS, IMPLIED 
+              OR STATUTORY WARRANTIES AND CONDITIONS, INCLUDING ANY WARRANTIES OR CONDITIONS OF 
+              NON-INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AVAILABILITY, 
+              ERROR-FREE OR UNINTERRUPTED OPERATION."
+            </p>
           </div>
         </section>
 
         <section id="limitation-of-liability" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Limitation of Liability</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL AMM MARKET, 
-            ITS CONTRIBUTORS, DEVELOPERS, OR AFFILIATES BE LIABLE FOR ANY:
+            As stated in Section 9.2 of our Terms of Service:
           </p>
           <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 mb-4">
-            <ul className="text-gray-600 text-sm space-y-2">
-              <li>• Direct, indirect, incidental, special, consequential, or punitive damages</li>
-              <li>• Loss of profits, revenue, data, or use</li>
-              <li>• Business interruption</li>
-              <li>• Loss of cryptocurrency or digital assets</li>
-              <li>• Damages arising from smart contract bugs or exploits</li>
-              <li>• Damages arising from oracle failures or manipulation</li>
-              <li>• Damages arising from third-party actions</li>
-            </ul>
+            <p className="text-gray-600 text-sm">
+              "IN NO EVENT SHALL AMM MARKET BE LIABLE TO YOU FOR ANY CONSEQUENTIAL, INDIRECT, INCIDENTAL 
+              OR SPECIAL DAMAGES OF ANY TYPE OR NATURE HOWEVER ARISING, INCLUDING, WITHOUT LIMITATION, 
+              EXEMPLARY OR PUNITIVE DAMAGES, LOST DATA, LOST PROFITS OR REVENUES OR DIMINUTION IN VALUE, 
+              ARISING OUT OF OR RELATING TO THE SERVICES OR YOUR USE OF THE AMM MARKET PROTOCOL."
+            </p>
           </div>
           <p className="text-gray-600 leading-relaxed">
             This limitation applies regardless of the theory of liability (contract, tort, 
             strict liability, or otherwise) and even if we have been advised of the possibility 
-            of such damages.
+            of such damages. Under no circumstances shall AMM Market's aggregate liability exceed 
+            one-hundred U.S. dollars ($100.00).
           </p>
         </section>
 
-        <section id="jurisdiction" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Jurisdiction</h2>
+        <section id="related-policies" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Related Policies</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            AMM Market is a decentralized protocol that operates on public blockchain networks. 
-            The protocol is not targeted at or intended for use by persons in jurisdictions 
-            where such use would be prohibited or restricted.
+            For complete legal information, please review the following documents:
           </p>
-          <div className="p-4 bg-red-50 rounded-lg border border-red-200 mb-4">
-            <h3 className="font-semibold text-red-900 mb-2">Restricted Jurisdictions</h3>
-            <p className="text-red-800 text-sm">
-              The protocol is not available to persons or entities in the following jurisdictions:
-            </p>
-            <ul className="text-red-700 text-sm mt-2 space-y-1">
-              <li>• United States (pending regulatory clarity)</li>
-              <li>• Countries subject to OFAC sanctions</li>
-              <li>• Any jurisdiction where use would violate local laws</li>
-            </ul>
+          
+          <div className="space-y-3">
+            <Link href="/terms" className="block p-4 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors">
+              <h3 className="font-semibold text-blue-900 mb-1">Terms of Service</h3>
+              <p className="text-blue-800 text-sm">
+                The complete legally binding agreement governing your use of AMM Market, including 
+                eligibility, prohibited activities, intellectual property, dispute resolution, and more.
+              </p>
+            </Link>
+
+            <Link href="/privacy" className="block p-4 bg-purple-50 rounded-lg border border-purple-200 hover:bg-purple-100 transition-colors">
+              <h3 className="font-semibold text-purple-900 mb-1">Privacy Policy</h3>
+              <p className="text-purple-800 text-sm">
+                How we collect, use, and protect your personal information, including data retention, 
+                cookies, and your rights under GDPR, CCPA, and other privacy regulations.
+              </p>
+            </Link>
+
+            <Link href="/developers/legal" className="block p-4 bg-amber-50 rounded-lg border border-amber-200 hover:bg-amber-100 transition-colors">
+              <h3 className="font-semibold text-amber-900 mb-1">Restricted Territories</h3>
+              <p className="text-amber-800 text-sm">
+                Current list of jurisdictions restricted from accessing AMM Market services.
+              </p>
+            </Link>
           </div>
-          <p className="text-gray-600 leading-relaxed">
-            Users are solely responsible for ensuring their use of the protocol complies with 
-            all applicable laws and regulations in their jurisdiction. By using the protocol, 
-            you represent and warrant that you are not located in, under the control of, or a 
-            national or resident of any restricted jurisdiction.
-          </p>
         </section>
 
         <div className="p-4 bg-gray-100 rounded-lg border border-gray-200 mt-8">
@@ -142,7 +221,9 @@ export default function LegalDisclaimerPage() {
           </p>
           <p className="text-gray-500 text-xs mt-2">
             This disclaimer may be updated from time to time. Continued use of the protocol 
-            constitutes acceptance of any changes.
+            constitutes acceptance of any changes. Please refer to our{" "}
+            <Link href="/terms" className="text-blue-600 hover:underline">Terms of Service</Link> for 
+            the most current and complete legal terms.
           </p>
         </div>
       </div>

@@ -4,10 +4,11 @@ import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 const sections = [
   { id: "overview", title: "Overview" },
-  { id: "fund-structure", title: "Fund Structure" },
+  { id: "insurance-fund", title: "Insurance Fund" },
+  { id: "solvency-buffer", title: "Solvency Buffer" },
+  { id: "payout-mechanism", title: "Payout Mechanism" },
+  { id: "auto-deleveraging", title: "Auto-Deleveraging" },
   { id: "coverage-scenarios", title: "Coverage Scenarios" },
-  { id: "fund-management", title: "Fund Management" },
-  { id: "claims-process", title: "Claims Process" },
 ]
 
 export default function InsuranceFundsPage() {
@@ -23,57 +24,105 @@ export default function InsuranceFundsPage() {
         <section id="overview" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            The Insurance Fund serves as a backstop against bad debt that may occur when 
-            liquidations fail to fully cover outstanding loans. It provides an additional 
-            layer of protection for lenders in the Aave v4 Hub.
+            Managing distressed positions is critical for protocol stability. The Insurance Fund 
+            serves as a backstop against bad debt that may occur when liquidations fail to fully 
+            cover outstanding loans.
           </p>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <p className="text-blue-800 text-sm">
-              <strong>Purpose:</strong> Cover shortfalls when liquidated collateral value is 
-              insufficient to repay debt, protecting Hub liquidity providers from losses.
+          <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
+            <p className="text-amber-800 text-sm">
+              <strong>Current Status:</strong> AMM Market does not currently have insurance funds, 
+              but plans to implement one soon. This page describes the planned functionality.
             </p>
           </div>
         </section>
 
-        <section id="fund-structure" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Fund Structure</h2>
+        <section id="insurance-fund" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Insurance Fund Purpose</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            The Insurance Fund is essential for mitigating leveraged losses among protocol users. 
+            In volatile markets, delayed liquidations or unfavorable execution prices can result 
+            in negative account balances.
+          </p>
+          
+          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <h3 className="font-semibold text-blue-900 mb-2">Key Function</h3>
+            <p className="text-blue-800 text-sm">
+              The Insurance Fund covers these "bad debts," ensuring that even in times of financial 
+              stress, the protocol remains resilient and profitable positions are honored.
+            </p>
+          </div>
+        </section>
+
+        <section id="solvency-buffer" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Solvency Buffer</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            By providing a robust solvency buffer, the Insurance Fund ensures that each market can 
+            cover a predetermined amount of leveraged losses.
+          </p>
           
           <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Primary Insurance Fund</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Main reserve funded by protocol fees.
+            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+              <h3 className="font-semibold text-green-900 mb-2">User Confidence</h3>
+              <p className="text-green-800 text-sm">
+                This buffer is critical in maintaining user confidence and ensuring that liabilities 
+                from bankrupt accounts are settled without impacting the overall health of the protocol.
               </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• 5% of reserve factor directed here</li>
-                <li>• Held in stablecoins (USDC)</li>
-                <li>• Target: 5% of total borrows</li>
-              </ul>
             </div>
 
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Safety Module (Planned)</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Staked tokens providing additional coverage.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Users stake governance tokens</li>
-                <li>• Earn rewards for providing backstop</li>
-                <li>• Subject to slashing in shortfall events</li>
+              <h3 className="font-semibold text-gray-900 mb-2">Fund Structure (Planned)</h3>
+              <ul className="text-gray-600 text-sm space-y-1">
+                <li>• <strong>Primary Fund:</strong> Main reserve funded by protocol fees</li>
+                <li>• <strong>Safety Module:</strong> Staked tokens providing additional coverage</li>
+                <li>• <strong>Treasury Reserve:</strong> Protocol treasury as last-resort backstop</li>
               </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="payout-mechanism" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Payout Mechanism</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            The Insurance Fund is structured to provide different levels of coverage:
+          </p>
+          
+          <div className="space-y-4">
+            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <h3 className="font-semibold text-blue-900 mb-2">Full Loss Coverage for Spot Markets</h3>
+              <p className="text-blue-800 text-sm">
+                Protecting all spot market balances with complete coverage.
+              </p>
             </div>
 
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Treasury Reserve</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Protocol treasury as last-resort backstop.
+            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+              <h3 className="font-semibold text-purple-900 mb-2">Limited Coverage for Perpetual Contracts</h3>
+              <p className="text-purple-800 text-sm">
+                Up to the maximum insurance limit defined for each perpetual market.
               </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Governance-controlled allocation</li>
-                <li>• Used only after primary fund depleted</li>
-                <li>• Requires governance vote</li>
-              </ul>
             </div>
+          </div>
+        </section>
+
+        <section id="auto-deleveraging" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Auto-Deleveraging</h2>
+          
+          <div className="p-4 bg-red-50 rounded-lg border border-red-200 mb-4">
+            <h3 className="font-semibold text-red-900 mb-2">Last Resort Mechanism</h3>
+            <p className="text-red-800 text-sm">
+              If the Insurance Fund's equity falls below zero, the protocol automatically deleverages 
+              opposing positions at the fund's zero price. Auto-deleveraging is a last-resort mechanism, 
+              activated only when the Insurance Fund is depleted.
+            </p>
+          </div>
+
+          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+            <h3 className="font-semibold text-green-900 mb-2">Minimizing Impact</h3>
+            <p className="text-green-800 text-sm">
+              AMM Market's sophisticated algorithms work continuously to minimize the need for, and 
+              the impact of, auto-deleveraging. This streamlined approach clarifies the operational 
+              mechanics while highlighting its vital role in protecting users and maintaining protocol 
+              stability during periods of market distress.
+            </p>
           </div>
         </section>
 
@@ -90,6 +139,7 @@ export default function InsuranceFundsPage() {
                 <li>• Bad debt from failed liquidations</li>
                 <li>• Oracle manipulation losses (with proof)</li>
                 <li>• Smart contract bugs (post-audit)</li>
+                <li>• Negative account balances from delayed liquidations</li>
               </ul>
             </div>
             <div className="p-4 bg-red-50 rounded-lg border border-red-200">
@@ -102,93 +152,15 @@ export default function InsuranceFundsPage() {
               </ul>
             </div>
           </div>
-        </section>
 
-        <section id="fund-management" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Fund Management</h2>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Metric</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Target</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Current</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Fund Size</td>
-                  <td className="px-4 py-2 text-gray-600">5% of TVB</td>
-                  <td className="px-4 py-2 text-gray-600">$0 (Testnet)</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Contribution Rate</td>
-                  <td className="px-4 py-2 text-gray-600">5% of fees</td>
-                  <td className="px-4 py-2 text-gray-600">Active</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Asset Allocation</td>
-                  <td className="px-4 py-2 text-gray-600">100% USDC</td>
-                  <td className="px-4 py-2 text-gray-600">100% USDC</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          
-          <p className="text-gray-500 text-sm mt-3">
-            Fund metrics are publicly viewable on-chain and via the dashboard.
-          </p>
-        </section>
-
-        <section id="claims-process" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Claims Process</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            When bad debt occurs:
-          </p>
-          
-          <div className="space-y-4">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">1</div>
-              <div className="flex-1 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-1">Detection</h3>
-                <p className="text-gray-600 text-sm">
-                  Bad debt is automatically detected when a position's collateral is fully 
-                  liquidated but debt remains.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">2</div>
-              <div className="flex-1 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-1">Verification</h3>
-                <p className="text-gray-600 text-sm">
-                  Risk committee verifies the shortfall and confirms it qualifies for coverage.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">3</div>
-              <div className="flex-1 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-1">Coverage</h3>
-                <p className="text-gray-600 text-sm">
-                  Insurance fund automatically covers the shortfall, restoring Hub solvency.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">4</div>
-              <div className="flex-1 p-4 bg-green-50 rounded-lg border border-green-200">
-                <h3 className="font-semibold text-green-900 mb-1">Resolution</h3>
-                <p className="text-green-800 text-sm">
-                  Bad debt is cleared, and the protocol continues normal operations. 
-                  Post-mortem analysis conducted.
-                </p>
-              </div>
-            </div>
+          <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <h3 className="font-semibold text-gray-900 mb-2">Claims Process (Planned)</h3>
+            <ol className="text-gray-600 text-sm space-y-1 list-decimal list-inside">
+              <li><strong>Detection:</strong> Bad debt automatically detected when collateral is fully liquidated but debt remains</li>
+              <li><strong>Verification:</strong> Risk committee verifies the shortfall qualifies for coverage</li>
+              <li><strong>Coverage:</strong> Insurance fund automatically covers the shortfall</li>
+              <li><strong>Resolution:</strong> Bad debt cleared, post-mortem analysis conducted</li>
+            </ol>
           </div>
         </section>
       </div>

@@ -4,9 +4,10 @@ import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 const sections = [
   { id: "overview", title: "Overview" },
+  { id: "security-challenges", title: "Security Challenges" },
+  { id: "multi-layer-security", title: "Multi-Layer Security" },
   { id: "core-contracts", title: "Core Contracts" },
   { id: "trust-boundaries", title: "Trust Boundaries" },
-  { id: "upgrade-mechanism", title: "Upgrade Mechanism" },
   { id: "audits", title: "Audits" },
 ]
 
@@ -15,18 +16,85 @@ export default function ContractsArchitecturePage() {
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
       {/* Main content */}
       <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Contracts Architecture</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Contracts & Security</h1>
         <p className="text-lg text-gray-600 mb-8">
-          Overview of core smart contracts, trust boundaries, and upgrade considerations.
+          Overview of smart contract security, trust boundaries, and audit considerations.
         </p>
 
         <section id="overview" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            AMM Market's smart contract architecture is designed for security, modularity, and 
-            upgradeability. The system separates concerns between collateral management, 
-            lending logic, and oracle integration.
+            In AMM Markets, liquidity providers (LPs) can now use their LP tokens as collateral to 
+            access loans, unlocking new capital efficiency in DeFi. With this innovation comes a 
+            heightened responsibility to ensure the security of both user assets and the broader ecosystem.
           </p>
+          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <p className="text-blue-800 text-sm">
+              <strong>Core Principle:</strong> Security is not just a feature—it is the foundation 
+              of trust that enables users to confidently participate in these markets.
+            </p>
+          </div>
+        </section>
+
+        <section id="security-challenges" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Security Challenges in DeFi</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            DeFi's core advantages—self-custody, global accessibility, the removal of intermediaries, 
+            and user privacy—also introduce unique security challenges. These benefits can be misused 
+            by bad actors for theft, fraud, or illicit activity.
+          </p>
+          
+          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+            <h3 className="font-semibold text-green-900 mb-2">On-Chain Transparency</h3>
+            <p className="text-green-800 text-sm">
+              While traditional safeguards like KYC and AML are often less applicable, the transparency 
+              of on-chain transactions provides opportunities to monitor, identify, and mitigate malicious 
+              behavior. AMM Markets leverage this transparency through advanced blockchain analytics, 
+              proactive monitoring, and community-driven security initiatives.
+            </p>
+          </div>
+        </section>
+
+        <section id="multi-layer-security" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Multi-Layered Security Approach</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            To maintain the integrity of AMM Markets and the LP collateral ecosystem, several measures 
+            are essential:
+          </p>
+          
+          <div className="space-y-4">
+            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+              <h3 className="font-semibold text-purple-900 mb-2">Rigorous Smart Contract Audits</h3>
+              <p className="text-purple-800 text-sm">
+                Core protocols and collateral logic undergo thorough third-party audits to ensure 
+                correctness, robustness, and resistance to exploits.
+              </p>
+            </div>
+
+            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <h3 className="font-semibold text-blue-900 mb-2">Economic Security Stress Testing</h3>
+              <p className="text-blue-800 text-sm">
+                Simulation environments are used to test the resilience of markets under extreme 
+                conditions, including price volatility, liquidity shocks, and systemic stress.
+              </p>
+            </div>
+
+            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+              <h3 className="font-semibold text-green-900 mb-2">Community-Driven Bug Bounty Programs</h3>
+              <p className="text-green-800 text-sm">
+                Ethical hackers and developers are incentivized to identify vulnerabilities, ensuring 
+                continuous improvement and rapid mitigation of potential threats.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
+            <p className="text-amber-800 text-sm">
+              While no system can claim absolute invulnerability, the combination of transparency, 
+              rigorous audits, economic simulations, and community engagement ensures that AMM Markets 
+              remain a secure and trusted environment for liquidity providers and borrowers alike.
+            </p>
+          </div>
         </section>
 
         <section id="core-contracts" className="mb-12">
@@ -65,7 +133,7 @@ export default function ContractsArchitecturePage() {
               </p>
               <ul className="text-green-700 text-xs space-y-1">
                 <li>• Uniswap v3 adapter</li>
-                <li>• Aerodrome adapter</li>
+                <li>• Balancer adapter</li>
                 <li>• Curve adapter (planned)</li>
               </ul>
             </div>
@@ -79,18 +147,6 @@ export default function ContractsArchitecturePage() {
                 <li>• Health factor validation</li>
                 <li>• Close factor enforcement</li>
                 <li>• Liquidation event emission</li>
-              </ul>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">ConfigurationManager</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Stores and manages protocol parameters (LTV, thresholds, caps).
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Governance-controlled updates</li>
-                <li>• Time-locked changes</li>
-                <li>• Emergency override capability</li>
               </ul>
             </div>
           </div>
@@ -125,35 +181,6 @@ export default function ContractsArchitecturePage() {
                 <li>• Emergency pause (guardian multi-sig)</li>
                 <li>• Contract upgrades (governance + timelock)</li>
                 <li>• Initial parameter setting (team)</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section id="upgrade-mechanism" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Upgrade Mechanism</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Contracts use the transparent proxy pattern for upgradeability:
-          </p>
-          
-          <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Upgrade Process</h3>
-              <ol className="text-gray-600 text-sm space-y-1 list-decimal list-inside">
-                <li>Governance proposal submitted</li>
-                <li>Community voting period (7 days)</li>
-                <li>If passed, timelock delay (48 hours)</li>
-                <li>Upgrade executed by timelock contract</li>
-              </ol>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Safety Measures</h3>
-              <ul className="text-gray-600 text-sm space-y-1">
-                <li>• Storage layout validation</li>
-                <li>• Initialization protection</li>
-                <li>• Rollback capability</li>
-                <li>• Audit requirement for upgrades</li>
               </ul>
             </div>
           </div>
@@ -207,7 +234,7 @@ export default function ContractsArchitecturePage() {
       {/* Right scroll-spy sidebar */}
       <ScrollSpySidebar 
         sections={sections} 
-        pageSummary="Overview of core smart contracts, trust boundaries, and upgrade considerations."
+        pageSummary="Overview of smart contract security, trust boundaries, and audit considerations."
         sectionColor="rose"
       />
     </div>

@@ -1,5 +1,6 @@
 import type React from "react"
 import DeveloperSidebar from "@/components/developer-sidebar"
+import { DeveloperContentWrapper } from "@/components/developer-content-wrapper"
 
 export default function DevelopersLayout({
   children,
@@ -11,7 +12,7 @@ export default function DevelopersLayout({
       <div className="flex flex-1 max-w-[1200px] mx-auto">
         <DeveloperSidebar />
         <div className="flex-1 py-8 px-6 lg:px-10 min-w-0">
-          <div className="developer-content">{children}</div>
+          <DeveloperContentWrapper>{children}</DeveloperContentWrapper>
         </div>
       </div>
     </div>

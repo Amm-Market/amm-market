@@ -4,10 +4,10 @@ import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 const sections = [
   { id: "overview", title: "Overview" },
-  { id: "fee-accrual", title: "Fee Accrual" },
-  { id: "claiming-process", title: "Claiming Process" },
-  { id: "fee-distribution", title: "Fee Distribution" },
-  { id: "tax-considerations", title: "Tax Considerations" },
+  { id: "how-it-works", title: "How It Works" },
+  { id: "health-checks", title: "Health Checks" },
+  { id: "fee-accounting", title: "Fee Accounting" },
+  { id: "key-benefits", title: "Key Benefits" },
 ]
 
 export default function ClaimLPFeesPage() {
@@ -17,151 +17,139 @@ export default function ClaimLPFeesPage() {
       <div className="max-w-3xl">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Claim LP Fees</h1>
         <p className="text-lg text-gray-600 mb-8">
-          How accrued trading fees from underlying LP positions are tracked and claimed.
+          How to claim trading fees accrued from your LP positions without withdrawing liquidity.
         </p>
 
         <section id="overview" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            One of AMM Market's key benefits is that your LP positions continue earning trading 
-            fees while serving as collateral. These fees accrue in the underlying DEX and can 
-            be claimed separately from your collateral.
+            AMM Market allows users to claim trading fees accrued from their LP positions without 
+            withdrawing liquidity. This means users can unlock the fees they have already earned 
+            while keeping their liquidity active in the pool.
           </p>
           <div className="p-4 bg-green-50 rounded-lg border border-green-200">
             <p className="text-green-800 text-sm">
-              <strong>Key Benefit:</strong> LP fees are yours to claim regardless of your loan status. 
-              They are not used to repay debt automatically.
+              <strong>Key Benefit:</strong> This process is fully noncustodial and does not affect 
+              the collateralized status of LP shares. Liquidity remains active in the pool and 
+              continues to generate new fees.
             </p>
           </div>
         </section>
 
-        <section id="fee-accrual" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Fee Accrual</h2>
+        <section id="how-it-works" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">How It Works</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Trading fees accrue based on the underlying DEX mechanics:
-          </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">DEX Type</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Fee Accrual Method</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Uniswap v2 / Aerodrome</td>
-                  <td className="px-4 py-2 text-gray-600">Fees compound into LP token value automatically</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Uniswap v3</td>
-                  <td className="px-4 py-2 text-gray-600">Fees accrue separately and must be collected</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Curve</td>
-                  <td className="px-4 py-2 text-gray-600">Fees compound into LP token value + CRV rewards</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section id="claiming-process" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Claiming Process</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            The claiming process varies by DEX type:
+            Fee claiming is accomplished through the <code className="bg-gray-200 px-1 rounded">decreaseLiquidityAndCollect</code> function.
           </p>
           
           <div className="space-y-4">
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">For Uniswap v3 Positions</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">Call Parameters</h3>
               <p className="text-gray-600 text-sm mb-2">
-                Fees must be explicitly collected from the position NFT.
+                A user can call this function with specific parameters to claim only fees:
               </p>
-              <code className="text-xs bg-gray-200 px-2 py-1 rounded block overflow-x-auto">
-                ammMarket.collectFees(tokenId, recipient)
-              </code>
-              <p className="text-gray-500 text-xs mt-2">
-                Returns: (uint256 amount0, uint256 amount1) — fees in each token
-              </p>
+              <ul className="text-gray-600 text-sm space-y-1 ml-4">
+                <li>• <code className="bg-gray-200 px-1 rounded">params.liquidity</code> set to <code className="bg-gray-200 px-1 rounded">0</code></li>
+                <li>• <code className="bg-gray-200 px-1 rounded">params.feeAmount0</code> set to <code className="bg-gray-200 px-1 rounded">type(uint128).max</code></li>
+                <li>• <code className="bg-gray-200 px-1 rounded">params.feeAmount1</code> set to <code className="bg-gray-200 px-1 rounded">type(uint128).max</code></li>
+              </ul>
             </div>
-            
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">For Auto-Compounding Pools</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Fees are automatically added to your LP token value. No explicit claim needed.
+              <h3 className="font-semibold text-gray-900 mb-2">Execution Flow</h3>
+              <p className="text-gray-600 text-sm">
+                The function skips the liquidity removal step and proceeds directly to the 
+                <code className="bg-gray-200 px-1 rounded ml-1">collect</code> call on the LP Position Manager. 
+                The accrued fees are transferred to the specified recipient (usually the user's own wallet).
               </p>
-              <p className="text-gray-500 text-xs">
-                Your LP tokens are worth more over time as fees compound.
-              </p>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">For Reward Tokens (CRV, AERO, etc.)</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                External reward tokens are claimed separately.
-              </p>
-              <code className="text-xs bg-gray-200 px-2 py-1 rounded block overflow-x-auto">
-                ammMarket.claimRewards(lpToken, recipient)
-              </code>
             </div>
           </div>
         </section>
 
-        <section id="fee-distribution" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Fee Distribution</h2>
+        <section id="health-checks" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Health Checks</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            When you claim fees:
+            The Spoke performs a loan health check both before and after the fee claim action.
           </p>
-          <ul className="space-y-2 text-gray-600">
-            <li className="flex items-start gap-2">
-              <span className="text-blue-500 mt-1">•</span>
-              <span><strong>100% to you:</strong> All trading fees belong to the LP token holder</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-blue-500 mt-1">•</span>
-              <span><strong>No protocol cut:</strong> AMM Market does not take a share of LP fees</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-blue-500 mt-1">•</span>
-              <span><strong>Direct to wallet:</strong> Claimed fees go directly to your specified address</span>
-            </li>
-          </ul>
-          
-          <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h3 className="font-semibold text-blue-900 mb-2">Fee Impact on Collateral Value</h3>
-            <p className="text-blue-800 text-sm">
-              For auto-compounding pools, accrued fees increase your LP token value, which 
-              increases your collateral value and borrowing power. This creates a positive 
-              feedback loop for long-term positions.
+          <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 mb-4">
+            <h3 className="font-semibold text-amber-900 mb-2">Important</h3>
+            <p className="text-amber-800 text-sm">
+              The health check ensures that the removal of the fee value (which reduces the NFT's 
+              total fullValue) does not push the loan into an unhealthy state.
             </p>
+          </div>
+          <p className="text-gray-600 leading-relaxed">
+            This allows users to continuously harvest their yield — a feature that is not possible 
+            in protocols that require full withdrawal of the NFT to access fees.
+          </p>
+        </section>
+
+        <section id="fee-accounting" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Fee Accounting</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            AMM Market maintains careful fee accounting for accurate valuations:
+          </p>
+          <div className="space-y-4">
+            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <h3 className="font-semibold text-blue-900 mb-2">Cached Fee Values</h3>
+              <p className="text-blue-800 text-sm">
+                AMM Market always caches <code className="bg-blue-100 px-1 rounded">lastFee0</code> and 
+                <code className="bg-blue-100 px-1 rounded ml-1">lastFee1</code> for bookkeeping.
+              </p>
+            </div>
+            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+              <h3 className="font-semibold text-purple-900 mb-2">Oracle Integration</h3>
+              <p className="text-purple-800 text-sm">
+                Fee accounting is included inside the <code className="bg-purple-100 px-1 rounded">oracle.getValue</code> result, 
+                which returns <code className="bg-purple-100 px-1 rounded">fullValue</code> and 
+                <code className="bg-purple-100 px-1 rounded ml-1">feeValue</code>.
+              </p>
+            </div>
+            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+              <h3 className="font-semibold text-green-900 mb-2">Liquidation Calculations</h3>
+              <p className="text-green-800 text-sm">
+                The feeValue is used in health checks and in liquidation calculations to ensure 
+                liquidators and Hubs consider accrued but uncollected fees.
+              </p>
+            </div>
           </div>
         </section>
 
-        <section id="tax-considerations" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Tax Considerations</h2>
+        <section id="key-benefits" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Key Benefits</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            LP fees may be taxable income in your jurisdiction. Consider:
+            AMM Market ensures that users are not forced to choose between keeping their liquidity 
+            deployed and accessing accrued fees:
           </p>
-          <ul className="space-y-2 text-gray-600 text-sm">
-            <li>• Claimed fees are typically treated as income at time of receipt</li>
-            <li>• Auto-compounded fees may have different tax treatment</li>
-            <li>• Keep records of all fee claims for tax reporting</li>
-            <li>• Consult a tax professional for advice specific to your situation</li>
+          <ul className="space-y-3">
+            <li className="flex items-start gap-3">
+              <span className="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-medium">1</span>
+              <div>
+                <span className="font-medium text-gray-900">Liquidity Remains Productive</span>
+                <p className="text-gray-600 text-sm mt-0.5">Your liquidity stays active in the pool and continues generating new fees.</p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-medium">2</span>
+              <div>
+                <span className="font-medium text-gray-900">Access Earned Returns Anytime</span>
+                <p className="text-gray-600 text-sm mt-0.5">Previously earned returns are made available at any time without affecting your loan.</p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-medium">3</span>
+              <div>
+                <span className="font-medium text-gray-900">Noncustodial Process</span>
+                <p className="text-gray-600 text-sm mt-0.5">The entire process is noncustodial and does not affect the collateralized status of your LP shares.</p>
+              </div>
+            </li>
           </ul>
-          <div className="mt-4 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-            <p className="text-yellow-800 text-sm">
-              <strong>Disclaimer:</strong> This is not tax advice. Tax treatment varies by 
-              jurisdiction and individual circumstances.
-            </p>
-          </div>
         </section>
       </div>
 
       {/* Right scroll-spy sidebar */}
       <ScrollSpySidebar 
         sections={sections} 
-        pageSummary="How accrued trading fees from underlying LP positions are tracked and claimed."
+        pageSummary="How to claim trading fees accrued from your LP positions without withdrawing liquidity."
         sectionColor="emerald"
       />
     </div>

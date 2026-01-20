@@ -3,12 +3,12 @@
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 const sections = [
-  { id: "lp-collateral", title: "LP Collateral" },
-  { id: "spoke-and-hub", title: "Spoke and Hub" },
-  { id: "health-factor", title: "Health Factor" },
-  { id: "liquidation-threshold", title: "Liquidation Threshold" },
-  { id: "loan-to-value", title: "Loan-to-Value (LTV)" },
-  { id: "price-oracles", title: "Price Oracles" },
+  { id: "core-insight", title: "Core Insight" },
+  { id: "user-flow", title: "User Flow" },
+  { id: "oracle-valuation", title: "Oracle & Valuation" },
+  { id: "borrowing-process", title: "Borrowing Process" },
+  { id: "health-monitoring", title: "Health Monitoring" },
+  { id: "fee-collection", title: "Fee Collection" },
 ]
 
 export default function KeyConceptsPage() {
@@ -18,147 +18,168 @@ export default function KeyConceptsPage() {
       <div className="max-w-3xl">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Key Concepts</h1>
         <p className="text-lg text-gray-600 mb-8">
-          Definitions of core terms such as LP collateral, spoke, hub, health factor, and liquidation thresholds.
+          Understanding the core mechanics of how AMM Market treats LP positions as sophisticated financial instruments.
         </p>
 
-        <section id="lp-collateral" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">LP Collateral</h2>
+        <section id="core-insight" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Core Insight</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            LP (Liquidity Provider) collateral refers to LP tokens deposited into AMM Market to secure 
-            a loan. These tokens represent ownership of a share in a liquidity pool on a decentralized 
-            exchange.
+            The core insight behind AMM Market is that an LP position is not merely a bundle of two tokens; 
+            it is a sophisticated financial instrument whose value is composed of principal liquidity and 
+            accrued trading fees, all confined within a specific price range.
           </p>
-          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <h3 className="font-semibold text-gray-900 mb-2">Key Properties</h3>
-            <ul className="text-gray-600 text-sm space-y-1">
-              <li>• Represents proportional ownership of pool assets</li>
-              <li>• Value fluctuates with underlying token prices</li>
-              <li>• Continues earning trading fees while collateralized</li>
-              <li>• Subject to impermanent loss risk</li>
-            </ul>
-          </div>
-        </section>
-
-        <section id="spoke-and-hub" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Spoke and Hub</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Aave v4 uses a Hub-and-Spoke architecture to separate core lending logic from specialized 
-            collateral handling.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Hub</h3>
-              <p className="text-blue-800 text-sm">
-                The central component managing liquidity pools, interest rates, and cross-spoke 
-                coordination. All borrowing ultimately draws from Hub liquidity.
-              </p>
-            </div>
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">Spoke</h3>
-              <p className="text-purple-800 text-sm">
-                A specialized module (like AMM Market) that handles specific collateral types. 
-                Spokes define valuation logic, risk parameters, and liquidation rules.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="health-factor" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Health Factor</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            The health factor is a numeric indicator of your position's safety. It represents the 
-            ratio between your collateral value (adjusted by liquidation threshold) and your debt.
-          </p>
-          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 mb-4">
-            <h3 className="font-semibold text-gray-900 mb-2">Formula</h3>
-            <code className="text-sm bg-gray-200 px-2 py-1 rounded">
-              Health Factor = (Collateral Value × Liquidation Threshold) / Total Debt
-            </code>
-          </div>
-          <ul className="space-y-2 text-gray-600 text-sm">
-            <li className="flex items-center gap-2">
-              <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-              <span><strong>HF &gt; 1.5:</strong> Safe — comfortable buffer against liquidation</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
-              <span><strong>1.0 &lt; HF &lt; 1.5:</strong> Caution — monitor closely</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="w-3 h-3 bg-red-500 rounded-full"></span>
-              <span><strong>HF ≤ 1.0:</strong> Liquidatable — position can be liquidated</span>
-            </li>
-          </ul>
-        </section>
-
-        <section id="liquidation-threshold" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Liquidation Threshold</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            The liquidation threshold is the percentage of collateral value at which a position 
-            becomes eligible for liquidation. Different LP types have different thresholds based 
-            on their risk profile.
-          </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Pool Type</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Liquidation Threshold</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                <tr>
-                  <td className="px-4 py-2 text-gray-600">Stablecoin Pairs</td>
-                  <td className="px-4 py-2 text-gray-900 font-medium">90%</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-600">Blue-chip Pairs (ETH/USDC)</td>
-                  <td className="px-4 py-2 text-gray-900 font-medium">80%</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-600">Volatile Pairs</td>
-                  <td className="px-4 py-2 text-gray-900 font-medium">70%</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section id="loan-to-value" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Loan-to-Value (LTV)</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            LTV defines the maximum amount you can borrow against your collateral. It's always 
-            lower than the liquidation threshold to provide a safety buffer.
+            Traditional lending protocols, which treat assets as fungible ERC20 tokens, cannot accurately 
+            assess or manage this type of collateral. AMM Market solves this by building on the proven 
+            foundation of Aave v4—a battle-tested and audited codebase specifically designed to integrate 
+            natively with Aave v4's Hub-and-Spoke model.
           </p>
           <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h3 className="font-semibold text-blue-900 mb-2">Example</h3>
+            <h3 className="font-semibold text-blue-900 mb-2">Context-Aware Risk Management</h3>
             <p className="text-blue-800 text-sm">
-              If you deposit $10,000 worth of LP tokens with 75% LTV, you can borrow up to $7,500. 
-              The position becomes liquidatable when debt exceeds the liquidation threshold 
-              (e.g., 80% = $8,000).
+              LP shares carry path-dependent risk (impermanent loss, fee accrual, oracle drift). AMM Market 
+              is context-aware—it can track pool composition, volatility bands, and oracle quality, then 
+              tune LTVs and liquidation paths accordingly.
             </p>
           </div>
         </section>
 
-        <section id="price-oracles" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Price Oracles</h2>
+        <section id="user-flow" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">User Flow</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Price oracles provide real-time valuations of LP tokens. AMM Market uses specialized 
-            oracles that account for:
+            AMM Market is designed for both simplicity and security. The process begins with depositing 
+            LP shares into AMM Market. This action is the foundation of the entire process, as the LP 
+            share serves as a unique, verifiable title to their liquidity position.
           </p>
-          <ul className="space-y-2 text-gray-600">
-            <li>• Underlying token prices from Chainlink or equivalent feeds</li>
-            <li>• Pool reserves and total supply</li>
-            <li>• Concentrated liquidity price ranges (for Uniswap v3-style positions)</li>
-            <li>• Time-weighted average prices (TWAP) for manipulation resistance</li>
+          <div className="space-y-4">
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">1. Deposit</h3>
+              <p className="text-gray-600 text-sm">
+                Upon deposit, the user's LP shares are securely held within the Spoke, which then interacts 
+                with the Aave v4 Hub to establish a line of credit. This does not remove their liquidity 
+                from the pool—their LP share remains active, continuing to earn fees and provide liquidity 
+                whether on Balancer or Uniswap.
+              </p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">2. Borrow</h3>
+              <p className="text-gray-600 text-sm">
+                Borrowing occurs by selecting an optimal Hub based on factors like available liquidity and 
+                premiums, drawing funds directly from the Hub while tracking debt shares internally.
+              </p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">3. Interest Accrual</h3>
+              <p className="text-gray-600 text-sm">
+                Interest accrues on debts using a compounded model via the interest rate model contract, 
+                incorporating utilization and reserve factors.
+              </p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">4. Manage Position</h3>
+              <p className="text-gray-600 text-sm">
+                Users can repay loans, collect fees from their positions, or adjust liquidity without full 
+                redemption. The architecture ensures risk isolation, with AMM Market managing per-position 
+                health checks and the Hub enforcing aggregate caps.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="oracle-valuation" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Oracle & Valuation</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            The Spoke uses a sophisticated oracle system to determine the real-time value of the deposited 
+            NFT, taking into account:
+          </p>
+          <ul className="space-y-2 text-gray-600 mb-4">
+            <li className="flex items-start gap-2">
+              <span className="text-blue-500 mt-1">•</span>
+              <span>Current prices of the two underlying tokens</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-blue-500 mt-1">•</span>
+              <span>The specific price range (ticks) of the LP position</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-blue-500 mt-1">•</span>
+              <span>Accrued trading fees</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-blue-500 mt-1">•</span>
+              <span>Pool composition and liquidity depth</span>
+            </li>
           </ul>
+          <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+            <h3 className="font-semibold text-purple-900 mb-2">Collateral Calculation</h3>
+            <p className="text-purple-800 text-sm">
+              Based on this valuation and a predefined collateral factor, the Spoke calculates the maximum 
+              amount of an asset (such as USDC) that the user can borrow.
+            </p>
+          </div>
+        </section>
+
+        <section id="borrowing-process" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Borrowing Process</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            The user can initiate a borrow transaction, and the Spoke, in turn, sources the required funds 
+            from the Aave v4 Hub.
+          </p>
+          <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 mb-4">
+            <h3 className="font-semibold text-amber-900 mb-2">Important</h3>
+            <p className="text-amber-800 text-sm">
+              This borrowing is not a direct interaction between the end-user and the Hub; instead, the 
+              Spoke acts as an intermediary, borrowing on behalf of the user. The user is now responsible 
+              for repaying the borrowed amount plus interest.
+            </p>
+          </div>
+        </section>
+
+        <section id="health-monitoring" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Health Monitoring & Liquidation</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            The protocol continuously monitors the health of the loan by comparing the current value of 
+            the collateralized NFT against the outstanding debt.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+              <h3 className="font-semibold text-green-900 mb-2">Healthy Position</h3>
+              <p className="text-green-800 text-sm">
+                Collateral value comfortably exceeds debt. Position is safe from liquidation.
+              </p>
+            </div>
+            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+              <h3 className="font-semibold text-red-900 mb-2">At Risk</h3>
+              <p className="text-red-800 text-sm">
+                If collateral value drops due to market movements, bringing the LTV above a critical 
+                threshold, the position becomes eligible for liquidation.
+              </p>
+            </div>
+          </div>
+          <p className="text-gray-600 leading-relaxed">
+            In a liquidation event, a liquidator can repay a portion of the debt and seize a corresponding 
+            portion of the NFT's underlying assets, ensuring the system remains solvent. Liquidations can 
+            be user-initiated or triggered by the Hub for Spoke-level solvency.
+          </p>
+        </section>
+
+        <section id="fee-collection" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Fee Collection</h2>
+          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <h3 className="font-semibold text-blue-900 mb-2">Claim Fees Anytime</h3>
+            <p className="text-blue-800 text-sm">
+              Crucially, at any time, the user can reclaim their accrued trading fees by calling a 
+              dedicated function, which instructs the Spoke to collect the fees from the liquidity 
+              pools on their behalf—all without affecting the collateralized status of the NFT.
+            </p>
+          </div>
         </section>
       </div>
 
       {/* Right scroll-spy sidebar */}
       <ScrollSpySidebar 
         sections={sections} 
-        pageSummary="Definitions of core terms such as LP collateral, spoke, hub, health factor, and liquidation thresholds."
+        pageSummary="Understanding the core mechanics of how AMM Market treats LP positions as sophisticated financial instruments."
         sectionColor="blue"
       />
     </div>

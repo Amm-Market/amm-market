@@ -3,10 +3,15 @@
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 const sections = [
-  { id: "example-1", title: "Example 1: Price Drop" },
-  { id: "example-2", title: "Example 2: Interest Accrual" },
-  { id: "example-3", title: "Example 3: Impermanent Loss" },
-  { id: "example-4", title: "Example 4: Partial Liquidation" },
+  { id: "partial-liquidation", title: "Partial Liquidation Example" },
+  { id: "curve-lp", title: "Curve LP Collateral" },
+  { id: "balancer-lp", title: "Balancer LP Collateral" },
+  { id: "multi-pool", title: "Multi-Pool Collateral" },
+  { id: "uniswap-v2", title: "Uniswap V2 LP Tokens" },
+  { id: "uniswap-v3", title: "Uniswap V3 LP Tokens" },
+  { id: "uniswap-v4", title: "Uniswap V4 LP Tokens" },
+  { id: "edge-cases", title: "Edge Cases & Issues" },
+  { id: "summary", title: "Summary" },
 ]
 
 export default function LiquidationExamplesPage() {
@@ -16,178 +21,527 @@ export default function LiquidationExamplesPage() {
       <div className="max-w-3xl">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Liquidation Examples</h1>
         <p className="text-lg text-gray-600 mb-8">
-          Concrete scenarios illustrating health factor deterioration and liquidation outcomes.
+          Concrete scenarios illustrating liquidation processes for different LP token types.
         </p>
 
-        <section id="example-1" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example 1: Price Drop Liquidation</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            A user deposits ETH/USDC LP tokens and borrows USDC. ETH price drops significantly.
-          </p>
+        <section id="partial-liquidation" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Partial Liquidation Example</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Initial Position</h3>
-              <ul className="text-blue-800 text-sm space-y-1">
-                <li>• ETH/USDC LP value: <strong>$10,000</strong></li>
-                <li>• Liquidation threshold: <strong>82%</strong></li>
-                <li>• Borrowed USDC: <strong>$7,000</strong></li>
-                <li>• Health Factor: ($10,000 × 0.82) / $7,000 = <strong>1.17</strong></li>
-              </ul>
-            </div>
+          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
+            <h3 className="font-semibold text-blue-900 mb-2">Scenario</h3>
+            <ul className="text-blue-800 text-sm space-y-1">
+              <li>• <strong>LP collateral:</strong> $7,071 (V3 NFTs: ETH/USDC + WETH/DAI)</li>
+              <li>• <strong>Debt:</strong> $5,000 (GHO)</li>
+              <li>• <strong>Liquidation threshold:</strong> 70%</li>
+              <li>• <strong>HF target:</strong> 1.2</li>
+            </ul>
+          </div>
 
-            <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-              <h3 className="font-semibold text-yellow-900 mb-2">After ETH Drops 20%</h3>
-              <ul className="text-yellow-800 text-sm space-y-1">
-                <li>• ETH/USDC LP value: <strong>$8,500</strong> (LP value drops ~15% due to IL)</li>
-                <li>• Borrowed USDC: <strong>$7,000</strong> (unchanged)</li>
-                <li>• Health Factor: ($8,500 × 0.82) / $7,000 = <strong>1.00</strong></li>
-                <li className="text-yellow-900 font-medium">→ Position is now liquidatable!</li>
-              </ul>
-            </div>
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <h3 className="font-semibold text-gray-900 mb-3">Step-by-Step Process</h3>
+            <ol className="space-y-3 text-gray-600 text-sm">
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-blue-200 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                <div>
+                  <strong>Compute minimal debt repayment:</strong>
+                  <div className="p-2 bg-gray-200 rounded mt-1">
+                    <code className="text-xs">x = (1.2 × 5000 − 7071 × 0.7) / 1.2 = 875.21</code>
+                  </div>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-blue-200 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                <span><strong>Execute Flashloan:</strong> Borrow $875.21 from Aave Hub</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-blue-200 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                <span><strong>Repay debt & withdraw collateral:</strong> Repay GHO on Spoke, withdraw V3 NFT positions</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-blue-200 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                <span><strong>Unwrap LPs & collect tokens:</strong> decreaseLiquidity and collect on NFTs. Now holding ETH/WETH and USDC/DAI</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-blue-200 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold">5</span>
+                <span><strong>Swap to repay flashloan:</strong> Swap tokens via multi-DEX routing into GHO to cover flashloan + fees</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold">6</span>
+                <span><strong>Finalize:</strong> HF restored to 1.2. Partial liquidation preserves remaining collateral. Any leftover tokens go to liquidator</span>
+              </li>
+            </ol>
+          </div>
 
-            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-              <h3 className="font-semibold text-red-900 mb-2">Liquidation Outcome</h3>
-              <ul className="text-red-800 text-sm space-y-1">
-                <li>• Liquidator repays: <strong>$3,500</strong> (50% of debt)</li>
-                <li>• Liquidation bonus: <strong>7.5%</strong></li>
-                <li>• Collateral seized: $3,500 × 1.075 = <strong>$3,762.50</strong> worth of LP</li>
-                <li>• User's remaining collateral: <strong>$4,737.50</strong></li>
-                <li>• User's remaining debt: <strong>$3,500</strong></li>
-                <li>• New HF: ($4,737.50 × 0.82) / $3,500 = <strong>1.11</strong></li>
-              </ul>
-            </div>
+          <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
+            <h3 className="font-semibold text-amber-900 mb-2">Key Edge Cases</h3>
+            <ul className="text-amber-800 text-sm space-y-1">
+              <li>• <strong>Position out-of-range (V3):</strong> Only one token returned → requires multi-hop swap</li>
+              <li>• <strong>V4 hooks:</strong> Custom unwrap API may differ per pool</li>
+              <li>• <strong>Low liquidity:</strong> Multi-step swaps or DEX fallback routes needed</li>
+              <li>• <strong>Oracle mismatches:</strong> TWAP safeguards required</li>
+            </ul>
           </div>
         </section>
 
-        <section id="example-2" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example 2: Interest Accrual Liquidation</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            A user borrows at high utilization and doesn't monitor their position as interest accrues.
-          </p>
+        <section id="curve-lp" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Scenario 1: Curve LP Collateral</h2>
+          
+          <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 mb-4">
+            <h3 className="font-semibold text-purple-900 mb-2">Setup</h3>
+            <ul className="text-purple-800 text-sm space-y-1">
+              <li>• <strong>LP collateral:</strong> 3Pool (DAI/USDC/USDT) LP tokens (ERC-20)</li>
+              <li>• <strong>Debt:</strong> 10,000 GHO</li>
+              <li>• <strong>Liquidation threshold:</strong> 75%</li>
+              <li>• <strong>HF target:</strong> 1.2</li>
+            </ul>
+          </div>
+
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <h3 className="font-semibold text-gray-900 mb-3">Liquidation Process</h3>
+            <ol className="space-y-2 text-gray-600 text-sm">
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                <span><strong>HF drops below 1:</strong> Spoke oracle shows LP value decreased due to stablecoin imbalance</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                <div>
+                  <strong>Compute minimal debt repayment:</strong>
+                  <div className="p-2 bg-gray-200 rounded mt-1">
+                    <code className="text-xs">x = (1.2 × 10000 − 12000 × 0.75) / 1.2 = 500</code>
+                  </div>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                <span><strong>Flashloan:</strong> Borrow $500 GHO via Aave Hub</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                <span><strong>Repay debt & withdraw LP:</strong> spoke.repay(borrower, GHO, 500, variable). Withdraw Curve 3Pool LP (ERC-20)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">5</span>
+                <span><strong>Remove liquidity from Curve:</strong> Call remove_liquidity_imbalance([amountDAI, amountUSDC, amountUSDT], minAmounts). Receive individual stablecoins</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">6</span>
+                <span><strong>Swap to repay flashloan:</strong> Typically one token (e.g., DAI) is swapped to GHO using Uniswap or PancakeSwap</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold">7</span>
+                <span><strong>Complete:</strong> Repay flashloan + fee. Remaining stablecoins sent to liquidator</span>
+              </li>
+            </ol>
+          </div>
+
+          <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
+            <h3 className="font-semibold text-amber-900 mb-2">Edge Cases / Notes</h3>
+            <ul className="text-amber-800 text-sm space-y-1">
+              <li>• Imbalance in pool may cause slippage → set minAmounts to prevent under-repayment</li>
+              <li>• Multi-step swaps required if Curve pool token isn't directly GHO-compatible</li>
+              <li>• HF may require partial liquidation only; full liquidation avoided unless HF still &lt; 1</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="balancer-lp" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Scenario 2: Balancer Weighted Pool LP Collateral</h2>
+          
+          <div className="p-4 bg-green-50 rounded-lg border border-green-200 mb-4">
+            <h3 className="font-semibold text-green-900 mb-2">Setup</h3>
+            <ul className="text-green-800 text-sm space-y-1">
+              <li>• <strong>LP collateral:</strong> Balancer 50/50 ETH/USDC LP (ERC-20)</li>
+              <li>• <strong>Debt:</strong> 8,000 GHO</li>
+              <li>• <strong>Liquidation threshold:</strong> 70%</li>
+              <li>• <strong>HF target:</strong> 1.2</li>
+            </ul>
+          </div>
+
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <h3 className="font-semibold text-gray-900 mb-3">Liquidation Process</h3>
+            <ol className="space-y-2 text-gray-600 text-sm">
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                <span><strong>HF drops below threshold:</strong> ETH price volatility causes LP value to drop</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                <div>
+                  <strong>Compute minimal debt repayment:</strong>
+                  <div className="p-2 bg-gray-200 rounded mt-1">
+                    <code className="text-xs">x = (1.2 × 8000 − 11000 × 0.7) / 1.2 = 400</code>
+                  </div>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                <span><strong>Flashloan:</strong> Borrow $400 GHO from Aave Hub</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                <span><strong>Repay debt & withdraw LP:</strong> spoke.repay(borrower, GHO, 400, variable). Withdraw Balancer LP (ERC-20)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">5</span>
+                <span><strong>Remove liquidity from Balancer:</strong> Call exitPool(amount, minAmountsOut). Receive underlying ETH and USDC</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">6</span>
+                <span><strong>Swap to GHO:</strong> Use multi-DEX route: swap ETH → GHO on Uniswap V3; USDC → GHO on Curve or Aerodrome</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold">7</span>
+                <span><strong>Complete:</strong> Repay flashloan and distribute profit. Any leftover ETH or USDC transferred to liquidator</span>
+              </li>
+            </ol>
+          </div>
+
+          <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
+            <h3 className="font-semibold text-amber-900 mb-2">Edge Cases / Notes</h3>
+            <ul className="text-amber-800 text-sm space-y-1">
+              <li>• Low pool liquidity → multi-step swaps or aggregator needed</li>
+              <li>• Fee-on-transfer tokens must use removeLiquiditySupportingFeeOnTransferTokens</li>
+              <li>• HF recalculation may trigger additional liquidation if ETH drops further</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="multi-pool" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Scenario 3: Multi-Pool LP Collateral</h2>
+          
+          <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 mb-4">
+            <h3 className="font-semibold text-amber-900 mb-2">Setup</h3>
+            <p className="text-amber-800 text-sm mb-2">Borrower has mixed collateral:</p>
+            <ul className="text-amber-800 text-sm space-y-1">
+              <li>• Uniswap V3 ETH/USDC NFT (range liquidity)</li>
+              <li>• Curve 3Pool LP (ERC-20)</li>
+              <li>• Balancer 50/50 ETH/USDC LP (ERC-20)</li>
+              <li>• <strong>Total debt:</strong> 15,000 GHO</li>
+              <li>• <strong>HF target:</strong> 1.2</li>
+            </ul>
+          </div>
+
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <h3 className="font-semibold text-gray-900 mb-3">Liquidation Process</h3>
+            <ol className="space-y-2 text-gray-600 text-sm">
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                <span><strong>HF drops below 1:</strong> ETH volatility + stablecoin imbalance → HF &lt; 1</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                <div>
+                  <strong>Compute minimal repayment per collateral type:</strong>
+                  <ul className="mt-1 ml-4 space-y-1">
+                    <li>• V3 NFT: 1,200 GHO</li>
+                    <li>• Curve LP: 500 GHO</li>
+                    <li>• Balancer LP: 300 GHO</li>
+                  </ul>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                <span><strong>Flashloan execution:</strong> Borrow total 2,000 GHO via Aave Hub. Execute all liquidations atomically</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                <span><strong>Repay debt on Spoke:</strong> spoke.repay called per asset type</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">5</span>
+                <div>
+                  <strong>Withdraw LPs:</strong>
+                  <ul className="mt-1 ml-4 space-y-1">
+                    <li>• V3 NFT: withdraw NFT, decreaseLiquidity, collect</li>
+                    <li>• Curve & Balancer: withdraw ERC-20 LPs</li>
+                  </ul>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">6</span>
+                <div>
+                  <strong>Unwrap / Remove liquidity:</strong>
+                  <ul className="mt-1 ml-4 space-y-1">
+                    <li>• V3 NFT → token0/token1 (ETH/USDC)</li>
+                    <li>• Curve LP → DAI/USDC/USDT</li>
+                    <li>• Balancer LP → ETH/USDC</li>
+                  </ul>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">7</span>
+                <div>
+                  <strong>Swap underlying tokens to repay flashloan:</strong>
+                  <ul className="mt-1 ml-4 space-y-1">
+                    <li>• ETH → GHO via Uniswap V3</li>
+                    <li>• DAI → GHO via Curve</li>
+                    <li>• USDC → GHO via Aerodrome</li>
+                  </ul>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold">8</span>
+                <span><strong>Flashloan repayment & profit distribution:</strong> Repay full 2,000 GHO + fees. Leftover tokens sent to liquidator</span>
+              </li>
+            </ol>
+          </div>
+
+          <div className="mt-4 p-4 bg-red-50 rounded-lg border border-red-200">
+            <h3 className="font-semibold text-red-900 mb-2">Edge Cases / Notes</h3>
+            <ul className="text-red-800 text-sm space-y-1">
+              <li>• V3 liquidity may be out-of-range → only one token returned → adjust swaps</li>
+              <li>• Multi-pool swaps increase slippage risk → set minReturn carefully</li>
+              <li>• Gas limits may require chunked liquidation or modular calls</li>
+              <li>• HF recalculated after each partial liquidation; protocol escalates to full liquidation if HF still &lt; 1</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="uniswap-v2" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Uniswap V2 LP Tokens</h2>
+          
+          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
+            <h3 className="font-semibold text-blue-900 mb-2">Scenario</h3>
+            <p className="text-blue-800 text-sm">
+              A user provides liquidity to a Uniswap V2 ETH/USDC pool and borrows GHO against their LP tokens.
+            </p>
+          </div>
+
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <h3 className="font-semibold text-gray-900 mb-3">Liquidation Process</h3>
+            <ol className="space-y-2 text-gray-600 text-sm">
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                <span>The liquidator identifies the under-collateralized position</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                <span>A flash loan is obtained from Aave v4</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                <span>The borrower's debt is repaid using the flash loan</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                <span>The LP tokens are withdrawn from the Aave v4 Spoke</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">5</span>
+                <span>The LP tokens are unwound to retrieve the underlying assets</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">6</span>
+                <span>The underlying assets are swapped as needed</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">7</span>
+                <span>The flash loan is repaid</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold">8</span>
+                <span>Any remaining assets are retained as profit</span>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="uniswap-v3" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Uniswap V3 LP Tokens</h2>
+          
+          <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 mb-4">
+            <h3 className="font-semibold text-purple-900 mb-2">Scenario</h3>
+            <p className="text-purple-800 text-sm">
+              A user provides liquidity to a Uniswap V3 ETH/USDC pool within a specific price range 
+              and borrows GHO against their LP tokens (NFT position).
+            </p>
+          </div>
+
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <h3 className="font-semibold text-gray-900 mb-3">Liquidation Process</h3>
+            <ol className="space-y-2 text-gray-600 text-sm">
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                <span>The liquidator identifies the under-collateralized position</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                <span>A flash loan is obtained from Aave v4</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                <span>The borrower's debt is repaid using the flash loan</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                <span>The LP NFT is withdrawn from the Aave v4 Spoke</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">5</span>
+                <span>The LP position is unwound (decreaseLiquidity + collect) to retrieve underlying assets</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">6</span>
+                <span>The underlying assets are swapped as needed</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">7</span>
+                <span>The flash loan is repaid</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold">8</span>
+                <span>Any remaining assets are retained as profit</span>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="uniswap-v4" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">3. Uniswap V4 LP Tokens</h2>
+          
+          <div className="p-4 bg-green-50 rounded-lg border border-green-200 mb-4">
+            <h3 className="font-semibold text-green-900 mb-2">Scenario</h3>
+            <p className="text-green-800 text-sm">
+              A user provides liquidity to a Uniswap V4 ETH/USDC pool (with hooks enabled) and 
+              borrows GHO against their LP tokens.
+            </p>
+          </div>
+
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <h3 className="font-semibold text-gray-900 mb-3">Liquidation Process</h3>
+            <ol className="space-y-2 text-gray-600 text-sm">
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                <span>The liquidator identifies the under-collateralized position</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                <span>A flash loan is obtained from Aave v4</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                <span>The borrower's debt is repaid using the flash loan</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                <span>The LP tokens are withdrawn from the Aave v4 Spoke</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">5</span>
+                <span>The LP tokens are unwound to retrieve the underlying assets (hook logic may apply)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">6</span>
+                <span>The underlying assets are swapped as needed</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-xs font-bold">7</span>
+                <span>The flash loan is repaid</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold">8</span>
+                <span>Any remaining assets are retained as profit</span>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="edge-cases" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Edge Cases & Potential Issues</h2>
           
           <div className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Initial Position</h3>
-              <ul className="text-blue-800 text-sm space-y-1">
-                <li>• Stablecoin LP value: <strong>$50,000</strong></li>
-                <li>• Liquidation threshold: <strong>90%</strong></li>
-                <li>• Borrowed USDC: <strong>$42,000</strong></li>
-                <li>• Health Factor: ($50,000 × 0.90) / $42,000 = <strong>1.07</strong></li>
-                <li>• Borrow APR: <strong>15%</strong></li>
-              </ul>
-            </div>
-
-            <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-              <h3 className="font-semibold text-yellow-900 mb-2">After 6 Months</h3>
-              <ul className="text-yellow-800 text-sm space-y-1">
-                <li>• LP value: <strong>$50,500</strong> (slight fee accrual)</li>
-                <li>• Debt with interest: $42,000 × (1 + 0.15/2) = <strong>$45,150</strong></li>
-                <li>• Health Factor: ($50,500 × 0.90) / $45,150 = <strong>1.01</strong></li>
-                <li className="text-yellow-900 font-medium">→ Position approaching liquidation!</li>
-              </ul>
-            </div>
-
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">Prevention</h3>
-              <p className="text-green-800 text-sm">
-                User could have avoided liquidation by:
+            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
+              <h3 className="font-semibold text-amber-900 mb-2">1. Impermanent Loss</h3>
+              <p className="text-amber-800 text-sm mb-2">
+                <strong>Issue:</strong> Providing liquidity to volatile pairs can lead to impermanent loss, 
+                affecting the value of LP tokens.
               </p>
-              <ul className="text-green-700 text-sm mt-2 space-y-1">
-                <li>• Setting up HF alerts at 1.2</li>
-                <li>• Repaying $5,000 to restore HF to 1.15</li>
-                <li>• Adding $5,000 more LP collateral</li>
-              </ul>
+              <p className="text-amber-700 text-xs">
+                <strong>Example:</strong> A user provides liquidity to a volatile ETH/USDC pair and 
+                experiences a significant price movement, leading to impermanent loss that triggers liquidation.
+              </p>
+            </div>
+
+            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
+              <h3 className="font-semibold text-amber-900 mb-2">2. Slippage</h3>
+              <p className="text-amber-800 text-sm mb-2">
+                <strong>Issue:</strong> Large transactions can cause slippage, impacting the profitability 
+                of the liquidation.
+              </p>
+              <p className="text-amber-700 text-xs">
+                <strong>Example:</strong> A liquidator executes a large swap, causing significant price 
+                movement and reducing the expected profit.
+              </p>
+            </div>
+
+            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
+              <h3 className="font-semibold text-amber-900 mb-2">3. Flash Loan Fees</h3>
+              <p className="text-amber-800 text-sm mb-2">
+                <strong>Issue:</strong> Flash loan fees can reduce the profitability of the liquidation.
+              </p>
+              <p className="text-amber-700 text-xs">
+                <strong>Example:</strong> A flash loan incurs high fees, leaving little profit after 
+                repaying the loan.
+              </p>
+            </div>
+
+            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+              <h3 className="font-semibold text-red-900 mb-2">4. Oracle Manipulation</h3>
+              <p className="text-red-800 text-sm mb-2">
+                <strong>Issue:</strong> Manipulated price oracles can lead to incorrect valuations, 
+                affecting liquidation decisions.
+              </p>
+              <p className="text-red-700 text-xs">
+                <strong>Example:</strong> An attacker manipulates the price oracle, causing incorrect 
+                valuations and potential bad debt.
+              </p>
+            </div>
+
+            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+              <h3 className="font-semibold text-red-900 mb-2">5. Smart Contract Risks</h3>
+              <p className="text-red-800 text-sm mb-2">
+                <strong>Issue:</strong> Vulnerabilities in smart contracts can be exploited, leading 
+                to loss of funds.
+              </p>
+              <p className="text-red-700 text-xs">
+                <strong>Example:</strong> A smart contract vulnerability is exploited, resulting in 
+                loss of assets.
+              </p>
             </div>
           </div>
         </section>
 
-        <section id="example-3" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example 3: Impermanent Loss Liquidation</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            A user with volatile LP experiences significant impermanent loss during a price divergence.
-          </p>
+        <section id="summary" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Summary</h2>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Initial Position</h3>
-              <ul className="text-blue-800 text-sm space-y-1">
-                <li>• ARB/ETH LP value: <strong>$20,000</strong></li>
-                <li>• Liquidation threshold: <strong>70%</strong></li>
-                <li>• Borrowed USDC: <strong>$12,000</strong></li>
-                <li>• Health Factor: ($20,000 × 0.70) / $12,000 = <strong>1.17</strong></li>
-              </ul>
-            </div>
-
-            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-              <h3 className="font-semibold text-red-900 mb-2">ARB Pumps 100% vs ETH</h3>
-              <ul className="text-red-800 text-sm space-y-1">
-                <li>• Price divergence causes ~5.7% IL</li>
-                <li>• LP value if held: would be $30,000</li>
-                <li>• Actual LP value: <strong>$28,290</strong> (after IL)</li>
-                <li>• But then ARB crashes 60%...</li>
-                <li>• Final LP value: <strong>$13,500</strong></li>
-                <li>• Health Factor: ($13,500 × 0.70) / $12,000 = <strong>0.79</strong></li>
-                <li className="text-red-900 font-medium">→ Deep underwater, immediate liquidation!</li>
-              </ul>
-            </div>
-
+          <div className="space-y-3">
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Lesson</h3>
+              <h3 className="font-semibold text-gray-900 mb-1">Uniswap V2 LP Tokens</h3>
               <p className="text-gray-600 text-sm">
-                Volatile LP pairs have lower liquidation thresholds for good reason. 
-                The combination of price drops and IL can cause rapid HF deterioration.
+                Standard ERC-20 tokens representing a user's share in a Uniswap V2 liquidity pool.
               </p>
             </div>
-          </div>
-        </section>
-
-        <section id="example-4" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example 4: Partial Liquidation Recovery</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            A user's position is partially liquidated, but they recover by adding collateral.
-          </p>
-          
-          <div className="space-y-4">
-            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-              <h3 className="font-semibold text-red-900 mb-2">Position at Liquidation</h3>
-              <ul className="text-red-800 text-sm space-y-1">
-                <li>• ETH/USDC LP value: <strong>$25,000</strong></li>
-                <li>• Debt: <strong>$21,000</strong></li>
-                <li>• Health Factor: <strong>0.98</strong></li>
-              </ul>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-1">Uniswap V3 LP Tokens</h3>
+              <p className="text-gray-600 text-sm">
+                Represent concentrated liquidity positions (NFTs) and are more complex due to their 
+                range-based nature.
+              </p>
             </div>
-
-            <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-              <h3 className="font-semibold text-yellow-900 mb-2">First Liquidation (50%)</h3>
-              <ul className="text-yellow-800 text-sm space-y-1">
-                <li>• Debt repaid: <strong>$10,500</strong></li>
-                <li>• Collateral seized: $10,500 × 1.075 = <strong>$11,287.50</strong></li>
-                <li>• Remaining collateral: <strong>$13,712.50</strong></li>
-                <li>• Remaining debt: <strong>$10,500</strong></li>
-                <li>• New HF: ($13,712.50 × 0.82) / $10,500 = <strong>1.07</strong></li>
-              </ul>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-1">Uniswap V4 LP Tokens</h3>
+              <p className="text-gray-600 text-sm">
+                Introduced with hooks, allowing for more flexible interactions but requiring custom 
+                logic for integration.
+              </p>
             </div>
-
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">User Adds Collateral</h3>
-              <ul className="text-green-800 text-sm space-y-1">
-                <li>• User deposits additional <strong>$5,000</strong> LP</li>
-                <li>• Total collateral: <strong>$18,712.50</strong></li>
-                <li>• Debt: <strong>$10,500</strong></li>
-                <li>• New HF: ($18,712.50 × 0.82) / $10,500 = <strong>1.46</strong></li>
-                <li className="text-green-900 font-medium">→ Position recovered to safe zone!</li>
-              </ul>
-            </div>
-
             <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Net Result</h3>
-              <ul className="text-blue-800 text-sm space-y-1">
-                <li>• Original position: $25,000 collateral, $21,000 debt</li>
-                <li>• After recovery: $18,712.50 + $5,000 = $23,712.50 collateral, $10,500 debt</li>
-                <li>• Loss from liquidation: ~$6,287.50 (liquidation penalty + lost collateral)</li>
-                <li>• But position is now much healthier with lower leverage</li>
-              </ul>
+              <h3 className="font-semibold text-blue-900 mb-1">Aave v4 Integration</h3>
+              <p className="text-blue-800 text-sm">
+                Aave v4's Spoke pools are designed to interact with these LP tokens, enabling them 
+                to be used as collateral and facilitating their liquidation when necessary.
+              </p>
             </div>
           </div>
         </section>
@@ -196,7 +550,7 @@ export default function LiquidationExamplesPage() {
       {/* Right scroll-spy sidebar */}
       <ScrollSpySidebar 
         sections={sections} 
-        pageSummary="Concrete scenarios illustrating health factor deterioration and liquidation outcomes."
+        pageSummary="Concrete scenarios illustrating liquidation processes for different LP token types."
         sectionColor="amber"
       />
     </div>

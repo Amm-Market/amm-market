@@ -4,10 +4,11 @@ import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 const sections = [
   { id: "overview", title: "Overview" },
-  { id: "monitoring-health", title: "Monitoring Health Factor" },
-  { id: "adjusting-collateral", title: "Adjusting Collateral" },
-  { id: "position-dashboard", title: "Position Dashboard" },
-  { id: "alerts-notifications", title: "Alerts & Notifications" },
+  { id: "borrowing-more", title: "Borrowing More" },
+  { id: "monitoring-health", title: "Monitoring Health" },
+  { id: "operational-control", title: "Operational Control" },
+  { id: "position-changes", title: "Position Changes" },
+  { id: "key-constraints", title: "Key Constraints" },
 ]
 
 export default function ManageLoansPage() {
@@ -29,11 +30,25 @@ export default function ManageLoansPage() {
           </p>
         </section>
 
-        <section id="monitoring-health" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Monitoring Health Factor</h2>
+        <section id="borrowing-more" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Borrowing More</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Your health factor indicates position safety. It changes as collateral value and 
-            debt fluctuate.
+            If a loan remains healthy and the maximum borrowing limit has not been reached, 
+            additional funds can be borrowed.
+          </p>
+          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <h3 className="font-semibold text-blue-900 mb-2">Partial Repayments</h3>
+            <p className="text-blue-800 text-sm">
+              To reduce exposure, users may make partial repayments at any time. This improves 
+              the health factor and reduces interest accrual.
+            </p>
+          </div>
+        </section>
+
+        <section id="monitoring-health" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Monitoring Health</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            The interface provides tools to monitor market conditions and assess their impact on collateral.
           </p>
           
           <div className="space-y-3 mb-6">
@@ -60,93 +75,89 @@ export default function ManageLoansPage() {
             </div>
           </div>
 
-          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <h3 className="font-semibold text-gray-900 mb-2">Query Health Factor On-Chain</h3>
-            <code className="text-xs bg-gray-200 px-2 py-1 rounded block overflow-x-auto">
-              uint256 healthFactor = ammMarket.getUserHealthFactor(userAddress)
-            </code>
+          <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
+            <h3 className="font-semibold text-amber-900 mb-2">Proactive Warnings</h3>
+            <p className="text-amber-800 text-sm">
+              If the value of the LP NFT decreases and loan health declines, the application issues 
+              warnings. This proactive monitoring enables users to respond before a position becomes 
+              critical and subject to liquidation.
+            </p>
           </div>
         </section>
 
-        <section id="adjusting-collateral" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Adjusting Collateral</h2>
+        <section id="operational-control" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Operational Control</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            You can improve your health factor by adding more collateral or reduce exposure by 
-            withdrawing excess collateral.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">Add Collateral</h3>
-              <p className="text-green-800 text-sm mb-2">Increases health factor and borrowing power.</p>
-              <code className="text-xs bg-green-100 px-2 py-1 rounded block">
-                ammMarket.deposit(lpToken, amount, onBehalfOf)
-              </code>
-            </div>
-            <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-              <h3 className="font-semibold text-orange-900 mb-2">Withdraw Collateral</h3>
-              <p className="text-orange-800 text-sm mb-2">Only possible if HF remains above 1.0 after withdrawal.</p>
-              <code className="text-xs bg-orange-100 px-2 py-1 rounded block">
-                ammMarket.withdraw(lpToken, amount, to)
-              </code>
-            </div>
-          </div>
-        </section>
-
-        <section id="position-dashboard" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Position Dashboard</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            The AMM Market dashboard provides a comprehensive view of your position:
-          </p>
-          <ul className="space-y-2 text-gray-600">
-            <li className="flex items-start gap-2">
-              <span className="text-blue-500 mt-1">•</span>
-              <span><strong>Collateral Value:</strong> Real-time USD value of deposited LP tokens</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-blue-500 mt-1">•</span>
-              <span><strong>Borrowed Amount:</strong> Total debt including accrued interest</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-blue-500 mt-1">•</span>
-              <span><strong>Health Factor:</strong> Current position safety indicator</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-blue-500 mt-1">•</span>
-              <span><strong>Available to Borrow:</strong> Remaining borrowing capacity</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-blue-500 mt-1">•</span>
-              <span><strong>LP Fees Earned:</strong> Trading fees accrued on your LP position</span>
-            </li>
-          </ul>
-        </section>
-
-        <section id="alerts-notifications" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Alerts & Notifications</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Set up alerts to stay informed about your position health:
+            Users retain operational control of LPs even while they are collateralized, provided 
+            the loan remains healthy. You can:
           </p>
           <div className="space-y-3">
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Health Factor Alerts</h3>
+              <h3 className="font-semibold text-gray-900 mb-1">Collect and Compound Fees</h3>
               <p className="text-gray-600 text-sm">
-                Receive notifications when your health factor drops below configurable thresholds.
+                Claim accrued trading fees and optionally compound them back into your position.
               </p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Price Movement Alerts</h3>
+              <h3 className="font-semibold text-gray-900 mb-1">Add or Withdraw Liquidity</h3>
               <p className="text-gray-600 text-sm">
-                Get notified of significant price changes in your LP's underlying assets.
+                Adjust liquidity as long as the updated collateral value remains above the protocol's requirement.
               </p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Interest Rate Changes</h3>
+              <h3 className="font-semibold text-gray-900 mb-1">Full Withdrawal</h3>
               <p className="text-gray-600 text-sm">
-                Stay informed when borrow rates change significantly.
+                Fully withdraw the position by repaying all outstanding debt.
               </p>
             </div>
           </div>
+        </section>
+
+        <section id="position-changes" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Position Changes</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            You can make changes to your LP position while it's collateralized:
+          </p>
+          <div className="space-y-4">
+            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <h3 className="font-semibold text-blue-900 mb-2">Change Price Range</h3>
+              <p className="text-blue-800 text-sm">
+                To change a position's price range, users must first withdraw liquidity and then 
+                create a new position at the desired range.
+              </p>
+            </div>
+            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+              <h3 className="font-semibold text-purple-900 mb-2">Reallocate to Different Pair</h3>
+              <p className="text-purple-800 text-sm">
+                Liquidity can also be reallocated to a different asset pair. In both cases, the 
+                new pair must be approved as valid collateral by the protocol.
+              </p>
+            </div>
+          </div>
+          <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
+            <p className="text-amber-800 text-sm">
+              <strong>Important:</strong> The resulting collateral value must be sufficient to 
+              maintain a healthy loan status after any position changes.
+            </p>
+          </div>
+        </section>
+
+        <section id="key-constraints" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Key Constraints</h2>
+          <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+            <h3 className="font-semibold text-red-900 mb-2">Collateral Threshold Protection</h3>
+            <p className="text-red-800 text-sm mb-3">
+              Any modification that reduces collateral below the required threshold is either 
+              blocked or must be paired with:
+            </p>
+            <ul className="text-red-800 text-sm space-y-1 ml-4">
+              <li>• Additional collateral deposit</li>
+              <li>• Partial repayment of debt</li>
+            </ul>
+          </div>
+          <p className="text-gray-600 text-sm mt-4">
+            These safeguards ensure loan stability and reduce liquidation risk.
+          </p>
         </section>
       </div>
 

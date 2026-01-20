@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useRef, useState, useCallback } from "react"
 import {
   BookOpen,
   Rocket,
@@ -40,8 +39,8 @@ import {
   Gavel,
 } from "lucide-react"
 
-// Navigation structure
-const navigationSections = [
+// Navigation structure - exported for use in PageNavigation component
+export const navigationSections = [
   {
     id: "introduction",
     title: "Introduction",
@@ -133,17 +132,6 @@ const sectionColors: Record<string, { headerBg: string; headerText: string; item
 
 export default function DeveloperSidebar() {
   const pathname = usePathname()
-  const sidebarRef = useRef<HTMLDivElement>(null)
-  const [scrollProgress, setScrollProgress] = useState(0)
-
-  const handleScroll = useCallback(() => {
-    if (!sidebarRef.current) return
-    const { scrollTop, scrollHeight, clientHeight } = sidebarRef.current
-    const maxScroll = scrollHeight - clientHeight
-    if (maxScroll > 0) {
-      setScrollProgress((scrollTop / maxScroll) * 100)
-    }
-  }, [])
 
   const isActive = (href: string) => {
     return pathname === href
@@ -154,19 +142,9 @@ export default function DeveloperSidebar() {
   }
 
   return (
-    <aside className="hidden md:block w-64 border-r border-gray-200 h-[calc(100vh-73px)] sticky top-[73px] relative">
-      {/* Scroll progress bar */}
-      <div className="absolute right-0 top-0 bottom-0 w-1 bg-gray-200">
-        <div
-          className="w-full bg-blue-500 transition-all duration-150 ease-out rounded-full"
-          style={{ height: `${scrollProgress}%` }}
-        />
-      </div>
-
+    <aside className="hidden md:block w-64 border-r border-gray-200 h-[calc(100vh-73px)] sticky top-[73px]">
       {/* Scrollable content */}
       <div
-        ref={sidebarRef}
-        onScroll={handleScroll}
         className="h-full overflow-y-auto pr-2"
         style={{
           scrollbarWidth: "none",
@@ -200,68 +178,64 @@ export default function DeveloperSidebar() {
           }
         `}</style>
         <nav className="py-6 px-4">
-        {navigationSections.map((section) => {
-          const SectionIcon = section.icon
-          const sectionActive = isSectionActive(section)
-          const colors = sectionColors[section.id]
+          {navigationSections.map((section) => {
+            const SectionIcon = section.icon
+            const sectionActive = isSectionActive(section)
+            const colors = sectionColors[section.id]
 
-          return (
-            <div key={section.id} className="mb-2">
-              {/* Section Header */}
-              <div
-                className={`flex items-center py-2 px-3 rounded-lg text-sm font-medium transition-all duration-200 group cursor-default ${
-                  sectionActive
-                    ? `${colors.headerBg} ${colors.headerText}`
-                    : "text-gray-700 hover:bg-gray-50"
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <SectionIcon
-                    className={`h-4 w-4 transition-all duration-300 group-hover-wiggle ${
-                      sectionActive ? colors.icon : "text-gray-500 group-hover:text-gray-700"
+            return (
+              <div key={section.id} className="mb-2">
+                {/* Section Header */}
+                <div
+                  className={`flex items-center py-2 px-3 rounded-lg text-sm font-medium transition-all duration-200 group cursor-default ${sectionActive
+                      ? `${colors.headerBg} ${colors.headerText}`
+                      : "text-gray-700 hover:bg-gray-50"
                     }`}
-                  />
-                  <span className="transition-transform duration-200 group-hover:translate-x-1">
-                    {section.title}
-                  </span>
-                </div>
-              </div>
-
-              {/* Section Items */}
-              <ul className="mt-1 ml-3 pl-3 border-l border-gray-200 space-y-0.5">
-                {section.items.map((item) => {
-                  const ItemIcon = item.icon
-                  const itemActive = isActive(item.href)
-
-                  return (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        className={`flex items-center gap-2 py-1.5 px-2.5 rounded-md text-sm transition-all duration-200 group ${
-                          itemActive
-                            ? `${colors.itemBg} ${colors.itemText} font-medium`
-                            : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <SectionIcon
+                      className={`h-4 w-4 transition-all duration-300 group-hover-wiggle ${sectionActive ? colors.icon : "text-gray-500 group-hover:text-gray-700"
                         }`}
-                      >
-                        <ItemIcon
-                          className={`h-3.5 w-3.5 transition-all duration-300 group-hover-pulse ${
-                            itemActive
-                              ? colors.icon
-                              : "text-gray-400 group-hover:text-gray-600"
-                          }`}
-                        />
-                        <span className="transition-transform duration-200 group-hover:translate-x-1">
-                          {item.label}
-                        </span>
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          )
-        })}
-      </nav>
+                    />
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">
+                      {section.title}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Section Items */}
+                <ul className="mt-1 ml-3 pl-3 border-l border-gray-200 space-y-0.5">
+                  {section.items.map((item) => {
+                    const ItemIcon = item.icon
+                    const itemActive = isActive(item.href)
+
+                    return (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          className={`flex items-center gap-2 py-1.5 px-2.5 rounded-md text-sm transition-all duration-200 group ${itemActive
+                              ? `${colors.itemBg} ${colors.itemText} font-medium`
+                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                            }`}
+                        >
+                          <ItemIcon
+                            className={`h-3.5 w-3.5 transition-all duration-300 group-hover-pulse ${itemActive
+                                ? colors.icon
+                                : "text-gray-400 group-hover:text-gray-600"
+                              }`}
+                          />
+                          <span className="transition-transform duration-200 group-hover:translate-x-1">
+                            {item.label}
+                          </span>
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            )
+          })}
+        </nav>
       </div>
     </aside>
   )
