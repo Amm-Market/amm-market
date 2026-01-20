@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
+
+export const metadata: Metadata = {
+  title: "Institutional Use Cases: Treasuries, DAOs, and Corporate Liquidity",
+  description: "How DAOs, funds, and corporate treasuries can use LP collateral for working capital and yield enhancement.",
+}
 
 const tableOfContents = [
   { id: "introduction", title: "Introduction" },

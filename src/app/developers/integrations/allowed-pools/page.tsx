@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Allowed LP Pools",
+  description: "AMM Market allowed LP pools - pool categories, tiered risk parameters, max LTV, liquidation thresholds, and integration notes for developers.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

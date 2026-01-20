@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Platform Fees",
+  description: "AMM Market fee structure - 0.20% frontend fee, transparent disclosure, treasury usage, and zero-fee paths for direct contract interactions.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

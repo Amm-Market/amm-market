@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Claim LP Fees",
+  description: "Claim trading fees from your LP position without withdrawing collateral. Learn how fee claiming works on AMM Market.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

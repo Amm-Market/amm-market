@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Insurance Funds",
+  description: "AMM Market insurance fund - solvency buffer, payout mechanism, auto-deleveraging, and coverage scenarios for protocol protection.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

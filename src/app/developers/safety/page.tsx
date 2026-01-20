@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Safety Mechanisms - Risk Parameters",
+  description: "AMM Market risk parameters and safety mechanisms - multi-layer risk management, hard caps, liquidation thresholds, and emergency procedures.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

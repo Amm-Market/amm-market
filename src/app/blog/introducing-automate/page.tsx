@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
+
+export const metadata: Metadata = {
+  title: "Introducing Automate: Set-and-Forget LP Management",
+  description: "Meet Automate—AMM Market's automation layer for hands-off LP management. Auto-compound fees, rebalance positions, and protect against liquidation automatically.",
+}
 
 const tableOfContents = [
   { id: "introduction", title: "Introduction" },

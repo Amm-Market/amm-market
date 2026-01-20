@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
+
+export const metadata: Metadata = {
+  title: "Borrowing Against Uniswap LP Tokens via Aave v4's AMM Market Spoke",
+  description: "Technical deep-dive into how the Hub-and-Spoke architecture enables LP-backed lending while keeping positions active.",
+}
 
 const tableOfContents = [
   { id: "hub-spoke-architecture", title: "Hub and Spoke Architecture" },

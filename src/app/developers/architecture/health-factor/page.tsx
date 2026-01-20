@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Health Factor",
+  description: "Health factor calculation in AMM Market. Understand health bands, penalty accrual, soft unwind mechanisms, and UI states for loan monitoring.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

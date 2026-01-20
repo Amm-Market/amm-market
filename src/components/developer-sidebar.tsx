@@ -1,5 +1,42 @@
 "use client"
 
+/**
+ * DeveloperSidebar - The main navigation sidebar for developer documentation.
+ * 
+ * @description
+ * Renders a sticky sidebar with hierarchical navigation for the /developers section.
+ * Features include:
+ * - Collapsible sections with icons
+ * - Active state highlighting based on current route
+ * - Color-coded sections for visual distinction
+ * - Smooth hover animations on icons and text
+ * 
+ * @exports
+ * - navigationSections: Array of navigation structure (used by PageNavigation)
+ * - DeveloperSidebar: The sidebar component
+ * 
+ * @layout
+ * - Hidden on mobile (md:block)
+ * - Fixed width: 256px
+ * - Sticky positioning below header
+ * - Full height with hidden scrollbar
+ * 
+ * @sections
+ * - Introduction (blue)
+ * - Getting Started (emerald)
+ * - Protocol Architecture (violet)
+ * - Liquidation Framework (amber)
+ * - Supported Integrations (cyan)
+ * - Safety Mechanisms (rose)
+ * - Legal & Compliance (slate)
+ * 
+ * @example
+ * // Used in developers layout
+ * <DeveloperSidebar />
+ * 
+ * @see src/app/developers/layout.tsx - Where this component is rendered
+ * @see src/components/page-navigation.tsx - Uses exported navigationSections
+ */
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {

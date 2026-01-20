@@ -1,5 +1,37 @@
 "use client"
 
+/**
+ * Accordion UI Components
+ * 
+ * @description
+ * A set of accessible accordion components built on Radix UI primitives.
+ * Includes animated expand/collapse with keyboard navigation support.
+ * 
+ * @components
+ * - Accordion: Root container (single or multiple mode)
+ * - AccordionItem: Individual collapsible section
+ * - AccordionTrigger: Clickable header that toggles content
+ * - AccordionContent: Collapsible content area
+ * 
+ * @example
+ * <Accordion type="single" collapsible>
+ *   <AccordionItem value="item-1">
+ *     <AccordionTrigger>Question 1</AccordionTrigger>
+ *     <AccordionContent>Answer 1</AccordionContent>
+ *   </AccordionItem>
+ *   <AccordionItem value="item-2">
+ *     <AccordionTrigger>Question 2</AccordionTrigger>
+ *     <AccordionContent>Answer 2</AccordionContent>
+ *   </AccordionItem>
+ * </Accordion>
+ * 
+ * @accessibility
+ * - Full keyboard navigation (Enter, Space, Arrow keys)
+ * - ARIA expanded/collapsed states
+ * - Focus management
+ * 
+ * @see https://www.radix-ui.com/docs/primitives/components/accordion
+ */
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import { ChevronDownIcon } from "lucide-react"

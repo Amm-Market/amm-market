@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
+
+export const metadata: Metadata = {
+  title: "Advanced Playbook: Yield Looping Safely with LP Collateral",
+  description: "A disciplined guide to yield looping—safe patterns, leverage guidelines, and stress testing for experienced traders.",
+}
 
 const tableOfContents = [
   { id: "what-is-looping", title: "What Yield Looping Is" },

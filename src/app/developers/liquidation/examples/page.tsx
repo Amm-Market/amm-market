@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Liquidation Examples",
+  description: "Liquidation examples for different LP types - Curve, Balancer, Uniswap V2/V3/V4 LP tokens, multi-pool collateral, and edge cases.",
+}
 
 const sections = [
   { id: "partial-liquidation", title: "Partial Liquidation Example" },

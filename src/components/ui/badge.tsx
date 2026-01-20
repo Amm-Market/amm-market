@@ -1,3 +1,21 @@
+/**
+ * Badge Component
+ * 
+ * @description
+ * A versatile badge component for displaying status indicators, labels, or tags.
+ * Built with Radix UI Slot for composition flexibility.
+ * 
+ * @example
+ * ```tsx
+ * <Badge variant="default">New</Badge>
+ * <Badge variant="secondary">Beta</Badge>
+ * <Badge variant="destructive">Expired</Badge>
+ * <Badge variant="outline">Draft</Badge>
+ * ```
+ * 
+ * @module components/ui/badge
+ */
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"

@@ -1,12 +1,72 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  experimental: {
-    turbo: {
-      root: process.cwd(),
-    },
+/**
+ * Security headers configuration for the application.
+ * These headers protect against common web vulnerabilities including:
+ * - XSS (Cross-Site Scripting)
+ * - Clickjacking
+ * - MIME sniffing
+ * - Information disclosure
+ * 
+ * @see https://owasp.org/www-project-secure-headers/
+ */
+const securityHeaders = [
+  {
+    // Enables DNS prefetching for faster external resource loading
+    key: 'X-DNS-Prefetch-Control',
+    value: 'on'
   },
+  {
+    // Enforces HTTPS for 1 year, including subdomains
+    key: 'Strict-Transport-Security',
+    value: 'max-age=31536000; includeSubDomains'
+  },
+  {
+    // Prevents clickjacking by disallowing iframe embedding
+    key: 'X-Frame-Options',
+    value: 'DENY'
+  },
+  {
+    // Prevents MIME type sniffing
+    key: 'X-Content-Type-Options',
+    value: 'nosniff'
+  },
+  {
+    // Enables browser XSS filtering
+    key: 'X-XSS-Protection',
+    value: '1; mode=block'
+  },
+  {
+    // Controls referrer information sent with requests
+    key: 'Referrer-Policy',
+    value: 'strict-origin-when-cross-origin'
+  },
+  {
+    // Restricts browser features and APIs
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+  },
+  {
+    // Content Security Policy - controls resource loading
+    key: 'Content-Security-Policy',
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: https: blob:",
+      "font-src 'self' data: https://fonts.gstatic.com",
+      "connect-src 'self' https:",
+      "media-src 'self' https://cdn-front.freepik.com",
+      "frame-ancestors 'none'",
+    ].join('; ')
+  }
+];
+
+const nextConfig: NextConfig = {
+  /**
+   * Image optimization configuration
+   * Defines allowed external image domains for Next.js Image component
+   */
   images: {
     remotePatterns: [
       {
@@ -35,6 +95,20 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+  },
+  
+  /**
+   * HTTP Headers configuration
+   * Applies security headers to all routes
+   */
+  async headers() {
+    return [
+      {
+        // Apply security headers to all routes
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+    ];
   },
 };
 

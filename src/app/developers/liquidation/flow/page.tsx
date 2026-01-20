@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Liquidation Flow",
+  description: "Step-by-step liquidation flow in AMM Market - process overview, LP unwrapping by type, liquidator rewards, and technical integration guide.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

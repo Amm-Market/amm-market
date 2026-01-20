@@ -1,17 +1,34 @@
 "use client"
 
-import Image from "next/image"
-import Link from "next/link"
-import { useState, useRef, useEffect } from "react"
-import { Playfair_Display } from "next/font/google"
-import { TrendingUp, Zap, Blocks, Coins, ChevronLeft, ChevronRight } from "lucide-react"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
+/**
+ * HeroSection - The main landing page hero component.
+ * 
+ * @description
+ * This component renders the complete landing page content including:
+ * - Hero headline with email signup CTA
+ * - Trusted by logo marquee
+ * - "How borrowing works" 3-step process
+ * - Dashboard video preview with custom controls
+ * - DEX integration grid
+ * - Supported pools ticker
+ * - "Get more" benefits section
+ * - "Borrow with confidence" security section
+ * - Testimonial carousel
+ * - FAQ accordion
+ * - Final CTA
+ * 
+ * @todo Decompose into smaller components for better maintainability
+ * @see PERFORMANCE_AUDIT.md for decomposition plan
+ */
 
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "900"],
-  variable: "--font-playfair"
-})
+import Image from "next/image"
+import { useState, useRef, useEffect } from "react"
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
+import { LazySection } from "@/components/ui/lazy-section"
+import { DeFiTerm } from "@/components/defi-term"
+
+// Note: TrendingUp, Zap, Blocks, Coins, ChevronLeft, ChevronRight were imported but unused
+// Removed to reduce bundle size
 
 // LP Pool data for the ticker
 const pools = [
@@ -269,7 +286,7 @@ export default function HeroSection() {
 
             {/* Supporting Text */}
             <p className="text-base md:text-lg text-gray-600 max-w-lg mx-auto lg:mx-0 leading-relaxed mb-6">
-              Get access to loans by using your LP positions as collateral.
+              Get access to loans by using your <DeFiTerm term="lp-position">LP positions</DeFiTerm> as <DeFiTerm term="collateral">collateral</DeFiTerm>.
             </p>
 
             {/* Email CTA */}
@@ -443,7 +460,7 @@ export default function HeroSection() {
               Deposit your LP position
             </h3>
             <p className="text-sm md:text-base text-gray-600">
-              Deposit your LP tokens from any supported DEX. Your position stays active and continues earning trading fees.
+              Deposit your <DeFiTerm term="lp-tokens">LP tokens</DeFiTerm> from any supported <DeFiTerm term="dex">DEX</DeFiTerm>. Your position stays active and continues earning trading fees.
             </p>
           </div>
           {/* Step 2 */}
@@ -463,7 +480,7 @@ export default function HeroSection() {
               Repay on your timeline
             </h3>
             <p className="text-sm md:text-base text-gray-600">
-              There are no repayment schedules or deadlines. Your loan-to-value ratio must remain under the liquidation threshold to avoid automatic liquidation.
+              There are no repayment schedules or deadlines. Your <DeFiTerm term="ltv">loan-to-value ratio</DeFiTerm> must remain under the <DeFiTerm term="liquidation-threshold">liquidation threshold</DeFiTerm> to avoid automatic <DeFiTerm term="liquidation">liquidation</DeFiTerm>.
             </p>
           </div>
         </div>
@@ -547,10 +564,14 @@ export default function HeroSection() {
                   onPause={() => setIsPlaying(false)}
                 />
 
-                {/* Center Play/Pause Overlay */}
+                {/* Center Play/Pause Overlay - visible on mobile, hover on desktop */}
                 <div
-                  className="absolute inset-0 z-20 flex items-center justify-center cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 z-20 flex items-center justify-center cursor-pointer opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
                   onClick={togglePlayPause}
+                  role="button"
+                  aria-label={isPlaying ? "Pause video" : "Play video"}
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && togglePlayPause()}
                 >
                   <div className="bg-black/40 backdrop-blur-sm rounded-full p-4 hover:bg-black/60 transition-colors">
                     {isPlaying ? (
@@ -566,13 +587,18 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* Bottom Control Bar */}
-                <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/80 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {/* Bottom Control Bar - always visible on mobile, hover on desktop */}
+                <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/80 to-transparent p-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex flex-col gap-2">
-                    {/* Timeline/Progress Bar */}
+                    {/* Timeline/Progress Bar - larger touch target on mobile */}
                     <div
-                      className="w-full h-1.5 bg-white/30 rounded-full cursor-pointer group/timeline"
+                      className="w-full h-3 md:h-1.5 bg-white/30 rounded-full cursor-pointer group/timeline"
                       onClick={handleSeek}
+                      role="slider"
+                      aria-label="Video progress"
+                      aria-valuemin={0}
+                      aria-valuemax={100}
+                      aria-valuenow={duration > 0 ? Math.round((currentTime / duration) * 100) : 0}
                     >
                       <div
                         className="h-full bg-blue-500 rounded-full relative"
@@ -589,6 +615,7 @@ export default function HeroSection() {
                         <button
                           onClick={togglePlayPause}
                           className="text-white hover:text-blue-400 transition-colors"
+                          aria-label={isPlaying ? "Pause video" : "Play video"}
                         >
                           {isPlaying ? (
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -614,6 +641,7 @@ export default function HeroSection() {
                           <button
                             onClick={toggleMute}
                             className="text-white hover:text-blue-400 transition-colors"
+                            aria-label={isMuted ? "Unmute video" : "Mute video"}
                           >
                             {isMuted || volume === 0 ? (
                               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -641,6 +669,7 @@ export default function HeroSection() {
                             value={isMuted ? 0 : volume}
                             onChange={handleVolumeChange}
                             className="w-16 h-1 bg-white/30 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer"
+                            aria-label="Volume"
                           />
                         </div>
 
@@ -648,6 +677,7 @@ export default function HeroSection() {
                         <button
                           onClick={() => videoRef.current?.requestFullscreen()}
                           className="text-white hover:text-blue-400 transition-colors"
+                          aria-label="Enter fullscreen"
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
@@ -673,7 +703,8 @@ export default function HeroSection() {
       {/* Existing Content */}
       <div className="mx-auto max-w-5xl space-y-12 px-6 lg:px-0">
 
-        {/* Borrow Across DEXs Section */}
+        {/* Borrow Across DEXs Section - Lazy loaded */}
+        <LazySection minHeight="400px">
         <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12" style={{ opacity: 1, transform: 'none' }}>
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
@@ -738,8 +769,10 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
+        </LazySection>
 
-        {/* 500+ Supported Pools Section */}
+        {/* 500+ Supported Pools Section - Lazy loaded */}
+        <LazySection minHeight="600px">
         <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12 border-t border-gray-100" style={{ opacity: 1, transform: 'none' }}>
           <div className="flex flex-col gap-6">
             <div className="flex max-w-[600px] flex-col gap-2">
@@ -797,9 +830,12 @@ export default function HeroSection() {
               </div>
             </div>
           </div>
+        </div>
+        </LazySection>
 
-          {/* Get More Section */}
-          <div className="pt-16 md:pt-20 border-t border-gray-100">
+        {/* Get More Section - Lazy loaded */}
+        <LazySection minHeight="600px">
+        <div className="pt-16 md:pt-20 border-t border-gray-100">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
@@ -819,7 +855,7 @@ export default function HeroSection() {
                   </div>
                   <div className="absolute bottom-[46px] text-sm font-medium left-1/2 -translate-x-1/2">
                     <span className="flex gap-2 items-center text-blue-600">
-                      LTV Ratio
+                      <DeFiTerm term="ltv">LTV Ratio</DeFiTerm>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" fill="currentColor" viewBox="0 0 16 17" className="w-5 h-5">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.333 8.783h9.334m0 0-4-4m4 4-4 4"></path>
                       </svg>
@@ -855,7 +891,7 @@ export default function HeroSection() {
                       <span className="text-5xl font-bold text-blue-600 animate-pulse-soft">+12.4%</span>
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-4">
-                      <span className="text-gray-500 text-xs">APY</span>
+                      <span className="text-gray-500 text-xs"><DeFiTerm term="apy">APY</DeFiTerm></span>
                       <div className="w-10 h-0.5 rounded bg-blue-300"></div>
                       <div className="flex items-center justify-center w-4 h-4 bg-blue-500 rounded-full animate-pulse">
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 16 16" className="fill-white text-white">
@@ -916,8 +952,10 @@ export default function HeroSection() {
               </div>
             </div>
           </div>
-        </div>
-        {/* Borrow with Confidence Section */}
+        </LazySection>
+
+        {/* Borrow with Confidence Section - Lazy loaded */}
+        <LazySection minHeight="600px">
         <div className="pt-16 md:pt-20 border-t border-gray-100">
           <div className="flex flex-col gap-6">
             <div className="flex max-w-[600px] flex-col gap-2">
@@ -1047,15 +1085,17 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
+        </LazySection>
 
-        {/* About Aave v4 Section */}
+        {/* About Aave v4 Section - Lazy loaded */}
+        <LazySection minHeight="300px">
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 pt-16 md:pt-20 items-center border-t border-gray-100">
           <div className="flex-1 space-y-6">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
               More about Aave v4
             </h2>
             <p className="text-sm md:text-base text-gray-600 max-w-lg">
-              Aave v4 is a next-generation DeFi lending protocol featuring a Hub-and-Spoke architecture that enables cross-chain liquidity and modular risk management. Amm Market leverages Aave v4's infrastructure to provide secure, permissionless borrowing against LP positions. All loan terms, liquidations, and interest rates are enforced on-chain through battle-tested smart contracts and transparent oracle systems.
+              Aave v4 is a next-generation DeFi lending protocol featuring a <DeFiTerm term="hub">Hub</DeFiTerm>-and-<DeFiTerm term="spoke">Spoke</DeFiTerm> architecture that enables cross-chain liquidity and modular risk management. Amm Market leverages Aave v4&apos;s infrastructure to provide secure, permissionless borrowing against <DeFiTerm term="lp-position">LP positions</DeFiTerm>. All loan terms, <DeFiTerm term="liquidation">liquidations</DeFiTerm>, and interest rates are enforced on-chain through battle-tested smart contracts and transparent <DeFiTerm term="oracle">oracle</DeFiTerm> systems.
             </p>
             <a
               href="https://docs.aave.com/"
@@ -1078,8 +1118,10 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
+        </LazySection>
 
-        {/* Testimonial Section */}
+        {/* Testimonial Section - Lazy loaded */}
+        <LazySection minHeight="400px">
         <div className="py-16 md:py-20 border-t border-gray-100">
           <div className="flex flex-col lg:flex-row">
             {/* Left: Protocol list */}
@@ -1088,7 +1130,12 @@ export default function HeroSection() {
                 <div
                   key={idx}
                   onClick={() => handleTestimonialChange(idx)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleTestimonialChange(idx)}
                   className="cursor-pointer py-4 border-b border-gray-100 last:border-b-0"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`View testimonial from ${t.author}`}
+                  aria-selected={currentTestimonial === idx}
                 >
                   <div className="flex justify-between items-center">
                     <span className={`text-base transition-all duration-300 ${currentTestimonial === idx ? "font-semibold text-gray-900" : "text-gray-500"}`}>
@@ -1142,8 +1189,10 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
+        </LazySection>
 
-        {/* FAQ Section */}
+        {/* FAQ Section - Lazy loaded */}
+        <LazySection minHeight="500px">
         <div className="flex flex-col py-16 md:py-20 gap-8 md:flex-row md:gap-12 border-t border-gray-100" style={{ opacity: 1, transform: 'none' }}>
           <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 md:pt-8 md:flex-shrink-0 md:w-[300px]">
             Frequently asked questions.
@@ -1177,7 +1226,7 @@ export default function HeroSection() {
                   </svg>
                 </AccordionTrigger>
                 <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  No. Your LP remains in the pool and continues earning trading fees. Amm Market uses your LP shares as collateral without removing liquidity.
+                  No. Your <DeFiTerm term="lp">LP</DeFiTerm> remains in the pool and continues earning trading fees. Amm Market uses your LP shares as <DeFiTerm term="collateral">collateral</DeFiTerm> without removing liquidity.
                 </AccordionContent>
               </AccordionItem>
 
@@ -1208,7 +1257,7 @@ export default function HeroSection() {
                   </svg>
                 </AccordionTrigger>
                 <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Up to 70% of your LP's value, depending on pool type, volatility, and oracle confidence. No minimum amounts—$10M in collateral means up to $7M available to borrow.
+                  Up to 70% of your LP&apos;s value, depending on pool type, volatility, and <DeFiTerm term="oracle">oracle</DeFiTerm> confidence. No minimum amounts—$10M in <DeFiTerm term="collateral">collateral</DeFiTerm> means up to $7M available to borrow.
                 </AccordionContent>
               </AccordionItem>
 
@@ -1239,7 +1288,7 @@ export default function HeroSection() {
                   </svg>
                 </AccordionTrigger>
                 <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  If your loan-to-value ratio exceeds the liquidation threshold, part of your position may be liquidated to maintain system solvency.
+                  If your <DeFiTerm term="ltv">loan-to-value ratio</DeFiTerm> exceeds the <DeFiTerm term="liquidation-threshold">liquidation threshold</DeFiTerm>, part of your position may be <DeFiTerm term="liquidation">liquidated</DeFiTerm> to maintain system solvency.
                 </AccordionContent>
               </AccordionItem>
 
@@ -1270,7 +1319,7 @@ export default function HeroSection() {
                   </svg>
                 </AccordionTrigger>
                 <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Yes. Each LP position is managed independently with isolated risk. System-wide safety is enforced through Aave v4's Hub-and-Spoke architecture.
+                  Yes. Each <DeFiTerm term="lp-position">LP position</DeFiTerm> is managed independently with isolated risk. System-wide safety is enforced through Aave v4&apos;s <DeFiTerm term="hub">Hub</DeFiTerm>-and-<DeFiTerm term="spoke">Spoke</DeFiTerm> architecture.
                 </AccordionContent>
               </AccordionItem>
 
@@ -1301,14 +1350,16 @@ export default function HeroSection() {
                   </svg>
                 </AccordionTrigger>
                 <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Yes. Repay anytime, reduce your borrow, or withdraw your LP once debt is cleared.
+                  Yes. <DeFiTerm term="repay">Repay</DeFiTerm> anytime, reduce your <DeFiTerm term="borrow">borrow</DeFiTerm>, or <DeFiTerm term="withdraw">withdraw</DeFiTerm> your LP once debt is cleared.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
           </div>
         </div>
+        </LazySection>
 
-        {/* Final CTA Section */}
+        {/* Final CTA Section - Lazy loaded */}
+        <LazySection minHeight="300px">
         <div className="py-16 md:py-20 border-t border-gray-100">
           <div className="flex flex-col items-center text-center gap-6">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
@@ -1344,6 +1395,7 @@ export default function HeroSection() {
             </p>
           </div>
         </div>
+        </LazySection>
       </div>
     </section>
   )

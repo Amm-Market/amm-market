@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Introduction",
+  description: "Introduction to AMM Market - learn what it is, how it works, and how LP positions can be used as collateral on Aave v4.",
+}
 
 const sections = [
   { id: "welcome", title: "Welcome" },

@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Protocol Architecture - Spokes Design",
+  description: "AMM Market Hub-and-Spoke architecture explained. Learn about the three-tier design, data flow, Spoke responsibilities, and Aave v4 Hub integration.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

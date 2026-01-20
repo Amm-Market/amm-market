@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Testnet & Roadmap",
+  description: "AMM Market testnet deployment on Unichain Sepolia. Get test tokens, earn points, and explore the rewards program.",
+}
 
 const sections = [
   { id: "supported-networks", title: "Supported Networks" },

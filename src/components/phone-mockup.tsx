@@ -1,3 +1,17 @@
+/**
+ * Phone Mockup Component
+ * 
+ * @description
+ * A decorative mobile phone mockup component for showcasing app previews.
+ * Renders a realistic phone frame with simulated UI elements inside.
+ * 
+ * @example
+ * ```tsx
+ * <PhoneMockup />
+ * ```
+ * 
+ * @module components/phone-mockup
+ */
 export default function PhoneMockup() {
   return (
     <div className="relative">

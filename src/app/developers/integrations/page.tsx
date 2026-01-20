@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Supported Integrations",
+  description: "AMM Market supported DEX integrations - Uniswap, Curve, Balancer, PancakeSwap, Aerodrome. Integration status and how to add new DEXes.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

@@ -1,3 +1,29 @@
+/**
+ * Blog Post Layout Component
+ * 
+ * @description
+ * Standardized layout for all blog post pages. Provides consistent structure
+ * with header, featured image, content area, scroll spy sidebar, and
+ * previous/next post navigation.
+ * 
+ * @example
+ * ```tsx
+ * <BlogPostLayout
+ *   title="Post Title"
+ *   date="January 20, 2026"
+ *   description="Post description"
+ *   image="/images/blog/post.png"
+ *   tableOfContents={[{ id: "intro", title: "Introduction" }]}
+ *   prevPost={{ slug: "prev", title: "Previous Post", date: "Jan 19" }}
+ *   nextPost={{ slug: "next", title: "Next Post", date: "Jan 21" }}
+ * >
+ *   <section id="intro">Content here</section>
+ * </BlogPostLayout>
+ * ```
+ * 
+ * @module components/blog-post-layout
+ */
+
 "use client"
 
 import Link from "next/link"

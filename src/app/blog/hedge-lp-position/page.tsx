@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
+
+export const metadata: Metadata = {
+  title: "How to Hedge Your LP Position: Practical Strategies",
+  description: "Clear, actionable hedging recipes—from stablecoin buffers to delta-neutral farms and options overlays.",
+}
 
 const tableOfContents = [
   { id: "introduction", title: "Introduction" },

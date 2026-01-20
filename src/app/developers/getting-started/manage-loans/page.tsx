@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Manage Loans",
+  description: "Manage your AMM Market loans - borrow more, monitor health factors, adjust positions, and understand operational constraints.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

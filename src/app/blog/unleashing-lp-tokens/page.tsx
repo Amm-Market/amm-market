@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
+
+export const metadata: Metadata = {
+  title: "Unleashing Your LP Tokens with Aave's AMM Market",
+  description: "From conservative stablecoin strategies to advanced leverage plays—make your LP tokens work harder.",
+}
 
 const tableOfContents = [
   { id: "introduction", title: "Introduction" },

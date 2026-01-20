@@ -1,6 +1,10 @@
-"use client"
-
+import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+export const metadata: Metadata = {
+  title: "Borrow Assets",
+  description: "How to borrow assets against LP collateral on AMM Market. Learn about borrow checks, health factors, borrowing power, and supported assets.",
+}
 
 const sections = [
   { id: "overview", title: "Overview" },

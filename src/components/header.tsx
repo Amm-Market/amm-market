@@ -1,9 +1,36 @@
 "use client"
+
+/**
+ * Header - The main navigation header component.
+ * 
+ * @description
+ * A responsive floating pill-style navigation that includes:
+ * - Logo link to homepage
+ * - Desktop dropdown menus for Products, Resources, and Developers
+ * - Mobile hamburger menu with accordion submenus
+ * - Scroll-aware visibility (hides on scroll down, shows on scroll up)
+ * - Active state indication based on current route
+ * 
+ * @features
+ * - Responsive: Pill nav on desktop (md+), full-width on mobile
+ * - Accessible: ARIA labels on mobile menu toggle
+ * - Smart: Auto-closes menus on route change
+ * - Animated: Smooth transitions for dropdowns and visibility
+ * 
+ * @example
+ * // Used in root layout
+ * <Header />
+ * 
+ * @todo Consider extracting mobile menu into separate component
+ * @todo Add keyboard navigation support for dropdown menus
+ * 
+ * @see src/app/layout.tsx - Where this component is rendered
+ */
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 
-export default function Header() {
+export default function Header(): React.JSX.Element {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [productsMenuOpen, setProductsMenuOpen] = useState(false)
@@ -103,14 +130,17 @@ export default function Header() {
             onMouseEnter={() => setProductsMenuOpen(true)}
             onMouseLeave={() => setProductsMenuOpen(false)}
           >
-            <div
+            <button
               className={`hidden select-none px-3 md:flex group items-center font-medium transition-all py-1.5 rounded-full border flex-none cursor-pointer hover:bg-black/5 border-transparent ${productsMenuOpen || activePage === "products"
                   ? "bg-black/5 text-gray-900"
                   : "text-gray-600"
                 }`}
+              aria-expanded={productsMenuOpen}
+              aria-haspopup="true"
+              aria-label="Products menu"
             >
               <span>Products</span>
-            </div>
+            </button>
 
             {/* Products Dropdown Menu */}
             <div
@@ -267,12 +297,15 @@ export default function Header() {
             onMouseEnter={() => setResourcesMenuOpen(true)}
             onMouseLeave={() => setResourcesMenuOpen(false)}
           >
-            <div
+            <button
               className={`hidden select-none px-3 md:flex group items-center font-medium transition-all py-1.5 rounded-full border flex-none cursor-pointer hover:bg-black/5 border-transparent ${resourcesMenuOpen ? "bg-black/5 text-gray-900" : "text-gray-600"
                 }`}
+              aria-expanded={resourcesMenuOpen}
+              aria-haspopup="true"
+              aria-label="Resources menu"
             >
               <span>Resources</span>
-            </div>
+            </button>
 
             {/* Resources Dropdown Menu */}
             <div

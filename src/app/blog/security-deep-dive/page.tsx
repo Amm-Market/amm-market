@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
+
+export const metadata: Metadata = {
+  title: "Security Deep-Dive: How AMM Market Manages LP Risk",
+  description: "Hub-and-Spoke isolation, position-aware oracles, health checks, and liquidation mechanics explained.",
+}
 
 const tableOfContents = [
   { id: "introduction", title: "Introduction" },

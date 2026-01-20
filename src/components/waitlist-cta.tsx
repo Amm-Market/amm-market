@@ -1,3 +1,17 @@
+/**
+ * Waitlist CTA Component
+ * 
+ * @description
+ * Call-to-action section with email signup form for early access waitlist.
+ * Used at the bottom of product and feature pages.
+ * 
+ * @example
+ * ```tsx
+ * <WaitlistCTA />
+ * ```
+ * 
+ * @module components/waitlist-cta
+ */
 export default function WaitlistCTA() {
   return (
     <div className="py-16 md:py-20 border-t border-gray-100">
