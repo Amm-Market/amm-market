@@ -1,13 +1,23 @@
 "use client"
 
+import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 const sections = [
   { id: "overview", title: "Overview" },
-  { id: "known-risks", title: "Known Risks" },
-  { id: "security-assumptions", title: "Security Assumptions" },
-  { id: "bug-bounty", title: "Bug Bounty" },
-  { id: "responsible-disclosure", title: "Responsible Disclosure" },
+  { id: "access-restrictions", title: "Access Restrictions" },
+  { id: "restricted-jurisdictions", title: "Restricted Jurisdictions" },
+  { id: "compliance", title: "Compliance" },
+  { id: "related-policies", title: "Related Policies" },
+]
+
+const restrictedJurisdictions = [
+  { country: "Iran", reason: "OFAC sanctions" },
+  { country: "North Korea", reason: "OFAC sanctions" },
+  { country: "Russia", reason: "OFAC sanctions" },
+  { country: "Syria", reason: "OFAC sanctions" },
+  { country: "Ukraine (Crimea, Donetsk, and Luhansk regions)", reason: "OFAC sanctions" },
+  { country: "United States of America", reason: "Pending regulatory clarity" },
 ]
 
 export default function SecurityDisclosuresPage() {
@@ -15,190 +25,139 @@ export default function SecurityDisclosuresPage() {
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
       {/* Main content */}
       <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Security Disclosures</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Restricted Territories</h1>
         <p className="text-lg text-gray-600 mb-8">
-          Known risks, assumptions, and security-related disclosures relevant to protocol use.
+          This page is maintained to reflect the most current list of Restricted Jurisdictions for the AMM Market domain.
         </p>
 
         <section id="overview" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            AMM Market is experimental software. While we take security seriously and have 
-            implemented multiple safeguards, users should understand the risks involved in 
-            using decentralized finance protocols.
+            In accordance with our <Link href="/terms" className="text-blue-600 hover:underline">Terms of Use</Link>, 
+            access to the AMM Market website and its associated services is restricted for individuals or entities 
+            in certain jurisdictions. This page provides the current list of restricted territories and explains 
+            the access restrictions in place.
           </p>
           <div className="p-4 bg-red-50 rounded-lg border border-red-200">
             <p className="text-red-800 text-sm">
-              <strong>Warning:</strong> Do not deposit funds you cannot afford to lose. 
-              Smart contract risk, oracle risk, and market risk can result in partial or 
-              total loss of deposited assets.
+              <strong>Important:</strong> Any attempt to access the AMM Market platform from a Restricted 
+              Jurisdiction will result in immediate redirection to the Terms of Use and a denial of access.
             </p>
           </div>
         </section>
 
-        <section id="known-risks" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Known Risks</h2>
-          
-          <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Smart Contract Risk</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Despite audits, smart contracts may contain undiscovered vulnerabilities.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Code bugs could lead to loss of funds</li>
-                <li>• Upgrade mechanisms introduce additional risk</li>
-                <li>• Dependencies on external contracts (Aave v4, DEXes)</li>
-              </ul>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Oracle Risk</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Price feeds may be manipulated or fail, leading to incorrect valuations.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Oracle manipulation could trigger unfair liquidations</li>
-                <li>• Stale prices during network congestion</li>
-                <li>• LP valuation complexity introduces additional attack surface</li>
-              </ul>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Liquidation Risk</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Positions can be liquidated during market volatility.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Rapid price movements may not allow time to react</li>
-                <li>• Network congestion can delay transactions</li>
-                <li>• Liquidation penalties result in loss of collateral</li>
-              </ul>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">LP-Specific Risks</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Risks unique to using LP tokens as collateral.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Impermanent loss can reduce collateral value</li>
-                <li>• Underlying DEX smart contract risk</li>
-                <li>• Concentrated liquidity positions can become worthless out of range</li>
-              </ul>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Regulatory Risk</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                DeFi protocols face evolving regulatory landscape.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Regulatory actions could restrict access</li>
-                <li>• Tax treatment varies by jurisdiction</li>
-                <li>• Compliance requirements may change</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section id="security-assumptions" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Security Assumptions</h2>
+        <section id="access-restrictions" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Access Restrictions</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            The protocol's security relies on these assumptions:
+            Access to the AMM Market website and its associated services is restricted for individuals or 
+            entities who:
           </p>
           
           <div className="space-y-3">
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-1">Ethereum Security</h3>
-              <p className="text-blue-800 text-sm">
-                The underlying blockchain remains secure and censorship-resistant.
-              </p>
-            </div>
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-1">Oracle Integrity</h3>
-              <p className="text-blue-800 text-sm">
-                Chainlink and other oracle providers continue to operate correctly.
-              </p>
-            </div>
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-1">Governance Honesty</h3>
-              <p className="text-blue-800 text-sm">
-                Governance participants act in good faith and don't pass malicious proposals.
-              </p>
-            </div>
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-1">DEX Integrity</h3>
-              <p className="text-blue-800 text-sm">
-                Integrated DEXes (Uniswap, Aerodrome) remain secure and operational.
-              </p>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <ul className="text-gray-600 text-sm space-y-2">
+                <li>• <strong>Reside within</strong> any of the Restricted Jurisdictions</li>
+                <li>• <strong>Are citizens of</strong> any of the Restricted Jurisdictions</li>
+                <li>• <strong>Are physically located within</strong> any of the Restricted Jurisdictions</li>
+                <li>• <strong>Are incorporated within</strong> any of the Restricted Jurisdictions</li>
+                <li>• <strong>Maintain a registered office within</strong> any of the Restricted Jurisdictions</li>
+              </ul>
             </div>
           </div>
+
+          <p className="text-gray-600 leading-relaxed mt-4">
+            These restrictions are defined in AMM Market's <Link href="/terms" className="text-blue-600 hover:underline">Terms of Use</Link> and 
+            are enforced to comply with applicable laws and regulations.
+          </p>
         </section>
 
-        <section id="bug-bounty" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Bug Bounty</h2>
+        <section id="restricted-jurisdictions" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Current Restricted Jurisdictions</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            We offer rewards for responsibly disclosed vulnerabilities:
+            The following jurisdictions are currently restricted from accessing AMM Market services:
           </p>
           
           <div className="overflow-x-auto">
             <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Severity</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Reward</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Examples</th>
+                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Jurisdiction</th>
+                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Reason</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                <tr>
-                  <td className="px-4 py-2 text-red-600 font-medium">Critical</td>
-                  <td className="px-4 py-2 text-gray-600">Up to $100,000</td>
-                  <td className="px-4 py-2 text-gray-600">Direct fund theft, oracle manipulation</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-orange-600 font-medium">High</td>
-                  <td className="px-4 py-2 text-gray-600">Up to $25,000</td>
-                  <td className="px-4 py-2 text-gray-600">Unfair liquidations, interest manipulation</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-yellow-600 font-medium">Medium</td>
-                  <td className="px-4 py-2 text-gray-600">Up to $5,000</td>
-                  <td className="px-4 py-2 text-gray-600">Griefing attacks, DoS vectors</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-blue-600 font-medium">Low</td>
-                  <td className="px-4 py-2 text-gray-600">Up to $1,000</td>
-                  <td className="px-4 py-2 text-gray-600">Minor issues, gas optimizations</td>
-                </tr>
+                {restrictedJurisdictions.map((item) => (
+                  <tr key={item.country}>
+                    <td className="px-4 py-2 text-gray-900 font-medium">{item.country}</td>
+                    <td className="px-4 py-2 text-gray-600">{item.reason}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
+
+          <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
+            <p className="text-amber-800 text-sm">
+              <strong>Note:</strong> This list may be updated from time to time in response to changes in 
+              applicable laws, regulations, or sanctions programs. Users are responsible for ensuring their 
+              continued compliance with these restrictions.
+            </p>
+          </div>
+        </section>
+
+        <section id="compliance" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Compliance</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            As stated in our Terms of Use (Section 1.2), you may not access or use the Services if you are:
+          </p>
           
-          <p className="text-gray-500 text-sm mt-3">
-            Bug bounty program details at <a href="#" className="text-blue-600 hover:underline">immunefi.com/bounty/ammmarket</a>
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <ul className="text-gray-600 text-sm space-y-2">
+              <li>• The subject of any sanctions administered or enforced by the U.S. Department of the 
+                Treasury's Office of Foreign Assets Control (OFAC), the U.S. Department of State, or any 
+                other governmental authority with jurisdiction</li>
+              <li>• Identified on the Denied Persons, Entity, or Unverified Lists of the U.S. Department 
+                of Commerce's Bureau of Industry and Security</li>
+              <li>• Located, organized, or resident in a country or territory that is, or whose government 
+                is, the subject of economic sanctions</li>
+            </ul>
+          </div>
+
+          <p className="text-gray-600 leading-relaxed mt-4">
+            Users are solely responsible for ensuring their use of the protocol complies with all applicable 
+            laws and regulations in their jurisdiction.
           </p>
         </section>
 
-        <section id="responsible-disclosure" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Responsible Disclosure</h2>
+        <section id="related-policies" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Related Policies</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            If you discover a vulnerability:
+            For complete information about your rights and obligations when using AMM Market, please review:
           </p>
           
-          <ol className="space-y-2 text-gray-600 list-decimal list-inside mb-4">
-            <li>Do NOT disclose publicly</li>
-            <li>Email <a href="mailto:security@ammmarket.finance" className="text-blue-600 hover:underline">security@ammmarket.finance</a></li>
-            <li>Include detailed reproduction steps</li>
-            <li>Allow 90 days for fix before public disclosure</li>
-          </ol>
-          
-          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-            <p className="text-green-800 text-sm">
-              <strong>Safe Harbor:</strong> Security researchers acting in good faith will not 
-              face legal action for responsible disclosure.
-            </p>
+          <div className="space-y-3">
+            <Link href="/terms" className="block p-4 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors">
+              <h3 className="font-semibold text-blue-900 mb-1">Terms of Service</h3>
+              <p className="text-blue-800 text-sm">
+                Complete terms and conditions governing your use of AMM Market services, including 
+                eligibility requirements, prohibited activities, and dispute resolution.
+              </p>
+            </Link>
+
+            <Link href="/privacy" className="block p-4 bg-purple-50 rounded-lg border border-purple-200 hover:bg-purple-100 transition-colors">
+              <h3 className="font-semibold text-purple-900 mb-1">Privacy Policy</h3>
+              <p className="text-purple-800 text-sm">
+                Information about how we collect, use, and protect your personal information when 
+                you use our services.
+              </p>
+            </Link>
+
+            <Link href="/developers/legal/disclaimer" className="block p-4 bg-amber-50 rounded-lg border border-amber-200 hover:bg-amber-100 transition-colors">
+              <h3 className="font-semibold text-amber-900 mb-1">Legal Disclaimer</h3>
+              <p className="text-amber-800 text-sm">
+                Important disclaimers regarding risks, warranties, and liability limitations.
+              </p>
+            </Link>
           </div>
         </section>
       </div>
@@ -206,7 +165,7 @@ export default function SecurityDisclosuresPage() {
       {/* Right scroll-spy sidebar */}
       <ScrollSpySidebar 
         sections={sections} 
-        pageSummary="Known risks, assumptions, and security-related disclosures relevant to protocol use."
+        pageSummary="Restricted territories and access restrictions for AMM Market services."
         sectionColor="slate"
       />
     </div>

@@ -4,10 +4,21 @@ import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 const sections = [
   { id: "overview", title: "Overview" },
-  { id: "oracle-sources", title: "Oracle Sources" },
-  { id: "lp-valuation", title: "LP Valuation" },
-  { id: "security-measures", title: "Security Measures" },
-  { id: "oracle-addresses", title: "Oracle Addresses" },
+  { id: "oracle-interface", title: "Oracle Interface" },
+  { id: "multi-layer-architecture", title: "Multi-Layer Architecture" },
+  { id: "dex-handling", title: "DEX-Specific Handling" },
+  { id: "twap-computation", title: "TWAP Computation" },
+  { id: "safety-measures", title: "Safety & Manipulation Prevention" },
+  { id: "configurable-parameters", title: "Configurable Parameters" },
+]
+
+const dexOracleTable = [
+  { dex: "Curve Stable/Stable ERC-20 LPs", source: "On-chain TWAP + Chainlink", notes: "ERC-20 tokens; very low volatility; TWAP ensures anti-manipulation." },
+  { dex: "Uniswap V2 ERC-20 LPs", source: "On-chain TWAP + Chainlink", notes: "Standard LP token; liquidity data directly from pool." },
+  { dex: "Uniswap V3 NFT LPs", source: "TWAP per position + Chainlink", notes: "NFT represents liquidity in specific price range; accounts for accrued fees separately." },
+  { dex: "Balancer Multi-Asset LPs", source: "Weighted TWAP + Chainlink", notes: "Multi-token pools; calculate weighted average for collateral value." },
+  { dex: "SushiSwap / Aerodrome", source: "On-chain TWAP + Chainlink", notes: "Similar to Uniswap V2; cumulative price over 1-hour window." },
+  { dex: "PancakeSwap", source: "Block-based TWAP + Chainlink", notes: "BSC block-based observations with fallback to Chainlink." },
 ]
 
 export default function PriceOraclesPage() {
@@ -23,196 +34,247 @@ export default function PriceOraclesPage() {
         <section id="overview" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Accurate LP token valuation is critical for determining borrowing power and 
-            liquidation thresholds. AMM Market uses a combination of Chainlink price feeds 
-            and on-chain LP calculations to derive fair values.
+            In AMM Market, LP token collateral spans multiple DEX protocols: Uniswap V2/V3, Balancer, 
+            Curve, SushiSwap, Aerodrome, PancakeSwap, and other AMMs. Each has different LP structures, 
+            risk profiles, and data access methods, which requires a flexible, layered oracle system.
           </p>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <p className="text-blue-800 text-sm">
-              <strong>Key Principle:</strong> LP value is derived from underlying asset prices 
-              and pool reserves, not from LP token market prices (which can be manipulated).
+          <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+            <p className="text-red-800 text-sm">
+              <strong>Critical:</strong> Oracles are the linchpin of collateral security. Inaccurate or 
+              manipulable pricing exposes the Spoke to immediate risk. AMM Market's oracle architecture 
+              integrates Chainlink and on-chain DEX data, providing reliable, tamper-resistant valuation.
             </p>
           </div>
         </section>
 
-        <section id="oracle-sources" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Oracle Sources</h2>
-          
-          <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-xs">CL</span>
-                </div>
-                <h3 className="font-semibold text-gray-900">Chainlink Price Feeds</h3>
-              </div>
-              <p className="text-gray-600 text-sm mb-2">
-                Primary source for major asset prices (ETH, BTC, stablecoins). 
-                Decentralized oracle network with multiple data providers.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Update frequency: Heartbeat + deviation threshold</li>
-                <li>• Coverage: 100+ assets across major chains</li>
-                <li>• Latency: ~1 block</li>
-              </ul>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                  <span className="text-purple-600 font-bold text-xs">TW</span>
-                </div>
-                <h3 className="font-semibold text-gray-900">TWAP Oracles</h3>
-              </div>
-              <p className="text-gray-600 text-sm mb-2">
-                Time-weighted average prices from DEX pools for assets without Chainlink feeds.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Window: 30 minutes default</li>
-                <li>• Manipulation resistant</li>
-                <li>• Fallback for exotic assets</li>
-              </ul>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                  <span className="text-green-600 font-bold text-xs">LP</span>
-                </div>
-                <h3 className="font-semibold text-gray-900">LP Adapter Oracles</h3>
-              </div>
-              <p className="text-gray-600 text-sm mb-2">
-                Custom adapters that calculate LP value from underlying prices and pool state.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• DEX-specific implementations</li>
-                <li>• Handles concentrated liquidity math</li>
-                <li>• Accounts for fees and IL</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section id="lp-valuation" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">LP Valuation</h2>
+        <section id="oracle-interface" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Oracle Interface: IOracle</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            LP token value is calculated differently based on pool type:
+            The IOracle interface standardizes collateral valuation, regardless of DEX:
           </p>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Constant Product (x*y=k)</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Used by Uniswap v2, Aerodrome volatile pools.
-              </p>
-              <div className="p-3 bg-gray-900 rounded">
-                <code className="text-green-400 text-xs">
-                  lpValue = 2 × sqrt(reserve0 × reserve1 × price0 × price1) / totalSupply
-                </code>
-              </div>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Concentrated Liquidity</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Used by Uniswap v3. Value depends on price range.
-              </p>
-              <div className="p-3 bg-gray-900 rounded">
-                <code className="text-green-400 text-xs">
-                  lpValue = amount0 × price0 + amount1 × price1 + unclaimedFees<br/>
-                  // Where amounts depend on current price vs position range
-                </code>
-              </div>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">StableSwap</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Used by Curve, Aerodrome stable pools.
-              </p>
-              <div className="p-3 bg-gray-900 rounded">
-                <code className="text-green-400 text-xs">
-                  lpValue = virtualPrice × lpBalance × baseAssetPrice
-                </code>
-              </div>
-            </div>
+          <div className="p-4 bg-gray-900 rounded-lg mb-4">
+            <code className="text-green-400 text-sm">
+              function getValue(uint256 tokenId, address asset)<br/>
+              &nbsp;&nbsp;external view returns (<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;uint256 fullValue,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;uint256 feeValue,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;uint256 reserveValue<br/>
+              &nbsp;&nbsp;);
+            </code>
           </div>
-        </section>
 
-        <section id="security-measures" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Security Measures</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Multiple safeguards protect against oracle manipulation:
-          </p>
-          
           <div className="space-y-3">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Price Deviation Checks</h3>
-              <p className="text-gray-600 text-sm">
-                Transactions revert if price moves more than 5% from TWAP in a single block.
-              </p>
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <span className="font-semibold text-gray-900">fullValue</span>
+              <span className="text-gray-600 text-sm ml-2">— Value of principal liquidity</span>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Staleness Checks</h3>
-              <p className="text-gray-600 text-sm">
-                Oracle data older than the heartbeat threshold is rejected.
-              </p>
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <span className="font-semibold text-gray-900">feeValue</span>
+              <span className="text-gray-600 text-sm ml-2">— Value of accrued fees</span>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Circuit Breakers</h3>
-              <p className="text-gray-600 text-sm">
-                Operations pause if oracle reports extreme price movements (&gt;50% in 1 hour).
-              </p>
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <span className="font-semibold text-gray-900">reserveValue</span>
+              <span className="text-gray-600 text-sm ml-2">— Reserved portion for protocol risk buffers</span>
             </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Multi-Oracle Validation</h3>
-              <p className="text-gray-600 text-sm">
-                Critical operations cross-check prices against multiple sources.
-              </p>
+          </div>
+
+          <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <p className="text-blue-800 text-sm">
+              This interface abstracts DEX-specific differences, allowing the Spoke to handle ERC-20 LPs, 
+              NFT LPs, and multi-asset pools uniformly in lending, liquidation, and fee claims.
+            </p>
+          </div>
+        </section>
+
+        <section id="multi-layer-architecture" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Multi-Layer Architecture</h2>
+          
+          <div className="space-y-4">
+            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+              <h3 className="font-semibold text-purple-900 mb-2">Layer 1: DEX-Specific Position Data</h3>
+              <ul className="text-purple-800 text-sm space-y-1">
+                <li>• <strong>Uniswap V2 / Curve / Balancer ERC-20 LPs:</strong> Fetch raw liquidity balances, token amounts, and pool composition</li>
+                <li>• <strong>Uniswap V3 NFT LPs:</strong> Retrieve liquidity in range, position tick data, and accrued fees</li>
+                <li>• <strong>Balancer Multi-Asset Pools:</strong> Include weighted token balances and pool weights for accurate USD conversion</li>
+              </ul>
+            </div>
+
+            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <h3 className="font-semibold text-blue-900 mb-2">Layer 2: TWAP & Time-Weighted Aggregation</h3>
+              <ul className="text-blue-800 text-sm space-y-1">
+                <li>• Calculate Time-Weighted Average Prices (TWAPs) for each underlying token using DEX-native oracles</li>
+                <li>• TWAP windows (e.g., 1 hour) mitigate flash loan and short-term price manipulation</li>
+                <li>• For NFT LPs, TWAP is computed over the NFT's active range, combining pool liquidity and token TWAPs</li>
+              </ul>
+            </div>
+
+            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+              <h3 className="font-semibold text-green-900 mb-2">Layer 3: Cross-DEX Verification with Chainlink</h3>
+              <ul className="text-green-800 text-sm space-y-1">
+                <li>• Aggregate token prices using trusted Chainlink feeds</li>
+                <li>• Verify DEX TWAPs against Chainlink: if deviation is within bounds, use DEX price</li>
+                <li>• If deviation exceeds threshold, fallback to Chainlink feed</li>
+              </ul>
             </div>
           </div>
         </section>
 
-        <section id="oracle-addresses" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Oracle Addresses</h2>
+        <section id="dex-handling" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">DEX-Specific Handling</h2>
           
           <div className="overflow-x-auto">
             <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Asset</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Source</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Address (Base)</th>
+                  <th className="text-left px-3 py-2 font-semibold text-gray-900">DEX / LP Type</th>
+                  <th className="text-left px-3 py-2 font-semibold text-gray-900">Oracle Source</th>
+                  <th className="text-left px-3 py-2 font-semibold text-gray-900">Notes</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {dexOracleTable.map((item) => (
+                  <tr key={item.dex}>
+                    <td className="px-3 py-2 text-gray-900 font-medium">{item.dex}</td>
+                    <td className="px-3 py-2 text-gray-600">{item.source}</td>
+                    <td className="px-3 py-2 text-gray-600 text-xs">{item.notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="twap-computation" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">TWAP Computation by DEX</h2>
+          
+          <div className="space-y-3">
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-1">Uniswap V2 & SushiSwap</h3>
+              <p className="text-gray-600 text-sm">
+                TWAP computed on-chain using cumulative price data over a 1-hour window, reducing 
+                susceptibility to flash swaps.
+              </p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-1">Uniswap V3</h3>
+              <p className="text-gray-600 text-sm">
+                TWAP computed per NFT position, taking into account the tick range and accrued fees. 
+                Multi-tick positions require aggregation of liquidity-weighted prices.
+              </p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-1">Balancer</h3>
+              <p className="text-gray-600 text-sm">
+                Weighted TWAP of each underlying token is computed and combined according to pool 
+                weights to produce the LP's USD value.
+              </p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-1">Curve</h3>
+              <p className="text-gray-600 text-sm">
+                Stable/Stable pools use a simplified TWAP for underlying stablecoins, primarily to 
+                guard against oracle staleness and short-term anomalies.
+              </p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-1">Trader Joe & Aerodrome</h3>
+              <p className="text-gray-600 text-sm">
+                TWAP uses cumulative price from the pool with a 30–60 minute averaging window to 
+                prevent manipulation in low-liquidity pools.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="safety-measures" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Safety & Manipulation Prevention</h2>
+          
+          <div className="space-y-3">
+            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+              <h3 className="font-semibold text-red-900 mb-1">Deviation Thresholds</h3>
+              <p className="text-red-800 text-sm">
+                Pauses new loans or liquidations if TWAP vs Chainlink diverges beyond <code className="bg-red-100 px-1 rounded">maxDifference</code>.
+              </p>
+            </div>
+            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
+              <h3 className="font-semibold text-amber-900 mb-1">maxPoolPriceDifference</h3>
+              <p className="text-amber-800 text-sm">
+                Ensures pool-implied price aligns with underlying token prices, preventing instantaneous 
+                pool manipulation.
+              </p>
+            </div>
+            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <h3 className="font-semibold text-blue-900 mb-1">Open Interest Caps</h3>
+              <p className="text-blue-800 text-sm">
+                Dynamically limit exposure to low-liquidity pools or highly leveraged positions.
+              </p>
+            </div>
+            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+              <h3 className="font-semibold text-purple-900 mb-1">Oracle Sentinel</h3>
+              <p className="text-purple-800 text-sm">
+                Monitors feed health; triggers fallback if feeds are stale or compromised.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="configurable-parameters" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Configurable Oracle Parameters</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            Developers can configure pool-specific oracle settings for each token via <code className="bg-gray-200 px-1 rounded">setTokenConfig</code>:
+          </p>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Parameter</th>
+                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Description</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
                 <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">ETH/USD</td>
-                  <td className="px-4 py-2 text-gray-600">Chainlink</td>
-                  <td className="px-4 py-2 font-mono text-xs text-gray-600">0x71041dddad3595F9CEd3DcCFBe3D1F4b0a16Bb70</td>
+                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">Token</td>
+                  <td className="px-4 py-2 text-gray-600">Collateral token address</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">USDC/USD</td>
-                  <td className="px-4 py-2 text-gray-600">Chainlink</td>
-                  <td className="px-4 py-2 font-mono text-xs text-gray-600">0x7e860098F58bBFC8648a4311b374B1D669a2bc6B</td>
+                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">AggregatorV3Interface</td>
+                  <td className="px-4 py-2 text-gray-600">Chainlink feed for underlying token</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">cbETH/ETH</td>
-                  <td className="px-4 py-2 text-gray-600">Chainlink</td>
-                  <td className="px-4 py-2 font-mono text-xs text-gray-600">0x806b4Ac04501c29769051e42783cF04dCE41440b</td>
+                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">maxFeedAge</td>
+                  <td className="px-4 py-2 text-gray-600">Maximum acceptable age for Chainlink feed</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">LP Adapter</td>
-                  <td className="px-4 py-2 text-gray-600">Custom</td>
-                  <td className="px-4 py-2 font-mono text-xs text-gray-600">0x...</td>
+                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">Pool</td>
+                  <td className="px-4 py-2 text-gray-600">Specific DEX pool (Uniswap V3, Balancer, Curve, etc.)</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">twapSeconds</td>
+                  <td className="px-4 py-2 text-gray-600">Window for TWAP computation</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">Mode</td>
+                  <td className="px-4 py-2 text-gray-600">Oracle operational mode (standard/fallback)</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">maxDifference</td>
+                  <td className="px-4 py-2 text-gray-600">Max allowed deviation between DEX and verification price</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          
-          <p className="text-gray-500 text-sm mt-3">
-            Full oracle registry available via contract query or dashboard.
-          </p>
+
+          <div className="mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
+            <h3 className="font-semibold text-green-900 mb-2">Summary</h3>
+            <p className="text-green-800 text-sm">
+              AMM Market's multi-DEX, dual-oracle system delivers accurate valuation for ERC-20 and NFT LPs, 
+              safe handling of multi-asset pools, dynamic fallback to Chainlink when TWAP data is unreliable, 
+              protection against price manipulation and flash loan attacks, and developer configurability 
+              for hundreds of pools with varying liquidity and volatility.
+            </p>
+          </div>
         </section>
       </div>
 

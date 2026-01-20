@@ -4,10 +4,11 @@ import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 const sections = [
   { id: "overview", title: "Overview" },
-  { id: "fee-types", title: "Fee Types" },
-  { id: "fee-calculation", title: "Fee Calculation" },
-  { id: "fee-distribution", title: "Fee Distribution" },
-  { id: "fee-schedule", title: "Current Fee Schedule" },
+  { id: "frontend-fee", title: "Frontend Fee" },
+  { id: "fee-disclosure", title: "Fee Disclosure" },
+  { id: "treasury-usage", title: "Treasury Usage" },
+  { id: "zero-fee-paths", title: "Zero-Fee Paths" },
+  { id: "commitment", title: "Our Commitment" },
 ]
 
 export default function PlatformFeesPage() {
@@ -23,166 +24,187 @@ export default function PlatformFeesPage() {
         <section id="overview" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            AMM Market generates revenue through various fees that sustain protocol operations, 
-            fund development, and reward stakeholders. Fees are designed to be competitive 
-            while ensuring long-term protocol sustainability.
+            AMM Market charges a single, flat frontend fee of <strong>0.20%</strong> on each user 
+            action that interacts with our interface.
           </p>
-        </section>
-
-        <section id="fee-types" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Fee Types</h2>
-          
-          <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Borrow Interest</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Interest paid by borrowers on outstanding debt. Rates are determined by the 
-                Aave v4 Hub's interest rate model.
-              </p>
-              <div className="flex items-center gap-2">
-                <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">Variable Rate</span>
-                <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">Stable Rate</span>
-              </div>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Reserve Factor</h3>
-              <p className="text-gray-600 text-sm">
-                A percentage of borrow interest directed to the protocol treasury. This funds 
-                development, security audits, and insurance reserves.
-              </p>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Liquidation Penalty</h3>
-              <p className="text-gray-600 text-sm">
-                A fee charged when positions are liquidated. Split between liquidators 
-                (as incentive) and the protocol treasury.
-              </p>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Flash Loan Fee</h3>
-              <p className="text-gray-600 text-sm">
-                Fee charged on flash loan operations. Typically a small percentage of the 
-                borrowed amount.
-              </p>
-            </div>
+          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <h3 className="font-semibold text-blue-900 mb-2">Interface Fee, Not Protocol Fee</h3>
+            <p className="text-blue-800 text-sm">
+              The fee is not embedded into the lending protocol itself; it is an interface charge 
+              that funds the maintenance and improvement of AMM Market's user experience, infrastructure, 
+              security, and community initiatives.
+            </p>
           </div>
         </section>
 
-        <section id="fee-calculation" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Fee Calculation</h2>
-          
-          <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Interest Rate Model</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Borrow rates follow a utilization-based curve:
-              </p>
-              <div className="p-3 bg-gray-900 rounded">
-                <code className="text-green-400 text-xs">
-                  Rate = BaseRate + (Utilization × Slope1)  // Below optimal<br/>
-                  Rate = BaseRate + (Optimal × Slope1) + ((Utilization - Optimal) × Slope2)  // Above optimal
-                </code>
-              </div>
-            </div>
-
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Example: USDC Borrowing</h3>
-              <ul className="text-blue-800 text-sm space-y-1">
-                <li>• Base rate: 0%</li>
-                <li>• Optimal utilization: 80%</li>
-                <li>• Slope 1: 4%</li>
-                <li>• Slope 2: 75%</li>
-                <li>• At 50% utilization: 0% + (50% × 4%) = <strong>2% APR</strong></li>
-                <li>• At 90% utilization: 0% + (80% × 4%) + (10% × 75%) = <strong>10.7% APR</strong></li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section id="fee-distribution" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Fee Distribution</h2>
+        <section id="frontend-fee" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Frontend Fee</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Protocol fees are distributed among various stakeholders:
+            This fee is applied at the moment a user submits a transaction through the AMM Market 
+            web or mobile app and covers actions such as:
           </p>
           
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Recipient</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Share</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Purpose</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Lenders (Hub)</td>
-                  <td className="px-4 py-2 text-gray-600">~80%</td>
-                  <td className="px-4 py-2 text-gray-600">Supply interest to liquidity providers</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Protocol Treasury</td>
-                  <td className="px-4 py-2 text-gray-600">~15%</td>
-                  <td className="px-4 py-2 text-gray-600">Development, audits, operations</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Insurance Fund</td>
-                  <td className="px-4 py-2 text-gray-600">~5%</td>
-                  <td className="px-4 py-2 text-gray-600">Bad debt coverage, emergency reserves</td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200 text-center">
+              <span className="text-gray-900 font-medium text-sm">Supplying Collateral</span>
+            </div>
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200 text-center">
+              <span className="text-gray-900 font-medium text-sm">Borrowing</span>
+            </div>
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200 text-center">
+              <span className="text-gray-900 font-medium text-sm">Repaying</span>
+            </div>
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200 text-center">
+              <span className="text-gray-900 font-medium text-sm">Withdrawing</span>
+            </div>
+            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200 text-center">
+              <span className="text-gray-900 font-medium text-sm">Claiming</span>
+            </div>
+          </div>
+
+          <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+            <h3 className="font-semibold text-purple-900 mb-2">Industry Standard</h3>
+            <p className="text-purple-800 text-sm">
+              In the same way leading DeFi frontends have separated interface charges from protocol-level 
+              economics, this fee applies only to transactions routed through the official AMM Market 
+              interface and does not affect calls made directly to the underlying smart contracts.
+            </p>
           </div>
         </section>
 
-        <section id="fee-schedule" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Current Fee Schedule</h2>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Fee Type</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Amount</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Notes</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Reserve Factor</td>
-                  <td className="px-4 py-2 text-gray-600">10-20%</td>
-                  <td className="px-4 py-2 text-gray-600">Varies by asset</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Liquidation Penalty</td>
-                  <td className="px-4 py-2 text-gray-600">5-10%</td>
-                  <td className="px-4 py-2 text-gray-600">Varies by LP type</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Flash Loan Fee</td>
-                  <td className="px-4 py-2 text-gray-600">0.05%</td>
-                  <td className="px-4 py-2 text-gray-600">Per flash loan</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Deposit Fee</td>
-                  <td className="px-4 py-2 text-green-600 font-medium">0%</td>
-                  <td className="px-4 py-2 text-gray-600">No fee to deposit</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Withdrawal Fee</td>
-                  <td className="px-4 py-2 text-green-600 font-medium">0%</td>
-                  <td className="px-4 py-2 text-gray-600">No fee to withdraw</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          
-          <p className="text-gray-500 text-sm mt-3">
-            Fees are subject to change through governance. Check the dashboard for current rates.
+        <section id="fee-disclosure" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Fee Disclosure</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            Every transaction that incurs a frontend fee will present a clear, line-item disclosure 
+            inside the transaction confirmation modal before the user signs.
           </p>
+          
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 mb-4">
+            <h3 className="font-semibold text-gray-900 mb-2">Fee Calculation</h3>
+            <p className="text-gray-600 text-sm mb-2">
+              The fee is computed as <strong>0.20%</strong> of the fiat value of the asset being transacted.
+            </p>
+            <div className="p-3 bg-blue-50 rounded border border-blue-200">
+              <p className="text-blue-800 text-sm">
+                <strong>Example:</strong> A $50,000 borrow initiated through the AMM Market app will 
+                show a fee of $100. The signed transaction will include an on-chain or off-chain 
+                transfer that routes that $100 to the AMM Market fee wallet.
+              </p>
+            </div>
+          </div>
+
+          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+            <h3 className="font-semibold text-green-900 mb-2">Transparency</h3>
+            <p className="text-green-800 text-sm">
+              We surface the fee as both a dollar amount and a percentage so users can instantly 
+              understand cost impact and check the exact transfer before approving the wallet signature.
+            </p>
+          </div>
+        </section>
+
+        <section id="treasury-usage" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Treasury Usage</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            Collected frontend fees are routed to the AMM Market treasury and are used exclusively 
+            to sustain product operations:
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-1">Hosting & API Costs</h3>
+              <p className="text-gray-600 text-xs">Infrastructure and backend services</p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-1">Oracle Subscriptions</h3>
+              <p className="text-gray-600 text-xs">Price feed and data services</p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-1">Ongoing Development</h3>
+              <p className="text-gray-600 text-xs">New features and improvements</p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-1">Audits & Security Reviews</h3>
+              <p className="text-gray-600 text-xs">Third-party security assessments</p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-1">User Support</h3>
+              <p className="text-gray-600 text-xs">Help desk and documentation</p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-1">Community Programs</h3>
+              <p className="text-gray-600 text-xs">Incentives and grants</p>
+            </div>
+          </div>
+
+          <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
+            <h3 className="font-semibold text-amber-900 mb-2">Governance Oversight</h3>
+            <p className="text-amber-800 text-sm">
+              Treasury disbursements are managed under the protocol's governance framework. Major 
+              allocations and programmatic changes (e.g., turning fees into rebates, launching 
+              promotions, or reallocating budget to security audits) are subject to governance 
+              proposals and timelocked execution.
+            </p>
+          </div>
+        </section>
+
+        <section id="zero-fee-paths" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Zero-Fee Paths</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            We recognize that some users and integrators prefer zero-fee paths:
+          </p>
+          
+          <div className="space-y-4">
+            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+              <h3 className="font-semibold text-green-900 mb-2">Direct Contract Calls</h3>
+              <p className="text-green-800 text-sm">
+                Transactions submitted directly to the underlying protocol contracts will not pay 
+                the 0.20% fee.
+              </p>
+            </div>
+            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <h3 className="font-semibold text-blue-900 mb-2">Third-Party Frontends</h3>
+              <p className="text-blue-800 text-sm">
+                Transactions routed through third-party frontends that do not levy the AMM Market 
+                interface charge will not pay the fee.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 p-4 bg-purple-50 rounded-lg border border-purple-200">
+            <h3 className="font-semibold text-purple-900 mb-2">Official Frontend Registry</h3>
+            <p className="text-purple-800 text-sm">
+              To preserve choice and composability while protecting the integrity of the AMM Market 
+              interface, we will publish a public registry of AMM Market-official frontends. Official 
+              frontends will display a verified badge and a plain language explanation of the fee 
+              policy; integrations not on the registry will be marked as third-party.
+            </p>
+          </div>
+        </section>
+
+        <section id="commitment" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Our Commitment</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            Our commitment is to keep fees minimal, predictable, and justified by visible product 
+            improvements.
+          </p>
+          
+          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
+            <h3 className="font-semibold text-blue-900 mb-2">Design Philosophy</h3>
+            <p className="text-blue-800 text-sm">
+              The 0.20% frontend fee is designed to be low enough that it does not materially change 
+              user behavior for typical DeFi actions, while generating a sustainable revenue stream 
+              to fund security, reliability, and continued product innovation.
+            </p>
+          </div>
+
+          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+            <h3 className="font-semibold text-green-900 mb-2">Community Governance</h3>
+            <p className="text-green-800 text-sm">
+              As market conditions change, the community can propose and vote on fee adjustments. 
+              Until then, we will publish regular treasury reports showing collections, allocations, 
+              and the tangible outcomes those funds supported.
+            </p>
+          </div>
         </section>
       </div>
 
