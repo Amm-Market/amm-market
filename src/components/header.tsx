@@ -217,11 +217,11 @@ export default function Header(): React.JSX.Element {
                     </Link>
 
                     <Link
-                      href="/webapp"
+                      href="/bluechip-spoke"
                       className="flex relative gap-4 items-center justify-between px-4 pr-12 py-2.5 text-base text-gray-900 hover:bg-black/5 transition-all rounded-lg group"
                       onClick={() => setProductsMenuOpen(false)}
                     >
-                      <div className="w-[44px] h-[44px] flex-shrink-0 rounded-lg shadow-sm group-hover:shadow transition-shadow bg-gradient-to-br from-violet-500 to-purple-400 flex items-center justify-center">
+                      <div className="w-[44px] h-[44px] flex-shrink-0 rounded-lg shadow-sm group-hover:shadow transition-shadow bg-gradient-to-br from-amber-500 to-orange-400 flex items-center justify-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="20"
@@ -233,15 +233,14 @@ export default function Header(): React.JSX.Element {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         >
-                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                          <line x1="3" y1="9" x2="21" y2="9" />
-                          <line x1="9" y1="21" x2="9" y2="9" />
+                          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                          <path d="M2 17l10 5 10-5" />
                         </svg>
                       </div>
                       <div className="flex-1">
-                        <p className="text-base font-medium flex items-center gap-2">Webapp</p>
+                        <p className="text-base font-medium flex items-center gap-2">Bluechip Spoke</p>
                         <p className="text-sm text-gray-500 group-hover:text-gray-900 transition">
-                          Your gateway to DeFi
+                          Blue-chip LP collateral, higher LTV
                         </p>
                       </div>
                     </Link>
@@ -250,12 +249,12 @@ export default function Header(): React.JSX.Element {
                   {/* Right Column - Featured Content */}
                   <div className="flex-1 flex">
                     <Link
-                      href="/lightpaper"
+                      href="/webapp"
                       className="block p-4 bg-white rounded-lg hover:bg-black/5 transition-colors group flex-1"
                       onClick={() => setProductsMenuOpen(false)}
                     >
                       <div className="mb-3">
-                        <div className="w-full h-24 bg-gradient-to-br from-blue-100 via-purple-100 to-emerald-100 rounded-md shadow-sm group-hover:shadow transition-shadow flex items-center justify-center">
+                        <div className="w-full h-24 bg-gradient-to-br from-violet-100 to-purple-100 rounded-md shadow-sm group-hover:shadow transition-shadow flex items-center justify-center">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="32"
@@ -266,22 +265,20 @@ export default function Header(): React.JSX.Element {
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            className="text-blue-600"
+                            className="text-violet-600"
                           >
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                            <polyline points="14 2 14 8 20 8" />
-                            <line x1="16" y1="13" x2="8" y2="13" />
-                            <line x1="16" y1="17" x2="8" y2="17" />
-                            <polyline points="10 9 9 9 8 9" />
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <line x1="3" y1="9" x2="21" y2="9" />
+                            <line x1="9" y1="21" x2="9" y2="9" />
                           </svg>
                         </div>
                       </div>
                       <div className="flex flex-col gap-1">
                         <div className="font-medium text-gray-900 text-base leading-tight">
-                          Lightpaper
+                          Webapp
                         </div>
                         <div className="text-sm text-gray-500 group-hover:text-gray-900 transition">
-                          Learn in depth about the platform
+                          Your gateway to DeFi
                         </div>
                       </div>
                     </Link>
@@ -535,16 +532,14 @@ export default function Header(): React.JSX.Element {
                     </div>
                   </Link>
 
-                  {/* Getting Started Card */}
-                  <a
-                    href="https://github.com/aave"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  {/* Lightpaper Card */}
+                  <Link
+                    href="/lightpaper"
                     className="block p-4 bg-white rounded-lg hover:bg-black/5 transition-colors group flex-1"
                     onClick={() => setDevelopersMenuOpen(false)}
                   >
                     <div className="mb-3">
-                      <div className="w-full h-24 bg-gradient-to-br from-green-100 to-emerald-100 rounded-md shadow-sm group-hover:shadow transition-shadow flex items-center justify-center">
+                      <div className="w-full h-24 bg-gradient-to-br from-blue-100 via-purple-100 to-emerald-100 rounded-md shadow-sm group-hover:shadow transition-shadow flex items-center justify-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="32"
@@ -555,38 +550,25 @@ export default function Header(): React.JSX.Element {
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="text-green-600"
+                          className="text-blue-600"
                         >
-                          <polyline points="16 18 22 12 16 6"></polyline>
-                          <polyline points="8 6 2 12 8 18"></polyline>
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                          <polyline points="14 2 14 8 20 8" />
+                          <line x1="16" y1="13" x2="8" y2="13" />
+                          <line x1="16" y1="17" x2="8" y2="17" />
+                          <polyline points="10 9 9 9 8 9" />
                         </svg>
                       </div>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <div className="font-medium text-gray-900 text-base leading-tight flex items-center gap-1">
-                        Getting Started
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="text-gray-400"
-                        >
-                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                          <polyline points="15 3 21 3 21 9"></polyline>
-                          <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
+                      <div className="font-medium text-gray-900 text-base leading-tight">
+                        Lightpaper
                       </div>
                       <div className="text-sm text-gray-500 group-hover:text-gray-900 transition">
-                        Start building with our SDK
+                        Learn in depth about the platform
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -739,6 +721,32 @@ export default function Header(): React.JSX.Element {
                     </div>
                   </Link>
                   <Link
+                    href="/bluechip-spoke"
+                    className="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-black/5 rounded-lg transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <div className="w-8 h-8 rounded-md bg-gradient-to-br from-amber-500 to-orange-400 flex items-center justify-center flex-shrink-0">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                        <path d="M2 17l10 5 10-5" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span className="block">Bluechip Spoke</span>
+                      <span className="text-xs text-gray-400">Blue-chip LP collateral</span>
+                    </div>
+                  </Link>
+                  <Link
                     href="/webapp"
                     className="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-black/5 rounded-lg transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
@@ -762,34 +770,6 @@ export default function Header(): React.JSX.Element {
                     <div>
                       <span className="block">Webapp</span>
                       <span className="text-xs text-gray-400">DeFi interface</span>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/lightpaper"
-                    className="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-black/5 rounded-lg transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <div className="w-8 h-8 rounded-md bg-gray-100 flex items-center justify-center flex-shrink-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-gray-600"
-                      >
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <polyline points="14 2 14 8 20 8" />
-                        <line x1="16" y1="13" x2="8" y2="13" />
-                      </svg>
-                    </div>
-                    <div>
-                      <span className="block">Lightpaper</span>
-                      <span className="text-xs text-gray-400">Learn more</span>
                     </div>
                   </Link>
                 </div>
@@ -998,14 +978,12 @@ export default function Header(): React.JSX.Element {
                     </div>
                     <span>Documentation</span>
                   </Link>
-                  <a
-                    href="https://github.com/aave"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href="/lightpaper"
                     className="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-black/5 rounded-lg transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <div className="w-8 h-8 rounded-md bg-green-100 flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 rounded-md bg-blue-100 flex items-center justify-center flex-shrink-0">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -1016,32 +994,17 @@ export default function Header(): React.JSX.Element {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="text-green-600"
+                        className="text-blue-600"
                       >
-                        <polyline points="16 18 22 12 16 6"></polyline>
-                        <polyline points="8 6 2 12 8 18"></polyline>
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                        <polyline points="10 9 9 9 8 9" />
                       </svg>
                     </div>
-                    <span className="flex items-center gap-1">
-                      Getting Started
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-gray-400"
-                      >
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                        <polyline points="15 3 21 3 21 9"></polyline>
-                        <line x1="10" y1="14" x2="21" y2="3"></line>
-                      </svg>
-                    </span>
-                  </a>
+                    <span>Lightpaper</span>
+                  </Link>
                 </div>
               </div>
             </div>
