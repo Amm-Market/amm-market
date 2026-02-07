@@ -4,11 +4,11 @@ import Link from "next/link"
 import WaitlistCTA from "@/components/waitlist-cta"
 
 export const metadata: Metadata = {
-  title: "Stable Spoke - Stablecoin LP Collateral",
-  description: "AMM Market Stable Spoke for stablecoin-stablecoin LP positions. Highest LTV ratios and lowest risk for stable pairs.",
+  title: "Bluechip Spoke - Blue-Chip LP Collateral",
+  description: "AMM Market Bluechip Spoke for established-asset LP positions. Higher LTV and conservative risk for ETH, BTC, and major governance token pairs.",
 }
 
-export default function StableSpokePage() {
+export default function BluechipSpokePage() {
   return (
     <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col min-h-screen pt-20">
       <div className="flex-1 flex flex-col relative z-0">
@@ -34,19 +34,19 @@ export default function StableSpokePage() {
               {/* Right Column - Text Content */}
               <div className="w-full lg:w-[45%] text-center lg:text-left order-1 lg:order-2 mb-8 lg:mb-0">
                 <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.15] text-gray-900 mb-4 md:mb-6">
-                  <span className="lg:whitespace-nowrap">Stablecoin LPs.</span>
+                  <span className="lg:whitespace-nowrap">Blue-chip LPs.</span>
                   <br />
-                  <span className="lg:whitespace-nowrap">Best terms. Low risk.</span>
+                  <span className="lg:whitespace-nowrap">Higher LTV. Low risk.</span>
                 </h1>
 
                 <p className="text-base md:text-lg text-gray-600 max-w-lg mx-auto lg:mx-0 leading-relaxed mb-6">
-                  Ultra-low slippage and maximum capital efficiency for stable-to-stable pairs. Borrow against your stable LP positions with the highest LTV and lowest risk in the protocol.
+                  Borrow more against established pairs—ETH, BTC, stablecoins, and major governance tokens. Deep liquidity, strong oracles, and conservative risk parameters for proven collateral.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto lg:mx-0">
                   <Link
                     href="/early-access"
-                    className="inline-flex items-center justify-center px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-medium rounded-lg transition-colors"
+                    className="inline-flex items-center justify-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors"
                   >
                     Get Early Access
                   </Link>
@@ -66,17 +66,17 @@ export default function StableSpokePage() {
         <div className="space-y-12 pb-16">
           {/* Stats */}
           <section className="grid grid-cols-3 gap-4">
-            <div className="p-6 bg-emerald-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-emerald-600">0.01%</p>
-              <p className="text-sm text-gray-600">Swap Fee</p>
+            <div className="p-6 bg-amber-50 rounded-xl text-center">
+              <p className="text-3xl font-bold text-amber-600">50–77%</p>
+              <p className="text-sm text-gray-600">Max LTV (blue-chip)</p>
             </div>
-            <div className="p-6 bg-emerald-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-emerald-600">&lt;0.1%</p>
-              <p className="text-sm text-gray-600">Slippage</p>
+            <div className="p-6 bg-amber-50 rounded-xl text-center">
+              <p className="text-3xl font-bold text-amber-600">5%</p>
+              <p className="text-sm text-gray-600">IL buffer typical</p>
             </div>
-            <div className="p-6 bg-emerald-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-emerald-600">99.9%</p>
-              <p className="text-sm text-gray-600">Capital Efficiency</p>
+            <div className="p-6 bg-amber-50 rounded-xl text-center">
+              <p className="text-3xl font-bold text-amber-600">36+</p>
+              <p className="text-sm text-gray-600">Supported pools</p>
             </div>
           </section>
 
@@ -88,71 +88,71 @@ export default function StableSpokePage() {
             <div className="grid md:grid-cols-3 gap-6">
               <div className="p-6 border border-gray-200 rounded-xl">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                      <path d="M2 17l10 5 10-5" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold">Blue-Chip Pools</h3>
+                </div>
+                <p className="text-gray-600">
+                  Only the most liquid, oracle-backed pairs: WETH, WBTC, USDC, USDT, DAI, and select
+                  governance tokens. Reduced volatility and predictable impermanent loss.
+                </p>
+              </div>
+
+              <div className="p-6 border border-gray-200 rounded-xl">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-orange-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-semibold">Concentrated Stable Curve</h3>
+                  <h3 className="text-lg font-semibold">Higher LTV</h3>
                 </div>
                 <p className="text-gray-600">
-                  Custom bonding curve optimized for assets that trade at 1:1 parity, enabling trades with
-                  near-zero price impact even for large volumes.
+                  Borrow more against proven collateral. Tiered LTVs reflect asset quality—e.g. 77.5% for
+                  WETH, 70% for WBTC—with conservative liquidation thresholds.
                 </p>
               </div>
 
               <div className="p-6 border border-gray-200 rounded-xl">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-teal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
-                      <path d="M21 3v5h-5" />
+                  <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-yellow-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 6v6l4 2" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-semibold">Auto-Rebalancing</h3>
+                  <h3 className="text-lg font-semibold">Oracle Coverage</h3>
                 </div>
                 <p className="text-gray-600">
-                  Intelligent rebalancing mechanism that maintains optimal pool ratios and automatically
-                  arbitrages depegging events for LP profit.
-                </p>
-              </div>
-
-              <div className="p-6 border border-gray-200 rounded-xl">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-cyan-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                      <line x1="3" y1="9" x2="21" y2="9" />
-                      <line x1="9" y1="21" x2="9" y2="9" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-semibold">Multi-Asset Pools</h3>
-                </div>
-                <p className="text-gray-600">
-                  Support for pools with 2-8 stablecoins, enabling efficient routing and reduced
-                  transaction costs for complex stable swaps.
+                  All blue-chip pools use battle-tested price oracles and pool-specific configs for
+                  accurate valuation and safe liquidations.
                 </p>
               </div>
             </div>
           </section>
 
-          {/* Supported Stables */}
+          {/* Supported Asset Tiers */}
           <section>
             <div className="max-w-[650px] mb-6">
-              <h2 className="text-2xl font-bold">Supported Stablecoins</h2>
+              <h2 className="text-2xl font-bold">Representative Collateral Tiers</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { name: "USDC", color: "bg-blue-100 text-blue-600" },
-                { name: "USDT", color: "bg-green-100 text-green-600" },
-                { name: "DAI", color: "bg-yellow-100 text-yellow-600" },
-                { name: "FRAX", color: "bg-gray-100 text-gray-600" },
-              ].map((stable) => (
-                <div key={stable.name} className="p-4 border border-gray-200 rounded-xl text-center">
-                  <div className={`w-12 h-12 ${stable.color} rounded-full mx-auto mb-2 flex items-center justify-center`}>
-                    <span className="text-sm font-bold">{stable.name[0]}</span>
+                { name: "WETH", ltv: "77.5%", color: "bg-indigo-100 text-indigo-600" },
+                { name: "WBTC", ltv: "70%", color: "bg-orange-100 text-orange-600" },
+                { name: "USDC", ltv: "85%", color: "bg-blue-100 text-blue-600" },
+                { name: "LINK", ltv: "65%", color: "bg-blue-100 text-blue-600" },
+              ].map((asset) => (
+                <div key={asset.name} className="p-4 border border-gray-200 rounded-xl text-center">
+                  <div className={`w-12 h-12 ${asset.color} rounded-full mx-auto mb-2 flex items-center justify-center`}>
+                    <span className="text-sm font-bold">{asset.name.slice(0, 2)}</span>
                   </div>
-                  <p className="font-medium text-gray-900">{stable.name}</p>
+                  <p className="font-medium text-gray-900">{asset.name}</p>
+                  <p className="text-xs text-gray-500">LTV {asset.ltv}</p>
                 </div>
               ))}
             </div>
@@ -165,30 +165,30 @@ export default function StableSpokePage() {
             </div>
             <div className="max-w-[650px] space-y-4">
               <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-bold text-sm">1</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Large Volume Swaps</h3>
-                  <p className="text-gray-600 text-sm">Execute million-dollar stablecoin swaps with minimal slippage.</p>
+                  <h3 className="font-semibold mb-1">Higher Borrowing Power</h3>
+                  <p className="text-gray-600 text-sm">Borrow more against blue-chip LP collateral with tiered LTVs.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-bold text-sm">2</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Treasury Management</h3>
-                  <p className="text-gray-600 text-sm">DAOs and protocols can efficiently manage stablecoin reserves.</p>
+                  <h3 className="font-semibold mb-1">Conservative Risk</h3>
+                  <p className="text-gray-600 text-sm">Established assets and oracles reduce volatility and liquidation risk.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-bold text-sm">3</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Yield Optimization</h3>
-                  <p className="text-gray-600 text-sm">LPs earn consistent fees from high-volume stable trading.</p>
+                  <h3 className="font-semibold mb-1">Institutional-Ready</h3>
+                  <p className="text-gray-600 text-sm">Deep liquidity and transparent risk parameters for larger positions.</p>
                 </div>
               </div>
             </div>

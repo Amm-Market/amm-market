@@ -260,9 +260,9 @@ export default function HeroSection() {
     <section className="pb-12 md:pb-16">
       {/* Hero Section - Phone Left, Text Right (Coinbase style) */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-4 pb-8 md:pt-6 md:pb-12">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16 lg:min-h-[400px] xl:min-h-[450px]">
           {/* Left Column - Hero Image */}
-          <div className="flex-1 mb-10 lg:mb-0 order-2 lg:order-1 lg:flex-[1.1]">
+          <div className="w-full lg:w-[55%] mb-10 lg:mb-0 order-2 lg:order-1">
             <div className="relative w-full max-w-[700px] lg:max-w-[650px] xl:max-w-[700px] mx-auto lg:mx-0">
               <Image
                 src="/images/Hero__4_.png"
@@ -277,7 +277,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column - Text Content */}
-          <div className="flex-1 text-center lg:text-left order-1 lg:order-2 mb-8 lg:mb-0">
+          <div className="w-full lg:w-[45%] text-center lg:text-left order-1 lg:order-2 mb-8 lg:mb-0">
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.15] text-gray-900 mb-4 md:mb-6">
               <span className="lg:whitespace-nowrap">Borrow up to 80%</span>
