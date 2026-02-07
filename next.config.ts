@@ -96,6 +96,22 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  /**
+   * Production build optimizations
+   * Removes console.logs and optimizes package imports
+   */
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+
+  /**
+   * Experimental features for better performance
+   * - optimizePackageImports: Tree-shakes large icon/UI libraries
+   */
+  experimental: {
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-accordion', '@radix-ui/react-tabs'],
+  },
   
   /**
    * HTTP Headers configuration
