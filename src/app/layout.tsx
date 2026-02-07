@@ -184,6 +184,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
+        {/* Preload critical hero image for faster LCP */}
+        <link rel="preload" href="/images/Hero__4_.png" as="image" />
         {/* JSON-LD Structured Data for SEO */}
         <script
           type="application/ld+json"

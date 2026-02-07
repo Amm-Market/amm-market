@@ -160,7 +160,7 @@ export default function HeroSection() {
 
   const TESTIMONIAL_DURATION = 6000 // 6 seconds per testimonial
 
-  // Progress bar animation and auto-advance
+  // Progress bar animation and auto-advance (200ms interval to reduce main-thread work)
   useEffect(() => {
     setProgress(0)
     const startTime = Date.now()
@@ -178,7 +178,7 @@ export default function HeroSection() {
           setIsAnimating(false)
         }, 300)
       }
-    }, 50)
+    }, 200)
 
     return () => clearInterval(progressInterval)
   }, [currentTestimonial])
@@ -271,6 +271,7 @@ export default function HeroSection() {
                 height={1400}
                 className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                 priority
+                fetchPriority="high"
               />
             </div>
           </div>
@@ -491,61 +492,60 @@ export default function HeroSection() {
         <div className="border-t border-gray-100"></div>
       </div>
 
-      {/* Dashboard Section - Tabbed Video */}
-      <div id="dashboard" className="mx-auto max-w-5xl px-6 lg:px-0 py-16 md:py-24">
-        {/* Header Row - Title left, Tabs right on lg+ */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8 lg:mb-12">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
-              See It In Action
-            </h2>
-            <p className="text-sm md:text-base text-gray-600">
-              Manage your LP positions without leaving the dashboard.
-            </p>
+      {/* Dashboard Section - Tabbed Video (lazy-loaded to avoid blocking LCP) */}
+      <LazySection minHeight="400px">
+        <div id="dashboard" className="mx-auto max-w-5xl px-6 lg:px-0 py-16 md:py-24">
+          {/* Header Row - Title left, Tabs right on lg+ */}
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8 lg:mb-12">
+            <div className="flex flex-col gap-2">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+                See It In Action
+              </h2>
+              <p className="text-sm md:text-base text-gray-600">
+                Manage your LP positions without leaving the dashboard.
+              </p>
+            </div>
+
+            {/* Tab Buttons - Desktop (lg+) */}
+            <div className="hidden lg:flex gap-2" role="tablist">
+              {dashboardTabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  aria-selected={activeTab === tab.id}
+                  role="tab"
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`py-2 px-6 border rounded-full bg-white text-sm transition-all hover:border-gray-400 hover:text-gray-900 whitespace-nowrap ${activeTab === tab.id
+                      ? 'opacity-100 border-gray-900 text-gray-900 font-medium'
+                      : 'opacity-80 border-gray-300 text-gray-600'
+                    }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Tab Buttons - Desktop (lg+) */}
-          <div className="hidden lg:flex gap-2" role="tablist">
+          {/* Tab Buttons - Mobile */}
+          <div className="flex lg:hidden justify-center gap-1.5 sm:gap-2 mb-6" role="tablist">
             {dashboardTabs.map((tab) => (
               <button
-                key={tab.id}
+                key={`mobile-${tab.id}`}
                 aria-selected={activeTab === tab.id}
                 role="tab"
                 onClick={() => setActiveTab(tab.id)}
-                className={`py-2 px-6 border rounded-full bg-white text-sm transition-all hover:border-gray-400 hover:text-gray-900 whitespace-nowrap ${
-                  activeTab === tab.id
+                className={`py-1.5 px-2.5 sm:py-2 sm:px-5 border rounded-full bg-white text-xs sm:text-sm transition-all hover:border-gray-400 hover:text-gray-900 whitespace-nowrap ${activeTab === tab.id
                     ? 'opacity-100 border-gray-900 text-gray-900 font-medium'
                     : 'opacity-80 border-gray-300 text-gray-600'
-                }`}
+                  }`}
               >
                 {tab.label}
               </button>
             ))}
           </div>
-        </div>
 
-        {/* Tab Buttons - Mobile */}
-        <div className="flex lg:hidden justify-center gap-1.5 sm:gap-2 mb-6" role="tablist">
-          {dashboardTabs.map((tab) => (
-            <button
-              key={`mobile-${tab.id}`}
-              aria-selected={activeTab === tab.id}
-              role="tab"
-              onClick={() => setActiveTab(tab.id)}
-              className={`py-1.5 px-2.5 sm:py-2 sm:px-5 border rounded-full bg-white text-xs sm:text-sm transition-all hover:border-gray-400 hover:text-gray-900 whitespace-nowrap ${
-                activeTab === tab.id
-                  ? 'opacity-100 border-gray-900 text-gray-900 font-medium'
-                  : 'opacity-80 border-gray-300 text-gray-600'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="relative flex flex-col gap-6 md:gap-8 items-center">
-          {/* Video Container */}
-          <div className="w-full aspect-video overflow-hidden rounded-xl md:rounded-2xl bg-black">
+          <div className="relative flex flex-col gap-6 md:gap-8 items-center">
+            {/* Video Container */}
+            <div className="w-full aspect-video overflow-hidden rounded-xl md:rounded-2xl bg-black">
               <div className="relative w-full max-w-full h-full group">
                 <video
                   key={activeTab}
@@ -554,9 +554,9 @@ export default function HeroSection() {
                   height="100%"
                   width="100%"
                   loop
-                  autoPlay
                   muted={isMuted}
                   playsInline
+                  preload="none"
                   src={dashboardTabs.find((tab) => tab.id === activeTab)?.video}
                   onTimeUpdate={handleTimeUpdate}
                   onLoadedMetadata={handleLoadedMetadata}
@@ -690,10 +690,11 @@ export default function HeroSection() {
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </LazySection>
 
       {/* Divider */}
       <div className="mx-auto max-w-5xl px-6 lg:px-0">
@@ -705,137 +706,137 @@ export default function HeroSection() {
 
         {/* Borrow Across DEXs Section - Lazy loaded */}
         <LazySection minHeight="400px">
-        <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12" style={{ opacity: 1, transform: 'none' }}>
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
-              Borrow Across DEXs
-            </h2>
-            <p className="text-sm md:text-base text-gray-600">
-              We integrate with the leading decentralized exchanges in DeFi.
-            </p>
-          </div>
-          <div className="flex flex-1 items-stretch gap-2 flex-col sm:flex-row">
-            <div className="grid w-full flex-1 grid-cols-3 gap-2">
-              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
-                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#111727]"></div>
-              </div>
-              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
-                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#FFFFFF]"></div>
-              </div>
-              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
-                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#000827]"></div>
-              </div>
-              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
-                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[linear-gradient(45deg,#FC6901_0%,#F3B900_100%)]"></div>
-              </div>
-              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
-                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#000000]"></div>
-              </div>
-              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
-                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#F5F5F5]"></div>
-              </div>
+          <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12" style={{ opacity: 1, transform: 'none' }}>
+            <div className="flex flex-col gap-2">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+                Borrow Across DEXs
+              </h2>
+              <p className="text-sm md:text-base text-gray-600">
+                We integrate with the leading decentralized exchanges in DeFi.
+              </p>
             </div>
-            <div className="flex w-full flex-1">
-              <div className="flex w-full flex-col items-center justify-center bg-gradient-to-b from-blue-50 to-blue-100 p-2 text-center rounded-lg h-[150px] sm:h-auto">
-                <div className="flex size-full flex-col items-center justify-center bg-white border border-blue-200 rounded-md">
-                  <h4 className="text-base font-medium leading-normal text-blue-600 md:text-lg">
-                    <div className="flex items-center text-[32px] font-bold text-gray-900 md:text-[48px]">
-                      12+
-                    </div>
-                    <span>DEX Integrations</span>
-                  </h4>
+            <div className="flex flex-1 items-stretch gap-2 flex-col sm:flex-row">
+              <div className="grid w-full flex-1 grid-cols-3 gap-2">
+                <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                  <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#111727]"></div>
+                </div>
+                <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                  <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#FFFFFF]"></div>
+                </div>
+                <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                  <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#000827]"></div>
+                </div>
+                <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                  <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[linear-gradient(45deg,#FC6901_0%,#F3B900_100%)]"></div>
+                </div>
+                <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                  <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#000000]"></div>
+                </div>
+                <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                  <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#F5F5F5]"></div>
+                </div>
+              </div>
+              <div className="flex w-full flex-1">
+                <div className="flex w-full flex-col items-center justify-center bg-gradient-to-b from-blue-50 to-blue-100 p-2 text-center rounded-lg h-[150px] sm:h-auto">
+                  <div className="flex size-full flex-col items-center justify-center bg-white border border-blue-200 rounded-md">
+                    <h4 className="text-base font-medium leading-normal text-blue-600 md:text-lg">
+                      <div className="flex items-center text-[32px] font-bold text-gray-900 md:text-[48px]">
+                        12+
+                      </div>
+                      <span>DEX Integrations</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              <div className="grid w-full flex-1 grid-cols-3 gap-2">
+                <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                  <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#7D00FF]"></div>
+                </div>
+                <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                  <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#000000]"></div>
+                </div>
+                <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                  <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#F3EFCD]"></div>
+                </div>
+                <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                  <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#061121]"></div>
+                </div>
+                <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                  <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[linear-gradient(90deg,#E35930_-6.83%,#E84125_100%)]"></div>
+                </div>
+                <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
+                  <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#F1F7FF]"></div>
                 </div>
               </div>
             </div>
-            <div className="grid w-full flex-1 grid-cols-3 gap-2">
-              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
-                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#7D00FF]"></div>
-              </div>
-              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
-                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#000000]"></div>
-              </div>
-              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
-                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#F3EFCD]"></div>
-              </div>
-              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
-                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#061121]"></div>
-              </div>
-              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
-                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[linear-gradient(90deg,#E35930_-6.83%,#E84125_100%)]"></div>
-              </div>
-              <div className="aspect-square border border-gray-200 bg-white p-1 rounded-lg md:p-1.5">
-                <div className="flex size-full items-center justify-center border border-gray-200 rounded-md [&>svg]:size-3/5 bg-[#F1F7FF]"></div>
-              </div>
-            </div>
           </div>
-        </div>
         </LazySection>
 
         {/* 500+ Supported Pools Section - Lazy loaded */}
         <LazySection minHeight="600px">
-        <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12 border-t border-gray-100" style={{ opacity: 1, transform: 'none' }}>
-          <div className="flex flex-col gap-6">
-            <div className="flex max-w-[600px] flex-col gap-2">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">500+ Supported Pools</h2>
-              <p className="text-sm md:text-base text-gray-600">
-                Access liquidity from 500+ pools across all integrated DEXs.
-              </p>
+          <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12 border-t border-gray-100" style={{ opacity: 1, transform: 'none' }}>
+            <div className="flex flex-col gap-6">
+              <div className="flex max-w-[600px] flex-col gap-2">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">500+ Supported Pools</h2>
+                <p className="text-sm md:text-base text-gray-600">
+                  Access liquidity from 500+ pools across all integrated DEXs.
+                </p>
+              </div>
             </div>
-          </div>
 
-          {/* LP Pool Ticker */}
-          <div className="w-full flex flex-col gap-4 overflow-hidden py-6 [mask-image:linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)]">
-            {/* Row 1 - scroll left */}
-            <div className="flex overflow-hidden">
-              <div className="flex gap-4 animate-scroll-left">
-                {pools.slice(0, 6).map((pool, i) => (
-                  <PoolCard key={`r1-a-${i}`} pool={pool} />
-                ))}
-                {pools.slice(0, 6).map((pool, i) => (
-                  <PoolCard key={`r1-b-${i}`} pool={pool} />
-                ))}
+            {/* LP Pool Ticker */}
+            <div className="w-full flex flex-col gap-4 overflow-hidden py-6 [mask-image:linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)]">
+              {/* Row 1 - scroll left */}
+              <div className="flex overflow-hidden">
+                <div className="flex gap-4 animate-scroll-left">
+                  {pools.slice(0, 6).map((pool, i) => (
+                    <PoolCard key={`r1-a-${i}`} pool={pool} />
+                  ))}
+                  {pools.slice(0, 6).map((pool, i) => (
+                    <PoolCard key={`r1-b-${i}`} pool={pool} />
+                  ))}
+                </div>
               </div>
-            </div>
-            {/* Row 2 - scroll right */}
-            <div className="flex overflow-hidden">
-              <div className="flex gap-4 animate-scroll-right">
-                {pools.slice(6, 12).map((pool, i) => (
-                  <PoolCard key={`r2-a-${i}`} pool={pool} />
-                ))}
-                {pools.slice(6, 12).map((pool, i) => (
-                  <PoolCard key={`r2-b-${i}`} pool={pool} />
-                ))}
+              {/* Row 2 - scroll right */}
+              <div className="flex overflow-hidden">
+                <div className="flex gap-4 animate-scroll-right">
+                  {pools.slice(6, 12).map((pool, i) => (
+                    <PoolCard key={`r2-a-${i}`} pool={pool} />
+                  ))}
+                  {pools.slice(6, 12).map((pool, i) => (
+                    <PoolCard key={`r2-b-${i}`} pool={pool} />
+                  ))}
+                </div>
               </div>
-            </div>
-            {/* Row 3 - scroll left */}
-            <div className="flex overflow-hidden">
-              <div className="flex gap-4 animate-scroll-left-slow">
-                {pools.slice(12, 18).map((pool, i) => (
-                  <PoolCard key={`r3-a-${i}`} pool={pool} />
-                ))}
-                {pools.slice(12, 18).map((pool, i) => (
-                  <PoolCard key={`r3-b-${i}`} pool={pool} />
-                ))}
+              {/* Row 3 - scroll left */}
+              <div className="flex overflow-hidden">
+                <div className="flex gap-4 animate-scroll-left-slow">
+                  {pools.slice(12, 18).map((pool, i) => (
+                    <PoolCard key={`r3-a-${i}`} pool={pool} />
+                  ))}
+                  {pools.slice(12, 18).map((pool, i) => (
+                    <PoolCard key={`r3-b-${i}`} pool={pool} />
+                  ))}
+                </div>
               </div>
-            </div>
-            {/* Row 4 - scroll right */}
-            <div className="flex overflow-hidden">
-              <div className="flex gap-4 animate-scroll-right-slow">
-                {pools.slice(18, 24).map((pool, i) => (
-                  <PoolCard key={`r4-a-${i}`} pool={pool} />
-                ))}
-                {pools.slice(18, 24).map((pool, i) => (
-                  <PoolCard key={`r4-b-${i}`} pool={pool} />
-                ))}
+              {/* Row 4 - scroll right */}
+              <div className="flex overflow-hidden">
+                <div className="flex gap-4 animate-scroll-right-slow">
+                  {pools.slice(18, 24).map((pool, i) => (
+                    <PoolCard key={`r4-a-${i}`} pool={pool} />
+                  ))}
+                  {pools.slice(18, 24).map((pool, i) => (
+                    <PoolCard key={`r4-b-${i}`} pool={pool} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </LazySection>
 
         {/* Get More Section - Lazy loaded */}
         <LazySection minHeight="600px">
-        <div className="pt-16 md:pt-20 border-t border-gray-100">
+          <div className="pt-16 md:pt-20 border-t border-gray-100">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
@@ -956,445 +957,446 @@ export default function HeroSection() {
 
         {/* Borrow with Confidence Section - Lazy loaded */}
         <LazySection minHeight="600px">
-        <div className="pt-16 md:pt-20 border-t border-gray-100">
-          <div className="flex flex-col gap-6">
-            <div className="flex max-w-[600px] flex-col gap-2">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
-                Borrow with Confidence
-              </h2>
-              <p className="text-sm md:text-base text-gray-600">
-                Every component is designed with trust and safety as the foundation.
-              </p>
+          <div className="pt-16 md:pt-20 border-t border-gray-100">
+            <div className="flex flex-col gap-6">
+              <div className="flex max-w-[600px] flex-col gap-2">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+                  Borrow with Confidence
+                </h2>
+                <p className="text-sm md:text-base text-gray-600">
+                  Every component is designed with trust and safety as the foundation.
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col lg:flex-row justify-start gap-y-10 gap-x-5 mt-10 md:mt-16">
-            {/* Card 1 - LP-aware risk models - Concentric Rings */}
-            <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-              <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-gray-50">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Concentric rings */}
-                  <div className="relative w-[180px] h-[180px]">
-                    {/* Outer ring */}
-                    <div className="absolute inset-0 rounded-full border-2 border-blue-200 animate-spin-slow"></div>
-                    {/* Middle ring */}
-                    <div className="absolute inset-[20px] rounded-full border-2 border-blue-300 animate-spin-slow-reverse"></div>
-                    {/* Inner ring */}
-                    <div className="absolute inset-[40px] rounded-full border-2 border-blue-400 animate-spin-slow"></div>
-                    {/* Center shield icon */}
-                    <div className="absolute inset-[55px] rounded-full bg-blue-500 flex items-center justify-center animate-pulse-soft">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-white">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4"></path>
+            <div className="flex flex-col lg:flex-row justify-start gap-y-10 gap-x-5 mt-10 md:mt-16">
+              {/* Card 1 - LP-aware risk models - Concentric Rings */}
+              <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
+                <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-gray-50">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    {/* Concentric rings */}
+                    <div className="relative w-[180px] h-[180px]">
+                      {/* Outer ring */}
+                      <div className="absolute inset-0 rounded-full border-2 border-blue-200 animate-spin-slow"></div>
+                      {/* Middle ring */}
+                      <div className="absolute inset-[20px] rounded-full border-2 border-blue-300 animate-spin-slow-reverse"></div>
+                      {/* Inner ring */}
+                      <div className="absolute inset-[40px] rounded-full border-2 border-blue-400 animate-spin-slow"></div>
+                      {/* Center shield icon */}
+                      <div className="absolute inset-[55px] rounded-full bg-blue-500 flex items-center justify-center animate-pulse-soft">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-white">
+                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Stats at bottom */}
+                  <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3 px-4">
+                    <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
+                      <span className="text-[10px] text-gray-500 uppercase tracking-wider">Pool Depth</span>
+                      <span className="text-sm font-semibold text-blue-600">$24.5M</span>
+                    </div>
+                    <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
+                      <span className="text-[10px] text-gray-500 uppercase tracking-wider">Volatility</span>
+                      <span className="text-sm font-semibold text-green-600">Low</span>
+                    </div>
+                    <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
+                      <span className="text-[10px] text-gray-500 uppercase tracking-wider">Oracle</span>
+                      <span className="text-sm font-semibold text-blue-600">98/100</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-2xl font-semibold mt-5 text-center text-gray-900">LP-aware risk models</div>
+                <div className="text-base text-gray-600 text-center mt-2">Track pool composition, volatility, and oracle quality.</div>
+              </div>
+
+              {/* Card 2 - Price-range aware oracles - Chart with range bands */}
+              <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
+                <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-gray-50">
+                  <div className="absolute top-[40px] left-1/2 -translate-x-1/2 w-[260px]">
+                    {/* LIVE badge */}
+                    <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-blue-100 border border-blue-200 w-fit mx-auto mb-3">
+                      <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
+                      <span className="text-[10px] font-semibold text-blue-700 uppercase tracking-wider">Live</span>
+                    </div>
+                    {/* Price display */}
+                    <div className="text-center mb-3">
+                      <span className="text-3xl font-bold text-blue-600 animate-pulse-soft">$1,847.52</span>
+                      <div className="text-xs text-gray-500 mt-1">ETH / USD</div>
+                    </div>
+                    {/* Chart area */}
+                    <div className="relative w-full h-[100px] bg-white rounded-lg border border-gray-200 p-2">
+                      {/* Safe range band */}
+                      <div className="absolute top-[30%] left-2 right-2 h-[40%] bg-blue-50 border-y border-blue-200"></div>
+                      {/* Stylized line chart */}
+                      <svg className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)]" viewBox="0 0 300 80" preserveAspectRatio="none">
+                        <path className="animate-draw-line" d="M0,60 Q30,50 60,55 T120,35 T180,40 T240,25 T300,30" fill="none" stroke="#3b82f6" strokeWidth="2" />
+                        {/* Current price dot */}
+                        <circle cx="240" cy="25" r="5" fill="#3b82f6" className="animate-pulse" />
+                        <circle cx="240" cy="25" r="2" fill="white" />
                       </svg>
                     </div>
+                    {/* Range labels */}
+                    <div className="flex justify-between w-full mt-2 px-1">
+                      <div className="text-xs text-gray-500">$1,720</div>
+                      <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-green-100">
+                        <span className="text-xs text-green-700 font-medium">In Range</span>
+                      </div>
+                      <div className="text-xs text-gray-500">$1,950</div>
+                    </div>
                   </div>
                 </div>
-                {/* Stats at bottom */}
-                <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3 px-4">
-                  <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
-                    <span className="text-[10px] text-gray-500 uppercase tracking-wider">Pool Depth</span>
-                    <span className="text-sm font-semibold text-blue-600">$24.5M</span>
-                  </div>
-                  <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
-                    <span className="text-[10px] text-gray-500 uppercase tracking-wider">Volatility</span>
-                    <span className="text-sm font-semibold text-green-600">Low</span>
-                  </div>
-                  <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
-                    <span className="text-[10px] text-gray-500 uppercase tracking-wider">Oracle</span>
-                    <span className="text-sm font-semibold text-blue-600">98/100</span>
-                  </div>
-                </div>
+                <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Price-range aware oracles</div>
+                <div className="text-base text-gray-600 text-center mt-2">Industry-leading security protects your investments.</div>
               </div>
-              <div className="text-2xl font-semibold mt-5 text-center text-gray-900">LP-aware risk models</div>
-              <div className="text-base text-gray-600 text-center mt-2">Track pool composition, volatility, and oracle quality.</div>
-            </div>
 
-            {/* Card 2 - Price-range aware oracles - Chart with range bands */}
-            <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-              <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-gray-50">
-                <div className="absolute top-[40px] left-1/2 -translate-x-1/2 w-[260px]">
-                  {/* LIVE badge */}
-                  <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-blue-100 border border-blue-200 w-fit mx-auto mb-3">
-                    <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
-                    <span className="text-[10px] font-semibold text-blue-700 uppercase tracking-wider">Live</span>
-                  </div>
-                  {/* Price display */}
-                  <div className="text-center mb-3">
-                    <span className="text-3xl font-bold text-blue-600 animate-pulse-soft">$1,847.52</span>
-                    <div className="text-xs text-gray-500 mt-1">ETH / USD</div>
-                  </div>
-                  {/* Chart area */}
-                  <div className="relative w-full h-[100px] bg-white rounded-lg border border-gray-200 p-2">
-                    {/* Safe range band */}
-                    <div className="absolute top-[30%] left-2 right-2 h-[40%] bg-blue-50 border-y border-blue-200"></div>
-                    {/* Stylized line chart */}
-                    <svg className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)]" viewBox="0 0 300 80" preserveAspectRatio="none">
-                      <path className="animate-draw-line" d="M0,60 Q30,50 60,55 T120,35 T180,40 T240,25 T300,30" fill="none" stroke="#3b82f6" strokeWidth="2" />
-                      {/* Current price dot */}
-                      <circle cx="240" cy="25" r="5" fill="#3b82f6" className="animate-pulse" />
-                      <circle cx="240" cy="25" r="2" fill="white" />
-                    </svg>
-                  </div>
-                  {/* Range labels */}
-                  <div className="flex justify-between w-full mt-2 px-1">
-                    <div className="text-xs text-gray-500">$1,720</div>
-                    <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-green-100">
-                      <span className="text-xs text-green-700 font-medium">In Range</span>
+              {/* Card 3 - Per-position health checks - Circular gauge */}
+              <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
+                <div className="relative overflow-hidden rounded-[20px] w-full h-[340px] bg-gray-50">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    {/* Circular gauge */}
+                    <div className="relative w-[160px] h-[160px]">
+                      <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                        {/* Background arc */}
+                        <circle cx="50" cy="50" r="42" fill="none" stroke="#e5e7eb" strokeWidth="8" strokeLinecap="round" strokeDasharray="198 66" />
+                        {/* Blue arc - 92% filled */}
+                        <circle cx="50" cy="50" r="42" fill="none" stroke="#3b82f6" strokeWidth="8" strokeLinecap="round" strokeDasharray="182 82" />
+                      </svg>
+                      {/* Center content */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <span className="text-4xl font-bold text-blue-600 animate-pulse-soft">92%</span>
+                        <span className="text-xs text-green-600 font-medium">Healthy</span>
+                      </div>
                     </div>
-                    <div className="text-xs text-gray-500">$1,950</div>
-                  </div>
-                </div>
-              </div>
-              <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Price-range aware oracles</div>
-              <div className="text-base text-gray-600 text-center mt-2">Industry-leading security protects your investments.</div>
-            </div>
-
-            {/* Card 3 - Per-position health checks - Circular gauge */}
-            <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-              <div className="relative overflow-hidden rounded-[20px] w-full h-[340px] bg-gray-50">
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  {/* Circular gauge */}
-                  <div className="relative w-[160px] h-[160px]">
-                    <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-                      {/* Background arc */}
-                      <circle cx="50" cy="50" r="42" fill="none" stroke="#e5e7eb" strokeWidth="8" strokeLinecap="round" strokeDasharray="198 66" />
-                      {/* Blue arc - 92% filled */}
-                      <circle cx="50" cy="50" r="42" fill="none" stroke="#3b82f6" strokeWidth="8" strokeLinecap="round" strokeDasharray="182 82" />
-                    </svg>
-                    {/* Center content */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <span className="text-4xl font-bold text-blue-600 animate-pulse-soft">92%</span>
-                      <span className="text-xs text-green-600 font-medium">Healthy</span>
-                    </div>
-                  </div>
-                  {/* Status indicators */}
-                  <div className="flex gap-3 mt-6">
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200">
-                      <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                      <span className="text-xs text-gray-700">LTV 75%</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200">
-                      <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                      <span className="text-xs text-gray-700">Buffer 42%</span>
+                    {/* Status indicators */}
+                    <div className="flex gap-3 mt-6">
+                      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200">
+                        <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                        <span className="text-xs text-gray-700">LTV 75%</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200">
+                        <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                        <span className="text-xs text-gray-700">Buffer 42%</span>
+                      </div>
                     </div>
                   </div>
                 </div>
+                <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Per-position health checks</div>
+                <div className="text-base text-gray-600 text-center mt-2">Dynamically adjust loan-to-value ratios and liquidation thresholds.</div>
               </div>
-              <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Per-position health checks</div>
-              <div className="text-base text-gray-600 text-center mt-2">Dynamically adjust loan-to-value ratios and liquidation thresholds.</div>
             </div>
           </div>
-        </div>
         </LazySection>
 
         {/* About Aave v4 Section - Lazy loaded */}
         <LazySection minHeight="300px">
-        <div className="flex flex-col md:flex-row gap-8 md:gap-16 pt-16 md:pt-20 items-center border-t border-gray-100">
-          <div className="flex-1 space-y-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
-              More about Aave v4
-            </h2>
-            <p className="text-sm md:text-base text-gray-600 max-w-lg">
-              Aave v4 is a next-generation DeFi lending protocol featuring a <DeFiTerm term="hub">Hub</DeFiTerm>-and-<DeFiTerm term="spoke">Spoke</DeFiTerm> architecture that enables cross-chain liquidity and modular risk management. Amm Market leverages Aave v4&apos;s infrastructure to provide secure, permissionless borrowing against <DeFiTerm term="lp-position">LP positions</DeFiTerm>. All loan terms, <DeFiTerm term="liquidation">liquidations</DeFiTerm>, and interest rates are enforced on-chain through battle-tested smart contracts and transparent <DeFiTerm term="oracle">oracle</DeFiTerm> systems.
-            </p>
-            <a
-              href="https://docs.aave.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
-            >
-              Learn more
-            </a>
-          </div>
-          <div className="flex-shrink-0">
-            <div className="w-[300px] h-[200px] md:w-[400px] md:h-[250px] rounded-2xl border border-gray-200 flex items-center justify-center bg-white">
-              <div className="flex items-center gap-3">
-                <svg width="48" height="48" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0z" fill="#B6509E" />
-                  <path d="M186.7 168.5c-7.5 0-14.2-4.3-17.4-11l-25.9-56.8c-1.4-3.1-4.5-5.1-7.9-5.1h-14.9c-3.4 0-6.5 2-7.9 5.1l-25.9 56.8c-3.2 6.7-9.9 11-17.4 11-10.6 0-19.2-8.6-19.2-19.2 0-2.9.7-5.8 2-8.4l38.3-83.8c5.7-12.5 18.2-20.5 32-20.5h23.2c13.8 0 26.3 8 32 20.5l38.3 83.8c1.3 2.6 2 5.5 2 8.4 0 10.6-8.6 19.2-19.2 19.2z" fill="white" />
-                </svg>
-                <span className="text-2xl md:text-3xl font-semibold text-gray-900">Aave</span>
+          <div className="flex flex-col md:flex-row gap-8 md:gap-16 pt-16 md:pt-20 items-center border-t border-gray-100">
+            <div className="flex-1 space-y-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+                More about Aave v4
+              </h2>
+              <p className="text-sm md:text-base text-gray-600 max-w-lg">
+                Aave v4 is a next-generation DeFi lending protocol featuring a <DeFiTerm term="hub">Hub</DeFiTerm>-and-<DeFiTerm term="spoke">Spoke</DeFiTerm> architecture that enables cross-chain liquidity and modular risk management. Amm Market leverages Aave v4&apos;s infrastructure to provide secure, permissionless borrowing against <DeFiTerm term="lp-position">LP positions</DeFiTerm>. All loan terms, <DeFiTerm term="liquidation">liquidations</DeFiTerm>, and interest rates are enforced on-chain through battle-tested smart contracts and transparent <DeFiTerm term="oracle">oracle</DeFiTerm> systems.
+              </p>
+              <a
+                href="https://docs.aave.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
+              >
+                Learn more
+              </a>
+            </div>
+            <div className="flex-shrink-0">
+              <div className="w-[300px] h-[200px] md:w-[400px] md:h-[250px] rounded-2xl border border-gray-200 flex items-center justify-center bg-white">
+                <div className="flex items-center gap-3">
+                  <svg width="48" height="48" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0z" fill="#B6509E" />
+                    <path d="M186.7 168.5c-7.5 0-14.2-4.3-17.4-11l-25.9-56.8c-1.4-3.1-4.5-5.1-7.9-5.1h-14.9c-3.4 0-6.5 2-7.9 5.1l-25.9 56.8c-3.2 6.7-9.9 11-17.4 11-10.6 0-19.2-8.6-19.2-19.2 0-2.9.7-5.8 2-8.4l38.3-83.8c5.7-12.5 18.2-20.5 32-20.5h23.2c13.8 0 26.3 8 32 20.5l38.3 83.8c1.3 2.6 2 5.5 2 8.4 0 10.6-8.6 19.2-19.2 19.2z" fill="white" />
+                  </svg>
+                  <span className="text-2xl md:text-3xl font-semibold text-gray-900">Aave</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </LazySection>
 
         {/* Testimonial Section - Lazy loaded */}
         <LazySection minHeight="400px">
-        <div className="py-16 md:py-20 border-t border-gray-100">
-          <div className="flex flex-col lg:flex-row">
-            {/* Left: Protocol list */}
-            <div className="lg:w-2/5 lg:border-r border-gray-200 lg:pr-8">
-              {testimonials.map((t, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => handleTestimonialChange(idx)}
-                  onKeyDown={(e) => e.key === 'Enter' && handleTestimonialChange(idx)}
-                  className="cursor-pointer py-4 border-b border-gray-100 last:border-b-0"
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`View testimonial from ${t.author}`}
-                  aria-selected={currentTestimonial === idx}
-                >
-                  <div className="flex justify-between items-center">
-                    <span className={`text-base transition-all duration-300 ${currentTestimonial === idx ? "font-semibold text-gray-900" : "text-gray-500"}`}>
-                      {t.protocol}
-                    </span>
-                    <span className={`text-sm transition-all duration-300 ${currentTestimonial === idx ? "text-blue-600 font-medium" : "text-gray-400"}`}>
-                      {String(idx + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <div className="h-0.5 mt-3 w-full bg-gray-200 overflow-hidden">
-                    <div
-                      className={`h-full bg-blue-600 transition-none ${currentTestimonial === idx ? '' : 'w-0'}`}
-                      style={{ width: currentTestimonial === idx ? `${progress}%` : '0%' }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Right: Quote content */}
-            <div className="lg:w-3/5 lg:pl-12 pt-8 lg:pt-0 flex flex-col">
-              <div className={`min-h-[200px] md:min-h-[180px] transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-                <blockquote className="text-xl md:text-2xl lg:text-3xl text-gray-900 leading-relaxed">
-                  &ldquo;{testimonial.quote} <span className="font-semibold">{testimonial.highlight}</span>&rdquo;
-                </blockquote>
-              </div>
-              <div className={`flex items-center gap-3 mt-8 transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-                <Image
-                  src={testimonial.image}
-                  alt={testimonial.author}
-                  width={48}
-                  height={48}
-                  className="rounded-full object-cover"
-                />
-                <div>
-                  <p className="font-semibold text-gray-900">{testimonial.author}</p>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider">{testimonial.title}</p>
-                </div>
-              </div>
-              {/* Pagination dots */}
-              <div className="flex gap-2 mt-8 justify-end">
-                {testimonials.map((_, idx) => (
-                  <button
+          <div className="py-16 md:py-20 border-t border-gray-100">
+            <div className="flex flex-col lg:flex-row">
+              {/* Left: Protocol list */}
+              <div className="lg:w-2/5 lg:border-r border-gray-200 lg:pr-8">
+                {testimonials.map((t, idx) => (
+                  <div
                     key={idx}
                     onClick={() => handleTestimonialChange(idx)}
-                    className={`w-3 h-3 transition-colors duration-300 ${currentTestimonial === idx ? 'bg-blue-600' : 'bg-gray-300'}`}
-                    aria-label={`Go to testimonial ${idx + 1}`}
-                  />
+                    onKeyDown={(e) => e.key === 'Enter' && handleTestimonialChange(idx)}
+                    className="cursor-pointer py-4 border-b border-gray-100 last:border-b-0"
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`View testimonial from ${t.author}`}
+                    aria-selected={currentTestimonial === idx}
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className={`text-base transition-all duration-300 ${currentTestimonial === idx ? "font-semibold text-gray-900" : "text-gray-500"}`}>
+                        {t.protocol}
+                      </span>
+                      <span className={`text-sm transition-all duration-300 ${currentTestimonial === idx ? "text-blue-600 font-medium" : "text-gray-400"}`}>
+                        {String(idx + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                    <div className="h-0.5 mt-3 w-full bg-gray-200 overflow-hidden">
+                      <div
+                        className={`h-full bg-blue-600 transition-none ${currentTestimonial === idx ? '' : 'w-0'}`}
+                        style={{ width: currentTestimonial === idx ? `${progress}%` : '0%' }}
+                      />
+                    </div>
+                  </div>
                 ))}
+              </div>
+
+              {/* Right: Quote content */}
+              <div className="lg:w-3/5 lg:pl-12 pt-8 lg:pt-0 flex flex-col">
+                <div className={`min-h-[200px] md:min-h-[180px] transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+                  <blockquote className="text-xl md:text-2xl lg:text-3xl text-gray-900 leading-relaxed">
+                    &ldquo;{testimonial.quote} <span className="font-semibold">{testimonial.highlight}</span>&rdquo;
+                  </blockquote>
+                </div>
+                <div className={`flex items-center gap-3 mt-8 transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.author}
+                    width={48}
+                    height={48}
+                    className="rounded-full object-cover"
+                    loading="lazy"
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-900">{testimonial.author}</p>
+                    <p className="text-xs text-gray-500 uppercase tracking-wider">{testimonial.title}</p>
+                  </div>
+                </div>
+                {/* Pagination dots */}
+                <div className="flex gap-2 mt-8 justify-end">
+                  {testimonials.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleTestimonialChange(idx)}
+                      className={`w-3 h-3 transition-colors duration-300 ${currentTestimonial === idx ? 'bg-blue-600' : 'bg-gray-300'}`}
+                      aria-label={`Go to testimonial ${idx + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </LazySection>
 
         {/* FAQ Section - Lazy loaded */}
         <LazySection minHeight="500px">
-        <div className="flex flex-col py-16 md:py-20 gap-8 md:flex-row md:gap-12 border-t border-gray-100" style={{ opacity: 1, transform: 'none' }}>
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 md:pt-8 md:flex-shrink-0 md:w-[300px]">
-            Frequently asked questions.
-          </h3>
-          <div className="md:w-[600px] md:flex-shrink-0">
-            <Accordion type="single" collapsible orientation="vertical" className="w-full">
-              <AccordionItem value="item-1" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  Do I have to sell or exit my LP position?
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
-                  >
-                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
-                  >
-                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  No. Your <DeFiTerm term="lp">LP</DeFiTerm> remains in the pool and continues earning trading fees. Amm Market uses your LP shares as <DeFiTerm term="collateral">collateral</DeFiTerm> without removing liquidity.
-                </AccordionContent>
-              </AccordionItem>
+          <div className="flex flex-col py-16 md:py-20 gap-8 md:flex-row md:gap-12 border-t border-gray-100" style={{ opacity: 1, transform: 'none' }}>
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 md:pt-8 md:flex-shrink-0 md:w-[300px]">
+              Frequently asked questions.
+            </h3>
+            <div className="md:w-[600px] md:flex-shrink-0">
+              <Accordion type="single" collapsible orientation="vertical" className="w-full">
+                <AccordionItem value="item-1" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                  <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                    Do I have to sell or exit my LP position?
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      color="currentColor"
+                      className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                    >
+                      <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      color="currentColor"
+                      className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                    >
+                      <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    </svg>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                    No. Your <DeFiTerm term="lp">LP</DeFiTerm> remains in the pool and continues earning trading fees. Amm Market uses your LP shares as <DeFiTerm term="collateral">collateral</DeFiTerm> without removing liquidity.
+                  </AccordionContent>
+                </AccordionItem>
 
-              <AccordionItem value="item-2" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  How much can I borrow?
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
-                  >
-                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
-                  >
-                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Up to 70% of your LP&apos;s value, depending on pool type, volatility, and <DeFiTerm term="oracle">oracle</DeFiTerm> confidence. No minimum amounts—$10M in <DeFiTerm term="collateral">collateral</DeFiTerm> means up to $7M available to borrow.
-                </AccordionContent>
-              </AccordionItem>
+                <AccordionItem value="item-2" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                  <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                    How much can I borrow?
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      color="currentColor"
+                      className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                    >
+                      <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      color="currentColor"
+                      className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                    >
+                      <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    </svg>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                    Up to 70% of your LP&apos;s value, depending on pool type, volatility, and <DeFiTerm term="oracle">oracle</DeFiTerm> confidence. No minimum amounts—$10M in <DeFiTerm term="collateral">collateral</DeFiTerm> means up to $7M available to borrow.
+                  </AccordionContent>
+                </AccordionItem>
 
-              <AccordionItem value="item-3" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  What happens if my LP value drops?
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
-                  >
-                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
-                  >
-                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  If your <DeFiTerm term="ltv">loan-to-value ratio</DeFiTerm> exceeds the <DeFiTerm term="liquidation-threshold">liquidation threshold</DeFiTerm>, part of your position may be <DeFiTerm term="liquidation">liquidated</DeFiTerm> to maintain system solvency.
-                </AccordionContent>
-              </AccordionItem>
+                <AccordionItem value="item-3" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                  <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                    What happens if my LP value drops?
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      color="currentColor"
+                      className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                    >
+                      <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      color="currentColor"
+                      className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                    >
+                      <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    </svg>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                    If your <DeFiTerm term="ltv">loan-to-value ratio</DeFiTerm> exceeds the <DeFiTerm term="liquidation-threshold">liquidation threshold</DeFiTerm>, part of your position may be <DeFiTerm term="liquidation">liquidated</DeFiTerm> to maintain system solvency.
+                  </AccordionContent>
+                </AccordionItem>
 
-              <AccordionItem value="item-4" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  Is my risk isolated?
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
-                  >
-                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
-                  >
-                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Yes. Each <DeFiTerm term="lp-position">LP position</DeFiTerm> is managed independently with isolated risk. System-wide safety is enforced through Aave v4&apos;s <DeFiTerm term="hub">Hub</DeFiTerm>-and-<DeFiTerm term="spoke">Spoke</DeFiTerm> architecture.
-                </AccordionContent>
-              </AccordionItem>
+                <AccordionItem value="item-4" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                  <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                    Is my risk isolated?
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      color="currentColor"
+                      className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                    >
+                      <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      color="currentColor"
+                      className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                    >
+                      <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    </svg>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                    Yes. Each <DeFiTerm term="lp-position">LP position</DeFiTerm> is managed independently with isolated risk. System-wide safety is enforced through Aave v4&apos;s <DeFiTerm term="hub">Hub</DeFiTerm>-and-<DeFiTerm term="spoke">Spoke</DeFiTerm> architecture.
+                  </AccordionContent>
+                </AccordionItem>
 
-              <AccordionItem value="item-5" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
-                  Can I repay early or close my position?
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
-                  >
-                    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    color="currentColor"
-                    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
-                  >
-                    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                  </svg>
-                </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
-                  Yes. <DeFiTerm term="repay">Repay</DeFiTerm> anytime, reduce your <DeFiTerm term="borrow">borrow</DeFiTerm>, or <DeFiTerm term="withdraw">withdraw</DeFiTerm> your LP once debt is cleared.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+                <AccordionItem value="item-5" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
+                  <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                    Can I repay early or close my position?
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      color="currentColor"
+                      className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+                    >
+                      <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      color="currentColor"
+                      className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+                    >
+                      <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    </svg>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                    Yes. <DeFiTerm term="repay">Repay</DeFiTerm> anytime, reduce your <DeFiTerm term="borrow">borrow</DeFiTerm>, or <DeFiTerm term="withdraw">withdraw</DeFiTerm> your LP once debt is cleared.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
           </div>
-        </div>
         </LazySection>
 
         {/* Final CTA Section - Lazy loaded */}
         <LazySection minHeight="300px">
-        <div className="py-16 md:py-20 border-t border-gray-100">
-          <div className="flex flex-col items-center text-center gap-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
-              Ready to unlock your LP's potential?
-            </h2>
-            <p className="text-sm md:text-base text-gray-600 max-w-lg">
-              Join the waitlist and be first to access LP-backed borrowing on Aave v4.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-3 w-full max-w-md mt-4">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-full border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 bg-gray-900 text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-colors whitespace-nowrap"
-              >
-                Join waitlist
-              </button>
-            </form>
+          <div className="py-16 md:py-20 border-t border-gray-100">
+            <div className="flex flex-col items-center text-center gap-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+                Ready to unlock your LP's potential?
+              </h2>
+              <p className="text-sm md:text-base text-gray-600 max-w-lg">
+                Join the waitlist and be first to access LP-backed borrowing on Aave v4.
+              </p>
+              <form className="flex flex-col sm:flex-row gap-3 w-full max-w-md mt-4">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 px-4 py-3 rounded-full border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+                <button
+                  type="submit"
+                  className="px-6 py-3 bg-gray-900 text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-colors whitespace-nowrap"
+                >
+                  Join waitlist
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
 
-        {/* Disclaimer */}
-        <div className="py-12 md:py-16 border-t border-gray-200">
-          <div className="space-y-4 text-xs text-gray-500">
-            <p>
-              Borrowing against LP tokens involves risk, including liquidation if market conditions move against your position. Amm Market does not custody your funds, rehypothecate LP positions, or alter how your liquidity operates on underlying AMMs. Loan terms, interest rates, and collateral values are enforced on-chain using transparent oracle systems and automated risk parameters. You remain in full control of your position at all times and can repay or adjust collateral whenever you choose. Only borrow amounts you are comfortable maintaining through market volatility.
-            </p>
-            <p>
-              This material is for informational purposes only, and is not (i) an offer, or solicitation of an offer, to invest in, or to buy or sell, any interests or shares, or to participate in any investment or trading strategy, (ii) intended to provide accounting, legal, or tax advice, or investment recommendations or (iii) an official statement of Coinbase. Consult your advisors before making any investment decision. No representation or warranty is made, expressed or implied with respect to the accuracy of the information or to the future performance of any digital asset, financial instrument or other market or economic measure. Coinbase may have financial interests in, or relationships with, some of the entities and/or publications discussed or referenced in the materials. Coinbase does not endorse or approve links or third-party websites that may be provided in the materials.
-            </p>
+          {/* Disclaimer */}
+          <div className="py-12 md:py-16 border-t border-gray-200">
+            <div className="space-y-4 text-xs text-gray-500">
+              <p>
+                Borrowing against LP tokens involves risk, including liquidation if market conditions move against your position. Amm Market does not custody your funds, rehypothecate LP positions, or alter how your liquidity operates on underlying AMMs. Loan terms, interest rates, and collateral values are enforced on-chain using transparent oracle systems and automated risk parameters. You remain in full control of your position at all times and can repay or adjust collateral whenever you choose. Only borrow amounts you are comfortable maintaining through market volatility.
+              </p>
+              <p>
+                This material is for informational purposes only, and is not (i) an offer, or solicitation of an offer, to invest in, or to buy or sell, any interests or shares, or to participate in any investment or trading strategy, (ii) intended to provide accounting, legal, or tax advice, or investment recommendations or (iii) an official statement of Coinbase. Consult your advisors before making any investment decision. No representation or warranty is made, expressed or implied with respect to the accuracy of the information or to the future performance of any digital asset, financial instrument or other market or economic measure. Coinbase may have financial interests in, or relationships with, some of the entities and/or publications discussed or referenced in the materials. Coinbase does not endorse or approve links or third-party websites that may be provided in the materials.
+              </p>
+            </div>
           </div>
-        </div>
         </LazySection>
       </div>
     </section>
