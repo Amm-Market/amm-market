@@ -31,7 +31,7 @@ export default function HomeHero() {
           </h1>
           <div className="text-[16px] sm:text-[18px] md:text-[22px] lg:text-[28px] font-[600] leading-[140%] sm:leading-normal mb-4 sm:mb-6 text-center text-[#A0A9BE]">
             <div className="payload-richtext">
-              <p>Supply liquidity at your favorite DEX & borrow against it here</p>
+              <p>Borrow, earn fees & manage collateral in one place</p>
             </div>
           </div>
           <a
