@@ -135,24 +135,23 @@ export default function BluechipSpokePage() {
             </div>
           </section>
 
-          {/* Supported Asset Tiers */}
+          {/* Supported Dexs */}
           <section>
             <div className="max-w-[650px] mb-6">
-              <h2 className="text-2xl font-bold">Representative Collateral Tiers</h2>
+              <h2 className="text-2xl font-bold">Supported Dexs</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { name: "WETH", ltv: "77.5%", color: "bg-indigo-100 text-indigo-600" },
-                { name: "WBTC", ltv: "70%", color: "bg-orange-100 text-orange-600" },
-                { name: "USDC", ltv: "85%", color: "bg-blue-100 text-blue-600" },
-                { name: "LINK", ltv: "65%", color: "bg-blue-100 text-blue-600" },
-              ].map((asset) => (
-                <div key={asset.name} className="p-4 border border-gray-200 rounded-xl text-center">
-                  <div className={`w-12 h-12 ${asset.color} rounded-full mx-auto mb-2 flex items-center justify-center`}>
-                    <span className="text-sm font-bold">{asset.name.slice(0, 2)}</span>
+                { name: "Uniswap V3", color: "bg-pink-100 text-pink-600" },
+                { name: "Uniswap V4", color: "bg-purple-100 text-purple-600" },
+                { name: "SushiSwap", color: "bg-blue-100 text-blue-600" },
+                { name: "Balancer", color: "bg-gray-100 text-gray-600" },
+              ].map((dex) => (
+                <div key={dex.name} className="p-4 border border-gray-200 rounded-xl text-center">
+                  <div className={`w-12 h-12 ${dex.color} rounded-full mx-auto mb-2 flex items-center justify-center`}>
+                    <span className="text-sm font-bold">{dex.name.slice(0, 2)}</span>
                   </div>
-                  <p className="font-medium text-gray-900">{asset.name}</p>
-                  <p className="text-xs text-gray-500">LTV {asset.ltv}</p>
+                  <p className="font-medium text-gray-900">{dex.name}</p>
                 </div>
               ))}
             </div>
