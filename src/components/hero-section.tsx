@@ -258,53 +258,8 @@ export default function HeroSection() {
   const testimonial = testimonials[currentTestimonial]
   return (
     <section className="pb-12 md:pb-16">
-      {/* Hero Section - Phone Left, Text Right (Coinbase style) */}
+      {/* Trusted by top teams Section */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-4 pb-8 md:pt-6 md:pb-12">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16 lg:min-h-[400px] xl:min-h-[450px]">
-          {/* Left Column - Hero Image */}
-          <div className="w-full lg:w-[55%] mb-10 lg:mb-0 order-2 lg:order-1">
-            <div className="relative w-full max-w-[700px] lg:max-w-[650px] xl:max-w-[700px] mx-auto lg:mx-0">
-              <Image
-                src="/images/Hero__4_.png"
-                alt="Momo app interface"
-                width={1400}
-                height={1400}
-                className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
-                priority
-                fetchPriority="high"
-              />
-            </div>
-          </div>
-
-          {/* Right Column - Text Content */}
-          <div className="w-full lg:w-[45%] text-center lg:text-left order-1 lg:order-2 mb-8 lg:mb-0">
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.15] text-gray-900 mb-4 md:mb-6">
-              <span className="lg:whitespace-nowrap">Borrow up to 80%</span>
-              <br />
-              <span className="lg:whitespace-nowrap">against your LPs</span>
-            </h1>
-
-            {/* Supporting Text */}
-            <p className="text-base md:text-lg text-gray-600 max-w-lg mx-auto lg:mx-0 leading-relaxed mb-6">
-              Get access to loans by using your <DeFiTerm term="lp-position">LP positions</DeFiTerm> as <DeFiTerm term="collateral">collateral</DeFiTerm>.
-            </p>
-
-            {/* Email CTA */}
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto lg:mx-0">
-              <input
-                type="email"
-                placeholder="satoshi@nakamoto.com"
-                className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
-              />
-              <button className="px-6 py-3 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition-colors whitespace-nowrap text-base">
-                Sign up
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Trusted by top teams Section - inside hero */}
         <div className="flex flex-col items-center pt-8 gap-4 sm:flex-row sm:pt-12 sm:gap-8">
           <h3 className="flex-shrink-0 text-sm font-medium text-gray-500">Trusted by top teams at</h3>
           <div className="relative w-full overflow-hidden">

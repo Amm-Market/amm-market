@@ -78,10 +78,13 @@ export default function BrandPage() {
   ]
 
   const brandColors = [
-    { name: "Absolute Zero", type: "Primary", hex: "#0048ba" },
-    { name: "Dark", type: "Secondary", hex: "#000308" },
-    { name: "Light Blue", type: "Secondary", hex: "#ebf2ff" },
-    { name: "White", type: "Secondary", hex: "#ffffff" }
+    { name: "Sapphire Sky", hex: "#016ecf", usage: "Primary buttons, links, and CTAs. Use for the main brand actions and interactive elements." },
+    { name: "Cool Sky", hex: "#6db0ea", usage: "Hover states, secondary highlights, and badges. Use for accents that need to feel lighter than Sapphire Sky." },
+    { name: "White", hex: "#fefefe", usage: "Cards, modals, and content surfaces. Use where you need maximum contrast on dark backgrounds." },
+    { name: "Deep Navy", hex: "#00165a", usage: "Header, footer, and navigation. Use for main chrome and high-contrast brand blocks." },
+    { name: "White Smoke", hex: "#f2f2f2", usage: "Page and section backgrounds. Use for the default app background and subtle surfaces." },
+    { name: "Silver", hex: "#a7a8aa", usage: "Secondary text, captions, and inactive UI. Use for supporting copy and disabled states." },
+    { name: "Gunmetal", hex: "#414347", usage: "Body text and borders. Use for primary reading text and dividers." },
   ]
 
   const guidelines = [
@@ -266,44 +269,39 @@ export default function BrandPage() {
             <div className="grid md:grid-cols-2 gap-8 items-start">
               {/* Left - Description */}
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-gray-900">Blue</h3>
+                <h3 className="text-xl font-semibold text-gray-900">Palette</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
-                  It's Dex Mini's primary color — that's how strongly we feel about it. 
-                  Blue is what people associate with the brand and makes Dex Mini instantly recognizable.
-                  <br /><br />
-                  Black, white, and greys supplement our blues. Black and White can be applied 
-                  to the logo when additional contrast is necessary.
+                  Sapphire Sky and Cool Sky are our primary blues; Deep Navy anchors the brand. 
+                  White and White Smoke provide backgrounds and contrast. Silver and Gunmetal 
+                  are used for secondary text and UI elements.
                 </p>
               </div>
 
-              {/* Right - Color swatches */}
+              {/* Right - Color swatches with usage */}
               <div className="flex flex-col gap-4">
                 {brandColors.map((color) => (
                   <div
                     key={color.hex}
-                    className="group relative aspect-[4/1] w-full rounded-[20px] cursor-pointer transition-transform hover:scale-[1.02]"
-                    style={{ backgroundColor: color.hex }}
-                    onClick={() => copyToClipboard(color.hex)}
+                    className="flex gap-4 items-stretch rounded-[20px] border border-gray-200 overflow-hidden transition-transform hover:scale-[1.01]"
                   >
-                    {/* Border for white color */}
-                    {color.hex === "#ffffff" && (
-                      <div className="absolute inset-0 rounded-[20px] border border-gray-200" />
-                    )}
-                    
-                    {/* Copy button */}
-                    <button className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white text-gray-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-50 border border-gray-200">
-                      {copiedColor === color.hex ? (
-                        <>
-                          <Check className="w-4 h-4 text-green-500" />
-                          <span>Copied!</span>
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-4 h-4" />
-                          <span>Copy {color.hex}</span>
-                        </>
+                    <button
+                      type="button"
+                      className="group relative flex-shrink-0 w-24 md:w-28 h-24 md:h-28 rounded-l-[18px] cursor-pointer"
+                      style={{ backgroundColor: color.hex }}
+                      onClick={() => copyToClipboard(color.hex)}
+                    >
+                      {["#fefefe", "#f2f2f2"].includes(color.hex.toLowerCase()) && (
+                        <div className="absolute inset-0 rounded-l-[18px] border border-gray-200" />
                       )}
+                      <span className="absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-lg bg-white/90 px-2 py-1 text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                        {copiedColor === color.hex ? <Check className="w-3 h-3 text-green-500" /> : <Copy className="w-3 h-3" />}
+                        {copiedColor === color.hex ? "Copied" : color.hex}
+                      </span>
                     </button>
+                    <div className="flex flex-col justify-center py-3 pr-3 flex-1 min-w-0">
+                      <p className="font-semibold text-gray-900">{color.name}</p>
+                      <p className="text-sm text-gray-500 mt-0.5">{color.usage}</p>
+                    </div>
                   </div>
                 ))}
               </div>

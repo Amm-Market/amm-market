@@ -136,23 +136,22 @@ export default function StableSpokePage() {
             </div>
           </section>
 
-          {/* Supported Stables */}
+          {/* Supported Dexs */}
           <section>
             <div className="max-w-[650px] mb-6">
-              <h2 className="text-2xl font-bold">Supported Stablecoins</h2>
+              <h2 className="text-2xl font-bold">Supported Dexs</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { name: "USDC", color: "bg-blue-100 text-blue-600" },
-                { name: "USDT", color: "bg-green-100 text-green-600" },
-                { name: "DAI", color: "bg-yellow-100 text-yellow-600" },
-                { name: "FRAX", color: "bg-gray-100 text-gray-600" },
-              ].map((stable) => (
-                <div key={stable.name} className="p-4 border border-gray-200 rounded-xl text-center">
-                  <div className={`w-12 h-12 ${stable.color} rounded-full mx-auto mb-2 flex items-center justify-center`}>
-                    <span className="text-sm font-bold">{stable.name[0]}</span>
+                { name: "Uniswap V3", color: "bg-pink-100 text-pink-600" },
+                { name: "Curve", color: "bg-yellow-100 text-yellow-600" },
+                { name: "Balancer", color: "bg-gray-100 text-gray-600" },
+              ].map((dex) => (
+                <div key={dex.name} className="p-4 border border-gray-200 rounded-xl text-center">
+                  <div className={`w-12 h-12 ${dex.color} rounded-full mx-auto mb-2 flex items-center justify-center`}>
+                    <span className="text-sm font-bold">{dex.name.slice(0, 2)}</span>
                   </div>
-                  <p className="font-medium text-gray-900">{stable.name}</p>
+                  <p className="font-medium text-gray-900">{dex.name}</p>
                 </div>
               ))}
             </div>

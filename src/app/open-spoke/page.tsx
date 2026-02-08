@@ -134,18 +134,18 @@ export default function OpenSpokePage() {
             </div>
           </section>
 
-          {/* Supported Networks */}
+          {/* Supported Dexs */}
           <section>
             <div className="max-w-[650px] mb-6">
-              <h2 className="text-2xl font-bold">Supported Networks</h2>
+              <h2 className="text-2xl font-bold">Supported Dexs</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {["Ethereum", "Arbitrum", "Base", "Unichain"].map((chain) => (
-                <div key={chain} className="p-4 border border-gray-200 rounded-xl text-center">
+              {["Uniswap V3", "Uniswap V4", "SushiSwap", "Balancer"].map((dex) => (
+                <div key={dex} className="p-4 border border-gray-200 rounded-xl text-center">
                   <div className="w-12 h-12 bg-gray-100 rounded-full mx-auto mb-2 flex items-center justify-center">
-                    <span className="text-lg font-bold text-gray-600">{chain[0]}</span>
+                    <span className="text-lg font-bold text-gray-600">{dex[0]}</span>
                   </div>
-                  <p className="font-medium text-gray-900">{chain}</p>
+                  <p className="font-medium text-gray-900">{dex}</p>
                 </div>
               ))}
             </div>
