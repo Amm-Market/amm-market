@@ -4,12 +4,16 @@ import Link from "next/link"
 import Image from "next/image"
 import WaitlistCTA from "@/components/waitlist-cta"
 import HomeHero from "@/components/home-hero"
+import SeeItInActionSection from "@/components/SeeItInActionSection"
 
 export default function WebappPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Hero section */}
       <HomeHero />
+
+      {/* See It In Action - dashboard video */}
+      <SeeItInActionSection />
 
       {/* Rest of page content - matching stable-spoke layout */}
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col pt-8 sm:pt-12">
