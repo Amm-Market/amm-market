@@ -10,6 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        offBlack: "#0a0a0a",
         border: "var(--border)",
         input: "var(--input)",
         ring: "var(--ring)",
