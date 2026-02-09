@@ -99,6 +99,16 @@ const nextConfig: NextConfig = {
         hostname: "mkt-static.crypto.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "mkt-site-asset.crypto.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cryptologos.cc",
+        pathname: "/**",
+      },
     ],
   },
 
