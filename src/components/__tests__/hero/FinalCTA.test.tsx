@@ -1,62 +1,30 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
-import { FinalCTA } from '../../hero/FinalCTA'
+import EarlyAccessCtaBox from '@/components/EarlyAccessCtaBox'
 
-describe('FinalCTA', () => {
+describe('EarlyAccessCtaBox', () => {
   it('renders call-to-action heading', () => {
-    render(<FinalCTA />)
-    expect(screen.getByText("Ready to unlock your LP's potential?")).toBeInTheDocument()
+    render(<EarlyAccessCtaBox />)
+    expect(screen.getByText('Take your LP journey further, faster')).toBeInTheDocument()
   })
 
-  it('renders description text', () => {
-    render(<FinalCTA />)
-    expect(screen.getByText(/Join the waitlist/)).toBeInTheDocument()
+  it('renders Early Access link', () => {
+    render(<EarlyAccessCtaBox />)
+    const link = screen.getByRole('link', { name: 'Early Access' })
+    expect(link).toBeInTheDocument()
+    expect(link).toHaveAttribute('href', 'https://web.crypto.com/hub/market')
+    expect(link).toHaveAttribute('target', '_blank')
   })
 
-  it('renders email input', () => {
-    render(<FinalCTA />)
-    const input = screen.getByPlaceholderText('Enter your email')
-    expect(input).toBeInTheDocument()
-    expect(input).toHaveAttribute('type', 'email')
+  it('has rounded container and section layout', () => {
+    const { container } = render(<EarlyAccessCtaBox />)
+    expect(container.querySelector('.rounded-2xl')).toBeInTheDocument()
+    expect(container.querySelector('section.border-t')).toBeInTheDocument()
   })
 
-  it('renders join waitlist button', () => {
-    render(<FinalCTA />)
-    const button = screen.getByRole('button', { name: 'Join waitlist' })
-    expect(button).toBeInTheDocument()
-  })
-
-  it('has form element', () => {
-    const { container } = render(<FinalCTA />)
-    const form = container.querySelector('form')
-    expect(form).toBeInTheDocument()
-  })
-
-  it('renders disclaimer section', () => {
-    render(<FinalCTA />)
-    expect(screen.getByText(/Borrowing against LP tokens involves risk/)).toBeInTheDocument()
-  })
-
-  it('disclaimer mentions key risks', () => {
-    render(<FinalCTA />)
-    const disclaimer = screen.getByText(/liquidation/)
-    expect(disclaimer).toBeInTheDocument()
-  })
-
-  it('has proper section styling', () => {
-    const { container } = render(<FinalCTA />)
-    expect(container.querySelector('.border-t.border-gray-100')).toBeInTheDocument()
-  })
-
-  it('disclaimer section has separate border', () => {
-    const { container } = render(<FinalCTA />)
-    const disclaimerSection = container.querySelector('.border-t.border-gray-200')
-    expect(disclaimerSection).toBeInTheDocument()
-  })
-
-  it('input has proper focus styles', () => {
-    render(<FinalCTA />)
-    const input = screen.getByPlaceholderText('Enter your email')
-    expect(input).toHaveClass('focus:ring-2', 'focus:ring-blue-500')
+  it('renders as section element', () => {
+    const { container } = render(<EarlyAccessCtaBox />)
+    const section = container.querySelector('section')
+    expect(section).toBeInTheDocument()
   })
 })

@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import WaitlistCTA from "@/components/waitlist-cta"
+import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
 
 export const metadata: Metadata = {
   title: "Bluechip Spoke - Blue-Chip LP Collateral",
@@ -194,7 +194,7 @@ export default function BluechipSpokePage() {
           </section>
 
           {/* CTA */}
-          <WaitlistCTA />
+          <EarlyAccessCtaBox />
         </div>
       </div>
     </div>

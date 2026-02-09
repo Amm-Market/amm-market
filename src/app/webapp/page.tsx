@@ -2,9 +2,10 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import WaitlistCTA from "@/components/waitlist-cta"
 import HomeHero from "@/components/home-hero"
 import SeeItInActionSection from "@/components/SeeItInActionSection"
+import ManageCryptoSection from "@/components/ManageCryptoSection"
+import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
 
 export default function WebappPage() {
   return (
@@ -363,78 +364,12 @@ export default function WebappPage() {
             </div>
           </div>
 
-          {/* Automation Banner */}
-          <div className="w-full max-w-[1280px] px-4 py-8 md:mx-auto md:p-8">
-            <div className="flex flex-col items-center gap-[26px] lg:gap-8">
-              <div
-                className="group rounded-lg relative z-10 flex h-[505px] w-full max-w-[1280px] overflow-hidden lg:h-[620px]"
-                style={{
-                  background: "linear-gradient(0deg, rgb(243, 244, 246) -91.67%, rgb(229, 231, 235) 58.64%)",
-                }}
-              >
-                <img
-                  alt=""
-                  className="absolute inset-0 z-0 w-full object-cover mt-[240px] scale-120 md:top-auto md:scale-100"
-                  loading="lazy"
-                  src="https://mkt-static.crypto.com/cdc_home_exchangebanner_desktop_usd.webp"
-                />
-                <div className="flex relative z-20 h-full w-full flex-col items-start gap-4 p-8 lg:flex-row justify-between">
-                  <div className="flex items-between relative z-20 w-full flex-row lg:my-auto">
-                    <div className="flex max-w-[560px] flex-col gap-1 lg:gap-2">
-                      <h3 className="text-[20px] lg:text-[28px] font-[600] leading-normal text-gray-900">
-                        Automate your LP strategy
-                      </h3>
-                      <p className="text-[18px] lg:text-[21px] font-[550] leading-normal tracking-[-0.09px] lg:tracking-[-0.1px] text-gray-600">
-                        Set it and forget it with auto-compound, rebalancing, and alerts
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Manage crypto on your terms */}
+          <ManageCryptoSection />
 
-          {/* Product Cards */}
-          <div className="mx-auto max-w-[1100px] px-4 py-16 lg:pt-16 lg:pb-24">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Card 1 - Position Management */}
-              <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
-                <span className="text-5xl md:text-6xl font-bold text-gray-300">1</span>
-                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
-                  Position Management
-                </h3>
-                <p className="text-sm md:text-base text-gray-600">
-                  Fine-tune collateral ratios and borrowing limits with precision. Full control over your LP positions.
-                </p>
-              </div>
-
-              {/* Card 2 - API Access */}
-              <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
-                <span className="text-5xl md:text-6xl font-bold text-gray-300">2</span>
-                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
-                  API Access
-                </h3>
-                <p className="text-sm md:text-base text-gray-600">
-                  Connect via high-performance APIs for programmatic LP management and automated strategies.
-                </p>
-              </div>
-
-              {/* Card 3 - Yield Optimizer */}
-              <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
-                <span className="text-5xl md:text-6xl font-bold text-gray-300">3</span>
-                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
-                  Yield Optimizer
-                </h3>
-                <p className="text-sm md:text-base text-gray-600">
-                  Maximize returns with auto-compounding strategies. Set it and forget it.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA */}
+          {/* Early Access CTA (with phone mockup) */}
           <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6">
-            <WaitlistCTA />
+            <EarlyAccessCtaBox />
           </div>
         </div>
       </div>
