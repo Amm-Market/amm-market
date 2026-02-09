@@ -2,6 +2,39 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
+import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+
+const stableSpokeFaqItems: InlineFaqItem[] = [
+  {
+    value: "stable-1",
+    question: "What counts as a \"stable\" LP?",
+    answer:
+      "Stablecoin-to-stablecoin pairs (e.g. USDC/USDT, DAI/USDC) on supported pools. Optimized for ~1:1 parity and minimal price impact.",
+  },
+  {
+    value: "stable-2",
+    question: "Why use stable LPs for borrowing?",
+    answer:
+      "Highest LTV and lowest risk in the protocol. Minimal slippage (<0.1%) and strong capital efficiency with 0.01% swap fees.",
+  },
+  {
+    value: "stable-3",
+    question: "Which DEXes support stable LPs?",
+    answer: "Uniswap V3, Curve, and Balancer. More venues may be added over time.",
+  },
+  {
+    value: "stable-4",
+    question: "What's the benefit of the stable curve?",
+    answer:
+      "A concentrated curve for 1:1 assets means near-zero price impact and auto-rebalancing when one stable depegs—LPs can capture arbitrage.",
+  },
+  {
+    value: "stable-5",
+    question: "Who is this for?",
+    answer:
+      "Large-volume stable swaps, DAO and protocol treasury management, and LPs who want consistent fee yield with low volatility.",
+  },
+]
 
 export const metadata: Metadata = {
   title: "Stable Spoke - Stablecoin LP Collateral",
@@ -191,6 +224,11 @@ export default function StableSpokePage() {
                 </div>
               </div>
             </div>
+          </section>
+
+          {/* FAQ */}
+          <section>
+            <InlineFaqSection title="Frequently asked questions." items={stableSpokeFaqItems} />
           </section>
 
           {/* CTA */}
