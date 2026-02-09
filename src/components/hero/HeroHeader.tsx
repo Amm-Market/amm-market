@@ -12,7 +12,7 @@ export function HeroHeader() {
         <div className="flex-1 mb-10 lg:mb-0 order-2 lg:order-1 lg:flex-[1.1]">
           <div className="relative w-full max-w-[700px] lg:max-w-[650px] xl:max-w-[700px] mx-auto lg:mx-0">
             <Image
-              src="/images/Hero__4_.png"
+              src="/images/homepage.png"
               alt="AMM Market app interface"
               width={1400}
               height={1400}
