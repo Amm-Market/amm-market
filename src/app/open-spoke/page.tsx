@@ -2,6 +2,36 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
+import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+
+const openSpokeFaqItems: InlineFaqItem[] = [
+  {
+    value: "open-1",
+    question: "What LP tokens can I use as collateral?",
+    answer:
+      "Any supported LP across Uniswap V3, Uniswap V4, SushiSwap, and Balancer. Your position stays in the pool and keeps earning fees while used as collateral.",
+  },
+  {
+    value: "open-2",
+    question: "Do I need to bridge or move my LP?",
+    answer: "No. Your LP stays on its chain; we use it as collateral without removing liquidity. No bridges or lock-in required.",
+  },
+  {
+    value: "open-3",
+    question: "What's the maximum I can borrow?",
+    answer: "Up to 80% LTV depending on pool type and risk parameters. Available across 4+ networks.",
+  },
+  {
+    value: "open-4",
+    question: "Which DEXes are supported?",
+    answer: "Uniswap V3, Uniswap V4, SushiSwap, and Balancer. More may be added as the protocol expands.",
+  },
+  {
+    value: "open-5",
+    question: "Is my position locked?",
+    answer: "No lock-in. Repay anytime and withdraw your LP once debt is cleared.",
+  },
+]
 
 export const metadata: Metadata = {
   title: "Open Spoke - Any LP Token as Collateral",
@@ -185,6 +215,11 @@ export default function OpenSpokePage() {
                 </div>
               </div>
             </div>
+          </section>
+
+          {/* FAQ */}
+          <section>
+            <InlineFaqSection title="Frequently asked questions." items={openSpokeFaqItems} />
           </section>
 
           {/* CTA */}

@@ -2,6 +2,39 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
+import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+
+const bluechipSpokeFaqItems: InlineFaqItem[] = [
+  {
+    value: "bluechip-1",
+    question: "What are \"blue-chip\" pools?",
+    answer:
+      "Established, liquid pairs: WETH, WBTC, USDC, USDT, DAI, and select governance tokens. 36+ supported pools with reduced volatility and predictable impermanent loss.",
+  },
+  {
+    value: "bluechip-2",
+    question: "How much can I borrow against blue-chip LPs?",
+    answer:
+      "Tiered LTVs—e.g. up to 77.5% for WETH, 70% for WBTC—with conservative liquidation thresholds. Borrow more against proven collateral.",
+  },
+  {
+    value: "bluechip-3",
+    question: "Why is risk lower here?",
+    answer:
+      "Strong oracles, deep liquidity, and an IL buffer (e.g. ~5%). Each position is isolated with transparent risk parameters.",
+  },
+  {
+    value: "bluechip-4",
+    question: "Which DEXes are supported?",
+    answer: "Uniswap V3, Uniswap V4, SushiSwap, and Balancer. All blue-chip pools use battle-tested oracles.",
+  },
+  {
+    value: "bluechip-5",
+    question: "Is this suitable for larger positions?",
+    answer:
+      "Yes. Designed for institutional-style use with transparent risk parameters and oracle-backed pricing.",
+  },
+]
 
 export const metadata: Metadata = {
   title: "Bluechip Spoke - Blue-Chip LP Collateral",
@@ -191,6 +224,11 @@ export default function BluechipSpokePage() {
                 </div>
               </div>
             </div>
+          </section>
+
+          {/* FAQ */}
+          <section>
+            <InlineFaqSection title="Frequently asked questions." items={bluechipSpokeFaqItems} />
           </section>
 
           {/* CTA */}

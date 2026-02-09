@@ -6,6 +6,39 @@ import HomeHero from "@/components/home-hero"
 import SeeItInActionSection from "@/components/SeeItInActionSection"
 import ManageCryptoSection from "@/components/ManageCryptoSection"
 import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
+import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+
+const webappFaqItems: InlineFaqItem[] = [
+  {
+    value: "webapp-1",
+    question: "How do I get a credit line?",
+    answer:
+      "Deposit LP tokens (e.g. Uniswap or Balancer). You keep earning fees while they're deposited. Borrow instantly via Aave v4 and repay anytime.",
+  },
+  {
+    value: "webapp-2",
+    question: "Do I keep earning on my LP while I borrow?",
+    answer: "Yes. Your LP stays in the pool; yield is credited to you while the position is used as collateral.",
+  },
+  {
+    value: "webapp-3",
+    question: "What can I use the borrowed funds for?",
+    answer:
+      "Flexible: leverage, shorting, or access to liquidity across venues via a single line of credit. Subject to risk assessment and availability.",
+  },
+  {
+    value: "webapp-4",
+    question: "How is my position monitored?",
+    answer:
+      "Real-time health and position updates. Competitive rates and deep liquidity across 50+ pools, with MEV protection and high uptime.",
+  },
+  {
+    value: "webapp-5",
+    question: "Who is the webapp for?",
+    answer:
+      "LPs and power users who want one place to manage positions, financing, and institutional-grade tools.",
+  },
+]
 
 export default function WebappPage() {
   return (
@@ -212,6 +245,11 @@ export default function WebappPage() {
               <p className="text-gray-500 text-sm text-center mt-8">
                 Subject to risk assessment and availability
               </p>
+            </section>
+
+            {/* FAQ */}
+            <section>
+              <InlineFaqSection title="Frequently asked questions." items={webappFaqItems} />
             </section>
           </div>
         </div>
