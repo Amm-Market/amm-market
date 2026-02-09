@@ -47,8 +47,8 @@ vi.mock('../../hero/FAQSection', () => ({
   FAQSection: () => <div data-testid="faq-section">FAQSection</div>,
 }))
 
-vi.mock('../../hero/FinalCTA', () => ({
-  FinalCTA: () => <div data-testid="final-cta">FinalCTA</div>,
+vi.mock('@/components/EarlyAccessCtaBox', () => ({
+  default: () => <div data-testid="early-access-cta">EarlyAccessCtaBox</div>,
 }))
 
 // Mock IntersectionObserver for lazy sections
@@ -113,7 +113,7 @@ describe('HeroSection (index)', () => {
     expect(screen.getByTestId('about-aave')).toBeInTheDocument()
     expect(screen.getByTestId('testimonial-carousel')).toBeInTheDocument()
     expect(screen.getByTestId('faq-section')).toBeInTheDocument()
-    expect(screen.getByTestId('final-cta')).toBeInTheDocument()
+    expect(screen.getByTestId('early-access-cta')).toBeInTheDocument()
   })
 
   it('has proper wrapper styling', () => {
