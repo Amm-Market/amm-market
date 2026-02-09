@@ -60,7 +60,6 @@ const PartnerLogos = () => (
 export function TrustedByMarquee() {
   return (
     <div className="flex flex-col items-center pt-8 gap-4 sm:flex-row sm:pt-12 sm:gap-8">
-      <h3 className="flex-shrink-0 text-sm font-medium text-gray-500">Trusted by top teams at</h3>
       <div className="relative w-full overflow-hidden">
         <div className="absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-white to-transparent"></div>
         <div className="flex animate-marquee">
