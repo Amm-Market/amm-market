@@ -43,24 +43,38 @@ export default function WebappPage() {
               </div>
             </section>
 
-            {/* Features */}
+            {/* Financing Section */}
             <section>
-              <div className="max-w-[650px] mb-6">
-                <h2 className="text-2xl font-bold">Features</h2>
+              <div className="flex flex-col items-center gap-3 mb-6">
+                <h2 className="text-2xl font-bold text-center">Financing</h2>
+                <p className="text-gray-600 text-center text-balance">
+                  Maximize capital efficiency with flexible financing.
+                </p>
               </div>
-              <div className="grid md:grid-cols-2 gap-6">
+
+              {/* Hero Image */}
+              <div className="w-full mb-6">
+                <img
+                  src="https://assets-cms.kraken.com/images/51n36hrp/facade/28d0735d033c2d44d6cb337e78eb036fb75bde4f-3756x2088.jpg?w=1536&fit=min"
+                  alt="Financing dashboard"
+                  className="w-full rounded-xl object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Feature Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="p-6 border border-gray-200 rounded-xl">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-10 h-10 bg-violet-100 rounded-lg flex items-center justify-center">
                       <svg className="w-5 h-5 text-violet-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                       </svg>
                     </div>
-                    <h3 className="text-lg font-semibold">One-Click Actions</h3>
+                    <h3 className="text-lg font-semibold">Flexible settlement</h3>
                   </div>
                   <p className="text-gray-600">
-                    Complex DeFi strategies simplified into single transactions. Zap into LP positions, 
-                    leverage trade, or compound rewards with one click.
+                    Deploy a single line of credit to access liquidity across multiple venues.
                   </p>
                 </div>
 
@@ -68,16 +82,13 @@ export default function WebappPage() {
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
                       <svg className="w-5 h-5 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-                        <line x1="12" y1="22.08" x2="12" y2="12" />
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                       </svg>
                     </div>
-                    <h3 className="text-lg font-semibold">Portfolio Dashboard</h3>
+                    <h3 className="text-lg font-semibold">Unlock capital efficiency</h3>
                   </div>
                   <p className="text-gray-600">
-                    Track all your positions, earnings, and performance metrics in real-time. 
-                    Visualize your DeFi portfolio across all supported chains.
+                    Borrow against assets in custody for leverage and shorting, and access our bespoke financing solutions.
                   </p>
                 </div>
 
@@ -88,11 +99,10 @@ export default function WebappPage() {
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                       </svg>
                     </div>
-                    <h3 className="text-lg font-semibold">Built-in Security</h3>
+                    <h3 className="text-lg font-semibold">Retain control</h3>
                   </div>
                   <p className="text-gray-600">
-                    Transaction simulation, approval management, and risk warnings help you 
-                    avoid costly mistakes and malicious contracts.
+                    Pledge assets in your custody vault as collateral to minimize counterparty risk.
                   </p>
                 </div>
 
@@ -100,23 +110,104 @@ export default function WebappPage() {
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center">
                       <svg className="w-5 h-5 text-pink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                        <line x1="8" y1="21" x2="16" y2="21" />
-                        <line x1="12" y1="17" x2="12" y2="21" />
+                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
                       </svg>
                     </div>
-                    <h3 className="text-lg font-semibold">Mobile Responsive</h3>
+                    <h3 className="text-lg font-semibold">Earn while you borrow</h3>
                   </div>
                   <p className="text-gray-600">
-                    Full functionality on any device. Manage your DeFi positions on the go with 
-                    our mobile-optimized interface.
+                    Enhance your returns by generating yield on assets pledged as collateral, with distributions credited directly into your vault.
                   </p>
                 </div>
               </div>
+
+              <p className="text-gray-500 text-sm text-center mt-8">
+                Subject to risk assessment and availability
+              </p>
             </section>
 
-            {/* CTA */}
-            <WaitlistCTA />
+            {/* New Section */}
+            <section>
+              <div className="flex flex-col items-center gap-3 mb-6">
+                <h2 className="text-2xl font-bold text-center">New Section Title</h2>
+                <p className="text-gray-600 text-center text-balance">
+                  Add your subtitle here.
+                </p>
+              </div>
+
+              {/* Hero Image */}
+              <div className="w-full mb-6">
+                <img
+                  src="https://assets-cms.kraken.com/images/51n36hrp/facade/28d0735d033c2d44d6cb337e78eb036fb75bde4f-3756x2088.jpg?w=1536&fit=min"
+                  alt="Section dashboard"
+                  className="w-full rounded-xl object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Feature Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="p-6 border border-gray-200 rounded-xl">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-violet-100 rounded-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-violet-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold">Feature 1</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    Description for feature 1.
+                  </p>
+                </div>
+
+                <div className="p-6 border border-gray-200 rounded-xl">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold">Feature 2</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    Description for feature 2.
+                  </p>
+                </div>
+
+                <div className="p-6 border border-gray-200 rounded-xl">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-fuchsia-100 rounded-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-fuchsia-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold">Feature 3</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    Description for feature 3.
+                  </p>
+                </div>
+
+                <div className="p-6 border border-gray-200 rounded-xl">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-pink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold">Feature 4</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    Description for feature 4.
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-gray-500 text-sm text-center mt-8">
+                Subject to risk assessment and availability
+              </p>
+            </section>
           </div>
         </div>
       </div>
@@ -335,6 +426,11 @@ export default function WebappPage() {
                 </p>
               </div>
             </div>
+          </div>
+
+          {/* CTA */}
+          <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6">
+            <WaitlistCTA />
           </div>
         </div>
       </div>
