@@ -4,13 +4,36 @@
  * @description
  * A visually striking hero section with:
  * - Gradient background (dark blue to light gray)
- * - Centered headline and subtext
- * - CTA button
- * - Large hero image with negative margin overlap
+ * - "Simplifying DeFi Investing for Everyone" headline
+ * - Hero image
+ * - 4-card feature grid (Oracleless Lending, Leverage, Security, Refinance)
  * - Bottom gradient fade
  */
 
-import Image from "next/image"
+import { Zap, Cpu, Lock, Sparkles } from "lucide-react"
+
+const features = [
+  {
+    icon: Zap,
+    title: "Flexible Pool Support",
+    description: "Supports governance, staking, and long-tail pools with automatic health monitoring.",
+  },
+  {
+    icon: Cpu,
+    title: "On-Demand Capital",
+    description: "Access borrowing power instantly. Interest accrues seamlessly while positions stay open.",
+  },
+  {
+    icon: Lock,
+    title: "Automated Risk Management",
+    description: "The system monitors position health and manages risk so you don't have to.",
+  },
+  {
+    icon: Sparkles,
+    title: "Fully Flexible Repayment",
+    description: "Repay on your terms—no fixed schedules, no penalties, complete control.",
+  },
+]
 
 export default function HomeHero() {
   return (
@@ -21,54 +44,52 @@ export default function HomeHero() {
           "linear-gradient(rgb(0, 22, 90) 0%, rgb(39, 61, 93) 32.21%, rgb(163, 179, 202) 65.87%, rgb(255, 255, 255) 100%)",
       }}
     >
-      <div className="flex absolute z-10 top-[64px] left-0 right-0 flex-col items-center px-4 sm:px-6 lg:px-0">
-        <div className="flex flex-col items-center">
-          <h1
-            className="text-[32px] sm:text-[40px] md:text-[56px] lg:text-[84px] font-[550] leading-[105%] sm:leading-[100%] lg:leading-[110%] tracking-[-0.5px] sm:tracking-[-1px] lg:tracking-[-1.68px] mb-4 sm:mb-6 text-center text-[#F7F9FA]"
-            style={{ maxWidth: 1000 }}
-          >
-            Borrow Up To 80% Against Your LPs
-          </h1>
-          <div className="text-[16px] sm:text-[18px] md:text-[22px] lg:text-[28px] font-[600] leading-[140%] sm:leading-normal mb-4 sm:mb-6 text-center text-[#A0A9BE]">
-            <div className="payload-richtext">
-              <p>Borrow, earn fees & manage collateral in one place</p>
+      {/* Main content */}
+      <section className="pb-12 sm:pb-16 md:pb-32 pt-[64px] sm:pt-[80px] md:pt-[120px]">
+        <div className="mx-auto max-w-5xl space-y-8 sm:space-y-12 px-4 sm:px-6 lg:px-0">
+          {/* Heading row */}
+          <div className="relative z-10 flex flex-col gap-3 sm:gap-4 md:grid md:grid-cols-2 md:gap-12 md:items-center text-center md:text-left">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white leading-snug sm:leading-tight">
+              Your Liquidity Pools<br />Command Center
+            </h2>
+            <p className="text-sm sm:text-base md:max-w-sm md:ml-auto text-gray-300 leading-relaxed">
+              Deposit any pool, borrow up to 80% against it, track health, collect your trading fees, and manage your LP risk with zero friction.
+            </p>
+          </div>
+
+          {/* Hero image */}
+          <div className="relative rounded-2xl sm:rounded-3xl p-2 sm:p-3 md:-mx-8">
+            <div className="relative">
+              <img
+                alt="AMM Market web app interface"
+                loading="lazy"
+                width={1024}
+                height={612}
+                className="w-full h-auto rounded-lg sm:rounded-xl shadow-lg"
+                src="https://studio.uxpincdn.com/studio/wp-content/uploads/2024/01/drive-web-app-1024x612.png.webp"
+              />
             </div>
           </div>
-          <a
-            className="relative flex h-[59px] p-[12px_24px] cursor-pointer items-center justify-center rounded-[10px] bg-[#1199FA]"
-            href="https://web.crypto.com/hub/market"
-            rel="noreferrer"
-            target="_blank"
-          >
-            <p className="text-[14px] font-[600] leading-[142%] mr-2 text-[#F7F9FA]">Get Started</p>
-            <svg
-              fill="none"
-              height="16"
-              viewBox="0 0 32 32"
-              width="16"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M17.959 8.62574C18.3494 8.23532 18.9825 8.23554 19.373 8.62574L26.04 15.2927L26.1064 15.366C26.2522 15.5439 26.333 15.7678 26.333 15.9998C26.3329 16.2649 26.2275 16.5193 26.04 16.7068L19.373 23.3728C18.9825 23.7632 18.3495 23.7633 17.959 23.3728C17.569 22.9823 17.5688 22.3491 17.959 21.9587L22.9189 16.9998H6.66602C6.11414 16.9994 5.66619 16.5517 5.66602 15.9998C5.66602 15.4477 6.11403 15.0001 6.66602 14.9998H22.9189L17.959 10.0398C17.5689 9.64936 17.5689 9.01618 17.959 8.62574Z"
-                fill="#F7F9FA"
-              />
-            </svg>
-          </a>
+
+          {/* Feature cards */}
+          <div className="relative mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8 bg-white/90 rounded-xl sm:rounded-2xl p-4 sm:p-6 backdrop-blur-sm">
+            {features.map((feature) => {
+              const Icon = feature.icon
+              return (
+                <div key={feature.title} className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Icon className="size-4 shrink-0 text-gray-900" />
+                    <h3 className="text-sm font-medium text-gray-900">{feature.title}</h3>
+                  </div>
+                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">{feature.description}</p>
+                </div>
+              )
+            })}
+          </div>
         </div>
-      </div>
-      <div className="flex px-4 md:px-0 mt-[320px] sm:mt-[360px] md:mt-[380px] lg:mt-[400px] -mb-[140px] lg:-mb-[260px]">
-        <div className="object-contain">
-          <Image
-            alt="cdc home homehero global"
-            className="object-contain"
-            fetchPriority="high"
-            loading="eager"
-            src="https://mkt-static.crypto.com/cdc_home_homehero_global_1_1x.webp"
-            width={1920}
-            height={1080}
-          />
-        </div>
-      </div>
+      </section>
+
+      {/* Bottom gradient fade */}
       <div
         className="absolute z-20 right-0 bottom-0 left-0 h-[140px]"
         style={{
