@@ -45,10 +45,10 @@ export default function LegalDisclaimerPage() {
           </p>
           <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
             <p className="text-gray-700 text-sm">
-              <strong>From our homepage:</strong> "Borrowing against LP tokens involves risk, including 
+              <strong>From our homepage:</strong> &quot;Borrowing against LP tokens involves risk, including 
               liquidation if market conditions move against your position. AMM Market does not custody 
               your funds, rehypothecate LP positions, or alter how your liquidity operates on underlying 
-              AMMs. Only borrow amounts you are comfortable maintaining through market volatility."
+              AMMs. Only borrow amounts you are comfortable maintaining through market volatility.&quot;
             </p>
           </div>
         </section>
@@ -57,16 +57,16 @@ export default function LegalDisclaimerPage() {
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">General Disclaimer</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             AMM Market is an experimental decentralized finance protocol. The protocol is 
-            provided "as is" without any representations or warranties of any kind, either 
+            provided &quot;as is&quot; without any representations or warranties of any kind, either 
             express or implied.
           </p>
           <p className="text-gray-600 leading-relaxed mb-4">
-            As stated in our Terms of Service (Section 2): "The AMM Market Protocol includes 
+            As stated in our Terms of Service (Section 2): &quot;The AMM Market Protocol includes 
             functionality whereby certain open source smart contracts can receive and hold certain 
             digital currency or other crypto assets. There is a risk that the open source software, 
             including any upgrades, may introduce bugs, viruses, Trojan horses, or other vulnerabilities 
             or changes that could result in a partial or complete disruption of the protocol or loss, 
-            damage, or destruction of your crypto assets."
+            damage, or destruction of your crypto assets.&quot;
           </p>
           <p className="text-gray-600 leading-relaxed">
             Any reliance you place on such information is strictly at your own risk. We will 
@@ -78,11 +78,11 @@ export default function LegalDisclaimerPage() {
         <section id="no-financial-advice" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">No Financial Advice</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            As stated prominently in our Terms of Service: "THE SERVICES INCLUDE, AMONG OTHER THINGS, 
+            As stated prominently in our Terms of Service: &quot;THE SERVICES INCLUDE, AMONG OTHER THINGS, 
             THE INFORMATIONAL RESOURCES, WHICH MAY PROVIDE INFORMATION RELATED TO AMM MARKET. AMM MARKET 
             IS NOT A BROKER, DEALER, EXCHANGE, INVESTMENT ADVISER, CUSTODIAN OR FINANCIAL SERVICE PROVIDER 
             OF ANY KIND. WE DO NOT HAVE A FIDUCIARY RELATIONSHIP WITH, OR OBLIGATION TO, YOU IN CONNECTION 
-            WITH THE SERVICES."
+            WITH THE SERVICES.&quot;
           </p>
           <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
             <ul className="text-gray-600 text-sm space-y-2">
@@ -108,30 +108,30 @@ export default function LegalDisclaimerPage() {
             <div className="border-l-4 border-red-400 pl-3">
               <h3 className="font-semibold text-gray-900 mb-2">Experimental Technology</h3>
               <p className="text-gray-600 text-sm">
-                "The Services may incorporate experimental and novel technology and the use of such 
+                &quot;The Services may incorporate experimental and novel technology and the use of such 
                 technology involves a high degree of risk. There are numerous reasons the Services or 
                 underlying blockchain networks could fail in an unexpected way, resulting in the total 
-                and absolute loss of any crypto assets held in your digital wallet."
+                and absolute loss of any crypto assets held in your digital wallet.&quot;
               </p>
             </div>
 
             <div className="border-l-4 border-amber-400 pl-3">
               <h3 className="font-semibold text-gray-900 mb-2">Operational Challenges</h3>
               <p className="text-gray-600 text-sm">
-                "The Services and/or underlying blockchain networks may experience or be the subject 
+                &quot;The Services and/or underlying blockchain networks may experience or be the subject 
                 of cyber-attacks, unexpected surges in transaction volume, or other operational or 
                 technical difficulties or vulnerabilities that may cause interruptions related to 
-                your use of the Services."
+                your use of the Services.&quot;
               </p>
             </div>
 
             <div className="border-l-4 border-amber-400 pl-3">
               <h3 className="font-semibold text-gray-900 mb-2">Regulatory Uncertainty</h3>
               <p className="text-gray-600 text-sm">
-                "The Services, the AMM Market Protocol and/or any underlying blockchain networks may 
+                &quot;The Services, the AMM Market Protocol and/or any underlying blockchain networks may 
                 not be available or appropriate for use in all jurisdictions and you may be subject 
                 to legal and regulatory compliance obligations in connection with your use of the 
-                Services in certain jurisdictions."
+                Services in certain jurisdictions.&quot;
               </p>
             </div>
 
@@ -154,12 +154,12 @@ export default function LegalDisclaimerPage() {
           </p>
           <div className="p-4 bg-gray-900 rounded-lg">
             <p className="text-gray-300 text-sm">
-              "THE SERVICES ARE ISSUED ON AN 'AS-IS' AND 'AS AVAILABLE' BASIS AND AMM MARKET DOES NOT 
-              MAKE ANY WARRANTIES WITH RESPECT TO SUCH 'AS-IS' AND 'AS AVAILABLE' BASIS OR OTHERWISE 
+              &quot;THE SERVICES ARE ISSUED ON AN &apos;AS-IS&apos; AND &apos;AS AVAILABLE&apos; BASIS AND AMM MARKET DOES NOT 
+              MAKE ANY WARRANTIES WITH RESPECT TO SUCH &apos;AS-IS&apos; AND &apos;AS AVAILABLE&apos; BASIS OR OTHERWISE 
               IN CONNECTION WITH THE TERMS AND AMM MARKET HEREBY DISCLAIMS ANY AND ALL EXPRESS, IMPLIED 
               OR STATUTORY WARRANTIES AND CONDITIONS, INCLUDING ANY WARRANTIES OR CONDITIONS OF 
               NON-INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AVAILABILITY, 
-              ERROR-FREE OR UNINTERRUPTED OPERATION."
+              ERROR-FREE OR UNINTERRUPTED OPERATION.&quot;
             </p>
           </div>
         </section>
@@ -171,16 +171,16 @@ export default function LegalDisclaimerPage() {
           </p>
           <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 mb-4">
             <p className="text-gray-600 text-sm">
-              "IN NO EVENT SHALL AMM MARKET BE LIABLE TO YOU FOR ANY CONSEQUENTIAL, INDIRECT, INCIDENTAL 
+              &quot;IN NO EVENT SHALL AMM MARKET BE LIABLE TO YOU FOR ANY CONSEQUENTIAL, INDIRECT, INCIDENTAL 
               OR SPECIAL DAMAGES OF ANY TYPE OR NATURE HOWEVER ARISING, INCLUDING, WITHOUT LIMITATION, 
               EXEMPLARY OR PUNITIVE DAMAGES, LOST DATA, LOST PROFITS OR REVENUES OR DIMINUTION IN VALUE, 
-              ARISING OUT OF OR RELATING TO THE SERVICES OR YOUR USE OF THE AMM MARKET PROTOCOL."
+              ARISING OUT OF OR RELATING TO THE SERVICES OR YOUR USE OF THE AMM MARKET PROTOCOL.&quot;
             </p>
           </div>
           <p className="text-gray-600 leading-relaxed">
             This limitation applies regardless of the theory of liability (contract, tort, 
             strict liability, or otherwise) and even if we have been advised of the possibility 
-            of such damages. Under no circumstances shall AMM Market's aggregate liability exceed 
+            of such damages. Under no circumstances shall AMM Market&apos;s aggregate liability exceed 
             one-hundred U.S. dollars ($100.00).
           </p>
         </section>

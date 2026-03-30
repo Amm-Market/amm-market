@@ -1,9 +1,11 @@
+import Link from "next/link"
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 export const metadata: Metadata = {
   title: "Borrow Assets",
-  description: "How to borrow assets against LP collateral on AMM Market. Learn about borrow checks, health factors, borrowing power, and supported assets.",
+  description:
+    "How to borrow assets against LP collateral in AMM Market, including aggregate borrowing capacity, Hub liquidity, and spoke-level health checks.",
 }
 
 const sections = [
@@ -17,157 +19,139 @@ const sections = [
 
 export default function BorrowAssetsPage() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
-      {/* Main content */}
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
       <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Borrow Assets</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Process for borrowing assets from the Hub against LP collateral.
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">Borrow Assets</h1>
+        <p className="mb-8 text-lg text-gray-600">
+          Borrow against the aggregate capacity of your approved LP positions while the Hub supplies
+          the shared capital.
         </p>
 
         <section id="overview" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            With the NFT deposited, the user can call <code className="bg-gray-100 px-1 rounded text-gray-800">borrow(tokenId, amount)</code>. 
-            The Spoke first performs a series of checks before executing the borrow.
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            Borrowing happens after the Borrow Spoke has admitted and valued your LP positions. When
+            you request an asset, the spoke checks your remaining capacity, verifies that the account
+            stays healthy, and then draws liquidity from the Hub on your behalf.
           </p>
-          <p className="text-amber-700 text-sm border-l-4 border-amber-400 pl-3">
-            <strong>Important:</strong> Borrowing creates debt that accrues interest. Monitor your 
-            health factor to avoid liquidation.
+          <p className="text-sm text-gray-600">
+            <strong>Important:</strong> borrowing creates debt that accrues over time. Capacity can
+            change with market conditions, so a safe buffer matters even after a borrow succeeds.
           </p>
         </section>
 
         <section id="borrow-checks" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Borrow Checks</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            The Spoke performs a series of checks before allowing a borrow:
-          </p>
-          <div className="space-y-4">
-            <div className="border-b border-gray-100 pb-3">
-              <h3 className="font-semibold text-gray-900 mb-1">1. Ownership Verification</h3>
-              <p className="text-gray-600 text-sm">
-                Verifies the caller is the NFT's owner.
-              </p>
-            </div>
-            <div className="border-b border-gray-100 pb-3">
-              <h3 className="font-semibold text-gray-900 mb-1">2. Hub Selection</h3>
-              <p className="text-gray-600 text-sm">
-                Selects an appropriate Aave Hub based on available liquidity and cost.
-              </p>
-            </div>
-            <div className="border-b border-gray-100 pb-3">
-              <h3 className="font-semibold text-gray-900 mb-1">3. Debt Limits</h3>
-              <p className="text-gray-600 text-sm">
-                Checks the user's new debt against global and per-token debt limits.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-1">4. Health Check</h3>
-              <p className="text-gray-600 text-sm">
-                The most critical check — ensures the loan remains healthy after borrowing.
-              </p>
-            </div>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Borrow Checks</h2>
+          <div className="space-y-4 text-sm text-gray-600">
+            <p>
+              <strong className="text-gray-900">Position and ownership checks:</strong> the spoke
+              confirms that the collateral positions are valid for the caller and remain in the
+              approved collateral set.
+            </p>
+            <p>
+              <strong className="text-gray-900">Capacity check:</strong> the requested debt is tested
+              against the user&apos;s aggregate borrowing capacity inside that Borrow Spoke.
+            </p>
+            <p>
+              <strong className="text-gray-900">Hub liquidity and cap checks:</strong> even if
+              collateral is sufficient, the borrow still depends on available Hub liquidity and any
+              asset-level or protocol-level borrow constraints.
+            </p>
+            <p>
+              <strong className="text-gray-900">Post-borrow health check:</strong> the account must
+              remain above the liquidation boundary after the new debt is added.
+            </p>
           </div>
         </section>
 
         <section id="health-check" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Health Check</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            The most critical check is the health check. The Spoke calls <code className="bg-gray-100 px-1 rounded text-gray-800">_requireLoanIsHealthy</code>, 
-            which performs the following:
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Health Check</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            The spoke uses the same valuation engine and risk settings that determine collateral
+            factors and liquidation eligibility. Borrowing only succeeds if adjusted collateral value
+            remains comfortably above total debt after the new draw.
           </p>
-          <div className="space-y-6">
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Oracle Valuation</h3>
-              <p className="text-gray-600 text-sm">
-                Calls the oracle to get the NFT's current value.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Collateral Value Calculation</h3>
-              <p className="text-gray-600 text-sm mb-2">
-                Calculates a collateralValue using the formula:
-              </p>
-              <code className="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded block overflow-x-auto">
-                collateralValue = fullValue × collateralFactorX32 / 2^32
-              </code>
-            </div>
-            <div className="border-l-4 border-red-400 pl-3">
-              <h3 className="font-semibold text-gray-900 mb-2">Revert Condition</h3>
-              <p className="text-gray-600 text-sm">
-                If the user's requested debt exceeds this collateralValue, the transaction reverts.
-              </p>
-            </div>
+
+          <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+            <code className="text-sm text-gray-900">
+              healthFactor = adjustedCollateralValue / outstandingDebt
+            </code>
           </div>
+
+          <p className="mt-4 text-sm text-gray-600">
+            The adjusted collateral value already includes conservative LP valuation, collateral
+            factors, and pool-level risk controls. See{" "}
+            <Link href="/developers/architecture/health-factor" className="text-blue-600 hover:underline">
+              Health Factor
+            </Link>{" "}
+            and{" "}
+            <Link href="/developers/architecture/collateral-factors" className="text-blue-600 hover:underline">
+              Collateral Factors
+            </Link>{" "}
+            for the canonical model.
+          </p>
         </section>
 
         <section id="internal-accounting" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Internal Accounting</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            If all checks pass, the Spoke updates its internal accounting:
-          </p>
-          <div className="space-y-4">
-            <div className="border-b border-gray-100 pb-4">
-              <h3 className="font-semibold text-gray-900 mb-2">1. Calculate Debt Shares</h3>
-              <p className="text-gray-600 text-sm">
-                Calculates the number of "debt shares" that represent the user's obligation. This allows 
-                interest to accrue over time without constantly updating raw debt amounts.
-              </p>
-            </div>
-            <div className="border-b border-gray-100 pb-4">
-              <h3 className="font-semibold text-gray-900 mb-2">2. Borrow from Hub</h3>
-              <p className="text-gray-600 text-sm">
-                Calls <code className="bg-gray-100 px-1 rounded text-gray-800">_borrowFromHub</code>, which interacts 
-                with the Aave Hub to draw the required funds.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">3. Transfer & Emit</h3>
-              <p className="text-gray-600 text-sm">
-                The borrowed tokens are transferred to the user, and a <code className="bg-gray-100 px-1 rounded text-gray-800">Borrow</code> event 
-                is emitted for off-chain indexing.
-              </p>
-            </div>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Internal Accounting</h2>
+          <div className="space-y-4 text-sm text-gray-600">
+            <p>
+              <strong className="text-gray-900">Debt shares:</strong> new debt is recorded through a
+              debt-share model so interest can accrue without rewriting the full account balance on
+              every block.
+            </p>
+            <p>
+              <strong className="text-gray-900">Hub draw:</strong> the Borrow Spoke requests the
+              asset from the Hub once all checks pass.
+            </p>
+            <p>
+              <strong className="text-gray-900">State update:</strong> the user receives the borrowed
+              asset, and the spoke records the new debt state for future health checks, repayments,
+              and liquidation logic.
+            </p>
           </div>
         </section>
 
         <section id="borrowable-assets" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Borrowable Assets</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            The following assets can be borrowed against LP collateral:
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Borrowable Assets</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            Borrowable assets are a Hub-side operational configuration rather than a permanent
+            protocol invariant. In practice, live markets generally start with major stablecoins and
+            other highly liquid assets before expanding.
           </p>
-          <ul className="space-y-2 text-gray-600 text-sm">
-            <li><strong className="text-gray-900">USDC</strong> — Primary stablecoin</li>
-            <li><strong className="text-gray-900">USDT</strong> — Tether USD</li>
-            <li><strong className="text-gray-900">DAI</strong> — MakerDAO stablecoin</li>
-            <li><strong className="text-gray-900">ETH</strong> — Native Ether</li>
-          </ul>
+          <p className="text-sm text-gray-600">
+            Check the active deployment or interface configuration for the exact current borrow set.
+          </p>
         </section>
 
         <section id="borrowing-power" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Borrowing Power</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Your borrowing power is calculated as:
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Borrowing Power</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            Borrowing power is the total of all approved LP-position contributions inside the same
+            Borrow Spoke. It is not assigned to the pool as a whole and not to the account as an
+            undifferentiated balance.
           </p>
-          <code className="text-sm text-gray-800 bg-gray-100 px-3 py-2 rounded block mb-4">
-            Borrowing Power = Collateral Value × LTV Ratio
-          </code>
-          <p className="text-gray-600 text-sm mb-2">
-            <strong>Example:</strong> LP collateral value of $10,000 with 75% LTV = <strong>$7,500 maximum borrow</strong>.
+          <p className="mb-4 text-sm text-gray-600">
+            <strong>Practical rule:</strong> the closer you borrow to maximum capacity, the less room
+            you have for price movement, volatility spikes, and recoverable-value haircuts.
           </p>
-          <p className="text-gray-500 text-sm mb-4">
-            LTV ratios vary by LP type. See <a href="/developers/architecture/collateral-factors" className="text-blue-600 hover:underline">Collateral Factors</a> for details.
-          </p>
-          <p className="text-amber-700 text-sm border-l-4 border-amber-400 pl-3">
-            <strong>Recommended:</strong> Borrow ≤ 60% of max to buffer against price volatility.
+          <p className="text-sm text-gray-600">
+            <strong>Recommended:</strong> keep a buffer and use{" "}
+            <Link href="/developers/liquidation" className="text-blue-600 hover:underline">
+              Liquidation Framework
+            </Link>{" "}
+            and{" "}
+            <Link href="/developers/architecture/health-factor" className="text-blue-600 hover:underline">
+              Health Factor
+            </Link>{" "}
+            as the canonical references when sizing risk.
           </p>
         </section>
       </div>
 
-      {/* Right scroll-spy sidebar */}
-      <ScrollSpySidebar 
-        sections={sections} 
-        pageSummary="Process for borrowing assets from the Hub against LP collateral."
+      <ScrollSpySidebar
+        sections={sections}
+        pageSummary="How borrowing works once approved LP positions have created aggregate capacity inside a Borrow Spoke."
         sectionColor="emerald"
       />
     </div>
