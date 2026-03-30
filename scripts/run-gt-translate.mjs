@@ -9,17 +9,23 @@ for (const envFile of [".env.local", ".env"]) {
 
 const projectId = process.env.GT_PROJECT_ID;
 const apiKey = process.env.GT_API_KEY || process.env.GT_DEV_API_KEY;
+const isDevelopmentKey = typeof apiKey === "string" && apiKey.startsWith("gtx-dev-");
+
+function skip(message) {
+  console.warn(`Skipping General Translation CLI: ${message}`);
+  process.exit(0);
+}
 
 if (!projectId) {
-  console.error("General Translation is not configured: missing GT_PROJECT_ID.");
-  console.error("Create .env.local from .env.example and add your GT project credentials.");
-  process.exit(1);
+  skip("missing GT_PROJECT_ID.");
 }
 
 if (!apiKey) {
-  console.error("General Translation is not configured: missing GT_API_KEY.");
-  console.error("For local development you may also provide GT_DEV_API_KEY; this script will use it as a fallback.");
-  process.exit(1);
+  skip("missing GT_API_KEY.");
+}
+
+if (isDevelopmentKey) {
+  skip("development keys cannot be used by gtx-cli during build. Provide a production GT_API_KEY to pretranslate content.");
 }
 
 const result = spawnSync(
