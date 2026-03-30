@@ -1,262 +1,131 @@
+import Link from "next/link"
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 export const metadata: Metadata = {
   title: "Health Factor",
-  description: "Health factor calculation in AMM Market. Understand health bands, penalty accrual, soft unwind mechanisms, and UI states for loan monitoring.",
+  description:
+    "How AMM Market compares adjusted collateral value and debt inside a Borrow Spoke to determine position safety and liquidation eligibility.",
 }
 
 const sections = [
   { id: "overview", title: "Overview" },
   { id: "calculation", title: "Calculation" },
-  { id: "health-bands", title: "Health Factor Bands" },
-  { id: "penalty-accrual", title: "Penalty Accrual" },
-  { id: "soft-unwind", title: "Soft Unwind" },
-  { id: "ui-states", title: "UI States" },
+  { id: "health-bands", title: "Monitoring Bands" },
+  { id: "response-path", title: "Response Path" },
+  { id: "user-actions", title: "User Actions" },
 ]
 
 export default function HealthFactorPage() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
-      {/* Main content */}
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
       <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Health Factor</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          How collateral value and debt interact to determine position safety.
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">Health Factor</h1>
+        <p className="mb-8 text-lg text-gray-600">
+          How adjusted collateral value and debt interact inside a Borrow Spoke to determine
+          position safety.
         </p>
 
         <section id="overview" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            The health factor (HF) is the most important metric for managing your position. 
-            It represents the safety margin between your collateral and debt. When HF drops 
-            to 1.0 or below, your position becomes liquidatable.
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            The health factor is the protocol&apos;s shorthand for the relationship between
+            risk-adjusted collateral value and outstanding debt. It is driven by the same valuation,
+            collateral-factor, and liquidation assumptions used everywhere else in AMM Market.
           </p>
-          
-          <div className="flex gap-6 text-sm">
-            <div className="border-l-4 border-green-500 pl-3">
-              <div className="font-bold text-gray-900">≥ 1.25</div>
-              <div className="text-gray-600">Safe</div>
-            </div>
-            <div className="border-l-4 border-amber-500 pl-3">
-              <div className="font-bold text-gray-900">1.0 - 1.25</div>
-              <div className="text-gray-600">Warning</div>
-            </div>
-            <div className="border-l-4 border-red-500 pl-3">
-              <div className="font-bold text-gray-900">≤ 1.0</div>
-              <div className="text-gray-600">At Risk</div>
-            </div>
-          </div>
+          <p className="text-sm text-gray-600">
+            When health deteriorates far enough that debt exceeds the allowed borrowing boundary, the
+            position becomes liquidatable under the canonical{" "}
+            <Link href="/developers/liquidation" className="text-blue-600 hover:underline">
+              Liquidation Framework
+            </Link>
+            .
+          </p>
         </section>
 
         <section id="calculation" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Calculation</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            We compute HF per Spoke:
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Calculation</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            Health is computed per Borrow Spoke. The numerator is the user&apos;s adjusted collateral
+            value inside that spoke, which already reflects position-level valuation, collateral
+            factors, pool-level risk, and conservative recoverable-value assumptions.
           </p>
-          
-          <div className="p-4 bg-gray-900 rounded-lg mb-4">
-            <code className="text-green-400 text-sm">
-              HF_spoke = totalCollateralUsd_spoke / totalDebtUsd_spoke
+
+          <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+            <code className="text-sm text-gray-900">
+              healthFactor = adjustedCollateralValue / outstandingDebt
             </code>
           </div>
 
-          <p className="text-gray-600 text-sm">
-            <strong>Per-Spoke Calculation:</strong> Health factor bands apply per Spoke. A user with positions in multiple Spokes 
-            (e.g., Uniswap v3 Spoke and Balancer v3 Spoke) will have independent health 
-            factor calculations for each.
+          <p className="mt-4 text-sm text-gray-600">
+            If a user has collateral across multiple Borrow Spokes, each spoke has its own health
+            calculation. One spoke&apos;s surplus does not automatically rescue another spoke&apos;s
+            shortfall.
           </p>
         </section>
 
         <section id="health-bands" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Health Factor Bands</h2>
-          
-          <div className="space-y-4">
-            <div className="border-l-4 border-green-500 pl-4 py-2">
-              <div className="flex items-center justify-between mb-1">
-                <span className="font-semibold text-gray-900">Green (HF ≥ 1.25)</span>
-                <span className="text-gray-500 font-mono text-sm">Monitor</span>
-              </div>
-              <p className="text-gray-600 text-sm">
-                No action required. Normal borrow cost applies.
-              </p>
-            </div>
-
-            <div className="border-l-4 border-amber-500 pl-4 py-2">
-              <div className="flex items-center justify-between mb-1">
-                <span className="font-semibold text-gray-900">Yellow Warning (1.05 ≤ HF &lt; 1.25)</span>
-                <span className="text-gray-500 font-mono text-sm">Warning</span>
-              </div>
-              <p className="text-gray-600 text-sm mb-2">
-                UI warns borrower. No protocol action yet, but borrower is asked to:
-              </p>
-              <ul className="text-gray-600 text-sm space-y-1 ml-4">
-                <li>• Add liquidity to the bad pool, OR</li>
-                <li>• Add a different approved pool (in the same Spoke) as collateral</li>
-              </ul>
-            </div>
-
-            <div className="border-l-4 border-amber-600 pl-4 py-2">
-              <div className="flex items-center justify-between mb-1">
-                <span className="font-semibold text-gray-900">Yellow Penalty Accrual (1.00 &lt; HF &lt; 1.05)</span>
-                <span className="text-gray-500 font-mono text-sm">Penalty</span>
-              </div>
-              <p className="text-gray-600 text-sm mb-2">
-                Penalty kicks in (spoke-level penalty):
-              </p>
-              <ul className="text-gray-600 text-sm space-y-1 ml-4">
-                <li>• Penalty rate: 0.3% per day, accruing pro-rata (per-minute accrual)</li>
-                <li>• Applied to borrower's effective borrowing cost</li>
-                <li>• Grace period: up to 3 days by default</li>
-                <li>• If market recovers, penalty remains as increased borrow rate</li>
-              </ul>
-            </div>
-
-            <div className="border-l-4 border-orange-500 pl-4 py-2">
-              <div className="flex items-center justify-between mb-1">
-                <span className="font-semibold text-gray-900">Orange (HF ≤ 1.00)</span>
-                <span className="text-gray-500 font-mono text-sm">Soft Unwind</span>
-              </div>
-              <p className="text-gray-600 text-sm">
-                LiquidationAdapter may perform soft-unwind steps to return HF to target (e.g., 1.10). 
-                If soft-unwind fails (insufficient liquidity, slippage caps breached), immediately 
-                execute hard liquidation.
-              </p>
-            </div>
-
-            <div className="border-l-4 border-red-500 pl-4 py-2">
-              <div className="flex items-center justify-between mb-1">
-                <span className="font-semibold text-gray-900">Red (HF ≤ 0.95 or soft unwind failure)</span>
-                <span className="text-gray-500 font-mono text-sm">Hard Liquidation</span>
-              </div>
-              <p className="text-gray-600 text-sm">
-                Liquidation actions fully execute to repay debt up to allowed close factors. 
-                No auctions, no protocol reserve — remove collateral as required and settle debt.
-              </p>
-            </div>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Monitoring Bands</h2>
+          <div className="space-y-4 text-sm text-gray-600">
+            <p>
+              <strong className="text-gray-900">Healthy buffer:</strong> collateral value remains
+              well above debt, leaving room for normal market movement.
+            </p>
+            <p>
+              <strong className="text-gray-900">Watchlist:</strong> the account still passes checks,
+              but the margin is thinning enough that user action is sensible.
+            </p>
+            <p>
+              <strong className="text-gray-900">Liquidatable:</strong> the account has reached or
+              fallen through the liquidation boundary, so the liquidation process can take over.
+            </p>
           </div>
-        </section>
-
-        <section id="penalty-accrual" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Penalty Accrual</h2>
-          
-          <p className="text-gray-600 text-sm mb-4">
-            <strong>Why Penalty-First?</strong> It reproduces the LLAMMA ethos of giving markets time to recover while still protecting 
-            lenders. Penalty nudges behavior and compensates protocol/spoke for carrying risk. It 
-            avoids immediate market churn on transient moves.
-          </p>
-
-          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <h3 className="font-semibold text-gray-900 mb-2">Penalty Mechanics</h3>
-            <ul className="text-gray-600 text-sm space-y-2">
-              <li>• <strong>Rate:</strong> 0.3% per day (example), accruing per-minute</li>
-              <li>• <strong>Application:</strong> Compounded into debt balance or charged periodically</li>
-              <li>• <strong>Visibility:</strong> Penalty is visible in UI and increases effective borrowing cost</li>
-              <li>• <strong>Effect:</strong> Effective HF moves downward if unpaid</li>
-              <li>• <strong>Recovery:</strong> If market recovers, penalty remains but user avoids collateral removal</li>
-            </ul>
-          </div>
-        </section>
-
-        <section id="soft-unwind" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Soft Unwind</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            When HF drops to 1.00 or below after the penalty window, the soft-unwind mechanism activates:
-          </p>
-          
-          <div className="space-y-3">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Step 1: Partial Decrease</h3>
-              <p className="text-gray-600 text-sm">
-                Reduce liquidity from the LP position to extract value.
-              </p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Step 2: Collect</h3>
-              <p className="text-gray-600 text-sm">
-                Collect the extracted tokens from the position.
-              </p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Step 3: Swap</h3>
-              <p className="text-gray-600 text-sm">
-                Swap extracted tokens to the debt asset if needed.
-              </p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Step 4: Repay</h3>
-              <p className="text-gray-600 text-sm">
-                Repay debt to return HF to target (e.g., 1.10).
-              </p>
-            </div>
-          </div>
-
-          <p className="mt-4 text-gray-600 text-sm border-l-4 border-red-400 pl-3">
-            <strong>Failure Scenario:</strong> If soft-unwind fails due to insufficient liquidity for required swaps or slippage caps 
-            being breached, hard liquidation executes immediately. Any shortfall requires governance 
-            action later.
+          <p className="mt-4 text-sm text-gray-600">
+            Interface warning bands may be more conservative than the hard liquidation boundary, but
+            they should be understood as monitoring aids, not as separate protocol mechanics.
           </p>
         </section>
 
-        <section id="ui-states" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">UI States</h2>
-          
-          <div className="space-y-4">
-            <div className="border-l-4 border-green-500 pl-3 py-1">
-              <h3 className="font-semibold text-gray-900 mb-1">Healthy</h3>
-              <ul className="text-gray-600 text-sm space-y-1">
-                <li>• Shows total collateral, borrow amount, health factor</li>
-                <li>• Borrow/repay buttons enabled</li>
-              </ul>
-            </div>
-
-            <div className="border-l-4 border-amber-500 pl-3 py-1">
-              <h3 className="font-semibold text-gray-900 mb-1">Warning</h3>
-              <ul className="text-gray-600 text-sm space-y-1">
-                <li>• Banner: "Health Factor Dropping: Top up or repay soon."</li>
-                <li>• Quick actions: Add liquidity, repay debt</li>
-              </ul>
-            </div>
-
-            <div className="border-l-4 border-orange-500 pl-3 py-1">
-              <h3 className="font-semibold text-gray-900 mb-1">At Risk</h3>
-              <ul className="text-gray-600 text-sm space-y-1">
-                <li>• Banner: "Close to liquidation."</li>
-                <li>• Countdown or "monitoring" mode</li>
-              </ul>
-            </div>
-
-            <div className="border-l-4 border-red-500 pl-3 py-1">
-              <h3 className="font-semibold text-gray-900 mb-1">Liquidatable</h3>
-              <ul className="text-gray-600 text-sm space-y-1">
-                <li>• Liquidators can trigger</li>
-                <li>• User sees frozen borrowing UI, only repay/top-up allowed</li>
-              </ul>
-            </div>
-
-            <div className="border-b border-gray-100 pb-4">
-              <h3 className="font-semibold text-gray-900 mb-1">Partial Liquidation</h3>
-              <ul className="text-gray-600 text-sm space-y-1">
-                <li>• UI shows which NFT was liquidated and impact</li>
-                <li>• Position may survive if others healthy</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-1">Full Liquidation</h3>
-              <ul className="text-gray-600 text-sm space-y-1">
-                <li>• Dashboard → "Position Closed."</li>
-                <li>• Breakdown: Debt repaid, collateral seized</li>
-              </ul>
-            </div>
+        <section id="response-path" className="mb-12">
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Response Path</h2>
+          <div className="space-y-4 text-sm text-gray-600">
+            <p>
+              If health weakens, the first response is user-driven: repay debt, add approved LP
+              collateral, or reduce exposure through position changes that still pass health checks.
+            </p>
+            <p>
+              If health crosses the liquidation boundary, the protocol shifts from monitoring to
+              settlement. Liquidation nodes and third-party liquidators can then unwind the minimum
+              required collateral path to restore solvency.
+            </p>
           </div>
+        </section>
+
+        <section id="user-actions" className="mb-12">
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">User Actions</h2>
+          <ul className="space-y-2 text-gray-600">
+            <li>Borrowing more lowers health because debt rises</li>
+            <li>Repaying debt improves health immediately</li>
+            <li>Adding approved collateral can increase remaining borrowing headroom</li>
+            <li>Claiming fees, withdrawing collateral, or re-ranging positions may reduce health and must be checked carefully</li>
+          </ul>
+          <p className="mt-4 text-sm text-gray-600">
+            Use{" "}
+            <Link href="/developers/architecture/collateral-factors" className="text-blue-600 hover:underline">
+              Collateral Factors
+            </Link>{" "}
+            for the numerator logic and{" "}
+            <Link href="/developers/liquidation" className="text-blue-600 hover:underline">
+              Liquidation Framework
+            </Link>{" "}
+            for what happens once health is no longer sufficient.
+          </p>
         </section>
       </div>
 
-      {/* Right scroll-spy sidebar */}
-      <ScrollSpySidebar 
-        sections={sections} 
-        pageSummary="How collateral value and debt interact to determine position safety."
+      <ScrollSpySidebar
+        sections={sections}
+        pageSummary="How AMM Market measures account safety inside a Borrow Spoke using the same risk-adjusted collateral model that drives liquidation."
         sectionColor="violet"
       />
     </div>

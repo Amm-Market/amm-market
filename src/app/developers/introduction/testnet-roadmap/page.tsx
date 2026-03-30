@@ -3,190 +3,91 @@ import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 export const metadata: Metadata = {
   title: "Testnet & Roadmap",
-  description: "AMM Market testnet deployment on Unichain Sepolia. Get test tokens, earn points, and explore the rewards program.",
+  description:
+    "Operational guide to AMM Market test deployments and roadmap framing. Use this page for evaluation context, not as a canonical protocol specification or launch promise.",
 }
 
 const sections = [
-  { id: "supported-networks", title: "Supported Networks" },
-  { id: "testnet-prerequisites", title: "Testnet Prerequisites" },
-  { id: "getting-started", title: "Getting Started" },
-  { id: "rewards-program", title: "Rewards Program" },
-  { id: "earning-points", title: "Earning Points" },
+  { id: "overview", title: "Overview" },
+  { id: "testnet-scope", title: "Testnet Scope" },
+  { id: "how-to-evaluate", title: "How to Evaluate" },
+  { id: "roadmap-framing", title: "Roadmap Framing" },
+  { id: "campaigns-and-status", title: "Campaigns & Status" },
 ]
 
 export default function TestnetRoadmapPage() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
-      {/* Main content */}
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
       <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Testnet & Roadmap</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Get started with AMM Market on testnet and learn about our rewards program.
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">Testnet & Roadmap</h1>
+        <p className="mb-8 text-lg text-gray-600">
+          Operational page for testing AMM Market deployments and understanding how roadmap statements should be read.
         </p>
 
-        <section id="supported-networks" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Supported Networks</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            To start using AMM Market, simply connect your wallet to one of our supported networks. 
-            Since all these networks are Ethereum Virtual Machine (EVM) compatible, AMM Market supports 
-            a wide range of wallets.
+        <section id="overview" className="mb-12">
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            This page is intentionally separate from the protocol-spec story. Testnet availability,
+            supported networks, and public roadmap sequencing are operational matters that can change
+            faster than the underlying architecture.
           </p>
-          
-          <div className="flex flex-wrap gap-4 text-sm">
-            <span className="border-l-4 border-green-500 pl-3 font-medium text-gray-900">Ethereum</span>
-            <span className="border-l-4 border-green-500 pl-3 font-medium text-gray-900">Unichain</span>
-            <span className="border-l-4 border-green-500 pl-3 font-medium text-gray-900">Arbitrum</span>
-            <span className="border-l-4 border-green-500 pl-3 font-medium text-gray-900">Base</span>
-          </div>
+          <p className="border-l-4 border-blue-400 pl-3 text-sm text-gray-600">
+            Use the lightpaper and core developer docs for protocol design. Use this page for
+            environment readiness, trial scope, and rollout context.
+          </p>
         </section>
 
-        <section id="testnet-prerequisites" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Testnet Prerequisites</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Our testnet lets you explore AMM Market's features in a risk-free environment. 
-            Before getting started, make sure you have:
+        <section id="testnet-scope" className="mb-12">
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Testnet Scope</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            A test deployment may expose only a subset of the full architecture. Supported LP
+            families, borrow assets, oracle coverage, and liquidation tooling can all be narrower on
+            testnet than on an eventual production deployment.
           </p>
-          
-          <div className="space-y-3">
-            <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-              <span className="text-blue-500 mt-0.5">•</span>
-              <div>
-                <span className="font-medium text-gray-900">Wallet</span>
-                <p className="text-gray-600 text-sm">A web3 wallet (e.g., MetaMask) connected to the Unichain testnet.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-              <span className="text-blue-500 mt-0.5">•</span>
-              <div>
-                <span className="font-medium text-gray-900">Test ETH/USDC</span>
-                <p className="text-gray-600 text-sm">You'll need test tokens for the Unichain testnet to add liquidity and potentially borrow.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-              <span className="text-blue-500 mt-0.5">•</span>
-              <div>
-                <span className="font-medium text-gray-900">Uniswap V4 Test Environment</span>
-                <p className="text-gray-600 text-sm">Familiarity with interacting with Uniswap V4 pools (though the hook integration should make AMM Market-specific actions seamless).</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-              <span className="text-blue-500 mt-0.5">•</span>
-              <div>
-                <span className="font-medium text-gray-900">AMM Market UI/Interface</span>
-                <p className="text-gray-600 text-sm">Access to the AMM Market testnet frontend.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-              <span className="text-blue-500 mt-0.5">•</span>
-              <div>
-                <span className="font-medium text-gray-900">Understanding</span>
-                <p className="text-gray-600 text-sm">Basic knowledge of DeFi concepts like liquidity provision, borrowing, and collateral.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="getting-started" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Getting Started on Testnet</h2>
-          
-          <ol className="space-y-4 list-decimal list-inside">
-            <li className="text-gray-600 text-sm">
-              <strong className="text-gray-900">Claim Mock ETH</strong> — Get ETH Sepolia from an external faucet.
-            </li>
-            <li className="text-gray-600 text-sm">
-              <strong className="text-gray-900">Claim Mock USDC</strong> — Visit our Circle USDC faucet to receive 100 mock USDC.
-            </li>
-            <li className="text-gray-600 text-sm">
-              <strong className="text-gray-900">Add Liquidity</strong> — Go to the Trade page on AMM Market Testnet and click "Add Liquidity": connect to AMM Market and deposit both your testnet ETH and your mock USDC.
-            </li>
-            <li className="text-gray-600 text-sm">
-              <strong className="text-gray-900">Try Borrow</strong> — You're now ready to execute your first trade on AMM Market!
-            </li>
-          </ol>
-        </section>
-
-        <section id="rewards-program" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Rewards Program</h2>
-          
-          <p className="text-gray-600 text-sm mb-4">
-            <strong>Eligibility & Compliance:</strong> Any user who can access and deposit liquidity is eligible for Mini rewards. Our system 
-            adheres to strict compliance standards—including geo-blocking and AML requirements—enforced 
-            directly within our web application and smart contracts.
-          </p>
-
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Our robust points engine enables us to reward actions at a granular level, applying distinct 
-            rates and boosts for activities such as:
-          </p>
-
-          <ul className="space-y-2 text-gray-600 mb-4">
-            <li className="flex items-center gap-2">
-              <span className="text-purple-500">•</span>
-              <span>Collateral Asset management</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-purple-500">•</span>
-              <span>Debt Asset management</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-purple-500">•</span>
-              <span>Liquidity Vault contributions</span>
-            </li>
+          <ul className="space-y-2 text-sm text-gray-600">
+            <li>• Verify the active network, contract registry, and supported pool set for the current environment.</li>
+            <li>• Expect mocked assets, restricted venue coverage, and shortened operational loops.</li>
+            <li>• Treat testnet behavior as an evaluation environment, not as a final production promise.</li>
           </ul>
         </section>
 
-        <section id="earning-points" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Earning Points</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Earning Mini points is simple and versatile. Here are some of the key methods:
+        <section id="how-to-evaluate" className="mb-12">
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">How to Evaluate</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            The most useful way to test AMM Market is to walk the canonical flow: deposit an eligible
+            LP position, confirm spoke-level valuation, observe aggregate borrowing capacity, borrow
+            from the Hub-side liquidity layer, and then inspect health monitoring and repayment paths.
           </p>
-          
-          <div className="space-y-3">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Add Liquidity</h3>
-              <p className="text-gray-600 text-sm">Use the AMM Market Pool to add liquidity and start earning points immediately.</p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Passive Points</h3>
-              <p className="text-gray-600 text-sm">Earn points by simply holding whitelisted assets in your wallet.</p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Rollover Points</h3>
-              <p className="text-gray-600 text-sm">Gain additional points by rolling over your yield assets.</p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Referral Points</h3>
-              <p className="text-gray-600 text-sm">Invite friends to the platform and earn points for every successful referral.</p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Check-In Points</h3>
-              <p className="text-gray-600 text-sm">Earn points by regularly checking into the platform.</p>
-            </div>
-          </div>
+          <p className="text-sm text-gray-600">
+            If a test deployment includes points, quests, or other campaigns, those should be treated
+            as separate operational features rather than as evidence of the protocol&apos;s core
+            collateral model.
+          </p>
+        </section>
 
-          <div className="mt-6">
-            <h3 className="font-semibold text-gray-900 mb-2">Coming Soon</h3>
-            <p className="text-gray-600 text-sm mb-2">
-              As we expand our partnerships and integrations, expect new programs to earn points for:
-            </p>
-            <ul className="text-gray-600 text-sm space-y-1 ml-4">
-              <li>• LP'ing into integrated DeFi protocols</li>
-              <li>• Completing quests on Layer 2</li>
-              <li>• And more...</li>
-            </ul>
-          </div>
+        <section id="roadmap-framing" className="mb-12">
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Roadmap Framing</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            Roadmap statements should be interpreted as directional priorities: broader LP-family
+            coverage, stronger oracle support, deeper liquidation tooling, and more refined risk
+            governance. They should not be read as fixed launch dates or immutable network promises
+            unless separately announced.
+          </p>
+        </section>
 
-          <p className="mt-4 text-gray-600 text-sm">
-            <strong>Note:</strong> Loyalty points will only be accrued if your wallet holds eETH, weETH, or follows one of 
-            the designated ecosystem paths outlined on our official ecosystems page.
+        <section id="campaigns-and-status" className="mb-12">
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Campaigns & Status</h2>
+          <p className="leading-relaxed text-gray-600">
+            Any active incentives, points programs, or network-specific rollout details should be
+            published as campaign documentation or release notes. Keeping those details separate from
+            the core protocol narrative makes the developer docs more stable and easier to trust.
           </p>
         </section>
       </div>
 
-      {/* Right scroll-spy sidebar */}
-      <ScrollSpySidebar 
-        sections={sections} 
-        pageSummary="Get started with AMM Market on testnet and learn about our rewards program."
+      <ScrollSpySidebar
+        sections={sections}
+        pageSummary="Operational guide to AMM Market test deployments and roadmap framing."
         sectionColor="blue"
       />
     </div>

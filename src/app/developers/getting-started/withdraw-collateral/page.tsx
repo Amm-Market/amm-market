@@ -1,9 +1,11 @@
+import Link from "next/link"
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 export const metadata: Metadata = {
   title: "Withdraw Collateral",
-  description: "How to withdraw LP collateral from AMM Market after repaying your loan. Understand the withdrawal process and position modifications.",
+  description:
+    "How LP collateral is released from AMM Market once debt is repaid or the remaining account can still pass health checks after withdrawal.",
 }
 
 const sections = [
@@ -15,108 +17,80 @@ const sections = [
 
 export default function WithdrawCollateralPage() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
-      {/* Main content */}
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
       <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Withdraw Collateral</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Conditions and steps required to withdraw LP tokens after debt obligations are met.
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">Withdraw Collateral</h1>
+        <p className="mb-8 text-lg text-gray-600">
+          Collateral can leave the Borrow Spoke once debt is cleared or the remaining account still
+          satisfies all health checks after the withdrawal.
         </p>
 
         <section id="overview" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Once a loan is fully repaid, the collateral is no longer needed. The "Withdraw" function 
-            allows you to reclaim your original LP share.
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            Withdrawing collateral is the reverse of deposit. The protocol releases LP positions only
+            when doing so will not leave outstanding debt undersecured.
           </p>
-          <p className="text-gray-500 text-sm">
-            <strong>Note:</strong> As explained in the Repay Loans section, the NFT withdrawal is 
-            intrinsically tied to full loan repayment via the <code className="bg-gray-100 px-1 rounded text-gray-800">_cleanupLoan</code> function.
+          <p className="text-sm text-gray-600">
+            Full debt repayment is the cleanest withdrawal path, but some collateral changes may also
+            be possible while debt remains outstanding if the post-change account still passes the
+            same valuation and health checks used everywhere else in the protocol.
           </p>
         </section>
 
         <section id="withdrawal-process" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Withdrawal Process</h2>
-          <div className="space-y-6">
-            <div className="border-b border-gray-100 pb-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Step 1: Repay All Debt</h3>
-              <p className="text-gray-600 text-sm">
-                Ensure all outstanding debt including accrued interest is fully repaid. Use 
-                <code className="bg-gray-100 px-1 rounded text-gray-800 ml-1">type(uint256).max</code> to repay the full amount.
-              </p>
-            </div>
-            <div className="border-b border-gray-100 pb-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Step 2: Automatic Cleanup</h3>
-              <p className="text-gray-600 text-sm">
-                When debt reaches zero, the <code className="bg-gray-100 px-1 rounded text-gray-800">_cleanupLoan</code> function 
-                is automatically triggered, which clears loan data and initiates the NFT transfer.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Step 3: Receive LP Share</h3>
-              <p className="text-gray-600 text-sm">
-                After confirming the withdrawal, the Spoke contract will transfer the LP share back 
-                to your wallet, restoring your full ownership and control over your liquidity position.
-              </p>
-            </div>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Withdrawal Process</h2>
+          <div className="space-y-4 text-sm text-gray-600">
+            <p>
+              <strong className="text-gray-900">1. Reduce or clear debt:</strong> repay enough so the
+              remaining account can support any collateral that stays in place.
+            </p>
+            <p>
+              <strong className="text-gray-900">2. Recompute borrowing capacity:</strong> the Borrow
+              Spoke recalculates the aggregate account after removing the requested LP position or
+              resizing it.
+            </p>
+            <p>
+              <strong className="text-gray-900">3. Release the LP position:</strong> if post-withdraw
+              health is valid, the protocol returns or unlocks the collateral for normal user control.
+            </p>
           </div>
         </section>
 
         <section id="position-modifications" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Position Modifications</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            You can also modify positions while maintaining collateral, as long as health checks pass:
-          </p>
-          <div className="space-y-6">
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Change Tick Range</h3>
-              <p className="text-gray-600 text-sm">
-                Close the existing position and create a new one (e.g., change tick range) as long 
-                as both assets in the new position are approved collateral and the post-change 
-                collateral value maintains loan health.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Requirements for New Positions</h3>
-              <ul className="text-gray-600 text-sm space-y-1 ml-4">
-                <li>• Both assets must be approved collateral</li>
-                <li>• Post-change collateral value must maintain loan health</li>
-                <li>• Health checks must pass before and after the modification</li>
-              </ul>
-            </div>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Position Modifications</h2>
+          <div className="space-y-4 text-sm text-gray-600">
+            <p>
+              Some users will not fully exit collateral when they make changes. Instead, they may
+              resize a fungible LP position, replace a concentrated-liquidity range, or rotate into a
+              different approved position inside the same spoke.
+            </p>
+            <p>
+              Those changes are only valid if the new or remaining collateral still belongs to the
+              approved set and the resulting account remains above the liquidation boundary.
+            </p>
           </div>
         </section>
 
         <section id="after-withdrawal" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">After Withdrawal</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Once your LP share is back in your wallet, you have full control:
-          </p>
-          <ul className="space-y-3 mb-6">
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">After Withdrawal</h2>
+          <ul className="space-y-2 text-gray-600">
+            <li>The LP position returns to normal user control</li>
+            <li>The user may keep it in the underlying pool, re-range it, or exit liquidity entirely</li>
             <li>
-              <span className="font-medium text-gray-900">Keep in Pool</span>
-              <span className="text-gray-600 text-sm"> — Continue earning trading fees in the DEX</span>
-            </li>
-            <li>
-              <span className="font-medium text-gray-900">Adjust Parameters</span>
-              <span className="text-gray-600 text-sm"> — Modify price range or liquidity amount</span>
-            </li>
-            <li>
-              <span className="font-medium text-gray-900">Full Exit</span>
-              <span className="text-gray-600 text-sm"> — Withdraw from Uniswap or Balancer entirely</span>
+              It can also be redeposited later through{" "}
+              <Link href="/developers/getting-started" className="text-blue-600 hover:underline">
+                Deposit LP
+              </Link>{" "}
+              if the pool remains approved
             </li>
           </ul>
-          <p className="text-gray-600 text-sm">
-            <strong>Re-deposit Anytime:</strong> You can always deposit your LP share back into AMM Market 
-            to open a new loan whenever you need liquidity again.
-          </p>
         </section>
       </div>
 
-      {/* Right scroll-spy sidebar */}
-      <ScrollSpySidebar 
-        sections={sections} 
-        pageSummary="Conditions and steps required to withdraw LP tokens after debt obligations are met."
+      <ScrollSpySidebar
+        sections={sections}
+        pageSummary="How LP collateral is released once the remaining account still satisfies AMM Market health checks."
         sectionColor="emerald"
       />
     </div>

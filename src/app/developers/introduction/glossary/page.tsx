@@ -17,49 +17,158 @@ const sections = [
 
 const glossaryTerms = {
   coreComponents: [
-    { term: "Spoke", definition: "A specialized smart contract in the Aave v4 ecosystem responsible for managing a specific type of collateral and user interaction. AMM Market's contract is a Spoke." },
-    { term: "Hub", definition: "The central liquidity contract in Aave v4 that pools capital from lenders and allocates it to Spokes. It is the source of funds for the UniV3 Spoke." },
-    { term: "Hub-Spoke Architecture", definition: "A design pattern where multiple specialized \"Spoke\" contracts connect to a central \"Hub\" for capital. The Spokes manage specific collateral types and user interactions, while the Hub handles the core lending and risk management of the capital pool." },
-    { term: "UniV3 Spoke", definition: "A specialized smart contract within the AMM Market protocol that is responsible for managing Uniswap V3 LP NFTs as collateral. It acts as an intermediary between end-users and the Aave v4 lending Hubs." },
-    { term: "Aave v4 Hub", definition: "A core component of the Aave lending protocol that manages pools of capital, sets risk parameters, and allocates liquidity to Spokes." },
+    {
+      term: "Borrow Spoke",
+      definition:
+        "The borrower-facing AMM Market spoke that receives LP collateral, values positions, tracks debt, and coordinates borrowing and liquidation against Hub liquidity.",
+    },
+    {
+      term: "Invest Spoke",
+      definition:
+        "The lender-facing capital entry point that routes supplied assets into the Hub so Borrow Spokes can draw shared liquidity.",
+    },
+    {
+      term: "Hub",
+      definition:
+        "The shared monetary layer in Aave v4 that manages liquidity, reserves, accounting, and protocol-wide capital coordination across connected spokes.",
+    },
+    {
+      term: "Hub-and-Spoke Architecture",
+      definition:
+        "A design where shared capital lives in the Hub while collateral-specific logic is isolated in spokes. AMM Market uses this model because LP collateral needs venue-specific valuation and liquidation behavior.",
+    },
+    {
+      term: "Liquidation Node",
+      definition:
+        "A protocol-operated runtime that indexes active positions and serves as a specialized liquidation backstop for complex LP collateral.",
+    },
   ],
   lpAndCollateral: [
-    { term: "LP NFT", definition: "A non-fungible token representing a liquidity position in a Uniswap v3 pool. It is the core collateral in the AMM Market protocol." },
-    { term: "Uniswap V3 LP NFT", definition: "A non-fungible token that represents ownership of a liquidity position within a Uniswap V3 pool. It contains metadata about the pool, the two tokens involved, the price range (ticks), and the amount of liquidity provided." },
-    { term: "Collateral Factor", definition: "A percentage (0-100%) that determines how much of an asset's value can be used as collateral. It is the primary risk parameter for an asset. For example, a 70% collateral factor means only 70% of the NFT's value counts toward the loan limit." },
-    { term: "Collateral Value", definition: "Value of the position that counts toward security of the loan after applying the minimum of the two token collateral factors. CollateralValue equals (fullValue plus feeValue) times minCollateralFactor divided by 2^32." },
-    { term: "Loan-to-Value (LTV)", definition: "A ratio that compares the amount of a loan to the value of the collateral securing it. A higher LTV indicates a riskier loan. The protocol monitors this ratio to determine when a position is at risk of liquidation." },
+    {
+      term: "LP Position",
+      definition:
+        "A liquidity position from a supported AMM. Depending on the venue, it may be a fungible LP token, a concentrated-liquidity NFT, or another approved pool-share format.",
+    },
+    {
+      term: "Collateral Factor",
+      definition:
+        "The portion of USD collateral value that may count toward borrowing power. In LP markets, this is applied at the position level rather than to the spoke as a whole.",
+    },
+    {
+      term: "Borrowing Capacity",
+      definition:
+        "The amount a user can borrow inside a Borrow Spoke after each deposited LP position has been valued, risk-adjusted, and added to the user’s aggregate capacity.",
+    },
+    {
+      term: "Allowed Pool",
+      definition:
+        "A governance-approved pool that meets admissibility requirements such as oracle coverage, liquidity depth, unwind quality, and spoke compatibility.",
+    },
+    {
+      term: "Loan-to-Value (LTV)",
+      definition:
+        "The borrowing ratio associated with collateral after AMM Market’s position valuation and pool-specific risk controls have been applied.",
+    },
   ],
   debtAndInterest: [
-    { term: "Debt Shares", definition: "An internal accounting unit used to track a user's debt obligation, allowing for precise interest accrual without constant state updates. debtShares are converted to asset units via the global debtExchangeRateRay." },
-    { term: "Exchange Rate", definition: "Global variable debtExchangeRateRay measures the value of one debt share denominated in asset units scaled by Ray. Exchange rate grows with accrued borrow rate and is updated when operations touch the contract via _updateGlobalInterest." },
-    { term: "Utilization Rate", definition: "The proportion of borrowed assets to the total available assets within the protocol. It is an indicator of outstanding loans relative to the supply of funds and plays an instrumental role in determining interest rates." },
-    { term: "Base Rate", definition: "An optional minimal Borrow Rate the protocol can define." },
-    { term: "Borrow Rate", definition: "The rate per second that borrowers accrue as additional debt." },
-    { term: "Risk Premium", definition: "An additional interest rate component, determined by Aave v4's Hub, that is applied to the Spoke's borrowing cost based on the perceived risk of its collateral portfolio." },
+    {
+      term: "Debt Shares",
+      definition:
+        "The internal accounting unit used to track borrower obligations while interest accrues over time without rewriting every loan balance continuously.",
+    },
+    {
+      term: "Borrow Rate",
+      definition:
+        "The rate borrowers pay on outstanding debt. It reflects both shared Hub conditions and LP-specific risk considerations.",
+    },
+    {
+      term: "Utilization Rate",
+      definition:
+        "The proportion of borrowed liquidity relative to available supply in the relevant Hub-connected capital layer.",
+    },
+    {
+      term: "Risk Premium",
+      definition:
+        "The risk-specific component layered on top of base borrowing conditions to reflect the LP collateral profile being financed.",
+    },
+    {
+      term: "Reserve Factor",
+      definition:
+        "The portion of protocol economics or interest flows reserved for the system rather than passed through entirely to liquidity suppliers.",
+    },
   ],
   liquidationTerms: [
-    { term: "Liquidation", definition: "The process by which an undercollateralized loan is resolved. A liquidator repays a portion of the debt and receives a discounted amount of the underlying collateral assets in return, ensuring the protocol remains solvent." },
-    { term: "Liquidation Bonus", definition: "An extra amount of collateral given to a liquidator as an incentive to perform the liquidation, helping to keep the protocol solvent." },
+    {
+      term: "Health Factor",
+      definition:
+        "The ratio between adjusted collateral value and outstanding debt inside a Borrow Spoke. When it falls too low, the position approaches liquidation eligibility.",
+    },
+    {
+      term: "Liquidation",
+      definition:
+        "The process of repaying debt against an unhealthy LP-backed position, unwinding enough collateral to restore solvency, and returning any residual value after settlement.",
+    },
+    {
+      term: "Liquidation Bonus",
+      definition:
+        "The liquidation premium paid to the party that executes the unwind, compensating them for capital use, routing complexity, and execution risk.",
+    },
   ],
   oracleAndTransform: [
-    { term: "Oracle", definition: "A system that provides external price data to a smart contract. For AMM Market, the oracle must be capable of accurately pricing complex Uniswap v3 LP NFTs." },
-    { term: "Transform", definition: "A secure mechanism that allows an external, whitelisted contract to modify a user's LP position (e.g., by rebalancing its range) while it is being used as collateral. Transformers must be allow-listed. The Spoke sets transformedTokenId during the call to block reentrancy." },
+    {
+      term: "Oracle",
+      definition:
+        "AMM Market’s valuation engine for LP collateral. It combines external asset prices, LP position reconstruction, and recoverable-value safeguards.",
+    },
+    {
+      term: "Recoverable Value",
+      definition:
+        "The amount the protocol believes can realistically be realized during a stressed unwind after liquidation slippage, pool conditions, and risk buffers are considered.",
+    },
+    {
+      term: "Transform",
+      definition:
+        "A controlled modification of a collateralized LP position, such as a rebalance or range change, that is only allowed when the resulting position still satisfies protocol health checks.",
+    },
   ],
   metrics: [
-    { term: "TVL", definition: "Total Value Locked — the total value of LP collateral supplied to AMM Market Spokes (modeled from $100M to $3B)." },
-    { term: "Borrowed", definition: "Portion of TVL that is loaned out by Hubs (baseline utilization of 50%)." },
-    { term: "Gross System Revenue", definition: "Total economic activity generated by the system (hub interest + protocol fees + penalties + liquidation fees)." },
-    { term: "AMM Market Treasury (Net)", definition: "Revenue the AMM Market protocol retains after splits with Hubs." },
-    { term: "Hubs / Lenders (Net)", definition: "What lenders/hubs capture (interest + their share of liquidation fees)." },
+    { term: "TVL", definition: "Total value of assets supplied as LP collateral or capital across AMM Market-connected components." },
+    { term: "Outstanding Debt", definition: "The amount currently borrowed against approved collateral positions." },
+    { term: "Borrow Utilization", definition: "The share of available Hub liquidity that has been drawn by borrowers." },
+    { term: "Borrowing Headroom", definition: "The difference between a user’s current debt and remaining aggregate borrowing capacity inside a Borrow Spoke." },
+    { term: "Residual Value", definition: "Any value left in a position after debt, liquidation premium, and execution costs have been settled." },
   ],
   riskMitigation: [
-    { term: "Pool Manipulation Protection", definition: "90-Pool Allowlist + per-pool pause toggle." },
-    { term: "Volatility / Oracle Risk", definition: "Tiered LTV + dynamic risk premiums + pause on anomalies." },
-    { term: "Liquidation Spirals", definition: "Emergency halt on extreme LTV, adaptive closing factors." },
-    { term: "Bad Debt Exposure", definition: "Debt ceilings per tier, isolation per Spoke, risk monitoring." },
-    { term: "Governance Safety", definition: "Audits, documentation, community oversight." },
-    { term: "Reentrancy Protection", definition: "AMM Market combines ReentrancyGuard and the transformedTokenId guard. transformedTokenId prevents the onERC721Received hook from registering the same token during an in-flight transform call." },
+    {
+      term: "Pool Approval",
+      definition:
+        "The rule that only pre-approved pools may be admitted as collateral, limiting exposure to unsupported or weakly monitored markets.",
+    },
+    {
+      term: "Recovery Haircut",
+      definition:
+        "A valuation discount applied so borrow power reflects recoverable unwind value rather than optimistic theoretical NAV.",
+    },
+    {
+      term: "Exposure Caps",
+      definition:
+        "Risk limits that bound borrowable exposure by pool family, collateral class, or liquidity depth.",
+    },
+    {
+      term: "Circuit Breaker",
+      definition:
+        "A risk control that can pause or restrict actions when prices, market behavior, or protocol dependencies become inconsistent or unsafe.",
+    },
+    {
+      term: "Governance Safety",
+      definition:
+        "The set of review, timelock, veto, and emergency roles used by the Risk Framework to keep parameter changes disciplined.",
+    },
+    {
+      term: "Reentrancy Protection",
+      definition:
+        "The contract-level protection that prevents a state-changing workflow from being entered again before the first execution is complete.",
+    },
   ],
 }
 
@@ -186,7 +295,7 @@ export default function GlossaryPage() {
               <li><strong>No Investment Advice:</strong> AMM Market is a software protocol. This documentation does not constitute investment advice.</li>
               <li><strong>Risk of Loss:</strong> Users can lose funds through smart contract vulnerabilities, market volatility, liquidation, or oracle manipulation.</li>
               <li><strong>Regulatory Status:</strong> The regulatory status of AMM Market and its tokens (if any) is not guaranteed and may vary by jurisdiction.</li>
-              <li><strong>No Warranty:</strong> The software is provided "as is" without warranty of any kind.</li>
+              <li><strong>No Warranty:</strong> The software is provided &quot;as is&quot; without warranty of any kind.</li>
             </ul>
           </div>
         </section>

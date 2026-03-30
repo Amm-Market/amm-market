@@ -1,153 +1,115 @@
+import Link from "next/link"
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 export const metadata: Metadata = {
   title: "Repay Loans",
-  description: "How to repay loans on AMM Market. Understand the repayment process, technical details, and what happens during full repayment.",
+  description:
+    "How repayment works in AMM Market, including debt-share reduction, Hub settlement, and the path back to collateral withdrawal.",
 }
 
 const sections = [
   { id: "overview", title: "Overview" },
   { id: "repay-process", title: "Repay Process" },
   { id: "technical-details", title: "Technical Details" },
-  { id: "liquidation-scenario", title: "Liquidation Scenario" },
-  { id: "full-repayment", title: "Full Repayment & Cleanup" },
+  { id: "liquidation-scenario", title: "When Repayment Is Urgent" },
+  { id: "full-repayment", title: "Full Repayment" },
 ]
 
 export default function RepayLoansPage() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
-      {/* Main content */}
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
       <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Repay Loans</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Repayment mechanics, debt share reduction, and the path to full collateral withdrawal.
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">Repay Loans</h1>
+        <p className="mb-8 text-lg text-gray-600">
+          Repayment reduces debt shares, improves health, and is the cleanest path back to free
+          collateral movement.
         </p>
 
         <section id="overview" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Repaying your debt is a straightforward process that strengthens the health of your 
-            loan and can eventually lead to the full withdrawal of your collateral. When the user 
-            repays, AMM Market reduces debt shares.
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            Repaying reduces the liability side of the account without changing LP exposure. That
+            means every successful repayment immediately improves the user&apos;s remaining borrowing
+            headroom.
           </p>
-          <p className="text-gray-500 text-sm">
-            <strong>Tip:</strong> Repaying even a small amount can significantly improve your 
-            health factor when it's low.
+          <p className="text-sm text-gray-600">
+            Even partial repayments can meaningfully reduce liquidation risk when the account is
+            moving closer to the boundary.
           </p>
         </section>
 
         <section id="repay-process" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Repay Process</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            To repay, navigate to the loan management section for the specific loan:
-          </p>
-          <div className="space-y-6">
-            <div className="border-b border-gray-100 pb-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Step 1: Choose Amount</h3>
-              <p className="text-gray-600 text-sm">
-                You can choose to repay a partial amount or the full debt. The app will show you 
-                the total amount due, including any accrued interest.
-              </p>
-            </div>
-            <div className="border-b border-gray-100 pb-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Step 2: Confirm Transaction</h3>
-              <p className="text-gray-600 text-sm">
-                By confirming the repayment transaction, you send the specified amount of the 
-                borrowed asset back to the Aave Hub.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Step 3: Debt Reduction</h3>
-              <p className="text-gray-600 text-sm">
-                This action reduces your outstanding debt shares, which in turn improves your 
-                loan's health factor.
-              </p>
-            </div>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Repay Process</h2>
+          <div className="space-y-4 text-sm text-gray-600">
+            <p>
+              <strong className="text-gray-900">1. Choose an amount:</strong> repay a partial amount
+              to restore room or the full balance to exit the debt side entirely.
+            </p>
+            <p>
+              <strong className="text-gray-900">2. Submit the debt asset:</strong> the repayment is
+              routed back through the Borrow Spoke and settled against the outstanding liability.
+            </p>
+            <p>
+              <strong className="text-gray-900">3. Recompute health:</strong> once debt shares are
+              reduced, the account&apos;s health factor and remaining capacity update automatically.
+            </p>
           </div>
         </section>
 
         <section id="technical-details" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Technical Details</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Inside the Spoke, a user calls <code className="bg-gray-100 px-1 rounded text-gray-800">repay(tokenId, amount, isShare)</code>.
-          </p>
-          <div className="space-y-6">
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">The isShare Parameter</h3>
-              <p className="text-gray-600 text-sm">
-                The <code className="bg-gray-100 px-1 rounded text-gray-800">isShare</code> parameter allows users to repay:
-              </p>
-              <ul className="text-gray-600 text-sm mt-2 space-y-1 ml-4">
-                <li>• A specific amount of debt (in the borrowed asset)</li>
-                <li>• A specific number of debt shares</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">The _repay Helper Function</h3>
-              <p className="text-gray-600 text-sm">
-                The <code className="bg-gray-100 px-1 rounded text-gray-800">_repay</code> helper function is then executed. It:
-              </p>
-              <ul className="text-gray-600 text-sm mt-2 space-y-1 ml-4">
-                <li>• Calculates the exact number of shares to burn or assets to transfer</li>
-                <li>• Updates the user's loan</li>
-                <li>• Reduces the Spoke's total debt</li>
-              </ul>
-            </div>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Technical Details</h2>
+          <div className="space-y-4 text-sm text-gray-600">
+            <p>
+              Repayment is fundamentally a debt-share reduction. Whether a user repays by specifying
+              an asset amount or, where supported, a share amount, the protocol resolves the payment
+              into lower outstanding debt.
+            </p>
+            <p>
+              The Borrow Spoke updates local debt state and settles the repayment against Hub-side
+              liquidity accounting so the shared monetary layer and the LP-collateral layer stay in
+              sync.
+            </p>
           </div>
         </section>
 
         <section id="liquidation-scenario" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Liquidation Scenario</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            If a loan becomes unhealthy, the protocol has mechanisms to protect solvency:
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">When Repayment Is Urgent</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            If the account is approaching liquidation eligibility, repayment is one of the fastest
+            ways to restore safety because it directly lowers debt without depending on new collateral
+            admission or market recovery.
           </p>
-          <div className="border-l-4 border-red-400 pl-4">
-            <h3 className="font-semibold text-gray-900 mb-2">Unhealthy Loan Handling</h3>
-            <p className="text-gray-600 text-sm mb-2">
-              Third-party liquidators or an authorized Hub can:
-            </p>
-            <ul className="text-gray-600 text-sm space-y-1 ml-4">
-              <li>• Extract partial position liquidity</li>
-              <li>• Either receive tokens directly</li>
-              <li>• Or AMM Market can swap extracted tokens for the debt asset to repay the Hub</li>
-            </ul>
-          </div>
+          <p className="text-sm text-gray-600">
+            Once the liquidation boundary is crossed, the root{" "}
+            <Link href="/developers/liquidation" className="text-blue-600 hover:underline">
+              Liquidation Framework
+            </Link>{" "}
+            becomes the canonical process.
+          </p>
         </section>
 
         <section id="full-repayment" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Full Repayment & Cleanup</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Crucially, if the repayment reduces the user's debt to zero, the function calls 
-            <code className="bg-gray-100 px-1 rounded text-gray-800 ml-1">_cleanupLoan</code>.
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Full Repayment</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            Once debt is reduced to zero, the account no longer needs collateral to secure a live
+            borrow. At that point the associated LP positions can be released back into normal user
+            control through the collateral-withdrawal path.
           </p>
-          <div className="mb-6">
-            <h3 className="font-semibold text-gray-900 mb-2">Cleanup Process</h3>
-            <p className="text-gray-600 text-sm mb-2">
-              This final step reverses the deposit process:
-            </p>
-            <ul className="text-gray-600 text-sm space-y-1 ml-4">
-              <li>• Clears the loan data</li>
-              <li>• Removes the NFT from the user's internal ownership list</li>
-              <li>• Executes a <code className="bg-gray-100 px-1 rounded text-gray-800">safeTransferFrom</code> to send the NFT back to the user's wallet</li>
-            </ul>
-          </div>
-          <p className="text-gray-600 text-sm mb-4">
-            <strong>Note:</strong> This is the "withdraw" of the collateral. There is no separate withdraw function for 
-            the NFT, as its return is intrinsically tied to the full repayment of the loan.
-          </p>
-          <p className="text-gray-600 text-sm">
-            <strong>Alternative Withdrawals:</strong> Withdrawals of collateral occur implicitly when a loan is cleaned up 
-            or explicitly via transform or decrease liquidity operations executed by the token owner while 
-            health checks pass.
+          <p className="text-sm text-gray-600">
+            Depending on the collateral implementation, the final release may happen automatically or
+            through an explicit follow-up action. See{" "}
+            <Link href="/developers/getting-started/withdraw-collateral" className="text-blue-600 hover:underline">
+              Withdraw Collateral
+            </Link>{" "}
+            for the canonical release flow.
           </p>
         </section>
       </div>
 
-      {/* Right scroll-spy sidebar */}
-      <ScrollSpySidebar 
-        sections={sections} 
-        pageSummary="Repayment mechanics, debt share reduction, and the path to full collateral withdrawal."
+      <ScrollSpySidebar
+        sections={sections}
+        pageSummary="How repayment lowers debt, restores health, and unlocks collateral release in AMM Market."
         sectionColor="emerald"
       />
     </div>

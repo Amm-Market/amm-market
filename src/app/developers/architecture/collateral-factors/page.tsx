@@ -3,7 +3,8 @@ import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 export const metadata: Metadata = {
   title: "Collateral Factors",
-  description: "Understanding collateral factors (CF) in AMM Market. Learn how LTV is calculated for LP positions, single token CFs, and LP pair CFs.",
+  description:
+    "Understanding collateral factors in AMM Market. Learn how LP positions are valued, how borrowing power is aggregated, and how capacity is enforced through the Hub.",
 }
 
 const sections = [
@@ -47,6 +48,34 @@ const lpPairCFs = [
   { pair: "LDO/ETH", lowerCF: "30%", poolRisk: "0.75", finalLTV: "22.5%" },
 ]
 
+const collateralLifecycle = [
+  {
+    title: "Pool Validation",
+    description:
+      "LP positions are accepted only from a pre-approved set of pools aligned with governance-defined risk parameters.",
+  },
+  {
+    title: "Position Valuation",
+    description:
+      "Each LP position is priced in USD through a dual-oracle system that combines Chainlink price feeds with AMM TWAPs inside AMM Market's extended Aave-style oracle framework.",
+  },
+  {
+    title: "Borrowing Capacity",
+    description:
+      "Borrowable amounts are calculated from position value and the configured loan-to-value for the pool's risk tier.",
+  },
+  {
+    title: "Hub Reporting",
+    description:
+      "Each Borrow Spoke reports a user's total borrowable capacity to the Hub, which enforces global credit limits and liquidity constraints.",
+  },
+  {
+    title: "Liquidation Execution",
+    description:
+      "When the Hub triggers liquidation, the spoke takes custody of the LP position through prior approval and performs an orderly unwind of the underlying liquidity.",
+  },
+]
+
 export default function CollateralFactorsPage() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
@@ -54,86 +83,126 @@ export default function CollateralFactorsPage() {
       <div className="max-w-3xl">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Collateral Factors</h1>
         <p className="text-lg text-gray-600 mb-8">
-          Loan-to-value ratios, liquidation thresholds, and how LP risk is parameterized.
+          Position-level borrowing power, dual-oracle valuation, and how LP collateral capacity is
+          reported to the Hub.
         </p>
 
         <section id="overview" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Collateral Factor (CF) defines the portion of an asset's USD value a borrower can borrow 
-            against. For example, a CF (LTV) of 75% means that $100 of deposited collateral allows 
-            the user to borrow up to $75 (before applying liquidation rules, reserve factors, and 
-            other risk buffers).
+            Collateral factors define the portion of an asset&apos;s USD value that can be borrowed
+            against. For example, a 75% collateral factor allows a user to borrow up to $75
+            against $100 of collateral before accounting for liquidation penalties, reserve
+            factors, and other protocol buffers.
+          </p>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            In AMM Market, valuation is position-based, not pool-based. A user may deposit dozens of
+            LP positions into a single Borrow Spoke, but borrowing power is derived from the
+            aggregate USD value of the underlying assets across those positions, not from a single
+            vault or pair. Each LP position is valued independently, and its contribution is then
+            added to the user&apos;s total borrowing capacity.
           </p>
           <p className="text-gray-600 text-sm">
-            <strong>Key Principle:</strong> We align our single-token CFs with industry standards 
-            (similar to Aave), then apply LP-specific pool-level risk adjustments when the collateral 
-            is an LP token. This hybrid approach balances capital efficiency and protocol safety.
+            <strong>Key Principle:</strong> collateral factors are not applied at the spoke level.
+            The system admits approved pools, values each LP position conservatively, and then
+            reports the summed borrowable capacity to the Hub for final credit enforcement.
           </p>
         </section>
 
         <section id="how-cf-works" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">How Collateral Factor Works</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Collateral factor is configured per token and stored as a Q32 value. The effective 
-            collateral that counts toward health is the oracle fullValue plus feeValue times the 
-            minimum collateral factor of the two tokens in the position.
+            In practice, collateral factors sit inside a broader LP-collateral workflow. The spoke
+            first checks whether a pool is supported, then values the position through the oracle
+            stack, converts that value into borrowable capacity with the pool&apos;s configured risk
+            tier, reports the aggregate result to the Hub, and finally coordinates unwind logic if
+            liquidation is required.
           </p>
-          
+
+          <div className="grid gap-4 md:grid-cols-2 mb-6">
+            {collateralLifecycle.map((item) => (
+              <div key={item.title} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <h3 className="font-semibold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+
           <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 mb-4">
             <h3 className="font-semibold text-gray-900 mb-2">Formula</h3>
             <code className="text-sm text-gray-900">
               collateralValue = (fullValue + feeValue) × collateralFactor / 2^32
             </code>
             <p className="text-gray-500 text-xs mt-2">
-              If collateralValue is less than the required debt amount, the loan is not healthy.
+              At the implementation layer, the position is only healthy when this discounted
+              collateral value remains above the required debt amount.
             </p>
           </div>
 
           <div>
             <h3 className="font-semibold text-gray-900 mb-2">Token-Level Granularity</h3>
             <p className="text-gray-600 text-sm mb-2">
-              Inside the Spoke, collateral factors are not applied to the Spoke as a whole but to 
-              the individual tokens that compose the LP positions. The Spoke maintains a 
+              Inside the Borrow Spoke, collateral factors are not applied to the account as a
+              whole. They are derived from the individual tokens that compose each LP position. The
+              spoke maintains a
               <code className="bg-gray-100 px-1 rounded text-gray-800 ml-1">tokenConfigs</code> mapping.
             </p>
             <p className="text-gray-600 text-sm">
-              When a loan is checked for health, the Spoke calculates the <strong>minimum collateral 
-              factor</strong> between the two tokens in the LP pair. For an ETH/USDC position with 
-              ETH at 77.5% and USDC at 85%, this would be 77.5%.
+              When health is checked, the spoke calculates the <strong>minimum collateral factor</strong>
+              between the two tokens in the LP pair and applies that factor to the position-level
+              valuation. For an ETH/USDC position with ETH at 77.5% and USDC at 85%, the governing
+              factor would be 77.5%.
             </p>
           </div>
         </section>
 
         <section id="borrowable-value" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Determining Borrowable Value</h2>
-          
+
+          <p className="text-gray-600 leading-relaxed mb-4">
+            Borrowable capacity is built from a gated valuation flow: only approved pools are
+            admitted, each LP position is priced independently, and the resulting borrowable value
+            is aggregated across the user&apos;s deposited positions before the Hub applies global
+            liquidity and credit constraints.
+          </p>
+
           <div className="space-y-4">
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Step 0: Manipulation-Resilient Oracle Layer</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">Step 0: Admit Only Approved Pools</h3>
               <p className="text-gray-600 text-sm">
-                Use Chainlink feeds + TWAP + Aave IOracle. Cross-check with on-chain liquidity depth. 
-                Output: safe USD price for each token.
+                Unsupported pools never enter the collateral set. Governance-approved pool lists and
+                risk-tier assignments define which LP formats can contribute to borrowing power.
               </p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Step 1: Per-NFT Valuation</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">Step 1: Price the Underlyings Through Dual Oracles</h3>
               <p className="text-gray-600 text-sm">
-                Compute underlying token amounts from liquidity + tick range (Uniswap v3) or pool 
-                weights (Balancer). Convert to USD value using oracle outputs.
+                Use Chainlink feeds, AMM TWAPs, and the protocol&apos;s Aave-style oracle stack to
+                derive safe USD prices for the underlying assets while resisting spot-state
+                manipulation.
               </p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Step 2: Apply Lower Token CF</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">Step 2: Reconstruct and Value Each LP Position</h3>
               <p className="text-gray-600 text-sm">
-                Identify the weaker token in the pair — the token with the lower single-token CF. 
-                Apply this lower token CF as a baseline cap on the LP's USD value.
+                Compute underlying token amounts from liquidity plus tick range for concentrated
+                positions or from pool weights for fungible LPs, then convert those balances into a
+                position-level USD value.
               </p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Step 3: Apply Pool-Level Risk</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">Step 3: Apply the Governing CF and Pool Risk</h3>
+              <p className="text-gray-600 text-sm">
+                Identify the weaker token in the pair, use its collateral factor as the baseline cap
+                on the LP&apos;s USD value, and then apply the pool-level risk factor associated with
+                the LP family and volatility profile.
+              </p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Reference Pool-Level Risk Bands</h3>
               <p className="text-gray-600 text-sm mb-2">
-                On top of the lower-token CF, apply a pool-level risk factor based on LP type and volatility:
+                On top of the lower-token CF, apply a pool-level risk factor based on LP type and
+                volatility:
               </p>
               <ul className="text-gray-600 text-sm space-y-1 ml-4">
                 <li>• Stablecoin/Stablecoin LPs → 0.90</li>
@@ -145,13 +214,23 @@ export default function CollateralFactorsPage() {
                 <li>• High-volatility / small LPs → 0.70</li>
               </ul>
             </div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Step 4: Aggregate Capacity and Report to the Hub</h3>
+              <p className="text-gray-600 text-sm">
+                Each independently valued LP position contributes to the user&apos;s total borrowable
+                capacity inside the Borrow Spoke. The spoke then reports that aggregate capacity to
+                the Hub, which enforces global credit limits, borrow availability, and liquidation
+                triggers.
+              </p>
+            </div>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Step 4: Compute Borrowable Amount</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">Borrowable Amount</h3>
               <code className="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded block">
                 Borrowable USD = Position USD Value × Lower Token CF × Pool-Level Risk
               </code>
               <p className="text-gray-500 text-xs mt-2">
-                Liquidation thresholds, bonuses, and reserve factors are applied after borrowable LTV.
+                Liquidation thresholds, bonuses, and reserve factors are applied after borrowable
+                LTV is computed.
               </p>
             </div>
           </div>
@@ -160,30 +239,40 @@ export default function CollateralFactorsPage() {
         <section id="how-it-works-together" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">How It Works Together</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Once borrowable value is determined using the lower-token CF and pool-level risk, the protocol 
-            applies additional risk parameters to ensure safety and stability. These are applied separately 
-            from the borrowable LTV and do not reduce the initial amount a user can borrow.
+            AMM Market separates collateral admission, valuation, aggregate borrowable capacity, and
+            liquidation execution into a single coherent flow. Each LP position is priced on its own,
+            the resulting borrowable value is summed at the user level, and the Hub applies protocol-wide
+            credit constraints on top of that aggregate result.
           </p>
-          
+
           <ol className="space-y-4 list-decimal list-inside">
             <li className="text-gray-600 text-sm">
-              <strong className="text-gray-900">Compute Borrowable LTV</strong> — Calculate using Lower Token CF × Pool-Level Risk. This determines the maximum amount a user can borrow against their LP collateral.
+              <strong className="text-gray-900">Value each approved LP position</strong> - The
+              Borrow Spoke reconstructs the underlying exposure, prices it through the oracle stack,
+              and applies the governing collateral factor for that position.
             </li>
             <li className="text-gray-600 text-sm">
-              <strong className="text-gray-900">Apply Liquidation Threshold</strong> — Determine the point at which a position becomes eligible for liquidation. Set slightly above the borrowable LTV to provide a safety buffer.
+              <strong className="text-gray-900">Aggregate user borrowing power</strong> - Position-level
+              contributions are added together so users can borrow against the combined value of many
+              LP positions inside one spoke.
             </li>
             <li className="text-gray-600 text-sm">
-              <strong className="text-gray-900">Incentivize Liquidators</strong> — Apply the Liquidation Bonus to encourage timely liquidation when positions exceed the threshold.
+              <strong className="text-gray-900">Let the Hub enforce global limits</strong> - The Hub
+              receives total borrowable capacity, applies liquidity constraints, and blocks borrowing
+              that would exceed protocol-wide guardrails.
             </li>
             <li className="text-gray-600 text-sm">
-              <strong className="text-gray-900">Allocate Reserve Factor</strong> — A portion of interest payments is allocated to the Reserve Factor for protocol reserves and insurance.
+              <strong className="text-gray-900">Unwind collateral when liquidation is triggered</strong> -
+              If a position falls below allowed borrowing capacity, the Hub can trigger liquidation and
+              the spoke takes custody of the LP position, unwinds the underlying liquidity, repays debt,
+              and settles the remaining value through the liquidation path.
             </li>
           </ol>
 
           <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
             <p className="text-gray-700 text-sm">
-              <strong>Key Benefit:</strong> This separation ensures users know their maximum borrowable 
-              amount while the protocol maintains robust safety mechanisms for liquidation and insolvency protection.
+              <strong>Key Benefit:</strong> Users see borrowing power at the aggregate account level,
+              while the protocol still values risk and executes liquidations at the LP-position level.
             </p>
           </div>
         </section>
@@ -286,7 +375,7 @@ export default function CollateralFactorsPage() {
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
               <h3 className="font-semibold text-gray-900 mb-2">Why use the lower token CF for LPs?</h3>
               <p className="text-gray-600 text-sm">
-                LPs contain two assets. If one crashes faster than the other, the LP's USD value can 
+                LPs contain two assets. If one crashes faster than the other, the LP&apos;s USD value can
                 drop quickly. Using the lower token CF prevents over-leveraging against a pool whose 
                 weaker side could cause contagion.
               </p>
@@ -327,7 +416,7 @@ export default function CollateralFactorsPage() {
       {/* Right scroll-spy sidebar */}
       <ScrollSpySidebar 
         sections={sections} 
-        pageSummary="Loan-to-value ratios, liquidation thresholds, and how LP risk is parameterized."
+        pageSummary="How AMM Market values LP positions, aggregates borrowable capacity, and enforces collateral factors through the Hub."
         sectionColor="violet"
       />
     </div>
