@@ -84,7 +84,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Developer documentation pages
   const developerDocs: MetadataRoute.Sitemap = [
     // Introduction section
-    '/developers/introduction',
     '/developers/introduction/key-concepts',
     '/developers/introduction/glossary',
     '/developers/introduction/testnet-roadmap',

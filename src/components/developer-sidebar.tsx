@@ -84,7 +84,7 @@ export const navigationSections = [
     title: "Introduction",
     icon: BookOpen,
     items: [
-      { href: "/developers/introduction", label: "Overview", icon: FileText },
+      { href: "/developers", label: "Overview", icon: FileText },
       { href: "/developers/introduction/key-concepts", label: "Key Concepts", icon: Lightbulb },
       { href: "/developers/introduction/testnet-roadmap", label: "Testnet & Roadmap", icon: MapIcon },
       { href: "/developers/introduction/glossary", label: "Glossary", icon: BookMarked },
@@ -113,7 +113,7 @@ export const navigationSections = [
       { href: "/developers/architecture/collateral-factors", label: "Collateral Factors", icon: Percent },
       { href: "/developers/architecture/health-factor", label: "Health Factor", icon: Heart },
       { href: "/developers/architecture/platform-fees", label: "Platform Fees", icon: DollarSign },
-      { href: "/developers/architecture/incentives", label: "Incentives Programs", icon: Award },
+      { href: "/developers/architecture/incentives", label: "Incentives", icon: Award },
     ],
   },
   {
@@ -131,9 +131,9 @@ export const navigationSections = [
     title: "Supported Integrations",
     icon: Plug,
     items: [
-      { href: "/developers/integrations", label: "Supported DEXes", icon: Server },
+      { href: "/developers/integrations", label: "Integrations Overview", icon: Server },
       { href: "/developers/integrations/allowed-pools", label: "Allowed LP Pools", icon: Droplets },
-      { href: "/developers/integrations/router-contract", label: "Router Contract", icon: Router },
+      { href: "/developers/integrations/router-contract", label: "Router & Adapters", icon: Router },
       { href: "/developers/integrations/price-oracles", label: "Price Oracles", icon: BarChart3 },
     ],
   },
@@ -143,7 +143,7 @@ export const navigationSections = [
     icon: Shield,
     items: [
       { href: "/developers/safety", label: "Risk Framework", icon: Gauge },
-      { href: "/developers/safety/contracts", label: "Smart Contract", icon: Building },
+      { href: "/developers/safety/contracts", label: "Contracts & Security", icon: Building },
       { href: "/developers/safety/bug-bounty", label: "Bug Bounty", icon: Bug },
       { href: "/developers/safety/insurance", label: "Insurance Funds", icon: Umbrella },
     ],

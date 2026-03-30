@@ -68,7 +68,7 @@ export default function SecurityDisclosuresPage() {
           </div>
 
           <p className="text-gray-600 leading-relaxed mt-4">
-            These restrictions are defined in AMM Market's <Link href="/terms" className="text-blue-600 hover:underline">Terms of Use</Link> and 
+            These restrictions are defined in AMM Market&apos;s <Link href="/terms" className="text-blue-600 hover:underline">Terms of Use</Link> and 
             are enforced to comply with applicable laws and regulations.
           </p>
         </section>
@@ -114,10 +114,10 @@ export default function SecurityDisclosuresPage() {
           <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
             <ul className="text-gray-600 text-sm space-y-2">
               <li>• The subject of any sanctions administered or enforced by the U.S. Department of the 
-                Treasury's Office of Foreign Assets Control (OFAC), the U.S. Department of State, or any 
+                Treasury&apos;s Office of Foreign Assets Control (OFAC), the U.S. Department of State, or any 
                 other governmental authority with jurisdiction</li>
               <li>• Identified on the Denied Persons, Entity, or Unverified Lists of the U.S. Department 
-                of Commerce's Bureau of Industry and Security</li>
+                of Commerce&apos;s Bureau of Industry and Security</li>
               <li>• Located, organized, or resident in a country or territory that is, or whose government 
                 is, the subject of economic sanctions</li>
             </ul>

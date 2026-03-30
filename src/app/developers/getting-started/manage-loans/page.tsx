@@ -1,9 +1,11 @@
+import Link from "next/link"
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 export const metadata: Metadata = {
   title: "Manage Loans",
-  description: "Manage your AMM Market loans - borrow more, monitor health factors, adjust positions, and understand operational constraints.",
+  description:
+    "Manage debt against LP collateral in AMM Market by monitoring health, adjusting positions, and staying inside Borrow Spoke and Hub constraints.",
 }
 
 const sections = [
@@ -17,147 +19,112 @@ const sections = [
 
 export default function ManageLoansPage() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
-      {/* Main content */}
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
       <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Manage Loans</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Monitoring positions, adjusting collateral, and maintaining healthy loan parameters.
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">Manage Loans</h1>
+        <p className="mb-8 text-lg text-gray-600">
+          Ongoing loan management means watching health, adjusting LP collateral carefully, and
+          staying inside spoke-level borrowing limits.
         </p>
 
         <section id="overview" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Active loan management is critical to maintaining a healthy position and avoiding 
-            liquidation. This includes monitoring your health factor, adjusting collateral as 
-            needed, and staying informed about market conditions.
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <p className="leading-relaxed text-gray-600">
+            A live AMM Market loan is not static. Borrowing headroom changes as LP positions move,
+            fee balances change, markets reprice, and Hub liquidity conditions evolve. Managing a
+            loan means treating collateral and debt as a linked position rather than as unrelated
+            actions.
           </p>
         </section>
 
         <section id="borrowing-more" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Borrowing More</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            If a loan remains healthy and the maximum borrowing limit has not been reached, 
-            additional funds can be borrowed.
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Borrowing More</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            You can borrow more only when the Borrow Spoke still shows unused aggregate capacity and
+            the Hub can supply the requested asset.
           </p>
-          <p className="text-gray-600 text-sm">
-            <strong>Partial Repayments:</strong> To reduce exposure, users may make partial repayments at any time. 
-            This improves the health factor and reduces interest accrual.
+          <p className="text-sm text-gray-600">
+            Partial repayment is the opposite lever: it reduces debt immediately, improves health,
+            and creates more room for later actions such as withdrawals or position changes.
           </p>
         </section>
 
         <section id="monitoring-health" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Monitoring Health</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            The interface provides tools to monitor market conditions and assess their impact on collateral.
-          </p>
-          
-          <div className="space-y-3 mb-6">
-            <div className="border-l-4 border-green-500 pl-4 py-2">
-              <div className="flex items-center justify-between">
-                <span className="font-semibold text-gray-900">Safe Zone</span>
-                <span className="text-gray-600 font-mono text-sm">HF &gt; 1.5</span>
-              </div>
-              <p className="text-gray-600 text-sm mt-1">Comfortable buffer. Normal operations.</p>
-            </div>
-            <div className="border-l-4 border-amber-500 pl-4 py-2">
-              <div className="flex items-center justify-between">
-                <span className="font-semibold text-gray-900">Caution Zone</span>
-                <span className="text-gray-600 font-mono text-sm">1.0 &lt; HF &lt; 1.5</span>
-              </div>
-              <p className="text-gray-600 text-sm mt-1">Monitor closely. Consider adding collateral or repaying debt.</p>
-            </div>
-            <div className="border-l-4 border-red-500 pl-4 py-2">
-              <div className="flex items-center justify-between">
-                <span className="font-semibold text-gray-900">Danger Zone</span>
-                <span className="text-gray-600 font-mono text-sm">HF ≤ 1.0</span>
-              </div>
-              <p className="text-gray-600 text-sm mt-1">Position is liquidatable. Take immediate action.</p>
-            </div>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Monitoring Health</h2>
+          <div className="space-y-4 text-sm text-gray-600">
+            <p>
+              <strong className="text-gray-900">Healthy:</strong> adjusted collateral value remains
+              comfortably above debt, leaving room for normal market moves.
+            </p>
+            <p>
+              <strong className="text-gray-900">Watchlist:</strong> the account still passes checks,
+              but the remaining buffer is thinning. This is the point to repay, add approved
+              collateral, or reduce exposure.
+            </p>
+            <p>
+              <strong className="text-gray-900">Liquidatable:</strong> debt has moved too close to or
+              beyond the allowed borrowing boundary, so the liquidation framework can take over.
+            </p>
           </div>
-
-          <p className="text-gray-600 text-sm">
-            <strong>Proactive Warnings:</strong> If the value of the LP NFT decreases and loan health declines, 
-            the application issues warnings. This proactive monitoring enables users to respond before a position 
-            becomes critical and subject to liquidation.
+          <p className="mt-4 text-sm text-gray-600">
+            For the canonical definition, use{" "}
+            <Link href="/developers/architecture/health-factor" className="text-blue-600 hover:underline">
+              Health Factor
+            </Link>{" "}
+            rather than treating UI warning bands as separate protocol mechanics.
           </p>
         </section>
 
         <section id="operational-control" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Operational Control</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Users retain operational control of LPs even while they are collateralized, provided 
-            the loan remains healthy. You can:
-          </p>
-          <ul className="space-y-4">
-            <li>
-              <span className="font-semibold text-gray-900">Collect and Compound Fees</span>
-              <p className="text-gray-600 text-sm mt-0.5">
-                Claim accrued trading fees and optionally compound them back into your position.
-              </p>
-            </li>
-            <li>
-              <span className="font-semibold text-gray-900">Add or Withdraw Liquidity</span>
-              <p className="text-gray-600 text-sm mt-0.5">
-                Adjust liquidity as long as the updated collateral value remains above the protocol's requirement.
-              </p>
-            </li>
-            <li>
-              <span className="font-semibold text-gray-900">Full Withdrawal</span>
-              <p className="text-gray-600 text-sm mt-0.5">
-                Fully withdraw the position by repaying all outstanding debt.
-              </p>
-            </li>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Operational Control</h2>
+          <ul className="space-y-3 text-gray-600">
+            <li>Repay part of the debt to restore room</li>
+            <li>Add more approved LP collateral to the same Borrow Spoke</li>
+            <li>Claim accrued fees when post-claim health checks still pass</li>
+            <li>Withdraw or resize collateral only when the remaining account stays healthy</li>
           </ul>
         </section>
 
         <section id="position-changes" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Position Changes</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            You can make changes to your LP position while it's collateralized:
-          </p>
-          <div className="space-y-4">
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Change Price Range</h3>
-              <p className="text-gray-600 text-sm">
-                To change a position's price range, users must first withdraw liquidity and then 
-                create a new position at the desired range.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Reallocate to Different Pair</h3>
-              <p className="text-gray-600 text-sm">
-                Liquidity can also be reallocated to a different asset pair. In both cases, the 
-                new pair must be approved as valid collateral by the protocol.
-              </p>
-            </div>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Position Changes</h2>
+          <div className="space-y-4 text-sm text-gray-600">
+            <p>
+              Concentrated-liquidity positions may need re-ranging or replacement over time. Fungible
+              LP positions may be resized or rotated within the supported collateral set.
+            </p>
+            <p>
+              The protocol does not treat these as cosmetic edits. Any change that alters LP
+              exposure is re-evaluated through the same admission, valuation, and health checks used
+              for deposits and borrows.
+            </p>
           </div>
-          <p className="text-amber-700 text-sm border-l-4 border-amber-400 pl-3 mt-4">
-            <strong>Important:</strong> The resulting collateral value must be sufficient to 
-            maintain a healthy loan status after any position changes.
-          </p>
         </section>
 
         <section id="key-constraints" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Key Constraints</h2>
-          <p className="text-gray-600 text-sm mb-3">
-            <strong>Collateral Threshold Protection:</strong> Any modification that reduces collateral 
-            below the required threshold is either blocked or must be paired with:
-          </p>
-          <ul className="text-gray-600 text-sm space-y-1 ml-4 mb-4">
-            <li>• Additional collateral deposit</li>
-            <li>• Partial repayment of debt</li>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Key Constraints</h2>
+          <ul className="space-y-2 text-gray-600">
+            <li>Collateral changes cannot leave debt above allowed spoke capacity</li>
+            <li>New positions must remain inside the approved pool set</li>
+            <li>Borrow actions still depend on Hub liquidity and caps</li>
+            <li>At-risk accounts should use repayment or collateral addition before liquidation is triggered</li>
           </ul>
-          <p className="text-gray-500 text-sm">
-            These safeguards ensure loan stability and reduce liquidation risk.
+          <p className="mt-4 text-sm text-gray-600">
+            Keep{" "}
+            <Link href="/developers/liquidation" className="text-blue-600 hover:underline">
+              Liquidation Framework
+            </Link>{" "}
+            and{" "}
+            <Link href="/developers/architecture/collateral-factors" className="text-blue-600 hover:underline">
+              Collateral Factors
+            </Link>{" "}
+            as the main references when making changes to a live loan.
           </p>
         </section>
       </div>
 
-      {/* Right scroll-spy sidebar */}
-      <ScrollSpySidebar 
-        sections={sections} 
-        pageSummary="Monitoring positions, adjusting collateral, and maintaining healthy loan parameters."
+      <ScrollSpySidebar
+        sections={sections}
+        pageSummary="How to manage live debt against LP collateral without drifting outside spoke-level health constraints."
         sectionColor="emerald"
       />
     </div>
