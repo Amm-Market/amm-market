@@ -5,7 +5,7 @@ import { DEFAULT_OG_SUBTITLE, SITE_NAME, SITE_URL } from '@/lib/site'
 const SITE_DOMAIN = new URL(SITE_URL).host
 const DEFAULT_OG_TITLE = SITE_NAME
 
-export const runtime = 'edge'
+export const runtime = 'nodejs'
 
 /**
  * Dynamic OG Image Generator
