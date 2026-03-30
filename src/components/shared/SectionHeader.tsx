@@ -15,11 +15,11 @@ interface SectionHeaderProps {
 export function SectionHeader({ title, description, className = "" }: SectionHeaderProps) {
   return (
     <div className={`flex flex-col gap-2 ${className}`}>
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+      <h2 className="type-marketing-section-title text-gray-900">
         {title}
       </h2>
       {description && (
-        <p className="text-sm md:text-base text-gray-600">
+        <p className="type-marketing-section-lead text-gray-600">
           {description}
         </p>
       )}

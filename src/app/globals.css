@@ -79,6 +79,21 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --type-page-title-size: 1.5rem;
+  --type-page-title-size-sm: 1.875rem;
+  --type-page-lead-size: 0.9375rem;
+  --type-page-lead-size-sm: 1rem;
+  --type-section-title-size: 1.25rem;
+  --type-section-title-size-sm: 1.35rem;
+  --type-body-size: 0.875rem;
+  --type-body-size-sm: 0.9375rem;
+  --type-supporting-size: 0.8125rem;
+  --type-supporting-size-sm: 0.875rem;
+  --type-meta-size: 0.75rem;
+  --type-sidebar-link-size: 0.8125rem;
+  --type-sidebar-summary-size: 0.75rem;
+  --type-display-title-size: clamp(2.75rem, 5vw, 4.5rem);
+  --type-display-lead-size: clamp(1rem, 2vw, 1.375rem);
 }
 
 @layer base {
@@ -89,6 +104,225 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
+  }
+}
+
+.type-display-title {
+  font-size: var(--type-display-title-size);
+  font-weight: 550;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.type-display-lead {
+  font-size: var(--type-display-lead-size);
+  line-height: 1.45;
+}
+
+.type-page-title {
+  font-size: var(--type-page-title-size);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.type-page-lead {
+  font-size: var(--type-page-lead-size);
+  line-height: 1.75;
+}
+
+.type-section-title {
+  font-size: var(--type-section-title-size);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.type-body-copy {
+  font-size: var(--type-body-size);
+  line-height: 1.75;
+}
+
+.type-supporting {
+  font-size: var(--type-supporting-size);
+  line-height: 1.6;
+}
+
+.type-meta-label {
+  font-size: var(--type-meta-size);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.type-sidebar-link {
+  font-size: var(--type-sidebar-link-size);
+  line-height: 1.45;
+}
+
+.type-sidebar-summary {
+  font-size: var(--type-sidebar-summary-size);
+  line-height: 1.6;
+}
+
+.type-marketing-section-title {
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.type-marketing-section-lead {
+  font-size: var(--type-body-size);
+  line-height: 1.7;
+}
+
+.developer-content[data-developer-doc-shell],
+.site-article-content,
+.site-editorial-content,
+.marketing-secondary-shell {
+  color: rgb(75 85 99);
+}
+
+.developer-content[data-developer-doc-shell] section h2,
+.site-article-content h2,
+.site-editorial-content h3 {
+  font-size: var(--type-section-title-size);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: rgb(17 24 39);
+}
+
+.marketing-secondary-shell h2 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: rgb(17 24 39);
+}
+
+.developer-content[data-developer-doc-shell] section h3,
+.site-article-content h3,
+.site-editorial-content h4,
+.marketing-secondary-shell h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: rgb(17 24 39);
+}
+
+.marketing-secondary-shell div.text-2xl.font-semibold {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: rgb(17 24 39);
+}
+
+.marketing-secondary-shell div.text-base.text-gray-600 {
+  font-size: var(--type-body-size);
+  line-height: 1.7;
+}
+
+.developer-content[data-developer-doc-shell] section :is(p, li, td, dd),
+.site-article-content :is(p, li, td),
+.site-editorial-content :is(p, li, td),
+.marketing-secondary-shell p.text-sm,
+.marketing-secondary-shell p.text-base,
+.marketing-secondary-shell p.md\:text-base {
+  font-size: var(--type-body-size);
+  line-height: 1.75;
+}
+
+.developer-content[data-developer-doc-shell] section :is(th),
+.site-article-content :is(th),
+.site-editorial-content :is(th) {
+  font-size: var(--type-supporting-size);
+  font-weight: 600;
+  line-height: 1.5;
+  color: rgb(17 24 39);
+}
+
+.developer-content[data-developer-doc-shell] section strong,
+.site-article-content strong,
+.site-editorial-content strong {
+  color: rgb(17 24 39);
+}
+
+@media (min-width: 640px) {
+  .type-page-title {
+    font-size: var(--type-page-title-size-sm);
+  }
+
+  .type-page-lead {
+    font-size: var(--type-page-lead-size-sm);
+  }
+
+  .type-section-title {
+    font-size: var(--type-section-title-size-sm);
+  }
+
+  .type-body-copy {
+    font-size: var(--type-body-size-sm);
+  }
+
+  .type-supporting {
+    font-size: var(--type-supporting-size-sm);
+  }
+
+  .type-marketing-section-title {
+    font-size: 1.75rem;
+  }
+
+  .type-marketing-section-lead {
+    font-size: var(--type-body-size-sm);
+  }
+
+  .developer-content[data-developer-doc-shell] section h2,
+  .site-article-content h2,
+  .site-editorial-content h3 {
+    font-size: var(--type-section-title-size-sm);
+  }
+
+  .marketing-secondary-shell h2 {
+    font-size: 1.75rem;
+  }
+
+  .developer-content[data-developer-doc-shell] section :is(p, li, td, dd),
+  .site-article-content :is(p, li, td),
+  .site-editorial-content :is(p, li, td),
+  .marketing-secondary-shell p.text-sm,
+  .marketing-secondary-shell p.text-base,
+  .marketing-secondary-shell p.md\:text-base {
+    font-size: var(--type-body-size-sm);
+  }
+
+  .marketing-secondary-shell div.text-base.text-gray-600 {
+    font-size: var(--type-body-size-sm);
+  }
+
+  .developer-content[data-developer-doc-shell] section :is(th),
+  .site-article-content :is(th),
+  .site-editorial-content :is(th) {
+    font-size: var(--type-supporting-size-sm);
+  }
+}
+
+@media (min-width: 768px) {
+  .type-marketing-section-title {
+    font-size: 2rem;
+  }
+
+  .marketing-secondary-shell h2 {
+    font-size: 2rem;
+  }
+
+  .marketing-secondary-shell h3 {
+    font-size: 1.125rem;
+  }
+
+  .marketing-secondary-shell div.text-2xl.font-semibold {
+    font-size: 1.5rem;
   }
 }
 

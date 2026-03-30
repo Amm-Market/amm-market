@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Protocol Architecture - Borrow Spoke",
@@ -20,15 +21,17 @@ const sections = [
 export default function BorrowSpokePage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Borrow Spoke</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Responsibilities and scope of the borrower-facing AMM Market spoke within the Aave v4
-          architecture.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Borrow Spoke"
+
+          description="Responsibilities and scope of the borrower-facing AMM Market spoke within the Aave v4 architecture."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
             The Borrow Spoke is the execution layer that lets LP holders use active liquidity
             positions as collateral. It is responsible for receiving LP positions, interpreting
@@ -48,7 +51,7 @@ export default function BorrowSpokePage() {
         </section>
 
         <section id="user-experience" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">User Experience</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">User Experience</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
             Borrowers interact with the Borrow Spoke to supply LP collateral, borrow assets, manage
             open debt, repay balances, and claim earned fees. The spoke is designed to expose these
@@ -63,7 +66,7 @@ export default function BorrowSpokePage() {
         </section>
 
         <section id="example-flow" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Example Flow: Alice the LP Master</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Example Flow: Alice the LP Master</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
             A practical borrower-side onboarding flow:
           </p>
@@ -105,7 +108,7 @@ export default function BorrowSpokePage() {
         </section>
 
         <section id="three-tier-architecture" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Three-Tier Architecture</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Three-Tier Architecture</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
             The borrower-side architecture follows a clear three-tier flow:
           </p>
@@ -138,7 +141,7 @@ export default function BorrowSpokePage() {
         </section>
 
         <section id="data-flow" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Data Flow</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Data Flow</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
             The borrower-side data flow is unidirectional and operationally well-defined:
           </p>
@@ -186,7 +189,7 @@ export default function BorrowSpokePage() {
         </section>
 
         <section id="spoke-responsibilities" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Spoke Responsibilities</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Spoke Responsibilities</h2>
 
           <div className="mb-6 overflow-x-auto">
             <table className="w-full overflow-hidden rounded-lg border border-gray-200 text-sm">
@@ -240,7 +243,7 @@ export default function BorrowSpokePage() {
         </section>
 
         <section id="hub-role" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Aave v4 Hub Role</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Aave v4 Hub Role</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
             The Borrow Spoke does not warehouse lender capital itself. Instead, it relies on the
             Hub as the capital backbone of the system, drawing from pooled liquidity that can be

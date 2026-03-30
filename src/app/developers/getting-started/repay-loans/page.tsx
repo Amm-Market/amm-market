@@ -1,6 +1,7 @@
 import Link from "next/link"
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Repay Loans",
@@ -19,15 +20,17 @@ const sections = [
 export default function RepayLoansPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Repay Loans</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Repayment reduces debt shares, improves health, and is the cleanest path back to free
-          collateral movement.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Repay Loans"
+
+          description="Repayment reduces debt shares, improves health, and is the cleanest path back to free collateral movement."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Repaying reduces the liability side of the account without changing LP exposure. That
             means every successful repayment immediately improves the user&apos;s remaining borrowing
@@ -40,7 +43,7 @@ export default function RepayLoansPage() {
         </section>
 
         <section id="repay-process" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Repay Process</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Repay Process</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               <strong className="text-gray-900">1. Choose an amount:</strong> repay a partial amount
@@ -58,7 +61,7 @@ export default function RepayLoansPage() {
         </section>
 
         <section id="technical-details" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Technical Details</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Technical Details</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               Repayment is fundamentally a debt-share reduction. Whether a user repays by specifying
@@ -74,7 +77,7 @@ export default function RepayLoansPage() {
         </section>
 
         <section id="liquidation-scenario" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">When Repayment Is Urgent</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">When Repayment Is Urgent</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             If the account is approaching liquidation eligibility, repayment is one of the fastest
             ways to restore safety because it directly lowers debt without depending on new collateral
@@ -90,7 +93,7 @@ export default function RepayLoansPage() {
         </section>
 
         <section id="full-repayment" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Full Repayment</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Full Repayment</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Once debt is reduced to zero, the account no longer needs collateral to secure a live
             borrow. At that point the associated LP positions can be released back into normal user

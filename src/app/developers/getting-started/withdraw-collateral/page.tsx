@@ -1,6 +1,7 @@
 import Link from "next/link"
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Withdraw Collateral",
@@ -18,15 +19,17 @@ const sections = [
 export default function WithdrawCollateralPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Withdraw Collateral</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Collateral can leave the Borrow Spoke once debt is cleared or the remaining account still
-          satisfies all health checks after the withdrawal.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Withdraw Collateral"
+
+          description="Collateral can leave the Borrow Spoke once debt is cleared or the remaining account still satisfies all health checks after the withdrawal."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Withdrawing collateral is the reverse of deposit. The protocol releases LP positions only
             when doing so will not leave outstanding debt undersecured.
@@ -39,7 +42,7 @@ export default function WithdrawCollateralPage() {
         </section>
 
         <section id="withdrawal-process" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Withdrawal Process</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Withdrawal Process</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               <strong className="text-gray-900">1. Reduce or clear debt:</strong> repay enough so the
@@ -58,7 +61,7 @@ export default function WithdrawCollateralPage() {
         </section>
 
         <section id="position-modifications" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Position Modifications</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Position Modifications</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               Some users will not fully exit collateral when they make changes. Instead, they may
@@ -73,7 +76,7 @@ export default function WithdrawCollateralPage() {
         </section>
 
         <section id="after-withdrawal" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">After Withdrawal</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">After Withdrawal</h2>
           <ul className="space-y-2 text-gray-600">
             <li>The LP position returns to normal user control</li>
             <li>The user may keep it in the underlying pool, re-range it, or exit liquidity entirely</li>

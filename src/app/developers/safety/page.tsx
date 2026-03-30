@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Safety Mechanisms - Risk Framework",
@@ -188,15 +189,17 @@ const emergencyDisclosures = [
 export default function RiskFrameworkPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Risk Framework</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Protocol-wide operating rules for risk management across the AMM Market Hub and LP
-          Collateral Spokes.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Risk Framework"
+
+          description="Protocol-wide operating rules for risk management across the AMM Market Hub and LP Collateral Spokes."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
             The AMM Market Risk Framework is the protocol-wide operating system for risk parameter
             management across the AMM Market Hub and all LP Collateral Spokes. It governs how the
@@ -225,7 +228,7 @@ export default function RiskFrameworkPage() {
         </section>
 
         <section id="core-principles" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Core Principles</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Core Principles</h2>
           <div className="grid gap-4 md:grid-cols-2">
             {corePrinciples.map((principle) => (
               <div
@@ -244,7 +247,7 @@ export default function RiskFrameworkPage() {
         </section>
 
         <section id="roles" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Roles</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Roles</h2>
           <div className="space-y-5">
             {roles.map((role) => (
               <div
@@ -266,7 +269,7 @@ export default function RiskFrameworkPage() {
         </section>
 
         <section id="update-flow" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Update Flow</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Update Flow</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
             The standard framework flow is designed to be simple, reviewable, and auditable.
           </p>
@@ -296,7 +299,7 @@ export default function RiskFrameworkPage() {
         </section>
 
         <section id="parameter-classes" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Parameter Classes</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Parameter Classes</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
             Not every parameter change should move through the same path.
           </p>
@@ -326,7 +329,7 @@ export default function RiskFrameworkPage() {
         </section>
 
         <section id="public-disclosure" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Public Disclosure</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Public Disclosure</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
             Each routine update should be published in a consistent format before submission.
           </p>
@@ -350,7 +353,7 @@ export default function RiskFrameworkPage() {
         </section>
 
         <section id="emergency-actions" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Emergency Actions</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Emergency Actions</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
             Emergency actions should be rare, narrow, and reversible. The Risk Defender should only
             act when there is a defined or highly probable failure condition that makes waiting for

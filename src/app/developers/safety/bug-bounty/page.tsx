@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Bug Bounty",
@@ -110,14 +111,17 @@ const severityLevels = [
 export default function BugBountyPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Bug Bounty</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Responsible disclosure scope and economic-impact triage for AMM Market security research.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Bug Bounty"
+
+          description="Responsible disclosure scope and economic-impact triage for AMM Market security research."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
             The AMM Market Bug Bounty is a core part of the protocol&apos;s security model. It is
             designed to incentivize responsible disclosure across smart contracts, risk systems, and
@@ -137,7 +141,7 @@ export default function BugBountyPage() {
         </section>
 
         <section id="scope-and-system-architecture" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Scope & System Architecture</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Scope & System Architecture</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
             AMM Market separates its bug bounty into distinct subsystems so triage mirrors how risk
             actually manifests across lending, valuation, governance, and integrations.
@@ -213,7 +217,7 @@ export default function BugBountyPage() {
         </section>
 
         <section id="severity-philosophy" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Severity Philosophy</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Severity Philosophy</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
             AMM Market does not use generic vulnerability scoring as its primary severity model.
             Findings are judged by credible exploit paths and real economic consequences.

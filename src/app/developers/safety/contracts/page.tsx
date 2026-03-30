@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Smart Contract Security",
@@ -43,14 +44,17 @@ const coreSurfaces = [
 export default function ContractsArchitecturePage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Contracts & Security</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Security reference for the smart contract surfaces and external dependencies behind LP-backed lending.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Contracts & Security"
+
+          description="Security reference for the smart contract surfaces and external dependencies behind LP-backed lending."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             AMM Market expands lending into LP collateral, which means security is not only about
             code correctness. It is also about how pricing, custody, liquidation, and governance work
@@ -63,7 +67,7 @@ export default function ContractsArchitecturePage() {
         </section>
 
         <section id="security-challenges" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Security Challenges</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Security Challenges</h2>
           <ul className="space-y-3 text-sm text-gray-600">
             <li>• LP positions have path-dependent value and often require venue-specific custody and unwind logic.</li>
             <li>• Oracle misuse or stale pricing can become an economic exploit even when contracts behave exactly as coded.</li>
@@ -72,7 +76,7 @@ export default function ContractsArchitecturePage() {
         </section>
 
         <section id="multi-layer-security" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Multi-Layer Security</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Multi-Layer Security</h2>
           <div className="space-y-4">
             <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
               <h3 className="mb-1 font-semibold text-gray-900">Contract review</h3>
@@ -102,7 +106,7 @@ export default function ContractsArchitecturePage() {
         </section>
 
         <section id="core-contract-surfaces" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Core Contract Surfaces</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Core Contract Surfaces</h2>
           <div className="space-y-4">
             {coreSurfaces.map((surface) => (
               <div key={surface.title} className="border-b border-gray-100 pb-4 last:border-b-0 last:pb-0">
@@ -114,7 +118,7 @@ export default function ContractsArchitecturePage() {
         </section>
 
         <section id="trust-boundaries" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Trust Boundaries</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Trust Boundaries</h2>
           <ul className="space-y-3 text-sm text-gray-600">
             <li>• Onchain accounting and liquidation settlement should be deterministic once triggered.</li>
             <li>• Oracle sources, venue adapters, and operational liquidator infrastructure are external dependencies and must be monitored as such.</li>
@@ -123,7 +127,7 @@ export default function ContractsArchitecturePage() {
         </section>
 
         <section id="audit-readiness" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Audit Readiness</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Audit Readiness</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             This page intentionally avoids publishing speculative auditor schedules or placeholder
             milestones. Audit reports, scopes, and remediation notes should be published once they are

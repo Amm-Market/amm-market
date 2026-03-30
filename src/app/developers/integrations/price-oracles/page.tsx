@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Price Oracles",
@@ -89,14 +90,17 @@ export default function PriceOraclesPage() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
       {/* Main content */}
-      <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Price Oracles</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          AMM Market Oracle is the protocol&apos;s collateral valuation engine for LP-backed lending.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Price Oracles"
+
+          description="AMM Market Oracle is the protocol&apos;s collateral valuation engine for LP-backed lending."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             AMM Market Oracle is the protocol&apos;s collateral valuation engine for LP-backed lending. It is
             designed to price LP positions conservatively using robust external market data, deterministic
@@ -132,7 +136,7 @@ export default function PriceOraclesPage() {
         </section>
 
         <section id="oracle-interface" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Oracle Interface: IOracle</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Oracle Interface: IOracle</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             The IOracle interface standardizes how the protocol measures LP collateral across DEX
             designs, while preserving the distinction between theoretical mark value, accrued fees, and
@@ -173,7 +177,7 @@ export default function PriceOraclesPage() {
         </section>
 
         <section id="multi-layer-architecture" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Multi-Layer Architecture</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Multi-Layer Architecture</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             For LP collateral, the safe architecture is closer to a recoverable-value checklist than a
             single spot-price lookup:
@@ -197,7 +201,7 @@ export default function PriceOraclesPage() {
         </section>
 
         <section id="dex-handling" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">DEX-Specific Handling</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">DEX-Specific Handling</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             Different LP formats expose different position-state data, but AMM Market Oracle uses those
             venue-specific inputs to reconstruct collateral and verify pricing, not to accept raw pool
@@ -227,7 +231,7 @@ export default function PriceOraclesPage() {
         </section>
 
         <section id="twap-computation" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">TWAP Computation by DEX</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">TWAP Computation by DEX</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             TWAPs are used as verification and manipulation-resistance inputs alongside external asset
             prices and deterministic position reconstruction. They help validate unwind assumptions rather
@@ -274,7 +278,7 @@ export default function PriceOraclesPage() {
         </section>
 
         <section id="safety-measures" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Safety & Manipulation Prevention</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Safety & Manipulation Prevention</h2>
           
           <ul className="space-y-3">
             <li className="border-l-4 border-red-400 pl-3">
@@ -316,7 +320,7 @@ export default function PriceOraclesPage() {
         </section>
 
         <section id="configurable-parameters" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Configurable Oracle Parameters</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Configurable Oracle Parameters</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             Developers can configure pool-specific oracle settings for each token via <code className="bg-gray-200 px-1 rounded">setTokenConfig</code>:
           </p>

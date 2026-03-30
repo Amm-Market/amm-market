@@ -33,14 +33,14 @@ describe('SectionHeader', () => {
     render(<SectionHeader title="Styled Title" />)
     const title = screen.getByText('Styled Title')
 
-    expect(title).toHaveClass('text-2xl', 'font-semibold', 'text-gray-900')
+    expect(title).toHaveClass('type-marketing-section-title', 'text-gray-900')
   })
 
   it('description has correct styling', () => {
     render(<SectionHeader title="Title" description="Styled Description" />)
     const description = screen.getByText('Styled Description')
 
-    expect(description).toHaveClass('text-gray-600')
+    expect(description).toHaveClass('type-marketing-section-lead', 'text-gray-600')
   })
 
   it('container has flex-col layout', () => {

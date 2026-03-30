@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Router Contract",
@@ -26,14 +27,17 @@ const supportedOperations = [
 export default function RouterContractPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Router Contract</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Operational interface layer for venue-specific actions, adapter calls, and unwind support.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Router Contract"
+
+          description="Operational interface layer for venue-specific actions, adapter calls, and unwind support."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             The router is an execution helper, not the protocol&apos;s central source of truth. AMM
             Market&apos;s core policy decisions still come from the Borrow Spoke, Hub, oracle stack,
@@ -54,7 +58,7 @@ export default function RouterContractPage() {
         </section>
 
         <section id="role-in-system" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Role in System</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Role in System</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Different AMM venues expose different entry, exit, and fee-collection methods. The router
             gives AMM Market an integration layer for those mechanics so builders do not need to treat
@@ -67,7 +71,7 @@ export default function RouterContractPage() {
         </section>
 
         <section id="adapter-model" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Adapter Model</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Adapter Model</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Each supported venue family should have a venue-aware adapter that knows how to claim fees,
             remove liquidity, or otherwise expose the actions needed by the protocol. This keeps
@@ -80,7 +84,7 @@ export default function RouterContractPage() {
         </section>
 
         <section id="supported-operations" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Supported Operations</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Supported Operations</h2>
           <ul className="space-y-3 text-sm text-gray-600">
             {supportedOperations.map((operation) => (
               <li key={operation} className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
@@ -91,7 +95,7 @@ export default function RouterContractPage() {
         </section>
 
         <section id="deployment-status" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Deployment Status</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Deployment Status</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Router addresses, adapter registries, and enabled networks are deployment data and should
             be published with releases. This documentation intentionally avoids placeholder addresses

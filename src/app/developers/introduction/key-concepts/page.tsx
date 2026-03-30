@@ -1,6 +1,7 @@
 import Link from "next/link"
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Key Concepts",
@@ -20,15 +21,17 @@ const sections = [
 export default function KeyConceptsPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Key Concepts</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          The core ideas that appear across AMM Market&apos;s Borrow Spoke, valuation, and
-          liquidation docs.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Key Concepts"
+
+          description="The core ideas that appear across AMM Market&apos;s Borrow Spoke, valuation, and liquidation docs."
+
+        />
 
         <section id="core-insight" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Core Insight</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Core Insight</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             An LP position is productive collateral, not just a static token balance. Its value
             depends on the underlying assets, pool composition, accrued fees, liquidity structure,
@@ -41,7 +44,7 @@ export default function KeyConceptsPage() {
         </section>
 
         <section id="user-flow" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Borrowing Model</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Borrowing Model</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               Users deposit supported LP positions into a Borrow Spoke. The positions remain active
@@ -59,7 +62,7 @@ export default function KeyConceptsPage() {
         </section>
 
         <section id="oracle-valuation" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Oracle & Valuation</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Oracle & Valuation</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             AMM Market values LP collateral conservatively. External asset prices anchor the
             underlying tokens, while pool data and position-state inputs are used to reconstruct the
@@ -74,7 +77,7 @@ export default function KeyConceptsPage() {
         </section>
 
         <section id="borrowing-process" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Borrowing Capacity</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Borrowing Capacity</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Borrowing power is not assigned to the account wholesale or to the pool wholesale. It is
             built from the sum of position-level contributions inside a Borrow Spoke after collateral
@@ -90,7 +93,7 @@ export default function KeyConceptsPage() {
         </section>
 
         <section id="health-monitoring" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Health & Liquidation</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Health & Liquidation</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             A Borrow Spoke continuously compares adjusted collateral value with outstanding debt. If
             market moves, oracle verification, or position changes reduce the user&apos;s remaining
@@ -104,7 +107,7 @@ export default function KeyConceptsPage() {
         </section>
 
         <section id="fee-collection" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Fee Treatment</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Fee Treatment</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             LP positions may continue accruing trading fees while they are used as collateral.
             Accrued fees can be recognized in valuation and, subject to health checks, claimed
