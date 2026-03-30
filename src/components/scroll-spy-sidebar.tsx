@@ -1,19 +1,17 @@
 "use client"
 
 /**
- * ScrollSpySidebar - A navigation sidebar that tracks scroll position.
+ * ScrollSpySidebar - A lightweight section navigation sidebar.
  * 
  * @description
- * Renders a sticky sidebar with links to page sections that:
- * - Highlights the currently visible section based on scroll position
- * - Shows visual progress through the page via a colored bar
- * - Provides smooth-scroll navigation when clicking links
- * - Supports multiple color themes
+ * Renders a sticky sidebar with links to page sections and a soft progress
+ * indicator, using minimal client-side scroll tracking instead of animation
+ * libraries.
  * 
  * @features
- * - Scroll-spy: Automatically detects which section is in view
- * - Progress bar: Visual indicator of position through document
- * - Smooth scrolling: Animated scroll to sections on click
+ * - Active section tracking
+ * - Animated progress indicator
+ * - Section navigation
  * - Sticky positioning: Stays visible while scrolling content
  * - Color themes: 7 color options for section accents
  * 
@@ -37,8 +35,7 @@
  * @note Hidden on mobile/tablet (lg:flex), only visible on desktop
  * @see src/app/developers - Used in documentation pages
  */
-import { useEffect, useRef, useState } from "react"
-import { useGT } from "gt-next/client"
+import { useEffect, useMemo, useRef, useState } from "react"
 
 /** Represents a trackable section on the page */
 interface Section {
@@ -70,12 +67,21 @@ const colorClasses = {
 }
 
 export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" }: ScrollSpySidebarProps) {
-  const t = useGT()
-  const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || "")
-  const sidebarRef = useRef<HTMLDivElement>(null)
   const colors = colorClasses[sectionColor]
+  const [activeSection, setActiveSection] = useState<string>(sections[0]?.id ?? "")
+  const [barProgress, setBarProgress] = useState(0)
+  const sidebarRef = useRef<HTMLDivElement>(null)
+
+  const activeIndex = useMemo(
+    () => Math.max(sections.findIndex((section) => section.id === activeSection), 0),
+    [activeSection, sections],
+  )
 
   useEffect(() => {
+    if (sections.length === 0) {
+      return
+    }
+
     let frame = 0
 
     const updateActiveSection = () => {
@@ -86,10 +92,10 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
         }))
         .filter((item): item is { id: string; element: HTMLElement } => item.element !== null)
 
-      if (sectionElements.length === 0) return
+      if (sectionElements.length === 0) {
+        return
+      }
 
-      // Track the section intersecting a line below the sticky header, which
-      // keeps the active state from jumping too early on long-form pages.
       const activationLine = Math.max(140, Math.min(window.innerHeight * 0.28, 220))
 
       const sectionAtLine = sectionElements.find(({ element }) => {
@@ -102,11 +108,17 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
         [...sectionElements].reverse().find(({ element }) => element.getBoundingClientRect().top <= activationLine)?.id ??
         sectionElements[0].id
 
+      const currentIndex = Math.max(
+        sectionElements.findIndex((section) => section.id === currentSection),
+        0,
+      )
+
       setActiveSection((previous) => (previous === currentSection ? previous : currentSection))
+      setBarProgress(((currentIndex + 1) / sectionElements.length) * 100)
     }
 
     const scheduleUpdate = () => {
-      if (frame) {
+      if (frame !== 0) {
         return
       }
 
@@ -116,9 +128,7 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
       })
     }
 
-    // Initial check
     updateActiveSection()
-
     window.addEventListener("scroll", scheduleUpdate, { passive: true })
     window.addEventListener("resize", scheduleUpdate)
 
@@ -126,7 +136,7 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
       window.removeEventListener("scroll", scheduleUpdate)
       window.removeEventListener("resize", scheduleUpdate)
 
-      if (frame) {
+      if (frame !== 0) {
         window.cancelAnimationFrame(frame)
       }
     }
@@ -134,22 +144,20 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
 
   useEffect(() => {
     const sidebar = sidebarRef.current
-    if (!sidebar) return
+    if (!sidebar) {
+      return
+    }
 
     const activeLink = sidebar.querySelector<HTMLElement>(`[data-section-id="${activeSection}"]`)
-    if (!activeLink) return
+    if (!activeLink) {
+      return
+    }
 
     activeLink.scrollIntoView({
       block: "nearest",
       behavior: "smooth",
     })
   }, [activeSection])
-
-  const activeIndex = Math.max(
-    sections.findIndex((section) => section.id === activeSection),
-    0,
-  )
-  const barProgress = sections.length > 0 ? ((activeIndex + 1) / sections.length) * 100 : 0
 
   return (
     <div
@@ -158,64 +166,62 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
     >
       <div className="flex flex-col items-start justify-start gap-0">
         <p className="type-meta-label mb-3 pl-6 text-gray-500">
-          {t("On this page")}
+          On this page
         </p>
 
         {/* Page summary at top */}
         {pageSummary && (
           <p className="type-sidebar-summary mb-4 max-w-[220px] pl-6 text-gray-500">
-            {t(pageSummary)}
+            {pageSummary}
           </p>
         )}
 
         <div className="relative pl-6 pb-1">
-          {/* Progress bar track */}
           <div className="absolute bottom-0 left-0 top-0 w-1 overflow-hidden rounded-full bg-gray-200">
-            {/* Animated progress fill */}
             <div
-              className={`absolute left-0 top-0 w-full rounded-full ${colors.bar} transition-all duration-300 ease-out`}
+              className={`absolute left-0 top-0 w-full rounded-full ${colors.bar} transition-[height] duration-500 ease-out`}
               style={{ height: `${barProgress}%` }}
             />
           </div>
 
-          {/* Section links */}
           {sections.map((section, index) => {
             const isActive = section.id === activeSection
             const isPast = index < activeIndex
 
             return (
               <div key={section.id} data-section-id={section.id} className="relative py-2.5">
-                {/* Dot indicator */}
                 <div
                   className={`absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-300 ${
                     isActive
-                      ? `${colors.dot} scale-125`
+                      ? `${colors.dot} scale-125 shadow-[0_0_0_4px_rgba(59,130,246,0.08)]`
                       : isPast
-                        ? colors.dot
+                        ? `${colors.dot} opacity-80`
                         : "bg-gray-300"
                   }`}
                 />
                 <a
                   href={`#${section.id}`}
-                  onClick={(e) => {
-                    e.preventDefault()
+                  onClick={(event) => {
+                    event.preventDefault()
                     const element = document.getElementById(section.id)
-                    if (element) {
-                      const offset = 120
-                      const elementPosition = element.getBoundingClientRect().top + window.scrollY
-                      window.scrollTo({
-                        top: elementPosition - offset,
-                        behavior: "smooth",
-                      })
+                    if (!element) {
+                      return
                     }
+
+                    const offset = 120
+                    const elementPosition = element.getBoundingClientRect().top + window.scrollY
+                    window.scrollTo({
+                      top: elementPosition - offset,
+                      behavior: "smooth",
+                    })
                   }}
                   className={`group relative inline-flex cursor-pointer items-center px-3 py-1 transition-all duration-200 ease-in-out ${
                     isActive
-                      ? "font-medium text-gray-900"
+                      ? `font-medium text-gray-900 ${colors.text}`
                       : "text-gray-500 hover:text-gray-900 hover:opacity-80"
                   }`}
                 >
-                  <p className="type-sidebar-link line-clamp-2">{t(section.title)}</p>
+                  <p className="type-sidebar-link line-clamp-2">{section.title}</p>
                 </a>
               </div>
             )

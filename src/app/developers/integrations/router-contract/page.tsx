@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Router Contract",
   description:
-    "Operational reference for the AMM Market router and adapter layer. Understand what the router coordinates, what it does not decide, and how deployments are published.",
+    "Operational reference for the Avana router and adapter layer. Understand what the router coordinates, what it does not decide, and how deployments are published.",
 }
 
 const sections = [
@@ -61,7 +61,7 @@ export default function RouterContractPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Role in System</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Different AMM venues expose different entry, exit, and fee-collection methods. The router
-            gives AMM Market an integration layer for those mechanics so builders do not need to treat
+            gives Avana an integration layer for those mechanics so builders do not need to treat
             every venue as a bespoke one-off.
           </p>
           <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
@@ -111,7 +111,7 @@ export default function RouterContractPage() {
 
       <ScrollSpySidebar
         sections={sections}
-        pageSummary="Operational reference for AMM Market's router and adapter layer."
+        pageSummary="Operational reference for Avana's router and adapter layer."
         sectionColor="cyan"
       />
     </div>

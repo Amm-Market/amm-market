@@ -4,7 +4,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Bug Bounty",
-  description: "AMM Market Bug Bounty - responsible disclosure scope, LP-collateral risk surfaces, and economic impact severity philosophy.",
+  description: "Avana Bug Bounty - responsible disclosure scope, LP-collateral risk surfaces, and economic impact severity philosophy.",
 }
 
 const sections = [
@@ -35,7 +35,7 @@ const programs = [
   {
     title: "Program B - LP Collateral & Valuation",
     summary:
-      "Covers the AMM Market-specific valuation system for LP-backed credit, including how LP positions are priced, risk-weighted, and stress-tested under volatile market conditions.",
+      "Covers the Avana-specific valuation system for LP-backed credit, including how LP positions are priced, risk-weighted, and stress-tested under volatile market conditions.",
     includes: [
       "LP token onboarding logic",
       "Collateral factor assignment for LP positions",
@@ -75,7 +75,7 @@ const programs = [
     summary:
       "Covers supporting systems whose compromise can influence trusted protocol operations, user interactions, or keeper behavior.",
     includes: [
-      "Indexing or liquidation bots maintained by AMM Market",
+      "Indexing or liquidation bots maintained by Avana",
       "Keeper assumptions and oracle relays",
       "SDK logic that can induce unsafe interactions",
       "Hosted APIs used in safety-critical paths",
@@ -116,19 +116,19 @@ export default function BugBountyPage() {
 
           title="Bug Bounty"
 
-          description="Responsible disclosure scope and economic-impact triage for AMM Market security research."
+          description="Responsible disclosure scope and economic-impact triage for Avana security research."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            The AMM Market Bug Bounty is a core part of the protocol&apos;s security model. It is
+            The Avana Bug Bounty is a core part of the protocol&apos;s security model. It is
             designed to incentivize responsible disclosure across smart contracts, risk systems, and
             supporting infrastructure that can affect user funds or protocol solvency.
           </p>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            AMM Market introduces a lending system where AMM liquidity positions are used as
+            Avana introduces a lending system where AMM liquidity positions are used as
             collateral. That creates a security surface where risk is defined not only by contract
             correctness, but also by how liquidity, pricing, and market dynamics are translated into
             collateral value.
@@ -143,7 +143,7 @@ export default function BugBountyPage() {
         <section id="scope-and-system-architecture" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Scope & System Architecture</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
-            AMM Market separates its bug bounty into distinct subsystems so triage mirrors how risk
+            Avana separates its bug bounty into distinct subsystems so triage mirrors how risk
             actually manifests across lending, valuation, governance, and integrations.
           </p>
 
@@ -219,7 +219,7 @@ export default function BugBountyPage() {
         <section id="severity-philosophy" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Severity Philosophy</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
-            AMM Market does not use generic vulnerability scoring as its primary severity model.
+            Avana does not use generic vulnerability scoring as its primary severity model.
             Findings are judged by credible exploit paths and real economic consequences.
           </p>
 
@@ -245,7 +245,7 @@ export default function BugBountyPage() {
 
       <ScrollSpySidebar
         sections={sections}
-        pageSummary="Responsible disclosure scope, LP-collateral risk surfaces, and economic-impact triage for AMM Market."
+        pageSummary="Responsible disclosure scope, LP-collateral risk surfaces, and economic-impact triage for Avana."
         sectionColor="rose"
       />
     </div>

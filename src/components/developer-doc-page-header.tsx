@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Check, ChevronDown, Copy, FileText } from "lucide-react"
-import { useGT } from "gt-next/client"
 import {
   exportElementToMarkdown,
   exportElementToPlainText,
@@ -34,7 +33,6 @@ const llmMenuItems = [
 ]
 
 export function DeveloperDocPageHeader({ title, description }: DeveloperDocPageHeaderProps) {
-  const t = useGT()
   const containerRef = useRef<HTMLDivElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const [isOpen, setIsOpen] = useState(false)
@@ -110,7 +108,7 @@ export function DeveloperDocPageHeader({ title, description }: DeveloperDocPageH
     <div ref={containerRef} className="mb-10">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <h1 className="type-page-title min-w-0 text-slate-950">
-          {t(title)}
+          {title}
         </h1>
 
         <div ref={menuRef} className="relative self-start" data-export-skip>
@@ -122,7 +120,7 @@ export function DeveloperDocPageHeader({ title, description }: DeveloperDocPageH
             aria-haspopup="menu"
           >
             {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-            {copied ? t("Copied") : t("Copy for LLM")}
+            {copied ? "Copied" : "Copy for LLM"}
             <span className="h-4 w-px bg-slate-300" aria-hidden="true" />
             <ChevronDown className={`h-4 w-4 transition ${isOpen ? "rotate-180" : ""}`} />
           </button>
@@ -151,9 +149,9 @@ export function DeveloperDocPageHeader({ title, description }: DeveloperDocPageH
                   >
                     <Icon className="mt-1 h-4 w-4 shrink-0 text-slate-500" />
                     <span className="min-w-0">
-                      <span className="type-supporting block font-medium text-slate-900">{t(item.title)}</span>
+                      <span className="type-supporting block font-medium text-slate-900">{item.title}</span>
                       <span className="type-supporting mt-0.5 block text-slate-500">
-                        {t(item.description)}
+                        {item.description}
                       </span>
                     </span>
                   </button>
@@ -166,7 +164,7 @@ export function DeveloperDocPageHeader({ title, description }: DeveloperDocPageH
 
       <div className="mt-4 border-b border-slate-200" />
 
-      <p className="type-page-lead mt-6 max-w-4xl text-slate-600">{t(description)}</p>
+      <p className="type-page-lead mt-6 max-w-4xl text-slate-600">{description}</p>
     </div>
   )
 }

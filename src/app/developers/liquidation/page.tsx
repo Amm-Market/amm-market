@@ -4,7 +4,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Liquidation Framework",
-  description: "AMM Market liquidation framework - LP collateral complexity, liquidation nodes, pathways, thresholds, bonuses, and protection mechanisms.",
+  description: "Avana liquidation framework - LP collateral complexity, liquidation nodes, pathways, thresholds, bonuses, and protection mechanisms.",
 }
 
 const sections = [
@@ -42,7 +42,7 @@ export default function LiquidationDesignPage() {
         <section id="overview" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            In AMM Market, the liquidation lifecycle is a core safety mechanism to protect both the 
+            In Avana, the liquidation lifecycle is a core safety mechanism to protect both the 
             protocol and its liquidity providers from losses due to undercollateralized loans. Liquidation 
             mode is activated when a position&apos;s accrued debt exceeds its borrowing capacity.
           </p>
@@ -125,7 +125,7 @@ export default function LiquidationDesignPage() {
             <div>
               <h3 className="font-semibold text-gray-900 mb-2">Protocol-Owned Flashloan Execution</h3>
               <p className="text-gray-600 text-sm">
-                AMM Market can orchestrate flashloan-backed liquidation execution through specialized
+                Avana can orchestrate flashloan-backed liquidation execution through specialized
                 protocol nodes that repay debt, seize LP collateral, unwrap LPs, route underlying
                 assets, and settle execution liquidity in a single atomic transaction. This reduces
                 dependence on third-party liquidators without removing permissionless participation.
@@ -153,11 +153,11 @@ export default function LiquidationDesignPage() {
         <section id="liquidation-node" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Liquidation Node</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            AMM Market Node is the protocol&apos;s indexing and liquidation bot runtime. It handles
+            Avana Node is the protocol&apos;s indexing and liquidation bot runtime. It handles
             liquidity operations and routing, tracks active positions, refreshes market and debt
             state in real time, and reacts as soon as a position falls below its allowed borrowing
             capacity. Rather than relying only on generic third-party liquidators to interpret
-            complex LP collateral, AMM Market operates specialized nodes built for LP-specific
+            complex LP collateral, Avana operates specialized nodes built for LP-specific
             workflows such as fee claiming, full LP unwind, asset routing, flashloan repayment, and
             residual value return.
           </p>
@@ -197,7 +197,7 @@ export default function LiquidationDesignPage() {
               <h3 className="font-semibold text-gray-900 mb-1">Product Defensibility</h3>
               <p className="text-gray-600 text-sm">
                 This architecture supports LP collateral markets that traditional lending systems
-                struggle to service, helping AMM Market build a differentiated credit engine around
+                struggle to service, helping Avana build a differentiated credit engine around
                 active on-chain liquidity.
               </p>
             </div>
@@ -215,7 +215,7 @@ export default function LiquidationDesignPage() {
         <section id="liquidation-pathways" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Liquidation Pathways</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Liquidation in AMM Market has two distinct pathways:
+            Liquidation in Avana has two distinct pathways:
           </p>
           
           <div className="space-y-6">
@@ -252,8 +252,8 @@ export default function LiquidationDesignPage() {
           <div className="mt-6">
             <h3 className="font-semibold text-gray-900 mb-2">External Liquidator Flow</h3>
             <ol className="text-gray-600 text-sm space-y-1 list-decimal list-inside">
-              <li>Liquidator transfers <code className="bg-gray-100 px-1 rounded text-gray-800">liquidationCost</code> in asset to AMM Market</li>
-              <li>AMM Market extracts partial position liquidity proportional to <code className="bg-gray-100 px-1 rounded text-gray-800">liquidationValue</code></li>
+              <li>Liquidator transfers <code className="bg-gray-100 px-1 rounded text-gray-800">liquidationCost</code> in asset to Avana</li>
+              <li>Avana extracts partial position liquidity proportional to <code className="bg-gray-100 px-1 rounded text-gray-800">liquidationValue</code></li>
               <li>Collected tokens transferred to liquidator</li>
               <li>Debt shares reduced for the loan</li>
               <li>State cleaned up for loans reaching zero shares</li>
@@ -318,7 +318,7 @@ export default function LiquidationDesignPage() {
         <section id="who-can-liquidate" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Who Can Liquidate</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Liquidations remain permissionless, but AMM Market also operates specialized liquidation
+            Liquidations remain permissionless, but Avana also operates specialized liquidation
             nodes to improve coverage for complex LP collateral:
           </p>
           
@@ -338,7 +338,7 @@ export default function LiquidationDesignPage() {
               </p>
             </li>
             <li>
-              <span className="font-semibold text-gray-900">AMM Market Liquidation Nodes</span>
+              <span className="font-semibold text-gray-900">Avana Liquidation Nodes</span>
               <p className="text-gray-600 text-sm mt-0.5">
                 Protocol-operated backstop runtimes that monitor active positions, route liquidity,
                 and execute LP-specific liquidation workflows when speed and coverage matter most.
@@ -396,7 +396,7 @@ export default function LiquidationDesignPage() {
       {/* Right scroll-spy sidebar */}
       <ScrollSpySidebar 
         sections={sections} 
-        pageSummary="How AMM Market detects unhealthy positions, routes liquidations, and protects solvency across complex LP collateral."
+        pageSummary="How Avana detects unhealthy positions, routes liquidations, and protects solvency across complex LP collateral."
         sectionColor="amber"
       />
     </div>

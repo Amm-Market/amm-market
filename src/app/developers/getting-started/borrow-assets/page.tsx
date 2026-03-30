@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Borrow Assets",
   description:
-    "How to borrow assets against LP collateral in AMM Market, including aggregate borrowing capacity, Hub liquidity, and spoke-level health checks.",
+    "How to borrow assets against LP collateral in Avana, including aggregate borrowing capacity, Hub liquidity, and spoke-level health checks.",
 }
 
 const sections = [

@@ -2,10 +2,6 @@ import { render, screen } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import Footer from '../footer'
 
-vi.mock('gt-next', () => ({
-  T: ({ children }: { children: React.ReactNode }) => <>{children}</>,
-}))
-
 // Mock next/link
 vi.mock('next/link', () => ({
   default: ({ children, href, ...props }: { children: React.ReactNode; href: string }) => (
@@ -30,7 +26,7 @@ describe('Footer', () => {
 
   it('renders the logo', () => {
     render(<Footer />)
-    const logo = screen.getByAltText('Aave Logo')
+    const logo = screen.getByAltText('Avana wordmark')
     expect(logo).toBeInTheDocument()
   })
 
@@ -47,21 +43,22 @@ describe('Footer', () => {
 
     expect(screen.getByRole('link', { name: 'Lightpaper' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Early Access' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Launch App' })).toHaveAttribute('href', '/')
   })
 
   it('renders Resources links', () => {
     render(<Footer />)
 
-    expect(screen.getByRole('link', { name: 'Research' })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Community' })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Brand' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Blog' })).toHaveAttribute('href', '/blog')
+    expect(screen.getByRole('link', { name: 'FAQ' })).toHaveAttribute('href', '/faq')
+    expect(screen.getByRole('link', { name: 'Brand' })).toHaveAttribute('href', '/brand')
   })
 
   it('renders Developers links', () => {
     render(<Footer />)
 
     expect(screen.getByRole('link', { name: 'Documentation' })).toHaveAttribute('href', '/developers')
-    expect(screen.getByRole('link', { name: 'Hooks' })).toHaveAttribute('href', '/developers/hooks')
+    expect(screen.getByRole('link', { name: 'Introduction' })).toHaveAttribute('href', '/developers/introduction')
   })
 
   it('renders social media links', () => {
@@ -96,5 +93,13 @@ describe('Footer', () => {
     const footer = container.querySelector('footer')
     expect(footer).toBeInTheDocument()
     expect(footer).toHaveClass('mx-auto', 'w-full', 'max-w-5xl')
+  })
+
+  it('renders the current footer section links', () => {
+    render(<Footer />)
+
+    expect(screen.getByText('Products')).toBeInTheDocument()
+    expect(screen.getByText('Resources')).toBeInTheDocument()
+    expect(screen.getByText('Developers')).toBeInTheDocument()
   })
 })

@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Claim LP Fees",
   description:
-    "Claim accrued LP fees in AMM Market without fully unwinding principal liquidity, subject to post-claim health checks.",
+    "Claim accrued LP fees in Avana without fully unwinding principal liquidity, subject to post-claim health checks.",
 }
 
 const sections = [
@@ -32,7 +32,7 @@ export default function ClaimLPFeesPage() {
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            AMM Market separates principal liquidity from accrued fees in its valuation model. That
+            Avana separates principal liquidity from accrued fees in its valuation model. That
             makes it possible to recognize fee income and, when permitted by health checks, release
             claimed fees without forcing a full LP unwind.
           </p>

@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import DeveloperSidebar from "@/components/developer-sidebar"
 import { DeveloperContentWrapper } from "@/components/developer-content-wrapper"
+import { buildOgImagePath, SITE_NAME } from "@/lib/site"
 
 /**
  * Developer documentation section metadata
@@ -9,18 +10,26 @@ import { DeveloperContentWrapper } from "@/components/developer-content-wrapper"
  */
 export const metadata: Metadata = {
   title: {
-    template: "%s - Developer Docs | AMM Market",
+    template: `%s - Developer Docs | ${SITE_NAME}`,
     default: "Developer Documentation",
   },
-  description: "Technical documentation for integrating with AMM Market. Learn about LP token collateral, health factors, liquidation flows, and smart contract architecture on Aave v4.",
+  description: `Technical documentation for integrating with ${SITE_NAME}. Learn about LP token collateral, health factors, liquidation flows, and smart contract architecture on Aave v4.`,
   openGraph: {
-    title: "Developer Documentation - AMM Market",
-    description: "Technical docs for integrating with AMM Market on Aave v4.",
-    images: ["/og?title=Developer%20Documentation&subtitle=Technical%20guides%20for%20integrating%20with%20AMM%20Market&type=developers"],
+    title: `Developer Documentation - ${SITE_NAME}`,
+    description: `Technical docs for integrating with ${SITE_NAME} on Aave v4.`,
+    images: [buildOgImagePath({
+      title: "Developer Documentation",
+      subtitle: `Technical guides for integrating with ${SITE_NAME}`,
+      type: "developers",
+    })],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og?title=Developer%20Documentation&subtitle=Technical%20guides%20for%20integrating%20with%20AMM%20Market&type=developers"],
+    images: [buildOgImagePath({
+      title: "Developer Documentation",
+      subtitle: `Technical guides for integrating with ${SITE_NAME}`,
+      type: "developers",
+    })],
   },
 }
 

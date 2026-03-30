@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Smart Contract Security",
   description:
-    "AMM Market smart contract security reference covering trust boundaries, contract surfaces, and how audits and bug bounties support the LP-backed lending design.",
+    "Avana smart contract security reference covering trust boundaries, contract surfaces, and how audits and bug bounties support the LP-backed lending design.",
 }
 
 const sections = [
@@ -56,7 +56,7 @@ export default function ContractsArchitecturePage() {
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            AMM Market expands lending into LP collateral, which means security is not only about
+            Avana expands lending into LP collateral, which means security is not only about
             code correctness. It is also about how pricing, custody, liquidation, and governance work
             together under stress.
           </p>

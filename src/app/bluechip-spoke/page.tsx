@@ -38,7 +38,7 @@ const bluechipSpokeFaqItems: InlineFaqItem[] = [
 
 export const metadata: Metadata = {
   title: "Bluechip Spoke - Blue-Chip LP Collateral",
-  description: "AMM Market Bluechip Spoke for established-asset LP positions. Higher LTV and conservative risk for ETH, BTC, and major governance token pairs.",
+  description: "Avana Bluechip Spoke for established-asset LP positions. Higher LTV and conservative risk for ETH, BTC, and major governance token pairs.",
 }
 
 export default function BluechipSpokePage() {

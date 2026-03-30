@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next'
+import { SITE_URL } from "@/lib/site"
 
 /**
- * Generates the robots.txt for the AMM Market website.
+ * Generates the robots.txt for the Avana website.
  * 
  * @description
  * This file is automatically processed by Next.js to generate /robots.txt.
@@ -16,8 +17,6 @@ import { MetadataRoute } from 'next'
  * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots
  */
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://ammmarket.xyz'
-  
   return {
     rules: [
       {
@@ -47,7 +46,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/',
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   }
 }

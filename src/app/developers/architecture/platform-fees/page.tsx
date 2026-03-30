@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Platform Fees",
   description:
-    "Operational fee policy for AMM Market interfaces. Learn how interface fees differ from protocol economics, how fees are disclosed, and how to verify current policy.",
+    "Operational fee policy for Avana interfaces. Learn how interface fees differ from protocol economics, how fees are disclosed, and how to verify current policy.",
 }
 
 const sections = [
@@ -24,14 +24,14 @@ export default function PlatformFeesPage() {
 
           title="Platform Fees"
 
-          description="Interface-level fee policy and disclosure guidance for AMM Market frontends."
+          description="Interface-level fee policy and disclosure guidance for Avana frontends."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            This page describes interface policy, not the core protocol borrowing model. AMM Market
+            This page describes interface policy, not the core protocol borrowing model. Avana
             may charge frontend or service fees on official interfaces, but those operational charges
             should not be confused with the protocol&apos;s collateral, oracle, or liquidation rules.
           </p>
@@ -44,7 +44,7 @@ export default function PlatformFeesPage() {
         <section id="interface-vs-protocol" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Interface vs Protocol</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            AMM Market&apos;s core contracts govern LP admission, borrowing capacity, and liquidation
+            Avana&apos;s core contracts govern LP admission, borrowing capacity, and liquidation
             behavior. Interface fees, if enabled, are layered on top of those contracts as a frontend
             business policy rather than as a change to the borrow or risk engine itself.
           </p>
@@ -92,7 +92,7 @@ export default function PlatformFeesPage() {
 
       <ScrollSpySidebar
         sections={sections}
-        pageSummary="Operational fee policy for AMM Market interfaces and service layers."
+        pageSummary="Operational fee policy for Avana interfaces and service layers."
         sectionColor="violet"
       />
     </div>

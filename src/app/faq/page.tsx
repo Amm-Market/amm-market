@@ -50,16 +50,16 @@ const faqCategories = [
     name: "Key Concepts",
     questions: [
       {
-        q: "What is the core insight behind Amm Market?",
-        a: "An LP position is not merely a bundle of two tokens; it is a sophisticated financial instrument whose value is composed of principal liquidity and accrued trading fees, all confined within a specific price range. Traditional lending protocols, which treat assets as fungible ERC20 tokens, cannot accurately assess or manage this type of collateral.\n\nAmm Market solves this by building on the proven foundation of Aave v4's battle-tested and audited codebase, specifically designed to integrate natively with Aave v4's Hub-and-Spoke model, allowing it to serve as a dedicated Spoke that manages this unique asset class while drawing liquidity from Aave's robust and capital-efficient Hubs.",
+        q: "What is the core insight behind Avana?",
+        a: "An LP position is not merely a bundle of two tokens; it is a sophisticated financial instrument whose value is composed of principal liquidity and accrued trading fees, all confined within a specific price range. Traditional lending protocols, which treat assets as fungible ERC20 tokens, cannot accurately assess or manage this type of collateral.\n\nAvana solves this by building on the proven foundation of Aave v4's battle-tested and audited codebase, specifically designed to integrate natively with Aave v4's Hub-and-Spoke model, allowing it to serve as a dedicated Spoke that manages this unique asset class while drawing liquidity from Aave's robust and capital-efficient Hubs.",
       },
       {
-        q: "How does Amm Market handle LP positions as collateral?",
-        a: "Amm Market is designed for both simplicity and security. A user begins by depositing their LP shares into Amm Market. This action is the foundation of the entire process, as the LP share serves as a unique, verifiable title to their liquidity position.\n\nLP shares carry path-dependent risk (impermanent loss, fee accrual, oracle drift). Amm Market is context-aware — it can track pool composition, volatility bands, and oracle quality, then tune LTVs and liquidation paths accordingly.",
+        q: "How does Avana handle LP positions as collateral?",
+        a: "Avana is designed for both simplicity and security. A user begins by depositing their LP shares into Avana. This action is the foundation of the entire process, as the LP share serves as a unique, verifiable title to their liquidity position.\n\nLP shares carry path-dependent risk (impermanent loss, fee accrual, oracle drift). Avana is context-aware — it can track pool composition, volatility bands, and oracle quality, then tune LTVs and liquidation paths accordingly.",
       },
       {
         q: "How does the Spoke architecture work?",
-        a: "Upon deposit, the user's LP shares are securely held within the Spoke, which then interacts with the Aave v4 Hub to establish a line of credit. This does not remove their liquidity from the pool; their LP share remains active, continuing to earn fees and provide liquidity whether on Balancer or Uniswap.\n\nBorrowing occurs by selecting an optimal Hub based on factors like available liquidity and premiums, drawing funds directly from the Hub while tracking debt shares internally. Interest accrues on debts using a compounded model via the interest rate model contract, incorporating utilization and reserve factors.\n\nThe architecture ensures risk isolation, with Amm Market managing per-position health checks and the Hub enforcing aggregate caps.",
+        a: "Upon deposit, the user's LP shares are securely held within the Spoke, which then interacts with the Aave v4 Hub to establish a line of credit. This does not remove their liquidity from the pool; their LP share remains active, continuing to earn fees and provide liquidity whether on Balancer or Uniswap.\n\nBorrowing occurs by selecting an optimal Hub based on factors like available liquidity and premiums, drawing funds directly from the Hub while tracking debt shares internally. Interest accrues on debts using a compounded model via the interest rate model contract, incorporating utilization and reserve factors.\n\nThe architecture ensures risk isolation, with Avana managing per-position health checks and the Hub enforcing aggregate caps.",
       },
       {
         q: "How is my LP position valued for borrowing?",
@@ -72,11 +72,11 @@ const faqCategories = [
     questions: [
       {
         q: "How do I deposit my LP position?",
-        a: "A user deposits their Uniswap V3 position by transferring the NFT to Amm Market. The NFT is cached and valued by an oracle that returns the full position value plus accumulated fees.\n\nInside the spoke, a user calls deposit(tokenId), which internally triggers a safeTransferFrom call to the Uniswap NonfungiblePositionManager, moving the NFT from the user's wallet into the Spoke's custody. This action fires the onERC721Received hook, where the Spoke performs its initialization logic — it records the NFT's ownership, caches the position's metadata (tokens, fee tier, tick range, liquidity), and creates a new, empty loan entry for the tokenId.",
+        a: "A user deposits their Uniswap V3 position by transferring the NFT to Avana. The NFT is cached and valued by an oracle that returns the full position value plus accumulated fees.\n\nInside the spoke, a user calls deposit(tokenId), which internally triggers a safeTransferFrom call to the Uniswap NonfungiblePositionManager, moving the NFT from the user's wallet into the Spoke's custody. This action fires the onERC721Received hook, where the Spoke performs its initialization logic — it records the NFT's ownership, caches the position's metadata (tokens, fee tier, tick range, liquidity), and creates a new, empty loan entry for the tokenId.",
       },
       {
         q: "How does borrowing work?",
-        a: "When the owner requests a borrow, Amm Market converts the requested asset amount into debt shares using the current exchange rate, updates per-token and per-token-pair accounting, checks that the resulting loan is safe given the configured collateral factors, and then draws the requested asset from the chosen Hub.\n\nWith the NFT deposited, the user calls borrow(tokenId, amount). The Spoke first performs a series of checks: it verifies the caller is the NFT's owner, selects an appropriate Aave Hub based on available liquidity and cost, and checks the user's new debt against global and per-token debt limits.",
+        a: "When the owner requests a borrow, Avana converts the requested asset amount into debt shares using the current exchange rate, updates per-token and per-token-pair accounting, checks that the resulting loan is safe given the configured collateral factors, and then draws the requested asset from the chosen Hub.\n\nWith the NFT deposited, the user calls borrow(tokenId, amount). The Spoke first performs a series of checks: it verifies the caller is the NFT's owner, selects an appropriate Aave Hub based on available liquidity and cost, and checks the user's new debt against global and per-token debt limits.",
       },
       {
         q: "What health checks are performed when borrowing?",
@@ -118,7 +118,7 @@ const faqCategories = [
     questions: [
       {
         q: "How do I repay my loan?",
-        a: "Repaying your debt is a straightforward process that strengthens the health of your loan and can eventually lead to the full withdrawal of your collateral. When the user repays, Amm Market reduces debt shares.\n\nTo repay, navigate to the loan management section for the specific loan. You can choose to repay a partial amount or the full debt. The app will show you the total amount due, including any accrued interest. By confirming the repayment transaction, you send the specified amount of the borrowed asset back to the Aave Hub. This action reduces your outstanding debt shares, which in turn improves your loan's health factor.",
+        a: "Repaying your debt is a straightforward process that strengthens the health of your loan and can eventually lead to the full withdrawal of your collateral. When the user repays, Avana reduces debt shares.\n\nTo repay, navigate to the loan management section for the specific loan. You can choose to repay a partial amount or the full debt. The app will show you the total amount due, including any accrued interest. By confirming the repayment transaction, you send the specified amount of the borrowed asset back to the Aave Hub. This action reduces your outstanding debt shares, which in turn improves your loan's health factor.",
       },
       {
         q: "How does repayment work technically?",
@@ -139,7 +139,7 @@ const faqCategories = [
     questions: [
       {
         q: "Can I claim trading fees without withdrawing my LP?",
-        a: "Yes! Inspired by Revert Finance's implementation, Amm Market allows users to claim trading fees accrued from their LP positions without withdrawing liquidity. This means users can unlock the fees they have already earned while keeping their liquidity active in the pool.\n\nThis is accomplished through the decreaseLiquidityAndCollect function. A user can call this function with params.liquidity set to 0 and params.feeAmount0 and params.feeAmount1 set to type(uint128).max. The function then skips the liquidity removal step and proceeds directly to the collect call on the LP Position Manager.",
+        a: "Yes! Inspired by Revert Finance's implementation, Avana allows users to claim trading fees accrued from their LP positions without withdrawing liquidity. This means users can unlock the fees they have already earned while keeping their liquidity active in the pool.\n\nThis is accomplished through the decreaseLiquidityAndCollect function. A user can call this function with params.liquidity set to 0 and params.feeAmount0 and params.feeAmount1 set to type(uint128).max. The function then skips the liquidity removal step and proceeds directly to the collect call on the LP Position Manager.",
       },
       {
         q: "Does claiming fees affect my collateral status?",
@@ -147,7 +147,7 @@ const faqCategories = [
       },
       {
         q: "How does fee accounting work?",
-        a: "Amm Market always caches lastFee0 and lastFee1 for bookkeeping. Fee accounting is included inside the oracle.getValue result which returns fullValue and feeValue. The feeValue is used in health checks and in liquidation calculations to ensure liquidators and Hubs consider accrued but uncollected fees.\n\nAmm Market ensures that users are not forced to choose between keeping their liquidity deployed and accessing accrued fees. With this functionality, liquidity remains productive while previously earned returns are made available at any time.",
+        a: "Avana always caches lastFee0 and lastFee1 for bookkeeping. Fee accounting is included inside the oracle.getValue result which returns fullValue and feeValue. The feeValue is used in health checks and in liquidation calculations to ensure liquidators and Hubs consider accrued but uncollected fees.\n\nAvana ensures that users are not forced to choose between keeping their liquidity deployed and accessing accrued fees. With this functionality, liquidity remains productive while previously earned returns are made available at any time.",
       },
     ],
   },
@@ -210,19 +210,19 @@ const faqCategories = [
     questions: [
       {
         q: "What is the frontend fee?",
-        a: "Amm Market charges a single, flat frontend fee of 0.20% on each user action that interacts with our interface.\n\nThis fee is applied at the moment a user submits a transaction through the Amm Market web or mobile app and covers actions such as supplying collateral, borrowing, repaying, withdrawing, and claiming. The fee is not embedded into the lending protocol itself; it is an interface charge that funds the maintenance and improvement of Amm Market's user experience, infrastructure, security, and community initiatives.",
+        a: "Avana charges a single, flat frontend fee of 0.20% on each user action that interacts with our interface.\n\nThis fee is applied at the moment a user submits a transaction through the Avana web or mobile app and covers actions such as supplying collateral, borrowing, repaying, withdrawing, and claiming. The fee is not embedded into the lending protocol itself; it is an interface charge that funds the maintenance and improvement of Avana's user experience, infrastructure, security, and community initiatives.",
       },
       {
         q: "How is the frontend fee disclosed?",
-        a: "Every transaction that incurs a frontend fee will present a clear, line-item disclosure inside the transaction confirmation modal before the user signs. The fee is computed as 0.20% of the fiat value of the asset being transacted.\n\nFor example, a $50,000 borrow initiated through the Amm Market app will show a fee of $100 and the signed transaction will include an on-chain or off-chain transfer that routes that $100 to the Amm Market fee wallet. We surface the fee as both a dollar amount and a percentage so users can instantly understand cost impact.",
+        a: "Every transaction that incurs a frontend fee will present a clear, line-item disclosure inside the transaction confirmation modal before the user signs. The fee is computed as 0.20% of the fiat value of the asset being transacted.\n\nFor example, a $50,000 borrow initiated through the Avana app will show a fee of $100 and the signed transaction will include an on-chain or off-chain transfer that routes that $100 to the Avana fee wallet. We surface the fee as both a dollar amount and a percentage so users can instantly understand cost impact.",
       },
       {
         q: "How are collected fees used?",
-        a: "Collected frontend fees are routed to the Amm Market treasury and are used exclusively to sustain product operations:\n• Hosting and API costs\n• Oracle subscriptions\n• Ongoing development\n• Audits and security reviews\n• User support\n• Community programs such as incentives or grants\n\nTreasury disbursements are managed under the protocol's governance framework; major allocations are subject to governance proposals and timelocked execution.",
+        a: "Collected frontend fees are routed to the Avana treasury and are used exclusively to sustain product operations:\n• Hosting and API costs\n• Oracle subscriptions\n• Ongoing development\n• Audits and security reviews\n• User support\n• Community programs such as incentives or grants\n\nTreasury disbursements are managed under the protocol's governance framework; major allocations are subject to governance proposals and timelocked execution.",
       },
       {
         q: "Can I avoid the frontend fee?",
-        a: "Transactions submitted directly to the underlying protocol contracts, or routed through third-party frontends that do not levy the Amm Market interface charge, will not pay the 0.20% fee.\n\nTo preserve choice and composability while protecting the integrity of the Amm Market interface, we publish a public registry of Amm Market-official frontends. Official frontends display a verified badge and a plain language explanation of the fee policy; integrations not on the registry are marked as third-party and may not be able to claim official support.",
+        a: "Transactions submitted directly to the underlying protocol contracts, or routed through third-party frontends that do not levy the Avana interface charge, will not pay the 0.20% fee.\n\nTo preserve choice and composability while protecting the integrity of the Avana interface, we publish a public registry of Avana-official frontends. Official frontends display a verified badge and a plain language explanation of the fee policy; integrations not on the registry are marked as third-party and may not be able to claim official support.",
       },
     ],
   },
@@ -231,7 +231,7 @@ const faqCategories = [
     questions: [
       {
         q: "What are the layers of risk management?",
-        a: "Risk management in Amm Market is a multi-layered strategy:\n\n1. Per-loan health factor — enforced after every user action.\n\n2. Spoke-level integration with Aave v4's Risk Premium system — while the Spoke calculates its own internal interest rate for users, the rate it pays to the Hub is influenced by a \"Spoke Risk Premium.\" If the Hub detects that the Spoke's collateral is becoming riskier, it can increase the premium it charges the Spoke, which can then pass this cost on to users.\n\n3. Hard caps (globalDebtLimit and per-token maxDebtCeiling) — these prevent the Spoke from growing too large or becoming overexposed to a single asset.",
+        a: "Risk management in Avana is a multi-layered strategy:\n\n1. Per-loan health factor — enforced after every user action.\n\n2. Spoke-level integration with Aave v4's Risk Premium system — while the Spoke calculates its own internal interest rate for users, the rate it pays to the Hub is influenced by a \"Spoke Risk Premium.\" If the Hub detects that the Spoke's collateral is becoming riskier, it can increase the premium it charges the Spoke, which can then pass this cost on to users.\n\n3. Hard caps (globalDebtLimit and per-token maxDebtCeiling) — these prevent the Spoke from growing too large or becoming overexposed to a single asset.",
       },
       {
         q: "What are the hard caps?",
@@ -239,15 +239,15 @@ const faqCategories = [
       },
       {
         q: "How is Impermanent Loss (IL) handled?",
-        a: "The biggest risk isn't just price volatility of the underlying tokens, but the impermanent loss the LP position itself has experienced or might experience. An LP NFT worth $1000 in principal liquidity might only be worth $800 in a \"realized\" sense if IL has eroded $200 of value.\n\nAmm Market risk management prices the tokens but models the position's historical and potential future IL.\n\nMitigation: Tiered LTVs; conservative initial LTVs for volatile pairs; dynamic LTV adjustments using realized volatility metrics.\n\nRisk with narrow ranges: Narrow ranges can make a position effectively single-sided and illiquid.\nMitigation: Require full-range positions for initial collateral acceptance; allow concentrated ranges only after per-pool review and tighter LTVs.",
+        a: "The biggest risk isn't just price volatility of the underlying tokens, but the impermanent loss the LP position itself has experienced or might experience. An LP NFT worth $1000 in principal liquidity might only be worth $800 in a \"realized\" sense if IL has eroded $200 of value.\n\nAvana risk management prices the tokens but models the position's historical and potential future IL.\n\nMitigation: Tiered LTVs; conservative initial LTVs for volatile pairs; dynamic LTV adjustments using realized volatility metrics.\n\nRisk with narrow ranges: Narrow ranges can make a position effectively single-sided and illiquid.\nMitigation: Require full-range positions for initial collateral acceptance; allow concentrated ranges only after per-pool review and tighter LTVs.",
       },
       {
         q: "How do liquidations protect the system?",
-        a: "The liquidation threshold is a pool-specific parameter, allowing the protocol to tailor its response to the unique risk profile of each pool. By implementing these controls at the pool level, Amm Market creates a dynamic risk framework that adapts to the inherent characteristics of the underlying assets.\n\nLiquidation risk for keepers: Liquidator must sell both sides into the debt asset, increasing slippage and complexity.\nMitigation: Specialized liquidation paths, price impact caps, and higher liquidation bonuses to compensate keepers.",
+        a: "The liquidation threshold is a pool-specific parameter, allowing the protocol to tailor its response to the unique risk profile of each pool. By implementing these controls at the pool level, Avana creates a dynamic risk framework that adapts to the inherent characteristics of the underlying assets.\n\nLiquidation risk for keepers: Liquidator must sell both sides into the debt asset, increasing slippage and complexity.\nMitigation: Specialized liquidation paths, price impact caps, and higher liquidation bonuses to compensate keepers.",
       },
       {
         q: "What security reminders should I follow?",
-        a: "• Never share your wallet seed phrase, private key, or password. No Amm Market team member or moderator will ever ask for them.\n\n• Beware impersonators. Scammers will DM you pretending to be support. Only engage through official channels.\n\n• Never trust third-party links that claim \"official\" unless they appear in our official list.\n\n• No official app in app stores. If you see an Amm Market app in an app store, it is almost certainly malicious.\n\n• Check the URL before approving transactions. Small typos in domains are common phishing vectors (e.g., m0mo.finance vs ammmarket.finance).\n\n• Verify contract addresses from our Docs page or from within the app (links to block explorers). Do not rely on links embedded in DMs.",
+        a: "• Never share your wallet seed phrase, private key, or password. No Avana team member or moderator will ever ask for them.\n\n• Beware impersonators. Scammers will DM you pretending to be support. Only engage through official channels.\n\n• Never trust third-party links that claim \"official\" unless they appear in our official list.\n\n• No official app in app stores. If you see an Avana app in an app store, it is almost certainly malicious.\n\n• Check the URL before approving transactions. Small typos in domains are common phishing vectors (e.g., m0mo.finance vs ammmarket.finance).\n\n• Verify contract addresses from our Docs page or from within the app (links to block explorers). Do not rely on links embedded in DMs.",
       },
       {
         q: "How often are valuations updated?",

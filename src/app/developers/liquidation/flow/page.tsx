@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Liquidation Flow",
   description:
-    "Operational liquidation flow for AMM Market. Follow the runtime sequence used by liquidation nodes when unhealthy LP-backed loans are unwound.",
+    "Operational liquidation flow for Avana. Follow the runtime sequence used by liquidation nodes when unhealthy LP-backed loans are unwound.",
 }
 
 const sections = [
@@ -83,7 +83,7 @@ export default function LiquidationFlowPage() {
             to explain how a liquidation is executed in practice without redefining protocol rules.
           </p>
           <p className="text-sm text-gray-600">
-            AMM Market treats LP liquidation as a controlled unwind problem. The node or keeper must
+            Avana treats LP liquidation as a controlled unwind problem. The node or keeper must
             repay debt, realize claimable fees, exit the LP position through the correct venue path,
             route proceeds into the debt asset, and preserve any residual borrower value.
           </p>
@@ -134,7 +134,7 @@ export default function LiquidationFlowPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Collateral Handling</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Different LP families share the same liquidation objective but not the same exit path.
-            That is why AMM Market treats venue handling as an adapter problem rather than assuming a
+            That is why Avana treats venue handling as an adapter problem rather than assuming a
             single unwind function for every pool type.
           </p>
           <div className="space-y-4">
