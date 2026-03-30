@@ -515,7 +515,7 @@ export default function LightpaperPage() {
     <section className="py-12 md:py-24">
       <article className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col items-start gap-6 mb-12">
-          <h1 className="type-page-title font-serif italic text-gray-900">Tap into LP Credits</h1>
+          <h1 className="type-page-title italic text-gray-900">Tap into LP Credits</h1>
           <p className="type-page-lead text-gray-600">Avana is a lending protocol built specifically for LP collateral.</p>
           <hr className="w-full border-gray-200" />
         </div>

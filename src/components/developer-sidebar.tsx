@@ -227,7 +227,7 @@ export default function DeveloperSidebar() {
               <div key={section.id} className="mb-2">
                 {/* Section Header */}
                 <div
-                  className={`type-sidebar-link flex items-center py-2 px-3 rounded-lg font-medium transition-all duration-200 group cursor-default ${sectionActive
+                  className={`type-sidebar-link flex items-center py-2.5 px-3 rounded-lg font-semibold leading-5 transition-all duration-200 group cursor-default ${sectionActive
                       ? `${colors.headerBg} ${colors.headerText}`
                       : "text-gray-700 hover:bg-gray-50"
                     }`}
@@ -253,7 +253,7 @@ export default function DeveloperSidebar() {
                       <li key={item.href}>
                         <Link
                           href={item.href}
-                          className={`type-sidebar-link flex items-center gap-2 py-1.5 px-2.5 rounded-md transition-all duration-200 group ${itemActive
+                          className={`type-sidebar-link flex items-center gap-2 py-2 px-2.5 rounded-md font-medium leading-5 transition-all duration-200 group ${itemActive
                               ? `${colors.itemBg} ${colors.itemText} font-medium`
                               : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                             }`}

@@ -1,6 +1,5 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
@@ -10,19 +9,13 @@ import Footer from "@/components/footer"
  * 
  * @description
  * This layout provides:
- * - Global font loading (Inter)
+ * - Global self-hosted typography loading
  * - Header and Footer components
  * - SEO metadata defaults
  * - JSON-LD structured data for organization
  * 
  * Individual pages should override metadata as needed for SEO.
  */
-
-const inter = Inter({ 
-  subsets: ["latin"],
-  display: "swap", // Optimize font loading
-  variable: "--font-inter",
-})
 
 /**
  * Default metadata for the application.
@@ -177,10 +170,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Preload critical hero image for faster LCP */}
         <link rel="preload" href="/images/Hero__4_.png" as="image" />
+        <link
+          rel="preload"
+          href="/fonts/diatype/ABCDiatype-Regular-Trial.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         {/* JSON-LD Structured Data for SEO */}
         <script
           type="application/ld+json"
@@ -191,7 +191,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className={`${inter.className} bg-white`}>
+      <body className="bg-white font-sans">
         {/* Skip to main content link for accessibility - WCAG 2.4.1 */}
         <a
           href="#main-content"
@@ -208,4 +208,3 @@ export default function RootLayout({
     </html>
   )
 }
-
