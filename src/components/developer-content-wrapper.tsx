@@ -5,9 +5,11 @@ import { PageNavigation } from "./page-navigation"
 
 export function DeveloperContentWrapper({ children }: { children: React.ReactNode }) {
   return (
-    <div className="developer-content">
+    <div className="developer-content" data-developer-doc-shell>
       {children}
-      <PageNavigation />
+      <div data-export-skip>
+        <PageNavigation />
+      </div>
     </div>
   )
 }

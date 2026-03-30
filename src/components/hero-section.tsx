@@ -145,7 +145,6 @@ export default function HeroSection() {
 
   // Progress bar animation and auto-advance (200ms interval to reduce main-thread work)
   useEffect(() => {
-    setProgress(0)
     const startTime = Date.now()
 
     const progressInterval = setInterval(() => {
@@ -157,6 +156,7 @@ export default function HeroSection() {
         clearInterval(progressInterval)
         setIsAnimating(true)
         setTimeout(() => {
+          setProgress(0)
           setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
           setIsAnimating(false)
         }, 300)
@@ -170,6 +170,7 @@ export default function HeroSection() {
     if (idx === currentTestimonial) return
     setIsAnimating(true)
     setTimeout(() => {
+      setProgress(0)
       setCurrentTestimonial(idx)
       setIsAnimating(false)
     }, 300)
@@ -177,7 +178,7 @@ export default function HeroSection() {
 
   const testimonial = testimonials[currentTestimonial]
   return (
-    <section className="pb-6 md:pb-4">
+    <section className="marketing-secondary-shell pb-6 md:pb-4">
       {/* How Borrowing Works Section */}
       <div className="mx-auto max-w-5xl px-6 lg:px-0 py-16 md:py-24">
         <div className="flex flex-col gap-6">
@@ -932,4 +933,3 @@ export default function HeroSection() {
     </section>
   )
 }
-

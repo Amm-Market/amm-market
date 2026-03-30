@@ -1,6 +1,7 @@
 import Link from "next/link"
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Health Factor",
@@ -19,15 +20,17 @@ const sections = [
 export default function HealthFactorPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Health Factor</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          How adjusted collateral value and debt interact inside a Borrow Spoke to determine
-          position safety.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Health Factor"
+
+          description="How adjusted collateral value and debt interact inside a Borrow Spoke to determine position safety."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             The health factor is the protocol&apos;s shorthand for the relationship between
             risk-adjusted collateral value and outstanding debt. It is driven by the same valuation,
@@ -44,7 +47,7 @@ export default function HealthFactorPage() {
         </section>
 
         <section id="calculation" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Calculation</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Calculation</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Health is computed per Borrow Spoke. The numerator is the user&apos;s adjusted collateral
             value inside that spoke, which already reflects position-level valuation, collateral
@@ -65,7 +68,7 @@ export default function HealthFactorPage() {
         </section>
 
         <section id="health-bands" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Monitoring Bands</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Monitoring Bands</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               <strong className="text-gray-900">Healthy buffer:</strong> collateral value remains
@@ -87,7 +90,7 @@ export default function HealthFactorPage() {
         </section>
 
         <section id="response-path" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Response Path</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Response Path</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               If health weakens, the first response is user-driven: repay debt, add approved LP
@@ -102,7 +105,7 @@ export default function HealthFactorPage() {
         </section>
 
         <section id="user-actions" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">User Actions</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">User Actions</h2>
           <ul className="space-y-2 text-gray-600">
             <li>Borrowing more lowers health because debt rises</li>
             <li>Repaying debt improves health immediately</li>

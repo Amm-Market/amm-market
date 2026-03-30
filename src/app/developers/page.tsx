@@ -11,6 +11,7 @@ import {
   Workflow,
 } from "lucide-react"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Introduction",
@@ -166,10 +167,10 @@ function SectionHeader({
 }) {
   return (
     <div className="mb-6">
-      <h2 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-[1.9rem]">
+      <h2 className="type-section-title text-slate-950">
         {title}
       </h2>
-      <p className="mt-3 max-w-3xl text-base leading-7 text-slate-600">{description}</p>
+      <p className="mt-3 max-w-3xl type-body-copy text-slate-600">{description}</p>
     </div>
   )
 }
@@ -177,19 +178,12 @@ function SectionHeader({
 export default function DevelopersPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_220px] lg:gap-12">
-      <div className="max-w-4xl">
-        <section id="welcome" className="scroll-mt-32 border-b border-slate-200 pb-10">
-          <p className="text-sm font-medium text-blue-600">Developer Docs</p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-            Introduction
-          </h1>
-          <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
-            AMM Market turns supported LP positions into borrowable collateral inside Aave
-            v4&apos;s Hub-and-Spoke architecture. This page is the mental-model overview: where LP
-            specific underwriting lives, how shared Hub liquidity is used, and which deeper docs
-            to read next.
-          </p>
-
+      <div data-developer-doc-export-root className="max-w-4xl">
+        <section id="welcome" className="scroll-mt-32 pb-10">
+          <DeveloperDocPageHeader
+            title="Introduction"
+            description="AMM Market turns supported LP positions into borrowable collateral inside Aave v4&apos;s Hub-and-Spoke architecture. This page is the mental-model overview: where LP specific underwriting lives, how shared Hub liquidity is used, and which deeper docs to read next."
+          />
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <Link
               href="/developers/introduction/key-concepts"

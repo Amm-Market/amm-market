@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Collateral Factors",
@@ -80,15 +81,17 @@ export default function CollateralFactorsPage() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
       {/* Main content */}
-      <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Collateral Factors</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Position-level borrowing power, dual-oracle valuation, and how LP collateral capacity is
-          reported to the Hub.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Collateral Factors"
+
+          description="Position-level borrowing power, dual-oracle valuation, and how LP collateral capacity is reported to the Hub."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             Collateral factors define the portion of an asset&apos;s USD value that can be borrowed
             against. For example, a 75% collateral factor allows a user to borrow up to $75
@@ -110,7 +113,7 @@ export default function CollateralFactorsPage() {
         </section>
 
         <section id="how-cf-works" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">How Collateral Factor Works</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">How Collateral Factor Works</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             In practice, collateral factors sit inside a broader LP-collateral workflow. The spoke
             first checks whether a pool is supported, then values the position through the oracle
@@ -157,7 +160,7 @@ export default function CollateralFactorsPage() {
         </section>
 
         <section id="borrowable-value" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Determining Borrowable Value</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Determining Borrowable Value</h2>
 
           <p className="text-gray-600 leading-relaxed mb-4">
             Borrowable capacity is built from a gated valuation flow: only approved pools are
@@ -237,7 +240,7 @@ export default function CollateralFactorsPage() {
         </section>
 
         <section id="how-it-works-together" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">How It Works Together</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">How It Works Together</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             AMM Market separates collateral admission, valuation, aggregate borrowable capacity, and
             liquidation execution into a single coherent flow. Each LP position is priced on its own,
@@ -278,7 +281,7 @@ export default function CollateralFactorsPage() {
         </section>
 
         <section id="single-token-cf" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Single Token Collateral Factors</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Single Token Collateral Factors</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             We assign LTVs for the most popular tokens as a baseline. These values are used when 
             the asset is supplied individually or as the weaker token in an LP.
@@ -307,7 +310,7 @@ export default function CollateralFactorsPage() {
         </section>
 
         <section id="lp-pair-cf" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">LP Pair Collateral Factors</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">LP Pair Collateral Factors</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             Final borrowable LTV for LP pairs combines the lower token CF with pool-level risk:
           </p>
@@ -337,7 +340,7 @@ export default function CollateralFactorsPage() {
         </section>
 
         <section id="examples" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example Calculations</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Example Calculations</h2>
           
           <div className="space-y-6">
             <div>
@@ -369,7 +372,7 @@ export default function CollateralFactorsPage() {
         </section>
 
         <section id="faqs" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">FAQs</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">FAQs</h2>
           
           <div className="space-y-4">
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">

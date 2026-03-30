@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Platform Fees",
@@ -18,14 +19,17 @@ const sections = [
 export default function PlatformFeesPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Platform Fees</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Interface-level fee policy and disclosure guidance for AMM Market frontends.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Platform Fees"
+
+          description="Interface-level fee policy and disclosure guidance for AMM Market frontends."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             This page describes interface policy, not the core protocol borrowing model. AMM Market
             may charge frontend or service fees on official interfaces, but those operational charges
@@ -38,7 +42,7 @@ export default function PlatformFeesPage() {
         </section>
 
         <section id="interface-vs-protocol" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Interface vs Protocol</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Interface vs Protocol</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             AMM Market&apos;s core contracts govern LP admission, borrowing capacity, and liquidation
             behavior. Interface fees, if enabled, are layered on top of those contracts as a frontend
@@ -52,7 +56,7 @@ export default function PlatformFeesPage() {
         </section>
 
         <section id="disclosure" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Disclosure</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Disclosure</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Any interface fee should be surfaced clearly before signature so builders and users can
             distinguish it from gas costs, swap fees, or protocol-level debt and liquidation effects.
@@ -64,7 +68,7 @@ export default function PlatformFeesPage() {
         </section>
 
         <section id="treasury-usage" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Treasury Usage</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Treasury Usage</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             If interface fees are collected, they typically fund product operations such as
             infrastructure, monitoring, security work, documentation, and support. Governance may
@@ -77,7 +81,7 @@ export default function PlatformFeesPage() {
         </section>
 
         <section id="integration-notes" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Integration Notes</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Integration Notes</h2>
           <ul className="space-y-3 text-sm text-gray-600">
             <li>• Builders should verify current fee policy before quoting end-user costs.</li>
             <li>• Avoid hard-coding interface-fee assumptions into protocol integrations unless the policy is formally versioned.</li>
