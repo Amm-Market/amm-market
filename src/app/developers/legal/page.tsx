@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Legal & Compliance - Security Disclosures",
@@ -28,14 +29,17 @@ export default function SecurityDisclosuresPage() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
       {/* Main content */}
-      <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Restricted Territories</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          This page is maintained to reflect the most current list of Restricted Jurisdictions for the AMM Market domain.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Restricted Territories"
+
+          description="This page is maintained to reflect the most current list of Restricted Jurisdictions for the AMM Market domain."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             In accordance with our <Link href="/terms" className="text-blue-600 hover:underline">Terms of Use</Link>, 
             access to the AMM Market website and its associated services is restricted for individuals or entities 
@@ -49,7 +53,7 @@ export default function SecurityDisclosuresPage() {
         </section>
 
         <section id="access-restrictions" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Access Restrictions</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Access Restrictions</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             Access to the AMM Market website and its associated services is restricted for individuals or 
             entities who:
@@ -74,7 +78,7 @@ export default function SecurityDisclosuresPage() {
         </section>
 
         <section id="restricted-jurisdictions" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Current Restricted Jurisdictions</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Current Restricted Jurisdictions</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             The following jurisdictions are currently restricted from accessing AMM Market services:
           </p>
@@ -106,7 +110,7 @@ export default function SecurityDisclosuresPage() {
         </section>
 
         <section id="compliance" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Compliance</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Compliance</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             As stated in our Terms of Use (Section 1.2), you may not access or use the Services if you are:
           </p>
@@ -130,7 +134,7 @@ export default function SecurityDisclosuresPage() {
         </section>
 
         <section id="related-policies" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Related Policies</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Related Policies</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             For complete information about your rights and obligations when using AMM Market, please review:
           </p>

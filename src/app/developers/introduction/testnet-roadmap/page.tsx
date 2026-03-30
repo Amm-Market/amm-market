@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Testnet & Roadmap",
@@ -18,14 +19,17 @@ const sections = [
 export default function TestnetRoadmapPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Testnet & Roadmap</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Operational page for testing AMM Market deployments and understanding how roadmap statements should be read.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Testnet & Roadmap"
+
+          description="Operational page for testing AMM Market deployments and understanding how roadmap statements should be read."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             This page is intentionally separate from the protocol-spec story. Testnet availability,
             supported networks, and public roadmap sequencing are operational matters that can change
@@ -38,7 +42,7 @@ export default function TestnetRoadmapPage() {
         </section>
 
         <section id="testnet-scope" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Testnet Scope</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Testnet Scope</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             A test deployment may expose only a subset of the full architecture. Supported LP
             families, borrow assets, oracle coverage, and liquidation tooling can all be narrower on
@@ -52,7 +56,7 @@ export default function TestnetRoadmapPage() {
         </section>
 
         <section id="how-to-evaluate" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">How to Evaluate</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">How to Evaluate</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             The most useful way to test AMM Market is to walk the canonical flow: deposit an eligible
             LP position, confirm spoke-level valuation, observe aggregate borrowing capacity, borrow
@@ -66,7 +70,7 @@ export default function TestnetRoadmapPage() {
         </section>
 
         <section id="roadmap-framing" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Roadmap Framing</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Roadmap Framing</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Roadmap statements should be interpreted as directional priorities: broader LP-family
             coverage, stronger oracle support, deeper liquidation tooling, and more refined risk
@@ -76,7 +80,7 @@ export default function TestnetRoadmapPage() {
         </section>
 
         <section id="campaigns-and-status" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Campaigns & Status</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Campaigns & Status</h2>
           <p className="leading-relaxed text-gray-600">
             Any active incentives, points programs, or network-specific rollout details should be
             published as campaign documentation or release notes. Keeping those details separate from

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Supported Integrations",
@@ -36,14 +37,17 @@ const venueFamilies = [
 export default function SupportedIntegrationsPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Supported Integrations</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Reference guide for the venue families AMM Market can support and the review gates used before any integration is enabled.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Supported Integrations"
+
+          description="Reference guide for the venue families AMM Market can support and the review gates used before any integration is enabled."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             AMM Market does not treat every AMM venue as interchangeable. Support depends on whether
             the protocol can price a position conservatively, unwind it in stressed conditions, and
@@ -64,7 +68,7 @@ export default function SupportedIntegrationsPage() {
         </section>
 
         <section id="venue-families" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Venue Families</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Venue Families</h2>
           <div className="space-y-4">
             {venueFamilies.map((family) => (
               <div key={family.title} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
@@ -76,7 +80,7 @@ export default function SupportedIntegrationsPage() {
         </section>
 
         <section id="enablement-status" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Enablement Status</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Enablement Status</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Whether a venue is enabled on a specific network is an operational question, not a
             protocol invariant. A venue family may be supported in principle but disabled on a given
@@ -89,7 +93,7 @@ export default function SupportedIntegrationsPage() {
         </section>
 
         <section id="review-requirements" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Review Requirements</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Review Requirements</h2>
           <ul className="space-y-3 text-sm text-gray-600">
             <li>• A venue must support conservative position valuation from robust external prices and verifiable state reconstruction.</li>
             <li>• The protocol needs a reliable unwind path for liquidation, including fee collection and routing into the debt asset.</li>

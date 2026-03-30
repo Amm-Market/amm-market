@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Liquidation Framework",
@@ -29,14 +30,17 @@ export default function LiquidationDesignPage() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
       {/* Main content */}
-      <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Liquidation Design</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Conditions under which positions become liquidatable and who can trigger them.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Liquidation Design"
+
+          description="Conditions under which positions become liquidatable and who can trigger them."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             In AMM Market, the liquidation lifecycle is a core safety mechanism to protect both the 
             protocol and its liquidity providers from losses due to undercollateralized loans. Liquidation 
@@ -54,7 +58,7 @@ export default function LiquidationDesignPage() {
         </section>
 
         <section id="lp-complexity" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">LP Collateral Complexity</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">LP Collateral Complexity</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             LP-backed positions are more complex than single-token loans because they involve:
           </p>
@@ -91,7 +95,7 @@ export default function LiquidationDesignPage() {
         </section>
 
         <section id="key-principles" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Key Principles</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Key Principles</h2>
           
           <div className="space-y-6">
             <div>
@@ -147,7 +151,7 @@ export default function LiquidationDesignPage() {
         </section>
 
         <section id="liquidation-node" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Liquidation Node</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Liquidation Node</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             AMM Market Node is the protocol&apos;s indexing and liquidation bot runtime. It handles
             liquidity operations and routing, tracks active positions, refreshes market and debt
@@ -209,7 +213,7 @@ export default function LiquidationDesignPage() {
         </section>
 
         <section id="liquidation-pathways" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Liquidation Pathways</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Liquidation Pathways</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             Liquidation in AMM Market has two distinct pathways:
           </p>
@@ -258,7 +262,7 @@ export default function LiquidationDesignPage() {
         </section>
 
         <section id="liquidation-threshold" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Liquidation Threshold (LT)</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Liquidation Threshold (LT)</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             The Liquidation Threshold is the point at which a borrower&apos;s debt relative to the 
             collateral value triggers eligibility for liquidation. It is set slightly above the 
@@ -279,7 +283,7 @@ export default function LiquidationDesignPage() {
         </section>
 
         <section id="liquidation-bonus" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Liquidation Bonus</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Liquidation Bonus</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             Liquidators receive a bonus percentage of the collateral as an incentive to act quickly 
             when positions exceed the LT. The bonus varies depending on the pool type:
@@ -312,7 +316,7 @@ export default function LiquidationDesignPage() {
         </section>
 
         <section id="who-can-liquidate" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Who Can Liquidate</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Who Can Liquidate</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             Liquidations remain permissionless, but AMM Market also operates specialized liquidation
             nodes to improve coverage for complex LP collateral:
@@ -351,7 +355,7 @@ export default function LiquidationDesignPage() {
         </section>
 
         <section id="protection-mechanisms" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Protection Mechanisms</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Protection Mechanisms</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             Several mechanisms protect borrowers and the protocol:
           </p>

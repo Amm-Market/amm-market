@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Invest Spoke",
@@ -43,15 +44,17 @@ const dynamicSignals = [
 export default function InvestSpokePage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Invest Spoke</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          The capital-entry side of AMM Market that routes lender liquidity into LP-collateral
-          borrow markets.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Invest Spoke"
+
+          description="The capital-entry side of AMM Market that routes lender liquidity into LP-collateral borrow markets."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
             Invest Spoke is the lender-facing capital entry point of the protocol. Investors supply
             assets such as ETH, BTC, and major stablecoins into the Invest Spoke, which then routes
@@ -71,7 +74,7 @@ export default function InvestSpokePage() {
         </section>
 
         <section id="capital-entry-point" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Capital Entry Point</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Capital Entry Point</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
             The Invest Spoke exists so lender deposits can power borrowing across multiple
             LP-collateral markets through one shared Hub layer instead of fragmenting liquidity by
@@ -98,7 +101,7 @@ export default function InvestSpokePage() {
         </section>
 
         <section id="risk-adjusted-yield" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Risk-Adjusted Yield</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Risk-Adjusted Yield</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
             The risk-adjusted yield enhancement from LP token collateralization comes from the
             protocol&apos;s ability to price and manage liquidity provision as a productive economic
@@ -121,7 +124,7 @@ export default function InvestSpokePage() {
         </section>
 
         <section id="dynamic-risk-controls" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Dynamic Risk Controls</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Dynamic Risk Controls</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
             The risk-adjusted framework also goes beyond static LTV settings. By monitoring pool
             composition, trading volume, price divergence between paired assets, and broader market

@@ -52,11 +52,11 @@ export function PageNavigation() {
             href={prevPage.href}
             className="flex-1 max-w-[50%] p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50 transition-colors group"
           >
-            <div className="flex items-center gap-1 text-sm text-gray-500 mb-1">
+            <div className="type-supporting mb-1 flex items-center gap-1 text-gray-500">
               <ChevronLeft className="w-4 h-4" />
               <span>Previous</span>
             </div>
-            <div className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+            <div className="type-body-copy font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
               {prevPage.label}
             </div>
           </Link>
@@ -70,11 +70,11 @@ export function PageNavigation() {
             href={nextPage.href}
             className="flex-1 max-w-[50%] p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50 transition-colors group text-right"
           >
-            <div className="flex items-center justify-end gap-1 text-sm text-gray-500 mb-1">
+            <div className="type-supporting mb-1 flex items-center justify-end gap-1 text-gray-500">
               <span>Next</span>
               <ChevronRight className="w-4 h-4" />
             </div>
-            <div className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+            <div className="type-body-copy font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
               {nextPage.label}
             </div>
           </Link>
