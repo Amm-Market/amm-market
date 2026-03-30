@@ -140,10 +140,10 @@ export default function BlogPage() {
     <div className="py-12 px-4 max-w-[1200px] mx-auto">
       {/* Header */}
       <div className="flex flex-col items-start gap-6 mb-12">
-        <h1 className="text-4xl md:text-5xl font-serif italic text-gray-900">
+        <h1 className="type-page-title italic text-gray-900">
           Dex Mini Blog
         </h1>
-        <p className="text-lg text-gray-600">
+        <p className="type-page-lead text-gray-600">
           Updates, stories, and announcements from the Dex Mini team
         </p>
         <hr className="w-full border-gray-200" />
