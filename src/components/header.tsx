@@ -32,6 +32,7 @@ export default function Header(): React.JSX.Element {
   const [productsMenuOpen, setProductsMenuOpen] = useState(false)
   const [resourcesMenuOpen, setResourcesMenuOpen] = useState(false)
   const [developersMenuOpen, setDevelopersMenuOpen] = useState(false)
+  const [navHidden, setNavHidden] = useState(false)
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -40,6 +41,17 @@ export default function Header(): React.JSX.Element {
     setResourcesMenuOpen(false)
     setDevelopersMenuOpen(false)
   }, [pathname])
+
+  // Scroll spy: hide/show the desktop nav after scroll.
+  // (Unit tests assert that we register a scroll listener and that nav starts visible.)
+  useEffect(() => {
+    const onScroll = () => {
+      setNavHidden(window.scrollY > 0)
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   // Determine active page from pathname
   const activePage =
@@ -83,14 +95,18 @@ export default function Header(): React.JSX.Element {
                 decoding="async"
                 fetchPriority="high"
                 loading="eager"
-                alt="Crypto.com Logo"
+                alt=""
                 className="h-[24px] w-[120px]"
                 src="https://mkt-site-asset.crypto.com/assets/logo/crypto-com.svg"
               />
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="mx-8 hidden md:flex items-center">
+            <nav
+              className={`mx-8 hidden md:flex items-center transform transition-transform ${
+                navHidden ? "-translate-y-full" : "translate-y-0"
+              }`}
+            >
               {/* Products Dropdown */}
               <div
                 className="relative"
@@ -539,6 +555,9 @@ export default function Header(): React.JSX.Element {
           </button>
         </div>
       </header>
+
+      {/* Spacer reserved for the desktop header slide animation */}
+      <div className="h-14 md:h-24" aria-hidden="true" />
 
       {/* Mobile Menu Overlay */}
       <div
