@@ -25,14 +25,14 @@ export function HeroHeader() {
         {/* Right Column - Text Content */}
         <div className="flex-1 text-center lg:text-left order-1 lg:order-2 mb-8 lg:mb-0">
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.15] text-gray-900 mb-4 md:mb-6">
+          <h1 className="type-display-title text-gray-900 mb-4 md:mb-6">
             <span className="lg:whitespace-nowrap">Borrow up to 80%</span>
             <br />
             <span className="lg:whitespace-nowrap">against your LPs</span>
           </h1>
 
           {/* Supporting Text */}
-          <p className="text-base md:text-lg text-gray-600 max-w-lg mx-auto lg:mx-0 leading-relaxed mb-6">
+          <p className="type-page-lead text-gray-600 max-w-lg mx-auto lg:mx-0 mb-6">
             Get access to loans by using your <DeFiTerm term="lp-position">LP positions</DeFiTerm> as <DeFiTerm term="collateral">collateral</DeFiTerm>.
           </p>
 

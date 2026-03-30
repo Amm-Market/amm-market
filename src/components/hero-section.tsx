@@ -500,10 +500,10 @@ export default function HeroSection() {
                   <div className="flex relative z-20 h-full w-full flex-col items-start justify-end gap-4 p-5 pb-8 sm:p-8 lg:flex-row lg:justify-between lg:pb-8">
                     <div className="flex items-center relative z-20 w-full flex-row lg:my-auto">
                       <div className="flex w-full max-w-[560px] flex-col gap-1 lg:gap-2">
-                        <h3 className="text-[20px] lg:text-[28px] font-[600] leading-normal text-gray-900">
+                        <h3 className="text-[20px] lg:text-[28px] font-semibold leading-normal text-gray-900">
                           Automate your LP strategy
                         </h3>
-                        <p className="text-[18px] lg:text-[21px] font-[550] leading-normal tracking-[-0.09px] lg:tracking-[-0.1px] text-gray-600">
+                        <p className="text-[18px] lg:text-[21px] font-medium leading-normal tracking-[-0.09px] lg:tracking-[-0.1px] text-gray-600">
                           Set it and forget it with auto-compound, rebalancing, and alerts
                         </p>
                       </div>
@@ -762,7 +762,7 @@ export default function HeroSection() {
             <div className="md:w-[600px] md:flex-shrink-0">
               <Accordion type="single" collapsible orientation="vertical" className="w-full">
                 <AccordionItem value="item-1" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                  <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  <AccordionTrigger className="type-accordion-question group p-0 text-left text-gray-900 hover:underline gap-4 [&>svg.size-4]:hidden">
                     Do I have to sell or exit my LP position?
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -787,13 +787,13 @@ export default function HeroSection() {
                       <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
                     </svg>
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  <AccordionContent className="type-accordion-answer pt-2 text-gray-600">
                     No. Your <DeFiTerm term="lp">LP</DeFiTerm> remains in the pool and continues earning trading fees. Amm Market uses your LP shares as <DeFiTerm term="collateral">collateral</DeFiTerm> without removing liquidity.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-2" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                  <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  <AccordionTrigger className="type-accordion-question group p-0 text-left text-gray-900 hover:underline gap-4 [&>svg.size-4]:hidden">
                     How much can I borrow?
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -818,13 +818,13 @@ export default function HeroSection() {
                       <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
                     </svg>
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  <AccordionContent className="type-accordion-answer pt-2 text-gray-600">
                     Up to 70% of your LP&apos;s value, depending on pool type, volatility, and <DeFiTerm term="oracle">oracle</DeFiTerm> confidence. No minimum amounts—$10M in <DeFiTerm term="collateral">collateral</DeFiTerm> means up to $7M available to borrow.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-3" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                  <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  <AccordionTrigger className="type-accordion-question group p-0 text-left text-gray-900 hover:underline gap-4 [&>svg.size-4]:hidden">
                     What happens if my LP value drops?
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -849,13 +849,13 @@ export default function HeroSection() {
                       <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
                     </svg>
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  <AccordionContent className="type-accordion-answer pt-2 text-gray-600">
                     If your <DeFiTerm term="ltv">loan-to-value ratio</DeFiTerm> exceeds the <DeFiTerm term="liquidation-threshold">liquidation threshold</DeFiTerm>, part of your position may be <DeFiTerm term="liquidation">liquidated</DeFiTerm> to maintain system solvency.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-4" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                  <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  <AccordionTrigger className="type-accordion-question group p-0 text-left text-gray-900 hover:underline gap-4 [&>svg.size-4]:hidden">
                     Is my risk isolated?
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -880,13 +880,13 @@ export default function HeroSection() {
                       <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
                     </svg>
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  <AccordionContent className="type-accordion-answer pt-2 text-gray-600">
                     Yes. Each <DeFiTerm term="lp-position">LP position</DeFiTerm> is managed independently with isolated risk. System-wide safety is enforced through Aave v4&apos;s <DeFiTerm term="hub">Hub</DeFiTerm>-and-<DeFiTerm term="spoke">Spoke</DeFiTerm> architecture.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-5" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-                  <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                  <AccordionTrigger className="type-accordion-question group p-0 text-left text-gray-900 hover:underline gap-4 [&>svg.size-4]:hidden">
                     Can I repay early or close my position?
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -911,7 +911,7 @@ export default function HeroSection() {
                       <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
                     </svg>
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+                  <AccordionContent className="type-accordion-answer pt-2 text-gray-600">
                     Yes. <DeFiTerm term="repay">Repay</DeFiTerm> anytime, reduce your <DeFiTerm term="borrow">borrow</DeFiTerm>, or <DeFiTerm term="withdraw">withdraw</DeFiTerm> your LP once debt is cleared.
                   </AccordionContent>
                 </AccordionItem>
