@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Incentives Programs",
   description:
-    "Operational overview of AMM Market incentives and rewards. Understand how optional campaigns relate to the core protocol without treating them as canonical architecture.",
+    "Operational overview of Avana incentives and rewards. Understand how optional campaigns relate to the core protocol without treating them as canonical architecture.",
 }
 
 const sections = [
@@ -24,14 +24,14 @@ export default function IncentivesPage() {
 
           title="Incentives Programs"
 
-          description="Optional reward and campaign layer that may sit on top of AMM Market deployments."
+          description="Optional reward and campaign layer that may sit on top of Avana deployments."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Incentives are not the core protocol. The canonical AMM Market system is still defined by
+            Incentives are not the core protocol. The canonical Avana system is still defined by
             LP collateral valuation, Borrow Spoke risk controls, Hub liquidity, and liquidation
             mechanics. Reward campaigns are optional overlays that may be introduced to encourage
             liquidity formation, borrower activity, or operator participation.
@@ -56,7 +56,7 @@ export default function IncentivesPage() {
           <p className="mb-4 leading-relaxed text-gray-600">
             When incentives exist, they should be understandable, auditable, and separable from core
             risk logic. Reward calculations may depend on activity, duration, or campaign-specific
-            rules, but they should not change how AMM Market values collateral or decides liquidation
+            rules, but they should not change how Avana values collateral or decides liquidation
             eligibility.
           </p>
           <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">

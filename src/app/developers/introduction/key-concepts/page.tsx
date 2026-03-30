@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Key Concepts",
   description:
-    "Understand the core concepts behind AMM Market: LP positions as productive collateral, conservative valuation, Hub borrowing, and liquidation discipline.",
+    "Understand the core concepts behind Avana: LP positions as productive collateral, conservative valuation, Hub borrowing, and liquidation discipline.",
 }
 
 const sections = [
@@ -26,7 +26,7 @@ export default function KeyConceptsPage() {
 
           title="Key Concepts"
 
-          description="The core ideas that appear across AMM Market&apos;s Borrow Spoke, valuation, and liquidation docs."
+          description="The core ideas that appear across Avana&apos;s Borrow Spoke, valuation, and liquidation docs."
 
         />
 
@@ -38,7 +38,7 @@ export default function KeyConceptsPage() {
             and how much value can realistically be recovered during liquidation.
           </p>
           <p className="text-sm text-gray-600">
-            <strong>Why this matters:</strong> AMM Market is built around the idea that LP collateral
+            <strong>Why this matters:</strong> Avana is built around the idea that LP collateral
             needs market-specific underwriting, not a one-size-fits-all asset model.
           </p>
         </section>
@@ -64,7 +64,7 @@ export default function KeyConceptsPage() {
         <section id="oracle-valuation" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Oracle & Valuation</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            AMM Market values LP collateral conservatively. External asset prices anchor the
+            Avana values LP collateral conservatively. External asset prices anchor the
             underlying tokens, while pool data and position-state inputs are used to reconstruct the
             LP exposure instead of trusting raw AMM spot state.
           </p>
@@ -101,7 +101,7 @@ export default function KeyConceptsPage() {
           </p>
           <p className="text-sm text-gray-600">
             Health monitoring and liquidation both use the same underlying valuation engine, which is
-            why AMM Market treats pricing, collateral factors, and liquidation routing as one joined
+            why Avana treats pricing, collateral factors, and liquidation routing as one joined
             risk system rather than separate modules.
           </p>
         </section>
@@ -129,7 +129,7 @@ export default function KeyConceptsPage() {
 
       <ScrollSpySidebar
         sections={sections}
-        pageSummary="The main concepts behind LP-backed borrowing, conservative valuation, and spoke-level risk in AMM Market."
+        pageSummary="The main concepts behind LP-backed borrowing, conservative valuation, and spoke-level risk in Avana."
         sectionColor="blue"
       />
     </div>

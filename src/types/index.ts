@@ -1,5 +1,5 @@
 /**
- * Shared TypeScript type definitions for AMM Market
+ * Shared TypeScript type definitions for Avana
  * 
  * @description
  * Centralized type definitions used across components and data files.

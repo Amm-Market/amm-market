@@ -4,7 +4,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Price Oracles",
-  description: "AMM Market Oracle architecture for LP-backed lending - conservative collateral valuation, position reconstruction, recoverable unwind assumptions, and manipulation prevention.",
+  description: "Avana Oracle architecture for LP-backed lending - conservative collateral valuation, position reconstruction, recoverable unwind assumptions, and manipulation prevention.",
 }
 
 const sections = [
@@ -95,21 +95,21 @@ export default function PriceOraclesPage() {
 
           title="Price Oracles"
 
-          description="AMM Market Oracle is the protocol&apos;s collateral valuation engine for LP-backed lending."
+          description="Avana Oracle is the protocol&apos;s collateral valuation engine for LP-backed lending."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            AMM Market Oracle is the protocol&apos;s collateral valuation engine for LP-backed lending. It is
+            Avana Oracle is the protocol&apos;s collateral valuation engine for LP-backed lending. It is
             designed to price LP positions conservatively using robust external market data, deterministic
             position reconstruction, and stressed liquidation assumptions rather than raw AMM spot state.
             This architecture is intended to reduce the risk of collateral inflation, pool-state
             manipulation, thin-market pricing failures, and same-transaction oracle abuse.
           </p>
           <p className="text-gray-600 leading-relaxed mb-4">
-            For fungible LPs, AMM Market Oracle derives value from external prices and a
+            For fungible LPs, Avana Oracle derives value from external prices and a
             market-consistent reconstruction of pool balances. For concentrated liquidity positions, it
             values the position directly by decomposing its underlying token exposure based on range,
             liquidity, and current price. In both cases, the protocol applies recovery haircuts to
@@ -117,9 +117,9 @@ export default function PriceOraclesPage() {
             based on this discounted collateral value, not on theoretical net asset value.
           </p>
           <p className="text-gray-600 leading-relaxed mb-6">
-            This approach allows AMM Market to support LP collateral with stronger risk controls than
+            This approach allows Avana to support LP collateral with stronger risk controls than
             traditional lending markets. By separating mark value from recoverable value and enforcing
-            oracle-specific safeguards across each collateral class, AMM Market Oracle forms the
+            oracle-specific safeguards across each collateral class, Avana Oracle forms the
             foundation for safer LP-backed credit markets.
           </p>
 
@@ -203,7 +203,7 @@ export default function PriceOraclesPage() {
         <section id="dex-handling" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">DEX-Specific Handling</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Different LP formats expose different position-state data, but AMM Market Oracle uses those
+            Different LP formats expose different position-state data, but Avana Oracle uses those
             venue-specific inputs to reconstruct collateral and verify pricing, not to accept raw pool
             state at face value.
           </p>
@@ -367,7 +367,7 @@ export default function PriceOraclesPage() {
           </div>
 
           <p className="mt-4 text-gray-600 text-sm">
-            <strong>Summary:</strong> AMM Market Oracle combines external asset pricing, deterministic
+            <strong>Summary:</strong> Avana Oracle combines external asset pricing, deterministic
             LP reconstruction, discounted collateral treatment, and oracle-specific safeguards to support
             ERC-20 and NFT LPs with stronger protection against manipulation, stale data, and optimistic
             unwind assumptions across hundreds of pools.
@@ -378,7 +378,7 @@ export default function PriceOraclesPage() {
       {/* Right scroll-spy sidebar */}
       <ScrollSpySidebar 
         sections={sections} 
-        pageSummary="AMM Market Oracle prices LP collateral conservatively using external asset prices, position reconstruction, and recoverable unwind assumptions."
+        pageSummary="Avana Oracle prices LP collateral conservatively using external asset prices, position reconstruction, and recoverable unwind assumptions."
         sectionColor="cyan"
       />
     </div>

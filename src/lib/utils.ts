@@ -1,5 +1,5 @@
 /**
- * Utility functions for the AMM Market application.
+ * Utility functions for the Avana application.
  * 
  * @module lib/utils
  */

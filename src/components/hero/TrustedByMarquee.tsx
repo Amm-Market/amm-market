@@ -27,13 +27,6 @@ const PartnerLogos = () => (
         <path d="M58.2963 19.7998C57.699 19.7998 57.2226 20.0487 56.8669 20.5465C56.5114 21.0442 56.3336 21.6274 56.3336 22.2958V28.2481H53.5815V17.4957H56.3336V18.9038C56.547 18.4486 56.8385 18.1002 57.2083 17.8584C57.5781 17.6166 58.0118 17.4957 58.5096 17.4957H59.8323V19.7998H58.2963Z" fill="#646871" />
       </svg>
     </a>
-    {/* Crypto.com */}
-    <a href="https://crypto.com" target="_blank" rel="noopener noreferrer" className="opacity-60 hover:opacity-100 transition-opacity">
-      <svg width="144" height="41" viewBox="0 0 144 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fillRule="evenodd" clipRule="evenodd" d="M41.369 26.654C38.5419 26.654 36.4526 24.4395 36.4526 21.7194C36.4526 18.9993 38.5419 16.7305 41.3865 16.7305C43.1882 16.7305 44.3046 17.3972 45.1871 18.37L43.8366 19.8282C43.1699 19.1262 42.4679 18.6399 41.369 18.6399C39.7837 18.6399 38.6313 20.0087 38.6313 21.6835C38.6313 23.3941 39.8021 24.7629 41.4767 24.7629C42.5037 24.7629 43.2601 24.2766 43.9445 23.5746L45.259 24.8707C44.323 25.9153 43.2241 26.654 41.369 26.654Z" fill="#646871" />
-        <path fillRule="evenodd" clipRule="evenodd" d="M49.3945 26.6513H47.2158V16.746H49.3945V19.0692C49.9887 17.6461 51.0875 16.6734 52.7623 16.746V19.0516H52.6361C50.7274 19.0516 49.3945 20.2943 49.3945 22.8155V26.6513Z" fill="#646871" />
-      </svg>
-    </a>
     {/* Backpack */}
     <a href="https://backpack.app" target="_blank" rel="noopener noreferrer" className="opacity-60 hover:opacity-100 transition-opacity">
       <svg width="128" height="41" viewBox="0 0 128 41" fill="none" xmlns="http://www.w3.org/2000/svg">

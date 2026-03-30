@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Repay Loans",
   description:
-    "How repayment works in AMM Market, including debt-share reduction, Hub settlement, and the path back to collateral withdrawal.",
+    "How repayment works in Avana, including debt-share reduction, Hub settlement, and the path back to collateral withdrawal.",
 }
 
 const sections = [
@@ -112,7 +112,7 @@ export default function RepayLoansPage() {
 
       <ScrollSpySidebar
         sections={sections}
-        pageSummary="How repayment lowers debt, restores health, and unlocks collateral release in AMM Market."
+        pageSummary="How repayment lowers debt, restores health, and unlocks collateral release in Avana."
         sectionColor="emerald"
       />
     </div>

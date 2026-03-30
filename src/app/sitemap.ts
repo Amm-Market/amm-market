@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next'
+import { blogRoutes, SITE_URL, siteRoutes } from "@/lib/site"
 
 /**
- * Generates the sitemap.xml for the AMM Market website.
+ * Generates the sitemap.xml for the Avana website.
  * 
  * @description
  * This file is automatically processed by Next.js to generate /sitemap.xml.
@@ -14,67 +15,60 @@ import { MetadataRoute } from 'next'
  * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://ammmarket.xyz'
   const now = new Date()
   
   // Main landing pages - highest priority
   const landingPages: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
+      url: SITE_URL,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/early-access`,
+      url: `${SITE_URL}${siteRoutes.earlyAccess}`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/developers`,
+      url: `${SITE_URL}${siteRoutes.developers}`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/blog`,
+      url: `${SITE_URL}${siteRoutes.blog}`,
       lastModified: now,
       changeFrequency: 'daily',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/lightpaper`,
+      url: `${SITE_URL}${siteRoutes.lightpaper}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/faq`,
+      url: `${SITE_URL}${siteRoutes.faq}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/open-spoke`,
+      url: `${SITE_URL}${siteRoutes.openSpoke}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/stable-spoke`,
+      url: `${SITE_URL}${siteRoutes.stableSpoke}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/webapp`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/brand`,
+      url: `${SITE_URL}${siteRoutes.brand}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.5,
@@ -119,7 +113,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/developers/legal',
     '/developers/legal/disclaimer',
   ].map(path => ({
-    url: `${baseUrl}${path}`,
+    url: `${SITE_URL}${path}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.7,
@@ -137,11 +131,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/security-deep-dive',
     '/blog/yield-looping-playbook',
     '/blog/unleashing-lp-tokens',
-    '/blog/aave-v4-amm-spoke',
+    blogRoutes.aaveV4AvanaSpoke,
     '/blog/defi-ux-challenges',
-    '/blog/amm-markets-lp-collateral',
+    blogRoutes.avanaLpCollateral,
   ].map(path => ({
-    url: `${baseUrl}${path}`,
+    url: `${SITE_URL}${path}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.6,
@@ -150,13 +144,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Legal and utility pages - lowest priority
   const utilityPages: MetadataRoute.Sitemap = [
     {
-      url: `${baseUrl}/privacy`,
+      url: `${SITE_URL}${siteRoutes.privacy}`,
       lastModified: now,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/terms`,
+      url: `${SITE_URL}${siteRoutes.terms}`,
       lastModified: now,
       changeFrequency: 'yearly',
       priority: 0.3,

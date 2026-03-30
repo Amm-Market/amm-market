@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Protocol Architecture - Borrow Spoke",
   description:
-    "AMM Market Borrow Spoke architecture explained. Learn about the borrower-facing execution layer, Hub data flow, LP collateral responsibilities, and Aave v4 integration.",
+    "Avana Borrow Spoke architecture explained. Learn about the borrower-facing execution layer, Hub data flow, LP collateral responsibilities, and Aave v4 integration.",
 }
 
 const sections = [
@@ -26,7 +26,7 @@ export default function BorrowSpokePage() {
 
           title="Borrow Spoke"
 
-          description="Responsibilities and scope of the borrower-facing AMM Market spoke within the Aave v4 architecture."
+          description="Responsibilities and scope of the borrower-facing Avana spoke within the Aave v4 architecture."
 
         />
 
@@ -122,7 +122,7 @@ export default function BorrowSpokePage() {
               </p>
             </div>
             <div>
-              <h3 className="mb-2 font-semibold text-gray-900">Middle: Borrow Spoke (AMM Market)</h3>
+              <h3 className="mb-2 font-semibold text-gray-900">Middle: Borrow Spoke (Avana)</h3>
               <p className="text-sm text-gray-600">
                 This is the intelligent layer that understands AMM-specific liquidity formats. It
                 manages LP custody, calculates position-specific risk, enforces loan-level health
@@ -164,7 +164,7 @@ export default function BorrowSpokePage() {
             </li>
             <li className="text-sm text-gray-600">
               <strong className="text-gray-900">Liquidations occur when required</strong> - Hubs,
-              AMM Market liquidation nodes, or external liquidators can cause the Borrow Spoke to
+              Avana liquidation nodes, or external liquidators can cause the Borrow Spoke to
               extract LP liquidity and settle debt through the appropriate liquidation path.
             </li>
           </ol>
@@ -281,7 +281,7 @@ export default function BorrowSpokePage() {
 
       <ScrollSpySidebar
         sections={sections}
-        pageSummary="Responsibilities and scope of the borrower-facing AMM Market spoke within the Aave v4 architecture."
+        pageSummary="Responsibilities and scope of the borrower-facing Avana spoke within the Aave v4 architecture."
         sectionColor="violet"
       />
     </div>

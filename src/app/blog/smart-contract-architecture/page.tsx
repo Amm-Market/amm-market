@@ -2,14 +2,14 @@ import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
 
 export const metadata: Metadata = {
-  title: "Smart Contract Architecture: AMM Market Technical Reference",
-  description: "Deep technical reference for AMM Market's smart contract architecture—Hub and Spoke design, oracle integration, key functions, and integration patterns.",
+  title: "Smart Contract Architecture: Avana Technical Reference",
+  description: "Deep technical reference for Avana's smart contract architecture—Hub and Spoke design, oracle integration, key functions, and integration patterns.",
 }
 
 const tableOfContents = [
   { id: "overview", title: "Architecture Overview" },
   { id: "hub-contract", title: "The Liquidity Hub" },
-  { id: "spoke-contract", title: "The AMM Market Spoke" },
+  { id: "spoke-contract", title: "The Avana Spoke" },
   { id: "oracle-system", title: "Oracle System" },
   { id: "key-functions", title: "Key Functions" },
   { id: "access-control", title: "Access Control & Permissions" },
@@ -19,19 +19,19 @@ const tableOfContents = [
 export default function SmartContractArchitecturePage() {
   return (
     <BlogPostLayout
-      title="Smart Contract Architecture: AMM Market Technical Reference"
+      title="Smart Contract Architecture: Avana Technical Reference"
       date="January 21, 2026"
-      description="Deep technical reference for AMM Market's smart contract architecture—Hub and Spoke design, oracle integration, key functions, and integration patterns."
+      description="Deep technical reference for Avana's smart contract architecture—Hub and Spoke design, oracle integration, key functions, and integration patterns."
       image="/images/blog/smart-contract-architecture.png"
       tableOfContents={tableOfContents}
       prevPost={{
         slug: "v1-1-release",
-        title: "AMM Market v1.1: New Features and Improvements",
+        title: "Avana v1.1: New Features and Improvements",
         date: "January 22, 2026",
       }}
       nextPost={{
         slug: "integration-guide",
-        title: "Building on AMM Market: Integration Guide for Developers",
+        title: "Building on Avana: Integration Guide for Developers",
         date: "January 20, 2026",
       }}
     >
@@ -39,7 +39,7 @@ export default function SmartContractArchitecturePage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Architecture Overview</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          AMM Market is built on Aave v4&apos;s Hub and Spoke architecture, a modular design that separates 
+          Avana is built on Aave v4&apos;s Hub and Spoke architecture, a modular design that separates 
           liquidity management from collateral-specific logic. This separation enables specialized markets 
           like LP-backed lending while maintaining deep, unified liquidity.
         </p>
@@ -140,10 +140,10 @@ export default function SmartContractArchitecturePage() {
       </section>
 
       <section id="spoke-contract" className="mb-12 scroll-mt-24">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900">The AMM Market Spoke</h2>
+        <h2 className="text-2xl font-bold mb-6 text-gray-900">The Avana Spoke</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          The AMM Market Spoke is the user-facing contract that handles LP collateral. It accepts LP NFTs, 
+          The Avana Spoke is the user-facing contract that handles LP collateral. It accepts LP NFTs, 
           values them via oracles, and manages the borrowing lifecycle.
         </p>
 
@@ -312,7 +312,7 @@ export default function SmartContractArchitecturePage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Access Control &amp; Permissions</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          AMM Market uses a role-based access control system for administrative functions while keeping 
+          Avana uses a role-based access control system for administrative functions while keeping 
           user-facing operations permissionless.
         </p>
 
@@ -364,7 +364,7 @@ export default function SmartContractArchitecturePage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Integration Points</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          External protocols and applications can integrate with AMM Market at several levels.
+          External protocols and applications can integrate with Avana at several levels.
         </p>
 
         <div className="bg-gray-900 text-white rounded-xl p-6 not-prose mb-6">
@@ -387,7 +387,7 @@ export default function SmartContractArchitecturePage() {
             </li>
             <li className="flex items-start gap-3">
               <span className="text-green-400 mt-0.5">✓</span>
-              <span><strong>Vault wrappers</strong> — Build automated strategy vaults on top of AMM Market</span>
+              <span><strong>Vault wrappers</strong> — Build automated strategy vaults on top of Avana</span>
             </li>
           </ul>
         </div>

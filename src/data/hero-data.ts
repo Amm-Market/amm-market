@@ -47,7 +47,7 @@ export const pools: Pool[] = [
 
 /**
  * Testimonials from DeFi leaders
- * Featured quotes about LP collateral and AMM Market
+ * Featured quotes about LP collateral and Avana
  */
 export const testimonials: Testimonial[] = [
   {

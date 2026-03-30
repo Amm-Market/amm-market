@@ -1,4 +1,4 @@
-import { render, screen, act } from '@testing-library/react'
+import { render, screen, act, waitFor } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { HeroSection } from '../../hero/index'
 
@@ -20,30 +20,37 @@ vi.mock('../../hero/DashboardPreview', () => ({
 }))
 
 vi.mock('../../hero/BorrowAcrossDexs', () => ({
+  default: () => <div data-testid="borrow-dexs">BorrowAcrossDexs</div>,
   BorrowAcrossDexs: () => <div data-testid="borrow-dexs">BorrowAcrossDexs</div>,
 }))
 
 vi.mock('../../hero/PoolTicker', () => ({
+  default: () => <div data-testid="pool-ticker">PoolTicker</div>,
   PoolTicker: () => <div data-testid="pool-ticker">PoolTicker</div>,
 }))
 
 vi.mock('../../hero/GetMoreSection', () => ({
+  default: () => <div data-testid="get-more">GetMoreSection</div>,
   GetMoreSection: () => <div data-testid="get-more">GetMoreSection</div>,
 }))
 
 vi.mock('../../hero/BorrowConfidence', () => ({
+  default: () => <div data-testid="borrow-confidence">BorrowConfidence</div>,
   BorrowConfidence: () => <div data-testid="borrow-confidence">BorrowConfidence</div>,
 }))
 
 vi.mock('../../hero/AboutAave', () => ({
+  default: () => <div data-testid="about-aave">AboutAave</div>,
   AboutAave: () => <div data-testid="about-aave">AboutAave</div>,
 }))
 
 vi.mock('../../hero/TestimonialCarousel', () => ({
+  default: () => <div data-testid="testimonial-carousel">TestimonialCarousel</div>,
   TestimonialCarousel: () => <div data-testid="testimonial-carousel">TestimonialCarousel</div>,
 }))
 
 vi.mock('../../hero/FAQSection', () => ({
+  default: () => <div data-testid="faq-section">FAQSection</div>,
   FAQSection: () => <div data-testid="faq-section">FAQSection</div>,
 }))
 
@@ -98,7 +105,24 @@ describe('HeroSection (index)', () => {
     expect(screen.getByTestId('dashboard-preview')).toBeInTheDocument()
   })
 
-  it('renders lazy-loaded sections when visible', () => {
+  it('reserves space for deferred sections before they enter view', () => {
+    const { container } = render(<HeroSection />)
+
+    expect(screen.queryByTestId('borrow-dexs')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('faq-section')).not.toBeInTheDocument()
+
+    const reservedSections = Array.from(container.querySelectorAll('[style]')).filter((element) => {
+      const style = (element as HTMLElement).getAttribute('style') || ''
+      return style.includes('min-height:')
+    })
+
+    expect(reservedSections).toHaveLength(8)
+    expect(reservedSections[0]).toHaveStyle({ minHeight: '400px' })
+    expect(reservedSections[1]).toHaveStyle({ minHeight: '500px' })
+    expect(reservedSections[6]).toHaveStyle({ minHeight: '500px' })
+  })
+
+  it('renders lazy-loaded sections when visible', async () => {
     render(<HeroSection />)
 
     // Trigger intersection for all lazy sections
@@ -106,14 +130,16 @@ describe('HeroSection (index)', () => {
       MockIntersectionObserver.triggerAll()
     })
 
-    expect(screen.getByTestId('borrow-dexs')).toBeInTheDocument()
-    expect(screen.getByTestId('pool-ticker')).toBeInTheDocument()
-    expect(screen.getByTestId('get-more')).toBeInTheDocument()
-    expect(screen.getByTestId('borrow-confidence')).toBeInTheDocument()
-    expect(screen.getByTestId('about-aave')).toBeInTheDocument()
-    expect(screen.getByTestId('testimonial-carousel')).toBeInTheDocument()
-    expect(screen.getByTestId('faq-section')).toBeInTheDocument()
-    expect(screen.getByTestId('early-access-cta')).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByTestId('borrow-dexs')).toBeInTheDocument()
+      expect(screen.getByTestId('pool-ticker')).toBeInTheDocument()
+      expect(screen.getByTestId('get-more')).toBeInTheDocument()
+      expect(screen.getByTestId('borrow-confidence')).toBeInTheDocument()
+      expect(screen.getByTestId('about-aave')).toBeInTheDocument()
+      expect(screen.getByTestId('testimonial-carousel')).toBeInTheDocument()
+      expect(screen.getByTestId('faq-section')).toBeInTheDocument()
+      expect(screen.getByTestId('early-access-cta')).toBeInTheDocument()
+    })
   })
 
   it('has proper wrapper styling', () => {

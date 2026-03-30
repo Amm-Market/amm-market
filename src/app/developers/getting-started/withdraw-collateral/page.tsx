@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Withdraw Collateral",
   description:
-    "How LP collateral is released from AMM Market once debt is repaid or the remaining account can still pass health checks after withdrawal.",
+    "How LP collateral is released from Avana once debt is repaid or the remaining account can still pass health checks after withdrawal.",
 }
 
 const sections = [
@@ -93,7 +93,7 @@ export default function WithdrawCollateralPage() {
 
       <ScrollSpySidebar
         sections={sections}
-        pageSummary="How LP collateral is released once the remaining account still satisfies AMM Market health checks."
+        pageSummary="How LP collateral is released once the remaining account still satisfies Avana health checks."
         sectionColor="emerald"
       />
     </div>

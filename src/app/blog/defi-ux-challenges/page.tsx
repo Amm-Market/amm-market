@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
 
 export const metadata: Metadata = {
-  title: "How AMM Market Solves DeFi User Experience Challenges",
+  title: "How Avana Solves DeFi User Experience Challenges",
   description: "Unifying trading, liquidity, and lending into a single human-centered system for accessible DeFi.",
 }
 
@@ -20,19 +20,19 @@ const tableOfContents = [
 export default function DeFiUXChallengesPage() {
   return (
     <BlogPostLayout
-      title="How AMM Market Solves DeFi User Experience Challenges"
+      title="How Avana Solves DeFi User Experience Challenges"
       date="January 17, 2026"
-      description="DeFi has long promised open access to financial services, yet its user experience has fallen short. Here's how AMM Market addresses these challenges."
+      description="DeFi has long promised open access to financial services, yet its user experience has fallen short. Here's how Avana addresses these challenges."
       image="/images/blog/defi-ux-challenges.png"
       tableOfContents={tableOfContents}
       prevPost={{
-        slug: "amm-markets-lp-collateral",
-        title: "AMM Markets Empowering Liquidity Providers With Collateral",
+        slug: "avana-lp-collateral",
+        title: "Avana Empowering Liquidity Providers With Collateral",
         date: "January 18, 2026",
       }}
       nextPost={{
-        slug: "aave-v4-amm-spoke",
-        title: "Borrowing Against Uniswap LP Tokens via Aave v4's AMM Market Spoke",
+        slug: "aave-v4-avana-spoke",
+        title: "Borrowing Against Uniswap LP Tokens via Aave v4's Avana Spoke",
         date: "January 16, 2026",
       }}
     >
@@ -87,7 +87,7 @@ export default function DeFiUXChallengesPage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Unifying the DeFi Experience</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          AMM Market approaches this problem holistically. Rather than treating lending, trading, and liquidity 
+          Avana approaches this problem holistically. Rather than treating lending, trading, and liquidity 
           provision as separate verticals, it brings them together into a single, cohesive platform. Users no longer 
           need to move between multiple applications to execute related actions. Instead, they interact with one 
           unified interface that presents all positions, assets, and opportunities in one place.
@@ -102,7 +102,7 @@ export default function DeFiUXChallengesPage() {
         </p>
 
         <p className="text-gray-700 leading-relaxed mb-6">
-          Behind the scenes, AMM Market integrates multiple protocols and services into a seamless flow. Liquidity 
+          Behind the scenes, Avana integrates multiple protocols and services into a seamless flow. Liquidity 
           pools, lending hubs, cross chain transfers, and risk monitoring systems are orchestrated automatically. 
           From the user&apos;s perspective, complex multi step operations are reduced to clear, guided actions with 
           transparent outcomes. What once required a sequence of manual interactions across several applications 
@@ -113,7 +113,7 @@ export default function DeFiUXChallengesPage() {
           <h3 className="font-semibold text-indigo-900 mb-3">Solving Fragmentation</h3>
           <p className="text-gray-700">
             This approach directly addresses one of DeFi&apos;s most persistent problems: fragmented liquidity and 
-            fragmented experiences. Instead of forcing users to move assets between isolated systems, AMM Market 
+            fragmented experiences. Instead of forcing users to move assets between isolated systems, Avana 
             allows capital to flow naturally between use cases. Liquidity can simultaneously earn fees, secure loans, 
             and support trading strategies, all without requiring users to manage each component separately.
           </p>
@@ -124,7 +124,7 @@ export default function DeFiUXChallengesPage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Core Features Designed for Clarity</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          AMM Market&apos;s functionality is organized into intuitive modules, each designed to balance power with simplicity.
+          Avana&apos;s functionality is organized into intuitive modules, each designed to balance power with simplicity.
         </p>
 
         <div className="space-y-4 not-prose">
@@ -194,7 +194,7 @@ export default function DeFiUXChallengesPage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Simplified Portfolio Management and Smart Assistance</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          AMM Market rethinks portfolio management as a first class experience. Instead of forcing users to track 
+          Avana rethinks portfolio management as a first class experience. Instead of forcing users to track 
           positions across disconnected interfaces, it provides a unified dashboard that aggregates all assets, 
           liabilities, and opportunities in one view. Users can immediately see their total exposure, collateral 
           health, and potential earnings without piecing together information from multiple sources.
@@ -209,7 +209,7 @@ export default function DeFiUXChallengesPage() {
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-xl p-6 not-prose">
           <h3 className="font-semibold text-indigo-900 mb-3">Intelligent Assistant</h3>
           <p className="text-gray-700">
-            To further support users, AMM Market includes an intelligent assistant that acts as an embedded guide. 
+            To further support users, Avana includes an intelligent assistant that acts as an embedded guide. 
             It explains terminology in plain language, answers contextual questions, and highlights potential risks 
             before they become problems. Instead of requiring users to leave the platform to research concepts, 
             learning happens organically within the flow of use. This transforms DeFi from a trial and error 
@@ -222,7 +222,7 @@ export default function DeFiUXChallengesPage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Freedom Through Deep Integration</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          One of AMM Market&apos;s defining strengths is its deep integration across DeFi components. Users can move 
+          One of Avana&apos;s defining strengths is its deep integration across DeFi components. Users can move 
           seamlessly between strategies without manual bridging, repeated approvals, or fragmented workflows. 
           Liquidity, credit, and trading are no longer siloed activities but interconnected tools that can be 
           combined freely.
@@ -235,7 +235,7 @@ export default function DeFiUXChallengesPage() {
         </p>
 
         <p className="text-gray-700 leading-relaxed">
-          By enforcing a consistent interface and experience across all interactions, AMM Market removes much of the 
+          By enforcing a consistent interface and experience across all interactions, Avana removes much of the 
           friction that traditionally discourages exploration. Users are empowered to use DeFi as a flexible financial 
           system rather than a collection of disconnected products.
         </p>
@@ -245,14 +245,14 @@ export default function DeFiUXChallengesPage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Security Built Into the Design</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          Security concerns remain one of the biggest barriers to DeFi adoption, and AMM Market addresses them through 
+          Security concerns remain one of the biggest barriers to DeFi adoption, and Avana addresses them through 
           thoughtful design. Protective mechanisms operate automatically, reducing exposure to common risks such as 
           transaction manipulation. Clear transaction simulations and previews ensure users understand exactly what 
           will happen before committing.
         </p>
 
         <p className="text-gray-700 leading-relaxed mb-6">
-          At the protocol level, AMM Market leverages proven infrastructure rather than reinventing critical components. 
+          At the protocol level, Avana leverages proven infrastructure rather than reinventing critical components. 
           By building on established lending architecture, it benefits from deep liquidity, stable interest rates, and 
           well tested risk controls. Responsibilities are cleanly separated, isolating risk and preventing issues in 
           one area from cascading across the system.
@@ -270,7 +270,7 @@ export default function DeFiUXChallengesPage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Collateralizing Liquidity Positions Made Simple</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          One of AMM Market&apos;s most powerful innovations is how it allows liquidity providers to unlock credit from 
+          One of Avana&apos;s most powerful innovations is how it allows liquidity providers to unlock credit from 
           existing positions. Users deposit their liquidity shares, which continue earning fees while serving as 
           collateral. The system values the position, sets appropriate borrowing limits, and opens a credit line 
           automatically.
@@ -293,7 +293,7 @@ export default function DeFiUXChallengesPage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Toward Truly Accessible DeFi</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          By addressing usability, integration, and security together, AMM Market demonstrates what user centered DeFi 
+          By addressing usability, integration, and security together, Avana demonstrates what user centered DeFi 
           can look like. It replaces fragmented workflows with coherent experiences, opaque mechanics with transparency, 
           and fear of mistakes with confidence.
         </p>
@@ -301,7 +301,7 @@ export default function DeFiUXChallengesPage() {
         <p className="text-gray-700 leading-relaxed mb-6">
           For experienced users, it amplifies efficiency and flexibility. For newcomers, it provides an approachable 
           entry point that feels familiar and intuitive. By unifying trading, liquidity, and lending into a single 
-          human centered system, AMM Market shows how decentralized finance can finally align its powerful capabilities 
+          human centered system, Avana shows how decentralized finance can finally align its powerful capabilities 
           with the needs of real users.
         </p>
 

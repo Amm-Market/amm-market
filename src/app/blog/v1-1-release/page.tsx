@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
 
 export const metadata: Metadata = {
-  title: "AMM Market v1.1: New Features and Improvements",
-  description: "Announcing AMM Market v1.1—multi-position collateral, improved oracles, gas optimizations, and a refreshed dashboard experience.",
+  title: "Avana v1.1: New Features and Improvements",
+  description: "Announcing Avana v1.1—multi-position collateral, improved oracles, gas optimizations, and a refreshed dashboard experience.",
 }
 
 const tableOfContents = [
@@ -18,9 +18,9 @@ const tableOfContents = [
 export default function V11ReleasePage() {
   return (
     <BlogPostLayout
-      title="AMM Market v1.1: New Features and Improvements"
+      title="Avana v1.1: New Features and Improvements"
       date="January 22, 2026"
-      description="Announcing AMM Market v1.1—multi-position collateral, improved oracles, gas optimizations, and a refreshed dashboard experience."
+      description="Announcing Avana v1.1—multi-position collateral, improved oracles, gas optimizations, and a refreshed dashboard experience."
       image="/images/blog/v1-1-release.png"
       tableOfContents={tableOfContents}
       prevPost={{
@@ -30,13 +30,13 @@ export default function V11ReleasePage() {
       }}
       nextPost={{
         slug: "smart-contract-architecture",
-        title: "Smart Contract Architecture: AMM Market Technical Reference",
+        title: "Smart Contract Architecture: Avana Technical Reference",
         date: "January 21, 2026",
       }}
     >
       <section id="introduction" className="mb-12 scroll-mt-24">
         <p className="text-gray-700 leading-relaxed mb-6">
-          We&apos;re excited to announce AMM Market v1.1, our first major update since launch. This release 
+          We&apos;re excited to announce Avana v1.1, our first major update since launch. This release 
           focuses on expanding capabilities, improving performance, and refining the user experience based 
           on community feedback.
         </p>

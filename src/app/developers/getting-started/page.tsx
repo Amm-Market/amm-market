@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Getting Started - Deposit LP",
   description:
-    "Learn how to deposit supported LP positions as collateral in AMM Market and how those deposits become aggregate borrowing capacity inside a Borrow Spoke.",
+    "Learn how to deposit supported LP positions as collateral in Avana and how those deposits become aggregate borrowing capacity inside a Borrow Spoke.",
 }
 
 const sections = [
@@ -56,7 +56,7 @@ export default function DepositLPPage() {
             capacity.
           </p>
           <p className="text-sm text-gray-600">
-            <strong>Important:</strong> AMM Market does not grant borrowing power just because an LP
+            <strong>Important:</strong> Avana does not grant borrowing power just because an LP
             position exists. The position must belong to an approved pool family, pass valuation
             checks, and fit the spoke&apos;s current risk configuration.
           </p>

@@ -39,7 +39,6 @@
  */
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useGT } from "gt-next/client"
 import {
   Bug,
   BookOpen,
@@ -77,7 +76,6 @@ import {
   FileWarning,
   Gavel,
 } from "lucide-react"
-import { stripLocalePrefix } from "@/lib/locales"
 
 // Navigation structure - exported for use in PageNavigation component
 export const navigationSections = [
@@ -173,9 +171,8 @@ const sectionColors: Record<string, { headerBg: string; headerText: string; item
 }
 
 export default function DeveloperSidebar() {
-  const t = useGT()
   const pathname = usePathname()
-  const normalizedPathname = stripLocalePrefix(pathname || "/")
+  const normalizedPathname = pathname || "/"
 
   const isActive = (href: string) => {
     return normalizedPathname === href
@@ -244,7 +241,7 @@ export default function DeveloperSidebar() {
                         }`}
                     />
                     <span className="transition-transform duration-200 group-hover:translate-x-1">
-                      {t(section.title)}
+                      {section.title}
                     </span>
                   </div>
                 </div>
@@ -271,7 +268,7 @@ export default function DeveloperSidebar() {
                               }`}
                           />
                           <span className="transition-transform duration-200 group-hover:translate-x-1">
-                            {t(item.label)}
+                            {item.label}
                           </span>
                         </Link>
                       </li>

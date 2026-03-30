@@ -1,8 +1,4 @@
-"use client"
-
-import { useState } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 const categories = ["All", "Product", "Developers", "For LPs", "For Institutions"]
@@ -13,7 +9,7 @@ const blogs = [
     id: 1,
     date: "January 23, 2026",
     title: "Introducing Automate: Set-and-Forget LP Management",
-    description: "Meet Automate—AMM Market's automation layer for hands-off LP management. Auto-compound fees, rebalance positions, and protect against liquidation.",
+    description: "Meet Automate—Avana's automation layer for hands-off LP management. Auto-compound fees, rebalance positions, and protect against liquidation.",
     slug: "introducing-automate",
     image: "/images/blog/introducing-automate.png",
     category: "Product",
@@ -21,8 +17,8 @@ const blogs = [
   {
     id: 2,
     date: "January 22, 2026",
-    title: "AMM Market v1.1: New Features and Improvements",
-    description: "Announcing AMM Market v1.1—multi-position collateral, improved oracles, gas optimizations, and a refreshed dashboard experience.",
+    title: "Avana v1.1: New Features and Improvements",
+    description: "Announcing Avana v1.1—multi-position collateral, improved oracles, gas optimizations, and a refreshed dashboard experience.",
     slug: "v1-1-release",
     image: "/images/blog/v1-1-release.png",
     category: "Product",
@@ -30,8 +26,8 @@ const blogs = [
   {
     id: 3,
     date: "January 21, 2026",
-    title: "Smart Contract Architecture: AMM Market Technical Reference",
-    description: "Deep technical reference for AMM Market's smart contract architecture—Hub and Spoke design, oracle integration, and key functions.",
+    title: "Smart Contract Architecture: Avana Technical Reference",
+    description: "Deep technical reference for Avana's smart contract architecture—Hub and Spoke design, oracle integration, and key functions.",
     slug: "smart-contract-architecture",
     image: "/images/blog/smart-contract-architecture.png",
     category: "Developers",
@@ -39,8 +35,8 @@ const blogs = [
   {
     id: 4,
     date: "January 20, 2026",
-    title: "Building on AMM Market: Integration Guide for Developers",
-    description: "A comprehensive guide to integrating with AMM Market—SDK setup, core functions, event handling, and best practices.",
+    title: "Building on Avana: Integration Guide for Developers",
+    description: "A comprehensive guide to integrating with Avana—SDK setup, core functions, event handling, and best practices.",
     slug: "integration-guide",
     image: "/images/blog/integration-guide.png",
     category: "Developers",
@@ -57,16 +53,16 @@ const blogs = [
   {
     id: 6,
     date: "January 18, 2026",
-    title: "AMM Markets Empowering Liquidity Providers With Collateral",
+    title: "Avana Empowering Liquidity Providers With Collateral",
     description: "How LP tokens can function as productive collateral, unlocking capital efficiency and layered yield strategies.",
-    slug: "amm-markets-lp-collateral",
+    slug: "avana-lp-collateral",
     image: "/images/blog/amm-markets-lp-collateral.png",
     category: "For LPs",
   },
   {
     id: 7,
     date: "January 17, 2026",
-    title: "How AMM Market Solves DeFi User Experience Challenges",
+    title: "How Avana Solves DeFi User Experience Challenges",
     description: "Unifying trading, liquidity, and lending into a single human-centered system for accessible DeFi.",
     slug: "defi-ux-challenges",
     image: "/images/blog/defi-ux-challenges.png",
@@ -75,16 +71,16 @@ const blogs = [
   {
     id: 8,
     date: "January 16, 2026",
-    title: "Borrowing Against Uniswap LP Tokens via Aave v4's AMM Market Spoke",
+    title: "Borrowing Against Uniswap LP Tokens via Aave v4's Avana Spoke",
     description: "Technical deep-dive into how the Hub-and-Spoke architecture enables LP-backed lending.",
-    slug: "aave-v4-amm-spoke",
+    slug: "aave-v4-avana-spoke",
     image: "/images/blog/aave-v4-amm-spoke.png",
     category: "Developers",
   },
   {
     id: 9,
     date: "January 15, 2026",
-    title: "Unleashing Your LP Tokens with Aave's AMM Market",
+    title: "Unleashing Your LP Tokens with Aave's Avana",
     description: "From conservative stablecoin strategies to advanced leverage plays—make your LP tokens work harder.",
     slug: "unleashing-lp-tokens",
     image: "/images/blog/unleashing-lp-tokens.png",
@@ -102,7 +98,7 @@ const blogs = [
   {
     id: 11,
     date: "January 13, 2026",
-    title: "Security Deep-Dive: How AMM Market Manages LP Risk",
+    title: "Security Deep-Dive: How Avana Manages LP Risk",
     description: "Hub-and-Spoke isolation, position-aware oracles, health checks, and liquidation mechanics explained.",
     slug: "security-deep-dive",
     image: "/images/blog/security-deep-dive.png",
@@ -128,8 +124,46 @@ const blogs = [
   },
 ]
 
-export default function BlogPage() {
-  const [activeCategory, setActiveCategory] = useState<string>("All")
+function BlogImagePlaceholder({
+  label,
+  featured = false,
+}: {
+  label: string
+  featured?: boolean
+}) {
+  return (
+    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-white via-blue-50 to-slate-100 px-6 py-8 text-center">
+      <div className="max-w-sm">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-700">
+          Placeholder image
+        </p>
+        <p className={`mt-3 font-semibold text-slate-900 ${featured ? "text-lg md:text-xl" : "text-base"}`}>
+          {label}
+        </p>
+        <p className="mt-2 text-sm leading-6 text-slate-600">
+          Final editorial artwork can drop in here later without affecting layout or performance.
+        </p>
+      </div>
+    </div>
+  )
+}
+
+function getCategoryHref(category: string) {
+  if (category === "All") {
+    return "/blog"
+  }
+
+  return `/blog?category=${encodeURIComponent(category)}`
+}
+
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ category?: string }>
+}) {
+  const resolvedSearchParams = (await searchParams) ?? {}
+  const requestedCategory = resolvedSearchParams.category ?? "All"
+  const activeCategory = categories.includes(requestedCategory) ? requestedCategory : "All"
   const featuredPost = blogs[0]
   const recentPosts = blogs.slice(1)
   const filteredPosts = recentPosts.filter(
@@ -141,10 +175,10 @@ export default function BlogPage() {
       {/* Header */}
       <div className="flex flex-col items-start gap-6 mb-12">
         <h1 className="type-page-title italic text-gray-900">
-          Dex Mini Blog
+          Avana Blog
         </h1>
         <p className="type-page-lead text-gray-600">
-          Updates, stories, and announcements from the Dex Mini team
+          Product updates, technical deep-dives, and market insights from the Avana team
         </p>
         <hr className="w-full border-gray-200" />
       </div>
@@ -157,14 +191,7 @@ export default function BlogPage() {
         <div className="flex flex-col md:flex-row">
           {/* Image */}
           <div className="relative w-full md:w-[45%] aspect-video md:aspect-auto md:min-h-[280px] bg-gradient-to-br from-indigo-100 to-purple-100">
-            <Image
-              src={featuredPost.image}
-              alt={featuredPost.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 45vw"
-              priority
-            />
+            <BlogImagePlaceholder label={featuredPost.title} featured />
           </div>
           {/* Content */}
           <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
@@ -189,12 +216,11 @@ export default function BlogPage() {
         {/* Filter Bar */}
         <div className="border-t border-gray-200">
           <div className="flex flex-row items-center justify-between gap-2 py-4">
-            {/* Category Pills - hidden on mobile, shown on lg+ */}
             <div className="hidden lg:flex flex-wrap items-center gap-3">
               {categories.map((cat) => (
-                <button
+                <Link
                   key={cat}
-                  onClick={() => setActiveCategory(cat)}
+                  href={getCategoryHref(cat)}
                   className={cn(
                     "px-4 py-2 text-sm rounded-full border transition-all",
                     activeCategory === cat
@@ -203,22 +229,27 @@ export default function BlogPage() {
                   )}
                 >
                   {cat}
-                </button>
+                </Link>
               ))}
             </div>
-            {/* Mobile category select */}
-            <div className="lg:hidden w-full">
-              <select
-                value={activeCategory}
-                onChange={(e) => setActiveCategory(e.target.value)}
-                className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white text-gray-900"
-              >
+
+            <div className="lg:hidden w-full overflow-x-auto">
+              <div className="flex min-w-max items-center gap-2 pr-4">
                 {categories.map((cat) => (
-                  <option key={cat} value={cat}>
+                  <Link
+                    key={cat}
+                    href={getCategoryHref(cat)}
+                    className={cn(
+                      "whitespace-nowrap rounded-full border px-3 py-2 text-sm transition-all",
+                      activeCategory === cat
+                        ? "bg-gray-100 border-gray-300 text-gray-900 font-medium"
+                        : "bg-white border-gray-200 text-gray-600 hover:border-gray-400"
+                    )}
+                  >
                     {cat}
-                  </option>
+                  </Link>
                 ))}
-              </select>
+              </div>
             </div>
           </div>
         </div>
@@ -235,13 +266,7 @@ export default function BlogPage() {
                   <div className="flex flex-col space-y-1">
                     {/* Image */}
                     <div className="relative mb-3 w-full aspect-[2/1] lg:aspect-[5/3] overflow-hidden rounded-lg border border-gray-200 shadow-sm">
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
+                      <BlogImagePlaceholder label={post.title} />
                     </div>
                     {/* Metadata */}
                     <div className="flex items-center space-x-1.5 text-sm text-gray-500">

@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Collateral Factors",
   description:
-    "Understanding collateral factors in AMM Market. Learn how LP positions are valued, how borrowing power is aggregated, and how capacity is enforced through the Hub.",
+    "Understanding collateral factors in Avana. Learn how LP positions are valued, how borrowing power is aggregated, and how capacity is enforced through the Hub.",
 }
 
 const sections = [
@@ -58,7 +58,7 @@ const collateralLifecycle = [
   {
     title: "Position Valuation",
     description:
-      "Each LP position is priced in USD through a dual-oracle system that combines Chainlink price feeds with AMM TWAPs inside AMM Market's extended Aave-style oracle framework.",
+      "Each LP position is priced in USD through a dual-oracle system that combines Chainlink price feeds with AMM TWAPs inside Avana's extended Aave-style oracle framework.",
   },
   {
     title: "Borrowing Capacity",
@@ -99,7 +99,7 @@ export default function CollateralFactorsPage() {
             factors, and other protocol buffers.
           </p>
           <p className="text-gray-600 leading-relaxed mb-4">
-            In AMM Market, valuation is position-based, not pool-based. A user may deposit dozens of
+            In Avana, valuation is position-based, not pool-based. A user may deposit dozens of
             LP positions into a single Borrow Spoke, but borrowing power is derived from the
             aggregate USD value of the underlying assets across those positions, not from a single
             vault or pair. Each LP position is valued independently, and its contribution is then
@@ -242,7 +242,7 @@ export default function CollateralFactorsPage() {
         <section id="how-it-works-together" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">How It Works Together</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            AMM Market separates collateral admission, valuation, aggregate borrowable capacity, and
+            Avana separates collateral admission, valuation, aggregate borrowable capacity, and
             liquidation execution into a single coherent flow. Each LP position is priced on its own,
             the resulting borrowable value is summed at the user level, and the Hub applies protocol-wide
             credit constraints on top of that aggregate result.
@@ -419,7 +419,7 @@ export default function CollateralFactorsPage() {
       {/* Right scroll-spy sidebar */}
       <ScrollSpySidebar 
         sections={sections} 
-        pageSummary="How AMM Market values LP positions, aggregates borrowable capacity, and enforces collateral factors through the Hub."
+        pageSummary="How Avana values LP positions, aggregates borrowable capacity, and enforces collateral factors through the Hub."
         sectionColor="violet"
       />
     </div>

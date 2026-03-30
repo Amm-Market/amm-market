@@ -22,11 +22,10 @@ export default function DevelopersSection() {
       <div className="relative z-10 mx-8 my-8 bg-white rounded-3xl p-8 shadow-lg">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="lg:w-1/2">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 leading-tight">Launch v4 on Mini</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 leading-tight">Build on Avana</h2>
 
             <p className="text-gray-600 mb-8 text-sm sm:text-base">
-              Our platform is open to all sizes of developers, from solo-coders to a group of hackers to globally-scaled
-              teams to build extensible Uniswap v4 hooks on top of Dex Mini Protocol.
+              Avana is open to developers of every size, from solo builders to full protocol teams shipping LP-aware tooling on top of Aave v4.
             </p>
 
             <div className="space-y-4">
@@ -139,4 +138,3 @@ export default function DevelopersSection() {
     </div>
   )
 }
-

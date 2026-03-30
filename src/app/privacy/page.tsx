@@ -30,11 +30,11 @@ export default function PrivacyPage() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-12 lg:gap-24">
           {/* Main content */}
           <div className="site-editorial-content max-w-3xl [&_strong]:font-semibold [&_strong]:text-gray-900 [&_h3]:mt-10 [&_h3]:mb-4 [&_h4]:mt-6 [&_h4]:mb-3 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_li]:mb-2 [&_a]:text-blue-600 [&_a]:hover:underline">
-            <p className="text-lg font-medium text-gray-900">Amm Market Privacy Policy</p>
+            <p className="text-lg font-medium text-gray-900">Avana Privacy Policy</p>
             <p><em className="text-gray-500">Last Revised: January 18, 2026</em></p>
 
             <p>
-              This Privacy Policy (&quot;Privacy Policy&quot;) explains how Amm Market (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) collects, uses and discloses information that we obtain about visitors (&quot;you&quot; and &quot;your&quot;) who visit the{" "}
+              This Privacy Policy (&quot;Privacy Policy&quot;) explains how Avana (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) collects, uses and discloses information that we obtain about visitors (&quot;you&quot; and &quot;your&quot;) who visit the{" "}
               <Link href="https://ammmarket.finance">https://ammmarket.finance</Link> and{" "}
               <Link href="https://docs.ammmarket.finance">https://docs.ammmarket.finance</Link>{" "}
               websites (the &quot;Websites&quot;), which are maintained by us, and such other products and services related to the Websites that may be offered by us from time to time (collectively, the &quot;Services&quot;).
@@ -186,7 +186,7 @@ export default function PrivacyPage() {
 
             <h3 id="email-marketing">Email Marketing</h3>
             <p>
-              We, or third parties, may use your Personal Information to contact you with newsletters, marketing or promotional materials and other information that may be of interest to you. In particular, Amm Market may receive the Personal Information you provide on the Websites and contact you about Amm Market. You may opt-out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email sent by us or on our behalf or by contacting us.
+              We, or third parties, may use your Personal Information to contact you with newsletters, marketing or promotional materials and other information that may be of interest to you. In particular, Avana may receive the Personal Information you provide on the Websites and contact you about Avana. You may opt-out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email sent by us or on our behalf or by contacting us.
             </p>
 
             <p>
