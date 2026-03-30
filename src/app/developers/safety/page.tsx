@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Safety Mechanisms - Risk Framework",
   description:
-    "AMM Market Risk Framework - protocol-wide risk management across the Hub and LP Collateral Spokes, including roles, timelocked updates, and emergency controls.",
+    "Avana Risk Framework - protocol-wide risk management across the Hub and LP Collateral Spokes, including roles, timelocked updates, and emergency controls.",
 }
 
 const sections = [
@@ -48,7 +48,7 @@ const corePrinciples = [
 
 const roles = [
   {
-    title: "AMM Market Risk Initiator",
+    title: "Avana Risk Initiator",
     summary:
       "The primary recommending authority for routine risk updates across the Hub and LP Collateral Spokes.",
     responsibilities: [
@@ -59,7 +59,7 @@ const roles = [
     ],
   },
   {
-    title: "AMM Market Risk Guardian",
+    title: "Avana Risk Guardian",
     summary:
       "The independent review and veto layer that preserves integrity, consistency, and execution safety.",
     responsibilities: [
@@ -70,7 +70,7 @@ const roles = [
     ],
   },
   {
-    title: "AMM Market Risk Defender",
+    title: "Avana Risk Defender",
     summary:
       "The narrow emergency containment role for incidents where the normal timelocked process would create unacceptable exposure.",
     responsibilities: [
@@ -194,30 +194,30 @@ export default function RiskFrameworkPage() {
 
           title="Risk Framework"
 
-          description="Protocol-wide operating rules for risk management across the AMM Market Hub and LP Collateral Spokes."
+          description="Protocol-wide operating rules for risk management across the Avana Hub and LP Collateral Spokes."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            The AMM Market Risk Framework is the protocol-wide operating system for risk parameter
-            management across the AMM Market Hub and all LP Collateral Spokes. It governs how the
+            The Avana Risk Framework is the protocol-wide operating system for risk parameter
+            management across the Avana Hub and all LP Collateral Spokes. It governs how the
             protocol interprets market data and protocol state, including circuit breakers, spot
             price, utilization, liquidity pool depth, collateral concentration, volatility, peg
             stability, proof-of-reserves inputs, supply and borrow caps, LT/LTV settings, interest
             rate models, market status, portfolio composition, and position health.
           </p>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            AMM Market is not a generic lending market. It is an LP-as-collateral protocol built on
+            Avana is not a generic lending market. It is an LP-as-collateral protocol built on
             Aave v4 infrastructure, supporting stable LPs, correlated-asset LPs, weighted pools,
             concentrated liquidity positions, and other AMM designs through dedicated spokes. Those
             markets do not share the same valuation logic, liquidation path, or failure modes, so
             the framework exists to manage that complexity with clear operating rules.
           </p>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            The framework is built around three deliberately separated roles: the AMM Market Risk
-            Initiator, the AMM Market Risk Guardian, and the AMM Market Risk Defender. The actor
+            The framework is built around three deliberately separated roles: the Avana Risk
+            Initiator, the Avana Risk Guardian, and the Avana Risk Defender. The actor
             that proposes changes should not be the same actor that independently reviews them, and
             emergency containment should remain narrower than routine risk management.
           </p>
@@ -404,7 +404,7 @@ export default function RiskFrameworkPage() {
 
       <ScrollSpySidebar
         sections={sections}
-        pageSummary="Protocol-wide operating rules for risk management across the AMM Market Hub and LP Collateral Spokes."
+        pageSummary="Protocol-wide operating rules for risk management across the Avana Hub and LP Collateral Spokes."
         sectionColor="rose"
       />
     </div>

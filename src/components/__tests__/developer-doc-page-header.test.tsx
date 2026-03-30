@@ -3,10 +3,6 @@ import userEvent from "@testing-library/user-event"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
-vi.mock("gt-next/client", () => ({
-  useGT: () => (value: string) => value,
-}))
-
 describe("DeveloperDocPageHeader", () => {
   beforeEach(() => {
     vi.spyOn(URL, "createObjectURL").mockReturnValue("blob:test")

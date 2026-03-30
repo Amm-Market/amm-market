@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Liquidation Examples",
   description:
-    "Illustrative liquidation examples for AMM Market. Compare how fungible LPs, concentrated liquidity, and multi-position accounts can be unwound under the canonical framework.",
+    "Illustrative liquidation examples for Avana. Compare how fungible LPs, concentrated liquidity, and multi-position accounts can be unwound under the canonical framework.",
 }
 
 const sections = [
@@ -48,7 +48,7 @@ export default function LiquidationExamplesPage() {
             .
           </p>
           <p className="text-sm text-gray-600">
-            In every case, AMM Market values collateral conservatively, repays debt into the credit
+            In every case, Avana values collateral conservatively, repays debt into the credit
             layer, unwinds the LP position through a supported path, and returns residual value after
             execution costs and liquidation premium are settled.
           </p>

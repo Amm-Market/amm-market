@@ -1,7 +1,11 @@
 import { ImageResponse } from 'next/og'
 import { NextRequest } from 'next/server'
+import { DEFAULT_OG_SUBTITLE, SITE_NAME, SITE_URL } from '@/lib/site'
 
-export const runtime = 'edge'
+const SITE_DOMAIN = new URL(SITE_URL).host
+const DEFAULT_OG_TITLE = SITE_NAME
+
+export const runtime = 'nodejs'
 
 /**
  * Dynamic OG Image Generator
@@ -12,8 +16,8 @@ export const runtime = 'edge'
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   
-  const title = searchParams.get('title') || 'AMM Market'
-  const subtitle = searchParams.get('subtitle') || 'Borrow Against LP Positions on Aave v4'
+  const title = searchParams.get('title') || DEFAULT_OG_TITLE
+  const subtitle = searchParams.get('subtitle') || DEFAULT_OG_SUBTITLE
   const type = searchParams.get('type') || 'default'
   
   // Type-specific styling
@@ -87,7 +91,7 @@ export async function GET(request: NextRequest) {
             marginBottom: '40px',
           }}
         >
-          {/* Simple AMM logo representation */}
+          {/* Simple Avana logo representation */}
           <div
             style={{
               width: '64px',
@@ -109,7 +113,7 @@ export async function GET(request: NextRequest) {
               color: '#1f2937',
             }}
           >
-            AMM Market
+            {SITE_NAME}
           </span>
         </div>
         
@@ -152,7 +156,7 @@ export async function GET(request: NextRequest) {
           }}
         >
           <span style={{ fontSize: '20px', color: '#9ca3af' }}>
-            ammmarket.xyz
+            {SITE_DOMAIN}
           </span>
           <div
             style={{

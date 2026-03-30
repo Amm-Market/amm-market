@@ -4,7 +4,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Glossary",
-  description: "DeFi glossary for AMM Market - definitions of Spoke, Hub, LP NFT, collateral factor, debt shares, liquidation, oracle, and other protocol terms.",
+  description: "DeFi glossary for Avana - definitions of Spoke, Hub, LP NFT, collateral factor, debt shares, liquidation, oracle, and other protocol terms.",
 }
 
 const sections = [
@@ -21,7 +21,7 @@ const glossaryTerms = {
     {
       term: "Borrow Spoke",
       definition:
-        "The borrower-facing AMM Market spoke that receives LP collateral, values positions, tracks debt, and coordinates borrowing and liquidation against Hub liquidity.",
+        "The borrower-facing Avana spoke that receives LP collateral, values positions, tracks debt, and coordinates borrowing and liquidation against Hub liquidity.",
     },
     {
       term: "Invest Spoke",
@@ -36,7 +36,7 @@ const glossaryTerms = {
     {
       term: "Hub-and-Spoke Architecture",
       definition:
-        "A design where shared capital lives in the Hub while collateral-specific logic is isolated in spokes. AMM Market uses this model because LP collateral needs venue-specific valuation and liquidation behavior.",
+        "A design where shared capital lives in the Hub while collateral-specific logic is isolated in spokes. Avana uses this model because LP collateral needs venue-specific valuation and liquidation behavior.",
     },
     {
       term: "Liquidation Node",
@@ -68,7 +68,7 @@ const glossaryTerms = {
     {
       term: "Loan-to-Value (LTV)",
       definition:
-        "The borrowing ratio associated with collateral after AMM Market’s position valuation and pool-specific risk controls have been applied.",
+        "The borrowing ratio associated with collateral after Avana’s position valuation and pool-specific risk controls have been applied.",
     },
   ],
   debtAndInterest: [
@@ -119,7 +119,7 @@ const glossaryTerms = {
     {
       term: "Oracle",
       definition:
-        "AMM Market’s valuation engine for LP collateral. It combines external asset prices, LP position reconstruction, and recoverable-value safeguards.",
+        "Avana’s valuation engine for LP collateral. It combines external asset prices, LP position reconstruction, and recoverable-value safeguards.",
     },
     {
       term: "Recoverable Value",
@@ -133,7 +133,7 @@ const glossaryTerms = {
     },
   ],
   metrics: [
-    { term: "TVL", definition: "Total value of assets supplied as LP collateral or capital across AMM Market-connected components." },
+    { term: "TVL", definition: "Total value of assets supplied as LP collateral or capital across Avana-connected components." },
     { term: "Outstanding Debt", definition: "The amount currently borrowed against approved collateral positions." },
     { term: "Borrow Utilization", definition: "The share of available Hub liquidity that has been drawn by borrowers." },
     { term: "Borrowing Headroom", definition: "The difference between a user’s current debt and remaining aggregate borrowing capacity inside a Borrow Spoke." },
@@ -296,9 +296,9 @@ export default function GlossaryPage() {
           </h2>
           <div className="border-l-4 border-amber-400 pl-4">
             <ul className="text-gray-600 text-sm space-y-2">
-              <li><strong>No Investment Advice:</strong> AMM Market is a software protocol. This documentation does not constitute investment advice.</li>
+              <li><strong>No Investment Advice:</strong> Avana is a software protocol. This documentation does not constitute investment advice.</li>
               <li><strong>Risk of Loss:</strong> Users can lose funds through smart contract vulnerabilities, market volatility, liquidation, or oracle manipulation.</li>
-              <li><strong>Regulatory Status:</strong> The regulatory status of AMM Market and its tokens (if any) is not guaranteed and may vary by jurisdiction.</li>
+              <li><strong>Regulatory Status:</strong> The regulatory status of Avana and its tokens (if any) is not guaranteed and may vary by jurisdiction.</li>
               <li><strong>No Warranty:</strong> The software is provided &quot;as is&quot; without warranty of any kind.</li>
             </ul>
           </div>

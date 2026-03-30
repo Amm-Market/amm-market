@@ -20,24 +20,24 @@ export default function LPCollateralGuidePage() {
     <BlogPostLayout
       title="Beginner's Guide to LP Collateral: Risks and Rewards"
       date="January 19, 2026"
-      description="Liquidity providing is one of the most popular ways to earn yield in DeFi. Learn how Amm Market lets you use LP positions as collateral."
+      description="Liquidity providing is one of the most popular ways to earn yield in DeFi. Learn how Avana lets you use LP positions as collateral."
       image="/images/blog/lp-collateral-guide.png"
       tableOfContents={tableOfContents}
       prevPost={{
         slug: "integration-guide",
-        title: "Building on AMM Market: Integration Guide for Developers",
+        title: "Building on Avana: Integration Guide for Developers",
         date: "January 20, 2026",
       }}
       nextPost={{
-        slug: "amm-markets-lp-collateral",
-        title: "AMM Markets Empowering Liquidity Providers With Collateral",
+        slug: "avana-lp-collateral",
+        title: "Avana Empowering Liquidity Providers With Collateral",
         date: "January 18, 2026",
       }}
     >
       {/* Introduction */}
       <p className="text-lg text-gray-700 leading-relaxed mb-6">
         Providing liquidity has become one of the simplest ways to earn passive yield in DeFi — but what if your LP 
-        tokens could do more than sit in a pool? Amm Market lets you use those LP positions as collateral to borrow 
+        tokens could do more than sit in a pool? Avana lets you use those LP positions as collateral to borrow 
         against them, unlocking capital while your liquidity keeps earning. Here&apos;s a jargon-free primer on the 
         essentials every beginner should know.
       </p>
@@ -45,7 +45,7 @@ export default function LPCollateralGuidePage() {
       <p className="text-gray-700 leading-relaxed mb-6">
         Liquidity providing is one of the most popular ways to earn yield in DeFi, but for many users LP tokens still 
         feel passive. Once funds are deposited into a pool, the position earns fees, but the capital itself often sits 
-        locked until withdrawn. Amm Market changes that dynamic by allowing LP positions to be used as collateral for 
+        locked until withdrawn. Avana changes that dynamic by allowing LP positions to be used as collateral for 
         borrowing, unlocking liquidity while keeping positions active. For new users, understanding how this works and 
         what risks are involved is essential.
       </p>
@@ -56,13 +56,13 @@ export default function LPCollateralGuidePage() {
           An LP position (e.g., a Uniswap V3/Uniswap V4 or Balancer position) represents two things: the principal 
           tokens you deposited and the trading fees you&apos;ve earned over time. In concentrated-liquidity pools it also 
           carries a &quot;price range&quot; (ticks) that affects exposure. That combination—principal + accrued fees + range—is 
-          what Amm Market treats as the collateral asset.
+          what Avana treats as the collateral asset.
         </p>
         <p className="text-gray-700 leading-relaxed">
           An LP position is not just two tokens sitting in a pool. It represents principal liquidity combined with 
           accumulated trading fees and, in the case of concentrated liquidity pools like Uniswap V3 or V4, a defined 
           price range. That means the value of an LP position changes over time based on price movement, fee generation, 
-          and whether liquidity remains in range. Amm Market is built specifically to understand these factors rather 
+          and whether liquidity remains in range. Avana is built specifically to understand these factors rather 
           than treating LP tokens like simple fungible assets.
         </p>
       </section>
@@ -71,12 +71,12 @@ export default function LPCollateralGuidePage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Why treat LP tokens differently from plain ERC-20s?</h2>
         <p className="text-gray-700 leading-relaxed mb-4">
           Unlike a vanilla token, an LP&apos;s value changes with price moves inside or outside your chosen range and with 
-          fee accrual. Traditional lending markets often can&apos;t account for those dynamics. Amm Market&apos;s Spoke model 
+          fee accrual. Traditional lending markets often can&apos;t account for those dynamics. Avana&apos;s Spoke model 
           understands the nuance: it values your LP position in real time and sets borrowing limits accordingly.
         </p>
         <p className="text-gray-700 leading-relaxed">
-          When a user deposits an LP position into Amm Market, the protocol evaluates its real time value using on chain 
-          pool data and price oracles. Based on that valuation, Amm Market determines how much the user can safely borrow. 
+          When a user deposits an LP position into Avana, the protocol evaluates its real time value using on chain 
+          pool data and price oracles. Based on that valuation, Avana determines how much the user can safely borrow. 
           This borrowing power is expressed as a loan to value ratio, or LTV. A lower LTV means more safety and a larger 
           buffer against price changes. A higher LTV allows more borrowing but increases liquidation risk.
         </p>
@@ -90,7 +90,7 @@ export default function LPCollateralGuidePage() {
             <h3 className="font-semibold text-indigo-900 mb-2">LTV (Loan-to-Value)</h3>
             <p className="text-gray-700">
               This is the percentage of your LP&apos;s value you can borrow. A conservative LTV gives you more buffer against 
-              price swings. Amm Market tunes LTVs per position based on pool volatility and oracle confidence.
+              price swings. Avana tunes LTVs per position based on pool volatility and oracle confidence.
             </p>
           </div>
 
@@ -100,7 +100,7 @@ export default function LPCollateralGuidePage() {
               When token prices move, your LP can be worth less than simply holding the tokens separately. IL affects your 
               collateral value and therefore your available borrowing power. One of the most common concerns for LPs is 
               impermanent loss. When token prices move relative to each other, the LP position may be worth less than 
-              holding the tokens outright. This directly impacts the value of LP collateral. Amm Market accounts for this 
+              holding the tokens outright. This directly impacts the value of LP collateral. Avana accounts for this 
               by adjusting collateral factors based on pool volatility and price behavior, helping reduce the chance of 
               sudden undercollateralization.
             </p>
@@ -110,9 +110,9 @@ export default function LPCollateralGuidePage() {
             <h3 className="font-semibold text-red-900 mb-2">Liquidation</h3>
             <p className="text-gray-700">
               If the collateral value falls so your debt exceeds allowed LTV, your position may be partially liquidated. 
-              Amm Market&apos;s liquidations aim to be precise — only the portion necessary is seized — and are driven by 
+              Avana&apos;s liquidations aim to be precise — only the portion necessary is seized — and are driven by 
               oracle-backed health checks. If the value of the LP position falls and the loan exceeds safe thresholds, 
-              the position can be partially liquidated to repay debt and protect the system. Amm Market is designed to 
+              the position can be partially liquidated to repay debt and protect the system. Avana is designed to 
               liquidate only what is necessary rather than fully unwinding a position. This makes the process more 
               predictable and less punitive for users.
             </p>
@@ -121,7 +121,7 @@ export default function LPCollateralGuidePage() {
           <div className="bg-green-50 border-l-4 border-green-500 p-5 rounded-r-lg">
             <h3 className="font-semibold text-green-900 mb-2">Fee harvesting</h3>
             <p className="text-gray-700">
-              Good news — you can collect trading fees while your LP is collateralized. Amm Market exposes a &quot;collect fees&quot; 
+              Good news — you can collect trading fees while your LP is collateralized. Avana exposes a &quot;collect fees&quot; 
               action so you don&apos;t need to unwind your loan to claim rewards. A major advantage of LP collateralization is 
               fee harvesting. Even while an LP position is used as collateral, users can still collect trading fees. This 
               means the position continues to generate yield while also unlocking borrowing power, creating a more capital 
@@ -140,7 +140,7 @@ export default function LPCollateralGuidePage() {
               <span className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">1</span>
               <div className="pt-1">
                 <p className="text-gray-700">
-                  <strong className="text-gray-900">Deposit LP NFT</strong> into Amm Market Spoke (it stays in the pool earning fees).
+                  <strong className="text-gray-900">Deposit LP NFT</strong> into Avana Spoke (it stays in the pool earning fees).
                 </p>
               </div>
             </li>
@@ -204,7 +204,7 @@ export default function LPCollateralGuidePage() {
                 </svg>
               </span>
               <p className="text-gray-700">
-                <strong className="text-gray-900">Monitor health factor</strong> and enable automated alerts — Amm Market&apos;s dashboard and Mini AI help with this.
+                <strong className="text-gray-900">Monitor health factor</strong> and enable automated alerts. Avana&apos;s dashboard is designed to keep those signals easy to read.
               </p>
             </li>
             <li className="flex items-start gap-3">
@@ -222,7 +222,7 @@ export default function LPCollateralGuidePage() {
 
         <p className="text-gray-700 leading-relaxed mt-6">
           For beginners, the safest approach is to borrow conservatively, monitor position health, and avoid leverage 
-          until comfortable with how LP valuations change. Amm Market is designed to make LP collateral safer and more 
+          until comfortable with how LP valuations change. Avana is designed to make LP collateral safer and more 
           transparent, but understanding the fundamentals remains the most important protection.
         </p>
       </section>
