@@ -115,9 +115,9 @@ export default function BrandPage() {
         <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')]" />
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 w-full">
-          <h1 className="text-4xl md:text-6xl text-gray-900 mb-6 leading-tight">
+          <h1 className="type-display-title text-gray-900 mb-6">
             Dex Mini<br />
-            <strong className="font-serif italic text-[#0048ba]">Brand Kit</strong>
+            <strong className="font-black italic tracking-[-0.02em] text-[#0048ba]">Brand Kit</strong>
           </h1>
           <button className="inline-flex items-center gap-2 px-6 py-4 bg-gray-900 text-white rounded-2xl font-medium text-lg shadow-lg shadow-gray-900/10 hover:bg-gray-800 hover:shadow-xl hover:shadow-gray-900/15 hover:-translate-y-0.5 transition-all active:scale-95">
             Download Brand Kit
@@ -132,8 +132,8 @@ export default function BrandPage() {
           {/* Logo Section - 01 */}
           <section className="py-12 md:py-16">
             <div className="flex items-end gap-5 mb-8 md:mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Logo</h2>
-              <small className="mb-1 font-mono text-gray-500">01</small>
+              <h2 className="type-marketing-section-title text-gray-900">Logo</h2>
+              <small className="type-meta-label text-gray-500">01</small>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-start">
@@ -211,18 +211,18 @@ export default function BrandPage() {
           {/* Typography Section - 02 */}
           <section className="py-12 md:py-16">
             <div className="flex items-end gap-5 mb-8 md:mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Typography</h2>
-              <small className="mb-1 font-mono text-gray-500">02</small>
+              <h2 className="type-marketing-section-title text-gray-900">Typography</h2>
+              <small className="type-meta-label text-gray-500">02</small>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-start">
               {/* Left - Description */}
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-gray-900">Inter</h3>
+                <h3 className="text-xl font-semibold text-gray-900">Diatype</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
-                  Our primary typeface. A modern, highly legible sans-serif designed for screens. 
-                  Inter features a tall x-height for improved readability at small sizes and includes 
-                  a wide range of weights for versatile typography.
+                  Our primary typeface. The live system uses static Diatype cuts at Regular 400,
+                  Medium 500, Bold 700, and Black 900 so the site reads denser and more intentional
+                  than the previous variable-first setup.
                 </p>
               </div>
 
@@ -239,16 +239,17 @@ export default function BrandPage() {
             {/* Secondary font */}
             <div className="grid md:grid-cols-2 gap-8 items-start mt-8">
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-gray-900">Playfair Display</h3>
+                <h3 className="text-xl font-semibold text-gray-900">Outfit</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
-                  Used for emphasis. With its high contrast strokes and elegant serifs, 
-                  Playfair Display adds personality and sophistication to headlines and accent text.
+                  Backup typeface only. The fallback stack is limited to static Outfit Regular,
+                  Medium, and Bold so the site stays close to the Diatype rhythm if the primary face
+                  ever fails to load.
                 </p>
               </div>
 
               <div className="relative flex flex-col gap-5 md:border-b-0">
                 <div className="w-full leading-none text-gray-900 overflow-hidden">
-                  <div className="text-[120px] md:text-[160px] font-serif italic whitespace-nowrap tracking-[-0.02em]">
+                  <div className="text-[120px] md:text-[160px] font-semibold italic whitespace-nowrap tracking-[-0.02em]">
                     AaBbCc
                   </div>
                 </div>
@@ -262,8 +263,8 @@ export default function BrandPage() {
           {/* Color Section - 03 */}
           <section className="py-12 md:py-16">
             <div className="flex items-end gap-5 mb-8 md:mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Color</h2>
-              <small className="mb-1 font-mono text-gray-500">03</small>
+              <h2 className="type-marketing-section-title text-gray-900">Color</h2>
+              <small className="type-meta-label text-gray-500">03</small>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-start">
@@ -314,8 +315,8 @@ export default function BrandPage() {
           {/* Concept Section - 04 */}
           <section className="py-12 md:py-16">
             <div className="flex items-end gap-5 mb-8 md:mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Concept</h2>
-              <small className="mb-1 font-mono text-gray-500">04</small>
+              <h2 className="type-marketing-section-title text-gray-900">Concept</h2>
+              <small className="type-meta-label text-gray-500">04</small>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -430,15 +431,15 @@ export default function BrandPage() {
           {/* Logo Guidelines Section - 05 */}
           <section className="py-12 md:py-16">
             <div className="flex items-end gap-5 mb-8 md:mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Logo Guidelines</h2>
-              <small className="mb-1 font-mono text-gray-500">05</small>
+              <h2 className="type-marketing-section-title text-gray-900">Logo Guidelines</h2>
+              <small className="type-meta-label text-gray-500">05</small>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-start mb-12">
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-gray-900">Do's and Don'ts</h3>
+                <h3 className="text-xl font-semibold text-gray-900">Do&apos;s and Don&apos;ts</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
-                  If you're ever tempted to try something creative with this logo — don't. 
+                  If you&apos;re ever tempted to try something creative with this logo, don&apos;t.
                   Channel your creative spark into whatever the logo will live on instead.
                 </p>
               </div>
@@ -503,21 +504,21 @@ export default function BrandPage() {
           {/* FAQ Section - 06 */}
           <section className="py-12 md:py-16 min-h-[50vh]">
             <div className="flex items-end gap-5 mb-8 md:mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">FAQ</h2>
-              <small className="mb-1 font-mono text-gray-500">06</small>
+              <h2 className="type-marketing-section-title text-gray-900">FAQ</h2>
+              <small className="type-meta-label text-gray-500">06</small>
             </div>
 
             <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
               <div className="flex flex-col gap-3">
                 <h3 className="text-lg font-semibold text-gray-900">Why do I need to follow these guidelines?</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
-                  We don't want anyone to misrepresent Dex Mini's brand. Keeping things consistent 
+                  We don&apos;t want anyone to misrepresent Dex Mini&apos;s brand. Keeping things consistent
                   instills recognizability and trust.
                 </p>
               </div>
 
               <div className="flex flex-col gap-3">
-                <h3 className="text-lg font-semibold text-gray-900">Can I use a different logo color to match my project's theme?</h3>
+                <h3 className="text-lg font-semibold text-gray-900">Can I use a different logo color to match my project&apos;s theme?</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
                   Tempting, but no. Swapping out our colors compromises the integrity of our brand.
                 </p>

@@ -22,7 +22,7 @@ export default function PrivacyPage() {
       <article className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="flex flex-col items-start gap-6 mb-12">
-          <h1 className="type-page-title font-serif italic text-gray-900">Privacy Policy</h1>
+          <h1 className="type-page-title italic text-gray-900">Privacy Policy</h1>
           <hr className="w-full border-gray-200" />
         </div>
 
