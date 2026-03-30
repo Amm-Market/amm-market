@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Invest Spoke",
   description:
-    "AMM Market Invest Spoke - capital entry point, Hub liquidity routing, risk-adjusted yield, and dynamic risk controls for LP-collateral lending.",
+    "Avana Invest Spoke - capital entry point, Hub liquidity routing, risk-adjusted yield, and dynamic risk controls for LP-collateral lending.",
 }
 
 const sections = [
@@ -49,7 +49,7 @@ export default function InvestSpokePage() {
 
           title="Invest Spoke"
 
-          description="The capital-entry side of AMM Market that routes lender liquidity into LP-collateral borrow markets."
+          description="The capital-entry side of Avana that routes lender liquidity into LP-collateral borrow markets."
 
         />
 
@@ -153,7 +153,7 @@ export default function InvestSpokePage() {
 
           <p className="mt-6 text-sm leading-relaxed text-gray-600">
             By keeping lender capital in Invest Spoke while letting Borrow Spokes adjust to
-            collateral-specific market conditions, AMM Market can scale capital formation without
+            collateral-specific market conditions, Avana can scale capital formation without
             flattening LP markets into a one-size-fits-all risk model.
           </p>
         </section>
@@ -161,7 +161,7 @@ export default function InvestSpokePage() {
 
       <ScrollSpySidebar
         sections={sections}
-        pageSummary="How lender capital enters AMM Market and is routed through the Hub to LP-collateral borrow spokes."
+        pageSummary="How lender capital enters Avana and is routed through the Hub to LP-collateral borrow spokes."
         sectionColor="violet"
       />
     </div>

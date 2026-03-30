@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Legal Disclaimer",
-  description: "AMM Market legal disclaimer - general disclaimer, no financial advice, risks, warranties, and limitation of liability.",
+  description: "Avana legal disclaimer - general disclaimer, no financial advice, risks, warranties, and limitation of liability.",
 }
 
 const sections = [
@@ -33,7 +33,7 @@ export default function LegalDisclaimerPage() {
 
         <p className="text-gray-600 text-sm border-l-4 border-amber-400 pl-3 mb-8">
           <strong>Important:</strong> Please read this disclaimer carefully before using 
-          AMM Market. By using the protocol, you acknowledge that you have read, understood, 
+          Avana. By using the protocol, you acknowledge that you have read, understood, 
           and agree to be bound by these terms. For complete terms, please review our{" "}
           <Link href="/terms" className="text-blue-600 underline hover:text-blue-700">Terms of Service</Link> and{" "}
           <Link href="/privacy" className="text-blue-600 underline hover:text-blue-700">Privacy Policy</Link>.
@@ -44,13 +44,13 @@ export default function LegalDisclaimerPage() {
           <p className="text-gray-600 leading-relaxed mb-4">
             This disclaimer supplements and should be read in conjunction with our full{" "}
             <Link href="/terms" className="text-blue-600 hover:underline">Terms of Service</Link>. 
-            The Terms of Service constitute a legally binding agreement between you and AMM Market 
+            The Terms of Service constitute a legally binding agreement between you and Avana 
             concerning your access to and use of the protocol and related services.
           </p>
           <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
             <p className="text-gray-700 text-sm">
               <strong>From our homepage:</strong> &quot;Borrowing against LP tokens involves risk, including 
-              liquidation if market conditions move against your position. AMM Market does not custody 
+              liquidation if market conditions move against your position. Avana does not custody 
               your funds, rehypothecate LP positions, or alter how your liquidity operates on underlying 
               AMMs. Only borrow amounts you are comfortable maintaining through market volatility.&quot;
             </p>
@@ -60,12 +60,12 @@ export default function LegalDisclaimerPage() {
         <section id="general-disclaimer" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">General Disclaimer</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            AMM Market is an experimental decentralized finance protocol. The protocol is 
+            Avana is an experimental decentralized finance protocol. The protocol is 
             provided &quot;as is&quot; without any representations or warranties of any kind, either 
             express or implied.
           </p>
           <p className="text-gray-600 leading-relaxed mb-4">
-            As stated in our Terms of Service (Section 2): &quot;The AMM Market Protocol includes 
+            As stated in our Terms of Service (Section 2): &quot;The Avana Protocol includes 
             functionality whereby certain open source smart contracts can receive and hold certain 
             digital currency or other crypto assets. There is a risk that the open source software, 
             including any upgrades, may introduce bugs, viruses, Trojan horses, or other vulnerabilities 
@@ -105,7 +105,7 @@ export default function LegalDisclaimerPage() {
         <section id="risks" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Risks</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Section 8 of our Terms of Service outlines the risks associated with using AMM Market:
+            Section 8 of our Terms of Service outlines the risks associated with using Avana:
           </p>
           
           <div className="space-y-4">
@@ -132,7 +132,7 @@ export default function LegalDisclaimerPage() {
             <div className="border-l-4 border-amber-400 pl-3">
               <h3 className="font-semibold text-gray-900 mb-2">Regulatory Uncertainty</h3>
               <p className="text-gray-600 text-sm">
-                &quot;The Services, the AMM Market Protocol and/or any underlying blockchain networks may 
+                &quot;The Services, the Avana Protocol and/or any underlying blockchain networks may 
                 not be available or appropriate for use in all jurisdictions and you may be subject 
                 to legal and regulatory compliance obligations in connection with your use of the 
                 Services in certain jurisdictions.&quot;
@@ -184,7 +184,7 @@ export default function LegalDisclaimerPage() {
           <p className="text-gray-600 leading-relaxed">
             This limitation applies regardless of the theory of liability (contract, tort, 
             strict liability, or otherwise) and even if we have been advised of the possibility 
-            of such damages. Under no circumstances shall AMM Market&apos;s aggregate liability exceed 
+            of such damages. Under no circumstances shall Avana&apos;s aggregate liability exceed 
             one-hundred U.S. dollars ($100.00).
           </p>
         </section>
@@ -199,7 +199,7 @@ export default function LegalDisclaimerPage() {
             <Link href="/terms" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50/50 transition-colors">
               <h3 className="font-semibold text-gray-900 mb-1">Terms of Service</h3>
               <p className="text-gray-600 text-sm">
-                The complete legally binding agreement governing your use of AMM Market, including 
+                The complete legally binding agreement governing your use of Avana, including 
                 eligibility, prohibited activities, intellectual property, dispute resolution, and more.
               </p>
             </Link>
@@ -215,7 +215,7 @@ export default function LegalDisclaimerPage() {
             <Link href="/developers/legal" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50/50 transition-colors">
               <h3 className="font-semibold text-gray-900 mb-1">Restricted Territories</h3>
               <p className="text-gray-600 text-sm">
-                Current list of jurisdictions restricted from accessing AMM Market services.
+                Current list of jurisdictions restricted from accessing Avana services.
               </p>
             </Link>
           </div>

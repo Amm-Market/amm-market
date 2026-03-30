@@ -1,0 +1,15 @@
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20 4L32 36H26.5L23.7 28H16.2L13.3 36H8L20 4Z" fill="black"/>
+  <path d="M17.7 23.4H22.1L19.9 16.7L17.7 23.4Z" fill="white"/>
+  <text
+    x="46"
+    y="26"
+    fill="black"
+    font-family="Diatype, Outfit, Arial, Helvetica, sans-serif"
+    font-size="18"
+    font-weight="700"
+    letter-spacing="-0.04em"
+  >
+    Avana
+  </text>
+</svg>

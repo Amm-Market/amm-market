@@ -1,12 +1,9 @@
-"use client"
-
 /**
- * DeFiTerm - A component that wraps DeFi terminology with an explanatory tooltip.
+ * DeFiTerm - A component that wraps DeFi terminology with an inline definition.
  * 
  * @description
- * Provides contextual tooltips for DeFi jargon to help new users understand
- * complex terminology. Displays a dotted underline to indicate the term has
- * additional information available.
+ * Provides lightweight glossary hints for DeFi jargon using the native `title`
+ * attribute so the term stays accessible without adding client-side tooltip JS.
  * 
  * @example
  * ```tsx
@@ -15,9 +12,6 @@
  * <DeFiTerm term="lp">liquidity provider tokens</DeFiTerm>
  * ```
  */
-
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-
 /**
  * Glossary of DeFi terms and their explanations.
  * Add new terms here as needed.
@@ -44,9 +38,9 @@ const defiGlossary: Record<string, string> = {
   "impermanent-loss": "Impermanent loss occurs when the price ratio of pooled tokens changes. The loss becomes permanent only if you withdraw during unfavorable conditions.",
   
   // Protocol terms
-  spoke: "In Aave v4's Hub-and-Spoke architecture, a Spoke is a specialized market (like AMM Market) that connects to the main Hub for liquidity.",
+  spoke: "In Aave v4's Hub-and-Spoke architecture, a Spoke is a specialized market (like Avana) that connects to the main Hub for liquidity.",
   hub: "The Hub in Aave v4 is the central liquidity layer that connects multiple Spokes, enabling cross-chain liquidity and unified risk management.",
-  oracle: "An oracle provides external data (like asset prices) to smart contracts. AMM Market uses price oracles to value your LP positions accurately.",
+  oracle: "An oracle provides external data (like asset prices) to smart contracts. Avana uses price oracles to value your LP positions accurately.",
   
   // Position terms
   borrow: "Borrowing lets you take a loan against your deposited collateral. You pay interest over time and must repay to withdraw collateral.",
@@ -73,20 +67,12 @@ export function DeFiTerm({ term, children, className = "" }: DeFiTermProps) {
   }
 
   return (
-    <TooltipProvider delayDuration={200}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <span
-            className={`border-b border-dotted border-gray-400 cursor-help hover:border-blue-500 hover:text-blue-600 transition-colors ${className}`}
-          >
-            {children}
-          </span>
-        </TooltipTrigger>
-        <TooltipContent side="top" align="center">
-          {definition}
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <span
+      title={definition}
+      className={`border-b border-dotted border-gray-400 cursor-help hover:border-blue-500 hover:text-blue-600 transition-colors ${className}`}
+    >
+      {children}
+    </span>
   )
 }
 

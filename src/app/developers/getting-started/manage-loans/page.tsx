@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Manage Loans",
   description:
-    "Manage debt against LP collateral in AMM Market by monitoring health, adjusting positions, and staying inside Borrow Spoke and Hub constraints.",
+    "Manage debt against LP collateral in Avana by monitoring health, adjusting positions, and staying inside Borrow Spoke and Hub constraints.",
 }
 
 const sections = [
@@ -33,7 +33,7 @@ export default function ManageLoansPage() {
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="leading-relaxed text-gray-600">
-            A live AMM Market loan is not static. Borrowing headroom changes as LP positions move,
+            A live Avana loan is not static. Borrowing headroom changes as LP positions move,
             fee balances change, markets reprice, and Hub liquidity conditions evolve. Managing a
             loan means treating collateral and debt as a linked position rather than as unrelated
             actions.

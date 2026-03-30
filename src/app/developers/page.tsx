@@ -16,12 +16,12 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Introduction",
   description:
-    "Introduction to AMM Market - LP-backed borrowing on Aave v4, Borrow Spokes, Invest Spoke, and Hub-mediated liquidity.",
+    "Introduction to Avana - LP-backed borrowing on Aave v4, Borrow Spokes, Invest Spoke, and Hub-mediated liquidity.",
 }
 
 const sections = [
   { id: "welcome", title: "Welcome" },
-  { id: "what-is-amm-market", title: "What is AMM Market?" },
+  { id: "what-is-amm-market", title: "What is Avana?" },
   { id: "how-it-works", title: "How It Works" },
   { id: "unlocking-lp-collateral", title: "Why LP Collateral Matters" },
   { id: "architecture", title: "Architecture" },
@@ -182,7 +182,7 @@ export default function DevelopersPage() {
         <section id="welcome" className="scroll-mt-32 pb-10">
           <DeveloperDocPageHeader
             title="Introduction"
-            description="AMM Market turns supported LP positions into borrowable collateral inside Aave v4&apos;s Hub-and-Spoke architecture. This page is the mental-model overview: where LP specific underwriting lives, how shared Hub liquidity is used, and which deeper docs to read next."
+            description="Avana turns supported LP positions into borrowable collateral inside Aave v4&apos;s Hub-and-Spoke architecture. This page is the mental-model overview: where LP specific underwriting lives, how shared Hub liquidity is used, and which deeper docs to read next."
           />
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <Link
@@ -204,8 +204,8 @@ export default function DevelopersPage() {
 
         <section id="what-is-amm-market" className="mt-12 scroll-mt-32">
           <SectionHeader
-            title="What is AMM Market?"
-            description="AMM Market is a lending protocol built for LP collateral that stays active in the underlying AMM. The protocol uses Aave v4&apos;s Hub-and-Spoke model so shared liquidity can stay in the Hub while LP-specific admissibility, valuation, and liquidation logic stays inside the spoke."
+            title="What is Avana?"
+            description="Avana is a lending protocol built for LP collateral that stays active in the underlying AMM. The protocol uses Aave v4&apos;s Hub-and-Spoke model so shared liquidity can stay in the Hub while LP-specific admissibility, valuation, and liquidation logic stays inside the spoke."
           />
 
           <div className="grid gap-4 md:grid-cols-2">
@@ -289,7 +289,7 @@ export default function DevelopersPage() {
         <section id="architecture" className="mt-12 scroll-mt-32">
           <SectionHeader
             title="Architecture"
-            description="AMM Market separates LP-specific underwriting from the shared liquidity layer. The three blocks below are the simplest way to read that split."
+            description="Avana separates LP-specific underwriting from the shared liquidity layer. The three blocks below are the simplest way to read that split."
           />
 
           <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
@@ -380,7 +380,7 @@ export default function DevelopersPage() {
 
       <ScrollSpySidebar
         sections={sections}
-        pageSummary="High-level context for LP-backed borrowing, shared Hub liquidity, and the spoke-specific logic used by AMM Market."
+        pageSummary="High-level context for LP-backed borrowing, shared Hub liquidity, and the spoke-specific logic used by Avana."
         sectionColor="blue"
       />
     </div>

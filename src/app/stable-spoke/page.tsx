@@ -38,7 +38,7 @@ const stableSpokeFaqItems: InlineFaqItem[] = [
 
 export const metadata: Metadata = {
   title: "Stable Spoke - Stablecoin LP Collateral",
-  description: "AMM Market Stable Spoke for stablecoin-stablecoin LP positions. Highest LTV ratios and lowest risk for stable pairs.",
+  description: "Avana Stable Spoke for stablecoin-stablecoin LP positions. Highest LTV ratios and lowest risk for stable pairs.",
 }
 
 export default function StableSpokePage() {

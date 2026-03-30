@@ -1,19 +1,28 @@
 import type { Metadata } from "next"
+import { buildOgImagePath, SITE_NAME } from "@/lib/site"
 
 /**
  * Blog section layout with SEO metadata
  */
 export const metadata: Metadata = {
   title: "Blog & Updates",
-  description: "Latest news, technical deep-dives, and updates from the AMM Market team. Learn about DeFi innovations, LP strategies, yield optimization, and protocol development.",
+  description: `Latest news, technical deep-dives, and updates from the ${SITE_NAME} team. Learn about DeFi innovations, LP strategies, yield optimization, and protocol development.`,
   openGraph: {
-    title: "Blog - AMM Market",
-    description: "DeFi insights, LP strategies, and protocol updates from the AMM Market team.",
-    images: ["/og?title=Blog%20%26%20Updates&subtitle=DeFi%20insights%2C%20LP%20strategies%2C%20and%20protocol%20updates&type=blog"],
+    title: `Blog - ${SITE_NAME}`,
+    description: `DeFi insights, LP strategies, and protocol updates from the ${SITE_NAME} team.`,
+    images: [buildOgImagePath({
+      title: "Blog & Updates",
+      subtitle: `DeFi insights, LP strategies, and protocol updates from the ${SITE_NAME} team.`,
+      type: "blog",
+    })],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og?title=Blog%20%26%20Updates&subtitle=DeFi%20insights%2C%20LP%20strategies%2C%20and%20protocol%20updates&type=blog"],
+    images: [buildOgImagePath({
+      title: "Blog & Updates",
+      subtitle: `DeFi insights, LP strategies, and protocol updates from the ${SITE_NAME} team.`,
+      type: "blog",
+    })],
   },
 }
 

@@ -5,10 +5,10 @@ import type { Metadata } from "next"
  */
 export const metadata: Metadata = {
   title: "Early Access - Join the Waitlist",
-  description: "Join the AMM Market early access waitlist. Be among the first to borrow against your LP positions on Aave v4 and unlock liquidity from Uniswap, Curve, and Balancer.",
+  description: "Join the Avana early access waitlist. Be among the first to borrow against your LP positions on Aave v4 and unlock liquidity from Uniswap, Curve, and Balancer.",
   openGraph: {
-    title: "Early Access - AMM Market",
-    description: "Join the waitlist to be first to use AMM Market for LP-backed borrowing.",
+    title: "Early Access - Avana",
+    description: "Join the waitlist to be first to use Avana for LP-backed borrowing.",
   },
 }
 
