@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Legal Disclaimer",
@@ -21,11 +22,14 @@ export default function LegalDisclaimerPage() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
       {/* Main content */}
-      <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Legal Disclaimer</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Legal notices governing use of the protocol and documentation.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Legal Disclaimer"
+
+          description="Legal notices governing use of the protocol and documentation."
+
+        />
 
         <p className="text-gray-600 text-sm border-l-4 border-amber-400 pl-3 mb-8">
           <strong>Important:</strong> Please read this disclaimer carefully before using 
@@ -36,7 +40,7 @@ export default function LegalDisclaimerPage() {
         </p>
 
         <section id="overview" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             This disclaimer supplements and should be read in conjunction with our full{" "}
             <Link href="/terms" className="text-blue-600 hover:underline">Terms of Service</Link>. 
@@ -54,7 +58,7 @@ export default function LegalDisclaimerPage() {
         </section>
 
         <section id="general-disclaimer" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">General Disclaimer</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">General Disclaimer</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             AMM Market is an experimental decentralized finance protocol. The protocol is 
             provided &quot;as is&quot; without any representations or warranties of any kind, either 
@@ -76,7 +80,7 @@ export default function LegalDisclaimerPage() {
         </section>
 
         <section id="no-financial-advice" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">No Financial Advice</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">No Financial Advice</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             As stated prominently in our Terms of Service: &quot;THE SERVICES INCLUDE, AMONG OTHER THINGS, 
             THE INFORMATIONAL RESOURCES, WHICH MAY PROVIDE INFORMATION RELATED TO AMM MARKET. AMM MARKET 
@@ -99,7 +103,7 @@ export default function LegalDisclaimerPage() {
         </section>
 
         <section id="risks" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Risks</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Risks</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             Section 8 of our Terms of Service outlines the risks associated with using AMM Market:
           </p>
@@ -148,7 +152,7 @@ export default function LegalDisclaimerPage() {
         </section>
 
         <section id="no-warranties" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">No Warranties</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">No Warranties</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             As stated in Section 9.1 of our Terms of Service:
           </p>
@@ -165,7 +169,7 @@ export default function LegalDisclaimerPage() {
         </section>
 
         <section id="limitation-of-liability" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Limitation of Liability</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Limitation of Liability</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             As stated in Section 9.2 of our Terms of Service:
           </p>
@@ -186,7 +190,7 @@ export default function LegalDisclaimerPage() {
         </section>
 
         <section id="related-policies" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Related Policies</h2>
+          <h2 className="type-section-title text-gray-900 mb-4">Related Policies</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             For complete legal information, please review the following documents:
           </p>

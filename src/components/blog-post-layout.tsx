@@ -58,13 +58,13 @@ export default function BlogPostLayout({
   nextPost,
 }: BlogPostLayoutProps) {
   return (
-    <div className="container mx-auto px-4 py-4 md:py-8 xl:py-10 sm:px-16 xl:px-20">
+    <div className="site-article-layout container mx-auto px-4 py-4 md:py-8 xl:py-10 sm:px-16 xl:px-20">
       <div className="grid grid-cols-12 gap-4">
         {/* Back button - hidden on mobile */}
         <div className="hidden col-span-12 xl:block lg:col-span-2">
           <Link
             href="/blog"
-            className="text-gray-500 hover:text-gray-900 flex cursor-pointer items-center text-sm transition"
+            className="type-supporting text-gray-500 hover:text-gray-900 flex cursor-pointer items-center transition"
           >
             <ChevronLeft className="w-5 h-5" />
             Back
@@ -82,14 +82,14 @@ export default function BlogPostLayout({
               >
                 Blog
               </Link>
-              <h1 className="text-2xl sm:text-4xl font-bold text-gray-900">
+              <h1 className="type-page-title text-gray-900">
                 {title}
               </h1>
-              <div className="flex space-x-3 text-sm text-gray-500">
+              <div className="type-supporting flex space-x-3 text-gray-500">
                 <p>{date}</p>
               </div>
               {description && (
-                <p className="text-lg text-gray-600">{description}</p>
+                <p className="type-page-lead text-gray-600">{description}</p>
               )}
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function BlogPostLayout({
             {/* Article */}
             <div className="col-span-12 lg:col-span-7 xl:col-span-7">
               <article>
-                <div className="prose prose-gray max-w-none">
+                <div className="site-article-content prose prose-gray max-w-none">
                   {/* Hero image */}
                   {image && (
                     <div className="hidden md:block relative mb-8 w-full aspect-video overflow-hidden rounded-lg border border-gray-200">
@@ -120,7 +120,7 @@ export default function BlogPostLayout({
 
               {/* Mobile share */}
               <div className="block lg:hidden py-8">
-                <div className="text-gray-500 text-sm">Share this article</div>
+                <div className="type-supporting text-gray-500">Share this article</div>
                 <div className="mt-4 flex items-center gap-4">
                   <a
                     aria-label="Share on X"
@@ -164,12 +164,12 @@ export default function BlogPostLayout({
                     <Link href={`/blog/${prevPost.slug}`}>
                       <div className="hover:bg-gray-50 cursor-pointer rounded border border-gray-200 p-6 transition">
                         <div className="space-y-4">
-                          <p className="text-gray-500 text-sm">Previous post</p>
+                          <p className="type-supporting text-gray-500">Previous post</p>
                           <div className="flex flex-col gap-2">
-                            <h4 className="text-gray-900 text-lg">
+                            <h4 className="type-body-copy font-medium text-gray-900">
                               {prevPost.title}
                             </h4>
-                            <p className="text-sm text-gray-500">
+                            <p className="type-supporting text-gray-500">
                               {prevPost.date}
                             </p>
                           </div>
@@ -183,12 +183,12 @@ export default function BlogPostLayout({
                     <Link href={`/blog/${nextPost.slug}`}>
                       <div className="hover:bg-gray-50 cursor-pointer rounded border border-gray-200 p-6 transition text-right">
                         <div className="space-y-4">
-                          <p className="text-gray-500 text-sm">Next post</p>
+                          <p className="type-supporting text-gray-500">Next post</p>
                           <div className="flex flex-col gap-2">
-                            <h4 className="text-gray-900 text-lg">
+                            <h4 className="type-body-copy font-medium text-gray-900">
                               {nextPost.title}
                             </h4>
-                            <p className="text-sm text-gray-500">
+                            <p className="type-supporting text-gray-500">
                               {nextPost.date}
                             </p>
                           </div>

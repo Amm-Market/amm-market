@@ -1,6 +1,7 @@
 import Link from "next/link"
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Getting Started - Deposit LP",
@@ -37,15 +38,17 @@ const supportedFamilies = [
 export default function DepositLPPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Deposit LP</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Deposit is the first step in turning a supported LP position into borrowable capacity
-          inside a Borrow Spoke.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Deposit LP"
+
+          description="Deposit is the first step in turning a supported LP position into borrowable capacity inside a Borrow Spoke."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             A deposit moves an approved LP position into Borrow Spoke custody for collateral
             accounting. The position remains active in the underlying AMM, but the spoke can now
@@ -60,7 +63,7 @@ export default function DepositLPPage() {
         </section>
 
         <section id="deposit-flow" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Deposit Flow</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Deposit Flow</h2>
           <div className="space-y-5">
             <div>
               <h3 className="mb-2 font-semibold text-gray-900">1. Transfer or Approve the LP Position</h3>
@@ -96,7 +99,7 @@ export default function DepositLPPage() {
         </section>
 
         <section id="technical-details" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Technical Details</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Technical Details</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               <strong className="text-gray-900">Position-aware valuation:</strong> the deposit itself
@@ -118,7 +121,7 @@ export default function DepositLPPage() {
         </section>
 
         <section id="supported-lp-tokens" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Supported LP Position Types</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Supported LP Position Types</h2>
           <div className="overflow-x-auto">
             <table className="w-full overflow-hidden rounded-lg border border-gray-200 text-sm">
               <thead className="bg-gray-50">
@@ -149,7 +152,7 @@ export default function DepositLPPage() {
         </section>
 
         <section id="after-deposit" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">After Deposit</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">After Deposit</h2>
           <ul className="space-y-2 text-gray-600">
             <li>Each approved position contributes to aggregate borrowing capacity inside the spoke</li>
             <li>LP principal stays active in the underlying pool and may continue accruing fees</li>

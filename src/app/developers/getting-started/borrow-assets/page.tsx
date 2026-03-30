@@ -1,6 +1,7 @@
 import Link from "next/link"
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Borrow Assets",
@@ -20,15 +21,17 @@ const sections = [
 export default function BorrowAssetsPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Borrow Assets</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Borrow against the aggregate capacity of your approved LP positions while the Hub supplies
-          the shared capital.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Borrow Assets"
+
+          description="Borrow against the aggregate capacity of your approved LP positions while the Hub supplies the shared capital."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Borrowing happens after the Borrow Spoke has admitted and valued your LP positions. When
             you request an asset, the spoke checks your remaining capacity, verifies that the account
@@ -41,7 +44,7 @@ export default function BorrowAssetsPage() {
         </section>
 
         <section id="borrow-checks" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Borrow Checks</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Borrow Checks</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               <strong className="text-gray-900">Position and ownership checks:</strong> the spoke
@@ -65,7 +68,7 @@ export default function BorrowAssetsPage() {
         </section>
 
         <section id="health-check" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Health Check</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Health Check</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             The spoke uses the same valuation engine and risk settings that determine collateral
             factors and liquidation eligibility. Borrowing only succeeds if adjusted collateral value
@@ -93,7 +96,7 @@ export default function BorrowAssetsPage() {
         </section>
 
         <section id="internal-accounting" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Internal Accounting</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Internal Accounting</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               <strong className="text-gray-900">Debt shares:</strong> new debt is recorded through a
@@ -113,7 +116,7 @@ export default function BorrowAssetsPage() {
         </section>
 
         <section id="borrowable-assets" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Borrowable Assets</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Borrowable Assets</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Borrowable assets are a Hub-side operational configuration rather than a permanent
             protocol invariant. In practice, live markets generally start with major stablecoins and
@@ -125,7 +128,7 @@ export default function BorrowAssetsPage() {
         </section>
 
         <section id="borrowing-power" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Borrowing Power</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Borrowing Power</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Borrowing power is the total of all approved LP-position contributions inside the same
             Borrow Spoke. It is not assigned to the pool as a whole and not to the account as an

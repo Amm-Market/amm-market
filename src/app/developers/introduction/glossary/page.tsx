@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Glossary",
@@ -176,14 +177,17 @@ export default function GlossaryPage() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
       {/* Main content */}
-      <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Glossary</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Canonical definitions for protocol-specific and DeFi terminology used throughout the documentation.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Glossary"
+
+          description="Canonical definitions for protocol-specific and DeFi terminology used throughout the documentation."
+
+        />
 
         <section id="core-concepts" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+          <h2 className="type-section-title text-gray-900 mb-6 pb-2 border-b border-gray-200">
             Core Concepts
           </h2>
           <dl className="space-y-4">
@@ -199,7 +203,7 @@ export default function GlossaryPage() {
         </section>
 
         <section id="protocol-components" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+          <h2 className="type-section-title text-gray-900 mb-6 pb-2 border-b border-gray-200">
             LP & Collateral
           </h2>
           <dl className="space-y-4">
@@ -215,7 +219,7 @@ export default function GlossaryPage() {
         </section>
 
         <section id="financial-terms" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+          <h2 className="type-section-title text-gray-900 mb-6 pb-2 border-b border-gray-200">
             Debt & Interest
           </h2>
           <dl className="space-y-4">
@@ -255,7 +259,7 @@ export default function GlossaryPage() {
         </section>
 
         <section id="risk-security" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+          <h2 className="type-section-title text-gray-900 mb-6 pb-2 border-b border-gray-200">
             Risk & Security
           </h2>
           <dl className="space-y-4">
@@ -271,7 +275,7 @@ export default function GlossaryPage() {
         </section>
 
         <section id="metrics" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+          <h2 className="type-section-title text-gray-900 mb-6 pb-2 border-b border-gray-200">
             Metrics
           </h2>
           <dl className="space-y-4">
@@ -287,7 +291,7 @@ export default function GlossaryPage() {
         </section>
 
         <section id="disclaimers" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+          <h2 className="type-section-title text-gray-900 mb-6 pb-2 border-b border-gray-200">
             Disclaimers
           </h2>
           <div className="border-l-4 border-amber-400 pl-4">

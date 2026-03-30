@@ -155,9 +155,13 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
       className="hidden self-start lg:sticky lg:top-44 lg:flex lg:max-h-[calc(100vh-13rem)] lg:min-h-0 lg:overflow-y-auto lg:overscroll-contain lg:pr-2"
     >
       <div className="flex flex-col items-start justify-start gap-0">
+        <p className="type-meta-label mb-3 pl-6 text-gray-500">
+          On this page
+        </p>
+
         {/* Page summary at top */}
         {pageSummary && (
-          <p className="mb-4 max-w-[220px] pl-6 text-xs leading-relaxed text-gray-500">
+          <p className="type-sidebar-summary mb-4 max-w-[220px] pl-6 text-gray-500">
             {pageSummary}
           </p>
         )}
@@ -209,7 +213,7 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
                       : "text-gray-500 hover:text-gray-900 hover:opacity-80"
                   }`}
                 >
-                  <p className="line-clamp-1 text-sm">{section.title}</p>
+                  <p className="type-sidebar-link line-clamp-1">{section.title}</p>
                 </a>
               </div>
             )

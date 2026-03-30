@@ -1,6 +1,7 @@
 import Link from "next/link"
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Claim LP Fees",
@@ -19,15 +20,17 @@ const sections = [
 export default function ClaimLPFeesPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Claim LP Fees</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Claim realized fee income while keeping LP principal active as collateral, as long as the
-          account remains healthy afterwards.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Claim LP Fees"
+
+          description="Claim realized fee income while keeping LP principal active as collateral, as long as the account remains healthy afterwards."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             AMM Market separates principal liquidity from accrued fees in its valuation model. That
             makes it possible to recognize fee income and, when permitted by health checks, release
@@ -39,7 +42,7 @@ export default function ClaimLPFeesPage() {
         </section>
 
         <section id="how-it-works" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">How It Works</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">How It Works</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               The protocol routes a venue-appropriate fee-collection operation for the LP position.
@@ -56,7 +59,7 @@ export default function ClaimLPFeesPage() {
         </section>
 
         <section id="health-checks" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Health Checks</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Health Checks</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             The Borrow Spoke checks health before and after a fee claim because fees can still be
             part of the recognized collateral buffer prior to withdrawal.
@@ -69,7 +72,7 @@ export default function ClaimLPFeesPage() {
         </section>
 
         <section id="fee-accounting" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Fee Accounting</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Fee Accounting</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               Oracle outputs distinguish principal liquidity from accrued fees so the protocol can
@@ -94,7 +97,7 @@ export default function ClaimLPFeesPage() {
         </section>
 
         <section id="key-benefits" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Key Benefits</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Key Benefits</h2>
           <ul className="space-y-2 text-gray-600">
             <li>LP principal can stay productive in the pool</li>
             <li>Earned fees can be realized without fully closing the collateral position</li>

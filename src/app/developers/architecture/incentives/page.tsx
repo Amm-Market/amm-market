@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Incentives Programs",
@@ -18,14 +19,17 @@ const sections = [
 export default function IncentivesPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Incentives Programs</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Optional reward and campaign layer that may sit on top of AMM Market deployments.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Incentives Programs"
+
+          description="Optional reward and campaign layer that may sit on top of AMM Market deployments."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Incentives are not the core protocol. The canonical AMM Market system is still defined by
             LP collateral valuation, Borrow Spoke risk controls, Hub liquidity, and liquidation
@@ -39,7 +43,7 @@ export default function IncentivesPage() {
         </section>
 
         <section id="program-types" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Program Types</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Program Types</h2>
           <ul className="space-y-3 text-sm text-gray-600">
             <li>• Supplier-facing campaigns that deepen available capital in the Invest Spoke or connected liquidity layer.</li>
             <li>• Borrower-facing campaigns that encourage healthy LP-backed borrowing behavior.</li>
@@ -48,7 +52,7 @@ export default function IncentivesPage() {
         </section>
 
         <section id="distribution-principles" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Distribution Principles</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Distribution Principles</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             When incentives exist, they should be understandable, auditable, and separable from core
             risk logic. Reward calculations may depend on activity, duration, or campaign-specific
@@ -62,7 +66,7 @@ export default function IncentivesPage() {
         </section>
 
         <section id="claiming-and-reconciliation" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Claiming & Reconciliation</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Claiming & Reconciliation</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Claim paths, vesting schedules, and reconciliation methods are campaign-specific. They may
             be handled onchain, through a dedicated rewards controller, or through offchain accounting
@@ -75,7 +79,7 @@ export default function IncentivesPage() {
         </section>
 
         <section id="status" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Current Status</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Current Status</h2>
           <p className="leading-relaxed text-gray-600">
             Treat incentives as deployment-specific and season-specific. If a campaign is live, its
             details should be announced separately from the protocol architecture docs and referenced

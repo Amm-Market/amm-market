@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Liquidation Examples",
@@ -27,14 +28,17 @@ const edgeCases = [
 export default function LiquidationExamplesPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Liquidation Examples</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Illustrative scenarios showing how the same liquidation framework applies to different LP collateral types.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Liquidation Examples"
+
+          description="Illustrative scenarios showing how the same liquidation framework applies to different LP collateral types."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             These examples are intentionally simplified. They show the shape of a liquidation
             without introducing extra protocol rules beyond the canonical{" "}
@@ -51,7 +55,7 @@ export default function LiquidationExamplesPage() {
         </section>
 
         <section id="fungible-lp" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Fungible LP Example</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Fungible LP Example</h2>
           <div className="rounded-lg border border-gray-200 bg-gray-50 p-5">
             <p className="mb-4 text-sm text-gray-600">
               A borrower has deposited a fungible LP token from an approved stable or weighted pool.
@@ -69,7 +73,7 @@ export default function LiquidationExamplesPage() {
         </section>
 
         <section id="concentrated-liquidity" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Concentrated Liquidity Example</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Concentrated Liquidity Example</h2>
           <div className="rounded-lg border border-gray-200 bg-gray-50 p-5">
             <p className="mb-4 text-sm text-gray-600">
               A concentrated liquidity position drifts toward the edge of its active range. The
@@ -86,7 +90,7 @@ export default function LiquidationExamplesPage() {
         </section>
 
         <section id="multi-position-account" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Multi-Position Account</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Multi-Position Account</h2>
           <div className="rounded-lg border border-gray-200 bg-gray-50 p-5">
             <p className="mb-4 text-sm text-gray-600">
               A borrower may hold several LP positions inside one Borrow Spoke. Borrowing capacity is
@@ -102,7 +106,7 @@ export default function LiquidationExamplesPage() {
         </section>
 
         <section id="edge-cases" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Edge Cases</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Edge Cases</h2>
           <ul className="space-y-3 text-sm text-gray-600">
             {edgeCases.map((item) => (
               <li key={item} className="border-b border-gray-100 pb-3 last:border-b-0 last:pb-0">
@@ -113,7 +117,7 @@ export default function LiquidationExamplesPage() {
         </section>
 
         <section id="summary" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Summary</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Summary</h2>
           <p className="leading-relaxed text-gray-600">
             Across fungible LPs, concentrated liquidity, and multi-position accounts, the protocol is
             solving the same problem: convert LP collateral into recoverable debt repayment without
