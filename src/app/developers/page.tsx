@@ -31,7 +31,7 @@ const sections = [
   },
   {
     title: "Protocol Architecture",
-    description: "Understand spokes design, collateral factors, health factor calculations, and fee structures.",
+    description: "Understand Borrow Spoke and Invest Spoke architecture, collateral factors, health factor calculations, and fee structures.",
     href: "/developers/architecture",
     icon: Layers,
   },
@@ -49,7 +49,7 @@ const sections = [
   },
   {
     title: "Safety Mechanisms",
-    description: "Review risk parameters, smart contract architecture, and insurance fund mechanisms.",
+    description: "Review the protocol-wide risk framework, smart contract architecture, bug bounty, and insurance fund mechanisms.",
     href: "/developers/safety",
     icon: Shield,
   },

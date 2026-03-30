@@ -97,8 +97,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/developers/getting-started/claim-lp-fees',
     // Architecture section
     '/developers/architecture',
-    '/developers/architecture/health-factor',
+    '/developers/architecture/invest-spoke',
     '/developers/architecture/collateral-factors',
+    '/developers/architecture/health-factor',
     '/developers/architecture/platform-fees',
     '/developers/architecture/incentives',
     // Integrations section
@@ -113,6 +114,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Safety section
     '/developers/safety',
     '/developers/safety/contracts',
+    '/developers/safety/bug-bounty',
     '/developers/safety/insurance',
     // Legal section
     '/developers/legal',

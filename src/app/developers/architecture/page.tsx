@@ -2,8 +2,9 @@ import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 export const metadata: Metadata = {
-  title: "Protocol Architecture - Spokes Design",
-  description: "AMM Market Hub-and-Spoke architecture explained. Learn about the three-tier design, data flow, Spoke responsibilities, and Aave v4 Hub integration.",
+  title: "Protocol Architecture - Borrow Spoke",
+  description:
+    "AMM Market Borrow Spoke architecture explained. Learn about the borrower-facing execution layer, Hub data flow, LP collateral responsibilities, and Aave v4 integration.",
 }
 
 const sections = [
@@ -16,227 +17,268 @@ const sections = [
   { id: "hub-role", title: "Aave v4 Hub Role" },
 ]
 
-export default function SpokesDesignPage() {
+export default function BorrowSpokePage() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
-      {/* Main content */}
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
       <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Spokes Design</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Responsibilities and scope of the AMM Market Spoke within the Aave v4 architecture.
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">Borrow Spoke</h1>
+        <p className="mb-8 text-lg text-gray-600">
+          Responsibilities and scope of the borrower-facing AMM Market spoke within the Aave v4
+          architecture.
         </p>
 
         <section id="overview" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            AMM Market is designed to be intuitive. The Spoke presents a clean, user-friendly experience 
-            that guides users through the process of using their LP shares as collateral. The interface 
-            is built to provide real-time information, ensuring users can make informed decisions.
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <p className="mb-4 text-gray-600 leading-relaxed">
+            The Borrow Spoke is the execution layer that lets LP holders use active liquidity
+            positions as collateral. It is responsible for receiving LP positions, interpreting
+            position metadata, applying oracle-aware valuation logic, enforcing health checks, and
+            coordinating borrows against Hub liquidity.
           </p>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            It is a hybrid system that borrows the best concepts from many protocols. The Spoke is aware 
-            of the unique structure of LP shares collateral and can parse LP shares metadata to identify 
-            the token pair, the price range of the deployed liquidity, and the amount of liquidity provided. 
-            By integrating external oracles, it can assign an accurate valuation to these positions.
+          <p className="mb-4 text-gray-600 leading-relaxed">
+            This page focuses on the borrower-facing side of the architecture. The separate Invest
+            Spoke handles capital supply, while the Borrow Spoke handles LP-specific underwriting,
+            monitoring, and liquidation behavior for each supported liquidity design.
+          </p>
+          <p className="text-sm text-gray-600">
+            <strong>Why it matters:</strong> LP collateral is structurally different from static
+            assets, so the Borrow Spoke exists to translate pool composition, price range, fees, and
+            market state into enforceable credit rules.
           </p>
         </section>
 
         <section id="user-experience" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">User Experience</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Users can navigate to the core functions of the protocol: supplying their collateral, 
-            borrowing assets, managing their loans, and claiming their earned fees.
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">User Experience</h2>
+          <p className="mb-4 text-gray-600 leading-relaxed">
+            Borrowers interact with the Borrow Spoke to supply LP collateral, borrow assets, manage
+            open debt, repay balances, and claim earned fees. The spoke is designed to expose these
+            flows through a single borrower-facing interface even when the underlying collateral types
+            behave very differently across AMMs.
           </p>
-          <p className="text-gray-600 text-sm">
-            <strong>Transaction Transparency:</strong> Every action is accompanied by clear confirmations and 
-            detailed breakdowns of the transaction, including estimated gas costs and the impact on their loan 
-            health, empowering users to interact with the protocol with confidence and transparency.
+          <p className="text-sm text-gray-600">
+            <strong>Transaction transparency:</strong> every action is paired with health factor
+            updates, borrow-cap impact, and collateral-state context so borrowers can understand how
+            a position change affects their loan in real time.
           </p>
         </section>
 
         <section id="example-flow" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example Flow: Alice the LP Master</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            A practical example of the onboarding flow:
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Example Flow: Alice the LP Master</h2>
+          <p className="mb-4 text-gray-600 leading-relaxed">
+            A practical borrower-side onboarding flow:
           </p>
-          
+
           <div className="space-y-6">
             <div className="border-b border-gray-100 pb-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Step 1: Initial Deposit</h3>
-              <p className="text-gray-600 text-sm">
-                Alice has 5 Uniswap v3 LP positions. She deposits her first LP as collateral: 10,000 USDC 
-                and 5 ETH in the ETH/USDC pool (ETH price = $2,000), currently worth approximately $20,000 
-                in total value.
+              <h3 className="mb-2 font-semibold text-gray-900">Step 1: Initial Deposit</h3>
+              <p className="text-sm text-gray-600">
+                Alice has 5 Uniswap v3 LP positions. She deposits her first LP as collateral:
+                10,000 USDC and 5 ETH in the ETH/USDC pool (ETH price = $2,000), currently worth
+                approximately $20,000 in total value.
               </p>
             </div>
             <div className="border-b border-gray-100 pb-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Step 2: Borrowing Power Calculated</h3>
-              <p className="text-gray-600 text-sm">
-                The app displays her NFT ETH-USDC and shows that, with a 70% collateral factor, she can 
-                borrow up to $14,000. This is because ETH was taken as the lower-token-CF plus ETH/USDC 
-                pool risk adjustment.
+              <h3 className="mb-2 font-semibold text-gray-900">Step 2: Borrowing Power Calculated</h3>
+              <p className="text-sm text-gray-600">
+                The Borrow Spoke displays her ETH/USDC position and calculates that, with a 70%
+                collateral factor, she can borrow up to $14,000. This is based on the lower-token
+                collateral factor plus pool-specific risk adjustments.
               </p>
             </div>
             <div className="border-b border-gray-100 pb-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Step 3: Borrow Multiple Assets</h3>
-              <p className="text-gray-600 text-sm">
-                Alice borrows $6,000 USDT, $500 WBTC, $2,000 LINK, $500 UNI, $1,000 AVAX. Her total borrow 
-                is $10,000. She has $4,000 left to borrow but her health factor is now in the yellow zone.
+              <h3 className="mb-2 font-semibold text-gray-900">Step 3: Borrow Multiple Assets</h3>
+              <p className="text-sm text-gray-600">
+                Alice borrows $6,000 USDT, $500 WBTC, $2,000 LINK, $500 UNI, and $1,000 AVAX. Her
+                total borrow is $10,000. She still has unused borrowing capacity, but her health
+                factor is now in the yellow zone.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Step 4: Add More Collateral</h3>
-              <p className="text-gray-600 text-sm">
-                Alice deposits 4 more Uniswap pools worth $50,000 combined. After each LP gets valued, 
-                she can borrow up to 50% or $25,000 of that. Her global collateral is now $4,000 from 
-                her first LP plus $25,000 from new LPs = $29,000 borrowable amount. She still has $10,000 
-                already borrowed but her health is back to green.
+              <h3 className="mb-2 font-semibold text-gray-900">Step 4: Add More Collateral</h3>
+              <p className="text-sm text-gray-600">
+                Alice deposits 4 more LP positions worth $50,000 combined. After the Borrow Spoke
+                values each position, her aggregate borrowing capacity expands and her health returns
+                to a safer range without changing the underlying Hub capital source.
               </p>
             </div>
           </div>
         </section>
 
         <section id="three-tier-architecture" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Three-Tier Architecture</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            The architecture is a clear, three-tiered flow:
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Three-Tier Architecture</h2>
+          <p className="mb-4 text-gray-600 leading-relaxed">
+            The borrower-side architecture follows a clear three-tier flow:
           </p>
-          
+
           <div className="space-y-6">
             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Top: Users</h3>
-              <p className="text-gray-600 text-sm">
-                Users interact exclusively with the Spoke contract. They deposit NFTs, borrow funds, 
-                repay debt, and claim fees.
+              <h3 className="mb-2 font-semibold text-gray-900">Top: Borrowers</h3>
+              <p className="text-sm text-gray-600">
+                Borrowers interact with the Borrow Spoke contract to deposit LP collateral, borrow
+                funds, repay debt, and claim fees.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Middle: Spoke (AMM Market)</h3>
-              <p className="text-gray-600 text-sm">
-                This is the intelligent layer that understands Liquidity Pools such as Balancer v3 or 
-                Uniswap v3. It manages NFT custody, calculates position-specific risk, and enforces 
-                loan-level health checks.
+              <h3 className="mb-2 font-semibold text-gray-900">Middle: Borrow Spoke (AMM Market)</h3>
+              <p className="text-sm text-gray-600">
+                This is the intelligent layer that understands AMM-specific liquidity formats. It
+                manages LP custody, calculates position-specific risk, enforces loan-level health
+                checks, and coordinates liquidation behavior when collateral deteriorates.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Bottom: Aave v4 Hubs</h3>
-              <p className="text-gray-600 text-sm">
-                Hubs provide the raw liquidity and handle the macro-level risk for the capital pool.
+              <h3 className="mb-2 font-semibold text-gray-900">Bottom: Aave v4 Hubs & Routed Capital</h3>
+              <p className="text-sm text-gray-600">
+                The Hubs provide borrowable liquidity and macro-level capital controls, while
+                Invest-Spoke-routed capital and other Hub liquidity sources fund draws initiated by
+                the Borrow Spoke.
               </p>
             </div>
           </div>
         </section>
 
         <section id="data-flow" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Data Flow</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            The high-level flow and data flow is unidirectional and well-defined:
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Data Flow</h2>
+          <p className="mb-4 text-gray-600 leading-relaxed">
+            The borrower-side data flow is unidirectional and operationally well-defined:
           </p>
-          
-          <ol className="space-y-4 list-decimal list-inside mb-6">
-            <li className="text-gray-600 text-sm">
-              <strong className="text-gray-900">LP Position Manager transfers NFT to AMM Market</strong> — AMM Market caches basic position data
+
+          <ol className="mb-6 list-decimal list-inside space-y-4">
+            <li className="text-sm text-gray-600">
+              <strong className="text-gray-900">
+                LP Position Manager transfers collateral into the Borrow Spoke
+              </strong>{" "}
+              - The spoke caches position data and begins health tracking.
             </li>
-            <li className="text-gray-600 text-sm">
-              <strong className="text-gray-900">Owners borrow against their NFT</strong> — The Spoke draws assets from one or more configured Hubs
+            <li className="text-sm text-gray-600">
+              <strong className="text-gray-900">Borrowers draw assets through the Borrow Spoke</strong>{" "}
+              - The spoke requests liquidity from one or more configured Hubs.
             </li>
-            <li className="text-gray-600 text-sm">
-              <strong className="text-gray-900">Debt represented as debt shares</strong> — Exchange rate is a global value denominated in Ray that compounds based on interest rate model
+            <li className="text-sm text-gray-600">
+              <strong className="text-gray-900">Debt is represented as debt shares</strong> - The
+              exchange rate compounds using the configured interest rate model while the spoke tracks
+              borrower-specific state.
             </li>
-            <li className="text-gray-600 text-sm">
-              <strong className="text-gray-900">Liquidations when necessary</strong> — Hubs or external liquidators cause the Spoke to extract LP liquidity and either send tokens to the liquidator or swap tokens into the debt asset to repay the Hub
+            <li className="text-sm text-gray-600">
+              <strong className="text-gray-900">Liquidations occur when required</strong> - Hubs,
+              AMM Market liquidation nodes, or external liquidators can cause the Borrow Spoke to
+              extract LP liquidity and settle debt through the appropriate liquidation path.
             </li>
           </ol>
 
           <div>
-            <h3 className="font-semibold text-gray-900 mb-2">Hub Interaction</h3>
-            <ul className="text-gray-600 text-sm space-y-1">
-              <li>• <strong>Borrow:</strong> Spoke issues a draw call to the Hub</li>
-              <li>• <strong>Repay:</strong> Spoke issues a restore call to the Hub to return funds</li>
-              <li>• <strong>Health Check:</strong> Hub calls Spoke's <code className="bg-gray-100 px-1 rounded text-gray-800">getCollateralData</code> to fetch total NFT value</li>
-              <li>• <strong>Liquidation:</strong> If Spoke's aggregate LTV breaches threshold, Hub calls <code className="bg-gray-100 px-1 rounded text-gray-800">handleLiquidation</code></li>
+            <h3 className="mb-2 font-semibold text-gray-900">Hub Interaction</h3>
+            <ul className="space-y-1 text-sm text-gray-600">
+              <li>• <strong>Borrow:</strong> Borrow Spoke issues a draw call to the Hub</li>
+              <li>• <strong>Repay:</strong> Borrow Spoke issues a restore call to the Hub to return funds</li>
+              <li>
+                • <strong>Health Check:</strong> Hub calls Borrow Spoke&apos;s{" "}
+                <code className="bg-gray-100 px-1 rounded text-gray-800">getCollateralData</code> to
+                fetch total LP collateral value
+              </li>
+              <li>
+                • <strong>Liquidation:</strong> If aggregate spoke risk breaches threshold, the Hub
+                can call{" "}
+                <code className="bg-gray-100 px-1 rounded text-gray-800">handleLiquidation</code>
+              </li>
             </ul>
           </div>
         </section>
 
         <section id="spoke-responsibilities" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Spoke Responsibilities</h2>
-          
-          <div className="overflow-x-auto mb-6">
-            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Spoke Responsibilities</h2>
+
+          <div className="mb-6 overflow-x-auto">
+            <table className="w-full overflow-hidden rounded-lg border border-gray-200 text-sm">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Component</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Responsibility</th>
+                  <th className="px-4 py-2 text-left font-semibold text-gray-900">Component</th>
+                  <th className="px-4 py-2 text-left font-semibold text-gray-900">Responsibility</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
                 <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Spoke (per AMM)</td>
-                  <td className="px-4 py-2 text-gray-600">Track positions & per-user aggregated collateralUsd and debtUsd (from Hub). Expose <code className="bg-gray-200 px-1 rounded">getUserAggregate(user)</code> for frontend & LiquidationAdapter.</td>
+                  <td className="px-4 py-2 font-medium text-gray-900">Borrow Spoke (per AMM)</td>
+                  <td className="px-4 py-2 text-gray-600">
+                    Tracks positions plus per-user aggregated collateral USD and debt USD, and
+                    exposes{" "}
+                    <code className="bg-gray-200 px-1 rounded">getUserAggregate(user)</code> for the
+                    frontend and liquidation adapters.
+                  </td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">LiquidationAdapter</td>
-                  <td className="px-4 py-2 text-gray-600">Implement internal or embedded adapter to execute penalty accrual, soft-unwind, and hard liquidation.</td>
+                  <td className="px-4 py-2 font-medium text-gray-900">LiquidationAdapter</td>
+                  <td className="px-4 py-2 text-gray-600">
+                    Executes penalty accrual, soft unwind, and hard liquidation for the Borrow Spoke
+                    without collapsing all LP formats into a single liquidation path.
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <div className="mt-4">
-            <h3 className="font-semibold text-gray-900 mb-2">LiquidationAdapter Functions</h3>
-            <ul className="text-gray-600 text-sm space-y-2">
-              <li><code className="bg-gray-100 px-1 rounded text-gray-800">applyPenalty(user)</code> — Compute and record accrued penalty</li>
-              <li><code className="bg-gray-100 px-1 rounded text-gray-800">softUnwind(user, maxUsd)</code> — Execute partial decrease → collect → swap → repay (atomic per step)</li>
-              <li><code className="bg-gray-100 px-1 rounded text-gray-800">liquidate(user)</code> — Execute hard liquidation if needed</li>
+            <h3 className="mb-2 font-semibold text-gray-900">LiquidationAdapter Functions</h3>
+            <ul className="space-y-2 text-sm text-gray-600">
+              <li>
+                <code className="bg-gray-100 px-1 rounded text-gray-800">applyPenalty(user)</code> -
+                Compute and record accrued penalty
+              </li>
+              <li>
+                <code className="bg-gray-100 px-1 rounded text-gray-800">softUnwind(user, maxUsd)</code>{" "}
+                - Execute partial decrease, collect, swap, and repay
+              </li>
+              <li>
+                <code className="bg-gray-100 px-1 rounded text-gray-800">liquidate(user)</code> -
+                Execute hard liquidation if needed
+              </li>
             </ul>
-            <p className="text-gray-500 text-xs mt-3">
+            <p className="mt-3 text-xs text-gray-500">
               Events: PenaltyAccrued, SoftUnwindExecuted, HardLiquidationExecuted
             </p>
           </div>
         </section>
 
         <section id="hub-role" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Aave v4 Hub Role</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            The Hub provides the capital backbone of the ecosystem. It is powered by Aave v4, a 
-            decentralized non-custodial liquidity market.
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Aave v4 Hub Role</h2>
+          <p className="mb-4 text-gray-600 leading-relaxed">
+            The Borrow Spoke does not warehouse lender capital itself. Instead, it relies on the
+            Hub as the capital backbone of the system, drawing from pooled liquidity that can be
+            supplied by Invest Spoke depositors and other configured Hub sources.
           </p>
-          
+
           <div className="space-y-6">
             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Capital Supply</h3>
-              <p className="text-gray-600 text-sm">
-                Users deposit assets such as USDC, DAI, or ETH into Aave v4 Hubs via other spokes 
-                such as Core or Prime Spoke. Aave Hubs set interest rates based on supply and demand, 
-                and handle the accounting of debt and collateral.
+              <h3 className="mb-2 font-semibold text-gray-900">Capital Supply</h3>
+              <p className="text-sm text-gray-600">
+                Assets such as USDC, DAI, and ETH are supplied into Hub-connected capital layers,
+                including the Invest Spoke. The Hub sets macro-level pricing and accounting, while
+                the Borrow Spoke decides how much a borrower can safely draw against LP collateral.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Credit Lines</h3>
-              <p className="text-gray-600 text-sm">
-                The Hub grants each Spoke a credit line which defines the maximum borrowing capacity 
-                that Aave will accept from that Spoke. For example, Aave Core Hub may grant AMM Market 
-                Uniswap v3 Spoke a $100 million credit line by borrowing GHO, USDT and ETH.
+              <h3 className="mb-2 font-semibold text-gray-900">Credit Lines</h3>
+              <p className="text-sm text-gray-600">
+                The Hub grants each Borrow Spoke a credit line defining how much borrowing capacity
+                that spoke can access. This keeps LP-specific underwriting isolated while still
+                preserving shared capital efficiency across the system.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Independent Health Factors</h3>
-              <p className="text-gray-600 text-sm">
-                A user with $10,000 in LP collateral within the Uniswap v3 Spoke and $300,000 in the 
-                Balancer v3 Spoke will have two independent health factor calculations. A deficit in 
-                one Spoke cannot be offset by collateral in another. To move collateral between Spokes, 
-                a user must withdraw from one and re-deposit into the other.
+              <h3 className="mb-2 font-semibold text-gray-900">Independent Health Factors</h3>
+              <p className="text-sm text-gray-600">
+                A user with LP collateral in multiple Borrow Spokes will have independent health
+                factor calculations per spoke. A deficit in one spoke cannot be offset by collateral
+                in another, which keeps market-specific risk contained.
               </p>
             </div>
           </div>
         </section>
       </div>
 
-      {/* Right scroll-spy sidebar */}
-      <ScrollSpySidebar 
-        sections={sections} 
-        pageSummary="Responsibilities and scope of the AMM Market Spoke within the Aave v4 architecture."
+      <ScrollSpySidebar
+        sections={sections}
+        pageSummary="Responsibilities and scope of the borrower-facing AMM Market spoke within the Aave v4 architecture."
         sectionColor="violet"
       />
     </div>

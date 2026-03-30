@@ -3,13 +3,14 @@ import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 export const metadata: Metadata = {
   title: "Liquidation Framework",
-  description: "AMM Market liquidation framework - LP collateral complexity, liquidation pathways, thresholds, bonuses, and protection mechanisms.",
+  description: "AMM Market liquidation framework - LP collateral complexity, liquidation nodes, pathways, thresholds, bonuses, and protection mechanisms.",
 }
 
 const sections = [
   { id: "overview", title: "Overview" },
   { id: "lp-complexity", title: "LP Collateral Complexity" },
   { id: "key-principles", title: "Key Principles" },
+  { id: "liquidation-node", title: "Liquidation Node" },
   { id: "liquidation-pathways", title: "Liquidation Pathways" },
   { id: "liquidation-threshold", title: "Liquidation Threshold" },
   { id: "liquidation-bonus", title: "Liquidation Bonus" },
@@ -39,16 +40,16 @@ export default function LiquidationDesignPage() {
           <p className="text-gray-600 leading-relaxed mb-4">
             In AMM Market, the liquidation lifecycle is a core safety mechanism to protect both the 
             protocol and its liquidity providers from losses due to undercollateralized loans. Liquidation 
-            mode is activated when a position's accrued debt exceeds its borrowing capacity.
+            mode is activated when a position&apos;s accrued debt exceeds its borrowing capacity.
           </p>
           <p className="text-gray-600 leading-relaxed mb-4">
             Under this mode, any account can clear the debt and earn a liquidation premium, which ranges 
-            from 2% to 10% based on the position's debt-to-value ratio. The liquidation process initially 
+            from 2% to 10% based on the position&apos;s debt-to-value ratio. The liquidation process initially 
             utilizes uncollected fees from the position. If these are not enough, the principal assets 
             are tapped to cover the remaining debt and to reward the liquidator.
           </p>
           <p className="text-red-700 text-sm border-l-4 border-red-400 pl-3">
-            <strong>Trigger:</strong> Liquidation is triggered when a position's accrued debt &gt; BorrowingCapacity.
+            <strong>Trigger:</strong> Liquidation is triggered when a position&apos;s accrued debt &gt; BorrowingCapacity.
           </p>
         </section>
 
@@ -120,9 +121,10 @@ export default function LiquidationDesignPage() {
             <div>
               <h3 className="font-semibold text-gray-900 mb-2">Protocol-Owned Flashloan Execution</h3>
               <p className="text-gray-600 text-sm">
-                AMM Market executes flashloans internally to repay debt, seize LP collateral, unwrap LPs, 
-                swap underlying tokens, and repay flashloan in a single atomic transaction. <strong>No 
-                external liquidators or bots are required.</strong>
+                AMM Market can orchestrate flashloan-backed liquidation execution through specialized
+                protocol nodes that repay debt, seize LP collateral, unwrap LPs, route underlying
+                assets, and settle execution liquidity in a single atomic transaction. This reduces
+                dependence on third-party liquidators without removing permissionless participation.
               </p>
             </div>
 
@@ -144,6 +146,68 @@ export default function LiquidationDesignPage() {
           </div>
         </section>
 
+        <section id="liquidation-node" className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Liquidation Node</h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            AMM Market Node is the protocol&apos;s indexing and liquidation bot runtime. It handles
+            liquidity operations and routing, tracks active positions, refreshes market and debt
+            state in real time, and reacts as soon as a position falls below its allowed borrowing
+            capacity. Rather than relying only on generic third-party liquidators to interpret
+            complex LP collateral, AMM Market operates specialized nodes built for LP-specific
+            workflows such as fee claiming, full LP unwind, asset routing, flashloan repayment, and
+            residual value return.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Runtime Model</h3>
+              <ul className="text-gray-600 text-sm space-y-2">
+                <li className="border-l-4 border-amber-300 pl-3">Reads directly from on-chain activity and maintains an in-memory map of active positions</li>
+                <li className="border-l-4 border-amber-300 pl-3">Refreshes drifting debt values on short intervals for faster liquidation readiness</li>
+                <li className="border-l-4 border-amber-300 pl-3">Performs periodic full-system sweeps to catch missed updates or stale state</li>
+                <li className="border-l-4 border-amber-300 pl-3">Feeds the application UI and protocol dashboards from one consistent shared data layer</li>
+              </ul>
+            </div>
+
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-2">Execution Path</h3>
+              <ul className="text-gray-600 text-sm space-y-2">
+                <li className="border-l-4 border-amber-300 pl-3">Sources temporary liquidity and repays debt into the credit layer</li>
+                <li className="border-l-4 border-amber-300 pl-3">Claims accrued LP fees and unwinds collateral into its underlying assets</li>
+                <li className="border-l-4 border-amber-300 pl-3">Repays execution liquidity, pays the liquidation premium, and preserves atomic settlement</li>
+                <li className="border-l-4 border-amber-300 pl-3">Returns any residual value to the borrower before closing or resizing the position</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <div className="border-l-4 border-red-400 pl-3">
+              <h3 className="font-semibold text-gray-900 mb-1">Risk Management</h3>
+              <p className="text-gray-600 text-sm">
+                Specialized nodes improve liquidation coverage for LP collateral that is traditionally
+                harder to service and provide a reliable first line of defense against bad debt during
+                stressed conditions.
+              </p>
+            </div>
+            <div className="border-l-4 border-amber-400 pl-3">
+              <h3 className="font-semibold text-gray-900 mb-1">Product Defensibility</h3>
+              <p className="text-gray-600 text-sm">
+                This architecture supports LP collateral markets that traditional lending systems
+                struggle to service, helping AMM Market build a differentiated credit engine around
+                active on-chain liquidity.
+              </p>
+            </div>
+            <div className="border-l-4 border-green-400 pl-3">
+              <h3 className="font-semibold text-gray-900 mb-1">Scalability</h3>
+              <p className="text-gray-600 text-sm">
+                The runtime is intentionally lightweight at launch, making it easier to expand from a
+                lean single-runtime model into broader market coverage without changing the core
+                operating model.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section id="liquidation-pathways" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Liquidation Pathways</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
@@ -158,9 +222,9 @@ export default function LiquidationDesignPage() {
               </p>
               <ul className="text-gray-600 text-sm space-y-1 ml-4">
                 <li>• Liquidator calls the <code className="bg-gray-100 px-1 rounded text-gray-800">liquidate</code> function with <code className="bg-gray-100 px-1 rounded text-gray-800">tokenId</code> and <code className="bg-gray-100 px-1 rounded text-gray-800">permitData</code></li>
-                <li>• Spoke validates the loan's unhealthy status</li>
+                <li>• Spoke validates the loan&apos;s unhealthy status</li>
                 <li>• Calculates <code className="bg-gray-100 px-1 rounded text-gray-800">liquidationCost</code> (debt + bonus) and <code className="bg-gray-100 px-1 rounded text-gray-800">liquidationValue</code> (assets to seize)</li>
-                <li>• Executes <code className="bg-gray-100 px-1 rounded text-gray-800">_sendPositionValue</code> via Uniswap's <code className="bg-gray-100 px-1 rounded text-gray-800">decreaseLiquidity</code> and <code className="bg-gray-100 px-1 rounded text-gray-800">collect</code></li>
+                <li>• Executes <code className="bg-gray-100 px-1 rounded text-gray-800">_sendPositionValue</code> via Uniswap&apos;s <code className="bg-gray-100 px-1 rounded text-gray-800">decreaseLiquidity</code> and <code className="bg-gray-100 px-1 rounded text-gray-800">collect</code></li>
                 <li>• Precise, surgical process targeting a single loan</li>
               </ul>
             </div>
@@ -174,7 +238,7 @@ export default function LiquidationDesignPage() {
                 <li>• Hub calls <code className="bg-gray-100 px-1 rounded text-gray-800">handleLiquidation(debtToCover)</code></li>
                 <li>• Spoke iterates through active loans, starting from most underwater</li>
                 <li>• Extracts liquidity and fees from each position</li>
-                <li>• Uses SwapRouter to convert tokens (ETH, WBTC) into Hub's requested asset (USDC)</li>
+                <li>• Uses SwapRouter to convert tokens (ETH, WBTC) into Hub&apos;s requested asset (USDC)</li>
                 <li>• Proceeds are repaid to the Hub</li>
                 <li>• Incremental and health-targeted to minimize disruption</li>
               </ul>
@@ -196,7 +260,7 @@ export default function LiquidationDesignPage() {
         <section id="liquidation-threshold" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Liquidation Threshold (LT)</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            The Liquidation Threshold is the point at which a borrower's debt relative to the 
+            The Liquidation Threshold is the point at which a borrower&apos;s debt relative to the 
             collateral value triggers eligibility for liquidation. It is set slightly above the 
             borrowable LTV to provide a safety buffer.
           </p>
@@ -209,7 +273,7 @@ export default function LiquidationDesignPage() {
 
           <p className="text-gray-600 text-sm">
             <strong>Fair Resolution:</strong> During liquidation, the necessary value is extracted from the position 
-            to settle the debt and pay the liquidator's premium. The assets remaining after these deductions 
+            to settle the debt and pay the liquidator&apos;s premium. The assets remaining after these deductions 
             stay within the position, which is then automatically returned to the original owner.
           </p>
         </section>
@@ -250,7 +314,8 @@ export default function LiquidationDesignPage() {
         <section id="who-can-liquidate" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Who Can Liquidate</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Liquidations are permissionless — anyone can liquidate an underwater position:
+            Liquidations remain permissionless, but AMM Market also operates specialized liquidation
+            nodes to improve coverage for complex LP collateral:
           </p>
           
           <ul className="space-y-4">
@@ -269,10 +334,10 @@ export default function LiquidationDesignPage() {
               </p>
             </li>
             <li>
-              <span className="font-semibold text-gray-900">Protocol Keepers</span>
+              <span className="font-semibold text-gray-900">AMM Market Liquidation Nodes</span>
               <p className="text-gray-600 text-sm mt-0.5">
-                Backstop liquidators operated by the protocol to ensure positions are 
-                liquidated even in extreme conditions.
+                Protocol-operated backstop runtimes that monitor active positions, route liquidity,
+                and execute LP-specific liquidation workflows when speed and coverage matter most.
               </p>
             </li>
             <li>
@@ -327,7 +392,7 @@ export default function LiquidationDesignPage() {
       {/* Right scroll-spy sidebar */}
       <ScrollSpySidebar 
         sections={sections} 
-        pageSummary="Conditions under which positions become liquidatable and who can trigger them."
+        pageSummary="How AMM Market detects unhealthy positions, routes liquidations, and protects solvency across complex LP collateral."
         sectionColor="amber"
       />
     </div>
