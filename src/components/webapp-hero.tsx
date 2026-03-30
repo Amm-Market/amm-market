@@ -24,13 +24,10 @@ export default function WebappHero() {
       <div className="flex z-[100] mx-auto w-full max-w-[1200px] flex-col items-center gap-4 px-4 sm:px-6 pb-8 pt-[64px] sm:pt-[80px] lg:gap-8 lg:px-16 lg:pb-0">
         {/* Headlines */}
         <div className="flex flex-col items-center gap-3 sm:gap-6">
-          <h1
-            className="text-[28px] sm:text-[40px] md:text-[56px] lg:text-[84px] font-[550] leading-[110%] sm:leading-[100%] lg:leading-[110%] tracking-[-0.5px] sm:tracking-[-1px] lg:tracking-[-1.68px] text-center text-[#F7F9FA] max-w-[320px] sm:max-w-none"
-            style={{ maxWidth: 1000 }}
-          >
+          <h1 className="type-display-title max-w-[320px] text-center text-[#F7F9FA] sm:max-w-none" style={{ maxWidth: 1000 }}>
             Unlock Your LP Potential
           </h1>
-          <p className="text-[14px] sm:text-[18px] md:text-[22px] lg:text-[28px] font-[600] leading-[140%] sm:leading-normal text-center text-[#A0A9BE] max-w-[280px] sm:max-w-none">
+          <p className="type-display-lead max-w-[280px] text-center font-medium text-[#A0A9BE] sm:max-w-none">
             Supply liquidity at your favorite DEX & borrow against it here
           </p>
         </div>

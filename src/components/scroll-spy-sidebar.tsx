@@ -182,7 +182,7 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
             const isPast = index < activeIndex
 
             return (
-              <div key={section.id} data-section-id={section.id} className="relative py-2">
+              <div key={section.id} data-section-id={section.id} className="relative py-2.5">
                 {/* Dot indicator */}
                 <div
                   className={`absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-300 ${
@@ -213,7 +213,7 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
                       : "text-gray-500 hover:text-gray-900 hover:opacity-80"
                   }`}
                 >
-                  <p className="type-sidebar-link line-clamp-1">{section.title}</p>
+                  <p className="type-sidebar-link line-clamp-2">{section.title}</p>
                 </a>
               </div>
             )

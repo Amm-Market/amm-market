@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import HomeHero from "@/components/home-hero"
 import SeeItInActionSection from "@/components/SeeItInActionSection"
 import ManageCryptoSection from "@/components/ManageCryptoSection"
@@ -57,7 +56,7 @@ export default function WebappPage() {
             <section>
               <div className="max-w-[650px] mb-6">
                 <h2 className="text-2xl font-bold">How It Works</h2>
-                <p className="text-gray-600 mt-2">Two steps to unlock your LP's potential.</p>
+                <p className="text-gray-600 mt-2">Two steps to unlock your LP&apos;s potential.</p>
               </div>
               <div className="max-w-[650px] space-y-4">
                 <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
@@ -273,17 +272,17 @@ export default function WebappPage() {
                     <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                   </svg>
                 </div>
-                <p className="text-[16px] lg:text-[18px] font-[550] leading-normal text-gray-300">
+                <p className="text-[15px] lg:text-[16px] font-medium leading-normal text-gray-300">
                   Advanced LP Management
                 </p>
               </div>
 
               {/* Headlines */}
               <div className="flex max-w-[366px] flex-col items-center gap-1 lg:max-w-none">
-                <h2 className="text-[40px] lg:text-[56px] font-[550] leading-normal tracking-[-0.2px] lg:tracking-[-0.28px] text-center text-white">
+                <h2 className="text-[32px] lg:text-[48px] font-black leading-[1.08] tracking-[-0.02em] text-center text-white">
                   Power meets precision
                 </h2>
-                <h3 className="text-[20px] lg:text-[28px] font-[600] leading-normal text-gray-300 text-center">
+                <h3 className="text-[18px] lg:text-[22px] font-medium leading-[1.45] text-gray-300 text-center">
                   Manage positions with institutional-grade tools and deeper liquidity
                 </h3>
               </div>
@@ -368,34 +367,34 @@ export default function WebappPage() {
           <div className="mx-auto w-full px-8 lg:py-16 py-8">
             <div className="mx-auto grid grid-cols-2 gap-x-6 gap-y-8 lg:max-w-[1100px] lg:grid-cols-4 lg:gap-8">
               <div className="flex flex-col gap-4 border-t pt-4 border-gray-200">
-                <p className="text-[18px] lg:text-[21px] font-[550] leading-normal tracking-[-0.09px] lg:tracking-[-0.1px] text-gray-900">
+                <p className="text-[17px] lg:text-[19px] font-semibold leading-normal tracking-[-0.01em] text-gray-900">
                   Real-time monitoring
                 </p>
-                <p className="text-[16px] lg:text-[18px] font-[550] leading-normal text-gray-600">
+                <p className="text-[15px] lg:text-[16px] font-normal leading-[1.6] text-gray-600">
                   Instant position updates and health tracking across all your LPs
                 </p>
               </div>
               <div className="flex flex-col gap-4 border-t pt-4 border-gray-200">
-                <p className="text-[18px] lg:text-[21px] font-[550] leading-normal tracking-[-0.09px] lg:tracking-[-0.1px] text-gray-900">
+                <p className="text-[17px] lg:text-[19px] font-semibold leading-normal tracking-[-0.01em] text-gray-900">
                   Competitive rates
                 </p>
-                <p className="text-[16px] lg:text-[18px] font-[550] leading-normal text-gray-600">
+                <p className="text-[15px] lg:text-[16px] font-normal leading-[1.6] text-gray-600">
                   Low borrowing fees and minimal protocol costs. Borrow more, pay less
                 </p>
               </div>
               <div className="flex flex-col gap-4 border-t pt-4 border-gray-200">
-                <p className="text-[18px] lg:text-[21px] font-[550] leading-normal tracking-[-0.09px] lg:tracking-[-0.1px] text-gray-900">
+                <p className="text-[17px] lg:text-[19px] font-semibold leading-normal tracking-[-0.01em] text-gray-900">
                   Deep liquidity
                 </p>
-                <p className="text-[16px] lg:text-[18px] font-[550] leading-normal text-gray-600">
+                <p className="text-[15px] lg:text-[16px] font-normal leading-[1.6] text-gray-600">
                   Access liquidity across 50+ supported pools for tighter spreads
                 </p>
               </div>
               <div className="flex flex-col gap-4 border-t pt-4 border-gray-200">
-                <p className="text-[18px] lg:text-[21px] font-[550] leading-normal tracking-[-0.09px] lg:tracking-[-0.1px] text-gray-900">
+                <p className="text-[17px] lg:text-[19px] font-semibold leading-normal tracking-[-0.01em] text-gray-900">
                   Pro-grade reliability
                 </p>
-                <p className="text-[16px] lg:text-[18px] font-[550] leading-normal text-gray-600">
+                <p className="text-[15px] lg:text-[16px] font-normal leading-[1.6] text-gray-600">
                   99.99% uptime with automated risk management and MEV protection
                 </p>
               </div>

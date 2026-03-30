@@ -39,12 +39,12 @@ export function InlineFaqSection({ title = "Frequently asked questions.", items 
         <Accordion type="single" collapsible orientation="vertical" className="w-full">
           {items.map((item) => (
             <AccordionItem key={item.value} value={item.value} className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-              <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+              <AccordionTrigger className="type-accordion-question group p-0 text-left text-gray-900 hover:underline gap-4 [&>svg.size-4]:hidden">
                 {item.question}
                 <PlusIcon />
                 <MinusIcon />
               </AccordionTrigger>
-              <AccordionContent className="text-sm md:text-base text-gray-600 pt-2">
+              <AccordionContent className="type-accordion-answer pt-2 text-gray-600">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>

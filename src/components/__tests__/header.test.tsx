@@ -1,142 +1,135 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import Header from '../header'
 
-// Mock next/link
 vi.mock('next/link', () => ({
   default: ({ children, href, ...props }: { children: React.ReactNode; href: string }) => (
     <a href={href} {...props}>{children}</a>
   ),
 }))
 
-// Mock next/navigation
+vi.mock('next/image', () => ({
+  default: ({ src, alt, ...props }: { src: string; alt: string }) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt={alt} {...props} />
+  ),
+}))
+
 vi.mock('next/navigation', () => ({
   usePathname: () => '/',
 }))
 
 describe('Header', () => {
-  beforeEach(() => {
-    // Reset scroll position
-    Object.defineProperty(window, 'scrollY', { value: 0, writable: true })
+  it('renders the home logo link', () => {
+    render(<Header />)
+    expect(screen.getByRole('link', { name: 'AMM Market' })).toHaveAttribute('href', '/')
   })
 
-  it('renders the logo link', () => {
+  it('renders the direct desktop navigation links', () => {
     render(<Header />)
-    const logoLink = screen.getByRole('link', { name: '' })
-    // Logo links to home
-    expect(document.querySelector('a[href="/"]')).toBeInTheDocument()
+
+    expect(screen.getByRole('link', { name: 'Open Spoke' })).toHaveAttribute('href', '/open-spoke')
+    expect(screen.getByRole('link', { name: 'Stable Spoke' })).toHaveAttribute('href', '/stable-spoke')
+    expect(screen.getByRole('link', { name: 'Bluechip Spoke' })).toHaveAttribute('href', '/bluechip-spoke')
+    expect(screen.getByRole('link', { name: 'Developers' })).toHaveAttribute('href', '/developers')
   })
 
-  it('renders Early Access link', () => {
+  it('renders desktop CTA links', () => {
     render(<Header />)
-    const earlyAccessLinks = screen.getAllByText('Early Access')
-    expect(earlyAccessLinks.length).toBeGreaterThan(0)
+
+    expect(screen.getByRole('link', { name: 'Early Access' })).toHaveAttribute('href', '/early-access')
+    expect(screen.getByRole('link', { name: 'Launch App' })).toHaveAttribute('href', '/webapp')
   })
 
-  it('renders mobile menu button', () => {
+  it('does not render the old grouped desktop menu triggers', () => {
     render(<Header />)
-    const menuButton = screen.getByRole('button', { name: 'Toggle menu' })
+
+    expect(screen.queryByRole('button', { name: 'Products menu' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Resources menu' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Developers menu' })).not.toBeInTheDocument()
+  })
+
+  it('renders the mobile menu button', () => {
+    const { container } = render(<Header />)
+
+    const menuButton = screen.getByRole('button', { name: 'Open menu' })
     expect(menuButton).toBeInTheDocument()
-  })
-
-  it('opens mobile menu on button click', async () => {
-    const user = userEvent.setup()
-    render(<Header />)
-
-    const menuButton = screen.getByRole('button', { name: 'Toggle menu' })
-    await user.click(menuButton)
-
-    // Mobile menu should be visible
-    expect(menuButton).toHaveAttribute('aria-expanded', 'true')
-  })
-
-  it('closes mobile menu on second click', async () => {
-    const user = userEvent.setup()
-    render(<Header />)
-
-    const menuButton = screen.getByRole('button', { name: 'Toggle menu' })
-
-    // Open
-    await user.click(menuButton)
-    expect(menuButton).toHaveAttribute('aria-expanded', 'true')
-
-    // Close
-    await user.click(menuButton)
     expect(menuButton).toHaveAttribute('aria-expanded', 'false')
+    expect(menuButton).toHaveClass('rounded-full')
+    expect(container.querySelector('[data-framer-name="Navigation Mobile"]')).toBeInTheDocument()
+    expect(container.querySelector('[data-framer-name="Container"]')).toBeInTheDocument()
+    expect(container.querySelector('[data-framer-name="Menu Button"]')).toBeInTheDocument()
   })
 
-  it('has Products dropdown trigger', () => {
-    render(<Header />)
-    expect(screen.getByRole('button', { name: 'Products menu' })).toBeInTheDocument()
-  })
-
-  it('has Resources dropdown trigger', () => {
-    render(<Header />)
-    expect(screen.getByRole('button', { name: 'Resources menu' })).toBeInTheDocument()
-  })
-
-  it('renders Developers text', () => {
-    render(<Header />)
-    const devElements = screen.getAllByText('Developers')
-    expect(devElements.length).toBeGreaterThan(0)
-  })
-
-  it('has nav element', () => {
-    const { container } = render(<Header />)
-    const nav = container.querySelector('nav')
-    expect(nav).toBeInTheDocument()
-  })
-
-  it('renders spacer div', () => {
-    const { container } = render(<Header />)
-    const spacer = container.querySelector('.h-14.md\\:h-24')
-    expect(spacer).toBeInTheDocument()
-  })
-
-  it('has scroll event listener', () => {
-    const addListenerSpy = vi.spyOn(window, 'addEventListener')
-
-    render(<Header />)
-
-    expect(addListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function), expect.anything())
-  })
-
-  it('shows header initially', () => {
-    const { container } = render(<Header />)
-    const nav = container.querySelector('nav')
-    expect(nav).toHaveClass('translate-y-0')
-  })
-
-  it('mobile menu has Products accordion', async () => {
+  it('opens the full-screen mobile menu', async () => {
     const user = userEvent.setup()
     render(<Header />)
 
-    // Open mobile menu
-    await user.click(screen.getByRole('button', { name: 'Toggle menu' }))
+    await user.click(screen.getByRole('button', { name: 'Open menu' }))
 
-    // Find Products button in mobile menu
-    const productsButtons = screen.getAllByText('Products')
-    expect(productsButtons.length).toBeGreaterThan(0)
+    expect(screen.getByRole('button', { name: 'Open menu' })).toHaveAttribute('aria-expanded', 'true')
+    expect(screen.getByRole('button', { name: 'Close menu' })).toBeInTheDocument()
+    expect(screen.getByRole('navigation', { name: 'Mobile navigation' })).toBeInTheDocument()
   })
 
-  it('mobile menu has Resources accordion', async () => {
+  it('closes the mobile menu from the close button', async () => {
     const user = userEvent.setup()
     render(<Header />)
 
-    await user.click(screen.getByRole('button', { name: 'Toggle menu' }))
+    await user.click(screen.getByRole('button', { name: 'Open menu' }))
+    await user.click(screen.getByRole('button', { name: 'Close menu' }))
 
-    const resourcesButtons = screen.getAllByText('Resources')
-    expect(resourcesButtons.length).toBeGreaterThan(0)
+    await waitFor(() => {
+      expect(screen.queryByRole('navigation', { name: 'Mobile navigation' })).not.toBeInTheDocument()
+    })
   })
 
-  it('mobile menu has Developers accordion', async () => {
+  it('renders the mobile links in the planned order', async () => {
     const user = userEvent.setup()
     render(<Header />)
 
-    await user.click(screen.getByRole('button', { name: 'Toggle menu' }))
+    await user.click(screen.getByRole('button', { name: 'Open menu' }))
 
-    const developersButtons = screen.getAllByText('Developers')
-    expect(developersButtons.length).toBeGreaterThan(0)
+    const mobileNav = screen.getByRole('navigation', { name: 'Mobile navigation' })
+    const mobileLinks = within(mobileNav).getAllByRole('link')
+
+    expect(mobileLinks.map((link) => link.getAttribute('href'))).toEqual([
+      '/',
+      '/open-spoke',
+      '/stable-spoke',
+      '/bluechip-spoke',
+      '/developers',
+      '/lightpaper',
+      '/blog',
+      '/early-access',
+      '/webapp',
+    ])
+
+    expect(within(mobileNav).getByText('01')).toBeInTheDocument()
+    expect(within(mobileNav).getByText('09')).toBeInTheDocument()
+  })
+
+  it('does not render grouped mobile headings', async () => {
+    const user = userEvent.setup()
+    render(<Header />)
+
+    await user.click(screen.getByRole('button', { name: 'Open menu' }))
+
+    const mobileNav = screen.getByRole('navigation', { name: 'Mobile navigation' })
+    expect(within(mobileNav).queryByText('Products')).not.toBeInTheDocument()
+    expect(within(mobileNav).queryByText('Resources')).not.toBeInTheDocument()
+  })
+
+  it('closes the mobile menu after clicking a mobile link', async () => {
+    const user = userEvent.setup()
+    render(<Header />)
+
+    await user.click(screen.getByRole('button', { name: 'Open menu' }))
+    await user.click(within(screen.getByRole('navigation', { name: 'Mobile navigation' })).getByRole('link', { name: /Blog/i }))
+
+    await waitFor(() => {
+      expect(screen.queryByRole('navigation', { name: 'Mobile navigation' })).not.toBeInTheDocument()
+    })
   })
 })

@@ -283,7 +283,7 @@ export default function FaqPage() {
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           {/* Hero section - centered */}
           <div className="text-center py-12 lg:py-20 mb-8">
-            <h1 className="text-4xl lg:text-5xl font-serif italic text-gray-900 mb-10">
+            <h1 className="type-page-title italic text-gray-900 mb-8">
               How can we help?
             </h1>
 
@@ -385,10 +385,10 @@ export default function FaqPage() {
                           value={`item-${index}`}
                           className="border-b border-gray-200 pt-6 pb-6 last:border-b-0"
                         >
-                          <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                          <AccordionTrigger className="type-accordion-question group p-0 text-left text-gray-900 hover:underline gap-4 [&>svg.size-4]:hidden">
                             <div className="flex flex-col text-left">
                               <span>{faq.q}</span>
-                              <span className="text-sm text-blue-600 mt-1 font-normal">Category: {faq.category}</span>
+                              <span className="type-supporting mt-1 font-normal text-blue-600">Category: {faq.category}</span>
                             </div>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -411,7 +411,7 @@ export default function FaqPage() {
                               <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
                             </svg>
                           </AccordionTrigger>
-                          <AccordionContent className="text-sm md:text-base text-gray-600 pt-4 whitespace-pre-line leading-relaxed">
+                          <AccordionContent className="type-accordion-answer whitespace-pre-line pt-4 text-gray-600">
                             {faq.a}
                           </AccordionContent>
                         </AccordionItem>
@@ -429,7 +429,7 @@ export default function FaqPage() {
                         value={`item-${index}`}
                         className="border-b border-gray-200 pt-6 pb-6 last:border-b-0"
                       >
-                        <AccordionTrigger className="group text-base md:text-lg font-medium text-gray-900 hover:underline p-0 gap-4 text-left [&>svg.size-4]:hidden">
+                        <AccordionTrigger className="type-accordion-question group p-0 text-left text-gray-900 hover:underline gap-4 [&>svg.size-4]:hidden">
                           {faq.q}
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -452,7 +452,7 @@ export default function FaqPage() {
                             <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
                           </svg>
                         </AccordionTrigger>
-                        <AccordionContent className="text-sm md:text-base text-gray-600 pt-4 whitespace-pre-line leading-relaxed">
+                        <AccordionContent className="type-accordion-answer whitespace-pre-line pt-4 text-gray-600">
                           {faq.a}
                         </AccordionContent>
                       </AccordionItem>
