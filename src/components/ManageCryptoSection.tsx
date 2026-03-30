@@ -18,10 +18,10 @@ export default function ManageCryptoSection() {
             height={28}
           />
         </div>
-        <h2 className="text-[40px] lg:text-[80px] font-[550] leading-[120%] tracking-[-0.4px] lg:tracking-[-0.2px] text-center text-[#061121] max-w-[327px] md:max-w-full" style={{ maxWidth: 600 }}>
+        <h2 className="type-display-title max-w-[327px] text-center text-[#061121] md:max-w-full" style={{ maxWidth: 600 }}>
           Manage crypto on your terms
         </h2>
-        <div className="text-[16px] lg:text-[18px] font-[550] leading-[130%] text-center text-[#565F76] max-w-[295px] md:max-w-[575px] lg:max-w-[550px]">
+        <div className="type-page-lead max-w-[295px] text-center text-[#565F76] md:max-w-[575px] lg:max-w-[550px]">
           <p>
             Take full control of your crypto and keys, with a non-custodial multi-chain wallet and a full suite of onchain services in one place.
           </p>

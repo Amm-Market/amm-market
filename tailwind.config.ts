@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import tailwindcssAnimate from "tailwindcss-animate"
 const config: Config = {
   darkMode: false,
   content: [
@@ -9,6 +10,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Diatype", "Outfit", "sans-serif"],
+        serif: ["Diatype", "Outfit", "sans-serif"],
+        mono: ["Diatype", "Outfit", "sans-serif"],
+      },
+      fontWeight: {
+        semibold: "700",
+        black: "900",
+      },
       colors: {
         offBlack: "#0a0a0a",
         border: "var(--border)",
@@ -71,7 +81,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 }
 export default config
-

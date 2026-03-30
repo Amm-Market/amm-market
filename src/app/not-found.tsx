@@ -42,7 +42,7 @@ export default function NotFound() {
             </div>
 
             <div className="relative z-10 mt-6">
-              <h2 className="text-5xl font-extrabold text-white mb-6 drop-shadow-lg">Page Not Found</h2>
+              <h2 className="text-5xl font-bold text-white mb-6 drop-shadow-lg">Page Not Found</h2>
               <p className="text-white text-xl mb-10 max-w-md mx-auto font-medium drop-shadow-md">
                 The page you're looking for has drifted away into the clouds.
               </p>
@@ -75,4 +75,3 @@ function Cloud({ width = 200, height = 120 }: { width?: number; height?: number 
     </svg>
   )
 }
-
