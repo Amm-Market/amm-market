@@ -3,6 +3,7 @@ import {
   exportElementToPlainText,
   getExportRootFromElement,
 } from "@/lib/developer-doc-export"
+import { describe, expect, it } from "vitest"
 
 function createRoot(html: string) {
   const root = document.createElement("div")

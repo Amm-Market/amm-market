@@ -3,6 +3,9 @@ import type { Metadata, Viewport } from "next"
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import { GTProvider, T, getGT, getLocaleDirection } from "gt-next/server"
+import { getAlternateLanguageEntries } from "@/lib/locales"
+import getLocale from "@/i18n/getLocale"
 
 /**
  * RootLayout - The main layout wrapper for the entire application.
@@ -23,97 +26,85 @@ import Footer from "@/components/footer"
  * 
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata
  */
-export const metadata: Metadata = {
-  // Default title template - pages can override with their own title
-  title: {
-    default: "AMM Market - Borrow Against LP Positions on Aave v4",
-    template: "%s | AMM Market",
-  },
-  description:
-    "Unlock liquidity from your LP tokens. Borrow up to 80% against Uniswap, Curve, and Balancer positions while continuing to earn trading fees on Aave v4.",
-  keywords: [
-    "DeFi",
-    "LP tokens",
-    "liquidity provider",
-    "collateral",
-    "borrowing",
-    "Aave v4",
-    "Uniswap",
-    "Curve",
-    "Balancer",
-    "AMM",
-    "lending",
-    "yield farming",
-  ],
-  authors: [{ name: "AMM Market Team" }],
-  creator: "AMM Market",
-  publisher: "AMM Market",
-  
-  // Open Graph metadata for social sharing
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://ammmarket.xyz",
-    siteName: "AMM Market",
-    title: "AMM Market - Borrow Against LP Positions on Aave v4",
-    description: "Unlock liquidity from your LP tokens while continuing to earn trading fees.",
-    images: [
-      {
-        url: "/og?title=AMM%20Market&subtitle=Borrow%20Against%20LP%20Positions%20on%20Aave%20v4",
-        width: 1200,
-        height: 630,
-        alt: "AMM Market - DeFi Liquidity Protocol",
-      },
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale()
+  const t = await getGT()
+  const title = t("AMM Market - Borrow Against LP Positions on Aave v4")
+  const description = t(
+    "Unlock liquidity from your LP tokens. Borrow up to 80% against Uniswap, Curve, and Balancer positions while continuing to earn trading fees on Aave v4."
+  )
+
+  return {
+    title: {
+      default: title,
+      template: "%s | AMM Market",
+    },
+    description,
+    keywords: [
+      "DeFi",
+      "LP tokens",
+      "liquidity provider",
+      "collateral",
+      "borrowing",
+      "Aave v4",
+      "Uniswap",
+      "Curve",
+      "Balancer",
+      "AMM",
+      "lending",
+      "yield farming",
     ],
-  },
-  
-  // Twitter card metadata
-  twitter: {
-    card: "summary_large_image",
-    title: "AMM Market - Borrow Against LP Positions",
-    description: "Unlock liquidity from your LP tokens on Aave v4",
-    site: "@dexmini",
-    creator: "@dexmini",
-    images: ["/og?title=AMM%20Market&subtitle=Borrow%20Against%20LP%20Positions%20on%20Aave%20v4"],
-  },
-  
-  // Robots directives
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    authors: [{ name: "AMM Market Team" }],
+    creator: "AMM Market",
+    publisher: "AMM Market",
+    openGraph: {
+      type: "website",
+      locale: locale.replace("-", "_"),
+      url: "https://ammmarket.xyz",
+      siteName: "AMM Market",
+      title,
+      description: t("Unlock liquidity from your LP tokens while continuing to earn trading fees."),
+      images: [
+        {
+          url: "/og?title=AMM%20Market&subtitle=Borrow%20Against%20LP%20Positions%20on%20Aave%20v4",
+          width: 1200,
+          height: 630,
+          alt: t("AMM Market - DeFi Liquidity Protocol"),
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("AMM Market - Borrow Against LP Positions"),
+      description: t("Unlock liquidity from your LP tokens on Aave v4"),
+      site: "@dexmini",
+      creator: "@dexmini",
+      images: ["/og?title=AMM%20Market&subtitle=Borrow%20Against%20LP%20Positions%20on%20Aave%20v4"],
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-  
-  // Verification tokens (add your own)
-  // verification: {
-  //   google: "your-google-verification-code",
-  // },
-  
-  // App metadata
-  applicationName: "AMM Market",
-  category: "Finance",
-  
-  // Icons
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-  
-  // Manifest for PWA (if needed)
-  // manifest: "/manifest.json",
-  
-  // Canonical URL
-  metadataBase: new URL("https://ammmarket.xyz"),
-  alternates: {
-    canonical: "/",
-  },
+    applicationName: "AMM Market",
+    category: "Finance",
+    icons: {
+      icon: "/favicon.ico",
+      shortcut: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
+    },
+    metadataBase: new URL("https://ammmarket.xyz"),
+    alternates: {
+      canonical: "/",
+      languages: getAlternateLanguageEntries("/"),
+    },
+  }
 }
 
 /**
@@ -164,13 +155,17 @@ const websiteSchema = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const locale = await getLocale()
+  const direction = await getLocaleDirection(locale)
+  const t = await getGT()
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} dir={direction} suppressHydrationWarning>
       <head>
         {/* Preload critical hero image for faster LCP */}
         <link rel="preload" href="/images/Hero__4_.png" as="image" />
@@ -192,18 +187,22 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-white font-sans">
-        {/* Skip to main content link for accessibility - WCAG 2.4.1 */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
-        >
-          Skip to main content
-        </a>
-        <div className="flex min-h-screen flex-col">
-          <Header />
-          <main id="main-content" className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <GTProvider locale={locale}>
+          {/* Skip to main content link for accessibility - WCAG 2.4.1 */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+          >
+            {t("Skip to main content")}
+          </a>
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <main id="main-content" className="flex-1">
+              <T>{children}</T>
+            </main>
+            <Footer />
+          </div>
+        </GTProvider>
       </body>
     </html>
   )
