@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 export const metadata: Metadata = {
@@ -41,7 +42,7 @@ export default function ContractsArchitecturePage() {
         <section id="security-challenges" className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Security Challenges in DeFi</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            DeFi's core advantages—self-custody, global accessibility, the removal of intermediaries, 
+            DeFi&apos;s core advantages—self-custody, global accessibility, the removal of intermediaries, 
             and user privacy—also introduce unique security challenges. These benefits can be misused 
             by bad actors for theft, fraud, or illicit activity.
           </p>
@@ -79,7 +80,9 @@ export default function ContractsArchitecturePage() {
             </li>
 
             <li>
-              <span className="font-semibold text-gray-900">Community-Driven Bug Bounty Programs</span>
+              <Link href="/developers/safety/bug-bounty" className="font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+                Community-Driven Bug Bounty Programs
+              </Link>
               <p className="text-gray-600 text-sm mt-0.5">
                 Ethical hackers and developers are incentivized to identify vulnerabilities, ensuring 
                 continuous improvement and rapid mitigation of potential threats.
