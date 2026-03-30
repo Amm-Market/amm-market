@@ -2,6 +2,10 @@ import { render, screen } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import Footer from '../footer'
 
+vi.mock('gt-next', () => ({
+  T: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+}))
+
 // Mock next/link
 vi.mock('next/link', () => ({
   default: ({ children, href, ...props }: { children: React.ReactNode; href: string }) => (

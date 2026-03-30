@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withGTConfig } from "gt-next/config";
 
 /**
  * Security headers configuration for the application.
@@ -143,4 +144,8 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withGTConfig(nextConfig, {
+  config: "./gt.config.json",
+  getLocalePath: "./src/i18n/getLocale.ts",
+  getRegionPath: "./src/i18n/getRegion.ts",
+});
