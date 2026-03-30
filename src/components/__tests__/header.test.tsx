@@ -3,6 +3,10 @@ import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi } from 'vitest'
 import Header from '../header'
 
+const { pushMock } = vi.hoisted(() => ({
+  pushMock: vi.fn(),
+}))
+
 vi.mock('next/link', () => ({
   default: ({ children, href, ...props }: { children: React.ReactNode; href: string }) => (
     <a href={href} {...props}>{children}</a>
@@ -18,6 +22,57 @@ vi.mock('next/image', () => ({
 
 vi.mock('next/navigation', () => ({
   usePathname: () => '/',
+  useRouter: () => ({
+    push: pushMock,
+  }),
+}))
+
+vi.mock('gt-next/client', () => ({
+  useGT: () => (value: string) => value,
+  useLocaleSelector: () => ({
+    locale: 'en-US',
+    locales: ['en-US', 'es-ES', 'fr-FR'],
+    setLocale: vi.fn(),
+    getLocaleProperties: (locale: string) => {
+      const properties: Record<string, Record<string, string>> = {
+        'en-US': {
+          code: 'en-US',
+          name: 'English (United States)',
+          nativeName: 'English (United States)',
+          languageName: 'English',
+          nativeLanguageName: 'English',
+          nameWithRegionCode: 'English (United States)',
+          nativeNameWithRegionCode: 'English (United States)',
+          regionName: 'United States',
+          nativeRegionName: 'United States',
+        },
+        'es-ES': {
+          code: 'es-ES',
+          name: 'Spanish (Spain)',
+          nativeName: 'Español (España)',
+          languageName: 'Spanish',
+          nativeLanguageName: 'Español',
+          nameWithRegionCode: 'Spanish (Spain)',
+          nativeNameWithRegionCode: 'Español (España)',
+          regionName: 'Spain',
+          nativeRegionName: 'España',
+        },
+        'fr-FR': {
+          code: 'fr-FR',
+          name: 'French (France)',
+          nativeName: 'Français (France)',
+          languageName: 'French',
+          nativeLanguageName: 'Français',
+          nameWithRegionCode: 'French (France)',
+          nativeNameWithRegionCode: 'Français (France)',
+          regionName: 'France',
+          nativeRegionName: 'France',
+        },
+      }
+
+      return properties[locale]
+    },
+  }),
 }))
 
 describe('Header', () => {
@@ -60,6 +115,12 @@ describe('Header', () => {
     expect(container.querySelector('[data-framer-name="Navigation Mobile"]')).toBeInTheDocument()
     expect(container.querySelector('[data-framer-name="Container"]')).toBeInTheDocument()
     expect(container.querySelector('[data-framer-name="Menu Button"]')).toBeInTheDocument()
+  })
+
+  it('renders language picker triggers in desktop and mobile chrome', () => {
+    render(<Header />)
+
+    expect(screen.getAllByRole('button', { name: 'Choose language' })).toHaveLength(2)
   })
 
   it('opens the full-screen mobile menu', async () => {
@@ -131,5 +192,16 @@ describe('Header', () => {
     await waitFor(() => {
       expect(screen.queryByRole('navigation', { name: 'Mobile navigation' })).not.toBeInTheDocument()
     })
+  })
+
+  it('opens the language dialog from the picker trigger', async () => {
+    const user = userEvent.setup()
+    render(<Header />)
+
+    await user.click(screen.getAllByRole('button', { name: 'Choose language' })[0])
+
+    expect(screen.getByRole('dialog', { name: 'Language and region' })).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('Search')).toBeInTheDocument()
+    expect(screen.getByText('Español')).toBeInTheDocument()
   })
 })
