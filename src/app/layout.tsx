@@ -7,6 +7,7 @@ import { GTProvider, T, getGT, getLocaleDirection } from "gt-next/server"
 import { getAlternateLanguageEntries } from "@/lib/locales"
 import getLocale from "@/i18n/getLocale"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 /**
  * RootLayout - The main layout wrapper for the entire application.
@@ -204,7 +205,7 @@ export default async function RootLayout({
             <Footer />
           </div>
         </GTProvider>
-        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
