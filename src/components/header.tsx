@@ -4,6 +4,9 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
+import { useGT } from "gt-next/client"
+import LanguageRegionPicker from "@/components/language-region-picker"
+import { stripLocalePrefix } from "@/lib/locales"
 
 interface NavLink {
   href: string
@@ -46,13 +49,11 @@ function isActivePath(pathname: string | null, href: string): boolean {
 }
 
 export default function Header(): React.JSX.Element {
+  const t = useGT()
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [hoveredDesktopLink, setHoveredDesktopLink] = useState<string | null>(null)
-
-  useEffect(() => {
-    setMobileMenuOpen(false)
-  }, [pathname])
+  const normalizedPathname = stripLocalePrefix(pathname || "/")
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow
@@ -87,7 +88,7 @@ export default function Header(): React.JSX.Element {
           <div className="inline-flex shrink-0 items-center">
             <Link
               href="/"
-              aria-label="AMM Market"
+              aria-label={t("AMM Market")}
               data-framer-name="Logo"
               className="inline-flex items-center"
             >
@@ -95,14 +96,14 @@ export default function Header(): React.JSX.Element {
               <img
                 src={logoSrc}
                 alt="Aave Logo"
-                className="h-[22px] w-auto sm:h-[24px]"
+              className="h-[22px] w-auto sm:h-[24px]"
               />
             </Link>
           </div>
 
           <nav aria-label="Primary navigation" className="hidden flex-1 items-center gap-8 md:flex lg:gap-10">
             {desktopLinks.map((link) => {
-              const isActive = isActivePath(pathname, link.href)
+              const isActive = isActivePath(normalizedPathname, link.href)
               const showUnderline = isActive || hoveredDesktopLink === link.href
 
               return (
@@ -125,7 +126,7 @@ export default function Header(): React.JSX.Element {
                       isActive ? "text-black" : "text-black/90 hover:text-black"
                     }`}
                   >
-                    <span>{link.label}</span>
+                    <span>{t(link.label)}</span>
                     <motion.span
                       initial={false}
                       className="absolute bottom-0 left-0 h-px w-full origin-left bg-black"
@@ -142,12 +143,13 @@ export default function Header(): React.JSX.Element {
           </nav>
 
           <div className="ml-auto hidden items-center gap-3 md:flex">
+            <LanguageRegionPicker />
             <motion.div whileHover={{ y: -1.5, scale: 1.01 }} transition={{ duration: 0.18, ease: "easeOut" }}>
               <Link
                 href={ctas[0].href}
                 className="inline-flex h-10 items-center justify-center rounded-full bg-[#ece9e4] px-4 text-[13px] font-medium tracking-[-0.03em] text-black transition hover:bg-[#e4e0db]"
               >
-                {ctas[0].label}
+                {t(ctas[0].label)}
               </Link>
             </motion.div>
             <motion.div whileHover={{ y: -1.5, scale: 1.01 }} transition={{ duration: 0.18, ease: "easeOut" }}>
@@ -155,7 +157,7 @@ export default function Header(): React.JSX.Element {
                 href={ctas[1].href}
                 className="inline-flex h-10 items-center justify-center rounded-full bg-black px-4 text-[13px] font-medium tracking-[-0.03em] text-white transition hover:bg-black/88"
               >
-                {ctas[1].label}
+                {t(ctas[1].label)}
               </Link>
             </motion.div>
           </div>
@@ -165,9 +167,10 @@ export default function Header(): React.JSX.Element {
             data-framer-name="Navigation Mobile"
           >
             <div
-              className="flex items-center justify-end"
+              className="flex items-center justify-end gap-2"
               data-framer-name="Container"
             >
+              <LanguageRegionPicker mobile />
               <div
                 className="rounded-full"
                 data-framer-name="Menu Button"
@@ -176,7 +179,7 @@ export default function Header(): React.JSX.Element {
                   type="button"
                   whileTap={{ scale: 0.975 }}
                   className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/12 bg-white text-black shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition hover:border-black/18 hover:bg-black/[0.02]"
-                  aria-label="Open menu"
+                  aria-label={t("Open menu")}
                   aria-expanded={mobileMenuOpen}
                   aria-controls="mobile-site-nav"
                   onClick={() => setMobileMenuOpen(true)}
@@ -214,7 +217,7 @@ export default function Header(): React.JSX.Element {
             >
               <Link
                 href="/"
-                aria-label="AMM Market"
+                aria-label={t("AMM Market")}
                 className="inline-flex items-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -230,7 +233,7 @@ export default function Header(): React.JSX.Element {
                 type="button"
                 whileTap={{ scale: 0.975 }}
                 className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/12 bg-white text-black shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition hover:border-black/18 hover:bg-black/[0.02]"
-                aria-label="Close menu"
+                aria-label={t("Close menu")}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
@@ -259,10 +262,10 @@ export default function Header(): React.JSX.Element {
                 },
               }}
               className="h-[calc(100dvh-4rem)] overflow-y-auto px-4 pb-10 pt-10 sm:px-6"
-            >
+              >
               <ol>
                 {mobileLinks.map((link, index) => {
-                  const isActive = isActivePath(pathname, link.href)
+                  const isActive = isActivePath(normalizedPathname, link.href)
 
                   return (
                     <motion.li
@@ -283,7 +286,7 @@ export default function Header(): React.JSX.Element {
                             isActive ? "text-black" : "text-black/95"
                           }`}
                         >
-                          {link.label}
+                          {t(link.label)}
                         </span>
                         <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-black/75">
                           {String(index + 1).padStart(2, "0")}

@@ -35,6 +35,74 @@ const LogoVertical = ({ className = "" }: { className?: string }) => (
 
 type LogoVariant = "horizontal" | "vertical" | "icon"
 
+const BRAND_KIT_URL = "#"
+
+const BrandKitBook = () => (
+  <a
+    href={BRAND_KIT_URL}
+    className="group relative mx-auto block w-fit no-underline"
+    aria-label="Download the brand kit"
+  >
+    <div className="relative [perspective:1600px]">
+      <div className="relative h-[300px] w-[214px] [transform-style:preserve-3d] [transform:rotateY(-16deg)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:[transform:rotateY(-22deg)_rotateX(6deg)_translateY(-6px)]">
+        <div
+          aria-hidden="true"
+          className="absolute inset-y-[10px] left-[-10px] w-[14px] rounded-l-[12px] bg-zinc-200"
+          style={{ transform: "rotateY(74deg)", transformOrigin: "right center" }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 rounded-[24px] border border-black/10 bg-zinc-100"
+          style={{ transform: "translate3d(10px, 6px, -6px)" }}
+        />
+        <div className="absolute inset-0 flex flex-col rounded-[24px] border border-black/10 bg-[linear-gradient(180deg,#ffffff_0%,#f6f6f3_100%)] px-6 py-6 shadow-[0_28px_60px_rgba(0,0,0,0.16)]">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-gray-500">
+            AMM Market
+          </span>
+
+          <div className="mt-8 flex h-16 w-16 items-center justify-center rounded-[18px] bg-gray-950 text-white shadow-[0_10px_28px_rgba(0,0,0,0.18)]">
+            <div className="grid grid-cols-2 gap-1.5">
+              <span className="h-3 w-3 rounded-full bg-[#45DEC4]" />
+              <span className="h-3 w-3 rounded-full bg-[#0070F3]" />
+              <span className="h-3 w-3 rounded-full bg-[#E5484D]" />
+              <span className="h-3 w-3 rounded-full bg-white/90" />
+            </div>
+          </div>
+
+          <div className="mt-8 space-y-1.5">
+            <p className="text-[28px] font-semibold leading-[0.95] tracking-[-0.07em] text-gray-950">
+              AMM Market
+            </p>
+            <p className="text-[28px] font-semibold leading-[0.95] tracking-[-0.07em] text-gray-950">
+              Brand Kit
+            </p>
+          </div>
+
+          <div className="mt-auto flex items-end justify-between gap-4">
+            <p className="max-w-[9rem] text-[12px] leading-5 text-gray-500">
+              Marks, typography, color, and usage standards.
+            </p>
+            <span className="rounded-full border border-black/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-gray-500">
+              2026
+            </span>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          className="absolute inset-y-[10px] right-[-10px] w-[14px] rounded-r-[12px] bg-zinc-200"
+          style={{ transform: "rotateY(88deg)", transformOrigin: "left center" }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 rounded-[24px] border border-black/8 bg-zinc-50/90"
+          style={{ transform: "translateZ(-10px)" }}
+        />
+      </div>
+      <div className="mx-auto mt-5 h-6 w-36 rounded-full bg-black/12 blur-xl transition-all duration-500 group-hover:w-40 group-hover:bg-black/18" />
+    </div>
+  </a>
+)
+
 export default function BrandPage() {
   const [copiedColor, setCopiedColor] = useState<string | null>(null)
   const [copiedSvg, setCopiedSvg] = useState(false)
@@ -98,31 +166,43 @@ export default function BrandPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      {/* Hero Section - Soft Pastel Aesthetic */}
-      <section className="relative flex items-center border-b border-gray-100 bg-[#faf9f7] py-16 md:min-h-[50vh] md:py-24 overflow-hidden">
-        {/* Soft gradient blobs */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] translate-x-1/4 -translate-y-1/4">
-          <div className="absolute inset-0 bg-[radial-gradient(circle,#fce7f3_0%,#fbcfe8_40%,transparent_70%)] opacity-80 blur-3xl" />
+      <section className="relative overflow-hidden border-b border-gray-200 bg-white py-12 md:py-16">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gray-200" />
+        <div aria-hidden="true" className="pointer-events-none absolute right-0 top-0 hidden md:block md:h-9 md:w-9">
+          <div className="absolute right-0 top-0 h-9 w-px bg-gray-200" />
+          <div className="absolute right-0 top-0 h-px w-9 bg-gray-200" />
         </div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] -translate-x-1/4 translate-y-1/4">
-          <div className="absolute inset-0 bg-[radial-gradient(circle,#dbeafe_0%,#bfdbfe_40%,transparent_70%)] opacity-70 blur-3xl" />
-        </div>
-        <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] -translate-x-1/2 -translate-y-1/2">
-          <div className="absolute inset-0 bg-[radial-gradient(circle,#fef3c7_0%,#fde68a_30%,transparent_60%)] opacity-40 blur-3xl" />
-        </div>
-        
-        {/* Subtle grain texture */}
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')]" />
 
-        <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 w-full">
-          <h1 className="type-display-title text-gray-900 mb-6">
-            Dex Mini<br />
-            <strong className="font-black italic tracking-[-0.02em] text-[#0048ba]">Brand Kit</strong>
-          </h1>
-          <button className="inline-flex items-center gap-2 px-6 py-4 bg-gray-900 text-white rounded-2xl font-medium text-lg shadow-lg shadow-gray-900/10 hover:bg-gray-800 hover:shadow-xl hover:shadow-gray-900/15 hover:-translate-y-0.5 transition-all active:scale-95">
-            Download Brand Kit
-            <Download className="w-5 h-5" />
-          </button>
+        <div className="relative z-10 mx-auto max-w-[1200px] px-4 sm:px-6">
+          <div className="relative grid items-center gap-10 md:grid-cols-3 md:gap-12">
+            <div aria-hidden="true" className="pointer-events-none absolute bottom-0 top-0 left-[66.666%] hidden w-px bg-gray-200 md:block" />
+
+            <div className="order-2 flex flex-col items-center gap-5 text-center md:order-1 md:col-span-2 md:items-start md:pr-14 md:text-left">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500">
+                Editorial Callout
+              </span>
+              <div className="space-y-4">
+                <h1 className="text-[2rem] font-semibold leading-[0.96] tracking-[-0.07em] text-gray-950 md:text-[3rem]">
+                  Brand Systems 101.
+                </h1>
+                <p className="max-w-[44rem] text-[1.05rem] font-medium leading-[1.45] tracking-[-0.03em] text-gray-900 md:text-[1.3rem]">
+                  See how we build and apply the AMM Market brand. Learn about our marks,
+                  typography, colors, and commitment to high polish.
+                </p>
+              </div>
+              <a
+                href={BRAND_KIT_URL}
+                className="inline-flex items-center gap-2 rounded-full bg-gray-950 px-5 py-3 text-sm font-medium tracking-[-0.02em] text-white transition hover:bg-black"
+              >
+                <span>Download the brand kit</span>
+                <Download className="h-4 w-4" />
+              </a>
+            </div>
+
+            <div className="order-1 flex items-center justify-center md:order-2 md:col-span-1 md:justify-end md:pl-10">
+              <BrandKitBook />
+            </div>
+          </div>
         </div>
       </section>
 

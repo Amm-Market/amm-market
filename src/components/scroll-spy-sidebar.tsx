@@ -38,6 +38,7 @@
  * @see src/app/developers - Used in documentation pages
  */
 import { useEffect, useRef, useState } from "react"
+import { useGT } from "gt-next/client"
 
 /** Represents a trackable section on the page */
 interface Section {
@@ -69,6 +70,7 @@ const colorClasses = {
 }
 
 export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" }: ScrollSpySidebarProps) {
+  const t = useGT()
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || "")
   const sidebarRef = useRef<HTMLDivElement>(null)
   const colors = colorClasses[sectionColor]
@@ -156,13 +158,13 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
     >
       <div className="flex flex-col items-start justify-start gap-0">
         <p className="type-meta-label mb-3 pl-6 text-gray-500">
-          On this page
+          {t("On this page")}
         </p>
 
         {/* Page summary at top */}
         {pageSummary && (
           <p className="type-sidebar-summary mb-4 max-w-[220px] pl-6 text-gray-500">
-            {pageSummary}
+            {t(pageSummary)}
           </p>
         )}
 
@@ -213,7 +215,7 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
                       : "text-gray-500 hover:text-gray-900 hover:opacity-80"
                   }`}
                 >
-                  <p className="type-sidebar-link line-clamp-2">{section.title}</p>
+                  <p className="type-sidebar-link line-clamp-2">{t(section.title)}</p>
                 </a>
               </div>
             )
