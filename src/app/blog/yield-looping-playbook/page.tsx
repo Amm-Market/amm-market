@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const tableOfContents = [
   { id: "what-is-looping", title: "What Yield Looping Is" },
-  { id: "why-amm-market", title: "Why AMM Market Is Suited for Looping" },
+  { id: "why-amm-market", title: "Why Avana Is Suited for Looping" },
   { id: "safe-patterns", title: "Safe Looping Patterns" },
   { id: "leverage-guidelines", title: "Leverage Guidelines" },
   { id: "stress-testing", title: "Stress Testing Mindset" },
@@ -27,12 +27,12 @@ export default function YieldLoopingPlaybookPage() {
       tableOfContents={tableOfContents}
       prevPost={{
         slug: "unleashing-lp-tokens",
-        title: "Unleashing Your LP Tokens with Aave's AMM Market",
+        title: "Unleashing Your LP Tokens with Aave's Avana",
         date: "January 15, 2026",
       }}
       nextPost={{
         slug: "security-deep-dive",
-        title: "Security Deep-Dive: How AMM Market Manages LP Risk",
+        title: "Security Deep-Dive: How Avana Manages LP Risk",
         date: "January 13, 2026",
       }}
     >
@@ -41,7 +41,7 @@ export default function YieldLoopingPlaybookPage() {
           For experienced traders, LP collateral unlocks strategies that extend far beyond passive fee collection. 
           One of the most powerful is yield looping, where borrowed capital is redeployed to increase exposure and 
           yield. When executed well, looping can materially improve capital efficiency. When executed poorly, it 
-          compounds risk quickly. This playbook focuses on how to loop responsibly using LP collateral within AMM Market.
+          compounds risk quickly. This playbook focuses on how to loop responsibly using LP collateral within Avana.
         </p>
       </section>
 
@@ -49,7 +49,7 @@ export default function YieldLoopingPlaybookPage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">What Yield Looping Is</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          Yield looping follows a simple pattern. A user deposits an LP position into AMM Market, borrows against 
+          Yield looping follows a simple pattern. A user deposits an LP position into Avana, borrows against 
           that position, and redeploys the borrowed capital to create additional yield. This is often done by adding 
           more liquidity to the same pool or allocating capital to complementary yield strategies. The process can 
           be repeated multiple times, with each loop increasing both fee generation and exposure to price movements.
@@ -65,10 +65,10 @@ export default function YieldLoopingPlaybookPage() {
       </section>
 
       <section id="why-amm-market" className="mb-12 scroll-mt-24">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900">Why AMM Market Is Suited for Looping</h2>
+        <h2 className="text-2xl font-bold mb-6 text-gray-900">Why Avana Is Suited for Looping</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          AMM Market is designed around position aware risk management. Rather than treating LP tokens as static 
+          Avana is designed around position aware risk management. Rather than treating LP tokens as static 
           collateral, the protocol accounts for price ranges, pool volatility, liquidity depth, and fee behavior. 
           Borrowing limits adjust dynamically as market conditions change.
         </p>
@@ -76,7 +76,7 @@ export default function YieldLoopingPlaybookPage() {
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 not-prose">
           <h3 className="font-semibold text-amber-900 mb-2">Why This Matters for Looping</h3>
           <p className="text-gray-700">
-            Traditional lending assumptions break down with LP positions because risk is path dependent. AMM Market&apos;s 
+            Traditional lending assumptions break down with LP positions because risk is path dependent. Avana&apos;s 
             framework allows looping within defined safety margins rather than relying on fixed loan to value ratios 
             that ignore underlying pool dynamics.
           </p>
@@ -266,7 +266,7 @@ export default function YieldLoopingPlaybookPage() {
         
         <p className="text-gray-700 leading-relaxed mb-6">
           Yield looping is not a strategy for everyone. It requires a deep understanding of LP mechanics, interest 
-          rate dynamics, and liquidation behavior. When applied with discipline, AMM Market provides a controlled 
+          rate dynamics, and liquidation behavior. When applied with discipline, Avana provides a controlled 
           environment to deploy leverage responsibly.
         </p>
 

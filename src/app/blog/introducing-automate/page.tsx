@@ -3,7 +3,7 @@ import BlogPostLayout from "@/components/blog-post-layout"
 
 export const metadata: Metadata = {
   title: "Introducing Automate: Set-and-Forget LP Management",
-  description: "Meet Automate—AMM Market's automation layer for hands-off LP management. Auto-compound fees, rebalance positions, and protect against liquidation automatically.",
+  description: "Meet Automate—Avana's automation layer for hands-off LP management. Auto-compound fees, rebalance positions, and protect against liquidation automatically.",
 }
 
 const tableOfContents = [
@@ -21,12 +21,12 @@ export default function IntroducingAutomatePage() {
     <BlogPostLayout
       title="Introducing Automate: Set-and-Forget LP Management"
       date="January 23, 2026"
-      description="Meet Automate—AMM Market's automation layer for hands-off LP management. Auto-compound fees, rebalance positions, and protect against liquidation automatically."
+      description="Meet Automate—Avana's automation layer for hands-off LP management. Auto-compound fees, rebalance positions, and protect against liquidation automatically."
       image="/images/blog/introducing-automate.png"
       tableOfContents={tableOfContents}
       nextPost={{
         slug: "v1-1-release",
-        title: "AMM Market v1.1: New Features and Improvements",
+        title: "Avana v1.1: New Features and Improvements",
         date: "January 22, 2026",
       }}
       // This is the newest post, no prevPost
@@ -42,7 +42,7 @@ export default function IntroducingAutomatePage() {
         <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6 rounded-xl text-white not-prose">
           <h3 className="text-xl font-bold mb-3">Introducing Automate</h3>
           <p>
-            Automate is AMM Market&apos;s built-in automation layer that handles routine LP management tasks 
+            Automate is Avana&apos;s built-in automation layer that handles routine LP management tasks 
             for you. Set your preferences once, and let the system optimize your positions 24/7.
           </p>
         </div>
@@ -281,7 +281,7 @@ export default function IntroducingAutomatePage() {
           <ol className="space-y-4">
             <li className="flex items-start gap-3">
               <span className="bg-indigo-500 text-white text-sm font-semibold px-2 py-0.5 rounded">1</span>
-              <span>Navigate to the <strong>Automate</strong> tab in your AMM Market dashboard</span>
+              <span>Navigate to the <strong>Automate</strong> tab in your Avana dashboard</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="bg-indigo-500 text-white text-sm font-semibold px-2 py-0.5 rounded">2</span>
@@ -351,7 +351,7 @@ export default function IntroducingAutomatePage() {
         <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6 rounded-lg text-white not-prose">
           <h3 className="text-xl font-bold mb-3">Try Automate Today</h3>
           <p>
-            Automate is available now for all AMM Market users. Enable it on your positions and 
+            Automate is available now for all Avana users. Enable it on your positions and 
             experience hands-off LP management. Your future self will thank you.
           </p>
         </div>

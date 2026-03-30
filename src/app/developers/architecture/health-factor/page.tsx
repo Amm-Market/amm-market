@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Health Factor",
   description:
-    "How AMM Market compares adjusted collateral value and debt inside a Borrow Spoke to determine position safety and liquidation eligibility.",
+    "How Avana compares adjusted collateral value and debt inside a Borrow Spoke to determine position safety and liquidation eligibility.",
 }
 
 const sections = [
@@ -34,7 +34,7 @@ export default function HealthFactorPage() {
           <p className="mb-4 leading-relaxed text-gray-600">
             The health factor is the protocol&apos;s shorthand for the relationship between
             risk-adjusted collateral value and outstanding debt. It is driven by the same valuation,
-            collateral-factor, and liquidation assumptions used everywhere else in AMM Market.
+            collateral-factor, and liquidation assumptions used everywhere else in Avana.
           </p>
           <p className="text-sm text-gray-600">
             When health deteriorates far enough that debt exceeds the allowed borrowing boundary, the
@@ -128,7 +128,7 @@ export default function HealthFactorPage() {
 
       <ScrollSpySidebar
         sections={sections}
-        pageSummary="How AMM Market measures account safety inside a Borrow Spoke using the same risk-adjusted collateral model that drives liquidation."
+        pageSummary="How Avana measures account safety inside a Borrow Spoke using the same risk-adjusted collateral model that drives liquidation."
         sectionColor="violet"
       />
     </div>

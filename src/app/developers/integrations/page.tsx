@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Supported Integrations",
   description:
-    "Governance- and deployment-aware overview of AMM Market integrations, including supported venue families, enablement criteria, and integration review expectations.",
+    "Governance- and deployment-aware overview of Avana integrations, including supported venue families, enablement criteria, and integration review expectations.",
 }
 
 const sections = [
@@ -42,14 +42,14 @@ export default function SupportedIntegrationsPage() {
 
           title="Supported Integrations"
 
-          description="Reference guide for the venue families AMM Market can support and the review gates used before any integration is enabled."
+          description="Reference guide for the venue families Avana can support and the review gates used before any integration is enabled."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            AMM Market does not treat every AMM venue as interchangeable. Support depends on whether
+            Avana does not treat every AMM venue as interchangeable. Support depends on whether
             the protocol can price a position conservatively, unwind it in stressed conditions, and
             manage it within the Borrow Spoke and Hub risk framework.
           </p>
@@ -105,7 +105,7 @@ export default function SupportedIntegrationsPage() {
 
       <ScrollSpySidebar
         sections={sections}
-        pageSummary="Governance-aware overview of which AMM venue families AMM Market can safely support."
+        pageSummary="Governance-aware overview of which AMM venue families Avana can safely support."
         sectionColor="cyan"
       />
     </div>

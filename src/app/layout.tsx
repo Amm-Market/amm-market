@@ -3,11 +3,19 @@ import type { Metadata, Viewport } from "next"
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import { GTProvider, T, getGT, getLocaleDirection } from "gt-next/server"
-import { getAlternateLanguageEntries } from "@/lib/locales"
-import getLocale from "@/i18n/getLocale"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
+import {
+  buildOgImagePath,
+  DEFAULT_OG_DESCRIPTION,
+  DEFAULT_OG_SUBTITLE,
+  DEFAULT_SITE_DESCRIPTION,
+  LOGO_PATH,
+  SITE_NAME,
+  SITE_URL,
+  SOCIAL_HANDLE,
+  siteRoutes,
+} from "@/lib/site"
 
 /**
  * RootLayout - The main layout wrapper for the entire application.
@@ -28,18 +36,14 @@ import { Analytics } from "@vercel/analytics/next"
  * 
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata
  */
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale()
-  const t = await getGT()
-  const title = t("AMM Market - Borrow Against LP Positions on Aave v4")
-  const description = t(
-    "Unlock liquidity from your LP tokens. Borrow up to 80% against Uniswap, Curve, and Balancer positions while continuing to earn trading fees on Aave v4."
-  )
+export function generateMetadata(): Metadata {
+  const title = `${SITE_NAME} - Borrow Against LP Positions on Aave v4`
+  const description = DEFAULT_SITE_DESCRIPTION
 
   return {
     title: {
       default: title,
-      template: "%s | AMM Market",
+      template: `%s | ${SITE_NAME}`,
     },
     description,
     keywords: [
@@ -56,32 +60,35 @@ export async function generateMetadata(): Promise<Metadata> {
       "lending",
       "yield farming",
     ],
-    authors: [{ name: "AMM Market Team" }],
-    creator: "AMM Market",
-    publisher: "AMM Market",
+    authors: [{ name: `${SITE_NAME} Team` }],
+    creator: SITE_NAME,
+    publisher: SITE_NAME,
     openGraph: {
       type: "website",
-      locale: locale.replace("-", "_"),
-      url: "https://ammmarket.xyz",
-      siteName: "AMM Market",
+      locale: "en_US",
+      url: SITE_URL,
+      siteName: SITE_NAME,
       title,
-      description: t("Unlock liquidity from your LP tokens while continuing to earn trading fees."),
+      description: DEFAULT_OG_DESCRIPTION,
       images: [
         {
-          url: "/og?title=AMM%20Market&subtitle=Borrow%20Against%20LP%20Positions%20on%20Aave%20v4",
+          url: buildOgImagePath({
+            title: SITE_NAME,
+            subtitle: DEFAULT_OG_SUBTITLE,
+          }),
           width: 1200,
           height: 630,
-          alt: t("AMM Market - DeFi Liquidity Protocol"),
+          alt: `${SITE_NAME} - DeFi Liquidity Protocol`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: t("AMM Market - Borrow Against LP Positions"),
-      description: t("Unlock liquidity from your LP tokens on Aave v4"),
-      site: "@dexmini",
-      creator: "@dexmini",
-      images: ["/og?title=AMM%20Market&subtitle=Borrow%20Against%20LP%20Positions%20on%20Aave%20v4"],
+      title: `${SITE_NAME} - Borrow Against LP Positions`,
+      description: "Unlock liquidity from your LP tokens on Aave v4",
+      site: SOCIAL_HANDLE,
+      creator: SOCIAL_HANDLE,
+      images: [buildOgImagePath({ title: SITE_NAME, subtitle: DEFAULT_OG_SUBTITLE })],
     },
     robots: {
       index: true,
@@ -94,17 +101,16 @@ export async function generateMetadata(): Promise<Metadata> {
         "max-snippet": -1,
       },
     },
-    applicationName: "AMM Market",
+    applicationName: SITE_NAME,
     category: "Finance",
     icons: {
       icon: "/favicon.ico",
       shortcut: "/favicon.ico",
       apple: "/apple-touch-icon.png",
     },
-    metadataBase: new URL("https://ammmarket.xyz"),
+    metadataBase: new URL(SITE_URL),
     alternates: {
       canonical: "/",
-      languages: getAlternateLanguageEntries("/"),
     },
   }
 }
@@ -126,9 +132,9 @@ export const viewport: Viewport = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "AMM Market",
-  url: "https://ammmarket.xyz",
-  logo: "https://ammmarket.xyz/aave-logo.svg",
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}${LOGO_PATH}`,
   description: "DeFi protocol enabling borrowing against LP positions on Aave v4",
   sameAs: [
     "https://twitter.com/dexmini",
@@ -138,7 +144,7 @@ const organizationSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer support",
-    url: "https://ammmarket.xyz/faq",
+    url: `${SITE_URL}${siteRoutes.faq}`,
   },
 }
 
@@ -148,29 +154,29 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "AMM Market",
-  url: "https://ammmarket.xyz",
+  name: SITE_NAME,
+  url: SITE_URL,
   potentialAction: {
     "@type": "SearchAction",
-    target: "https://ammmarket.xyz/search?q={search_term_string}",
+    target: `${SITE_URL}/search?q={search_term_string}`,
     "query-input": "required name=search_term_string",
   },
 }
 
-export default async function RootLayout({
+const shouldRenderVercelInsights = process.env.VERCEL === "1" || Boolean(process.env.VERCEL_ENV)
+
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const locale = await getLocale()
-  const direction = await getLocaleDirection(locale)
-  const t = await getGT()
-
   return (
-    <html lang={locale} dir={direction} suppressHydrationWarning>
+    <html lang="en" dir="ltr">
       <head>
-        {/* Preload critical hero image for faster LCP */}
-        <link rel="preload" href="/images/Hero__4_.png" as="image" />
+        <link rel="preconnect" href="https://mkt-static.crypto.com" crossOrigin="" />
+        <link rel="preconnect" href="https://mkt-site-asset.crypto.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://mkt-static.crypto.com" />
+        <link rel="dns-prefetch" href="https://mkt-site-asset.crypto.com" />
         <link
           rel="preload"
           href="/fonts/diatype/ABCDiatype-Regular-Trial.woff2"
@@ -189,23 +195,22 @@ export default async function RootLayout({
         />
       </head>
       <body className="bg-white font-sans">
-        <GTProvider locale={locale}>
-          {/* Skip to main content link for accessibility - WCAG 2.4.1 */}
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
-          >
-            {t("Skip to main content")}
-          </a>
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main id="main-content" className="flex-1">
-              <T>{children}</T>
-            </main>
-            <Footer />
-          </div>
-        </GTProvider>
-        <Analytics />
+        {/* Skip to main content link for accessibility - WCAG 2.4.1 */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+        >
+          Skip to main content
+        </a>
+        <div className="flex min-h-screen flex-col">
+          <Header />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </div>
+        {shouldRenderVercelInsights ? <SpeedInsights /> : null}
+        {shouldRenderVercelInsights ? <Analytics /> : null}
       </body>
     </html>
   )

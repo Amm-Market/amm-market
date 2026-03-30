@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Insurance Funds",
   description:
-    "Planned backstop design for AMM Market. Learn how a future insurance fund could address liquidation shortfalls without changing the protocol's core LP-backed lending model.",
+    "Planned backstop design for Avana. Learn how a future insurance fund could address liquidation shortfalls without changing the protocol's core LP-backed lending model.",
 }
 
 const sections = [
@@ -31,7 +31,7 @@ export default function InsuranceFundsPage() {
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            AMM Market&apos;s first line of defense is conservative collateral valuation, capped
+            Avana&apos;s first line of defense is conservative collateral valuation, capped
             exposure, and timely liquidation. A future insurance fund would sit behind those controls
             as a last-resort backstop for situations where liquidation cannot fully close a bad debt.
           </p>

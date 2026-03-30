@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Allowed LP Pools",
   description:
-    "Governance-defined allowlist and review criteria for LP pools that can be admitted as collateral in AMM Market.",
+    "Governance-defined allowlist and review criteria for LP pools that can be admitted as collateral in Avana.",
 }
 
 const sections = [
@@ -60,7 +60,7 @@ export default function AllowedPoolsPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             LP collateral is accepted only from pre-approved pools or templates. Admission is not
-            based on brand name alone. AMM Market needs enough information to value the position,
+            based on brand name alone. Avana needs enough information to value the position,
             manage liquidation, and constrain exposure inside the protocol&apos;s risk framework.
           </p>
           <p className="text-sm text-gray-600">
@@ -103,7 +103,7 @@ export default function AllowedPoolsPage() {
         <section id="risk-application" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Risk Application</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            AMM Market does not apply one blanket collateral factor to an entire spoke. Each admitted
+            Avana does not apply one blanket collateral factor to an entire spoke. Each admitted
             LP position is valued independently, discounted according to its risk treatment, and then
             added to the user&apos;s aggregate borrowing capacity inside that Borrow Spoke.
           </p>

@@ -20,9 +20,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { useGT } from "gt-next/client"
 import { navigationSections } from "./developer-sidebar"
-import { stripLocalePrefix } from "@/lib/locales"
 
 // Flatten navigation sections into a single array of pages
 const flattenedPages = navigationSections.flatMap((section) =>
@@ -34,9 +32,8 @@ const flattenedPages = navigationSections.flatMap((section) =>
 )
 
 export function PageNavigation() {
-  const t = useGT()
   const pathname = usePathname()
-  const normalizedPathname = stripLocalePrefix(pathname || "/")
+  const normalizedPathname = pathname || "/"
 
   // Find current page index
   const currentIndex = flattenedPages.findIndex((page) => page.href === normalizedPathname)
@@ -58,10 +55,10 @@ export function PageNavigation() {
           >
             <div className="type-supporting mb-1 flex items-center gap-1 text-gray-500">
               <ChevronLeft className="w-4 h-4" />
-              <span>{t("Previous")}</span>
+              <span>Previous</span>
             </div>
             <div className="type-body-copy font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
-              {t(prevPage.label)}
+              {prevPage.label}
             </div>
           </Link>
         ) : (
@@ -75,11 +72,11 @@ export function PageNavigation() {
             className="flex-1 max-w-[50%] p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50 transition-colors group text-right"
           >
             <div className="type-supporting mb-1 flex items-center justify-end gap-1 text-gray-500">
-              <span>{t("Next")}</span>
+              <span>Next</span>
               <ChevronRight className="w-4 h-4" />
             </div>
             <div className="type-body-copy font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
-              {t(nextPage.label)}
+              {nextPage.label}
             </div>
           </Link>
         ) : (

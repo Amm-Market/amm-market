@@ -5,9 +5,9 @@ import type { Metadata } from "next"
  */
 export const metadata: Metadata = {
   title: "FAQ - Frequently Asked Questions",
-  description: "Get answers to common questions about AMM Market, LP collateral, borrowing, liquidation, health factors, and troubleshooting wallet connections.",
+  description: "Get answers to common questions about Avana, LP collateral, borrowing, liquidation, health factors, and troubleshooting wallet connections.",
   openGraph: {
-    title: "FAQ - AMM Market",
+    title: "FAQ - Avana",
     description: "Find answers to frequently asked questions about borrowing against LP positions on Aave v4.",
     images: ["/og?title=Frequently%20Asked%20Questions&subtitle=Get%20answers%20about%20LP%20collateral%2C%20borrowing%2C%20and%20liquidation&type=faq"],
   },
@@ -27,18 +27,18 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What is the core insight behind AMM Market?",
+      name: "What is the core insight behind Avana?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "An LP position is not merely a bundle of two tokens; it is a sophisticated financial instrument whose value is composed of principal liquidity and accrued trading fees. AMM Market solves this by building on Aave v4's Hub-and-Spoke model."
+        text: "An LP position is not merely a bundle of two tokens; it is a sophisticated financial instrument whose value is composed of principal liquidity and accrued trading fees. Avana solves this by building on Aave v4's Hub-and-Spoke model."
       }
     },
     {
       "@type": "Question",
-      name: "How does AMM Market handle LP positions as collateral?",
+      name: "How does Avana handle LP positions as collateral?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Users deposit their LP shares into AMM Market, which serves as collateral. The LP share remains active, continuing to earn fees while providing a line of credit through the Aave v4 Hub."
+        text: "Users deposit their LP shares into Avana, which serves as collateral. The LP share remains active, continuing to earn fees while providing a line of credit through the Aave v4 Hub."
       }
     },
     {
@@ -62,7 +62,7 @@ const faqSchema = {
       name: "What is the frontend fee?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AMM Market charges a flat frontend fee of 0.20% on each user action through the interface. This covers supplying collateral, borrowing, repaying, withdrawing, and claiming."
+        text: "Avana charges a flat frontend fee of 0.20% on each user action through the interface. This covers supplying collateral, borrowing, repaying, withdrawing, and claiming."
       }
     }
   ]

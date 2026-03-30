@@ -35,7 +35,7 @@ const openSpokeFaqItems: InlineFaqItem[] = [
 
 export const metadata: Metadata = {
   title: "Open Spoke - Any LP Token as Collateral",
-  description: "AMM Market Open Spoke accepts any supported LP token as collateral. Flexible borrowing across multiple DEXes.",
+  description: "Avana Open Spoke accepts any supported LP token as collateral. Flexible borrowing across multiple DEXes.",
 }
 
 export default function OpenSpokePage() {

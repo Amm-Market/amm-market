@@ -4,7 +4,16 @@ import { HeroHeader } from '../../hero/HeroHeader'
 
 // Mock next/image
 vi.mock('next/image', () => ({
-  default: ({ src, alt, ...props }: { src: string; alt: string }) => (
+  default: ({
+    src,
+    alt,
+    priority: _priority,
+    ...props
+  }: {
+    src: string
+    alt: string
+    priority?: boolean
+  }) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img src={src} alt={alt} {...props} />
   ),
@@ -36,9 +45,9 @@ describe('HeroHeader', () => {
 
   it('renders hero image', () => {
     render(<HeroHeader />)
-    const image = screen.getByAltText('AMM Market app interface')
+    const image = screen.getByAltText('Avana app interface')
     expect(image).toBeInTheDocument()
-    expect(image).toHaveAttribute('src', '/images/Hero__4_.png')
+    expect(image).toHaveAttribute('src', '/images/homepage.png')
   })
 
   it('has h1 heading', () => {

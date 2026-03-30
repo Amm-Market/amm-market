@@ -33,13 +33,13 @@ export default function InstitutionalUseCasesPage() {
         <p className="text-gray-700 leading-relaxed mb-6">
           For institutions operating in DeFi, capital efficiency and risk control are critical. LP positions often 
           represent a significant portion of treasury assets, yet they are traditionally illiquid without withdrawal. 
-          AMM Market enables institutions to unlock liquidity from LP positions while maintaining strategic exposure.
+          Avana enables institutions to unlock liquidity from LP positions while maintaining strategic exposure.
         </p>
 
         <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-6 not-prose">
           <h3 className="font-semibold text-indigo-900 mb-2">Capital Efficiency as a Core KPI</h3>
           <p className="text-gray-700">
-            For organizations — DAOs, treasuries, and funds — capital efficiency is a core KPI. AMM Market&apos;s ability 
+            For organizations — DAOs, treasuries, and funds — capital efficiency is a core KPI. Avana&apos;s ability 
             to turn LP positions into collateral-backed credit lines offers institutions tactical flexibility: working 
             capital, hedging, treasury yield, and opportunistic allocations — all while preserving liquidity exposure.
           </p>
@@ -88,7 +88,7 @@ export default function InstitutionalUseCasesPage() {
               <h3 className="font-semibold text-gray-900 text-lg">DAOs &amp; Protocol Treasuries</h3>
             </div>
             <p className="text-gray-700 mb-4">
-              A DAO holding strategic LPs can use AMM Market to access liquidity for grants, bounties, or operational 
+              A DAO holding strategic LPs can use Avana to access liquidity for grants, bounties, or operational 
               runway without touching core holdings. Automated repayments or governance-triggered de-risking policies 
               protect long-term assets.
             </p>
@@ -158,7 +158,7 @@ export default function InstitutionalUseCasesPage() {
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
             <h3 className="font-semibold text-gray-900 mb-2">Segregation of Roles</h3>
             <p className="text-gray-600 text-sm">
-              Use AMM Market&apos;s delegation features to restrict who can borrow, who can repay, and who can collect 
+              Use Avana&apos;s delegation features to restrict who can borrow, who can repay, and who can collect 
               fees. This minimizes operational risk.
             </p>
           </div>
@@ -174,7 +174,7 @@ export default function InstitutionalUseCasesPage() {
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 mt-6 not-prose">
           <h3 className="font-semibold text-amber-900 mb-2">Institutional-Grade Infrastructure</h3>
           <p className="text-gray-700">
-            AMM Market supports institutional requirements through predictable liquidation rules, transparent valuation, 
+            Avana supports institutional requirements through predictable liquidation rules, transparent valuation, 
             and clear separation between collateral management and liquidity sourcing. Risk can be segmented, policies 
             enforced, and actions audited on chain.
           </p>
@@ -229,14 +229,14 @@ export default function InstitutionalUseCasesPage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Conclusion</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          By transforming LPs into usable financial collateral, AMM Market bridges the gap between passive liquidity 
+          By transforming LPs into usable financial collateral, Avana bridges the gap between passive liquidity 
           and active treasury management. For institutions, this represents a new standard for capital efficiency in DeFi.
         </p>
 
         <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6 rounded-lg text-white not-prose">
           <h3 className="text-xl font-bold mb-3">A New Standard for Institutional DeFi</h3>
           <p>
-            AMM Market enables DAOs, funds, and corporate treasuries to unlock working capital, enhance yields, and 
+            Avana enables DAOs, funds, and corporate treasuries to unlock working capital, enhance yields, and 
             hedge risks—all without sacrificing strategic LP positions. This is the future of institutional capital 
             efficiency on-chain.
           </p>

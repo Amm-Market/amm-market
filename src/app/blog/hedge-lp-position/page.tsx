@@ -26,7 +26,7 @@ export default function HedgeLPPositionPage() {
       tableOfContents={tableOfContents}
       prevPost={{
         slug: "security-deep-dive",
-        title: "Security Deep-Dive: How AMM Market Manages LP Risk",
+        title: "Security Deep-Dive: How Avana Manages LP Risk",
         date: "January 13, 2026",
       }}
       nextPost={{
@@ -38,7 +38,7 @@ export default function HedgeLPPositionPage() {
       <section id="introduction" className="mb-12 scroll-mt-24">
         <p className="text-gray-700 leading-relaxed mb-6">
           Liquidity providers often face a tradeoff between earning fees and managing exposure to price volatility. 
-          AMM Market introduces new tools that allow LPs to hedge risk without exiting positions, using borrowed 
+          Avana introduces new tools that allow LPs to hedge risk without exiting positions, using borrowed 
           capital strategically rather than defensively.
         </p>
 
@@ -46,7 +46,7 @@ export default function HedgeLPPositionPage() {
           <h3 className="font-semibold text-indigo-900 mb-2">Two Big Worries for LPs</h3>
           <p className="text-gray-700">
             LPs face two big worries: <strong>price movement</strong> (which can cause impermanent loss) and 
-            <strong> volatility</strong> that threatens collateralized loans. Using AMM Market to borrow against LPs 
+            <strong> volatility</strong> that threatens collateralized loans. Using Avana to borrow against LPs 
             opens new, practical hedges that are approachable even for non-institutional users.
           </p>
         </div>
@@ -131,7 +131,7 @@ export default function HedgeLPPositionPage() {
 
         <p className="text-gray-700 leading-relaxed mb-4">
           By carefully balancing exposure across assets, LPs can aim to earn fees while minimizing sensitivity to 
-          price movement. AMM Market supports this by allowing fee collection without loan repayment, making 
+          price movement. Avana supports this by allowing fee collection without loan repayment, making 
           frequent adjustments practical.
         </p>
 
@@ -191,7 +191,7 @@ export default function HedgeLPPositionPage() {
         </p>
 
         <p className="text-gray-700 leading-relaxed mb-4">
-          The key to successful hedging is flexibility. AMM Market allows users to respond dynamically to changing 
+          The key to successful hedging is flexibility. Avana allows users to respond dynamically to changing 
           conditions without unwinding core LP positions. This turns LPing from a passive yield strategy into an 
           actively managed financial position.
         </p>
@@ -216,7 +216,7 @@ export default function HedgeLPPositionPage() {
             </li>
             <li className="flex items-start gap-3">
               <span className="text-green-400 mt-0.5">✓</span>
-              <span>Use <strong>AMM Market Automate or alerts</strong> to trigger hedges when necessary</span>
+              <span>Use <strong>Avana Automate or alerts</strong> to trigger hedges when necessary</span>
             </li>
           </ul>
         </div>
@@ -225,7 +225,7 @@ export default function HedgeLPPositionPage() {
           <h3 className="text-xl font-bold mb-3">From Passive to Active</h3>
           <p>
             These hedging strategies transform LP positions from passive yield sources into actively managed 
-            financial instruments. With AMM Market, you can protect your positions, smooth your returns, and 
+            financial instruments. With Avana, you can protect your positions, smooth your returns, and 
             adapt to market conditions—all without exiting your core liquidity.
           </p>
         </div>

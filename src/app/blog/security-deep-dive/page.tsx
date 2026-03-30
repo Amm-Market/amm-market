@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
 
 export const metadata: Metadata = {
-  title: "Security Deep-Dive: How AMM Market Manages LP Risk",
+  title: "Security Deep-Dive: How Avana Manages LP Risk",
   description: "Hub-and-Spoke isolation, position-aware oracles, health checks, and liquidation mechanics explained.",
 }
 
@@ -20,9 +20,9 @@ const tableOfContents = [
 export default function SecurityDeepDivePage() {
   return (
     <BlogPostLayout
-      title="Security Deep-Dive: How AMM Market Manages LP Risk"
+      title="Security Deep-Dive: How Avana Manages LP Risk"
       date="January 13, 2026"
-      description="A technical walkthrough of AMM Market's security architecture—Hub-and-Spoke isolation, position-aware oracles, health checks, and liquidation mechanics for auditors and security-minded users."
+      description="A technical walkthrough of Avana's security architecture—Hub-and-Spoke isolation, position-aware oracles, health checks, and liquidation mechanics for auditors and security-minded users."
       image="/images/blog/security-deep-dive.png"
       tableOfContents={tableOfContents}
       prevPost={{
@@ -39,7 +39,7 @@ export default function SecurityDeepDivePage() {
       <section id="introduction" className="mb-12 scroll-mt-24">
         <p className="text-gray-700 leading-relaxed mb-6">
           LP tokens are among the most complex assets in DeFi. Their value depends on multiple variables including 
-          token prices, liquidity ranges, trading volume, and fee accrual. AMM Market is designed from the ground up 
+          token prices, liquidity ranges, trading volume, and fee accrual. Avana is designed from the ground up 
           to manage this complexity securely, using a combination of architectural isolation, sophisticated oracles, 
           and per-position risk controls.
         </p>
@@ -47,7 +47,7 @@ export default function SecurityDeepDivePage() {
         <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-6 not-prose">
           <h3 className="font-semibold text-indigo-900 mb-2">Security is the Foundation</h3>
           <p className="text-gray-700">
-            AMM Market&apos;s LP-as-collateral design layers careful engineering and proven patterns (Aave v4 Hub-and-Spoke) 
+            Avana&apos;s LP-as-collateral design layers careful engineering and proven patterns (Aave v4 Hub-and-Spoke) 
             with position-aware oracles and per-position health checks to contain risk while unlocking capital. This is 
             a concise technical walkthrough for auditors and security-minded users.
           </p>
@@ -58,8 +58,8 @@ export default function SecurityDeepDivePage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Architectural Isolation: Hub-and-Spoke</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          At the core of AMM Market is the Aave v4 Hub and Spoke architecture. Liquidity is concentrated in the Hub, 
-          while the AMM Market Spoke manages LP collateral and borrowing logic. This separation ensures that issues 
+          At the core of Avana is the Aave v4 Hub and Spoke architecture. Liquidity is concentrated in the Hub, 
+          while the Avana Spoke manages LP collateral and borrowing logic. This separation ensures that issues 
           within the Spoke cannot compromise the entire liquidity pool, providing strong systemic isolation.
         </p>
 
@@ -106,7 +106,7 @@ export default function SecurityDeepDivePage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Oracle Design &amp; Valuation</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          LP positions are complex: their USD value depends on two token prices and the active tick range. AMM Market 
+          LP positions are complex: their USD value depends on two token prices and the active tick range. Avana 
           uses a layered oracle system that calculates the underlying token amounts of each LP position using onchain 
           pool math and combines that with time weighted price feeds.
         </p>
@@ -199,7 +199,7 @@ export default function SecurityDeepDivePage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Liquidation Mechanics — Precision Over Panic</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          Liquidation mechanics are designed to be precise. Instead of seizing entire positions, AMM Market 
+          Liquidation mechanics are designed to be precise. Instead of seizing entire positions, Avana 
           liquidates only the portion necessary to restore solvency.
         </p>
 
@@ -304,7 +304,7 @@ export default function SecurityDeepDivePage() {
         <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6 rounded-lg text-white not-prose">
           <h3 className="text-xl font-bold mb-3">Security as Foundation</h3>
           <p>
-            By treating LP positions as first-class financial instruments rather than generic tokens, AMM Market 
+            By treating LP positions as first-class financial instruments rather than generic tokens, Avana 
             delivers a risk framework that is both conservative and flexible. Security is not an afterthought but 
             the foundation of LP-based borrowing.
           </p>
