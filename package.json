@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "translate": "node scripts/run-gt-translate.mjs",
-    "build": "npm run translate && next build",
+    "build": "npm run translate && next build --webpack",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest",
