@@ -515,13 +515,13 @@ export default function LightpaperPage() {
     <section className="py-12 md:py-24">
       <article className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col items-start gap-6 mb-12">
-          <h1 className="text-4xl md:text-5xl font-serif italic text-gray-900">Tap into LP Credits</h1>
-          <p className="text-lg text-gray-600">Avana is a lending protocol built specifically for LP collateral.</p>
+          <h1 className="type-page-title font-serif italic text-gray-900">Tap into LP Credits</h1>
+          <p className="type-page-lead text-gray-600">Avana is a lending protocol built specifically for LP collateral.</p>
           <hr className="w-full border-gray-200" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-12 lg:gap-24">
-          <div className="max-w-3xl [&_h3]:text-2xl [&_h3]:font-semibold [&_h3]:text-gray-900 [&_h4]:text-xl [&_h4]:font-semibold [&_h4]:text-gray-900 [&_p]:text-gray-600 [&_p]:leading-relaxed [&_ul]:text-gray-600 [&_ul]:leading-relaxed [&_li]:mb-2 [&_a]:text-blue-600 [&_a]:hover:underline">
+          <div className="site-editorial-content max-w-3xl [&_li]:mb-2 [&_a]:text-blue-600 [&_a]:hover:underline">
             <div className="space-y-12">
               <section id="executive-summary" className="scroll-mt-32">
                 <h3>Executive Summary</h3>

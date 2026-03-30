@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Allowed LP Pools",
@@ -46,14 +47,17 @@ const reviewCriteria = [
 export default function AllowedPoolsPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Allowed LP Pools</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Governance-controlled allowlist for the pools and LP families that may be admitted as collateral.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Allowed LP Pools"
+
+          description="Governance-controlled allowlist for the pools and LP families that may be admitted as collateral."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             LP collateral is accepted only from pre-approved pools or templates. Admission is not
             based on brand name alone. AMM Market needs enough information to value the position,
@@ -74,7 +78,7 @@ export default function AllowedPoolsPage() {
         </section>
 
         <section id="review-criteria" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Review Criteria</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Review Criteria</h2>
           <ul className="space-y-3 text-sm text-gray-600">
             {reviewCriteria.map((criterion) => (
               <li key={criterion} className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
@@ -85,7 +89,7 @@ export default function AllowedPoolsPage() {
         </section>
 
         <section id="pool-families" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Pool Families</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Pool Families</h2>
           <div className="space-y-4">
             {poolFamilies.map((family) => (
               <div key={family.family} className="border-b border-gray-100 pb-4 last:border-b-0 last:pb-0">
@@ -97,7 +101,7 @@ export default function AllowedPoolsPage() {
         </section>
 
         <section id="risk-application" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Risk Application</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Risk Application</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             AMM Market does not apply one blanket collateral factor to an entire spoke. Each admitted
             LP position is valued independently, discounted according to its risk treatment, and then
@@ -111,7 +115,7 @@ export default function AllowedPoolsPage() {
         </section>
 
         <section id="integration-notes" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Integration Notes</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Integration Notes</h2>
           <div className="space-y-3 text-sm text-gray-600">
             <p>
               Builders should think in terms of approved pool templates and deployment-specific

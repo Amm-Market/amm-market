@@ -73,9 +73,8 @@ export default function MarkdownContent({ content = "" }: MarkdownContentProps) 
 
   return (
     <div
-      className="prose prose-lg max-w-none prose-headings:text-blue-900 prose-h1:text-3xl prose-h2:text-2xl prose-h2:mt-8 prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-blue-800 prose-strong:font-semibold prose-li:text-gray-700 prose-li:marker:text-blue-500"
+      className="site-editorial-content prose max-w-none prose-headings:text-blue-900 prose-h1:text-2xl prose-h2:text-xl prose-h2:mt-8 prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-blue-800 prose-strong:font-semibold prose-li:text-gray-700 prose-li:marker:text-blue-500"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   )
 }
-
