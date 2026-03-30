@@ -23,6 +23,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Github, Twitter, DiscIcon as Discord } from "lucide-react"
+import { T } from "gt-next"
 
 export default function Footer(): React.JSX.Element {
   const currentYear = new Date().getFullYear()
@@ -38,38 +39,38 @@ export default function Footer(): React.JSX.Element {
         {/* Links Grid */}
         <div className="ml-auto contents md:grid md:w-[500px] md:grid-cols-3 md:gap-x-8">
           <div className="flex flex-col text-sm font-medium text-gray-900 gap-4">
-            <span>Products</span>
+            <span><T>Products</T></span>
             <div className="flex flex-col opacity-70 gap-2">
               <Link href="/lightpaper" className="hover:text-blue-600 transition-colors">
-                Lightpaper
+                <T>Lightpaper</T>
               </Link>
               <Link href="/early-access" className="hover:text-blue-600 transition-colors">
-                Early Access
+                <T>Early Access</T>
               </Link>
             </div>
           </div>
           <div className="flex flex-col text-sm font-medium text-gray-900 gap-4">
-            <span>Resources</span>
+            <span><T>Resources</T></span>
             <div className="flex flex-col opacity-70 gap-2">
               <Link href="/research" className="hover:text-blue-600 transition-colors">
-                Research
+                <T>Research</T>
               </Link>
               <Link href="/community" className="hover:text-blue-600 transition-colors">
-                Community
+                <T>Community</T>
               </Link>
               <Link href="/brand" className="hover:text-blue-600 transition-colors">
-                Brand
+                <T>Brand</T>
               </Link>
             </div>
           </div>
           <div className="flex flex-col text-sm font-medium text-gray-900 gap-4">
-            <span>Developers</span>
+            <span><T>Developers</T></span>
             <div className="flex flex-col opacity-70 gap-2">
               <Link href="/developers" className="hover:text-blue-600 transition-colors">
-                Documentation
+                <T>Documentation</T>
               </Link>
               <Link href="/developers/hooks" className="hover:text-blue-600 transition-colors">
-                Hooks
+                <T>Hooks</T>
               </Link>
             </div>
           </div>
@@ -77,7 +78,9 @@ export default function Footer(): React.JSX.Element {
 
         {/* Bottom Section */}
         <div className="col-span-2 flex flex-col gap-2 sm:col-span-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-gray-500">© {currentYear}. Designed with love.</p>
+          <p className="text-xs text-gray-500">
+            © {currentYear}. <T>Designed with love.</T>
+          </p>
           <div className="flex items-center justify-between gap-2 sm:flex-row-reverse">
             <div className="flex items-center gap-2">
               <Link
@@ -104,10 +107,10 @@ export default function Footer(): React.JSX.Element {
             </div>
             <div className="flex items-center text-xs text-gray-500 gap-2">
               <Link href="/privacy" className="hover:text-blue-600 transition-colors">
-                Privacy
+                <T>Privacy</T>
               </Link>
               <Link href="/terms" className="hover:text-blue-600 transition-colors">
-                Terms
+                <T>Terms</T>
               </Link>
             </div>
           </div>
@@ -116,4 +119,3 @@ export default function Footer(): React.JSX.Element {
     </footer>
   )
 }
-

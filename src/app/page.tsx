@@ -5,11 +5,14 @@ import HeroSection from "@/components/hero-section"
 import FeaturesSection from "@/components/features-section"
 import LogoMarquee from "@/components/logo-marquee"
 import BuildTomorrowSection from "@/components/BuildTomorrowSection"
+import { useGT } from "gt-next/client"
 
 // Note: Metadata is defined in layout.tsx with title template
 // Homepage uses the default title from the template
 
 export default function Home() {
+  const t = useGT()
+
   return (
     <>
       <WebappHero />
@@ -17,9 +20,9 @@ export default function Home() {
       <section className="mt-16 mb-6 px-4 sm:px-6 sm:mt-24 sm:mb-8 lg:mt-36 lg:mb-10">
         <div className="mx-auto w-full max-w-[1200px]">
           <h2 className="type-marketing-section-title mx-auto w-full max-w-full text-center text-offBlack sm:max-w-[42rem] lg:max-w-[54rem]">
-            Aave first introduced AMM Markets in 2020.
+            {t("Aave first introduced AMM Markets in 2020.")}
             <br className="sm:hidden" />
-            Now we&apos;re relaunching it on Aave v4, bigger, bolder, and designed for the entire DeFi liquidity.
+            {t("Now we're relaunching it on Aave v4, bigger, bolder, and designed for the entire DeFi liquidity.")}
           </h2>
         </div>
       </section>

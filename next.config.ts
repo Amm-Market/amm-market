@@ -1,4 +1,15 @@
 import type { NextConfig } from "next";
+import { withGTConfig } from "gt-next/config";
+
+const isDevGTKey = (value?: string) => typeof value === "string" && value.startsWith("gtx-dev-");
+
+if (process.env.NODE_ENV === "production" && isDevGTKey(process.env.GT_API_KEY)) {
+  process.env.GT_DEV_API_KEY ??= process.env.GT_API_KEY;
+  delete process.env.GT_API_KEY;
+  console.warn(
+    "General Translation build warning: ignoring development GT_API_KEY during production build. Set a production GT_API_KEY to enable pretranslated production output."
+  );
+}
 
 /**
  * Security headers configuration for the application.
@@ -143,4 +154,8 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withGTConfig(nextConfig, {
+  config: "./gt.config.json",
+  getLocalePath: "./src/i18n/getLocale.ts",
+  getRegionPath: "./src/i18n/getRegion.ts",
+});
