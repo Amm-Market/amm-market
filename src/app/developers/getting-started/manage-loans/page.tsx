@@ -1,6 +1,7 @@
 import Link from "next/link"
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Manage Loans",
@@ -20,15 +21,17 @@ const sections = [
 export default function ManageLoansPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Manage Loans</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Ongoing loan management means watching health, adjusting LP collateral carefully, and
-          staying inside spoke-level borrowing limits.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Manage Loans"
+
+          description="Ongoing loan management means watching health, adjusting LP collateral carefully, and staying inside spoke-level borrowing limits."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="leading-relaxed text-gray-600">
             A live AMM Market loan is not static. Borrowing headroom changes as LP positions move,
             fee balances change, markets reprice, and Hub liquidity conditions evolve. Managing a
@@ -38,7 +41,7 @@ export default function ManageLoansPage() {
         </section>
 
         <section id="borrowing-more" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Borrowing More</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Borrowing More</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             You can borrow more only when the Borrow Spoke still shows unused aggregate capacity and
             the Hub can supply the requested asset.
@@ -50,7 +53,7 @@ export default function ManageLoansPage() {
         </section>
 
         <section id="monitoring-health" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Monitoring Health</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Monitoring Health</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               <strong className="text-gray-900">Healthy:</strong> adjusted collateral value remains
@@ -76,7 +79,7 @@ export default function ManageLoansPage() {
         </section>
 
         <section id="operational-control" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Operational Control</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Operational Control</h2>
           <ul className="space-y-3 text-gray-600">
             <li>Repay part of the debt to restore room</li>
             <li>Add more approved LP collateral to the same Borrow Spoke</li>
@@ -86,7 +89,7 @@ export default function ManageLoansPage() {
         </section>
 
         <section id="position-changes" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Position Changes</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Position Changes</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               Concentrated-liquidity positions may need re-ranging or replacement over time. Fungible
@@ -101,7 +104,7 @@ export default function ManageLoansPage() {
         </section>
 
         <section id="key-constraints" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Key Constraints</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Key Constraints</h2>
           <ul className="space-y-2 text-gray-600">
             <li>Collateral changes cannot leave debt above allowed spoke capacity</li>
             <li>New positions must remain inside the approved pool set</li>

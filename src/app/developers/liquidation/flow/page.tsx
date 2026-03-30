@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Liquidation Flow",
@@ -65,14 +66,17 @@ const collateralHandling = [
 export default function LiquidationFlowPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Liquidation Flow</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Operational sequence for how unhealthy LP-backed positions are unwound once liquidation is triggered.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Liquidation Flow"
+
+          description="Operational sequence for how unhealthy LP-backed positions are unwound once liquidation is triggered."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             This page expands the protocol&apos;s liquidation design into an operator-facing runtime
             sequence. It is intentionally narrower than the canonical liquidation spec: the goal is
@@ -86,7 +90,7 @@ export default function LiquidationFlowPage() {
         </section>
 
         <section id="canonical-reference" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Canonical Reference</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Canonical Reference</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             The protocol source of truth for liquidation policy remains the main{" "}
             <Link href="/developers/liquidation" className="text-blue-600 hover:underline">
@@ -110,7 +114,7 @@ export default function LiquidationFlowPage() {
         </section>
 
         <section id="runtime-sequence" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Runtime Sequence</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Runtime Sequence</h2>
           <div className="space-y-4">
             {runtimeSteps.map((step, index) => (
               <div key={step.title} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
@@ -127,7 +131,7 @@ export default function LiquidationFlowPage() {
         </section>
 
         <section id="collateral-handling" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Collateral Handling</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Collateral Handling</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Different LP families share the same liquidation objective but not the same exit path.
             That is why AMM Market treats venue handling as an adapter problem rather than assuming a
@@ -144,7 +148,7 @@ export default function LiquidationFlowPage() {
         </section>
 
         <section id="operator-notes" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Operator Notes</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Operator Notes</h2>
           <div className="space-y-3 text-sm text-gray-600">
             <p>
               Liquidation bots should index active positions, refresh debt drift, and price accounts

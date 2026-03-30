@@ -22,14 +22,14 @@ export default function TermsPage() {
       <article className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="flex flex-col items-start gap-6 mb-12">
-          <h1 className="text-4xl md:text-5xl font-serif italic text-gray-900">Terms of Service</h1>
+          <h1 className="type-page-title font-serif italic text-gray-900">Terms of Service</h1>
           <hr className="w-full border-gray-200" />
         </div>
 
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-12 lg:gap-24">
           {/* Main content */}
-          <div className="max-w-3xl [&_strong]:font-semibold [&_strong]:text-gray-900 [&_h4]:text-xl [&_h4]:font-semibold [&_h4]:text-gray-900 [&_h4]:mt-10 [&_h4]:mb-4 [&_p]:text-gray-600 [&_p]:leading-relaxed [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul]:text-gray-600 [&_li]:mb-2 [&_a]:text-blue-600 [&_a]:hover:underline">
+          <div className="site-editorial-content max-w-3xl [&_strong]:font-semibold [&_strong]:text-gray-900 [&_h4]:mt-10 [&_h4]:mb-4 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_li]:mb-2 [&_a]:text-blue-600 [&_a]:hover:underline">
             <p><em className="text-gray-500">Last Modified: January 18, 2026</em></p>
 
             <p>

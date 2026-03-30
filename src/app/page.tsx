@@ -16,10 +16,10 @@ export default function Home() {
       <LogoMarquee />
       <section className="mt-16 mb-6 px-4 sm:px-6 sm:mt-24 sm:mb-8 lg:mt-36 lg:mb-10">
         <div className="mx-auto w-full max-w-[1200px]">
-          <h2 className="mx-auto w-full max-w-full text-center text-base leading-snug text-offBlack sm:max-w-[42rem] sm:text-2xl lg:max-w-[54rem] lg:text-[2.25rem] lg:leading-tight xl:text-4xl">
+          <h2 className="type-marketing-section-title mx-auto w-full max-w-full text-center text-offBlack sm:max-w-[42rem] lg:max-w-[54rem]">
             Aave first introduced AMM Markets in 2020.
             <br className="sm:hidden" />
-            Now we're relaunching it on Aave v4, bigger, bolder, and designed for the entire DeFi liquidity.
+            Now we&apos;re relaunching it on Aave v4, bigger, bolder, and designed for the entire DeFi liquidity.
           </h2>
         </div>
       </section>
@@ -33,4 +33,3 @@ export default function Home() {
     </>
   )
 }
-

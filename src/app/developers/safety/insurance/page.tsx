@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Insurance Funds",
@@ -18,14 +19,17 @@ const sections = [
 export default function InsuranceFundsPage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div className="max-w-3xl">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">Insurance Funds</h1>
-        <p className="mb-8 text-lg text-gray-600">
-          Planned backstop layer for handling residual bad debt after LP liquidation has already done its job.
-        </p>
+      <div data-developer-doc-export-root className="max-w-3xl">
+        <DeveloperDocPageHeader
+
+          title="Insurance Funds"
+
+          description="Planned backstop layer for handling residual bad debt after LP liquidation has already done its job."
+
+        />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             AMM Market&apos;s first line of defense is conservative collateral valuation, capped
             exposure, and timely liquidation. A future insurance fund would sit behind those controls
@@ -38,7 +42,7 @@ export default function InsuranceFundsPage() {
         </section>
 
         <section id="purpose" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Purpose</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Purpose</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             The purpose of an insurance fund is to contain protocol-level bad debt after liquidation
             has already attempted to recover value from fees and principal. In an LP-backed lending
@@ -48,7 +52,7 @@ export default function InsuranceFundsPage() {
         </section>
 
         <section id="funding-approach" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Funding Approach</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Funding Approach</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             If activated, the fund could be capitalized through governance-approved treasury
             allocations, reserve contributions, or a dedicated safety module. The exact mix is a risk
@@ -57,7 +61,7 @@ export default function InsuranceFundsPage() {
         </section>
 
         <section id="activation-path" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Activation Path</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Activation Path</h2>
           <ul className="space-y-3 text-sm text-gray-600">
             <li>• Detect a residual shortfall after an allowed liquidation path has completed.</li>
             <li>• Verify that the shortfall fits the fund&apos;s approved coverage policy.</li>
@@ -67,7 +71,7 @@ export default function InsuranceFundsPage() {
         </section>
 
         <section id="coverage-boundary" className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Coverage Boundary</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Coverage Boundary</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             A protocol insurance fund should be narrowly scoped. It is best understood as a system
             backstop for qualifying bad debt, not as a blanket guarantee against user trading losses,
