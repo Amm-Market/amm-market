@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Testnet & Roadmap",
   description:
-    "Operational guide to AMM Market test deployments and roadmap framing. Use this page for evaluation context, not as a canonical protocol specification or launch promise.",
+    "Operational guide to Avana test deployments and roadmap framing. Use this page for evaluation context, not as a canonical protocol specification or launch promise.",
 }
 
 const sections = [
@@ -24,7 +24,7 @@ export default function TestnetRoadmapPage() {
 
           title="Testnet & Roadmap"
 
-          description="Operational page for testing AMM Market deployments and understanding how roadmap statements should be read."
+          description="Operational page for testing Avana deployments and understanding how roadmap statements should be read."
 
         />
 
@@ -58,7 +58,7 @@ export default function TestnetRoadmapPage() {
         <section id="how-to-evaluate" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">How to Evaluate</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            The most useful way to test AMM Market is to walk the canonical flow: deposit an eligible
+            The most useful way to test Avana is to walk the canonical flow: deposit an eligible
             LP position, confirm spoke-level valuation, observe aggregate borrowing capacity, borrow
             from the Hub-side liquidity layer, and then inspect health monitoring and repayment paths.
           </p>
@@ -91,7 +91,7 @@ export default function TestnetRoadmapPage() {
 
       <ScrollSpySidebar
         sections={sections}
-        pageSummary="Operational guide to AMM Market test deployments and roadmap framing."
+        pageSummary="Operational guide to Avana test deployments and roadmap framing."
         sectionColor="blue"
       />
     </div>

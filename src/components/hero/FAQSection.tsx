@@ -23,7 +23,7 @@ export function FAQSection() {
               </svg>
             </AccordionTrigger>
             <AccordionContent className="type-accordion-answer pt-2 text-gray-600">
-              No. Your <DeFiTerm term="lp">LP</DeFiTerm> remains in the pool and continues earning trading fees. Amm Market uses your LP shares as <DeFiTerm term="collateral">collateral</DeFiTerm> without removing liquidity.
+              No. Your <DeFiTerm term="lp">LP</DeFiTerm> remains in the pool and continues earning trading fees. Avana uses your LP shares as <DeFiTerm term="collateral">collateral</DeFiTerm> without removing liquidity.
             </AccordionContent>
           </AccordionItem>
 

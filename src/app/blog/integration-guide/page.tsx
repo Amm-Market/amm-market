@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
 
 export const metadata: Metadata = {
-  title: "Building on AMM Market: Integration Guide for Developers",
-  description: "A comprehensive guide to integrating with AMM Market—SDK setup, core functions, event handling, and best practices for building on LP collateral infrastructure.",
+  title: "Building on Avana: Integration Guide for Developers",
+  description: "A comprehensive guide to integrating with Avana—SDK setup, core functions, event handling, and best practices for building on LP collateral infrastructure.",
 }
 
 const tableOfContents = [
@@ -21,14 +21,14 @@ const tableOfContents = [
 export default function IntegrationGuidePage() {
   return (
     <BlogPostLayout
-      title="Building on AMM Market: Integration Guide for Developers"
+      title="Building on Avana: Integration Guide for Developers"
       date="January 20, 2026"
-      description="A comprehensive guide to integrating with AMM Market—SDK setup, core functions, event handling, and best practices for building on LP collateral infrastructure."
+      description="A comprehensive guide to integrating with Avana—SDK setup, core functions, event handling, and best practices for building on LP collateral infrastructure."
       image="/images/blog/integration-guide.png"
       tableOfContents={tableOfContents}
       prevPost={{
         slug: "smart-contract-architecture",
-        title: "Smart Contract Architecture: AMM Market Technical Reference",
+        title: "Smart Contract Architecture: Avana Technical Reference",
         date: "January 21, 2026",
       }}
       nextPost={{
@@ -39,7 +39,7 @@ export default function IntegrationGuidePage() {
     >
       <section id="introduction" className="mb-12 scroll-mt-24">
         <p className="text-gray-700 leading-relaxed mb-6">
-          AMM Market provides a robust infrastructure for LP-backed lending, and integrating with it opens up 
+          Avana provides a robust infrastructure for LP-backed lending, and integrating with it opens up 
           powerful capabilities for DeFi applications. Whether you&apos;re building a portfolio tracker, an automated 
           strategy vault, or a custom frontend, this guide covers everything you need to get started.
         </p>
@@ -71,7 +71,7 @@ export default function IntegrationGuidePage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Getting Started</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          The AMM Market SDK is available as an npm package. Install it alongside ethers.js or viem for 
+          The Avana SDK is available as an npm package. Install it alongside ethers.js or viem for 
           blockchain interactions.
         </p>
 
@@ -97,7 +97,7 @@ export default function IntegrationGuidePage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Core SDK Overview</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          The SDK exposes several key modules for interacting with AMM Market contracts.
+          The SDK exposes several key modules for interacting with Avana contracts.
         </p>
 
         <div className="grid md:grid-cols-2 gap-4 not-prose">
@@ -259,7 +259,7 @@ export default function IntegrationGuidePage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Events &amp; Indexing</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          AMM Market emits events for all key actions. These can be indexed for building dashboards, 
+          Avana emits events for all key actions. These can be indexed for building dashboards, 
           analytics, or notification systems.
         </p>
 

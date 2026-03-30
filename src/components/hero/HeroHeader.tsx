@@ -13,7 +13,7 @@ export function HeroHeader() {
           <div className="relative w-full max-w-[700px] lg:max-w-[650px] xl:max-w-[700px] mx-auto lg:mx-0">
             <Image
               src="/images/homepage.png"
-              alt="AMM Market app interface"
+              alt="Avana app interface"
               width={1400}
               height={1400}
               className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"

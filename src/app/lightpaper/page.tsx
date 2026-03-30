@@ -293,7 +293,7 @@ const oldImplementationReferences = [
     href: "https://medium.com/aave/the-uniswap-market-is-live-on-aave-protocol-12b5a4cc5e2",
   },
   {
-    label: "Renew the AMM Market Assets",
+    label: "Renew the Avana Assets",
     href: "https://governance.aave.com/t/renew-the-amm-market-assets/4918",
   },
   {
@@ -371,14 +371,14 @@ function ImagePlaceholder({ label }: { label: string }) {
 
 function getRoadmapStatusClass(status: RoadmapStatus) {
   if (status === "Released") {
-    return "text-emerald-600"
+    return "text-emerald-700"
   }
 
   if (status === "In Progress") {
-    return "text-blue-600"
+    return "text-blue-700"
   }
 
-  return "text-gray-500"
+  return "text-slate-700"
 }
 
 function getRoadmapStatusLabel(status: RoadmapStatus) {
@@ -524,7 +524,7 @@ export default function LightpaperPage() {
           <div className="site-editorial-content max-w-3xl [&_li]:mb-2 [&_a]:text-blue-600 [&_a]:hover:underline">
             <div className="space-y-12">
               <section id="executive-summary" className="scroll-mt-32">
-                <h3>Executive Summary</h3>
+                <h2>Executive Summary</h2>
                 <div className="mt-5 space-y-5">
                   <p className="font-medium text-gray-900">
                     The deepest pools in DeFi are full of capital that works hard and moves nowhere.
@@ -553,7 +553,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="protocol-motivation" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>Protocol Motivation</h3>
+                <h2>Protocol Motivation</h2>
                 <div className="mt-5 space-y-5">
                   <p>
                     The idea of using LP positions as borrowable collateral is not new. Previous attempts proved
@@ -561,7 +561,7 @@ export default function LightpaperPage() {
                     those three constraints can now be addressed directly.
                   </p>
                   <p>
-                    In 2021, Aave launched its AMM Market, allowing Uniswap v2 and Balancer LP tokens to be used as
+                    In 2021, Aave launched its Avana, allowing Uniswap v2 and Balancer LP tokens to be used as
                     collateral. The model arrived before the surrounding infrastructure was ready. DEX liquidity was
                     thinner, pool design was less mature, and risk frameworks were still too blunt to capture what LP
                     positions actually were.
@@ -604,7 +604,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="protocol-overview" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>Protocol Overview</h3>
+                <h2>Protocol Overview</h2>
                 <div className="mt-5 space-y-5">
                   <p>
                     Avana is a lending protocol built specifically for LP collateral. It allows AMM liquidity providers
@@ -645,7 +645,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="protocol-specification" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>Protocol Specification</h3>
+                <h2>Protocol Specification</h2>
                 <div className="mt-5 space-y-5">
                   <p>
                     Avana is designed as a multi-phase protocol that evolves over time to progressively expand what LP
@@ -673,7 +673,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="protocol-architecture" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>Protocol Architecture</h3>
+                <h2>Protocol Architecture</h2>
                 <div className="mt-5 space-y-5">
                   <p>
                     Avana is built on Aave v4&apos;s hub-and-spoke architecture because LP collateral needs both shared
@@ -704,9 +704,9 @@ export default function LightpaperPage() {
               </section>
 
               <section id="spoke-configuration" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>Spoke Configuration</h3>
+                <h2>Spoke Configuration</h2>
                 <div className="mt-5 space-y-5">
-                  <h4>For Borrowers</h4>
+                  <h3>For Borrowers</h3>
                   <p>
                     Avana Borrow Spokes are organized into 14 specialized LP-collateral spokes, each corresponding to
                     a specific AMM liquidity primitive or market structure. These spokes isolate collateral valuation,
@@ -763,7 +763,7 @@ export default function LightpaperPage() {
                     governance-token ecosystems, positioning Avana as a dedicated lending protocol for AMM liquidity.
                   </p>
 
-                  <h4>For Lenders</h4>
+                  <h3>For Lenders</h3>
                   <p>
                     Avana Invest Spoke is the single spoke that functions as the capital entry point of the protocol,
                     allowing users to supply crypto assets that power borrowing across all LP-collateral markets.
@@ -788,7 +788,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="risk-management" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>Risk Management</h3>
+                <h2>Risk Management</h2>
                 <div className="mt-5 space-y-5">
                   <p>
                     Liquidity provider (LP) collateral behaves fundamentally differently from traditional lending
@@ -864,7 +864,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="position-valuation" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>Position Valuation</h3>
+                <h2>Position Valuation</h2>
                 <ImagePlaceholder label="LP valuation model graphic" />
                 <div className="space-y-5">
                   <p>
@@ -899,7 +899,7 @@ export default function LightpaperPage() {
                 </div>
 
                 <div className="mt-8">
-                  <h4>ETH / USDC example</h4>
+                  <h3>ETH / USDC example</h3>
                   <ul className="mt-4 list-disc pl-6">
                     <li>LP Position Value: $963.51</li>
                     <li>Single-token CFs: WETH 77.5%, USDC 85%</li>
@@ -913,7 +913,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="liquidation-mechanism" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>Liquidation Mechanism</h3>
+                <h2>Liquidation Mechanism</h2>
                 <ImagePlaceholder label="Liquidation execution flow" />
                 <div className="space-y-5">
                   <p>
@@ -942,7 +942,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="interest-rate" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>Interest Rate</h3>
+                <h2>Interest Rate</h2>
                 <ImagePlaceholder label="Borrow rate composition" />
                 <div className="space-y-5">
                   <p>
@@ -968,7 +968,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="revenue-model" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>Revenue Model</h3>
+                <h2>Revenue Model</h2>
                 <div className="mt-5 space-y-5">
                   <p>Avana earns from two sources.</p>
                   <ImagePlaceholder label="Revenue model visual" />
@@ -990,7 +990,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="market-opportunity" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>Market Opportunity</h3>
+                <h2>Market Opportunity</h2>
                 <ImagePlaceholder label="Addressable market visual" />
                 <div className="space-y-5">
                   <p>
@@ -1039,7 +1039,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="roadmap" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>Roadmap</h3>
+                <h2>Roadmap</h2>
                 <div className="mt-5 space-y-5">
                   <p>
                     Avana develops in three phases, each building on the previous one. The roadmap is designed so that
@@ -1065,7 +1065,7 @@ export default function LightpaperPage() {
                       >
                         <div className="space-y-2">
                           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                            <h4 className={`mb-0 text-base font-semibold ${index === 2 ? "text-gray-700" : "text-gray-900"}`}>{phase.title}</h4>
+                            <h3 className={`mb-0 text-base font-semibold ${index === 2 ? "text-gray-700" : "text-gray-900"}`}>{phase.title}</h3>
                             <span className="text-xs font-medium uppercase tracking-[0.08em] text-gray-500">{phase.timeframe}</span>
                           </div>
                           <p className="text-sm leading-6 text-gray-600">{phase.summary}</p>
@@ -1074,7 +1074,7 @@ export default function LightpaperPage() {
                         <div className="space-y-3">
                           {groupedMilestones.map((group) => (
                             <div key={`${phase.title}-${group.status}`} className={`space-y-2 ${getRoadmapGroupOpacity(group.status)}`}>
-                              <p className={`text-[11px] font-semibold uppercase tracking-[0.12em] ${getRoadmapStatusClass(group.status)}`}>
+                              <p className={`text-xs font-semibold uppercase tracking-[0.12em] ${getRoadmapStatusClass(group.status)}`}>
                                 {getRoadmapStatusLabel(group.status)}
                               </p>
                               <div className="flex flex-wrap gap-2">
@@ -1084,7 +1084,7 @@ export default function LightpaperPage() {
                                     className="flex items-center gap-2 rounded-md bg-gray-100 px-2.5 py-1.5"
                                   >
                                     <RoadmapMilestoneIcon label={milestone.label} />
-                                    <span className={`text-[12px] font-medium leading-5 ${index === 2 ? "text-gray-600" : "text-gray-700"}`}>
+                                    <span className={`text-[12px] font-medium leading-5 ${index === 2 ? "text-gray-700" : "text-gray-800"}`}>
                                       {getRoadmapDisplayLabel(milestone.label)}
                                     </span>
                                   </div>
@@ -1100,7 +1100,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="conclusion" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>Conclusion</h3>
+                <h2>Conclusion</h2>
                 <div className="mt-5 space-y-5">
                   <p>
                     Avana directly executes on the strategic vision outlined by Aave Labs&apos; &quot;CDP for AMM
@@ -1123,17 +1123,17 @@ export default function LightpaperPage() {
               </section>
 
               <section id="references-and-appendix" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <h3>References & Appendix</h3>
+                <h2>References & Appendix</h2>
                 <div className="mt-5 space-y-5">
                   <p>
                     This section contains governance discussions, historical implementations, research links, prior LP
                     collateral proposals, and extended market context referenced throughout the paper.
                   </p>
 
-                  <h4>Governance Discussions</h4>
+                  <h3>Governance Discussions</h3>
                   <ReferenceTable references={governanceReferences} />
 
-                  <h4>Old Implementation</h4>
+                  <h3>Old Implementation</h3>
                   <ReferenceTable references={oldImplementationReferences} />
                 </div>
               </section>

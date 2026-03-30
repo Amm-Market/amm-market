@@ -57,7 +57,7 @@ const BrandKitBook = () => (
         />
         <div className="absolute inset-0 flex flex-col rounded-[24px] border border-black/10 bg-[linear-gradient(180deg,#ffffff_0%,#f6f6f3_100%)] px-6 py-6 shadow-[0_28px_60px_rgba(0,0,0,0.16)]">
           <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-gray-500">
-            AMM Market
+            Avana
           </span>
 
           <div className="mt-8 flex h-16 w-16 items-center justify-center rounded-[18px] bg-gray-950 text-white shadow-[0_10px_28px_rgba(0,0,0,0.18)]">
@@ -71,7 +71,7 @@ const BrandKitBook = () => (
 
           <div className="mt-8 space-y-1.5">
             <p className="text-[28px] font-semibold leading-[0.95] tracking-[-0.07em] text-gray-950">
-              AMM Market
+              Avana
             </p>
             <p className="text-[28px] font-semibold leading-[0.95] tracking-[-0.07em] text-gray-950">
               Brand Kit
@@ -186,7 +186,7 @@ export default function BrandPage() {
                   Brand Systems 101.
                 </h1>
                 <p className="max-w-[44rem] text-[1.05rem] font-medium leading-[1.45] tracking-[-0.03em] text-gray-900 md:text-[1.3rem]">
-                  See how we build and apply the AMM Market brand. Learn about our marks,
+                  See how we build and apply the Avana brand. Learn about our marks,
                   typography, colors, and commitment to high polish.
                 </p>
               </div>
@@ -592,7 +592,7 @@ export default function BrandPage() {
               <div className="flex flex-col gap-3">
                 <h3 className="text-lg font-semibold text-gray-900">Why do I need to follow these guidelines?</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
-                  We don&apos;t want anyone to misrepresent Dex Mini&apos;s brand. Keeping things consistent
+                  We don&apos;t want anyone to misrepresent Avana&apos;s brand. Keeping things consistent
                   instills recognizability and trust.
                 </p>
               </div>

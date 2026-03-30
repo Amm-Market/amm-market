@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import BlogPostLayout from "@/components/blog-post-layout"
 
 export const metadata: Metadata = {
-  title: "Unleashing Your LP Tokens with Aave's AMM Market",
+  title: "Unleashing Your LP Tokens with Aave's Avana",
   description: "From conservative stablecoin strategies to advanced leverage plays—make your LP tokens work harder.",
 }
 
@@ -17,14 +17,14 @@ const tableOfContents = [
 export default function UnleashingLPTokensPage() {
   return (
     <BlogPostLayout
-      title="Unleashing Your LP Tokens with Aave's AMM Market"
+      title="Unleashing Your LP Tokens with Aave's Avana"
       date="January 15, 2026"
       description="From conservative stablecoin strategies to advanced leverage plays, discover how to make your LP tokens work harder without exiting your positions."
       image="/images/blog/unleashing-lp-tokens.png"
       tableOfContents={tableOfContents}
       prevPost={{
-        slug: "aave-v4-amm-spoke",
-        title: "Borrowing Against Uniswap LP Tokens via Aave v4's AMM Market Spoke",
+        slug: "aave-v4-avana-spoke",
+        title: "Borrowing Against Uniswap LP Tokens via Aave v4's Avana Spoke",
         date: "January 16, 2026",
       }}
       nextPost={{
@@ -35,9 +35,9 @@ export default function UnleashingLPTokensPage() {
     >
       <section id="introduction" className="mb-12 scroll-mt-24">
         <p className="text-gray-700 leading-relaxed mb-6">
-          Aave&apos;s AMM Market introduces a powerful shift in how liquidity provider tokens can be used in decentralized 
+          Aave&apos;s Avana introduces a powerful shift in how liquidity provider tokens can be used in decentralized 
           finance. Instead of treating LP tokens from Uniswap, Balancer, or Curve as passive receipts that simply sit 
-          in a wallet, the AMM Market allows them to function as productive collateral. Liquidity providers can now 
+          in a wallet, the Avana allows them to function as productive collateral. Liquidity providers can now 
           borrow assets against their LP positions while those same positions continue earning trading fees in their 
           respective pools.
         </p>
@@ -61,7 +61,7 @@ export default function UnleashingLPTokensPage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Safe Stablecoin Strategies</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          The most accessible way to use the AMM Market is by borrowing stablecoins against your LP tokens. Because 
+          The most accessible way to use the Avana is by borrowing stablecoins against your LP tokens. Because 
           stablecoins are designed to maintain a consistent value, these strategies tend to be easier to manage and 
           lower in volatility.
         </p>
@@ -112,7 +112,7 @@ export default function UnleashingLPTokensPage() {
             <h3 className="font-semibold text-green-900 mb-2">Dual Rewards Harvesting</h3>
             <p className="text-gray-700">
               Some liquidity pools distribute incentive tokens in addition to trading fees. When LP tokens are used 
-              as collateral in the AMM Market, these incentive rewards often continue to accrue. For example, liquidity 
+              as collateral in the Avana, these incentive rewards often continue to accrue. For example, liquidity 
               providers in certain Balancer pools still receive protocol rewards even while their LP tokens are pledged 
               as collateral. This means you may be earning trading fees, incentive tokens, and yield on borrowed assets 
               simultaneously. The LP position effectively becomes a multi layered income source without additional 
@@ -135,7 +135,7 @@ export default function UnleashingLPTokensPage() {
             <h3 className="font-semibold text-amber-900 mb-2">Impermanent Loss Hedging</h3>
             <p className="text-gray-700 mb-3">
               Impermanent loss occurs when the relative prices of tokens in a liquidity pool diverge significantly. 
-              Borrowing assets through the AMM Market can help mitigate this effect. For example, if you provide 
+              Borrowing assets through the Avana can help mitigate this effect. For example, if you provide 
               liquidity to an ETH and stablecoin pool and are concerned about ETH price movements, you can borrow 
               ETH and hold it separately.
             </p>
@@ -175,7 +175,7 @@ export default function UnleashingLPTokensPage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Aggressive Leverage Strategies</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          For experienced users who understand liquidation mechanics and volatility, the AMM Market enables leveraged 
+          For experienced users who understand liquidation mechanics and volatility, the Avana enables leveraged 
           strategies that significantly amplify returns.
         </p>
 
@@ -211,7 +211,7 @@ export default function UnleashingLPTokensPage() {
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Conclusion</h2>
         
         <p className="text-gray-700 leading-relaxed mb-6">
-          Aave&apos;s AMM Market transforms LP tokens from passive representations of liquidity into active financial 
+          Aave&apos;s Avana transforms LP tokens from passive representations of liquidity into active financial 
           primitives. By allowing liquidity providers to borrow against their positions while continuing to earn fees, 
           it opens the door to a wide spectrum of strategies, from conservative stablecoin yield to advanced leveraged 
           plays.
@@ -220,7 +220,7 @@ export default function UnleashingLPTokensPage() {
         <p className="text-gray-700 leading-relaxed mb-6">
           The key advantage lies in flexibility. Users can choose how much risk to take on and how aggressively to 
           deploy borrowed capital, all while keeping their original liquidity intact. Whether the goal is steady 
-          incremental yield or amplified returns through leverage, the AMM Market enables LP tokens to work harder 
+          incremental yield or amplified returns through leverage, the Avana enables LP tokens to work harder 
           without forcing providers to exit their positions.
         </p>
 

@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Legal & Compliance - Security Disclosures",
-  description: "AMM Market legal information - access restrictions, restricted jurisdictions, compliance requirements, and security disclosures.",
+  description: "Avana legal information - access restrictions, restricted jurisdictions, compliance requirements, and security disclosures.",
 }
 
 const sections = [
@@ -34,7 +34,7 @@ export default function SecurityDisclosuresPage() {
 
           title="Restricted Territories"
 
-          description="This page is maintained to reflect the most current list of Restricted Jurisdictions for the AMM Market domain."
+          description="This page is maintained to reflect the most current list of Restricted Jurisdictions for the Avana domain."
 
         />
 
@@ -42,12 +42,12 @@ export default function SecurityDisclosuresPage() {
           <h2 className="type-section-title text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             In accordance with our <Link href="/terms" className="text-blue-600 hover:underline">Terms of Use</Link>, 
-            access to the AMM Market website and its associated services is restricted for individuals or entities 
+            access to the Avana website and its associated services is restricted for individuals or entities 
             in certain jurisdictions. This page provides the current list of restricted territories and explains 
             the access restrictions in place.
           </p>
           <p className="text-red-700 text-sm border-l-4 border-red-400 pl-3">
-            <strong>Important:</strong> Any attempt to access the AMM Market platform from a Restricted 
+            <strong>Important:</strong> Any attempt to access the Avana platform from a Restricted 
             Jurisdiction will result in immediate redirection to the Terms of Use and a denial of access.
           </p>
         </section>
@@ -55,7 +55,7 @@ export default function SecurityDisclosuresPage() {
         <section id="access-restrictions" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Access Restrictions</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Access to the AMM Market website and its associated services is restricted for individuals or 
+            Access to the Avana website and its associated services is restricted for individuals or 
             entities who:
           </p>
           
@@ -72,7 +72,7 @@ export default function SecurityDisclosuresPage() {
           </div>
 
           <p className="text-gray-600 leading-relaxed mt-4">
-            These restrictions are defined in AMM Market&apos;s <Link href="/terms" className="text-blue-600 hover:underline">Terms of Use</Link> and 
+            These restrictions are defined in Avana&apos;s <Link href="/terms" className="text-blue-600 hover:underline">Terms of Use</Link> and 
             are enforced to comply with applicable laws and regulations.
           </p>
         </section>
@@ -80,7 +80,7 @@ export default function SecurityDisclosuresPage() {
         <section id="restricted-jurisdictions" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Current Restricted Jurisdictions</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            The following jurisdictions are currently restricted from accessing AMM Market services:
+            The following jurisdictions are currently restricted from accessing Avana services:
           </p>
           
           <div className="overflow-x-auto">
@@ -136,14 +136,14 @@ export default function SecurityDisclosuresPage() {
         <section id="related-policies" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Related Policies</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            For complete information about your rights and obligations when using AMM Market, please review:
+            For complete information about your rights and obligations when using Avana, please review:
           </p>
           
           <div className="space-y-3">
             <Link href="/terms" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50/50 transition-colors">
               <h3 className="font-semibold text-gray-900 mb-1">Terms of Service</h3>
               <p className="text-gray-600 text-sm">
-                Complete terms and conditions governing your use of AMM Market services, including 
+                Complete terms and conditions governing your use of Avana services, including 
                 eligibility requirements, prohibited activities, and dispute resolution.
               </p>
             </Link>
@@ -169,7 +169,7 @@ export default function SecurityDisclosuresPage() {
       {/* Right scroll-spy sidebar */}
       <ScrollSpySidebar 
         sections={sections} 
-        pageSummary="Restricted territories and access restrictions for AMM Market services."
+        pageSummary="Restricted territories and access restrictions for Avana services."
         sectionColor="slate"
       />
     </div>

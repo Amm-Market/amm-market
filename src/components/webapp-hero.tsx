@@ -10,6 +10,26 @@
  * - Hero image
  * - Bottom gradient fade
  */
+import Image from "next/image"
+
+function ArrowForwardIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="h-4 w-4">
+      <path d="M3 8H13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function DownloadIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="h-4 w-4">
+      <path d="M8 2.5V9.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M5.5 7.5L8 10L10.5 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M3 12.5H13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  )
+}
 
 export default function WebappHero() {
   return (
@@ -47,13 +67,8 @@ export default function WebappHero() {
               <p className="text-[15px] leading-normal font-medium tracking-[-0.28px] text-gray-50">
                 Create Account
               </p>
-              <div className="h-4 w-4">
-                <img
-                  alt="Trailing icon"
-                  className="object-fill h-4 w-4"
-                  loading="lazy"
-                  src="https://mkt-static.crypto.com/arrow-forward.svg"
-                />
+              <div className="h-4 w-4 text-gray-50">
+                <ArrowForwardIcon />
               </div>
             </div>
             <div className="absolute bottom-0 left-1/2 h-[1px] w-1/2 -translate-x-1/2 transform bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
@@ -69,13 +84,8 @@ export default function WebappHero() {
             <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]"></div>
             <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
             <div className="flex flex-row items-center justify-center gap-1">
-              <div className="h-4 w-4">
-                <img
-                  alt="Leading icon"
-                  className="object-fill h-4 w-4"
-                  loading="lazy"
-                  src="https://mkt-static.crypto.com/download.svg"
-                />
+              <div className="h-4 w-4 text-gray-50">
+                <DownloadIcon />
               </div>
               <p className="text-[15px] leading-normal font-medium tracking-[-0.28px] text-gray-50">
                 Get the app
@@ -86,11 +96,14 @@ export default function WebappHero() {
         </div>
 
         {/* Hero image */}
-        <div className="relative w-full max-w-[280px] sm:max-w-[360px] md:max-w-[450px] lg:max-w-[536px] mx-auto">
-          <img
-            alt="AMM Market webapp interface"
-            className="object-contain h-auto w-full"
-            loading="lazy"
+        <div className="relative mx-auto aspect-[536/560] w-full max-w-[280px] sm:max-w-[360px] md:max-w-[450px] lg:max-w-[536px]">
+          <Image
+            alt="Avana webapp interface"
+            className="object-contain"
+            fill
+            priority
+            quality={60}
+            sizes="(max-width: 640px) 200px, (max-width: 768px) 280px, (max-width: 1024px) 360px, 460px"
             src="https://mkt-static.crypto.com/cdc_home_producthero_mainapp_usa_2x.webp"
           />
         </div>
@@ -106,13 +119,8 @@ export default function WebappHero() {
             <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]"></div>
             <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
             <div className="flex flex-row items-center justify-center gap-1">
-              <div className="h-4 w-4">
-                <img
-                  alt="Leading icon"
-                  className="object-fill h-4 w-4"
-                  loading="lazy"
-                  src="https://mkt-static.crypto.com/download.svg"
-                />
+              <div className="h-4 w-4 text-gray-50">
+                <DownloadIcon />
               </div>
               <p className="text-[15px] leading-normal font-medium tracking-[-0.28px] text-gray-50">
                 Get the app
