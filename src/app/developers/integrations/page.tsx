@@ -1,211 +1,107 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 export const metadata: Metadata = {
   title: "Supported Integrations",
-  description: "AMM Market supported DEX integrations - Uniswap, Curve, Balancer, PancakeSwap, Aerodrome. Integration status and how to add new DEXes.",
+  description:
+    "Governance- and deployment-aware overview of AMM Market integrations, including supported venue families, enablement criteria, and integration review expectations.",
 }
 
 const sections = [
   { id: "overview", title: "Overview" },
-  { id: "supported-dexes", title: "Supported DEXes" },
-  { id: "integration-status", title: "Integration Status" },
-  { id: "adding-new-dex", title: "Adding a New DEX" },
+  { id: "venue-families", title: "Venue Families" },
+  { id: "enablement-status", title: "Enablement Status" },
+  { id: "review-requirements", title: "Review Requirements" },
 ]
 
-export default function SupportedDexesPage() {
+const venueFamilies = [
+  {
+    title: "Concentrated liquidity venues",
+    body:
+      "These integrations support range-based LP positions whose value depends on current price, active range, and inventory split.",
+  },
+  {
+    title: "Fungible stable and weighted pools",
+    body:
+      "These venues expose ERC-20 LP shares that can be reconstructed from pool balances, external prices, and recoverable unwind assumptions.",
+  },
+  {
+    title: "Custom or hook-based designs",
+    body:
+      "More advanced pool architectures can be supported only when the protocol has a clear oracle model, custody path, and liquidation adapter for them.",
+  },
+]
+
+export default function SupportedIntegrationsPage() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
-      {/* Main content */}
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
       <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Supported DEXes</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Decentralized exchanges whose LP tokens are eligible as collateral.
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">Supported Integrations</h1>
+        <p className="mb-8 text-lg text-gray-600">
+          Reference guide for the venue families AMM Market can support and the review gates used before any integration is enabled.
         </p>
 
         <section id="overview" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Overview</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            AMM Market integrates with leading decentralized exchanges to accept their LP tokens 
-            as collateral. Each DEX integration requires custom oracle adapters and risk parameter 
-            configuration.
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Overview</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            AMM Market does not treat every AMM venue as interchangeable. Support depends on whether
+            the protocol can price a position conservatively, unwind it in stressed conditions, and
+            manage it within the Borrow Spoke and Hub risk framework.
+          </p>
+          <p className="text-sm text-gray-600">
+            This page is an integration reference, not a live launch dashboard. For pool admission
+            policy, see{" "}
+            <Link href="/developers/integrations/allowed-pools" className="text-blue-600 hover:underline">
+              Allowed LP Pools
+            </Link>
+            . For valuation assumptions, see{" "}
+            <Link href="/developers/integrations/price-oracles" className="text-blue-600 hover:underline">
+              Price Oracles
+            </Link>
+            .
           </p>
         </section>
 
-        <section id="supported-dexes" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Supported DEXes</h2>
-          
-          <div className="space-y-6">
-            <div className="border-b border-gray-100 pb-4">
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="font-semibold text-gray-900">Uniswap v3</h3>
-                <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded font-medium">ACTIVE</span>
+        <section id="venue-families" className="mb-12">
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Venue Families</h2>
+          <div className="space-y-4">
+            {venueFamilies.map((family) => (
+              <div key={family.title} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+                <h3 className="mb-2 font-semibold text-gray-900">{family.title}</h3>
+                <p className="text-sm text-gray-600">{family.body}</p>
               </div>
-              <p className="text-gray-600 text-sm mb-2">
-                Concentrated liquidity positions represented as NFTs. Supports full-range and 
-                custom price range positions.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Token Standard: ERC-721 (NFT)</li>
-                <li>• Chains: Ethereum, Base, Arbitrum, Optimism</li>
-                <li>• Fee Tiers: 0.01%, 0.05%, 0.3%, 1%</li>
-              </ul>
-            </div>
-
-            <div className="border-b border-gray-100 pb-4">
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="font-semibold text-gray-900">Aerodrome</h3>
-                <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded font-medium">ACTIVE</span>
-              </div>
-              <p className="text-gray-600 text-sm mb-2">
-                Base's leading DEX with volatile and stable pool types. LP tokens are standard ERC-20.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Token Standard: ERC-20</li>
-                <li>• Chains: Base</li>
-                <li>• Pool Types: Volatile (x*y=k), Stable (Curve-style)</li>
-              </ul>
-            </div>
-
-            <div className="border-b border-gray-100 pb-4">
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="font-semibold text-gray-900">Curve Finance</h3>
-                <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded font-medium">COMING SOON</span>
-              </div>
-              <p className="text-gray-600 text-sm mb-2">
-                Specialized for stablecoin and pegged asset swaps with low slippage.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Token Standard: ERC-20</li>
-                <li>• Chains: Ethereum, Arbitrum, Optimism</li>
-                <li>• Pool Types: StableSwap, Tricrypto, Factory pools</li>
-              </ul>
-            </div>
-
-            <div className="border-b border-gray-100 pb-4">
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="font-semibold text-gray-900">Balancer v2</h3>
-                <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded font-medium">COMING SOON</span>
-              </div>
-              <p className="text-gray-600 text-sm mb-2">
-                Multi-asset pools with customizable weights and composable pool types.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Token Standard: ERC-20</li>
-                <li>• Chains: Ethereum, Arbitrum, Polygon</li>
-                <li>• Pool Types: Weighted, Stable, Composable Stable</li>
-              </ul>
-            </div>
-
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="font-semibold text-gray-900">Velodrome</h3>
-                <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded font-medium">COMING SOON</span>
-              </div>
-              <p className="text-gray-600 text-sm mb-2">
-                Optimism's leading DEX, similar architecture to Aerodrome.
-              </p>
-              <ul className="text-gray-500 text-xs space-y-1">
-                <li>• Token Standard: ERC-20</li>
-                <li>• Chains: Optimism</li>
-                <li>• Pool Types: Volatile, Stable</li>
-              </ul>
-            </div>
+            ))}
           </div>
         </section>
 
-        <section id="integration-status" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Integration Status</h2>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">DEX</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Status</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Pools Supported</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">TVL Eligible</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Uniswap v3</td>
-                  <td className="px-4 py-2"><span className="text-green-600 text-xs font-medium bg-green-50 px-2 py-0.5 rounded">Active</span></td>
-                  <td className="px-4 py-2 text-gray-600">45+</td>
-                  <td className="px-4 py-2 text-gray-600">$2.1B</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Aerodrome</td>
-                  <td className="px-4 py-2"><span className="text-green-600 text-xs font-medium bg-green-50 px-2 py-0.5 rounded">Active</span></td>
-                  <td className="px-4 py-2 text-gray-600">120+</td>
-                  <td className="px-4 py-2 text-gray-600">$450M</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Curve</td>
-                  <td className="px-4 py-2"><span className="text-yellow-600 text-xs font-medium bg-yellow-50 px-2 py-0.5 rounded">Q2 2026</span></td>
-                  <td className="px-4 py-2 text-gray-600">—</td>
-                  <td className="px-4 py-2 text-gray-600">—</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Balancer</td>
-                  <td className="px-4 py-2"><span className="text-yellow-600 text-xs font-medium bg-yellow-50 px-2 py-0.5 rounded">Q2 2026</span></td>
-                  <td className="px-4 py-2 text-gray-600">—</td>
-                  <td className="px-4 py-2 text-gray-600">—</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 text-gray-900 font-medium">Velodrome</td>
-                  <td className="px-4 py-2"><span className="text-yellow-600 text-xs font-medium bg-yellow-50 px-2 py-0.5 rounded">Q3 2026</span></td>
-                  <td className="px-4 py-2 text-gray-600">—</td>
-                  <td className="px-4 py-2 text-gray-600">—</td>
-                </tr>
-              </tbody>
-            </table>
+        <section id="enablement-status" className="mb-12">
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Enablement Status</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            Whether a venue is enabled on a specific network is an operational question, not a
+            protocol invariant. A venue family may be supported in principle but disabled on a given
+            deployment until oracle coverage, liquidation routing, and risk parameters are in place.
+          </p>
+          <div className="rounded-lg border border-cyan-200 bg-cyan-50 p-4 text-sm text-cyan-900">
+            Builders should verify current deployment configuration in the app, release notes, or
+            published contract registry instead of treating this page as a real-time status board.
           </div>
         </section>
 
-        <section id="adding-new-dex" className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Adding a New DEX</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            New DEX integrations require:
-          </p>
-          
-          <div className="space-y-3">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">1. Oracle Adapter</h3>
-              <p className="text-gray-600 text-sm">
-                Custom contract to calculate LP token value from underlying reserves and prices.
-              </p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">2. Risk Assessment</h3>
-              <p className="text-gray-600 text-sm">
-                Analysis of pool liquidity, historical volatility, and oracle reliability.
-              </p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">3. Governance Approval</h3>
-              <p className="text-gray-600 text-sm">
-                Community vote to approve new DEX integration and initial risk parameters.
-              </p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">4. Security Audit</h3>
-              <p className="text-gray-600 text-sm">
-                Independent audit of oracle adapter and integration contracts.
-              </p>
-            </div>
-          </div>
-          
-          <p className="text-gray-500 text-sm mt-4">
-            Interested in proposing a new DEX? Contact the team or submit a governance proposal.
-          </p>
+        <section id="review-requirements" className="mb-12">
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">Review Requirements</h2>
+          <ul className="space-y-3 text-sm text-gray-600">
+            <li>• A venue must support conservative position valuation from robust external prices and verifiable state reconstruction.</li>
+            <li>• The protocol needs a reliable unwind path for liquidation, including fee collection and routing into the debt asset.</li>
+            <li>• Pool depth, concentration risk, correlation assumptions, and operational monitoring must fit inside the risk framework.</li>
+            <li>• New venue support should be treated as a governance and risk action, not just an interface update.</li>
+          </ul>
         </section>
       </div>
 
-      {/* Right scroll-spy sidebar */}
-      <ScrollSpySidebar 
-        sections={sections} 
-        pageSummary="Decentralized exchanges whose LP tokens are eligible as collateral."
+      <ScrollSpySidebar
+        sections={sections}
+        pageSummary="Governance-aware overview of which AMM venue families AMM Market can safely support."
         sectionColor="cyan"
       />
     </div>
