@@ -6,6 +6,8 @@ describe("site constants", () => {
     expect(SITE_NAME).toBe("Avana")
     expect(SITE_URL).toBe("https://ammmarket.xyz")
     expect(siteRoutes.about).toBe("/about")
+    expect(siteRoutes.borrow).toBe("/borrow")
+    expect(siteRoutes.platform).toBe("/platform")
     expect(siteRoutes.launchApp).toBe("/")
   })
 

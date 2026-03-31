@@ -29,10 +29,11 @@ describe('Header', () => {
   it('renders the direct desktop navigation links', () => {
     render(<Header />)
 
-    expect(screen.getByRole('link', { name: 'Open Spoke' })).toHaveAttribute('href', '/open-spoke')
-    expect(screen.getByRole('link', { name: 'Stable Spoke' })).toHaveAttribute('href', '/stable-spoke')
-    expect(screen.getByRole('link', { name: 'Bluechip Spoke' })).toHaveAttribute('href', '/bluechip-spoke')
-    expect(screen.getByRole('link', { name: 'Developers' })).toHaveAttribute('href', '/developers')
+    expect(screen.getByRole('link', { name: 'Borrow' })).toHaveAttribute('href', '/borrow')
+    expect(screen.getByRole('link', { name: 'Invest' })).toHaveAttribute('href', '/invest')
+    expect(screen.getByRole('link', { name: 'Earn' })).toHaveAttribute('href', '/earn')
+    expect(screen.getByRole('link', { name: 'Platform' })).toHaveAttribute('href', '/platform')
+    expect(screen.queryByRole('link', { name: 'Developers' })).not.toBeInTheDocument()
   })
 
   it('renders desktop CTA links', () => {
@@ -96,11 +97,12 @@ describe('Header', () => {
 
     expect(mobileLinks.map((link) => link.getAttribute('href'))).toEqual([
       '/',
-      '/open-spoke',
-      '/stable-spoke',
-      '/bluechip-spoke',
-      '/developers',
+      '/borrow',
+      '/invest',
+      '/earn',
+      '/platform',
       '/lightpaper',
+      '/developers',
       '/blog',
       '/early-access',
       '/',
