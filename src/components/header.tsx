@@ -41,7 +41,7 @@ function isActivePath(pathname: string | null, href: string): boolean {
 export default function Header(): React.JSX.Element {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const normalizedPathname = pathname || "/"
+  const [clientPathname, setClientPathname] = useState<string | null>(null)
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow
@@ -69,6 +69,10 @@ export default function Header(): React.JSX.Element {
     }
   }, [])
 
+  useEffect(() => {
+    setClientPathname(pathname)
+  }, [pathname])
+
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-black/8 bg-[linear-gradient(rgba(255,255,255,0.91)_0%,rgba(255,255,255,0.91)_100%)] backdrop-blur-[7px]">
@@ -92,13 +96,14 @@ export default function Header(): React.JSX.Element {
 
           <nav aria-label="Primary navigation" className="hidden flex-1 items-center gap-8 md:flex lg:gap-10">
             {desktopLinks.map((link) => {
-              const isActive = isActivePath(normalizedPathname, link.href)
+              const isActive = clientPathname ? isActivePath(clientPathname, link.href) : false
 
               return (
                 <div key={link.href} className="group">
                   <Link
                     href={link.href}
-                    className={`relative inline-flex translate-y-0 items-center py-2 text-[14px] font-medium tracking-[-0.03em] transition duration-200 hover:-translate-y-0.5 ${
+                    suppressHydrationWarning
+                    className={`site-header-nav-link relative inline-flex translate-y-0 items-center py-2 text-[14px] font-medium tracking-[-0.03em] transition duration-200 hover:-translate-y-0.5 ${
                       isActive ? "text-black" : "text-black/90 hover:text-black"
                     }`}
                   >
@@ -118,7 +123,8 @@ export default function Header(): React.JSX.Element {
             <div className="transition duration-200 hover:-translate-y-0.5 hover:scale-[1.01]">
               <Link
                 href={ctas[0].href}
-                className="inline-flex h-10 items-center justify-center rounded-full bg-[#ece9e4] px-4 text-[13px] font-medium tracking-[-0.03em] text-black transition hover:bg-[#e4e0db]"
+                suppressHydrationWarning
+                className="site-header-cta inline-flex h-10 items-center justify-center rounded-full bg-[#ece9e4] px-4 text-[13px] font-medium tracking-[-0.03em] text-black transition hover:bg-[#e4e0db]"
               >
                 {ctas[0].label}
               </Link>
@@ -126,7 +132,8 @@ export default function Header(): React.JSX.Element {
             <div className="transition duration-200 hover:-translate-y-0.5 hover:scale-[1.01]">
               <Link
                 href={ctas[1].href}
-                className="inline-flex h-10 items-center justify-center rounded-full bg-black px-4 text-[13px] font-medium tracking-[-0.03em] text-white transition hover:bg-black/88"
+                suppressHydrationWarning
+                className="site-header-cta inline-flex h-10 items-center justify-center rounded-full bg-black px-4 text-[13px] font-medium tracking-[-0.03em] text-white transition hover:bg-black/88"
               >
                 {ctas[1].label}
               </Link>
@@ -216,7 +223,7 @@ export default function Header(): React.JSX.Element {
           >
             <ol>
               {mobileLinks.map((link, index) => {
-                const isActive = isActivePath(normalizedPathname, link.href)
+                const isActive = clientPathname ? isActivePath(clientPathname, link.href) : false
 
                 return (
                   <li
@@ -228,6 +235,7 @@ export default function Header(): React.JSX.Element {
                   >
                     <Link
                       href={link.href}
+                      suppressHydrationWarning
                       className="flex items-end justify-between gap-5 py-3"
                       onClick={() => setMobileMenuOpen(false)}
                     >

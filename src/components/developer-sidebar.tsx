@@ -39,6 +39,7 @@
  */
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import type { CSSProperties } from "react"
 import {
   Bug,
   BookOpen,
@@ -173,6 +174,9 @@ const sectionColors: Record<string, { headerBg: string; headerText: string; item
 export default function DeveloperSidebar() {
   const pathname = usePathname()
   const normalizedPathname = pathname || "/"
+  const sidebarTypeScale = {
+    "--type-sidebar-link-size": "0.875rem",
+  } as CSSProperties
 
   const isActive = (href: string) => {
     return normalizedPathname === href
@@ -185,7 +189,10 @@ export default function DeveloperSidebar() {
   }
 
   return (
-    <aside className="hidden md:block w-64 border-r border-gray-200 h-[calc(100vh-73px)] sticky top-[73px]">
+    <aside
+      className="hidden md:block w-64 border-r border-gray-200 h-[calc(100vh-73px)] sticky top-[73px]"
+      style={sidebarTypeScale}
+    >
       {/* Scrollable content */}
       <div
         className="h-full overflow-y-auto pr-2"
