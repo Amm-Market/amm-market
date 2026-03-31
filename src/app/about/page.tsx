@@ -41,8 +41,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="bg-white">
-      <section className="px-4 pb-16 pt-24 sm:px-6 lg:pb-24 lg:pt-40">
-        <div className="mx-auto max-w-[1180px]">
+      <section className="pb-16 pt-24 lg:pb-24 lg:pt-40">
+        <div className="site-content-shell">
           <div className="mx-auto max-w-4xl text-center">
             <h1
               aria-label={`Introducing ${SITE_NAME}: An LP-as-Collateral Protocol Built on Aave V4`}
