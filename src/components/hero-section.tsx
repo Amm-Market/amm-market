@@ -523,10 +523,6 @@ export default function HeroSection() {
 
         <LazySection minHeight="200px">
           <EarlyAccessCtaBox />
-          <div className="mt-6 md:mt-4 max-w-4xl mx-auto px-4 space-y-3 text-xs text-gray-500 pb-2">
-            <p>Borrowing against LP tokens involves risk, including liquidation if market conditions move against your position. Avana does not custody your funds, rehypothecate LP positions, or alter how your liquidity operates on underlying AMMs. Loan terms, interest rates, and collateral values are enforced on-chain using transparent oracle systems and automated risk parameters. You remain in full control of your position at all times and can repay or adjust collateral whenever you choose. Only borrow amounts you are comfortable maintaining through market volatility.</p>
-            <p>This material is for informational purposes only, and is not (i) an offer, or solicitation of an offer, to invest in, or to buy or sell, any interests or shares, or to participate in any investment or trading strategy, (ii) intended to provide accounting, legal, or tax advice, or investment recommendations or (iii) an official statement of Avana. Consult your advisors before making any investment decision. No representation or warranty is made, expressed or implied with respect to the accuracy of the information or to the future performance of any digital asset, financial instrument or other market or economic measure. Avana may have financial interests in, or relationships with, some of the entities and/or publications discussed or referenced in the materials. Avana does not endorse or approve links or third-party websites that may be provided in the materials.</p>
-          </div>
         </LazySection>
       </div>
     </section>
