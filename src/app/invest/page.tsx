@@ -37,11 +37,11 @@ const stableSpokeFaqItems: InlineFaqItem[] = [
 ]
 
 export const metadata: Metadata = {
-  title: "Stable Spoke - Stablecoin LP Collateral",
-  description: "Avana Stable Spoke for stablecoin-stablecoin LP positions. Highest LTV ratios and lowest risk for stable pairs.",
+  title: "Invest - Stablecoin LP Collateral",
+  description: "Avana Invest is built around stable LP collateral with the protocol's highest efficiency and lowest-risk borrowing profile.",
 }
 
-export default function StableSpokePage() {
+export default function InvestPage() {
   return (
     <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col min-h-screen pt-20">
       <div className="flex-1 flex flex-col relative z-0">
