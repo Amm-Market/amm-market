@@ -12,6 +12,7 @@ const ROUTES = [
   "/lightpaper",
   "/faq",
   "/brand",
+  "/about",
   "/early-access",
   "/privacy",
   "/terms",
