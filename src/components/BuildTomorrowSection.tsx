@@ -47,7 +47,7 @@ export function BuildTomorrowSection() {
       data-apply-globally="true"
       className="w-full bg-inherit"
     >
-      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 pt-2 sm:pt-4">
+      <div className="site-content-shell pt-2 sm:pt-4">
         {/* Carousel */}
         <div
           className="relative"

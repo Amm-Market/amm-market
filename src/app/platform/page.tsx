@@ -150,7 +150,7 @@ export default function PlatformPage() {
 
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 pt-8 sm:px-6 sm:pt-12">
         <div className="relative z-0 flex flex-1 flex-col">
-          <div className="space-y-12 pb-16">
+          <div className="site-content-width space-y-12 pb-16">
             <section>
               <div className="mb-6 max-w-[650px]">
                 <h2 className="text-2xl font-bold text-gray-900">How It Works</h2>
@@ -245,90 +245,92 @@ export default function PlatformPage() {
               "linear-gradient(185deg, rgba(0, 22, 90, 0) 10%, rgb(0, 22, 90) 90.38%), linear-gradient(rgb(0, 22, 90) 0%, rgb(163, 179, 202) 100%)",
           }}
         >
-          <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-4 px-8 pb-8 lg:gap-8 lg:px-16 lg:pb-0">
-            <div className="flex flex-row items-center justify-center gap-2.5">
-              <div className="h-[35px] w-[35px]">
-                <svg className="h-[35px] w-[35px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                </svg>
+          <div className="site-content-shell">
+            <div className="flex flex-col items-center gap-4 px-8 pb-8 lg:gap-8 lg:px-16 lg:pb-0">
+              <div className="flex flex-row items-center justify-center gap-2.5">
+                <div className="h-[35px] w-[35px]">
+                  <svg className="h-[35px] w-[35px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                  </svg>
+                </div>
+                <p className="text-[15px] font-medium leading-normal text-gray-300 lg:text-[16px]">
+                  Advanced LP Management
+                </p>
               </div>
-              <p className="text-[15px] font-medium leading-normal text-gray-300 lg:text-[16px]">
-                Advanced LP Management
-              </p>
-            </div>
 
-            <div className="flex max-w-[366px] flex-col items-center gap-1 lg:max-w-none">
-              <h2 className="text-center text-[32px] font-black leading-[1.08] tracking-[-0.02em] text-white lg:text-[48px]">
-                Power meets precision
-              </h2>
-              <h3 className="text-center text-[18px] font-medium leading-[1.45] text-gray-300 lg:text-[22px]">
-                Manage positions with institutional-grade tools and deeper liquidity
-              </h3>
-            </div>
+              <div className="flex max-w-[366px] flex-col items-center gap-1 lg:max-w-none">
+                <h2 className="text-center text-[32px] font-black leading-[1.08] tracking-[-0.02em] text-white lg:text-[48px]">
+                  Power meets precision
+                </h2>
+                <h3 className="text-center text-[18px] font-medium leading-[1.45] text-gray-300 lg:text-[22px]">
+                  Manage positions with institutional-grade tools and deeper liquidity
+                </h3>
+              </div>
 
-            <div className="hidden flex-wrap items-center justify-center gap-4 lg:flex">
-              <Link
-                className="group relative flex h-10 min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
-                href="/early-access"
-              >
-                <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
-                <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="flex flex-row items-center justify-center gap-1">
-                  <p className="text-[15px] font-medium leading-normal tracking-[-0.28px] text-gray-50">
-                    Get Early Access
-                  </p>
-                </div>
-              </Link>
+              <div className="hidden flex-wrap items-center justify-center gap-4 lg:flex">
+                <Link
+                  className="group relative flex h-10 min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
+                  href="/early-access"
+                >
+                  <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
+                  <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="flex flex-row items-center justify-center gap-1">
+                    <p className="text-[15px] font-medium leading-normal tracking-[-0.28px] text-gray-50">
+                      Get Early Access
+                    </p>
+                  </div>
+                </Link>
 
-              <Link
-                className="group relative flex h-10 min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
-                href="/developers"
-              >
-                <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
-                <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="flex flex-row items-center justify-center gap-1">
-                  <p className="text-[15px] font-medium leading-normal tracking-[-0.28px] text-gray-50">
-                    View Docs
-                  </p>
-                </div>
-              </Link>
-            </div>
+                <Link
+                  className="group relative flex h-10 min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
+                  href="/developers"
+                >
+                  <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
+                  <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="flex flex-row items-center justify-center gap-1">
+                    <p className="text-[15px] font-medium leading-normal tracking-[-0.28px] text-gray-50">
+                      View Docs
+                    </p>
+                  </div>
+                </Link>
+              </div>
 
-            <div className="relative w-full">
-              <div className="relative left-1/2 h-auto w-screen -translate-x-1/2">
-                <div className="relative aspect-[1600/760] w-full">
-                  <Image
-                    alt="Power meets precision"
-                    className="object-fill"
-                    fill
-                    loading="lazy"
-                    sizes="100vw"
-                    src="https://mkt-static.crypto.com/cdc_home_exchangehero_usd.webp"
-                  />
+              <div className="relative w-full">
+                <div className="relative left-1/2 h-auto w-screen -translate-x-1/2">
+                  <div className="relative aspect-[1600/760] w-full">
+                    <Image
+                      alt="Power meets precision"
+                      className="object-fill"
+                      fill
+                      loading="lazy"
+                      sizes="100vw"
+                      src="https://mkt-static.crypto.com/cdc_home_exchangehero_usd.webp"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="flex w-full flex-col items-center justify-center gap-3 px-4 lg:hidden">
-              <Link
-                className="group relative flex h-10 w-full max-w-[366px] min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
-                href="/early-access"
-              >
-                <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
-                <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="flex flex-row items-center justify-center gap-1">
-                  <p className="text-[15px] font-medium leading-normal tracking-[-0.28px] text-gray-50">
-                    Get Early Access
-                  </p>
-                </div>
-              </Link>
+              <div className="flex w-full flex-col items-center justify-center gap-3 px-4 lg:hidden">
+                <Link
+                  className="group relative flex h-10 w-full max-w-[366px] min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
+                  href="/early-access"
+                >
+                  <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
+                  <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="flex flex-row items-center justify-center gap-1">
+                    <p className="text-[15px] font-medium leading-normal tracking-[-0.28px] text-gray-50">
+                      Get Early Access
+                    </p>
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
 
         <div className="flex w-full flex-col bg-white">
-          <div className="mx-auto w-full px-8 py-8 lg:py-16">
-            <div className="mx-auto grid grid-cols-2 gap-x-6 gap-y-8 lg:max-w-[1100px] lg:grid-cols-4 lg:gap-8">
+          <div className="site-content-shell py-8 lg:py-16">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4 lg:gap-8">
               {advancedStats.map((stat) => (
                 <div key={stat.title} className="flex flex-col gap-4 border-t border-gray-200 pt-4">
                   <p className="text-[17px] font-semibold leading-normal tracking-[-0.01em] text-gray-900 lg:text-[19px]">
@@ -342,7 +344,7 @@ export default function PlatformPage() {
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6">
+          <div className="site-content-shell">
             <EarlyAccessCtaBox />
           </div>
         </div>
