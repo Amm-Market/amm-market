@@ -49,6 +49,7 @@ describe('Footer', () => {
   it('renders Resources links', () => {
     render(<Footer />)
 
+    expect(screen.getByRole('link', { name: 'About' })).toHaveAttribute('href', '/about')
     expect(screen.getByRole('link', { name: 'Blog' })).toHaveAttribute('href', '/blog')
     expect(screen.getByRole('link', { name: 'FAQ' })).toHaveAttribute('href', '/faq')
     expect(screen.getByRole('link', { name: 'Brand' })).toHaveAttribute('href', '/brand')
