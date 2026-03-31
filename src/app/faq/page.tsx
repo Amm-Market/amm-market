@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useSearchParams } from "next/navigation"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 // FAQ categories and their questions
@@ -258,8 +259,14 @@ const faqCategories = [
 ]
 
 export default function FaqPage() {
+  const searchParams = useSearchParams()
   const [activeCategory, setActiveCategory] = useState("Troubleshooting")
   const [searchTerm, setSearchTerm] = useState("")
+  const querySearchTerm = searchParams.get("q")?.trim() ?? ""
+
+  useEffect(() => {
+    setSearchTerm(querySearchTerm)
+  }, [querySearchTerm])
 
   // Get questions for the active category or filter by search term
   // When searching, include category name for display

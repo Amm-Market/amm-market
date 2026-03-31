@@ -227,7 +227,7 @@
 @media (min-width: 1024px) {
   .site-header-nav-link,
   .site-header-cta {
-    font-size: 1.2rem;
+    font-size: 1.0625rem;
     line-height: 1.5;
     font-weight: 500;
     letter-spacing: -0.03em;
