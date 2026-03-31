@@ -12,6 +12,7 @@ export const DEFAULT_OG_DESCRIPTION =
 
 export const siteRoutes = {
   home: "/",
+  about: "/about",
   openSpoke: "/open-spoke",
   stableSpoke: "/stable-spoke",
   bluechipSpoke: "/bluechip-spoke",

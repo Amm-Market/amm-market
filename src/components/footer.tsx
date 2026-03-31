@@ -36,6 +36,7 @@ const footerSections = [
   {
     title: "Resources",
     links: [
+      { href: siteRoutes.about, label: "About" },
       { href: siteRoutes.blog, label: "Blog" },
       { href: siteRoutes.faq, label: "FAQ" },
       { href: siteRoutes.brand, label: "Brand" },
