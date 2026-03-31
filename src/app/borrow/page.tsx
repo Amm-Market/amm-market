@@ -34,11 +34,11 @@ const openSpokeFaqItems: InlineFaqItem[] = [
 ]
 
 export const metadata: Metadata = {
-  title: "Open Spoke - Any LP Token as Collateral",
-  description: "Avana Open Spoke accepts any supported LP token as collateral. Flexible borrowing across multiple DEXes.",
+  title: "Borrow - Any LP Token as Collateral",
+  description: "Avana Borrow accepts supported LP tokens as collateral for flexible borrowing across multiple DEXes.",
 }
 
-export default function OpenSpokePage() {
+export default function BorrowPage() {
   return (
     <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col min-h-screen pt-20">
       <div className="flex-1 flex flex-col relative z-0">
@@ -127,7 +127,7 @@ export default function OpenSpokePage() {
                 </div>
                 <p className="text-gray-600">
                   Achieve near-instant cross-chain transactions with our optimistic execution model backed by
-                  EigenLayer's restaking security guarantees.
+                  EigenLayer&apos;s restaking security guarantees.
                 </p>
               </div>
 

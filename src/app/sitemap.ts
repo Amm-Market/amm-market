@@ -56,13 +56,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}${siteRoutes.openSpoke}`,
+      url: `${SITE_URL}${siteRoutes.borrow}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}${siteRoutes.stableSpoke}`,
+      url: `${SITE_URL}${siteRoutes.invest}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}${siteRoutes.earn}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}${siteRoutes.platform}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,

@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
 import { legacyBlogRedirects } from "./src/lib/site";
 
+const legacyMarketingRedirects = [
+  { source: "/open-spoke", destination: "/borrow" },
+  { source: "/stable-spoke", destination: "/invest" },
+  { source: "/bluechip-spoke", destination: "/earn" },
+  { source: "/webapp", destination: "/platform" },
+];
+
 /**
  * Security headers configuration for the application.
  * These headers protect against common web vulnerabilities including:
@@ -110,6 +117,11 @@ const nextConfig: NextConfig = {
         hostname: "cryptologos.cc",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "assets-cms.kraken.com",
+        pathname: "/**",
+      },
     ],
   },
 
@@ -144,7 +156,7 @@ const nextConfig: NextConfig = {
   },
 
   async redirects() {
-    return legacyBlogRedirects.map((redirect) => ({
+    return [...legacyBlogRedirects, ...legacyMarketingRedirects].map((redirect) => ({
       ...redirect,
       permanent: true,
     }))

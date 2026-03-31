@@ -16,9 +16,10 @@ const ROUTES = [
   "/early-access",
   "/privacy",
   "/terms",
-  "/open-spoke",
-  "/stable-spoke",
-  "/bluechip-spoke",
+  "/borrow",
+  "/invest",
+  "/earn",
+  "/platform",
 ];
 
 const PORT = Number(process.env.LIGHTHOUSE_PORT ?? 3001);
