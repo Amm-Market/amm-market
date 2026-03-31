@@ -19,7 +19,7 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <section className="py-12 md:py-24">
-      <article className="max-w-6xl mx-auto px-4 sm:px-6">
+      <article className="site-content-shell">
         {/* Header */}
         <div className="flex flex-col items-start gap-6 mb-12">
           <h1 className="type-page-title italic text-gray-900">Privacy Policy</h1>

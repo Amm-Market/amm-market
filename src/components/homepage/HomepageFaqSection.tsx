@@ -8,8 +8,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
  */
 export default function HomepageFaqSection() {
   return (
-    <div className="flex flex-col py-16 md:py-20 gap-8 md:flex-row md:gap-12 border-t border-gray-100" style={{ opacity: 1, transform: "none" }}>
-      <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 md:pt-8 md:flex-shrink-0 md:w-[300px]">
+    <div className="flex flex-col gap-8 border-t border-gray-100 pt-16 pb-4 md:flex-row md:gap-12 md:pt-10 md:pb-0" style={{ opacity: 1, transform: "none" }}>
+      <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 md:pt-2 md:flex-shrink-0 md:w-[300px]">
         Frequently asked questions.
       </h3>
       <div className="md:w-[600px] md:flex-shrink-0">

@@ -1,7 +1,6 @@
 import Image from "next/image"
 import dynamic from "next/dynamic"
 import { DeFiTerm } from "@/components/defi-term"
-import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 
@@ -9,7 +8,7 @@ const DeferredTestimonialSection = dynamic(() => import("@/components/homepage/H
   loading: () => <div className="py-16 md:py-20 border-t border-gray-100" aria-hidden="true" />,
 })
 const DeferredFaqSection = dynamic(() => import("@/components/homepage/HomepageFaqSection"), {
-  loading: () => <div className="py-16 md:py-20 border-t border-gray-100" aria-hidden="true" />,
+  loading: () => <div className="border-t border-gray-100 pt-16 pb-4 md:pt-10 md:pb-0" aria-hidden="true" />,
 })
 
 /**
@@ -49,8 +48,8 @@ function PoolCard({ pool }: { pool: HomepagePool }) {
 
 export default function HeroSection() {
   return (
-    <section className="marketing-secondary-shell pb-6 md:pb-4">
-      <div className="mx-auto max-w-5xl px-6 lg:px-0 py-16 md:py-24">
+    <section className="marketing-secondary-shell pb-0">
+      <div className="site-content-shell py-16 md:py-24">
         <div className="flex flex-col gap-6">
           <div className="flex max-w-[600px] flex-col gap-2">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
@@ -92,11 +91,11 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-5xl px-6 lg:px-0">
+      <div className="site-content-shell">
         <div className="border-t border-gray-100"></div>
       </div>
 
-      <div className="mx-auto max-w-5xl space-y-12 px-6 lg:px-0">
+      <div className="site-content-shell space-y-12">
         <LazySection minHeight="400px">
           <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12" style={{ opacity: 1, transform: "none" }}>
             <div className="flex flex-col gap-2">
@@ -335,38 +334,6 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <div className="w-full max-w-[1280px] mx-auto px-4 py-8 mt-12 md:py-8 md:mt-16">
-              <div className="flex flex-col items-center gap-[26px] lg:gap-8">
-                <div
-                  className="group rounded-lg relative z-10 flex min-h-[380px] w-full max-w-[1280px] overflow-hidden h-[520px] sm:h-[560px] lg:h-[620px]"
-                  style={{
-                    background: "linear-gradient(0deg, rgb(243, 244, 246) -91.67%, rgb(229, 231, 235) 58.64%)",
-                  }}
-                >
-                  <Image
-                    alt=""
-                    className="absolute inset-0 z-0 object-cover mt-[180px] scale-[1.2] sm:mt-[240px] md:top-auto md:scale-100"
-                    fill
-                    loading="lazy"
-                    quality={70}
-                    sizes="(max-width: 1024px) 100vw, 1280px"
-                    src="https://mkt-static.crypto.com/cdc_home_exchangebanner_desktop_usd.webp"
-                  />
-                  <div className="flex relative z-20 h-full w-full flex-col items-start justify-end gap-4 p-5 pb-8 sm:p-8 lg:flex-row lg:justify-between lg:pb-8">
-                    <div className="flex items-center relative z-20 w-full flex-row lg:my-auto">
-                      <div className="flex w-full max-w-[560px] flex-col gap-1 lg:gap-2">
-                        <h3 className="text-[20px] lg:text-[28px] font-semibold leading-normal text-gray-900">
-                          Automate your LP strategy
-                        </h3>
-                        <p className="text-[18px] lg:text-[21px] font-medium leading-normal tracking-[-0.09px] lg:tracking-[-0.1px] text-gray-600">
-                          Set it and forget it with auto-compound, rebalancing, and alerts
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </LazySection>
 
@@ -519,14 +486,6 @@ export default function HeroSection() {
 
         <LazySection minHeight="500px">
           <DeferredFaqSection />
-        </LazySection>
-
-        <LazySection minHeight="200px">
-          <EarlyAccessCtaBox />
-          <div className="mt-6 md:mt-4 max-w-4xl mx-auto px-4 space-y-3 text-xs text-gray-500 pb-2">
-            <p>Borrowing against LP tokens involves risk, including liquidation if market conditions move against your position. Avana does not custody your funds, rehypothecate LP positions, or alter how your liquidity operates on underlying AMMs. Loan terms, interest rates, and collateral values are enforced on-chain using transparent oracle systems and automated risk parameters. You remain in full control of your position at all times and can repay or adjust collateral whenever you choose. Only borrow amounts you are comfortable maintaining through market volatility.</p>
-            <p>This material is for informational purposes only, and is not (i) an offer, or solicitation of an offer, to invest in, or to buy or sell, any interests or shares, or to participate in any investment or trading strategy, (ii) intended to provide accounting, legal, or tax advice, or investment recommendations or (iii) an official statement of Avana. Consult your advisors before making any investment decision. No representation or warranty is made, expressed or implied with respect to the accuracy of the information or to the future performance of any digital asset, financial instrument or other market or economic measure. Avana may have financial interests in, or relationships with, some of the entities and/or publications discussed or referenced in the materials. Avana does not endorse or approve links or third-party websites that may be provided in the materials.</p>
-          </div>
         </LazySection>
       </div>
     </section>
