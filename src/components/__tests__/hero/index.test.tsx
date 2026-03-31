@@ -54,10 +54,6 @@ vi.mock('../../hero/FAQSection', () => ({
   FAQSection: () => <div data-testid="faq-section">FAQSection</div>,
 }))
 
-vi.mock('@/components/EarlyAccessCtaBox', () => ({
-  default: () => <div data-testid="early-access-cta">EarlyAccessCtaBox</div>,
-}))
-
 // Mock IntersectionObserver for lazy sections
 class MockIntersectionObserver {
   private callback: IntersectionObserverCallback
@@ -116,7 +112,7 @@ describe('HeroSection (index)', () => {
       return style.includes('min-height:')
     })
 
-    expect(reservedSections).toHaveLength(8)
+    expect(reservedSections).toHaveLength(7)
     expect(reservedSections[0]).toHaveStyle({ minHeight: '400px' })
     expect(reservedSections[1]).toHaveStyle({ minHeight: '500px' })
     expect(reservedSections[6]).toHaveStyle({ minHeight: '500px' })
@@ -138,7 +134,6 @@ describe('HeroSection (index)', () => {
       expect(screen.getByTestId('about-aave')).toBeInTheDocument()
       expect(screen.getByTestId('testimonial-carousel')).toBeInTheDocument()
       expect(screen.getByTestId('faq-section')).toBeInTheDocument()
-      expect(screen.getByTestId('early-access-cta')).toBeInTheDocument()
     })
   })
 

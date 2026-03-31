@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import Footer from '../footer'
 
 // Mock next/link
@@ -18,12 +18,6 @@ vi.mock('next/image', () => ({
 }))
 
 describe('Footer', () => {
-  beforeEach(() => {
-    // Mock Date for consistent year
-    vi.useFakeTimers()
-    vi.setSystemTime(new Date('2026-01-20'))
-  })
-
   it('renders the logo', () => {
     render(<Footer />)
     const logo = screen.getByAltText('Avana wordmark')
@@ -33,9 +27,20 @@ describe('Footer', () => {
   it('renders navigation sections', () => {
     render(<Footer />)
 
+    expect(screen.getByText('Explore')).toBeInTheDocument()
     expect(screen.getByText('Products')).toBeInTheDocument()
     expect(screen.getByText('Resources')).toBeInTheDocument()
     expect(screen.getByText('Developers')).toBeInTheDocument()
+    expect(screen.getByText('Legal')).toBeInTheDocument()
+  })
+
+  it('renders top-level navigation links for desktop coverage', () => {
+    const { container } = render(<Footer />)
+
+    expect(container.querySelector('a[href="/borrow"]')).toHaveTextContent('Borrow')
+    expect(container.querySelector('a[href="/invest"]')).toHaveTextContent('Invest')
+    expect(container.querySelector('a[href="/earn"]')).toHaveTextContent('Earn')
+    expect(container.querySelector('a[href="/platform"]')).toHaveTextContent('Platform')
   })
 
   it('renders Products links', () => {
@@ -62,30 +67,33 @@ describe('Footer', () => {
     expect(screen.getByRole('link', { name: 'Introduction' })).toHaveAttribute('href', '/developers/introduction')
   })
 
-  it('renders social media links', () => {
+  it('does not render social media links', () => {
     render(<Footer />)
 
-    const links = screen.getAllByRole('link')
-    const hrefs = links.map(link => link.getAttribute('href'))
-
-    // Check for external links
-    expect(hrefs.some(href => href?.includes('twitter.com'))).toBe(true)
-    expect(hrefs.some(href => href?.includes('discord.gg'))).toBe(true)
-    expect(hrefs.some(href => href?.includes('github.com'))).toBe(true)
+    expect(screen.queryByRole('link', { name: 'Avana on X' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: 'Avana on Discord' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: 'Avana on GitHub' })).not.toBeInTheDocument()
   })
 
-  it('renders legal links', () => {
+  it('renders legal links inside the footer sections', () => {
     render(<Footer />)
 
     expect(screen.getByRole('link', { name: 'Privacy' })).toHaveAttribute('href', '/privacy')
     expect(screen.getByRole('link', { name: 'Terms' })).toHaveAttribute('href', '/terms')
   })
 
-  it('renders copyright with current year', () => {
+  it('renders the legal disclosure inside the footer', () => {
     render(<Footer />)
 
-    expect(screen.getByText(/© 2026/)).toBeInTheDocument()
-    expect(screen.getByText(/Designed with love/)).toBeInTheDocument()
+    expect(screen.getByText(/Borrowing against LP tokens involves risk/)).toBeInTheDocument()
+    expect(screen.getByText(/This material is for informational purposes only/)).toBeInTheDocument()
+  })
+
+  it('does not render the copyright tagline', () => {
+    render(<Footer />)
+
+    expect(screen.queryByText(/Designed with love/)).not.toBeInTheDocument()
+    expect(screen.queryByText(/©/)).not.toBeInTheDocument()
   })
 
   it('has proper footer element structure', () => {
@@ -93,14 +101,16 @@ describe('Footer', () => {
 
     const footer = container.querySelector('footer')
     expect(footer).toBeInTheDocument()
-    expect(footer).toHaveClass('mx-auto', 'w-full', 'max-w-5xl')
+    expect(footer).toHaveClass('site-content-shell')
   })
 
   it('renders the current footer section links', () => {
     render(<Footer />)
 
+    expect(screen.getByText('Explore')).toBeInTheDocument()
     expect(screen.getByText('Products')).toBeInTheDocument()
     expect(screen.getByText('Resources')).toBeInTheDocument()
     expect(screen.getByText('Developers')).toBeInTheDocument()
+    expect(screen.getByText('Legal')).toBeInTheDocument()
   })
 })
