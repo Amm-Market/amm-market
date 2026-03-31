@@ -58,7 +58,7 @@ export default function BlogPostLayout({
   nextPost,
 }: BlogPostLayoutProps) {
   return (
-    <div className="site-article-layout container mx-auto px-4 py-4 md:py-8 xl:py-10 sm:px-16 xl:px-20">
+    <div className="site-article-layout site-content-shell py-4 md:py-8 xl:py-10">
       <div className="grid grid-cols-12 gap-4">
         {/* Back button - hidden on mobile */}
         <div className="hidden col-span-12 xl:block lg:col-span-2">

@@ -157,7 +157,7 @@ export default function BlogPage() {
   const recentPosts = blogs.slice(1)
 
   return (
-    <div className="mx-auto max-w-[1200px] px-4 py-12">
+    <div className="site-content-shell py-12">
       {/* Featured Post */}
       <Link
         href={`/blog/${featuredPost.slug}`}

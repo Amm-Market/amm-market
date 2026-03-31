@@ -399,6 +399,19 @@
 }
 
 @layer utilities {
+  .site-content-shell {
+    width: 100%;
+    max-width: 64rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  .site-content-width {
+    width: 100%;
+    max-width: 64rem;
+    margin-inline: auto;
+  }
+
   .text-xs {
     font-size: 0.875rem;
     line-height: 1.5;
@@ -412,6 +425,18 @@
   .text-base {
     font-size: 1rem;
     line-height: 1.65;
+  }
+}
+
+@media (min-width: 640px) {
+  .site-content-shell {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-content-shell {
+    padding-inline: 0;
   }
 }
 

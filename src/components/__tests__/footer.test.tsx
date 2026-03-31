@@ -101,7 +101,7 @@ describe('Footer', () => {
 
     const footer = container.querySelector('footer')
     expect(footer).toBeInTheDocument()
-    expect(footer).toHaveClass('mx-auto', 'w-full', 'max-w-6xl')
+    expect(footer).toHaveClass('site-content-shell')
   })
 
   it('renders the current footer section links', () => {

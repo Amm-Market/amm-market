@@ -82,8 +82,8 @@ const footerSections: readonly FooterSection[] = [
 
 export default function Footer(): React.JSX.Element {
   return (
-    <footer className="mx-auto w-full max-w-6xl">
-      <div className="mx-4 grid grid-cols-2 gap-x-6 gap-y-12 border-t border-gray-200/50 pt-12 pb-6 sm:mx-6 sm:grid-cols-3 md:grid-cols-[auto_1fr] md:gap-x-12 lg:gap-x-16">
+    <footer className="site-content-shell">
+      <div className="grid grid-cols-2 gap-x-6 gap-y-12 border-t border-gray-200/50 pt-12 pb-6 sm:grid-cols-3 md:grid-cols-[auto_1fr] md:gap-x-12 lg:gap-x-16">
         {/* Logo */}
         <Link href={siteRoutes.home} className="col-span-2 size-fit sm:col-span-3 md:col-span-1">
           <Image src={WORDMARK_PATH} alt={`${SITE_NAME} wordmark`} width={174} height={32} className="h-[18px] w-[98px]" />
@@ -113,7 +113,7 @@ export default function Footer(): React.JSX.Element {
         </div>
 
         <div className="col-span-2 border-t border-gray-200/50 pt-6 text-xs leading-5 text-gray-500 sm:col-span-3 md:col-span-2">
-          <div className="mx-auto max-w-5xl space-y-3">
+          <div className="space-y-3">
             {footerDisclosure.map((paragraph, index) => (
               <p key={`footer-disclosure-${index}`}>{paragraph}</p>
             ))}

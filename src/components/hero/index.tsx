@@ -20,7 +20,6 @@ import { BorrowConfidence } from "./BorrowConfidence"
 import { AboutAave } from "./AboutAave"
 import { TestimonialCarousel } from "./TestimonialCarousel"
 import { FAQSection } from "./FAQSection"
-import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
 
 export function HeroSection() {
   return (
@@ -70,10 +69,6 @@ export function HeroSection() {
 
         <LazySection minHeight="500px">
           <FAQSection />
-        </LazySection>
-
-        <LazySection minHeight="300px">
-          <EarlyAccessCtaBox />
         </LazySection>
       </div>
     </div>

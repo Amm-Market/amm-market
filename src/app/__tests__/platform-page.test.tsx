@@ -40,12 +40,14 @@ describe("webapp page", () => {
   })
 
   it("restores the platform content while using the current app shell", () => {
-    render(<PlatformPage />)
+    const { container } = render(<PlatformPage />)
 
     expect(screen.getByTestId("webapp-hero")).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "How It Works" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Financing" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Power meets precision" })).toBeInTheDocument()
     expect(screen.getByText("Advanced LP Management")).toBeInTheDocument()
+    expect(container.querySelector(".site-content-width")).toBeInTheDocument()
+    expect(container.querySelectorAll(".site-content-shell").length).toBeGreaterThan(0)
   })
 })

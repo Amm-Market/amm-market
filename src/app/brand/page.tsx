@@ -173,7 +173,7 @@ export default function BrandPage() {
           <div className="absolute right-0 top-0 h-px w-9 bg-gray-200" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="site-content-shell relative z-10">
           <div className="relative grid items-center gap-10 md:grid-cols-3 md:gap-12">
             <div aria-hidden="true" className="pointer-events-none absolute bottom-0 top-0 left-[66.666%] hidden w-px bg-gray-200 md:block" />
 
@@ -207,7 +207,7 @@ export default function BrandPage() {
       </section>
 
       <main className="flex-1 bg-white">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+        <div className="site-content-shell">
           
           {/* Logo Section - 01 */}
           <section className="py-12 md:py-16">
