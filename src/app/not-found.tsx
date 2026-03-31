@@ -1,77 +1,134 @@
 import Link from "next/link"
 
+const lightpaperQuestions = [
+  {
+    href: "/lightpaper#protocol-overview",
+    label: "How does LP collateral borrowing work?",
+  },
+  {
+    href: "/lightpaper#risk-management",
+    label: "How is risk managed for LP positions?",
+  },
+  {
+    href: "/lightpaper#market-opportunity",
+    label: "What market opportunity is Avana targeting?",
+  },
+]
+
 export default function NotFound() {
   return (
-    <>
-      <div className="relative flex flex-col items-center justify-center min-h-[80vh] overflow-hidden bg-gradient-to-b from-blue-400 to-blue-600">
-        {/* Animated cloud background */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Large background clouds */}
-          <div className="absolute top-[10%] left-[5%] opacity-30 animate-float-slow">
-            <Cloud width={280} height={160} />
-          </div>
-          <div className="absolute top-[25%] right-[8%] opacity-40 animate-float">
-            <Cloud width={320} height={180} />
-          </div>
-          <div className="absolute bottom-[15%] left-[15%] opacity-30 animate-float-slow">
-            <Cloud width={260} height={140} />
-          </div>
-          <div className="absolute top-[60%] right-[20%] opacity-25 animate-float-reverse">
-            <Cloud width={240} height={130} />
-          </div>
+    <main className="bg-white">
+      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.1),transparent_22%),radial-gradient(circle_at_78%_28%,rgba(255,255,255,0.06),transparent_18%),linear-gradient(135deg,#050505_0%,#111111_48%,#020202_100%)] text-white">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(255,255,255,0.1),transparent_18%),radial-gradient(circle_at_72%_62%,rgba(255,255,255,0.08),transparent_20%),linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0))]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-[16%] h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-[-15%] top-[32%] h-[240px] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.12),transparent_62%)] opacity-35 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-[-2rem] h-64 bg-[repeating-radial-gradient(circle_at_center,rgba(255,255,255,0.06)_0,rgba(255,255,255,0.06)_1px,transparent_1px,transparent_28px)] opacity-25"
+        />
 
-          {/* Foreground clouds */}
-          <div className="absolute top-[5%] right-[25%] opacity-70 animate-float-slow">
-            <Cloud width={180} height={100} />
-          </div>
-          <div className="absolute bottom-[25%] right-[10%] opacity-60 animate-float">
-            <Cloud width={200} height={110} />
-          </div>
-        </div>
+        <div className="mx-auto grid max-w-[1200px] gap-7 px-4 pb-16 pt-10 sm:px-6 sm:pb-20 sm:pt-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:items-center lg:gap-10 lg:pb-24 lg:pt-28">
+          <div className="relative z-10 order-2 mx-auto flex max-w-xl flex-col items-center text-center lg:order-1 lg:mx-0 lg:items-start lg:text-left">
+            <p className="hidden text-[11px] font-semibold uppercase tracking-[0.22em] text-white/65 lg:block">
+              Error 404
+            </p>
+            <h1
+              aria-label="That page doesn't exist."
+              className="mt-0 text-[2.35rem] font-semibold leading-[0.98] tracking-[-0.07em] text-white sm:text-[3.15rem] lg:mt-5 lg:text-[3.75rem]"
+            >
+              That page
+              <br />
+              doesn&apos;t exist.
+            </h1>
+            <p className="mt-4 max-w-[18rem] text-[0.92rem] font-medium leading-6 tracking-[-0.02em] text-white/78 sm:max-w-md sm:text-[0.98rem] sm:leading-7 lg:mt-5 lg:text-[1.05rem]">
+              But the answer you&apos;re looking for might. Search our FAQ or jump straight into the Avana Lightpaper.
+            </p>
 
-        {/* 404 Content */}
-        <div className="relative z-10 max-w-2xl mx-auto text-center px-6">
-          <h1 className="text-[150px] font-bold text-white leading-none drop-shadow-[0_5px_5px_rgba(0,0,0,0.3)] mb-4">
-            404
-          </h1>
-
-          {/* Cloud with message */}
-          <div className="relative">
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[400px] h-[220px] opacity-90">
-              <Cloud width={400} height={220} />
-            </div>
-
-            <div className="relative z-10 mt-6">
-              <h2 className="text-5xl font-bold text-white mb-6 drop-shadow-lg">Page Not Found</h2>
-              <p className="text-white text-xl mb-10 max-w-md mx-auto font-medium drop-shadow-md">
-                The page you're looking for has drifted away into the clouds.
-              </p>
-              <Link
-                href="/"
-                className="inline-block bg-white text-blue-600 font-semibold py-4 px-10 rounded-full transition-all hover:bg-blue-50 hover:scale-105 hover:shadow-lg shadow-md text-lg"
+            <form action="/faq" method="get" className="mt-5 flex w-full max-w-[28rem] gap-2.5 lg:mt-8">
+              <label htmlFor="not-found-search" className="sr-only">
+                Search the FAQ
+              </label>
+              <input
+                id="not-found-search"
+                name="q"
+                type="search"
+                placeholder="What can we help you find?"
+                className="h-12 min-w-0 flex-1 rounded-[8px] border border-white/20 bg-white px-4 text-[0.98rem] text-gray-900 shadow-[0_10px_30px_rgba(0,0,0,0.12)] outline-none transition placeholder:text-gray-400 focus:border-white/40 focus:ring-2 focus:ring-white/20"
+              />
+              <button
+                type="submit"
+                className="inline-flex h-12 shrink-0 items-center justify-center rounded-[8px] bg-[#414347] px-5 text-[0.98rem] font-medium text-white transition hover:bg-[#2f3134] sm:px-6"
               >
-                Return to Clear Skies
-              </Link>
+                Search
+              </button>
+            </form>
+          </div>
+
+          <div className="relative z-10 order-1 flex items-center justify-center lg:order-2 lg:justify-end">
+            <div className="relative w-full max-w-[460px] sm:max-w-[420px] lg:max-w-[520px]">
+              <div className="flex items-center justify-center text-[clamp(6.1rem,31vw,9.8rem)] font-semibold leading-none tracking-[-0.08em] text-white/18 sm:text-[clamp(6rem,22vw,11rem)] lg:text-[clamp(7rem,22vw,13rem)]">
+                <span>4</span>
+                <div className="relative mx-[-0.04em] flex h-[0.98em] w-[0.98em] items-center justify-center">
+                  <div className="absolute inset-[8%] rounded-full border border-dashed border-white/45" />
+                  <div className="absolute inset-[8%] rounded-full [background:conic-gradient(from_25deg,rgba(255,255,255,0.98)_0_28%,rgba(255,255,255,0.2)_28%_62%,rgba(255,255,255,0.98)_62%_78%,rgba(255,255,255,0.18)_78%_100%)]" />
+                  <div className="absolute inset-[30%] rounded-full bg-black shadow-[inset_0_0_0_1px_rgba(255,255,255,0.18)]" />
+                  <span className="relative z-10 text-[0.36em] font-medium text-white/72">?</span>
+                </div>
+                <span>4</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
-  )
-}
+      </section>
 
-// Cloud SVG component for realistic clouds
-function Cloud({ width = 200, height = 120 }: { width?: number; height?: number }) {
-  return (
-    <svg width={width} height={height} viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M168.5 78.5C181.5 78.5 192 68 192 55C192 42 181.5 31.5 168.5 31.5C167.5 31.5 166.5 31.5 165.5 31.7C161.5 13.8 145.5 0.5 126.5 0.5C104 0.5 86 21 86 46C86 47.5 86 49 86.2 50.5C84.5 50.2 82.8 50 81 50C63.5 50 49.5 64 49.5 81.5C49.5 99 63.5 113 81 113H168.5C181.5 113 192 102.5 192 89.5C192 76.5 181.5 66 168.5 66C167.5 66 166.5 66 165.5 66.2C161.5 48.3 145.5 35 126.5 35C123.5 35 120.5 35.3 117.7 35.8C122.5 38.5 126.5 42.5 129.5 47.2C132.5 46.5 135.7 46 139 46C151.5 46 162 56.5 162 69C162 70 162 71 161.8 72C165.8 73.5 168.5 77.5 168.5 78.5Z"
-        fill="white"
-      />
-      <path
-        d="M43.5 95.5C56.5 95.5 67 85 67 72C67 59 56.5 48.5 43.5 48.5C42.5 48.5 41.5 48.5 40.5 48.7C36.5 30.8 20.5 17.5 1.5 17.5C-21 17.5 -39 38 -39 63C-39 64.5 -39 66 -38.8 67.5C-40.5 67.2 -42.2 67 -44 67C-61.5 67 -75.5 81 -75.5 98.5C-75.5 116 -61.5 130 -44 130H43.5C56.5 130 67 119.5 67 106.5C67 93.5 56.5 83 43.5 83C42.5 83 41.5 83 40.5 83.2C36.5 65.3 20.5 52 1.5 52C-1.5 52 -4.5 52.3 -7.3 52.8C-2.5 55.5 1.5 59.5 4.5 64.2C7.5 63.5 10.7 63 14 63C26.5 63 37 73.5 37 86C37 87 37 88 36.8 89C40.8 90.5 43.5 94.5 43.5 95.5Z"
-        fill="white"
-      />
-    </svg>
+      <section className="bg-[#f2f2f2] px-4 py-12 sm:px-6 lg:py-20">
+        <div className="mx-auto grid max-w-[1200px] gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,0.95fr)] lg:items-start lg:gap-14">
+          <div className="mx-auto flex max-w-[18rem] flex-col items-center text-center sm:max-w-sm lg:mx-0 lg:items-start lg:text-left">
+            <h2 className="text-[1.72rem] font-semibold leading-[1.04] tracking-[-0.05em] text-black sm:text-[2.8rem]">
+              Your questions,
+              <br />
+              answered
+            </h2>
+            <p className="mt-4 max-w-[17rem] text-[0.95rem] leading-6 text-[#414347] sm:mt-5 sm:max-w-sm sm:text-[1rem] sm:leading-7">
+              Explore the sections of our Lightpaper that explain how Avana works, how risk is managed, and why the
+              LP collateral opportunity matters.
+            </p>
+            <Link
+              href="/lightpaper"
+              className="mt-5 inline-flex items-center gap-2 text-[0.95rem] font-medium text-[#414347] underline decoration-[#414347]/35 underline-offset-4 transition hover:text-black hover:decoration-black sm:mt-6 sm:text-[1rem]"
+            >
+              Go to Avana&apos;s Lightpaper
+            </Link>
+          </div>
+
+          <div className="space-y-3">
+            {lightpaperQuestions.map((question) => (
+              <Link
+                key={question.href}
+                href={question.href}
+                className="group flex items-center justify-between gap-3 rounded-[8px] border border-[#d6dade] bg-[#eaeced] px-4 py-3.5 transition hover:border-[#bfc5ca] hover:bg-[#e2e5e7] sm:gap-4 sm:px-5 sm:py-4"
+              >
+                <span className="text-[0.98rem] font-medium leading-6 text-black sm:text-[1.05rem] sm:leading-7">{question.label}</span>
+                <span className="shrink-0 text-black transition-transform group-hover:translate-x-0.5">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 12H18" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+                    <path d="M12 6L18 12L12 18" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   )
 }
