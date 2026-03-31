@@ -209,6 +209,21 @@
   line-height: 1.75;
 }
 
+.site-header-nav-link,
+.site-header-cta {
+  font-size: inherit;
+}
+
+@media (min-width: 768px) {
+  .site-header-nav-link {
+    font-size: 0.9375rem;
+  }
+
+  .site-header-cta {
+    font-size: 0.875rem;
+  }
+}
+
 .type-marketing-section-title {
   font-size: 1.25rem;
   font-weight: 700;
