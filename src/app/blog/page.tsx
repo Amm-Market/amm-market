@@ -171,22 +171,11 @@ export default async function BlogPage({
   )
 
   return (
-    <div className="py-12 px-4 max-w-[1200px] mx-auto">
-      {/* Header */}
-      <div className="flex flex-col items-start gap-6 mb-12">
-        <h1 className="type-page-title italic text-gray-900">
-          Avana Blog
-        </h1>
-        <p className="type-page-lead text-gray-600">
-          Product updates, technical deep-dives, and market insights from the Avana team
-        </p>
-        <hr className="w-full border-gray-200" />
-      </div>
-
+    <div className="mx-auto max-w-[1200px] px-4 py-12">
       {/* Featured Post */}
       <Link
         href={`/blog/${featuredPost.slug}`}
-        className="group block mb-12 rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300"
+        className="group mb-12 block overflow-hidden rounded-xl border border-gray-200 transition-shadow duration-300 hover:shadow-lg"
       >
         <div className="flex flex-col md:flex-row">
           {/* Image */}
@@ -255,32 +244,23 @@ export default async function BlogPage({
         </div>
 
         {/* Blog Grid */}
-        <div className="grid grid-cols-12 gap-4 py-6">
+        <div className="grid grid-cols-2 gap-4 py-6 lg:grid-cols-4">
           {filteredPosts.map((post) => (
-            <div key={post.id} className="col-span-12 md:col-span-6 xl:col-span-4">
+            <div key={post.id}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="group block p-2 sm:p-4 h-full border border-transparent rounded-xl transition-all hover:bg-gray-50"
+                className="group block h-full rounded-xl border border-transparent p-2 transition-all hover:bg-gray-50 sm:p-3"
               >
-                <div className="flex flex-col space-y-2">
-                  <div className="flex flex-col space-y-1">
-                    {/* Image */}
-                    <div className="relative mb-3 w-full aspect-[2/1] lg:aspect-[5/3] overflow-hidden rounded-lg border border-gray-200 shadow-sm">
-                      <BlogImagePlaceholder label={post.title} />
-                    </div>
-                    {/* Metadata */}
-                    <div className="flex items-center space-x-1.5 text-sm text-gray-500">
-                      <p>{post.date}</p>
-                    </div>
-                    {/* Title */}
-                    <h3 className="text-xl text-gray-900 group-hover:text-indigo-600 transition-colors">
-                      {post.title}
-                    </h3>
-                    {/* Description */}
-                    <p className="text-base text-gray-600 line-clamp-2">
-                      {post.description}
-                    </p>
+                <div className="flex flex-col space-y-3">
+                  <div className="relative w-full overflow-hidden rounded-lg border border-gray-200 shadow-sm aspect-[1.18/1] sm:aspect-[1.24/1]">
+                    <BlogImagePlaceholder label={post.title} />
                   </div>
+                  <div className="flex items-center space-x-1.5 text-[0.8rem] text-gray-500 sm:text-sm">
+                    <p>{post.date}</p>
+                  </div>
+                  <h3 className="text-[1rem] leading-5 text-gray-900 transition-colors group-hover:text-indigo-600 sm:text-[1.08rem] sm:leading-6">
+                    {post.title}
+                  </h3>
                 </div>
               </Link>
             </div>
