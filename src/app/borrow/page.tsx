@@ -93,7 +93,7 @@ export default function BorrowPage() {
         </section>
 
         {/* Rest of page content */}
-        <div className="space-y-12 pb-16">
+        <div className="site-content-width space-y-12 pb-16">
           {/* Stats */}
           <section className="grid grid-cols-3 gap-4">
             <div className="p-6 bg-blue-50 rounded-xl text-center">
