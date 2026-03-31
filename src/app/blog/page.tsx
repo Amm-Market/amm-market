@@ -1,7 +1,4 @@
 import Link from "next/link"
-import { cn } from "@/lib/utils"
-
-const categories = ["All", "Product", "Developers", "For LPs", "For Institutions"]
 
 // Static blog data - ordered by date (newest first), first item is featured
 const blogs = [
@@ -125,62 +122,52 @@ const blogs = [
 ]
 
 function BlogImagePlaceholder({
-  label,
+  eyebrow,
   featured = false,
 }: {
-  label: string
+  eyebrow: string
   featured?: boolean
 }) {
   return (
-    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-white via-blue-50 to-slate-100 px-6 py-8 text-center">
-      <div className="max-w-sm">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-700">
-          Placeholder image
-        </p>
-        <p className={`mt-3 font-semibold text-slate-900 ${featured ? "text-lg md:text-xl" : "text-base"}`}>
-          {label}
-        </p>
-        <p className="mt-2 text-sm leading-6 text-slate-600">
-          Final editorial artwork can drop in here later without affecting layout or performance.
-        </p>
+    <div
+      aria-hidden="true"
+      className="relative flex h-full w-full overflow-hidden rounded-[inherit] bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.95),transparent_34%),linear-gradient(145deg,#f8fafc_0%,#e2e8f0_42%,#cbd5e1_100%)]"
+    >
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.08),transparent_42%,rgba(15,23,42,0.18)_100%)]" />
+      <div className="absolute -left-[12%] top-[12%] h-[42%] w-[42%] rounded-full border border-white/55" />
+      <div className="absolute right-[-10%] top-[10%] h-[52%] w-[52%] rounded-full border border-slate-500/20" />
+      <div className="absolute left-[18%] top-[24%] h-[28%] w-[28%] rounded-full bg-white/45 blur-2xl" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950/55 to-transparent" />
+      <div className={`relative z-10 mt-auto flex w-full flex-col items-start px-4 pb-4 text-left ${featured ? "md:px-6 md:pb-6" : ""}`}>
+        <span className="rounded-full bg-white/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-700 backdrop-blur-sm">
+          {eyebrow}
+        </span>
+        {featured ? (
+          <span className="mt-3 text-sm font-medium tracking-[-0.02em] text-white/92 md:text-[0.95rem]">
+            Automation, protocol design, and LP collateral strategy.
+          </span>
+        ) : null}
       </div>
     </div>
   )
 }
 
-function getCategoryHref(category: string) {
-  if (category === "All") {
-    return "/blog"
-  }
-
-  return `/blog?category=${encodeURIComponent(category)}`
-}
-
-export default async function BlogPage({
-  searchParams,
-}: {
-  searchParams?: Promise<{ category?: string }>
-}) {
-  const resolvedSearchParams = (await searchParams) ?? {}
-  const requestedCategory = resolvedSearchParams.category ?? "All"
-  const activeCategory = categories.includes(requestedCategory) ? requestedCategory : "All"
+export default function BlogPage() {
   const featuredPost = blogs[0]
   const recentPosts = blogs.slice(1)
-  const filteredPosts = recentPosts.filter(
-    (post) => activeCategory === "All" || post.category === activeCategory
-  )
 
   return (
     <div className="mx-auto max-w-[1200px] px-4 py-12">
       {/* Featured Post */}
       <Link
         href={`/blog/${featuredPost.slug}`}
+        prefetch={false}
         className="group mb-12 block overflow-hidden rounded-xl border border-gray-200 transition-shadow duration-300 hover:shadow-lg"
       >
         <div className="flex flex-col md:flex-row">
           {/* Image */}
           <div className="relative w-full md:w-[45%] aspect-video md:aspect-auto md:min-h-[280px] bg-gradient-to-br from-indigo-100 to-purple-100">
-            <BlogImagePlaceholder label={featuredPost.title} featured />
+            <BlogImagePlaceholder eyebrow="Featured Story" featured />
           </div>
           {/* Content */}
           <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
@@ -202,63 +189,27 @@ export default async function BlogPage({
 
       {/* Recent Section */}
       <section>
-        {/* Filter Bar */}
-        <div className="border-t border-gray-200">
-          <div className="flex flex-row items-center justify-between gap-2 py-4">
-            <div className="hidden lg:flex flex-wrap items-center gap-3">
-              {categories.map((cat) => (
-                <Link
-                  key={cat}
-                  href={getCategoryHref(cat)}
-                  className={cn(
-                    "px-4 py-2 text-sm rounded-full border transition-all",
-                    activeCategory === cat
-                      ? "bg-gray-100 border-gray-300 text-gray-900 font-medium"
-                      : "bg-transparent border-gray-200 text-gray-600 hover:border-gray-400"
-                  )}
-                >
-                  {cat}
-                </Link>
-              ))}
-            </div>
-
-            <div className="lg:hidden w-full overflow-x-auto">
-              <div className="flex min-w-max items-center gap-2 pr-4">
-                {categories.map((cat) => (
-                  <Link
-                    key={cat}
-                    href={getCategoryHref(cat)}
-                    className={cn(
-                      "whitespace-nowrap rounded-full border px-3 py-2 text-sm transition-all",
-                      activeCategory === cat
-                        ? "bg-gray-100 border-gray-300 text-gray-900 font-medium"
-                        : "bg-white border-gray-200 text-gray-600 hover:border-gray-400"
-                    )}
-                  >
-                    {cat}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Blog Grid */}
-        <div className="grid grid-cols-2 gap-4 py-6 lg:grid-cols-4">
-          {filteredPosts.map((post) => (
+        <div className="grid grid-cols-2 gap-4 border-t border-gray-200 py-6 lg:grid-cols-4">
+          {recentPosts.map((post) => (
             <div key={post.id}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="group block h-full rounded-xl border border-transparent p-2 transition-all hover:bg-gray-50 sm:p-3"
+                prefetch={false}
+                className="group block h-full rounded-[1.1rem] p-1 sm:p-2"
               >
-                <div className="flex flex-col space-y-3">
-                  <div className="relative w-full overflow-hidden rounded-lg border border-gray-200 shadow-sm aspect-[1.18/1] sm:aspect-[1.24/1]">
-                    <BlogImagePlaceholder label={post.title} />
+                <div className="flex flex-col gap-3">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1rem] border border-slate-200/90 bg-white shadow-[0_14px_30px_rgba(15,23,42,0.06)] transition-colors duration-150 group-hover:border-slate-300">
+                    <div
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(140deg,rgba(255,255,255,0.28),transparent_34%,transparent_60%,rgba(255,255,255,0.1)_100%)]"
+                    />
+                    <BlogImagePlaceholder eyebrow={post.category} />
                   </div>
-                  <div className="flex items-center space-x-1.5 text-[0.8rem] text-gray-500 sm:text-sm">
+                  <div className="flex items-center space-x-1.5 px-1 text-[0.8rem] text-gray-500 sm:text-sm">
                     <p>{post.date}</p>
                   </div>
-                  <h3 className="text-[1rem] leading-5 text-gray-900 transition-colors group-hover:text-indigo-600 sm:text-[1.08rem] sm:leading-6">
+                  <h3 className="px-1 text-[1rem] leading-5 text-gray-900 transition-colors duration-150 group-hover:text-slate-700 sm:text-[1.08rem] sm:leading-6">
                     {post.title}
                   </h3>
                 </div>
