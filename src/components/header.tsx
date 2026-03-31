@@ -12,15 +12,19 @@ interface NavLink {
 }
 
 const desktopLinks: NavLink[] = [
-  { href: siteRoutes.openSpoke, label: "Open Spoke" },
-  { href: siteRoutes.stableSpoke, label: "Stable Spoke" },
-  { href: siteRoutes.bluechipSpoke, label: "Bluechip Spoke" },
-  { href: siteRoutes.developers, label: "Developers" },
+  { href: siteRoutes.borrow, label: "Borrow" },
+  { href: siteRoutes.invest, label: "Invest" },
+  { href: siteRoutes.earn, label: "Earn" },
+  { href: siteRoutes.platform, label: "Platform" },
 ]
 const mobileLinks: NavLink[] = [
   { href: siteRoutes.home, label: "Overview" },
-  ...desktopLinks,
+  { href: siteRoutes.borrow, label: "Borrow" },
+  { href: siteRoutes.invest, label: "Invest" },
+  { href: siteRoutes.earn, label: "Earn" },
+  { href: siteRoutes.platform, label: "Platform" },
   { href: siteRoutes.lightpaper, label: "Lightpaper" },
+  { href: siteRoutes.developers, label: "Developers" },
   { href: siteRoutes.blog, label: "Blog" },
   { href: siteRoutes.earlyAccess, label: "Early Access" },
   { href: siteRoutes.launchApp, label: "Launch App" },
@@ -94,7 +98,10 @@ export default function Header(): React.JSX.Element {
             </Link>
           </div>
 
-          <nav aria-label="Primary navigation" className="hidden flex-1 items-center gap-8 md:flex lg:gap-10">
+          <nav
+            aria-label="Primary navigation"
+            className="hidden shrink-0 items-center gap-6 md:ml-8 md:flex lg:ml-10 lg:gap-7"
+          >
             {desktopLinks.map((link) => {
               const isActive = clientPathname ? isActivePath(clientPathname, link.href) : false
 

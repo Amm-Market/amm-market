@@ -37,11 +37,11 @@ const bluechipSpokeFaqItems: InlineFaqItem[] = [
 ]
 
 export const metadata: Metadata = {
-  title: "Bluechip Spoke - Blue-Chip LP Collateral",
-  description: "Avana Bluechip Spoke for established-asset LP positions. Higher LTV and conservative risk for ETH, BTC, and major governance token pairs.",
+  title: "Earn - Blue-Chip LP Collateral",
+  description: "Avana Earn supports established LP collateral with higher borrowing power and conservative risk settings for major assets.",
 }
 
-export default function BluechipSpokePage() {
+export default function EarnPage() {
   return (
     <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col min-h-screen pt-20">
       <div className="flex-1 flex flex-col relative z-0">
