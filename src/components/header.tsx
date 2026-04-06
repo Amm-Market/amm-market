@@ -4,11 +4,32 @@ import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
-import { SITE_NAME, WORDMARK_PATH, siteRoutes } from "@/lib/site"
+import { LOGO_PATH, SITE_NAME, WORDMARK_PATH, siteRoutes } from "@/lib/site"
 
 interface NavLink {
   href: string
   label: string
+}
+
+function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
+  return (
+    <span className="inline-flex items-center">
+      <Image
+        src={LOGO_PATH}
+        alt={`${SITE_NAME} icon`}
+        width={24}
+        height={24}
+        className={mobileOnly ? "h-6 w-6" : "h-6 w-6 md:hidden"}
+      />
+      <Image
+        src={WORDMARK_PATH}
+        alt={`${SITE_NAME} wordmark`}
+        width={131}
+        height={24}
+        className={mobileOnly ? "hidden" : "hidden h-[22px] w-[120px] sm:h-[24px] sm:w-[131px] md:block"}
+      />
+    </span>
+  )
 }
 
 const desktopLinks: NavLink[] = [
@@ -88,13 +109,7 @@ export default function Header(): React.JSX.Element {
               data-framer-name="Logo"
               className="inline-flex items-center"
             >
-              <Image
-                src={WORDMARK_PATH}
-                alt={`${SITE_NAME} wordmark`}
-                width={131}
-                height={24}
-                className="h-[22px] w-[120px] sm:h-[24px] sm:w-[131px]"
-              />
+              <BrandLogo />
             </Link>
           </div>
 
@@ -199,13 +214,7 @@ export default function Header(): React.JSX.Element {
               className="inline-flex items-center"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <Image
-                src={WORDMARK_PATH}
-                alt={`${SITE_NAME} wordmark`}
-                width={120}
-                height={22}
-                className="h-[22px] w-[120px]"
-              />
+              <BrandLogo mobileOnly />
             </Link>
 
             <button

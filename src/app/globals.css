@@ -374,6 +374,7 @@
   .site-editorial-content :is(th) {
     font-size: var(--type-supporting-size-sm);
   }
+
 }
 
 @media (min-width: 768px) {

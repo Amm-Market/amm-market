@@ -594,18 +594,31 @@ function MobileSpokeIdentity({ market }: { market: BorrowerSpoke }) {
 
 export default function LightpaperPage() {
   return (
-    <section className="py-12 md:py-24">
-      <article className="site-content-shell">
-        <div className="flex flex-col items-start gap-6 mb-12">
-          <h1 className="type-page-title italic text-gray-900">Tap into LP Credits</h1>
-          <p className="type-page-lead text-gray-600">Avana is a lending protocol built specifically for LP collateral.</p>
-          <hr className="w-full border-gray-200" />
-        </div>
+    <>
+      <section className="pb-12 md:pb-24">
+        <article className="site-content-shell lg:max-w-[72rem]">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,40rem)_minmax(0,1fr)] lg:gap-20">
+            <div className="min-w-0 space-y-12">
+              <section className="pt-6 sm:pt-8 lg:pt-10">
+                <div className="space-y-6">
+                  <h1
+                    aria-label="Introducing Avana: An Aave v4 Spoke"
+                    className="max-w-[18ch] text-balance text-[2.35rem] font-semibold leading-[0.96] tracking-[-0.06em] text-gray-950 sm:text-[3.2rem] lg:text-[4.5rem]"
+                  >
+                    <span className="text-gray-950">Introducing Avana:</span>
+                    <br />
+                    <span className="text-gray-500">An Aave v4 Spoke</span>
+                  </h1>
+                </div>
+              </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-12 lg:gap-24">
-          <div className="site-editorial-content max-w-3xl [&_a]:text-blue-600 [&_a]:hover:underline [&_h2]:text-[1.35rem] [&_h2]:font-bold [&_h2]:leading-[1.2] [&_h2]:tracking-[-0.01em] [&_h2]:text-gray-900 [&_h3]:text-[1rem] [&_h3]:font-semibold [&_h3]:leading-[1.35] [&_h3]:tracking-[-0.01em] [&_h3]:text-gray-900 [&_li]:mb-2 [&_li]:text-[0.9375rem] [&_li]:leading-7 sm:[&_h2]:text-[1.7rem] sm:[&_h3]:text-[1.08rem] sm:[&_li]:text-[1rem]">
-            <div className="space-y-12">
-              <section id="executive-summary" className="scroll-mt-32">
+              <div className="max-w-3xl">
+                <ImagePlaceholder label="LP collateral visual" />
+              </div>
+
+              <div className="site-editorial-content max-w-3xl [&_a]:text-blue-600 [&_a]:hover:underline [&_h2]:text-[1.35rem] [&_h2]:font-bold [&_h2]:leading-[1.2] [&_h2]:tracking-[-0.01em] [&_h2]:text-gray-900 [&_h3]:text-[1rem] [&_h3]:font-semibold [&_h3]:leading-[1.35] [&_h3]:tracking-[-0.01em] [&_h3]:text-gray-900 [&_li]:mb-2 [&_li]:text-[0.9375rem] [&_li]:leading-7 [&_p]:text-[1.35rem] [&_p]:font-medium [&_p]:leading-[1.5] [&_p]:tracking-[-0.03em] sm:[&_h2]:text-[1.7rem] sm:[&_h3]:text-[1.08rem] sm:[&_li]:text-[1rem] sm:[&_p]:text-[1.5rem]">
+                <div className="space-y-12">
+                  <section id="executive-summary" className="scroll-mt-32">
                 <h2>Executive Summary</h2>
                 <div className="mt-5 space-y-5">
                   <p className="font-medium text-gray-900">
@@ -1292,15 +1305,17 @@ export default function LightpaperPage() {
                   <ReferenceTable references={oldImplementationReferences} />
                 </div>
               </section>
-            </div>
-          </div>
 
-          <ScrollSpySidebar
-            sections={sections}
-            sectionColor="blue"
-          />
+              </div>
+              </div>
+            </div>
+
+          <div className="lg:justify-self-end">
+            <ScrollSpySidebar sections={sections} sectionColor="blue" />
+          </div>
         </div>
       </article>
     </section>
+    </>
   )
 }
