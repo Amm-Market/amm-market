@@ -1,4 +1,10 @@
+"use client"
+
 import Link from "next/link"
+import { useMemo, useState } from "react"
+
+type BlogTag = "News" | "Community" | "Learn" | "Development" | "Partners"
+type TagFilter = "All" | BlogTag
 
 // Static blog data - ordered by date (newest first), first item is featured
 const blogs = [
@@ -10,6 +16,7 @@ const blogs = [
     slug: "introducing-automate",
     image: "/images/blog/introducing-automate.png",
     category: "Product",
+    tag: "Community" as BlogTag,
   },
   {
     id: 2,
@@ -19,6 +26,7 @@ const blogs = [
     slug: "v1-1-release",
     image: "/images/blog/v1-1-release.png",
     category: "Product",
+    tag: "News" as BlogTag,
   },
   {
     id: 3,
@@ -28,6 +36,7 @@ const blogs = [
     slug: "smart-contract-architecture",
     image: "/images/blog/smart-contract-architecture.png",
     category: "Developers",
+    tag: "Development" as BlogTag,
   },
   {
     id: 4,
@@ -37,6 +46,7 @@ const blogs = [
     slug: "integration-guide",
     image: "/images/blog/integration-guide.png",
     category: "Developers",
+    tag: "Development" as BlogTag,
   },
   {
     id: 5,
@@ -46,6 +56,7 @@ const blogs = [
     slug: "lp-collateral-guide",
     image: "/images/blog/lp-collateral-guide.png",
     category: "For LPs",
+    tag: "Learn" as BlogTag,
   },
   {
     id: 6,
@@ -55,6 +66,7 @@ const blogs = [
     slug: "avana-lp-collateral",
     image: "/images/blog/amm-markets-lp-collateral.png",
     category: "For LPs",
+    tag: "Community" as BlogTag,
   },
   {
     id: 7,
@@ -64,6 +76,7 @@ const blogs = [
     slug: "defi-ux-challenges",
     image: "/images/blog/defi-ux-challenges.png",
     category: "Product",
+    tag: "News" as BlogTag,
   },
   {
     id: 8,
@@ -73,6 +86,7 @@ const blogs = [
     slug: "aave-v4-avana-spoke",
     image: "/images/blog/aave-v4-amm-spoke.png",
     category: "Developers",
+    tag: "Development" as BlogTag,
   },
   {
     id: 9,
@@ -82,6 +96,7 @@ const blogs = [
     slug: "unleashing-lp-tokens",
     image: "/images/blog/unleashing-lp-tokens.png",
     category: "For LPs",
+    tag: "Community" as BlogTag,
   },
   {
     id: 10,
@@ -91,6 +106,7 @@ const blogs = [
     slug: "yield-looping-playbook",
     image: "/images/blog/yield-looping-playbook.png",
     category: "For LPs",
+    tag: "Learn" as BlogTag,
   },
   {
     id: 11,
@@ -100,6 +116,7 @@ const blogs = [
     slug: "security-deep-dive",
     image: "/images/blog/security-deep-dive.png",
     category: "Developers",
+    tag: "Development" as BlogTag,
   },
   {
     id: 12,
@@ -109,6 +126,7 @@ const blogs = [
     slug: "hedge-lp-position",
     image: "/images/blog/hedge-lp-position.png",
     category: "For LPs",
+    tag: "Learn" as BlogTag,
   },
   {
     id: 13,
@@ -118,8 +136,11 @@ const blogs = [
     slug: "institutional-use-cases",
     image: "/images/blog/institutional-use-cases.png",
     category: "For Institutions",
+    tag: "Partners" as BlogTag,
   },
 ]
+
+const tagOptions: readonly TagFilter[] = ["All", "News", "Community", "Learn", "Development", "Partners"]
 
 function BlogImagePlaceholder({
   eyebrow,
@@ -153,45 +174,53 @@ function BlogImagePlaceholder({
 }
 
 export default function BlogPage() {
-  const featuredPost = blogs[0]
-  const recentPosts = blogs.slice(1)
+  const [activeTag, setActiveTag] = useState<TagFilter>("Community")
+  const filteredBlogs = useMemo(() => {
+    if (activeTag === "All") {
+      return blogs
+    }
+
+    return blogs.filter((post) => post.tag === activeTag)
+  }, [activeTag])
 
   return (
     <div className="site-content-shell py-12">
-      {/* Featured Post */}
-      <Link
-        href={`/blog/${featuredPost.slug}`}
-        prefetch={false}
-        className="group mb-12 block overflow-hidden rounded-xl border border-gray-200 transition-shadow duration-300 hover:shadow-lg"
-      >
-        <div className="flex flex-col md:flex-row">
-          {/* Image */}
-          <div className="relative w-full md:w-[45%] aspect-video md:aspect-auto md:min-h-[280px] bg-gradient-to-br from-indigo-100 to-purple-100">
-            <BlogImagePlaceholder eyebrow="Featured Story" featured />
-          </div>
-          {/* Content */}
-          <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
-            <span className="inline-block w-fit px-3 py-1 mb-3 text-xs font-semibold text-indigo-700 bg-indigo-100 rounded-full">
-              Featured
-            </span>
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
-              {featuredPost.title}
-            </h2>
-            <p className="text-gray-600 mb-4 line-clamp-2">
-              {featuredPost.description}
-            </p>
-            <p className="text-sm text-gray-500">
-              {featuredPost.date}
-            </p>
+      <section className="flex justify-center pb-10 pt-4 md:pb-12 md:pt-8">
+        <div className="flex w-full max-w-4xl flex-col items-center text-center">
+          <h1 className="text-[clamp(3rem,7vw,5.25rem)] font-semibold tracking-[-0.08em] text-black">
+            Newsroom
+          </h1>
+          <div className="mt-8 inline-flex max-w-full rounded-full bg-[#eef2f6] p-1.5 md:mt-10">
+            <div className="flex items-center overflow-x-auto scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {tagOptions.map((tag) => {
+                const active = activeTag === tag
+
+                return (
+                  <button
+                    key={tag}
+                    type="button"
+                    onClick={() => setActiveTag(tag)}
+                    aria-pressed={active}
+                    className={`inline-flex shrink-0 items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold tracking-[-0.03em] transition-all duration-300 ${
+                      active
+                        ? "bg-[#111111] text-white shadow-[0_10px_24px_rgba(17,17,17,0.12)]"
+                        : "text-black/30 hover:text-black/60"
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                )
+              })}
+            </div>
           </div>
         </div>
-      </Link>
+      </section>
 
       {/* Recent Section */}
-      <section>
+      <section className="border-t border-gray-200 pt-8">
         {/* Blog Grid */}
-        <div className="grid grid-cols-2 gap-4 border-t border-gray-200 py-6 lg:grid-cols-4">
-          {recentPosts.map((post) => (
+        <div className="grid grid-cols-2 gap-4 py-6 lg:grid-cols-4">
+          {filteredBlogs.map((post) => (
             <div key={post.id}>
               <Link
                 href={`/blog/${post.slug}`}
@@ -204,7 +233,7 @@ export default function BlogPage() {
                       aria-hidden="true"
                       className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(140deg,rgba(255,255,255,0.28),transparent_34%,transparent_60%,rgba(255,255,255,0.1)_100%)]"
                     />
-                    <BlogImagePlaceholder eyebrow={post.category} />
+                    <BlogImagePlaceholder eyebrow={post.tag} />
                   </div>
                   <div className="flex items-center space-x-1.5 px-1 text-[0.8rem] text-gray-500 sm:text-sm">
                     <p>{post.date}</p>
