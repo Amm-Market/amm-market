@@ -270,7 +270,7 @@ export default function PlatformPage() {
               <div className="hidden flex-wrap items-center justify-center gap-4 lg:flex">
                 <Link
                   className="group relative flex h-10 min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
-                  href="/early-access"
+                  href="/faq"
                 >
                   <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
                   <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -313,7 +313,7 @@ export default function PlatformPage() {
               <div className="flex w-full flex-col items-center justify-center gap-3 px-4 lg:hidden">
                 <Link
                   className="group relative flex h-10 w-full max-w-[366px] min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
-                  href="/early-access"
+                  href="/faq"
                 >
                   <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
                   <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
