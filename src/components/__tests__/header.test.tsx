@@ -24,6 +24,8 @@ describe('Header', () => {
   it('renders the home logo link', () => {
     render(<Header />)
     expect(screen.getByRole('link', { name: 'Avana' })).toHaveAttribute('href', '/')
+    expect(screen.getAllByAltText('Avana icon')).toHaveLength(2)
+    expect(screen.getAllByAltText('Avana wordmark')).toHaveLength(2)
   })
 
   it('renders the direct desktop navigation links', () => {
