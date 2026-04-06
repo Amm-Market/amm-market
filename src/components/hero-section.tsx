@@ -1,6 +1,7 @@
 import Image from "next/image"
 import dynamic from "next/dynamic"
 import { DeFiTerm } from "@/components/defi-term"
+import { SectionEyebrow } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 
@@ -52,6 +53,7 @@ export default function HeroSection() {
       <div className="site-content-shell py-16 md:py-24">
         <div className="flex flex-col gap-6">
           <div className="flex max-w-[600px] flex-col gap-2">
+            <SectionEyebrow>How it works</SectionEyebrow>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
               How borrowing works
             </h2>
@@ -99,6 +101,7 @@ export default function HeroSection() {
         <LazySection minHeight="400px">
           <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12" style={{ opacity: 1, transform: "none" }}>
             <div className="flex flex-col gap-2">
+              <SectionEyebrow>DEX Coverage</SectionEyebrow>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
                 Borrow Across DEXs
               </h2>
@@ -167,6 +170,7 @@ export default function HeroSection() {
           <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12 border-t border-gray-100" style={{ opacity: 1, transform: "none" }}>
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
+                <SectionEyebrow>Pool Coverage</SectionEyebrow>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">500+ Supported Pools</h2>
                 <p className="text-sm md:text-base text-gray-600">
                   Access liquidity from 500+ pools across all integrated DEXs.
@@ -223,6 +227,7 @@ export default function HeroSection() {
           <div className="pt-16 md:pt-20 border-t border-gray-100">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
+                <SectionEyebrow>Capital Efficiency</SectionEyebrow>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
                   Get more out of your LPs
                 </h2>
@@ -341,6 +346,7 @@ export default function HeroSection() {
           <div className="pt-16 md:pt-20 border-t border-gray-100">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
+                <SectionEyebrow>Risk Systems</SectionEyebrow>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
                   Borrow with Confidence
                 </h2>
@@ -451,6 +457,7 @@ export default function HeroSection() {
         <LazySection minHeight="300px">
           <div className="flex flex-col md:flex-row gap-8 md:gap-16 pt-16 md:pt-20 items-center border-t border-gray-100">
             <div className="flex-1 space-y-6">
+              <SectionEyebrow>Aave v4</SectionEyebrow>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
                 More about Aave v4
               </h2>
