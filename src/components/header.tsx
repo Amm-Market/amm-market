@@ -9,6 +9,20 @@ import { LOGO_PATH, SITE_NAME, WORDMARK_PATH, siteRoutes } from "@/lib/site"
 interface NavLink {
   href: string
   label: string
+  external?: boolean
+}
+
+interface DesktopMenuItem extends NavLink {
+  description?: string
+}
+
+interface DesktopMenuGroup {
+  id: "products" | "resources" | "developers"
+  label: string
+  eyebrow: string
+  items: DesktopMenuItem[]
+  supportingTitle?: string
+  supportingItems: DesktopMenuItem[]
 }
 
 function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
@@ -32,11 +46,65 @@ function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
   )
 }
 
-const desktopLinks: NavLink[] = [
-  { href: siteRoutes.borrow, label: "Borrow" },
-  { href: siteRoutes.invest, label: "Invest" },
-  { href: siteRoutes.earn, label: "Earn" },
-  { href: siteRoutes.platform, label: "Platform" },
+const desktopMenus: DesktopMenuGroup[] = [
+  {
+    id: "products",
+    label: "Products",
+    eyebrow: "Explore Products",
+    items: [
+      { href: siteRoutes.borrow, label: "Borrow" },
+      { href: siteRoutes.invest, label: "Invest" },
+      { href: siteRoutes.earn, label: "Earn" },
+      { href: siteRoutes.platform, label: "Platform" },
+    ],
+    supportingTitle: "",
+    supportingItems: [
+      { href: siteRoutes.borrow, label: "Borrow against LP positions" },
+      { href: siteRoutes.earn, label: "Keep liquidity active" },
+      { href: siteRoutes.invest, label: "Route capital through the Hub" },
+      { href: siteRoutes.lightpaper, label: "Read the protocol paper" },
+    ],
+  },
+  {
+    id: "resources",
+    label: "Resources",
+    eyebrow: "Explore Resources",
+    items: [
+      { href: siteRoutes.about, label: "About" },
+      { href: siteRoutes.blog, label: "Blog" },
+      { href: siteRoutes.faq, label: "FAQ" },
+      { href: siteRoutes.brand, label: "Brand" },
+    ],
+    supportingTitle: "",
+    supportingItems: [
+      { href: siteRoutes.about, label: "Read the thesis" },
+      { href: siteRoutes.blog, label: "Follow product notes" },
+      { href: siteRoutes.faq, label: "Find quick answers" },
+      { href: siteRoutes.brand, label: "Browse brand materials" },
+    ],
+  },
+  {
+    id: "developers",
+    label: "Developers",
+    eyebrow: "Explore Developers",
+    items: [
+      { href: siteRoutes.developers, label: "Developers" },
+      { href: siteRoutes.developersIntro, label: "Introduction" },
+      { href: "/developers/architecture", label: "Architecture" },
+      { href: "/developers/integrations", label: "Integrations" },
+    ],
+    supportingTitle: "",
+    supportingItems: [
+      { href: siteRoutes.developersIntro, label: "Start with the mental model" },
+      { href: "/developers/architecture", label: "Review architecture" },
+      { href: "/developers/integrations", label: "Study integrations" },
+      { href: "/developers/legal", label: "Check constraints" },
+    ],
+  },
+]
+const desktopUtilityLinks: NavLink[] = [
+  { href: siteRoutes.lightpaper, label: "Lightpaper" },
+  { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
 ]
 const mobileLinks: NavLink[] = [
   { href: siteRoutes.home, label: "Overview" },
@@ -50,11 +118,6 @@ const mobileLinks: NavLink[] = [
   { href: siteRoutes.earlyAccess, label: "Early Access" },
   { href: siteRoutes.launchApp, label: "Launch App" },
 ]
-const ctas: NavLink[] = [
-  { href: siteRoutes.earlyAccess, label: "Early Access" },
-  { href: siteRoutes.launchApp, label: "Launch App" },
-]
-
 function isActivePath(pathname: string | null, href: string): boolean {
   if (href === "/") {
     return pathname === "/"
@@ -63,10 +126,124 @@ function isActivePath(pathname: string | null, href: string): boolean {
   return pathname === href || pathname?.startsWith(`${href}/`) === true
 }
 
+function DesktopMenuPanel({
+  menu,
+  isOpen,
+  onClose,
+  animationCycle,
+}: {
+  menu: DesktopMenuGroup
+  isOpen: boolean
+  onClose: () => void
+  animationCycle: number
+}) {
+  const [animateItems, setAnimateItems] = useState(false)
+
+  useEffect(() => {
+    if (!isOpen) {
+      setAnimateItems(false)
+      return
+    }
+
+    setAnimateItems(false)
+    const timer = window.setTimeout(() => {
+      setAnimateItems(true)
+    }, 140)
+
+    return () => {
+      window.clearTimeout(timer)
+    }
+  }, [isOpen, menu.id, animationCycle])
+
+  return (
+    <div
+      id={`desktop-menu-${menu.id}`}
+      onMouseLeave={onClose}
+      className={`fixed left-0 right-0 top-16 z-40 hidden transform-gpu md:block lg:top-[72px] transition-[opacity,transform] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        isOpen ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-6 opacity-0"
+      }`}
+      aria-hidden={!isOpen}
+    >
+      <div className="border-b border-black/8 bg-white shadow-[0_20px_48px_rgba(0,0,0,0.05)]">
+        <div className="w-full bg-white px-4 py-5 sm:px-6 lg:px-8 lg:py-5 xl:px-10">
+          <div
+            key={`${menu.id}-${animationCycle}`}
+            className="grid gap-6 lg:min-h-[12.5rem] lg:grid-cols-[minmax(0,32rem)_minmax(14rem,18rem)] lg:gap-10 lg:pl-0 xl:grid-cols-[minmax(0,34rem)_minmax(15rem,19rem)] xl:gap-12 xl:pl-0"
+          >
+            <div className="space-y-2">
+              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.16em] text-black/62">{menu.eyebrow}</p>
+              <div className="space-y-0.5">
+                {menu.items.map((item, index) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noreferrer" : undefined}
+                    suppressHydrationWarning
+                    className={`group flex items-start gap-4 py-1 text-left text-black transition-[opacity,color,filter] duration-[720ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-black/72 ${
+                      isOpen && animateItems ? "opacity-100 blur-0" : "opacity-[0.16] blur-[0.35px]"
+                    }`}
+                    style={{ transitionDelay: `${260 + index * 85}ms` }}
+                  >
+                    <span className="text-[clamp(1.72rem,2vw,2.35rem)] font-semibold leading-[0.98] tracking-[-0.06em] transition-transform duration-300 group-hover:translate-x-1">
+                      {item.label}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div
+              className={`space-y-3 transition-[opacity,filter] duration-[720ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                isOpen && animateItems ? "opacity-100 blur-0" : "opacity-[0.14] blur-[0.35px]"
+              }`}
+              style={{ transitionDelay: "460ms" }}
+            >
+              {menu.supportingTitle ? (
+                <p className="text-[0.88rem] font-medium uppercase tracking-[0.18em] text-black/58">{menu.supportingTitle}</p>
+              ) : null}
+              <div className="space-y-2">
+                {menu.supportingItems.map((item, index) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noreferrer" : undefined}
+                    suppressHydrationWarning
+                    className="group block min-h-[2.4rem] text-left"
+                  >
+                    <div className="flex items-start gap-3.5">
+                      <span
+                        aria-hidden="true"
+                        className="pt-1 text-[0.75rem] font-semibold tracking-[0.18em] text-black/34"
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <p className="text-[1.02rem] font-normal leading-[1.25] tracking-[-0.03em] text-black/80 transition-colors duration-200 group-hover:text-black">
+                          {item.label}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Header(): React.JSX.Element {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [desktopMenuOpen, setDesktopMenuOpen] = useState<DesktopMenuGroup["id"] | null>(null)
+  const [desktopMenuAnimationCycle, setDesktopMenuAnimationCycle] = useState(0)
   const [clientPathname, setClientPathname] = useState<string | null>(null)
+
+  const activeDesktopMenu = desktopMenus.find((menu) => menu.id === desktopMenuOpen) ?? null
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow
@@ -84,6 +261,7 @@ export default function Header(): React.JSX.Element {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setMobileMenuOpen(false)
+        setDesktopMenuOpen(null)
       }
     }
 
@@ -96,12 +274,22 @@ export default function Header(): React.JSX.Element {
 
   useEffect(() => {
     setClientPathname(pathname)
+    setDesktopMenuOpen(null)
   }, [pathname])
+
+  useEffect(() => {
+    if (desktopMenuOpen !== null) {
+      setDesktopMenuAnimationCycle((current) => current + 1)
+    }
+  }, [desktopMenuOpen])
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-black/8 bg-[linear-gradient(rgba(255,255,255,0.91)_0%,rgba(255,255,255,0.91)_100%)] backdrop-blur-[7px]">
-        <div className="mx-auto flex h-16 max-w-[1520px] items-center justify-between gap-6 px-4 sm:px-6 lg:h-[72px] lg:px-8">
+      <header
+        className="sticky top-0 z-50 border-b border-black/8 bg-[linear-gradient(rgba(255,255,255,0.91)_0%,rgba(255,255,255,0.91)_100%)] backdrop-blur-[7px]"
+        onMouseLeave={() => setDesktopMenuOpen(null)}
+      >
+        <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 lg:h-[72px] lg:px-8 xl:px-10">
           <div className="inline-flex shrink-0 items-center">
             <Link
               href={siteRoutes.home}
@@ -113,53 +301,55 @@ export default function Header(): React.JSX.Element {
             </Link>
           </div>
 
-          <nav
-            aria-label="Primary navigation"
-            className="hidden shrink-0 items-center gap-6 md:ml-8 md:flex lg:ml-10 lg:gap-7"
-          >
-            {desktopLinks.map((link) => {
-              const isActive = clientPathname ? isActivePath(clientPathname, link.href) : false
+          <nav aria-label="Primary navigation" className="hidden min-w-0 items-center gap-6 md:ml-0 md:mr-auto md:flex">
+              {desktopMenus.map((menu) => {
+                const isActive = desktopMenuOpen === menu.id
+                const hasActiveRoute = menu.items.some((item) =>
+                  clientPathname ? isActivePath(clientPathname, item.href) : false,
+                )
 
-              return (
-                <div key={link.href} className="group">
-                  <Link
-                    href={link.href}
-                    suppressHydrationWarning
-                    className={`site-header-nav-link relative inline-flex translate-y-0 items-center py-2 text-[14px] font-medium tracking-[-0.03em] transition duration-200 hover:-translate-y-0.5 ${
-                      isActive ? "text-black" : "text-black/90 hover:text-black"
+                return (
+                  <button
+                    key={menu.id}
+                    type="button"
+                    aria-haspopup="true"
+                    aria-expanded={isActive}
+                    aria-controls={`desktop-menu-${menu.id}`}
+                    onMouseEnter={() => setDesktopMenuOpen(menu.id)}
+                    onFocus={() => setDesktopMenuOpen(menu.id)}
+                    onClick={() => setDesktopMenuOpen(menu.id)}
+                    className={`group relative inline-flex items-center px-0 py-1 text-[16px] font-bold tracking-[-0.03em] transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-black ${
+                      isActive || hasActiveRoute ? "text-black" : "text-black hover:text-black"
                     }`}
                   >
-                    <span>{link.label}</span>
+                    <span>{menu.label}</span>
                     <span
-                      className={`absolute bottom-0 left-0 h-px w-full origin-left bg-black transition-transform duration-300 ${
-                        isActive ? "scale-x-100 opacity-100" : "scale-x-0 opacity-70 group-hover:scale-x-100 group-focus-within:scale-x-100"
+                      className={`absolute bottom-0 left-0 right-0 h-px origin-left bg-black transition-transform duration-300 ${
+                        isActive || hasActiveRoute ? "scale-x-100 opacity-100" : "scale-x-0 opacity-70 group-hover:scale-x-100 group-focus-visible:scale-x-100"
                       }`}
                     />
-                  </Link>
-                </div>
-              )
-            })}
+                  </button>
+                )
+              })}
           </nav>
 
-          <div className="ml-auto hidden items-center gap-3 md:flex">
-            <div className="transition duration-200 hover:-translate-y-0.5 hover:scale-[1.01]">
+          <div className="hidden items-center gap-2 md:flex">
+            {desktopUtilityLinks.map((link, index) => (
               <Link
-                href={ctas[0].href}
+                key={link.label}
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noreferrer" : undefined}
                 suppressHydrationWarning
-                className="site-header-cta inline-flex h-10 items-center justify-center rounded-full bg-[#ece9e4] px-4 text-[13px] font-medium tracking-[-0.03em] text-black transition hover:bg-[#e4e0db]"
+                className={`site-header-cta inline-flex h-9 items-center justify-center rounded-full px-3.5 text-[15px] font-semibold tracking-[-0.03em] transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  index === 0
+                    ? "bg-[#ece9e4] text-black hover:bg-[#e4e0db]"
+                    : "border border-black/12 bg-white text-black shadow-[0_6px_18px_rgba(0,0,0,0.06)] hover:border-black/20 hover:bg-black/[0.02]"
+                }`}
               >
-                {ctas[0].label}
+                {link.label}
               </Link>
-            </div>
-            <div className="transition duration-200 hover:-translate-y-0.5 hover:scale-[1.01]">
-              <Link
-                href={ctas[1].href}
-                suppressHydrationWarning
-                className="site-header-cta inline-flex h-10 items-center justify-center rounded-full bg-black px-4 text-[13px] font-medium tracking-[-0.03em] text-white transition hover:bg-black/88"
-              >
-                {ctas[1].label}
-              </Link>
-            </div>
+            ))}
           </div>
 
           <div
@@ -192,6 +382,13 @@ export default function Header(): React.JSX.Element {
             </div>
           </div>
         </div>
+
+        <DesktopMenuPanel
+          menu={activeDesktopMenu ?? desktopMenus[0]}
+          isOpen={desktopMenuOpen !== null}
+          onClose={() => setDesktopMenuOpen(null)}
+          animationCycle={desktopMenuAnimationCycle}
+        />
       </header>
 
       <div
