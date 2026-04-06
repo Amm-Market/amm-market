@@ -28,10 +28,17 @@ describe('Footer', () => {
     render(<Footer />)
 
     expect(screen.getByText('Explore')).toBeInTheDocument()
-    expect(screen.getByText('Products')).toBeInTheDocument()
     expect(screen.getByText('Resources')).toBeInTheDocument()
-    expect(screen.getByText('Developers')).toBeInTheDocument()
-    expect(screen.getByText('Legal')).toBeInTheDocument()
+    expect(screen.getByText('Docs')).toBeInTheDocument()
+  })
+
+  it('renders the brand description and social icons', () => {
+    render(<Footer />)
+
+    expect(screen.getByText(/Avana is an LP-collateral protocol on Aave v4/i)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Avana on Twitter' })).toHaveAttribute('href', 'https://twitter.com/dexmini')
+    expect(screen.getByRole('link', { name: 'Avana on GitHub' })).toHaveAttribute('href', 'https://github.com/aave')
+    expect(screen.getByRole('link', { name: 'Avana on Telegram' })).toHaveAttribute('href', 'https://t.me/dexmini')
   })
 
   it('renders top-level navigation links for desktop coverage', () => {
@@ -43,36 +50,23 @@ describe('Footer', () => {
     expect(container.querySelector('a[href="/platform"]')).toHaveTextContent('Platform')
   })
 
-  it('renders Products links', () => {
-    render(<Footer />)
-
-    expect(screen.getByRole('link', { name: 'Lightpaper' })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Early Access' })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Launch App' })).toHaveAttribute('href', '/')
-  })
-
   it('renders Resources links', () => {
     render(<Footer />)
 
+    expect(screen.getByRole('link', { name: 'Lightpaper' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'About' })).toHaveAttribute('href', '/about')
     expect(screen.getByRole('link', { name: 'Blog' })).toHaveAttribute('href', '/blog')
     expect(screen.getByRole('link', { name: 'FAQ' })).toHaveAttribute('href', '/faq')
     expect(screen.getByRole('link', { name: 'Brand' })).toHaveAttribute('href', '/brand')
   })
 
-  it('renders Developers links', () => {
+  it('renders Docs links', () => {
     render(<Footer />)
 
-    expect(screen.getByRole('link', { name: 'Documentation' })).toHaveAttribute('href', '/developers')
-    expect(screen.getByRole('link', { name: 'Introduction' })).toHaveAttribute('href', '/developers/introduction')
-  })
-
-  it('does not render social media links', () => {
-    render(<Footer />)
-
-    expect(screen.queryByRole('link', { name: 'Avana on X' })).not.toBeInTheDocument()
-    expect(screen.queryByRole('link', { name: 'Avana on Discord' })).not.toBeInTheDocument()
-    expect(screen.queryByRole('link', { name: 'Avana on GitHub' })).not.toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Developers' })).toHaveAttribute('href', '/developers')
+    expect(screen.getByRole('link', { name: 'Lightpaper' })).toHaveAttribute('href', '/lightpaper')
+    expect(screen.getByRole('link', { name: 'Privacy' })).toHaveAttribute('href', '/privacy')
+    expect(screen.getByRole('link', { name: 'Terms' })).toHaveAttribute('href', '/terms')
   })
 
   it('renders legal links inside the footer sections', () => {
@@ -108,9 +102,8 @@ describe('Footer', () => {
     render(<Footer />)
 
     expect(screen.getByText('Explore')).toBeInTheDocument()
-    expect(screen.getByText('Products')).toBeInTheDocument()
     expect(screen.getByText('Resources')).toBeInTheDocument()
-    expect(screen.getByText('Developers')).toBeInTheDocument()
-    expect(screen.getByText('Legal')).toBeInTheDocument()
+    expect(screen.getByText('Docs')).toBeInTheDocument()
+    expect(screen.getByText('Social')).toBeInTheDocument()
   })
 })
