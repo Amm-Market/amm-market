@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 
 export default function BorrowPage() {
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col min-h-screen pt-20">
+    <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col min-h-screen pt-10 sm:pt-12 md:pt-20">
       <div className="flex-1 flex flex-col relative z-0">
         {/* Hero Section - Exact same structure as home (hero-section.tsx) */}
         <section className="pb-12 md:pb-16">
@@ -48,7 +48,7 @@ export default function BorrowPage() {
             <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16 lg:min-h-[400px] xl:min-h-[450px]">
               {/* Left Column - Hero Image */}
               <div className="w-full lg:w-[55%] mb-10 lg:mb-0 order-2 lg:order-1">
-                <div className="relative w-full max-w-[700px] lg:max-w-[650px] xl:max-w-[700px] mx-auto lg:mx-0">
+                <div className="relative w-full max-w-none lg:max-w-[650px] xl:max-w-[700px] mx-auto lg:mx-0">
                   <Image
                     src="/images/Hero__4_.png"
                     alt="App interface"
@@ -62,27 +62,27 @@ export default function BorrowPage() {
               </div>
 
               {/* Right Column - Text Content */}
-              <div className="w-full lg:w-[45%] text-center lg:text-left order-1 lg:order-2 mb-8 lg:mb-0">
-                <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.15] text-gray-900 mb-4 md:mb-6">
-                  <span className="lg:whitespace-nowrap">Any LP token.</span>
+              <div className="w-full lg:w-[45%] text-left order-1 lg:order-2 mb-8 lg:mb-0">
+                <h1 className="max-w-[12ch] text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.02] text-gray-900 mb-3 md:mb-5">
+                  <span className="lg:whitespace-nowrap">Any LP.</span>
                   <br />
-                  <span className="lg:whitespace-nowrap">Maximum flexibility.</span>
+                  <span className="lg:whitespace-nowrap">More flexibility.</span>
                 </h1>
 
-                <p className="text-base md:text-lg text-gray-600 max-w-lg mx-auto lg:mx-0 leading-relaxed mb-6">
-                  Use any supported LP position as collateral across multiple DEXes. Your position stays active and keeps earning fees while you borrow—no bridges, no lock-in required.
+                <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-[32ch] sm:max-w-md mx-0 leading-relaxed mb-5 md:mb-6">
+                  Use supported LP positions as collateral. Your liquidity stays active, keeps earning fees, and never leaves your control.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto lg:mx-0">
+                <div className="flex flex-row flex-wrap gap-2 sm:gap-3 max-w-md sm:mx-0 items-start">
                   <Link
                     href="/early-access"
-                    className="inline-flex items-center justify-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors"
+                    className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
                   >
                     Get Early Access
                   </Link>
                   <Link
                     href="/developers"
-                    className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors"
+                    className="inline-flex items-center justify-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-100 text-gray-900 text-xs font-semibold rounded-full transition-colors"
                   >
                     View Docs
                   </Link>
