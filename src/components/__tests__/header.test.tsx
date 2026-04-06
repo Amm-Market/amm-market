@@ -28,21 +28,15 @@ describe('Header', () => {
     expect(screen.getAllByAltText('Avana wordmark')).toHaveLength(2)
   })
 
-  it('renders the direct desktop navigation links', () => {
+  it('renders the desktop menu groups and utility buttons', () => {
     render(<Header />)
 
-    expect(screen.getByRole('link', { name: 'Borrow' })).toHaveAttribute('href', '/borrow')
-    expect(screen.getByRole('link', { name: 'Invest' })).toHaveAttribute('href', '/invest')
-    expect(screen.getByRole('link', { name: 'Earn' })).toHaveAttribute('href', '/earn')
-    expect(screen.getByRole('link', { name: 'Platform' })).toHaveAttribute('href', '/platform')
-    expect(screen.queryByRole('link', { name: 'Developers' })).not.toBeInTheDocument()
-  })
-
-  it('renders desktop CTA links', () => {
-    render(<Header />)
-
-    expect(screen.getByRole('link', { name: 'Early Access' })).toHaveAttribute('href', '/early-access')
-    expect(screen.getByRole('link', { name: 'Launch App' })).toHaveAttribute('href', '/')
+    expect(screen.getByRole('button', { name: 'Products' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Resources' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Developers' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Lightpaper' })).toHaveAttribute('href', '/lightpaper')
+    expect(screen.getByRole('link', { name: 'Try Sandbox' })).toHaveAttribute('href', 'https://app.avana.cc')
+    expect(screen.getByRole('link', { name: 'Try Sandbox' })).toHaveAttribute('target', '_blank')
   })
 
   it('does not render the old grouped desktop menu triggers', () => {
@@ -51,6 +45,53 @@ describe('Header', () => {
     expect(screen.queryByRole('button', { name: 'Products menu' })).not.toBeInTheDocument()
     expect(screen.queryByRole('button', { name: 'Resources menu' })).not.toBeInTheDocument()
     expect(screen.queryByRole('button', { name: 'Developers menu' })).not.toBeInTheDocument()
+  })
+
+  it('opens the products desktop menu with numbered rows', async () => {
+    const user = userEvent.setup()
+    render(<Header />)
+
+    await user.click(screen.getByRole('button', { name: 'Products' }))
+
+    const productsPanel = document.getElementById('desktop-menu-products')
+    expect(productsPanel).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Products' })).toHaveAttribute('aria-expanded', 'true')
+    expect(screen.getByRole('link', { name: 'Borrow' })).toHaveAttribute('href', '/borrow')
+    expect(screen.getByRole('link', { name: 'Invest' })).toHaveAttribute('href', '/invest')
+    expect(screen.getByRole('link', { name: 'Earn' })).toHaveAttribute('href', '/earn')
+    expect(screen.getByRole('link', { name: 'Platform' })).toHaveAttribute('href', '/platform')
+    expect(within(productsPanel as HTMLElement).getAllByText('01').length).toBeGreaterThan(0)
+    expect(within(productsPanel as HTMLElement).getAllByText('03').length).toBeGreaterThan(0)
+  })
+
+  it('keeps Lightpaper out of the resources menu while exposing it as a desktop utility button', async () => {
+    const user = userEvent.setup()
+    render(<Header />)
+
+    await user.click(screen.getByRole('button', { name: 'Resources' }))
+
+    const resourcesPanel = document.getElementById('desktop-menu-resources')
+    expect(resourcesPanel).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Lightpaper' })).toHaveAttribute('href', '/lightpaper')
+    expect(within(resourcesPanel as HTMLElement).queryByRole('link', { name: 'Lightpaper' })).not.toBeInTheDocument()
+    expect(within(resourcesPanel as HTMLElement).getByRole('link', { name: 'About' })).toHaveAttribute('href', '/about')
+    expect(within(resourcesPanel as HTMLElement).getByRole('link', { name: 'Brand' })).toHaveAttribute('href', '/brand')
+    expect(within(resourcesPanel as HTMLElement).queryByRole('link', { name: 'Privacy' })).not.toBeInTheDocument()
+  })
+
+  it('switches desktop menus and shows the matching panel content', async () => {
+    const user = userEvent.setup()
+    render(<Header />)
+
+    await user.click(screen.getByRole('button', { name: 'Products' }))
+    expect(screen.getByRole('link', { name: 'Borrow' })).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Developers' }))
+
+    const developersPanel = document.getElementById('desktop-menu-developers')
+    expect(developersPanel).toBeInTheDocument()
+    expect(within(developersPanel as HTMLElement).getByRole('link', { name: 'Developers' })).toHaveAttribute('href', '/developers')
+    expect(within(developersPanel as HTMLElement).getByRole('link', { name: 'Study integrations' })).toHaveAttribute('href', '/developers/integrations')
   })
 
   it('renders the mobile menu button', () => {
