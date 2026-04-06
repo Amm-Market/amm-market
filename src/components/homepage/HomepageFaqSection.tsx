@@ -1,6 +1,7 @@
 "use client"
 
 import { DeFiTerm } from "@/components/defi-term"
+import { SectionEyebrow } from "@/components/shared"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 /**
@@ -9,9 +10,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 export default function HomepageFaqSection() {
   return (
     <div className="flex flex-col gap-8 border-t border-gray-100 pt-16 pb-4 md:flex-row md:gap-12 md:pt-10 md:pb-0" style={{ opacity: 1, transform: "none" }}>
-      <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 md:pt-2 md:flex-shrink-0 md:w-[300px]">
-        Frequently asked questions.
-      </h3>
+      <div className="space-y-3 md:pt-2 md:flex-shrink-0 md:w-[300px]">
+        <SectionEyebrow>FAQ</SectionEyebrow>
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900">
+          Frequently asked questions.
+        </h3>
+      </div>
       <div className="md:w-[600px] md:flex-shrink-0">
         <Accordion type="single" collapsible orientation="vertical" className="w-full">
           <AccordionItem value="item-1" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
