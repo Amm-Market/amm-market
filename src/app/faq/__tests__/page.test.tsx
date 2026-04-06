@@ -25,7 +25,8 @@ describe("faq page", () => {
   it("renders the active category heading when not searching", () => {
     const { container } = render(<FaqPageClient />)
 
-    expect(screen.getByRole("heading", { name: "Core Concepts" })).toBeInTheDocument()
+    expect(screen.getByRole("button", { name: "Core Concepts" })).toHaveAttribute("aria-pressed", "true")
+    expect(screen.getByText("What is Avana?")).toBeInTheDocument()
     expect(screen.queryByText(/My wallet won't connect/i)).not.toBeInTheDocument()
     expect(container.querySelector(".site-content-shell")).toBeInTheDocument()
   })
@@ -37,7 +38,7 @@ describe("faq page", () => {
     fireEvent.click(clearButton)
 
     expect(screen.getByPlaceholderText("Search")).toHaveValue("")
-    expect(screen.getByRole("heading", { name: "Core Concepts" })).toBeInTheDocument()
+    expect(screen.getByRole("button", { name: "Core Concepts" })).toHaveAttribute("aria-pressed", "true")
   })
 
   it("switches between the canonical documentation categories", () => {
@@ -45,7 +46,7 @@ describe("faq page", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Health & Liquidation" }))
 
-    expect(screen.getByRole("heading", { name: "Health & Liquidation" })).toBeInTheDocument()
+    expect(screen.getByRole("button", { name: "Health & Liquidation" })).toHaveAttribute("aria-pressed", "true")
     expect(screen.getByText("What is the health factor?")).toBeInTheDocument()
   })
 })

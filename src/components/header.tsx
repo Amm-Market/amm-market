@@ -25,6 +25,42 @@ interface DesktopMenuGroup {
   supportingItems: DesktopMenuItem[]
 }
 
+function SandboxIcon() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" className="h-[22px] w-[22px] shrink-0">
+      <path
+        d="M14 18V11H21"
+        stroke="currentColor"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M34 18V11H27"
+        stroke="currentColor"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M14 30V37H21"
+        stroke="currentColor"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M34 30V37H27"
+        stroke="currentColor"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="24" cy="24" r="4" fill="currentColor" />
+    </svg>
+  )
+}
+
 function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
   return (
     <span className="inline-flex items-center">
@@ -107,16 +143,16 @@ const desktopUtilityLinks: NavLink[] = [
   { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
 ]
 const mobileLinks: NavLink[] = [
-  { href: siteRoutes.home, label: "Overview" },
   { href: siteRoutes.borrow, label: "Borrow" },
   { href: siteRoutes.invest, label: "Invest" },
   { href: siteRoutes.earn, label: "Earn" },
   { href: siteRoutes.platform, label: "Platform" },
+  { href: siteRoutes.about, label: "About" },
   { href: siteRoutes.lightpaper, label: "Lightpaper" },
-  { href: siteRoutes.developers, label: "Developers" },
   { href: siteRoutes.blog, label: "Blog" },
-  { href: siteRoutes.earlyAccess, label: "Early Access" },
-  { href: siteRoutes.launchApp, label: "Launch App" },
+  { href: siteRoutes.faq, label: "FAQ" },
+  { href: siteRoutes.developers, label: "Developers" },
+  { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
 ]
 function isActivePath(pathname: string | null, href: string): boolean {
   if (href === "/") {
@@ -347,7 +383,14 @@ export default function Header(): React.JSX.Element {
                     : "border border-black/12 bg-white text-black shadow-[0_6px_18px_rgba(0,0,0,0.06)] hover:border-black/20 hover:bg-black/[0.02]"
                 }`}
               >
-                {link.label}
+                {link.label === "Try Sandbox" ? (
+                  <span className="inline-flex items-center gap-2">
+                    <SandboxIcon />
+                    <span>{link.label}</span>
+                  </span>
+                ) : (
+                  link.label
+                )}
               </Link>
             ))}
           </div>
@@ -448,6 +491,8 @@ export default function Header(): React.JSX.Element {
                   >
                     <Link
                       href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noreferrer" : undefined}
                       suppressHydrationWarning
                       className="flex items-end justify-between gap-5 py-3"
                       onClick={() => setMobileMenuOpen(false)}

@@ -23,7 +23,7 @@ export const siteRoutes = {
   lightpaper: "/lightpaper",
   faq: "/faq",
   brand: "/brand",
-  earlyAccess: "/early-access",
+  earlyAccess: "/faq",
   privacy: "/privacy",
   terms: "/terms",
   launchApp: "/",

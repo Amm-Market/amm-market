@@ -201,10 +201,10 @@ export default function BlogPage() {
                     type="button"
                     onClick={() => setActiveTag(tag)}
                     aria-pressed={active}
-                    className={`inline-flex shrink-0 items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold tracking-[-0.03em] transition-all duration-300 ${
+                    className={`inline-flex shrink-0 items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold tracking-[-0.03em] transition-all duration-300 ${
                       active
-                        ? "bg-[#111111] text-white shadow-[0_10px_24px_rgba(17,17,17,0.12)]"
-                        : "text-black/30 hover:text-black/60"
+                        ? "border-black/10 bg-white text-black shadow-[0_10px_22px_rgba(17,17,17,0.06)]"
+                        : "border-transparent text-black/30 hover:text-black/60"
                     }`}
                   >
                     {tag}

@@ -4,6 +4,42 @@ import { useEffect, useState } from "react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { defaultFaqCategory, faqCategories } from "@/app/faq/faq-content"
 
+const categoryIcons: Record<string, React.ReactNode> = {
+  "Core Concepts": (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none">
+      <path d="M7 7h10M7 12h10M7 17h6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" />
+    </svg>
+  ),
+  "Depositing LP Collateral": (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none">
+      <path d="M12 5v14M8 9l4-4 4 4M8 15l4 4 4-4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" />
+    </svg>
+  ),
+  "Borrowing Capacity & Valuation": (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none">
+      <path d="M4 16l5-5 4 4 7-8" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" />
+    </svg>
+  ),
+  "Health & Liquidation": (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none">
+      <path d="M12 4l7 3v5c0 4.4-2.8 7.8-7 9-4.2-1.2-7-4.6-7-9V7l7-3z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" />
+    </svg>
+  ),
+  "Fees & Interface Policy": (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none">
+      <path d="M8 7h8M8 12h8M8 17h5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" />
+      <path d="M6 4h12v16H6V4z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+    </svg>
+  ),
+  "Risk & Security": (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none">
+      <path d="M12 4l6 3v4c0 4.4-2.6 7.8-6 9-3.4-1.2-6-4.6-6-9V7l6-3z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" />
+      <path d="M12 8v5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" />
+      <path d="M12 16h.01" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
+    </svg>
+  ),
+}
+
 export default function FaqPageClient({
   initialSearchTerm = "",
 }: {
@@ -35,7 +71,7 @@ export default function FaqPageClient({
       <main className="flex-1 py-10 lg:py-14">
         <div className="site-content-shell">
           <div className="mb-10 py-8 text-center lg:mb-14 lg:py-14">
-            <h1 className="mb-8 text-[2.35rem] font-semibold italic leading-[0.96] tracking-[-0.06em] text-gray-950 sm:text-[3.1rem] lg:text-[4.1rem]">
+            <h1 className="mb-8 text-[clamp(3rem,7vw,5.25rem)] font-semibold not-italic tracking-[-0.08em] text-black">
               How can we help?
             </h1>
 
@@ -76,21 +112,44 @@ export default function FaqPageClient({
           </div>
 
           <div className="mb-10 overflow-x-auto lg:mb-12">
-            <div className="flex space-x-2 pb-1">
+            <div className="flex gap-3 pb-2">
               {faqCategories.map((category) => (
                 <button
                   key={category.id}
+                  type="button"
                   onClick={() => {
                     setActiveCategory(category.name)
                     setSearchTerm("")
                   }}
-                  className={`whitespace-nowrap rounded-full px-4 py-2.5 text-[0.95rem] font-medium tracking-[-0.02em] transition-all duration-200 ${
+                  aria-label={category.name}
+                  aria-pressed={activeCategory === category.name && !searchTerm}
+                  className={`group relative flex w-[12rem] shrink-0 flex-col justify-between rounded-[1rem] border p-3 text-left transition-all duration-300 sm:w-[12.75rem] lg:w-[13.25rem] ${
                     activeCategory === category.name && !searchTerm
-                      ? "bg-black text-white shadow-md shadow-black/15"
-                      : "bg-[#f3f2ef] text-gray-700 hover:bg-[#e8e6e1] hover:text-black hover:shadow-sm"
+                      ? "border-black/18 bg-[#fcfbf8] text-black shadow-[0_10px_22px_rgba(17,17,17,0.06)]"
+                      : "border-black/10 bg-white text-black shadow-[0_2px_10px_rgba(17,17,17,0.04)] hover:border-black/20 hover:shadow-[0_10px_18px_rgba(17,17,17,0.07)]"
                   }`}
                 >
-                  {category.name}
+                  <div
+                    aria-hidden="true"
+                    className={`flex h-10 w-10 items-center justify-center transition-colors duration-300 ${
+                      activeCategory === category.name && !searchTerm
+                        ? "text-black"
+                        : "text-black/78"
+                    }`}
+                  >
+                    {categoryIcons[category.name] ?? categoryIcons["Core Concepts"]}
+                  </div>
+                  <div className="mt-4">
+                    <p className="text-[0.92rem] font-semibold leading-[1.12] tracking-[-0.04em] sm:text-[0.98rem] lg:text-[1rem]">
+                      {category.name}
+                    </p>
+                  </div>
+                  <p className="mt-1.5 line-clamp-2 text-[0.78rem] leading-[1.35] tracking-[-0.02em] text-black/54">
+                    {category.summary}
+                  </p>
+                  <div className="mt-3 flex items-center gap-2 text-[0.72rem] font-medium tracking-[-0.02em] text-current/66">
+                    <span>{category.questions.length} questions</span>
+                  </div>
                 </button>
               ))}
             </div>
@@ -153,9 +212,6 @@ export default function FaqPageClient({
               </>
             ) : (
               <>
-                <h2 className="mb-7 text-[1.55rem] font-semibold leading-[1.12] tracking-[-0.04em] text-gray-950 sm:text-[1.8rem] lg:text-[2rem]">
-                  {activeCategory}
-                </h2>
                 <Accordion type="single" collapsible className="w-full">
                   {categoryQuestions.map((faq) => (
                     <AccordionItem

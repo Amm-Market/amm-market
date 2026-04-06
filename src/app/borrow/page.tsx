@@ -75,7 +75,7 @@ export default function BorrowPage() {
 
                 <div className="flex flex-row flex-wrap gap-2 sm:gap-3 max-w-md sm:mx-0 items-start">
                   <Link
-                    href="/early-access"
+                    href="/faq"
                     className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
                   >
                     Get Early Access

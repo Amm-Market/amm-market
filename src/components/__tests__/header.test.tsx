@@ -139,20 +139,27 @@ describe('Header', () => {
     const mobileLinks = within(mobileNav).getAllByRole('link')
 
     expect(mobileLinks.map((link) => link.getAttribute('href'))).toEqual([
-      '/',
       '/borrow',
       '/invest',
       '/earn',
       '/platform',
+      '/about',
       '/lightpaper',
-      '/developers',
       '/blog',
-      '/early-access',
-      '/',
+      '/faq',
+      '/developers',
+      'https://app.avana.cc',
     ])
 
+    expect(within(mobileNav).getByRole('link', { name: /^Borrow01$/ })).toHaveAttribute('href', '/borrow')
     expect(within(mobileNav).getByText('01')).toBeInTheDocument()
+    expect(within(mobileNav).getByText('05')).toBeInTheDocument()
     expect(within(mobileNav).getByText('09')).toBeInTheDocument()
+    expect(within(mobileNav).getByText('10')).toBeInTheDocument()
+    expect(within(mobileNav).getByRole('link', { name: /^About05$/ })).toHaveAttribute('href', '/about')
+    expect(within(mobileNav).getByRole('link', { name: /^Try Sandbox10$/ })).toHaveAttribute('href', 'https://app.avana.cc')
+    expect(within(mobileNav).queryByRole('link', { name: 'Launch App' })).not.toBeInTheDocument()
+    expect(within(mobileNav).queryByRole('link', { name: 'Early Access' })).not.toBeInTheDocument()
   })
 
   it('does not render grouped mobile headings', async () => {

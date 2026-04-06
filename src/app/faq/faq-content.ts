@@ -7,6 +7,7 @@ export type FaqQuestion = {
 export type FaqCategory = {
   id: string
   name: string
+  summary: string
   questions: FaqQuestion[]
 }
 
@@ -16,6 +17,7 @@ export const faqCategories: FaqCategory[] = [
   {
     id: "core-concepts",
     name: "Core Concepts",
+    summary: "How Avana values LP positions and routes them through the protocol.",
     questions: [
       {
         id: "what-is-avana",
@@ -42,6 +44,7 @@ export const faqCategories: FaqCategory[] = [
   {
     id: "depositing-lp-collateral",
     name: "Depositing LP Collateral",
+    summary: "What happens when a supported LP position enters collateral accounting.",
     questions: [
       {
         id: "what-happens-on-deposit",
@@ -68,6 +71,7 @@ export const faqCategories: FaqCategory[] = [
   {
     id: "borrowing-capacity-and-valuation",
     name: "Borrowing Capacity & Valuation",
+    summary: "How recoverable value becomes borrowing capacity inside a Borrow Spoke.",
     questions: [
       {
         id: "how-borrowing-capacity-calculated",
@@ -94,6 +98,7 @@ export const faqCategories: FaqCategory[] = [
   {
     id: "health-and-liquidation",
     name: "Health & Liquidation",
+    summary: "How health factor, repayment, and liquidation work together.",
     questions: [
       {
         id: "what-is-health-factor",
@@ -120,6 +125,7 @@ export const faqCategories: FaqCategory[] = [
   {
     id: "fees-and-interface-policy",
     name: "Fees & Interface Policy",
+    summary: "How interface fees differ from protocol economics and how they are disclosed.",
     questions: [
       {
         id: "interface-vs-protocol-fees",
@@ -146,6 +152,7 @@ export const faqCategories: FaqCategory[] = [
   {
     id: "risk-and-security",
     name: "Risk & Security",
+    summary: "Oracle, market, and user-security guidance for LP borrowing.",
     questions: [
       {
         id: "main-risks",

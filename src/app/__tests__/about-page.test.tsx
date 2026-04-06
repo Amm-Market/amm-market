@@ -31,7 +31,7 @@ describe("about page", () => {
     })
   })
 
-  it("renders the manifesto headline and early access call to action", () => {
+  it("renders the manifesto headline and call to action", () => {
     render(<AboutPage />)
 
     expect(
@@ -46,6 +46,6 @@ describe("about page", () => {
 
     expect(
       screen.getByRole("link", { name: /we would love to hear from you/i }),
-    ).toHaveAttribute("href", "/early-access")
+    ).toHaveAttribute("href", "/faq")
   })
 })
