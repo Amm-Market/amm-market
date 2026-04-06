@@ -36,10 +36,13 @@ describe("home page", () => {
     expect(buildTomorrow.compareDocumentPosition(heroSection)).toBe(Node.DOCUMENT_POSITION_FOLLOWING)
   })
 
-  it("renders the current Avana and Aave relaunch headline", () => {
+  it("renders the refreshed Avana relaunch section", () => {
     render(<Home />)
 
-    expect(screen.getByText(/Aave first introduced Avana in 2020/i)).toBeInTheDocument()
-    expect(screen.getByText(/Now we're relaunching it on Aave v4/i)).toBeInTheDocument()
+    expect(screen.getByText(/Avana Relaunch/i)).toBeInTheDocument()
+    expect(screen.getByText(/Deeper liquidity,/i)).toBeInTheDocument()
+    expect(screen.getByText(/precise borrowing/i)).toBeInTheDocument()
+    expect(screen.getByText(/Avana turns active LP positions into productive collateral/i)).toBeInTheDocument()
+    expect(screen.getByText(/Built on Aave v4, the protocol is designed around live AMM exposure/i)).toBeInTheDocument()
   })
 })
