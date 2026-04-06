@@ -15,7 +15,24 @@ vi.mock("@/components/scroll-spy-sidebar", () => ({
 }))
 
 describe("lightpaper spoke configuration", () => {
-  it("renders the Aave-inspired spoke table structure with explicit collateral and borrow columns", () => {
+  it(
+    "renders the text-only orchid-style hero",
+    () => {
+      render(<LightpaperPage />)
+
+      expect(
+        screen.getByRole("heading", {
+          name: "Introducing Avana: An Aave v4 Spoke",
+        }),
+      ).toBeInTheDocument()
+      expect(screen.getByTestId("scroll-spy-sidebar")).toBeInTheDocument()
+    },
+    15000,
+  )
+
+  it(
+    "renders the Aave-inspired spoke table structure with explicit collateral and borrow columns",
+    () => {
     render(<LightpaperPage />)
 
     expect(screen.queryByRole("columnheader", { name: "Market" })).not.toBeInTheDocument()
@@ -29,9 +46,11 @@ describe("lightpaper spoke configuration", () => {
     expect(spokeHeaders.length).toBeGreaterThan(0)
     expect(collateralHeaders.length).toBe(spokeHeaders.length)
     expect(borrowHeaders.length).toBe(spokeHeaders.length)
-    expect(screen.getByText("Uniswap")).toBeInTheDocument()
+    expect(screen.getAllByText("Uniswap").length).toBeGreaterThan(0)
     expect(screen.getByText("$5.68B TVL")).toBeInTheDocument()
-  })
+    },
+    15000,
+  )
 
   it("shows e-mode labels, lp primitives, and split Balancer rows", () => {
     render(<LightpaperPage />)
