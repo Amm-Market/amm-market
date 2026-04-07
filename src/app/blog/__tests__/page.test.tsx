@@ -29,15 +29,15 @@ describe("blog page", () => {
 
     expect(screen.getByRole("heading", { level: 1, name: "Newsroom" })).toBeInTheDocument()
     expect(screen.getByRole("link", { name: "All" })).toHaveAttribute("aria-current", "page")
-    expect(screen.getByRole("link", { name: "Development" })).toHaveAttribute("href", "/blog?tag=Development")
+    expect(screen.getByRole("link", { name: "Protocol" })).toHaveAttribute("href", "/blog?tag=Protocol")
     expect(screen.queryByText("Avana Blog")).not.toBeInTheDocument()
   })
 
   it("filters the newsroom from the tag query string without client state", async () => {
-    render(await BlogPage({ searchParams: Promise.resolve({ tag: "Development" }) }))
+    render(await BlogPage({ searchParams: Promise.resolve({ tag: "Protocol" }) }))
 
-    expect(screen.getByRole("link", { name: "Development" })).toHaveAttribute("aria-current", "page")
-    expect(screen.getByRole("link", { name: /Smart Contract Architecture: Avana Technical Reference/i })).toBeInTheDocument()
-    expect(screen.queryByRole("link", { name: /Introducing Automate: Set-and-Forget LP Management/i })).not.toBeInTheDocument()
+    expect(screen.getByRole("link", { name: "Protocol" })).toHaveAttribute("aria-current", "page")
+    expect(screen.getByRole("heading", { name: /How Avana Governs LP Risk/i })).toBeInTheDocument()
+    expect(screen.queryByRole("heading", { name: /Automate: A Control Layer for LP Collateral on Avana/i })).not.toBeInTheDocument()
   })
 })
