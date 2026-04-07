@@ -10,7 +10,7 @@ const samplePosts: readonly BlogPost[] = [
     slug: "protocol-update",
     image: "/images/blog/protocol-update.png",
     category: "Product",
-    tag: "News",
+    tag: "Product",
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const samplePosts: readonly BlogPost[] = [
     slug: "developer-reference",
     image: "/images/blog/developer-reference.png",
     category: "Developers",
-    tag: "Development",
+    tag: "Protocol",
   },
 ] as const
 
@@ -28,11 +28,11 @@ describe("content helpers", () => {
   it("normalizes unknown blog filters back to All", () => {
     expect(normalizeTagFilter(undefined)).toBe("All")
     expect(normalizeTagFilter("Unknown")).toBe("All")
-    expect(normalizeTagFilter("Development")).toBe("Development")
+    expect(normalizeTagFilter("Protocol")).toBe("Protocol")
   })
 
   it("filters blog posts by tag without mutating the source list", () => {
-    const filtered = filterBlogPosts(samplePosts, "Development")
+    const filtered = filterBlogPosts(samplePosts, "Protocol")
 
     expect(filtered).toHaveLength(1)
     expect(filtered[0].slug).toBe("developer-reference")
