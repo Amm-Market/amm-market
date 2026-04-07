@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
-import HomepageNewsroomSection, { borrowNewsroomPosts } from "@/components/homepage/HomepageNewsroomSection"
+import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
@@ -113,12 +113,14 @@ export default function BorrowPage() {
                 <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
                   <Link
                     href="/faq"
+                    prefetch={false}
                     className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
                   >
                     Get Early Access
                   </Link>
                   <Link
                     href="/developers"
+                    prefetch={false}
                     className="inline-flex items-center justify-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-100 text-gray-900 text-xs font-semibold rounded-full transition-colors"
                   >
                     View Docs
@@ -221,7 +223,7 @@ export default function BorrowPage() {
           </section>
 
           <section>
-            <HomepageNewsroomSection posts={borrowNewsroomPosts} showDividers={false} />
+            <HomepageNewsroomSection collection="borrow" showDividers={false} />
           </section>
 
           {/* FAQ */}

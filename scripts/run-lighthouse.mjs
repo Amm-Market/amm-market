@@ -13,7 +13,6 @@ const ROUTES = [
   "/faq",
   "/brand",
   "/about",
-  "/early-access",
   "/privacy",
   "/terms",
   "/borrow",
