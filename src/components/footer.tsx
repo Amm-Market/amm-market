@@ -131,7 +131,7 @@ export default function Footer(): React.JSX.Element {
         <div className="grid gap-x-8 gap-y-12 lg:grid-cols-[minmax(16rem,1.2fr)_minmax(0,1fr)] lg:gap-x-8 xl:gap-x-10">
           {/* Logo */}
           <div className="space-y-5 lg:max-w-sm">
-            <Link href={siteRoutes.home} className="size-fit">
+            <Link href={siteRoutes.home} prefetch={false} className="size-fit">
               <Image src={WORDMARK_PATH} alt={`${SITE_NAME} wordmark`} width={174} height={32} className="h-[18px] w-[98px]" />
             </Link>
             <p className="max-w-sm text-[1.02rem] font-medium leading-7 tracking-[-0.02em] text-gray-700">
@@ -166,6 +166,7 @@ export default function Footer(): React.JSX.Element {
                     <Link
                       key={`${section.title}-${link.label}-${link.href}`}
                       href={link.href}
+                      prefetch={false}
                       className="hover:text-blue-600 transition-colors"
                     >
                       {link.label}

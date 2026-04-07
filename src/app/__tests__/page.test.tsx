@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react"
+import type React from "react"
 import { describe, expect, it, vi } from "vitest"
 import Home from "@/app/page"
 
@@ -18,8 +19,8 @@ vi.mock("@/components/hero-section", () => ({
   default: () => <div data-testid="hero-section">HeroSection</div>,
 }))
 
-vi.mock("@/components/features-section", () => ({
-  default: () => <div data-testid="features-section">FeaturesSection</div>,
+vi.mock("@/components/ui/lazy-section", () => ({
+  LazySection: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }))
 
 describe("home page", () => {

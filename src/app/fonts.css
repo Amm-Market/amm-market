@@ -24,14 +24,6 @@
 
 @font-face {
   font-family: "Diatype";
-  src: url("/fonts/diatype/ABCDiatype-Black-Trial.woff2") format("woff2");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Diatype";
   src: url("/fonts/diatype/ABCDiatype-RegularItalic-Trial.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
@@ -50,14 +42,6 @@
   font-family: "Diatype";
   src: url("/fonts/diatype/ABCDiatype-BoldItalic-Trial.woff2") format("woff2");
   font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Diatype";
-  src: url("/fonts/diatype/ABCDiatype-BlackItalic-Trial.woff2") format("woff2");
-  font-weight: 900;
   font-style: italic;
   font-display: swap;
 }
