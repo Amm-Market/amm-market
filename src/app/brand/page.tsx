@@ -2,6 +2,7 @@
 
 import { Download, Copy, Check } from "lucide-react"
 import { useState } from "react"
+import { brandOutfitFont } from "@/app/brand/brand-fonts"
 import InlineFaqSection from "@/components/InlineFaqSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
@@ -275,8 +276,7 @@ export default function BrandPage() {
                 <h3 className="text-xl font-semibold text-gray-900">Diatype</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
                   Our primary typeface. The live system uses static Diatype cuts at Regular 400,
-                  Medium 500, Bold 700, and Black 900 so the site reads denser and more intentional
-                  than the previous variable-first setup.
+                  Medium 500, and Bold 700 so the site stays fast while keeping the same editorial rhythm.
                 </p>
               </div>
 
@@ -295,15 +295,14 @@ export default function BrandPage() {
               <div className="flex flex-col gap-3">
                 <h3 className="text-xl font-semibold text-gray-900">Outfit</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
-                  Backup typeface only. The fallback stack is limited to static Outfit Regular,
-                  Medium, and Bold so the site stays close to the Diatype rhythm if the primary face
-                  ever fails to load.
+                  Backup specimen only. Outfit is loaded on this page alone as a reference and is not part
+                  of the global first-paint font path for the live product.
                 </p>
               </div>
 
               <div className="relative flex flex-col gap-5 md:border-b-0">
                 <div className="w-full leading-none text-gray-900 overflow-hidden">
-                  <div className="text-[120px] md:text-[160px] font-semibold italic whitespace-nowrap tracking-[-0.02em]">
+                  <div className={`${brandOutfitFont.className} text-[120px] md:text-[160px] font-semibold italic whitespace-nowrap tracking-[-0.02em]`}>
                     AaBbCc
                   </div>
                 </div>

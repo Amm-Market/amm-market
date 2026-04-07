@@ -1,4 +1,3 @@
-@import "./fonts.css";
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -48,7 +47,7 @@
 }
 
 :root {
-  --font-primary-stack: "Diatype", "Outfit", sans-serif;
+  --font-primary-stack: var(--font-diatype), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --radius: 0.625rem;
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
@@ -469,36 +468,6 @@
   }
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 40s linear infinite;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out;
-}
-
 @keyframes scroll-left {
   0% {
     transform: translateX(0);
@@ -533,135 +502,6 @@
 
 .animate-scroll-right-slow {
   animation: scroll-right 45s linear infinite;
-}
-
-/* Card content animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0px) translateX(-50%); }
-  50% { transform: translateY(-8px) translateX(-50%); }
-}
-
-@keyframes float-simple {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-}
-
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes spin-slow-reverse {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
-}
-
-@keyframes draw-line {
-  from { stroke-dashoffset: 300; }
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes pulse-soft {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-float-simple {
-  animation: float-simple 3s ease-in-out infinite;
-}
-
-.animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
-}
-
-.animate-spin-slow-reverse {
-  animation: spin-slow-reverse 25s linear infinite;
-}
-
-.animate-draw-line {
-  stroke-dasharray: 300;
-  animation: draw-line 2s ease-out forwards;
-}
-
-.animate-pulse-soft {
-  animation: pulse-soft 2s ease-in-out infinite;
-}
-
-/* Header dropdown icon animations */
-@keyframes icon-pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-@keyframes icon-float-up {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-
-@keyframes icon-glow {
-  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
-  50% { filter: drop-shadow(0 0 8px rgba(1, 110, 207, 0.5)); }
-}
-
-@keyframes icon-wiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-8deg); }
-  75% { transform: rotate(8deg); }
-}
-
-@keyframes icon-bounce {
-  0%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-4px); }
-  50% { transform: translateY(0); }
-  70% { transform: translateY(-2px); }
-}
-
-@keyframes icon-sparkle {
-  0%, 100% { opacity: 1; filter: brightness(1); }
-  50% { opacity: 0.9; filter: brightness(1.3); }
-}
-
-@keyframes icon-expand {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.15); }
-}
-
-@keyframes node-pulse {
-  0%, 100% { r: 3; opacity: 1; }
-  50% { r: 4; opacity: 0.8; }
-}
-
-/* Icon animation utility classes - applied on group-hover */
-.group:hover .icon-animate-pulse {
-  animation: icon-pulse 0.6s ease-in-out;
-}
-
-.group:hover .icon-animate-float {
-  animation: icon-float-up 0.5s ease-in-out;
-}
-
-.group:hover .icon-animate-glow {
-  animation: icon-glow 0.8s ease-in-out;
-}
-
-.group:hover .icon-animate-wiggle {
-  animation: icon-wiggle 0.5s ease-in-out;
-}
-
-.group:hover .icon-animate-bounce {
-  animation: icon-bounce 0.6s ease-in-out;
-}
-
-.group:hover .icon-animate-sparkle {
-  animation: icon-sparkle 0.6s ease-in-out;
-}
-
-.group:hover .icon-animate-expand {
-  animation: icon-expand 0.5s ease-in-out;
 }
 
 /* Developer documentation typography */

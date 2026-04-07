@@ -1,21 +1,19 @@
 /**
- * LogoMarquee - Minimal animated protocol row shown beneath the homepage hero.
+ * LogoMarquee - Static homepage protocol row shown beneath the hero.
  *
- * Uses a duplicated marquee track for a continuous loop, but keeps the visuals
- * lighter than the old circular token-logo treatment.
+ * The row stays decorative and lightweight to avoid first-paint motion and
+ * duplicated marquee DOM on the homepage.
  */
 
-interface MarqueeLogo {
+interface HomepageLogo {
   name: string
-  href: string
   accentClass: string
   mark: React.ReactNode
 }
 
-const logos: readonly MarqueeLogo[] = [
+const logos: readonly HomepageLogo[] = [
   {
     name: "Uniswap",
-    href: "https://uniswap.org",
     accentClass: "text-pink-500/75",
     mark: (
       <svg viewBox="0 0 16 16" aria-hidden="true" className="h-4 w-4">
@@ -25,7 +23,6 @@ const logos: readonly MarqueeLogo[] = [
   },
   {
     name: "Aave",
-    href: "https://aave.com",
     accentClass: "text-violet-500/75",
     mark: (
       <svg viewBox="0 0 16 16" aria-hidden="true" className="h-4 w-4">
@@ -35,7 +32,6 @@ const logos: readonly MarqueeLogo[] = [
   },
   {
     name: "Curve",
-    href: "https://curve.fi",
     accentClass: "text-amber-500/75",
     mark: (
       <svg viewBox="0 0 16 16" aria-hidden="true" className="h-4 w-4">
@@ -46,7 +42,6 @@ const logos: readonly MarqueeLogo[] = [
   },
   {
     name: "Balancer",
-    href: "https://balancer.fi",
     accentClass: "text-slate-600/75",
     mark: (
       <svg viewBox="0 0 16 16" aria-hidden="true" className="h-4 w-4">
@@ -58,7 +53,6 @@ const logos: readonly MarqueeLogo[] = [
   },
   {
     name: "Sushi",
-    href: "https://www.sushi.com",
     accentClass: "text-fuchsia-500/75",
     mark: (
       <svg viewBox="0 0 16 16" aria-hidden="true" className="h-4 w-4">
@@ -66,63 +60,49 @@ const logos: readonly MarqueeLogo[] = [
       </svg>
     ),
   },
-  {
-    name: "Aerodrome",
-    href: "https://aerodrome.finance",
-    accentClass: "text-sky-500/75",
-    mark: (
-      <svg viewBox="0 0 16 16" aria-hidden="true" className="h-4 w-4">
-        <path d="M3 10.7 8 4l5 6.7M5.3 8.2h5.4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
 ] as const
 
-function LogoSet() {
+function LogoPill({ logo }: { logo: HomepageLogo }) {
   return (
-    <>
-      {logos.map((logo) => (
-        <a
-          key={logo.name}
-          href={logo.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap px-4 py-2 text-slate-400 transition-colors hover:text-slate-700"
-        >
-          <span
-            className={`inline-flex h-6 w-6 items-center justify-center rounded-md bg-slate-100/80 transition-colors group-hover:bg-slate-200/80 ${logo.accentClass}`}
-          >
-            {logo.mark}
-          </span>
-          <span className="text-[1rem] font-medium tracking-[-0.02em] sm:text-[1.05rem]">
-            {logo.name}
-          </span>
-        </a>
-      ))}
-    </>
+    <div
+      data-testid="homepage-logo-item"
+      className="inline-flex w-full min-w-0 items-center justify-center gap-1.5 rounded-full border border-slate-200/80 bg-white px-2.5 py-2 text-slate-500 sm:gap-2 sm:px-3 md:px-4"
+    >
+      <span
+        aria-hidden="true"
+        className={`inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-slate-100/80 ${logo.accentClass} sm:h-6 sm:w-6`}
+      >
+        {logo.mark}
+      </span>
+      <span className="truncate text-[0.78rem] font-medium tracking-[-0.02em] text-slate-600 sm:text-[0.9rem] md:text-[1rem]">
+        {logo.name}
+      </span>
+    </div>
   )
 }
 
-type LogoMarqueeProps = {
-  compact?: boolean
-}
-
-export function LogoMarquee({ compact = false }: LogoMarqueeProps) {
+export function LogoMarquee() {
   return (
-    <section className={compact ? "bg-white py-0.5 sm:py-1" : "bg-white py-5 sm:py-6"}>
+    <section className="bg-white py-5 sm:py-6">
       <div className="site-content-shell">
-        <div className="relative overflow-hidden">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-white via-white/90 to-transparent sm:w-16" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-white via-white/90 to-transparent sm:w-16" />
+        <div
+          data-testid="homepage-logo-strip-mobile"
+          aria-label="Supported protocols"
+          className="grid w-full grid-cols-3 gap-2.5 md:hidden"
+        >
+          {logos.slice(0, 3).map((logo) => (
+            <LogoPill key={logo.name} logo={logo} />
+          ))}
+        </div>
 
-          <div className="flex animate-marquee">
-            <div className="flex shrink-0 items-center gap-2 pr-2">
-              <LogoSet />
-            </div>
-            <div className="flex shrink-0 items-center gap-2 pr-2">
-              <LogoSet />
-            </div>
-          </div>
+        <div
+          data-testid="homepage-logo-strip-desktop"
+          aria-label="Supported protocols"
+          className="hidden w-full md:grid md:grid-cols-5 md:gap-4 lg:gap-6"
+        >
+          {logos.map((logo) => (
+            <LogoPill key={logo.name} logo={logo} />
+          ))}
         </div>
       </div>
     </section>
