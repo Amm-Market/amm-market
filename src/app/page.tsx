@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <WebappHero />
       <LogoMarquee />
-      <section className="bg-white py-16 sm:py-20 lg:py-28">
+      <section className="bg-white pt-16 pb-24 md:pt-20 md:pb-32">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem]">
             <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
@@ -37,7 +37,7 @@ export default function Home() {
         </div>
       </section>
       <BuildTomorrowSection />
-      <div className="flex min-h-screen flex-col pt-20">
+      <div className="flex min-h-screen flex-col">
         <div className="flex-1 flex flex-col relative z-0">
           <HeroSection />
           <FeaturesSection />

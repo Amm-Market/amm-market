@@ -42,9 +42,9 @@ export function BuildTomorrowSection() {
       data-id="theme-switcher"
       data-theme="beige"
       data-apply-globally="true"
-      className="w-full bg-inherit"
+      className="w-full bg-inherit pb-16 md:pb-20"
     >
-      <div className="site-content-shell pt-2 sm:pt-4">
+      <div className="site-content-shell">
         <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
           <SectionEyebrow>Ways to use Avana</SectionEyebrow>
           <SectionTitle>

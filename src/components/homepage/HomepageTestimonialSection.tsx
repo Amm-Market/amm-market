@@ -80,10 +80,10 @@ export default function HomepageTestimonialSection() {
   const feature = featureHighlights[currentFeature]
 
   return (
-    <div className="py-8 md:py-10">
+    <div>
       <div className="mb-8 space-y-3 md:mb-10">
-        <SectionEyebrow>Borrow with confidence</SectionEyebrow>
-        <SectionTitle>Protection built into every loan.</SectionTitle>
+        <SectionEyebrow>Risk Systems</SectionEyebrow>
+        <SectionTitle>Borrow with Confidence</SectionTitle>
       </div>
 
       <div className="flex flex-col lg:flex-row">
