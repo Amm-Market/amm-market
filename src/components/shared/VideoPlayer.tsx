@@ -9,7 +9,7 @@
  * Includes ARIA labels for accessibility.
  */
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 
 interface VideoPlayerProps {
   src: string

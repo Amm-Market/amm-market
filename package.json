@@ -8,6 +8,7 @@
     "start": "next start",
     "lighthouse:audit": "node scripts/run-lighthouse.mjs",
     "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",

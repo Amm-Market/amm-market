@@ -77,11 +77,14 @@ Create a `.env.local` file in the project root:
 
 | Script | Description |
 |--------|-------------|
-| `npm run dev` | Start development server with Turbopack |
+| `npm run dev` | Start development server (webpack bundler) |
 | `npm run build` | Build for production |
 | `npm run start` | Start production server |
 | `npm run lint` | Run ESLint |
 | `npm run lint:fix` | Fix auto-fixable lint issues |
+| `npm run test` | Vitest (watch mode) |
+| `npm run test:run` | Vitest (single run) |
+| `npm run lighthouse:audit` | Lighthouse audit script |
 
 ### Recommended VS Code Settings
 

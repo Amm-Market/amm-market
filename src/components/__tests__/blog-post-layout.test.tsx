@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from "vitest"
 import BlogPostLayout from "@/components/blog-post-layout"
 
 vi.mock("next/link", () => ({
-  default: ({ children, href, prefetch, ...props }: { children: React.ReactNode; href: string; prefetch?: boolean }) => (
+  default: ({ children, href, ...props }: { children: React.ReactNode; href: string }) => (
     <a href={href} {...props}>
       {children}
     </a>

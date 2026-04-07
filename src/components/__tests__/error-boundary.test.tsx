@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import ErrorBoundary from '../error-boundary'
 
@@ -34,7 +34,7 @@ describe('ErrorBoundary', () => {
   })
 
   it('has proper component structure', () => {
-    const { container } = render(
+    render(
       <ErrorBoundary>
         <div data-testid="child">Content</div>
       </ErrorBoundary>

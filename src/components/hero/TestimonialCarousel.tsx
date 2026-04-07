@@ -16,8 +16,11 @@ export function TestimonialCarousel() {
 
   // Progress bar animation and auto-advance
   useEffect(() => {
-    setProgress(0)
     const startTime = Date.now()
+    let rafId = 0
+    rafId = requestAnimationFrame(() => {
+      setProgress(0)
+    })
 
     const progressInterval = setInterval(() => {
       const elapsed = Date.now() - startTime
@@ -34,7 +37,10 @@ export function TestimonialCarousel() {
       }
     }, 50)
 
-    return () => clearInterval(progressInterval)
+    return () => {
+      cancelAnimationFrame(rafId)
+      clearInterval(progressInterval)
+    }
   }, [currentTestimonial])
 
   const handleTestimonialChange = (idx: number) => {
@@ -62,7 +68,7 @@ export function TestimonialCarousel() {
               role="button"
               tabIndex={0}
               aria-label={`View testimonial from ${t.author}`}
-              aria-selected={currentTestimonial === idx}
+              aria-current={currentTestimonial === idx ? "true" : undefined}
             >
               <div className="flex justify-between items-center">
                 <span className={`text-base transition-all duration-300 ${currentTestimonial === idx ? "font-semibold text-gray-900" : "text-gray-500"}`}>

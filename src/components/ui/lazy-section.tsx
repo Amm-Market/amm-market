@@ -50,8 +50,11 @@ export function LazySection({
 
     // If IntersectionObserver isn't supported, render immediately
     if (!("IntersectionObserver" in window)) {
-      setIsVisible(true)
-      return
+      let rafId = 0
+      rafId = requestAnimationFrame(() => {
+        setIsVisible(true)
+      })
+      return () => cancelAnimationFrame(rafId)
     }
 
     const observer = new IntersectionObserver(
