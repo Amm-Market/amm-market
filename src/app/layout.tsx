@@ -139,7 +139,7 @@ const organizationSchema = {
   sameAs: [
     "https://twitter.com/dexmini",
     "https://github.com/aave",
-    "https://discord.gg/aave",
+    "https://t.me/dexmini",
   ],
   contactPoint: {
     "@type": "ContactPoint",

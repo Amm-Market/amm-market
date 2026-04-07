@@ -2,6 +2,8 @@
 
 import { Download, Copy, Check } from "lucide-react"
 import { useState } from "react"
+import InlineFaqSection from "@/components/InlineFaqSection"
+import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 // Logo SVG Components
 const LogoIcon = ({ className = "" }: { className?: string }) => (
@@ -36,72 +38,6 @@ const LogoVertical = ({ className = "" }: { className?: string }) => (
 type LogoVariant = "horizontal" | "vertical" | "icon"
 
 const BRAND_KIT_URL = "#"
-
-const BrandKitBook = () => (
-  <a
-    href={BRAND_KIT_URL}
-    className="group relative mx-auto block w-fit no-underline"
-    aria-label="Download the brand kit"
-  >
-    <div className="relative [perspective:1600px]">
-      <div className="relative h-[300px] w-[214px] [transform-style:preserve-3d] [transform:rotateY(-16deg)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:[transform:rotateY(-22deg)_rotateX(6deg)_translateY(-6px)]">
-        <div
-          aria-hidden="true"
-          className="absolute inset-y-[10px] left-[-10px] w-[14px] rounded-l-[12px] bg-zinc-200"
-          style={{ transform: "rotateY(74deg)", transformOrigin: "right center" }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 rounded-[24px] border border-black/10 bg-zinc-100"
-          style={{ transform: "translate3d(10px, 6px, -6px)" }}
-        />
-        <div className="absolute inset-0 flex flex-col rounded-[24px] border border-black/10 bg-[linear-gradient(180deg,#ffffff_0%,#f6f6f3_100%)] px-6 py-6 shadow-[0_28px_60px_rgba(0,0,0,0.16)]">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-gray-500">
-            Avana
-          </span>
-
-          <div className="mt-8 flex h-16 w-16 items-center justify-center rounded-[18px] bg-gray-950 text-white shadow-[0_10px_28px_rgba(0,0,0,0.18)]">
-            <div className="grid grid-cols-2 gap-1.5">
-              <span className="h-3 w-3 rounded-full bg-[#45DEC4]" />
-              <span className="h-3 w-3 rounded-full bg-[#0070F3]" />
-              <span className="h-3 w-3 rounded-full bg-[#E5484D]" />
-              <span className="h-3 w-3 rounded-full bg-white/90" />
-            </div>
-          </div>
-
-          <div className="mt-8 space-y-1.5">
-            <p className="text-[28px] font-semibold leading-[0.95] tracking-[-0.07em] text-gray-950">
-              Avana
-            </p>
-            <p className="text-[28px] font-semibold leading-[0.95] tracking-[-0.07em] text-gray-950">
-              Brand Kit
-            </p>
-          </div>
-
-          <div className="mt-auto flex items-end justify-between gap-4">
-            <p className="max-w-[9rem] text-[12px] leading-5 text-gray-500">
-              Marks, typography, color, and usage standards.
-            </p>
-            <span className="rounded-full border border-black/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-gray-500">
-              2026
-            </span>
-          </div>
-        </div>
-        <div
-          aria-hidden="true"
-          className="absolute inset-y-[10px] right-[-10px] w-[14px] rounded-r-[12px] bg-zinc-200"
-          style={{ transform: "rotateY(88deg)", transformOrigin: "left center" }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 rounded-[24px] border border-black/8 bg-zinc-50/90"
-          style={{ transform: "translateZ(-10px)" }}
-        />
-      </div>
-      <div className="mx-auto mt-5 h-6 w-36 rounded-full bg-black/12 blur-xl transition-all duration-500 group-hover:w-40 group-hover:bg-black/18" />
-    </div>
-  </a>
-)
 
 export default function BrandPage() {
   const [copiedColor, setCopiedColor] = useState<string | null>(null)
@@ -145,14 +81,39 @@ export default function BrandPage() {
     }
   ]
 
-  const brandColors = [
-    { name: "Sapphire Sky", hex: "#016ecf", usage: "Primary buttons, links, and CTAs. Use for the main brand actions and interactive elements." },
-    { name: "Cool Sky", hex: "#6db0ea", usage: "Hover states, secondary highlights, and badges. Use for accents that need to feel lighter than Sapphire Sky." },
-    { name: "White", hex: "#fefefe", usage: "Cards, modals, and content surfaces. Use where you need maximum contrast on dark backgrounds." },
-    { name: "Deep Navy", hex: "#00165a", usage: "Header, footer, and navigation. Use for main chrome and high-contrast brand blocks." },
-    { name: "White Smoke", hex: "#f2f2f2", usage: "Page and section backgrounds. Use for the default app background and subtle surfaces." },
-    { name: "Silver", hex: "#a7a8aa", usage: "Secondary text, captions, and inactive UI. Use for supporting copy and disabled states." },
-    { name: "Gunmetal", hex: "#414347", usage: "Body text and borders. Use for primary reading text and dividers." },
+  const colorGroups = [
+    {
+      title: "Main Colors",
+      description: "The quiet base of the Avana interface. These are the surfaces users live on most.",
+      colors: [
+        {
+          name: "White",
+          hex: "#ffffff",
+          usage: "Primary surface color. Use for cards, raised panels, and clean reading areas.",
+        },
+        {
+          name: "White Smoke",
+          hex: "#f2f2f2",
+          usage: "Page and section backgrounds. Use for the default app background and subtle surfaces.",
+        },
+      ],
+    },
+    {
+      title: "Secondary Colors",
+      description: "Support colors for hierarchy and readability. These keep the UI crisp without stealing focus.",
+      colors: [
+        {
+          name: "Silver",
+          hex: "#a7a8aa",
+          usage: "Secondary text, captions, and inactive UI. Use for supporting copy and disabled states.",
+        },
+        {
+          name: "Gunmetal",
+          hex: "#414347",
+          usage: "Body text and borders. Use for primary reading text and dividers.",
+        },
+      ],
+    },
   ]
 
   const guidelines = [
@@ -164,44 +125,60 @@ export default function BrandPage() {
     { allowed: false, text: "Don't place other elements too closely to the logo", icon: "spacing" }
   ]
 
+  const brandSections = {
+    logo: { eyebrow: "Primary mark", title: "Logo" },
+    typography: { eyebrow: "Voice & rhythm", title: "Typography" },
+    color: { eyebrow: "Palette system", title: "Color" },
+    concept: { eyebrow: "Brand idea", title: "Concept" },
+    guidelines: { eyebrow: "Use it well", title: "Logo Guidelines" },
+    faq: { eyebrow: "Common questions", title: "FAQ" },
+  } as const
+
+  const faqItems = [
+    {
+      value: "download-assets",
+      question: "How do I download the brand assets?",
+      answer:
+        "Use the download button at the top of this page for the full kit, or copy individual assets directly from the logo section.",
+    },
+    {
+      value: "color-swaps",
+      question: "Can I recolor the Avana logo to match my project?",
+      answer:
+        "No. Keep the approved palette intact so Avana stays recognizable across partner surfaces and product contexts.",
+    },
+    {
+      value: "pairing-marks",
+      question: "Can I pair the Avana mark with another brand?",
+      answer:
+        "Yes, as long as each mark has enough space to read clearly and neither one feels like a treatment of the other.",
+    },
+    {
+      value: "why-guidelines",
+      question: "Why do these guidelines matter?",
+      answer:
+        "Consistency builds trust. A stable logo, palette, and type system helps Avana feel reliable wherever people encounter it.",
+    },
+  ]
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <section className="relative overflow-hidden border-b border-gray-200 bg-white py-12 md:py-16">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gray-200" />
-        <div aria-hidden="true" className="pointer-events-none absolute right-0 top-0 hidden md:block md:h-9 md:w-9">
-          <div className="absolute right-0 top-0 h-9 w-px bg-gray-200" />
-          <div className="absolute right-0 top-0 h-px w-9 bg-gray-200" />
-        </div>
-
-        <div className="site-content-shell relative z-10">
-          <div className="relative grid items-center gap-10 md:grid-cols-3 md:gap-12">
-            <div aria-hidden="true" className="pointer-events-none absolute bottom-0 top-0 left-[66.666%] hidden w-px bg-gray-200 md:block" />
-
-            <div className="order-2 flex flex-col items-center gap-5 text-center md:order-1 md:col-span-2 md:items-start md:pr-14 md:text-left">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500">
-                Editorial Callout
-              </span>
-              <div className="space-y-4">
-                <h1 className="text-[2rem] font-semibold leading-[0.96] tracking-[-0.07em] text-gray-950 md:text-[3rem]">
-                  Brand Systems 101.
-                </h1>
-                <p className="max-w-[44rem] text-[1.05rem] font-medium leading-[1.45] tracking-[-0.03em] text-gray-900 md:text-[1.3rem]">
-                  See how we build and apply the Avana brand. Learn about our marks,
-                  typography, colors, and commitment to high polish.
-                </p>
-              </div>
-              <a
-                href={BRAND_KIT_URL}
-                className="inline-flex items-center gap-2 rounded-full bg-gray-950 px-5 py-3 text-sm font-medium tracking-[-0.02em] text-white transition hover:bg-black"
-              >
-                <span>Download the brand kit</span>
-                <Download className="h-4 w-4" />
-              </a>
-            </div>
-
-            <div className="order-1 flex items-center justify-center md:order-2 md:col-span-1 md:justify-end md:pl-10">
-              <BrandKitBook />
-            </div>
+      <section className="bg-white py-14 md:py-20">
+        <div className="site-content-shell">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
+            <h1 className="text-[clamp(3rem,7vw,5.25rem)] font-semibold tracking-[-0.08em] text-black">
+              Brand
+            </h1>
+            <p className="max-w-xl text-[1rem] font-medium leading-[1.55] tracking-[-0.03em] text-gray-600 md:text-[1.05rem]">
+              Marks, typography, colors, and usage.
+            </p>
+            <a
+              href={BRAND_KIT_URL}
+              className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium tracking-[-0.02em] text-gray-950 transition hover:bg-gray-50"
+            >
+              <span>Download Kit</span>
+              <Download className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </section>
@@ -211,9 +188,9 @@ export default function BrandPage() {
           
           {/* Logo Section - 01 */}
           <section className="py-12 md:py-16">
-            <div className="flex items-end gap-5 mb-8 md:mb-12">
-              <h2 className="type-marketing-section-title text-gray-900">Logo</h2>
-              <small className="type-meta-label text-gray-500">01</small>
+            <div className="mb-8 space-y-3 md:mb-12">
+              <SectionEyebrow>{brandSections.logo.eyebrow}</SectionEyebrow>
+              <SectionTitle>{brandSections.logo.title}</SectionTitle>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-start">
@@ -285,14 +262,11 @@ export default function BrandPage() {
             </div>
           </section>
 
-          {/* Divider */}
-          <div className="h-px w-full bg-gray-200" />
-
           {/* Typography Section - 02 */}
           <section className="py-12 md:py-16">
-            <div className="flex items-end gap-5 mb-8 md:mb-12">
-              <h2 className="type-marketing-section-title text-gray-900">Typography</h2>
-              <small className="type-meta-label text-gray-500">02</small>
+            <div className="mb-8 space-y-3 md:mb-12">
+              <SectionEyebrow>{brandSections.typography.eyebrow}</SectionEyebrow>
+              <SectionTitle>{brandSections.typography.title}</SectionTitle>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-start">
@@ -337,66 +311,62 @@ export default function BrandPage() {
             </div>
           </section>
 
-          {/* Divider */}
-          <div className="h-px w-full bg-gray-200" />
-
           {/* Color Section - 03 */}
           <section className="py-12 md:py-16">
-            <div className="flex items-end gap-5 mb-8 md:mb-12">
-              <h2 className="type-marketing-section-title text-gray-900">Color</h2>
-              <small className="type-meta-label text-gray-500">03</small>
+            <div className="mb-8 space-y-3 md:mb-12">
+              <SectionEyebrow>{brandSections.color.eyebrow}</SectionEyebrow>
+              <SectionTitle>{brandSections.color.title}</SectionTitle>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 items-start">
-              {/* Left - Description */}
-              <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-gray-900">Palette</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  Sapphire Sky and Cool Sky are our primary blues; Deep Navy anchors the brand. 
-                  White and White Smoke provide backgrounds and contrast. Silver and Gunmetal 
-                  are used for secondary text and UI elements.
-                </p>
-              </div>
-
-              {/* Right - Color swatches with usage */}
-              <div className="flex flex-col gap-4">
-                {brandColors.map((color) => (
-                  <div
-                    key={color.hex}
-                    className="flex gap-4 items-stretch rounded-[20px] border border-gray-200 overflow-hidden transition-transform hover:scale-[1.01]"
-                  >
-                    <button
-                      type="button"
-                      className="group relative flex-shrink-0 w-24 md:w-28 h-24 md:h-28 rounded-l-[18px] cursor-pointer"
-                      style={{ backgroundColor: color.hex }}
-                      onClick={() => copyToClipboard(color.hex)}
-                    >
-                      {["#fefefe", "#f2f2f2"].includes(color.hex.toLowerCase()) && (
-                        <div className="absolute inset-0 rounded-l-[18px] border border-gray-200" />
-                      )}
-                      <span className="absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-lg bg-white/90 px-2 py-1 text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity">
-                        {copiedColor === color.hex ? <Check className="w-3 h-3 text-green-500" /> : <Copy className="w-3 h-3" />}
-                        {copiedColor === color.hex ? "Copied" : color.hex}
-                      </span>
-                    </button>
-                    <div className="flex flex-col justify-center py-3 pr-3 flex-1 min-w-0">
-                      <p className="font-semibold text-gray-900">{color.name}</p>
-                      <p className="text-sm text-gray-500 mt-0.5">{color.usage}</p>
-                    </div>
+            <div className="space-y-12">
+              {colorGroups.map((group) => (
+                <div key={group.title} className="grid items-start gap-8 md:grid-cols-2">
+                  <div className="flex flex-col gap-3">
+                    <h3 className="text-xl font-semibold text-gray-900">{group.title}</h3>
+                    <p className="text-sm leading-relaxed text-gray-500">{group.description}</p>
                   </div>
-                ))}
-              </div>
+
+                  <div className="flex flex-col gap-4">
+                    {group.colors.map((color) => (
+                      <div
+                        key={color.hex}
+                        className="flex items-stretch gap-4 overflow-hidden rounded-[20px] border border-gray-200"
+                      >
+                        <button
+                          type="button"
+                          className="group relative h-24 w-24 flex-shrink-0 cursor-pointer md:h-28 md:w-28"
+                          style={{ backgroundColor: color.hex }}
+                          onClick={() => copyToClipboard(color.hex)}
+                        >
+                          {["#ffffff", "#f2f2f2"].includes(color.hex.toLowerCase()) && (
+                            <div className="absolute inset-0 border-r border-gray-200" />
+                          )}
+                          <span className="absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-lg bg-white/90 px-2 py-1 text-xs font-medium text-gray-600 opacity-0 transition-opacity group-hover:opacity-100">
+                            {copiedColor === color.hex ? (
+                              <Check className="h-3 w-3 text-green-500" />
+                            ) : (
+                              <Copy className="h-3 w-3" />
+                            )}
+                            {copiedColor === color.hex ? "Copied" : color.hex}
+                          </span>
+                        </button>
+                        <div className="flex min-w-0 flex-1 flex-col justify-center py-3 pr-3">
+                          <p className="font-semibold text-gray-900">{color.name}</p>
+                          <p className="mt-0.5 text-sm text-gray-500">{color.usage}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
 
-          {/* Divider */}
-          <div className="h-px w-full bg-gray-200" />
-
           {/* Concept Section - 04 */}
           <section className="py-12 md:py-16">
-            <div className="flex items-end gap-5 mb-8 md:mb-12">
-              <h2 className="type-marketing-section-title text-gray-900">Concept</h2>
-              <small className="type-meta-label text-gray-500">04</small>
+            <div className="mb-8 space-y-3 md:mb-12">
+              <SectionEyebrow>{brandSections.concept.eyebrow}</SectionEyebrow>
+              <SectionTitle>{brandSections.concept.title}</SectionTitle>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -505,14 +475,11 @@ export default function BrandPage() {
             </div>
           </section>
 
-          {/* Divider */}
-          <div className="h-px w-full bg-gray-200" />
-
           {/* Logo Guidelines Section - 05 */}
           <section className="py-12 md:py-16">
-            <div className="flex items-end gap-5 mb-8 md:mb-12">
-              <h2 className="type-marketing-section-title text-gray-900">Logo Guidelines</h2>
-              <small className="type-meta-label text-gray-500">05</small>
+            <div className="mb-8 space-y-3 md:mb-12">
+              <SectionEyebrow>{brandSections.guidelines.eyebrow}</SectionEyebrow>
+              <SectionTitle>{brandSections.guidelines.title}</SectionTitle>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-start mb-12">
@@ -578,48 +545,13 @@ export default function BrandPage() {
             </div>
           </section>
 
-          {/* Divider */}
-          <div className="h-px w-full bg-gray-200" />
-
           {/* FAQ Section - 06 */}
-          <section className="py-12 md:py-16 min-h-[50vh]">
-            <div className="flex items-end gap-5 mb-8 md:mb-12">
-              <h2 className="type-marketing-section-title text-gray-900">FAQ</h2>
-              <small className="type-meta-label text-gray-500">06</small>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
-              <div className="flex flex-col gap-3">
-                <h3 className="text-lg font-semibold text-gray-900">Why do I need to follow these guidelines?</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  We don&apos;t want anyone to misrepresent Avana&apos;s brand. Keeping things consistent
-                  instills recognizability and trust.
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-3">
-                <h3 className="text-lg font-semibold text-gray-900">Can I use a different logo color to match my project&apos;s theme?</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  Tempting, but no. Swapping out our colors compromises the integrity of our brand.
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-3">
-                <h3 className="text-lg font-semibold text-gray-900">Can I pair this logo with another brand?</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  Yes! We love a good partnership. Give our logos enough space to stand out and shine on their own.
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-3">
-                <h3 className="text-lg font-semibold text-gray-900">How do I download these assets?</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  You can copy all the various logos and assets throughout this page, or download the full{" "}
-                  <a href="#" className="text-[#0048ba] hover:underline">Brand Kit here</a>.
-                </p>
-              </div>
-            </div>
-          </section>
+          <InlineFaqSection
+            eyebrow={brandSections.faq.eyebrow}
+            title={brandSections.faq.title}
+            items={faqItems}
+            withTopBorder={false}
+          />
         </div>
       </main>
     </div>

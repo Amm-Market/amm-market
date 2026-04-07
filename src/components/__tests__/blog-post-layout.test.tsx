@@ -53,6 +53,6 @@ describe("BlogPostLayout", () => {
     expect(screen.getByRole("heading", { name: "A structured post" })).toBeInTheDocument()
     expect(screen.getByTestId("scroll-spy-sidebar")).toBeInTheDocument()
     expect(container.firstChild).toHaveClass("site-content-shell")
-    expect(container.querySelector(".site-article-content")).toBeInTheDocument()
+    expect(container.querySelector(".site-blog-article")).toBeInTheDocument()
   })
 })

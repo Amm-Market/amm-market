@@ -26,6 +26,7 @@
 
 "use client"
 
+import { useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronLeft } from "lucide-react"
@@ -47,6 +48,35 @@ interface BlogPostLayoutProps {
   nextPost?: { slug: string; title: string; date: string }
 }
 
+function getBlogSectionEyebrow(title: string, id: string) {
+  const key = `${id} ${title}`.toLowerCase()
+
+  if (key.includes("introduction") || key.includes("what is")) return "Start here"
+  if (key.includes("problem")) return "Why it breaks"
+  if (key.includes("foundation")) return "Core thesis"
+  if (key.includes("architecture")) return "System design"
+  if (key.includes("overview")) return "System view"
+  if (key.includes("features")) return "What it does"
+  if (key.includes("use cases") || key.includes("organization type")) return "In practice"
+  if (key.includes("how it works") || key.includes("workflow")) return "Process flow"
+  if (key.includes("getting started")) return "First steps"
+  if (key.includes("pricing")) return "Cost model"
+  if (key.includes("security")) return "Protection layers"
+  if (key.includes("risk")) return "Risk controls"
+  if (key.includes("oracle")) return "Pricing engine"
+  if (key.includes("liquidation")) return "Failure handling"
+  if (key.includes("interest") || key.includes("rate")) return "Rate design"
+  if (key.includes("integration")) return "Build path"
+  if (key.includes("performance")) return "What improved"
+  if (key.includes("user experience") || key.includes("ux")) return "User lens"
+  if (key.includes("benefits")) return "Why it matters"
+  if (key.includes("market")) return "Demand picture"
+  if (key.includes("guide") || key.includes("checklist")) return "Field guide"
+  if (key.includes("conclusion") || key.includes("closing")) return "Takeaway"
+
+  return "Read this next"
+}
+
 export default function BlogPostLayout({
   title,
   date,
@@ -57,6 +87,24 @@ export default function BlogPostLayout({
   prevPost,
   nextPost,
 }: BlogPostLayoutProps) {
+  const articleRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const article = articleRef.current
+    if (!article) return
+
+    const sectionTitleMap = new Map((tableOfContents ?? []).map((item) => [item.id, item.title]))
+
+    article.querySelectorAll("section[id]").forEach((section) => {
+      const heading = section.querySelector(":scope > h2")
+      if (!(heading instanceof HTMLElement)) return
+
+      const sectionId = section.getAttribute("id") ?? ""
+      const sectionTitle = sectionTitleMap.get(sectionId) ?? heading.textContent ?? sectionId
+      heading.dataset.eyebrow = getBlogSectionEyebrow(sectionTitle, sectionId)
+    })
+  }, [children, tableOfContents])
+
   return (
     <div className="site-article-layout site-content-shell py-4 md:py-8 xl:py-10">
       <div className="grid grid-cols-12 gap-4">
@@ -99,7 +147,7 @@ export default function BlogPostLayout({
             {/* Article */}
             <div className="col-span-12 lg:col-span-7 xl:col-span-7">
               <article>
-                <div className="site-article-content prose prose-gray max-w-none">
+                <div ref={articleRef} className="site-article-content site-blog-article prose prose-gray max-w-none">
                   {/* Hero image */}
                   {image && (
                     <div className="hidden md:block relative mb-8 w-full aspect-video overflow-hidden rounded-lg border border-gray-200">
