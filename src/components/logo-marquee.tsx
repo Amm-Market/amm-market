@@ -103,9 +103,13 @@ function LogoSet() {
   )
 }
 
-export function LogoMarquee() {
+type LogoMarqueeProps = {
+  compact?: boolean
+}
+
+export function LogoMarquee({ compact = false }: LogoMarqueeProps) {
   return (
-    <section className="bg-white py-5 sm:py-6">
+    <section className={compact ? "bg-white py-0.5 sm:py-1" : "bg-white py-5 sm:py-6"}>
       <div className="site-content-shell">
         <div className="relative overflow-hidden">
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-white via-white/90 to-transparent sm:w-16" />
