@@ -223,7 +223,7 @@ export default function BorrowPage() {
           </section>
 
           <section>
-            <HomepageNewsroomSection collection="borrow" showDividers={false} />
+            <HomepageNewsroomSection collection="borrow" />
           </section>
 
           {/* FAQ */}

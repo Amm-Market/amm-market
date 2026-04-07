@@ -231,7 +231,7 @@ export default function PlatformPage() {
             </section>
 
             <section>
-              <HomepageNewsroomSection collection="platform" showDividers={false} />
+              <HomepageNewsroomSection collection="platform" />
             </section>
 
             <section>

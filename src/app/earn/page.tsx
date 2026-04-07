@@ -222,7 +222,7 @@ export default function EarnPage() {
           </section>
 
           <section>
-            <HomepageNewsroomSection collection="earn" showDividers={false} />
+            <HomepageNewsroomSection collection="earn" />
           </section>
 
           {/* FAQ */}
