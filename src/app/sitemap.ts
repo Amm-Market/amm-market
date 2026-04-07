@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
-import { blogRoutes, SITE_URL, siteRoutes } from "@/lib/site"
+import { SITE_URL, siteRoutes } from "@/lib/site"
+import { blogPosts } from "@/lib/blog-posts"
 
 /**
  * Generates the sitemap.xml for the Avana website.
@@ -126,22 +127,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   // Blog posts
-  const blogPosts: MetadataRoute.Sitemap = [
-    '/blog/introducing-automate',
-    '/blog/v1-1-release',
-    '/blog/smart-contract-architecture',
-    '/blog/integration-guide',
-    '/blog/lp-collateral-guide',
-    '/blog/hedge-lp-position',
-    '/blog/institutional-use-cases',
-    '/blog/security-deep-dive',
-    '/blog/yield-looping-playbook',
-    '/blog/unleashing-lp-tokens',
-    blogRoutes.aaveV4AvanaSpoke,
-    '/blog/defi-ux-challenges',
-    blogRoutes.avanaLpCollateral,
-  ].map(path => ({
-    url: `${SITE_URL}${path}`,
+  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.6,
@@ -163,5 +150,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  return [...landingPages, ...developerDocs, ...blogPosts, ...utilityPages]
+  return [...landingPages, ...developerDocs, ...blogPages, ...utilityPages]
 }

@@ -35,7 +35,7 @@
  * @note Hidden on mobile/tablet (lg:flex), only visible on desktop
  * @see src/app/developers - Used in documentation pages
  */
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 
 /** Represents a trackable section on the page */
 interface Section {
@@ -70,7 +70,6 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
   const colors = colorClasses[sectionColor]
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id ?? "")
   const [barProgress, setBarProgress] = useState(0)
-  const sidebarRef = useRef<HTMLDivElement>(null)
 
   const activeIndex = useMemo(
     () => Math.max(sections.findIndex((section) => section.id === activeSection), 0),
@@ -142,29 +141,9 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
     }
   }, [sections])
 
-  useEffect(() => {
-    const sidebar = sidebarRef.current
-    if (!sidebar) {
-      return
-    }
-
-    const activeLink = sidebar.querySelector<HTMLElement>(`[data-section-id="${activeSection}"]`)
-    if (!activeLink) {
-      return
-    }
-
-    activeLink.scrollIntoView({
-      block: "nearest",
-      behavior: "smooth",
-    })
-  }, [activeSection])
-
   return (
-    <div
-      ref={sidebarRef}
-      className="hidden self-start lg:sticky lg:top-44 lg:flex lg:max-h-[calc(100vh-13rem)] lg:min-h-0 lg:overflow-y-auto lg:overscroll-contain lg:pr-2"
-    >
-      <div className="flex flex-col items-start justify-start gap-0">
+    <div className="hidden xl:flex xl:pr-2">
+      <div className="flex max-w-[17rem] flex-col items-start justify-start gap-0">
         <p className="type-meta-label mb-3 pl-6 text-gray-500">
           On this page
         </p>

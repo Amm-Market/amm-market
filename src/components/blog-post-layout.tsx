@@ -1,34 +1,7 @@
-/**
- * Blog Post Layout Component
- * 
- * @description
- * Standardized layout for all blog post pages. Provides consistent structure
- * with header, featured image, content area, scroll spy sidebar, and
- * previous/next post navigation.
- * 
- * @example
- * ```tsx
- * <BlogPostLayout
- *   title="Post Title"
- *   date="January 20, 2026"
- *   description="Post description"
- *   image="/images/blog/post.png"
- *   tableOfContents={[{ id: "intro", title: "Introduction" }]}
- *   prevPost={{ slug: "prev", title: "Previous Post", date: "Jan 19" }}
- *   nextPost={{ slug: "next", title: "Next Post", date: "Jan 21" }}
- * >
- *   <section id="intro">Content here</section>
- * </BlogPostLayout>
- * ```
- * 
- * @module components/blog-post-layout
- */
-
 "use client"
 
-import { useEffect, useRef } from "react"
-import Link from "next/link"
 import Image from "next/image"
+import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
@@ -39,137 +12,71 @@ interface TableOfContentsItem {
 
 interface BlogPostLayoutProps {
   title: string
+  displayTitle?: string
   date: string
   description?: string
   image?: string
   children: React.ReactNode
   tableOfContents?: TableOfContentsItem[]
-  prevPost?: { slug: string; title: string; date: string }
-  nextPost?: { slug: string; title: string; date: string }
-}
-
-function getBlogSectionEyebrow(title: string, id: string) {
-  const key = `${id} ${title}`.toLowerCase()
-
-  if (key.includes("introduction") || key.includes("what is")) return "Start here"
-  if (key.includes("problem")) return "Why it breaks"
-  if (key.includes("foundation")) return "Core thesis"
-  if (key.includes("architecture")) return "System design"
-  if (key.includes("overview")) return "System view"
-  if (key.includes("features")) return "What it does"
-  if (key.includes("use cases") || key.includes("organization type")) return "In practice"
-  if (key.includes("how it works") || key.includes("workflow")) return "Process flow"
-  if (key.includes("getting started")) return "First steps"
-  if (key.includes("pricing")) return "Cost model"
-  if (key.includes("security")) return "Protection layers"
-  if (key.includes("risk")) return "Risk controls"
-  if (key.includes("oracle")) return "Pricing engine"
-  if (key.includes("liquidation")) return "Failure handling"
-  if (key.includes("interest") || key.includes("rate")) return "Rate design"
-  if (key.includes("integration")) return "Build path"
-  if (key.includes("performance")) return "What improved"
-  if (key.includes("user experience") || key.includes("ux")) return "User lens"
-  if (key.includes("benefits")) return "Why it matters"
-  if (key.includes("market")) return "Demand picture"
-  if (key.includes("guide") || key.includes("checklist")) return "Field guide"
-  if (key.includes("conclusion") || key.includes("closing")) return "Takeaway"
-
-  return "Read this next"
+  prevPost?: { slug: string; title: string }
+  nextPost?: { slug: string; title: string }
 }
 
 export default function BlogPostLayout({
   title,
+  displayTitle,
   date,
-  description,
   image,
   children,
   tableOfContents,
   prevPost,
   nextPost,
 }: BlogPostLayoutProps) {
-  const articleRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const article = articleRef.current
-    if (!article) return
-
-    const sectionTitleMap = new Map((tableOfContents ?? []).map((item) => [item.id, item.title]))
-
-    article.querySelectorAll("section[id]").forEach((section) => {
-      const heading = section.querySelector(":scope > h2")
-      if (!(heading instanceof HTMLElement)) return
-
-      const sectionId = section.getAttribute("id") ?? ""
-      const sectionTitle = sectionTitleMap.get(sectionId) ?? heading.textContent ?? sectionId
-      heading.dataset.eyebrow = getBlogSectionEyebrow(sectionTitle, sectionId)
-    })
-  }, [children, tableOfContents])
-
   return (
-    <div className="site-article-layout site-content-shell py-4 md:py-8 xl:py-10">
+    <div className="site-article-layout site-content-shell py-5 md:py-9 xl:py-12">
       <div className="grid grid-cols-12 gap-4">
-        {/* Back button - hidden on mobile */}
-        <div className="hidden col-span-12 xl:block lg:col-span-2">
+        <div className="hidden col-span-12 lg:col-span-2 xl:block">
           <Link
             href="/blog"
             prefetch={false}
-            className="type-supporting text-gray-500 hover:text-gray-900 flex cursor-pointer items-center transition"
+            className="type-supporting flex cursor-pointer items-center text-gray-500 transition hover:text-gray-900"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="h-5 w-5" />
             Back
           </Link>
         </div>
 
-        {/* Main content area */}
         <div className="col-span-12 lg:col-span-12 xl:col-span-10">
-          {/* Header */}
-          <div className="mb-6 lg:mb-10 max-w-5xl space-y-8">
-            <div className="space-y-4">
-              <Link
-                href="/blog"
-                prefetch={false}
-                className="text-indigo-600 hidden lg:inline-flex items-center hover:text-indigo-800"
-              >
-                Blog
-              </Link>
-              <h1 className="type-page-title text-gray-900">
-                {title}
-              </h1>
-              <div className="type-supporting flex space-x-3 text-gray-500">
-                <p>{date}</p>
-              </div>
-              {description && (
-                <p className="type-page-lead text-gray-600">{description}</p>
-              )}
-            </div>
-          </div>
+          <div className="grid grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_17rem] xl:items-start xl:gap-12">
+            <div className="min-w-0 max-w-[48rem]">
+              <header className="mb-8 max-w-[48rem] space-y-4 md:mb-10">
+                <h1 className="text-[clamp(2.15rem,5.2vw,4.1rem)] font-semibold leading-[0.96] tracking-[-0.055em] text-gray-900">
+                  {displayTitle ?? title}
+                </h1>
+                <div className="type-supporting text-gray-500">
+                  <p>{date}</p>
+                </div>
+              </header>
 
-          {/* Content grid */}
-          <div className="grid grid-cols-12 lg:gap-16 xl:gap-8">
-            {/* Article */}
-            <div className="col-span-12 lg:col-span-7 xl:col-span-7">
               <article>
-                <div ref={articleRef} className="site-article-content site-blog-article prose prose-gray max-w-none">
-                  {/* Hero image */}
-                  {image && (
-                    <div className="hidden md:block relative mb-8 w-full aspect-video overflow-hidden rounded-lg border border-gray-200">
+                <div className="site-article-content site-blog-article prose prose-gray max-w-none">
+                  {image ? (
+                    <div className="relative mb-8 hidden aspect-[16/9] w-full overflow-hidden rounded-lg border border-gray-200 md:block">
                       <Image
                         src={image}
                         alt={title}
                         fill
-                        className="object-cover m-0"
+                        className="m-0 object-cover"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
-                  )}
+                  ) : null}
 
-                  {/* Article content */}
                   {children}
                 </div>
               </article>
 
-              {/* Mobile share */}
-              <div className="block lg:hidden py-8">
+              <div className="block py-8 lg:hidden">
                 <div className="type-supporting text-gray-500">Share this article</div>
                 <div className="mt-4 flex items-center gap-4">
                   <a
@@ -179,12 +86,7 @@ export default function BlogPostLayout({
                     className="text-gray-400 hover:text-gray-900"
                     href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}`}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 16 16"
-                      fill="currentColor"
-                      className="w-5 h-5"
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-5 w-5">
                       <path d="M12.6009 0.903908H15.0544L9.69434 7.03008L16 15.3664H11.0627L7.19566 10.3105L2.77087 15.3664H0.31595L6.04904 8.81379L0 0.903908H5.06262L8.55811 5.52524L12.6009 0.903908ZM11.7399 13.8979H13.0993L4.32392 2.29528H2.86506L11.7399 13.8979Z" />
                     </svg>
                   </a>
@@ -195,67 +97,49 @@ export default function BlogPostLayout({
                     className="text-gray-400 hover:text-gray-900"
                     href={`https://www.linkedin.com/shareArticle?mini=true&title=${encodeURIComponent(title)}`}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 16 16"
-                      fill="currentColor"
-                      className="w-5 h-5"
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-5 w-5">
                       <path d="M0 1.85859C0 1.31985 0.180185 0.87541 0.540541 0.525253C0.900896 0.175079 1.36937 0 1.94595 0C2.51223 0 2.97039 0.17238 3.32046 0.517172C3.68082 0.872727 3.861 1.33602 3.861 1.90707C3.861 2.42424 3.68598 2.85521 3.33591 3.2C2.97555 3.55556 2.50193 3.73333 1.91506 3.73333H1.89961C1.33333 3.73333 0.875166 3.55556 0.525097 3.2C0.175027 2.84444 0 2.3973 0 1.85859ZM0.200772 16V5.20404H3.62934V16H0.200772ZM5.52896 16H8.95753V9.97172C8.95753 9.5946 8.99872 9.30369 9.08108 9.09899C9.22522 8.73265 9.44402 8.42289 9.73745 8.1697C10.0309 7.91649 10.399 7.7899 10.8417 7.7899C11.9949 7.7899 12.5714 8.60336 12.5714 10.2303V16H16V9.8101C16 8.21548 15.6396 7.00606 14.9189 6.18182C14.1982 5.35758 13.2458 4.94545 12.0618 4.94545C10.7336 4.94545 9.69884 5.54343 8.95753 6.73939V6.77172H8.94208L8.95753 6.73939V5.20404H5.52896C5.54954 5.54882 5.55985 6.62086 5.55985 8.4202C5.55985 10.2195 5.54954 12.7461 5.52896 16Z" />
                     </svg>
                   </a>
                 </div>
               </div>
 
-              {/* Prev/Next navigation */}
-              <div className="grid gap-8 py-8 lg:grid-cols-2">
-                {prevPost && (
-                  <div>
+              <div className={`grid py-8 ${prevPost && nextPost ? "grid-cols-2 gap-3 md:gap-4" : "grid-cols-1 gap-4"}`}>
+                {prevPost ? (
+                  <div className="h-full">
                     <Link href={`/blog/${prevPost.slug}`} prefetch={false}>
-                      <div className="hover:bg-gray-50 cursor-pointer rounded border border-gray-200 p-6 transition">
-                        <div className="space-y-4">
-                          <p className="type-supporting text-gray-500">Previous post</p>
-                          <div className="flex flex-col gap-2">
-                            <h4 className="type-body-copy font-medium text-gray-900">
-                              {prevPost.title}
-                            </h4>
-                            <p className="type-supporting text-gray-500">
-                              {prevPost.date}
-                            </p>
-                          </div>
+                      <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-gray-200 p-3.5 transition hover:bg-gray-50 md:min-h-[8.25rem] md:p-4">
+                        <div className="space-y-3">
+                          <p className="text-[0.88rem] font-medium tracking-[-0.01em] text-gray-500 md:text-[0.92rem]">Previous post</p>
+                          <h4 className="line-clamp-2 text-[0.9rem] font-medium leading-5 tracking-[-0.02em] text-gray-900 md:text-[0.96rem]">
+                            {prevPost.title}
+                          </h4>
                         </div>
                       </div>
                     </Link>
                   </div>
-                )}
-                {nextPost && (
-                  <div className={prevPost ? "" : "lg:col-start-2"}>
+                ) : null}
+                {nextPost ? (
+                  <div className={`${prevPost ? "" : "col-start-1"} h-full`}>
                     <Link href={`/blog/${nextPost.slug}`} prefetch={false}>
-                      <div className="hover:bg-gray-50 cursor-pointer rounded border border-gray-200 p-6 transition text-right">
-                        <div className="space-y-4">
-                          <p className="type-supporting text-gray-500">Next post</p>
-                          <div className="flex flex-col gap-2">
-                            <h4 className="type-body-copy font-medium text-gray-900">
-                              {nextPost.title}
-                            </h4>
-                            <p className="type-supporting text-gray-500">
-                              {nextPost.date}
-                            </p>
-                          </div>
+                      <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-gray-200 p-3.5 text-right transition hover:bg-gray-50 md:min-h-[8.25rem] md:p-4">
+                        <div className="space-y-3">
+                          <p className="text-[0.88rem] font-medium tracking-[-0.01em] text-gray-500 md:text-[0.92rem]">Next post</p>
+                          <h4 className="line-clamp-2 text-[0.9rem] font-medium leading-5 tracking-[-0.02em] text-gray-900 md:text-[0.96rem]">
+                            {nextPost.title}
+                          </h4>
                         </div>
                       </div>
                     </Link>
                   </div>
-                )}
+                ) : null}
               </div>
             </div>
 
-            {/* Sidebar */}
-            <div className="relative col-span-12 lg:col-span-5 xl:col-span-3 xl:col-start-9">
-              {/* Table of Contents - uses ScrollSpySidebar which has its own sticky */}
-              {tableOfContents && tableOfContents.length > 0 && (
+            <div className="relative hidden self-start xl:sticky xl:top-24 xl:block">
+              {tableOfContents && tableOfContents.length > 0 ? (
                 <ScrollSpySidebar sections={tableOfContents} />
-              )}
+              ) : null}
             </div>
           </div>
         </div>
