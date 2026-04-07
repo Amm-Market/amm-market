@@ -22,7 +22,7 @@ describe("blog page", () => {
 
     expect(screen.getByRole("heading", { level: 1, name: "Newsroom" })).toBeInTheDocument()
     expect(screen.getByRole("button", { name: "All" })).toBeInTheDocument()
-    expect(screen.getByRole("button", { name: "Community" })).toHaveAttribute("aria-pressed", "true")
+    expect(screen.getByRole("button", { name: "All" })).toHaveAttribute("aria-pressed", "true")
     expect(screen.queryByText("Avana Blog")).not.toBeInTheDocument()
     expect(
       screen.queryByText(/Product updates, technical deep-dives, and market insights from the Avana team/i),
@@ -31,12 +31,13 @@ describe("blog page", () => {
     expect(screen.queryByText("Featured Story")).not.toBeInTheDocument()
   })
 
-  it("defaults to the Community section and filters when another menu item is selected", async () => {
+  it("defaults to the All section and filters when another menu item is selected", async () => {
     const user = userEvent.setup()
     render(<BlogPage />)
 
-    expect(screen.getByRole("button", { name: "Community" })).toHaveAttribute("aria-pressed", "true")
+    expect(screen.getByRole("button", { name: "All" })).toHaveAttribute("aria-pressed", "true")
     expect(screen.getByRole("link", { name: /Introducing Automate: Set-and-Forget LP Management/i })).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: /Smart Contract Architecture: Avana Technical Reference/i })).toBeInTheDocument()
 
     await user.click(screen.getByRole("button", { name: "Development" }))
 

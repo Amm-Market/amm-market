@@ -16,13 +16,13 @@ vi.mock("@/components/scroll-spy-sidebar", () => ({
 
 describe("lightpaper spoke configuration", () => {
   it(
-    "renders the text-only orchid-style hero",
+    "renders the book-led hero",
     () => {
       render(<LightpaperPage />)
 
       expect(
         screen.getByRole("heading", {
-          name: "Introducing Avana: An Aave v4 Spoke",
+          name: "Meet Avana",
         }),
       ).toBeInTheDocument()
       expect(screen.getByTestId("scroll-spy-sidebar")).toBeInTheDocument()

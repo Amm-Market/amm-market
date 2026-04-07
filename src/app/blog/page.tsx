@@ -174,7 +174,7 @@ function BlogImagePlaceholder({
 }
 
 export default function BlogPage() {
-  const [activeTag, setActiveTag] = useState<TagFilter>("Community")
+  const [activeTag, setActiveTag] = useState<TagFilter>("All")
   const filteredBlogs = useMemo(() => {
     if (activeTag === "All") {
       return blogs
