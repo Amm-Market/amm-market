@@ -263,6 +263,7 @@ export default function DeveloperSidebar() {
                       <li key={item.href}>
                         <Link
                           href={item.href}
+                          prefetch={false}
                           className={`type-sidebar-link flex items-center gap-2 py-2 px-2.5 rounded-md font-medium leading-5 transition-all duration-200 group ${itemActive
                               ? `${colors.itemBg} ${colors.itemText} font-medium`
                               : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"

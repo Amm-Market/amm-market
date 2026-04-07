@@ -1,12 +1,31 @@
 import WebappHero from "@/components/webapp-hero"
 import HeroSection from "@/components/hero-section"
-import FeaturesSection from "@/components/features-section"
 import LogoMarquee from "@/components/logo-marquee"
 import BuildTomorrowSection from "@/components/BuildTomorrowSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { LazySection } from "@/components/ui/lazy-section"
 
 // Note: Metadata is defined in layout.tsx with title template
 // Homepage uses the default title from the template
+
+function DeferredHomepageSectionsFallback() {
+  return (
+    <div className="site-content-shell pb-16 md:pb-20">
+      <div
+        aria-hidden="true"
+        className="rounded-[28px] border border-gray-200 bg-gray-50 p-6 md:p-8"
+      >
+        <div className="animate-pulse space-y-4">
+          <div className="h-3 w-28 rounded-full bg-gray-200" />
+          <div className="h-10 w-72 max-w-full rounded-2xl bg-gray-200" />
+          <div className="h-4 w-[92%] rounded-full bg-gray-200" />
+          <div className="h-4 w-[78%] rounded-full bg-gray-200" />
+          <div className="h-4 w-[64%] rounded-full bg-gray-200" />
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function Home() {
   return (
@@ -37,12 +56,13 @@ export default function Home() {
         </div>
       </section>
       <BuildTomorrowSection />
-      <div className="flex min-h-screen flex-col">
-        <div className="flex-1 flex flex-col relative z-0">
-          <HeroSection />
-          <FeaturesSection />
-        </div>
-      </div>
+      <LazySection
+        rootMargin="320px"
+        minHeight="640px"
+        fallback={<DeferredHomepageSectionsFallback />}
+      >
+        <HeroSection />
+      </LazySection>
     </>
   )
 }

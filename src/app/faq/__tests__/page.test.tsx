@@ -1,52 +1,54 @@
-import { render, screen, fireEvent } from "@testing-library/react"
-import { describe, expect, it } from "vitest"
-import FaqPageClient from "@/app/faq/faq-page-client"
+import { render, screen } from "@testing-library/react"
+import { describe, expect, it, vi } from "vitest"
+import FaqPage from "@/app/faq/page"
+
+vi.mock("next/link", () => ({
+  default: ({
+    children,
+    href,
+    ...props
+  }: {
+    children: React.ReactNode
+    href: string
+  }) => (
+    <a href={href} {...props}>
+      {children}
+    </a>
+  ),
+}))
 
 describe("faq page", () => {
-  it("seeds the search input from the q query param and shows search results", () => {
-    render(<FaqPageClient initialSearchTerm="Borrow Spoke" />)
+  it("seeds the search input from the q query param and shows search results", async () => {
+    render(await FaqPage({ searchParams: Promise.resolve({ q: "Borrow Spoke" }) }))
 
     expect(screen.getByPlaceholderText("Search")).toHaveValue("Borrow Spoke")
     expect(screen.getByRole("heading", { name: "Search Results" })).toBeInTheDocument()
     expect(screen.getByText("What does the Borrow Spoke do?")).toBeInTheDocument()
   })
 
-  it("keeps the in-page search working when no query param is provided", () => {
-    render(<FaqPageClient />)
+  it("renders the default category when no query param is provided", async () => {
+    const { container } = render(await FaqPage({ searchParams: Promise.resolve({}) }))
 
-    const searchInput = screen.getByPlaceholderText("Search")
-    fireEvent.change(searchInput, { target: { value: "recoverable value" } })
-
-    expect(searchInput).toHaveValue("recoverable value")
-    expect(screen.getByRole("heading", { name: "Search Results" })).toBeInTheDocument()
-    expect(screen.getByText("Why is borrow power lower than the full position value?")).toBeInTheDocument()
-  })
-
-  it("renders the active category heading when not searching", () => {
-    const { container } = render(<FaqPageClient />)
-
-    expect(screen.getByRole("button", { name: "Core Concepts" })).toHaveAttribute("aria-pressed", "true")
+    expect(screen.getByRole("link", { name: "Core Concepts" })).toHaveAttribute("aria-current", "page")
     expect(screen.getByText("What is Avana?")).toBeInTheDocument()
-    expect(screen.queryByText(/My wallet won't connect/i)).not.toBeInTheDocument()
     expect(container.querySelector(".site-content-shell")).toBeInTheDocument()
   })
 
-  it("clears search results from the empty state action", () => {
-    render(<FaqPageClient initialSearchTerm="does-not-exist" />)
+  it("shows the empty search state and a clear search link", async () => {
+    render(await FaqPage({ searchParams: Promise.resolve({ q: "does-not-exist" }) }))
 
-    const clearButton = screen.getByRole("button", { name: "Clear search" })
-    fireEvent.click(clearButton)
-
-    expect(screen.getByPlaceholderText("Search")).toHaveValue("")
-    expect(screen.getByRole("button", { name: "Core Concepts" })).toHaveAttribute("aria-pressed", "true")
+    expect(screen.getByText('No results found for "does-not-exist"')).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: "Clear search" })).toHaveAttribute("href", "/faq")
   })
 
-  it("switches between the canonical documentation categories", () => {
-    render(<FaqPageClient />)
+  it("switches between canonical documentation categories from the URL", async () => {
+    render(
+      await FaqPage({
+        searchParams: Promise.resolve({ category: "Health & Liquidation" }),
+      }),
+    )
 
-    fireEvent.click(screen.getByRole("button", { name: "Health & Liquidation" }))
-
-    expect(screen.getByRole("button", { name: "Health & Liquidation" })).toHaveAttribute("aria-pressed", "true")
+    expect(screen.getByRole("link", { name: "Health & Liquidation" })).toHaveAttribute("aria-current", "page")
     expect(screen.getByText("What is the health factor?")).toBeInTheDocument()
   })
 })

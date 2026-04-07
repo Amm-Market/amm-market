@@ -137,7 +137,7 @@
 
 .type-display-title {
   font-size: var(--type-display-title-size);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.02em;
 }
