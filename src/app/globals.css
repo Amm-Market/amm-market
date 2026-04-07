@@ -320,23 +320,23 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
   text-align: left;
-  font-size: clamp(2.5rem, 5vw, 4.4rem);
-  font-weight: 500;
-  line-height: 0.97;
-  letter-spacing: -0.055em;
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
   color: #18323c;
 }
 
 .site-blog-article section[id] > h2::before {
   content: attr(data-eyebrow);
   display: inline-flex;
-  font-size: 0.98rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
   color: #3f6cff;
 }
 
@@ -376,7 +376,7 @@
   }
 
   .site-blog-article section[id] > h2 {
-    font-size: clamp(2.5rem, 5vw, 4.4rem);
+    font-size: 1.5rem;
   }
 
   .marketing-secondary-shell h2:not(.site-section-title) {
@@ -423,6 +423,17 @@
 
   .marketing-secondary-shell div.text-2xl.font-semibold {
     font-size: 1.375rem;
+  }
+
+  .site-blog-article section[id] > h2 {
+    margin-bottom: 1.15rem;
+    font-size: 1.625rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-blog-article section[id] > h2 {
+    font-size: 1.75rem;
   }
 }
 

@@ -6,10 +6,6 @@ import {
   type TagFilter,
 } from "@/lib/content"
 
-/**
- * BlogPage keeps newsroom filtering on the server so the page can render from
- * URL state without shipping tag-filtering hooks to the browser.
- */
 function BlogImagePlaceholder({
   eyebrow,
   featured = false,
@@ -111,9 +107,9 @@ export default async function BlogPage({
                   <div className="flex items-center space-x-1.5 px-1 text-[0.8rem] text-gray-500 sm:text-sm">
                     <p>{post.date}</p>
                   </div>
-                  <h3 className="px-1 text-[1rem] leading-5 text-gray-900 transition-colors duration-150 group-hover:text-slate-700 sm:text-[1.08rem] sm:leading-6">
+                  <h2 className="px-1 text-[1rem] leading-5 text-gray-900 transition-colors duration-150 group-hover:text-slate-700 sm:text-[1.08rem] sm:leading-6">
                     {post.title}
-                  </h3>
+                  </h2>
                 </div>
               </Link>
             </div>
