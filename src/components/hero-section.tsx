@@ -1,14 +1,15 @@
 import dynamic from "next/dynamic"
 import { DeFiTerm } from "@/components/defi-term"
+import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 
 const DeferredTestimonialSection = dynamic(() => import("@/components/homepage/HomepageTestimonialSection"), {
-  loading: () => <div className="py-16 md:py-20 border-t border-gray-100" aria-hidden="true" />,
+  loading: () => <div aria-hidden="true" />,
 })
 const DeferredFaqSection = dynamic(() => import("@/components/homepage/HomepageFaqSection"), {
-  loading: () => <div className="border-t border-gray-100 pt-16 pb-4 md:pt-10 md:pb-0" aria-hidden="true" />,
+  loading: () => <div aria-hidden="true" />,
 })
 
 /**
@@ -49,53 +50,9 @@ function PoolCard({ pool }: { pool: HomepagePool }) {
 export default function HeroSection() {
   return (
     <section className="marketing-secondary-shell pb-0">
-      <div className="site-content-shell py-16 md:py-24">
-        <div className="flex flex-col gap-6">
-          <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow>How it works</SectionEyebrow>
-            <SectionTitle>
-              How borrowing works
-            </SectionTitle>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 md:mt-16">
-          <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
-            <span className="text-5xl md:text-6xl font-bold text-gray-300">1</span>
-            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
-              Deposit your LP position
-            </h3>
-            <p className="text-sm md:text-base text-gray-600">
-              Deposit your <DeFiTerm term="lp-tokens">LP tokens</DeFiTerm> from any supported <DeFiTerm term="dex">DEX</DeFiTerm>. Your position stays active and continues earning trading fees.
-            </p>
-          </div>
-          <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
-            <span className="text-5xl md:text-6xl font-bold text-gray-300">2</span>
-            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
-              Receive your loan instantly
-            </h3>
-            <p className="text-sm md:text-base text-gray-600">
-              USDC will be deposited into your wallet. Borrow up to 80% of your LP value based on pool risk parameters.
-            </p>
-          </div>
-          <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
-            <span className="text-5xl md:text-6xl font-bold text-gray-300">3</span>
-            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
-              Repay on your timeline
-            </h3>
-            <p className="text-sm md:text-base text-gray-600">
-              There are no repayment schedules or deadlines. Your <DeFiTerm term="ltv">loan-to-value ratio</DeFiTerm> must remain under the <DeFiTerm term="liquidation-threshold">liquidation threshold</DeFiTerm> to avoid automatic <DeFiTerm term="liquidation">liquidation</DeFiTerm>.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="site-content-shell">
-        <div className="border-t border-gray-100"></div>
-      </div>
-
-      <div className="site-content-shell space-y-12">
+      <div className="site-content-shell space-y-32 pt-16 md:space-y-40 md:pt-20">
         <LazySection minHeight="400px">
-          <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12" style={{ opacity: 1, transform: "none" }}>
+          <div className="flex flex-col gap-8 md:gap-12" style={{ opacity: 1, transform: "none" }}>
             <div className="flex flex-col gap-2">
               <SectionEyebrow>DEX Coverage</SectionEyebrow>
               <SectionTitle>
@@ -160,7 +117,7 @@ export default function HeroSection() {
         </LazySection>
 
         <LazySection minHeight="600px">
-          <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12 border-t border-gray-100" style={{ opacity: 1, transform: "none" }}>
+          <div className="flex flex-col gap-8 md:gap-12" style={{ opacity: 1, transform: "none" }}>
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow>Pool Coverage</SectionEyebrow>
@@ -212,9 +169,51 @@ export default function HeroSection() {
             </div>
           </div>
         </LazySection>
+      </div>
 
+      <div className="site-content-shell pt-32 md:pt-40">
+        <div className="flex flex-col gap-6">
+          <div className="flex max-w-[600px] flex-col gap-2">
+            <SectionEyebrow>How it works</SectionEyebrow>
+            <SectionTitle>
+              How borrowing works
+            </SectionTitle>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 md:mt-16">
+          <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
+            <span className="text-5xl md:text-6xl font-bold text-gray-300">1</span>
+            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
+              Deposit your LP position
+            </h3>
+            <p className="text-sm md:text-base text-gray-600">
+              Deposit your <DeFiTerm term="lp-tokens">LP tokens</DeFiTerm> from any supported <DeFiTerm term="dex">DEX</DeFiTerm>. Your position stays active and continues earning trading fees.
+            </p>
+          </div>
+          <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
+            <span className="text-5xl md:text-6xl font-bold text-gray-300">2</span>
+            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
+              Receive your loan instantly
+            </h3>
+            <p className="text-sm md:text-base text-gray-600">
+              USDC will be deposited into your wallet. Borrow up to 80% of your LP value based on pool risk parameters.
+            </p>
+          </div>
+          <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
+            <span className="text-5xl md:text-6xl font-bold text-gray-300">3</span>
+            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
+              Repay on your timeline
+            </h3>
+            <p className="text-sm md:text-base text-gray-600">
+              There are no repayment schedules or deadlines. Your <DeFiTerm term="ltv">loan-to-value ratio</DeFiTerm> must remain under the <DeFiTerm term="liquidation-threshold">liquidation threshold</DeFiTerm> to avoid automatic <DeFiTerm term="liquidation">liquidation</DeFiTerm>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="site-content-shell space-y-32 pt-32 md:space-y-40 md:pt-40">
         <LazySection minHeight="600px">
-          <div className="pt-16 md:pt-20 border-t border-gray-100">
+          <div>
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow>Capital Efficiency</SectionEyebrow>
@@ -223,256 +222,280 @@ export default function HeroSection() {
                 </SectionTitle>
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row justify-start gap-y-10 gap-x-5 mt-10 md:mt-16">
-              <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-                <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-gray-50">
-                  <div className="absolute top-[50px] left-1/2 animate-float px-8 py-5 text-center text-5xl font-bold rounded-full bg-blue-500 text-white">
-                    80%
-                  </div>
-                  <div className="absolute bottom-[46px] text-sm font-medium left-1/2 -translate-x-1/2">
-                    <span className="flex gap-2 items-center text-blue-600">
-                      <DeFiTerm term="ltv">LTV Ratio</DeFiTerm>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" fill="currentColor" viewBox="0 0 16 17" className="w-5 h-5">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.333 8.783h9.334m0 0-4-4m4 4-4 4"></path>
-                      </svg>
-                    </span>
-                  </div>
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[394px]">
-                    <div className="relative">
-                      {[50, 55, 60, 65, 70, 75, 80].map((value, index) => (
-                        <div key={value} className="absolute top-0 left-0 flex justify-start w-full animate-pulse-soft" style={{ rotate: `${18 + index * 16}deg`, animationDelay: `${index * 0.1}s` }}>
-                          <span className="text-[10px] font-semibold w-8 text-right">{value}</span>
-                          <div className="bg-blue-400 w-[30px] h-[14px] rounded-full ml-1.5 mt-1"></div>
+            <div className="relative mt-10 md:mt-16">
+              <div className="overflow-x-auto py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                <div className="grid w-max grid-flow-col auto-cols-[19.75rem] gap-4 px-1 lg:auto-cols-[21.5rem] lg:gap-5">
+                  <article className="group flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5 transition-transform duration-150 hover:scale-[1.01]">
+                    <div className="relative z-10 flex items-start justify-between gap-4">
+                      <div className="space-y-2">
+                        <h3 className="text-2xl font-semibold text-gray-900">Maximize your capital</h3>
+                        <p className="max-w-[16rem] text-base text-gray-600">Borrow up to 80% of your LP value.</p>
+                      </div>
+                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">01</div>
+                    </div>
+                    <div className="relative z-0 mt-auto">
+                      <div className="flex items-end justify-center">
+                        <div className="relative h-[18rem] w-full">
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="relative h-[180px] w-[180px]">
+                              <svg className="h-full w-full -rotate-90" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="42" fill="none" stroke="#d1d5db" strokeWidth="8" strokeLinecap="round" strokeDasharray="198 66" />
+                                <circle cx="50" cy="50" r="42" fill="none" stroke="#2f3338" strokeWidth="8" strokeLinecap="round" strokeDasharray="160 104" />
+                              </svg>
+                              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                                <span className="text-4xl font-bold text-gray-900">80%</span>
+                                <span className="text-xs font-medium text-gray-600">Available</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="absolute inset-x-0 bottom-8 flex justify-center gap-3">
+                            <div className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs text-gray-700">LTV 80%</div>
+                            <div className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs text-gray-700">Capital active</div>
+                          </div>
                         </div>
-                      ))}
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Maximize your capital</div>
-                <div className="text-base text-gray-600 text-center mt-2">Borrow up to 80% of your LP value</div>
-              </div>
+                  </article>
 
-              <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-                <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-gray-50">
-                  <div className="absolute top-[50px] left-1/2 animate-float w-[243px] h-[240px] bg-white rounded-[10px] border border-gray-200">
-                    <div className="flex justify-center items-center gap-1 px-2 py-1 w-fit mx-auto mt-9 rounded-full bg-blue-500 text-white">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" className="w-4 h-4">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"></path>
-                      </svg>
-                      <span className="text-[10px] font-semibold">Trading Fees</span>
-                    </div>
-                    <div className="flex justify-center mt-4">
-                      <span className="text-5xl font-bold text-blue-600 animate-pulse-soft">+12.4%</span>
-                    </div>
-                    <div className="flex items-center justify-center gap-1.5 mt-4">
-                      <span className="text-gray-500 text-xs"><DeFiTerm term="apy">APY</DeFiTerm></span>
-                      <div className="w-10 h-0.5 rounded bg-blue-300"></div>
-                      <div className="flex items-center justify-center w-4 h-4 bg-blue-500 rounded-full animate-pulse">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 16 16" className="fill-white text-white">
-                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="m3 9 7-7c.15-.15.4.01.33.21L8.77 6.4a.2.2 0 0 0 .19.27h3.9a.2.2 0 0 1 .14.34l-7 7c-.15.15-.4-.01-.33-.21l1.58-4.2a.2.2 0 0 0-.19-.27H3.15a.2.2 0 0 1-.14-.34"></path>
-                        </svg>
+                  <article className="group flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5 transition-transform duration-150 hover:scale-[1.01]">
+                    <div className="relative z-10 flex items-start justify-between gap-4">
+                      <div className="space-y-2">
+                        <h3 className="text-2xl font-semibold text-gray-900">Keep earning fees</h3>
+                        <p className="max-w-[16rem] text-base text-gray-600">Your LP stays active while you borrow.</p>
                       </div>
-                      <div className="w-3.5 h-0.5 rounded bg-blue-300"></div>
-                      <span className="text-gray-500 text-xs">Earned</span>
+                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">02</div>
                     </div>
-                    <div className="mx-auto mt-6 w-36 border px-4 py-1 border-blue-300 rounded-full text-center">
-                      <span className="text-sm font-medium text-blue-600">Keep Earning</span>
+                    <div className="relative z-0 mt-auto">
+                      <div className="flex items-end justify-center">
+                        <div className="relative h-[18rem] w-full rounded-[22px] border border-gray-200 bg-white">
+                          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
+                            <div className="flex items-center gap-1 rounded-full bg-[#2f3338] px-2 py-1 text-white">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" className="w-4 h-4">
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"></path>
+                              </svg>
+                              <span className="text-[10px] font-semibold">Trading Fees</span>
+                            </div>
+                            <span className="mt-6 text-5xl font-bold text-[#2f3338]">+12.4%</span>
+                            <div className="mt-4 flex items-center gap-1.5">
+                              <span className="text-xs text-gray-500"><DeFiTerm term="apy">APY</DeFiTerm></span>
+                              <div className="h-0.5 w-10 rounded bg-gray-300"></div>
+                              <div className="flex h-4 w-4 items-center justify-center rounded-full bg-[#2f3338]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 16 16" className="fill-white text-white">
+                                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="m3 9 7-7c.15-.15.4.01.33.21L8.77 6.4a.2.2 0 0 0 .19.27h3.9a.2.2 0 0 1 .14.34l-7 7c-.15.15-.4-.01-.33-.21l1.58-4.2a.2.2 0 0 0-.19-.27H3.15a.2.2 0 0 1-.14-.34"></path>
+                                </svg>
+                              </div>
+                              <div className="h-0.5 w-3.5 rounded bg-gray-300"></div>
+                              <span className="text-xs text-gray-500">Earned</span>
+                            </div>
+                            <div className="mt-6 w-full max-w-[16rem] rounded-[18px] border border-gray-200 bg-gray-50 px-4 py-4">
+                              <div className="flex items-center justify-between text-[0.72rem] text-gray-500">
+                                <span>LP fees remain active</span>
+                                <span className="font-medium text-gray-800">Auto accrual</span>
+                              </div>
+                              <div className="mt-3 mx-auto w-36 rounded-full border border-gray-300 bg-white px-4 py-1 text-center">
+                                <span className="text-sm font-medium text-gray-700">Keep Earning</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Keep earning fees</div>
-                <div className="text-base text-gray-600 text-center mt-2">Your LP stays active while you borrow</div>
-              </div>
+                  </article>
 
-              <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-                <div className="relative overflow-hidden rounded-[20px] w-full h-[340px] bg-gray-50">
-                  <div className="absolute top-[50px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
-                    <div className="flex gap-3 w-[280px] px-4 py-3 bg-white rounded-lg border border-gray-200 items-center animate-float-simple" style={{ animationDelay: "0s" }}>
-                      <div className="flex items-center justify-center w-11 h-11">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
-                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v20m5-17H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"></path>
-                        </svg>
+                  <article className="group flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5 transition-transform duration-150 hover:scale-[1.01]">
+                    <div className="relative z-10 flex items-start justify-between gap-4">
+                      <div className="space-y-2">
+                        <h3 className="text-2xl font-semibold text-gray-900">Unlock new strategies</h3>
+                        <p className="max-w-[16rem] text-base text-gray-600">Use borrowed funds however you want.</p>
                       </div>
-                      <span className="text-sm font-medium">Leverage trading</span>
+                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">03</div>
                     </div>
-                    <div className="flex gap-3 w-[300px] px-4 py-3 bg-blue-500 text-white rounded-lg shadow-sm items-center animate-float-simple" style={{ animationDelay: "0.15s" }}>
-                      <div className="flex items-center justify-center w-11 h-11">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
-                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"></path>
-                        </svg>
+                    <div className="relative z-0 mt-auto">
+                      <div className="flex items-end justify-center">
+                        <div className="relative h-[18rem] w-full rounded-[22px] border border-gray-200 bg-white">
+                          <div className="absolute inset-0 flex items-center justify-center p-6">
+                            <div className="flex w-full max-w-[16.75rem] flex-col items-center gap-3">
+                              <div className="flex w-full items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+                                <div className="flex h-11 w-11 items-center justify-center text-gray-700">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v20m5-17H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"></path>
+                                  </svg>
+                                </div>
+                                <span className="text-sm font-medium text-gray-800">Leverage trading</span>
+                              </div>
+                              <div className="flex w-full items-center gap-3 rounded-lg bg-[#2f3338] px-4 py-3 text-white shadow-sm">
+                                <div className="flex h-11 w-11 items-center justify-center">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"></path>
+                                  </svg>
+                                </div>
+                                <span className="text-sm font-medium">Yield farming</span>
+                              </div>
+                              <div className="flex w-full items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+                                <div className="flex h-11 w-11 items-center justify-center text-gray-700">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M22 10v7.4a1.6 1.6 0 0 1-1.6 1.6H3.6A1.6 1.6 0 0 1 2 17.4V10m20 0V6.6A1.6 1.6 0 0 0 20.4 5H3.6A1.6 1.6 0 0 0 2 6.6V10m20 0H2m4 5h3"></path>
+                                  </svg>
+                                </div>
+                                <span className="text-sm font-medium text-gray-800">Pay off debt</span>
+                              </div>
+                              <div className="flex w-full items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+                                <div className="flex h-11 w-11 items-center justify-center text-gray-700">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 3v18h18M7 16l4-4 4 4 5-6"></path>
+                                  </svg>
+                                </div>
+                                <span className="text-sm font-medium text-gray-800">New positions</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <span className="text-sm font-medium">Yield farming</span>
                     </div>
-                    <div className="flex gap-3 w-[280px] px-4 py-3 bg-white rounded-lg border border-gray-200 items-center animate-float-simple" style={{ animationDelay: "0.3s" }}>
-                      <div className="flex items-center justify-center w-11 h-11">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
-                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M22 10v7.4a1.6 1.6 0 0 1-1.6 1.6H3.6A1.6 1.6 0 0 1 2 17.4V10m20 0V6.6A1.6 1.6 0 0 0 20.4 5H3.6A1.6 1.6 0 0 0 2 6.6V10m20 0H2m4 5h3"></path>
-                        </svg>
-                      </div>
-                      <span className="text-sm font-medium">Pay off debt</span>
-                    </div>
-                    <div className="flex gap-3 w-[280px] px-4 py-3 bg-white rounded-lg border border-gray-200 items-center animate-float-simple" style={{ animationDelay: "0.45s" }}>
-                      <div className="flex items-center justify-center w-11 h-11">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
-                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 3v18h18M7 16l4-4 4 4 5-6"></path>
-                        </svg>
-                      </div>
-                      <span className="text-sm font-medium">New positions</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Unlock new strategies</div>
-                <div className="text-base text-gray-600 text-center mt-2">Use borrowed funds however you want</div>
-              </div>
-            </div>
+                  </article>
 
-          </div>
-        </LazySection>
+                  <article className="group flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5 transition-transform duration-150 hover:scale-[1.01]">
+                    <div className="relative z-10 flex items-start justify-between gap-4">
+                      <div className="space-y-2">
+                        <h3 className="text-2xl font-semibold text-gray-900">Price-range aware oracles</h3>
+                        <p className="max-w-[16rem] text-base text-gray-600">Industry-leading security protects your investments.</p>
+                      </div>
+                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">04</div>
+                    </div>
+                    <div className="relative z-0 mt-auto">
+                      <div className="flex items-end justify-center">
+                        <div className="relative h-[18rem] w-full rounded-[22px] border border-gray-200 bg-white">
+                          <div className="absolute inset-0 flex items-center justify-center p-6">
+                            <div className="w-full max-w-[16.75rem]">
+                              <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.14em] text-gray-500">
+                                <span>$1,720</span>
+                                <span>Oracle band</span>
+                                <span>$1,950</span>
+                              </div>
+                              <div className="relative h-[118px] rounded-[18px] border border-gray-200 bg-gray-50">
+                                <div className="absolute inset-x-6 top-1/2 h-8 -translate-y-1/2 rounded-full border border-gray-200 bg-white"></div>
+                                <svg className="absolute inset-4 h-[calc(100%-32px)] w-[calc(100%-32px)]" viewBox="0 0 300 110" preserveAspectRatio="none">
+                                  <path d="M0,78 Q40,70 85,76 T165,54 T235,58 T300,40" fill="none" stroke="#2f3338" strokeWidth="2.25" strokeLinecap="round" />
+                                </svg>
+                                <div className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2f3338] ring-4 ring-white"></div>
+                              </div>
+                              <div className="mt-4 flex justify-center">
+                                <div className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-medium text-gray-700">In range</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
 
-        <LazySection minHeight="600px">
-          <div className="pt-16 md:pt-20 border-t border-gray-100">
-            <div className="flex flex-col gap-6">
-              <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow>Risk Systems</SectionEyebrow>
-                <SectionTitle>
-                  Borrow with Confidence
-                </SectionTitle>
-              </div>
-            </div>
-            <div className="flex flex-col lg:flex-row justify-start gap-y-10 gap-x-5 mt-10 md:mt-16">
-              <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-                <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-gray-50">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative w-[180px] h-[180px]">
-                      <div className="absolute inset-0 rounded-full border-2 border-blue-200 animate-spin-slow"></div>
-                      <div className="absolute inset-[20px] rounded-full border-2 border-blue-300 animate-spin-slow-reverse"></div>
-                      <div className="absolute inset-[40px] rounded-full border-2 border-blue-400 animate-spin-slow"></div>
-                      <div className="absolute inset-[55px] rounded-full bg-blue-500 flex items-center justify-center animate-pulse-soft">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-white">
-                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4"></path>
-                        </svg>
+                  <article className="group flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5 transition-transform duration-150 hover:scale-[1.01]">
+                    <div className="relative z-10 flex items-start justify-between gap-4">
+                      <div className="space-y-2">
+                        <h3 className="text-2xl font-semibold text-gray-900">LP-aware risk models</h3>
+                        <p className="max-w-[16rem] text-base text-gray-600">Track pool composition, volatility, and oracle quality.</p>
+                      </div>
+                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">05</div>
+                    </div>
+                    <div className="relative z-0 mt-auto">
+                      <div className="flex items-end justify-center">
+                        <div className="relative h-[18rem] w-full rounded-[22px] border border-gray-200 bg-white">
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="relative h-[170px] w-[170px]">
+                              <div className="absolute inset-0 rounded-full border-2 border-gray-200"></div>
+                              <div className="absolute inset-[20px] rounded-full border-2 border-gray-300"></div>
+                              <div className="absolute inset-[40px] rounded-full border-2 border-gray-400"></div>
+                              <div className="absolute inset-[55px] flex items-center justify-center rounded-full bg-[#2f3338]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-white">
+                                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="absolute inset-x-0 bottom-7 px-4">
+                            <div className="mx-auto grid max-w-[17rem] grid-cols-3 gap-2">
+                              <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-center">
+                                <span className="block text-[10px] uppercase tracking-wider text-gray-500">Pool</span>
+                                <span className="text-sm font-semibold text-gray-900">Deep</span>
+                              </div>
+                              <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-center">
+                                <span className="block text-[10px] uppercase tracking-wider text-gray-500">Vol</span>
+                                <span className="text-sm font-semibold text-gray-700">Low</span>
+                              </div>
+                              <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-center">
+                                <span className="block text-[10px] uppercase tracking-wider text-gray-500">Oracle</span>
+                                <span className="text-sm font-semibold text-gray-900">98/100</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3 px-4">
-                    <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
-                      <span className="text-[10px] text-gray-500 uppercase tracking-wider">Pool Depth</span>
-                      <span className="text-sm font-semibold text-blue-600">$24.5M</span>
-                    </div>
-                    <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
-                      <span className="text-[10px] text-gray-500 uppercase tracking-wider">Volatility</span>
-                      <span className="text-sm font-semibold text-green-600">Low</span>
-                    </div>
-                    <div className="flex flex-col items-center px-3 py-2 rounded-lg bg-white border border-gray-200">
-                      <span className="text-[10px] text-gray-500 uppercase tracking-wider">Oracle</span>
-                      <span className="text-sm font-semibold text-blue-600">98/100</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-2xl font-semibold mt-5 text-center text-gray-900">LP-aware risk models</div>
-                <div className="text-base text-gray-600 text-center mt-2">Track pool composition, volatility, and oracle quality.</div>
-              </div>
-
-              <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-                <div className="relative rounded-[20px] overflow-hidden w-full h-[340px] bg-gray-50">
-                  <div className="absolute top-[40px] left-1/2 -translate-x-1/2 w-[260px]">
-                    <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-blue-100 border border-blue-200 w-fit mx-auto mb-3">
-                      <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
-                      <span className="text-[10px] font-semibold text-blue-700 uppercase tracking-wider">Live</span>
-                    </div>
-                    <div className="text-center mb-3">
-                      <span className="text-3xl font-bold text-blue-600 animate-pulse-soft">$1,847.52</span>
-                      <div className="text-xs text-gray-500 mt-1">ETH / USD</div>
-                    </div>
-                    <div className="relative w-full h-[100px] bg-white rounded-lg border border-gray-200 p-2">
-                      <div className="absolute top-[30%] left-2 right-2 h-[40%] bg-blue-50 border-y border-blue-200"></div>
-                      <svg className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)]" viewBox="0 0 300 80" preserveAspectRatio="none">
-                        <path className="animate-draw-line" d="M0,60 Q30,50 60,55 T120,35 T180,40 T240,25 T300,30" fill="none" stroke="#3b82f6" strokeWidth="2" />
-                        <circle cx="240" cy="25" r="5" fill="#3b82f6" className="animate-pulse" />
-                        <circle cx="240" cy="25" r="2" fill="white" />
-                      </svg>
-                    </div>
-                    <div className="flex justify-between w-full mt-2 px-1">
-                      <div className="text-xs text-gray-500">$1,720</div>
-                      <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-green-100">
-                        <span className="text-xs text-green-700 font-medium">In Range</span>
-                      </div>
-                      <div className="text-xs text-gray-500">$1,950</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Price-range aware oracles</div>
-                <div className="text-base text-gray-600 text-center mt-2">Industry-leading security protects your investments.</div>
-              </div>
-
-              <div className="flex-1 max-w-[400px] mx-auto lg:mx-0">
-                <div className="relative overflow-hidden rounded-[20px] w-full h-[340px] bg-gray-50">
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <div className="relative w-[160px] h-[160px]">
-                      <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="42" fill="none" stroke="#e5e7eb" strokeWidth="8" strokeLinecap="round" strokeDasharray="198 66" />
-                        <circle cx="50" cy="50" r="42" fill="none" stroke="#3b82f6" strokeWidth="8" strokeLinecap="round" strokeDasharray="182 82" />
-                      </svg>
-                      <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-4xl font-bold text-blue-600 animate-pulse-soft">92%</span>
-                        <span className="text-xs text-green-600 font-medium">Healthy</span>
-                      </div>
-                    </div>
-                    <div className="flex gap-3 mt-6">
-                      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200">
-                        <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                        <span className="text-xs text-gray-700">LTV 75%</span>
-                      </div>
-                      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200">
-                        <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                        <span className="text-xs text-gray-700">Buffer 42%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-2xl font-semibold mt-5 text-center text-gray-900">Per-position health checks</div>
-                <div className="text-base text-gray-600 text-center mt-2">Dynamically adjust loan-to-value ratios and liquidation thresholds.</div>
-              </div>
-            </div>
-          </div>
-        </LazySection>
-
-        <LazySection minHeight="300px">
-          <div className="flex flex-col md:flex-row gap-8 md:gap-16 pt-16 md:pt-20 items-center border-t border-gray-100">
-            <div className="flex-1 space-y-6">
-              <SectionEyebrow>Aave v4</SectionEyebrow>
-              <SectionTitle>
-                More about Aave v4
-              </SectionTitle>
-              <p className="text-sm md:text-base text-gray-600 max-w-lg">
-                Aave v4 is a next-generation DeFi lending protocol featuring a <DeFiTerm term="hub">Hub</DeFiTerm>-and-<DeFiTerm term="spoke">Spoke</DeFiTerm> architecture that enables cross-chain liquidity and modular risk management. Avana leverages Aave v4&apos;s infrastructure to provide secure, permissionless borrowing against <DeFiTerm term="lp-position">LP positions</DeFiTerm>. All loan terms, <DeFiTerm term="liquidation">liquidations</DeFiTerm>, and interest rates are enforced on-chain through battle-tested smart contracts and transparent <DeFiTerm term="oracle">oracle</DeFiTerm> systems.
-              </p>
-              <a
-                href="https://docs.aave.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
-              >
-                Learn more
-              </a>
-            </div>
-            <div className="flex-shrink-0">
-              <div className="w-[300px] h-[200px] md:w-[400px] md:h-[250px] rounded-2xl border border-gray-200 flex items-center justify-center bg-white">
-                <div className="flex items-center gap-3">
-                  <svg width="48" height="48" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0z" fill="#B6509E" />
-                    <path d="M186.7 168.5c-7.5 0-14.2-4.3-17.4-11l-25.9-56.8c-1.4-3.1-4.5-5.1-7.9-5.1h-14.9c-3.4 0-6.5 2-7.9 5.1l-25.9 56.8c-3.2 6.7-9.9 11-17.4 11-10.6 0-19.2-8.6-19.2-19.2 0-2.9.7-5.8 2-8.4l38.3-83.8c5.7-12.5 18.2-20.5 32-20.5h23.2c13.8 0 26.3 8 32 20.5l38.3 83.8c1.3 2.6 2 5.5 2 8.4 0 10.6-8.6 19.2-19.2 19.2z" fill="white" />
-                  </svg>
-                  <span className="text-2xl md:text-3xl font-semibold text-gray-900">Aave</span>
+                  </article>
                 </div>
               </div>
             </div>
+
           </div>
         </LazySection>
 
         <LazySection minHeight="400px">
           <DeferredTestimonialSection />
+        </LazySection>
+
+        <LazySection minHeight="300px">
+          <div>
+            <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
+              <div className="space-y-4">
+                <SectionEyebrow>Security Protection</SectionEyebrow>
+                <SectionTitle>
+                  <span className="block lg:whitespace-nowrap">Aave v4</span>
+                  <span className="block lg:whitespace-nowrap">Design Foundation</span>
+                </SectionTitle>
+              </div>
+              <div className="text-left text-[#39515b]">
+                <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
+                  Aave v4 is a next generation lending system built on{" "}
+                  <DeFiTerm term="hub" className="text-[0.92em]">Hub</DeFiTerm>
+                  {" "}and{" "}
+                  <DeFiTerm term="spoke" className="text-[0.92em]">Spoke</DeFiTerm>
+                  {" "}architecture, giving the protocol shared liquidity, flexible risk controls, and a stronger security model. Avana builds on that foundation to deliver secure{" "}
+                  <DeFiTerm term="lp-position" className="text-[0.92em]">LP backed borrowing</DeFiTerm>
+                  {" "}with transparent onchain execution, resilient{" "}
+                  <DeFiTerm term="oracle" className="text-[0.92em]">oracle</DeFiTerm>
+                  {" "}checks, and borrower protection shaped around controlled{" "}
+                  <DeFiTerm term="liquidation" className="text-[0.92em]">liquidation</DeFiTerm>
+                  {" "}design.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-12 overflow-hidden rounded-[28px] border border-gray-200 bg-gradient-to-b from-gray-50 to-white p-5 sm:p-6">
+              <div className="flex min-h-[280px] items-center justify-center rounded-[24px] border border-gray-200 bg-white sm:min-h-[340px] md:min-h-[420px]">
+                <div className="flex flex-col items-center gap-6 text-center">
+                  <div className="flex h-28 w-28 items-center justify-center rounded-full bg-[#B6509E] shadow-[0_20px_60px_rgba(182,80,158,0.18)] sm:h-36 sm:w-36 md:h-44 md:w-44">
+                    <svg width="68" height="68" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:h-20 sm:w-20 md:h-24 md:w-24">
+                      <path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0z" fill="#B6509E" />
+                      <path d="M186.7 168.5c-7.5 0-14.2-4.3-17.4-11l-25.9-56.8c-1.4-3.1-4.5-5.1-7.9-5.1h-14.9c-3.4 0-6.5 2-7.9 5.1l-25.9 56.8c-3.2 6.7-9.9 11-17.4 11-10.6 0-19.2-8.6-19.2-19.2 0-2.9.7-5.8 2-8.4l38.3-83.8c5.7-12.5 18.2-20.5 32-20.5h23.2c13.8 0 26.3 8 32 20.5l38.3 83.8c1.3 2.6 2 5.5 2 8.4 0 10.6-8.6 19.2-19.2 19.2z" fill="white" />
+                    </svg>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-[1.6rem] font-semibold tracking-[-0.05em] text-gray-900 sm:text-[2rem] md:text-[2.6rem]">
+                      Future Aave visual
+                    </p>
+                    <p className="text-sm text-gray-500 sm:text-base">
+                      Reserved for the large Aave brand asset.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </LazySection>
+
+        <LazySection minHeight="420px">
+          <HomepageNewsroomSection />
         </LazySection>
 
         <LazySection minHeight="500px">
