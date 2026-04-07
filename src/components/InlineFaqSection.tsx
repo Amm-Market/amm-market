@@ -34,7 +34,7 @@ const MinusIcon = () => (
  */
 export function InlineFaqSection({
   title = "Frequently asked questions.",
-  eyebrow = "FAQ",
+  eyebrow,
   items,
   withTopBorder = true,
 }: InlineFaqSectionProps) {
@@ -45,7 +45,7 @@ export function InlineFaqSection({
       }`}
     >
       <div className="space-y-3 md:pt-2 md:flex-shrink-0 md:w-[300px]">
-        <SectionEyebrow>{eyebrow}</SectionEyebrow>
+        {eyebrow ? <SectionEyebrow>{eyebrow}</SectionEyebrow> : null}
         <SectionTitle as="h3">{title}</SectionTitle>
       </div>
       <div className="md:w-[600px] md:flex-shrink-0">

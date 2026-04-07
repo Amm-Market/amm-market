@@ -1,7 +1,7 @@
 "use client"
 
 import { DeFiTerm } from "@/components/defi-term"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { SectionTitle } from "@/components/shared"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 /**
@@ -11,7 +11,6 @@ export default function HomepageFaqSection() {
   return (
     <div className="flex flex-col gap-8 pb-4 md:flex-row md:gap-12 md:pb-0" style={{ opacity: 1, transform: "none" }}>
       <div className="space-y-3 md:pt-2 md:flex-shrink-0 md:w-[300px]">
-        <SectionEyebrow>FAQ</SectionEyebrow>
         <SectionTitle as="h3">
           Frequently asked questions.
         </SectionTitle>

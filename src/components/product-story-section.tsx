@@ -4,30 +4,32 @@ type ProductStorySectionProps = {
   eyebrow?: string
   titleLines: [string, string]
   paragraphs: [string, string]
+  withTopDivider?: boolean
 }
 
 export default function ProductStorySection({
   eyebrow = "Avana Relaunch",
   titleLines,
   paragraphs,
+  withTopDivider = false,
 }: ProductStorySectionProps) {
   return (
-    <section className="bg-white pt-16 pb-24 md:pt-20 md:pb-32">
+    <section className={`bg-white pt-8 pb-16 md:pt-10 md:pb-20 ${withTopDivider ? "border-t border-gray-200" : ""}`}>
       <div className="site-content-shell">
         <div className="mx-auto w-full max-w-[76rem]">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <div className="space-y-4">
               <SectionEyebrow>{eyebrow}</SectionEyebrow>
-              <SectionTitle>
-                <span className="block lg:whitespace-nowrap">{titleLines[0]}</span>
-                <span className="block lg:whitespace-nowrap">{titleLines[1]}</span>
+              <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
+                <span className="block">{titleLines[0]}</span>
+                <span className="block">{titleLines[1]}</span>
               </SectionTitle>
             </div>
-            <div className="space-y-8 text-left text-[#39515b]">
-              <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
+            <div className="space-y-6 pt-1 text-left text-[#39515b]">
+              <p className="max-w-[40rem] text-[1rem] leading-[1.62] tracking-[-0.02em] lg:text-[1.08rem]">
                 {paragraphs[0]}
               </p>
-              <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
+              <p className="max-w-[40rem] text-[1rem] leading-[1.62] tracking-[-0.02em] lg:text-[1.08rem]">
                 {paragraphs[1]}
               </p>
             </div>

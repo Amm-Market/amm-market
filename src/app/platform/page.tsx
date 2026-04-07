@@ -15,33 +15,33 @@ export const metadata: Metadata = {
 const platformFaqItems: InlineFaqItem[] = [
   {
     value: "platform-1",
-    question: "How do I get a credit line?",
+    question: "Which wallets are supported?",
     answer:
-      "Deposit LP tokens such as Uniswap or Balancer exposure. You keep earning fees while they are deposited, then borrow instantly through the protocol and repay whenever you choose.",
+      "Avana supports major EVM wallets including MetaMask, Coinbase Wallet, WalletConnect compatible wallets, and hardware wallets connected through WalletConnect. Any wallet that can sign EVM transactions can use the app.",
   },
   {
     value: "platform-2",
-    question: "Do I keep earning on my LP while I borrow?",
+    question: "Which chains does the app support?",
     answer:
-      "Yes. Your LP stays in the pool, and the associated yield continues to accrue while the position is being used as collateral.",
+      "Ethereum mainnet is supported at launch. Additional deployments such as Base and Arbitrum can be added in later phases, with multi chain position management exposed through a unified interface once live.",
   },
   {
     value: "platform-3",
-    question: "What can I use the borrowed funds for?",
+    question: "How do automation tools work?",
     answer:
-      "Borrowed funds can support leverage, hedging, shorting, or general liquidity access across venues, subject to risk assessment and market availability.",
+      "The app lets users configure automated actions around position health, leverage, and price levels. These rules can reduce leverage, increase leverage, repay debt, or fully close a position when predefined conditions are reached.",
   },
   {
     value: "platform-4",
-    question: "How is my position monitored?",
+    question: "Can I use the protocol without the official interface?",
     answer:
-      "The interface is built around real-time health and position updates, with deep liquidity access, competitive rates, and protocol-native monitoring.",
+      "Yes. Avana is permissionless and open source, so users and developers can interact directly with the smart contracts or build their own interface. The official app is the main interface, but it is not the only access point.",
   },
   {
     value: "platform-5",
-    question: "Who is the platform for?",
+    question: "Are there fees for using the app?",
     answer:
-      "It is designed for LPs and power users who want one place to manage positions, financing, and more advanced liquidity workflows.",
+      "The official interface may include an optional frontend fee. This does not change the underlying borrow or supply rates and can be avoided by using a self hosted interface or interacting directly with the protocol.",
   },
 ]
 
@@ -234,7 +234,7 @@ export default function PlatformPage() {
             </section>
 
             <section>
-              <InlineFaqSection eyebrow="FAQ" title="Frequently asked questions." items={platformFaqItems} />
+              <InlineFaqSection title="Frequently asked questions." items={platformFaqItems} />
             </section>
           </div>
         </div>
