@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+import HomepageNewsroomSection, { borrowNewsroomPosts } from "@/components/homepage/HomepageNewsroomSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const openSpokeFaqItems: InlineFaqItem[] = [
@@ -44,7 +44,7 @@ export default function BorrowPage() {
     <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col min-h-screen pt-10 sm:pt-12 md:pt-20">
       <div className="flex-1 flex flex-col relative z-0">
         {/* Hero Section - Exact same structure as home (hero-section.tsx) */}
-        <section className="pb-12 md:pb-16">
+        <section className="pb-16 md:pb-20">
           <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-4 pb-8 md:pt-6 md:pb-12">
             <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16 lg:min-h-[400px] xl:min-h-[450px]">
               {/* Left Column - Hero Image */}
@@ -94,7 +94,7 @@ export default function BorrowPage() {
         </section>
 
         {/* Rest of page content */}
-        <div className="site-content-width space-y-12 pb-16">
+        <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
           {/* Stats */}
           <section className="grid grid-cols-3 gap-4">
             <div className="p-6 bg-blue-50 rounded-xl text-center">
@@ -221,13 +221,14 @@ export default function BorrowPage() {
             </div>
           </section>
 
+          <section>
+            <HomepageNewsroomSection posts={borrowNewsroomPosts} showDividers={false} />
+          </section>
+
           {/* FAQ */}
           <section>
             <InlineFaqSection eyebrow="FAQ" title="Frequently asked questions." items={openSpokeFaqItems} />
           </section>
-
-          {/* CTA */}
-          <EarlyAccessCtaBox />
         </div>
       </div>
     </div>
