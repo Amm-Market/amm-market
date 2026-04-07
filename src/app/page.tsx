@@ -1,6 +1,7 @@
 import WebappHero from "@/components/webapp-hero"
 import HeroSection from "@/components/hero-section"
 import FeaturesSection from "@/components/features-section"
+import HomepageProductsSection from "@/components/homepage-products-section"
 import LogoMarquee from "@/components/logo-marquee"
 import BuildTomorrowSection from "@/components/BuildTomorrowSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
@@ -36,6 +37,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <HomepageProductsSection />
       <BuildTomorrowSection />
       <div className="site-content-shell flex min-h-screen flex-col pt-20">
         <div className="flex-1 flex flex-col relative z-0">
