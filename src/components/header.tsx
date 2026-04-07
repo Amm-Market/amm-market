@@ -25,38 +25,44 @@ interface DesktopMenuGroup {
   supportingItems: DesktopMenuItem[]
 }
 
+function toSentenceCase(value: string) {
+  if (!value) return value
+
+  return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
+}
+
 function SandboxIcon() {
   return (
-    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" className="h-[22px] w-[22px] shrink-0">
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" className="h-[18px] w-[18px] shrink-0">
       <path
         d="M14 18V11H21"
         stroke="currentColor"
-        strokeWidth="3.5"
+        strokeWidth="2.75"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M34 18V11H27"
         stroke="currentColor"
-        strokeWidth="3.5"
+        strokeWidth="2.75"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M14 30V37H21"
         stroke="currentColor"
-        strokeWidth="3.5"
+        strokeWidth="2.75"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M34 30V37H27"
         stroke="currentColor"
-        strokeWidth="3.5"
+        strokeWidth="2.75"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle cx="24" cy="24" r="4" fill="currentColor" />
+      <circle cx="24" cy="24" r="3.5" fill="currentColor" />
     </svg>
   )
 }
@@ -93,12 +99,28 @@ const desktopMenus: DesktopMenuGroup[] = [
       { href: siteRoutes.earn, label: "Earn" },
       { href: siteRoutes.platform, label: "Platform" },
     ],
-    supportingTitle: "",
+    supportingTitle: "What you can do",
     supportingItems: [
-      { href: siteRoutes.borrow, label: "Borrow against LP positions" },
-      { href: siteRoutes.earn, label: "Keep liquidity active" },
-      { href: siteRoutes.invest, label: "Route capital through the Hub" },
-      { href: siteRoutes.lightpaper, label: "Read the protocol paper" },
+      {
+        href: siteRoutes.borrow,
+        label: "Borrow against LP positions",
+        description: "Unlock liquidity from concentrated or volatile LP exposure without leaving the strategy.",
+      },
+      {
+        href: siteRoutes.earn,
+        label: "Keep liquidity active",
+        description: "Stay in market while collateral keeps working across earning and looping flows.",
+      },
+      {
+        href: siteRoutes.invest,
+        label: "Route capital through the Hub",
+        description: "Move borrowed capital into structured allocation paths with clearer execution context.",
+      },
+      {
+        href: siteRoutes.lightpaper,
+        label: "Read the protocol paper",
+        description: "See the system design, risk model, and architecture behind the protocol.",
+      },
     ],
   },
   {
@@ -111,12 +133,28 @@ const desktopMenus: DesktopMenuGroup[] = [
       { href: siteRoutes.faq, label: "FAQ" },
       { href: siteRoutes.brand, label: "Brand" },
     ],
-    supportingTitle: "",
+    supportingTitle: "Where to look",
     supportingItems: [
-      { href: siteRoutes.about, label: "Read the thesis" },
-      { href: siteRoutes.blog, label: "Follow product notes" },
-      { href: siteRoutes.faq, label: "Find quick answers" },
-      { href: siteRoutes.brand, label: "Browse brand materials" },
+      {
+        href: siteRoutes.about,
+        label: "Read the thesis",
+        description: "Get the reasoning behind Avana and the opportunity around LP-backed credit.",
+      },
+      {
+        href: siteRoutes.blog,
+        label: "Follow product notes",
+        description: "Track launches, technical updates, and the product decisions shaping the roadmap.",
+      },
+      {
+        href: siteRoutes.faq,
+        label: "Find quick answers",
+        description: "Jump into short explanations for the most common protocol and product questions.",
+      },
+      {
+        href: siteRoutes.brand,
+        label: "Browse brand materials",
+        description: "Review approved marks, colors, and visual guidance for partner-facing surfaces.",
+      },
     ],
   },
   {
@@ -129,12 +167,28 @@ const desktopMenus: DesktopMenuGroup[] = [
       { href: "/developers/architecture", label: "Architecture" },
       { href: "/developers/integrations", label: "Integrations" },
     ],
-    supportingTitle: "",
+    supportingTitle: "Start here",
     supportingItems: [
-      { href: siteRoutes.developersIntro, label: "Start with the mental model" },
-      { href: "/developers/architecture", label: "Review architecture" },
-      { href: "/developers/integrations", label: "Study integrations" },
-      { href: "/developers/legal", label: "Check constraints" },
+      {
+        href: siteRoutes.developersIntro,
+        label: "Start with the mental model",
+        description: "Understand the core protocol pieces before moving into docs and implementation details.",
+      },
+      {
+        href: "/developers/architecture",
+        label: "Review architecture",
+        description: "See how the hub, spokes, risk controls, and pricing logic fit together.",
+      },
+      {
+        href: "/developers/integrations",
+        label: "Study integrations",
+        description: "Use the contracts and interfaces needed to connect apps, agents, and frontends.",
+      },
+      {
+        href: "/developers/legal",
+        label: "Check constraints",
+        description: "Review the boundaries, assumptions, and legal notes around protocol usage.",
+      },
     ],
   },
 ]
@@ -195,20 +249,20 @@ function DesktopMenuPanel({
     <div
       id={`desktop-menu-${menu.id}`}
       onMouseLeave={onClose}
-      className={`fixed left-0 right-0 top-16 z-40 hidden transform-gpu md:block lg:top-[72px] transition-[opacity,transform] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+      className={`fixed left-0 right-0 top-16 z-40 hidden transform-gpu md:block lg:top-[68px] transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         isOpen ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-6 opacity-0"
       }`}
       aria-hidden={!isOpen}
     >
-      <div className="border-b border-black/8 bg-white shadow-[0_20px_48px_rgba(0,0,0,0.05)]">
-        <div className="w-full bg-white px-4 py-5 sm:px-6 lg:px-8 lg:py-5 xl:px-10">
+      <div className="border-b border-black/6 bg-white shadow-[0_24px_72px_rgba(0,0,0,0.04)]">
+        <div className="w-full bg-white px-4 py-6 sm:px-6 lg:px-8 lg:py-7 xl:px-10">
           <div
             key={`${menu.id}-${animationCycle}`}
-            className="grid gap-6 lg:min-h-[12.5rem] lg:grid-cols-[minmax(0,32rem)_minmax(14rem,18rem)] lg:gap-10 lg:pl-0 xl:grid-cols-[minmax(0,34rem)_minmax(15rem,19rem)] xl:gap-12 xl:pl-0"
+            className="grid gap-8 lg:min-h-[15.25rem] lg:grid-cols-[minmax(0,24rem)_minmax(18rem,22rem)] lg:gap-3 xl:grid-cols-[minmax(0,25rem)_minmax(18rem,22rem)] xl:gap-4"
           >
-            <div className="space-y-2">
-              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.16em] text-black/62">{menu.eyebrow}</p>
-              <div className="space-y-0.5">
+            <div className="space-y-2.5">
+              <p className="text-[0.96rem] font-medium tracking-[-0.02em] text-black/76">{toSentenceCase(menu.eyebrow)}</p>
+              <div className="space-y-1">
                 {menu.items.map((item, index) => (
                   <Link
                     key={item.href}
@@ -216,12 +270,12 @@ function DesktopMenuPanel({
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noreferrer" : undefined}
                     suppressHydrationWarning
-                    className={`group flex items-start gap-4 py-1 text-left text-black transition-[opacity,color,filter] duration-[720ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-black/72 ${
-                      isOpen && animateItems ? "opacity-100 blur-0" : "opacity-[0.16] blur-[0.35px]"
+                    className={`group flex items-start gap-4 py-1.5 text-left text-black transition-[opacity,color,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-black/74 ${
+                      isOpen && animateItems ? "opacity-100 blur-0" : "opacity-[0.18] blur-[0.2px]"
                     }`}
-                    style={{ transitionDelay: `${260 + index * 85}ms` }}
+                    style={{ transitionDelay: `${180 + index * 55}ms` }}
                   >
-                    <span className="text-[clamp(1.72rem,2vw,2.35rem)] font-semibold leading-[0.98] tracking-[-0.06em] transition-transform duration-300 group-hover:translate-x-1">
+                    <span className="text-[clamp(1.9rem,2.45vw,3.05rem)] font-medium leading-[1.04] tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1">
                       {item.label}
                     </span>
                   </Link>
@@ -230,35 +284,41 @@ function DesktopMenuPanel({
             </div>
 
             <div
-              className={`space-y-3 transition-[opacity,filter] duration-[720ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                isOpen && animateItems ? "opacity-100 blur-0" : "opacity-[0.14] blur-[0.35px]"
+              className={`space-y-2.5 pt-0.5 transition-[opacity,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                isOpen && animateItems ? "opacity-100 blur-0" : "opacity-[0.16] blur-[0.2px]"
               }`}
-              style={{ transitionDelay: "460ms" }}
+              style={{ transitionDelay: "280ms" }}
             >
               {menu.supportingTitle ? (
-                <p className="text-[0.88rem] font-medium uppercase tracking-[0.18em] text-black/58">{menu.supportingTitle}</p>
+                <p className="text-[0.96rem] font-medium tracking-[-0.02em] text-black/76">{menu.supportingTitle}</p>
               ) : null}
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {menu.supportingItems.map((item, index) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noreferrer" : undefined}
+                    aria-label={item.label}
                     suppressHydrationWarning
-                    className="group block min-h-[2.4rem] text-left"
+                    className="group block min-h-[3.5rem] text-left"
                   >
                     <div className="flex items-start gap-3.5">
                       <span
                         aria-hidden="true"
-                        className="pt-1 text-[0.75rem] font-semibold tracking-[0.18em] text-black/34"
+                        className="pt-1 text-[0.68rem] font-medium tracking-[0.16em] text-black/24"
                       >
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <div>
-                        <p className="text-[1.02rem] font-normal leading-[1.25] tracking-[-0.03em] text-black/80 transition-colors duration-200 group-hover:text-black">
+                        <p className="text-[0.96rem] font-medium leading-[1.24] tracking-[-0.02em] text-black/76 transition-colors duration-200 group-hover:text-black">
                           {item.label}
                         </p>
+                        {item.description ? (
+                          <p className="mt-1 max-w-[28rem] text-[0.82rem] leading-[1.42] tracking-[-0.01em] text-black/46 transition-colors duration-200 group-hover:text-black/58">
+                            {item.description}
+                          </p>
+                        ) : null}
                       </div>
                     </div>
                   </Link>
@@ -322,10 +382,10 @@ export default function Header(): React.JSX.Element {
   return (
     <>
       <header
-        className="sticky top-0 z-50 border-b border-black/8 bg-[linear-gradient(rgba(255,255,255,0.91)_0%,rgba(255,255,255,0.91)_100%)] backdrop-blur-[7px]"
+        className="sticky top-0 z-50 bg-[linear-gradient(rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.94)_100%)] backdrop-blur-[10px]"
         onMouseLeave={() => setDesktopMenuOpen(null)}
       >
-        <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 lg:h-[72px] lg:px-8 xl:px-10">
+        <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 lg:h-[68px] lg:px-8 xl:px-10">
           <div className="inline-flex shrink-0 items-center">
             <Link
               href={siteRoutes.home}
@@ -337,7 +397,7 @@ export default function Header(): React.JSX.Element {
             </Link>
           </div>
 
-          <nav aria-label="Primary navigation" className="hidden min-w-0 items-center gap-6 md:ml-0 md:mr-auto md:flex">
+          <nav aria-label="Primary navigation" className="hidden min-w-0 items-center gap-8 md:ml-8 md:mr-auto md:flex lg:gap-10">
               {desktopMenus.map((menu) => {
                 const isActive = desktopMenuOpen === menu.id
                 const hasActiveRoute = menu.items.some((item) =>
@@ -354,22 +414,17 @@ export default function Header(): React.JSX.Element {
                     onMouseEnter={() => setDesktopMenuOpen(menu.id)}
                     onFocus={() => setDesktopMenuOpen(menu.id)}
                     onClick={() => setDesktopMenuOpen(menu.id)}
-                    className={`group relative inline-flex items-center px-0 py-1 text-[16px] font-bold tracking-[-0.03em] transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-black ${
-                      isActive || hasActiveRoute ? "text-black" : "text-black hover:text-black"
+                    className={`site-header-nav-link group relative inline-flex items-center px-0 py-1.5 text-[15px] font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${
+                      isActive || hasActiveRoute ? "text-black" : "text-black/62 hover:text-black/94"
                     }`}
                   >
                     <span>{menu.label}</span>
-                    <span
-                      className={`absolute bottom-0 left-0 right-0 h-px origin-left bg-black transition-transform duration-300 ${
-                        isActive || hasActiveRoute ? "scale-x-100 opacity-100" : "scale-x-0 opacity-70 group-hover:scale-x-100 group-focus-visible:scale-x-100"
-                      }`}
-                    />
                   </button>
                 )
               })}
           </nav>
 
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden items-center gap-2.5 md:flex">
             {desktopUtilityLinks.map((link, index) => (
               <Link
                 key={link.label}
@@ -377,14 +432,14 @@ export default function Header(): React.JSX.Element {
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noreferrer" : undefined}
                 suppressHydrationWarning
-                className={`site-header-cta inline-flex h-9 items-center justify-center rounded-full px-3.5 text-[15px] font-semibold tracking-[-0.03em] transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                className={`site-header-cta inline-flex h-[38px] items-center justify-center rounded-full px-3.5 text-[15px] font-medium tracking-[-0.02em] transition duration-200 ease-out ${
                   index === 0
-                    ? "bg-[#ece9e4] text-black hover:bg-[#e4e0db]"
-                    : "border border-black/12 bg-white text-black shadow-[0_6px_18px_rgba(0,0,0,0.06)] hover:border-black/20 hover:bg-black/[0.02]"
+                    ? "bg-black/[0.045] text-black/84 hover:bg-black/[0.07] hover:text-black"
+                    : "border border-[#9ea0a2] bg-white text-[#2b2e32] shadow-[0_12px_28px_rgba(65,67,71,0.14),inset_0_1px_0_rgba(255,255,255,0.92)] hover:border-[#8f9195] hover:bg-[#f7f7f7]"
                 }`}
               >
                 {link.label === "Try Sandbox" ? (
-                  <span className="inline-flex items-center gap-2">
+                  <span className="inline-flex items-center gap-2.5">
                     <SandboxIcon />
                     <span>{link.label}</span>
                   </span>
@@ -444,9 +499,7 @@ export default function Header(): React.JSX.Element {
         aria-hidden={!mobileMenuOpen}
       >
           <div
-            className={`flex h-16 items-center justify-between border-b border-black/8 px-4 transition-all duration-300 ease-out sm:px-6 ${
-              mobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
-            }`}
+            className="flex h-16 items-center justify-between px-4 sm:px-6"
           >
             <Link
               href={siteRoutes.home}
@@ -474,7 +527,7 @@ export default function Header(): React.JSX.Element {
             id="mobile-site-nav"
             aria-label="Mobile navigation"
             className={`h-[calc(100dvh-4rem)] overflow-y-auto px-4 pb-10 pt-10 transition-all duration-300 ease-out sm:px-6 ${
-              mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+              mobileMenuOpen ? "translate-y-0 opacity-100" : "opacity-0"
             }`}
           >
             <ol>

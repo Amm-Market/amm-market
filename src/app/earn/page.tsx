@@ -1,41 +1,67 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+import HomepageNewsroomSection, { earnNewsroomPosts } from "@/components/homepage/HomepageNewsroomSection"
+import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
+import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const bluechipSpokeFaqItems: InlineFaqItem[] = [
   {
     value: "bluechip-1",
-    question: "What are \"blue-chip\" pools?",
+    question: "What do I earn by staking AVA?",
     answer:
-      "Established, liquid pairs: WETH, WBTC, USDC, USDT, DAI, and select governance tokens. 36+ supported pools with reduced volatility and predictable impermanent loss.",
+      "Stakers earn a share of protocol value through AVA emissions and selected protocol fees, including liquidation penalties and other revenue sources approved by governance. Rewards accrue continuously and can be claimed based on the staking design.",
   },
   {
     value: "bluechip-2",
-    question: "How much can I borrow against blue-chip LPs?",
+    question: "Is there a lockup period?",
     answer:
-      "Tiered LTVs—e.g. up to 77.5% for WETH, 70% for WBTC—with conservative liquidation thresholds. Borrow more against proven collateral.",
+      "Staking can be flexible or time locked depending on the final design. Flexible staking allows exit after a short cooldown, while locked staking offers higher reward weight in exchange for a fixed commitment period.",
   },
   {
     value: "bluechip-3",
-    question: "Why is risk lower here?",
+    question: "What is the risk of staking AVA?",
     answer:
-      "Strong oracles, deep liquidity, and an IL buffer (e.g. ~5%). Each position is isolated with transparent risk parameters.",
+      "The main risk is slashing during a protocol shortfall event, where losses exceed the system’s other protection layers. This is intended as a last resort and is supported by overcollateralization, conservative risk parameters, and controlled liquidation design.",
   },
   {
     value: "bluechip-4",
-    question: "Which DEXes are supported?",
-    answer: "Uniswap V3, Uniswap V4, SushiSwap, and Balancer. All blue-chip pools use battle-tested oracles.",
+    question: "How is staking APR determined?",
+    answer:
+      "Staking APR is based on the total rewards distributed to stakers relative to the total amount staked. As borrowing activity, liquidation volume, and protocol usage grow, the reward pool can grow as well.",
   },
   {
     value: "bluechip-5",
-    question: "Is this suitable for larger positions?",
+    question: "Can I stake and use the protocol at the same time?",
     answer:
-      "Yes. Designed for institutional-style use with transparent risk parameters and oracle-backed pricing.",
+      "Yes. Staking AVA is separate from supplying assets or borrowing against LP positions. You can stake, lend, and borrow at the same time, with each action serving a different role in the protocol.",
   },
 ]
+
+const earnFeatureItems = [
+  {
+    title: "Protocol backstop",
+    description: "Earn is designed for capital that sits behind the system as a deeper protection layer during stress.",
+  },
+  {
+    title: "Residual shortfall cover",
+    description: "The product is framed around qualifying deficits that remain after liquidation has already done its job.",
+  },
+  {
+    title: "Governance rules",
+    description: "Coverage scope, recapitalization paths, and response criteria are meant to stay explicit and auditable.",
+  },
+  {
+    title: "Risk-layer alignment",
+    description: "Returns are tied to protocol health, making this a stronger alignment product than passive capital supply.",
+  },
+  {
+    title: "Higher-conviction rewards",
+    description: "Because the role is deeper in the protection stack, upside is designed for users willing to shoulder more risk.",
+  },
+] as const
 
 export const metadata: Metadata = {
   title: "Earn - Blue-Chip LP Collateral",
@@ -44,14 +70,15 @@ export const metadata: Metadata = {
 
 export default function EarnPage() {
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col min-h-screen pt-10 sm:pt-12 md:pt-20">
-      <div className="flex-1 flex flex-col relative z-0">
+    <main className="bg-white">
+      <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 sm:px-6 md:px-8 pt-10 sm:pt-12 md:pt-20">
+        <div className="flex-1 flex flex-col relative z-0">
         {/* Hero Section - Exact same structure as home (hero-section.tsx) */}
-        <section className="pb-12 md:pb-16">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-4 pb-8 md:pt-6 md:pb-12">
+          <section className="pb-4 md:pb-6">
+          <div className="mx-auto w-full pt-3 pb-6 md:pt-5 md:pb-10">
             <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16 lg:min-h-[400px] xl:min-h-[450px]">
               {/* Left Column - Hero Image */}
-              <div className="w-full lg:w-[55%] mb-10 lg:mb-0 order-2 lg:order-1">
+              <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                 <div className="relative w-full max-w-none lg:max-w-[650px] xl:max-w-[700px] mx-auto lg:mx-0">
                   <Image
                     src="/images/Hero__4_.png"
@@ -66,18 +93,18 @@ export default function EarnPage() {
               </div>
 
               {/* Right Column - Text Content */}
-              <div className="w-full lg:w-[45%] text-left order-1 lg:order-2 mb-8 lg:mb-0">
-                <h1 className="max-w-[12ch] text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.02] text-gray-900 mb-3 md:mb-5">
-                  <span className="lg:whitespace-nowrap">Blue-chip LPs.</span>
+              <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
+                <h1 className="mb-3 max-w-[13ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[11ch] md:text-5xl lg:text-5xl xl:text-6xl">
+                  <span className="whitespace-nowrap">Backstop protocol</span>
                   <br />
-                  <span className="lg:whitespace-nowrap">Higher LTV.</span>
+                  <span className="whitespace-nowrap">for higher yield.</span>
                 </h1>
 
-                <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-[32ch] sm:max-w-md mx-0 leading-relaxed mb-5 md:mb-6">
-                  Borrow more against established pairs. Deep liquidity, strong oracles, and conservative risk settings.
+                <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
+                  Backstop Avana in shortfall events, take first-loss risk, and earn the highest rewards for aligned capital.
                 </p>
 
-                <div className="flex flex-row flex-wrap gap-2 sm:gap-3 max-w-md mx-0 items-start">
+                <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
                   <Link
                     href="/faq"
                     className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
@@ -94,10 +121,23 @@ export default function EarnPage() {
               </div>
             </div>
           </div>
-        </section>
+          </section>
+        </div>
+      </div>
 
+      <ProductStorySection
+        withTopDivider
+        titleLines={["Share in", "protocol upside."]}
+        paragraphs={[
+          "Earn is designed around protocol-protection capital rather than LP management. It sits behind conservative valuation, capped exposure, and timely liquidation as a deeper line of defense for qualifying shortfalls.",
+          "In that role, returns are tied to system health and governance-defined coverage rules, making it a higher-conviction product for users who want alignment with Avana&apos;s risk layer rather than passive lending alone.",
+        ]}
+      />
+
+      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
+        <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
-        <div className="site-content-width space-y-12 pb-16">
+        <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
           {/* Stats */}
           <section className="grid grid-cols-3 gap-4">
             <div className="p-6 bg-amber-50 rounded-xl text-center">
@@ -114,61 +154,10 @@ export default function EarnPage() {
             </div>
           </section>
 
-          {/* Features */}
-          <section>
-            <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>Key Features</SectionEyebrow>
-              <SectionTitle>Borrow more on stronger collateral.</SectionTitle>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="p-6 border border-gray-200 rounded-xl">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                      <path d="M2 17l10 5 10-5" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-semibold">Blue-Chip Pools</h3>
-                </div>
-                <p className="text-gray-600">
-                  Only the most liquid, oracle-backed pairs: WETH, WBTC, USDC, USDT, DAI, and select
-                  governance tokens. Reduced volatility and predictable impermanent loss.
-                </p>
-              </div>
-
-              <div className="p-6 border border-gray-200 rounded-xl">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-orange-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-semibold">Higher LTV</h3>
-                </div>
-                <p className="text-gray-600">
-                  Borrow more against proven collateral. Tiered LTVs reflect asset quality—e.g. 77.5% for
-                  WETH, 70% for WBTC—with conservative liquidation thresholds.
-                </p>
-              </div>
-
-              <div className="p-6 border border-gray-200 rounded-xl">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-yellow-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M12 6v6l4 2" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-semibold">Oracle Coverage</h3>
-                </div>
-                <p className="text-gray-600">
-                  All blue-chip pools use battle-tested price oracles and pool-specific configs for
-                  accurate valuation and safe liquidations.
-                </p>
-              </div>
-            </div>
-          </section>
+          <ProductFeatureScrollSection
+            title="Borrow more on stronger collateral."
+            items={earnFeatureItems}
+          />
 
           {/* Supported Dexs */}
           <section>
@@ -230,15 +219,17 @@ export default function EarnPage() {
             </div>
           </section>
 
-          {/* FAQ */}
           <section>
-            <InlineFaqSection eyebrow="FAQ" title="Frequently asked questions." items={bluechipSpokeFaqItems} />
+            <HomepageNewsroomSection posts={earnNewsroomPosts} showDividers={false} />
           </section>
 
-          {/* CTA */}
-          <EarlyAccessCtaBox />
+          {/* FAQ */}
+          <section>
+            <InlineFaqSection title="Frequently asked questions." items={bluechipSpokeFaqItems} />
+          </section>
         </div>
       </div>
-    </div>
+      </div>
+    </main>
   )
 }

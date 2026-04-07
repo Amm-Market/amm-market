@@ -263,7 +263,7 @@
   color: rgb(17 24 39);
 }
 
-.marketing-secondary-shell h2 {
+.marketing-secondary-shell h2:not(.site-section-title) {
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.2;
@@ -274,7 +274,7 @@
 .developer-content[data-developer-doc-shell] section h3,
 .site-article-content h3,
 .site-editorial-content h4,
-.marketing-secondary-shell h3 {
+.marketing-secondary-shell h3:not(.site-section-title) {
   font-size: 0.9375rem;
   font-weight: 700;
   line-height: 1.45;
@@ -380,7 +380,7 @@
     font-size: clamp(2.5rem, 5vw, 4.4rem);
   }
 
-  .marketing-secondary-shell h2 {
+  .marketing-secondary-shell h2:not(.site-section-title) {
     font-size: 1.5rem;
   }
 
@@ -414,11 +414,11 @@
     font-size: 1.125rem;
   }
 
-  .marketing-secondary-shell h2 {
+  .marketing-secondary-shell h2:not(.site-section-title) {
     font-size: 1.75rem;
   }
 
-  .marketing-secondary-shell h3 {
+  .marketing-secondary-shell h3:not(.site-section-title) {
     font-size: 1rem;
   }
 

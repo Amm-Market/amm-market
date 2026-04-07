@@ -1,41 +1,73 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+import HomepageNewsroomSection, { investNewsroomPosts } from "@/components/homepage/HomepageNewsroomSection"
+import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
+import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const stableSpokeFaqItems: InlineFaqItem[] = [
   {
     value: "stable-1",
-    question: "What counts as a \"stable\" LP?",
+    question: "Is my capital safe?",
     answer:
-      "Stablecoin-to-stablecoin pairs (e.g. USDC/USDT, DAI/USDC) on supported pools. Optimized for ~1:1 parity and minimal price impact.",
+      "All loans are overcollateralized, and borrowers must remain above the required health threshold. If a position becomes unsafe, liquidation begins automatically through a controlled process designed to protect lender capital and contain losses within that market.",
   },
   {
     value: "stable-2",
-    question: "Why use stable LPs for borrowing?",
+    question: "Where does my yield come from?",
     answer:
-      "Highest LTV and lowest risk in the protocol. Minimal slippage (<0.1%) and strong capital efficiency with 0.01% swap fees.",
+      "Your yield comes from interest paid by LP backed borrowers. Rates are driven by base utilization at the Aave v4 Hub, with additional Spoke premiums reflecting the risk profile of the LP collateral being funded.",
   },
   {
     value: "stable-3",
-    question: "Which DEXes support stable LPs?",
-    answer: "Uniswap V3, Curve, and Balancer. More venues may be added over time.",
+    question: "How is this different from supplying to Aave directly?",
+    answer:
+      "Avana is built on Aave v4 and uses its Hub for liquidity, but it serves a different borrower class. Instead of standard token collateral, Avana enables LP positions as collateral, which creates new borrowing demand and expands yield opportunities for suppliers.",
   },
   {
     value: "stable-4",
-    question: "What's the benefit of the stable curve?",
+    question: "Can I withdraw at any time?",
     answer:
-      "A concentrated curve for 1:1 assets means near-zero price impact and auto-rebalancing when one stable depegs—LPs can capture arbitrage.",
+      "Yes, as long as there is sufficient available liquidity in the market. There are no lockups. If utilization is very high, withdrawals may depend on repayments or new liquidity entering the system.",
   },
   {
     value: "stable-5",
-    question: "Who is this for?",
+    question: "What assets can I supply?",
     answer:
-      "Large-volume stable swaps, DAO and protocol treasury management, and LPs who want consistent fee yield with low volatility.",
+      "At launch, supported assets include GHO, USDC, USDT, ETH, and WBTC, with additional assets added through governance over time. New listings prioritize liquidity depth, reliable oracle support, and strong market demand.",
+  },
+  {
+    value: "stable-6",
+    question: "Why can yields be higher than standard lending markets?",
+    answer:
+      "Avana adds LP specific borrower demand on top of the shared Hub liquidity layer. That demand can increase utilization and support an additional risk premium, which gives suppliers access to yield that standard lending markets may not capture.",
   },
 ]
+
+const investFeatureItems = [
+  {
+    title: "Capital entry point",
+    description: "Invest collects lender deposits so credit can be routed into LP-backed borrower markets through one spoke.",
+  },
+  {
+    title: "Hub liquidity routing",
+    description: "Deposited assets move through the Hub, where capital can serve multiple LP-collateral markets at once.",
+  },
+  {
+    title: "LP-backed demand",
+    description: "Yield is sourced from real borrowing activity against productive AMM collateral rather than idle reserves.",
+  },
+  {
+    title: "No LP management",
+    description: "Suppliers can earn from the credit layer without managing ranges, pool composition, or impermanent loss.",
+  },
+  {
+    title: "Flexible withdrawals",
+    description: "Capital stays easier to rotate, with deposits designed to remain usable as new opportunities appear.",
+  },
+] as const
 
 export const metadata: Metadata = {
   title: "Invest - Stablecoin LP Collateral",
@@ -44,14 +76,15 @@ export const metadata: Metadata = {
 
 export default function InvestPage() {
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col min-h-screen pt-10 sm:pt-12 md:pt-20">
-      <div className="flex-1 flex flex-col relative z-0">
+    <main className="bg-white">
+      <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 sm:px-6 md:px-8 pt-10 sm:pt-12 md:pt-20">
+        <div className="flex-1 flex flex-col relative z-0">
         {/* Hero Section - Exact same structure as home (hero-section.tsx) */}
-        <section className="pb-12 md:pb-16">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-4 pb-8 md:pt-6 md:pb-12">
+          <section className="pb-4 md:pb-6">
+          <div className="mx-auto w-full pt-3 pb-6 md:pt-5 md:pb-10">
             <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16 lg:min-h-[400px] xl:min-h-[450px]">
               {/* Left Column - Hero Image */}
-              <div className="w-full lg:w-[55%] mb-10 lg:mb-0 order-2 lg:order-1">
+              <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                 <div className="relative w-full max-w-none lg:max-w-[650px] xl:max-w-[700px] mx-auto lg:mx-0">
                   <Image
                     src="/images/Hero__4_.png"
@@ -66,18 +99,18 @@ export default function InvestPage() {
               </div>
 
               {/* Right Column - Text Content */}
-              <div className="w-full lg:w-[45%] text-left order-1 lg:order-2 mb-8 lg:mb-0">
-                <h1 className="max-w-[12ch] text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.02] text-gray-900 mb-3 md:mb-5">
-                  <span className="lg:whitespace-nowrap">Stablecoin LPs.</span>
+              <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
+                <h1 className="mb-3 max-w-[11ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
+                  <span className="lg:whitespace-nowrap">Put idle capital</span>
                   <br />
-                  <span className="lg:whitespace-nowrap">Better terms.</span>
+                  <span className="lg:whitespace-nowrap">to work harder.</span>
                 </h1>
 
-                <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-[32ch] sm:max-w-md mx-0 leading-relaxed mb-5 md:mb-6">
-                  Stable pairs with low slippage and strong capital efficiency. Borrow with higher LTV and lower risk.
+                <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
+                  Lend single assets to LP borrowers, earn demand-driven yield, and stay ready to rotate into new opportunities.
                 </p>
 
-                <div className="flex flex-row flex-wrap gap-2 sm:gap-3 max-w-md mx-0 items-start">
+                <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
                   <Link
                     href="/faq"
                     className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
@@ -94,10 +127,23 @@ export default function InvestPage() {
               </div>
             </div>
           </div>
-        </section>
+          </section>
+        </div>
+      </div>
 
+      <ProductStorySection
+        withTopDivider
+        titleLines={["Put your idle capital", "ready to work."]}
+        paragraphs={[
+          "Invest is the capital-entry side of Avana. Suppliers deposit major assets into the Invest Spoke, and that liquidity is routed through the Hub to power borrowing across multiple LP-collateral markets.",
+          "That keeps lending simple for depositors: they can earn from LP-backed credit demand without managing impermanent loss, liquidity ranges, or the collateral logic handled inside Borrow Spokes.",
+        ]}
+      />
+
+      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
+        <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
-        <div className="site-content-width space-y-12 pb-16">
+        <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
           {/* Stats */}
           <section className="grid grid-cols-3 gap-4">
             <div className="p-6 bg-emerald-50 rounded-xl text-center">
@@ -114,62 +160,10 @@ export default function InvestPage() {
             </div>
           </section>
 
-          {/* Features */}
-          <section>
-            <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>Key Features</SectionEyebrow>
-              <SectionTitle>Stable LPs, stronger terms.</SectionTitle>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="p-6 border border-gray-200 rounded-xl">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-semibold">Concentrated Stable Curve</h3>
-                </div>
-                <p className="text-gray-600">
-                  Custom bonding curve optimized for assets that trade at 1:1 parity, enabling trades with
-                  near-zero price impact even for large volumes.
-                </p>
-              </div>
-
-              <div className="p-6 border border-gray-200 rounded-xl">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-teal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
-                      <path d="M21 3v5h-5" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-semibold">Auto-Rebalancing</h3>
-                </div>
-                <p className="text-gray-600">
-                  Intelligent rebalancing mechanism that maintains optimal pool ratios and automatically
-                  arbitrages depegging events for LP profit.
-                </p>
-              </div>
-
-              <div className="p-6 border border-gray-200 rounded-xl">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-cyan-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                      <line x1="3" y1="9" x2="21" y2="9" />
-                      <line x1="9" y1="21" x2="9" y2="9" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-semibold">Multi-Asset Pools</h3>
-                </div>
-                <p className="text-gray-600">
-                  Support for pools with 2-8 stablecoins, enabling efficient routing and reduced
-                  transaction costs for complex stable swaps.
-                </p>
-              </div>
-            </div>
-          </section>
+          <ProductFeatureScrollSection
+            title="Stable LPs, stronger terms."
+            items={investFeatureItems}
+          />
 
           {/* Supported Dexs */}
           <section>
@@ -230,15 +224,17 @@ export default function InvestPage() {
             </div>
           </section>
 
-          {/* FAQ */}
           <section>
-            <InlineFaqSection eyebrow="FAQ" title="Frequently asked questions." items={stableSpokeFaqItems} />
+            <HomepageNewsroomSection posts={investNewsroomPosts} showDividers={false} />
           </section>
 
-          {/* CTA */}
-          <EarlyAccessCtaBox />
+          {/* FAQ */}
+          <section>
+            <InlineFaqSection title="Frequently asked questions." items={stableSpokeFaqItems} />
+          </section>
         </div>
       </div>
-    </div>
+      </div>
+    </main>
   )
 }

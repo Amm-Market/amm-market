@@ -1,26 +1,23 @@
 "use client"
 
-import { useState } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useEffect, useState } from "react"
+import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const SLIDES = [
   {
-    id: "collateral",
-    title: "Use your LP as collateral",
-    description:
-      "Deposit your LP tokens from any supported DEX. Your position stays active and keeps earning fees while you borrow against it.",
-  },
-  {
     id: "borrow",
-    title: "Borrow across DeFi",
-    description:
-      "Access liquidity from 500+ pools across Uniswap, Curve, Aerodrome and more. One place to put your idle LP to work.",
+    title: "BORROW",
+    description: "Borrow against your LP position as collateral at 5.5% APR.",
   },
   {
-    id: "aave-v4",
-    title: "Built on Aave v4",
-    description:
-      "Permissionless, on-chain, and designed for the entire DeFi liquidity. No repayment schedules—just keep your LTV under the threshold.",
+    id: "invest",
+    title: "INVEST",
+    description: "Put every idle dollar to work across saving, investing, and borrowing.",
+  },
+  {
+    id: "earn",
+    title: "EARN",
+    description: "Stay liquid while earning 5% APY on cash you have not invested yet.",
   },
 ] as const
 
@@ -31,13 +28,13 @@ const SLIDES = [
 export function BuildTomorrowSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  const goPrev = () => {
-    setCurrentIndex((i) => (i === 0 ? SLIDES.length - 1 : i - 1))
-  }
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setCurrentIndex((i) => (i === SLIDES.length - 1 ? 0 : i + 1))
+    }, 4500)
 
-  const goNext = () => {
-    setCurrentIndex((i) => (i === SLIDES.length - 1 ? 0 : i + 1))
-  }
+    return () => window.clearInterval(intervalId)
+  }, [])
 
   return (
     <section
@@ -45,9 +42,16 @@ export function BuildTomorrowSection() {
       data-id="theme-switcher"
       data-theme="beige"
       data-apply-globally="true"
-      className="w-full bg-inherit"
+      className="w-full bg-inherit pb-16 md:pb-20"
     >
-      <div className="site-content-shell pt-2 sm:pt-4">
+      <div className="site-content-shell">
+        <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
+          <SectionEyebrow>Ways to use Avana</SectionEyebrow>
+          <SectionTitle>
+            Borrow, invest, or earn
+          </SectionTitle>
+        </div>
+
         {/* Carousel */}
         <div
           className="relative"
@@ -65,10 +69,18 @@ export function BuildTomorrowSection() {
                 className={idx !== currentIndex ? "hidden" : ""}
               >
                 {/* Placeholder: portrait on mobile, landscape on desktop */}
-                <div className="aspect-[4/5] w-full bg-gradient-to-br from-gray-200 to-gray-300 sm:aspect-[2/1]" />
+                <div className="relative aspect-[4/5] w-full bg-gradient-to-br from-gray-200 to-gray-300 sm:aspect-[2/1]">
+                  <div aria-hidden="true" className="absolute inset-x-4 bottom-4 h-px overflow-hidden bg-white/40 sm:hidden">
+                    <div
+                      key={`mobile-progress-${currentIndex}`}
+                      className="h-full bg-white"
+                      style={{ animation: "build-tomorrow-progress 4.5s linear forwards", transformOrigin: "left center" }}
+                    />
+                  </div>
+                </div>
                 <div
                   id={`slide-desc-${slide.id}`}
-                  className="border-t border-gray-200 bg-white p-4 sm:p-6"
+                  className="border-t border-gray-200 bg-white p-4 sm:hidden"
                 >
                   <p className="text-base font-semibold text-offBlack sm:text-lg">
                     {slide.title}
@@ -79,6 +91,14 @@ export function BuildTomorrowSection() {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div aria-hidden="true" className="mt-3 hidden h-px w-full overflow-hidden bg-gray-200 sm:block">
+            <div
+              key={currentIndex}
+              className="h-full bg-gray-700"
+              style={{ animation: "build-tomorrow-progress 4.5s linear forwards", transformOrigin: "left center" }}
+            />
           </div>
 
           {/* Caption tabs (desktop only) */}
@@ -101,32 +121,19 @@ export function BuildTomorrowSection() {
             ))}
           </div>
 
-          {/* Prev/Next + counter: single row, touch-friendly on mobile */}
-          <div className="mt-5 flex items-center justify-between gap-4 sm:mt-6">
-            <span className="min-w-[2.5rem] text-sm tabular-nums text-gray-600">
-              {currentIndex + 1} / {SLIDES.length}
-            </span>
-            <div className="flex gap-3">
-              <button
-                type="button"
-                onClick={goPrev}
-                aria-label="Back"
-                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gray-200 text-gray-700 transition-colors active:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-500 sm:h-10 sm:w-10"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                onClick={goNext}
-                aria-label="Forward"
-                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gray-200 text-gray-700 transition-colors active:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-500 sm:h-10 sm:w-10"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes build-tomorrow-progress {
+          from {
+            transform: scaleX(0);
+          }
+          to {
+            transform: scaleX(1);
+          }
+        }
+      `}</style>
     </section>
   )
 }
