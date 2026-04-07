@@ -698,33 +698,35 @@ export default function LightpaperPage() {
               <div className="site-editorial-content max-w-3xl [&_a]:text-blue-600 [&_a]:hover:underline [&_h2]:text-[1.35rem] [&_h2]:font-bold [&_h2]:leading-[1.2] [&_h2]:tracking-[-0.01em] [&_h2]:text-gray-900 [&_h3]:text-[1rem] [&_h3]:font-semibold [&_h3]:leading-[1.35] [&_h3]:tracking-[-0.01em] [&_h3]:text-gray-900 [&_li]:mb-2 [&_li]:text-[0.9375rem] [&_li]:leading-7 [&_p]:text-[1.35rem] [&_p]:font-medium [&_p]:leading-[1.5] [&_p]:tracking-[-0.03em] sm:[&_h2]:text-[1.7rem] sm:[&_h3]:text-[1.08rem] sm:[&_li]:text-[1rem] sm:[&_p]:text-[1.5rem]">
                 <div className="space-y-12">
                   <section id="executive-summary" className="scroll-mt-32">
-                <LightpaperSectionHeader eyebrow="Why this matters" title="Executive Summary" />
-                <div className="mt-5 space-y-5">
-                  <p className="font-medium text-gray-900">
-                    The deepest pools in DeFi are full of capital that works hard and moves nowhere.
-                  </p>
-                  <p>
-                    Liquidity providers keep markets alive. They absorb volatility, supply depth, and earn fees for
-                    doing so. But the capital inside those positions remains strangely trapped. The moment an LP wants
-                    liquidity, flexibility, or borrowing power, the usual answer is the same: exit the pool, unwind
-                    the position, and stop doing the thing that made the capital productive in the first place.
-                  </p>
-                  <ImagePlaceholder label="Executive summary visual" />
-                  <p>
-                    On-chain data across 2025 shows that over 90% of liquidity across major AMMs sat idle from a
-                    credit perspective for more than 90% of days. As AMM liquidity is projected to exceed $50 billion
-                    by 2030, the gap between what LP positions are worth and what can be borrowed against them
-                    represents one of the largest untapped opportunities in decentralized finance.
-                  </p>
-                  <p>
-                    Avana addresses this problem by making LP positions borrowable collateral. Instead of forcing users
-                    to choose between staying in the market and accessing liquidity, Avana allows them to do both at
-                    once. A user deposits an LP position, Avana evaluates its collateral value using market-specific
-                    risk logic, and the user can then borrow against it while the position remains active in the
-                    underlying AMM.
-                  </p>
-                </div>
-              </section>
+                    <LightpaperSectionHeader eyebrow="Why this matters" title="Executive Summary" />
+                    <div className="mt-5 space-y-5">
+                      <p className="font-medium text-gray-900">
+                        The deepest liquidity in DeFi is productive, but financially trapped.
+                      </p>
+                      <p>
+                        Liquidity providers keep markets functional. They absorb volatility, provide depth, and earn
+                        fees in return. Yet the capital inside those positions remains largely unusable from a credit
+                        perspective. When an LP needs liquidity, flexibility, or access to capital, the usual solution
+                        is still the same: exit the pool, unwind the position, and stop doing the very thing that made
+                        the capital productive in the first place.
+                      </p>
+                      <p>
+                        That tradeoff creates one of the largest inefficiencies in decentralized finance. Billions of
+                        dollars sit inside AMM positions generating fees, but those same positions generally cannot be
+                        used as reliable collateral without forcing the user to withdraw liquidity first. The result is
+                        a fragmented system where capital can either earn in the market or support borrowing, but
+                        rarely both at once.
+                      </p>
+                      <ImagePlaceholder label="Executive summary visual" />
+                      <p>
+                        Avana unlocks that capital. It allows LP positions to be used as borrowable collateral while
+                        remaining active in the underlying AMM. A user deposits a supported LP position, Avana
+                        evaluates its risk adjusted collateral value using market specific logic, and the user can then
+                        borrow against it without closing the position. Liquidity stays in the pool. Trading fees
+                        continue to accrue. Capital becomes both productive and borrowable at the same time.
+                      </p>
+                    </div>
+                  </section>
 
               <section id="protocol-motivation" className="scroll-mt-32 border-t border-gray-200 pt-12">
                 <LightpaperSectionHeader eyebrow="Problem setting" title="Protocol Motivation" />
@@ -882,13 +884,23 @@ export default function LightpaperPage() {
                 <div className="mt-5 space-y-5">
                   <h3>For Borrowers</h3>
                   <p>
-                    Avana Borrow Spokes are organized into 15 specialized LP-collateral spokes, each corresponding to
-                    a specific AMM liquidity primitive or market structure. These spokes isolate collateral valuation,
-                    liquidation logic, and risk parameters for different liquidity designs while sharing borrowable
-                    liquidity through the Avana Hub. By segmenting LP collateral across dedicated spokes, Avana can
-                    safely integrate a wide range of AMM liquidity formats, from stablecoin pools and correlated assets
-                    to weighted index pools and concentrated liquidity positions, while maintaining unified capital
-                    efficiency across the system.
+                    Avana Borrow Spokes are organized into specialized LP collateral markets, with each spoke aligned
+                    to a specific liquidity primitive or market structure. This allows the protocol to isolate
+                    collateral valuation, liquidation logic, and parameter design across different forms of AMM
+                    liquidity while still drawing borrowable capital from a shared liquidity layer.
+                  </p>
+                  <p>
+                    That structure matters because not all LP positions behave the same way. Stable pools, correlated
+                    asset pools, weighted index pools, and concentrated liquidity positions each introduce different
+                    forms of pricing behavior, liquidity depth, liquidation complexity, and downside risk. By
+                    separating these markets into dedicated spokes, Avana can support a wide range of LP collateral
+                    types without flattening them into a single generic framework.
+                  </p>
+                  <p>
+                    This is how Avana balances breadth with discipline. It can expand support across venues and pool
+                    designs while preserving market specific controls over collateral admission, borrowing power, risk
+                    limits, and liquidation execution. Borrowers benefit from broader LP support. The protocol benefits
+                    from cleaner isolation and more precise risk management.
                   </p>
                   <p className="text-sm text-gray-500">
                     TVL snapshots below are included as quick opportunity markers so investors can see why these LP
@@ -1164,26 +1176,33 @@ export default function LightpaperPage() {
                 <ImagePlaceholder label="Liquidation execution flow" />
                 <div className="space-y-5">
                   <p>
-                    Liquidation is triggered when a position&apos;s accrued debt exceeds its allowed borrowing capacity.
-                    Once triggered, Avana Smart Agents and external liquidators may repay the outstanding debt in
-                    exchange for a liquidation premium ranging from 2% to 10%, dynamically scaled based on the
-                    position&apos;s debt-to-value ratio.
+                    Liquidation begins when a position&apos;s debt rises above its allowed borrowing capacity. At that
+                    point, the system must do more than seize collateral. It must unwind a live AMM position, convert
+                    the underlying assets, repay debt, and do so in a way that is both deterministic and economically
+                    fair.
                   </p>
                   <p>
-                    To ensure reliable execution for LP-backed collateral, Avana operates specialized liquidation agents
-                    that use flashloans from Aave to atomically repay borrower debt, seize the LP collateral, and
-                    unwind the position across supported decentralized exchanges. Upon liquidation, uncollected trading
-                    fees from the LP position are applied first to reduce outstanding debt. If fees are insufficient,
-                    the protocol removes the minimum required portion of LP principal to restore solvency and cover the
-                    liquidation incentive.
+                    Avana is designed for that exact flow. Specialized Smart Agents and external liquidators can repay
+                    outstanding debt in exchange for a liquidation premium that scales with the severity of the
+                    position&apos;s deterioration. Rather than treating liquidation as a blunt asset seizure, the
+                    protocol first accounts for value already embedded in the LP position itself. Uncollected trading
+                    fees are applied before principal is unwound. If that is not sufficient, the protocol removes the
+                    minimum required amount of LP principal necessary to restore solvency and satisfy the liquidation
+                    incentive.
                   </p>
                   <p>
-                    The underlying assets obtained from the LP unwind are routed through liquidity aggregators or direct
-                    swap venues, explicitly avoiding the source pool when doing so would degrade execution quality.
-                    Proceeds are used to repay the flashloan and settle the debt, while any residual LP value is
-                    returned to the borrower within the same transaction. This design ensures deterministic liquidation
-                    of complex LP collateral while minimizing unnecessary capital destruction and preserving fair
-                    outcomes for borrowers, liquidators, and the protocol.
+                    Once unwound, the underlying assets are routed through approved execution paths to repay the
+                    borrowed amount and settle any flashloan based repayment used during the transaction. Execution is
+                    designed to avoid destructive routing choices, including unnecessary dependence on the source pool
+                    when that would degrade pricing. Any residual value remaining after debt and liquidation costs are
+                    covered is returned to the borrower.
+                  </p>
+                  <p>
+                    This matters because LP collateral cannot be liquidated safely with generic lending logic. It
+                    requires purpose built execution around fee collection, liquidity removal, asset conversion, and
+                    repayment ordering. Avana&apos;s liquidation model is built to handle LP collateral as it actually
+                    exists onchain: as active, structured liquidity that must be unwound carefully rather than simply
+                    marked down and sold.
                   </p>
                 </div>
               </section>
