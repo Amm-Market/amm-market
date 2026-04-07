@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const bluechipSpokeFaqItems: InlineFaqItem[] = [
   {
@@ -115,8 +116,9 @@ export default function EarnPage() {
 
           {/* Features */}
           <section>
-            <div className="max-w-[650px] mb-6">
-              <h2 className="text-2xl font-bold">Key Features</h2>
+            <div className="max-w-[650px] mb-8 space-y-3 text-left">
+              <SectionEyebrow>Key Features</SectionEyebrow>
+              <SectionTitle>Borrow more on stronger collateral.</SectionTitle>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="p-6 border border-gray-200 rounded-xl">
@@ -170,8 +172,9 @@ export default function EarnPage() {
 
           {/* Supported Dexs */}
           <section>
-            <div className="max-w-[650px] mb-6">
-              <h2 className="text-2xl font-bold">Supported Dexs</h2>
+            <div className="max-w-[650px] mb-8 space-y-3 text-left">
+              <SectionEyebrow>DEX Coverage</SectionEyebrow>
+              <SectionTitle>Blue-chip LP venues.</SectionTitle>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
@@ -192,8 +195,9 @@ export default function EarnPage() {
 
           {/* Use Cases */}
           <section>
-            <div className="max-w-[650px]">
-              <h2 className="text-2xl font-bold mb-6">Use Cases</h2>
+            <div className="max-w-[650px] mb-8 space-y-3 text-left">
+              <SectionEyebrow>Use Cases</SectionEyebrow>
+              <SectionTitle>Designed for larger positions.</SectionTitle>
             </div>
             <div className="max-w-[650px] space-y-4">
               <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
@@ -228,7 +232,7 @@ export default function EarnPage() {
 
           {/* FAQ */}
           <section>
-            <InlineFaqSection title="Frequently asked questions." items={bluechipSpokeFaqItems} />
+            <InlineFaqSection eyebrow="FAQ" title="Frequently asked questions." items={bluechipSpokeFaqItems} />
           </section>
 
           {/* CTA */}
