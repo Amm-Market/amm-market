@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import "./globals.css"
+import { diatypeFont } from "@/app/site-fonts"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -15,6 +16,7 @@ import {
   SITE_URL,
   SOCIAL_HANDLE,
   siteRoutes,
+  WORDMARK_PATH,
 } from "@/lib/site"
 
 /**
@@ -171,28 +173,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" dir="ltr">
+    <html lang="en" dir="ltr" className={diatypeFont.variable}>
       <head>
         <link
           rel="preload"
-          href="/fonts/diatype/ABCDiatype-Regular-Trial.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
+          href={LOGO_PATH}
+          as="image"
+          type="image/svg+xml"
         />
         <link
           rel="preload"
-          href="/fonts/diatype/ABCDiatype-Bold-Trial.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/diatype/ABCDiatype-Medium-Trial.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
+          href={WORDMARK_PATH}
+          as="image"
+          type="image/svg+xml"
         />
         {/* JSON-LD Structured Data for SEO */}
         <script
