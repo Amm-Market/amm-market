@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import WebappHero from "@/components/webapp-hero"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
-import HomepageNewsroomSection, { platformNewsroomPosts } from "@/components/homepage/HomepageNewsroomSection"
+import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 export const metadata: Metadata = {
@@ -134,11 +134,12 @@ function ImagePanel({ alt }: { alt: string }) {
   return (
     <div className="relative w-full overflow-hidden rounded-xl">
       <Image
-        src="https://assets-cms.kraken.com/images/51n36hrp/facade/28d0735d033c2d44d6cb337e78eb036fb75bde4f-3756x2088.jpg?w=1536&fit=min"
+        src="/images/homepage.png"
         alt={alt}
-        width={1536}
-        height={854}
+        width={2880}
+        height={2111}
         className="aspect-[16/9] w-full object-cover"
+        sizes="(max-width: 768px) 100vw, 1200px"
       />
     </div>
   )
@@ -230,7 +231,7 @@ export default function PlatformPage() {
             </section>
 
             <section>
-              <HomepageNewsroomSection posts={platformNewsroomPosts} showDividers={false} />
+              <HomepageNewsroomSection collection="platform" showDividers={false} />
             </section>
 
             <section>
@@ -262,7 +263,7 @@ export default function PlatformPage() {
               </div>
 
               <div className="flex max-w-[366px] flex-col items-center gap-1 lg:max-w-none">
-                <h2 className="text-center text-[32px] font-black leading-[1.08] tracking-[-0.02em] text-white lg:text-[48px]">
+                <h2 className="text-center text-[32px] font-bold leading-[1.08] tracking-[-0.02em] text-white lg:text-[48px]">
                   Power meets precision
                 </h2>
                 <h3 className="text-center text-[18px] font-medium leading-[1.45] text-gray-300 lg:text-[22px]">
@@ -274,6 +275,7 @@ export default function PlatformPage() {
                 <Link
                   className="group relative flex h-10 min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
                   href="/faq"
+                  prefetch={false}
                 >
                   <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
                   <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -287,6 +289,7 @@ export default function PlatformPage() {
                 <Link
                   className="group relative flex h-10 min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
                   href="/developers"
+                  prefetch={false}
                 >
                   <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
                   <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -307,7 +310,7 @@ export default function PlatformPage() {
                       fill
                       loading="lazy"
                       sizes="100vw"
-                      src="https://mkt-static.crypto.com/cdc_home_exchangehero_usd.webp"
+                      src="/images/homepage.png"
                     />
                   </div>
                 </div>
@@ -317,6 +320,7 @@ export default function PlatformPage() {
                 <Link
                   className="group relative flex h-10 w-full max-w-[366px] min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
                   href="/faq"
+                  prefetch={false}
                 >
                   <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
                   <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

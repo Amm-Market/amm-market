@@ -112,6 +112,7 @@ export default function BlogPostLayout({
         <div className="hidden col-span-12 xl:block lg:col-span-2">
           <Link
             href="/blog"
+            prefetch={false}
             className="type-supporting text-gray-500 hover:text-gray-900 flex cursor-pointer items-center transition"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -126,6 +127,7 @@ export default function BlogPostLayout({
             <div className="space-y-4">
               <Link
                 href="/blog"
+                prefetch={false}
                 className="text-indigo-600 hidden lg:inline-flex items-center hover:text-indigo-800"
               >
                 Blog
@@ -209,7 +211,7 @@ export default function BlogPostLayout({
               <div className="grid gap-8 py-8 lg:grid-cols-2">
                 {prevPost && (
                   <div>
-                    <Link href={`/blog/${prevPost.slug}`}>
+                    <Link href={`/blog/${prevPost.slug}`} prefetch={false}>
                       <div className="hover:bg-gray-50 cursor-pointer rounded border border-gray-200 p-6 transition">
                         <div className="space-y-4">
                           <p className="type-supporting text-gray-500">Previous post</p>
@@ -228,7 +230,7 @@ export default function BlogPostLayout({
                 )}
                 {nextPost && (
                   <div className={prevPost ? "" : "lg:col-start-2"}>
-                    <Link href={`/blog/${nextPost.slug}`}>
+                    <Link href={`/blog/${nextPost.slug}`} prefetch={false}>
                       <div className="hover:bg-gray-50 cursor-pointer rounded border border-gray-200 p-6 transition text-right">
                         <div className="space-y-4">
                           <p className="type-supporting text-gray-500">Next post</p>

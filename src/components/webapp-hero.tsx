@@ -1,16 +1,7 @@
 /**
- * WebappHero - Crypto.com-style hero component for the webapp page.
- *
- * @description
- * A visually striking hero section with:
- * - Gradient background (dark blue to light gray)
- * - App icon + label
- * - Headlines
- * - Glassmorphism CTA buttons (desktop/mobile variants)
- * - Hero image
- * - Bottom gradient fade
+ * WebappHero is the primary marketing hero shared by the homepage and platform.
+ * The visual is a lightweight placeholder until the final product art is ready.
  */
-import Image from "next/image"
 
 function ArrowForwardIcon() {
   return (
@@ -95,17 +86,40 @@ export default function WebappHero() {
           </a>
         </div>
 
-        {/* Hero image */}
-        <div className="relative mx-auto aspect-[536/560] w-full max-w-[280px] sm:max-w-[360px] md:max-w-[450px] lg:max-w-[536px]">
-          <Image
-            alt="Avana webapp interface"
-            className="object-contain"
-            fill
-            priority
-            quality={60}
-            sizes="(max-width: 640px) 200px, (max-width: 768px) 280px, (max-width: 1024px) 360px, 460px"
-            src="https://mkt-static.crypto.com/cdc_home_producthero_mainapp_usa_2x.webp"
-          />
+        {/* Hero placeholder */}
+        <div className="mx-auto w-full max-w-[280px] sm:max-w-[360px] md:max-w-[450px] lg:max-w-[536px]">
+          <div className="relative aspect-[536/560] overflow-hidden rounded-[28px] border border-white/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.08))] shadow-[0_30px_100px_rgba(7,14,34,0.28)] backdrop-blur-md">
+            <div className="absolute inset-4 rounded-[22px] border border-white/15 bg-[linear-gradient(180deg,rgba(15,23,42,0.26),rgba(255,255,255,0.06))]" />
+            <div className="absolute inset-x-0 top-0 h-28 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.22),transparent_68%)]" />
+            <div className="relative z-10 flex h-full flex-col items-center justify-center gap-4 px-6 text-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/20 bg-white/12 text-white/88">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M4 7h16M7 4v6M17 4v6M6 20h12a2 2 0 0 0 2-2V9H4v9a2 2 0 0 0 2 2Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M9 13h6M9 16h4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              <div className="space-y-2">
+                <p className="text-[1.35rem] font-semibold tracking-[-0.04em] text-white sm:text-[1.55rem] md:text-[1.8rem]">
+                  Image to be added
+                </p>
+                <p className="mx-auto max-w-[18rem] text-sm leading-6 text-white/64 sm:max-w-[20rem]">
+                  The live Avana product visual will sit here.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Mobile CTA */}
