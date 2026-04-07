@@ -173,13 +173,23 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <head>
-        <link rel="preconnect" href="https://mkt-static.crypto.com" crossOrigin="" />
-        <link rel="preconnect" href="https://mkt-site-asset.crypto.com" crossOrigin="" />
-        <link rel="dns-prefetch" href="https://mkt-static.crypto.com" />
-        <link rel="dns-prefetch" href="https://mkt-site-asset.crypto.com" />
         <link
           rel="preload"
           href="/fonts/diatype/ABCDiatype-Regular-Trial.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/diatype/ABCDiatype-Bold-Trial.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/diatype/ABCDiatype-Medium-Trial.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

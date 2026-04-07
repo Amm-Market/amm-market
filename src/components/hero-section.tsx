@@ -5,11 +5,39 @@ import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 
+function SectionSkeleton({
+  lines = 3,
+  minHeight = "320px",
+}: {
+  lines?: number
+  minHeight?: string
+}) {
+  return (
+    <div
+      aria-hidden="true"
+      className="rounded-[28px] border border-gray-200 bg-gray-50 p-6"
+      style={{ minHeight }}
+    >
+      <div className="animate-pulse space-y-4">
+        <div className="h-3 w-28 rounded-full bg-gray-200" />
+        <div className="h-10 w-72 max-w-full rounded-2xl bg-gray-200" />
+        {Array.from({ length: lines }).map((_, index) => (
+          <div
+            key={index}
+            className="h-4 rounded-full bg-gray-200"
+            style={{ width: `${92 - index * 14}%` }}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 const DeferredTestimonialSection = dynamic(() => import("@/components/homepage/HomepageTestimonialSection"), {
-  loading: () => <div aria-hidden="true" />,
+  loading: () => <SectionSkeleton minHeight="360px" />,
 })
 const DeferredFaqSection = dynamic(() => import("@/components/homepage/HomepageFaqSection"), {
-  loading: () => <div aria-hidden="true" />,
+  loading: () => <SectionSkeleton lines={4} minHeight="420px" />,
 })
 
 /**
@@ -51,8 +79,7 @@ export default function HeroSection() {
   return (
     <section className="marketing-secondary-shell pb-0">
       <div className="site-content-shell space-y-32 pt-16 md:space-y-40 md:pt-20">
-        <LazySection minHeight="400px">
-          <div className="flex flex-col gap-8 md:gap-12" style={{ opacity: 1, transform: "none" }}>
+        <div className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-2">
               <SectionEyebrow>DEX Coverage</SectionEyebrow>
               <SectionTitle>
@@ -113,11 +140,9 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
-          </div>
-        </LazySection>
+        </div>
 
-        <LazySection minHeight="600px">
-          <div className="flex flex-col gap-8 md:gap-12" style={{ opacity: 1, transform: "none" }}>
+        <div className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow>Pool Coverage</SectionEyebrow>
@@ -167,8 +192,7 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
-          </div>
-        </LazySection>
+        </div>
       </div>
 
       <div className="site-content-shell pt-32 md:pt-40">
@@ -212,8 +236,7 @@ export default function HeroSection() {
       </div>
 
       <div className="site-content-shell space-y-32 pt-32 md:space-y-40 md:pt-40">
-        <LazySection minHeight="600px">
-          <div>
+        <div>
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow>Capital Efficiency</SectionEyebrow>
@@ -437,15 +460,13 @@ export default function HeroSection() {
               </div>
             </div>
 
-          </div>
-        </LazySection>
+        </div>
 
-        <LazySection minHeight="400px">
+        <LazySection minHeight="400px" fallback={<SectionSkeleton minHeight="360px" />}>
           <DeferredTestimonialSection />
         </LazySection>
 
-        <LazySection minHeight="300px">
-          <div>
+        <div>
             <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
               <div className="space-y-4">
                 <SectionEyebrow>Security Protection</SectionEyebrow>
@@ -491,16 +512,15 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
-          </div>
-        </LazySection>
+        </div>
 
-        <LazySection minHeight="420px">
-          <HomepageNewsroomSection />
-        </LazySection>
+        <HomepageNewsroomSection />
 
-        <LazySection minHeight="500px">
-          <DeferredFaqSection />
-        </LazySection>
+        <div className="pb-16 md:pb-24">
+          <LazySection minHeight="500px" fallback={<SectionSkeleton lines={4} minHeight="420px" />}>
+            <DeferredFaqSection />
+          </LazySection>
+        </div>
       </div>
     </section>
   )

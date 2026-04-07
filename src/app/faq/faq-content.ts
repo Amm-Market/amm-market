@@ -1,3 +1,9 @@
+import { revalidateTag, unstable_cache } from "next/cache"
+
+/**
+ * Canonical FAQ content and small server-side helpers for the `/faq` route.
+ * The data lives in one place so the page can stay server-rendered and cached.
+ */
 export type FaqQuestion = {
   id: string
   q: string
@@ -11,7 +17,12 @@ export type FaqCategory = {
   questions: FaqQuestion[]
 }
 
+export type FaqSearchResult = FaqQuestion & {
+  category: string
+}
+
 export const defaultFaqCategory = "Core Concepts"
+export const FAQ_CONTENT_TAG = "faq-content"
 
 export const faqCategories: FaqCategory[] = [
   {
@@ -210,4 +221,67 @@ export const faqSchema = {
       },
     }
   }),
+}
+
+const getCachedFaqCategories = unstable_cache(
+  async () => faqCategories,
+  ["faq-categories"],
+  {
+    revalidate: 3600,
+    tags: [FAQ_CONTENT_TAG],
+  },
+)
+
+export async function getFaqCategories() {
+  try {
+    return await getCachedFaqCategories()
+  } catch (error) {
+    if (error instanceof Error && error.message.includes("incrementalCache missing")) {
+      return faqCategories
+    }
+
+    throw error
+  }
+}
+
+export function normalizeFaqCategory(
+  requestedCategory?: string,
+  categories: readonly FaqCategory[] = faqCategories,
+) {
+  return categories.find((category) => category.name === requestedCategory)?.name ?? defaultFaqCategory
+}
+
+export function getFaqQuestionsForCategory(
+  categories: readonly FaqCategory[],
+  categoryName: string,
+) {
+  return categories.find((category) => category.name === categoryName)?.questions ?? []
+}
+
+export function searchFaqQuestions(
+  categories: readonly FaqCategory[],
+  rawSearchTerm: string,
+): FaqSearchResult[] {
+  const searchTerm = rawSearchTerm.trim().toLowerCase()
+
+  if (!searchTerm) {
+    return []
+  }
+
+  return categories
+    .flatMap((category) =>
+      category.questions.map((question) => ({
+        ...question,
+        category: category.name,
+      })),
+    )
+    .filter(
+      (question) =>
+        question.q.toLowerCase().includes(searchTerm) ||
+        question.a.toLowerCase().includes(searchTerm),
+    )
+}
+
+export function revalidateFaqContent() {
+  revalidateTag(FAQ_CONTENT_TAG, "max")
 }
