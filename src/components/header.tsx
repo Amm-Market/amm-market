@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
 import { LOGO_PATH, SITE_NAME, WORDMARK_PATH, siteRoutes } from "@/lib/site"
 
@@ -208,6 +208,7 @@ const mobileLinks: NavLink[] = [
   { href: siteRoutes.developers, label: "Developers" },
   { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
 ]
+
 function isActivePath(pathname: string | null, href: string): boolean {
   if (href === "/") {
     return pathname === "/"
@@ -219,12 +220,14 @@ function isActivePath(pathname: string | null, href: string): boolean {
 function DesktopMenuPanel({
   menu,
   isOpen,
+  onOpen,
   onClose,
   onExited,
   animationCycle,
 }: {
   menu: DesktopMenuGroup
   isOpen: boolean
+  onOpen: () => void
   onClose: () => void
   onExited: () => void
   animationCycle: number
@@ -232,6 +235,7 @@ function DesktopMenuPanel({
   return (
     <div
       id={`desktop-menu-${menu.id}`}
+      onMouseEnter={onOpen}
       onMouseLeave={onClose}
       onTransitionEnd={(event) => {
         if (!isOpen && event.target === event.currentTarget) {
@@ -323,16 +327,30 @@ function DesktopMenuPanel({
   )
 }
 
+/**
+ * Header keeps the fully working desktop and mobile navigation behavior in one
+ * client component so the premium hover and drawer interactions remain stable.
+ */
 export default function Header(): React.JSX.Element {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [desktopMenuOpen, setDesktopMenuOpen] = useState<DesktopMenuGroup["id"] | null>(null)
   const [desktopMenuRendered, setDesktopMenuRendered] = useState<DesktopMenuGroup["id"] | null>(null)
   const [desktopMenuAnimationCycle, setDesktopMenuAnimationCycle] = useState(0)
+  const desktopCloseTimeoutRef = useRef<number | null>(null)
   const activeDesktopMenu = desktopMenus.find((menu) => menu.id === (desktopMenuOpen ?? desktopMenuRendered)) ?? null
   const clientPathname = pathname
 
+  const clearDesktopCloseTimeout = () => {
+    if (desktopCloseTimeoutRef.current !== null) {
+      window.clearTimeout(desktopCloseTimeoutRef.current)
+      desktopCloseTimeoutRef.current = null
+    }
+  }
+
   const openDesktopMenu = (menuId: DesktopMenuGroup["id"]) => {
+    clearDesktopCloseTimeout()
+
     if (desktopMenuRendered === null) {
       setDesktopMenuRendered(menuId)
       window.requestAnimationFrame(() => {
@@ -347,8 +365,12 @@ export default function Header(): React.JSX.Element {
     setDesktopMenuAnimationCycle((current) => current + 1)
   }
 
-  const closeDesktopMenu = () => {
-    setDesktopMenuOpen(null)
+  const scheduleDesktopMenuClose = () => {
+    clearDesktopCloseTimeout()
+    desktopCloseTimeoutRef.current = window.setTimeout(() => {
+      setDesktopMenuOpen(null)
+      desktopCloseTimeoutRef.current = null
+    }, 220)
   }
 
   useEffect(() => {
@@ -378,11 +400,18 @@ export default function Header(): React.JSX.Element {
     }
   }, [])
 
+  useEffect(() => {
+    return () => {
+      clearDesktopCloseTimeout()
+    }
+  }, [])
+
   return (
     <>
       <header
         className="sticky top-0 z-50 bg-[linear-gradient(rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.94)_100%)] backdrop-blur-[10px]"
-        onMouseLeave={closeDesktopMenu}
+        onMouseEnter={clearDesktopCloseTimeout}
+        onMouseLeave={scheduleDesktopMenuClose}
       >
         <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 lg:h-[68px] lg:px-8 xl:px-10">
           <div className="inline-flex shrink-0 items-center">
@@ -398,30 +427,30 @@ export default function Header(): React.JSX.Element {
           </div>
 
           <nav aria-label="Primary navigation" className="hidden min-w-0 items-center gap-8 md:ml-8 md:mr-auto md:flex lg:gap-10">
-              {desktopMenus.map((menu) => {
-                const isActive = desktopMenuOpen === menu.id
-                const hasActiveRoute = menu.items.some((item) =>
-                  clientPathname ? isActivePath(clientPathname, item.href) : false,
-                )
+            {desktopMenus.map((menu) => {
+              const isActive = desktopMenuOpen === menu.id
+              const hasActiveRoute = menu.items.some((item) =>
+                clientPathname ? isActivePath(clientPathname, item.href) : false,
+              )
 
-                return (
-                  <button
-                    key={menu.id}
-                    type="button"
-                    aria-haspopup="true"
-                    aria-expanded={isActive}
-                    aria-controls={`desktop-menu-${menu.id}`}
-                    onMouseEnter={() => openDesktopMenu(menu.id)}
-                    onFocus={() => openDesktopMenu(menu.id)}
-                    onClick={() => openDesktopMenu(menu.id)}
-                    className={`site-header-nav-link group relative inline-flex items-center px-0 py-1.5 text-[15px] font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${
-                      isActive || hasActiveRoute ? "text-black" : "text-black/62 hover:text-black/94"
-                    }`}
-                  >
-                    <span>{menu.label}</span>
-                  </button>
-                )
-              })}
+              return (
+                <button
+                  key={menu.id}
+                  type="button"
+                  aria-haspopup="true"
+                  aria-expanded={isActive}
+                  aria-controls={`desktop-menu-${menu.id}`}
+                  onMouseEnter={() => openDesktopMenu(menu.id)}
+                  onFocus={() => openDesktopMenu(menu.id)}
+                  onClick={() => openDesktopMenu(menu.id)}
+                  className={`site-header-nav-link group relative inline-flex items-center px-0 py-1.5 text-[15px] font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${
+                    isActive || hasActiveRoute ? "text-black" : "text-black/62 hover:text-black/94"
+                  }`}
+                >
+                  <span>{menu.label}</span>
+                </button>
+              )
+            })}
           </nav>
 
           <div className="hidden items-center gap-2.5 md:flex">
@@ -486,7 +515,8 @@ export default function Header(): React.JSX.Element {
           <DesktopMenuPanel
             menu={activeDesktopMenu}
             isOpen={desktopMenuOpen !== null}
-            onClose={closeDesktopMenu}
+            onOpen={clearDesktopCloseTimeout}
+            onClose={scheduleDesktopMenuClose}
             onExited={() => setDesktopMenuRendered(null)}
             animationCycle={desktopMenuAnimationCycle}
           />
@@ -502,76 +532,76 @@ export default function Header(): React.JSX.Element {
         aria-label="Mobile menu"
         aria-hidden={!mobileMenuOpen}
       >
-          <div
-            className="flex h-16 items-center justify-between px-4 sm:px-6"
+        <div
+          className="flex h-16 items-center justify-between px-4 sm:px-6"
+        >
+          <Link
+            href={siteRoutes.home}
+            prefetch={false}
+            aria-label={SITE_NAME}
+            className="inline-flex items-center"
+            onClick={() => setMobileMenuOpen(false)}
           >
-            <Link
-              href={siteRoutes.home}
-              prefetch={false}
-              aria-label={SITE_NAME}
-              className="inline-flex items-center"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <BrandLogo mobileOnly />
-            </Link>
+            <BrandLogo mobileOnly />
+          </Link>
 
-            <button
-              type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/12 bg-white text-black shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition hover:border-black/18 hover:bg-black/[0.02]"
-              aria-label="Close menu"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                <path d="M4 4L14 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                <path d="M14 4L4 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-              </svg>
-            </button>
-          </div>
-
-          <nav
-            id="mobile-site-nav"
-            aria-label="Mobile navigation"
-            className={`h-[calc(100dvh-4rem)] overflow-y-auto px-4 pb-10 pt-10 transition-all duration-300 ease-out sm:px-6 ${
-              mobileMenuOpen ? "translate-y-0 opacity-100" : "opacity-0"
-            }`}
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/12 bg-white text-black shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition hover:border-black/18 hover:bg-black/[0.02]"
+            aria-label="Close menu"
+            onClick={() => setMobileMenuOpen(false)}
           >
-            <ol>
-              {mobileLinks.map((link, index) => {
-                const isActive = clientPathname ? isActivePath(clientPathname, link.href) : false
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M4 4L14 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              <path d="M14 4L4 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
 
-                return (
-                  <li
-                    key={`${link.label}-${link.href}`}
-                    className={`border-b border-black/10 transition-all duration-300 ease-out ${
-                      mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-                    }`}
-                    style={{ transitionDelay: `${120 + index * 35}ms` }}
+        <nav
+          id="mobile-site-nav"
+          aria-label="Mobile navigation"
+          className={`h-[calc(100dvh-4rem)] overflow-y-auto px-4 pb-10 pt-10 transition-all duration-300 ease-out sm:px-6 ${
+            mobileMenuOpen ? "translate-y-0 opacity-100" : "opacity-0"
+          }`}
+        >
+          <ol>
+            {mobileLinks.map((link, index) => {
+              const isActive = clientPathname ? isActivePath(clientPathname, link.href) : false
+
+              return (
+                <li
+                  key={`${link.label}-${link.href}`}
+                  className={`border-b border-black/10 transition-all duration-300 ease-out ${
+                    mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                  }`}
+                  style={{ transitionDelay: `${120 + index * 35}ms` }}
+                >
+                  <Link
+                    href={link.href}
+                    prefetch={false}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noreferrer" : undefined}
+                    suppressHydrationWarning
+                    className="flex items-end justify-between gap-5 py-3"
+                    onClick={() => setMobileMenuOpen(false)}
                   >
-                    <Link
-                      href={link.href}
-                      prefetch={false}
-                      target={link.external ? "_blank" : undefined}
-                      rel={link.external ? "noreferrer" : undefined}
-                      suppressHydrationWarning
-                      className="flex items-end justify-between gap-5 py-3"
-                      onClick={() => setMobileMenuOpen(false)}
+                    <span
+                      className={`text-[clamp(1.7rem,7.1vw,2.45rem)] font-semibold leading-[0.98] tracking-[-0.05em] ${
+                        isActive ? "text-black" : "text-black/95"
+                      }`}
                     >
-                      <span
-                        className={`text-[clamp(1.7rem,7.1vw,2.45rem)] font-semibold leading-[0.98] tracking-[-0.05em] ${
-                          isActive ? "text-black" : "text-black/95"
-                        }`}
-                      >
-                        {link.label}
-                      </span>
-                      <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-black/75">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                    </Link>
-                  </li>
-                )
-              })}
-            </ol>
-          </nav>
+                      {link.label}
+                    </span>
+                    <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-black/75">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </Link>
+                </li>
+              )
+            })}
+          </ol>
+        </nav>
       </div>
     </>
   )
