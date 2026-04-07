@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const stableSpokeFaqItems: InlineFaqItem[] = [
   {
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
 
 export default function InvestPage() {
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col min-h-screen pt-20">
+    <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col min-h-screen pt-10 sm:pt-12 md:pt-20">
       <div className="flex-1 flex flex-col relative z-0">
         {/* Hero Section - Exact same structure as home (hero-section.tsx) */}
         <section className="pb-12 md:pb-16">
@@ -51,7 +52,7 @@ export default function InvestPage() {
             <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16 lg:min-h-[400px] xl:min-h-[450px]">
               {/* Left Column - Hero Image */}
               <div className="w-full lg:w-[55%] mb-10 lg:mb-0 order-2 lg:order-1">
-                <div className="relative w-full max-w-[700px] lg:max-w-[650px] xl:max-w-[700px] mx-auto lg:mx-0">
+                <div className="relative w-full max-w-none lg:max-w-[650px] xl:max-w-[700px] mx-auto lg:mx-0">
                   <Image
                     src="/images/Hero__4_.png"
                     alt="App interface"
@@ -65,27 +66,27 @@ export default function InvestPage() {
               </div>
 
               {/* Right Column - Text Content */}
-              <div className="w-full lg:w-[45%] text-center lg:text-left order-1 lg:order-2 mb-8 lg:mb-0">
-                <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.15] text-gray-900 mb-4 md:mb-6">
+              <div className="w-full lg:w-[45%] text-left order-1 lg:order-2 mb-8 lg:mb-0">
+                <h1 className="max-w-[12ch] text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-medium tracking-tight leading-[1.02] text-gray-900 mb-3 md:mb-5">
                   <span className="lg:whitespace-nowrap">Stablecoin LPs.</span>
                   <br />
-                  <span className="lg:whitespace-nowrap">Best terms. Low risk.</span>
+                  <span className="lg:whitespace-nowrap">Better terms.</span>
                 </h1>
 
-                <p className="text-base md:text-lg text-gray-600 max-w-lg mx-auto lg:mx-0 leading-relaxed mb-6">
-                  Ultra-low slippage and maximum capital efficiency for stable-to-stable pairs. Borrow against your stable LP positions with the highest LTV and lowest risk in the protocol.
+                <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-[32ch] sm:max-w-md mx-0 leading-relaxed mb-5 md:mb-6">
+                  Stable pairs with low slippage and strong capital efficiency. Borrow with higher LTV and lower risk.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto lg:mx-0">
+                <div className="flex flex-row flex-wrap gap-2 sm:gap-3 max-w-md mx-0 items-start">
                   <Link
-                    href="/early-access"
-                    className="inline-flex items-center justify-center px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-medium rounded-lg transition-colors"
+                    href="/faq"
+                    className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
                   >
                     Get Early Access
                   </Link>
                   <Link
                     href="/developers"
-                    className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors"
+                    className="inline-flex items-center justify-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-100 text-gray-900 text-xs font-semibold rounded-full transition-colors"
                   >
                     View Docs
                   </Link>
@@ -115,8 +116,9 @@ export default function InvestPage() {
 
           {/* Features */}
           <section>
-            <div className="max-w-[650px] mb-6">
-              <h2 className="text-2xl font-bold">Key Features</h2>
+            <div className="max-w-[650px] mb-8 space-y-3 text-left">
+              <SectionEyebrow>Key Features</SectionEyebrow>
+              <SectionTitle>Stable LPs, stronger terms.</SectionTitle>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="p-6 border border-gray-200 rounded-xl">
@@ -171,8 +173,9 @@ export default function InvestPage() {
 
           {/* Supported Dexs */}
           <section>
-            <div className="max-w-[650px] mb-6">
-              <h2 className="text-2xl font-bold">Supported Dexs</h2>
+            <div className="max-w-[650px] mb-8 space-y-3 text-left">
+              <SectionEyebrow>DEX Coverage</SectionEyebrow>
+              <SectionTitle>Stable liquidity venues.</SectionTitle>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
@@ -192,8 +195,9 @@ export default function InvestPage() {
 
           {/* Use Cases */}
           <section>
-            <div className="max-w-[650px]">
-              <h2 className="text-2xl font-bold mb-6">Use Cases</h2>
+            <div className="max-w-[650px] mb-8 space-y-3 text-left">
+              <SectionEyebrow>Use Cases</SectionEyebrow>
+              <SectionTitle>Built for steady capital flows.</SectionTitle>
             </div>
             <div className="max-w-[650px] space-y-4">
               <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
@@ -228,7 +232,7 @@ export default function InvestPage() {
 
           {/* FAQ */}
           <section>
-            <InlineFaqSection title="Frequently asked questions." items={stableSpokeFaqItems} />
+            <InlineFaqSection eyebrow="FAQ" title="Frequently asked questions." items={stableSpokeFaqItems} />
           </section>
 
           {/* CTA */}
