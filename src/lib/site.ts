@@ -32,6 +32,13 @@ export const siteRoutes = {
 export const blogRoutes = {
   aaveV4AvanaSpoke: "/blog/aave-v4-avana-spoke",
   avanaLpCollateral: "/blog/avana-lp-collateral",
+  lpRiskGovernance: "/blog/lp-risk-governance",
+  smartAgentsLpCollateral: "/blog/why-lp-collateral-needs-smart-agents",
+  lpLiquidationShouldWork: "/blog/how-lp-liquidation-should-work",
+  lpCollateralOracleProblem: "/blog/pricing-lp-collateral-oracle-problem",
+  balancerLpCollateralAaveV4: "/blog/balancer-lp-collateral-aave-v4",
+  curveLpCollateralAaveV4: "/blog/curve-lp-collateral-aave-v4",
+  aerodromeLpCollateralAaveV4: "/blog/aerodrome-lp-collateral-aave-v4",
 } as const
 
 export const legacyBlogRedirects = [

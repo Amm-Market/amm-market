@@ -227,7 +227,7 @@ export default function InvestPage() {
           </section>
 
           <section>
-            <HomepageNewsroomSection collection="invest" showDividers={false} />
+            <HomepageNewsroomSection collection="invest" />
           </section>
 
           {/* FAQ */}
