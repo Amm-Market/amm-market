@@ -8,18 +8,21 @@ describe("HomepageProductsSection", () => {
 
     expect(screen.getByText(/Avana Products/i)).toBeInTheDocument()
     expect(screen.getByText(/One protocol,/i)).toBeInTheDocument()
-    expect(screen.getByText(/four product paths\./i)).toBeInTheDocument()
+    expect(screen.getByText(/three product paths\./i)).toBeInTheDocument()
 
     expect(screen.getByRole("heading", { level: 3, name: "Borrow" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { level: 3, name: "Invest" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { level: 3, name: "Earn" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { level: 3, name: "Platform" })).toBeInTheDocument()
 
-    expect(screen.getByText(/Borrow against your LP position as collateral at 5.5% APR/i)).toBeInTheDocument()
-    expect(
-      screen.getByText(/Give all your money a place to grow, whether you are saving it, investing it, or just trying to borrow against it\./i),
-    ).toBeInTheDocument()
-    expect(screen.getByText(/Stay liquid while you earn 5% APY on your uninvested cash/i)).toBeInTheDocument()
-    expect(screen.getByText(/No KYC, ultra secure, fully self-custodial\./i)).toBeInTheDocument()
+    expect(screen.getByText(/Borrow against your LP position/i)).toBeInTheDocument()
+    expect(screen.getByText(/as collateral at 5.5% APR\./i)).toBeInTheDocument()
+    expect(screen.getByText(/Put every idle dollar to work/i)).toBeInTheDocument()
+    expect(screen.getByText(/across saving, investing, and borrowing\./i)).toBeInTheDocument()
+    expect(screen.getByText(/Stay liquid while earning 5% APY/i)).toBeInTheDocument()
+    expect(screen.getByText(/on cash you have not invested yet\./i)).toBeInTheDocument()
+
+    expect(screen.getByRole("link", { name: /Borrow:/i })).toHaveAttribute("href", "/borrow")
+    expect(screen.getByRole("link", { name: /Invest:/i })).toHaveAttribute("href", "/invest")
+    expect(screen.getByRole("link", { name: /Earn:/i })).toHaveAttribute("href", "/earn")
   })
 })
