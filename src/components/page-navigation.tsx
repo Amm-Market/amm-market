@@ -51,6 +51,7 @@ export function PageNavigation() {
         {prevPage ? (
           <Link
             href={prevPage.href}
+            prefetch={false}
             className="flex-1 max-w-[50%] p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50 transition-colors group"
           >
             <div className="type-supporting mb-1 flex items-center gap-1 text-gray-500">
@@ -69,6 +70,7 @@ export function PageNavigation() {
         {nextPage ? (
           <Link
             href={nextPage.href}
+            prefetch={false}
             className="flex-1 max-w-[50%] p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50 transition-colors group text-right"
           >
             <div className="type-supporting mb-1 flex items-center justify-end gap-1 text-gray-500">

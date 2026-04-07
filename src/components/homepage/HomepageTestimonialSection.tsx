@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const FEATURE_DURATION = 10000
+const TRANSITION_DURATION = 300
 
 const featureHighlights = [
   {
@@ -40,28 +41,24 @@ const featureHighlights = [
 export default function HomepageTestimonialSection() {
   const [currentFeature, setCurrentFeature] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
-  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    const startTime = Date.now()
+    let transitionTimer: number | undefined
 
-    const progressInterval = window.setInterval(() => {
-      const elapsed = Date.now() - startTime
-      const nextProgress = Math.min((elapsed / FEATURE_DURATION) * 100, 100)
-      setProgress(nextProgress)
+    const advanceTimer = window.setTimeout(() => {
+      setIsAnimating(true)
+      transitionTimer = window.setTimeout(() => {
+        setCurrentFeature((previous) => (previous + 1) % featureHighlights.length)
+        setIsAnimating(false)
+      }, TRANSITION_DURATION)
+    }, FEATURE_DURATION)
 
-      if (nextProgress >= 100) {
-        window.clearInterval(progressInterval)
-        setIsAnimating(true)
-        window.setTimeout(() => {
-          setProgress(0)
-          setCurrentFeature((previous) => (previous + 1) % featureHighlights.length)
-          setIsAnimating(false)
-        }, 300)
+    return () => {
+      window.clearTimeout(advanceTimer)
+      if (transitionTimer) {
+        window.clearTimeout(transitionTimer)
       }
-    }, 200)
-
-    return () => window.clearInterval(progressInterval)
+    }
   }, [currentFeature])
 
   const handleFeatureChange = (index: number) => {
@@ -71,10 +68,9 @@ export default function HomepageTestimonialSection() {
 
     setIsAnimating(true)
     window.setTimeout(() => {
-      setProgress(0)
       setCurrentFeature(index)
       setIsAnimating(false)
-    }, 300)
+    }, TRANSITION_DURATION)
   }
 
   const feature = featureHighlights[currentFeature]
@@ -108,10 +104,16 @@ export default function HomepageTestimonialSection() {
                 </span>
               </div>
               <div className="h-0.5 mt-3 w-full bg-gray-200 overflow-hidden">
-                <div
-                  className={`h-full bg-gray-900 transition-none ${currentFeature === index ? "" : "w-0"}`}
-                  style={{ width: currentFeature === index ? `${progress}%` : "0%" }}
-                />
+                {currentFeature === index ? (
+                  <div
+                    key={`progress-${currentFeature}`}
+                    className="h-full bg-gray-900"
+                    style={{
+                      animation: `feature-highlight-progress ${FEATURE_DURATION}ms linear forwards`,
+                      transformOrigin: "left center",
+                    }}
+                  />
+                ) : null}
               </div>
             </div>
           ))}
@@ -125,6 +127,7 @@ export default function HomepageTestimonialSection() {
             <div className="mt-6 flex justify-end">
               <Link
                 href={feature.href}
+                prefetch={false}
                 aria-label={`Open ${feature.linkLabel} in the lightpaper`}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:border-gray-300 hover:text-gray-900"
               >
@@ -148,6 +151,17 @@ export default function HomepageTestimonialSection() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes feature-highlight-progress {
+          from {
+            transform: scaleX(0);
+          }
+          to {
+            transform: scaleX(1);
+          }
+        }
+      `}</style>
     </div>
   )
 }

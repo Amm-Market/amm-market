@@ -220,35 +220,24 @@ function DesktopMenuPanel({
   menu,
   isOpen,
   onClose,
+  onExited,
   animationCycle,
 }: {
   menu: DesktopMenuGroup
   isOpen: boolean
   onClose: () => void
+  onExited: () => void
   animationCycle: number
 }) {
-  const [animateItems, setAnimateItems] = useState(false)
-
-  useEffect(() => {
-    if (!isOpen) {
-      setAnimateItems(false)
-      return
-    }
-
-    setAnimateItems(false)
-    const timer = window.setTimeout(() => {
-      setAnimateItems(true)
-    }, 140)
-
-    return () => {
-      window.clearTimeout(timer)
-    }
-  }, [isOpen, menu.id, animationCycle])
-
   return (
     <div
       id={`desktop-menu-${menu.id}`}
       onMouseLeave={onClose}
+      onTransitionEnd={(event) => {
+        if (!isOpen && event.target === event.currentTarget) {
+          onExited()
+        }
+      }}
       className={`fixed left-0 right-0 top-16 z-40 hidden transform-gpu md:block lg:top-[68px] transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         isOpen ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-6 opacity-0"
       }`}
@@ -267,11 +256,12 @@ function DesktopMenuPanel({
                   <Link
                     key={item.href}
                     href={item.href}
+                    prefetch={false}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noreferrer" : undefined}
                     suppressHydrationWarning
                     className={`group flex items-start gap-4 py-1.5 text-left text-black transition-[opacity,color,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-black/74 ${
-                      isOpen && animateItems ? "opacity-100 blur-0" : "opacity-[0.18] blur-[0.2px]"
+                      isOpen ? "opacity-100 blur-0" : "opacity-[0.18] blur-[0.2px]"
                     }`}
                     style={{ transitionDelay: `${180 + index * 55}ms` }}
                   >
@@ -285,7 +275,7 @@ function DesktopMenuPanel({
 
             <div
               className={`space-y-2.5 pt-0.5 transition-[opacity,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                isOpen && animateItems ? "opacity-100 blur-0" : "opacity-[0.16] blur-[0.2px]"
+                isOpen ? "opacity-100 blur-0" : "opacity-[0.16] blur-[0.2px]"
               }`}
               style={{ transitionDelay: "280ms" }}
             >
@@ -297,6 +287,7 @@ function DesktopMenuPanel({
                   <Link
                     key={item.href}
                     href={item.href}
+                    prefetch={false}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noreferrer" : undefined}
                     aria-label={item.label}
@@ -336,10 +327,29 @@ export default function Header(): React.JSX.Element {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [desktopMenuOpen, setDesktopMenuOpen] = useState<DesktopMenuGroup["id"] | null>(null)
+  const [desktopMenuRendered, setDesktopMenuRendered] = useState<DesktopMenuGroup["id"] | null>(null)
   const [desktopMenuAnimationCycle, setDesktopMenuAnimationCycle] = useState(0)
-  const [clientPathname, setClientPathname] = useState<string | null>(null)
+  const activeDesktopMenu = desktopMenus.find((menu) => menu.id === (desktopMenuOpen ?? desktopMenuRendered)) ?? null
+  const clientPathname = pathname
 
-  const activeDesktopMenu = desktopMenus.find((menu) => menu.id === desktopMenuOpen) ?? null
+  const openDesktopMenu = (menuId: DesktopMenuGroup["id"]) => {
+    if (desktopMenuRendered === null) {
+      setDesktopMenuRendered(menuId)
+      window.requestAnimationFrame(() => {
+        setDesktopMenuOpen(menuId)
+        setDesktopMenuAnimationCycle((current) => current + 1)
+      })
+      return
+    }
+
+    setDesktopMenuRendered(menuId)
+    setDesktopMenuOpen(menuId)
+    setDesktopMenuAnimationCycle((current) => current + 1)
+  }
+
+  const closeDesktopMenu = () => {
+    setDesktopMenuOpen(null)
+  }
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow
@@ -368,27 +378,17 @@ export default function Header(): React.JSX.Element {
     }
   }, [])
 
-  useEffect(() => {
-    setClientPathname(pathname)
-    setDesktopMenuOpen(null)
-  }, [pathname])
-
-  useEffect(() => {
-    if (desktopMenuOpen !== null) {
-      setDesktopMenuAnimationCycle((current) => current + 1)
-    }
-  }, [desktopMenuOpen])
-
   return (
     <>
       <header
         className="sticky top-0 z-50 bg-[linear-gradient(rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.94)_100%)] backdrop-blur-[10px]"
-        onMouseLeave={() => setDesktopMenuOpen(null)}
+        onMouseLeave={closeDesktopMenu}
       >
         <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 lg:h-[68px] lg:px-8 xl:px-10">
           <div className="inline-flex shrink-0 items-center">
             <Link
               href={siteRoutes.home}
+              prefetch={false}
               aria-label={SITE_NAME}
               data-framer-name="Logo"
               className="inline-flex items-center"
@@ -411,9 +411,9 @@ export default function Header(): React.JSX.Element {
                     aria-haspopup="true"
                     aria-expanded={isActive}
                     aria-controls={`desktop-menu-${menu.id}`}
-                    onMouseEnter={() => setDesktopMenuOpen(menu.id)}
-                    onFocus={() => setDesktopMenuOpen(menu.id)}
-                    onClick={() => setDesktopMenuOpen(menu.id)}
+                    onMouseEnter={() => openDesktopMenu(menu.id)}
+                    onFocus={() => openDesktopMenu(menu.id)}
+                    onClick={() => openDesktopMenu(menu.id)}
                     className={`site-header-nav-link group relative inline-flex items-center px-0 py-1.5 text-[15px] font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${
                       isActive || hasActiveRoute ? "text-black" : "text-black/62 hover:text-black/94"
                     }`}
@@ -429,6 +429,7 @@ export default function Header(): React.JSX.Element {
               <Link
                 key={link.label}
                 href={link.href}
+                prefetch={false}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noreferrer" : undefined}
                 suppressHydrationWarning
@@ -481,12 +482,15 @@ export default function Header(): React.JSX.Element {
           </div>
         </div>
 
-        <DesktopMenuPanel
-          menu={activeDesktopMenu ?? desktopMenus[0]}
-          isOpen={desktopMenuOpen !== null}
-          onClose={() => setDesktopMenuOpen(null)}
-          animationCycle={desktopMenuAnimationCycle}
-        />
+        {activeDesktopMenu ? (
+          <DesktopMenuPanel
+            menu={activeDesktopMenu}
+            isOpen={desktopMenuOpen !== null}
+            onClose={closeDesktopMenu}
+            onExited={() => setDesktopMenuRendered(null)}
+            animationCycle={desktopMenuAnimationCycle}
+          />
+        ) : null}
       </header>
 
       <div
@@ -503,6 +507,7 @@ export default function Header(): React.JSX.Element {
           >
             <Link
               href={siteRoutes.home}
+              prefetch={false}
               aria-label={SITE_NAME}
               className="inline-flex items-center"
               onClick={() => setMobileMenuOpen(false)}
@@ -544,6 +549,7 @@ export default function Header(): React.JSX.Element {
                   >
                     <Link
                       href={link.href}
+                      prefetch={false}
                       target={link.external ? "_blank" : undefined}
                       rel={link.external ? "noreferrer" : undefined}
                       suppressHydrationWarning
