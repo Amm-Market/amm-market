@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
+import { LlmExportMenu } from "@/components/llm-export-menu"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 
 interface TableOfContentsItem {
@@ -49,32 +50,40 @@ export default function BlogPostLayout({
         <div className="col-span-12 lg:col-span-12 xl:col-span-10">
           <div className="grid grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_17rem] xl:items-start xl:gap-12">
             <div className="min-w-0 max-w-[48rem]">
-              <header className="mb-8 max-w-[48rem] space-y-4 md:mb-10">
-                <h1 className="text-[clamp(2.15rem,5.2vw,4.1rem)] font-semibold leading-[0.96] tracking-[-0.055em] text-gray-900">
-                  {displayTitle ?? title}
-                </h1>
-                <div className="type-supporting text-gray-500">
-                  <p>{date}</p>
-                </div>
-              </header>
-
-              <article>
-                <div className="site-article-content site-blog-article prose prose-gray max-w-none">
-                  {image ? (
-                    <div className="relative mb-8 hidden aspect-[16/9] w-full overflow-hidden rounded-lg border border-gray-200 md:block">
-                      <Image
-                        src={image}
-                        alt={title}
-                        fill
-                        className="m-0 object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
+              <div data-developer-doc-export-root>
+                <header className="mb-8 max-w-[48rem] space-y-4 md:mb-10">
+                  <h1 className="text-[clamp(2.15rem,5.2vw,4.1rem)] font-semibold leading-[0.96] tracking-[-0.055em] text-gray-900">
+                    {displayTitle ?? title}
+                  </h1>
+                  <div className="space-y-3">
+                    <div className="type-supporting text-gray-500">
+                      <p>{date}</p>
                     </div>
-                  ) : null}
+                    <div className="flex justify-center sm:justify-start" data-export-skip>
+                      <LlmExportMenu />
+                    </div>
+                  </div>
+                </header>
+                <div className="mb-8 border-b border-gray-200 md:mb-10" />
 
-                  {children}
-                </div>
-              </article>
+                <article>
+                  <div className="site-article-content site-blog-article prose prose-gray max-w-none">
+                    {image ? (
+                      <div className="relative mb-8 hidden aspect-[16/9] w-full overflow-hidden rounded-lg border border-gray-200 md:block">
+                        <Image
+                          src={image}
+                          alt={title}
+                          fill
+                          className="m-0 object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                      </div>
+                    ) : null}
+
+                    {children}
+                  </div>
+                </article>
+              </div>
 
               <div className="block py-8 lg:hidden">
                 <div className="type-supporting text-gray-500">Share this article</div>
@@ -136,7 +145,7 @@ export default function BlogPostLayout({
               </div>
             </div>
 
-            <div className="relative hidden self-start xl:sticky xl:top-24 xl:block">
+            <div className="hidden self-start xl:block xl:sticky xl:top-28 xl:pt-4">
               {tableOfContents && tableOfContents.length > 0 ? (
                 <ScrollSpySidebar sections={tableOfContents} />
               ) : null}

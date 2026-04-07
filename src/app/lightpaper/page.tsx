@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Code2, Coins, Globe2, LayoutDashboard, Layers3, RefreshCcw, Rocket, ShieldCheck } from "lucide-react"
+import { LlmExportMenu } from "@/components/llm-export-menu"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
@@ -674,7 +675,7 @@ export default function LightpaperPage() {
   return (
     <>
       <section className="pb-12 md:pb-24">
-        <article className="site-content-shell lg:max-w-[72rem]">
+        <article data-developer-doc-export-root className="site-content-shell lg:max-w-[72rem]">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,40rem)_minmax(0,1fr)] lg:gap-20">
             <div className="min-w-0 space-y-12">
               <section className="border-b border-gray-200 pb-10 pt-6 sm:pt-8 lg:pt-10 lg:pb-12">
@@ -691,6 +692,9 @@ export default function LightpaperPage() {
                       <br />
                       <span className="text-gray-500">Avana</span>
                     </h1>
+                    <div className="flex justify-center lg:justify-start" data-export-skip>
+                      <LlmExportMenu />
+                    </div>
                   </div>
                 </div>
               </section>
@@ -1408,7 +1412,7 @@ export default function LightpaperPage() {
               </div>
             </div>
 
-          <div className="lg:justify-self-end">
+          <div className="hidden self-start xl:block xl:sticky xl:top-28 xl:justify-self-end xl:pt-4">
             <ScrollSpySidebar sections={sections} sectionColor="blue" />
           </div>
         </div>
