@@ -35,12 +35,12 @@ describe("homepage architecture", () => {
     expect(heroSectionSource).not.toContain("Set it and forget it with auto-compound, rebalancing, and alerts")
   })
 
-  it("uses tighter FAQ spacing at the bottom of the homepage", () => {
+  it("keeps the lower homepage sections free of divider rails", () => {
     const faqIslandSource = readFileSync(faqIslandPath, "utf8")
     const heroSectionSource = readFileSync(heroSectionPath, "utf8")
 
-    expect(faqIslandSource).toContain("pt-16 pb-4")
-    expect(faqIslandSource).toContain("md:pt-10 md:pb-0")
+    expect(faqIslandSource).not.toContain("border-t border-gray-100")
+    expect(heroSectionSource).not.toContain("border-t border-gray-100")
     expect(heroSectionSource).toContain('marketing-secondary-shell pb-0')
   })
 
@@ -50,7 +50,7 @@ describe("homepage architecture", () => {
     const buildTomorrowSource = readFileSync(buildTomorrowPath, "utf8")
 
     expect(pageSource).toContain('className="site-content-shell"')
-    expect(heroSectionSource).toContain('className="site-content-shell py-16 md:py-24"')
-    expect(buildTomorrowSource).toContain('className="site-content-shell pt-2 sm:pt-4"')
+    expect(heroSectionSource).toContain('className="site-content-shell space-y-32 pt-16 md:space-y-40 md:pt-20"')
+    expect(buildTomorrowSource).toContain('className="site-content-shell"')
   })
 })
