@@ -3,6 +3,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection, { investNewsroomPosts } from "@/components/homepage/HomepageNewsroomSection"
+import LogoMarquee from "@/components/logo-marquee"
+import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const stableSpokeFaqItems: InlineFaqItem[] = [
@@ -44,10 +46,11 @@ export const metadata: Metadata = {
 
 export default function InvestPage() {
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col min-h-screen pt-10 sm:pt-12 md:pt-20">
-      <div className="flex-1 flex flex-col relative z-0">
+    <main className="bg-white">
+      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col min-h-screen pt-10 sm:pt-12 md:pt-20">
+        <div className="flex-1 flex flex-col relative z-0">
         {/* Hero Section - Exact same structure as home (hero-section.tsx) */}
-        <section className="pb-16 md:pb-20">
+          <section className="pb-16 md:pb-20">
           <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-4 pb-8 md:pt-6 md:pb-12">
             <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16 lg:min-h-[400px] xl:min-h-[450px]">
               {/* Left Column - Hero Image */}
@@ -94,8 +97,21 @@ export default function InvestPage() {
               </div>
             </div>
           </div>
-        </section>
+          </section>
+        </div>
+      </div>
 
+      <LogoMarquee />
+      <ProductStorySection
+        titleLines={["Give all your capital", "a place to grow."]}
+        paragraphs={[
+          "Lend single assets to LP borrowers and earn demand-driven yield that moves with real onchain credit demand, not bank-era assumptions.",
+          "Capital stays flexible from the start. Deposit, earn, and withdraw whenever you need to rotate into a new opportunity.",
+        ]}
+      />
+
+      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
+        <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
         <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
           {/* Stats */}
@@ -240,6 +256,7 @@ export default function InvestPage() {
           </section>
         </div>
       </div>
-    </div>
+      </div>
+    </main>
   )
 }
