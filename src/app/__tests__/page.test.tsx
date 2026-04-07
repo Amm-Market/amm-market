@@ -10,10 +10,6 @@ vi.mock("@/components/logo-marquee", () => ({
   default: () => <div data-testid="logo-marquee">LogoMarquee</div>,
 }))
 
-vi.mock("@/components/homepage-products-section", () => ({
-  default: () => <div data-testid="avana-products-section">AvanaProductsSection</div>,
-}))
-
 vi.mock("@/components/BuildTomorrowSection", () => ({
   default: () => <div data-testid="build-tomorrow-section">BuildTomorrowSection</div>,
 }))
@@ -32,13 +28,11 @@ describe("home page", () => {
 
     const webappHero = screen.getByTestId("webapp-hero")
     const logoMarquee = screen.getByTestId("logo-marquee")
-    const avanaProductsSection = screen.getByTestId("avana-products-section")
     const buildTomorrow = screen.getByTestId("build-tomorrow-section")
     const heroSection = screen.getByTestId("hero-section")
 
     expect(webappHero.compareDocumentPosition(logoMarquee)).toBe(Node.DOCUMENT_POSITION_FOLLOWING)
-    expect(logoMarquee.compareDocumentPosition(avanaProductsSection)).toBe(Node.DOCUMENT_POSITION_FOLLOWING)
-    expect(avanaProductsSection.compareDocumentPosition(buildTomorrow)).toBe(Node.DOCUMENT_POSITION_FOLLOWING)
+    expect(logoMarquee.compareDocumentPosition(buildTomorrow)).toBe(Node.DOCUMENT_POSITION_FOLLOWING)
     expect(buildTomorrow.compareDocumentPosition(heroSection)).toBe(Node.DOCUMENT_POSITION_FOLLOWING)
   })
 
