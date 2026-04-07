@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const openSpokeFaqItems: InlineFaqItem[] = [
   {
@@ -112,8 +113,9 @@ export default function BorrowPage() {
 
           {/* Features */}
           <section>
-            <div className="max-w-[650px] mb-6">
-              <h2 className="text-2xl font-bold">Key Features</h2>
+            <div className="max-w-[650px] mb-8 space-y-3 text-left">
+              <SectionEyebrow>Key Features</SectionEyebrow>
+              <SectionTitle>Borrow without unwinding.</SectionTitle>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="p-6 border border-gray-200 rounded-xl">
@@ -166,8 +168,9 @@ export default function BorrowPage() {
 
           {/* Supported Dexs */}
           <section>
-            <div className="max-w-[650px] mb-6">
-              <h2 className="text-2xl font-bold">Supported Dexs</h2>
+            <div className="max-w-[650px] mb-8 space-y-3 text-left">
+              <SectionEyebrow>DEX Coverage</SectionEyebrow>
+              <SectionTitle>Supported venues.</SectionTitle>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {["Uniswap V3", "Uniswap V4", "SushiSwap", "Balancer"].map((dex) => (
@@ -183,8 +186,9 @@ export default function BorrowPage() {
 
           {/* Use Cases */}
           <section>
-            <div className="max-w-[650px]">
-              <h2 className="text-2xl font-bold mb-6">Use Cases</h2>
+            <div className="max-w-[650px] mb-8 space-y-3 text-left">
+              <SectionEyebrow>Use Cases</SectionEyebrow>
+              <SectionTitle>Put borrowed liquidity to work.</SectionTitle>
             </div>
             <div className="max-w-[650px] space-y-4">
               <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
@@ -219,7 +223,7 @@ export default function BorrowPage() {
 
           {/* FAQ */}
           <section>
-            <InlineFaqSection title="Frequently asked questions." items={openSpokeFaqItems} />
+            <InlineFaqSection eyebrow="FAQ" title="Frequently asked questions." items={openSpokeFaqItems} />
           </section>
 
           {/* CTA */}

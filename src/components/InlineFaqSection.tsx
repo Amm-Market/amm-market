@@ -1,6 +1,7 @@
 "use client"
 
 import type { ReactNode } from "react"
+import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 
 export interface InlineFaqItem {
@@ -11,7 +12,9 @@ export interface InlineFaqItem {
 
 interface InlineFaqSectionProps {
   title?: string
+  eyebrow?: string
   items: InlineFaqItem[]
+  withTopBorder?: boolean
 }
 
 const PlusIcon = () => (
@@ -29,12 +32,22 @@ const MinusIcon = () => (
 /**
  * InlineFaqSection - Reusable FAQ accordion matching homepage design.
  */
-export function InlineFaqSection({ title = "Frequently asked questions.", items }: InlineFaqSectionProps) {
+export function InlineFaqSection({
+  title = "Frequently asked questions.",
+  eyebrow = "FAQ",
+  items,
+  withTopBorder = true,
+}: InlineFaqSectionProps) {
   return (
-    <div className="flex flex-col py-16 md:py-20 gap-8 md:flex-row md:gap-12 border-t border-gray-100">
-      <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 md:pt-8 md:flex-shrink-0 md:w-[300px]">
-        {title}
-      </h3>
+    <div
+      className={`flex flex-col gap-8 py-16 md:flex-row md:gap-12 md:py-20 ${
+        withTopBorder ? "border-t border-gray-100" : ""
+      }`}
+    >
+      <div className="space-y-3 md:pt-2 md:flex-shrink-0 md:w-[300px]">
+        <SectionEyebrow>{eyebrow}</SectionEyebrow>
+        <SectionTitle as="h3">{title}</SectionTitle>
+      </div>
       <div className="md:w-[600px] md:flex-shrink-0">
         <Accordion type="single" collapsible orientation="vertical" className="w-full">
           {items.map((item) => (

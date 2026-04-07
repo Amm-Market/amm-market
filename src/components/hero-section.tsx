@@ -1,7 +1,6 @@
-import Image from "next/image"
 import dynamic from "next/dynamic"
 import { DeFiTerm } from "@/components/defi-term"
-import { SectionEyebrow } from "@/components/shared"
+import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 
@@ -54,12 +53,9 @@ export default function HeroSection() {
         <div className="flex flex-col gap-6">
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow>How it works</SectionEyebrow>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+            <SectionTitle>
               How borrowing works
-            </h2>
-            <p className="text-sm md:text-base text-gray-600">
-              Get liquidity from your LP positions in three simple steps.
-            </p>
+            </SectionTitle>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 md:mt-16">
@@ -102,12 +98,9 @@ export default function HeroSection() {
           <div className="flex flex-col pt-16 md:pt-20 gap-8 md:gap-12" style={{ opacity: 1, transform: "none" }}>
             <div className="flex flex-col gap-2">
               <SectionEyebrow>DEX Coverage</SectionEyebrow>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+              <SectionTitle>
                 Borrow Across DEXs
-              </h2>
-              <p className="text-sm md:text-base text-gray-600">
-                We integrate with the leading decentralized exchanges in DeFi.
-              </p>
+              </SectionTitle>
             </div>
             <div className="flex flex-1 items-stretch gap-2 flex-col sm:flex-row">
               <div className="grid w-full flex-1 grid-cols-3 gap-2">
@@ -171,10 +164,7 @@ export default function HeroSection() {
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow>Pool Coverage</SectionEyebrow>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">500+ Supported Pools</h2>
-                <p className="text-sm md:text-base text-gray-600">
-                  Access liquidity from 500+ pools across all integrated DEXs.
-                </p>
+                <SectionTitle>500+ Supported Pools</SectionTitle>
               </div>
             </div>
 
@@ -228,12 +218,9 @@ export default function HeroSection() {
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow>Capital Efficiency</SectionEyebrow>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+                <SectionTitle>
                   Get more out of your LPs
-                </h2>
-                <p className="text-sm md:text-base text-gray-600">
-                  Maximize capital efficiency while keeping your positions active.
-                </p>
+                </SectionTitle>
               </div>
             </div>
             <div className="flex flex-col lg:flex-row justify-start gap-y-10 gap-x-5 mt-10 md:mt-16">
@@ -347,12 +334,9 @@ export default function HeroSection() {
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow>Risk Systems</SectionEyebrow>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+                <SectionTitle>
                   Borrow with Confidence
-                </h2>
-                <p className="text-sm md:text-base text-gray-600">
-                  Every component is designed with trust and safety as the foundation.
-                </p>
+                </SectionTitle>
               </div>
             </div>
             <div className="flex flex-col lg:flex-row justify-start gap-y-10 gap-x-5 mt-10 md:mt-16">
@@ -458,9 +442,9 @@ export default function HeroSection() {
           <div className="flex flex-col md:flex-row gap-8 md:gap-16 pt-16 md:pt-20 items-center border-t border-gray-100">
             <div className="flex-1 space-y-6">
               <SectionEyebrow>Aave v4</SectionEyebrow>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+              <SectionTitle>
                 More about Aave v4
-              </h2>
+              </SectionTitle>
               <p className="text-sm md:text-base text-gray-600 max-w-lg">
                 Aave v4 is a next-generation DeFi lending protocol featuring a <DeFiTerm term="hub">Hub</DeFiTerm>-and-<DeFiTerm term="spoke">Spoke</DeFiTerm> architecture that enables cross-chain liquidity and modular risk management. Avana leverages Aave v4&apos;s infrastructure to provide secure, permissionless borrowing against <DeFiTerm term="lp-position">LP positions</DeFiTerm>. All loan terms, <DeFiTerm term="liquidation">liquidations</DeFiTerm>, and interest rates are enforced on-chain through battle-tested smart contracts and transparent <DeFiTerm term="oracle">oracle</DeFiTerm> systems.
               </p>

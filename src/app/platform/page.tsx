@@ -4,6 +4,7 @@ import Link from "next/link"
 import WebappHero from "@/components/webapp-hero"
 import EarlyAccessCtaBox from "@/components/EarlyAccessCtaBox"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 export const metadata: Metadata = {
   title: "Platform - Avana",
@@ -152,9 +153,9 @@ export default function PlatformPage() {
         <div className="relative z-0 flex flex-1 flex-col">
           <div className="site-content-width space-y-12 pb-16">
             <section>
-              <div className="mb-6 max-w-[650px]">
-                <h2 className="text-2xl font-bold text-gray-900">How It Works</h2>
-                <p className="mt-2 text-gray-600">Two steps to unlock your LP&apos;s potential.</p>
+              <div className="mb-8 max-w-[650px] space-y-3 text-left">
+                <SectionEyebrow>How it works</SectionEyebrow>
+                <SectionTitle>LP borrowing, simplified.</SectionTitle>
               </div>
 
               <div className="max-w-[650px] space-y-4">
@@ -185,11 +186,9 @@ export default function PlatformPage() {
             </section>
 
             <section>
-              <div className="mb-6 flex flex-col items-center gap-3">
-                <h2 className="text-center text-2xl font-bold text-gray-900">Financing</h2>
-                <p className="text-center text-balance text-gray-600">
-                  Maximize capital efficiency with flexible financing.
-                </p>
+              <div className="mb-8 max-w-[650px] space-y-3 text-left">
+                <SectionEyebrow>Financing</SectionEyebrow>
+                <SectionTitle>Flexible capital, one interface.</SectionTitle>
               </div>
 
               <div className="mb-6">
@@ -206,9 +205,9 @@ export default function PlatformPage() {
             </section>
 
             <section>
-              <div className="mb-6 flex flex-col items-center gap-3">
-                <h2 className="text-center text-2xl font-bold text-gray-900">New Section Title</h2>
-                <p className="text-center text-balance text-gray-600">Add your subtitle here.</p>
+              <div className="mb-8 max-w-[650px] space-y-3 text-left">
+                <SectionEyebrow>Platform Tools</SectionEyebrow>
+                <SectionTitle>Manage every position in one place.</SectionTitle>
               </div>
 
               <div className="mb-6">
@@ -231,7 +230,7 @@ export default function PlatformPage() {
             </section>
 
             <section>
-              <InlineFaqSection title="Frequently asked questions." items={platformFaqItems} />
+              <InlineFaqSection eyebrow="FAQ" title="Frequently asked questions." items={platformFaqItems} />
             </section>
           </div>
         </div>
