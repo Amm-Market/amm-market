@@ -8,7 +8,7 @@ type ProductFeatureItem = {
 type ProductFeatureScrollSectionProps = {
   eyebrow?: string
   title: string
-  items: ProductFeatureItem[]
+  items: readonly ProductFeatureItem[]
 }
 
 export default function ProductFeatureScrollSection({
