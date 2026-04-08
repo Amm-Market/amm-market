@@ -151,7 +151,7 @@ export default function PlatformPage() {
         <div className="px-4 sm:px-6 lg:px-10 xl:px-12">
           <div className="mx-auto w-full max-w-[90rem] space-y-10 md:space-y-12 lg:space-y-14">
               <div className="pt-20 md:pt-28 lg:pt-32">
-                <h1 className="text-left text-[clamp(2.6rem,8.2vw,5.7rem)] font-medium leading-[0.93] tracking-[-0.085em] text-[#111111]">
+                <h1 className="text-left text-[clamp(2.4rem,5.8vw,4.3rem)] font-normal leading-[0.98] tracking-[-0.065em] text-[#111111]">
                   <span className="block whitespace-nowrap">One platform for every</span>
                   <span className="block whitespace-nowrap">LP as Collateral needs</span>
                 </h1>
