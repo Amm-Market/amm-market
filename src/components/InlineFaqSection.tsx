@@ -42,7 +42,7 @@ export function InlineFaqSection({
 }: InlineFaqSectionProps) {
   return (
     <div
-      className={`flex flex-col gap-8 py-16 md:flex-row md:gap-12 md:py-20 ${
+      className={`flex flex-col gap-8 pb-4 md:flex-row md:gap-12 md:pb-0 ${
         withTopBorder ? "border-t border-gray-100" : ""
       }`}
     >

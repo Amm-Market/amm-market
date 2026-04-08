@@ -545,12 +545,14 @@ export default function BrandPage() {
           </section>
 
           {/* FAQ Section - 06 */}
-          <InlineFaqSection
-            eyebrow={brandSections.faq.eyebrow}
-            title={brandSections.faq.title}
-            items={faqItems}
-            withTopBorder={false}
-          />
+          <div className="pb-16 md:pb-24">
+            <InlineFaqSection
+              eyebrow={brandSections.faq.eyebrow}
+              title={brandSections.faq.title}
+              items={faqItems}
+              withTopBorder={false}
+            />
+          </div>
         </div>
       </main>
     </div>
