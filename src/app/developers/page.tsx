@@ -10,7 +10,7 @@ import {
   ShieldCheck,
   Workflow,
 } from "lucide-react"
-import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
@@ -378,7 +378,7 @@ export default function DevelopersPage() {
         </section>
       </div>
 
-      <ScrollSpySidebar
+      <DeveloperScrollSpyRail
         sections={sections}
         pageSummary="High-level context for LP-backed borrowing, shared Hub liquidity, and the spoke-specific logic used by Avana."
         sectionColor="blue"
