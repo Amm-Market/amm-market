@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
+import InvestApySection from "@/components/invest-apy-section"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
@@ -143,26 +144,12 @@ export default function InvestPage() {
         ]}
       />
 
+      <InvestApySection />
+
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
         <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
-          {/* Stats */}
-          <section className="grid grid-cols-3 gap-4">
-            <div className="p-6 bg-emerald-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-emerald-600">0.01%</p>
-              <p className="text-sm text-gray-600">Swap Fee</p>
-            </div>
-            <div className="p-6 bg-emerald-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-emerald-600">&lt;0.1%</p>
-              <p className="text-sm text-gray-600">Slippage</p>
-            </div>
-            <div className="p-6 bg-emerald-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-emerald-600">99.9%</p>
-              <p className="text-sm text-gray-600">Capital Efficiency</p>
-            </div>
-          </section>
-
           <ProductFeatureScrollSection
             eyebrowTone="emerald"
             title="Stable LPs, stronger terms."
