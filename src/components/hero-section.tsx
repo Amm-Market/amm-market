@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic"
 import { DeFiTerm } from "@/components/defi-term"
+import HomepageFaqSection from "@/components/homepage/HomepageFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
@@ -36,15 +37,12 @@ function SectionSkeleton({
 const DeferredTestimonialSection = dynamic(() => import("@/components/homepage/HomepageTestimonialSection"), {
   loading: () => <SectionSkeleton minHeight="360px" />,
 })
-const DeferredFaqSection = dynamic(() => import("@/components/homepage/HomepageFaqSection"), {
-  loading: () => <SectionSkeleton lines={4} minHeight="420px" />,
-})
 
 /**
  * HeroSection - Homepage secondary content shell.
  *
- * Static sections render on the server while interactive islands are deferred
- * until they approach the viewport.
+ * Static sections render on the server while heavier interactive islands are
+ * deferred until they approach the viewport.
  */
 function PoolCard({ pool }: { pool: HomepagePool }) {
   return (
@@ -454,9 +452,7 @@ export default function HeroSection() {
         <HomepageNewsroomSection eyebrowTone="rose" />
 
         <div className="pb-16 md:pb-24">
-          <LazySection minHeight="500px" fallback={<SectionSkeleton lines={4} minHeight="420px" />}>
-            <DeferredFaqSection />
-          </LazySection>
+          <HomepageFaqSection />
         </div>
       </div>
     </section>

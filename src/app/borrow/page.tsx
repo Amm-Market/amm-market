@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import type { ReactNode } from "react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+import BorrowUseCasesSection from "@/components/borrow-use-cases-section"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import ProductStorySection from "@/components/product-story-section"
@@ -114,8 +114,10 @@ function BorrowMarketCard({
   return (
     <div className="flex h-full flex-col rounded-2xl bg-gray-50 p-6 md:p-8">
       <span className="text-5xl font-bold text-gray-300 md:text-6xl">{number}</span>
-      <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-900 md:text-xl">{title}</h3>
-      <p className="text-sm text-gray-600 md:text-base">{description}</p>
+      <h3 className="mt-6 max-w-[14rem] text-[1.45rem] font-medium leading-[1.08] tracking-[-0.045em] text-[#18323c]">
+        {title}
+      </h3>
+      <p className="mt-3 text-sm leading-6 text-gray-600">{description}</p>
       <div className="mt-6">
         <BorrowMarketPlaceholderArt />
       </div>
@@ -300,42 +302,7 @@ export default function BorrowPage() {
             items={borrowFeatureItems}
           />
 
-          {/* Use Cases */}
-          <section>
-            <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow tone="blue">Use Cases</SectionEyebrow>
-              <SectionTitle>Put borrowed liquidity to work.</SectionTitle>
-            </div>
-            <div className="max-w-[650px] space-y-4">
-              <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">1</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Cross-Chain Swaps</h3>
-                  <p className="text-gray-600 text-sm">Move liquidity across chains without trusted bridges.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">2</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">LP-Backed Borrowing</h3>
-                  <p className="text-gray-600 text-sm">Use any supported LP as collateral for a credit line.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">3</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Unified Liquidity</h3>
-                  <p className="text-gray-600 text-sm">Access deep pools across all supported chains in one interface.</p>
-                </div>
-              </div>
-            </div>
-          </section>
+          <BorrowUseCasesSection />
 
           <HomepageNewsroomSection collection="borrow" eyebrowTone="blue" />
 
