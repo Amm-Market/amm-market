@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import WebappHero from "@/components/webapp-hero"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
@@ -148,7 +147,31 @@ function ImagePanel({ alt }: { alt: string }) {
 export default function PlatformPage() {
   return (
     <main className="bg-white">
-      <WebappHero />
+      <section className="bg-white pt-10 pb-8 md:pt-14 md:pb-10 lg:pt-16">
+        <div className="px-4 sm:px-6 lg:px-10 xl:px-12">
+          <div className="mx-auto w-full max-w-[90rem] space-y-10 md:space-y-12 lg:space-y-14">
+              <div className="pt-20 md:pt-28 lg:pt-32">
+                <h1 className="text-left text-[clamp(2.6rem,8.2vw,5.7rem)] font-medium leading-[0.93] tracking-[-0.085em] text-[#111111]">
+                  <span className="block whitespace-nowrap">One platform for every</span>
+                  <span className="block whitespace-nowrap">LP as Collateral needs</span>
+                </h1>
+              </div>
+
+              <section className="opacity-100 [transform:perspective(1200px)]">
+                <div className="relative overflow-hidden rounded-[18px] bg-[#f4f1ea] md:rounded-[22px] lg:rounded-[24px]">
+                  <div className="relative aspect-square w-full md:aspect-[1360/640]">
+                    <img
+                      src="https://framerusercontent.com/images/wHZUVowhaR4lNZZRsYJJW7ik9M.jpg?scale-down-to=1024&width=8368&height=5584"
+                      alt="Two people are sitting in the office, discussing the upcoming project."
+                      className="h-full w-full object-cover object-center"
+                    />
+                  </div>
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-white/0 to-white/55 blur-2xl md:h-20 lg:h-24" />
+                </div>
+              </section>
+          </div>
+        </div>
+      </section>
 
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 pt-8 sm:px-6 sm:pt-12">
         <div className="relative z-0 flex flex-1 flex-col">
