@@ -50,24 +50,20 @@ const stableSpokeFaqItems: InlineFaqItem[] = [
 
 const investFeatureItems = [
   {
-    title: "Capital entry point",
-    description: "Invest collects lender deposits so credit can be routed into LP-backed borrower markets through one spoke.",
+    title: "Easy money movement",
+    description: "Access and move capital whenever liquidity is available, all from one simple online interface.",
   },
   {
-    title: "Hub liquidity routing",
-    description: "Deposited assets move through the Hub, where capital can serve multiple LP-collateral markets at once.",
+    title: "A market-leading rate",
+    description: "Supplier yield is designed to sit above most bank cash products while staying tied to real onchain demand.",
   },
   {
-    title: "LP-backed demand",
-    description: "Yield is sourced from real borrowing activity against productive AMM collateral rather than idle reserves.",
+    title: "Supply once, power many borrowers",
+    description: "One deposit can help fund a network of specialized LP borrowers across multiple spoke markets through one cleaner capital surface.",
   },
   {
-    title: "No LP management",
-    description: "Suppliers can earn from the credit layer without managing ranges, pool composition, or impermanent loss.",
-  },
-  {
-    title: "Flexible withdrawals",
-    description: "Capital stays easier to rotate, with deposits designed to remain usable as new opportunities appear.",
+    title: "Base rate plus risk premium",
+    description: "Supplier returns combine the Aave v4 Hub base rate with Avana's LP borrower risk premium.",
   },
 ] as const
 
@@ -155,43 +151,52 @@ export default function InvestPage() {
 
           <ProductFeatureScrollSection
             eyebrowTone="emerald"
-            title="Stable LPs, stronger terms."
+            title="A market-leading rate, with more built in."
             items={investFeatureItems}
           />
 
-          {/* Use Cases */}
           <section>
-            <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow tone="emerald">Use Cases</SectionEyebrow>
-              <SectionTitle>Built for steady capital flows.</SectionTitle>
+            <div className="flex flex-col gap-3">
+              <SectionEyebrow tone="emerald">How it works</SectionEyebrow>
+              <SectionTitle>
+                Get started
+                <span className="md:hidden">
+                  <br />
+                </span>
+                <span className="hidden md:inline"> </span>
+                with as little as $1.
+              </SectionTitle>
             </div>
-            <div className="max-w-[650px] space-y-4">
-              <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">1</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Large Volume Swaps</h3>
-                  <p className="text-gray-600 text-sm">Execute million-dollar stablecoin swaps with minimal slippage.</p>
-                </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
+              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+                <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
+                <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
+                  Visit the Lend page
+                </h3>
+                <p className="text-sm text-gray-600 md:text-base">
+                  Browse lending markets like GHO, USDC, USDT, ETH, and WBTC. Each market shows current APY, utilization, and what your capital is helping fund across LP borrower categories.
+                </p>
               </div>
-              <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">2</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Treasury Management</h3>
-                  <p className="text-gray-600 text-sm">DAOs and protocols can efficiently manage stablecoin reserves.</p>
-                </div>
+
+              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+                <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
+                <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
+                  Make a deposit
+                </h3>
+                <p className="text-sm text-gray-600 md:text-base">
+                  Connect your wallet, approve the asset, and supply. Your funds enter the lending pool and start earning immediately, with APY, utilization, and accrued interest visible in real time.
+                </p>
               </div>
-              <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">3</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Yield Optimization</h3>
-                  <p className="text-gray-600 text-sm">LPs earn consistent fees from high-volume stable trading.</p>
-                </div>
+
+              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+                <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
+                <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
+                  Collect your yield
+                </h3>
+                <p className="text-sm text-gray-600 md:text-base">
+                  Interest accrues continuously. Withdraw whenever you choose, and your principal plus earned yield returns to your wallet in one transaction with no claim period or lock-up.
+                </p>
               </div>
             </div>
           </section>
