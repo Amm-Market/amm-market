@@ -98,14 +98,14 @@ export default function InvestPage() {
 
               {/* Right Column - Text Content */}
               <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
-                <h1 className="mb-3 max-w-[11ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
-                  <span className="lg:whitespace-nowrap">Put idle capital</span>
+                <h1 className="mb-3 max-w-[14ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[11ch] md:text-5xl lg:text-5xl xl:text-6xl">
+                  <span className="lg:whitespace-nowrap">Lend into</span>
                   <br />
-                  <span className="lg:whitespace-nowrap">to work harder.</span>
+                  <span className="lg:whitespace-nowrap">LP-backed credit.</span>
                 </h1>
 
                 <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
-                  Lend single assets to LP borrowers, earn demand-driven yield, and stay ready to rotate into new opportunities.
+                  Supply single assets, earn demand-driven yield, and keep capital flexible as new opportunities appear.
                 </p>
 
                 <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
@@ -134,10 +134,10 @@ export default function InvestPage() {
       <ProductStorySection
         withTopDivider
         eyebrowTone="emerald"
-        titleLines={["Put your idle capital", "ready to work."]}
+        titleLines={["One deposit,", "many LP markets."]}
         paragraphs={[
-          "Invest is the capital-entry side of Avana. Suppliers deposit major assets into the Invest Spoke, and that liquidity is routed through the Hub to power borrowing across multiple LP-collateral markets.",
-          "That keeps lending simple for depositors: they can earn from LP-backed credit demand without managing impermanent loss, liquidity ranges, or the collateral logic handled inside Borrow Spokes.",
+          "Invest is Avana's supply layer. Deposited assets enter the Invest Spoke, then route through the Hub to support borrowing across multiple LP-collateral markets.",
+          "That gives suppliers exposure to LP-backed credit demand without managing impermanent loss, liquidity ranges, or borrower-side collateral operations.",
         ]}
       />
 
