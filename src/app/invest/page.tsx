@@ -4,6 +4,7 @@ import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import InvestApySection from "@/components/invest-apy-section"
+import InvestGrowthCalculatorSection from "@/components/invest-growth-calculator-section"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
@@ -150,33 +151,13 @@ export default function InvestPage() {
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
         <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
+          <InvestGrowthCalculatorSection />
+
           <ProductFeatureScrollSection
             eyebrowTone="emerald"
             title="Stable LPs, stronger terms."
             items={investFeatureItems}
           />
-
-          {/* Supported Dexs */}
-          <section>
-            <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow tone="emerald">DEX Coverage</SectionEyebrow>
-              <SectionTitle>Stable liquidity venues.</SectionTitle>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { name: "Uniswap V3", color: "bg-pink-100 text-pink-600" },
-                { name: "Curve", color: "bg-yellow-100 text-yellow-600" },
-                { name: "Balancer", color: "bg-gray-100 text-gray-600" },
-              ].map((dex) => (
-                <div key={dex.name} className="p-4 border border-gray-200 rounded-xl text-center">
-                  <div className={`w-12 h-12 ${dex.color} rounded-full mx-auto mb-2 flex items-center justify-center`}>
-                    <span className="text-sm font-bold">{dex.name.slice(0, 2)}</span>
-                  </div>
-                  <p className="font-medium text-gray-900">{dex.name}</p>
-                </div>
-              ))}
-            </div>
-          </section>
 
           {/* Use Cases */}
           <section>
