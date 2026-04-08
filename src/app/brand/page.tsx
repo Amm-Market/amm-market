@@ -62,7 +62,7 @@ function BrandFaqSection({ items }: { items: BrandFaqItem[] }) {
   return (
     <div className="grid grid-cols-1 gap-8 pb-4 md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:gap-6 md:pb-0 lg:grid-cols-[minmax(0,25rem)_minmax(0,1fr)] lg:gap-8">
       <div className="space-y-3 md:max-w-[25rem] md:pt-2">
-        <SectionTitle as="h3" className="max-w-none leading-[0.96]">
+        <SectionTitle as="h3" className="max-w-none font-medium leading-[0.96]">
           <span className="block whitespace-nowrap">Frequently asked</span>
           <span className="block whitespace-nowrap">questions.</span>
         </SectionTitle>

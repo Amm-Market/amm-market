@@ -69,7 +69,7 @@ function SandboxIcon() {
 
 function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
   return (
-    <span className="inline-flex items-center">
+    <span className="inline-flex -translate-y-0.5 items-center md:translate-y-0">
       <Image
         src={LOGO_PATH}
         alt={`${SITE_NAME} icon`}

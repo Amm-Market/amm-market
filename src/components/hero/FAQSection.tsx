@@ -4,7 +4,7 @@ import { SectionTitle } from "@/components/shared"
 
 function FaqHeading() {
   return (
-    <SectionTitle as="h3" className="max-w-none leading-[0.96]">
+    <SectionTitle as="h3" className="max-w-none font-medium leading-[0.96]">
       <span className="block whitespace-nowrap">Frequently asked</span>
       <span className="block whitespace-nowrap">questions.</span>
     </SectionTitle>
