@@ -223,14 +223,11 @@ export default function EarnPage() {
             </div>
           </section>
 
-          <section>
-            <HomepageNewsroomSection collection="earn" eyebrowTone="amber" />
-          </section>
+          <HomepageNewsroomSection collection="earn" eyebrowTone="amber" />
 
-          {/* FAQ */}
-          <section>
-            <InlineFaqSection title="Frequently asked questions." items={bluechipSpokeFaqItems} eyebrowTone="amber" />
-          </section>
+          <div className="pb-16 md:pb-24">
+            <InlineFaqSection title="Frequently asked questions." items={bluechipSpokeFaqItems} eyebrowTone="amber" withTopBorder={false} />
+          </div>
         </div>
       </div>
       </div>

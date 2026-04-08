@@ -197,34 +197,94 @@ export default function BorrowPage() {
         ]}
       />
 
-      <section className="mt-4 sm:mt-8 lg:mt-10">
+      <section className="pt-32 md:pt-40">
         <div className="site-content-shell">
-          <div className="mx-auto w-full max-w-[76rem]">
+          <div className="mx-auto w-full max-w-[76rem] space-y-32 md:space-y-40">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="violet">Borrow markets</SectionEyebrow>
                 <SectionTitle>Different Borrow markets</SectionTitle>
               </div>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                <BorrowMarketCard
+                  number="1"
+                  title="Token Markets"
+                  description="Deposit LP positions as collateral to borrow single assets"
+                />
+
+                <BorrowMarketCard
+                  number="2"
+                  title="Pool Markets"
+                  description="Deposit LP positions as collateral to borrow pool positions"
+                />
+
+                <BorrowMarketCard
+                  number="3"
+                  title="Leverage Markets"
+                  description="Deposit LP positions as collateral, borrow assets or pools, and loop into leveraged yield positions"
+                />
+              </div>
             </div>
 
-            <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
-              <BorrowMarketCard
-                number="1"
-                title="Token Markets"
-                description="Deposit LP positions as collateral to borrow single assets"
-              />
-
-              <BorrowMarketCard
-                number="2"
-                title="Pool Markets"
-                description="Deposit LP positions as collateral to borrow pool positions"
-              />
-
-              <BorrowMarketCard
-                number="3"
-                title="Leverage Markets"
-                description="Deposit LP positions as collateral, borrow assets or pools, and loop into leveraged yield positions"
-              />
+            <div className="flex flex-col gap-8 md:gap-12">
+              <div className="flex flex-col gap-2">
+                <SectionEyebrow tone="emerald">DEX Coverage</SectionEyebrow>
+                <SectionTitle>Borrow Across DEXs</SectionTitle>
+              </div>
+              <div className="flex flex-1 items-stretch gap-2 flex-col sm:flex-row">
+                <div className="grid w-full flex-1 grid-cols-3 gap-2">
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#111727] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#FFFFFF] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#000827] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[linear-gradient(45deg,#FC6901_0%,#F3B900_100%)] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#000000] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#F5F5F5] [&>svg]:size-3/5"></div>
+                  </div>
+                </div>
+                <div className="flex w-full flex-1">
+                  <div className="flex h-[150px] w-full flex-col items-center justify-center rounded-lg bg-gradient-to-b from-blue-50 to-blue-100 p-2 text-center sm:h-auto">
+                    <div className="flex size-full flex-col items-center justify-center rounded-md border border-blue-200 bg-white">
+                      <h4 className="text-base font-medium leading-normal text-blue-600 md:text-lg">
+                        <div className="flex items-center text-[32px] font-bold text-gray-900 md:text-[48px]">
+                          12+
+                        </div>
+                        <span>DEX Integrations</span>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+                <div className="grid w-full flex-1 grid-cols-3 gap-2">
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#7D00FF] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#000000] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#F3EFCD] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#061121] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[linear-gradient(90deg,#E35930_-6.83%,#E84125_100%)] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#F1F7FF] [&>svg]:size-3/5"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -233,30 +293,12 @@ export default function BorrowPage() {
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
-        <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
+        <div className="site-content-width space-y-32 pt-32 pb-16 md:space-y-40 md:pt-40 md:pb-20">
           <ProductFeatureScrollSection
             eyebrowTone="blue"
             title="Borrow without unwinding."
             items={borrowFeatureItems}
           />
-
-          {/* Supported Dexs */}
-          <section>
-            <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow tone="blue">DEX Coverage</SectionEyebrow>
-              <SectionTitle>Supported venues.</SectionTitle>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {["Uniswap V3", "Uniswap V4", "SushiSwap", "Balancer"].map((dex) => (
-                <div key={dex} className="p-4 border border-gray-200 rounded-xl text-center">
-                  <div className="w-12 h-12 bg-gray-100 rounded-full mx-auto mb-2 flex items-center justify-center">
-                    <span className="text-lg font-bold text-gray-600">{dex[0]}</span>
-                  </div>
-                  <p className="font-medium text-gray-900">{dex}</p>
-                </div>
-              ))}
-            </div>
-          </section>
 
           {/* Use Cases */}
           <section>
@@ -295,14 +337,11 @@ export default function BorrowPage() {
             </div>
           </section>
 
-          <section>
-            <HomepageNewsroomSection collection="borrow" eyebrowTone="blue" />
-          </section>
+          <HomepageNewsroomSection collection="borrow" eyebrowTone="blue" />
 
-          {/* FAQ */}
-          <section>
-            <InlineFaqSection title="Frequently asked questions." items={openSpokeFaqItems} eyebrowTone="blue" />
-          </section>
+          <div className="pb-16 md:pb-24">
+            <InlineFaqSection title="Frequently asked questions." items={openSpokeFaqItems} eyebrowTone="blue" withTopBorder={false} />
+          </div>
         </div>
       </div>
       </div>

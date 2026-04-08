@@ -9,6 +9,7 @@ type HomepageNewsroomSectionProps = {
   collection?: NewsroomCollection
   posts?: readonly NewsroomPost[]
   showDividers?: boolean
+  showTopBorder?: boolean
 }
 
 /**
@@ -22,8 +23,10 @@ export default async function HomepageNewsroomSection({
   collection = "home",
   posts,
   showDividers = true,
+  showTopBorder,
 }: HomepageNewsroomSectionProps) {
   const resolvedPosts = posts ?? await getNewsroomPosts(collection)
+  const hasTopBorder = showTopBorder ?? showDividers
 
   return (
     <section>
@@ -32,7 +35,7 @@ export default async function HomepageNewsroomSection({
         <SectionTitle>{title}</SectionTitle>
       </div>
 
-      <div className={showDividers ? "border-t border-gray-200" : ""}>
+      <div className={hasTopBorder ? "border-t border-gray-200" : ""}>
         {resolvedPosts.map((post) => (
           <article
             key={post.href}

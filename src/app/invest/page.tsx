@@ -228,14 +228,11 @@ export default function InvestPage() {
             </div>
           </section>
 
-          <section>
-            <HomepageNewsroomSection collection="invest" eyebrowTone="emerald" />
-          </section>
+          <HomepageNewsroomSection collection="invest" eyebrowTone="emerald" />
 
-          {/* FAQ */}
-          <section>
-            <InlineFaqSection title="Frequently asked questions." items={stableSpokeFaqItems} eyebrowTone="emerald" />
-          </section>
+          <div className="pb-16 md:pb-24">
+            <InlineFaqSection title="Frequently asked questions." items={stableSpokeFaqItems} eyebrowTone="emerald" withTopBorder={false} />
+          </div>
         </div>
       </div>
       </div>
