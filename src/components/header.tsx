@@ -462,7 +462,7 @@ export default function Header(): React.JSX.Element {
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noreferrer" : undefined}
                 suppressHydrationWarning
-                className={`site-header-cta inline-flex h-[38px] items-center justify-center rounded-full px-3.5 text-[15px] font-medium tracking-[-0.02em] transition duration-200 ease-out ${
+                className={`site-header-cta inline-flex h-[38px] items-center justify-center rounded-[14px] px-3.5 text-[15px] font-medium tracking-[-0.02em] transition duration-200 ease-out ${
                   index === 0
                     ? "bg-black/[0.045] text-black/84 hover:bg-black/[0.07] hover:text-black"
                     : "border border-[#9ea0a2] bg-white text-[#2b2e32] shadow-[0_12px_28px_rgba(65,67,71,0.14),inset_0_1px_0_rgba(255,255,255,0.92)] hover:border-[#8f9195] hover:bg-[#f7f7f7]"
