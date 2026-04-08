@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
@@ -376,7 +376,7 @@ export default function PriceOraclesPage() {
       </div>
 
       {/* Right scroll-spy sidebar */}
-      <ScrollSpySidebar 
+      <DeveloperScrollSpyRail 
         sections={sections} 
         pageSummary="Avana Oracle prices LP collateral conservatively using external asset prices, position reconstruction, and recoverable unwind assumptions."
         sectionColor="cyan"

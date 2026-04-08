@@ -155,7 +155,7 @@ export default function PlatformPage() {
           <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
             <section>
               <div className="mb-8 max-w-[650px] space-y-3 text-left">
-                <SectionEyebrow>How it works</SectionEyebrow>
+                <SectionEyebrow tone="violet">How it works</SectionEyebrow>
                 <SectionTitle>LP borrowing, simplified.</SectionTitle>
               </div>
 
@@ -188,7 +188,7 @@ export default function PlatformPage() {
 
             <section>
               <div className="mb-8 max-w-[650px] space-y-3 text-left">
-                <SectionEyebrow>Financing</SectionEyebrow>
+                <SectionEyebrow tone="violet">Financing</SectionEyebrow>
                 <SectionTitle>Flexible capital, one interface.</SectionTitle>
               </div>
 
@@ -207,7 +207,7 @@ export default function PlatformPage() {
 
             <section>
               <div className="mb-8 max-w-[650px] space-y-3 text-left">
-                <SectionEyebrow>Platform Tools</SectionEyebrow>
+                <SectionEyebrow tone="violet">Platform Tools</SectionEyebrow>
                 <SectionTitle>Manage every position in one place.</SectionTitle>
               </div>
 
@@ -230,13 +230,11 @@ export default function PlatformPage() {
               <p className="mt-8 text-center text-sm text-gray-500">Subject to risk assessment and availability</p>
             </section>
 
-            <section>
-              <HomepageNewsroomSection collection="platform" />
-            </section>
+            <HomepageNewsroomSection collection="platform" eyebrowTone="violet" />
 
-            <section>
-              <InlineFaqSection title="Frequently asked questions." items={platformFaqItems} />
-            </section>
+            <div className="pb-16 md:pb-24">
+              <InlineFaqSection title="Frequently asked questions." items={platformFaqItems} eyebrowTone="violet" withTopBorder={false} />
+            </div>
           </div>
         </div>
       </div>

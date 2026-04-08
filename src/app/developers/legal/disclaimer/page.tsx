@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
@@ -235,7 +235,7 @@ export default function LegalDisclaimerPage() {
       </div>
 
       {/* Right scroll-spy sidebar */}
-      <ScrollSpySidebar 
+      <DeveloperScrollSpyRail 
         sections={sections} 
         pageSummary="Legal notices governing use of the protocol and documentation."
         sectionColor="slate"
