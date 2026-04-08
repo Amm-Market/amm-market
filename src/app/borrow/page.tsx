@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import type { ReactNode } from "react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
@@ -68,6 +69,161 @@ const borrowFeatureItems = [
     description: "Fees are applied first, then only the minimum LP principal is unwound to restore solvency.",
   },
 ] as const
+
+function BorrowMarketCard({
+  number,
+  title,
+  description,
+  children,
+}: {
+  number: string
+  title: string
+  description: string
+  children: ReactNode
+}) {
+  return (
+    <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+      <div className="mb-4 aspect-[10/7] overflow-hidden rounded-xl border border-gray-200 bg-white p-3">
+        {children}
+      </div>
+      <span className="text-5xl font-bold text-gray-300 md:text-6xl">{number}</span>
+      <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-900 md:text-xl">{title}</h3>
+      <p className="text-sm text-gray-600 md:text-base">{description}</p>
+    </div>
+  )
+}
+
+function TokenMarketsIllustration() {
+  return (
+    <svg className="h-full w-full" viewBox="0 0 400 280" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <defs>
+        <linearGradient id="tokenMarketsArea" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#8B8BD9" stopOpacity="0.16" />
+          <stop offset="100%" stopColor="#8B8BD9" stopOpacity="0.03" />
+        </linearGradient>
+        <filter id="tokenMarketsGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <path
+        d="M34 226 C110 214, 148 195, 198 172 C248 149, 286 128, 366 112"
+        fill="none"
+        stroke="#C4B5FD"
+        strokeWidth="10"
+        strokeLinecap="round"
+        filter="url(#tokenMarketsGlow)"
+        opacity="0.35"
+      />
+      <path
+        d="M34 226 C110 214, 148 195, 198 172 C248 149, 286 128, 366 112"
+        fill="none"
+        stroke="#8B8BD9"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <path
+        d="M34 226 C110 214, 148 195, 198 172 C248 149, 286 128, 366 112 L366 226 Z"
+        fill="url(#tokenMarketsArea)"
+      />
+      <rect x="36" y="176" width="106" height="50" rx="14" fill="#111827" opacity="0.96" />
+      <text x="89" y="206" textAnchor="middle" fontSize="16" fontWeight="700" fill="#fff">
+        LP
+      </text>
+      <circle cx="336" cy="114" r="22" fill="#8B8BD9" opacity="0.9" />
+      <text x="336" y="119" textAnchor="middle" fontSize="13" fontWeight="700" fill="#fff">
+        1
+      </text>
+      <line x1="142" y1="201" x2="304" y2="135" stroke="#8B8BD9" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 7" />
+      <path d="M297 131l16 2-9 13" fill="none" stroke="#8B8BD9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function PoolMarketsIllustration() {
+  return (
+    <svg className="h-full w-full" viewBox="0 0 400 280" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <defs>
+        <linearGradient id="poolMarketsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#6B7280" stopOpacity="0.45" />
+          <stop offset="100%" stopColor="#9CA3AF" stopOpacity="0.65" />
+        </linearGradient>
+      </defs>
+      <rect x="42" y="62" width="110" height="48" rx="14" fill="#111827" opacity="0.96" />
+      <text x="97" y="91" textAnchor="middle" fontSize="16" fontWeight="700" fill="#fff">
+        LP
+      </text>
+      <rect x="42" y="132" width="110" height="48" rx="14" fill="#8B8BD9" opacity="0.92" />
+      <text x="97" y="161" textAnchor="middle" fontSize="16" fontWeight="700" fill="#fff">
+        LP
+      </text>
+      <rect x="42" y="202" width="110" height="48" rx="14" fill="url(#poolMarketsGrad)" />
+      <text x="97" y="231" textAnchor="middle" fontSize="16" fontWeight="700" fill="#fff">
+        LP
+      </text>
+      <line x1="154" y1="86" x2="316" y2="86" stroke="#9CA3AF" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 8" />
+      <line x1="154" y1="156" x2="316" y2="156" stroke="#9CA3AF" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 8" />
+      <line x1="154" y1="226" x2="316" y2="226" stroke="#9CA3AF" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 8" />
+      <rect x="316" y="62" width="42" height="48" rx="12" fill="#ffffff" stroke="#E5E7EB" />
+      <rect x="316" y="132" width="42" height="48" rx="12" fill="#ffffff" stroke="#E5E7EB" />
+      <rect x="316" y="202" width="42" height="48" rx="12" fill="#ffffff" stroke="#E5E7EB" />
+      <circle cx="337" cy="86" r="9" fill="#8B8BD9" />
+      <circle cx="337" cy="156" r="9" fill="#6B7280" />
+      <circle cx="337" cy="226" r="9" fill="#111827" />
+    </svg>
+  )
+}
+
+function LeverageMarketsIllustration() {
+  return (
+    <svg className="h-full w-full" viewBox="0 0 400 280" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <defs>
+        <filter id="leverageMarketsGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <path
+        d="M78 196 C78 132, 138 86, 210 86 C286 86, 326 130, 326 194"
+        fill="none"
+        stroke="#8B8BD9"
+        strokeWidth="10"
+        strokeLinecap="round"
+        filter="url(#leverageMarketsGlow)"
+        opacity="0.25"
+      />
+      <path
+        d="M78 196 C78 132, 138 86, 210 86 C286 86, 326 130, 326 194"
+        fill="none"
+        stroke="#8B8BD9"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <rect x="44" y="182" width="78" height="40" rx="12" fill="#111827" opacity="0.96" />
+      <text x="83" y="207" textAnchor="middle" fontSize="14" fontWeight="700" fill="#fff">
+        LP
+      </text>
+      <rect x="161" y="66" width="98" height="40" rx="12" fill="#8B8BD9" />
+      <text x="210" y="91" textAnchor="middle" fontSize="14" fontWeight="700" fill="#fff">
+        Borrow
+      </text>
+      <rect x="288" y="182" width="78" height="40" rx="12" fill="#ffffff" stroke="#E5E7EB" />
+      <text x="327" y="207" textAnchor="middle" fontSize="14" fontWeight="700" fill="#111827">
+        Yield
+      </text>
+      <path d="M132 203c22 0 40-7 56-20" fill="none" stroke="#8B8BD9" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 7" />
+      <path d="M214 106c0 24 12 42 34 56" fill="none" stroke="#8B8BD9" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 7" />
+      <path d="M290 196c-18 0-34-6-47-18" fill="none" stroke="#8B8BD9" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 7" />
+      <path d="M173 163h20l-8-8m8 8-8 8" fill="none" stroke="#8B8BD9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
 
 export const metadata: Metadata = {
   title: "Borrow - Any LP Token as Collateral",
@@ -148,41 +304,35 @@ export default function BorrowPage() {
           <div className="mx-auto w-full max-w-[76rem]">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="violet">How it works</SectionEyebrow>
-                <SectionTitle>How borrowing works</SectionTitle>
+                <SectionEyebrow tone="violet">Borrow markets</SectionEyebrow>
+                <SectionTitle>Different Borrow markets</SectionTitle>
               </div>
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
-              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
-                <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
-                <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-900 md:text-xl">
-                  Stack Yield
-                </h3>
-                <p className="text-sm text-gray-600 md:text-base">
-                  Turn idle borrowing capacity into extra yield, stacked on top of your lending returns.
-                </p>
-              </div>
+              <BorrowMarketCard
+                number="1"
+                title="Token Markets"
+                description="Deposit LP positions as collateral to borrow single assets"
+              >
+                <TokenMarketsIllustration />
+              </BorrowMarketCard>
 
-              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
-                <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
-                <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-900 md:text-xl">
-                  Boost Leverage
-                </h3>
-                <p className="text-sm text-gray-600 md:text-base">
-                  Unlock more leverage loops to amplify your yield.
-                </p>
-              </div>
+              <BorrowMarketCard
+                number="2"
+                title="Pool Markets"
+                description="Deposit LP positions as collateral to borrow pool positions"
+              >
+                <PoolMarketsIllustration />
+              </BorrowMarketCard>
 
-              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
-                <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
-                <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-900 md:text-xl">
-                  Liquidation Protection
-                </h3>
-                <p className="text-sm text-gray-600 md:text-base">
-                  Protect your loan by increasing your borrowing capacity.
-                </p>
-              </div>
+              <BorrowMarketCard
+                number="3"
+                title="Leverage Markets"
+                description="Deposit LP positions as collateral, borrow assets or pools, and loop into leveraged yield positions"
+              >
+                <LeverageMarketsIllustration />
+              </BorrowMarketCard>
             </div>
           </div>
         </div>
