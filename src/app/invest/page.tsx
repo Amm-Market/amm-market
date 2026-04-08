@@ -135,6 +135,7 @@ export default function InvestPage() {
 
       <ProductStorySection
         withTopDivider
+        eyebrowTone="emerald"
         titleLines={["Put your idle capital", "ready to work."]}
         paragraphs={[
           "Invest is the capital-entry side of Avana. Suppliers deposit major assets into the Invest Spoke, and that liquidity is routed through the Hub to power borrowing across multiple LP-collateral markets.",
@@ -163,6 +164,7 @@ export default function InvestPage() {
           </section>
 
           <ProductFeatureScrollSection
+            eyebrowTone="emerald"
             title="Stable LPs, stronger terms."
             items={investFeatureItems}
           />
@@ -170,7 +172,7 @@ export default function InvestPage() {
           {/* Supported Dexs */}
           <section>
             <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>DEX Coverage</SectionEyebrow>
+              <SectionEyebrow tone="emerald">DEX Coverage</SectionEyebrow>
               <SectionTitle>Stable liquidity venues.</SectionTitle>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -192,7 +194,7 @@ export default function InvestPage() {
           {/* Use Cases */}
           <section>
             <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>Use Cases</SectionEyebrow>
+              <SectionEyebrow tone="emerald">Use Cases</SectionEyebrow>
               <SectionTitle>Built for steady capital flows.</SectionTitle>
             </div>
             <div className="max-w-[650px] space-y-4">
@@ -227,12 +229,12 @@ export default function InvestPage() {
           </section>
 
           <section>
-            <HomepageNewsroomSection collection="invest" />
+            <HomepageNewsroomSection collection="invest" eyebrowTone="emerald" />
           </section>
 
           {/* FAQ */}
           <section>
-            <InlineFaqSection title="Frequently asked questions." items={stableSpokeFaqItems} />
+            <InlineFaqSection title="Frequently asked questions." items={stableSpokeFaqItems} eyebrowTone="emerald" />
           </section>
         </div>
       </div>

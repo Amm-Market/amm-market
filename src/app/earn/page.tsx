@@ -129,6 +129,7 @@ export default function EarnPage() {
 
       <ProductStorySection
         withTopDivider
+        eyebrowTone="amber"
         titleLines={["Share in", "protocol upside."]}
         paragraphs={[
           "Earn is designed around protocol-protection capital rather than LP management. It sits behind conservative valuation, capped exposure, and timely liquidation as a deeper line of defense for qualifying shortfalls.",
@@ -157,6 +158,7 @@ export default function EarnPage() {
           </section>
 
           <ProductFeatureScrollSection
+            eyebrowTone="amber"
             title="Borrow more on stronger collateral."
             items={earnFeatureItems}
           />
@@ -164,7 +166,7 @@ export default function EarnPage() {
           {/* Supported Dexs */}
           <section>
             <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>DEX Coverage</SectionEyebrow>
+              <SectionEyebrow tone="amber">DEX Coverage</SectionEyebrow>
               <SectionTitle>Blue-chip LP venues.</SectionTitle>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -187,7 +189,7 @@ export default function EarnPage() {
           {/* Use Cases */}
           <section>
             <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>Use Cases</SectionEyebrow>
+              <SectionEyebrow tone="amber">Use Cases</SectionEyebrow>
               <SectionTitle>Designed for larger positions.</SectionTitle>
             </div>
             <div className="max-w-[650px] space-y-4">
@@ -222,12 +224,12 @@ export default function EarnPage() {
           </section>
 
           <section>
-            <HomepageNewsroomSection collection="earn" />
+            <HomepageNewsroomSection collection="earn" eyebrowTone="amber" />
           </section>
 
           {/* FAQ */}
           <section>
-            <InlineFaqSection title="Frequently asked questions." items={bluechipSpokeFaqItems} />
+            <InlineFaqSection title="Frequently asked questions." items={bluechipSpokeFaqItems} eyebrowTone="amber" />
           </section>
         </div>
       </div>

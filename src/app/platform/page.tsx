@@ -155,7 +155,7 @@ export default function PlatformPage() {
           <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
             <section>
               <div className="mb-8 max-w-[650px] space-y-3 text-left">
-                <SectionEyebrow>How it works</SectionEyebrow>
+                <SectionEyebrow tone="violet">How it works</SectionEyebrow>
                 <SectionTitle>LP borrowing, simplified.</SectionTitle>
               </div>
 
@@ -188,7 +188,7 @@ export default function PlatformPage() {
 
             <section>
               <div className="mb-8 max-w-[650px] space-y-3 text-left">
-                <SectionEyebrow>Financing</SectionEyebrow>
+                <SectionEyebrow tone="violet">Financing</SectionEyebrow>
                 <SectionTitle>Flexible capital, one interface.</SectionTitle>
               </div>
 
@@ -207,7 +207,7 @@ export default function PlatformPage() {
 
             <section>
               <div className="mb-8 max-w-[650px] space-y-3 text-left">
-                <SectionEyebrow>Platform Tools</SectionEyebrow>
+                <SectionEyebrow tone="violet">Platform Tools</SectionEyebrow>
                 <SectionTitle>Manage every position in one place.</SectionTitle>
               </div>
 
@@ -231,11 +231,11 @@ export default function PlatformPage() {
             </section>
 
             <section>
-              <HomepageNewsroomSection collection="platform" />
+              <HomepageNewsroomSection collection="platform" eyebrowTone="violet" />
             </section>
 
             <section>
-              <InlineFaqSection title="Frequently asked questions." items={platformFaqItems} />
+              <InlineFaqSection title="Frequently asked questions." items={platformFaqItems} eyebrowTone="violet" />
             </section>
           </div>
         </div>

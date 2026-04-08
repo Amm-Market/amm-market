@@ -81,7 +81,7 @@ export default function HeroSection() {
       <div className="site-content-shell space-y-32 pt-16 md:space-y-40 md:pt-20">
         <div className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-2">
-              <SectionEyebrow>DEX Coverage</SectionEyebrow>
+              <SectionEyebrow tone="emerald">DEX Coverage</SectionEyebrow>
               <SectionTitle>
                 Borrow Across DEXs
               </SectionTitle>
@@ -145,7 +145,7 @@ export default function HeroSection() {
         <div className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow>Pool Coverage</SectionEyebrow>
+                <SectionEyebrow tone="cyan">Pool Coverage</SectionEyebrow>
                 <SectionTitle>500+ Supported Pools</SectionTitle>
               </div>
             </div>
@@ -198,7 +198,7 @@ export default function HeroSection() {
       <div className="site-content-shell pt-32 md:pt-40">
         <div className="flex flex-col gap-6">
           <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow>How it works</SectionEyebrow>
+            <SectionEyebrow tone="violet">How it works</SectionEyebrow>
             <SectionTitle>
               How borrowing works
             </SectionTitle>
@@ -239,7 +239,7 @@ export default function HeroSection() {
         <div>
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow>Capital Efficiency</SectionEyebrow>
+                <SectionEyebrow tone="amber">Capital Efficiency</SectionEyebrow>
                 <SectionTitle>
                   Get more out of your LPs
                 </SectionTitle>
@@ -469,7 +469,7 @@ export default function HeroSection() {
         <div>
             <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
               <div className="space-y-4">
-                <SectionEyebrow>Security Protection</SectionEyebrow>
+                <SectionEyebrow tone="slate">Security Protection</SectionEyebrow>
                 <SectionTitle>
                   <span className="block lg:whitespace-nowrap">Aave v4</span>
                   <span className="block lg:whitespace-nowrap">Design Foundation</span>
@@ -514,7 +514,7 @@ export default function HeroSection() {
             </div>
         </div>
 
-        <HomepageNewsroomSection />
+        <HomepageNewsroomSection eyebrowTone="rose" />
 
         <div className="pb-16 md:pb-24">
           <LazySection minHeight="500px" fallback={<SectionSkeleton lines={4} minHeight="420px" />}>
