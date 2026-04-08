@@ -69,204 +69,6 @@ const borrowFeatureItems = [
   },
 ] as const
 
-function OpportunityCard({
-  number,
-  title,
-  description,
-  children,
-}: {
-  number: string
-  title: string
-  description: string
-  children: React.ReactNode
-}) {
-  return (
-    <div className="group flex min-w-[75vw] snap-center flex-col rounded-[28px] border border-gray-200 bg-white p-4 shadow-[0_16px_40px_rgba(15,23,42,0.05)] transition-[border-color,box-shadow,transform] duration-200 hover:border-violet-200 hover:shadow-[0_20px_55px_rgba(139,92,246,0.12)] sm:min-w-0 sm:p-5">
-      <div className="mb-3 aspect-[10/7] w-full overflow-hidden rounded-lg bg-neutral-50/50 dark:bg-neutral-800/30">
-        {children}
-      </div>
-      <div className="mb-1.5 flex items-center justify-center gap-2">
-        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-violet-600 text-[10px] font-bold text-white">
-          {number}
-        </span>
-        <h3 className="text-sm font-semibold text-gray-900 sm:text-base">{title}</h3>
-      </div>
-      <p className="text-center text-xs leading-relaxed text-gray-500 sm:text-sm">
-        {description}
-      </p>
-    </div>
-  )
-}
-
-function StackYieldIllustration() {
-  return (
-    <svg className="h-full w-full" viewBox="0 0 400 280" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-      <defs>
-        <linearGradient id="borrowStandardAreaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#9CA3AF" stopOpacity="0.12" />
-          <stop offset="100%" stopColor="#9CA3AF" stopOpacity="0.02" />
-        </linearGradient>
-        <linearGradient id="borrowYieldAreaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#8B8BD9" stopOpacity="0.15" />
-          <stop offset="100%" stopColor="#8B8BD9" stopOpacity="0.02" />
-        </linearGradient>
-        <filter id="borrowYieldGlow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <line x1="35" y1="250" x2="365" y2="250" className="stroke-neutral-300 dark:stroke-neutral-600" strokeWidth="1" strokeDasharray="1px 1px" pathLength="1" />
-      <path
-        d="M35 250 C150.5 250, 167 165, 365 165 L365 250 Z"
-        fill="url(#borrowStandardAreaGrad)"
-      />
-      <path
-        d="M35 250 C150.5 250, 150.5 68.4, 365 68.4 L365 250 Z"
-        fill="url(#borrowYieldAreaGrad)"
-      />
-      <path
-        d="M35 250 C150.5 250, 167 165, 365 165"
-        fill="none"
-        className="stroke-neutral-400 dark:stroke-neutral-500"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        pathLength="1"
-      />
-      <path
-        d="M35 250 C150.5 250, 150.5 68.4, 365 68.4"
-        fill="none"
-        stroke="#8B8BD9"
-        strokeWidth="6"
-        strokeLinecap="round"
-        filter="url(#borrowYieldGlow)"
-        opacity="0.5"
-        pathLength="1"
-      />
-      <path
-        d="M35 250 C150.5 250, 150.5 68.4, 365 68.4"
-        fill="none"
-        stroke="#8B8BD9"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        pathLength="1"
-      />
-      <circle cx="365" cy="165" r="4" className="fill-neutral-400 dark:fill-neutral-500" />
-      <circle cx="365" cy="68.4" r="4" fill="#8B8BD9" />
-      <g transform="translate(335 137)">
-        <circle cx="10" cy="10" r="10" fill="#111827" opacity="0.92" />
-        <text x="10" y="13.5" textAnchor="middle" fontSize="9" fontWeight="700" fill="#fff">
-          A
-        </text>
-      </g>
-      <g transform="translate(335 40.4)">
-        <circle cx="10" cy="10" r="10" fill="#8B8BD9" />
-        <text x="10" y="13.5" textAnchor="middle" fontSize="9" fontWeight="700" fill="#fff">
-          T
-        </text>
-      </g>
-    </svg>
-  )
-}
-
-function BoostLeverageIllustration() {
-  return (
-    <svg className="h-full w-full" viewBox="0 0 400 280" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-      <defs>
-        <linearGradient id="borrowBaseLevGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#6B7280" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#9CA3AF" stopOpacity="0.6" />
-        </linearGradient>
-        <linearGradient id="borrowTwyneLevGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#8B8BD9" stopOpacity="0.7" />
-          <stop offset="50%" stopColor="#A5A5E8" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="#B8B8F0" stopOpacity="1" />
-        </linearGradient>
-        <filter id="borrowLevGlow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <g transform="translate(55.1 99)">
-        <circle cx="10" cy="10" r="10" fill="#111827" />
-        <text x="10" y="13.5" textAnchor="middle" fontSize="9" fontWeight="700" fill="#fff">
-          A
-        </text>
-      </g>
-      <g transform="translate(55.1 161)">
-        <circle cx="10" cy="10" r="10" fill="#8B8BD9" />
-        <text x="10" y="13.5" textAnchor="middle" fontSize="9" fontWeight="700" fill="#fff">
-          T
-        </text>
-      </g>
-      <rect x="85.1" y="90" height="38" rx="8" fill="url(#borrowBaseLevGrad)" width="68.6" />
-      <text x="167.7" y="109" textAnchor="start" dominantBaseline="central" className="text-[18px] font-semibold fill-neutral-500 dark:fill-neutral-400">
-        10x
-      </text>
-      <rect x="80.1" y="147" height="48" rx="12" fill="#8B8BD9" filter="url(#borrowLevGlow)" width="215.7" opacity="0.4" />
-      <rect x="85.1" y="152" height="38" rx="8" fill="url(#borrowTwyneLevGrad)" width="205.7" />
-      <rect x="85.1" y="152" height="38" rx="8" fill="#B8B8F0" filter="url(#borrowLevGlow)" width="180.2" opacity="0.17" />
-      <text x="304.9" y="171" textAnchor="start" dominantBaseline="central" className="text-[22px] font-bold" fill="#8B8BD9">
-        30x
-      </text>
-    </svg>
-  )
-}
-
-function LiquidationProtectionIllustration() {
-  return (
-    <svg className="h-full w-full" viewBox="0 0 400 280" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-      <defs>
-        <filter id="borrowLiqDotGlow" x="-100%" y="-100%" width="300%" height="300%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <path
-        d="M35 151 L140.6 151 L140.6 210.4 L315.5 210.4 L315.5 151 L365 151 L365 250 L35 250 Z"
-        fill="#991B1B"
-        fillOpacity="0.12"
-      />
-      <text x="41" y="240" className="text-[14px] font-medium fill-red-400/70 dark:fill-red-400/60">
-        Liquidation Zone
-      </text>
-      <line x1="140.6" y1="35" x2="140.6" y2="146" className="stroke-neutral-300/60 dark:stroke-neutral-600/50" strokeWidth="1" strokeDasharray="1px 1px" pathLength="1" />
-      <g transform="translate(114.6 35)">
-        <circle cx="10" cy="10" r="10" fill="#111827" />
-        <text x="10" y="13.5" textAnchor="middle" fontSize="9" fontWeight="700" fill="#fff">
-          A
-        </text>
-      </g>
-      <g transform="translate(146.6 35)">
-        <circle cx="10" cy="10" r="10" fill="#8B8BD9" />
-        <text x="10" y="13.5" textAnchor="middle" fontSize="9" fontWeight="700" fill="#fff">
-          T
-        </text>
-      </g>
-      <text x="361" y="44" textAnchor="end" className="text-[14px] font-medium" fill="#8B8BD9">
-        Loan Health
-      </text>
-      <path
-        d="M40 63 C155.5 63, 176.9 192.4, 226.4 192.4 C275.9 192.4, 320 69.6, 353 69.6"
-        fill="none"
-        stroke="#8B8BD9"
-        strokeWidth="3"
-        strokeLinecap="round"
-        pathLength="1"
-      />
-      <circle cx="353" cy="69.6" r="4" fill="#8B8BD9" opacity="1" />
-    </svg>
-  )
-}
-
 export const metadata: Metadata = {
   title: "Borrow - Any LP Token as Collateral",
   description: "Avana Borrow accepts supported LP tokens as collateral for flexible borrowing across multiple DEXes.",
@@ -342,29 +144,46 @@ export default function BorrowPage() {
       />
 
       <section className="mt-4 sm:mt-8 lg:mt-10">
-        <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-3 sm:gap-5 sm:overflow-visible">
-            <OpportunityCard
-              number="1"
-              title="Stack Yield"
-              description="Turn idle borrowing capacity into extra yield, stacked on top of your lending returns."
-            >
-              <StackYieldIllustration />
-            </OpportunityCard>
-            <OpportunityCard
-              number="2"
-              title="Boost Leverage"
-              description="Unlock more leverage loops to amplify your yield."
-            >
-              <BoostLeverageIllustration />
-            </OpportunityCard>
-            <OpportunityCard
-              number="3"
-              title="Liquidation Protection"
-              description="Protect your loan by increasing your borrowing capacity."
-            >
-              <LiquidationProtectionIllustration />
-            </OpportunityCard>
+        <div className="site-content-shell">
+          <div className="mx-auto w-full max-w-[76rem]">
+            <div className="flex flex-col gap-6">
+              <div className="flex max-w-[600px] flex-col gap-2">
+                <SectionEyebrow tone="violet">How it works</SectionEyebrow>
+                <SectionTitle>How borrowing works</SectionTitle>
+              </div>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
+              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+                <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
+                <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-900 md:text-xl">
+                  Stack Yield
+                </h3>
+                <p className="text-sm text-gray-600 md:text-base">
+                  Turn idle borrowing capacity into extra yield, stacked on top of your lending returns.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+                <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
+                <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-900 md:text-xl">
+                  Boost Leverage
+                </h3>
+                <p className="text-sm text-gray-600 md:text-base">
+                  Unlock more leverage loops to amplify your yield.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+                <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
+                <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-900 md:text-xl">
+                  Liquidation Protection
+                </h3>
+                <p className="text-sm text-gray-600 md:text-base">
+                  Protect your loan by increasing your borrowing capacity.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
