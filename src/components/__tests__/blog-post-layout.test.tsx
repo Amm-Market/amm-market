@@ -16,16 +16,6 @@ vi.mock("next/image", () => ({
   default: ({ alt, src, ...props }: { alt: string; src: string }) => <img alt={alt} src={src} {...props} />,
 }))
 
-vi.mock("@/components/scroll-spy-sidebar", () => ({
-  ScrollSpySidebar: ({ sections }: { sections: Array<{ id: string; title: string }> }) => (
-    <nav data-testid="scroll-spy-sidebar">
-      {sections.map((section) => (
-        <span key={section.id}>{section.title}</span>
-      ))}
-    </nav>
-  ),
-}))
-
 describe("BlogPostLayout", () => {
   it("renders the blog article shell with sidebar and share section", () => {
     const { container } = render(
@@ -42,9 +32,9 @@ describe("BlogPostLayout", () => {
     )
 
     expect(screen.getByRole("heading", { name: "A structured post" })).toBeInTheDocument()
+    expect(screen.getByRole("button", { name: /copy for llm/i })).toBeInTheDocument()
     expect(container.firstChild).toHaveClass("site-article-layout")
     expect(container.querySelector(".site-blog-article")).toBeInTheDocument()
     expect(screen.getByText("Share this article")).toBeInTheDocument()
-    expect(screen.getByTestId("scroll-spy-sidebar")).toBeInTheDocument()
   })
 })

@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+import BorrowPowerSection from "@/components/borrow-power-section"
+import BorrowUseCasesSection from "@/components/borrow-use-cases-section"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import ProductStorySection from "@/components/product-story-section"
@@ -57,17 +59,76 @@ const borrowFeatureItems = [
   },
   {
     title: "Shared Hub liquidity",
-    description: "Borrow capacity is funded from the Hub while underwriting remains isolated inside the Borrow Spoke.",
+    description: "Borrowing power comes from shared Hub liquidity while risk remains isolated inside the Borrow Spoke.",
   },
   {
-    title: "Active fee accrual",
-    description: "Collateral stays inside the pool and can keep earning trading fees while debt remains open.",
+    title: "High capital efficiency",
+    description: "Earn LP fees while simultaneously accessing borrowing power.",
   },
   {
-    title: "Controlled liquidations",
-    description: "Fees are applied first, then only the minimum LP principal is unwound to restore solvency.",
+    title: "Minimal volatility risk",
+    description: "Clear risk parameters and stable liquidation behavior under stress. Peg-aligned assets can significantly reduce liquidation risk.",
+  },
+  {
+    title: "Cleaner position monitoring",
+    description: "Track health, usage, and pool-specific limits with a cleaner LP-first borrowing workflow.",
   },
 ] as const
+
+function BorrowMarketPlaceholderArt() {
+  return (
+    <div className="relative aspect-[10/7] overflow-hidden rounded-[22px] border border-dashed border-gray-300 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,250,252,0.98))]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.06),transparent_46%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.05),transparent_42%)]" />
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-400 shadow-sm">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="h-6 w-6">
+            <path
+              d="M4 7h16v10H4V7Z"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M7 11h10M7 14h6"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+        <div className="mt-4 space-y-1">
+          <p className="text-lg font-semibold text-gray-900">Image placeholder</p>
+          <p className="text-sm text-gray-500">Borrow market visual will go here.</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function BorrowMarketCard({
+  number,
+  title,
+  description,
+}: {
+  number: string
+  title: string
+  description: string
+}) {
+  return (
+    <div className="flex h-full flex-col rounded-2xl bg-gray-50 p-6 md:p-8">
+      <span className="text-5xl font-bold text-gray-300 md:text-6xl">{number}</span>
+      <h3 className="mt-6 max-w-[14rem] text-[1.45rem] font-medium leading-[1.08] tracking-[-0.045em] text-[#18323c]">
+        {title}
+      </h3>
+      <p className="mt-3 text-sm leading-6 text-gray-600">{description}</p>
+      <div className="mt-6">
+        <BorrowMarketPlaceholderArt />
+      </div>
+    </div>
+  )
+}
 
 export const metadata: Metadata = {
   title: "Borrow - Any LP Token as Collateral",
@@ -135,6 +196,7 @@ export default function BorrowPage() {
 
       <ProductStorySection
         withTopDivider
+        eyebrowTone="blue"
         titleLines={["Unlock liquidity from", "Your AMM Pools."]}
         paragraphs={[
           "Borrow lives on the borrower-facing spoke, where each LP position is interpreted, valued, and risk-scored with pool-specific logic instead of being treated like a static token balance.",
@@ -142,94 +204,117 @@ export default function BorrowPage() {
         ]}
       />
 
+      <section className="pt-32 md:pt-40">
+        <div className="site-content-shell">
+          <div className="mx-auto w-full max-w-[76rem] space-y-32 md:space-y-40">
+            <div className="flex flex-col gap-6">
+              <div className="flex max-w-[600px] flex-col gap-2">
+                <SectionEyebrow tone="violet">Borrow markets</SectionEyebrow>
+                <SectionTitle>Different Borrow markets</SectionTitle>
+              </div>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                <BorrowMarketCard
+                  number="1"
+                  title="Token Markets"
+                  description="Deposit LP positions as collateral to borrow single assets"
+                />
+
+                <BorrowMarketCard
+                  number="2"
+                  title="Pool Markets"
+                  description="Deposit LP positions as collateral to borrow pool positions"
+                />
+
+                <BorrowMarketCard
+                  number="3"
+                  title="Leverage Markets"
+                  description="Deposit LP positions as collateral, borrow assets or pools, and loop into leveraged yield positions"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-8 md:gap-12">
+              <div className="flex flex-col gap-2">
+                <SectionEyebrow tone="emerald">DEX Coverage</SectionEyebrow>
+                <SectionTitle>Borrow Across DEXs</SectionTitle>
+              </div>
+              <div className="flex flex-1 items-stretch gap-2 flex-col sm:flex-row">
+                <div className="grid w-full flex-1 grid-cols-3 gap-2">
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#111727] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#FFFFFF] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#000827] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[linear-gradient(45deg,#FC6901_0%,#F3B900_100%)] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#000000] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#F5F5F5] [&>svg]:size-3/5"></div>
+                  </div>
+                </div>
+                <div className="flex w-full flex-1">
+                  <div className="flex h-[150px] w-full flex-col items-center justify-center rounded-lg bg-gradient-to-b from-blue-50 to-blue-100 p-2 text-center sm:h-auto">
+                    <div className="flex size-full flex-col items-center justify-center rounded-md border border-blue-200 bg-white">
+                      <h4 className="text-base font-medium leading-normal text-blue-600 md:text-lg">
+                        <div className="flex items-center text-[32px] font-bold text-gray-900 md:text-[48px]">
+                          12+
+                        </div>
+                        <span>DEX Integrations</span>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+                <div className="grid w-full flex-1 grid-cols-3 gap-2">
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#7D00FF] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#000000] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#F3EFCD] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#061121] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[linear-gradient(90deg,#E35930_-6.83%,#E84125_100%)] [&>svg]:size-3/5"></div>
+                  </div>
+                  <div className="aspect-square rounded-lg border border-gray-200 bg-white p-1 md:p-1.5">
+                    <div className="flex size-full items-center justify-center rounded-md border border-gray-200 bg-[#F1F7FF] [&>svg]:size-3/5"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
-        <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
-          {/* Stats */}
-          <section className="grid grid-cols-3 gap-4">
-            <div className="p-6 bg-blue-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-blue-600">4+</p>
-              <p className="text-sm text-gray-600">Networks</p>
-            </div>
-            <div className="p-6 bg-blue-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-blue-600">80%</p>
-              <p className="text-sm text-gray-600">Max LTV</p>
-            </div>
-            <div className="p-6 bg-blue-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-blue-600">100%</p>
-              <p className="text-sm text-gray-600">On-chain</p>
-            </div>
-          </section>
-
+        <div className="site-content-width space-y-32 pt-32 pb-16 md:space-y-40 md:pt-40 md:pb-20">
           <ProductFeatureScrollSection
+            eyebrowTone="blue"
             title="Borrow without unwinding."
             items={borrowFeatureItems}
           />
 
-          {/* Supported Dexs */}
-          <section>
-            <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>DEX Coverage</SectionEyebrow>
-              <SectionTitle>Supported venues.</SectionTitle>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {["Uniswap V3", "Uniswap V4", "SushiSwap", "Balancer"].map((dex) => (
-                <div key={dex} className="p-4 border border-gray-200 rounded-xl text-center">
-                  <div className="w-12 h-12 bg-gray-100 rounded-full mx-auto mb-2 flex items-center justify-center">
-                    <span className="text-lg font-bold text-gray-600">{dex[0]}</span>
-                  </div>
-                  <p className="font-medium text-gray-900">{dex}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          <BorrowUseCasesSection />
+          <BorrowPowerSection />
 
-          {/* Use Cases */}
-          <section>
-            <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>Use Cases</SectionEyebrow>
-              <SectionTitle>Put borrowed liquidity to work.</SectionTitle>
-            </div>
-            <div className="max-w-[650px] space-y-4">
-              <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">1</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Cross-Chain Swaps</h3>
-                  <p className="text-gray-600 text-sm">Move liquidity across chains without trusted bridges.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">2</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">LP-Backed Borrowing</h3>
-                  <p className="text-gray-600 text-sm">Use any supported LP as collateral for a credit line.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">3</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Unified Liquidity</h3>
-                  <p className="text-gray-600 text-sm">Access deep pools across all supported chains in one interface.</p>
-                </div>
-              </div>
-            </div>
-          </section>
+          <HomepageNewsroomSection collection="borrow" eyebrowTone="blue" />
 
-          <section>
-            <HomepageNewsroomSection collection="borrow" />
-          </section>
-
-          {/* FAQ */}
-          <section>
-            <InlineFaqSection title="Frequently asked questions." items={openSpokeFaqItems} />
-          </section>
+          <div className="pb-16 md:pb-24">
+            <InlineFaqSection title="Frequently asked questions." items={openSpokeFaqItems} eyebrowTone="blue" withTopBorder={false} />
+          </div>
         </div>
       </div>
       </div>

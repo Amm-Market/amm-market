@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
@@ -243,7 +243,7 @@ export default function BugBountyPage() {
         </section>
       </div>
 
-      <ScrollSpySidebar
+      <DeveloperScrollSpyRail
         sections={sections}
         pageSummary="Responsible disclosure scope, LP-collateral risk surfaces, and economic-impact triage for Avana."
         sectionColor="rose"

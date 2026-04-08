@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
@@ -90,7 +90,7 @@ export default function PlatformFeesPage() {
         </section>
       </div>
 
-      <ScrollSpySidebar
+      <DeveloperScrollSpyRail
         sections={sections}
         pageSummary="Operational fee policy for Avana interfaces and service layers."
         sectionColor="violet"

@@ -1,16 +1,29 @@
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 import { DeFiTerm } from "@/components/defi-term"
+import { SectionTitle } from "@/components/shared"
+
+function FaqHeading() {
+  return (
+    <SectionTitle as="h3" className="max-w-none leading-[0.96]">
+      <span className="block whitespace-nowrap">Frequently asked</span>
+      <span className="block whitespace-nowrap">questions.</span>
+    </SectionTitle>
+  )
+}
 
 /**
  * FAQSection - FAQ accordion with DeFi terminology tooltips.
  */
 export function FAQSection() {
   return (
-    <div className="flex flex-col py-16 md:py-20 gap-8 md:flex-row md:gap-12 border-t border-gray-100" style={{ opacity: 1, transform: 'none' }}>
-      <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 md:pt-8 md:flex-shrink-0 md:w-[300px]">
-        Frequently asked questions.
-      </h3>
-      <div className="md:w-[600px] md:flex-shrink-0">
+    <div
+      className="grid grid-cols-1 gap-8 border-t border-gray-100 py-16 md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:gap-6 md:py-20 lg:grid-cols-[minmax(0,25rem)_minmax(0,1fr)] lg:gap-8"
+      style={{ opacity: 1, transform: "none" }}
+    >
+      <div className="md:max-w-[25rem] md:pt-2">
+        <FaqHeading />
+      </div>
+      <div className="min-w-0 md:max-w-[32rem] md:justify-self-end lg:max-w-[34rem]">
         <Accordion type="single" collapsible orientation="vertical" className="w-full">
           <AccordionItem value="item-1" className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
             <AccordionTrigger className="type-accordion-question group p-0 text-left text-gray-900 hover:underline gap-4 [&>svg.size-4]:hidden">

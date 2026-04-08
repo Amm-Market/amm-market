@@ -53,23 +53,81 @@ interface ScrollSpySidebarProps {
   pageSummary?: string
   /** Color theme for active section indicators */
   sectionColor?: "blue" | "emerald" | "violet" | "amber" | "cyan" | "rose" | "slate"
+  /** Optional per-section color map; active section drives the current palette */
+  sectionColorsById?: Partial<Record<string, "blue" | "emerald" | "violet" | "amber" | "cyan" | "rose" | "slate">>
 }
 
 // Color classes for each section
 const colorClasses = {
-  blue: { bar: "bg-blue-500", dot: "bg-blue-500", text: "text-blue-600" },
-  emerald: { bar: "bg-emerald-500", dot: "bg-emerald-500", text: "text-emerald-600" },
-  violet: { bar: "bg-violet-500", dot: "bg-violet-500", text: "text-violet-600" },
-  amber: { bar: "bg-amber-500", dot: "bg-amber-500", text: "text-amber-600" },
-  cyan: { bar: "bg-cyan-500", dot: "bg-cyan-500", text: "text-cyan-600" },
-  rose: { bar: "bg-rose-500", dot: "bg-rose-500", text: "text-rose-600" },
-  slate: { bar: "bg-slate-500", dot: "bg-slate-500", text: "text-slate-600" },
+  blue: {
+    bar: "bg-blue-500",
+    dot: "bg-blue-500",
+    text: "text-blue-600",
+    labelText: "text-blue-600",
+    summary: "text-blue-900/70",
+    glow: "shadow-[0_0_0_4px_rgba(59,130,246,0.08)]",
+  },
+  emerald: {
+    bar: "bg-emerald-500",
+    dot: "bg-emerald-500",
+    text: "text-emerald-600",
+    labelText: "text-emerald-600",
+    summary: "text-emerald-900/70",
+    glow: "shadow-[0_0_0_4px_rgba(16,185,129,0.08)]",
+  },
+  violet: {
+    bar: "bg-violet-500",
+    dot: "bg-violet-500",
+    text: "text-violet-600",
+    labelText: "text-violet-600",
+    summary: "text-violet-950/65",
+    glow: "shadow-[0_0_0_4px_rgba(139,92,246,0.08)]",
+  },
+  amber: {
+    bar: "bg-amber-500",
+    dot: "bg-amber-500",
+    text: "text-amber-700",
+    labelText: "text-amber-600",
+    summary: "text-amber-950/65",
+    glow: "shadow-[0_0_0_4px_rgba(245,158,11,0.08)]",
+  },
+  cyan: {
+    bar: "bg-cyan-500",
+    dot: "bg-cyan-500",
+    text: "text-cyan-700",
+    labelText: "text-cyan-600",
+    summary: "text-cyan-950/65",
+    glow: "shadow-[0_0_0_4px_rgba(6,182,212,0.08)]",
+  },
+  rose: {
+    bar: "bg-rose-500",
+    dot: "bg-rose-500",
+    text: "text-rose-600",
+    labelText: "text-rose-600",
+    summary: "text-rose-950/65",
+    glow: "shadow-[0_0_0_4px_rgba(244,63,94,0.08)]",
+  },
+  slate: {
+    bar: "bg-slate-500",
+    dot: "bg-slate-500",
+    text: "text-slate-700",
+    labelText: "text-slate-600",
+    summary: "text-slate-700/80",
+    glow: "shadow-[0_0_0_4px_rgba(100,116,139,0.08)]",
+  },
 }
 
-export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" }: ScrollSpySidebarProps) {
-  const colors = colorClasses[sectionColor]
+export function ScrollSpySidebar({
+  sections,
+  pageSummary,
+  sectionColor = "blue",
+  sectionColorsById,
+}: ScrollSpySidebarProps) {
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id ?? "")
   const [barProgress, setBarProgress] = useState(0)
+
+  const activeColorKey = sectionColorsById?.[activeSection] ?? sectionColor
+  const colors = colorClasses[activeColorKey]
 
   const activeIndex = useMemo(
     () => Math.max(sections.findIndex((section) => section.id === activeSection), 0),
@@ -144,13 +202,13 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
   return (
     <div className="hidden xl:flex xl:pr-2">
       <div className="flex max-w-[17rem] flex-col items-start justify-start gap-0">
-        <p className="type-meta-label mb-3 pl-6 text-gray-500">
+        <p className={`type-meta-label mb-3 pl-6 ${colors.labelText}`}>
           On this page
         </p>
 
         {/* Page summary at top */}
         {pageSummary && (
-          <p className="type-sidebar-summary mb-4 max-w-[220px] pl-6 text-gray-500">
+          <p className={`type-sidebar-summary mb-4 max-w-[220px] pl-6 ${colors.summary}`}>
             {pageSummary}
           </p>
         )}
@@ -172,7 +230,7 @@ export function ScrollSpySidebar({ sections, pageSummary, sectionColor = "blue" 
                 <div
                   className={`absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-300 ${
                     isActive
-                      ? `${colors.dot} scale-125 shadow-[0_0_0_4px_rgba(59,130,246,0.08)]`
+                      ? `${colors.dot} ${colors.glow} scale-125`
                       : isPast
                         ? `${colors.dot} opacity-80`
                         : "bg-gray-300"

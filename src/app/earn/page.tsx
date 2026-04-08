@@ -129,6 +129,7 @@ export default function EarnPage() {
 
       <ProductStorySection
         withTopDivider
+        eyebrowTone="amber"
         titleLines={["Share in", "protocol upside."]}
         paragraphs={[
           "Earn is designed around protocol-protection capital rather than LP management. It sits behind conservative valuation, capped exposure, and timely liquidation as a deeper line of defense for qualifying shortfalls.",
@@ -140,23 +141,8 @@ export default function EarnPage() {
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
         <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
-          {/* Stats */}
-          <section className="grid grid-cols-3 gap-4">
-            <div className="p-6 bg-amber-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-amber-600">50–77%</p>
-              <p className="text-sm text-gray-600">Max LTV (blue-chip)</p>
-            </div>
-            <div className="p-6 bg-amber-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-amber-600">5%</p>
-              <p className="text-sm text-gray-600">IL buffer typical</p>
-            </div>
-            <div className="p-6 bg-amber-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-amber-600">36+</p>
-              <p className="text-sm text-gray-600">Supported pools</p>
-            </div>
-          </section>
-
           <ProductFeatureScrollSection
+            eyebrowTone="amber"
             title="Borrow more on stronger collateral."
             items={earnFeatureItems}
           />
@@ -164,7 +150,7 @@ export default function EarnPage() {
           {/* Supported Dexs */}
           <section>
             <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>DEX Coverage</SectionEyebrow>
+              <SectionEyebrow tone="amber">DEX Coverage</SectionEyebrow>
               <SectionTitle>Blue-chip LP venues.</SectionTitle>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -187,7 +173,7 @@ export default function EarnPage() {
           {/* Use Cases */}
           <section>
             <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>Use Cases</SectionEyebrow>
+              <SectionEyebrow tone="amber">Use Cases</SectionEyebrow>
               <SectionTitle>Designed for larger positions.</SectionTitle>
             </div>
             <div className="max-w-[650px] space-y-4">
@@ -221,14 +207,11 @@ export default function EarnPage() {
             </div>
           </section>
 
-          <section>
-            <HomepageNewsroomSection collection="earn" />
-          </section>
+          <HomepageNewsroomSection collection="earn" eyebrowTone="amber" />
 
-          {/* FAQ */}
-          <section>
-            <InlineFaqSection title="Frequently asked questions." items={bluechipSpokeFaqItems} />
-          </section>
+          <div className="pb-16 md:pb-24">
+            <InlineFaqSection title="Frequently asked questions." items={bluechipSpokeFaqItems} eyebrowTone="amber" withTopBorder={false} />
+          </div>
         </div>
       </div>
       </div>

@@ -6,7 +6,8 @@ import { FAQSection } from '../../hero/FAQSection'
 describe('FAQSection', () => {
   it('renders section title', () => {
     render(<FAQSection />)
-    expect(screen.getByText('Frequently asked questions.')).toBeInTheDocument()
+    expect(screen.getByText('Frequently asked')).toBeInTheDocument()
+    expect(screen.getByText('questions.')).toBeInTheDocument()
   })
 
   it('renders all FAQ items', () => {
@@ -54,7 +55,8 @@ describe('FAQSection', () => {
 
   it('has proper layout classes', () => {
     const { container } = render(<FAQSection />)
-    expect(container.querySelector('.flex-col.md\\:flex-row')).toBeInTheDocument()
+    expect(container.firstChild).toHaveClass('grid')
+    expect(container.firstChild).toHaveClass('md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]')
   })
 
   it('renders accordion with proper structure', () => {

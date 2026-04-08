@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
@@ -402,7 +402,7 @@ export default function RiskFrameworkPage() {
         </p>
       </div>
 
-      <ScrollSpySidebar
+      <DeveloperScrollSpyRail
         sections={sections}
         pageSummary="Protocol-wide operating rules for risk management across the Avana Hub and LP Collateral Spokes."
         sectionColor="rose"
