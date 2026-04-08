@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+import BorrowPowerSection from "@/components/borrow-power-section"
 import BorrowUseCasesSection from "@/components/borrow-use-cases-section"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
@@ -58,15 +59,19 @@ const borrowFeatureItems = [
   },
   {
     title: "Shared Hub liquidity",
-    description: "Borrow capacity is funded from the Hub while underwriting remains isolated inside the Borrow Spoke.",
+    description: "Borrowing power comes from shared Hub liquidity while risk remains isolated inside the Borrow Spoke.",
   },
   {
-    title: "Active fee accrual",
-    description: "Collateral stays inside the pool and can keep earning trading fees while debt remains open.",
+    title: "High capital efficiency",
+    description: "Earn LP fees while simultaneously accessing borrowing power.",
   },
   {
-    title: "Controlled liquidations",
-    description: "Fees are applied first, then only the minimum LP principal is unwound to restore solvency.",
+    title: "Minimal volatility risk",
+    description: "Clear risk parameters and stable liquidation behavior under stress. Peg-aligned assets can significantly reduce liquidation risk.",
+  },
+  {
+    title: "Cleaner position monitoring",
+    description: "Track health, usage, and pool-specific limits with a cleaner LP-first borrowing workflow.",
   },
 ] as const
 
@@ -303,6 +308,7 @@ export default function BorrowPage() {
           />
 
           <BorrowUseCasesSection />
+          <BorrowPowerSection />
 
           <HomepageNewsroomSection collection="borrow" eyebrowTone="blue" />
 
