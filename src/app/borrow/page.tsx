@@ -135,6 +135,7 @@ export default function BorrowPage() {
 
       <ProductStorySection
         withTopDivider
+        eyebrowTone="blue"
         titleLines={["Unlock liquidity from", "Your AMM Pools."]}
         paragraphs={[
           "Borrow lives on the borrower-facing spoke, where each LP position is interpreted, valued, and risk-scored with pool-specific logic instead of being treated like a static token balance.",
@@ -163,6 +164,7 @@ export default function BorrowPage() {
           </section>
 
           <ProductFeatureScrollSection
+            eyebrowTone="blue"
             title="Borrow without unwinding."
             items={borrowFeatureItems}
           />
@@ -170,7 +172,7 @@ export default function BorrowPage() {
           {/* Supported Dexs */}
           <section>
             <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>DEX Coverage</SectionEyebrow>
+              <SectionEyebrow tone="blue">DEX Coverage</SectionEyebrow>
               <SectionTitle>Supported venues.</SectionTitle>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -188,7 +190,7 @@ export default function BorrowPage() {
           {/* Use Cases */}
           <section>
             <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>Use Cases</SectionEyebrow>
+              <SectionEyebrow tone="blue">Use Cases</SectionEyebrow>
               <SectionTitle>Put borrowed liquidity to work.</SectionTitle>
             </div>
             <div className="max-w-[650px] space-y-4">
@@ -223,12 +225,12 @@ export default function BorrowPage() {
           </section>
 
           <section>
-            <HomepageNewsroomSection collection="borrow" />
+            <HomepageNewsroomSection collection="borrow" eyebrowTone="blue" />
           </section>
 
           {/* FAQ */}
           <section>
-            <InlineFaqSection title="Frequently asked questions." items={openSpokeFaqItems} />
+            <InlineFaqSection title="Frequently asked questions." items={openSpokeFaqItems} eyebrowTone="blue" />
           </section>
         </div>
       </div>

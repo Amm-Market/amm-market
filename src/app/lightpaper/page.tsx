@@ -34,10 +34,36 @@ const sections = [
   { id: "references-and-appendix", title: "References & Appendix" },
 ]
 
-function LightpaperSectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
+const lightpaperSectionTones = {
+  "executive-summary": "violet",
+  "protocol-motivation": "rose",
+  "protocol-overview": "cyan",
+  "protocol-specification": "emerald",
+  "protocol-architecture": "violet",
+  "spoke-configuration": "amber",
+  "risk-management": "rose",
+  "position-valuation": "cyan",
+  "liquidation-mechanism": "amber",
+  "interest-rate": "blue",
+  "revenue-model": "emerald",
+  "market-opportunity": "violet",
+  "roadmap": "cyan",
+  "conclusion": "rose",
+  "references-and-appendix": "slate",
+} as const
+
+function LightpaperSectionHeader({
+  eyebrow,
+  title,
+  tone,
+}: {
+  eyebrow: string
+  title: string
+  tone: "blue" | "emerald" | "violet" | "amber" | "cyan" | "rose" | "slate"
+}) {
   return (
     <div className="space-y-3">
-      <SectionEyebrow>{eyebrow}</SectionEyebrow>
+      <SectionEyebrow tone={tone}>{eyebrow}</SectionEyebrow>
       <SectionTitle>{title}</SectionTitle>
     </div>
   )
@@ -702,7 +728,7 @@ export default function LightpaperPage() {
               <div className="site-editorial-content max-w-3xl [&_a]:text-blue-600 [&_a]:hover:underline [&_h2]:text-[1.35rem] [&_h2]:font-bold [&_h2]:leading-[1.2] [&_h2]:tracking-[-0.01em] [&_h2]:text-gray-900 [&_h3]:text-[1rem] [&_h3]:font-semibold [&_h3]:leading-[1.35] [&_h3]:tracking-[-0.01em] [&_h3]:text-gray-900 [&_li]:mb-2 [&_li]:text-[0.9375rem] [&_li]:leading-7 [&_p]:text-[1.35rem] [&_p]:font-medium [&_p]:leading-[1.5] [&_p]:tracking-[-0.03em] sm:[&_h2]:text-[1.7rem] sm:[&_h3]:text-[1.08rem] sm:[&_li]:text-[1rem] sm:[&_p]:text-[1.5rem]">
                 <div className="space-y-12">
                   <section id="executive-summary" className="scroll-mt-32">
-                    <LightpaperSectionHeader eyebrow="Why this matters" title="Executive Summary" />
+                    <LightpaperSectionHeader eyebrow="Why this matters" title="Executive Summary" tone="violet" />
                     <div className="mt-5 space-y-5">
                       <p className="font-medium text-gray-900">
                         The deepest liquidity in DeFi is productive, but financially trapped.
@@ -733,7 +759,7 @@ export default function LightpaperPage() {
                   </section>
 
               <section id="protocol-motivation" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Problem setting" title="Protocol Motivation" />
+                <LightpaperSectionHeader eyebrow="Problem setting" title="Protocol Motivation" tone="rose" />
                 <div className="mt-5 space-y-5">
                   <p>
                     The idea of using LP positions as borrowable collateral is not new. Previous attempts proved
@@ -784,7 +810,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="protocol-overview" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="At a glance" title="Protocol Overview" />
+                <LightpaperSectionHeader eyebrow="At a glance" title="Protocol Overview" tone="cyan" />
                 <div className="mt-5 space-y-5">
                   <p>
                     Avana is a lending protocol built specifically for LP collateral. It allows AMM liquidity providers
@@ -825,7 +851,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="protocol-specification" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Phase design" title="Protocol Specification" />
+                <LightpaperSectionHeader eyebrow="Phase design" title="Protocol Specification" tone="emerald" />
                 <div className="mt-5 space-y-5">
                   <p>
                     Avana is designed as a multi-phase protocol that evolves over time to progressively expand what LP
@@ -853,7 +879,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="protocol-architecture" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Hub and spoke" title="Protocol Architecture" />
+                <LightpaperSectionHeader eyebrow="Hub and spoke" title="Protocol Architecture" tone="violet" />
                 <div className="mt-5 space-y-5">
                   <p>
                     Avana is built on Aave v4&apos;s hub-and-spoke architecture because LP collateral needs both shared
@@ -884,7 +910,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="spoke-configuration" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Market design" title="Spoke Configuration" />
+                <LightpaperSectionHeader eyebrow="Market design" title="Spoke Configuration" tone="amber" />
                 <div className="mt-5 space-y-5">
                   <h3>For Borrowers</h3>
                   <p>
@@ -1051,7 +1077,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="risk-management" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Safety model" title="Risk Management" />
+                <LightpaperSectionHeader eyebrow="Safety model" title="Risk Management" tone="rose" />
                 <div className="mt-5 space-y-5">
                   <p>
                     Liquidity provider (LP) collateral behaves fundamentally differently from traditional lending
@@ -1127,7 +1153,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="position-valuation" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Valuation logic" title="Position Valuation" />
+                <LightpaperSectionHeader eyebrow="Valuation logic" title="Position Valuation" tone="cyan" />
                 <ImagePlaceholder label="LP valuation model graphic" />
                 <div className="space-y-5">
                   <p>
@@ -1176,7 +1202,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="liquidation-mechanism" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Failure handling" title="Liquidation Mechanism" />
+                <LightpaperSectionHeader eyebrow="Failure handling" title="Liquidation Mechanism" tone="amber" />
                 <ImagePlaceholder label="Liquidation execution flow" />
                 <div className="space-y-5">
                   <p>
@@ -1212,7 +1238,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="interest-rate" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Rate design" title="Interest Rate" />
+                <LightpaperSectionHeader eyebrow="Rate design" title="Interest Rate" tone="blue" />
                 <ImagePlaceholder label="Borrow rate composition" />
                 <div className="space-y-5">
                   <p>
@@ -1238,7 +1264,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="revenue-model" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Business model" title="Revenue Model" />
+                <LightpaperSectionHeader eyebrow="Business model" title="Revenue Model" tone="emerald" />
                 <div className="mt-5 space-y-5">
                   <p>Avana earns from two sources.</p>
                   <ImagePlaceholder label="Revenue model visual" />
@@ -1260,7 +1286,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="market-opportunity" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Demand picture" title="Market Opportunity" />
+                <LightpaperSectionHeader eyebrow="Demand picture" title="Market Opportunity" tone="violet" />
                 <ImagePlaceholder label="Addressable market visual" />
                 <div className="space-y-5">
                   <p>
@@ -1309,7 +1335,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="roadmap" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="What comes next" title="Roadmap" />
+                <LightpaperSectionHeader eyebrow="What comes next" title="Roadmap" tone="cyan" />
                 <div className="mt-5 space-y-5">
                   <p>
                     Avana develops in three phases, each building on the previous one. The roadmap is designed so that
@@ -1370,7 +1396,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="conclusion" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Closing view" title="Conclusion" />
+                <LightpaperSectionHeader eyebrow="Closing view" title="Conclusion" tone="rose" />
                 <div className="mt-5 space-y-5">
                   <p>
                     Avana directly executes on the strategic vision outlined by Aave Labs&apos; &quot;CDP for AMM
@@ -1393,7 +1419,7 @@ export default function LightpaperPage() {
               </section>
 
               <section id="references-and-appendix" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Source notes" title="References & Appendix" />
+                <LightpaperSectionHeader eyebrow="Source notes" title="References & Appendix" tone="slate" />
                 <div className="mt-5 space-y-5">
                   <p>
                     This section contains governance discussions, historical implementations, research links, prior LP
@@ -1413,7 +1439,7 @@ export default function LightpaperPage() {
             </div>
 
           <div className="hidden self-start xl:block xl:sticky xl:top-28 xl:justify-self-end xl:pt-4">
-            <ScrollSpySidebar sections={sections} sectionColor="blue" />
+            <ScrollSpySidebar sections={sections} sectionColor="violet" sectionColorsById={lightpaperSectionTones} />
           </div>
         </div>
       </article>

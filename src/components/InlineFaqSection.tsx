@@ -1,7 +1,7 @@
 "use client"
 
 import type { ReactNode } from "react"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 
 export interface InlineFaqItem {
@@ -13,6 +13,7 @@ export interface InlineFaqItem {
 interface InlineFaqSectionProps {
   title?: string
   eyebrow?: string
+  eyebrowTone?: SectionEyebrowTone
   items: InlineFaqItem[]
   withTopBorder?: boolean
 }
@@ -35,6 +36,7 @@ const MinusIcon = () => (
 export function InlineFaqSection({
   title = "Frequently asked questions.",
   eyebrow,
+  eyebrowTone = "blue",
   items,
   withTopBorder = true,
 }: InlineFaqSectionProps) {
@@ -45,7 +47,7 @@ export function InlineFaqSection({
       }`}
     >
       <div className="space-y-3 md:pt-2 md:flex-shrink-0 md:w-[300px]">
-        {eyebrow ? <SectionEyebrow>{eyebrow}</SectionEyebrow> : null}
+        {eyebrow ? <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow> : null}
         <SectionTitle as="h3">{title}</SectionTitle>
       </div>
       <div className="md:w-[600px] md:flex-shrink-0">
