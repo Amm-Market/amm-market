@@ -567,3 +567,7 @@
 .developer-content td {
   font-size: 0.875rem;
 }
+
+body:has([data-developer-doc-shell]) footer.site-content-shell {
+  display: none;
+}

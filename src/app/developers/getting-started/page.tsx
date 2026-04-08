@@ -1,6 +1,6 @@
 import Link from "next/link"
 import type { Metadata } from "next"
-import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
@@ -167,7 +167,7 @@ export default function DepositLPPage() {
         </section>
       </div>
 
-      <ScrollSpySidebar
+      <DeveloperScrollSpyRail
         sections={sections}
         pageSummary="How a supported LP position enters a Borrow Spoke and becomes part of aggregate borrowing capacity."
         sectionColor="emerald"
