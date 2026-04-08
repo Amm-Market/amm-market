@@ -317,6 +317,7 @@
 }
 
 .site-blog-article section[id] > h2 {
+  --site-eyebrow-color: #b45309;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -330,6 +331,34 @@
   color: #18323c;
 }
 
+.site-blog-article section[id] > h2.site-eyebrow-tone-blue {
+  --site-eyebrow-color: #2563eb;
+}
+
+.site-blog-article section[id] > h2.site-eyebrow-tone-emerald {
+  --site-eyebrow-color: #059669;
+}
+
+.site-blog-article section[id] > h2.site-eyebrow-tone-violet {
+  --site-eyebrow-color: #7c3aed;
+}
+
+.site-blog-article section[id] > h2.site-eyebrow-tone-amber {
+  --site-eyebrow-color: #d97706;
+}
+
+.site-blog-article section[id] > h2.site-eyebrow-tone-cyan {
+  --site-eyebrow-color: #0891b2;
+}
+
+.site-blog-article section[id] > h2.site-eyebrow-tone-rose {
+  --site-eyebrow-color: #e11d48;
+}
+
+.site-blog-article section[id] > h2.site-eyebrow-tone-slate {
+  --site-eyebrow-color: #475569;
+}
+
 .site-blog-article section[id] > h2::before {
   content: attr(data-eyebrow);
   display: inline-flex;
@@ -337,7 +366,8 @@
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.01em;
-  color: #3f6cff;
+  margin-bottom: 0.05rem;
+  color: var(--site-eyebrow-color);
 }
 
 @media (min-width: 640px) {

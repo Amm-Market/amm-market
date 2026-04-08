@@ -209,7 +209,7 @@ export default function PrivacyPage() {
 
           {/* Sidebar navigation */}
           <div className="hidden self-start xl:block xl:sticky xl:top-28 xl:justify-self-end xl:pt-4">
-            <ScrollSpySidebar sections={sections} />
+            <ScrollSpySidebar sections={sections} sectionColor="slate" />
           </div>
         </div>
       </article>

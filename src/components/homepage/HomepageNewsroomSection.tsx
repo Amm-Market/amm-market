@@ -1,9 +1,10 @@
 import Link from "next/link"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
 import { getNewsroomPosts, type NewsroomCollection, type NewsroomPost } from "@/lib/content"
 
 type HomepageNewsroomSectionProps = {
   eyebrow?: string
+  eyebrowTone?: SectionEyebrowTone
   title?: string
   collection?: NewsroomCollection
   posts?: readonly NewsroomPost[]
@@ -16,6 +17,7 @@ type HomepageNewsroomSectionProps = {
  */
 export default async function HomepageNewsroomSection({
   eyebrow = "Newsroom",
+  eyebrowTone = "blue",
   title = "Latest from Avana",
   collection = "home",
   posts,
@@ -26,7 +28,7 @@ export default async function HomepageNewsroomSection({
   return (
     <section>
       <div className="mb-8 flex max-w-[48rem] flex-col gap-3 md:mb-10">
-        <SectionEyebrow>{eyebrow}</SectionEyebrow>
+        <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow>
         <SectionTitle>{title}</SectionTitle>
       </div>
 

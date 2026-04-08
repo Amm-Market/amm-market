@@ -1,7 +1,8 @@
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
 
 type ProductStorySectionProps = {
   eyebrow?: string
+  eyebrowTone?: SectionEyebrowTone
   titleLines: [string, string]
   paragraphs: [string, string]
   withTopDivider?: boolean
@@ -9,6 +10,7 @@ type ProductStorySectionProps = {
 
 export default function ProductStorySection({
   eyebrow = "Avana Relaunch",
+  eyebrowTone = "blue",
   titleLines,
   paragraphs,
   withTopDivider = false,
@@ -19,7 +21,7 @@ export default function ProductStorySection({
         <div className="mx-auto w-full max-w-[76rem]">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <div className="space-y-4">
-              <SectionEyebrow>{eyebrow}</SectionEyebrow>
+              <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow>
               <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
                 <span className="block">{titleLines[0]}</span>
                 <span className="block">{titleLines[1]}</span>

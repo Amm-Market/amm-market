@@ -11,6 +11,8 @@ interface TableOfContentsItem {
   title: string
 }
 
+type SidebarTone = "blue" | "emerald" | "violet" | "amber" | "cyan" | "rose" | "slate"
+
 interface BlogPostLayoutProps {
   title: string
   displayTitle?: string
@@ -19,6 +21,7 @@ interface BlogPostLayoutProps {
   image?: string
   children: React.ReactNode
   tableOfContents?: TableOfContentsItem[]
+  sectionColorsById?: Partial<Record<string, SidebarTone>>
   prevPost?: { slug: string; title: string }
   nextPost?: { slug: string; title: string }
 }
@@ -30,6 +33,7 @@ export default function BlogPostLayout({
   image,
   children,
   tableOfContents,
+  sectionColorsById,
   prevPost,
   nextPost,
 }: BlogPostLayoutProps) {
@@ -147,7 +151,7 @@ export default function BlogPostLayout({
 
             <div className="hidden self-start xl:block xl:sticky xl:top-28 xl:pt-4">
               {tableOfContents && tableOfContents.length > 0 ? (
-                <ScrollSpySidebar sections={tableOfContents} />
+                <ScrollSpySidebar sections={tableOfContents} sectionColor="amber" sectionColorsById={sectionColorsById} />
               ) : null}
             </div>
           </div>

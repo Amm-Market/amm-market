@@ -5,6 +5,8 @@ import BlogPostLayout from "@/components/blog-post-layout"
 import { buildOgImagePath, SITE_NAME } from "@/lib/site"
 import { blogPosts, blogPostsBySlug, type BlogPostDefinition, type BlogSection } from "@/lib/blog-posts"
 
+const sectionTones = ["amber", "violet", "cyan", "emerald", "rose", "slate", "blue"] as const
+
 export function getBlogPost(slug: string): BlogPostDefinition {
   const post = blogPostsBySlug.get(slug)
 
@@ -46,9 +48,16 @@ export function buildBlogMetadata(post: BlogPostDefinition): Metadata {
 }
 
 export function renderBlogSections(sections: readonly BlogSection[]) {
-  return sections.map((section) => (
+  return sections.map((section, index) => (
     <section key={section.id} id={section.id} className="space-y-4 scroll-mt-24">
-      {section.title ? <h2 data-eyebrow={section.eyebrow}>{section.title}</h2> : null}
+      {section.title ? (
+        <h2
+          data-eyebrow={section.eyebrow}
+          className={`site-eyebrow-tone-${sectionTones[index % sectionTones.length]}`}
+        >
+          {section.title}
+        </h2>
+      ) : null}
       {section.paragraphs.map((paragraph, index) => (
         <p key={index}>{paragraph}</p>
       ))}
@@ -218,6 +227,9 @@ export function createBlogPage(slug: string) {
     id: section.id,
     title: section.title ?? (sections.length === 1 ? "Article" : `Section ${sectionIndex + 1}`),
   }))
+  const sectionColorsById = Object.fromEntries(
+    sections.map((section, index) => [section.id, sectionTones[index % sectionTones.length]]),
+  )
   const image = getPostImage(post.image)
   const displayTitle = displayTitles[post.slug]
 
@@ -230,6 +242,7 @@ export function createBlogPage(slug: string) {
         description={post.description}
         image={image}
         tableOfContents={tableOfContents}
+        sectionColorsById={sectionColorsById}
         prevPost={prevPost ? { slug: prevPost.slug, title: prevPost.title } : undefined}
         nextPost={nextPost ? { slug: nextPost.slug, title: nextPost.title } : undefined}
       >
