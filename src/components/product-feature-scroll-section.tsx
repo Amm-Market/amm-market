@@ -34,10 +34,10 @@ export default function ProductFeatureScrollSection({
               >
                 <div className="relative z-10 flex items-start justify-between gap-4">
                   <div className="space-y-2">
-                    <h3 className="max-w-[14rem] text-2xl font-semibold text-gray-900">
+                    <h3 className="max-w-[14rem] text-[1.45rem] font-medium leading-[1.08] tracking-[-0.045em] text-[#18323c]">
                       {item.title}
                     </h3>
-                    <p className="max-w-[16rem] text-base leading-6 text-gray-600">
+                    <p className="max-w-[16rem] text-sm leading-6 text-gray-600">
                       {item.description}
                     </p>
                   </div>
