@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
@@ -279,7 +279,7 @@ export default function BorrowSpokePage() {
         </section>
       </div>
 
-      <ScrollSpySidebar
+      <DeveloperScrollSpyRail
         sections={sections}
         pageSummary="Responsibilities and scope of the borrower-facing Avana spoke within the Aave v4 architecture."
         sectionColor="violet"

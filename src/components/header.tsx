@@ -162,32 +162,32 @@ const desktopMenus: DesktopMenuGroup[] = [
     label: "Developers",
     eyebrow: "Explore Developers",
     items: [
-      { href: siteRoutes.developers, label: "Developers" },
-      { href: siteRoutes.developersIntro, label: "Introduction" },
-      { href: "/developers/architecture", label: "Architecture" },
-      { href: "/developers/integrations", label: "Integrations" },
+      { href: siteRoutes.developers, label: "Introduction" },
+      { href: "/developers/getting-started", label: "Getting Started" },
+      { href: "/developers/architecture", label: "Protocol Architecture" },
+      { href: "/developers/liquidation", label: "Liquidation Framework" },
     ],
-    supportingTitle: "Start here",
+    supportingTitle: "Highlights",
     supportingItems: [
       {
-        href: siteRoutes.developersIntro,
-        label: "Start with the mental model",
-        description: "Understand the core protocol pieces before moving into docs and implementation details.",
+        href: siteRoutes.developers,
+        label: "Start with the overview",
+        description: "Get the core protocol mental model before moving into implementation detail.",
+      },
+      {
+        href: "/developers/getting-started",
+        label: "Follow the borrower flow",
+        description: "See the path from deposit to borrowing, repayment, and collateral withdrawal.",
       },
       {
         href: "/developers/architecture",
-        label: "Review architecture",
-        description: "See how the hub, spokes, risk controls, and pricing logic fit together.",
+        label: "Review the protocol model",
+        description: "Understand how the hub, spokes, pricing, and controls fit together.",
       },
       {
-        href: "/developers/integrations",
-        label: "Study integrations",
-        description: "Use the contracts and interfaces needed to connect apps, agents, and frontends.",
-      },
-      {
-        href: "/developers/legal",
-        label: "Check constraints",
-        description: "Review the boundaries, assumptions, and legal notes around protocol usage.",
+        href: "/developers/liquidation",
+        label: "Understand liquidation paths",
+        description: "Learn how LP collateral is monitored, unwound, and settled under stress.",
       },
     ],
   },
@@ -242,7 +242,7 @@ function DesktopMenuPanel({
           onExited()
         }
       }}
-      className={`fixed left-0 right-0 top-16 z-40 hidden transform-gpu md:block lg:top-[68px] transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+      className={`fixed left-0 right-0 top-16 z-40 hidden transform-gpu md:block lg:top-[68px] transition-[opacity,transform] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         isOpen ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-6 opacity-0"
       }`}
       aria-hidden={!isOpen}
@@ -251,7 +251,7 @@ function DesktopMenuPanel({
         <div className="w-full bg-white px-4 py-6 sm:px-6 lg:px-8 lg:py-7 xl:px-10">
           <div
             key={`${menu.id}-${animationCycle}`}
-            className="grid gap-8 lg:min-h-[15.25rem] lg:grid-cols-[minmax(0,24rem)_minmax(18rem,22rem)] lg:gap-3 xl:grid-cols-[minmax(0,25rem)_minmax(18rem,22rem)] xl:gap-4"
+            className="grid gap-8 lg:min-h-[18.5rem] lg:grid-cols-[minmax(0,24rem)_minmax(18rem,22rem)] lg:gap-3 xl:grid-cols-[minmax(0,25rem)_minmax(18rem,22rem)] xl:gap-4"
           >
             <div className="space-y-2.5">
               <p className="text-[0.96rem] font-medium tracking-[-0.02em] text-black/76">{toSentenceCase(menu.eyebrow)}</p>
@@ -264,7 +264,7 @@ function DesktopMenuPanel({
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noreferrer" : undefined}
                     suppressHydrationWarning
-                    className={`group flex items-start gap-4 py-1.5 text-left text-black transition-[opacity,color,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-black/74 ${
+                    className={`group flex items-start gap-4 py-1.5 text-left text-black transition-[opacity,color,filter] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-black/74 ${
                       isOpen ? "opacity-100 blur-0" : "opacity-[0.18] blur-[0.2px]"
                     }`}
                     style={{ transitionDelay: `${180 + index * 55}ms` }}
@@ -278,7 +278,7 @@ function DesktopMenuPanel({
             </div>
 
             <div
-              className={`space-y-2.5 pt-0.5 transition-[opacity,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              className={`space-y-2.5 pt-0.5 transition-[opacity,filter] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                 isOpen ? "opacity-100 blur-0" : "opacity-[0.16] blur-[0.2px]"
               }`}
               style={{ transitionDelay: "280ms" }}
@@ -370,7 +370,7 @@ export default function Header(): React.JSX.Element {
     desktopCloseTimeoutRef.current = window.setTimeout(() => {
       setDesktopMenuOpen(null)
       desktopCloseTimeoutRef.current = null
-    }, 220)
+    }, 110)
   }
 
   useEffect(() => {
