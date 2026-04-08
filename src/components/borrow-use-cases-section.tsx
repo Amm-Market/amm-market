@@ -9,22 +9,22 @@ const BORROW_USE_CASES: readonly BorrowUseCase[] = [
   {
     title: "Treasury Financing Without Exits",
     description:
-      "DAO and protocol treasuries can borrow against strategic LP positions to fund grants, operations, or runway while keeping liquidity deployed, preserving market presence, and continuing to earn trading fees instead of selling core assets.",
+      "DAOs and treasuries can borrow against LP positions to fund grants, operations, or runway without selling core liquidity or giving up fee flow.",
   },
   {
     title: "Leveraged Liquidity Expansion",
     description:
-      "Advanced LPs can use existing LP positions as collateral to borrow additional assets, add more liquidity, and scale fee generation. This is one of the clearest native use cases already highlighted in Euler's LP collateral design.",
+      "LPs can use existing positions as collateral to borrow more assets, add liquidity, and grow fee exposure from the same capital base.",
   },
   {
     title: "Trading and Hedging Liquidity",
     description:
-      "Market makers and active traders can unlock instant borrowing power from LP positions to rebalance inventory, hedge exposure, or finance time-sensitive opportunities without pulling liquidity, reducing idle capital and improving execution flexibility.",
+      "Traders and market makers can borrow against LP collateral to rebalance inventory, hedge risk, or move on short-notice opportunities without pulling liquidity.",
   },
   {
     title: "Credit Across Ecosystems",
     description:
-      "DeFi power users can keep LP collateral anchored in one venue while borrowing against it for deployment into other protocols, strategies, or chains, turning static liquidity into reusable credit within a more modular DeFi stack.",
+      "Users can keep LP collateral in one venue and borrow for deployment across other protocols, strategies, or chains, turning LP positions into reusable credit.",
   },
 ] as const
 
