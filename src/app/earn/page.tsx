@@ -141,22 +141,6 @@ export default function EarnPage() {
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
         <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
-          {/* Stats */}
-          <section className="grid grid-cols-3 gap-4">
-            <div className="p-6 bg-amber-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-amber-600">50–77%</p>
-              <p className="text-sm text-gray-600">Max LTV (blue-chip)</p>
-            </div>
-            <div className="p-6 bg-amber-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-amber-600">5%</p>
-              <p className="text-sm text-gray-600">IL buffer typical</p>
-            </div>
-            <div className="p-6 bg-amber-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-amber-600">36+</p>
-              <p className="text-sm text-gray-600">Supported pools</p>
-            </div>
-          </section>
-
           <ProductFeatureScrollSection
             eyebrowTone="amber"
             title="Borrow more on stronger collateral."
