@@ -78,7 +78,7 @@ export default function HomepageTestimonialSection() {
   return (
     <div>
       <div className="mb-8 space-y-3 md:mb-10">
-        <SectionEyebrow>Risk Systems</SectionEyebrow>
+        <SectionEyebrow tone="rose">Risk Systems</SectionEyebrow>
         <SectionTitle>Borrow with Confidence</SectionTitle>
       </div>
 

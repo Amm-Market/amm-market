@@ -1,4 +1,4 @@
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
 
 type ProductFeatureItem = {
   title: string
@@ -7,19 +7,21 @@ type ProductFeatureItem = {
 
 type ProductFeatureScrollSectionProps = {
   eyebrow?: string
+  eyebrowTone?: SectionEyebrowTone
   title: string
   items: readonly ProductFeatureItem[]
 }
 
 export default function ProductFeatureScrollSection({
   eyebrow = "Key Features",
+  eyebrowTone = "blue",
   title,
   items,
 }: ProductFeatureScrollSectionProps) {
   return (
     <section>
       <div className="mb-8 max-w-[650px] space-y-3 text-left">
-        <SectionEyebrow>{eyebrow}</SectionEyebrow>
+        <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow>
         <SectionTitle>{title}</SectionTitle>
       </div>
       <div className="relative mt-10 md:mt-16">
@@ -32,10 +34,10 @@ export default function ProductFeatureScrollSection({
               >
                 <div className="relative z-10 flex items-start justify-between gap-4">
                   <div className="space-y-2">
-                    <h3 className="max-w-[14rem] text-2xl font-semibold text-gray-900">
+                    <h3 className="max-w-[14rem] text-[1.45rem] font-medium leading-[1.08] tracking-[-0.045em] text-[#18323c]">
                       {item.title}
                     </h3>
-                    <p className="max-w-[16rem] text-base leading-6 text-gray-600">
+                    <p className="max-w-[16rem] text-sm leading-6 text-gray-600">
                       {item.description}
                     </p>
                   </div>

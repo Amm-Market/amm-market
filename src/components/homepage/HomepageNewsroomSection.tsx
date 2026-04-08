@@ -1,13 +1,15 @@
 import Link from "next/link"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
 import { getNewsroomPosts, type NewsroomCollection, type NewsroomPost } from "@/lib/content"
 
 type HomepageNewsroomSectionProps = {
   eyebrow?: string
+  eyebrowTone?: SectionEyebrowTone
   title?: string
   collection?: NewsroomCollection
   posts?: readonly NewsroomPost[]
   showDividers?: boolean
+  showTopBorder?: boolean
 }
 
 /**
@@ -16,21 +18,24 @@ type HomepageNewsroomSectionProps = {
  */
 export default async function HomepageNewsroomSection({
   eyebrow = "Newsroom",
+  eyebrowTone = "blue",
   title = "Latest from Avana",
   collection = "home",
   posts,
   showDividers = true,
+  showTopBorder,
 }: HomepageNewsroomSectionProps) {
   const resolvedPosts = posts ?? await getNewsroomPosts(collection)
+  const hasTopBorder = showTopBorder ?? showDividers
 
   return (
     <section>
       <div className="mb-8 flex max-w-[48rem] flex-col gap-3 md:mb-10">
-        <SectionEyebrow>{eyebrow}</SectionEyebrow>
+        <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow>
         <SectionTitle>{title}</SectionTitle>
       </div>
 
-      <div className={showDividers ? "border-t border-gray-200" : ""}>
+      <div className={hasTopBorder ? "border-t border-gray-200" : ""}>
         {resolvedPosts.map((post) => (
           <article
             key={post.href}
@@ -55,7 +60,7 @@ export default async function HomepageNewsroomSection({
               <Link
                 href={post.href}
                 prefetch={false}
-                className="inline-flex items-center justify-center rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:border-gray-400 hover:text-gray-900"
+                className="inline-flex items-center justify-center rounded-[14px] border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:border-gray-400 hover:text-gray-900"
               >
                 Read blog
               </Link>

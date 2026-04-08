@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
@@ -84,7 +84,7 @@ export default function InsuranceFundsPage() {
         </section>
       </div>
 
-      <ScrollSpySidebar
+      <DeveloperScrollSpyRail
         sections={sections}
         pageSummary="Planned backstop design for residual bad debt after LP liquidation."
         sectionColor="rose"

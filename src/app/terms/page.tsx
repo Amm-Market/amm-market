@@ -148,7 +148,9 @@ export default function TermsPage() {
           </div>
 
           {/* Sidebar navigation */}
-          <ScrollSpySidebar sections={sections} />
+          <div className="hidden self-start xl:block xl:sticky xl:top-28 xl:justify-self-end xl:pt-4">
+            <ScrollSpySidebar sections={sections} sectionColor="rose" />
+          </div>
         </div>
       </article>
     </section>

@@ -3,6 +3,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
+import InvestApySection from "@/components/invest-apy-section"
+import InvestGrowthCalculatorSection from "@/components/invest-growth-calculator-section"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
@@ -48,24 +50,20 @@ const stableSpokeFaqItems: InlineFaqItem[] = [
 
 const investFeatureItems = [
   {
-    title: "Capital entry point",
-    description: "Invest collects lender deposits so credit can be routed into LP-backed borrower markets through one spoke.",
+    title: "Easy money movement",
+    description: "Access and move capital whenever liquidity is available, all from one simple online interface.",
   },
   {
-    title: "Hub liquidity routing",
-    description: "Deposited assets move through the Hub, where capital can serve multiple LP-collateral markets at once.",
+    title: "A market-leading rate",
+    description: "Supplier yield is designed to sit above most bank cash products while staying tied to real onchain demand.",
   },
   {
-    title: "LP-backed demand",
-    description: "Yield is sourced from real borrowing activity against productive AMM collateral rather than idle reserves.",
+    title: "Supply once, power many borrowers",
+    description: "One deposit can help fund a network of specialized LP borrowers across multiple spoke markets through one cleaner capital surface.",
   },
   {
-    title: "No LP management",
-    description: "Suppliers can earn from the credit layer without managing ranges, pool composition, or impermanent loss.",
-  },
-  {
-    title: "Flexible withdrawals",
-    description: "Capital stays easier to rotate, with deposits designed to remain usable as new opportunities appear.",
+    title: "Base rate plus risk premium",
+    description: "Supplier returns combine the Aave v4 Hub base rate with Avana's LP borrower risk premium.",
   },
 ] as const
 
@@ -100,14 +98,14 @@ export default function InvestPage() {
 
               {/* Right Column - Text Content */}
               <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
-                <h1 className="mb-3 max-w-[11ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
-                  <span className="lg:whitespace-nowrap">Put idle capital</span>
+                <h1 className="mb-3 max-w-[14ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[11ch] md:text-5xl lg:text-5xl xl:text-6xl">
+                  <span className="lg:whitespace-nowrap">Lend into</span>
                   <br />
-                  <span className="lg:whitespace-nowrap">to work harder.</span>
+                  <span className="lg:whitespace-nowrap">LP-backed credit.</span>
                 </h1>
 
                 <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
-                  Lend single assets to LP borrowers, earn demand-driven yield, and stay ready to rotate into new opportunities.
+                  Supply single assets, earn demand-driven yield, and keep capital flexible as new opportunities appear.
                 </p>
 
                 <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
@@ -135,105 +133,79 @@ export default function InvestPage() {
 
       <ProductStorySection
         withTopDivider
-        titleLines={["Put your idle capital", "ready to work."]}
+        eyebrowTone="emerald"
+        titleLines={["One deposit,", "many LP markets."]}
         paragraphs={[
-          "Invest is the capital-entry side of Avana. Suppliers deposit major assets into the Invest Spoke, and that liquidity is routed through the Hub to power borrowing across multiple LP-collateral markets.",
-          "That keeps lending simple for depositors: they can earn from LP-backed credit demand without managing impermanent loss, liquidity ranges, or the collateral logic handled inside Borrow Spokes.",
+          "Invest is Avana's supply layer. Deposited assets enter the Invest Spoke, then route through the Hub to support borrowing across multiple LP-collateral markets.",
+          "That gives suppliers exposure to LP-backed credit demand without managing impermanent loss, liquidity ranges, or borrower-side collateral operations.",
         ]}
       />
+
+      <InvestApySection />
 
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
         <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
-          {/* Stats */}
-          <section className="grid grid-cols-3 gap-4">
-            <div className="p-6 bg-emerald-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-emerald-600">0.01%</p>
-              <p className="text-sm text-gray-600">Swap Fee</p>
-            </div>
-            <div className="p-6 bg-emerald-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-emerald-600">&lt;0.1%</p>
-              <p className="text-sm text-gray-600">Slippage</p>
-            </div>
-            <div className="p-6 bg-emerald-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-emerald-600">99.9%</p>
-              <p className="text-sm text-gray-600">Capital Efficiency</p>
-            </div>
-          </section>
+          <InvestGrowthCalculatorSection />
 
           <ProductFeatureScrollSection
-            title="Stable LPs, stronger terms."
+            eyebrowTone="emerald"
+            title="A market-leading rate, with more built in."
             items={investFeatureItems}
           />
 
-          {/* Supported Dexs */}
           <section>
-            <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>DEX Coverage</SectionEyebrow>
-              <SectionTitle>Stable liquidity venues.</SectionTitle>
+            <div className="flex flex-col gap-3">
+              <SectionEyebrow tone="emerald">How it works</SectionEyebrow>
+              <SectionTitle>
+                Get started
+                <span className="md:hidden">
+                  <br />
+                </span>
+                <span className="hidden md:inline"> </span>
+                with as little as $1.
+              </SectionTitle>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { name: "Uniswap V3", color: "bg-pink-100 text-pink-600" },
-                { name: "Curve", color: "bg-yellow-100 text-yellow-600" },
-                { name: "Balancer", color: "bg-gray-100 text-gray-600" },
-              ].map((dex) => (
-                <div key={dex.name} className="p-4 border border-gray-200 rounded-xl text-center">
-                  <div className={`w-12 h-12 ${dex.color} rounded-full mx-auto mb-2 flex items-center justify-center`}>
-                    <span className="text-sm font-bold">{dex.name.slice(0, 2)}</span>
-                  </div>
-                  <p className="font-medium text-gray-900">{dex.name}</p>
-                </div>
-              ))}
-            </div>
-          </section>
 
-          {/* Use Cases */}
-          <section>
-            <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow>Use Cases</SectionEyebrow>
-              <SectionTitle>Built for steady capital flows.</SectionTitle>
-            </div>
-            <div className="max-w-[650px] space-y-4">
-              <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">1</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Large Volume Swaps</h3>
-                  <p className="text-gray-600 text-sm">Execute million-dollar stablecoin swaps with minimal slippage.</p>
-                </div>
+            <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
+              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+                <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
+                <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
+                  Visit the Lend page
+                </h3>
+                <p className="text-sm text-gray-600 md:text-base">
+                  Browse lending markets like GHO, USDC, USDT, ETH, and WBTC. Each market shows current APY, utilization, and what your capital is helping fund across LP borrower categories.
+                </p>
               </div>
-              <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">2</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Treasury Management</h3>
-                  <p className="text-gray-600 text-sm">DAOs and protocols can efficiently manage stablecoin reserves.</p>
-                </div>
+
+              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+                <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
+                <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
+                  Make a deposit
+                </h3>
+                <p className="text-sm text-gray-600 md:text-base">
+                  Connect your wallet, approve the asset, and supply. Your funds enter the lending pool and start earning immediately, with APY, utilization, and accrued interest visible in real time.
+                </p>
               </div>
-              <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">3</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Yield Optimization</h3>
-                  <p className="text-gray-600 text-sm">LPs earn consistent fees from high-volume stable trading.</p>
-                </div>
+
+              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+                <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
+                <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
+                  Collect your yield
+                </h3>
+                <p className="text-sm text-gray-600 md:text-base">
+                  Interest accrues continuously. Withdraw whenever you choose, and your principal plus earned yield returns to your wallet in one transaction with no claim period or lock-up.
+                </p>
               </div>
             </div>
           </section>
 
-          <section>
-            <HomepageNewsroomSection collection="invest" />
-          </section>
+          <HomepageNewsroomSection collection="invest" eyebrowTone="emerald" />
 
-          {/* FAQ */}
-          <section>
-            <InlineFaqSection title="Frequently asked questions." items={stableSpokeFaqItems} />
-          </section>
+          <div className="pb-16 md:pb-24">
+            <InlineFaqSection title="Frequently asked questions." items={stableSpokeFaqItems} eyebrowTone="emerald" withTopBorder={false} />
+          </div>
         </div>
       </div>
       </div>

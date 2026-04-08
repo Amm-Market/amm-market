@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
@@ -167,7 +167,7 @@ export default function SecurityDisclosuresPage() {
       </div>
 
       {/* Right scroll-spy sidebar */}
-      <ScrollSpySidebar 
+      <DeveloperScrollSpyRail 
         sections={sections} 
         pageSummary="Restricted territories and access restrictions for Avana services."
         sectionColor="slate"

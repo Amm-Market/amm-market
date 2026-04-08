@@ -94,10 +94,10 @@ export default async function BlogPage({
               <Link
                 href={`/blog/${post.slug}`}
                 prefetch={false}
-                className="group block h-full rounded-[1.1rem] p-1 sm:p-2"
+                className="block h-full rounded-[1.1rem] p-1 touch-manipulation sm:p-2"
               >
                 <div className="flex flex-col gap-3">
-                  <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1rem] border border-slate-200/90 bg-white shadow-[0_14px_30px_rgba(15,23,42,0.06)] transition-colors duration-150 group-hover:border-slate-300">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1rem] border border-slate-200/90 bg-white shadow-[0_14px_30px_rgba(15,23,42,0.06)] transition-colors duration-150">
                     <div
                       aria-hidden="true"
                       className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(140deg,rgba(255,255,255,0.28),transparent_34%,transparent_60%,rgba(255,255,255,0.1)_100%)]"
@@ -107,7 +107,7 @@ export default async function BlogPage({
                   <div className="flex items-center space-x-1.5 px-1 text-[0.8rem] text-gray-500 sm:text-sm">
                     <p>{post.date}</p>
                   </div>
-                  <h2 className="px-1 text-[1rem] leading-5 text-gray-900 transition-colors duration-150 group-hover:text-slate-700 sm:text-[1.08rem] sm:leading-6">
+                  <h2 className="px-1 text-[1rem] leading-5 text-gray-900 sm:text-[1.08rem] sm:leading-6">
                     {post.title}
                   </h2>
                 </div>
