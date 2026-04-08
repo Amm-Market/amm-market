@@ -230,13 +230,11 @@ export default function PlatformPage() {
               <p className="mt-8 text-center text-sm text-gray-500">Subject to risk assessment and availability</p>
             </section>
 
-            <section>
-              <HomepageNewsroomSection collection="platform" eyebrowTone="violet" />
-            </section>
+            <HomepageNewsroomSection collection="platform" eyebrowTone="violet" />
 
-            <section>
-              <InlineFaqSection title="Frequently asked questions." items={platformFaqItems} eyebrowTone="violet" />
-            </section>
+            <div className="pb-16 md:pb-24">
+              <InlineFaqSection title="Frequently asked questions." items={platformFaqItems} eyebrowTone="violet" withTopBorder={false} />
+            </div>
           </div>
         </div>
       </div>
