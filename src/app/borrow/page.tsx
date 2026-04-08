@@ -70,158 +70,56 @@ const borrowFeatureItems = [
   },
 ] as const
 
-function BorrowMarketCard({
-  number,
-  title,
-  description,
-  children,
-}: {
-  number: string
-  title: string
-  description: string
-  children: ReactNode
-}) {
+function BorrowMarketPlaceholderArt() {
   return (
-    <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
-      <div className="mb-4 aspect-[10/7] overflow-hidden rounded-xl border border-gray-200 bg-white p-3">
-        {children}
+    <div className="relative aspect-[10/7] overflow-hidden rounded-[22px] border border-dashed border-gray-300 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,250,252,0.98))]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.06),transparent_46%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.05),transparent_42%)]" />
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-400 shadow-sm">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="h-6 w-6">
+            <path
+              d="M4 7h16v10H4V7Z"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M7 11h10M7 14h6"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+        <div className="mt-4 space-y-1">
+          <p className="text-lg font-semibold text-gray-900">Image placeholder</p>
+          <p className="text-sm text-gray-500">Borrow market visual will go here.</p>
+        </div>
       </div>
-      <span className="text-5xl font-bold text-gray-300 md:text-6xl">{number}</span>
-      <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-900 md:text-xl">{title}</h3>
-      <p className="text-sm text-gray-600 md:text-base">{description}</p>
     </div>
   )
 }
 
-function TokenMarketsIllustration() {
+function BorrowMarketCard({
+  number,
+  title,
+  description,
+}: {
+  number: string
+  title: string
+  description: string
+}) {
   return (
-    <svg className="h-full w-full" viewBox="0 0 400 280" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-      <defs>
-        <linearGradient id="tokenMarketsArea" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#8B8BD9" stopOpacity="0.16" />
-          <stop offset="100%" stopColor="#8B8BD9" stopOpacity="0.03" />
-        </linearGradient>
-        <filter id="tokenMarketsGlow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <path
-        d="M34 226 C110 214, 148 195, 198 172 C248 149, 286 128, 366 112"
-        fill="none"
-        stroke="#C4B5FD"
-        strokeWidth="10"
-        strokeLinecap="round"
-        filter="url(#tokenMarketsGlow)"
-        opacity="0.35"
-      />
-      <path
-        d="M34 226 C110 214, 148 195, 198 172 C248 149, 286 128, 366 112"
-        fill="none"
-        stroke="#8B8BD9"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <path
-        d="M34 226 C110 214, 148 195, 198 172 C248 149, 286 128, 366 112 L366 226 Z"
-        fill="url(#tokenMarketsArea)"
-      />
-      <rect x="36" y="176" width="106" height="50" rx="14" fill="#111827" opacity="0.96" />
-      <text x="89" y="206" textAnchor="middle" fontSize="16" fontWeight="700" fill="#fff">
-        LP
-      </text>
-      <circle cx="336" cy="114" r="22" fill="#8B8BD9" opacity="0.9" />
-      <text x="336" y="119" textAnchor="middle" fontSize="13" fontWeight="700" fill="#fff">
-        1
-      </text>
-      <line x1="142" y1="201" x2="304" y2="135" stroke="#8B8BD9" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 7" />
-      <path d="M297 131l16 2-9 13" fill="none" stroke="#8B8BD9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-function PoolMarketsIllustration() {
-  return (
-    <svg className="h-full w-full" viewBox="0 0 400 280" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-      <defs>
-        <linearGradient id="poolMarketsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#6B7280" stopOpacity="0.45" />
-          <stop offset="100%" stopColor="#9CA3AF" stopOpacity="0.65" />
-        </linearGradient>
-      </defs>
-      <rect x="42" y="62" width="110" height="48" rx="14" fill="#111827" opacity="0.96" />
-      <text x="97" y="91" textAnchor="middle" fontSize="16" fontWeight="700" fill="#fff">
-        LP
-      </text>
-      <rect x="42" y="132" width="110" height="48" rx="14" fill="#8B8BD9" opacity="0.92" />
-      <text x="97" y="161" textAnchor="middle" fontSize="16" fontWeight="700" fill="#fff">
-        LP
-      </text>
-      <rect x="42" y="202" width="110" height="48" rx="14" fill="url(#poolMarketsGrad)" />
-      <text x="97" y="231" textAnchor="middle" fontSize="16" fontWeight="700" fill="#fff">
-        LP
-      </text>
-      <line x1="154" y1="86" x2="316" y2="86" stroke="#9CA3AF" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 8" />
-      <line x1="154" y1="156" x2="316" y2="156" stroke="#9CA3AF" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 8" />
-      <line x1="154" y1="226" x2="316" y2="226" stroke="#9CA3AF" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 8" />
-      <rect x="316" y="62" width="42" height="48" rx="12" fill="#ffffff" stroke="#E5E7EB" />
-      <rect x="316" y="132" width="42" height="48" rx="12" fill="#ffffff" stroke="#E5E7EB" />
-      <rect x="316" y="202" width="42" height="48" rx="12" fill="#ffffff" stroke="#E5E7EB" />
-      <circle cx="337" cy="86" r="9" fill="#8B8BD9" />
-      <circle cx="337" cy="156" r="9" fill="#6B7280" />
-      <circle cx="337" cy="226" r="9" fill="#111827" />
-    </svg>
-  )
-}
-
-function LeverageMarketsIllustration() {
-  return (
-    <svg className="h-full w-full" viewBox="0 0 400 280" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-      <defs>
-        <filter id="leverageMarketsGlow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <path
-        d="M78 196 C78 132, 138 86, 210 86 C286 86, 326 130, 326 194"
-        fill="none"
-        stroke="#8B8BD9"
-        strokeWidth="10"
-        strokeLinecap="round"
-        filter="url(#leverageMarketsGlow)"
-        opacity="0.25"
-      />
-      <path
-        d="M78 196 C78 132, 138 86, 210 86 C286 86, 326 130, 326 194"
-        fill="none"
-        stroke="#8B8BD9"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <rect x="44" y="182" width="78" height="40" rx="12" fill="#111827" opacity="0.96" />
-      <text x="83" y="207" textAnchor="middle" fontSize="14" fontWeight="700" fill="#fff">
-        LP
-      </text>
-      <rect x="161" y="66" width="98" height="40" rx="12" fill="#8B8BD9" />
-      <text x="210" y="91" textAnchor="middle" fontSize="14" fontWeight="700" fill="#fff">
-        Borrow
-      </text>
-      <rect x="288" y="182" width="78" height="40" rx="12" fill="#ffffff" stroke="#E5E7EB" />
-      <text x="327" y="207" textAnchor="middle" fontSize="14" fontWeight="700" fill="#111827">
-        Yield
-      </text>
-      <path d="M132 203c22 0 40-7 56-20" fill="none" stroke="#8B8BD9" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 7" />
-      <path d="M214 106c0 24 12 42 34 56" fill="none" stroke="#8B8BD9" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 7" />
-      <path d="M290 196c-18 0-34-6-47-18" fill="none" stroke="#8B8BD9" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="1 7" />
-      <path d="M173 163h20l-8-8m8 8-8 8" fill="none" stroke="#8B8BD9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <div className="flex h-full flex-col rounded-2xl bg-gray-50 p-6 md:p-8">
+      <span className="text-5xl font-bold text-gray-300 md:text-6xl">{number}</span>
+      <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-900 md:text-xl">{title}</h3>
+      <p className="text-sm text-gray-600 md:text-base">{description}</p>
+      <div className="mt-6">
+        <BorrowMarketPlaceholderArt />
+      </div>
+    </div>
   )
 }
 
@@ -314,25 +212,19 @@ export default function BorrowPage() {
                 number="1"
                 title="Token Markets"
                 description="Deposit LP positions as collateral to borrow single assets"
-              >
-                <TokenMarketsIllustration />
-              </BorrowMarketCard>
+              />
 
               <BorrowMarketCard
                 number="2"
                 title="Pool Markets"
                 description="Deposit LP positions as collateral to borrow pool positions"
-              >
-                <PoolMarketsIllustration />
-              </BorrowMarketCard>
+              />
 
               <BorrowMarketCard
                 number="3"
                 title="Leverage Markets"
                 description="Deposit LP positions as collateral, borrow assets or pools, and loop into leveraged yield positions"
-              >
-                <LeverageMarketsIllustration />
-              </BorrowMarketCard>
+              />
             </div>
           </div>
         </div>
@@ -342,22 +234,6 @@ export default function BorrowPage() {
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
         <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
-          {/* Stats */}
-          <section className="grid grid-cols-3 gap-4">
-            <div className="p-6 bg-blue-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-blue-600">4+</p>
-              <p className="text-sm text-gray-600">Networks</p>
-            </div>
-            <div className="p-6 bg-blue-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-blue-600">80%</p>
-              <p className="text-sm text-gray-600">Max LTV</p>
-            </div>
-            <div className="p-6 bg-blue-50 rounded-xl text-center">
-              <p className="text-3xl font-bold text-blue-600">100%</p>
-              <p className="text-sm text-gray-600">On-chain</p>
-            </div>
-          </section>
-
           <ProductFeatureScrollSection
             eyebrowTone="blue"
             title="Borrow without unwinding."
