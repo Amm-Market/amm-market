@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
+import CheckIcon from "@/components/check-icon"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
@@ -59,6 +60,33 @@ const earnFeatureItems = [
   {
     title: "Higher-conviction rewards",
     description: "Because the role is deeper in the protection stack, upside is designed for users willing to shoulder more risk.",
+  },
+] as const
+
+const earnUseCaseHighlights = [
+  "View a monthly breakdown of every income source across the protection stack.",
+  "Filter returns by reward stream to see what is actually driving performance.",
+  "See a forward estimate for the next 12 months before you scale your capital.",
+] as const
+
+const earnIncomeSourceRows = [
+  {
+    label: "Coverage rewards",
+    detail: "Backstop allocation",
+    amount: "$4,620",
+    change: "+12.4%",
+  },
+  {
+    label: "Protocol fees",
+    detail: "Shared system revenue",
+    amount: "$3,180",
+    change: "+8.1%",
+  },
+  {
+    label: "Aligned incentives",
+    detail: "Governance-approved emissions",
+    amount: "$2,940",
+    change: "+5.7%",
   },
 ] as const
 
@@ -240,8 +268,8 @@ export default function EarnPage() {
 
           <section>
             <div className="max-w-[780px] space-y-3 text-left">
-              <SectionEyebrow tone="amber">Avana Relaunch</SectionEyebrow>
-              <SectionTitle>Access the full power of DeFi.</SectionTitle>
+              <SectionEyebrow tone="amber">Safe returns.</SectionEyebrow>
+              <SectionTitle>Backed by the Avana Umbrella.</SectionTitle>
             </div>
             <div className="mt-8 overflow-hidden rounded-[28px] border border-gray-200 bg-black shadow-[0_24px_80px_rgba(15,23,42,0.12)]">
               <Image
