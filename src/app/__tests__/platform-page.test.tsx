@@ -96,7 +96,7 @@ describe("platform page", () => {
     expect(screen.getByRole("heading", { name: "Flexible settlement" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Unlock capital efficiency" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Retain control" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Earn while you borrow" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Add leverage when needed" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Built to manage serious positions." })).toBeInTheDocument()
     expect(screen.getByTestId("homepage-newsroom")).toBeInTheDocument()
     expect(screen.getAllByText("Why Avana").length).toBeGreaterThan(0)

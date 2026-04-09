@@ -65,9 +65,9 @@ const financingFeatures = [
     description: "Pledge assets in your custody vault as collateral to minimize counterparty risk.",
   },
   {
-    title: "Earn while you borrow",
+    title: "Add leverage when needed",
     description:
-      "Generate yield on pledged assets, with distributions credited directly into your vault.",
+      "Use LP-backed borrowing capacity to open managed leverage or perps exposure from the same interface.",
   },
 ]
 
