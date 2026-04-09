@@ -47,10 +47,10 @@ function FaqAccordionList({
 }) {
   return (
     <div className="w-full">
-      {items.map((faq) => (
+      {items.map((faq, index) => (
         <details
           key={faq.id}
-          className="group border-b border-gray-200 py-6 open:pb-6"
+          className={`group border-b border-gray-200 py-6 open:pb-6 ${index > 3 ? "deferred-viewport" : ""}`}
         >
           <summary className="flex cursor-pointer list-none items-start justify-between gap-4 p-0 text-left text-[1.08rem] font-medium leading-[1.45] tracking-[-0.025em] text-gray-900 sm:text-[1.16rem] lg:text-[1.24rem]">
             <div className="flex flex-col text-left">

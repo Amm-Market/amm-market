@@ -15,9 +15,9 @@ const SLIDES = [
     description: "Put every idle dollar to work across saving, investing, and borrowing.",
   },
   {
-    id: "earn",
-    title: "EARN",
-    description: "Stay liquid while earning 5% APY on cash you have not invested yet.",
+    id: "leverage",
+    title: "PERPS",
+    description: "Use LP collateral to open managed leverage or perps exposure without fully exiting your liquidity.",
   },
 ] as const
 
@@ -45,10 +45,10 @@ export function BuildTomorrowSection() {
       className="w-full bg-inherit pb-16 md:pb-20"
     >
       <div className="site-content-shell">
-        <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
+        <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
           <SectionEyebrow tone="violet">Ways to use Avana</SectionEyebrow>
-          <SectionTitle>
-            Borrow, invest, or earn
+          <SectionTitle className="md:whitespace-nowrap">
+            Borrow, Invest, or Trade Perps
           </SectionTitle>
         </div>
 

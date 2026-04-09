@@ -254,6 +254,63 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
+    id: "leverage-markets",
+    name: "Leverage Markets",
+    summary: "How LP-backed leverage and perps exposure work on Avana.",
+    questions: [
+      {
+        id: "what-is-leverage-market",
+        q: "What is Avana Leverage Market?",
+        a: "Avana Leverage Market is the product path that lets approved LP collateral support not only direct borrowing, but also managed leverage or perps-style exposure from the same account. The goal is one coordinated position instead of several disconnected steps.",
+      },
+      {
+        id: "how-leverage-differs-from-borrowing",
+        q: "How is leverage mode different from simple borrowing?",
+        a: "Simple borrowing gives the user borrowed assets and leaves the next action up to them. Leverage mode abstracts that flow so the protocol borrows, deploys, and tracks the exposure in one system while the LP remains the core collateral base.",
+      },
+      {
+        id: "can-open-perps-from-lp",
+        q: "Can LP collateral be used to open perps exposure?",
+        a: "That is the intended product direction for supported markets. Avana is designed so approved LP positions can unlock borrowing power that is then routed into managed leverage or perps-style exposure, subject to market-specific controls.",
+      },
+      {
+        id: "do-i-keep-lp-while-leveraged",
+        q: "Do I keep my LP position while leverage is open?",
+        a: "Yes. The LP position remains the collateral foundation of the account until debt is repaid and collateral is released. Users do not need to fully exit liquidity just to open or manage leverage exposure.",
+      },
+      {
+        id: "what-do-i-see-in-leverage-view",
+        q: "What should the leverage interface show me?",
+        a: "A good leverage view should show collateral value, debt, target exposure, leverage multiple, health factor, liquidation level, and the available actions to reduce, close, or repay. The point is to make one risk surface easy to understand.",
+      },
+      {
+        id: "how-does-avana-execute-leverage",
+        q: "How does Avana execute the leverage flow?",
+        a: "Once approved collateral creates borrowing capacity, the protocol can draw liquidity through the borrow layer and route it into the selected leverage structure. Users see one coherent position while execution, accounting, and monitoring stay coordinated under the surface.",
+      },
+      {
+        id: "can-close-leverage-without-withdrawing-lp",
+        q: "Can I close leverage without withdrawing my LP collateral?",
+        a: "Yes. In the intended flow, users can reduce or close leverage, repay debt, and keep the LP position posted as collateral if they want. Withdrawing the LP is a separate action that depends on the remaining debt and health state.",
+      },
+      {
+        id: "what-limits-max-leverage",
+        q: "What determines the maximum leverage I can take?",
+        a: "Maximum leverage should depend on collateral quality, pool structure, market volatility, liquidity depth, and unwind assumptions. More volatile or harder-to-exit collateral should support tighter leverage limits than stronger, more liquid collateral.",
+      },
+      {
+        id: "what-happens-if-leverage-moves-against-me",
+        q: "What happens if the leverage position moves against me?",
+        a: "Avana is designed to monitor the collateral, debt, and leverage leg together. If the total position becomes unsafe, the protocol can reduce exposure, unwind the leverage leg, or liquidate collateral if needed so the underlying debt remains covered.",
+      },
+      {
+        id: "is-leverage-enabled-for-every-market",
+        q: "Is leverage available for every LP and every market?",
+        a: "No. Leverage should only be enabled where Avana can define a credible valuation model, risk treatment, and unwind path. That means support is expected to be selective rather than universal across all LP formats and markets.",
+      },
+    ],
+  },
+  {
     id: "fees-and-interface-policy",
     name: "Fees & Interface Policy",
     summary: "How interface fees differ from protocol economics and how they are disclosed.",

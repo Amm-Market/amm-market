@@ -1,12 +1,34 @@
+import dynamic from "next/dynamic"
 import WebappHero from "@/components/webapp-hero"
 import HeroSection from "@/components/hero-section"
 import LogoMarquee from "@/components/logo-marquee"
-import BuildTomorrowSection from "@/components/BuildTomorrowSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { LazySection } from "@/components/ui/lazy-section"
 
+const DeferredBuildTomorrowSection = dynamic(() => import("@/components/BuildTomorrowSection"))
+
 // Note: Metadata is defined in layout.tsx with title template
 // Homepage uses the default title from the template
+
+function BuildTomorrowSectionFallback() {
+  return (
+    <section className="w-full bg-inherit pb-16 md:pb-20" aria-hidden="true">
+      <div className="site-content-shell">
+        <div className="mb-6 flex max-w-[600px] animate-pulse flex-col gap-2 sm:mb-8">
+          <div className="h-3 w-28 rounded-full bg-gray-200" />
+          <div className="h-10 w-72 rounded-2xl bg-gray-200" />
+        </div>
+        <div className="overflow-hidden rounded-xl border border-gray-200 bg-gray-50">
+          <div className="aspect-[4/5] w-full bg-gradient-to-br from-gray-200 to-gray-300 sm:aspect-[2/1]" />
+          <div className="border-t border-gray-200 bg-white p-4 sm:hidden">
+            <div className="h-5 w-24 rounded-full bg-gray-200" />
+            <div className="mt-3 h-4 w-5/6 rounded-full bg-gray-100" />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 function DeferredHomepageSectionsFallback() {
   return (
@@ -55,7 +77,13 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <BuildTomorrowSection />
+      <LazySection
+        rootMargin="240px"
+        minHeight="560px"
+        fallback={<BuildTomorrowSectionFallback />}
+      >
+        <DeferredBuildTomorrowSection />
+      </LazySection>
       <LazySection
         rootMargin="320px"
         minHeight="640px"

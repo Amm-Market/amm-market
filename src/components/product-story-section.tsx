@@ -4,7 +4,7 @@ type ProductStorySectionProps = {
   eyebrow?: string
   eyebrowTone?: SectionEyebrowTone
   titleLines: [string, string]
-  paragraphs: [string, string]
+  paragraphs: readonly string[]
   withTopDivider?: boolean
 }
 
@@ -28,12 +28,14 @@ export default function ProductStorySection({
               </SectionTitle>
             </div>
             <div className="space-y-6 pt-1 text-left text-[#39515b]">
-              <p className="max-w-[40rem] text-[1rem] leading-[1.62] tracking-[-0.02em] lg:text-[1.08rem]">
-                {paragraphs[0]}
-              </p>
-              <p className="max-w-[40rem] text-[1rem] leading-[1.62] tracking-[-0.02em] lg:text-[1.08rem]">
-                {paragraphs[1]}
-              </p>
+              {paragraphs.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="max-w-[40rem] text-[1rem] leading-[1.62] tracking-[-0.02em] lg:text-[1.08rem]"
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
         </div>
