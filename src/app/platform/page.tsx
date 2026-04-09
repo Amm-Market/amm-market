@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
+import type { LucideIcon } from "lucide-react"
+import { Droplets, Scale, ShieldCheck } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import PlatformFinancingCarouselSection from "@/components/platform-financing-carousel-section"
@@ -69,40 +71,25 @@ const financingFeatures = [
 
 const platformWorkflowHighlights = [
   {
-    title: "Pool-specific borrowing limits.",
+    title: "Pool-level borrowing power",
     description:
-      "Review loan-to-value ratios, health thresholds, and borrowing capacity for each LP position before you open or expand credit.",
-    accent: "bg-violet-100 text-violet-600",
-    icon: (
-      <>
-        <path d="M12 3v18M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H7" />
-      </>
-    ),
+      "See loan-to-value, health thresholds, and remaining capacity before you borrow.",
+    accent: "bg-violet-100/80 text-violet-600",
+    icon: Scale,
   },
   {
-    title: "Stay deployed in the pool.",
+    title: "Stay in the pool",
     description:
-      "Deposit active LP positions, unlock liquidity instantly, and keep your fee-earning exposure intact instead of unwinding to access capital.",
-    accent: "bg-sky-100 text-sky-600",
-    icon: (
-      <>
-        <path d="M7 17 17 7" />
-        <path d="M9 7h8v8" />
-      </>
-    ),
+      "Borrow against active LP positions while fees keep accruing.",
+    accent: "bg-sky-100/80 text-sky-600",
+    icon: Droplets,
   },
   {
-    title: "Automation tools when you need them.",
+    title: "Automation when needed",
     description:
-      "Configure Auto-Repay, target-price actions, and automated payback safeguards so positions can react to market moves even when you are away.",
-    accent: "bg-amber-100 text-amber-600",
-    icon: (
-      <>
-        <path d="M12 21s7-3.6 7-9.2V5.8L12 3 5 5.8v6c0 5.6 7 9.2 7 9.2Z" />
-        <path d="M10 12h4" />
-        <path d="M12 10v4" />
-      </>
-    ),
+      "Use Auto-Repay and target-based actions to help protect position health.",
+    accent: "bg-emerald-100/80 text-emerald-600",
+    icon: ShieldCheck,
   },
 ] as const
 
@@ -115,21 +102,21 @@ function WorkflowHighlightRow({
   title: string
   description: string
   accent: string
-  icon: React.ReactNode
+  icon: LucideIcon
 }) {
+  const Icon = icon
+
   return (
-    <article className="flex flex-col gap-4 py-6 first:pt-0 last:pb-0 sm:flex-row sm:items-start sm:gap-5">
-      <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${accent}`}>
-        <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          {icon}
-        </svg>
+    <article className="flex flex-col gap-3 py-5 first:pt-0 last:pb-0 sm:flex-row sm:items-start sm:gap-4">
+      <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] ${accent}`}>
+        <Icon className="h-5 w-5" strokeWidth={1.9} />
       </div>
 
-      <div className="space-y-3">
-        <h3 className="text-[1.1rem] font-semibold leading-[1.3] tracking-[-0.02em] text-[#111111]">
+      <div>
+        <h3 className="text-base font-semibold leading-6 text-offBlack sm:text-lg">
           {title}
         </h3>
-        <p className="max-w-[38rem] text-[1rem] leading-[1.65] tracking-[-0.02em] text-[#5b6571]">
+        <p className="mt-1.5 max-w-[38rem] text-sm leading-relaxed text-gray-600 sm:mt-2 sm:text-base">
           {description}
         </p>
       </div>
@@ -198,23 +185,18 @@ export default function PlatformPage() {
         <div className="relative z-0 flex flex-1 flex-col">
           <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
             <section>
-              <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,31rem)_minmax(0,1fr)] lg:gap-16">
-                <div className="max-w-[32rem] space-y-6">
+              <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,36rem)_minmax(0,1fr)] lg:gap-14">
+                <div className="max-w-[36rem] space-y-4">
                   <div className="space-y-3 text-left">
                     <SectionEyebrow tone="violet">How it works</SectionEyebrow>
-                    <SectionTitle>LP borrowing, simplified.</SectionTitle>
+                    <SectionTitle className="max-w-none text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem] lg:whitespace-nowrap">
+                      LP borrowing, simplified.
+                    </SectionTitle>
                   </div>
 
-                  <p className="text-[1.08rem] leading-[1.65] tracking-[-0.02em] text-[#5b6571] lg:text-[1.15rem]">
-                    The Avana Webapp makes LP-backed borrowing feel straightforward. Deposit your
-                    position, review pool-aware risk settings, and unlock liquidity without leaving
-                    the strategy that is already earning fees.
-                  </p>
-
-                  <p className="text-[1rem] leading-[1.7] tracking-[-0.02em] text-[#6b7280]">
-                    Every step is surfaced inside one interface, from borrowing limits and live
-                    health metrics to optional automation controls that help protect positions when
-                    markets move quickly.
+                  <p className="max-w-none text-[1.02rem] leading-[1.72] text-[#5f6f84] md:text-[1.08rem]">
+                    Deposit LP positions, see your borrowing power, and unlock liquidity while
+                    fees keep accruing. Limits, health, and automation stay in one place.
                   </p>
                 </div>
 
@@ -227,13 +209,10 @@ export default function PlatformPage() {
             </section>
 
             <section className="w-full">
-              <div className="space-y-8">
+              <div className="space-y-6">
                 <div className="max-w-[650px] space-y-3 text-left">
                   <SectionEyebrow tone="violet">Advanced LP Management</SectionEyebrow>
                   <SectionTitle>Power meets precision</SectionTitle>
-                  <p className="max-w-[38rem] text-[1.05rem] leading-7 text-gray-600">
-                    Manage positions with institutional-grade tools and deeper liquidity
-                  </p>
                 </div>
 
                 <div className="relative overflow-hidden rounded-[28px] border border-gray-200 bg-[linear-gradient(145deg,#f8fafc_0%,#eef4ff_45%,#f8fafc_100%)]">
@@ -252,10 +231,10 @@ export default function PlatformPage() {
               </div>
 
               <div className="flex w-full flex-col bg-white">
-                <div className="site-content-shell py-8 lg:py-16">
-                  <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4 lg:gap-8">
+                <div className="site-content-shell pt-6 pb-2 lg:pt-8 lg:pb-6">
+                  <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 lg:grid-cols-4 lg:gap-8">
                     {advancedStats.map((stat) => (
-                      <div key={stat.title} className="flex flex-col gap-4 pt-4">
+                      <div key={stat.title} className="flex flex-col gap-2.5 pt-1 sm:pt-2">
                         <p className="text-[17px] font-semibold leading-normal tracking-[-0.01em] text-gray-900 lg:text-[19px]">
                           {stat.title}
                         </p>
