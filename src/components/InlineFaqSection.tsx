@@ -61,7 +61,7 @@ export function InlineFaqSection({
     >
       <div className="space-y-3 md:max-w-[25rem] md:pt-2">
         {eyebrow ? <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow> : null}
-        <SectionTitle as="h3" className="max-w-none leading-[0.96]">
+        <SectionTitle as="h3" className="max-w-none font-medium leading-[0.96]">
           {renderFaqTitle(title)}
         </SectionTitle>
       </div>

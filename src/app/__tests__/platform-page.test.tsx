@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from "vitest"
 import PlatformPage, { metadata } from "@/app/platform/page"
 
 vi.mock("next/link", () => ({
-  default: ({ children, href, ...props }: { children: React.ReactNode; href: string }) => (
+  default: ({ children, href, prefetch: _prefetch, ...props }: { children: React.ReactNode; href: string; prefetch?: boolean }) => (
     <a href={href} {...props}>
       {children}
     </a>
@@ -29,11 +29,11 @@ vi.mock("next/image", () => ({
   },
 }))
 
-vi.mock("@/components/webapp-hero", () => ({
-  default: () => <div data-testid="webapp-hero">Webapp Hero</div>,
+vi.mock("@/components/homepage/HomepageNewsroomSection", () => ({
+  default: () => <div data-testid="homepage-newsroom">Homepage Newsroom</div>,
 }))
 
-describe("webapp page", () => {
+describe("platform page", () => {
   it("exports metadata for the restored route", () => {
     expect(metadata.title).toBe("Platform - Avana")
     expect(metadata.description).toContain("LP-backed borrowing")
@@ -42,10 +42,22 @@ describe("webapp page", () => {
   it("restores the platform content while using the current app shell", () => {
     const { container } = render(<PlatformPage />)
 
-    expect(screen.getByTestId("webapp-hero")).toBeInTheDocument()
+    const heroHeading = screen.getByRole("heading", { level: 1 })
+
+    expect(heroHeading).toHaveClass(
+      "text-left",
+      "text-[clamp(2.4rem,5.8vw,4.3rem)]",
+      "font-normal",
+      "leading-[0.98]",
+      "tracking-[-0.065em]",
+      "text-[#111111]",
+    )
+    expect(heroHeading).toHaveTextContent("One platform for every")
+    expect(heroHeading).toHaveTextContent("LP as Collateral needs")
     expect(screen.getByRole("heading", { name: "LP borrowing, simplified." })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Flexible capital, one interface." })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Power meets precision" })).toBeInTheDocument()
+    expect(screen.getByTestId("homepage-newsroom")).toBeInTheDocument()
     expect(screen.getByText("Advanced LP Management")).toBeInTheDocument()
     expect(container.querySelector(".site-content-width")).toBeInTheDocument()
     expect(container.querySelectorAll(".site-content-shell").length).toBeGreaterThan(0)

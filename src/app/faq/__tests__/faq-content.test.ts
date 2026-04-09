@@ -16,8 +16,12 @@ describe("faq content helpers", () => {
   it("returns the correct questions for a selected category", () => {
     const questions = getFaqQuestionsForCategory(faqCategories, "Health & Liquidation")
 
-    expect(questions).toHaveLength(4)
+    expect(questions).toHaveLength(10)
     expect(questions[0]?.q).toBe("What is the health factor?")
+  })
+
+  it("keeps every FAQ category expanded to ten canonical questions", () => {
+    expect(faqCategories.every((category) => category.questions.length === 10)).toBe(true)
   })
 
   it("searches across all categories with the canonical labels attached", () => {

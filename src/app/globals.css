@@ -96,6 +96,9 @@
   --type-sidebar-summary-size: 0.9375rem;
   --type-display-title-size: clamp(2.5rem, 4.2vw, 4rem);
   --type-display-lead-size: clamp(0.95rem, 1.7vw, 1.25rem);
+  --type-weight-ui: 450;
+  --type-weight-emphasis: 600;
+  --type-weight-display: 620;
 }
 
 @layer base {
@@ -106,6 +109,8 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-synthesis-weight: none;
+    font-synthesis-style: none;
   }
 
   * {
@@ -136,7 +141,7 @@
 
 .type-display-title {
   font-size: var(--type-display-title-size);
-  font-weight: 700;
+  font-weight: var(--type-weight-display);
   line-height: 1.08;
   letter-spacing: -0.02em;
 }
@@ -148,7 +153,7 @@
 
 .type-page-title {
   font-size: var(--type-page-title-size);
-  font-weight: 700;
+  font-weight: var(--type-weight-display);
   line-height: 1.15;
   letter-spacing: -0.01em;
 }
@@ -160,7 +165,7 @@
 
 .type-section-title {
   font-size: var(--type-section-title-size);
-  font-weight: 700;
+  font-weight: var(--type-weight-emphasis);
   line-height: 1.25;
   letter-spacing: -0.01em;
 }
@@ -173,13 +178,13 @@
 .type-supporting {
   font-size: var(--type-supporting-size);
   line-height: 1.6;
-  font-weight: 500;
+  font-weight: var(--type-weight-ui);
   letter-spacing: 0.01em;
 }
 
 .type-meta-label {
   font-size: var(--type-meta-size);
-  font-weight: 500;
+  font-weight: var(--type-weight-ui);
   line-height: 1.4;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -188,18 +193,18 @@
 .type-sidebar-link {
   font-size: var(--type-sidebar-link-size);
   line-height: 1.5;
-  font-weight: 500;
+  font-weight: var(--type-weight-ui);
 }
 
 .type-sidebar-summary {
   font-size: var(--type-sidebar-summary-size);
   line-height: 1.65;
-  font-weight: 500;
+  font-weight: var(--type-weight-ui);
 }
 
 .type-accordion-question {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: var(--type-weight-ui);
   line-height: 1.45;
 }
 
@@ -228,14 +233,14 @@
   .site-header-cta {
     font-size: 1.0625rem;
     line-height: 1.5;
-    font-weight: 500;
+    font-weight: var(--type-weight-ui);
     letter-spacing: -0.03em;
   }
 }
 
 .type-marketing-section-title {
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: var(--type-weight-emphasis);
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
@@ -256,7 +261,7 @@
 .site-article-content h2,
 .site-editorial-content h3 {
   font-size: var(--type-section-title-size);
-  font-weight: 700;
+  font-weight: var(--type-weight-emphasis);
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: rgb(17 24 39);
@@ -264,7 +269,7 @@
 
 .marketing-secondary-shell h2:not(.site-section-title) {
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: var(--type-weight-emphasis);
   line-height: 1.2;
   letter-spacing: -0.01em;
   color: rgb(17 24 39);
@@ -275,7 +280,7 @@
 .site-editorial-content h4,
 .marketing-secondary-shell h3:not(.site-section-title) {
   font-size: 0.9375rem;
-  font-weight: 700;
+  font-weight: var(--type-weight-emphasis);
   line-height: 1.45;
   color: rgb(17 24 39);
 }
@@ -305,7 +310,7 @@
 .site-article-content :is(th),
 .site-editorial-content :is(th) {
   font-size: var(--type-supporting-size);
-  font-weight: 700;
+  font-weight: var(--type-weight-emphasis);
   line-height: 1.5;
   color: rgb(17 24 39);
 }

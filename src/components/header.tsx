@@ -69,7 +69,7 @@ function SandboxIcon() {
 
 function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
   return (
-    <span className="inline-flex items-center">
+    <span className="inline-flex -translate-y-0.5 items-center md:translate-y-0">
       <Image
         src={LOGO_PATH}
         alt={`${SITE_NAME} icon`}
@@ -269,7 +269,7 @@ function DesktopMenuPanel({
                     }`}
                     style={{ transitionDelay: `${180 + index * 55}ms` }}
                   >
-                    <span className="text-[clamp(1.9rem,2.45vw,3.05rem)] font-medium leading-[1.04] tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1">
+                    <span className="text-[clamp(1.9rem,2.45vw,3.05rem)] font-[430] leading-[1.04] tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1">
                       {item.label}
                     </span>
                   </Link>
@@ -462,7 +462,7 @@ export default function Header(): React.JSX.Element {
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noreferrer" : undefined}
                 suppressHydrationWarning
-                className={`inline-flex items-center justify-center px-4 py-2 rounded-full transition-colors text-xs font-semibold ${
+                className={`inline-flex items-center justify-center px-4 py-2 rounded-full transition-colors text-xs font-medium ${
                   index === 0
                     ? "bg-white border border-gray-300 hover:bg-gray-100 text-gray-900"
                     : "bg-gray-900 hover:bg-gray-800 text-white"
@@ -587,7 +587,7 @@ export default function Header(): React.JSX.Element {
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <span
-                      className={`text-[clamp(1.7rem,7.1vw,2.45rem)] font-semibold leading-[0.98] tracking-[-0.05em] ${
+                      className={`text-[clamp(1.7rem,7.1vw,2.45rem)] font-[560] leading-[0.98] tracking-[-0.05em] ${
                         isActive ? "text-black" : "text-black/95"
                       }`}
                     >

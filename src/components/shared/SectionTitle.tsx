@@ -11,7 +11,7 @@ export function SectionTitle({
 }: SectionTitleProps) {
   return (
     <Tag
-      className={`site-section-title text-left text-[clamp(2.5rem,5vw,4.4rem)] font-medium leading-[0.97] tracking-[-0.055em] text-[#18323c] lg:text-[3.5rem] ${className}`}
+      className={`site-section-title text-left text-[clamp(2.5rem,5vw,4.4rem)] font-normal leading-[0.97] tracking-[-0.055em] text-[#18323c] lg:text-[3.5rem] ${className}`}
     >
       {children}
     </Tag>
