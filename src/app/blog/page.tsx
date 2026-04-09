@@ -24,7 +24,7 @@ function BlogImagePlaceholder({
       <div className="absolute left-[18%] top-[24%] h-[28%] w-[28%] rounded-full bg-white/45 blur-2xl" />
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950/55 to-transparent" />
       <div className={`relative z-10 mt-auto flex w-full flex-col items-start px-4 pb-4 text-left ${featured ? "md:px-6 md:pb-6" : ""}`}>
-        <span className="rounded-full bg-white/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-700 backdrop-blur-sm">
+        <span className="rounded-full bg-white/80 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-slate-700 backdrop-blur-sm">
           {eyebrow}
         </span>
         {featured ? (
@@ -58,7 +58,7 @@ export default async function BlogPage({
     <div className="site-content-shell py-12">
       <section className="flex justify-center pb-10 pt-4 md:pb-12 md:pt-8">
         <div className="flex w-full max-w-4xl flex-col items-center text-center">
-          <h1 className="text-[clamp(3rem,7vw,5.25rem)] font-semibold tracking-[-0.08em] text-black">
+          <h1 className="text-[clamp(3rem,7vw,5.25rem)] font-[600] tracking-[-0.08em] text-black">
             Newsroom
           </h1>
           <div className="mt-8 inline-flex max-w-full rounded-full bg-[#eef2f6] p-1.5 md:mt-10">
@@ -72,7 +72,7 @@ export default async function BlogPage({
                     href={buildTagHref(tag)}
                     prefetch={false}
                     aria-current={active ? "page" : undefined}
-                    className={`inline-flex shrink-0 items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold tracking-[-0.03em] transition-all duration-300 ${
+                    className={`inline-flex shrink-0 items-center justify-center rounded-full border px-5 py-2.5 text-sm font-medium tracking-[-0.03em] transition-all duration-300 ${
                       active
                         ? "border-black/10 bg-white text-black shadow-[0_10px_22px_rgba(17,17,17,0.06)]"
                         : "border-transparent text-black/30 hover:text-black/60"
