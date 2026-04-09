@@ -39,6 +39,7 @@ describe('Footer', () => {
     expect(screen.getByRole('link', { name: 'Avana on Twitter' })).toHaveAttribute('href', 'https://twitter.com/dexmini')
     expect(screen.getByRole('link', { name: 'Avana on GitHub' })).toHaveAttribute('href', 'https://github.com/aave')
     expect(screen.getByRole('link', { name: 'Avana on Telegram' })).toHaveAttribute('href', 'https://t.me/dexmini')
+    expect(screen.getByRole('link', { name: 'Avana on Discourse' })).toHaveAttribute('href', 'https://governance.aave.com')
   })
 
   it('renders top-level navigation links for desktop coverage', () => {
