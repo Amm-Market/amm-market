@@ -71,15 +71,14 @@ export const metadata: Metadata = {
 export default function EarnPage() {
   return (
     <main className="bg-white">
-      <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 sm:px-6 md:px-8 pt-10 sm:pt-12 md:pt-20">
-        <div className="flex-1 flex flex-col relative z-0">
-        {/* Hero Section - Exact same structure as home (hero-section.tsx) */}
-          <section className="pb-4 md:pb-6">
-          <div className="mx-auto w-full pt-3 pb-6 md:pt-5 md:pb-10">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16 lg:min-h-[400px] xl:min-h-[450px]">
+      <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] lg:min-h-0 lg:px-0">
+        <div className="relative z-0">
+          <section className="pb-4 md:pb-6 lg:pb-8 xl:pb-10">
+            <div className="w-full pt-3 pb-6 md:pt-5 md:pb-10 lg:pb-2 xl:pb-3">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
               {/* Left Column - Hero Image */}
-              <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
-                <div className="relative w-full max-w-none lg:max-w-[650px] xl:max-w-[700px] mx-auto lg:mx-0">
+                <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
+                  <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
                   <Image
                     src="/images/Hero__4_.png"
                     alt="App interface"
@@ -93,36 +92,36 @@ export default function EarnPage() {
               </div>
 
               {/* Right Column - Text Content */}
-              <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
-                <h1 className="mb-3 max-w-[13ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[11ch] md:text-5xl lg:text-5xl xl:text-6xl">
-                  <span className="whitespace-nowrap">Backstop protocol</span>
-                  <br />
-                  <span className="whitespace-nowrap">for higher yield.</span>
-                </h1>
+                <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
+                  <h1 className="mb-3 max-w-[13ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[11ch] md:text-5xl lg:text-5xl xl:text-6xl">
+                    <span className="whitespace-nowrap">Backstop protocol</span>
+                    <br />
+                    <span className="whitespace-nowrap">for higher yield.</span>
+                  </h1>
 
-                <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
-                  Backstop Avana in shortfall events, take first-loss risk, and earn the highest rewards for aligned capital.
-                </p>
+                  <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
+                    Backstop Avana in shortfall events, take first-loss risk, and earn the highest rewards for aligned capital.
+                  </p>
 
-                <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
-                  <Link
-                    href="/faq"
-                    prefetch={false}
-                    className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
-                  >
-                    Get Early Access
-                  </Link>
-                  <Link
-                    href="/developers"
-                    prefetch={false}
-                    className="inline-flex items-center justify-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-100 text-gray-900 text-xs font-semibold rounded-full transition-colors"
-                  >
-                    View Docs
-                  </Link>
+                  <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
+                    <Link
+                      href="/faq"
+                      prefetch={false}
+                      className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
+                    >
+                      Get Early Access
+                    </Link>
+                    <Link
+                      href="/developers"
+                      prefetch={false}
+                      className="inline-flex items-center justify-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-100 text-gray-900 text-xs font-semibold rounded-full transition-colors"
+                    >
+                      View Docs
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </section>
         </div>
       </div>
