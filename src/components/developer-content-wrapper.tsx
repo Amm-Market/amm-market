@@ -1,14 +1,19 @@
-"use client"
-
 import type React from "react"
-import { PageNavigation } from "./page-navigation"
+import dynamic from "next/dynamic"
+
+const DeferredPageNavigation = dynamic(
+  () => import("./page-navigation").then((module) => module.PageNavigation),
+  {
+    loading: () => <div aria-hidden="true" className="mt-12 border-t border-gray-200 pt-6" />,
+  },
+)
 
 export function DeveloperContentWrapper({ children }: { children: React.ReactNode }) {
   return (
     <div className="developer-content pb-20 lg:pb-24" data-developer-doc-shell>
       {children}
       <div data-export-skip>
-        <PageNavigation />
+        <DeferredPageNavigation />
       </div>
     </div>
   )

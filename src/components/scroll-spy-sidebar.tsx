@@ -202,13 +202,13 @@ export function ScrollSpySidebar({
   return (
     <div className="hidden xl:flex xl:pr-2">
       <div className="flex max-w-[17rem] flex-col items-start justify-start gap-0">
-        <p className={`type-meta-label mb-3 pl-6 font-normal ${colors.labelText}`}>
+        <p className={`type-meta-label mb-2.5 pl-6 font-normal ${colors.labelText}`}>
           On this page
         </p>
 
         {/* Page summary at top */}
         {pageSummary && (
-          <p className={`type-sidebar-summary mb-4 max-w-[220px] pl-6 font-normal ${colors.summary}`}>
+          <p className={`type-sidebar-summary mb-3 max-w-[220px] pl-6 font-normal ${colors.summary}`}>
             {pageSummary}
           </p>
         )}
@@ -226,7 +226,7 @@ export function ScrollSpySidebar({
             const isPast = index < activeIndex
 
             return (
-              <div key={section.id} data-section-id={section.id} className="relative py-2.5">
+              <div key={section.id} data-section-id={section.id} className="relative py-2">
                 <div
                   className={`absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-300 ${
                     isActive

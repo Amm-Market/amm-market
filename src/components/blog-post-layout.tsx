@@ -1,10 +1,26 @@
-"use client"
-
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
-import { LlmExportMenu } from "@/components/llm-export-menu"
-import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+
+const DeferredLlmExportMenu = dynamic(
+  () => import("@/components/llm-export-menu").then((module) => module.LlmExportMenu),
+  {
+    loading: () => (
+      <div
+        aria-hidden="true"
+        className="h-10 w-32 rounded-full border border-slate-200 bg-slate-50"
+      />
+    ),
+  },
+)
+
+const DeferredScrollSpySidebar = dynamic(
+  () => import("@/components/scroll-spy-sidebar").then((module) => module.ScrollSpySidebar),
+  {
+    loading: () => <div aria-hidden="true" className="hidden w-[17rem] xl:block" />,
+  },
+)
 
 interface TableOfContentsItem {
   id: string
@@ -64,7 +80,7 @@ export default function BlogPostLayout({
                       <p>{date}</p>
                     </div>
                     <div className="flex justify-center sm:justify-start" data-export-skip>
-                      <LlmExportMenu />
+                      <DeferredLlmExportMenu />
                     </div>
                   </div>
                 </header>
@@ -151,7 +167,7 @@ export default function BlogPostLayout({
 
             <div className="hidden self-start xl:block xl:sticky xl:top-28 xl:pt-4">
               {tableOfContents && tableOfContents.length > 0 ? (
-                <ScrollSpySidebar sections={tableOfContents} sectionColor="amber" sectionColorsById={sectionColorsById} />
+                <DeferredScrollSpySidebar sections={tableOfContents} sectionColor="amber" sectionColorsById={sectionColorsById} />
               ) : null}
             </div>
           </div>

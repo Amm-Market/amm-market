@@ -1,8 +1,14 @@
 import type { Metadata } from "next"
 import Image from "next/image"
-import Link from "next/link"
+import type { LucideIcon } from "lucide-react"
+import { Droplets, Scale, ShieldCheck } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
+import PlatformFinancingCarouselSection from "@/components/platform-financing-carousel-section"
+import PlatformSafetyCarouselSection from "@/components/platform-safety-carousel-section"
+import PlatformToolsShowcaseSection from "@/components/platform-tools-showcase-section"
+import PlatformWhyAvanaHighlights from "@/components/platform-why-avana-highlights"
+import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 export const metadata: Metadata = {
@@ -48,62 +54,66 @@ const financingFeatures = [
   {
     title: "Flexible settlement",
     description: "Deploy a single line of credit to access liquidity across multiple venues.",
-    accent: "bg-violet-100 text-violet-600",
-    icon: (
-      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-    ),
   },
   {
     title: "Unlock capital efficiency",
     description:
       "Borrow against assets in custody for leverage, shorting, and bespoke financing strategies.",
-    accent: "bg-purple-100 text-purple-600",
-    icon: <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />,
   },
   {
     title: "Retain control",
     description: "Pledge assets in your custody vault as collateral to minimize counterparty risk.",
-    accent: "bg-fuchsia-100 text-fuchsia-600",
-    icon: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />,
   },
   {
-    title: "Earn while you borrow",
+    title: "Add leverage when needed",
     description:
-      "Generate yield on pledged assets, with distributions credited directly into your vault.",
-    accent: "bg-pink-100 text-pink-600",
-    icon: (
-      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-    ),
+      "Use LP-backed borrowing capacity to open managed leverage or perps exposure from the same interface.",
   },
 ]
 
-const placeholderFeatures = [
-  { title: "Feature 1", description: "Description for feature 1." },
-  { title: "Feature 2", description: "Description for feature 2." },
-  { title: "Feature 3", description: "Description for feature 3." },
-  { title: "Feature 4", description: "Description for feature 4." },
-]
+const safetyFeatures = [
+  {
+    title: "Safe Zone",
+    description:
+      "Health Factor > 1.5. Borrow usage is well within capacity, fees keep accruing, and the position stays intact.",
+  },
+  {
+    title: "Warning Zone",
+    description:
+      "Health Factor 1.0-1.5. The app notifies you so you can repay debt, add collateral, or let automation reduce exposure.",
+  },
+  {
+    title: "Liquidation",
+    description:
+      "Health Factor < 1.0. Fees are applied first, only the LP principal needed is unwound, and residual value is returned in the same transaction.",
+  },
+] as const
 
-const advancedStats = [
+const platformWorkflowHighlights = [
   {
-    title: "Real-time monitoring",
-    description: "Instant position updates and health tracking across all your LPs.",
+    title: "Pool-level borrowing power",
+    description:
+      "See loan-to-value, health thresholds, and remaining capacity before you borrow.",
+    accent: "bg-violet-100/80 text-violet-600",
+    icon: Scale,
   },
   {
-    title: "Competitive rates",
-    description: "Low borrowing fees and minimal protocol costs for more efficient capital access.",
+    title: "Stay in the pool",
+    description:
+      "Borrow against active LP positions while fees keep accruing.",
+    accent: "bg-sky-100/80 text-sky-600",
+    icon: Droplets,
   },
   {
-    title: "Deep liquidity",
-    description: "Access liquidity across 50+ supported pools for tighter spreads and better execution.",
+    title: "Automation when needed",
+    description:
+      "Use Auto-Repay and target-based actions to help protect position health.",
+    accent: "bg-emerald-100/80 text-emerald-600",
+    icon: ShieldCheck,
   },
-  {
-    title: "Pro-grade reliability",
-    description: "High uptime with automated risk management and MEV-aware execution paths.",
-  },
-]
+] as const
 
-function FeatureCard({
+function WorkflowHighlightRow({
   title,
   description,
   accent,
@@ -112,37 +122,46 @@ function FeatureCard({
   title: string
   description: string
   accent: string
-  icon: React.ReactNode
+  icon: LucideIcon
 }) {
+  const Icon = icon
+
   return (
-    <div className="rounded-xl border border-gray-200 p-6">
-      <div className="mb-3 flex items-center gap-3">
-        <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${accent}`}>
-          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {icon}
-          </svg>
-        </div>
-        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+    <article className="flex flex-col gap-3 py-5 first:pt-0 last:pb-0 sm:flex-row sm:items-start sm:gap-4">
+      <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] ${accent}`}>
+        <Icon className="h-5 w-5" strokeWidth={1.9} />
       </div>
-      <p className="text-gray-600">{description}</p>
-    </div>
+
+      <div>
+        <h3 className="text-base font-semibold leading-6 text-offBlack sm:text-lg">
+          {title}
+        </h3>
+        <p className="mt-1.5 max-w-[38rem] text-sm leading-relaxed text-gray-600 sm:mt-2 sm:text-base">
+          {description}
+        </p>
+      </div>
+    </article>
   )
 }
 
-function ImagePanel({ alt }: { alt: string }) {
-  return (
-    <div className="relative w-full overflow-hidden rounded-xl">
-      <Image
-        src="/images/homepage.png"
-        alt={alt}
-        width={2880}
-        height={2111}
-        className="aspect-[16/9] w-full object-cover"
-        sizes="(max-width: 768px) 100vw, 1200px"
-      />
-    </div>
-  )
-}
+const advancedStats = [
+  {
+    title: "Live position intelligence",
+    description: "Track health, debt, rewards, and exposure in real time from one clear interface.",
+  },
+  {
+    title: "Automation with guardrails",
+    description: "Use alerts and auto-repay tools without giving up control over how positions are managed.",
+  },
+  {
+    title: "Fast, unified execution",
+    description: "Move from monitoring to action in one workflow instead of stitching together multiple tools.",
+  },
+  {
+    title: "Built for active LPs",
+    description: "Designed around real AMM positions so borrowing, risk, and management stay easy to understand.",
+  },
+]
 
 export default function PlatformPage() {
   return (
@@ -173,160 +192,76 @@ export default function PlatformPage() {
         </div>
       </section>
 
+      <ProductStorySection
+        eyebrow="Avana Webapp"
+        eyebrowTone="violet"
+        titleLines={["Full protocol access,", "made intuitive."]}
+        paragraphs={[
+          "The Avana Webapp brings the full protocol experience into a simple, intuitive interface. Users can deposit LP positions, see pool-specific borrowing limits, and unlock liquidity instantly, all without leaving their positions or sacrificing earned fees. Each pool’s loan-to-value ratios and risk parameters are clearly presented, giving users real-time visibility and control.",
+        ]}
+      />
+
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 pt-8 sm:px-6 sm:pt-12">
         <div className="relative z-0 flex flex-1 flex-col">
           <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
             <section>
-              <div className="mb-8 max-w-[650px] space-y-3 text-left">
-                <SectionEyebrow tone="violet">How it works</SectionEyebrow>
-                <SectionTitle>LP borrowing, simplified.</SectionTitle>
-              </div>
+              <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,36rem)_minmax(0,1fr)] lg:gap-14">
+                <div className="max-w-[36rem] space-y-4">
+                  <div className="space-y-3 text-left">
+                    <SectionEyebrow tone="violet">How it works</SectionEyebrow>
+                    <SectionTitle className="max-w-none text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem] lg:whitespace-nowrap">
+                      LP borrowing, simplified.
+                    </SectionTitle>
+                  </div>
 
-              <div className="max-w-[650px] space-y-4">
-                <div className="flex items-start gap-4 rounded-xl bg-gray-50 p-4">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-violet-500">
-                    <span className="text-sm font-bold text-white">1</span>
-                  </div>
-                  <div>
-                    <h3 className="mb-1 font-semibold text-gray-900">Deposit LP tokens</h3>
-                    <p className="text-sm text-gray-600">
-                      Add Uniswap or Balancer positions and keep earning fees while they remain deposited.
-                    </p>
-                  </div>
+                  <p className="max-w-none text-[1.02rem] leading-[1.72] text-[#5f6f84] md:text-[1.08rem]">
+                    Deposit LP positions, see your borrowing power, and unlock liquidity while
+                    fees keep accruing. Limits, health, and automation stay in one place.
+                  </p>
                 </div>
 
-                <div className="flex items-start gap-4 rounded-xl bg-gray-50 p-4">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-violet-500">
-                    <span className="text-sm font-bold text-white">2</span>
-                  </div>
-                  <div>
-                    <h3 className="mb-1 font-semibold text-gray-900">Unlock credit line</h3>
-                    <p className="text-sm text-gray-600">
-                      Borrow instantly and repay anytime while continuing to manage fees and collateral.
-                    </p>
-                  </div>
+                <div className="divide-y divide-gray-200">
+                  {platformWorkflowHighlights.map((item) => (
+                    <WorkflowHighlightRow key={item.title} {...item} />
+                  ))}
                 </div>
               </div>
             </section>
 
             <section>
-              <div className="mb-8 max-w-[650px] space-y-3 text-left">
-                <SectionEyebrow tone="violet">Financing</SectionEyebrow>
-                <SectionTitle>Flexible capital, one interface.</SectionTitle>
-              </div>
-
-              <div className="mb-6">
-                <ImagePanel alt="Financing dashboard" />
-              </div>
-
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                {financingFeatures.map((feature) => (
-                  <FeatureCard key={feature.title} {...feature} />
-                ))}
-              </div>
-
-              <p className="mt-8 text-center text-sm text-gray-500">Subject to risk assessment and availability</p>
+              <PlatformToolsShowcaseSection />
             </section>
 
             <section>
-              <div className="mb-8 max-w-[650px] space-y-3 text-left">
-                <SectionEyebrow tone="violet">Platform Tools</SectionEyebrow>
-                <SectionTitle>Manage every position in one place.</SectionTitle>
-              </div>
-
-              <div className="mb-6">
-                <ImagePanel alt="Section dashboard" />
-              </div>
-
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                {placeholderFeatures.map((feature, index) => (
-                  <FeatureCard
-                    key={feature.title}
-                    title={feature.title}
-                    description={feature.description}
-                    accent={index % 2 === 0 ? "bg-violet-100 text-violet-600" : "bg-purple-100 text-purple-600"}
-                    icon={index % 2 === 0 ? <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /> : <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />}
-                  />
-                ))}
-              </div>
-
-              <p className="mt-8 text-center text-sm text-gray-500">Subject to risk assessment and availability</p>
+              <PlatformFinancingCarouselSection
+                eyebrow="Financing"
+                eyebrowTone="violet"
+                title="Flexible capital, one interface."
+                items={financingFeatures}
+              />
             </section>
 
-            <HomepageNewsroomSection collection="platform" eyebrowTone="violet" />
+            <section>
+              <PlatformSafetyCarouselSection
+                eyebrow="Position Safety"
+                eyebrowTone="violet"
+                title="Know exactly what happens before it happens."
+                items={safetyFeatures}
+              />
+            </section>
 
-            <div className="pb-16 md:pb-24">
-              <InlineFaqSection title="Frequently asked questions." items={platformFaqItems} eyebrowTone="violet" withTopBorder={false} />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <section className="w-full pt-32 md:pt-40">
-        <div
-          className="overflow-hidden rounded-tl-[32px] rounded-tr-[32px] pt-[96px] lg:rounded-tl-[64px] lg:rounded-tr-[64px] lg:pt-[64px]"
-          style={{
-            background:
-              "linear-gradient(185deg, rgba(0, 22, 90, 0) 10%, rgb(0, 22, 90) 90.38%), linear-gradient(rgb(0, 22, 90) 0%, rgb(163, 179, 202) 100%)",
-          }}
-        >
-          <div className="site-content-shell">
-            <div className="flex flex-col items-center gap-4 px-8 pb-8 lg:gap-8 lg:px-16 lg:pb-0">
-              <div className="flex flex-row items-center justify-center gap-2.5">
-                <div className="h-[35px] w-[35px]">
-                  <svg className="h-[35px] w-[35px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                  </svg>
+            <section className="w-full">
+              <div className="space-y-6">
+                <div className="max-w-[650px] space-y-3 text-left">
+                  <SectionEyebrow tone="violet">Why Avana</SectionEyebrow>
+                  <SectionTitle>Built to manage serious positions.</SectionTitle>
                 </div>
-                <p className="text-[15px] font-medium leading-normal text-gray-300 lg:text-[16px]">
-                  Advanced LP Management
-                </p>
-              </div>
 
-              <div className="flex max-w-[366px] flex-col items-center gap-1 lg:max-w-none">
-                <h2 className="text-center text-[32px] font-bold leading-[1.08] tracking-[-0.02em] text-white lg:text-[48px]">
-                  Power meets precision
-                </h2>
-                <h3 className="text-center text-[18px] font-medium leading-[1.45] text-gray-300 lg:text-[22px]">
-                  Manage positions with institutional-grade tools and deeper liquidity
-                </h3>
-              </div>
-
-              <div className="hidden flex-wrap items-center justify-center gap-4 lg:flex">
-                <Link
-                  className="group relative flex h-10 min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
-                  href="/faq"
-                  prefetch={false}
-                >
-                  <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
-                  <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="flex flex-row items-center justify-center gap-1">
-                    <p className="text-[15px] font-medium leading-normal tracking-[-0.28px] text-gray-50">
-                      Get Early Access
-                    </p>
-                  </div>
-                </Link>
-
-                <Link
-                  className="group relative flex h-10 min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
-                  href="/developers"
-                  prefetch={false}
-                >
-                  <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
-                  <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="flex flex-row items-center justify-center gap-1">
-                    <p className="text-[15px] font-medium leading-normal tracking-[-0.28px] text-gray-50">
-                      View Docs
-                    </p>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="relative w-full">
-                <div className="relative left-1/2 h-auto w-screen -translate-x-1/2">
+                <div className="relative hidden overflow-hidden rounded-[28px] border border-gray-200 bg-[linear-gradient(145deg,#f8fafc_0%,#eef4ff_45%,#f8fafc_100%)] md:block">
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.14),transparent_28%),radial-gradient(circle_at_75%_18%,rgba(14,165,233,0.12),transparent_24%)]" />
                   <div className="relative aspect-[1600/760] w-full">
                     <Image
-                      alt="Power meets precision"
+                      alt="Built to manage serious positions."
                       className="object-fill"
                       fill
                       loading="lazy"
@@ -337,42 +272,28 @@ export default function PlatformPage() {
                 </div>
               </div>
 
-              <div className="flex w-full flex-col items-center justify-center gap-3 px-4 lg:hidden">
-                <Link
-                  className="group relative flex h-10 w-full max-w-[366px] min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
-                  href="/faq"
-                  prefetch={false}
-                >
-                  <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
-                  <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="flex flex-row items-center justify-center gap-1">
-                    <p className="text-[15px] font-medium leading-normal tracking-[-0.28px] text-gray-50">
-                      Get Early Access
-                    </p>
-                  </div>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex w-full flex-col bg-white">
-          <div className="site-content-shell py-8 lg:py-16">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4 lg:gap-8">
-              {advancedStats.map((stat) => (
-                <div key={stat.title} className="flex flex-col gap-4 pt-4">
-                  <p className="text-[17px] font-semibold leading-normal tracking-[-0.01em] text-gray-900 lg:text-[19px]">
-                    {stat.title}
-                  </p>
-                  <p className="text-[15px] font-normal leading-[1.6] text-gray-600 lg:text-[16px]">
-                    {stat.description}
-                  </p>
+              <div className="flex w-full flex-col bg-white">
+                <div className="site-content-shell pt-6 pb-2 lg:pt-8 lg:pb-6">
+                  <PlatformWhyAvanaHighlights items={advancedStats} />
                 </div>
-              ))}
+              </div>
+            </section>
+
+            <HomepageNewsroomSection collection="platform" eyebrowTone="violet" />
+
+            <div className="pb-16 md:pb-24">
+              <InlineFaqSection
+                title="Frequently asked questions."
+                items={platformFaqItems}
+                eyebrowTone="violet"
+                withTopBorder={false}
+                layout="homepage"
+              />
             </div>
           </div>
         </div>
-      </section>
+      </div>
+
     </main>
   )
 }

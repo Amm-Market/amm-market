@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import ProtocolRoadmapSection from "@/components/protocol-roadmap-section"
 import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 
 const pageDescription =
@@ -93,6 +94,9 @@ export default function AboutPage() {
               across hundreds of pools to participate in lending through architecture built specifically for their risk
               profile, pool design, and liquidity behavior.
             </p>
+            <div className="border-t border-gray-200 pt-8">
+              <ProtocolRoadmapSection />
+            </div>
             <p className="text-[1.2rem] font-normal leading-[1.5] tracking-[-0.03em] text-gray-900 sm:text-[1.35rem]">
               We are a small team working on a large problem. If you&apos;re interested in joining this research
               effort,{" "}
