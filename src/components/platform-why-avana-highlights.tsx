@@ -27,7 +27,7 @@ export default function PlatformWhyAvanaHighlights({
   return (
     <div className="w-full">
       <div
-        className="md:hidden"
+        className="relative left-1/2 w-screen -translate-x-1/2 px-4 sm:px-6 md:hidden"
         role="region"
         aria-roledescription="carousel"
         aria-label="Why Avana highlights"
@@ -41,15 +41,15 @@ export default function PlatformWhyAvanaHighlights({
               aria-hidden={index !== currentIndex}
               className={index !== currentIndex ? "hidden" : ""}
             >
-              <div className="relative aspect-[5/4] w-full overflow-hidden bg-[linear-gradient(180deg,#f7f4ee_0%,#efebe4_100%)]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden bg-[linear-gradient(180deg,#f7f4ee_0%,#efebe4_100%)]">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.9),transparent_55%)]" />
-                <div className="absolute inset-5 rounded-[24px] border border-white/70 bg-white/45" />
-                <div className="absolute inset-x-8 top-8 h-px bg-gray-300/70" />
-                <div className="absolute inset-x-8 bottom-8 h-px bg-gray-300/70" />
-                <div className="absolute inset-y-8 left-8 w-px bg-gray-300/70" />
-                <div className="absolute inset-y-8 right-8 w-px bg-gray-300/70" />
+                <div className="absolute inset-6 rounded-[28px] border border-white/70 bg-white/45" />
+                <div className="absolute inset-x-10 top-10 h-px bg-gray-300/70" />
+                <div className="absolute inset-x-10 bottom-10 h-px bg-gray-300/70" />
+                <div className="absolute inset-y-10 left-10 w-px bg-gray-300/70" />
+                <div className="absolute inset-y-10 right-10 w-px bg-gray-300/70" />
 
-                <div className="relative z-10 flex h-full flex-col items-center justify-center px-7 text-center">
+                <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
                   <div className="rounded-full border border-gray-200 bg-white/85 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-gray-500">
                     Why Avana
                   </div>
