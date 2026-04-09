@@ -132,7 +132,36 @@ export default function PlatformToolsShowcaseSection() {
           />
         </div>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-4 flex gap-3 overflow-x-auto pb-1 sm:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {SLIDES.map((slide, index) => (
+            <button
+              key={slide.id}
+              type="button"
+              onClick={() => setCurrentIndex(index)}
+              aria-current={currentIndex === index}
+              className="min-w-[11rem] shrink-0 rounded-[1rem] border px-4 py-3 text-left text-black transition-all duration-300 aria-current:border-black/18 aria-current:bg-white aria-current:shadow-[0_10px_22px_rgba(17,17,17,0.06)] border-black/10 bg-gray-100 shadow-[0_2px_10px_rgba(17,17,17,0.04)] hover:border-black/16 hover:bg-gray-50 hover:shadow-[0_10px_18px_rgba(17,17,17,0.07)]"
+            >
+              <p className="text-sm font-semibold leading-snug">
+                {slide.title}
+              </p>
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-3 flex items-center justify-center gap-2 sm:hidden">
+          {SLIDES.map((slide, index) => (
+            <button
+              key={`${slide.id}-dot`}
+              type="button"
+              onClick={() => setCurrentIndex(index)}
+              aria-label={`Show ${slide.title}`}
+              aria-current={currentIndex === index}
+              className="h-2.5 w-2.5 rounded-full bg-black/18 transition-all aria-current:w-6 aria-current:bg-black/70"
+            />
+          ))}
+        </div>
+
+        <div className="mt-6 hidden gap-4 sm:grid sm:grid-cols-2 xl:grid-cols-4">
           {SLIDES.map((slide, index) => (
             <button
               key={slide.id}
