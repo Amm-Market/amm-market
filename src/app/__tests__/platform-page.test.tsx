@@ -53,7 +53,7 @@ describe("platform page", () => {
       "text-[#111111]",
     )
     expect(heroHeading).toHaveTextContent("One platform for every")
-    expect(heroHeading).toHaveTextContent("LP as Collateral needs")
+    expect(heroHeading).toHaveTextContent("Amm Markets needs")
     expect(screen.getByRole("heading", { name: "LP borrowing, simplified." })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Flexible capital, one interface." })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Power meets precision" })).toBeInTheDocument()

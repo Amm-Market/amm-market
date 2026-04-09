@@ -6,7 +6,6 @@ import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSecti
 import InvestApySection from "@/components/invest-apy-section"
 import InvestGrowthCalculatorSection from "@/components/invest-growth-calculator-section"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
-import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const stableSpokeFaqItems: InlineFaqItem[] = [
@@ -75,15 +74,14 @@ export const metadata: Metadata = {
 export default function InvestPage() {
   return (
     <main className="bg-white">
-      <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 sm:px-6 md:px-8 pt-10 sm:pt-12 md:pt-20">
-        <div className="flex-1 flex flex-col relative z-0">
-        {/* Hero Section - Exact same structure as home (hero-section.tsx) */}
-          <section className="pb-4 md:pb-6">
-          <div className="mx-auto w-full pt-3 pb-6 md:pt-5 md:pb-10">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16 lg:min-h-[400px] xl:min-h-[450px]">
+      <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] lg:min-h-0 lg:px-0">
+        <div className="relative z-0">
+          <section className="pb-4 md:pb-6 lg:pb-8 xl:pb-10">
+            <div className="w-full pt-3 pb-6 md:pt-5 md:pb-10 lg:pb-2 xl:pb-3">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
               {/* Left Column - Hero Image */}
-              <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
-                <div className="relative w-full max-w-none lg:max-w-[650px] xl:max-w-[700px] mx-auto lg:mx-0">
+                <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
+                  <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
                   <Image
                     src="/images/Hero__4_.png"
                     alt="App interface"
@@ -97,49 +95,68 @@ export default function InvestPage() {
               </div>
 
               {/* Right Column - Text Content */}
-              <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
-                <h1 className="mb-3 max-w-[14ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[11ch] md:text-5xl lg:text-5xl xl:text-6xl">
-                  <span className="lg:whitespace-nowrap">Lend into</span>
-                  <br />
-                  <span className="lg:whitespace-nowrap">LP-backed credit.</span>
-                </h1>
+                <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
+                  <h1 className="mb-3 max-w-[14ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[11ch] md:text-5xl lg:text-5xl xl:text-6xl">
+                    <span className="lg:whitespace-nowrap">Lend into</span>
+                    <br />
+                    <span className="lg:whitespace-nowrap">LP-backed credit.</span>
+                  </h1>
 
-                <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
-                  Supply single assets, earn demand-driven yield, and keep capital flexible as new opportunities appear.
-                </p>
+                  <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
+                    Supply single assets, earn demand-driven yield, and keep capital flexible as new opportunities appear.
+                  </p>
 
-                <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
-                  <Link
-                    href="/faq"
-                    prefetch={false}
-                    className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
-                  >
-                    Get Early Access
-                  </Link>
-                  <Link
-                    href="/developers"
-                    prefetch={false}
-                    className="inline-flex items-center justify-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-100 text-gray-900 text-xs font-semibold rounded-full transition-colors"
-                  >
-                    View Docs
-                  </Link>
+                  <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
+                    <Link
+                      href="/faq"
+                      prefetch={false}
+                      className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
+                    >
+                      Get Early Access
+                    </Link>
+                    <Link
+                      href="/developers"
+                      prefetch={false}
+                      className="inline-flex items-center justify-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-100 text-gray-900 text-xs font-semibold rounded-full transition-colors"
+                    >
+                      View Docs
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </section>
         </div>
       </div>
 
-      <ProductStorySection
-        withTopDivider
-        eyebrowTone="emerald"
-        titleLines={["One deposit,", "many LP markets."]}
-        paragraphs={[
-          "Invest is Avana's supply layer. Deposited assets enter the Invest Spoke, then route through the Hub to support borrowing across multiple LP-collateral markets.",
-          "That gives suppliers exposure to LP-backed credit demand without managing impermanent loss, liquidity ranges, or borrower-side collateral operations.",
-        ]}
-      />
+      <section className="border-t border-gray-200 bg-white pt-8 pb-8 md:pt-10 md:pb-10">
+        <div className="site-content-shell">
+          <div className="mx-auto w-full max-w-[76rem]">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-center md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
+              <div className="space-y-4 md:self-center">
+                <SectionEyebrow tone="emerald">Avana Relaunch</SectionEyebrow>
+                <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
+                  <span className="block">One deposit,</span>
+                  <span className="block">many LP markets.</span>
+                </SectionTitle>
+              </div>
+              <div className="flex items-center justify-center pt-1 md:justify-end">
+                <div className="relative w-full max-w-[17rem] sm:max-w-[22rem] md:max-w-[25rem] lg:max-w-[28rem] xl:max-w-[31rem]">
+                  <Image
+                    src="/images/Avana Coin.webp"
+                    alt="Avana coin illustration"
+                    width={1714}
+                    height={1601}
+                    className="h-auto w-full"
+                    sizes="(min-width: 1280px) 31rem, (min-width: 1024px) 28rem, (min-width: 768px) 25rem, (min-width: 640px) 22rem, 17rem"
+                    priority={false}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <InvestApySection />
 
