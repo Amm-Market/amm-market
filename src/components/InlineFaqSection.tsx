@@ -16,6 +16,7 @@ interface InlineFaqSectionProps {
   eyebrowTone?: SectionEyebrowTone
   items: InlineFaqItem[]
   withTopBorder?: boolean
+  layout?: "default" | "homepage"
 }
 
 function renderFaqTitle(title: string) {
@@ -52,7 +53,13 @@ export function InlineFaqSection({
   eyebrowTone = "blue",
   items,
   withTopBorder = true,
+  layout = "default",
 }: InlineFaqSectionProps) {
+  const contentClassName =
+    layout === "homepage"
+      ? "min-w-0 md:pl-16 lg:pl-24 xl:pl-28"
+      : "min-w-0 md:max-w-[32rem] md:justify-self-end lg:max-w-[34rem]"
+
   return (
     <div
       className={`grid grid-cols-1 gap-8 pb-4 md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:gap-6 md:pb-0 lg:grid-cols-[minmax(0,25rem)_minmax(0,1fr)] lg:gap-8 ${
@@ -65,7 +72,7 @@ export function InlineFaqSection({
           {renderFaqTitle(title)}
         </SectionTitle>
       </div>
-      <div className="min-w-0 md:max-w-[32rem] md:justify-self-end lg:max-w-[34rem]">
+      <div className={contentClassName}>
         <Accordion type="single" collapsible orientation="vertical" className="w-full">
           {items.map((item) => (
             <AccordionItem key={item.value} value={item.value} className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
