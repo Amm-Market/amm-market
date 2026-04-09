@@ -523,6 +523,15 @@ export default function Header(): React.JSX.Element {
         ) : null}
       </header>
 
+      {desktopMenuRendered !== null ? (
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none fixed inset-x-0 bottom-0 top-16 z-30 hidden bg-white/10 backdrop-blur-[7px] transition-opacity duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] md:top-[54px] md:block ${
+            desktopMenuOpen !== null ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      ) : null}
+
       <div
         className={`fixed inset-0 z-[60] bg-white transition-opacity duration-300 ease-out md:hidden ${
           mobileMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
