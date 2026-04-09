@@ -198,17 +198,17 @@ export default function HeroSection() {
                             <div className="relative h-[180px] w-[180px]">
                               <svg className="h-full w-full -rotate-90" viewBox="0 0 100 100">
                                 <circle cx="50" cy="50" r="42" fill="none" stroke="#d1d5db" strokeWidth="8" strokeLinecap="round" strokeDasharray="198 66" />
-                                <circle cx="50" cy="50" r="42" fill="none" stroke="#2f3338" strokeWidth="8" strokeLinecap="round" strokeDasharray="160 104" />
+                                <circle cx="50" cy="50" r="42" fill="none" stroke="#94a3b8" strokeWidth="8" strokeLinecap="round" strokeDasharray="160 104" />
                               </svg>
                               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                <span className="text-4xl font-bold text-gray-900">80%</span>
-                                <span className="text-xs font-medium text-gray-600">Available</span>
+                                <span className="text-4xl font-bold text-slate-800">80%</span>
+                                <span className="text-xs font-medium text-slate-500">Available</span>
                               </div>
                             </div>
                           </div>
                           <div className="absolute inset-x-0 bottom-8 flex justify-center gap-3">
-                            <div className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs text-gray-700">LTV 80%</div>
-                            <div className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs text-gray-700">Capital active</div>
+                            <div className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-700">LTV 80%</div>
+                            <div className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs text-slate-700">Capital active</div>
                           </div>
                         </div>
                       </div>
@@ -225,33 +225,33 @@ export default function HeroSection() {
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full rounded-[22px] border border-gray-200 bg-white">
+                        <div className="relative h-[18rem] w-full rounded-[22px] border border-slate-200 bg-gradient-to-b from-white to-slate-50">
                           <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-                            <div className="flex items-center gap-1 rounded-full bg-[#2f3338] px-2 py-1 text-white">
+                            <div className="flex items-center gap-1 rounded-full border border-slate-200 bg-slate-100 px-2 py-1 text-slate-700">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" className="w-4 h-4">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"></path>
                               </svg>
                               <span className="text-[10px] font-semibold">Trading Fees</span>
                             </div>
-                            <span className="mt-6 text-5xl font-bold text-[#2f3338]">+12.4%</span>
+                            <span className="mt-6 text-5xl font-bold text-slate-700">+12.4%</span>
                             <div className="mt-4 flex items-center gap-1.5">
                               <span className="text-xs text-gray-500"><DeFiTerm term="apy">APY</DeFiTerm></span>
-                              <div className="h-0.5 w-10 rounded bg-gray-300"></div>
-                              <div className="flex h-4 w-4 items-center justify-center rounded-full bg-[#2f3338]">
+                              <div className="h-0.5 w-10 rounded bg-slate-200"></div>
+                              <div className="flex h-4 w-4 items-center justify-center rounded-full bg-slate-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 16 16" className="fill-white text-white">
                                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="m3 9 7-7c.15-.15.4.01.33.21L8.77 6.4a.2.2 0 0 0 .19.27h3.9a.2.2 0 0 1 .14.34l-7 7c-.15.15-.4-.01-.33-.21l1.58-4.2a.2.2 0 0 0-.19-.27H3.15a.2.2 0 0 1-.14-.34"></path>
                                 </svg>
                               </div>
-                              <div className="h-0.5 w-3.5 rounded bg-gray-300"></div>
+                              <div className="h-0.5 w-3.5 rounded bg-slate-200"></div>
                               <span className="text-xs text-gray-500">Earned</span>
                             </div>
-                            <div className="mt-6 w-full max-w-[16rem] rounded-[18px] border border-gray-200 bg-gray-50 px-4 py-4">
+                            <div className="mt-6 w-full max-w-[16rem] rounded-[18px] border border-slate-200 bg-white px-4 py-4">
                               <div className="flex items-center justify-between text-[0.72rem] text-gray-500">
                                 <span>LP fees remain active</span>
                                 <span className="font-medium text-gray-800">Auto accrual</span>
                               </div>
-                              <div className="mt-3 mx-auto w-36 rounded-full border border-gray-300 bg-white px-4 py-1 text-center">
-                                <span className="text-sm font-medium text-gray-700">Keep Earning</span>
+                              <div className="mt-3 mx-auto w-36 rounded-full border border-slate-200 bg-slate-50 px-4 py-1 text-center">
+                                <span className="text-sm font-medium text-slate-700">Keep Earning</span>
                               </div>
                             </div>
                           </div>
@@ -270,10 +270,10 @@ export default function HeroSection() {
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full rounded-[22px] border border-gray-200 bg-white">
+                        <div className="relative h-[18rem] w-full rounded-[22px] border border-slate-200 bg-gradient-to-b from-white to-slate-50">
                           <div className="absolute inset-0 flex items-center justify-center p-6">
                             <div className="flex w-full max-w-[16.75rem] flex-col items-center gap-3">
-                              <div className="flex w-full items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+                              <div className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3">
                                 <div className="flex h-11 w-11 items-center justify-center text-gray-700">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v20m5-17H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"></path>
@@ -281,15 +281,15 @@ export default function HeroSection() {
                                 </div>
                                 <span className="text-sm font-medium text-gray-800">Leverage trading</span>
                               </div>
-                              <div className="flex w-full items-center gap-3 rounded-lg bg-[#2f3338] px-4 py-3 text-white shadow-sm">
-                                <div className="flex h-11 w-11 items-center justify-center">
+                              <div className="flex w-full items-center gap-3 rounded-lg border border-slate-300 bg-slate-100 px-4 py-3 text-slate-900">
+                                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"></path>
                                   </svg>
                                 </div>
                                 <span className="text-sm font-medium">Yield farming</span>
                               </div>
-                              <div className="flex w-full items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+                              <div className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3">
                                 <div className="flex h-11 w-11 items-center justify-center text-gray-700">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M22 10v7.4a1.6 1.6 0 0 1-1.6 1.6H3.6A1.6 1.6 0 0 1 2 17.4V10m20 0V6.6A1.6 1.6 0 0 0 20.4 5H3.6A1.6 1.6 0 0 0 2 6.6V10m20 0H2m4 5h3"></path>
@@ -297,7 +297,7 @@ export default function HeroSection() {
                                 </div>
                                 <span className="text-sm font-medium text-gray-800">Pay off debt</span>
                               </div>
-                              <div className="flex w-full items-center gap-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+                              <div className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3">
                                 <div className="flex h-11 w-11 items-center justify-center text-gray-700">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 3v18h18M7 16l4-4 4 4 5-6"></path>
@@ -322,7 +322,7 @@ export default function HeroSection() {
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full rounded-[22px] border border-gray-200 bg-white">
+                        <div className="relative h-[18rem] w-full rounded-[22px] border border-slate-200 bg-gradient-to-b from-white to-slate-50">
                           <div className="absolute inset-0 flex items-center justify-center p-6">
                             <div className="w-full max-w-[16.75rem]">
                               <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.14em] text-gray-500">
@@ -330,15 +330,15 @@ export default function HeroSection() {
                                 <span>Oracle band</span>
                                 <span>$1,950</span>
                               </div>
-                              <div className="relative h-[118px] rounded-[18px] border border-gray-200 bg-gray-50">
-                                <div className="absolute inset-x-6 top-1/2 h-8 -translate-y-1/2 rounded-full border border-gray-200 bg-white"></div>
+                              <div className="relative h-[118px] rounded-[18px] border border-slate-200 bg-white">
+                                <div className="absolute inset-x-6 top-1/2 h-8 -translate-y-1/2 rounded-full border border-slate-200 bg-slate-50"></div>
                                 <svg className="absolute inset-4 h-[calc(100%-32px)] w-[calc(100%-32px)]" viewBox="0 0 300 110" preserveAspectRatio="none">
-                                  <path d="M0,78 Q40,70 85,76 T165,54 T235,58 T300,40" fill="none" stroke="#2f3338" strokeWidth="2.25" strokeLinecap="round" />
+                                  <path d="M0,78 Q40,70 85,76 T165,54 T235,58 T300,40" fill="none" stroke="#64748b" strokeWidth="2.25" strokeLinecap="round" />
                                 </svg>
-                                <div className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2f3338] ring-4 ring-white"></div>
+                                <div className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-slate-500 ring-4 ring-white"></div>
                               </div>
                               <div className="mt-4 flex justify-center">
-                                <div className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-medium text-gray-700">In range</div>
+                                <div className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700">In range</div>
                               </div>
                             </div>
                           </div>
@@ -357,14 +357,14 @@ export default function HeroSection() {
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full rounded-[22px] border border-gray-200 bg-white">
+                        <div className="relative h-[18rem] w-full rounded-[22px] border border-slate-200 bg-gradient-to-b from-white to-slate-50">
                           <div className="absolute inset-0 flex items-center justify-center">
                             <div className="relative h-[170px] w-[170px]">
-                              <div className="absolute inset-0 rounded-full border-2 border-gray-200"></div>
-                              <div className="absolute inset-[20px] rounded-full border-2 border-gray-300"></div>
-                              <div className="absolute inset-[40px] rounded-full border-2 border-gray-400"></div>
-                              <div className="absolute inset-[55px] flex items-center justify-center rounded-full bg-[#2f3338]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-white">
+                              <div className="absolute inset-0 rounded-full border-2 border-slate-200"></div>
+                              <div className="absolute inset-[20px] rounded-full border-2 border-slate-300"></div>
+                              <div className="absolute inset-[40px] rounded-full border-2 border-slate-300"></div>
+                              <div className="absolute inset-[55px] flex items-center justify-center rounded-full border border-slate-200 bg-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-slate-700">
                                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4"></path>
                                 </svg>
