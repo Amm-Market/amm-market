@@ -33,7 +33,7 @@ function toSentenceCase(value: string) {
 
 function SandboxIcon() {
   return (
-    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" className="h-[18px] w-[18px] shrink-0">
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" className="h-5 w-5 shrink-0">
       <path
         d="M14 18V11H21"
         stroke="currentColor"
@@ -82,7 +82,7 @@ function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
         alt={`${SITE_NAME} wordmark`}
         width={131}
         height={24}
-        className={mobileOnly ? "hidden" : "hidden h-[22px] w-[120px] sm:h-[24px] sm:w-[131px] md:block"}
+        className={mobileOnly ? "hidden" : "hidden md:block md:h-[19px] md:w-[104px] lg:h-[20px] lg:w-[109px]"}
       />
     </span>
   )
@@ -162,10 +162,10 @@ const desktopMenus: DesktopMenuGroup[] = [
     label: "Developers",
     eyebrow: "Explore Developers",
     items: [
-      { href: siteRoutes.developers, label: "Introduction" },
-      { href: "/developers/getting-started", label: "Getting Started" },
-      { href: "/developers/architecture", label: "Protocol Architecture" },
-      { href: "/developers/liquidation", label: "Liquidation Framework" },
+      { href: "/developers/introduction/key-concepts", label: "Introduction" },
+      { href: siteRoutes.developers, label: "Overview" },
+      { href: "/developers/architecture", label: "Architecture" },
+      { href: "/developers/liquidation", label: "Liquidation" },
     ],
     supportingTitle: "Highlights",
     supportingItems: [
@@ -242,19 +242,19 @@ function DesktopMenuPanel({
           onExited()
         }
       }}
-      className={`fixed left-0 right-0 top-16 z-40 hidden transform-gpu md:block lg:top-[68px] transition-[opacity,transform] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+      className={`fixed left-0 right-0 top-16 z-40 hidden transform-gpu md:top-[54px] md:block transition-[opacity,transform] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         isOpen ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-6 opacity-0"
       }`}
       aria-hidden={!isOpen}
     >
       <div className="border-b border-black/6 bg-white shadow-[0_24px_72px_rgba(0,0,0,0.04)]">
-        <div className="w-full bg-white px-4 py-6 sm:px-6 lg:px-8 lg:py-7 xl:px-10">
+        <div className="w-full bg-white px-4 py-5 sm:px-6 md:px-5 md:py-5 lg:px-6 xl:px-8">
           <div
             key={`${menu.id}-${animationCycle}`}
-            className="grid gap-8 lg:min-h-[18.5rem] lg:grid-cols-[minmax(0,24rem)_minmax(18rem,22rem)] lg:gap-3 xl:grid-cols-[minmax(0,25rem)_minmax(18rem,22rem)] xl:gap-4"
+            className="grid gap-6 lg:min-h-[14.75rem] lg:grid-cols-[minmax(0,19rem)_minmax(15rem,18rem)] lg:gap-2.5 xl:grid-cols-[minmax(0,20rem)_minmax(15rem,18rem)] xl:gap-3"
           >
             <div className="space-y-2.5">
-              <p className="text-[0.96rem] font-medium tracking-[-0.02em] text-black/76">{toSentenceCase(menu.eyebrow)}</p>
+              <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-black/76">{toSentenceCase(menu.eyebrow)}</p>
               <div className="space-y-1">
                 {menu.items.map((item, index) => (
                   <Link
@@ -269,7 +269,7 @@ function DesktopMenuPanel({
                     }`}
                     style={{ transitionDelay: `${180 + index * 55}ms` }}
                   >
-                    <span className="text-[clamp(1.9rem,2.45vw,3.05rem)] font-[430] leading-[1.04] tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1">
+                    <span className="text-[clamp(1.5rem,1.95vw,2.45rem)] font-[430] leading-[1.04] tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1">
                       {item.label}
                     </span>
                   </Link>
@@ -284,7 +284,7 @@ function DesktopMenuPanel({
               style={{ transitionDelay: "280ms" }}
             >
               {menu.supportingTitle ? (
-                <p className="text-[0.96rem] font-medium tracking-[-0.02em] text-black/76">{menu.supportingTitle}</p>
+                <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-black/76">{menu.supportingTitle}</p>
               ) : null}
               <div className="space-y-3">
                 {menu.supportingItems.map((item, index) => (
@@ -296,21 +296,21 @@ function DesktopMenuPanel({
                     rel={item.external ? "noreferrer" : undefined}
                     aria-label={item.label}
                     suppressHydrationWarning
-                    className="group block min-h-[3.5rem] text-left"
+                    className="group block min-h-[2.8rem] text-left"
                   >
-                    <div className="flex items-start gap-3.5">
+                    <div className="flex items-start gap-[0.6875rem]">
                       <span
                         aria-hidden="true"
-                        className="pt-1 text-[0.68rem] font-medium tracking-[0.16em] text-black/24"
+                        className="pt-1 text-[0.56rem] font-medium tracking-[0.16em] text-black/24"
                       >
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <div>
-                        <p className="text-[0.96rem] font-medium leading-[1.24] tracking-[-0.02em] text-black/76 transition-colors duration-200 group-hover:text-black">
+                        <p className="text-[0.78rem] font-medium leading-[1.24] tracking-[-0.02em] text-black/76 transition-colors duration-200 group-hover:text-black">
                           {item.label}
                         </p>
                         {item.description ? (
-                          <p className="mt-1 max-w-[28rem] text-[0.82rem] leading-[1.42] tracking-[-0.01em] text-black/46 transition-colors duration-200 group-hover:text-black/58">
+                          <p className="mt-1 max-w-[24rem] text-[0.68rem] leading-[1.42] tracking-[-0.01em] text-black/46 transition-colors duration-200 group-hover:text-black/58">
                             {item.description}
                           </p>
                         ) : null}
@@ -413,7 +413,7 @@ export default function Header(): React.JSX.Element {
         onMouseEnter={clearDesktopCloseTimeout}
         onMouseLeave={scheduleDesktopMenuClose}
       >
-        <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 lg:h-[68px] lg:px-8 xl:px-10">
+        <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 md:h-[54px] md:gap-3 md:px-6 lg:px-6 xl:px-8">
           <div className="inline-flex shrink-0 items-center">
             <Link
               href={siteRoutes.home}
@@ -426,7 +426,7 @@ export default function Header(): React.JSX.Element {
             </Link>
           </div>
 
-          <nav aria-label="Primary navigation" className="hidden min-w-0 items-center gap-8 md:ml-8 md:mr-auto md:flex lg:gap-10">
+          <nav aria-label="Primary navigation" className="hidden min-w-0 items-center gap-8 md:ml-6 md:mr-auto md:flex md:gap-6 lg:gap-8">
             {desktopMenus.map((menu) => {
               const isActive = desktopMenuOpen === menu.id
               const hasActiveRoute = menu.items.some((item) =>
@@ -443,7 +443,7 @@ export default function Header(): React.JSX.Element {
                   onMouseEnter={() => openDesktopMenu(menu.id)}
                   onFocus={() => openDesktopMenu(menu.id)}
                   onClick={() => openDesktopMenu(menu.id)}
-                  className={`site-header-nav-link group relative inline-flex items-center px-0 py-1.5 text-[15px] font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${
+                  className={`site-header-nav-link group relative inline-flex items-center px-0 py-1 text-[15px] font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${
                     isActive || hasActiveRoute ? "text-black" : "text-black/62 hover:text-black/94"
                   }`}
                 >
@@ -453,7 +453,7 @@ export default function Header(): React.JSX.Element {
             })}
           </nav>
 
-          <div className="hidden items-center gap-2.5 md:flex">
+          <div className="hidden items-center gap-2 md:flex">
             {desktopUtilityLinks.map((link, index) => (
               <Link
                 key={link.label}
@@ -462,14 +462,14 @@ export default function Header(): React.JSX.Element {
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noreferrer" : undefined}
                 suppressHydrationWarning
-                className={`inline-flex items-center justify-center px-4 py-2 rounded-full transition-colors text-xs font-medium ${
+                className={`inline-flex items-center justify-center rounded-full px-3 py-1.5 text-xs font-medium transition-colors lg:px-3.5 lg:py-[0.45rem] ${
                   index === 0
                     ? "bg-white border border-gray-300 hover:bg-gray-100 text-gray-900"
                     : "bg-gray-900 hover:bg-gray-800 text-white"
                 }`}
               >
                 {link.label === "Try Sandbox" ? (
-                  <span className="inline-flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5">
                     <SandboxIcon />
                     <span>{link.label}</span>
                   </span>
@@ -522,6 +522,15 @@ export default function Header(): React.JSX.Element {
           />
         ) : null}
       </header>
+
+      {desktopMenuRendered !== null ? (
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none fixed inset-x-0 bottom-0 top-16 z-30 hidden bg-white/10 backdrop-blur-[7px] transition-opacity duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] md:top-[54px] md:block ${
+            desktopMenuOpen !== null ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      ) : null}
 
       <div
         className={`fixed inset-0 z-[60] bg-white transition-opacity duration-300 ease-out md:hidden ${

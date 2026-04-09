@@ -229,9 +229,15 @@
 }
 
 @media (min-width: 1024px) {
-  .site-header-nav-link,
+  .site-header-nav-link {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    font-weight: var(--type-weight-ui);
+    letter-spacing: -0.03em;
+  }
+
   .site-header-cta {
-    font-size: 1.0625rem;
+    font-size: 0.875rem;
     line-height: 1.5;
     font-weight: var(--type-weight-ui);
     letter-spacing: -0.03em;

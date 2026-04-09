@@ -153,7 +153,7 @@ export default function PlatformPage() {
               <div className="pt-20 md:pt-28 lg:pt-32">
                 <h1 className="text-left text-[clamp(2.4rem,5.8vw,4.3rem)] font-normal leading-[0.98] tracking-[-0.065em] text-[#111111]">
                   <span className="block whitespace-nowrap">One platform for every</span>
-                  <span className="block whitespace-nowrap">LP as Collateral needs</span>
+                  <span className="block whitespace-nowrap">Amm Markets needs</span>
                 </h1>
               </div>
 
