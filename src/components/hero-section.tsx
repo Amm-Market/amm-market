@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic"
 import { DeFiTerm } from "@/components/defi-term"
-import HomepageFaqSection from "@/components/homepage/HomepageFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
@@ -36,6 +35,10 @@ function SectionSkeleton({
 
 const DeferredTestimonialSection = dynamic(() => import("@/components/homepage/HomepageTestimonialSection"), {
   loading: () => <SectionSkeleton minHeight="360px" />,
+})
+
+const DeferredHomepageFaqSection = dynamic(() => import("@/components/homepage/HomepageFaqSection"), {
+  loading: () => <SectionSkeleton lines={4} minHeight="420px" />,
 })
 
 /**
@@ -401,59 +404,65 @@ export default function HeroSection() {
           <DeferredTestimonialSection />
         </LazySection>
 
-        <div>
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
-              <div className="space-y-4">
-                <SectionEyebrow tone="slate">Security Protection</SectionEyebrow>
-                <SectionTitle>
-                  <span className="block lg:whitespace-nowrap">Aave v4</span>
-                  <span className="block lg:whitespace-nowrap">Design Foundation</span>
-                </SectionTitle>
+        <LazySection minHeight="660px" fallback={<SectionSkeleton minHeight="660px" />}>
+          <div>
+              <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
+                <div className="space-y-4">
+                  <SectionEyebrow tone="slate">Security Protection</SectionEyebrow>
+                  <SectionTitle>
+                    <span className="block lg:whitespace-nowrap">Aave v4</span>
+                    <span className="block lg:whitespace-nowrap">Design Foundation</span>
+                  </SectionTitle>
+                </div>
+                <div className="text-left text-[#39515b]">
+                  <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
+                    Aave v4 is a next generation lending system built on{" "}
+                    <DeFiTerm term="hub" className="text-[0.92em]">Hub</DeFiTerm>
+                    {" "}and{" "}
+                    <DeFiTerm term="spoke" className="text-[0.92em]">Spoke</DeFiTerm>
+                    {" "}architecture, giving the protocol shared liquidity, flexible risk controls, and a stronger security model. Avana builds on that foundation to deliver secure{" "}
+                    <DeFiTerm term="lp-position" className="text-[0.92em]">LP backed borrowing</DeFiTerm>
+                    {" "}with transparent onchain execution, resilient{" "}
+                    <DeFiTerm term="oracle" className="text-[0.92em]">oracle</DeFiTerm>
+                    {" "}checks, and borrower protection shaped around controlled{" "}
+                    <DeFiTerm term="liquidation" className="text-[0.92em]">liquidation</DeFiTerm>
+                    {" "}design.
+                  </p>
+                </div>
               </div>
-              <div className="text-left text-[#39515b]">
-                <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
-                  Aave v4 is a next generation lending system built on{" "}
-                  <DeFiTerm term="hub" className="text-[0.92em]">Hub</DeFiTerm>
-                  {" "}and{" "}
-                  <DeFiTerm term="spoke" className="text-[0.92em]">Spoke</DeFiTerm>
-                  {" "}architecture, giving the protocol shared liquidity, flexible risk controls, and a stronger security model. Avana builds on that foundation to deliver secure{" "}
-                  <DeFiTerm term="lp-position" className="text-[0.92em]">LP backed borrowing</DeFiTerm>
-                  {" "}with transparent onchain execution, resilient{" "}
-                  <DeFiTerm term="oracle" className="text-[0.92em]">oracle</DeFiTerm>
-                  {" "}checks, and borrower protection shaped around controlled{" "}
-                  <DeFiTerm term="liquidation" className="text-[0.92em]">liquidation</DeFiTerm>
-                  {" "}design.
-                </p>
-              </div>
-            </div>
 
-            <div className="mt-12 overflow-hidden rounded-[28px] border border-gray-200 bg-gradient-to-b from-gray-50 to-white p-5 sm:p-6">
-              <div className="flex min-h-[280px] items-center justify-center rounded-[24px] border border-gray-200 bg-white sm:min-h-[340px] md:min-h-[420px]">
-                <div className="flex flex-col items-center gap-6 text-center">
-                  <div className="flex h-28 w-28 items-center justify-center rounded-full bg-[#B6509E] shadow-[0_20px_60px_rgba(182,80,158,0.18)] sm:h-36 sm:w-36 md:h-44 md:w-44">
-                    <svg width="68" height="68" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:h-20 sm:w-20 md:h-24 md:w-24">
-                      <path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0z" fill="#B6509E" />
-                      <path d="M186.7 168.5c-7.5 0-14.2-4.3-17.4-11l-25.9-56.8c-1.4-3.1-4.5-5.1-7.9-5.1h-14.9c-3.4 0-6.5 2-7.9 5.1l-25.9 56.8c-3.2 6.7-9.9 11-17.4 11-10.6 0-19.2-8.6-19.2-19.2 0-2.9.7-5.8 2-8.4l38.3-83.8c5.7-12.5 18.2-20.5 32-20.5h23.2c13.8 0 26.3 8 32 20.5l38.3 83.8c1.3 2.6 2 5.5 2 8.4 0 10.6-8.6 19.2-19.2 19.2z" fill="white" />
-                    </svg>
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-[1.6rem] font-semibold tracking-[-0.05em] text-gray-900 sm:text-[2rem] md:text-[2.6rem]">
-                      Future Aave visual
-                    </p>
-                    <p className="text-sm text-gray-500 sm:text-base">
-                      Reserved for the large Aave brand asset.
-                    </p>
+              <div className="mt-12 overflow-hidden rounded-[28px] border border-gray-200 bg-gradient-to-b from-gray-50 to-white p-5 sm:p-6">
+                <div className="flex min-h-[280px] items-center justify-center rounded-[24px] border border-gray-200 bg-white sm:min-h-[340px] md:min-h-[420px]">
+                  <div className="flex flex-col items-center gap-6 text-center">
+                    <div className="flex h-28 w-28 items-center justify-center rounded-full bg-[#B6509E] shadow-[0_20px_60px_rgba(182,80,158,0.18)] sm:h-36 sm:w-36 md:h-44 md:w-44">
+                      <svg width="68" height="68" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:h-20 sm:w-20 md:h-24 md:w-24">
+                        <path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0z" fill="#B6509E" />
+                        <path d="M186.7 168.5c-7.5 0-14.2-4.3-17.4-11l-25.9-56.8c-1.4-3.1-4.5-5.1-7.9-5.1h-14.9c-3.4 0-6.5 2-7.9 5.1l-25.9 56.8c-3.2 6.7-9.9 11-17.4 11-10.6 0-19.2-8.6-19.2-19.2 0-2.9.7-5.8 2-8.4l38.3-83.8c5.7-12.5 18.2-20.5 32-20.5h23.2c13.8 0 26.3 8 32 20.5l38.3 83.8c1.3 2.6 2 5.5 2 8.4 0 10.6-8.6 19.2-19.2 19.2z" fill="white" />
+                      </svg>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-[1.6rem] font-semibold tracking-[-0.05em] text-gray-900 sm:text-[2rem] md:text-[2.6rem]">
+                        Future Aave visual
+                      </p>
+                      <p className="text-sm text-gray-500 sm:text-base">
+                        Reserved for the large Aave brand asset.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-        </div>
+          </div>
+        </LazySection>
 
-        <HomepageNewsroomSection eyebrowTone="rose" />
+        <LazySection minHeight="520px" fallback={<SectionSkeleton minHeight="520px" />}>
+          <HomepageNewsroomSection eyebrowTone="rose" />
+        </LazySection>
 
-        <div className="pb-16 md:pb-24">
-          <HomepageFaqSection />
-        </div>
+        <LazySection minHeight="480px" fallback={<SectionSkeleton minHeight="480px" />}>
+          <div className="pb-16 md:pb-24">
+            <DeferredHomepageFaqSection />
+          </div>
+        </LazySection>
       </div>
     </section>
   )

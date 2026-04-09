@@ -29,7 +29,7 @@ export type NewsroomPost = {
   href: string
 }
 
-export type NewsroomCollection = "home" | "borrow" | "invest" | "earn" | "platform"
+export type NewsroomCollection = "home" | "borrow" | "invest" | "leverage" | "platform"
 
 export const blogTagOptions: readonly TagFilter[] = [
   "All",
@@ -86,10 +86,10 @@ const newsroomPostsByCollection: Record<NewsroomCollection, readonly NewsroomPos
     makeNewsroomPost("hedge-lp-position", "LP hedging"),
     makeNewsroomPost("institutional-use-cases", "Treasury strategy"),
   ],
-  earn: [
-    makeNewsroomPost("introducing-automate", "Fee automation"),
-    makeNewsroomPost("yield-looping-playbook", "Yield looping"),
-    makeNewsroomPost("avana-lp-collateral", "LP strategy"),
+  leverage: [
+    makeNewsroomPost("yield-looping-playbook", "Leverage strategy"),
+    makeNewsroomPost("introducing-automate", "Position controls"),
+    makeNewsroomPost("how-lp-liquidation-should-work", "Risk design"),
   ],
   platform: [
     makeNewsroomPost("aave-v4-avana-spoke", "Architecture"),

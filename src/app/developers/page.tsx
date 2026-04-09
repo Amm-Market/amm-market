@@ -202,7 +202,7 @@ export default function DevelopersPage() {
           </div>
         </section>
 
-        <section id="what-is-amm-market" className="mt-12 scroll-mt-32">
+        <section id="what-is-amm-market" className="deferred-viewport mt-12 scroll-mt-32">
           <SectionHeader
             title="What is Avana?"
             description="Avana is a lending protocol built for LP collateral that stays active in the underlying AMM. The protocol uses Aave v4&apos;s Hub-and-Spoke model so shared liquidity can stay in the Hub while LP-specific admissibility, valuation, and liquidation logic stays inside the spoke."
@@ -240,7 +240,7 @@ export default function DevelopersPage() {
           </div>
         </section>
 
-        <section id="how-it-works" className="mt-12 scroll-mt-32">
+        <section id="how-it-works" className="deferred-viewport mt-12 scroll-mt-32">
           <SectionHeader
             title="How It Works"
             description="The borrowing flow is short at a high level, but each step carries LP-specific logic. Read it as the canonical path that the rest of the documentation expands."
@@ -263,7 +263,7 @@ export default function DevelopersPage() {
           </div>
         </section>
 
-        <section id="unlocking-lp-collateral" className="mt-12 scroll-mt-32">
+        <section id="unlocking-lp-collateral" className="deferred-viewport mt-12 scroll-mt-32">
           <SectionHeader
             title="Why LP Collateral Matters"
             description="The point is not just to borrow against LPs. The point is to do it in a way that preserves productive capital and keeps the credit rules enforceable."
@@ -286,7 +286,7 @@ export default function DevelopersPage() {
           </div>
         </section>
 
-        <section id="architecture" className="mt-12 scroll-mt-32">
+        <section id="architecture" className="deferred-viewport mt-12 scroll-mt-32">
           <SectionHeader
             title="Architecture"
             description="Avana separates LP-specific underwriting from the shared liquidity layer. The three blocks below are the simplest way to read that split."
@@ -313,7 +313,7 @@ export default function DevelopersPage() {
           </div>
         </section>
 
-        <section id="current-development" className="mt-12 scroll-mt-32">
+        <section id="current-development" className="deferred-viewport mt-12 scroll-mt-32">
           <SectionHeader
             title="Current Scope"
             description="These docs focus on the core protocol model first. Operational details are documented separately so they do not redefine the main lending architecture."
@@ -346,7 +346,7 @@ export default function DevelopersPage() {
           </div>
         </section>
 
-        <section id="next-steps" className="mt-12 scroll-mt-32">
+        <section id="next-steps" className="deferred-viewport mt-12 scroll-mt-32">
           <SectionHeader
             title="Next Steps"
             description="Use the intro page to route into the specific part of the protocol you need. These links preserve the canonical reading path without turning the landing page into a grid of large cards."

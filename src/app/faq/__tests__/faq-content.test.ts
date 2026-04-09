@@ -11,6 +11,7 @@ describe("faq content helpers", () => {
     expect(normalizeFaqCategory(undefined, faqCategories)).toBe("Core Concepts")
     expect(normalizeFaqCategory("Unknown", faqCategories)).toBe("Core Concepts")
     expect(normalizeFaqCategory("Risk & Security", faqCategories)).toBe("Risk & Security")
+    expect(normalizeFaqCategory("Leverage Markets", faqCategories)).toBe("Leverage Markets")
   })
 
   it("returns the correct questions for a selected category", () => {
@@ -18,6 +19,13 @@ describe("faq content helpers", () => {
 
     expect(questions).toHaveLength(10)
     expect(questions[0]?.q).toBe("What is the health factor?")
+  })
+
+  it("includes a dedicated leverage category with ten questions", () => {
+    const questions = getFaqQuestionsForCategory(faqCategories, "Leverage Markets")
+
+    expect(questions).toHaveLength(10)
+    expect(questions[0]?.q).toBe("What is Avana Leverage Market?")
   })
 
   it("keeps every FAQ category expanded to ten canonical questions", () => {
