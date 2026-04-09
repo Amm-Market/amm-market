@@ -4,7 +4,6 @@ import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
-import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const bluechipSpokeFaqItems: InlineFaqItem[] = [
@@ -126,15 +125,34 @@ export default function EarnPage() {
         </div>
       </div>
 
-      <ProductStorySection
-        withTopDivider
-        eyebrowTone="amber"
-        titleLines={["Share in", "protocol upside."]}
-        paragraphs={[
-          "Earn is designed around protocol-protection capital rather than LP management. It sits behind conservative valuation, capped exposure, and timely liquidation as a deeper line of defense for qualifying shortfalls.",
-          "In that role, returns are tied to system health and governance-defined coverage rules, making it a higher-conviction product for users who want alignment with Avana&apos;s risk layer rather than passive lending alone.",
-        ]}
-      />
+      <section className="border-t border-gray-200 bg-white pt-8 pb-8 md:pt-6 md:pb-10">
+        <div className="site-content-shell">
+          <div className="mx-auto w-full max-w-[76rem]">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-center md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
+              <div className="space-y-4 md:self-center">
+                <SectionEyebrow tone="amber">Avana Relaunch</SectionEyebrow>
+                <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
+                  <span className="block">Share in</span>
+                  <span className="block">protocol upside.</span>
+                </SectionTitle>
+              </div>
+              <div className="flex items-center justify-center pt-1 md:justify-end">
+                <div className="relative w-full max-w-[22rem] sm:max-w-[22rem] md:max-w-[23rem] md:-translate-x-4 lg:max-w-[26rem] lg:-translate-x-6 xl:max-w-[28rem]">
+                  <Image
+                    src="/images/Avana 2.webp"
+                    alt="Avana illustration"
+                    width={800}
+                    height={800}
+                    className="h-auto w-full"
+                    sizes="(min-width: 1280px) 28rem, (min-width: 1024px) 26rem, (min-width: 768px) 23rem, (min-width: 640px) 22rem, 22rem"
+                    priority={false}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="bg-white pt-8 pb-10 md:pt-12 md:pb-14">
         <div className="site-content-shell">
