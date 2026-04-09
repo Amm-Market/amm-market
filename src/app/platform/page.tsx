@@ -3,6 +3,9 @@ import Image from "next/image"
 import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
+import PlatformFinancingCarouselSection from "@/components/platform-financing-carousel-section"
+import PlatformToolsShowcaseSection from "@/components/platform-tools-showcase-section"
+import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 export const metadata: Metadata = {
@@ -48,40 +51,21 @@ const financingFeatures = [
   {
     title: "Flexible settlement",
     description: "Deploy a single line of credit to access liquidity across multiple venues.",
-    accent: "bg-violet-100 text-violet-600",
-    icon: (
-      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-    ),
   },
   {
     title: "Unlock capital efficiency",
     description:
       "Borrow against assets in custody for leverage, shorting, and bespoke financing strategies.",
-    accent: "bg-purple-100 text-purple-600",
-    icon: <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />,
   },
   {
     title: "Retain control",
     description: "Pledge assets in your custody vault as collateral to minimize counterparty risk.",
-    accent: "bg-fuchsia-100 text-fuchsia-600",
-    icon: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />,
   },
   {
     title: "Earn while you borrow",
     description:
       "Generate yield on pledged assets, with distributions credited directly into your vault.",
-    accent: "bg-pink-100 text-pink-600",
-    icon: (
-      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-    ),
   },
-]
-
-const placeholderFeatures = [
-  { title: "Feature 1", description: "Description for feature 1." },
-  { title: "Feature 2", description: "Description for feature 2." },
-  { title: "Feature 3", description: "Description for feature 3." },
-  { title: "Feature 4", description: "Description for feature 4." },
 ]
 
 const advancedStats = [
@@ -102,47 +86,6 @@ const advancedStats = [
     description: "High uptime with automated risk management and MEV-aware execution paths.",
   },
 ]
-
-function FeatureCard({
-  title,
-  description,
-  accent,
-  icon,
-}: {
-  title: string
-  description: string
-  accent: string
-  icon: React.ReactNode
-}) {
-  return (
-    <div className="rounded-xl border border-gray-200 p-6">
-      <div className="mb-3 flex items-center gap-3">
-        <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${accent}`}>
-          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {icon}
-          </svg>
-        </div>
-        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-      </div>
-      <p className="text-gray-600">{description}</p>
-    </div>
-  )
-}
-
-function ImagePanel({ alt }: { alt: string }) {
-  return (
-    <div className="relative w-full overflow-hidden rounded-xl">
-      <Image
-        src="/images/homepage.png"
-        alt={alt}
-        width={2880}
-        height={2111}
-        className="aspect-[16/9] w-full object-cover"
-        sizes="(max-width: 768px) 100vw, 1200px"
-      />
-    </div>
-  )
-}
 
 export default function PlatformPage() {
   return (
@@ -172,6 +115,15 @@ export default function PlatformPage() {
           </div>
         </div>
       </section>
+
+      <ProductStorySection
+        eyebrow="Avana Webapp"
+        eyebrowTone="violet"
+        titleLines={["Full protocol access,", "made intuitive."]}
+        paragraphs={[
+          "The Avana Webapp brings the full protocol experience into a simple, intuitive interface. Users can deposit LP positions, see pool-specific borrowing limits, and unlock liquidity instantly, all without leaving their positions or sacrificing earned fees. Each pool’s loan-to-value ratios and risk parameters are clearly presented, giving users real-time visibility and control.",
+        ]}
+      />
 
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 pt-8 sm:px-6 sm:pt-12">
         <div className="relative z-0 flex flex-1 flex-col">
@@ -210,47 +162,16 @@ export default function PlatformPage() {
             </section>
 
             <section>
-              <div className="mb-8 max-w-[650px] space-y-3 text-left">
-                <SectionEyebrow tone="violet">Financing</SectionEyebrow>
-                <SectionTitle>Flexible capital, one interface.</SectionTitle>
-              </div>
-
-              <div className="mb-6">
-                <ImagePanel alt="Financing dashboard" />
-              </div>
-
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                {financingFeatures.map((feature) => (
-                  <FeatureCard key={feature.title} {...feature} />
-                ))}
-              </div>
-
-              <p className="mt-8 text-center text-sm text-gray-500">Subject to risk assessment and availability</p>
+              <PlatformFinancingCarouselSection
+                eyebrow="Financing"
+                eyebrowTone="violet"
+                title="Flexible capital, one interface."
+                items={financingFeatures}
+              />
             </section>
 
             <section>
-              <div className="mb-8 max-w-[650px] space-y-3 text-left">
-                <SectionEyebrow tone="violet">Platform Tools</SectionEyebrow>
-                <SectionTitle>Manage every position in one place.</SectionTitle>
-              </div>
-
-              <div className="mb-6">
-                <ImagePanel alt="Section dashboard" />
-              </div>
-
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                {placeholderFeatures.map((feature, index) => (
-                  <FeatureCard
-                    key={feature.title}
-                    title={feature.title}
-                    description={feature.description}
-                    accent={index % 2 === 0 ? "bg-violet-100 text-violet-600" : "bg-purple-100 text-purple-600"}
-                    icon={index % 2 === 0 ? <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /> : <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />}
-                  />
-                ))}
-              </div>
-
-              <p className="mt-8 text-center text-sm text-gray-500">Subject to risk assessment and availability</p>
+              <PlatformToolsShowcaseSection />
             </section>
 
             <HomepageNewsroomSection collection="platform" eyebrowTone="violet" />
