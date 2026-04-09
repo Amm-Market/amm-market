@@ -46,7 +46,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-4xl text-center">
             <h1
               aria-label={`Introducing ${SITE_NAME}: An LP-as-Collateral Protocol Built on Aave V4`}
-              className="text-[2.35rem] font-semibold leading-[0.96] tracking-[-0.06em] text-gray-950 sm:text-[3.2rem] lg:text-[4.5rem]"
+              className="text-[2.35rem] font-[580] leading-[0.96] tracking-[-0.06em] text-gray-950 sm:text-[3.2rem] lg:text-[4.5rem]"
             >
               <span className="text-gray-950">Introducing {SITE_NAME}:</span>
               <br />
@@ -73,7 +73,7 @@ export default function AboutPage() {
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl space-y-8 lg:mt-14">
-            <p className="text-[1.2rem] font-medium leading-[1.5] tracking-[-0.03em] text-gray-900 sm:text-[1.35rem]">
+            <p className="text-[1.2rem] font-normal leading-[1.5] tracking-[-0.03em] text-gray-900 sm:text-[1.35rem]">
               One of the most important sources of collateral demand in crypto is hiding in plain sight. For years,
               DeFi has treated AMMs primarily as trading infrastructure and LP positions as passive liquidity. Yet
               major AMMs already hold billions in liquidity, and the opportunity to make that capital usable as
@@ -81,19 +81,19 @@ export default function AboutPage() {
               oracle infrastructure is stronger, and market participants are far more familiar with how LP positions
               behave across stable, correlated, and volatile pairs than they were in earlier generations of the market.
             </p>
-            <p className="text-[1.2rem] font-medium leading-[1.5] tracking-[-0.03em] text-gray-900 sm:text-[1.35rem]">
+            <p className="text-[1.2rem] font-normal leading-[1.5] tracking-[-0.03em] text-gray-900 sm:text-[1.35rem]">
               We believe the next major expansion in DeFi lending markets will come from protocols that can understand
               AMM liquidity, its risk, and its pool structure. That is why we are building Avana as a dedicated
               lending protocol for LP collateral across AMM markets, with specialized Aave v4 Spokes for different
               liquidity designs, a central Aave v4 Hub for shared borrowing liquidity, and an Aave v4 Invest Spoke
               that supplies the capital behind those markets.
             </p>
-            <p className="text-[1.2rem] font-medium leading-[1.5] tracking-[-0.03em] text-gray-900 sm:text-[1.35rem]">
+            <p className="text-[1.2rem] font-normal leading-[1.5] tracking-[-0.03em] text-gray-900 sm:text-[1.35rem]">
               Avana is designed to transform AMM liquidity into structured collateral markets, allowing LP positions
               across hundreds of pools to participate in lending through architecture built specifically for their risk
               profile, pool design, and liquidity behavior.
             </p>
-            <p className="text-[1.2rem] font-medium leading-[1.5] tracking-[-0.03em] text-gray-900 sm:text-[1.35rem]">
+            <p className="text-[1.2rem] font-normal leading-[1.5] tracking-[-0.03em] text-gray-900 sm:text-[1.35rem]">
               We are a small team working on a large problem. If you&apos;re interested in joining this research
               effort,{" "}
               <Link
