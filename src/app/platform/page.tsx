@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import Image from "next/image"
-import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import PlatformFinancingCarouselSection from "@/components/platform-financing-carousel-section"
@@ -68,6 +67,76 @@ const financingFeatures = [
   },
 ]
 
+const platformWorkflowHighlights = [
+  {
+    title: "Pool-specific borrowing limits.",
+    description:
+      "Review loan-to-value ratios, health thresholds, and borrowing capacity for each LP position before you open or expand credit.",
+    accent: "bg-violet-100 text-violet-600",
+    icon: (
+      <>
+        <path d="M12 3v18M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H7" />
+      </>
+    ),
+  },
+  {
+    title: "Stay deployed in the pool.",
+    description:
+      "Deposit active LP positions, unlock liquidity instantly, and keep your fee-earning exposure intact instead of unwinding to access capital.",
+    accent: "bg-sky-100 text-sky-600",
+    icon: (
+      <>
+        <path d="M7 17 17 7" />
+        <path d="M9 7h8v8" />
+      </>
+    ),
+  },
+  {
+    title: "Automation tools when you need them.",
+    description:
+      "Configure Auto-Repay, target-price actions, and automated payback safeguards so positions can react to market moves even when you are away.",
+    accent: "bg-amber-100 text-amber-600",
+    icon: (
+      <>
+        <path d="M12 21s7-3.6 7-9.2V5.8L12 3 5 5.8v6c0 5.6 7 9.2 7 9.2Z" />
+        <path d="M10 12h4" />
+        <path d="M12 10v4" />
+      </>
+    ),
+  },
+] as const
+
+function WorkflowHighlightRow({
+  title,
+  description,
+  accent,
+  icon,
+}: {
+  title: string
+  description: string
+  accent: string
+  icon: React.ReactNode
+}) {
+  return (
+    <article className="flex flex-col gap-4 py-6 first:pt-0 last:pb-0 sm:flex-row sm:items-start sm:gap-5">
+      <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${accent}`}>
+        <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          {icon}
+        </svg>
+      </div>
+
+      <div className="space-y-3">
+        <h3 className="text-[1.1rem] font-semibold leading-[1.3] tracking-[-0.02em] text-[#111111]">
+          {title}
+        </h3>
+        <p className="max-w-[38rem] text-[1rem] leading-[1.65] tracking-[-0.02em] text-[#5b6571]">
+          {description}
+        </p>
+      </div>
+    </article>
+  )
+}
+
 const advancedStats = [
   {
     title: "Real-time monitoring",
@@ -129,33 +198,72 @@ export default function PlatformPage() {
         <div className="relative z-0 flex flex-1 flex-col">
           <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
             <section>
-              <div className="mb-8 max-w-[650px] space-y-3 text-left">
-                <SectionEyebrow tone="violet">How it works</SectionEyebrow>
-                <SectionTitle>LP borrowing, simplified.</SectionTitle>
-              </div>
+              <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,31rem)_minmax(0,1fr)] lg:gap-16">
+                <div className="max-w-[32rem] space-y-6">
+                  <div className="space-y-3 text-left">
+                    <SectionEyebrow tone="violet">How it works</SectionEyebrow>
+                    <SectionTitle>LP borrowing, simplified.</SectionTitle>
+                  </div>
 
-              <div className="max-w-[650px] space-y-4">
-                <div className="flex items-start gap-4 rounded-xl bg-gray-50 p-4">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-violet-500">
-                    <span className="text-sm font-bold text-white">1</span>
-                  </div>
-                  <div>
-                    <h3 className="mb-1 font-semibold text-gray-900">Deposit LP tokens</h3>
-                    <p className="text-sm text-gray-600">
-                      Add Uniswap or Balancer positions and keep earning fees while they remain deposited.
-                    </p>
-                  </div>
+                  <p className="text-[1.08rem] leading-[1.65] tracking-[-0.02em] text-[#5b6571] lg:text-[1.15rem]">
+                    The Avana Webapp makes LP-backed borrowing feel straightforward. Deposit your
+                    position, review pool-aware risk settings, and unlock liquidity without leaving
+                    the strategy that is already earning fees.
+                  </p>
+
+                  <p className="text-[1rem] leading-[1.7] tracking-[-0.02em] text-[#6b7280]">
+                    Every step is surfaced inside one interface, from borrowing limits and live
+                    health metrics to optional automation controls that help protect positions when
+                    markets move quickly.
+                  </p>
                 </div>
 
-                <div className="flex items-start gap-4 rounded-xl bg-gray-50 p-4">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-violet-500">
-                    <span className="text-sm font-bold text-white">2</span>
+                <div className="divide-y divide-gray-200">
+                  {platformWorkflowHighlights.map((item) => (
+                    <WorkflowHighlightRow key={item.title} {...item} />
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="w-full">
+              <div className="space-y-8">
+                <div className="max-w-[650px] space-y-3 text-left">
+                  <SectionEyebrow tone="violet">Advanced LP Management</SectionEyebrow>
+                  <SectionTitle>Power meets precision</SectionTitle>
+                  <p className="max-w-[38rem] text-[1.05rem] leading-7 text-gray-600">
+                    Manage positions with institutional-grade tools and deeper liquidity
+                  </p>
+                </div>
+
+                <div className="relative overflow-hidden rounded-[28px] border border-gray-200 bg-[linear-gradient(145deg,#f8fafc_0%,#eef4ff_45%,#f8fafc_100%)]">
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.14),transparent_28%),radial-gradient(circle_at_75%_18%,rgba(14,165,233,0.12),transparent_24%)]" />
+                  <div className="relative aspect-[1600/760] w-full">
+                    <Image
+                      alt="Power meets precision"
+                      className="object-fill"
+                      fill
+                      loading="lazy"
+                      sizes="100vw"
+                      src="/images/homepage.png"
+                    />
                   </div>
-                  <div>
-                    <h3 className="mb-1 font-semibold text-gray-900">Unlock credit line</h3>
-                    <p className="text-sm text-gray-600">
-                      Borrow instantly and repay anytime while continuing to manage fees and collateral.
-                    </p>
+                </div>
+              </div>
+
+              <div className="flex w-full flex-col bg-white">
+                <div className="site-content-shell py-8 lg:py-16">
+                  <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4 lg:gap-8">
+                    {advancedStats.map((stat) => (
+                      <div key={stat.title} className="flex flex-col gap-4 pt-4">
+                        <p className="text-[17px] font-semibold leading-normal tracking-[-0.01em] text-gray-900 lg:text-[19px]">
+                          {stat.title}
+                        </p>
+                        <p className="text-[15px] font-normal leading-[1.6] text-gray-600 lg:text-[16px]">
+                          {stat.description}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -177,123 +285,18 @@ export default function PlatformPage() {
             <HomepageNewsroomSection collection="platform" eyebrowTone="violet" />
 
             <div className="pb-16 md:pb-24">
-              <InlineFaqSection title="Frequently asked questions." items={platformFaqItems} eyebrowTone="violet" withTopBorder={false} />
+              <InlineFaqSection
+                title="Frequently asked questions."
+                items={platformFaqItems}
+                eyebrowTone="violet"
+                withTopBorder={false}
+                layout="homepage"
+              />
             </div>
           </div>
         </div>
       </div>
 
-      <section className="w-full pt-32 md:pt-40">
-        <div
-          className="overflow-hidden rounded-tl-[32px] rounded-tr-[32px] pt-[96px] lg:rounded-tl-[64px] lg:rounded-tr-[64px] lg:pt-[64px]"
-          style={{
-            background:
-              "linear-gradient(185deg, rgba(0, 22, 90, 0) 10%, rgb(0, 22, 90) 90.38%), linear-gradient(rgb(0, 22, 90) 0%, rgb(163, 179, 202) 100%)",
-          }}
-        >
-          <div className="site-content-shell">
-            <div className="flex flex-col items-center gap-4 px-8 pb-8 lg:gap-8 lg:px-16 lg:pb-0">
-              <div className="flex flex-row items-center justify-center gap-2.5">
-                <div className="h-[35px] w-[35px]">
-                  <svg className="h-[35px] w-[35px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                  </svg>
-                </div>
-                <p className="text-[15px] font-medium leading-normal text-gray-300 lg:text-[16px]">
-                  Advanced LP Management
-                </p>
-              </div>
-
-              <div className="flex max-w-[366px] flex-col items-center gap-1 lg:max-w-none">
-                <h2 className="text-center text-[32px] font-bold leading-[1.08] tracking-[-0.02em] text-white lg:text-[48px]">
-                  Power meets precision
-                </h2>
-                <h3 className="text-center text-[18px] font-medium leading-[1.45] text-gray-300 lg:text-[22px]">
-                  Manage positions with institutional-grade tools and deeper liquidity
-                </h3>
-              </div>
-
-              <div className="hidden flex-wrap items-center justify-center gap-4 lg:flex">
-                <Link
-                  className="group relative flex h-10 min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
-                  href="/faq"
-                  prefetch={false}
-                >
-                  <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
-                  <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="flex flex-row items-center justify-center gap-1">
-                    <p className="text-[15px] font-medium leading-normal tracking-[-0.28px] text-gray-50">
-                      Get Early Access
-                    </p>
-                  </div>
-                </Link>
-
-                <Link
-                  className="group relative flex h-10 min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
-                  href="/developers"
-                  prefetch={false}
-                >
-                  <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
-                  <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="flex flex-row items-center justify-center gap-1">
-                    <p className="text-[15px] font-medium leading-normal tracking-[-0.28px] text-gray-50">
-                      View Docs
-                    </p>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="relative w-full">
-                <div className="relative left-1/2 h-auto w-screen -translate-x-1/2">
-                  <div className="relative aspect-[1600/760] w-full">
-                    <Image
-                      alt="Power meets precision"
-                      className="object-fill"
-                      fill
-                      loading="lazy"
-                      sizes="100vw"
-                      src="/images/homepage.png"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex w-full flex-col items-center justify-center gap-3 px-4 lg:hidden">
-                <Link
-                  className="group relative flex h-10 w-full max-w-[366px] min-w-16 shrink-0 items-center justify-center gap-2 overflow-hidden rounded-[24px] border border-white/20 bg-white/8 px-[18px] py-2 backdrop-blur-xl transition-all duration-300 ease-out hover:border-white/30 hover:bg-white/12 active:scale-95"
-                  href="/faq"
-                  prefetch={false}
-                >
-                  <div className="pointer-events-none absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[100%]" />
-                  <div className="pointer-events-none absolute inset-[1px] rounded-[23px] bg-gradient-to-b from-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="flex flex-row items-center justify-center gap-1">
-                    <p className="text-[15px] font-medium leading-normal tracking-[-0.28px] text-gray-50">
-                      Get Early Access
-                    </p>
-                  </div>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex w-full flex-col bg-white">
-          <div className="site-content-shell py-8 lg:py-16">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4 lg:gap-8">
-              {advancedStats.map((stat) => (
-                <div key={stat.title} className="flex flex-col gap-4 pt-4">
-                  <p className="text-[17px] font-semibold leading-normal tracking-[-0.01em] text-gray-900 lg:text-[19px]">
-                    {stat.title}
-                  </p>
-                  <p className="text-[15px] font-normal leading-[1.6] text-gray-600 lg:text-[16px]">
-                    {stat.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   )
 }
