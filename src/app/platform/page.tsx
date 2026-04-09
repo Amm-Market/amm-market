@@ -7,6 +7,7 @@ import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSecti
 import PlatformFinancingCarouselSection from "@/components/platform-financing-carousel-section"
 import PlatformSafetyCarouselSection from "@/components/platform-safety-carousel-section"
 import PlatformToolsShowcaseSection from "@/components/platform-tools-showcase-section"
+import PlatformWhyAvanaHighlights from "@/components/platform-why-avana-highlights"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
@@ -273,18 +274,7 @@ export default function PlatformPage() {
 
               <div className="flex w-full flex-col bg-white">
                 <div className="site-content-shell pt-6 pb-2 lg:pt-8 lg:pb-6">
-                  <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 lg:grid-cols-4 lg:gap-8">
-                    {advancedStats.map((stat) => (
-                      <div key={stat.title} className="flex flex-col gap-2.5 pt-1 sm:pt-2">
-                        <p className="text-[17px] font-semibold leading-normal tracking-[-0.01em] text-gray-900 lg:text-[19px]">
-                          {stat.title}
-                        </p>
-                        <p className="text-[15px] font-normal leading-[1.6] text-gray-600 lg:text-[16px]">
-                          {stat.description}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                  <PlatformWhyAvanaHighlights items={advancedStats} />
                 </div>
               </div>
             </section>
