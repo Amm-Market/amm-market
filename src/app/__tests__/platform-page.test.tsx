@@ -5,11 +5,24 @@ import { describe, expect, it, vi } from "vitest"
 import PlatformPage, { metadata } from "@/app/platform/page"
 
 vi.mock("next/link", () => ({
-  default: ({ children, href, prefetch: _prefetch, ...props }: { children: React.ReactNode; href: string; prefetch?: boolean }) => (
-    <a href={href} {...props}>
-      {children}
-    </a>
-  ),
+  default: ({
+    children,
+    href,
+    ...props
+  }: {
+    children: React.ReactNode
+    href: string
+    prefetch?: boolean
+  }) => {
+    const anchorProps = { ...props }
+    delete anchorProps.prefetch
+
+    return (
+      <a href={href} {...anchorProps}>
+        {children}
+      </a>
+    )
+  },
 }))
 
 vi.mock("next/image", () => ({
@@ -54,8 +67,20 @@ describe("platform page", () => {
     )
     expect(heroHeading).toHaveTextContent("One platform for every")
     expect(heroHeading).toHaveTextContent("Amm Markets needs")
+    expect(screen.getByText("Avana Webapp")).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: /Full protocol access,\s*made intuitive\./i })).toBeInTheDocument()
+    expect(screen.getByText(/The Avana Webapp brings the full protocol experience into a simple, intuitive interface\./i)).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "LP borrowing, simplified." })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Flexible capital, one interface." })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: /Everything you need\s*in one place\./i })).toBeInTheDocument()
+    expect(screen.getAllByText("Calculate your rewards").length).toBeGreaterThan(0)
+    expect(screen.getAllByText("Manage your portfolio").length).toBeGreaterThan(0)
+    expect(screen.getAllByText("Navigate market volatility").length).toBeGreaterThan(0)
+    expect(screen.getAllByText("Mobile-first design").length).toBeGreaterThan(0)
+    expect(screen.getByRole("heading", { name: "Flexible settlement" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Unlock capital efficiency" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Retain control" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Earn while you borrow" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Power meets precision" })).toBeInTheDocument()
     expect(screen.getByTestId("homepage-newsroom")).toBeInTheDocument()
     expect(screen.getByText("Advanced LP Management")).toBeInTheDocument()
