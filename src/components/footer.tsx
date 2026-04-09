@@ -83,6 +83,18 @@ const socialLinks: readonly SocialLink[] = [
       </svg>
     ),
   },
+  {
+    href: "https://governance.aave.com",
+    label: "Avana on Discourse",
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4.5 w-4.5">
+        <path
+          fill="currentColor"
+          d="M12 3.75a8.25 8.25 0 0 0-7.67 11.3l-1.1 4.2 4.12-1.2A8.25 8.25 0 1 0 12 3.75Zm0 2.1a6.15 6.15 0 0 1 5.8 8.2l-.14.38.58 2.2-2.16-.63-.33.18A6.15 6.15 0 1 1 12 5.85Zm-2.6 6.1a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Zm5.2 0a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Zm-2.6 3.55c1.14 0 2.2-.45 2.98-1.26l-1.02-.99a2.72 2.72 0 0 1-3.92 0l-1.02.99A4.16 4.16 0 0 0 12 15.5Z"
+        />
+      </svg>
+    ),
+  },
 ]
 
 const footerSections: readonly FooterSection[] = [
@@ -117,8 +129,9 @@ const footerSections: readonly FooterSection[] = [
     title: "Social",
     links: [
       { href: "https://twitter.com/dexmini", label: "Twitter" },
-      { href: "https://t.me/dexmini", label: "Telegram" },
       { href: "https://github.com/aave", label: "GitHub" },
+      { href: "https://t.me/dexmini", label: "Telegram" },
+      { href: "https://governance.aave.com", label: "Discourse" },
     ],
     className: "lg:hidden",
   },
