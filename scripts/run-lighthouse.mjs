@@ -17,7 +17,7 @@ const ROUTES = [
   "/terms",
   "/borrow",
   "/invest",
-  "/earn",
+  "/leverage",
   "/platform",
 ];
 
