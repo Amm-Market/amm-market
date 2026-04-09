@@ -60,60 +60,60 @@ interface ScrollSpySidebarProps {
 // Color classes for each section
 const colorClasses = {
   blue: {
-    bar: "bg-blue-500",
-    dot: "bg-blue-500",
-    text: "text-blue-600",
-    labelText: "text-blue-600",
-    summary: "text-blue-900/70",
-    glow: "shadow-[0_0_0_4px_rgba(59,130,246,0.08)]",
+    bar: "bg-blue-300",
+    dot: "bg-blue-300",
+    text: "text-blue-500",
+    labelText: "text-blue-400",
+    summary: "text-blue-900/52",
+    glow: "shadow-[0_0_0_4px_rgba(147,197,253,0.14)]",
   },
   emerald: {
-    bar: "bg-emerald-500",
-    dot: "bg-emerald-500",
-    text: "text-emerald-600",
-    labelText: "text-emerald-600",
-    summary: "text-emerald-900/70",
-    glow: "shadow-[0_0_0_4px_rgba(16,185,129,0.08)]",
+    bar: "bg-emerald-300",
+    dot: "bg-emerald-300",
+    text: "text-emerald-500",
+    labelText: "text-emerald-400",
+    summary: "text-emerald-900/52",
+    glow: "shadow-[0_0_0_4px_rgba(110,231,183,0.14)]",
   },
   violet: {
-    bar: "bg-violet-500",
-    dot: "bg-violet-500",
-    text: "text-violet-600",
-    labelText: "text-violet-600",
-    summary: "text-violet-950/65",
-    glow: "shadow-[0_0_0_4px_rgba(139,92,246,0.08)]",
+    bar: "bg-violet-300",
+    dot: "bg-violet-300",
+    text: "text-violet-500",
+    labelText: "text-violet-400",
+    summary: "text-violet-950/52",
+    glow: "shadow-[0_0_0_4px_rgba(196,181,253,0.14)]",
   },
   amber: {
-    bar: "bg-amber-500",
-    dot: "bg-amber-500",
-    text: "text-amber-700",
-    labelText: "text-amber-600",
-    summary: "text-amber-950/65",
-    glow: "shadow-[0_0_0_4px_rgba(245,158,11,0.08)]",
+    bar: "bg-amber-300",
+    dot: "bg-amber-300",
+    text: "text-amber-500",
+    labelText: "text-amber-400",
+    summary: "text-amber-950/52",
+    glow: "shadow-[0_0_0_4px_rgba(252,211,77,0.14)]",
   },
   cyan: {
-    bar: "bg-cyan-500",
-    dot: "bg-cyan-500",
-    text: "text-cyan-700",
-    labelText: "text-cyan-600",
-    summary: "text-cyan-950/65",
-    glow: "shadow-[0_0_0_4px_rgba(6,182,212,0.08)]",
+    bar: "bg-cyan-300",
+    dot: "bg-cyan-300",
+    text: "text-cyan-500",
+    labelText: "text-cyan-400",
+    summary: "text-cyan-950/52",
+    glow: "shadow-[0_0_0_4px_rgba(103,232,249,0.14)]",
   },
   rose: {
-    bar: "bg-rose-500",
-    dot: "bg-rose-500",
-    text: "text-rose-600",
-    labelText: "text-rose-600",
-    summary: "text-rose-950/65",
-    glow: "shadow-[0_0_0_4px_rgba(244,63,94,0.08)]",
+    bar: "bg-rose-300",
+    dot: "bg-rose-300",
+    text: "text-rose-500",
+    labelText: "text-rose-400",
+    summary: "text-rose-950/52",
+    glow: "shadow-[0_0_0_4px_rgba(253,164,175,0.14)]",
   },
   slate: {
-    bar: "bg-slate-500",
-    dot: "bg-slate-500",
-    text: "text-slate-700",
-    labelText: "text-slate-600",
-    summary: "text-slate-700/80",
-    glow: "shadow-[0_0_0_4px_rgba(100,116,139,0.08)]",
+    bar: "bg-slate-300",
+    dot: "bg-slate-300",
+    text: "text-slate-500",
+    labelText: "text-slate-400",
+    summary: "text-slate-700/68",
+    glow: "shadow-[0_0_0_4px_rgba(203,213,225,0.16)]",
   },
 }
 
@@ -202,19 +202,19 @@ export function ScrollSpySidebar({
   return (
     <div className="hidden xl:flex xl:pr-2">
       <div className="flex max-w-[17rem] flex-col items-start justify-start gap-0">
-        <p className={`type-meta-label mb-3 pl-6 ${colors.labelText}`}>
+        <p className={`type-meta-label mb-3 pl-6 font-normal ${colors.labelText}`}>
           On this page
         </p>
 
         {/* Page summary at top */}
         {pageSummary && (
-          <p className={`type-sidebar-summary mb-4 max-w-[220px] pl-6 ${colors.summary}`}>
+          <p className={`type-sidebar-summary mb-4 max-w-[220px] pl-6 font-normal ${colors.summary}`}>
             {pageSummary}
           </p>
         )}
 
         <div className="relative pl-6 pb-1">
-          <div className="absolute bottom-0 left-0 top-0 w-1 overflow-hidden rounded-full bg-gray-200">
+          <div className="absolute bottom-0 left-0 top-0 w-1 overflow-hidden rounded-full bg-gray-100">
             <div
               className={`absolute left-0 top-0 w-full rounded-full ${colors.bar} transition-[height] duration-500 ease-out`}
               style={{ height: `${barProgress}%` }}
@@ -254,11 +254,11 @@ export function ScrollSpySidebar({
                   }}
                   className={`group relative inline-flex cursor-pointer items-center px-3 py-1 transition-all duration-200 ease-in-out ${
                     isActive
-                      ? `font-medium text-gray-900 ${colors.text}`
+                      ? `${colors.text}`
                       : "text-gray-500 hover:text-gray-900 hover:opacity-80"
                   }`}
                 >
-                  <p className="type-sidebar-link line-clamp-2">{section.title}</p>
+                  <p className="type-sidebar-link line-clamp-2 font-normal">{section.title}</p>
                 </a>
               </div>
             )
