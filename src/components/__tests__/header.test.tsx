@@ -90,10 +90,10 @@ describe('Header', () => {
 
     const developersPanel = document.getElementById('desktop-menu-developers')
     expect(developersPanel).toBeInTheDocument()
-    expect(within(developersPanel as HTMLElement).getAllByRole('link', { name: 'Introduction' })[0]).toHaveAttribute('href', '/developers')
-    expect(within(developersPanel as HTMLElement).getAllByRole('link', { name: 'Getting Started' })[0]).toHaveAttribute('href', '/developers/getting-started')
-    expect(within(developersPanel as HTMLElement).getAllByRole('link', { name: 'Protocol Architecture' })[0]).toHaveAttribute('href', '/developers/architecture')
-    expect(within(developersPanel as HTMLElement).getAllByRole('link', { name: 'Liquidation Framework' })[0]).toHaveAttribute('href', '/developers/liquidation')
+    expect(within(developersPanel as HTMLElement).getAllByRole('link', { name: 'Introduction' })[0]).toHaveAttribute('href', '/developers/introduction/key-concepts')
+    expect(within(developersPanel as HTMLElement).getAllByRole('link', { name: 'Overview' })[0]).toHaveAttribute('href', '/developers')
+    expect(within(developersPanel as HTMLElement).getAllByRole('link', { name: 'Architecture' })[0]).toHaveAttribute('href', '/developers/architecture')
+    expect(within(developersPanel as HTMLElement).getAllByRole('link', { name: 'Liquidation' })[0]).toHaveAttribute('href', '/developers/liquidation')
   })
 
   it('renders the mobile menu button', () => {
