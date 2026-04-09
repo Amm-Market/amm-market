@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @theme inline {
   --color-background: var(--background);
@@ -106,7 +105,7 @@
     font-family: var(--font-primary-stack);
     font-size: 16px;
     line-height: 1.5;
-    text-rendering: optimizeLegibility;
+    text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-synthesis-weight: none;
@@ -211,6 +210,102 @@
 .type-accordion-answer {
   font-size: var(--type-body-size);
   line-height: 1.75;
+}
+
+.deferred-viewport {
+  contain-intrinsic-size: 1px 720px;
+}
+
+.deferred-viewport-tall {
+  contain-intrinsic-size: 1px 960px;
+}
+
+@supports (content-visibility: auto) {
+  .deferred-viewport,
+  .deferred-viewport-tall {
+    content-visibility: auto;
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+
+@keyframes tooltip-fade-scale-in {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--tooltip-translate-x, 0), var(--tooltip-translate-y, 0), 0) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes tooltip-fade-scale-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(var(--tooltip-translate-x, 0), var(--tooltip-translate-y, 0), 0) scale(0.95);
+  }
+}
+
+.tooltip-content {
+  will-change: transform, opacity;
+}
+
+.tooltip-content[data-side="top"] {
+  --tooltip-translate-y: 0.5rem;
+}
+
+.tooltip-content[data-side="bottom"] {
+  --tooltip-translate-y: -0.5rem;
+}
+
+.tooltip-content[data-side="left"] {
+  --tooltip-translate-x: 0.5rem;
+}
+
+.tooltip-content[data-side="right"] {
+  --tooltip-translate-x: -0.5rem;
+}
+
+.tooltip-content[data-state="instant-open"],
+.tooltip-content[data-state="delayed-open"] {
+  animation: tooltip-fade-scale-in 0.16s ease-out;
+}
+
+.tooltip-content[data-state="closed"] {
+  animation: tooltip-fade-scale-out 0.12s ease-in;
 }
 
 .site-header-nav-link,

@@ -1,34 +1,35 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
 import { LOGO_PATH, SITE_NAME, WORDMARK_PATH, siteRoutes } from "@/lib/site"
+import {
+  desktopMenuButtons,
+  desktopUtilityLinks,
+  type DesktopMenuId,
+} from "@/components/header-nav-data"
 
-interface NavLink {
-  href: string
-  label: string
-  external?: boolean
+const DeferredHeaderDesktopMenuPanel = dynamic(
+  () => import("@/components/header-desktop-menu-panel"),
+  { ssr: false },
+)
+const DeferredHeaderMobileMenu = dynamic(
+  () => import("@/components/header-mobile-menu"),
+  { ssr: false },
+)
+
+let desktopMenuPanelPromise: Promise<unknown> | null = null
+let mobileMenuPromise: Promise<unknown> | null = null
+
+function warmDesktopMenuPanel() {
+  desktopMenuPanelPromise ??= import("@/components/header-desktop-menu-panel")
 }
 
-interface DesktopMenuItem extends NavLink {
-  description?: string
-}
-
-interface DesktopMenuGroup {
-  id: "products" | "resources" | "developers"
-  label: string
-  eyebrow: string
-  items: DesktopMenuItem[]
-  supportingTitle?: string
-  supportingItems: DesktopMenuItem[]
-}
-
-function toSentenceCase(value: string) {
-  if (!value) return value
-
-  return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
+function warmMobileMenu() {
+  mobileMenuPromise ??= import("@/components/header-mobile-menu")
 }
 
 function SandboxIcon() {
@@ -88,243 +89,12 @@ function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
   )
 }
 
-const desktopMenus: DesktopMenuGroup[] = [
-  {
-    id: "products",
-    label: "Products",
-    eyebrow: "Explore Products",
-    items: [
-      { href: siteRoutes.borrow, label: "Borrow" },
-      { href: siteRoutes.invest, label: "Invest" },
-      { href: siteRoutes.earn, label: "Earn" },
-      { href: siteRoutes.platform, label: "Platform" },
-    ],
-    supportingTitle: "What you can do",
-    supportingItems: [
-      {
-        href: siteRoutes.borrow,
-        label: "Borrow against LP positions",
-        description: "Unlock liquidity from concentrated or volatile LP exposure without leaving the strategy.",
-      },
-      {
-        href: siteRoutes.earn,
-        label: "Keep liquidity active",
-        description: "Stay in market while collateral keeps working across earning and looping flows.",
-      },
-      {
-        href: siteRoutes.invest,
-        label: "Route capital through the Hub",
-        description: "Move borrowed capital into structured allocation paths with clearer execution context.",
-      },
-      {
-        href: siteRoutes.lightpaper,
-        label: "Read the protocol paper",
-        description: "See the system design, risk model, and architecture behind the protocol.",
-      },
-    ],
-  },
-  {
-    id: "resources",
-    label: "Resources",
-    eyebrow: "Explore Resources",
-    items: [
-      { href: siteRoutes.about, label: "About" },
-      { href: siteRoutes.blog, label: "Blog" },
-      { href: siteRoutes.faq, label: "FAQ" },
-      { href: siteRoutes.brand, label: "Brand" },
-    ],
-    supportingTitle: "Where to look",
-    supportingItems: [
-      {
-        href: siteRoutes.about,
-        label: "Read the thesis",
-        description: "Get the reasoning behind Avana and the opportunity around LP-backed credit.",
-      },
-      {
-        href: siteRoutes.blog,
-        label: "Follow product notes",
-        description: "Track launches, technical updates, and the product decisions shaping the roadmap.",
-      },
-      {
-        href: siteRoutes.faq,
-        label: "Find quick answers",
-        description: "Jump into short explanations for the most common protocol and product questions.",
-      },
-      {
-        href: siteRoutes.brand,
-        label: "Browse brand materials",
-        description: "Review approved marks, colors, and visual guidance for partner-facing surfaces.",
-      },
-    ],
-  },
-  {
-    id: "developers",
-    label: "Developers",
-    eyebrow: "Explore Developers",
-    items: [
-      { href: "/developers/introduction/key-concepts", label: "Introduction" },
-      { href: siteRoutes.developers, label: "Overview" },
-      { href: "/developers/architecture", label: "Architecture" },
-      { href: "/developers/liquidation", label: "Liquidation" },
-    ],
-    supportingTitle: "Highlights",
-    supportingItems: [
-      {
-        href: siteRoutes.developers,
-        label: "Start with the overview",
-        description: "Get the core protocol mental model before moving into implementation detail.",
-      },
-      {
-        href: "/developers/getting-started",
-        label: "Follow the borrower flow",
-        description: "See the path from deposit to borrowing, repayment, and collateral withdrawal.",
-      },
-      {
-        href: "/developers/architecture",
-        label: "Review the protocol model",
-        description: "Understand how the hub, spokes, pricing, and controls fit together.",
-      },
-      {
-        href: "/developers/liquidation",
-        label: "Understand liquidation paths",
-        description: "Learn how LP collateral is monitored, unwound, and settled under stress.",
-      },
-    ],
-  },
-]
-const desktopUtilityLinks: NavLink[] = [
-  { href: siteRoutes.lightpaper, label: "Lightpaper" },
-  { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
-]
-const mobileLinks: NavLink[] = [
-  { href: siteRoutes.borrow, label: "Borrow" },
-  { href: siteRoutes.invest, label: "Invest" },
-  { href: siteRoutes.earn, label: "Earn" },
-  { href: siteRoutes.platform, label: "Platform" },
-  { href: siteRoutes.about, label: "About" },
-  { href: siteRoutes.lightpaper, label: "Lightpaper" },
-  { href: siteRoutes.blog, label: "Blog" },
-  { href: siteRoutes.faq, label: "FAQ" },
-  { href: siteRoutes.developers, label: "Developers" },
-  { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
-]
-
 function isActivePath(pathname: string | null, href: string): boolean {
   if (href === "/") {
     return pathname === "/"
   }
 
   return pathname === href || pathname?.startsWith(`${href}/`) === true
-}
-
-function DesktopMenuPanel({
-  menu,
-  isOpen,
-  onOpen,
-  onClose,
-  onExited,
-  animationCycle,
-}: {
-  menu: DesktopMenuGroup
-  isOpen: boolean
-  onOpen: () => void
-  onClose: () => void
-  onExited: () => void
-  animationCycle: number
-}) {
-  return (
-    <div
-      id={`desktop-menu-${menu.id}`}
-      onMouseEnter={onOpen}
-      onMouseLeave={onClose}
-      onTransitionEnd={(event) => {
-        if (!isOpen && event.target === event.currentTarget) {
-          onExited()
-        }
-      }}
-      className={`fixed left-0 right-0 top-16 z-40 hidden transform-gpu md:top-[54px] md:block transition-[opacity,transform] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-        isOpen ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-6 opacity-0"
-      }`}
-      aria-hidden={!isOpen}
-    >
-      <div className="border-b border-black/6 bg-white shadow-[0_24px_72px_rgba(0,0,0,0.04)]">
-        <div className="w-full bg-white px-4 py-5 sm:px-6 md:px-5 md:py-5 lg:px-6 xl:px-8">
-          <div
-            key={`${menu.id}-${animationCycle}`}
-            className="grid gap-6 lg:min-h-[14.75rem] lg:grid-cols-[minmax(0,19rem)_minmax(15rem,18rem)] lg:gap-2.5 xl:grid-cols-[minmax(0,20rem)_minmax(15rem,18rem)] xl:gap-3"
-          >
-            <div className="space-y-2.5">
-              <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-black/76">{toSentenceCase(menu.eyebrow)}</p>
-              <div className="space-y-1">
-                {menu.items.map((item, index) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    prefetch={false}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noreferrer" : undefined}
-                    suppressHydrationWarning
-                    className={`group flex items-start gap-4 py-1.5 text-left text-black transition-[opacity,color,filter] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-black/74 ${
-                      isOpen ? "opacity-100 blur-0" : "opacity-[0.18] blur-[0.2px]"
-                    }`}
-                    style={{ transitionDelay: `${180 + index * 55}ms` }}
-                  >
-                    <span className="text-[clamp(1.5rem,1.95vw,2.45rem)] font-[430] leading-[1.04] tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1">
-                      {item.label}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div
-              className={`space-y-2.5 pt-0.5 transition-[opacity,filter] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                isOpen ? "opacity-100 blur-0" : "opacity-[0.16] blur-[0.2px]"
-              }`}
-              style={{ transitionDelay: "280ms" }}
-            >
-              {menu.supportingTitle ? (
-                <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-black/76">{menu.supportingTitle}</p>
-              ) : null}
-              <div className="space-y-3">
-                {menu.supportingItems.map((item, index) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    prefetch={false}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noreferrer" : undefined}
-                    aria-label={item.label}
-                    suppressHydrationWarning
-                    className="group block min-h-[2.8rem] text-left"
-                  >
-                    <div className="flex items-start gap-[0.6875rem]">
-                      <span
-                        aria-hidden="true"
-                        className="pt-1 text-[0.56rem] font-medium tracking-[0.16em] text-black/24"
-                      >
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <div>
-                        <p className="text-[0.78rem] font-medium leading-[1.24] tracking-[-0.02em] text-black/76 transition-colors duration-200 group-hover:text-black">
-                          {item.label}
-                        </p>
-                        {item.description ? (
-                          <p className="mt-1 max-w-[24rem] text-[0.68rem] leading-[1.42] tracking-[-0.01em] text-black/46 transition-colors duration-200 group-hover:text-black/58">
-                            {item.description}
-                          </p>
-                        ) : null}
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
 }
 
 /**
@@ -334,11 +104,11 @@ function DesktopMenuPanel({
 export default function Header(): React.JSX.Element {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [desktopMenuOpen, setDesktopMenuOpen] = useState<DesktopMenuGroup["id"] | null>(null)
-  const [desktopMenuRendered, setDesktopMenuRendered] = useState<DesktopMenuGroup["id"] | null>(null)
+  const [mobileMenuMounted, setMobileMenuMounted] = useState(false)
+  const [desktopMenuOpen, setDesktopMenuOpen] = useState<DesktopMenuId | null>(null)
+  const [desktopMenuRendered, setDesktopMenuRendered] = useState<DesktopMenuId | null>(null)
   const [desktopMenuAnimationCycle, setDesktopMenuAnimationCycle] = useState(0)
   const desktopCloseTimeoutRef = useRef<number | null>(null)
-  const activeDesktopMenu = desktopMenus.find((menu) => menu.id === (desktopMenuOpen ?? desktopMenuRendered)) ?? null
   const clientPathname = pathname
 
   const clearDesktopCloseTimeout = () => {
@@ -348,7 +118,8 @@ export default function Header(): React.JSX.Element {
     }
   }
 
-  const openDesktopMenu = (menuId: DesktopMenuGroup["id"]) => {
+  const openDesktopMenu = (menuId: DesktopMenuId) => {
+    warmDesktopMenuPanel()
     clearDesktopCloseTimeout()
 
     if (desktopMenuRendered === null) {
@@ -406,6 +177,31 @@ export default function Header(): React.JSX.Element {
     }
   }, [])
 
+  useEffect(() => {
+    const browserWindow = window as Window & typeof globalThis & {
+      requestIdleCallback?: (
+        callback: IdleRequestCallback,
+        options?: IdleRequestOptions,
+      ) => number
+      cancelIdleCallback?: (handle: number) => void
+    }
+
+    const warmMenus = () => {
+      warmDesktopMenuPanel()
+      warmMobileMenu()
+    }
+
+    if (typeof browserWindow.requestIdleCallback === "function") {
+      const idleId = browserWindow.requestIdleCallback(warmMenus, { timeout: 1200 })
+
+      return () => browserWindow.cancelIdleCallback?.(idleId)
+    }
+
+    const timeoutId = browserWindow.setTimeout(warmMenus, 350)
+
+    return () => browserWindow.clearTimeout(timeoutId)
+  }, [])
+
   return (
     <>
       <header
@@ -426,11 +222,15 @@ export default function Header(): React.JSX.Element {
             </Link>
           </div>
 
-          <nav aria-label="Primary navigation" className="hidden min-w-0 items-center gap-8 md:ml-6 md:mr-auto md:flex md:gap-6 lg:gap-8">
-            {desktopMenus.map((menu) => {
+          <nav
+            aria-label="Primary navigation"
+            className="hidden min-w-0 items-center gap-8 md:ml-6 md:mr-auto md:flex md:gap-6 lg:gap-8"
+            onMouseEnter={warmDesktopMenuPanel}
+          >
+            {desktopMenuButtons.map((menu) => {
               const isActive = desktopMenuOpen === menu.id
-              const hasActiveRoute = menu.items.some((item) =>
-                clientPathname ? isActivePath(clientPathname, item.href) : false,
+              const hasActiveRoute = menu.matchHrefs.some((href) =>
+                clientPathname ? isActivePath(clientPathname, href) : false,
               )
 
               return (
@@ -498,7 +298,14 @@ export default function Header(): React.JSX.Element {
                   aria-label="Open menu"
                   aria-expanded={mobileMenuOpen}
                   aria-controls="mobile-site-nav"
-                  onClick={() => setMobileMenuOpen(true)}
+                  onTouchStart={warmMobileMenu}
+                  onMouseEnter={warmMobileMenu}
+                  onFocus={warmMobileMenu}
+                  onClick={() => {
+                    warmMobileMenu()
+                    setMobileMenuMounted(true)
+                    setMobileMenuOpen(true)
+                  }}
                 >
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                     <path d="M3 5H15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
@@ -511,9 +318,9 @@ export default function Header(): React.JSX.Element {
           </div>
         </div>
 
-        {activeDesktopMenu ? (
-          <DesktopMenuPanel
-            menu={activeDesktopMenu}
+        {desktopMenuRendered !== null ? (
+          <DeferredHeaderDesktopMenuPanel
+            menuId={desktopMenuRendered}
             isOpen={desktopMenuOpen !== null}
             onOpen={clearDesktopCloseTimeout}
             onClose={scheduleDesktopMenuClose}
@@ -532,86 +339,14 @@ export default function Header(): React.JSX.Element {
         />
       ) : null}
 
-      <div
-        className={`fixed inset-0 z-[60] bg-white transition-opacity duration-300 ease-out md:hidden ${
-          mobileMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-        }`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Mobile menu"
-        aria-hidden={!mobileMenuOpen}
-      >
-        <div
-          className="flex h-16 items-center justify-between px-4 sm:px-6"
-        >
-          <Link
-            href={siteRoutes.home}
-            prefetch={false}
-            aria-label={SITE_NAME}
-            className="inline-flex items-center"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <BrandLogo mobileOnly />
-          </Link>
-
-          <button
-            type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/12 bg-white text-black shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition hover:border-black/18 hover:bg-black/[0.02]"
-            aria-label="Close menu"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M4 4L14 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-              <path d="M14 4L4 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-            </svg>
-          </button>
-        </div>
-
-        <nav
-          id="mobile-site-nav"
-          aria-label="Mobile navigation"
-          className={`h-[calc(100dvh-4rem)] overflow-y-auto px-4 pb-10 pt-10 transition-all duration-300 ease-out sm:px-6 ${
-            mobileMenuOpen ? "translate-y-0 opacity-100" : "opacity-0"
-          }`}
-        >
-          <ol>
-            {mobileLinks.map((link, index) => {
-              const isActive = clientPathname ? isActivePath(clientPathname, link.href) : false
-
-              return (
-                <li
-                  key={`${link.label}-${link.href}`}
-                  className={`border-b border-black/10 transition-all duration-300 ease-out ${
-                    mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-                  }`}
-                  style={{ transitionDelay: `${120 + index * 35}ms` }}
-                >
-                  <Link
-                    href={link.href}
-                    prefetch={false}
-                    target={link.external ? "_blank" : undefined}
-                    rel={link.external ? "noreferrer" : undefined}
-                    suppressHydrationWarning
-                    className="flex items-end justify-between gap-5 py-3"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <span
-                      className={`text-[clamp(1.7rem,7.1vw,2.45rem)] font-[560] leading-[0.98] tracking-[-0.05em] ${
-                        isActive ? "text-black" : "text-black/95"
-                      }`}
-                    >
-                      {link.label}
-                    </span>
-                    <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-black/75">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </Link>
-                </li>
-              )
-            })}
-          </ol>
-        </nav>
-      </div>
+      {mobileMenuMounted ? (
+        <DeferredHeaderMobileMenu
+          open={mobileMenuOpen}
+          pathname={clientPathname}
+          brand={<BrandLogo mobileOnly />}
+          onClose={() => setMobileMenuOpen(false)}
+        />
+      ) : null}
     </>
   )
 }
