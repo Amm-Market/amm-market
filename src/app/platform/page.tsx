@@ -257,7 +257,7 @@ export default function PlatformPage() {
                   <SectionTitle>Built to manage serious positions.</SectionTitle>
                 </div>
 
-                <div className="relative overflow-hidden rounded-[28px] border border-gray-200 bg-[linear-gradient(145deg,#f8fafc_0%,#eef4ff_45%,#f8fafc_100%)]">
+                <div className="relative hidden overflow-hidden rounded-[28px] border border-gray-200 bg-[linear-gradient(145deg,#f8fafc_0%,#eef4ff_45%,#f8fafc_100%)] md:block">
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.14),transparent_28%),radial-gradient(circle_at_75%_18%,rgba(14,165,233,0.12),transparent_24%)]" />
                   <div className="relative aspect-[1600/760] w-full">
                     <Image
