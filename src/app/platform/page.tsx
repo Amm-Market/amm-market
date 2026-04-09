@@ -5,6 +5,7 @@ import { Droplets, Scale, ShieldCheck } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import PlatformFinancingCarouselSection from "@/components/platform-financing-carousel-section"
+import PlatformSafetyCarouselSection from "@/components/platform-safety-carousel-section"
 import PlatformToolsShowcaseSection from "@/components/platform-tools-showcase-section"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
@@ -68,6 +69,24 @@ const financingFeatures = [
       "Generate yield on pledged assets, with distributions credited directly into your vault.",
   },
 ]
+
+const safetyFeatures = [
+  {
+    title: "Safe Zone",
+    description:
+      "Health Factor > 1.5. Borrow usage is well within capacity, fees keep accruing, and the position stays intact.",
+  },
+  {
+    title: "Warning Zone",
+    description:
+      "Health Factor 1.0-1.5. The app notifies you so you can repay debt, add collateral, or let automation reduce exposure.",
+  },
+  {
+    title: "Liquidation",
+    description:
+      "Health Factor < 1.0. Fees are applied first, only the LP principal needed is unwound, and residual value is returned in the same transaction.",
+  },
+] as const
 
 const platformWorkflowHighlights = [
   {
@@ -254,6 +273,16 @@ export default function PlatformPage() {
                 eyebrowTone="violet"
                 title="Flexible capital, one interface."
                 items={financingFeatures}
+              />
+            </section>
+
+            <section>
+              <PlatformSafetyCarouselSection
+                eyebrow="Position Safety"
+                eyebrowTone="violet"
+                title="Know exactly what happens before it happens."
+                intro="Real-time health monitoring, automated alerts, and auto-repay tools help you stay ahead of risk."
+                items={safetyFeatures}
               />
             </section>
 
