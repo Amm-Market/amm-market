@@ -239,7 +239,7 @@ export default function DeveloperSidebar() {
                 <div
                   className={`type-sidebar-link flex items-center py-2.5 px-3 rounded-lg font-semibold leading-5 transition-all duration-200 group cursor-default ${sectionActive
                       ? `${colors.headerBg} ${colors.headerText}`
-                      : "text-gray-700 hover:bg-gray-50"
+                      : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                     }`}
                 >
                   <div className="flex items-center gap-2.5">
@@ -266,13 +266,13 @@ export default function DeveloperSidebar() {
                           prefetch={false}
                           className={`type-sidebar-link flex items-center gap-2 py-2 px-2.5 rounded-md font-medium leading-5 transition-all duration-200 group ${itemActive
                               ? `${colors.itemBg} ${colors.itemText} font-medium`
-                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                              : "text-gray-500 hover:bg-gray-50 hover:text-gray-800"
                             }`}
                         >
                           <ItemIcon
                             className={`h-3.5 w-3.5 transition-all duration-300 group-hover-pulse ${itemActive
                                 ? colors.icon
-                                : "text-gray-400 group-hover:text-gray-600"
+                                : "text-gray-400 group-hover:text-gray-500"
                               }`}
                           />
                           <span className="transition-transform duration-200 group-hover:translate-x-1">
