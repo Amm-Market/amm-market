@@ -139,60 +139,39 @@ export default function EarnPage() {
       <section className="bg-white pt-8 pb-10 md:pt-12 md:pb-14">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem]">
-            <div className="max-w-[780px] space-y-3 text-left">
-              <SectionEyebrow tone="amber">Avana Relaunch</SectionEyebrow>
-              <SectionTitle>Access the full power of DeFi.</SectionTitle>
+            <div className="flex flex-col gap-6">
+              <div className="flex max-w-[600px] flex-col gap-2">
+                <SectionEyebrow tone="amber">How it works</SectionEyebrow>
+                <SectionTitle>Earn with flexibility</SectionTitle>
+              </div>
             </div>
-            <div className="mt-8 overflow-hidden rounded-[28px] border border-gray-200 bg-black shadow-[0_24px_80px_rgba(15,23,42,0.12)]">
-              <Image
-                src="/images/A_1.png"
-                alt="Avana relaunch illustration"
-                width={3840}
-                height={2400}
-                className="h-auto w-full"
-                sizes="(min-width: 1280px) 76rem, (min-width: 768px) 100vw, 100vw"
-                priority={false}
-              />
+            <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2">
+              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+                <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
+                <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-900 md:text-xl">
+                  Rewards accrue continuously
+                </h3>
+                <p className="text-sm text-gray-600 md:text-base">
+                  Rewards accrue continuously from protocol fees, liquidation penalties, and AVA emissions. Claim at any time without changing your staked position or stepping away from the protocol.
+                </p>
+              </div>
+              <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+                <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
+                <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-900 md:text-xl">
+                  Unstake when you choose
+                </h3>
+                <p className="text-sm text-gray-600 md:text-base">
+                  There are no forced lockup periods, so you can unstake your AVA whenever you choose. A short cooldown supports protocol stability while keeping your capital within reach.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
-        <div className="flex-1 flex flex-col relative z-0">
-        {/* Rest of page content */}
-        <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
-          <ProductFeatureScrollSection
-            eyebrowTone="amber"
-            title="Borrow more on stronger collateral."
-            items={earnFeatureItems}
-          />
-
-          {/* Supported Dexs */}
-          <section>
-            <div className="max-w-[650px] mb-8 space-y-3 text-left">
-              <SectionEyebrow tone="amber">DEX Coverage</SectionEyebrow>
-              <SectionTitle>Blue-chip LP venues.</SectionTitle>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { name: "Uniswap V3", color: "bg-pink-100 text-pink-600" },
-                { name: "Uniswap V4", color: "bg-purple-100 text-purple-600" },
-                { name: "SushiSwap", color: "bg-blue-100 text-blue-600" },
-                { name: "Balancer", color: "bg-gray-100 text-gray-600" },
-              ].map((dex) => (
-                <div key={dex.name} className="p-4 border border-gray-200 rounded-xl text-center">
-                  <div className={`w-12 h-12 ${dex.color} rounded-full mx-auto mb-2 flex items-center justify-center`}>
-                    <span className="text-sm font-bold">{dex.name.slice(0, 2)}</span>
-                  </div>
-                  <p className="font-medium text-gray-900">{dex.name}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Use Cases */}
-          <section>
+      <section className="bg-white pt-8 pb-10 md:pt-12 md:pb-14">
+        <div className="site-content-shell">
+          <div className="mx-auto w-full max-w-[76rem]">
             <div className="max-w-[650px] mb-8 space-y-3 text-left">
               <SectionEyebrow tone="amber">Use Cases</SectionEyebrow>
               <SectionTitle>Designed for larger positions.</SectionTitle>
@@ -225,6 +204,37 @@ export default function EarnPage() {
                   <p className="text-gray-600 text-sm">Deep liquidity and transparent risk parameters for larger positions.</p>
                 </div>
               </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
+        <div className="flex-1 flex flex-col relative z-0">
+        {/* Rest of page content */}
+        <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
+          <ProductFeatureScrollSection
+            eyebrowTone="amber"
+            title="Borrow more on stronger collateral."
+            items={earnFeatureItems}
+          />
+
+          <section>
+            <div className="max-w-[780px] space-y-3 text-left">
+              <SectionEyebrow tone="amber">Avana Relaunch</SectionEyebrow>
+              <SectionTitle>Access the full power of DeFi.</SectionTitle>
+            </div>
+            <div className="mt-8 overflow-hidden rounded-[28px] border border-gray-200 bg-black shadow-[0_24px_80px_rgba(15,23,42,0.12)]">
+              <Image
+                src="/images/A_1.png"
+                alt="Avana relaunch illustration"
+                width={3840}
+                height={2400}
+                className="h-auto w-full"
+                sizes="(min-width: 1280px) 76rem, (min-width: 768px) 100vw, 100vw"
+                priority={false}
+              />
             </div>
           </section>
 
