@@ -63,7 +63,7 @@ const borrowFeatureItems = [
   },
   {
     title: "High capital efficiency",
-    description: "Earn LP fees while simultaneously accessing borrowing power.",
+    description: "Keep LP fees active while simultaneously accessing borrowing power.",
   },
   {
     title: "Minimal volatility risk",
@@ -220,14 +220,14 @@ export default function BorrowPage() {
 
                 <BorrowMarketCard
                   number="2"
-                  title="Pool Markets"
-                  description="Deposit LP positions as collateral to borrow pool positions"
+                  title="Leverage / Perps Markets"
+                  description="Deposit LP positions as collateral to open managed leverage or perps exposure"
                 />
 
                 <BorrowMarketCard
                   number="3"
-                  title="Leverage Markets"
-                  description="Deposit LP positions as collateral, borrow assets or pools, and loop into leveraged yield positions"
+                  title="Pool Markets"
+                  description="Deposit LP positions as collateral to borrow pool positions"
                 />
               </div>
             </div>

@@ -4,7 +4,8 @@ import { legacyBlogRedirects } from "./src/lib/site";
 const legacyMarketingRedirects = [
   { source: "/open-spoke", destination: "/borrow" },
   { source: "/stable-spoke", destination: "/invest" },
-  { source: "/bluechip-spoke", destination: "/earn" },
+  { source: "/bluechip-spoke", destination: "/leverage" },
+  { source: "/earn", destination: "/leverage" },
   { source: "/webapp", destination: "/platform" },
 ];
 

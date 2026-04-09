@@ -12,7 +12,7 @@ export const desktopMenuButtons = [
   {
     id: "products",
     label: "Products",
-    matchHrefs: [siteRoutes.borrow, siteRoutes.invest, siteRoutes.earn, siteRoutes.platform],
+    matchHrefs: [siteRoutes.borrow, siteRoutes.invest, siteRoutes.leverage, siteRoutes.platform],
   },
   {
     id: "resources",

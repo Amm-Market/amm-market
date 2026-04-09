@@ -25,7 +25,7 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     items: [
       { href: siteRoutes.borrow, label: "Borrow" },
       { href: siteRoutes.invest, label: "Invest" },
-      { href: siteRoutes.earn, label: "Earn" },
+      { href: siteRoutes.leverage, label: "Leverage" },
       { href: siteRoutes.platform, label: "Platform" },
     ],
     supportingTitle: "What you can do",
@@ -36,9 +36,9 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         description: "Unlock liquidity from concentrated or volatile LP exposure without leaving the strategy.",
       },
       {
-        href: siteRoutes.earn,
-        label: "Keep liquidity active",
-        description: "Stay in market while collateral keeps working across earning and looping flows.",
+        href: siteRoutes.leverage,
+        label: "Open LP-backed leverage",
+        description: "Use supported AMM positions as collateral to add managed directional exposure without leaving the pool.",
       },
       {
         href: siteRoutes.invest,

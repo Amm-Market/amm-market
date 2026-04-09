@@ -668,8 +668,8 @@ export default function LightpaperPage() {
                 <div className="mt-5 space-y-5">
                   <p>
                     Avana is designed as a multi-phase protocol that evolves over time to progressively expand what LP
-                    collateral markets can do. Phase 1 introduces Token Markets. Phase 2 expands into Pool Markets.
-                    Phase 3 unlocks Leverage Markets.
+                    collateral markets can do. Phase 1 introduces Token Markets. Phase 2 expands into Leverage / Perps
+                    Markets. Phase 3 unlocks Pool Markets.
                   </p>
                   <ImagePlaceholder label="Three-phase protocol roadmap concept" />
                   <p>
@@ -677,16 +677,15 @@ export default function LightpaperPage() {
                     and borrow single assets such as stablecoins or other supported tokens.
                   </p>
                   <p>
-                    The second phase introduces Pool Markets. Instead of borrowing only single assets, users can borrow
+                    The second phase introduces Leverage / Perps Markets. In this phase, a user deposits an LP
+                    position, borrows against it, and opens managed leverage or perps exposure within defined risk
+                    limits while the protocol coordinates execution and risk management.
+                  </p>
+                  <p>
+                    The third phase introduces Pool Markets. Instead of borrowing only single assets, users can borrow
                     liquidity pool pair positions that are themselves productive capital. Borrowed funds can therefore
                     be deployed directly into liquidity strategies, making the borrowed capital more useful within
                     decentralized finance.
-                  </p>
-                  <p>
-                    The third phase introduces Leverage Markets. In this phase, a user deposits an LP position,
-                    borrows against it, redeploys the borrowed capital into another LP position, and can repeat the
-                    process within defined risk limits. This creates structured leverage for liquidity providers and
-                    allows them to compound their strategies while the protocol manages risk.
                   </p>
                 </div>
               </section>

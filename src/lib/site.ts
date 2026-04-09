@@ -15,7 +15,7 @@ export const siteRoutes = {
   about: "/about",
   borrow: "/borrow",
   invest: "/invest",
-  earn: "/earn",
+  leverage: "/leverage",
   platform: "/platform",
   developers: "/developers",
   developersIntro: "/developers/introduction",
