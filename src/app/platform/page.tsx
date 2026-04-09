@@ -145,20 +145,20 @@ function WorkflowHighlightRow({
 
 const advancedStats = [
   {
-    title: "Real-time monitoring",
-    description: "Instant position updates and health tracking across all your LPs.",
+    title: "Live position intelligence",
+    description: "Track health, debt, rewards, and exposure in real time from one clear interface.",
   },
   {
-    title: "Competitive rates",
-    description: "Low borrowing fees and minimal protocol costs for more efficient capital access.",
+    title: "Automation with guardrails",
+    description: "Use alerts and auto-repay tools without giving up control over how positions are managed.",
   },
   {
-    title: "Deep liquidity",
-    description: "Access liquidity across 50+ supported pools for tighter spreads and better execution.",
+    title: "Fast, unified execution",
+    description: "Move from monitoring to action in one workflow instead of stitching together multiple tools.",
   },
   {
-    title: "Pro-grade reliability",
-    description: "High uptime with automated risk management and MEV-aware execution paths.",
+    title: "Built for active LPs",
+    description: "Designed around real AMM positions so borrowing, risk, and management stay easy to understand.",
   },
 ]
 
@@ -227,18 +227,40 @@ export default function PlatformPage() {
               </div>
             </section>
 
+            <section>
+              <PlatformToolsShowcaseSection />
+            </section>
+
+            <section>
+              <PlatformFinancingCarouselSection
+                eyebrow="Financing"
+                eyebrowTone="violet"
+                title="Flexible capital, one interface."
+                items={financingFeatures}
+              />
+            </section>
+
+            <section>
+              <PlatformSafetyCarouselSection
+                eyebrow="Position Safety"
+                eyebrowTone="violet"
+                title="Know exactly what happens before it happens."
+                items={safetyFeatures}
+              />
+            </section>
+
             <section className="w-full">
               <div className="space-y-6">
                 <div className="max-w-[650px] space-y-3 text-left">
-                  <SectionEyebrow tone="violet">Advanced LP Management</SectionEyebrow>
-                  <SectionTitle>Power meets precision</SectionTitle>
+                  <SectionEyebrow tone="violet">Why Avana</SectionEyebrow>
+                  <SectionTitle>Built to manage serious positions.</SectionTitle>
                 </div>
 
                 <div className="relative overflow-hidden rounded-[28px] border border-gray-200 bg-[linear-gradient(145deg,#f8fafc_0%,#eef4ff_45%,#f8fafc_100%)]">
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.14),transparent_28%),radial-gradient(circle_at_75%_18%,rgba(14,165,233,0.12),transparent_24%)]" />
                   <div className="relative aspect-[1600/760] w-full">
                     <Image
-                      alt="Power meets precision"
+                      alt="Built to manage serious positions."
                       className="object-fill"
                       fill
                       loading="lazy"
@@ -265,29 +287,6 @@ export default function PlatformPage() {
                   </div>
                 </div>
               </div>
-            </section>
-
-            <section>
-              <PlatformFinancingCarouselSection
-                eyebrow="Financing"
-                eyebrowTone="violet"
-                title="Flexible capital, one interface."
-                items={financingFeatures}
-              />
-            </section>
-
-            <section>
-              <PlatformSafetyCarouselSection
-                eyebrow="Position Safety"
-                eyebrowTone="violet"
-                title="Know exactly what happens before it happens."
-                intro="Real-time health monitoring, automated alerts, and auto-repay tools help you stay ahead of risk."
-                items={safetyFeatures}
-              />
-            </section>
-
-            <section>
-              <PlatformToolsShowcaseSection />
             </section>
 
             <HomepageNewsroomSection collection="platform" eyebrowTone="violet" />
