@@ -18,6 +18,12 @@ const legacyMarketingRedirects = [
  * 
  * @see https://owasp.org/www-project-secure-headers/
  */
+const scriptSrc = ["'self'", "'unsafe-inline'"]
+
+if (process.env.NODE_ENV !== "production") {
+  scriptSrc.push("'unsafe-eval'")
+}
+
 const securityHeaders = [
   {
     // Enables DNS prefetching for faster external resource loading
@@ -55,16 +61,35 @@ const securityHeaders = [
     value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
   },
   {
+    key: 'Cross-Origin-Opener-Policy',
+    value: 'same-origin'
+  },
+  {
+    key: 'Cross-Origin-Resource-Policy',
+    value: 'same-origin'
+  },
+  {
+    key: 'Origin-Agent-Cluster',
+    value: '?1'
+  },
+  {
+    key: 'X-Permitted-Cross-Domain-Policies',
+    value: 'none'
+  },
+  {
     // Content Security Policy - controls resource loading
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      `script-src ${scriptSrc.join(" ")}`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https: blob:",
       "font-src 'self' data: https://fonts.gstatic.com",
       "connect-src 'self' https:",
       "media-src 'self' https://cdn-front.freepik.com",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
       "frame-ancestors 'none'",
     ].join('; ')
   }

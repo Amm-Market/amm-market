@@ -19,12 +19,17 @@ export function getBlogPost(slug: string): BlogPostDefinition {
 
 export function buildBlogMetadata(post: BlogPostDefinition): Metadata {
   const title = `${post.title} | ${SITE_NAME} Blog`
+  const canonicalPath = `/blog/${post.slug}`
 
   return {
     title,
     description: post.description,
+    alternates: {
+      canonical: canonicalPath,
+    },
     openGraph: {
       title,
+      url: canonicalPath,
       description: post.description,
       images: [
         buildOgImagePath({
@@ -49,7 +54,11 @@ export function buildBlogMetadata(post: BlogPostDefinition): Metadata {
 
 export function renderBlogSections(sections: readonly BlogSection[]) {
   return sections.map((section, index) => (
-    <section key={section.id} id={section.id} className="space-y-4 scroll-mt-24">
+    <section
+      key={section.id}
+      id={section.id}
+      className={`space-y-4 scroll-mt-24 ${index > 0 ? "deferred-viewport" : ""}`}
+    >
       {section.title ? (
         <h2
           data-eyebrow={section.eyebrow}

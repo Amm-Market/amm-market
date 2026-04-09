@@ -1,4 +1,12 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it, vi } from "vitest"
+
+vi.mock("next/font/local", () => ({
+  default: () => ({
+    className: "mock-font-class",
+    variable: "mock-font-variable",
+  }),
+}))
+
 import { generateMetadata } from "@/app/layout"
 import { buildOgImagePath, SITE_NAME, SITE_URL } from "@/lib/site"
 

@@ -16,7 +16,6 @@ import {
   SITE_URL,
   SOCIAL_HANDLE,
   siteRoutes,
-  WORDMARK_PATH,
 } from "@/lib/site"
 
 /**
@@ -175,18 +174,6 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" className={diatypeFont.variable}>
       <head>
-        <link
-          rel="preload"
-          href={LOGO_PATH}
-          as="image"
-          type="image/svg+xml"
-        />
-        <link
-          rel="preload"
-          href={WORDMARK_PATH}
-          as="image"
-          type="image/svg+xml"
-        />
         {/* JSON-LD Structured Data for SEO */}
         <script
           type="application/ld+json"
