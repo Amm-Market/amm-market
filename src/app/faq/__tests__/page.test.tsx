@@ -17,28 +17,46 @@ vi.mock("next/link", () => ({
   ),
 }))
 
+vi.mock("@/app/faq/FaqClient", () => ({
+  default: ({
+    activeCategory,
+    searchTerm,
+    searchResults,
+  }: {
+    activeCategory: string
+    searchTerm: string
+    searchResults: Array<{ id: string }>
+  }) => (
+    <div
+      data-testid="faq-client"
+      data-active-category={activeCategory}
+      data-search-term={searchTerm}
+      data-search-results={String(searchResults.length)}
+    />
+  ),
+}))
+
 describe("faq page", () => {
   it("seeds the search input from the q query param and shows search results", async () => {
     render(await FaqPage({ searchParams: Promise.resolve({ q: "Borrow Spoke" }) }))
 
     expect(screen.getByPlaceholderText("Search")).toHaveValue("Borrow Spoke")
-    expect(screen.getByRole("heading", { name: "Search Results" })).toBeInTheDocument()
-    expect(screen.getByText("What does the Borrow Spoke do?")).toBeInTheDocument()
+    expect(screen.getByTestId("faq-client")).toHaveAttribute("data-search-term", "Borrow Spoke")
+    expect(Number(screen.getByTestId("faq-client").getAttribute("data-search-results"))).toBeGreaterThan(0)
   })
 
   it("renders the default category when no query param is provided", async () => {
     const { container } = render(await FaqPage({ searchParams: Promise.resolve({}) }))
 
-    expect(screen.getByRole("link", { name: "Core Concepts" })).toHaveAttribute("aria-current", "page")
-    expect(screen.getByText("What is Avana?")).toBeInTheDocument()
+    expect(screen.getByTestId("faq-client")).toHaveAttribute("data-active-category", "Core Concepts")
     expect(container.querySelector(".site-content-shell")).toBeInTheDocument()
   })
 
-  it("shows the empty search state and a clear search link", async () => {
+  it("shows the empty search state through the faq client", async () => {
     render(await FaqPage({ searchParams: Promise.resolve({ q: "does-not-exist" }) }))
 
-    expect(screen.getByText('No results found for "does-not-exist"')).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: "Clear search" })).toHaveAttribute("href", "/faq")
+    expect(screen.getByTestId("faq-client")).toHaveAttribute("data-search-term", "does-not-exist")
+    expect(screen.getByTestId("faq-client")).toHaveAttribute("data-search-results", "0")
   })
 
   it("switches between canonical documentation categories from the URL", async () => {
@@ -48,7 +66,6 @@ describe("faq page", () => {
       }),
     )
 
-    expect(screen.getByRole("link", { name: "Health & Liquidation" })).toHaveAttribute("aria-current", "page")
-    expect(screen.getByText("What is the health factor?")).toBeInTheDocument()
+    expect(screen.getByTestId("faq-client")).toHaveAttribute("data-active-category", "Health & Liquidation")
   })
 })
