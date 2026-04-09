@@ -137,6 +137,28 @@ export default function EarnPage() {
         ]}
       />
 
+      <section className="bg-white pt-8 pb-10 md:pt-12 md:pb-14">
+        <div className="site-content-shell">
+          <div className="mx-auto w-full max-w-[76rem]">
+            <div className="max-w-[780px] space-y-3 text-left">
+              <SectionEyebrow tone="amber">Avana Relaunch</SectionEyebrow>
+              <SectionTitle>Access the full power of DeFi.</SectionTitle>
+            </div>
+            <div className="mt-8 overflow-hidden rounded-[28px] border border-gray-200 bg-black shadow-[0_24px_80px_rgba(15,23,42,0.12)]">
+              <Image
+                src="/images/A_1.png"
+                alt="Avana relaunch illustration"
+                width={3840}
+                height={2400}
+                className="h-auto w-full"
+                sizes="(min-width: 1280px) 76rem, (min-width: 768px) 100vw, 100vw"
+                priority={false}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}

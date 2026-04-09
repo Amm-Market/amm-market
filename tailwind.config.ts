@@ -16,7 +16,8 @@ const config: Config = {
         mono: ["Diatype", "Outfit", "sans-serif"],
       },
       fontWeight: {
-        semibold: "700",
+        medium: "450",
+        semibold: "600",
         black: "900",
       },
       colors: {
