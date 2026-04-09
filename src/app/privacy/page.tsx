@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
+import { diatypeItalicFont } from "@/app/site-fonts"
 
 const sections = [
   { id: "personal-information-that-we-collect", title: "Personal Information That We Collect" },
@@ -22,7 +23,7 @@ export default function PrivacyPage() {
       <article className="site-content-shell">
         {/* Header */}
         <div className="flex flex-col items-start gap-6 mb-12">
-          <h1 className="type-page-title italic text-gray-900">Privacy Policy</h1>
+          <h1 className={`${diatypeItalicFont.className} type-page-title italic text-gray-900`}>Privacy Policy</h1>
           <hr className="w-full border-gray-200" />
         </div>
 
