@@ -712,7 +712,7 @@ export default function LightpaperPage() {
                   <div className="order-2 space-y-6 text-center lg:order-1 lg:text-left">
                     <h1
                       aria-label="Meet Avana"
-                      className="mx-auto max-w-[8ch] text-balance text-[2.6rem] font-semibold leading-[0.92] tracking-[-0.07em] text-gray-950 sm:text-[3.3rem] lg:mx-0 lg:max-w-[10ch] lg:text-[4.25rem]"
+                      className="mx-auto max-w-[8ch] text-balance text-[2.6rem] font-[600] leading-[0.92] tracking-[-0.07em] text-gray-950 sm:text-[3.3rem] lg:mx-0 lg:max-w-[10ch] lg:text-[4.25rem]"
                     >
                       <span className="text-gray-950">Meet</span>
                       <br />
@@ -725,7 +725,7 @@ export default function LightpaperPage() {
                 </div>
               </section>
 
-              <div className="site-editorial-content max-w-3xl [&_a]:text-blue-600 [&_a]:hover:underline [&_h2]:text-[1.35rem] [&_h2]:font-bold [&_h2]:leading-[1.2] [&_h2]:tracking-[-0.01em] [&_h2]:text-gray-900 [&_h3]:text-[1rem] [&_h3]:font-semibold [&_h3]:leading-[1.35] [&_h3]:tracking-[-0.01em] [&_h3]:text-gray-900 [&_li]:mb-2 [&_li]:text-[0.9375rem] [&_li]:leading-7 [&_p]:text-[1.35rem] [&_p]:font-medium [&_p]:leading-[1.5] [&_p]:tracking-[-0.03em] sm:[&_h2]:text-[1.7rem] sm:[&_h3]:text-[1.08rem] sm:[&_li]:text-[1rem] sm:[&_p]:text-[1.5rem]">
+              <div className="site-editorial-content max-w-3xl [&_a]:text-blue-600 [&_a]:hover:underline [&_h2]:text-[1.35rem] [&_h2]:font-semibold [&_h2]:leading-[1.2] [&_h2]:tracking-[-0.01em] [&_h2]:text-gray-900 [&_h3]:text-[1rem] [&_h3]:font-medium [&_h3]:leading-[1.35] [&_h3]:tracking-[-0.01em] [&_h3]:text-gray-900 [&_li]:mb-2 [&_li]:text-[0.9375rem] [&_li]:leading-7 [&_p]:text-[1.35rem] [&_p]:font-normal [&_p]:leading-[1.5] [&_p]:tracking-[-0.03em] sm:[&_h2]:text-[1.7rem] sm:[&_h3]:text-[1.08rem] sm:[&_li]:text-[1rem] sm:[&_p]:text-[1.5rem]">
                 <div className="space-y-12">
                   <section id="executive-summary" className="scroll-mt-32">
                     <LightpaperSectionHeader eyebrow="Why this matters" title="Executive Summary" tone="violet" />
