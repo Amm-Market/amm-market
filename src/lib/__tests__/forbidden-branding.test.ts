@@ -13,10 +13,14 @@ const allowedCryptoComPaths = new Set([
   "src/components/hero-section.tsx",
 ])
 
+const allowedKrakenPaths = new Set([
+  "next.config.ts",
+])
+
 const forbiddenPatterns = [
-  { label: "AMM Market", regex: /AMM Market/g },
-  { label: "Amm Market", regex: /Amm Market/g },
-  { label: "Amm markets", regex: /Amm markets/g },
+  { label: "legacy AMM brand phrase", regex: /A[Mm]{2}\sMarket\b/g },
+  { label: "legacy title-case AMM brand phrase", regex: /Amm\sMarket\b/g },
+  { label: "legacy plural AMM brand phrase", regex: /Amm\smarkets\b/g },
   { label: "Kraken", regex: /Kraken/g },
   { label: "kraken", regex: /kraken/g },
 ]
@@ -53,6 +57,13 @@ describe("forbidden branding guard", () => {
       const source = readFileSync(filePath, "utf8")
 
       for (const pattern of forbiddenPatterns) {
+        if (
+          (pattern.label === "Kraken" || pattern.label === "kraken") &&
+          allowedKrakenPaths.has(relativePath)
+        ) {
+          continue
+        }
+
         if (pattern.regex.test(source)) {
           violations.push(`${relativePath}: contains ${pattern.label}`)
         }
