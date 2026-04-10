@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 const sections = [
   { id: "welcome", title: "Welcome" },
-  { id: "what-is-amm-market", title: "What is Avana?" },
+  { id: "what-is-avana", title: "What is Avana?" },
   { id: "how-it-works", title: "How It Works" },
   { id: "unlocking-lp-collateral", title: "Why LP Collateral Matters" },
   { id: "architecture", title: "Architecture" },
@@ -202,7 +202,7 @@ export default function DevelopersPage() {
           </div>
         </section>
 
-        <section id="what-is-amm-market" className="deferred-viewport mt-12 scroll-mt-32">
+        <section id="what-is-avana" className="deferred-viewport mt-12 scroll-mt-32">
           <SectionHeader
             title="What is Avana?"
             description="Avana is a lending protocol built for LP collateral that stays active in the underlying AMM. The protocol uses Aave v4&apos;s Hub-and-Spoke model so shared liquidity can stay in the Hub while LP-specific admissibility, valuation, and liquidation logic stays inside the spoke."

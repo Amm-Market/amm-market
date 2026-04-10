@@ -4,7 +4,7 @@ import { buildOgImagePath, SITE_NAME, SITE_URL, siteRoutes } from "@/lib/site"
 describe("site constants", () => {
   it("keeps Avana as the single product brand", () => {
     expect(SITE_NAME).toBe("Avana")
-    expect(SITE_URL).toBe("https://ammmarket.xyz")
+    expect(SITE_URL).toBe("https://avana.cc")
     expect(siteRoutes.about).toBe("/about")
     expect(siteRoutes.borrow).toBe("/borrow")
     expect(siteRoutes.leverage).toBe("/leverage")
