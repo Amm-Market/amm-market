@@ -47,11 +47,11 @@ By participating in this project, you agree to maintain a respectful and inclusi
 
 ```bash
 # Fork the repository on GitHub, then clone your fork
-git clone https://github.com/YOUR_USERNAME/avana.git
-cd avana
+git clone https://github.com/YOUR_USERNAME/avana-landing.git
+cd avana-landing
 
 # Add upstream remote
-git remote add upstream https://github.com/ORIGINAL_OWNER/avana.git
+git remote add upstream https://github.com/Avana-Spokes/avana-landing.git
 
 # Install dependencies
 npm install
