@@ -1,6 +1,6 @@
-# Contributing to AMM Market
+# Contributing to Avana
 
-Thank you for your interest in contributing to AMM Market! This document provides guidelines and best practices for contributing to the codebase.
+Thank you for your interest in contributing to Avana! This document provides guidelines and best practices for contributing to the codebase.
 
 ---
 
@@ -47,11 +47,11 @@ By participating in this project, you agree to maintain a respectful and inclusi
 
 ```bash
 # Fork the repository on GitHub, then clone your fork
-git clone https://github.com/YOUR_USERNAME/amm-market.git
-cd amm-market
+git clone https://github.com/YOUR_USERNAME/avana.git
+cd avana
 
 # Add upstream remote
-git remote add upstream https://github.com/ORIGINAL_OWNER/amm-market.git
+git remote add upstream https://github.com/ORIGINAL_OWNER/avana.git
 
 # Install dependencies
 npm install
@@ -106,7 +106,7 @@ Add to `.vscode/settings.json`:
 ## Project Structure
 
 ```
-amm-market/
+avana/
 ├── public/                    # Static assets
 │   ├── images/               # Image files
 │   └── *.svg                 # SVG icons
@@ -551,4 +551,4 @@ By contributing, you agree that your contributions will be licensed under the pr
 
 ---
 
-*Thank you for contributing to AMM Market!*
+*Thank you for contributing to Avana!*

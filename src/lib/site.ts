@@ -1,6 +1,6 @@
 export const SITE_NAME = "Avana"
 export const LEGAL_PRODUCT_NAME = SITE_NAME
-export const SITE_URL = "https://ammmarket.xyz"
+export const SITE_URL = "https://avana.cc"
 export const LOGO_PATH = "/avana-logo.svg"
 export const WORDMARK_PATH = "/avana-wordmark.svg"
 export const SOCIAL_HANDLE = "@dexmini"

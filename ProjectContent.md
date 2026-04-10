@@ -9,11 +9,11 @@ It is meant to give Cursor a fast, accurate model of the codebase before making 
 
 ## Repo Identity
 
-- Project name: `amm-market`
+- Project name: `avana`
 - Framework: Next.js App Router
 - Runtime model: primarily static/presentational frontend
-- Main product theme: AMM Market, an LP-collateral borrowing concept built around Aave v4
-- Important caveat: branding and copy are not fully unified across the repo. `AMM Market`, `Amm Market`, `Dex Mini`, Aave branding, and Crypto.com-style UI all appear in different places.
+- Main product theme: Avana, an LP-collateral borrowing concept built around Aave v4
+- Important caveat: branding is mostly unified under `Avana`, but Aave branding and Crypto.com-style UI references still appear in different places.
 
 ## Tech Stack
 
@@ -334,4 +334,3 @@ Do not assume a clean worktree.
 - Treat blog/docs/legal pages as hand-maintained content, not generated content.
 - Expect some tests to be stale and some lint failures to pre-exist.
 - If touching shared navigation or branding, review both header and footer, plus homepage, blog index, and docs landing page for consistency.
-
