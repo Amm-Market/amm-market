@@ -36,8 +36,8 @@ export default function PrivacyPage() {
 
             <p>
               This Privacy Policy (&quot;Privacy Policy&quot;) explains how Avana (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) collects, uses and discloses information that we obtain about visitors (&quot;you&quot; and &quot;your&quot;) who visit the{" "}
-              <Link href="https://ammmarket.finance">https://ammmarket.finance</Link> and{" "}
-              <Link href="https://docs.ammmarket.finance">https://docs.ammmarket.finance</Link>{" "}
+              <Link href="/">homepage</Link> and{" "}
+              <Link href="/developers">developer documentation</Link>{" "}
               websites (the &quot;Websites&quot;), which are maintained by us, and such other products and services related to the Websites that may be offered by us from time to time (collectively, the &quot;Services&quot;).
             </p>
 
@@ -202,8 +202,8 @@ export default function PrivacyPage() {
             <h3 id="contact-us">Contact Us</h3>
             <p>
               We seek to resolve any issues that you have with our privacy practices. If you have questions or complaints regarding this Privacy Policy, please contact us through email at:{" "}
-              <a href="mailto:privacy@ammmarket.finance">privacy@ammmarket.finance</a> or{" "}
-              <a href="mailto:support@ammmarket.finance">support@ammmarket.finance</a>.
+              <a href="mailto:privacy@avana.cc">privacy@avana.cc</a> or{" "}
+              <a href="mailto:support@avana.cc">support@avana.cc</a>.
               Please include &quot;Privacy&quot; in the subject line of your inquiry.
             </p>
           </div>
