@@ -83,7 +83,7 @@ export default function LegalDisclaimerPage() {
           <h2 className="type-section-title text-gray-900 mb-4">No Financial Advice</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             As stated prominently in our Terms of Service: &quot;THE SERVICES INCLUDE, AMONG OTHER THINGS, 
-            THE INFORMATIONAL RESOURCES, WHICH MAY PROVIDE INFORMATION RELATED TO AMM MARKET. AMM MARKET 
+            THE INFORMATIONAL RESOURCES, WHICH MAY PROVIDE INFORMATION RELATED TO AVANA. AVANA 
             IS NOT A BROKER, DEALER, EXCHANGE, INVESTMENT ADVISER, CUSTODIAN OR FINANCIAL SERVICE PROVIDER 
             OF ANY KIND. WE DO NOT HAVE A FIDUCIARY RELATIONSHIP WITH, OR OBLIGATION TO, YOU IN CONNECTION 
             WITH THE SERVICES.&quot;
@@ -158,9 +158,9 @@ export default function LegalDisclaimerPage() {
           </p>
           <div className="p-4 bg-gray-900 rounded-lg">
             <p className="text-gray-300 text-sm">
-              &quot;THE SERVICES ARE ISSUED ON AN &apos;AS-IS&apos; AND &apos;AS AVAILABLE&apos; BASIS AND AMM MARKET DOES NOT 
+              &quot;THE SERVICES ARE ISSUED ON AN &apos;AS-IS&apos; AND &apos;AS AVAILABLE&apos; BASIS AND AVANA DOES NOT 
               MAKE ANY WARRANTIES WITH RESPECT TO SUCH &apos;AS-IS&apos; AND &apos;AS AVAILABLE&apos; BASIS OR OTHERWISE 
-              IN CONNECTION WITH THE TERMS AND AMM MARKET HEREBY DISCLAIMS ANY AND ALL EXPRESS, IMPLIED 
+              IN CONNECTION WITH THE TERMS AND AVANA HEREBY DISCLAIMS ANY AND ALL EXPRESS, IMPLIED 
               OR STATUTORY WARRANTIES AND CONDITIONS, INCLUDING ANY WARRANTIES OR CONDITIONS OF 
               NON-INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AVAILABILITY, 
               ERROR-FREE OR UNINTERRUPTED OPERATION.&quot;
@@ -175,10 +175,10 @@ export default function LegalDisclaimerPage() {
           </p>
           <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 mb-4">
             <p className="text-gray-600 text-sm">
-              &quot;IN NO EVENT SHALL AMM MARKET BE LIABLE TO YOU FOR ANY CONSEQUENTIAL, INDIRECT, INCIDENTAL 
+              &quot;IN NO EVENT SHALL AVANA BE LIABLE TO YOU FOR ANY CONSEQUENTIAL, INDIRECT, INCIDENTAL 
               OR SPECIAL DAMAGES OF ANY TYPE OR NATURE HOWEVER ARISING, INCLUDING, WITHOUT LIMITATION, 
               EXEMPLARY OR PUNITIVE DAMAGES, LOST DATA, LOST PROFITS OR REVENUES OR DIMINUTION IN VALUE, 
-              ARISING OUT OF OR RELATING TO THE SERVICES OR YOUR USE OF THE AMM MARKET PROTOCOL.&quot;
+              ARISING OUT OF OR RELATING TO THE SERVICES OR YOUR USE OF THE AVANA PROTOCOL.&quot;
             </p>
           </div>
           <p className="text-gray-600 leading-relaxed">
