@@ -186,7 +186,8 @@ export default function HeroSection() {
             <div className="relative mt-10 md:mt-16">
               <div className="overflow-x-auto py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 <div className="grid w-max grid-flow-col auto-cols-[19.75rem] gap-4 px-1 lg:auto-cols-[21.5rem] lg:gap-5">
-                  <article className="group flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5 transition-transform duration-150 hover:scale-[1.01]">
+                  {/* Card 01 — Maximize your capital */}
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <h3 className="text-2xl font-semibold text-gray-900">Maximize your capital</h3>
@@ -196,29 +197,52 @@ export default function HeroSection() {
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full">
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="relative h-[180px] w-[180px]">
+                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(99,102,241,0.05),transparent_60%)]" />
+                          <div className="absolute inset-0 flex flex-col items-center justify-center">
+                            {/* Breathing ring */}
+                            <div className="relative h-[140px] w-[140px] ce-ring-breathe">
                               <svg className="h-full w-full -rotate-90" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="42" fill="none" stroke="#d1d5db" strokeWidth="8" strokeLinecap="round" strokeDasharray="198 66" />
-                                <circle cx="50" cy="50" r="42" fill="none" stroke="#94a3b8" strokeWidth="8" strokeLinecap="round" strokeDasharray="160 104" />
+                                <circle cx="50" cy="50" r="42" fill="none" stroke="#f3f4f6" strokeWidth="5" />
+                                <circle cx="50" cy="50" r="42" fill="none" stroke="#6366f1" strokeWidth="5" strokeLinecap="round" strokeDasharray="263.89" strokeDashoffset="52.78" />
                               </svg>
                               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                <span className="text-4xl font-bold text-slate-800">80%</span>
-                                <span className="text-xs font-medium text-slate-500">Available</span>
+                                <span className="text-[2.8rem] font-semibold leading-none tracking-[-0.05em] text-[#18323c]">80<span className="text-base font-normal text-gray-300">%</span></span>
+                                <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.14em] text-gray-400">LTV</span>
                               </div>
                             </div>
-                          </div>
-                          <div className="absolute inset-x-0 bottom-8 flex justify-center gap-3">
-                            <div className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-700">LTV 80%</div>
-                            <div className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs text-slate-700">Capital active</div>
+                            {/* Vertical LP valuation ticker */}
+                            <div className="mt-5 w-full max-w-[15rem] overflow-hidden rounded-xl border border-gray-100 bg-gray-50/80">
+                              <div className="h-[52px] overflow-hidden">
+                                <div className="ce-ticker-v">
+                                  {[
+                                    { pair: "ETH / USDC", value: "$24,800", borrowable: "$19,840" },
+                                    { pair: "WBTC / ETH", value: "$41,200", borrowable: "$32,960" },
+                                    { pair: "ARB / USDC", value: "$8,600", borrowable: "$6,880" },
+                                    { pair: "ETH / USDC", value: "$24,800", borrowable: "$19,840" },
+                                  ].map((item, i) => (
+                                    <div key={i} className="h-[52px] px-4 py-2">
+                                      <div className="flex items-center justify-between">
+                                        <span className="text-[10px] font-medium text-gray-400">{item.pair}</span>
+                                        <span className="text-xs font-semibold text-[#18323c]">{item.value}</span>
+                                      </div>
+                                      <div className="mt-1 flex items-center justify-between">
+                                        <span className="text-[10px] font-medium text-gray-400">Borrowable</span>
+                                        <span className="text-xs font-semibold text-indigo-600">{item.borrowable}</span>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </article>
 
-                  <article className="group flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5 transition-transform duration-150 hover:scale-[1.01]">
+                  {/* Card 02 — Keep earning fees */}
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <h3 className="text-2xl font-semibold text-gray-900">Keep earning fees</h3>
@@ -228,33 +252,61 @@ export default function HeroSection() {
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full rounded-[22px] border border-slate-200 bg-gradient-to-b from-white to-slate-50">
-                          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-                            <div className="flex items-center gap-1 rounded-full border border-slate-200 bg-slate-100 px-2 py-1 text-slate-700">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" className="w-4 h-4">
-                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"></path>
-                              </svg>
-                              <span className="text-[10px] font-semibold">Trading Fees</span>
+                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_70%,rgba(16,185,129,0.05),transparent_55%)]" />
+                          <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
+                            {/* APY vertical ticker */}
+                            <div className="flex items-baseline gap-1">
+                              <div className="h-[3.6rem] overflow-hidden">
+                                <div className="ce-ticker-apy">
+                                  {["+12.4", "+12.5", "+12.6", "+12.4"].map((v, i) => (
+                                    <span key={i} className="block h-[3.6rem] text-[3.6rem] font-semibold leading-none tracking-[-0.05em] text-[#18323c]">{v}</span>
+                                  ))}
+                                </div>
+                              </div>
+                              <span className="text-xl font-normal text-gray-300">%</span>
                             </div>
-                            <span className="mt-6 text-5xl font-bold text-slate-700">+12.4%</span>
-                            <div className="mt-4 flex items-center gap-1.5">
-                              <span className="text-xs text-gray-500"><DeFiTerm term="apy">APY</DeFiTerm></span>
-                              <div className="h-0.5 w-10 rounded bg-slate-200"></div>
-                              <div className="flex h-4 w-4 items-center justify-center rounded-full bg-slate-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 16 16" className="fill-white text-white">
-                                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="m3 9 7-7c.15-.15.4.01.33.21L8.77 6.4a.2.2 0 0 0 .19.27h3.9a.2.2 0 0 1 .14.34l-7 7c-.15.15-.4-.01-.33-.21l1.58-4.2a.2.2 0 0 0-.19-.27H3.15a.2.2 0 0 1-.14-.34"></path>
+                            <span className="mt-1 text-xs text-gray-400"><DeFiTerm term="apy">APY</DeFiTerm> earned while borrowed</span>
+                            {/* Continuously scrolling area chart */}
+                            <div className="mt-5 w-full max-w-[16rem] overflow-hidden">
+                              <div className="flex w-[200%] ce-chart-scroll">
+                                <svg className="h-[60px] w-1/2 shrink-0" viewBox="0 0 300 60" preserveAspectRatio="none">
+                                  <defs>
+                                    <linearGradient id="fee-fill" x1="0" y1="0" x2="0" y2="1">
+                                      <stop offset="0%" stopColor="#10b981" stopOpacity="0.15" />
+                                      <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+                                    </linearGradient>
+                                  </defs>
+                                  <path d="M0,48 C25,46 50,42 80,38 S130,28 170,24 S220,20 260,16 L300,12 L300,60 L0,60Z" fill="url(#fee-fill)" />
+                                  <path d="M0,48 C25,46 50,42 80,38 S130,28 170,24 S220,20 260,16 L300,12" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" />
+                                </svg>
+                                <svg className="h-[60px] w-1/2 shrink-0" viewBox="0 0 300 60" preserveAspectRatio="none">
+                                  <path d="M0,48 C25,46 50,42 80,38 S130,28 170,24 S220,20 260,16 L300,12 L300,60 L0,60Z" fill="url(#fee-fill)" />
+                                  <path d="M0,48 C25,46 50,42 80,38 S130,28 170,24 S220,20 260,16 L300,12" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" />
                                 </svg>
                               </div>
-                              <div className="h-0.5 w-3.5 rounded bg-slate-200"></div>
-                              <span className="text-xs text-gray-500">Earned</span>
                             </div>
-                            <div className="mt-6 w-full max-w-[16rem] rounded-[18px] border border-slate-200 bg-white px-4 py-4">
-                              <div className="flex items-center justify-between text-[0.72rem] text-gray-500">
-                                <span>LP fees remain active</span>
-                                <span className="font-medium text-gray-800">Auto accrual</span>
+                            {/* Fee tickers */}
+                            <div className="mt-3 flex w-full max-w-[16rem] gap-2">
+                              <div className="flex-1 rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-2 text-center">
+                                <span className="block text-[9px] font-medium text-gray-400">24h fees</span>
+                                <div className="h-4 overflow-hidden">
+                                  <div className="ce-ticker-fee1">
+                                    {["+$48.20", "+$51.30", "+$49.80", "+$48.20"].map((v, i) => (
+                                      <span key={i} className="block h-4 text-xs font-semibold text-emerald-600">{v}</span>
+                                    ))}
+                                  </div>
+                                </div>
                               </div>
-                              <div className="mt-3 mx-auto w-36 rounded-full border border-slate-200 bg-slate-50 px-4 py-1 text-center">
-                                <span className="text-sm font-medium text-slate-700">Keep Earning</span>
+                              <div className="flex-1 rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-2 text-center">
+                                <span className="block text-[9px] font-medium text-gray-400">30d yield</span>
+                                <div className="h-4 overflow-hidden">
+                                  <div className="ce-ticker-fee2">
+                                    {["+$1,420", "+$1,485", "+$1,510", "+$1,420"].map((v, i) => (
+                                      <span key={i} className="block h-4 text-xs font-semibold text-emerald-600">{v}</span>
+                                    ))}
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -263,7 +315,8 @@ export default function HeroSection() {
                     </div>
                   </article>
 
-                  <article className="group flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5 transition-transform duration-150 hover:scale-[1.01]">
+                  {/* Card 03 — Unlock new strategies */}
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <h3 className="text-2xl font-semibold text-gray-900">Unlock new strategies</h3>
@@ -273,40 +326,40 @@ export default function HeroSection() {
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full rounded-[22px] border border-slate-200 bg-gradient-to-b from-white to-slate-50">
-                          <div className="absolute inset-0 flex items-center justify-center p-6">
-                            <div className="flex w-full max-w-[16.75rem] flex-col items-center gap-3">
-                              <div className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3">
-                                <div className="flex h-11 w-11 items-center justify-center text-gray-700">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v20m5-17H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"></path>
-                                  </svg>
-                                </div>
-                                <span className="text-sm font-medium text-gray-800">Leverage trading</span>
-                              </div>
-                              <div className="flex w-full items-center gap-3 rounded-lg border border-slate-300 bg-slate-100 px-4 py-3 text-slate-900">
-                                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.69 4.9 19.104m12.786-1.414 1.414 1.414M22 12h-2m-3 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"></path>
-                                  </svg>
-                                </div>
-                                <span className="text-sm font-medium">Yield farming</span>
-                              </div>
-                              <div className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3">
-                                <div className="flex h-11 w-11 items-center justify-center text-gray-700">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M22 10v7.4a1.6 1.6 0 0 1-1.6 1.6H3.6A1.6 1.6 0 0 1 2 17.4V10m20 0V6.6A1.6 1.6 0 0 0 20.4 5H3.6A1.6 1.6 0 0 0 2 6.6V10m20 0H2m4 5h3"></path>
-                                  </svg>
-                                </div>
-                                <span className="text-sm font-medium text-gray-800">Pay off debt</span>
-                              </div>
-                              <div className="flex w-full items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3">
-                                <div className="flex h-11 w-11 items-center justify-center text-gray-700">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 3v18h18M7 16l4-4 4 4 5-6"></path>
-                                  </svg>
-                                </div>
-                                <span className="text-sm font-medium text-gray-800">New positions</span>
+                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                          <div className="absolute inset-0 flex items-center justify-center px-5">
+                            {/* Escalator: 12 items (6 unique duplicated), scrolling up infinitely */}
+                            <div className="w-full max-w-[16rem] h-[15rem] overflow-hidden">
+                              <div className="ce-escalator flex flex-col gap-2">
+                                {[
+                                  { label: "Leverage trading", icon: "\u2197" },
+                                  { label: "Yield farming", icon: "\u25CE" },
+                                  { label: "Pay off debt", icon: "\u21A9" },
+                                  { label: "Open new positions", icon: "\uFF0B" },
+                                  { label: "Hedge exposure", icon: "\u21C5" },
+                                  { label: "Liquidity mining", icon: "\u25C7" },
+                                  { label: "Leverage trading", icon: "\u2197" },
+                                  { label: "Yield farming", icon: "\u25CE" },
+                                  { label: "Pay off debt", icon: "\u21A9" },
+                                  { label: "Open new positions", icon: "\uFF0B" },
+                                  { label: "Hedge exposure", icon: "\u21C5" },
+                                  { label: "Liquidity mining", icon: "\u25C7" },
+                                ].map((item, i) => (
+                                  <div
+                                    key={i}
+                                    className={`flex items-center gap-3 rounded-[14px] px-4 py-3 ${
+                                      i % 6 === 1
+                                        ? "border border-[#18323c]/10 bg-[#18323c] text-white shadow-[0_4px_20px_rgba(0,0,0,0.12)]"
+                                        : "border border-gray-100 bg-gray-50 text-gray-600"
+                                    }`}
+                                  >
+                                    <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs ${i % 6 === 1 ? "bg-white/15 text-white" : "bg-white text-gray-400"}`}>
+                                      {item.icon}
+                                    </div>
+                                    <span className="text-[0.82rem] font-medium">{item.label}</span>
+                                    {i % 6 === 1 && <span className="ml-auto text-[10px] font-medium text-white/50">Active</span>}
+                                  </div>
+                                ))}
                               </div>
                             </div>
                           </div>
@@ -315,33 +368,86 @@ export default function HeroSection() {
                     </div>
                   </article>
 
-                  <article className="group flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5 transition-transform duration-150 hover:scale-[1.01]">
+                  {/* Card 04 — Price-range aware oracles */}
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <h3 className="text-2xl font-semibold text-gray-900">Price-range aware oracles</h3>
-                        <p className="max-w-[16rem] text-base text-gray-600">Industry-leading security protects your investments.</p>
+                        <p className="max-w-[16rem] text-base text-gray-600">Valuation tracks your LP&apos;s active tick range.</p>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">04</div>
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full rounded-[22px] border border-slate-200 bg-gradient-to-b from-white to-slate-50">
-                          <div className="absolute inset-0 flex items-center justify-center p-6">
-                            <div className="w-full max-w-[16.75rem]">
-                              <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.14em] text-gray-500">
-                                <span>$1,720</span>
-                                <span>Oracle band</span>
-                                <span>$1,950</span>
+                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.04),transparent_60%)]" />
+                          <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
+                            <div className="w-full max-w-[16rem]">
+                              {/* Oracle band header with price tickers */}
+                              <div className="flex items-center justify-between">
+                                <div className="h-3 overflow-hidden">
+                                  <div className="ce-ticker-price1">
+                                    {["$1,720", "$1,718", "$1,722", "$1,720"].map((v, i) => (
+                                      <span key={i} className="block h-3 text-[10px] font-medium text-gray-400">{v}</span>
+                                    ))}
+                                  </div>
+                                </div>
+                                <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[9px] font-semibold text-indigo-500">Oracle band</span>
+                                <div className="h-3 overflow-hidden">
+                                  <div className="ce-ticker-price2">
+                                    {["$1,950", "$1,948", "$1,952", "$1,950"].map((v, i) => (
+                                      <span key={i} className="block h-3 text-[10px] font-medium text-gray-400">{v}</span>
+                                    ))}
+                                  </div>
+                                </div>
                               </div>
-                              <div className="relative h-[118px] rounded-[18px] border border-slate-200 bg-white">
-                                <div className="absolute inset-x-6 top-1/2 h-8 -translate-y-1/2 rounded-full border border-slate-200 bg-slate-50"></div>
-                                <svg className="absolute inset-4 h-[calc(100%-32px)] w-[calc(100%-32px)]" viewBox="0 0 300 110" preserveAspectRatio="none">
-                                  <path d="M0,78 Q40,70 85,76 T165,54 T235,58 T300,40" fill="none" stroke="#64748b" strokeWidth="2.25" strokeLinecap="round" />
-                                </svg>
-                                <div className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-slate-500 ring-4 ring-white"></div>
+                              {/* Continuously scrolling chart */}
+                              <div className="relative mt-2 h-[90px] w-full overflow-hidden rounded-xl bg-gray-50">
+                                <div className="absolute inset-x-[12%] inset-y-0 rounded-lg bg-indigo-50/80" />
+                                <div className="absolute inset-0 flex w-[200%] ce-chart-scroll-slow">
+                                  <svg className="h-full w-1/2 shrink-0" viewBox="0 0 300 90" preserveAspectRatio="none">
+                                    <defs>
+                                      <linearGradient id="oracle-fill" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stopColor="#6366f1" stopOpacity="0.08" />
+                                        <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
+                                      </linearGradient>
+                                    </defs>
+                                    <path d="M0,72 C30,68 60,62 90,50 S150,22 180,28 S240,44 270,36 L300,30 L300,90 L0,90Z" fill="url(#oracle-fill)" />
+                                    <path d="M0,72 C30,68 60,62 90,50 S150,22 180,28 S240,44 270,36 L300,30" fill="none" stroke="#6366f1" strokeWidth="2" strokeLinecap="round" />
+                                  </svg>
+                                  <svg className="h-full w-1/2 shrink-0" viewBox="0 0 300 90" preserveAspectRatio="none">
+                                    <path d="M0,72 C30,68 60,62 90,50 S150,22 180,28 S240,44 270,36 L300,30 L300,90 L0,90Z" fill="url(#oracle-fill)" />
+                                    <path d="M0,72 C30,68 60,62 90,50 S150,22 180,28 S240,44 270,36 L300,30" fill="none" stroke="#6366f1" strokeWidth="2" strokeLinecap="round" />
+                                  </svg>
+                                </div>
+                                {/* Pulsing dot */}
+                                <div className="absolute left-[58%] top-[28%]">
+                                  <div className="h-3 w-3 rounded-full border-2 border-white bg-indigo-500 shadow-sm" />
+                                  <div className="absolute inset-0 h-3 w-3 rounded-full bg-indigo-400 ce-pulse-dot" />
+                                </div>
                               </div>
-                              <div className="mt-4 flex justify-center">
-                                <div className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700">In range</div>
+                              {/* Status */}
+                              <div className="mt-2.5 flex items-center justify-center gap-1.5">
+                                <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 ce-pulse-dot" /><span className="text-[10px] font-medium text-gray-500">In range</span>
+                              </div>
+                              {/* Price value tickers */}
+                              <div className="mt-3 flex justify-center gap-1.5">
+                                {[
+                                  { l: "Lower", vals: ["$1,720", "$1,718", "$1,722", "$1,720"], cls: "ce-ticker-price1" },
+                                  { l: "Current", vals: ["$1,847", "$1,852", "$1,844", "$1,847"], cls: "ce-ticker-price3" },
+                                  { l: "Upper", vals: ["$1,950", "$1,948", "$1,952", "$1,950"], cls: "ce-ticker-price2" },
+                                ].map((p) => (
+                                  <div key={p.l} className="flex-1 rounded-lg border border-gray-100 bg-gray-50/80 px-2 py-1.5 text-center">
+                                    <span className="block text-[8px] font-medium uppercase tracking-[0.08em] text-gray-400">{p.l}</span>
+                                    <div className="h-4 overflow-hidden">
+                                      <div className={p.cls}>
+                                        {p.vals.map((v, i) => (
+                                          <span key={i} className="block h-4 text-xs font-semibold text-[#18323c]">{v}</span>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </div>
+                                ))}
                               </div>
                             </div>
                           </div>
@@ -350,7 +456,8 @@ export default function HeroSection() {
                     </div>
                   </article>
 
-                  <article className="group flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5 transition-transform duration-150 hover:scale-[1.01]">
+                  {/* Card 05 — LP-aware risk models */}
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <h3 className="text-2xl font-semibold text-gray-900">LP-aware risk models</h3>
@@ -360,33 +467,47 @@ export default function HeroSection() {
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full rounded-[22px] border border-slate-200 bg-gradient-to-b from-white to-slate-50">
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="relative h-[170px] w-[170px]">
-                              <div className="absolute inset-0 rounded-full border-2 border-slate-200"></div>
-                              <div className="absolute inset-[20px] rounded-full border-2 border-slate-300"></div>
-                              <div className="absolute inset-[40px] rounded-full border-2 border-slate-300"></div>
-                              <div className="absolute inset-[55px] flex items-center justify-center rounded-full border border-slate-200 bg-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-slate-700">
-                                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4"></path>
-                                </svg>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="absolute inset-x-0 bottom-7 px-4">
-                            <div className="mx-auto grid max-w-[17rem] grid-cols-3 gap-2">
-                              <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-center">
-                                <span className="block text-[10px] uppercase tracking-wider text-gray-500">Pool</span>
-                                <span className="text-sm font-semibold text-gray-900">Deep</span>
-                              </div>
-                              <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-center">
-                                <span className="block text-[10px] uppercase tracking-wider text-gray-500">Vol</span>
-                                <span className="text-sm font-semibold text-gray-700">Low</span>
-                              </div>
-                              <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-center">
-                                <span className="block text-[10px] uppercase tracking-wider text-gray-500">Oracle</span>
-                                <span className="text-sm font-semibold text-gray-900">98/100</span>
+                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                          <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
+                            {/* Vertical risk assessment ticker */}
+                            <div className="w-full max-w-[16rem] overflow-hidden">
+                              <div className="h-[180px] overflow-hidden">
+                                <div className="ce-ticker-risk">
+                                  {[
+                                    { pair: "ETH / USDC", depth: "Deep", depthColor: "bg-emerald-400", depthLevel: 90, vol: "Low", volColor: "bg-amber-400", volLevel: 25, oracle: "98", oracleColor: "bg-[#18323c]", oracleLevel: 98 },
+                                    { pair: "WBTC / ETH", depth: "Medium", depthColor: "bg-amber-400", depthLevel: 60, vol: "Med", volColor: "bg-orange-400", volLevel: 50, oracle: "95", oracleColor: "bg-[#18323c]", oracleLevel: 95 },
+                                    { pair: "ARB / USDC", depth: "Shallow", depthColor: "bg-red-400", depthLevel: 35, vol: "High", volColor: "bg-red-400", volLevel: 78, oracle: "88", oracleColor: "bg-[#18323c]", oracleLevel: 88 },
+                                    { pair: "ETH / USDC", depth: "Deep", depthColor: "bg-emerald-400", depthLevel: 90, vol: "Low", volColor: "bg-amber-400", volLevel: 25, oracle: "98", oracleColor: "bg-[#18323c]", oracleLevel: 98 },
+                                  ].map((item, i) => (
+                                    <div key={i} className="h-[180px] space-y-2">
+                                      <div className="mb-2 text-center">
+                                        <span className="text-xs font-semibold text-[#18323c]">{item.pair}</span>
+                                      </div>
+                                      {[
+                                        { label: "Pool depth", value: item.depth, level: item.depthLevel, color: item.depthColor },
+                                        { label: "Volatility", value: item.vol, level: item.volLevel, color: item.volColor },
+                                        { label: "Oracle quality", value: `${item.oracle}/100`, level: item.oracleLevel, color: item.oracleColor },
+                                      ].map((metric) => (
+                                        <div key={metric.label} className="rounded-xl border border-gray-100 bg-gray-50/80 px-4 py-2">
+                                          <div className="flex items-center justify-between">
+                                            <span className="text-[10px] font-medium text-gray-400">{metric.label}</span>
+                                            <span className="text-xs font-semibold text-[#18323c]">{metric.value}</span>
+                                          </div>
+                                          <div className="mt-1.5 h-[5px] w-full overflow-hidden rounded-full bg-gray-100">
+                                            <div className={`h-full rounded-full ${metric.color}`} style={{ width: `${metric.level}%` }} />
+                                          </div>
+                                        </div>
+                                      ))}
+                                      {/* Score badge */}
+                                      <div className="mt-2 flex items-center justify-center gap-2 rounded-full border border-emerald-100 bg-emerald-50/80 px-3 py-1">
+                                        <div className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500">
+                                          <svg width="8" height="8" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                                        </div>
+                                        <span className="text-[11px] font-semibold text-emerald-700">Eligible for borrowing</span>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -395,10 +516,91 @@ export default function HeroSection() {
                     </div>
                   </article>
                 </div>
+
+                <style>{`
+                  .ce-ring-breathe { animation: ce-rb 3s ease-in-out infinite; }
+                  @keyframes ce-rb { 0%,100% { opacity:1; } 50% { opacity:0.7; } }
+
+                  .ce-ticker-v { animation: ce-tv 9s ease-in-out infinite; }
+                  @keyframes ce-tv { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
+
+                  .ce-ticker-apy { animation: ce-ta 8s ease-in-out infinite; }
+                  @keyframes ce-ta { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
+
+                  .ce-ticker-fee1 { animation: ce-tf1 6s ease-in-out infinite; }
+                  @keyframes ce-tf1 { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
+
+                  .ce-ticker-fee2 { animation: ce-tf2 7s ease-in-out infinite; }
+                  @keyframes ce-tf2 { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
+
+                  .ce-chart-scroll { animation: ce-cs 12s linear infinite; }
+                  @keyframes ce-cs { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+                  .ce-chart-scroll-slow { animation: ce-css 20s linear infinite; }
+                  @keyframes ce-css { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+                  .ce-escalator { animation: ce-esc 16s linear infinite; }
+                  @keyframes ce-esc { from { transform:translateY(0); } to { transform:translateY(-50%); } }
+
+                  .ce-pulse-dot { animation: ce-pd 2s ease-in-out infinite; }
+                  @keyframes ce-pd { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(1.8); } }
+
+                  .ce-ticker-risk { animation: ce-tr 12s ease-in-out infinite; }
+                  @keyframes ce-tr { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
+
+                  .ce-ticker-price1 { animation: ce-tp1 5s ease-in-out infinite; }
+                  .ce-ticker-price2 { animation: ce-tp2 4s ease-in-out infinite; }
+                  .ce-ticker-price3 { animation: ce-tp3 6s ease-in-out infinite; }
+                  @keyframes ce-tp1 { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
+                  @keyframes ce-tp2 { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
+                  @keyframes ce-tp3 { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
+                `}</style>
               </div>
             </div>
 
         </div>
+
+        <section>
+          <div className="flex max-w-[600px] flex-col gap-2">
+            <SectionEyebrow tone="emerald">Who it&apos;s for</SectionEyebrow>
+            <SectionTitle>Built for every kind of&nbsp;LP.</SectionTitle>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 gap-5 md:mt-16 md:grid-cols-3">
+            <article className="group relative overflow-hidden rounded-[1.6rem] border border-gray-200 bg-white p-6 transition-all duration-200 hover:border-gray-300 hover:shadow-[0_2px_20px_rgba(0,0,0,0.04)] md:p-8">
+              <div className="absolute left-0 top-6 h-10 w-1 rounded-r-full bg-emerald-400 md:top-8" />
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-600">Active LPs</span>
+              <h3 className="mt-4 text-xl font-semibold tracking-[-0.02em] text-[#18323c]">
+                Managing positions across DEXes
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                You run concentrated liquidity and need capital without exiting. Deposit, borrow, and keep collecting fees from the same position.
+              </p>
+            </article>
+
+            <article className="group relative overflow-hidden rounded-[1.6rem] border border-gray-200 bg-white p-6 transition-all duration-200 hover:border-gray-300 hover:shadow-[0_2px_20px_rgba(0,0,0,0.04)] md:p-8">
+              <div className="absolute left-0 top-6 h-10 w-1 rounded-r-full bg-sky-400 md:top-8" />
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">Strategists</span>
+              <h3 className="mt-4 text-xl font-semibold tracking-[-0.02em] text-[#18323c]">
+                Building multi-step strategies
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                Use borrowed capital for leverage, yield farming, or new positions. One interface handles borrowing, execution, and monitoring.
+              </p>
+            </article>
+
+            <article className="group relative overflow-hidden rounded-[1.6rem] border border-gray-200 bg-white p-6 transition-all duration-200 hover:border-gray-300 hover:shadow-[0_2px_20px_rgba(0,0,0,0.04)] md:p-8">
+              <div className="absolute left-0 top-6 h-10 w-1 rounded-r-full bg-violet-400 md:top-8" />
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-600">Long-term holders</span>
+              <h3 className="mt-4 text-xl font-semibold tracking-[-0.02em] text-[#18323c]">
+                Unlocking idle capital
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                You hold LP positions but need liquidity. Borrow against what you already have without disrupting your setup or selling assets.
+              </p>
+            </article>
+          </div>
+        </section>
 
         <LazySection minHeight="400px" fallback={<SectionSkeleton minHeight="360px" />}>
           <DeferredTestimonialSection />
