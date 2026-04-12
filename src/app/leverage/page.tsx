@@ -55,16 +55,36 @@ const leverageWorkflowSteps = [
   },
 ] as const
 
-const leverageModes = [
+const leverageHighlights = [
+  {
+    title: "Your LP never stops working",
+    description:
+      "Collateral stays in the pool earning fees while backing your leveraged position. No exit, no swap, no lost yield.",
+  },
   {
     title: "Borrow-based exposure",
     description:
-      "Instead of perp funding, Avana prices leverage through borrow rates routed from Aave v4 style Hub liquidity and LP-specific risk parameters.",
+      "Instead of perp funding rates, Avana prices leverage through borrow rates routed from Aave v4 style Hub liquidity and LP-specific risk parameters.",
+  },
+  {
+    title: "AMM-aware risk model",
+    description:
+      "Valuation accounts for pool structure, tick range, concentration depth, and accrued fees. Not just token price.",
+  },
+  {
+    title: "Unified position view",
+    description:
+      "Collateral, debt, leverage ratio, and health factor tracked together in one place. Not split across protocols.",
   },
   {
     title: "Market access through the Hub",
     description:
       "Your LP unlocks Hub liquidity, and Avana manages execution, debt, leverage, and unwind logic in one LP-backed account.",
+  },
+  {
+    title: "Automatic unwind paths",
+    description:
+      "When a position needs to close, smart routing handles debt repayment, collateral release, and exposure reduction in sequence.",
   },
 ] as const
 
@@ -270,20 +290,78 @@ export default function LeveragePage() {
 
       <section className="bg-white py-12 md:py-16">
         <div className="site-content-shell">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-14">
-            <div className="space-y-3">
-              <SectionEyebrow tone="rose">Why it feels different</SectionEyebrow>
-              <SectionTitle className="max-w-[11ch]">No funding rates. Hub-backed leverage.</SectionTitle>
-            </div>
+          <div className="flex max-w-[600px] flex-col gap-2">
+            <SectionEyebrow tone="rose">What&apos;s new</SectionEyebrow>
+            <SectionTitle>What LP leverage never&nbsp;had.</SectionTitle>
+          </div>
 
-            <div className="grid gap-5 md:grid-cols-2">
-              {leverageModes.map((mode) => (
-                <article key={mode.title} className="rounded-[1.8rem] border border-gray-200 bg-[linear-gradient(145deg,#ffffff_0%,#faf7f5_100%)] p-6 md:p-7">
-                  <h3 className="text-[1.5rem] font-medium tracking-[-0.04em] text-[#18323c]">{mode.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-gray-600">{mode.description}</p>
-                </article>
-              ))}
-            </div>
+          <div className="mt-10 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-4">
+            {/* Hero card — dark, spans 2 columns and 2 rows */}
+            <article className="relative overflow-hidden rounded-[1.8rem] bg-[#18323c] p-7 md:col-span-2 md:row-span-2 md:p-10">
+              <div className="absolute -right-16 -top-16 h-72 w-72 rounded-full bg-rose-500/[0.07] blur-3xl" />
+              <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-white/[0.04] blur-3xl" />
+              <div className="relative z-10 flex h-full flex-col">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-400">
+                  01
+                </span>
+                <h3 className="mt-5 max-w-[16ch] text-[1.75rem] font-medium leading-[1.08] tracking-[-0.04em] text-white md:text-[2rem]">
+                  {leverageHighlights[0].title}
+                </h3>
+                <p className="mt-4 max-w-[30rem] text-[0.94rem] leading-[1.7] text-white/60">
+                  {leverageHighlights[0].description}
+                </p>
+                {/* Decorative element */}
+                <div className="mt-auto pt-10">
+                  <div className="flex gap-3">
+                    <div className="h-1.5 w-12 rounded-full bg-rose-400/40" />
+                    <div className="h-1.5 w-8 rounded-full bg-white/15" />
+                    <div className="h-1.5 w-5 rounded-full bg-white/10" />
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            {/* Right-side cards (4 cards in a 2×2 grid beside the hero) */}
+            {leverageHighlights.slice(1, 5).map((item, i) => (
+              <article
+                key={item.title}
+                className="flex flex-col rounded-[1.8rem] border border-gray-200 bg-gray-50 p-6 md:p-7"
+              >
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
+                  {String(i + 2).padStart(2, "0")}
+                </span>
+                <h3 className="mt-4 text-lg font-medium tracking-[-0.03em] text-[#18323c]">
+                  {item.title}
+                </h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-gray-600">
+                  {item.description}
+                </p>
+              </article>
+            ))}
+
+            {/* Bottom wide card — warm gradient, spans full width */}
+            <article className="flex flex-col rounded-[1.8rem] border border-gray-200 bg-[linear-gradient(145deg,#ffffff_0%,#faf7f5_100%)] p-6 md:col-span-4 md:p-8">
+              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between md:gap-12">
+                <div className="flex items-start gap-5">
+                  <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
+                    06
+                  </span>
+                  <div>
+                    <h3 className="text-lg font-medium tracking-[-0.03em] text-[#18323c]">
+                      {leverageHighlights[5].title}
+                    </h3>
+                    <p className="mt-2 max-w-[36rem] text-sm leading-relaxed text-gray-600">
+                      {leverageHighlights[5].description}
+                    </p>
+                  </div>
+                </div>
+                <div className="hidden shrink-0 items-center gap-2 md:flex">
+                  <div className="h-1.5 w-16 rounded-full bg-rose-200/70" />
+                  <div className="h-1.5 w-10 rounded-full bg-gray-200" />
+                  <div className="h-1.5 w-6 rounded-full bg-gray-100" />
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -296,6 +374,194 @@ export default function LeveragePage() {
               eyebrowTone="rose"
               title="LP-backed leverage, managed in one system."
               items={leverageFeatureItems}
+              panels={[
+                /* 01 LP Backed Leverage */
+                <div key="p1" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(244,63,94,0.03),transparent_60%)]" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <span className="text-[3.2rem] font-semibold leading-none tracking-[-0.05em] text-[#18323c] panel-breathe">5<span className="text-lg font-normal text-gray-300">x</span></span>
+                    <span className="mt-1.5 text-[10px] font-medium uppercase tracking-[0.12em] text-gray-400">Leverage multiple</span>
+                    <div className="mt-5 flex gap-2">
+                      {/* LP ticker */}
+                      <div className="rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-1.5 text-center">
+                        <span className="block text-[9px] text-gray-400">LP</span>
+                        <div className="h-[1rem] overflow-hidden">
+                          <div className="panel-ticker-v-fast">
+                            {["Active","Earning","Accruing","Active"].map((v,i) => (
+                              <div key={i} className="flex h-[1rem] items-center justify-center">
+                                <span className="text-xs font-semibold text-emerald-600">{v}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      {/* Debt ticker */}
+                      <div className="rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-1.5 text-center">
+                        <span className="block text-[9px] text-gray-400">Debt</span>
+                        <div className="h-[1rem] overflow-hidden">
+                          <div className="panel-ticker-v-fast" style={{ animationDuration: '7s' }}>
+                            {["Covered","$8.2K","66%","Covered"].map((v,i) => (
+                              <div key={i} className="flex h-[1rem] items-center justify-center">
+                                <span className="text-xs font-semibold text-[#18323c]">{v}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      {/* Health ticker */}
+                      <div className="rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-1.5 text-center">
+                        <span className="block text-[9px] text-gray-400">Health</span>
+                        <div className="h-[1rem] overflow-hidden">
+                          <div className="panel-ticker-v-fast" style={{ animationDuration: '5s' }}>
+                            {["1.51","1.53","1.49","1.51"].map((v,i) => (
+                              <div key={i} className="flex h-[1rem] items-center justify-center">
+                                <span className="text-xs font-semibold text-emerald-600">{v}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>,
+                /* 02 One Position, One View */
+                <div key="p2" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                  <div className="absolute inset-0 flex items-center justify-center px-5">
+                    <div className="w-full max-w-[15rem] h-[11rem] overflow-hidden">
+                      <div className="panel-ticker-v-slow" style={{ animationDuration: '12s' }}>
+                        {[
+                          { pair: "ETH / USDC", collateral: "$12,400", debt: "$8,200", health: "1.51", cW: 100, dW: 66, hW: 75 },
+                          { pair: "WBTC / ETH", collateral: "$28,600", debt: "$18,400", health: "1.55", cW: 100, dW: 64, hW: 77 },
+                          { pair: "ARB / USDC", collateral: "$5,200", debt: "$3,100", health: "1.68", cW: 100, dW: 60, hW: 84 },
+                          { pair: "ETH / USDC", collateral: "$12,400", debt: "$8,200", health: "1.51", cW: 100, dW: 66, hW: 75 },
+                        ].map((pos, idx) => (
+                          <div key={idx} className="flex h-[11rem] shrink-0 flex-col justify-center">
+                            <div className="rounded-2xl border border-gray-100 bg-gray-50/60 p-4">
+                              <span className="text-[11px] font-semibold text-[#18323c]">{pos.pair}</span>
+                              {[
+                                { l: "Collateral", v: pos.collateral, w: pos.cW, c: "bg-rose-300/50" },
+                                { l: "Debt", v: pos.debt, w: pos.dW, c: "bg-violet-400/50" },
+                                { l: "Health factor", v: pos.health, w: pos.hW, c: "bg-emerald-400", vc: "text-emerald-600" },
+                              ].map((m, i) => (
+                                <div key={m.l} className={i === 0 ? "mt-2" : "mt-2.5"}>
+                                  <div className="flex items-center justify-between">
+                                    <span className="text-[10px] font-medium text-gray-400">{m.l}</span>
+                                    <span className={`text-[10px] font-semibold ${m.vc || "text-[#18323c]"}`}>{m.v}</span>
+                                  </div>
+                                  <div className="mt-1 h-[4px] w-full overflow-hidden rounded-full bg-gray-100">
+                                    <div className={`h-full rounded-full ${m.c}`} style={{ width: `${m.w}%` }} />
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>,
+                /* 03 Abstracted Execution */
+                <div key="p3" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                  <div className="absolute inset-0 flex items-center justify-center px-5">
+                    <div className="w-full max-w-[15rem] h-[10.5rem] overflow-hidden">
+                      <div className="panel-escalator" style={{ animationDuration: '16s' }}>
+                        {[0, 1].map((dup) => (
+                          <div key={dup} className="flex flex-col gap-2 pb-2">
+                            {["Borrow","Route capital","Deploy position","Track exposure","Monitor health","Auto-adjust"].map((step, i) => (
+                              <div key={`${dup}-${step}`} className="flex w-full items-center gap-3">
+                                <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold ${i === 1 ? "bg-[#18323c] text-white" : "border border-gray-200 bg-gray-50 text-gray-400"}`}>{i + 1}</div>
+                                <div className={`flex-1 rounded-xl px-3 py-2 text-[0.82rem] font-medium ${i === 1 ? "border border-[#18323c]/10 bg-[#18323c]/5 text-[#18323c]" : "border border-gray-100 bg-gray-50/80 text-gray-500"}`}>{step}</div>
+                              </div>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>,
+                /* 04 Built on Aave Infrastructure */
+                <div key="p4" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-gray-100 bg-gray-50/80">
+                      <svg width="24" height="24" viewBox="0 0 256 256" fill="none"><path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0z" fill="#B6509E" opacity="0.15" /><path d="M186.7 168.5c-7.5 0-14.2-4.3-17.4-11l-25.9-56.8c-1.4-3.1-4.5-5.1-7.9-5.1h-14.9c-3.4 0-6.5 2-7.9 5.1l-25.9 56.8c-3.2 6.7-9.9 11-17.4 11-10.6 0-19.2-8.6-19.2-19.2 0-2.9.7-5.8 2-8.4l38.3-83.8c5.7-12.5 18.2-20.5 32-20.5h23.2c13.8 0 26.3 8 32 20.5l38.3 83.8c1.3 2.6 2 5.5 2 8.4 0 10.6-8.6 19.2-19.2 19.2z" fill="#B6509E" opacity="0.4" /></svg>
+                    </div>
+                    <span className="mt-3 text-sm font-semibold text-[#18323c]">Aave v4 Rails</span>
+                    <div className="mt-4 w-full max-w-[15rem] overflow-hidden rounded-xl border border-gray-100 bg-gray-50/80 py-2">
+                      <div className="flex whitespace-nowrap panel-scroll-h-slow" style={{ animationDuration: '18s' }}>
+                        {[0, 1].map((dup) => (
+                          <div key={dup} className="flex shrink-0 items-center gap-0">
+                            {["Hub Liquidity","Spoke Isolation","Shared Credit","Risk Engine","LP Underwriting"].map((label) => (
+                              <span key={`${dup}-${label}`} className="flex items-center gap-2 px-3">
+                                <span className="text-[10px] font-medium text-[#B6509E]">{label}</span>
+                                <span className="text-gray-300">&middot;</span>
+                              </span>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>,
+                /* 05 Live Risk Monitoring */
+                <div key="p5" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_55%,rgba(244,63,94,0.03),transparent_55%)]" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
+                    <div className="w-full max-w-[15rem]">
+                      {/* Continuously scrolling chart line */}
+                      <div className="h-[60px] w-full overflow-hidden">
+                        <div className="flex w-[200%] panel-scroll-h-chart" style={{ animationDuration: '15s' }}>
+                          {[0, 1].map((dup) => (
+                            <svg key={dup} className="h-[60px] w-1/2 shrink-0" viewBox="0 0 300 60" preserveAspectRatio="none">
+                              <defs><linearGradient id={`lv-risk-fill-${dup}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#f43f5e" stopOpacity="0.08" /><stop offset="100%" stopColor="#f43f5e" stopOpacity="0" /></linearGradient></defs>
+                              <path d="M0,50 C30,48 60,45 90,42 S150,38 180,35 S240,32 270,28 L300,25 L300,60 L0,60Z" fill={`url(#lv-risk-fill-${dup})`} />
+                              <path d="M0,50 C30,48 60,45 90,42 S150,38 180,35 S240,32 270,28 L300,25" fill="none" stroke="#f43f5e" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+                              <path d="M0,55 L300,55" fill="none" stroke="#fda4af" strokeWidth="1" strokeDasharray="4 3" opacity="0.3" />
+                            </svg>
+                          ))}
+                        </div>
+                      </div>
+                      {/* Green pulsing badge */}
+                      <div className="mt-2 flex items-center justify-center gap-1.5">
+                        <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 panel-pulse" /><span className="text-[10px] font-medium text-gray-500">Above liquidation</span>
+                      </div>
+                      {/* Three metric boxes with tickers */}
+                      <div className="mt-3 flex justify-center gap-2">
+                        {/* Health ticker */}
+                        <div className="rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-1.5 text-center">
+                          <span className="block text-[9px] text-gray-400">Health</span>
+                          <div className="h-[1rem] overflow-hidden">
+                            <div className="panel-ticker-v-fast">
+                              {["1.51","1.53","1.48","1.51"].map((v,i) => (
+                                <div key={i} className="flex h-[1rem] items-center justify-center">
+                                  <span className="text-xs font-semibold text-emerald-600">{v}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        {/* Liq static */}
+                        <div className="rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-1.5 text-center">
+                          <span className="block text-[9px] text-gray-400">Liq</span>
+                          <span className="text-xs font-semibold text-rose-500">1.00</span>
+                        </div>
+                        {/* Buffer ticker */}
+                        <div className="rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-1.5 text-center">
+                          <span className="block text-[9px] text-gray-400">Buffer</span>
+                          <div className="h-[1rem] overflow-hidden">
+                            <div className="panel-ticker-v-fast" style={{ animationDuration: '7s' }}>
+                              {["34%","35%","32%","34%"].map((v,i) => (
+                                <div key={i} className="flex h-[1rem] items-center justify-center">
+                                  <span className="text-xs font-semibold text-[#18323c]">{v}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>,
+              ]}
             />
 
             <section>

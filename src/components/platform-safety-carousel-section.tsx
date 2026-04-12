@@ -13,16 +13,10 @@ type PlatformSafetyCarouselSectionProps = {
   items: readonly PlatformSafetyCarouselItem[]
 }
 
-const slidePalettes = [
-  {
-    chip: "bg-white/80 text-slate-700",
-  },
-  {
-    chip: "bg-white/80 text-slate-700",
-  },
-  {
-    chip: "bg-white/80 text-slate-700",
-  },
+const slideConfig = [
+  { zone: "safe" as const, variant: 4 },
+  { zone: "warning" as const, variant: 5 },
+  { zone: "danger" as const, variant: 6 },
 ] as const
 
 export default function PlatformSafetyCarouselSection({
@@ -45,7 +39,7 @@ export default function PlatformSafetyCarouselSection({
         <div className="snap-x snap-mandatory overflow-x-auto pb-2 touch-pan-x [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <div className="flex w-max gap-4 pr-12 md:gap-5 md:pr-20">
             {items.map((item, index) => {
-              const palette = slidePalettes[index % slidePalettes.length]
+              const config = slideConfig[index % slideConfig.length]
 
               return (
                 <article
@@ -54,14 +48,15 @@ export default function PlatformSafetyCarouselSection({
                 >
                   <PlatformPlaceholderPanel
                     title={item.title}
-                    chipClassName={palette.chip}
+                    zone={config.zone}
+                    variant={config.variant}
                   />
 
                   <div className="mt-5 space-y-2">
                     <h3 className="text-[1.45rem] font-medium leading-[1.04] tracking-[-0.04em] text-[#18323c]">
                       {item.title}
                     </h3>
-                    <p className="max-w-[16rem] text-sm leading-6 text-[#18323c]/68">
+                    <p className="max-w-[16rem] text-sm leading-6 text-gray-600">
                       {item.description}
                     </p>
                   </div>
