@@ -190,8 +190,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="text-2xl font-semibold text-gray-900">Maximize your capital</h3>
-                        <p className="max-w-[16rem] text-base text-gray-600">Borrow up to 80% of your LP value.</p>
+                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Maximize your capital</h3>
+                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Borrow up to 80% of your LP value.</p>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">01</div>
                     </div>
@@ -245,8 +245,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="text-2xl font-semibold text-gray-900">Keep earning fees</h3>
-                        <p className="max-w-[16rem] text-base text-gray-600">Your LP stays active while you borrow.</p>
+                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Keep earning fees</h3>
+                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Your LP stays active while you borrow.</p>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">02</div>
                     </div>
@@ -319,8 +319,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="text-2xl font-semibold text-gray-900">Unlock new strategies</h3>
-                        <p className="max-w-[16rem] text-base text-gray-600">Use borrowed funds however you want.</p>
+                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Unlock new strategies</h3>
+                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Use borrowed funds however you want.</p>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">03</div>
                     </div>
@@ -372,8 +372,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="text-2xl font-semibold text-gray-900">Price-range aware oracles</h3>
-                        <p className="max-w-[16rem] text-base text-gray-600">Valuation tracks your LP&apos;s active tick range.</p>
+                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Price-range aware oracles</h3>
+                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Valuation tracks your LP&apos;s active tick range.</p>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">04</div>
                     </div>
@@ -460,8 +460,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="text-2xl font-semibold text-gray-900">LP-aware risk models</h3>
-                        <p className="max-w-[16rem] text-base text-gray-600">Track pool composition, volatility, and oracle quality.</p>
+                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>LP-aware risk models</h3>
+                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Track pool composition, volatility, and oracle quality.</p>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">05</div>
                     </div>
@@ -560,47 +560,6 @@ export default function HeroSection() {
 
         </div>
 
-        <section>
-          <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="emerald">Who it&apos;s for</SectionEyebrow>
-            <SectionTitle>Built for every kind of&nbsp;LP.</SectionTitle>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-5 md:mt-16 md:grid-cols-3">
-            <article className="group relative overflow-hidden rounded-[1.6rem] border border-gray-200 bg-white p-6 transition-all duration-200 hover:border-gray-300 hover:shadow-[0_2px_20px_rgba(0,0,0,0.04)] md:p-8">
-              <div className="absolute left-0 top-6 h-10 w-1 rounded-r-full bg-emerald-400 md:top-8" />
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-600">Active LPs</span>
-              <h3 className="mt-4 text-xl font-semibold tracking-[-0.02em] text-[#18323c]">
-                Managing positions across DEXes
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                You run concentrated liquidity and need capital without exiting. Deposit, borrow, and keep collecting fees from the same position.
-              </p>
-            </article>
-
-            <article className="group relative overflow-hidden rounded-[1.6rem] border border-gray-200 bg-white p-6 transition-all duration-200 hover:border-gray-300 hover:shadow-[0_2px_20px_rgba(0,0,0,0.04)] md:p-8">
-              <div className="absolute left-0 top-6 h-10 w-1 rounded-r-full bg-sky-400 md:top-8" />
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">Strategists</span>
-              <h3 className="mt-4 text-xl font-semibold tracking-[-0.02em] text-[#18323c]">
-                Building multi-step strategies
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                Use borrowed capital for leverage, yield farming, or new positions. One interface handles borrowing, execution, and monitoring.
-              </p>
-            </article>
-
-            <article className="group relative overflow-hidden rounded-[1.6rem] border border-gray-200 bg-white p-6 transition-all duration-200 hover:border-gray-300 hover:shadow-[0_2px_20px_rgba(0,0,0,0.04)] md:p-8">
-              <div className="absolute left-0 top-6 h-10 w-1 rounded-r-full bg-violet-400 md:top-8" />
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-600">Long-term holders</span>
-              <h3 className="mt-4 text-xl font-semibold tracking-[-0.02em] text-[#18323c]">
-                Unlocking idle capital
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                You hold LP positions but need liquidity. Borrow against what you already have without disrupting your setup or selling assets.
-              </p>
-            </article>
-          </div>
-        </section>
 
         <LazySection minHeight="400px" fallback={<SectionSkeleton minHeight="360px" />}>
           <DeferredTestimonialSection />
