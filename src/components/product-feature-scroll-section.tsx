@@ -98,7 +98,7 @@ export default function ProductFeatureScrollSection({
           @keyframes ptvs { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
 
           .panel-ticker-v-mon { animation: ptvm 10s ease-in-out infinite; }
-          @keyframes ptvm { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-33.333%); } 66%,94% { transform:translateY(-66.666%); } }
+          @keyframes ptvm { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-33.333%); } 66%,94% { transform:translateY(-66.666%); } 100% { transform:translateY(-66.666%); } }
 
           .panel-scroll-h { animation: psh 12s linear infinite; }
           @keyframes psh { from { transform:translateX(0); } to { transform:translateX(-50%); } }
