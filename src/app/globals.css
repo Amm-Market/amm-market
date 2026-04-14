@@ -376,17 +376,14 @@
 }
 
 .panel-escalator {
-  animation: pesc 16s linear infinite;
+  animation: pesc 15s cubic-bezier(0.76, 0, 0.24, 1) infinite;
 }
 
 @keyframes pesc {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(-50%);
-  }
+  0%, 22% { transform: translateY(0); }
+  28%, 50% { transform: translateY(-25%); }
+  56%, 78% { transform: translateY(-50%); }
+  84%, 100% { transform: translateY(-75%); }
 }
 
 .panel-pulse {

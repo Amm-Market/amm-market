@@ -13,73 +13,58 @@ const pageDescription =
 
 const leverageFeatureItems = [
   {
-    title: "LP Backed Leverage",
+    title: "Leverage Layer",
     description:
-      "Use supported AMM positions as collateral to unlock leveraged exposure without exiting the underlying liquidity strategy.",
+      "When leverage mode is selected, Avana draws on LP-backed credit and deploys the borrowed capital into the selected market structure.",
   },
   {
-    title: "One Position, One View",
+    title: "Unwind Layer",
     description:
-      "Monitor collateral value, debt, leverage multiple, liquidation level, and health factor from one unified position view.",
+      "Handles voluntary close, partial reduction, repayment, and emergency liquidation with debt coverage as the first priority.",
   },
   {
-    title: "Abstracted Execution",
-    description:
-      "Avana handles the borrow, execution, and position tracking flow behind the scenes so users can focus on the market view.",
-  },
-  {
-    title: "Built on Aave Infrastructure",
-    description:
-      "Borrowing power is routed through Aave style capital rails while Avana focuses on LP underwriting, execution, and risk logic.",
-  },
-  {
-    title: "Live Risk Monitoring",
+    title: "Risk Layer",
     description:
       "Collateral, debt, and leverage exposure are tracked together in real time so users can react before the position becomes unsafe.",
+  },
+  {
+    title: "Monitoring Layer",
+    description:
+      "Monitor collateral value, debt, leverage multiple, liquidation level, and health factor from one unified position view.",
   },
 ] as const
 
 const leverageWorkflowSteps = [
   {
     title: "Deposit LP",
-    description: "Add a supported LP position as collateral and let Avana value it conservatively using pool and position data.",
+    description: "Deposit a supported LP position and let Avana value it using pool and position data.",
   },
   {
-    title: "Choose leverage",
-    description: "Select your market, target exposure, and leverage multiple from approved leverage markets with defined controls.",
+    title: "Set your leverage",
+    description: "Pick your market, target exposure, and multiplier from approved leverage markets.",
   },
   {
-    title: "Track and manage",
+    title: "Manage from one place",
     description:
-      "Avana borrows, opens, and tracks the position in one system so you can reduce exposure, repay debt, or close when needed from the same dashboard.",
+      "Avana borrows, opens, and tracks the position so you can reduce, repay, or close from the same dashboard.",
   },
 ] as const
 
 const leverageHighlights = [
   {
-    title: "Your LP never stops working",
+    title: "Borrow-rate pricing",
     description:
-      "Collateral stays in the pool earning fees while backing your leveraged position. No exit, no swap, no lost yield.",
+      "Leverage cost is determined by borrow rates from Aave Hub liquidity and LP risk parameters — not perpetual funding rates.",
   },
   {
-    title: "Borrow-based exposure",
+    title: "Pool-aware risk engine",
     description:
-      "Instead of perp funding rates, Avana prices leverage through borrow rates routed from Aave v4 style Hub liquidity and LP-specific risk parameters.",
+      "Valuation accounts for pool composition, tick range, concentration, and accrued fees. Not just the token price.",
   },
   {
-    title: "AMM-aware risk model",
+    title: "Unified risk dashboard",
     description:
-      "Valuation accounts for pool structure, tick range, concentration depth, and accrued fees. Not just token price.",
-  },
-  {
-    title: "Unified position view",
-    description:
-      "Collateral, debt, leverage ratio, and health factor tracked together in one place. Not split across protocols.",
-  },
-  {
-    title: "Market access through the Hub",
-    description:
-      "Your LP unlocks Hub liquidity, and Avana manages execution, debt, leverage, and unwind logic in one LP-backed account.",
+      "Collateral, debt, leverage multiple, and health factor visible in one view. No need to check multiple protocols.",
   },
   {
     title: "Automatic unwind paths",
@@ -88,28 +73,6 @@ const leverageHighlights = [
   },
 ] as const
 
-const leverageSystemLayers = [
-  {
-    title: "Borrow Spoke",
-    description:
-      "The entry point that accepts supported LP collateral and establishes borrowing capacity against protocol rules.",
-  },
-  {
-    title: "Leverage Layer",
-    description:
-      "When leverage mode is selected, Avana draws on LP-backed credit and deploys the borrowed capital into the selected market structure.",
-  },
-  {
-    title: "Monitoring Layer",
-    description:
-      "Tracks LP collateral value, outstanding debt, and the leverage position together as one risk surface.",
-  },
-  {
-    title: "Unwind Layer",
-    description:
-      "Handles voluntary close, partial reduction, repayment, and emergency liquidation with debt coverage as the first priority.",
-  },
-] as const
 
 const leverageFaqItems: InlineFaqItem[] = [
   {
@@ -267,7 +230,7 @@ export default function LeveragePage() {
           <div className="flex flex-col gap-6">
             <div className="flex max-w-[600px] flex-col gap-2">
               <SectionEyebrow tone="rose">How it works</SectionEyebrow>
-              <SectionTitle>How leverage works</SectionTitle>
+              <SectionTitle>Leverage in three steps</SectionTitle>
             </div>
           </div>
 
@@ -293,43 +256,29 @@ export default function LeveragePage() {
         <div className="site-content-shell">
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="rose">What&apos;s new</SectionEyebrow>
-            <SectionTitle>What LP leverage never&nbsp;had.</SectionTitle>
+            <SectionTitle><span className="whitespace-nowrap">What sets LP leverage apart.</span></SectionTitle>
           </div>
 
           <div className="mt-10 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-4">
-            {/* Hero card — dark, spans 2 columns and 2 rows */}
-            <article className="relative overflow-hidden rounded-[1.8rem] bg-[#18323c] p-7 md:col-span-2 md:row-span-2 md:p-10">
-              <div className="absolute -right-16 -top-16 h-72 w-72 rounded-full bg-rose-500/[0.07] blur-3xl" />
-              <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-white/[0.04] blur-3xl" />
-              <div className="relative z-10 flex h-full flex-col">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-400">
-                  01
-                </span>
-                <h3 className="mt-5 max-w-[16ch] text-[1.75rem] font-medium leading-[1.08] tracking-[-0.04em] text-white md:text-[2rem]">
-                  {leverageHighlights[0].title}
-                </h3>
-                <p className="mt-4 max-w-[30rem] text-[0.94rem] leading-[1.7] text-white/60">
-                  {leverageHighlights[0].description}
-                </p>
-                {/* Decorative element */}
-                <div className="mt-auto pt-10">
-                  <div className="flex gap-3">
-                    <div className="h-1.5 w-12 rounded-full bg-rose-400/40" />
-                    <div className="h-1.5 w-8 rounded-full bg-white/15" />
-                    <div className="h-1.5 w-5 rounded-full bg-white/10" />
-                  </div>
-                </div>
-              </div>
+            {/* Hero card — image, spans 2 columns and 2 rows */}
+            <article className="relative overflow-hidden rounded-[1.8rem] bg-[#f5f3f0] md:col-span-2 md:row-span-2">
+              <Image
+                src="/images/leverage-hero-placeholder.png"
+                alt="Leverage dashboard"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </article>
 
             {/* Right-side cards (4 cards in a 2×2 grid beside the hero) */}
-            {leverageHighlights.slice(1, 5).map((item, i) => (
+            {leverageHighlights.map((item, i) => (
               <article
                 key={item.title}
                 className="flex flex-col rounded-[1.8rem] border border-gray-200 bg-gray-50 p-6 md:p-7"
               >
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
-                  {String(i + 2).padStart(2, "0")}
+                  {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="mt-4 text-lg font-medium tracking-[-0.03em] text-[#18323c]">
                   {item.title}
@@ -340,29 +289,6 @@ export default function LeveragePage() {
               </article>
             ))}
 
-            {/* Bottom wide card — warm gradient, spans full width */}
-            <article className="flex flex-col rounded-[1.8rem] border border-gray-200 bg-[linear-gradient(145deg,#ffffff_0%,#faf7f5_100%)] p-6 md:col-span-4 md:p-8">
-              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between md:gap-12">
-                <div className="flex items-start gap-5">
-                  <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
-                    06
-                  </span>
-                  <div>
-                    <h3 className="text-lg font-medium tracking-[-0.03em] text-[#18323c]">
-                      {leverageHighlights[5].title}
-                    </h3>
-                    <p className="mt-2 max-w-[36rem] text-sm leading-relaxed text-gray-600">
-                      {leverageHighlights[5].description}
-                    </p>
-                  </div>
-                </div>
-                <div className="hidden shrink-0 items-center gap-2 md:flex">
-                  <div className="h-1.5 w-16 rounded-full bg-rose-200/70" />
-                  <div className="h-1.5 w-10 rounded-full bg-gray-200" />
-                  <div className="h-1.5 w-6 rounded-full bg-gray-100" />
-                </div>
-              </div>
-            </article>
           </div>
         </div>
       </section>
@@ -373,7 +299,7 @@ export default function LeveragePage() {
             <ProductFeatureScrollSection
               eyebrow="Core Product"
               eyebrowTone="rose"
-              title="LP-backed leverage, managed in one system."
+              title={<span className="lg:whitespace-nowrap">Perps, built on top of LP collateral</span>}
               items={leverageFeatureItems}
               panels={[
                 /* 01 LP Backed Leverage — collateral card with multiplier ring */
@@ -429,51 +355,18 @@ export default function LeveragePage() {
                     </div>
                   </div>
                 </div>,
-                /* 02 One Position, One View — cycling position card with metrics */
-                <div key="p2" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 flex items-center justify-center p-5">
-                    <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                      <div className="flex items-center justify-between">
-                        <div className="h-3 overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: "10s" }}>{["ETH / USDC","WBTC / ETH","ARB / USDC","ETH / USDC"].map((v,i) => (<span key={i} className="block h-3 text-[11px] font-semibold text-[#18323c]">{v}</span>))}</div></div>
-                        <span className="rounded-full border border-rose-100 bg-rose-50 px-2 py-0.5 text-[8px] font-semibold text-rose-500">Leverage</span>
-                      </div>
-                      <div className="mt-3 grid grid-cols-2 gap-2">
-                        {[
-                          { l: "Collateral", vals: ["$12,400","$28,600","$5,200","$12,400"], c: "text-[#18323c]" },
-                          { l: "Debt", vals: ["$8,200","$18,400","$3,100","$8,200"], c: "text-rose-500" },
-                          { l: "Leverage", vals: ["3.2x","4.1x","2.8x","3.2x"], c: "text-[#18323c]" },
-                          { l: "P&L", vals: ["+$620","+$1,840","+$280","+$620"], c: "text-emerald-600" },
-                        ].map((m,i) => (
-                          <div key={m.l} className="rounded-xl border border-gray-100 bg-gray-50/60 px-3 py-2">
-                            <span className="block text-[8px] font-medium uppercase tracking-[0.08em] text-gray-400">{m.l}</span>
-                            <div className="mt-1 h-[1rem] overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: `${8 + i}s` }}>{m.vals.map((v,j) => (<div key={j} className="flex h-[1rem] items-center"><span className={`text-xs font-semibold tabular-nums ${m.c}`}>{v}</span></div>))}</div></div>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="mt-3 border-t border-gray-100 pt-3">
-                        <div className="flex items-center justify-between text-[8px] font-medium text-gray-400">
-                          <span>Health factor</span>
-                          <div className="h-3 overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: "6s" }}>{["1.51","1.55","1.68","1.51"].map((v,i) => (<span key={i} className="block h-3 text-[10px] font-semibold tabular-nums text-emerald-600">{v}</span>))}</div></div>
-                        </div>
-                        <div className="mt-1.5 h-[4px] w-full overflow-hidden rounded-full bg-gray-100">
-                          <div className="h-full rounded-full bg-emerald-400 panel-bar-pulse" style={{ width: "75%", animationDelay: "0.3s" }} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>,
-                /* 03 Abstracted Execution — escalator step list (matching homepage pattern) */
+                /* 02 Unwind Layer — escalator step list */
                 <div key="p3" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_58%,rgba(244,63,94,0.05),transparent_58%)]" />
                   <div className="absolute inset-0 flex items-center justify-center px-5">
                     <div className="relative w-full max-w-[16rem] h-[180px] overflow-hidden">
                       <div className="pointer-events-none absolute inset-x-0 top-1/2 h-[52px] -translate-y-1/2 rounded-[16px] border border-rose-100 bg-[linear-gradient(180deg,rgba(255,241,242,0.82),rgba(255,255,255,0.98))] shadow-[0_10px_24px_rgba(244,63,94,0.08)]" />
-                      <div className="panel-escalator flex flex-col" style={{ animationDuration: "14s" }}>
+                      <div className="panel-escalator flex flex-col">
                         {[
-                          { prev: { label: "Deposit LP collateral", icon: "\u2193" }, active: { label: "Borrow from Hub", icon: "\u2197" }, next: { label: "Deploy into leverage", icon: "\u26A1" } },
-                          { prev: { label: "Deploy into leverage", icon: "\u26A1" }, active: { label: "Track all exposure", icon: "\u25CE" }, next: { label: "Auto-adjust limits", icon: "\u21C5" } },
-                          { prev: { label: "Auto-adjust limits", icon: "\u21C5" }, active: { label: "Monitor health", icon: "\u2665" }, next: { label: "Deposit LP collateral", icon: "\u2193" } },
-                          { prev: { label: "Deposit LP collateral", icon: "\u2193" }, active: { label: "Borrow from Hub", icon: "\u2197" }, next: { label: "Deploy into leverage", icon: "\u26A1" } },
+                          { prev: { label: "Close position", icon: "\u2715" }, active: { label: "Repay debt", icon: "\u2197" }, next: { label: "Release collateral", icon: "\u2193" } },
+                          { prev: { label: "Reduce exposure", icon: "\u25CE" }, active: { label: "Trigger liquidation", icon: "\u26A1" }, next: { label: "Return surplus", icon: "\u21C5" } },
+                          { prev: { label: "Settle balance", icon: "\u2611" }, active: { label: "Close position", icon: "\u2715" }, next: { label: "Repay debt", icon: "\u2197" } },
+                          { prev: { label: "Close position", icon: "\u2715" }, active: { label: "Repay debt", icon: "\u2197" }, next: { label: "Release collateral", icon: "\u2193" } },
                         ].map((slide, i) => (
                           <div key={i} className="flex h-[180px] flex-col justify-center gap-3">
                             <div className="flex h-[52px] items-center gap-3 rounded-[16px] border border-gray-100 bg-white px-4 text-gray-500 shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
@@ -491,46 +384,6 @@ export default function LeveragePage() {
                             </div>
                           </div>
                         ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>,
-                /* 04 Built on Aave Infrastructure — hub/spoke grid with flow */
-                <div key="p4" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 flex items-center justify-center p-5">
-                    <div className="w-full max-w-[16.25rem] overflow-hidden rounded-2xl border border-gray-200 bg-white">
-                      <div className="grid grid-cols-[1fr_auto_1fr] items-stretch">
-                        <div className="panel-glow flex flex-col border-r border-gray-200 bg-gray-50/70 p-3.5">
-                          <span className="text-[8px] font-medium uppercase tracking-[0.14em] text-gray-500">Hub</span>
-                          <div className="mt-1.5 flex items-center gap-1.5">
-                            <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#B6509E]/10">
-                              <svg width="12" height="12" viewBox="0 0 256 256" fill="none"><path d="M186.7 168.5c-7.5 0-14.2-4.3-17.4-11l-25.9-56.8c-1.4-3.1-4.5-5.1-7.9-5.1h-14.9c-3.4 0-6.5 2-7.9 5.1l-25.9 56.8c-3.2 6.7-9.9 11-17.4 11-10.6 0-19.2-8.6-19.2-19.2 0-2.9.7-5.8 2-8.4l38.3-83.8c5.7-12.5 18.2-20.5 32-20.5h23.2c13.8 0 26.3 8 32 20.5l38.3 83.8c1.3 2.6 2 5.5 2 8.4 0 10.6-8.6 19.2-19.2 19.2z" fill="#B6509E" opacity="0.6" /></svg>
-                            </div>
-                            <p className="text-lg font-semibold tabular-nums text-[#18323c]">$4.2M</p>
-                          </div>
-                        </div>
-                        <div className="flex w-12 flex-col items-center justify-center bg-white px-0.5">
-                          <svg className="h-[3.25rem] w-7 shrink-0 text-[#B6509E]" viewBox="0 0 28 56" fill="none" aria-hidden="true">
-                            <path d="M6 28 H22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 5" className="panel-dash-flow" />
-                            <path d="M18 20 L22 28 L18 36" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </div>
-                        <div className="flex min-h-[6.5rem] flex-col border-l border-dashed border-gray-300 bg-white p-3.5">
-                          <span className="text-[8px] font-medium uppercase tracking-[0.14em] text-gray-500">Spoke</span>
-                          <p className="mt-1 text-[10px] font-semibold leading-tight text-[#18323c]">ETH / USDC</p>
-                          <p className="mt-2 text-[8px] font-medium tabular-nums text-gray-600">$2.1M</p>
-                          <span className="mt-auto inline-flex w-fit rounded-md border border-rose-200 bg-rose-50 px-2 py-0.5 text-[8px] font-medium text-rose-600">Leverage</span>
-                        </div>
-                      </div>
-                      <div className="border-t border-gray-100 bg-gray-50/40 px-3.5 py-2.5">
-                        <div className="flex items-center justify-between text-[8px]">
-                          <span className="font-medium text-gray-500">Borrow APR</span>
-                          <div className="h-3 overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: "9s" }}>{["5.4%","5.6%","5.2%","5.4%"].map((v,i) => (<span key={i} className="block h-3 tabular-nums font-semibold text-[#18323c]">{v}</span>))}</div></div>
-                        </div>
-                        <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-gray-200">
-                          <div className="h-full w-[62%] rounded-full bg-[#B6509E]/60 panel-bar-pulse" />
-                        </div>
-                        <div className="mt-1 flex items-center justify-between text-[7px] text-gray-400"><span>Utilization</span><span className="tabular-nums text-gray-600">62%</span></div>
                       </div>
                     </div>
                   </div>
@@ -573,6 +426,39 @@ export default function LeveragePage() {
                     </div>
                   </div>
                 </div>,
+                /* 04 One Position, One View — cycling position card with metrics */
+                <div key="p4" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                  <div className="absolute inset-0 flex items-center justify-center p-5">
+                    <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
+                      <div className="flex items-center justify-between">
+                        <div className="h-3 overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: "10s" }}>{["ETH / USDC","WBTC / ETH","ARB / USDC","ETH / USDC"].map((v,i) => (<span key={i} className="block h-3 text-[11px] font-semibold text-[#18323c]">{v}</span>))}</div></div>
+                        <span className="rounded-full border border-rose-100 bg-rose-50 px-2 py-0.5 text-[8px] font-semibold text-rose-500">Leverage</span>
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        {[
+                          { l: "Collateral", vals: ["$12,400","$28,600","$5,200","$12,400"], c: "text-[#18323c]" },
+                          { l: "Debt", vals: ["$8,200","$18,400","$3,100","$8,200"], c: "text-rose-500" },
+                          { l: "Leverage", vals: ["3.2x","4.1x","2.8x","3.2x"], c: "text-[#18323c]" },
+                          { l: "P&L", vals: ["+$620","+$1,840","+$280","+$620"], c: "text-emerald-600" },
+                        ].map((m,i) => (
+                          <div key={m.l} className="rounded-xl border border-gray-100 bg-gray-50/60 px-3 py-2">
+                            <span className="block text-[8px] font-medium uppercase tracking-[0.08em] text-gray-400">{m.l}</span>
+                            <div className="mt-1 h-[1rem] overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: `${8 + i}s` }}>{m.vals.map((v,j) => (<div key={j} className="flex h-[1rem] items-center"><span className={`text-xs font-semibold tabular-nums ${m.c}`}>{v}</span></div>))}</div></div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3 border-t border-gray-100 pt-3">
+                        <div className="flex items-center justify-between text-[8px] font-medium text-gray-400">
+                          <span>Health factor</span>
+                          <div className="h-3 overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: "6s" }}>{["1.51","1.55","1.68","1.51"].map((v,i) => (<span key={i} className="block h-3 text-[10px] font-semibold tabular-nums text-emerald-600">{v}</span>))}</div></div>
+                        </div>
+                        <div className="mt-1.5 h-[4px] w-full overflow-hidden rounded-full bg-gray-100">
+                          <div className="h-full rounded-full bg-emerald-400 panel-bar-pulse" style={{ width: "75%", animationDelay: "0.3s" }} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>,
               ]}
             />
 
@@ -580,7 +466,7 @@ export default function LeveragePage() {
               <div className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-14">
                 <div className="space-y-3">
                   <SectionEyebrow tone="rose">Risk controls</SectionEyebrow>
-                  <SectionTitle className="max-w-[11ch]">Built for controlled leverage.</SectionTitle>
+                  <SectionTitle className="max-w-[11ch]">Designed for safe leverage.</SectionTitle>
                 </div>
 
                 <div className="space-y-6 text-left text-[#39515b]">
@@ -595,12 +481,7 @@ export default function LeveragePage() {
               </div>
             </section>
 
-            <ProductFeatureScrollSection
-              eyebrow="System design"
-              eyebrowTone="rose"
-              title="Built as a layered leverage stack."
-              items={leverageSystemLayers}
-            />
+
 
             <HomepageNewsroomSection
               collection="leverage"

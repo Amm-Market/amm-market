@@ -9,7 +9,7 @@ type ProductFeatureItem = {
 type ProductFeatureScrollSectionProps = {
   eyebrow?: string
   eyebrowTone?: SectionEyebrowTone
-  title: string
+  title: ReactNode
   items: readonly ProductFeatureItem[]
   panels?: ReactNode[]
 }
