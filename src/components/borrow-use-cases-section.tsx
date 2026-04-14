@@ -51,8 +51,8 @@ export function BorrowUseCasesSection() {
           <div className="max-w-[22rem] space-y-4">
             <SectionEyebrow tone="blue">Use Cases</SectionEyebrow>
             <SectionTitle className="max-w-none leading-[0.96]">
-              <span className="block whitespace-nowrap">Borrowed liquidity</span>
-              <span className="block whitespace-nowrap">use cases.</span>
+              <span className="block whitespace-nowrap">Where borrowed</span>
+              <span className="block whitespace-nowrap">capital goes.</span>
             </SectionTitle>
           </div>
         </div>

@@ -51,7 +51,7 @@ const openSpokeFaqItems: InlineFaqItem[] = [
 const borrowFeatureItems = [
   {
     title: "LP-native valuation",
-    description: "Each position is priced from pool structure, token exposure, and venue-specific collateral logic.",
+    description: "Positions are priced from live pool structure, actual token exposure, and DEX-specific collateral rules.",
   },
   {
     title: "Dual-oracle pricing",
@@ -59,15 +59,15 @@ const borrowFeatureItems = [
   },
   {
     title: "Shared Hub liquidity",
-    description: "Borrowing power comes from shared Hub liquidity while risk remains isolated inside the Borrow Spoke.",
+    description: "Borrow from Aave Hubs while risk stays ring-fenced inside the Borrow Spokes.",
   },
   {
-    title: "High capital efficiency",
-    description: "Keep LP fees active while simultaneously accessing borrowing power.",
+    title: "Uninterrupted fee accrual",
+    description: "Deposited LP positions continue earning trading fees throughout the life of the loan.",
   },
   {
     title: "Minimal volatility risk",
-    description: "Clear risk parameters and stable liquidation behavior under stress. Peg-aligned assets can significantly reduce liquidation risk.",
+    description: "Transparent risk parameters and predictable liquidation behavior, especially for peg-aligned pools.",
   },
   {
     title: "Cleaner position monitoring",
@@ -162,13 +162,13 @@ export default function BorrowPage() {
               {/* Right Column - Text Content */}
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
                   <h1 className="mb-3 max-w-[11ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
-                    <span>Keep LP capital</span>
+                    <span>Borrow from</span>
                     <br />
-                    <span>ready to borrow.</span>
+                    <span>AMM positions.</span>
                   </h1>
 
                   <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
-                    Borrow against supported LP positions at 5.5% APR while your liquidity stays active and keeps earning fees.
+                    Access up to 80% of your LP value as a loan at 5.5% APR while your position keeps earning trading fees.
                   </p>
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
@@ -196,11 +196,12 @@ export default function BorrowPage() {
 
       <ProductStorySection
         withTopDivider
+        eyebrow="Tap into your AMM Markets"
         eyebrowTone="blue"
-        titleLines={["Unlock liquidity from", "Your AMM Pools."]}
+        titleLines={["From pool to credit,", "seamlessly."]}
         paragraphs={[
-          "Borrow lives on the borrower-facing spoke, where each LP position is interpreted, valued, and risk-scored with pool-specific logic instead of being treated like a static token balance.",
-          "Capacity comes from shared Hub liquidity, while dual-oracle pricing, health checks, and liquidation rules stay venue-aware so active AMM exposure can remain productive without making credit enforcement loose.",
+          "Avana Borrow treats each LP position as live collateral, valued, risk-scored, and managed with pool-specific logic that reflects real AMM behaviour instead of flattening it into a token balance.",
+          "Borrowing capacity is drawn from shared Hub liquidity. Dual-oracle pricing, health monitoring, and venue-aware liquidation keep your active exposure productive while maintaining strong credit standards.",
         ]}
       />
 
@@ -210,25 +211,25 @@ export default function BorrowPage() {
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="violet">Borrow markets</SectionEyebrow>
-                <SectionTitle>Different Borrow markets</SectionTitle>
+                <SectionTitle>Pick your borrow path</SectionTitle>
               </div>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 <BorrowMarketCard
                   number="1"
                   title="Token Markets"
-                  description="Deposit LP positions as collateral to borrow single assets"
+                  description="Supply LP positions and receive single-asset loans deposited straight to your wallet."
                 />
 
                 <BorrowMarketCard
                   number="2"
                   title="Leverage / Perps Markets"
-                  description="Deposit LP positions as collateral to open managed leverage or perps exposure"
+                  description="Use LP positions to open leveraged or perps positions without exiting liquidity."
                 />
 
                 <BorrowMarketCard
                   number="3"
                   title="Pool Markets"
-                  description="Deposit LP positions as collateral to borrow pool positions"
+                  description="Deposit LP positions as collateral to borrow pool positions."
                 />
               </div>
             </div>
@@ -236,7 +237,7 @@ export default function BorrowPage() {
             <div className="flex flex-col gap-8 md:gap-12">
               <div className="flex flex-col gap-2">
                 <SectionEyebrow tone="emerald">DEX Coverage</SectionEyebrow>
-                <SectionTitle>Borrow Across DEXs</SectionTitle>
+                <SectionTitle>Supported across top DEXs</SectionTitle>
               </div>
               <div className="flex flex-1 items-stretch gap-2 flex-col sm:flex-row">
                 <div className="grid w-full flex-1 grid-cols-3 gap-2">
@@ -303,7 +304,7 @@ export default function BorrowPage() {
         <div className="site-content-width space-y-32 pt-32 pb-16 md:space-y-40 md:pt-40 md:pb-20 2xl:space-y-36 2xl:pt-36 2xl:pb-18">
           <ProductFeatureScrollSection
             eyebrowTone="blue"
-            title="Borrow without unwinding."
+            title="Engineered for LP safety."
             items={borrowFeatureItems}
             panels={[
               /* 01 LP-native valuation — pool structure, exposure, venue collateral logic */
