@@ -7,6 +7,10 @@ import InvestApySection from "@/components/invest-apy-section"
 import InvestGrowthCalculatorSection from "@/components/invest-growth-calculator-section"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
+
+const pageDescription =
+  "Supply single assets into LP-backed credit markets, keep liquidity flexible, and earn demand-driven yield across Avana."
 
 const stableSpokeFaqItems: InlineFaqItem[] = [
   {
@@ -67,8 +71,44 @@ const investFeatureItems = [
 ] as const
 
 export const metadata: Metadata = {
-  title: "Invest - Stablecoin LP Collateral",
-  description: "Avana Invest is built around stable LP collateral with the protocol's highest efficiency and lowest-risk borrowing profile.",
+  title: `Invest - ${SITE_NAME}`,
+  description: pageDescription,
+  keywords: [
+    "LP-backed credit",
+    "DeFi lending",
+    "stablecoin yield",
+    "Aave v4",
+    "onchain yield",
+    "supply markets",
+  ],
+  alternates: {
+    canonical: siteRoutes.invest,
+  },
+  openGraph: {
+    title: `Invest - ${SITE_NAME}`,
+    description: pageDescription,
+    url: siteRoutes.invest,
+    images: [
+      {
+        url: buildOgImagePath({
+          title: `Invest - ${SITE_NAME}`,
+          subtitle: "Supply assets into LP-backed credit markets",
+        }),
+        alt: `Invest - ${SITE_NAME}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Invest - ${SITE_NAME}`,
+    description: pageDescription,
+    images: [
+      buildOgImagePath({
+        title: `Invest - ${SITE_NAME}`,
+        subtitle: "Supply assets into LP-backed credit markets",
+      }),
+    ],
+  },
 }
 
 export default function InvestPage() {
@@ -88,6 +128,7 @@ export default function InvestPage() {
                     width={1400}
                     height={1400}
                     className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
+                    sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
                     priority
                     fetchPriority="high"
                   />
@@ -129,7 +170,7 @@ export default function InvestPage() {
         </div>
       </div>
 
-      <section className="border-t border-gray-200 bg-white pt-8 pb-8 md:pt-10 md:pb-10">
+      <section className="deferred-viewport border-t border-gray-200 bg-white pt-8 pb-8 md:pt-10 md:pb-10 2xl:pt-9 2xl:pb-9">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem]">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-center md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
@@ -163,163 +204,300 @@ export default function InvestPage() {
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
-        <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
+        <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20 2xl:space-y-36 2xl:pt-18 2xl:pb-18">
           <InvestGrowthCalculatorSection />
 
           <ProductFeatureScrollSection
             eyebrowTone="emerald"
-            title="A market-leading rate, with more built in."
+            title="Under the hood."
             items={investFeatureItems}
             panels={[
-              /* 01 Easy money movement — vertical ticker cycling deposit/withdraw flows */
-              <div key="p1" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(16,185,129,0.04),transparent_60%)]" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
-                  <div className="w-full max-w-[15rem] h-[4.5rem] overflow-hidden">
-                    <div className="panel-ticker-v">
-                      {[
-                        { action: "Deposit", amount: "$50,000", status: "Available: Instant", color: "text-emerald-600" },
-                        { action: "Withdraw", amount: "$12,000", status: "Settled: 1 block", color: "text-[#18323c]" },
-                        { action: "Deposit", amount: "$85,000", status: "Available: Instant", color: "text-emerald-600" },
-                        { action: "Deposit", amount: "$50,000", status: "Available: Instant", color: "text-emerald-600" },
-                      ].map((row, i) => (
-                        <div key={i} className="h-[4.5rem] flex items-center justify-center">
-                          <div className="flex w-full items-center gap-2 rounded-xl border border-gray-200 bg-white px-3.5 py-2.5">
-                            <div className="flex flex-col">
-                              <span className="text-[9px] font-medium uppercase tracking-[0.1em] text-gray-400">{row.action}</span>
-                              <span className="text-lg font-semibold text-[#18323c]">{row.amount}</span>
-                            </div>
-                            <svg width="16" height="12" viewBox="0 0 16 12" className="shrink-0 text-emerald-300"><path d="M1,6 L13,6 M10,2 L14,6 L10,10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                            <span className={`text-xs font-semibold ${row.color}`}>{row.status}</span>
-                          </div>
+              /* 01 Easy money movement */
+              <div key="p1" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
+                <div className="absolute inset-0 flex items-center justify-center p-4">
+                  <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-3 sm:p-4">
+                    <div className="flex min-w-0 items-center gap-1.5 sm:gap-2">
+                      <div className="flex w-[3.25rem] shrink-0 flex-col items-center gap-1.5 text-center sm:w-[3.5rem]">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-200 bg-emerald-50 text-emerald-700 sm:h-12 sm:w-12">
+                          <svg width="18" height="20" viewBox="0 0 18 20" aria-hidden="true">
+                            <path
+                              d="M9 2v11M4 9l5 5 5-5"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="1.8"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>,
-
-              /* 02 A market-leading rate — big APY ticker + scrolling chart + stat tickers */
-              <div key="p2" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_65%,rgba(20,184,166,0.04),transparent_55%)]" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
-                  {/* APY ticker */}
-                  <div className="h-[3.2rem] overflow-hidden">
-                    <div className="panel-ticker-v-fast">
-                      {["5.5","5.6","5.4","5.5"].map((v, i) => (
-                        <div key={i} className="flex h-[3.2rem] items-center justify-center">
-                          <span className="text-[3.2rem] font-semibold leading-none tracking-[-0.05em] text-[#18323c]">{v}<span className="text-base font-normal text-gray-300">%</span></span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <span className="mt-1 text-xs text-gray-400">Supply APY · vs bank ~0.5%</span>
-                  {/* Scrolling area chart */}
-                  <div className="mt-4 w-full max-w-[15rem] h-[55px] overflow-hidden">
-                    <div className="flex w-[200%] panel-scroll-h-chart">
-                      {[0, 1].map((dup) => (
-                        <svg key={dup} className="h-[55px] w-1/2 shrink-0" viewBox="0 0 300 55" preserveAspectRatio="none">
-                          <defs><linearGradient id={`inv-fill-${dup}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#14b8a6" stopOpacity="0.12" /><stop offset="100%" stopColor="#14b8a6" stopOpacity="0" /></linearGradient></defs>
-                          <path d="M0,42 C30,40 60,36 100,32 S160,24 200,20 S260,16 300,12 L300,55 L0,55Z" fill={`url(#inv-fill-${dup})`} />
-                          <path d="M0,42 C30,40 60,36 100,32 S160,24 200,20 S260,16 300,12" fill="none" stroke="#14b8a6" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                  {/* Yield stat tickers */}
-                  <div className="mt-2 flex gap-2">
-                    <div className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-center">
-                      <span className="block text-[9px] text-gray-400">24h</span>
-                      <div className="h-[1rem] overflow-hidden">
-                        <div className="panel-ticker-v-fast" style={{ animationDuration: '7s' }}>
-                          {["+$7.52","+$7.68","+$7.41","+$7.52"].map((v, i) => (
-                            <div key={i} className="flex h-[1rem] items-center justify-center">
-                              <span className="text-xs font-semibold text-emerald-600">{v}</span>
-                            </div>
-                          ))}
+                        <span className="rounded-md bg-emerald-50 px-1.5 py-0.5 text-[11px] font-semibold tabular-nums leading-none text-emerald-800">
+                          +72k
+                        </span>
+                      </div>
+                      <svg width="18" height="36" viewBox="0 0 18 36" className="shrink-0 text-emerald-500/85" aria-hidden="true">
+                        <path
+                          d="M1 18H17"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeDasharray="4 6"
+                          strokeLinecap="round"
+                          className="panel-dash-flow"
+                        />
+                        <path
+                          d="M13 14L17 18L13 22"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <div className="relative z-10 min-w-0 flex-1 rounded-[18px] border border-gray-200 bg-gray-50/90 px-3 py-4 sm:px-4 sm:py-5">
+                        <p className="text-center text-[1.85rem] font-semibold leading-none tracking-[-0.04em] text-[#18323c] sm:text-[2.05rem]">
+                          <span className="text-sm font-medium text-gray-400 sm:text-base">$</span>
+                          72,400
+                        </p>
+                        <div className="mt-2 flex items-center justify-center gap-1 rounded-full border border-gray-200 bg-white px-2.5 py-1">
+                          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#2775ca]" aria-hidden="true" />
+                          <span className="text-[11px] font-medium text-gray-700">USDC</span>
                         </div>
                       </div>
-                    </div>
-                    <div className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-center">
-                      <span className="block text-[9px] text-gray-400">30d</span>
-                      <div className="h-[1rem] overflow-hidden">
-                        <div className="panel-ticker-v-fast" style={{ animationDuration: '8s' }}>
-                          {["+$225","+$231","+$218","+$225"].map((v, i) => (
-                            <div key={i} className="flex h-[1rem] items-center justify-center">
-                              <span className="text-xs font-semibold text-emerald-600">{v}</span>
-                            </div>
-                          ))}
+                      <svg width="18" height="36" viewBox="0 0 18 36" className="shrink-0 text-gray-400" aria-hidden="true">
+                        <path
+                          d="M1 18H17"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeDasharray="4 6"
+                          strokeLinecap="round"
+                          className="panel-dash-flow"
+                          style={{ animationDelay: "0.35s" }}
+                        />
+                        <path
+                          d="M13 14L17 18L13 22"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <div className="flex w-[3.25rem] shrink-0 flex-col items-center gap-1.5 text-center sm:w-[3.5rem]">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-gray-200 bg-gray-50 text-gray-500 sm:h-12 sm:w-12">
+                          <svg width="18" height="20" viewBox="0 0 18 20" aria-hidden="true">
+                            <path
+                              d="M9 18V7M4 11l5-5 5 5"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="1.8"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>,
-
-              /* 03 Supply once, power many borrowers — deposit label + horizontal spoke ticker + borrower counter */
-              <div key="p3" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(34,197,94,0.04),transparent_60%)]" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
-                  {/* Your deposit label */}
-                  <div className="rounded-2xl border border-gray-200 bg-white px-5 py-3 text-center">
-                    <span className="text-[9px] font-medium uppercase tracking-[0.12em] text-emerald-500">Your deposit</span>
-                    <span className="mt-1 block text-base font-semibold text-[#18323c]">$50,000 USDC</span>
-                  </div>
-                  <svg className="my-2" width="20" height="24" viewBox="0 0 20 24"><path d="M10,2 L10,18 M5,14 L10,20 L15,14" fill="none" stroke="#bbf7d0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                  {/* Horizontal scrolling spoke names */}
-                  <div className="w-full max-w-[15rem] overflow-hidden rounded-xl border border-gray-200 bg-white py-2.5">
-                    <div className="flex whitespace-nowrap panel-scroll-h">
-                      {[0, 1].map((dup) => (
-                        <div key={dup} className="flex shrink-0 items-center gap-0">
-                          {["LP Spoke A", "LP Spoke B", "LP Spoke C", "Pool Market", "Leverage Spoke"].map((s) => (
-                            <span key={`${dup}-${s}`} className="shrink-0 px-3 text-[10px] font-medium text-emerald-600">
-                              {s} <span className="text-emerald-300">&middot;</span>
-                            </span>
-                          ))}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  {/* Active borrowers counter */}
-                  <div className="mt-3 rounded-lg border border-gray-200 bg-white px-4 py-1.5 text-center">
-                    <span className="block text-[9px] text-gray-400">Active borrowers</span>
-                    <div className="h-[1.2rem] overflow-hidden">
-                      <div className="panel-ticker-v-fast">
-                        {["142","148","155","142"].map((v, i) => (
-                          <div key={i} className="flex h-[1.2rem] items-center justify-center">
-                            <span className="text-sm font-semibold text-[#18323c]">{v}</span>
-                          </div>
-                        ))}
+                        <span className="rounded-md bg-gray-100 px-1.5 py-0.5 text-[11px] font-semibold tabular-nums leading-none text-gray-700">
+                          11k
+                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>,
 
-              /* 04 Base rate plus risk premium — stacked rate rows with breathing yield */
-              <div key="p4" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
-                  <div className="w-full max-w-[15rem] space-y-2">
-                    <div className="rounded-xl border border-gray-200 bg-white px-4 py-3">
-                      <div className="flex items-center justify-between"><span className="text-[10px] font-medium text-gray-400">Hub base rate</span><span className="text-sm font-semibold text-[#18323c]">3.2%</span></div>
+              /* 02 A market-leading rate */
+              <div key="p2" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
+                <div className="absolute inset-0 flex items-center justify-center p-4">
+                  <div className="flex w-full max-w-[15.75rem] flex-col justify-center rounded-[20px] border border-gray-200 bg-white p-4">
+                    <div className="flex min-w-0 items-start justify-between gap-3">
+                      <div className="min-h-[3.35rem] min-w-0 flex-1 overflow-hidden">
+                        <div className="panel-ticker-v-fast" style={{ animationDuration: "8s" }}>
+                          {["6.1", "6.2", "6.0", "6.1"].map((v, i) => (
+                            <div key={i} className="flex h-[3.35rem] items-center justify-center">
+                              <span className="text-[2.65rem] font-semibold leading-none tracking-[-0.06em] text-[#18323c] sm:text-[3rem]">
+                                {v}
+                                <span className="text-xl font-normal text-gray-300 sm:text-2xl">%</span>
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <span className="mt-1 shrink-0 rounded-full border border-emerald-100 bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-emerald-800">
+                        APY
+                      </span>
                     </div>
-                    <div className="flex items-center justify-center"><span className="text-lg font-light text-emerald-300">+</span></div>
-                    <div className="rounded-xl border border-gray-200 bg-white px-4 py-3">
-                      <div className="flex items-center justify-between"><span className="text-[10px] font-medium text-gray-400">LP risk premium</span><span className="text-sm font-semibold text-emerald-600">+2.3%</span></div>
+                    <div className="relative z-10 mt-4 overflow-hidden rounded-xl border border-gray-200 bg-gray-50/90 px-3 pb-3 pt-4">
+                      <div className="pointer-events-none absolute inset-x-3 top-4 z-0 h-px bg-gray-200/90" />
+                      <div className="pointer-events-none absolute inset-x-3 top-1/2 z-0 h-px -translate-y-px bg-gray-200/80" />
+                      <div className="pointer-events-none absolute inset-x-3 bottom-9 z-0 h-px bg-gray-200/70" />
+                      <svg className="relative z-[1] h-20 w-full" viewBox="0 0 280 72" preserveAspectRatio="none" aria-hidden="true">
+                        <defs>
+                          <linearGradient id="inv-spark-fill-p2" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#14b8a6" stopOpacity="0.16" />
+                            <stop offset="100%" stopColor="#14b8a6" stopOpacity="0" />
+                          </linearGradient>
+                        </defs>
+                        <path
+                          d="M0,58 C45,52 90,44 130,34 S210,18 250,12 L280,8 L280,72 L0,72Z"
+                          fill="url(#inv-spark-fill-p2)"
+                        />
+                        <path
+                          d="M0,58 C45,52 90,44 130,34 S210,18 250,12 L280,8"
+                          fill="none"
+                          stroke="#0d9488"
+                          strokeWidth="2.25"
+                          strokeLinecap="round"
+                          vectorEffect="non-scaling-stroke"
+                        />
+                        <circle
+                          className="panel-ring"
+                          cx="268"
+                          cy="10"
+                          r="4"
+                          fill="white"
+                          stroke="#0d9488"
+                          strokeWidth="2"
+                          vectorEffect="non-scaling-stroke"
+                        />
+                      </svg>
+                      <div className="relative z-[2] mt-2 flex items-center justify-between text-[11px] font-semibold text-gray-600">
+                        <span>7d</span>
+                        <span>now</span>
+                      </div>
                     </div>
-                    <div className="flex items-center justify-center"><span className="text-lg font-light text-emerald-300">+</span></div>
-                    <div className="rounded-xl border border-emerald-100 bg-emerald-50/80 px-4 py-3 panel-breathe">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-semibold text-emerald-700">Your yield</span>
-                        <div className="h-[1.2rem] overflow-hidden">
-                          <div className="panel-ticker-v-fast">
-                            {["5.5%","5.6%","5.4%","5.5%"].map((v, i) => (
-                              <div key={i} className="flex h-[1.2rem] items-center justify-center">
-                                <span className="text-sm font-bold text-emerald-700">{v}</span>
-                              </div>
-                            ))}
+                  </div>
+                </div>
+              </div>,
+
+              /* 03 Supply once — hub & spokes */
+              <div key="p3" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
+                <div className="absolute inset-0 flex items-center justify-center p-4">
+                  <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-3 sm:p-4">
+                    <div className="relative isolate min-h-[9.5rem]">
+                      <svg
+                        className="pointer-events-none absolute inset-0 z-0 h-full w-full text-gray-200"
+                        viewBox="0 0 260 120"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path d="M52 60H92" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        <path
+                          d="M52 60H92"
+                          stroke="#6ee7b7"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeDasharray="4 6"
+                          className="panel-dash-flow"
+                        />
+                        <path d="M128 60C150 60 168 38 196 28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                        <path d="M128 60H200" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                        <path d="M128 60C150 60 168 82 196 92" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                        <path
+                          d="M128 60C150 60 168 38 196 28"
+                          stroke="#6ee7b7"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeDasharray="4 7"
+                          className="panel-dash-flow"
+                        />
+                        <path
+                          d="M128 60H200"
+                          stroke="#6ee7b7"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeDasharray="4 7"
+                          className="panel-dash-flow"
+                          style={{ animationDelay: "0.25s" }}
+                        />
+                        <path
+                          d="M128 60C150 60 168 82 196 92"
+                          stroke="#6ee7b7"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeDasharray="4 7"
+                          className="panel-dash-flow"
+                          style={{ animationDelay: "0.5s" }}
+                        />
+                      </svg>
+                      <div className="relative z-10 flex min-h-[9.5rem] items-center gap-1.5 sm:gap-2">
+                        <div className="w-[4.5rem] shrink-0 rounded-xl border border-gray-200 bg-gray-50/90 px-2 py-2.5 text-center shadow-sm sm:w-[4.75rem] sm:px-2.5">
+                          <p className="text-xs font-semibold tabular-nums text-[#18323c] sm:text-[13px]">72k</p>
+                          <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-600">USDC</p>
+                        </div>
+                        <div className="flex min-w-0 flex-1 items-center justify-center">
+                          <div className="relative flex h-11 w-11 items-center justify-center rounded-full border-2 border-emerald-300 bg-emerald-50 text-xs font-bold text-emerald-900 shadow-sm sm:h-12 sm:w-12 sm:text-sm">
+                            H
+                            <span className="panel-ring pointer-events-none absolute inset-[-5px] rounded-full border border-emerald-100/90" />
                           </div>
                         </div>
+                        <div className="flex w-[4.75rem] shrink-0 flex-col justify-center gap-1.5 sm:w-[5.25rem]">
+                          <div className="rounded-lg border border-gray-200 bg-white px-2 py-1.5 shadow-sm">
+                            <div className="flex justify-center gap-1">
+                              <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+                            </div>
+                          </div>
+                          <div className="rounded-lg border border-gray-200 bg-white px-2 py-1.5 shadow-sm">
+                            <div className="flex justify-center gap-1">
+                              <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+                            </div>
+                          </div>
+                          <div className="rounded-lg border border-gray-200 bg-gray-50/90 px-2 py-1.5 shadow-sm">
+                            <div className="flex justify-center gap-1">
+                              <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+                              <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>,
+
+              /* 04 Base + premium */
+              <div key="p4" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
+                <div className="absolute inset-0 flex items-center justify-center p-4">
+                  <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
+                    <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-3">
+                      <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.1em] text-gray-600">
+                        <span>4.1</span>
+                        <span>+3.1</span>
+                      </div>
+                      <div className="mt-2 flex h-11 w-full overflow-hidden rounded-lg bg-white shadow-inner">
+                        <div
+                          className="flex items-center justify-center bg-gray-200/90 text-sm font-semibold tabular-nums text-[#18323c]"
+                          style={{ width: `${(4.1 / 7.2) * 100}%` }}
+                        >
+                          4.1%
+                        </div>
+                        <div
+                          className="flex items-center justify-center bg-emerald-500 text-sm font-semibold tabular-nums text-white"
+                          style={{ width: `${(3.1 / 7.2) * 100}%` }}
+                        >
+                          +3.1%
+                        </div>
+                      </div>
+                    </div>
+                    <div className="relative mt-4 overflow-hidden rounded-[18px] border border-emerald-200 bg-emerald-50/80 px-4 py-4 text-center">
+                      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.55),rgba(255,255,255,0)_42%,rgba(16,185,129,0.08))]" />
+                      <div className="panel-sheen-slide pointer-events-none absolute inset-y-0 left-0 z-[1] w-1/2 bg-gradient-to-r from-transparent via-white/55 to-transparent opacity-90" />
+                      <div className="relative z-[2] flex items-end justify-between gap-3">
+                        <div className="min-w-0 text-left">
+                          <div className="h-1.5 w-16 overflow-hidden rounded-full bg-white/90 ring-1 ring-emerald-100">
+                            <div className="h-full w-full rounded-full bg-emerald-500" />
+                          </div>
+                          <span className="mt-3 block text-4xl font-semibold tabular-nums tracking-[-0.04em] text-[#18323c]">
+                            7.2<span className="text-2xl font-normal text-gray-300">%</span>
+                          </span>
+                        </div>
+                        <span className="shrink-0 rounded-full border border-emerald-200 bg-white px-2.5 py-1 text-xs font-semibold text-emerald-900 shadow-sm">
+                          =
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -376,7 +554,7 @@ export default function InvestPage() {
 
           <HomepageNewsroomSection collection="invest" eyebrowTone="emerald" />
 
-          <div className="pb-16 md:pb-24">
+          <div className="pb-16 md:pb-24 2xl:pb-22">
             <InlineFaqSection title="Frequently asked questions." items={stableSpokeFaqItems} eyebrowTone="emerald" withTopBorder={false} />
           </div>
         </div>

@@ -214,6 +214,7 @@ export default function LeveragePage() {
                       width={1400}
                       height={1400}
                       className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
+                      sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
                       priority
                       fetchPriority="high"
                     />
@@ -255,13 +256,13 @@ export default function LeveragePage() {
         </div>
       </div>
 
-      <section className="border-t border-gray-200 bg-white py-12 md:py-16">
+      <section className="deferred-viewport border-t border-gray-200 bg-white py-12 md:py-16 2xl:py-14">
         <div className="site-content-shell">
           <LeverageGlanceShowcaseSection />
         </div>
       </section>
 
-      <section className="bg-white py-12 md:py-16">
+      <section className="deferred-viewport bg-white py-12 md:py-16 2xl:py-14">
         <div className="site-content-shell">
           <div className="flex flex-col gap-6">
             <div className="flex max-w-[600px] flex-col gap-2">
@@ -288,7 +289,7 @@ export default function LeveragePage() {
         </div>
       </section>
 
-      <section className="bg-white py-12 md:py-16">
+      <section className="deferred-viewport-tall bg-white py-12 md:py-16 2xl:py-14">
         <div className="site-content-shell">
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="rose">What&apos;s new</SectionEyebrow>
@@ -368,195 +369,206 @@ export default function LeveragePage() {
 
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 sm:px-6">
         <div className="relative z-0 flex flex-1 flex-col">
-          <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
+          <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20 2xl:space-y-36 2xl:pt-18 2xl:pb-18">
             <ProductFeatureScrollSection
               eyebrow="Core Product"
               eyebrowTone="rose"
               title="LP-backed leverage, managed in one system."
               items={leverageFeatureItems}
               panels={[
-                /* 01 LP Backed Leverage */
+                /* 01 LP Backed Leverage — collateral card with multiplier ring */
                 <div key="p1" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(244,63,94,0.03),transparent_60%)]" />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-[3.2rem] font-semibold leading-none tracking-[-0.05em] text-[#18323c] panel-breathe">5<span className="text-lg font-normal text-gray-300">x</span></span>
-                    <span className="mt-1.5 text-[10px] font-medium uppercase tracking-[0.12em] text-gray-400">Leverage multiple</span>
-                    <div className="mt-5 flex gap-2">
-                      {/* LP ticker */}
-                      <div className="rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-1.5 text-center">
-                        <span className="block text-[9px] text-gray-400">LP</span>
-                        <div className="h-[1rem] overflow-hidden">
-                          <div className="panel-ticker-v-fast">
-                            {["Active","Earning","Accruing","Active"].map((v,i) => (
-                              <div key={i} className="flex h-[1rem] items-center justify-center">
-                                <span className="text-xs font-semibold text-emerald-600">{v}</span>
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(244,63,94,0.05),transparent_55%)]" />
+                  <div className="absolute inset-0 flex items-center justify-center p-5">
+                    <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">Leverage position</span>
+                        <span className="rounded-full border border-gray-200 bg-gray-50 px-2 py-0.5 text-[8px] font-medium text-gray-700">v3</span>
+                      </div>
+                      <div className="mt-3 flex items-center gap-4">
+                        <div className="relative flex h-[72px] w-[72px] shrink-0 items-center justify-center">
+                          <svg className="h-full w-full -rotate-90 panel-ring" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="38" fill="none" stroke="#fce7f3" strokeWidth="7" />
+                            <circle cx="50" cy="50" r="38" fill="none" stroke="#f43f5e" strokeWidth="7" strokeLinecap="round" strokeDasharray="238.76" strokeDashoffset="47.75" />
+                          </svg>
+                          <div className="absolute inset-0 flex flex-col items-center justify-center">
+                            <span className="text-[1.4rem] font-bold leading-none tracking-[-0.04em] text-[#18323c]">5<span className="text-xs font-normal text-gray-300">x</span></span>
+                          </div>
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="text-[8px] font-medium uppercase tracking-[0.1em] text-gray-400">Collateral</div>
+                          <div className="mt-1 h-[1.65rem] overflow-hidden">
+                            <div className="panel-ticker-v-fast" style={{ animationDuration: "10s" }}>
+                              {["$24,840","$24,920","$24,760","$24,840"].map((v,i) => (
+                                <div key={i} className="flex h-[1.65rem] items-center"><span className="text-[1.3rem] font-semibold leading-none tracking-[-0.04em] text-[#18323c]">{v}</span></div>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="mt-2 flex gap-1.5">
+                            {[{l:"LP",v:"Active",c:"text-emerald-600"},{l:"Debt",v:"$19.8K",c:"text-[#18323c]"}].map(m => (
+                              <div key={m.l} className="rounded-md border border-gray-100 bg-gray-50/80 px-2 py-1 text-center">
+                                <span className="block text-[7px] text-gray-400">{m.l}</span>
+                                <span className={`text-[10px] font-semibold ${m.c}`}>{m.v}</span>
                               </div>
                             ))}
                           </div>
                         </div>
                       </div>
-                      {/* Debt ticker */}
-                      <div className="rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-1.5 text-center">
-                        <span className="block text-[9px] text-gray-400">Debt</span>
-                        <div className="h-[1rem] overflow-hidden">
-                          <div className="panel-ticker-v-fast" style={{ animationDuration: '7s' }}>
-                            {["Covered","$8.2K","66%","Covered"].map((v,i) => (
-                              <div key={i} className="flex h-[1rem] items-center justify-center">
-                                <span className="text-xs font-semibold text-[#18323c]">{v}</span>
-                              </div>
-                            ))}
+                      <div className="mt-3 border-t border-gray-100 pt-3">
+                        <div className="flex items-center justify-between text-[8px] font-medium uppercase tracking-[0.08em] text-gray-400">
+                          <span>Health</span>
+                          <div className="flex items-center gap-1">
+                            <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 panel-pulse" />
+                            <div className="h-3 overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: "7s" }}>{["1.51","1.53","1.48","1.51"].map((v,i) => (<span key={i} className="block h-3 text-[10px] font-semibold tabular-nums text-emerald-600">{v}</span>))}</div></div>
                           </div>
                         </div>
-                      </div>
-                      {/* Health ticker */}
-                      <div className="rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-1.5 text-center">
-                        <span className="block text-[9px] text-gray-400">Health</span>
-                        <div className="h-[1rem] overflow-hidden">
-                          <div className="panel-ticker-v-fast" style={{ animationDuration: '5s' }}>
-                            {["1.51","1.53","1.49","1.51"].map((v,i) => (
-                              <div key={i} className="flex h-[1rem] items-center justify-center">
-                                <span className="text-xs font-semibold text-emerald-600">{v}</span>
-                              </div>
-                            ))}
-                          </div>
+                        <div className="mt-1.5 h-[5px] overflow-hidden rounded-full bg-gray-100">
+                          <div className="h-full w-[80%] rounded-full bg-rose-400 panel-bar-pulse" style={{ animationDelay: "0.5s" }} />
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>,
-                /* 02 One Position, One View */
+                /* 02 One Position, One View — cycling position card with metrics */
                 <div key="p2" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 flex items-center justify-center px-5">
-                    <div className="w-full max-w-[15rem] h-[11rem] overflow-hidden">
-                      <div className="panel-ticker-v-slow" style={{ animationDuration: '12s' }}>
+                  <div className="absolute inset-0 flex items-center justify-center p-5">
+                    <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
+                      <div className="flex items-center justify-between">
+                        <div className="h-3 overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: "10s" }}>{["ETH / USDC","WBTC / ETH","ARB / USDC","ETH / USDC"].map((v,i) => (<span key={i} className="block h-3 text-[11px] font-semibold text-[#18323c]">{v}</span>))}</div></div>
+                        <span className="rounded-full border border-rose-100 bg-rose-50 px-2 py-0.5 text-[8px] font-semibold text-rose-500">Leverage</span>
+                      </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
                         {[
-                          { pair: "ETH / USDC", collateral: "$12,400", debt: "$8,200", health: "1.51", cW: 100, dW: 66, hW: 75 },
-                          { pair: "WBTC / ETH", collateral: "$28,600", debt: "$18,400", health: "1.55", cW: 100, dW: 64, hW: 77 },
-                          { pair: "ARB / USDC", collateral: "$5,200", debt: "$3,100", health: "1.68", cW: 100, dW: 60, hW: 84 },
-                          { pair: "ETH / USDC", collateral: "$12,400", debt: "$8,200", health: "1.51", cW: 100, dW: 66, hW: 75 },
-                        ].map((pos, idx) => (
-                          <div key={idx} className="flex h-[11rem] shrink-0 flex-col justify-center">
-                            <div className="rounded-2xl border border-gray-100 bg-gray-50/60 p-4">
-                              <span className="text-[11px] font-semibold text-[#18323c]">{pos.pair}</span>
-                              {[
-                                { l: "Collateral", v: pos.collateral, w: pos.cW, c: "bg-rose-300/50" },
-                                { l: "Debt", v: pos.debt, w: pos.dW, c: "bg-violet-400/50" },
-                                { l: "Health factor", v: pos.health, w: pos.hW, c: "bg-emerald-400", vc: "text-emerald-600" },
-                              ].map((m, i) => (
-                                <div key={m.l} className={i === 0 ? "mt-2" : "mt-2.5"}>
-                                  <div className="flex items-center justify-between">
-                                    <span className="text-[10px] font-medium text-gray-400">{m.l}</span>
-                                    <span className={`text-[10px] font-semibold ${m.vc || "text-[#18323c]"}`}>{m.v}</span>
-                                  </div>
-                                  <div className="mt-1 h-[4px] w-full overflow-hidden rounded-full bg-gray-100">
-                                    <div className={`h-full rounded-full ${m.c}`} style={{ width: `${m.w}%` }} />
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
+                          { l: "Collateral", vals: ["$12,400","$28,600","$5,200","$12,400"], c: "text-[#18323c]" },
+                          { l: "Debt", vals: ["$8,200","$18,400","$3,100","$8,200"], c: "text-rose-500" },
+                          { l: "Leverage", vals: ["3.2x","4.1x","2.8x","3.2x"], c: "text-[#18323c]" },
+                          { l: "P&L", vals: ["+$620","+$1,840","+$280","+$620"], c: "text-emerald-600" },
+                        ].map((m,i) => (
+                          <div key={m.l} className="rounded-xl border border-gray-100 bg-gray-50/60 px-3 py-2">
+                            <span className="block text-[8px] font-medium uppercase tracking-[0.08em] text-gray-400">{m.l}</span>
+                            <div className="mt-1 h-[1rem] overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: `${8 + i}s` }}>{m.vals.map((v,j) => (<div key={j} className="flex h-[1rem] items-center"><span className={`text-xs font-semibold tabular-nums ${m.c}`}>{v}</span></div>))}</div></div>
                           </div>
                         ))}
+                      </div>
+                      <div className="mt-3 border-t border-gray-100 pt-3">
+                        <div className="flex items-center justify-between text-[8px] font-medium text-gray-400">
+                          <span>Health factor</span>
+                          <div className="h-3 overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: "6s" }}>{["1.51","1.55","1.68","1.51"].map((v,i) => (<span key={i} className="block h-3 text-[10px] font-semibold tabular-nums text-emerald-600">{v}</span>))}</div></div>
+                        </div>
+                        <div className="mt-1.5 h-[4px] w-full overflow-hidden rounded-full bg-gray-100">
+                          <div className="h-full rounded-full bg-emerald-400 panel-bar-pulse" style={{ width: "75%", animationDelay: "0.3s" }} />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>,
-                /* 03 Abstracted Execution */
+                /* 03 Abstracted Execution — escalator step list (matching homepage pattern) */
                 <div key="p3" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_58%,rgba(244,63,94,0.05),transparent_58%)]" />
                   <div className="absolute inset-0 flex items-center justify-center px-5">
-                    <div className="w-full max-w-[15rem] h-[10.5rem] overflow-hidden">
-                      <div className="panel-escalator" style={{ animationDuration: '16s' }}>
-                        {[0, 1].map((dup) => (
-                          <div key={dup} className="flex flex-col gap-2 pb-2">
-                            {["Borrow","Route capital","Deploy position","Track exposure","Monitor health","Auto-adjust"].map((step, i) => (
-                              <div key={`${dup}-${step}`} className="flex w-full items-center gap-3">
-                                <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold ${i === 1 ? "bg-[#18323c] text-white" : "border border-gray-200 bg-gray-50 text-gray-400"}`}>{i + 1}</div>
-                                <div className={`flex-1 rounded-xl px-3 py-2 text-[0.82rem] font-medium ${i === 1 ? "border border-[#18323c]/10 bg-[#18323c]/5 text-[#18323c]" : "border border-gray-100 bg-gray-50/80 text-gray-500"}`}>{step}</div>
-                              </div>
-                            ))}
+                    <div className="relative w-full max-w-[16rem] h-[180px] overflow-hidden">
+                      <div className="pointer-events-none absolute inset-x-0 top-1/2 h-[52px] -translate-y-1/2 rounded-[16px] border border-rose-100 bg-[linear-gradient(180deg,rgba(255,241,242,0.82),rgba(255,255,255,0.98))] shadow-[0_10px_24px_rgba(244,63,94,0.08)]" />
+                      <div className="panel-escalator flex flex-col" style={{ animationDuration: "14s" }}>
+                        {[
+                          { prev: { label: "Deposit LP collateral", icon: "\u2193" }, active: { label: "Borrow from Hub", icon: "\u2197" }, next: { label: "Deploy into leverage", icon: "\u26A1" } },
+                          { prev: { label: "Deploy into leverage", icon: "\u26A1" }, active: { label: "Track all exposure", icon: "\u25CE" }, next: { label: "Auto-adjust limits", icon: "\u21C5" } },
+                          { prev: { label: "Auto-adjust limits", icon: "\u21C5" }, active: { label: "Monitor health", icon: "\u2665" }, next: { label: "Deposit LP collateral", icon: "\u2193" } },
+                          { prev: { label: "Deposit LP collateral", icon: "\u2193" }, active: { label: "Borrow from Hub", icon: "\u2197" }, next: { label: "Deploy into leverage", icon: "\u26A1" } },
+                        ].map((slide, i) => (
+                          <div key={i} className="flex h-[180px] flex-col justify-center gap-3">
+                            <div className="flex h-[52px] items-center gap-3 rounded-[16px] border border-gray-100 bg-white px-4 text-gray-500 shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
+                              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gray-50 text-xs text-gray-400">{slide.prev.icon}</div>
+                              <span className="text-[0.82rem] font-medium">{slide.prev.label}</span>
+                            </div>
+                            <div className="relative flex h-[52px] items-center gap-3 rounded-[16px] px-4 text-[#18323c]">
+                              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white text-xs text-rose-400 shadow-[0_2px_8px_rgba(244,63,94,0.10)]">{slide.active.icon}</div>
+                              <span className="text-[0.82rem] font-medium">{slide.active.label}</span>
+                              <span className="ml-auto rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-medium text-rose-500">Active</span>
+                            </div>
+                            <div className="flex h-[52px] items-center gap-3 rounded-[16px] border border-gray-100 bg-white px-4 text-gray-500 shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
+                              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gray-50 text-xs text-gray-400">{slide.next.icon}</div>
+                              <span className="text-[0.82rem] font-medium">{slide.next.label}</span>
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
                 </div>,
-                /* 04 Built on Aave Infrastructure */
+                /* 04 Built on Aave Infrastructure — hub/spoke grid with flow */
                 <div key="p4" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-gray-100 bg-gray-50/80">
-                      <svg width="24" height="24" viewBox="0 0 256 256" fill="none"><path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0z" fill="#B6509E" opacity="0.15" /><path d="M186.7 168.5c-7.5 0-14.2-4.3-17.4-11l-25.9-56.8c-1.4-3.1-4.5-5.1-7.9-5.1h-14.9c-3.4 0-6.5 2-7.9 5.1l-25.9 56.8c-3.2 6.7-9.9 11-17.4 11-10.6 0-19.2-8.6-19.2-19.2 0-2.9.7-5.8 2-8.4l38.3-83.8c5.7-12.5 18.2-20.5 32-20.5h23.2c13.8 0 26.3 8 32 20.5l38.3 83.8c1.3 2.6 2 5.5 2 8.4 0 10.6-8.6 19.2-19.2 19.2z" fill="#B6509E" opacity="0.4" /></svg>
-                    </div>
-                    <span className="mt-3 text-sm font-semibold text-[#18323c]">Aave v4 Rails</span>
-                    <div className="mt-4 w-full max-w-[15rem] overflow-hidden rounded-xl border border-gray-100 bg-gray-50/80 py-2">
-                      <div className="flex whitespace-nowrap panel-scroll-h-slow" style={{ animationDuration: '18s' }}>
-                        {[0, 1].map((dup) => (
-                          <div key={dup} className="flex shrink-0 items-center gap-0">
-                            {["Hub Liquidity","Spoke Isolation","Shared Credit","Risk Engine","LP Underwriting"].map((label) => (
-                              <span key={`${dup}-${label}`} className="flex items-center gap-2 px-3">
-                                <span className="text-[10px] font-medium text-[#B6509E]">{label}</span>
-                                <span className="text-gray-300">&middot;</span>
-                              </span>
-                            ))}
+                  <div className="absolute inset-0 flex items-center justify-center p-5">
+                    <div className="w-full max-w-[16.25rem] overflow-hidden rounded-2xl border border-gray-200 bg-white">
+                      <div className="grid grid-cols-[1fr_auto_1fr] items-stretch">
+                        <div className="panel-glow flex flex-col border-r border-gray-200 bg-gray-50/70 p-3.5">
+                          <span className="text-[8px] font-medium uppercase tracking-[0.14em] text-gray-500">Hub</span>
+                          <div className="mt-1.5 flex items-center gap-1.5">
+                            <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#B6509E]/10">
+                              <svg width="12" height="12" viewBox="0 0 256 256" fill="none"><path d="M186.7 168.5c-7.5 0-14.2-4.3-17.4-11l-25.9-56.8c-1.4-3.1-4.5-5.1-7.9-5.1h-14.9c-3.4 0-6.5 2-7.9 5.1l-25.9 56.8c-3.2 6.7-9.9 11-17.4 11-10.6 0-19.2-8.6-19.2-19.2 0-2.9.7-5.8 2-8.4l38.3-83.8c5.7-12.5 18.2-20.5 32-20.5h23.2c13.8 0 26.3 8 32 20.5l38.3 83.8c1.3 2.6 2 5.5 2 8.4 0 10.6-8.6 19.2-19.2 19.2z" fill="#B6509E" opacity="0.6" /></svg>
+                            </div>
+                            <p className="text-lg font-semibold tabular-nums text-[#18323c]">$4.2M</p>
                           </div>
-                        ))}
+                        </div>
+                        <div className="flex w-12 flex-col items-center justify-center bg-white px-0.5">
+                          <svg className="h-[3.25rem] w-7 shrink-0 text-[#B6509E]" viewBox="0 0 28 56" fill="none" aria-hidden="true">
+                            <path d="M6 28 H22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 5" className="panel-dash-flow" />
+                            <path d="M18 20 L22 28 L18 36" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </div>
+                        <div className="flex min-h-[6.5rem] flex-col border-l border-dashed border-gray-300 bg-white p-3.5">
+                          <span className="text-[8px] font-medium uppercase tracking-[0.14em] text-gray-500">Spoke</span>
+                          <p className="mt-1 text-[10px] font-semibold leading-tight text-[#18323c]">ETH / USDC</p>
+                          <p className="mt-2 text-[8px] font-medium tabular-nums text-gray-600">$2.1M</p>
+                          <span className="mt-auto inline-flex w-fit rounded-md border border-rose-200 bg-rose-50 px-2 py-0.5 text-[8px] font-medium text-rose-600">Leverage</span>
+                        </div>
+                      </div>
+                      <div className="border-t border-gray-100 bg-gray-50/40 px-3.5 py-2.5">
+                        <div className="flex items-center justify-between text-[8px]">
+                          <span className="font-medium text-gray-500">Borrow APR</span>
+                          <div className="h-3 overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: "9s" }}>{["5.4%","5.6%","5.2%","5.4%"].map((v,i) => (<span key={i} className="block h-3 tabular-nums font-semibold text-[#18323c]">{v}</span>))}</div></div>
+                        </div>
+                        <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-gray-200">
+                          <div className="h-full w-[62%] rounded-full bg-[#B6509E]/60 panel-bar-pulse" />
+                        </div>
+                        <div className="mt-1 flex items-center justify-between text-[7px] text-gray-400"><span>Utilization</span><span className="tabular-nums text-gray-600">62%</span></div>
                       </div>
                     </div>
                   </div>
                 </div>,
-                /* 05 Live Risk Monitoring */
+                /* 05 Live Risk Monitoring — scrolling chart with multi-metric console */
                 <div key="p5" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_55%,rgba(244,63,94,0.03),transparent_55%)]" />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
-                    <div className="w-full max-w-[15rem]">
-                      {/* Continuously scrolling chart line */}
-                      <div className="h-[60px] w-full overflow-hidden">
-                        <div className="flex w-[200%] panel-scroll-h-chart" style={{ animationDuration: '15s' }}>
-                          {[0, 1].map((dup) => (
-                            <svg key={dup} className="h-[60px] w-1/2 shrink-0" viewBox="0 0 300 60" preserveAspectRatio="none">
-                              <defs><linearGradient id={`lv-risk-fill-${dup}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#f43f5e" stopOpacity="0.08" /><stop offset="100%" stopColor="#f43f5e" stopOpacity="0" /></linearGradient></defs>
-                              <path d="M0,50 C30,48 60,45 90,42 S150,38 180,35 S240,32 270,28 L300,25 L300,60 L0,60Z" fill={`url(#lv-risk-fill-${dup})`} />
-                              <path d="M0,50 C30,48 60,45 90,42 S150,38 180,35 S240,32 270,28 L300,25" fill="none" stroke="#f43f5e" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
-                              <path d="M0,55 L300,55" fill="none" stroke="#fda4af" strokeWidth="1" strokeDasharray="4 3" opacity="0.3" />
-                            </svg>
-                          ))}
-                        </div>
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(16,185,129,0.05),transparent_55%)]" />
+                  <div className="absolute inset-0 flex items-center justify-center p-5">
+                    <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">Risk console</span>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-emerald-400 panel-pulse" /><span className="text-[8px] font-medium text-emerald-500">Healthy</span></div>
                       </div>
-                      {/* Green pulsing badge */}
-                      <div className="mt-2 flex items-center justify-center gap-1.5">
-                        <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 panel-pulse" /><span className="text-[10px] font-medium text-gray-500">Above liquidation</span>
+                      <div className="relative mt-3 h-[80px] w-full overflow-hidden rounded-[14px] border border-emerald-100/60 bg-[linear-gradient(180deg,#f8fffb_0%,#effcf5_100%)]">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.10),transparent_60%)]" />
+                        <div className="absolute inset-x-3 inset-y-0"><div className="absolute left-0 right-0 top-[25%] border-t border-emerald-100/60" /><div className="absolute left-0 right-0 top-1/2 border-t border-emerald-100/50" /><div className="absolute left-0 right-0 top-[75%] border-t border-emerald-100/40" /></div>
+                        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 300 80" preserveAspectRatio="none">
+                          <defs><linearGradient id="lv-rc-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#10b981" stopOpacity="0.20" /><stop offset="100%" stopColor="#10b981" stopOpacity="0" /></linearGradient></defs>
+                          <path d="M0,52 C30,50 60,44 90,38 S150,30 180,34 S240,28 270,22 L300,18 L300,80 L0,80Z" fill="url(#lv-rc-g)" />
+                          <path d="M0,52 C30,50 60,44 90,38 S150,30 180,34 S240,28 270,22 L300,18" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" />
+                          <path d="M0,68 L300,68" fill="none" stroke="#fda4af" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
+                        </svg>
                       </div>
-                      {/* Three metric boxes with tickers */}
-                      <div className="mt-3 flex justify-center gap-2">
-                        {/* Health ticker */}
-                        <div className="rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-1.5 text-center">
-                          <span className="block text-[9px] text-gray-400">Health</span>
-                          <div className="h-[1rem] overflow-hidden">
-                            <div className="panel-ticker-v-fast">
-                              {["1.51","1.53","1.48","1.51"].map((v,i) => (
-                                <div key={i} className="flex h-[1rem] items-center justify-center">
-                                  <span className="text-xs font-semibold text-emerald-600">{v}</span>
-                                </div>
-                              ))}
-                            </div>
+                      <div className="mt-2 flex gap-2">
+                        {[
+                          { l: "Health", vals: ["1.51","1.54","1.48","1.51"], c: "text-emerald-600" },
+                          { l: "Liq", v: "1.00", static: true },
+                          { l: "Buffer", vals: ["34%","35%","32%","34%"], c: "text-[#18323c]" },
+                        ].map((m) => (
+                          <div key={m.l} className="flex-1 rounded-xl border border-emerald-100/50 bg-[linear-gradient(180deg,rgba(236,253,245,0.4),rgba(255,255,255,0.95))] px-2 py-1.5 text-center">
+                            <span className="block text-[8px] font-medium uppercase tracking-[0.06em] text-gray-400">{m.l}</span>
+                            {"static" in m ? (
+                              <span className="text-xs font-semibold tabular-nums text-rose-500">{m.v}</span>
+                            ) : (
+                              <div className="h-4 overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: m.l === "Health" ? "6s" : "8s" }}>{m.vals!.map((v,i) => (<span key={i} className="block h-4 text-xs font-semibold tabular-nums" style={{ color: m.c === "text-emerald-600" ? "#059669" : "#18323c" }}>{v}</span>))}</div></div>
+                            )}
                           </div>
-                        </div>
-                        {/* Liq static */}
-                        <div className="rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-1.5 text-center">
-                          <span className="block text-[9px] text-gray-400">Liq</span>
-                          <span className="text-xs font-semibold text-rose-500">1.00</span>
-                        </div>
-                        {/* Buffer ticker */}
-                        <div className="rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-1.5 text-center">
-                          <span className="block text-[9px] text-gray-400">Buffer</span>
-                          <div className="h-[1rem] overflow-hidden">
-                            <div className="panel-ticker-v-fast" style={{ animationDuration: '7s' }}>
-                              {["34%","35%","32%","34%"].map((v,i) => (
-                                <div key={i} className="flex h-[1rem] items-center justify-center">
-                                  <span className="text-xs font-semibold text-[#18323c]">{v}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -595,7 +607,7 @@ export default function LeveragePage() {
               eyebrowTone="rose"
             />
 
-            <div className="pb-16 md:pb-24">
+            <div className="pb-16 md:pb-24 2xl:pb-22">
               <InlineFaqSection
                 title="Frequently asked questions."
                 items={leverageFaqItems}

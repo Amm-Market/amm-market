@@ -227,9 +227,12 @@ export default function PlatformPage() {
               <section className="opacity-100 [transform:perspective(1200px)]">
                 <div className="relative overflow-hidden rounded-[18px] bg-[#f4f1ea] md:rounded-[22px] lg:rounded-[24px]">
                   <div className="relative aspect-square w-full md:aspect-[1360/640]">
-                    <img
+                    <Image
                       src="https://framerusercontent.com/images/wHZUVowhaR4lNZZRsYJJW7ik9M.jpg?scale-down-to=1024&width=8368&height=5584"
                       alt="Two people are sitting in the office, discussing the upcoming project."
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 100vw, (max-width: 1440px) 92vw, 1360px"
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
@@ -251,7 +254,7 @@ export default function PlatformPage() {
 
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 pt-8 sm:px-6 sm:pt-12">
         <div className="relative z-0 flex flex-1 flex-col">
-          <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20">
+          <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20 2xl:space-y-36 2xl:pt-18 2xl:pb-18">
             <section>
               <div className="space-y-4 text-left">
                 <SectionEyebrow tone="violet">How it works</SectionEyebrow>
@@ -287,80 +290,169 @@ export default function PlatformPage() {
               title="Flexible capital, one interface."
               items={financingFeatures}
               panels={[
-                /* 01 Flexible settlement */
+                /* 01 Flexible settlement — network mesh showing venues converging to credit */
                 <div key="f1" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(139,92,246,0.04),transparent_60%)]" />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
-                    <span className="panel-breathe text-[3rem] font-semibold leading-none tracking-[-0.05em] text-[#18323c]">1</span>
-                    <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.14em] text-gray-400">credit line</span>
-                    <div className="mt-5 w-full max-w-[15rem] overflow-hidden rounded-xl border border-gray-100 bg-gray-50/80 py-2.5">
-                      <div className="flex whitespace-nowrap panel-scroll-h" style={{animationDuration:'14s'}}>
-                        {[0,1].map(d=>(
-                          <div key={d} className="flex shrink-0 items-center">
-                            {["Multi-venue","Single credit","Fast settle","Cross-chain"].map(s=>(
-                              <span key={`${d}-${s}`} className="shrink-0 px-3 text-[10px] font-medium text-violet-500">{s} <span className="text-violet-300">·</span></span>
-                            ))}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_55%,rgba(139,92,246,0.04),transparent_55%)]" />
+                  <div className="absolute inset-0 flex items-center justify-center px-5">
+                    <div className="w-full max-w-[15.5rem]">
+                      <div className="flex items-stretch gap-3">
+                        <div className="flex flex-col justify-center gap-2">
+                          {["DEX A","DEX B","DEX C"].map((venue, i) => (
+                            <div key={venue} className="financing-venue-node rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-2 text-center" style={{ animationDelay: `${i * 0.4}s` }}>
+                              <span className="text-[9px] font-medium text-gray-500">{venue}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="flex flex-col items-center justify-center gap-0.5">
+                          {[0,1,2].map(i => (
+                            <svg key={i} width="40" height="18" viewBox="0 0 40 18" className="text-violet-300">
+                              <path d="M4 9 H32" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="3 4" className="panel-dash-flow" />
+                              <path d="M28 5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                            </svg>
+                          ))}
+                        </div>
+                        <div className="flex flex-col items-center justify-center">
+                          <div className="financing-credit-hub rounded-2xl border-2 border-violet-200 bg-violet-50 px-4 py-5 text-center">
+                            <span className="block text-[2rem] font-semibold leading-none tracking-[-0.04em] text-violet-600 panel-breathe">1</span>
+                            <span className="mt-1 block text-[9px] font-medium uppercase tracking-[0.1em] text-violet-400">Credit</span>
                           </div>
-                        ))}
+                        </div>
+                      </div>
+                      <div className="mt-3 flex justify-center">
+                        <div className="flex items-center gap-1.5 rounded-full border border-violet-100 bg-violet-50/60 px-3 py-1">
+                          <div className="h-1.5 w-1.5 rounded-full bg-violet-400 panel-pulse" />
+                          <span className="text-[9px] font-medium text-violet-500">Unified settlement</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>,
-                /* 02 Unlock capital efficiency */
+                /* 02 Unlock capital efficiency — waterfall chart with animated segments */
                 <div key="f2" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                   <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
-                    <div className="w-full max-w-[15rem] space-y-3">
-                      {[{l:"Leverage",v:"4x",w:75,d:"0s"},{l:"Short",v:"2x",w:50,d:"1.5s"},{l:"Yield",v:"+8.2%",w:88,d:"3s"}].map(m=>(
-                        <div key={m.l} className="rounded-xl border border-gray-100 bg-gray-50/80 px-4 py-3">
-                          <div className="flex items-center justify-between"><span className="text-[10px] font-medium text-gray-400">{m.l}</span><span className="text-xs font-semibold text-violet-600">{m.v}</span></div>
-                          <div className="mt-2 h-[5px] w-full overflow-hidden rounded-full bg-gray-100">
-                            <div className="h-full origin-left rounded-full bg-violet-400 panel-bar-pulse" style={{width:`${m.w}%`,animationDelay:m.d}} />
+                    <div className="w-full max-w-[15rem]">
+                      <div className="rounded-2xl border border-gray-200 bg-gray-50/40 p-4">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-[8px] font-medium uppercase tracking-[0.14em] text-gray-400">Capital Usage</span>
+                          <div className="h-[0.85rem] overflow-hidden">
+                            <div className="panel-ticker-v-fast" style={{ animationDuration: "7s" }}>
+                              {["94%","96%","91%","94%"].map((v,i) => (
+                                <div key={i} className="flex h-[0.85rem] items-center">
+                                  <span className="text-[10px] font-semibold text-violet-600">{v}</span>
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>,
-                /* 03 Retain control */
-                <div key="f3" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
-                    <div className="panel-breathe flex h-14 w-14 items-center justify-center rounded-2xl border border-gray-100 bg-gray-50/80">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-violet-500"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                    </div>
-                    <span className="mt-3 text-sm font-semibold text-[#18323c]">Your custody</span>
-                    <span className="mt-1 text-[11px] text-gray-400">Zero counterparty risk</span>
-                    <div className="mt-5 w-full max-w-[15rem] overflow-hidden rounded-xl border border-gray-100 bg-gray-50/80 py-2.5">
-                      <div className="flex whitespace-nowrap panel-scroll-h" style={{animationDuration:'16s'}}>
-                        {[0,1].map(d=>(
-                          <div key={d} className="flex shrink-0 items-center">
-                            {["Full control","Self-sovereign","No lockups","Instant exit"].map(s=>(
-                              <span key={`${d}-${s}`} className="shrink-0 px-3 text-[10px] font-medium text-violet-500">{s} <span className="text-violet-300">·</span></span>
-                            ))}
+                        <div className="flex items-end justify-between gap-2 h-[90px]">
+                          {[
+                            { h: 40, label: "Idle", c: "bg-gray-200" },
+                            { h: 65, label: "Borrow", c: "bg-violet-300" },
+                            { h: 80, label: "Lever", c: "bg-violet-400" },
+                            { h: 90, label: "Short", c: "bg-violet-500" },
+                            { h: 70, label: "Yield", c: "bg-emerald-400" },
+                          ].map((bar, i) => (
+                            <div key={bar.label} className="flex flex-1 flex-col items-center gap-1">
+                              <div className="w-full overflow-hidden rounded-t-md" style={{ height: `${bar.h}%` }}>
+                                <div className={`h-full w-full ${bar.c} financing-bar-grow`} style={{ animationDelay: `${i * 0.3}s` }} />
+                              </div>
+                              <span className="text-[7px] font-medium text-gray-400">{bar.label}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="mt-2 flex justify-center gap-2">
+                        {[{ l: "Before", v: "40%", c: "text-gray-400" }, { l: "After", v: "94%", c: "text-violet-600" }].map(s => (
+                          <div key={s.l} className="rounded-lg border border-gray-100 bg-gray-50/80 px-2.5 py-1 text-center">
+                            <span className="block text-[8px] text-gray-400">{s.l}</span>
+                            <span className={`text-[10px] font-semibold ${s.c}`}>{s.v}</span>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
                 </div>,
-                /* 04 Add leverage when needed */
-                <div key="f4" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <div className="relative h-[110px] w-[110px]">
-                      <svg className="h-full w-full -rotate-90 panel-ring" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#f3f4f6" strokeWidth="5" />
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#8b5cf6" strokeWidth="5" strokeLinecap="round" strokeDasharray="251.33" strokeDashoffset="125.66" />
-                      </svg>
-                      <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-[2rem] font-semibold leading-none tracking-[-0.04em] text-[#18323c]">2x</span>
-                        <span className="mt-0.5 text-[9px] font-medium text-gray-400">leverage</span>
+                /* 03 Retain control — vault with lock mechanism */
+                <div key="f3" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
+                    <div className="w-full max-w-[14rem]">
+                      <div className="relative rounded-2xl border-2 border-gray-200 bg-gray-50/60 p-5 text-center">
+                        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                          <div className="financing-lock-icon flex h-6 w-6 items-center justify-center rounded-full bg-violet-500">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                              <rect x="3" y="11" width="18" height="11" rx="2" stroke="white" strokeWidth="2" />
+                              <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                          </div>
+                        </div>
+                        <div className="mt-2 flex flex-col items-center">
+                          <span className="text-[9px] font-medium uppercase tracking-[0.14em] text-gray-400">Your Vault</span>
+                          <span className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-[#18323c] panel-breathe">$24.8K</span>
+                          <span className="mt-0.5 text-[10px] text-gray-400">Pledged as collateral</span>
+                        </div>
+                        <div className="mt-4 grid grid-cols-2 gap-2">
+                          {[
+                            { l: "Custody", v: "Yours", c: "text-violet-600" },
+                            { l: "Risk", v: "Zero", c: "text-emerald-600" },
+                            { l: "Lockup", v: "None", c: "text-[#18323c]" },
+                            { l: "Exit", v: "Instant", c: "text-[#18323c]" },
+                          ].map(s => (
+                            <div key={s.l} className="rounded-lg border border-gray-100 bg-white px-2 py-1.5 text-center">
+                              <span className="block text-[7px] font-medium text-gray-400">{s.l}</span>
+                              <span className={`text-[10px] font-semibold ${s.c}`}>{s.v}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                    <div className="mt-4 flex gap-2">
-                      {[{l:"Mode",d:"0.1s"},{l:"Perps",d:"0.3s"},{l:"Managed",d:"0.5s"}].map(s=>(
-                        <div key={s.l} className="rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-1.5 text-center">
-                          <span className="text-[10px] font-medium text-violet-500">{s.l}</span>
+                  </div>
+                </div>,
+                /* 04 Add leverage when needed — adjustable dial with mode selector */
+                <div key="f4" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
+                    <div className="w-full max-w-[14rem]">
+                      <div className="flex justify-center">
+                        <div className="relative h-[100px] w-[180px]">
+                          <svg viewBox="0 0 180 100" className="h-full w-full">
+                            <path d="M 20 90 A 70 70 0 0 1 160 90" fill="none" stroke="#f3f4f6" strokeWidth="8" strokeLinecap="round" />
+                            <path d="M 20 90 A 70 70 0 0 1 160 90" fill="none" stroke="#8b5cf6" strokeWidth="8" strokeLinecap="round" strokeDasharray="220" className="financing-gauge-fill" />
+                            {["1x","2x","3x","4x","5x"].map((label, i) => {
+                              const angle = -180 + i * 45;
+                              const rad = (angle * Math.PI) / 180;
+                              const cx = 90 + 82 * Math.cos(rad);
+                              const cy = 90 + 82 * Math.sin(rad);
+                              return <text key={label} x={cx} y={cy} textAnchor="middle" fill="#9ca3af" fontSize="8" fontWeight="500">{label}</text>;
+                            })}
+                          </svg>
+                          <div className="absolute inset-0 flex flex-col items-center justify-end pb-1">
+                            <div className="h-[0.95rem] overflow-hidden">
+                              <div className="panel-ticker-v-fast" style={{ animationDuration: "9s" }}>
+                                {["2.4x","3.1x","1.8x","2.4x"].map((v,i) => (
+                                  <div key={i} className="flex h-[0.95rem] items-center justify-center">
+                                    <span className="text-lg font-semibold tracking-[-0.03em] text-[#18323c]">{v}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                            <span className="text-[8px] font-medium text-gray-400">leverage</span>
+                          </div>
                         </div>
-                      ))}
+                      </div>
+                      <div className="mt-2 flex justify-center">
+                        <div className="inline-flex rounded-xl border border-gray-200 bg-gray-50/80 p-1">
+                          {["Spot","Perps","Managed"].map((mode, i) => (
+                            <button key={mode} type="button" className={`rounded-lg px-3 py-1.5 text-[10px] font-medium transition-colors ${i === 1 ? "bg-violet-500 text-white" : "text-gray-400 hover:text-gray-600"}`}>
+                              {mode}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="mt-2.5 flex justify-center gap-2">
+                        <div className="flex items-center gap-1.5 rounded-full border border-violet-100 bg-violet-50/60 px-2.5 py-1">
+                          <div className="h-1.5 w-1.5 rounded-full bg-violet-400 panel-pulse" />
+                          <span className="text-[9px] font-medium text-violet-500">Adjustable anytime</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>,
@@ -454,7 +546,7 @@ export default function PlatformPage() {
               ]}
             />
 
-            <section className="relative -mx-4 overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#f8f7fc_0%,#eee8f8_50%,#f5f3fa_100%)] px-6 py-12 sm:-mx-6 sm:px-10 md:px-12 md:py-16 lg:py-20">
+            <section className="relative -mx-4 overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#f8f7fc_0%,#eee8f8_50%,#f5f3fa_100%)] px-6 py-12 sm:-mx-6 sm:px-10 md:px-12 md:py-16 lg:py-20 2xl:py-18">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(139,92,246,0.10),transparent_40%),radial-gradient(circle_at_80%_100%,rgba(99,102,241,0.08),transparent_35%)]" />
               <div className="relative z-10">
                 <div className="max-w-[600px] space-y-3">
@@ -516,7 +608,7 @@ export default function PlatformPage() {
 
             <HomepageNewsroomSection collection="platform" eyebrowTone="violet" />
 
-            <div className="pb-16 md:pb-24">
+            <div className="pb-16 md:pb-24 2xl:pb-22">
               <InlineFaqSection
                 title="Frequently asked questions."
                 items={platformFaqItems}

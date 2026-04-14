@@ -79,7 +79,7 @@ function PoolCard({ pool }: { pool: HomepagePool }) {
 export default function HeroSection() {
   return (
     <section className="marketing-secondary-shell pb-0">
-      <div className="site-content-shell space-y-32 pt-16 md:space-y-40 md:pt-20">
+      <div className="site-content-shell space-y-32 pt-16 md:space-y-40 md:pt-20 2xl:space-y-36 2xl:pt-18">
         <div className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
@@ -133,7 +133,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="site-content-shell pt-32 md:pt-40">
+      <div className="site-content-shell pt-32 md:pt-40 2xl:pt-36">
         <div className="flex flex-col gap-6">
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="violet">How it works</SectionEyebrow>
@@ -173,7 +173,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="site-content-shell space-y-32 pt-32 md:space-y-40 md:pt-40">
+      <div className="site-content-shell space-y-32 pt-32 md:space-y-40 md:pt-40 2xl:space-y-36 2xl:pt-36">
         <div>
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
@@ -198,37 +198,55 @@ export default function HeroSection() {
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
                         <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(99,102,241,0.05),transparent_60%)]" />
-                          <div className="absolute inset-0 flex flex-col items-center justify-center">
-                            {/* Breathing ring */}
-                            <div className="relative h-[140px] w-[140px] ce-ring-breathe">
+                          <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
+                            {/* Static ring — LTV number cycles inside */}
+                            <div className="relative flex h-[120px] w-[120px] items-center justify-center rounded-full bg-white ce-ring-breathe">
                               <svg className="h-full w-full -rotate-90" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="42" fill="none" stroke="#f3f4f6" strokeWidth="5" />
-                                <circle cx="50" cy="50" r="42" fill="none" stroke="#6366f1" strokeWidth="5" strokeLinecap="round" strokeDasharray="263.89" strokeDashoffset="52.78" />
+                                <circle cx="50" cy="50" r="42" fill="none" stroke="#eef2ff" strokeWidth="6" />
+                                <circle
+                                  className="ce-ltv-arc"
+                                  cx="50"
+                                  cy="50"
+                                  r="42"
+                                  fill="none"
+                                  stroke="#818cf8"
+                                  strokeWidth="6"
+                                  strokeLinecap="round"
+                                  strokeDasharray="263.89"
+                                  strokeDashoffset="52.78"
+                                />
                               </svg>
                               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                <span className="text-[2.8rem] font-semibold leading-none tracking-[-0.05em] text-[#18323c]">80<span className="text-base font-normal text-gray-300">%</span></span>
-                                <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.14em] text-gray-400">LTV</span>
+                                <div className="h-[2rem] overflow-hidden">
+                                  <div className="ce-ticker-ltv">
+                                    {[80, 75, 65, 80].map((ltv, i) => (
+                                      <span key={i} className="block h-[2rem] text-[2rem] font-bold leading-none tracking-[-0.04em] text-[#18323c]">{ltv}<span className="text-sm font-normal text-gray-300">%</span></span>
+                                    ))}
+                                  </div>
+                                </div>
+                                <span className="mt-0.5 text-[9px] font-medium uppercase tracking-[0.14em] text-gray-400">LTV</span>
                               </div>
                             </div>
-                            {/* Vertical LP valuation ticker */}
-                            <div className="mt-5 w-full max-w-[15rem] overflow-hidden rounded-xl border border-gray-100 bg-gray-50/80">
-                              <div className="h-[52px] overflow-hidden">
+                            {/* Asset info cards cycle below the ring */}
+                            <div className="mt-3 w-full max-w-[16rem] overflow-hidden rounded-2xl border border-gray-100 bg-white">
+                              <div className="h-[72px] overflow-hidden">
                                 <div className="ce-ticker-v">
                                   {[
                                     { pair: "ETH / USDC", value: "$24,800", borrowable: "$19,840" },
-                                    { pair: "WBTC / ETH", value: "$41,200", borrowable: "$32,960" },
-                                    { pair: "ARB / USDC", value: "$8,600", borrowable: "$6,880" },
+                                    { pair: "WBTC / ETH", value: "$41,200", borrowable: "$30,900" },
+                                    { pair: "ARB / USDC", value: "$8,600", borrowable: "$5,590" },
                                     { pair: "ETH / USDC", value: "$24,800", borrowable: "$19,840" },
                                   ].map((item, i) => (
-                                    <div key={i} className="h-[52px] px-4 py-2">
-                                      <div className="flex items-center justify-between">
-                                        <span className="text-[10px] font-medium text-gray-400">{item.pair}</span>
-                                        <span className="text-xs font-semibold text-[#18323c]">{item.value}</span>
-                                      </div>
-                                      <div className="mt-1 flex items-center justify-between">
-                                        <span className="text-[10px] font-medium text-gray-400">Borrowable</span>
-                                        <span className="text-xs font-semibold text-indigo-600">{item.borrowable}</span>
+                                    <div key={i} className="flex h-[72px] items-center px-4">
+                                      <div className="w-full">
+                                        <div className="flex items-center justify-between">
+                                          <span className="text-[11px] font-semibold text-indigo-400">{item.pair}</span>
+                                          <span className="text-sm font-bold text-[#18323c]">{item.value}</span>
+                                        </div>
+                                        <div className="mt-1.5 flex items-center justify-between">
+                                          <span className="text-[10px] text-gray-400">Borrowable</span>
+                                          <span className="text-sm font-bold text-indigo-500">{item.borrowable}</span>
+                                        </div>
                                       </div>
                                     </div>
                                   ))}
@@ -253,13 +271,13 @@ export default function HeroSection() {
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
                         <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_70%,rgba(16,185,129,0.05),transparent_55%)]" />
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_65%,rgba(16,185,129,0.07),transparent_55%)]" />
                           <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
                             {/* APY vertical ticker */}
                             <div className="flex items-baseline gap-1">
                               <div className="h-[3.6rem] overflow-hidden">
                                 <div className="ce-ticker-apy">
-                                  {["+12.4", "+12.5", "+12.6", "+12.4"].map((v, i) => (
+                                  {["+8.2", "+14.7", "+5.1", "+8.2"].map((v, i) => (
                                     <span key={i} className="block h-[3.6rem] text-[3.6rem] font-semibold leading-none tracking-[-0.05em] text-[#18323c]">{v}</span>
                                   ))}
                                 </div>
@@ -267,28 +285,38 @@ export default function HeroSection() {
                               <span className="text-xl font-normal text-gray-300">%</span>
                             </div>
                             <span className="mt-1 text-xs text-gray-400"><DeFiTerm term="apy">APY</DeFiTerm> earned while borrowed</span>
-                            {/* Continuously scrolling area chart */}
-                            <div className="mt-5 w-full max-w-[16rem] overflow-hidden">
-                              <div className="flex w-[200%] ce-chart-scroll">
-                                <svg className="h-[60px] w-1/2 shrink-0" viewBox="0 0 300 60" preserveAspectRatio="none">
-                                  <defs>
-                                    <linearGradient id="fee-fill" x1="0" y1="0" x2="0" y2="1">
-                                      <stop offset="0%" stopColor="#10b981" stopOpacity="0.15" />
-                                      <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
-                                    </linearGradient>
-                                  </defs>
-                                  <path d="M0,48 C25,46 50,42 80,38 S130,28 170,24 S220,20 260,16 L300,12 L300,60 L0,60Z" fill="url(#fee-fill)" />
-                                  <path d="M0,48 C25,46 50,42 80,38 S130,28 170,24 S220,20 260,16 L300,12" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" />
-                                </svg>
-                                <svg className="h-[60px] w-1/2 shrink-0" viewBox="0 0 300 60" preserveAspectRatio="none">
-                                  <path d="M0,48 C25,46 50,42 80,38 S130,28 170,24 S220,20 260,16 L300,12 L300,60 L0,60Z" fill="url(#fee-fill)" />
-                                  <path d="M0,48 C25,46 50,42 80,38 S130,28 170,24 S220,20 260,16 L300,12" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" />
-                                </svg>
+                            {/* Live fee chart */}
+                            <div className="relative mt-5 h-[92px] w-full max-w-[16rem] overflow-hidden rounded-[18px] border border-emerald-100/70 bg-[linear-gradient(180deg,#f8fffb_0%,#effcf5_100%)]">
+                              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.14),transparent_62%)]" />
+                              <div className="absolute inset-x-3 inset-y-0">
+                                <div className="absolute left-0 right-0 top-[20%] border-t border-emerald-100/70" />
+                                <div className="absolute left-0 right-0 top-1/2 border-t border-emerald-100/60" />
+                                <div className="absolute left-0 right-0 top-[80%] border-t border-emerald-100/50" />
                               </div>
+                              <svg className="absolute inset-0 h-full w-full" viewBox="0 0 300 92" preserveAspectRatio="none">
+                                <defs>
+                                  <linearGradient id="ce-fee-grad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stopColor="#10b981" stopOpacity="0.24" />
+                                    <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+                                  </linearGradient>
+                                </defs>
+                                <path
+                                  d="M0,72 C18,70 36,64 56,56 C76,48 92,36 114,34 C136,32 150,48 170,52 C190,56 206,30 224,24 C242,18 262,30 282,16 C290,11 296,8 300,7 L300,92 L0,92Z"
+                                  fill="url(#ce-fee-grad)"
+                                />
+                                <path
+                                  d="M0,72 C18,70 36,64 56,56 C76,48 92,36 114,34 C136,32 150,48 170,52 C190,56 206,30 224,24 C242,18 262,30 282,16 C290,11 296,8 300,7"
+                                  fill="none"
+                                  stroke="#10b981"
+                                  strokeWidth="2.75"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
                             </div>
-                            {/* Fee tickers */}
+                            {/* Fee tickers — glass card style */}
                             <div className="mt-3 flex w-full max-w-[16rem] gap-2">
-                              <div className="flex-1 rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-2 text-center">
+                              <div className="flex-1 rounded-xl border border-emerald-100/60 bg-[linear-gradient(180deg,rgba(236,253,245,0.5),rgba(255,255,255,0.95))] px-3 py-2.5 text-center">
                                 <span className="block text-[9px] font-medium text-gray-400">24h fees</span>
                                 <div className="h-4 overflow-hidden">
                                   <div className="ce-ticker-fee1">
@@ -298,7 +326,7 @@ export default function HeroSection() {
                                   </div>
                                 </div>
                               </div>
-                              <div className="flex-1 rounded-lg border border-gray-100 bg-gray-50/80 px-3 py-2 text-center">
+                              <div className="flex-1 rounded-xl border border-emerald-100/60 bg-[linear-gradient(180deg,rgba(236,253,245,0.5),rgba(255,255,255,0.95))] px-3 py-2.5 text-center">
                                 <span className="block text-[9px] font-medium text-gray-400">30d yield</span>
                                 <div className="h-4 overflow-hidden">
                                   <div className="ce-ticker-fee2">
@@ -327,37 +355,37 @@ export default function HeroSection() {
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
                         <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_58%,rgba(165,180,252,0.08),transparent_58%)]" />
                           <div className="absolute inset-0 flex items-center justify-center px-5">
-                            {/* Escalator: 12 items (6 unique duplicated), scrolling up infinitely */}
-                            <div className="w-full max-w-[16rem] h-[15rem] overflow-hidden">
-                              <div className="ce-escalator flex flex-col gap-2">
+                            <div className="relative w-full max-w-[16rem] h-[180px] overflow-hidden">
+                              <div className="pointer-events-none absolute inset-x-0 top-1/2 h-[52px] -translate-y-1/2 rounded-[16px] border border-indigo-100 bg-[linear-gradient(180deg,rgba(238,242,255,0.82),rgba(255,255,255,0.98))] shadow-[0_10px_24px_rgba(129,140,248,0.10)]" />
+                              <div className="ce-escalator flex flex-col">
                                 {[
-                                  { label: "Leverage trading", icon: "\u2197" },
-                                  { label: "Yield farming", icon: "\u25CE" },
-                                  { label: "Pay off debt", icon: "\u21A9" },
-                                  { label: "Open new positions", icon: "\uFF0B" },
-                                  { label: "Hedge exposure", icon: "\u21C5" },
-                                  { label: "Liquidity mining", icon: "\u25C7" },
-                                  { label: "Leverage trading", icon: "\u2197" },
-                                  { label: "Yield farming", icon: "\u25CE" },
-                                  { label: "Pay off debt", icon: "\u21A9" },
-                                  { label: "Open new positions", icon: "\uFF0B" },
-                                  { label: "Hedge exposure", icon: "\u21C5" },
-                                  { label: "Liquidity mining", icon: "\u25C7" },
-                                ].map((item, i) => (
-                                  <div
-                                    key={i}
-                                    className={`flex items-center gap-3 rounded-[14px] px-4 py-3 ${
-                                      i % 6 === 1
-                                        ? "border border-[#18323c]/10 bg-[#18323c] text-white shadow-[0_4px_20px_rgba(0,0,0,0.12)]"
-                                        : "border border-gray-100 bg-gray-50 text-gray-600"
-                                    }`}
-                                  >
-                                    <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs ${i % 6 === 1 ? "bg-white/15 text-white" : "bg-white text-gray-400"}`}>
-                                      {item.icon}
+                                  { prev: { label: "Yield farming", icon: "\u25CE" }, active: { label: "Leverage trading", icon: "\u2197" }, next: { label: "Pay off debt", icon: "\u21A9" } },
+                                  { prev: { label: "Pay off debt", icon: "\u21A9" }, active: { label: "Hedge exposure", icon: "\u21C5" }, next: { label: "Liquidity mining", icon: "\u25C7" } },
+                                  { prev: { label: "Liquidity mining", icon: "\u25C7" }, active: { label: "Yield farming", icon: "\u25CE" }, next: { label: "Open new positions", icon: "+" } },
+                                  { prev: { label: "Yield farming", icon: "\u25CE" }, active: { label: "Leverage trading", icon: "\u2197" }, next: { label: "Pay off debt", icon: "\u21A9" } },
+                                ].map((slide, i) => (
+                                  <div key={i} className="flex h-[180px] flex-col justify-center gap-3">
+                                    <div className="flex h-[52px] items-center gap-3 rounded-[16px] border border-gray-100 bg-white px-4 text-gray-500 shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
+                                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gray-50 text-xs text-gray-400">
+                                        {slide.prev.icon}
+                                      </div>
+                                      <span className="text-[0.82rem] font-medium">{slide.prev.label}</span>
                                     </div>
-                                    <span className="text-[0.82rem] font-medium">{item.label}</span>
-                                    {i % 6 === 1 && <span className="ml-auto text-[10px] font-medium text-white/50">Active</span>}
+                                    <div className="relative flex h-[52px] items-center gap-3 rounded-[16px] px-4 text-[#18323c]">
+                                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white text-xs text-indigo-400 shadow-[0_2px_8px_rgba(129,140,248,0.10)]">
+                                        {slide.active.icon}
+                                      </div>
+                                      <span className="text-[0.82rem] font-medium">{slide.active.label}</span>
+                                      <span className="ml-auto rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-medium text-indigo-500">Active</span>
+                                    </div>
+                                    <div className="flex h-[52px] items-center gap-3 rounded-[16px] border border-gray-100 bg-white px-4 text-gray-500 shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
+                                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gray-50 text-xs text-gray-400">
+                                        {slide.next.icon}
+                                      </div>
+                                      <span className="text-[0.82rem] font-medium">{slide.next.label}</span>
+                                    </div>
                                   </div>
                                 ))}
                               </div>
@@ -380,10 +408,10 @@ export default function HeroSection() {
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
                         <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.04),transparent_60%)]" />
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(99,102,241,0.06),transparent_60%)]" />
                           <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
                             <div className="w-full max-w-[16rem]">
-                              {/* Oracle band header with price tickers */}
+                              {/* Oracle band header */}
                               <div className="flex items-center justify-between">
                                 <div className="h-3 overflow-hidden">
                                   <div className="ce-ticker-price1">
@@ -392,7 +420,7 @@ export default function HeroSection() {
                                     ))}
                                   </div>
                                 </div>
-                                <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[9px] font-semibold text-indigo-500">Oracle band</span>
+                                <span className="rounded-full border border-indigo-100 bg-indigo-50/80 px-2.5 py-0.5 text-[9px] font-semibold text-indigo-500">Oracle band</span>
                                 <div className="h-3 overflow-hidden">
                                   <div className="ce-ticker-price2">
                                     {["$1,950", "$1,948", "$1,952", "$1,950"].map((v, i) => (
@@ -401,43 +429,49 @@ export default function HeroSection() {
                                   </div>
                                 </div>
                               </div>
-                              {/* Continuously scrolling chart */}
-                              <div className="relative mt-2 h-[90px] w-full overflow-hidden rounded-xl bg-gray-50">
-                                <div className="absolute inset-x-[12%] inset-y-0 rounded-lg bg-indigo-50/80" />
-                                <div className="absolute inset-0 flex w-[200%] ce-chart-scroll-slow">
-                                  <svg className="h-full w-1/2 shrink-0" viewBox="0 0 300 90" preserveAspectRatio="none">
-                                    <defs>
-                                      <linearGradient id="oracle-fill" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stopColor="#6366f1" stopOpacity="0.08" />
-                                        <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
-                                      </linearGradient>
-                                    </defs>
-                                    <path d="M0,72 C30,68 60,62 90,50 S150,22 180,28 S240,44 270,36 L300,30 L300,90 L0,90Z" fill="url(#oracle-fill)" />
-                                    <path d="M0,72 C30,68 60,62 90,50 S150,22 180,28 S240,44 270,36 L300,30" fill="none" stroke="#6366f1" strokeWidth="2" strokeLinecap="round" />
-                                  </svg>
-                                  <svg className="h-full w-1/2 shrink-0" viewBox="0 0 300 90" preserveAspectRatio="none">
-                                    <path d="M0,72 C30,68 60,62 90,50 S150,22 180,28 S240,44 270,36 L300,30 L300,90 L0,90Z" fill="url(#oracle-fill)" />
-                                    <path d="M0,72 C30,68 60,62 90,50 S150,22 180,28 S240,44 270,36 L300,30" fill="none" stroke="#6366f1" strokeWidth="2" strokeLinecap="round" />
-                                  </svg>
+                              {/* Price-range chart */}
+                              <div className="relative mt-3 h-[108px] w-full overflow-hidden rounded-[18px] border border-indigo-100/70 bg-[linear-gradient(180deg,#fafbff_0%,#eef2ff_100%)]">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(99,102,241,0.14),transparent_60%)]" />
+                                <div className="absolute inset-x-3 inset-y-0">
+                                  <div className="absolute left-0 right-0 top-[20%] border-t border-indigo-100/70" />
+                                  <div className="absolute left-0 right-0 top-1/2 border-t border-indigo-100/60" />
+                                  <div className="absolute left-0 right-0 top-[80%] border-t border-indigo-100/50" />
                                 </div>
-                                {/* Pulsing dot */}
-                                <div className="absolute left-[58%] top-[28%]">
-                                  <div className="h-3 w-3 rounded-full border-2 border-white bg-indigo-500 shadow-sm" />
-                                  <div className="absolute inset-0 h-3 w-3 rounded-full bg-indigo-400 ce-pulse-dot" />
-                                </div>
+                                <div className="absolute inset-y-4 left-[36%] right-[20%] bg-[radial-gradient(ellipse_at_center,rgba(129,140,248,0.14),rgba(129,140,248,0.05)_55%,rgba(129,140,248,0)_85%)]" />
+                                <svg className="absolute inset-0 h-full w-full" viewBox="0 0 300 108" preserveAspectRatio="none">
+                                  <defs>
+                                    <linearGradient id="ce-oracle-grad" x1="0" y1="0" x2="0" y2="1">
+                                      <stop offset="0%" stopColor="#6366f1" stopOpacity="0.18" />
+                                      <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
+                                    </linearGradient>
+                                  </defs>
+                                  <path
+                                    d="M0,76 C18,72 36,68 54,60 C72,52 92,40 114,34 C136,28 156,34 176,44 C196,54 216,52 236,46 C256,40 278,42 300,38 L300,108 L0,108Z"
+                                    fill="url(#ce-oracle-grad)"
+                                  />
+                                  <path
+                                    d="M0,76 C18,72 36,68 54,60 C72,52 92,40 114,34 C136,28 156,34 176,44 C196,54 216,52 236,46 C256,40 278,42 300,38"
+                                    fill="none"
+                                    stroke="#6366f1"
+                                    strokeWidth="2.75"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                </svg>
                               </div>
-                              {/* Status */}
+                              {/* Status pill */}
                               <div className="mt-2.5 flex items-center justify-center gap-1.5">
-                                <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 ce-pulse-dot" /><span className="text-[10px] font-medium text-gray-500">In range</span>
+                                <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 ce-pulse-dot" />
+                                <span className="text-[10px] font-medium text-gray-500">In range</span>
                               </div>
-                              {/* Price value tickers */}
+                              {/* Price value tickers — glass cards */}
                               <div className="mt-3 flex justify-center gap-1.5">
                                 {[
                                   { l: "Lower", vals: ["$1,720", "$1,718", "$1,722", "$1,720"], cls: "ce-ticker-price1" },
                                   { l: "Current", vals: ["$1,847", "$1,852", "$1,844", "$1,847"], cls: "ce-ticker-price3" },
                                   { l: "Upper", vals: ["$1,950", "$1,948", "$1,952", "$1,950"], cls: "ce-ticker-price2" },
                                 ].map((p) => (
-                                  <div key={p.l} className="flex-1 rounded-lg border border-gray-100 bg-gray-50/80 px-2 py-1.5 text-center">
+                                  <div key={p.l} className="flex-1 rounded-xl border border-indigo-100/50 bg-[linear-gradient(180deg,rgba(238,242,255,0.4),rgba(255,255,255,0.95))] px-2 py-1.5 text-center">
                                     <span className="block text-[8px] font-medium uppercase tracking-[0.08em] text-gray-400">{p.l}</span>
                                     <div className="h-4 overflow-hidden">
                                       <div className={p.cls}>
@@ -468,42 +502,86 @@ export default function HeroSection() {
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
                         <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(16,185,129,0.05),transparent_55%)]" />
                           <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
-                            {/* Vertical risk assessment ticker */}
                             <div className="w-full max-w-[16rem] overflow-hidden">
-                              <div className="h-[180px] overflow-hidden">
+                              <div className="h-[194px] overflow-hidden">
                                 <div className="ce-ticker-risk">
                                   {[
-                                    { pair: "ETH / USDC", depth: "Deep", depthColor: "bg-emerald-400", depthLevel: 90, vol: "Low", volColor: "bg-amber-400", volLevel: 25, oracle: "98", oracleColor: "bg-[#18323c]", oracleLevel: 98 },
-                                    { pair: "WBTC / ETH", depth: "Medium", depthColor: "bg-amber-400", depthLevel: 60, vol: "Med", volColor: "bg-orange-400", volLevel: 50, oracle: "95", oracleColor: "bg-[#18323c]", oracleLevel: 95 },
-                                    { pair: "ARB / USDC", depth: "Shallow", depthColor: "bg-red-400", depthLevel: 35, vol: "High", volColor: "bg-red-400", volLevel: 78, oracle: "88", oracleColor: "bg-[#18323c]", oracleLevel: 88 },
-                                    { pair: "ETH / USDC", depth: "Deep", depthColor: "bg-emerald-400", depthLevel: 90, vol: "Low", volColor: "bg-amber-400", volLevel: 25, oracle: "98", oracleColor: "bg-[#18323c]", oracleLevel: 98 },
+                                    {
+                                      pair: "ETH / USDC",
+                                      badge: "Low risk",
+                                      badgeBg: "bg-emerald-50",
+                                      badgeText: "text-emerald-700",
+                                      badgeBorder: "border-emerald-100",
+                                      metrics: [
+                                        { label: "Pool depth", value: "Deep", level: 90, color: "#10b981" },
+                                        { label: "Volatility", value: "Low", level: 25, color: "#6ee7b7" },
+                                        { label: "Oracle quality", value: "98 / 100", level: 98, color: "#6366f1" },
+                                      ],
+                                    },
+                                    {
+                                      pair: "WBTC / ETH",
+                                      badge: "Watch",
+                                      badgeBg: "bg-amber-50",
+                                      badgeText: "text-amber-700",
+                                      badgeBorder: "border-amber-100",
+                                      metrics: [
+                                        { label: "Pool depth", value: "Medium", level: 60, color: "#f59e0b" },
+                                        { label: "Volatility", value: "Med", level: 50, color: "#fb923c" },
+                                        { label: "Oracle quality", value: "95 / 100", level: 95, color: "#6366f1" },
+                                      ],
+                                    },
+                                    {
+                                      pair: "ARB / USDC",
+                                      badge: "Elevated",
+                                      badgeBg: "bg-rose-50",
+                                      badgeText: "text-rose-700",
+                                      badgeBorder: "border-rose-100",
+                                      metrics: [
+                                        { label: "Pool depth", value: "Shallow", level: 35, color: "#f43f5e" },
+                                        { label: "Volatility", value: "High", level: 78, color: "#ef4444" },
+                                        { label: "Oracle quality", value: "88 / 100", level: 88, color: "#6366f1" },
+                                      ],
+                                    },
+                                    {
+                                      pair: "ETH / USDC",
+                                      badge: "Low risk",
+                                      badgeBg: "bg-emerald-50",
+                                      badgeText: "text-emerald-700",
+                                      badgeBorder: "border-emerald-100",
+                                      metrics: [
+                                        { label: "Pool depth", value: "Deep", level: 90, color: "#10b981" },
+                                        { label: "Volatility", value: "Low", level: 25, color: "#6ee7b7" },
+                                        { label: "Oracle quality", value: "98 / 100", level: 98, color: "#6366f1" },
+                                      ],
+                                    },
                                   ].map((item, i) => (
-                                    <div key={i} className="h-[180px] space-y-2">
-                                      <div className="mb-2 text-center">
-                                        <span className="text-xs font-semibold text-[#18323c]">{item.pair}</span>
-                                      </div>
-                                      {[
-                                        { label: "Pool depth", value: item.depth, level: item.depthLevel, color: item.depthColor },
-                                        { label: "Volatility", value: item.vol, level: item.volLevel, color: item.volColor },
-                                        { label: "Oracle quality", value: `${item.oracle}/100`, level: item.oracleLevel, color: item.oracleColor },
-                                      ].map((metric) => (
-                                        <div key={metric.label} className="rounded-xl border border-gray-100 bg-gray-50/80 px-4 py-2">
-                                          <div className="flex items-center justify-between">
-                                            <span className="text-[10px] font-medium text-gray-400">{metric.label}</span>
-                                            <span className="text-xs font-semibold text-[#18323c]">{metric.value}</span>
-                                          </div>
-                                          <div className="mt-1.5 h-[5px] w-full overflow-hidden rounded-full bg-gray-100">
-                                            <div className={`h-full rounded-full ${metric.color}`} style={{ width: `${metric.level}%` }} />
-                                          </div>
+                                    <div key={i} className="flex h-[194px] items-center py-2">
+                                      <div className="w-full rounded-[20px] border border-gray-100/80 bg-white px-4 py-3 shadow-[0_6px_18px_rgba(15,23,42,0.04)]">
+                                        <div className="flex items-center justify-between">
+                                          <span className="text-xs font-semibold text-[#18323c]">{item.pair}</span>
+                                          <span className={`rounded-full border px-2.5 py-1 text-[10px] font-semibold ${item.badgeBg} ${item.badgeText} ${item.badgeBorder}`}>
+                                            {item.badge}
+                                          </span>
                                         </div>
-                                      ))}
-                                      {/* Score badge */}
-                                      <div className="mt-2 flex items-center justify-center gap-2 rounded-full border border-emerald-100 bg-emerald-50/80 px-3 py-1">
-                                        <div className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500">
-                                          <svg width="8" height="8" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                                        <div className="mt-3 space-y-3">
+                                          {item.metrics.map((metric) => (
+                                            <div key={metric.label}>
+                                              <div className="flex items-center justify-between">
+                                                <span className="text-[10px] font-medium text-gray-400">{metric.label}</span>
+                                                <span className="text-[11px] font-semibold text-[#18323c]">{metric.value}</span>
+                                              </div>
+                                              <div className="mt-1.5 h-[5px] w-full overflow-hidden rounded-full bg-gray-100">
+                                                <div className="h-full rounded-full transition-[width] duration-700" style={{ width: `${metric.level}%`, backgroundColor: metric.color }} />
+                                              </div>
+                                            </div>
+                                          ))}
                                         </div>
-                                        <span className="text-[11px] font-semibold text-emerald-700">Eligible for borrowing</span>
+                                        <div className="mt-3 flex items-center gap-2 text-[10px] font-medium text-emerald-600">
+                                          <div className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                                          Borrowing enabled
+                                        </div>
                                       </div>
                                     </div>
                                   ))}
@@ -518,42 +596,153 @@ export default function HeroSection() {
                 </div>
 
                 <style>{`
-                  .ce-ring-breathe { animation: ce-rb 3s ease-in-out infinite; }
-                  @keyframes ce-rb { 0%,100% { opacity:1; } 50% { opacity:0.7; } }
+                  /* === Card 01: Maximize Capital — ring + ledger === */
+                  .ce-ring-breathe {
+                    animation: ce-rb 12s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                  }
+                  @keyframes ce-rb {
+                    0%, 22% { box-shadow: 0 8px 18px rgba(15,23,42,0.04); transform: scale(1); }
+                    24%, 26% { box-shadow: 0 12px 22px rgba(15,23,42,0.06); transform: scale(1.015); }
+                    28%, 50% { box-shadow: 0 8px 18px rgba(15,23,42,0.04); transform: scale(1); }
+                    52%, 54% { box-shadow: 0 12px 22px rgba(15,23,42,0.06); transform: scale(1.015); }
+                    56%, 78% { box-shadow: 0 8px 18px rgba(15,23,42,0.04); transform: scale(1); }
+                    80%, 82% { box-shadow: 0 12px 22px rgba(15,23,42,0.06); transform: scale(1.015); }
+                    84%, 100% { box-shadow: 0 8px 18px rgba(15,23,42,0.04); transform: scale(1); }
+                  }
 
-                  .ce-ticker-v { animation: ce-tv 9s ease-in-out infinite; }
-                  @keyframes ce-tv { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
+                  .ce-ticker-ltv {
+                    animation: ce-tv 12s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                  }
+                  .ce-ltv-arc {
+                    animation: ce-la 12s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                  }
+                  .ce-ticker-v {
+                    animation: ce-tv 12s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                  }
+                  @keyframes ce-la {
+                    0%, 22% { stroke-dashoffset: 52.78; }
+                    28%, 50% { stroke-dashoffset: 65.97; }
+                    56%, 78% { stroke-dashoffset: 92.36; }
+                    84%, 100% { stroke-dashoffset: 52.78; }
+                  }
+                  @keyframes ce-tv {
+                    0%, 22% { transform: translateY(0); }
+                    28%, 50% { transform: translateY(-25%); }
+                    56%, 78% { transform: translateY(-50%); }
+                    84%, 100% { transform: translateY(-75%); }
+                  }
 
-                  .ce-ticker-apy { animation: ce-ta 8s ease-in-out infinite; }
-                  @keyframes ce-ta { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
+                  /* === Card 02: Keep Earning — APY reel + chart + fee tickers === */
+                  .ce-ticker-apy {
+                    animation: ce-ta 11s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                  }
+                  @keyframes ce-ta {
+                    0%, 22% { transform: translateY(0); }
+                    28%, 50% { transform: translateY(-25%); }
+                    56%, 78% { transform: translateY(-50%); }
+                    84%, 100% { transform: translateY(-75%); }
+                  }
 
-                  .ce-ticker-fee1 { animation: ce-tf1 6s ease-in-out infinite; }
-                  @keyframes ce-tf1 { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
+                  .ce-ticker-fee1 {
+                    animation: ce-tf1 9s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                  }
+                  @keyframes ce-tf1 {
+                    0%, 22% { transform: translateY(0); }
+                    28%, 50% { transform: translateY(-25%); }
+                    56%, 78% { transform: translateY(-50%); }
+                    84%, 100% { transform: translateY(-75%); }
+                  }
 
-                  .ce-ticker-fee2 { animation: ce-tf2 7s ease-in-out infinite; }
-                  @keyframes ce-tf2 { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
+                  .ce-ticker-fee2 {
+                    animation: ce-tf2 10s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                    animation-delay: 1.2s;
+                  }
+                  @keyframes ce-tf2 {
+                    0%, 22% { transform: translateY(0); }
+                    28%, 50% { transform: translateY(-25%); }
+                    56%, 78% { transform: translateY(-50%); }
+                    84%, 100% { transform: translateY(-75%); }
+                  }
 
-                  .ce-chart-scroll { animation: ce-cs 12s linear infinite; }
-                  @keyframes ce-cs { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+                  /* === Card 03: Unlock Strategies — escalator === */
+                  .ce-escalator {
+                    animation: ce-esc 15s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                  }
+                  @keyframes ce-esc {
+                    0%, 22% { transform: translateY(0); }
+                    28%, 50% { transform: translateY(-25%); }
+                    56%, 78% { transform: translateY(-50%); }
+                    84%, 100% { transform: translateY(-75%); }
+                  }
 
-                  .ce-chart-scroll-slow { animation: ce-css 20s linear infinite; }
-                  @keyframes ce-css { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+                  /* === Card 04: Oracle band — chart + price tickers + dot === */
+                  .ce-pulse-dot {
+                    animation: ce-pd 3s ease-in-out infinite;
+                  }
+                  @keyframes ce-pd {
+                    0%, 100% { opacity: 0.7; transform: scale(1); }
+                    50% { opacity: 0; transform: scale(2.2); }
+                  }
 
-                  .ce-escalator { animation: ce-esc 16s linear infinite; }
-                  @keyframes ce-esc { from { transform:translateY(0); } to { transform:translateY(-50%); } }
+                  .ce-ticker-price1 {
+                    animation: ce-tp1 8s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                  }
+                  .ce-ticker-price2 {
+                    animation: ce-tp2 7s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                    animation-delay: 0.8s;
+                  }
+                  .ce-ticker-price3 {
+                    animation: ce-tp3 9s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                    animation-delay: 1.6s;
+                  }
+                  @keyframes ce-tp1 {
+                    0%, 22% { transform: translateY(0); }
+                    28%, 50% { transform: translateY(-25%); }
+                    56%, 78% { transform: translateY(-50%); }
+                    84%, 100% { transform: translateY(-75%); }
+                  }
+                  @keyframes ce-tp2 {
+                    0%, 22% { transform: translateY(0); }
+                    28%, 50% { transform: translateY(-25%); }
+                    56%, 78% { transform: translateY(-50%); }
+                    84%, 100% { transform: translateY(-75%); }
+                  }
+                  @keyframes ce-tp3 {
+                    0%, 22% { transform: translateY(0); }
+                    28%, 50% { transform: translateY(-25%); }
+                    56%, 78% { transform: translateY(-50%); }
+                    84%, 100% { transform: translateY(-75%); }
+                  }
 
-                  .ce-pulse-dot { animation: ce-pd 2s ease-in-out infinite; }
-                  @keyframes ce-pd { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(1.8); } }
+                  /* === Card 05: Risk models — ticker === */
+                  .ce-ticker-risk {
+                    animation: ce-tr 16s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                  }
+                  @keyframes ce-tr {
+                    0%, 22% { transform: translateY(0); }
+                    28%, 50% { transform: translateY(-25%); }
+                    56%, 78% { transform: translateY(-50%); }
+                    84%, 100% { transform: translateY(-75%); }
+                  }
 
-                  .ce-ticker-risk { animation: ce-tr 12s ease-in-out infinite; }
-                  @keyframes ce-tr { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
-
-                  .ce-ticker-price1 { animation: ce-tp1 5s ease-in-out infinite; }
-                  .ce-ticker-price2 { animation: ce-tp2 4s ease-in-out infinite; }
-                  .ce-ticker-price3 { animation: ce-tp3 6s ease-in-out infinite; }
-                  @keyframes ce-tp1 { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
-                  @keyframes ce-tp2 { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
-                  @keyframes ce-tp3 { 0%,28% { transform:translateY(0); } 33%,61% { transform:translateY(-25%); } 66%,94% { transform:translateY(-50%); } 100% { transform:translateY(-75%); } }
+                  /* === Reduced motion === */
+                  @media (prefers-reduced-motion: reduce) {
+                    .ce-ring-breathe,
+                    .ce-ticker-ltv,
+                    .ce-ltv-arc,
+                    .ce-ticker-v,
+                    .ce-ticker-apy,
+                    .ce-ticker-fee1,
+                    .ce-ticker-fee2,
+                    .ce-escalator,
+                    .ce-pulse-dot,
+                    .ce-ticker-price1,
+                    .ce-ticker-price2,
+                    .ce-ticker-price3,
+                    .ce-ticker-risk {
+                      animation: none !important;
+                    }
+                  }
                 `}</style>
               </div>
             </div>
@@ -620,7 +809,7 @@ export default function HeroSection() {
         </LazySection>
 
         <LazySection minHeight="480px" fallback={<SectionSkeleton minHeight="480px" />}>
-          <div className="pb-16 md:pb-24">
+          <div className="pb-16 md:pb-24 2xl:pb-22">
             <DeferredHomepageFaqSection />
           </div>
         </LazySection>
