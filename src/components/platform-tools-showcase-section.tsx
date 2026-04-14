@@ -75,11 +75,7 @@ export default function PlatformToolsShowcaseSection() {
     >
       <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
         <SectionEyebrow tone="violet">Platform Tools</SectionEyebrow>
-        <SectionTitle>
-          Everything you need
-          <br />
-          in one place.
-        </SectionTitle>
+        <SectionTitle><span className="lg:whitespace-nowrap">Everything you need in one place.</span></SectionTitle>
       </div>
 
       <div
