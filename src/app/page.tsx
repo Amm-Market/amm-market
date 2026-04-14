@@ -61,16 +61,13 @@ export default function Home() {
               <div className="space-y-4">
                 <SectionEyebrow tone="cyan">What&apos;s new</SectionEyebrow>
                 <SectionTitle>
-                  <span className="block lg:whitespace-nowrap">Deeper liquidity,</span>
-                  <span className="block lg:whitespace-nowrap">precise borrowing.</span>
+                  <span className="block lg:whitespace-nowrap">Unlock liquidity from</span>
+                  <span className="block lg:whitespace-nowrap">Your AMM Pools.</span>
                 </SectionTitle>
               </div>
               <div className="space-y-8 text-left text-[#39515b]">
                 <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
                   Avana turns active LP positions into productive collateral so liquidity providers can unlock capital without unwinding the pools that keep earning fees.
-                </p>
-                <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
-                  Built on Aave v4, the protocol is designed around live AMM exposure, position-aware valuation, and borrowing power that reflects how liquidity actually behaves onchain.
                 </p>
               </div>
             </div>
