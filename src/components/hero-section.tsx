@@ -138,7 +138,7 @@ export default function HeroSection() {
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="violet">How it works</SectionEyebrow>
             <SectionTitle>
-              How borrowing works
+              Borrowing in three steps
             </SectionTitle>
           </div>
         </div>
@@ -158,7 +158,7 @@ export default function HeroSection() {
               Receive your loan instantly
             </h3>
             <p className="text-sm md:text-base text-gray-600">
-              USDC will be deposited into your wallet. Borrow up to 80% of your LP value based on pool risk parameters.
+              Assets will be deposited into your wallet. Borrow up to 80% of your LP value based on pool risk parameters.
             </p>
           </div>
           <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
@@ -190,7 +190,7 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Maximize your capital</h3>
+                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Stretch liquidity further</h3>
                         <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Borrow up to 80% of your LP value.</p>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">01</div>
@@ -347,7 +347,7 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Unlock new strategies</h3>
+                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Spend capital anywhere</h3>
                         <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Use borrowed funds however you want.</p>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">03</div>
@@ -400,8 +400,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Price-range aware oracles</h3>
-                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Valuation tracks your LP&apos;s active tick range.</p>
+                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Track pool composition</h3>
+                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">LP aware oracles monitor volume and oracle confidence.</p>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">04</div>
                     </div>
@@ -494,8 +494,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>LP-aware risk models</h3>
-                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Track pool composition, volatility, and oracle quality.</p>
+                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Risk tuned to pools</h3>
+                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Continuous risk scoring, track pool volatility, and health quality.</p>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">05</div>
                     </div>
@@ -758,10 +758,10 @@ export default function HeroSection() {
           <div>
               <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
                 <div className="space-y-4">
-                  <SectionEyebrow tone="slate">Security Protection</SectionEyebrow>
+                  <SectionEyebrow tone="slate">Built on Aave v4</SectionEyebrow>
                   <SectionTitle>
-                    <span className="block lg:whitespace-nowrap">Aave v4</span>
-                    <span className="block lg:whitespace-nowrap">Design Foundation</span>
+                    <span className="block lg:whitespace-nowrap">Shared liquidity,</span>
+                    <span className="block lg:whitespace-nowrap">stronger guardrails.</span>
                   </SectionTitle>
                 </div>
                 <div className="text-left text-[#39515b]">

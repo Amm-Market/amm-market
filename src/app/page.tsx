@@ -59,7 +59,7 @@ export default function Home() {
           <div className="mx-auto w-full max-w-[76rem]">
             <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
               <div className="space-y-4">
-                <SectionEyebrow tone="cyan">Avana Relaunch</SectionEyebrow>
+                <SectionEyebrow tone="cyan">What&apos;s new</SectionEyebrow>
                 <SectionTitle>
                   <span className="block lg:whitespace-nowrap">Deeper liquidity,</span>
                   <span className="block lg:whitespace-nowrap">precise borrowing.</span>
