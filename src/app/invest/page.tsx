@@ -57,7 +57,7 @@ const investFeatureItems = [
     description: "Access and move capital whenever liquidity is available, all from one simple online interface.",
   },
   {
-    title: "A market-leading rate",
+    title: "Rates above the benchmark",
     description: "Supplier yield is designed to sit above most bank cash products while staying tied to real onchain demand.",
   },
   {
@@ -175,10 +175,10 @@ export default function InvestPage() {
           <div className="mx-auto w-full max-w-[76rem]">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-center md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
               <div className="space-y-4 md:self-center">
-                <SectionEyebrow tone="emerald">Avana Relaunch</SectionEyebrow>
+                <SectionEyebrow tone="emerald">Supply Markets</SectionEyebrow>
                 <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
-                  <span className="block">One deposit,</span>
-                  <span className="block">many LP markets.</span>
+                  <span className="block">Deposit once,</span>
+                  <span className="block">earn across markets.</span>
                 </SectionTitle>
               </div>
               <div className="flex items-center justify-center pt-1 md:justify-end">
@@ -209,7 +209,7 @@ export default function InvestPage() {
 
           <ProductFeatureScrollSection
             eyebrowTone="emerald"
-            title="Under the hood."
+            title="A market-leading rate, with more built in."
             items={investFeatureItems}
             panels={[
               /* 01 Easy money movement — deposit/withdraw flow card */
@@ -382,7 +382,7 @@ export default function InvestPage() {
               <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
                 <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-                  Visit the Lend page
+                  Pick a market
                 </h3>
                 <p className="text-sm text-gray-600 md:text-base">
                   Browse lending markets like GHO, USDC, USDT, ETH, and WBTC. Each market shows current APY, utilization, and what your capital is helping fund across LP borrower categories.
@@ -402,7 +402,7 @@ export default function InvestPage() {
               <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
                 <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-                  Collect your yield
+                  Earn and withdraw freely
                 </h3>
                 <p className="text-sm text-gray-600 md:text-base">
                   Interest accrues continuously. Withdraw whenever you choose, and your principal plus earned yield returns to your wallet in one transaction with no claim period or lock-up.
