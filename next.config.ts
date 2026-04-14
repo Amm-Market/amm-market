@@ -148,6 +148,11 @@ const nextConfig: NextConfig = {
         hostname: "assets-cms.kraken.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "framerusercontent.com",
+        pathname: "/**",
+      },
     ],
   },
 
