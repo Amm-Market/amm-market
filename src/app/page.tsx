@@ -61,13 +61,13 @@ export default function Home() {
               <div className="space-y-4">
                 <SectionEyebrow tone="cyan">What&apos;s new</SectionEyebrow>
                 <SectionTitle>
-                  <span className="block lg:whitespace-nowrap">Unlock liquidity from</span>
-                  <span className="block lg:whitespace-nowrap">Your AMM Pools.</span>
+                  <span className="block lg:whitespace-nowrap">Unlock Capital</span>
+                  <span className="block lg:whitespace-nowrap">from Amm Markets.</span>
                 </SectionTitle>
               </div>
               <div className="space-y-8 text-left text-[#39515b]">
                 <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
-                  Avana turns active LP positions into productive collateral so liquidity providers can unlock capital without unwinding the pools that keep earning fees.
+                  In 2021, <strong className="font-semibold text-gray-900">Aave</strong> launched <strong className="font-semibold text-gray-900">AMM Market</strong> and proved <strong className="font-semibold text-gray-900">LP positions</strong> could serve as collateral, but it was built for the simpler DEXs of that era. <strong className="font-semibold text-gray-900">Avana</strong> picks up where that left off, designed for today&apos;s DEXs and LP types, treating each position as <strong className="font-semibold text-gray-900">collateral</strong> shaped by dual oracles and stronger risk controls.
                 </p>
               </div>
             </div>
