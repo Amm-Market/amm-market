@@ -6,7 +6,6 @@ import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSect
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import PlatformToolsShowcaseSection from "@/components/platform-tools-showcase-section"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
-import PlatformWhyAvanaHighlights from "@/components/platform-why-avana-highlights"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
@@ -55,9 +54,9 @@ const financingFeatures = [
     description: "Deploy a single line of credit to access liquidity across multiple venues.",
   },
   {
-    title: "Unlock capital efficiency",
+    title: "Put idle capital to work",
     description:
-      "Borrow against assets in custody for leverage, shorting, and bespoke financing strategies.",
+      "Turn LP value into leverage, shorts, or yield positions without closing the underlying pool.",
   },
   {
     title: "Retain control",
@@ -90,23 +89,23 @@ const safetyFeatures = [
 
 const platformWorkflowSteps = [
   {
-    title: "Pool-level borrowing power",
+    title: "Position overview.",
     description:
-      "See loan-to-value, health thresholds, and remaining capacity before you borrow.",
+      "See health, debt, accrued fees, and risk exposure without switching screens.",
     accent: "bg-violet-100/80 text-violet-600",
     icon: Scale,
   },
   {
-    title: "Stay in the pool",
+    title: "Smart automation",
     description:
-      "Borrow against active LP positions while fees keep accruing.",
+      "Alerts and auto-actions that respond to market conditions while you stay in control.",
     accent: "bg-sky-100/80 text-sky-600",
     icon: Droplets,
   },
   {
-    title: "Automation when needed",
+    title: "Frictionless execution",
     description:
-      "Use Auto-Repay and target-based actions to help protect position health.",
+      "Every screen is designed around active AMM positions, not generic token lending.",
     accent: "bg-emerald-100/80 text-emerald-600",
     icon: ShieldCheck,
   },
@@ -131,13 +130,6 @@ function WorkflowStepCard({
 
   return (
     <div className="relative flex flex-1 flex-col">
-      {/* Connecting line between cards (desktop only) */}
-      {!isLast && (
-        <div className="pointer-events-none absolute right-0 top-9 z-10 hidden w-[calc(100%-1rem)] translate-x-[50%] lg:block">
-          <div className="h-px w-full bg-gradient-to-r from-gray-300 via-gray-200 to-transparent" />
-        </div>
-      )}
-
       <article className="relative flex h-full flex-col rounded-[1.6rem] border border-gray-200 bg-white p-6 transition-all duration-200 hover:border-gray-300 hover:shadow-[0_2px_20px_rgba(0,0,0,0.04)] md:p-8">
         {/* Step number + icon row */}
         <div className="flex items-center justify-between">
@@ -164,52 +156,34 @@ function WorkflowStepCard({
 const platformEdgeItems = [
   {
     stat: "1",
-    label: "interface",
-    title: "Unified workflow",
+    label: "workflow",
+    title: "No protocol juggling",
     description:
-      "Deposit, borrow, leverage, monitor, and automate from one place. No protocol hopping or tab switching.",
+      "Borrow, leverage, monitor, and automate without leaving a single interface.",
   },
   {
     stat: "0%",
-    label: "fee loss",
-    title: "Zero yield sacrifice",
+    label: "yield lost",
+    title: "Earn while you borrow",
     description:
-      "LP positions keep earning fees while used as collateral. Nothing paused, nothing forfeited, nothing unwound.",
+      "Collateral keeps generating trading fees throughout the life of every loan.",
   },
   {
     stat: "Live",
-    label: "tracking",
-    title: "Real-time health",
+    label: "updates",
+    title: "Real-time risk view",
     description:
-      "Health factor, debt ratios, and exposure updated continuously. React before conditions change, not after.",
+      "Health factor and exposure refresh continuously so surprises stay rare.",
   },
   {
     stat: "Full",
-    label: "control",
-    title: "Automation on your terms",
+    label: "flexibility",
+    title: "Automate or override",
     description:
-      "Set rules for repayment, deleveraging, and position protection. Override or adjust anytime.",
+      "Build automated rules, then step in manually whenever the situation calls for it.",
   },
 ] as const
 
-const advancedStats = [
-  {
-    title: "Live position intelligence",
-    description: "Track health, debt, rewards, and exposure in real time from one clear interface.",
-  },
-  {
-    title: "Automation with guardrails",
-    description: "Use alerts and auto-repay tools without giving up control over how positions are managed.",
-  },
-  {
-    title: "Fast, unified execution",
-    description: "Move from monitoring to action in one workflow instead of stitching together multiple tools.",
-  },
-  {
-    title: "Built for active LPs",
-    description: "Designed around real AMM positions so borrowing, risk, and management stay easy to understand.",
-  },
-]
 
 export default function PlatformPage() {
   return (
@@ -219,24 +193,22 @@ export default function PlatformPage() {
           <div className="mx-auto w-full max-w-[90rem] space-y-10 md:space-y-12 lg:space-y-14">
               <div className="pt-20 md:pt-28 lg:pt-32">
                 <h1 className="text-left text-[clamp(2.4rem,5.8vw,4.3rem)] font-normal leading-[0.98] tracking-[-0.065em] text-[#111111]">
-                  <span className="block whitespace-nowrap">One platform for every</span>
-                  <span className="block whitespace-nowrap">Amm Markets needs</span>
+                  <span className="block whitespace-nowrap">Your LP positions deserve</span>
+                  <span className="block whitespace-nowrap">a better interface.</span>
                 </h1>
               </div>
 
               <section className="opacity-100 [transform:perspective(1200px)]">
-                <div className="relative overflow-hidden rounded-[18px] bg-[#f4f1ea] md:rounded-[22px] lg:rounded-[24px]">
-                  <div className="relative aspect-square w-full md:aspect-[1360/640]">
-                    <Image
-                      src="https://framerusercontent.com/images/wHZUVowhaR4lNZZRsYJJW7ik9M.jpg?scale-down-to=1024&width=8368&height=5584"
-                      alt="Two people are sitting in the office, discussing the upcoming project."
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 100vw, (max-width: 1440px) 92vw, 1360px"
-                      className="h-full w-full object-cover object-center"
-                    />
-                  </div>
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-white/0 to-white/55 blur-2xl md:h-20 lg:h-24" />
+                <div className="relative overflow-hidden rounded-[18px] bg-[#f8f7f4] md:rounded-[22px] lg:rounded-[24px]">
+                  <Image
+                    src="/20.webp"
+                    alt="Avana platform dashboard"
+                    width={2400}
+                    height={1800}
+                    priority
+                    sizes="(max-width: 768px) 100vw, 92vw"
+                    className="w-full h-auto"
+                  />
                 </div>
               </section>
           </div>
@@ -246,9 +218,9 @@ export default function PlatformPage() {
       <ProductStorySection
         eyebrow="Avana Webapp"
         eyebrowTone="violet"
-        titleLines={["Full protocol access,", "made intuitive."]}
+        titleLines={["See everything,", "control everything."]}
         paragraphs={[
-          "The Avana Webapp brings the full protocol experience into a simple, intuitive interface. Users can deposit LP positions, see pool-specific borrowing limits, and unlock liquidity instantly, all without leaving their positions or sacrificing earned fees. Each pool’s loan-to-value ratios and risk parameters are clearly presented, giving users real-time visibility and control.",
+          "The Avana webapp gives you complete visibility and control over your LP positions. Deposit collateral, review pool-specific credit limits, borrow instantly, and manage health, automation, and risk from a single dashboard designed specifically for active liquidity providers.",
         ]}
       />
 
@@ -468,7 +440,7 @@ export default function PlatformPage() {
             <ProductFeatureScrollSection
               eyebrow="Position Safety"
               eyebrowTone="violet"
-              title="Know exactly what happens before it happens."
+              title="Every health state, fully explained."
               items={safetyFeatures}
               panels={[
                 /* Safe Zone — dashboard card with healthy ring + chart */
@@ -611,7 +583,7 @@ export default function PlatformPage() {
               <div className="relative z-10">
                 <div className="max-w-[600px] space-y-3">
                   <SectionEyebrow tone="violet">Platform edge</SectionEyebrow>
-                  <SectionTitle>Why LPs choose Avana.</SectionTitle>
+                  <SectionTitle>What makes Avana different.</SectionTitle>
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-14 lg:grid-cols-4 lg:gap-5">
@@ -633,35 +605,6 @@ export default function PlatformPage() {
                       </p>
                     </article>
                   ))}
-                </div>
-              </div>
-            </section>
-
-            <section className="w-full">
-              <div className="space-y-6">
-                <div className="max-w-[650px] space-y-3 text-left">
-                  <SectionEyebrow tone="violet">Why Avana</SectionEyebrow>
-                  <SectionTitle>Built to manage serious positions.</SectionTitle>
-                </div>
-
-                <div className="relative hidden overflow-hidden rounded-[28px] border border-gray-200 bg-[linear-gradient(145deg,#f8fafc_0%,#eef4ff_45%,#f8fafc_100%)] md:block">
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.14),transparent_28%),radial-gradient(circle_at_75%_18%,rgba(14,165,233,0.12),transparent_24%)]" />
-                  <div className="relative aspect-[1600/760] w-full">
-                    <Image
-                      alt="Built to manage serious positions."
-                      className="object-fill"
-                      fill
-                      loading="lazy"
-                      sizes="100vw"
-                      src="/images/homepage.png"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex w-full flex-col bg-white">
-                <div className="site-content-shell pt-6 pb-2 lg:pt-8 lg:pb-6">
-                  <PlatformWhyAvanaHighlights items={advancedStats} />
                 </div>
               </div>
             </section>
