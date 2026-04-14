@@ -71,7 +71,7 @@ export default function LeverageGlanceShowcaseSection() {
   }, [])
 
   return (
-    <section className="bg-inherit">
+    <section className="deferred-viewport bg-inherit">
       <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
         <SectionEyebrow tone="rose">At a glance</SectionEyebrow>
         <SectionTitle className="md:whitespace-nowrap">

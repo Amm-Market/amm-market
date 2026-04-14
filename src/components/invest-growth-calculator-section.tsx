@@ -88,7 +88,7 @@ export default function InvestGrowthCalculatorSection() {
       : "text-[clamp(1.65rem,4.5vw,2.35rem)] md:text-[clamp(1.55rem,2.6vw,2.1rem)]"
 
   return (
-    <section>
+    <section className="deferred-viewport-tall">
       <div className="space-y-6 lg:space-y-10">
         <div className="space-y-3">
           <SectionEyebrow tone="emerald">Growth Calculator</SectionEyebrow>
