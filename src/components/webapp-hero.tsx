@@ -9,7 +9,7 @@ export default function WebappHero() {
             <p className="max-w-[620px] text-[1.48rem] font-normal leading-[1.12] tracking-[-0.04em] text-[#121212] sm:text-[1.55rem] lg:text-[1.95rem]">
               Keep liquidity on your favorite DEX,
               <br />
-              then borrow against it with Avana.
+              and get credit lines backed by that liquidity.
             </p>
           </div>
 
