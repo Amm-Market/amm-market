@@ -42,7 +42,7 @@ export function BuildTomorrowSection() {
       data-id="theme-switcher"
       data-theme="beige"
       data-apply-globally="true"
-      className="w-full bg-inherit pb-16 md:pb-20"
+      className="w-full bg-inherit pb-16 md:pb-20 2xl:pb-18"
     >
       <div className="site-content-shell">
         <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
