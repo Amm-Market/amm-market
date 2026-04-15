@@ -177,31 +177,6 @@ export default function Header(): React.JSX.Element {
     }
   }, [])
 
-  useEffect(() => {
-    const browserWindow = window as Window & typeof globalThis & {
-      requestIdleCallback?: (
-        callback: IdleRequestCallback,
-        options?: IdleRequestOptions,
-      ) => number
-      cancelIdleCallback?: (handle: number) => void
-    }
-
-    const warmMenus = () => {
-      warmDesktopMenuPanel()
-      warmMobileMenu()
-    }
-
-    if (typeof browserWindow.requestIdleCallback === "function") {
-      const idleId = browserWindow.requestIdleCallback(warmMenus, { timeout: 1200 })
-
-      return () => browserWindow.cancelIdleCallback?.(idleId)
-    }
-
-    const timeoutId = browserWindow.setTimeout(warmMenus, 350)
-
-    return () => browserWindow.clearTimeout(timeoutId)
-  }, [])
-
   return (
     <>
       <header

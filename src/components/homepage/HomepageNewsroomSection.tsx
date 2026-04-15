@@ -29,7 +29,7 @@ export default async function HomepageNewsroomSection({
   const hasTopBorder = showTopBorder ?? showDividers
 
   return (
-    <section>
+    <section className="deferred-viewport">
       <div className="mb-8 flex max-w-[48rem] flex-col gap-3 md:mb-10">
         <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow>
         <SectionTitle>{title}</SectionTitle>

@@ -1,4 +1,5 @@
 import { SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
+import type { ReactNode } from "react"
 
 type ProductFeatureItem = {
   title: string
@@ -8,8 +9,9 @@ type ProductFeatureItem = {
 type ProductFeatureScrollSectionProps = {
   eyebrow?: string
   eyebrowTone?: SectionEyebrowTone
-  title: string
+  title: ReactNode
   items: readonly ProductFeatureItem[]
+  panels?: ReactNode[]
 }
 
 export default function ProductFeatureScrollSection({
@@ -17,9 +19,10 @@ export default function ProductFeatureScrollSection({
   eyebrowTone = "blue",
   title,
   items,
+  panels,
 }: ProductFeatureScrollSectionProps) {
   return (
-    <section>
+    <section className="deferred-viewport-tall">
       <div className="mb-8 max-w-[650px] space-y-3 text-left">
         <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow>
         <SectionTitle>{title}</SectionTitle>
@@ -47,12 +50,13 @@ export default function ProductFeatureScrollSection({
                 </div>
                 <div className="relative z-0 mt-auto">
                   <div className="flex items-end justify-center">
-                    <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(24,50,60,0.06),_transparent_55%)]" />
-                      <div className="absolute inset-x-6 bottom-6 h-px bg-gray-200" />
-                      <div className="absolute inset-x-10 bottom-10 h-px bg-gray-100" />
-                      <div className="absolute inset-x-16 bottom-14 h-px bg-gray-100" />
-                    </div>
+                    {panels?.[index] ?? (
+                      <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
+                        <div className="absolute inset-x-6 bottom-6 h-px bg-gray-200" />
+                        <div className="absolute inset-x-10 bottom-10 h-px bg-gray-100" />
+                        <div className="absolute inset-x-16 bottom-14 h-px bg-gray-100" />
+                      </div>
+                    )}
                   </div>
                 </div>
               </article>
