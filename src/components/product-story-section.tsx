@@ -16,7 +16,7 @@ export default function ProductStorySection({
   withTopDivider = false,
 }: ProductStorySectionProps) {
   return (
-    <section className={`bg-white pt-8 pb-16 md:pt-10 md:pb-20 ${withTopDivider ? "border-t border-gray-200" : ""}`}>
+    <section className={`bg-white pt-8 pb-16 md:pt-10 md:pb-20 2xl:pt-9 2xl:pb-18 ${withTopDivider ? "border-t border-gray-200" : ""}`}>
       <div className="site-content-shell">
         <div className="mx-auto w-full max-w-[76rem]">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
