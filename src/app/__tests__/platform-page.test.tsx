@@ -2,7 +2,7 @@
 
 import { render, screen } from "@testing-library/react"
 import { describe, expect, it, vi } from "vitest"
-import PlatformPage, { metadata } from "@/app/platform/page"
+import CreditLinesPage, { metadata } from "@/app/credit-lines/page"
 
 vi.mock("next/link", () => ({
   default: ({
@@ -46,14 +46,14 @@ vi.mock("@/components/homepage/HomepageNewsroomSection", () => ({
   default: () => <div data-testid="homepage-newsroom">Homepage Newsroom</div>,
 }))
 
-describe("platform page", () => {
-  it("exports metadata for the restored route", () => {
-    expect(metadata.title).toBe("Platform - Avana")
-    expect(metadata.description).toContain("LP-backed borrowing")
+describe("credit lines page", () => {
+  it("exports metadata for the renamed route", () => {
+    expect(metadata.title).toBe("Credit Lines - Avana")
+    expect(metadata.description).toContain("businesses")
   })
 
-  it("restores the platform content while using the current app shell", () => {
-    const { container } = render(<PlatformPage />)
+  it("renders the credit lines content while using the current app shell", () => {
+    const { container } = render(<CreditLinesPage />)
 
     const heroHeading = screen.getByRole("heading", { level: 1 })
 
@@ -65,19 +65,16 @@ describe("platform page", () => {
       "tracking-[-0.065em]",
       "text-[#111111]",
     )
-    expect(heroHeading).toHaveTextContent("One platform for every")
-    expect(heroHeading).toHaveTextContent("Amm Markets needs")
-    expect(screen.getByText("Avana Webapp")).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: /Full protocol access,\s*made intuitive\./i })).toBeInTheDocument()
-    expect(screen.getByText(/The Avana Webapp brings the full protocol experience into a simple, intuitive interface\./i)).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "LP borrowing, simplified." })).toBeInTheDocument()
+    expect(heroHeading).toHaveTextContent("Your business credit line deserves")
+    expect(heroHeading).toHaveTextContent("a better interface.")
+    expect(screen.getByText("Avana Credit Lines")).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Business credit lines, simplified." })).toBeInTheDocument()
     expect(screen.getByText(/Deposit LP positions, see your borrowing power, and unlock liquidity while fees keep accruing\./i)).toBeInTheDocument()
-    expect(screen.getByText(/Limits, health, and automation stay in one place\./i)).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Pool-level borrowing power" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Stay in the pool" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Automation when needed" })).toBeInTheDocument()
-    const financingHeading = screen.getByRole("heading", { name: "Flexible capital, one interface." })
-    const safetyHeading = screen.getByRole("heading", { name: "Know exactly what happens before it happens." })
+    expect(screen.getByRole("heading", { name: "Credit line overview." })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Flexible credit, one interface." })).toBeInTheDocument()
+    expect(screen.getByText("Credit line edge")).toBeInTheDocument()
+    const financingHeading = screen.getByRole("heading", { name: "Flexible credit, one interface." })
+    const safetyHeading = screen.getByRole("heading", { name: "Every health state, fully explained." })
     const platformToolsHeading = screen.getByRole("heading", { name: /Everything you need\s*in one place\./i })
 
     expect(financingHeading).toBeInTheDocument()
@@ -89,21 +86,15 @@ describe("platform page", () => {
     expect(screen.getAllByText("Liquidation").length).toBeGreaterThan(0)
     expect(platformToolsHeading.compareDocumentPosition(financingHeading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
     expect(financingHeading.compareDocumentPosition(safetyHeading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
-    expect(screen.getAllByText("Calculate your rewards").length).toBeGreaterThan(0)
-    expect(screen.getAllByText("Manage your portfolio").length).toBeGreaterThan(0)
-    expect(screen.getAllByText("Navigate market volatility").length).toBeGreaterThan(0)
-    expect(screen.getAllByText("Mobile-first design").length).toBeGreaterThan(0)
-    expect(screen.getByRole("heading", { name: "Flexible settlement" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Unlock capital efficiency" })).toBeInTheDocument()
+    expect(screen.getAllByText("See your credit line").length).toBeGreaterThan(0)
+    expect(screen.getAllByText("Manage your treasury").length).toBeGreaterThan(0)
+    expect(screen.getAllByText("Navigate market shifts").length).toBeGreaterThan(0)
+    expect(screen.getAllByText("Business-friendly access").length).toBeGreaterThan(0)
+    expect(screen.getByRole("heading", { name: "Flexible credit access" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Put idle capital to work" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Retain control" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Add leverage when needed" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Built to manage serious positions." })).toBeInTheDocument()
     expect(screen.getByTestId("homepage-newsroom")).toBeInTheDocument()
-    expect(screen.getAllByText("Why Avana").length).toBeGreaterThan(0)
-    expect(screen.getAllByText("Live position intelligence").length).toBeGreaterThan(0)
-    expect(screen.getAllByText("Automation with guardrails").length).toBeGreaterThan(0)
-    expect(screen.getAllByText("Fast, unified execution").length).toBeGreaterThan(0)
-    expect(screen.getAllByText("Built for active LPs").length).toBeGreaterThan(0)
     expect(container.querySelector(".site-content-width")).toBeInTheDocument()
     expect(container.querySelectorAll(".site-content-shell").length).toBeGreaterThan(0)
   }, 15000)

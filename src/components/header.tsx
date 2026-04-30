@@ -38,32 +38,32 @@ function SandboxIcon() {
       <path
         d="M14 18V11H21"
         stroke="currentColor"
-        strokeWidth="2.75"
+        strokeWidth="3.4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M34 18V11H27"
         stroke="currentColor"
-        strokeWidth="2.75"
+        strokeWidth="3.4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M14 30V37H21"
         stroke="currentColor"
-        strokeWidth="2.75"
+        strokeWidth="3.4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M34 30V37H27"
         stroke="currentColor"
-        strokeWidth="2.75"
+        strokeWidth="3.4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle cx="24" cy="24" r="3.5" fill="currentColor" />
+      <circle cx="24" cy="24" r="4.4" fill="currentColor" />
     </svg>
   )
 }
@@ -243,7 +243,7 @@ export default function Header(): React.JSX.Element {
                     : "bg-gray-900 hover:bg-gray-800 text-white"
                 }`}
               >
-                {link.label === "Try Sandbox" ? (
+                {link.label === "Try Demo" ? (
                   <span className="inline-flex items-center gap-1.5">
                     <SandboxIcon />
                     <span>{link.label}</span>

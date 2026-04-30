@@ -19,14 +19,13 @@ interface DesktopMenuGroup {
 
 const desktopMenus: readonly DesktopMenuGroup[] = [
   {
-    id: "products",
-    label: "Products",
-    eyebrow: "Explore Products",
+    id: "individuals",
+    label: "Individuals",
+    eyebrow: "Explore Individuals",
     items: [
       { href: siteRoutes.borrow, label: "Borrow" },
-      { href: siteRoutes.invest, label: "Invest" },
-      { href: siteRoutes.leverage, label: "Leverage" },
-      { href: siteRoutes.platform, label: "Platform" },
+      { href: siteRoutes.lend, label: "Lend" },
+      { href: siteRoutes.trade, label: "Trade" },
     ],
     supportingTitle: "What you can do",
     supportingItems: [
@@ -36,19 +35,43 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         description: "Unlock liquidity from concentrated or volatile LP exposure without leaving the strategy.",
       },
       {
-        href: siteRoutes.leverage,
-        label: "Open LP-backed leverage",
+        href: siteRoutes.trade,
+        label: "Open LP-backed trade",
         description: "Use supported AMM positions as collateral to add managed directional exposure without leaving the pool.",
       },
       {
-        href: siteRoutes.invest,
-        label: "Route capital through the Hub",
+        href: siteRoutes.lend,
+        label: "Lend capital through the Hub",
         description: "Move borrowed capital into structured allocation paths with clearer execution context.",
       },
+    ],
+  },
+  {
+    id: "businesses",
+    label: "Businesses",
+    eyebrow: "Explore Businesses",
+    items: [
+      { href: siteRoutes.creditLines, label: "Credit Lines" },
+      { href: siteRoutes.liquidators, label: "Liquidators" },
+      { href: siteRoutes.appkit, label: "AppKit" },
+    ],
+    supportingTitle: "Coming soon",
+    supportingItems: [
       {
-        href: siteRoutes.lightpaper,
-        label: "Read the protocol paper",
-        description: "See the system design, risk model, and architecture behind the protocol.",
+        href: siteRoutes.creditLines,
+        label: "Credit Lines",
+        description:
+          "Existing product surface for business credit lines and the primary place to explore the current workflow.",
+      },
+      {
+        href: siteRoutes.liquidators,
+        label: "Liquidators",
+        description: "Placeholder page for the new businesses section, with more detail to come once the experience is defined.",
+      },
+      {
+        href: siteRoutes.appkit,
+        label: "AppKit",
+        description: "Placeholder page for the new businesses section, with more detail to come once the product is ready.",
       },
     ],
   },
@@ -57,7 +80,7 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     label: "Resources",
     eyebrow: "Explore Resources",
     items: [
-      { href: siteRoutes.about, label: "About" },
+      { href: siteRoutes.lightpaper, label: "Lightpaper" },
       { href: siteRoutes.blog, label: "Blog" },
       { href: siteRoutes.faq, label: "FAQ" },
       { href: siteRoutes.brand, label: "Brand" },
@@ -65,9 +88,9 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     supportingTitle: "Where to look",
     supportingItems: [
       {
-        href: siteRoutes.about,
-        label: "Read the thesis",
-        description: "Get the reasoning behind Avana and the opportunity around LP-backed credit.",
+        href: siteRoutes.lightpaper,
+        label: "Read the protocol paper",
+        description: "See the system design, risk model, and architecture behind the protocol.",
       },
       {
         href: siteRoutes.blog,
@@ -117,6 +140,28 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         href: "/developers/liquidation",
         label: "Understand liquidation paths",
         description: "Learn how LP collateral is monitored, unwound, and settled under stress.",
+      },
+    ],
+  },
+  {
+    id: "about",
+    label: "Labs",
+    eyebrow: "Explore Labs",
+    items: [
+      { href: siteRoutes.about, label: "About" },
+      { href: siteRoutes.careers, label: "Career" },
+    ],
+    supportingTitle: "Learn more",
+    supportingItems: [
+      {
+        href: siteRoutes.about,
+        label: "About",
+        description: "Read more about the current company and product thesis behind Avana.",
+      },
+      {
+        href: siteRoutes.careers,
+        label: "Career",
+        description: "Placeholder page for future roles, openings, and team opportunities.",
       },
     ],
   },

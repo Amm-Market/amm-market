@@ -6,27 +6,27 @@ import { SectionEyebrow, SectionTitle } from "@/components/shared"
 const SLIDES = [
   {
     id: "rewards",
-    title: "Calculate your rewards",
+    title: "See your credit line",
     description:
-      "Portfolio growth charts over time, based on different staking scenarios and the effect of compounding rewards.",
+      "Track available credit, borrowing room, and allocation over time from a single business view.",
   },
   {
     id: "portfolio",
-    title: "Manage your portfolio",
+    title: "Manage your treasury",
     description:
-      "Clear trackers for your rewards and staking balance with one consolidated view.",
+      "Keep balances, borrowing capacity, and market exposure in one consolidated view.",
   },
   {
     id: "volatility",
-    title: "Navigate market volatility",
+    title: "Navigate market shifts",
     description:
-      "Mini comes fully equipped with must-have advanced trading tools and features, addressing all your trading needs in one place.",
+      "Business credit lines come with monitoring and controls that help you stay ahead of changing conditions.",
   },
   {
     id: "mobile",
-    title: "Mobile-first design",
+    title: "Business-friendly access",
     description:
-      "Get access to the tools and alerts you need to trade on the go.",
+      "Get the tools and alerts you need to manage credit on the go.",
   },
 ] as const
 
@@ -74,7 +74,7 @@ export default function PlatformToolsShowcaseSection() {
       className="w-full bg-inherit"
     >
       <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
-        <SectionEyebrow tone="violet">Platform Tools</SectionEyebrow>
+        <SectionEyebrow tone="violet">Credit line tools</SectionEyebrow>
         <SectionTitle><span className="lg:whitespace-nowrap">Everything you need in one place.</span></SectionTitle>
       </div>
 
@@ -82,7 +82,7 @@ export default function PlatformToolsShowcaseSection() {
         className="relative"
         role="region"
         aria-roledescription="carousel"
-        aria-label="Platform tools showcase"
+        aria-label="Credit line tools showcase"
       >
         <div className="overflow-hidden rounded-xl border border-gray-200 bg-gray-50 sm:rounded-xl">
           {SLIDES.map((slide, index) => (

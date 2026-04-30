@@ -2,7 +2,7 @@
 
 import { render, screen } from "@testing-library/react"
 import { describe, expect, it, vi } from "vitest"
-import LeveragePage, { metadata } from "@/app/leverage/page"
+import TradePage, { metadata } from "@/app/trade/page"
 
 vi.mock("next/link", () => ({
   default: ({
@@ -52,15 +52,15 @@ vi.mock("@/components/leverage-glance-showcase-section", () => ({
   default: () => <div data-testid="leverage-glance-showcase">Leverage Glance Showcase</div>,
 }))
 
-describe("leverage page", () => {
-  it("exports route metadata for leverage", () => {
-    expect(metadata.title).toBe("Leverage - Avana")
+describe("trade page", () => {
+  it("exports route metadata for trade", () => {
+    expect(metadata.title).toBe("Trade - Avana")
     expect(metadata.description).toContain("LP-backed leverage")
-    expect(metadata.alternates?.canonical).toBe("/leverage")
+    expect(metadata.alternates?.canonical).toBe("/trade")
   })
 
   it("renders the leverage market story", () => {
-    render(<LeveragePage />)
+    render(<TradePage />)
 
     expect(
       screen.getByRole("heading", { level: 1, name: /Turn LP capital\s*into leverage\./i }),
@@ -68,15 +68,11 @@ describe("leverage page", () => {
     expect(screen.getByText(/Deposit supported AMM positions, unlock borrowing power through Avana/i)).toBeInTheDocument()
     expect(screen.getByRole("link", { name: "Get Early Access" })).toHaveAttribute("href", "/faq")
     expect(screen.getByTestId("leverage-glance-showcase")).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "How leverage works" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "No funding rates. Hub-backed leverage." })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Borrow-based exposure" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Market access through the Hub" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "LP Backed Leverage" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "One Position, One View" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Abstracted Execution" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Built for controlled leverage." })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Built as a layered leverage stack." })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Leverage in three steps" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "What sets LP leverage apart." })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Perps, built on top of LP collateral" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Leverage Layer" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Designed for safe leverage." })).toBeInTheDocument()
     expect(screen.getByText("What is Avana Leverage Market?")).toBeInTheDocument()
     expect(screen.getByTestId("homepage-newsroom")).toBeInTheDocument()
   })
