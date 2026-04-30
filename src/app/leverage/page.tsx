@@ -120,7 +120,7 @@ const leverageFaqItems: InlineFaqItem[] = [
 ] as const
 
 export const metadata: Metadata = {
-  title: `Leverage - ${SITE_NAME}`,
+  title: `Trade - ${SITE_NAME}`,
   description: pageDescription,
   keywords: [
     "LP leverage",
@@ -132,29 +132,29 @@ export const metadata: Metadata = {
     "Aave v4",
   ],
   alternates: {
-    canonical: siteRoutes.leverage,
+    canonical: siteRoutes.trade,
   },
   openGraph: {
-    title: `Leverage - ${SITE_NAME}`,
+    title: `Trade - ${SITE_NAME}`,
     description: pageDescription,
-    url: siteRoutes.leverage,
+    url: siteRoutes.trade,
     images: [
       {
         url: buildOgImagePath({
-          title: `Leverage - ${SITE_NAME}`,
+          title: `Trade - ${SITE_NAME}`,
           subtitle: "LP-backed leverage and managed perps exposure",
         }),
-        alt: `Leverage - ${SITE_NAME}`,
+        alt: `Trade - ${SITE_NAME}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Leverage - ${SITE_NAME}`,
+    title: `Trade - ${SITE_NAME}`,
     description: pageDescription,
     images: [
       buildOgImagePath({
-        title: `Leverage - ${SITE_NAME}`,
+        title: `Trade - ${SITE_NAME}`,
         subtitle: "LP-backed leverage and managed perps exposure",
       }),
     ],

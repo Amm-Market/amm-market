@@ -6,18 +6,35 @@ export interface NavLink {
   external?: boolean
 }
 
-export type DesktopMenuId = "products" | "resources" | "developers"
+export type DesktopMenuId = "individuals" | "businesses" | "resources" | "developers" | "about"
 
 export const desktopMenuButtons = [
   {
-    id: "products",
-    label: "Products",
-    matchHrefs: [siteRoutes.borrow, siteRoutes.invest, siteRoutes.leverage, siteRoutes.platform],
+    id: "individuals",
+    label: "Individuals",
+    matchHrefs: [
+      siteRoutes.borrow,
+      siteRoutes.lend,
+      siteRoutes.invest,
+      siteRoutes.trade,
+      siteRoutes.leverage,
+    ],
+  },
+  {
+    id: "businesses",
+    label: "Businesses",
+    matchHrefs: [
+      siteRoutes.businesses,
+      siteRoutes.creditLines,
+      siteRoutes.platform,
+      siteRoutes.liquidators,
+      siteRoutes.appkit,
+    ],
   },
   {
     id: "resources",
     label: "Resources",
-    matchHrefs: [siteRoutes.about, siteRoutes.blog, siteRoutes.faq, siteRoutes.brand],
+    matchHrefs: [siteRoutes.lightpaper, siteRoutes.blog, siteRoutes.faq, siteRoutes.brand],
   },
   {
     id: "developers",
@@ -30,9 +47,14 @@ export const desktopMenuButtons = [
       "/developers/liquidation",
     ],
   },
+  {
+    id: "about",
+    label: "Labs",
+    matchHrefs: [siteRoutes.about, siteRoutes.careers],
+  },
 ] as const
 
 export const desktopUtilityLinks: readonly NavLink[] = [
-  { href: siteRoutes.lightpaper, label: "Lightpaper" },
-  { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
+  { href: siteRoutes.earlyAdopters, label: "Early Adopters" },
+  { href: "https://app.avana.cc", label: "Try Demo", external: true },
 ]
