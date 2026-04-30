@@ -7,15 +7,15 @@ import type { NavLink } from "@/components/header-nav-data"
 
 const mobileLinks: readonly NavLink[] = [
   { href: siteRoutes.borrow, label: "Borrow" },
-  { href: siteRoutes.invest, label: "Invest" },
-  { href: siteRoutes.leverage, label: "Leverage" },
-  { href: siteRoutes.platform, label: "Platform" },
+  { href: siteRoutes.lend, label: "Lend" },
+  { href: siteRoutes.trade, label: "Trade" },
+  { href: siteRoutes.creditLines, label: "Credit Lines" },
   { href: siteRoutes.about, label: "About" },
   { href: siteRoutes.lightpaper, label: "Lightpaper" },
   { href: siteRoutes.blog, label: "Blog" },
   { href: siteRoutes.faq, label: "FAQ" },
   { href: siteRoutes.developers, label: "Developers" },
-  { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
+  { href: "https://app.avana.cc", label: "Try Demo", external: true },
 ] as const
 
 function isActivePath(pathname: string | null, href: string): boolean {
