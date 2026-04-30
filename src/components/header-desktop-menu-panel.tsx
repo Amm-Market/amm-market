@@ -55,7 +55,7 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
       { href: siteRoutes.liquidators, label: "Liquidators" },
       { href: siteRoutes.appkit, label: "AppKit" },
     ],
-    supportingTitle: "Coming soon",
+    supportingTitle: "Partner surfaces",
     supportingItems: [
       {
         href: siteRoutes.creditLines,
@@ -66,12 +66,12 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
       {
         href: siteRoutes.liquidators,
         label: "Liquidators",
-        description: "Placeholder page for the new businesses section, with more detail to come once the experience is defined.",
+        description: "Run bots and execution desks that unwind LP collateral and earn liquidation fees.",
       },
       {
         href: siteRoutes.appkit,
         label: "AppKit",
-        description: "Placeholder page for the new businesses section, with more detail to come once the product is ready.",
+        description: "Embed Avana into partner DEX, wallet, or app surfaces through kit and API flows.",
       },
     ],
   },
