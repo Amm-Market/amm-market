@@ -75,7 +75,7 @@ export default function PlatformToolsShowcaseSection() {
     >
       <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
         <SectionEyebrow tone="violet">Credit line tools</SectionEyebrow>
-        <SectionTitle><span className="lg:whitespace-nowrap">Everything you need in one place.</span></SectionTitle>
+        <SectionTitle><span className="lg:whitespace-nowrap">Go global. We’ll handle the complexity.</span></SectionTitle>
       </div>
 
       <div
