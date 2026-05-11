@@ -255,7 +255,10 @@ export default function TradePage() {
         <div className="site-content-shell">
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="rose">What&apos;s new</SectionEyebrow>
-            <SectionTitle><span className="whitespace-nowrap">What sets LP leverage apart.</span></SectionTitle>
+            <SectionTitle>
+              <span className="block">Deposit LP once,</span>
+              <span className="block">Leverage across markets.</span>
+            </SectionTitle>
           </div>
 
           <div className="mt-10 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-4">
@@ -296,7 +299,7 @@ export default function TradePage() {
             <ProductFeatureScrollSection
               eyebrow="Core Product"
               eyebrowTone="rose"
-              title={<span className="lg:whitespace-nowrap">Perps, built on top of LP collateral</span>}
+              title={<span className="lg:whitespace-nowrap">Tools build to make it Easy for first-timers</span>}
               items={leverageFeatureItems}
               panels={[
                 <div key="p1" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">

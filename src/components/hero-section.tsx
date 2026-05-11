@@ -179,7 +179,7 @@ export default function HeroSection() {
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="amber">Capital Efficiency</SectionEyebrow>
                 <SectionTitle>
-                  Get more out of your LPs
+                  Earn more with a boost on your lending.
                 </SectionTitle>
               </div>
             </div>

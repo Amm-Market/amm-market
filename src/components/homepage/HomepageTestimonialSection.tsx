@@ -78,8 +78,8 @@ export default function HomepageTestimonialSection() {
   return (
     <div>
       <div className="mb-8 space-y-3 md:mb-10">
-        <SectionEyebrow tone="rose">Risk Systems</SectionEyebrow>
-        <SectionTitle>Borrow with Confidence</SectionTitle>
+        <SectionEyebrow tone="rose">Borrow with Confidence</SectionEyebrow>
+        <SectionTitle>Keep your money safe as it grows.</SectionTitle>
       </div>
 
       <div className="flex flex-col lg:flex-row">
