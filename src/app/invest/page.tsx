@@ -71,7 +71,7 @@ const investFeatureItems = [
 ] as const
 
 export const metadata: Metadata = {
-  title: `Lend - ${SITE_NAME}`,
+  title: `Invest - ${SITE_NAME}`,
   description: pageDescription,
   keywords: [
     "LP-backed credit",
@@ -82,29 +82,29 @@ export const metadata: Metadata = {
     "supply markets",
   ],
   alternates: {
-    canonical: siteRoutes.lend,
+    canonical: siteRoutes.invest,
   },
   openGraph: {
-    title: `Lend - ${SITE_NAME}`,
+    title: `Invest - ${SITE_NAME}`,
     description: pageDescription,
-    url: siteRoutes.lend,
+    url: siteRoutes.invest,
     images: [
       {
         url: buildOgImagePath({
-          title: `Lend - ${SITE_NAME}`,
+          title: `Invest - ${SITE_NAME}`,
           subtitle: "Supply assets into LP-backed credit markets",
         }),
-        alt: `Lend - ${SITE_NAME}`,
+        alt: `Invest - ${SITE_NAME}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Lend - ${SITE_NAME}`,
+    title: `Invest - ${SITE_NAME}`,
     description: pageDescription,
     images: [
       buildOgImagePath({
-        title: `Lend - ${SITE_NAME}`,
+        title: `Invest - ${SITE_NAME}`,
         subtitle: "Supply assets into LP-backed credit markets",
       }),
     ],

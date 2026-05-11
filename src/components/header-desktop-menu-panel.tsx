@@ -24,7 +24,7 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     eyebrow: "Explore Individuals",
     items: [
       { href: siteRoutes.borrow, label: "Borrow" },
-      { href: siteRoutes.lend, label: "Lend" },
+      { href: siteRoutes.invest, label: "Invest" },
       { href: siteRoutes.trade, label: "Trade" },
     ],
     supportingTitle: "What you can do",
@@ -40,8 +40,8 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         description: "Use supported AMM positions as collateral to add managed directional exposure without leaving the pool.",
       },
       {
-        href: siteRoutes.lend,
-        label: "Lend capital through the Hub",
+        href: siteRoutes.invest,
+        label: "Invest capital through the Hub",
         description: "Move borrowed capital into structured allocation paths with clearer execution context.",
       },
     ],
