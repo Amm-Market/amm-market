@@ -74,7 +74,6 @@ export default function HomepageTestimonialSection() {
   }
 
   const feature = featureHighlights[currentFeature]
-
   return (
     <div>
       <div className="mb-8 space-y-3 md:mb-10">
