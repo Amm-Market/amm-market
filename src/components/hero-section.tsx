@@ -76,6 +76,306 @@ function PoolCard({ pool }: { pool: HomepagePool }) {
   )
 }
 
+const lendingCoverageAssets = [
+  {
+    symbol: "BTC",
+    name: "Bitcoin",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bitcoin/info/logo.png",
+  },
+  {
+    symbol: "ETH",
+    name: "Ethereum",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png",
+  },
+  {
+    symbol: "SOL",
+    name: "Solana",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/solana/info/logo.png",
+  },
+  {
+    symbol: "TON",
+    name: "The Open Network",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ton/info/logo.png",
+  },
+  {
+    symbol: "XRP",
+    name: "XRP",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/xrp/info/logo.png",
+  },
+  {
+    symbol: "APE",
+    name: "ApeCoin",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4d224452801aced8b2f0aebe155379bb5d594381b/logo.png",
+  },
+] as const
+
+const lendingCoverageTableRows = [
+  {
+    pair: "BTC/USDT",
+    name: "Bitcoin",
+    logo: lendingCoverageAssets[0].logo,
+    price: "81,534",
+    suffix: "USD",
+    change: "-0.10%",
+    positive: false,
+    spark: "down",
+  },
+  {
+    pair: "ETH/USDT",
+    name: "Ethereum",
+    logo: lendingCoverageAssets[1].logo,
+    price: "2,357.45",
+    suffix: "USD",
+    change: "-1.18%",
+    positive: false,
+    spark: "down",
+  },
+  {
+    pair: "TON/USDT",
+    name: "Toncoin",
+    logo: lendingCoverageAssets[3].logo,
+    price: "2.313",
+    suffix: "USD",
+    change: "+28.93%",
+    positive: true,
+    spark: "up",
+  },
+  {
+    pair: "SOL/USDT",
+    name: "Solana",
+    logo: lendingCoverageAssets[2].logo,
+    price: "88.64",
+    suffix: "USD",
+    change: "+3.52%",
+    positive: true,
+    spark: "up",
+  },
+  {
+    pair: "XRP/USDT",
+    name: "XRP",
+    logo: lendingCoverageAssets[4].logo,
+    price: "1.4268",
+    suffix: "USD",
+    change: "+0.96%",
+    positive: true,
+    spark: "up",
+  },
+] as const
+
+const lendingCoverageGainersRows = [
+  {
+    pair: "B3/USDT",
+    logo: "https://b3.fun/favicon.ico",
+    price: "0.0008479 USD",
+    change: "+138.38% 24h",
+    positive: true,
+  },
+  {
+    pair: "IO/USDT",
+    logo: "https://io.net/favicon.ico",
+    price: "0.1552 USD",
+    change: "+30.97% 24h",
+    positive: true,
+  },
+  {
+    pair: "TON/USDT",
+    logo: lendingCoverageAssets[3].logo,
+    price: "2.313 USD",
+    change: "+28.93% 24h",
+    positive: true,
+  },
+] as const
+
+const lendingCoverageListingsRows = [
+  {
+    pair: "APE/USDT",
+    logo: lendingCoverageAssets[5].logo,
+    price: "0.1593 USD",
+    change: "-2.84% 24h",
+    positive: false,
+  },
+  {
+    pair: "ETC/USDT",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereumclassic/info/logo.png",
+    price: "9.384 USD",
+    change: "+5.17% 24h",
+    positive: true,
+  },
+  {
+    pair: "ETH/USDT",
+    logo: lendingCoverageAssets[1].logo,
+    price: "2,357.45 USD",
+    change: "-1.18% 24h",
+    positive: false,
+  },
+] as const
+
+function TokenLogo({ src, alt }: { src: string; alt: string }) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      width={40}
+      height={40}
+      loading="lazy"
+      className="h-10 w-10 rounded-full bg-white object-contain p-1 shadow-[0_1px_4px_rgba(15,23,42,0.08)] ring-1 ring-black/5"
+    />
+  )
+}
+
+function Sparkline({ trend }: { trend: "up" | "down" }) {
+  const stroke = trend === "up" ? "#7ecf9c" : "#f7a7a4"
+  const fill = trend === "up" ? "rgba(126, 207, 156, 0.22)" : "rgba(247, 167, 164, 0.22)"
+  const path =
+    trend === "up"
+      ? "M1 28L13 27L24 24L35 25L47 23L59 22L70 24L82 18L94 20L106 11L119 17"
+      : "M1 17L13 18L24 20L35 19L47 22L59 21L70 19L82 24L94 15L106 20L119 12"
+
+  return (
+    <svg viewBox="0 0 120 36" className="h-10 w-20 overflow-visible" aria-hidden="true">
+      <path
+        d={`${path}L119 35L1 35Z`}
+        fill={fill}
+      />
+      <path
+        d={path}
+        fill="none"
+        stroke={stroke}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2.5"
+      />
+    </svg>
+  )
+}
+
+function MarketTableRow({
+  pair,
+  logo,
+  price,
+  suffix,
+  change,
+  positive,
+  spark,
+}: {
+  pair: string
+  logo: string
+  price: string
+  suffix: string
+  change: string
+  positive: boolean
+  spark: "up" | "down"
+}) {
+  return (
+    <div className="grid items-center gap-4 border-t border-gray-100 px-2 py-6 first:border-t-0 first:pt-7 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)_minmax(0,0.9fr)_auto_auto]">
+      <div className="flex min-w-0 items-center gap-3">
+        <TokenLogo src={logo} alt={`${pair} logo`} />
+        <div className="min-w-0">
+          <p className="truncate text-[1.05rem] font-semibold tracking-[-0.03em] text-[#202124]">{pair}</p>
+          <p className="truncate text-sm text-gray-400">{pair.replace("/USDT", "")}</p>
+        </div>
+      </div>
+      <div className="text-[1.05rem] font-semibold tracking-[-0.03em] text-[#202124]">
+        {price} <span className="text-sm font-medium text-gray-400">{suffix}</span>
+      </div>
+      <div className={`text-[1.05rem] font-semibold tracking-[-0.03em] ${positive ? "text-emerald-500" : "text-[#ef6a63]"}`}>
+        {change}
+      </div>
+      <div className="hidden lg:block">
+        <Sparkline trend={spark} />
+      </div>
+      <button className="rounded-full border border-[#f1b25d] px-5 py-2 text-[1rem] font-medium tracking-[-0.02em] text-[#f4a441] transition-colors hover:bg-[#fff8ef]">
+        Trade
+      </button>
+    </div>
+  )
+}
+
+function CompactMarketRow({
+  pair,
+  logo,
+  price,
+  change,
+  positive,
+}: {
+  pair: string
+  logo: string
+  price: string
+  change: string
+  positive: boolean
+}) {
+  return (
+    <div className="flex flex-col gap-3 px-2 py-5 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex min-w-0 items-center gap-3">
+        <TokenLogo src={logo} alt={`${pair} logo`} />
+        <p className="truncate text-[1.05rem] font-semibold tracking-[-0.03em] text-[#202124]">{pair}</p>
+      </div>
+      <div className="flex min-w-0 items-center justify-between gap-4 sm:justify-end sm:gap-6">
+        <p className="whitespace-nowrap text-[1rem] font-semibold tracking-[-0.03em] text-[#202124]">{price}</p>
+        <p className={`whitespace-nowrap text-[1rem] font-semibold tracking-[-0.03em] ${positive ? "text-emerald-500" : "text-[#ef6a63]"}`}>
+          {change}
+        </p>
+      </div>
+    </div>
+  )
+}
+
+function LendingCoverageTable() {
+  return (
+    <div className="rounded-[32px] border border-gray-200 bg-white shadow-[0_1px_12px_rgba(15,23,42,0.05)]">
+      <div className="grid gap-6 xl:grid-cols-[minmax(0,1.6fr)_minmax(320px,0.95fr)]">
+        <div className="rounded-[32px] bg-white p-6 sm:p-8">
+          <div className="border-b border-gray-100 pb-5">
+            <h3 className="text-[1.9rem] font-semibold tracking-[-0.04em] text-[#191c1f]">
+              Most traded coins
+            </h3>
+            <div className="mt-5 h-1 w-64 max-w-full rounded-full bg-[#f2a33d]" />
+          </div>
+
+          <div className="mt-6 hidden gap-4 px-2 text-[1rem] font-medium tracking-[-0.02em] text-gray-400 lg:grid lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)_minmax(0,0.9fr)_auto_auto]">
+            <div>Trading Pairs</div>
+            <div>Last Traded Price</div>
+            <div>24H Change</div>
+            <div>Charts</div>
+            <div>Trade</div>
+          </div>
+
+          <div className="mt-2">
+            {lendingCoverageTableRows.map((row) => (
+              <MarketTableRow key={row.pair} {...row} />
+            ))}
+          </div>
+        </div>
+
+        <div className="border-t border-gray-100 bg-white p-6 sm:p-8 xl:border-l xl:border-t-0">
+          <div className="border-b border-gray-100 pb-5">
+            <h3 className="text-[1.9rem] font-semibold tracking-[-0.04em] text-[#191c1f]">
+              Top Gainers
+            </h3>
+          </div>
+
+          <div className="pt-2">
+            {lendingCoverageGainersRows.map((row) => (
+              <CompactMarketRow key={row.pair} {...row} />
+            ))}
+          </div>
+
+          <div className="mt-4 border-t border-gray-100 pt-5">
+            <h3 className="text-[1.9rem] font-semibold tracking-[-0.04em] text-[#191c1f]">
+              New Listings
+            </h3>
+            <div className="pt-2">
+              {lendingCoverageListingsRows.map((row) => (
+                <CompactMarketRow key={row.pair} {...row} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function HeroSection() {
   return (
     <section className="marketing-secondary-shell pb-0">
@@ -130,6 +430,26 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
+        </div>
+      </div>
+
+      <div className="site-content-shell pt-24 md:pt-32 2xl:pt-28">
+        <div className="space-y-6">
+          <div className="flex max-w-[600px] flex-col gap-2">
+            <SectionEyebrow tone="emerald">Lending Coverage</SectionEyebrow>
+            <SectionTitle className="whitespace-nowrap">100+ Assets Supported</SectionTitle>
+          </div>
+
+          <LendingCoverageTable />
+
+          <p className="flex items-start gap-3 text-[1rem] font-semibold tracking-[-0.03em] text-[#202124]">
+            <span className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#111827] text-[1.25rem] leading-none text-white">
+              !
+            </span>
+            <span className="max-w-[1000px] pt-0.5">
+              Prices are displayed in USD. Performance and returns may increase or decrease as a result of fluctuations in the USD to GBP exchange rates.
+            </span>
+          </p>
         </div>
       </div>
 
@@ -778,27 +1098,6 @@ export default function HeroSection() {
                     <DeFiTerm term="liquidation" className="text-[0.92em]">liquidation</DeFiTerm>
                     {" "}design.
                   </p>
-                </div>
-              </div>
-
-              <div className="mt-12 overflow-hidden rounded-[28px] border border-gray-200 bg-gradient-to-b from-gray-50 to-white p-5 sm:p-6">
-                <div className="flex min-h-[280px] items-center justify-center rounded-[24px] border border-gray-200 bg-white sm:min-h-[340px] md:min-h-[420px]">
-                  <div className="flex flex-col items-center gap-6 text-center">
-                    <div className="flex h-28 w-28 items-center justify-center rounded-full bg-[#B6509E] shadow-[0_20px_60px_rgba(182,80,158,0.18)] sm:h-36 sm:w-36 md:h-44 md:w-44">
-                      <svg width="68" height="68" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:h-20 sm:w-20 md:h-24 md:w-24">
-                        <path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0z" fill="#B6509E" />
-                        <path d="M186.7 168.5c-7.5 0-14.2-4.3-17.4-11l-25.9-56.8c-1.4-3.1-4.5-5.1-7.9-5.1h-14.9c-3.4 0-6.5 2-7.9 5.1l-25.9 56.8c-3.2 6.7-9.9 11-17.4 11-10.6 0-19.2-8.6-19.2-19.2 0-2.9.7-5.8 2-8.4l38.3-83.8c5.7-12.5 18.2-20.5 32-20.5h23.2c13.8 0 26.3 8 32 20.5l38.3 83.8c1.3 2.6 2 5.5 2 8.4 0 10.6-8.6 19.2-19.2 19.2z" fill="white" />
-                      </svg>
-                    </div>
-                    <div className="space-y-2">
-                      <p className="text-[1.6rem] font-semibold tracking-[-0.05em] text-gray-900 sm:text-[2rem] md:text-[2.6rem]">
-                        Future Aave visual
-                      </p>
-                      <p className="text-sm text-gray-500 sm:text-base">
-                        Reserved for the large Aave brand asset.
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
           </div>
