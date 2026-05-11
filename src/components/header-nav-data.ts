@@ -14,10 +14,8 @@ export const desktopMenuButtons = [
     label: "Individuals",
     matchHrefs: [
       siteRoutes.borrow,
-      siteRoutes.lend,
       siteRoutes.invest,
       siteRoutes.trade,
-      siteRoutes.leverage,
     ],
   },
   {
@@ -26,7 +24,6 @@ export const desktopMenuButtons = [
     matchHrefs: [
       siteRoutes.businesses,
       siteRoutes.creditLines,
-      siteRoutes.platform,
       siteRoutes.liquidators,
       siteRoutes.appkit,
     ],

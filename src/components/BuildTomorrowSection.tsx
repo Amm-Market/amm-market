@@ -16,8 +16,8 @@ const SLIDES = [
   },
   {
     id: "leverage",
-    title: "PERPS",
-    description: "Use LP collateral to open managed leverage or perps exposure without fully exiting your liquidity.",
+    title: "TRADE",
+    description: "Use LP collateral to open managed trade exposure without fully exiting your liquidity.",
   },
 ] as const
 
@@ -48,7 +48,7 @@ export function BuildTomorrowSection() {
         <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
           <SectionEyebrow tone="violet">Ways to use Avana</SectionEyebrow>
           <SectionTitle className="md:whitespace-nowrap">
-            Borrow, Invest, or Trade Perps
+            Borrow, Invest, or Trade
           </SectionTitle>
         </div>
 

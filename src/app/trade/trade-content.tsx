@@ -54,7 +54,7 @@ const leverageHighlights = [
   {
     title: "Borrow-rate pricing",
     description:
-      "Leverage cost is determined by borrow rates from Aave Hub liquidity and LP risk parameters — not perpetual funding rates.",
+      "Leverage cost is determined by borrow rates from Aave Hub liquidity and LP risk parameters - not perpetual funding rates.",
   },
   {
     title: "Pool-aware risk engine",
@@ -72,7 +72,6 @@ const leverageHighlights = [
       "When a position needs to close, smart routing handles debt repayment, collateral release, and exposure reduction in sequence.",
   },
 ] as const
-
 
 const leverageFaqItems: InlineFaqItem[] = [
   {
@@ -161,7 +160,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function LeveragePage() {
+export default function TradePage() {
   return (
     <main className="bg-white">
       <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] lg:min-h-0 lg:px-0">
@@ -260,7 +259,6 @@ export default function LeveragePage() {
           </div>
 
           <div className="mt-10 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-4">
-            {/* Hero card — image, spans 2 columns and 2 rows */}
             <article className="relative overflow-hidden rounded-[1.8rem] bg-[#f5f3f0] md:col-span-2 md:row-span-2">
               <Image
                 src="/images/leverage-hero-placeholder.png"
@@ -271,7 +269,6 @@ export default function LeveragePage() {
               />
             </article>
 
-            {/* Right-side cards (4 cards in a 2×2 grid beside the hero) */}
             {leverageHighlights.map((item, i) => (
               <article
                 key={item.title}
@@ -302,7 +299,6 @@ export default function LeveragePage() {
               title={<span className="lg:whitespace-nowrap">Perps, built on top of LP collateral</span>}
               items={leverageFeatureItems}
               panels={[
-                /* 01 LP Backed Leverage — collateral card with multiplier ring */
                 <div key="p1" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(244,63,94,0.05),transparent_55%)]" />
                   <div className="absolute inset-0 flex items-center justify-center p-5">
@@ -355,7 +351,6 @@ export default function LeveragePage() {
                     </div>
                   </div>
                 </div>,
-                /* 02 Unwind Layer — escalator step list */
                 <div key="p3" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_58%,rgba(244,63,94,0.05),transparent_58%)]" />
                   <div className="absolute inset-0 flex items-center justify-center px-5">
@@ -388,7 +383,6 @@ export default function LeveragePage() {
                     </div>
                   </div>
                 </div>,
-                /* 05 Live Risk Monitoring — scrolling chart with multi-metric console */
                 <div key="p5" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(16,185,129,0.05),transparent_55%)]" />
                   <div className="absolute inset-0 flex items-center justify-center p-5">
@@ -426,7 +420,6 @@ export default function LeveragePage() {
                     </div>
                   </div>
                 </div>,
-                /* 04 One Position, One View — cycling position card with metrics */
                 <div key="p4" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                   <div className="absolute inset-0 flex items-center justify-center p-5">
                     <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
@@ -480,8 +473,6 @@ export default function LeveragePage() {
                 </div>
               </div>
             </section>
-
-
 
             <HomepageNewsroomSection
               collection="leverage"

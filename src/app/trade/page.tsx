@@ -1,1 +1,1 @@
-export { default, metadata } from "@/app/leverage/page"
+export { default, metadata } from "./trade-content"
