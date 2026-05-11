@@ -111,102 +111,83 @@ const lendingCoverageAssets = [
 
 const lendingCoverageTableRows = [
   {
-    pair: "BTC/USDT",
+    pair: "BTC",
     name: "Bitcoin",
     logo: lendingCoverageAssets[0].logo,
-    price: "81,534",
-    suffix: "USD",
+    price: "4.82",
+    suffix: "% APY",
     change: "-0.10%",
     positive: false,
-    spark: "down",
   },
   {
-    pair: "ETH/USDT",
+    pair: "ETH",
     name: "Ethereum",
     logo: lendingCoverageAssets[1].logo,
-    price: "2,357.45",
-    suffix: "USD",
+    price: "3.94",
+    suffix: "% APY",
     change: "-1.18%",
     positive: false,
-    spark: "down",
   },
   {
-    pair: "TON/USDT",
-    name: "Toncoin",
+    pair: "AAVE",
+    name: "Aave",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9/logo.png",
+    price: "6.36",
+    suffix: "% APY",
+    change: "+6.36%",
+    positive: true,
+  },
+  {
+    pair: "TON",
+    name: "The Open Network",
     logo: lendingCoverageAssets[3].logo,
-    price: "2.313",
-    suffix: "USD",
+    price: "5.28",
+    suffix: "% APY",
     change: "+28.93%",
     positive: true,
-    spark: "up",
   },
   {
-    pair: "SOL/USDT",
+    pair: "SOL",
     name: "Solana",
     logo: lendingCoverageAssets[2].logo,
-    price: "88.64",
-    suffix: "USD",
+    price: "4.15",
+    suffix: "% APY",
     change: "+3.52%",
     positive: true,
-    spark: "up",
-  },
-  {
-    pair: "XRP/USDT",
-    name: "XRP",
-    logo: lendingCoverageAssets[4].logo,
-    price: "1.4268",
-    suffix: "USD",
-    change: "+0.96%",
-    positive: true,
-    spark: "up",
   },
 ] as const
 
 const lendingCoverageGainersRows = [
   {
-    pair: "B3/USDT",
+    pair: "B3",
     logo: "https://b3.fun/favicon.ico",
-    price: "0.0008479 USD",
-    change: "+138.38% 24h",
+    price: "8.42% APY",
+    change: "+1.38% 24h",
     positive: true,
   },
   {
-    pair: "IO/USDT",
+    pair: "IO",
     logo: "https://io.net/favicon.ico",
-    price: "0.1552 USD",
-    change: "+30.97% 24h",
-    positive: true,
-  },
-  {
-    pair: "TON/USDT",
-    logo: lendingCoverageAssets[3].logo,
-    price: "2.313 USD",
-    change: "+28.93% 24h",
+    price: "6.15% APY",
+    change: "+0.97% 24h",
     positive: true,
   },
 ] as const
 
 const lendingCoverageListingsRows = [
   {
-    pair: "APE/USDT",
+    pair: "APE",
     logo: lendingCoverageAssets[5].logo,
-    price: "0.1593 USD",
-    change: "-2.84% 24h",
+    price: "4.08% APY",
+    change: "-0.24% 24h",
     positive: false,
   },
   {
-    pair: "ETC/USDT",
+    pair: "ETC",
     logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereumclassic/info/logo.png",
-    price: "9.384 USD",
-    change: "+5.17% 24h",
+    price: "3.84% APY",
+    change: "+0.17% 24h",
     positive: true,
-  },
-  {
-    pair: "ETH/USDT",
-    logo: lendingCoverageAssets[1].logo,
-    price: "2,357.45 USD",
-    change: "-1.18% 24h",
-    positive: false,
   },
 ] as const
 
@@ -218,73 +199,31 @@ function TokenLogo({ src, alt }: { src: string; alt: string }) {
       width={40}
       height={40}
       loading="lazy"
-      className="h-10 w-10 rounded-full bg-white object-contain p-1 shadow-[0_1px_4px_rgba(15,23,42,0.08)] ring-1 ring-black/5"
+      className="h-8 w-8 rounded-full bg-white object-contain p-1 shadow-[0_1px_4px_rgba(15,23,42,0.08)] ring-1 ring-black/5"
     />
   )
 }
 
-function Sparkline({ trend }: { trend: "up" | "down" }) {
-  const stroke = trend === "up" ? "#7ecf9c" : "#f7a7a4"
-  const fill = trend === "up" ? "rgba(126, 207, 156, 0.22)" : "rgba(247, 167, 164, 0.22)"
-  const path =
-    trend === "up"
-      ? "M1 28L13 27L24 24L35 25L47 23L59 22L70 24L82 18L94 20L106 11L119 17"
-      : "M1 17L13 18L24 20L35 19L47 22L59 21L70 19L82 24L94 15L106 20L119 12"
-
+function MarketTableRow({ row }: { row: (typeof lendingCoverageTableRows)[number] }) {
   return (
-    <svg viewBox="0 0 120 36" className="h-10 w-20 overflow-visible" aria-hidden="true">
-      <path
-        d={`${path}L119 35L1 35Z`}
-        fill={fill}
-      />
-      <path
-        d={path}
-        fill="none"
-        stroke={stroke}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2.5"
-      />
-    </svg>
-  )
-}
-
-function MarketTableRow({
-  pair,
-  logo,
-  price,
-  suffix,
-  change,
-  positive,
-  spark,
-}: {
-  pair: string
-  logo: string
-  price: string
-  suffix: string
-  change: string
-  positive: boolean
-  spark: "up" | "down"
-}) {
-  return (
-    <div className="grid items-center gap-4 border-t border-gray-100 px-2 py-6 first:border-t-0 first:pt-7 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)_minmax(0,0.9fr)_auto_auto]">
+    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-1 py-2.5 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.85fr)_auto]">
       <div className="flex min-w-0 items-center gap-3">
-        <TokenLogo src={logo} alt={`${pair} logo`} />
+        <TokenLogo src={row.logo} alt={`${row.name} logo`} />
         <div className="min-w-0">
-          <p className="truncate text-[1.05rem] font-semibold tracking-[-0.03em] text-[#202124]">{pair}</p>
-          <p className="truncate text-sm text-gray-400">{pair.replace("/USDT", "")}</p>
+          <p className="truncate text-sm font-semibold text-[#202124]">{row.pair}</p>
+          <p className="truncate text-xs text-gray-400">{row.name}</p>
         </div>
       </div>
-      <div className="text-[1.05rem] font-semibold tracking-[-0.03em] text-[#202124]">
-        {price} <span className="text-sm font-medium text-gray-400">{suffix}</span>
+      <div className="justify-self-end text-right text-sm font-semibold text-[#202124] md:justify-self-auto md:text-left">
+        {row.price} <span className="text-xs font-medium text-gray-400">{row.suffix}</span>
+        <div className={`mt-0.5 text-xs font-semibold md:hidden ${row.positive ? "text-emerald-500" : "text-[#ef6a63]"}`}>
+          {row.change}
+        </div>
       </div>
-      <div className={`text-[1.05rem] font-semibold tracking-[-0.03em] ${positive ? "text-emerald-500" : "text-[#ef6a63]"}`}>
-        {change}
+      <div className={`hidden text-sm font-semibold md:block ${row.positive ? "text-emerald-500" : "text-[#ef6a63]"}`}>
+        {row.change}
       </div>
-      <div className="hidden lg:block">
-        <Sparkline trend={spark} />
-      </div>
-      <button className="rounded-full border border-[#f1b25d] px-5 py-2 text-[1rem] font-medium tracking-[-0.02em] text-[#f4a441] transition-colors hover:bg-[#fff8ef]">
+      <button className="hidden w-fit rounded-full border border-[#f1b25d] px-4 py-1.5 text-xs font-semibold text-[#f2a33d] transition-colors hover:bg-[#fff8ef] md:inline-flex">
         Trade
       </button>
     </div>
@@ -292,28 +231,20 @@ function MarketTableRow({
 }
 
 function CompactMarketRow({
-  pair,
-  logo,
-  price,
-  change,
-  positive,
+  row,
 }: {
-  pair: string
-  logo: string
-  price: string
-  change: string
-  positive: boolean
+  row: (typeof lendingCoverageGainersRows)[number] | (typeof lendingCoverageListingsRows)[number]
 }) {
   return (
-    <div className="flex flex-col gap-3 px-2 py-5 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:justify-between">
+    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-1 py-2.5">
       <div className="flex min-w-0 items-center gap-3">
-        <TokenLogo src={logo} alt={`${pair} logo`} />
-        <p className="truncate text-[1.05rem] font-semibold tracking-[-0.03em] text-[#202124]">{pair}</p>
+        <TokenLogo src={row.logo} alt={`${row.pair} logo`} />
+        <p className="truncate text-sm font-semibold text-[#202124]">{row.pair}</p>
       </div>
-      <div className="flex min-w-0 items-center justify-between gap-4 sm:justify-end sm:gap-6">
-        <p className="whitespace-nowrap text-[1rem] font-semibold tracking-[-0.03em] text-[#202124]">{price}</p>
-        <p className={`whitespace-nowrap text-[1rem] font-semibold tracking-[-0.03em] ${positive ? "text-emerald-500" : "text-[#ef6a63]"}`}>
-          {change}
+      <div className="grid justify-items-end gap-1 text-right">
+        <p className="whitespace-nowrap text-xs font-semibold text-[#202124] md:text-sm">{row.price}</p>
+        <p className={`whitespace-nowrap text-xs font-semibold md:text-sm ${row.positive ? "text-emerald-500" : "text-[#ef6a63]"}`}>
+          {row.change}
         </p>
       </div>
     </div>
@@ -322,56 +253,65 @@ function CompactMarketRow({
 
 function LendingCoverageTable() {
   return (
-    <div className="rounded-[32px] border border-gray-200 bg-white shadow-[0_1px_12px_rgba(15,23,42,0.05)]">
-      <div className="grid gap-6 xl:grid-cols-[minmax(0,1.6fr)_minmax(320px,0.95fr)]">
-        <div className="rounded-[32px] bg-white p-6 sm:p-8">
-          <div className="border-b border-gray-100 pb-5">
-            <h3 className="text-[1.9rem] font-semibold tracking-[-0.04em] text-[#191c1f]">
+    <div>
+      <div className="grid gap-3 xl:grid-cols-[minmax(0,1.58fr)_minmax(280px,0.9fr)]">
+        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+          <div className="border-b border-gray-100 px-4 pb-3 pt-4">
+            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#191c1f]">
               Most traded coins
             </h3>
-            <div className="mt-5 h-1 w-64 max-w-full rounded-full bg-[#f2a33d]" />
+            <div className="mt-2 h-0.5 w-28 rounded-full bg-[#f2a33d]" />
           </div>
 
-          <div className="mt-6 hidden gap-4 px-2 text-[1rem] font-medium tracking-[-0.02em] text-gray-400 lg:grid lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)_minmax(0,0.9fr)_auto_auto]">
-            <div>Trading Pairs</div>
-            <div>Last Traded Price</div>
+          <div className="hidden gap-3 px-5 py-2.5 text-xs font-medium text-gray-400 md:grid md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.85fr)_auto]">
+            <div>Asset</div>
+            <div>Supply APY</div>
             <div>24H Change</div>
-            <div>Charts</div>
             <div>Trade</div>
           </div>
 
-          <div className="mt-2">
+          <div className="divide-y divide-gray-50 px-4 pb-3">
             {lendingCoverageTableRows.map((row) => (
-              <MarketTableRow key={row.pair} {...row} />
+              <MarketTableRow key={row.pair} row={row} />
             ))}
           </div>
         </div>
 
-        <div className="border-t border-gray-100 bg-white p-6 sm:p-8 xl:border-l xl:border-t-0">
-          <div className="border-b border-gray-100 pb-5">
-            <h3 className="text-[1.9rem] font-semibold tracking-[-0.04em] text-[#191c1f]">
+        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+          <div className="border-b border-gray-100 px-4 py-4">
+            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#191c1f]">
               Top Gainers
             </h3>
           </div>
 
-          <div className="pt-2">
+          <div className="divide-y divide-gray-50 px-4 py-1.5">
             {lendingCoverageGainersRows.map((row) => (
-              <CompactMarketRow key={row.pair} {...row} />
+              <CompactMarketRow key={row.pair} row={row} />
             ))}
           </div>
 
-          <div className="mt-4 border-t border-gray-100 pt-5">
-            <h3 className="text-[1.9rem] font-semibold tracking-[-0.04em] text-[#191c1f]">
+          <div className="border-t border-gray-100 px-4 py-4">
+            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#191c1f]">
               New Listings
             </h3>
-            <div className="pt-2">
-              {lendingCoverageListingsRows.map((row) => (
-                <CompactMarketRow key={row.pair} {...row} />
-              ))}
-            </div>
+          </div>
+
+          <div className="divide-y divide-gray-50 px-4 pb-3">
+            {lendingCoverageListingsRows.map((row) => (
+              <CompactMarketRow key={row.pair} row={row} />
+            ))}
           </div>
         </div>
       </div>
+
+      <p className="mt-3 flex items-start gap-2.5 text-xs font-semibold leading-5 text-[#202124] md:text-sm">
+        <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#111827] text-sm leading-none text-white">
+          !
+        </span>
+        <span className="max-w-[1000px]">
+          Sandbox data shown for preview only. APYs, prices, and returns are illustrative and may differ from live market conditions.
+        </span>
+      </p>
     </div>
   )
 }
@@ -441,15 +381,6 @@ export default function HeroSection() {
           </div>
 
           <LendingCoverageTable />
-
-          <p className="flex items-start gap-3 text-[1rem] font-semibold tracking-[-0.03em] text-[#202124]">
-            <span className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#111827] text-[1.25rem] leading-none text-white">
-              !
-            </span>
-            <span className="max-w-[1000px] pt-0.5">
-              Prices are displayed in USD. Performance and returns may increase or decrease as a result of fluctuations in the USD to GBP exchange rates.
-            </span>
-          </p>
         </div>
       </div>
 
