@@ -83,8 +83,8 @@ export default function HeroSection() {
         <div className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="cyan">Pool Coverage</SectionEyebrow>
-                <SectionTitle>500+ Supported Pools</SectionTitle>
+                <SectionEyebrow tone="cyan">Borrowing Coverage</SectionEyebrow>
+                <SectionTitle>250+ Liquidity Pools</SectionTitle>
               </div>
             </div>
 
