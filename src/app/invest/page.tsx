@@ -138,9 +138,8 @@ export default function InvestPage() {
               {/* Right Column - Text Content */}
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
                   <h1 className="mb-3 max-w-[14ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[11ch] md:text-5xl lg:text-5xl xl:text-6xl">
-                    <span className="lg:whitespace-nowrap">Lend into</span>
-                    <br />
-                    <span className="lg:whitespace-nowrap">LP-backed credit.</span>
+                    <span className="block">Earn Interest</span>
+                    <span className="block">on your assets.</span>
                   </h1>
 
                   <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
@@ -177,8 +176,8 @@ export default function InvestPage() {
               <div className="space-y-4 md:self-center">
                 <SectionEyebrow tone="emerald">Supply Markets</SectionEyebrow>
                 <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
-                  <span className="block">Deposit once,</span>
-                  <span className="block">earn across markets.</span>
+                  <span className="block">Lend into</span>
+                  <span className="block">LP-backed credit.</span>
                 </SectionTitle>
               </div>
               <div className="flex items-center justify-center pt-1 md:justify-end">
