@@ -4,9 +4,7 @@ import { legacyBlogRedirects } from "./src/lib/site";
 const legacyMarketingRedirects = [
   { source: "/open-spoke", destination: "/borrow" },
   { source: "/stable-spoke", destination: "/invest" },
-  { source: "/bluechip-spoke", destination: "/leverage" },
-  { source: "/earn", destination: "/leverage" },
-  { source: "/webapp", destination: "/platform" },
+  { source: "/webapp", destination: "/credit-lines" },
 ];
 
 /**
@@ -120,62 +118,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "via.placeholder.com",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "i.pravatar.cc",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "mkt-static.crypto.com",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "mkt-site-asset.crypto.com",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "cryptologos.cc",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "assets-cms.kraken.com",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "framerusercontent.com",
+        hostname: "cdn-front.freepik.com",
         pathname: "/**",
       },
     ],
   },
-
-  /**
-   * Production build optimizations
-   * Removes console.logs and optimizes package imports
-   */
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
-  },
-
-  /**
-   * Experimental features for better performance
-   * - optimizePackageImports: Tree-shakes large icon/UI libraries
-   */
-  experimental: {
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-accordion', '@radix-ui/react-tabs'],
-  },
-  
-  /**
-   * HTTP Headers configuration
-   * Applies security headers to all routes
-   */
   async headers() {
     return [
       {

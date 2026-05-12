@@ -10,39 +10,39 @@ import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 export const metadata: Metadata = {
-  title: "Platform - Avana",
+  title: "Credit Lines - Avana",
   description:
-    "Explore the Avana platform for LP-backed borrowing, financing workflows, monitoring, and advanced LP management.",
+    "Explore Avana credit lines for businesses, including financing workflows, monitoring, and managed credit access.",
 }
 
-const platformFaqItems: InlineFaqItem[] = [
+const creditLinesFaqItems: InlineFaqItem[] = [
   {
-    value: "platform-1",
+    value: "credit-lines-1",
     question: "Which wallets are supported?",
     answer:
-      "Avana supports major EVM wallets including MetaMask, Coinbase Wallet, WalletConnect compatible wallets, and hardware wallets connected through WalletConnect. Any wallet that can sign EVM transactions can use the app.",
+      "Avana supports major EVM wallets including MetaMask, Coinbase Wallet, WalletConnect compatible wallets, and hardware wallets connected through WalletConnect. Any wallet that can sign EVM transactions can use the credit line experience.",
   },
   {
-    value: "platform-2",
-    question: "Which chains does the app support?",
+    value: "credit-lines-2",
+    question: "Which networks does it support?",
     answer:
-      "Ethereum mainnet is supported at launch. Additional deployments such as Base and Arbitrum can be added in later phases, with multi chain position management exposed through a unified interface once live.",
+      "Ethereum mainnet is supported at launch. Additional deployments such as Base and Arbitrum can be added in later phases, with multi chain business credit line management exposed through a unified interface once live.",
   },
   {
-    value: "platform-3",
+    value: "credit-lines-3",
     question: "How do automation tools work?",
     answer:
-      "The app lets users configure automated actions around position health, leverage, and price levels. These rules can reduce leverage, increase leverage, repay debt, or fully close a position when predefined conditions are reached.",
+      "The app lets businesses configure automated actions around credit line health, leverage, and price levels. These rules can reduce leverage, increase leverage, repay debt, or fully close a position when predefined conditions are reached.",
   },
   {
-    value: "platform-4",
-    question: "Can I use the protocol without the official interface?",
+    value: "credit-lines-4",
+    question: "Can I use the credit line without the official interface?",
     answer:
-      "Yes. Avana is permissionless and open source, so users and developers can interact directly with the smart contracts or build their own interface. The official app is the main interface, but it is not the only access point.",
+      "Yes. Avana is permissionless and open source, so businesses and developers can interact directly with the smart contracts or build their own interface. The official app is the main interface, but it is not the only access point.",
   },
   {
-    value: "platform-5",
-    question: "Are there fees for using the app?",
+    value: "credit-lines-5",
+    question: "Are there fees for using the interface?",
     answer:
       "The official interface may include an optional frontend fee. This does not change the underlying borrow or supply rates and can be avoided by using a self hosted interface or interacting directly with the protocol.",
   },
@@ -50,7 +50,7 @@ const platformFaqItems: InlineFaqItem[] = [
 
 const financingFeatures = [
   {
-    title: "Flexible settlement",
+    title: "Flexible credit access",
     description: "Deploy a single line of credit to access liquidity across multiple venues.",
   },
   {
@@ -87,9 +87,9 @@ const safetyFeatures = [
   },
 ] as const
 
-const platformWorkflowSteps = [
+const creditLinesWorkflowSteps = [
   {
-    title: "Position overview.",
+    title: "Credit line overview.",
     description:
       "See health, debt, accrued fees, and risk exposure without switching screens.",
     accent: "bg-violet-100/80 text-violet-600",
@@ -117,14 +117,12 @@ function WorkflowStepCard({
   description,
   accent,
   icon,
-  isLast,
 }: {
   index: number
   title: string
   description: string
   accent: string
   icon: LucideIcon
-  isLast: boolean
 }) {
   const Icon = icon
 
@@ -153,7 +151,7 @@ function WorkflowStepCard({
   )
 }
 
-const platformEdgeItems = [
+const creditLinesEdgeItems = [
   {
     stat: "1",
     label: "workflow",
@@ -185,7 +183,7 @@ const platformEdgeItems = [
 ] as const
 
 
-export default function PlatformPage() {
+export default function CreditLinesPage() {
   return (
     <main className="bg-white">
       <section className="bg-white pt-10 pb-8 md:pt-14 md:pb-10 lg:pt-16">
@@ -193,7 +191,7 @@ export default function PlatformPage() {
           <div className="mx-auto w-full max-w-[90rem] space-y-10 md:space-y-12 lg:space-y-14">
               <div className="pt-20 md:pt-28 lg:pt-32">
                 <h1 className="text-left text-[clamp(2.4rem,5.8vw,4.3rem)] font-normal leading-[0.98] tracking-[-0.065em] text-[#111111]">
-                  <span className="block whitespace-nowrap">Your LP positions deserve</span>
+                  <span className="block whitespace-nowrap">Your business credit line deserves</span>
                   <span className="block whitespace-nowrap">a better interface.</span>
                 </h1>
               </div>
@@ -202,7 +200,7 @@ export default function PlatformPage() {
                 <div className="relative overflow-hidden rounded-[18px] bg-[#f8f7f4] md:rounded-[22px] lg:rounded-[24px]">
                   <Image
                     src="/20.webp"
-                    alt="Avana platform dashboard"
+                    alt="Avana credit lines dashboard"
                     width={2400}
                     height={1800}
                     priority
@@ -216,11 +214,11 @@ export default function PlatformPage() {
       </section>
 
       <ProductStorySection
-        eyebrow="Avana Webapp"
+        eyebrow="Avana Credit Lines"
         eyebrowTone="violet"
         titleLines={["See everything,", "control everything."]}
         paragraphs={[
-          "The Avana webapp gives you complete visibility and control over your LP positions. Deposit collateral, review pool-specific credit limits, borrow instantly, and manage health, automation, and risk from a single dashboard designed specifically for active liquidity providers.",
+          "The Avana credit lines experience gives businesses complete visibility and control over their LP-backed borrowing. Deposit collateral, review pool-specific credit limits, borrow instantly, and manage health, automation, and risk from a single dashboard designed specifically for business treasury teams.",
         ]}
       />
 
@@ -230,7 +228,7 @@ export default function PlatformPage() {
             <section>
               <div className="space-y-4 text-left">
                 <SectionEyebrow tone="violet">How it works</SectionEyebrow>
-                <SectionTitle>LP borrowing, simplified.</SectionTitle>
+                <SectionTitle>Business credit lines, simplified.</SectionTitle>
                 <p className="max-w-[40rem] text-[1.02rem] leading-[1.72] text-[#5f6f84] md:text-[1.08rem]">
                   Deposit LP positions, see your borrowing power, and unlock liquidity while
                   fees keep accruing. Limits, health, and automation stay in one place.
@@ -238,7 +236,7 @@ export default function PlatformPage() {
               </div>
 
               <div className="mt-10 flex flex-col gap-5 md:mt-14 lg:flex-row lg:gap-6">
-                {platformWorkflowSteps.map((step, i) => (
+                {creditLinesWorkflowSteps.map((step, i) => (
                   <WorkflowStepCard
                     key={step.title}
                     index={i}
@@ -246,7 +244,6 @@ export default function PlatformPage() {
                     description={step.description}
                     accent={step.accent}
                     icon={step.icon}
-                    isLast={i === platformWorkflowSteps.length - 1}
                   />
                 ))}
               </div>
@@ -259,7 +256,7 @@ export default function PlatformPage() {
             <ProductFeatureScrollSection
               eyebrow="Financing"
               eyebrowTone="violet"
-              title="Flexible capital, one interface."
+              title="Flexible credit, one interface."
               items={financingFeatures}
               panels={[
                 /* 01 Flexible settlement — multi-venue credit card UI */
@@ -581,13 +578,13 @@ export default function PlatformPage() {
             <section className="relative -mx-4 overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#f8f7fc_0%,#eee8f8_50%,#f5f3fa_100%)] px-6 py-12 sm:-mx-6 sm:px-10 md:px-12 md:py-16 lg:py-20 2xl:py-18">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(139,92,246,0.10),transparent_40%),radial-gradient(circle_at_80%_100%,rgba(99,102,241,0.08),transparent_35%)]" />
               <div className="relative z-10">
-                <div className="max-w-[600px] space-y-3">
-                  <SectionEyebrow tone="violet">Platform edge</SectionEyebrow>
-                  <SectionTitle>What makes Avana different.</SectionTitle>
+              <div className="max-w-[600px] space-y-3">
+                  <SectionEyebrow tone="violet">Credit line edge</SectionEyebrow>
+                  <SectionTitle>What makes Avana different for businesses.</SectionTitle>
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-14 lg:grid-cols-4 lg:gap-5">
-                  {platformEdgeItems.map((item) => (
+                  {creditLinesEdgeItems.map((item) => (
                     <article key={item.title} className="flex flex-col rounded-2xl bg-white/70 p-6 backdrop-blur-sm">
                       <div className="flex items-baseline gap-1.5">
                         <span className="text-[2.5rem] font-medium leading-none tracking-[-0.04em] text-violet-600">
@@ -614,7 +611,7 @@ export default function PlatformPage() {
             <div className="pb-16 md:pb-24 2xl:pb-22">
               <InlineFaqSection
                 title="Frequently asked questions."
-                items={platformFaqItems}
+                items={creditLinesFaqItems}
                 eyebrowTone="violet"
                 withTopBorder={false}
                 layout="homepage"
