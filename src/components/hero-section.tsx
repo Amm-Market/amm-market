@@ -76,6 +76,246 @@ function PoolCard({ pool }: { pool: HomepagePool }) {
   )
 }
 
+const lendingCoverageAssets = [
+  {
+    symbol: "BTC",
+    name: "Bitcoin",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bitcoin/info/logo.png",
+  },
+  {
+    symbol: "ETH",
+    name: "Ethereum",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png",
+  },
+  {
+    symbol: "SOL",
+    name: "Solana",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/solana/info/logo.png",
+  },
+  {
+    symbol: "TON",
+    name: "The Open Network",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ton/info/logo.png",
+  },
+  {
+    symbol: "XRP",
+    name: "XRP",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/xrp/info/logo.png",
+  },
+  {
+    symbol: "APE",
+    name: "ApeCoin",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4d224452801aced8b2f0aebe155379bb5d594381b/logo.png",
+  },
+] as const
+
+const lendingCoverageTableRows = [
+  {
+    pair: "BTC",
+    name: "Bitcoin",
+    logo: lendingCoverageAssets[0].logo,
+    price: "4.82",
+    suffix: "% APY",
+    change: "-0.10%",
+    positive: false,
+  },
+  {
+    pair: "ETH",
+    name: "Ethereum",
+    logo: lendingCoverageAssets[1].logo,
+    price: "3.94",
+    suffix: "% APY",
+    change: "-1.18%",
+    positive: false,
+  },
+  {
+    pair: "AAVE",
+    name: "Aave",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9/logo.png",
+    price: "6.36",
+    suffix: "% APY",
+    change: "+6.36%",
+    positive: true,
+  },
+  {
+    pair: "TON",
+    name: "The Open Network",
+    logo: lendingCoverageAssets[3].logo,
+    price: "5.28",
+    suffix: "% APY",
+    change: "+28.93%",
+    positive: true,
+  },
+  {
+    pair: "SOL",
+    name: "Solana",
+    logo: lendingCoverageAssets[2].logo,
+    price: "4.15",
+    suffix: "% APY",
+    change: "+3.52%",
+    positive: true,
+  },
+] as const
+
+const lendingCoverageGainersRows = [
+  {
+    pair: "B3",
+    logo: "https://b3.fun/favicon.ico",
+    price: "8.42% APY",
+    change: "+1.38% 24h",
+    positive: true,
+  },
+  {
+    pair: "IO",
+    logo: "https://io.net/favicon.ico",
+    price: "6.15% APY",
+    change: "+0.97% 24h",
+    positive: true,
+  },
+] as const
+
+const lendingCoverageListingsRows = [
+  {
+    pair: "APE",
+    logo: lendingCoverageAssets[5].logo,
+    price: "4.08% APY",
+    change: "-0.24% 24h",
+    positive: false,
+  },
+  {
+    pair: "ETC",
+    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereumclassic/info/logo.png",
+    price: "3.84% APY",
+    change: "+0.17% 24h",
+    positive: true,
+  },
+] as const
+
+function TokenLogo({ src, alt }: { src: string; alt: string }) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      width={40}
+      height={40}
+      loading="lazy"
+      className="h-8 w-8 rounded-full bg-white object-contain p-1 shadow-[0_1px_4px_rgba(15,23,42,0.08)] ring-1 ring-black/5"
+    />
+  )
+}
+
+function MarketTableRow({ row }: { row: (typeof lendingCoverageTableRows)[number] }) {
+  return (
+    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-1 py-2.5 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.85fr)_auto]">
+      <div className="flex min-w-0 items-center gap-3">
+        <TokenLogo src={row.logo} alt={`${row.name} logo`} />
+        <div className="min-w-0">
+          <p className="truncate text-sm font-semibold text-[#202124]">{row.pair}</p>
+          <p className="truncate text-xs text-gray-400">{row.name}</p>
+        </div>
+      </div>
+      <div className="justify-self-end text-right text-sm font-semibold text-[#202124] md:justify-self-auto md:text-left">
+        {row.price} <span className="text-xs font-medium text-gray-400">{row.suffix}</span>
+        <div className={`mt-0.5 text-xs font-semibold md:hidden ${row.positive ? "text-emerald-500" : "text-[#ef6a63]"}`}>
+          {row.change}
+        </div>
+      </div>
+      <div className={`hidden text-sm font-semibold md:block ${row.positive ? "text-emerald-500" : "text-[#ef6a63]"}`}>
+        {row.change}
+      </div>
+      <button className="hidden w-fit rounded-full border border-[#f1b25d] px-4 py-1.5 text-xs font-semibold text-[#f2a33d] transition-colors hover:bg-[#fff8ef] md:inline-flex">
+        Trade
+      </button>
+    </div>
+  )
+}
+
+function CompactMarketRow({
+  row,
+}: {
+  row: (typeof lendingCoverageGainersRows)[number] | (typeof lendingCoverageListingsRows)[number]
+}) {
+  return (
+    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-1 py-2.5">
+      <div className="flex min-w-0 items-center gap-3">
+        <TokenLogo src={row.logo} alt={`${row.pair} logo`} />
+        <p className="truncate text-sm font-semibold text-[#202124]">{row.pair}</p>
+      </div>
+      <div className="grid justify-items-end gap-1 text-right">
+        <p className="whitespace-nowrap text-xs font-semibold text-[#202124] md:text-sm">{row.price}</p>
+        <p className={`whitespace-nowrap text-xs font-semibold md:text-sm ${row.positive ? "text-emerald-500" : "text-[#ef6a63]"}`}>
+          {row.change}
+        </p>
+      </div>
+    </div>
+  )
+}
+
+function LendingCoverageTable() {
+  return (
+    <div>
+      <div className="grid gap-3 xl:grid-cols-[minmax(0,1.58fr)_minmax(280px,0.9fr)]">
+        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+          <div className="border-b border-gray-100 px-4 pb-3 pt-4">
+            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#191c1f]">
+              Most traded coins
+            </h3>
+            <div className="mt-2 h-0.5 w-28 rounded-full bg-[#f2a33d]" />
+          </div>
+
+          <div className="hidden gap-3 px-5 py-2.5 text-xs font-medium text-gray-400 md:grid md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.85fr)_auto]">
+            <div>Asset</div>
+            <div>Supply APY</div>
+            <div>24H Change</div>
+            <div>Trade</div>
+          </div>
+
+          <div className="divide-y divide-gray-50 px-4 pb-3">
+            {lendingCoverageTableRows.map((row) => (
+              <MarketTableRow key={row.pair} row={row} />
+            ))}
+          </div>
+        </div>
+
+        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+          <div className="border-b border-gray-100 px-4 py-4">
+            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#191c1f]">
+              Top Gainers
+            </h3>
+          </div>
+
+          <div className="divide-y divide-gray-50 px-4 py-1.5">
+            {lendingCoverageGainersRows.map((row) => (
+              <CompactMarketRow key={row.pair} row={row} />
+            ))}
+          </div>
+
+          <div className="border-t border-gray-100 px-4 py-4">
+            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#191c1f]">
+              New Listings
+            </h3>
+          </div>
+
+          <div className="divide-y divide-gray-50 px-4 pb-3">
+            {lendingCoverageListingsRows.map((row) => (
+              <CompactMarketRow key={row.pair} row={row} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <p className="mt-3 flex items-start gap-2.5 text-xs font-semibold leading-5 text-[#202124] md:text-sm">
+        <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#111827] text-sm leading-none text-white">
+          !
+        </span>
+        <span className="max-w-[1000px]">
+          Sandbox data shown for preview only. APYs, prices, and returns are illustrative and may differ from live market conditions.
+        </span>
+      </p>
+    </div>
+  )
+}
+
 export default function HeroSection() {
   return (
     <section className="marketing-secondary-shell pb-0">
@@ -83,8 +323,8 @@ export default function HeroSection() {
         <div className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="cyan">Pool Coverage</SectionEyebrow>
-                <SectionTitle>500+ Supported Pools</SectionTitle>
+                <SectionEyebrow tone="cyan">Borrowing Coverage</SectionEyebrow>
+                <SectionTitle>250+ Liquidity Pools</SectionTitle>
               </div>
             </div>
 
@@ -130,6 +370,17 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
+        </div>
+      </div>
+
+      <div className="site-content-shell pt-24 md:pt-32 2xl:pt-28">
+        <div className="space-y-6">
+          <div className="flex max-w-[600px] flex-col gap-2">
+            <SectionEyebrow tone="emerald">Lending Coverage</SectionEyebrow>
+            <SectionTitle className="whitespace-nowrap">100+ Assets Supported</SectionTitle>
+          </div>
+
+          <LendingCoverageTable />
         </div>
       </div>
 
@@ -179,7 +430,7 @@ export default function HeroSection() {
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="amber">Capital Efficiency</SectionEyebrow>
                 <SectionTitle>
-                  Get more out of your LPs
+                  Earn more with a boost on your lending.
                 </SectionTitle>
               </div>
             </div>
@@ -778,27 +1029,6 @@ export default function HeroSection() {
                     <DeFiTerm term="liquidation" className="text-[0.92em]">liquidation</DeFiTerm>
                     {" "}design.
                   </p>
-                </div>
-              </div>
-
-              <div className="mt-12 overflow-hidden rounded-[28px] border border-gray-200 bg-gradient-to-b from-gray-50 to-white p-5 sm:p-6">
-                <div className="flex min-h-[280px] items-center justify-center rounded-[24px] border border-gray-200 bg-white sm:min-h-[340px] md:min-h-[420px]">
-                  <div className="flex flex-col items-center gap-6 text-center">
-                    <div className="flex h-28 w-28 items-center justify-center rounded-full bg-[#B6509E] shadow-[0_20px_60px_rgba(182,80,158,0.18)] sm:h-36 sm:w-36 md:h-44 md:w-44">
-                      <svg width="68" height="68" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:h-20 sm:w-20 md:h-24 md:w-24">
-                        <path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0z" fill="#B6509E" />
-                        <path d="M186.7 168.5c-7.5 0-14.2-4.3-17.4-11l-25.9-56.8c-1.4-3.1-4.5-5.1-7.9-5.1h-14.9c-3.4 0-6.5 2-7.9 5.1l-25.9 56.8c-3.2 6.7-9.9 11-17.4 11-10.6 0-19.2-8.6-19.2-19.2 0-2.9.7-5.8 2-8.4l38.3-83.8c5.7-12.5 18.2-20.5 32-20.5h23.2c13.8 0 26.3 8 32 20.5l38.3 83.8c1.3 2.6 2 5.5 2 8.4 0 10.6-8.6 19.2-19.2 19.2z" fill="white" />
-                      </svg>
-                    </div>
-                    <div className="space-y-2">
-                      <p className="text-[1.6rem] font-semibold tracking-[-0.05em] text-gray-900 sm:text-[2rem] md:text-[2.6rem]">
-                        Future Aave visual
-                      </p>
-                      <p className="text-sm text-gray-500 sm:text-base">
-                        Reserved for the large Aave brand asset.
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
           </div>

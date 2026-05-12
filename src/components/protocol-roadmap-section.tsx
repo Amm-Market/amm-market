@@ -170,7 +170,7 @@ export default function ProtocolRoadmapSection() {
         <SectionTitle>Roadmap</SectionTitle>
       </div>
 
-      <p className="text-[1rem] leading-[1.72] tracking-[-0.02em] text-gray-600 sm:text-[1.05rem]">
+      <p className="text-[1.08rem] leading-[1.68] tracking-[-0.025em] text-gray-600 sm:text-[1.12rem]">
         Avana develops in three phases. Each phase builds on the one before it: Token Markets,
         Leverage / Perps Markets, then Pool Markets.
       </p>
