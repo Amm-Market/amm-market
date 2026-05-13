@@ -201,6 +201,31 @@ export default function TradePage() {
         </div>
       </section>
 
+      <section className="deferred-viewport-tall bg-white py-12 md:py-16 2xl:py-14">
+        <div className="site-content-shell">
+          <div className="flex max-w-[600px] flex-col gap-2">
+            <SectionEyebrow tone="rose">What&apos;s new</SectionEyebrow>
+            <SectionTitle>
+              <span className="block">Deposit LP once,</span>
+              <span className="block">Leverage across markets.</span>
+            </SectionTitle>
+          </div>
+
+          <div className="mt-10 md:mt-16">
+            <article className="relative mx-auto aspect-[4/3] w-full max-w-[56rem] overflow-hidden rounded-[1.8rem] bg-[#f5f3f0] shadow-[0_24px_70px_rgba(15,23,42,0.08)] sm:aspect-[16/10] md:aspect-[16/9] md:max-w-[68rem] lg:max-w-[72rem]">
+              <Image
+                src="/images/2.webp"
+                alt="Leverage dashboard"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 72rem"
+              />
+            </article>
+
+          </div>
+        </div>
+      </section>
+
       <section className="deferred-viewport bg-white py-12 md:py-16 2xl:py-14">
         <div className="site-content-shell">
           <div className="flex flex-col gap-6">
@@ -224,31 +249,6 @@ export default function TradePage() {
                 </p>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="deferred-viewport-tall bg-white py-12 md:py-16 2xl:py-14">
-        <div className="site-content-shell">
-          <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="rose">What&apos;s new</SectionEyebrow>
-            <SectionTitle>
-              <span className="block">Deposit LP once,</span>
-              <span className="block">Leverage across markets.</span>
-            </SectionTitle>
-          </div>
-
-          <div className="mt-10 md:mt-16">
-            <article className="relative mx-auto aspect-[4/3] w-full max-w-[56rem] overflow-hidden rounded-[1.8rem] bg-[#f5f3f0] shadow-[0_24px_70px_rgba(15,23,42,0.08)] sm:aspect-[16/10] md:aspect-[16/9] md:max-w-[68rem] lg:max-w-[72rem]">
-              <Image
-                src="/images/2.webp"
-                alt="Leverage dashboard"
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 72rem"
-              />
-            </article>
-
           </div>
         </div>
       </section>
