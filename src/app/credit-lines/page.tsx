@@ -255,6 +255,10 @@ export default function CreditLinesPage() {
         <div className="relative z-0 flex flex-1 flex-col">
           <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20 2xl:space-y-36 2xl:pt-18 2xl:pb-18">
             <section>
+              <PlatformToolsShowcaseSection />
+            </section>
+
+            <section>
               <div className="space-y-4 text-left">
                 <SectionEyebrow tone="violet">How it works</SectionEyebrow>
                 <SectionTitle>Business credit lines, simplified.</SectionTitle>
@@ -271,10 +275,6 @@ export default function CreditLinesPage() {
                   />
                 ))}
               </div>
-            </section>
-
-            <section>
-              <PlatformToolsShowcaseSection />
             </section>
 
             <ProductFeatureScrollSection
