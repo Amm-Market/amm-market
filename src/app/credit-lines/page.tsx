@@ -6,7 +6,6 @@ import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSect
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import PlatformToolsShowcaseSection from "@/components/platform-tools-showcase-section"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
-import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 export const metadata: Metadata = {
@@ -180,15 +179,15 @@ export default function CreditLinesPage() {
           <div className="mx-auto w-full max-w-[90rem] space-y-10 md:space-y-12 lg:space-y-14">
               <div className="pt-20 md:pt-28 lg:pt-32">
                 <h1 className="text-left text-[clamp(2.4rem,5.8vw,4.3rem)] font-normal leading-[0.98] tracking-[-0.065em] text-[#111111]">
-                  <span className="block whitespace-nowrap">Your business credit line deserves</span>
-                  <span className="block whitespace-nowrap">a better interface.</span>
+                  <span className="block">Secure credit lines now,</span>
+                  <span className="block">Repay from future revenues.</span>
                 </h1>
               </div>
 
               <section className="opacity-100 [transform:perspective(1200px)]">
                 <div className="relative overflow-hidden rounded-[18px] bg-[#f8f7f4] md:rounded-[22px] lg:rounded-[24px]">
                   <Image
-                    src="/20.webp"
+                    src="/images/credit-lines-hero.webp"
                     alt="Avana credit lines dashboard"
                     width={2400}
                     height={1800}
@@ -202,14 +201,54 @@ export default function CreditLinesPage() {
         </div>
       </section>
 
-      <ProductStorySection
-        eyebrow="Avana Credit Lines"
-        eyebrowTone="violet"
-        titleLines={["See everything,", "control everything."]}
-        paragraphs={[
-          "The Avana credit lines experience gives businesses complete visibility and control over their LP-backed borrowing. Deposit collateral, review pool-specific credit limits, borrow instantly, and manage health, automation, and risk from a single dashboard designed specifically for business treasury teams.",
-        ]}
-      />
+      <section className="bg-white py-12 md:py-16 lg:py-20">
+        <div className="site-content-shell">
+          <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-18">
+            <div className="max-w-[33rem] pt-2 lg:pt-6">
+              <SectionEyebrow tone="violet">
+                Working capital
+              </SectionEyebrow>
+              <SectionTitle className="mt-5 max-w-[13ch] text-[#111111] lg:max-w-[11ch]">
+                <span className="block">Access credit when</span>
+                <span className="block">opportunity calls.</span>
+              </SectionTitle>
+
+              <p className="mt-7 max-w-[28rem] text-[0.98rem] leading-[1.62] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
+                Quick access to business financing. Use your credit line to borrow against active positions, then repay automatically as future sales and cash flow come in.
+              </p>
+
+              <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center">
+                <button
+                  type="button"
+                  className="inline-flex h-[4.15rem] items-center justify-center rounded-full bg-black px-10 text-[1.02rem] font-semibold tracking-[-0.02em] text-white transition-transform hover:-translate-y-0.5 hover:bg-neutral-900"
+                >
+                  Apply now
+                </button>
+                <p className="text-[0.98rem] leading-6 text-[#111111]">
+                  Get in touch,{" "}
+                  <a href="tel:18779812128" className="font-semibold underline underline-offset-4">
+                    1-877-981-2128
+                  </a>
+                  .
+                </p>
+              </div>
+            </div>
+
+            <div className="relative lg:pt-1">
+              <div className="overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:rounded-[32px]">
+                <Image
+                  src="/images/leverage-hero-placeholder.webp"
+                  alt="Person holding a smartphone showing a finance app"
+                  width={1024}
+                  height={768}
+                  className="h-auto w-full object-contain"
+                  sizes="(max-width: 1024px) 100vw, 54vw"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 pt-8 sm:px-6 sm:pt-12">
         <div className="relative z-0 flex flex-1 flex-col">
