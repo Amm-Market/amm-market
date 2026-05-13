@@ -50,29 +50,6 @@ const leverageWorkflowSteps = [
   },
 ] as const
 
-const leverageHighlights = [
-  {
-    title: "Borrow-rate pricing",
-    description:
-      "Leverage cost is determined by borrow rates from Aave Hub liquidity and LP risk parameters - not perpetual funding rates.",
-  },
-  {
-    title: "Pool-aware risk engine",
-    description:
-      "Valuation accounts for pool composition, tick range, concentration, and accrued fees. Not just the token price.",
-  },
-  {
-    title: "Unified risk dashboard",
-    description:
-      "Collateral, debt, leverage multiple, and health factor visible in one view. No need to check multiple protocols.",
-  },
-  {
-    title: "Automatic unwind paths",
-    description:
-      "When a position needs to close, smart routing handles debt repayment, collateral release, and exposure reduction in sequence.",
-  },
-] as const
-
 const leverageFaqItems: InlineFaqItem[] = [
   {
     value: "leverage-1",
@@ -261,33 +238,16 @@ export default function TradePage() {
             </SectionTitle>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-4">
-            <article className="relative overflow-hidden rounded-[1.8rem] bg-[#f5f3f0] md:col-span-2 md:row-span-2">
+          <div className="mt-10 md:mt-16">
+            <article className="relative mx-auto aspect-[4/3] w-full max-w-[56rem] overflow-hidden rounded-[1.8rem] bg-[#f5f3f0] shadow-[0_24px_70px_rgba(15,23,42,0.08)] sm:aspect-[16/10] md:aspect-[16/9] md:max-w-[68rem] lg:max-w-[72rem]">
               <Image
-                src="/images/leverage-hero-placeholder.png"
+                src="/images/2.webp"
                 alt="Leverage dashboard"
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 72rem"
               />
             </article>
-
-            {leverageHighlights.map((item, i) => (
-              <article
-                key={item.title}
-                className="flex flex-col rounded-[1.8rem] border border-gray-200 bg-gray-50 p-6 md:p-7"
-              >
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-4 text-lg font-medium tracking-[-0.03em] text-[#18323c]">
-                  {item.title}
-                </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-gray-600">
-                  {item.description}
-                </p>
-              </article>
-            ))}
 
           </div>
         </div>
