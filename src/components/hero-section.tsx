@@ -199,31 +199,31 @@ function TokenLogo({ src, alt }: { src: string; alt: string }) {
       width={40}
       height={40}
       loading="lazy"
-      className="h-8 w-8 rounded-full bg-white object-contain p-1 shadow-[0_1px_4px_rgba(15,23,42,0.08)] ring-1 ring-black/5"
+      className="h-8 w-8 rounded-full bg-white object-contain p-1 ring-1 ring-[#d9e2ef]"
     />
   )
 }
 
 function MarketTableRow({ row }: { row: (typeof lendingCoverageTableRows)[number] }) {
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-1 py-2.5 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.85fr)_auto]">
+    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-[4px] bg-white/85 px-3 py-3 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.85fr)_auto] md:px-4">
       <div className="flex min-w-0 items-center gap-3">
         <TokenLogo src={row.logo} alt={`${row.name} logo`} />
         <div className="min-w-0">
-          <p className="truncate text-sm font-semibold text-[#202124]">{row.pair}</p>
-          <p className="truncate text-xs text-gray-400">{row.name}</p>
+          <p className="truncate text-sm font-semibold text-[#182036]">{row.pair}</p>
+          <p className="truncate text-xs text-[#667085]">{row.name}</p>
         </div>
       </div>
-      <div className="justify-self-end text-right text-sm font-semibold text-[#202124] md:justify-self-auto md:text-left">
-        {row.price} <span className="text-xs font-medium text-gray-400">{row.suffix}</span>
-        <div className={`mt-0.5 text-xs font-semibold md:hidden ${row.positive ? "text-emerald-500" : "text-[#ef6a63]"}`}>
+      <div className="justify-self-end text-right text-sm font-semibold text-[#182036] md:justify-self-auto md:text-left">
+        {row.price} <span className="text-xs font-medium text-[#667085]">{row.suffix}</span>
+        <div className={`mt-0.5 text-xs font-semibold md:hidden ${row.positive ? "text-[#107c41]" : "text-[#c43e1c]"}`}>
           {row.change}
         </div>
       </div>
-      <div className={`hidden text-sm font-semibold md:block ${row.positive ? "text-emerald-500" : "text-[#ef6a63]"}`}>
+      <div className={`hidden text-sm font-semibold md:block ${row.positive ? "text-[#107c41]" : "text-[#c43e1c]"}`}>
         {row.change}
       </div>
-      <button className="hidden w-fit rounded-full border border-[#f1b25d] px-4 py-1.5 text-xs font-semibold text-[#f2a33d] transition-colors hover:bg-[#fff8ef] md:inline-flex">
+      <button className="hidden w-fit rounded-[4px] border border-[#9fb8d8] bg-[#f9fbfe] px-4 py-1.5 text-xs font-semibold text-[#005fb8] transition-colors hover:bg-[#eef4fb] md:inline-flex">
         Trade
       </button>
     </div>
@@ -236,14 +236,14 @@ function CompactMarketRow({
   row: (typeof lendingCoverageGainersRows)[number] | (typeof lendingCoverageListingsRows)[number]
 }) {
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-1 py-2.5">
+    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-[4px] bg-white/85 px-3 py-3">
       <div className="flex min-w-0 items-center gap-3">
         <TokenLogo src={row.logo} alt={`${row.pair} logo`} />
-        <p className="truncate text-sm font-semibold text-[#202124]">{row.pair}</p>
+        <p className="truncate text-sm font-semibold text-[#182036]">{row.pair}</p>
       </div>
       <div className="grid justify-items-end gap-1 text-right">
-        <p className="whitespace-nowrap text-xs font-semibold text-[#202124] md:text-sm">{row.price}</p>
-        <p className={`whitespace-nowrap text-xs font-semibold md:text-sm ${row.positive ? "text-emerald-500" : "text-[#ef6a63]"}`}>
+        <p className="whitespace-nowrap text-xs font-semibold text-[#182036] md:text-sm">{row.price}</p>
+        <p className={`whitespace-nowrap text-xs font-semibold md:text-sm ${row.positive ? "text-[#107c41]" : "text-[#c43e1c]"}`}>
           {row.change}
         </p>
       </div>
@@ -254,49 +254,50 @@ function CompactMarketRow({
 function LendingCoverageTable() {
   return (
     <div>
-      <div className="grid gap-3 xl:grid-cols-[minmax(0,1.58fr)_minmax(280px,0.9fr)]">
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
-          <div className="border-b border-gray-100 px-4 pb-3 pt-4">
-            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#191c1f]">
+      <div className="grid gap-4 xl:grid-cols-[minmax(0,1.58fr)_minmax(280px,0.9fr)]">
+        <div className="overflow-hidden border border-[#d2dcea] bg-white">
+          <div className="h-1 bg-[#0078d4]" />
+          <div className="border-b border-[#e6edf6] px-4 pb-3 pt-4 md:px-5">
+            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#162033]">
               Most traded coins
             </h3>
-            <div className="mt-2 h-0.5 w-28 rounded-full bg-[#f2a33d]" />
           </div>
 
-          <div className="hidden gap-3 px-5 py-2.5 text-xs font-medium text-gray-400 md:grid md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.85fr)_auto]">
+          <div className="hidden gap-3 px-5 py-2.5 text-[0.69rem] font-semibold uppercase tracking-[0.14em] text-[#6b7280] md:grid md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.85fr)_auto]">
             <div>Asset</div>
             <div>Supply APY</div>
             <div>24H Change</div>
             <div>Trade</div>
           </div>
 
-          <div className="divide-y divide-gray-50 px-4 pb-3">
+          <div className="space-y-2 px-4 pb-4 md:px-5">
             {lendingCoverageTableRows.map((row) => (
               <MarketTableRow key={row.pair} row={row} />
             ))}
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
-          <div className="border-b border-gray-100 px-4 py-4">
-            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#191c1f]">
+        <div className="overflow-hidden border border-[#d2dcea] bg-white">
+          <div className="h-1 bg-[#0a5fb8]" />
+          <div className="border-b border-[#e6edf6] px-4 py-4 md:px-5">
+            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#162033]">
               Top Gainers
             </h3>
           </div>
 
-          <div className="divide-y divide-gray-50 px-4 py-1.5">
+          <div className="space-y-2 px-4 py-3 md:px-5">
             {lendingCoverageGainersRows.map((row) => (
               <CompactMarketRow key={row.pair} row={row} />
             ))}
           </div>
 
-          <div className="border-t border-gray-100 px-4 py-4">
-            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#191c1f]">
+          <div className="border-t border-[#e6edf6] px-4 py-4 md:px-5">
+            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#162033]">
               New Listings
             </h3>
           </div>
 
-          <div className="divide-y divide-gray-50 px-4 pb-3">
+          <div className="space-y-2 px-4 pb-4 md:px-5">
             {lendingCoverageListingsRows.map((row) => (
               <CompactMarketRow key={row.pair} row={row} />
             ))}
@@ -304,8 +305,8 @@ function LendingCoverageTable() {
         </div>
       </div>
 
-      <p className="mt-3 flex items-start gap-2.5 text-xs font-semibold leading-5 text-[#202124] md:text-sm">
-        <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#111827] text-sm leading-none text-white">
+      <p className="mt-3 flex items-start gap-2.5 text-xs font-medium leading-5 text-[#44546a] md:text-sm">
+        <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#0078d4] text-sm leading-none text-white">
           !
         </span>
         <span className="max-w-[1000px]">
@@ -369,6 +370,15 @@ export default function HeroSection() {
                   ))}
                 </div>
               </div>
+            </div>
+
+            <div className="inline-flex max-w-[920px] items-start gap-3 border-l-2 border-[#c6d8eb] bg-[#f8fbff] px-4 py-3 text-[0.82rem] leading-6 tracking-[-0.01em] text-[#5f6f82] md:text-sm">
+              <span className="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#0078d4] text-[0.7rem] font-semibold leading-none text-white">
+                i
+              </span>
+              <span>
+                Sandbox data shown for preview only. APYs, prices, and returns are illustrative and may differ from live market conditions.
+              </span>
             </div>
         </div>
       </div>
