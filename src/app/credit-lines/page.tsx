@@ -142,11 +142,11 @@ function WorkflowStepCard({
 
 const creditLinesEdgeItems = [
   {
-    stat: "1",
-    label: "workflow",
-    title: "No protocol juggling",
+    stat: "Secure",
+    label: "collateral",
+    title: "Layered collateral protection",
     description:
-      "Borrow, leverage, monitor, and automate without leaving a single interface.",
+      "Avana uses layered security controls to safeguard your collateral throughout the position lifecycle.",
   },
   {
     stat: "0%",
