@@ -323,10 +323,13 @@ export default function HeroSection() {
       <div className="site-content-shell space-y-32 pt-16 md:space-y-40 md:pt-20 2xl:space-y-36 2xl:pt-18">
         <div className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-6">
-              <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="cyan">Borrowing Coverage</SectionEyebrow>
-                <SectionTitle>250+ Liquidity Pools</SectionTitle>
-              </div>
+          <div className="flex max-w-[600px] flex-col gap-2">
+            <SectionEyebrow tone="cyan">Borrowing Power</SectionEyebrow>
+            <SectionTitle className="max-w-[13ch] text-[#18323c]">
+              <span className="block">Unlock <span className="font-semibold text-[#0078d4]">credit</span></span>
+              <span className="block">from <span className="font-semibold text-[#0078d4]">250+</span> pools</span>
+            </SectionTitle>
+          </div>
             </div>
 
             <div className="w-full flex flex-col gap-4 overflow-hidden py-6 [mask-image:linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)]">
@@ -386,51 +389,14 @@ export default function HeroSection() {
       <div className="site-content-shell pt-24 md:pt-32 2xl:pt-28">
         <div className="space-y-6">
           <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="emerald">Lending Coverage</SectionEyebrow>
-            <SectionTitle className="whitespace-nowrap">100+ Assets Supported</SectionTitle>
+            <SectionEyebrow tone="emerald">Investing Markets</SectionEyebrow>
+            <SectionTitle className="max-w-[14ch] text-[#18323c]">
+              <span className="block">Earn <span className="font-semibold text-[#107c41]">yield</span></span>
+              <span className="block">on <span className="font-semibold text-[#107c41]">100+</span> assets</span>
+            </SectionTitle>
           </div>
 
           <LendingCoverageTable />
-        </div>
-      </div>
-
-      <div className="site-content-shell pt-32 md:pt-40 2xl:pt-36">
-        <div className="flex flex-col gap-6">
-          <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="violet">How it works</SectionEyebrow>
-            <SectionTitle>
-              Borrowing in three steps
-            </SectionTitle>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 md:mt-16">
-          <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
-            <span className="text-5xl md:text-6xl font-bold text-gray-300">1</span>
-            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
-              Deposit your LP position
-            </h3>
-            <p className="text-sm md:text-base text-gray-600">
-              Deposit your <DeFiTerm term="lp-tokens">LP tokens</DeFiTerm> from any supported <DeFiTerm term="dex">DEX</DeFiTerm>. Your position stays active and continues earning trading fees.
-            </p>
-          </div>
-          <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
-            <span className="text-5xl md:text-6xl font-bold text-gray-300">2</span>
-            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
-              Receive your loan instantly
-            </h3>
-            <p className="text-sm md:text-base text-gray-600">
-              Assets will be deposited into your wallet. Borrow up to 80% of your LP value based on pool risk parameters.
-            </p>
-          </div>
-          <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
-            <span className="text-5xl md:text-6xl font-bold text-gray-300">3</span>
-            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6 mb-3">
-              Repay on your timeline
-            </h3>
-            <p className="text-sm md:text-base text-gray-600">
-              There are no repayment schedules or deadlines. Your <DeFiTerm term="ltv">loan-to-value ratio</DeFiTerm> must remain under the <DeFiTerm term="liquidation-threshold">liquidation threshold</DeFiTerm> to avoid automatic <DeFiTerm term="liquidation">liquidation</DeFiTerm>.
-            </p>
-          </div>
         </div>
       </div>
 
@@ -438,9 +404,12 @@ export default function HeroSection() {
         <div>
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="amber">Capital Efficiency</SectionEyebrow>
-                <SectionTitle>
-                  Earn more with a boost on your lending.
+                <SectionEyebrow tone="amber">Trading Pairs</SectionEyebrow>
+                <SectionTitle className="max-w-[15ch] text-[#18323c]">
+                  <span className="block">Trade like a pro</span>
+                  <span className="block">
+                    across <span className="font-semibold text-[#b45309]">500+</span> markets
+                  </span>
                 </SectionTitle>
               </div>
             </div>
@@ -1010,6 +979,46 @@ export default function HeroSection() {
 
         </div>
 
+
+      <div className="site-content-shell pt-4 md:pt-6 2xl:pt-6">
+        <div className="flex flex-col gap-6">
+          <div className="flex max-w-[600px] flex-col gap-2">
+            <SectionEyebrow tone="violet">How it works</SectionEyebrow>
+            <SectionTitle>
+              Borrowing in three steps
+            </SectionTitle>
+          </div>
+        </div>
+        <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
+          <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+            <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
+            <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
+              Deposit your LP position
+            </h3>
+            <p className="text-sm text-gray-600 md:text-base">
+              Deposit your <DeFiTerm term="lp-tokens">LP tokens</DeFiTerm> from any supported <DeFiTerm term="dex">DEX</DeFiTerm>. Your position stays active and continues earning trading fees.
+            </p>
+          </div>
+          <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+            <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
+            <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
+              Receive your loan instantly
+            </h3>
+            <p className="text-sm text-gray-600 md:text-base">
+              Assets will be deposited into your wallet. Borrow up to 80% of your LP value based on pool risk parameters.
+            </p>
+          </div>
+          <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
+            <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
+            <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
+              Repay on your timeline
+            </h3>
+            <p className="text-sm text-gray-600 md:text-base">
+              There are no repayment schedules or deadlines. Your <DeFiTerm term="ltv">loan-to-value ratio</DeFiTerm> must remain under the <DeFiTerm term="liquidation-threshold">liquidation threshold</DeFiTerm> to avoid automatic <DeFiTerm term="liquidation">liquidation</DeFiTerm>.
+            </p>
+          </div>
+        </div>
+      </div>
 
         <LazySection minHeight="400px" fallback={<SectionSkeleton minHeight="360px" />}>
           <DeferredTestimonialSection />
