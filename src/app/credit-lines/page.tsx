@@ -144,30 +144,30 @@ const creditLinesEdgeItems = [
   {
     stat: "Secure",
     label: "collateral",
-    title: "Layered collateral protection",
+    title: "Collateral stays protected",
     description:
-      "Avana uses layered security controls to safeguard your collateral throughout the position lifecycle.",
+      "Clear onchain controls protect your assets from deposit to repayment.",
   },
   {
     stat: "0%",
     label: "yield lost",
-    title: "Earn while you borrow",
+    title: "Keep earning as you borrow",
     description:
-      "Collateral keeps generating trading fees throughout the life of every loan.",
+      "Your collateral keeps generating trading fees while the loan stays open.",
   },
   {
     stat: "Live",
     label: "updates",
     title: "Real-time risk view",
     description:
-      "Health factor and exposure refresh continuously so surprises stay rare.",
+      "Health factor and exposure stay current as market conditions change.",
   },
   {
     stat: "Full",
     label: "flexibility",
     title: "Automate or override",
     description:
-      "Build automated rules, then step in manually whenever the situation calls for it.",
+      "Set automation rules, then step in manually when the situation changes.",
   },
 ] as const
 
@@ -570,11 +570,11 @@ export default function CreditLinesPage() {
                 <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-14 lg:grid-cols-4 lg:gap-5">
                   {creditLinesEdgeItems.map((item) => (
                     <article key={item.title} className="flex flex-col rounded-2xl bg-white/70 p-6 backdrop-blur-sm">
-                      <div className="flex items-baseline gap-1.5">
-                        <span className="text-[2.5rem] font-medium leading-none tracking-[-0.04em] text-violet-600">
+                      <div className="flex flex-col gap-0.5">
+                        <span className="text-[2.25rem] font-medium leading-[0.96] tracking-[-0.05em] text-violet-600">
                           {item.stat}
                         </span>
-                        <span className="text-sm font-medium text-violet-400">
+                        <span className="text-[0.78rem] font-medium uppercase tracking-[0.14em] text-violet-400">
                           {item.label}
                         </span>
                       </div>
