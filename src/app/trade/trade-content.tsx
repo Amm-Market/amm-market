@@ -205,9 +205,8 @@ export default function TradePage() {
         <div className="site-content-shell">
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="rose">What&apos;s new</SectionEyebrow>
-            <SectionTitle>
-              <span className="block">Deposit LP once,</span>
-              <span className="block">Leverage across markets.</span>
+            <SectionTitle className="max-w-[16ch] md:max-w-none md:whitespace-nowrap">
+              Trade 250+ markets.
             </SectionTitle>
           </div>
 
@@ -228,14 +227,14 @@ export default function TradePage() {
 
       <section className="deferred-viewport bg-white py-12 md:py-16 2xl:py-14">
         <div className="site-content-shell">
-          <div className="flex flex-col gap-6">
-            <div className="flex max-w-[600px] flex-col gap-2">
-              <SectionEyebrow tone="rose">How it works</SectionEyebrow>
-              <SectionTitle>Leverage in three steps</SectionTitle>
+            <div className="flex flex-col gap-6">
+              <div className="flex max-w-[600px] flex-col gap-2">
+                <SectionEyebrow tone="rose">How it works</SectionEyebrow>
+                <SectionTitle>Leverage in three steps</SectionTitle>
+              </div>
             </div>
-          </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
             {leverageWorkflowSteps.map((step, index) => (
               <article key={step.title} className="rounded-2xl bg-gray-50 p-6 md:p-8">
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">
@@ -419,21 +418,21 @@ export default function TradePage() {
             />
 
             <section>
-              <div className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-14">
+              <div className="space-y-6">
                 <div className="space-y-3">
                   <SectionEyebrow tone="rose">Risk controls</SectionEyebrow>
-                  <SectionTitle className="max-w-[11ch]">Designed for safe leverage.</SectionTitle>
+                  <SectionTitle className="max-w-[11ch] whitespace-nowrap md:max-w-none">Designed for safe leverage.</SectionTitle>
                 </div>
 
-                <div className="space-y-6 text-left text-[#39515b]">
-                  <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
-                    Avana is designed for AMM collateral, not static token balances. The protocol evaluates pool
-                    structure, concentration, accrued fees, and recoverable liquidation value before opening leverage,
-                    and it only enables approved markets with defined risk parameters, tighter thresholds for more
-                    volatile pools, and exposure caps where needed. When conditions change, users can reduce, close, or
-                    repay from one place while unwind logic routes proceeds back into debt repayment.
-                  </p>
-                </div>
+                <article className="relative mx-auto h-[240px] w-full max-w-[72rem] sm:h-[320px] md:h-[360px] lg:h-[410px]">
+                  <Image
+                    src="/images/trade-leverage-section-trimmed.png"
+                    alt="Leverage dashboard"
+                    fill
+                    className="object-contain object-center"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 72rem"
+                  />
+                </article>
               </div>
             </section>
 
