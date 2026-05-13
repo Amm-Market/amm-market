@@ -201,7 +201,7 @@ export default function TradePage() {
         </div>
       </section>
 
-      <section className="deferred-viewport-tall bg-white py-12 md:py-16 2xl:py-14">
+      <section className="deferred-viewport-tall bg-white py-8 md:py-10 2xl:py-12">
         <div className="site-content-shell">
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="rose">What&apos;s new</SectionEyebrow>
@@ -211,14 +211,14 @@ export default function TradePage() {
             </SectionTitle>
           </div>
 
-          <div className="mt-10 md:mt-16">
-            <article className="relative mx-auto aspect-[4/3] w-full max-w-[56rem] overflow-hidden rounded-[1.8rem] bg-[#f5f3f0] shadow-[0_24px_70px_rgba(15,23,42,0.08)] sm:aspect-[16/10] md:aspect-[16/9] md:max-w-[68rem] lg:max-w-[72rem]">
+          <div className="mt-[-1rem] md:mt-[-1.5rem]">
+            <article className="relative mx-auto h-[280px] w-full max-w-[84rem] sm:h-[380px] md:h-[400px] md:max-w-[70rem] lg:h-[460px] lg:max-w-[78rem]">
               <Image
-                src="/images/2.webp"
+                src="/images/trade-leverage-section-trimmed.png"
                 alt="Leverage dashboard"
                 fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 72rem"
+                className="object-contain object-center"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 94vw, 78rem"
               />
             </article>
 
