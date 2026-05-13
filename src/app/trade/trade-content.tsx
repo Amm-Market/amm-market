@@ -50,29 +50,6 @@ const leverageWorkflowSteps = [
   },
 ] as const
 
-const leverageHighlights = [
-  {
-    title: "Borrow-rate pricing",
-    description:
-      "Leverage cost is determined by borrow rates from Aave Hub liquidity and LP risk parameters - not perpetual funding rates.",
-  },
-  {
-    title: "Pool-aware risk engine",
-    description:
-      "Valuation accounts for pool composition, tick range, concentration, and accrued fees. Not just the token price.",
-  },
-  {
-    title: "Unified risk dashboard",
-    description:
-      "Collateral, debt, leverage multiple, and health factor visible in one view. No need to check multiple protocols.",
-  },
-  {
-    title: "Automatic unwind paths",
-    description:
-      "When a position needs to close, smart routing handles debt repayment, collateral release, and exposure reduction in sequence.",
-  },
-] as const
-
 const leverageFaqItems: InlineFaqItem[] = [
   {
     value: "leverage-1",
@@ -224,16 +201,40 @@ export default function TradePage() {
         </div>
       </section>
 
-      <section className="deferred-viewport bg-white py-12 md:py-16 2xl:py-14">
+      <section className="deferred-viewport-tall bg-white py-8 md:py-10 2xl:py-12">
         <div className="site-content-shell">
-          <div className="flex flex-col gap-6">
-            <div className="flex max-w-[600px] flex-col gap-2">
-              <SectionEyebrow tone="rose">How it works</SectionEyebrow>
-              <SectionTitle>Leverage in three steps</SectionTitle>
-            </div>
+          <div className="flex max-w-[600px] flex-col gap-2">
+            <SectionEyebrow tone="rose">What&apos;s new</SectionEyebrow>
+            <SectionTitle className="max-w-[16ch] md:max-w-none md:whitespace-nowrap">
+              Trade 250+ markets.
+            </SectionTitle>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
+          <div className="mt-[-1rem] md:mt-[-1.5rem]">
+            <article className="relative mx-auto h-[280px] w-full max-w-[84rem] sm:h-[380px] md:h-[400px] md:max-w-[70rem] lg:h-[460px] lg:max-w-[78rem]">
+              <Image
+                src="/images/trade-leverage-section-trimmed.png"
+                alt="Leverage dashboard"
+                fill
+                className="object-contain object-center"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 94vw, 78rem"
+              />
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <section className="deferred-viewport bg-white py-12 md:py-16 2xl:py-14">
+        <div className="site-content-shell">
+            <div className="flex flex-col gap-6">
+              <div className="flex max-w-[600px] flex-col gap-2">
+                <SectionEyebrow tone="rose">How it works</SectionEyebrow>
+                <SectionTitle>Leverage in three steps</SectionTitle>
+              </div>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
             {leverageWorkflowSteps.map((step, index) => (
               <article key={step.title} className="rounded-2xl bg-gray-50 p-6 md:p-8">
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">
@@ -247,48 +248,6 @@ export default function TradePage() {
                 </p>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="deferred-viewport-tall bg-white py-12 md:py-16 2xl:py-14">
-        <div className="site-content-shell">
-          <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="rose">What&apos;s new</SectionEyebrow>
-            <SectionTitle>
-              <span className="block">Deposit LP once,</span>
-              <span className="block">Leverage across markets.</span>
-            </SectionTitle>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-4">
-            <article className="relative overflow-hidden rounded-[1.8rem] bg-[#f5f3f0] md:col-span-2 md:row-span-2">
-              <Image
-                src="/images/leverage-hero-placeholder.png"
-                alt="Leverage dashboard"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </article>
-
-            {leverageHighlights.map((item, i) => (
-              <article
-                key={item.title}
-                className="flex flex-col rounded-[1.8rem] border border-gray-200 bg-gray-50 p-6 md:p-7"
-              >
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-4 text-lg font-medium tracking-[-0.03em] text-[#18323c]">
-                  {item.title}
-                </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-gray-600">
-                  {item.description}
-                </p>
-              </article>
-            ))}
-
           </div>
         </div>
       </section>
@@ -459,21 +418,21 @@ export default function TradePage() {
             />
 
             <section>
-              <div className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-14">
+              <div className="space-y-6">
                 <div className="space-y-3">
                   <SectionEyebrow tone="rose">Risk controls</SectionEyebrow>
-                  <SectionTitle className="max-w-[11ch]">Designed for safe leverage.</SectionTitle>
+                  <SectionTitle className="max-w-[11ch] whitespace-nowrap md:max-w-none">Designed for safe leverage.</SectionTitle>
                 </div>
 
-                <div className="space-y-6 text-left text-[#39515b]">
-                  <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
-                    Avana is designed for AMM collateral, not static token balances. The protocol evaluates pool
-                    structure, concentration, accrued fees, and recoverable liquidation value before opening leverage,
-                    and it only enables approved markets with defined risk parameters, tighter thresholds for more
-                    volatile pools, and exposure caps where needed. When conditions change, users can reduce, close, or
-                    repay from one place while unwind logic routes proceeds back into debt repayment.
-                  </p>
-                </div>
+                <article className="relative mx-auto h-[240px] w-full max-w-[72rem] sm:h-[320px] md:h-[360px] lg:h-[410px]">
+                  <Image
+                    src="/images/trade-leverage-section-trimmed.png"
+                    alt="Leverage dashboard"
+                    fill
+                    className="object-contain object-center"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 72rem"
+                  />
+                </article>
               </div>
             </section>
 

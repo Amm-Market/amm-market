@@ -75,7 +75,7 @@ export default function LeverageGlanceShowcaseSection() {
       <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
         <SectionEyebrow tone="rose">At a glance</SectionEyebrow>
         <SectionTitle className="md:whitespace-nowrap">
-          Trade up to 25X Leverage
+          Up to 100x leverage
         </SectionTitle>
       </div>
 

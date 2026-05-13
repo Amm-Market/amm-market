@@ -11,7 +11,7 @@ export type DesktopMenuId = "individuals" | "businesses" | "resources" | "develo
 export const desktopMenuButtons = [
   {
     id: "individuals",
-    label: "Individuals",
+    label: "Personal",
     matchHrefs: [
       siteRoutes.borrow,
       siteRoutes.invest,
@@ -20,7 +20,7 @@ export const desktopMenuButtons = [
   },
   {
     id: "businesses",
-    label: "Businesses",
+    label: "Business",
     matchHrefs: [
       siteRoutes.businesses,
       siteRoutes.creditLines,
