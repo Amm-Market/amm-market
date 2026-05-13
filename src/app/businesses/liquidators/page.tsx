@@ -112,7 +112,7 @@ const liquidationFaqItems: InlineFaqItem[] = [
 export default function LiquidatorsPage() {
   return (
     <main className="bg-white">
-      <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] lg:min-h-0 lg:px-0">
+      <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">
         <div className="relative z-0">
           <section className="pb-4 md:pb-6 lg:pb-8 xl:pb-10">
             <div className="w-full pt-3 pb-6 md:pt-5 md:pb-10 lg:pb-2 xl:pb-3">

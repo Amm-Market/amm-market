@@ -4,6 +4,7 @@ import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import LeverageGlanceShowcaseSection from "@/components/leverage-glance-showcase-section"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
+import TradeMarketShowcase from "@/components/trade-market-showcase"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
@@ -140,7 +141,7 @@ export const metadata: Metadata = {
 export default function TradePage() {
   return (
     <main className="bg-white">
-      <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] lg:min-h-0 lg:px-0">
+      <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">
         <div className="relative z-0">
           <section className="pb-4 md:pb-6 lg:pb-8 xl:pb-10">
             <div className="w-full pt-3 pb-6 md:pt-5 md:pb-10 lg:pb-2 xl:pb-3">
@@ -201,28 +202,8 @@ export default function TradePage() {
         </div>
       </section>
 
-      <section className="deferred-viewport-tall bg-white py-8 md:py-10 2xl:py-12">
-        <div className="site-content-shell">
-          <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="rose">What&apos;s new</SectionEyebrow>
-            <SectionTitle className="max-w-[16ch] md:max-w-none md:whitespace-nowrap">
-              Trade 250+ markets.
-            </SectionTitle>
-          </div>
-
-          <div className="mt-[-1rem] md:mt-[-1.5rem]">
-            <article className="relative mx-auto h-[280px] w-full max-w-[84rem] sm:h-[380px] md:h-[400px] md:max-w-[70rem] lg:h-[460px] lg:max-w-[78rem]">
-              <Image
-                src="/images/trade-leverage-section-trimmed.png"
-                alt="Leverage dashboard"
-                fill
-                className="object-contain object-center"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 94vw, 78rem"
-              />
-            </article>
-
-          </div>
-        </div>
+      <section className="deferred-viewport-tall bg-white">
+        <TradeMarketShowcase />
       </section>
 
       <section className="deferred-viewport bg-white py-12 md:py-16 2xl:py-14">
