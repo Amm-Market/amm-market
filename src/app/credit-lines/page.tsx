@@ -88,25 +88,25 @@ const safetyFeatures = [
 
 const creditLinesWorkflowSteps = [
   {
-    title: "Credit line overview.",
+    title: "$250K",
     description:
-      "See health, debt, accrued fees, and risk exposure without switching screens.",
+      "Hold at least $250K in Liquidity Pools to qualify and enter the review process with your application.",
     accent: "text-[#111111]",
     icon: Coins,
   },
   {
-    title: "Smart automation",
+    title: "$100K",
     description:
-      "Alerts and auto-actions that respond to market conditions while you stay in control.",
-    accent: "text-[#111111]",
-    icon: Infinity,
-  },
-  {
-    title: "Frictionless execution",
-    description:
-      "Every screen is designed around active AMM positions, not generic token lending.",
+      "Your initial borrow must be at least $100K to qualify and enter the review process with your application.",
     accent: "text-[#111111]",
     icon: Landmark,
+  },
+  {
+    title: "3+ Month",
+    description:
+      "Keep the facility active for at least 3 months to qualify and enter the review process with your application.",
+    accent: "text-[#111111]",
+    icon: Infinity,
   },
 ] as const
 
@@ -260,8 +260,8 @@ export default function CreditLinesPage() {
 
             <section>
               <div className="space-y-4 text-left">
-                <SectionEyebrow tone="violet">How it works</SectionEyebrow>
-                <SectionTitle>Business credit lines, simplified.</SectionTitle>
+                <SectionEyebrow tone="violet">Minimum eligibility</SectionEyebrow>
+                <SectionTitle>Find out if you qualify.</SectionTitle>
               </div>
 
               <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
@@ -278,9 +278,14 @@ export default function CreditLinesPage() {
             </section>
 
             <ProductFeatureScrollSection
-              eyebrow="Financing"
+              eyebrow="DAO loans"
               eyebrowTone="violet"
-              title="Flexible credit, one interface."
+              title={
+                <>
+                  <span className="block">Funding to move</span>
+                  <span className="block">you forward, faster.</span>
+                </>
+              }
               items={financingFeatures}
               panels={[
                 /* 01 Flexible settlement — multi-venue credit card UI */
