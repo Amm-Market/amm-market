@@ -20,8 +20,8 @@ interface DesktopMenuGroup {
 const desktopMenus: readonly DesktopMenuGroup[] = [
   {
     id: "individuals",
-    label: "Individuals",
-    eyebrow: "Explore Individuals",
+    label: "Personal",
+    eyebrow: "Explore Personal",
     items: [
       { href: siteRoutes.borrow, label: "Borrow" },
       { href: siteRoutes.invest, label: "Invest" },
@@ -48,8 +48,8 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
   },
   {
     id: "businesses",
-    label: "Businesses",
-    eyebrow: "Explore Businesses",
+    label: "Business",
+    eyebrow: "Explore Business",
     items: [
       { href: siteRoutes.creditLines, label: "Credit Lines" },
       { href: siteRoutes.liquidators, label: "Liquidators" },
