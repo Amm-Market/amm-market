@@ -50,6 +50,8 @@ const topAction: MenuItem = {
   action: "copy-markdown",
 }
 
+const TopActionIcon = topAction.icon ?? Copy
+
 const aiItems: MenuItem[] = [
   {
     title: "Open in ChatGPT",
@@ -258,7 +260,7 @@ export function LlmExportMenu({ className }: LlmExportMenuProps) {
                 className="flex w-full items-start gap-1.25 rounded-[10px] px-[5px] py-[2px] text-left transition hover:bg-slate-50"
               >
                 <span className="mt-0.5 flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-[7px] border border-slate-200 bg-white text-slate-500">
-                  <topAction.icon className="h-[9px] w-[9px]" />
+                  <TopActionIcon className="h-[9px] w-[9px]" />
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="type-supporting block text-[0.79rem] font-semibold leading-[1.1rem] text-slate-900">
