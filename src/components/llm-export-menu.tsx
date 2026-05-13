@@ -207,11 +207,6 @@ export function LlmExportMenu({ className }: LlmExportMenuProps) {
     setIsOpen(false)
   }
 
-  const handleOpenSite = (href: string) => {
-    window.open(href, "_blank", "noopener,noreferrer")
-    setIsOpen(false)
-  }
-
   const handleAction = (action: MenuAction) => {
     switch (action) {
       case "copy-markdown":
