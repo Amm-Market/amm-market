@@ -203,21 +203,35 @@ export default function CreditLinesPage() {
 
       <section className="bg-white py-12 md:py-16 lg:py-20">
         <div className="site-content-shell">
-          <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-18">
-            <div className="max-w-[33rem] pt-2 lg:pt-6">
+          <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:grid-rows-[auto_auto] lg:gap-18">
+            <div className="max-w-[33rem] pt-2 lg:col-start-1 lg:row-start-1 lg:pt-6">
               <SectionEyebrow tone="violet">
                 Working capital
               </SectionEyebrow>
-              <SectionTitle className="mt-5 max-w-[13ch] text-[#111111] lg:max-w-[11ch]">
-                <span className="block">Access credit when</span>
-                <span className="block">opportunity calls.</span>
+              <SectionTitle className="mt-5 max-w-none !text-[clamp(2rem,8.5vw,4.4rem)] !leading-[0.96] text-[#111111] lg:!text-[3.5rem]">
+                <span className="block whitespace-nowrap">Access capital when</span>
+                <span className="block whitespace-nowrap">opportunity calls.</span>
               </SectionTitle>
 
               <p className="mt-7 max-w-[28rem] text-[0.98rem] leading-[1.62] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
                 Quick access to business financing. Use your credit line to borrow against active positions, then repay automatically as future sales and cash flow come in.
               </p>
+            </div>
 
-              <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center">
+            <div className="relative order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:order-none lg:pt-1">
+              <div className="relative aspect-[1.18/1] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:rounded-[32px]">
+                <Image
+                  src="/images/leverage-hero-placeholder.webp"
+                  alt="Person holding a smartphone showing a finance app"
+                  fill
+                  className="object-cover object-[55%_42%]"
+                  sizes="(max-width: 1024px) 100vw, 54vw"
+                />
+              </div>
+            </div>
+
+            <div className="order-3 max-w-[33rem] pt-10 lg:col-start-1 lg:row-start-2 lg:order-none lg:pt-0">
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
                 <button
                   type="button"
                   className="inline-flex h-[4.15rem] items-center justify-center rounded-full bg-black px-10 text-[1.02rem] font-semibold tracking-[-0.02em] text-white transition-transform hover:-translate-y-0.5 hover:bg-neutral-900"
@@ -231,19 +245,6 @@ export default function CreditLinesPage() {
                   </a>
                   .
                 </p>
-              </div>
-            </div>
-
-            <div className="relative lg:pt-1">
-              <div className="overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:rounded-[32px]">
-                <Image
-                  src="/images/leverage-hero-placeholder.webp"
-                  alt="Person holding a smartphone showing a finance app"
-                  width={1024}
-                  height={768}
-                  className="h-auto w-full object-contain"
-                  sizes="(max-width: 1024px) 100vw, 54vw"
-                />
               </div>
             </div>
           </div>
