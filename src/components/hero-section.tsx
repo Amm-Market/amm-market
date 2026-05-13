@@ -1006,7 +1006,8 @@ export default function HeroSection() {
         </LazySection>
 
         <LazySection minHeight="660px" fallback={<SectionSkeleton minHeight="660px" />}>
-          <div>
+          <div className="relative overflow-hidden border border-[#d7dce5] bg-white px-6 py-8 md:px-8 md:py-10">
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#0067b8] via-[#7aa7d9] to-[#dbe5f1]" />
               <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
                 <div className="space-y-4">
                   <SectionEyebrow tone="slate">Built on Aave v4</SectionEyebrow>
