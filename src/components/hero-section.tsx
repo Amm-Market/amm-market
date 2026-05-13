@@ -4,6 +4,7 @@ import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSecti
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
+import { TokenLogo } from "@/components/token-logo"
 
 function SectionSkeleton({
   lines = 3,
@@ -109,24 +110,6 @@ function PoolCard({ pool }: { pool: HomepagePool }) {
         </div>
       </div>
     </div>
-  )
-}
-
-function TokenLogo({ src, className = "" }: { src: string; className?: string }) {
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={src}
-      alt=""
-      aria-hidden="true"
-      loading="lazy"
-      decoding="async"
-      className={`h-7 w-7 shrink-0 rounded-none object-contain ${className}`}
-      onError={(event) => {
-        const target = event.currentTarget
-        target.src = "https://coin-logos.simplr.sh/images/ethereum/standard.png"
-      }}
-    />
   )
 }
 
