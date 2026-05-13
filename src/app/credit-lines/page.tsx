@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import type { LucideIcon } from "lucide-react"
-import { Droplets, Scale, ShieldCheck } from "lucide-react"
+import { Coins, Infinity, Landmark } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import PlatformToolsShowcaseSection from "@/components/platform-tools-showcase-section"
@@ -92,33 +92,31 @@ const creditLinesWorkflowSteps = [
     title: "Credit line overview.",
     description:
       "See health, debt, accrued fees, and risk exposure without switching screens.",
-    accent: "bg-violet-100/80 text-violet-600",
-    icon: Scale,
+    accent: "text-[#111111]",
+    icon: Coins,
   },
   {
     title: "Smart automation",
     description:
       "Alerts and auto-actions that respond to market conditions while you stay in control.",
-    accent: "bg-sky-100/80 text-sky-600",
-    icon: Droplets,
+    accent: "text-[#111111]",
+    icon: Infinity,
   },
   {
     title: "Frictionless execution",
     description:
       "Every screen is designed around active AMM positions, not generic token lending.",
-    accent: "bg-emerald-100/80 text-emerald-600",
-    icon: ShieldCheck,
+    accent: "text-[#111111]",
+    icon: Landmark,
   },
 ] as const
 
 function WorkflowStepCard({
-  index,
   title,
   description,
   accent,
   icon,
 }: {
-  index: number
   title: string
   description: string
   accent: string
@@ -127,27 +125,18 @@ function WorkflowStepCard({
   const Icon = icon
 
   return (
-    <div className="relative flex flex-1 flex-col">
-      <article className="relative flex h-full flex-col rounded-[1.6rem] border border-gray-200 bg-white p-6 transition-all duration-200 hover:border-gray-300 hover:shadow-[0_2px_20px_rgba(0,0,0,0.04)] md:p-8">
-        {/* Step number + icon row */}
-        <div className="flex items-center justify-between">
-          <span className="text-[2.8rem] font-medium leading-none tracking-[-0.05em] text-gray-200 md:text-[3.2rem]">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <div className={`flex h-12 w-12 items-center justify-center rounded-[14px] ${accent}`}>
-            <Icon className="h-5 w-5" strokeWidth={1.8} />
-          </div>
-        </div>
+    <article className="relative flex min-h-[15.5rem] flex-1 flex-col rounded-[1.75rem] bg-[#f7f7f5] p-5 md:min-h-[16rem] md:p-6">
+      <div className={`flex h-8 w-8 items-center justify-center ${accent}`}>
+        <Icon className="h-8 w-8" strokeWidth={1.85} />
+      </div>
 
-        {/* Content */}
-        <h3 className="mt-6 text-lg font-semibold tracking-[-0.02em] text-[#18323c] md:text-xl">
+      <h3 className="mt-7 text-[1.45rem] font-medium leading-[1.06] tracking-[-0.04em] text-[#111111] md:mt-8 md:text-[1.8rem]">
           {title}
         </h3>
-        <p className="mt-3 text-sm leading-relaxed text-gray-600 md:text-[0.94rem] md:leading-[1.7]">
+      <p className="mt-3.5 max-w-[22rem] text-[0.96rem] leading-[1.62] text-[#5f6b77] md:text-[1rem]">
           {description}
         </p>
-      </article>
-    </div>
+    </article>
   )
 }
 
@@ -229,17 +218,12 @@ export default function CreditLinesPage() {
               <div className="space-y-4 text-left">
                 <SectionEyebrow tone="violet">How it works</SectionEyebrow>
                 <SectionTitle>Business credit lines, simplified.</SectionTitle>
-                <p className="max-w-[40rem] text-[1.02rem] leading-[1.72] text-[#5f6f84] md:text-[1.08rem]">
-                  Deposit LP positions, see your borrowing power, and unlock liquidity while
-                  fees keep accruing. Limits, health, and automation stay in one place.
-                </p>
               </div>
 
-              <div className="mt-10 flex flex-col gap-5 md:mt-14 lg:flex-row lg:gap-6">
-                {creditLinesWorkflowSteps.map((step, i) => (
+              <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
+                {creditLinesWorkflowSteps.map((step) => (
                   <WorkflowStepCard
                     key={step.title}
-                    index={i}
                     title={step.title}
                     description={step.description}
                     accent={step.accent}
