@@ -33,6 +33,48 @@ function SectionSkeleton({
   )
 }
 
+function repeatItems<T>(items: T[], count: number, offset: number) {
+  if (items.length === 0) return []
+
+  const output: T[] = []
+  for (let i = 0; i < count; i += 1) {
+    output.push(items[(offset + i) % items.length])
+  }
+  return output
+}
+
+const poolTokenLogoUrls: Record<string, string> = {
+  AAVE: "https://coin-logos.simplr.sh/images/aave/standard.png",
+  AERO: "https://coin-logos.simplr.sh/images/aerodrome-finance/standard.png",
+  ARB: "https://coin-logos.simplr.sh/images/arbitrum/standard.png",
+  COMP: "https://coin-logos.simplr.sh/images/compound-governance-token/standard.png",
+  CRV: "https://coin-logos.simplr.sh/images/curve-dao-token/standard.png",
+  DAI: "https://coin-logos.simplr.sh/images/dai/standard.png",
+  ETH: "https://coin-logos.simplr.sh/images/ethereum/standard.png",
+  FRAX: "https://coin-logos.simplr.sh/images/frax/standard.png",
+  GRT: "https://coin-logos.simplr.sh/images/the-graph/standard.png",
+  LDO: "https://coin-logos.simplr.sh/images/lido-dao/standard.png",
+  LINK: "https://coin-logos.simplr.sh/images/chainlink/standard.png",
+  MATIC: "https://coin-logos.simplr.sh/images/matic-network/standard.png",
+  MKR: "https://coin-logos.simplr.sh/images/maker/standard.png",
+  OP: "https://coin-logos.simplr.sh/images/optimism/standard.png",
+  rETH: "https://coin-logos.simplr.sh/images/rocket-pool-eth/standard.png",
+  RPL: "https://coin-logos.simplr.sh/images/rocket-pool/standard.png",
+  SNX: "https://coin-logos.simplr.sh/images/synthetix-network-token/standard.png",
+  stETH: "https://coin-logos.simplr.sh/images/staked-ether/standard.png",
+  USDC: "https://coin-logos.simplr.sh/images/usd-coin/standard.png",
+  USDT: "https://coin-logos.simplr.sh/images/tether/standard.png",
+  UNI: "https://coin-logos.simplr.sh/images/uniswap/standard.png",
+  WBTC: "https://coin-logos.simplr.sh/images/wrapped-bitcoin/standard.png",
+  WETH: "https://coin-logos.simplr.sh/images/weth/standard.png",
+  cbETH: "https://coin-logos.simplr.sh/images/coinbase-wrapped-staked-eth/standard.png",
+  wstETH: "https://coin-logos.simplr.sh/images/wrapped-steth/standard.png",
+}
+
+function getPoolTokenLogo(symbol: string) {
+  return poolTokenLogoUrls[symbol] ?? `https://coin-logos.simplr.sh/images/${symbol.toLowerCase()}/standard.png`
+}
+
 const DeferredTestimonialSection = dynamic(() => import("@/components/homepage/HomepageTestimonialSection"), {
   loading: () => <SectionSkeleton minHeight="360px" />,
 })
@@ -49,70 +91,127 @@ const DeferredHomepageFaqSection = dynamic(() => import("@/components/homepage/H
  */
 function PoolCard({ pool }: { pool: HomepagePool }) {
   return (
-    <div className="flex-shrink-0 box-border flex flex-row items-center justify-center gap-3 no-underline bg-white hover:bg-gray-50 rounded-lg border border-solid border-gray-200 h-[66px] shadow-sm hover:shadow-md transition duration-150 ease-out px-3 py-2.5">
-      <div className="flex flex-col items-start justify-center gap-0.5">
-        <div className="flex flex-row items-center gap-1.5">
-          <div className="relative flex items-center flex-shrink-0">
-            <div
-              className="w-6 h-6 rounded-full border-2 border-white z-10"
-              style={{ backgroundColor: pool.token0.color }}
-            />
-            <div
-              className="w-6 h-6 rounded-full border-2 border-white -ml-2"
-              style={{ backgroundColor: pool.token1.color }}
-            />
-          </div>
-          <span className="whitespace-nowrap">
-            <span className="mr-1 text-gray-900 text-sm font-medium">{pool.token0.symbol} / {pool.token1.symbol}</span>
-            <span className="text-gray-500 text-sm">{pool.dex}</span>
+    <div className="flex h-[58px] flex-shrink-0 items-center gap-2.5 rounded-full border border-[#d8e1ef] bg-white px-3.5 shadow-[0_2px_10px_rgba(15,23,42,0.03)] transition duration-150 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(15,23,42,0.06)]">
+      <div className="relative flex items-center shrink-0">
+        <TokenLogo src={getPoolTokenLogo(pool.token0.symbol)} className="z-10" />
+        <TokenLogo src={getPoolTokenLogo(pool.token1.symbol)} className="-ml-2" />
+      </div>
+      <div className="min-w-0">
+        <div className="flex items-baseline gap-1.5 whitespace-nowrap">
+          <span className="text-[0.88rem] font-semibold tracking-[-0.02em] text-[#18323c]">
+            {pool.token0.symbol} / {pool.token1.symbol}
           </span>
+          <span className="text-[0.8rem] text-[#6b7280]">{pool.dex}</span>
         </div>
-        <div className="flex flex-row items-center gap-1">
-          <span className="text-gray-600 text-sm">TVL</span>
-          <span className="text-gray-900 text-sm font-medium">{pool.tvl}</span>
+        <div className="mt-0.5 flex items-center gap-1.5">
+          <span className="text-[0.72rem] font-medium uppercase tracking-[0.12em] text-[#8a97a6]">TVL</span>
+          <span className="text-[0.76rem] font-semibold text-[#18323c]">{pool.tvl}</span>
         </div>
       </div>
     </div>
   )
 }
 
+function TokenLogo({ src, className = "" }: { src: string; className?: string }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+      className={`h-7 w-7 shrink-0 rounded-none object-contain ${className}`}
+      onError={(event) => {
+        const target = event.currentTarget
+        target.src = "https://coin-logos.simplr.sh/images/ethereum/standard.png"
+      }}
+    />
+  )
+}
+
 const lendingCoverageAssets = [
   {
-    symbol: "BTC",
-    name: "Bitcoin",
-    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bitcoin/info/logo.png",
+    symbol: "USDC",
+    name: "USD Coin",
+    logo: "https://coin-logos.simplr.sh/images/usd-coin/standard.png",
   },
   {
-    symbol: "ETH",
-    name: "Ethereum",
-    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/info/logo.png",
+    symbol: "USDT",
+    name: "Tether",
+    logo: "https://coin-logos.simplr.sh/images/tether/standard.png",
   },
   {
-    symbol: "SOL",
-    name: "Solana",
-    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/solana/info/logo.png",
+    symbol: "DAI",
+    name: "Dai",
+    logo: "https://coin-logos.simplr.sh/images/dai/standard.png",
   },
   {
-    symbol: "TON",
-    name: "The Open Network",
-    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ton/info/logo.png",
+    symbol: "WETH",
+    name: "Wrapped Ether",
+    logo: "https://coin-logos.simplr.sh/images/weth/standard.png",
   },
   {
-    symbol: "XRP",
-    name: "XRP",
-    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/xrp/info/logo.png",
+    symbol: "WBTC",
+    name: "Wrapped Bitcoin",
+    logo: "https://coin-logos.simplr.sh/images/wrapped-bitcoin/standard.png",
   },
   {
-    symbol: "APE",
-    name: "ApeCoin",
-    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4d224452801aced8b2f0aebe155379bb5d594381b/logo.png",
+    symbol: "crvUSD",
+    name: "Curve USD",
+    logo: "https://coin-logos.simplr.sh/images/crvusd/standard.png",
+  },
+  {
+    symbol: "GHO",
+    name: "GHO",
+    logo: "https://coin-logos.simplr.sh/images/gho/standard.png",
+  },
+  {
+    symbol: "stETH",
+    name: "stETH",
+    logo: "https://coin-logos.simplr.sh/images/staked-ether/standard.png",
+  },
+  {
+    symbol: "wstETH",
+    name: "wstETH",
+    logo: "https://coin-logos.simplr.sh/images/wrapped-steth/standard.png",
+  },
+  {
+    symbol: "rETH",
+    name: "rETH",
+    logo: "https://coin-logos.simplr.sh/images/rocket-pool-eth/standard.png",
+  },
+  {
+    symbol: "cbETH",
+    name: "cbETH",
+    logo: "https://coin-logos.simplr.sh/images/coinbase-wrapped-staked-eth/standard.png",
+  },
+  {
+    symbol: "AAVE",
+    name: "Aave",
+    logo: "https://coin-logos.simplr.sh/images/aave/standard.png",
+  },
+  {
+    symbol: "UNI",
+    name: "Uniswap",
+    logo: "https://coin-logos.simplr.sh/images/uniswap/standard.png",
+  },
+  {
+    symbol: "CRV",
+    name: "Curve DAO",
+    logo: "https://coin-logos.simplr.sh/images/curve-dao-token/standard.png",
+  },
+  {
+    symbol: "LDO",
+    name: "Lido DAO",
+    logo: "https://coin-logos.simplr.sh/images/lido-dao/standard.png",
   },
 ] as const
 
 const lendingCoverageTableRows = [
   {
-    pair: "BTC",
-    name: "Bitcoin",
+    pair: "USDC",
+    name: "USD Coin",
     logo: lendingCoverageAssets[0].logo,
     price: "4.82",
     suffix: "% APY",
@@ -120,8 +219,8 @@ const lendingCoverageTableRows = [
     positive: false,
   },
   {
-    pair: "ETH",
-    name: "Ethereum",
+    pair: "USDT",
+    name: "Tether",
     logo: lendingCoverageAssets[1].logo,
     price: "3.94",
     suffix: "% APY",
@@ -129,17 +228,17 @@ const lendingCoverageTableRows = [
     positive: false,
   },
   {
-    pair: "AAVE",
-    name: "Aave",
-    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9/logo.png",
+    pair: "DAI",
+    name: "Dai",
+    logo: lendingCoverageAssets[2].logo,
     price: "6.36",
     suffix: "% APY",
     change: "+6.36%",
     positive: true,
   },
   {
-    pair: "TON",
-    name: "The Open Network",
+    pair: "WETH",
+    name: "Wrapped Ether",
     logo: lendingCoverageAssets[3].logo,
     price: "5.28",
     suffix: "% APY",
@@ -147,9 +246,9 @@ const lendingCoverageTableRows = [
     positive: true,
   },
   {
-    pair: "SOL",
-    name: "Solana",
-    logo: lendingCoverageAssets[2].logo,
+    pair: "WBTC",
+    name: "Wrapped Bitcoin",
+    logo: lendingCoverageAssets[4].logo,
     price: "4.15",
     suffix: "% APY",
     change: "+3.52%",
@@ -159,56 +258,57 @@ const lendingCoverageTableRows = [
 
 const lendingCoverageGainersRows = [
   {
-    pair: "B3",
-    logo: "https://b3.fun/favicon.ico",
-    price: "8.42% APY",
+    pair: "crvUSD",
+    logo: lendingCoverageAssets[5].logo,
+    price: "6.12% APY",
     change: "+1.38% 24h",
     positive: true,
   },
   {
-    pair: "IO",
-    logo: "https://io.net/favicon.ico",
-    price: "6.15% APY",
+    pair: "GHO",
+    logo: lendingCoverageAssets[6].logo,
+    price: "5.74% APY",
     change: "+0.97% 24h",
+    positive: true,
+  },
+  {
+    pair: "stETH",
+    logo: lendingCoverageAssets[7].logo,
+    price: "4.93% APY",
+    change: "+0.68% 24h",
     positive: true,
   },
 ] as const
 
 const lendingCoverageListingsRows = [
   {
-    pair: "APE",
-    logo: lendingCoverageAssets[5].logo,
+    pair: "wstETH",
+    logo: lendingCoverageAssets[8].logo,
     price: "4.08% APY",
     change: "-0.24% 24h",
     positive: false,
   },
   {
-    pair: "ETC",
-    logo: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereumclassic/info/logo.png",
+    pair: "cbETH",
+    logo: lendingCoverageAssets[9].logo,
     price: "3.84% APY",
     change: "+0.17% 24h",
     positive: true,
   },
+  {
+    pair: "rETH",
+    logo: lendingCoverageAssets[10].logo,
+    price: "4.25% APY",
+    change: "+0.31% 24h",
+    positive: true,
+  },
 ] as const
-
-function TokenLogo({ src, alt }: { src: string; alt: string }) {
-  return (
-    <img
-      src={src}
-      alt={alt}
-      width={40}
-      height={40}
-      loading="lazy"
-      className="h-8 w-8 rounded-full bg-white object-contain p-1 ring-1 ring-[#d9e2ef]"
-    />
-  )
-}
 
 function MarketTableRow({ row }: { row: (typeof lendingCoverageTableRows)[number] }) {
   return (
     <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-[4px] bg-white/85 px-3 py-3 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.85fr)_auto] md:px-4">
       <div className="flex min-w-0 items-center gap-3">
-        <TokenLogo src={row.logo} alt={`${row.name} logo`} />
+        <TokenLogo src={row.logo} />
         <div className="min-w-0">
           <p className="truncate text-sm font-semibold text-[#182036]">{row.pair}</p>
           <p className="truncate text-xs text-[#667085]">{row.name}</p>
@@ -238,7 +338,7 @@ function CompactMarketRow({
   return (
     <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-[4px] bg-white/85 px-3 py-3">
       <div className="flex min-w-0 items-center gap-3">
-        <TokenLogo src={row.logo} alt={`${row.pair} logo`} />
+        <TokenLogo src={row.logo} />
         <p className="truncate text-sm font-semibold text-[#182036]">{row.pair}</p>
       </div>
       <div className="grid justify-items-end gap-1 text-right">
@@ -332,47 +432,27 @@ export default function HeroSection() {
           </div>
             </div>
 
-            <div className="w-full flex flex-col gap-4 overflow-hidden py-6 [mask-image:linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)]">
-              <div className="flex overflow-hidden">
-                <div className="flex gap-4 animate-scroll-left">
-                  {homepagePools.slice(0, 6).map((pool, index) => (
-                    <PoolCard key={`r1-a-${index}`} pool={pool} />
-                  ))}
-                  {homepagePools.slice(0, 6).map((pool, index) => (
-                    <PoolCard key={`r1-b-${index}`} pool={pool} />
-                  ))}
+            <div className="w-full space-y-2 overflow-hidden py-5 [mask-image:linear-gradient(to_right,transparent_0%,black_11%,black_89%,transparent_100%)]">
+              {[
+                { items: repeatItems(homepagePools, 12, 0), motion: "animate-scroll-left", duration: "62s" },
+                { items: repeatItems(homepagePools, 12, 6), motion: "animate-scroll-right", duration: "70s" },
+                { items: repeatItems(homepagePools, 12, 12), motion: "animate-scroll-left-slow", duration: "78s" },
+                { items: repeatItems(homepagePools, 12, 18), motion: "animate-scroll-right-slow", duration: "86s" },
+              ].map((row, rowIndex) => (
+                <div key={rowIndex} className="overflow-hidden">
+                  <div
+                    className={`flex w-max items-center gap-3 ${row.motion}`}
+                    style={{ animationDuration: row.duration }}
+                  >
+                    {row.items.map((pool, index) => (
+                      <PoolCard key={`row-${rowIndex}-${index}-a`} pool={pool} />
+                    ))}
+                    {row.items.map((pool, index) => (
+                      <PoolCard key={`row-${rowIndex}-${index}-b`} pool={pool} />
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div className="flex overflow-hidden">
-                <div className="flex gap-4 animate-scroll-right">
-                  {homepagePools.slice(6, 12).map((pool, index) => (
-                    <PoolCard key={`r2-a-${index}`} pool={pool} />
-                  ))}
-                  {homepagePools.slice(6, 12).map((pool, index) => (
-                    <PoolCard key={`r2-b-${index}`} pool={pool} />
-                  ))}
-                </div>
-              </div>
-              <div className="flex overflow-hidden">
-                <div className="flex gap-4 animate-scroll-left-slow">
-                  {homepagePools.slice(12, 18).map((pool, index) => (
-                    <PoolCard key={`r3-a-${index}`} pool={pool} />
-                  ))}
-                  {homepagePools.slice(12, 18).map((pool, index) => (
-                    <PoolCard key={`r3-b-${index}`} pool={pool} />
-                  ))}
-                </div>
-              </div>
-              <div className="flex overflow-hidden">
-                <div className="flex gap-4 animate-scroll-right-slow">
-                  {homepagePools.slice(18, 24).map((pool, index) => (
-                    <PoolCard key={`r4-a-${index}`} pool={pool} />
-                  ))}
-                  {homepagePools.slice(18, 24).map((pool, index) => (
-                    <PoolCard key={`r4-b-${index}`} pool={pool} />
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
 
             <div className="inline-flex max-w-[920px] items-start gap-3 border-l-2 border-[#c6d8eb] bg-[#f8fbff] px-4 py-3 text-[0.82rem] leading-6 tracking-[-0.01em] text-[#5f6f82] md:text-sm">
