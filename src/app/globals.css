@@ -1355,6 +1355,13 @@
   }
 }
 
+@media (min-width: 1536px) {
+  .site-content-shell,
+  .site-content-width {
+    max-width: 72rem;
+  }
+}
+
 @keyframes scroll-left {
   0% {
     transform: translateX(0);
