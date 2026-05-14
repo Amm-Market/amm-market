@@ -187,7 +187,7 @@ export default function DevelopersPage() {
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <Link
               href="/developers/introduction/key-concepts"
-              className="inline-flex items-center gap-2 font-medium text-blue-600 transition hover:text-blue-700 hover:underline"
+              className="inline-flex items-center gap-2 font-medium text-[#01AACF] transition hover:opacity-80 hover:underline"
             >
               Start with Key Concepts
               <ArrowRight className="h-4 w-4" />
@@ -211,7 +211,7 @@ export default function DevelopersPage() {
           <div className="grid gap-4 md:grid-cols-2">
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 text-[#01AACF]">
                   <BookOpen className="h-5 w-5" />
                 </div>
                 <h3 className="text-lg font-semibold text-slate-950">Protocol thesis</h3>
@@ -225,7 +225,7 @@ export default function DevelopersPage() {
 
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 text-[#01AACF]">
                   <ArrowRight className="h-5 w-5" />
                 </div>
                 <h3 className="text-lg font-semibold text-slate-950">How to read these docs</h3>
@@ -250,7 +250,7 @@ export default function DevelopersPage() {
             <ol className="divide-y divide-slate-200">
               {flowSteps.map(({ step, title, description }) => (
                 <li key={step} className="flex gap-4 px-6 py-6 sm:px-8">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-sm font-semibold text-blue-700">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-sm font-semibold text-[#01AACF]">
                     {step}
                   </div>
                   <div className="min-w-0">
@@ -273,7 +273,7 @@ export default function DevelopersPage() {
             <ul className="space-y-5">
               {collateralHighlights.map(({ icon: Icon, title, description }) => (
                 <li key={title} className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan-50 text-[#01AACF]">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -296,7 +296,7 @@ export default function DevelopersPage() {
             <div className="grid gap-4 lg:grid-cols-3">
               {architectureBlocks.map(({ icon: Icon, title, description }) => (
                 <div key={title} className="rounded-xl border border-slate-200 bg-white p-5">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 text-[#01AACF]">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="mt-4 text-lg font-semibold text-slate-950">{title}</h3>
@@ -325,7 +325,7 @@ export default function DevelopersPage() {
               <ul className="mt-4 space-y-3 text-sm text-slate-600">
                 {scopeFocus.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-2 h-2 w-2 rounded-full bg-blue-500" />
+                    <span className="mt-2 h-2 w-2 rounded-full bg-[#01AACF]" />
                     <span className="leading-6">{item}</span>
                   </li>
                 ))}
@@ -355,7 +355,7 @@ export default function DevelopersPage() {
           <div className="grid gap-4 md:grid-cols-3">
             {nextStepGroups.map((group) => (
               <div key={group.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#01AACF]">
                   {group.title}
                 </h3>
                 <ul className="mt-4 space-y-4">
@@ -363,7 +363,7 @@ export default function DevelopersPage() {
                     <li key={href}>
                       <Link
                         href={href}
-                        className="group inline-flex items-center gap-2 text-sm font-medium text-blue-600 transition hover:text-blue-700 hover:underline"
+                        className="group inline-flex items-center gap-2 text-sm font-medium text-[#01AACF] transition hover:opacity-80 hover:underline"
                       >
                         {label}
                         <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />

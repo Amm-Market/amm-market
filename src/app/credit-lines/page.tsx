@@ -7,6 +7,7 @@ import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSecti
 import PlatformToolsShowcaseSection from "@/components/platform-tools-showcase-section"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
 export const metadata: Metadata = {
   title: "Credit Lines - Avana",
@@ -200,8 +201,12 @@ export default function CreditLinesPage() {
           <div className="mx-auto w-full max-w-[90rem] space-y-10 md:space-y-12 lg:space-y-14">
               <div className="pt-20 md:pt-28 lg:pt-32">
                 <h1 className="text-left text-[clamp(2.4rem,5.8vw,4.3rem)] font-normal leading-[0.98] tracking-[-0.065em] text-[#111111]">
-                  <span className="block">Secure credit lines now,</span>
-                  <span className="block">Repay from future revenues.</span>
+                  <span className="block">
+                    Secure <span className="bg-gradient-to-r from-[#01AACF] via-[#0057ff] to-[#67d8ff] bg-clip-text text-transparent">credit lines</span> now,
+                  </span>
+                  <span className="block">
+                    Repay from <span className="bg-gradient-to-r from-[#01AACF] via-[#0057ff] to-[#67d8ff] bg-clip-text text-transparent">future revenues</span>.
+                  </span>
                 </h1>
               </div>
 
@@ -230,8 +235,8 @@ export default function CreditLinesPage() {
                 Working capital
               </SectionEyebrow>
               <SectionTitle className="mt-5 max-w-none !text-[clamp(2rem,8.5vw,4.4rem)] !leading-[0.96] text-[#111111] lg:!text-[3.5rem]">
-                <span className="block whitespace-nowrap">Access capital when</span>
-                <span className="block whitespace-nowrap">opportunity calls.</span>
+                <span className={`block whitespace-nowrap ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>Access capital when</span>
+                <span className={`block whitespace-nowrap ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>opportunity calls.</span>
               </SectionTitle>
 
               <p className="mt-7 max-w-[28rem] text-[0.98rem] leading-[1.62] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
@@ -302,8 +307,8 @@ export default function CreditLinesPage() {
               eyebrowTone="violet"
               title={
                 <>
-                  <span className="block">Funding to move</span>
-                  <span className="block">you forward, faster.</span>
+                  <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>Funding to move</span>
+                  <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>you forward, faster.</span>
                 </>
               }
               items={financingFeatures}
@@ -509,14 +514,16 @@ export default function CreditLinesPage() {
               <div className="relative z-10">
                 <div className="max-w-[600px] space-y-3">
                   <SectionEyebrow tone="violet">Credit line edge</SectionEyebrow>
-                  <SectionTitle>What makes Avana different for businesses.</SectionTitle>
+                  <SectionTitle>
+                    <span className={CYAN_HIGHLIGHT_TEXT_CLASS}>What makes Avana different for businesses.</span>
+                  </SectionTitle>
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-14 lg:grid-cols-4 lg:gap-5">
                   {creditLinesEdgeItems.map((item) => (
                     <article key={item.title} className="flex flex-col rounded-2xl bg-white/70 p-6 backdrop-blur-sm">
                       <div className="flex flex-col gap-0.5">
-                        <span className="text-[2.25rem] font-medium leading-[0.96] tracking-[-0.05em] text-violet-600">
+                        <span className={`text-[2.25rem] font-medium leading-[0.96] tracking-[-0.05em] ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>
                           {item.stat}
                         </span>
                         <span className="text-[0.78rem] font-medium uppercase tracking-[0.14em] text-violet-400">

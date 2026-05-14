@@ -5,7 +5,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
-import { SITE_NAME, WORDMARK_PATH, siteRoutes } from "@/lib/site"
+import { HEADER_WORDMARK_PATH, SITE_NAME, siteRoutes } from "@/lib/site"
+import HeaderMobileMenu from "@/components/header-mobile-menu"
 import {
   desktopMenuButtons,
   desktopUtilityLinks,
@@ -16,20 +17,11 @@ const DeferredHeaderDesktopMenuPanel = dynamic(
   () => import("@/components/header-desktop-menu-panel"),
   { ssr: false },
 )
-const DeferredHeaderMobileMenu = dynamic(
-  () => import("@/components/header-mobile-menu"),
-  { ssr: false },
-)
 
 let desktopMenuPanelPromise: Promise<unknown> | null = null
-let mobileMenuPromise: Promise<unknown> | null = null
 
 function warmDesktopMenuPanel() {
   desktopMenuPanelPromise ??= import("@/components/header-desktop-menu-panel")
-}
-
-function warmMobileMenu() {
-  mobileMenuPromise ??= import("@/components/header-mobile-menu")
 }
 
 function SandboxIcon() {
@@ -72,7 +64,7 @@ function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
   return (
     <span className="inline-flex items-center overflow-hidden">
       <Image
-        src={WORDMARK_PATH}
+        src={HEADER_WORDMARK_PATH}
         alt={`${SITE_NAME} logo`}
         width={3000}
         height={1500}
@@ -91,6 +83,23 @@ function isActivePath(pathname: string | null, href: string): boolean {
   return pathname === href || pathname?.startsWith(`${href}/`) === true
 }
 
+function MobileMenuToggleIcon({ open }: { open: boolean }) {
+  return (
+    <span className="relative block h-[18px] w-[26px]">
+      <span
+        className={`absolute left-0 top-[3px] h-[2.5px] w-full origin-center rounded-full bg-current transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          open ? "translate-y-[1px] scale-x-[0.94]" : ""
+        }`}
+      />
+      <span
+        className={`absolute left-0 bottom-[3px] h-[2.5px] w-full origin-center rounded-full bg-current transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          open ? "-translate-y-[1px] scale-x-[0.94]" : ""
+        }`}
+      />
+    </span>
+  )
+}
+
 /**
  * Header keeps the fully working desktop and mobile navigation behavior in one
  * client component so the premium hover and drawer interactions remain stable.
@@ -99,6 +108,7 @@ export default function Header(): React.JSX.Element {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileMenuMounted, setMobileMenuMounted] = useState(false)
+  const [mobileMenuAnimationCycle, setMobileMenuAnimationCycle] = useState(0)
   const [desktopMenuOpen, setDesktopMenuOpen] = useState<DesktopMenuId | null>(null)
   const [desktopMenuRendered, setDesktopMenuRendered] = useState<DesktopMenuId | null>(null)
   const [desktopMenuAnimationCycle, setDesktopMenuAnimationCycle] = useState(0)
@@ -213,7 +223,7 @@ export default function Header(): React.JSX.Element {
                   onFocus={() => openDesktopMenu(menu.id)}
                   onClick={() => openDesktopMenu(menu.id)}
                   className={`site-header-nav-link group relative inline-flex items-center px-0 py-1 text-[15px] font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${
-                    isActive || hasActiveRoute ? "text-black" : "text-black/62 hover:text-black/94"
+                    isActive || hasActiveRoute ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"
                   }`}
                 >
                   <span>{menu.label}</span>
@@ -233,11 +243,11 @@ export default function Header(): React.JSX.Element {
                 suppressHydrationWarning
                 className={`inline-flex items-center justify-center rounded-full px-3 py-1.5 text-xs font-medium transition-colors lg:px-3.5 lg:py-[0.45rem] ${
                   index === 0
-                    ? "border border-[#2F414B]/20 bg-white text-[#0F1518] hover:border-[#2F414B]/35 hover:bg-[#2F414B]/5"
-                    : "bg-[#0F1518] text-white hover:bg-[#2F414B]"
+                    ? "border border-[#01AACF] bg-white text-[#01AACF] hover:bg-[#01AACF]/10"
+                    : "border border-[#01AACF] bg-white text-[#01AACF] hover:bg-[#01AACF]/10"
                 }`}
               >
-                {link.label === "Try Demo" ? (
+                {link.label === "Try Sandbox" ? (
                   <span className="inline-flex items-center gap-1.5">
                     <SandboxIcon />
                     <span>{link.label}</span>
@@ -263,23 +273,17 @@ export default function Header(): React.JSX.Element {
               >
                 <button
                   type="button"
-                  className="inline-flex h-11 w-11 items-center justify-center text-[#0F1518] transition hover:text-[#2F414B]"
+                  className="inline-flex h-11 w-11 items-center justify-center text-[#01AACF] transition hover:text-[#01AACF]/80"
                   aria-label="Open menu"
                   aria-expanded={mobileMenuOpen}
                   aria-controls="mobile-site-nav"
-                  onTouchStart={warmMobileMenu}
-                  onMouseEnter={warmMobileMenu}
-                  onFocus={warmMobileMenu}
                   onClick={() => {
-                    warmMobileMenu()
                     setMobileMenuMounted(true)
                     setMobileMenuOpen(true)
+                    setMobileMenuAnimationCycle((current) => current + 1)
                   }}
                 >
-                  <svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
-                    <path d="M2 4H20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                    <path d="M2 10H20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                  </svg>
+                  <MobileMenuToggleIcon open={mobileMenuOpen} />
                 </button>
               </div>
             </div>
@@ -308,7 +312,8 @@ export default function Header(): React.JSX.Element {
       ) : null}
 
       {mobileMenuMounted ? (
-        <DeferredHeaderMobileMenu
+        <HeaderMobileMenu
+          key={mobileMenuAnimationCycle}
           open={mobileMenuOpen}
           pathname={clientPathname}
           brand={<BrandLogo mobileOnly />}

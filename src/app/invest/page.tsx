@@ -7,6 +7,7 @@ import InvestApySection from "@/components/invest-apy-section"
 import InvestGrowthCalculatorSection from "@/components/invest-growth-calculator-section"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 
 const pageDescription =
@@ -177,8 +178,8 @@ export default function InvestPage() {
               <div className="space-y-4 md:self-center">
                 <SectionEyebrow tone="emerald">Supply Markets</SectionEyebrow>
                 <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
-                  <span className="block">Lend into</span>
-                  <span className="block">LP-backed credit.</span>
+                  <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>Lend into</span>
+                  <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>LP-backed credit.</span>
                 </SectionTitle>
               </div>
               <div className="flex items-center justify-center pt-1 md:justify-end">
@@ -342,7 +343,7 @@ export default function InvestPage() {
                 <div className="absolute inset-0 flex items-center justify-center p-5">
                   <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
                     <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-3">
-                      <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.08em] text-gray-500"><span>Hub base</span><span>+ Spoke premium</span></div>
+                      <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.08em] text-[#01AACF]"><span>Hub base</span><span>+ Spoke premium</span></div>
                       <div className="mt-2 flex h-10 w-full overflow-hidden rounded-lg bg-white shadow-inner">
                         <div className="flex items-center justify-center bg-gray-200/90 text-sm font-semibold tabular-nums text-[#18323c]" style={{ width: "57%" }}>4.1%</div>
                         <div className="flex items-center justify-center bg-emerald-500 text-sm font-semibold tabular-nums text-white" style={{ width: "43%" }}>+3.1%</div>
