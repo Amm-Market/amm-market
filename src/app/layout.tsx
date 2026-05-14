@@ -11,12 +11,11 @@ import {
   DEFAULT_OG_DESCRIPTION,
   DEFAULT_OG_SUBTITLE,
   DEFAULT_SITE_DESCRIPTION,
-  LOGO_PATH,
   SITE_NAME,
   SITE_URL,
   SOCIAL_HANDLE,
-  siteRoutes,
 } from "@/lib/site"
+import { organizationSchema, serializeJsonLd, websiteSchema } from "@/lib/structured-data"
 
 /**
  * RootLayout - The main layout wrapper for the entire application.
@@ -126,44 +125,6 @@ export const viewport: Viewport = {
   themeColor: "#ffffff",
 }
 
-/**
- * JSON-LD structured data for organization
- * Helps search engines understand the organization behind the website
- */
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: SITE_NAME,
-  url: SITE_URL,
-  logo: `${SITE_URL}${LOGO_PATH}`,
-  description: "DeFi protocol enabling borrowing against LP positions on Aave v4",
-  sameAs: [
-    "https://twitter.com/dexmini",
-    "https://github.com/aave",
-    "https://t.me/dexmini",
-  ],
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "customer support",
-    url: `${SITE_URL}${siteRoutes.faq}`,
-  },
-}
-
-/**
- * JSON-LD structured data for the website
- */
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: SITE_NAME,
-  url: SITE_URL,
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${SITE_URL}/search?q={search_term_string}`,
-    "query-input": "required name=search_term_string",
-  },
-}
-
 const shouldRenderVercelInsights = process.env.VERCEL === "1" || Boolean(process.env.VERCEL_ENV)
 
 export default function RootLayout({
@@ -177,11 +138,11 @@ export default function RootLayout({
         {/* JSON-LD Structured Data for SEO */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(organizationSchema) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteSchema) }}
         />
       </head>
       <body className="bg-white font-sans">

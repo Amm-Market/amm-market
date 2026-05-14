@@ -49,11 +49,11 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
   {
     id: "businesses",
     label: "Business",
-    eyebrow: "Explore Business",
+    eyebrow: "Explore business",
     items: [
       { href: siteRoutes.creditLines, label: "Credit Lines" },
-      { href: siteRoutes.liquidators, label: "Liquidators" },
       { href: siteRoutes.appkit, label: "AppKit" },
+      { href: siteRoutes.liquidators, label: "Liquidators" },
     ],
     supportingTitle: "Partner surfaces",
     supportingItems: [
@@ -64,14 +64,14 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
           "Existing product surface for business credit lines and the primary place to explore the current workflow.",
       },
       {
-        href: siteRoutes.liquidators,
-        label: "Liquidators",
-        description: "Run bots and execution desks that unwind LP collateral and earn liquidation fees.",
-      },
-      {
         href: siteRoutes.appkit,
         label: "AppKit",
         description: "Embed Avana into partner DEX, wallet, or app surfaces through kit and API flows.",
+      },
+      {
+        href: siteRoutes.liquidators,
+        label: "Liquidators",
+        description: "Run bots and execution desks that unwind LP collateral and earn liquidation fees.",
       },
     ],
   },
