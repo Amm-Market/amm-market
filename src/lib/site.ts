@@ -27,7 +27,6 @@ export const siteRoutes = {
   lightpaper: "/lightpaper",
   faq: "/faq",
   brand: "/brand",
-  earlyAdopters: "/early-adopters",
   earlyAccess: "/faq",
   privacy: "/privacy",
   terms: "/terms",
