@@ -1,44 +1,13 @@
 "use client"
 
-import { Download, Copy, Check } from "lucide-react"
+import Image from "next/image"
+import { Check, Copy, Download } from "lucide-react"
 import { useState, type ReactNode } from "react"
 import { brandOutfitFont } from "@/app/brand/brand-fonts"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
-// Logo SVG Components
-const LogoIcon = ({ className = "" }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="50" cy="50" r="45" fill="currentColor" />
-    <path d="M30 50h40M50 30v40" stroke="white" strokeWidth="6" strokeLinecap="round" />
-  </svg>
-)
-
-const LogoHorizontal = ({ className = "" }: { className?: string }) => (
-  <div className={`flex items-center gap-4 ${className}`}>
-    <div className="w-12 h-12 rounded-full bg-current flex items-center justify-center">
-      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white">
-        <path d="M6 12h12M12 6v12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    </div>
-    <span className="text-4xl font-bold tracking-tight">MINI</span>
-  </div>
-)
-
-const LogoVertical = ({ className = "" }: { className?: string }) => (
-  <div className={`flex flex-col items-center gap-3 ${className}`}>
-    <div className="w-16 h-16 rounded-full bg-current flex items-center justify-center">
-      <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-white">
-        <path d="M6 12h12M12 6v12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    </div>
-    <span className="text-3xl font-bold tracking-tight">MINI</span>
-  </div>
-)
-
 type LogoVariant = "horizontal" | "vertical" | "icon"
-
-const BRAND_KIT_URL = "#"
 
 interface BrandFaqItem {
   value: string
@@ -46,19 +15,180 @@ interface BrandFaqItem {
   answer: ReactNode
 }
 
+interface BrandLogoVariant {
+  id: LogoVariant
+  title: string
+  description: string
+  src: string
+  alt: string
+  mobileImageClassName: string
+  desktopImageClassName: string
+}
+
+const BRAND_KIT_URL = "/avana-brand-kit.zip"
+
+const brandAssetPath = (path: string) => encodeURI(path)
+
+const avanaColors = {
+  white: "#FFFFFF",
+  ink: "#0F1518",
+  charcoal: "#2F414B",
+  cyan: "#01AACF",
+  taupe: "#BC846F",
+  rust: "#9E5537",
+} as const
+
+const logoVariants: readonly BrandLogoVariant[] = [
+  {
+    id: "horizontal",
+    title: "Full (Horizontal)",
+    description:
+      "This is the primary logo that is most recognizable. It works well in most environments. The vertical version is available when space is constrained or limited.",
+    src: brandAssetPath("/Avana PNG/Avana Full (Personal) PNG.png"),
+    alt: "Avana personal full logo",
+    mobileImageClassName: "w-full max-w-[18rem]",
+    desktopImageClassName: "w-full max-w-[15rem]",
+  },
+  {
+    id: "vertical",
+    title: "Full (Vertical)",
+    description:
+      "This version of the logo is available for instances where space is constrained or limited.",
+    src: brandAssetPath("/Avana PNG/Avana Full (Business) PNG.png"),
+    alt: "Avana business full logo",
+    mobileImageClassName: "w-full max-w-[11rem]",
+    desktopImageClassName: "w-full max-w-[9.5rem]",
+  },
+  {
+    id: "icon",
+    title: "Logo",
+    description:
+      "It's called an icon because it's iconic. It's simple and can be used as a shorthand for the Full logo.",
+    src: brandAssetPath("/Avana PNG/Avana Icon (Black) PNG.png"),
+    alt: "Avana icon logo",
+    mobileImageClassName: "w-full max-w-[5.25rem]",
+    desktopImageClassName: "w-full max-w-[5rem]",
+  },
+] as const
+
+const colorGroups = [
+  {
+    title: "Main Colors",
+    description: "The primary foundation of the brand. These should lead most surfaces and key interface moments.",
+    colors: [
+      {
+        name: "Avana White",
+        hex: avanaColors.white,
+        usage: "Primary surface color for clean product backgrounds, cards, and spacious content layouts.",
+      },
+      {
+        name: "Avana Ink",
+        hex: avanaColors.ink,
+        usage: "Primary dark anchor for logo usage, key buttons, core text, and high-contrast interface accents.",
+      },
+    ],
+  },
+  {
+    title: "Secondary Colors",
+    description: "Supporting accents for emphasis, data callouts, and softer moments of hierarchy across the system.",
+    colors: [
+      {
+        name: "Avana Charcoal",
+        hex: avanaColors.charcoal,
+        usage: "Support text, borders, and subtle UI structure when pure ink feels too heavy.",
+      },
+      {
+        name: "Avana Cyan",
+        hex: avanaColors.cyan,
+        usage: "Primary accent color for active states, highlights, and recognizable brand moments.",
+      },
+      {
+        name: "Avana Taupe",
+        hex: avanaColors.taupe,
+        usage: "Soft editorial accent for warm callouts, balance, and understated supporting blocks.",
+      },
+      {
+        name: "Avana Rust",
+        hex: avanaColors.rust,
+        usage: "Deeper accent for contrast, emphasis, and restrained use inside charts or branded illustrations.",
+      },
+    ],
+  },
+] as const
+
+const guidelines = [
+  { allowed: true, text: "Use only official Avana marks", icon: "logo" },
+  { allowed: true, text: "Use approved Avana icon colorways only", icon: "icon" },
+  { allowed: true, text: "Keep lockups in the Avana system", icon: "palette" },
+  { allowed: false, text: "Do not stretch the logo", icon: "stretch" },
+  { allowed: false, text: "Do not rotate the logo", icon: "rotate" },
+  { allowed: false, text: "Do not crowd the mark", icon: "spacing" },
+] as const
+
+const brandSections = {
+  logo: { eyebrow: "Primary mark", title: "Logo" },
+  typography: { eyebrow: "Voice & rhythm", title: "Typography" },
+  color: { eyebrow: "Palette system", title: "Color" },
+  concept: { eyebrow: "Brand idea", title: "Concept" },
+  guidelines: { eyebrow: "Use it well", title: "Logo Guidelines" },
+} as const
+
+const faqItems: BrandFaqItem[] = [
+  {
+    value: "download-assets",
+    question: "How do I download the brand assets?",
+    answer:
+      "Use the download button at the top of this page. It bundles the original Avana PNG and Avana SVG folders into one store-only zip so the files are not altered or recompressed.",
+  },
+  {
+    value: "color-swaps",
+    question: "Can I recolor the Avana logo to match my project?",
+    answer:
+      "No. Keep the approved Avana palette intact so the brand stays recognizable across product, partner, and editorial contexts.",
+  },
+  {
+    value: "pairing-marks",
+    question: "Can I pair the Avana mark with another brand?",
+    answer:
+      "Yes, as long as both marks have enough clear space and neither one feels like a modified treatment of the other.",
+  },
+  {
+    value: "why-guidelines",
+    question: "Why do these guidelines matter?",
+    answer:
+      "Consistency builds trust. A stable logo, palette, and typography system helps Avana feel dependable wherever people encounter it.",
+  },
+] as const
+
 const PlusIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" color="currentColor" className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    color="currentColor"
+    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden"
+  >
     <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
   </svg>
 )
 
 const MinusIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" color="currentColor" className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    color="currentColor"
+    className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden"
+  >
     <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
   </svg>
 )
 
-function BrandFaqSection({ items }: { items: BrandFaqItem[] }) {
+function BrandFaqSection({ items }: { items: readonly BrandFaqItem[] }) {
   return (
     <div className="grid grid-cols-1 gap-8 pb-4 md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:gap-6 md:pb-0 lg:grid-cols-[minmax(0,25rem)_minmax(0,1fr)] lg:gap-8">
       <div className="space-y-3 md:max-w-[25rem] md:pt-2">
@@ -87,141 +217,53 @@ function BrandFaqSection({ items }: { items: BrandFaqItem[] }) {
   )
 }
 
+function BrandAssetImage({
+  src,
+  alt,
+  className,
+}: {
+  src: string
+  alt: string
+  className: string
+}) {
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      width={3000}
+      height={1500}
+      className={`h-auto object-contain ${className}`}
+    />
+  )
+}
+
 export default function BrandPage() {
   const [copiedColor, setCopiedColor] = useState<string | null>(null)
-  const [copiedSvg, setCopiedSvg] = useState(false)
   const [activeLogoVariant, setActiveLogoVariant] = useState<LogoVariant>("horizontal")
 
-  const copyToClipboard = (text: string, type: "color" | "svg" = "color") => {
-    navigator.clipboard.writeText(text)
-    if (type === "color") {
-      setCopiedColor(text)
-      setTimeout(() => setCopiedColor(null), 2000)
-    } else {
-      setCopiedSvg(true)
-      setTimeout(() => setCopiedSvg(false), 2000)
-    }
+  const activeVariant = logoVariants.find((variant) => variant.id === activeLogoVariant) ?? logoVariants[0]
+
+  const copyToClipboard = (text: string) => {
+    void navigator.clipboard.writeText(text)
+    setCopiedColor(text)
+    window.setTimeout(() => setCopiedColor(null), 2000)
   }
-
-  const copySvg = () => {
-    const svgCode = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="50" r="45" fill="#0048ba"/>
-  <path d="M30 50h40M50 30v40" stroke="white" stroke-width="6" stroke-linecap="round"/>
-</svg>`
-    copyToClipboard(svgCode, "svg")
-  }
-
-  const logoVariants = [
-    {
-      id: "horizontal" as LogoVariant,
-      title: "Full (Horizontal)",
-      description: "This is the primary logo that is most recognizable. It works well in most environments. The vertical version is available when space is constrained or limited."
-    },
-    {
-      id: "vertical" as LogoVariant,
-      title: "Full (Vertical)",
-      description: "This version of the logo is available for instances where space is constrained or limited."
-    },
-    {
-      id: "icon" as LogoVariant,
-      title: "Logo",
-      description: "It's called an icon because it's iconic. It's simple and can be used as a shorthand for the Full logo."
-    }
-  ]
-
-  const colorGroups = [
-    {
-      title: "Main Colors",
-      description: "The quiet base of the Avana interface. These are the surfaces users live on most.",
-      colors: [
-        {
-          name: "White",
-          hex: "#ffffff",
-          usage: "Primary surface color. Use for cards, raised panels, and clean reading areas.",
-        },
-        {
-          name: "White Smoke",
-          hex: "#f2f2f2",
-          usage: "Page and section backgrounds. Use for the default app background and subtle surfaces.",
-        },
-      ],
-    },
-    {
-      title: "Secondary Colors",
-      description: "Support colors for hierarchy and readability. These keep the UI crisp without stealing focus.",
-      colors: [
-        {
-          name: "Silver",
-          hex: "#a7a8aa",
-          usage: "Secondary text, captions, and inactive UI. Use for supporting copy and disabled states.",
-        },
-        {
-          name: "Gunmetal",
-          hex: "#414347",
-          usage: "Body text and borders. Use for primary reading text and dividers.",
-        },
-      ],
-    },
-  ]
-
-  const guidelines = [
-    { allowed: true, text: "Use only the official logos", icon: "logo" },
-    { allowed: true, text: "Use the icon in brand colors only", icon: "icon" },
-    { allowed: true, text: "Network icons use white icon on blue background", icon: "network" },
-    { allowed: false, text: "Don't stretch or skew the logo", icon: "stretch" },
-    { allowed: false, text: "Don't rotate the logo", icon: "rotate" },
-    { allowed: false, text: "Don't place other elements too closely to the logo", icon: "spacing" }
-  ]
-
-  const brandSections = {
-    logo: { eyebrow: "Primary mark", title: "Logo" },
-    typography: { eyebrow: "Voice & rhythm", title: "Typography" },
-    color: { eyebrow: "Palette system", title: "Color" },
-    concept: { eyebrow: "Brand idea", title: "Concept" },
-    guidelines: { eyebrow: "Use it well", title: "Logo Guidelines" },
-  } as const
-
-  const faqItems: BrandFaqItem[] = [
-    {
-      value: "download-assets",
-      question: "How do I download the brand assets?",
-      answer:
-        "Use the download button at the top of this page for the full kit, or copy individual assets directly from the logo section.",
-    },
-    {
-      value: "color-swaps",
-      question: "Can I recolor the Avana logo to match my project?",
-      answer:
-        "No. Keep the approved palette intact so Avana stays recognizable across partner surfaces and product contexts.",
-    },
-    {
-      value: "pairing-marks",
-      question: "Can I pair the Avana mark with another brand?",
-      answer:
-        "Yes, as long as each mark has enough space to read clearly and neither one feels like a treatment of the other.",
-    },
-    {
-      value: "why-guidelines",
-      question: "Why do these guidelines matter?",
-      answer:
-        "Consistency builds trust. A stable logo, palette, and type system helps Avana feel reliable wherever people encounter it.",
-    },
-  ]
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex min-h-screen flex-col bg-white">
       <section className="bg-white py-14 md:py-20">
         <div className="site-content-shell">
           <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
-            <h1 className="text-[clamp(3rem,7vw,5.25rem)] font-semibold tracking-[-0.08em] text-black">
+            <h1 className="text-[clamp(3rem,7vw,5.25rem)] font-semibold tracking-[-0.08em] text-[#0F1518]">
               Brand
             </h1>
-            <p className="max-w-xl text-[1rem] font-medium leading-[1.55] tracking-[-0.03em] text-gray-600 md:text-[1.05rem]">
-              Marks, typography, colors, and usage.
+            <p className="max-w-xl text-[1rem] font-medium leading-[1.55] tracking-[-0.03em] text-[#2F414B] md:text-[1.05rem]">
+              Official Avana marks, typography, colors, and usage guidance.
             </p>
             <a
               href={BRAND_KIT_URL}
-              className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium tracking-[-0.02em] text-gray-950 transition hover:bg-gray-50"
+              download
+              className="inline-flex items-center gap-2 rounded-full bg-[#0F1518] px-4 py-2.5 text-sm font-medium tracking-[-0.02em] text-white transition hover:bg-[#2F414B]"
             >
               <span>Download Kit</span>
               <Download className="h-4 w-4" />
@@ -232,123 +274,87 @@ export default function BrandPage() {
 
       <main className="flex-1 bg-white">
         <div className="site-content-shell">
-          
-          {/* Logo Section - 01 */}
           <section className="py-12 md:py-16">
             <div className="mb-8 space-y-3 md:mb-12">
-              <SectionEyebrow>{brandSections.logo.eyebrow}</SectionEyebrow>
+              <SectionEyebrow tone="cyan">{brandSections.logo.eyebrow}</SectionEyebrow>
               <SectionTitle>{brandSections.logo.title}</SectionTitle>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 items-start">
-              {/* Left - Logo variants list */}
+            <div className="grid items-start gap-8 md:grid-cols-2">
               <div className="flex flex-col gap-0">
                 {logoVariants.map((variant) => (
-                  <div
+                  <button
                     key={variant.id}
-                    className={`flex flex-col gap-3 py-5 border-t border-gray-200 cursor-pointer transition-all duration-200 ${
+                    type="button"
+                    className={`flex w-full flex-col gap-3 border-t border-gray-200 py-5 text-left transition-all duration-200 ${
                       activeLogoVariant === variant.id ? "opacity-100" : "opacity-50 hover:opacity-75"
                     }`}
                     onMouseEnter={() => setActiveLogoVariant(variant.id)}
+                    onFocus={() => setActiveLogoVariant(variant.id)}
+                    onClick={() => setActiveLogoVariant(variant.id)}
                   >
-                    {/* Mobile preview */}
-                    <div className="md:hidden relative flex aspect-[7/3] items-center justify-center rounded-[20px] bg-gray-100">
-                      <div className="text-[#0048ba]">
-                        {variant.id === "horizontal" && <LogoHorizontal />}
-                        {variant.id === "vertical" && <LogoVertical />}
-                        {variant.id === "icon" && <LogoIcon className="w-16 h-16" />}
-                      </div>
+                    <div className="relative flex aspect-[7/3] items-center justify-center rounded-[20px] bg-gray-100 md:hidden">
+                      <BrandAssetImage src={variant.src} alt={variant.alt} className={variant.mobileImageClassName} />
                     </div>
                     <h3 className="text-xl font-semibold text-gray-900">{variant.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">{variant.description}</p>
-                  </div>
+                    <p className="text-sm leading-relaxed text-gray-500">{variant.description}</p>
+                  </button>
                 ))}
               </div>
 
-              {/* Right - Interactive preview */}
-              <div className="hidden md:flex relative h-[400px] items-center justify-center rounded-[20px] bg-gray-100 group">
-                {/* Horizontal Logo */}
-                <div className={`absolute text-[#0048ba] transition-all duration-300 ease-in-out ${
-                  activeLogoVariant === "horizontal" ? "scale-100 opacity-100" : "scale-50 opacity-0"
-                }`}>
-                  <LogoHorizontal />
-                </div>
-
-                {/* Vertical Logo */}
-                <div className={`absolute text-[#0048ba] transition-all duration-300 ease-in-out ${
-                  activeLogoVariant === "vertical" ? "scale-100 opacity-100" : "scale-50 opacity-0"
-                }`}>
-                  <LogoVertical />
-                </div>
-
-                {/* Icon Logo */}
-                <div className={`absolute text-[#0048ba] transition-all duration-300 ease-in-out ${
-                  activeLogoVariant === "icon" ? "scale-100 opacity-100" : "scale-50 opacity-0"
-                }`}>
-                  <LogoIcon className="w-24 h-24" />
-                </div>
-
-                {/* Copy SVG button */}
-                <button
-                  onClick={copySvg}
-                  className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white text-gray-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-50 border border-gray-200"
-                >
-                  {copiedSvg ? (
-                    <>
-                      <Check className="w-4 h-4 text-green-500" />
-                      <span>Copied!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-4 h-4" />
-                      <span>Copy SVG</span>
-                    </>
-                  )}
-                </button>
+              <div className="group relative hidden h-[400px] items-center justify-center rounded-[20px] bg-gray-100 md:flex">
+                  {logoVariants.map((variant) => (
+                    <div
+                      key={variant.id}
+                      className={`absolute flex items-center justify-center text-[#6DB0EA] transition-all duration-300 ease-in-out ${
+                        activeLogoVariant === variant.id ? "scale-100 opacity-100" : "scale-50 opacity-0"
+                      }`}
+                    >
+                      <BrandAssetImage
+                        src={variant.src}
+                        alt={variant.alt}
+                        className={variant.desktopImageClassName}
+                      />
+                    </div>
+                  ))}
               </div>
             </div>
           </section>
 
-          {/* Typography Section - 02 */}
           <section className="py-12 md:py-16">
             <div className="mb-8 space-y-3 md:mb-12">
-              <SectionEyebrow>{brandSections.typography.eyebrow}</SectionEyebrow>
+              <SectionEyebrow tone="cyan">{brandSections.typography.eyebrow}</SectionEyebrow>
               <SectionTitle>{brandSections.typography.title}</SectionTitle>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 items-start">
-              {/* Left - Description */}
+            <div className="grid items-start gap-8 md:grid-cols-2">
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-gray-900">Diatype</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  Our primary typeface. The live system uses static Diatype cuts at Regular 400,
-                  Medium 500, and Bold 700 so the site stays fast while keeping the same editorial rhythm.
+                <h3 className="text-xl font-semibold text-[#0F1518]">Diatype</h3>
+                <p className="text-sm leading-relaxed text-gray-500">
+                  Our primary typeface. The live product uses static Diatype cuts at Regular 400, Medium 500,
+                  and Bold 700 so the interface stays fast while keeping its editorial rhythm.
                 </p>
               </div>
 
-              {/* Right - Font specimen */}
               <div className="relative flex flex-col gap-5 border-b border-gray-200 pb-4">
-                <div className="w-full leading-none tracking-[-0.04em] text-gray-900 overflow-hidden">
-                  <div className="text-[120px] md:text-[160px] font-normal whitespace-nowrap">
-                    AaBbCc
-                  </div>
+                <div className="w-full overflow-hidden leading-none tracking-[-0.04em] text-[#0F1518]">
+                  <div className="text-[120px] font-normal whitespace-nowrap md:text-[160px]">AaBbCc</div>
                 </div>
               </div>
             </div>
 
-            {/* Secondary font */}
-            <div className="grid md:grid-cols-2 gap-8 items-start mt-8">
+            <div className="mt-8 grid items-start gap-8 md:grid-cols-2">
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-gray-900">Outfit</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  Backup specimen only. Outfit is loaded on this page alone as a reference and is not part
-                  of the global first-paint font path for the live product.
+                <h3 className="text-xl font-semibold text-[#0F1518]">Outfit</h3>
+                <p className="text-sm leading-relaxed text-gray-500">
+                  Backup specimen only. Outfit is loaded on this page alone as a reference and is not part of the
+                  main first-paint font path on the live site.
                 </p>
               </div>
 
               <div className="relative flex flex-col gap-5 md:border-b-0">
-                <div className="w-full leading-none text-gray-900 overflow-hidden">
-                  <div className={`${brandOutfitFont.className} text-[120px] md:text-[160px] font-semibold italic whitespace-nowrap tracking-[-0.02em]`}>
+                <div className="w-full overflow-hidden leading-none text-[#0F1518]">
+                  <div className={`${brandOutfitFont.className} text-[120px] font-semibold italic whitespace-nowrap tracking-[-0.02em] md:text-[160px]`}>
                     AaBbCc
                   </div>
                 </div>
@@ -356,10 +362,9 @@ export default function BrandPage() {
             </div>
           </section>
 
-          {/* Color Section - 03 */}
           <section className="py-12 md:py-16">
             <div className="mb-8 space-y-3 md:mb-12">
-              <SectionEyebrow>{brandSections.color.eyebrow}</SectionEyebrow>
+              <SectionEyebrow tone="cyan">{brandSections.color.eyebrow}</SectionEyebrow>
               <SectionTitle>{brandSections.color.title}</SectionTitle>
             </div>
 
@@ -367,7 +372,7 @@ export default function BrandPage() {
               {colorGroups.map((group) => (
                 <div key={group.title} className="grid items-start gap-8 md:grid-cols-2">
                   <div className="flex flex-col gap-3">
-                    <h3 className="text-xl font-semibold text-gray-900">{group.title}</h3>
+                    <h3 className="text-xl font-semibold text-[#0F1518]">{group.title}</h3>
                     <p className="text-sm leading-relaxed text-gray-500">{group.description}</p>
                   </div>
 
@@ -375,7 +380,7 @@ export default function BrandPage() {
                     {group.colors.map((color) => (
                       <div
                         key={color.hex}
-                        className="flex items-stretch gap-4 overflow-hidden rounded-[20px] border border-gray-200"
+                        className="flex items-stretch gap-4 overflow-hidden rounded-[20px] border border-[#2F414B]/10"
                       >
                         <button
                           type="button"
@@ -383,20 +388,16 @@ export default function BrandPage() {
                           style={{ backgroundColor: color.hex }}
                           onClick={() => copyToClipboard(color.hex)}
                         >
-                          {["#ffffff", "#f2f2f2"].includes(color.hex.toLowerCase()) && (
-                            <div className="absolute inset-0 border-r border-gray-200" />
-                          )}
+                          {color.hex === avanaColors.white ? (
+                            <div className="absolute inset-0 border-r border-[#2F414B]/10" />
+                          ) : null}
                           <span className="absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-lg bg-white/90 px-2 py-1 text-xs font-medium text-gray-600 opacity-0 transition-opacity group-hover:opacity-100">
-                            {copiedColor === color.hex ? (
-                              <Check className="h-3 w-3 text-green-500" />
-                            ) : (
-                              <Copy className="h-3 w-3" />
-                            )}
+                            {copiedColor === color.hex ? <Check className="h-3 w-3 text-emerald-500" /> : <Copy className="h-3 w-3" />}
                             {copiedColor === color.hex ? "Copied" : color.hex}
                           </span>
                         </button>
                         <div className="flex min-w-0 flex-1 flex-col justify-center py-3 pr-3">
-                          <p className="font-semibold text-gray-900">{color.name}</p>
+                          <p className="font-semibold text-[#0F1518]">{color.name}</p>
                           <p className="mt-0.5 text-sm text-gray-500">{color.usage}</p>
                         </div>
                       </div>
@@ -407,31 +408,25 @@ export default function BrandPage() {
             </div>
           </section>
 
-          {/* Concept Section - 04 */}
           <section className="py-12 md:py-16">
             <div className="mb-8 space-y-3 md:mb-12">
-              <SectionEyebrow>{brandSections.concept.eyebrow}</SectionEyebrow>
+              <SectionEyebrow tone="cyan">{brandSections.concept.eyebrow}</SectionEyebrow>
               <SectionTitle>{brandSections.concept.title}</SectionTitle>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              {/* Left - Description */}
+            <div className="grid items-center gap-8 md:grid-cols-2">
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-gray-900">The AMM Curve</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  Rooted in the origins of automated market makers is the x*y=k formula that powers DeFi. 
-                  Our brand identity draws inspiration from this elegant mathematical concept — 
-                  the constant product curve that enables permissionless trading.
+                <h3 className="text-xl font-semibold text-[#0F1518]">The AMM Curve</h3>
+                <p className="text-sm leading-relaxed text-gray-500">
+                  Rooted in the origins of automated market makers is the x*y=k formula that powers DeFi. The Avana
+                  identity draws from that elegant constant-product curve and the smooth movement of liquidity.
                 </p>
               </div>
 
-              {/* Right - AMM Curve Visual */}
-              <div className="relative flex aspect-[4/3] items-center justify-center rounded-[20px] bg-gray-100 p-10">
-                <div className="relative w-full h-full">
-                  {/* Grid lines */}
-                  <div className="absolute inset-0 opacity-20">
-                    <svg className="w-full h-full" viewBox="0 0 200 150">
-                      {/* Vertical grid lines */}
+              <div className="relative flex aspect-[4/3] items-center justify-center rounded-[20px] border border-[#2F414B]/10 bg-[#F5F8F9] p-10">
+                <div className="relative h-full w-full">
+                  <div className="absolute inset-0 opacity-30">
+                    <svg className="h-full w-full" viewBox="0 0 200 150">
                       {[...Array(9)].map((_, i) => (
                         <line
                           key={`v-${i}`}
@@ -439,11 +434,10 @@ export default function BrandPage() {
                           y1="0"
                           x2={25 * (i + 1)}
                           y2="150"
-                          stroke="#0048ba"
+                          stroke={avanaColors.charcoal}
                           strokeWidth="0.5"
                         />
                       ))}
-                      {/* Horizontal grid lines */}
                       {[...Array(5)].map((_, i) => (
                         <line
                           key={`h-${i}`}
@@ -451,136 +445,153 @@ export default function BrandPage() {
                           y1={30 * (i + 1)}
                           x2="200"
                           y2={30 * (i + 1)}
-                          stroke="#0048ba"
+                          stroke={avanaColors.charcoal}
                           strokeWidth="0.5"
                         />
                       ))}
                     </svg>
                   </div>
-                  
-                  {/* AMM Curve */}
-                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 150">
+
+                  <svg className="absolute inset-0 h-full w-full" viewBox="0 0 200 150">
                     <path
                       d="M 20 130 Q 40 80, 60 60 Q 80 45, 100 35 Q 130 25, 180 20"
                       fill="none"
-                      stroke="#0048ba"
+                      stroke={avanaColors.cyan}
                       strokeWidth="3"
                       strokeLinecap="round"
                     />
-                    {/* Axes */}
-                    <line x1="20" y1="130" x2="20" y2="15" stroke="#0048ba" strokeWidth="2" />
-                    <line x1="20" y1="130" x2="185" y2="130" stroke="#0048ba" strokeWidth="2" />
-                    {/* Labels */}
-                    <text x="95" y="145" fill="#0048ba" fontSize="10" textAnchor="middle">Token X</text>
-                    <text x="10" y="75" fill="#0048ba" fontSize="10" textAnchor="middle" transform="rotate(-90, 10, 75)">Token Y</text>
+                    <line x1="20" y1="130" x2="20" y2="15" stroke={avanaColors.ink} strokeWidth="2" />
+                    <line x1="20" y1="130" x2="185" y2="130" stroke={avanaColors.ink} strokeWidth="2" />
+                    <text x="95" y="145" fill={avanaColors.charcoal} fontSize="10" textAnchor="middle">
+                      Token X
+                    </text>
+                    <text
+                      x="10"
+                      y="75"
+                      fill={avanaColors.charcoal}
+                      fontSize="10"
+                      textAnchor="middle"
+                      transform="rotate(-90, 10, 75)"
+                    >
+                      Token Y
+                    </text>
                   </svg>
-                  
-                  {/* Figure label */}
-                  <span className="absolute -bottom-2 -right-2 text-sm font-semibold text-gray-900">Fig. 1</span>
+
+                  <span className="absolute -bottom-2 -right-2 text-sm font-semibold text-[#0F1518]">Fig. 1</span>
                 </div>
               </div>
             </div>
 
-            {/* Second concept row */}
-            <div className="grid md:grid-cols-2 gap-8 items-center mt-12">
+            <div className="mt-12 grid items-center gap-8 md:grid-cols-2">
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-gray-900">Liquidity & Connection</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  The cross symbol in our logo represents the intersection of assets, 
-                  the meeting point where liquidity flows. It symbolizes the connection 
-                  between different tokens, chains, and users in the DeFi ecosystem.
+                <h3 className="text-xl font-semibold text-[#0F1518]">Liquidity & Connection</h3>
+                <p className="text-sm leading-relaxed text-gray-500">
+                  The Avana mark suggests directed movement across assets, pools, and ecosystems. It is a visual cue
+                  for connected liquidity rather than a static badge.
                 </p>
               </div>
 
-              <div className="relative flex aspect-[4/3] items-center justify-center rounded-[20px] bg-gray-100 p-10 overflow-hidden">
-                {/* Animated connection lines */}
-                <div className="relative w-full h-full flex items-center justify-center">
-                  {/* Center logo */}
-                  <div className="relative z-10 w-20 h-20 rounded-full bg-[#0048ba] flex items-center justify-center shadow-lg">
-                    <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-white">
-                      <path d="M6 12h12M12 6v12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                    </svg>
+              <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[20px] border border-[#2F414B]/10 bg-[#F5F8F9] p-10">
+                <div className="relative flex h-full w-full items-center justify-center">
+                  <div className="absolute h-48 w-48 rounded-full border-2 border-dashed border-[#BC846F]/45" />
+                  <div className="absolute h-32 w-32 rounded-full border-2 border-dashed border-[#01AACF]/45" />
+
+                  <div className="relative z-10 rounded-full bg-white p-5 shadow-[0_18px_40px_rgba(15,21,24,0.08)]">
+                    <BrandAssetImage
+                      src={brandAssetPath("/Avana PNG/Avana Icon (Black) PNG.png")}
+                      alt="Avana icon"
+                      className="w-[4.5rem]"
+                    />
                   </div>
-                  
-                  {/* Orbiting elements */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="absolute w-48 h-48 border-2 border-dashed border-blue-200 rounded-full" />
-                    <div className="absolute w-32 h-32 border-2 border-dashed border-blue-300 rounded-full" />
-                  </div>
-                  
-                  {/* Connection nodes */}
-                  <div className="absolute top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-blue-100 border-2 border-blue-300" />
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-blue-100 border-2 border-blue-300" />
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-blue-100 border-2 border-blue-300" />
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-blue-100 border-2 border-blue-300" />
+
+                  <div className="absolute left-4 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full border-2 border-[#01AACF]/35 bg-[#01AACF]/12" />
+                  <div className="absolute right-4 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full border-2 border-[#BC846F]/40 bg-[#BC846F]/16" />
+                  <div className="absolute left-1/2 top-4 h-8 w-8 -translate-x-1/2 rounded-full border-2 border-[#2F414B]/25 bg-white" />
+                  <div className="absolute bottom-4 left-1/2 h-8 w-8 -translate-x-1/2 rounded-full border-2 border-[#9E5537]/35 bg-[#9E5537]/12" />
                 </div>
-                
-                <span className="absolute -bottom-2 -right-2 text-sm font-semibold text-gray-900">Fig. 2</span>
+
+                <span className="absolute -bottom-2 -right-2 text-sm font-semibold text-[#0F1518]">Fig. 2</span>
               </div>
             </div>
           </section>
 
-          {/* Logo Guidelines Section - 05 */}
           <section className="py-12 md:py-16">
             <div className="mb-8 space-y-3 md:mb-12">
-              <SectionEyebrow>{brandSections.guidelines.eyebrow}</SectionEyebrow>
+              <SectionEyebrow tone="cyan">{brandSections.guidelines.eyebrow}</SectionEyebrow>
               <SectionTitle>{brandSections.guidelines.title}</SectionTitle>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 items-start mb-12">
+            <div className="mb-12 grid items-start gap-8 md:grid-cols-2">
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-gray-900">Do&apos;s and Don&apos;ts</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  If you&apos;re ever tempted to try something creative with this logo, don&apos;t.
-                  Channel your creative spark into whatever the logo will live on instead.
+                <h3 className="text-xl font-semibold text-[#0F1518]">Do&apos;s and Don&apos;ts</h3>
+                <p className="text-sm leading-relaxed text-gray-500">
+                  Preserve the integrity of the Avana system. The mark is strongest when it stays crisp, calm, and
+                  unmistakably ours.
                 </p>
               </div>
 
-              {/* Guidelines grid */}
               <div className="grid grid-cols-3 gap-4">
                 {guidelines.map((item, index) => (
                   <div key={index} className="relative flex flex-col items-center gap-3">
-                    <div className="flex aspect-square w-full items-center justify-center rounded-[20px] bg-gray-100 text-[#0048ba]">
-                      {/* Icon based on type */}
-                      {item.icon === "logo" && <LogoHorizontal className="scale-50" />}
-                      {item.icon === "icon" && <LogoIcon className="w-12 h-12" />}
-                      {item.icon === "network" && (
-                        <div className="w-16 h-16 rounded-2xl bg-[#0048ba] flex items-center justify-center">
-                          <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-white">
-                            <path d="M6 12h12M12 6v12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                          </svg>
+                    <div className="flex aspect-square w-full items-center justify-center rounded-[20px] border border-[#2F414B]/10 bg-[#F5F8F9] p-4">
+                      {item.icon === "logo" ? (
+                        <BrandAssetImage
+                          src={brandAssetPath("/Avana PNG/Avana Full (Personal) PNG.png")}
+                          alt="Official Avana logo"
+                          className="w-full max-w-[8rem]"
+                        />
+                      ) : null}
+                      {item.icon === "icon" ? (
+                        <BrandAssetImage
+                          src={brandAssetPath("/Avana PNG/Avana Icon (Black) PNG.png")}
+                          alt="Avana icon"
+                          className="w-full max-w-[3.75rem]"
+                        />
+                      ) : null}
+                      {item.icon === "palette" ? (
+                        <BrandAssetImage
+                          src={brandAssetPath("/Avana PNG/Avana Full (Business) PNG.png")}
+                          alt="Avana business logo"
+                          className="w-full max-w-[7.25rem]"
+                        />
+                      ) : null}
+                      {item.icon === "stretch" ? (
+                        <div className="origin-center scale-x-125 scale-y-75 opacity-55">
+                          <BrandAssetImage
+                            src={brandAssetPath("/Avana PNG/Avana Full (Personal) PNG.png")}
+                            alt="Stretched logo example"
+                            className="w-full max-w-[8rem]"
+                          />
                         </div>
-                      )}
-                      {item.icon === "stretch" && (
-                        <div className="w-20 h-8 rounded-full bg-[#0048ba] opacity-50 flex items-center justify-center">
-                          <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 text-white">
-                            <path d="M6 12h12M12 6v12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                          </svg>
+                      ) : null}
+                      {item.icon === "rotate" ? (
+                        <div className="rotate-45 opacity-55">
+                          <BrandAssetImage
+                            src={brandAssetPath("/Avana PNG/Avana Icon (Black) PNG.png")}
+                            alt="Rotated icon example"
+                            className="w-full max-w-[3.75rem]"
+                          />
                         </div>
-                      )}
-                      {item.icon === "rotate" && (
-                        <div className="w-12 h-12 rounded-full bg-[#0048ba] opacity-50 rotate-45 flex items-center justify-center">
-                          <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white">
-                            <path d="M6 12h12M12 6v12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                          </svg>
+                      ) : null}
+                      {item.icon === "spacing" ? (
+                        <div className="flex items-center gap-1">
+                          <BrandAssetImage
+                            src={brandAssetPath("/Avana PNG/Avana Icon (Black) PNG.png")}
+                            alt="Crowded spacing example"
+                            className="w-full max-w-[3rem]"
+                          />
+                          <span className="text-base font-semibold text-[#2F414B]">Partner</span>
                         </div>
-                      )}
-                      {item.icon === "spacing" && (
-                        <div className="flex items-center gap-0">
-                          <LogoIcon className="w-10 h-10" />
-                          <span className="text-xl font-bold opacity-50">ABC</span>
-                        </div>
-                      )}
+                      ) : null}
                     </div>
-                    <p className="text-xs text-gray-600 text-center leading-tight">{item.text}</p>
-                    
-                    {/* Status icon */}
+                    <p className="text-center text-xs leading-tight text-gray-600">{item.text}</p>
+
                     {item.allowed ? (
-                      <svg className="absolute right-2 top-2 w-5 h-5 text-green-500" viewBox="0 0 24 24" fill="none">
+                      <svg className="absolute right-2 top-2 h-5 w-5 text-emerald-500" viewBox="0 0 24 24" fill="none">
                         <path d="M20 6L9.33333 18L4 12" stroke="currentColor" strokeWidth="2" />
                       </svg>
                     ) : (
-                      <svg className="absolute right-2 top-2 w-5 h-5 text-red-500" viewBox="0 0 24 24" fill="none">
+                      <svg className="absolute right-2 top-2 h-5 w-5 text-[#9E5537]" viewBox="0 0 24 24" fill="none">
                         <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" />
                       </svg>
                     )}
@@ -590,7 +601,6 @@ export default function BrandPage() {
             </div>
           </section>
 
-          {/* FAQ Section - 06 */}
           <div className="pb-16 md:pb-24">
             <BrandFaqSection items={faqItems} />
           </div>

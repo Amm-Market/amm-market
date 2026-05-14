@@ -1,8 +1,8 @@
 export const SITE_NAME = "Avana"
 export const LEGAL_PRODUCT_NAME = SITE_NAME
 export const SITE_URL = "https://avana.cc"
-export const LOGO_PATH = "/avana-logo.svg"
-export const WORDMARK_PATH = "/avana-wordmark.svg"
+export const LOGO_PATH = "/Avana%20Logo.png"
+export const WORDMARK_PATH = "/Avana%20Logo.png"
 export const SOCIAL_HANDLE = "@dexmini"
 export const DEFAULT_OG_SUBTITLE = "Borrow Against LP Positions on Aave v4"
 export const DEFAULT_SITE_DESCRIPTION =

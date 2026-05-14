@@ -104,9 +104,9 @@ export function generateMetadata(): Metadata {
     applicationName: SITE_NAME,
     category: "Finance",
     icons: {
-      icon: "/favicon.ico",
-      shortcut: "/favicon.ico",
-      apple: "/apple-touch-icon.png",
+      icon: [{ url: "/Avana%20Favicon.png", type: "image/png" }],
+      shortcut: "/Avana%20Favicon.png",
+      apple: "/Avana%20Favicon.png",
     },
     metadataBase: new URL(SITE_URL),
     alternates: {
@@ -122,7 +122,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#ffffff",
+  themeColor: "#FFFFFF",
 }
 
 const shouldRenderVercelInsights = process.env.VERCEL === "1" || Boolean(process.env.VERCEL_ENV)
@@ -149,7 +149,7 @@ export default function RootLayout({
         {/* Skip to main content link for accessibility - WCAG 2.4.1 */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#01AACF] focus:text-[#0F1518] focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01AACF] focus:ring-offset-2"
         >
           Skip to main content
         </a>

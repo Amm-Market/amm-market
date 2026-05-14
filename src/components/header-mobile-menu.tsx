@@ -62,7 +62,7 @@ export default function HeaderMobileMenu({
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/12 bg-white text-black shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition hover:border-black/18 hover:bg-black/[0.02]"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#2F414B]/12 bg-white text-[#0F1518] shadow-[0_6px_18px_rgba(15,21,24,0.06)] transition hover:border-[#2F414B]/20 hover:bg-[#2F414B]/5"
           aria-label="Close menu"
           onClick={onClose}
         >

@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
-import { LOGO_PATH, SITE_NAME, WORDMARK_PATH, siteRoutes } from "@/lib/site"
+import { SITE_NAME, WORDMARK_PATH, siteRoutes } from "@/lib/site"
 import {
   desktopMenuButtons,
   desktopUtilityLinks,
@@ -70,20 +70,14 @@ function SandboxIcon() {
 
 function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
   return (
-    <span className="inline-flex -translate-y-0.5 items-center md:translate-y-0">
-      <Image
-        src={LOGO_PATH}
-        alt={`${SITE_NAME} icon`}
-        width={24}
-        height={24}
-        className={mobileOnly ? "h-6 w-6" : "h-6 w-6 md:hidden"}
-      />
+    <span className="inline-flex items-center overflow-hidden">
       <Image
         src={WORDMARK_PATH}
-        alt={`${SITE_NAME} wordmark`}
-        width={131}
-        height={24}
-        className={mobileOnly ? "hidden" : "hidden md:block md:h-[19px] md:w-[104px] lg:h-[20px] lg:w-[109px]"}
+        alt={`${SITE_NAME} logo`}
+        width={3000}
+        height={1500}
+        className={mobileOnly ? "h-[52px] w-auto scale-[1.08] origin-left" : "h-[56px] w-auto scale-[1.08] origin-left md:h-[52px]"}
+        priority
       />
     </span>
   )
@@ -239,8 +233,8 @@ export default function Header(): React.JSX.Element {
                 suppressHydrationWarning
                 className={`inline-flex items-center justify-center rounded-full px-3 py-1.5 text-xs font-medium transition-colors lg:px-3.5 lg:py-[0.45rem] ${
                   index === 0
-                    ? "bg-white border border-gray-300 hover:bg-gray-100 text-gray-900"
-                    : "bg-gray-900 hover:bg-gray-800 text-white"
+                    ? "border border-[#2F414B]/20 bg-white text-[#0F1518] hover:border-[#2F414B]/35 hover:bg-[#2F414B]/5"
+                    : "bg-[#0F1518] text-white hover:bg-[#2F414B]"
                 }`}
               >
                 {link.label === "Try Demo" ? (
@@ -269,7 +263,7 @@ export default function Header(): React.JSX.Element {
               >
                 <button
                   type="button"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/12 bg-white text-black shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition hover:border-black/18 hover:bg-black/[0.02]"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#2F414B]/12 bg-white text-[#0F1518] shadow-[0_6px_18px_rgba(15,21,24,0.06)] transition hover:border-[#2F414B]/20 hover:bg-[#2F414B]/5"
                   aria-label="Open menu"
                   aria-expanded={mobileMenuOpen}
                   aria-controls="mobile-site-nav"
