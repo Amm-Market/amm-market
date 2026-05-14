@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import ProtocolRoadmapSection from "@/components/protocol-roadmap-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
@@ -52,26 +53,22 @@ export default function AboutPage() {
             >
               <span className="text-gray-950">Introducing {SITE_NAME}:</span>
               <br />
-              <span className="text-gray-500">An LP-as-Collateral Protocol</span>
-              <br />
-              <span className="text-gray-500">Built on Aave V4</span>
+              <span className="text-[#01AACF] lg:whitespace-nowrap">
+                <span className="block lg:inline">A lending protocol</span>
+                <span className="block lg:inline">for LP collateral</span>
+              </span>
             </h1>
           </div>
 
-          <div
-            aria-hidden="true"
-            className="relative mt-10 aspect-video w-full overflow-hidden rounded-sm border border-black/8 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.18),_transparent_30%),linear-gradient(135deg,_#f8fafc_0%,_#e2e8f0_55%,_#f8fafc_100%)] lg:mt-14"
-          >
-            <div className="absolute inset-x-[10%] top-[18%] h-[1px] bg-black/10" />
-            <div className="absolute inset-x-[14%] top-[28%] h-[1px] bg-black/8" />
-            <div className="absolute inset-x-[8%] bottom-[20%] h-[1px] bg-black/8" />
-            <div className="absolute left-[11%] top-[16%] h-[68%] w-[1px] bg-black/8" />
-            <div className="absolute right-[13%] top-[22%] h-[54%] w-[1px] bg-black/8" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="rounded-full border border-black/10 bg-white/80 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-500 backdrop-blur-sm sm:px-5">
-                About Avana
-              </div>
-            </div>
+          <div className="relative mt-10 aspect-[1630/965] w-full overflow-hidden rounded-sm border border-black/8 bg-gray-100 lg:mt-14">
+            <Image
+              src="/images/Avana About.png"
+              alt="Avana about hero image"
+              fill
+              priority
+              sizes="(min-width: 1024px) 1024px, 100vw"
+              className="object-cover"
+            />
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl space-y-8 lg:mt-14">
