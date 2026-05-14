@@ -7,6 +7,7 @@ import InvestApySection from "@/components/invest-apy-section"
 import InvestGrowthCalculatorSection from "@/components/invest-growth-calculator-section"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 
 const pageDescription =
@@ -177,8 +178,8 @@ export default function InvestPage() {
               <div className="space-y-4 md:self-center">
                 <SectionEyebrow tone="emerald">Supply Markets</SectionEyebrow>
                 <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
-                  <span className="block">Lend into</span>
-                  <span className="block">LP-backed credit.</span>
+                  <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>Lend into</span>
+                  <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>LP-backed credit.</span>
                 </SectionTitle>
               </div>
               <div className="flex items-center justify-center pt-1 md:justify-end">

@@ -8,6 +8,7 @@ import ProductFeatureScrollSection from "@/components/product-feature-scroll-sec
 import PositionSafetySection from "@/components/position-safety-section"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
 const openSpokeFaqItems: InlineFaqItem[] = [
   {
@@ -414,7 +415,7 @@ export default function BorrowPage() {
                   <div className="flex h-[150px] w-full flex-col items-center justify-center rounded-lg bg-gradient-to-b from-blue-50 to-blue-100 p-2 text-center sm:h-auto">
                     <div className="flex size-full flex-col items-center justify-center rounded-md border border-blue-200 bg-white">
                       <h4 className="text-base font-medium leading-normal text-blue-600 md:text-lg">
-                        <div className="flex items-center text-[32px] font-bold text-gray-900 md:text-[48px]">
+                        <div className={`flex items-center text-[32px] font-bold md:text-[48px] ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>
                           12+
                         </div>
                         <span>DEX Integrations</span>
@@ -462,7 +463,7 @@ export default function BorrowPage() {
         <div className="site-content-width space-y-32 pt-32 pb-16 md:space-y-40 md:pt-40 md:pb-20 2xl:space-y-36 2xl:pt-36 2xl:pb-18">
           <ProductFeatureScrollSection
             eyebrowTone="blue"
-            title="Engineered for LP safety."
+            title={<span className={CYAN_HIGHLIGHT_TEXT_CLASS}>Engineered for LP safety.</span>}
             items={borrowFeatureItems}
             panels={[
               /* 01 LP-native valuation — pool structure, exposure, venue collateral logic */

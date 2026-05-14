@@ -5,6 +5,7 @@ import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 import { TokenLogo } from "@/components/token-logo"
+import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
 function SectionSkeleton({
   lines = 3,
@@ -409,8 +410,12 @@ export default function HeroSection() {
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="cyan">Borrowing Power</SectionEyebrow>
             <SectionTitle className="max-w-[13ch] text-[#18323c]">
-              <span className="block">Unlock <span className="font-semibold text-[#0078d4]">credit</span></span>
-              <span className="block">from <span className="font-semibold text-[#0078d4]">250+</span> pools</span>
+              <span className="block">
+                Unlock <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>credit</span>
+              </span>
+              <span className="block">
+                from <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>250+</span> pools
+              </span>
             </SectionTitle>
           </div>
             </div>
@@ -454,8 +459,12 @@ export default function HeroSection() {
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="emerald">Investing Markets</SectionEyebrow>
             <SectionTitle className="max-w-[14ch] text-[#18323c]">
-              <span className="block">Earn <span className="font-semibold text-[#107c41]">yield</span></span>
-              <span className="block">on <span className="font-semibold text-[#107c41]">100+</span> assets</span>
+              <span className="block">
+                Earn <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>yield</span>
+              </span>
+              <span className="block">
+                on <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>100+</span> assets
+              </span>
             </SectionTitle>
           </div>
 
@@ -471,7 +480,7 @@ export default function HeroSection() {
                 <SectionTitle className="max-w-[15ch] text-[#18323c]">
                   <span className="block">Trade like a pro</span>
                   <span className="block">
-                    across <span className="font-semibold text-[#b45309]">500+</span> markets
+                    across <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>500+</span> markets
                   </span>
                 </SectionTitle>
               </div>
