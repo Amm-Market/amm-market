@@ -81,7 +81,7 @@ export default function HeaderMobileMenu({
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center text-[#0F1518] transition hover:text-[#2F414B] focus-visible:outline-none focus-visible:ring-0 active:scale-95 [-webkit-tap-highlight-color:transparent]"
+          className="inline-flex h-11 w-11 items-center justify-center text-[#01AACF] transition hover:text-[#01AACF]/80 focus-visible:outline-none focus-visible:ring-0 active:scale-95 [-webkit-tap-highlight-color:transparent]"
           aria-label="Close menu"
           onClick={onClose}
         >
@@ -127,7 +127,7 @@ export default function HeaderMobileMenu({
                   >
                     {link.label}
                   </span>
-                  <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-black/75">
+                  <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-[#01AACF]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </Link>

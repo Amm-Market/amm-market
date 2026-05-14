@@ -273,7 +273,7 @@ export default function Header(): React.JSX.Element {
               >
                 <button
                   type="button"
-                  className="inline-flex h-11 w-11 items-center justify-center text-[#0F1518] transition hover:text-[#2F414B]"
+                  className="inline-flex h-11 w-11 items-center justify-center text-[#01AACF] transition hover:text-[#01AACF]/80"
                   aria-label="Open menu"
                   aria-expanded={mobileMenuOpen}
                   aria-controls="mobile-site-nav"
