@@ -5,25 +5,32 @@ import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const STEPS = [
   {
-    id: "surface",
-    label: "Partner surface",
-    title: "Expose Avana where users already make decisions.",
+    id: "uniswap",
+    label: "Uniswap",
+    title: "Borrow from LP positions.",
     description:
-      "Add a credit entry point to your DEX, wallet, or app so users can borrow against LP positions without changing context.",
+      "See how credit could sit inside Uniswap position views without pulling users out of the LP workflow.",
   },
   {
-    id: "kit",
-    label: "Kit + API",
-    title: "Connect the menu to Avana through lightweight integration layers.",
+    id: "balancer",
+    label: "Balancer",
+    title: "Credit beside vault exposure.",
     description:
-      "The partner keeps control of the interface while Avana handles credit, health, and settlement in the background.",
+      "Show borrowing alongside Balancer pool balances, vault exposure, and multi-asset liquidity context.",
   },
   {
-    id: "economics",
-    label: "Partner economics",
-    title: "Capture fees while Avana powers the credit engine.",
+    id: "aerodrome",
+    label: "Aerodrome",
+    title: "Open credit from active LPs.",
     description:
-      "Integrations can monetize the surface while routing users into LP-backed credit that feels native to the host product.",
+      "Let Aerodrome users access credit from the same screens where they track fees, emissions, and performance.",
+  },
+  {
+    id: "sushi",
+    label: "Sushi",
+    title: "Extend LP utility.",
+    description:
+      "Turn Sushi LP positions into a credit entry point alongside swaps, yield, and portfolio management.",
   },
 ] as const
 
@@ -75,7 +82,7 @@ export default function BusinessAppKitShowcaseSection() {
     <section className="deferred-viewport bg-inherit">
       <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
         <SectionEyebrow tone="violet">How partners integrate</SectionEyebrow>
-        <SectionTitle>AppKit turns Avana into a native surface.</SectionTitle>
+        <SectionTitle>Avana AppKit Concepts</SectionTitle>
       </div>
 
       <div
@@ -165,7 +172,7 @@ export default function BusinessAppKitShowcaseSection() {
           ))}
         </div>
 
-        <div className="mt-6 hidden gap-4 sm:grid sm:grid-cols-3">
+        <div className="mt-6 hidden gap-4 sm:grid sm:grid-cols-4">
           {STEPS.map((step, index) => (
             <button
               key={step.id}

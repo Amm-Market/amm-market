@@ -1,36 +1,31 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const STEPS = [
   {
-    id: "monitor",
-    label: "Monitor",
-    title: "Catch unhealthy positions before they turn into bad debt.",
-    description:
-      "Keep a live view of health factor, collateral composition, and price movement so the liquidator can react early.",
+    id: "index",
+    label: "Index",
+    title: "Track supported collateral markets.",
+    description: "Follow eligible pools, borrower accounts, oracle inputs, and protocol parameters from one liquidation system.",
   },
   {
-    id: "unwind",
-    label: "Unwind",
-    title: "Split the LP into the underlying legs and remove the position cleanly.",
-    description:
-      "LP liquidation is not a simple token seizure. The bot has to reconstruct the position, separate both sides, and unwind them in order.",
+    id: "simulate",
+    label: "Simulate",
+    title: "Know the closeout before submitting.",
+    description: "Model removal, swaps, repayment, and incentive capture before capital is committed onchain.",
   },
   {
-    id: "route",
-    label: "Route",
-    title: "Sell, swap, and repay through the best execution path.",
-    description:
-      "The liquidation desk routes the recovered assets into the debt asset, uses available liquidity, and settles the position atomically.",
+    id: "fund",
+    label: "Fund",
+    title: "Bring the liquidity path.",
+    description: "Use balance sheet, flash liquidity, or routing partners to complete repayment without holding every asset upfront.",
   },
   {
-    id: "collect",
-    label: "Collect",
-    title: "Take the incentive and move on to the next opportunity.",
-    description:
-      "Specialized bots and larger operations can earn liquidation premiums while supplying the coverage Avana needs.",
+    id: "settle",
+    label: "Settle",
+    title: "Close the account cleanly.",
+    description: "Repay the loan, resolve the collateral, and leave the market ready for the next borrower.",
   },
 ] as const
 
@@ -80,11 +75,6 @@ export default function BusinessLiquidatorsShowcaseSection() {
 
   return (
     <section className="deferred-viewport bg-inherit">
-      <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
-        <SectionEyebrow tone="rose">Execution flow</SectionEyebrow>
-        <SectionTitle>Liquidators need a route, not a shortcut.</SectionTitle>
-      </div>
-
       <div
         className="relative"
         role="region"

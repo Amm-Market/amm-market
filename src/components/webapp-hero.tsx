@@ -17,11 +17,12 @@ export default function WebappHero() {
             <Image
               src="/images/5.webp"
               alt="Avana homepage hero visual"
-              width={2048}
-              height={1705}
+              width={1536}
+              height={1279}
               priority
+              quality={70}
               className="h-auto w-full rounded-none"
-              sizes="(max-width: 768px) 100vw, (max-width: 1440px) 92vw, 1180px"
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) calc(100vw - 2rem), 1080px"
             />
           </div>
         </div>

@@ -3,9 +3,9 @@ import Image from "next/image"
 import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import BorrowPowerSection from "@/components/borrow-power-section"
-import BorrowUseCasesSection from "@/components/borrow-use-cases-section"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
+import PositionSafetySection from "@/components/position-safety-section"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
@@ -295,14 +295,15 @@ export default function BorrowPage() {
               {/* Left Column - Hero Image */}
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                   <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
-                  <Image
-                    src="/images/Hero__4_.png"
-                    alt="App interface"
-                    width={1400}
-                    height={1400}
-                    className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
-                    sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
-                    priority
+                    <Image
+                      src="/images/Hero__4_.png"
+                      alt="App interface"
+                      width={1200}
+                      height={1200}
+                      quality={70}
+                      className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
+                      sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
+                      priority
                     fetchPriority="high"
                   />
                 </div>
@@ -759,7 +760,7 @@ export default function BorrowPage() {
             ]}
           />
 
-          <BorrowUseCasesSection />
+          <PositionSafetySection />
           <BorrowPowerSection />
 
           <HomepageNewsroomSection collection="borrow" eyebrowTone="blue" />
