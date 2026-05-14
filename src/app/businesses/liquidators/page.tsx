@@ -7,38 +7,38 @@ import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSect
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
-import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
+import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: `Liquidators - ${SITE_NAME}`,
+  title: "Liquidators",
   description:
     "Connect liquidation infrastructure to Avana, cover LP-backed credit markets, and earn incentives for reliable closeout execution.",
   alternates: {
     canonical: siteRoutes.liquidators,
   },
   openGraph: {
-    title: `Liquidators - ${SITE_NAME}`,
+    title: "Liquidators",
     description:
       "Connect liquidation infrastructure to Avana, cover LP-backed credit markets, and earn incentives for reliable closeout execution.",
     url: siteRoutes.liquidators,
     images: [
       {
         url: buildOgImagePath({
-          title: `Liquidators - ${SITE_NAME}`,
+          title: "Liquidators",
           subtitle: "Cover LP-backed credit markets",
         }),
-        alt: `Liquidators - ${SITE_NAME}`,
+        alt: "Liquidators",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Liquidators - ${SITE_NAME}`,
+    title: "Liquidators",
     description:
       "Connect liquidation infrastructure to Avana, cover LP-backed credit markets, and earn incentives for reliable closeout execution.",
     images: [
       buildOgImagePath({
-        title: `Liquidators - ${SITE_NAME}`,
+        title: "Liquidators",
         subtitle: "Cover LP-backed credit markets",
       }),
     ],
@@ -114,6 +114,95 @@ const liquidationModelCards = [
     description: "The liquidation premium rewards the operator who completes the closeout.",
   },
 ] as const
+
+function LiquidatorAccessSection() {
+  return (
+    <section className="bg-white py-16 md:py-24 lg:py-28">
+      <div className="site-content-shell">
+        <div className="mx-auto grid w-full max-w-[76rem] gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-14">
+          <div className="max-w-[32rem] pt-1 text-left lg:pt-4">
+            <SectionEyebrow tone="rose">Partner access</SectionEyebrow>
+            <SectionTitle className="mt-5 max-w-none text-[#111111]">
+              <span className="block">Ready to cover</span>
+              <span className="block">liquidations with Avana?</span>
+            </SectionTitle>
+            <p className="mt-7 max-w-[34rem] text-[1rem] leading-[1.68] tracking-[-0.01em] text-[#74757c] md:text-[1.08rem]">
+              Request early access to Avana&apos;s liquidation flow. We review keeper teams, execution desks, and
+              routing partners for market fit, coverage readiness, and the venues you can service reliably.
+            </p>
+          </div>
+
+          <div className="pt-2 lg:pt-6">
+            <form className="max-w-[30rem] lg:ml-auto">
+              <div className="grid grid-cols-1 gap-2.5 md:grid-cols-2">
+                <label className="sr-only" htmlFor="liq-firm-name">
+                  Firm name
+                </label>
+                <input
+                  id="liq-firm-name"
+                  type="text"
+                  placeholder="Firm name"
+                  className="h-[3.9rem] w-full rounded-[1.2rem] border border-transparent bg-[#f4f4f2] px-[1.125rem] text-[0.95rem] text-[#111111] outline-none transition placeholder:text-[#9a9a9a] focus:bg-white focus:ring-1 focus:ring-black/10"
+                />
+
+                <label className="sr-only" htmlFor="liq-contact-name">
+                  Contact name
+                </label>
+                <input
+                  id="liq-contact-name"
+                  type="text"
+                  placeholder="Contact name"
+                  className="h-[3.9rem] w-full rounded-[1.2rem] border border-transparent bg-[#f4f4f2] px-[1.125rem] text-[0.95rem] text-[#111111] outline-none transition placeholder:text-[#9a9a9a] focus:bg-white focus:ring-1 focus:ring-black/10"
+                />
+              </div>
+
+              <label className="sr-only" htmlFor="liq-work-email">
+                Work email
+              </label>
+              <input
+                id="liq-work-email"
+                type="email"
+                placeholder="Work email"
+                className="mt-2.5 h-[4rem] w-full rounded-[1.2rem] border border-transparent bg-[#f4f4f2] px-[1.125rem] text-[0.95rem] text-[#111111] outline-none transition placeholder:text-[#9a9a9a] focus:bg-white focus:ring-1 focus:ring-black/10"
+              />
+
+              <label className="sr-only" htmlFor="liq-coverage">
+                Coverage scope
+              </label>
+              <textarea
+                id="liq-coverage"
+                rows={4}
+                placeholder="Which venues and markets can you cover?"
+                className="mt-2.5 min-h-[7.25rem] w-full resize-none rounded-[1.2rem] border border-transparent bg-[#f4f4f2] px-[1.125rem] py-[0.875rem] text-[0.95rem] text-[#111111] outline-none transition placeholder:text-[#9a9a9a] focus:bg-white focus:ring-1 focus:ring-black/10"
+              />
+
+              <label className="mt-2.5 flex items-center gap-3 rounded-[1.2rem] bg-[#f4f4f2] px-[1.125rem] py-[0.875rem] text-left text-[0.92rem] leading-6 tracking-[-0.01em] text-[#74757c]">
+                <input
+                  type="checkbox"
+                  className="h-5 w-5 rounded border border-[#cfcfc9] bg-white text-black accent-black"
+                />
+                <span>
+                  By contacting Avana, I agree to the{" "}
+                  <Link href="/privacy" prefetch={false} className="underline underline-offset-4">
+                    Privacy Policy
+                  </Link>
+                  .
+                </span>
+              </label>
+
+              <button
+                type="submit"
+                className="mt-5 flex h-[4rem] w-full items-center justify-center rounded-[1.5rem] bg-[#2a2b30] text-[1rem] font-medium text-white transition-colors hover:bg-black"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 export default function LiquidatorsPage() {
   return (
@@ -277,6 +366,8 @@ export default function LiquidatorsPage() {
                 </div>
               </div>
             </section>
+
+            <LiquidatorAccessSection />
 
             <HomepageNewsroomSection collection="home" eyebrowTone="rose" />
 

@@ -281,7 +281,7 @@ function PopularPoolsTable() {
 }
 
 export const metadata: Metadata = {
-  title: "Borrow - Any LP Token as Collateral",
+  title: "Borrow",
   description: "Avana Borrow accepts supported LP tokens as collateral for flexible borrowing across multiple DEXes.",
 }
 

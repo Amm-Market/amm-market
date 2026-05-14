@@ -8,7 +8,7 @@ import InvestGrowthCalculatorSection from "@/components/invest-growth-calculator
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
-import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
+import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
 const pageDescription =
   "Supply single assets into LP-backed credit markets, keep liquidity flexible, and earn demand-driven yield across Avana."
@@ -72,7 +72,7 @@ const investFeatureItems = [
 ] as const
 
 export const metadata: Metadata = {
-  title: `Invest - ${SITE_NAME}`,
+  title: "Invest",
   description: pageDescription,
   keywords: [
     "LP-backed credit",
@@ -86,26 +86,26 @@ export const metadata: Metadata = {
     canonical: siteRoutes.invest,
   },
   openGraph: {
-    title: `Invest - ${SITE_NAME}`,
+    title: "Invest",
     description: pageDescription,
     url: siteRoutes.invest,
     images: [
       {
         url: buildOgImagePath({
-          title: `Invest - ${SITE_NAME}`,
+          title: "Invest",
           subtitle: "Supply assets into LP-backed credit markets",
         }),
-        alt: `Invest - ${SITE_NAME}`,
+        alt: "Invest",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Invest - ${SITE_NAME}`,
+    title: "Invest",
     description: pageDescription,
     images: [
       buildOgImagePath({
-        title: `Invest - ${SITE_NAME}`,
+        title: "Invest",
         subtitle: "Supply assets into LP-backed credit markets",
       }),
     ],

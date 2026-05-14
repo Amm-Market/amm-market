@@ -8,7 +8,7 @@ import TradeMarketShowcase from "@/components/trade-market-showcase"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
-import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
+import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
 const pageDescription =
   "Use supported AMM positions as collateral to unlock LP-backed leverage and managed perps exposure through one unified Avana workflow."
@@ -98,7 +98,7 @@ const leverageFaqItems: InlineFaqItem[] = [
 ] as const
 
 export const metadata: Metadata = {
-  title: `Trade - ${SITE_NAME}`,
+  title: "Trade",
   description: pageDescription,
   keywords: [
     "LP leverage",
@@ -113,26 +113,26 @@ export const metadata: Metadata = {
     canonical: siteRoutes.trade,
   },
   openGraph: {
-    title: `Trade - ${SITE_NAME}`,
+    title: "Trade",
     description: pageDescription,
     url: siteRoutes.trade,
     images: [
       {
         url: buildOgImagePath({
-          title: `Trade - ${SITE_NAME}`,
+          title: "Trade",
           subtitle: "LP-backed leverage and managed perps exposure",
         }),
-        alt: `Trade - ${SITE_NAME}`,
+        alt: "Trade",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Trade - ${SITE_NAME}`,
+    title: "Trade",
     description: pageDescription,
     images: [
       buildOgImagePath({
-        title: `Trade - ${SITE_NAME}`,
+        title: "Trade",
         subtitle: "LP-backed leverage and managed perps exposure",
       }),
     ],

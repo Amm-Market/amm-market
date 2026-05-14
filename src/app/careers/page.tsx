@@ -6,38 +6,38 @@ import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSecti
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
-import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
+import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: `Careers - ${SITE_NAME}`,
+  title: "Careers",
   description:
     "Join Avana and help build the credit infrastructure that powers LP-backed borrowing for businesses and partner products.",
   alternates: {
     canonical: siteRoutes.careers,
   },
   openGraph: {
-    title: `Careers - ${SITE_NAME}`,
+    title: "Careers",
     description:
       "Join Avana and help build the credit infrastructure that powers LP-backed borrowing for businesses and partner products.",
     url: siteRoutes.careers,
     images: [
       {
         url: buildOgImagePath({
-          title: `Careers - ${SITE_NAME}`,
+          title: "Careers",
           subtitle: "Build the infrastructure behind LP-backed credit",
         }),
-        alt: `Careers - ${SITE_NAME}`,
+        alt: "Careers",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Careers - ${SITE_NAME}`,
+    title: "Careers",
     description:
       "Join Avana and help build the credit infrastructure that powers LP-backed borrowing for businesses and partner products.",
     images: [
       buildOgImagePath({
-        title: `Careers - ${SITE_NAME}`,
+        title: "Careers",
         subtitle: "Build the infrastructure behind LP-backed credit",
       }),
     ],
