@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import BusinessAppKitShowcaseSection from "@/components/business-appkit-showcase"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
@@ -119,34 +120,15 @@ export default function AppKitPage() {
               <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                   <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
-                    <div className="relative overflow-hidden rounded-[24px] border border-gray-200 bg-[linear-gradient(180deg,#f7f4ee_0%,#efe8e3_100%)] p-5 sm:rounded-[32px] lg:rounded-[40px]">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.92),transparent_55%)]" />
-                      <div className="relative grid gap-4 md:grid-cols-3">
-                        <div className="rounded-[22px] border border-white/70 bg-white/70 p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:col-span-2">
-                          <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-violet-500">Partner UI</span>
-                          <h2 className="mt-3 text-2xl font-normal leading-[1.02] tracking-[-0.05em] text-[#18323c] sm:text-[2.5rem]">
-                            Turn LP portfolio moments into credit moments.
-                          </h2>
-                          <p className="mt-4 max-w-[32rem] text-sm leading-6 text-gray-600">
-                            AppKit helps partners introduce borrowing where users already review liquidity, risk, and
-                            capital needs.
-                          </p>
-                        </div>
-
-                        <div className="grid gap-4">
-                          <div className="rounded-[22px] border border-white/70 bg-white/80 p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
-                            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-gray-400">Menu</p>
-                            <p className="mt-2 text-lg font-semibold tracking-[-0.03em] text-[#18323c]">Borrow</p>
-                            <p className="mt-1 text-sm text-gray-600">Open credit from an LP view.</p>
-                          </div>
-                          <div className="rounded-[22px] border border-white/70 bg-white/80 p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
-                            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-gray-400">Context</p>
-                            <p className="mt-2 text-lg font-semibold tracking-[-0.03em] text-[#18323c]">Position data</p>
-                            <p className="mt-1 text-sm text-gray-600">Start from what the user holds.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <Image
+                      src="/images/Hero__4_.png"
+                      alt="Borrow interface"
+                      width={1400}
+                      height={1400}
+                      className="h-auto w-full rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
+                      sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
+                      priority
+                    />
                   </div>
                 </div>
 
