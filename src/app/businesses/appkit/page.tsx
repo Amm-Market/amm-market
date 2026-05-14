@@ -11,20 +11,20 @@ import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 export const metadata: Metadata = {
   title: `AppKit - ${SITE_NAME}`,
   description:
-    "Embed Avana LP-backed credit into partner DEX, wallet, or app surfaces with AppKit, APIs, and revenue-sharing integrations.",
+    "Connect DEX, wallet, and app users to Avana LP-backed credit with AppKit integration tools and partner economics.",
   alternates: {
     canonical: siteRoutes.appkit,
   },
   openGraph: {
     title: `AppKit - ${SITE_NAME}`,
     description:
-      "Embed Avana LP-backed credit into partner DEX, wallet, or app surfaces with AppKit, APIs, and revenue-sharing integrations.",
+      "Connect DEX, wallet, and app users to Avana LP-backed credit with AppKit integration tools and partner economics.",
     url: siteRoutes.appkit,
     images: [
       {
         url: buildOgImagePath({
           title: `AppKit - ${SITE_NAME}`,
-          subtitle: "Embed LP-backed credit inside partner products",
+          subtitle: "Connect users to LP-backed credit",
         }),
         alt: `AppKit - ${SITE_NAME}`,
       },
@@ -34,11 +34,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `AppKit - ${SITE_NAME}`,
     description:
-      "Embed Avana LP-backed credit into partner DEX, wallet, or app surfaces with AppKit, APIs, and revenue-sharing integrations.",
+      "Connect DEX, wallet, and app users to Avana LP-backed credit with AppKit integration tools and partner economics.",
     images: [
       buildOgImagePath({
         title: `AppKit - ${SITE_NAME}`,
-        subtitle: "Embed LP-backed credit inside partner products",
+        subtitle: "Connect users to LP-backed credit",
       }),
     ],
   },
@@ -55,57 +55,57 @@ export const metadata: Metadata = {
 
 const appKitFeatures = [
   {
-    title: "Native partner menus",
+    title: "Intent capture",
     description:
-      "Surface Borrow, Manage, and Exit actions where your users already trade, hold, or monitor liquidity.",
+      "Turn LP position views, portfolio pages, and trading flows into natural borrowing entry points.",
   },
   {
-    title: "API-first routing",
+    title: "Protocol handoff",
     description:
-      "Keep your UI and Avana's credit engine separate while the integration feels fully native to the host product.",
+      "Pass user context into Avana so the credit flow opens with the right wallet, market, and collateral path.",
   },
   {
-    title: "Partner economics",
+    title: "Shared monetization",
     description:
-      "Capture fees or share revenue on the same surface that brings LP-backed borrowing into your product.",
+      "Build a revenue line around credit access without becoming the lender or risk engine.",
   },
   {
-    title: "White-label control",
+    title: "Product control",
     description:
-      "Preserve brand, permissioning, and product flow while Avana handles collateral logic and settlement underneath.",
+      "Choose where credit appears, which users see it, and how the path fits your existing experience.",
   },
 ] as const
 
 const appKitFaqItems: InlineFaqItem[] = [
   {
     value: "appkit-1",
-    question: "What is AppKit for?",
+    question: "Which teams should use AppKit?",
     answer:
-      "AppKit is for teams that want to expose Avana LP-backed credit inside their own product. A DEX, wallet, or portfolio app can add a menu entry or embedded module that routes users into Avana without sending them away from the main interface.",
+      "AppKit is for DEXs, wallets, portfolio apps, and other products where users already hold or manage LP positions. It helps those products connect users to Avana credit from the right moment in the user journey.",
   },
   {
     value: "appkit-2",
-    question: "What does the integration actually expose?",
+    question: "What does a partner control?",
     answer:
-      "Partners can expose the actions users need most: borrow, repay, monitor health, and manage positions. The partner owns the front end, while Avana provides the credit logic and settlement rails underneath.",
+      "Partners control placement, product context, user education, and the surrounding interface. Avana provides the borrowing flow, risk checks, collateral handling, and settlement logic.",
   },
   {
     value: "appkit-3",
-    question: "How do partners make money?",
+    question: "How do partners participate economically?",
     answer:
-      "The integration is designed so partners can capture fees or share in the economics of the flow while still keeping the experience inside their own product surface.",
+      "Partner economics can be structured around referral, routing, or integration revenue depending on the relationship. The point is to make credit access valuable for the product that originates the user.",
   },
   {
     value: "appkit-4",
-    question: "Does AppKit replace the protocol UI?",
+    question: "Does the partner become the lender?",
     answer:
-      "No. AppKit complements the protocol interface. It gives external products a way to embed Avana's credit layer in a custom experience instead of forcing users to leave for a separate dashboard.",
+      "No. The partner introduces the user to the credit flow, but Avana remains responsible for the protocol rules, health logic, and settlement path.",
   },
   {
     value: "appkit-5",
-    question: "Is the integration only for one venue family?",
+    question: "Can AppKit work across different product surfaces?",
     answer:
-      "No. The point is to let partner products tap into LP-backed credit through Avana's kit and API surfaces, then present that capability in whatever menu or workflow best fits their users.",
+      "Yes. The same integration model can support web apps, wallets, mobile products, DEX interfaces, and portfolio dashboards, with the final experience shaped around the partner's product.",
   },
 ]
 
@@ -125,11 +125,11 @@ export default function AppKitPage() {
                         <div className="rounded-[22px] border border-white/70 bg-white/70 p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:col-span-2">
                           <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-violet-500">Partner UI</span>
                           <h2 className="mt-3 text-2xl font-normal leading-[1.02] tracking-[-0.05em] text-[#18323c] sm:text-[2.5rem]">
-                            Add an Avana credit menu to the product your users already trust.
+                            Turn LP portfolio moments into credit moments.
                           </h2>
                           <p className="mt-4 max-w-[32rem] text-sm leading-6 text-gray-600">
-                            Surface borrow, repay, and manage actions inside a DEX, wallet, or trading app while Avana
-                            handles LP-backed credit behind the scenes.
+                            AppKit helps partners introduce borrowing where users already review liquidity, risk, and
+                            capital needs.
                           </p>
                         </div>
 
@@ -137,12 +137,12 @@ export default function AppKitPage() {
                           <div className="rounded-[22px] border border-white/70 bg-white/80 p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
                             <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-gray-400">Menu</p>
                             <p className="mt-2 text-lg font-semibold tracking-[-0.03em] text-[#18323c]">Borrow</p>
-                            <p className="mt-1 text-sm text-gray-600">Use LP positions as credit.</p>
+                            <p className="mt-1 text-sm text-gray-600">Open credit from an LP view.</p>
                           </div>
                           <div className="rounded-[22px] border border-white/70 bg-white/80 p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
-                            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-gray-400">Revenue</p>
-                            <p className="mt-2 text-lg font-semibold tracking-[-0.03em] text-[#18323c]">Fee share</p>
-                            <p className="mt-1 text-sm text-gray-600">Monetize the integration surface.</p>
+                            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-gray-400">Context</p>
+                            <p className="mt-2 text-lg font-semibold tracking-[-0.03em] text-[#18323c]">Position data</p>
+                            <p className="mt-1 text-sm text-gray-600">Start from what the user holds.</p>
                           </div>
                         </div>
                       </div>
@@ -152,15 +152,14 @@ export default function AppKitPage() {
 
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
                   <h1 className="mb-3 max-w-[13ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[12ch] md:text-5xl lg:text-5xl xl:text-6xl">
-                    <span className="lg:whitespace-nowrap">Make LP-backed credit</span>
+                    <span className="lg:whitespace-nowrap">Bring credit</span>
                     <br />
-                    <span className="lg:whitespace-nowrap">feel native to your product.</span>
+                    <span className="lg:whitespace-nowrap">to LP users.</span>
                   </h1>
 
                   <p className="mb-5 max-w-[36ch] text-base leading-relaxed text-gray-600 sm:max-w-[40ch] md:mb-6 md:text-lg">
-                    AppKit gives DEXs, wallets, and apps a way to surface Avana inside their own UI. Partners can
-                    route users into LP-backed credit, keep the experience branded, and participate in the economics
-                    of the flow.
+                    AppKit gives DEXs, wallets, and apps a way to connect LP users to Avana borrowing from the
+                    products they already use.
                   </p>
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
@@ -189,10 +188,10 @@ export default function AppKitPage() {
       <ProductStorySection
         eyebrow="For partners"
         eyebrowTone="violet"
-        titleLines={["Your UI,", "Avana credit."]}
+        titleLines={["Distribution", "for LP-backed credit."]}
         paragraphs={[
-          "AppKit is for products that already have user trust and want to turn that surface into a place where LP-backed credit can happen naturally. A partner can expose Avana actions inside a menu, side panel, or embedded module, then route the user into borrowing, monitoring, or repayment without breaking the host experience.",
-          "The partner keeps the front-end relationship and product context. Avana keeps the credit logic, health checks, and settlement engine. That split is the point: the user feels like they never left the product they came to use, while the protocol still enforces the real borrowing rules underneath.",
+          "LP users already make capital decisions inside DEXs, wallets, and portfolio tools. AppKit lets those products offer a direct path into Avana when borrowing is the next useful action.",
+          "The partner owns the user relationship and product context. Avana owns the credit rules, health checks, and settlement path. That split lets partners add a meaningful financial action without becoming a lending protocol.",
         ]}
       />
 
@@ -204,7 +203,7 @@ export default function AppKitPage() {
             <ProductFeatureScrollSection
               eyebrow="Integration model"
               eyebrowTone="violet"
-              title="Built for products that want credit without context switching."
+              title="Built for partners that already understand the user."
               items={appKitFeatures}
               panels={[
                 <div key="a1" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
@@ -219,9 +218,9 @@ export default function AppKitPage() {
                       </div>
                       <div className="mt-3 space-y-2">
                         {[
-                          ["Swap", "Trade assets"],
-                          ["Borrow", "LP-backed credit"],
-                          ["Manage", "Health and repayment"],
+                          ["Pool", "Review position"],
+                          ["Borrow", "Use collateral"],
+                          ["Manage", "Track health"],
                         ].map(([label, sub]) => (
                           <div key={label} className="rounded-xl border border-gray-100 bg-gray-50/80 px-3 py-2.5">
                             <div className="flex items-center justify-between">
@@ -272,9 +271,9 @@ export default function AppKitPage() {
                         </div>
                         <div>
                           <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">Economics</span>
-                          <p className="mt-1 text-sm font-semibold text-[#18323c]">Share the surface, keep the brand.</p>
+                          <p className="mt-1 text-sm font-semibold text-[#18323c]">Originate useful borrower demand.</p>
                           <p className="mt-1.5 text-[9px] leading-5 text-gray-500">
-                            Partners can collect fees on the integration while Avana supplies the borrowing rails.
+                            Partners can turn existing LP traffic into a new credit distribution channel.
                           </p>
                         </div>
                       </div>
@@ -293,10 +292,10 @@ export default function AppKitPage() {
                       </div>
                       <div className="mt-3 grid grid-cols-2 gap-2">
                         {[
-                          ["Brand", "Yours"],
-                          ["Rules", "Avana's"],
-                          ["Fees", "Shared"],
-                          ["UX", "Native"],
+                          ["Placement", "Yours"],
+                          ["Credit", "Avana"],
+                          ["Context", "Shared"],
+                          ["Path", "Flexible"],
                         ].map(([label, value]) => (
                           <div key={label} className="rounded-xl border border-gray-100 bg-gray-50/80 px-3 py-2">
                             <span className="block text-[7px] uppercase tracking-[0.08em] text-gray-400">{label}</span>
@@ -315,38 +314,38 @@ export default function AppKitPage() {
               <div className="relative z-10">
                 <div className="max-w-[600px] space-y-3">
                   <SectionEyebrow tone="violet">Why teams use AppKit</SectionEyebrow>
-                  <SectionTitle>Partners keep the surface. Avana keeps the credit engine.</SectionTitle>
+                  <SectionTitle>Existing LP traffic becomes a credit channel.</SectionTitle>
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-14 lg:grid-cols-4 lg:gap-5">
                   {[
                     {
                       stat: "1",
-                      label: "surface",
-                      title: "Add credit where users already are",
+                      label: "intent",
+                      title: "Meet active LPs in context",
                       description:
-                        "Show LP-backed borrowing inside the menus and workflows people already use every day.",
+                        "Borrowing appears when users are already thinking about liquidity, exposure, and capital needs.",
                     },
                     {
                       stat: "0",
-                      label: "friction",
-                      title: "Keep the product experience native",
+                      label: "build",
+                      title: "Avoid building a credit protocol",
                       description:
-                        "The user sees one product, while Avana handles the borrowing, health, and settlement layer.",
+                        "Partners can add borrowing access without owning underwriting, liquidation, or settlement systems.",
                     },
                     {
                       stat: "Shared",
-                      label: "economics",
-                      title: "Monetize the integration",
+                      label: "revenue",
+                      title: "Create partner economics",
                       description:
-                        "Partners can charge fees or share revenue from the same surface that routes users into credit.",
+                        "The integration can support referral, routing, or commercial arrangements around originated demand.",
                     },
                     {
                       stat: "API",
-                      label: "first",
-                      title: "Build once, ship across surfaces",
+                      label: "surface",
+                      title: "Fit multiple product shapes",
                       description:
-                        "Use the same integration model for web apps, wallets, and mobile products.",
+                        "Use the same primitives across dashboards, wallets, DEX interfaces, and mobile flows.",
                     },
                   ].map((item) => (
                     <article key={item.title} className="flex flex-col rounded-2xl bg-white/70 p-6 backdrop-blur-sm">

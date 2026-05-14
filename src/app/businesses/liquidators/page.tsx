@@ -12,20 +12,20 @@ import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 export const metadata: Metadata = {
   title: `Liquidators - ${SITE_NAME}`,
   description:
-    "Run LP liquidation bots and execution desks for Avana, unwind complex positions, and earn liquidation fees from specialized coverage.",
+    "Connect liquidation infrastructure to Avana, cover LP-backed credit markets, and earn incentives for reliable closeout execution.",
   alternates: {
     canonical: siteRoutes.liquidators,
   },
   openGraph: {
     title: `Liquidators - ${SITE_NAME}`,
     description:
-      "Run LP liquidation bots and execution desks for Avana, unwind complex positions, and earn liquidation fees from specialized coverage.",
+      "Connect liquidation infrastructure to Avana, cover LP-backed credit markets, and earn incentives for reliable closeout execution.",
     url: siteRoutes.liquidators,
     images: [
       {
         url: buildOgImagePath({
           title: `Liquidators - ${SITE_NAME}`,
-          subtitle: "Unwind LP collateral and earn liquidation fees",
+          subtitle: "Cover LP-backed credit markets",
         }),
         alt: `Liquidators - ${SITE_NAME}`,
       },
@@ -35,11 +35,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `Liquidators - ${SITE_NAME}`,
     description:
-      "Run LP liquidation bots and execution desks for Avana, unwind complex positions, and earn liquidation fees from specialized coverage.",
+      "Connect liquidation infrastructure to Avana, cover LP-backed credit markets, and earn incentives for reliable closeout execution.",
     images: [
       buildOgImagePath({
         title: `Liquidators - ${SITE_NAME}`,
-        subtitle: "Unwind LP collateral and earn liquidation fees",
+        subtitle: "Cover LP-backed credit markets",
       }),
     ],
   },
@@ -54,87 +54,64 @@ export const metadata: Metadata = {
   ],
 }
 
-const liquidationFeatures = [
-  {
-    title: "Continuous monitoring",
-    description:
-      "Track health factor, collateral composition, and price drift so you can act before positions get difficult.",
-  },
-  {
-    title: "LP unwind logic",
-    description:
-      "Reconstruct the LP, split the legs, and unwind each side instead of treating the position like a single token.",
-  },
-  {
-    title: "Route-aware execution",
-    description:
-      "Use the best available venues and routing paths to sell, swap, and repay with minimal friction.",
-  },
-  {
-    title: "Liquidation premium",
-    description:
-      "Capture the incentive for successful liquidations while supplying the coverage the protocol needs.",
-  },
-] as const
-
 const liquidationFaqItems: InlineFaqItem[] = [
   {
     value: "liq-1",
-    question: "Why is LP liquidation harder than token liquidation?",
+    question: "What makes Avana interesting for liquidators?",
     answer:
-      "Because the collateral is not one asset. A liquidator has to reconstruct the LP position, separate the underlying legs, route the exits, and settle the debt in the right order.",
+      "Avana brings LP-backed borrowers into credit markets. That gives liquidators a new class of accounts to cover, especially for teams that already understand AMM execution.",
   },
   {
     value: "liq-2",
-    question: "Who runs liquidations on Avana?",
+    question: "Do operators need to be approved by Avana?",
     answer:
-      "Permissionless bots, keepers, and larger execution desks can run the flow. The protocol benefits when multiple operators are watching the same unhealthy positions and can compete on speed and execution quality.",
+      "The liquidation market is designed to be permissionless. Independent keeper teams and larger execution desks can participate without becoming a centralized service provider.",
   },
   {
     value: "liq-3",
-    question: "How do liquidators make money?",
+    question: "What infrastructure should an operator bring?",
     answer:
-      "Successful liquidations pay an incentive or premium. Operators who can unwind LP positions efficiently can earn fees while helping the protocol stay healthy.",
+      "Monitoring, simulation, transaction delivery, liquidity access, and venue integrations all matter. The stronger the execution stack, the more effectively an operator can service supported markets.",
   },
   {
     value: "liq-4",
-    question: "Do liquidators need flash liquidity?",
+    question: "Where does the revenue come from?",
     answer:
-      "Often, yes. LP liquidation is usually an atomic unwind problem, so execution desks may need temporary liquidity to repay debt before the recovered assets are sold and settled.",
+      "Completed liquidations pay an incentive. That incentive compensates operators for resolving unsafe loans and returning value to the credit market.",
   },
   {
     value: "liq-5",
-    question: "Can a general-purpose bot handle this?",
+    question: "Can existing liquidation bots integrate?",
     answer:
-      "A generic bot can help with monitoring, but LP collateral has enough unwind complexity that specialized routing, venue selection, and settlement logic usually matter a lot.",
+      "Yes, but the bot needs to understand the supported LP venues and settlement flow. Avana is most relevant for operators willing to add LP-specific logic instead of only watching simple token collateral.",
   },
 ]
 
 const liquidationModelCards = [
   {
     icon: Gauge,
-    title: "Find the trigger",
-    description: "Spot the change that makes the position eligible for liquidation.",
+    title: "Eligibility",
+    description: "Risk rules define which accounts can be closed and when liquidation is available.",
   },
   {
     icon: LockKeyhole,
-    title: "Split the LP",
-    description: "Turn the position back into the assets that can be moved.",
+    title: "Execution input",
+    description: "The operator supplies the transaction path, funding source, and settlement plan.",
   },
   {
     icon: MoveRight,
-    title: "Move the proceeds",
-    description: "Use the best route to sell the recovery and repay the debt.",
+    title: "Collateral handling",
+    description: "The LP position is converted through the correct venue path instead of treated like a plain token.",
   },
   {
     icon: BadgePercent,
-    title: "Take the reward",
-    description: "A clean unwind leaves the liquidation incentive on the table.",
+    title: "Debt repayment",
+    description: "Recovered value flows back into the credit market to reduce or close the unsafe loan.",
   },
   {
     icon: MoveRight,
-    title: "Reset the book",
-    description: "Free up capital so the desk can handle the next position.",
+    title: "Incentive",
+    description: "The liquidation premium rewards the operator who completes the closeout.",
   },
 ] as const
 
@@ -163,14 +140,14 @@ export default function LiquidatorsPage() {
 
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
                   <h1 className="mb-3 max-w-[11ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[11ch] md:text-5xl lg:text-5xl xl:text-6xl">
-                    <span>Liquidate</span>
+                    <span>Cover</span>
                     <br />
-                    <span>LP positions.</span>
+                    <span>LP credit markets.</span>
                   </h1>
 
                   <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
-                    Specialized bots and execution desks handle LP unwinds, route the exit, and earn liquidation
-                    fees on complex positions.
+                    Bring bots, routing, and liquidity infrastructure to Avana, then earn incentives when risky
+                    LP-backed loans need to be closed.
                   </p>
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
@@ -199,10 +176,10 @@ export default function LiquidatorsPage() {
       <ProductStorySection
         eyebrow="For operators"
         eyebrowTone="rose"
-        titleLines={["Liquidators Jobs", ""]}
+        titleLines={["A new surface", "for liquidators."]}
         className="pb-2 md:pb-3 2xl:pb-3"
         paragraphs={[
-          "Liquidators watch LP-backed positions, unwind the collateral when health drops, and collect the liquidation fee.",
+          "Most liquidation infrastructure is built around standard token collateral. Avana opens a different kind of market: borrowers keep LP exposure active, and operators provide the closeout coverage that makes that credit safer to offer.",
         ]}
       />
 
@@ -217,7 +194,7 @@ export default function LiquidatorsPage() {
                   <div className="max-w-[52rem] space-y-4">
                     <SectionEyebrow tone="rose">Liquidation model</SectionEyebrow>
                     <SectionTitle className="max-w-none text-[clamp(1.9rem,3vw,3rem)] leading-[1.02] md:whitespace-nowrap">
-                      LP liquidation is an execution business.
+                      The closeout path is protocol-defined.
                     </SectionTitle>
                   </div>
 
@@ -254,34 +231,34 @@ export default function LiquidatorsPage() {
               <div className="relative z-10">
                 <div className="max-w-[600px] space-y-3">
                   <SectionEyebrow tone="rose">Why liquidators care</SectionEyebrow>
-                  <SectionTitle>Liquidation fees pay for execution.</SectionTitle>
+                  <SectionTitle>Infrastructure becomes revenue.</SectionTitle>
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-14 lg:grid-cols-4 lg:gap-5">
                   {[
                     {
                       stat: "1",
-                      label: "threshold",
-                      title: "Spot the trigger",
-                      description: "A health factor below 1 tells the liquidator the account can be taken.",
+                      label: "market",
+                      title: "Access LP-backed credit demand",
+                      description: "As Avana grows borrower activity, liquidators get a new market to monitor and service.",
                     },
                     {
                       stat: "2",
-                      label: "collateral",
-                      title: "Split the LP",
-                      description: "The position has to be converted into the assets that back it.",
+                      label: "edge",
+                      title: "Use skills that already matter",
+                      description: "AMM knowledge, routing, liquidity access, and transaction delivery become practical advantages.",
                     },
                     {
                       stat: "3",
-                      label: "repayment",
-                      title: "Repay the debt",
-                      description: "The recovered value goes back into the loan before the account is closed.",
+                      label: "access",
+                      title: "Operate permissionlessly",
+                      description: "Keeper teams and execution desks can participate without becoming a centralized service provider.",
                     },
                     {
                       stat: "Fee",
-                      label: "bonus",
-                      title: "Take the bonus",
-                      description: "The liquidation bonus is the operator’s compensation.",
+                      label: "incentive",
+                      title: "Earn for completed closeouts",
+                      description: "The incentive pays for resolving unsafe loans and returning value to the credit market.",
                     },
                   ].map((item) => (
                     <article key={item.title} className="flex flex-col rounded-2xl bg-white/70 p-6 backdrop-blur-sm">

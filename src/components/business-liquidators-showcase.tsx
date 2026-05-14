@@ -4,28 +4,28 @@ import { useEffect, useState } from "react"
 
 const STEPS = [
   {
-    id: "monitor",
-    label: "Monitor",
-    title: "Watch accounts below the threshold.",
-    description: "If health factor drops under 1, the position is eligible for liquidation.",
+    id: "index",
+    label: "Index",
+    title: "Track supported collateral markets.",
+    description: "Follow eligible pools, borrower accounts, oracle inputs, and protocol parameters from one liquidation system.",
   },
   {
-    id: "unwind",
-    label: "Unwind",
-    title: "Split the LP into the underlying assets.",
-    description: "LP collateral has to be broken apart before it can be sold and repaid.",
+    id: "simulate",
+    label: "Simulate",
+    title: "Know the closeout before submitting.",
+    description: "Model removal, swaps, repayment, and incentive capture before capital is committed onchain.",
   },
   {
-    id: "route",
-    label: "Route",
-    title: "Use the venue path that clears the debt.",
-    description: "The operator routes the sale through the path that can repay the loan.",
+    id: "fund",
+    label: "Fund",
+    title: "Bring the liquidity path.",
+    description: "Use balance sheet, flash liquidity, or routing partners to complete repayment without holding every asset upfront.",
   },
   {
-    id: "collect",
-    label: "Collect",
-    title: "Collect the liquidation bonus.",
-    description: "The bonus is the fee paid for completing the liquidation.",
+    id: "settle",
+    label: "Settle",
+    title: "Close the account cleanly.",
+    description: "Repay the loan, resolve the collateral, and leave the market ready for the next borrower.",
   },
 ] as const
 

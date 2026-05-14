@@ -5,25 +5,25 @@ import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const STEPS = [
   {
-    id: "surface",
-    label: "Partner surface",
-    title: "Expose Avana where users already make decisions.",
+    id: "entry",
+    label: "Entry point",
+    title: "Add credit to the moments that need it.",
     description:
-      "Add a credit entry point to your DEX, wallet, or app so users can borrow against LP positions without changing context.",
+      "Show Borrow, Manage, or Repay actions beside the LP positions your users already track.",
   },
   {
-    id: "kit",
-    label: "Kit + API",
-    title: "Connect the menu to Avana through lightweight integration layers.",
+    id: "context",
+    label: "Context",
+    title: "Pass the position, keep the journey.",
     description:
-      "The partner keeps control of the interface while Avana handles credit, health, and settlement in the background.",
+      "AppKit connects user intent, wallet state, and LP position data to the right Avana flow.",
   },
   {
-    id: "economics",
-    label: "Partner economics",
-    title: "Capture fees while Avana powers the credit engine.",
+    id: "return",
+    label: "Return path",
+    title: "Send users back with the position intact.",
     description:
-      "Integrations can monetize the surface while routing users into LP-backed credit that feels native to the host product.",
+      "After borrowing or repayment, the user returns to your product with the same portfolio context.",
   },
 ] as const
 
@@ -75,7 +75,7 @@ export default function BusinessAppKitShowcaseSection() {
     <section className="deferred-viewport bg-inherit">
       <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
         <SectionEyebrow tone="violet">How partners integrate</SectionEyebrow>
-        <SectionTitle>AppKit turns Avana into a native surface.</SectionTitle>
+        <SectionTitle>Connect the user journey, not just a button.</SectionTitle>
       </div>
 
       <div
