@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
-import { SITE_NAME, WORDMARK_PATH, siteRoutes } from "@/lib/site"
+import { HEADER_WORDMARK_PATH, SITE_NAME, siteRoutes } from "@/lib/site"
 import HeaderMobileMenu from "@/components/header-mobile-menu"
 import {
   desktopMenuButtons,
@@ -64,7 +64,7 @@ function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
   return (
     <span className="inline-flex items-center overflow-hidden">
       <Image
-        src={WORDMARK_PATH}
+        src={HEADER_WORDMARK_PATH}
         alt={`${SITE_NAME} logo`}
         width={3000}
         height={1500}

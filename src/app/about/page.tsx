@@ -48,13 +48,14 @@ export default function AboutPage() {
         <div className="site-content-shell">
           <div className="mx-auto max-w-4xl text-center">
             <h1
-              aria-label={`Introducing ${SITE_NAME}: An LP-as-Collateral Protocol Built on Aave V4`}
+              aria-label={`Introducing ${SITE_NAME}: A lending protocol for LP collateral`}
               className="text-[2.35rem] font-[580] leading-[0.96] tracking-[-0.06em] text-gray-950 sm:text-[3.2rem] lg:text-[4.5rem]"
             >
               <span className="text-gray-950">Introducing {SITE_NAME}:</span>
               <br />
               <span className="text-[#01AACF] lg:whitespace-nowrap">
                 <span className="block lg:inline">A lending protocol</span>
+                <span className="hidden lg:inline"> </span>
                 <span className="block lg:inline">for LP collateral</span>
               </span>
             </h1>
