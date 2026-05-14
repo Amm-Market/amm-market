@@ -6,7 +6,6 @@ import { BadgeDollarSign, Compass, Handshake, LayoutTemplate, ShieldCheck, Workf
 import BusinessAppKitShowcaseSection from "@/components/business-appkit-showcase"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 
@@ -159,8 +158,8 @@ export default function AppKitPage() {
     <main className="bg-white">
       <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">
         <div className="relative z-0">
-          <section className="pb-4 md:pb-6 lg:pb-8 xl:pb-10">
-            <div className="w-full pt-3 pb-6 md:pt-5 md:pb-10 lg:pb-2 xl:pb-3">
+          <section className="border-b border-gray-200 pb-10 md:pb-14 lg:pb-16 xl:pb-18">
+            <div className="w-full pt-3 pb-10 md:pt-5 md:pb-14 lg:pb-8 xl:pb-10">
               <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                   <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
@@ -211,22 +210,12 @@ export default function AppKitPage() {
         </div>
       </div>
 
-      <ProductStorySection
-        eyebrow="For partners"
-        eyebrowTone="violet"
-        titleLines={["Distribution", "for LP-backed credit."]}
-        paragraphs={[
-          "LP users already make capital decisions inside DEXs, wallets, and portfolio tools. AppKit lets those products offer a direct path into Avana when borrowing is the next useful action.",
-          "The partner owns the user relationship and product context. Avana owns the credit rules, health checks, and settlement path. That split lets partners add a meaningful financial action without becoming a lending protocol.",
-        ]}
-      />
-
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 pt-8 sm:px-6 sm:pt-12">
         <div className="relative z-0 flex flex-1 flex-col">
           <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20 2xl:space-y-36 2xl:pt-18 2xl:pb-18">
             <BusinessAppKitShowcaseSection />
 
-            <section>
+            <section className="pt-12 md:pt-16 lg:pt-20">
               <div className="space-y-4 text-left">
                 <SectionEyebrow tone="violet">Integration model</SectionEyebrow>
                 <SectionTitle>Built for DEXs that already own LP flow.</SectionTitle>
@@ -244,43 +233,94 @@ export default function AppKitPage() {
               </div>
             </section>
 
+            <section className="bg-white py-12 md:py-16 lg:py-20">
+              <div className="site-content-shell">
+                <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:grid-rows-[auto_auto] lg:gap-18">
+                  <div className="max-w-[33rem] pt-2 lg:col-start-1 lg:row-start-1 lg:pt-6">
+                    <SectionEyebrow tone="violet">For partners</SectionEyebrow>
+                    <SectionTitle className="mt-5 max-w-none !text-[clamp(2rem,8.5vw,4.4rem)] !leading-[0.96] text-[#111111] lg:!text-[3.5rem]">
+                      <span className="block whitespace-nowrap">Distribution for</span>
+                      <span className="block whitespace-nowrap">LP-backed credit.</span>
+                    </SectionTitle>
+
+                    <p className="mt-7 max-w-[28rem] text-[0.98rem] leading-[1.62] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
+                      AppKit helps DEXs, wallets, and apps embed Avana borrowing into the user journeys they already
+                      own. Keep the experience native while Avana handles credit logic, execution, and settlement in
+                      the background.
+                    </p>
+                  </div>
+
+                  <div className="relative order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:order-none lg:pt-1">
+                    <div className="relative aspect-[1.18/1] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:rounded-[32px]">
+                      <Image
+                        src="/images/leverage-hero-placeholder.webp"
+                        alt="Person holding a smartphone showing a finance app"
+                        fill
+                        className="object-cover object-[55%_42%]"
+                        sizes="(max-width: 1024px) 100vw, 54vw"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="order-3 max-w-[33rem] pt-10 lg:col-start-1 lg:row-start-2 lg:order-none lg:pt-0">
+                    <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+                      <Link
+                        href="/developers"
+                        prefetch={false}
+                        className="inline-flex h-[4.15rem] items-center justify-center rounded-full bg-black px-10 text-[1.02rem] font-semibold tracking-[-0.02em] text-white transition-transform hover:-translate-y-0.5 hover:bg-neutral-900"
+                      >
+                        View docs
+                      </Link>
+                      <Link
+                        href="/credit-lines"
+                        prefetch={false}
+                        className="inline-flex h-[4.15rem] items-center justify-center rounded-full border border-black/10 bg-white px-10 text-[1.02rem] font-semibold tracking-[-0.02em] text-[#111111] transition-transform hover:-translate-y-0.5 hover:bg-neutral-50"
+                      >
+                        See credit lines
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
             <section className="relative -mx-4 overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#f8f7fc_0%,#eee8f8_50%,#f5f3fa_100%)] px-6 py-12 sm:-mx-6 sm:px-10 md:px-12 md:py-16 lg:py-20 2xl:py-18">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(139,92,246,0.10),transparent_40%),radial-gradient(circle_at_80%_100%,rgba(99,102,241,0.08),transparent_35%)]" />
               <div className="relative z-10">
                 <div className="max-w-[600px] space-y-3">
-                  <SectionEyebrow tone="violet">Why teams use AppKit</SectionEyebrow>
-                  <SectionTitle>Existing LP traffic becomes a credit channel.</SectionTitle>
+                  <SectionEyebrow tone="violet">Why partners choose AppKit</SectionEyebrow>
+                  <SectionTitle>End-to-end LP credit rails.</SectionTitle>
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-14 lg:grid-cols-4 lg:gap-5">
                   {[
                     {
-                      stat: "1",
-                      label: "intent",
-                      title: "Meet active LPs in context",
+                      stat: "01",
+                      label: "experience",
+                      title: "Own the experience",
                       description:
-                        "Borrowing appears when users are already thinking about liquidity, exposure, and capital needs.",
+                        "Keep the borrowing flow inside your product while Avana handles credit in the background.",
                     },
                     {
-                      stat: "0",
-                      label: "build",
-                      title: "Avoid building a credit protocol",
+                      stat: "02",
+                      label: "execution",
+                      title: "Advanced execution",
                       description:
-                        "Partners can add borrowing access without owning underwriting, liquidation, or settlement systems.",
+                        "Access LP-backed credit with reliable execution, clear routing, and responsive market handling.",
                     },
                     {
-                      stat: "Shared",
-                      label: "revenue",
-                      title: "Create partner economics",
+                      stat: "03",
+                      label: "controls",
+                      title: "Built for compliance",
                       description:
-                        "The integration can support referral, routing, or commercial arrangements around originated demand.",
+                        "Ship with infrastructure that is designed around security, risk controls, and privacy-aware operations.",
                     },
                     {
-                      stat: "API",
-                      label: "surface",
-                      title: "Fit multiple product shapes",
+                      stat: "04",
+                      label: "launch",
+                      title: "Fast-track your launch",
                       description:
-                        "Use the same primitives across dashboards, wallets, DEX interfaces, and mobile flows.",
+                        "Move faster with modular APIs, partner support, and a rollout path that fits your product surface.",
                     },
                   ].map((item) => (
                     <article key={item.title} className="flex flex-col rounded-2xl bg-white/70 p-6 backdrop-blur-sm">
