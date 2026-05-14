@@ -76,7 +76,7 @@ function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
         alt={`${SITE_NAME} logo`}
         width={3000}
         height={1500}
-        className={mobileOnly ? "h-[52px] w-auto scale-[1.08] origin-left" : "h-[56px] w-auto scale-[1.08] origin-left md:h-[52px]"}
+        className={mobileOnly ? "h-[56px] w-auto scale-[1.08] origin-left" : "h-[56px] w-auto scale-[1.08] origin-left md:h-[52px]"}
         priority
       />
     </span>
@@ -263,7 +263,7 @@ export default function Header(): React.JSX.Element {
               >
                 <button
                   type="button"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#2F414B]/12 bg-white text-[#0F1518] shadow-[0_6px_18px_rgba(15,21,24,0.06)] transition hover:border-[#2F414B]/20 hover:bg-[#2F414B]/5"
+                  className="inline-flex h-11 w-11 items-center justify-center text-[#0F1518] transition hover:text-[#2F414B]"
                   aria-label="Open menu"
                   aria-expanded={mobileMenuOpen}
                   aria-controls="mobile-site-nav"
@@ -276,10 +276,9 @@ export default function Header(): React.JSX.Element {
                     setMobileMenuOpen(true)
                   }}
                 >
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                    <path d="M3 5H15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                    <path d="M3 9H15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                    <path d="M3 13H15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  <svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
+                    <path d="M2 4H20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                    <path d="M2 10H20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
                   </svg>
                 </button>
               </div>

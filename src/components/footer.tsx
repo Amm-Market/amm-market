@@ -145,7 +145,7 @@ export default function Footer(): React.JSX.Element {
           {/* Logo */}
           <div className="space-y-5 lg:max-w-sm">
             <Link href={siteRoutes.home} prefetch={false} className="size-fit">
-              <Image src={WORDMARK_PATH} alt={`${SITE_NAME} logo`} width={3000} height={1500} className="h-[34px] w-auto" />
+              <Image src={WORDMARK_PATH} alt={`${SITE_NAME} logo`} width={3000} height={1500} className="h-[42px] w-auto" />
             </Link>
             <p className="max-w-sm text-[1.02rem] font-normal leading-7 tracking-[-0.02em] text-gray-700">
               Avana is an LP-collateral protocol on Aave v4 that helps liquidity providers borrow against active positions while staying in the pool.
