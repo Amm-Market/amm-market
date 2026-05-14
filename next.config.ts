@@ -1,8 +1,5 @@
-import { createHash } from "node:crypto"
 import type { NextConfig } from "next";
 import { legacyBlogRedirects } from "./src/lib/site";
-import { faqSchema } from "./src/app/faq/faq-content"
-import { organizationSchema, serializeJsonLd, websiteSchema } from "./src/lib/structured-data"
 
 const legacyMarketingRedirects = [
   { source: "/open-spoke", destination: "/borrow" },
@@ -20,16 +17,7 @@ const legacyMarketingRedirects = [
  * 
  * @see https://owasp.org/www-project-secure-headers/
  */
-function cspHash(value: string) {
-  return `'sha256-${createHash("sha256").update(value).digest("base64")}'`
-}
-
-const scriptSrc = [
-  "'self'",
-  cspHash(serializeJsonLd(organizationSchema)),
-  cspHash(serializeJsonLd(websiteSchema)),
-  cspHash(serializeJsonLd(faqSchema)),
-]
+const scriptSrc = ["'self'", "'unsafe-inline'"]
 
 if (process.env.NODE_ENV !== "production") {
   scriptSrc.push("'unsafe-eval'")

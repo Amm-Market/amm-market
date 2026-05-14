@@ -145,7 +145,7 @@ export default function Footer(): React.JSX.Element {
           {/* Logo */}
           <div className="space-y-5 lg:max-w-sm">
             <Link href={siteRoutes.home} prefetch={false} className="size-fit">
-              <Image src={WORDMARK_PATH} alt={`${SITE_NAME} wordmark`} width={174} height={32} className="h-[18px] w-[98px]" />
+              <Image src={WORDMARK_PATH} alt={`${SITE_NAME} logo`} width={3000} height={1500} className="h-[42px] w-auto" />
             </Link>
             <p className="max-w-sm text-[1.02rem] font-normal leading-7 tracking-[-0.02em] text-gray-700">
               Avana is an LP-collateral protocol on Aave v4 that helps liquidity providers borrow against active positions while staying in the pool.
@@ -158,7 +158,7 @@ export default function Footer(): React.JSX.Element {
                   aria-label={link.label}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white text-gray-900 transition hover:border-black/20 hover:bg-black/[0.03]"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#2F414B]/12 bg-white text-[#0F1518] transition hover:border-[#01AACF]/40 hover:bg-[#01AACF]/8"
                 >
                   {link.icon}
                 </Link>
@@ -180,7 +180,7 @@ export default function Footer(): React.JSX.Element {
                       key={`${section.title}-${link.label}-${link.href}`}
                       href={link.href}
                       prefetch={false}
-                      className="transition-colors hover:text-blue-600"
+                      className="transition-colors hover:text-[#01AACF]"
                     >
                       {link.label}
                     </Link>

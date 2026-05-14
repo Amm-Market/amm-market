@@ -204,13 +204,9 @@ export default function InvestGrowthCalculatorSection() {
               <div className="space-y-4 border-t border-gray-200 pt-4 sm:hidden">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <Image
-                      src="/Fluid Logo.svg"
-                      alt="Fluid"
-                      width={2617}
-                      height={800}
-                      className="h-auto w-[3.8rem] max-w-full object-contain"
-                    />
+                    <span className="inline-flex rounded-full bg-[#BC846F]/14 px-2.5 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#9E5537]">
+                      Benchmark
+                    </span>
                     <p className="text-[1rem] font-semibold tracking-[-0.04em] text-[#163042]">
                       3.5% APY
                     </p>
@@ -218,7 +214,7 @@ export default function InvestGrowthCalculatorSection() {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
                       <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#8b98a7]">
-                        Fluid Interest
+                        Benchmark Interest
                       </p>
                       <p className="text-[1.1rem] font-semibold tracking-[-0.04em] text-[#163042]">
                         {currencyFormatter.format(fluidInterest)}
@@ -226,7 +222,7 @@ export default function InvestGrowthCalculatorSection() {
                     </div>
                     <div className="space-y-1">
                       <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-rose-500/80">
-                        Fluid Value
+                        Benchmark Value
                       </p>
                       <p className="text-[1.15rem] font-semibold tracking-[-0.05em] text-rose-700">
                         {fluidValueDisplay}
@@ -239,13 +235,9 @@ export default function InvestGrowthCalculatorSection() {
 
               <div className="hidden gap-5 border-t border-gray-200 pt-5 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
                 <div className="space-y-4">
-                  <Image
-                    src="/Fluid Logo.svg"
-                    alt="Fluid"
-                    width={2617}
-                    height={800}
-                    className="h-auto w-[5.5rem] max-w-full object-contain md:w-[6.25rem]"
-                  />
+                  <span className="inline-flex w-fit rounded-full bg-[#BC846F]/14 px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#9E5537]">
+                    Benchmark
+                  </span>
                   <p className="text-[1.25rem] font-semibold tracking-[-0.04em] text-[#163042]">
                     3.5% APY
                   </p>
@@ -253,7 +245,7 @@ export default function InvestGrowthCalculatorSection() {
 
                 <div className="space-y-2 sm:text-right">
                   <p className="text-xs uppercase tracking-[0.2em] text-rose-500/80">
-                    Fluid Value
+                    Benchmark Value
                   </p>
                   <p className={`${fluidValueSize} max-w-full font-semibold tracking-[-0.05em] text-rose-700 [overflow-wrap:anywhere]`}>
                     {fluidValueDisplay}
