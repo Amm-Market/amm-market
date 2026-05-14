@@ -6,6 +6,7 @@ import { BadgeDollarSign, Compass, Handshake, LayoutTemplate, ShieldCheck, Workf
 import BusinessAppKitShowcaseSection from "@/components/business-appkit-showcase"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
+import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 
@@ -158,8 +159,8 @@ export default function AppKitPage() {
     <main className="bg-white">
       <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">
         <div className="relative z-0">
-          <section className="border-b border-gray-200 pb-10 md:pb-14 lg:pb-16 xl:pb-18">
-            <div className="w-full pt-3 pb-10 md:pt-5 md:pb-14 lg:pb-8 xl:pb-10">
+          <section className="pb-4 md:pb-6 lg:pb-8 xl:pb-10">
+            <div className="w-full pt-3 pb-6 md:pt-5 md:pb-10 lg:pb-2 xl:pb-3">
               <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                   <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
@@ -171,15 +172,16 @@ export default function AppKitPage() {
                       className="h-auto w-full rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                       sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
                       priority
+                      fetchPriority="high"
                     />
                   </div>
                 </div>
 
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
-                  <h1 className="mb-3 max-w-[13ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[12ch] md:text-5xl lg:text-5xl xl:text-6xl">
-                    <span className="lg:whitespace-nowrap">Bring credit</span>
+                  <h1 className="mb-3 max-w-[11ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
+                    <span>Integrate lending</span>
                     <br />
-                    <span className="lg:whitespace-nowrap">to LP users.</span>
+                    <span>into your DEX.</span>
                   </h1>
 
                   <p className="mb-5 max-w-[36ch] text-base leading-relaxed text-gray-600 sm:max-w-[40ch] md:mb-6 md:text-lg">
@@ -210,12 +212,22 @@ export default function AppKitPage() {
         </div>
       </div>
 
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 pt-8 sm:px-6 sm:pt-12">
-        <div className="relative z-0 flex flex-1 flex-col">
-          <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20 2xl:space-y-36 2xl:pt-18 2xl:pb-18">
+      <ProductStorySection
+        withTopDivider
+        eyebrow="For partners"
+        eyebrowTone="violet"
+        titleLines={["Distribution for", "LP-backed credit."]}
+        paragraphs={[
+          "AppKit helps DEXs, wallets, and apps embed Avana borrowing into the user journeys they already own. Keep the experience native while Avana handles credit logic, execution, and settlement in the background.",
+        ]}
+      />
+
+      <section className="pt-32 md:pt-40 2xl:pt-36">
+        <div className="site-content-shell">
+          <div className="mx-auto w-full max-w-[76rem] space-y-32 md:space-y-40 2xl:space-y-36">
             <BusinessAppKitShowcaseSection />
 
-            <section className="pt-12 md:pt-16 lg:pt-20">
+            <section>
               <div className="space-y-4 text-left">
                 <SectionEyebrow tone="violet">Integration model</SectionEyebrow>
                 <SectionTitle>Built for DEXs that already own LP flow.</SectionTitle>
@@ -230,57 +242,6 @@ export default function AppKitPage() {
                     icon={feature.icon}
                   />
                 ))}
-              </div>
-            </section>
-
-            <section className="bg-white py-12 md:py-16 lg:py-20">
-              <div className="site-content-shell">
-                <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:grid-rows-[auto_auto] lg:gap-18">
-                  <div className="max-w-[33rem] pt-2 lg:col-start-1 lg:row-start-1 lg:pt-6">
-                    <SectionEyebrow tone="violet">For partners</SectionEyebrow>
-                    <SectionTitle className="mt-5 max-w-none !text-[clamp(2rem,8.5vw,4.4rem)] !leading-[0.96] text-[#111111] lg:!text-[3.5rem]">
-                      <span className="block whitespace-nowrap">Distribution for</span>
-                      <span className="block whitespace-nowrap">LP-backed credit.</span>
-                    </SectionTitle>
-
-                    <p className="mt-7 max-w-[28rem] text-[0.98rem] leading-[1.62] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
-                      AppKit helps DEXs, wallets, and apps embed Avana borrowing into the user journeys they already
-                      own. Keep the experience native while Avana handles credit logic, execution, and settlement in
-                      the background.
-                    </p>
-                  </div>
-
-                  <div className="relative order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:order-none lg:pt-1">
-                    <div className="relative aspect-[1.18/1] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:rounded-[32px]">
-                      <Image
-                        src="/images/leverage-hero-placeholder.webp"
-                        alt="Person holding a smartphone showing a finance app"
-                        fill
-                        className="object-cover object-[55%_42%]"
-                        sizes="(max-width: 1024px) 100vw, 54vw"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="order-3 max-w-[33rem] pt-10 lg:col-start-1 lg:row-start-2 lg:order-none lg:pt-0">
-                    <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-                      <Link
-                        href="/developers"
-                        prefetch={false}
-                        className="inline-flex h-[4.15rem] items-center justify-center rounded-full bg-black px-10 text-[1.02rem] font-semibold tracking-[-0.02em] text-white transition-transform hover:-translate-y-0.5 hover:bg-neutral-900"
-                      >
-                        View docs
-                      </Link>
-                      <Link
-                        href="/credit-lines"
-                        prefetch={false}
-                        className="inline-flex h-[4.15rem] items-center justify-center rounded-full border border-black/10 bg-white px-10 text-[1.02rem] font-semibold tracking-[-0.02em] text-[#111111] transition-transform hover:-translate-y-0.5 hover:bg-neutral-50"
-                      >
-                        See credit lines
-                      </Link>
-                    </div>
-                  </div>
-                </div>
               </div>
             </section>
 
@@ -351,7 +312,7 @@ export default function AppKitPage() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
   )
 }
