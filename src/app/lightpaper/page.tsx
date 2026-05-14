@@ -346,13 +346,13 @@ const oldImplementationReferences = [
 function ImagePlaceholder({ label }: { label: string }) {
   return (
     <div className="my-6 overflow-hidden rounded-xl border border-dashed border-gray-300 bg-gray-50">
-      <div className="flex aspect-video w-full items-center justify-center bg-gradient-to-br from-white via-blue-50 to-gray-100 px-6 py-8">
+      <div className="flex aspect-video w-full items-center justify-center bg-gradient-to-br from-white via-cyan-50 to-gray-100 px-6 py-8">
         <div className="mx-auto flex max-w-md flex-col items-center gap-3 px-6 text-center">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-blue-200 bg-white text-xs font-semibold text-blue-600">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-cyan-200 bg-white text-xs font-semibold text-[#01AACF]">
             IMG
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">Placeholder</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#01AACF]">Placeholder</p>
             <p className="mt-2 text-base font-semibold text-gray-900">{label}</p>
           </div>
           <p className="text-sm leading-6 text-gray-500">Replace later with the final approved visual.</p>
@@ -449,7 +449,7 @@ function ReferenceTable({ references }: { references: { label: string; href: str
                   href={reference.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm font-medium text-blue-600 hover:underline"
+                  className="text-sm font-medium text-[#01AACF] hover:underline"
                 >
                   Open
                 </Link>
@@ -480,7 +480,7 @@ function EModeBadge({ category }: { category: BorrowerSpoke["emodeCategory"] }) 
   }
 
   return (
-    <span className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-blue-700">
+    <span className="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#01AACF]">
       E-Mode
     </span>
   )
@@ -538,7 +538,7 @@ export default function LightpaperPage() {
                 </div>
               </section>
 
-              <div className="site-editorial-content max-w-3xl [&_a]:text-blue-600 [&_a]:hover:underline [&_h2]:text-[1.35rem] [&_h2]:font-semibold [&_h2]:leading-[1.2] [&_h2]:tracking-[-0.01em] [&_h2]:text-gray-900 [&_h3]:text-[1rem] [&_h3]:font-medium [&_h3]:leading-[1.35] [&_h3]:tracking-[-0.01em] [&_h3]:text-gray-900 [&_li]:mb-2 [&_li]:text-[0.9375rem] [&_li]:leading-7 [&_p]:text-[1.35rem] [&_p]:font-normal [&_p]:leading-[1.5] [&_p]:tracking-[-0.03em] sm:[&_h2]:text-[1.7rem] sm:[&_h3]:text-[1.08rem] sm:[&_li]:text-[1rem] sm:[&_p]:text-[1.5rem]">
+              <div className="site-editorial-content max-w-3xl [&_a]:text-[#01AACF] [&_a]:hover:underline [&_h2]:text-[1.35rem] [&_h2]:font-semibold [&_h2]:leading-[1.2] [&_h2]:tracking-[-0.01em] [&_h2]:text-gray-900 [&_h3]:text-[1rem] [&_h3]:font-medium [&_h3]:leading-[1.35] [&_h3]:tracking-[-0.01em] [&_h3]:text-gray-900 [&_li]:mb-2 [&_li]:text-[0.9375rem] [&_li]:leading-7 [&_p]:text-[1.35rem] [&_p]:font-normal [&_p]:leading-[1.5] [&_p]:tracking-[-0.03em] sm:[&_h2]:text-[1.7rem] sm:[&_h3]:text-[1.08rem] sm:[&_li]:text-[1rem] sm:[&_p]:text-[1.5rem]">
                 <div className="space-y-12">
                   <section id="executive-summary" className="scroll-mt-32">
                     <LightpaperSectionHeader eyebrow="Why this matters" title="Executive Summary" tone="violet" />
@@ -598,7 +598,7 @@ export default function LightpaperPage() {
                       href="https://gov.uniswap.org/t/rfc-aave-s-cdp-for-uniswap-v4-positions/25568"
                       target="_blank"
                       rel="noreferrer"
-                      className="font-medium text-blue-600 hover:underline"
+                      className="font-medium text-[#01AACF] hover:underline"
                     >
                       CDPs for Uniswap v4 Positions
                     </Link>
@@ -993,7 +993,7 @@ export default function LightpaperPage() {
                 </div>
 
                 <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50 px-5 py-5 sm:px-6">
-                  <p className="text-sm font-semibold uppercase tracking-[0.14em] text-blue-600">Formula</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#01AACF]">Formula</p>
                   <p className="mt-3 font-mono text-[0.95rem] leading-7 text-gray-800 sm:text-[1.05rem]">
                     Borrowable USD = Position USD Value × Lower-Token CF × Pool-Level Risk Factor
                   </p>
