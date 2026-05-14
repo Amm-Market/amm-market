@@ -174,6 +174,7 @@ export default function LiquidatorsPage() {
       </div>
 
       <ProductStorySection
+        withTopDivider
         eyebrow="For operators"
         eyebrowTone="rose"
         titleLines={["A new surface", "for liquidators."]}
