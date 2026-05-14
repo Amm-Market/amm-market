@@ -111,6 +111,7 @@ function getRoadmapDisplayLabel(label: string) {
 
 function RoadmapMilestoneIcon({ label }: { label: string }) {
   const normalized = label.toLowerCase()
+  const iconClassName = "h-3.5 w-3.5 text-[#01AACF]"
 
   if (
     normalized.includes("risk") ||
@@ -120,7 +121,7 @@ function RoadmapMilestoneIcon({ label }: { label: string }) {
     normalized.includes("audit") ||
     normalized.includes("health")
   ) {
-    return <ShieldCheck className="h-3.5 w-3.5 text-gray-400" aria-hidden="true" />
+    return <ShieldCheck className={iconClassName} aria-hidden="true" />
   }
 
   if (
@@ -129,15 +130,15 @@ function RoadmapMilestoneIcon({ label }: { label: string }) {
     normalized.includes("ui") ||
     normalized.includes("monitoring")
   ) {
-    return <LayoutDashboard className="h-3.5 w-3.5 text-gray-400" aria-hidden="true" />
+    return <LayoutDashboard className={iconClassName} aria-hidden="true" />
   }
 
   if (normalized.includes("token") || normalized.includes("ava")) {
-    return <Coins className="h-3.5 w-3.5 text-gray-400" aria-hidden="true" />
+    return <Coins className={iconClassName} aria-hidden="true" />
   }
 
   if (normalized.includes("loop") || normalized.includes("leverage")) {
-    return <RefreshCcw className="h-3.5 w-3.5 text-gray-400" aria-hidden="true" />
+    return <RefreshCcw className={iconClassName} aria-hidden="true" />
   }
 
   if (
@@ -146,18 +147,18 @@ function RoadmapMilestoneIcon({ label }: { label: string }) {
     normalized.includes("cross-chain") ||
     normalized.includes("deployment")
   ) {
-    return <Globe2 className="h-3.5 w-3.5 text-gray-400" aria-hidden="true" />
+    return <Globe2 className={iconClassName} aria-hidden="true" />
   }
 
   if (normalized.includes("pool")) {
-    return <Layers3 className="h-3.5 w-3.5 text-gray-400" aria-hidden="true" />
+    return <Layers3 className={iconClassName} aria-hidden="true" />
   }
 
   if (normalized.includes("launch") || normalized.includes("sandbox") || normalized.includes("testnet")) {
-    return <Rocket className="h-3.5 w-3.5 text-gray-400" aria-hidden="true" />
+    return <Rocket className={iconClassName} aria-hidden="true" />
   }
 
-  return <Code2 className="h-3.5 w-3.5 text-gray-400" aria-hidden="true" />
+  return <Code2 className={iconClassName} aria-hidden="true" />
 }
 
 export default function ProtocolRoadmapSection() {

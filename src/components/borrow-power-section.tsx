@@ -16,8 +16,8 @@ export default function BorrowPowerSection() {
         <div className="relative flex justify-center md:justify-end">
           <div className="relative w-full max-w-[36rem] lg:max-w-[40rem] xl:max-w-[42rem]">
             <Image
-              src="/images/borrow-power.webp"
-              alt="Layered blue token illustration"
+              src="/images/Avana Borrow.png"
+              alt="Avana Borrow illustration"
               width={1406}
               height={1397}
               className="h-auto w-full"
