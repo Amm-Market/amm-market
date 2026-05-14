@@ -10,7 +10,7 @@ import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
 export const metadata: Metadata = {
-  title: "Credit Lines - Avana",
+  title: "Credit Lines",
   description:
     "Explore Avana credit lines for businesses, including financing workflows, monitoring, and managed credit access.",
 }
