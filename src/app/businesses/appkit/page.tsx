@@ -154,6 +154,95 @@ function AppKitFeatureCard({
   )
 }
 
+function AppKitAccessSection() {
+  return (
+    <section className="bg-white py-16 md:py-24 lg:py-28">
+      <div className="site-content-shell">
+          <div className="mx-auto grid w-full max-w-[76rem] gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-14">
+            <div className="max-w-[32rem] pt-1 text-left lg:pt-4">
+            <SectionEyebrow tone="violet">Partner access</SectionEyebrow>
+            <SectionTitle className="mt-5 max-w-none text-[#111111]">
+              <span className="block">Ready to build</span>
+              <span className="block">with AppKit?</span>
+            </SectionTitle>
+            <p className="mt-7 max-w-[34rem] text-[1rem] leading-[1.68] tracking-[-0.01em] text-[#74757c] md:text-[1.08rem]">
+              Request early access to AppKit. We review each partner for product fit, launch readiness, and how
+              the borrowing experience should show up inside your interface.
+            </p>
+          </div>
+
+          <div className="pt-2 lg:pt-6">
+            <form className="max-w-[30rem] lg:ml-auto">
+              <div className="grid grid-cols-1 gap-2.5 md:grid-cols-2">
+                <label className="sr-only" htmlFor="appkit-first-name">
+                  First name
+                </label>
+                <input
+                  id="appkit-first-name"
+                  type="text"
+                  placeholder="First name"
+                  className="h-[3.9rem] w-full rounded-[1.2rem] border border-transparent bg-[#f4f4f2] px-[1.125rem] text-[0.95rem] text-[#111111] outline-none transition placeholder:text-[#9a9a9a] focus:bg-white focus:ring-1 focus:ring-black/10"
+                />
+
+                <label className="sr-only" htmlFor="appkit-last-name">
+                  Last name
+                </label>
+                <input
+                  id="appkit-last-name"
+                  type="text"
+                  placeholder="Last name"
+                  className="h-[3.9rem] w-full rounded-[1.2rem] border border-transparent bg-[#f4f4f2] px-[1.125rem] text-[0.95rem] text-[#111111] outline-none transition placeholder:text-[#9a9a9a] focus:bg-white focus:ring-1 focus:ring-black/10"
+                />
+              </div>
+
+              <label className="sr-only" htmlFor="appkit-work-email">
+                Work email
+              </label>
+              <input
+                id="appkit-work-email"
+                type="email"
+                placeholder="Work email"
+                className="mt-2.5 h-[4rem] w-full rounded-[1.2rem] border border-transparent bg-[#f4f4f2] px-[1.125rem] text-[0.95rem] text-[#111111] outline-none transition placeholder:text-[#9a9a9a] focus:bg-white focus:ring-1 focus:ring-black/10"
+              />
+
+              <label className="sr-only" htmlFor="appkit-goal">
+                What are you building?
+              </label>
+              <textarea
+                id="appkit-goal"
+                rows={4}
+                placeholder="What are you building?"
+                className="mt-2.5 min-h-[7.25rem] w-full resize-none rounded-[1.2rem] border border-transparent bg-[#f4f4f2] px-[1.125rem] py-[0.875rem] text-[0.95rem] text-[#111111] outline-none transition placeholder:text-[#9a9a9a] focus:bg-white focus:ring-1 focus:ring-black/10"
+              />
+
+              <label className="mt-2.5 flex items-center gap-3 rounded-[1.2rem] bg-[#f4f4f2] px-[1.125rem] py-[0.875rem] text-left text-[0.92rem] leading-6 tracking-[-0.01em] text-[#74757c]">
+                <input
+                  type="checkbox"
+                  className="h-5 w-5 rounded border border-[#cfcfc9] bg-white text-black accent-black"
+                />
+                <span>
+                  By contacting Avana, I agree to the{" "}
+                  <Link href="/privacy" prefetch={false} className="underline underline-offset-4">
+                    Privacy Policy
+                  </Link>
+                  .
+                </span>
+              </label>
+
+            <button
+              type="submit"
+              className="mt-5 flex h-[4rem] w-full items-center justify-center rounded-[1.5rem] bg-[#2a2b30] text-[1rem] font-medium text-white transition-colors hover:bg-black"
+            >
+              Submit
+            </button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function AppKitPage() {
   return (
     <main className="bg-white">
@@ -244,6 +333,8 @@ export default function AppKitPage() {
                 ))}
               </div>
             </section>
+
+            <AppKitAccessSection />
 
             <section className="relative -mx-4 overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#f8f7fc_0%,#eee8f8_50%,#f5f3fa_100%)] px-6 py-12 sm:-mx-6 sm:px-10 md:px-12 md:py-16 lg:py-20 2xl:py-18">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(139,92,246,0.10),transparent_40%),radial-gradient(circle_at_80%_100%,rgba(99,102,241,0.08),transparent_35%)]" />
