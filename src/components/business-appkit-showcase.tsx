@@ -82,7 +82,7 @@ export default function BusinessAppKitShowcaseSection() {
     <section className="deferred-viewport bg-inherit">
       <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
         <SectionEyebrow tone="violet">How partners integrate</SectionEyebrow>
-        <SectionTitle>Avana AppKit inside top DEXs.</SectionTitle>
+        <SectionTitle>Avana AppKit Concepts</SectionTitle>
       </div>
 
       <div
