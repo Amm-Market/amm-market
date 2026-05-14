@@ -174,12 +174,12 @@ export default function Footer(): React.JSX.Element {
 
           {/* Links Grid */}
           <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:justify-self-center lg:grid-cols-3 lg:gap-x-6 lg:gap-y-10 xl:gap-x-8">
-            {footerSections.map((section) => (
+            {footerSections.map((section, index) => (
               <div
                 key={section.title}
                 className={`flex flex-col gap-4 text-sm font-normal text-gray-900 ${section.className ?? ""}`}
               >
-                <span className="font-medium">{section.title}</span>
+                <span className={`font-medium ${index < 3 ? "text-[#01AACF]" : ""}`}>{section.title}</span>
                 <div className="flex flex-col opacity-70 gap-2">
                   {section.links.map((link) => (
                     <Link
