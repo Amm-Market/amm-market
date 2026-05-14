@@ -5,25 +5,32 @@ import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const STEPS = [
   {
-    id: "entry",
-    label: "Entry point",
-    title: "Add credit to the moments that need it.",
+    id: "uniswap",
+    label: "Uniswap",
+    title: "Borrow from LP positions.",
     description:
-      "Show Borrow, Manage, or Repay actions beside the LP positions your users already track.",
+      "See how credit could sit inside Uniswap position views without pulling users out of the LP workflow.",
   },
   {
-    id: "context",
-    label: "Context",
-    title: "Pass the position, keep the journey.",
+    id: "balancer",
+    label: "Balancer",
+    title: "Credit beside vault exposure.",
     description:
-      "AppKit connects user intent, wallet state, and LP position data to the right Avana flow.",
+      "Show borrowing alongside Balancer pool balances, vault exposure, and multi-asset liquidity context.",
   },
   {
-    id: "return",
-    label: "Return path",
-    title: "Send users back with the position intact.",
+    id: "aerodrome",
+    label: "Aerodrome",
+    title: "Open credit from active LPs.",
     description:
-      "After borrowing or repayment, the user returns to your product with the same portfolio context.",
+      "Let Aerodrome users access credit from the same screens where they track fees, emissions, and performance.",
+  },
+  {
+    id: "sushi",
+    label: "Sushi",
+    title: "Extend LP utility.",
+    description:
+      "Turn Sushi LP positions into a credit entry point alongside swaps, yield, and portfolio management.",
   },
 ] as const
 
@@ -75,7 +82,7 @@ export default function BusinessAppKitShowcaseSection() {
     <section className="deferred-viewport bg-inherit">
       <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
         <SectionEyebrow tone="violet">How partners integrate</SectionEyebrow>
-        <SectionTitle>Connect the user journey, not just a button.</SectionTitle>
+        <SectionTitle>Avana AppKit inside top DEXs.</SectionTitle>
       </div>
 
       <div
@@ -165,7 +172,7 @@ export default function BusinessAppKitShowcaseSection() {
           ))}
         </div>
 
-        <div className="mt-6 hidden gap-4 sm:grid sm:grid-cols-3">
+        <div className="mt-6 hidden gap-4 sm:grid sm:grid-cols-4">
           {STEPS.map((step, index) => (
             <button
               key={step.id}

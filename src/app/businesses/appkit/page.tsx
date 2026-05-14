@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import type { LucideIcon } from "lucide-react"
+import { BadgeDollarSign, Compass, Handshake, LayoutTemplate, ShieldCheck, Workflow } from "lucide-react"
 import BusinessAppKitShowcaseSection from "@/components/business-appkit-showcase"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
@@ -59,21 +60,37 @@ const appKitFeatures = [
     title: "Intent capture",
     description:
       "Turn LP position views, portfolio pages, and trading flows into natural borrowing entry points.",
+    icon: Compass,
   },
   {
     title: "Protocol handoff",
     description:
       "Pass user context into Avana so the credit flow opens with the right wallet, market, and collateral path.",
+    icon: Workflow,
   },
   {
     title: "Shared monetization",
     description:
       "Build a revenue line around credit access without becoming the lender or risk engine.",
+    icon: BadgeDollarSign,
   },
   {
     title: "Product control",
     description:
       "Choose where credit appears, which users see it, and how the path fits your existing experience.",
+    icon: Handshake,
+  },
+  {
+    title: "Embedded UX",
+    description:
+      "Keep borrowing inside the product surface your users already trust instead of sending them into a disconnected flow.",
+    icon: LayoutTemplate,
+  },
+  {
+    title: "Risk separation",
+    description:
+      "Let Avana handle health checks, collateral logic, and settlement while your team stays focused on distribution.",
+    icon: ShieldCheck,
   },
 ] as const
 
@@ -109,6 +126,33 @@ const appKitFaqItems: InlineFaqItem[] = [
       "Yes. The same integration model can support web apps, wallets, mobile products, DEX interfaces, and portfolio dashboards, with the final experience shaped around the partner's product.",
   },
 ]
+
+function AppKitFeatureCard({
+  title,
+  description,
+  icon,
+}: {
+  title: string
+  description: string
+  icon: LucideIcon
+}) {
+  const Icon = icon
+
+  return (
+    <article className="flex flex-col rounded-[1.75rem] bg-[#f7f7f5] p-5 md:p-6">
+      <div className="flex h-8 w-8 items-center justify-center text-[#111111]">
+        <Icon className="h-8 w-8" strokeWidth={1.85} />
+      </div>
+
+      <h3 className="mt-5 text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:mt-6 md:text-[1.55rem]">
+        {title}
+      </h3>
+      <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
+        {description}
+      </p>
+    </article>
+  )
+}
 
 export default function AppKitPage() {
   return (
@@ -182,114 +226,23 @@ export default function AppKitPage() {
           <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20 2xl:space-y-36 2xl:pt-18 2xl:pb-18">
             <BusinessAppKitShowcaseSection />
 
-            <ProductFeatureScrollSection
-              eyebrow="Integration model"
-              eyebrowTone="violet"
-              title="Built for partners that already understand the user."
-              items={appKitFeatures}
-              panels={[
-                <div key="a1" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(139,92,246,0.05),transparent_55%)]" />
-                  <div className="absolute inset-0 flex items-center justify-center p-5">
-                    <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">Partner menu</span>
-                        <span className="rounded-full border border-violet-100 bg-violet-50 px-2 py-0.5 text-[8px] font-semibold text-violet-500">
-                          Embedded
-                        </span>
-                      </div>
-                      <div className="mt-3 space-y-2">
-                        {[
-                          ["Pool", "Review position"],
-                          ["Borrow", "Use collateral"],
-                          ["Manage", "Track health"],
-                        ].map(([label, sub]) => (
-                          <div key={label} className="rounded-xl border border-gray-100 bg-gray-50/80 px-3 py-2.5">
-                            <div className="flex items-center justify-between">
-                              <span className="text-[10px] font-semibold text-[#18323c]">{label}</span>
-                              <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">
-                                Avana
-                              </span>
-                            </div>
-                            <p className="mt-1 text-[9px] text-gray-500">{sub}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>,
-                <div key="a2" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_55%,rgba(139,92,246,0.05),transparent_55%)]" />
-                  <div className="absolute inset-0 flex items-center justify-center p-5">
-                    <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                      <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-3">
-                        <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.08em] text-gray-500">
-                          <span>Kit</span>
-                          <span>API</span>
-                        </div>
-                        <div className="mt-3 space-y-2">
-                          {["openCredit()", "healthStatus()", "repayPosition()"].map((fn) => (
-                            <div key={fn} className="rounded-lg border border-violet-100 bg-white px-3 py-2 text-[10px] font-mono text-violet-700">
-                              {fn}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="mt-4 h-2 overflow-hidden rounded-full bg-gray-100">
-                        <div className="h-full w-[72%] rounded-full bg-violet-500 panel-bar-pulse" />
-                      </div>
-                    </div>
-                  </div>
-                </div>,
-                <div key="a3" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(139,92,246,0.04),transparent_55%)]" />
-                  <div className="absolute inset-0 flex items-center justify-center p-5">
-                    <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                      <div className="flex items-start gap-3">
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-violet-200 bg-violet-50 text-violet-500">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <path d="M12 3v18M3 12h18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                          </svg>
-                        </div>
-                        <div>
-                          <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">Economics</span>
-                          <p className="mt-1 text-sm font-semibold text-[#18323c]">Originate useful borrower demand.</p>
-                          <p className="mt-1.5 text-[9px] leading-5 text-gray-500">
-                            Partners can turn existing LP traffic into a new credit distribution channel.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>,
-                <div key="a4" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(139,92,246,0.04),transparent_55%)]" />
-                  <div className="absolute inset-0 flex items-center justify-center p-5">
-                    <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">White label</span>
-                        <span className="rounded-full border border-violet-100 bg-violet-50 px-2 py-0.5 text-[8px] font-semibold text-violet-500">
-                          Flexible
-                        </span>
-                      </div>
-                      <div className="mt-3 grid grid-cols-2 gap-2">
-                        {[
-                          ["Placement", "Yours"],
-                          ["Credit", "Avana"],
-                          ["Context", "Shared"],
-                          ["Path", "Flexible"],
-                        ].map(([label, value]) => (
-                          <div key={label} className="rounded-xl border border-gray-100 bg-gray-50/80 px-3 py-2">
-                            <span className="block text-[7px] uppercase tracking-[0.08em] text-gray-400">{label}</span>
-                            <span className="mt-0.5 block text-[10px] font-semibold text-[#18323c]">{value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>,
-              ]}
-            />
+            <section>
+              <div className="space-y-4 text-left">
+                <SectionEyebrow tone="violet">Integration model</SectionEyebrow>
+                <SectionTitle>Built for DEXs that already own LP flow.</SectionTitle>
+              </div>
+
+              <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
+                {appKitFeatures.map((feature) => (
+                  <AppKitFeatureCard
+                    key={feature.title}
+                    title={feature.title}
+                    description={feature.description}
+                    icon={feature.icon}
+                  />
+                ))}
+              </div>
+            </section>
 
             <section className="relative -mx-4 overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#f8f7fc_0%,#eee8f8_50%,#f5f3fa_100%)] px-6 py-12 sm:-mx-6 sm:px-10 md:px-12 md:py-16 lg:py-20 2xl:py-18">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(139,92,246,0.10),transparent_40%),radial-gradient(circle_at_80%_100%,rgba(99,102,241,0.08),transparent_35%)]" />
