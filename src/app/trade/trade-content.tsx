@@ -7,6 +7,7 @@ import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSecti
 import TradeMarketShowcase from "@/components/trade-market-showcase"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 
 const pageDescription =
@@ -211,7 +212,9 @@ export default function TradePage() {
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="rose">How it works</SectionEyebrow>
-                <SectionTitle>Leverage in three steps</SectionTitle>
+                <SectionTitle>
+                  <span className={CYAN_HIGHLIGHT_TEXT_CLASS}>Leverage in three steps</span>
+                </SectionTitle>
               </div>
             </div>
 
