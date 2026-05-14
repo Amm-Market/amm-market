@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const STEPS = [
   {
@@ -80,11 +79,6 @@ export default function BusinessLiquidatorsShowcaseSection() {
 
   return (
     <section className="deferred-viewport bg-inherit">
-      <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
-        <SectionEyebrow tone="rose">Execution flow</SectionEyebrow>
-        <SectionTitle>Liquidators need a route, not a shortcut.</SectionTitle>
-      </div>
-
       <div
         className="relative"
         role="region"
