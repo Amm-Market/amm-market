@@ -295,14 +295,15 @@ export default function BorrowPage() {
               {/* Left Column - Hero Image */}
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                   <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
-                  <Image
-                    src="/images/Hero__4_.png"
-                    alt="App interface"
-                    width={1400}
-                    height={1400}
-                    className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
-                    sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
-                    priority
+                    <Image
+                      src="/images/Hero__4_.png"
+                      alt="App interface"
+                      width={1200}
+                      height={1200}
+                      quality={70}
+                      className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
+                      sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
+                      priority
                     fetchPriority="high"
                   />
                 </div>

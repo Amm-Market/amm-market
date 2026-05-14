@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { faqSchema } from "@/app/faq/faq-content"
 import { siteRoutes } from "@/lib/site"
+import { serializeJsonLd } from "@/lib/structured-data"
 
 /**
  * FAQ page metadata for SEO
@@ -34,7 +35,7 @@ export default function FaqLayout({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqSchema) }}
       />
       {children}
     </>
