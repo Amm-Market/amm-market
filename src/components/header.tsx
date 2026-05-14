@@ -223,7 +223,7 @@ export default function Header(): React.JSX.Element {
                   onFocus={() => openDesktopMenu(menu.id)}
                   onClick={() => openDesktopMenu(menu.id)}
                   className={`site-header-nav-link group relative inline-flex items-center px-0 py-1 text-[15px] font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${
-                    isActive || hasActiveRoute ? "text-black" : "text-black/62 hover:text-black/94"
+                    isActive || hasActiveRoute ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"
                   }`}
                 >
                   <span>{menu.label}</span>
@@ -243,11 +243,11 @@ export default function Header(): React.JSX.Element {
                 suppressHydrationWarning
                 className={`inline-flex items-center justify-center rounded-full px-3 py-1.5 text-xs font-medium transition-colors lg:px-3.5 lg:py-[0.45rem] ${
                   index === 0
-                    ? "border border-[#2F414B]/20 bg-white text-[#0F1518] hover:border-[#2F414B]/35 hover:bg-[#2F414B]/5"
-                    : "bg-[#0F1518] text-white hover:bg-[#2F414B]"
+                    ? "border border-[#01AACF] bg-white text-[#01AACF] hover:bg-[#01AACF]/10"
+                    : "border border-[#01AACF] bg-white text-[#01AACF] hover:bg-[#01AACF]/10"
                 }`}
               >
-                {link.label === "Try Demo" ? (
+                {link.label === "Try Sandbox" ? (
                   <span className="inline-flex items-center gap-1.5">
                     <SandboxIcon />
                     <span>{link.label}</span>

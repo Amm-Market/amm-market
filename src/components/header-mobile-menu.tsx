@@ -16,7 +16,7 @@ const mobileLinks: readonly NavLink[] = [
   { href: siteRoutes.blog, label: "Blog" },
   { href: siteRoutes.faq, label: "FAQ" },
   { href: siteRoutes.developers, label: "Developers" },
-  { href: "https://app.avana.cc", label: "Try Demo", external: true },
+  { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
 ] as const
 
 function isActivePath(pathname: string | null, href: string): boolean {
