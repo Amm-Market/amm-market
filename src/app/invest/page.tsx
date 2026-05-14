@@ -125,8 +125,9 @@ export default function InvestPage() {
                   <Image
                     src="/images/Hero__4_.png"
                     alt="App interface"
-                    width={1400}
-                    height={1400}
+                    width={1200}
+                    height={1200}
+                    quality={70}
                     className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                     sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
                     priority
