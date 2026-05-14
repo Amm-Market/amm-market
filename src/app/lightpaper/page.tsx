@@ -381,7 +381,7 @@ function LightpaperBook() {
             style={{ transform: "translate3d(10px, 6px, -6px)" }}
           />
           <div className="absolute inset-0 grid grid-rows-[auto_auto_1fr_auto] rounded-[24px] border border-black/10 bg-[linear-gradient(180deg,#ffffff_0%,#f6f6f3_100%)] px-5 py-5 shadow-[0_24px_54px_rgba(0,0,0,0.14)] lg:px-6 lg:py-6">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-gray-500">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#01AACF]">
               Avana
             </span>
 
@@ -399,16 +399,16 @@ function LightpaperBook() {
                 Lightpaper
               </p>
               <div className="h-px w-10 bg-gray-200" />
-              <p className="pt-1 text-[14px] font-medium leading-[1.12] tracking-[-0.03em] text-gray-500 lg:text-[16px]">
+              <p className="pt-1 text-[14px] font-medium leading-[1.12] tracking-[-0.03em] text-[#01AACF] lg:text-[16px]">
                 Aave v4 spoke
               </p>
             </div>
 
             <div className="mt-4 flex items-end justify-between gap-3 self-end">
-              <p className="max-w-[7.75rem] text-[10px] leading-4 text-gray-500 lg:max-w-[8.5rem] lg:text-[11px] lg:leading-5">
+              <p className="max-w-[7.75rem] text-[10px] leading-4 text-[#01AACF] lg:max-w-[8.5rem] lg:text-[11px] lg:leading-5">
                 LP collateral design for active liquidity.
               </p>
-              <span className="rounded-full border border-black/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-gray-500">
+              <span className="rounded-full border border-black/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#01AACF]">
                 2026
               </span>
             </div>
@@ -814,13 +814,13 @@ export default function LightpaperPage() {
                         <table className="min-w-full table-fixed text-left text-sm">
                           <thead className="bg-gray-50">
                             <tr className="text-gray-900">
-                              <th className="w-[38%] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500">
+                              <th className="w-[38%] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#01AACF]">
                                 Spoke
                               </th>
-                              <th className="w-[34%] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500">
+                              <th className="w-[34%] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#01AACF]">
                                 Collateral
                               </th>
-                              <th className="w-[28%] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500">
+                              <th className="w-[28%] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#01AACF]">
                                 Borrow
                               </th>
                             </tr>

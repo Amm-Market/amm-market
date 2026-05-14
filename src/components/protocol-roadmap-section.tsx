@@ -74,10 +74,8 @@ const roadmapPhases: {
   },
 ]
 
-function getRoadmapStatusClass(status: RoadmapStatus) {
-  if (status === "Released") return "text-emerald-700"
-  if (status === "In Progress") return "text-blue-700"
-  return "text-slate-700"
+function getRoadmapStatusClass() {
+  return "text-[#01AACF]"
 }
 
 function getRoadmapStatusLabel(status: RoadmapStatus) {
@@ -192,7 +190,7 @@ export default function ProtocolRoadmapSection() {
                   <h3 className={`mb-0 text-base font-semibold ${index === 2 ? "text-gray-700" : "text-gray-900"}`}>
                     {phase.title}
                   </h3>
-                  <span className="text-xs font-medium uppercase tracking-[0.08em] text-gray-500">
+                  <span className="text-xs font-medium uppercase tracking-[0.08em] text-[#01AACF]">
                     {phase.timeframe}
                   </span>
                 </div>
@@ -202,7 +200,7 @@ export default function ProtocolRoadmapSection() {
               <div className="space-y-3">
                 {groupedMilestones.map((group) => (
                   <div key={`${phase.title}-${group.status}`} className={`space-y-2 ${getRoadmapGroupOpacity(group.status)}`}>
-                    <p className={`text-xs font-semibold uppercase tracking-[0.12em] ${getRoadmapStatusClass(group.status)}`}>
+                    <p className={`text-xs font-semibold uppercase tracking-[0.12em] ${getRoadmapStatusClass()}`}>
                       {getRoadmapStatusLabel(group.status)}
                     </p>
                     <div className="flex flex-wrap gap-2">

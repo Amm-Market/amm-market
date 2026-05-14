@@ -342,7 +342,7 @@ export default function InvestPage() {
                 <div className="absolute inset-0 flex items-center justify-center p-5">
                   <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
                     <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-3">
-                      <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.08em] text-gray-500"><span>Hub base</span><span>+ Spoke premium</span></div>
+                      <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.08em] text-[#01AACF]"><span>Hub base</span><span>+ Spoke premium</span></div>
                       <div className="mt-2 flex h-10 w-full overflow-hidden rounded-lg bg-white shadow-inner">
                         <div className="flex items-center justify-center bg-gray-200/90 text-sm font-semibold tabular-nums text-[#18323c]" style={{ width: "57%" }}>4.1%</div>
                         <div className="flex items-center justify-center bg-emerald-500 text-sm font-semibold tabular-nums text-white" style={{ width: "43%" }}>+3.1%</div>

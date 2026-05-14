@@ -48,7 +48,7 @@ function PlaceholderImage({
       </div>
 
       <div className="relative z-10 flex max-w-[440px] flex-col items-center px-6 text-center">
-        <div className="rounded-full border border-gray-200 bg-white/85 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-gray-500">
+        <div className="rounded-full border border-gray-200 bg-white/85 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[#01AACF]">
           {label}
         </div>
         <p className="mt-4 text-[1.7rem] font-normal leading-[1.02] tracking-[-0.05em] text-[#18323c] sm:text-[2.2rem]">
