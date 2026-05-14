@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import BusinessLiquidatorsShowcaseSection from "@/components/business-liquidators-showcase"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
@@ -119,48 +120,29 @@ export default function LiquidatorsPage() {
               <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                   <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
-                    <div className="relative overflow-hidden rounded-[24px] border border-gray-200 bg-[linear-gradient(180deg,#f7f4ee_0%,#efe8e3_100%)] p-5 sm:rounded-[32px] lg:rounded-[40px]">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.92),transparent_55%)]" />
-                      <div className="relative grid gap-4 md:grid-cols-3">
-                        <div className="rounded-[22px] border border-white/70 bg-white/70 p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:col-span-2">
-                          <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-rose-500">Execution desk</span>
-                          <h2 className="mt-3 text-2xl font-normal leading-[1.02] tracking-[-0.05em] text-[#18323c] sm:text-[2.5rem]">
-                            LP liquidation is an execution business.
-                          </h2>
-                          <p className="mt-4 max-w-[32rem] text-sm leading-6 text-gray-600">
-                            The operator has to watch health, reconstruct the LP, unwind both legs, and settle debt in
-                            a single flow. The desk that can do that well earns the fee.
-                          </p>
-                        </div>
-
-                        <div className="grid gap-4">
-                          <div className="rounded-[22px] border border-white/70 bg-white/80 p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
-                            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-gray-400">Watch</p>
-                            <p className="mt-2 text-lg font-semibold tracking-[-0.03em] text-[#18323c]">Health</p>
-                            <p className="mt-1 text-sm text-gray-600">React before positions go stale.</p>
-                          </div>
-                          <div className="rounded-[22px] border border-white/70 bg-white/80 p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
-                            <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-gray-400">Earn</p>
-                            <p className="mt-2 text-lg font-semibold tracking-[-0.03em] text-[#18323c]">Premium</p>
-                            <p className="mt-1 text-sm text-gray-600">Monetize the unwind path.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <Image
+                      src="/images/Hero__4_.png"
+                      alt="Liquidator workflow visual"
+                      width={1400}
+                      height={1400}
+                      className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
+                      sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
+                      priority
+                      fetchPriority="high"
+                    />
                   </div>
                 </div>
 
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
-                  <h1 className="mb-3 max-w-[14ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[12ch] md:text-5xl lg:text-5xl xl:text-6xl">
-                    <span className="lg:whitespace-nowrap">Turn LP liquidation</span>
+                  <h1 className="mb-3 max-w-[11ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[11ch] md:text-5xl lg:text-5xl xl:text-6xl">
+                    <span>Liquidate</span>
                     <br />
-                    <span className="lg:whitespace-nowrap">into an execution edge.</span>
+                    <span>LP positions.</span>
                   </h1>
 
-                  <p className="mb-5 max-w-[36ch] text-base leading-relaxed text-gray-600 sm:max-w-[40ch] md:mb-6 md:text-lg">
-                    Liquidators on Avana do more than seize collateral. They monitor unhealthy positions, unwind the
-                    LP into its component legs, route the exit, and collect the liquidation incentive for keeping the
-                    market healthy.
+                  <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
+                    Specialized bots and execution desks handle LP unwinds, route the exit, and earn liquidation
+                    fees on complex positions.
                   </p>
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
@@ -189,10 +171,9 @@ export default function LiquidatorsPage() {
       <ProductStorySection
         eyebrow="For operators"
         eyebrowTone="rose"
-        titleLines={["The bot,", "the unwind, the fee."]}
+        titleLines={["What liquidators", "do?"]}
         paragraphs={[
-          "Liquidators are the operators that keep LP-backed lending healthy. They watch for positions crossing risk thresholds, identify the accounts worth unwinding, and execute the liquidation with enough speed and routing quality to make the market reliable.",
-          "That is different from a normal token liquidation. LP collateral has to be split apart, sold through the right venues, and settled against debt and incentives in the same flow. The result is a real execution business: the better your bots, capital, and routing, the better your coverage and margins.",
+          "Liquidators watch LP-backed positions for risk. When a position becomes unhealthy, they unwind the collateral, settle the debt, and keep the market healthy. Better execution means better coverage and better fees.",
         ]}
       />
 
