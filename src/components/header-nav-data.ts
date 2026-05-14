@@ -52,5 +52,5 @@ export const desktopMenuButtons = [
 ] as const
 
 export const desktopUtilityLinks: readonly NavLink[] = [
-  { href: "https://app.avana.cc", label: "Try Demo", external: true },
+  { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
 ]
