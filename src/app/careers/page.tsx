@@ -240,7 +240,7 @@ export default function CareersPage() {
                   <div className="absolute inset-0 flex items-center justify-center p-5">
                     <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
                       <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-3">
-                        <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.08em] text-gray-500">
+                        <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.08em] text-[#01AACF]">
                           <span>What matters</span>
                           <span>3 pillars</span>
                         </div>
@@ -285,7 +285,7 @@ export default function CareersPage() {
                   <div className="absolute inset-0 flex items-center justify-center p-5">
                     <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
                       <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-3">
-                        <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.08em] text-gray-500">
+                        <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.08em] text-[#01AACF]">
                           <span>Signals</span>
                           <span>Always on</span>
                         </div>

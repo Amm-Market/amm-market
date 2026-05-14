@@ -218,7 +218,7 @@ export default function HeaderDesktopMenuPanel({
             className="grid gap-6 lg:min-h-[14.75rem] lg:grid-cols-[minmax(0,19rem)_minmax(15rem,18rem)] lg:gap-2.5 xl:grid-cols-[minmax(0,20rem)_minmax(15rem,18rem)] xl:gap-3"
           >
             <div className="space-y-2.5">
-              <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-black/76">{toSentenceCase(menu.eyebrow)}</p>
+              <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-[#01AACF]">{toSentenceCase(menu.eyebrow)}</p>
               <div className="space-y-1">
                 {menu.items.map((item, index) => (
                   <Link
@@ -248,7 +248,7 @@ export default function HeaderDesktopMenuPanel({
               style={{ transitionDelay: "280ms" }}
             >
               {menu.supportingTitle ? (
-                <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-black/76">{menu.supportingTitle}</p>
+                <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-[#01AACF]">{menu.supportingTitle}</p>
               ) : null}
               <div className="space-y-3">
                 {menu.supportingItems.map((item, index) => (
