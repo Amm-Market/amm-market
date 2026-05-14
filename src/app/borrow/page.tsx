@@ -3,9 +3,9 @@ import Image from "next/image"
 import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import BorrowPowerSection from "@/components/borrow-power-section"
-import BorrowUseCasesSection from "@/components/borrow-use-cases-section"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
+import PositionSafetySection from "@/components/position-safety-section"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
@@ -759,7 +759,7 @@ export default function BorrowPage() {
             ]}
           />
 
-          <BorrowUseCasesSection />
+          <PositionSafetySection />
           <BorrowPowerSection />
 
           <HomepageNewsroomSection collection="borrow" eyebrowTone="blue" />
