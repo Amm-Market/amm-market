@@ -1,9 +1,11 @@
 import { SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
+import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
+import type { ReactNode } from "react"
 
 type ProductStorySectionProps = {
   eyebrow?: string
   eyebrowTone?: SectionEyebrowTone
-  titleLines: [string, string]
+  titleLines: [ReactNode, ReactNode]
   paragraphs: readonly string[]
   withTopDivider?: boolean
   className?: string
@@ -27,8 +29,8 @@ export default function ProductStorySection({
             <div className="space-y-4">
               <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow>
               <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
-                <span className="block">{titleLines[0]}</span>
-                <span className="block">{titleLines[1]}</span>
+                <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>{titleLines[0]}</span>
+                <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>{titleLines[1]}</span>
               </SectionTitle>
             </div>
             <div className="space-y-6 pt-1 text-left text-[#39515b]">

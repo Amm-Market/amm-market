@@ -99,12 +99,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
-      url: `${SITE_URL}${siteRoutes.earlyAdopters}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
       url: `${SITE_URL}${siteRoutes.brand}`,
       lastModified: now,
       changeFrequency: 'monthly',

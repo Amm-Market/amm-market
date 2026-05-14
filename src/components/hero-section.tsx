@@ -5,6 +5,7 @@ import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 import { TokenLogo } from "@/components/token-logo"
+import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
 function SectionSkeleton({
   lines = 3,
@@ -409,8 +410,12 @@ export default function HeroSection() {
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="cyan">Borrowing Power</SectionEyebrow>
             <SectionTitle className="max-w-[13ch] text-[#18323c]">
-              <span className="block">Unlock <span className="font-semibold text-[#0078d4]">credit</span></span>
-              <span className="block">from <span className="font-semibold text-[#0078d4]">250+</span> pools</span>
+              <span className="block">
+                Unlock <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>credit</span>
+              </span>
+              <span className="block">
+                from <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>250+</span> pools
+              </span>
             </SectionTitle>
           </div>
             </div>
@@ -454,8 +459,12 @@ export default function HeroSection() {
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="emerald">Investing Markets</SectionEyebrow>
             <SectionTitle className="max-w-[14ch] text-[#18323c]">
-              <span className="block">Earn <span className="font-semibold text-[#107c41]">yield</span></span>
-              <span className="block">on <span className="font-semibold text-[#107c41]">100+</span> assets</span>
+              <span className="block">
+                Earn <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>yield</span>
+              </span>
+              <span className="block">
+                on <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>100+</span> assets
+              </span>
             </SectionTitle>
           </div>
 
@@ -471,7 +480,7 @@ export default function HeroSection() {
                 <SectionTitle className="max-w-[15ch] text-[#18323c]">
                   <span className="block">Trade like a pro</span>
                   <span className="block">
-                    across <span className="font-semibold text-[#b45309]">500+</span> markets
+                    across <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>500+</span> markets
                   </span>
                 </SectionTitle>
               </div>
@@ -1088,32 +1097,56 @@ export default function HeroSection() {
         </LazySection>
 
         <LazySection minHeight="660px" fallback={<SectionSkeleton minHeight="660px" />}>
-          <div className="relative overflow-hidden border border-[#d7dce5] bg-white px-6 py-8 md:px-8 md:py-10">
-            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#0067b8] via-[#7aa7d9] to-[#dbe5f1]" />
-              <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
-                <div className="space-y-4">
-                  <SectionEyebrow tone="slate">Built on Aave v4</SectionEyebrow>
-                  <SectionTitle>
-                    <span className="block lg:whitespace-nowrap">Shared liquidity,</span>
-                    <span className="block lg:whitespace-nowrap">stronger guardrails.</span>
-                  </SectionTitle>
-                </div>
-                <div className="text-left text-[#39515b]">
-                  <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
-                    Aave v4 is a next generation lending system built on{" "}
-                    <DeFiTerm term="hub" className="text-[0.92em]">Hub</DeFiTerm>
-                    {" "}and{" "}
-                    <DeFiTerm term="spoke" className="text-[0.92em]">Spoke</DeFiTerm>
-                    {" "}architecture, giving the protocol shared liquidity, flexible risk controls, and a stronger security model. Avana builds on that foundation to deliver secure{" "}
-                    <DeFiTerm term="lp-position" className="text-[0.92em]">LP backed borrowing</DeFiTerm>
-                    {" "}with transparent onchain execution, resilient{" "}
-                    <DeFiTerm term="oracle" className="text-[0.92em]">oracle</DeFiTerm>
-                    {" "}checks, and borrower protection shaped around controlled{" "}
-                    <DeFiTerm term="liquidation" className="text-[0.92em]">liquidation</DeFiTerm>
-                    {" "}design.
-                  </p>
-                </div>
+          <div className="relative overflow-hidden border border-cyan-100 bg-[#f1fbfe] px-6 py-8 md:px-8 md:py-10">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 opacity-[0.28]"
+              style={{
+                backgroundImage: [
+                  "linear-gradient(rgba(1,170,207,0.14) 1px, transparent 1px)",
+                  "linear-gradient(90deg, rgba(1,170,207,0.08) 1px, transparent 1px)",
+                  "radial-gradient(circle at 18% 18%, rgba(1,170,207,0.14) 0 6.5%, transparent 6.5%)",
+                  "radial-gradient(circle at 82% 82%, rgba(1,170,207,0.1) 0 7.5%, transparent 7.5%)",
+                  "radial-gradient(circle at 50% 50%, rgba(1,170,207,0.06) 0 18%, transparent 18%)",
+                ].join(", "),
+                backgroundSize: "100% 100%",
+              }}
+            />
+            <div className="relative grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
+              <div className="space-y-4">
+                <SectionEyebrow tone="slate">Built on Aave v4</SectionEyebrow>
+                <SectionTitle>
+                  <span className="block lg:whitespace-nowrap">Shared liquidity,</span>
+                  <span className="block lg:whitespace-nowrap">stronger guardrails.</span>
+                </SectionTitle>
               </div>
+              <div className="text-left text-[#39515b]">
+                <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
+                  Aave v4 is a next generation lending system built on{" "}
+                  <DeFiTerm term="hub" className="text-[0.92em]">
+                    Hub
+                  </DeFiTerm>{" "}
+                  and{" "}
+                  <DeFiTerm term="spoke" className="text-[0.92em]">
+                    Spoke
+                  </DeFiTerm>{" "}
+                  architecture, giving the protocol shared liquidity, flexible risk controls, and a stronger
+                  security model. Avana builds on that foundation to deliver secure{" "}
+                  <DeFiTerm term="lp-position" className="text-[0.92em]">
+                    LP backed borrowing
+                  </DeFiTerm>{" "}
+                  with transparent onchain execution, resilient{" "}
+                  <DeFiTerm term="oracle" className="text-[0.92em]">
+                    oracle
+                  </DeFiTerm>{" "}
+                  checks, and borrower protection shaped around controlled{" "}
+                  <DeFiTerm term="liquidation" className="text-[0.92em]">
+                    liquidation
+                  </DeFiTerm>{" "}
+                  design.
+                </p>
+              </div>
+            </div>
           </div>
         </LazySection>
 

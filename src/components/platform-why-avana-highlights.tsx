@@ -50,7 +50,7 @@ export default function PlatformWhyAvanaHighlights({
                 <div className="absolute inset-y-10 right-10 w-px bg-gray-300/70" />
 
                 <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-                  <div className="rounded-full border border-gray-200 bg-white/85 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-gray-500">
+                  <div className="rounded-full border border-gray-200 bg-white/85 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[#01AACF]">
                     Why Avana
                   </div>
                   <p className="mt-4 text-[1.7rem] font-normal leading-[1.02] tracking-[-0.05em] text-[#18323c]">

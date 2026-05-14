@@ -8,6 +8,7 @@ import ProductFeatureScrollSection from "@/components/product-feature-scroll-sec
 import PositionSafetySection from "@/components/position-safety-section"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
 const openSpokeFaqItems: InlineFaqItem[] = [
   {
@@ -414,7 +415,7 @@ export default function BorrowPage() {
                   <div className="flex h-[150px] w-full flex-col items-center justify-center rounded-lg bg-gradient-to-b from-blue-50 to-blue-100 p-2 text-center sm:h-auto">
                     <div className="flex size-full flex-col items-center justify-center rounded-md border border-blue-200 bg-white">
                       <h4 className="text-base font-medium leading-normal text-blue-600 md:text-lg">
-                        <div className="flex items-center text-[32px] font-bold text-gray-900 md:text-[48px]">
+                        <div className={`flex items-center text-[32px] font-bold md:text-[48px] ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>
                           12+
                         </div>
                         <span>DEX Integrations</span>
@@ -462,7 +463,7 @@ export default function BorrowPage() {
         <div className="site-content-width space-y-32 pt-32 pb-16 md:space-y-40 md:pt-40 md:pb-20 2xl:space-y-36 2xl:pt-36 2xl:pb-18">
           <ProductFeatureScrollSection
             eyebrowTone="blue"
-            title="Engineered for LP safety."
+            title={<span className={CYAN_HIGHLIGHT_TEXT_CLASS}>Engineered for LP safety.</span>}
             items={borrowFeatureItems}
             panels={[
               /* 01 LP-native valuation — pool structure, exposure, venue collateral logic */
@@ -525,7 +526,7 @@ export default function BorrowPage() {
                   <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
                     <div className="grid grid-cols-2 gap-3">
                       <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-3">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-500">Chainlink</span>
+                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-[#01AACF]">Chainlink</span>
                         <div className="mt-1 h-[1.35rem] overflow-hidden">
                           <div className="panel-ticker-v-fast" style={{ animationDuration: "9s" }}>
                             {["$1,842.04", "$1,842.11", "$1,841.98", "$1,842.04"].map((v, i) => (
@@ -537,7 +538,7 @@ export default function BorrowPage() {
                         </div>
                       </div>
                       <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-3">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-500">TWAP</span>
+                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-[#01AACF]">TWAP</span>
                         <div className="mt-1 h-[1.35rem] overflow-hidden">
                           <div className="panel-ticker-v-fast" style={{ animationDuration: "9.6s" }}>
                             {["$1,841.52", "$1,841.61", "$1,841.44", "$1,841.52"].map((v, i) => (
@@ -586,7 +587,7 @@ export default function BorrowPage() {
                   <div className="w-full max-w-[16.25rem] overflow-hidden rounded-2xl border border-gray-200 bg-white">
                     <div className="grid grid-cols-[1fr_auto_1fr] items-stretch">
                       <div className="borrow-hub-node-pulse flex flex-col border-r border-gray-200 bg-gray-50/70 p-3.5">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.14em] text-gray-500">Hub</span>
+                        <span className="text-[8px] font-medium uppercase tracking-[0.14em] text-[#01AACF]">Hub</span>
                         <p className="mt-1.5 text-xl font-semibold tabular-nums text-[#18323c]">$4.2M</p>
                       </div>
                       <div className="flex w-12 flex-col items-center justify-center bg-white px-0.5">
@@ -609,7 +610,7 @@ export default function BorrowPage() {
                         </svg>
                       </div>
                       <div className="flex min-h-[6.5rem] flex-col border-l border-dashed border-gray-300 bg-white p-3.5">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.14em] text-gray-500">Spoke</span>
+                        <span className="text-[8px] font-medium uppercase tracking-[0.14em] text-[#01AACF]">Spoke</span>
                         <p className="mt-1 text-[10px] font-semibold leading-tight text-[#18323c]">ETH / USDC</p>
                         <p className="mt-2 text-[8px] font-medium tabular-nums text-gray-600">$2.1M</p>
                         <span className="mt-auto inline-flex w-fit rounded-md border border-gray-200 bg-gray-50 px-2 py-0.5 text-[8px] font-medium text-gray-700">

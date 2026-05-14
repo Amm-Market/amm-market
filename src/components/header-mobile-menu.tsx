@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import type { ReactNode } from "react"
 import Link from "next/link"
 import { siteRoutes } from "@/lib/site"
@@ -15,7 +16,7 @@ const mobileLinks: readonly NavLink[] = [
   { href: siteRoutes.blog, label: "Blog" },
   { href: siteRoutes.faq, label: "FAQ" },
   { href: siteRoutes.developers, label: "Developers" },
-  { href: "https://app.avana.cc", label: "Try Demo", external: true },
+  { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
 ] as const
 
 function isActivePath(pathname: string | null, href: string): boolean {
@@ -39,15 +40,33 @@ export default function HeaderMobileMenu({
   brand,
   onClose,
 }: HeaderMobileMenuProps) {
+  const [isShown, setIsShown] = useState(false)
+
+  useEffect(() => {
+    if (!open) {
+      return
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      setIsShown(true)
+    })
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+    }
+  }, [open])
+
+  const isVisible = open && isShown
+
   return (
     <div
       className={`fixed inset-0 z-[60] bg-white transition-opacity duration-300 ease-out md:hidden ${
-        open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        isVisible ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
       }`}
       role="dialog"
       aria-modal="true"
       aria-label="Mobile menu"
-      aria-hidden={!open}
+      aria-hidden={!isVisible}
     >
       <div className="flex h-16 items-center justify-between px-4 sm:px-6">
         <Link
@@ -62,13 +81,13 @@ export default function HeaderMobileMenu({
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#2F414B]/12 bg-white text-[#0F1518] shadow-[0_6px_18px_rgba(15,21,24,0.06)] transition hover:border-[#2F414B]/20 hover:bg-[#2F414B]/5"
+          className="inline-flex h-11 w-11 items-center justify-center text-[#01AACF] transition hover:text-[#01AACF]/80 focus-visible:outline-none focus-visible:ring-0 active:scale-95 [-webkit-tap-highlight-color:transparent]"
           aria-label="Close menu"
           onClick={onClose}
         >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <path d="M4 4L14 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-            <path d="M14 4L4 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+            <path d="M5 5L17 17" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+            <path d="M17 5L5 17" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
           </svg>
         </button>
       </div>
@@ -77,7 +96,7 @@ export default function HeaderMobileMenu({
         id="mobile-site-nav"
         aria-label="Mobile navigation"
         className={`h-[calc(100dvh-4rem)] overflow-y-auto px-4 pb-10 pt-10 transition-all duration-300 ease-out sm:px-6 ${
-          open ? "translate-y-0 opacity-100" : "opacity-0"
+          isVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
         }`}
       >
         <ol>
@@ -88,7 +107,7 @@ export default function HeaderMobileMenu({
               <li
                 key={`${link.label}-${link.href}`}
                 className={`border-b border-black/10 transition-all duration-300 ease-out ${
-                  open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                  isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
                 }`}
                 style={{ transitionDelay: `${120 + index * 35}ms` }}
               >
@@ -108,7 +127,7 @@ export default function HeaderMobileMenu({
                   >
                     {link.label}
                   </span>
-                  <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-black/75">
+                  <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-[#01AACF]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </Link>

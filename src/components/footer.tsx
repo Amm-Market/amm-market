@@ -143,9 +143,15 @@ export default function Footer(): React.JSX.Element {
       <div className="border-t border-gray-200/50 pt-12 pb-6">
         <div className="grid gap-x-8 gap-y-12 lg:grid-cols-[minmax(16rem,1.2fr)_minmax(0,1fr)] lg:gap-x-8 xl:gap-x-10">
           {/* Logo */}
-          <div className="space-y-5 lg:max-w-sm">
-            <Link href={siteRoutes.home} prefetch={false} className="size-fit">
-              <Image src={WORDMARK_PATH} alt={`${SITE_NAME} logo`} width={3000} height={1500} className="h-[42px] w-auto" />
+          <div className="space-y-5 lg:max-w-sm lg:justify-self-start">
+            <Link href={siteRoutes.home} prefetch={false} className="inline-flex w-fit items-start justify-start">
+              <Image
+                src={WORDMARK_PATH}
+                alt={`${SITE_NAME} logo`}
+                width={3000}
+                height={1500}
+                className="h-[42px] w-auto lg:h-[52px]"
+              />
             </Link>
             <p className="max-w-sm text-[1.02rem] font-normal leading-7 tracking-[-0.02em] text-gray-700">
               Avana is an LP-collateral protocol on Aave v4 that helps liquidity providers borrow against active positions while staying in the pool.
@@ -168,12 +174,12 @@ export default function Footer(): React.JSX.Element {
 
           {/* Links Grid */}
           <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:justify-self-center lg:grid-cols-3 lg:gap-x-6 lg:gap-y-10 xl:gap-x-8">
-            {footerSections.map((section) => (
+            {footerSections.map((section, index) => (
               <div
                 key={section.title}
                 className={`flex flex-col gap-4 text-sm font-normal text-gray-900 ${section.className ?? ""}`}
               >
-                <span className="font-medium">{section.title}</span>
+                <span className={`font-medium ${index < 3 ? "text-[#01AACF]" : ""}`}>{section.title}</span>
                 <div className="flex flex-col opacity-70 gap-2">
                   {section.links.map((link) => (
                     <Link

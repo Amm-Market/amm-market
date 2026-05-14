@@ -162,13 +162,13 @@ export const navigationSections = [
 
 // Color palette per section
 const sectionColors: Record<string, { headerBg: string; headerText: string; itemBg: string; itemText: string; icon: string }> = {
-  introduction: { headerBg: "bg-blue-50", headerText: "text-blue-700", itemBg: "bg-blue-100", itemText: "text-blue-700", icon: "text-blue-600" },
-  "getting-started": { headerBg: "bg-emerald-50", headerText: "text-emerald-700", itemBg: "bg-emerald-100", itemText: "text-emerald-700", icon: "text-emerald-600" },
-  architecture: { headerBg: "bg-violet-50", headerText: "text-violet-700", itemBg: "bg-violet-100", itemText: "text-violet-700", icon: "text-violet-600" },
-  liquidation: { headerBg: "bg-amber-50", headerText: "text-amber-700", itemBg: "bg-amber-100", itemText: "text-amber-700", icon: "text-amber-600" },
-  integrations: { headerBg: "bg-cyan-50", headerText: "text-cyan-700", itemBg: "bg-cyan-100", itemText: "text-cyan-700", icon: "text-cyan-600" },
-  safety: { headerBg: "bg-rose-50", headerText: "text-rose-700", itemBg: "bg-rose-100", itemText: "text-rose-700", icon: "text-rose-600" },
-  legal: { headerBg: "bg-slate-100", headerText: "text-slate-700", itemBg: "bg-slate-200", itemText: "text-slate-700", icon: "text-slate-600" },
+  introduction: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
+  "getting-started": { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
+  architecture: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
+  liquidation: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
+  integrations: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
+  safety: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
+  legal: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
 }
 
 export default function DeveloperSidebar() {

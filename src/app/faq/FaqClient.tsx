@@ -56,7 +56,7 @@ function FaqAccordionList({
             <div className="flex flex-col text-left">
               <span>{faq.q}</span>
               {showCategory && faq.category ? (
-                <span className="mt-2 text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-gray-500">
+                <span className="mt-2 text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-[#01AACF]">
                   Category: {faq.category}
                 </span>
               ) : null}

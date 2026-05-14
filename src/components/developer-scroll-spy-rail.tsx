@@ -16,14 +16,13 @@ interface DeveloperScrollSpyRailProps {
 export function DeveloperScrollSpyRail({
   sections,
   pageSummary,
-  sectionColor = "blue",
 }: DeveloperScrollSpyRailProps) {
   return (
     <div className="hidden xl:flex xl:sticky xl:top-32 xl:self-start xl:pr-2">
       <DeferredScrollSpySidebar
         sections={sections}
         pageSummary={pageSummary}
-        sectionColor={sectionColor}
+        sectionColor="cyan"
       />
     </div>
   )
