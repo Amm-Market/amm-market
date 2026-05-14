@@ -200,14 +200,17 @@ export default function LiquidatorsPage() {
         eyebrow="For operators"
         eyebrowTone="rose"
         titleLines={["Liquidators Jobs", ""]}
+        className="pb-2 md:pb-3 2xl:pb-3"
         paragraphs={[
           "Liquidators watch LP-backed positions for risk. When a position becomes unhealthy, they unwind the collateral, settle the debt, and keep the market healthy. Better execution means better coverage and better fees.",
         ]}
       />
 
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 pt-8 sm:px-6 sm:pt-12">
+      <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 pt-0 sm:px-6 sm:pt-2">
         <div className="relative z-0 flex flex-1 flex-col">
-          <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20 2xl:space-y-36 2xl:pt-18 2xl:pb-18">
+          <div className="site-content-width space-y-24 pt-0 pb-16 md:space-y-32 md:pb-20 2xl:space-y-32 2xl:pb-18">
+            <BusinessLiquidatorsShowcaseSection />
+
             <section className="bg-white">
               <div className="site-content-shell">
                 <div className="mx-auto w-full max-w-[76rem]">
@@ -245,8 +248,6 @@ export default function LiquidatorsPage() {
                 </div>
               </div>
             </section>
-
-            <BusinessLiquidatorsShowcaseSection />
 
             <section className="relative -mx-4 overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#fff7f6_0%,#fff0ef_50%,#fffafb_100%)] px-6 py-12 sm:-mx-6 sm:px-10 md:px-12 md:py-16 lg:py-20 2xl:py-18">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(244,63,94,0.10),transparent_40%),radial-gradient(circle_at_80%_100%,rgba(249,115,22,0.08),transparent_35%)]" />
