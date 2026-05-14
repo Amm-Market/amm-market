@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import { Gauge, LockKeyhole, MoveRight, BadgePercent } from "lucide-react"
 import BusinessLiquidatorsShowcaseSection from "@/components/business-liquidators-showcase"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
@@ -110,6 +110,34 @@ const liquidationFaqItems: InlineFaqItem[] = [
   },
 ]
 
+const liquidationModelCards = [
+  {
+    icon: Gauge,
+    title: "Watch risk",
+    description: "Track health and drift before the unwind grows costly.",
+  },
+  {
+    icon: LockKeyhole,
+    title: "Unwind cleanly",
+    description: "Split the LP and remove only what the liquidation needs.",
+  },
+  {
+    icon: MoveRight,
+    title: "Settle fast",
+    description: "Route the exit, repay the debt, and close atomically.",
+  },
+  {
+    icon: BadgePercent,
+    title: "Capture premium",
+    description: "Cleaner execution keeps more fee for the operator.",
+  },
+  {
+    icon: MoveRight,
+    title: "Stay liquid",
+    description: "Good routing and capital keep coverage reliable.",
+  },
+] as const
+
 export default function LiquidatorsPage() {
   return (
     <main className="bg-white">
@@ -171,7 +199,7 @@ export default function LiquidatorsPage() {
       <ProductStorySection
         eyebrow="For operators"
         eyebrowTone="rose"
-        titleLines={["What liquidators", "do?"]}
+        titleLines={["Liquidators Jobs", ""]}
         paragraphs={[
           "Liquidators watch LP-backed positions for risk. When a position becomes unhealthy, they unwind the collateral, settle the debt, and keep the market healthy. Better execution means better coverage and better fees.",
         ]}
@@ -180,114 +208,45 @@ export default function LiquidatorsPage() {
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 pt-8 sm:px-6 sm:pt-12">
         <div className="relative z-0 flex flex-1 flex-col">
           <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20 2xl:space-y-36 2xl:pt-18 2xl:pb-18">
-            <BusinessLiquidatorsShowcaseSection />
+            <section className="bg-white">
+              <div className="site-content-shell">
+                <div className="mx-auto w-full max-w-[76rem]">
+                  <div className="max-w-[52rem] space-y-4">
+                    <SectionEyebrow tone="rose">Liquidation model</SectionEyebrow>
+                    <SectionTitle className="max-w-none text-[clamp(1.9rem,3vw,3rem)] leading-[1.02] md:whitespace-nowrap">
+                      LP liquidation runs on execution.
+                    </SectionTitle>
+                  </div>
 
-            <ProductFeatureScrollSection
-              eyebrow="Liquidation model"
-              eyebrowTone="rose"
-              title="Operators get paid for solving the hard unwind."
-              items={liquidationFeatures}
-              panels={[
-                <div key="l1" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(244,63,94,0.05),transparent_55%)]" />
-                  <div className="absolute inset-0 flex items-center justify-center p-5">
-                    <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">Monitor</span>
-                        <span className="rounded-full border border-rose-100 bg-rose-50 px-2 py-0.5 text-[8px] font-semibold text-rose-500">
-                          Live
-                        </span>
-                      </div>
-                      <div className="mt-3 space-y-2">
-                        {[
-                          ["Health factor", "1.08"],
-                          ["Price drift", "-4.2%"],
-                          ["LP mix", "48/52"],
-                        ].map(([label, value]) => (
-                          <div key={label} className="rounded-xl border border-gray-100 bg-gray-50/80 px-3 py-2.5">
-                            <div className="flex items-center justify-between">
-                              <span className="text-[10px] font-semibold text-[#18323c]">{label}</span>
-                              <span className="text-[10px] font-semibold text-rose-600">{value}</span>
+                  <div className="mt-10 overflow-x-auto py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                    <div className="grid w-max grid-flow-col auto-cols-[19rem] gap-4 pr-1 lg:auto-cols-[20rem] lg:gap-5">
+                      {liquidationModelCards.map((card) => {
+                        const Icon = card.icon
+
+                        return (
+                          <article
+                            key={card.title}
+                            className="flex h-[16rem] flex-col rounded-[1.75rem] bg-[#f7f7f5] p-5 md:p-6"
+                          >
+                            <Icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
+                            <div className="mt-5 space-y-3 md:mt-6">
+                              <h3 className="max-w-[12ch] text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:text-[1.55rem]">
+                                {card.title}
+                              </h3>
+                              <p className="max-w-[14rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
+                                {card.description}
+                              </p>
                             </div>
-                          </div>
-                        ))}
-                      </div>
+                          </article>
+                        )
+                      })}
                     </div>
                   </div>
-                </div>,
-                <div key="l2" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_55%,rgba(244,63,94,0.05),transparent_55%)]" />
-                  <div className="absolute inset-0 flex items-center justify-center p-5">
-                    <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                      <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-3">
-                        <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.08em] text-gray-500">
-                          <span>LP unwind</span>
-                          <span>2 legs</span>
-                        </div>
-                        <div className="mt-3 space-y-2">
-                          {["Token A", "Token B", "Fee claim"].map((item) => (
-                            <div key={item} className="rounded-lg border border-rose-100 bg-white px-3 py-2 text-[10px] font-semibold text-rose-700">
-                              {item}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="mt-4 h-2 overflow-hidden rounded-full bg-gray-100">
-                        <div className="h-full w-[84%] rounded-full bg-rose-500 panel-bar-pulse" />
-                      </div>
-                    </div>
-                  </div>
-                </div>,
-                <div key="l3" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(244,63,94,0.04),transparent_55%)]" />
-                  <div className="absolute inset-0 flex items-center justify-center p-5">
-                    <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                      <div className="flex items-start gap-3">
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-rose-200 bg-rose-50 text-rose-500">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <path d="M4 12h16" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                            <path d="M14 6l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                          </svg>
-                        </div>
-                        <div>
-                          <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">Route</span>
-                          <p className="mt-1 text-sm font-semibold text-[#18323c]">Swap, repay, and settle atomically.</p>
-                          <p className="mt-1.5 text-[9px] leading-5 text-gray-500">
-                            The best liquidators choose the fastest unwind path and collect the premium for doing it.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>,
-                <div key="l4" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(244,63,94,0.04),transparent_55%)]" />
-                  <div className="absolute inset-0 flex items-center justify-center p-5">
-                    <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">Premium</span>
-                        <span className="rounded-full border border-rose-100 bg-rose-50 px-2 py-0.5 text-[8px] font-semibold text-rose-500">
-                          Earned
-                        </span>
-                      </div>
-                      <div className="mt-3 grid grid-cols-2 gap-2">
-                        {[
-                          ["Fee", "+3.5%"],
-                          ["Speed", "Fast"],
-                          ["Coverage", "24/7"],
-                          ["Ops", "Scaled"],
-                        ].map(([label, value]) => (
-                          <div key={label} className="rounded-xl border border-gray-100 bg-gray-50/80 px-3 py-2">
-                            <span className="block text-[7px] uppercase tracking-[0.08em] text-gray-400">{label}</span>
-                            <span className="mt-0.5 block text-[10px] font-semibold text-[#18323c]">{value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>,
-              ]}
-            />
+                </div>
+              </div>
+            </section>
+
+            <BusinessLiquidatorsShowcaseSection />
 
             <section className="relative -mx-4 overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#fff7f6_0%,#fff0ef_50%,#fffafb_100%)] px-6 py-12 sm:-mx-6 sm:px-10 md:px-12 md:py-16 lg:py-20 2xl:py-18">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(244,63,94,0.10),transparent_40%),radial-gradient(circle_at_80%_100%,rgba(249,115,22,0.08),transparent_35%)]" />
