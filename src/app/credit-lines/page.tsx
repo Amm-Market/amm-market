@@ -201,8 +201,12 @@ export default function CreditLinesPage() {
           <div className="mx-auto w-full max-w-[90rem] space-y-10 md:space-y-12 lg:space-y-14">
               <div className="pt-20 md:pt-28 lg:pt-32">
                 <h1 className="text-left text-[clamp(2.4rem,5.8vw,4.3rem)] font-normal leading-[0.98] tracking-[-0.065em] text-[#111111]">
-                  <span className="block">Secure credit lines now,</span>
-                  <span className="block">Repay from future revenues.</span>
+                  <span className="block">
+                    Secure <span className="bg-gradient-to-r from-[#01AACF] via-[#0057ff] to-[#67d8ff] bg-clip-text text-transparent">credit lines</span> now,
+                  </span>
+                  <span className="block">
+                    Repay from <span className="bg-gradient-to-r from-[#01AACF] via-[#0057ff] to-[#67d8ff] bg-clip-text text-transparent">future revenues</span>.
+                  </span>
                 </h1>
               </div>
 
