@@ -113,28 +113,28 @@ const liquidationFaqItems: InlineFaqItem[] = [
 const liquidationModelCards = [
   {
     icon: Gauge,
-    title: "Watch risk",
-    description: "Track health and drift before the unwind grows costly.",
+    title: "Find the trigger",
+    description: "Spot the change that makes the position eligible for liquidation.",
   },
   {
     icon: LockKeyhole,
-    title: "Unwind cleanly",
-    description: "Split the LP and remove only what the liquidation needs.",
+    title: "Split the LP",
+    description: "Turn the position back into the assets that can be moved.",
   },
   {
     icon: MoveRight,
-    title: "Settle fast",
-    description: "Route the exit, repay the debt, and close atomically.",
+    title: "Move the proceeds",
+    description: "Use the best route to sell the recovery and repay the debt.",
   },
   {
     icon: BadgePercent,
-    title: "Capture premium",
-    description: "Cleaner execution keeps more fee for the operator.",
+    title: "Take the reward",
+    description: "A clean unwind leaves the liquidation incentive on the table.",
   },
   {
     icon: MoveRight,
-    title: "Stay liquid",
-    description: "Good routing and capital keep coverage reliable.",
+    title: "Reset the book",
+    description: "Free up capital so the desk can handle the next position.",
   },
 ] as const
 
@@ -202,7 +202,7 @@ export default function LiquidatorsPage() {
         titleLines={["Liquidators Jobs", ""]}
         className="pb-2 md:pb-3 2xl:pb-3"
         paragraphs={[
-          "Liquidators watch LP-backed positions for risk. When a position becomes unhealthy, they unwind the collateral, settle the debt, and keep the market healthy. Better execution means better coverage and better fees.",
+          "Liquidators watch LP-backed positions, unwind the collateral when health drops, and collect the liquidation fee.",
         ]}
       />
 
@@ -217,7 +217,7 @@ export default function LiquidatorsPage() {
                   <div className="max-w-[52rem] space-y-4">
                     <SectionEyebrow tone="rose">Liquidation model</SectionEyebrow>
                     <SectionTitle className="max-w-none text-[clamp(1.9rem,3vw,3rem)] leading-[1.02] md:whitespace-nowrap">
-                      LP liquidation runs on execution.
+                      LP liquidation is an execution business.
                     </SectionTitle>
                   </div>
 
@@ -254,38 +254,34 @@ export default function LiquidatorsPage() {
               <div className="relative z-10">
                 <div className="max-w-[600px] space-y-3">
                   <SectionEyebrow tone="rose">Why liquidators care</SectionEyebrow>
-                  <SectionTitle>LP collateral creates a real liquidation market.</SectionTitle>
+                  <SectionTitle>Liquidation fees pay for execution.</SectionTitle>
                 </div>
 
                 <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-14 lg:grid-cols-4 lg:gap-5">
                   {[
                     {
                       stat: "1",
-                      label: "position",
-                      title: "Watch risk early",
-                      description:
-                        "Healthy coverage starts with scanning positions before they cross the unsafe line.",
+                      label: "threshold",
+                      title: "Spot the trigger",
+                      description: "A health factor below 1 tells the liquidator the account can be taken.",
                     },
                     {
                       stat: "2",
-                      label: "legs",
-                      title: "Unwind the LP correctly",
-                      description:
-                        "The collateral must be split into its components before it can be sold and repaid.",
+                      label: "collateral",
+                      title: "Split the LP",
+                      description: "The position has to be converted into the assets that back it.",
                     },
                     {
                       stat: "3",
-                      label: "steps",
-                      title: "Route the debt settlement",
-                      description:
-                        "Pick the right venue path, repay the loan, and preserve atomic settlement.",
+                      label: "repayment",
+                      title: "Repay the debt",
+                      description: "The recovered value goes back into the loan before the account is closed.",
                     },
                     {
                       stat: "Fee",
-                      label: "income",
-                      title: "Capture the premium",
-                      description:
-                        "The better the execution desk, the more of the liquidation incentive it can harvest.",
+                      label: "bonus",
+                      title: "Take the bonus",
+                      description: "The liquidation bonus is the operator’s compensation.",
                     },
                   ].map((item) => (
                     <article key={item.title} className="flex flex-col rounded-2xl bg-white/70 p-6 backdrop-blur-sm">

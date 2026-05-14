@@ -6,30 +6,26 @@ const STEPS = [
   {
     id: "monitor",
     label: "Monitor",
-    title: "Catch unhealthy positions before they turn into bad debt.",
-    description:
-      "Keep a live view of health factor, collateral composition, and price movement so the liquidator can react early.",
+    title: "Watch accounts below the threshold.",
+    description: "If health factor drops under 1, the position is eligible for liquidation.",
   },
   {
     id: "unwind",
     label: "Unwind",
-    title: "Split the LP into the underlying legs and remove the position cleanly.",
-    description:
-      "LP liquidation is not a simple token seizure. The bot has to reconstruct the position, separate both sides, and unwind them in order.",
+    title: "Split the LP into the underlying assets.",
+    description: "LP collateral has to be broken apart before it can be sold and repaid.",
   },
   {
     id: "route",
     label: "Route",
-    title: "Sell, swap, and repay through the best execution path.",
-    description:
-      "The liquidation desk routes the recovered assets into the debt asset, uses available liquidity, and settles the position atomically.",
+    title: "Use the venue path that clears the debt.",
+    description: "The operator routes the sale through the path that can repay the loan.",
   },
   {
     id: "collect",
     label: "Collect",
-    title: "Take the incentive and move on to the next opportunity.",
-    description:
-      "Specialized bots and larger operations can earn liquidation premiums while supplying the coverage Avana needs.",
+    title: "Collect the liquidation bonus.",
+    description: "The bonus is the fee paid for completing the liquidation.",
   },
 ] as const
 
