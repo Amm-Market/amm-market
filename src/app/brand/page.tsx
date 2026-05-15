@@ -28,6 +28,8 @@ interface BrandLogoVariant {
 const BRAND_KIT_URL = "/avana-brand-kit.zip"
 
 const brandAssetPath = (path: string) => encodeURI(path)
+const mobileLogoImageClassName = "w-full max-w-[11rem]"
+const logoImageClassName = "w-full max-w-[27rem]"
 
 const avanaColors = {
   white: "#FFFFFF",
@@ -44,30 +46,30 @@ const logoVariants: readonly BrandLogoVariant[] = [
     title: "Full (Horizontal)",
     description:
       "This is the primary logo that is most recognizable. It works well in most environments. The vertical version is available when space is constrained or limited.",
-    src: brandAssetPath("/Avana PNG/Avana Full (Personal) PNG.png"),
+    src: brandAssetPath("/Full (Horizontal).png"),
     alt: "Avana personal full logo",
-    mobileImageClassName: "w-full max-w-[18rem]",
-    desktopImageClassName: "w-full max-w-[15rem]",
+    mobileImageClassName: mobileLogoImageClassName,
+    desktopImageClassName: logoImageClassName,
   },
   {
     id: "vertical",
-    title: "Full (Vertical)",
+    title: "Full (Personal)",
     description:
       "This version of the logo is available for instances where space is constrained or limited.",
-    src: brandAssetPath("/Avana PNG/Avana Full (Business) PNG.png"),
-    alt: "Avana business full logo",
-    mobileImageClassName: "w-full max-w-[11rem]",
-    desktopImageClassName: "w-full max-w-[9.5rem]",
+    src: brandAssetPath("/Full (Personal).png"),
+    alt: "Avana personal full logo",
+    mobileImageClassName: mobileLogoImageClassName,
+    desktopImageClassName: logoImageClassName,
   },
   {
     id: "icon",
     title: "Logo",
     description:
       "It's called an icon because it's iconic. It's simple and can be used as a shorthand for the Full logo.",
-    src: brandAssetPath("/Avana PNG/Avana Icon (Black) PNG.png"),
-    alt: "Avana icon logo",
-    mobileImageClassName: "w-full max-w-[5.25rem]",
-    desktopImageClassName: "w-full max-w-[5rem]",
+    src: brandAssetPath("/Logo.png"),
+    alt: "Avana logo",
+    mobileImageClassName: mobileLogoImageClassName,
+    desktopImageClassName: logoImageClassName,
   },
 ] as const
 
@@ -293,7 +295,7 @@ export default function BrandPage() {
                     onFocus={() => setActiveLogoVariant(variant.id)}
                     onClick={() => setActiveLogoVariant(variant.id)}
                   >
-                    <div className="relative flex aspect-[7/3] items-center justify-center rounded-[20px] bg-gray-100 md:hidden">
+                    <div className="relative flex aspect-[7/3] items-center justify-center rounded-[20px] border border-[#0F1518]/15 md:hidden">
                       <BrandAssetImage src={variant.src} alt={variant.alt} className={variant.mobileImageClassName} />
                     </div>
                     <h3 className="text-xl font-semibold text-gray-900">{variant.title}</h3>
@@ -302,7 +304,7 @@ export default function BrandPage() {
                 ))}
               </div>
 
-              <div className="group relative hidden h-[400px] items-center justify-center rounded-[20px] bg-gray-100 md:flex">
+                <div className="group relative hidden h-[400px] items-center justify-center rounded-[20px] border border-[#0F1518]/15 md:flex">
                   {logoVariants.map((variant) => (
                     <div
                       key={variant.id}

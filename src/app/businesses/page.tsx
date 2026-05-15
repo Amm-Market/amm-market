@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Businesses - Avana",
+  title: "Businesses",
   description: "Placeholder page for the Avana Businesses section.",
 }
 

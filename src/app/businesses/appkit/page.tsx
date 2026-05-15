@@ -6,40 +6,39 @@ import { BadgeDollarSign, Compass, Handshake, LayoutTemplate, ShieldCheck, Workf
 import BusinessAppKitShowcaseSection from "@/components/business-appkit-showcase"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
-import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
+import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: `AppKit - ${SITE_NAME}`,
+  title: "AppKit",
   description:
     "Connect DEX, wallet, and app users to Avana LP-backed credit with AppKit integration tools and partner economics.",
   alternates: {
     canonical: siteRoutes.appkit,
   },
   openGraph: {
-    title: `AppKit - ${SITE_NAME}`,
+    title: "AppKit",
     description:
       "Connect DEX, wallet, and app users to Avana LP-backed credit with AppKit integration tools and partner economics.",
     url: siteRoutes.appkit,
     images: [
       {
         url: buildOgImagePath({
-          title: `AppKit - ${SITE_NAME}`,
+          title: "AppKit",
           subtitle: "Connect users to LP-backed credit",
         }),
-        alt: `AppKit - ${SITE_NAME}`,
+        alt: "AppKit",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `AppKit - ${SITE_NAME}`,
+    title: "AppKit",
     description:
       "Connect DEX, wallet, and app users to Avana LP-backed credit with AppKit integration tools and partner economics.",
     images: [
       buildOgImagePath({
-        title: `AppKit - ${SITE_NAME}`,
+        title: "AppKit",
         subtitle: "Connect users to LP-backed credit",
       }),
     ],
@@ -302,41 +301,9 @@ export default function AppKitPage() {
         </div>
       </div>
 
-      <ProductStorySection
-        withTopDivider
-        eyebrow="For partners"
-        eyebrowTone="violet"
-        titleLines={["Distribution for", "LP-backed credit."]}
-        paragraphs={[
-          "AppKit helps DEXs, wallets, and apps embed Avana borrowing into the user journeys they already own. Keep the experience native while Avana handles credit logic, execution, and settlement in the background.",
-        ]}
-      />
-
       <section className="pt-32 md:pt-40 2xl:pt-36">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem] space-y-32 md:space-y-40 2xl:space-y-36">
-            <BusinessAppKitShowcaseSection />
-
-            <section>
-              <div className="space-y-4 text-left">
-                <SectionEyebrow tone="violet">Integration model</SectionEyebrow>
-                <SectionTitle>Built for DEXs that already own LP flow.</SectionTitle>
-              </div>
-
-              <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
-                {appKitFeatures.map((feature) => (
-                  <AppKitFeatureCard
-                    key={feature.title}
-                    title={feature.title}
-                    description={feature.description}
-                    icon={feature.icon}
-                  />
-                ))}
-              </div>
-            </section>
-
-            <AppKitAccessSection />
-
             <section className="relative -mx-4 overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#f8f7fc_0%,#eee8f8_50%,#f5f3fa_100%)] px-6 py-12 sm:-mx-6 sm:px-10 md:px-12 md:py-16 lg:py-20 2xl:py-18">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(139,92,246,0.10),transparent_40%),radial-gradient(circle_at_80%_100%,rgba(99,102,241,0.08),transparent_35%)]" />
               <div className="relative z-10">
@@ -390,6 +357,28 @@ export default function AppKitPage() {
                 </div>
               </div>
             </section>
+
+            <BusinessAppKitShowcaseSection />
+
+            <section>
+              <div className="space-y-4 text-left">
+                <SectionEyebrow tone="violet">Integration model</SectionEyebrow>
+                <SectionTitle>Built for DEXs that already own LP flow.</SectionTitle>
+              </div>
+
+              <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
+                {appKitFeatures.map((feature) => (
+                  <AppKitFeatureCard
+                    key={feature.title}
+                    title={feature.title}
+                    description={feature.description}
+                    icon={feature.icon}
+                  />
+                ))}
+              </div>
+            </section>
+
+            <AppKitAccessSection />
 
             <HomepageNewsroomSection collection="platform" eyebrowTone="violet" />
 

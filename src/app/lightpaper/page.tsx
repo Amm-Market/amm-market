@@ -5,11 +5,11 @@ import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
 export const metadata: Metadata = {
-  title: "Lightpaper - Avana",
+  title: "Lightpaper",
   description:
     "Avana is an LP-collateral lending protocol that lets users borrow against active liquidity positions while venue-specific spoke markets manage valuation, risk, and liquidation.",
   openGraph: {
-    title: "Lightpaper - Avana",
+    title: "Lightpaper",
     description:
       "Tap into LP credits with Avana's LP-collateral lending model, structured spoke markets, and risk-aware borrowing infrastructure.",
   },

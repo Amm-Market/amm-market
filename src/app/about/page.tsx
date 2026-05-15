@@ -9,32 +9,32 @@ const pageDescription =
   "Meet Avana, a dedicated LP-as-collateral protocol built on Aave v4 with specialized Spokes, a shared Hub, and an Invest Spoke designed for AMM liquidity markets."
 
 export const metadata: Metadata = {
-  title: `About - ${SITE_NAME}`,
+  title: "About",
   description: pageDescription,
   alternates: {
     canonical: siteRoutes.about,
   },
   openGraph: {
-    title: `About ${SITE_NAME}`,
+    title: "About",
     description: pageDescription,
     url: siteRoutes.about,
     images: [
       {
         url: buildOgImagePath({
-          title: `About ${SITE_NAME}`,
+          title: "About",
           subtitle: "LP-as-collateral protocol built on Aave v4",
         }),
-        alt: `About ${SITE_NAME}`,
+        alt: "About",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `About ${SITE_NAME}`,
+    title: "About",
     description: pageDescription,
     images: [
       buildOgImagePath({
-        title: `About ${SITE_NAME}`,
+        title: "About",
         subtitle: "LP-as-collateral protocol built on Aave v4",
       }),
     ],
