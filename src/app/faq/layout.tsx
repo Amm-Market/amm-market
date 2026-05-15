@@ -7,14 +7,14 @@ import { serializeJsonLd } from "@/lib/structured-data"
  * FAQ page metadata for SEO
  */
 export const metadata: Metadata = {
-  title: "FAQ - Frequently Asked Questions",
+  title: "FAQ",
   description:
     "Get answers about LP-backed borrowing, productive collateral, conservative valuation, health checks, liquidation, and interface fee policy in Avana.",
   alternates: {
     canonical: siteRoutes.faq,
   },
   openGraph: {
-    title: "FAQ - Avana",
+    title: "FAQ",
     url: siteRoutes.faq,
     description:
       "Find canonical answers about LP collateral, borrowing capacity, liquidation, and interface policy in Avana.",

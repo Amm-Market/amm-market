@@ -22,19 +22,19 @@ const DeferredDeveloperSidebar = dynamic(
  */
 export const metadata: Metadata = {
   title: {
-    template: `%s - Developer Docs | ${SITE_NAME}`,
-    default: "Developer Documentation",
+    template: "%s | Developer Docs",
+    default: "Developer Docs",
   },
   description: `Technical documentation for integrating with ${SITE_NAME}. Learn about LP token collateral, health factors, liquidation flows, and smart contract architecture on Aave v4.`,
   alternates: {
     canonical: siteRoutes.developers,
   },
   openGraph: {
-    title: `Developer Documentation - ${SITE_NAME}`,
+    title: "Developer Docs",
     url: siteRoutes.developers,
     description: `Technical docs for integrating with ${SITE_NAME} on Aave v4.`,
     images: [buildOgImagePath({
-      title: "Developer Documentation",
+      title: "Developer Docs",
       subtitle: `Technical guides for integrating with ${SITE_NAME}`,
       type: "developers",
     })],
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     images: [buildOgImagePath({
-      title: "Developer Documentation",
+      title: "Developer Docs",
       subtitle: `Technical guides for integrating with ${SITE_NAME}`,
       type: "developers",
     })],
