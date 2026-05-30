@@ -5,6 +5,9 @@ const legacyMarketingRedirects = [
   { source: "/open-spoke", destination: "/borrow" },
   { source: "/stable-spoke", destination: "/invest" },
   { source: "/webapp", destination: "/credit-lines" },
+  { source: "/businesses", destination: "/products" },
+  { source: "/businesses/appkit", destination: "/products/appkit" },
+  { source: "/businesses/liquidators", destination: "/products/liquidators" },
 ];
 
 /**

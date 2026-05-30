@@ -1,17 +1,17 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Businesses",
-  description: "Placeholder page for the Avana Businesses section.",
+  title: "Products",
+  description: "Placeholder page for the Avana Products section.",
 }
 
-export default function BusinessesPage() {
+export default function ProductsPage() {
   return (
     <main className="bg-white">
       <section className="py-24">
         <div className="site-content-shell">
           <h1 className="text-[2.5rem] font-[560] tracking-[-0.06em] text-gray-950 sm:text-[3.25rem]">
-            Businesses
+            Products
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-600">
             Coming soon.

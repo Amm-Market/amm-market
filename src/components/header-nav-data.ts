@@ -6,26 +6,17 @@ export interface NavLink {
   external?: boolean
 }
 
-export type DesktopMenuId = "individuals" | "businesses" | "resources" | "developers" | "about"
+export type DesktopMenuId = "products" | "resources" | "developers" | "about"
 
 export const desktopMenuButtons = [
   {
-    id: "individuals",
-    label: "Personal",
+    id: "products",
+    label: "Products",
     matchHrefs: [
       siteRoutes.borrow,
       siteRoutes.invest,
       siteRoutes.trade,
-    ],
-  },
-  {
-    id: "businesses",
-    label: "Business",
-    matchHrefs: [
-      siteRoutes.businesses,
       siteRoutes.creditLines,
-      siteRoutes.liquidators,
-      siteRoutes.appkit,
     ],
   },
   {
@@ -38,10 +29,10 @@ export const desktopMenuButtons = [
     label: "Developers",
     matchHrefs: [
       siteRoutes.developers,
-      "/developers/introduction",
-      "/developers/introduction/key-concepts",
       "/developers/architecture",
       "/developers/liquidation",
+      siteRoutes.appkit,
+      siteRoutes.liquidators,
     ],
   },
   {
