@@ -258,7 +258,7 @@ export default function AppKitPage() {
                       width={1200}
                       height={1200}
                       quality={70}
-                      className="h-auto w-full rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
+                      className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                       sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
                       priority
                       fetchPriority="high"
@@ -267,133 +267,119 @@ export default function AppKitPage() {
                 </div>
 
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
-                  <h1 className="mb-3 max-w-[11ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
-                    <span>Integrate lending</span>
+                  <h1 className="mb-4 max-w-[10ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[9ch] md:text-5xl lg:text-5xl xl:text-6xl">
+                    <span>Connect users.</span>
                     <br />
-                    <span>into your DEX.</span>
+                    <span>Keep them in flow.</span>
                   </h1>
 
-                  <p className="mb-5 max-w-[36ch] text-base leading-relaxed text-gray-600 sm:max-w-[40ch] md:mb-6 md:text-lg">
+                  <p className="mb-5 max-w-[30ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
                     AppKit gives DEXs, wallets, and apps a way to connect LP users to Avana borrowing from the
-                    products they already use.
+                    product surface they already use.
                   </p>
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
                     <Link
-                      href="/developers"
+                      href="/developers/architecture"
                       prefetch={false}
                       className="inline-flex items-center justify-center rounded-full bg-gray-900 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-gray-800"
                     >
-                      View docs
+                      Read docs
                     </Link>
                     <Link
-                      href="/credit-lines"
+                      href="/lightpaper"
                       prefetch={false}
                       className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-900 transition-colors hover:bg-gray-100"
                     >
-                      See credit lines
+                      Read lightpaper
                     </Link>
                   </div>
                 </div>
               </div>
             </div>
           </section>
-        </div>
-      </div>
 
-      <section className="pt-32 md:pt-40 2xl:pt-36">
-        <div className="site-content-shell">
-          <div className="mx-auto w-full max-w-[76rem] space-y-32 md:space-y-40 2xl:space-y-36">
-            <section className="relative -mx-4 overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#f8f7fc_0%,#eee8f8_50%,#f5f3fa_100%)] px-6 py-12 sm:-mx-6 sm:px-10 md:px-12 md:py-16 lg:py-20 2xl:py-18">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(139,92,246,0.10),transparent_40%),radial-gradient(circle_at_80%_100%,rgba(99,102,241,0.08),transparent_35%)]" />
-              <div className="relative z-10">
-                <div className="max-w-[600px] space-y-3">
+          <section className="relative z-10 pt-8 md:pt-10 lg:pt-12">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {appKitFeatures.map((feature) => (
+                <AppKitFeatureCard
+                  key={feature.title}
+                  title={feature.title}
+                  description={feature.description}
+                  icon={feature.icon}
+                />
+              ))}
+            </div>
+          </section>
+
+          <section className="py-16 md:py-24 lg:py-28">
+            <div className="site-content-shell">
+              <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.88fr)] lg:gap-16">
+                <div className="space-y-6">
                   <SectionEyebrow tone="violet">Why partners choose AppKit</SectionEyebrow>
-                  <SectionTitle>End-to-end LP credit rails.</SectionTitle>
+                  <SectionTitle className="max-w-[12ch] text-[#111111]">
+                    Bring credit into the product flow.
+                  </SectionTitle>
+                  <p className="max-w-[36rem] text-[1rem] leading-[1.72] tracking-[-0.01em] text-[#74757c] md:text-[1.08rem]">
+                    AppKit is designed for products that already own the user relationship. Instead of sending users
+                    into a separate borrowing journey, the integration keeps the credit experience close to the
+                    context where LP positions are already visible and actionable.
+                  </p>
                 </div>
 
-                <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-14 lg:grid-cols-4 lg:gap-5">
-                  {[
-                    {
-                      stat: "01",
-                      label: "experience",
-                      title: "Own the experience",
-                      description:
-                        "Keep the borrowing flow inside your product while Avana handles credit in the background.",
-                    },
-                    {
-                      stat: "02",
-                      label: "execution",
-                      title: "Advanced execution",
-                      description:
-                        "Access LP-backed credit with reliable execution, clear routing, and responsive market handling.",
-                    },
-                    {
-                      stat: "03",
-                      label: "controls",
-                      title: "Built for compliance",
-                      description:
-                        "Ship with infrastructure that is designed around security, risk controls, and privacy-aware operations.",
-                    },
-                    {
-                      stat: "04",
-                      label: "launch",
-                      title: "Fast-track your launch",
-                      description:
-                        "Move faster with modular APIs, partner support, and a rollout path that fits your product surface.",
-                    },
-                  ].map((item) => (
-                    <article key={item.title} className="flex flex-col rounded-2xl bg-white/70 p-6 backdrop-blur-sm">
-                      <div className="flex items-baseline gap-1.5">
-                        <span className="text-[2.4rem] font-medium leading-none tracking-[-0.04em] text-violet-600">
-                          {item.stat}
-                        </span>
-                        <span className="text-sm font-medium text-violet-400">{item.label}</span>
-                      </div>
-                      <h3 className="mt-4 text-base font-semibold text-[#18323c]">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.description}</p>
-                    </article>
+                <div className="rounded-[2rem] bg-[#f7f7f5] p-6 md:p-8">
+                  <BusinessAppKitShowcaseSection />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-[#f7f7f5] py-16 md:py-24 lg:py-28">
+            <div className="site-content-shell">
+              <div className="grid gap-12 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:gap-16">
+                <div className="space-y-6">
+                  <SectionEyebrow tone="violet">How it works</SectionEyebrow>
+                  <SectionTitle className="max-w-[12ch] text-[#111111]">
+                    A partner surface with fewer handoffs.
+                  </SectionTitle>
+                  <p className="max-w-[34rem] text-[1rem] leading-[1.72] tracking-[-0.01em] text-[#74757c] md:text-[1.08rem]">
+                    AppKit slots into portfolio views, wallet dashboards, and DEX surfaces where LP positions already
+                    live. The partner decides where credit appears, and Avana handles the borrowing, risk, and
+                    settlement path behind it.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-2">
+                  {appKitFeatures.slice(0, 4).map((feature) => (
+                    <AppKitFeatureCard
+                      key={`secondary-${feature.title}`}
+                      title={feature.title}
+                      description={feature.description}
+                      icon={feature.icon}
+                    />
                   ))}
                 </div>
               </div>
-            </section>
+            </div>
+          </section>
 
-            <BusinessAppKitShowcaseSection />
+          <AppKitAccessSection />
 
-            <section>
-              <div className="space-y-4 text-left">
-                <SectionEyebrow tone="violet">Integration model</SectionEyebrow>
-                <SectionTitle>Built for DEXs that already own LP flow.</SectionTitle>
-              </div>
-
-              <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
-                {appKitFeatures.map((feature) => (
-                  <AppKitFeatureCard
-                    key={feature.title}
-                    title={feature.title}
-                    description={feature.description}
-                    icon={feature.icon}
-                  />
-                ))}
-              </div>
-            </section>
-
-            <AppKitAccessSection />
-
-            <HomepageNewsroomSection collection="platform" eyebrowTone="violet" />
-
-            <div className="pb-16 md:pb-24 2xl:pb-22">
+          <section className="py-16 md:py-24 lg:py-28">
+            <div className="site-content-shell">
               <InlineFaqSection
-                title="Frequently asked questions."
+                eyebrow="FAQ"
+                title="AppKit questions"
                 items={appKitFaqItems}
-                eyebrowTone="violet"
-                withTopBorder={false}
-                layout="homepage"
               />
             </div>
-          </div>
+          </section>
+
+          <section className="py-16 md:py-24 lg:py-28">
+            <HomepageNewsroomSection />
+          </section>
         </div>
-      </section>
+      </div>
     </main>
   )
 }

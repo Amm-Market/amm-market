@@ -260,127 +260,98 @@ export default function LiquidatorsPage() {
               </div>
             </div>
           </section>
-        </div>
-      </div>
 
-      <ProductStorySection
-        withTopDivider
-        eyebrow="For operators"
-        eyebrowTone="rose"
-        titleLines={["A new surface", "for liquidators."]}
-        className="pb-2 md:pb-3 2xl:pb-3"
-        paragraphs={[
-          "Most liquidation infrastructure is built around standard token collateral. Avana opens a different kind of market: borrowers keep LP exposure active, and operators provide the closeout coverage that makes that credit safer to offer.",
-        ]}
-      />
+          <section className="relative z-10 pt-8 md:pt-10 lg:pt-12">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {liquidationModelCards.map((card) => (
+                <article
+                  key={card.title}
+                  className="flex flex-col rounded-[1.5rem] bg-[#f7f7f5] p-5 md:p-6"
+                >
+                  <card.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
+                  <h3 className="mt-5 text-[1.25rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111]">
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77]">
+                    {card.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </section>
 
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 pt-0 sm:px-6 sm:pt-2">
-        <div className="relative z-0 flex flex-1 flex-col">
-          <div className="site-content-width space-y-24 pt-0 pb-16 md:space-y-32 md:pb-20 2xl:space-y-32 2xl:pb-18">
-            <BusinessLiquidatorsShowcaseSection />
+          <section className="py-16 md:py-24 lg:py-28">
+            <div className="site-content-shell">
+              <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.88fr)] lg:gap-16">
+                <div className="space-y-6">
+                  <SectionEyebrow tone="rose">Why liquidators use Avana</SectionEyebrow>
+                  <SectionTitle className="max-w-[12ch] text-[#111111]">
+                    Keep closeouts orderly.
+                  </SectionTitle>
+                  <p className="max-w-[36rem] text-[1rem] leading-[1.72] tracking-[-0.01em] text-[#74757c] md:text-[1.08rem]">
+                    Avana gives operators a liquidation surface built for LP-backed collateral instead of generic token
+                    unwinds. That means the execution path can respect the pool structure, source the right liquidity,
+                    and settle the repayment without turning every closeout into a manual rescue.
+                  </p>
+                </div>
 
-            <section className="bg-white">
-              <div className="site-content-shell">
-                <div className="mx-auto w-full max-w-[76rem]">
-                  <div className="max-w-[52rem] space-y-4">
-                    <SectionEyebrow tone="rose">Liquidation model</SectionEyebrow>
-                    <SectionTitle className="max-w-none text-[clamp(1.9rem,3vw,3rem)] leading-[1.02] md:whitespace-nowrap">
-                      The closeout path is protocol-defined.
-                    </SectionTitle>
-                  </div>
-
-                  <div className="mt-10 overflow-x-auto py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                    <div className="grid w-max grid-flow-col auto-cols-[19rem] gap-4 pr-1 lg:auto-cols-[20rem] lg:gap-5">
-                      {liquidationModelCards.map((card) => {
-                        const Icon = card.icon
-
-                        return (
-                          <article
-                            key={card.title}
-                            className="flex h-[16rem] flex-col rounded-[1.75rem] bg-[#f7f7f5] p-5 md:p-6"
-                          >
-                            <Icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
-                            <div className="mt-5 space-y-3 md:mt-6">
-                              <h3 className="max-w-[12ch] text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:text-[1.55rem]">
-                                {card.title}
-                              </h3>
-                              <p className="max-w-[14rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
-                                {card.description}
-                              </p>
-                            </div>
-                          </article>
-                        )
-                      })}
-                    </div>
-                  </div>
+                <div className="rounded-[2rem] bg-[#f7f7f5] p-6 md:p-8">
+                  <BusinessLiquidatorsShowcaseSection />
                 </div>
               </div>
-            </section>
+            </div>
+          </section>
 
-            <section className="relative -mx-4 overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#fff7f6_0%,#fff0ef_50%,#fffafb_100%)] px-6 py-12 sm:-mx-6 sm:px-10 md:px-12 md:py-16 lg:py-20 2xl:py-18">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(244,63,94,0.10),transparent_40%),radial-gradient(circle_at_80%_100%,rgba(249,115,22,0.08),transparent_35%)]" />
-              <div className="relative z-10">
-                <div className="max-w-[600px] space-y-3">
-                  <SectionEyebrow tone="rose">Why liquidators care</SectionEyebrow>
-                  <SectionTitle>Infrastructure becomes revenue.</SectionTitle>
+          <section className="bg-[#f7f7f5] py-16 md:py-24 lg:py-28">
+            <div className="site-content-shell">
+              <div className="grid gap-12 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:gap-16">
+                <div className="space-y-6">
+                  <SectionEyebrow tone="rose">Execution model</SectionEyebrow>
+                  <SectionTitle className="max-w-[12ch] text-[#111111]">
+                    A liquidation path with fewer surprises.
+                  </SectionTitle>
+                  <p className="max-w-[34rem] text-[1rem] leading-[1.72] tracking-[-0.01em] text-[#74757c] md:text-[1.08rem]">
+                    Liquidators need a stack that can watch the market, simulate the unwind, deliver the transaction,
+                    and move the resulting assets correctly. Avana does the risk logic and surface coordination so
+                    operators can focus on coverage and execution quality.
+                  </p>
                 </div>
 
-                <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-14 lg:grid-cols-4 lg:gap-5">
-                  {[
-                    {
-                      stat: "1",
-                      label: "market",
-                      title: "Access LP-backed credit demand",
-                      description: "As Avana grows borrower activity, liquidators get a new market to monitor and service.",
-                    },
-                    {
-                      stat: "2",
-                      label: "edge",
-                      title: "Use skills that already matter",
-                      description: "AMM knowledge, routing, liquidity access, and transaction delivery become practical advantages.",
-                    },
-                    {
-                      stat: "3",
-                      label: "access",
-                      title: "Operate permissionlessly",
-                      description: "Keeper teams and execution desks can participate without becoming a centralized service provider.",
-                    },
-                    {
-                      stat: "Fee",
-                      label: "incentive",
-                      title: "Earn for completed closeouts",
-                      description: "The incentive pays for resolving unsafe loans and returning value to the credit market.",
-                    },
-                  ].map((item) => (
-                    <article key={item.title} className="flex flex-col rounded-2xl bg-white/70 p-6 backdrop-blur-sm">
-                      <div className="flex items-baseline gap-1.5">
-                        <span className="text-[2.4rem] font-medium leading-none tracking-[-0.04em] text-rose-600">
-                          {item.stat}
-                        </span>
-                        <span className="text-sm font-medium text-rose-400">{item.label}</span>
-                      </div>
-                      <h3 className="mt-4 text-base font-semibold text-[#18323c]">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.description}</p>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {liquidationModelCards.slice(0, 4).map((card) => (
+                    <article
+                      key={`secondary-${card.title}`}
+                      className="flex flex-col rounded-[1.5rem] bg-white p-5 md:p-6"
+                    >
+                      <card.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
+                      <h3 className="mt-5 text-[1.25rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111]">
+                        {card.title}
+                      </h3>
+                      <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77]">
+                        {card.description}
+                      </p>
                     </article>
                   ))}
                 </div>
               </div>
-            </section>
+            </div>
+          </section>
 
-            <LiquidatorAccessSection />
+          <LiquidatorAccessSection />
 
-            <HomepageNewsroomSection collection="home" eyebrowTone="rose" />
-
-            <div className="pb-16 md:pb-24 2xl:pb-22">
+          <section className="py-16 md:py-24 lg:py-28">
+            <div className="site-content-shell">
               <InlineFaqSection
-                title="Frequently asked questions."
+                eyebrow="FAQ"
+                title="Liquidator questions"
                 items={liquidationFaqItems}
-                eyebrowTone="rose"
-                withTopBorder={false}
-                layout="homepage"
               />
             </div>
-          </div>
+          </section>
+
+          <section className="py-16 md:py-24 lg:py-28">
+            <HomepageNewsroomSection />
+          </section>
         </div>
       </div>
     </main>

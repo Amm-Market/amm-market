@@ -75,7 +75,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}${siteRoutes.businesses}`,
+      url: `${SITE_URL}${siteRoutes.products}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
