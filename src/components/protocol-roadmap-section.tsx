@@ -10,8 +10,8 @@ const roadmapPhases: {
   milestones: { label: string; status: RoadmapStatus }[]
 }[] = [
   {
-    title: "Phase 1 - Token Markets",
-    summary: "Deposit LP positions as collateral to borrow single assets.",
+    title: "Phase 1 - Borrow Markets",
+    summary: "Supply LP positions and receive asset loans deposited straight to your wallet.",
     timeframe: "Q2 2026",
     milestones: [
       { label: "LP Collateral Pricing Engine", status: "Released" },
@@ -33,8 +33,8 @@ const roadmapPhases: {
     ],
   },
   {
-    title: "Phase 2 - Leverage / Perps Markets",
-    summary: "Deposit LP positions as collateral to open managed leverage or perps exposure.",
+    title: "Phase 2 - Lend Markets",
+    summary: "Lend assets to back LP collateral and earn yield from the market.",
     timeframe: "Q3 2026",
     milestones: [
       { label: "Leverage Strategy Engine", status: "Q3" },
@@ -49,8 +49,8 @@ const roadmapPhases: {
     ],
   },
   {
-    title: "Phase 3 - Pool Markets",
-    summary: "Deposit LP positions as collateral to borrow pool positions.",
+    title: "Phase 3 - Multiply Markets",
+    summary: "Increase your yield exposure by looping up to 10x with a single click.",
     timeframe: "Q4 2026",
     milestones: [
       { label: "Pool Market Architecture & Spec", status: "Q3" },
@@ -170,8 +170,8 @@ export default function ProtocolRoadmapSection() {
       </div>
 
       <p className="text-[1.08rem] leading-[1.68] tracking-[-0.025em] text-gray-600 sm:text-[1.12rem]">
-        Avana develops in three phases. Each phase builds on the one before it: Token Markets,
-        Leverage / Perps Markets, then Pool Markets.
+        Avana develops in three phases. Each phase builds on the one before it: Borrow Markets,
+        Lend Markets, then Multiply Markets.
       </p>
 
       <div className="flex flex-col gap-10">

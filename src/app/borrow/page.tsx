@@ -367,20 +367,20 @@ export default function BorrowPage() {
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 <BorrowMarketCard
                   number="1"
-                  title="Token Markets"
-                  description="Supply LP positions and receive single-asset loans deposited straight to your wallet."
+                  title="Borrow Markets"
+                  description="Supply LP positions and receive asset loans deposited straight to your wallet."
                 />
 
                 <BorrowMarketCard
                   number="2"
-                  title="Leverage / Perps Markets"
-                  description="Use LP positions to open leveraged or perps positions without exiting liquidity."
+                  title="Lend Markets"
+                  description="Lend assets to back LP collateral and earn yield from the market."
                 />
 
                 <BorrowMarketCard
                   number="3"
-                  title="Pool Markets"
-                  description="Deposit LP positions as collateral to borrow pool positions."
+                  title="Multiply Markets"
+                  description="Increase your yield exposure by looping up to 10x with a single click."
                 />
               </div>
             </div>
