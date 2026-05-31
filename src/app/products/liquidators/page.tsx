@@ -5,7 +5,6 @@ import { Gauge, LockKeyhole, MoveRight, BadgePercent } from "lucide-react"
 import BusinessLiquidatorsShowcaseSection from "@/components/business-liquidators-showcase"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
@@ -258,25 +257,6 @@ export default function LiquidatorsPage() {
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
-
-          <section className="relative z-10 pt-8 md:pt-10 lg:pt-12">
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {liquidationModelCards.map((card) => (
-                <article
-                  key={card.title}
-                  className="flex flex-col rounded-[1.5rem] bg-[#f7f7f5] p-5 md:p-6"
-                >
-                  <card.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
-                  <h3 className="mt-5 text-[1.25rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111]">
-                    {card.title}
-                  </h3>
-                  <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77]">
-                    {card.description}
-                  </p>
-                </article>
-              ))}
             </div>
           </section>
 

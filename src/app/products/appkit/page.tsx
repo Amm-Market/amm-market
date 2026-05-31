@@ -299,19 +299,6 @@ export default function AppKitPage() {
             </div>
           </section>
 
-          <section className="relative z-10 pt-8 md:pt-10 lg:pt-12">
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {appKitFeatures.map((feature) => (
-                <AppKitFeatureCard
-                  key={feature.title}
-                  title={feature.title}
-                  description={feature.description}
-                  icon={feature.icon}
-                />
-              ))}
-            </div>
-          </section>
-
           <section className="py-16 md:py-24 lg:py-28">
             <div className="site-content-shell">
               <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.88fr)] lg:gap-16">
