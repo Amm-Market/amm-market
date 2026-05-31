@@ -24,7 +24,7 @@ const glossaryTerms = {
         "The borrower-facing Avana spoke that receives LP collateral, values positions, tracks debt, and coordinates borrowing and liquidation against Hub liquidity.",
     },
     {
-      term: "Invest Spoke",
+      term: "Lend Spoke",
       definition:
         "The lender-facing capital entry point that routes supplied assets into the Hub so Borrow Spokes can draw shared liquidity.",
     },

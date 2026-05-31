@@ -135,7 +135,7 @@ const nextStepGroups = [
         description: "See the borrower-facing execution layer.",
       },
       {
-        href: "/developers/architecture/invest-spoke",
+        href: "/developers/architecture/lend-spoke",
         label: "Lend Spoke",
         description: "See how lender capital enters through the Hub.",
       },
