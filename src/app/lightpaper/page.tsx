@@ -668,24 +668,21 @@ export default function LightpaperPage() {
                 <div className="mt-5 space-y-5">
                   <p>
                     Avana is designed as a multi-phase protocol that evolves over time to progressively expand what LP
-                    collateral markets can do. Phase 1 introduces Token Markets. Phase 2 expands into Leverage / Perps
-                    Markets. Phase 3 unlocks Pool Markets.
+                    collateral markets can do. Phase 1 introduces Borrow Markets. Phase 2 expands into Lend Markets.
+                    Phase 3 unlocks Multiply Markets.
                   </p>
                   <ImagePlaceholder label="Three-phase protocol roadmap concept" />
                   <p>
-                    The first phase introduces Token Markets. In this phase, users deposit LP positions as collateral
-                    and borrow single assets such as stablecoins or other supported tokens.
+                    The first phase introduces Borrow Markets. In this phase, users supply LP positions and receive
+                    asset loans deposited straight to their wallet.
                   </p>
                   <p>
-                    The second phase introduces Leverage / Perps Markets. In this phase, a user deposits an LP
-                    position, borrows against it, and opens managed leverage or perps exposure within defined risk
-                    limits while the protocol coordinates execution and risk management.
+                    The second phase introduces Lend Markets. In this phase, users lend assets to back LP collateral
+                    and earn yield from the market.
                   </p>
                   <p>
-                    The third phase introduces Pool Markets. Instead of borrowing only single assets, users can borrow
-                    liquidity pool pair positions that are themselves productive capital. Borrowed funds can therefore
-                    be deployed directly into liquidity strategies, making the borrowed capital more useful within
-                    decentralized finance.
+                    The third phase introduces Multiply Markets. In this phase, users increase their yield exposure by
+                    looping up to 10x with a single click.
                   </p>
                 </div>
               </section>
@@ -713,7 +710,7 @@ export default function LightpaperPage() {
                   <ImagePlaceholder label="Venue-specific spoke design" />
                   <p>
                     Avana Phase 1 will begin with a narrow set of highly legible AMM LP markets, while future versions
-                    add broader AMM support, more complex borrowing formats, and eventually loop-based leverage. In
+                    add broader AMM support, more complex borrowing formats, and eventually Multiply Markets. In
                     practical terms, the user experience remains simple. A user deposits a supported LP position, the
                     protocol evaluates it using the market-specific logic assigned to that pool type, and borrowing
                     capacity is made available based on the resulting risk-adjusted value.
