@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 
 const sections = [
   { id: "overview", title: "Overview" },
+  { id: "liquidators", title: "Liquidators" },
   { id: "lp-complexity", title: "LP Collateral Complexity" },
   { id: "key-principles", title: "Key Principles" },
   { id: "liquidation-node", title: "Liquidation Node" },
@@ -54,6 +56,13 @@ export default function LiquidationDesignPage() {
           </p>
           <p className="text-red-700 text-sm border-l-4 border-red-400 pl-3">
             <strong>Trigger:</strong> Liquidation is triggered when a position&apos;s accrued debt &gt; BorrowingCapacity.
+          </p>
+          <p className="mt-4 text-sm text-gray-600">
+            For the operator-facing guide, see{" "}
+            <Link href="/developers/liquidation/liquidators" className="text-blue-600 hover:underline">
+              Liquidators
+            </Link>
+            .
           </p>
         </section>
 

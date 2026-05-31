@@ -128,11 +128,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/developers/architecture/incentives',
     // Integrations section
     '/developers/integrations',
+    '/developers/integrations/appkit',
     '/developers/integrations/allowed-pools',
     '/developers/integrations/price-oracles',
     '/developers/integrations/router-contract',
     // Liquidation section
     '/developers/liquidation',
+    '/developers/liquidation/liquidators',
     '/developers/liquidation/flow',
     '/developers/liquidation/examples',
     // Safety section

@@ -123,6 +123,7 @@ export const navigationSections = [
     icon: AlertTriangle,
     items: [
       { href: "/developers/liquidation", label: "Liquidation Design", icon: Flame },
+      { href: "/developers/liquidation/liquidators", label: "Liquidators", icon: Coins },
       { href: "/developers/liquidation/flow", label: "Liquidation Flow", icon: ArrowRight },
       { href: "/developers/liquidation/examples", label: "Liquidation Examples", icon: ListChecks },
     ],
@@ -133,6 +134,7 @@ export const navigationSections = [
     icon: Plug,
     items: [
       { href: "/developers/integrations", label: "Integrations Overview", icon: Server },
+      { href: "/developers/integrations/appkit", label: "AppKit", icon: Plug },
       { href: "/developers/integrations/allowed-pools", label: "Allowed LP Pools", icon: Droplets },
       { href: "/developers/integrations/router-contract", label: "Router & Adapters", icon: Router },
       { href: "/developers/integrations/price-oracles", label: "Price Oracles", icon: BarChart3 },
