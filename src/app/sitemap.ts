@@ -57,13 +57,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}${siteRoutes.invest}`,
+      url: `${SITE_URL}${siteRoutes.lend}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}${siteRoutes.trade}`,
+      url: `${SITE_URL}${siteRoutes.multiply}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,

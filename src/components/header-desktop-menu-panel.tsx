@@ -24,8 +24,8 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     eyebrow: "Explore Products",
     items: [
       { href: siteRoutes.borrow, label: "Borrow" },
-      { href: siteRoutes.invest, label: "Invest" },
-      { href: siteRoutes.trade, label: "Trade" },
+      { href: siteRoutes.lend, label: "Lend" },
+      { href: siteRoutes.multiply, label: "Multiply" },
       { href: siteRoutes.creditLines, label: "Credit Lines" },
     ],
     supportingTitle: "What you can do",
@@ -36,13 +36,13 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         description: "Unlock liquidity from concentrated or volatile LP exposure without leaving the strategy.",
       },
       {
-        href: siteRoutes.trade,
-        label: "Open LP-backed trade",
+        href: siteRoutes.multiply,
+        label: "Open LP-backed multiply",
         description: "Use supported AMM positions as collateral to add managed directional exposure without leaving the pool.",
       },
       {
-        href: siteRoutes.invest,
-        label: "Invest capital through the Hub",
+        href: siteRoutes.lend,
+        label: "Lend capital through the Hub",
         description: "Move borrowed capital into structured allocation paths with clearer execution context.",
       },
       {

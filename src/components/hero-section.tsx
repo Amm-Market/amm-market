@@ -308,7 +308,7 @@ function MarketTableRow({ row }: { row: (typeof lendingCoverageTableRows)[number
         {row.change}
       </div>
       <button className="hidden w-fit rounded-[4px] border border-[#9fb8d8] bg-[#f9fbfe] px-4 py-1.5 text-xs font-semibold text-[#005fb8] transition-colors hover:bg-[#eef4fb] md:inline-flex">
-        Trade
+        Multiply
       </button>
     </div>
   )
@@ -351,7 +351,7 @@ function LendingCoverageTable() {
             <div>Asset</div>
             <div>Supply APY</div>
             <div>24H Change</div>
-            <div>Trade</div>
+            <div>Multiply</div>
           </div>
 
           <div className="space-y-2 px-4 pb-4 md:px-5">
@@ -457,7 +457,7 @@ export default function HeroSection() {
       <div className="site-content-shell pt-24 md:pt-32 2xl:pt-28">
         <div className="space-y-6">
           <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="emerald">Investing Markets</SectionEyebrow>
+            <SectionEyebrow tone="emerald">Lending Markets</SectionEyebrow>
             <SectionTitle className="max-w-[14ch] text-[#18323c]">
               <span className="block">
                 Earn <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>yield</span>
@@ -478,7 +478,7 @@ export default function HeroSection() {
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="amber">Trading Pairs</SectionEyebrow>
                 <SectionTitle className="max-w-[15ch] text-[#18323c]">
-                  <span className="block">Trade like a pro</span>
+                  <span className="block">Multiply like a pro</span>
                   <span className="block">
                     across <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>500+</span> markets
                   </span>
