@@ -247,7 +247,7 @@ export default function BorrowSpokePage() {
           <p className="mb-4 text-gray-600 leading-relaxed">
             The Borrow Spoke does not warehouse lender capital itself. Instead, it relies on the
             Hub as the capital backbone of the system, drawing from pooled liquidity that can be
-            supplied by Invest Spoke depositors and other configured Hub sources.
+            supplied by Lend Spoke depositors and other configured Hub sources.
           </p>
 
           <div className="space-y-6">
@@ -255,7 +255,7 @@ export default function BorrowSpokePage() {
               <h3 className="mb-2 font-semibold text-gray-900">Capital Supply</h3>
               <p className="text-sm text-gray-600">
                 Assets such as USDC, DAI, and ETH are supplied into Hub-connected capital layers,
-                including the Invest Spoke. The Hub sets macro-level pricing and accounting, while
+                including the Lend Spoke. The Hub sets macro-level pricing and accounting, while
                 the Borrow Spoke decides how much a borrower can safely draw against LP collateral.
               </p>
             </div>

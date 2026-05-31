@@ -45,7 +45,7 @@ export default function IncentivesPage() {
         <section id="program-types" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Program Types</h2>
           <ul className="space-y-3 text-sm text-gray-600">
-            <li>• Supplier-facing campaigns that deepen available capital in the Invest Spoke or connected liquidity layer.</li>
+            <li>• Supplier-facing campaigns that deepen available capital in the Lend Spoke or connected liquidity layer.</li>
             <li>• Borrower-facing campaigns that encourage healthy LP-backed borrowing behavior.</li>
             <li>• Operator or ecosystem campaigns tied to testing, integrations, or risk-supporting activity.</li>
           </ul>

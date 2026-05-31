@@ -109,7 +109,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/developers/getting-started/claim-lp-fees',
     // Architecture section
     '/developers/architecture',
-    '/developers/architecture/invest-spoke',
+    '/developers/architecture/lend-spoke',
     '/developers/architecture/collateral-factors',
     '/developers/architecture/health-factor',
     '/developers/architecture/platform-fees',

@@ -41,7 +41,7 @@ const dynamicSignals = [
   "Liquidity depth available during stressed unwinds",
 ]
 
-export default function InvestSpokePage() {
+export default function LendSpokePage() {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
       <div data-developer-doc-export-root className="max-w-3xl">
