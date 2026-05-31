@@ -8,9 +8,8 @@ import type { NavLink } from "@/components/header-nav-data"
 
 const mobileLinks: readonly NavLink[] = [
   { href: siteRoutes.borrow, label: "Borrow" },
-  { href: siteRoutes.invest, label: "Invest" },
-  { href: siteRoutes.trade, label: "Trade" },
-  { href: siteRoutes.creditLines, label: "Credit Lines" },
+  { href: siteRoutes.lend, label: "Lend" },
+  { href: siteRoutes.multiply, label: "Multiply" },
   { href: siteRoutes.about, label: "About" },
   { href: siteRoutes.lightpaper, label: "Lightpaper" },
   { href: siteRoutes.blog, label: "Blog" },

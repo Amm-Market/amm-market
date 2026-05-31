@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import type { LucideIcon } from "lucide-react"
+import { BadgePercent, Gauge, LockKeyhole, MoveRight } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import InvestApySection from "@/components/invest-apy-section"
@@ -71,8 +73,58 @@ const investFeatureItems = [
   },
 ] as const
 
+const liquidationModelCards = [
+  {
+    icon: Gauge,
+    title: "Eligibility",
+    description: "Risk rules define which accounts can be closed and when liquidation is available.",
+  },
+  {
+    icon: LockKeyhole,
+    title: "Execution input",
+    description: "The operator supplies the transaction path, funding source, and settlement plan.",
+  },
+  {
+    icon: MoveRight,
+    title: "Collateral handling",
+    description: "The LP position is converted through the correct venue path instead of treated like a plain token.",
+  },
+  {
+    icon: BadgePercent,
+    title: "Debt repayment",
+    description: "Recovered value flows back into the credit market to reduce or close the unsafe loan.",
+  },
+  {
+    icon: MoveRight,
+    title: "Incentive",
+    description: "The liquidation premium rewards the operator who completes the closeout.",
+  },
+] as const
+
+function LiquidationModelCard({
+  icon: Icon,
+  title,
+  description,
+}: {
+  icon: LucideIcon
+  title: string
+  description: string
+}) {
+  return (
+    <article className="flex flex-col rounded-[1.5rem] bg-[#f7f7f5] p-5 md:p-6">
+      <Icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
+      <h3 className="mt-5 text-[1.25rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111]">
+        {title}
+      </h3>
+      <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77]">
+        {description}
+      </p>
+    </article>
+  )
+}
+
 export const metadata: Metadata = {
-  title: "Invest",
+  title: "Lend",
   description: pageDescription,
   keywords: [
     "LP-backed credit",
@@ -83,36 +135,36 @@ export const metadata: Metadata = {
     "supply markets",
   ],
   alternates: {
-    canonical: siteRoutes.invest,
+    canonical: siteRoutes.lend,
   },
   openGraph: {
-    title: "Invest",
+    title: "Lend",
     description: pageDescription,
-    url: siteRoutes.invest,
+    url: siteRoutes.lend,
     images: [
       {
         url: buildOgImagePath({
-          title: "Invest",
+          title: "Lend",
           subtitle: "Supply assets into LP-backed credit markets",
         }),
-        alt: "Invest",
+        alt: "Lend",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Invest",
+    title: "Lend",
     description: pageDescription,
     images: [
       buildOgImagePath({
-        title: "Invest",
+        title: "Lend",
         subtitle: "Supply assets into LP-backed credit markets",
       }),
     ],
   },
 }
 
-export default function InvestPage() {
+export default function LendPage() {
   return (
     <main className="bg-white">
       <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">
@@ -176,7 +228,7 @@ export default function InvestPage() {
           <div className="mx-auto w-full max-w-[76rem]">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-center md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
               <div className="space-y-4 md:self-center">
-                <SectionEyebrow tone="emerald">Supply Markets</SectionEyebrow>
+                <SectionEyebrow tone="emerald">Lending Markets</SectionEyebrow>
                 <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
                   <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>Lend into</span>
                   <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>LP-backed credit.</span>
@@ -196,6 +248,21 @@ export default function InvestPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 pt-8 md:pt-10 lg:pt-12">
+        <div className="site-content-shell">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {liquidationModelCards.map((card) => (
+              <LiquidationModelCard
+                key={card.title}
+                icon={card.icon}
+                title={card.title}
+                description={card.description}
+              />
+            ))}
           </div>
         </div>
       </section>

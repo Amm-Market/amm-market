@@ -6,7 +6,7 @@ import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 
 const pageDescription =
-  "Meet Avana, a dedicated LP-as-collateral protocol built on Aave v4 with specialized Spokes, a shared Hub, and an Invest Spoke designed for AMM liquidity markets."
+  "Meet Avana, a dedicated LP-as-collateral protocol built on Aave v4 with specialized Spokes, a shared Hub, and a Lend Spoke designed for AMM liquidity markets."
 
 export const metadata: Metadata = {
   title: "About",
@@ -85,7 +85,7 @@ export default function AboutPage() {
               We believe the next major expansion in DeFi lending markets will come from protocols that can understand
               AMM liquidity, its risk, and its pool structure. That is why we are building Avana as a dedicated
               lending protocol for LP collateral across AMM markets, with specialized Aave v4 Spokes for different
-              liquidity designs, a central Aave v4 Hub for shared borrowing liquidity, and an Aave v4 Invest Spoke
+              liquidity designs, a central Aave v4 Hub for shared borrowing liquidity, and an Aave v4 Lend Spoke
               that supplies the capital behind those markets.
             </p>
             <p className="text-[0.98rem] font-normal leading-[1.65] tracking-[-0.025em] text-gray-900 sm:text-[1.08rem]">

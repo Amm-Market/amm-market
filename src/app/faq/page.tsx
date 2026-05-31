@@ -5,12 +5,32 @@ import {
   searchFaqQuestions,
 } from "@/app/faq/faq-content"
 import Link from "next/link"
+import type { LucideIcon } from "lucide-react"
+import {
+  Banknote,
+  BookText,
+  Folder,
+  ReceiptText,
+  ShieldCheck,
+  Shield,
+  SquareChartGantt,
+} from "lucide-react"
 
 type FaqAccordionItem = {
   id: string
   q: string
   a: string
   category?: string
+}
+
+const categoryIcons: Record<string, LucideIcon> = {
+  "Core Concepts": BookText,
+  "Depositing LP Collateral": Folder,
+  "Borrowing Capacity & Valuation": Banknote,
+  "Health & Liquidation": Shield,
+  "Leverage Markets": SquareChartGantt,
+  "Fees & Interface Policy": ReceiptText,
+  "Risk & Security": ShieldCheck,
 }
 
 /**
@@ -106,6 +126,49 @@ function FaqAccordionList({
   )
 }
 
+function FaqCategoryCard({
+  category,
+  active,
+  href,
+}: {
+  category: { id: string; name: string; summary: string; questions: { id: string }[] }
+  active: boolean
+  href: string
+}) {
+  const Icon = categoryIcons[category.name] ?? BookText
+
+  return (
+    <Link
+      id={`faq-tab-${category.id}`}
+      href={href}
+      prefetch={false}
+      scroll={false}
+      role="tab"
+      aria-selected={active}
+      aria-controls={`faq-panel-${category.id}`}
+      className={`group flex h-full w-[14rem] shrink-0 snap-start flex-col rounded-[1.1rem] border border-black/8 border-t-2 bg-white p-4 text-left transition-all duration-300 sm:w-[14.5rem] md:w-[15rem] ${
+        active
+          ? "border-t-[#01AACF]"
+          : "border-t-[#01AACF]/30"
+      }`}
+    >
+      <Icon className="h-6 w-6 text-[#01AACF]" strokeWidth={1.8} />
+
+      <h3 className="mt-5 text-[0.95rem] font-semibold leading-[1.2] tracking-[-0.04em] text-gray-900">
+        {category.name}
+      </h3>
+
+      <p className="mt-2.5 min-h-[2.7rem] max-w-[22rem] line-clamp-2 text-[0.86rem] leading-[1.5] tracking-[-0.02em] text-gray-700">
+        {category.summary}
+      </p>
+
+      <div className="mt-auto pt-5 text-[0.8rem] font-medium tracking-[-0.02em] text-[#01AACF]">
+        {category.questions.length} articles
+      </div>
+    </Link>
+  )
+}
+
 export default async function FaqPage({
   searchParams,
 }: {
@@ -161,49 +224,23 @@ export default async function FaqPage({
             </form>
           </div>
 
-          <div className="mb-10 overflow-x-auto lg:mb-12">
-            <div aria-label="FAQ categories" role="tablist" className="flex gap-3 pb-2">
-              {categories.map((category) => {
-                const active = activeCategory === category.name && !searchTerm
-                const triggerId = `faq-tab-${category.id}`
-                const panelId = `faq-panel-${category.id}`
+      <div className="mb-10 overflow-x-auto pb-2 lg:mb-12">
+        <div aria-label="FAQ categories" role="tablist" className="flex w-max snap-x snap-mandatory gap-4">
+          {categories.map((category) => {
+            const active = activeCategory === category.name && !searchTerm
 
-                return (
-                  <Link
-                    key={category.id}
-                    id={triggerId}
-                    href={buildFaqHref({
-                      category:
-                        category.name === "Core Concepts"
-                          ? undefined
-                          : category.name,
-                    })}
-                    prefetch={false}
-                    scroll={false}
-                    role="tab"
-                    aria-selected={active}
-                    aria-controls={panelId}
-                    className={`group relative flex w-[12rem] shrink-0 flex-col justify-between rounded-[1rem] border p-3 text-left transition-all duration-300 sm:w-[12.75rem] lg:w-[13.25rem] ${
-                      active
-                        ? "border-black/18 bg-white text-black shadow-[0_10px_22px_rgba(17,17,17,0.06)]"
-                        : "border-black/10 bg-gray-100 text-black shadow-[0_2px_10px_rgba(17,17,17,0.04)] hover:border-black/16 hover:bg-gray-50 hover:shadow-[0_10px_18px_rgba(17,17,17,0.07)]"
-                    }`}
-                  >
-                    <div className="mt-1">
-                      <p className="text-[0.92rem] font-semibold leading-[1.12] tracking-[-0.04em] sm:text-[0.98rem] lg:text-[1rem]">
-                        {category.name}
-                      </p>
-                    </div>
-                    <p className="mt-1.5 line-clamp-2 text-[0.78rem] leading-[1.35] tracking-[-0.02em] text-black/54">
-                      {category.summary}
-                    </p>
-                    <div className="mt-3 flex items-center gap-2 text-[0.72rem] font-medium tracking-[-0.02em] text-current/66">
-                      <span>{category.questions.length} questions</span>
-                    </div>
-                  </Link>
-                )
-              })}
-            </div>
+            return (
+              <FaqCategoryCard
+                key={category.id}
+                category={category}
+                active={active}
+                href={buildFaqHref({
+                  category: category.name === "Core Concepts" ? undefined : category.name,
+                })}
+              />
+            )
+          })}
+        </div>
           </div>
 
           <div>

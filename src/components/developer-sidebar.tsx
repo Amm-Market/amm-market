@@ -110,7 +110,7 @@ export const navigationSections = [
     icon: Layers,
     items: [
       { href: "/developers/architecture", label: "Borrow Spoke", icon: Workflow },
-      { href: "/developers/architecture/invest-spoke", label: "Invest Spoke", icon: Coins },
+      { href: "/developers/architecture/lend-spoke", label: "Lend Spoke", icon: Coins },
       { href: "/developers/architecture/collateral-factors", label: "Collateral Factors", icon: Percent },
       { href: "/developers/architecture/health-factor", label: "Health Factor", icon: Heart },
       { href: "/developers/architecture/platform-fees", label: "Platform Fees", icon: DollarSign },
@@ -123,6 +123,7 @@ export const navigationSections = [
     icon: AlertTriangle,
     items: [
       { href: "/developers/liquidation", label: "Liquidation Design", icon: Flame },
+      { href: "/developers/liquidation/liquidators", label: "Liquidators", icon: Coins },
       { href: "/developers/liquidation/flow", label: "Liquidation Flow", icon: ArrowRight },
       { href: "/developers/liquidation/examples", label: "Liquidation Examples", icon: ListChecks },
     ],
@@ -133,6 +134,7 @@ export const navigationSections = [
     icon: Plug,
     items: [
       { href: "/developers/integrations", label: "Integrations Overview", icon: Server },
+      { href: "/developers/integrations/appkit", label: "AppKit", icon: Plug },
       { href: "/developers/integrations/allowed-pools", label: "Allowed LP Pools", icon: Droplets },
       { href: "/developers/integrations/router-contract", label: "Router & Adapters", icon: Router },
       { href: "/developers/integrations/price-oracles", label: "Price Oracles", icon: BarChart3 },

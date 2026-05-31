@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import { BadgeDollarSign, Compass, Handshake, LayoutTemplate, ShieldCheck, Workflow } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import BorrowPowerSection from "@/components/borrow-power-section"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
@@ -73,6 +74,45 @@ const borrowFeatureItems = [
   {
     title: "Cleaner position monitoring",
     description: "Track health, usage, and pool-specific limits with a cleaner LP-first borrowing workflow.",
+  },
+] as const
+
+const borrowPartnerFeatures = [
+  {
+    title: "Intent capture",
+    description:
+      "Turn LP position views, portfolio pages, and trading flows into natural borrowing entry points.",
+    icon: Compass,
+  },
+  {
+    title: "Protocol handoff",
+    description:
+      "Pass user context into Avana so the credit flow opens with the right wallet, market, and collateral path.",
+    icon: Workflow,
+  },
+  {
+    title: "Shared monetization",
+    description:
+      "Build a revenue line around credit access without becoming the lender or risk engine.",
+    icon: BadgeDollarSign,
+  },
+  {
+    title: "Product control",
+    description:
+      "Choose where credit appears, which users see it, and how the path fits your existing experience.",
+    icon: Handshake,
+  },
+  {
+    title: "Embedded UX",
+    description:
+      "Keep borrowing inside the product surface your users already trust instead of sending them into a disconnected flow.",
+    icon: LayoutTemplate,
+  },
+  {
+    title: "Risk separation",
+    description:
+      "Let Avana handle health checks, collateral logic, and settlement while your team stays focused on distribution.",
+    icon: ShieldCheck,
   },
 ] as const
 
@@ -356,6 +396,24 @@ export default function BorrowPage() {
         ]}
       />
 
+      <section className="py-8 md:py-10 lg:py-12">
+        <div className="site-content-shell">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {borrowPartnerFeatures.map((feature) => (
+              <article key={feature.title} className="flex flex-col rounded-[1.75rem] bg-[#f7f7f5] p-5 md:p-6">
+                <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
+                <h3 className="mt-5 text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:mt-6 md:text-[1.55rem]">
+                  {feature.title}
+                </h3>
+                <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
+                  {feature.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="pt-32 md:pt-40 2xl:pt-36">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem] space-y-32 md:space-y-40 2xl:space-y-36">
@@ -367,20 +425,20 @@ export default function BorrowPage() {
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 <BorrowMarketCard
                   number="1"
-                  title="Token Markets"
-                  description="Supply LP positions and receive single-asset loans deposited straight to your wallet."
+                  title="Borrow Markets"
+                  description="Supply LP positions and receive asset loans deposited straight to your wallet."
                 />
 
                 <BorrowMarketCard
                   number="2"
-                  title="Leverage / Perps Markets"
-                  description="Use LP positions to open leveraged or perps positions without exiting liquidity."
+                  title="Lend Markets"
+                  description="Lend assets to back LP collateral and earn yield from the market."
                 />
 
                 <BorrowMarketCard
                   number="3"
-                  title="Pool Markets"
-                  description="Deposit LP positions as collateral to borrow pool positions."
+                  title="Multiply Markets"
+                  description="Increase your yield exposure by looping up to 10x with a single click."
                 />
               </div>
             </div>

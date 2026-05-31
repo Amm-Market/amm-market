@@ -3,7 +3,7 @@ import { legacyBlogRedirects } from "./src/lib/site";
 
 const legacyMarketingRedirects = [
   { source: "/open-spoke", destination: "/borrow" },
-  { source: "/stable-spoke", destination: "/invest" },
+  { source: "/stable-spoke", destination: "/lend" },
   { source: "/webapp", destination: "/credit-lines" },
 ];
 
