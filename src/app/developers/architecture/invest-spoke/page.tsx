@@ -3,9 +3,9 @@ import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
-  title: "Invest Spoke",
+  title: "Lend Spoke",
   description:
-    "Avana Invest Spoke - capital entry point, Hub liquidity routing, risk-adjusted yield, and dynamic risk controls for LP-collateral lending.",
+    "Avana Lend Spoke - capital entry point, Hub liquidity routing, risk-adjusted yield, and dynamic risk controls for LP-collateral lending.",
 }
 
 const sections = [
@@ -19,12 +19,12 @@ const capitalFlow = [
   {
     title: "Supply Capital",
     description:
-      "Lenders deposit major assets such as ETH, BTC, and stablecoins into the Invest Spoke rather than managing LP collateral directly.",
+      "Lenders deposit major assets such as ETH, BTC, and stablecoins into the Lend Spoke rather than managing LP collateral directly.",
   },
   {
     title: "Route Through the Hub",
     description:
-      "The Invest Spoke routes that capital into the Hub, where liquidity can be allocated across multiple LP-collateral borrower markets.",
+      "The Lend Spoke routes that capital into the Hub, where liquidity can be allocated across multiple LP-collateral borrower markets.",
   },
   {
     title: "Power Borrow Spokes",
@@ -47,7 +47,7 @@ export default function InvestSpokePage() {
       <div data-developer-doc-export-root className="max-w-3xl">
         <DeveloperDocPageHeader
 
-          title="Invest Spoke"
+          title="Lend Spoke"
 
           description="The capital-entry side of Avana that routes lender liquidity into LP-collateral borrow markets."
 
@@ -56,8 +56,8 @@ export default function InvestSpokePage() {
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            Invest Spoke is the lender-facing capital entry point of the protocol. Investors supply
-            assets such as ETH, BTC, and major stablecoins into the Invest Spoke, which then routes
+            Lend Spoke is the lender-facing capital entry point of the protocol. Investors supply
+            assets such as ETH, BTC, and major stablecoins into the Lend Spoke, which then routes
             liquidity through the Hub so borrower-facing LP collateral spokes can extend credit
             against active liquidity positions.
           </p>
@@ -68,7 +68,7 @@ export default function InvestSpokePage() {
             underwriting LP risk at the market level.
           </p>
           <p className="text-sm text-gray-600">
-            <strong>Architectural role:</strong> the Invest Spoke makes the capital side of the
+            <strong>Architectural role:</strong> the Lend Spoke makes the capital side of the
             system scalable, while Borrow Spokes keep LP-specific risk isolated.
           </p>
         </section>
@@ -76,7 +76,7 @@ export default function InvestSpokePage() {
         <section id="capital-entry-point" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Capital Entry Point</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
-            The Invest Spoke exists so lender deposits can power borrowing across multiple
+            The Lend Spoke exists so lender deposits can power borrowing across multiple
             LP-collateral markets through one shared Hub layer instead of fragmenting liquidity by
             collateral type.
           </p>
@@ -95,7 +95,7 @@ export default function InvestSpokePage() {
 
           <p className="mt-6 text-sm text-gray-600 border-l-4 border-violet-400 pl-3">
             Early in the protocol lifecycle, Hub liquidity may also be supplemented by Aave v4
-            credit lines. Over time, Invest Spoke deposits are expected to become an increasingly
+            credit lines. Over time, Lend Spoke deposits are expected to become an increasingly
             important source of native lending capital.
           </p>
         </section>
@@ -118,7 +118,7 @@ export default function InvestSpokePage() {
           </p>
           <p className="text-sm text-gray-600">
             <strong>Implication for lenders:</strong> when LP collateral is priced correctly, the
-            Invest Spoke can route capital into a credit engine backed by productive collateral
+            Lend Spoke can route capital into a credit engine backed by productive collateral
             rather than passive balance-sheet assets.
           </p>
         </section>
@@ -152,7 +152,7 @@ export default function InvestSpokePage() {
           </div>
 
           <p className="mt-6 text-sm leading-relaxed text-gray-600">
-            By keeping lender capital in Invest Spoke while letting Borrow Spokes adjust to
+            By keeping lender capital in Lend Spoke while letting Borrow Spokes adjust to
             collateral-specific market conditions, Avana can scale capital formation without
             flattening LP markets into a one-size-fits-all risk model.
           </p>

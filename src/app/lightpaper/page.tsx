@@ -866,20 +866,20 @@ export default function LightpaperPage() {
 
                   <h3>For Lenders</h3>
                   <p>
-                    Avana Invest Spoke is the single spoke that functions as the capital entry point of the protocol,
+                    Avana Lend Spoke is the single spoke that functions as the capital entry point of the protocol,
                     allowing users to supply crypto assets that power borrowing across all LP-collateral markets.
-                    Investors deposit assets such as ETH, BTC, and major stablecoins into the Invest Spoke, which
+                    Investors deposit assets such as ETH, BTC, and major stablecoins into the Lend Spoke, which
                     routes liquidity to the Avana Hub. From there, the Hub allocates credit across the various
                     LP-collateral spokes, enabling borrowers to draw liquidity against their active liquidity positions
                     on decentralized exchanges. This design separates capital supply from collateral management,
                     allowing investors to participate in the lending market without needing to manage LP positions,
                     impermanent loss, or liquidity ranges.
                   </p>
-                  <ImagePlaceholder label="Invest spoke liquidity flow" />
+                  <ImagePlaceholder label="Lend spoke liquidity flow" />
                   <p>
                     During the early stages of Avana, the Avana Hub may be supported by credit lines from the Aave
                     Hubs, including the Core, Prime, and Plus hubs, to bootstrap liquidity and ensure deep borrow
-                    markets from day one. As borrowing activity grows and the protocol matures, the Invest Spoke is
+                    markets from day one. As borrowing activity grows and the protocol matures, the Lend Spoke is
                     expected to become the primary liquidity source, with investor deposits increasingly supplying the
                     capital used by LP borrowers. Over time, this structure creates a scalable capital market where
                     lending liquidity flows efficiently through the Hub while remaining isolated from the risk dynamics

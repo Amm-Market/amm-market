@@ -72,7 +72,7 @@ const investFeatureItems = [
 ] as const
 
 export const metadata: Metadata = {
-  title: "Invest",
+  title: "Lend",
   description: pageDescription,
   keywords: [
     "LP-backed credit",
@@ -83,36 +83,36 @@ export const metadata: Metadata = {
     "supply markets",
   ],
   alternates: {
-    canonical: siteRoutes.invest,
+    canonical: siteRoutes.lend,
   },
   openGraph: {
-    title: "Invest",
+    title: "Lend",
     description: pageDescription,
-    url: siteRoutes.invest,
+    url: siteRoutes.lend,
     images: [
       {
         url: buildOgImagePath({
-          title: "Invest",
+          title: "Lend",
           subtitle: "Supply assets into LP-backed credit markets",
         }),
-        alt: "Invest",
+        alt: "Lend",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Invest",
+    title: "Lend",
     description: pageDescription,
     images: [
       buildOgImagePath({
-        title: "Invest",
+        title: "Lend",
         subtitle: "Supply assets into LP-backed credit markets",
       }),
     ],
   },
 }
 
-export default function InvestPage() {
+export default function LendPage() {
   return (
     <main className="bg-white">
       <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">
@@ -176,7 +176,7 @@ export default function InvestPage() {
           <div className="mx-auto w-full max-w-[76rem]">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-center md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
               <div className="space-y-4 md:self-center">
-                <SectionEyebrow tone="emerald">Supply Markets</SectionEyebrow>
+                <SectionEyebrow tone="emerald">Lending Markets</SectionEyebrow>
                 <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
                   <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>Lend into</span>
                   <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>LP-backed credit.</span>

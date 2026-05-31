@@ -14,8 +14,8 @@ export const desktopMenuButtons = [
     label: "Products",
     matchHrefs: [
       siteRoutes.borrow,
-      siteRoutes.invest,
-      siteRoutes.trade,
+      siteRoutes.lend,
+      siteRoutes.multiply,
       siteRoutes.creditLines,
     ],
   },
