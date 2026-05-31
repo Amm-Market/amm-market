@@ -19,13 +19,14 @@ interface DesktopMenuGroup {
 
 const desktopMenus: readonly DesktopMenuGroup[] = [
   {
-    id: "individuals",
-    label: "Personal",
-    eyebrow: "Explore Personal",
+    id: "products",
+    label: "Products",
+    eyebrow: "Explore Products",
     items: [
       { href: siteRoutes.borrow, label: "Borrow" },
-      { href: siteRoutes.invest, label: "Invest" },
-      { href: siteRoutes.trade, label: "Trade" },
+      { href: siteRoutes.lend, label: "Lend" },
+      { href: siteRoutes.multiply, label: "Multiply" },
+      { href: siteRoutes.creditLines, label: "Credit Lines" },
     ],
     supportingTitle: "What you can do",
     supportingItems: [
@@ -35,43 +36,19 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         description: "Unlock liquidity from concentrated or volatile LP exposure without leaving the strategy.",
       },
       {
-        href: siteRoutes.trade,
-        label: "Open LP-backed trade",
+        href: siteRoutes.multiply,
+        label: "Open LP-backed multiply",
         description: "Use supported AMM positions as collateral to add managed directional exposure without leaving the pool.",
       },
       {
-        href: siteRoutes.invest,
-        label: "Invest capital through the Hub",
+        href: siteRoutes.lend,
+        label: "Lend capital through the Hub",
         description: "Move borrowed capital into structured allocation paths with clearer execution context.",
       },
-    ],
-  },
-  {
-    id: "businesses",
-    label: "Business",
-    eyebrow: "Explore business",
-    items: [
-      { href: siteRoutes.creditLines, label: "Credit Lines" },
-      { href: siteRoutes.appkit, label: "AppKit" },
-      { href: siteRoutes.liquidators, label: "Liquidators" },
-    ],
-    supportingTitle: "Partner surfaces",
-    supportingItems: [
       {
         href: siteRoutes.creditLines,
         label: "Credit Lines",
-        description:
-          "Existing product surface for business credit lines and the primary place to explore the current workflow.",
-      },
-      {
-        href: siteRoutes.appkit,
-        label: "AppKit",
-        description: "Embed Avana into partner DEX, wallet, or app surfaces through kit and API flows.",
-      },
-      {
-        href: siteRoutes.liquidators,
-        label: "Liquidators",
-        description: "Run bots and execution desks that unwind LP collateral and earn liquidation fees.",
+        description: "Explore the credit line workflow for business-oriented borrowing and monitoring.",
       },
     ],
   },
@@ -114,10 +91,10 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     label: "Developers",
     eyebrow: "Explore Developers",
     items: [
-      { href: "/developers/introduction/key-concepts", label: "Introduction" },
       { href: siteRoutes.developers, label: "Overview" },
       { href: "/developers/architecture", label: "Architecture" },
-      { href: "/developers/liquidation", label: "Liquidation" },
+      { href: "/developers/integrations/appkit", label: "AppKit" },
+      { href: "/developers/liquidation/liquidators", label: "Liquidators" },
     ],
     supportingTitle: "Highlights",
     supportingItems: [
@@ -127,19 +104,19 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         description: "Get the core protocol mental model before moving into implementation detail.",
       },
       {
-        href: "/developers/getting-started",
-        label: "Follow the borrower flow",
-        description: "See the path from deposit to borrowing, repayment, and collateral withdrawal.",
-      },
-      {
         href: "/developers/architecture",
         label: "Review the protocol model",
         description: "Understand how the hub, spokes, pricing, and controls fit together.",
       },
       {
-        href: "/developers/liquidation",
-        label: "Understand liquidation paths",
-        description: "Learn how LP collateral is monitored, unwound, and settled under stress.",
+        href: "/developers/integrations/appkit",
+        label: "Explore AppKit",
+        description: "See how partner products can connect users to Avana credit surfaces.",
+      },
+      {
+        href: "/developers/liquidation/liquidators",
+        label: "Understand liquidators",
+        description: "Learn how execution desks monitor and unwind LP collateral under stress.",
       },
     ],
   },

@@ -98,7 +98,7 @@ const leverageFaqItems: InlineFaqItem[] = [
 ] as const
 
 export const metadata: Metadata = {
-  title: "Trade",
+  title: "Multiply",
   description: pageDescription,
   keywords: [
     "LP leverage",
@@ -110,36 +110,36 @@ export const metadata: Metadata = {
     "Aave v4",
   ],
   alternates: {
-    canonical: siteRoutes.trade,
+    canonical: siteRoutes.multiply,
   },
   openGraph: {
-    title: "Trade",
+    title: "Multiply",
     description: pageDescription,
-    url: siteRoutes.trade,
+    url: siteRoutes.multiply,
     images: [
       {
         url: buildOgImagePath({
-          title: "Trade",
+          title: "Multiply",
           subtitle: "LP-backed leverage and managed perps exposure",
         }),
-        alt: "Trade",
+        alt: "Multiply",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trade",
+    title: "Multiply",
     description: pageDescription,
     images: [
       buildOgImagePath({
-        title: "Trade",
+        title: "Multiply",
         subtitle: "LP-backed leverage and managed perps exposure",
       }),
     ],
   },
 }
 
-export default function TradePage() {
+export default function MultiplyPage() {
   return (
     <main className="bg-white">
       <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">

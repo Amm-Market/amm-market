@@ -16,7 +16,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Introduction",
   description:
-    "Introduction to Avana - LP-backed borrowing on Aave v4, Borrow Spokes, Invest Spoke, and Hub-mediated liquidity.",
+    "Introduction to Avana - LP-backed borrowing on Aave v4, Borrow Spokes, Lend Spoke, and Hub-mediated liquidity.",
 }
 
 const sections = [
@@ -94,7 +94,7 @@ const architectureBlocks: Array<{
   },
   {
     icon: Coins,
-    title: "Invest Spoke",
+    title: "Lend Spoke",
     description:
       "Routes supplier capital into the Hub so LP-specific underwriting stays separate from capital entry.",
   },
@@ -135,8 +135,8 @@ const nextStepGroups = [
         description: "See the borrower-facing execution layer.",
       },
       {
-        href: "/developers/architecture/invest-spoke",
-        label: "Invest Spoke",
+        href: "/developers/architecture/lend-spoke",
+        label: "Lend Spoke",
         description: "See how lender capital enters through the Hub.",
       },
       {
@@ -232,7 +232,7 @@ export default function DevelopersPage() {
               </div>
               <p className="mt-4 text-sm leading-7 text-slate-600">
                 Start with the canonical borrowing path first, then move into the Borrow Spoke,
-                Invest Spoke, collateral factors, and pricing pages. The architecture and risk
+                Lend Spoke, collateral factors, and pricing pages. The architecture and risk
                 pages define the protocol model; testnet and operational pages are supporting
                 references.
               </p>
@@ -307,7 +307,7 @@ export default function DevelopersPage() {
 
             <p className="mt-4 text-sm leading-7 text-slate-600">
               Borrow Spokes own admissibility, valuation, health checks, and liquidation behavior.
-              The Hub owns shared reserves and accounting. The Invest Spoke routes lender capital
+              The Hub owns shared reserves and accounting. The Lend Spoke routes lender capital
               into that shared liquidity layer.
             </p>
           </div>

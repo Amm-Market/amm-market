@@ -102,8 +102,8 @@ const footerSections: readonly FooterSection[] = [
     title: "Explore",
     links: [
       { href: siteRoutes.borrow, label: "Borrow" },
-      { href: siteRoutes.invest, label: "Invest" },
-      { href: siteRoutes.trade, label: "Trade" },
+      { href: siteRoutes.lend, label: "Lend" },
+      { href: siteRoutes.multiply, label: "Multiply" },
       { href: siteRoutes.creditLines, label: "Credit Lines" },
     ],
   },

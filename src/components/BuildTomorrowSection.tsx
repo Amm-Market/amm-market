@@ -10,13 +10,13 @@ const SLIDES = [
     description: "Borrow against your LP position as collateral at 5.5% APR.",
   },
   {
-    id: "invest",
-    title: "INVEST",
+    id: "lend",
+    title: "LEND",
     description: "Put every idle dollar to work across saving, investing, and borrowing.",
   },
   {
-    id: "leverage",
-    title: "TRADE",
+    id: "multiply",
+    title: "MULTIPLY",
     description: "Use LP collateral to open managed trade exposure without fully exiting your liquidity.",
   },
 ] as const
@@ -48,7 +48,7 @@ export function BuildTomorrowSection() {
         <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
           <SectionEyebrow tone="violet">Ways to use Avana</SectionEyebrow>
           <SectionTitle className="md:whitespace-nowrap">
-            Borrow, Invest, or Trade
+            Borrow, Lend, or Multiply
           </SectionTitle>
         </div>
 

@@ -215,7 +215,7 @@ export default function TradeMarketShowcase() {
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="rose">What&apos;s new</SectionEyebrow>
             <SectionTitle className="max-w-[16ch] md:max-w-none md:whitespace-nowrap">
-              Trade 250+ markets.
+              Multiply 250+ markets.
             </SectionTitle>
           </div>
 

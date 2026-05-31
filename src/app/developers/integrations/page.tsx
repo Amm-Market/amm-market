@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 
 const sections = [
   { id: "overview", title: "Overview" },
+  { id: "appkit", title: "AppKit" },
   { id: "venue-families", title: "Venue Families" },
   { id: "enablement-status", title: "Enablement Status" },
   { id: "review-requirements", title: "Review Requirements" },
@@ -64,6 +65,21 @@ export default function SupportedIntegrationsPage() {
               Price Oracles
             </Link>
             .
+          </p>
+        </section>
+
+        <section id="appkit" className="mb-12">
+          <h2 className="mb-4 type-section-title text-gray-900">AppKit</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            AppKit is the partner-facing integration surface for products that want to embed
+            Avana credit directly into their own user journey.
+          </p>
+          <p className="text-sm text-gray-600">
+            Read the{" "}
+            <Link href="/developers/integrations/appkit" className="text-blue-600 hover:underline">
+              AppKit developer guide
+            </Link>{" "}
+            for partner controls, handoff patterns, and launch notes.
           </p>
         </section>
 

@@ -57,13 +57,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}${siteRoutes.invest}`,
+      url: `${SITE_URL}${siteRoutes.lend}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}${siteRoutes.trade}`,
+      url: `${SITE_URL}${siteRoutes.multiply}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
@@ -73,24 +73,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.businesses}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.liquidators}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.appkit}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6,
     },
     {
       url: `${SITE_URL}${siteRoutes.careers}`,
@@ -121,18 +103,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/developers/getting-started/claim-lp-fees',
     // Architecture section
     '/developers/architecture',
-    '/developers/architecture/invest-spoke',
+    '/developers/architecture/lend-spoke',
     '/developers/architecture/collateral-factors',
     '/developers/architecture/health-factor',
     '/developers/architecture/platform-fees',
     '/developers/architecture/incentives',
     // Integrations section
     '/developers/integrations',
+    '/developers/integrations/appkit',
     '/developers/integrations/allowed-pools',
     '/developers/integrations/price-oracles',
     '/developers/integrations/router-contract',
     // Liquidation section
     '/developers/liquidation',
+    '/developers/liquidation/liquidators',
     '/developers/liquidation/flow',
     '/developers/liquidation/examples',
     // Safety section
