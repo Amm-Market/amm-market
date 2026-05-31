@@ -81,18 +81,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}${siteRoutes.liquidators}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.appkit}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
       url: `${SITE_URL}${siteRoutes.careers}`,
       lastModified: now,
       changeFrequency: 'monthly',
