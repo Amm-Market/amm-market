@@ -31,8 +31,8 @@ export const desktopMenuButtons = [
       siteRoutes.developers,
       "/developers/architecture",
       "/developers/liquidation",
-      siteRoutes.appkit,
-      siteRoutes.liquidators,
+      "/developers/integrations/appkit",
+      "/developers/liquidation/liquidators",
     ],
   },
   {

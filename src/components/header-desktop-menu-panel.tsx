@@ -93,8 +93,8 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     items: [
       { href: siteRoutes.developers, label: "Overview" },
       { href: "/developers/architecture", label: "Architecture" },
-      { href: siteRoutes.appkit, label: "AppKit" },
-      { href: siteRoutes.liquidators, label: "Liquidators" },
+      { href: "/developers/integrations/appkit", label: "AppKit" },
+      { href: "/developers/liquidation/liquidators", label: "Liquidators" },
     ],
     supportingTitle: "Highlights",
     supportingItems: [
@@ -109,12 +109,12 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         description: "Understand how the hub, spokes, pricing, and controls fit together.",
       },
       {
-        href: siteRoutes.appkit,
+        href: "/developers/integrations/appkit",
         label: "Explore AppKit",
         description: "See how partner products can connect users to Avana credit surfaces.",
       },
       {
-        href: siteRoutes.liquidators,
+        href: "/developers/liquidation/liquidators",
         label: "Understand liquidators",
         description: "Learn how execution desks monitor and unwind LP collateral under stress.",
       },

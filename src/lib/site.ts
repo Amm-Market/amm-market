@@ -18,8 +18,6 @@ export const siteRoutes = {
   borrow: "/borrow",
   lend: "/lend",
   multiply: "/multiply",
-  liquidators: "/products/liquidators",
-  appkit: "/products/appkit",
   creditLines: "/credit-lines",
   developers: "/developers",
   developersIntro: "/developers/introduction",
