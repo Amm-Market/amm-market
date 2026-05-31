@@ -43,21 +43,21 @@ const avanaColors = {
 const logoVariants: readonly BrandLogoVariant[] = [
   {
     id: "horizontal",
-    title: "Full (Horizontal)",
+    title: "Full Black",
     description:
       "This is the primary logo that is most recognizable. It works well in most environments. The vertical version is available when space is constrained or limited.",
     src: brandAssetPath("/Full (Horizontal).png"),
-    alt: "Avana personal full logo",
+    alt: "Avana full black logo",
     mobileImageClassName: mobileLogoImageClassName,
     desktopImageClassName: logoImageClassName,
   },
   {
     id: "vertical",
-    title: "Full (Personal)",
+    title: "Full Cyan",
     description:
       "This version of the logo is available for instances where space is constrained or limited.",
     src: brandAssetPath("/Full (Personal).png"),
-    alt: "Avana personal full logo",
+    alt: "Avana full cyan logo",
     mobileImageClassName: mobileLogoImageClassName,
     desktopImageClassName: logoImageClassName,
   },
@@ -552,8 +552,8 @@ export default function BrandPage() {
                       ) : null}
                       {item.icon === "palette" ? (
                         <BrandAssetImage
-                          src={brandAssetPath("/Avana PNG/Avana Full (Business) PNG.png")}
-                          alt="Avana business logo"
+                          src={brandAssetPath("/Avana PNG/Avana Full (Personal) PNG.png")}
+                          alt="Avana full cyan logo"
                           className="w-full max-w-[7.25rem]"
                         />
                       ) : null}
