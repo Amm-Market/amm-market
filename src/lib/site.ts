@@ -14,7 +14,6 @@ export const DEFAULT_OG_DESCRIPTION =
 export const siteRoutes = {
   home: "/",
   about: "/about",
-  products: "/products",
   borrow: "/borrow",
   lend: "/lend",
   multiply: "/multiply",
