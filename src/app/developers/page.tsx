@@ -15,8 +15,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Introduction",
-  description:
-    "Introduction to Avana - LP-backed borrowing on Aave v4, Borrow Spokes, Lend Spoke, and Hub-mediated liquidity.",
+  description: "Avana turns supported LP positions into borrowable collateral.",
 }
 
 const sections = [
@@ -25,8 +24,6 @@ const sections = [
   { id: "how-it-works", title: "How It Works" },
   { id: "unlocking-lp-collateral", title: "Why LP Collateral Matters" },
   { id: "architecture", title: "Architecture" },
-  { id: "current-development", title: "Current Scope" },
-  { id: "next-steps", title: "Next Steps" },
 ]
 
 const flowSteps = [
@@ -100,64 +97,6 @@ const architectureBlocks: Array<{
   },
 ]
 
-const scopeFocus = [
-  "Approved LP pool admission",
-  "Position valuation and collateral factors",
-  "Aggregate borrowing capacity inside each spoke",
-  "Hub-mediated borrowing and repayment flows",
-  "Health checks and liquidation discipline",
-]
-
-const operationalReferences = [
-  "Testnet availability and rollout timing",
-  "Campaigns, incentives, and rewards",
-  "Deployment addresses and interface policies",
-  "Operational fee settings and UI-level switches",
-]
-
-const nextStepGroups = [
-  {
-    title: "Start here",
-    links: [
-      {
-        href: "/developers/introduction/key-concepts",
-        label: "Key Concepts",
-        description: "Understand the canonical LP-backed borrowing model.",
-      },
-    ],
-  },
-  {
-    title: "Protocol architecture",
-    links: [
-      {
-        href: "/developers/architecture",
-        label: "Borrow Spoke",
-        description: "See the borrower-facing execution layer.",
-      },
-      {
-        href: "/developers/architecture/lend-spoke",
-        label: "Lend Spoke",
-        description: "See how lender capital enters through the Hub.",
-      },
-      {
-        href: "/developers/architecture/collateral-factors",
-        label: "Collateral Factors",
-        description: "Understand how LP value becomes borrowable capacity.",
-      },
-    ],
-  },
-  {
-    title: "Risk and pricing",
-    links: [
-      {
-        href: "/developers/integrations/price-oracles",
-        label: "Price Oracles",
-        description: "Learn how LP collateral is priced conservatively.",
-      },
-    ],
-  },
-]
-
 function SectionHeader({
   title,
   description,
@@ -182,7 +121,7 @@ export default function DevelopersPage() {
         <section id="welcome" className="scroll-mt-32 pb-10">
           <DeveloperDocPageHeader
             title="Introduction"
-            description="Avana turns supported LP positions into borrowable collateral inside Aave v4&apos;s Hub-and-Spoke architecture. This page is the mental-model overview: where LP specific underwriting lives, how shared Hub liquidity is used, and which deeper docs to read next."
+            description="Avana lets users borrow against supported LP positions. Avana turns supported LP positions into borrowable collateral. Avana uses the Hub-and-Spoke model to keep LP risk separate from shared liquidity."
           />
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <Link
@@ -208,36 +147,15 @@ export default function DevelopersPage() {
             description="Avana is a lending protocol built for LP collateral that stays active in the underlying AMM. The protocol uses Aave v4&apos;s Hub-and-Spoke model so shared liquidity can stay in the Hub while LP-specific admissibility, valuation, and liquidation logic stays inside the spoke."
           />
 
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 text-[#01AACF]">
-                  <BookOpen className="h-5 w-5" />
-                </div>
-                <h3 className="text-lg font-semibold text-slate-950">Protocol thesis</h3>
-              </div>
-              <p className="mt-4 text-sm leading-7 text-slate-600">
-                LP collateral only works when the protocol can reason about what is in the pool,
-                how it should be priced, how much can be borrowed against it, and how it can be
-                unwound safely if the position deteriorates.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 text-[#01AACF]">
-                  <ArrowRight className="h-5 w-5" />
-                </div>
-                <h3 className="text-lg font-semibold text-slate-950">How to read these docs</h3>
-              </div>
-              <p className="mt-4 text-sm leading-7 text-slate-600">
-                Start with the canonical borrowing path first, then move into the Borrow Spoke,
-                Lend Spoke, collateral factors, and pricing pages. The architecture and risk
-                pages define the protocol model; testnet and operational pages are supporting
-                references.
-              </p>
-            </div>
-          </div>
+          <p className="max-w-3xl text-sm leading-7 text-slate-600">
+            LP collateral only works when the protocol can reason about what is in the pool, how
+            it should be priced, how much can be borrowed against it, and how it can be unwound
+            safely if the position deteriorates.
+          </p>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
+            Start with the canonical borrowing path first, then move into the Borrow Spoke, Lend
+            Spoke, collateral factors, and pricing pages.
+          </p>
         </section>
 
         <section id="how-it-works" className="deferred-viewport mt-12 scroll-mt-32">
@@ -246,21 +164,19 @@ export default function DevelopersPage() {
             description="The borrowing flow is short at a high level, but each step carries LP-specific logic. Read it as the canonical path that the rest of the documentation expands."
           />
 
-          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <ol className="divide-y divide-slate-200">
-              {flowSteps.map(({ step, title, description }) => (
-                <li key={step} className="flex gap-4 px-6 py-6 sm:px-8">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-sm font-semibold text-[#01AACF]">
-                    {step}
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="text-lg font-semibold text-slate-950">{title}</h3>
-                    <p className="mt-2 text-sm leading-7 text-slate-600">{description}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
+          <ol className="space-y-4">
+            {flowSteps.map(({ step, title, description }) => (
+              <li key={step} className="flex gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-sm font-semibold text-[#01AACF]">
+                  {step}
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-base font-semibold text-slate-950">{title}</h3>
+                  <p className="mt-1 text-sm leading-7 text-slate-600">{description}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </section>
 
         <section id="unlocking-lp-collateral" className="deferred-viewport mt-12 scroll-mt-32">
@@ -269,21 +185,19 @@ export default function DevelopersPage() {
             description="The point is not just to borrow against LPs. The point is to do it in a way that preserves productive capital and keeps the credit rules enforceable."
           />
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
-            <ul className="space-y-5">
-              {collateralHighlights.map(({ icon: Icon, title, description }) => (
-                <li key={title} className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan-50 text-[#01AACF]">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-slate-950">{title}</h3>
-                    <p className="mt-1 text-sm leading-7 text-slate-600">{description}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul className="space-y-4">
+            {collateralHighlights.map(({ icon: Icon, title, description }) => (
+              <li key={title} className="flex items-start gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-[#01AACF]">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-semibold text-slate-950">{title}</h3>
+                  <p className="mt-1 text-sm leading-7 text-slate-600">{description}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section id="architecture" className="deferred-viewport mt-12 scroll-mt-32">
@@ -292,90 +206,25 @@ export default function DevelopersPage() {
             description="Avana separates LP-specific underwriting from the shared liquidity layer. The three blocks below are the simplest way to read that split."
           />
 
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
-            <div className="grid gap-4 lg:grid-cols-3">
-              {architectureBlocks.map(({ icon: Icon, title, description }) => (
-                <div key={title} className="rounded-xl border border-slate-200 bg-white p-5">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 text-[#01AACF]">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-slate-950">{title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-slate-600">{description}</p>
+          <div className="grid gap-6 lg:grid-cols-3">
+            {architectureBlocks.map(({ icon: Icon, title, description }) => (
+              <div key={title}>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-50 text-[#01AACF]">
+                  <Icon className="h-5 w-5" />
                 </div>
-              ))}
-            </div>
-
-            <p className="mt-4 text-sm leading-7 text-slate-600">
-              Borrow Spokes own admissibility, valuation, health checks, and liquidation behavior.
-              The Hub owns shared reserves and accounting. The Lend Spoke routes lender capital
-              into that shared liquidity layer.
-            </p>
-          </div>
-        </section>
-
-        <section id="current-development" className="deferred-viewport mt-12 scroll-mt-32">
-          <SectionHeader
-            title="Current Scope"
-            description="These docs focus on the core protocol model first. Operational details are documented separately so they do not redefine the main lending architecture."
-          />
-
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-slate-950">Core protocol model</h3>
-              <ul className="mt-4 space-y-3 text-sm text-slate-600">
-                {scopeFocus.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-2 h-2 w-2 rounded-full bg-[#01AACF]" />
-                    <span className="leading-6">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-slate-950">Operational references</h3>
-              <ul className="mt-4 space-y-3 text-sm text-slate-600">
-                {operationalReferences.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-2 h-2 w-2 rounded-full bg-slate-400" />
-                    <span className="leading-6">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section id="next-steps" className="deferred-viewport mt-12 scroll-mt-32">
-          <SectionHeader
-            title="Next Steps"
-            description="Use the intro page to route into the specific part of the protocol you need. These links preserve the canonical reading path without turning the landing page into a grid of large cards."
-          />
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {nextStepGroups.map((group) => (
-              <div key={group.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#01AACF]">
-                  {group.title}
-                </h3>
-                <ul className="mt-4 space-y-4">
-                  {group.links.map(({ href, label, description }) => (
-                    <li key={href}>
-                      <Link
-                        href={href}
-                        className="group inline-flex items-center gap-2 text-sm font-medium text-[#01AACF] transition hover:opacity-80 hover:underline"
-                      >
-                        {label}
-                        <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-                      </Link>
-                      <p className="mt-1 text-sm leading-6 text-slate-600">{description}</p>
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="mt-4 text-base font-semibold text-slate-950">{title}</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-600">{description}</p>
               </div>
             ))}
           </div>
+
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
+            Borrow Spokes own admissibility, valuation, health checks, and liquidation behavior.
+            The Hub owns shared reserves and accounting. The Lend Spoke routes lender capital into
+            that shared liquidity layer.
+          </p>
         </section>
+
       </div>
 
       <DeveloperScrollSpyRail
