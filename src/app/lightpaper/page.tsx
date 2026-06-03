@@ -397,10 +397,10 @@ export default function LightpaperPage() {
                     those three constraints can now be addressed directly.
                   </p>
                   <p>
-                    In 2021, Aave launched its Avana, allowing Uniswap v2 and Balancer LP tokens to be used as
-                    collateral. The model arrived before the surrounding infrastructure was ready. DEX liquidity was
-                    thinner, pool design was less mature, and risk frameworks were still too blunt to capture what LP
-                    positions actually were.
+                    In 2021, Aave launched its AMM market with Uniswap v2 and Balancer LP tokens as collateral. The
+                    model arrived before the surrounding infrastructure was ready. DEX liquidity was thinner, pool
+                    design was less mature, and risk frameworks were still too blunt to capture what LP positions
+                    actually were.
                   </p>
                   <p>
                     Additionally, Gelato&apos;s G-UNI wrapped Uniswap v3 NFT positions into fungible ERC-20 tokens,
@@ -422,19 +422,12 @@ export default function LightpaperPage() {
                     . The proposal ended up stalling, and adoption remained constrained by the same unresolved
                     challenges.
                   </p>
-                  <ImagePlaceholder label="Historical LP collateral timeline" />
                   <p>
-                    The conditions that made LP collateral difficult a few years ago are not the same conditions that
-                    exist now. AMMs are more mature, liquidity is deeper, and the market has accumulated years of data
-                    on how LP positions behave across stable, correlated, and volatile pairs. Oracle infrastructure has
-                    improved, liquidation systems are more sophisticated, and market participants are far more familiar
-                    with structured DeFi collateral than they were during earlier experiments.
-                  </p>
-                  <p>
-                    Just as important, Aave v4 creates the right architectural environment for this model. Its hub-and-spoke
-                    design allows LP-specific valuation, risk controls, and liquidation logic to live inside dedicated
-                    spoke markets without forcing all collateral types into a single shared implementation. That makes
-                    it possible to support LP collateral in a way that is modular, isolated, and scalable.
+                    LP collateral is easier to support now than it was a few years ago. AMMs are more mature,
+                    liquidity is deeper, oracles and liquidation systems are better, and there is a lot more data on
+                    how LP positions behave across different pairs. Aave v4 fits that setup because its hub-and-spoke
+                    design lets LP valuation, risk, and liquidation live inside separate spoke markets instead of
+                    forcing everything into one shared model.
                   </p>
                 </div>
               </section>
@@ -443,21 +436,27 @@ export default function LightpaperPage() {
                 <LightpaperSectionHeader eyebrow="At a glance" title="Protocol Overview" tone="cyan" />
                 <div className="mt-5 space-y-5">
                   <p>
-                    Avana is a lending protocol built specifically for LP collateral. It allows AMM liquidity providers
-                    from Uniswap, Balancer, Curve, or Aerodrome to deposit supported LP positions, have those
-                    positions evaluated inside market-specific risk frameworks, and borrow against them while the
-                    positions remain active in the underlying pools.
+                    Avana is a lending protocol built for LP collateral. Liquidity providers on Uniswap, Balancer,
+                    Curve, or Aerodrome can deposit supported positions, keep them active in the pool, and borrow
+                    against them through market-specific risk settings.
                   </p>
                   <p>
-                    The closest comparable system is Fluid by Instadapp. Fluid&apos;s innovation is a unified liquidity
-                    layer where debt and collateral themselves become DEX liquidity inside a vertically integrated
-                    system. Avana&apos;s innovation is different: it makes third-party AMM LP positions from across venues
-                    into borrowable collateral inside a horizontally aggregative system. Fluid owns the liquidity rails.
-                    Avana works with the rails that already exist across the ecosystem. The distinction becomes clear
-                    when you ask where the liquidity lives, who controls the infrastructure, and what exactly is being
-                    collateralized.
+                    Fluid is the closest comparison, but it takes a different path. Fluid turns debt and collateral
+                    into its own liquidity layer. Avana works the other way around: it takes LP positions that already
+                    exist across AMMs and makes them usable as collateral without replacing the underlying rails.
                   </p>
-                  <p>At a high level, Avana operates through three steps.</p>
+                  <p>
+                    Avana starts with Borrow Markets, then adds Lend Markets and Multiply Markets later. Each market
+                    keeps its own risk settings, so the first version stays focused and the risk model stays easy to
+                    tune.
+                  </p>
+                </div>
+              </section>
+
+              <section id="protocol-specification" className="scroll-mt-32 border-t border-gray-200 pt-12">
+                <LightpaperSectionHeader eyebrow="Phase design" title="Protocol Specification" tone="emerald" />
+                <div className="mt-5 space-y-5">
+                  <p>At a high level, Avana works through three steps.</p>
                   <ImagePlaceholder label="Protocol overview flow" />
                   <p>
                     First, a user deposits an LP position into Avana. This can be any pool position from supported
@@ -466,32 +465,16 @@ export default function LightpaperPage() {
                   </p>
                   <p>
                     Second, Avana evaluates the LP position to determine its risk-adjusted collateral value. The
-                    protocol checks the value of the underlying pool assets, the structure of the liquidity pool, asset
-                    volatility, correlation between the assets in the pair, and overall liquidation risk. Avana relies
-                    on LP valuation models, conservative borrowing limits, oracle-based pricing, and automated
+                    protocol checks the value of the underlying pool assets, the structure of the liquidity pool,
+                    asset volatility, correlation between the assets in the pair, and overall liquidation risk. Avana
+                    relies on LP valuation models, conservative borrowing limits, oracle-based pricing, and automated
                     liquidation mechanisms to ensure that LP positions can function safely as collateral.
                   </p>
                   <p>
                     Third, once the position has been evaluated, the user can borrow assets against it. The liquidity
                     remains active inside the AMM and continues earning trading fees and incentives while also serving
-                    as collateral. This allows LPs to access liquidity without withdrawing liquidity from the AMM; the
-                    LP position itself becomes the collateral inside Avana.
-                  </p>
-                </div>
-              </section>
-
-              <section id="protocol-specification" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Phase design" title="Protocol Specification" tone="emerald" />
-                <div className="mt-5 space-y-5">
-                  <p>
-                    Avana is built in phases so the protocol can grow without trying to do everything at once. Phase
-                    1 is Borrow Markets, where users supply LP positions and borrow against them while the position
-                    stays live in the AMM.
-                  </p>
-                  <p>
-                    Later phases add Lend Markets for LP-backed borrowing support and Multiply Markets for users who
-                    want more leverage. The structure stays the same: keep the market-specific logic isolated, keep
-                    the user flow simple, and let the protocol expand in a controlled way.
+                    as collateral. This allows LPs to access liquidity without withdrawing liquidity from the AMM;
+                    the LP position itself becomes the collateral inside Avana.
                   </p>
                 </div>
               </section>
@@ -724,7 +707,6 @@ export default function LightpaperPage() {
                 <LightpaperSectionHeader eyebrow="Business model" title="Revenue Model" tone="emerald" />
                 <div className="mt-5 space-y-5">
                   <p>Avana earns from two sources.</p>
-                  <ImagePlaceholder label="Revenue model visual" />
                   <p>
                     The first is a share of liquidation penalties on the LP positions it enables. Unwinding these
                     positions properly with oracle validation, controlled execution, and slippage management requires
