@@ -373,27 +373,17 @@ export default function LightpaperPage() {
                       <ImagePlaceholder label="Executive summary visual" />
                       <p>
                         Avana lets users deposit supported LP positions and borrow against them through Aave v4. The
-                        user keeps their LP position as the real collateral while Avana turns that position into an
-                        internal ERC-20 accounting asset that Aave can accept. For example, if a user deposits a
-                        LINK-ETH LP position worth $40,000, they can borrow against it based on the risk settings for
-                        that market, while Aave sees a standard ERC-20 collateral reserve such as vaultLINKETH.
-                      </p>
-                      <p>
-                        The vault token is not the product, and it is not meant to trade freely or act as a wrapper
-                        that users buy and sell. It is the bridge between a live AMM position and Aave&apos;s ERC-20
-                        collateral system.
+                        LP position stays in place as the real collateral, while Avana turns it into an internal
+                        ERC-20 accounting asset that Aave can use on the borrow side.
                       </p>
                       <p>
                         Avana starts with curated LP markets, so a LINK-ETH position maps to vaultLINKETH, an ETH-DAI
                         position maps to vaultETHDAI, a WETH-USDC position maps to vaultWETHUSDC, and a WBTC-ETH
                         position maps to vaultWBTCETH. Each market is priced, checked, and managed on its own, which
-                        keeps the user experience simple while giving Aave a clean way to account for each collateral
-                        type.
-                      </p>
-                      <p>
-                        The core idea is direct: LP positions remain the real collateral, Avana tracks and values them,
-                        the Aave Adapter mints the right internal vault token, and Aave uses that token for collateral
-                        accounting so the user can borrow against the LP value without closing the pool position.
+                        keeps the experience simple. The vault token is just the bridge: Avana tracks and values the
+                        LP position, the Aave Adapter mints the right token, and Aave uses that token for collateral
+                        accounting so the user can borrow without closing the pool position. The LP stays live, the
+                        collateral stays organized, and the user gets credit against the value already in the market.
                       </p>
                     </div>
                   </section>
@@ -557,14 +547,12 @@ export default function LightpaperPage() {
                     actually need instead of being forced into one generic template.
                   </p>
                   <p>
-                    That matters because LP positions do not all behave the same. Some are calm and predictable,
-                    some move with each other, and some can swing hard when the range gets tight. Keeping them in
-                    separate spokes makes the pricing, liquidation, and borrowing rules easier to tune.
-                  </p>
-                  <p>
-                    The result is simple: Avana can support more LP markets without turning everything into the same
-                    product, and it starts with a focused set of borrow spokes across stable, correlated, volatile,
-                    and governance-token LP markets so launch sequencing stays manageable.
+                    LP positions do not all behave the same. Some are calm and predictable, some move with each
+                    other, and some can swing hard when the range gets tight. Keeping them in separate spokes makes
+                    the pricing, liquidation, and borrowing rules easier to tune, and it lets Avana support more LP
+                    markets without turning everything into the same product. It starts with a focused set of borrow
+                    spokes across stable, correlated, volatile, and governance-token LP markets so launch sequencing
+                    stays manageable.
                   </p>
                 </div>
                 <div className="mt-8 space-y-5">
@@ -760,10 +748,14 @@ export default function LightpaperPage() {
                 <ImagePlaceholder label="Addressable market visual" />
                 <div className="space-y-5">
                   <p>
-                    The addressable LP-collateral market across Ethereum, Arbitrum, and Base is estimated at $8 to
-                    $12 billion by 2030. The projections below assume 50% utilization of deposited collateral, a 9%
-                    average borrow APR, 10 basis points of platform volume captured as fees, and approximately 20x
-                    annual platform turnover.
+                    LP collateral already sits onchain as productive capital. The opportunity is to let that capital
+                    back borrowing instead of forcing users to exit their positions first. Across Ethereum,
+                    Arbitrum, and Base, that creates a large LP-collateral surface area that can grow as more AMM
+                    liquidity moves into organized borrowing markets.
+                  </p>
+                  <p>
+                    The table below is directional. It uses simple assumptions to show how borrow demand, collateral
+                    depth, and protocol revenue can scale together as LP markets mature.
                   </p>
                 </div>
 
@@ -796,10 +788,9 @@ export default function LightpaperPage() {
 
                 <div className="mt-6 space-y-5">
                   <p>
-                    In every scenario, Aave Hub captures all borrow interest while Avana earns a usage-driven revenue
-                    stream tied to the LP collateral layer it enables. As adoption grows, GHO demand grows alongside
-                    LP-backed borrowing, reinforcing the credit flywheel and making LP collateral a meaningful new
-                    surface area for DeFi lending.
+                    The point is simple: borrow demand follows liquidity, and LP liquidity becomes more useful when it
+                    can support credit without leaving the pool. Aave captures the borrow side, and Avana captures the
+                    LP-collateral layer that makes that borrowing possible.
                   </p>
                 </div>
               </section>
