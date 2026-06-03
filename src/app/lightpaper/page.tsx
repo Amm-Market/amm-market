@@ -974,47 +974,26 @@ export default function LightpaperPage() {
                 <ImagePlaceholder label="LP valuation model graphic" />
                 <div className="space-y-5">
                   <p>
-                    For each LP position, the protocol derives the underlying token amounts using the position&apos;s
-                    liquidity and tick range. These token balances are converted to USD using Chainlink price feeds and
-                    verified against AMM TWAPs to mitigate flash price manipulation.
+                    Position Valuation has two sides. First, Avana values the LP collateral itself, applies pool
+                    risk, and mints the vault token against that approved value. Then Aave v4 applies its reserve
+                    rules and risk premium to the vault token to decide how much the user can borrow.
                   </p>
                   <p>
-                    Because LP positions represent exposure to two underlying assets, Avana applies a conservative
-                    collateral framework. The protocol identifies the weaker asset in the pair, defined as the token
-                    with the lower single-asset collateral factor, and applies this value as a baseline cap on the LP
-                    position&apos;s collateral valuation. This prevents over-leveraging against pools where one asset
-                    could rapidly deteriorate.
+                    For each LP position, Avana reads the position data and derives the token amounts from the
+                    liquidity and tick range. Those balances are priced in USD using Chainlink feeds and verified
+                    against AMM TWAPs, then Avana applies a pool risk factor so the collateral value reflects the
+                    actual market conditions inside that LP market.
                   </p>
                   <p>
-                    A pool-level risk factor is then applied to the capped valuation. This factor incorporates
-                    volatility, liquidity depth, asset correlation, and governance-defined stress buffers specific to
-                    the pool structure.
+                    That approved value becomes the backing for an internal ERC-20 vault token. Each market gets its
+                    own token, such as vaultLINKETH, vaultETHDAI, vaultWETHUSDC, or vaultWBTCETH, and the supply
+                    moves with the value of the collateral behind it instead of sitting on a fixed 1:1 peg.
                   </p>
                   <p>
-                    Users may deposit multiple LP positions into a single Borrow Spoke. Borrowing capacity is
-                    calculated from the aggregate USD value of all underlying assets across deposited positions, after
-                    applying individual collateral factors and pool-level risk adjustments.
+                    Once the vault token is supplied, Aave v4 handles the borrow side. It applies that market&apos;s
+                    LTV, liquidation threshold, liquidation bonus, caps, health-factor checks, and risk premium to
+                    the ERC-20 reserve inside the Spoke.
                   </p>
-                </div>
-
-                <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50 px-5 py-5 sm:px-6">
-                  <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#01AACF]">Formula</p>
-                  <p className="mt-3 font-mono text-[0.95rem] leading-7 text-gray-800 sm:text-[1.05rem]">
-                    Borrowable USD = Position USD Value × Lower-Token CF × Pool-Level Risk Factor
-                  </p>
-                </div>
-
-                <div className="mt-8">
-                  <h3>ETH / USDC example</h3>
-                  <ul className="mt-4 list-disc pl-6">
-                    <li>LP Position Value: $963.51</li>
-                    <li>Single-token CFs: WETH 77.5%, USDC 85%</li>
-                    <li>Lower-token CF = 77.5%</li>
-                    <li>Pool-Level Risk Factor = 0.85</li>
-                    <li>
-                      <strong>Final Borrowable = 963.51 × 77.5% × 0.85 ≈ $634.88</strong>
-                    </li>
-                  </ul>
                 </div>
               </section>
 
