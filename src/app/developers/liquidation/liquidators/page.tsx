@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
@@ -61,13 +60,13 @@ export default function DeveloperLiquidatorsPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Liquidators cover unhealthy LP-backed positions by repaying debt, unwinding the LP
-            collateral through the right venue path, and settling the resulting assets back into the
-            credit layer.
+            collateral through the right venue path, and settling the resulting assets back into
+            the credit layer.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
-            The operator side of liquidation is mostly about reliability: the keeper must know
-            what can be covered, how the LP position is represented, and how the unwind should
-            settle if slippage, fees, or range imbalance change the shape of the recovery.
+          <p className="type-body-copy leading-relaxed text-gray-600">
+            The operator side of liquidation is mostly about reliability: the keeper must know what
+            can be covered, how the LP position is represented, and how the unwind should settle if
+            slippage, fees, or range imbalance change the shape of the recovery.
           </p>
         </section>
 
@@ -75,9 +74,9 @@ export default function DeveloperLiquidatorsPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Coverage Model</h2>
           <div className="space-y-4">
             {coverageModel.map((item) => (
-              <div key={item.title} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
-                <h3 className="mb-2 font-semibold text-gray-900">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.body}</p>
+              <div key={item.title}>
+                <h3 className="mb-1 font-semibold text-gray-900">{item.title}</h3>
+                <p className="type-body-copy text-gray-600">{item.body}</p>
               </div>
             ))}
           </div>
@@ -85,37 +84,32 @@ export default function DeveloperLiquidatorsPage() {
 
         <section id="execution-requirements" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Execution Requirements</h2>
-          <ul className="space-y-3 text-sm text-gray-600">
+          <ul className="space-y-2 type-body-copy text-gray-600">
             {executionRequirements.map((item) => (
-              <li key={item} className="rounded-lg border border-gray-200 bg-white px-4 py-3">
+              <li key={item}>
                 {item}
               </li>
             ))}
           </ul>
         </section>
 
-        <section id="operational-checklist" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Operational Checklist</h2>
-          <div className="space-y-3 text-sm text-gray-600">
+        <section id="operational-notes" className="mb-12">
+          <h2 className="mb-4 type-section-title text-gray-900">Operational Notes</h2>
+          <div className="space-y-3 type-body-copy text-gray-600">
             {operationalChecklist.map((item) => (
-              <p key={item} className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+              <p key={item}>
                 {item}
               </p>
             ))}
           </div>
         </section>
 
-        <section id="operational-notes" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Operational Notes</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
-            In practice, the most reliable liquidators are the ones that can model venue-specific
-            unwind paths, fee realization, and debt repayment as one atomic workflow instead of a
-            set of disconnected actions.
-          </p>
-          <p className="text-sm leading-relaxed text-gray-600">
-            Operators should also think about failure handling, because a missed transaction,
-            stale price, or partial unwind can turn a recoverable account into a much harder
-            recovery if the runtime does not react quickly and consistently.
+        <section className="mb-12">
+          <h2 className="mb-4 type-section-title text-gray-900">Bottom Line</h2>
+          <p className="type-body-copy leading-relaxed text-gray-600">
+            The best liquidators are the ones that can model venue-specific unwind paths, fee
+            realization, and debt repayment as one atomic workflow instead of a set of disconnected
+            actions.
           </p>
         </section>
       </div>
