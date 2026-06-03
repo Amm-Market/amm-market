@@ -679,22 +679,14 @@ export default function LightpaperPage() {
                 <LightpaperSectionHeader eyebrow="Phase design" title="Protocol Specification" tone="emerald" />
                 <div className="mt-5 space-y-5">
                   <p>
-                    Avana is designed as a multi-phase protocol that evolves over time to progressively expand what LP
-                    collateral markets can do. Phase 1 introduces Borrow Markets. Phase 2 expands into Lend Markets.
-                    Phase 3 unlocks Multiply Markets.
-                  </p>
-                  <ImagePlaceholder label="Three-phase protocol roadmap concept" />
-                  <p>
-                    The first phase introduces Borrow Markets. In this phase, users supply LP positions and receive
-                    asset loans deposited straight to their wallet.
+                    Avana is built in phases so the protocol can grow without trying to do everything at once. Phase
+                    1 is Borrow Markets, where users supply LP positions and borrow against them while the position
+                    stays live in the AMM.
                   </p>
                   <p>
-                    The second phase introduces Lend Markets. In this phase, users lend assets to back LP collateral
-                    and earn yield from the market.
-                  </p>
-                  <p>
-                    The third phase introduces Multiply Markets. In this phase, users increase their yield exposure by
-                    looping up to 10x with a single click.
+                    Later phases add Lend Markets for LP-backed borrowing support and Multiply Markets for users who
+                    want more leverage. The structure stays the same: keep the market-specific logic isolated, keep
+                    the user flow simple, and let the protocol expand in a controlled way.
                   </p>
                 </div>
               </section>
@@ -709,23 +701,33 @@ export default function LightpaperPage() {
                     pool collateral registration, LP position valuation, pool risk enforcement, and AMM pool
                     liquidation execution.
                   </p>
-                  <p>A conceptual credit line from different Aave Hubs might look like this.</p>
                   <ImagePlaceholder label="Hub and spoke credit-line diagram" />
+                  <p>Avana is built around five parts, and each one has a narrow job.</p>
                   <p>
-                    This separation is essential because LP positions vary significantly across venues and pool types. A
-                    concentrated Uniswap position does not behave like a Balancer weighted pool. A Curve stable
-                    position does not behave like a basic stable Aerodrome pool. Each supported LP market can therefore
-                    define its own valuation logic, collateral parameters, oracle inputs, and liquidation rules. Avana
-                    isolates risk, tailors valuation models, and evolves support pool by pool without forcing the
-                    entire protocol to inherit the same assumptions.
+                    The LP Position Manager holds the real position and keeps the book on it. For a Uniswap v3 LP,
+                    that means the NFT ID, owner, pool, pair, fee tier, tick range, liquidity, current value, fees
+                    still sitting in the position, and whether it is already posted as collateral.
                   </p>
-                  <ImagePlaceholder label="Venue-specific spoke design" />
                   <p>
-                    Avana Phase 1 will begin with a narrow set of highly legible AMM LP markets, while future versions
-                    add broader AMM support, more complex borrowing formats, and eventually Multiply Markets. In
-                    practical terms, the user experience remains simple. A user deposits a supported LP position, the
-                    protocol evaluates it using the market-specific logic assigned to that pool type, and borrowing
-                    capacity is made available based on the resulting risk-adjusted value.
+                    The Risk Module is the gatekeeper. It checks whether the pool is approved, whether the assets are
+                    supported, whether the position is deep enough, whether the range is still usable, and whether
+                    the market is still inside its caps.
+                  </p>
+                  <p>
+                    The Collateralization Module sits between approval and action. It checks the oracle setup, pulls
+                    in the latest pricing, values the position, decides how much collateral it can support, and
+                    mints the vault token when the position is cleared for borrowing. It also updates or removes that
+                    collateral when the market changes or the position leaves the system.
+                  </p>
+                  <p>
+                    The Aave Adapter is the bridge into Aave v4. It does not make risk calls, it just follows the
+                    approved output from the Position Manager, Risk Module, and Collateralization Module, then
+                    supplies the vault token to Aave v4 or pulls it back when collateral is removed.
+                  </p>
+                  <p>
+                    Those vault collateral tokens are internal ERC-20 assets like vaultLINKETH, vaultETHDAI,
+                    vaultWETHUSDC, and vaultWBTCETH. Each token maps cleanly to one supported LP market, so Aave v4
+                    sees a simple collateral asset while Avana keeps the real LP position behind it.
                   </p>
                 </div>
               </section>
