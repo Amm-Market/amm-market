@@ -144,7 +144,7 @@ export default function DepositLPPage() {
           </div>
           <p className="mt-3 text-sm text-gray-600">
             Exact live support is governed by the approved pool list. See{" "}
-            <Link href="/developers/integrations/allowed-pools" className="text-blue-600 hover:underline">
+            <Link href="/developers/integrations/allowed-pools" className="text-[#01AACF] hover:underline">
               Allowed LP Pools
             </Link>{" "}
             for the admission model.
@@ -159,7 +159,7 @@ export default function DepositLPPage() {
             <li>Borrowing still depends on Hub liquidity, spoke health, and collateral-factor limits</li>
             <li>
               The next canonical step is{" "}
-              <Link href="/developers/getting-started/borrow-assets" className="text-blue-600 hover:underline">
+              <Link href="/developers/getting-started/borrow-assets" className="text-[#01AACF] hover:underline">
                 Borrow Assets
               </Link>
             </li>
