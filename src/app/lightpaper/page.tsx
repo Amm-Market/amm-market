@@ -66,137 +66,6 @@ function LightpaperSectionHeader({
   )
 }
 
-type BorrowerSpoke = {
-  spoke: string
-  lpPrimitive: string
-  collateralPairs: string[]
-  borrowAssets: string[]
-  emodeCategory?: "stable" | "correlated"
-}
-
-const borrowerProtocolGroups = [
-  {
-    protocol: "Uniswap",
-    tvl: "$5.68B",
-    markets: [
-      {
-        spoke: "Uniswap v2 LPs",
-        lpPrimitive: "Constant-product LP tokens",
-        collateralPairs: ["WETH/USDC", "WBTC/WETH", "WETH/DAI", "WETH/USDT", "WBTC/USDC"],
-        borrowAssets: ["USDC", "USDT", "DAI", "WETH", "WBTC"],
-      },
-      {
-        spoke: "Uniswap v3 Stable LPs",
-        lpPrimitive: "Concentrated liquidity NFT positions",
-        collateralPairs: ["USDC/USDT", "DAI/USDC", "crvUSD/USDC", "EURC/USDC"],
-        borrowAssets: ["USDC", "USDT", "DAI", "crvUSD", "GHO"],
-        emodeCategory: "stable",
-      },
-      {
-        spoke: "Uniswap v3 Blue-Chip LPs",
-        lpPrimitive: "Concentrated liquidity NFT positions",
-        collateralPairs: ["WETH/USDC", "WBTC/WETH", "WBTC/USDC", "WETH/USDT", "cbBTC/WETH"],
-        borrowAssets: ["USDC", "USDT", "DAI", "WETH", "WBTC"],
-      },
-      {
-        spoke: "Uniswap v3 Governance & DAO LPs",
-        lpPrimitive: "Concentrated liquidity NFT positions",
-        collateralPairs: ["AAVE/WETH", "UNI/WETH", "CRV/WETH", "LDO/WETH"],
-        borrowAssets: ["USDC", "USDT", "DAI", "WETH"],
-      },
-    ] satisfies BorrowerSpoke[],
-  },
-  {
-    protocol: "Curve",
-    tvl: "$1.83B",
-    markets: [
-      {
-        spoke: "Curve Stable LPs",
-        lpPrimitive: "StableSwap LP tokens",
-        collateralPairs: ["USDC/USDT", "DAI/USDC/USDT", "crvUSD/USDC", "USDe/USDC", "FRAX/USDC"],
-        borrowAssets: ["USDC", "USDT", "DAI", "crvUSD", "GHO"],
-        emodeCategory: "stable",
-      },
-      {
-        spoke: "Curve Correlated LPs",
-        lpPrimitive: "StableSwap LP tokens",
-        collateralPairs: ["ETH/stETH", "ETH/wstETH", "rETH/ETH", "cbETH/ETH", "weETH/ETH"],
-        borrowAssets: ["ETH", "stETH", "wstETH", "rETH"],
-        emodeCategory: "correlated",
-      },
-      {
-        spoke: "Curve Crypto LPs",
-        lpPrimitive: "CryptoSwap LP tokens",
-        collateralPairs: ["USDT/ETH", "WBTC/ETH", "CRV/ETH", "USDC/WBTC/ETH"],
-        borrowAssets: ["USDC", "USDT", "DAI", "WETH", "WBTC"],
-      },
-    ] satisfies BorrowerSpoke[],
-  },
-  {
-    protocol: "Balancer",
-    tvl: "$158.18M",
-    markets: [
-      {
-        spoke: "Balancer Stable LPs",
-        lpPrimitive: "Stable / Composable Stable BPT",
-        collateralPairs: ["USDC/DAI/USDT", "GHO/USDC", "EURC/USDC", "sDAI/USDC"],
-        borrowAssets: ["USDC", "DAI", "USDT", "EURC", "GHO"],
-        emodeCategory: "stable",
-      },
-      {
-        spoke: "Balancer Correlated LPs",
-        lpPrimitive: "Stable / Composable Stable BPT",
-        collateralPairs: ["wstETH/WETH", "rETH/WETH", "cbETH/WETH", "weETH/WETH"],
-        borrowAssets: ["WETH", "wstETH", "rETH", "cbETH"],
-        emodeCategory: "correlated",
-      },
-      {
-        spoke: "Balancer Weighted LPs",
-        lpPrimitive: "Weighted BPT",
-        collateralPairs: ["80/20 WETH/AAVE", "80/20 BAL/WETH", "80/20 GNO/WETH", "80/20 AURA/WETH"],
-        borrowAssets: ["USDC", "USDT", "DAI", "WETH"],
-      },
-      {
-        spoke: "Balancer Boosted LPs",
-        lpPrimitive: "Boosted BPT",
-        collateralPairs: ["bb-a-USDC / bb-a-DAI / bb-a-USDT", "sDAI/USDC", "waUSDC/USDC", "waDAI/DAI"],
-        borrowAssets: ["USDC", "USDT", "DAI", "GHO"],
-      },
-      {
-        spoke: "Balancer reCLAMM LPs",
-        lpPrimitive: "reCLAMM BPT",
-        collateralPairs: ["WETH/USDC", "WETH/USDT", "WBTC/WETH"],
-        borrowAssets: ["USDC", "USDT", "DAI", "WETH"],
-      },
-    ] satisfies BorrowerSpoke[],
-  },
-  {
-    protocol: "Aerodrome",
-    tvl: "$356.44M",
-    markets: [
-      {
-        spoke: "Aerodrome Basic Stable LPs",
-        lpPrimitive: "Stable LP tokens",
-        collateralPairs: ["USDC/DAI", "USD+/USDC", "EURC/USDC", "USDC/USDT"],
-        borrowAssets: ["USDC", "DAI", "EURC"],
-        emodeCategory: "stable",
-      },
-      {
-        spoke: "Aerodrome Basic Volatile LPs",
-        lpPrimitive: "Constant-product LP tokens",
-        collateralPairs: ["AERO/USDC", "DEGEN/USDC", "BRETT/WETH", "WELL/WETH", "MOG/WETH"],
-        borrowAssets: ["USDC", "DAI", "WETH"],
-      },
-      {
-        spoke: "Aerodrome Slipstream Blue-Chip LPs",
-        lpPrimitive: "Concentrated liquidity NFT positions",
-        collateralPairs: ["WETH/USDC", "cbETH/WETH", "WETH/cbBTC", "cbBTC/USDC"],
-        borrowAssets: ["USDC", "DAI", "WETH", "cbBTC"],
-      },
-    ] satisfies BorrowerSpoke[],
-  },
-]
-
 const oracleLayers = [
   {
     layer: "Primary asset prices",
@@ -456,54 +325,6 @@ function ReferenceTable({ references }: { references: { label: string; href: str
   )
 }
 
-function AssetChip({ asset, compact = false }: { asset: string; compact?: boolean }) {
-  return (
-    <span
-      className={`inline-flex items-center rounded-full border border-gray-300 bg-gray-50 font-medium tracking-[0.01em] text-gray-700 ${
-        compact ? "px-2 py-0.5 text-[10px]" : "px-2.5 py-1 text-[11px]"
-      }`}
-    >
-      {asset}
-    </span>
-  )
-}
-
-function EModeBadge({ category }: { category: BorrowerSpoke["emodeCategory"] }) {
-  if (!category) {
-    return null
-  }
-
-  return (
-    <span className="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#01AACF]">
-      E-Mode
-    </span>
-  )
-}
-
-function SpokeIdentity({ market }: { market: BorrowerSpoke }) {
-  return (
-    <div className="space-y-1">
-      <div className="flex flex-wrap items-center gap-2">
-        <p className="text-[0.95rem] font-semibold leading-6 text-gray-900">{market.spoke}</p>
-        <EModeBadge category={market.emodeCategory} />
-      </div>
-      <p className="text-[0.8rem] leading-5 text-gray-500">{market.lpPrimitive}</p>
-    </div>
-  )
-}
-
-function MobileSpokeIdentity({ market }: { market: BorrowerSpoke }) {
-  return (
-    <div className="space-y-1">
-      <div className="flex flex-wrap items-center gap-1.5">
-        <p className="text-[0.88rem] font-semibold leading-5 text-gray-900">{market.spoke}</p>
-        <EModeBadge category={market.emodeCategory} />
-      </div>
-      <p className="text-[0.74rem] leading-5 text-gray-500">{market.lpPrimitive}</p>
-    </div>
-  )
-}
-
 export default function LightpaperPage() {
   return (
     <>
@@ -731,164 +552,34 @@ export default function LightpaperPage() {
                 <div className="mt-5 space-y-5">
                   <h3>For Borrowers</h3>
                   <p>
-                    Avana Borrow Spokes are organized into specialized LP collateral markets, with each spoke aligned
-                    to a specific liquidity primitive or market structure. This allows the protocol to isolate
-                    collateral valuation, liquidation logic, and parameter design across different forms of AMM
-                    liquidity while still drawing borrowable capital from a shared liquidity layer.
+                    Avana splits borrowing into separate spokes so each LP market gets its own setup. That way,
+                    stable pools, correlated pairs, weighted pools, and concentrated liquidity each get the rules they
+                    actually need instead of being forced into one generic template.
                   </p>
                   <p>
-                    That structure matters because not all LP positions behave the same way. Stable pools, correlated
-                    asset pools, weighted index pools, and concentrated liquidity positions each introduce different
-                    forms of pricing behavior, liquidity depth, liquidation complexity, and downside risk. By
-                    separating these markets into dedicated spokes, Avana can support a wide range of LP collateral
-                    types without flattening them into a single generic framework.
+                    That matters because LP positions do not all behave the same. Some are calm and predictable,
+                    some move with each other, and some can swing hard when the range gets tight. Keeping them in
+                    separate spokes makes the pricing, liquidation, and borrowing rules easier to tune.
                   </p>
                   <p>
-                    This is how Avana balances breadth with discipline. It can expand support across venues and pool
-                    designs while preserving market specific controls over collateral admission, borrowing power, risk
-                    limits, and liquidation execution. Borrowers benefit from broader LP support. The protocol benefits
-                    from cleaner isolation and more precise risk management.
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    TVL snapshots below are included as quick opportunity markers so investors can see why these LP
-                    venues matter for launch sequencing.
+                    The result is simple: Avana can support more LP markets without turning everything into the same
+                    product, and it starts with a focused set of borrow spokes across stable, correlated, volatile,
+                    and governance-token LP markets so launch sequencing stays manageable.
                   </p>
                 </div>
-
-                <div className="mt-6 space-y-6">
-                  {borrowerProtocolGroups.map((group) => (
-                    <div
-                      key={group.protocol}
-                      className="overflow-hidden rounded-xl border border-gray-200/90 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
-                    >
-                      <div className="border-b border-gray-200/90 bg-gray-50/70 px-4 py-4">
-                        <div className="flex items-center justify-between gap-3">
-                          <h4 className="mb-0 text-[1rem] font-semibold leading-6 text-gray-900 sm:text-[1.05rem]">
-                            {group.protocol}
-                          </h4>
-                          <div className="flex flex-wrap items-center justify-between gap-2">
-                            <p className="text-sm font-medium text-gray-600">{group.tvl} TVL</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="space-y-3 p-4 md:hidden">
-                        {group.markets.map((market) => (
-                          <article
-                            key={`${group.protocol}-${market.spoke}-mobile`}
-                            className="rounded-lg border border-gray-200/90 bg-white px-4 py-4 shadow-[0_1px_2px_rgba(15,23,42,0.03)]"
-                          >
-                            <MobileSpokeIdentity market={market} />
-
-                            <div className="mt-4 space-y-3.5">
-                              <div className="space-y-2 border-t border-gray-100 pt-3">
-                                <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-gray-400">
-                                  Collateral
-                                </p>
-                                <div className="flex flex-wrap gap-2">
-                                  {market.collateralPairs.map((pair) => (
-                                    <AssetChip
-                                      key={`${market.spoke}-${pair}-collateral-mobile`}
-                                      asset={pair}
-                                      compact
-                                    />
-                                  ))}
-                                </div>
-                              </div>
-
-                              <div className="space-y-2 border-t border-gray-100 pt-3">
-                                <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-gray-400">
-                                  Borrow
-                                </p>
-                                <div className="flex flex-wrap gap-2">
-                                  {market.borrowAssets.map((asset) => (
-                                    <AssetChip
-                                      key={`${market.spoke}-${asset}-borrow-mobile`}
-                                      asset={asset}
-                                      compact
-                                    />
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          </article>
-                        ))}
-                      </div>
-
-                      <div className="hidden overflow-x-auto md:block">
-                        <table className="min-w-full table-fixed text-left text-sm">
-                          <thead className="bg-gray-50">
-                            <tr className="text-gray-900">
-                              <th className="w-[38%] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#01AACF]">
-                                Spoke
-                              </th>
-                              <th className="w-[34%] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#01AACF]">
-                                Collateral
-                              </th>
-                              <th className="w-[28%] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#01AACF]">
-                                Borrow
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {group.markets.map((market, index) => (
-                              <tr
-                                key={market.spoke}
-                                className={`border-t border-gray-200/80 align-top ${index % 2 === 0 ? "bg-white" : "bg-gray-50/40"}`}
-                              >
-                                <td className="px-5 py-4">
-                                  <SpokeIdentity market={market} />
-                                </td>
-                                <td className="px-5 py-4">
-                                  <div className="flex flex-wrap gap-2">
-                                    {market.collateralPairs.map((pair) => (
-                                      <AssetChip key={`${market.spoke}-${pair}-collateral`} asset={pair} />
-                                    ))}
-                                  </div>
-                                </td>
-                                <td className="px-5 py-4">
-                                  <div className="flex flex-wrap gap-2">
-                                    {market.borrowAssets.map((asset) => (
-                                      <AssetChip key={`${market.spoke}-${asset}-borrow`} asset={asset} />
-                                    ))}
-                                  </div>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
                 <div className="mt-8 space-y-5">
-                  <p>
-                    Together, these 15 borrow spokes enable Avana to support the full spectrum of modern AMM
-                    liquidity, from stablecoin pools and liquid staking markets to concentrated liquidity and
-                    governance-token ecosystems, positioning Avana as a dedicated lending protocol for AMM liquidity.
-                  </p>
-
                   <h3>For Lenders</h3>
                   <p>
-                    Avana Lend Spoke is the single spoke that functions as the capital entry point of the protocol,
-                    allowing users to supply crypto assets that power borrowing across all LP-collateral markets.
-                    Investors deposit assets such as ETH, BTC, and major stablecoins into the Lend Spoke, which
-                    routes liquidity to the Avana Hub. From there, the Hub allocates credit across the various
-                    LP-collateral spokes, enabling borrowers to draw liquidity against their active liquidity positions
-                    on decentralized exchanges. This design separates capital supply from collateral management,
-                    allowing investors to participate in the lending market without needing to manage LP positions,
-                    impermanent loss, or liquidity ranges.
+                    The Lend Spoke is where capital enters the system. Lenders deposit assets like ETH, BTC, and
+                    major stablecoins, and that liquidity gets routed through the Hub to support borrowing across
+                    the LP markets. They are not managing LP positions or ranges themselves, they are just putting
+                    clean capital to work.
                   </p>
-                  <ImagePlaceholder label="Lend spoke liquidity flow" />
                   <p>
-                    During the early stages of Avana, the Avana Hub may be supported by credit lines from the Aave
-                    Hubs, including the Core, Prime, and Plus hubs, to bootstrap liquidity and ensure deep borrow
-                    markets from day one. As borrowing activity grows and the protocol matures, the Lend Spoke is
-                    expected to become the primary liquidity source, with investor deposits increasingly supplying the
-                    capital used by LP borrowers. Over time, this structure creates a scalable capital market where
-                    lending liquidity flows efficiently through the Hub while remaining isolated from the risk dynamics
-                    of individual LP-collateral markets.
+                    Early on, Avana may lean on Aave Hub credit lines to bootstrap depth and make sure borrow markets
+                    feel liquid from day one. As the protocol grows, lender deposits should carry more of the load,
+                    which keeps the system simpler, reduces dependence on outside credit, and lets borrowing grow
+                    from its own base.
                   </p>
                 </div>
               </section>
@@ -1002,33 +693,19 @@ export default function LightpaperPage() {
                 <ImagePlaceholder label="Liquidation execution flow" />
                 <div className="space-y-5">
                   <p>
-                    Liquidation begins when a position&apos;s debt rises above its allowed borrowing capacity. At that
-                    point, the system must do more than seize collateral. It must unwind a live AMM position, convert
-                    the underlying assets, repay debt, and do so in a way that is both deterministic and economically
-                    fair.
+                    Liquidation starts when the account&apos;s health factor falls below the liquidation threshold.
+                    A liquidator repays the allowed debt amount, and Aave v4&apos;s liquidation engine uses that
+                    repayment to reduce or clear the borrow balance on the reserve side.
                   </p>
                   <p>
-                    Avana is designed for that exact flow. Specialized Smart Agents and external liquidators can repay
-                    outstanding debt in exchange for a liquidation premium that scales with the severity of the
-                    position&apos;s deterioration. Rather than treating liquidation as a blunt asset seizure, the
-                    protocol first accounts for value already embedded in the LP position itself. Uncollected trading
-                    fees are applied before principal is unwound. If that is not sufficient, the protocol removes the
-                    minimum required amount of LP principal necessary to restore solvency and satisfy the liquidation
-                    incentive.
+                    Once that happens, the vault collateral is released from the reserve side of Aave v4&apos;s
+                    market. The Avana Adapter burns the vault token, and the Liquidation Module marks the backing LP
+                    position as liquidated so the original collateral is no longer active.
                   </p>
                   <p>
-                    Once unwound, the underlying assets are routed through approved execution paths to repay the
-                    borrowed amount and settle any flashloan based repayment used during the transaction. Execution is
-                    designed to avoid destructive routing choices, including unnecessary dependence on the source pool
-                    when that would degrade pricing. Any residual value remaining after debt and liquidation costs are
-                    covered is returned to the borrower.
-                  </p>
-                  <p>
-                    This matters because LP collateral cannot be liquidated safely with generic lending logic. It
-                    requires purpose built execution around fee collection, liquidity removal, asset conversion, and
-                    repayment ordering. Avana&apos;s liquidation model is built to handle LP collateral as it actually
-                    exists onchain: as active, structured liquidity that must be unwound carefully rather than simply
-                    marked down and sold.
+                    From there, the Liquidation Module takes over the LP side. It unwinds, sells, or transfers the
+                    backing position depending on what makes the most sense for that market and route. The debt gets
+                    covered, the liquidator gets paid, and any surplus is returned by the final design.
                   </p>
                 </div>
               </section>
