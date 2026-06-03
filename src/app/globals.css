@@ -1168,6 +1168,14 @@
   color: rgb(17 24 39);
 }
 
+.developer-content[data-developer-doc-shell] a {
+  color: #01aacf;
+}
+
+.developer-content[data-developer-doc-shell] a:hover {
+  text-decoration: underline;
+}
+
 .site-blog-article section[id] > h2 {
   --site-eyebrow-color: #b45309;
   display: flex;

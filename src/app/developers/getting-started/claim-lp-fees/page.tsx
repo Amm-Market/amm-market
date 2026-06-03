@@ -85,11 +85,11 @@ export default function ClaimLPFeesPage() {
           </div>
           <p className="mt-4 text-sm text-gray-600">
             The canonical references are{" "}
-            <Link href="/developers/integrations/price-oracles" className="text-blue-600 hover:underline">
+            <Link href="/developers/integrations/price-oracles" className="text-[#01AACF] hover:underline">
               Price Oracles
             </Link>{" "}
             and{" "}
-            <Link href="/developers/liquidation" className="text-blue-600 hover:underline">
+            <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
               Liquidation Framework
             </Link>
             .

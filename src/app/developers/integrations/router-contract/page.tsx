@@ -46,11 +46,11 @@ export default function RouterContractPage() {
           </p>
           <p className="text-sm text-gray-600">
             Read this page as an operational reference. For canonical architecture, start with{" "}
-            <Link href="/developers/architecture" className="text-blue-600 hover:underline">
+            <Link href="/developers/architecture" className="text-[#01AACF] hover:underline">
               Borrow Spoke
             </Link>{" "}
             and{" "}
-            <Link href="/developers/liquidation" className="text-blue-600 hover:underline">
+            <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
               Liquidation Framework
             </Link>
             .

@@ -52,13 +52,13 @@ export function PageNavigation() {
           <Link
             href={prevPage.href}
             prefetch={false}
-            className="flex-1 max-w-[50%] p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50 transition-colors group"
+            className="group flex-1 max-w-[50%] rounded-lg border border-gray-200 p-4 transition-colors hover:border-cyan-200 hover:bg-cyan-50/40"
           >
-            <div className="type-supporting mb-1 flex items-center gap-1 text-gray-500">
+            <div className="type-supporting mb-1 flex items-center gap-1 text-[#01AACF] transition-colors group-hover:text-[#008fb0]">
               <ChevronLeft className="w-4 h-4" />
               <span>Previous</span>
             </div>
-            <div className="type-body-copy font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+            <div className="type-body-copy font-medium text-[#0F1518] transition-colors group-hover:text-[#01AACF]">
               {prevPage.label}
             </div>
           </Link>
@@ -71,13 +71,13 @@ export function PageNavigation() {
           <Link
             href={nextPage.href}
             prefetch={false}
-            className="flex-1 max-w-[50%] p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50 transition-colors group text-right"
+            className="group flex-1 max-w-[50%] rounded-lg border border-gray-200 p-4 text-right transition-colors hover:border-cyan-200 hover:bg-cyan-50/40"
           >
-            <div className="type-supporting mb-1 flex items-center justify-end gap-1 text-gray-500">
+            <div className="type-supporting mb-1 flex items-center justify-end gap-1 text-[#01AACF] transition-colors group-hover:text-[#008fb0]">
               <span>Next</span>
               <ChevronRight className="w-4 h-4" />
             </div>
-            <div className="type-body-copy font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+            <div className="type-body-copy font-medium text-[#0F1518] transition-colors group-hover:text-[#01AACF]">
               {nextPage.label}
             </div>
           </Link>

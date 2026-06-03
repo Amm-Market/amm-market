@@ -57,11 +57,11 @@ export default function SupportedIntegrationsPage() {
           <p className="text-sm text-gray-600">
             This page is an integration reference, not a live launch dashboard. For pool admission
             policy, see{" "}
-            <Link href="/developers/integrations/allowed-pools" className="text-blue-600 hover:underline">
+            <Link href="/developers/integrations/allowed-pools" className="text-[#01AACF] hover:underline">
               Allowed LP Pools
             </Link>
             . For valuation assumptions, see{" "}
-            <Link href="/developers/integrations/price-oracles" className="text-blue-600 hover:underline">
+            <Link href="/developers/integrations/price-oracles" className="text-[#01AACF] hover:underline">
               Price Oracles
             </Link>
             .
@@ -76,7 +76,7 @@ export default function SupportedIntegrationsPage() {
           </p>
           <p className="text-sm text-gray-600">
             Read the{" "}
-            <Link href="/developers/integrations/appkit" className="text-blue-600 hover:underline">
+            <Link href="/developers/integrations/appkit" className="text-[#01AACF] hover:underline">
               AppKit developer guide
             </Link>{" "}
             for partner controls, handoff patterns, and launch notes.
