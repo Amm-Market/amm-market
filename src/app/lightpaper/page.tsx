@@ -700,8 +700,7 @@ export default function LightpaperPage() {
 
               <section id="interest-rate" className="scroll-mt-32 border-t border-gray-200 pt-12">
                 <LightpaperSectionHeader eyebrow="Rate design" title="Interest Rate" tone="blue" />
-                <ImagePlaceholder label="Borrow rate composition" />
-                <div className="space-y-5">
+                <div className="mt-6 space-y-5">
                   <p>
                     Borrow rates in Avana start with the Aave v4 Hub base rate, then add a spoke-level premium for the
                     LP market itself. That keeps the pricing tied to the shared liquidity base while still letting each
@@ -745,8 +744,7 @@ export default function LightpaperPage() {
 
               <section id="market-opportunity" className="scroll-mt-32 border-t border-gray-200 pt-12">
                 <LightpaperSectionHeader eyebrow="Demand picture" title="Market Opportunity" tone="violet" />
-                <ImagePlaceholder label="Addressable market visual" />
-                <div className="space-y-5">
+                <div className="mt-6 space-y-5">
                   <p>
                     LP collateral already sits onchain as productive capital. The opportunity is to let that capital
                     back borrowing instead of forcing users to exit their positions first. Across Ethereum,
