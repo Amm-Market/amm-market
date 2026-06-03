@@ -542,31 +542,43 @@ export default function LightpaperPage() {
                 <div className="space-y-12">
                   <section id="executive-summary" className="scroll-mt-32">
                     <LightpaperSectionHeader eyebrow="Why this matters" title="Executive Summary" tone="violet" />
-                    <div className="mt-5 space-y-5">
+                    <div className="mt-5 space-y-6 [&_p]:!leading-[1.68] [&_p]:!tracking-[-0.015em]">
                       <p className="font-medium text-gray-900">
-                        The deepest liquidity in DeFi is productive, but financially trapped.
+                        The deepest liquidity in DeFi is useful, but it is still locked away from credit.
                       </p>
                       <p>
-                        Liquidity providers keep markets functional. They absorb volatility, provide depth, and earn
-                        fees in return. Yet the capital inside those positions remains largely unusable from a credit
-                        perspective. When an LP needs liquidity, flexibility, or access to capital, the usual solution
-                        is still the same: exit the pool, unwind the position, and stop doing the very thing that made
-                        the capital productive in the first place.
+                        Liquidity providers keep markets alive. They put assets into pools, support swaps, reduce
+                        slippage, and earn fees. But once capital is inside an AMM pool, it is hard to use that same
+                        capital as collateral. If a user needs to borrow, the normal path is still to remove liquidity,
+                        exit the pool, and give up the fees and market position they already built.
                       </p>
                       <p>
-                        That tradeoff creates one of the largest inefficiencies in decentralized finance. Billions of
-                        dollars sit inside AMM positions generating fees, but those same positions generally cannot be
-                        used as reliable collateral without forcing the user to withdraw liquidity first. The result is
-                        a fragmented system where capital can either earn in the market or support borrowing, but
-                        rarely both at once.
+                        Avana changes this.
                       </p>
                       <ImagePlaceholder label="Executive summary visual" />
                       <p>
-                        Avana unlocks that capital. It allows LP positions to be used as borrowable collateral while
-                        remaining active in the underlying AMM. A user deposits a supported LP position, Avana
-                        evaluates its risk adjusted collateral value using market specific logic, and the user can then
-                        borrow against it without closing the position. Liquidity stays in the pool. Trading fees
-                        continue to accrue. Capital becomes both productive and borrowable at the same time.
+                        Avana lets users deposit supported LP positions and borrow against them through Aave v4. The
+                        user keeps their LP position as the real collateral while Avana turns that position into an
+                        internal ERC-20 accounting asset that Aave can accept. For example, if a user deposits a
+                        LINK-ETH LP position worth $40,000, they can borrow against it based on the risk settings for
+                        that market, while Aave sees a standard ERC-20 collateral reserve such as vaultLINKETH.
+                      </p>
+                      <p>
+                        The vault token is not the product, and it is not meant to trade freely or act as a wrapper
+                        that users buy and sell. It is the bridge between a live AMM position and Aave&apos;s ERC-20
+                        collateral system.
+                      </p>
+                      <p>
+                        Avana starts with curated LP markets, so a LINK-ETH position maps to vaultLINKETH, an ETH-DAI
+                        position maps to vaultETHDAI, a WETH-USDC position maps to vaultWETHUSDC, and a WBTC-ETH
+                        position maps to vaultWBTCETH. Each market is priced, checked, and managed on its own, which
+                        keeps the user experience simple while giving Aave a clean way to account for each collateral
+                        type.
+                      </p>
+                      <p>
+                        The core idea is direct: LP positions remain the real collateral, Avana tracks and values them,
+                        the Aave Adapter mints the right internal vault token, and Aave uses that token for collateral
+                        accounting so the user can borrow against the LP value without closing the pool position.
                       </p>
                     </div>
                   </section>
