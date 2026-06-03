@@ -65,11 +65,11 @@ export default function AllowedPoolsPage() {
           </p>
           <p className="text-sm text-gray-600">
             Pool approval works alongside{" "}
-            <Link href="/developers/architecture/collateral-factors" className="text-blue-600 hover:underline">
+            <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
               Collateral Factors
             </Link>{" "}
             and{" "}
-            <Link href="/developers/safety" className="text-blue-600 hover:underline">
+            <Link href="/developers/safety" className="text-[#01AACF] hover:underline">
               Risk Framework
             </Link>
             . The allowlist decides whether a pool may enter the system; collateral factors decide how

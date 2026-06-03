@@ -35,7 +35,7 @@ export default function TestnetRoadmapPage() {
             supported networks, and public roadmap sequencing are operational matters that can change
             faster than the underlying architecture.
           </p>
-          <p className="border-l-4 border-blue-400 pl-3 text-sm text-gray-600">
+          <p className="border-l-4 border-cyan-400 pl-3 text-sm text-gray-600">
             Use the lightpaper and core developer docs for protocol design. Use this page for
             environment readiness, trial scope, and rollout context.
           </p>
@@ -92,7 +92,7 @@ export default function TestnetRoadmapPage() {
       <DeveloperScrollSpyRail
         sections={sections}
         pageSummary="Operational guide to Avana test deployments and roadmap framing."
-        sectionColor="blue"
+        sectionColor="cyan"
       />
     </div>
   )

@@ -66,137 +66,6 @@ function LightpaperSectionHeader({
   )
 }
 
-type BorrowerSpoke = {
-  spoke: string
-  lpPrimitive: string
-  collateralPairs: string[]
-  borrowAssets: string[]
-  emodeCategory?: "stable" | "correlated"
-}
-
-const borrowerProtocolGroups = [
-  {
-    protocol: "Uniswap",
-    tvl: "$5.68B",
-    markets: [
-      {
-        spoke: "Uniswap v2 LPs",
-        lpPrimitive: "Constant-product LP tokens",
-        collateralPairs: ["WETH/USDC", "WBTC/WETH", "WETH/DAI", "WETH/USDT", "WBTC/USDC"],
-        borrowAssets: ["USDC", "USDT", "DAI", "WETH", "WBTC"],
-      },
-      {
-        spoke: "Uniswap v3 Stable LPs",
-        lpPrimitive: "Concentrated liquidity NFT positions",
-        collateralPairs: ["USDC/USDT", "DAI/USDC", "crvUSD/USDC", "EURC/USDC"],
-        borrowAssets: ["USDC", "USDT", "DAI", "crvUSD", "GHO"],
-        emodeCategory: "stable",
-      },
-      {
-        spoke: "Uniswap v3 Blue-Chip LPs",
-        lpPrimitive: "Concentrated liquidity NFT positions",
-        collateralPairs: ["WETH/USDC", "WBTC/WETH", "WBTC/USDC", "WETH/USDT", "cbBTC/WETH"],
-        borrowAssets: ["USDC", "USDT", "DAI", "WETH", "WBTC"],
-      },
-      {
-        spoke: "Uniswap v3 Governance & DAO LPs",
-        lpPrimitive: "Concentrated liquidity NFT positions",
-        collateralPairs: ["AAVE/WETH", "UNI/WETH", "CRV/WETH", "LDO/WETH"],
-        borrowAssets: ["USDC", "USDT", "DAI", "WETH"],
-      },
-    ] satisfies BorrowerSpoke[],
-  },
-  {
-    protocol: "Curve",
-    tvl: "$1.83B",
-    markets: [
-      {
-        spoke: "Curve Stable LPs",
-        lpPrimitive: "StableSwap LP tokens",
-        collateralPairs: ["USDC/USDT", "DAI/USDC/USDT", "crvUSD/USDC", "USDe/USDC", "FRAX/USDC"],
-        borrowAssets: ["USDC", "USDT", "DAI", "crvUSD", "GHO"],
-        emodeCategory: "stable",
-      },
-      {
-        spoke: "Curve Correlated LPs",
-        lpPrimitive: "StableSwap LP tokens",
-        collateralPairs: ["ETH/stETH", "ETH/wstETH", "rETH/ETH", "cbETH/ETH", "weETH/ETH"],
-        borrowAssets: ["ETH", "stETH", "wstETH", "rETH"],
-        emodeCategory: "correlated",
-      },
-      {
-        spoke: "Curve Crypto LPs",
-        lpPrimitive: "CryptoSwap LP tokens",
-        collateralPairs: ["USDT/ETH", "WBTC/ETH", "CRV/ETH", "USDC/WBTC/ETH"],
-        borrowAssets: ["USDC", "USDT", "DAI", "WETH", "WBTC"],
-      },
-    ] satisfies BorrowerSpoke[],
-  },
-  {
-    protocol: "Balancer",
-    tvl: "$158.18M",
-    markets: [
-      {
-        spoke: "Balancer Stable LPs",
-        lpPrimitive: "Stable / Composable Stable BPT",
-        collateralPairs: ["USDC/DAI/USDT", "GHO/USDC", "EURC/USDC", "sDAI/USDC"],
-        borrowAssets: ["USDC", "DAI", "USDT", "EURC", "GHO"],
-        emodeCategory: "stable",
-      },
-      {
-        spoke: "Balancer Correlated LPs",
-        lpPrimitive: "Stable / Composable Stable BPT",
-        collateralPairs: ["wstETH/WETH", "rETH/WETH", "cbETH/WETH", "weETH/WETH"],
-        borrowAssets: ["WETH", "wstETH", "rETH", "cbETH"],
-        emodeCategory: "correlated",
-      },
-      {
-        spoke: "Balancer Weighted LPs",
-        lpPrimitive: "Weighted BPT",
-        collateralPairs: ["80/20 WETH/AAVE", "80/20 BAL/WETH", "80/20 GNO/WETH", "80/20 AURA/WETH"],
-        borrowAssets: ["USDC", "USDT", "DAI", "WETH"],
-      },
-      {
-        spoke: "Balancer Boosted LPs",
-        lpPrimitive: "Boosted BPT",
-        collateralPairs: ["bb-a-USDC / bb-a-DAI / bb-a-USDT", "sDAI/USDC", "waUSDC/USDC", "waDAI/DAI"],
-        borrowAssets: ["USDC", "USDT", "DAI", "GHO"],
-      },
-      {
-        spoke: "Balancer reCLAMM LPs",
-        lpPrimitive: "reCLAMM BPT",
-        collateralPairs: ["WETH/USDC", "WETH/USDT", "WBTC/WETH"],
-        borrowAssets: ["USDC", "USDT", "DAI", "WETH"],
-      },
-    ] satisfies BorrowerSpoke[],
-  },
-  {
-    protocol: "Aerodrome",
-    tvl: "$356.44M",
-    markets: [
-      {
-        spoke: "Aerodrome Basic Stable LPs",
-        lpPrimitive: "Stable LP tokens",
-        collateralPairs: ["USDC/DAI", "USD+/USDC", "EURC/USDC", "USDC/USDT"],
-        borrowAssets: ["USDC", "DAI", "EURC"],
-        emodeCategory: "stable",
-      },
-      {
-        spoke: "Aerodrome Basic Volatile LPs",
-        lpPrimitive: "Constant-product LP tokens",
-        collateralPairs: ["AERO/USDC", "DEGEN/USDC", "BRETT/WETH", "WELL/WETH", "MOG/WETH"],
-        borrowAssets: ["USDC", "DAI", "WETH"],
-      },
-      {
-        spoke: "Aerodrome Slipstream Blue-Chip LPs",
-        lpPrimitive: "Concentrated liquidity NFT positions",
-        collateralPairs: ["WETH/USDC", "cbETH/WETH", "WETH/cbBTC", "cbBTC/USDC"],
-        borrowAssets: ["USDC", "DAI", "WETH", "cbBTC"],
-      },
-    ] satisfies BorrowerSpoke[],
-  },
-]
-
 const oracleLayers = [
   {
     layer: "Primary asset prices",
@@ -221,12 +90,6 @@ const oracleLayers = [
     provider: "Balancer / Curve native",
     coverage: "Pool-specific",
     updateFrequency: "1-hour exponential",
-  },
-  {
-    layer: "Dynamic risk adjustment",
-    provider: "Chaos Labs Slope2",
-    coverage: "Aave markets",
-    updateFrequency: "Real-time",
   },
 ]
 
@@ -462,54 +325,6 @@ function ReferenceTable({ references }: { references: { label: string; href: str
   )
 }
 
-function AssetChip({ asset, compact = false }: { asset: string; compact?: boolean }) {
-  return (
-    <span
-      className={`inline-flex items-center rounded-full border border-gray-300 bg-gray-50 font-medium tracking-[0.01em] text-gray-700 ${
-        compact ? "px-2 py-0.5 text-[10px]" : "px-2.5 py-1 text-[11px]"
-      }`}
-    >
-      {asset}
-    </span>
-  )
-}
-
-function EModeBadge({ category }: { category: BorrowerSpoke["emodeCategory"] }) {
-  if (!category) {
-    return null
-  }
-
-  return (
-    <span className="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#01AACF]">
-      E-Mode
-    </span>
-  )
-}
-
-function SpokeIdentity({ market }: { market: BorrowerSpoke }) {
-  return (
-    <div className="space-y-1">
-      <div className="flex flex-wrap items-center gap-2">
-        <p className="text-[0.95rem] font-semibold leading-6 text-gray-900">{market.spoke}</p>
-        <EModeBadge category={market.emodeCategory} />
-      </div>
-      <p className="text-[0.8rem] leading-5 text-gray-500">{market.lpPrimitive}</p>
-    </div>
-  )
-}
-
-function MobileSpokeIdentity({ market }: { market: BorrowerSpoke }) {
-  return (
-    <div className="space-y-1">
-      <div className="flex flex-wrap items-center gap-1.5">
-        <p className="text-[0.88rem] font-semibold leading-5 text-gray-900">{market.spoke}</p>
-        <EModeBadge category={market.emodeCategory} />
-      </div>
-      <p className="text-[0.74rem] leading-5 text-gray-500">{market.lpPrimitive}</p>
-    </div>
-  )
-}
-
 export default function LightpaperPage() {
   return (
     <>
@@ -542,31 +357,33 @@ export default function LightpaperPage() {
                 <div className="space-y-12">
                   <section id="executive-summary" className="scroll-mt-32">
                     <LightpaperSectionHeader eyebrow="Why this matters" title="Executive Summary" tone="violet" />
-                    <div className="mt-5 space-y-5">
+                    <div className="mt-5 space-y-6 [&_p]:!leading-[1.68] [&_p]:!tracking-[-0.015em]">
                       <p className="font-medium text-gray-900">
-                        The deepest liquidity in DeFi is productive, but financially trapped.
+                        The deepest liquidity in DeFi is useful, but it is still locked away from credit.
                       </p>
                       <p>
-                        Liquidity providers keep markets functional. They absorb volatility, provide depth, and earn
-                        fees in return. Yet the capital inside those positions remains largely unusable from a credit
-                        perspective. When an LP needs liquidity, flexibility, or access to capital, the usual solution
-                        is still the same: exit the pool, unwind the position, and stop doing the very thing that made
-                        the capital productive in the first place.
+                        Liquidity providers keep markets alive. They put assets into pools, support swaps, reduce
+                        slippage, and earn fees. But once capital is inside an AMM pool, it is hard to use that same
+                        capital as collateral. If a user needs to borrow, the normal path is still to remove liquidity,
+                        exit the pool, and give up the fees and market position they already built.
                       </p>
                       <p>
-                        That tradeoff creates one of the largest inefficiencies in decentralized finance. Billions of
-                        dollars sit inside AMM positions generating fees, but those same positions generally cannot be
-                        used as reliable collateral without forcing the user to withdraw liquidity first. The result is
-                        a fragmented system where capital can either earn in the market or support borrowing, but
-                        rarely both at once.
+                        Avana changes this.
                       </p>
                       <ImagePlaceholder label="Executive summary visual" />
                       <p>
-                        Avana unlocks that capital. It allows LP positions to be used as borrowable collateral while
-                        remaining active in the underlying AMM. A user deposits a supported LP position, Avana
-                        evaluates its risk adjusted collateral value using market specific logic, and the user can then
-                        borrow against it without closing the position. Liquidity stays in the pool. Trading fees
-                        continue to accrue. Capital becomes both productive and borrowable at the same time.
+                        Avana lets users deposit supported LP positions and borrow against them through Aave v4. The
+                        LP position stays in place as the real collateral, while Avana turns it into an internal
+                        ERC-20 accounting asset that Aave can use on the borrow side.
+                      </p>
+                      <p>
+                        Avana starts with curated LP markets, so a LINK-ETH position maps to vaultLINKETH, an ETH-DAI
+                        position maps to vaultETHDAI, a WETH-USDC position maps to vaultWETHUSDC, and a WBTC-ETH
+                        position maps to vaultWBTCETH. Each market is priced, checked, and managed on its own, which
+                        keeps the experience simple. The vault token is just the bridge: Avana tracks and values the
+                        LP position, the Aave Adapter mints the right token, and Aave uses that token for collateral
+                        accounting so the user can borrow without closing the pool position. The LP stays live, the
+                        collateral stays organized, and the user gets credit against the value already in the market.
                       </p>
                     </div>
                   </section>
@@ -580,10 +397,10 @@ export default function LightpaperPage() {
                     those three constraints can now be addressed directly.
                   </p>
                   <p>
-                    In 2021, Aave launched its Avana, allowing Uniswap v2 and Balancer LP tokens to be used as
-                    collateral. The model arrived before the surrounding infrastructure was ready. DEX liquidity was
-                    thinner, pool design was less mature, and risk frameworks were still too blunt to capture what LP
-                    positions actually were.
+                    In 2021, Aave launched its AMM market with Uniswap v2 and Balancer LP tokens as collateral. The
+                    model arrived before the surrounding infrastructure was ready. DEX liquidity was thinner, pool
+                    design was less mature, and risk frameworks were still too blunt to capture what LP positions
+                    actually were.
                   </p>
                   <p>
                     Additionally, Gelato&apos;s G-UNI wrapped Uniswap v3 NFT positions into fungible ERC-20 tokens,
@@ -605,19 +422,12 @@ export default function LightpaperPage() {
                     . The proposal ended up stalling, and adoption remained constrained by the same unresolved
                     challenges.
                   </p>
-                  <ImagePlaceholder label="Historical LP collateral timeline" />
                   <p>
-                    The conditions that made LP collateral difficult a few years ago are not the same conditions that
-                    exist now. AMMs are more mature, liquidity is deeper, and the market has accumulated years of data
-                    on how LP positions behave across stable, correlated, and volatile pairs. Oracle infrastructure has
-                    improved, liquidation systems are more sophisticated, and market participants are far more familiar
-                    with structured DeFi collateral than they were during earlier experiments.
-                  </p>
-                  <p>
-                    Just as important, Aave v4 creates the right architectural environment for this model. Its hub-and-spoke
-                    design allows LP-specific valuation, risk controls, and liquidation logic to live inside dedicated
-                    spoke markets without forcing all collateral types into a single shared implementation. That makes
-                    it possible to support LP collateral in a way that is modular, isolated, and scalable.
+                    LP collateral is easier to support now than it was a few years ago. AMMs are more mature,
+                    liquidity is deeper, oracles and liquidation systems are better, and there is a lot more data on
+                    how LP positions behave across different pairs. Aave v4 fits that setup because its hub-and-spoke
+                    design lets LP valuation, risk, and liquidation live inside separate spoke markets instead of
+                    forcing everything into one shared model.
                   </p>
                 </div>
               </section>
@@ -626,21 +436,27 @@ export default function LightpaperPage() {
                 <LightpaperSectionHeader eyebrow="At a glance" title="Protocol Overview" tone="cyan" />
                 <div className="mt-5 space-y-5">
                   <p>
-                    Avana is a lending protocol built specifically for LP collateral. It allows AMM liquidity providers
-                    from Uniswap, Balancer, Curve, or Aerodrome to deposit supported LP positions, have those
-                    positions evaluated inside market-specific risk frameworks, and borrow against them while the
-                    positions remain active in the underlying pools.
+                    Avana is a lending protocol built for LP collateral. Liquidity providers on Uniswap, Balancer,
+                    Curve, or Aerodrome can deposit supported positions, keep them active in the pool, and borrow
+                    against them through market-specific risk settings.
                   </p>
                   <p>
-                    The closest comparable system is Fluid by Instadapp. Fluid&apos;s innovation is a unified liquidity
-                    layer where debt and collateral themselves become DEX liquidity inside a vertically integrated
-                    system. Avana&apos;s innovation is different: it makes third-party AMM LP positions from across venues
-                    into borrowable collateral inside a horizontally aggregative system. Fluid owns the liquidity rails.
-                    Avana works with the rails that already exist across the ecosystem. The distinction becomes clear
-                    when you ask where the liquidity lives, who controls the infrastructure, and what exactly is being
-                    collateralized.
+                    Fluid is the closest comparison, but it takes a different path. Fluid turns debt and collateral
+                    into its own liquidity layer. Avana works the other way around: it takes LP positions that already
+                    exist across AMMs and makes them usable as collateral without replacing the underlying rails.
                   </p>
-                  <p>At a high level, Avana operates through three steps.</p>
+                  <p>
+                    Avana starts with Borrow Markets, then adds Lend Markets and Multiply Markets later. Each market
+                    keeps its own risk settings, so the first version stays focused and the risk model stays easy to
+                    tune.
+                  </p>
+                </div>
+              </section>
+
+              <section id="protocol-specification" className="scroll-mt-32 border-t border-gray-200 pt-12">
+                <LightpaperSectionHeader eyebrow="Phase design" title="Protocol Specification" tone="emerald" />
+                <div className="mt-5 space-y-5">
+                  <p>At a high level, Avana works through three steps.</p>
                   <ImagePlaceholder label="Protocol overview flow" />
                   <p>
                     First, a user deposits an LP position into Avana. This can be any pool position from supported
@@ -649,40 +465,16 @@ export default function LightpaperPage() {
                   </p>
                   <p>
                     Second, Avana evaluates the LP position to determine its risk-adjusted collateral value. The
-                    protocol checks the value of the underlying pool assets, the structure of the liquidity pool, asset
-                    volatility, correlation between the assets in the pair, and overall liquidation risk. Avana relies
-                    on LP valuation models, conservative borrowing limits, oracle-based pricing, and automated
+                    protocol checks the value of the underlying pool assets, the structure of the liquidity pool,
+                    asset volatility, correlation between the assets in the pair, and overall liquidation risk. Avana
+                    relies on LP valuation models, conservative borrowing limits, oracle-based pricing, and automated
                     liquidation mechanisms to ensure that LP positions can function safely as collateral.
                   </p>
                   <p>
                     Third, once the position has been evaluated, the user can borrow assets against it. The liquidity
                     remains active inside the AMM and continues earning trading fees and incentives while also serving
-                    as collateral. This allows LPs to access liquidity without withdrawing liquidity from the AMM; the
-                    LP position itself becomes the collateral inside Avana.
-                  </p>
-                </div>
-              </section>
-
-              <section id="protocol-specification" className="scroll-mt-32 border-t border-gray-200 pt-12">
-                <LightpaperSectionHeader eyebrow="Phase design" title="Protocol Specification" tone="emerald" />
-                <div className="mt-5 space-y-5">
-                  <p>
-                    Avana is designed as a multi-phase protocol that evolves over time to progressively expand what LP
-                    collateral markets can do. Phase 1 introduces Borrow Markets. Phase 2 expands into Lend Markets.
-                    Phase 3 unlocks Multiply Markets.
-                  </p>
-                  <ImagePlaceholder label="Three-phase protocol roadmap concept" />
-                  <p>
-                    The first phase introduces Borrow Markets. In this phase, users supply LP positions and receive
-                    asset loans deposited straight to their wallet.
-                  </p>
-                  <p>
-                    The second phase introduces Lend Markets. In this phase, users lend assets to back LP collateral
-                    and earn yield from the market.
-                  </p>
-                  <p>
-                    The third phase introduces Multiply Markets. In this phase, users increase their yield exposure by
-                    looping up to 10x with a single click.
+                    as collateral. This allows LPs to access liquidity without withdrawing liquidity from the AMM;
+                    the LP position itself becomes the collateral inside Avana.
                   </p>
                 </div>
               </section>
@@ -697,23 +489,33 @@ export default function LightpaperPage() {
                     pool collateral registration, LP position valuation, pool risk enforcement, and AMM pool
                     liquidation execution.
                   </p>
-                  <p>A conceptual credit line from different Aave Hubs might look like this.</p>
                   <ImagePlaceholder label="Hub and spoke credit-line diagram" />
+                  <p>Avana is built around five parts, and each one has a narrow job.</p>
                   <p>
-                    This separation is essential because LP positions vary significantly across venues and pool types. A
-                    concentrated Uniswap position does not behave like a Balancer weighted pool. A Curve stable
-                    position does not behave like a basic stable Aerodrome pool. Each supported LP market can therefore
-                    define its own valuation logic, collateral parameters, oracle inputs, and liquidation rules. Avana
-                    isolates risk, tailors valuation models, and evolves support pool by pool without forcing the
-                    entire protocol to inherit the same assumptions.
+                    The LP Position Manager holds the real position and keeps the book on it. For a Uniswap v3 LP,
+                    that means the NFT ID, owner, pool, pair, fee tier, tick range, liquidity, current value, fees
+                    still sitting in the position, and whether it is already posted as collateral.
                   </p>
-                  <ImagePlaceholder label="Venue-specific spoke design" />
                   <p>
-                    Avana Phase 1 will begin with a narrow set of highly legible AMM LP markets, while future versions
-                    add broader AMM support, more complex borrowing formats, and eventually Multiply Markets. In
-                    practical terms, the user experience remains simple. A user deposits a supported LP position, the
-                    protocol evaluates it using the market-specific logic assigned to that pool type, and borrowing
-                    capacity is made available based on the resulting risk-adjusted value.
+                    The Risk Module is the gatekeeper. It checks whether the pool is approved, whether the assets are
+                    supported, whether the position is deep enough, whether the range is still usable, and whether
+                    the market is still inside its caps.
+                  </p>
+                  <p>
+                    The Collateralization Module sits between approval and action. It checks the oracle setup, pulls
+                    in the latest pricing, values the position, decides how much collateral it can support, and
+                    mints the vault token when the position is cleared for borrowing. It also updates or removes that
+                    collateral when the market changes or the position leaves the system.
+                  </p>
+                  <p>
+                    The Aave Adapter handles the Aave-facing side of the system. Once the other modules approve a
+                    position, it supplies the vault token to Aave v4, withdraws it when collateral is removed, and
+                    keeps the integration isolated from the LP-specific logic.
+                  </p>
+                  <p>
+                    Those vault collateral tokens are internal ERC-20 assets like vaultLINKETH, vaultETHDAI,
+                    vaultWETHUSDC, and vaultWBTCETH. Each market gets its own token, so the accounting stays simple
+                    on the Aave side while Avana keeps the real LP position and market logic behind the scenes.
                   </p>
                 </div>
               </section>
@@ -723,164 +525,32 @@ export default function LightpaperPage() {
                 <div className="mt-5 space-y-5">
                   <h3>For Borrowers</h3>
                   <p>
-                    Avana Borrow Spokes are organized into specialized LP collateral markets, with each spoke aligned
-                    to a specific liquidity primitive or market structure. This allows the protocol to isolate
-                    collateral valuation, liquidation logic, and parameter design across different forms of AMM
-                    liquidity while still drawing borrowable capital from a shared liquidity layer.
+                    Avana splits borrowing into separate spokes so each LP market gets its own setup. That way,
+                    stable pools, correlated pairs, weighted pools, and concentrated liquidity each get the rules they
+                    actually need instead of being forced into one generic template.
                   </p>
                   <p>
-                    That structure matters because not all LP positions behave the same way. Stable pools, correlated
-                    asset pools, weighted index pools, and concentrated liquidity positions each introduce different
-                    forms of pricing behavior, liquidity depth, liquidation complexity, and downside risk. By
-                    separating these markets into dedicated spokes, Avana can support a wide range of LP collateral
-                    types without flattening them into a single generic framework.
-                  </p>
-                  <p>
-                    This is how Avana balances breadth with discipline. It can expand support across venues and pool
-                    designs while preserving market specific controls over collateral admission, borrowing power, risk
-                    limits, and liquidation execution. Borrowers benefit from broader LP support. The protocol benefits
-                    from cleaner isolation and more precise risk management.
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    TVL snapshots below are included as quick opportunity markers so investors can see why these LP
-                    venues matter for launch sequencing.
+                    LP positions do not all behave the same. Some are calm and predictable, some move with each
+                    other, and some can swing hard when the range gets tight. Keeping them in separate spokes makes
+                    the pricing, liquidation, and borrowing rules easier to tune, and it lets Avana support more LP
+                    markets without turning everything into the same product. It starts with a focused set of borrow
+                    spokes across stable, correlated, volatile, and governance-token LP markets so launch sequencing
+                    stays manageable.
                   </p>
                 </div>
-
-                <div className="mt-6 space-y-6">
-                  {borrowerProtocolGroups.map((group) => (
-                    <div
-                      key={group.protocol}
-                      className="overflow-hidden rounded-xl border border-gray-200/90 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
-                    >
-                      <div className="border-b border-gray-200/90 bg-gray-50/70 px-4 py-4">
-                        <div className="flex items-center justify-between gap-3">
-                          <h4 className="mb-0 text-[1rem] font-semibold leading-6 text-gray-900 sm:text-[1.05rem]">
-                            {group.protocol}
-                          </h4>
-                          <div className="flex flex-wrap items-center justify-between gap-2">
-                            <p className="text-sm font-medium text-gray-600">{group.tvl} TVL</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="space-y-3 p-4 md:hidden">
-                        {group.markets.map((market) => (
-                          <article
-                            key={`${group.protocol}-${market.spoke}-mobile`}
-                            className="rounded-lg border border-gray-200/90 bg-white px-4 py-4 shadow-[0_1px_2px_rgba(15,23,42,0.03)]"
-                          >
-                            <MobileSpokeIdentity market={market} />
-
-                            <div className="mt-4 space-y-3.5">
-                              <div className="space-y-2 border-t border-gray-100 pt-3">
-                                <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-gray-400">
-                                  Collateral
-                                </p>
-                                <div className="flex flex-wrap gap-2">
-                                  {market.collateralPairs.map((pair) => (
-                                    <AssetChip
-                                      key={`${market.spoke}-${pair}-collateral-mobile`}
-                                      asset={pair}
-                                      compact
-                                    />
-                                  ))}
-                                </div>
-                              </div>
-
-                              <div className="space-y-2 border-t border-gray-100 pt-3">
-                                <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-gray-400">
-                                  Borrow
-                                </p>
-                                <div className="flex flex-wrap gap-2">
-                                  {market.borrowAssets.map((asset) => (
-                                    <AssetChip
-                                      key={`${market.spoke}-${asset}-borrow-mobile`}
-                                      asset={asset}
-                                      compact
-                                    />
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          </article>
-                        ))}
-                      </div>
-
-                      <div className="hidden overflow-x-auto md:block">
-                        <table className="min-w-full table-fixed text-left text-sm">
-                          <thead className="bg-gray-50">
-                            <tr className="text-gray-900">
-                              <th className="w-[38%] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#01AACF]">
-                                Spoke
-                              </th>
-                              <th className="w-[34%] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#01AACF]">
-                                Collateral
-                              </th>
-                              <th className="w-[28%] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#01AACF]">
-                                Borrow
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {group.markets.map((market, index) => (
-                              <tr
-                                key={market.spoke}
-                                className={`border-t border-gray-200/80 align-top ${index % 2 === 0 ? "bg-white" : "bg-gray-50/40"}`}
-                              >
-                                <td className="px-5 py-4">
-                                  <SpokeIdentity market={market} />
-                                </td>
-                                <td className="px-5 py-4">
-                                  <div className="flex flex-wrap gap-2">
-                                    {market.collateralPairs.map((pair) => (
-                                      <AssetChip key={`${market.spoke}-${pair}-collateral`} asset={pair} />
-                                    ))}
-                                  </div>
-                                </td>
-                                <td className="px-5 py-4">
-                                  <div className="flex flex-wrap gap-2">
-                                    {market.borrowAssets.map((asset) => (
-                                      <AssetChip key={`${market.spoke}-${asset}-borrow`} asset={asset} />
-                                    ))}
-                                  </div>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
                 <div className="mt-8 space-y-5">
-                  <p>
-                    Together, these 15 borrow spokes enable Avana to support the full spectrum of modern AMM
-                    liquidity, from stablecoin pools and liquid staking markets to concentrated liquidity and
-                    governance-token ecosystems, positioning Avana as a dedicated lending protocol for AMM liquidity.
-                  </p>
-
                   <h3>For Lenders</h3>
                   <p>
-                    Avana Lend Spoke is the single spoke that functions as the capital entry point of the protocol,
-                    allowing users to supply crypto assets that power borrowing across all LP-collateral markets.
-                    Investors deposit assets such as ETH, BTC, and major stablecoins into the Lend Spoke, which
-                    routes liquidity to the Avana Hub. From there, the Hub allocates credit across the various
-                    LP-collateral spokes, enabling borrowers to draw liquidity against their active liquidity positions
-                    on decentralized exchanges. This design separates capital supply from collateral management,
-                    allowing investors to participate in the lending market without needing to manage LP positions,
-                    impermanent loss, or liquidity ranges.
+                    The Lend Spoke is where capital enters the system. Lenders deposit assets like ETH, BTC, and
+                    major stablecoins, and that liquidity gets routed through the Hub to support borrowing across
+                    the LP markets. They are not managing LP positions or ranges themselves, they are just putting
+                    clean capital to work.
                   </p>
-                  <ImagePlaceholder label="Lend spoke liquidity flow" />
                   <p>
-                    During the early stages of Avana, the Avana Hub may be supported by credit lines from the Aave
-                    Hubs, including the Core, Prime, and Plus hubs, to bootstrap liquidity and ensure deep borrow
-                    markets from day one. As borrowing activity grows and the protocol matures, the Lend Spoke is
-                    expected to become the primary liquidity source, with investor deposits increasingly supplying the
-                    capital used by LP borrowers. Over time, this structure creates a scalable capital market where
-                    lending liquidity flows efficiently through the Hub while remaining isolated from the risk dynamics
-                    of individual LP-collateral markets.
+                    Early on, Avana may lean on Aave Hub credit lines to bootstrap depth and make sure borrow markets
+                    feel liquid from day one. As the protocol grows, lender deposits should carry more of the load,
+                    which keeps the system simpler, reduces dependence on outside credit, and lets borrowing grow
+                    from its own base.
                   </p>
                 </div>
               </section>
@@ -911,10 +581,12 @@ export default function LightpaperPage() {
                     prices (TWAPs) act as an independent verification layer sourced directly from on-chain liquidity.
                   </p>
                   <p>
-                    Borrowing power is granted only when both pricing sources remain within a defined tolerance band.
-                    Requiring agreement between external oracle data and AMM-derived pricing significantly reduces
-                    exposure to flash-loan manipulation, transient price distortions, or delayed oracle updates that
-                    could otherwise lead to incorrect collateral valuation.
+                    Borrowing power is granted only when both pricing sources stay within a defined tolerance band,
+                    which keeps external oracle data and AMM-derived pricing in agreement and reduces exposure to
+                    flash-loan manipulation, transient price distortions, or stale updates that could otherwise lead
+                    to bad collateral valuation. Once the vault token is supplied to Aave, its market settings add
+                    another layer of control by setting the LTV, liquidation threshold, liquidation bonus, caps, and
+                    health-factor checks for that reserve.
                   </p>
                   <p>Avana&apos;s oracle architecture spans multiple layers to ensure redundancy, price integrity, and resilience under market stress.</p>
                 </div>
@@ -947,10 +619,8 @@ export default function LightpaperPage() {
                 <div className="mt-8 space-y-5">
                   <p>
                     Beyond price verification, Borrow Spokes continuously monitor pool composition, volatility,
-                    liquidity depth, and oracle reliability. These inputs inform dynamic adjustments to loan-to-value
-                    (LTV) ratios and liquidation thresholds on a per-position basis. This adaptive framework balances
-                    capital efficiency with systemic safety while acknowledging that pools, oracle systems, and even
-                    protocols themselves can fail.
+                    liquidity depth, and oracle reliability so the market can stay aligned with the position instead
+                    of relying on a fixed setting that never changes.
                   </p>
                   <p>
                     The system is designed with failure assumptions in mind. Dual-oracle verification prevents toxic
@@ -966,47 +636,26 @@ export default function LightpaperPage() {
                 <ImagePlaceholder label="LP valuation model graphic" />
                 <div className="space-y-5">
                   <p>
-                    For each LP position, the protocol derives the underlying token amounts using the position&apos;s
-                    liquidity and tick range. These token balances are converted to USD using Chainlink price feeds and
-                    verified against AMM TWAPs to mitigate flash price manipulation.
+                    Position Valuation has two sides. First, Avana values the LP collateral itself, applies pool
+                    risk, and mints the vault token against that approved value. Then Aave v4 applies its reserve
+                    rules and risk premium to the vault token to decide how much the user can borrow.
                   </p>
                   <p>
-                    Because LP positions represent exposure to two underlying assets, Avana applies a conservative
-                    collateral framework. The protocol identifies the weaker asset in the pair, defined as the token
-                    with the lower single-asset collateral factor, and applies this value as a baseline cap on the LP
-                    position&apos;s collateral valuation. This prevents over-leveraging against pools where one asset
-                    could rapidly deteriorate.
+                    For each LP position, Avana reads the position data and derives the token amounts from the
+                    liquidity and tick range. Those balances are priced in USD using Chainlink feeds and verified
+                    against AMM TWAPs, then Avana applies a pool risk factor so the collateral value reflects the
+                    actual market conditions inside that LP market.
                   </p>
                   <p>
-                    A pool-level risk factor is then applied to the capped valuation. This factor incorporates
-                    volatility, liquidity depth, asset correlation, and governance-defined stress buffers specific to
-                    the pool structure.
+                    That approved value becomes the backing for an internal ERC-20 vault token. Each market gets its
+                    own token, such as vaultLINKETH, vaultETHDAI, vaultWETHUSDC, or vaultWBTCETH, and the supply
+                    moves with the value of the collateral behind it instead of sitting on a fixed 1:1 peg.
                   </p>
                   <p>
-                    Users may deposit multiple LP positions into a single Borrow Spoke. Borrowing capacity is
-                    calculated from the aggregate USD value of all underlying assets across deposited positions, after
-                    applying individual collateral factors and pool-level risk adjustments.
+                    Once the vault token is supplied, Aave v4 handles the borrow side. It applies that market&apos;s
+                    LTV, liquidation threshold, liquidation bonus, caps, health-factor checks, and risk premium to
+                    the ERC-20 reserve inside the Spoke.
                   </p>
-                </div>
-
-                <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50 px-5 py-5 sm:px-6">
-                  <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#01AACF]">Formula</p>
-                  <p className="mt-3 font-mono text-[0.95rem] leading-7 text-gray-800 sm:text-[1.05rem]">
-                    Borrowable USD = Position USD Value × Lower-Token CF × Pool-Level Risk Factor
-                  </p>
-                </div>
-
-                <div className="mt-8">
-                  <h3>ETH / USDC example</h3>
-                  <ul className="mt-4 list-disc pl-6">
-                    <li>LP Position Value: $963.51</li>
-                    <li>Single-token CFs: WETH 77.5%, USDC 85%</li>
-                    <li>Lower-token CF = 77.5%</li>
-                    <li>Pool-Level Risk Factor = 0.85</li>
-                    <li>
-                      <strong>Final Borrowable = 963.51 × 77.5% × 0.85 ≈ $634.88</strong>
-                    </li>
-                  </ul>
                 </div>
               </section>
 
@@ -1015,59 +664,41 @@ export default function LightpaperPage() {
                 <ImagePlaceholder label="Liquidation execution flow" />
                 <div className="space-y-5">
                   <p>
-                    Liquidation begins when a position&apos;s debt rises above its allowed borrowing capacity. At that
-                    point, the system must do more than seize collateral. It must unwind a live AMM position, convert
-                    the underlying assets, repay debt, and do so in a way that is both deterministic and economically
-                    fair.
+                    Liquidation starts when the account&apos;s health factor falls below the liquidation threshold.
+                    A liquidator repays the allowed debt amount, and Aave v4&apos;s liquidation engine uses that
+                    repayment to reduce or clear the borrow balance on the reserve side.
                   </p>
                   <p>
-                    Avana is designed for that exact flow. Specialized Smart Agents and external liquidators can repay
-                    outstanding debt in exchange for a liquidation premium that scales with the severity of the
-                    position&apos;s deterioration. Rather than treating liquidation as a blunt asset seizure, the
-                    protocol first accounts for value already embedded in the LP position itself. Uncollected trading
-                    fees are applied before principal is unwound. If that is not sufficient, the protocol removes the
-                    minimum required amount of LP principal necessary to restore solvency and satisfy the liquidation
-                    incentive.
+                    Once that happens, the vault collateral is released from the reserve side of Aave v4&apos;s
+                    market. The Avana Adapter burns the vault token, and the Liquidation Module marks the backing LP
+                    position as liquidated so the original collateral is no longer active.
                   </p>
                   <p>
-                    Once unwound, the underlying assets are routed through approved execution paths to repay the
-                    borrowed amount and settle any flashloan based repayment used during the transaction. Execution is
-                    designed to avoid destructive routing choices, including unnecessary dependence on the source pool
-                    when that would degrade pricing. Any residual value remaining after debt and liquidation costs are
-                    covered is returned to the borrower.
-                  </p>
-                  <p>
-                    This matters because LP collateral cannot be liquidated safely with generic lending logic. It
-                    requires purpose built execution around fee collection, liquidity removal, asset conversion, and
-                    repayment ordering. Avana&apos;s liquidation model is built to handle LP collateral as it actually
-                    exists onchain: as active, structured liquidity that must be unwound carefully rather than simply
-                    marked down and sold.
+                    From there, the Liquidation Module takes over the LP side. It unwinds, sells, or transfers the
+                    backing position depending on what makes the most sense for that market and route. The debt gets
+                    covered, the liquidator gets paid, and any surplus is returned by the final design.
                   </p>
                 </div>
               </section>
 
               <section id="interest-rate" className="scroll-mt-32 border-t border-gray-200 pt-12">
                 <LightpaperSectionHeader eyebrow="Rate design" title="Interest Rate" tone="blue" />
-                <ImagePlaceholder label="Borrow rate composition" />
-                <div className="space-y-5">
+                <div className="mt-6 space-y-5">
                   <p>
-                    Borrow rates in Avana are composed of three components: the Aave v4 Hub base rate, a spoke-level
-                    premium, and a pool-specific risk adjustment that together reflect both global liquidity conditions
-                    and LP-native risk.
+                    Borrow rates in Avana start with the Aave v4 Hub base rate, then add a spoke-level premium for the
+                    LP market itself. That keeps the pricing tied to the shared liquidity base while still letting each
+                    market carry its own risk cost.
                   </p>
                   <p>
-                    As an example, an ETH/USDC LP position may carry a total borrow rate of 3.5%, derived from a 2.0%
-                    Hub base rate, a 1.0% spoke premium, and a 0.5% pool adjustment. A more volatile pair such as
-                    UNI/ETH would carry a higher pool adjustment, resulting in a 5.0% total borrow rate under the same
-                    base and spoke conditions. Rates scale transparently with risk while remaining predictable for
-                    borrowers.
+                    As an example, an ETH/USDC LP position may carry a total borrow rate of 3.0%, built from a 2.0%
+                    Hub base rate and a 1.0% spoke premium. A more volatile pair such as UNI/ETH would carry a higher
+                    spoke premium, so the user sees a higher total borrow rate under the same Hub conditions. Rates
+                    stay predictable, but they still move with risk.
                   </p>
                   <p>
-                    The initial set of collateral pools and initial market scope will be deliberately selected to
-                    balance adoption, liquidity depth, and risk containment. These pools will represent the most
-                    actively traded and liquid pairs on Uniswap and Balancer, providing a natural and safe entry point
-                    for LP collateralization. This approach prioritizes safety and pricing reliability while laying a
-                    scalable foundation for future expansion.
+                    The initial set of collateral pools is intentionally narrow so the first markets are the ones with
+                    the deepest liquidity and the cleanest pricing. That keeps launch risk contained without losing the
+                    path to broader coverage later.
                   </p>
                 </div>
               </section>
@@ -1076,7 +707,6 @@ export default function LightpaperPage() {
                 <LightpaperSectionHeader eyebrow="Business model" title="Revenue Model" tone="emerald" />
                 <div className="mt-5 space-y-5">
                   <p>Avana earns from two sources.</p>
-                  <ImagePlaceholder label="Revenue model visual" />
                   <p>
                     The first is a share of liquidation penalties on the LP positions it enables. Unwinding these
                     positions properly with oracle validation, controlled execution, and slippage management requires
@@ -1096,13 +726,16 @@ export default function LightpaperPage() {
 
               <section id="market-opportunity" className="scroll-mt-32 border-t border-gray-200 pt-12">
                 <LightpaperSectionHeader eyebrow="Demand picture" title="Market Opportunity" tone="violet" />
-                <ImagePlaceholder label="Addressable market visual" />
-                <div className="space-y-5">
+                <div className="mt-6 space-y-5">
                   <p>
-                    The addressable LP-collateral market across Ethereum, Arbitrum, and Base is estimated at $8 to
-                    $12 billion by 2030. The projections below assume 50% utilization of deposited collateral, a 9%
-                    average borrow APR, 10 basis points of platform volume captured as fees, and approximately 20x
-                    annual platform turnover.
+                    LP collateral already sits onchain as productive capital. The opportunity is to let that capital
+                    back borrowing instead of forcing users to exit their positions first. Across Ethereum,
+                    Arbitrum, and Base, that creates a large LP-collateral surface area that can grow as more AMM
+                    liquidity moves into organized borrowing markets.
+                  </p>
+                  <p>
+                    The table below is directional. It uses simple assumptions to show how borrow demand, collateral
+                    depth, and protocol revenue can scale together as LP markets mature.
                   </p>
                 </div>
 
@@ -1135,10 +768,9 @@ export default function LightpaperPage() {
 
                 <div className="mt-6 space-y-5">
                   <p>
-                    In every scenario, Aave Hub captures all borrow interest while Avana earns a usage-driven revenue
-                    stream tied to the LP collateral layer it enables. As adoption grows, GHO demand grows alongside
-                    LP-backed borrowing, reinforcing the credit flywheel and making LP collateral a meaningful new
-                    surface area for DeFi lending.
+                    The point is simple: borrow demand follows liquidity, and LP liquidity becomes more useful when it
+                    can support credit without leaving the pool. Aave captures the borrow side, and Avana captures the
+                    LP-collateral layer that makes that borrowing possible.
                   </p>
                 </div>
               </section>

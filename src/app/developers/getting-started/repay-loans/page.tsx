@@ -85,7 +85,7 @@ export default function RepayLoansPage() {
           </p>
           <p className="text-sm text-gray-600">
             Once the liquidation boundary is crossed, the root{" "}
-            <Link href="/developers/liquidation" className="text-blue-600 hover:underline">
+            <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
               Liquidation Framework
             </Link>{" "}
             becomes the canonical process.
@@ -102,7 +102,7 @@ export default function RepayLoansPage() {
           <p className="text-sm text-gray-600">
             Depending on the collateral implementation, the final release may happen automatically or
             through an explicit follow-up action. See{" "}
-            <Link href="/developers/getting-started/withdraw-collateral" className="text-blue-600 hover:underline">
+            <Link href="/developers/getting-started/withdraw-collateral" className="text-[#01AACF] hover:underline">
               Withdraw Collateral
             </Link>{" "}
             for the canonical release flow.
