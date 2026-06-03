@@ -23,11 +23,8 @@ export default function BorrowSpokePage() {
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
       <div data-developer-doc-export-root className="max-w-3xl">
         <DeveloperDocPageHeader
-
           title="Borrow Spoke"
-
           description="Responsibilities and scope of the borrower-facing Avana spoke within the Aave v4 architecture."
-
         />
 
         <section id="overview" className="mb-12">
@@ -39,69 +36,61 @@ export default function BorrowSpokePage() {
             coordinating borrows against Hub liquidity.
           </p>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            This page focuses on the borrower-facing side of the architecture. The separate Invest
-            Spoke handles capital supply, while the Borrow Spoke handles LP-specific underwriting,
-            monitoring, and liquidation behavior for each supported liquidity design.
+            This page covers the borrower-facing side of the architecture. The separate Lend Spoke
+            handles capital supply, while the Borrow Spoke handles LP-specific underwriting,
+            monitoring, and liquidation behavior.
           </p>
           <p className="text-sm text-gray-600">
-            <strong>Why it matters:</strong> LP collateral is structurally different from static
-            assets, so the Borrow Spoke exists to translate pool composition, price range, fees, and
-            market state into enforceable credit rules.
+            <strong>Scope:</strong> LP collateral is structurally different from static assets, so
+            the Borrow Spoke translates pool composition, price range, fees, and market state into
+            enforceable credit rules.
           </p>
         </section>
 
         <section id="user-experience" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">User Experience</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Borrow Flow</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
             Borrowers interact with the Borrow Spoke to supply LP collateral, borrow assets, manage
-            open debt, repay balances, and claim earned fees. The spoke is designed to expose these
-            flows through a single borrower-facing interface even when the underlying collateral types
-            behave very differently across AMMs.
+            open debt, repay balances, and claim earned fees. The spoke exposes those flows through
+            a single borrower-facing interface even when collateral types differ across AMMs.
           </p>
           <p className="text-sm text-gray-600">
-            <strong>Transaction transparency:</strong> every action is paired with health factor
-            updates, borrow-cap impact, and collateral-state context so borrowers can understand how
-            a position change affects their loan in real time.
+            <strong>Transaction transparency:</strong> each action is paired with health factor
+            updates, borrow-cap impact, and collateral-state context.
           </p>
         </section>
 
         <section id="example-flow" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Example Flow: Alice the LP Master</h2>
-          <p className="mb-4 text-gray-600 leading-relaxed">
-            A practical borrower-side onboarding flow:
-          </p>
+          <h2 className="mb-4 type-section-title text-gray-900">Example Flow</h2>
+          <p className="mb-4 text-gray-600 leading-relaxed">Typical borrower-side flow:</p>
 
           <div className="space-y-6">
             <div className="border-b border-gray-100 pb-4">
               <h3 className="mb-2 font-semibold text-gray-900">Step 1: Initial Deposit</h3>
               <p className="text-sm text-gray-600">
-                Alice has 5 Uniswap v3 LP positions. She deposits her first LP as collateral:
-                10,000 USDC and 5 ETH in the ETH/USDC pool (ETH price = $2,000), currently worth
-                approximately $20,000 in total value.
+                The borrower deposits an approved LP position into the Borrow Spoke. The position
+                remains active in the AMM while the spoke records it for collateral accounting.
               </p>
             </div>
             <div className="border-b border-gray-100 pb-4">
               <h3 className="mb-2 font-semibold text-gray-900">Step 2: Borrowing Power Calculated</h3>
               <p className="text-sm text-gray-600">
-                The Borrow Spoke displays her ETH/USDC position and calculates that, with a 70%
-                collateral factor, she can borrow up to $14,000. This is based on the lower-token
-                collateral factor plus pool-specific risk adjustments.
+                The Borrow Spoke values the position, applies the relevant collateral factor and
+                pool-specific risk treatment, and exposes the resulting borrowing capacity.
               </p>
             </div>
             <div className="border-b border-gray-100 pb-4">
               <h3 className="mb-2 font-semibold text-gray-900">Step 3: Borrow Multiple Assets</h3>
               <p className="text-sm text-gray-600">
-                Alice borrows $6,000 USDT, $500 WBTC, $2,000 LINK, $500 UNI, and $1,000 AVAX. Her
-                total borrow is $10,000. She still has unused borrowing capacity, but her health
-                factor is now in the yellow zone.
+                The borrower draws assets against the available capacity. The spoke updates debt and
+                health state after the borrow is executed.
               </p>
             </div>
             <div>
               <h3 className="mb-2 font-semibold text-gray-900">Step 4: Add More Collateral</h3>
               <p className="text-sm text-gray-600">
-                Alice deposits 4 more LP positions worth $50,000 combined. After the Borrow Spoke
-                values each position, her aggregate borrowing capacity expands and her health returns
-                to a safer range without changing the underlying Hub capital source.
+                Additional approved LP positions increase aggregate borrowing capacity after the
+                spoke recalculates their contribution.
               </p>
             </div>
           </div>
@@ -110,7 +99,7 @@ export default function BorrowSpokePage() {
         <section id="three-tier-architecture" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Three-Tier Architecture</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            The borrower-side architecture follows a clear three-tier flow:
+            The borrower-side architecture follows a three-tier flow:
           </p>
 
           <div className="space-y-6">
@@ -124,17 +113,17 @@ export default function BorrowSpokePage() {
             <div>
               <h3 className="mb-2 font-semibold text-gray-900">Middle: Borrow Spoke (Avana)</h3>
               <p className="text-sm text-gray-600">
-                This is the intelligent layer that understands AMM-specific liquidity formats. It
-                manages LP custody, calculates position-specific risk, enforces loan-level health
-                checks, and coordinates liquidation behavior when collateral deteriorates.
+                This layer understands AMM-specific liquidity formats. It manages LP custody,
+                calculates position-specific risk, enforces loan-level health checks, and
+                coordinates liquidation behavior when collateral deteriorates.
               </p>
             </div>
             <div>
-              <h3 className="mb-2 font-semibold text-gray-900">Bottom: Aave v4 Hubs & Routed Capital</h3>
+              <h3 className="mb-2 font-semibold text-gray-900">Bottom: Aave v4 Hub & Routed Capital</h3>
               <p className="text-sm text-gray-600">
-                The Hubs provide borrowable liquidity and macro-level capital controls, while
-                Invest-Spoke-routed capital and other Hub liquidity sources fund draws initiated by
-                the Borrow Spoke.
+                The Hub provides borrowable liquidity and macro-level capital controls, while
+                Lend-Spoke-routed capital and other Hub sources fund draws initiated by the Borrow
+                Spoke.
               </p>
             </div>
           </div>
@@ -143,7 +132,7 @@ export default function BorrowSpokePage() {
         <section id="data-flow" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Data Flow</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            The borrower-side data flow is unidirectional and operationally well-defined:
+            The borrower-side data flow is unidirectional:
           </p>
 
           <ol className="mb-6 list-decimal list-inside space-y-4">
@@ -203,8 +192,7 @@ export default function BorrowSpokePage() {
                 <tr>
                   <td className="px-4 py-2 font-medium text-gray-900">Borrow Spoke (per AMM)</td>
                   <td className="px-4 py-2 text-gray-600">
-                    Tracks positions plus per-user aggregated collateral USD and debt USD, and
-                    exposes{" "}
+                    Tracks positions, aggregate collateral USD, debt USD, and exposes{" "}
                     <code className="bg-gray-200 px-1 rounded">getUserAggregate(user)</code> for the
                     frontend and liquidation adapters.
                   </td>

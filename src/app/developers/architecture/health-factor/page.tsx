@@ -39,7 +39,7 @@ export default function HealthFactorPage() {
           <p className="text-sm text-gray-600">
             When health deteriorates far enough that debt exceeds the allowed borrowing boundary, the
             position becomes liquidatable under the canonical{" "}
-            <Link href="/developers/liquidation" className="text-blue-600 hover:underline">
+            <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
               Liquidation Framework
             </Link>
             .
@@ -114,11 +114,11 @@ export default function HealthFactorPage() {
           </ul>
           <p className="mt-4 text-sm text-gray-600">
             Use{" "}
-            <Link href="/developers/architecture/collateral-factors" className="text-blue-600 hover:underline">
+            <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
               Collateral Factors
             </Link>{" "}
             for the numerator logic and{" "}
-            <Link href="/developers/liquidation" className="text-blue-600 hover:underline">
+            <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
               Liquidation Framework
             </Link>{" "}
             for what happens once health is no longer sufficient.

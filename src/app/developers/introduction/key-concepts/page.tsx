@@ -85,7 +85,7 @@ export default function KeyConceptsPage() {
           </p>
           <p className="text-sm text-gray-600">
             <strong>Canonical reference:</strong> see{" "}
-            <Link href="/developers/architecture/collateral-factors" className="text-blue-600 hover:underline">
+            <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
               Collateral Factors
             </Link>{" "}
             for the full position-by-position borrowing-capacity model.
@@ -115,11 +115,11 @@ export default function KeyConceptsPage() {
           </p>
           <p className="text-sm text-gray-600">
             <strong>Related docs:</strong> the canonical details live in{" "}
-            <Link href="/developers/integrations/price-oracles" className="text-blue-600 hover:underline">
+            <Link href="/developers/integrations/price-oracles" className="text-[#01AACF] hover:underline">
               Price Oracles
             </Link>{" "}
             and{" "}
-            <Link href="/developers/getting-started/claim-lp-fees" className="text-blue-600 hover:underline">
+            <Link href="/developers/getting-started/claim-lp-fees" className="text-[#01AACF] hover:underline">
               Claim LP Fees
             </Link>
             .
