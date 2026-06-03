@@ -715,23 +715,20 @@ export default function LightpaperPage() {
                 <ImagePlaceholder label="Borrow rate composition" />
                 <div className="space-y-5">
                   <p>
-                    Borrow rates in Avana are composed of three components: the Aave v4 Hub base rate, a spoke-level
-                    premium, and a pool-specific risk adjustment that together reflect both global liquidity conditions
-                    and LP-native risk.
+                    Borrow rates in Avana start with the Aave v4 Hub base rate, then add a spoke-level premium for the
+                    LP market itself. That keeps the pricing tied to the shared liquidity base while still letting each
+                    market carry its own risk cost.
                   </p>
                   <p>
-                    As an example, an ETH/USDC LP position may carry a total borrow rate of 3.5%, derived from a 2.0%
-                    Hub base rate, a 1.0% spoke premium, and a 0.5% pool adjustment. A more volatile pair such as
-                    UNI/ETH would carry a higher pool adjustment, resulting in a 5.0% total borrow rate under the same
-                    base and spoke conditions. Rates scale transparently with risk while remaining predictable for
-                    borrowers.
+                    As an example, an ETH/USDC LP position may carry a total borrow rate of 3.0%, built from a 2.0%
+                    Hub base rate and a 1.0% spoke premium. A more volatile pair such as UNI/ETH would carry a higher
+                    spoke premium, so the user sees a higher total borrow rate under the same Hub conditions. Rates
+                    stay predictable, but they still move with risk.
                   </p>
                   <p>
-                    The initial set of collateral pools and initial market scope will be deliberately selected to
-                    balance adoption, liquidity depth, and risk containment. These pools will represent the most
-                    actively traded and liquid pairs on Uniswap and Balancer, providing a natural and safe entry point
-                    for LP collateralization. This approach prioritizes safety and pricing reliability while laying a
-                    scalable foundation for future expansion.
+                    The initial set of collateral pools is intentionally narrow so the first markets are the ones with
+                    the deepest liquidity and the cleanest pricing. That keeps launch risk contained without losing the
+                    path to broader coverage later.
                   </p>
                 </div>
               </section>
