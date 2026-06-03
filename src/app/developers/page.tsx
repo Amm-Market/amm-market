@@ -3,7 +3,6 @@ import type { Metadata } from "next"
 import type { LucideIcon } from "lucide-react"
 import {
   ArrowRight,
-  BookOpen,
   Coins,
   Gauge,
   Layers3,

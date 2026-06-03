@@ -84,11 +84,11 @@ export default function BorrowAssetsPage() {
           <p className="mt-4 text-sm text-gray-600">
             The adjusted collateral value already includes conservative LP valuation, collateral
             factors, and pool-level risk controls. See{" "}
-            <Link href="/developers/architecture/health-factor" className="text-blue-600 hover:underline">
+            <Link href="/developers/architecture/health-factor" className="text-[#01AACF] hover:underline">
               Health Factor
             </Link>{" "}
             and{" "}
-            <Link href="/developers/architecture/collateral-factors" className="text-blue-600 hover:underline">
+            <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
               Collateral Factors
             </Link>{" "}
             for the canonical model.
@@ -140,11 +140,11 @@ export default function BorrowAssetsPage() {
           </p>
           <p className="text-sm text-gray-600">
             <strong>Recommended:</strong> keep a buffer and use{" "}
-            <Link href="/developers/liquidation" className="text-blue-600 hover:underline">
+            <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
               Liquidation Framework
             </Link>{" "}
             and{" "}
-            <Link href="/developers/architecture/health-factor" className="text-blue-600 hover:underline">
+            <Link href="/developers/architecture/health-factor" className="text-[#01AACF] hover:underline">
               Health Factor
             </Link>{" "}
             as the canonical references when sizing risk.

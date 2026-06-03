@@ -82,7 +82,7 @@ export default function WithdrawCollateralPage() {
             <li>The user may keep it in the underlying pool, re-range it, or exit liquidity entirely</li>
             <li>
               It can also be redeposited later through{" "}
-              <Link href="/developers/getting-started" className="text-blue-600 hover:underline">
+              <Link href="/developers/getting-started" className="text-[#01AACF] hover:underline">
                 Deposit LP
               </Link>{" "}
               if the pool remains approved
