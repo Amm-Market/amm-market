@@ -222,12 +222,6 @@ const oracleLayers = [
     coverage: "Pool-specific",
     updateFrequency: "1-hour exponential",
   },
-  {
-    layer: "Dynamic risk adjustment",
-    provider: "Chaos Labs Slope2",
-    coverage: "Aave markets",
-    updateFrequency: "Real-time",
-  },
 ]
 
 const marketScenarios = [
@@ -925,10 +919,12 @@ export default function LightpaperPage() {
                     prices (TWAPs) act as an independent verification layer sourced directly from on-chain liquidity.
                   </p>
                   <p>
-                    Borrowing power is granted only when both pricing sources remain within a defined tolerance band.
-                    Requiring agreement between external oracle data and AMM-derived pricing significantly reduces
-                    exposure to flash-loan manipulation, transient price distortions, or delayed oracle updates that
-                    could otherwise lead to incorrect collateral valuation.
+                    Borrowing power is granted only when both pricing sources stay within a defined tolerance band,
+                    which keeps external oracle data and AMM-derived pricing in agreement and reduces exposure to
+                    flash-loan manipulation, transient price distortions, or stale updates that could otherwise lead
+                    to bad collateral valuation. Once the vault token is supplied to Aave, its market settings add
+                    another layer of control by setting the LTV, liquidation threshold, liquidation bonus, caps, and
+                    health-factor checks for that reserve.
                   </p>
                   <p>Avana&apos;s oracle architecture spans multiple layers to ensure redundancy, price integrity, and resilience under market stress.</p>
                 </div>
@@ -961,10 +957,8 @@ export default function LightpaperPage() {
                 <div className="mt-8 space-y-5">
                   <p>
                     Beyond price verification, Borrow Spokes continuously monitor pool composition, volatility,
-                    liquidity depth, and oracle reliability. These inputs inform dynamic adjustments to loan-to-value
-                    (LTV) ratios and liquidation thresholds on a per-position basis. This adaptive framework balances
-                    capital efficiency with systemic safety while acknowledging that pools, oracle systems, and even
-                    protocols themselves can fail.
+                    liquidity depth, and oracle reliability so the market can stay aligned with the position instead
+                    of relying on a fixed setting that never changes.
                   </p>
                   <p>
                     The system is designed with failure assumptions in mind. Dual-oracle verification prevents toxic
