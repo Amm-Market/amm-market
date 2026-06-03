@@ -720,14 +720,14 @@ export default function LightpaperPage() {
                     collateral when the market changes or the position leaves the system.
                   </p>
                   <p>
-                    The Aave Adapter is the bridge into Aave v4. It does not make risk calls, it just follows the
-                    approved output from the Position Manager, Risk Module, and Collateralization Module, then
-                    supplies the vault token to Aave v4 or pulls it back when collateral is removed.
+                    The Aave Adapter handles the Aave-facing side of the system. Once the other modules approve a
+                    position, it supplies the vault token to Aave v4, withdraws it when collateral is removed, and
+                    keeps the integration isolated from the LP-specific logic.
                   </p>
                   <p>
                     Those vault collateral tokens are internal ERC-20 assets like vaultLINKETH, vaultETHDAI,
-                    vaultWETHUSDC, and vaultWBTCETH. Each token maps cleanly to one supported LP market, so Aave v4
-                    sees a simple collateral asset while Avana keeps the real LP position behind it.
+                    vaultWETHUSDC, and vaultWBTCETH. Each market gets its own token, so the accounting stays simple
+                    on the Aave side while Avana keeps the real LP position and market logic behind the scenes.
                   </p>
                 </div>
               </section>
