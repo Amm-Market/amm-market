@@ -17,24 +17,14 @@ const mobileLinks: readonly NavLink[] = [
   { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
 ] as const
 
-function isActivePath(pathname: string | null, href: string): boolean {
-  if (href === "/") {
-    return pathname === "/"
-  }
-
-  return pathname === href || pathname?.startsWith(`${href}/`) === true
-}
-
 interface HeaderMobileMenuProps {
   open: boolean
-  pathname: string | null
   brand: ReactNode
   onClose: () => void
 }
 
 export default function HeaderMobileMenu({
   open,
-  pathname,
   brand,
   onClose,
 }: HeaderMobileMenuProps) {
@@ -99,8 +89,6 @@ export default function HeaderMobileMenu({
       >
         <ol>
           {mobileLinks.map((link, index) => {
-            const isActive = pathname ? isActivePath(pathname, link.href) : false
-
             return (
               <li
                 key={`${link.label}-${link.href}`}
@@ -119,9 +107,7 @@ export default function HeaderMobileMenu({
                   onClick={onClose}
                 >
                   <span
-                    className={`text-[clamp(1.7rem,7.1vw,2.45rem)] font-[560] leading-[0.98] tracking-[-0.05em] ${
-                      isActive ? "text-black" : "text-black/95"
-                    }`}
+                    className="text-[clamp(1.7rem,7.1vw,2.45rem)] font-[560] leading-[0.98] tracking-[-0.05em] text-black/95"
                   >
                     {link.label}
                   </span>
