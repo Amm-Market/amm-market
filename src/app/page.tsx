@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic"
 import type { Metadata } from "next"
 import WebappHero from "@/components/webapp-hero"
-import HeroSection from "@/components/hero-section"
 import LogoMarquee from "@/components/logo-marquee"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { LazySection } from "@/components/ui/lazy-section"
@@ -52,6 +51,9 @@ export const metadata: Metadata = {
 }
 
 const DeferredBuildTomorrowSection = dynamic(() => import("@/components/BuildTomorrowSection"))
+const DeferredHeroSection = dynamic(() => import("@/components/hero-section"), {
+  loading: () => <DeferredHomepageSectionsFallback />,
+})
 
 // Note: Metadata is defined in layout.tsx with title template
 // Homepage uses the default title from the template
@@ -127,12 +129,8 @@ export default function Home() {
       >
         <DeferredBuildTomorrowSection />
       </LazySection>
-      <LazySection
-        rootMargin="320px"
-        minHeight="640px"
-        fallback={<DeferredHomepageSectionsFallback />}
-      >
-        <HeroSection />
+      <LazySection rootMargin="320px" minHeight="640px" fallback={<DeferredHomepageSectionsFallback />}>
+        <DeferredHeroSection />
       </LazySection>
     </>
   )
