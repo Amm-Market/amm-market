@@ -8,7 +8,7 @@ The closest comparable system is [Fluid](https://fluid.instadapp.io/) (Instadapp
 
 This repo is the frontend for the product: landing pages, developer docs, blog, and legal pages. It is built with [Next.js](https://nextjs.org/) (App Router). There is **no** backend app service, **no** wallet integration, and **no** live on-chain protocol execution code here—the smart contracts and production app live elsewhere.
 
-For long-form product and architecture context, run the app locally and open **`/lightpaper`**, or browse **`/developers`** for technical documentation.
+For long-form product and architecture context, browse **`/developers`** for technical documentation.
 
 ## Getting started
 

@@ -11,7 +11,6 @@ const mobileLinks: readonly NavLink[] = [
   { href: siteRoutes.lend, label: "Lend" },
   { href: siteRoutes.multiply, label: "Multiply" },
   { href: siteRoutes.about, label: "About" },
-  { href: siteRoutes.lightpaper, label: "Lightpaper" },
   { href: siteRoutes.blog, label: "Blog" },
   { href: siteRoutes.faq, label: "FAQ" },
   { href: siteRoutes.developers, label: "Developers" },

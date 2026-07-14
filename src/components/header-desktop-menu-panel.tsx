@@ -52,7 +52,6 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     eyebrow: "Explore Resources",
     items: [
       { href: siteRoutes.about, label: "About" },
-      { href: siteRoutes.lightpaper, label: "Lightpaper" },
       { href: siteRoutes.blog, label: "Blog" },
       { href: siteRoutes.faq, label: "FAQ" },
       { href: siteRoutes.brand, label: "Brand" },
@@ -63,11 +62,6 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         href: siteRoutes.about,
         label: "About",
         description: "Read more about the current company and product thesis behind Avana.",
-      },
-      {
-        href: siteRoutes.lightpaper,
-        label: "Read the protocol paper",
-        description: "See the system design, risk model, and architecture behind the protocol.",
       },
       {
         href: siteRoutes.blog,
