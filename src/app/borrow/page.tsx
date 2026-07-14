@@ -137,38 +137,6 @@ const tokenLogoUrls = {
   orca: "https://coin-logos.simplr.sh/images/orca/standard.png",
 } as const
 
-function BorrowMarketPlaceholderArt() {
-  return (
-    <div className="relative aspect-[10/7] overflow-hidden rounded-[22px] border border-dashed border-gray-300 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,250,252,0.98))]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.06),transparent_46%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.05),transparent_42%)]" />
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-400 shadow-sm">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="h-6 w-6">
-            <path
-              d="M4 7h16v10H4V7Z"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M7 11h10M7 14h6"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-        <div className="mt-4 space-y-1">
-          <p className="text-lg font-semibold text-gray-900">Image placeholder</p>
-          <p className="text-sm text-gray-500">Borrow market visual will go here.</p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function BorrowMarketCard({
   number,
   title,
@@ -185,9 +153,6 @@ function BorrowMarketCard({
         {title}
       </h3>
       <p className="mt-3 text-sm leading-6 text-gray-600">{description}</p>
-      <div className="mt-6">
-        <BorrowMarketPlaceholderArt />
-      </div>
     </div>
   )
 }
