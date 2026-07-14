@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react"
 import { useEffect, useState } from "react"
-import { usePathname } from "next/navigation"
 import HeaderMobileMenu from "@/components/header-mobile-menu"
 
 function MobileMenuToggleIcon() {
@@ -15,7 +14,6 @@ function MobileMenuToggleIcon() {
 }
 
 export default function HeaderMobileNavigation({ brand }: { brand: ReactNode }) {
-  const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileMenuMounted, setMobileMenuMounted] = useState(false)
   const [mobileMenuAnimationCycle, setMobileMenuAnimationCycle] = useState(0)
@@ -46,7 +44,7 @@ export default function HeaderMobileNavigation({ brand }: { brand: ReactNode }) 
         <MobileMenuToggleIcon />
       </button>
 
-      {mobileMenuMounted ? <HeaderMobileMenu key={mobileMenuAnimationCycle} open={mobileMenuOpen} pathname={pathname} brand={brand} onClose={() => setMobileMenuOpen(false)} /> : null}
+      {mobileMenuMounted ? <HeaderMobileMenu key={mobileMenuAnimationCycle} open={mobileMenuOpen} brand={brand} onClose={() => setMobileMenuOpen(false)} /> : null}
     </div>
   )
 }
