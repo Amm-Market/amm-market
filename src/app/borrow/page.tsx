@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { BadgeDollarSign, Compass, Handshake, LayoutTemplate, ShieldCheck, Workflow } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
+import { BadgeDollarSign, Coins, Compass, Handshake, Infinity, Landmark, LayoutTemplate, ShieldCheck, Workflow } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import BorrowPowerSection from "@/components/borrow-power-section"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
@@ -115,6 +116,59 @@ const borrowPartnerFeatures = [
     icon: ShieldCheck,
   },
 ] as const
+
+const minimumEligibilitySteps = [
+  {
+    title: "$250K",
+    description:
+      "Hold at least $250K in Liquidity Pools to qualify and enter the review process with your application.",
+    accent: "text-[#111111]",
+    icon: Coins,
+  },
+  {
+    title: "$100K",
+    description:
+      "Your initial borrow must be at least $100K to qualify and enter the review process with your application.",
+    accent: "text-[#111111]",
+    icon: Landmark,
+  },
+  {
+    title: "3+ Month",
+    description:
+      "Keep the facility active for at least 3 months to qualify and enter the review process with your application.",
+    accent: "text-[#111111]",
+    icon: Infinity,
+  },
+] as const
+
+function WorkflowStepCard({
+  title,
+  description,
+  icon,
+  className = "",
+}: {
+  title: string
+  description: string
+  icon: LucideIcon
+  className?: string
+}) {
+  const Icon = icon
+
+  return (
+    <article className={`flex flex-col rounded-[1.75rem] bg-[#f7f7f5] p-5 md:p-6 ${className}`}>
+      <div className="flex h-8 w-8 items-center justify-center text-[#111111]">
+        <Icon className="h-8 w-8" strokeWidth={1.85} />
+      </div>
+
+      <h3 className="mt-5 text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:mt-6 md:text-[1.55rem]">
+        {title}
+      </h3>
+      <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
+        {description}
+      </p>
+    </article>
+  )
+}
 
 const tokenLogoUrls = {
   bitcoin: "https://coin-logos.simplr.sh/images/bitcoin/standard.png",
@@ -423,6 +477,26 @@ export default function BorrowPage() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="site-content-shell">
+          <div className="space-y-4 text-left">
+            <SectionEyebrow tone="violet">Minimum eligibility</SectionEyebrow>
+            <SectionTitle>Find out if you qualify.</SectionTitle>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
+            {minimumEligibilitySteps.map((step) => (
+              <WorkflowStepCard
+                key={step.title}
+                title={step.title}
+                description={step.description}
+                icon={step.icon}
+              />
+            ))}
           </div>
         </div>
       </section>
