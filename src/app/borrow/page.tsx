@@ -383,8 +383,10 @@ export default function BorrowPage() {
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
                     <Link
-                      href="/faq"
+                      href="https://app.avana.cc"
                       prefetch={false}
+                      target="_blank"
+                      rel="noreferrer"
                       className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
                     >
                       Get Early Access
