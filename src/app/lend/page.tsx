@@ -100,6 +100,11 @@ const liquidationModelCards = [
     title: "Incentive",
     description: "The liquidation premium rewards the operator who completes the closeout.",
   },
+  {
+    icon: Gauge,
+    title: "Residual value",
+    description: "Any leftover value after repayment and rewards is returned to the borrower.",
+  },
 ] as const
 
 function LiquidationModelCard({
