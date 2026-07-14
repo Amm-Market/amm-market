@@ -1,16 +1,19 @@
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
 import { BadgePercent, Gauge, LockKeyhole, MoveRight } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
-import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import InvestApySection from "@/components/invest-apy-section"
-import InvestGrowthCalculatorSection from "@/components/invest-growth-calculator-section"
-import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 import { buildOgImagePath, siteRoutes } from "@/lib/site"
+
+const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
+const PlatformToolsShowcaseSection = dynamic(() => import("@/components/platform-tools-showcase-section"))
+const InvestApySection = dynamic(() => import("@/components/invest-apy-section"))
+const InvestGrowthCalculatorSection = dynamic(() => import("@/components/invest-growth-calculator-section"))
+const ProductFeatureScrollSection = dynamic(() => import("@/components/product-feature-scroll-section"))
 
 const pageDescription =
   "Supply single assets into LP-backed credit markets, keep liquidity flexible, and earn demand-driven yield across Avana."
@@ -99,6 +102,11 @@ const liquidationModelCards = [
     title: "Incentive",
     description: "The liquidation premium rewards the operator who completes the closeout.",
   },
+  {
+    icon: Gauge,
+    title: "Residual value",
+    description: "Any leftover value after repayment and rewards is returned to the borrower.",
+  },
 ] as const
 
 function LiquidationModelCard({
@@ -180,7 +188,7 @@ export default function LendPage() {
                     alt="App interface"
                     width={1200}
                     height={1200}
-                    quality={70}
+                    quality={58}
                     className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                     sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
                     priority
@@ -202,8 +210,10 @@ export default function LendPage() {
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
                     <Link
-                      href="/faq"
+                      href="https://app.avana.cc"
                       prefetch={false}
+                      target="_blank"
+                      rel="noreferrer"
                       className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
                     >
                       Get Early Access
@@ -264,6 +274,12 @@ export default function LendPage() {
               />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-8 md:py-10 lg:py-12">
+        <div className="site-content-shell">
+          <PlatformToolsShowcaseSection />
         </div>
       </section>
 

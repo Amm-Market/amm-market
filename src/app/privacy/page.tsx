@@ -1,6 +1,43 @@
+import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import Link from "next/link"
-import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 import { diatypeItalicFont } from "@/app/site-fonts"
+import { buildOgImagePath, siteRoutes } from "@/lib/site"
+
+const ScrollSpySidebar = dynamic(() => import("@/components/scroll-spy-sidebar").then((mod) => mod.ScrollSpySidebar))
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "Read how Avana collects, uses, and protects information across the homepage, developer docs, and related services.",
+  alternates: {
+    canonical: siteRoutes.privacy,
+  },
+  openGraph: {
+    title: "Privacy Policy",
+    description:
+      "Read how Avana collects, uses, and protects information across the homepage, developer docs, and related services.",
+    url: siteRoutes.privacy,
+    images: [
+      {
+        url: buildOgImagePath({
+          title: "Privacy Policy",
+          subtitle: "How Avana handles information and cookies",
+        }),
+        alt: "Privacy Policy",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      buildOgImagePath({
+        title: "Privacy Policy",
+        subtitle: "How Avana handles information and cookies",
+      }),
+    ],
+  },
+}
 
 const sections = [
   { id: "personal-information-that-we-collect", title: "Personal Information That We Collect" },

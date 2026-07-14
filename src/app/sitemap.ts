@@ -39,12 +39,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}${siteRoutes.lightpaper}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
       url: `${SITE_URL}${siteRoutes.faq}`,
       lastModified: now,
       changeFrequency: 'monthly',
@@ -67,18 +61,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.creditLines}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.careers}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.5,
     },
     {
       url: `${SITE_URL}${siteRoutes.brand}`,

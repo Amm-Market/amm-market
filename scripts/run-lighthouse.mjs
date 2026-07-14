@@ -13,6 +13,7 @@ const CATEGORIES = ["performance", "accessibility", "best-practices", "seo"];
 const APP_PATH_ROUTES_MANIFEST = path.join(process.cwd(), ".next", "app-path-routes-manifest.json");
 const ROUTES_MANIFEST = path.join(process.cwd(), ".next", "routes-manifest.json");
 const EXCLUDED_ROUTES = new Set(["/_global-error", "/_not-found", "/favicon.ico", "/robots.txt", "/sitemap.xml", "/og"]);
+const REQUESTED_ROUTES = process.env.LIGHTHOUSE_ROUTES?.split(",").map((route) => route.trim()).filter(Boolean);
 
 function routeSlug(route) {
   return route === "/" ? "home" : route.replace(/^\//, "").replace(/\//g, "--");
@@ -110,7 +111,14 @@ async function main() {
   await rm(OUTPUT_DIR, { recursive: true, force: true });
   await mkdir(OUTPUT_DIR, { recursive: true });
   await runCommand("npm", ["run", "build"]);
-  const routes = await getRoutesToAudit();
+  const discoveredRoutes = await getRoutesToAudit();
+  const routes = REQUESTED_ROUTES ?? discoveredRoutes;
+
+  for (const route of routes) {
+    if (!discoveredRoutes.includes(route)) {
+      throw new Error(`Requested Lighthouse route is not auditable: ${route}`);
+    }
+  }
 
   const serverProcess = spawn("npm", ["run", "start", "--", "--port", String(PORT), "--hostname", HOSTNAME], {
     cwd: process.cwd(),
