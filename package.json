@@ -7,6 +7,7 @@
     "build": "next build --webpack",
     "start": "next start",
     "lighthouse:audit": "node scripts/run-lighthouse.mjs",
+    "lighthouse:check": "node scripts/check-lighthouse-budgets.mjs",
     "lint": "eslint",
     "test": "vitest",
     "test:ui": "vitest --ui",
