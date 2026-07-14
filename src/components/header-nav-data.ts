@@ -6,7 +6,7 @@ export interface NavLink {
   external?: boolean
 }
 
-export type DesktopMenuId = "products" | "resources" | "developers" | "about"
+export type DesktopMenuId = "products" | "resources" | "developers"
 
 export const desktopMenuButtons = [
   {
@@ -22,7 +22,13 @@ export const desktopMenuButtons = [
   {
     id: "resources",
     label: "Resources",
-    matchHrefs: [siteRoutes.lightpaper, siteRoutes.blog, siteRoutes.faq, siteRoutes.brand],
+    matchHrefs: [
+      siteRoutes.about,
+      siteRoutes.lightpaper,
+      siteRoutes.blog,
+      siteRoutes.faq,
+      siteRoutes.brand,
+    ],
   },
   {
     id: "developers",
@@ -34,11 +40,6 @@ export const desktopMenuButtons = [
       "/developers/integrations/appkit",
       "/developers/liquidation/liquidators",
     ],
-  },
-  {
-    id: "about",
-    label: "Labs",
-    matchHrefs: [siteRoutes.about],
   },
 ] as const
 
