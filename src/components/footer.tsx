@@ -198,7 +198,7 @@ export default function Footer(): React.JSX.Element {
             ))}
           </div>
 
-          <div className="border-t border-gray-200/50 pt-6 text-xs leading-5 text-gray-500 lg:col-span-2">
+          <div className="border-t border-gray-200/50 pt-6 text-xs leading-5 text-gray-500 [content-visibility:auto] [contain-intrinsic-block-size:20rem] lg:col-span-2">
             <div className="space-y-3">
               {footerDisclosure.map((paragraph, index) => (
                 <p key={`footer-disclosure-${index}`}>{paragraph}</p>
