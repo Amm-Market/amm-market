@@ -1,16 +1,18 @@
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
 import { BadgeDollarSign, Coins, Compass, Handshake, Infinity, Landmark, LayoutTemplate, ShieldCheck, Workflow } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
-import BorrowPowerSection from "@/components/borrow-power-section"
-import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
-import PositionSafetySection from "@/components/position-safety-section"
-import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
+
+const BorrowPowerSection = dynamic(() => import("@/components/borrow-power-section"))
+const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
+const ProductFeatureScrollSection = dynamic(() => import("@/components/product-feature-scroll-section"))
+const PositionSafetySection = dynamic(() => import("@/components/position-safety-section"))
+const ProductStorySection = dynamic(() => import("@/components/product-story-section"))
 
 const openSpokeFaqItems: InlineFaqItem[] = [
   {
@@ -360,7 +362,7 @@ export default function BorrowPage() {
                       alt="App interface"
                       width={1200}
                       height={1200}
-                      quality={70}
+                      quality={58}
                       className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                       sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
                       priority
