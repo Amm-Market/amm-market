@@ -26,7 +26,6 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
       { href: siteRoutes.borrow, label: "Borrow" },
       { href: siteRoutes.lend, label: "Lend" },
       { href: siteRoutes.multiply, label: "Multiply" },
-      { href: siteRoutes.creditLines, label: "Credit Lines" },
     ],
     supportingTitle: "What you can do",
     supportingItems: [
@@ -44,11 +43,6 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         href: siteRoutes.lend,
         label: "Lend capital through the Hub",
         description: "Move borrowed capital into structured allocation paths with clearer execution context.",
-      },
-      {
-        href: siteRoutes.creditLines,
-        label: "Credit Lines",
-        description: "Explore the credit line workflow for business-oriented borrowing and monitoring.",
       },
     ],
   },

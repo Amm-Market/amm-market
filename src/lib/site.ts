@@ -17,7 +17,6 @@ export const siteRoutes = {
   borrow: "/borrow",
   lend: "/lend",
   multiply: "/multiply",
-  creditLines: "/credit-lines",
   developers: "/developers",
   developersIntro: "/developers/introduction",
   blog: "/blog",
