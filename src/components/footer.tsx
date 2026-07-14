@@ -20,7 +20,7 @@
  */
 import Link from "next/link"
 import Image from "next/image"
-import { SITE_NAME, WORDMARK_PATH, siteRoutes } from "@/lib/site"
+import { HEADER_WORDMARK_PATH, SITE_NAME, siteRoutes } from "@/lib/site"
 
 interface FooterLink {
   href: string
@@ -143,13 +143,17 @@ export default function Footer(): React.JSX.Element {
         <div className="grid gap-x-8 gap-y-12 lg:grid-cols-[minmax(16rem,1.2fr)_minmax(0,1fr)] lg:gap-x-8 xl:gap-x-10">
           {/* Logo */}
           <div className="space-y-5 lg:max-w-sm lg:justify-self-start">
-            <Link href={siteRoutes.home} prefetch={false} className="inline-flex w-fit items-start justify-start">
+            <Link
+              href={siteRoutes.home}
+              prefetch={false}
+              className="inline-flex w-fit items-start justify-start lg:-ml-2"
+            >
               <Image
-                src={WORDMARK_PATH}
+                src={HEADER_WORDMARK_PATH}
                 alt={`${SITE_NAME} logo`}
                 width={3000}
                 height={1500}
-                className="h-[42px] w-auto lg:h-[52px]"
+                className="h-[56px] w-auto scale-[1.08] origin-left"
               />
             </Link>
             <p className="max-w-sm text-[1.02rem] font-normal leading-7 tracking-[-0.02em] text-gray-700">
