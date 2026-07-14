@@ -23,7 +23,6 @@ export const desktopMenuButtons = [
     label: "Resources",
     matchHrefs: [
       siteRoutes.about,
-      siteRoutes.lightpaper,
       siteRoutes.blog,
       siteRoutes.faq,
       siteRoutes.brand,

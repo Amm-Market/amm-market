@@ -20,7 +20,6 @@ export const siteRoutes = {
   developers: "/developers",
   developersIntro: "/developers/introduction",
   blog: "/blog",
-  lightpaper: "/lightpaper",
   faq: "/faq",
   brand: "/brand",
   earlyAccess: "/faq",
