@@ -69,7 +69,6 @@ function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
         width={3000}
         height={1500}
         className={mobileOnly ? "h-[56px] w-auto scale-[1.08] origin-left" : "h-[56px] w-auto scale-[1.08] origin-left md:h-[52px]"}
-        priority
       />
     </span>
   )
