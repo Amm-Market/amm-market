@@ -86,22 +86,14 @@ export function LogoMarquee() {
     <section className="bg-white py-5 sm:py-6">
       <div className="site-content-shell">
         <div
-          data-testid="homepage-logo-strip-mobile"
+          data-testid="homepage-logo-strip"
           aria-label="Supported protocols"
-          className="grid w-full grid-cols-3 gap-2.5 md:hidden"
+          className="grid w-full grid-cols-3 gap-2.5 md:grid-cols-5 md:gap-4 lg:gap-6"
         >
-          {logos.slice(0, 3).map((logo) => (
-            <LogoPill key={logo.name} logo={logo} />
-          ))}
-        </div>
-
-        <div
-          data-testid="homepage-logo-strip-desktop"
-          aria-label="Supported protocols"
-          className="hidden w-full md:grid md:grid-cols-5 md:gap-4 lg:gap-6"
-        >
-          {logos.map((logo) => (
-            <LogoPill key={logo.name} logo={logo} />
+          {logos.map((logo, index) => (
+            <div key={logo.name} className={index > 2 ? "hidden md:block" : undefined}>
+              <LogoPill logo={logo} />
+            </div>
           ))}
         </div>
       </div>
