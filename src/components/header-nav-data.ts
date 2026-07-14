@@ -38,7 +38,7 @@ export const desktopMenuButtons = [
   {
     id: "about",
     label: "Labs",
-    matchHrefs: [siteRoutes.about, siteRoutes.careers],
+    matchHrefs: [siteRoutes.about],
   },
 ] as const
 

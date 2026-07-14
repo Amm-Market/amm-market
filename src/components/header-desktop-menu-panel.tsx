@@ -126,7 +126,6 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     eyebrow: "Explore Labs",
     items: [
       { href: siteRoutes.about, label: "About" },
-      { href: siteRoutes.careers, label: "Career" },
     ],
     supportingTitle: "Learn more",
     supportingItems: [
@@ -134,11 +133,6 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         href: siteRoutes.about,
         label: "About",
         description: "Read more about the current company and product thesis behind Avana.",
-      },
-      {
-        href: siteRoutes.careers,
-        label: "Career",
-        description: "Placeholder page for future roles, openings, and team opportunities.",
       },
     ],
   },
