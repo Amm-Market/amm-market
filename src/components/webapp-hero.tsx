@@ -20,7 +20,7 @@ export default function WebappHero() {
               width={1536}
               height={1279}
               priority
-              quality={70}
+              quality={62}
               className="h-auto w-full rounded-none"
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) calc(100vw - 2rem), 1080px"
             />
