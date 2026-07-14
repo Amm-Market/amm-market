@@ -20,7 +20,7 @@
  */
 import Link from "next/link"
 import Image from "next/image"
-import { SITE_NAME, WORDMARK_PATH, siteRoutes } from "@/lib/site"
+import { HEADER_WORDMARK_PATH, SITE_NAME, siteRoutes } from "@/lib/site"
 
 interface FooterLink {
   href: string
@@ -104,7 +104,6 @@ const footerSections: readonly FooterSection[] = [
       { href: siteRoutes.borrow, label: "Borrow" },
       { href: siteRoutes.lend, label: "Lend" },
       { href: siteRoutes.multiply, label: "Multiply" },
-      { href: siteRoutes.creditLines, label: "Credit Lines" },
     ],
   },
   {
@@ -120,7 +119,6 @@ const footerSections: readonly FooterSection[] = [
     title: "Docs",
     links: [
       { href: siteRoutes.developers, label: "Developers" },
-      { href: siteRoutes.lightpaper, label: "Lightpaper" },
       { href: siteRoutes.privacy, label: "Privacy" },
       { href: siteRoutes.terms, label: "Terms" },
     ],
@@ -144,13 +142,17 @@ export default function Footer(): React.JSX.Element {
         <div className="grid gap-x-8 gap-y-12 lg:grid-cols-[minmax(16rem,1.2fr)_minmax(0,1fr)] lg:gap-x-8 xl:gap-x-10">
           {/* Logo */}
           <div className="space-y-5 lg:max-w-sm lg:justify-self-start">
-            <Link href={siteRoutes.home} prefetch={false} className="inline-flex w-fit items-start justify-start">
+            <Link
+              href={siteRoutes.home}
+              prefetch={false}
+              className="inline-flex w-fit items-start justify-start lg:-ml-2"
+            >
               <Image
-                src={WORDMARK_PATH}
+                src={HEADER_WORDMARK_PATH}
                 alt={`${SITE_NAME} logo`}
                 width={3000}
                 height={1500}
-                className="h-[42px] w-auto lg:h-[52px]"
+                className="h-[56px] w-auto scale-[1.08] origin-left"
               />
             </Link>
             <p className="max-w-sm text-[1.02rem] font-normal leading-7 tracking-[-0.02em] text-gray-700">
@@ -196,7 +198,7 @@ export default function Footer(): React.JSX.Element {
             ))}
           </div>
 
-          <div className="border-t border-gray-200/50 pt-6 text-xs leading-5 text-gray-500 lg:col-span-2">
+          <div className="border-t border-gray-200/50 pt-6 text-xs leading-5 text-gray-500 [content-visibility:auto] [contain-intrinsic-block-size:20rem] lg:col-span-2">
             <div className="space-y-3">
               {footerDisclosure.map((paragraph, index) => (
                 <p key={`footer-disclosure-${index}`}>{paragraph}</p>

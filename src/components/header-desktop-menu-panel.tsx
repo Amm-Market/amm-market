@@ -26,7 +26,6 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
       { href: siteRoutes.borrow, label: "Borrow" },
       { href: siteRoutes.lend, label: "Lend" },
       { href: siteRoutes.multiply, label: "Multiply" },
-      { href: siteRoutes.creditLines, label: "Credit Lines" },
     ],
     supportingTitle: "What you can do",
     supportingItems: [
@@ -45,11 +44,6 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         label: "Lend capital through the Hub",
         description: "Move borrowed capital into structured allocation paths with clearer execution context.",
       },
-      {
-        href: siteRoutes.creditLines,
-        label: "Credit Lines",
-        description: "Explore the credit line workflow for business-oriented borrowing and monitoring.",
-      },
     ],
   },
   {
@@ -57,7 +51,7 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     label: "Resources",
     eyebrow: "Explore Resources",
     items: [
-      { href: siteRoutes.lightpaper, label: "Lightpaper" },
+      { href: siteRoutes.about, label: "About" },
       { href: siteRoutes.blog, label: "Blog" },
       { href: siteRoutes.faq, label: "FAQ" },
       { href: siteRoutes.brand, label: "Brand" },
@@ -65,9 +59,9 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     supportingTitle: "Where to look",
     supportingItems: [
       {
-        href: siteRoutes.lightpaper,
-        label: "Read the protocol paper",
-        description: "See the system design, risk model, and architecture behind the protocol.",
+        href: siteRoutes.about,
+        label: "About",
+        description: "Read more about the current company and product thesis behind Avana.",
       },
       {
         href: siteRoutes.blog,
@@ -117,28 +111,6 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         href: "/developers/liquidation/liquidators",
         label: "Understand liquidators",
         description: "Learn how execution desks monitor and unwind LP collateral under stress.",
-      },
-    ],
-  },
-  {
-    id: "about",
-    label: "Labs",
-    eyebrow: "Explore Labs",
-    items: [
-      { href: siteRoutes.about, label: "About" },
-      { href: siteRoutes.careers, label: "Career" },
-    ],
-    supportingTitle: "Learn more",
-    supportingItems: [
-      {
-        href: siteRoutes.about,
-        label: "About",
-        description: "Read more about the current company and product thesis behind Avana.",
-      },
-      {
-        href: siteRoutes.careers,
-        label: "Career",
-        description: "Placeholder page for future roles, openings, and team opportunities.",
       },
     ],
   },
