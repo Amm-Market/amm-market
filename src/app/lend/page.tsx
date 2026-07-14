@@ -5,6 +5,7 @@ import type { LucideIcon } from "lucide-react"
 import { BadgePercent, Gauge, LockKeyhole, MoveRight } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
+import PlatformToolsShowcaseSection from "@/components/platform-tools-showcase-section"
 import InvestApySection from "@/components/invest-apy-section"
 import InvestGrowthCalculatorSection from "@/components/invest-growth-calculator-section"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
@@ -264,6 +265,12 @@ export default function LendPage() {
               />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-8 md:py-10 lg:py-12">
+        <div className="site-content-shell">
+          <PlatformToolsShowcaseSection />
         </div>
       </section>
 
