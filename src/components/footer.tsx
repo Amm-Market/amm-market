@@ -119,7 +119,6 @@ const footerSections: readonly FooterSection[] = [
     title: "Docs",
     links: [
       { href: siteRoutes.developers, label: "Developers" },
-      { href: siteRoutes.lightpaper, label: "Lightpaper" },
       { href: siteRoutes.privacy, label: "Privacy" },
       { href: siteRoutes.terms, label: "Terms" },
     ],
