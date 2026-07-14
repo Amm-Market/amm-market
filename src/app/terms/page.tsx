@@ -1,6 +1,41 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 import { diatypeItalicFont } from "@/app/site-fonts"
+import { buildOgImagePath, siteRoutes } from "@/lib/site"
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "Review the terms governing access to Avana, including eligibility, service use, risk, disputes, and third-party services.",
+  alternates: {
+    canonical: siteRoutes.terms,
+  },
+  openGraph: {
+    title: "Terms of Service",
+    description:
+      "Review the terms governing access to Avana, including eligibility, service use, risk, disputes, and third-party services.",
+    url: siteRoutes.terms,
+    images: [
+      {
+        url: buildOgImagePath({
+          title: "Terms of Service",
+          subtitle: "Eligibility, risk, and service terms for Avana",
+        }),
+        alt: "Terms of Service",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      buildOgImagePath({
+        title: "Terms of Service",
+        subtitle: "Eligibility, risk, and service terms for Avana",
+      }),
+    ],
+  },
+}
 
 const sections = [
   { id: "eligibility", title: "1. Eligibility" },
