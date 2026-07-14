@@ -57,6 +57,7 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     label: "Resources",
     eyebrow: "Explore Resources",
     items: [
+      { href: siteRoutes.about, label: "About" },
       { href: siteRoutes.lightpaper, label: "Lightpaper" },
       { href: siteRoutes.blog, label: "Blog" },
       { href: siteRoutes.faq, label: "FAQ" },
@@ -64,6 +65,11 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     ],
     supportingTitle: "Where to look",
     supportingItems: [
+      {
+        href: siteRoutes.about,
+        label: "About",
+        description: "Read more about the current company and product thesis behind Avana.",
+      },
       {
         href: siteRoutes.lightpaper,
         label: "Read the protocol paper",
@@ -117,22 +123,6 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         href: "/developers/liquidation/liquidators",
         label: "Understand liquidators",
         description: "Learn how execution desks monitor and unwind LP collateral under stress.",
-      },
-    ],
-  },
-  {
-    id: "about",
-    label: "Labs",
-    eyebrow: "Explore Labs",
-    items: [
-      { href: siteRoutes.about, label: "About" },
-    ],
-    supportingTitle: "Learn more",
-    supportingItems: [
-      {
-        href: siteRoutes.about,
-        label: "About",
-        description: "Read more about the current company and product thesis behind Avana.",
       },
     ],
   },
