@@ -4,7 +4,6 @@ import type { LucideIcon } from "lucide-react"
 import { ArrowRightLeft, Briefcase, Building2, ChartCandlestick, Coins, Globe2, Infinity, Landmark, Route } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import PlatformToolsShowcaseSection from "@/components/platform-tools-showcase-section"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
@@ -230,10 +229,6 @@ export default function CreditLinesPage() {
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 pt-8 sm:px-6 sm:pt-12">
         <div className="relative z-0 flex flex-1 flex-col">
           <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20 2xl:space-y-36 2xl:pt-18 2xl:pb-18">
-            <section>
-              <PlatformToolsShowcaseSection />
-            </section>
-
             <section>
               <div className="space-y-4 text-left">
                 <SectionEyebrow tone="violet">Minimum eligibility</SectionEyebrow>
