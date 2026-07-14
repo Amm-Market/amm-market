@@ -1,60 +1,17 @@
-"use client"
-
-import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
-import { usePathname } from "next/navigation"
+import HeaderDesktopNavigation from "@/components/header-desktop-navigation"
+import HeaderMobileNavigation from "@/components/header-mobile-navigation"
+import { desktopUtilityLinks } from "@/components/header-nav-data"
 import { HEADER_WORDMARK_PATH, SITE_NAME, siteRoutes } from "@/lib/site"
-import HeaderMobileMenu from "@/components/header-mobile-menu"
-import {
-  desktopMenuButtons,
-  desktopUtilityLinks,
-  type DesktopMenuId,
-} from "@/components/header-nav-data"
-
-const DeferredHeaderDesktopMenuPanel = dynamic(
-  () => import("@/components/header-desktop-menu-panel"),
-  { ssr: false },
-)
-
-let desktopMenuPanelPromise: Promise<unknown> | null = null
-
-function warmDesktopMenuPanel() {
-  desktopMenuPanelPromise ??= import("@/components/header-desktop-menu-panel")
-}
 
 function SandboxIcon() {
   return (
     <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" className="h-5 w-5 shrink-0">
-      <path
-        d="M14 18V11H21"
-        stroke="currentColor"
-        strokeWidth="3.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M34 18V11H27"
-        stroke="currentColor"
-        strokeWidth="3.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M14 30V37H21"
-        stroke="currentColor"
-        strokeWidth="3.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M34 30V37H27"
-        stroke="currentColor"
-        strokeWidth="3.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M14 18V11H21" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M34 18V11H27" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M14 30V37H21" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M34 30V37H27" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
       <circle cx="24" cy="24" r="4.4" fill="currentColor" />
     </svg>
   )
@@ -74,251 +31,38 @@ function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
   )
 }
 
-function isActivePath(pathname: string | null, href: string): boolean {
-  if (href === "/") {
-    return pathname === "/"
-  }
-
-  return pathname === href || pathname?.startsWith(`${href}/`) === true
-}
-
-function MobileMenuToggleIcon({ open }: { open: boolean }) {
-  return (
-    <span className="relative block h-[18px] w-[26px]">
-      <span
-        className={`absolute left-0 top-[3px] h-[2.5px] w-full origin-center rounded-full bg-current transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          open ? "translate-y-[1px] scale-x-[0.94]" : ""
-        }`}
-      />
-      <span
-        className={`absolute left-0 bottom-[3px] h-[2.5px] w-full origin-center rounded-full bg-current transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          open ? "-translate-y-[1px] scale-x-[0.94]" : ""
-        }`}
-      />
-    </span>
-  )
-}
-
-/**
- * Header keeps the fully working desktop and mobile navigation behavior in one
- * client component so the premium hover and drawer interactions remain stable.
- */
 export default function Header(): React.JSX.Element {
-  const pathname = usePathname()
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [mobileMenuMounted, setMobileMenuMounted] = useState(false)
-  const [mobileMenuAnimationCycle, setMobileMenuAnimationCycle] = useState(0)
-  const [desktopMenuOpen, setDesktopMenuOpen] = useState<DesktopMenuId | null>(null)
-  const [desktopMenuRendered, setDesktopMenuRendered] = useState<DesktopMenuId | null>(null)
-  const [desktopMenuAnimationCycle, setDesktopMenuAnimationCycle] = useState(0)
-  const desktopCloseTimeoutRef = useRef<number | null>(null)
-  const clientPathname = pathname
-
-  const clearDesktopCloseTimeout = () => {
-    if (desktopCloseTimeoutRef.current !== null) {
-      window.clearTimeout(desktopCloseTimeoutRef.current)
-      desktopCloseTimeoutRef.current = null
-    }
-  }
-
-  const openDesktopMenu = (menuId: DesktopMenuId) => {
-    warmDesktopMenuPanel()
-    clearDesktopCloseTimeout()
-
-    if (desktopMenuRendered === null) {
-      setDesktopMenuRendered(menuId)
-      window.requestAnimationFrame(() => {
-        setDesktopMenuOpen(menuId)
-        setDesktopMenuAnimationCycle((current) => current + 1)
-      })
-      return
-    }
-
-    setDesktopMenuRendered(menuId)
-    setDesktopMenuOpen(menuId)
-    setDesktopMenuAnimationCycle((current) => current + 1)
-  }
-
-  const scheduleDesktopMenuClose = () => {
-    clearDesktopCloseTimeout()
-    desktopCloseTimeoutRef.current = window.setTimeout(() => {
-      setDesktopMenuOpen(null)
-      desktopCloseTimeoutRef.current = null
-    }, 110)
-  }
-
-  useEffect(() => {
-    const previousOverflow = document.body.style.overflow
-
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden"
-    }
-
-    return () => {
-      document.body.style.overflow = previousOverflow
-    }
-  }, [mobileMenuOpen])
-
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMobileMenuOpen(false)
-        setDesktopMenuOpen(null)
-      }
-    }
-
-    document.addEventListener("keydown", handleEscape)
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape)
-    }
-  }, [])
-
-  useEffect(() => {
-    return () => {
-      clearDesktopCloseTimeout()
-    }
-  }, [])
-
   return (
-    <>
-      <header
-        className="sticky top-0 z-50 bg-[linear-gradient(rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.94)_100%)] backdrop-blur-[10px]"
-        onMouseEnter={clearDesktopCloseTimeout}
-        onMouseLeave={scheduleDesktopMenuClose}
-      >
-        <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 md:h-[54px] md:gap-3 md:px-6 lg:px-6 xl:px-8">
-          <div className="inline-flex shrink-0 items-center">
-            <Link
-              href={siteRoutes.home}
-              prefetch={false}
-              aria-label={SITE_NAME}
-              data-framer-name="Logo"
-              className="inline-flex items-center"
-            >
-              <BrandLogo />
-            </Link>
-          </div>
-
-          <nav
-            aria-label="Primary navigation"
-            className="hidden min-w-0 items-center gap-8 md:ml-6 md:mr-auto md:flex md:gap-6 lg:gap-8"
-            onMouseEnter={warmDesktopMenuPanel}
-          >
-            {desktopMenuButtons.map((menu) => {
-              const isActive = desktopMenuOpen === menu.id
-              const hasActiveRoute = menu.matchHrefs.some((href) =>
-                clientPathname ? isActivePath(clientPathname, href) : false,
-              )
-
-              return (
-                <button
-                  key={menu.id}
-                  type="button"
-                  aria-haspopup="true"
-                  aria-expanded={isActive}
-                  aria-controls={`desktop-menu-${menu.id}`}
-                  onMouseEnter={() => openDesktopMenu(menu.id)}
-                  onFocus={() => openDesktopMenu(menu.id)}
-                  onClick={() => openDesktopMenu(menu.id)}
-                  className={`site-header-nav-link group relative inline-flex items-center px-0 py-1 text-[15px] font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${
-                    isActive || hasActiveRoute ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"
-                  }`}
-                >
-                  <span>{menu.label}</span>
-                </button>
-              )
-            })}
-          </nav>
-
-          <div className="hidden items-center gap-2 md:flex">
-            {desktopUtilityLinks.map((link, index) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                prefetch={false}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noreferrer" : undefined}
-                suppressHydrationWarning
-                className={`inline-flex items-center justify-center rounded-full px-3 py-1.5 text-xs font-medium transition-colors lg:px-3.5 lg:py-[0.45rem] ${
-                  index === 0
-                    ? "border border-[#01AACF] bg-white text-[#01AACF] hover:bg-[#01AACF]/10"
-                    : "border border-[#01AACF] bg-white text-[#01AACF] hover:bg-[#01AACF]/10"
-                }`}
-              >
-                {link.label === "Try Sandbox" ? (
-                  <span className="inline-flex items-center gap-1.5">
-                    <SandboxIcon />
-                    <span>{link.label}</span>
-                  </span>
-                ) : (
-                  link.label
-                )}
-              </Link>
-            ))}
-          </div>
-
-          <div
-            className="ml-auto flex items-center md:hidden"
-            data-framer-name="Navigation Mobile"
-          >
-            <div
-              className="flex items-center justify-end gap-2"
-              data-framer-name="Container"
-            >
-              <div
-                className="rounded-full"
-                data-framer-name="Menu Button"
-              >
-                <button
-                  type="button"
-                  className="inline-flex h-11 w-11 items-center justify-center text-[#01AACF] transition hover:text-[#01AACF]/80"
-                  aria-label="Open menu"
-                  aria-expanded={mobileMenuOpen}
-                  aria-controls="mobile-site-nav"
-                  onClick={() => {
-                    setMobileMenuMounted(true)
-                    setMobileMenuOpen(true)
-                    setMobileMenuAnimationCycle((current) => current + 1)
-                  }}
-                >
-                  <MobileMenuToggleIcon open={mobileMenuOpen} />
-                </button>
-              </div>
-            </div>
-          </div>
+    <header className="sticky top-0 z-50 bg-[linear-gradient(rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.94)_100%)] backdrop-blur-[10px]">
+      <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 md:h-[54px] md:gap-3 md:px-6 lg:px-6 xl:px-8">
+        <div className="inline-flex shrink-0 items-center">
+          <Link href={siteRoutes.home} prefetch={false} aria-label={SITE_NAME} data-framer-name="Logo" className="inline-flex items-center">
+            <BrandLogo />
+          </Link>
         </div>
 
-        {desktopMenuRendered !== null ? (
-          <DeferredHeaderDesktopMenuPanel
-            menuId={desktopMenuRendered}
-            isOpen={desktopMenuOpen !== null}
-            onOpen={clearDesktopCloseTimeout}
-            onClose={scheduleDesktopMenuClose}
-            onExited={() => setDesktopMenuRendered(null)}
-            animationCycle={desktopMenuAnimationCycle}
-          />
-        ) : null}
-      </header>
+        <HeaderDesktopNavigation />
 
-      {desktopMenuRendered !== null ? (
-        <div
-          aria-hidden="true"
-          className={`pointer-events-none fixed inset-x-0 bottom-0 top-16 z-30 hidden bg-white/10 backdrop-blur-[7px] transition-opacity duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] md:top-[54px] md:block ${
-            desktopMenuOpen !== null ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      ) : null}
+        <div className="hidden items-center gap-2 md:flex">
+          {desktopUtilityLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              prefetch={false}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noreferrer" : undefined}
+              className="inline-flex items-center justify-center rounded-full border border-[#01AACF] bg-white px-3 py-1.5 text-xs font-medium text-[#01AACF] transition-colors hover:bg-[#01AACF]/10 lg:px-3.5 lg:py-[0.45rem]"
+            >
+              <span className="inline-flex items-center gap-1.5">
+                <SandboxIcon />
+                <span>{link.label}</span>
+              </span>
+            </Link>
+          ))}
+        </div>
 
-      {mobileMenuMounted ? (
-        <HeaderMobileMenu
-          key={mobileMenuAnimationCycle}
-          open={mobileMenuOpen}
-          pathname={clientPathname}
-          brand={<BrandLogo mobileOnly />}
-          onClose={() => setMobileMenuOpen(false)}
-        />
-      ) : null}
-    </>
+        <HeaderMobileNavigation brand={<BrandLogo mobileOnly />} />
+      </div>
+    </header>
   )
 }
