@@ -16,7 +16,6 @@ export const desktopMenuButtons = [
       siteRoutes.borrow,
       siteRoutes.lend,
       siteRoutes.multiply,
-      siteRoutes.creditLines,
     ],
   },
   {

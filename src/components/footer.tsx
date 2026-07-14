@@ -104,7 +104,6 @@ const footerSections: readonly FooterSection[] = [
       { href: siteRoutes.borrow, label: "Borrow" },
       { href: siteRoutes.lend, label: "Lend" },
       { href: siteRoutes.multiply, label: "Multiply" },
-      { href: siteRoutes.creditLines, label: "Credit Lines" },
     ],
   },
   {
