@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import type { LucideIcon } from "lucide-react"
-import { ArrowRightLeft, Briefcase, Building2, ChartCandlestick, Coins, Globe2, Infinity, Landmark, Route } from "lucide-react"
+import { Coins, Infinity, Landmark } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
@@ -89,45 +89,6 @@ const creditLinesWorkflowSteps = [
       "Keep the facility active for at least 3 months to qualify and enter the review process with your application.",
     accent: "text-[#111111]",
     icon: Infinity,
-  },
-] as const
-
-const creditLinesUseCases = [
-  {
-    title: "Treasury financing",
-    description:
-      "DAOs and treasuries can borrow against LP positions to fund grants, runway, or operations without selling liquidity or losing fee flow.",
-    icon: Briefcase,
-  },
-  {
-    title: "Liquidity expansion",
-    description:
-      "LPs can borrow against existing positions, add liquidity, and grow fee exposure from the same base of capital.",
-    icon: ArrowRightLeft,
-  },
-  {
-    title: "Trading liquidity",
-    description:
-      "Traders and market makers can borrow against LP collateral to rebalance inventory, hedge risk, or seize short-notice opportunities.",
-    icon: ChartCandlestick,
-  },
-  {
-    title: "Credit across ecosystems",
-    description:
-      "Keep LP collateral in one venue and borrow for deployment across other protocols, strategies, or chains as needed.",
-    icon: Globe2,
-  },
-  {
-    title: "Runway and operations",
-    description:
-      "Cover payroll, vendors, and launches with LP-backed credit without touching your core positions or treasury reserves.",
-    icon: Building2,
-  },
-  {
-    title: "Move on short notice",
-    description:
-      "Borrow when timing matters, then redeploy capital as opportunities open across the broader market.",
-    icon: Route,
   },
 ] as const
 
@@ -432,27 +393,6 @@ export default function CreditLinesPage() {
                 </div>,
               ]}
             />
-
-            <section className="bg-white">
-              <div className="max-w-[58rem] space-y-4 text-left">
-                <SectionEyebrow tone="violet">LP use cases</SectionEyebrow>
-                <SectionTitle className="max-w-[14ch] text-[#111111] lg:max-w-none">
-                  <span className="lg:whitespace-nowrap">Ways businesses use LP credit.</span>
-                </SectionTitle>
-              </div>
-
-              <div className="mt-12 grid grid-cols-1 gap-x-16 gap-y-14 md:mt-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
-                {creditLinesUseCases.map((item) => (
-                  <WorkflowStepCard
-                    key={item.title}
-                    title={item.title}
-                    description={item.description}
-                    icon={item.icon}
-                    className="bg-transparent p-0 md:p-0"
-                  />
-                ))}
-              </div>
-            </section>
 
             <section className="relative -mx-4 overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#f8f7fc_0%,#eee8f8_50%,#f5f3fa_100%)] px-6 py-12 sm:-mx-6 sm:px-10 md:px-12 md:py-16 lg:py-20 2xl:py-18">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(139,92,246,0.10),transparent_40%),radial-gradient(circle_at_80%_100%,rgba(99,102,241,0.08),transparent_35%)]" />
