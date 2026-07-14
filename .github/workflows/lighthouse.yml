@@ -1,0 +1,22 @@
+name: Lighthouse budgets
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lighthouse:audit
+        env:
+          LIGHTHOUSE_ROUTES: /,/about,/borrow,/lend,/multiply,/blog/aave-v4-avana-spoke
+      - run: npm run lighthouse:check
