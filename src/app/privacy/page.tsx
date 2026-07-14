@@ -1,8 +1,10 @@
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import Link from "next/link"
-import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 import { diatypeItalicFont } from "@/app/site-fonts"
 import { buildOgImagePath, siteRoutes } from "@/lib/site"
+
+const ScrollSpySidebar = dynamic(() => import("@/components/scroll-spy-sidebar").then((mod) => mod.ScrollSpySidebar))
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
