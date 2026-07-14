@@ -52,6 +52,39 @@ const leverageWorkflowSteps = [
   },
 ] as const
 
+const lpUseCases = [
+  {
+    title: "Treasury financing",
+    description:
+      "DAOs and treasuries can borrow against LP positions to fund grants, runway, or operations without selling liquidity or losing fee flow.",
+  },
+  {
+    title: "Liquidity expansion",
+    description:
+      "LPs can borrow against existing positions, add liquidity, and grow fee exposure from the same base of capital.",
+  },
+  {
+    title: "Trading liquidity",
+    description:
+      "Traders and market makers can borrow against LP collateral to rebalance inventory, hedge risk, or seize short-notice opportunities.",
+  },
+  {
+    title: "Credit across ecosystems",
+    description:
+      "Keep LP collateral in one venue and borrow for deployment across other protocols, strategies, or chains as needed.",
+  },
+  {
+    title: "Runway and operations",
+    description:
+      "Cover payroll, vendors, and launches with LP-backed credit without touching your core positions or treasury reserves.",
+  },
+  {
+    title: "Move on short notice",
+    description:
+      "Borrow when timing matters, then redeploy capital as opportunities open across the broader market.",
+  },
+] as const
+
 const leverageFaqItems: InlineFaqItem[] = [
   {
     value: "leverage-1",
@@ -176,8 +209,10 @@ export default function MultiplyPage() {
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
                     <Link
-                      href={siteRoutes.earlyAccess}
+                      href="https://app.avana.cc"
                       prefetch={false}
+                      target="_blank"
+                      rel="noreferrer"
                       className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
                     >
                       Get Early Access
@@ -205,6 +240,30 @@ export default function MultiplyPage() {
 
       <section className="deferred-viewport-tall bg-white">
         <TradeMarketShowcase />
+      </section>
+
+      <section className="bg-white py-12 md:py-16 lg:py-20">
+        <div className="site-content-shell">
+          <div className="max-w-[58rem] space-y-4 text-left">
+            <SectionEyebrow tone="rose">LP use cases</SectionEyebrow>
+            <SectionTitle className="max-w-[14ch] text-[#111111] lg:max-w-none">
+              <span className="lg:whitespace-nowrap">Ways businesses use LP credit.</span>
+            </SectionTitle>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-x-16 gap-y-14 md:mt-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
+            {lpUseCases.map((item) => (
+              <article key={item.title} className="flex flex-col bg-transparent p-0 md:p-0">
+                <h3 className="text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:text-[1.55rem]">
+                  {item.title}
+                </h3>
+                <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
+                  {item.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="deferred-viewport bg-white py-12 md:py-16 2xl:py-14">

@@ -1,11 +1,59 @@
 import dynamic from "next/dynamic"
+import type { Metadata } from "next"
 import WebappHero from "@/components/webapp-hero"
-import HeroSection from "@/components/hero-section"
 import LogoMarquee from "@/components/logo-marquee"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { LazySection } from "@/components/ui/lazy-section"
+import { buildOgImagePath, SITE_NAME, SITE_URL, siteRoutes } from "@/lib/site"
+
+export const metadata: Metadata = {
+  title: "Borrow Against LP Positions on Aave v4",
+  description:
+    "Avana lets liquidity providers borrow against active LP positions while staying in the pool and continuing to earn fees.",
+  keywords: [
+    "LP collateral",
+    "borrow against LP positions",
+    "Aave v4",
+    "DeFi lending",
+    "liquidity provider loans",
+    "AMM collateral",
+  ],
+  alternates: {
+    canonical: siteRoutes.home,
+  },
+  openGraph: {
+    title: `${SITE_NAME} - Borrow Against LP Positions on Aave v4`,
+    description:
+      "Avana turns LP positions into borrowable collateral while preserving trading fee exposure and pool activity.",
+    url: SITE_URL,
+    images: [
+      {
+        url: buildOgImagePath({
+          title: SITE_NAME,
+          subtitle: "Borrow against LP positions on Aave v4",
+        }),
+        alt: `${SITE_NAME} homepage`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} - Borrow Against LP Positions on Aave v4`,
+    description:
+      "Borrow against active LP positions while staying in the pool and continuing to earn fees.",
+    images: [
+      buildOgImagePath({
+        title: SITE_NAME,
+        subtitle: "Borrow against LP positions on Aave v4",
+      }),
+    ],
+  },
+}
 
 const DeferredBuildTomorrowSection = dynamic(() => import("@/components/BuildTomorrowSection"))
+const DeferredHeroSection = dynamic(() => import("@/components/hero-section"), {
+  loading: () => <DeferredHomepageSectionsFallback />,
+})
 
 // Note: Metadata is defined in layout.tsx with title template
 // Homepage uses the default title from the template
@@ -81,12 +129,8 @@ export default function Home() {
       >
         <DeferredBuildTomorrowSection />
       </LazySection>
-      <LazySection
-        rootMargin="320px"
-        minHeight="640px"
-        fallback={<DeferredHomepageSectionsFallback />}
-      >
-        <HeroSection />
+      <LazySection rootMargin="320px" minHeight="640px" fallback={<DeferredHomepageSectionsFallback />}>
+        <DeferredHeroSection />
       </LazySection>
     </>
   )

@@ -1,15 +1,18 @@
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
-import { BadgeDollarSign, Compass, Handshake, LayoutTemplate, ShieldCheck, Workflow } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
+import { BadgeDollarSign, Coins, Compass, Handshake, Infinity, Landmark, LayoutTemplate, ShieldCheck, Workflow } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
-import BorrowPowerSection from "@/components/borrow-power-section"
-import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
-import PositionSafetySection from "@/components/position-safety-section"
-import ProductStorySection from "@/components/product-story-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
+
+const BorrowPowerSection = dynamic(() => import("@/components/borrow-power-section"))
+const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
+const ProductFeatureScrollSection = dynamic(() => import("@/components/product-feature-scroll-section"))
+const PositionSafetySection = dynamic(() => import("@/components/position-safety-section"))
+const ProductStorySection = dynamic(() => import("@/components/product-story-section"))
 
 const openSpokeFaqItems: InlineFaqItem[] = [
   {
@@ -116,6 +119,59 @@ const borrowPartnerFeatures = [
   },
 ] as const
 
+const minimumEligibilitySteps = [
+  {
+    title: "$250K",
+    description:
+      "Hold at least $250K in Liquidity Pools to qualify and enter the review process with your application.",
+    accent: "text-[#111111]",
+    icon: Coins,
+  },
+  {
+    title: "$100K",
+    description:
+      "Your initial borrow must be at least $100K to qualify and enter the review process with your application.",
+    accent: "text-[#111111]",
+    icon: Landmark,
+  },
+  {
+    title: "3+ Month",
+    description:
+      "Keep the facility active for at least 3 months to qualify and enter the review process with your application.",
+    accent: "text-[#111111]",
+    icon: Infinity,
+  },
+] as const
+
+function WorkflowStepCard({
+  title,
+  description,
+  icon,
+  className = "",
+}: {
+  title: string
+  description: string
+  icon: LucideIcon
+  className?: string
+}) {
+  const Icon = icon
+
+  return (
+    <article className={`flex flex-col rounded-[1.75rem] bg-[#f7f7f5] p-5 md:p-6 ${className}`}>
+      <div className="flex h-8 w-8 items-center justify-center text-[#111111]">
+        <Icon className="h-8 w-8" strokeWidth={1.85} />
+      </div>
+
+      <h3 className="mt-5 text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:mt-6 md:text-[1.55rem]">
+        {title}
+      </h3>
+      <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
+        {description}
+      </p>
+    </article>
+  )
+}
+
 const tokenLogoUrls = {
   bitcoin: "https://coin-logos.simplr.sh/images/bitcoin/standard.png",
   ethereum: "https://coin-logos.simplr.sh/images/ethereum/standard.png",
@@ -137,38 +193,6 @@ const tokenLogoUrls = {
   orca: "https://coin-logos.simplr.sh/images/orca/standard.png",
 } as const
 
-function BorrowMarketPlaceholderArt() {
-  return (
-    <div className="relative aspect-[10/7] overflow-hidden rounded-[22px] border border-dashed border-gray-300 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,250,252,0.98))]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.06),transparent_46%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.05),transparent_42%)]" />
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-400 shadow-sm">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="h-6 w-6">
-            <path
-              d="M4 7h16v10H4V7Z"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M7 11h10M7 14h6"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-        <div className="mt-4 space-y-1">
-          <p className="text-lg font-semibold text-gray-900">Image placeholder</p>
-          <p className="text-sm text-gray-500">Borrow market visual will go here.</p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function BorrowMarketCard({
   number,
   title,
@@ -185,9 +209,6 @@ function BorrowMarketCard({
         {title}
       </h3>
       <p className="mt-3 text-sm leading-6 text-gray-600">{description}</p>
-      <div className="mt-6">
-        <BorrowMarketPlaceholderArt />
-      </div>
     </div>
   )
 }
@@ -341,7 +362,7 @@ export default function BorrowPage() {
                       alt="App interface"
                       width={1200}
                       height={1200}
-                      quality={70}
+                      quality={58}
                       className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                       sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
                       priority
@@ -364,8 +385,10 @@ export default function BorrowPage() {
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
                     <Link
-                      href="/faq"
+                      href="https://app.avana.cc"
                       prefetch={false}
+                      target="_blank"
+                      rel="noreferrer"
                       className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
                     >
                       Get Early Access
@@ -409,6 +432,74 @@ export default function BorrowPage() {
                   {feature.description}
                 </p>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-12 md:py-16 lg:py-20">
+        <div className="site-content-shell">
+          <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:grid-rows-[auto_auto] lg:gap-18">
+            <div className="max-w-[33rem] pt-2 lg:col-start-1 lg:row-start-1 lg:pt-6">
+              <SectionEyebrow tone="violet">Working capital</SectionEyebrow>
+              <SectionTitle className="mt-5 max-w-none !text-[clamp(2rem,8.5vw,4.4rem)] !leading-[0.96] text-[#111111] lg:!text-[3.5rem]">
+                <span className={`block whitespace-nowrap ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>Access capital when</span>
+                <span className={`block whitespace-nowrap ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>opportunity calls.</span>
+              </SectionTitle>
+
+              <p className="mt-7 max-w-[28rem] text-[0.98rem] leading-[1.62] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
+                Quick access to business financing. Use your credit line to borrow against active positions, then repay automatically as future sales and cash flow come in.
+              </p>
+            </div>
+
+            <div className="relative order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:order-none lg:pt-1">
+              <div className="relative aspect-[1.18/1] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:rounded-[32px]">
+                <Image
+                  src="/images/leverage-hero-placeholder.webp"
+                  alt="Person holding a smartphone showing a finance app"
+                  fill
+                  className="object-cover object-[55%_42%]"
+                  sizes="(max-width: 1024px) 100vw, 54vw"
+                />
+              </div>
+            </div>
+
+            <div className="order-3 max-w-[33rem] pt-10 lg:col-start-1 lg:row-start-2 lg:order-none lg:pt-0">
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+                <button
+                  type="button"
+                  className="inline-flex h-[4.15rem] items-center justify-center rounded-full bg-black px-10 text-[1.02rem] font-semibold tracking-[-0.02em] text-white transition-transform hover:-translate-y-0.5 hover:bg-neutral-900"
+                >
+                  Apply now
+                </button>
+                <p className="text-[0.98rem] leading-6 text-[#111111]">
+                  Get in touch,{" "}
+                  <a href="tel:18779812128" className="font-semibold underline underline-offset-4">
+                    1-877-981-2128
+                  </a>
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="site-content-shell">
+          <div className="space-y-4 text-left">
+            <SectionEyebrow tone="violet">Minimum eligibility</SectionEyebrow>
+            <SectionTitle>Find out if you qualify.</SectionTitle>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
+            {minimumEligibilitySteps.map((step) => (
+              <WorkflowStepCard
+                key={step.title}
+                title={step.title}
+                description={step.description}
+                icon={step.icon}
+              />
             ))}
           </div>
         </div>

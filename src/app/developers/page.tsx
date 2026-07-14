@@ -11,10 +11,46 @@ import {
 } from "lucide-react"
 import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
+import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Introduction",
   description: "Avana turns supported LP positions into borrowable collateral.",
+  keywords: [
+    "LP collateral docs",
+    "borrow against LP positions",
+    "Aave v4 architecture",
+    "DeFi developer docs",
+    "liquidity provider collateral",
+  ],
+  alternates: {
+    canonical: siteRoutes.developers,
+  },
+  openGraph: {
+    title: "Developer Docs",
+    description: `Technical documentation for integrating with ${SITE_NAME}.`,
+    url: siteRoutes.developers,
+    images: [
+      {
+        url: buildOgImagePath({
+          title: "Developer Docs",
+          subtitle: `Technical guides for integrating with ${SITE_NAME}`,
+          type: "developers",
+        }),
+        alt: "Developer Docs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      buildOgImagePath({
+        title: "Developer Docs",
+        subtitle: `Technical guides for integrating with ${SITE_NAME}`,
+        type: "developers",
+      }),
+    ],
+  },
 }
 
 const sections = [

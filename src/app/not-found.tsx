@@ -2,7 +2,6 @@ import Link from "next/link"
 
 const links = [
   { href: "/faq", label: "FAQ" },
-  { href: "/lightpaper", label: "Lightpaper" },
 ]
 
 export default function NotFound() {
