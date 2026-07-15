@@ -423,10 +423,10 @@ export default function HeroSection() {
 
             <div className="w-full space-y-2 overflow-hidden py-5 [mask-image:linear-gradient(to_right,transparent_0%,black_11%,black_89%,transparent_100%)]">
               {[
-                { items: repeatItems(homepagePools, 12, 0), motion: "animate-scroll-left", duration: "62s" },
-                { items: repeatItems(homepagePools, 12, 6), motion: "animate-scroll-right", duration: "70s" },
-                { items: repeatItems(homepagePools, 12, 12), motion: "animate-scroll-left-slow", duration: "78s" },
-                { items: repeatItems(homepagePools, 12, 18), motion: "animate-scroll-right-slow", duration: "86s" },
+                { items: repeatItems(homepagePools, 8, 0), motion: "animate-scroll-left", duration: "62s" },
+                { items: repeatItems(homepagePools, 8, 6), motion: "animate-scroll-right", duration: "70s" },
+                { items: repeatItems(homepagePools, 8, 12), motion: "animate-scroll-left-slow", duration: "78s" },
+                { items: repeatItems(homepagePools, 8, 18), motion: "animate-scroll-right-slow", duration: "86s" },
               ].map((row, rowIndex) => (
                 <div key={rowIndex} className="overflow-hidden">
                   <div
