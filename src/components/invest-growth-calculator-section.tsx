@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { useId, useMemo, useState } from "react"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
