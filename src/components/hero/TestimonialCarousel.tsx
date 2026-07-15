@@ -1,8 +1,12 @@
 "use client"
 
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
+import { useSectionActivity } from "@/components/ui/use-section-activity"
 import { testimonials } from "@/data/hero-data"
+
+const TESTIMONIAL_DURATION = 6000
+const TRANSITION_DURATION = 300
 
 /**
  * TestimonialCarousel - Auto-advancing testimonial carousel with progress bars.
@@ -10,46 +14,53 @@ import { testimonials } from "@/data/hero-data"
 export function TestimonialCarousel() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
-  const [progress, setProgress] = useState(0)
+  const transitionTimerRef = useRef<number | null>(null)
+  const { ref, isActive } = useSectionActivity<HTMLDivElement>()
 
-  const TESTIMONIAL_DURATION = 6000 // 6 seconds per testimonial
-
-  // Progress bar animation and auto-advance
   useEffect(() => {
-    setProgress(0)
-    const startTime = Date.now()
+    if (!isActive) return
 
-    const progressInterval = setInterval(() => {
-      const elapsed = Date.now() - startTime
-      const newProgress = Math.min((elapsed / TESTIMONIAL_DURATION) * 100, 100)
-      setProgress(newProgress)
+    const advanceTimer = window.setTimeout(() => {
+      setIsAnimating(true)
+      transitionTimerRef.current = window.setTimeout(() => {
+        setCurrentTestimonial((previous) => (previous + 1) % testimonials.length)
+        setIsAnimating(false)
+        transitionTimerRef.current = null
+      }, TRANSITION_DURATION)
+    }, TESTIMONIAL_DURATION)
 
-      if (newProgress >= 100) {
-        clearInterval(progressInterval)
-        setIsAnimating(true)
-        setTimeout(() => {
-          setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-          setIsAnimating(false)
-        }, 300)
+    return () => {
+      window.clearTimeout(advanceTimer)
+      if (transitionTimerRef.current !== null) {
+        window.clearTimeout(transitionTimerRef.current)
+        transitionTimerRef.current = null
       }
-    }, 50)
-
-    return () => clearInterval(progressInterval)
-  }, [currentTestimonial])
+    }
+  }, [currentTestimonial, isActive])
 
   const handleTestimonialChange = (idx: number) => {
     if (idx === currentTestimonial) return
+
+    if (transitionTimerRef.current !== null) {
+      window.clearTimeout(transitionTimerRef.current)
+    }
+
     setIsAnimating(true)
-    setTimeout(() => {
+    transitionTimerRef.current = window.setTimeout(() => {
       setCurrentTestimonial(idx)
       setIsAnimating(false)
-    }, 300)
+      transitionTimerRef.current = null
+    }, TRANSITION_DURATION)
   }
 
   const testimonial = testimonials[currentTestimonial]
 
   return (
-    <div className="py-16 md:py-20 border-t border-gray-100">
+    <div
+      ref={ref}
+      data-performance-active={isActive ? "true" : "false"}
+      className="py-16 md:py-20 border-t border-gray-100"
+    >
       <div className="flex flex-col lg:flex-row">
         {/* Left: Protocol list */}
         <div className="lg:w-2/5 lg:border-r border-gray-200 lg:pr-8">
@@ -62,7 +73,7 @@ export function TestimonialCarousel() {
               role="button"
               tabIndex={0}
               aria-label={`View testimonial from ${t.author}`}
-              aria-selected={currentTestimonial === idx}
+              aria-pressed={currentTestimonial === idx}
             >
               <div className="flex justify-between items-center">
                 <span className={`text-base transition-all duration-300 ${currentTestimonial === idx ? "font-semibold text-gray-900" : "text-gray-500"}`}>
@@ -73,10 +84,12 @@ export function TestimonialCarousel() {
                 </span>
               </div>
               <div className="h-0.5 mt-3 w-full bg-gray-200 overflow-hidden">
-                <div
-                  className={`h-full bg-blue-600 transition-none ${currentTestimonial === idx ? '' : 'w-0'}`}
-                  style={{ width: currentTestimonial === idx ? `${progress}%` : '0%' }}
-                />
+                {currentTestimonial === idx ? (
+                  <div
+                    key={`testimonial-progress-${currentTestimonial}`}
+                    className="h-full origin-left bg-blue-600 testimonial-progress"
+                  />
+                ) : null}
               </div>
             </div>
           ))}
@@ -115,6 +128,16 @@ export function TestimonialCarousel() {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        .testimonial-progress {
+          animation: testimonial-progress ${TESTIMONIAL_DURATION}ms linear forwards;
+        }
+
+        @keyframes testimonial-progress {
+          from { transform: scaleX(0); }
+          to { transform: scaleX(1); }
+        }
+      `}</style>
     </div>
   )
 }
