@@ -23,7 +23,27 @@
 .borrow-oracle-bridge,
 .borrow-hub-flow { animation: borrow-dash 2s linear infinite; }
 .borrow-credit-gate-pulse,
-.borrow-hub-node-pulse { animation: borrow-border 2.8s ease-in-out infinite; }
+.borrow-hub-node-pulse { position: relative; }
+.borrow-credit-gate-pulse::after,
+.borrow-hub-node-pulse::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  animation: borrow-border-opacity 2.8s ease-in-out infinite;
+}
+.borrow-credit-gate-pulse::after {
+  inset: -1px;
+  border: 1px solid rgb(100 116 139);
+  border-radius: inherit;
+}
+.borrow-hub-node-pulse::after {
+  top: 0;
+  right: -1px;
+  bottom: 0;
+  width: 1px;
+  background: rgb(100 116 139);
+}
 .borrow-dual-stream-borrow { animation: borrow-fade 4s ease-in-out infinite; }
 .borrow-risk-shuttle { position: absolute; left: 50%; top: 50%; animation: borrow-shuttle 6s ease-in-out infinite; }
 
@@ -39,9 +59,12 @@
 @keyframes borrow-scan { from { transform: translateY(0); opacity: 0; } 12%, 88% { opacity: .9; } to { transform: translateY(86px); opacity: 0; } }
 @keyframes borrow-bar { 0%, 100% { transform: scaleY(.72); opacity: .72; } 50% { transform: scaleY(1); opacity: 1; } }
 @keyframes borrow-dash { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -24; } }
-@keyframes borrow-border { 0%, 100% { border-color: rgb(209 213 219); } 50% { border-color: rgb(100 116 139); } }
+@keyframes borrow-border-opacity { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
 @keyframes borrow-shuttle { 0%, 100% { transform: translate(-50%, -50%) translateX(-20px); } 50% { transform: translate(-50%, -50%) translateX(20px); } }
 
 @media (prefers-reduced-motion: reduce) {
-  [class^="borrow-"], [class*=" borrow-"] { animation: none !important; }
+  [class^="borrow-"],
+  [class*=" borrow-"],
+  .borrow-credit-gate-pulse::after,
+  .borrow-hub-node-pulse::after { animation: none !important; }
 }
