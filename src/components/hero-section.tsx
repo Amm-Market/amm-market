@@ -4,6 +4,7 @@ import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSecti
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
+import { PerformanceSection } from "@/components/ui/performance-section"
 import { TokenLogo } from "@/components/token-logo"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
@@ -403,7 +404,7 @@ function LendingCoverageTable() {
 
 export default function HeroSection() {
   return (
-    <section className="marketing-secondary-shell pb-0">
+    <PerformanceSection className="marketing-secondary-shell pb-0">
       <div className="site-content-shell space-y-32 pt-16 md:space-y-40 md:pt-20 2xl:space-y-36 2xl:pt-18">
         <div className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-6">
@@ -1160,6 +1161,6 @@ export default function HeroSection() {
           </div>
         </LazySection>
       </div>
-    </section>
+    </PerformanceSection>
   )
 }

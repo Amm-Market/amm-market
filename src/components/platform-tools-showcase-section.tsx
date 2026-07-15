@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { useSectionActivity } from "@/components/ui/use-section-activity"
 
 const SLIDES = [
   {
@@ -58,17 +59,22 @@ function PlaceholderImage({
 
 export default function PlatformToolsShowcaseSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const { ref, isActive } = useSectionActivity<HTMLElement>()
 
   useEffect(() => {
+    if (!isActive) return
+
     const intervalId = window.setInterval(() => {
       setCurrentIndex((index) => (index === SLIDES.length - 1 ? 0 : index + 1))
     }, 4500)
 
     return () => window.clearInterval(intervalId)
-  }, [])
+  }, [isActive])
 
   return (
     <section
+      ref={ref}
+      data-performance-active={isActive ? "true" : "false"}
       data-section="platform-tools-showcase"
       data-theme="beige"
       className="w-full bg-inherit"
