@@ -95,9 +95,6 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  experimental: {
-    inlineCss: true,
-  },
   /**
    * Image optimization configuration
    * Defines allowed external image domains for Next.js Image component
