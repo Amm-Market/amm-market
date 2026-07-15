@@ -184,7 +184,7 @@ export default function LendPage() {
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                   <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
                   <Image
-                    src="/images/Hero__4_.png"
+                    src="/images/Hero__4_.webp"
                     alt="App interface"
                     width={1200}
                     height={1200}
