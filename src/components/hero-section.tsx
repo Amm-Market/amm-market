@@ -4,7 +4,7 @@ import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSecti
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
-import { PerformanceSection } from "@/components/ui/performance-section"
+import { PerformanceDiv } from "@/components/ui/performance-section"
 import { TokenLogo } from "@/components/token-logo"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
@@ -404,9 +404,9 @@ function LendingCoverageTable() {
 
 export default function HeroSection() {
   return (
-    <PerformanceSection className="marketing-secondary-shell pb-0">
+    <section className="marketing-secondary-shell pb-0">
       <div className="site-content-shell space-y-32 pt-16 md:space-y-40 md:pt-20 2xl:space-y-36 2xl:pt-18">
-        <div className="flex flex-col gap-8 md:gap-12">
+        <PerformanceDiv className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-6">
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="cyan">Borrowing Power</SectionEyebrow>
@@ -452,7 +452,7 @@ export default function HeroSection() {
                 Sandbox data shown for preview only. APYs, prices, and returns are illustrative and may differ from live market conditions.
               </span>
             </div>
-        </div>
+        </PerformanceDiv>
       </div>
 
       <div className="site-content-shell pt-24 md:pt-32 2xl:pt-28">
@@ -474,7 +474,7 @@ export default function HeroSection() {
       </div>
 
       <div className="site-content-shell space-y-32 pt-32 md:space-y-40 md:pt-40 2xl:space-y-36 2xl:pt-36">
-        <div>
+        <PerformanceDiv>
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="amber">Trading Pairs</SectionEyebrow>
@@ -1061,7 +1061,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-        </div>
+        </PerformanceDiv>
 
 
       <div className="site-content-shell pt-4 md:pt-6 2xl:pt-6">
@@ -1172,6 +1172,6 @@ export default function HeroSection() {
           </div>
         </LazySection>
       </div>
-    </PerformanceSection>
+    </section>
   )
 }
