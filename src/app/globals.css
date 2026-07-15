@@ -233,7 +233,9 @@
   }
 }
 
-[data-performance-active="false"] * {
+[data-performance-active="false"] *,
+[data-performance-active="false"] *::before,
+[data-performance-active="false"] *::after {
   animation-play-state: paused !important;
 }
 
