@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { useSectionActivity } from "@/components/ui/use-section-activity"
 
 const SLIDES = [
   {
@@ -27,17 +28,22 @@ const SLIDES = [
  */
 export function BuildTomorrowSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const { ref, isActive } = useSectionActivity<HTMLElement>()
 
   useEffect(() => {
+    if (!isActive) return
+
     const intervalId = window.setInterval(() => {
       setCurrentIndex((i) => (i === SLIDES.length - 1 ? 0 : i + 1))
     }, 4500)
 
     return () => window.clearInterval(intervalId)
-  }, [])
+  }, [isActive])
 
   return (
     <section
+      ref={ref}
+      data-performance-active={isActive ? "true" : "false"}
       data-section="slideshow-module-record"
       data-id="theme-switcher"
       data-theme="beige"

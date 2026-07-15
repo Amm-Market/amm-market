@@ -1,7 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { useSectionActivity } from "@/components/ui/use-section-activity"
 
 const FEATURE_DURATION = 10000
 const TRANSITION_DURATION = 300
@@ -32,8 +33,12 @@ const featureHighlights = [
 export default function HomepageTestimonialSection() {
   const [currentFeature, setCurrentFeature] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+  const transitionTimerRef = useRef<number | null>(null)
+  const { ref, isActive } = useSectionActivity<HTMLDivElement>()
 
   useEffect(() => {
+    if (!isActive) return
+
     let transitionTimer: number | undefined
 
     const advanceTimer = window.setTimeout(() => {
@@ -50,23 +55,39 @@ export default function HomepageTestimonialSection() {
         window.clearTimeout(transitionTimer)
       }
     }
-  }, [currentFeature])
+  }, [currentFeature, isActive])
+
+  useEffect(() => {
+    return () => {
+      if (transitionTimerRef.current !== null) {
+        window.clearTimeout(transitionTimerRef.current)
+      }
+    }
+  }, [])
 
   const handleFeatureChange = (index: number) => {
     if (index === currentFeature) {
       return
     }
 
+    if (transitionTimerRef.current !== null) {
+      window.clearTimeout(transitionTimerRef.current)
+    }
+
     setIsAnimating(true)
-    window.setTimeout(() => {
+    transitionTimerRef.current = window.setTimeout(() => {
       setCurrentFeature(index)
       setIsAnimating(false)
+      transitionTimerRef.current = null
     }, TRANSITION_DURATION)
   }
 
   const feature = featureHighlights[currentFeature]
   return (
-    <div>
+    <div
+      ref={ref}
+      data-performance-active={isActive ? "true" : "false"}
+    >
       <div className="mb-8 space-y-3 md:mb-10">
         <SectionEyebrow tone="rose">Borrow with Confidence</SectionEyebrow>
         <SectionTitle>Keep your money safe as it grows.</SectionTitle>
