@@ -100,6 +100,7 @@ const nextConfig: NextConfig = {
    * Defines allowed external image domains for Next.js Image component
    */
   images: {
+    qualities: [58, 62, 75, 85],
     remotePatterns: [
       {
         protocol: "https",
