@@ -1,5 +1,6 @@
 import { SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
 import PlatformPlaceholderPanel from "@/components/platform-placeholder-panel"
+import { PerformanceSection } from "@/components/ui/performance-section"
 
 type PlatformSafetyCarouselItem = {
   title: string
@@ -26,7 +27,7 @@ export default function PlatformSafetyCarouselSection({
   items,
 }: PlatformSafetyCarouselSectionProps) {
   return (
-    <section>
+    <PerformanceSection>
       <div className="max-w-[42rem] space-y-3">
         <SectionEyebrow tone={eyebrowTone}>
           {eyebrow}
@@ -66,6 +67,6 @@ export default function PlatformSafetyCarouselSection({
           </div>
         </div>
       </div>
-    </section>
+    </PerformanceSection>
   )
 }

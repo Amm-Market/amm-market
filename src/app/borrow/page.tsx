@@ -6,6 +6,7 @@ import type { LucideIcon } from "lucide-react"
 import { BadgeDollarSign, Coins, Compass, Handshake, Infinity, Landmark, LayoutTemplate, ShieldCheck, Workflow } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { PerformanceSection } from "@/components/ui/performance-section"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
 const BorrowPowerSection = dynamic(() => import("@/components/borrow-power-section"))
@@ -505,7 +506,7 @@ export default function BorrowPage() {
         </div>
       </section>
 
-      <section className="pt-32 md:pt-40 2xl:pt-36">
+      <PerformanceSection className="pt-32 md:pt-40 2xl:pt-36">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem] space-y-32 md:space-y-40 2xl:space-y-36">
             <div className="flex flex-col gap-6">
@@ -604,7 +605,7 @@ export default function BorrowPage() {
             </div>
           </div>
         </div>
-      </section>
+      </PerformanceSection>
 
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
         <div className="flex-1 flex flex-col relative z-0">

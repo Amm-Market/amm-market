@@ -233,6 +233,10 @@
   }
 }
 
+[data-performance-active="false"] * {
+  animation-play-state: paused !important;
+}
+
 @keyframes inline-faq-reveal {
   from {
     opacity: 0;
