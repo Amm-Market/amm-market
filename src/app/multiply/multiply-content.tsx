@@ -4,7 +4,7 @@ import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import LeverageGlanceShowcaseSection from "@/components/leverage-glance-showcase-section"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import TradeMarketShowcase from "@/components/trade-market-showcase"
+import DeferredTradeMarketShowcase from "@/components/deferred-trade-market-showcase"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
@@ -239,7 +239,7 @@ export default function MultiplyPage() {
       </section>
 
       <section className="deferred-viewport-tall bg-white">
-        <TradeMarketShowcase />
+        <DeferredTradeMarketShowcase />
       </section>
 
       <section className="bg-white py-12 md:py-16 lg:py-20">
