@@ -122,6 +122,11 @@ const nextConfig: NextConfig = {
         hostname: "cdn-front.freepik.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "coin-logos.simplr.sh",
+        pathname: "/images/**",
+      },
     ],
   },
   async headers() {
