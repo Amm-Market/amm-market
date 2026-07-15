@@ -1,0 +1,71 @@
+.scroll {
+  animation: scroll 14s linear infinite;
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.pulseFast {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+.barGrow {
+  animation: bar-grow 12s ease-in-out infinite;
+}
+
+.orbit {
+  animation: orbit 20s linear infinite;
+}
+
+.warnBar {
+  width: 80%;
+  animation: warning-bar 6s ease-in-out infinite;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.6); }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes bar-grow {
+  0%, 45% { transform: scaleX(0.6); }
+  50%, 95% { transform: scaleX(1); }
+  100% { transform: scaleX(0.6); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes warning-bar {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.3); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll,
+  .pulse,
+  .pulseFast,
+  .breathe,
+  .barGrow,
+  .orbit,
+  .warnBar {
+    animation: none;
+  }
+}
