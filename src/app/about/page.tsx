@@ -63,7 +63,7 @@ export default function AboutPage() {
 
           <div className="relative mt-10 aspect-[1630/965] w-full overflow-hidden rounded-sm border border-black/8 bg-gray-100 lg:mt-14">
             <Image
-              src="/images/Avana About.png"
+              src="/images/Avana About.webp"
               alt="Avana about hero image"
               fill
               priority
