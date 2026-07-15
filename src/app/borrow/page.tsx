@@ -291,11 +291,13 @@ function PoolLogoStack({ logos, title }: { logos: readonly string[]; title: stri
   return (
     <div className="flex items-center -space-x-3">
       {logos.map((logo, index) => (
-        <img
+        <Image
           key={`${title}-${index}`}
           src={logo}
           alt=""
-          aria-hidden="true"
+          width={40}
+          height={40}
+          sizes="40px"
           className="h-8 w-8 rounded-full border border-gray-100 bg-white object-cover shadow-sm md:h-10 md:w-10"
         />
       ))}
