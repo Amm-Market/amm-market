@@ -366,9 +366,8 @@ export default function BorrowPage() {
                       quality={58}
                       className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                       sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
-                      priority
-                    fetchPriority="high"
-                  />
+                      fetchPriority="high"
+                    />
                 </div>
               </div>
 

@@ -191,7 +191,6 @@ export default function LendPage() {
                     quality={58}
                     className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                     sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
-                    priority
                     fetchPriority="high"
                   />
                 </div>
@@ -253,7 +252,6 @@ export default function LendPage() {
                     height={1601}
                     className="h-auto w-full"
                     sizes="(min-width: 1280px) 31rem, (min-width: 1024px) 28rem, (min-width: 768px) 25rem, (min-width: 640px) 22rem, 17rem"
-                    priority={false}
                   />
                 </div>
               </div>
