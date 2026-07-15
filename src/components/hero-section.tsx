@@ -901,16 +901,26 @@ export default function HeroSection() {
                 <style>{`
                   /* === Card 01: Maximize Capital — ring + ledger === */
                   .ce-ring-breathe {
-                    animation: ce-rb 12s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                    box-shadow: 0 8px 18px rgba(15,23,42,0.04);
+                    animation: ce-rb-scale 12s cubic-bezier(0.76, 0, 0.24, 1) infinite;
                   }
-                  @keyframes ce-rb {
-                    0%, 22% { box-shadow: 0 8px 18px rgba(15,23,42,0.04); transform: scale(1); }
-                    24%, 26% { box-shadow: 0 12px 22px rgba(15,23,42,0.06); transform: scale(1.015); }
-                    28%, 50% { box-shadow: 0 8px 18px rgba(15,23,42,0.04); transform: scale(1); }
-                    52%, 54% { box-shadow: 0 12px 22px rgba(15,23,42,0.06); transform: scale(1.015); }
-                    56%, 78% { box-shadow: 0 8px 18px rgba(15,23,42,0.04); transform: scale(1); }
-                    80%, 82% { box-shadow: 0 12px 22px rgba(15,23,42,0.06); transform: scale(1.015); }
-                    84%, 100% { box-shadow: 0 8px 18px rgba(15,23,42,0.04); transform: scale(1); }
+                  .ce-ring-breathe::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    pointer-events: none;
+                    border-radius: inherit;
+                    box-shadow: 0 12px 22px rgba(15,23,42,0.06);
+                    opacity: 0;
+                    animation: ce-rb-shadow 12s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+                  }
+                  @keyframes ce-rb-scale {
+                    0%, 22%, 28%, 50%, 56%, 78%, 84%, 100% { transform: scale(1); }
+                    24%, 26%, 52%, 54%, 80%, 82% { transform: scale(1.015); }
+                  }
+                  @keyframes ce-rb-shadow {
+                    0%, 22%, 28%, 50%, 56%, 78%, 84%, 100% { opacity: 0; }
+                    24%, 26%, 52%, 54%, 80%, 82% { opacity: 1; }
                   }
 
                   .ce-ticker-ltv {
@@ -1031,6 +1041,7 @@ export default function HeroSection() {
                   /* === Reduced motion === */
                   @media (prefers-reduced-motion: reduce) {
                     .ce-ring-breathe,
+                    .ce-ring-breathe::after,
                     .ce-ticker-ltv,
                     .ce-ltv-arc,
                     .ce-ticker-v,
