@@ -33,7 +33,7 @@ const zoneConfig = {
 }
 
 /* Unique inner visualization per variant — all with continuous infinite animations */
-function PanelVisualization({ variant, zone }: { variant: number; zone: string }) {
+function PanelVisualization({ variant }: { variant: number }) {
   const v = variant % 7
 
   if (v === 0) {
@@ -244,7 +244,7 @@ export default function PlatformPlaceholderPanel({
       >
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.15),transparent_42%,rgba(0,0,0,0.05)_100%)]" />
 
-        <PanelVisualization variant={variant} zone={zone} />
+        <PanelVisualization variant={variant} />
 
         <div className={`absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t ${config.bottom} to-transparent`} />
         <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(140deg,rgba(255,255,255,0.25),transparent_34%,transparent_60%,rgba(255,255,255,0.08)_100%)]" />
