@@ -1,8 +1,18 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import type { ReactNode } from "react"
 import { useEffect, useState } from "react"
-import HeaderMobileMenu from "@/components/header-mobile-menu"
+
+const DeferredHeaderMobileMenu = dynamic(() => import("@/components/header-mobile-menu"), {
+  ssr: false,
+})
+
+let mobileMenuPromise: Promise<unknown> | null = null
+
+function warmMobileMenu() {
+  mobileMenuPromise ??= import("@/components/header-mobile-menu")
+}
 
 function MobileMenuToggleIcon() {
   return (
@@ -35,7 +45,11 @@ export default function HeaderMobileNavigation({ brand }: { brand: ReactNode }) 
         aria-label="Open menu"
         aria-expanded={mobileMenuOpen}
         aria-controls="mobile-site-nav"
+        onFocus={warmMobileMenu}
+        onPointerEnter={warmMobileMenu}
+        onTouchStart={warmMobileMenu}
         onClick={() => {
+          warmMobileMenu()
           setMobileMenuMounted(true)
           setMobileMenuOpen(true)
           setMobileMenuAnimationCycle((current) => current + 1)
@@ -44,7 +58,14 @@ export default function HeaderMobileNavigation({ brand }: { brand: ReactNode }) 
         <MobileMenuToggleIcon />
       </button>
 
-      {mobileMenuMounted ? <HeaderMobileMenu key={mobileMenuAnimationCycle} open={mobileMenuOpen} brand={brand} onClose={() => setMobileMenuOpen(false)} /> : null}
+      {mobileMenuMounted ? (
+        <DeferredHeaderMobileMenu
+          key={mobileMenuAnimationCycle}
+          open={mobileMenuOpen}
+          brand={brand}
+          onClose={() => setMobileMenuOpen(false)}
+        />
+      ) : null}
     </div>
   )
 }
