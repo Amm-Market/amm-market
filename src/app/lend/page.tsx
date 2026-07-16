@@ -184,14 +184,14 @@ export default function LendPage() {
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                   <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
                   <Image
-                    src="/images/Hero__4_.png"
+                    src="/images/Hero__4_.webp"
                     alt="App interface"
                     width={1200}
                     height={1200}
                     quality={58}
+                    preload
                     className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                     sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
-                    priority
                     fetchPriority="high"
                   />
                 </div>
@@ -253,7 +253,6 @@ export default function LendPage() {
                     height={1601}
                     className="h-auto w-full"
                     sizes="(min-width: 1280px) 31rem, (min-width: 1024px) 28rem, (min-width: 768px) 25rem, (min-width: 640px) 22rem, 17rem"
-                    priority={false}
                   />
                 </div>
               </div>

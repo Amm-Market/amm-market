@@ -32,6 +32,7 @@ const simpleIconLogo = (slug: string) => `https://cdn.simpleicons.org/${slug}/11
 const siteFaviconLogo = (domain: string) => `https://www.google.com/s2/favicons?sz=128&domain=${domain}`
 const flagLogo = (code: string) => `https://flagcdn.com/w40/${code}.png`
 const fallbackLogo = "/file.svg"
+const MARKET_ITEMS_PER_ROW = 9
 
 const marketItems: MarketItem[] = [
   // Crypto
@@ -172,17 +173,16 @@ function MarqueeRow({
   duration: number
 }) {
   const trackClass = reverse ? "animate-scroll-right" : "animate-scroll-left"
-  const visibleItems = useMemo(() => repeatItems(items, 18, 0), [items])
 
   return (
     <div className="relative overflow-hidden py-1">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-white to-transparent sm:w-16" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-white to-transparent sm:w-16" />
       <div className={`flex w-max items-center gap-2.5 ${trackClass}`} style={{ animationDuration: `${duration}s` }}>
-        {visibleItems.map((item, index) => (
+        {items.map((item, index) => (
           <MarketChip key={`${item.name}-${item.ticker}-${index}-a`} item={item} />
         ))}
-        {visibleItems.map((item, index) => (
+        {items.map((item, index) => (
           <MarketChip key={`${item.name}-${item.ticker}-${index}-b`} item={item} />
         ))}
       </div>
@@ -201,10 +201,10 @@ export default function TradeMarketShowcase() {
     if (filteredItems.length === 0) return [[], [], [], []] as MarketItem[][]
 
     return [
-      repeatItems(filteredItems, 18, 0),
-      repeatItems(filteredItems, 18, 5),
-      repeatItems(filteredItems, 18, 10),
-      repeatItems(filteredItems, 18, 15),
+      repeatItems(filteredItems, MARKET_ITEMS_PER_ROW, 0),
+      repeatItems(filteredItems, MARKET_ITEMS_PER_ROW, 5),
+      repeatItems(filteredItems, MARKET_ITEMS_PER_ROW, 10),
+      repeatItems(filteredItems, MARKET_ITEMS_PER_ROW, 15),
     ]
   }, [filteredItems])
 
