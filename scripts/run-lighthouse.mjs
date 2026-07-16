@@ -14,6 +14,54 @@ const APP_PATH_ROUTES_MANIFEST = path.join(process.cwd(), ".next", "app-path-rou
 const ROUTES_MANIFEST = path.join(process.cwd(), ".next", "routes-manifest.json");
 const EXCLUDED_ROUTES = new Set(["/_global-error", "/_not-found", "/favicon.ico", "/robots.txt", "/sitemap.xml", "/og"]);
 const REQUESTED_ROUTES = process.env.LIGHTHOUSE_ROUTES?.split(",").map((route) => route.trim()).filter(Boolean);
+const RUNS = Math.max(1, Number(process.env.LIGHTHOUSE_RUNS ?? 3));
+
+function median(values) {
+  const sorted = [...values].sort((a, b) => a - b);
+  const middle = Math.floor(sorted.length / 2);
+
+  return sorted.length % 2 === 0
+    ? (sorted[middle - 1] + sorted[middle]) / 2
+    : sorted[middle];
+}
+
+function metric(report, auditId) {
+  return report.audits[auditId]?.numericValue ?? 0;
+}
+
+function networkBytes(report, resourceType) {
+  const requests = report.audits["network-requests"]?.details?.items ?? [];
+
+  return requests
+    .filter((request) => !resourceType || request.resourceType === resourceType)
+    .reduce((total, request) => total + (request.transferSize ?? 0), 0);
+}
+
+function reportMetrics(report) {
+  return {
+    performance: Math.round((report.categories.performance?.score ?? 0) * 100),
+    accessibility: Math.round((report.categories.accessibility?.score ?? 0) * 100),
+    bestPractices: Math.round((report.categories["best-practices"]?.score ?? 0) * 100),
+    seo: Math.round((report.categories.seo?.score ?? 0) * 100),
+    fcp: metric(report, "first-contentful-paint"),
+    lcp: metric(report, "largest-contentful-paint"),
+    tbt: metric(report, "total-blocking-time"),
+    cls: metric(report, "cumulative-layout-shift"),
+    mainThread: metric(report, "mainthread-work-breakdown"),
+    domSize: metric(report, "dom-size"),
+    transferBytes: networkBytes(report),
+    jsTransferBytes: networkBytes(report, "Script"),
+    imageTransferBytes: networkBytes(report, "Image"),
+  };
+}
+
+function medianMetrics(results) {
+  const keys = Object.keys(results[0]);
+
+  return Object.fromEntries(
+    keys.map((key) => [key, median(results.map((result) => result[key]))]),
+  );
+}
 
 function routeSlug(route) {
   return route === "/" ? "home" : route.replace(/^\//, "").replace(/\//g, "--");
@@ -138,49 +186,55 @@ async function main() {
 
     try {
       const summary = [];
-      console.log(`Auditing ${routes.length} routes...`);
+      console.log(`Auditing ${routes.length} routes with ${RUNS} run${RUNS === 1 ? "" : "s"} each...`);
 
       for (const [index, route] of routes.entries()) {
-        console.log(`[${index + 1}/${routes.length}] Auditing ${route}`);
         const url = `${BASE_URL}${route}`;
-        const outputBase = path.join(OUTPUT_DIR, routeSlug(route));
-        const runnerResult = await lighthouse(
-          url,
-          {
-            port: chrome.port,
-            output: ["html", "json"],
-            onlyCategories: CATEGORIES,
-            logLevel: "error",
-          },
-        );
+        const routeResults = [];
 
-        if (!runnerResult) {
-          throw new Error(`Lighthouse did not return a result for ${url}`);
+        for (let run = 1; run <= RUNS; run += 1) {
+          console.log(`[${index + 1}/${routes.length}] Auditing ${route} (${run}/${RUNS})`);
+          const runnerResult = await lighthouse(
+            url,
+            {
+              port: chrome.port,
+              output: ["html", "json"],
+              onlyCategories: CATEGORIES,
+              logLevel: "error",
+            },
+          );
+
+          if (!runnerResult) {
+            throw new Error(`Lighthouse did not return a result for ${url}`);
+          }
+
+          const outputBase = path.join(OUTPUT_DIR, `${routeSlug(route)}.run-${run}`);
+          const reports = Array.isArray(runnerResult.report) ? runnerResult.report : [runnerResult.report];
+
+          for (const report of reports) {
+            const extension = report.trimStart().startsWith("{") ? "json" : "html";
+            await writeFile(`${outputBase}.report.${extension}`, report, "utf8");
+          }
+
+          routeResults.push(reportMetrics(runnerResult.lhr));
         }
 
-        const reports = Array.isArray(runnerResult.report) ? runnerResult.report : [runnerResult.report];
-
-        for (const report of reports) {
-          const extension = report.trimStart().startsWith("{") ? "json" : "html";
-          await writeFile(`${outputBase}.report.${extension}`, report, "utf8");
-        }
-
-        const routeSummary = {
-          route,
-          performance: Math.round((runnerResult.lhr.categories.performance?.score ?? 0) * 100),
-          accessibility: Math.round((runnerResult.lhr.categories.accessibility?.score ?? 0) * 100),
-          bestPractices: Math.round((runnerResult.lhr.categories["best-practices"]?.score ?? 0) * 100),
-          seo: Math.round((runnerResult.lhr.categories.seo?.score ?? 0) * 100),
-        };
+        const routeSummary = { route, runs: RUNS, ...medianMetrics(routeResults) };
 
         summary.push(routeSummary);
         console.log(
           `[${index + 1}/${routes.length}] Done ${route} ` +
-            `(P ${routeSummary.performance}, A ${routeSummary.accessibility}, BP ${routeSummary.bestPractices}, SEO ${routeSummary.seo})`,
+            `(P ${routeSummary.performance}, FCP ${Math.round(routeSummary.fcp)}ms, ` +
+            `LCP ${Math.round(routeSummary.lcp)}ms, TBT ${Math.round(routeSummary.tbt)}ms)`,
         );
       }
 
       console.table(summary);
+      await writeFile(
+        path.join(OUTPUT_DIR, "summary.json"),
+        JSON.stringify({ generatedAt: new Date().toISOString(), runs: RUNS, routes: summary }, null, 2),
+        "utf8",
+      );
       console.log(`Saved Lighthouse reports to ${OUTPUT_DIR}`);
     } finally {
       await chrome.kill();

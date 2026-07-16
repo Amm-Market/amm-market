@@ -6,6 +6,7 @@ import type { LucideIcon } from "lucide-react"
 import { BadgeDollarSign, Coins, Compass, Handshake, Infinity, Landmark, LayoutTemplate, ShieldCheck, Workflow } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { PerformanceSection } from "@/components/ui/performance-section"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
 const BorrowPowerSection = dynamic(() => import("@/components/borrow-power-section"))
@@ -290,11 +291,13 @@ function PoolLogoStack({ logos, title }: { logos: readonly string[]; title: stri
   return (
     <div className="flex items-center -space-x-3">
       {logos.map((logo, index) => (
-        <img
+        <Image
           key={`${title}-${index}`}
           src={logo}
           alt=""
-          aria-hidden="true"
+          width={40}
+          height={40}
+          sizes="40px"
           className="h-8 w-8 rounded-full border border-gray-100 bg-white object-cover shadow-sm md:h-10 md:w-10"
         />
       ))}
@@ -358,16 +361,16 @@ export default function BorrowPage() {
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                   <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
                     <Image
-                      src="/images/Hero__4_.png"
+                      src="/images/Hero__4_.webp"
                       alt="App interface"
                       width={1200}
                       height={1200}
                       quality={58}
+                      preload
                       className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                       sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
-                      priority
-                    fetchPriority="high"
-                  />
+                      fetchPriority="high"
+                    />
                 </div>
               </div>
 
@@ -505,7 +508,7 @@ export default function BorrowPage() {
         </div>
       </section>
 
-      <section className="pt-32 md:pt-40 2xl:pt-36">
+      <PerformanceSection className="pt-32 md:pt-40 2xl:pt-36">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem] space-y-32 md:space-y-40 2xl:space-y-36">
             <div className="flex flex-col gap-6">
@@ -604,7 +607,7 @@ export default function BorrowPage() {
             </div>
           </div>
         </div>
-      </section>
+      </PerformanceSection>
 
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
         <div className="flex-1 flex flex-col relative z-0">

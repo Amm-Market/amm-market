@@ -4,7 +4,7 @@ import Link from "next/link"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import LeverageGlanceShowcaseSection from "@/components/leverage-glance-showcase-section"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import TradeMarketShowcase from "@/components/trade-market-showcase"
+import DeferredTradeMarketShowcase from "@/components/deferred-trade-market-showcase"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
@@ -183,13 +183,13 @@ export default function MultiplyPage() {
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                   <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
                     <Image
-                      src="/images/Hero__4_.png"
+                      src="/images/Hero__4_.webp"
                       alt="Avana leverage market interface"
                       width={1400}
                       height={1400}
+                      preload
                       className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                       sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
-                      priority
                       fetchPriority="high"
                     />
                   </div>
@@ -239,7 +239,7 @@ export default function MultiplyPage() {
       </section>
 
       <section className="deferred-viewport-tall bg-white">
-        <TradeMarketShowcase />
+        <DeferredTradeMarketShowcase />
       </section>
 
       <section className="bg-white py-12 md:py-16 lg:py-20">
@@ -469,7 +469,7 @@ export default function MultiplyPage() {
 
                 <article className="relative mx-auto h-[240px] w-full max-w-[72rem] sm:h-[320px] md:h-[360px] lg:h-[410px]">
                   <Image
-                    src="/images/trade-leverage-section-trimmed.png"
+                    src="/images/trade-leverage-section-trimmed.webp"
                     alt="Leverage dashboard"
                     fill
                     className="object-contain object-center"

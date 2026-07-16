@@ -12,24 +12,6 @@ function cleanInlineText(value: string): string {
     .trim()
 }
 
-function getTextContent(node: Node): string {
-  if (node.nodeType === Node.TEXT_NODE) {
-    return node.textContent || ""
-  }
-
-  if (node.nodeType !== Node.ELEMENT_NODE) {
-    return ""
-  }
-
-  const element = node as Element
-  if (shouldSkipElement(element)) {
-    return ""
-  }
-
-  const parts = Array.from(element.childNodes).map(getTextContent)
-  return cleanInlineText(parts.join(" "))
-}
-
 function renderInlineMarkdown(node: Node): string {
   if (node.nodeType === Node.TEXT_NODE) {
     return node.textContent || ""
@@ -293,18 +275,10 @@ export function exportElementToMarkdown(root: HTMLElement): string {
   return normalizeOutput(serializeBlocks(root, "markdown"))
 }
 
-export function exportElementToPlainText(root: HTMLElement): string {
-  return normalizeOutput(serializeBlocks(root, "text"))
-}
-
 export function getExportRootFromElement(element: HTMLElement | null): HTMLElement | null {
   if (!element) {
     return null
   }
 
   return element.closest("[data-developer-doc-export-root]") as HTMLElement | null
-}
-
-export function getReadableText(root: HTMLElement): string {
-  return cleanInlineText(getTextContent(root))
 }
