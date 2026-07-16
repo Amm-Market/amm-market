@@ -11,15 +11,6 @@ export interface HomepagePool {
   tvl: string
 }
 
-export interface HomepageTestimonial {
-  protocol: string
-  quote: string
-  highlight: string
-  author: string
-  title: string
-  image: string
-}
-
 export const homepagePools: HomepagePool[] = [
   { token0: { symbol: "ETH", color: "#627EEA" }, token1: { symbol: "USDC", color: "#2775CA" }, dex: "Uniswap v3", tvl: "$245.8M" },
   { token0: { symbol: "WBTC", color: "#F7931A" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Curve", tvl: "$189.2M" },
@@ -45,47 +36,4 @@ export const homepagePools: HomepagePool[] = [
   { token0: { symbol: "wstETH", color: "#00A3FF" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Aerodrome", tvl: "$345.2M" },
   { token0: { symbol: "WETH", color: "#627EEA" }, token1: { symbol: "AERO", color: "#0052FF" }, dex: "Aerodrome", tvl: "$88.7M" },
   { token0: { symbol: "MATIC", color: "#8247E5" }, token1: { symbol: "ETH", color: "#627EEA" }, dex: "Uniswap v3", tvl: "$76.3M" },
-]
-
-export const homepageTestimonials: HomepageTestimonial[] = [
-  {
-    protocol: "Ethereum",
-    quote: "Using LP tokens as collateral is a natural step toward composable finance.",
-    highlight: "This unlocks efficient and scalable decentralized financial systems.",
-    author: "Vitalik Buterin",
-    title: "CO-FOUNDER, ETHEREUM",
-    image: "https://i.pravatar.cc/80?img=1",
-  },
-  {
-    protocol: "Aave",
-    quote: "Enabling LP tokens to be used as collateral is a game-changer for DeFi.",
-    highlight: "It unlocks new avenues for liquidity and capital efficiency.",
-    author: "Stani Kulechov",
-    title: "FOUNDER & CEO, AAVE",
-    image: "https://i.pravatar.cc/80?img=2",
-  },
-  {
-    protocol: "Yearn Finance",
-    quote: "LP tokens aren't just positions—they're productive assets in their own right.",
-    highlight: "Unlocking their potential as collateral will change how people use DeFi.",
-    author: "Andre Cronje",
-    title: "FOUNDER, YEARN FINANCE",
-    image: "https://i.pravatar.cc/80?img=3",
-  },
-  {
-    protocol: "Balancer",
-    quote: "Tokenized positions like LP tokens can serve as powerful collateral.",
-    highlight: "This creates more flexible and efficient lending markets for everyone.",
-    author: "Marcus",
-    title: "CONTRIBUTOR, BALANCER",
-    image: "https://i.pravatar.cc/80?img=4",
-  },
-  {
-    protocol: "Compound",
-    quote: "LP tokens are the backbone of capital-efficient DeFi strategies today.",
-    highlight: "They allow users to do more with the liquidity they already provide.",
-    author: "Robert Leshner",
-    title: "FOUNDER, COMPOUND FINANCE",
-    image: "https://i.pravatar.cc/80?img=5",
-  },
 ]
