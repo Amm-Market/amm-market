@@ -100,6 +100,8 @@ const nextConfig: NextConfig = {
    * Defines allowed external image domains for Next.js Image component
    */
   images: {
+    formats: ["image/avif", "image/webp"],
+    qualities: [58, 62, 75, 85],
     remotePatterns: [
       {
         protocol: "https",
@@ -120,6 +122,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn-front.freepik.com",
         pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "coin-logos.simplr.sh",
+        pathname: "/images/**",
       },
     ],
   },

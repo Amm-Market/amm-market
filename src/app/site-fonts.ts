@@ -11,7 +11,7 @@ export const diatypeFont = localFont({
   fallback: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
   src: [
     {
-      path: "../../public/fonts/diatype/ABCDiatypeVariable-Trial.woff2",
+      path: "../../public/fonts/diatype/ABCDiatypeVariable-Site-Trial.woff2",
       weight: "100 900",
       style: "normal",
     },

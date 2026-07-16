@@ -47,11 +47,13 @@ export function LazySection({
   useEffect(() => {
     const element = ref.current
     if (!element) return
+    const scheduleFrame = window.requestAnimationFrame
+    const cancelFrame = window.cancelAnimationFrame
 
     // If IntersectionObserver isn't supported, render immediately
     if (!("IntersectionObserver" in window)) {
-      setIsVisible(true)
-      return
+      const frame = scheduleFrame(() => setIsVisible(true))
+      return () => cancelFrame(frame)
     }
 
     const observer = new IntersectionObserver(

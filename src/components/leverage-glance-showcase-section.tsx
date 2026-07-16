@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { useSectionActivity } from "@/components/ui/use-section-activity"
 
 const TABS = [
   {
@@ -61,17 +62,24 @@ function PlaceholderImage({
 
 export default function LeverageGlanceShowcaseSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const { ref, isActive } = useSectionActivity<HTMLElement>()
 
   useEffect(() => {
+    if (!isActive) return
+
     const intervalId = window.setInterval(() => {
       setCurrentIndex((index) => (index === TABS.length - 1 ? 0 : index + 1))
     }, 4500)
 
     return () => window.clearInterval(intervalId)
-  }, [])
+  }, [isActive])
 
   return (
-    <section className="deferred-viewport bg-inherit">
+    <section
+      ref={ref}
+      data-performance-active={isActive ? "true" : "false"}
+      className="deferred-viewport bg-inherit"
+    >
       <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8">
         <SectionEyebrow tone="rose">At a glance</SectionEyebrow>
         <SectionTitle className="md:whitespace-nowrap">

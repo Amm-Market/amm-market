@@ -75,10 +75,3 @@ export function DeFiTerm({ term, children, className = "" }: DeFiTermProps) {
     </span>
   )
 }
-
-/**
- * Export the glossary for use in other components (e.g., a glossary page)
- */
-export { defiGlossary }
-
-export default DeFiTerm
