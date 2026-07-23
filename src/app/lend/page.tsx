@@ -119,7 +119,7 @@ function LiquidationModelCard({
   description: string
 }) {
   return (
-    <article className="flex flex-col rounded-[1.5rem] bg-[#f7f7f5] p-5 md:p-6">
+    <article className="flex flex-col rounded-[1.5rem] bg-gray-50 p-5 md:p-6">
       <Icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
       <h3 className="mt-5 text-[1.25rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111]">
         {title}
