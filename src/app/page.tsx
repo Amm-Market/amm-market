@@ -65,12 +65,8 @@ function BuildTomorrowSectionFallback() {
           <div className="h-3 w-28 rounded-full bg-gray-200" />
           <div className="h-10 w-72 rounded-2xl bg-gray-200" />
         </div>
-        <div className="overflow-hidden rounded-xl border border-gray-200 bg-gray-50">
+        <div className="overflow-hidden rounded-[1.35rem] bg-gray-100 md:rounded-[1.6rem]">
           <div className="aspect-[4/5] w-full bg-gradient-to-br from-gray-200 to-gray-300 sm:aspect-[2/1]" />
-          <div className="border-t border-gray-200 bg-white p-4 sm:hidden">
-            <div className="h-5 w-24 rounded-full bg-gray-200" />
-            <div className="mt-3 h-4 w-5/6 rounded-full bg-gray-100" />
-          </div>
         </div>
       </div>
     </section>
