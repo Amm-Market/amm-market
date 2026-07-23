@@ -3,7 +3,7 @@ import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
-import { BadgeDollarSign, Coins, Compass, Handshake, Infinity, Landmark, LayoutTemplate, ShieldCheck, Workflow } from "lucide-react"
+import { BadgeDollarSign, Compass, Handshake, LayoutTemplate, Shield, ShieldAlert, ShieldCheck, TriangleAlert, Workflow } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { PerformanceSection } from "@/components/ui/performance-section"
@@ -12,7 +12,6 @@ import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 const BorrowPowerSection = dynamic(() => import("@/components/borrow-power-section"))
 const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
 const ProductFeatureScrollSection = dynamic(() => import("@/components/product-feature-scroll-section"))
-const PositionSafetySection = dynamic(() => import("@/components/position-safety-section"))
 const ProductStorySection = dynamic(() => import("@/components/product-story-section"))
 
 const openSpokeFaqItems: InlineFaqItem[] = [
@@ -120,27 +119,27 @@ const borrowPartnerFeatures = [
   },
 ] as const
 
-const minimumEligibilitySteps = [
+const positionSafetySteps = [
   {
-    title: "$250K",
+    title: "Safe Zone",
     description:
-      "Hold at least $250K in Liquidity Pools to qualify and enter the review process with your application.",
+      "Health Factor > 1.5. Borrow usage is well within capacity, fees keep accruing, and the position stays intact.",
     accent: "text-[#111111]",
-    icon: Coins,
+    icon: Shield,
   },
   {
-    title: "$100K",
+    title: "Warning Zone",
     description:
-      "Your initial borrow must be at least $100K to qualify and enter the review process with your application.",
+      "Health Factor 1.0-1.5. The app notifies you so you can repay debt, add collateral, or let automation reduce exposure.",
     accent: "text-[#111111]",
-    icon: Landmark,
+    icon: TriangleAlert,
   },
   {
-    title: "3+ Month",
+    title: "Liquidation",
     description:
-      "Keep the facility active for at least 3 months to qualify and enter the review process with your application.",
+      "Health Factor < 1.0. Fees are applied first, only the LP principal needed is unwound, and residual value is returned in the same transaction.",
     accent: "text-[#111111]",
-    icon: Infinity,
+    icon: ShieldAlert,
   },
 ] as const
 
@@ -875,16 +874,14 @@ export default function BorrowPage() {
             ]}
           />
 
-          <PositionSafetySection />
-
           <section>
             <div className="space-y-4 text-left">
-              <SectionEyebrow tone="violet">Minimum eligibility</SectionEyebrow>
-              <SectionTitle>Find out if you qualify.</SectionTitle>
+              <SectionEyebrow tone="violet">Position Safety</SectionEyebrow>
+              <SectionTitle>Every health state, fully explained.</SectionTitle>
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
-              {minimumEligibilitySteps.map((step) => (
+              {positionSafetySteps.map((step) => (
                 <WorkflowStepCard
                   key={step.title}
                   title={step.title}
