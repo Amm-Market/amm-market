@@ -6,8 +6,6 @@ import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 import { PerformanceDiv } from "@/components/ui/performance-section"
 import { TokenLogo } from "@/components/token-logo"
-import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
-
 function SectionSkeleton({
   lines = 3,
   minHeight = "320px",
@@ -410,13 +408,9 @@ export default function HeroSection() {
             <div className="flex flex-col gap-6">
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="cyan">Borrowing Power</SectionEyebrow>
-            <SectionTitle className="max-w-[13ch] text-[#18323c]">
-              <span className="block">
-                Unlock <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>credit</span>
-              </span>
-              <span className="block">
-                from <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>250+</span> pools
-              </span>
+            <SectionTitle>
+              <span className="block lg:whitespace-nowrap">Unlock credit</span>
+              <span className="block lg:whitespace-nowrap">from 250+ pools</span>
             </SectionTitle>
           </div>
             </div>
@@ -444,14 +438,14 @@ export default function HeroSection() {
               ))}
             </div>
 
-            <div className="inline-flex max-w-[920px] items-start gap-3 border-l-2 border-[#c6d8eb] bg-[#f8fbff] px-4 py-3 text-[0.82rem] leading-6 tracking-[-0.01em] text-[#5f6f82] md:text-sm">
-              <span className="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#0078d4] text-[0.7rem] font-semibold leading-none text-white">
-                i
+            <p className="flex items-start gap-2.5 text-xs font-medium leading-5 text-[#44546a] md:text-sm">
+              <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#0078d4] text-sm leading-none text-white">
+                !
               </span>
-              <span>
+              <span className="max-w-[1000px]">
                 Sandbox data shown for preview only. APYs, prices, and returns are illustrative and may differ from live market conditions.
               </span>
-            </div>
+            </p>
         </PerformanceDiv>
       </div>
 
@@ -459,13 +453,9 @@ export default function HeroSection() {
         <div className="space-y-6">
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="emerald">Lending Markets</SectionEyebrow>
-            <SectionTitle className="max-w-[14ch] text-[#18323c]">
-              <span className="block">
-                Earn <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>yield</span>
-              </span>
-              <span className="block">
-                on <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>100+</span> assets
-              </span>
+            <SectionTitle>
+              <span className="block lg:whitespace-nowrap">Earn yield</span>
+              <span className="block lg:whitespace-nowrap">on 100+ assets</span>
             </SectionTitle>
           </div>
 
@@ -478,11 +468,9 @@ export default function HeroSection() {
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="amber">Trading Pairs</SectionEyebrow>
-                <SectionTitle className="max-w-[15ch] text-[#18323c]">
-                  <span className="block">Multiply like a pro</span>
-                  <span className="block">
-                    across <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>500+</span> markets
-                  </span>
+                <SectionTitle>
+                  <span className="block lg:whitespace-nowrap">Multiply like a pro</span>
+                  <span className="block lg:whitespace-nowrap">across 500+ markets</span>
                 </SectionTitle>
               </div>
             </div>
@@ -1069,7 +1057,7 @@ export default function HeroSection() {
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="violet">How it works</SectionEyebrow>
             <SectionTitle>
-              Borrowing in three steps
+              <span className="block lg:whitespace-nowrap">Borrowing in three steps</span>
             </SectionTitle>
           </div>
         </div>
