@@ -160,7 +160,7 @@ export default function HeaderDesktopMenuPanel({
       }`}
       aria-hidden={!isOpen}
     >
-      <div className="border-b border-black/6 bg-white shadow-[0_24px_72px_rgba(0,0,0,0.04)]">
+      <div className="border-b border-[#01AACF] bg-white shadow-[0_24px_72px_rgba(0,0,0,0.04)]">
         <div className="w-full bg-white px-4 py-5 sm:px-6 md:px-5 md:py-5 lg:px-6 xl:px-8">
           <div
             key={`${menu.id}-${animationCycle}`}

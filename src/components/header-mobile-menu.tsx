@@ -66,7 +66,7 @@ export default function HeaderMobileMenu({
       aria-label="Mobile menu"
       aria-hidden={!isVisible}
     >
-      <div className="flex h-16 items-center justify-between px-4 sm:px-6">
+      <div className="flex h-16 items-center justify-between border-b border-[#01AACF] px-4 sm:px-6">
         <Link
           href={siteRoutes.home}
           prefetch={false}
