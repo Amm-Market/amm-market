@@ -16,10 +16,10 @@ export default function BorrowPowerSection() {
         <div className="relative flex justify-center md:justify-end">
           <div className="relative w-full max-w-[36rem] lg:max-w-[40rem] xl:max-w-[42rem]">
             <Image
-              src="/images/Avana Borrow.webp"
-              alt="Avana Borrow illustration"
-              width={1406}
-              height={1397}
+              src="/images/avana-combine-coins.png"
+              alt="Avana combine LP positions illustration"
+              width={1024}
+              height={1024}
               className="h-auto w-full"
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 52vw, 672px"
             />

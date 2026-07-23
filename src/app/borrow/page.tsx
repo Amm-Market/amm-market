@@ -172,27 +172,6 @@ function WorkflowStepCard({
   )
 }
 
-const tokenLogoUrls = {
-  bitcoin: "https://coin-logos.simplr.sh/images/bitcoin/standard.png",
-  ethereum: "https://coin-logos.simplr.sh/images/ethereum/standard.png",
-  usdCoin: "https://coin-logos.simplr.sh/images/usd-coin/standard.png",
-  tether: "https://coin-logos.simplr.sh/images/tether/standard.png",
-  dai: "https://coin-logos.simplr.sh/images/dai/standard.png",
-  solana: "https://coin-logos.simplr.sh/images/solana/standard.png",
-  ripple: "https://coin-logos.simplr.sh/images/ripple/standard.png",
-  ton: "https://coin-logos.simplr.sh/images/the-open-network/standard.png",
-  aave: "https://coin-logos.simplr.sh/images/aave/standard.png",
-  uniswap: "https://coin-logos.simplr.sh/images/uniswap/standard.png",
-  chainlink: "https://coin-logos.simplr.sh/images/chainlink/standard.png",
-  maker: "https://coin-logos.simplr.sh/images/maker/standard.png",
-  frax: "https://coin-logos.simplr.sh/images/frax/standard.png",
-  curve: "https://coin-logos.simplr.sh/images/curve-dao-token/standard.png",
-  pancakeswap: "https://coin-logos.simplr.sh/images/pancakeswap-token/standard.png",
-  raydium: "https://coin-logos.simplr.sh/images/raydium/standard.png",
-  sushi: "https://coin-logos.simplr.sh/images/sushi/standard.png",
-  orca: "https://coin-logos.simplr.sh/images/orca/standard.png",
-} as const
-
 function BorrowMarketCard({
   number,
   title,
@@ -209,136 +188,6 @@ function BorrowMarketCard({
         {title}
       </h3>
       <p className="mt-3 text-sm leading-6 text-gray-600">{description}</p>
-    </div>
-  )
-}
-
-const popularPoolRows = [
-  {
-    pair: "USDC / USDT",
-    dex: "Curve",
-    logos: [tokenLogoUrls.usdCoin, tokenLogoUrls.tether],
-  },
-  {
-    pair: "WETH / USDC",
-    dex: "Uniswap v3",
-    logos: [tokenLogoUrls.ethereum, tokenLogoUrls.usdCoin],
-  },
-  {
-    pair: "WETH / DAI",
-    dex: "Balancer",
-    logos: [tokenLogoUrls.ethereum, tokenLogoUrls.dai],
-  },
-  {
-    pair: "WETH / USDT",
-    dex: "Curve",
-    logos: [tokenLogoUrls.ethereum, tokenLogoUrls.tether],
-  },
-  {
-    pair: "WBTC / WETH",
-    dex: "Curve",
-    logos: [tokenLogoUrls.bitcoin, tokenLogoUrls.ethereum],
-  },
-  {
-    pair: "WBTC / USDC",
-    dex: "Uniswap v3",
-    logos: [tokenLogoUrls.bitcoin, tokenLogoUrls.usdCoin],
-  },
-  {
-    pair: "DAI / USDC",
-    dex: "Curve",
-    logos: [tokenLogoUrls.dai, tokenLogoUrls.usdCoin],
-  },
-  {
-    pair: "FRAX / USDC",
-    dex: "Uniswap v2",
-    logos: [tokenLogoUrls.frax, tokenLogoUrls.usdCoin],
-  },
-  {
-    pair: "AAVE / ETH",
-    dex: "Uniswap v3",
-    logos: [tokenLogoUrls.aave, tokenLogoUrls.ethereum],
-  },
-  {
-    pair: "UNI / ETH",
-    dex: "Uniswap v3",
-    logos: [tokenLogoUrls.uniswap, tokenLogoUrls.ethereum],
-  },
-  {
-    pair: "LINK / ETH",
-    dex: "Balancer",
-    logos: [tokenLogoUrls.chainlink, tokenLogoUrls.ethereum],
-  },
-  {
-    pair: "MKR / DAI",
-    dex: "Curve",
-    logos: [tokenLogoUrls.maker, tokenLogoUrls.dai],
-  },
-  {
-    pair: "ETH / BTC",
-    dex: "Curve",
-    logos: [tokenLogoUrls.ethereum, tokenLogoUrls.bitcoin],
-  },
-  {
-    pair: "CRV / USDC",
-    dex: "Curve",
-    logos: [tokenLogoUrls.curve, tokenLogoUrls.usdCoin],
-  },
-] as const
-
-function PoolLogoStack({ logos, title }: { logos: readonly string[]; title: string }) {
-  return (
-    <div className="flex items-center -space-x-3">
-      {logos.map((logo, index) => (
-        <Image
-          key={`${title}-${index}`}
-          src={logo}
-          alt=""
-          width={40}
-          height={40}
-          sizes="40px"
-          className="h-8 w-8 rounded-full border border-gray-100 bg-white object-cover shadow-sm md:h-10 md:w-10"
-        />
-      ))}
-    </div>
-  )
-}
-
-function PopularPoolRow({
-  row,
-  index,
-}: {
-  row: (typeof popularPoolRows)[number]
-  index: number
-}) {
-  return (
-    <div
-      className={[
-        "flex min-h-[5.5rem] items-center justify-between gap-3 border-t border-gray-200 px-4 py-4 md:px-6 md:py-4",
-        index % 2 === 0 ? "md:border-r" : "",
-      ].join(" ")}
-    >
-      <div className="min-w-0">
-        <p className="text-[1.05rem] font-semibold leading-[1.05] tracking-[-0.035em] text-[#1f2330] md:text-[1.25rem]">
-          {row.pair}
-        </p>
-        <p className="mt-1 text-[0.72rem] font-medium text-gray-500 md:text-[0.82rem]">
-          {row.dex}
-        </p>
-      </div>
-      <PoolLogoStack logos={row.logos} title={row.pair} />
-    </div>
-  )
-}
-
-function PopularPoolsTable() {
-  return (
-    <div className="overflow-hidden border border-gray-200 bg-white">
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        {popularPoolRows.map((row, index) => (
-          <PopularPoolRow key={row.pair} row={row} index={index} />
-        ))}
-      </div>
     </div>
   )
 }
@@ -561,10 +410,21 @@ export default function BorrowPage() {
 
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="blue">Popular Pools</SectionEyebrow>
-                <SectionTitle>Popular LP pools</SectionTitle>
+                <SectionEyebrow tone="blue">Liquidity pools</SectionEyebrow>
+                <SectionTitle className="md:whitespace-nowrap">
+                  Browse endless LP collateral
+                </SectionTitle>
               </div>
-              <PopularPoolsTable />
+              <div className="overflow-hidden rounded-[1.35rem] md:rounded-[1.6rem]">
+                <Image
+                  src="/images/borrow-markets-visual.png"
+                  alt="Document-style preview of supported borrowing markets"
+                  width={1024}
+                  height={523}
+                  sizes="(max-width: 1200px) 100vw, 1120px"
+                  className="h-auto w-full"
+                />
+              </div>
             </div>
           </div>
         </div>
