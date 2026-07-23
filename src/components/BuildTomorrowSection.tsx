@@ -53,8 +53,8 @@ export function BuildTomorrowSection() {
       <div className="site-content-shell">
         <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
           <SectionEyebrow tone="violet">Ways to use Avana</SectionEyebrow>
-          <SectionTitle className="md:whitespace-nowrap">
-            Borrow, Lend, or Multiply
+          <SectionTitle>
+            <span className="block lg:whitespace-nowrap">Borrow, Lend, or Multiply</span>
           </SectionTitle>
         </div>
 

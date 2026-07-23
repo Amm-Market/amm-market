@@ -14,7 +14,7 @@ export function SectionTitle({
   return (
     <Tag
       className={cn(
-        "site-section-title text-left text-[clamp(2.5rem,5vw,4.4rem)] font-normal leading-[0.97] tracking-[-0.055em] text-[#18323c] lg:text-[3.5rem]",
+        "site-section-title text-left text-[clamp(2.5rem,5vw,4.4rem)] font-normal leading-[0.97] tracking-[-0.055em] text-black lg:text-[3.5rem]",
         className,
       )}
     >
