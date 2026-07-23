@@ -17,11 +17,11 @@ export default function WebappHero() {
             <Image
               src="/avana-pool-hero.png"
               alt="Avana homepage hero visual"
-              width={1448}
-              height={883}
+              width={1444}
+              height={869}
               preload
               fetchPriority="high"
-              quality={85}
+              quality={62}
               className="h-auto w-full rounded-none"
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) calc(100vw - 2rem), 1080px"
             />

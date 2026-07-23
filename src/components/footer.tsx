@@ -150,8 +150,9 @@ export default function Footer(): React.JSX.Element {
               <Image
                 src={HEADER_WORDMARK_PATH}
                 alt={`${SITE_NAME} logo`}
-                width={3000}
-                height={1500}
+                width={480}
+                height={240}
+                quality={85}
                 className="h-[56px] w-auto scale-[1.08] origin-left"
               />
             </Link>
