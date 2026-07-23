@@ -4,17 +4,17 @@ const safetyFeatures = [
   {
     title: "Safe Zone",
     description:
-      "Health Factor > 1.5. Borrow usage is well within capacity, fees keep accruing, and the position stays intact.",
+      "Health Factor > 1.5. Borrow usage stays within capacity, fees keep accruing, and your LP stays intact.",
   },
   {
     title: "Warning Zone",
     description:
-      "Health Factor 1.0-1.5. The app notifies you so you can repay debt, add collateral, or let automation reduce exposure.",
+      "Health Factor 1.0-1.5. You get notified to repay debt, add collateral, or let automation cut exposure.",
   },
   {
     title: "Liquidation",
     description:
-      "Health Factor < 1.0. Fees are applied first, only the LP principal needed is unwound, and residual value is returned in the same transaction.",
+      "Health Factor < 1.0. Fees apply first, needed LP principal unwinds, and residual value returns to you.",
   },
 ] as const
 
