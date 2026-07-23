@@ -442,8 +442,8 @@ export default function BorrowPage() {
 
       <section className="bg-white py-12 md:py-16 lg:py-20">
         <div className="site-content-shell">
-          <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:grid-rows-[auto_auto] lg:gap-18">
-            <div className="max-w-[33rem] pt-2 lg:col-start-1 lg:row-start-1 lg:pt-6">
+          <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-18">
+            <div className="max-w-[33rem] pt-2 lg:pt-6">
               <SectionEyebrow tone="violet">Working capital</SectionEyebrow>
               <SectionTitle className="mt-5 max-w-none !text-[clamp(2rem,8.5vw,4.4rem)] !leading-[0.96] text-black lg:!text-[3.5rem]">
                 <span className="block whitespace-nowrap">Access capital when</span>
@@ -455,7 +455,7 @@ export default function BorrowPage() {
               </p>
             </div>
 
-            <div className="relative order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:order-none lg:pt-1">
+            <div className="relative lg:pt-1">
               <div className="relative aspect-[1.18/1] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:rounded-[32px]">
                 <Image
                   src="/images/leverage-hero-placeholder.webp"
@@ -466,44 +466,6 @@ export default function BorrowPage() {
                 />
               </div>
             </div>
-
-            <div className="order-3 max-w-[33rem] pt-10 lg:col-start-1 lg:row-start-2 lg:order-none lg:pt-0">
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-                <button
-                  type="button"
-                  className="inline-flex h-[4.15rem] items-center justify-center rounded-full bg-black px-10 text-[1.02rem] font-semibold tracking-[-0.02em] text-white transition-transform hover:-translate-y-0.5 hover:bg-neutral-900"
-                >
-                  Apply now
-                </button>
-                <p className="text-[0.98rem] leading-6 text-[#111111]">
-                  Get in touch,{" "}
-                  <a href="tel:18779812128" className="font-semibold underline underline-offset-4">
-                    1-877-981-2128
-                  </a>
-                  .
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white">
-        <div className="site-content-shell">
-          <div className="space-y-4 text-left">
-            <SectionEyebrow tone="violet">Minimum eligibility</SectionEyebrow>
-            <SectionTitle>Find out if you qualify.</SectionTitle>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
-            {minimumEligibilitySteps.map((step) => (
-              <WorkflowStepCard
-                key={step.title}
-                title={step.title}
-                description={step.description}
-                icon={step.icon}
-              />
-            ))}
           </div>
         </div>
       </section>
@@ -914,6 +876,25 @@ export default function BorrowPage() {
           />
 
           <PositionSafetySection />
+
+          <section>
+            <div className="space-y-4 text-left">
+              <SectionEyebrow tone="violet">Minimum eligibility</SectionEyebrow>
+              <SectionTitle>Find out if you qualify.</SectionTitle>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
+              {minimumEligibilitySteps.map((step) => (
+                <WorkflowStepCard
+                  key={step.title}
+                  title={step.title}
+                  description={step.description}
+                  icon={step.icon}
+                />
+              ))}
+            </div>
+          </section>
+
           <BorrowPowerSection />
 
           <HomepageNewsroomSection collection="borrow" eyebrowTone="blue" />
