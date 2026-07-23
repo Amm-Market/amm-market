@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic"
 import type { Metadata } from "next"
 import WebappHero from "@/components/webapp-hero"
-import LogoMarquee from "@/components/logo-marquee"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { LazySection } from "@/components/ui/lazy-section"
 import { buildOgImagePath, SITE_NAME, SITE_URL, siteRoutes } from "@/lib/site"
@@ -101,7 +100,6 @@ export default function Home() {
   return (
     <>
       <WebappHero />
-      <LogoMarquee />
       <section className="bg-white pt-16 pb-24 md:pt-20 md:pb-32 2xl:pt-18 2xl:pb-29">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem]">
