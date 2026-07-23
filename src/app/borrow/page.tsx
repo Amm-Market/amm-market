@@ -158,7 +158,7 @@ function WorkflowStepCard({
   const Icon = icon
 
   return (
-    <article className={`flex flex-col rounded-[1.75rem] bg-[#f7f7f5] p-5 md:p-6 ${className}`}>
+    <article className={`flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6 ${className}`}>
       <div className="flex h-8 w-8 items-center justify-center text-[#111111]">
         <Icon className="h-8 w-8" strokeWidth={1.85} />
       </div>
@@ -426,7 +426,7 @@ export default function BorrowPage() {
         <div className="site-content-shell">
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {borrowPartnerFeatures.map((feature) => (
-              <article key={feature.title} className="flex flex-col rounded-[1.75rem] bg-[#f7f7f5] p-5 md:p-6">
+              <article key={feature.title} className="flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6">
                 <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
                 <h3 className="mt-5 text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:mt-6 md:text-[1.55rem]">
                   {feature.title}

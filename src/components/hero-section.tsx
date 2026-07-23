@@ -1109,21 +1109,7 @@ export default function HeroSection() {
         </LazySection>
 
         <LazySection minHeight="660px" fallback={<SectionSkeleton minHeight="660px" />}>
-          <div className="relative overflow-hidden border border-cyan-100 bg-[#f1fbfe] px-6 py-8 md:px-8 md:py-10">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 opacity-[0.28]"
-              style={{
-                backgroundImage: [
-                  "linear-gradient(rgba(1,170,207,0.14) 1px, transparent 1px)",
-                  "linear-gradient(90deg, rgba(1,170,207,0.08) 1px, transparent 1px)",
-                  "radial-gradient(circle at 18% 18%, rgba(1,170,207,0.14) 0 6.5%, transparent 6.5%)",
-                  "radial-gradient(circle at 82% 82%, rgba(1,170,207,0.1) 0 7.5%, transparent 7.5%)",
-                  "radial-gradient(circle at 50% 50%, rgba(1,170,207,0.06) 0 18%, transparent 18%)",
-                ].join(", "),
-                backgroundSize: "100% 100%",
-              }}
-            />
+          <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 px-6 py-8 md:px-8 md:py-10">
             <div className="relative grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
               <div className="space-y-4">
                 <SectionEyebrow tone="slate">Built on Aave v4</SectionEyebrow>
