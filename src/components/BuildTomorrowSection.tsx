@@ -1,54 +1,14 @@
-"use client"
-
-import { useEffect, useState } from "react"
+import Image from "next/image"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
-import { useSectionActivity } from "@/components/ui/use-section-activity"
-
-const SLIDES = [
-  {
-    id: "borrow",
-    title: "BORROW",
-    description: "Borrow against your LP position as collateral at 5.5% APR.",
-  },
-  {
-    id: "lend",
-    title: "LEND",
-    description: "Put every idle dollar to work across saving, investing, and borrowing.",
-  },
-  {
-    id: "multiply",
-    title: "MULTIPLY",
-    description: "Use LP collateral to open managed trade exposure without fully exiting your liquidity.",
-  },
-] as const
 
 /**
- * BuildTomorrowSection - 3-slide carousel (no heading).
- * Accessible carousel with prev/next and slide captions.
+ * BuildTomorrowSection — Ways to use Avana with product visual.
  */
 export function BuildTomorrowSection() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const { ref, isActive } = useSectionActivity<HTMLElement>()
-
-  useEffect(() => {
-    if (!isActive) return
-
-    const intervalId = window.setInterval(() => {
-      setCurrentIndex((i) => (i === SLIDES.length - 1 ? 0 : i + 1))
-    }, 4500)
-
-    return () => window.clearInterval(intervalId)
-  }, [isActive])
-
   return (
     <section
-      ref={ref}
-      data-performance-active={isActive ? "true" : "false"}
-      data-section="slideshow-module-record"
-      data-id="theme-switcher"
-      data-theme="beige"
-      data-apply-globally="true"
-      className="w-full bg-inherit pb-16 md:pb-20 2xl:pb-18"
+      data-section="ways-to-use-avana"
+      className="w-full bg-inherit pt-16 pb-16 md:pt-20 md:pb-20 2xl:pt-18 2xl:pb-18"
     >
       <div className="site-content-shell">
         <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
@@ -58,88 +18,16 @@ export function BuildTomorrowSection() {
           </SectionTitle>
         </div>
 
-        {/* Carousel */}
-        <div
-          className="relative"
-          role="region"
-          aria-roledescription="carousel"
-        >
-          <div className="overflow-hidden rounded-xl border border-gray-200 bg-gray-50 sm:rounded-xl">
-            {SLIDES.map((slide, idx) => (
-              <div
-                key={slide.id}
-                role="group"
-                aria-roledescription="slide"
-                aria-hidden={idx !== currentIndex}
-                aria-describedby={`slide-desc-${slide.id}`}
-                className={idx !== currentIndex ? "hidden" : ""}
-              >
-                {/* Placeholder: portrait on mobile, landscape on desktop */}
-                <div className="relative aspect-[4/5] w-full bg-gradient-to-br from-gray-200 to-gray-300 sm:aspect-[2/1]">
-                  <div aria-hidden="true" className="absolute inset-x-4 bottom-4 h-px overflow-hidden bg-white/40 sm:hidden">
-                    <div
-                      key={`mobile-progress-${currentIndex}`}
-                      className="h-full bg-white"
-                      style={{ animation: "build-tomorrow-progress 4.5s linear forwards", transformOrigin: "left center" }}
-                    />
-                  </div>
-                </div>
-                <div
-                  id={`slide-desc-${slide.id}`}
-                  className="border-t border-gray-200 bg-white p-4 sm:hidden"
-                >
-                  <p className="text-base font-semibold text-offBlack sm:text-lg">
-                    {slide.title}
-                  </p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-gray-600 sm:mt-2">
-                    {slide.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div aria-hidden="true" className="mt-3 hidden h-px w-full overflow-hidden bg-gray-200 sm:block">
-            <div
-              key={currentIndex}
-              className="h-full bg-gray-700"
-              style={{ animation: "build-tomorrow-progress 4.5s linear forwards", transformOrigin: "left center" }}
-            />
-          </div>
-
-          {/* Caption tabs (desktop only) */}
-          <div className="mt-6 hidden gap-4 sm:flex">
-            {SLIDES.map((slide, idx) => (
-              <button
-                key={slide.id}
-                type="button"
-                onClick={() => setCurrentIndex(idx)}
-                aria-current={currentIndex === idx}
-                className="flex flex-1 flex-col text-left opacity-70 transition-opacity hover:opacity-100 aria-current:opacity-100"
-              >
-                <p className="text-base font-semibold text-offBlack">
-                  {slide.title}
-                </p>
-                <p className="mt-1 text-sm text-gray-600 line-clamp-2">
-                  {slide.description}
-                </p>
-              </button>
-            ))}
-          </div>
-
+        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.35rem] sm:aspect-[2/1] md:rounded-[1.6rem]">
+          <Image
+            src="/images/ways-to-use-avana.png"
+            alt="Borrow, lend, and multiply product overview"
+            fill
+            sizes="(max-width: 1200px) 100vw, 1120px"
+            className="object-cover object-center"
+          />
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes build-tomorrow-progress {
-          from {
-            transform: scaleX(0);
-          }
-          to {
-            transform: scaleX(1);
-          }
-        }
-      `}</style>
     </section>
   )
 }
