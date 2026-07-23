@@ -15,13 +15,13 @@ export default function WebappHero() {
 
           <div className="relative mx-auto w-full">
             <Image
-              src="/images/5.webp"
+              src="/avana-pool-hero.png"
               alt="Avana homepage hero visual"
-              width={1536}
-              height={1279}
+              width={1448}
+              height={883}
               preload
               fetchPriority="high"
-              quality={62}
+              quality={85}
               className="h-auto w-full rounded-none"
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) calc(100vw - 2rem), 1080px"
             />
