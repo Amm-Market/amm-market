@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import type { ReactNode } from "react"
+import { createPortal } from "react-dom"
 import Link from "next/link"
 import { siteRoutes } from "@/lib/site"
 import type { NavLink } from "@/components/header-nav-data"
@@ -32,21 +33,30 @@ export default function HeaderMobileMenu({
 
   useEffect(() => {
     if (!open) {
+      setIsShown(false)
       return
     }
 
+    // Wait until the hidden state has painted so the CSS transition can run.
+    let nextFrame = 0
     const frame = window.requestAnimationFrame(() => {
-      setIsShown(true)
+      nextFrame = window.requestAnimationFrame(() => {
+        setIsShown(true)
+      })
     })
 
     return () => {
       window.cancelAnimationFrame(frame)
+      window.cancelAnimationFrame(nextFrame)
     }
   }, [open])
 
   const isVisible = open && isShown
 
-  return (
+  // Portal out of the sticky header so backdrop-filter does not trap
+  // position:fixed and shrink the overlay to the header height.
+  // This component is client-only (dynamic ssr:false), so document.body is safe.
+  return createPortal(
     <div
       className={`fixed inset-0 z-[60] bg-white transition-opacity duration-300 ease-out md:hidden ${
         isVisible ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
@@ -120,6 +130,7 @@ export default function HeaderMobileMenu({
           })}
         </ol>
       </nav>
-    </div>
+    </div>,
+    document.body,
   )
 }
