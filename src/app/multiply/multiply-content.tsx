@@ -7,7 +7,6 @@ import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSecti
 import DeferredTradeMarketShowcase from "@/components/deferred-trade-market-showcase"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
-import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
 const pageDescription =
@@ -272,7 +271,7 @@ export default function MultiplyPage() {
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="rose">How it works</SectionEyebrow>
                 <SectionTitle>
-                  <span className={CYAN_HIGHLIGHT_TEXT_CLASS}>Leverage in three steps</span>
+                  <span className="block lg:whitespace-nowrap">Leverage in three steps</span>
                 </SectionTitle>
               </div>
             </div>

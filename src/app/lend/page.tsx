@@ -6,7 +6,6 @@ import type { LucideIcon } from "lucide-react"
 import { BadgePercent, Gauge, LockKeyhole, MoveRight } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
-import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
 const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
@@ -240,8 +239,8 @@ export default function LendPage() {
               <div className="space-y-4 md:self-center">
                 <SectionEyebrow tone="emerald">Lending Markets</SectionEyebrow>
                 <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
-                  <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>Lend into</span>
-                  <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>LP-backed credit.</span>
+                  <span className="block">Lend into</span>
+                  <span className="block">LP-backed credit.</span>
                 </SectionTitle>
               </div>
               <div className="flex items-center justify-center pt-1 md:justify-end">

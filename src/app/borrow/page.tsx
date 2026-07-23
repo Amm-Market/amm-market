@@ -445,9 +445,9 @@ export default function BorrowPage() {
           <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:grid-rows-[auto_auto] lg:gap-18">
             <div className="max-w-[33rem] pt-2 lg:col-start-1 lg:row-start-1 lg:pt-6">
               <SectionEyebrow tone="violet">Working capital</SectionEyebrow>
-              <SectionTitle className="mt-5 max-w-none !text-[clamp(2rem,8.5vw,4.4rem)] !leading-[0.96] text-[#111111] lg:!text-[3.5rem]">
-                <span className={`block whitespace-nowrap ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>Access capital when</span>
-                <span className={`block whitespace-nowrap ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>opportunity calls.</span>
+              <SectionTitle className="mt-5 max-w-none !text-[clamp(2rem,8.5vw,4.4rem)] !leading-[0.96] text-black lg:!text-[3.5rem]">
+                <span className="block whitespace-nowrap">Access capital when</span>
+                <span className="block whitespace-nowrap">opportunity calls.</span>
               </SectionTitle>
 
               <p className="mt-7 max-w-[28rem] text-[0.98rem] leading-[1.62] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
@@ -615,7 +615,7 @@ export default function BorrowPage() {
         <div className="site-content-width space-y-32 pt-32 pb-16 md:space-y-40 md:pt-40 md:pb-20 2xl:space-y-36 2xl:pt-36 2xl:pb-18">
           <ProductFeatureScrollSection
             eyebrowTone="blue"
-            title={<span className={CYAN_HIGHLIGHT_TEXT_CLASS}>Engineered for LP safety.</span>}
+            title="Engineered for LP safety."
             items={borrowFeatureItems}
             panels={[
               /* 01 LP-native valuation — pool structure, exposure, venue collateral logic */
