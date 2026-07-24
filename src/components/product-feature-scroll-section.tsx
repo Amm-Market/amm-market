@@ -1,4 +1,4 @@
-import { SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
 import type { ReactNode } from "react"
 
 type ProductFeatureItem = {
@@ -37,12 +37,10 @@ export default function ProductFeatureScrollSection({
               >
                 <div className="relative z-10 flex items-start justify-between gap-4">
                   <div className="space-y-2">
-                    <h3 className="max-w-[14rem] text-[1.45rem] font-medium leading-[1.08] tracking-[-0.045em] text-[#18323c]">
-                      {item.title}
-                    </h3>
-                    <p className="max-w-[16rem] text-sm leading-6 text-gray-600">
+                    <FeatureCardTitle>{item.title}</FeatureCardTitle>
+                    <FeatureCardDescription className="max-w-[16rem]">
                       {item.description}
-                    </p>
+                    </FeatureCardDescription>
                   </div>
                   <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">
                     {String(index + 1).padStart(2, "0")}

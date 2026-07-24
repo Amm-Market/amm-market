@@ -3,17 +3,15 @@ import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
-import { BadgeDollarSign, Coins, Compass, Handshake, Infinity, Landmark, LayoutTemplate, ShieldCheck, Workflow } from "lucide-react"
+import { Activity, BadgeDollarSign, Compass, Layers, LineChart, Shield, ShieldAlert, ShieldCheck, TriangleAlert } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { PerformanceSection } from "@/components/ui/performance-section"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
 const BorrowPowerSection = dynamic(() => import("@/components/borrow-power-section"))
 const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
 const ProductFeatureScrollSection = dynamic(() => import("@/components/product-feature-scroll-section"))
-const PositionSafetySection = dynamic(() => import("@/components/position-safety-section"))
-const ProductStorySection = dynamic(() => import("@/components/product-story-section"))
 
 const openSpokeFaqItems: InlineFaqItem[] = [
   {
@@ -57,90 +55,90 @@ const openSpokeFaqItems: InlineFaqItem[] = [
 const borrowFeatureItems = [
   {
     title: "LP-native valuation",
-    description: "Positions are priced from live pool structure, actual token exposure, and DEX-specific collateral rules.",
+    description: "Positions are priced from live pool structure, token exposure, and DEX-specific collateral rules.",
   },
   {
     title: "Dual-oracle pricing",
-    description: "Chainlink and AMM TWAP data must stay in range before new credit is made available.",
+    description: "Chainlink and AMM TWAP data must stay in range before new credit can be made available.",
   },
   {
     title: "Shared Hub liquidity",
-    description: "Borrow from Aave Hubs while risk stays ring-fenced inside the Borrow Spokes.",
+    description: "Borrow from Aave Hubs while risk stays ring-fenced inside dedicated Borrow Spokes.",
   },
   {
     title: "Uninterrupted fee accrual",
-    description: "Deposited LP positions continue earning trading fees throughout the life of the loan.",
+    description: "Deposited LP positions continue earning trading fees throughout the full life of the loan.",
   },
   {
     title: "Minimal volatility risk",
-    description: "Transparent risk parameters and predictable liquidation behavior, especially for peg-aligned pools.",
+    description: "Transparent risk parameters and predictable liquidation behavior for peg-aligned pools.",
   },
   {
     title: "Cleaner position monitoring",
-    description: "Track health, usage, and pool-specific limits with a cleaner LP-first borrowing workflow.",
+    description: "Track health, usage, and pool-specific limits with a clearer LP-first borrowing workflow.",
   },
 ] as const
 
 const borrowPartnerFeatures = [
   {
-    title: "Intent capture",
+    title: "Live LP collateral",
     description:
-      "Turn LP position views, portfolio pages, and trading flows into natural borrowing entry points.",
+      "Treat each LP position as live collateral valued like an active AMM position, not a static token.",
+    icon: Layers,
+  },
+  {
+    title: "Pool-specific scoring",
+    description:
+      "Borrowing power is risk-scored with pool logic that reflects volatility, depth, and market behavior.",
     icon: Compass,
   },
   {
-    title: "Protocol handoff",
+    title: "Real AMM behaviour",
     description:
-      "Pass user context into Avana so the credit flow opens with the right wallet, market, and collateral path.",
-    icon: Workflow,
+      "Collateral rules track real pool structure and exposure so credit stays tied to your live position.",
+    icon: Activity,
   },
   {
-    title: "Shared monetization",
+    title: "Shared Hub liquidity",
     description:
-      "Build a revenue line around credit access without becoming the lender or risk engine.",
+      "Borrowing capacity comes from shared Hub liquidity while your LP stays productive in the pool.",
     icon: BadgeDollarSign,
   },
   {
-    title: "Product control",
+    title: "Dual-oracle pricing",
     description:
-      "Choose where credit appears, which users see it, and how the path fits your existing experience.",
-    icon: Handshake,
+      "Dual-oracle pricing keeps marks robust as markets move so collateral value stays credible over time.",
+    icon: LineChart,
   },
   {
-    title: "Embedded UX",
+    title: "Active risk controls",
     description:
-      "Keep borrowing inside the product surface your users already trust instead of sending them into a disconnected flow.",
-    icon: LayoutTemplate,
-  },
-  {
-    title: "Risk separation",
-    description:
-      "Let Avana handle health checks, collateral logic, and settlement while your team stays focused on distribution.",
+      "Health monitoring and venue-aware liquidation protect standards while your exposure keeps earning fees.",
     icon: ShieldCheck,
   },
 ] as const
 
-const minimumEligibilitySteps = [
+const positionSafetySteps = [
   {
-    title: "$250K",
+    title: "Safe Zone",
     description:
-      "Hold at least $250K in Liquidity Pools to qualify and enter the review process with your application.",
+      "Health Factor stays above 1.5, so borrow usage remains within capacity while fees keep accruing.",
     accent: "text-[#111111]",
-    icon: Coins,
+    icon: Shield,
   },
   {
-    title: "$100K",
+    title: "Warning Zone",
     description:
-      "Your initial borrow must be at least $100K to qualify and enter the review process with your application.",
+      "Health Factor sits between 1.0 and 1.5, so you can repay, add collateral, or reduce exposure.",
     accent: "text-[#111111]",
-    icon: Landmark,
+    icon: TriangleAlert,
   },
   {
-    title: "3+ Month",
+    title: "Liquidation",
     description:
-      "Keep the facility active for at least 3 months to qualify and enter the review process with your application.",
+      "Health Factor drops below 1.0, fees apply first, needed LP unwinds, and residual value returns.",
     accent: "text-[#111111]",
-    icon: Infinity,
+    icon: ShieldAlert,
   },
 ] as const
 
@@ -158,41 +156,16 @@ function WorkflowStepCard({
   const Icon = icon
 
   return (
-    <article className={`flex flex-col rounded-[1.75rem] bg-[#f7f7f5] p-5 md:p-6 ${className}`}>
+    <article className={`flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6 ${className}`}>
       <div className="flex h-8 w-8 items-center justify-center text-[#111111]">
         <Icon className="h-8 w-8" strokeWidth={1.85} />
       </div>
 
-      <h3 className="mt-5 text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:mt-6 md:text-[1.55rem]">
-        {title}
-      </h3>
-      <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
-        {description}
-      </p>
+      <FeatureCardTitle className="mt-5 md:mt-6">{title}</FeatureCardTitle>
+      <FeatureCardDescription className="mt-3 max-w-[22rem]">{description}</FeatureCardDescription>
     </article>
   )
 }
-
-const tokenLogoUrls = {
-  bitcoin: "https://coin-logos.simplr.sh/images/bitcoin/standard.png",
-  ethereum: "https://coin-logos.simplr.sh/images/ethereum/standard.png",
-  usdCoin: "https://coin-logos.simplr.sh/images/usd-coin/standard.png",
-  tether: "https://coin-logos.simplr.sh/images/tether/standard.png",
-  dai: "https://coin-logos.simplr.sh/images/dai/standard.png",
-  solana: "https://coin-logos.simplr.sh/images/solana/standard.png",
-  ripple: "https://coin-logos.simplr.sh/images/ripple/standard.png",
-  ton: "https://coin-logos.simplr.sh/images/the-open-network/standard.png",
-  aave: "https://coin-logos.simplr.sh/images/aave/standard.png",
-  uniswap: "https://coin-logos.simplr.sh/images/uniswap/standard.png",
-  chainlink: "https://coin-logos.simplr.sh/images/chainlink/standard.png",
-  maker: "https://coin-logos.simplr.sh/images/maker/standard.png",
-  frax: "https://coin-logos.simplr.sh/images/frax/standard.png",
-  curve: "https://coin-logos.simplr.sh/images/curve-dao-token/standard.png",
-  pancakeswap: "https://coin-logos.simplr.sh/images/pancakeswap-token/standard.png",
-  raydium: "https://coin-logos.simplr.sh/images/raydium/standard.png",
-  sushi: "https://coin-logos.simplr.sh/images/sushi/standard.png",
-  orca: "https://coin-logos.simplr.sh/images/orca/standard.png",
-} as const
 
 function BorrowMarketCard({
   number,
@@ -206,140 +179,8 @@ function BorrowMarketCard({
   return (
     <div className="flex h-full flex-col rounded-2xl bg-gray-50 p-6 md:p-8">
       <span className="text-5xl font-bold text-gray-300 md:text-6xl">{number}</span>
-      <h3 className="mt-6 max-w-[14rem] text-[1.45rem] font-medium leading-[1.08] tracking-[-0.045em] text-[#18323c]">
-        {title}
-      </h3>
-      <p className="mt-3 text-sm leading-6 text-gray-600">{description}</p>
-    </div>
-  )
-}
-
-const popularPoolRows = [
-  {
-    pair: "USDC / USDT",
-    dex: "Curve",
-    logos: [tokenLogoUrls.usdCoin, tokenLogoUrls.tether],
-  },
-  {
-    pair: "WETH / USDC",
-    dex: "Uniswap v3",
-    logos: [tokenLogoUrls.ethereum, tokenLogoUrls.usdCoin],
-  },
-  {
-    pair: "WETH / DAI",
-    dex: "Balancer",
-    logos: [tokenLogoUrls.ethereum, tokenLogoUrls.dai],
-  },
-  {
-    pair: "WETH / USDT",
-    dex: "Curve",
-    logos: [tokenLogoUrls.ethereum, tokenLogoUrls.tether],
-  },
-  {
-    pair: "WBTC / WETH",
-    dex: "Curve",
-    logos: [tokenLogoUrls.bitcoin, tokenLogoUrls.ethereum],
-  },
-  {
-    pair: "WBTC / USDC",
-    dex: "Uniswap v3",
-    logos: [tokenLogoUrls.bitcoin, tokenLogoUrls.usdCoin],
-  },
-  {
-    pair: "DAI / USDC",
-    dex: "Curve",
-    logos: [tokenLogoUrls.dai, tokenLogoUrls.usdCoin],
-  },
-  {
-    pair: "FRAX / USDC",
-    dex: "Uniswap v2",
-    logos: [tokenLogoUrls.frax, tokenLogoUrls.usdCoin],
-  },
-  {
-    pair: "AAVE / ETH",
-    dex: "Uniswap v3",
-    logos: [tokenLogoUrls.aave, tokenLogoUrls.ethereum],
-  },
-  {
-    pair: "UNI / ETH",
-    dex: "Uniswap v3",
-    logos: [tokenLogoUrls.uniswap, tokenLogoUrls.ethereum],
-  },
-  {
-    pair: "LINK / ETH",
-    dex: "Balancer",
-    logos: [tokenLogoUrls.chainlink, tokenLogoUrls.ethereum],
-  },
-  {
-    pair: "MKR / DAI",
-    dex: "Curve",
-    logos: [tokenLogoUrls.maker, tokenLogoUrls.dai],
-  },
-  {
-    pair: "ETH / BTC",
-    dex: "Curve",
-    logos: [tokenLogoUrls.ethereum, tokenLogoUrls.bitcoin],
-  },
-  {
-    pair: "CRV / USDC",
-    dex: "Curve",
-    logos: [tokenLogoUrls.curve, tokenLogoUrls.usdCoin],
-  },
-] as const
-
-function PoolLogoStack({ logos, title }: { logos: readonly string[]; title: string }) {
-  return (
-    <div className="flex items-center -space-x-3">
-      {logos.map((logo, index) => (
-        <Image
-          key={`${title}-${index}`}
-          src={logo}
-          alt=""
-          width={40}
-          height={40}
-          sizes="40px"
-          className="h-8 w-8 rounded-full border border-gray-100 bg-white object-cover shadow-sm md:h-10 md:w-10"
-        />
-      ))}
-    </div>
-  )
-}
-
-function PopularPoolRow({
-  row,
-  index,
-}: {
-  row: (typeof popularPoolRows)[number]
-  index: number
-}) {
-  return (
-    <div
-      className={[
-        "flex min-h-[5.5rem] items-center justify-between gap-3 border-t border-gray-200 px-4 py-4 md:px-6 md:py-4",
-        index % 2 === 0 ? "md:border-r" : "",
-      ].join(" ")}
-    >
-      <div className="min-w-0">
-        <p className="text-[1.05rem] font-semibold leading-[1.05] tracking-[-0.035em] text-[#1f2330] md:text-[1.25rem]">
-          {row.pair}
-        </p>
-        <p className="mt-1 text-[0.72rem] font-medium text-gray-500 md:text-[0.82rem]">
-          {row.dex}
-        </p>
-      </div>
-      <PoolLogoStack logos={row.logos} title={row.pair} />
-    </div>
-  )
-}
-
-function PopularPoolsTable() {
-  return (
-    <div className="overflow-hidden border border-gray-200 bg-white">
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        {popularPoolRows.map((row, index) => (
-          <PopularPoolRow key={row.pair} row={row} index={index} />
-        ))}
-      </div>
+      <FeatureCardTitle className="mt-6">{title}</FeatureCardTitle>
+      <FeatureCardDescription className="mt-3">{description}</FeatureCardDescription>
     </div>
   )
 }
@@ -411,43 +252,36 @@ export default function BorrowPage() {
         </div>
       </div>
 
-      <ProductStorySection
-        withTopDivider
-        eyebrow="Tap into your AMM Markets"
-        eyebrowTone="blue"
-        titleLines={["From pool to credit,", "seamlessly."]}
-        paragraphs={[
-          "Avana Borrow treats each LP position as live collateral, valued, risk-scored, and managed with pool-specific logic that reflects real AMM behaviour instead of flattening it into a token balance.",
-          "Borrowing capacity is drawn from shared Hub liquidity. Dual-oracle pricing, health monitoring, and venue-aware liquidation keep your active exposure productive while maintaining strong credit standards.",
-        ]}
-      />
-
-      <section className="py-8 md:py-10 lg:py-12">
+      <section className="border-t border-gray-200 bg-white pt-8 pb-8 md:pt-10 md:pb-10 2xl:pt-9">
         <div className="site-content-shell">
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {borrowPartnerFeatures.map((feature) => (
-              <article key={feature.title} className="flex flex-col rounded-[1.75rem] bg-[#f7f7f5] p-5 md:p-6">
-                <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
-                <h3 className="mt-5 text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:mt-6 md:text-[1.55rem]">
-                  {feature.title}
-                </h3>
-                <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
-                  {feature.description}
-                </p>
-              </article>
-            ))}
+          <div className="mx-auto flex w-full max-w-[76rem] flex-col gap-6">
+            <div className="flex max-w-[600px] flex-col gap-2">
+              <SectionEyebrow tone="blue">Borrow with Confidence</SectionEyebrow>
+                <SectionTitle>Protected at the pool level.</SectionTitle>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {borrowPartnerFeatures.map((feature) => (
+                <article key={feature.title} className="flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6">
+                  <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
+                  <FeatureCardTitle className="mt-5 md:mt-6">{feature.title}</FeatureCardTitle>
+                  <FeatureCardDescription className="mt-3 max-w-[22rem]">
+                    {feature.description}
+                  </FeatureCardDescription>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       <section className="bg-white py-12 md:py-16 lg:py-20">
         <div className="site-content-shell">
-          <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:grid-rows-[auto_auto] lg:gap-18">
-            <div className="max-w-[33rem] pt-2 lg:col-start-1 lg:row-start-1 lg:pt-6">
+          <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-18">
+            <div className="max-w-[33rem] pt-2 lg:pt-6">
               <SectionEyebrow tone="violet">Working capital</SectionEyebrow>
-              <SectionTitle className="mt-5 max-w-none !text-[clamp(2rem,8.5vw,4.4rem)] !leading-[0.96] text-[#111111] lg:!text-[3.5rem]">
-                <span className={`block whitespace-nowrap ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>Access capital when</span>
-                <span className={`block whitespace-nowrap ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>opportunity calls.</span>
+              <SectionTitle className="mt-5 max-w-none">
+                <span className="block whitespace-nowrap">Access capital when</span>
+                <span className="block whitespace-nowrap">opportunity calls.</span>
               </SectionTitle>
 
               <p className="mt-7 max-w-[28rem] text-[0.98rem] leading-[1.62] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
@@ -455,8 +289,8 @@ export default function BorrowPage() {
               </p>
             </div>
 
-            <div className="relative order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:order-none lg:pt-1">
-              <div className="relative aspect-[1.18/1] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:rounded-[32px]">
+            <div className="relative lg:pt-1">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:aspect-[1.18/1] lg:rounded-[32px]">
                 <Image
                   src="/images/leverage-hero-placeholder.webp"
                   alt="Person holding a smartphone showing a finance app"
@@ -466,44 +300,6 @@ export default function BorrowPage() {
                 />
               </div>
             </div>
-
-            <div className="order-3 max-w-[33rem] pt-10 lg:col-start-1 lg:row-start-2 lg:order-none lg:pt-0">
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-                <button
-                  type="button"
-                  className="inline-flex h-[4.15rem] items-center justify-center rounded-full bg-black px-10 text-[1.02rem] font-semibold tracking-[-0.02em] text-white transition-transform hover:-translate-y-0.5 hover:bg-neutral-900"
-                >
-                  Apply now
-                </button>
-                <p className="text-[0.98rem] leading-6 text-[#111111]">
-                  Get in touch,{" "}
-                  <a href="tel:18779812128" className="font-semibold underline underline-offset-4">
-                    1-877-981-2128
-                  </a>
-                  .
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white">
-        <div className="site-content-shell">
-          <div className="space-y-4 text-left">
-            <SectionEyebrow tone="violet">Minimum eligibility</SectionEyebrow>
-            <SectionTitle>Find out if you qualify.</SectionTitle>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
-            {minimumEligibilitySteps.map((step) => (
-              <WorkflowStepCard
-                key={step.title}
-                title={step.title}
-                description={step.description}
-                icon={step.icon}
-              />
-            ))}
           </div>
         </div>
       </section>
@@ -513,26 +309,26 @@ export default function BorrowPage() {
           <div className="mx-auto w-full max-w-[76rem] space-y-32 md:space-y-40 2xl:space-y-36">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="violet">Borrow markets</SectionEyebrow>
-                <SectionTitle>Pick your borrow path</SectionTitle>
+                <SectionEyebrow tone="violet">How it works</SectionEyebrow>
+                <SectionTitle>Borrowing in three steps</SectionTitle>
               </div>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 <BorrowMarketCard
                   number="1"
-                  title="Borrow Markets"
-                  description="Supply LP positions and receive asset loans deposited straight to your wallet."
+                  title="Deposit LP"
+                  description="Deposit LP tokens from any supported DEX while your position stays active and keeps earning fees."
                 />
 
                 <BorrowMarketCard
                   number="2"
-                  title="Lend Markets"
-                  description="Lend assets to back LP collateral and earn yield from the market."
+                  title="Borrow instantly"
+                  description="Borrow up to 80% of your LP value based on pool risk, with assets deposited straight to your wallet."
                 />
 
                 <BorrowMarketCard
                   number="3"
-                  title="Multiply Markets"
-                  description="Increase your yield exposure by looping up to 10x with a single click."
+                  title="Repay anytime"
+                  description="Repay on your own timeline with no deadlines while keeping LTV under the liquidation threshold."
                 />
               </div>
             </div>
@@ -600,10 +396,20 @@ export default function BorrowPage() {
 
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="blue">Popular Pools</SectionEyebrow>
-                <SectionTitle>Popular LP pools</SectionTitle>
+                <SectionEyebrow tone="blue">Liquidity pools</SectionEyebrow>
+                <SectionTitle className="md:whitespace-nowrap">
+                  Browse endless LP collateral
+                </SectionTitle>
               </div>
-              <PopularPoolsTable />
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.35rem] sm:aspect-[2/1] md:rounded-[1.6rem]">
+                <Image
+                  src="/images/borrow-markets-visual.png"
+                  alt="Document-style preview of supported borrowing markets"
+                  fill
+                  sizes="(max-width: 1200px) 100vw, 1120px"
+                  className="object-cover object-center"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -615,7 +421,7 @@ export default function BorrowPage() {
         <div className="site-content-width space-y-32 pt-32 pb-16 md:space-y-40 md:pt-40 md:pb-20 2xl:space-y-36 2xl:pt-36 2xl:pb-18">
           <ProductFeatureScrollSection
             eyebrowTone="blue"
-            title={<span className={CYAN_HIGHLIGHT_TEXT_CLASS}>Engineered for LP safety.</span>}
+            title="Engineered for LP safety."
             items={borrowFeatureItems}
             panels={[
               /* 01 LP-native valuation — pool structure, exposure, venue collateral logic */
@@ -913,7 +719,24 @@ export default function BorrowPage() {
             ]}
           />
 
-          <PositionSafetySection />
+          <section>
+            <div className="space-y-4 text-left">
+              <SectionEyebrow tone="violet">Position Safety</SectionEyebrow>
+              <SectionTitle>Every health state, fully explained.</SectionTitle>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
+              {positionSafetySteps.map((step) => (
+                <WorkflowStepCard
+                  key={step.title}
+                  title={step.title}
+                  description={step.description}
+                  icon={step.icon}
+                />
+              ))}
+            </div>
+          </section>
+
           <BorrowPowerSection />
 
           <HomepageNewsroomSection collection="borrow" eyebrowTone="blue" />

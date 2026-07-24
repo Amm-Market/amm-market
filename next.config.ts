@@ -1,10 +1,17 @@
 import type { NextConfig } from "next";
+import bundleAnalyzer from "@next/bundle-analyzer";
 import { legacyBlogRedirects } from "./src/lib/site";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const legacyMarketingRedirects = [
   { source: "/open-spoke", destination: "/borrow" },
   { source: "/stable-spoke", destination: "/lend" },
-  { source: "/webapp", destination: "/credit-lines" },
+  // /credit-lines no longer exists; send the legacy webapp URL home.
+  { source: "/webapp", destination: "/" },
+  { source: "/credit-lines", destination: "/" },
 ];
 
 /**
@@ -148,4 +155,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

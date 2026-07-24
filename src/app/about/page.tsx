@@ -74,12 +74,11 @@ export default function AboutPage() {
 
           <div className="mx-auto mt-10 max-w-3xl space-y-8 lg:mt-14">
             <p className="text-[0.98rem] font-normal leading-[1.65] tracking-[-0.025em] text-gray-900 sm:text-[1.08rem]">
-              One of the most important sources of collateral demand in crypto is hiding in plain sight. For years,
-              DeFi has treated AMMs primarily as trading infrastructure and LP positions as passive liquidity. Yet
-              major AMMs already hold billions in liquidity, and the opportunity to make that capital usable as
-              collateral has become increasingly difficult to ignore. AMMs are now more mature, liquidity is deeper,
-              oracle infrastructure is stronger, and market participants are far more familiar with how LP positions
-              behave across stable, correlated, and volatile pairs than they were in earlier generations of the market.
+              One of crypto&apos;s most important sources of collateral is hiding in plain sight: AMM liquidity.
+              Major AMMs already hold billions, yet LP positions are still treated mostly as passive liquidity
+              rather than productive collateral. Aave&apos;s 2021 AMM Market proved that LP positions could back
+              loans, but it was built for the simpler DEXs of that era. Avana extends that model to today&apos;s
+              DEXs and LP types, using dual oracles and stronger risk controls.
             </p>
             <p className="text-[0.98rem] font-normal leading-[1.65] tracking-[-0.025em] text-gray-900 sm:text-[1.08rem]">
               We believe the next major expansion in DeFi lending markets will come from protocols that can understand
@@ -99,55 +98,53 @@ export default function AboutPage() {
                 <SectionTitle>Protocol Operations</SectionTitle>
               </div>
 
-              <div className="space-y-5 text-[1.08rem] font-normal leading-[1.7] tracking-[-0.025em] text-gray-900 sm:text-[1.18rem]">
+              <div className="space-y-5 text-[0.98rem] font-normal leading-[1.65] tracking-[-0.025em] text-gray-900 sm:text-[1.08rem]">
                 <p>
                   To keep risk management clear and accountable, Avana&apos;s operations are structured across
                   specialized contributor scopes, each responsible for a defined area of the protocol.
                 </p>
-                <div className="rounded-[28px] bg-gray-50/70 p-5 sm:p-6">
-                  <div className="grid gap-8 md:grid-cols-2 md:gap-x-10 md:gap-y-8">
-                    <div className="space-y-2">
-                      <h3 className="text-base font-semibold tracking-[-0.03em] text-gray-950">
-                        Protocol Core team
-                      </h3>
-                      <p className="text-[0.98rem] leading-[1.65] text-gray-700">
-                        The Protocol Core team oversees Avana&apos;s technical risk, including the smart contracts, LP
-                        collateral framework, liquidation systems, oracle infrastructure, access control, execution
-                        environment, and upgrade architecture across integrated AMMs and lending hubs.
-                      </p>
-                    </div>
+                <div className="space-y-5">
+                  <div className="space-y-2">
+                    <h3 className="text-[0.98rem] font-semibold tracking-[-0.025em] text-gray-900 sm:text-[1.08rem]">
+                      Protocol Core team
+                    </h3>
+                    <p>
+                      The Protocol Core team oversees Avana&apos;s technical risk, including the smart contracts, LP
+                      collateral framework, liquidation systems, oracle infrastructure, access control, execution
+                      environment, and upgrade architecture across integrated AMMs and lending hubs.
+                    </p>
+                  </div>
 
-                    <div className="space-y-2">
-                      <h3 className="text-base font-semibold tracking-[-0.03em] text-gray-950">
-                        Governance & Operations team
-                      </h3>
-                      <p className="text-[0.98rem] leading-[1.65] text-gray-700">
-                        The Governance & Operations team manages ecosystem growth, proposal coordination, treasury
-                        operations, incentive programs, and collateral onboarding processes.
-                      </p>
-                    </div>
+                  <div className="space-y-2">
+                    <h3 className="text-[0.98rem] font-semibold tracking-[-0.025em] text-gray-900 sm:text-[1.08rem]">
+                      Governance & Operations team
+                    </h3>
+                    <p>
+                      The Governance & Operations team manages ecosystem growth, proposal coordination, treasury
+                      operations, incentive programs, and collateral onboarding processes.
+                    </p>
+                  </div>
 
-                    <div className="space-y-2">
-                      <h3 className="text-base font-semibold tracking-[-0.03em] text-gray-950">
-                        Market Risk team
-                      </h3>
-                      <p className="text-[0.98rem] leading-[1.65] text-gray-700">
-                        The Market Risk team is responsible for quantitative modeling of LP collateral behavior,
-                        liquidity depth, volatility, liquidation dynamics, concentrated liquidity exposure, pricing
-                        integrity, and parameter optimization under varying market conditions.
-                      </p>
-                    </div>
+                  <div className="space-y-2">
+                    <h3 className="text-[0.98rem] font-semibold tracking-[-0.025em] text-gray-900 sm:text-[1.08rem]">
+                      Market Risk team
+                    </h3>
+                    <p>
+                      The Market Risk team is responsible for quantitative modeling of LP collateral behavior,
+                      liquidity depth, volatility, liquidation dynamics, concentrated liquidity exposure, pricing
+                      integrity, and parameter optimization under varying market conditions.
+                    </p>
+                  </div>
 
-                    <div className="space-y-2">
-                      <h3 className="text-base font-semibold tracking-[-0.03em] text-gray-950">
-                        Collateral Risk team
-                      </h3>
-                      <p className="text-[0.98rem] leading-[1.65] text-gray-700">
-                        The Collateral Risk team focuses on qualitative assessment, including structural review of
-                        listed assets, liquidity sources, governance structures, protocol dependencies, and broader
-                        collateral integrity across supported markets.
-                      </p>
-                    </div>
+                  <div className="space-y-2">
+                    <h3 className="text-[0.98rem] font-semibold tracking-[-0.025em] text-gray-900 sm:text-[1.08rem]">
+                      Collateral Risk team
+                    </h3>
+                    <p>
+                      The Collateral Risk team focuses on qualitative assessment, including structural review of
+                      listed assets, liquidity sources, governance structures, protocol dependencies, and broader
+                      collateral integrity across supported markets.
+                    </p>
                   </div>
                 </div>
                 <p>

@@ -1,13 +1,20 @@
 import dynamic from "next/dynamic"
+import type { LucideIcon } from "lucide-react"
+import {
+  ArrowLeftRight,
+  BriefcaseBusiness,
+  Building2,
+  Globe2,
+  Layers,
+  Zap,
+} from "lucide-react"
 import { DeFiTerm } from "@/components/defi-term"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 import { PerformanceDiv } from "@/components/ui/performance-section"
 import { TokenLogo } from "@/components/token-logo"
-import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
-
 function SectionSkeleton({
   lines = 3,
   minHeight = "320px",
@@ -402,6 +409,49 @@ function LendingCoverageTable() {
   )
 }
 
+const lpUseCases: {
+  title: string
+  description: string
+  icon: LucideIcon
+}[] = [
+  {
+    title: "Treasury financing",
+    description:
+      "DAOs and treasuries can borrow against LP positions to fund runway without selling liquidity or fee flow.",
+    icon: Building2,
+  },
+  {
+    title: "Liquidity expansion",
+    description:
+      "LPs can borrow against existing positions, add liquidity, and grow fee exposure from the same capital base.",
+    icon: Layers,
+  },
+  {
+    title: "Trading liquidity",
+    description:
+      "Traders can borrow against LP collateral to rebalance inventory, hedge risk, or move on short-notice trades.",
+    icon: ArrowLeftRight,
+  },
+  {
+    title: "Cross-ecosystem credit",
+    description:
+      "Keep LP collateral in one venue and borrow for deployment across other protocols, strategies, or chains.",
+    icon: Globe2,
+  },
+  {
+    title: "Runway and operations",
+    description:
+      "Cover payroll, vendors, and launches with LP-backed credit without touching core positions or reserves.",
+    icon: BriefcaseBusiness,
+  },
+  {
+    title: "Move on short notice",
+    description:
+      "Borrow when timing matters, then redeploy capital as opportunities open across the broader market.",
+    icon: Zap,
+  },
+]
+
 export default function HeroSection() {
   return (
     <section className="marketing-secondary-shell pb-0">
@@ -409,14 +459,10 @@ export default function HeroSection() {
         <PerformanceDiv className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-6">
           <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="cyan">Borrowing Power</SectionEyebrow>
-            <SectionTitle className="max-w-[13ch] text-[#18323c]">
-              <span className="block">
-                Unlock <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>credit</span>
-              </span>
-              <span className="block">
-                from <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>250+</span> pools
-              </span>
+            <SectionEyebrow tone="cyan">Borrow Markets</SectionEyebrow>
+            <SectionTitle>
+              <span className="block lg:whitespace-nowrap">Unlock credit</span>
+              <span className="block lg:whitespace-nowrap">from 250+ pools</span>
             </SectionTitle>
           </div>
             </div>
@@ -444,28 +490,24 @@ export default function HeroSection() {
               ))}
             </div>
 
-            <div className="inline-flex max-w-[920px] items-start gap-3 border-l-2 border-[#c6d8eb] bg-[#f8fbff] px-4 py-3 text-[0.82rem] leading-6 tracking-[-0.01em] text-[#5f6f82] md:text-sm">
-              <span className="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#0078d4] text-[0.7rem] font-semibold leading-none text-white">
-                i
+            <p className="flex items-start gap-2.5 text-xs font-medium leading-5 text-[#44546a] md:text-sm">
+              <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#0078d4] text-sm leading-none text-white">
+                !
               </span>
-              <span>
+              <span className="max-w-[1000px]">
                 Sandbox data shown for preview only. APYs, prices, and returns are illustrative and may differ from live market conditions.
               </span>
-            </div>
+            </p>
         </PerformanceDiv>
       </div>
 
       <div className="site-content-shell pt-24 md:pt-32 2xl:pt-28">
         <div className="space-y-6">
           <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="emerald">Lending Markets</SectionEyebrow>
-            <SectionTitle className="max-w-[14ch] text-[#18323c]">
-              <span className="block">
-                Earn <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>yield</span>
-              </span>
-              <span className="block">
-                on <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>100+</span> assets
-              </span>
+            <SectionEyebrow tone="emerald">Lend Markets</SectionEyebrow>
+            <SectionTitle>
+              <span className="block lg:whitespace-nowrap">Earn yield</span>
+              <span className="block lg:whitespace-nowrap">on 100+ assets</span>
             </SectionTitle>
           </div>
 
@@ -477,12 +519,9 @@ export default function HeroSection() {
         <PerformanceDiv>
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="amber">Trading Pairs</SectionEyebrow>
-                <SectionTitle className="max-w-[15ch] text-[#18323c]">
-                  <span className="block">Multiply like a pro</span>
-                  <span className="block">
-                    across <span className={`font-semibold ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>500+</span> markets
-                  </span>
+                <SectionEyebrow tone="amber">Multiply Markets</SectionEyebrow>
+                <SectionTitle>
+                  <span className="block lg:whitespace-nowrap">Loop like a pro</span>
                 </SectionTitle>
               </div>
             </div>
@@ -493,8 +532,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Stretch liquidity further</h3>
-                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Borrow up to 80% of your LP value.</p>
+                        <FeatureCardTitle>Stretch liquidity further</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">Borrow up to 80% of your LP value without fully exiting liquidity.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">01</div>
                     </div>
@@ -566,8 +605,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Keep earning fees</h3>
-                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Your LP stays active while you borrow.</p>
+                        <FeatureCardTitle>Keep earning fees</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">Your LP stays active and keeps earning fees while you borrow.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">02</div>
                     </div>
@@ -650,8 +689,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Spend capital anywhere</h3>
-                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Use borrowed funds however you want.</p>
+                        <FeatureCardTitle>Spend capital anywhere</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">Use borrowed funds anywhere across wallets, markets, and strategies.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">03</div>
                     </div>
@@ -703,8 +742,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Track pool composition</h3>
-                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">LP aware oracles monitor volume and oracle confidence.</p>
+                        <FeatureCardTitle>Track pool composition</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">LP-aware oracles monitor volume and confidence across the pool.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">04</div>
                     </div>
@@ -797,8 +836,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Risk tuned to pools</h3>
-                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Continuous risk scoring, track pool volatility, and health quality.</p>
+                        <FeatureCardTitle>Risk tuned to pools</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">Continuous risk scoring tracks pool volatility and health quality.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">05</div>
                     </div>
@@ -1064,42 +1103,32 @@ export default function HeroSection() {
         </PerformanceDiv>
 
 
-      <div className="site-content-shell pt-4 md:pt-6 2xl:pt-6">
-        <div className="flex flex-col gap-6">
-          <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="violet">How it works</SectionEyebrow>
-            <SectionTitle>
-              Borrowing in three steps
-            </SectionTitle>
-          </div>
+      <div className="site-content-shell pt-16 md:pt-20 2xl:pt-18">
+        <div className="max-w-[58rem] space-y-4 text-left">
+          <SectionEyebrow tone="rose">LP use cases</SectionEyebrow>
+          <SectionTitle className="max-w-[14ch] lg:max-w-none">
+            <span className="lg:whitespace-nowrap">Ways businesses use LP credit.</span>
+          </SectionTitle>
         </div>
-        <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
-          <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
-            <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
-            <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-              Deposit your LP position
-            </h3>
-            <p className="text-sm text-gray-600 md:text-base">
-              Deposit your <DeFiTerm term="lp-tokens">LP tokens</DeFiTerm> from any supported <DeFiTerm term="dex">DEX</DeFiTerm>. Your position stays active and continues earning trading fees.
-            </p>
-          </div>
-          <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
-            <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
-            <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-              Receive your loan instantly
-            </h3>
-            <p className="text-sm text-gray-600 md:text-base">
-              Assets will be deposited into your wallet. Borrow up to 80% of your LP value based on pool risk parameters.
-            </p>
-          </div>
-          <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
-            <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
-            <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-              Repay on your timeline
-            </h3>
-            <p className="text-sm text-gray-600 md:text-base">
-              There are no repayment schedules or deadlines. Your <DeFiTerm term="ltv">loan-to-value ratio</DeFiTerm> must remain under the <DeFiTerm term="liquidation-threshold">liquidation threshold</DeFiTerm> to avoid automatic <DeFiTerm term="liquidation">liquidation</DeFiTerm>.
-            </p>
+
+        <div className="mt-10 -mx-5 overflow-x-auto px-5 pb-1 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] md:mx-0 md:mt-16 md:overflow-visible md:px-0 md:pb-0 md:snap-none [&::-webkit-scrollbar]:hidden">
+          <div className="flex w-max gap-8 md:grid md:w-full md:grid-cols-2 md:gap-x-16 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
+            {lpUseCases.map((item) => {
+              const Icon = item.icon
+
+              return (
+                <article
+                  key={item.title}
+                  className="flex w-[15rem] shrink-0 snap-start flex-col bg-transparent md:w-auto md:shrink"
+                >
+                  <Icon className="h-11 w-11 text-[#111111]" strokeWidth={1.5} aria-hidden="true" />
+                  <FeatureCardTitle className="mt-5">{item.title}</FeatureCardTitle>
+                  <FeatureCardDescription className="mt-2 max-w-[22rem]">
+                    {item.description}
+                  </FeatureCardDescription>
+                </article>
+              )
+            })}
           </div>
         </div>
       </div>
@@ -1109,21 +1138,7 @@ export default function HeroSection() {
         </LazySection>
 
         <LazySection minHeight="660px" fallback={<SectionSkeleton minHeight="660px" />}>
-          <div className="relative overflow-hidden border border-cyan-100 bg-[#f1fbfe] px-6 py-8 md:px-8 md:py-10">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 opacity-[0.28]"
-              style={{
-                backgroundImage: [
-                  "linear-gradient(rgba(1,170,207,0.14) 1px, transparent 1px)",
-                  "linear-gradient(90deg, rgba(1,170,207,0.08) 1px, transparent 1px)",
-                  "radial-gradient(circle at 18% 18%, rgba(1,170,207,0.14) 0 6.5%, transparent 6.5%)",
-                  "radial-gradient(circle at 82% 82%, rgba(1,170,207,0.1) 0 7.5%, transparent 7.5%)",
-                  "radial-gradient(circle at 50% 50%, rgba(1,170,207,0.06) 0 18%, transparent 18%)",
-                ].join(", "),
-                backgroundSize: "100% 100%",
-              }}
-            />
+          <div className="relative overflow-hidden rounded-2xl bg-gray-50 px-6 py-8 shadow-none md:px-8 md:py-10">
             <div className="relative grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
               <div className="space-y-4">
                 <SectionEyebrow tone="slate">Built on Aave v4</SectionEyebrow>
