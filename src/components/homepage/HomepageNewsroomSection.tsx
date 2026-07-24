@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
 import { getNewsroomPosts, type NewsroomCollection, type NewsroomPost } from "@/lib/content"
 
 type HomepageNewsroomSectionProps = {
@@ -46,15 +46,13 @@ export default async function HomepageNewsroomSection({
             <p className="text-sm text-gray-500">{post.date}</p>
 
             <div className="space-y-2">
-              <h3 className="max-w-[22rem] text-[1.45rem] font-medium leading-[1.08] tracking-[-0.045em] text-[#18323c]">
-                {post.title}
-              </h3>
+              <FeatureCardTitle className="max-w-[22rem]">{post.title}</FeatureCardTitle>
               <p className="text-sm text-gray-500">{post.byline}</p>
             </div>
 
-            <p className="max-w-[38rem] text-sm leading-6 text-gray-600 md:pt-1">
+            <FeatureCardDescription className="max-w-[38rem] md:pt-1">
               {post.description}
-            </p>
+            </FeatureCardDescription>
 
             <div className="md:justify-self-end">
               <Link

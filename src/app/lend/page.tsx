@@ -3,10 +3,9 @@ import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
-import { BadgePercent, Gauge, LockKeyhole, MoveRight } from "lucide-react"
+import { BadgePercent, BellRing, Gauge, LockKeyhole, MoveRight, WalletCards } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
-import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
+import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
 const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
@@ -14,6 +13,7 @@ const PlatformToolsShowcaseSection = dynamic(() => import("@/components/platform
 const InvestApySection = dynamic(() => import("@/components/invest-apy-section"))
 const InvestGrowthCalculatorSection = dynamic(() => import("@/components/invest-growth-calculator-section"))
 const ProductFeatureScrollSection = dynamic(() => import("@/components/product-feature-scroll-section"))
+const DeferredTradeMarketShowcase = dynamic(() => import("@/components/deferred-trade-market-showcase"))
 
 const pageDescription =
   "Supply single assets into LP-backed credit markets, keep liquidity flexible, and earn demand-driven yield across Avana."
@@ -79,33 +79,39 @@ const investFeatureItems = [
 const liquidationModelCards = [
   {
     icon: Gauge,
-    title: "Eligibility",
-    description: "Risk rules define which accounts can be closed and when liquidation is available.",
+    title: "See your credit line",
+    description:
+      "Track available credit, borrowing room, and allocation over time from one business view.",
   },
   {
     icon: LockKeyhole,
-    title: "Execution input",
-    description: "The operator supplies the transaction path, funding source, and settlement plan.",
+    title: "Manage your treasury",
+    description:
+      "Keep balances, borrowing capacity, and market exposure together in one consolidated view.",
   },
   {
     icon: MoveRight,
-    title: "Collateral handling",
-    description: "The LP position is converted through the correct venue path instead of treated like a plain token.",
+    title: "Navigate market shifts",
+    description:
+      "Use monitoring and controls that help your credit line stay ahead of changing conditions.",
   },
   {
     icon: BadgePercent,
-    title: "Debt repayment",
-    description: "Recovered value flows back into the credit market to reduce or close the unsafe loan.",
+    title: "Business-friendly access",
+    description:
+      "Get the tools and alerts you need to manage business credit cleanly while on the go.",
   },
   {
-    icon: MoveRight,
-    title: "Incentive",
-    description: "The liquidation premium rewards the operator who completes the closeout.",
+    icon: WalletCards,
+    title: "Allocate with clarity",
+    description:
+      "Decide where capital should sit across markets without losing sight of overall capacity.",
   },
   {
-    icon: Gauge,
-    title: "Residual value",
-    description: "Any leftover value after repayment and rewards is returned to the borrower.",
+    icon: BellRing,
+    title: "Act on clear signals",
+    description:
+      "Stay ready with timely cues when health, utilization, or market conditions need attention.",
   },
 ] as const
 
@@ -119,14 +125,10 @@ function LiquidationModelCard({
   description: string
 }) {
   return (
-    <article className="flex flex-col rounded-[1.5rem] bg-[#f7f7f5] p-5 md:p-6">
+    <article className="flex flex-col rounded-[1.5rem] bg-gray-50 p-5 md:p-6">
       <Icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
-      <h3 className="mt-5 text-[1.25rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111]">
-        {title}
-      </h3>
-      <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77]">
-        {description}
-      </p>
+      <FeatureCardTitle className="mt-5">{title}</FeatureCardTitle>
+      <FeatureCardDescription className="mt-3 max-w-[22rem]">{description}</FeatureCardDescription>
     </article>
   )
 }
@@ -233,32 +235,8 @@ export default function LendPage() {
         </div>
       </div>
 
-      <section className="deferred-viewport border-t border-gray-200 bg-white pt-8 pb-8 md:pt-10 md:pb-10 2xl:pt-9 2xl:pb-9">
-        <div className="site-content-shell">
-          <div className="mx-auto w-full max-w-[76rem]">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-center md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
-              <div className="space-y-4 md:self-center">
-                <SectionEyebrow tone="emerald">Lending Markets</SectionEyebrow>
-                <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
-                  <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>Lend into</span>
-                  <span className={`block ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>LP-backed credit.</span>
-                </SectionTitle>
-              </div>
-              <div className="flex items-center justify-center pt-1 md:justify-end">
-                <div className="relative w-full max-w-[17rem] sm:max-w-[22rem] md:max-w-[25rem] lg:max-w-[28rem] xl:max-w-[31rem]">
-                  <Image
-                    src="/images/Avana Coin.webp"
-                    alt="Avana coin illustration"
-                    width={1714}
-                    height={1601}
-                    className="h-auto w-full"
-                    sizes="(min-width: 1280px) 31rem, (min-width: 1024px) 28rem, (min-width: 768px) 25rem, (min-width: 640px) 22rem, 17rem"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <section className="deferred-viewport-tall border-t border-gray-200 bg-white">
+        <DeferredTradeMarketShowcase />
       </section>
 
       <section className="relative z-10 pt-8 md:pt-10 lg:pt-12">
@@ -292,7 +270,7 @@ export default function LendPage() {
 
           <ProductFeatureScrollSection
             eyebrowTone="emerald"
-            title="A market-leading rate, with more built in."
+            title="A market-leading rate"
             items={investFeatureItems}
             panels={[
               /* 01 Easy money movement — deposit/withdraw flow card */
@@ -464,32 +442,26 @@ export default function LendPage() {
             <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
               <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
-                <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-                  Pick a market
-                </h3>
-                <p className="text-sm text-gray-600 md:text-base">
-                  Browse lending markets like GHO, USDC, USDT, ETH, and WBTC. Each market shows current APY, utilization, and what your capital is helping fund across LP borrower categories.
-                </p>
+                <FeatureCardTitle className="mt-6">Pick a market</FeatureCardTitle>
+                <FeatureCardDescription className="mt-3">
+                  Browse lending markets like GHO, USDC, USDT, ETH, and WBTC while tracking APY, utilization, and borrower demand.
+                </FeatureCardDescription>
               </div>
 
               <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
-                <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-                  Make a deposit
-                </h3>
-                <p className="text-sm text-gray-600 md:text-base">
-                  Connect your wallet, approve the asset, and supply. Your funds enter the lending pool and start earning immediately, with APY, utilization, and accrued interest visible in real time.
-                </p>
+                <FeatureCardTitle className="mt-6">Make a deposit</FeatureCardTitle>
+                <FeatureCardDescription className="mt-3">
+                  Connect your wallet, approve the asset, and supply so your funds enter the pool and start earning right away.
+                </FeatureCardDescription>
               </div>
 
               <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
-                <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-                  Earn and withdraw freely
-                </h3>
-                <p className="text-sm text-gray-600 md:text-base">
-                  Interest accrues continuously. Withdraw whenever you choose, and your principal plus earned yield returns to your wallet in one transaction with no claim period or lock-up.
-                </p>
+                <FeatureCardTitle className="mt-6">Earn and withdraw</FeatureCardTitle>
+                <FeatureCardDescription className="mt-3">
+                  Interest accrues continuously, and you can withdraw principal plus yield anytime with no lock-up period.
+                </FeatureCardDescription>
               </div>
             </div>
           </section>
