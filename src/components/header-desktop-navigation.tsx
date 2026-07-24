@@ -1,6 +1,7 @@
 "use client"
 
 import dynamic from "next/dynamic"
+import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 import { desktopMenuButtons, type DesktopMenuId } from "@/components/header-nav-data"
 
@@ -12,7 +13,14 @@ function warmDesktopMenuPanel() {
   desktopMenuPanelPromise ??= import("@/components/header-desktop-menu-panel")
 }
 
+function isPathInSection(pathname: string, matchHrefs: readonly string[]) {
+  return matchHrefs.some(
+    (href) => pathname === href || pathname.startsWith(`${href}/`),
+  )
+}
+
 export default function HeaderDesktopNavigation() {
+  const pathname = usePathname() || "/"
   const [desktopMenuOpen, setDesktopMenuOpen] = useState<DesktopMenuId | null>(null)
   const [desktopMenuRendered, setDesktopMenuRendered] = useState<DesktopMenuId | null>(null)
   const [desktopMenuAnimationCycle, setDesktopMenuAnimationCycle] = useState(0)
@@ -47,19 +55,21 @@ export default function HeaderDesktopNavigation() {
     <>
       <nav aria-label="Primary navigation" className="hidden min-w-0 items-center gap-8 md:ml-6 md:mr-auto md:flex md:gap-6 lg:gap-8" onMouseEnter={warmDesktopMenuPanel} onMouseLeave={scheduleDesktopMenuClose}>
         {desktopMenuButtons.map((menu) => {
-          const isActive = desktopMenuOpen === menu.id
+          const isOpen = desktopMenuOpen === menu.id
+          const isCurrentSection = isPathInSection(pathname, menu.matchHrefs)
+          const isHighlighted = isOpen || isCurrentSection
 
           return (
             <button
               key={menu.id}
               type="button"
               aria-haspopup="true"
-              aria-expanded={isActive}
+              aria-expanded={isOpen}
               aria-controls={`desktop-menu-${menu.id}`}
               onMouseEnter={() => openDesktopMenu(menu.id)}
               onFocus={() => openDesktopMenu(menu.id)}
               onClick={() => openDesktopMenu(menu.id)}
-              className={`site-header-nav-link group relative inline-flex items-center px-0 py-1 text-[15px] font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${isActive ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
+              className={`site-header-nav-link group relative inline-flex items-center px-0 py-1 text-[15px] font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${isHighlighted ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
             >
               <span>{menu.label}</span>
             </button>

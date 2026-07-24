@@ -116,7 +116,7 @@ export default function InvestApySection() {
       <div className="site-content-shell">
         <div className="space-y-4">
           <SectionEyebrow tone="cyan">Avana APY</SectionEyebrow>
-          <SectionTitle className="max-w-none text-[clamp(2.6rem,4.8vw,4rem)] leading-[0.95] md:whitespace-nowrap">
+          <SectionTitle className="max-w-none md:whitespace-nowrap">
             Same Idle Cash with Higher APY Returns
           </SectionTitle>
         </div>

@@ -1,8 +1,7 @@
 import dynamic from "next/dynamic"
 import type { Metadata } from "next"
 import WebappHero from "@/components/webapp-hero"
-import LogoMarquee from "@/components/logo-marquee"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { SectionTitle } from "@/components/shared"
 import { LazySection } from "@/components/ui/lazy-section"
 import { buildOgImagePath, SITE_NAME, SITE_URL, siteRoutes } from "@/lib/site"
 
@@ -66,12 +65,8 @@ function BuildTomorrowSectionFallback() {
           <div className="h-3 w-28 rounded-full bg-gray-200" />
           <div className="h-10 w-72 rounded-2xl bg-gray-200" />
         </div>
-        <div className="overflow-hidden rounded-xl border border-gray-200 bg-gray-50">
+        <div className="overflow-hidden rounded-[1.35rem] bg-gray-100 md:rounded-[1.6rem]">
           <div className="aspect-[4/5] w-full bg-gradient-to-br from-gray-200 to-gray-300 sm:aspect-[2/1]" />
-          <div className="border-t border-gray-200 bg-white p-4 sm:hidden">
-            <div className="h-5 w-24 rounded-full bg-gray-200" />
-            <div className="mt-3 h-4 w-5/6 rounded-full bg-gray-100" />
-          </div>
         </div>
       </div>
     </section>
@@ -100,28 +95,30 @@ function DeferredHomepageSectionsFallback() {
 export default function Home() {
   return (
     <>
-      <WebappHero />
-      <LogoMarquee />
-      <section className="bg-white pt-16 pb-24 md:pt-20 md:pb-32 2xl:pt-18 2xl:pb-29">
+      <section className="bg-white pt-10 pb-10 md:pt-14 md:pb-12 2xl:pt-12 2xl:pb-11">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem]">
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
+            <div className="grid grid-cols-1 gap-5 text-center md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 md:text-left lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
               <div className="space-y-4">
-                <SectionEyebrow tone="cyan">What&apos;s new</SectionEyebrow>
-                <SectionTitle>
+                <SectionTitle className="text-center md:text-left">
                   <span className="block lg:whitespace-nowrap">Unlock Capital</span>
-                  <span className="block lg:whitespace-nowrap">from Amm Markets.</span>
+                  <span className="block lg:whitespace-nowrap">from Amm Markets</span>
                 </SectionTitle>
               </div>
-              <div className="space-y-8 text-left text-[#39515b]">
-                <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
-                  In 2021, <strong className="font-semibold text-gray-900">Aave</strong> launched <strong className="font-semibold text-gray-900">AMM Market</strong> and proved <strong className="font-semibold text-gray-900">LP positions</strong> could serve as collateral, but it was built for the simpler DEXs of that era. <strong className="font-semibold text-gray-900">Avana</strong> picks up where that left off, designed for today&apos;s DEXs and LP types, treating each position as <strong className="font-semibold text-gray-900">collateral</strong> shaped by dual oracles and stronger risk controls.
+              <div className="space-y-8">
+                <p className="mx-auto max-w-[620px] text-[1.2rem] font-normal leading-[1.2] tracking-[-0.04em] text-[#121212] sm:text-[1.55rem] sm:leading-[1.12] md:mx-0 lg:text-[1.95rem]">
+                  Turn your liquidity pool positions
+                  <br />
+                  into collateral and borrow against them
+                  <br />
+                  here without leaving the pool.
                 </p>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <WebappHero />
       <LazySection
         rootMargin="240px"
         minHeight="560px"

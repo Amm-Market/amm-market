@@ -89,7 +89,7 @@ export default function HomepageTestimonialSection() {
       data-performance-active={isActive ? "true" : "false"}
     >
       <div className="mb-8 space-y-3 md:mb-10">
-        <SectionEyebrow tone="rose">Borrow with Confidence</SectionEyebrow>
+        <SectionEyebrow tone="rose">Safety by design</SectionEyebrow>
         <SectionTitle>Keep your money safe as it grows.</SectionTitle>
       </div>
 
