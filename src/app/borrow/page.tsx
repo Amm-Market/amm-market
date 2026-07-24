@@ -3,7 +3,7 @@ import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
-import { BadgeDollarSign, Compass, Handshake, LayoutTemplate, Shield, ShieldAlert, ShieldCheck, TriangleAlert, Workflow } from "lucide-react"
+import { Activity, BadgeDollarSign, Compass, Layers, LineChart, Shield, ShieldAlert, ShieldCheck, TriangleAlert } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { PerformanceSection } from "@/components/ui/performance-section"
@@ -12,7 +12,6 @@ import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 const BorrowPowerSection = dynamic(() => import("@/components/borrow-power-section"))
 const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
 const ProductFeatureScrollSection = dynamic(() => import("@/components/product-feature-scroll-section"))
-const ProductStorySection = dynamic(() => import("@/components/product-story-section"))
 
 const openSpokeFaqItems: InlineFaqItem[] = [
   {
@@ -82,39 +81,39 @@ const borrowFeatureItems = [
 
 const borrowPartnerFeatures = [
   {
-    title: "Intent capture",
+    title: "Live LP collateral",
     description:
-      "Turn LP position views, portfolio pages, and trading flows into natural borrowing entry points.",
+      "Treat each LP position as live collateral—valued and managed as an active AMM position, not flattened into a static token balance.",
+    icon: Layers,
+  },
+  {
+    title: "Pool-specific scoring",
+    description:
+      "Borrowing power is risk-scored with pool-specific logic that reflects volatility, depth, and how that market actually behaves.",
     icon: Compass,
   },
   {
-    title: "Protocol handoff",
+    title: "Real AMM behaviour",
     description:
-      "Pass user context into Avana so the credit flow opens with the right wallet, market, and collateral path.",
-    icon: Workflow,
+      "Collateral rules track real pool structure and exposure so credit stays tied to the position you keep in the market.",
+    icon: Activity,
   },
   {
-    title: "Shared monetization",
+    title: "Shared Hub liquidity",
     description:
-      "Build a revenue line around credit access without becoming the lender or risk engine.",
+      "Borrowing capacity is drawn from shared Hub liquidity, so you can access credit without leaving your LP productive.",
     icon: BadgeDollarSign,
   },
   {
-    title: "Product control",
+    title: "Dual-oracle pricing",
     description:
-      "Choose where credit appears, which users see it, and how the path fits your existing experience.",
-    icon: Handshake,
+      "Dual-oracle pricing keeps marks robust as markets move, so collateral value stays credible through the life of the loan.",
+    icon: LineChart,
   },
   {
-    title: "Embedded UX",
+    title: "Active risk controls",
     description:
-      "Keep borrowing inside the product surface your users already trust instead of sending them into a disconnected flow.",
-    icon: LayoutTemplate,
-  },
-  {
-    title: "Risk separation",
-    description:
-      "Let Avana handle health checks, collateral logic, and settlement while your team stays focused on distribution.",
+      "Health monitoring and venue-aware liquidation protect credit standards while your exposure keeps earning fees.",
     icon: ShieldCheck,
   },
 ] as const
@@ -259,31 +258,26 @@ export default function BorrowPage() {
         </div>
       </div>
 
-      <ProductStorySection
-        withTopDivider
-        eyebrow="Tap into your AMM Markets"
-        eyebrowTone="blue"
-        titleLines={["From pool to credit,", "seamlessly."]}
-        paragraphs={[
-          "Avana Borrow treats each LP position as live collateral, valued, risk-scored, and managed with pool-specific logic that reflects real AMM behaviour instead of flattening it into a token balance.",
-          "Borrowing capacity is drawn from shared Hub liquidity. Dual-oracle pricing, health monitoring, and venue-aware liquidation keep your active exposure productive while maintaining strong credit standards.",
-        ]}
-      />
-
-      <section className="py-8 md:py-10 lg:py-12">
+      <section className="border-t border-gray-200 bg-white pt-8 pb-8 md:pt-10 md:pb-10 2xl:pt-9">
         <div className="site-content-shell">
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {borrowPartnerFeatures.map((feature) => (
-              <article key={feature.title} className="flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6">
-                <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
-                <h3 className="mt-5 text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:mt-6 md:text-[1.55rem]">
-                  {feature.title}
-                </h3>
-                <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
-                  {feature.description}
-                </p>
-              </article>
-            ))}
+          <div className="mx-auto flex w-full max-w-[76rem] flex-col gap-6">
+            <div className="flex max-w-[600px] flex-col gap-2">
+              <SectionEyebrow tone="blue">AMM collateral</SectionEyebrow>
+                <SectionTitle>Protected at the pool level.</SectionTitle>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {borrowPartnerFeatures.map((feature) => (
+                <article key={feature.title} className="flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6">
+                  <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
+                  <h3 className="mt-5 text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:mt-6 md:text-[1.55rem]">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
+                    {feature.description}
+                  </p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -304,7 +298,7 @@ export default function BorrowPage() {
             </div>
 
             <div className="relative lg:pt-1">
-              <div className="relative aspect-[1.18/1] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:rounded-[32px]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:aspect-[1.18/1] lg:rounded-[32px]">
                 <Image
                   src="/images/leverage-hero-placeholder.webp"
                   alt="Person holding a smartphone showing a finance app"
@@ -415,14 +409,13 @@ export default function BorrowPage() {
                   Browse endless LP collateral
                 </SectionTitle>
               </div>
-              <div className="overflow-hidden rounded-[1.35rem] md:rounded-[1.6rem]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.35rem] sm:aspect-[2/1] md:rounded-[1.6rem]">
                 <Image
                   src="/images/borrow-markets-visual.png"
                   alt="Document-style preview of supported borrowing markets"
-                  width={1024}
-                  height={523}
+                  fill
                   sizes="(max-width: 1200px) 100vw, 1120px"
-                  className="h-auto w-full"
+                  className="object-cover object-center"
                 />
               </div>
             </div>
