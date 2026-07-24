@@ -1,4 +1,13 @@
 import dynamic from "next/dynamic"
+import type { LucideIcon } from "lucide-react"
+import {
+  ArrowLeftRight,
+  BriefcaseBusiness,
+  Building2,
+  Globe2,
+  Layers,
+  Zap,
+} from "lucide-react"
 import { DeFiTerm } from "@/components/defi-term"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
@@ -400,38 +409,48 @@ function LendingCoverageTable() {
   )
 }
 
-const lpUseCases = [
+const lpUseCases: {
+  title: string
+  description: string
+  icon: LucideIcon
+}[] = [
   {
     title: "Treasury financing",
     description:
       "DAOs and treasuries can borrow against LP positions to fund runway without selling liquidity or fee flow.",
+    icon: Building2,
   },
   {
     title: "Liquidity expansion",
     description:
       "LPs can borrow against existing positions, add liquidity, and grow fee exposure from the same capital base.",
+    icon: Layers,
   },
   {
     title: "Trading liquidity",
     description:
       "Traders can borrow against LP collateral to rebalance inventory, hedge risk, or move on short-notice trades.",
+    icon: ArrowLeftRight,
   },
   {
     title: "Cross-ecosystem credit",
     description:
       "Keep LP collateral in one venue and borrow for deployment across other protocols, strategies, or chains.",
+    icon: Globe2,
   },
   {
     title: "Runway and operations",
     description:
       "Cover payroll, vendors, and launches with LP-backed credit without touching core positions or reserves.",
+    icon: BriefcaseBusiness,
   },
   {
     title: "Move on short notice",
     description:
       "Borrow when timing matters, then redeploy capital as opportunities open across the broader market.",
+    icon: Zap,
   },
-] as const
+]
 
 export default function HeroSection() {
   return (
@@ -1092,15 +1111,25 @@ export default function HeroSection() {
           </SectionTitle>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-x-16 gap-y-14 md:mt-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
-          {lpUseCases.map((item) => (
-            <article key={item.title} className="flex flex-col bg-transparent p-0 md:p-0">
-              <FeatureCardTitle>{item.title}</FeatureCardTitle>
-              <FeatureCardDescription className="mt-3 max-w-[22rem]">
-                {item.description}
-              </FeatureCardDescription>
-            </article>
-          ))}
+        <div className="mt-10 -mx-5 overflow-x-auto px-5 pb-1 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] md:mx-0 md:mt-16 md:overflow-visible md:px-0 md:pb-0 md:snap-none [&::-webkit-scrollbar]:hidden">
+          <div className="flex w-max gap-8 md:grid md:w-full md:grid-cols-2 md:gap-x-16 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
+            {lpUseCases.map((item) => {
+              const Icon = item.icon
+
+              return (
+                <article
+                  key={item.title}
+                  className="flex w-[15rem] shrink-0 snap-start flex-col bg-transparent md:w-auto md:shrink"
+                >
+                  <Icon className="h-11 w-11 text-[#111111]" strokeWidth={1.5} aria-hidden="true" />
+                  <FeatureCardTitle className="mt-5">{item.title}</FeatureCardTitle>
+                  <FeatureCardDescription className="mt-2 max-w-[22rem]">
+                    {item.description}
+                  </FeatureCardDescription>
+                </article>
+              )
+            })}
+          </div>
         </div>
       </div>
 
