@@ -256,7 +256,7 @@ export default function BorrowPage() {
         <div className="site-content-shell">
           <div className="mx-auto flex w-full max-w-[76rem] flex-col gap-6">
             <div className="flex max-w-[600px] flex-col gap-2">
-              <SectionEyebrow tone="blue">AMM collateral</SectionEyebrow>
+              <SectionEyebrow tone="blue">Borrow with Confidence</SectionEyebrow>
                 <SectionTitle>Protected at the pool level.</SectionTitle>
             </div>
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
