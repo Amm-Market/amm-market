@@ -13,6 +13,7 @@ const PlatformToolsShowcaseSection = dynamic(() => import("@/components/platform
 const InvestApySection = dynamic(() => import("@/components/invest-apy-section"))
 const InvestGrowthCalculatorSection = dynamic(() => import("@/components/invest-growth-calculator-section"))
 const ProductFeatureScrollSection = dynamic(() => import("@/components/product-feature-scroll-section"))
+const DeferredTradeMarketShowcase = dynamic(() => import("@/components/deferred-trade-market-showcase"))
 
 const pageDescription =
   "Supply single assets into LP-backed credit markets, keep liquidity flexible, and earn demand-driven yield across Avana."
@@ -234,32 +235,8 @@ export default function LendPage() {
         </div>
       </div>
 
-      <section className="deferred-viewport border-t border-gray-200 bg-white pt-8 pb-8 md:pt-10 md:pb-10 2xl:pt-9 2xl:pb-9">
-        <div className="site-content-shell">
-          <div className="mx-auto w-full max-w-[76rem]">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-center md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
-              <div className="space-y-4 md:self-center">
-                <SectionEyebrow tone="emerald">Lending Markets</SectionEyebrow>
-                <SectionTitle className="max-w-[15ch]">
-                  <span className="block">Lend into</span>
-                  <span className="block">LP-backed credit.</span>
-                </SectionTitle>
-              </div>
-              <div className="flex items-center justify-center pt-1 md:justify-end">
-                <div className="relative w-full max-w-[17rem] sm:max-w-[22rem] md:max-w-[25rem] lg:max-w-[28rem] xl:max-w-[31rem]">
-                  <Image
-                    src="/images/Avana Coin.webp"
-                    alt="Avana coin illustration"
-                    width={1714}
-                    height={1601}
-                    className="h-auto w-full"
-                    sizes="(min-width: 1280px) 31rem, (min-width: 1024px) 28rem, (min-width: 768px) 25rem, (min-width: 640px) 22rem, 17rem"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <section className="deferred-viewport-tall border-t border-gray-200 bg-white">
+        <DeferredTradeMarketShowcase />
       </section>
 
       <section className="relative z-10 pt-8 md:pt-10 lg:pt-12">

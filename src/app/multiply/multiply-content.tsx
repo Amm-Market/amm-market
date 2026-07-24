@@ -1,16 +1,67 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import type { LucideIcon } from "lucide-react"
+import {
+  Activity,
+  BadgePercent,
+  Layers,
+  MousePointerClick,
+  TrendingUp,
+  Undo2,
+} from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import LeverageGlanceShowcaseSection from "@/components/leverage-glance-showcase-section"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import DeferredTradeMarketShowcase from "@/components/deferred-trade-market-showcase"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
 const pageDescription =
   "Use supported AMM positions as collateral to unlock LP-backed leverage and managed perps exposure through one unified Avana workflow."
+
+const loopingBenefits: {
+  title: string
+  description: string
+  icon: LucideIcon
+}[] = [
+  {
+    title: "Stay in the pool",
+    description:
+      "Keep your LP active while you loop, so trading fees keep accruing instead of pausing when you take exposure.",
+    icon: Layers,
+  },
+  {
+    title: "Amplify LP yield",
+    description:
+      "Borrow against your position and redeploy capital to increase market exposure without exiting the pool.",
+    icon: TrendingUp,
+  },
+  {
+    title: "Capital efficiency",
+    description:
+      "Put the same LP to work as collateral and leverage source so idle liquidity becomes productive credit.",
+    icon: BadgePercent,
+  },
+  {
+    title: "One-click loops",
+    description:
+      "Open a managed loop from approved markets in a single flow instead of stitching borrow and trade steps yourself.",
+    icon: MousePointerClick,
+  },
+  {
+    title: "Live health control",
+    description:
+      "Track collateral, debt, and leverage together in real time so you can adjust before a position turns unsafe.",
+    icon: Activity,
+  },
+  {
+    title: "Flexible unwind",
+    description:
+      "Reduce, repay, or close on your terms with an unwind path that covers debt first and returns residual value.",
+    icon: Undo2,
+  },
+]
 
 const leverageFeatureItems = [
   {
@@ -47,39 +98,6 @@ const leverageWorkflowSteps = [
   {
     title: "Manage live",
     description: "Avana borrows, opens, and tracks the position so you can reduce, repay, or close in one place.",
-  },
-] as const
-
-const lpUseCases = [
-  {
-    title: "Treasury financing",
-    description:
-      "DAOs and treasuries can borrow against LP positions to fund runway without selling liquidity or fee flow.",
-  },
-  {
-    title: "Liquidity expansion",
-    description:
-      "LPs can borrow against existing positions, add liquidity, and grow fee exposure from the same capital base.",
-  },
-  {
-    title: "Trading liquidity",
-    description:
-      "Traders can borrow against LP collateral to rebalance inventory, hedge risk, or move on short-notice trades.",
-  },
-  {
-    title: "Cross-ecosystem credit",
-    description:
-      "Keep LP collateral in one venue and borrow for deployment across other protocols, strategies, or chains.",
-  },
-  {
-    title: "Runway and operations",
-    description:
-      "Cover payroll, vendors, and launches with LP-backed credit without touching core positions or reserves.",
-  },
-  {
-    title: "Move on short notice",
-    description:
-      "Borrow when timing matters, then redeploy capital as opportunities open across the broader market.",
   },
 ] as const
 
@@ -230,34 +248,60 @@ export default function MultiplyPage() {
         </div>
       </div>
 
-      <section className="deferred-viewport border-t border-gray-200 bg-white py-12 md:py-16 2xl:py-14">
+      <section className="deferred-viewport border-t border-gray-200 bg-white pt-8 pb-8 md:pt-10 md:pb-10 2xl:pt-9">
+        <div className="site-content-shell">
+          <div className="mx-auto flex w-full max-w-[76rem] flex-col gap-6">
+            <div className="flex max-w-[600px] flex-col gap-2">
+              <SectionEyebrow tone="violet">Why looping</SectionEyebrow>
+              <SectionTitle>
+                <span className="lg:whitespace-nowrap">Stretch the same LP further.</span>
+              </SectionTitle>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {loopingBenefits.map((feature) => (
+                <article key={feature.title} className="flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6">
+                  <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
+                  <FeatureCardTitle className="mt-5 md:mt-6">{feature.title}</FeatureCardTitle>
+                  <FeatureCardDescription className="mt-3 max-w-[22rem]">
+                    {feature.description}
+                  </FeatureCardDescription>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="deferred-viewport bg-white py-12 md:py-16 2xl:py-14">
         <div className="site-content-shell">
           <LeverageGlanceShowcaseSection />
         </div>
       </section>
 
-      <section className="deferred-viewport-tall bg-white">
-        <DeferredTradeMarketShowcase />
-      </section>
-
-      <section className="bg-white py-12 md:py-16 lg:py-20">
+      <section className="deferred-viewport bg-white pt-8 pb-8 md:pt-10 md:pb-10 2xl:pt-9 2xl:pb-9">
         <div className="site-content-shell">
-          <div className="max-w-[58rem] space-y-4 text-left">
-            <SectionEyebrow tone="rose">LP use cases</SectionEyebrow>
-            <SectionTitle className="max-w-[14ch] lg:max-w-none">
-              <span className="lg:whitespace-nowrap">Ways businesses use LP credit.</span>
-            </SectionTitle>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 gap-x-16 gap-y-14 md:mt-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
-            {lpUseCases.map((item) => (
-              <article key={item.title} className="flex flex-col bg-transparent p-0 md:p-0">
-                <FeatureCardTitle>{item.title}</FeatureCardTitle>
-                <FeatureCardDescription className="mt-3 max-w-[22rem]">
-                  {item.description}
-                </FeatureCardDescription>
-              </article>
-            ))}
+          <div className="mx-auto w-full max-w-[76rem]">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-center md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
+              <div className="space-y-4 md:self-center">
+                <SectionEyebrow tone="emerald">Multiply Markets</SectionEyebrow>
+                <SectionTitle className="max-w-[15ch]">
+                  <span className="block">Credit that</span>
+                  <span className="block">keeps LP working.</span>
+                </SectionTitle>
+              </div>
+              <div className="flex items-center justify-center pt-1 md:justify-end">
+                <div className="relative w-full max-w-[17rem] sm:max-w-[22rem] md:max-w-[25rem] lg:max-w-[28rem] xl:max-w-[31rem]">
+                  <Image
+                    src="/images/Avana Coin.webp"
+                    alt="Avana coin illustration"
+                    width={1714}
+                    height={1601}
+                    className="h-auto w-full"
+                    sizes="(min-width: 1280px) 31rem, (min-width: 1024px) 28rem, (min-width: 768px) 25rem, (min-width: 640px) 22rem, 17rem"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -268,7 +312,7 @@ export default function MultiplyPage() {
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="rose">How it works</SectionEyebrow>
                 <SectionTitle>
-                  <span className="block lg:whitespace-nowrap">Leverage in three steps</span>
+                  <span className="block lg:whitespace-nowrap">Looping in three steps</span>
                 </SectionTitle>
               </div>
             </div>

@@ -400,6 +400,39 @@ function LendingCoverageTable() {
   )
 }
 
+const lpUseCases = [
+  {
+    title: "Treasury financing",
+    description:
+      "DAOs and treasuries can borrow against LP positions to fund runway without selling liquidity or fee flow.",
+  },
+  {
+    title: "Liquidity expansion",
+    description:
+      "LPs can borrow against existing positions, add liquidity, and grow fee exposure from the same capital base.",
+  },
+  {
+    title: "Trading liquidity",
+    description:
+      "Traders can borrow against LP collateral to rebalance inventory, hedge risk, or move on short-notice trades.",
+  },
+  {
+    title: "Cross-ecosystem credit",
+    description:
+      "Keep LP collateral in one venue and borrow for deployment across other protocols, strategies, or chains.",
+  },
+  {
+    title: "Runway and operations",
+    description:
+      "Cover payroll, vendors, and launches with LP-backed credit without touching core positions or reserves.",
+  },
+  {
+    title: "Move on short notice",
+    description:
+      "Borrow when timing matters, then redeploy capital as opportunities open across the broader market.",
+  },
+] as const
+
 export default function HeroSection() {
   return (
     <section className="marketing-secondary-shell pb-0">
@@ -1051,35 +1084,23 @@ export default function HeroSection() {
         </PerformanceDiv>
 
 
-      <div className="site-content-shell pt-4 md:pt-6 2xl:pt-6">
-        <div className="flex flex-col gap-6">
-          <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="violet">Countless Possibilities</SectionEyebrow>
-            <SectionTitle>Choose your strategy.</SectionTitle>
-          </div>
+      <div className="site-content-shell pt-16 md:pt-20 2xl:pt-18">
+        <div className="max-w-[58rem] space-y-4 text-left">
+          <SectionEyebrow tone="rose">LP use cases</SectionEyebrow>
+          <SectionTitle className="max-w-[14ch] lg:max-w-none">
+            <span className="lg:whitespace-nowrap">Ways businesses use LP credit.</span>
+          </SectionTitle>
         </div>
-        <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
-          <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
-            <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
-            <FeatureCardTitle className="mt-6">Borrow Markets</FeatureCardTitle>
-            <FeatureCardDescription className="mt-3">
-              Supply LP positions and receive asset loans deposited straight into your wallet.
-            </FeatureCardDescription>
-          </div>
-          <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
-            <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
-            <FeatureCardTitle className="mt-6">Lend Markets</FeatureCardTitle>
-            <FeatureCardDescription className="mt-3">
-              Lend assets to back LP collateral and earn yield from active borrower demand.
-            </FeatureCardDescription>
-          </div>
-          <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
-            <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
-            <FeatureCardTitle className="mt-6">Multiply Markets</FeatureCardTitle>
-            <FeatureCardDescription className="mt-3">
-              Increase your yield exposure by looping capital up to 10x with one click.
-            </FeatureCardDescription>
-          </div>
+
+        <div className="mt-12 grid grid-cols-1 gap-x-16 gap-y-14 md:mt-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
+          {lpUseCases.map((item) => (
+            <article key={item.title} className="flex flex-col bg-transparent p-0 md:p-0">
+              <FeatureCardTitle>{item.title}</FeatureCardTitle>
+              <FeatureCardDescription className="mt-3 max-w-[22rem]">
+                {item.description}
+              </FeatureCardDescription>
+            </article>
+          ))}
         </div>
       </div>
 
