@@ -6,7 +6,7 @@ import LeverageGlanceShowcaseSection from "@/components/leverage-glance-showcase
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import DeferredTradeMarketShowcase from "@/components/deferred-trade-market-showcase"
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
 const pageDescription =
@@ -16,38 +16,37 @@ const leverageFeatureItems = [
   {
     title: "Leverage Layer",
     description:
-      "When leverage mode is selected, Avana draws on LP-backed credit and deploys the borrowed capital into the selected market structure.",
+      "When leverage mode is selected, Avana draws LP-backed credit and deploys borrowed capital into the market.",
   },
   {
     title: "Unwind Layer",
     description:
-      "Handles voluntary close, partial reduction, repayment, and emergency liquidation with debt coverage as the first priority.",
+      "Handles voluntary close, partial reduction, repayment, and emergency liquidation with debt coverage first.",
   },
   {
     title: "Risk Layer",
     description:
-      "Collateral, debt, and leverage exposure are tracked together in real time so users can react before the position becomes unsafe.",
+      "Collateral, debt, and leverage exposure are tracked together in real time before a position turns unsafe.",
   },
   {
     title: "Monitoring Layer",
     description:
-      "Monitor collateral value, debt, leverage multiple, liquidation level, and health factor from one unified position view.",
+      "Monitor collateral value, debt, leverage multiple, liquidation level, and health from one position view.",
   },
 ] as const
 
 const leverageWorkflowSteps = [
   {
     title: "Deposit LP",
-    description: "Deposit a supported LP position and let Avana value it using pool and position data.",
+    description: "Deposit a supported LP position and let Avana value it using live pool and position data.",
   },
   {
-    title: "Set your leverage",
-    description: "Pick your market, target exposure, and multiplier from approved leverage markets.",
+    title: "Set leverage",
+    description: "Pick your market, target exposure, and multiplier from the approved leverage markets list.",
   },
   {
-    title: "Manage from one place",
-    description:
-      "Avana borrows, opens, and tracks the position so you can reduce, repay, or close from the same dashboard.",
+    title: "Manage live",
+    description: "Avana borrows, opens, and tracks the position so you can reduce, repay, or close in one place.",
   },
 ] as const
 
@@ -55,27 +54,27 @@ const lpUseCases = [
   {
     title: "Treasury financing",
     description:
-      "DAOs and treasuries can borrow against LP positions to fund grants, runway, or operations without selling liquidity or losing fee flow.",
+      "DAOs and treasuries can borrow against LP positions to fund runway without selling liquidity or fee flow.",
   },
   {
     title: "Liquidity expansion",
     description:
-      "LPs can borrow against existing positions, add liquidity, and grow fee exposure from the same base of capital.",
+      "LPs can borrow against existing positions, add liquidity, and grow fee exposure from the same capital base.",
   },
   {
     title: "Trading liquidity",
     description:
-      "Traders and market makers can borrow against LP collateral to rebalance inventory, hedge risk, or seize short-notice opportunities.",
+      "Traders can borrow against LP collateral to rebalance inventory, hedge risk, or move on short-notice trades.",
   },
   {
-    title: "Credit across ecosystems",
+    title: "Cross-ecosystem credit",
     description:
-      "Keep LP collateral in one venue and borrow for deployment across other protocols, strategies, or chains as needed.",
+      "Keep LP collateral in one venue and borrow for deployment across other protocols, strategies, or chains.",
   },
   {
     title: "Runway and operations",
     description:
-      "Cover payroll, vendors, and launches with LP-backed credit without touching your core positions or treasury reserves.",
+      "Cover payroll, vendors, and launches with LP-backed credit without touching core positions or reserves.",
   },
   {
     title: "Move on short notice",
@@ -245,7 +244,7 @@ export default function MultiplyPage() {
         <div className="site-content-shell">
           <div className="max-w-[58rem] space-y-4 text-left">
             <SectionEyebrow tone="rose">LP use cases</SectionEyebrow>
-            <SectionTitle className="max-w-[14ch] text-[#111111] lg:max-w-none">
+            <SectionTitle className="max-w-[14ch] lg:max-w-none">
               <span className="lg:whitespace-nowrap">Ways businesses use LP credit.</span>
             </SectionTitle>
           </div>
@@ -253,12 +252,10 @@ export default function MultiplyPage() {
           <div className="mt-12 grid grid-cols-1 gap-x-16 gap-y-14 md:mt-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
             {lpUseCases.map((item) => (
               <article key={item.title} className="flex flex-col bg-transparent p-0 md:p-0">
-                <h3 className="text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:text-[1.55rem]">
-                  {item.title}
-                </h3>
-                <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
+                <FeatureCardTitle>{item.title}</FeatureCardTitle>
+                <FeatureCardDescription className="mt-3 max-w-[22rem]">
                   {item.description}
-                </p>
+                </FeatureCardDescription>
               </article>
             ))}
           </div>
@@ -282,12 +279,10 @@ export default function MultiplyPage() {
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">
                   {index + 1}
                 </span>
-                <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-gray-600 md:text-base">
+                <FeatureCardTitle className="mt-6">{step.title}</FeatureCardTitle>
+                <FeatureCardDescription className="mt-3">
                   {step.description}
-                </p>
+                </FeatureCardDescription>
               </article>
             ))}
           </div>

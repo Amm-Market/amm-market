@@ -506,6 +506,21 @@
   color: rgb(75 85 99);
 }
 
+/* Canonical marketing feature-card text (How it works / three-step cards) */
+.feature-card-title {
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+  color: #18323c;
+}
+
+.feature-card-description {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgb(75 85 99);
+}
+
 .developer-content[data-developer-doc-shell] section h2,
 .site-article-content h2,
 .site-editorial-content h3 {
@@ -527,7 +542,7 @@
 .developer-content[data-developer-doc-shell] section h3,
 .site-article-content h3,
 .site-editorial-content h4,
-.marketing-secondary-shell h3:not(.site-section-title) {
+.marketing-secondary-shell h3:not(.site-section-title):not(.feature-card-title) {
   font-size: 0.9375rem;
   font-weight: var(--type-weight-emphasis);
   line-height: 1.45;
@@ -548,7 +563,7 @@
 .developer-content[data-developer-doc-shell] section :is(p, li, td, dd),
 .site-article-content :is(p, li, td),
 .site-editorial-content :is(p, li, td),
-.marketing-secondary-shell p.text-sm,
+.marketing-secondary-shell p.text-sm:not(.feature-card-description),
 .marketing-secondary-shell p.text-base,
 .marketing-secondary-shell p.md\:text-base {
   font-size: var(--type-body-size);
@@ -678,7 +693,7 @@
   .developer-content[data-developer-doc-shell] section :is(p, li, td, dd),
   .site-article-content :is(p, li, td),
   .site-editorial-content :is(p, li, td),
-  .marketing-secondary-shell p.text-sm,
+  .marketing-secondary-shell p.text-sm:not(.feature-card-description),
   .marketing-secondary-shell p.text-base,
   .marketing-secondary-shell p.md\:text-base {
     font-size: var(--type-body-size-sm);
@@ -709,7 +724,7 @@
     font-size: 1.75rem;
   }
 
-  .marketing-secondary-shell h3:not(.site-section-title) {
+  .marketing-secondary-shell h3:not(.site-section-title):not(.feature-card-title) {
     font-size: 1rem;
   }
 

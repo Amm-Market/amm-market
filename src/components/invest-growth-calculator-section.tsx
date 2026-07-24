@@ -91,7 +91,7 @@ export default function InvestGrowthCalculatorSection() {
       <div className="space-y-6 lg:space-y-10">
         <div className="space-y-3">
           <SectionEyebrow tone="emerald">Growth Calculator</SectionEyebrow>
-          <SectionTitle className="max-w-none whitespace-nowrap text-[clamp(1.9rem,7vw,4rem)] leading-[0.96]">
+          <SectionTitle className="max-w-none whitespace-nowrap">
             See your cash grow.
           </SectionTitle>
         </div>
