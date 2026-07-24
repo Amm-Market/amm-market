@@ -5,7 +5,7 @@ import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
 import { BadgePercent, Gauge, LockKeyhole, MoveRight } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
 const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
@@ -79,17 +79,17 @@ const liquidationModelCards = [
   {
     icon: Gauge,
     title: "Eligibility",
-    description: "Risk rules define which accounts can be closed and when liquidation is available.",
+    description: "Risk rules define which accounts can be closed and when liquidation becomes available.",
   },
   {
     icon: LockKeyhole,
     title: "Execution input",
-    description: "The operator supplies the transaction path, funding source, and settlement plan.",
+    description: "The operator supplies the transaction path, funding source, and settlement plan up front.",
   },
   {
     icon: MoveRight,
     title: "Collateral handling",
-    description: "The LP position is converted through the correct venue path instead of treated like a plain token.",
+    description: "The LP position converts through the correct venue path instead of a plain token transfer.",
   },
   {
     icon: BadgePercent,
@@ -99,12 +99,12 @@ const liquidationModelCards = [
   {
     icon: MoveRight,
     title: "Incentive",
-    description: "The liquidation premium rewards the operator who completes the closeout.",
+    description: "The liquidation premium rewards the operator who completes the closeout successfully.",
   },
   {
     icon: Gauge,
     title: "Residual value",
-    description: "Any leftover value after repayment and rewards is returned to the borrower.",
+    description: "Any leftover value after repayment and rewards is returned directly to the borrower.",
   },
 ] as const
 
@@ -120,12 +120,8 @@ function LiquidationModelCard({
   return (
     <article className="flex flex-col rounded-[1.5rem] bg-gray-50 p-5 md:p-6">
       <Icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
-      <h3 className="mt-5 text-[1.25rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111]">
-        {title}
-      </h3>
-      <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77]">
-        {description}
-      </p>
+      <FeatureCardTitle className="mt-5">{title}</FeatureCardTitle>
+      <FeatureCardDescription className="mt-3 max-w-[22rem]">{description}</FeatureCardDescription>
     </article>
   )
 }
@@ -238,7 +234,7 @@ export default function LendPage() {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-center md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
               <div className="space-y-4 md:self-center">
                 <SectionEyebrow tone="emerald">Lending Markets</SectionEyebrow>
-                <SectionTitle className="max-w-[15ch] text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.98] lg:text-[3.25rem]">
+                <SectionTitle className="max-w-[15ch]">
                   <span className="block">Lend into</span>
                   <span className="block">LP-backed credit.</span>
                 </SectionTitle>
@@ -463,32 +459,26 @@ export default function LendPage() {
             <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
               <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
-                <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-                  Pick a market
-                </h3>
-                <p className="text-sm text-gray-600 md:text-base">
-                  Browse lending markets like GHO, USDC, USDT, ETH, and WBTC. Each market shows current APY, utilization, and what your capital is helping fund across LP borrower categories.
-                </p>
+                <FeatureCardTitle className="mt-6">Pick a market</FeatureCardTitle>
+                <FeatureCardDescription className="mt-3">
+                  Browse lending markets like GHO, USDC, USDT, ETH, and WBTC while tracking APY, utilization, and borrower demand.
+                </FeatureCardDescription>
               </div>
 
               <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
-                <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-                  Make a deposit
-                </h3>
-                <p className="text-sm text-gray-600 md:text-base">
-                  Connect your wallet, approve the asset, and supply. Your funds enter the lending pool and start earning immediately, with APY, utilization, and accrued interest visible in real time.
-                </p>
+                <FeatureCardTitle className="mt-6">Make a deposit</FeatureCardTitle>
+                <FeatureCardDescription className="mt-3">
+                  Connect your wallet, approve the asset, and supply so your funds enter the pool and start earning right away.
+                </FeatureCardDescription>
               </div>
 
               <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
-                <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-                  Earn and withdraw freely
-                </h3>
-                <p className="text-sm text-gray-600 md:text-base">
-                  Interest accrues continuously. Withdraw whenever you choose, and your principal plus earned yield returns to your wallet in one transaction with no claim period or lock-up.
-                </p>
+                <FeatureCardTitle className="mt-6">Earn and withdraw</FeatureCardTitle>
+                <FeatureCardDescription className="mt-3">
+                  Interest accrues continuously, and you can withdraw principal plus yield anytime with no lock-up period.
+                </FeatureCardDescription>
               </div>
             </div>
           </section>

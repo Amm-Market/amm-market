@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { useSectionActivity } from "@/components/ui/use-section-activity"
 
 const SLIDES = [
@@ -9,25 +9,25 @@ const SLIDES = [
     id: "rewards",
     title: "See your credit line",
     description:
-      "Track available credit, borrowing room, and allocation over time from a single business view.",
+      "Track available credit, borrowing room, and allocation over time from one business view.",
   },
   {
     id: "portfolio",
     title: "Manage your treasury",
     description:
-      "Keep balances, borrowing capacity, and market exposure in one consolidated view.",
+      "Keep balances, borrowing capacity, and market exposure together in one consolidated view.",
   },
   {
     id: "volatility",
     title: "Navigate market shifts",
     description:
-      "Business credit lines come with monitoring and controls that help you stay ahead of changing conditions.",
+      "Use monitoring and controls that help your credit line stay ahead of changing conditions.",
   },
   {
     id: "mobile",
     title: "Business-friendly access",
     description:
-      "Get the tools and alerts you need to manage credit on the go.",
+      "Get the tools and alerts you need to manage business credit cleanly while on the go.",
   },
 ] as const
 
@@ -115,12 +115,10 @@ export default function PlatformToolsShowcaseSection() {
                 id={`platform-tools-slide-${slide.id}`}
                 className="border-t border-gray-200 bg-white p-4 sm:hidden"
               >
-                <p className="text-base font-semibold text-offBlack sm:text-lg">
-                  {slide.title}
-                </p>
-                <p className="mt-1.5 text-sm leading-relaxed text-gray-600 sm:mt-2">
+                <FeatureCardTitle>{slide.title}</FeatureCardTitle>
+                <FeatureCardDescription className="mt-1.5 sm:mt-2">
                   {slide.description}
-                </p>
+                </FeatureCardDescription>
               </div>
             </div>
           ))}
@@ -172,12 +170,10 @@ export default function PlatformToolsShowcaseSection() {
               aria-current={currentIndex === index}
               className="flex flex-col text-left opacity-70 transition-opacity hover:opacity-100 aria-current:opacity-100"
             >
-              <p className="text-base font-semibold text-offBlack">
-                {slide.title}
-              </p>
-              <p className="mt-1 text-sm text-gray-600">
+              <FeatureCardTitle as="p">{slide.title}</FeatureCardTitle>
+              <FeatureCardDescription className="mt-1">
                 {slide.description}
-              </p>
+              </FeatureCardDescription>
             </button>
           ))}
         </div>

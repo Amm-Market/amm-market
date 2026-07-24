@@ -5,7 +5,7 @@ import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
 import { Activity, BadgeDollarSign, Compass, Layers, LineChart, Shield, ShieldAlert, ShieldCheck, TriangleAlert } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { PerformanceSection } from "@/components/ui/performance-section"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
@@ -55,27 +55,27 @@ const openSpokeFaqItems: InlineFaqItem[] = [
 const borrowFeatureItems = [
   {
     title: "LP-native valuation",
-    description: "Positions are priced from live pool structure, actual token exposure, and DEX-specific collateral rules.",
+    description: "Positions are priced from live pool structure, token exposure, and DEX-specific collateral rules.",
   },
   {
     title: "Dual-oracle pricing",
-    description: "Chainlink and AMM TWAP data must stay in range before new credit is made available.",
+    description: "Chainlink and AMM TWAP data must stay in range before new credit can be made available.",
   },
   {
     title: "Shared Hub liquidity",
-    description: "Borrow from Aave Hubs while risk stays ring-fenced inside the Borrow Spokes.",
+    description: "Borrow from Aave Hubs while risk stays ring-fenced inside dedicated Borrow Spokes.",
   },
   {
     title: "Uninterrupted fee accrual",
-    description: "Deposited LP positions continue earning trading fees throughout the life of the loan.",
+    description: "Deposited LP positions continue earning trading fees throughout the full life of the loan.",
   },
   {
     title: "Minimal volatility risk",
-    description: "Transparent risk parameters and predictable liquidation behavior, especially for peg-aligned pools.",
+    description: "Transparent risk parameters and predictable liquidation behavior for peg-aligned pools.",
   },
   {
     title: "Cleaner position monitoring",
-    description: "Track health, usage, and pool-specific limits with a cleaner LP-first borrowing workflow.",
+    description: "Track health, usage, and pool-specific limits with a clearer LP-first borrowing workflow.",
   },
 ] as const
 
@@ -83,37 +83,37 @@ const borrowPartnerFeatures = [
   {
     title: "Live LP collateral",
     description:
-      "Treat each LP position as live collateral—valued and managed as an active AMM position, not flattened into a static token balance.",
+      "Treat each LP position as live collateral valued like an active AMM position, not a static token.",
     icon: Layers,
   },
   {
     title: "Pool-specific scoring",
     description:
-      "Borrowing power is risk-scored with pool-specific logic that reflects volatility, depth, and how that market actually behaves.",
+      "Borrowing power is risk-scored with pool logic that reflects volatility, depth, and market behavior.",
     icon: Compass,
   },
   {
     title: "Real AMM behaviour",
     description:
-      "Collateral rules track real pool structure and exposure so credit stays tied to the position you keep in the market.",
+      "Collateral rules track real pool structure and exposure so credit stays tied to your live position.",
     icon: Activity,
   },
   {
     title: "Shared Hub liquidity",
     description:
-      "Borrowing capacity is drawn from shared Hub liquidity, so you can access credit without leaving your LP productive.",
+      "Borrowing capacity comes from shared Hub liquidity while your LP stays productive in the pool.",
     icon: BadgeDollarSign,
   },
   {
     title: "Dual-oracle pricing",
     description:
-      "Dual-oracle pricing keeps marks robust as markets move, so collateral value stays credible through the life of the loan.",
+      "Dual-oracle pricing keeps marks robust as markets move so collateral value stays credible over time.",
     icon: LineChart,
   },
   {
     title: "Active risk controls",
     description:
-      "Health monitoring and venue-aware liquidation protect credit standards while your exposure keeps earning fees.",
+      "Health monitoring and venue-aware liquidation protect standards while your exposure keeps earning fees.",
     icon: ShieldCheck,
   },
 ] as const
@@ -122,21 +122,21 @@ const positionSafetySteps = [
   {
     title: "Safe Zone",
     description:
-      "Health Factor > 1.5. Borrow usage stays within capacity, fees keep accruing, and your LP stays intact.",
+      "Health Factor stays above 1.5, so borrow usage remains within capacity while fees keep accruing.",
     accent: "text-[#111111]",
     icon: Shield,
   },
   {
     title: "Warning Zone",
     description:
-      "Health Factor 1.0-1.5. You get notified to repay debt, add collateral, or let automation cut exposure.",
+      "Health Factor sits between 1.0 and 1.5, so you can repay, add collateral, or reduce exposure.",
     accent: "text-[#111111]",
     icon: TriangleAlert,
   },
   {
     title: "Liquidation",
     description:
-      "Health Factor < 1.0. Fees apply first, needed LP principal unwinds, and residual value returns to you.",
+      "Health Factor drops below 1.0, fees apply first, needed LP unwinds, and residual value returns.",
     accent: "text-[#111111]",
     icon: ShieldAlert,
   },
@@ -161,12 +161,8 @@ function WorkflowStepCard({
         <Icon className="h-8 w-8" strokeWidth={1.85} />
       </div>
 
-      <h3 className="mt-5 text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:mt-6 md:text-[1.55rem]">
-        {title}
-      </h3>
-      <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
-        {description}
-      </p>
+      <FeatureCardTitle className="mt-5 md:mt-6">{title}</FeatureCardTitle>
+      <FeatureCardDescription className="mt-3 max-w-[22rem]">{description}</FeatureCardDescription>
     </article>
   )
 }
@@ -183,10 +179,8 @@ function BorrowMarketCard({
   return (
     <div className="flex h-full flex-col rounded-2xl bg-gray-50 p-6 md:p-8">
       <span className="text-5xl font-bold text-gray-300 md:text-6xl">{number}</span>
-      <h3 className="mt-6 max-w-[14rem] text-[1.45rem] font-medium leading-[1.08] tracking-[-0.045em] text-[#18323c]">
-        {title}
-      </h3>
-      <p className="mt-3 text-sm leading-6 text-gray-600">{description}</p>
+      <FeatureCardTitle className="mt-6">{title}</FeatureCardTitle>
+      <FeatureCardDescription className="mt-3">{description}</FeatureCardDescription>
     </div>
   )
 }
@@ -269,12 +263,10 @@ export default function BorrowPage() {
               {borrowPartnerFeatures.map((feature) => (
                 <article key={feature.title} className="flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6">
                   <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
-                  <h3 className="mt-5 text-[1.35rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#111111] md:mt-6 md:text-[1.55rem]">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-3 max-w-[22rem] text-[0.98rem] leading-[1.58] text-[#5f6b77] md:text-[1.02rem]">
+                  <FeatureCardTitle className="mt-5 md:mt-6">{feature.title}</FeatureCardTitle>
+                  <FeatureCardDescription className="mt-3 max-w-[22rem]">
                     {feature.description}
-                  </p>
+                  </FeatureCardDescription>
                 </article>
               ))}
             </div>
@@ -287,7 +279,7 @@ export default function BorrowPage() {
           <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-18">
             <div className="max-w-[33rem] pt-2 lg:pt-6">
               <SectionEyebrow tone="violet">Working capital</SectionEyebrow>
-              <SectionTitle className="mt-5 max-w-none !text-[clamp(2rem,8.5vw,4.4rem)] !leading-[0.96] text-black lg:!text-[3.5rem]">
+              <SectionTitle className="mt-5 max-w-none">
                 <span className="block whitespace-nowrap">Access capital when</span>
                 <span className="block whitespace-nowrap">opportunity calls.</span>
               </SectionTitle>
@@ -317,26 +309,26 @@ export default function BorrowPage() {
           <div className="mx-auto w-full max-w-[76rem] space-y-32 md:space-y-40 2xl:space-y-36">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="violet">Borrow markets</SectionEyebrow>
-                <SectionTitle>Pick your borrow path</SectionTitle>
+                <SectionEyebrow tone="violet">How it works</SectionEyebrow>
+                <SectionTitle>Borrowing in three steps</SectionTitle>
               </div>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 <BorrowMarketCard
                   number="1"
-                  title="Borrow Markets"
-                  description="Supply LP positions and receive asset loans deposited straight to your wallet."
+                  title="Deposit LP"
+                  description="Deposit LP tokens from any supported DEX while your position stays active and keeps earning fees."
                 />
 
                 <BorrowMarketCard
                   number="2"
-                  title="Lend Markets"
-                  description="Lend assets to back LP collateral and earn yield from the market."
+                  title="Borrow instantly"
+                  description="Borrow up to 80% of your LP value based on pool risk, with assets deposited straight to your wallet."
                 />
 
                 <BorrowMarketCard
                   number="3"
-                  title="Multiply Markets"
-                  description="Increase your yield exposure by looping up to 10x with a single click."
+                  title="Repay anytime"
+                  description="Repay on your own timeline with no deadlines while keeping LTV under the liquidation threshold."
                 />
               </div>
             </div>
