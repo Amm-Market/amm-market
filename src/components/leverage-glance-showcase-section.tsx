@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { useSectionActivity } from "@/components/ui/use-section-activity"
 
 const TABS = [
@@ -10,21 +10,21 @@ const TABS = [
     label: "Collateral",
     title: "Supported LP positions stay at the center of the trade.",
     description:
-      "Use supported AMM positions as collateral to unlock leverage and perps exposure without leaving your base liquidity behind.",
+      "Use supported AMM positions as collateral to unlock leverage without leaving your base liquidity.",
   },
   {
     id: "execution",
     label: "Execution",
     title: "Borrow, deploy, and track the leverage flow in one system.",
     description:
-      "Avana abstracts the borrow and routing flow so users see one coherent position instead of several disconnected steps.",
+      "Avana abstracts borrow and routing so you see one coherent position instead of disconnected steps.",
   },
   {
     id: "controls",
     label: "Controls",
     title: "Reduce, close, or repay with fast unwind paths when needed.",
     description:
-      "Track collateral, debt, leverage, and health in one dashboard with direct actions to manage exposure as conditions change.",
+      "Track collateral, debt, leverage, and health in one dashboard with direct exposure controls.",
   },
 ] as const
 
@@ -118,8 +118,8 @@ export default function LeverageGlanceShowcaseSection() {
                 id={`leverage-glance-slide-${tab.id}`}
                 className="border-t border-gray-200 bg-white p-4 sm:hidden"
               >
-                <p className="text-base font-semibold text-offBlack sm:text-lg">{tab.label}</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-gray-600 sm:mt-2">{tab.description}</p>
+                <FeatureCardTitle>{tab.label}</FeatureCardTitle>
+                <FeatureCardDescription className="mt-1.5 sm:mt-2">{tab.description}</FeatureCardDescription>
               </div>
             </div>
           ))}
@@ -169,8 +169,8 @@ export default function LeverageGlanceShowcaseSection() {
               aria-current={currentIndex === index}
               className="border-b border-transparent pb-3 text-left text-black/65 transition-colors duration-300 hover:text-black aria-current:border-black aria-current:text-black"
             >
-              <p className="text-base font-semibold text-offBlack">{tab.label}</p>
-              <p className="mt-1 text-sm text-gray-600">{tab.description}</p>
+              <FeatureCardTitle>{tab.label}</FeatureCardTitle>
+              <FeatureCardDescription className="mt-1">{tab.description}</FeatureCardDescription>
             </button>
           ))}
         </div>

@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 import { DeFiTerm } from "@/components/defi-term"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 import { PerformanceDiv } from "@/components/ui/performance-section"
@@ -407,7 +407,7 @@ export default function HeroSection() {
         <PerformanceDiv className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-6">
           <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="cyan">Borrowing Power</SectionEyebrow>
+            <SectionEyebrow tone="cyan">Borrow Markets</SectionEyebrow>
             <SectionTitle>
               <span className="block lg:whitespace-nowrap">Unlock credit</span>
               <span className="block lg:whitespace-nowrap">from 250+ pools</span>
@@ -452,7 +452,7 @@ export default function HeroSection() {
       <div className="site-content-shell pt-24 md:pt-32 2xl:pt-28">
         <div className="space-y-6">
           <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="emerald">Lending Markets</SectionEyebrow>
+            <SectionEyebrow tone="emerald">Lend Markets</SectionEyebrow>
             <SectionTitle>
               <span className="block lg:whitespace-nowrap">Earn yield</span>
               <span className="block lg:whitespace-nowrap">on 100+ assets</span>
@@ -467,10 +467,9 @@ export default function HeroSection() {
         <PerformanceDiv>
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="amber">Trading Pairs</SectionEyebrow>
+                <SectionEyebrow tone="amber">Multiply Markets</SectionEyebrow>
                 <SectionTitle>
-                  <span className="block lg:whitespace-nowrap">Multiply like a pro</span>
-                  <span className="block lg:whitespace-nowrap">across 500+ markets</span>
+                  <span className="block lg:whitespace-nowrap">Loop like a pro</span>
                 </SectionTitle>
               </div>
             </div>
@@ -481,8 +480,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Stretch liquidity further</h3>
-                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Borrow up to 80% of your LP value.</p>
+                        <FeatureCardTitle>Stretch liquidity further</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">Borrow up to 80% of your LP value without fully exiting liquidity.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">01</div>
                     </div>
@@ -554,8 +553,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Keep earning fees</h3>
-                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Your LP stays active while you borrow.</p>
+                        <FeatureCardTitle>Keep earning fees</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">Your LP stays active and keeps earning fees while you borrow.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">02</div>
                     </div>
@@ -638,8 +637,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Spend capital anywhere</h3>
-                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Use borrowed funds however you want.</p>
+                        <FeatureCardTitle>Spend capital anywhere</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">Use borrowed funds anywhere across wallets, markets, and strategies.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">03</div>
                     </div>
@@ -691,8 +690,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Track pool composition</h3>
-                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">LP aware oracles monitor volume and oracle confidence.</p>
+                        <FeatureCardTitle>Track pool composition</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">LP-aware oracles monitor volume and confidence across the pool.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">04</div>
                     </div>
@@ -785,8 +784,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <h3 className="max-w-[14rem]" style={{ fontSize: '1.45rem', fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.045em', color: '#18323c' }}>Risk tuned to pools</h3>
-                        <p className="max-w-[16rem] text-sm leading-6 text-gray-600">Continuous risk scoring, track pool volatility, and health quality.</p>
+                        <FeatureCardTitle>Risk tuned to pools</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">Continuous risk scoring tracks pool volatility and health quality.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">05</div>
                     </div>
@@ -1055,39 +1054,31 @@ export default function HeroSection() {
       <div className="site-content-shell pt-4 md:pt-6 2xl:pt-6">
         <div className="flex flex-col gap-6">
           <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="violet">How it works</SectionEyebrow>
-            <SectionTitle>
-              <span className="block lg:whitespace-nowrap">Borrowing in three steps</span>
-            </SectionTitle>
+            <SectionEyebrow tone="violet">Countless Possibilities</SectionEyebrow>
+            <SectionTitle>Choose your strategy.</SectionTitle>
           </div>
         </div>
         <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
           <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
             <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
-            <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-              Deposit your LP position
-            </h3>
-            <p className="text-sm text-gray-600 md:text-base">
-              Deposit your <DeFiTerm term="lp-tokens">LP tokens</DeFiTerm> from any supported <DeFiTerm term="dex">DEX</DeFiTerm>. Your position stays active and continues earning trading fees.
-            </p>
+            <FeatureCardTitle className="mt-6">Borrow Markets</FeatureCardTitle>
+            <FeatureCardDescription className="mt-3">
+              Supply LP positions and receive asset loans deposited straight into your wallet.
+            </FeatureCardDescription>
           </div>
           <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
             <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
-            <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-              Receive your loan instantly
-            </h3>
-            <p className="text-sm text-gray-600 md:text-base">
-              Assets will be deposited into your wallet. Borrow up to 80% of your LP value based on pool risk parameters.
-            </p>
+            <FeatureCardTitle className="mt-6">Lend Markets</FeatureCardTitle>
+            <FeatureCardDescription className="mt-3">
+              Lend assets to back LP collateral and earn yield from active borrower demand.
+            </FeatureCardDescription>
           </div>
           <div className="rounded-2xl bg-gray-50 p-6 md:p-8">
             <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
-            <h3 className="mb-3 mt-6 text-lg font-semibold text-gray-900 md:text-xl">
-              Repay on your timeline
-            </h3>
-            <p className="text-sm text-gray-600 md:text-base">
-              There are no repayment schedules or deadlines. Your <DeFiTerm term="ltv">loan-to-value ratio</DeFiTerm> must remain under the <DeFiTerm term="liquidation-threshold">liquidation threshold</DeFiTerm> to avoid automatic <DeFiTerm term="liquidation">liquidation</DeFiTerm>.
-            </p>
+            <FeatureCardTitle className="mt-6">Multiply Markets</FeatureCardTitle>
+            <FeatureCardDescription className="mt-3">
+              Increase your yield exposure by looping capital up to 10x with one click.
+            </FeatureCardDescription>
           </div>
         </div>
       </div>

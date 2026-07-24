@@ -100,7 +100,7 @@ export default function Home() {
           <div className="mx-auto w-full max-w-[76rem]">
             <div className="grid grid-cols-1 gap-5 text-center md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 md:text-left lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
               <div className="space-y-4">
-                <SectionTitle className="text-center font-semibold md:text-left">
+                <SectionTitle className="text-center md:text-left">
                   <span className="block lg:whitespace-nowrap">Unlock Capital</span>
                   <span className="block lg:whitespace-nowrap">from Amm Markets</span>
                 </SectionTitle>
