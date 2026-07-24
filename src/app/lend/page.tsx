@@ -3,7 +3,7 @@ import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
-import { BadgePercent, Gauge, LockKeyhole, MoveRight } from "lucide-react"
+import { BadgePercent, BellRing, Gauge, LockKeyhole, MoveRight, WalletCards } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, siteRoutes } from "@/lib/site"
@@ -78,33 +78,39 @@ const investFeatureItems = [
 const liquidationModelCards = [
   {
     icon: Gauge,
-    title: "Eligibility",
-    description: "Risk rules define which accounts can be closed and when liquidation becomes available.",
+    title: "See your credit line",
+    description:
+      "Track available credit, borrowing room, and allocation over time from one business view.",
   },
   {
     icon: LockKeyhole,
-    title: "Execution input",
-    description: "The operator supplies the transaction path, funding source, and settlement plan up front.",
+    title: "Manage your treasury",
+    description:
+      "Keep balances, borrowing capacity, and market exposure together in one consolidated view.",
   },
   {
     icon: MoveRight,
-    title: "Collateral handling",
-    description: "The LP position converts through the correct venue path instead of a plain token transfer.",
+    title: "Navigate market shifts",
+    description:
+      "Use monitoring and controls that help your credit line stay ahead of changing conditions.",
   },
   {
     icon: BadgePercent,
-    title: "Debt repayment",
-    description: "Recovered value flows back into the credit market to reduce or close the unsafe loan.",
+    title: "Business-friendly access",
+    description:
+      "Get the tools and alerts you need to manage business credit cleanly while on the go.",
   },
   {
-    icon: MoveRight,
-    title: "Incentive",
-    description: "The liquidation premium rewards the operator who completes the closeout successfully.",
+    icon: WalletCards,
+    title: "Allocate with clarity",
+    description:
+      "Decide where capital should sit across markets without losing sight of overall capacity.",
   },
   {
-    icon: Gauge,
-    title: "Residual value",
-    description: "Any leftover value after repayment and rewards is returned directly to the borrower.",
+    icon: BellRing,
+    title: "Act on clear signals",
+    description:
+      "Stay ready with timely cues when health, utilization, or market conditions need attention.",
   },
 ] as const
 
@@ -287,7 +293,7 @@ export default function LendPage() {
 
           <ProductFeatureScrollSection
             eyebrowTone="emerald"
-            title="A market-leading rate, with more built in."
+            title="A market-leading rate"
             items={investFeatureItems}
             panels={[
               /* 01 Easy money movement — deposit/withdraw flow card */
