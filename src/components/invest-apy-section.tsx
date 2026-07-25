@@ -42,9 +42,9 @@ const HEATMAP_COLUMNS_LINEAR = 20
 const STAGE_FILLED_COUNTS = [20, 60, 100] as const
 const BAND_COLORS = {
   inactive: "#eef2f6",
-  base: "#d9eaff",
-  premium: "#87b7ff",
-  risk: "#2f84ff",
+  base: "#d5f3fa",
+  premium: "#7dd4e8",
+  risk: "#01AACF",
 } as const
 
 function buildHeatmap(stageIndex: number): HeatmapCell[][] {
@@ -112,7 +112,7 @@ export default function InvestApySection() {
   }
 
   return (
-    <section className="deferred-viewport bg-white py-16 md:py-20 2xl:py-18">
+    <section className="deferred-viewport bg-white site-section-gap">
       <div className="site-content-shell">
         <div className="space-y-4">
           <SectionEyebrow tone="cyan">Avana APY</SectionEyebrow>
@@ -173,13 +173,13 @@ export default function InvestApySection() {
                   <div
                     className={cn(
                       "mb-5 h-[3px] w-full rounded-full transition-colors duration-200",
-                      active ? "bg-[#2f84ff]" : "bg-[#eceff3]",
+                      active ? "bg-[#01AACF]" : "bg-[#eceff3]",
                     )}
                   />
                   <h3
                     className={cn(
                       "text-[clamp(0.92rem,3.6vw,1.9rem)] font-semibold leading-[1.06] tracking-[-0.05em] transition-colors duration-200",
-                      active ? "text-[#2f84ff]" : "text-[#9ea3aa]",
+                      active ? "text-[#01AACF]" : "text-[#9ea3aa]",
                     )}
                   >
                     {stage.title}

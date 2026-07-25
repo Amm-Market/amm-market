@@ -33,7 +33,7 @@ export default function ProductFeatureScrollSection({
             {items.map((item, index) => (
               <article
                 key={item.title}
-                className="group flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5 transition-transform duration-150 hover:scale-[1.01]"
+                className="group flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5 transition-transform duration-150 hover:scale-[1.01]"
               >
                 <div className="relative z-10 flex items-start justify-between gap-4">
                   <div className="space-y-2">
