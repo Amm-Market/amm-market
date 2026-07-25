@@ -506,7 +506,11 @@
   color: rgb(75 85 99);
 }
 
-/* Canonical marketing feature-card text (How it works / three-step cards) */
+/* Canonical marketing feature-card surface (How it works / product cards) */
+.feature-card {
+  background-color: #f1f0ee;
+}
+
 .feature-card-title {
   font-size: 1.45rem;
   font-weight: 500;

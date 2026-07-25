@@ -25,7 +25,7 @@ function SectionSkeleton({
   return (
     <div
       aria-hidden="true"
-      className="rounded-[28px] border border-gray-200 bg-gray-50 p-6"
+      className="feature-card rounded-[28px] border border-gray-200 p-6"
       style={{ minHeight }}
     >
       <div className="animate-pulse space-y-4">
@@ -529,7 +529,7 @@ export default function HeroSection() {
               <div className="overflow-x-auto py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 <div className="grid w-max grid-flow-col auto-cols-[19.75rem] gap-4 px-1 lg:auto-cols-[21.5rem] lg:gap-5">
                   {/* Card 01 — Maximize your capital */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <FeatureCardTitle>Stretch liquidity further</FeatureCardTitle>
@@ -602,7 +602,7 @@ export default function HeroSection() {
                   </article>
 
                   {/* Card 02 — Keep earning fees */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <FeatureCardTitle>Keep earning fees</FeatureCardTitle>
@@ -686,7 +686,7 @@ export default function HeroSection() {
                   </article>
 
                   {/* Card 03 — Unlock new strategies */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <FeatureCardTitle>Spend capital anywhere</FeatureCardTitle>
@@ -739,7 +739,7 @@ export default function HeroSection() {
                   </article>
 
                   {/* Card 04 — Price-range aware oracles */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <FeatureCardTitle>Track pool composition</FeatureCardTitle>
@@ -833,7 +833,7 @@ export default function HeroSection() {
                   </article>
 
                   {/* Card 05 — LP-aware risk models */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <FeatureCardTitle>Risk tuned to pools</FeatureCardTitle>
@@ -1138,7 +1138,7 @@ export default function HeroSection() {
         </LazySection>
 
         <LazySection minHeight="660px" fallback={<SectionSkeleton minHeight="660px" />}>
-          <div className="relative overflow-hidden rounded-2xl bg-gray-50 px-6 py-8 shadow-none md:px-8 md:py-10">
+          <div className="relative overflow-hidden feature-card rounded-2xl px-6 py-8 shadow-none md:px-8 md:py-10">
             <div className="relative grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
               <div className="space-y-4">
                 <SectionEyebrow tone="slate">Built on Aave v4</SectionEyebrow>
