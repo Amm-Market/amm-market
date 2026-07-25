@@ -156,7 +156,7 @@ function WorkflowStepCard({
   const Icon = icon
 
   return (
-    <article className={`flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6 ${className}`}>
+    <article className={`flex flex-col feature-card rounded-[1.75rem] p-5 md:p-6 ${className}`}>
       <div className="flex h-8 w-8 items-center justify-center text-[#111111]">
         <Icon className="h-8 w-8" strokeWidth={1.85} />
       </div>
@@ -177,7 +177,7 @@ function BorrowMarketCard({
   description: string
 }) {
   return (
-    <div className="flex h-full flex-col rounded-2xl bg-gray-50 p-6 md:p-8">
+    <div className="flex h-full flex-col feature-card rounded-2xl p-6 md:p-8">
       <span className="text-5xl font-bold text-gray-300 md:text-6xl">{number}</span>
       <FeatureCardTitle className="mt-6">{title}</FeatureCardTitle>
       <FeatureCardDescription className="mt-3">{description}</FeatureCardDescription>
@@ -195,8 +195,8 @@ export default function BorrowPage() {
     <main className="bg-white">
       <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">
         <div className="relative z-0">
-          <section className="pb-4 md:pb-6 lg:pb-8 xl:pb-10">
-            <div className="w-full pt-3 pb-6 md:pt-5 md:pb-10 lg:pb-2 xl:pb-3">
+          <section className="pb-0 lg:pb-10 xl:pb-12">
+            <div className="w-full pt-3 pb-0 md:pt-5">
               <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
               {/* Left Column - Hero Image */}
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
@@ -233,14 +233,14 @@ export default function BorrowPage() {
                       prefetch={false}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
+                      className="inline-flex items-center justify-center rounded-full bg-[#01AACF] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#00a0c2]"
                     >
-                      Get Early Access
+                      Try Borrowing
                     </Link>
                     <Link
                       href="/developers"
                       prefetch={false}
-                      className="inline-flex items-center justify-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-100 text-gray-900 text-xs font-semibold rounded-full transition-colors"
+                      className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-900 transition-colors hover:bg-gray-100"
                     >
                       View Docs
                     </Link>
@@ -252,7 +252,7 @@ export default function BorrowPage() {
         </div>
       </div>
 
-      <section className="border-t border-gray-200 bg-white pt-8 pb-8 md:pt-10 md:pb-10 2xl:pt-9">
+      <section className="border-t border-gray-200 bg-white site-section-gap">
         <div className="site-content-shell">
           <div className="mx-auto flex w-full max-w-[76rem] flex-col gap-6">
             <div className="flex max-w-[600px] flex-col gap-2">
@@ -261,7 +261,7 @@ export default function BorrowPage() {
             </div>
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {borrowPartnerFeatures.map((feature) => (
-                <article key={feature.title} className="flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6">
+                <article key={feature.title} className="flex flex-col feature-card rounded-[1.75rem] p-5 md:p-6">
                   <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
                   <FeatureCardTitle className="mt-5 md:mt-6">{feature.title}</FeatureCardTitle>
                   <FeatureCardDescription className="mt-3 max-w-[22rem]">
@@ -274,10 +274,10 @@ export default function BorrowPage() {
         </div>
       </section>
 
-      <section className="bg-white py-12 md:py-16 lg:py-20">
+      <section className="bg-white site-section-gap">
         <div className="site-content-shell">
           <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-18">
-            <div className="max-w-[33rem] pt-2 lg:pt-6">
+            <div className="max-w-[33rem]">
               <SectionEyebrow tone="violet">Working capital</SectionEyebrow>
               <SectionTitle className="mt-5 max-w-none">
                 <span className="block whitespace-nowrap">Access capital when</span>
@@ -304,9 +304,9 @@ export default function BorrowPage() {
         </div>
       </section>
 
-      <PerformanceSection className="pt-32 md:pt-40 2xl:pt-36">
+      <PerformanceSection className="site-section-gap">
         <div className="site-content-shell">
-          <div className="mx-auto w-full max-w-[76rem] space-y-32 md:space-y-40 2xl:space-y-36">
+          <div className="mx-auto w-full max-w-[76rem] flex flex-col site-section-stack">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="violet">How it works</SectionEyebrow>
@@ -418,7 +418,7 @@ export default function BorrowPage() {
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
-        <div className="site-content-width space-y-32 pt-32 pb-16 md:space-y-40 md:pt-40 md:pb-20 2xl:space-y-36 2xl:pt-36 2xl:pb-18">
+        <div className="site-content-width flex flex-col site-section-stack site-section-gap pb-16 md:pb-20 2xl:pb-18">
           <ProductFeatureScrollSection
             eyebrowTone="blue"
             title="Engineered for LP safety."
