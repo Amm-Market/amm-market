@@ -10,7 +10,7 @@ import {
 } from "lucide-react"
 import { DeFiTerm } from "@/components/defi-term"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SandboxNotice, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 import { PerformanceDiv } from "@/components/ui/performance-section"
@@ -397,14 +397,7 @@ function LendingCoverageTable() {
         </div>
       </div>
 
-      <p className="mt-3 flex items-start gap-2.5 text-xs font-medium leading-5 text-[#44546a] md:text-sm">
-        <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#0078d4] text-sm leading-none text-white">
-          !
-        </span>
-        <span className="max-w-[1000px]">
-          Sandbox data shown for preview only. APYs, prices, and returns are illustrative and may differ from live market conditions.
-        </span>
-      </p>
+      <SandboxNotice className="mt-3" />
     </div>
   )
 }
@@ -490,14 +483,7 @@ export default function HeroSection() {
               ))}
             </div>
 
-            <p className="flex items-start gap-2.5 text-xs font-medium leading-5 text-[#44546a] md:text-sm">
-              <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#0078d4] text-sm leading-none text-white">
-                !
-              </span>
-              <span className="max-w-[1000px]">
-                Sandbox data shown for preview only. APYs, prices, and returns are illustrative and may differ from live market conditions.
-              </span>
-            </p>
+            <SandboxNotice />
         </PerformanceDiv>
       </div>
 
