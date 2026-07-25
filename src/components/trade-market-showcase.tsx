@@ -3,90 +3,70 @@
 import { useEffect, useMemo, useState } from "react"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
-type MarketCategory = "crypto" | "equities" | "indices" | "forex"
+type MarketCategory = "stablecoins" | "ethereum" | "bitcoin" | "others"
 type LogoSet = [string, string?]
 
-type MarketItem =
-  | {
-      name: string
-      ticker: string
-      category: MarketCategory
-      logos: LogoSet
-    }
-  | {
-      name: string
-      ticker: string
-      category: "forex"
-      logos: LogoSet
-    }
+type MarketItem = {
+  name: string
+  ticker: string
+  category: MarketCategory
+  logos: LogoSet
+}
 
 const tabs: { id: MarketCategory; label: string }[] = [
-  { id: "crypto", label: "Crypto" },
-  { id: "equities", label: "Equities" },
-  { id: "indices", label: "Indices" },
-  { id: "forex", label: "Forex" },
+  { id: "stablecoins", label: "Stablecoins" },
+  { id: "ethereum", label: "Ethereum" },
+  { id: "bitcoin", label: "Bitcoin" },
+  { id: "others", label: "Others" },
 ]
 
 const coinLogo = (slug: string) => `https://coin-logos.simplr.sh/images/${slug}/standard.png`
-const simpleIconLogo = (slug: string) => `https://cdn.simpleicons.org/${slug}/111111`
 const siteFaviconLogo = (domain: string) => `https://www.google.com/s2/favicons?sz=128&domain=${domain}`
-const flagLogo = (code: string) => `https://flagcdn.com/w40/${code}.png`
 const fallbackLogo = "/file.svg"
 const MARKET_ITEMS_PER_ROW = 9
 
 const marketItems: MarketItem[] = [
-  // Crypto
-  { name: "Bitcoin", ticker: "BTC", category: "crypto", logos: [coinLogo("bitcoin")] },
-  { name: "Ethereum", ticker: "ETH", category: "crypto", logos: [coinLogo("ethereum")] },
-  { name: "Solana", ticker: "SOL", category: "crypto", logos: [coinLogo("solana")] },
-  { name: "XRP", ticker: "XRP", category: "crypto", logos: [coinLogo("ripple")] },
-  { name: "USDC", ticker: "USDC", category: "crypto", logos: [coinLogo("usd-coin")] },
-  { name: "USDT", ticker: "USDT", category: "crypto", logos: [coinLogo("tether")] },
-  { name: "Aave", ticker: "AAVE", category: "crypto", logos: [coinLogo("aave")] },
-  { name: "Uniswap", ticker: "UNI", category: "crypto", logos: [coinLogo("uniswap")] },
-  { name: "Curve", ticker: "CRV", category: "crypto", logos: [coinLogo("curve-dao-token")] },
-  { name: "Chainlink", ticker: "LINK", category: "crypto", logos: ["https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x514910771af9ca656af840dff83e8264ecf986ca/logo.png"] },
-  { name: "BNB", ticker: "BNB", category: "crypto", logos: ["https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/info/logo.png"] },
-  { name: "Dogecoin", ticker: "DOGE", category: "crypto", logos: [coinLogo("dogecoin")] },
-  { name: "Sui", ticker: "SUI", category: "crypto", logos: [coinLogo("sui")] },
-  { name: "Ton", ticker: "TON", category: "crypto", logos: [coinLogo("the-open-network")] },
-  { name: "PancakeSwap", ticker: "CAKE", category: "crypto", logos: [coinLogo("pancakeswap-token")] },
-  { name: "Raydium", ticker: "RAY", category: "crypto", logos: [coinLogo("raydium")] },
-  { name: "Sushi", ticker: "SUSHI", category: "crypto", logos: [coinLogo("sushi")] },
-  { name: "Orca", ticker: "ORCA", category: "crypto", logos: [coinLogo("orca")] },
+  // Stablecoins
+  { name: "USD Coin", ticker: "USDC", category: "stablecoins", logos: [coinLogo("usd-coin")] },
+  { name: "Tether", ticker: "USDT", category: "stablecoins", logos: [coinLogo("tether")] },
+  { name: "Dai", ticker: "DAI", category: "stablecoins", logos: [coinLogo("dai")] },
+  { name: "GHO", ticker: "GHO", category: "stablecoins", logos: [coinLogo("gho")] },
+  { name: "Curve USD", ticker: "crvUSD", category: "stablecoins", logos: [coinLogo("crvusd")] },
+  { name: "Frax", ticker: "FRAX", category: "stablecoins", logos: [coinLogo("frax")] },
+  { name: "USDe", ticker: "USDe", category: "stablecoins", logos: [coinLogo("ethena-usde")] },
+  { name: "PayPal USD", ticker: "PYUSD", category: "stablecoins", logos: [coinLogo("paypal-usd")] },
+  { name: "LUSD", ticker: "LUSD", category: "stablecoins", logos: [coinLogo("liquity-usd")] },
+  { name: "USDD", ticker: "USDD", category: "stablecoins", logos: [coinLogo("usdd")] },
 
-  // Equities
-  { name: "Tesla", ticker: "TSLA", category: "equities", logos: [simpleIconLogo("tesla")] },
-  { name: "Nvidia", ticker: "NVDA", category: "equities", logos: [simpleIconLogo("nvidia")] },
-  { name: "Apple", ticker: "AAPL", category: "equities", logos: [simpleIconLogo("apple")] },
-  { name: "Google", ticker: "GOOG", category: "equities", logos: [simpleIconLogo("google")] },
-  { name: "Microsoft", ticker: "MSFT", category: "equities", logos: [simpleIconLogo("microsoft")] },
-  { name: "Oracle", ticker: "ORCL", category: "equities", logos: [simpleIconLogo("oracle")] },
-  { name: "Amazon", ticker: "AMZN", category: "equities", logos: [simpleIconLogo("amazon")] },
-  { name: "OpenAI", ticker: "OPENAI", category: "equities", logos: [simpleIconLogo("openai")] },
-  { name: "Anthropic", ticker: "ANTHROPIC", category: "equities", logos: [simpleIconLogo("anthropic")] },
-  { name: "SpaceX", ticker: "SPACEX", category: "equities", logos: [simpleIconLogo("spacex")] },
-  { name: "Samsung", ticker: "SMSN", category: "equities", logos: [simpleIconLogo("samsung")] },
-  { name: "Alibaba", ticker: "BABA", category: "equities", logos: [simpleIconLogo("alibaba")] },
-  { name: "CoreWeave", ticker: "CRWV", category: "equities", logos: [siteFaviconLogo("coreweave.com")] },
-  { name: "SK Hynix", ticker: "SKHX", category: "equities", logos: [siteFaviconLogo("skhynix.com")] },
+  // Ethereum-based
+  { name: "Ether", ticker: "ETH", category: "ethereum", logos: [coinLogo("ethereum")] },
+  { name: "Wrapped Ether", ticker: "WETH", category: "ethereum", logos: [coinLogo("weth")] },
+  { name: "stETH", ticker: "stETH", category: "ethereum", logos: [coinLogo("staked-ether")] },
+  { name: "wstETH", ticker: "wstETH", category: "ethereum", logos: [coinLogo("wrapped-steth")] },
+  { name: "rETH", ticker: "rETH", category: "ethereum", logos: [coinLogo("rocket-pool-eth")] },
+  { name: "cbETH", ticker: "cbETH", category: "ethereum", logos: [coinLogo("coinbase-wrapped-staked-eth")] },
+  { name: "weETH", ticker: "weETH", category: "ethereum", logos: [coinLogo("wrapped-eeth")] },
+  { name: "ETHx", ticker: "ETHx", category: "ethereum", logos: [siteFaviconLogo("staderlabs.com")] },
+  { name: "osETH", ticker: "osETH", category: "ethereum", logos: [siteFaviconLogo("stakewise.io")] },
 
-  // Indices
-  { name: "Nasdaq 100", ticker: "NDX", category: "indices", logos: [simpleIconLogo("nasdaq"), siteFaviconLogo("nasdaq.com")] },
-  { name: "S&P 500", ticker: "SPX", category: "indices", logos: [siteFaviconLogo("spglobal.com"), siteFaviconLogo("spglobal.com")] },
-  { name: "Dow Jones", ticker: "DJI", category: "indices", logos: [siteFaviconLogo("dowjones.com"), siteFaviconLogo("dowjones.com")] },
-  { name: "MSCI World", ticker: "MSCI", category: "indices", logos: [siteFaviconLogo("msci.com"), siteFaviconLogo("msci.com")] },
-  { name: "FTSE 100", ticker: "FTSE", category: "indices", logos: [siteFaviconLogo("lseg.com"), siteFaviconLogo("lseg.com")] },
-  { name: "Cboe VIX", ticker: "VIX", category: "indices", logos: [siteFaviconLogo("cboe.com"), siteFaviconLogo("cboe.com")] },
+  // Bitcoin-based
+  { name: "Wrapped Bitcoin", ticker: "WBTC", category: "bitcoin", logos: [coinLogo("wrapped-bitcoin")] },
+  { name: "tBTC", ticker: "tBTC", category: "bitcoin", logos: [coinLogo("tbtc")] },
+  { name: "cbBTC", ticker: "cbBTC", category: "bitcoin", logos: [siteFaviconLogo("coinbase.com")] },
+  { name: "renBTC", ticker: "renBTC", category: "bitcoin", logos: [coinLogo("renbtc")] },
+  { name: "sBTC", ticker: "sBTC", category: "bitcoin", logos: [siteFaviconLogo("synthetix.io")] },
+  { name: "LBTC", ticker: "LBTC", category: "bitcoin", logos: [siteFaviconLogo("lombard.finance")] },
 
-  // Forex
-  { name: "EUR / USD", ticker: "EUR/USD", category: "forex", logos: [flagLogo("eu"), flagLogo("us")] },
-  { name: "GBP / USD", ticker: "GBP/USD", category: "forex", logos: [flagLogo("gb"), flagLogo("us")] },
-  { name: "USD / JPY", ticker: "USD/JPY", category: "forex", logos: [flagLogo("us"), flagLogo("jp")] },
-  { name: "USD / CHF", ticker: "USD/CHF", category: "forex", logos: [flagLogo("us"), flagLogo("ch")] },
-  { name: "AUD / USD", ticker: "AUD/USD", category: "forex", logos: [flagLogo("au"), flagLogo("us")] },
-  { name: "USD / CAD", ticker: "USD/CAD", category: "forex", logos: [flagLogo("us"), flagLogo("ca")] },
-
+  // Others
+  { name: "Aave", ticker: "AAVE", category: "others", logos: [coinLogo("aave")] },
+  { name: "Uniswap", ticker: "UNI", category: "others", logos: [coinLogo("uniswap")] },
+  { name: "Chainlink", ticker: "LINK", category: "others", logos: [coinLogo("chainlink")] },
+  { name: "Curve", ticker: "CRV", category: "others", logos: [coinLogo("curve-dao-token")] },
+  { name: "Lido", ticker: "LDO", category: "others", logos: [coinLogo("lido-dao")] },
+  { name: "Compound", ticker: "COMP", category: "others", logos: [coinLogo("compound-governance-token")] },
+  { name: "Maker", ticker: "MKR", category: "others", logos: [coinLogo("maker")] },
+  { name: "Synthetix", ticker: "SNX", category: "others", logos: [coinLogo("synthetix-network-token")] },
+  { name: "The Graph", ticker: "GRT", category: "others", logos: [coinLogo("the-graph")] },
 ]
 
 function repeatItems<T>(items: T[], count: number, offset: number) {
@@ -191,7 +171,7 @@ function MarqueeRow({
 }
 
 export default function TradeMarketShowcase() {
-  const [selectedTab, setSelectedTab] = useState<MarketCategory>("crypto")
+  const [selectedTab, setSelectedTab] = useState<MarketCategory>("stablecoins")
 
   const filteredItems = useMemo(() => {
     return marketItems.filter((item) => item.category === selectedTab)
@@ -209,18 +189,18 @@ export default function TradeMarketShowcase() {
   }, [filteredItems])
 
   return (
-    <section className="relative bg-white py-8 md:py-10">
+    <section className="relative bg-white site-section-gap">
       <div className="site-content-shell">
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="rose">What&apos;s new</SectionEyebrow>
+            <SectionEyebrow tone="emerald">What&apos;s new</SectionEyebrow>
             <SectionTitle className="max-w-[16ch] md:max-w-none md:whitespace-nowrap">
-              Multiply 250+ markets.
+              Lend across markets.
             </SectionTitle>
           </div>
 
           <div className="flex items-center justify-start md:justify-end">
-            <div className="inline-flex max-w-full flex-wrap items-center gap-1 rounded-full border border-[#d5ddeb] bg-white p-1 shadow-[0_1px_0_rgba(15,23,42,0.02)]">
+            <div className="inline-flex max-w-full flex-wrap items-center gap-2">
               {tabs.map((tab) => {
                 const active = selectedTab === tab.id
                 return (
@@ -229,8 +209,10 @@ export default function TradeMarketShowcase() {
                     type="button"
                     onClick={() => setSelectedTab(tab.id)}
                     className={[
-                      "rounded-full px-4 py-2.5 text-[0.93rem] font-semibold tracking-[-0.02em] transition-colors sm:px-5",
-                      active ? "bg-[#0f172a] text-white" : "text-slate-400 hover:text-slate-700",
+                      "inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-semibold transition-colors",
+                      active
+                        ? "bg-[#01AACF] text-white hover:bg-[#00a0c2]"
+                        : "border border-gray-300 bg-white text-gray-900 hover:bg-gray-100",
                     ].join(" ")}
                     aria-pressed={active}
                   >

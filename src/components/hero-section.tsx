@@ -10,7 +10,7 @@ import {
 } from "lucide-react"
 import { DeFiTerm } from "@/components/defi-term"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SandboxNotice, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 import { PerformanceDiv } from "@/components/ui/performance-section"
@@ -25,7 +25,7 @@ function SectionSkeleton({
   return (
     <div
       aria-hidden="true"
-      className="rounded-[28px] border border-gray-200 bg-gray-50 p-6"
+      className="feature-card rounded-[28px] border border-gray-200 p-6"
       style={{ minHeight }}
     >
       <div className="animate-pulse space-y-4">
@@ -397,14 +397,7 @@ function LendingCoverageTable() {
         </div>
       </div>
 
-      <p className="mt-3 flex items-start gap-2.5 text-xs font-medium leading-5 text-[#44546a] md:text-sm">
-        <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#0078d4] text-sm leading-none text-white">
-          !
-        </span>
-        <span className="max-w-[1000px]">
-          Sandbox data shown for preview only. APYs, prices, and returns are illustrative and may differ from live market conditions.
-        </span>
-      </p>
+      <SandboxNotice className="mt-3" />
     </div>
   )
 }
@@ -455,7 +448,7 @@ const lpUseCases: {
 export default function HeroSection() {
   return (
     <section className="marketing-secondary-shell pb-0">
-      <div className="site-content-shell space-y-32 pt-16 md:space-y-40 md:pt-20 2xl:space-y-36 2xl:pt-18">
+      <div className="site-content-shell site-section-gap">
         <PerformanceDiv className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-6">
           <div className="flex max-w-[600px] flex-col gap-2">
@@ -490,18 +483,11 @@ export default function HeroSection() {
               ))}
             </div>
 
-            <p className="flex items-start gap-2.5 text-xs font-medium leading-5 text-[#44546a] md:text-sm">
-              <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#0078d4] text-sm leading-none text-white">
-                !
-              </span>
-              <span className="max-w-[1000px]">
-                Sandbox data shown for preview only. APYs, prices, and returns are illustrative and may differ from live market conditions.
-              </span>
-            </p>
+            <SandboxNotice />
         </PerformanceDiv>
       </div>
 
-      <div className="site-content-shell pt-24 md:pt-32 2xl:pt-28">
+      <div className="site-content-shell site-section-gap">
         <div className="space-y-6">
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="emerald">Lend Markets</SectionEyebrow>
@@ -515,7 +501,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="site-content-shell space-y-32 pt-32 md:space-y-40 md:pt-40 2xl:space-y-36 2xl:pt-36">
+      <div className="site-content-shell site-section-gap flex flex-col site-section-stack">
         <PerformanceDiv>
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
@@ -529,7 +515,7 @@ export default function HeroSection() {
               <div className="overflow-x-auto py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 <div className="grid w-max grid-flow-col auto-cols-[19.75rem] gap-4 px-1 lg:auto-cols-[21.5rem] lg:gap-5">
                   {/* Card 01 — Maximize your capital */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <FeatureCardTitle>Stretch liquidity further</FeatureCardTitle>
@@ -602,7 +588,7 @@ export default function HeroSection() {
                   </article>
 
                   {/* Card 02 — Keep earning fees */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <FeatureCardTitle>Keep earning fees</FeatureCardTitle>
@@ -686,7 +672,7 @@ export default function HeroSection() {
                   </article>
 
                   {/* Card 03 — Unlock new strategies */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <FeatureCardTitle>Spend capital anywhere</FeatureCardTitle>
@@ -739,7 +725,7 @@ export default function HeroSection() {
                   </article>
 
                   {/* Card 04 — Price-range aware oracles */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <FeatureCardTitle>Track pool composition</FeatureCardTitle>
@@ -833,7 +819,7 @@ export default function HeroSection() {
                   </article>
 
                   {/* Card 05 — LP-aware risk models */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden rounded-[26px] bg-gray-50 p-5">
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <FeatureCardTitle>Risk tuned to pools</FeatureCardTitle>
@@ -1103,7 +1089,7 @@ export default function HeroSection() {
         </PerformanceDiv>
 
 
-      <div className="site-content-shell pt-16 md:pt-20 2xl:pt-18">
+      <div>
         <div className="max-w-[58rem] space-y-4 text-left">
           <SectionEyebrow tone="rose">LP use cases</SectionEyebrow>
           <SectionTitle className="max-w-[14ch] lg:max-w-none">
@@ -1138,41 +1124,39 @@ export default function HeroSection() {
         </LazySection>
 
         <LazySection minHeight="660px" fallback={<SectionSkeleton minHeight="660px" />}>
-          <div className="relative overflow-hidden rounded-2xl bg-gray-50 px-6 py-8 shadow-none md:px-8 md:py-10">
-            <div className="relative grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
-              <div className="space-y-4">
-                <SectionEyebrow tone="slate">Built on Aave v4</SectionEyebrow>
-                <SectionTitle>
-                  <span className="block lg:whitespace-nowrap">Shared liquidity,</span>
-                  <span className="block lg:whitespace-nowrap">stronger guardrails.</span>
-                </SectionTitle>
-              </div>
-              <div className="text-left text-[#39515b]">
-                <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
-                  Aave v4 is a next generation lending system built on{" "}
-                  <DeFiTerm term="hub" className="text-[0.92em]">
-                    Hub
-                  </DeFiTerm>{" "}
-                  and{" "}
-                  <DeFiTerm term="spoke" className="text-[0.92em]">
-                    Spoke
-                  </DeFiTerm>{" "}
-                  architecture, giving the protocol shared liquidity, flexible risk controls, and a stronger
-                  security model. Avana builds on that foundation to deliver secure{" "}
-                  <DeFiTerm term="lp-position" className="text-[0.92em]">
-                    LP backed borrowing
-                  </DeFiTerm>{" "}
-                  with transparent onchain execution, resilient{" "}
-                  <DeFiTerm term="oracle" className="text-[0.92em]">
-                    oracle
-                  </DeFiTerm>{" "}
-                  checks, and borrower protection shaped around controlled{" "}
-                  <DeFiTerm term="liquidation" className="text-[0.92em]">
-                    liquidation
-                  </DeFiTerm>{" "}
-                  design.
-                </p>
-              </div>
+          <div className="relative grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
+            <div className="space-y-4">
+              <SectionEyebrow tone="slate">Built on Aave v4</SectionEyebrow>
+              <SectionTitle>
+                <span className="block lg:whitespace-nowrap">Shared liquidity,</span>
+                <span className="block lg:whitespace-nowrap">stronger guardrails.</span>
+              </SectionTitle>
+            </div>
+            <div className="text-left text-[#39515b]">
+              <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
+                Aave v4 is a next generation lending system built on{" "}
+                <DeFiTerm term="hub" className="text-[0.92em]">
+                  Hub
+                </DeFiTerm>{" "}
+                and{" "}
+                <DeFiTerm term="spoke" className="text-[0.92em]">
+                  Spoke
+                </DeFiTerm>{" "}
+                architecture, giving the protocol shared liquidity, flexible risk controls, and a stronger
+                security model. Avana builds on that foundation to deliver secure{" "}
+                <DeFiTerm term="lp-position" className="text-[0.92em]">
+                  LP backed borrowing
+                </DeFiTerm>{" "}
+                with transparent onchain execution, resilient{" "}
+                <DeFiTerm term="oracle" className="text-[0.92em]">
+                  oracle
+                </DeFiTerm>{" "}
+                checks, and borrower protection shaped around controlled{" "}
+                <DeFiTerm term="liquidation" className="text-[0.92em]">
+                  liquidation
+                </DeFiTerm>{" "}
+                design.
+              </p>
             </div>
           </div>
         </LazySection>

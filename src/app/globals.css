@@ -226,6 +226,38 @@
   contain-intrinsic-size: 1px 960px;
 }
 
+/* Canonical marketing inter-section rhythm
+   (Borrow Markets → Lend Markets reference).
+   Apply to the START of the next section; keep previous pb-0. */
+.site-section-gap {
+  padding-top: 6rem; /* pt-24 */
+  padding-bottom: 0;
+}
+
+.site-section-stack {
+  row-gap: 6rem; /* space-y-24 */
+}
+
+@media (min-width: 768px) {
+  .site-section-gap {
+    padding-top: 8rem; /* md:pt-32 */
+  }
+
+  .site-section-stack {
+    row-gap: 8rem; /* md:space-y-32 */
+  }
+}
+
+@media (min-width: 1536px) {
+  .site-section-gap {
+    padding-top: 7rem; /* 2xl:pt-28 */
+  }
+
+  .site-section-stack {
+    row-gap: 7rem; /* 2xl:space-y-28 */
+  }
+}
+
 @supports (content-visibility: auto) {
   .deferred-viewport,
   .deferred-viewport-tall {
@@ -242,12 +274,10 @@
 @keyframes inline-faq-reveal {
   from {
     opacity: 0;
-    transform: translateY(-0.25rem);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -403,6 +433,16 @@
   animation: accordion-up 0.2s ease-out;
 }
 
+/* Tailwind can't generate data-state variants for the hand-written
+   animate-accordion-* classes above, so bind them here directly. */
+[data-slot="accordion-content"][data-state="open"] {
+  animation: accordion-down 0.2s ease-out;
+}
+
+[data-slot="accordion-content"][data-state="closed"] {
+  animation: accordion-up 0.2s ease-out;
+}
+
 @keyframes tooltip-fade-scale-in {
   from {
     opacity: 0;
@@ -506,7 +546,11 @@
   color: rgb(75 85 99);
 }
 
-/* Canonical marketing feature-card text (How it works / three-step cards) */
+/* Canonical marketing feature-card surface (How it works / product cards) */
+.feature-card {
+  background-color: #eef3f5;
+}
+
 .feature-card-title {
   font-size: 1.45rem;
   font-weight: 500;
@@ -781,6 +825,12 @@
 }
 
 @media (min-width: 1024px) {
+  .site-content-shell {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
   .site-content-shell {
     padding-inline: 0;
   }

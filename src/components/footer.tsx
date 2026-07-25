@@ -145,7 +145,7 @@ export default function Footer(): React.JSX.Element {
             <Link
               href={siteRoutes.home}
               prefetch={false}
-              className="inline-flex w-fit items-start justify-start lg:-ml-2"
+              className="inline-flex w-fit items-start justify-start"
             >
               <Image
                 src={HEADER_WORDMARK_PATH}
@@ -153,7 +153,7 @@ export default function Footer(): React.JSX.Element {
                 width={480}
                 height={240}
                 quality={85}
-                className="h-[56px] w-auto scale-[1.08] origin-left"
+                className="h-[56px] w-auto origin-left scale-[1.08] -translate-x-[10%]"
               />
             </Link>
             <p className="max-w-sm text-[1.02rem] font-normal leading-7 tracking-[-0.02em] text-gray-700">

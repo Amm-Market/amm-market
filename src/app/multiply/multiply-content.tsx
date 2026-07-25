@@ -193,8 +193,8 @@ export default function MultiplyPage() {
     <main className="bg-white">
       <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">
         <div className="relative z-0">
-          <section className="pb-4 md:pb-6 lg:pb-8 xl:pb-10">
-            <div className="w-full pt-3 pb-6 md:pt-5 md:pb-10 lg:pb-2 xl:pb-3">
+          <section className="pb-0 lg:pb-10 xl:pb-12">
+            <div className="w-full pt-3 pb-0 md:pt-5">
               <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                   <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
@@ -213,14 +213,14 @@ export default function MultiplyPage() {
 
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
                   <h1 className="mb-3 max-w-[12ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
-                    <span>Turn LP capital</span>
+                    <span>Loop your LP</span>
                     <br />
-                    <span>into leverage.</span>
+                    <span>without exiting.</span>
                   </h1>
 
                   <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
-                    Deposit supported AMM positions, unlock borrowing power through Avana, and open managed leverage or
-                    perps exposure without leaving your liquidity behind.
+                    Deposit supported AMM positions as collateral, borrow against them, and open managed loops or perps
+                    exposure while your liquidity stays in the pool earning fees.
                   </p>
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
@@ -229,14 +229,14 @@ export default function MultiplyPage() {
                       prefetch={false}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center justify-center px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-xs font-semibold rounded-full transition-colors"
+                      className="inline-flex items-center justify-center rounded-full bg-[#01AACF] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#00a0c2]"
                     >
-                      Get Early Access
+                      Try Looping
                     </Link>
                     <Link
                       href={siteRoutes.developers}
                       prefetch={false}
-                      className="inline-flex items-center justify-center px-4 py-2 bg-white border border-gray-300 hover:bg-gray-100 text-gray-900 text-xs font-semibold rounded-full transition-colors"
+                      className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-900 transition-colors hover:bg-gray-100"
                     >
                       View Docs
                     </Link>
@@ -248,7 +248,7 @@ export default function MultiplyPage() {
         </div>
       </div>
 
-      <section className="deferred-viewport border-t border-gray-200 bg-white pt-8 pb-8 md:pt-10 md:pb-10 2xl:pt-9">
+      <section className="deferred-viewport border-t border-gray-200 bg-white site-section-gap">
         <div className="site-content-shell">
           <div className="mx-auto flex w-full max-w-[76rem] flex-col gap-6">
             <div className="flex max-w-[600px] flex-col gap-2">
@@ -259,7 +259,7 @@ export default function MultiplyPage() {
             </div>
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {loopingBenefits.map((feature) => (
-                <article key={feature.title} className="flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6">
+                <article key={feature.title} className="flex flex-col feature-card rounded-[1.75rem] p-5 md:p-6">
                   <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
                   <FeatureCardTitle className="mt-5 md:mt-6">{feature.title}</FeatureCardTitle>
                   <FeatureCardDescription className="mt-3 max-w-[22rem]">
@@ -272,17 +272,17 @@ export default function MultiplyPage() {
         </div>
       </section>
 
-      <section className="deferred-viewport bg-white py-12 md:py-16 2xl:py-14">
+      <section className="deferred-viewport bg-white site-section-gap">
         <div className="site-content-shell">
           <LeverageGlanceShowcaseSection />
         </div>
       </section>
 
-      <section className="deferred-viewport bg-white pt-8 pb-8 md:pt-10 md:pb-10 2xl:pt-9 2xl:pb-9">
+      <section className="deferred-viewport bg-white site-section-gap">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem]">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-center md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
-              <div className="space-y-4 md:self-center">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-start md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
+              <div className="space-y-4 md:self-start">
                 <SectionEyebrow tone="emerald">Multiply Markets</SectionEyebrow>
                 <SectionTitle className="max-w-[15ch]">
                   <span className="block">Credit that</span>
@@ -306,7 +306,7 @@ export default function MultiplyPage() {
         </div>
       </section>
 
-      <section className="deferred-viewport bg-white py-12 md:py-16 2xl:py-14">
+      <section className="deferred-viewport bg-white site-section-gap">
         <div className="site-content-shell">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
@@ -319,7 +319,7 @@ export default function MultiplyPage() {
 
             <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
             {leverageWorkflowSteps.map((step, index) => (
-              <article key={step.title} className="rounded-2xl bg-gray-50 p-6 md:p-8">
+              <article key={step.title} className="feature-card rounded-2xl p-6 md:p-8">
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">
                   {index + 1}
                 </span>
@@ -335,7 +335,7 @@ export default function MultiplyPage() {
 
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 sm:px-6">
         <div className="relative z-0 flex flex-1 flex-col">
-          <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20 2xl:space-y-36 2xl:pt-18 2xl:pb-18">
+          <div className="site-content-width flex flex-col site-section-stack site-section-gap pb-16 md:pb-20 2xl:pb-18">
             <ProductFeatureScrollSection
               eyebrow="Core Product"
               eyebrowTone="rose"

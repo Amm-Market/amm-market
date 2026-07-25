@@ -8,7 +8,7 @@ export function BuildTomorrowSection() {
   return (
     <section
       data-section="ways-to-use-avana"
-      className="w-full bg-inherit pt-16 pb-16 md:pt-20 md:pb-20 2xl:pt-18 2xl:pb-18"
+      className="w-full bg-inherit site-section-gap"
     >
       <div className="site-content-shell">
         <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
