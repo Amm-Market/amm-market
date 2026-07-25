@@ -79,39 +79,39 @@ const investFeatureItems = [
 const liquidationModelCards = [
   {
     icon: Gauge,
-    title: "See your credit line",
+    title: "See your supply rates",
     description:
-      "Track available credit, borrowing room, and allocation over time from one business view.",
+      "Track APY, utilization, and demand across lending markets from one clear supplier view.",
   },
   {
     icon: LockKeyhole,
-    title: "Manage your treasury",
+    title: "Manage your deposits",
     description:
-      "Keep balances, borrowing capacity, and market exposure together in one consolidated view.",
+      "Keep balances, accrued yield, and available liquidity together in one consolidated surface.",
   },
   {
     icon: MoveRight,
-    title: "Navigate market shifts",
+    title: "Navigate rate shifts",
     description:
-      "Use monitoring and controls that help your credit line stay ahead of changing conditions.",
+      "Stay ahead when utilization and borrower demand move rates across stablecoin, ETH, and BTC markets.",
   },
   {
     icon: BadgePercent,
-    title: "Business-friendly access",
+    title: "Earn on flexible terms",
     description:
-      "Get the tools and alerts you need to manage business credit cleanly while on the go.",
+      "Supply when it suits you, earn continuously, and withdraw principal plus yield with no lock-up.",
   },
   {
     icon: WalletCards,
     title: "Allocate with clarity",
     description:
-      "Decide where capital should sit across markets without losing sight of overall capacity.",
+      "Decide where capital should sit across lending markets without losing sight of overall yield.",
   },
   {
     icon: BellRing,
     title: "Act on clear signals",
     description:
-      "Stay ready with timely cues when health, utilization, or market conditions need attention.",
+      "Stay ready with timely cues when utilization, liquidity, or rate conditions need attention.",
   },
 ] as const
 
