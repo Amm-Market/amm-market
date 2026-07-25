@@ -213,14 +213,14 @@ export default function MultiplyPage() {
 
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
                   <h1 className="mb-3 max-w-[12ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
-                    <span>Turn LP capital</span>
+                    <span>Loop your LP</span>
                     <br />
-                    <span>into leverage.</span>
+                    <span>without exiting.</span>
                   </h1>
 
                   <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
-                    Deposit supported AMM positions, unlock borrowing power through Avana, and open managed leverage or
-                    perps exposure without leaving your liquidity behind.
+                    Deposit supported AMM positions as collateral, borrow against them, and open managed loops or perps
+                    exposure while your liquidity stays in the pool earning fees.
                   </p>
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
