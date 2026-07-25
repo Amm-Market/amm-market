@@ -52,7 +52,7 @@ export default function Header(): React.JSX.Element {
               prefetch={false}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noreferrer" : undefined}
-              className="inline-flex items-center justify-center rounded-full border border-[#01AACF] bg-white px-3 py-1.5 text-xs font-medium text-[#01AACF] transition-colors hover:bg-[#01AACF]/10 lg:px-3.5 lg:py-[0.45rem]"
+              className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-3 py-1.5 text-xs font-semibold text-gray-900 transition-colors hover:bg-gray-100 lg:px-3.5 lg:py-[0.45rem]"
             >
               <span className="inline-flex items-center gap-1.5">
                 <SandboxIcon />
