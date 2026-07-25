@@ -242,12 +242,10 @@
 @keyframes inline-faq-reveal {
   from {
     opacity: 0;
-    transform: translateY(-0.25rem);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -403,6 +401,16 @@
   animation: accordion-up 0.2s ease-out;
 }
 
+/* Tailwind can't generate data-state variants for the hand-written
+   animate-accordion-* classes above, so bind them here directly. */
+[data-slot="accordion-content"][data-state="open"] {
+  animation: accordion-down 0.2s ease-out;
+}
+
+[data-slot="accordion-content"][data-state="closed"] {
+  animation: accordion-up 0.2s ease-out;
+}
+
 @keyframes tooltip-fade-scale-in {
   from {
     opacity: 0;
@@ -508,7 +516,7 @@
 
 /* Canonical marketing feature-card surface (How it works / product cards) */
 .feature-card {
-  background-color: #f1f0ee;
+  background-color: #eef3f5;
 }
 
 .feature-card-title {
