@@ -193,8 +193,8 @@ export default function MultiplyPage() {
     <main className="bg-white">
       <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">
         <div className="relative z-0">
-          <section className="pb-4 md:pb-6 lg:pb-8 xl:pb-10">
-            <div className="w-full pt-3 pb-6 md:pt-5 md:pb-10 lg:pb-2 xl:pb-3">
+          <section className="pb-0 lg:pb-10 xl:pb-12">
+            <div className="w-full pt-3 pb-0 md:pt-5">
               <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
                   <div className="relative mx-auto w-full max-w-none lg:mx-0 lg:max-w-[650px] xl:max-w-[700px]">
@@ -248,7 +248,7 @@ export default function MultiplyPage() {
         </div>
       </div>
 
-      <section className="deferred-viewport border-t border-gray-200 bg-white pt-8 pb-8 md:pt-10 md:pb-10 2xl:pt-9">
+      <section className="deferred-viewport border-t border-gray-200 bg-white site-section-gap">
         <div className="site-content-shell">
           <div className="mx-auto flex w-full max-w-[76rem] flex-col gap-6">
             <div className="flex max-w-[600px] flex-col gap-2">
@@ -272,17 +272,17 @@ export default function MultiplyPage() {
         </div>
       </section>
 
-      <section className="deferred-viewport bg-white py-12 md:py-16 2xl:py-14">
+      <section className="deferred-viewport bg-white site-section-gap">
         <div className="site-content-shell">
           <LeverageGlanceShowcaseSection />
         </div>
       </section>
 
-      <section className="deferred-viewport bg-white pt-8 pb-8 md:pt-10 md:pb-10 2xl:pt-9 2xl:pb-9">
+      <section className="deferred-viewport bg-white site-section-gap">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem]">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-center md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
-              <div className="space-y-4 md:self-center">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-start md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
+              <div className="space-y-4 md:self-start">
                 <SectionEyebrow tone="emerald">Multiply Markets</SectionEyebrow>
                 <SectionTitle className="max-w-[15ch]">
                   <span className="block">Credit that</span>
@@ -306,7 +306,7 @@ export default function MultiplyPage() {
         </div>
       </section>
 
-      <section className="deferred-viewport bg-white py-12 md:py-16 2xl:py-14">
+      <section className="deferred-viewport bg-white site-section-gap">
         <div className="site-content-shell">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
@@ -335,7 +335,7 @@ export default function MultiplyPage() {
 
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 sm:px-6">
         <div className="relative z-0 flex flex-1 flex-col">
-          <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20 2xl:space-y-36 2xl:pt-18 2xl:pb-18">
+          <div className="site-content-width flex flex-col site-section-stack site-section-gap pb-16 md:pb-20 2xl:pb-18">
             <ProductFeatureScrollSection
               eyebrow="Core Product"
               eyebrowTone="rose"

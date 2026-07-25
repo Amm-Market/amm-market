@@ -3,7 +3,7 @@ import Image from "next/image"
 export default function WebappHero() {
   return (
     <div className="relative overflow-hidden bg-white">
-      <div className="site-content-shell py-8 sm:py-10 lg:py-12">
+      <div className="site-content-shell pt-8 pb-0 sm:pt-10 lg:pt-12">
         <div className="relative mx-auto w-full">
           <Image
             src="/avana-pool-hero.png"
