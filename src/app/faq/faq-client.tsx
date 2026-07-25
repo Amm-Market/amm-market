@@ -13,6 +13,8 @@ import {
   SquareChartGantt,
 } from "lucide-react"
 import type { FaqCategory, FaqSearchResult } from "@/app/faq/faq-content"
+import { FaqToggleIcons } from "@/components/faq-toggle-icons"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 /**
  * Client-side FAQ browser so `/faq` can stay fully static. Search and category
@@ -95,13 +97,10 @@ function FaqAccordionList({
   showCategory?: boolean
 }) {
   return (
-    <div className="w-full">
-      {items.map((faq, index) => (
-        <details
-          key={faq.id}
-          className={`group border-b border-gray-200 py-6 open:pb-6 ${index > 3 ? "deferred-viewport" : ""}`}
-        >
-          <summary className="flex cursor-pointer list-none items-start justify-between gap-4 p-0 text-left text-[1.08rem] font-medium leading-[1.45] tracking-[-0.025em] text-gray-900 sm:text-[1.16rem] lg:text-[1.24rem]">
+    <Accordion type="single" collapsible orientation="vertical" className="w-full">
+      {items.map((faq) => (
+        <AccordionItem key={faq.id} value={faq.id} className="border-b border-gray-200 py-6 last:border-b-0">
+          <AccordionTrigger className="group gap-4 p-0 text-left text-[1.08rem] font-medium leading-[1.45] tracking-[-0.025em] text-gray-900 hover:underline sm:text-[1.16rem] lg:text-[1.24rem] [&>svg.size-4]:hidden">
             <div className="flex flex-col text-left">
               <span>{faq.q}</span>
               {showCategory && faq.category ? (
@@ -110,47 +109,14 @@ function FaqAccordionList({
                 </span>
               ) : null}
             </div>
-            <div className="shrink-0 pt-1 text-gray-600">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="group-open:hidden"
-              >
-                <path
-                  d="M12 4V20M20 12H4"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="hidden group-open:block"
-              >
-                <path
-                  d="M20 12L4 12"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                />
-              </svg>
-            </div>
-          </summary>
-          <div className="whitespace-pre-line pt-5 text-[0.98rem] leading-[1.75] text-gray-600 sm:text-[1.02rem]">
+            <FaqToggleIcons />
+          </AccordionTrigger>
+          <AccordionContent className="whitespace-pre-line pt-5 text-[0.98rem] leading-[1.75] text-gray-600 sm:text-[1.02rem]">
             {faq.a}
-          </div>
-        </details>
+          </AccordionContent>
+        </AccordionItem>
       ))}
-    </div>
+    </Accordion>
   )
 }
 
