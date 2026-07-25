@@ -1,6 +1,7 @@
 "use client"
 
 import { DeFiTerm } from "@/components/defi-term"
+import { FaqToggleIcons } from "@/components/faq-toggle-icons"
 import { SectionTitle } from "@/components/shared"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import type { ReactNode } from "react"
@@ -68,18 +69,6 @@ const homepageFaqItems: HomepageFaqItem[] = [
   },
 ]
 
-const PlusIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" color="currentColor" className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=open]:hidden">
-    <path d="M12 4V20M20 12H4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-  </svg>
-)
-
-const MinusIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" color="currentColor" className="shrink-0 text-gray-600 transition-transform duration-200 group-data-[state=closed]:hidden">
-    <path d="M20 12L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-  </svg>
-)
-
 /**
  * HomepageFaqSection - Homepage FAQ using the product-page FAQ layout directly.
  */
@@ -98,8 +87,7 @@ export default function HomepageFaqSection() {
             <AccordionItem key={item.value} value={item.value} className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
               <AccordionTrigger className="type-accordion-question group gap-4 p-0 text-left text-gray-900 hover:underline [&>svg.size-4]:hidden">
                 {item.question}
-                <PlusIcon />
-                <MinusIcon />
+                <FaqToggleIcons />
               </AccordionTrigger>
               <AccordionContent className="type-accordion-answer pt-2 text-gray-600">
                 {item.answer}

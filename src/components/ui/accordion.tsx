@@ -1,36 +1,7 @@
 "use client"
 
 /**
- * Accordion UI Components
- * 
- * @description
- * A set of accessible accordion components built on Radix UI primitives.
- * Includes animated expand/collapse with keyboard navigation support.
- * 
- * @components
- * - Accordion: Root container (single or multiple mode)
- * - AccordionItem: Individual collapsible section
- * - AccordionTrigger: Clickable header that toggles content
- * - AccordionContent: Collapsible content area
- * 
- * @example
- * <Accordion type="single" collapsible>
- *   <AccordionItem value="item-1">
- *     <AccordionTrigger>Question 1</AccordionTrigger>
- *     <AccordionContent>Answer 1</AccordionContent>
- *   </AccordionItem>
- *   <AccordionItem value="item-2">
- *     <AccordionTrigger>Question 2</AccordionTrigger>
- *     <AccordionContent>Answer 2</AccordionContent>
- *   </AccordionItem>
- * </Accordion>
- * 
- * @accessibility
- * - Full keyboard navigation (Enter, Space, Arrow keys)
- * - ARIA expanded/collapsed states
- * - Focus management
- * 
- * @see https://www.radix-ui.com/docs/primitives/components/accordion
+ * Accordion UI Components — Radix primitives with height animation.
  */
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
@@ -67,8 +38,8 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180",
-          className
+          "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg.size-4]:rotate-180",
+          className,
         )}
         {...props}
       >
