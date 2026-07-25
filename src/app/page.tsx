@@ -78,7 +78,7 @@ function DeferredHomepageSectionsFallback() {
     <div className="site-content-shell pb-16 md:pb-20 2xl:pb-18">
       <div
         aria-hidden="true"
-        className="rounded-[28px] border border-gray-200 bg-gray-50 p-6 md:p-8"
+        className="feature-card rounded-[28px] border border-gray-200 p-6 md:p-8"
       >
         <div className="animate-pulse space-y-4">
           <div className="h-3 w-28 rounded-full bg-gray-200" />

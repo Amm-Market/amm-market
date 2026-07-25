@@ -259,7 +259,7 @@ export default function MultiplyPage() {
             </div>
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {loopingBenefits.map((feature) => (
-                <article key={feature.title} className="flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6">
+                <article key={feature.title} className="flex flex-col feature-card rounded-[1.75rem] p-5 md:p-6">
                   <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
                   <FeatureCardTitle className="mt-5 md:mt-6">{feature.title}</FeatureCardTitle>
                   <FeatureCardDescription className="mt-3 max-w-[22rem]">
@@ -319,7 +319,7 @@ export default function MultiplyPage() {
 
             <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
             {leverageWorkflowSteps.map((step, index) => (
-              <article key={step.title} className="rounded-2xl bg-gray-50 p-6 md:p-8">
+              <article key={step.title} className="feature-card rounded-2xl p-6 md:p-8">
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">
                   {index + 1}
                 </span>

@@ -160,7 +160,7 @@ export default function InvestGrowthCalculatorSection() {
             </div>
           </div>
 
-          <div className="rounded-2xl bg-gray-50 p-5 md:p-8">
+          <div className="feature-card rounded-2xl p-5 md:p-8">
             <div className="space-y-5 md:space-y-7">
               <div className="sm:hidden">
                 <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4">
