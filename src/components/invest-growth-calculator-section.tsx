@@ -1,7 +1,7 @@
 "use client"
 
 import { useId, useMemo, useState } from "react"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { SandboxNotice, SectionEyebrow, SectionTitle } from "@/components/shared"
 
 const AVANA_APY = 12
 const FLUID_APY = 3.5
@@ -102,7 +102,7 @@ export default function InvestGrowthCalculatorSection() {
               <p className="text-sm font-semibold tracking-[-0.03em] text-[#728196]">
                 Avana APY
               </p>
-              <div className="inline-flex items-center rounded-full bg-[#eef4ff] px-4 py-2 text-[#1f3d88] ring-1 ring-[#d7e4ff]">
+              <div className="inline-flex items-center rounded-full bg-[#01AACF]/10 px-4 py-2 text-[#01AACF] ring-1 ring-[#01AACF]/25">
                 <span className="text-[1.15rem] font-semibold tracking-[-0.04em] md:text-[1.35rem]">
                   12.0%
                 </span>
@@ -165,10 +165,10 @@ export default function InvestGrowthCalculatorSection() {
               <div className="sm:hidden">
                 <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4">
                   <div className="space-y-1">
-                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-600/75">
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#01AACF]/80">
                       Projected Value
                     </p>
-                    <p className="text-[2.35rem] whitespace-nowrap leading-[0.9] tracking-[-0.08em] text-emerald-700">
+                    <p className="text-[2.35rem] whitespace-nowrap leading-[0.9] tracking-[-0.08em] text-[#01AACF]">
                       {projectedValueDisplay}
                     </p>
                   </div>
@@ -184,10 +184,10 @@ export default function InvestGrowthCalculatorSection() {
               </div>
 
               <div className="hidden space-y-4 sm:block">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-600/75">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#01AACF]/80">
                   Projected Value
                 </p>
-                <p className={`${projectedValueSize} max-w-full whitespace-nowrap leading-[0.88] tracking-[-0.09em] text-emerald-700`}>
+                <p className={`${projectedValueSize} max-w-full whitespace-nowrap leading-[0.88] tracking-[-0.09em] text-[#01AACF]`}>
                   {projectedValueDisplay}
                 </p>
                 <div className="flex flex-wrap items-center gap-3">
@@ -203,7 +203,7 @@ export default function InvestGrowthCalculatorSection() {
               <div className="space-y-4 border-t border-gray-200 pt-4 sm:hidden">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <span className="inline-flex rounded-full bg-[#BC846F]/14 px-2.5 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#9E5537]">
+                    <span className="inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#728196]">
                       Benchmark
                     </span>
                     <p className="text-[1rem] font-semibold tracking-[-0.04em] text-[#163042]">
@@ -220,10 +220,10 @@ export default function InvestGrowthCalculatorSection() {
                       </p>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-rose-500/80">
+                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#8b98a7]">
                         Benchmark Value
                       </p>
-                      <p className="text-[1.15rem] font-semibold tracking-[-0.05em] text-rose-700">
+                      <p className="text-[1.15rem] font-semibold tracking-[-0.05em] text-[#163042]">
                         {fluidValueDisplay}
                       </p>
                     </div>
@@ -233,8 +233,8 @@ export default function InvestGrowthCalculatorSection() {
               </div>
 
               <div className="hidden gap-5 border-t border-gray-200 pt-5 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
-                <div className="space-y-4">
-                  <span className="inline-flex w-fit rounded-full bg-[#BC846F]/14 px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#9E5537]">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="inline-flex w-fit rounded-full bg-gray-100 px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#728196]">
                     Benchmark
                   </span>
                   <p className="text-[1.25rem] font-semibold tracking-[-0.04em] text-[#163042]">
@@ -243,18 +243,16 @@ export default function InvestGrowthCalculatorSection() {
                 </div>
 
                 <div className="space-y-2 sm:text-right">
-                  <p className="text-xs uppercase tracking-[0.2em] text-rose-500/80">
+                  <p className="text-xs uppercase tracking-[0.2em] text-[#8b98a7]">
                     Benchmark Value
                   </p>
-                  <p className={`${fluidValueSize} max-w-full font-semibold tracking-[-0.05em] text-rose-700 [overflow-wrap:anywhere]`}>
+                  <p className={`${fluidValueSize} max-w-full font-semibold tracking-[-0.05em] text-[#163042] [overflow-wrap:anywhere]`}>
                     {fluidValueDisplay}
                   </p>
                 </div>
               </div>
 
-              <p className="text-sm leading-6 text-[#8b98a7]">
-                Illustration only. These sample figures assume monthly compounding on a single deposit and are not live quotes or guaranteed returns.
-              </p>
+              <SandboxNotice />
             </div>
           </div>
         </div>
