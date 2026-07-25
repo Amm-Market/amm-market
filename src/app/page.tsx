@@ -99,7 +99,7 @@ export default function Home() {
         <div className="site-content-shell">
           <div className="mx-auto grid w-fit max-w-full grid-cols-1 gap-5 text-center md:grid-cols-[auto_auto] md:items-start md:gap-10 md:text-left lg:gap-14">
             <div className="space-y-4">
-              <SectionTitle className="text-center md:text-left">
+              <SectionTitle className="text-center font-medium md:text-left">
                 <span className="block lg:whitespace-nowrap">Unlock Capital</span>
                 <span className="block lg:whitespace-nowrap">from Amm Markets</span>
               </SectionTitle>
