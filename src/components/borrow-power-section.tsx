@@ -4,7 +4,7 @@ import { SectionEyebrow, SectionTitle } from "@/components/shared"
 export default function BorrowPowerSection() {
   return (
     <section className="bg-white">
-      <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] md:gap-8 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
+      <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] md:gap-8 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
         <div className="space-y-4">
           <SectionEyebrow tone="blue">Borrow Power</SectionEyebrow>
           <SectionTitle className="max-w-[14ch]">

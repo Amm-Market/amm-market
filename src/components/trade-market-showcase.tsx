@@ -189,7 +189,7 @@ export default function TradeMarketShowcase() {
   }, [filteredItems])
 
   return (
-    <section className="relative bg-white py-8 md:py-10">
+    <section className="relative bg-white site-section-gap">
       <div className="site-content-shell">
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div className="flex max-w-[600px] flex-col gap-2">

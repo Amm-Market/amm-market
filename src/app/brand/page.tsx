@@ -85,7 +85,7 @@ function BrandAssetImage({
 export default function BrandPage() {
   return (
     <div className="flex min-h-screen flex-col bg-white">
-      <section className="bg-white py-14 md:py-20">
+      <section className="bg-white pt-14 pb-0 md:pt-20">
         <div className="site-content-shell">
           <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
             <h1 className="text-[clamp(3rem,7vw,5.25rem)] font-semibold tracking-[-0.08em] text-[#0F1518]">
@@ -108,7 +108,7 @@ export default function BrandPage() {
 
       <main className="flex-1 bg-white">
         <div className="site-content-shell">
-          <section className="py-12 md:py-16">
+          <section className="site-section-gap">
             <div className="mb-8 space-y-3 md:mb-12">
               <SectionEyebrow tone="cyan">{brandSections.logo.eyebrow}</SectionEyebrow>
               <SectionTitle>{brandSections.logo.title}</SectionTitle>
@@ -117,7 +117,7 @@ export default function BrandPage() {
             <BrandLogoShowcase />
           </section>
 
-          <section className="py-12 md:py-16">
+          <section className="site-section-gap">
             <div className="mb-8 space-y-3 md:mb-12">
               <SectionEyebrow tone="cyan">{brandSections.typography.eyebrow}</SectionEyebrow>
               <SectionTitle>{brandSections.typography.title}</SectionTitle>
@@ -158,7 +158,7 @@ export default function BrandPage() {
             </div>
           </section>
 
-          <section className="py-12 md:py-16">
+          <section className="site-section-gap">
             <div className="mb-8 space-y-3 md:mb-12">
               <SectionEyebrow tone="cyan">{brandSections.color.eyebrow}</SectionEyebrow>
               <SectionTitle>{brandSections.color.title}</SectionTitle>
@@ -167,7 +167,7 @@ export default function BrandPage() {
             <BrandColorPalette />
           </section>
 
-          <section className="py-12 md:py-16">
+          <section className="site-section-gap">
             <div className="mb-8 space-y-3 md:mb-12">
               <SectionEyebrow tone="cyan">{brandSections.concept.eyebrow}</SectionEyebrow>
               <SectionTitle>{brandSections.concept.title}</SectionTitle>
@@ -274,7 +274,7 @@ export default function BrandPage() {
             </div>
           </section>
 
-          <section className="py-12 md:py-16">
+          <section className="site-section-gap">
             <div className="mb-8 space-y-3 md:mb-12">
               <SectionEyebrow tone="cyan">{brandSections.guidelines.eyebrow}</SectionEyebrow>
               <SectionTitle>{brandSections.guidelines.title}</SectionTitle>
@@ -360,7 +360,7 @@ export default function BrandPage() {
             </div>
           </section>
 
-          <div className="pb-16 md:pb-24">
+          <div className="site-section-gap pb-16 md:pb-24">
             <InlineFaqSection items={faqItems} withTopBorder={false} />
           </div>
         </div>

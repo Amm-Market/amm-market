@@ -179,8 +179,8 @@ export default function LendPage() {
     <main className="bg-white">
       <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">
         <div className="relative z-0">
-          <section className="pb-4 md:pb-6 lg:pb-8 xl:pb-10">
-            <div className="w-full pt-3 pb-6 md:pt-5 md:pb-10 lg:pb-2 xl:pb-3">
+          <section className="pb-0 lg:pb-10 xl:pb-12">
+            <div className="w-full pt-3 pb-0 md:pt-5">
               <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
               {/* Left Column - Hero Image */}
                 <div className="order-2 mb-8 w-full lg:mb-0 lg:w-[55%]">
@@ -239,7 +239,7 @@ export default function LendPage() {
         <DeferredTradeMarketShowcase />
       </section>
 
-      <section className="relative z-10 pt-8 md:pt-10 lg:pt-12">
+      <section className="relative z-10 site-section-gap">
         <div className="site-content-shell">
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {liquidationModelCards.map((card) => (
@@ -254,7 +254,7 @@ export default function LendPage() {
         </div>
       </section>
 
-      <section className="py-8 md:py-10 lg:py-12">
+      <section className="site-section-gap">
         <div className="site-content-shell">
           <PlatformToolsShowcaseSection />
         </div>
@@ -265,7 +265,7 @@ export default function LendPage() {
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
-        <div className="site-content-width space-y-32 pt-16 pb-16 md:space-y-40 md:pt-20 md:pb-20 2xl:space-y-36 2xl:pt-18 2xl:pb-18">
+        <div className="site-content-width flex flex-col site-section-stack site-section-gap pb-16 md:pb-20 2xl:pb-18">
           <InvestGrowthCalculatorSection />
 
           <ProductFeatureScrollSection

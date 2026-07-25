@@ -59,7 +59,7 @@ const DeferredHeroSection = dynamic(() => import("@/components/hero-section"), {
 
 function BuildTomorrowSectionFallback() {
   return (
-    <section className="w-full bg-inherit pb-16 md:pb-20 2xl:pb-18" aria-hidden="true">
+    <section className="w-full bg-inherit site-section-gap" aria-hidden="true">
       <div className="site-content-shell">
         <div className="mb-6 flex max-w-[600px] animate-pulse flex-col gap-2 sm:mb-8">
           <div className="h-3 w-28 rounded-full bg-gray-200" />
