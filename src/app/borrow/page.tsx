@@ -156,7 +156,7 @@ function WorkflowStepCard({
   const Icon = icon
 
   return (
-    <article className={`flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6 ${className}`}>
+    <article className={`flex flex-col feature-card rounded-[1.75rem] p-5 md:p-6 ${className}`}>
       <div className="flex h-8 w-8 items-center justify-center text-[#111111]">
         <Icon className="h-8 w-8" strokeWidth={1.85} />
       </div>
@@ -177,7 +177,7 @@ function BorrowMarketCard({
   description: string
 }) {
   return (
-    <div className="flex h-full flex-col rounded-2xl bg-gray-50 p-6 md:p-8">
+    <div className="flex h-full flex-col feature-card rounded-2xl p-6 md:p-8">
       <span className="text-5xl font-bold text-gray-300 md:text-6xl">{number}</span>
       <FeatureCardTitle className="mt-6">{title}</FeatureCardTitle>
       <FeatureCardDescription className="mt-3">{description}</FeatureCardDescription>
@@ -261,7 +261,7 @@ export default function BorrowPage() {
             </div>
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {borrowPartnerFeatures.map((feature) => (
-                <article key={feature.title} className="flex flex-col rounded-[1.75rem] bg-gray-50 p-5 md:p-6">
+                <article key={feature.title} className="flex flex-col feature-card rounded-[1.75rem] p-5 md:p-6">
                   <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
                   <FeatureCardTitle className="mt-5 md:mt-6">{feature.title}</FeatureCardTitle>
                   <FeatureCardDescription className="mt-3 max-w-[22rem]">
