@@ -112,7 +112,7 @@ export default function InvestApySection() {
   }
 
   return (
-    <section className="deferred-viewport bg-white py-16 md:py-20 2xl:py-18">
+    <section className="deferred-viewport bg-white site-section-gap">
       <div className="site-content-shell">
         <div className="space-y-4">
           <SectionEyebrow tone="cyan">Avana APY</SectionEyebrow>
