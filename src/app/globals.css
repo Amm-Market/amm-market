@@ -782,6 +782,12 @@
 
 @media (min-width: 1024px) {
   .site-content-shell {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-content-shell {
     padding-inline: 0;
   }
 }
