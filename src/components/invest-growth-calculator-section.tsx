@@ -55,14 +55,13 @@ export default function InvestGrowthCalculatorSection() {
 
   const principal = parseDeposit(depositInput)
 
-  const { avanaInterest, avanaTotal, fluidInterest, fluidTotal } = useMemo(() => {
+  const { avanaInterest, avanaTotal, fluidTotal } = useMemo(() => {
     const accruedAtAvana = calculateAccruedInterest(principal, AVANA_APY, months)
     const accruedAtFluid = calculateAccruedInterest(principal, FLUID_APY, months)
 
     return {
       avanaInterest: accruedAtAvana,
       avanaTotal: principal + accruedAtAvana,
-      fluidInterest: accruedAtFluid,
       fluidTotal: principal + accruedAtFluid,
     }
   }, [months, principal])
@@ -81,10 +80,6 @@ export default function InvestGrowthCalculatorSection() {
       : projectedValueDisplay.length > 14
         ? "text-[clamp(2.2rem,5.8vw,4.35rem)] md:text-[clamp(2.3rem,4vw,3.9rem)]"
         : "text-[clamp(2.7rem,7vw,5.2rem)] md:text-[clamp(2.7rem,4.8vw,4.8rem)]"
-  const fluidValueSize =
-    fluidValueDisplay.length > 14
-      ? "text-[clamp(1.4rem,4vw,1.9rem)] md:text-[clamp(1.35rem,2.4vw,1.8rem)]"
-      : "text-[clamp(1.65rem,4.5vw,2.35rem)] md:text-[clamp(1.55rem,2.6vw,2.1rem)]"
 
   return (
     <section className="deferred-viewport-tall">
@@ -200,56 +195,13 @@ export default function InvestGrowthCalculatorSection() {
                 </div>
               </div>
 
-              <div className="space-y-4 border-t border-gray-200 pt-4 sm:hidden">
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className="inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#728196]">
-                      Benchmark
-                    </span>
-                    <p className="text-[1rem] font-semibold tracking-[-0.04em] text-[#163042]">
-                      3.5% APY
-                    </p>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-1">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#8b98a7]">
-                        Benchmark Interest
-                      </p>
-                      <p className="text-[1.1rem] font-semibold tracking-[-0.04em] text-[#163042]">
-                        {currencyFormatter.format(fluidInterest)}
-                      </p>
-                    </div>
-                    <div className="space-y-1">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#8b98a7]">
-                        Benchmark Value
-                      </p>
-                      <p className="text-[1.15rem] font-semibold tracking-[-0.05em] text-[#163042]">
-                        {fluidValueDisplay}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              <div className="hidden gap-5 border-t border-gray-200 pt-5 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="inline-flex w-fit rounded-full bg-gray-100 px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#728196]">
-                    Benchmark
-                  </span>
-                  <p className="text-[1.25rem] font-semibold tracking-[-0.04em] text-[#163042]">
-                    3.5% APY
-                  </p>
-                </div>
-
-                <div className="space-y-2 sm:text-right">
-                  <p className="text-xs uppercase tracking-[0.2em] text-[#8b98a7]">
-                    Benchmark Value
-                  </p>
-                  <p className={`${fluidValueSize} max-w-full font-semibold tracking-[-0.05em] text-[#163042] [overflow-wrap:anywhere]`}>
-                    {fluidValueDisplay}
-                  </p>
-                </div>
+              <div className="flex items-baseline justify-between gap-4 border-t border-gray-200 pt-4 md:pt-5">
+                <p className="text-sm font-medium text-[#728196]">
+                  3.5% APY
+                </p>
+                <p className="text-[1.15rem] font-semibold tracking-[-0.04em] text-[#163042] md:text-[1.35rem]">
+                  {fluidValueDisplay}
+                </p>
               </div>
 
               <SandboxNotice />
