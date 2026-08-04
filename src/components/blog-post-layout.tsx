@@ -31,7 +31,6 @@ type SidebarTone = "blue" | "emerald" | "violet" | "amber" | "cyan" | "rose" | "
 
 interface BlogPostLayoutProps {
   title: string
-  displayTitle?: string
   date: string
   description?: string
   image?: string
@@ -44,7 +43,6 @@ interface BlogPostLayoutProps {
 
 export default function BlogPostLayout({
   title,
-  displayTitle,
   date,
   image,
   children,
@@ -73,7 +71,7 @@ export default function BlogPostLayout({
               <div data-developer-doc-export-root>
                 <header className="mb-8 max-w-[48rem] space-y-4 md:mb-10">
                   <h1 className="text-[clamp(2.15rem,5.2vw,4.1rem)] font-semibold leading-[0.96] tracking-[-0.055em] text-gray-900">
-                    {displayTitle ?? title}
+                    {title}
                   </h1>
                   <div className="space-y-3">
                     <div className="type-supporting text-gray-500">

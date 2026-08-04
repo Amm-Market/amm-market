@@ -74,29 +74,6 @@ export function renderBlogSections(sections: readonly BlogSection[]) {
   ))
 }
 
-const displayTitles: Partial<Record<string, string>> = {
-  "lp-risk-governance": "LP Risk Governance",
-  "why-lp-collateral-needs-smart-agents": "LP Smart Agents",
-  "how-lp-liquidation-should-work": "LP Liquidation",
-  "pricing-lp-collateral-oracle-problem": "Pricing LP Collateral",
-  "security-deep-dive": "LP Risk Security",
-  "hedge-lp-position": "Hedging LP Positions",
-  "yield-looping-playbook": "Yield Looping",
-  "unleashing-lp-tokens": "What LP Collateral Unlocks",
-  "aerodrome-lp-collateral-aave-v4": "Aerodrome LP Collateral",
-  "curve-lp-collateral-aave-v4": "Curve LP Collateral",
-  "balancer-lp-collateral-aave-v4": "Balancer LP Collateral",
-  "smart-contract-architecture": "Uniswap LP Collateral",
-  "defi-ux-challenges": "Making LP Collateral Usable",
-  "avana-lp-collateral": "Next Step For LPs",
-  "institutional-use-cases": "LP Collateral For Institutions",
-  "integration-guide": "Building On Avana",
-  "aave-v4-avana-spoke": "Inside Avana",
-  "v1-1-release": "Avana v1.1",
-  "introducing-automate": "Automate",
-  "lp-collateral-guide": "LP Collateral Guide",
-}
-
 const sectionEyebrows = [
   "Start here",
   "Core idea",
@@ -240,13 +217,10 @@ export function createBlogPage(slug: string) {
     sections.map((section, index) => [section.id, sectionTones[index % sectionTones.length]]),
   )
   const image = getPostImage(post.image)
-  const displayTitle = displayTitles[post.slug]
-
   function Page() {
     return (
       <BlogPostLayout
         title={post.title}
-        displayTitle={displayTitle}
         date={post.date}
         description={post.description}
         image={image}
