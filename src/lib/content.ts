@@ -66,7 +66,7 @@ function makeNewsroomPost(slug: string, byline: string): NewsroomPost {
     title: post.title,
     byline,
     description: post.description,
-    href: `/blog/${post.slug}`,
+    href: `/newsroom/${post.slug}`,
   }
 }
 

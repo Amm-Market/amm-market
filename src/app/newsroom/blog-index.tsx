@@ -44,10 +44,10 @@ function BlogImagePlaceholder({
 
 function buildTagHref(tag: TagFilter) {
   if (tag === "All") {
-    return "/blog"
+    return "/newsroom"
   }
 
-  return `/blog?tag=${encodeURIComponent(tag)}`
+  return `/newsroom?tag=${encodeURIComponent(tag)}`
 }
 
 export function BlogIndex({
@@ -100,7 +100,7 @@ export function BlogIndex({
           {filteredBlogs.map((post) => (
             <div key={post.id}>
               <Link
-                href={`/blog/${post.slug}`}
+                href={`/newsroom/${post.slug}`}
                 prefetch={false}
                 className="block h-full rounded-[1.1rem] p-1 touch-manipulation sm:p-2"
               >

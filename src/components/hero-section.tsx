@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic"
+import Image from "next/image"
 import type { LucideIcon } from "lucide-react"
 import {
   ArrowLeftRight,
@@ -6,11 +7,14 @@ import {
   Building2,
   Globe2,
   Layers,
+  Percent,
+  RotateCcw,
+  Wallet,
   Zap,
 } from "lucide-react"
 import { DeFiTerm } from "@/components/defi-term"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import { FeatureCardDescription, FeatureCardTitle, SandboxNotice, SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 import { PerformanceDiv } from "@/components/ui/performance-section"
@@ -122,282 +126,63 @@ function PoolCard({ pool }: { pool: HomepagePool }) {
   )
 }
 
-const lendingCoverageAssets = [
+const lendingSavingsCards: {
+  title: string
+  description: string
+  icon: LucideIcon
+}[] = [
   {
-    symbol: "USDC",
-    name: "USD Coin",
-    logo: "https://coin-logos.simplr.sh/images/usd-coin/standard.png",
+    title: "Supply single assets",
+    description: "Deposit supported assets into markets used by LP-backed borrowers.",
+    icon: Wallet,
   },
   {
-    symbol: "USDT",
-    name: "Tether",
-    logo: "https://coin-logos.simplr.sh/images/tether/standard.png",
+    title: "Earn from demand",
+    description: "Supplier yield moves with utilization, liquidity, and borrower demand.",
+    icon: Percent,
   },
   {
-    symbol: "DAI",
-    name: "Dai",
-    logo: "https://coin-logos.simplr.sh/images/dai/standard.png",
+    title: "Withdraw when liquid",
+    description: "Redeem supplied assets when there is available liquidity in the market.",
+    icon: RotateCcw,
   },
-  {
-    symbol: "WETH",
-    name: "Wrapped Ether",
-    logo: "https://coin-logos.simplr.sh/images/weth/standard.png",
-  },
-  {
-    symbol: "WBTC",
-    name: "Wrapped Bitcoin",
-    logo: "https://coin-logos.simplr.sh/images/wrapped-bitcoin/standard.png",
-  },
-  {
-    symbol: "crvUSD",
-    name: "Curve USD",
-    logo: "https://coin-logos.simplr.sh/images/crvusd/standard.png",
-  },
-  {
-    symbol: "GHO",
-    name: "GHO",
-    logo: "https://coin-logos.simplr.sh/images/gho/standard.png",
-  },
-  {
-    symbol: "stETH",
-    name: "stETH",
-    logo: "https://coin-logos.simplr.sh/images/staked-ether/standard.png",
-  },
-  {
-    symbol: "wstETH",
-    name: "wstETH",
-    logo: "https://coin-logos.simplr.sh/images/wrapped-steth/standard.png",
-  },
-  {
-    symbol: "rETH",
-    name: "rETH",
-    logo: "https://coin-logos.simplr.sh/images/rocket-pool-eth/standard.png",
-  },
-  {
-    symbol: "cbETH",
-    name: "cbETH",
-    logo: "https://coin-logos.simplr.sh/images/coinbase-wrapped-staked-eth/standard.png",
-  },
-  {
-    symbol: "AAVE",
-    name: "Aave",
-    logo: "https://coin-logos.simplr.sh/images/aave/standard.png",
-  },
-  {
-    symbol: "UNI",
-    name: "Uniswap",
-    logo: "https://coin-logos.simplr.sh/images/uniswap/standard.png",
-  },
-  {
-    symbol: "CRV",
-    name: "Curve DAO",
-    logo: "https://coin-logos.simplr.sh/images/curve-dao-token/standard.png",
-  },
-  {
-    symbol: "LDO",
-    name: "Lido DAO",
-    logo: "https://coin-logos.simplr.sh/images/lido-dao/standard.png",
-  },
-] as const
+]
 
-const lendingCoverageTableRows = [
-  {
-    pair: "USDC",
-    name: "USD Coin",
-    logo: lendingCoverageAssets[0].logo,
-    price: "4.82",
-    suffix: "% APY",
-    change: "-0.10%",
-    positive: false,
-  },
-  {
-    pair: "USDT",
-    name: "Tether",
-    logo: lendingCoverageAssets[1].logo,
-    price: "3.94",
-    suffix: "% APY",
-    change: "-1.18%",
-    positive: false,
-  },
-  {
-    pair: "DAI",
-    name: "Dai",
-    logo: lendingCoverageAssets[2].logo,
-    price: "6.36",
-    suffix: "% APY",
-    change: "+6.36%",
-    positive: true,
-  },
-  {
-    pair: "WETH",
-    name: "Wrapped Ether",
-    logo: lendingCoverageAssets[3].logo,
-    price: "5.28",
-    suffix: "% APY",
-    change: "+28.93%",
-    positive: true,
-  },
-  {
-    pair: "WBTC",
-    name: "Wrapped Bitcoin",
-    logo: lendingCoverageAssets[4].logo,
-    price: "4.15",
-    suffix: "% APY",
-    change: "+3.52%",
-    positive: true,
-  },
-] as const
-
-const lendingCoverageGainersRows = [
-  {
-    pair: "crvUSD",
-    logo: lendingCoverageAssets[5].logo,
-    price: "6.12% APY",
-    change: "+1.38% 24h",
-    positive: true,
-  },
-  {
-    pair: "GHO",
-    logo: lendingCoverageAssets[6].logo,
-    price: "5.74% APY",
-    change: "+0.97% 24h",
-    positive: true,
-  },
-  {
-    pair: "stETH",
-    logo: lendingCoverageAssets[7].logo,
-    price: "4.93% APY",
-    change: "+0.68% 24h",
-    positive: true,
-  },
-] as const
-
-const lendingCoverageListingsRows = [
-  {
-    pair: "wstETH",
-    logo: lendingCoverageAssets[8].logo,
-    price: "4.08% APY",
-    change: "-0.24% 24h",
-    positive: false,
-  },
-  {
-    pair: "cbETH",
-    logo: lendingCoverageAssets[9].logo,
-    price: "3.84% APY",
-    change: "+0.17% 24h",
-    positive: true,
-  },
-  {
-    pair: "rETH",
-    logo: lendingCoverageAssets[10].logo,
-    price: "4.25% APY",
-    change: "+0.31% 24h",
-    positive: true,
-  },
-] as const
-
-function MarketTableRow({ row }: { row: (typeof lendingCoverageTableRows)[number] }) {
-  return (
-    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-[4px] bg-white/85 px-3 py-3 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.85fr)_auto] md:px-4">
-      <div className="flex min-w-0 items-center gap-3">
-        <TokenLogo src={row.logo} />
-        <div className="min-w-0">
-          <p className="truncate text-sm font-semibold text-[#182036]">{row.pair}</p>
-          <p className="truncate text-xs text-[#667085]">{row.name}</p>
-        </div>
-      </div>
-      <div className="justify-self-end text-right text-sm font-semibold text-[#182036] md:justify-self-auto md:text-left">
-        {row.price} <span className="text-xs font-medium text-[#667085]">{row.suffix}</span>
-        <div className={`mt-0.5 text-xs font-semibold md:hidden ${row.positive ? "text-[#107c41]" : "text-[#c43e1c]"}`}>
-          {row.change}
-        </div>
-      </div>
-      <div className={`hidden text-sm font-semibold md:block ${row.positive ? "text-[#107c41]" : "text-[#c43e1c]"}`}>
-        {row.change}
-      </div>
-      <button className="hidden w-fit rounded-[4px] border border-[#9fb8d8] bg-[#f9fbfe] px-4 py-1.5 text-xs font-semibold text-[#005fb8] transition-colors hover:bg-[#eef4fb] md:inline-flex">
-        Multiply
-      </button>
-    </div>
-  )
-}
-
-function CompactMarketRow({
-  row,
-}: {
-  row: (typeof lendingCoverageGainersRows)[number] | (typeof lendingCoverageListingsRows)[number]
-}) {
-  return (
-    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-[4px] bg-white/85 px-3 py-3">
-      <div className="flex min-w-0 items-center gap-3">
-        <TokenLogo src={row.logo} />
-        <p className="truncate text-sm font-semibold text-[#182036]">{row.pair}</p>
-      </div>
-      <div className="grid justify-items-end gap-1 text-right">
-        <p className="whitespace-nowrap text-xs font-semibold text-[#182036] md:text-sm">{row.price}</p>
-        <p className={`whitespace-nowrap text-xs font-semibold md:text-sm ${row.positive ? "text-[#107c41]" : "text-[#c43e1c]"}`}>
-          {row.change}
-        </p>
-      </div>
-    </div>
-  )
-}
-
-function LendingCoverageTable() {
+function LendingSavingsSection() {
   return (
     <div>
-      <div className="grid gap-4 xl:grid-cols-[minmax(0,1.58fr)_minmax(280px,0.9fr)]">
-        <div className="overflow-hidden border border-[#d2dcea] bg-white">
-          <div className="h-1 bg-[#0078d4]" />
-          <div className="border-b border-[#e6edf6] px-4 pb-3 pt-4 md:px-5">
-            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#162033]">
-              Most traded coins
-            </h3>
-          </div>
-
-          <div className="hidden gap-3 px-5 py-2.5 text-[0.69rem] font-semibold uppercase tracking-[0.14em] text-[#6b7280] md:grid md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.85fr)_auto]">
-            <div>Asset</div>
-            <div>Supply APY</div>
-            <div>24H Change</div>
-            <div>Multiply</div>
-          </div>
-
-          <div className="space-y-2 px-4 pb-4 md:px-5">
-            {lendingCoverageTableRows.map((row) => (
-              <MarketTableRow key={row.pair} row={row} />
-            ))}
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(22rem,0.78fr)] lg:items-center">
+        <div>
+          <div className="flex max-w-[600px] flex-col gap-2">
+            <SectionEyebrow tone="emerald">Lend Markets</SectionEyebrow>
+            <SectionTitle>
+              <span className="block lg:whitespace-nowrap">Earn yield from</span>
+              <span className="block lg:whitespace-nowrap">LP borrower demand</span>
+            </SectionTitle>
           </div>
         </div>
 
-        <div className="overflow-hidden border border-[#d2dcea] bg-white">
-          <div className="h-1 bg-[#0a5fb8]" />
-          <div className="border-b border-[#e6edf6] px-4 py-4 md:px-5">
-            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#162033]">
-              Top Gainers
-            </h3>
-          </div>
-
-          <div className="space-y-2 px-4 py-3 md:px-5">
-            {lendingCoverageGainersRows.map((row) => (
-              <CompactMarketRow key={row.pair} row={row} />
-            ))}
-          </div>
-
-          <div className="border-t border-[#e6edf6] px-4 py-4 md:px-5">
-            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#162033]">
-              New Listings
-            </h3>
-          </div>
-
-          <div className="space-y-2 px-4 pb-4 md:px-5">
-            {lendingCoverageListingsRows.map((row) => (
-              <CompactMarketRow key={row.pair} row={row} />
-            ))}
-          </div>
+        <div className="text-left lg:text-right">
+          <p className="text-[clamp(4.7rem,11vw,8.6rem)] font-bold leading-none tracking-[-0.08em] text-[#01AACF]">
+            7.2%
+          </p>
         </div>
       </div>
 
-      <SandboxNotice className="mt-3" />
+      <div className="mt-10 grid w-full gap-4 md:mt-16 md:grid-cols-3">
+        {lendingSavingsCards.map((card) => (
+          <article
+            key={card.title}
+            className="flex min-h-[13rem] flex-col rounded-[24px] border border-gray-200 bg-white px-6 py-7 md:px-7 md:py-8"
+          >
+            <card.icon className="h-11 w-11 text-[#01AACF]" strokeWidth={1.5} />
+            <FeatureCardTitle className="mt-5">{card.title}</FeatureCardTitle>
+            <FeatureCardDescription className="mt-2 max-w-none">
+              {card.description}
+            </FeatureCardDescription>
+          </article>
+        ))}
+      </div>
     </div>
   )
 }
@@ -454,8 +239,9 @@ export default function HeroSection() {
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="cyan">Borrow Markets</SectionEyebrow>
             <SectionTitle>
-              <span className="block lg:whitespace-nowrap">Unlock credit</span>
-              <span className="block lg:whitespace-nowrap">from 250+ pools</span>
+              <span className="block lg:hidden">Borrow up to 80%</span>
+              <span className="block lg:hidden">from many liquidity pools</span>
+              <span className="hidden lg:block lg:whitespace-nowrap">Borrow up to 80% from many liquidity pools</span>
             </SectionTitle>
           </div>
             </div>
@@ -483,21 +269,12 @@ export default function HeroSection() {
               ))}
             </div>
 
-            <SandboxNotice />
         </PerformanceDiv>
       </div>
 
       <div className="site-content-shell site-section-gap">
         <div className="space-y-6">
-          <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="emerald">Lend Markets</SectionEyebrow>
-            <SectionTitle>
-              <span className="block lg:whitespace-nowrap">Earn yield</span>
-              <span className="block lg:whitespace-nowrap">on 100+ assets</span>
-            </SectionTitle>
-          </div>
-
-          <LendingCoverageTable />
+          <LendingSavingsSection />
         </div>
       </div>
 
@@ -509,6 +286,9 @@ export default function HeroSection() {
                 <SectionTitle>
                   <span className="block lg:whitespace-nowrap">Loop like a pro</span>
                 </SectionTitle>
+                <p className="mt-4 max-w-[38rem] text-[1.15rem] leading-[1.36] tracking-[-0.045em] text-[#6f7378] md:text-[1.35rem]">
+                  Use LP-backed credit to add exposure while Avana tracks debt, health, and unwind paths.
+                </p>
               </div>
             </div>
             <div className="relative mt-10 md:mt-16">
@@ -1107,7 +887,7 @@ export default function HeroSection() {
                   key={item.title}
                   className="flex w-[15rem] shrink-0 snap-start flex-col bg-transparent md:w-auto md:shrink"
                 >
-                  <Icon className="h-11 w-11 text-[#111111]" strokeWidth={1.5} aria-hidden="true" />
+                  <Icon className="h-11 w-11 text-[#01AACF]" strokeWidth={1.5} aria-hidden="true" />
                   <FeatureCardTitle className="mt-5">{item.title}</FeatureCardTitle>
                   <FeatureCardDescription className="mt-2 max-w-[22rem]">
                     {item.description}
@@ -1159,6 +939,16 @@ export default function HeroSection() {
               </p>
             </div>
           </div>
+
+          <article className="relative mx-auto mt-12 h-[240px] w-full max-w-[72rem] sm:h-[320px] md:mt-16 md:h-[360px] lg:h-[410px]">
+            <Image
+              src="/images/trade-leverage-section-trimmed.webp"
+              alt="Leverage dashboard"
+              fill
+              className="object-contain object-center"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 72rem"
+            />
+          </article>
         </LazySection>
 
         <LazySection minHeight="520px" fallback={<SectionSkeleton minHeight="520px" />}>

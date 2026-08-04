@@ -1,9 +1,12 @@
 "use client"
 
 import dynamic from "next/dynamic"
+import Link from "next/link"
+import { BookOpenText, ChevronDown } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 import { desktopMenuButtons, type DesktopMenuId } from "@/components/header-nav-data"
+import { siteRoutes } from "@/lib/site"
 
 const DeferredHeaderDesktopMenuPanel = dynamic(() => import("@/components/header-desktop-menu-panel"), { ssr: false })
 
@@ -49,6 +52,11 @@ export default function HeaderDesktopNavigation() {
     }, 110)
   }
 
+  const closeDesktopMenu = () => {
+    clearDesktopCloseTimeout()
+    setDesktopMenuOpen(null)
+  }
+
   useEffect(() => () => clearDesktopCloseTimeout(), [])
 
   return (
@@ -69,12 +77,31 @@ export default function HeaderDesktopNavigation() {
               onMouseEnter={() => openDesktopMenu(menu.id)}
               onFocus={() => openDesktopMenu(menu.id)}
               onClick={() => openDesktopMenu(menu.id)}
-              className={`site-header-nav-link group relative inline-flex items-center px-0 py-1 text-[15px] font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${isHighlighted ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
+              className={`site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 text-[16px] font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${isHighlighted ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
             >
               <span>{menu.label}</span>
+              <ChevronDown
+                aria-hidden="true"
+                className={`h-[15px] w-[15px] shrink-0 transition-transform duration-200 ease-out ${isOpen ? "rotate-180" : "rotate-0"}`}
+                strokeWidth={2.35}
+              />
             </button>
           )
         })}
+        <Link
+          href={siteRoutes.faq}
+          prefetch={false}
+          onMouseEnter={closeDesktopMenu}
+          onFocus={closeDesktopMenu}
+          className={`site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 text-[16px] font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${pathname === siteRoutes.faq ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
+        >
+          <span>Help Center</span>
+          <BookOpenText
+            aria-hidden="true"
+            className="h-[15px] w-[15px] shrink-0 transition-transform duration-200 ease-out group-hover:scale-105"
+            strokeWidth={2.35}
+          />
+        </Link>
       </nav>
 
       {desktopMenuRendered !== null ? (

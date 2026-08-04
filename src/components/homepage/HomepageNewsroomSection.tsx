@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { ChevronRight } from "lucide-react"
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
 import { getNewsroomPosts, type NewsroomCollection, type NewsroomPost } from "@/lib/content"
 
@@ -58,9 +59,16 @@ export default async function HomepageNewsroomSection({
               <Link
                 href={post.href}
                 prefetch={false}
-                className="inline-flex items-center justify-center rounded-[14px] border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:border-gray-400 hover:text-gray-900"
+                className="group inline-flex h-10 items-center justify-center rounded-full border border-[#151c22]/80 bg-white px-5 text-[0.98rem] font-[620] tracking-[-0.035em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white"
               >
-                Read blog
+                <span className="inline-flex items-center gap-2.5">
+                  <span>Read newsroom</span>
+                  <ChevronRight
+                    aria-hidden="true"
+                    className="h-4 w-4 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-0.5"
+                    strokeWidth={2.8}
+                  />
+                </span>
               </Link>
             </div>
           </article>
