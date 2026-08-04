@@ -25,7 +25,7 @@ const logoVariants: readonly BrandLogoVariant[] = [
     id: "horizontal",
     title: "Full Black",
     description:
-      "This is the primary logo that is most recognizable. It works well in most environments. The vertical version is available when space is constrained or limited.",
+      "Use this as the default Avana wordmark. It has the clearest contrast and works best on light backgrounds, product pages, partner decks, and documentation.",
     src: brandAssetPath("/Full (Horizontal).png"),
     alt: "Avana full black logo",
     mobileImageClassName: mobileLogoImageClassName,
@@ -35,7 +35,7 @@ const logoVariants: readonly BrandLogoVariant[] = [
     id: "vertical",
     title: "Full Cyan",
     description:
-      "This version of the logo is available for instances where space is constrained or limited.",
+      "Use the cyan wordmark when the page already has a quiet layout and needs a stronger Avana signal. Keep it on white or very light backgrounds.",
     src: brandAssetPath("/Full (Personal).png"),
     alt: "Avana full cyan logo",
     mobileImageClassName: mobileLogoImageClassName,
@@ -45,7 +45,7 @@ const logoVariants: readonly BrandLogoVariant[] = [
     id: "icon",
     title: "Logo",
     description:
-      "It's called an icon because it's iconic. It's simple and can be used as a shorthand for the Full logo.",
+      "Use the icon when the full wordmark would be too small to read, such as app icons, social avatars, favicons, or compact partner lists.",
     src: brandAssetPath("/Logo.png"),
     alt: "Avana logo",
     mobileImageClassName: mobileLogoImageClassName,
@@ -55,44 +55,23 @@ const logoVariants: readonly BrandLogoVariant[] = [
 
 const colorGroups = [
   {
-    title: "Main Colors",
-    description: "The primary foundation of the brand. These should lead most surfaces and key interface moments.",
+    title: "Core Colors",
+    description: "The Avana palette is intentionally simple: white for space, ink for clarity, and cyan for recognition.",
     colors: [
       {
         name: "Avana White",
         hex: "#FFFFFF",
-        usage: "Primary surface color for clean product backgrounds, cards, and spacious content layouts.",
+        usage: "Primary surface for product pages, cards, documentation, and layouts that need room to breathe.",
       },
       {
         name: "Avana Ink",
         hex: "#0F1518",
-        usage: "Primary dark anchor for logo usage, key buttons, core text, and high-contrast interface accents.",
-      },
-    ],
-  },
-  {
-    title: "Secondary Colors",
-    description: "Supporting accents for emphasis, data callouts, and softer moments of hierarchy across the system.",
-    colors: [
-      {
-        name: "Avana Charcoal",
-        hex: "#2F414B",
-        usage: "Support text, borders, and subtle UI structure when pure ink feels too heavy.",
+        usage: "Main text and dark logo color. Use it when contrast and authority matter.",
       },
       {
         name: "Avana Cyan",
         hex: "#01AACF",
-        usage: "Primary accent color for active states, highlights, and recognizable brand moments.",
-      },
-      {
-        name: "Avana Taupe",
-        hex: "#BC846F",
-        usage: "Soft editorial accent for warm callouts, balance, and understated supporting blocks.",
-      },
-      {
-        name: "Avana Rust",
-        hex: "#9E5537",
-        usage: "Deeper accent for contrast, emphasis, and restrained use inside charts or branded illustrations.",
+        usage: "Primary accent for active states, links, key highlights, and Avana-led calls to action.",
       },
     ],
   },
