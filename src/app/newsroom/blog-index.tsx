@@ -68,8 +68,8 @@ export function BlogIndex({
           <h1 className="text-[clamp(3rem,7vw,5.25rem)] font-[600] tracking-[-0.08em] text-black">
             Newsroom
           </h1>
-          <div className="mt-8 inline-flex max-w-full rounded-full bg-[#eef2f6] p-1.5 md:mt-10">
-            <div className="flex items-center overflow-x-auto scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mt-8 flex max-w-full items-center justify-center md:mt-10">
+            <div className="flex max-w-full flex-wrap items-center justify-center gap-2">
               {tagOptions.map((tag) => {
                 const active = activeTag === tag
 
@@ -80,10 +80,10 @@ export function BlogIndex({
                     prefetch={false}
                     scroll={false}
                     aria-current={active ? "page" : undefined}
-                    className={`inline-flex shrink-0 items-center justify-center rounded-full border px-5 py-2.5 text-sm font-medium tracking-[-0.03em] transition-all duration-300 ${
+                    className={`inline-flex shrink-0 items-center justify-center rounded-full px-4 py-2 text-xs font-semibold transition-colors ${
                       active
-                        ? "border-black/10 bg-white text-black shadow-[0_10px_22px_rgba(17,17,17,0.06)]"
-                        : "border-transparent text-black/30 hover:text-black/60"
+                        ? "bg-[#01AACF] text-white hover:bg-[#00a0c2]"
+                        : "border border-gray-300 bg-white text-gray-900 hover:bg-gray-100"
                     }`}
                   >
                     {tag}
@@ -95,7 +95,7 @@ export function BlogIndex({
         </div>
       </section>
 
-      <section className="border-t border-gray-200 pt-8">
+      <section className="pt-8">
         <div className="grid grid-cols-2 gap-4 py-6 lg:grid-cols-4">
           {filteredBlogs.map((post) => (
             <div key={post.id}>
