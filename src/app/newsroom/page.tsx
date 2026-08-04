@@ -13,7 +13,14 @@ export default async function BlogPage() {
 
   return (
     <div className="site-content-shell py-12">
-      <Suspense fallback={<BlogIndex posts={posts} tagOptions={blogTagOptions} activeTag="All" />}>
+      <section className="flex justify-center pt-4 md:pt-8">
+        <h1 className="text-[clamp(3rem,7vw,5.25rem)] font-[600] tracking-[-0.08em] text-black">
+          Newsroom
+        </h1>
+      </section>
+      <Suspense
+        fallback={<BlogIndex key="All" posts={posts} tagOptions={blogTagOptions} activeTag="All" />}
+      >
         <BlogIndexFromSearchParams posts={posts} tagOptions={blogTagOptions} />
       </Suspense>
     </div>
