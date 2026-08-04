@@ -286,9 +286,6 @@ export default function HeroSection() {
                 <SectionTitle>
                   <span className="block lg:whitespace-nowrap">Loop like a pro</span>
                 </SectionTitle>
-                <p className="mt-4 max-w-[38rem] text-[1.15rem] leading-[1.36] tracking-[-0.045em] text-[#6f7378] md:text-[1.35rem]">
-                  Use LP-backed credit to add exposure while Avana tracks debt, health, and unwind paths.
-                </p>
               </div>
             </div>
             <div className="relative mt-10 md:mt-16">
@@ -298,70 +295,21 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <FeatureCardTitle>Stretch liquidity further</FeatureCardTitle>
-                        <FeatureCardDescription className="max-w-[16rem]">Borrow up to 80% of your LP value without fully exiting liquidity.</FeatureCardDescription>
+                        <FeatureCardTitle>Loop LP capital</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">Supply LP collateral, borrow against it, resupply the borrowed capital, and repeat until your risk limit.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">01</div>
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
                         <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                          <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-                            {/* Static ring — LTV number cycles inside */}
-                            <div className="relative flex h-[120px] w-[120px] items-center justify-center rounded-full bg-white ce-ring-breathe">
-                              <svg className="h-full w-full -rotate-90" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="42" fill="none" stroke="#eef2ff" strokeWidth="6" />
-                                <circle
-                                  className="ce-ltv-arc"
-                                  cx="50"
-                                  cy="50"
-                                  r="42"
-                                  fill="none"
-                                  stroke="#818cf8"
-                                  strokeWidth="6"
-                                  strokeLinecap="round"
-                                  strokeDasharray="263.89"
-                                  strokeDashoffset="52.78"
-                                />
-                              </svg>
-                              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                <div className="h-[2rem] overflow-hidden">
-                                  <div className="ce-ticker-ltv">
-                                    {[80, 75, 65, 80].map((ltv, i) => (
-                                      <span key={i} className="block h-[2rem] text-[2rem] font-bold leading-none tracking-[-0.04em] text-[#18323c]">{ltv}<span className="text-sm font-normal text-gray-300">%</span></span>
-                                    ))}
-                                  </div>
-                                </div>
-                                <span className="mt-0.5 text-[9px] font-medium uppercase tracking-[0.14em] text-gray-400">LTV</span>
-                              </div>
-                            </div>
-                            {/* Asset info cards cycle below the ring */}
-                            <div className="mt-3 w-full max-w-[16rem] overflow-hidden rounded-2xl border border-gray-100 bg-white">
-                              <div className="h-[72px] overflow-hidden">
-                                <div className="ce-ticker-v">
-                                  {[
-                                    { pair: "ETH / USDC", value: "$24,800", borrowable: "$19,840" },
-                                    { pair: "WBTC / ETH", value: "$41,200", borrowable: "$30,900" },
-                                    { pair: "ARB / USDC", value: "$8,600", borrowable: "$5,590" },
-                                    { pair: "ETH / USDC", value: "$24,800", borrowable: "$19,840" },
-                                  ].map((item, i) => (
-                                    <div key={i} className="flex h-[72px] items-center px-4">
-                                      <div className="w-full">
-                                        <div className="flex items-center justify-between">
-                                          <span className="text-[11px] font-semibold text-indigo-400">{item.pair}</span>
-                                          <span className="text-sm font-bold text-[#18323c]">{item.value}</span>
-                                        </div>
-                                        <div className="mt-1.5 flex items-center justify-between">
-                                          <span className="text-[10px] text-gray-400">Borrowable</span>
-                                          <span className="text-sm font-bold text-indigo-500">{item.borrowable}</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          <Image
+                            src="/images/avana-tokens-rewards-v2.jpg"
+                            alt="Avana token rewards"
+                            fill
+                            sizes="(min-width: 1024px) 344px, 316px"
+                            className="object-cover"
+                          />
                         </div>
                       </div>
                     </div>
@@ -371,8 +319,8 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <FeatureCardTitle>Keep earning fees</FeatureCardTitle>
-                        <FeatureCardDescription className="max-w-[16rem]">Your LP stays active and keeps earning fees while you borrow.</FeatureCardDescription>
+                        <FeatureCardTitle>Keep the LP working</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">Looped collateral stays in the market, so LP fees keep accruing while debt and exposure increase.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">02</div>
                     </div>
@@ -451,67 +399,14 @@ export default function HeroSection() {
                     </div>
                   </article>
 
-                  {/* Card 03 — Unlock new strategies */}
+                  {/* Card 03 — Price-range aware oracles */}
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <FeatureCardTitle>Spend capital anywhere</FeatureCardTitle>
-                        <FeatureCardDescription className="max-w-[16rem]">Use borrowed funds anywhere across wallets, markets, and strategies.</FeatureCardDescription>
+                        <FeatureCardTitle>Monitor loop health</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">Track collateral, borrowed debt, oracle bands, and liquidation buffer as each loop adds risk.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">03</div>
-                    </div>
-                    <div className="relative z-0 mt-auto">
-                      <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_58%,rgba(165,180,252,0.08),transparent_58%)]" />
-                          <div className="absolute inset-0 flex items-center justify-center px-5">
-                            <div className="relative w-full max-w-[16rem] h-[180px] overflow-hidden">
-                              <div className="pointer-events-none absolute inset-x-0 top-1/2 h-[52px] -translate-y-1/2 rounded-[16px] border border-indigo-100 bg-[linear-gradient(180deg,rgba(238,242,255,0.82),rgba(255,255,255,0.98))] shadow-[0_10px_24px_rgba(129,140,248,0.10)]" />
-                              <div className="ce-escalator flex flex-col">
-                                {[
-                                  { prev: { label: "Yield farming", icon: "\u25CE" }, active: { label: "Leverage trading", icon: "\u2197" }, next: { label: "Pay off debt", icon: "\u21A9" } },
-                                  { prev: { label: "Pay off debt", icon: "\u21A9" }, active: { label: "Hedge exposure", icon: "\u21C5" }, next: { label: "Liquidity mining", icon: "\u25C7" } },
-                                  { prev: { label: "Liquidity mining", icon: "\u25C7" }, active: { label: "Yield farming", icon: "\u25CE" }, next: { label: "Open new positions", icon: "+" } },
-                                  { prev: { label: "Yield farming", icon: "\u25CE" }, active: { label: "Leverage trading", icon: "\u2197" }, next: { label: "Pay off debt", icon: "\u21A9" } },
-                                ].map((slide, i) => (
-                                  <div key={i} className="flex h-[180px] flex-col justify-center gap-3">
-                                    <div className="flex h-[52px] items-center gap-3 rounded-[16px] border border-gray-100 bg-white px-4 text-gray-500 shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
-                                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gray-50 text-xs text-gray-400">
-                                        {slide.prev.icon}
-                                      </div>
-                                      <span className="text-[0.82rem] font-medium">{slide.prev.label}</span>
-                                    </div>
-                                    <div className="relative flex h-[52px] items-center gap-3 rounded-[16px] px-4 text-[#18323c]">
-                                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white text-xs text-indigo-400 shadow-[0_2px_8px_rgba(129,140,248,0.10)]">
-                                        {slide.active.icon}
-                                      </div>
-                                      <span className="text-[0.82rem] font-medium">{slide.active.label}</span>
-                                      <span className="ml-auto rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-medium text-indigo-500">Active</span>
-                                    </div>
-                                    <div className="flex h-[52px] items-center gap-3 rounded-[16px] border border-gray-100 bg-white px-4 text-gray-500 shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
-                                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gray-50 text-xs text-gray-400">
-                                        {slide.next.icon}
-                                      </div>
-                                      <span className="text-[0.82rem] font-medium">{slide.next.label}</span>
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-
-                  {/* Card 04 — Price-range aware oracles */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
-                    <div className="relative z-10 flex items-start justify-between gap-4">
-                      <div className="space-y-2">
-                        <FeatureCardTitle>Track pool composition</FeatureCardTitle>
-                        <FeatureCardDescription className="max-w-[16rem]">LP-aware oracles monitor volume and confidence across the pool.</FeatureCardDescription>
-                      </div>
-                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">04</div>
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
@@ -782,18 +677,7 @@ export default function HeroSection() {
                     84%, 100% { transform: translateY(-75%); }
                   }
 
-                  /* === Card 03: Unlock Strategies — escalator === */
-                  .ce-escalator {
-                    animation: ce-esc 15s cubic-bezier(0.76, 0, 0.24, 1) infinite;
-                  }
-                  @keyframes ce-esc {
-                    0%, 22% { transform: translateY(0); }
-                    28%, 50% { transform: translateY(-25%); }
-                    56%, 78% { transform: translateY(-50%); }
-                    84%, 100% { transform: translateY(-75%); }
-                  }
-
-                  /* === Card 04: Oracle band — chart + price tickers + dot === */
+                  /* === Card 03: Oracle band — chart + price tickers + dot === */
                   .ce-pulse-dot {
                     animation: ce-pd 3s ease-in-out infinite;
                   }
@@ -906,10 +790,16 @@ export default function HeroSection() {
         <LazySection minHeight="660px" fallback={<SectionSkeleton minHeight="660px" />}>
           <div className="relative grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
             <div className="space-y-4">
-              <SectionEyebrow tone="slate">Built on Aave v4</SectionEyebrow>
+              <SectionEyebrow tone="slate">Engineered for resilience</SectionEyebrow>
               <SectionTitle>
-                <span className="block lg:whitespace-nowrap">Shared liquidity,</span>
-                <span className="block lg:whitespace-nowrap">stronger guardrails.</span>
+                <span className="block lg:whitespace-nowrap">
+                  Backed by{" "}
+                  <span className="inline-flex translate-y-[-0.08em] items-center rounded-full border border-[#01AACF]/25 bg-[#01AACF]/8 px-[0.28em] py-[0.03em] text-[#01AACF]">
+                    $A
+                  </span>
+                  ,
+                </span>
+                <span className="block lg:whitespace-nowrap">Powered by Aave v4.</span>
               </SectionTitle>
             </div>
             <div className="text-left text-[#39515b]">
@@ -940,19 +830,23 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <article className="relative mx-auto mt-12 h-[240px] w-full max-w-[72rem] sm:h-[320px] md:mt-16 md:h-[360px] lg:h-[410px]">
+          <article className="relative mx-auto mt-12 h-[260px] w-full max-w-[86rem] overflow-hidden sm:h-[340px] md:mt-16 md:h-[400px] lg:h-[500px]">
             <Image
-              src="/images/trade-leverage-section-trimmed.webp"
-              alt="Leverage dashboard"
+              src="/images/avana-token-icons-v1.jpg"
+              alt="Avana token icons"
               fill
-              className="object-contain object-center"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 72rem"
+              className="scale-[1.04] object-contain object-[center_42%]"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 86rem"
             />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_68%,rgba(255,255,255,0.28)_86%,#fff_100%)]" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-b from-transparent to-white" />
           </article>
         </LazySection>
 
         <LazySection minHeight="520px" fallback={<SectionSkeleton minHeight="520px" />}>
-          <HomepageNewsroomSection eyebrowTone="rose" />
+          <div className="-mt-8 md:-mt-12">
+            <HomepageNewsroomSection eyebrowTone="rose" />
+          </div>
         </LazySection>
 
         <LazySection minHeight="480px" fallback={<SectionSkeleton minHeight="480px" />}>

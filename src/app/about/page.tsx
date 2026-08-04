@@ -45,18 +45,20 @@ export default function AboutPage() {
   return (
     <main className="bg-white">
       <section className="pb-16 pt-24 lg:pb-24 lg:pt-40">
-        <div className="site-content-shell">
-          <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto w-full max-w-[90rem] px-4 sm:px-6 2xl:px-0">
+          <div className="mx-auto text-center">
             <h1
-              aria-label={`Introducing ${SITE_NAME}: A lending protocol for LP collateral`}
+              aria-label={`Introducing ${SITE_NAME}: A lending protocol for LP-backed loans`}
               className="text-[2.35rem] font-[580] leading-[0.96] tracking-[-0.06em] text-gray-950 sm:text-[3.2rem] lg:text-[4.5rem]"
             >
               <span className="text-gray-950">Introducing {SITE_NAME}:</span>
               <br />
-              <span className="text-[#01AACF] lg:whitespace-nowrap">
-                <span className="block lg:inline">A lending protocol</span>
-                <span className="hidden lg:inline"> </span>
-                <span className="block lg:inline">for LP collateral</span>
+              <span className="text-[#01AACF]">
+                <span className="hidden lg:inline whitespace-nowrap">A lending protocol for LP&#8209;backed loans</span>
+                <span className="lg:hidden">
+                  <span className="block md:inline">A lending protocol for</span>
+                  <span className="block md:inline md:ml-2">LP&#8209;backed loans</span>
+                </span>
               </span>
             </h1>
           </div>

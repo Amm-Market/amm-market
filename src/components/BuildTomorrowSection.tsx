@@ -14,9 +14,9 @@ export function BuildTomorrowSection() {
         <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
           <SectionEyebrow tone="violet">Meet Avana</SectionEyebrow>
           <SectionTitle>
-            <span className="block md:hidden">The Aave v4 Spoke</span>
+            <span className="block md:hidden">A lending protocol</span>
             <span className="block md:hidden">for LP-backed loans</span>
-            <span className="hidden md:block">The Aave v4 Spoke for LP-backed loans</span>
+            <span className="hidden md:block">A lending protocol for LP-backed loans</span>
           </SectionTitle>
         </div>
 
