@@ -503,7 +503,7 @@
 
 @media (min-width: 768px) {
   .site-header-nav-link {
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
   }
 
   .site-header-cta {
@@ -513,9 +513,9 @@
 
 @media (min-width: 1024px) {
   .site-header-nav-link {
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
     line-height: 1.5;
-    font-weight: var(--type-weight-ui);
+    font-weight: 560;
     letter-spacing: -0.03em;
   }
 

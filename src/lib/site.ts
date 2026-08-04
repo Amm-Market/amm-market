@@ -17,7 +17,8 @@ export const siteRoutes = {
   multiply: "/multiply",
   developers: "/developers",
   developersIntro: "/developers/introduction",
-  blog: "/blog",
+  newsroom: "/newsroom",
+  blog: "/newsroom",
   faq: "/faq",
   brand: "/brand",
   earlyAccess: "/faq",
@@ -27,18 +28,22 @@ export const siteRoutes = {
 } as const
 
 export const blogRoutes = {
-  aaveV4AvanaSpoke: "/blog/aave-v4-avana-spoke",
-  avanaLpCollateral: "/blog/avana-lp-collateral",
-  lpRiskGovernance: "/blog/lp-risk-governance",
-  smartAgentsLpCollateral: "/blog/why-lp-collateral-needs-smart-agents",
-  lpLiquidationShouldWork: "/blog/how-lp-liquidation-should-work",
-  lpCollateralOracleProblem: "/blog/pricing-lp-collateral-oracle-problem",
-  balancerLpCollateralAaveV4: "/blog/balancer-lp-collateral-aave-v4",
-  curveLpCollateralAaveV4: "/blog/curve-lp-collateral-aave-v4",
-  aerodromeLpCollateralAaveV4: "/blog/aerodrome-lp-collateral-aave-v4",
+  aaveV4AvanaSpoke: "/newsroom/aave-v4-avana-spoke",
+  avanaLpCollateral: "/newsroom/avana-lp-collateral",
+  lpRiskGovernance: "/newsroom/lp-risk-governance",
+  smartAgentsLpCollateral: "/newsroom/why-lp-collateral-needs-smart-agents",
+  lpLiquidationShouldWork: "/newsroom/how-lp-liquidation-should-work",
+  lpCollateralOracleProblem: "/newsroom/pricing-lp-collateral-oracle-problem",
+  balancerLpCollateralAaveV4: "/newsroom/balancer-lp-collateral-aave-v4",
+  curveLpCollateralAaveV4: "/newsroom/curve-lp-collateral-aave-v4",
+  aerodromeLpCollateralAaveV4: "/newsroom/aerodrome-lp-collateral-aave-v4",
 } as const
 
 export const legacyBlogRedirects = [
+  {
+    source: "/blog",
+    destination: siteRoutes.newsroom,
+  },
   {
     source: "/blog/aave-v4-amm-spoke",
     destination: blogRoutes.aaveV4AvanaSpoke,
@@ -46,6 +51,10 @@ export const legacyBlogRedirects = [
   {
     source: "/blog/amm-markets-lp-collateral",
     destination: blogRoutes.avanaLpCollateral,
+  },
+  {
+    source: "/blog/:slug",
+    destination: "/newsroom/:slug",
   },
 ] as const
 

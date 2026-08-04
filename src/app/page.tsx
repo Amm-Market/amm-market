@@ -117,6 +117,9 @@ export default function Home() {
         </div>
       </section>
       <WebappHero />
+      <div className="pt-8 md:pt-10">
+        <div className="border-t border-[#01AACF]" aria-hidden="true" />
+      </div>
       <LazySection
         rootMargin="240px"
         minHeight="560px"

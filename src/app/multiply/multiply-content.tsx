@@ -7,6 +7,9 @@ import {
   BadgePercent,
   Layers,
   MousePointerClick,
+  Shield,
+  ShieldAlert,
+  TriangleAlert,
   TrendingUp,
   Undo2,
 } from "lucide-react"
@@ -98,6 +101,50 @@ const leverageWorkflowSteps = [
   {
     title: "Manage live",
     description: "Avana borrows, opens, and tracks the position so you can reduce, repay, or close in one place.",
+  },
+] as const
+
+function PositionSafetyCard({
+  title,
+  description,
+  icon,
+}: {
+  title: string
+  description: string
+  icon: LucideIcon
+}) {
+  const Icon = icon
+
+  return (
+    <article className="flex flex-col feature-card rounded-[1.75rem] p-5 md:p-6">
+      <div className="flex h-8 w-8 items-center justify-center text-[#01AACF]">
+        <Icon className="h-8 w-8" strokeWidth={1.85} />
+      </div>
+
+      <FeatureCardTitle className="mt-5 md:mt-6">{title}</FeatureCardTitle>
+      <FeatureCardDescription className="mt-3 max-w-[22rem]">{description}</FeatureCardDescription>
+    </article>
+  )
+}
+
+const positionSafetySteps = [
+  {
+    title: "Safe Zone",
+    description:
+      "Health Factor stays above 1.5, so borrow usage remains within capacity while fees keep accruing.",
+    icon: Shield,
+  },
+  {
+    title: "Warning Zone",
+    description:
+      "Health Factor sits between 1.0 and 1.5, so you can repay, add collateral, or reduce exposure.",
+    icon: TriangleAlert,
+  },
+  {
+    title: "Liquidation",
+    description:
+      "Health Factor drops below 1.0, fees apply first, needed LP unwinds, and residual value returns.",
+    icon: ShieldAlert,
   },
 ] as const
 
@@ -248,31 +295,7 @@ export default function MultiplyPage() {
         </div>
       </div>
 
-      <section className="deferred-viewport border-t border-gray-200 bg-white site-section-gap">
-        <div className="site-content-shell">
-          <div className="mx-auto flex w-full max-w-[76rem] flex-col gap-6">
-            <div className="flex max-w-[600px] flex-col gap-2">
-              <SectionEyebrow tone="violet">Why looping</SectionEyebrow>
-              <SectionTitle>
-                <span className="lg:whitespace-nowrap">Stretch the same LP further.</span>
-              </SectionTitle>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {loopingBenefits.map((feature) => (
-                <article key={feature.title} className="flex flex-col feature-card rounded-[1.75rem] p-5 md:p-6">
-                  <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
-                  <FeatureCardTitle className="mt-5 md:mt-6">{feature.title}</FeatureCardTitle>
-                  <FeatureCardDescription className="mt-3 max-w-[22rem]">
-                    {feature.description}
-                  </FeatureCardDescription>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="deferred-viewport bg-white site-section-gap">
+      <section className="deferred-viewport border-t border-[#01AACF] bg-white site-section-gap">
         <div className="site-content-shell">
           <LeverageGlanceShowcaseSection />
         </div>
@@ -288,6 +311,20 @@ export default function MultiplyPage() {
                   <span className="block">Credit that</span>
                   <span className="block">keeps LP working.</span>
                 </SectionTitle>
+                <ol className="mt-7 grid max-w-[32rem] gap-4 text-[0.98rem] leading-[1.55] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
+                  <li className="flex gap-3">
+                    <span className="mt-0.5 font-semibold text-[#01AACF]">1.</span>
+                    <span>Borrow against LP collateral without shutting down the base position.</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="mt-0.5 font-semibold text-[#01AACF]">2.</span>
+                    <span>Redeploy borrowed liquidity into approved loops and managed exposure.</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="mt-0.5 font-semibold text-[#01AACF]">3.</span>
+                    <span>Track collateral, debt, and health while the LP keeps working.</span>
+                  </li>
+                </ol>
               </div>
               <div className="flex items-center justify-center pt-1 md:justify-end">
                 <div className="relative w-full max-w-[17rem] sm:max-w-[22rem] md:max-w-[25rem] lg:max-w-[28rem] xl:max-w-[31rem]">
@@ -305,6 +342,37 @@ export default function MultiplyPage() {
           </div>
         </div>
       </section>
+
+      <section className="deferred-viewport bg-white site-section-gap">
+        <div className="site-content-shell">
+          <div className="mx-auto w-full max-w-[76rem]">
+            <div className="max-w-[58rem] space-y-4 text-left">
+              <SectionEyebrow tone="violet">Why looping</SectionEyebrow>
+              <SectionTitle className="max-w-[14ch] lg:max-w-none">
+                <span className="lg:whitespace-nowrap">Stretch the same LP further.</span>
+              </SectionTitle>
+            </div>
+
+            <div className="mt-10 -mx-5 overflow-x-auto px-5 pb-1 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] md:mx-0 md:mt-16 md:overflow-visible md:px-0 md:pb-0 md:snap-none [&::-webkit-scrollbar]:hidden">
+              <div className="flex w-max gap-8 md:grid md:w-full md:grid-cols-2 md:gap-x-16 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
+                {loopingBenefits.map((feature) => (
+                  <article
+                    key={feature.title}
+                    className="flex w-[15rem] shrink-0 snap-start flex-col bg-transparent md:w-auto md:shrink"
+                  >
+                    <feature.icon className="h-11 w-11 text-[#01AACF]" strokeWidth={1.5} aria-hidden="true" />
+                    <FeatureCardTitle className="mt-5">{feature.title}</FeatureCardTitle>
+                    <FeatureCardDescription className="mt-2 max-w-[22rem]">
+                      {feature.description}
+                    </FeatureCardDescription>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       <section className="deferred-viewport bg-white site-section-gap">
         <div className="site-content-shell">
@@ -499,21 +567,23 @@ export default function MultiplyPage() {
             />
 
             <section>
-              <div className="space-y-6">
-                <div className="space-y-3">
-                  <SectionEyebrow tone="rose">Risk controls</SectionEyebrow>
-                  <SectionTitle className="max-w-[11ch] whitespace-nowrap md:max-w-none">Designed for safe leverage.</SectionTitle>
-                </div>
+              <div className="space-y-4 text-left">
+                <SectionEyebrow tone="violet">Position Safety</SectionEyebrow>
+                <SectionTitle>Designed for safe leverage.</SectionTitle>
+                <p className="max-w-[38rem] text-[1.15rem] leading-[1.36] tracking-[-0.045em] text-[#6f7378] md:text-[1.35rem]">
+                  See when a position is healthy, monitor collateral, debt, leverage, and liquidation buffer, and know when a loop needs attention.
+                </p>
+              </div>
 
-                <article className="relative mx-auto h-[240px] w-full max-w-[72rem] sm:h-[320px] md:h-[360px] lg:h-[410px]">
-                  <Image
-                    src="/images/trade-leverage-section-trimmed.webp"
-                    alt="Leverage dashboard"
-                    fill
-                    className="object-contain object-center"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 72rem"
+              <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
+                {positionSafetySteps.map((step) => (
+                  <PositionSafetyCard
+                    key={step.title}
+                    title={step.title}
+                    description={step.description}
+                    icon={step.icon}
                   />
-                </article>
+                ))}
               </div>
             </section>
 

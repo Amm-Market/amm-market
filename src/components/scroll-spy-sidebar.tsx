@@ -252,7 +252,7 @@ export function ScrollSpySidebar({
                       behavior: "smooth",
                     })
                   }}
-                  className={`group relative inline-flex cursor-pointer items-center px-3 py-1 transition-all duration-200 ease-in-out ${
+                  className={`group relative inline-flex cursor-pointer items-center whitespace-nowrap px-3 py-1 transition-all duration-200 ease-in-out ${
                     isActive
                       ? `${colors.text}`
                       : "text-gray-500 hover:text-gray-900 hover:opacity-80"

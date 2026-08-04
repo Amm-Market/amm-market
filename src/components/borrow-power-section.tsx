@@ -8,8 +8,7 @@ export default function BorrowPowerSection() {
         <div className="space-y-4">
           <SectionEyebrow tone="blue">Borrow Power</SectionEyebrow>
           <SectionTitle className="max-w-[14ch]">
-            <span className="block">Combine LP positions</span>
-            <span className="block">for higher credit limits.</span>
+            Aggregate LP collateral for more credit.
           </SectionTitle>
         </div>
 
