@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}${siteRoutes.blog}`,
+      url: `${SITE_URL}${siteRoutes.newsroom}`,
       lastModified: now,
       changeFrequency: 'daily',
       priority: 0.8,
@@ -118,7 +118,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Blog posts
   const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${SITE_URL}/blog/${post.slug}`,
+    url: `${SITE_URL}/newsroom/${post.slug}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.6,

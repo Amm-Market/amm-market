@@ -126,7 +126,7 @@ function LiquidationModelCard({
 }) {
   return (
     <article className="flex flex-col feature-card rounded-[1.5rem] p-5 md:p-6">
-      <Icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
+      <Icon className="h-8 w-8 text-[#01AACF]" strokeWidth={1.85} />
       <FeatureCardTitle className="mt-5">{title}</FeatureCardTitle>
       <FeatureCardDescription className="mt-3 max-w-[22rem]">{description}</FeatureCardDescription>
     </article>
@@ -235,7 +235,7 @@ export default function LendPage() {
         </div>
       </div>
 
-      <section className="deferred-viewport-tall border-t border-gray-200 bg-white">
+      <section className="deferred-viewport-tall border-t border-[#01AACF] bg-white">
         <DeferredTradeMarketShowcase />
       </section>
 

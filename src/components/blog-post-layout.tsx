@@ -58,7 +58,7 @@ export default function BlogPostLayout({
       <div className="grid grid-cols-12 gap-4">
         <div className="hidden col-span-12 lg:col-span-2 xl:block">
           <Link
-            href="/blog"
+            href="/newsroom"
             prefetch={false}
             className="type-supporting flex cursor-pointer items-center text-gray-500 transition hover:text-gray-900"
           >
@@ -136,7 +136,7 @@ export default function BlogPostLayout({
               <div className={`grid py-8 ${prevPost && nextPost ? "grid-cols-2 gap-3 md:gap-4" : "grid-cols-1 gap-4"}`}>
                 {prevPost ? (
                   <div className="h-full">
-                    <Link href={`/blog/${prevPost.slug}`} prefetch={false}>
+                    <Link href={`/newsroom/${prevPost.slug}`} prefetch={false}>
                       <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-gray-200 p-3.5 transition hover:bg-gray-50 md:min-h-[8.25rem] md:p-4">
                         <div className="space-y-3">
                           <p className="text-[0.88rem] font-medium tracking-[-0.01em] text-gray-500 md:text-[0.92rem]">Previous post</p>
@@ -150,7 +150,7 @@ export default function BlogPostLayout({
                 ) : null}
                 {nextPost ? (
                   <div className={`${prevPost ? "" : "col-start-1"} h-full`}>
-                    <Link href={`/blog/${nextPost.slug}`} prefetch={false}>
+                    <Link href={`/newsroom/${nextPost.slug}`} prefetch={false}>
                       <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-gray-200 p-3.5 text-right transition hover:bg-gray-50 md:min-h-[8.25rem] md:p-4">
                         <div className="space-y-3">
                           <p className="text-[0.88rem] font-medium tracking-[-0.01em] text-gray-500 md:text-[0.92rem]">Next post</p>

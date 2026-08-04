@@ -18,8 +18,8 @@ export function getBlogPost(slug: string): BlogPostDefinition {
 }
 
 export function buildBlogMetadata(post: BlogPostDefinition): Metadata {
-  const title = `${post.title} | ${SITE_NAME} Blog`
-  const canonicalPath = `/blog/${post.slug}`
+  const title = `${post.title} | ${SITE_NAME} Newsroom`
+  const canonicalPath = `/newsroom/${post.slug}`
 
   return {
     title,

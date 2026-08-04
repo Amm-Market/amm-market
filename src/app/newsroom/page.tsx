@@ -1,6 +1,6 @@
 import { Suspense } from "react"
 import { blogTagOptions, getBlogPosts } from "@/lib/content"
-import { BlogIndex, BlogIndexFromSearchParams } from "@/app/blog/blog-index"
+import { BlogIndex, BlogIndexFromSearchParams } from "@/app/newsroom/blog-index"
 
 /**
  * The blog index prerenders as fully static HTML. Tag filtering is driven by

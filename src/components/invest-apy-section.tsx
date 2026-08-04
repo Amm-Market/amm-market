@@ -119,6 +119,9 @@ export default function InvestApySection() {
           <SectionTitle className="max-w-none md:whitespace-nowrap">
             Same Idle Cash with Higher APY Returns
           </SectionTitle>
+          <p className="max-w-[38rem] text-[1.15rem] leading-[1.36] tracking-[-0.045em] text-[#6f7378] md:max-w-[58rem] md:text-[1.35rem]">
+            Supplier yield comes from liquidity used by LP-backed borrowers. As LP-backed borrower demand, utilization, and market rates move across Avana, supplier APY updates with them.
+          </p>
         </div>
 
         <div className="mt-10">
