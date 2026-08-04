@@ -1,61 +1,60 @@
 import { Code2, Coins, Globe2, LayoutDashboard, Layers3, RefreshCcw, Rocket, ShieldCheck } from "lucide-react"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 
-type RoadmapStatus = "Released" | "In Progress" | "Q2" | "Q3" | "Q4"
+type RoadmapStatus = "Released" | "In Progress" | "Q2" | "Q3" | "Q4" | "Q1 2027"
 
 const roadmapPhases: {
   title: string
   summary: string
-  timeframe: string
   milestones: { label: string; status: RoadmapStatus }[]
 }[] = [
   {
     title: "Phase 1 - Borrow Market",
     summary: "Borrow against LP positions with pricing, risk checks, and liquidation controls.",
-    timeframe: "Q2 2026",
     milestones: [
-      { label: "Borrow pricing engine", status: "Released" },
-      { label: "Oracle and risk parameters", status: "Released" },
-      { label: "Health factor model", status: "Released" },
-      { label: "Borrow / repay contracts", status: "In Progress" },
-      { label: "LP valuation model", status: "In Progress" },
-      { label: "Liquidation engine", status: "In Progress" },
-      { label: "Testnet LP support", status: "In Progress" },
-      { label: "Borrow dashboard", status: "Q2" },
-      { label: "Real-time risk monitoring", status: "Q2" },
-      { label: "Mainnet borrow launch", status: "Q2" },
+      { label: "Borrow pricing engine", status: "Q3" },
+      { label: "Oracle and risk parameters", status: "Q3" },
+      { label: "Health factor model", status: "Q3" },
+      { label: "Borrow / repay contracts", status: "Q3" },
+      { label: "LP valuation model", status: "Q3" },
+      { label: "Liquidation engine", status: "Q3" },
+      { label: "Testnet LP support", status: "Q3" },
+      { label: "Borrow dashboard", status: "Q3" },
+      { label: "Real-time risk monitoring", status: "Q3" },
+      { label: "Collateral Swap", status: "Q3" },
+      { label: "Debt Swap", status: "Q3" },
+      { label: "Repay with Collateral", status: "Q3" },
+      { label: "Mainnet borrow launch", status: "Q3" },
     ],
   },
   {
     title: "Phase 2 - Lend Market",
     summary: "Supply capital to back LP borrowing and earn yield from the market.",
-    timeframe: "Q3 2026",
     milestones: [
-      { label: "Supply and withdraw flows", status: "Q3" },
-      { label: "Yield accrual engine", status: "Q3" },
-      { label: "Lender dashboard", status: "Q3" },
-      { label: "Incentive distribution", status: "Q3" },
-      { label: "Market reporting", status: "Q3" },
-      { label: "Lend market launch", status: "Q3" },
-      { label: "Liquidity routing support", status: "Q3" },
-      { label: "Smart contract audit V2", status: "Q3" },
-      { label: "Governance v1", status: "Q3" },
+      { label: "Supply and withdraw flows", status: "Q4" },
+      { label: "Yield accrual engine", status: "Q4" },
+      { label: "Lender dashboard", status: "Q4" },
+      { label: "Incentive distribution", status: "Q4" },
+      { label: "Market reporting", status: "Q4" },
+      { label: "Lend market launch", status: "Q4" },
+      { label: "Liquidity routing support", status: "Q4" },
+      { label: "Smart contract audit V2", status: "Q4" },
+      { label: "Governance v1", status: "Q4" },
     ],
   },
   {
     title: "Phase 3 - Multiply Market",
     summary: "Open LP-backed leverage positions and manage them with a single workflow.",
-    timeframe: "Q4 2026",
     milestones: [
-      { label: "Multiply workflow design", status: "Q3" },
-      { label: "Position packaging", status: "Q3" },
-      { label: "Loop and leverage engine", status: "Q3" },
-      { label: "Auto-deleverage controls", status: "Q3" },
-      { label: "Cross-chain support", status: "Q3" },
-      { label: "LP pair coverage", status: "Q3" },
-      { label: "Multiply risk controls", status: "Q4" },
-      { label: "Smart contract audit V3", status: "Q4" },
-      { label: "Multiply market launch", status: "Q4" },
+      { label: "Multiply workflow design", status: "Q1 2027" },
+      { label: "Position packaging", status: "Q1 2027" },
+      { label: "Loop and leverage engine", status: "Q1 2027" },
+      { label: "Auto-deleverage controls", status: "Q1 2027" },
+      { label: "Cross-chain support", status: "Q1 2027" },
+      { label: "LP pair coverage", status: "Q1 2027" },
+      { label: "Multiply risk controls", status: "Q1 2027" },
+      { label: "Smart contract audit V3", status: "Q1 2027" },
+      { label: "Multiply market launch", status: "Q1 2027" },
     ],
   },
 ]
@@ -67,6 +66,7 @@ function getRoadmapStatusClass() {
 function getRoadmapStatusLabel(status: RoadmapStatus) {
   if (status === "Released") return "Released"
   if (status === "In Progress") return "In Progress"
+  if (status === "Q1 2027") return "Target Q1 2027"
   return `Target ${status} 2026`
 }
 
@@ -83,6 +83,9 @@ function getRoadmapDisplayLabel(label: string) {
     "Oracle and risk parameters": "Oracle and risk parameters",
     "Borrow / repay contracts": "Borrow / repay contracts",
     "Real-time risk monitoring": "Risk monitoring",
+    "Collateral Swap": "Collateral Swap",
+    "Debt Swap": "Debt Swap",
+    "Repay with Collateral": "Repay with Collateral",
     "Mainnet borrow launch": "Borrow launch",
     "Supply and withdraw flows": "Supply / withdraw flows",
     "Yield accrual engine": "Yield accrual engine",
@@ -166,7 +169,7 @@ export default function ProtocolRoadmapSection() {
 
       <div className="flex flex-col gap-10">
         {roadmapPhases.map((phase, index) => {
-          const statusOrder: RoadmapStatus[] = ["Released", "In Progress", "Q2", "Q3", "Q4"]
+          const statusOrder: RoadmapStatus[] = ["Released", "In Progress", "Q2", "Q3", "Q4", "Q1 2027"]
           const groupedMilestones = statusOrder
             .map((status) => ({
               status,
@@ -177,14 +180,9 @@ export default function ProtocolRoadmapSection() {
           return (
             <div key={phase.title} className={index === 0 ? "space-y-4" : "space-y-4 pt-2"}>
               <div className="space-y-2">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <h3 className={`mb-0 text-base font-semibold ${index === 2 ? "text-gray-700" : "text-gray-900"}`}>
-                    {phase.title}
-                  </h3>
-                  <span className="text-xs font-medium uppercase tracking-[0.08em] text-[#01AACF]">
-                    {phase.timeframe}
-                  </span>
-                </div>
+                <h3 className={`mb-0 text-base font-semibold ${index === 2 ? "text-gray-700" : "text-gray-900"}`}>
+                  {phase.title}
+                </h3>
                 <p className="text-sm leading-6 text-gray-600">{phase.summary}</p>
               </div>
 
