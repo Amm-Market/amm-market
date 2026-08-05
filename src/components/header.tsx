@@ -62,7 +62,7 @@ export default function Header(): React.JSX.Element {
               prefetch={false}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noreferrer" : undefined}
-              className="group inline-flex h-9 items-center justify-center rounded-full border border-[#151c22]/80 bg-white px-3 text-[0.9rem] font-[620] tracking-[-0.035em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white xl:h-10 xl:px-5 xl:text-[0.98rem]"
+              className="site-header-cta group inline-flex h-8 items-center justify-center rounded-full border border-[#151c22]/80 bg-white px-2.5 font-[620] tracking-[-0.035em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white xl:h-[34px] xl:px-3.5"
             >
               <span className="inline-flex items-center gap-1.5 xl:gap-2.5">
                 <span className="xl:hidden">Sandbox</span>
