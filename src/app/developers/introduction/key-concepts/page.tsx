@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Key Concepts",
   description:
-    "Understand the core concepts behind Avana: LP positions as productive collateral, conservative valuation, Hub borrowing, and liquidation discipline.",
+    "Understand the core concepts behind Avana, including LP collateral behavior, conservative valuation, Hub borrowing, and liquidation.",
 }
 
 const sections = [
@@ -26,20 +26,21 @@ export default function KeyConceptsPage() {
 
           title="Key Concepts"
 
-          description="The core ideas that appear across Avana&apos;s Borrow Spoke, valuation, and liquidation docs."
+          description="The ideas that show up repeatedly across Avana&apos;s Borrow Spoke, valuation, borrowing, and liquidation docs."
 
         />
 
         <section id="core-insight" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Core Insight</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            An LP position is productive collateral, not just a static token balance. Its value
-            depends on the underlying assets, pool composition, accrued fees, liquidity structure,
-            and how much value can realistically be recovered during liquidation.
+            An LP position is not just a token with a spot price. It is a live liquidity position
+            whose value depends on the underlying assets, pool composition, fee accrual, position
+            structure, and the amount the protocol could realistically recover if liquidation were
+            needed.
           </p>
-          <p className="text-sm text-gray-600">
-            <strong>Why this matters:</strong> Avana is built around the idea that LP collateral
-            needs market-specific underwriting, not a one-size-fits-all asset model.
+          <p className="text-sm leading-relaxed text-gray-600">
+            <strong>Why this matters:</strong> Avana underwrites LP markets with spoke and pool
+            specific rules rather than one generic asset model for every LP.
           </p>
         </section>
 
@@ -47,16 +48,17 @@ export default function KeyConceptsPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Borrowing Model</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
-              Users deposit supported LP positions into a Borrow Spoke. The positions remain active
-              in their pools while the protocol takes custody for collateral accounting.
+              Users deposit supported LP positions into a Borrow Spoke. The positions can remain
+              active in their pools while the protocol takes custody for collateral accounting.
             </p>
             <p>
-              Each approved LP position is valued independently. Its discounted contribution is added
-              to the user&apos;s total borrowing capacity inside that Borrow Spoke.
+              Each approved LP position is valued on its own. After collateral factors and pool
+              risk controls are applied, its discounted contribution is added to borrowing capacity
+              inside that Borrow Spoke.
             </p>
             <p>
-              When the user borrows, the spoke draws liquidity from the Hub. This keeps LP-specific
-              risk inside the spoke while shared capital remains coordinated at the Hub layer.
+              When the user borrows, the spoke draws liquidity from the Hub. LP market risk stays
+              in the spoke layer, while shared capital accounting stays at the Hub.
             </p>
           </div>
         </section>
@@ -64,9 +66,9 @@ export default function KeyConceptsPage() {
         <section id="oracle-valuation" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Oracle & Valuation</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Avana values LP collateral conservatively. External asset prices anchor the
-            underlying tokens, while pool data and position-state inputs are used to reconstruct the
-            LP exposure instead of trusting raw AMM spot state.
+            Avana values LP collateral conservatively. External asset prices mark the underlyings,
+            while pool data and position state are used to rebuild exposure instead of leaning on
+            raw AMM spot output alone.
           </p>
           <ul className="space-y-2 text-sm text-gray-600">
             <li>Underlying asset prices from robust external feeds</li>
@@ -79,42 +81,43 @@ export default function KeyConceptsPage() {
         <section id="borrowing-process" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Borrowing Capacity</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Borrowing power is not assigned to the account wholesale or to the pool wholesale. It is
-            built from the sum of position-level contributions inside a Borrow Spoke after collateral
-            factors and pool-specific risk controls are applied.
+            Capacity is built position by position inside a Borrow Spoke. Avana does not slap one
+            wholesale factor across the whole account or across every pool in a spoke. Each
+            position contributes only after its own collateral factors and pool-specific controls
+            have been applied.
           </p>
           <p className="text-sm text-gray-600">
-            <strong>Canonical reference:</strong> see{" "}
+            <strong>Details:</strong> see{" "}
             <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
               Collateral Factors
             </Link>{" "}
-            for the full position-by-position borrowing-capacity model.
+            for the position by position capacity model.
           </p>
         </section>
 
         <section id="health-monitoring" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Health & Liquidation</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            A Borrow Spoke continuously compares adjusted collateral value with outstanding debt. If
-            market moves, oracle verification, or position changes reduce the user&apos;s remaining
-            borrowing headroom too far, the position approaches liquidation eligibility.
+            A Borrow Spoke compares adjusted collateral value with outstanding debt. If prices,
+            oracle checks, or position changes shrink the remaining buffer far enough, the account
+            can cross into liquidation territory.
           </p>
-          <p className="text-sm text-gray-600">
-            Health monitoring and liquidation both use the same underlying valuation engine, which is
-            why Avana treats pricing, collateral factors, and liquidation routing as one joined
-            risk system rather than separate modules.
+          <p className="text-sm leading-relaxed text-gray-600">
+            Health and liquidation both depend on the same valuation path. Pricing, collateral
+            factors, and liquidation routing have to stay aligned because they ultimately feed the
+            same solvency calculation.
           </p>
         </section>
 
         <section id="fee-collection" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Fee Treatment</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            LP positions may continue accruing trading fees while they are used as collateral.
-            Accrued fees can be recognized in valuation and, subject to health checks, claimed
-            without fully exiting the LP principal.
+            LP positions may keep accruing trading fees while they are used as collateral. Avana
+            can recognize those fees in valuation and, subject to health checks, let users claim
+            them without fully exiting the principal LP position.
           </p>
           <p className="text-sm text-gray-600">
-            <strong>Related docs:</strong> the canonical details live in{" "}
+            <strong>Related docs:</strong>{" "}
             <Link href="/developers/integrations/price-oracles" className="text-[#01AACF] hover:underline">
               Price Oracles
             </Link>{" "}

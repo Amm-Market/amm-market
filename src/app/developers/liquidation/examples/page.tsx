@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Liquidation Examples",
   description:
-    "Illustrative liquidation examples for Avana. Compare how fungible LPs, concentrated liquidity, and multi-position accounts can be unwound under the canonical framework.",
+    "Illustrative liquidation examples for Avana, showing how fungible LPs, concentrated liquidity, and multi-position accounts are unwound under the same core framework.",
 }
 
 const sections = [
@@ -32,23 +32,23 @@ export default function LiquidationExamplesPage() {
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
           title="Liquidation Examples"
-          description="Illustrative scenarios showing how the same liquidation framework applies to different LP collateral types."
+          description="Worked scenarios that show how one liquidation framework is applied to different LP collateral shapes."
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            These examples are intentionally simplified. They show the shape of a liquidation
-            without introducing extra protocol rules beyond the canonical{" "}
+            These examples are deliberately simple. The goal is to show how liquidation plays out
+            across common LP formats without inventing extra rules beyond the{" "}
             <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
               Liquidation Framework
             </Link>
             .
           </p>
           <p className="type-body-copy text-gray-600">
-            In every case, Avana values collateral conservatively, repays debt into the credit
-            layer, unwinds the LP position through a supported path, and returns residual value
-            after execution costs and liquidation reward are settled.
+            In every case the job is the same: use conservative collateral marks, repay debt into
+            the credit layer, unwind the LP through a supported path, and return any residual value
+            left after execution costs and the liquidation reward.
           </p>
         </section>
 
@@ -57,8 +57,8 @@ export default function LiquidationExamplesPage() {
           <div>
             <p className="mb-4 type-body-copy text-gray-600">
               A borrower has deposited a fungible LP token from an approved stable or weighted pool.
-              The account falls below allowed borrowing capacity after pool composition and oracle
-              inputs move against it.
+              Over time, pool composition and oracle inputs move enough that the account no longer
+              has sufficient adjusted collateral value for its debt.
             </p>
             <ul className="space-y-2 type-body-copy text-gray-600">
               <li>• The liquidation node detects the shortfall and sources execution liquidity.</li>
@@ -74,9 +74,9 @@ export default function LiquidationExamplesPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Concentrated Liquidity Example</h2>
           <div>
             <p className="mb-4 type-body-copy text-gray-600">
-              A concentrated liquidity position drifts toward the edge of its active range. The
-              account remains healthy for a time, then becomes liquidatable when debt outpaces the
-              recoverable value of the position.
+              A concentrated-liquidity position drifts toward the edge of its active range. The
+              account may remain healthy for a while, then tip into liquidation once debt outpaces
+              the recoverable value of the current position state.
             </p>
             <ul className="space-y-2 type-body-copy text-gray-600">
               <li>• The node values the position from its current range, liquidity, and token split.</li>
@@ -92,8 +92,8 @@ export default function LiquidationExamplesPage() {
           <div>
             <p className="mb-4 type-body-copy text-gray-600">
               A borrower deposits a Uniswap v3 NFT and later the position becomes underwater. The
-              liquidation path is position-level, not token-slice-level, because the NFT is one
-              specific backing position.
+              unwind is handled at the position level, not as a loose token slice, because the NFT
+              represents one specific backing position.
             </p>
             <ul className="space-y-2 type-body-copy text-gray-600">
               <li>• Aave seizes the vault token balance tied to the NFT-backed position.</li>
@@ -109,14 +109,15 @@ export default function LiquidationExamplesPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Multi-Position Account</h2>
           <div>
             <p className="mb-4 type-body-copy text-gray-600">
-              A borrower may hold several LP positions inside one Borrow Spoke. Borrowing capacity is
-              aggregated across those positions, but liquidation still works at the position level.
+              A borrower may hold several LP positions inside one Borrow Spoke. Capacity is
+              aggregated across those positions, but the unwind still has to happen at the position
+              level once the account turns unhealthy.
             </p>
             <ul className="space-y-2 type-body-copy text-gray-600">
               <li>• The spoke reports one aggregate borrowing capacity to the Hub.</li>
               <li>• When the account becomes unhealthy, the liquidation node chooses the unwind path that best restores solvency.</li>
               <li>• One position may be enough to close the shortfall, or several may need to be partially or fully unwound.</li>
-              <li>• This is why execution ordering, oracle consistency, and route depth matter as much as raw spot value.</li>
+              <li>• Order of execution, oracle consistency, and route depth matter next to the mark itself.</li>
             </ul>
           </div>
         </section>
@@ -135,10 +136,10 @@ export default function LiquidationExamplesPage() {
         <section id="summary" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Summary</h2>
           <p className="type-body-copy leading-relaxed text-gray-600">
-            Across fungible LPs, concentrated liquidity, and multi-position accounts, the protocol
-            is solving the same problem: convert LP collateral into recoverable debt repayment
-            without relying on optimistic NAV. The details of the unwind change, but the policy
-            framework does not.
+            Fungible LPs, concentrated ranges, NFT positions, and multi-position accounts all have
+            different unwind details. The shared goal never changes: repay debt from recoverable LP
+            value without leaning on optimistic NAV assumptions. Policy still lives on the main
+            Liquidation Framework page.
           </p>
         </section>
       </div>

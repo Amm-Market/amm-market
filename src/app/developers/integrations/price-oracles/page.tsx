@@ -4,7 +4,8 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Price Oracles",
-  description: "Avana Oracle architecture for LP-backed lending - conservative collateral valuation, position reconstruction, recoverable unwind assumptions, and manipulation prevention.",
+  description:
+    "How Avana Oracle prices LP collateral through external feeds, deterministic position reconstruction, and recoverable-value discounts.",
 }
 
 const sections = [
@@ -29,27 +30,27 @@ const architectureChecklist = [
   {
     title: "Price underlying assets from external robust oracles",
     description:
-      "Use resilient external feeds as the primary mark for each underlying token instead of relying on raw AMM spot state.",
+      "Start from resilient external feeds for the underlying assets so collateral does not inherit the full noise or manipulability of raw pool spot state.",
   },
   {
     title: "Derive LP value conservatively",
     description:
-      "Reconstruct pool balances or decompose concentrated liquidity positions deterministically from reserves, liquidity, range, and fees.",
+      "Rebuild fungible LP balances or decompose concentrated-liquidity positions from reserves, liquidity, range, and fees using a deterministic path that the spoke can reason about.",
   },
   {
     title: "Haircut for impermanent loss and liquidation slippage",
     description:
-      "Discount theoretical value into recoverable collateral value by assuming stressed unwind conditions rather than frictionless exits.",
+      "Discount the reconstructed mark to a recoverable collateral value that assumes stress, slippage, and imperfect exits rather than a clean redemption at theoretical NAV.",
   },
   {
     title: "Cap exposure by LP family and pool depth",
     description:
-      "Apply pool-class and liquidity-depth controls so thinner or more complex collateral receives tighter borrowing limits.",
+      "Apply controls based on LP family, pool class, and available depth so thinner or more complex markets do not receive the same borrow limits as deeper and simpler ones.",
   },
   {
     title: "Liquidate based on recoverable unwind value, not optimistic NAV",
     description:
-      "Borrow power and liquidation logic are anchored to what can realistically be realized during unwind, not the position's best-case mark value.",
+      "Use the value that can reasonably be realized through the unwind path when granting borrow power and deciding liquidation, rather than the best-case mark value.",
   },
 ]
 
@@ -95,36 +96,35 @@ export default function PriceOraclesPage() {
 
           title="Price Oracles"
 
-          description="Avana Oracle is the protocol&apos;s collateral valuation engine for LP-backed lending."
+          description="How the protocol turns LP position state into credit-relevant collateral values."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Avana Oracle is the protocol&apos;s collateral valuation engine for LP-backed lending. It is
-            designed to price LP positions conservatively using robust external market data, deterministic
-            position reconstruction, and stressed liquidation assumptions rather than raw AMM spot state.
-            This architecture is intended to reduce the risk of collateral inflation, pool-state
-            manipulation, thin-market pricing failures, and same-transaction oracle abuse.
+            Avana Oracle is not a single price lookup. It is the valuation path that turns an LP
+            position into something the lending system can use for collateral accounting. To do
+            that safely, it combines external market feeds, deterministic reconstruction of the LP,
+            and recovery haircuts based on unwind assumptions instead of trusting raw AMM spot
+            state on its own.
           </p>
           <p className="text-gray-600 leading-relaxed mb-4">
-            For fungible LPs, Avana Oracle derives value from external prices and a
-            market-consistent reconstruction of pool balances. For concentrated liquidity positions, it
-            values the position directly by decomposing its underlying token exposure based on range,
-            liquidity, and current price. In both cases, the protocol applies recovery haircuts to
-            estimate the value that can realistically be realized during liquidation. Borrow power is
-            based on this discounted collateral value, not on theoretical net asset value.
+            The exact inputs depend on the collateral family. A fungible LP is reconstructed from
+            balances, reserves, and fees, while concentrated liquidity must be decomposed through
+            its range, liquidity, and current price context. In both cases the result is pushed
+            through recoverable-value logic so borrowing uses a conservative number rather than a
+            frictionless exit assumption.
           </p>
           <p className="text-gray-600 leading-relaxed mb-6">
-            This approach allows Avana to support LP collateral with stronger risk controls than
-            traditional lending markets. By separating mark value from recoverable value and enforcing
-            oracle-specific safeguards across each collateral class, Avana Oracle forms the
-            foundation for safer LP-backed credit markets.
+            That distinction between mark value and recoverable value is what keeps the oracle
+            useful for lending instead of just analytics. ERC-20 LPs, NFT LPs, and multi-asset
+            pools can share one high-level interface only because each class goes through its own
+            validation and manipulation-resistance checks before the value reaches the spoke.
           </p>
 
           <div className="rounded-xl border border-cyan-200 bg-cyan-50/70 p-5">
-            <h3 className="text-base font-semibold text-gray-900 mb-3">For LP collateral, value depends on:</h3>
+            <h3 className="text-base font-semibold text-gray-900 mb-3">LP collateral value depends on:</h3>
             <ul className="space-y-3">
               {collateralValueDrivers.map((item) => (
                 <li key={item} className="border-l-4 border-cyan-500 pl-3 text-sm text-gray-700">
@@ -138,9 +138,10 @@ export default function PriceOraclesPage() {
         <section id="oracle-interface" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Oracle Interface: IOracle</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            The IOracle interface standardizes how the protocol measures LP collateral across DEX
-            designs, while preserving the distinction between theoretical mark value, accrued fees, and
-            protocol-held risk buffers:
+            Borrow Spokes need one contract surface even though LP formats differ a lot across
+            DEXs. `IOracle` provides that common shape and keeps principal value, accrued fees, and
+            reserved buffers separate so later risk logic does not have to guess which part of the
+            position it is looking at:
           </p>
           
           <div className="p-4 bg-gray-900 rounded-lg mb-4">
@@ -157,30 +158,30 @@ export default function PriceOraclesPage() {
           <div className="space-y-3">
             <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
               <span className="font-semibold text-gray-900">fullValue</span>
-              <span className="text-gray-600 text-sm ml-2">— Reconstructed value of principal liquidity before liquidation stress adjustments</span>
+              <span className="text-gray-600 text-sm ml-2">Reconstructed value of the principal liquidity before later liquidation stress adjustments are applied.</span>
             </div>
             <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
               <span className="font-semibold text-gray-900">feeValue</span>
-              <span className="text-gray-600 text-sm ml-2">— Value of accrued fees that can be recognized alongside the position</span>
+              <span className="text-gray-600 text-sm ml-2">Value of the fees accrued by the position that can be recognized alongside principal.</span>
             </div>
             <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
               <span className="font-semibold text-gray-900">reserveValue</span>
-              <span className="text-gray-600 text-sm ml-2">— Reserved portion used to absorb oracle, unwind, and protocol risk buffers</span>
+              <span className="text-gray-600 text-sm ml-2">Reserved portion held back for oracle, unwind, and protocol risk buffers.</span>
             </div>
           </div>
 
           <p className="mt-4 text-gray-600 text-sm">
-            This interface abstracts DEX-specific differences so the Spoke can treat ERC-20 LPs, NFT
-            LPs, and multi-asset pools consistently while still basing borrow power on discounted,
-            recoverable collateral treatment instead of optimistic NAV.
+            The interface hides DEX-specific plumbing from the spoke. That lets the same caller
+            handle ERC-20 LPs, NFT LPs, and multi-asset pools through one return shape while still
+            leaving room for conservative, collateral-family-specific treatment behind the scenes.
           </p>
         </section>
 
         <section id="multi-layer-architecture" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Multi-Layer Architecture</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            For LP collateral, the safe architecture is closer to a recoverable-value checklist than a
-            single spot-price lookup:
+            LP valuation is a staged process rather than a single spot-price read. The oracle path
+            moves through the following steps:
           </p>
 
           <div className="space-y-4">
@@ -203,9 +204,9 @@ export default function PriceOraclesPage() {
         <section id="dex-handling" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">DEX-Specific Handling</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Different LP formats expose different position-state data, but Avana Oracle uses those
-            venue-specific inputs to reconstruct collateral and verify pricing, not to accept raw pool
-            state at face value.
+            Different venues expose different pieces of state, and the oracle uses those inputs in
+            different ways. The important point is that venue-specific data helps reconstruct the
+            position and verify pricing; it is not accepted blindly as a direct collateral mark.
           </p>
           
           <div className="overflow-x-auto">
@@ -233,45 +234,49 @@ export default function PriceOraclesPage() {
         <section id="twap-computation" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">TWAP Computation by DEX</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            TWAPs are used as verification and manipulation-resistance inputs alongside external asset
-            prices and deterministic position reconstruction. They help validate unwind assumptions rather
-            than define collateral value on their own.
+            TWAPs are verification inputs. They sit beside external asset prices and deterministic
+            position reconstruction to check whether the pool state being observed is consistent
+            with a credible unwind path. They help reject suspicious or short-lived distortions,
+            but they do not replace the broader oracle model on their own.
           </p>
           
           <div className="space-y-3">
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
               <h3 className="font-semibold text-gray-900 mb-1">Uniswap V2 & SushiSwap</h3>
               <p className="text-gray-600 text-sm">
-                On-chain cumulative price data over a 1-hour window is used to verify reconstructed
-                reserve value and reduce susceptibility to flash swaps or short-lived pool distortions.
+                On-chain cumulative price data over a 1-hour window is used to cross-check the
+                reconstructed reserve picture and reduce sensitivity to flash swaps or other
+                short-lived pool distortions.
               </p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
               <h3 className="font-semibold text-gray-900 mb-1">Uniswap V3</h3>
               <p className="text-gray-600 text-sm">
-                Position-aware checks incorporate tick range, liquidity distribution, and accrued fees so
-                the protocol can verify the decomposed token exposure of each NFT LP.
+                Position-aware checks incorporate tick range, liquidity distribution, and accrued
+                fees so the protocol can verify the decomposed token exposure of each NFT LP rather
+                than treating the NFT as a black box.
               </p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
               <h3 className="font-semibold text-gray-900 mb-1">Balancer</h3>
               <p className="text-gray-600 text-sm">
                 Weighted token observations are combined with pool weights to validate multi-asset
-                inventory splits before assigning conservative collateral value.
+                inventory splits before the oracle assigns a conservative collateral value.
               </p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
               <h3 className="font-semibold text-gray-900 mb-1">Curve</h3>
               <p className="text-gray-600 text-sm">
-                Stablecoin observations are used primarily to guard against stale feeds, reserve drift,
-                and short-term anomalies while external prices remain the anchor.
+                Stablecoin observations are used mainly to detect stale feeds, reserve drift, and
+                short-term anomalies while external prices remain the primary anchor.
               </p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
               <h3 className="font-semibold text-gray-900 mb-1">Trader Joe & Aerodrome</h3>
               <p className="text-gray-600 text-sm">
-                Cumulative price observations over a 30-60 minute window help validate low-liquidity pool
-                state and resist same-transaction manipulation during collateral checks.
+                Cumulative price observations over a 30-60 minute window help validate
+                lower-liquidity pool state and resist same-transaction manipulation during
+                collateral checks.
               </p>
             </div>
           </div>
@@ -284,36 +289,38 @@ export default function PriceOraclesPage() {
             <li className="border-l-4 border-red-400 pl-3">
               <span className="font-semibold text-gray-900">Deviation Thresholds</span>
               <p className="text-gray-600 text-sm mt-0.5">
-                Pauses new loans or liquidations if pool-derived verification data diverges from external
-                reference prices beyond <code className="bg-gray-100 px-1 rounded text-gray-800">maxDifference</code>.
+                New loans or liquidations can be paused when pool-derived verification data moves
+                too far away from external reference prices beyond{" "}
+                <code className="bg-gray-100 px-1 rounded text-gray-800">maxDifference</code>.
               </p>
             </li>
             <li>
               <span className="font-semibold text-gray-900">maxPoolPriceDifference</span>
               <p className="text-gray-600 text-sm mt-0.5">
-                Ensures pool-implied state remains aligned with underlying token prices, limiting
-                instantaneous pool manipulation and same-transaction oracle abuse.
+                This keeps pool-implied state aligned with underlying token prices and limits
+                instantaneous pool manipulation or same-transaction oracle abuse.
               </p>
             </li>
             <li>
               <span className="font-semibold text-gray-900">Open Interest Caps</span>
               <p className="text-gray-600 text-sm mt-0.5">
-                Cap exposure by LP family, pool depth, and collateral complexity so thinner markets
-                receive tighter borrow limits.
+                Exposure is capped by LP family, pool depth, and collateral complexity so thinner
+                markets receive tighter borrow limits.
               </p>
             </li>
             <li>
               <span className="font-semibold text-gray-900">Recovery Haircuts</span>
               <p className="text-gray-600 text-sm mt-0.5">
-                Discount theoretical LP value for impermanent loss, unwind slippage, and stressed
-                liquidation assumptions before borrow power is granted.
+                The oracle discounts theoretical LP value for impermanent loss, unwind slippage,
+                and stressed liquidation assumptions before any borrow power is granted.
               </p>
             </li>
             <li>
               <span className="font-semibold text-gray-900">Oracle Sentinel</span>
               <p className="text-gray-600 text-sm mt-0.5">
-                Monitors feed health and verification inputs, triggering fallback behavior when oracle
-                data is stale, compromised, or inconsistent with position-state checks.
+                Oracle Sentinel watches feed health and verification inputs and can trigger fallback
+                behavior when data is stale, compromised, or inconsistent with position-state
+                checks.
               </p>
             </li>
           </ul>
@@ -322,7 +329,9 @@ export default function PriceOraclesPage() {
         <section id="configurable-parameters" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Configurable Oracle Parameters</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Developers can configure pool-specific oracle settings for each token via <code className="bg-gray-200 px-1 rounded">setTokenConfig</code>:
+            Pool-specific oracle settings are configured per token through{" "}
+            <code className="bg-gray-200 px-1 rounded">setTokenConfig</code>. The table below shows
+            the parameters that define how a token and its associated pool should be checked:
           </p>
           
           <div className="overflow-x-auto">
@@ -367,10 +376,9 @@ export default function PriceOraclesPage() {
           </div>
 
           <p className="mt-4 text-gray-600 text-sm">
-            <strong>Summary:</strong> Avana Oracle combines external asset pricing, deterministic
-            LP reconstruction, discounted collateral treatment, and oracle-specific safeguards to support
-            ERC-20 and NFT LPs with stronger protection against manipulation, stale data, and optimistic
-            unwind assumptions across hundreds of pools.
+            In practice, oracle behavior comes from the combination of external asset pricing, LP
+            reconstruction logic, recoverable-value treatment, and the per-token settings configured
+            through <code className="bg-gray-200 px-1 rounded">setTokenConfig</code>.
           </p>
         </section>
       </div>
@@ -378,7 +386,7 @@ export default function PriceOraclesPage() {
       {/* Right scroll-spy sidebar */}
       <DeveloperScrollSpyRail 
         sections={sections} 
-        pageSummary="Avana Oracle prices LP collateral conservatively using external asset prices, position reconstruction, and recoverable unwind assumptions."
+        pageSummary="How Avana Oracle reconstructs LP positions, applies conservative pricing, and checks market data before value reaches the spoke."
         sectionColor="cyan"
       />
     </div>
