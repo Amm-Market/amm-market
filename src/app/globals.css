@@ -680,7 +680,7 @@
   --site-eyebrow-color: #475569;
 }
 
-.site-blog-article section[id] > h2::before {
+.site-blog-article section[id] > h2[data-eyebrow]::before {
   content: attr(data-eyebrow);
   display: inline-flex;
   font-size: 0.75rem;

@@ -61,7 +61,7 @@ export default function HeaderDesktopNavigation() {
 
   return (
     <>
-      <nav aria-label="Primary navigation" className="hidden min-w-0 items-center gap-8 md:ml-6 md:mr-auto md:flex md:gap-6 lg:gap-8" onMouseEnter={warmDesktopMenuPanel} onMouseLeave={scheduleDesktopMenuClose}>
+      <nav aria-label="Primary navigation" className="hidden min-w-0 items-center lg:ml-4 lg:mr-auto lg:flex lg:gap-3 xl:ml-6 xl:gap-7 2xl:gap-8" onMouseEnter={warmDesktopMenuPanel} onMouseLeave={scheduleDesktopMenuClose}>
         {desktopMenuButtons.map((menu) => {
           const isOpen = desktopMenuOpen === menu.id
           const isCurrentSection = isPathInSection(pathname, menu.matchHrefs)
@@ -77,7 +77,7 @@ export default function HeaderDesktopNavigation() {
               onMouseEnter={() => openDesktopMenu(menu.id)}
               onFocus={() => openDesktopMenu(menu.id)}
               onClick={() => openDesktopMenu(menu.id)}
-              className={`site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 text-[16px] font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${isHighlighted ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
+              className={`site-header-nav-link group relative inline-flex items-center gap-1 px-0 py-1 text-[0.92rem] font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out xl:gap-1.5 xl:text-[16px] ${isHighlighted ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
             >
               <span>{menu.label}</span>
               <ChevronDown
@@ -93,12 +93,14 @@ export default function HeaderDesktopNavigation() {
           prefetch={false}
           onMouseEnter={closeDesktopMenu}
           onFocus={closeDesktopMenu}
-          className={`site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 text-[16px] font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${pathname === siteRoutes.faq ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
+          aria-label="Help Center"
+          title="Help Center"
+          className={`site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 text-[0.92rem] font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out xl:text-[16px] ${pathname === siteRoutes.faq ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
         >
-          <span>Help Center</span>
+          <span className="hidden xl:inline">Help Center</span>
           <BookOpenText
             aria-hidden="true"
-            className="h-[15px] w-[15px] shrink-0 transition-transform duration-200 ease-out group-hover:scale-105"
+            className="h-[17px] w-[17px] shrink-0 transition-transform duration-200 ease-out group-hover:scale-105 xl:h-[15px] xl:w-[15px]"
             strokeWidth={2.35}
           />
         </Link>
@@ -109,12 +111,14 @@ export default function HeaderDesktopNavigation() {
           rel="noreferrer"
           onMouseEnter={closeDesktopMenu}
           onFocus={closeDesktopMenu}
-          className="site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 text-[16px] font-[560] tracking-[-0.02em] text-black/62 transition-[color,opacity] duration-200 ease-out hover:text-black/94"
+          aria-label="Aave ARFC"
+          title="Aave ARFC"
+          className="site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 text-[0.92rem] font-[560] tracking-[-0.02em] text-black/62 transition-[color,opacity] duration-200 ease-out hover:text-black/94 xl:text-[16px]"
         >
-          <span>Aave ARFC</span>
+          <span className="hidden xl:inline">Aave ARFC</span>
           <ArrowUpRight
             aria-hidden="true"
-            className="h-[15px] w-[15px] shrink-0 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            className="h-[17px] w-[17px] shrink-0 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 xl:h-[15px] xl:w-[15px]"
             strokeWidth={2.35}
           />
         </Link>

@@ -52,7 +52,7 @@ export default function Header(): React.JSX.Element {
 
         <HeaderDesktopNavigation />
 
-        <div className="hidden items-center gap-2 md:flex">
+        <div className="hidden items-center gap-1.5 lg:flex xl:gap-2">
           <HeaderLanguageDropdown />
 
           {desktopUtilityLinks.map((link) => (
@@ -62,10 +62,11 @@ export default function Header(): React.JSX.Element {
               prefetch={false}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noreferrer" : undefined}
-              className="group inline-flex h-9 items-center justify-center rounded-full border border-[#151c22]/80 bg-white px-4 text-[0.92rem] font-[620] tracking-[-0.035em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white lg:h-10 lg:px-5 lg:text-[0.98rem]"
+              className="group inline-flex h-9 items-center justify-center rounded-full border border-[#151c22]/80 bg-white px-3 text-[0.9rem] font-[620] tracking-[-0.035em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white xl:h-10 xl:px-5 xl:text-[0.98rem]"
             >
-              <span className="inline-flex items-center gap-2.5">
-                <span>{link.label}</span>
+              <span className="inline-flex items-center gap-1.5 xl:gap-2.5">
+                <span className="xl:hidden">Sandbox</span>
+                <span className="hidden xl:inline">{link.label}</span>
                 <ChevronRight
                   aria-hidden="true"
                   className="h-4 w-4 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-0.5"
