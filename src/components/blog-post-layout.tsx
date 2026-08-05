@@ -2,6 +2,7 @@ import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
+import { SectionTitle } from "@/components/shared"
 
 const DeferredLlmExportMenu = dynamic(
   () => import("@/components/llm-export-menu").then((module) => module.LlmExportMenu),
@@ -69,9 +70,9 @@ export default function BlogPostLayout({
         <div className="min-w-0 w-full flex-1">
           <div data-developer-doc-export-root className="min-w-0 w-full max-w-[48rem]">
             <header className="mb-8 space-y-4 md:mb-10">
-              <h1 className="break-words text-[clamp(2rem,7vw,4.1rem)] font-semibold leading-[0.96] tracking-[-0.055em] text-gray-900">
+              <SectionTitle as="h1" className="break-words">
                 {title}
-              </h1>
+              </SectionTitle>
               <div className="space-y-3">
                 <div className="type-supporting text-gray-500">
                   <p>{date}</p>
