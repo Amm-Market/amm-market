@@ -2,9 +2,10 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowUpRight, ChevronRight } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 import { useEffect, useState } from "react"
 import HeaderDesktopNavigation from "@/components/header-desktop-navigation"
+import HeaderLanguageDropdown from "@/components/header-language-dropdown"
 import HeaderMobileNavigation from "@/components/header-mobile-navigation"
 import { desktopUtilityLinks } from "@/components/header-nav-data"
 import { HEADER_WORDMARK_PATH, SITE_NAME, siteRoutes } from "@/lib/site"
@@ -52,22 +53,7 @@ export default function Header(): React.JSX.Element {
         <HeaderDesktopNavigation />
 
         <div className="hidden items-center gap-2 md:flex">
-          <Link
-            href="https://governance.aave.com/"
-            prefetch={false}
-            target="_blank"
-            rel="noreferrer"
-            className="group inline-flex h-9 items-center justify-center rounded-full px-3 text-[0.92rem] font-[620] tracking-[-0.035em] text-[#151c22] transition-colors duration-200 ease-out hover:text-[#01AACF] lg:h-10 lg:px-4 lg:text-[0.98rem]"
-          >
-            <span className="inline-flex items-center gap-2">
-              <span>Aave ARFC</span>
-              <ArrowUpRight
-                aria-hidden="true"
-                className="h-4 w-4 shrink-0 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                strokeWidth={2.8}
-              />
-            </span>
-          </Link>
+          <HeaderLanguageDropdown />
 
           {desktopUtilityLinks.map((link) => (
             <Link

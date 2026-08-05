@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic"
 import Link from "next/link"
-import { BookOpenText, ChevronDown } from "lucide-react"
+import { ArrowUpRight, BookOpenText, ChevronDown } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 import { desktopMenuButtons, type DesktopMenuId } from "@/components/header-nav-data"
@@ -99,6 +99,22 @@ export default function HeaderDesktopNavigation() {
           <BookOpenText
             aria-hidden="true"
             className="h-[15px] w-[15px] shrink-0 transition-transform duration-200 ease-out group-hover:scale-105"
+            strokeWidth={2.35}
+          />
+        </Link>
+        <Link
+          href="https://governance.aave.com/"
+          prefetch={false}
+          target="_blank"
+          rel="noreferrer"
+          onMouseEnter={closeDesktopMenu}
+          onFocus={closeDesktopMenu}
+          className="site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 text-[16px] font-[560] tracking-[-0.02em] text-black/62 transition-[color,opacity] duration-200 ease-out hover:text-black/94"
+        >
+          <span>Aave ARFC</span>
+          <ArrowUpRight
+            aria-hidden="true"
+            className="h-[15px] w-[15px] shrink-0 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
             strokeWidth={2.35}
           />
         </Link>
