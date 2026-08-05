@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic"
 import { useEffect, useState } from "react"
+import HeaderLanguageDropdown from "@/components/header-language-dropdown"
 
 const DeferredHeaderMobileMenu = dynamic(() => import("@/components/header-mobile-menu"), {
   ssr: false,
@@ -45,7 +46,9 @@ export default function HeaderMobileNavigation() {
   }, [mobileMenuOpen])
 
   return (
-    <div className="ml-auto flex items-center md:hidden" data-framer-name="Navigation Mobile">
+    <div className="ml-auto flex items-center gap-2 md:hidden" data-framer-name="Navigation Mobile">
+      <HeaderLanguageDropdown variant="mobile" />
+
       <button
         type="button"
         className="inline-flex h-11 w-11 items-center justify-center text-[#01AACF] transition hover:text-[#01AACF]/80"
