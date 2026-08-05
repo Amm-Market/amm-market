@@ -46,7 +46,7 @@ export default function HeaderMobileNavigation() {
   }, [mobileMenuOpen])
 
   return (
-    <div className="ml-auto flex items-center gap-2 md:hidden" data-framer-name="Navigation Mobile">
+    <div className="ml-auto flex items-center gap-2 lg:hidden" data-framer-name="Navigation Mobile">
       <HeaderLanguageDropdown variant="mobile" />
 
       <button

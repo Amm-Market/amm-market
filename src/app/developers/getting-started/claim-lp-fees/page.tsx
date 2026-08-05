@@ -19,7 +19,7 @@ const sections = [
 
 export default function ClaimLPFeesPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
+    <div className="grid grid-cols-1 gap-8 xl:grid-cols-[1fr_220px] xl:gap-12">
       <div data-developer-doc-export-root className="max-w-3xl">
         <DeveloperDocPageHeader
 

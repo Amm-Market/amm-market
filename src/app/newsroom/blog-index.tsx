@@ -15,56 +15,64 @@ import type { BlogPost, TagFilter } from "@/lib/content"
 const bookCoverThemes = [
   {
     cover: "bg-[#0F1518]",
-    spine: "bg-[#01AACF]",
+    coverColor: "#0F1518",
+    spineColor: "#01AACF",
     text: "text-white",
     muted: "text-white/54",
     number: "text-white/48",
   },
   {
     cover: "bg-[#2F414B]",
-    spine: "bg-[#BC846F]",
+    coverColor: "#2F414B",
+    spineColor: "#BC846F",
     text: "text-white",
     muted: "text-white/56",
     number: "text-white/52",
   },
   {
     cover: "bg-[#9E5537]",
-    spine: "bg-[#0F1518]",
+    coverColor: "#9E5537",
+    spineColor: "#0F1518",
     text: "text-white",
     muted: "text-white/58",
     number: "text-white/46",
   },
   {
     cover: "bg-[#01AACF]",
-    spine: "bg-[#2F414B]",
+    coverColor: "#01AACF",
+    spineColor: "#2F414B",
     text: "text-[#0F1518]",
     muted: "text-[#0F1518]/58",
     number: "text-[#0F1518]/42",
   },
   {
     cover: "bg-[#2F414B]",
-    spine: "bg-[#01AACF]",
+    coverColor: "#2F414B",
+    spineColor: "#01AACF",
     text: "text-white",
     muted: "text-white/54",
     number: "text-white/48",
   },
   {
     cover: "bg-[#BC846F]",
-    spine: "bg-[#0F1518]",
+    coverColor: "#BC846F",
+    spineColor: "#0F1518",
     text: "text-[#0F1518]",
     muted: "text-[#0F1518]/58",
     number: "text-[#0F1518]/42",
   },
   {
     cover: "bg-[#0F1518]",
-    spine: "bg-[#9E5537]",
+    coverColor: "#0F1518",
+    spineColor: "#9E5537",
     text: "text-white",
     muted: "text-white/56",
     number: "text-white/52",
   },
   {
     cover: "bg-[#2F414B]",
-    spine: "bg-[#BC846F]",
+    coverColor: "#2F414B",
+    spineColor: "#BC846F",
     text: "text-white",
     muted: "text-white/54",
     number: "text-white/48",
@@ -73,6 +81,37 @@ const bookCoverThemes = [
 
 function getBookCoverTheme(index: number) {
   return bookCoverThemes[index % bookCoverThemes.length]
+}
+
+/** Pure-CSS spiral binding: one element + gradient paint, no images or extra assets. */
+function BookSpine({
+  spineColor,
+  coverColor,
+}: {
+  spineColor: string
+  coverColor: string
+}) {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-4"
+      style={{
+        backgroundColor: spineColor,
+        // Three cheap paint layers only — repeats scale with height, no DOM per ring
+        backgroundImage: [
+          // Punch holes (reads as the cover through each coil)
+          `radial-gradient(circle 2.2px at 52% 50%, ${coverColor} 96%, transparent 100%)`,
+          // Wire coil loops (silver rings, spiral-notebook style)
+          `radial-gradient(ellipse 6px 3.15px at 52% 50%, #f7f8fa 0 38%, #c8ced8 48%, transparent 58%)`,
+          // Face shade so the spine reads as a bound edge, not a flat strip
+          `linear-gradient(90deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.06) 50%, transparent 100%)`,
+        ].join(", "),
+        backgroundSize: "100% 12px, 100% 12px, 100% 100%",
+        backgroundRepeat: "repeat-y, repeat-y, no-repeat",
+        backgroundPosition: "center top, center top, 0 0",
+      }}
+    />
+  )
 }
 
 function getBookNumber(index: number) {
@@ -179,10 +218,7 @@ export function BlogIndex({
                     <div
                       className={`relative flex h-full flex-col overflow-hidden rounded-[0.2rem] ${theme.cover} px-5 py-6 shadow-[0_10px_24px_rgba(15,23,42,0.14)] transition-[transform,box-shadow] duration-200 ease-out group-hover:-translate-x-1.5 group-hover:-skew-y-[0.6deg] group-hover:shadow-[6px_12px_25px_rgba(15,23,42,0.16)] md:px-6 md:py-7`}
                     >
-                      <div
-                        aria-hidden="true"
-                        className={`absolute inset-y-0 left-0 w-4 ${theme.spine}`}
-                      />
+                      <BookSpine spineColor={theme.spineColor} coverColor={theme.coverColor} />
                       <div className="relative z-10 flex items-start justify-between gap-4">
                         <span className={`text-[0.8rem] font-semibold uppercase tracking-[0.22em] ${theme.text}`}>
                           {post.tag}

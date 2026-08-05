@@ -65,7 +65,7 @@ export default function PrivacyPage() {
         </div>
 
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-12 lg:gap-24">
+        <div className="grid grid-cols-1 xl:grid-cols-[1fr_280px] gap-12 xl:gap-24">
           {/* Main content */}
           <div className="site-editorial-content max-w-3xl [&_strong]:font-semibold [&_strong]:text-gray-900 [&_h3]:mt-10 [&_h3]:mb-4 [&_h4]:mt-6 [&_h4]:mb-3 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_li]:mb-2 [&_a]:text-blue-600 [&_a]:hover:underline">
             <p className="text-lg font-medium text-gray-900">Avana Privacy Policy</p>

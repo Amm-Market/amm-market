@@ -63,7 +63,7 @@ export default function HeaderMobileMenu({
   // This component is client-only (dynamic ssr:false), so document.body is safe.
   return createPortal(
     <div
-      className={`fixed inset-x-0 bottom-0 top-16 z-40 bg-white transition-opacity duration-300 ease-out md:hidden ${
+      className={`fixed inset-x-0 bottom-0 top-16 z-40 bg-white transition-opacity duration-300 ease-out md:top-[54px] lg:hidden ${
         isVisible ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
       }`}
       role="dialog"
@@ -74,7 +74,7 @@ export default function HeaderMobileMenu({
       <nav
         id="mobile-site-nav"
         aria-label="Mobile navigation"
-        className={`h-[calc(100dvh-4rem)] overflow-y-auto px-4 pb-10 pt-10 transition-all duration-300 ease-out sm:px-6 ${
+        className={`h-[calc(100dvh-4rem)] overflow-y-auto px-4 pb-10 pt-10 transition-all duration-300 ease-out sm:px-6 md:h-[calc(100dvh-54px)] ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
         }`}
       >
