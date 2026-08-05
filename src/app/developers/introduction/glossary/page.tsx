@@ -175,7 +175,7 @@ const glossaryTerms = {
 
 export default function GlossaryPage() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-8 lg:gap-12">
+    <div className="grid grid-cols-1 xl:grid-cols-[1fr_220px] gap-8 xl:gap-12">
       {/* Main content */}
       <div data-developer-doc-export-root className="max-w-3xl">
         <DeveloperDocPageHeader
