@@ -97,7 +97,7 @@ export default function Home() {
     <>
       <section className="bg-white pt-10 pb-10 md:pt-14 md:pb-12 2xl:pt-12 2xl:pb-11">
         <div className="site-content-shell">
-          <div className="mx-auto grid w-fit max-w-full grid-cols-1 gap-5 text-center md:grid-cols-[auto_auto] md:items-start md:gap-10 md:text-left lg:gap-14">
+          <div className="mx-auto grid w-fit max-w-full grid-cols-1 gap-5 text-center md:grid-cols-[auto_auto] md:items-end md:gap-10 md:text-left lg:gap-14">
             <div className="space-y-4">
               <SectionTitle className="text-center font-medium md:text-left">
                 <span className="block lg:whitespace-nowrap">Unlock Capital</span>
@@ -105,12 +105,10 @@ export default function Home() {
               </SectionTitle>
             </div>
             <div className="space-y-8">
-              <p className="mx-auto max-w-[34rem] text-[1.2rem] font-normal leading-[1.2] tracking-[-0.04em] text-[#121212] sm:text-[1.55rem] sm:leading-[1.12] md:mx-0 lg:text-[1.95rem]">
-                Turn your liquidity pool positions
+              <p className="mx-auto max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] text-[#39515b] md:mx-0 lg:text-[1.18rem]">
+                Turn your liquidity pool positions into collateral and
                 <br />
-                into collateral and borrow against them
-                <br />
-                here without leaving the pool.
+                borrow against them here without leaving the pool.
               </p>
             </div>
           </div>
