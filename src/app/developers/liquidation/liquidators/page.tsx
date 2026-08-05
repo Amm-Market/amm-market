@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Liquidators",
   description:
-    "Developer guide for liquidation operators, runtime coverage, execution requirements, and LP-specific unwind behavior.",
+    "Developer guide for liquidation operators, covering monitoring, execution requirements, and LP-specific unwind behavior.",
 }
 
 const sections = [
@@ -19,18 +19,25 @@ const coverageModel = [
   {
     title: "Permissionless participation",
     body:
-      "Any keeper team or execution desk can service liquidation opportunities as long as they can monitor positions, source execution liquidity, and unwind the supported LP formats.",
+      "Any keeper or execution desk can liquidate if it can monitor positions, source execution liquidity, and unwind the LP formats Avana supports.",
   },
   {
     title: "LP-specific handling",
     body:
-      "Liquidation is not a generic token sell. The runtime needs venue-aware logic for fee realization, position removal, routing, and settlement back into the debt asset.",
+      "Liquidation is not a generic token sale. Runtime needs venue-aware logic for fee realization, position removal, routing, and settlement into the debt asset.",
   },
   {
-    title: "Safety backstop",
+    title: "Coverage quality",
     body:
-      "Specialized liquidators exist because LP-backed positions are harder to unwind safely than simple collateral. Coverage quality matters more than raw trigger speed.",
+      "LP positions are harder to unwind than simple tokens. Operators that model the full route for supported venues usually handle stress better than bots that only react to a health trigger.",
   },
+]
+
+const operationalChecklist = [
+  "Track the same risk state the protocol uses, not a separate heuristic.",
+  "Unwind from a clean state transition in one atomic job whenever possible.",
+  "Price fee realization, route depth, and residual value before optimizing for speed alone.",
+  "Treat partial coverage and full coverage as separate cases with separate routing assumptions.",
 ]
 
 const executionRequirements = [
@@ -40,33 +47,26 @@ const executionRequirements = [
   "Venue-aware adapters for the LP families the protocol supports",
 ]
 
-const operationalChecklist = [
-  "Track the same risk state that the protocol uses, not a separate heuristic.",
-  "Make sure the unwind path can be executed atomically from a clean state transition.",
-  "Account for fee realization, route depth, and residual value before trying to optimize for speed.",
-  "Treat partial coverage and full coverage as separate cases with separate routing assumptions.",
-]
-
 export default function DeveloperLiquidatorsPage() {
   return (
     <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
           title="Liquidators"
-          description="Operator guide for understanding how Avana liquidation coverage works and what execution infrastructure is needed to service LP-backed debt."
+          description="How operators service Avana liquidations and what execution infrastructure is required for LP-backed debt."
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Liquidators cover unhealthy LP-backed positions by repaying debt, unwinding the LP
-            collateral through the right venue path, and settling the resulting assets back into
-            the credit layer.
+            Liquidators are the operators who close unhealthy LP-backed positions. Their job is to
+            repay the debt, unwind the LP through the correct venue path, and settle the recovered
+            value back into the credit layer.
           </p>
           <p className="type-body-copy leading-relaxed text-gray-600">
-            The operator side of liquidation is mostly about reliability: the keeper must know what
-            can be covered, how the LP position is represented, and how the unwind should settle if
-            slippage, fees, or range imbalance change the shape of the recovery.
+            Speed matters, but it is not enough on its own. Operators need to understand what is
+            actually coverable, how the LP is represented, and how fees, slippage, or one-sided
+            inventory change recovery before they submit anything onchain.
           </p>
         </section>
 
@@ -84,6 +84,11 @@ export default function DeveloperLiquidatorsPage() {
 
         <section id="execution-requirements" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Execution Requirements</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            A liquidator for Avana needs more than a trigger bot. It needs enough infrastructure to
+            value positions, simulate exits, source capital, and deliver a transaction that can
+            finish the unwind path it started.
+          </p>
           <ul className="space-y-2 type-body-copy text-gray-600">
             {executionRequirements.map((item) => (
               <li key={item}>
@@ -105,11 +110,11 @@ export default function DeveloperLiquidatorsPage() {
         </section>
 
         <section className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Bottom Line</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Practical requirement</h2>
           <p className="type-body-copy leading-relaxed text-gray-600">
-            The best liquidators are the ones that can model venue-specific unwind paths, fee
-            realization, and debt repayment as one atomic workflow instead of a set of disconnected
-            actions.
+            Build venue-specific unwind, fee realization, and debt repayment as one workflow.
+            Disconnected steps make it much easier for a theoretically coverable liquidation to fail
+            in execution.
           </p>
         </section>
       </div>
