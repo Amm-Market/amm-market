@@ -22,8 +22,8 @@ const sections = [
 
 export default function LiquidationDesignPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 xl:grid-cols-[1fr_220px] xl:gap-12">
-      <div data-developer-doc-export-root className="max-w-3xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
           title="Liquidation Design"
           description="How Avana splits liquidation entry, vault seizure, and real LP settlement."

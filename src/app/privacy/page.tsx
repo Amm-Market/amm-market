@@ -65,9 +65,9 @@ export default function PrivacyPage() {
         </div>
 
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 xl:grid-cols-[1fr_280px] gap-12 xl:gap-24">
+        <div className="flex min-w-0 flex-col gap-12 xl:flex-row xl:items-start xl:gap-24">
           {/* Main content */}
-          <div className="site-editorial-content max-w-3xl [&_strong]:font-semibold [&_strong]:text-gray-900 [&_h3]:mt-10 [&_h3]:mb-4 [&_h4]:mt-6 [&_h4]:mb-3 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_li]:mb-2 [&_a]:text-blue-600 [&_a]:hover:underline">
+          <div className="site-editorial-content min-w-0 flex-1 max-w-3xl [&_strong]:font-semibold [&_strong]:text-gray-900 [&_h3]:mt-10 [&_h3]:mb-4 [&_h4]:mt-6 [&_h4]:mb-3 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_li]:mb-2 [&_a]:text-blue-600 [&_a]:hover:underline">
             <p className="text-lg font-medium text-gray-900">Avana Privacy Policy</p>
             <p><em className="text-gray-500">Last Revised: January 18, 2026</em></p>
 
@@ -246,7 +246,7 @@ export default function PrivacyPage() {
           </div>
 
           {/* Sidebar navigation */}
-          <div className="hidden self-start xl:block xl:sticky xl:top-28 xl:justify-self-end xl:pt-4">
+          <div className="hidden w-[17rem] shrink-0 xl:block xl:sticky xl:top-28 xl:pt-4">
             <ScrollSpySidebar sections={sections} sectionColor="slate" />
           </div>
         </div>

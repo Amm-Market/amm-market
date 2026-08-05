@@ -200,8 +200,8 @@ export function ScrollSpySidebar({
   }, [sections])
 
   return (
-    <div className="hidden xl:flex xl:pr-2">
-      <div className="flex max-w-[17rem] flex-col items-start justify-start gap-0">
+    <div className="w-full max-w-[17rem]">
+      <div className="flex w-full flex-col items-start justify-start gap-0">
         <p className={`type-meta-label mb-2.5 pl-6 font-normal ${colors.labelText}`}>
           On this page
         </p>
@@ -252,13 +252,13 @@ export function ScrollSpySidebar({
                       behavior: "smooth",
                     })
                   }}
-                  className={`group relative inline-flex cursor-pointer items-center whitespace-nowrap px-3 py-1 transition-all duration-200 ease-in-out ${
+                  className={`group relative inline-flex max-w-full cursor-pointer items-center px-3 py-1 transition-all duration-200 ease-in-out ${
                     isActive
                       ? `${colors.text}`
                       : "text-gray-500 hover:text-gray-900 hover:opacity-80"
                   }`}
                 >
-                  <p className="type-sidebar-link line-clamp-2 font-normal">{section.title}</p>
+                  <p className="type-sidebar-link line-clamp-2 break-words font-normal">{section.title}</p>
                 </a>
               </div>
             )

@@ -192,7 +192,7 @@ export default function DeveloperSidebar() {
 
   return (
     <aside
-      className="hidden md:block w-64 border-r border-gray-200 h-[calc(100vh-73px)] sticky top-[73px]"
+      className="sticky top-[73px] hidden h-[calc(100vh-73px)] w-64 shrink-0 border-r border-gray-200 xl:block"
       style={sidebarTypeScale}
     >
       {/* Scrollable content */}
