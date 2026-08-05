@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Allowed LP Pools",
   description:
-    "Governance-defined allowlist and review criteria for LP pools that can be admitted as collateral in Avana.",
+    "Governance-defined allowlist and review criteria for LP pools that Avana is willing to admit as collateral.",
 }
 
 const sections = [
@@ -20,11 +20,11 @@ const sections = [
 const poolFamilies = [
   {
     family: "Stable and correlated pools",
-    treatment: "Usually the simplest to admit when pricing, peg stability, and unwind depth are strong.",
+    treatment: "Often the easiest to admit when pricing is reliable, peg behavior is understood, and unwind depth remains strong.",
   },
   {
     family: "Blue-chip volatile pools",
-    treatment: "Can be supported with conservative collateral factors, liquidity checks, and stronger liquidation assumptions.",
+    treatment: "Can be supported, but usually with more conservative collateral factors, liquidity checks, and tougher liquidation assumptions.",
   },
   {
     family: "Concentrated liquidity positions",
@@ -32,7 +32,7 @@ const poolFamilies = [
   },
   {
     family: "Custom or experimental designs",
-    treatment: "Need explicit oracle, custody, and liquidation support before they can enter the allowlist.",
+    treatment: "Need explicit oracle, custody, and liquidation support before they can be considered for the allowlist at all.",
   },
 ]
 
@@ -52,18 +52,19 @@ export default function AllowedPoolsPage() {
 
           title="Allowed LP Pools"
 
-          description="Governance-controlled allowlist for the pools and LP families that may be admitted as collateral."
+          description="Governance-controlled allowlist for the pools and LP families Avana is prepared to accept as collateral."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            LP collateral is accepted only from pre-approved pools or templates. Admission is not
-            based on brand name alone. Avana needs enough information to value the position,
-            manage liquidation, and constrain exposure inside the protocol&apos;s risk framework.
+            Avana only accepts LP collateral from pools or templates that have already been reviewed
+            and approved. The allowlist exists because LP support is not just a question of venue
+            brand or token format. The protocol needs enough information to price the position,
+            manage liquidation, and bound the risk it is taking on.
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm leading-relaxed text-gray-600">
             Pool approval works alongside{" "}
             <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
               Collateral Factors
@@ -79,6 +80,11 @@ export default function AllowedPoolsPage() {
 
         <section id="review-criteria" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Review Criteria</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
+            A pool enters the allowlist only when the protocol can answer the same basic questions
+            every time: can it price the position, can it exit the position, and can it monitor the
+            risk in production.
+          </p>
           <ul className="space-y-3 text-sm text-gray-600">
             {reviewCriteria.map((criterion) => (
               <li key={criterion} className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
@@ -103,14 +109,14 @@ export default function AllowedPoolsPage() {
         <section id="risk-application" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Risk Application</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Avana does not apply one blanket collateral factor to an entire spoke. Each admitted
-            LP position is valued independently, discounted according to its risk treatment, and then
-            added to the user&apos;s aggregate borrowing capacity inside that Borrow Spoke.
+            Pool approval does not mean a position gets generous credit treatment. After a pool is
+            admitted, each LP position is still valued on its own, discounted according to its risk
+            treatment, and then added to the user&apos;s borrowing capacity inside the Borrow Spoke.
           </p>
-          <p className="text-sm text-gray-600">
-            This is why pool approval and collateral valuation are tightly linked: a pool may be
-            operationally valid for deposit, but still require conservative caps, lower LTVs, or
-            stricter liquidation handling once it is admitted.
+          <p className="text-sm leading-relaxed text-gray-600">
+            That is why pool approval and collateral valuation are tightly linked. A pool can be
+            safe enough to admit while still requiring conservative caps, lower LTVs, or stricter
+            liquidation handling once it is live.
           </p>
         </section>
 
@@ -119,11 +125,11 @@ export default function AllowedPoolsPage() {
           <div className="space-y-3 text-sm text-gray-600">
             <p>
               Builders should think in terms of approved pool templates and deployment-specific
-              allowlists, not an open-ended list of all LPs in a venue.
+              allowlists, not as if every LP in a venue is automatically fair game.
             </p>
             <p>
-              New pool families usually require updates across oracle handling, liquidation routing,
-              risk limits, and monitoring infrastructure before they are safe to enable.
+              New pool families usually require coordinated work across oracle handling, liquidation
+              routing, risk limits, and monitoring infrastructure before they are safe to enable.
             </p>
           </div>
         </section>
