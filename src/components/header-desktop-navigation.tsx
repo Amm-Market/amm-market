@@ -77,7 +77,7 @@ export default function HeaderDesktopNavigation() {
               onMouseEnter={() => openDesktopMenu(menu.id)}
               onFocus={() => openDesktopMenu(menu.id)}
               onClick={() => openDesktopMenu(menu.id)}
-              className={`site-header-nav-link group relative inline-flex items-center gap-1 px-0 py-1 text-[0.92rem] font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out xl:gap-1.5 xl:text-[16px] ${isHighlighted ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
+              className={`site-header-nav-link group relative inline-flex items-center gap-1 px-0 py-1 font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out xl:gap-1.5 ${isHighlighted ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
             >
               <span>{menu.label}</span>
               <ChevronDown
@@ -95,7 +95,7 @@ export default function HeaderDesktopNavigation() {
           onFocus={closeDesktopMenu}
           aria-label="Help Center"
           title="Help Center"
-          className={`site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 text-[0.92rem] font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out xl:text-[16px] ${pathname === siteRoutes.faq ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
+          className={`site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${pathname === siteRoutes.faq ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
         >
           <span className="hidden xl:inline">Help Center</span>
           <BookOpenText
@@ -113,7 +113,7 @@ export default function HeaderDesktopNavigation() {
           onFocus={closeDesktopMenu}
           aria-label="Aave ARFC"
           title="Aave ARFC"
-          className="site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 text-[0.92rem] font-[560] tracking-[-0.02em] text-black/62 transition-[color,opacity] duration-200 ease-out hover:text-black/94 xl:text-[16px]"
+          className="site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 font-[560] tracking-[-0.02em] text-black/62 transition-[color,opacity] duration-200 ease-out hover:text-black/94"
         >
           <span className="hidden xl:inline">Aave ARFC</span>
           <ArrowUpRight

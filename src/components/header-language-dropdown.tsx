@@ -76,7 +76,7 @@ export default function HeaderLanguageDropdown({
         className={`site-header-nav-link group relative inline-flex items-center justify-center px-0 py-1 font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${
           isMobile
             ? "h-10 gap-2 text-[1rem] text-[#01AACF]"
-            : `h-10 gap-1.5 text-[0.92rem] xl:gap-2.5 xl:text-[0.98rem] ${isOpen ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`
+            : `h-9 gap-1.5 xl:gap-2 ${isOpen ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`
         }`}
       >
         <Globe2 aria-hidden="true" className="h-[19px] w-[19px] shrink-0" strokeWidth={2.25} />
