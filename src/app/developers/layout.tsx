@@ -10,7 +10,7 @@ const DeferredDeveloperSidebar = dynamic(
     loading: () => (
       <aside
         aria-hidden="true"
-        className="hidden h-[calc(100vh-73px)] w-64 shrink-0 border-r border-gray-200 md:block"
+        className="hidden h-[calc(100vh-73px)] w-64 shrink-0 border-r border-gray-200 xl:block"
       />
     ),
   },
@@ -55,10 +55,10 @@ export default function DevelopersLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex flex-1 min-h-screen bg-white">
-      <div className="flex flex-1 max-w-[1200px] mx-auto">
+    <div className="flex min-h-screen min-w-0 flex-1 overflow-x-clip bg-white">
+      <div className="mx-auto flex min-w-0 w-full max-w-[1200px] flex-1">
         <DeferredDeveloperSidebar />
-        <div className="flex-1 py-8 px-6 lg:px-10 min-w-0">
+        <div className="min-w-0 flex-1 px-4 py-8 sm:px-6 lg:px-10">
           <DeveloperContentWrapper>{children}</DeveloperContentWrapper>
         </div>
       </div>

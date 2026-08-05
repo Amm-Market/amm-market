@@ -88,9 +88,9 @@ const dexOracleTable = [
 
 export default function PriceOraclesPage() {
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-[1fr_220px] gap-8 xl:gap-12">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
       {/* Main content */}
-      <div data-developer-doc-export-root className="max-w-3xl">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
 
           title="Price Oracles"
