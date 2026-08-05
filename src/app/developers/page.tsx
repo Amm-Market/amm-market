@@ -151,8 +151,8 @@ function SectionHeader({
 
 export default function DevelopersPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,1fr)_220px] xl:gap-12">
-      <div data-developer-doc-export-root className="max-w-4xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-4xl flex-1">
         <section id="welcome" className="scroll-mt-32 pb-10">
           <DeveloperDocPageHeader
             title="Introduction"

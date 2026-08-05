@@ -145,7 +145,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteSchema) }}
         />
       </head>
-      <body className="bg-white font-sans">
+      <body className="overflow-x-clip bg-white font-sans">
         {/* Skip to main content link for accessibility - WCAG 2.4.1 */}
         <a
           href="#main-content"
@@ -153,9 +153,9 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-screen min-w-0 flex-col">
           <Header />
-          <main id="main-content" className="flex-1">
+          <main id="main-content" className="min-w-0 flex-1 overflow-x-clip">
             {children}
           </main>
           <Footer />
