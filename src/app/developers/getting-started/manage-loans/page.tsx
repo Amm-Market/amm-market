@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Manage Loans",
   description:
-    "Manage debt against LP collateral in Avana by monitoring health, adjusting positions, and staying inside Borrow Spoke and Hub constraints.",
+    "Manage open debt against LP collateral in Avana by watching health, updating positions carefully, and staying inside spoke and Hub limits.",
 }
 
 const sections = [
@@ -20,35 +20,36 @@ const sections = [
 
 export default function ManageLoansPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div data-developer-doc-export-root className="max-w-3xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
 
           title="Manage Loans"
 
-          description="Ongoing loan management means watching health, adjusting LP collateral carefully, and staying inside spoke-level borrowing limits."
+          description="Managing an open loan means treating collateral, debt, and venue state as one live position instead of separate actions."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="leading-relaxed text-gray-600">
-            A live Avana loan is not static. Borrowing headroom changes as LP positions move,
-            fee balances change, markets reprice, and Hub liquidity conditions evolve. Managing a
-            loan means treating collateral and debt as a linked position rather than as unrelated
-            actions.
+            A live Avana loan keeps moving even when the borrower does nothing. LP inventory shifts,
+            fees accrue, markets reprice, and available Hub liquidity can change. Good loan
+            management means following those moving parts together instead of looking only at the
+            debt number in isolation.
           </p>
         </section>
 
         <section id="borrowing-more" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Borrowing More</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            You can borrow more only when the Borrow Spoke still shows unused aggregate capacity and
-            the Hub can supply the requested asset.
+            Borrowing more is only possible when the Borrow Spoke still shows unused capacity after
+            revaluing the current positions and the Hub can still provide the requested asset.
           </p>
-          <p className="text-sm text-gray-600">
-            Partial repayment is the opposite lever: it reduces debt immediately, improves health,
-            and creates more room for later actions such as withdrawals or position changes.
+          <p className="text-sm leading-relaxed text-gray-600">
+            Partial repayment moves in the other direction. It reduces debt immediately, improves
+            health, and often creates the room needed for later actions such as withdrawals,
+            re-ranging, or collateral replacement.
           </p>
         </section>
 
@@ -57,16 +58,17 @@ export default function ManageLoansPage() {
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               <strong className="text-gray-900">Healthy:</strong> adjusted collateral value remains
-              comfortably above debt, leaving room for normal market moves.
+              comfortably above debt, leaving space for ordinary price movement and position drift.
             </p>
             <p>
               <strong className="text-gray-900">Watchlist:</strong> the account still passes checks,
-              but the remaining buffer is thinning. This is the point to repay, add approved
-              collateral, or reduce exposure.
+              but the remaining buffer is getting thin. This is the time to repay, add approved
+              collateral, or cut exposure before conditions get worse.
             </p>
             <p>
               <strong className="text-gray-900">Liquidatable:</strong> debt has moved too close to or
-              beyond the allowed borrowing boundary, so the liquidation framework can take over.
+              beyond the allowed borrowing boundary, so the liquidation framework is allowed to take
+              over.
             </p>
           </div>
           <p className="mt-4 text-sm text-gray-600">
@@ -81,10 +83,10 @@ export default function ManageLoansPage() {
         <section id="operational-control" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Operational Control</h2>
           <ul className="space-y-3 text-gray-600">
-            <li>Repay part of the debt to restore room</li>
+            <li>Repay part of the debt to rebuild buffer</li>
             <li>Add more approved LP collateral to the same Borrow Spoke</li>
-            <li>Claim accrued fees when post-claim health checks still pass</li>
-            <li>Withdraw or resize collateral only when the remaining account stays healthy</li>
+            <li>Claim accrued fees only when the account still passes post-claim health checks</li>
+            <li>Withdraw or resize collateral only when the remaining account still stays healthy</li>
           </ul>
         </section>
 
@@ -92,12 +94,13 @@ export default function ManageLoansPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Position Changes</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
-              Concentrated-liquidity positions may need re-ranging or replacement over time. Fungible
-              LP positions may be resized or rotated within the supported collateral set.
+              Concentrated-liquidity positions may need re-ranging or replacement as market price
+              moves. Fungible LP positions may be resized or rotated within the supported collateral
+              set.
             </p>
             <p>
-              The protocol does not treat these as cosmetic edits. Any change that alters LP
-              exposure is re-evaluated through the same admission, valuation, and health checks used
+              The protocol does not treat those moves as cosmetic edits. Any change that alters LP
+              exposure is pushed back through the same admission, valuation, and health checks used
               for deposits and borrows.
             </p>
           </div>
@@ -106,9 +109,9 @@ export default function ManageLoansPage() {
         <section id="key-constraints" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Key Constraints</h2>
           <ul className="space-y-2 text-gray-600">
-            <li>Collateral changes cannot leave debt above allowed spoke capacity</li>
-            <li>New positions must remain inside the approved pool set</li>
-            <li>Borrow actions still depend on Hub liquidity and caps</li>
+            <li>Collateral changes cannot leave the remaining debt above allowed spoke capacity</li>
+            <li>New or replacement positions must stay inside the approved pool set</li>
+            <li>Borrow actions still depend on Hub liquidity and active caps</li>
             <li>At-risk accounts should use repayment or collateral addition before liquidation is triggered</li>
           </ul>
           <p className="mt-4 text-sm text-gray-600">

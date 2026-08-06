@@ -8,9 +8,35 @@ export default function BorrowPowerSection() {
         <div className="space-y-4">
           <SectionEyebrow tone="blue">Borrow Power</SectionEyebrow>
           <SectionTitle className="max-w-[14ch]">
-            <span className="block">Combine LP positions</span>
-            <span className="block">for higher credit limits.</span>
+            Aggregate collateral for more credit
           </SectionTitle>
+
+          <ol className="mt-7 grid max-w-[32rem] gap-4 text-[0.98rem] leading-[1.55] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
+            <li className="flex gap-3">
+              <span className="mt-0.5 font-semibold text-[#01AACF]">1.</span>
+              <span>
+                Stack borrowing power across multiple
+                <br />
+                supported LP positions in one market.
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="mt-0.5 font-semibold text-[#01AACF]">2.</span>
+              <span>
+                Track each position’s health alongside
+                <br />
+                your total account credit.
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="mt-0.5 font-semibold text-[#01AACF]">3.</span>
+              <span>
+                Add or adjust collateral as market
+                <br />
+                conditions and capacity change.
+              </span>
+            </li>
+          </ol>
         </div>
 
         <div className="relative flex justify-center md:justify-end">

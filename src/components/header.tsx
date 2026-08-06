@@ -1,23 +1,16 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { ChevronRight } from "lucide-react"
+import { useEffect, useState } from "react"
 import HeaderDesktopNavigation from "@/components/header-desktop-navigation"
+import HeaderLanguageDropdown from "@/components/header-language-dropdown"
 import HeaderMobileNavigation from "@/components/header-mobile-navigation"
 import { desktopUtilityLinks } from "@/components/header-nav-data"
 import { HEADER_WORDMARK_PATH, SITE_NAME, siteRoutes } from "@/lib/site"
 
-function SandboxIcon() {
-  return (
-    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" className="h-5 w-5 shrink-0">
-      <path d="M14 18V11H21" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M34 18V11H27" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M14 30V37H21" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M34 30V37H27" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="24" cy="24" r="4.4" fill="currentColor" />
-    </svg>
-  )
-}
-
-function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
+function BrandLogo() {
   return (
     <span className="inline-flex items-center overflow-hidden">
       <Image
@@ -26,15 +19,30 @@ function BrandLogo({ mobileOnly = false }: { mobileOnly?: boolean }) {
         width={480}
         height={240}
         quality={85}
-        className={mobileOnly ? "h-[56px] w-auto scale-[1.08] origin-left" : "h-[56px] w-auto scale-[1.08] origin-left md:h-[52px]"}
+        className="h-[56px] w-auto scale-[1.08] origin-left md:h-[52px]"
       />
     </span>
   )
 }
 
 export default function Header(): React.JSX.Element {
+  const [hasScrolled, setHasScrolled] = useState(false)
+
+  useEffect(() => {
+    const updateScrolledState = () => {
+      setHasScrolled(window.scrollY > 0)
+    }
+
+    updateScrolledState()
+    window.addEventListener("scroll", updateScrolledState, { passive: true })
+
+    return () => {
+      window.removeEventListener("scroll", updateScrolledState)
+    }
+  }, [])
+
   return (
-    <header className="sticky top-0 z-50 border-b border-[#01AACF] bg-[linear-gradient(rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.94)_100%)] backdrop-blur-[10px]">
+    <header className={`sticky top-0 z-50 border-b bg-[linear-gradient(rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.94)_100%)] backdrop-blur-[10px] transition-colors duration-200 ${hasScrolled ? "border-[#01AACF]" : "border-transparent"}`}>
       <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 md:h-[54px] md:gap-3 md:px-6 lg:px-6 xl:px-8">
         <div className="inline-flex shrink-0 items-center">
           <Link href={siteRoutes.home} prefetch={false} aria-label={SITE_NAME} data-framer-name="Logo" className="inline-flex items-center">
@@ -44,7 +52,9 @@ export default function Header(): React.JSX.Element {
 
         <HeaderDesktopNavigation />
 
-        <div className="hidden items-center gap-2 md:flex">
+        <div className="hidden items-center gap-1.5 lg:flex xl:gap-2">
+          <HeaderLanguageDropdown />
+
           {desktopUtilityLinks.map((link) => (
             <Link
               key={link.label}
@@ -52,17 +62,22 @@ export default function Header(): React.JSX.Element {
               prefetch={false}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noreferrer" : undefined}
-              className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-3 py-1.5 text-xs font-semibold text-gray-900 transition-colors hover:bg-gray-100 lg:px-3.5 lg:py-[0.45rem]"
+              className="site-header-cta group inline-flex h-8 items-center justify-center rounded-full border border-[#151c22]/80 bg-white px-2.5 font-[620] tracking-[-0.035em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white xl:h-[34px] xl:px-3.5"
             >
-              <span className="inline-flex items-center gap-1.5">
-                <SandboxIcon />
-                <span>{link.label}</span>
+              <span className="inline-flex items-center gap-1.5 xl:gap-2.5">
+                <span className="xl:hidden">Sandbox</span>
+                <span className="hidden xl:inline">{link.label}</span>
+                <ChevronRight
+                  aria-hidden="true"
+                  className="h-4 w-4 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:animate-[header-cta-arrow-blink_0.85s_ease-in-out_infinite]"
+                  strokeWidth={2.8}
+                />
               </span>
             </Link>
           ))}
         </div>
 
-        <HeaderMobileNavigation brand={<BrandLogo mobileOnly />} />
+        <HeaderMobileNavigation />
       </div>
     </header>
   )

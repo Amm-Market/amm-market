@@ -23,7 +23,8 @@ export default function PositionSafetySection() {
     <ProductFeatureScrollSection
       eyebrow="Position Safety"
       eyebrowTone="violet"
-      title="Every health state, fully explained."
+      title="Every health state, fully explained"
+      description="Track health, warning, and liquidation states before an LP-backed loan needs action."
       items={safetyFeatures}
       panels={[
         /* Safe Zone — dashboard card with healthy ring + chart */

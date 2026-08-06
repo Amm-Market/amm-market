@@ -3,7 +3,7 @@ import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
-import { BadgePercent, BellRing, Gauge, LockKeyhole, MoveRight, WalletCards } from "lucide-react"
+import { Gauge, Layers, LockKeyhole, MoveRight, TrendingUp, WalletCards } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, siteRoutes } from "@/lib/site"
@@ -12,7 +12,6 @@ const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/Home
 const PlatformToolsShowcaseSection = dynamic(() => import("@/components/platform-tools-showcase-section"))
 const InvestApySection = dynamic(() => import("@/components/invest-apy-section"))
 const InvestGrowthCalculatorSection = dynamic(() => import("@/components/invest-growth-calculator-section"))
-const ProductFeatureScrollSection = dynamic(() => import("@/components/product-feature-scroll-section"))
 const DeferredTradeMarketShowcase = dynamic(() => import("@/components/deferred-trade-market-showcase"))
 
 const pageDescription =
@@ -57,26 +56,7 @@ const stableSpokeFaqItems: InlineFaqItem[] = [
   },
 ]
 
-const investFeatureItems = [
-  {
-    title: "Easy money movement",
-    description: "Access and move capital whenever liquidity is available, all from one simple online interface.",
-  },
-  {
-    title: "Rates above the benchmark",
-    description: "Supplier yield is designed to sit above most bank cash products while staying tied to real onchain demand.",
-  },
-  {
-    title: "Supply once, power many borrowers",
-    description: "One deposit can help fund a network of specialized LP borrowers across multiple spoke markets through one cleaner capital surface.",
-  },
-  {
-    title: "Base rate plus risk premium",
-    description: "Supplier returns combine the Aave v4 Hub base rate with Avana's LP borrower risk premium.",
-  },
-] as const
-
-const liquidationModelCards = [
+const keyFeatureCards = [
   {
     icon: Gauge,
     title: "See your supply rates",
@@ -84,38 +64,38 @@ const liquidationModelCards = [
       "Track APY, utilization, and demand across lending markets from one clear supplier view.",
   },
   {
-    icon: LockKeyhole,
+    icon: WalletCards,
     title: "Manage your deposits",
     description:
       "Keep balances, accrued yield, and available liquidity together in one consolidated surface.",
   },
   {
-    icon: MoveRight,
-    title: "Navigate rate shifts",
-    description:
-      "Stay ahead when utilization and borrower demand move rates across stablecoin, ETH, and BTC markets.",
-  },
-  {
-    icon: BadgePercent,
+    icon: LockKeyhole,
     title: "Earn on flexible terms",
     description:
       "Supply when it suits you, earn continuously, and withdraw principal plus yield with no lock-up.",
   },
   {
-    icon: WalletCards,
+    icon: MoveRight,
+    title: "Easy money movement",
+    description:
+      "Access and move capital whenever liquidity is available, all from one simple online interface.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Navigate rate shifts",
+    description:
+      "Stay ahead when utilization and borrower demand move rates across stablecoin, ETH, and BTC markets.",
+  },
+  {
+    icon: Layers,
     title: "Allocate with clarity",
     description:
       "Decide where capital should sit across lending markets without losing sight of overall yield.",
   },
-  {
-    icon: BellRing,
-    title: "Act on clear signals",
-    description:
-      "Stay ready with timely cues when utilization, liquidity, or rate conditions need attention.",
-  },
 ] as const
 
-function LiquidationModelCard({
+function KeyFeatureCard({
   icon: Icon,
   title,
   description,
@@ -126,7 +106,7 @@ function LiquidationModelCard({
 }) {
   return (
     <article className="flex flex-col feature-card rounded-[1.5rem] p-5 md:p-6">
-      <Icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
+      <Icon className="h-8 w-8 text-[#01AACF]" strokeWidth={1.85} />
       <FeatureCardTitle className="mt-5">{title}</FeatureCardTitle>
       <FeatureCardDescription className="mt-3 max-w-[22rem]">{description}</FeatureCardDescription>
     </article>
@@ -203,11 +183,11 @@ export default function LendPage() {
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
                   <h1 className="mb-3 max-w-[14ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[11ch] md:text-5xl lg:text-5xl xl:text-6xl">
                     <span className="block">Earn Interest</span>
-                    <span className="block">on your assets.</span>
+                    <span className="block">on your assets</span>
                   </h1>
 
                   <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
-                    Supply single assets, earn demand-driven yield, and keep capital flexible as new opportunities appear.
+                    Supply single assets and earn yields where LP collateral creates real borrow utilization.
                   </p>
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
@@ -235,15 +215,54 @@ export default function LendPage() {
         </div>
       </div>
 
-      <section className="deferred-viewport-tall border-t border-gray-200 bg-white">
+      <section className="border-t border-[#01AACF] bg-white site-section-gap">
+        <div className="site-content-shell">
+          <div className="flex flex-col gap-3">
+            <SectionEyebrow tone="emerald">How it works</SectionEyebrow>
+            <SectionTitle>Lending in three steps</SectionTitle>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
+            <div className="feature-card rounded-2xl p-6 md:p-8">
+              <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
+              <FeatureCardTitle className="mt-6">Pick a market</FeatureCardTitle>
+              <FeatureCardDescription className="mt-3">
+                Browse lending markets like GHO, USDC, USDT, ETH, and WBTC while tracking APY, utilization, and borrower demand.
+              </FeatureCardDescription>
+            </div>
+
+            <div className="feature-card rounded-2xl p-6 md:p-8">
+              <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
+              <FeatureCardTitle className="mt-6">Supply assets</FeatureCardTitle>
+              <FeatureCardDescription className="mt-3">
+                Connect your wallet, approve the asset, and supply so your funds enter the pool and start earning right away.
+              </FeatureCardDescription>
+            </div>
+
+            <div className="feature-card rounded-2xl p-6 md:p-8">
+              <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
+              <FeatureCardTitle className="mt-6">Earn and withdraw</FeatureCardTitle>
+              <FeatureCardDescription className="mt-3">
+                Interest accrues continuously, and you can withdraw principal plus yield anytime with no lock-up period.
+              </FeatureCardDescription>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="deferred-viewport-tall bg-white">
         <DeferredTradeMarketShowcase />
       </section>
 
       <section className="relative z-10 site-section-gap">
         <div className="site-content-shell">
+          <div className="mb-8 max-w-[600px] space-y-3 md:mb-10">
+            <SectionEyebrow tone="emerald">Why supply</SectionEyebrow>
+            <SectionTitle>Clear rates, flexible capital, one place to manage it</SectionTitle>
+          </div>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {liquidationModelCards.map((card) => (
-              <LiquidationModelCard
+            {keyFeatureCards.map((card) => (
+              <KeyFeatureCard
                 key={card.title}
                 icon={card.icon}
                 title={card.title}
@@ -251,12 +270,6 @@ export default function LendPage() {
               />
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="site-section-gap">
-        <div className="site-content-shell">
-          <PlatformToolsShowcaseSection />
         </div>
       </section>
 
@@ -268,208 +281,12 @@ export default function LendPage() {
         <div className="site-content-width flex flex-col site-section-stack site-section-gap pb-16 md:pb-20 2xl:pb-18">
           <InvestGrowthCalculatorSection />
 
-          <ProductFeatureScrollSection
-            eyebrowTone="emerald"
-            title="A market-leading rate"
-            items={investFeatureItems}
-            panels={[
-              /* 01 Easy money movement — deposit/withdraw flow card */
-              <div key="p1" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(16,185,129,0.04),transparent_55%)]" />
-                <div className="absolute inset-0 flex items-center justify-center p-5">
-                  <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">Capital flow</span>
-                      <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-emerald-400 panel-pulse" /><span className="text-[8px] font-medium text-emerald-500">Live</span></div>
-                    </div>
-                    <div className="mt-3 flex items-center gap-2">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-emerald-200 bg-emerald-50 text-emerald-700">
-                        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 2v11M4 9l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                      </div>
-                      <svg width="24" height="18" viewBox="0 0 24 18" className="shrink-0 text-emerald-400" aria-hidden="true"><path d="M2 9H22" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 5" strokeLinecap="round" className="panel-dash-flow" /><path d="M18 5l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                      <div className="min-w-0 flex-1 rounded-[14px] border border-gray-200 bg-gray-50/90 px-3 py-2.5 text-center">
-                        <span className="text-sm font-medium text-gray-400">$</span>
-                        <div className="inline-block h-[1.65rem] overflow-hidden align-middle">
-                          <div className="panel-ticker-v-fast" style={{ animationDuration: "9s" }}>
-                            {["72,400","72,680","72,120","72,400"].map((v,i) => (
-                              <div key={i} className="flex h-[1.65rem] items-center"><span className="text-[1.35rem] font-semibold leading-none tracking-[-0.04em] text-[#18323c]">{v}</span></div>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="mt-1.5 flex items-center justify-center gap-1 rounded-full border border-gray-200 bg-white px-2 py-0.5"><span className="h-1.5 w-1.5 rounded-full bg-[#2775ca]" /><span className="text-[10px] font-medium text-gray-700">USDC</span></div>
-                      </div>
-                      <svg width="24" height="18" viewBox="0 0 24 18" className="shrink-0 text-gray-300" aria-hidden="true"><path d="M2 9H22" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 5" strokeLinecap="round" className="panel-dash-flow" style={{ animationDelay: "0.35s" }} /><path d="M18 5l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-gray-200 bg-gray-50 text-gray-500">
-                        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 16V5M4 9l5-5 5 5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                      </div>
-                    </div>
-                    <div className="mt-3 border-t border-gray-100 pt-3">
-                      <div className="flex gap-2">
-                        {[{l:"Deposited",v:"+72K",c:"text-emerald-600 bg-emerald-50"},{l:"Withdrawn",v:"11K",c:"text-gray-600 bg-gray-50"},{l:"Yield",v:"+$4.2K",c:"text-emerald-600 bg-emerald-50"}].map(m => (
-                          <div key={m.l} className="flex-1 rounded-lg border border-gray-100 px-2 py-1.5 text-center">
-                            <span className="block text-[7px] font-medium text-gray-400">{m.l}</span>
-                            <span className={`rounded-md px-1 text-[10px] font-semibold tabular-nums ${m.c}`}>{m.v}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>,
-
-              /* 02 A market-leading rate — APY card with sparkline chart */
-              <div key="p2" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_55%,rgba(16,185,129,0.05),transparent_55%)]" />
-                <div className="absolute inset-0 flex items-center justify-center p-5">
-                  <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">Supply APY</span>
-                        <div className="mt-1 h-[2.8rem] overflow-hidden">
-                          <div className="panel-ticker-v-fast" style={{ animationDuration: "8s" }}>
-                            {["6.1","6.2","6.0","6.1"].map((v,i) => (
-                              <div key={i} className="flex h-[2.8rem] items-center"><span className="text-[2.5rem] font-semibold leading-none tracking-[-0.06em] text-[#18323c]">{v}<span className="text-lg font-normal text-gray-300">%</span></span></div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      <span className="mt-1 shrink-0 rounded-full border border-emerald-100 bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-emerald-800">APY</span>
-                    </div>
-                    <div className="relative mt-3 h-[80px] w-full overflow-hidden rounded-[14px] border border-emerald-100/60 bg-[linear-gradient(180deg,#f8fffb_0%,#effcf5_100%)]">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.10),transparent_60%)]" />
-                      <div className="absolute inset-x-3 inset-y-0"><div className="absolute left-0 right-0 top-[25%] border-t border-emerald-100/60" /><div className="absolute left-0 right-0 top-1/2 border-t border-emerald-100/50" /><div className="absolute left-0 right-0 top-[75%] border-t border-emerald-100/40" /></div>
-                      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 300 80" preserveAspectRatio="none" aria-hidden="true">
-                        <defs><linearGradient id="inv-rate-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#14b8a6" stopOpacity="0.18" /><stop offset="100%" stopColor="#14b8a6" stopOpacity="0" /></linearGradient></defs>
-                        <path d="M0,58 C45,52 90,44 130,34 S210,18 250,12 L300,8 L300,80 L0,80Z" fill="url(#inv-rate-g)" />
-                        <path d="M0,58 C45,52 90,44 130,34 S210,18 250,12 L300,8" fill="none" stroke="#0d9488" strokeWidth="2.5" strokeLinecap="round" />
-                        <circle className="panel-ring" cx="288" cy="10" r="4" fill="white" stroke="#0d9488" strokeWidth="2" />
-                      </svg>
-                      <div className="absolute bottom-1.5 left-3 text-[7px] font-medium text-emerald-400">7d</div>
-                      <div className="absolute bottom-1.5 right-3 text-[7px] font-medium text-emerald-500">now</div>
-                    </div>
-                    <div className="mt-2 flex gap-2">
-                      {[{l:"24h fees",vals:["+$48.20","+$51.30","+$49.80","+$48.20"]},{l:"30d yield",vals:["+$1,420","+$1,485","+$1,510","+$1,420"]}].map(m => (
-                        <div key={m.l} className="flex-1 rounded-xl border border-emerald-100/50 bg-[linear-gradient(180deg,rgba(236,253,245,0.4),rgba(255,255,255,0.95))] px-2 py-1.5 text-center">
-                          <span className="block text-[8px] font-medium text-gray-400">{m.l}</span>
-                          <div className="h-3.5 overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: m.l === "24h fees" ? "7s" : "9s" }}>{m.vals.map((v,i) => (<span key={i} className="block h-3.5 text-[11px] font-semibold tabular-nums text-emerald-600">{v}</span>))}</div></div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>,
-
-              /* 03 Supply once — hub with spoke branches */
-              <div key="p3" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
-                <div className="absolute inset-0 flex items-center justify-center p-5">
-                  <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                    <div className="relative isolate min-h-[9.5rem]">
-                      <svg className="pointer-events-none absolute inset-0 z-0 h-full w-full text-gray-200" viewBox="0 0 260 120" fill="none" aria-hidden="true">
-                        <path d="M52 60H92" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                        <path d="M52 60H92" stroke="#6ee7b7" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="4 6" className="panel-dash-flow" />
-                        <path d="M128 60C150 60 168 38 196 28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                        <path d="M128 60H200" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                        <path d="M128 60C150 60 168 82 196 92" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                        <path d="M128 60C150 60 168 38 196 28" stroke="#6ee7b7" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 7" className="panel-dash-flow" />
-                        <path d="M128 60H200" stroke="#6ee7b7" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 7" className="panel-dash-flow" style={{ animationDelay: "0.25s" }} />
-                        <path d="M128 60C150 60 168 82 196 92" stroke="#6ee7b7" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 7" className="panel-dash-flow" style={{ animationDelay: "0.5s" }} />
-                      </svg>
-                      <div className="relative z-10 flex min-h-[9.5rem] items-center gap-1.5 sm:gap-2">
-                        <div className="w-[4.5rem] shrink-0 rounded-xl border border-gray-200 bg-gray-50/90 px-2 py-2.5 text-center shadow-sm sm:w-[4.75rem]">
-                          <p className="text-xs font-semibold tabular-nums text-[#18323c]">72k</p>
-                          <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-600">USDC</p>
-                        </div>
-                        <div className="flex min-w-0 flex-1 items-center justify-center">
-                          <div className="relative flex h-11 w-11 items-center justify-center rounded-full border-2 border-emerald-300 bg-emerald-50 text-xs font-bold text-emerald-900 shadow-sm sm:h-12 sm:w-12">
-                            H<span className="panel-ring pointer-events-none absolute inset-[-5px] rounded-full border border-emerald-100/90" />
-                          </div>
-                        </div>
-                        <div className="flex w-[5rem] shrink-0 flex-col justify-center gap-1.5 sm:w-[5.5rem]">
-                          {[{pair:"ETH/USDC",n:3},{pair:"WBTC/ETH",n:2},{pair:"ARB/USDC",n:4}].map(s => (
-                            <div key={s.pair} className="rounded-lg border border-gray-200 bg-white px-2 py-1 shadow-sm">
-                              <span className="block text-[8px] font-semibold text-[#18323c]">{s.pair}</span>
-                              <div className="mt-0.5 flex gap-0.5">{Array.from({length:s.n}).map((_,i) => (<span key={i} className="h-1 w-1 rounded-full bg-emerald-300" />))}</div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>,
-
-              /* 04 Base + premium — stacked rate breakdown with sheen */
-              <div key="p4" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
-                <div className="absolute inset-0 flex items-center justify-center p-5">
-                  <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                    <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-3">
-                      <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.08em] text-[#01AACF]"><span>Hub base</span><span>+ Spoke premium</span></div>
-                      <div className="mt-2 flex h-10 w-full overflow-hidden rounded-lg bg-white shadow-inner">
-                        <div className="flex items-center justify-center bg-gray-200/90 text-sm font-semibold tabular-nums text-[#18323c]" style={{ width: "57%" }}>4.1%</div>
-                        <div className="flex items-center justify-center bg-emerald-500 text-sm font-semibold tabular-nums text-white" style={{ width: "43%" }}>+3.1%</div>
-                      </div>
-                    </div>
-                    <div className="relative mt-4 overflow-hidden rounded-[16px] border border-emerald-200 bg-emerald-50/80 px-4 py-4">
-                      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.55),rgba(255,255,255,0)_42%,rgba(16,185,129,0.08))]" />
-                      <div className="panel-sheen-slide pointer-events-none absolute inset-y-0 left-0 z-[1] w-1/2 bg-gradient-to-r from-transparent via-white/55 to-transparent opacity-90" />
-                      <div className="relative z-[2] flex items-end justify-between gap-3">
-                        <div className="min-w-0 text-left">
-                          <div className="h-1.5 w-16 overflow-hidden rounded-full bg-white/90 ring-1 ring-emerald-100"><div className="h-full w-full rounded-full bg-emerald-500" /></div>
-                          <span className="mt-3 block text-[2.5rem] font-semibold tabular-nums leading-none tracking-[-0.04em] text-[#18323c]">7.2<span className="text-xl font-normal text-gray-300">%</span></span>
-                        </div>
-                        <span className="shrink-0 rounded-full border border-emerald-200 bg-white px-2.5 py-1 text-xs font-semibold text-emerald-900 shadow-sm">=</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>,
-            ]}
-          />
-
-          <section>
-            <div className="flex flex-col gap-3">
-              <SectionEyebrow tone="emerald">How it works</SectionEyebrow>
-              <SectionTitle>
-                Get started
-                <span className="md:hidden">
-                  <br />
-                </span>
-                <span className="hidden md:inline"> </span>
-                with as little as $1.
-              </SectionTitle>
-            </div>
-
-            <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
-              <div className="feature-card rounded-2xl p-6 md:p-8">
-                <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
-                <FeatureCardTitle className="mt-6">Pick a market</FeatureCardTitle>
-                <FeatureCardDescription className="mt-3">
-                  Browse lending markets like GHO, USDC, USDT, ETH, and WBTC while tracking APY, utilization, and borrower demand.
-                </FeatureCardDescription>
-              </div>
-
-              <div className="feature-card rounded-2xl p-6 md:p-8">
-                <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
-                <FeatureCardTitle className="mt-6">Make a deposit</FeatureCardTitle>
-                <FeatureCardDescription className="mt-3">
-                  Connect your wallet, approve the asset, and supply so your funds enter the pool and start earning right away.
-                </FeatureCardDescription>
-              </div>
-
-              <div className="feature-card rounded-2xl p-6 md:p-8">
-                <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
-                <FeatureCardTitle className="mt-6">Earn and withdraw</FeatureCardTitle>
-                <FeatureCardDescription className="mt-3">
-                  Interest accrues continuously, and you can withdraw principal plus yield anytime with no lock-up period.
-                </FeatureCardDescription>
-              </div>
-            </div>
-          </section>
+          <PlatformToolsShowcaseSection />
 
           <HomepageNewsroomSection collection="invest" eyebrowTone="emerald" />
 
           <div className="pb-16 md:pb-24 2xl:pb-22">
-            <InlineFaqSection title="Frequently asked questions." items={stableSpokeFaqItems} eyebrowTone="emerald" withTopBorder={false} />
+            <InlineFaqSection title="Frequently asked questions" items={stableSpokeFaqItems} eyebrowTone="emerald" withTopBorder={false} />
           </div>
         </div>
       </div>

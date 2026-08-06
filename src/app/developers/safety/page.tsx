@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Safety Mechanisms - Risk Framework",
   description:
-    "Avana Risk Framework - protocol-wide risk management across the Hub and LP Collateral Spokes, including roles, timelocked updates, and emergency controls.",
+    "Protocol-wide risk management for the Avana Hub and LP Collateral Spokes, including roles, bounded updates, and emergency controls.",
 }
 
 const sections = [
@@ -22,27 +22,27 @@ const corePrinciples = [
   {
     title: "Role Separation",
     description:
-      "Risk recommendation, independent review, and emergency containment are separate responsibilities.",
+      "The framework assigns proposing, reviewing, and emergency containment to different actors so one party does not control the full path alone.",
   },
   {
     title: "Constrained Execution",
     description:
-      "Risk changes only execute if they stay inside predefined policy bounds and pass framework validation.",
+      "Routine risk changes execute only when they remain inside predefined policy bounds and pass validation checks.",
   },
   {
     title: "Public Consistency",
     description:
-      "What is disclosed before submission should match what is actually queued for execution.",
+      "The update described publicly should be the same update that is actually queued for execution.",
   },
   {
     title: "Spoke Awareness",
     description:
-      "Each LP collateral spoke has its own admissibility rules, oracle assumptions, liquidation logic, and risk profile.",
+      "Each LP collateral spoke carries its own listing rules, oracle assumptions, liquidation path, and risk profile.",
   },
   {
     title: "Defensive Asymmetry",
     description:
-      "It should always be easier to reduce risk than to increase it.",
+      "The process is intentionally biased so reducing risk is faster and simpler than expanding it.",
   },
 ]
 
@@ -50,7 +50,7 @@ const roles = [
   {
     title: "Avana Risk Initiator",
     summary:
-      "The primary recommending authority for routine risk updates across the Hub and LP Collateral Spokes.",
+      "The role that prepares and recommends routine risk changes for the Hub and LP Collateral Spokes.",
     responsibilities: [
       "Publish the rationale and classify the update as defensive or growth-oriented",
       "Submit routine updates into the timelocked execution path",
@@ -61,7 +61,7 @@ const roles = [
   {
     title: "Avana Risk Guardian",
     summary:
-      "The independent review and veto layer that preserves integrity, consistency, and execution safety.",
+      "The independent reviewer with veto authority over queued routine changes.",
     responsibilities: [
       "Verify that the queued update matches the public disclosure",
       "Check that the action stays inside approved policy bounds",
@@ -72,7 +72,7 @@ const roles = [
   {
     title: "Avana Risk Defender",
     summary:
-      "The narrow emergency containment role for incidents where the normal timelocked process would create unacceptable exposure.",
+      "The emergency-only role used to contain incidents when the normal timelocked path is too slow.",
     responsibilities: [
       "Reduce borrow caps or supply caps to defensive levels",
       "Freeze new borrowing on a spoke or freeze collateral usage for a pool, template, or spoke",
@@ -86,37 +86,37 @@ const updateFlow = [
   {
     step: "Public Notice",
     description:
-      "The Risk Initiator publishes a notice describing the intended update and its rationale.",
+      "The Risk Initiator publishes the intended change, why it is needed, and the scope it is expected to affect.",
   },
   {
     step: "Submission",
     description:
-      "The Risk Initiator submits the proposed change into the execution path.",
+      "The Risk Initiator places the proposed change into the execution path used by the framework.",
   },
   {
     step: "Validation",
     description:
-      "The framework checks the update against predefined constraints and policy bounds.",
+      "Framework checks confirm that the update stays inside predefined constraints and approved policy bounds.",
   },
   {
     step: "Timelock",
     description:
-      "If valid, the update enters a timelock window before it can execute.",
+      "If validation passes, the change enters a timelock window instead of executing immediately.",
   },
   {
     step: "Guardian Review",
     description:
-      "During timelock, the Risk Guardian reviews the exact queued change and may veto it.",
+      "During timelock, the Risk Guardian reviews the exact queued payload and can cancel it if needed.",
   },
   {
     step: "Execution",
     description:
-      "If the change is not cancelled, it executes automatically after timelock.",
+      "If the change survives review, it executes automatically after the timelock expires.",
   },
   {
     step: "Emergency Path",
     description:
-      "If emergency conditions are met, the Risk Defender may act through a separate defensive path with narrower authority.",
+      "If emergency conditions are met, the Risk Defender can use a separate defensive path with narrower authority.",
   },
 ]
 
@@ -124,7 +124,7 @@ const parameterClasses = [
   {
     title: "Defensive Changes",
     tone: "border-red-400 bg-red-50/70",
-    description: "These should be the easiest changes to execute.",
+    description: "These are the fastest routine changes because they reduce protocol exposure.",
     examples: [
       "Lowering borrow caps",
       "Lowering supply caps",
@@ -137,7 +137,7 @@ const parameterClasses = [
     title: "Routine Bounded Changes",
     tone: "border-amber-400 bg-amber-50/70",
     description:
-      "These move through the standard Initiator -> Guardian -> timelock flow.",
+      "These follow the standard Initiator -> Guardian -> timelock route inside approved bounds.",
     examples: [
       "Modest cap increases",
       "Modest parameter tuning inside approved ranges",
@@ -147,7 +147,7 @@ const parameterClasses = [
   {
     title: "Governance-Level Changes",
     tone: "border-gray-300 bg-gray-50",
-    description: "These remain outside the routine framework path.",
+    description: "These are outside the routine framework and require a higher-level decision path.",
     examples: [
       "Creating a new spoke family",
       "Enabling a new LP primitive",
@@ -188,42 +188,41 @@ const emergencyDisclosures = [
 
 export default function RiskFrameworkPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div data-developer-doc-export-root className="max-w-3xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
 
           title="Risk Framework"
 
-          description="Protocol-wide operating rules for risk management across the Avana Hub and LP Collateral Spokes."
+          description="How Avana proposes, reviews, and executes risk changes across the Hub and LP Collateral Spokes."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            The Avana Risk Framework is the protocol-wide operating system for risk parameter
-            management across the Avana Hub and all LP Collateral Spokes. It governs how the
-            protocol interprets market data and protocol state, including circuit breakers, spot
-            price, utilization, liquidity pool depth, collateral concentration, volatility, peg
-            stability, proof-of-reserves inputs, supply and borrow caps, LT/LTV settings, interest
-            rate models, market status, portfolio composition, and position health.
+            The Avana Risk Framework defines how parameter changes are proposed, checked, and
+            executed across the Hub and LP Collateral Spokes. It covers the controls used when the
+            protocol adjusts supply and borrow caps, LT/LTV settings, interest-rate inputs, market
+            status, and other parameters that depend on prices, utilization, pool depth,
+            concentration, volatility, peg behavior, circuit breakers, position health, and
+            related state.
           </p>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            Avana is not a generic lending market. It is an LP-as-collateral protocol built on
-            Aave v4 infrastructure, supporting stable LPs, correlated-asset LPs, weighted pools,
-            concentrated liquidity positions, and other AMM designs through dedicated spokes. Those
-            markets do not share the same valuation logic, liquidation path, or failure modes, so
-            the framework exists to manage that complexity with clear operating rules.
+            LP collateral is not one homogeneous asset class. Stable LPs, correlated-asset LPs,
+            weighted pools, concentrated liquidity, and other AMM designs can each have their own
+            spoke-specific valuation path, liquidation path, and failure mode. The framework exists
+            so those differences are reflected in the update process instead of being hidden behind
+            a single generic risk setting.
           </p>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            The framework is built around three deliberately separated roles: the Avana Risk
-            Initiator, the Avana Risk Guardian, and the Avana Risk Defender. The actor
-            that proposes changes should not be the same actor that independently reviews them, and
-            emergency containment should remain narrower than routine risk management.
+            Three roles stay separate throughout that process: Avana Risk Initiator, Avana Risk
+            Guardian, and Avana Risk Defender. The party that recommends a routine change is not
+            the same party that independently checks it, and the role that can act during an
+            emergency is intentionally narrower than the routine path.
           </p>
           <p className="text-sm text-gray-600 border-l-4 border-rose-400 pl-3">
-            <strong>Core idea:</strong> it should always be easier to contain risk quickly than to
-            expand it casually.
+            <strong>Operating rule:</strong> reducing risk should be easier than expanding it.
           </p>
         </section>
 
@@ -271,7 +270,10 @@ export default function RiskFrameworkPage() {
         <section id="update-flow" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Update Flow</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
-            The standard framework flow is designed to be simple, reviewable, and auditable.
+            Routine changes follow a fixed path so the protocol can distinguish normal parameter
+            maintenance from emergency containment. The standard sequence is public notice,
+            submission, bound checks, timelock, Guardian review, and execution if the proposal is
+            not vetoed.
           </p>
 
           <div className="space-y-4">
@@ -301,7 +303,8 @@ export default function RiskFrameworkPage() {
         <section id="parameter-classes" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Parameter Classes</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
-            Not every parameter change should move through the same path.
+            Parameter changes do not all carry the same risk, so the framework groups them by how
+            much authority they should require and how quickly they should be able to move.
           </p>
 
           <div className="space-y-4">
@@ -331,7 +334,9 @@ export default function RiskFrameworkPage() {
         <section id="public-disclosure" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Public Disclosure</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
-            Each routine update should be published in a consistent format before submission.
+            Every routine update should be published before submission in a format that lets
+            developers, users, and reviewers compare the notice with the exact action that is later
+            queued.
           </p>
 
           <div className="rounded-xl border border-gray-200 bg-gray-50 p-5">
@@ -348,16 +353,18 @@ export default function RiskFrameworkPage() {
           </div>
 
           <p className="mt-4 text-sm text-gray-600">
-            This standard gives developers, users, and the Risk Guardian a clear basis for review.
+            Consistent disclosure makes it easier to review a proposal for scope creep, mismatched
+            assumptions, or simple execution mistakes.
           </p>
         </section>
 
         <section id="emergency-actions" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Emergency Actions</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            Emergency actions should be rare, narrow, and reversible. The Risk Defender should only
-            act when there is a defined or highly probable failure condition that makes waiting for
-            the normal timelocked process unsafe.
+            Emergency actions are for containment, not routine tuning. They should be used rarely,
+            kept as narrow as possible, and structured so the protocol can return to the standard
+            path once the immediate risk is understood. The Risk Defender should only act when a
+            defined or highly probable failure condition makes the normal timelocked route unsafe.
           </p>
 
           <div className="grid gap-4 md:grid-cols-2">
@@ -389,22 +396,22 @@ export default function RiskFrameworkPage() {
           </div>
 
           <p className="mt-6 text-sm text-gray-600 border-l-4 border-rose-400 pl-3">
-            Emergency authority is a defense mechanism, not a substitute for conservative routine
-            risk management.
+            Emergency authority exists only for defined or highly probable failure cases where
+            waiting on the normal timelock path is unsafe. It is not a path for routine growth or
+            optimization.
           </p>
         </section>
 
         <p className="text-sm leading-relaxed text-gray-600">
-          Most importantly, the framework separates recommendation, review, and emergency
-          containment because LP collateral is not a single market. It is a family of markets with
-          different structures, assumptions, and failure modes, and the framework is designed to
-          support that diversity with discipline, transparency, and operational control.
+          Recommendation, review, and emergency containment remain separate because LP collateral
+          is a collection of markets with different structures and failure modes, not one
+          interchangeable asset list.
         </p>
       </div>
 
       <DeveloperScrollSpyRail
         sections={sections}
-        pageSummary="Protocol-wide operating rules for risk management across the Avana Hub and LP Collateral Spokes."
+        pageSummary="How Avana governs risk updates across the Hub and LP Collateral Spokes through bounded roles, disclosure, and emergency controls."
         sectionColor="rose"
       />
     </div>

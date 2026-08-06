@@ -35,6 +35,7 @@
  * @note Hidden on mobile/tablet (lg:flex), only visible on desktop
  * @see src/app/developers - Used in documentation pages
  */
+import { AlignLeft } from "lucide-react"
 import { useEffect, useMemo, useState } from "react"
 
 /** Represents a trackable section on the page */
@@ -200,9 +201,10 @@ export function ScrollSpySidebar({
   }, [sections])
 
   return (
-    <div className="hidden xl:flex xl:pr-2">
-      <div className="flex max-w-[17rem] flex-col items-start justify-start gap-0">
-        <p className={`type-meta-label mb-2.5 pl-6 font-normal ${colors.labelText}`}>
+    <div className="w-full max-w-[17rem]">
+      <div className="flex w-full flex-col items-start justify-start gap-0">
+        <p className="mb-2.5 flex items-center gap-1.5 pl-6 text-[0.8125rem] font-normal tracking-[-0.01em] text-gray-500">
+          <AlignLeft aria-hidden="true" className="h-3.5 w-3.5 shrink-0" strokeWidth={2.25} />
           On this page
         </p>
 
@@ -252,13 +254,13 @@ export function ScrollSpySidebar({
                       behavior: "smooth",
                     })
                   }}
-                  className={`group relative inline-flex cursor-pointer items-center px-3 py-1 transition-all duration-200 ease-in-out ${
+                  className={`group relative inline-flex max-w-full cursor-pointer items-center px-3 py-1 transition-all duration-200 ease-in-out ${
                     isActive
                       ? `${colors.text}`
                       : "text-gray-500 hover:text-gray-900 hover:opacity-80"
                   }`}
                 >
-                  <p className="type-sidebar-link line-clamp-2 font-normal">{section.title}</p>
+                  <p className="type-sidebar-link line-clamp-2 break-words font-normal">{section.title}</p>
                 </a>
               </div>
             )
