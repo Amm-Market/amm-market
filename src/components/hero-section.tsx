@@ -166,6 +166,9 @@ function LendingSavingsSection() {
           <p className="text-[clamp(4.7rem,11vw,8.6rem)] font-bold leading-none tracking-[-0.08em] text-[#01AACF]">
             7.2%
           </p>
+          <p className="mt-2 text-sm font-medium tracking-[-0.01em] text-[#6b7280] lg:text-right">
+            Sandbox Rates
+          </p>
         </div>
       </div>
 
@@ -195,31 +198,31 @@ const lpUseCases: {
   {
     title: "Treasury financing",
     description:
-      "DAOs and treasuries can borrow against LP positions to fund runway without selling liquidity or fee flow.",
+      "Unlock cash against LP positions to fund runway without selling liquidity or giving up fee flow.",
     icon: Building2,
   },
   {
-    title: "Liquidity expansion",
+    title: "Grow exposure",
     description:
-      "LPs can borrow against existing positions, add liquidity, and grow fee exposure from the same capital base.",
+      "Borrow against existing positions, add liquidity, and expand fee exposure from the same capital base.",
     icon: Layers,
   },
   {
     title: "Trading liquidity",
     description:
-      "Traders can borrow against LP collateral to rebalance inventory, hedge risk, or move on short-notice trades.",
+      "Use LP-backed credit to rebalance inventory, hedge risk, or move quickly when a trade needs capital.",
     icon: ArrowLeftRight,
   },
   {
     title: "Cross-ecosystem credit",
     description:
-      "Keep LP collateral in one venue and borrow for deployment across other protocols, strategies, or chains.",
+      "Keep LP collateral in one venue and borrow for use across other protocols, strategies, or chains.",
     icon: Globe2,
   },
   {
-    title: "Runway and operations",
+    title: "Ops runway",
     description:
-      "Cover payroll, vendors, and launches with LP-backed credit without touching core positions or reserves.",
+      "Cover payroll, vendors, and launches with LP credit without touching core positions or reserves.",
     icon: BriefcaseBusiness,
   },
   {
@@ -239,9 +242,9 @@ export default function HeroSection() {
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="cyan">Borrow Markets</SectionEyebrow>
             <SectionTitle>
-              <span className="block lg:hidden">Borrow up to 80%</span>
-              <span className="block lg:hidden">from many liquidity pools</span>
-              <span className="hidden lg:block lg:whitespace-nowrap">Borrow up to 80% from many liquidity pools</span>
+              <span className="block lg:hidden">Access loans using</span>
+              <span className="block lg:hidden">hundreds of LP collateral.</span>
+              <span className="hidden lg:block lg:whitespace-nowrap">Access loans using hundreds of LP collateral.</span>
             </SectionTitle>
           </div>
             </div>
@@ -284,7 +287,7 @@ export default function HeroSection() {
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="amber">Multiply Markets</SectionEyebrow>
                 <SectionTitle>
-                  <span className="block lg:whitespace-nowrap">Loop like a pro</span>
+                  <span className="block">Increase Your Yield with Built-In Risk Controls</span>
                 </SectionTitle>
               </div>
             </div>
@@ -754,32 +757,28 @@ export default function HeroSection() {
 
 
       <div>
-        <div className="max-w-[58rem] space-y-4 text-left">
-          <SectionEyebrow tone="rose">LP use cases</SectionEyebrow>
-          <SectionTitle className="max-w-[14ch] lg:max-w-none">
-            <span className="lg:whitespace-nowrap">Ways businesses use LP credit.</span>
+        <div className="max-w-[58rem] space-y-3 text-left sm:space-y-4">
+          <SectionEyebrow tone="rose">Who it&apos;s for</SectionEyebrow>
+          <SectionTitle className="max-w-[18ch] sm:max-w-[22ch] lg:max-w-none">
+            <span className="block sm:inline">Ways teams put</span>{" "}
+            <span className="block sm:inline">LP credit to work</span>
           </SectionTitle>
         </div>
 
-        <div className="mt-10 -mx-5 overflow-x-auto px-5 pb-1 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] md:mx-0 md:mt-16 md:overflow-visible md:px-0 md:pb-0 md:snap-none [&::-webkit-scrollbar]:hidden">
-          <div className="flex w-max gap-8 md:grid md:w-full md:grid-cols-2 md:gap-x-16 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
-            {lpUseCases.map((item) => {
-              const Icon = item.icon
+        <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-10 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 md:mt-16 md:gap-x-16 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
+          {lpUseCases.map((item) => {
+            const Icon = item.icon
 
-              return (
-                <article
-                  key={item.title}
-                  className="flex w-[15rem] shrink-0 snap-start flex-col bg-transparent md:w-auto md:shrink"
-                >
-                  <Icon className="h-11 w-11 text-[#01AACF]" strokeWidth={1.5} aria-hidden="true" />
-                  <FeatureCardTitle className="mt-5">{item.title}</FeatureCardTitle>
-                  <FeatureCardDescription className="mt-2 max-w-[22rem]">
-                    {item.description}
-                  </FeatureCardDescription>
-                </article>
-              )
-            })}
-          </div>
+            return (
+              <article key={item.title} className="flex flex-col bg-transparent">
+                <Icon className="h-10 w-10 text-[#01AACF] sm:h-11 sm:w-11" strokeWidth={1.5} aria-hidden="true" />
+                <FeatureCardTitle className="mt-4 sm:mt-5">{item.title}</FeatureCardTitle>
+                <FeatureCardDescription className="mt-2 max-w-[22rem]">
+                  {item.description}
+                </FeatureCardDescription>
+              </article>
+            )
+          })}
         </div>
       </div>
 

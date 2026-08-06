@@ -518,19 +518,19 @@ export default function BorrowPage() {
                 <BorrowMarketCard
                   number="1"
                   title="Deposit LP"
-                  description="Deposit LP tokens from any supported DEX while your position stays active and keeps earning fees."
+                  description="Choose a supported LP position and deposit it as collateral while your liquidity stays active."
                 />
 
                 <BorrowMarketCard
                   number="2"
-                  title="Borrow instantly"
-                  description="Borrow up to 80% of your LP value based on pool risk, with assets deposited straight to your wallet."
+                  title="Draw liquidity"
+                  description="Borrow against the risk-adjusted value of the position and receive funds straight in your wallet."
                 />
 
                 <BorrowMarketCard
                   number="3"
-                  title="Repay anytime"
-                  description="Repay on your own timeline with no deadlines while keeping LTV under the liquidation threshold."
+                  title="Manage health"
+                  description="Repay, add collateral, or reduce debt before the position drifts toward the liquidation threshold."
                 />
               </div>
             </div>
