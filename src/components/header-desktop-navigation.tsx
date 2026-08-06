@@ -95,7 +95,7 @@ export default function HeaderDesktopNavigation() {
           onFocus={closeDesktopMenu}
           aria-label="Help Center"
           title="Help Center"
-          className={`site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${pathname === siteRoutes.faq ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
+          className={`site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${pathname === siteRoutes.faq ? "text-[#01AACF]" : "text-black/62 hover:text-[#01AACF]"}`}
         >
           <span className="hidden xl:inline">Help Center</span>
           <BookOpenText
@@ -113,7 +113,7 @@ export default function HeaderDesktopNavigation() {
           onFocus={closeDesktopMenu}
           aria-label="Aave ARFC"
           title="Aave ARFC"
-          className="site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 font-[560] tracking-[-0.02em] text-black/62 transition-[color,opacity] duration-200 ease-out hover:text-black/94"
+          className="site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 font-[560] tracking-[-0.02em] text-black/62 transition-[color,opacity] duration-200 ease-out hover:text-[#01AACF]"
         >
           <span className="hidden xl:inline">Aave ARFC</span>
           <ArrowUpRight

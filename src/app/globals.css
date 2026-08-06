@@ -501,6 +501,17 @@
   font-size: inherit;
 }
 
+@keyframes header-cta-arrow-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.25;
+  }
+}
+
 @media (min-width: 768px) {
   .site-header-nav-link {
     font-size: 0.9rem;
