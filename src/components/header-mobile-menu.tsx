@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import type { ReactNode } from "react"
 import { createPortal } from "react-dom"
 import Link from "next/link"
 import { siteRoutes } from "@/lib/site"
@@ -12,34 +11,40 @@ const mobileLinks: readonly NavLink[] = [
   { href: siteRoutes.lend, label: "Lend" },
   { href: siteRoutes.multiply, label: "Multiply" },
   { href: siteRoutes.about, label: "About" },
-  { href: siteRoutes.blog, label: "Blog" },
-  { href: siteRoutes.faq, label: "FAQ" },
+  { href: siteRoutes.newsroom, label: "Newsroom" },
+  { href: siteRoutes.faq, label: "Help Center" },
   { href: siteRoutes.developers, label: "Developers" },
+  { href: "https://governance.aave.com/", label: "Aave ARFC", external: true },
   { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
 ] as const
 
 interface HeaderMobileMenuProps {
   open: boolean
-  brand: ReactNode
   onClose: () => void
 }
 
 export default function HeaderMobileMenu({
   open,
-  brand,
   onClose,
 }: HeaderMobileMenuProps) {
   const [isShown, setIsShown] = useState(false)
 
   useEffect(() => {
+    let frame = 0
+    let nextFrame = 0
+
     if (!open) {
-      setIsShown(false)
-      return
+      frame = window.requestAnimationFrame(() => {
+        setIsShown(false)
+      })
+
+      return () => {
+        window.cancelAnimationFrame(frame)
+      }
     }
 
     // Wait until the hidden state has painted so the CSS transition can run.
-    let nextFrame = 0
-    const frame = window.requestAnimationFrame(() => {
+    frame = window.requestAnimationFrame(() => {
       nextFrame = window.requestAnimationFrame(() => {
         setIsShown(true)
       })
@@ -58,7 +63,7 @@ export default function HeaderMobileMenu({
   // This component is client-only (dynamic ssr:false), so document.body is safe.
   return createPortal(
     <div
-      className={`fixed inset-0 z-[60] bg-white transition-opacity duration-300 ease-out md:hidden ${
+      className={`fixed inset-x-0 bottom-0 top-16 z-40 bg-white transition-opacity duration-300 ease-out md:top-[54px] lg:hidden ${
         isVisible ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
       }`}
       role="dialog"
@@ -66,34 +71,10 @@ export default function HeaderMobileMenu({
       aria-label="Mobile menu"
       aria-hidden={!isVisible}
     >
-      <div className="flex h-16 items-center justify-between border-b border-[#01AACF] px-4 sm:px-6">
-        <Link
-          href={siteRoutes.home}
-          prefetch={false}
-          aria-label="Avana"
-          className="inline-flex items-center"
-          onClick={onClose}
-        >
-          {brand}
-        </Link>
-
-        <button
-          type="button"
-          className="inline-flex h-11 w-11 items-center justify-center text-[#01AACF] transition hover:text-[#01AACF]/80 focus-visible:outline-none focus-visible:ring-0 active:scale-95 [-webkit-tap-highlight-color:transparent]"
-          aria-label="Close menu"
-          onClick={onClose}
-        >
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-            <path d="M5 5L17 17" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-            <path d="M17 5L5 17" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-          </svg>
-        </button>
-      </div>
-
       <nav
         id="mobile-site-nav"
         aria-label="Mobile navigation"
-        className={`h-[calc(100dvh-4rem)] overflow-y-auto px-4 pb-10 pt-10 transition-all duration-300 ease-out sm:px-6 ${
+        className={`h-[calc(100dvh-4rem)] overflow-y-auto px-4 pb-10 pt-10 transition-all duration-300 ease-out sm:px-6 md:h-[calc(100dvh-54px)] ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
         }`}
       >

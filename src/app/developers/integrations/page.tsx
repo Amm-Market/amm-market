@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Supported Integrations",
   description:
-    "Governance- and deployment-aware overview of Avana integrations, including supported venue families, enablement criteria, and integration review expectations.",
+    "Deployment-aware guide to the venue families Avana can integrate with, the checks they must pass, and the review work required before enablement.",
 }
 
 const sections = [
@@ -21,40 +21,40 @@ const venueFamilies = [
   {
     title: "Concentrated liquidity venues",
     body:
-      "These integrations support range-based LP positions whose value depends on current price, active range, and inventory split.",
+      "These venues require position-level handling because LP value depends on current price, active range, and how inventory is split across the position.",
   },
   {
     title: "Fungible stable and weighted pools",
     body:
-      "These venues expose ERC-20 LP shares that can be reconstructed from pool balances, external prices, and recoverable unwind assumptions.",
+      "These venues expose ERC-20 LP shares whose value can be rebuilt from pool balances, external prices, and conservative unwind assumptions.",
   },
   {
     title: "Custom or hook-based designs",
     body:
-      "More advanced pool architectures can be supported only when the protocol has a clear oracle model, custody path, and liquidation adapter for them.",
+      "More advanced pool architectures are only supportable when Avana has a clear oracle model, a safe custody path, and a liquidation adapter for the design.",
   },
 ]
 
 export default function SupportedIntegrationsPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div data-developer-doc-export-root className="max-w-3xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
 
           title="Supported Integrations"
 
-          description="Reference guide for the venue families Avana can support and the review gates used before any integration is enabled."
+          description="Reference guide to the venue families Avana can work with and the review gates that have to be cleared before support goes live."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Avana does not treat every AMM venue as interchangeable. Support depends on whether
-            the protocol can price a position conservatively, unwind it in stressed conditions, and
-            manage it within the Borrow Spoke and Hub risk framework.
+            Avana does not integrate venues just because they are popular or expose LP tokens.
+            Support depends on whether the protocol can reconstruct the position accurately, value
+            it conservatively, and exit it cleanly when liquidation is required.
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm leading-relaxed text-gray-600">
             This page is an integration reference, not a live launch dashboard. For pool admission
             policy, see{" "}
             <Link href="/developers/integrations/allowed-pools" className="text-[#01AACF] hover:underline">
@@ -71,8 +71,8 @@ export default function SupportedIntegrationsPage() {
         <section id="appkit" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">AppKit</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            AppKit is the partner-facing integration surface for products that want to embed
-            Avana credit directly into their own user journey.
+            AppKit is the partner-facing path for products that want to drop Avana credit into an
+            existing user journey instead of sending users to a standalone flow with no context.
           </p>
           <p className="text-sm text-gray-600">
             Read the{" "}
@@ -98,13 +98,14 @@ export default function SupportedIntegrationsPage() {
         <section id="enablement-status" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Enablement Status</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Whether a venue is enabled on a specific network is an operational question, not a
-            protocol invariant. A venue family may be supported in principle but disabled on a given
-            deployment until oracle coverage, liquidation routing, and risk parameters are in place.
+            Whether a venue is enabled on a given network is a deployment decision, not a permanent
+            protocol truth. A venue family can be supportable in theory but still disabled on a
+            specific deployment until oracle coverage, liquidation routing, and risk parameters are
+            all ready.
           </p>
           <div className="rounded-lg border border-cyan-200 bg-cyan-50 p-4 text-sm text-cyan-900">
             Builders should verify current deployment configuration in the app, release notes, or
-            published contract registry instead of treating this page as a real-time status board.
+            published contract registry instead of reading this page as a real-time support matrix.
           </div>
         </section>
 
@@ -112,9 +113,9 @@ export default function SupportedIntegrationsPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Review Requirements</h2>
           <ul className="space-y-3 text-sm text-gray-600">
             <li>• A venue must support conservative position valuation from robust external prices and verifiable state reconstruction.</li>
-            <li>• The protocol needs a reliable unwind path for liquidation, including fee collection and routing into the debt asset.</li>
-            <li>• Pool depth, concentration risk, correlation assumptions, and operational monitoring must fit inside the risk framework.</li>
-            <li>• New venue support should be treated as a governance and risk action, not just an interface update.</li>
+            <li>• The protocol needs a dependable unwind path for liquidation, including fee collection and routing into the debt asset.</li>
+            <li>• Pool depth, concentration risk, correlation assumptions, and operational monitoring all have to fit the risk framework.</li>
+            <li>• New venue support is a governance and risk decision, not just an interface update or adapter merge.</li>
           </ul>
         </section>
       </div>

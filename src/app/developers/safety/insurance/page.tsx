@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Insurance Funds",
   description:
-    "Planned backstop design for Avana. Learn how a future insurance fund could address liquidation shortfalls without changing the protocol's core LP-backed lending model.",
+    "Planned backstop design for Avana, describing how a future insurance fund could address liquidation shortfalls without changing the core LP-backed lending model.",
 }
 
 const sections = [
@@ -18,36 +18,34 @@ const sections = [
 
 export default function InsuranceFundsPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div data-developer-doc-export-root className="max-w-3xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
 
           title="Insurance Funds"
 
-          description="Planned backstop layer for handling residual bad debt after LP liquidation has already done its job."
+          description="Planned backstop layer for handling residual bad debt after the normal LP liquidation path has already run."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Avana&apos;s first line of defense is conservative collateral valuation, capped
-            exposure, and timely liquidation. A future insurance fund would sit behind those controls
-            as a last-resort backstop for situations where liquidation cannot fully close a bad debt.
+            Avana&apos;s first lines of defense are conservative collateral valuation, bounded
+            exposure, and timely liquidation. A future insurance fund would sit behind those
+            controls and come into view only when liquidation still cannot fully close bad debt.
           </p>
           <p className="border-l-4 border-rose-400 pl-3 text-sm text-gray-600">
-            This page describes a planned protection layer. It should not be read as a promise that a
-            live insurance fund currently exists on every deployment.
+            This page describes a planned protection layer. It is not a promise that a live
+            insurance fund exists on every deployment today.
           </p>
         </section>
 
         <section id="purpose" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Purpose</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            The purpose of an insurance fund is to contain protocol-level bad debt after liquidation
-            has already attempted to recover value from fees and principal. In an LP-backed lending
-            system, this means covering residual shortfalls that remain after the supported unwind path
-            is exhausted.
+            An insurance fund would exist to absorb qualifying residual protocol bad debt after the
+            supported liquidation path has already tried to recover value from fees and principal.
           </p>
         </section>
 
@@ -55,8 +53,8 @@ export default function InsuranceFundsPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Funding Approach</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             If activated, the fund could be capitalized through governance-approved treasury
-            allocations, reserve contributions, or a dedicated safety module. The exact mix is a risk
-            governance question and should be published with the program terms.
+            allocations, reserve contributions, or a dedicated safety module. The exact funding mix
+            is a risk-governance decision and should be published with the program terms.
           </p>
         </section>
 
@@ -73,13 +71,13 @@ export default function InsuranceFundsPage() {
         <section id="coverage-boundary" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Coverage Boundary</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            A protocol insurance fund should be narrowly scoped. It is best understood as a system
-            backstop for qualifying bad debt, not as a blanket guarantee against user trading losses,
-            impermanent loss, market moves, or every third-party failure in DeFi.
+            Coverage should stay narrow. The target is qualifying protocol bad debt after
+            liquidation, not a blanket guarantee against user trading losses, impermanent loss,
+            market moves, or every third-party failure in DeFi.
           </p>
           <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
-            The cleaner the boundary is between covered protocol shortfalls and ordinary market risk,
-            the more credible the insurance design becomes.
+            Covered shortfalls and ordinary market risk need a sharp line so the fund does not turn
+            into compensation for normal LP outcomes.
           </div>
         </section>
       </div>

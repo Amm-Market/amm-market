@@ -18,8 +18,8 @@ export function getBlogPost(slug: string): BlogPostDefinition {
 }
 
 export function buildBlogMetadata(post: BlogPostDefinition): Metadata {
-  const title = `${post.title} | ${SITE_NAME} Blog`
-  const canonicalPath = `/blog/${post.slug}`
+  const title = `${post.title} | ${SITE_NAME} Newsroom`
+  const canonicalPath = `/newsroom/${post.slug}`
 
   return {
     title,
@@ -61,7 +61,7 @@ export function renderBlogSections(sections: readonly BlogSection[]) {
     >
       {section.title ? (
         <h2
-          data-eyebrow={section.eyebrow}
+          {...(section.eyebrow ? { "data-eyebrow": section.eyebrow } : {})}
           className={`site-eyebrow-tone-${sectionTones[index % sectionTones.length]}`}
         >
           {section.title}
@@ -74,149 +74,255 @@ export function renderBlogSections(sections: readonly BlogSection[]) {
   ))
 }
 
-const displayTitles: Partial<Record<string, string>> = {
-  "lp-risk-governance": "LP Risk Governance",
-  "why-lp-collateral-needs-smart-agents": "LP Smart Agents",
-  "how-lp-liquidation-should-work": "LP Liquidation",
-  "pricing-lp-collateral-oracle-problem": "Pricing LP Collateral",
-  "security-deep-dive": "LP Risk Security",
-  "hedge-lp-position": "Hedging LP Positions",
-  "yield-looping-playbook": "Yield Looping",
-  "unleashing-lp-tokens": "What LP Collateral Unlocks",
-  "aerodrome-lp-collateral-aave-v4": "Aerodrome LP Collateral",
-  "curve-lp-collateral-aave-v4": "Curve LP Collateral",
-  "balancer-lp-collateral-aave-v4": "Balancer LP Collateral",
-  "smart-contract-architecture": "Uniswap LP Collateral",
-  "defi-ux-challenges": "Making LP Collateral Usable",
-  "avana-lp-collateral": "Next Step For LPs",
-  "institutional-use-cases": "LP Collateral For Institutions",
-  "integration-guide": "Building On Avana",
-  "aave-v4-avana-spoke": "Inside Avana",
-  "v1-1-release": "Avana v1.1",
-  "introducing-automate": "Automate",
-  "lp-collateral-guide": "LP Collateral Guide",
-}
-
-const sectionEyebrows = [
-  "Start here",
-  "Core idea",
-  "Why it matters",
-  "In practice",
-  "Risk",
-  "How it works",
-  "System design",
-  "For users",
-  "Outlook",
-  "Takeaway",
-] as const
-
-const sectionTitleBlueprints: readonly string[] = [
-  "Intro",
-  "Context",
-  "Model",
-  "Value",
-  "Risk",
-  "Flow",
-  "System",
-  "Users",
-  "Outlook",
-  "Takeaway",
-]
-
 function slugifySectionId(text: string, index: number) {
   const slug = text
     .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
 
   return slug || `section-${index + 1}`
 }
 
-function splitTextUnit(text: string): [string, string] | null {
-  const sentences =
-    text.match(/[^.!?]+[.!?]+(?:["')\]]+)?|[^.!?]+$/g)?.map((part) => part.trim()).filter(Boolean) ?? [text]
-
-  if (sentences.length > 1) {
-    const midpoint = Math.ceil(sentences.length / 2)
-    return [sentences.slice(0, midpoint).join(" "), sentences.slice(midpoint).join(" ")]
-  }
-
-  const clauses = text
-    .split(/(?<=[,;:])\s+/)
-    .map((part) => part.trim())
-    .filter(Boolean)
-
-  if (clauses.length > 1) {
-    const midpoint = Math.ceil(clauses.length / 2)
-    return [clauses.slice(0, midpoint).join(" "), clauses.slice(midpoint).join(" ")]
-  }
-
-  const words = text.split(/\s+/).filter(Boolean)
-  if (words.length > 18) {
-    const midpoint = Math.ceil(words.length / 2)
-    return [words.slice(0, midpoint).join(" "), words.slice(midpoint).join(" ")]
-  }
-
-  return null
+function firstSentence(text: string) {
+  return (text.match(/^[^.!?]+[.!?]?/)?.[0] ?? text).trim().replace(/[.!?]+$/, "")
 }
 
-function buildParagraphGroups(paragraphs: readonly string[], targetSections: number) {
-  const units = [...paragraphs]
+function titleCaseWord(word: string) {
+  if (/^(lp|lps|amm|nft|nfts|ui|defi|ltv|twap|mev|il)$/i.test(word)) {
+    return word.toUpperCase()
+  }
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+}
 
-  while (units.length < targetSections) {
-    let bestIndex = -1
-    let bestSplit: [string, string] | null = null
+function titleCaseLabel(words: string[]) {
+  return words.filter(Boolean).map(titleCaseWord).join(" ")
+}
 
-    for (let index = 0; index < units.length; index += 1) {
-      const split = splitTextUnit(units[index])
-      if (!split) continue
+const STOP_WORDS = new Set([
+  "a", "an", "and", "are", "as", "at", "be", "been", "but", "by", "can", "cannot", "could",
+  "does", "for", "from", "had", "has", "have", "if", "in", "into", "is", "it", "its", "just",
+  "may", "more", "most", "must", "not", "of", "on", "only", "or", "other", "over", "same",
+  "should", "so", "some", "such", "than", "that", "the", "their", "them", "then", "there",
+  "these", "they", "this", "those", "through", "to", "too", "under", "up", "very", "was",
+  "were", "what", "when", "where", "which", "while", "who", "will", "with", "would", "also",
+  "about", "after", "before", "between", "during", "each", "every", "how", "own", "because",
+  "whether", "without", "within", "across", "against", "another", "both", "few", "many",
+  "much", "one", "two", "all", "any", "being", "do", "did", "doing", "once", "still", "even",
+  "here", "like", "make", "made", "need", "needed", "part", "use", "used", "using", "way",
+  "ways", "well", "yet", "around", "designed", "means", "meant", "simply", "often", "usually",
+])
 
-      if (bestIndex === -1 || units[index].length > units[bestIndex].length) {
-        bestIndex = index
-        bestSplit = split
-      }
+/**
+ * Topic → short TOC labels (1–2 words), ordered more specific first.
+ * First unused alias for a matching rule becomes the section title.
+ */
+const TOPIC_RULES: readonly { test: RegExp; labels: readonly string[] }[] = [
+  { test: /role separation|risk initiator|risk guardian|risk defender/i, labels: ["Roles", "Guards"] },
+  { test: /defensive asymmetry|defensive changes|easier to reduce risk/i, labels: ["Defense", "Asymmetry"] },
+  { test: /risk framework/i, labels: ["Framework", "Policy"] },
+  { test: /emergency (actions?|authority|containment)/i, labels: ["Emergency", "Containment"] },
+  { test: /timelock|public notice|standard update flow|update flow/i, labels: ["Updates", "Timelock"] },
+  { test: /spoke awareness|spoke family|spoke-?level|dedicated spoke/i, labels: ["Spokes", "Markets"] },
+  {
+    test: /separation matters more|risk surface is more (?:dynamic|heterogeneous)|not all .* interchangeable/i,
+    labels: ["Diversity", "Variety"],
+  },
+  { test: /smart agents?/i, labels: ["Agents", "Runtime"] },
+  { test: /partial liquidation|minimal intervention|target health/i, labels: ["Partial", "Minimal"] },
+  { test: /fees first|claimable fees|fee realization/i, labels: ["Fees", "Fee first"] },
+  { test: /recoverable value/i, labels: ["Recovery", "Value"] },
+  { test: /health (factor|monitor|assessment|checks?)/i, labels: ["Health", "Monitoring"] },
+  { test: /stress test/i, labels: ["Stress", "Scenarios"] },
+  { test: /exit discipline|deleverag/i, labels: ["Exit", "Deleverage"] },
+  { test: /yield loop|looping|looped strategy/i, labels: ["Looping", "Leverage"] },
+  { test: /stablecoin buffer|stable assets can make/i, labels: ["Buffer", "Stables"] },
+  { test: /directional offset|directional (risk|exposure|concentration)/i, labels: ["Offset", "Direction"] },
+  { test: /\bneutrality\b|neutral setup/i, labels: ["Neutrality", "Balance"] },
+  { test: /hub and spoke|hub-and-spoke/i, labels: ["Architecture", "Hub"] },
+  { test: /manipulation resistance|deviation threshold|oracle sentinel/i, labels: ["Safeguards", "Defense"] },
+  { test: /capital efficiency/i, labels: ["Efficiency", "Capital"] },
+  { test: /liquidation/i, labels: ["Liquidation", "Unwind"] },
+  { test: /oracle/i, labels: ["Oracle", "Pricing"] },
+  { test: /valuation|priced conservatively|collateral value/i, labels: ["Valuation", "Pricing"] },
+  { test: /security model|layered security/i, labels: ["Security", "Layers"] },
+  { test: /automation|automated/i, labels: ["Automation", "Controls"] },
+  { test: /hedg/i, labels: ["Hedging", "Hedge"] },
+  { test: /governance|trust layer/i, labels: ["Governance", "Trust"] },
+  { test: /borrow(ing)?\b/i, labels: ["Borrowing", "Credit"] },
+  { test: /impermanent loss/i, labels: ["IL risk", "Exposure"] },
+  { test: /operational layer|operating model/i, labels: ["Operations", "Ops"] },
+  { test: /aerodrome/i, labels: ["Aerodrome", "Base"] },
+  { test: /\bcurve\b/i, labels: ["Curve", "Stable"] },
+  { test: /balancer/i, labels: ["Balancer", "Weighted"] },
+  { test: /uniswap/i, labels: ["Uniswap", "CLMM"] },
+  { test: /institution|treasury/i, labels: ["Institutions", "Treasury"] },
+  {
+    test: /heterogeneous|not the same as a concentrated|interchangeable/i,
+    labels: ["Markets", "Diversity"],
+  },
+  {
+    test: /deeper reason|broader lesson|broader (?:point|meaning)|that is ultimately|ultimately the/i,
+    labels: ["Takeaway", "Outlook"],
+  },
+  { test: /lp collateral|lp position|lp markets?/i, labels: ["LP model", "Collateral"] },
+]
+
+function compressToShortLabel(phrase: string): string | null {
+  const words = phrase
+    .replace(/[^a-zA-Z0-9\s'-]/g, " ")
+    .split(/\s+/)
+    .map((word) => word.trim())
+    .filter((word) => word.length > 0 && !STOP_WORDS.has(word.toLowerCase()))
+
+  if (words.length === 0) return null
+
+  // Prefer a crisp 1–2 word label
+  const picked = words.length === 1 ? words : words.slice(0, 2)
+  return titleCaseLabel(picked)
+}
+
+function fallbackShortLabel(paragraph: string): string {
+  const lead = firstSentence(paragraph)
+    .replace(/^(?:But|And|Yet|So|Still|Of course,?|Importantly,?|Meanwhile,?|Finally,?)\s+/i, "")
+    .replace(/^(?:That is|This is)\s+/i, "")
+
+  const phraseMatch = lead.match(
+    /^((?:[A-Z][\w']+|LP|LPs|AMM|NFT|DeFi|UI)(?:\s+(?:[A-Z][\w']+|LP|LPs|v\d+|[a-z][\w']+)){0,2})/,
+  )
+  if (phraseMatch?.[1]) {
+    const compressed = compressToShortLabel(phraseMatch[1])
+    if (compressed) return compressed
+  }
+
+  const words = lead
+    .replace(/[^a-zA-Z0-9\s'-]/g, " ")
+    .split(/\s+/)
+    .filter((word) => word.length > 2 && !STOP_WORDS.has(word.toLowerCase()))
+
+  if (words.length >= 2) return titleCaseLabel(words.slice(0, 2))
+  if (words.length === 1) return titleCaseLabel(words)
+  return "Topic"
+}
+
+/**
+ * Short TOC/heading label (Intro-length), derived from what the paragraph is about.
+ * Prefers the earliest matching topic in the paragraph so openers beat closing callbacks.
+ */
+function deriveSectionTitle(paragraph: string, index: number, usedLabels: Set<string>): string {
+  const text = paragraph.replace(/\s+/g, " ").trim()
+  if (!text) return takeUniqueLabel(`Topic`, usedLabels)
+
+  type ScoredLabel = { label: string; position: number; rank: number }
+  const scored: ScoredLabel[] = []
+
+  TOPIC_RULES.forEach((rule, rank) => {
+    const match = rule.test.exec(text)
+    if (!match) return
+
+    const position = match.index ?? 0
+    for (const label of rule.labels) {
+      scored.push({ label, position, rank })
     }
+  })
 
-    if (bestIndex === -1 || !bestSplit) {
-      break
+  scored.sort((a, b) => a.position - b.position || a.rank - b.rank)
+
+  for (const { label } of scored) {
+    const key = label.toLowerCase()
+    if (!usedLabels.has(key)) {
+      usedLabels.add(key)
+      return label
     }
-
-    units.splice(bestIndex, 1, bestSplit[0], bestSplit[1])
   }
 
-  if (units.length <= targetSections) {
-    return units.map((unit) => [unit])
+  const candidates: string[] = []
+  const lead = firstSentence(text)
+  const topicPatterns: RegExp[] = [
+    /\b(?:design choice|principle|objective|goal|idea|point|lesson|distinction|benefit|layer|form|approach|category)\s+is\s+(?:that\s+)?(?:simply\s+)?(.+)$/i,
+    /(?:broader|deeper|real|simple|central|key|ultimate)\s+(?:point|objective|goal|lesson|principle|distinction|meaning)\s+is\s+(?:that\s+)?(.+)$/i,
+    /(?:That|This) is (?:also )?(?:why|where|when) (.+)$/i,
+  ]
+
+  for (const pattern of topicPatterns) {
+    const match = lead.match(pattern) ?? text.match(pattern)
+    if (!match?.[1]) continue
+    const compressed = compressToShortLabel(match[1])
+    if (compressed) candidates.push(compressed)
   }
 
-  const groups: string[][] = []
-  const baseSize = Math.floor(units.length / targetSections)
-  const remainder = units.length % targetSections
-  let start = 0
+  candidates.push(fallbackShortLabel(text))
 
-  for (let index = 0; index < targetSections; index += 1) {
-    const size = baseSize + (index < remainder ? 1 : 0)
-    groups.push(units.slice(start, start + size))
-    start += size
+  for (const candidate of candidates) {
+    const key = candidate.toLowerCase()
+    if (!usedLabels.has(key)) {
+      usedLabels.add(key)
+      return candidate
+    }
   }
 
-  return groups
+  return takeUniqueLabel(candidates[0] ?? `Topic`, usedLabels)
+}
+
+function takeUniqueLabel(base: string, usedLabels: Set<string>) {
+  if (!usedLabels.has(base.toLowerCase())) {
+    usedLabels.add(base.toLowerCase())
+    return base
+  }
+
+  let suffix = 2
+  while (usedLabels.has(`${base} ${suffix}`.toLowerCase())) {
+    suffix += 1
+  }
+  const label = `${base} ${suffix}`
+  usedLabels.add(label.toLowerCase())
+  return label
+}
+
+function uniqueSectionId(title: string, index: number, usedIds: Set<string>) {
+  let id = slugifySectionId(title, index)
+  if (usedIds.has(id)) {
+    id = `${id}-${index + 1}`
+  }
+  usedIds.add(id)
+  return id
 }
 
 function buildReadableSections(post: BlogPostDefinition): BlogSection[] {
+  // Keep authored multi-section / titled structure as-is.
   if (post.sections.length !== 1 || post.sections[0]?.title) {
-    return [...post.sections]
+    const usedLabels = new Set<string>()
+    return post.sections.map((section, index) => {
+      const title =
+        section.title ?? deriveSectionTitle(section.paragraphs[0] ?? "", index, usedLabels)
+
+      if (section.title) {
+        usedLabels.add(section.title.toLowerCase())
+      }
+
+      return {
+        ...section,
+        id: section.id || slugifySectionId(title, index),
+        title,
+      }
+    })
   }
 
+  // Single title-less article: one topic section per paragraph, short content labels.
   const paragraphs = post.sections[0].paragraphs
-  const titles = sectionTitleBlueprints
-  const paragraphGroups = buildParagraphGroups(paragraphs, titles.length)
+  const usedIds = new Set<string>()
+  const usedLabels = new Set<string>()
 
-  return titles.map((title, index) => ({
-    id: slugifySectionId(title, index),
-    eyebrow: sectionEyebrows[index] ?? "Takeaway",
-    title,
-    paragraphs: paragraphGroups[index] ?? [],
-  }))
+  return paragraphs.map((paragraph, index) => {
+    const title = deriveSectionTitle(paragraph, index, usedLabels)
+
+    return {
+      id: uniqueSectionId(title, index, usedIds),
+      title,
+      paragraphs: [paragraph],
+    }
+  })
 }
 
 function getPostImage(image?: string) {
@@ -240,13 +346,10 @@ export function createBlogPage(slug: string) {
     sections.map((section, index) => [section.id, sectionTones[index % sectionTones.length]]),
   )
   const image = getPostImage(post.image)
-  const displayTitle = displayTitles[post.slug]
-
   function Page() {
     return (
       <BlogPostLayout
         title={post.title}
-        displayTitle={displayTitle}
         date={post.date}
         description={post.description}
         image={image}

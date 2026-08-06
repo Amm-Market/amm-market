@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Platform Fees",
   description:
-    "Operational fee policy for Avana interfaces. Learn how interface fees differ from protocol economics, how fees are disclosed, and how to verify current policy.",
+    "Operational fee policy for Avana interfaces, including how interface fees differ from protocol economics, how they are disclosed, and how to verify current policy.",
 }
 
 const sections = [
@@ -18,22 +18,22 @@ const sections = [
 
 export default function PlatformFeesPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div data-developer-doc-export-root className="max-w-3xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
 
           title="Platform Fees"
 
-          description="Interface-level fee policy and disclosure guidance for Avana frontends."
+          description="Interface-level fee policy and disclosure guidance for Avana frontends and service surfaces."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            This page describes interface policy, not the core protocol borrowing model. Avana
-            may charge frontend or service fees on official interfaces, but those operational charges
-            should not be confused with the protocol&apos;s collateral, oracle, or liquidation rules.
+            This page is about interface policy, not about how borrowing works in the core
+            contracts. Avana may charge frontend or service fees on official surfaces, but those
+            charges are separate from the protocol&apos;s collateral, oracle, and liquidation rules.
           </p>
           <p className="border-l-4 border-violet-400 pl-3 text-sm text-gray-600">
             Exact fee rates, exemptions, and rollout status are operational settings and should be
@@ -45,7 +45,7 @@ export default function PlatformFeesPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Interface vs Protocol</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Avana&apos;s core contracts govern LP admission, borrowing capacity, and liquidation
-            behavior. Interface fees, if enabled, are layered on top of those contracts as a frontend
+            behavior. Interface fees, if enabled, sit on top of those contracts as frontend
             business policy rather than as a change to the borrow or risk engine itself.
           </p>
           <ul className="space-y-2 text-sm text-gray-600">
@@ -58,12 +58,13 @@ export default function PlatformFeesPage() {
         <section id="disclosure" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Disclosure</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Any interface fee should be surfaced clearly before signature so builders and users can
-            distinguish it from gas costs, swap fees, or protocol-level debt and liquidation effects.
+            Any interface fee should be shown clearly before signature so builders and users can
+            distinguish it from gas costs, swap fees, and protocol-level debt or liquidation
+            effects.
           </p>
           <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
-            Good disclosure should identify the fee source, whether it is optional or interface
-            specific, and where proceeds are directed.
+            Good disclosure should identify the fee source, whether it is optional or
+            interface-specific, and where the proceeds are directed.
           </div>
         </section>
 
@@ -72,11 +73,11 @@ export default function PlatformFeesPage() {
           <p className="mb-4 leading-relaxed text-gray-600">
             If interface fees are collected, they typically fund product operations such as
             infrastructure, monitoring, security work, documentation, and support. Governance may
-            choose to formalize or change these policies over time.
+            formalize or revise those policies over time.
           </p>
           <p className="text-sm text-gray-600">
-            Treasury use should be published as operational reporting, not implied by the protocol&apos;s
-            collateral architecture.
+            Treasury use should be published as operational reporting, not inferred from the
+            protocol&apos;s collateral architecture.
           </p>
         </section>
 

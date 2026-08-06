@@ -2,16 +2,16 @@ import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
-import type { LucideIcon } from "lucide-react"
-import { Activity, BadgeDollarSign, Compass, Layers, LineChart, Shield, ShieldAlert, ShieldCheck, TriangleAlert } from "lucide-react"
+import { Activity, BadgeDollarSign, Compass, Layers, LineChart, ShieldCheck } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
+import { TokenLogo } from "@/components/token-logo"
 import { PerformanceSection } from "@/components/ui/performance-section"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
 const BorrowPowerSection = dynamic(() => import("@/components/borrow-power-section"))
+const PositionSafetyCardsSection = dynamic(() => import("@/components/position-safety-cards-section"))
 const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
-const ProductFeatureScrollSection = dynamic(() => import("@/components/product-feature-scroll-section"))
 
 const openSpokeFaqItems: InlineFaqItem[] = [
   {
@@ -52,33 +52,6 @@ const openSpokeFaqItems: InlineFaqItem[] = [
   },
 ]
 
-const borrowFeatureItems = [
-  {
-    title: "LP-native valuation",
-    description: "Positions are priced from live pool structure, token exposure, and DEX-specific collateral rules.",
-  },
-  {
-    title: "Dual-oracle pricing",
-    description: "Chainlink and AMM TWAP data must stay in range before new credit can be made available.",
-  },
-  {
-    title: "Shared Hub liquidity",
-    description: "Borrow from Aave Hubs while risk stays ring-fenced inside dedicated Borrow Spokes.",
-  },
-  {
-    title: "Uninterrupted fee accrual",
-    description: "Deposited LP positions continue earning trading fees throughout the full life of the loan.",
-  },
-  {
-    title: "Minimal volatility risk",
-    description: "Transparent risk parameters and predictable liquidation behavior for peg-aligned pools.",
-  },
-  {
-    title: "Cleaner position monitoring",
-    description: "Track health, usage, and pool-specific limits with a clearer LP-first borrowing workflow.",
-  },
-] as const
-
 const borrowPartnerFeatures = [
   {
     title: "Live LP collateral",
@@ -118,52 +91,114 @@ const borrowPartnerFeatures = [
   },
 ] as const
 
-const positionSafetySteps = [
+const lpHubMarkets = [
   {
-    title: "Safe Zone",
+    category: "Lowest-risk hub",
+    title: "Stable LP Hub",
     description:
-      "Health Factor stays above 1.5, so borrow usage remains within capacity while fees keep accruing.",
-    accent: "text-[#111111]",
-    icon: Shield,
+      "Stablecoin LP markets built for tight pricing, low slippage, and minimal impermanent loss.",
+    pools: ["USDC / GHO", "USDT / USDC", "USDe / sUSDe", "GHO / USDe", "sUSDe / USDC"],
+    borrowable: ["sUSDe", "USDC", "USDT", "GHO", "USDe"],
   },
   {
-    title: "Warning Zone",
+    category: "Global Strategy hub",
+    title: "Correlated LP Hub",
     description:
-      "Health Factor sits between 1.0 and 1.5, so you can repay, add collateral, or reduce exposure.",
-    accent: "text-[#111111]",
-    icon: TriangleAlert,
+      "LP markets for assets that move together, built for tighter risk bands and cleaner borrowing power.",
+    pools: ["ETH / wstETH", "wstETH / cbETH", "ETH / rETH", "USDe / sUSDe", "GHO / USDe"],
+    borrowable: ["ETH", "wstETH", "USDC", "GHO", "USDe"],
   },
   {
-    title: "Liquidation",
+    category: "Higher-range hub",
+    title: "Volatile LP Hub",
     description:
-      "Health Factor drops below 1.0, fees apply first, needed LP unwinds, and residual value returns.",
-    accent: "text-[#111111]",
-    icon: ShieldAlert,
+      "Major DeFi asset LP markets for wider price ranges and higher risk-reward strategies.",
+    pools: ["ETH / USDC", "WBTC / ETH", "cbBTC / USDC", "AAVE / ETH", "+4 More"],
+    borrowable: ["ETH", "wstETH", "WBTC", "cbBTC", "USDT", "USDC", "GHO", "AAVE"],
   },
 ] as const
 
-function WorkflowStepCard({
-  title,
-  description,
-  icon,
-  className = "",
-}: {
-  title: string
-  description: string
-  icon: LucideIcon
-  className?: string
-}) {
-  const Icon = icon
+const hubTokenLogoUrls: Record<string, string> = {
+  AAVE: "https://coin-logos.simplr.sh/images/aave/standard.png",
+  cbBTC: "https://coin-logos.simplr.sh/images/coinbase-wrapped-btc/standard.png",
+  cbETH: "https://coin-logos.simplr.sh/images/coinbase-wrapped-staked-eth/standard.png",
+  ETH: "https://coin-logos.simplr.sh/images/ethereum/standard.png",
+  GHO: "https://coin-logos.simplr.sh/images/gho/standard.png",
+  rETH: "https://coin-logos.simplr.sh/images/rocket-pool-eth/standard.png",
+  sUSDe: "https://coin-logos.simplr.sh/images/staked-usde/standard.png",
+  USDC: "https://coin-logos.simplr.sh/images/usd-coin/standard.png",
+  USDe: "https://coin-logos.simplr.sh/images/usde/standard.png",
+  USDT: "https://coin-logos.simplr.sh/images/tether/standard.png",
+  WBTC: "https://coin-logos.simplr.sh/images/wrapped-bitcoin/standard.png",
+  wstETH: "https://coin-logos.simplr.sh/images/wrapped-steth/standard.png",
+}
+
+function getHubTokenLogo(symbol: string) {
+  return hubTokenLogoUrls[symbol] ?? `https://coin-logos.simplr.sh/images/${symbol.toLowerCase()}/standard.png`
+}
+
+function HubPoolIcon({ pool }: { pool: string }) {
+  if (pool.includes("More")) {
+    return (
+      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#01AACF] text-[0.7rem] font-bold text-white">
+        +
+      </span>
+    )
+  }
+
+  const [first, second] = pool.split(" / ")
 
   return (
-    <article className={`flex flex-col feature-card rounded-[1.75rem] p-5 md:p-6 ${className}`}>
-      <div className="flex h-8 w-8 items-center justify-center text-[#111111]">
-        <Icon className="h-8 w-8" strokeWidth={1.85} />
-      </div>
+    <span className="flex items-center">
+      {[first, second].map((token, index) => (
+        <TokenLogo
+          key={`${pool}-${token}`}
+          src={getHubTokenLogo(token)}
+          className={`h-5 w-5 rounded-full ring-2 ring-white ${index > 0 ? "-ml-1.5" : ""}`}
+        />
+      ))}
+    </span>
+  )
+}
 
-      <FeatureCardTitle className="mt-5 md:mt-6">{title}</FeatureCardTitle>
-      <FeatureCardDescription className="mt-3 max-w-[22rem]">{description}</FeatureCardDescription>
-    </article>
+function HubSingleTokenIcon({ token }: { token: string }) {
+  return (
+    <TokenLogo
+      src={getHubTokenLogo(token)}
+      className="h-5 w-5 rounded-full ring-2 ring-white"
+    />
+  )
+}
+
+function HubTokenGroup({
+  label,
+  tokens,
+  withPoolIcons = false,
+  withTokenIcons = false,
+}: {
+  label: string
+  tokens: readonly string[]
+  withPoolIcons?: boolean
+  withTokenIcons?: boolean
+}) {
+  return (
+    <div className="mt-5 first:mt-0">
+      <p className="mb-2 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[#7b858c]">
+        {label}
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {tokens.map((token) => (
+          <span
+            key={`${label}-${token}`}
+            className="inline-flex h-8 items-center gap-2 rounded-full border border-gray-200 bg-white px-3 text-sm font-semibold tracking-[-0.015em] text-[#2f3940]"
+          >
+            {withPoolIcons ? <HubPoolIcon pool={token} /> : null}
+            {withTokenIcons ? <HubSingleTokenIcon token={token} /> : null}
+            {token}
+          </span>
+        ))}
+      </div>
+    </div>
   )
 }
 
@@ -218,13 +253,13 @@ export default function BorrowPage() {
               {/* Right Column - Text Content */}
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
                   <h1 className="mb-3 max-w-[11ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
-                    <span>Borrow from</span>
+                    <span>Borrow against</span>
                     <br />
-                    <span>AMM positions.</span>
+                    <span>AMM positions</span>
                   </h1>
 
                   <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
-                    Access up to 80% of your LP value as a loan at 5.5% APR while your position keeps earning trading fees.
+                    Turn your liquidity pool positions into collateral and borrow against them here without leaving the pool.
                   </p>
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
@@ -252,61 +287,9 @@ export default function BorrowPage() {
         </div>
       </div>
 
-      <section className="border-t border-gray-200 bg-white site-section-gap">
+      <section className="border-t border-[#01AACF] bg-white site-section-gap">
         <div className="site-content-shell">
-          <div className="mx-auto flex w-full max-w-[76rem] flex-col gap-6">
-            <div className="flex max-w-[600px] flex-col gap-2">
-              <SectionEyebrow tone="blue">Borrow with Confidence</SectionEyebrow>
-                <SectionTitle>Protected at the pool level.</SectionTitle>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {borrowPartnerFeatures.map((feature) => (
-                <article key={feature.title} className="flex flex-col feature-card rounded-[1.75rem] p-5 md:p-6">
-                  <feature.icon className="h-8 w-8 text-[#111111]" strokeWidth={1.85} />
-                  <FeatureCardTitle className="mt-5 md:mt-6">{feature.title}</FeatureCardTitle>
-                  <FeatureCardDescription className="mt-3 max-w-[22rem]">
-                    {feature.description}
-                  </FeatureCardDescription>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white site-section-gap">
-        <div className="site-content-shell">
-          <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-18">
-            <div className="max-w-[33rem]">
-              <SectionEyebrow tone="violet">Working capital</SectionEyebrow>
-              <SectionTitle className="mt-5 max-w-none">
-                <span className="block whitespace-nowrap">Access capital when</span>
-                <span className="block whitespace-nowrap">opportunity calls.</span>
-              </SectionTitle>
-
-              <p className="mt-7 max-w-[28rem] text-[0.98rem] leading-[1.62] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
-                Quick access to business financing. Use your credit line to borrow against active positions, then repay automatically as future sales and cash flow come in.
-              </p>
-            </div>
-
-            <div className="relative lg:pt-1">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:aspect-[1.18/1] lg:rounded-[32px]">
-                <Image
-                  src="/images/leverage-hero-placeholder.webp"
-                  alt="Person holding a smartphone showing a finance app"
-                  fill
-                  className="object-cover object-[55%_42%]"
-                  sizes="(max-width: 1024px) 100vw, 54vw"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <PerformanceSection className="site-section-gap">
-        <div className="site-content-shell">
-          <div className="mx-auto w-full max-w-[76rem] flex flex-col site-section-stack">
+          <div className="mx-auto w-full max-w-[90rem]">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="violet">How it works</SectionEyebrow>
@@ -316,23 +299,93 @@ export default function BorrowPage() {
                 <BorrowMarketCard
                   number="1"
                   title="Deposit LP"
-                  description="Deposit LP tokens from any supported DEX while your position stays active and keeps earning fees."
+                  description="Choose a supported LP position and deposit it as collateral while your liquidity stays active."
                 />
 
                 <BorrowMarketCard
                   number="2"
-                  title="Borrow instantly"
-                  description="Borrow up to 80% of your LP value based on pool risk, with assets deposited straight to your wallet."
+                  title="Draw liquidity"
+                  description="Borrow against the risk-adjusted value of the position and receive funds straight in your wallet."
                 />
 
                 <BorrowMarketCard
                   number="3"
-                  title="Repay anytime"
-                  description="Repay on your own timeline with no deadlines while keeping LTV under the liquidation threshold."
+                  title="Manage health"
+                  description="Repay, add collateral, or reduce debt before the position drifts toward the liquidation threshold."
                 />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
+      <section className="bg-white site-section-gap">
+        <div className="site-content-shell">
+          <div className="mx-auto w-full max-w-[90rem]">
+            <div className="flex flex-col gap-6">
+              <div className="max-w-none">
+                <SectionEyebrow tone="blue">Avana Hubs Strategy</SectionEyebrow>
+                <SectionTitle className="mt-2 max-w-none lg:whitespace-nowrap">
+                  Choose the market type for your collateral
+                </SectionTitle>
+              </div>
+            </div>
+
+            <div className="mt-10 grid gap-5 lg:mt-16 lg:grid-cols-3">
+              {lpHubMarkets.map((hub) => (
+                <article
+                  key={hub.title}
+                  className="flex h-full flex-col feature-card rounded-2xl border border-gray-200 !bg-white p-6 md:p-8"
+                >
+                  <p className="text-sm font-semibold tracking-[-0.01em] text-[#01AACF]">
+                    {hub.category}
+                  </p>
+                  <FeatureCardTitle className="mt-4">{hub.title}</FeatureCardTitle>
+                  <FeatureCardDescription className="mt-3 min-h-[4.5rem] max-w-[22rem]">
+                    {hub.description}
+                  </FeatureCardDescription>
+
+                  <div className="mt-8 border-t border-gray-200 pt-6">
+                    <HubTokenGroup label="LP pool collateral" tokens={hub.pools} withPoolIcons />
+                    <HubTokenGroup label="Borrowable" tokens={hub.borrowable} withTokenIcons />
+                  </div>
+
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white site-section-gap">
+        <div className="site-content-shell">
+          <div className="mx-auto w-full max-w-[76rem]">
+            <div className="max-w-[58rem] space-y-3 text-left sm:space-y-4">
+              <SectionEyebrow tone="blue">Borrow with Confidence</SectionEyebrow>
+              <SectionTitle className="max-w-[18ch] sm:max-w-[22ch] lg:max-w-none">
+                <span className="block sm:inline">Protected at the</span>{" "}
+                <span className="block sm:inline">pool level</span>
+              </SectionTitle>
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-10 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 md:mt-16 md:gap-x-16 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
+              {borrowPartnerFeatures.map((feature) => (
+                <article key={feature.title} className="flex flex-col bg-transparent">
+                  <feature.icon className="h-10 w-10 text-[#01AACF] sm:h-11 sm:w-11" strokeWidth={1.5} aria-hidden="true" />
+                  <FeatureCardTitle className="mt-4 sm:mt-5">{feature.title}</FeatureCardTitle>
+                  <FeatureCardDescription className="mt-2 max-w-[22rem]">
+                    {feature.description}
+                  </FeatureCardDescription>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <PerformanceSection className="site-section-gap">
+        <div className="site-content-shell">
+          <div className="mx-auto w-full max-w-[76rem] flex flex-col site-section-stack">
             <div className="flex flex-col gap-8 md:gap-12">
               <div className="flex flex-col gap-2">
                 <SectionEyebrow tone="emerald">DEX Coverage</SectionEyebrow>
@@ -398,7 +451,7 @@ export default function BorrowPage() {
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="blue">Liquidity pools</SectionEyebrow>
                 <SectionTitle className="md:whitespace-nowrap">
-                  Browse endless LP collateral
+                  Every Pool details, fully explained
                 </SectionTitle>
               </div>
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.35rem] sm:aspect-[2/1] md:rounded-[1.6rem]">
@@ -411,6 +464,12 @@ export default function BorrowPage() {
                 />
               </div>
             </div>
+
+            <div className="flex flex-col gap-12 md:gap-14">
+              <BorrowPowerSection />
+              <PositionSafetyCardsSection />
+            </div>
+
           </div>
         </div>
       </PerformanceSection>
@@ -419,330 +478,10 @@ export default function BorrowPage() {
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
         <div className="site-content-width flex flex-col site-section-stack site-section-gap pb-16 md:pb-20 2xl:pb-18">
-          <ProductFeatureScrollSection
-            eyebrowTone="blue"
-            title="Engineered for LP safety."
-            items={borrowFeatureItems}
-            panels={[
-              /* 01 LP-native valuation — pool structure, exposure, venue collateral logic */
-              <div key="p1" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
-                <div className="absolute inset-0 flex items-center justify-center p-5">
-                  <div className="relative w-full max-w-[15.75rem] overflow-hidden rounded-[20px] border border-gray-200 bg-white p-4">
-                    <div className="relative">
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="text-[9px] font-medium uppercase tracking-[0.14em] text-gray-400">Mark</span>
-                        <span className="rounded-full border border-gray-200 bg-gray-50 px-2 py-0.5 text-[8px] font-medium text-gray-700">
-                          v3
-                        </span>
-                      </div>
-                      <div className="mt-3">
-                        <div className="text-[8px] font-medium uppercase tracking-[0.1em] text-gray-400">Exposure</div>
-                        <div className="mt-2 flex h-3 overflow-hidden rounded-full bg-gray-100">
-                          <div className="borrow-exposure-eth flex w-[62%] items-center justify-center bg-blue-400" />
-                          <div className="borrow-exposure-usdc flex w-[38%] items-center justify-center bg-slate-300" />
-                        </div>
-                        <div className="mt-1 flex justify-between text-[9px] font-medium text-[#18323c]">
-                          <span>ETH 62%</span>
-                          <span>USDC 38%</span>
-                        </div>
-                      </div>
-                      <div className="mt-4 flex items-end justify-between border-t border-gray-100 pt-3">
-                        <div>
-                          <span className="text-[8px] font-medium uppercase tracking-[0.1em] text-gray-400">$</span>
-                          <div className="mt-1 h-[2.35rem] overflow-hidden">
-                            <div className="panel-ticker-v-fast" style={{ animationDuration: "10s" }}>
-                              {["$24,840", "$24,902", "$24,791", "$24,840"].map((v, i) => (
-                                <div key={i} className="flex h-[2.35rem] items-center">
-                                  <span className="text-[1.65rem] font-semibold leading-none tracking-[-0.04em] text-[#18323c]">{v}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-[8px] font-medium uppercase tracking-[0.1em] text-gray-400">AMM</span>
-                          <p className="mt-1 text-[11px] font-semibold text-[#18323c]">Uniswap v3</p>
-                        </div>
-                      </div>
-                      <div className="mt-3">
-                        <div className="flex items-center justify-between text-[8px] font-medium uppercase tracking-[0.08em] text-gray-400">
-                          <span>Haircut</span>
-                          <span>12%</span>
-                        </div>
-                        <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-gray-100">
-                          <div className="borrow-fill-main h-full w-[12%] rounded-full bg-blue-400" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>,
-
-              /* 02 Dual-oracle pricing */
-              <div key="p2" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
-                <div className="absolute inset-0 flex items-center justify-center p-5">
-                  <div className="w-full max-w-[15.75rem] rounded-[20px] border border-gray-200 bg-white p-4">
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-3">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-[#01AACF]">Chainlink</span>
-                        <div className="mt-1 h-[1.35rem] overflow-hidden">
-                          <div className="panel-ticker-v-fast" style={{ animationDuration: "9s" }}>
-                            {["$1,842.04", "$1,842.11", "$1,841.98", "$1,842.04"].map((v, i) => (
-                              <span key={i} className="block h-[1.35rem] text-sm font-semibold tabular-nums text-[#18323c]">
-                                {v}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-3">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-[#01AACF]">TWAP</span>
-                        <div className="mt-1 h-[1.35rem] overflow-hidden">
-                          <div className="panel-ticker-v-fast" style={{ animationDuration: "9.6s" }}>
-                            {["$1,841.52", "$1,841.61", "$1,841.44", "$1,841.52"].map((v, i) => (
-                              <span key={i} className="block h-[1.35rem] text-sm font-semibold tabular-nums text-[#18323c]">
-                                {v}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="relative mt-4 py-1">
-                      <svg className="h-4 w-full text-gray-400" viewBox="0 0 280 16" fill="none" aria-hidden="true">
-                        <path
-                          d="M4 8 H276"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeDasharray="5 8"
-                          className="borrow-oracle-bridge"
-                        />
-                      </svg>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="flex flex-col items-center gap-1 bg-white px-3">
-                          <span className="text-[9px] font-medium tabular-nums text-gray-500">0.11%</span>
-                          <div className="borrow-credit-gate-pulse rounded-full border border-gray-300 bg-white px-2.5 py-0.5 text-[8px] font-semibold text-[#18323c]">
-                            OK
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mt-4 border-t border-gray-100 pt-3">
-                      <div className="relative h-2 w-full overflow-hidden rounded-full bg-gray-200">
-                        <div className="h-full rounded-full bg-gray-600" style={{ width: "22%" }} />
-                        <div className="absolute right-0 top-1/2 h-3 w-px -translate-y-1/2 bg-[#18323c]" />
-                      </div>
-                      <p className="mt-1.5 text-center text-[7px] tabular-nums text-gray-400">0.11% · max 0.5%</p>
-                    </div>
-                  </div>
-                </div>
-              </div>,
-
-              /* 03 Shared Hub liquidity */
-              <div key="p3" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
-                <div className="absolute inset-0 flex items-center justify-center p-5">
-                  <div className="w-full max-w-[16.25rem] overflow-hidden rounded-2xl border border-gray-200 bg-white">
-                    <div className="grid grid-cols-[1fr_auto_1fr] items-stretch">
-                      <div className="borrow-hub-node-pulse flex flex-col border-r border-gray-200 bg-gray-50/70 p-3.5">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.14em] text-[#01AACF]">Hub</span>
-                        <p className="mt-1.5 text-xl font-semibold tabular-nums text-[#18323c]">$4.2M</p>
-                      </div>
-                      <div className="flex w-12 flex-col items-center justify-center bg-white px-0.5">
-                        <svg className="h-[3.25rem] w-7 shrink-0 text-gray-400" viewBox="0 0 28 56" fill="none" aria-hidden="true">
-                          <path
-                            d="M6 28 H22"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeDasharray="4 5"
-                            className="borrow-hub-flow"
-                          />
-                          <path
-                            d="M18 20 L22 28 L18 36"
-                            stroke="currentColor"
-                            strokeWidth="1.75"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </div>
-                      <div className="flex min-h-[6.5rem] flex-col border-l border-dashed border-gray-300 bg-white p-3.5">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.14em] text-[#01AACF]">Spoke</span>
-                        <p className="mt-1 text-[10px] font-semibold leading-tight text-[#18323c]">ETH / USDC</p>
-                        <p className="mt-2 text-[8px] font-medium tabular-nums text-gray-600">$2.1M</p>
-                        <span className="mt-auto inline-flex w-fit rounded-md border border-gray-200 bg-gray-50 px-2 py-0.5 text-[8px] font-medium text-gray-700">
-                          Risk
-                        </span>
-                      </div>
-                    </div>
-                    <div className="border-t border-gray-100 bg-gray-50/40 px-3.5 py-2.5">
-                      <div className="flex items-center justify-between text-[8px]">
-                        <span className="font-medium text-gray-500">Hub APR</span>
-                        <span className="tabular-nums font-semibold text-[#18323c]">4.2%</span>
-                      </div>
-                      <div className="mt-2 flex items-center justify-between text-[7px] text-gray-400">
-                        <span>Use</span>
-                        <span className="tabular-nums text-gray-600">62%</span>
-                      </div>
-                      <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-gray-200">
-                        <div className="h-full w-[62%] rounded-full bg-gray-600" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>,
-
-              /* 04 High capital efficiency */
-              <div key="p4" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
-                <div className="absolute inset-0 flex items-center justify-center p-5">
-                  <div className="w-full max-w-[15.75rem] overflow-hidden rounded-[20px] border border-gray-200 bg-white p-4">
-                    <div className="grid grid-cols-2 gap-0 divide-x divide-gray-100">
-                      <div className="pr-3">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">Fees</span>
-                        <div className="mt-2 h-[1.35rem] overflow-hidden">
-                          <div className="panel-ticker-v-fast" style={{ animationDuration: "11s" }}>
-                            {["+$48/d", "+$51/d", "+$46/d", "+$48/d"].map((v, i) => (
-                              <div key={i} className="flex h-[1.35rem] items-center">
-                                <span className="text-base font-semibold tabular-nums text-[#18323c]">{v}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-gray-100">
-                          <div className="borrow-dual-stream-fees h-full w-[78%] rounded-full bg-gray-700" />
-                        </div>
-                      </div>
-                      <div className="pl-3">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.12em] text-gray-400">Borrow</span>
-                        <p className="borrow-dual-stream-borrow mt-2 text-xl font-semibold tabular-nums leading-none text-[#18323c]">$19,840</p>
-                        <p className="mt-2 text-[9px] font-semibold tabular-nums text-[#18323c]">64%</p>
-                        <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-gray-100">
-                          <div className="h-full w-[64%] rounded-full bg-gray-500" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>,
-
-              /* 05 Minimal volatility risk */
-              <div key="p5" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
-                <div className="absolute inset-0 flex items-center justify-center p-5">
-                  <div className="w-full max-w-[15.75rem]">
-                    <div className="overflow-hidden rounded-[20px] border border-gray-200 bg-white p-4">
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.1em] text-gray-400">Range</span>
-                        <span className="shrink-0 rounded-md border border-gray-200 bg-gray-50 px-2 py-0.5 text-[8px] font-medium text-gray-700">
-                          Peg
-                        </span>
-                      </div>
-                      <div className="relative mt-4 h-[5.5rem] overflow-hidden rounded-xl bg-gray-100">
-                        <div className="absolute left-3 right-3 top-3 border-t border-dashed border-gray-400" />
-                        <div className="absolute bottom-3 left-3 right-3 border-b border-dashed border-gray-400" />
-                        <p className="absolute left-2 top-1 text-[7px] font-medium text-rose-400/90">↑</p>
-                        <p className="absolute bottom-1 left-2 text-[7px] font-medium text-rose-400/90">↓</p>
-                        <div className="borrow-risk-zone-breathe absolute inset-x-9 inset-y-7 z-0 rounded-md border border-gray-200 bg-white" />
-                        <div className="relative z-10 h-full w-full">
-                          <div className="borrow-risk-shuttle h-5 w-5 rounded-full border-2 border-gray-600 bg-white" />
-                        </div>
-                      </div>
-                      <div className="mt-3 grid grid-cols-2 gap-2">
-                        <div className="rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-2 text-center">
-                          <span className="block text-[8px] text-gray-500">30d vol</span>
-                          <span className="text-[11px] font-semibold text-[#18323c]">3.2%</span>
-                        </div>
-                        <div className="rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-2 text-center">
-                          <span className="block text-[8px] text-gray-500">Buffer</span>
-                          <span className="text-[11px] font-semibold text-[#18323c]">18%</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>,
-
-              /* 06 Cleaner position monitoring — monitor console */
-              <div key="p6" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
-                <div className="absolute inset-0 flex items-center justify-center px-5">
-                  <div className="w-full max-w-[16rem] rounded-[22px] border border-gray-200 bg-white p-4">
-                    <div className="relative overflow-hidden rounded-[18px] border border-gray-200 bg-gray-50/50 p-4">
-                      <div className="borrow-console-scan absolute left-3 right-3 top-3 h-[1px] bg-gray-400/80" />
-                      <div className="flex items-center justify-between">
-                        <span className="text-[9px] font-medium uppercase tracking-[0.14em] text-gray-400">Console</span>
-                        <div className="flex items-center gap-1.5">
-                          <div className="h-1.5 w-1.5 rounded-full bg-gray-400" />
-                          <div className="h-1.5 w-1.5 rounded-full bg-gray-400" />
-                          <div className="h-1.5 w-1.5 rounded-full bg-gray-500" />
-                        </div>
-                      </div>
-                      <div className="mt-4 flex items-end justify-between gap-3">
-                        <div>
-                          <span className="block text-[10px] font-medium uppercase tracking-[0.08em] text-gray-400">Health</span>
-                          <div className="mt-1 h-[2.8rem] overflow-hidden">
-                            <div className="panel-ticker-v-fast" style={{ animationDuration: '12s' }}>
-                              {["1.82", "1.54", "2.10", "1.82"].map((v, i) => (
-                                <div key={i} className="flex h-[2.8rem] items-center">
-                                  <span className="text-[2.6rem] font-semibold leading-none tracking-[-0.05em] text-[#18323c]">{v}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex h-[60px] items-end gap-1.5 rounded-[16px] border border-gray-200 bg-white px-3 py-2">
-                          <div className="borrow-console-bar-a h-8 w-2 rounded-full bg-gray-400" />
-                          <div className="borrow-console-bar-b h-10 w-2 rounded-full bg-gray-500" />
-                          <div className="borrow-console-bar-c h-12 w-2 rounded-full bg-gray-600" />
-                        </div>
-                      </div>
-                      <div className="mt-4 flex items-center justify-between">
-                        <div className="h-4 overflow-hidden">
-                          <div className="panel-ticker-v-fast" style={{ animationDuration: '12s' }}>
-                            {["ETH / USDC", "WBTC / ETH", "ARB / USDC", "ETH / USDC"].map((v, i) => (
-                              <span key={i} className="block h-4 text-[10px] font-semibold text-[#18323c]">{v}</span>
-                            ))}
-                          </div>
-                        </div>
-                        <span className="text-[10px] font-medium tabular-nums text-gray-400">64%</span>
-                      </div>
-                      <div className="mt-2 h-2 overflow-hidden rounded-full bg-white">
-                        <div className="borrow-fill-main h-full w-[64%] rounded-full bg-emerald-400" />
-                      </div>
-                      <div className="mt-3 flex items-center justify-between">
-                        <span className="text-[10px] text-gray-400">Cap</span>
-                        <span className="text-[10px] font-semibold text-[#18323c]">$2.4M</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>,
-            ]}
-          />
-
-          <section>
-            <div className="space-y-4 text-left">
-              <SectionEyebrow tone="violet">Position Safety</SectionEyebrow>
-              <SectionTitle>Every health state, fully explained.</SectionTitle>
-            </div>
-
-            <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
-              {positionSafetySteps.map((step) => (
-                <WorkflowStepCard
-                  key={step.title}
-                  title={step.title}
-                  description={step.description}
-                  icon={step.icon}
-                />
-              ))}
-            </div>
-          </section>
-
-          <BorrowPowerSection />
-
           <HomepageNewsroomSection collection="borrow" eyebrowTone="blue" />
 
           <div className="pb-16 md:pb-24 2xl:pb-22">
-            <InlineFaqSection title="Frequently asked questions." items={openSpokeFaqItems} eyebrowTone="blue" withTopBorder={false} />
+            <InlineFaqSection title="Frequently asked questions" items={openSpokeFaqItems} eyebrowTone="blue" withTopBorder={false} />
           </div>
         </div>
       </div>

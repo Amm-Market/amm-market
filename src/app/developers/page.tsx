@@ -15,7 +15,8 @@ import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Introduction",
-  description: "Avana turns supported LP positions into borrowable collateral.",
+  description:
+    "Developer docs for Avana's LP-backed borrowing model, including Hub and Spoke responsibilities, collateral valuation, and liquidation behavior.",
   keywords: [
     "LP collateral docs",
     "borrow against LP positions",
@@ -66,19 +67,19 @@ const flowSteps = [
     step: "01",
     title: "Deposit a supported LP position",
     description:
-      "A user deposits an approved LP position into the appropriate Borrow Spoke while the underlying liquidity remains active in the AMM.",
+      "A borrower deposits an approved LP position into the relevant Borrow Spoke, but the liquidity itself stays deployed in the underlying pool instead of being redeemed first.",
   },
   {
     step: "02",
     title: "Value it conservatively",
     description:
-      "The spoke reconstructs exposure, prices it through the oracle stack, and applies collateral factors plus pool-specific risk controls.",
+      "The spoke rebuilds the position from its pool data, prices the underlying exposure through the oracle stack, and then discounts that value through collateral factors and market-specific controls.",
   },
   {
     step: "03",
     title: "Borrow through the Hub",
     description:
-      "Once capacity is available, debt is funded from shared Hub liquidity while health checks and liquidation logic stay spoke-aware.",
+      "If the resulting capacity is sufficient, the loan draws from shared Hub liquidity while health checks, collateral accounting, and liquidation behavior remain specific to that spoke.",
   },
 ]
 
@@ -89,21 +90,21 @@ const collateralHighlights: Array<{
 }> = [
   {
     icon: Coins,
-    title: "Keep capital productive",
+    title: "Liquidity stays in the pool",
     description:
-      "Users can access liquidity without fully exiting the pools that continue generating fees and market exposure.",
+      "The protocol is built for LP positions that should keep doing LP work. A borrower does not have to pull liquidity out of the AMM just to access cash against it.",
   },
   {
     icon: Gauge,
-    title: "Underwrite the real position",
+    title: "Capacity follows the real LP",
     description:
-      "Pool composition, fee accrual, price range, liquidity depth, and unwind quality all matter for borrow capacity.",
+      "Borrowing power comes from the actual structure of the position: token mix, accrued fees, active range when relevant, available depth, and the way the position could be exited during stress.",
   },
   {
     icon: ShieldCheck,
-    title: "Make liquidation enforceable",
+    title: "Liquidation has explicit rules",
     description:
-      "LP collateral needs explicit recovery rules instead of being treated like a static token balance.",
+      "LP collateral is not handled as a generic token balance. Each supported market defines how value is recovered, what gets sold or unwound, and how debt is closed if the account becomes unsafe.",
   },
 ]
 
@@ -116,19 +117,19 @@ const architectureBlocks: Array<{
     icon: Workflow,
     title: "Borrow Spoke",
     description:
-      "Receives LP collateral, values positions, tracks capacity, and enforces health and liquidation behavior.",
+      "Accepts supported LP collateral, turns it into spoke-level borrowing capacity, and owns the health and liquidation rules for that market.",
   },
   {
     icon: Layers3,
     title: "Hub",
     description:
-      "Provides the shared monetary layer: reserves, accounting, interest rate logic, and liquidity coordination.",
+      "Holds the shared lending balance sheet: reserve accounting, interest-rate logic, and the liquidity that borrower-facing spokes draw from.",
   },
   {
     icon: Coins,
     title: "Lend Spoke",
     description:
-      "Routes supplier capital into the Hub so LP-specific underwriting stays separate from capital entry.",
+      "Brings lender assets into the system and routes them to the Hub so LP underwriting can stay separate from capital onboarding.",
   },
 ]
 
@@ -151,12 +152,12 @@ function SectionHeader({
 
 export default function DevelopersPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_220px] lg:gap-12">
-      <div data-developer-doc-export-root className="max-w-4xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-4xl flex-1">
         <section id="welcome" className="scroll-mt-32 pb-10">
           <DeveloperDocPageHeader
             title="Introduction"
-            description="Avana lets users borrow against supported LP positions. Avana turns supported LP positions into borrowable collateral. Avana uses the Hub-and-Spoke model to keep LP risk separate from shared liquidity."
+            description="Avana lets approved LP positions back loans without first pulling liquidity from the pool. These docs start with the Hub-and-Spoke split: spokes understand LP risk, while the Hub manages shared lending liquidity."
           />
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <Link
@@ -179,24 +180,28 @@ export default function DevelopersPage() {
         <section id="what-is-avana" className="deferred-viewport mt-12 scroll-mt-32">
           <SectionHeader
             title="What is Avana?"
-            description="Avana is a lending protocol built for LP collateral that stays active in the underlying AMM. The protocol uses Aave v4&apos;s Hub-and-Spoke model so shared liquidity can stay in the Hub while LP-specific admissibility, valuation, and liquidation logic stays inside the spoke."
+            description="Avana is a lending protocol for live LP collateral. It uses Aave v4&apos;s Hub-and-Spoke model so the Hub handles shared liquidity while each Borrow Spoke handles admission, valuation, health, and liquidation for its own LP markets."
           />
 
           <p className="max-w-3xl text-sm leading-7 text-slate-600">
-            LP collateral only works when the protocol can reason about what is in the pool, how
-            it should be priced, how much can be borrowed against it, and how it can be unwound
-            safely if the position deteriorates.
+            Supporting LP collateral means more than checking a token balance. The protocol needs
+            to understand what assets the position represents, how much of that value should count
+            for credit, what market-specific haircut applies, and what unwind path exists if the
+            borrower falls below the required safety margin. Avana puts that LP-specific logic in
+            the spoke that lists the collateral instead of trying to flatten every AMM position
+            into one generic lending path.
           </p>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
-            Start with the canonical borrowing path first, then move into the Borrow Spoke, Lend
-            Spoke, collateral factors, and pricing pages.
+            Read this page as the map for the rest of the docs. The sections below explain the
+            basic borrowing path first, then point you to the detailed pages for Borrow Spoke,
+            Lend Spoke, collateral factors, oracle logic, health monitoring, and liquidation.
           </p>
         </section>
 
         <section id="how-it-works" className="deferred-viewport mt-12 scroll-mt-32">
           <SectionHeader
             title="How It Works"
-            description="The borrowing flow is short at a high level, but each step carries LP-specific logic. Read it as the canonical path that the rest of the documentation expands."
+            description="The user-facing flow is short, but each stage hides LP-specific underwriting work. Later pages break down the mechanics behind each step."
           />
 
           <ol className="space-y-4">
@@ -217,7 +222,7 @@ export default function DevelopersPage() {
         <section id="unlocking-lp-collateral" className="deferred-viewport mt-12 scroll-mt-32">
           <SectionHeader
             title="Why LP Collateral Matters"
-            description="The point is not just to borrow against LPs. The point is to do it in a way that preserves productive capital and keeps the credit rules enforceable."
+            description="LP positions already sit in working capital. Without a lending layer, getting cash back out usually means shrinking or closing the pool position first."
           />
 
           <ul className="space-y-4">
@@ -238,7 +243,7 @@ export default function DevelopersPage() {
         <section id="architecture" className="deferred-viewport mt-12 scroll-mt-32">
           <SectionHeader
             title="Architecture"
-            description="Avana separates LP-specific underwriting from the shared liquidity layer. The three blocks below are the simplest way to read that split."
+            description="Avana separates shared lending liquidity from LP-specific risk logic. That split is the reason the system can support different collateral types without merging all of their rules together."
           />
 
           <div className="grid gap-6 lg:grid-cols-3">
@@ -254,9 +259,10 @@ export default function DevelopersPage() {
           </div>
 
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
-            Borrow Spokes own admissibility, valuation, health checks, and liquidation behavior.
-            The Hub owns shared reserves and accounting. The Lend Spoke routes lender capital into
-            that shared liquidity layer.
+            Builders should think of the system in two halves. The Hub is the common balance sheet
+            and debt engine, while Borrow Spokes decide what each LP market can safely support and
+            how that market must be unwound if it fails. The Lend Spoke feeds capital into the Hub
+            so suppliers do not need to reason about LP mechanics just to provide liquidity.
           </p>
         </section>
 
@@ -264,7 +270,7 @@ export default function DevelopersPage() {
 
       <DeveloperScrollSpyRail
         sections={sections}
-        pageSummary="High-level context for LP-backed borrowing, shared Hub liquidity, and the spoke-specific logic used by Avana."
+        pageSummary="High-level context for LP-backed borrowing, shared Hub liquidity, and the spoke-specific rules that make active LP collateral lendable."
         sectionColor="blue"
       />
     </div>

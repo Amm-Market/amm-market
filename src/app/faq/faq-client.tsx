@@ -6,14 +6,21 @@ import type { LucideIcon } from "lucide-react"
 import {
   Banknote,
   BookText,
+  CircleHelp,
+  Gauge,
   Folder,
+  Layers3,
+  Landmark,
+  Network,
   ReceiptText,
   ShieldCheck,
   Shield,
+  Sparkles,
   SquareChartGantt,
 } from "lucide-react"
 import type { FaqCategory, FaqSearchResult } from "@/app/faq/faq-content"
 import { FaqToggleIcons } from "@/components/faq-toggle-icons"
+import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 /**
@@ -23,7 +30,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
  * static HTML still contains indexable FAQ content.
  */
 
-const DEFAULT_CATEGORY = "Core Concepts"
+const DEFAULT_CATEGORY = "General Questions"
 
 type FaqAccordionItem = {
   id: string
@@ -33,13 +40,18 @@ type FaqAccordionItem = {
 }
 
 const categoryIcons: Record<string, LucideIcon> = {
-  "Core Concepts": BookText,
-  "Depositing LP Collateral": Folder,
-  "Borrowing Capacity & Valuation": Banknote,
-  "Health & Liquidation": Shield,
-  "Leverage Markets": SquareChartGantt,
-  "Fees & Interface Policy": ReceiptText,
-  "Risk & Security": ShieldCheck,
+  "General Questions": CircleHelp,
+  "Protocol Architecture": Network,
+  "LP Collateral": Layers3,
+  "Valuation & Oracles": Gauge,
+  "Risk Management": ShieldCheck,
+  "Supplying & Earning": Folder,
+  "Borrowing Markets": Banknote,
+  "Liquidation Safety": Shield,
+  "Governance Process": Landmark,
+  "GHO Stablecoin": ReceiptText,
+  "Multiply Markets": SquareChartGantt,
+  "Automation Features": Sparkles,
 }
 
 function buildFaqHref({
@@ -100,7 +112,7 @@ function FaqAccordionList({
     <Accordion type="single" collapsible orientation="vertical" className="w-full">
       {items.map((faq) => (
         <AccordionItem key={faq.id} value={faq.id} className="border-b border-gray-200 py-6 last:border-b-0">
-          <AccordionTrigger className="group gap-4 p-0 text-left text-[1.08rem] font-medium leading-[1.45] tracking-[-0.025em] text-gray-900 hover:underline sm:text-[1.16rem] lg:text-[1.24rem] [&>svg.size-4]:hidden">
+          <AccordionTrigger className="group gap-4 p-0 text-left text-[1.08rem] font-medium leading-[1.45] tracking-[-0.025em] text-gray-900 hover:underline sm:text-[1.16rem] lg:text-[1.24rem] xl:font-normal [&>svg.size-4]:hidden">
             <div className="flex flex-col text-left">
               <span>{faq.q}</span>
               {showCategory && faq.category ? (
@@ -148,13 +160,9 @@ function FaqCategoryCard({
     >
       <Icon className="h-6 w-6 text-[#01AACF]" strokeWidth={1.8} />
 
-      <h3 className="mt-5 text-[0.95rem] font-semibold leading-[1.2] tracking-[-0.04em] text-gray-900">
+      <h3 className="mt-5 text-[0.95rem] font-semibold leading-[1.2] tracking-[-0.04em] text-[#01AACF]">
         {category.name}
       </h3>
-
-      <p className="mt-2.5 min-h-[2.7rem] max-w-[22rem] line-clamp-2 text-[0.86rem] leading-[1.5] tracking-[-0.02em] text-gray-700">
-        {category.summary}
-      </p>
 
       <div className="mt-auto pt-5 text-[0.8rem] font-medium tracking-[-0.02em] text-[#01AACF]">
         {category.questions.length} articles
@@ -175,6 +183,10 @@ export function FaqView({
   const searchResults = searchTerm ? searchQuestions(categories, searchTerm) : []
   const activeQuestions =
     categories.find((category) => category.name === activeCategory)?.questions ?? []
+  const sidebarSections = categories.map((category) => ({
+    id: category.id,
+    title: category.name,
+  }))
   const clearHref = buildFaqHref({
     category: activeCategory !== DEFAULT_CATEGORY ? activeCategory : undefined,
   })
@@ -217,7 +229,7 @@ export function FaqView({
         </form>
       </div>
 
-      <div className="mb-10 overflow-x-auto pb-2 lg:mb-12">
+      <div className={`mb-10 overflow-x-auto pb-2 lg:mb-12 ${searchTerm ? "" : "xl:hidden"}`}>
         <div aria-label="FAQ categories" role="tablist" className="flex w-max snap-x snap-mandatory gap-4">
           {categories.map((category) => {
             const active = activeCategory === category.name && !searchTerm
@@ -236,7 +248,7 @@ export function FaqView({
         </div>
       </div>
 
-      <div>
+      <div className={searchTerm ? "" : "xl:hidden"}>
         {searchTerm ? (
           <>
             <div className="mb-7 flex items-center justify-between gap-4">
@@ -270,6 +282,32 @@ export function FaqView({
           </div>
         )}
       </div>
+
+      {!searchTerm ? (
+        <div className="hidden xl:grid xl:grid-cols-[minmax(0,1fr)_280px] xl:gap-24">
+          <div className="max-w-3xl">
+            {categories.map((category) => (
+              <section
+                key={category.id}
+                id={category.id}
+                className="scroll-mt-32 py-12 first:pt-0"
+              >
+                <div className="mb-6">
+                  <h2 className="text-[1.7rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#01AACF]">
+                    {category.name}
+                  </h2>
+                </div>
+
+                <FaqAccordionList items={category.questions} />
+              </section>
+            ))}
+          </div>
+
+          <div className="hidden self-start xl:block xl:sticky xl:top-28 xl:justify-self-end xl:pt-4">
+            <ScrollSpySidebar sections={sidebarSections} sectionColor="cyan" />
+          </div>
+        </div>
+      ) : null}
     </>
   )
 }

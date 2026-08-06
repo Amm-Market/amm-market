@@ -110,7 +110,7 @@ const footerSections: readonly FooterSection[] = [
     title: "Resources",
     links: [
       { href: siteRoutes.about, label: "About" },
-      { href: siteRoutes.blog, label: "Blog" },
+      { href: siteRoutes.newsroom, label: "Newsroom" },
       { href: siteRoutes.faq, label: "FAQ" },
       { href: siteRoutes.brand, label: "Brand" },
     ],
@@ -137,8 +137,9 @@ const footerSections: readonly FooterSection[] = [
 
 export default function Footer(): React.JSX.Element {
   return (
-    <footer className="site-content-shell">
-      <div className="border-t border-gray-200/50 pt-12 pb-6">
+    <footer className="w-full">
+      <div className="h-px w-full bg-[#01AACF]" aria-hidden="true" />
+      <div className="site-content-shell pt-12 pb-6">
         <div className="grid gap-x-8 gap-y-12 lg:grid-cols-[minmax(16rem,1.2fr)_minmax(0,1fr)] lg:gap-x-8 xl:gap-x-10">
           {/* Logo */}
           <div className="space-y-5 lg:max-w-sm lg:justify-self-start">
@@ -199,7 +200,7 @@ export default function Footer(): React.JSX.Element {
             ))}
           </div>
 
-          <div className="border-t border-gray-200/50 pt-6 text-xs leading-5 text-gray-500 [content-visibility:auto] [contain-intrinsic-block-size:20rem] lg:col-span-2">
+          <div className="pt-6 text-xs leading-5 text-gray-500 [content-visibility:auto] [contain-intrinsic-block-size:20rem] lg:col-span-2">
             <div className="space-y-3">
               {footerDisclosure.map((paragraph, index) => (
                 <p key={`footer-disclosure-${index}`}>{paragraph}</p>

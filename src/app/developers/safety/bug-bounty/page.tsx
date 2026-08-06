@@ -4,7 +4,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 
 export const metadata: Metadata = {
   title: "Bug Bounty",
-  description: "Avana Bug Bounty - responsible disclosure scope, LP-collateral risk surfaces, and economic impact severity philosophy.",
+  description: "Avana Bug Bounty responsible disclosure scope, LP-collateral risk surfaces, and economic-impact severity philosophy.",
 }
 
 const sections = [
@@ -50,7 +50,7 @@ const programs = [
       "Recursive exploit paths against mispriced LP collateral",
     ],
     highlighted: true,
-    note: "This subsystem carries the highest severity ceiling because LP mispricing can create bad debt, insolvency, or unfair liquidations without requiring a traditional contract-drain exploit.",
+    note: "Highest severity ceiling: LP mispricing can create bad debt, insolvency, or unfair liquidations without a classic contract drain.",
   },
   {
     title: "Program C - Governance, Admin, and Protocol Infrastructure",
@@ -110,41 +110,40 @@ const severityLevels = [
 
 export default function BugBountyPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div data-developer-doc-export-root className="max-w-3xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
 
           title="Bug Bounty"
 
-          description="Responsible disclosure scope and economic-impact triage for Avana security research."
+          description="Responsible disclosure scope and economic-impact triage guidance for Avana security research."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            The Avana Bug Bounty is a core part of the protocol&apos;s security model. It is
-            designed to incentivize responsible disclosure across smart contracts, risk systems, and
+            The Avana Bug Bounty covers responsible disclosure across contracts, risk systems, and
             supporting infrastructure that can affect user funds or protocol solvency.
           </p>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            Avana introduces a lending system where AMM liquidity positions are used as
-            collateral. That creates a security surface where risk is defined not only by contract
-            correctness, but also by how liquidity, pricing, and market dynamics are translated into
-            collateral value.
+            Because Avana uses AMM liquidity positions as collateral, scope includes both direct
+            contract bugs and failures where liquidity, pricing, or market state can be turned into
+            bad collateral value or broken liquidations.
           </p>
           <p className="text-gray-600 text-sm border-l-4 border-rose-400 pl-3">
-            <strong>Severity is economic first:</strong> rewards are determined by exploitability and
-            real outcomes such as fund loss, insolvency, bad debt, or systemic collateral mispricing,
-            not just by the apparent size of the code bug.
+            <strong>Severity is economic first:</strong> rewards track exploitability and outcomes
+            such as fund loss, insolvency, bad debt, or systemic collateral mispricing, not only
+            how large the code change looks.
           </p>
         </section>
 
         <section id="scope-and-system-architecture" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Scope & System Architecture</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
-            Avana separates its bug bounty into distinct subsystems so triage mirrors how risk
-            actually manifests across lending, valuation, governance, and integrations.
+            Scope is split into subsystems so researchers can map a finding to the part of the
+            stack it actually threatens: core lending, LP valuation, governance and admin, or
+            offchain integrations.
           </p>
 
           <div className="space-y-5">
@@ -210,17 +209,16 @@ export default function BugBountyPage() {
           </div>
 
           <p className="mt-6 text-gray-600 text-sm">
-            Each subsystem is evaluated independently during triage, but impact is always assessed
-            holistically across solvency, user safety, liquidation integrity, and protocol-wide
-            trust assumptions.
+            Subsystems are triaged separately, but impact is still scored across solvency, user fund
+            safety, liquidation integrity, and related protocol risk.
           </p>
         </section>
 
         <section id="severity-philosophy" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Severity Philosophy</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
-            Avana does not use generic vulnerability scoring as its primary severity model.
-            Findings are judged by credible exploit paths and real economic consequences.
+            Generic vulnerability scores are not the main ranking method here. Findings are judged
+            by credible exploit paths and by the economic outcome they can create.
           </p>
 
           <div className="space-y-4">
@@ -236,9 +234,9 @@ export default function BugBountyPage() {
           </div>
 
           <p className="mt-6 text-sm text-gray-600">
-            A minor-looking implementation flaw can still be critical if it enables LP overvaluation
-            or bad debt, while a technically interesting bug may be rated lower if it lacks a
-            credible path to meaningful financial damage.
+            A bug that looks small in code can still be critical if it enables LP overvaluation or
+            bad debt. A technically interesting issue can rank lower if it does not have a credible
+            path to meaningful financial damage.
           </p>
         </section>
       </div>

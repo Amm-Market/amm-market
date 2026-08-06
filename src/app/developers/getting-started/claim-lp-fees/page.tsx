@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Claim LP Fees",
   description:
-    "Claim accrued LP fees in Avana without fully unwinding principal liquidity, subject to post-claim health checks.",
+    "Claim accrued LP fees in Avana without fully unwinding LP principal, as long as the account remains healthy after the claim.",
 }
 
 const sections = [
@@ -19,25 +19,27 @@ const sections = [
 
 export default function ClaimLPFeesPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div data-developer-doc-export-root className="max-w-3xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
 
           title="Claim LP Fees"
 
-          description="Claim realized fee income while keeping LP principal active as collateral, as long as the account remains healthy afterwards."
+          description="Claim fee income without closing the collateral position, provided the account still passes health checks after the fees leave."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Avana separates principal liquidity from accrued fees in its valuation model. That
-            makes it possible to recognize fee income and, when permitted by health checks, release
-            claimed fees without forcing a full LP unwind.
+            Avana treats principal liquidity and accrued fees as different parts of the same LP
+            position. That separation is what makes it possible to realize fee income without
+            necessarily dismantling the principal liquidity that is still being used as collateral.
           </p>
-          <p className="text-sm text-gray-600">
-            Fee claiming is therefore a collateral-aware operation, not just a convenience action.
+          <p className="text-sm leading-relaxed text-gray-600">
+            A fee claim still affects collateral state, so it is checked like any other action that
+            removes recognized value from the account. It is not just a convenience button layered
+            on top of the protocol.
           </p>
         </section>
 
@@ -45,15 +47,15 @@ export default function ClaimLPFeesPage() {
           <h2 className="mb-4 type-section-title text-gray-900">How It Works</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
-              The protocol routes a venue-appropriate fee-collection operation for the LP position.
-              For concentrated-liquidity positions, that may look like a collect-style call without a
-              full principal exit. For fungible LPs, the venue&apos;s own fee-claim path is used when
-              available.
+              The protocol uses a venue-appropriate fee-collection path for the LP position. For
+              concentrated-liquidity positions, that may look like a collect-style call that leaves
+              principal in place. For fungible LPs, the venue&apos;s own fee-claim path is used when
+              the venue exposes one.
             </p>
             <p>
               The important protocol-level rule is consistent across LP types: claim only the fee
-              component, keep the principal position active, and sync the resulting state back into
-              the Borrow Spoke.
+              component, keep the principal position active when possible, and sync the resulting
+              position state back into the Borrow Spoke.
             </p>
           </div>
         </section>
@@ -61,10 +63,10 @@ export default function ClaimLPFeesPage() {
         <section id="health-checks" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Health Checks</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            The Borrow Spoke checks health before and after a fee claim because fees can still be
-            part of the recognized collateral buffer prior to withdrawal.
+            The Borrow Spoke checks health around a fee claim because accrued fees may still count
+            toward the recognized collateral buffer until they are removed from the position.
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm leading-relaxed text-gray-600">
             If removing the claimed fee value would leave the account too close to or beyond the
             allowed borrowing boundary, the claim path should be blocked until debt is reduced or
             more collateral is added.
@@ -75,16 +77,16 @@ export default function ClaimLPFeesPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Fee Accounting</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
-              Oracle outputs distinguish principal liquidity from accrued fees so the protocol can
-              reason about productive collateral more accurately than a simple token balance model.
+              Oracle outputs separate principal liquidity from accrued fees so the credit model can
+              track them side by side instead of pretending the LP is one flat token balance.
             </p>
             <p>
-              That distinction matters in liquidation too: accrued fees may be applied before
-              principal LP liquidity needs to be unwound.
+              That accounting split also matters in liquidation, where accrued fees may be applied
+              before the protocol has to unwind principal LP liquidity.
             </p>
           </div>
           <p className="mt-4 text-sm text-gray-600">
-            The canonical references are{" "}
+            See{" "}
             <Link href="/developers/integrations/price-oracles" className="text-[#01AACF] hover:underline">
               Price Oracles
             </Link>{" "}
@@ -99,9 +101,9 @@ export default function ClaimLPFeesPage() {
         <section id="key-benefits" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Key Benefits</h2>
           <ul className="space-y-2 text-gray-600">
-            <li>LP principal can stay productive in the pool</li>
+            <li>LP principal can stay active in the pool</li>
             <li>Earned fees can be realized without fully closing the collateral position</li>
-            <li>The same risk engine that prices the LP also protects fee claims from over-withdrawal</li>
+            <li>The same risk engine that prices the LP also prevents fee claims from pulling out too much value</li>
           </ul>
         </section>
       </div>
