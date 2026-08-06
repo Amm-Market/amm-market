@@ -281,6 +281,49 @@ export default function HeroSection() {
         </div>
       </div>
 
+      <div className="site-content-shell site-section-gap">
+        <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-18">
+          <div className="max-w-[33rem]">
+            <SectionEyebrow tone="violet">Working capital</SectionEyebrow>
+            <SectionTitle className="mt-5 max-w-none">
+              <span className="block whitespace-nowrap">Access capital when</span>
+              <span className="block whitespace-nowrap">opportunity calls.</span>
+            </SectionTitle>
+
+            <ol className="mt-7 grid max-w-[32rem] gap-4 text-[0.98rem] leading-[1.55] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
+              <li className="flex gap-3">
+                <span className="mt-0.5 font-semibold text-[#01AACF]">1.</span>
+                <span>Deposit LP collateral, draw liquidity, and manage repayment as your position moves.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-0.5 font-semibold text-[#01AACF]">2.</span>
+                <span>Explore supported pools, collateral limits, and LP markets built for active borrowing.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-0.5 font-semibold text-[#01AACF]">3.</span>
+                <span>Price, monitor, and limit credit using pool-aware rules built for active LP collateral.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-0.5 font-semibold text-[#01AACF]">4.</span>
+                <span>See when a position is healthy, when it needs attention, and how liquidation is handled.</span>
+              </li>
+            </ol>
+          </div>
+
+          <div className="relative lg:pt-1">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:aspect-[1.18/1] lg:rounded-[32px]">
+              <Image
+                src="/images/leverage-hero-placeholder.webp"
+                alt="Person holding a smartphone showing a finance app"
+                fill
+                className="object-cover object-[55%_42%]"
+                sizes="(max-width: 1024px) 100vw, 54vw"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="site-content-shell site-section-gap flex flex-col site-section-stack">
         <PerformanceDiv>
             <div className="flex flex-col gap-6">
