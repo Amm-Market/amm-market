@@ -429,14 +429,7 @@ export default function LendPage() {
           <section>
             <div className="flex flex-col gap-3">
               <SectionEyebrow tone="emerald">How it works</SectionEyebrow>
-              <SectionTitle>
-                Get started
-                <span className="md:hidden">
-                  <br />
-                </span>
-                <span className="hidden md:inline"> </span>
-                with as little as $1.
-              </SectionTitle>
+              <SectionTitle>Lending in three steps</SectionTitle>
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
@@ -450,7 +443,7 @@ export default function LendPage() {
 
               <div className="feature-card rounded-2xl p-6 md:p-8">
                 <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
-                <FeatureCardTitle className="mt-6">Make a deposit</FeatureCardTitle>
+                <FeatureCardTitle className="mt-6">Supply assets</FeatureCardTitle>
                 <FeatureCardDescription className="mt-3">
                   Connect your wallet, approve the asset, and supply so your funds enter the pool and start earning right away.
                 </FeatureCardDescription>

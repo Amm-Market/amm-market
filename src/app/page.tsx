@@ -100,15 +100,14 @@ export default function Home() {
           <div className="mx-auto grid w-fit max-w-full grid-cols-1 gap-5 text-center md:grid-cols-[auto_auto] md:items-end md:gap-10 md:text-left lg:gap-14">
             <div className="space-y-4">
               <SectionTitle className="text-center font-medium md:text-left">
-                <span className="block lg:whitespace-nowrap">Unlock Capital</span>
-                <span className="block lg:whitespace-nowrap">from Amm Markets</span>
+                <span className="block lg:whitespace-nowrap">Borrow Against</span>
+                <span className="block lg:whitespace-nowrap">Your Liquidity Positions</span>
               </SectionTitle>
             </div>
             <div className="space-y-8">
               <p className="mx-auto max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] text-[#39515b] md:mx-0 lg:text-[1.18rem]">
-                Turn your liquidity pool positions into collateral and
-                <br />
-                borrow against them here without leaving the pool.
+                Access up to 80% of your Liquidity Pool value at 5.5% APR without withdrawing liquidity or
+                giving up trading fees.
               </p>
             </div>
           </div>
