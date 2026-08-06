@@ -238,7 +238,7 @@ export default function HeroSection() {
           <div className="max-w-[33rem]">
             <SectionEyebrow tone="emerald">Lend Markets</SectionEyebrow>
             <SectionTitle className="mt-5 max-w-none">
-              <span className="block whitespace-nowrap">Earn yield from</span>
+              <span className="block whitespace-nowrap">Earn interest from</span>
               <span className="block whitespace-nowrap">LP borrower demand.</span>
             </SectionTitle>
 
