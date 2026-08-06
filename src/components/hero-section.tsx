@@ -599,6 +599,110 @@ export default function HeroSection() {
                       </div>
                     </div>
                   </article>
+
+                  {/* Card 06 — Minimal volatility risk */}
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
+                    <div className="relative z-10 flex items-start justify-between gap-4">
+                      <div className="space-y-2">
+                        <FeatureCardTitle>Minimal volatility risk</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">
+                          Transparent risk parameters and predictable liquidation behavior for peg-aligned pools.
+                        </FeatureCardDescription>
+                      </div>
+                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">06</div>
+                    </div>
+                    <div className="relative z-0 mt-auto">
+                      <div className="flex items-end justify-center">
+                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                          <div className="absolute inset-0 flex items-center justify-center p-5">
+                            <div className="w-full max-w-[15.75rem]">
+                              <div className="overflow-hidden rounded-[20px] border border-gray-200 bg-white p-4">
+                                <div className="flex items-center justify-between gap-2">
+                                  <span className="text-[8px] font-medium uppercase tracking-[0.1em] text-gray-400">Range</span>
+                                  <span className="shrink-0 rounded-md border border-gray-200 bg-gray-50 px-2 py-0.5 text-[8px] font-medium text-gray-700">
+                                    Peg
+                                  </span>
+                                </div>
+                                <div className="relative mt-4 h-[5.5rem] overflow-hidden rounded-xl bg-gray-100">
+                                  <div className="absolute left-3 right-3 top-3 border-t border-dashed border-gray-400" />
+                                  <div className="absolute bottom-3 left-3 right-3 border-b border-dashed border-gray-400" />
+                                  <p className="absolute left-2 top-1 text-[7px] font-medium text-rose-400/90">↑</p>
+                                  <p className="absolute bottom-1 left-2 text-[7px] font-medium text-rose-400/90">↓</p>
+                                  <div className="absolute inset-x-9 inset-y-7 z-0 rounded-md border border-gray-200 bg-white" />
+                                  <div className="absolute left-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-gray-600 bg-white" />
+                                </div>
+                                <div className="mt-3 grid grid-cols-2 gap-2">
+                                  <div className="rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-2 text-center">
+                                    <span className="block text-[8px] text-gray-500">30d vol</span>
+                                    <span className="text-[11px] font-semibold text-[#18323c]">3.2%</span>
+                                  </div>
+                                  <div className="rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-2 text-center">
+                                    <span className="block text-[8px] text-gray-500">Buffer</span>
+                                    <span className="text-[11px] font-semibold text-[#18323c]">18%</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+
+                  {/* Card 07 — Cleaner position monitoring */}
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
+                    <div className="relative z-10 flex items-start justify-between gap-4">
+                      <div className="space-y-2">
+                        <FeatureCardTitle>Cleaner position monitoring</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">
+                          Track health, usage, and pool-specific limits with a clearer LP-first borrowing workflow.
+                        </FeatureCardDescription>
+                      </div>
+                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">07</div>
+                    </div>
+                    <div className="relative z-0 mt-auto">
+                      <div className="flex items-end justify-center">
+                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                          <div className="absolute inset-0 flex items-center justify-center px-5">
+                            <div className="w-full max-w-[16rem] rounded-[22px] border border-gray-200 bg-white p-4">
+                              <div className="relative overflow-hidden rounded-[18px] border border-gray-200 bg-gray-50/50 p-4">
+                                <div className="flex items-center justify-between">
+                                  <span className="text-[9px] font-medium uppercase tracking-[0.14em] text-gray-400">Console</span>
+                                  <div className="flex items-center gap-1.5">
+                                    <div className="h-1.5 w-1.5 rounded-full bg-gray-400" />
+                                    <div className="h-1.5 w-1.5 rounded-full bg-gray-400" />
+                                    <div className="h-1.5 w-1.5 rounded-full bg-gray-500" />
+                                  </div>
+                                </div>
+                                <div className="mt-4 flex items-end justify-between gap-3">
+                                  <div>
+                                    <span className="block text-[10px] font-medium uppercase tracking-[0.08em] text-gray-400">Health</span>
+                                    <p className="mt-1 text-[2.6rem] font-semibold leading-none tracking-[-0.05em] text-[#18323c]">1.82</p>
+                                  </div>
+                                  <div className="flex h-[60px] items-end gap-1.5 rounded-[16px] border border-gray-200 bg-white px-3 py-2">
+                                    <div className="h-8 w-2 rounded-full bg-gray-400" />
+                                    <div className="h-10 w-2 rounded-full bg-gray-500" />
+                                    <div className="h-12 w-2 rounded-full bg-gray-600" />
+                                  </div>
+                                </div>
+                                <div className="mt-4 flex items-center justify-between">
+                                  <span className="text-[10px] font-semibold text-[#18323c]">ETH / USDC</span>
+                                  <span className="text-[10px] font-medium tabular-nums text-gray-400">64%</span>
+                                </div>
+                                <div className="mt-2 h-2 overflow-hidden rounded-full bg-white">
+                                  <div className="h-full w-[64%] rounded-full bg-emerald-400" />
+                                </div>
+                                <div className="mt-3 flex items-center justify-between">
+                                  <span className="text-[10px] text-gray-400">Cap</span>
+                                  <span className="text-[10px] font-semibold text-[#18323c]">$2.4M</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
                 </div>
 
                 <style>{`
