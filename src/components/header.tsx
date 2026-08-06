@@ -69,7 +69,7 @@ export default function Header(): React.JSX.Element {
                 <span className="hidden xl:inline">{link.label}</span>
                 <ChevronRight
                   aria-hidden="true"
-                  className="h-4 w-4 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-0.5"
+                  className="h-4 w-4 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:animate-[header-cta-arrow-blink_0.85s_ease-in-out_infinite]"
                   strokeWidth={2.8}
                 />
               </span>

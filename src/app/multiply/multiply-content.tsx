@@ -299,6 +299,33 @@ export default function MultiplyPage() {
 
       <section className="deferred-viewport border-t border-[#01AACF] bg-white site-section-gap">
         <div className="site-content-shell">
+          <div className="flex flex-col gap-6">
+            <div className="flex max-w-[600px] flex-col gap-2">
+              <SectionEyebrow tone="rose">How it works</SectionEyebrow>
+              <SectionTitle>
+                <span className="block lg:whitespace-nowrap">Looping in three steps</span>
+              </SectionTitle>
+            </div>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
+            {leverageWorkflowSteps.map((step, index) => (
+              <article key={step.title} className="feature-card rounded-2xl p-6 md:p-8">
+                <span className="text-5xl font-bold text-gray-300 md:text-6xl">
+                  {index + 1}
+                </span>
+                <FeatureCardTitle className="mt-6">{step.title}</FeatureCardTitle>
+                <FeatureCardDescription className="mt-3">
+                  {step.description}
+                </FeatureCardDescription>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="deferred-viewport bg-white site-section-gap">
+        <div className="site-content-shell">
           <LeverageGlanceShowcaseSection />
         </div>
       </section>
@@ -375,33 +402,6 @@ export default function MultiplyPage() {
         </div>
       </section>
 
-
-      <section className="deferred-viewport bg-white site-section-gap">
-        <div className="site-content-shell">
-            <div className="flex flex-col gap-6">
-              <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="rose">How it works</SectionEyebrow>
-                <SectionTitle>
-                  <span className="block lg:whitespace-nowrap">Looping in three steps</span>
-                </SectionTitle>
-              </div>
-            </div>
-
-            <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
-            {leverageWorkflowSteps.map((step, index) => (
-              <article key={step.title} className="feature-card rounded-2xl p-6 md:p-8">
-                <span className="text-5xl font-bold text-gray-300 md:text-6xl">
-                  {index + 1}
-                </span>
-                <FeatureCardTitle className="mt-6">{step.title}</FeatureCardTitle>
-                <FeatureCardDescription className="mt-3">
-                  {step.description}
-                </FeatureCardDescription>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 sm:px-6">
         <div className="relative z-0 flex flex-1 flex-col">
