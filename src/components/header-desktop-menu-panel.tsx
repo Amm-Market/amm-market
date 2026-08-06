@@ -52,8 +52,7 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     eyebrow: "Explore Resources",
     items: [
       { href: siteRoutes.about, label: "About" },
-      { href: siteRoutes.blog, label: "Blog" },
-      { href: siteRoutes.faq, label: "FAQ" },
+      { href: siteRoutes.newsroom, label: "Newsroom" },
       { href: siteRoutes.brand, label: "Brand" },
     ],
     supportingTitle: "Where to look",
@@ -64,14 +63,9 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         description: "Read more about the current company and product thesis behind Avana.",
       },
       {
-        href: siteRoutes.blog,
+        href: siteRoutes.newsroom,
         label: "Follow product notes",
         description: "Track launches, technical updates, and the product decisions shaping the roadmap.",
-      },
-      {
-        href: siteRoutes.faq,
-        label: "Find quick answers",
-        description: "Jump into short explanations for the most common protocol and product questions.",
       },
       {
         href: siteRoutes.brand,
@@ -87,8 +81,7 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     items: [
       { href: siteRoutes.developers, label: "Overview" },
       { href: "/developers/architecture", label: "Architecture" },
-      { href: "/developers/integrations/appkit", label: "AppKit" },
-      { href: "/developers/liquidation/liquidators", label: "Liquidators" },
+      { href: "/developers/liquidation", label: "Liquidation" },
     ],
     supportingTitle: "Highlights",
     supportingItems: [
@@ -103,14 +96,9 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         description: "Understand how the hub, spokes, pricing, and controls fit together.",
       },
       {
-        href: "/developers/integrations/appkit",
-        label: "Explore AppKit",
-        description: "See how partner products can connect users to Avana credit surfaces.",
-      },
-      {
-        href: "/developers/liquidation/liquidators",
-        label: "Understand liquidators",
-        description: "Learn how execution desks monitor and unwind LP collateral under stress.",
+        href: "/developers/liquidation",
+        label: "Understand liquidation",
+        description: "Learn how LP-backed loans settle when health fails and residual value is protected.",
       },
     ],
   },

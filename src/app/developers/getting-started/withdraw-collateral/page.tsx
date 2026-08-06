@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Withdraw Collateral",
   description:
-    "How LP collateral is released from Avana once debt is repaid or the remaining account can still pass health checks after withdrawal.",
+    "How LP collateral leaves Avana after debt is repaid or after the remaining account still passes health checks without the withdrawn position.",
 }
 
 const sections = [
@@ -18,26 +18,28 @@ const sections = [
 
 export default function WithdrawCollateralPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div data-developer-doc-export-root className="max-w-3xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
 
           title="Withdraw Collateral"
 
-          description="Collateral can leave the Borrow Spoke once debt is cleared or the remaining account still satisfies all health checks after the withdrawal."
+          description="Collateral can leave the Borrow Spoke only when the account can still support its debt after the requested position is removed or resized."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Withdrawing collateral is the reverse of deposit. The protocol releases LP positions only
-            when doing so will not leave outstanding debt undersecured.
+            Withdrawing collateral is the reverse side of deposit, but it is not just an asset
+            transfer. Before the protocol releases an LP position, it has to prove that removing
+            that collateral will not leave the remaining debt undersecured.
           </p>
-          <p className="text-sm text-gray-600">
-            Full debt repayment is the cleanest withdrawal path, but some collateral changes may also
-            be possible while debt remains outstanding if the post-change account still passes the
-            same valuation and health checks used everywhere else in the protocol.
+          <p className="text-sm leading-relaxed text-gray-600">
+            Full debt repayment is the cleanest path because it removes the need for collateral
+            entirely. But Avana can also allow some collateral changes while debt remains open if
+            the post-change account still passes the same valuation and health checks used
+            everywhere else in the system.
           </p>
         </section>
 
@@ -46,16 +48,17 @@ export default function WithdrawCollateralPage() {
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               <strong className="text-gray-900">1. Reduce or clear debt:</strong> repay enough so the
-              remaining account can support any collateral that stays in place.
+              remaining account can still be supported by the collateral left behind.
             </p>
             <p>
               <strong className="text-gray-900">2. Recompute borrowing capacity:</strong> the Borrow
-              Spoke recalculates the aggregate account after removing the requested LP position or
-              resizing it.
+              Spoke recalculates the account after removing the requested LP position or resizing
+              it, rather than assuming the old capacity still applies.
             </p>
             <p>
               <strong className="text-gray-900">3. Release the LP position:</strong> if post-withdraw
-              health is valid, the protocol returns or unlocks the collateral for normal user control.
+              health is valid, the protocol returns or unlocks the collateral so the user can manage
+              it outside the spoke again.
             </p>
           </div>
         </section>
@@ -64,13 +67,14 @@ export default function WithdrawCollateralPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Position Modifications</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
-              Some users will not fully exit collateral when they make changes. Instead, they may
-              resize a fungible LP position, replace a concentrated-liquidity range, or rotate into a
-              different approved position inside the same spoke.
+              Not every collateral change is a full exit. A user may resize a fungible LP position,
+              replace a concentrated-liquidity range, or rotate into a different approved position
+              while keeping the same loan open.
             </p>
             <p>
-              Those changes are only valid if the new or remaining collateral still belongs to the
-              approved set and the resulting account remains above the liquidation boundary.
+              Those changes are only valid when the new or remaining collateral still belongs to the
+              approved set and the resulting account stays above the liquidation boundary after the
+              change is applied.
             </p>
           </div>
         </section>
@@ -79,9 +83,9 @@ export default function WithdrawCollateralPage() {
           <h2 className="mb-4 type-section-title text-gray-900">After Withdrawal</h2>
           <ul className="space-y-2 text-gray-600">
             <li>The LP position returns to normal user control</li>
-            <li>The user may keep it in the underlying pool, re-range it, or exit liquidity entirely</li>
+            <li>The user can keep it in the underlying pool, re-range it, or exit liquidity entirely</li>
             <li>
-              It can also be redeposited later through{" "}
+              It can also come back later through{" "}
               <Link href="/developers/getting-started" className="text-[#01AACF] hover:underline">
                 Deposit LP
               </Link>{" "}

@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic"
+import Image from "next/image"
 import type { LucideIcon } from "lucide-react"
 import {
   ArrowLeftRight,
@@ -6,11 +7,14 @@ import {
   Building2,
   Globe2,
   Layers,
+  Percent,
+  RotateCcw,
+  Wallet,
   Zap,
 } from "lucide-react"
 import { DeFiTerm } from "@/components/defi-term"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import { FeatureCardDescription, FeatureCardTitle, SandboxNotice, SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 import { PerformanceDiv } from "@/components/ui/performance-section"
@@ -122,285 +126,27 @@ function PoolCard({ pool }: { pool: HomepagePool }) {
   )
 }
 
-const lendingCoverageAssets = [
+const lendingSavingsCards: {
+  title: string
+  description: string
+  icon: LucideIcon
+}[] = [
   {
-    symbol: "USDC",
-    name: "USD Coin",
-    logo: "https://coin-logos.simplr.sh/images/usd-coin/standard.png",
+    title: "Supply single assets",
+    description: "Deposit supported assets into markets used by LP-backed borrowers.",
+    icon: Wallet,
   },
   {
-    symbol: "USDT",
-    name: "Tether",
-    logo: "https://coin-logos.simplr.sh/images/tether/standard.png",
+    title: "Earn from demand",
+    description: "Supplier yield moves with utilization, liquidity, and borrower demand.",
+    icon: Percent,
   },
   {
-    symbol: "DAI",
-    name: "Dai",
-    logo: "https://coin-logos.simplr.sh/images/dai/standard.png",
+    title: "Withdraw when liquid",
+    description: "Redeem supplied assets when there is available liquidity in the market.",
+    icon: RotateCcw,
   },
-  {
-    symbol: "WETH",
-    name: "Wrapped Ether",
-    logo: "https://coin-logos.simplr.sh/images/weth/standard.png",
-  },
-  {
-    symbol: "WBTC",
-    name: "Wrapped Bitcoin",
-    logo: "https://coin-logos.simplr.sh/images/wrapped-bitcoin/standard.png",
-  },
-  {
-    symbol: "crvUSD",
-    name: "Curve USD",
-    logo: "https://coin-logos.simplr.sh/images/crvusd/standard.png",
-  },
-  {
-    symbol: "GHO",
-    name: "GHO",
-    logo: "https://coin-logos.simplr.sh/images/gho/standard.png",
-  },
-  {
-    symbol: "stETH",
-    name: "stETH",
-    logo: "https://coin-logos.simplr.sh/images/staked-ether/standard.png",
-  },
-  {
-    symbol: "wstETH",
-    name: "wstETH",
-    logo: "https://coin-logos.simplr.sh/images/wrapped-steth/standard.png",
-  },
-  {
-    symbol: "rETH",
-    name: "rETH",
-    logo: "https://coin-logos.simplr.sh/images/rocket-pool-eth/standard.png",
-  },
-  {
-    symbol: "cbETH",
-    name: "cbETH",
-    logo: "https://coin-logos.simplr.sh/images/coinbase-wrapped-staked-eth/standard.png",
-  },
-  {
-    symbol: "AAVE",
-    name: "Aave",
-    logo: "https://coin-logos.simplr.sh/images/aave/standard.png",
-  },
-  {
-    symbol: "UNI",
-    name: "Uniswap",
-    logo: "https://coin-logos.simplr.sh/images/uniswap/standard.png",
-  },
-  {
-    symbol: "CRV",
-    name: "Curve DAO",
-    logo: "https://coin-logos.simplr.sh/images/curve-dao-token/standard.png",
-  },
-  {
-    symbol: "LDO",
-    name: "Lido DAO",
-    logo: "https://coin-logos.simplr.sh/images/lido-dao/standard.png",
-  },
-] as const
-
-const lendingCoverageTableRows = [
-  {
-    pair: "USDC",
-    name: "USD Coin",
-    logo: lendingCoverageAssets[0].logo,
-    price: "4.82",
-    suffix: "% APY",
-    change: "-0.10%",
-    positive: false,
-  },
-  {
-    pair: "USDT",
-    name: "Tether",
-    logo: lendingCoverageAssets[1].logo,
-    price: "3.94",
-    suffix: "% APY",
-    change: "-1.18%",
-    positive: false,
-  },
-  {
-    pair: "DAI",
-    name: "Dai",
-    logo: lendingCoverageAssets[2].logo,
-    price: "6.36",
-    suffix: "% APY",
-    change: "+6.36%",
-    positive: true,
-  },
-  {
-    pair: "WETH",
-    name: "Wrapped Ether",
-    logo: lendingCoverageAssets[3].logo,
-    price: "5.28",
-    suffix: "% APY",
-    change: "+28.93%",
-    positive: true,
-  },
-  {
-    pair: "WBTC",
-    name: "Wrapped Bitcoin",
-    logo: lendingCoverageAssets[4].logo,
-    price: "4.15",
-    suffix: "% APY",
-    change: "+3.52%",
-    positive: true,
-  },
-] as const
-
-const lendingCoverageGainersRows = [
-  {
-    pair: "crvUSD",
-    logo: lendingCoverageAssets[5].logo,
-    price: "6.12% APY",
-    change: "+1.38% 24h",
-    positive: true,
-  },
-  {
-    pair: "GHO",
-    logo: lendingCoverageAssets[6].logo,
-    price: "5.74% APY",
-    change: "+0.97% 24h",
-    positive: true,
-  },
-  {
-    pair: "stETH",
-    logo: lendingCoverageAssets[7].logo,
-    price: "4.93% APY",
-    change: "+0.68% 24h",
-    positive: true,
-  },
-] as const
-
-const lendingCoverageListingsRows = [
-  {
-    pair: "wstETH",
-    logo: lendingCoverageAssets[8].logo,
-    price: "4.08% APY",
-    change: "-0.24% 24h",
-    positive: false,
-  },
-  {
-    pair: "cbETH",
-    logo: lendingCoverageAssets[9].logo,
-    price: "3.84% APY",
-    change: "+0.17% 24h",
-    positive: true,
-  },
-  {
-    pair: "rETH",
-    logo: lendingCoverageAssets[10].logo,
-    price: "4.25% APY",
-    change: "+0.31% 24h",
-    positive: true,
-  },
-] as const
-
-function MarketTableRow({ row }: { row: (typeof lendingCoverageTableRows)[number] }) {
-  return (
-    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-[4px] bg-white/85 px-3 py-3 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.85fr)_auto] md:px-4">
-      <div className="flex min-w-0 items-center gap-3">
-        <TokenLogo src={row.logo} />
-        <div className="min-w-0">
-          <p className="truncate text-sm font-semibold text-[#182036]">{row.pair}</p>
-          <p className="truncate text-xs text-[#667085]">{row.name}</p>
-        </div>
-      </div>
-      <div className="justify-self-end text-right text-sm font-semibold text-[#182036] md:justify-self-auto md:text-left">
-        {row.price} <span className="text-xs font-medium text-[#667085]">{row.suffix}</span>
-        <div className={`mt-0.5 text-xs font-semibold md:hidden ${row.positive ? "text-[#107c41]" : "text-[#c43e1c]"}`}>
-          {row.change}
-        </div>
-      </div>
-      <div className={`hidden text-sm font-semibold md:block ${row.positive ? "text-[#107c41]" : "text-[#c43e1c]"}`}>
-        {row.change}
-      </div>
-      <button className="hidden w-fit rounded-[4px] border border-[#9fb8d8] bg-[#f9fbfe] px-4 py-1.5 text-xs font-semibold text-[#005fb8] transition-colors hover:bg-[#eef4fb] md:inline-flex">
-        Multiply
-      </button>
-    </div>
-  )
-}
-
-function CompactMarketRow({
-  row,
-}: {
-  row: (typeof lendingCoverageGainersRows)[number] | (typeof lendingCoverageListingsRows)[number]
-}) {
-  return (
-    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-[4px] bg-white/85 px-3 py-3">
-      <div className="flex min-w-0 items-center gap-3">
-        <TokenLogo src={row.logo} />
-        <p className="truncate text-sm font-semibold text-[#182036]">{row.pair}</p>
-      </div>
-      <div className="grid justify-items-end gap-1 text-right">
-        <p className="whitespace-nowrap text-xs font-semibold text-[#182036] md:text-sm">{row.price}</p>
-        <p className={`whitespace-nowrap text-xs font-semibold md:text-sm ${row.positive ? "text-[#107c41]" : "text-[#c43e1c]"}`}>
-          {row.change}
-        </p>
-      </div>
-    </div>
-  )
-}
-
-function LendingCoverageTable() {
-  return (
-    <div>
-      <div className="grid gap-4 xl:grid-cols-[minmax(0,1.58fr)_minmax(280px,0.9fr)]">
-        <div className="overflow-hidden border border-[#d2dcea] bg-white">
-          <div className="h-1 bg-[#0078d4]" />
-          <div className="border-b border-[#e6edf6] px-4 pb-3 pt-4 md:px-5">
-            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#162033]">
-              Most traded coins
-            </h3>
-          </div>
-
-          <div className="hidden gap-3 px-5 py-2.5 text-[0.69rem] font-semibold uppercase tracking-[0.14em] text-[#6b7280] md:grid md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.85fr)_auto]">
-            <div>Asset</div>
-            <div>Supply APY</div>
-            <div>24H Change</div>
-            <div>Multiply</div>
-          </div>
-
-          <div className="space-y-2 px-4 pb-4 md:px-5">
-            {lendingCoverageTableRows.map((row) => (
-              <MarketTableRow key={row.pair} row={row} />
-            ))}
-          </div>
-        </div>
-
-        <div className="overflow-hidden border border-[#d2dcea] bg-white">
-          <div className="h-1 bg-[#0a5fb8]" />
-          <div className="border-b border-[#e6edf6] px-4 py-4 md:px-5">
-            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#162033]">
-              Top Gainers
-            </h3>
-          </div>
-
-          <div className="space-y-2 px-4 py-3 md:px-5">
-            {lendingCoverageGainersRows.map((row) => (
-              <CompactMarketRow key={row.pair} row={row} />
-            ))}
-          </div>
-
-          <div className="border-t border-[#e6edf6] px-4 py-4 md:px-5">
-            <h3 className="text-lg font-semibold tracking-[-0.01em] text-[#162033]">
-              New Listings
-            </h3>
-          </div>
-
-          <div className="space-y-2 px-4 pb-4 md:px-5">
-            {lendingCoverageListingsRows.map((row) => (
-              <CompactMarketRow key={row.pair} row={row} />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <SandboxNotice className="mt-3" />
-    </div>
-  )
-}
+]
 
 const lpUseCases: {
   title: string
@@ -410,31 +156,31 @@ const lpUseCases: {
   {
     title: "Treasury financing",
     description:
-      "DAOs and treasuries can borrow against LP positions to fund runway without selling liquidity or fee flow.",
+      "Unlock cash against LP positions to fund runway without selling liquidity or giving up fee flow.",
     icon: Building2,
   },
   {
-    title: "Liquidity expansion",
+    title: "Grow exposure",
     description:
-      "LPs can borrow against existing positions, add liquidity, and grow fee exposure from the same capital base.",
+      "Borrow against existing positions, add liquidity, and expand fee exposure from the same capital base.",
     icon: Layers,
   },
   {
     title: "Trading liquidity",
     description:
-      "Traders can borrow against LP collateral to rebalance inventory, hedge risk, or move on short-notice trades.",
+      "Use LP-backed credit to rebalance inventory, hedge risk, or move quickly when a trade needs capital.",
     icon: ArrowLeftRight,
   },
   {
     title: "Cross-ecosystem credit",
     description:
-      "Keep LP collateral in one venue and borrow for deployment across other protocols, strategies, or chains.",
+      "Keep LP collateral in one venue and borrow for use across other protocols, strategies, or chains.",
     icon: Globe2,
   },
   {
-    title: "Runway and operations",
+    title: "Ops runway",
     description:
-      "Cover payroll, vendors, and launches with LP-backed credit without touching core positions or reserves.",
+      "Cover payroll, vendors, and launches with LP credit without touching core positions or reserves.",
     icon: BriefcaseBusiness,
   },
   {
@@ -454,8 +200,9 @@ export default function HeroSection() {
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="cyan">Borrow Markets</SectionEyebrow>
             <SectionTitle>
-              <span className="block lg:whitespace-nowrap">Unlock credit</span>
-              <span className="block lg:whitespace-nowrap">from 250+ pools</span>
+              <span className="block lg:hidden">Access loans using</span>
+              <span className="block lg:hidden">hundreds of LP collateral</span>
+              <span className="hidden lg:block lg:whitespace-nowrap">Access loans using hundreds of LP collateral</span>
             </SectionTitle>
           </div>
             </div>
@@ -483,21 +230,42 @@ export default function HeroSection() {
               ))}
             </div>
 
-            <SandboxNotice />
         </PerformanceDiv>
       </div>
 
       <div className="site-content-shell site-section-gap">
-        <div className="space-y-6">
-          <div className="flex max-w-[600px] flex-col gap-2">
+        <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-18">
+          <div className="max-w-[33rem]">
             <SectionEyebrow tone="emerald">Lend Markets</SectionEyebrow>
-            <SectionTitle>
-              <span className="block lg:whitespace-nowrap">Earn yield</span>
-              <span className="block lg:whitespace-nowrap">on 100+ assets</span>
+            <SectionTitle className="mt-5 max-w-none">
+              <span className="block whitespace-nowrap">Earn interest from</span>
+              <span className="block whitespace-nowrap">LP borrower demand</span>
             </SectionTitle>
+
+            <div className="mt-7 grid max-w-[32rem] gap-5">
+              {lendingSavingsCards.map((card, index) => (
+                <div key={card.title} className="flex gap-3 text-[0.98rem] leading-[1.55] tracking-[-0.01em] md:text-[1.04rem]">
+                  <span className="mt-0.5 shrink-0 font-semibold text-[#01AACF]">{index + 1}.</span>
+                  <div>
+                    <p className="font-semibold text-[#111111]">{card.title}</p>
+                    <p className="mt-1 text-[#111111]/80">{card.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <LendingCoverageTable />
+          <div className="relative lg:pt-1">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:aspect-[1.18/1] lg:rounded-[32px]">
+              <Image
+                src="/images/leverage-hero-placeholder.webp"
+                alt="Person holding a smartphone showing a finance app"
+                fill
+                className="object-cover object-[55%_42%]"
+                sizes="(max-width: 1024px) 100vw, 54vw"
+              />
+            </div>
+          </div>
         </div>
       </div>
 
@@ -507,7 +275,7 @@ export default function HeroSection() {
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="amber">Multiply Markets</SectionEyebrow>
                 <SectionTitle>
-                  <span className="block lg:whitespace-nowrap">Loop like a pro</span>
+                  <span className="block">Increase Your Yield with Built-In Risk Controls</span>
                 </SectionTitle>
               </div>
             </div>
@@ -518,314 +286,34 @@ export default function HeroSection() {
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
-                        <FeatureCardTitle>Stretch liquidity further</FeatureCardTitle>
-                        <FeatureCardDescription className="max-w-[16rem]">Borrow up to 80% of your LP value without fully exiting liquidity.</FeatureCardDescription>
+                        <FeatureCardTitle>Loop LP capital</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">Supply LP collateral, borrow against it, resupply the borrowed capital, and repeat until your risk limit.</FeatureCardDescription>
                       </div>
                       <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">01</div>
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
                         <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                          <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-                            {/* Static ring — LTV number cycles inside */}
-                            <div className="relative flex h-[120px] w-[120px] items-center justify-center rounded-full bg-white ce-ring-breathe">
-                              <svg className="h-full w-full -rotate-90" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="42" fill="none" stroke="#eef2ff" strokeWidth="6" />
-                                <circle
-                                  className="ce-ltv-arc"
-                                  cx="50"
-                                  cy="50"
-                                  r="42"
-                                  fill="none"
-                                  stroke="#818cf8"
-                                  strokeWidth="6"
-                                  strokeLinecap="round"
-                                  strokeDasharray="263.89"
-                                  strokeDashoffset="52.78"
-                                />
-                              </svg>
-                              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                <div className="h-[2rem] overflow-hidden">
-                                  <div className="ce-ticker-ltv">
-                                    {[80, 75, 65, 80].map((ltv, i) => (
-                                      <span key={i} className="block h-[2rem] text-[2rem] font-bold leading-none tracking-[-0.04em] text-[#18323c]">{ltv}<span className="text-sm font-normal text-gray-300">%</span></span>
-                                    ))}
-                                  </div>
-                                </div>
-                                <span className="mt-0.5 text-[9px] font-medium uppercase tracking-[0.14em] text-gray-400">LTV</span>
-                              </div>
-                            </div>
-                            {/* Asset info cards cycle below the ring */}
-                            <div className="mt-3 w-full max-w-[16rem] overflow-hidden rounded-2xl border border-gray-100 bg-white">
-                              <div className="h-[72px] overflow-hidden">
-                                <div className="ce-ticker-v">
-                                  {[
-                                    { pair: "ETH / USDC", value: "$24,800", borrowable: "$19,840" },
-                                    { pair: "WBTC / ETH", value: "$41,200", borrowable: "$30,900" },
-                                    { pair: "ARB / USDC", value: "$8,600", borrowable: "$5,590" },
-                                    { pair: "ETH / USDC", value: "$24,800", borrowable: "$19,840" },
-                                  ].map((item, i) => (
-                                    <div key={i} className="flex h-[72px] items-center px-4">
-                                      <div className="w-full">
-                                        <div className="flex items-center justify-between">
-                                          <span className="text-[11px] font-semibold text-indigo-400">{item.pair}</span>
-                                          <span className="text-sm font-bold text-[#18323c]">{item.value}</span>
-                                        </div>
-                                        <div className="mt-1.5 flex items-center justify-between">
-                                          <span className="text-[10px] text-gray-400">Borrowable</span>
-                                          <span className="text-sm font-bold text-indigo-500">{item.borrowable}</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          <Image
+                            src="/images/avana-tokens-rewards-v2.jpg"
+                            alt="Avana token rewards"
+                            fill
+                            sizes="(min-width: 1024px) 344px, 316px"
+                            className="object-cover"
+                          />
                         </div>
                       </div>
                     </div>
                   </article>
 
-                  {/* Card 02 — Keep earning fees */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
-                    <div className="relative z-10 flex items-start justify-between gap-4">
-                      <div className="space-y-2">
-                        <FeatureCardTitle>Keep earning fees</FeatureCardTitle>
-                        <FeatureCardDescription className="max-w-[16rem]">Your LP stays active and keeps earning fees while you borrow.</FeatureCardDescription>
-                      </div>
-                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">02</div>
-                    </div>
-                    <div className="relative z-0 mt-auto">
-                      <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_65%,rgba(16,185,129,0.07),transparent_55%)]" />
-                          <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
-                            {/* APY vertical ticker */}
-                            <div className="flex items-baseline gap-1">
-                              <div className="h-[3.6rem] overflow-hidden">
-                                <div className="ce-ticker-apy">
-                                  {["+8.2", "+14.7", "+5.1", "+8.2"].map((v, i) => (
-                                    <span key={i} className="block h-[3.6rem] text-[3.6rem] font-semibold leading-none tracking-[-0.05em] text-[#18323c]">{v}</span>
-                                  ))}
-                                </div>
-                              </div>
-                              <span className="text-xl font-normal text-gray-300">%</span>
-                            </div>
-                            <span className="mt-1 text-xs text-gray-400"><DeFiTerm term="apy">APY</DeFiTerm> earned while borrowed</span>
-                            {/* Live fee chart */}
-                            <div className="relative mt-5 h-[92px] w-full max-w-[16rem] overflow-hidden rounded-[18px] border border-emerald-100/70 bg-[linear-gradient(180deg,#f8fffb_0%,#effcf5_100%)]">
-                              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.14),transparent_62%)]" />
-                              <div className="absolute inset-x-3 inset-y-0">
-                                <div className="absolute left-0 right-0 top-[20%] border-t border-emerald-100/70" />
-                                <div className="absolute left-0 right-0 top-1/2 border-t border-emerald-100/60" />
-                                <div className="absolute left-0 right-0 top-[80%] border-t border-emerald-100/50" />
-                              </div>
-                              <svg className="absolute inset-0 h-full w-full" viewBox="0 0 300 92" preserveAspectRatio="none">
-                                <defs>
-                                  <linearGradient id="ce-fee-grad" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stopColor="#10b981" stopOpacity="0.24" />
-                                    <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
-                                  </linearGradient>
-                                </defs>
-                                <path
-                                  d="M0,72 C18,70 36,64 56,56 C76,48 92,36 114,34 C136,32 150,48 170,52 C190,56 206,30 224,24 C242,18 262,30 282,16 C290,11 296,8 300,7 L300,92 L0,92Z"
-                                  fill="url(#ce-fee-grad)"
-                                />
-                                <path
-                                  d="M0,72 C18,70 36,64 56,56 C76,48 92,36 114,34 C136,32 150,48 170,52 C190,56 206,30 224,24 C242,18 262,30 282,16 C290,11 296,8 300,7"
-                                  fill="none"
-                                  stroke="#10b981"
-                                  strokeWidth="2.75"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                            </div>
-                            {/* Fee tickers — glass card style */}
-                            <div className="mt-3 flex w-full max-w-[16rem] gap-2">
-                              <div className="flex-1 rounded-xl border border-emerald-100/60 bg-[linear-gradient(180deg,rgba(236,253,245,0.5),rgba(255,255,255,0.95))] px-3 py-2.5 text-center">
-                                <span className="block text-[9px] font-medium text-gray-400">24h fees</span>
-                                <div className="h-4 overflow-hidden">
-                                  <div className="ce-ticker-fee1">
-                                    {["+$48.20", "+$51.30", "+$49.80", "+$48.20"].map((v, i) => (
-                                      <span key={i} className="block h-4 text-xs font-semibold text-emerald-600">{v}</span>
-                                    ))}
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex-1 rounded-xl border border-emerald-100/60 bg-[linear-gradient(180deg,rgba(236,253,245,0.5),rgba(255,255,255,0.95))] px-3 py-2.5 text-center">
-                                <span className="block text-[9px] font-medium text-gray-400">30d yield</span>
-                                <div className="h-4 overflow-hidden">
-                                  <div className="ce-ticker-fee2">
-                                    {["+$1,420", "+$1,485", "+$1,510", "+$1,420"].map((v, i) => (
-                                      <span key={i} className="block h-4 text-xs font-semibold text-emerald-600">{v}</span>
-                                    ))}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-
-                  {/* Card 03 — Unlock new strategies */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
-                    <div className="relative z-10 flex items-start justify-between gap-4">
-                      <div className="space-y-2">
-                        <FeatureCardTitle>Spend capital anywhere</FeatureCardTitle>
-                        <FeatureCardDescription className="max-w-[16rem]">Use borrowed funds anywhere across wallets, markets, and strategies.</FeatureCardDescription>
-                      </div>
-                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">03</div>
-                    </div>
-                    <div className="relative z-0 mt-auto">
-                      <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_58%,rgba(165,180,252,0.08),transparent_58%)]" />
-                          <div className="absolute inset-0 flex items-center justify-center px-5">
-                            <div className="relative w-full max-w-[16rem] h-[180px] overflow-hidden">
-                              <div className="pointer-events-none absolute inset-x-0 top-1/2 h-[52px] -translate-y-1/2 rounded-[16px] border border-indigo-100 bg-[linear-gradient(180deg,rgba(238,242,255,0.82),rgba(255,255,255,0.98))] shadow-[0_10px_24px_rgba(129,140,248,0.10)]" />
-                              <div className="ce-escalator flex flex-col">
-                                {[
-                                  { prev: { label: "Yield farming", icon: "\u25CE" }, active: { label: "Leverage trading", icon: "\u2197" }, next: { label: "Pay off debt", icon: "\u21A9" } },
-                                  { prev: { label: "Pay off debt", icon: "\u21A9" }, active: { label: "Hedge exposure", icon: "\u21C5" }, next: { label: "Liquidity mining", icon: "\u25C7" } },
-                                  { prev: { label: "Liquidity mining", icon: "\u25C7" }, active: { label: "Yield farming", icon: "\u25CE" }, next: { label: "Open new positions", icon: "+" } },
-                                  { prev: { label: "Yield farming", icon: "\u25CE" }, active: { label: "Leverage trading", icon: "\u2197" }, next: { label: "Pay off debt", icon: "\u21A9" } },
-                                ].map((slide, i) => (
-                                  <div key={i} className="flex h-[180px] flex-col justify-center gap-3">
-                                    <div className="flex h-[52px] items-center gap-3 rounded-[16px] border border-gray-100 bg-white px-4 text-gray-500 shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
-                                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gray-50 text-xs text-gray-400">
-                                        {slide.prev.icon}
-                                      </div>
-                                      <span className="text-[0.82rem] font-medium">{slide.prev.label}</span>
-                                    </div>
-                                    <div className="relative flex h-[52px] items-center gap-3 rounded-[16px] px-4 text-[#18323c]">
-                                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white text-xs text-indigo-400 shadow-[0_2px_8px_rgba(129,140,248,0.10)]">
-                                        {slide.active.icon}
-                                      </div>
-                                      <span className="text-[0.82rem] font-medium">{slide.active.label}</span>
-                                      <span className="ml-auto rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-medium text-indigo-500">Active</span>
-                                    </div>
-                                    <div className="flex h-[52px] items-center gap-3 rounded-[16px] border border-gray-100 bg-white px-4 text-gray-500 shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
-                                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gray-50 text-xs text-gray-400">
-                                        {slide.next.icon}
-                                      </div>
-                                      <span className="text-[0.82rem] font-medium">{slide.next.label}</span>
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-
-                  {/* Card 04 — Price-range aware oracles */}
-                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
-                    <div className="relative z-10 flex items-start justify-between gap-4">
-                      <div className="space-y-2">
-                        <FeatureCardTitle>Track pool composition</FeatureCardTitle>
-                        <FeatureCardDescription className="max-w-[16rem]">LP-aware oracles monitor volume and confidence across the pool.</FeatureCardDescription>
-                      </div>
-                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">04</div>
-                    </div>
-                    <div className="relative z-0 mt-auto">
-                      <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(99,102,241,0.06),transparent_60%)]" />
-                          <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
-                            <div className="w-full max-w-[16rem]">
-                              {/* Oracle band header */}
-                              <div className="flex items-center justify-between">
-                                <div className="h-3 overflow-hidden">
-                                  <div className="ce-ticker-price1">
-                                    {["$1,720", "$1,718", "$1,722", "$1,720"].map((v, i) => (
-                                      <span key={i} className="block h-3 text-[10px] font-medium text-gray-400">{v}</span>
-                                    ))}
-                                  </div>
-                                </div>
-                                <span className="rounded-full border border-indigo-100 bg-indigo-50/80 px-2.5 py-0.5 text-[9px] font-semibold text-indigo-500">Oracle band</span>
-                                <div className="h-3 overflow-hidden">
-                                  <div className="ce-ticker-price2">
-                                    {["$1,950", "$1,948", "$1,952", "$1,950"].map((v, i) => (
-                                      <span key={i} className="block h-3 text-[10px] font-medium text-gray-400">{v}</span>
-                                    ))}
-                                  </div>
-                                </div>
-                              </div>
-                              {/* Price-range chart */}
-                              <div className="relative mt-3 h-[108px] w-full overflow-hidden rounded-[18px] border border-indigo-100/70 bg-[linear-gradient(180deg,#fafbff_0%,#eef2ff_100%)]">
-                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(99,102,241,0.14),transparent_60%)]" />
-                                <div className="absolute inset-x-3 inset-y-0">
-                                  <div className="absolute left-0 right-0 top-[20%] border-t border-indigo-100/70" />
-                                  <div className="absolute left-0 right-0 top-1/2 border-t border-indigo-100/60" />
-                                  <div className="absolute left-0 right-0 top-[80%] border-t border-indigo-100/50" />
-                                </div>
-                                <div className="absolute inset-y-4 left-[36%] right-[20%] bg-[radial-gradient(ellipse_at_center,rgba(129,140,248,0.14),rgba(129,140,248,0.05)_55%,rgba(129,140,248,0)_85%)]" />
-                                <svg className="absolute inset-0 h-full w-full" viewBox="0 0 300 108" preserveAspectRatio="none">
-                                  <defs>
-                                    <linearGradient id="ce-oracle-grad" x1="0" y1="0" x2="0" y2="1">
-                                      <stop offset="0%" stopColor="#6366f1" stopOpacity="0.18" />
-                                      <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
-                                    </linearGradient>
-                                  </defs>
-                                  <path
-                                    d="M0,76 C18,72 36,68 54,60 C72,52 92,40 114,34 C136,28 156,34 176,44 C196,54 216,52 236,46 C256,40 278,42 300,38 L300,108 L0,108Z"
-                                    fill="url(#ce-oracle-grad)"
-                                  />
-                                  <path
-                                    d="M0,76 C18,72 36,68 54,60 C72,52 92,40 114,34 C136,28 156,34 176,44 C196,54 216,52 236,46 C256,40 278,42 300,38"
-                                    fill="none"
-                                    stroke="#6366f1"
-                                    strokeWidth="2.75"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  />
-                                </svg>
-                              </div>
-                              {/* Status pill */}
-                              <div className="mt-2.5 flex items-center justify-center gap-1.5">
-                                <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 ce-pulse-dot" />
-                                <span className="text-[10px] font-medium text-gray-500">In range</span>
-                              </div>
-                              {/* Price value tickers — glass cards */}
-                              <div className="mt-3 flex justify-center gap-1.5">
-                                {[
-                                  { l: "Lower", vals: ["$1,720", "$1,718", "$1,722", "$1,720"], cls: "ce-ticker-price1" },
-                                  { l: "Current", vals: ["$1,847", "$1,852", "$1,844", "$1,847"], cls: "ce-ticker-price3" },
-                                  { l: "Upper", vals: ["$1,950", "$1,948", "$1,952", "$1,950"], cls: "ce-ticker-price2" },
-                                ].map((p) => (
-                                  <div key={p.l} className="flex-1 rounded-xl border border-indigo-100/50 bg-[linear-gradient(180deg,rgba(238,242,255,0.4),rgba(255,255,255,0.95))] px-2 py-1.5 text-center">
-                                    <span className="block text-[8px] font-medium uppercase tracking-[0.08em] text-gray-400">{p.l}</span>
-                                    <div className="h-4 overflow-hidden">
-                                      <div className={p.cls}>
-                                        {p.vals.map((v, i) => (
-                                          <span key={i} className="block h-4 text-xs font-semibold text-[#18323c]">{v}</span>
-                                        ))}
-                                      </div>
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-
-                  {/* Card 05 — LP-aware risk models */}
+                  {/* Card 02 — LP-aware risk models */}
                   <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div className="space-y-2">
                         <FeatureCardTitle>Risk tuned to pools</FeatureCardTitle>
                         <FeatureCardDescription className="max-w-[16rem]">Continuous risk scoring tracks pool volatility and health quality.</FeatureCardDescription>
                       </div>
-                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">05</div>
+                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">02</div>
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
@@ -921,6 +409,110 @@ export default function HeroSection() {
                       </div>
                     </div>
                   </article>
+
+                  {/* Card 03 — Minimal volatility risk */}
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
+                    <div className="relative z-10 flex items-start justify-between gap-4">
+                      <div className="space-y-2">
+                        <FeatureCardTitle>Minimal volatility risk</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">
+                          Transparent risk parameters and predictable liquidation behavior for peg-aligned pools.
+                        </FeatureCardDescription>
+                      </div>
+                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">03</div>
+                    </div>
+                    <div className="relative z-0 mt-auto">
+                      <div className="flex items-end justify-center">
+                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                          <div className="absolute inset-0 flex items-center justify-center p-5">
+                            <div className="w-full max-w-[15.75rem]">
+                              <div className="overflow-hidden rounded-[20px] border border-gray-200 bg-white p-4">
+                                <div className="flex items-center justify-between gap-2">
+                                  <span className="text-[8px] font-medium uppercase tracking-[0.1em] text-gray-400">Range</span>
+                                  <span className="shrink-0 rounded-md border border-gray-200 bg-gray-50 px-2 py-0.5 text-[8px] font-medium text-gray-700">
+                                    Peg
+                                  </span>
+                                </div>
+                                <div className="relative mt-4 h-[5.5rem] overflow-hidden rounded-xl bg-gray-100">
+                                  <div className="absolute left-3 right-3 top-3 border-t border-dashed border-gray-400" />
+                                  <div className="absolute bottom-3 left-3 right-3 border-b border-dashed border-gray-400" />
+                                  <p className="absolute left-2 top-1 text-[7px] font-medium text-rose-400/90">↑</p>
+                                  <p className="absolute bottom-1 left-2 text-[7px] font-medium text-rose-400/90">↓</p>
+                                  <div className="absolute inset-x-9 inset-y-7 z-0 rounded-md border border-gray-200 bg-white" />
+                                  <div className="absolute left-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-gray-600 bg-white" />
+                                </div>
+                                <div className="mt-3 grid grid-cols-2 gap-2">
+                                  <div className="rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-2 text-center">
+                                    <span className="block text-[8px] text-gray-500">30d vol</span>
+                                    <span className="text-[11px] font-semibold text-[#18323c]">3.2%</span>
+                                  </div>
+                                  <div className="rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-2 text-center">
+                                    <span className="block text-[8px] text-gray-500">Buffer</span>
+                                    <span className="text-[11px] font-semibold text-[#18323c]">18%</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+
+                  {/* Card 04 — Cleaner position monitoring */}
+                  <article className="flex h-[31.25rem] w-full snap-start flex-col overflow-hidden feature-card rounded-[26px] p-5">
+                    <div className="relative z-10 flex items-start justify-between gap-4">
+                      <div className="space-y-2">
+                        <FeatureCardTitle>Cleaner position monitoring</FeatureCardTitle>
+                        <FeatureCardDescription className="max-w-[16rem]">
+                          Track health, usage, and pool-specific limits with a clearer LP-first borrowing workflow.
+                        </FeatureCardDescription>
+                      </div>
+                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">04</div>
+                    </div>
+                    <div className="relative z-0 mt-auto">
+                      <div className="flex items-end justify-center">
+                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                          <div className="absolute inset-0 flex items-center justify-center px-5">
+                            <div className="w-full max-w-[16rem] rounded-[22px] border border-gray-200 bg-white p-4">
+                              <div className="relative overflow-hidden rounded-[18px] border border-gray-200 bg-gray-50/50 p-4">
+                                <div className="flex items-center justify-between">
+                                  <span className="text-[9px] font-medium uppercase tracking-[0.14em] text-gray-400">Console</span>
+                                  <div className="flex items-center gap-1.5">
+                                    <div className="h-1.5 w-1.5 rounded-full bg-gray-400" />
+                                    <div className="h-1.5 w-1.5 rounded-full bg-gray-400" />
+                                    <div className="h-1.5 w-1.5 rounded-full bg-gray-500" />
+                                  </div>
+                                </div>
+                                <div className="mt-4 flex items-end justify-between gap-3">
+                                  <div>
+                                    <span className="block text-[10px] font-medium uppercase tracking-[0.08em] text-gray-400">Health</span>
+                                    <p className="mt-1 text-[2.6rem] font-semibold leading-none tracking-[-0.05em] text-[#18323c]">1.82</p>
+                                  </div>
+                                  <div className="flex h-[60px] items-end gap-1.5 rounded-[16px] border border-gray-200 bg-white px-3 py-2">
+                                    <div className="h-8 w-2 rounded-full bg-gray-400" />
+                                    <div className="h-10 w-2 rounded-full bg-gray-500" />
+                                    <div className="h-12 w-2 rounded-full bg-gray-600" />
+                                  </div>
+                                </div>
+                                <div className="mt-4 flex items-center justify-between">
+                                  <span className="text-[10px] font-semibold text-[#18323c]">ETH / USDC</span>
+                                  <span className="text-[10px] font-medium tabular-nums text-gray-400">64%</span>
+                                </div>
+                                <div className="mt-2 h-2 overflow-hidden rounded-full bg-white">
+                                  <div className="h-full w-[64%] rounded-full bg-emerald-400" />
+                                </div>
+                                <div className="mt-3 flex items-center justify-between">
+                                  <span className="text-[10px] text-gray-400">Cap</span>
+                                  <span className="text-[10px] font-semibold text-[#18323c]">$2.4M</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
                 </div>
 
                 <style>{`
@@ -970,89 +562,7 @@ export default function HeroSection() {
                     84%, 100% { transform: translateY(-75%); }
                   }
 
-                  /* === Card 02: Keep Earning — APY reel + chart + fee tickers === */
-                  .ce-ticker-apy {
-                    animation: ce-ta 11s cubic-bezier(0.76, 0, 0.24, 1) infinite;
-                  }
-                  @keyframes ce-ta {
-                    0%, 22% { transform: translateY(0); }
-                    28%, 50% { transform: translateY(-25%); }
-                    56%, 78% { transform: translateY(-50%); }
-                    84%, 100% { transform: translateY(-75%); }
-                  }
-
-                  .ce-ticker-fee1 {
-                    animation: ce-tf1 9s cubic-bezier(0.76, 0, 0.24, 1) infinite;
-                  }
-                  @keyframes ce-tf1 {
-                    0%, 22% { transform: translateY(0); }
-                    28%, 50% { transform: translateY(-25%); }
-                    56%, 78% { transform: translateY(-50%); }
-                    84%, 100% { transform: translateY(-75%); }
-                  }
-
-                  .ce-ticker-fee2 {
-                    animation: ce-tf2 10s cubic-bezier(0.76, 0, 0.24, 1) infinite;
-                    animation-delay: 1.2s;
-                  }
-                  @keyframes ce-tf2 {
-                    0%, 22% { transform: translateY(0); }
-                    28%, 50% { transform: translateY(-25%); }
-                    56%, 78% { transform: translateY(-50%); }
-                    84%, 100% { transform: translateY(-75%); }
-                  }
-
-                  /* === Card 03: Unlock Strategies — escalator === */
-                  .ce-escalator {
-                    animation: ce-esc 15s cubic-bezier(0.76, 0, 0.24, 1) infinite;
-                  }
-                  @keyframes ce-esc {
-                    0%, 22% { transform: translateY(0); }
-                    28%, 50% { transform: translateY(-25%); }
-                    56%, 78% { transform: translateY(-50%); }
-                    84%, 100% { transform: translateY(-75%); }
-                  }
-
-                  /* === Card 04: Oracle band — chart + price tickers + dot === */
-                  .ce-pulse-dot {
-                    animation: ce-pd 3s ease-in-out infinite;
-                  }
-                  @keyframes ce-pd {
-                    0%, 100% { opacity: 0.7; transform: scale(1); }
-                    50% { opacity: 0; transform: scale(2.2); }
-                  }
-
-                  .ce-ticker-price1 {
-                    animation: ce-tp1 8s cubic-bezier(0.76, 0, 0.24, 1) infinite;
-                  }
-                  .ce-ticker-price2 {
-                    animation: ce-tp2 7s cubic-bezier(0.76, 0, 0.24, 1) infinite;
-                    animation-delay: 0.8s;
-                  }
-                  .ce-ticker-price3 {
-                    animation: ce-tp3 9s cubic-bezier(0.76, 0, 0.24, 1) infinite;
-                    animation-delay: 1.6s;
-                  }
-                  @keyframes ce-tp1 {
-                    0%, 22% { transform: translateY(0); }
-                    28%, 50% { transform: translateY(-25%); }
-                    56%, 78% { transform: translateY(-50%); }
-                    84%, 100% { transform: translateY(-75%); }
-                  }
-                  @keyframes ce-tp2 {
-                    0%, 22% { transform: translateY(0); }
-                    28%, 50% { transform: translateY(-25%); }
-                    56%, 78% { transform: translateY(-50%); }
-                    84%, 100% { transform: translateY(-75%); }
-                  }
-                  @keyframes ce-tp3 {
-                    0%, 22% { transform: translateY(0); }
-                    28%, 50% { transform: translateY(-25%); }
-                    56%, 78% { transform: translateY(-50%); }
-                    84%, 100% { transform: translateY(-75%); }
-                  }
-
-                  /* === Card 05: Risk models — ticker === */
+                  /* === Card 02: Risk models — ticker === */
                   .ce-ticker-risk {
                     animation: ce-tr 16s cubic-bezier(0.76, 0, 0.24, 1) infinite;
                   }
@@ -1070,14 +580,7 @@ export default function HeroSection() {
                     .ce-ticker-ltv,
                     .ce-ltv-arc,
                     .ce-ticker-v,
-                    .ce-ticker-apy,
-                    .ce-ticker-fee1,
-                    .ce-ticker-fee2,
                     .ce-escalator,
-                    .ce-pulse-dot,
-                    .ce-ticker-price1,
-                    .ce-ticker-price2,
-                    .ce-ticker-price3,
                     .ce-ticker-risk {
                       animation: none !important;
                     }
@@ -1090,32 +593,28 @@ export default function HeroSection() {
 
 
       <div>
-        <div className="max-w-[58rem] space-y-4 text-left">
-          <SectionEyebrow tone="rose">LP use cases</SectionEyebrow>
-          <SectionTitle className="max-w-[14ch] lg:max-w-none">
-            <span className="lg:whitespace-nowrap">Ways businesses use LP credit.</span>
+        <div className="max-w-[58rem] space-y-3 text-left sm:space-y-4">
+          <SectionEyebrow tone="rose">Who it&apos;s for</SectionEyebrow>
+          <SectionTitle className="max-w-[18ch] sm:max-w-[22ch] lg:max-w-none">
+            <span className="block sm:inline">Ways teams put</span>{" "}
+            <span className="block sm:inline">LP credit to work</span>
           </SectionTitle>
         </div>
 
-        <div className="mt-10 -mx-5 overflow-x-auto px-5 pb-1 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] md:mx-0 md:mt-16 md:overflow-visible md:px-0 md:pb-0 md:snap-none [&::-webkit-scrollbar]:hidden">
-          <div className="flex w-max gap-8 md:grid md:w-full md:grid-cols-2 md:gap-x-16 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
-            {lpUseCases.map((item) => {
-              const Icon = item.icon
+        <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-10 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 md:mt-16 md:gap-x-16 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
+          {lpUseCases.map((item) => {
+            const Icon = item.icon
 
-              return (
-                <article
-                  key={item.title}
-                  className="flex w-[15rem] shrink-0 snap-start flex-col bg-transparent md:w-auto md:shrink"
-                >
-                  <Icon className="h-11 w-11 text-[#111111]" strokeWidth={1.5} aria-hidden="true" />
-                  <FeatureCardTitle className="mt-5">{item.title}</FeatureCardTitle>
-                  <FeatureCardDescription className="mt-2 max-w-[22rem]">
-                    {item.description}
-                  </FeatureCardDescription>
-                </article>
-              )
-            })}
-          </div>
+            return (
+              <article key={item.title} className="flex flex-col bg-transparent">
+                <Icon className="h-10 w-10 text-[#01AACF] sm:h-11 sm:w-11" strokeWidth={1.5} aria-hidden="true" />
+                <FeatureCardTitle className="mt-4 sm:mt-5">{item.title}</FeatureCardTitle>
+                <FeatureCardDescription className="mt-2 max-w-[22rem]">
+                  {item.description}
+                </FeatureCardDescription>
+              </article>
+            )
+          })}
         </div>
       </div>
 
@@ -1124,45 +623,71 @@ export default function HeroSection() {
         </LazySection>
 
         <LazySection minHeight="660px" fallback={<SectionSkeleton minHeight="660px" />}>
-          <div className="relative grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
-            <div className="space-y-4">
-              <SectionEyebrow tone="slate">Built on Aave v4</SectionEyebrow>
-              <SectionTitle>
-                <span className="block lg:whitespace-nowrap">Shared liquidity,</span>
-                <span className="block lg:whitespace-nowrap">stronger guardrails.</span>
-              </SectionTitle>
+          <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 xl:gap-16">
+            <div className="max-w-[36rem] space-y-6">
+              <div className="space-y-4">
+                <SectionEyebrow tone="slate">Engineered for resilience</SectionEyebrow>
+                <SectionTitle>
+                  <span className="block lg:whitespace-nowrap">
+                    Backed by{" "}
+                    <span className="inline-flex translate-y-[-0.02em] items-center align-middle">
+                      <Image
+                        src="/images/brand/avana-token-circle.jpg"
+                        alt="Avana"
+                        width={56}
+                        height={56}
+                        className="h-[1.2em] w-[1.2em] rounded-full object-cover"
+                      />
+                    </span>
+                    ,
+                  </span>
+                  <span className="block lg:whitespace-nowrap">Powered by Aave v4</span>
+                </SectionTitle>
+              </div>
+              <div className="text-left text-[#39515b]">
+                <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
+                  Aave v4 uses{" "}
+                  <DeFiTerm term="hub" className="text-[0.92em]">
+                    Hub
+                  </DeFiTerm>{" "}
+                  and{" "}
+                  <DeFiTerm term="spoke" className="text-[0.92em]">
+                    Spoke
+                  </DeFiTerm>{" "}
+                  architecture for shared liquidity and flexible risk controls. Avana builds on it for secure{" "}
+                  <DeFiTerm term="lp-position" className="text-[0.92em]">
+                    LP-backed borrowing
+                  </DeFiTerm>
+                  , resilient{" "}
+                  <DeFiTerm term="oracle" className="text-[0.92em]">
+                    oracle
+                  </DeFiTerm>{" "}
+                  checks, and controlled{" "}
+                  <DeFiTerm term="liquidation" className="text-[0.92em]">
+                    liquidation
+                  </DeFiTerm>
+                  .
+                </p>
+              </div>
             </div>
-            <div className="text-left text-[#39515b]">
-              <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
-                Aave v4 is a next generation lending system built on{" "}
-                <DeFiTerm term="hub" className="text-[0.92em]">
-                  Hub
-                </DeFiTerm>{" "}
-                and{" "}
-                <DeFiTerm term="spoke" className="text-[0.92em]">
-                  Spoke
-                </DeFiTerm>{" "}
-                architecture, giving the protocol shared liquidity, flexible risk controls, and a stronger
-                security model. Avana builds on that foundation to deliver secure{" "}
-                <DeFiTerm term="lp-position" className="text-[0.92em]">
-                  LP backed borrowing
-                </DeFiTerm>{" "}
-                with transparent onchain execution, resilient{" "}
-                <DeFiTerm term="oracle" className="text-[0.92em]">
-                  oracle
-                </DeFiTerm>{" "}
-                checks, and borrower protection shaped around controlled{" "}
-                <DeFiTerm term="liquidation" className="text-[0.92em]">
-                  liquidation
-                </DeFiTerm>{" "}
-                design.
-              </p>
-            </div>
+
+            <article className="relative h-[240px] w-full overflow-hidden sm:h-[300px] md:h-[360px] lg:h-[420px] xl:h-[460px]">
+              <Image
+                src="/images/avana-token-icons-v1.jpg"
+                alt="Avana token icons"
+                fill
+                className="scale-[1.04] object-contain object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_68%,rgba(255,255,255,0.28)_86%,#fff_100%)]" />
+            </article>
           </div>
         </LazySection>
 
         <LazySection minHeight="520px" fallback={<SectionSkeleton minHeight="520px" />}>
-          <HomepageNewsroomSection eyebrowTone="rose" />
+          <div className="-mt-8 md:-mt-12">
+            <HomepageNewsroomSection eyebrowTone="rose" />
+          </div>
         </LazySection>
 
         <LazySection minHeight="480px" fallback={<SectionSkeleton minHeight="480px" />}>

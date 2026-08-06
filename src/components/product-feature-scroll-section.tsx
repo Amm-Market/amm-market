@@ -10,6 +10,7 @@ type ProductFeatureScrollSectionProps = {
   eyebrow?: string
   eyebrowTone?: SectionEyebrowTone
   title: ReactNode
+  description?: string
   items: readonly ProductFeatureItem[]
   panels?: ReactNode[]
 }
@@ -18,6 +19,7 @@ export default function ProductFeatureScrollSection({
   eyebrow = "Key Features",
   eyebrowTone = "blue",
   title,
+  description,
   items,
   panels,
 }: ProductFeatureScrollSectionProps) {
@@ -26,6 +28,11 @@ export default function ProductFeatureScrollSection({
       <div className="mb-8 max-w-[650px] space-y-3 text-left">
         <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow>
         <SectionTitle>{title}</SectionTitle>
+        {description ? (
+          <p className="mt-4 max-w-[38rem] text-[1.15rem] leading-[1.36] tracking-[-0.045em] text-[#6f7378] md:text-[1.35rem]">
+            {description}
+          </p>
+        ) : null}
       </div>
       <div className="relative mt-10 md:mt-16">
         <div className="overflow-x-auto py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">

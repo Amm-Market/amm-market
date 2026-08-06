@@ -78,7 +78,7 @@ export default function HomepageFaqSection() {
       <div className="space-y-3 md:max-w-[25rem] md:pt-2">
         <SectionTitle as="h3" className="max-w-none">
           <span className="block whitespace-nowrap">Frequently asked</span>
-          <span className="block whitespace-nowrap">questions.</span>
+          <span className="block whitespace-nowrap">questions</span>
         </SectionTitle>
       </div>
       <div className="min-w-0 md:pl-16 lg:pl-24 xl:pl-28">

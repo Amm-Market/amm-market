@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Collateral Factors",
   description:
-    "How Avana turns LP position value into borrowable capacity through conservative valuation and spoke-level risk controls.",
+    "How a Borrow Spoke turns LP position value into borrowable capacity before reporting it to the Hub.",
 }
 
 const sections = [
@@ -17,23 +17,25 @@ const sections = [
 
 export default function CollateralFactorsPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div data-developer-doc-export-root className="max-w-3xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
           title="Collateral Factors"
-          description="Position-level borrowing power, conservative valuation, and how the spoke reports capacity back to the Hub."
+          description="How a Borrow Spoke decides how much of an LP position counts toward borrowing capacity."
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Collateral factors define how much of an LP position&apos;s value can support
-            borrowing. In Avana, the spoke values the position conservatively, applies the
-            relevant market risk treatment, and reports the resulting capacity to the Hub.
+            Collateral factors answer a narrow but important question: how much of this LP
+            position should actually support debt? In Avana, that answer is not taken from the LP&apos;s
+            headline mark alone. The Borrow Spoke first rebuilds and discounts the position, then
+            applies the market rules that decide what fraction of that value can count as usable
+            borrowing capacity.
           </p>
           <p className="text-sm text-gray-600">
-            The lightpaper covers the principle. This page is the developer view of how that
-            principle is applied inside the spoke.
+            The lightpaper states the principle. This page describes the developer-facing sequence
+            used inside a spoke before any capacity is handed off to the Hub.
           </p>
         </section>
 
@@ -45,7 +47,9 @@ export default function CollateralFactorsPage() {
                 01
               </div>
               <p className="text-sm leading-7 text-gray-600">
-                The spoke admits only approved pools or templates.
+                The spoke admits only approved pools or templates. If a position does not match a
+                listed market definition, it never reaches the later valuation stages that produce
+                borrowable capacity.
               </p>
             </li>
             <li className="flex gap-4">
@@ -54,7 +58,9 @@ export default function CollateralFactorsPage() {
               </div>
               <p className="text-sm leading-7 text-gray-600">
                 It reconstructs the LP position, prices the underlying assets, and discounts the
-                result to a recoverable collateral value.
+                result to a recoverable collateral value. That step is where the spoke moves from a
+                pool position that looks valuable in theory to a value it is willing to lend
+                against in practice.
               </p>
             </li>
             <li className="flex gap-4">
@@ -63,7 +69,8 @@ export default function CollateralFactorsPage() {
               </div>
               <p className="text-sm leading-7 text-gray-600">
                 It applies market-specific collateral settings and passes the aggregate borrowing
-                capacity to the Hub for final enforcement.
+                capacity to the Hub for final enforcement. The Hub consumes the result, but the
+                spoke is the layer that decided how much of the LP could count in the first place.
               </p>
             </li>
           </ol>
@@ -72,29 +79,32 @@ export default function CollateralFactorsPage() {
         <section id="borrowable-value" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Borrowable Value</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Borrowable value is not treated as a blanket spoke setting. It is built from the
-            position itself and from the market logic attached to that position. That keeps the
-            developer model consistent with the lightpaper&apos;s LP-specific risk approach.
+            Borrowable value is a derived output, not a fixed attribute attached to every LP in the
+            spoke. Two positions can live in different markets, produce different recoverable
+            values, and clear different collateral settings even if they look similar at a glance.
+            That keeps the implementation aligned with the LP-specific underwriting model described
+            elsewhere in the docs.
           </p>
           <div className="rounded-lg border border-cyan-200 bg-cyan-50/60 p-4 text-sm text-gray-700">
-            A supported LP position can contribute capacity only after it is valued conservatively
-            and cleared by the market&apos;s configured risk controls.
+            A supported LP position contributes borrowing capacity only after the spoke has admitted
+            it, reconstructed and discounted it, and applied the market&apos;s configured collateral
+            controls.
           </div>
         </section>
 
         <section id="notes" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Notes</h2>
           <ul className="space-y-3 text-sm text-gray-600">
-            <li>• Exact market settings live with the supported pool configuration.</li>
-            <li>• Pool-level risk bands are implementation details, not a promise of universal LTVs.</li>
-            <li>• Liquidation and health-factor behavior should be read together with the liquidation docs.</li>
+            <li>• Exact market settings live with the supported pool configuration rather than this overview page.</li>
+            <li>• Pool-level risk bands are implementation details, not a promise that all LPs share one universal LTV.</li>
+            <li>• Read collateral-factor behavior together with the health-factor and liquidation docs if you are implementing monitoring or recovery logic.</li>
           </ul>
         </section>
       </div>
 
       <DeveloperScrollSpyRail
         sections={sections}
-        pageSummary="How Avana turns LP position value into borrowable capacity through conservative valuation and market-specific risk controls."
+        pageSummary="How a Borrow Spoke admits an LP, discounts its value, applies market controls, and reports capacity to the Hub."
         sectionColor="violet"
       />
     </div>

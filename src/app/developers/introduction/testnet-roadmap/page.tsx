@@ -5,7 +5,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Testnet & Roadmap",
   description:
-    "Operational guide to Avana test deployments and roadmap framing. Use this page for evaluation context, not as a canonical protocol specification or launch promise.",
+    "Operational guide to Avana test deployments and roadmap framing, for evaluation context rather than canonical protocol rules or launch promises.",
 }
 
 const sections = [
@@ -18,22 +18,22 @@ const sections = [
 
 export default function TestnetRoadmapPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div data-developer-doc-export-root className="max-w-3xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
 
           title="Testnet & Roadmap"
 
-          description="Operational page for testing Avana deployments and understanding how roadmap statements should be read."
+          description="Operational page for testing Avana deployments and for reading roadmap statements with the right level of caution."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            This page is intentionally separate from the protocol-spec story. Testnet availability,
-            supported networks, and public roadmap sequencing are operational matters that can change
-            faster than the underlying architecture.
+            Testnet status, supported networks, and public roadmap sequencing change faster than the
+            architecture docs. This page exists so builders can separate environment status from
+            stable protocol design and avoid reading rollout language as if it were a specification.
           </p>
           <p className="border-l-4 border-cyan-400 pl-3 text-sm text-gray-600">
             Use the lightpaper and core developer docs for protocol design. Use this page for
@@ -44,9 +44,9 @@ export default function TestnetRoadmapPage() {
         <section id="testnet-scope" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Testnet Scope</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            A test deployment may expose only a subset of the full architecture. Supported LP
-            families, borrow assets, oracle coverage, and liquidation tooling can all be narrower on
-            testnet than on an eventual production deployment.
+            A test deployment may expose only part of the full production design. LP families,
+            borrow assets, oracle coverage, and liquidation tooling can all be narrower or more
+            heavily simplified on testnet.
           </p>
           <ul className="space-y-2 text-sm text-gray-600">
             <li>• Verify the active network, contract registry, and supported pool set for the current environment.</li>
@@ -58,33 +58,32 @@ export default function TestnetRoadmapPage() {
         <section id="how-to-evaluate" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">How to Evaluate</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            The most useful way to test Avana is to walk the canonical flow: deposit an eligible
-            LP position, confirm spoke-level valuation, observe aggregate borrowing capacity, borrow
-            from the Hub-side liquidity layer, and then inspect health monitoring and repayment paths.
+            The most useful evaluation path is to deposit an eligible LP, confirm spoke valuation,
+            observe aggregate borrowing capacity, borrow against Hub liquidity, and then watch how
+            health monitoring and repayment behave on that same account.
           </p>
-          <p className="text-sm text-gray-600">
-            If a test deployment includes points, quests, or other campaigns, those should be treated
-            as separate operational features rather than as evidence of the protocol&apos;s core
-            collateral model.
+          <p className="text-sm leading-relaxed text-gray-600">
+            Points, quests, or other campaigns on a test deployment are operational features. They
+            are not the collateral model itself.
           </p>
         </section>
 
         <section id="roadmap-framing" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Roadmap Framing</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Roadmap statements should be interpreted as directional priorities: broader LP-family
-            coverage, stronger oracle support, deeper liquidation tooling, and more refined risk
-            governance. They should not be read as fixed launch dates or immutable network promises
-            unless separately announced.
+            Roadmap language is directional. It points toward broader LP family coverage, stronger
+            oracle support, deeper liquidation tooling, and more refined risk governance. It should
+            not be read as a fixed launch date or a hard network promise unless that commitment is
+            announced separately.
           </p>
         </section>
 
         <section id="campaigns-and-status" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Campaigns & Status</h2>
           <p className="leading-relaxed text-gray-600">
-            Any active incentives, points programs, or network-specific rollout details should be
-            published as campaign documentation or release notes. Keeping those details separate from
-            the core protocol narrative makes the developer docs more stable and easier to trust.
+            Active incentives, points programs, or network-specific rollout details should live in
+            campaign docs or release notes. Keeping them out of the core protocol pages makes the
+            developer docs more stable when campaigns or rollout plans change.
           </p>
         </section>
       </div>

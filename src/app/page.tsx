@@ -97,26 +97,36 @@ export default function Home() {
     <>
       <section className="bg-white pt-10 pb-10 md:pt-14 md:pb-12 2xl:pt-12 2xl:pb-11">
         <div className="site-content-shell">
-          <div className="mx-auto grid w-fit max-w-full grid-cols-1 gap-5 text-center md:grid-cols-[auto_auto] md:items-start md:gap-10 md:text-left lg:gap-14">
+          <div className="mx-auto grid w-fit max-w-full grid-cols-1 gap-5 text-center md:grid-cols-[auto_auto] md:items-end md:gap-10 md:text-left lg:gap-14">
             <div className="space-y-4">
               <SectionTitle className="text-center font-medium md:text-left">
-                <span className="block lg:whitespace-nowrap">Unlock Capital</span>
-                <span className="block lg:whitespace-nowrap">from Amm Markets</span>
+                <span className="block lg:whitespace-nowrap">Borrow Against</span>
+                <span className="block lg:whitespace-nowrap">Liquidity Positions</span>
               </SectionTitle>
             </div>
             <div className="space-y-8">
-              <p className="mx-auto max-w-[34rem] text-[1.2rem] font-normal leading-[1.2] tracking-[-0.04em] text-[#121212] sm:text-[1.55rem] sm:leading-[1.12] md:mx-0 lg:text-[1.95rem]">
-                Turn your liquidity pool positions
-                <br />
-                into collateral and borrow against them
-                <br />
-                here without leaving the pool.
+              <p className="mx-auto max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] text-[#39515b] md:mx-0 lg:text-[1.18rem]">
+                <span className="md:hidden">
+                  Access up to 80% of your Liquidity Pool value
+                  <br />
+                  at 5.5% APR without withdrawing liquidity or
+                  <br />
+                  giving up trading fees.
+                </span>
+                <span className="hidden md:inline">
+                  Access up to 80% of your Liquidity Pool value at 5.5% APR
+                  <br />
+                  without withdrawing liquidity or giving up trading fees.
+                </span>
               </p>
             </div>
           </div>
         </div>
       </section>
       <WebappHero />
+      <div className="pt-8 md:pt-10">
+        <div className="border-t border-[#01AACF]" aria-hidden="true" />
+      </div>
       <LazySection
         rootMargin="240px"
         minHeight="560px"

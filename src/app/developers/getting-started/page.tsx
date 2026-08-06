@@ -6,7 +6,7 @@ import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 export const metadata: Metadata = {
   title: "Getting Started - Deposit LP",
   description:
-    "Learn how to deposit supported LP positions as collateral in Avana and how those deposits become aggregate borrowing capacity inside a Borrow Spoke.",
+    "Learn how supported LP positions enter Avana as collateral and how each admitted position starts contributing borrowing capacity inside a Borrow Spoke.",
 }
 
 const sections = [
@@ -37,25 +37,29 @@ const supportedFamilies = [
 
 export default function DepositLPPage() {
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_220px] lg:gap-12">
-      <div data-developer-doc-export-root className="max-w-3xl">
+    <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
+      <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
 
           title="Deposit LP"
 
-          description="Deposit is the first step in turning a supported LP position into borrowable capacity inside a Borrow Spoke."
+          description="Deposit moves a supported LP position under spoke custody so Avana can account for it as collateral and turn it into borrowable capacity."
 
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            A deposit moves an approved LP position into Borrow Spoke custody for collateral
-            accounting. The position remains active in the underlying AMM, but the spoke can now
-            evaluate it, track it, and include its contribution in the user&apos;s aggregate borrowing
-            capacity.
+            Depositing is how an LP position becomes usable inside Avana. The Borrow Spoke takes
+            custody of the supported position, records the state it needs for valuation, and starts
+            treating that position as collateral instead of as a wallet-held asset.
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="mb-4 leading-relaxed text-gray-600">
+            That does not mean the liquidity disappears from the underlying venue. The position can
+            remain active in the AMM while the spoke tracks its exposure, fee state, and risk
+            treatment for later borrow and liquidation checks.
+          </p>
+          <p className="text-sm leading-relaxed text-gray-600">
             <strong>Important:</strong> Avana does not grant borrowing power just because an LP
             position exists. The position must belong to an approved pool family, pass valuation
             checks, and fit the spoke&apos;s current risk configuration.
@@ -67,32 +71,36 @@ export default function DepositLPPage() {
           <div className="space-y-5">
             <div>
               <h3 className="mb-2 font-semibold text-gray-900">1. Transfer or Approve the LP Position</h3>
-              <p className="text-sm text-gray-600">
-                The user supplies a supported LP position to the relevant Borrow Spoke. The exact
-                transfer path depends on the LP format, but the end result is the same: the spoke
-                gains custody for collateral accounting.
+              <p className="text-sm leading-relaxed text-gray-600">
+                The user hands the supported LP position to the relevant Borrow Spoke. The exact
+                path depends on whether the collateral is fungible or position-specific, but the
+                protocol outcome is the same: the spoke must control the asset before it can count
+                it as collateral.
               </p>
             </div>
             <div>
               <h3 className="mb-2 font-semibold text-gray-900">2. Validate the Pool Family</h3>
-              <p className="text-sm text-gray-600">
-                The spoke checks that the position comes from an approved pool or template with the
-                required oracle coverage, routing support, and governance-defined risk settings.
+              <p className="text-sm leading-relaxed text-gray-600">
+                Next the spoke confirms that the position belongs to an approved pool or template.
+                That check is really a package of requirements: oracle coverage must exist, routing
+                and liquidation support must exist, and the deployment must already have risk
+                settings for that LP family.
               </p>
             </div>
             <div>
               <h3 className="mb-2 font-semibold text-gray-900">3. Cache Position State</h3>
-              <p className="text-sm text-gray-600">
-                Position metadata is recorded so the protocol can reconstruct exposure, monitor fee
-                accrual, and recalculate borrowing power as market conditions change.
+              <p className="text-sm leading-relaxed text-gray-600">
+                Once the position is admitted, the protocol stores the state it needs to rebuild the
+                position later. That includes the metadata required to reconstruct exposure, monitor
+                accrued fees, and refresh borrowing power as prices or pool conditions move.
               </p>
             </div>
             <div>
               <h3 className="mb-2 font-semibold text-gray-900">4. Add the Position to Aggregate Capacity</h3>
-              <p className="text-sm text-gray-600">
-                Once valued, the LP position contributes to the user&apos;s total borrowing capacity
-                inside that Borrow Spoke. The Hub sees the updated capacity when the user later
-                attempts to borrow.
+              <p className="text-sm leading-relaxed text-gray-600">
+                After valuation and risk discounts are applied, the position adds its own
+                contribution to the user&apos;s total borrowing capacity inside that Borrow Spoke.
+                When the user later borrows, the Hub relies on that spoke-side capacity update.
               </p>
             </div>
           </div>
@@ -103,19 +111,20 @@ export default function DepositLPPage() {
           <div className="space-y-4 text-sm text-gray-600">
             <p>
               <strong className="text-gray-900">Position-aware valuation:</strong> the deposit itself
-              does not fix a permanent loan amount. Borrowing power is recomputed from the live LP
-              position using the oracle stack and collateral-factor model.
+              does not lock in a fixed loan amount. Borrowing power is recalculated from the live LP
+              position using the oracle stack and collateral-factor model each time the protocol
+              needs an updated view.
             </p>
             <p>
               <strong className="text-gray-900">Format-specific custody:</strong> some LP positions
-              are fungible tokens, others are concentrated-liquidity positions with extra metadata.
-              The Borrow Spoke abstracts those custody differences so the credit layer can treat them
-              consistently.
+              are fungible tokens, while others are concentrated-liquidity positions with extra
+              metadata. The Borrow Spoke handles those custody differences so the rest of the credit
+              system can still reason about them in a consistent way.
             </p>
             <p>
               <strong className="text-gray-900">No forced unwind on deposit:</strong> supplying
-              collateral does not remove liquidity from the pool. The unwind path is reserved for
-              explicit user actions or liquidation.
+              collateral does not mean closing the LP. The unwind path is reserved for later user
+              actions or liquidation, not for the initial deposit itself.
             </p>
           </div>
         </section>
@@ -154,11 +163,11 @@ export default function DepositLPPage() {
         <section id="after-deposit" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">After Deposit</h2>
           <ul className="space-y-2 text-gray-600">
-            <li>Each approved position contributes to aggregate borrowing capacity inside the spoke</li>
-            <li>LP principal stays active in the underlying pool and may continue accruing fees</li>
-            <li>Borrowing still depends on Hub liquidity, spoke health, and collateral-factor limits</li>
+            <li>Each approved position now contributes its own discounted value to spoke-level borrowing capacity</li>
+            <li>The LP principal stays active in the underlying pool and may continue accruing fees</li>
+            <li>Actual borrowing still depends on Hub liquidity, spoke health checks, and collateral-factor limits</li>
             <li>
-              The next canonical step is{" "}
+              The next step in the normal flow is{" "}
               <Link href="/developers/getting-started/borrow-assets" className="text-[#01AACF] hover:underline">
                 Borrow Assets
               </Link>
