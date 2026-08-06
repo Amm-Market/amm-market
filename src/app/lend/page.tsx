@@ -3,7 +3,7 @@ import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import type { LucideIcon } from "lucide-react"
-import { BadgePercent, Gauge, MoveRight, WalletCards } from "lucide-react"
+import { Gauge, Layers, LockKeyhole, MoveRight, TrendingUp, WalletCards } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
 import { buildOgImagePath, siteRoutes } from "@/lib/site"
@@ -58,28 +58,40 @@ const stableSpokeFaqItems: InlineFaqItem[] = [
 
 const keyFeatureCards = [
   {
+    icon: Gauge,
+    title: "See your supply rates",
+    description:
+      "Track APY, utilization, and demand across lending markets from one clear supplier view.",
+  },
+  {
     icon: WalletCards,
+    title: "Manage your deposits",
+    description:
+      "Keep balances, accrued yield, and available liquidity together in one consolidated surface.",
+  },
+  {
+    icon: LockKeyhole,
+    title: "Earn on flexible terms",
+    description:
+      "Supply when it suits you, earn continuously, and withdraw principal plus yield with no lock-up.",
+  },
+  {
+    icon: MoveRight,
     title: "Easy money movement",
     description:
       "Access and move capital whenever liquidity is available, all from one simple online interface.",
   },
   {
-    icon: Gauge,
-    title: "Rates above the benchmark",
+    icon: TrendingUp,
+    title: "Navigate rate shifts",
     description:
-      "Supplier yield is designed to sit above most bank cash products while staying tied to real onchain demand.",
+      "Stay ahead when utilization and borrower demand move rates across stablecoin, ETH, and BTC markets.",
   },
   {
-    icon: MoveRight,
-    title: "Supply once, power many borrowers",
+    icon: Layers,
+    title: "Allocate with clarity",
     description:
-      "One deposit can help fund a network of specialized LP borrowers across multiple spoke markets through one cleaner capital surface.",
-  },
-  {
-    icon: BadgePercent,
-    title: "Base rate plus risk premium",
-    description:
-      "Supplier returns combine the Aave v4 Hub base rate with Avana's LP borrower risk premium.",
+      "Decide where capital should sit across lending markets without losing sight of overall yield.",
   },
 ] as const
 
@@ -245,10 +257,10 @@ export default function LendPage() {
       <section className="relative z-10 site-section-gap">
         <div className="site-content-shell">
           <div className="mb-8 max-w-[600px] space-y-3 md:mb-10">
-            <SectionEyebrow tone="emerald">Key Features</SectionEyebrow>
-            <SectionTitle>A market-leading rate</SectionTitle>
+            <SectionEyebrow tone="emerald">Why supply</SectionEyebrow>
+            <SectionTitle>Clear rates, flexible capital, one place to manage it.</SectionTitle>
           </div>
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {keyFeatureCards.map((card) => (
               <KeyFeatureCard
                 key={card.title}
