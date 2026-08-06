@@ -101,13 +101,23 @@ export default function Home() {
             <div className="space-y-4">
               <SectionTitle className="text-center font-medium md:text-left">
                 <span className="block lg:whitespace-nowrap">Borrow Against</span>
-                <span className="block lg:whitespace-nowrap">Your Liquidity Positions</span>
+                <span className="block lg:whitespace-nowrap">Liquidity Positions</span>
               </SectionTitle>
             </div>
             <div className="space-y-8">
               <p className="mx-auto max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] text-[#39515b] md:mx-0 lg:text-[1.18rem]">
-                Access up to 80% of your Liquidity Pool value at 5.5% APR without withdrawing liquidity or
-                giving up trading fees.
+                <span className="md:hidden">
+                  Access up to 80% of your Liquidity Pool value
+                  <br />
+                  at 5.5% APR without withdrawing liquidity or
+                  <br />
+                  giving up trading fees.
+                </span>
+                <span className="hidden md:inline">
+                  Access up to 80% of your Liquidity Pool value at 5.5% APR
+                  <br />
+                  without withdrawing liquidity or giving up trading fees.
+                </span>
               </p>
             </div>
           </div>

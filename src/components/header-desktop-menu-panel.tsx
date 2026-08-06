@@ -81,7 +81,7 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
     items: [
       { href: siteRoutes.developers, label: "Overview" },
       { href: "/developers/architecture", label: "Architecture" },
-      { href: "/developers/liquidation/liquidators", label: "Liquidators" },
+      { href: "/developers/liquidation", label: "Liquidation" },
     ],
     supportingTitle: "Highlights",
     supportingItems: [
@@ -96,9 +96,9 @@ const desktopMenus: readonly DesktopMenuGroup[] = [
         description: "Understand how the hub, spokes, pricing, and controls fit together.",
       },
       {
-        href: "/developers/liquidation/liquidators",
-        label: "Understand liquidators",
-        description: "Learn how execution desks monitor and unwind LP collateral under stress.",
+        href: "/developers/liquidation",
+        label: "Understand liquidation",
+        description: "Learn how LP-backed loans settle when health fails and residual value is protected.",
       },
     ],
   },

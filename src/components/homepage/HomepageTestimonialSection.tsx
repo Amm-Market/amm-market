@@ -90,7 +90,7 @@ export default function HomepageTestimonialSection() {
     >
       <div className="mb-8 space-y-3 md:mb-10">
         <SectionEyebrow tone="rose">Safety by design</SectionEyebrow>
-        <SectionTitle>Risk designed around liquidity positions.</SectionTitle>
+        <SectionTitle>Risk designed around liquidity positions</SectionTitle>
       </div>
 
       <div className="flex flex-col lg:flex-row">

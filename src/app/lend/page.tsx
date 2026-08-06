@@ -183,7 +183,7 @@ export default function LendPage() {
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
                   <h1 className="mb-3 max-w-[14ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[11ch] md:text-5xl lg:text-5xl xl:text-6xl">
                     <span className="block">Earn Interest</span>
-                    <span className="block">on your assets.</span>
+                    <span className="block">on your assets</span>
                   </h1>
 
                   <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
@@ -258,7 +258,7 @@ export default function LendPage() {
         <div className="site-content-shell">
           <div className="mb-8 max-w-[600px] space-y-3 md:mb-10">
             <SectionEyebrow tone="emerald">Why supply</SectionEyebrow>
-            <SectionTitle>Clear rates, flexible capital, one place to manage it.</SectionTitle>
+            <SectionTitle>Clear rates, flexible capital, one place to manage it</SectionTitle>
           </div>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {keyFeatureCards.map((card) => (
@@ -286,7 +286,7 @@ export default function LendPage() {
           <HomepageNewsroomSection collection="invest" eyebrowTone="emerald" />
 
           <div className="pb-16 md:pb-24 2xl:pb-22">
-            <InlineFaqSection title="Frequently asked questions." items={stableSpokeFaqItems} eyebrowTone="emerald" withTopBorder={false} />
+            <InlineFaqSection title="Frequently asked questions" items={stableSpokeFaqItems} eyebrowTone="emerald" withTopBorder={false} />
           </div>
         </div>
       </div>
