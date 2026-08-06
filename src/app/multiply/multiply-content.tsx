@@ -91,12 +91,14 @@ const leverageFeatureItems = [
 
 const leverageWorkflowSteps = [
   {
-    title: "Deposit LP",
-    description: "Deposit a supported LP position and let Avana value it using live pool and position data.",
+    title: "Pick a market",
+    description:
+      "Choose your multiply market while watching loop APY and the liquidation threshold for that setup.",
   },
   {
     title: "Set leverage",
-    description: "Pick your market, target exposure, and multiplier from the approved leverage markets list.",
+    description:
+      "Deposit a supported LP position, then set your target exposure and multiplier for that market.",
   },
   {
     title: "Manage live",
