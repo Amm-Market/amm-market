@@ -623,65 +623,65 @@ export default function HeroSection() {
         </LazySection>
 
         <LazySection minHeight="660px" fallback={<SectionSkeleton minHeight="660px" />}>
-          <div className="relative grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
-            <div className="space-y-4">
-              <SectionEyebrow tone="slate">Engineered for resilience</SectionEyebrow>
-              <SectionTitle>
-                <span className="block lg:whitespace-nowrap">
-                  Backed by{" "}
-                  <span className="inline-flex translate-y-[-0.02em] items-center align-middle">
-                    <Image
-                      src="/images/brand/avana-token-circle.jpg"
-                      alt="Avana"
-                      width={56}
-                      height={56}
-                      className="h-[1.2em] w-[1.2em] rounded-full object-cover"
-                    />
+          <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 xl:gap-16">
+            <div className="max-w-[36rem] space-y-6">
+              <div className="space-y-4">
+                <SectionEyebrow tone="slate">Engineered for resilience</SectionEyebrow>
+                <SectionTitle>
+                  <span className="block lg:whitespace-nowrap">
+                    Backed by{" "}
+                    <span className="inline-flex translate-y-[-0.02em] items-center align-middle">
+                      <Image
+                        src="/images/brand/avana-token-circle.jpg"
+                        alt="Avana"
+                        width={56}
+                        height={56}
+                        className="h-[1.2em] w-[1.2em] rounded-full object-cover"
+                      />
+                    </span>
+                    ,
                   </span>
-                  ,
-                </span>
-                <span className="block lg:whitespace-nowrap">Powered by Aave v4.</span>
-              </SectionTitle>
+                  <span className="block lg:whitespace-nowrap">Powered by Aave v4.</span>
+                </SectionTitle>
+              </div>
+              <div className="text-left text-[#39515b]">
+                <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
+                  Aave v4 uses{" "}
+                  <DeFiTerm term="hub" className="text-[0.92em]">
+                    Hub
+                  </DeFiTerm>{" "}
+                  and{" "}
+                  <DeFiTerm term="spoke" className="text-[0.92em]">
+                    Spoke
+                  </DeFiTerm>{" "}
+                  architecture for shared liquidity and flexible risk controls. Avana builds on it for secure{" "}
+                  <DeFiTerm term="lp-position" className="text-[0.92em]">
+                    LP-backed borrowing
+                  </DeFiTerm>
+                  , resilient{" "}
+                  <DeFiTerm term="oracle" className="text-[0.92em]">
+                    oracle
+                  </DeFiTerm>{" "}
+                  checks, and controlled{" "}
+                  <DeFiTerm term="liquidation" className="text-[0.92em]">
+                    liquidation
+                  </DeFiTerm>
+                  .
+                </p>
+              </div>
             </div>
-            <div className="text-left text-[#39515b]">
-              <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
-                Aave v4 is a next generation lending system built on{" "}
-                <DeFiTerm term="hub" className="text-[0.92em]">
-                  Hub
-                </DeFiTerm>{" "}
-                and{" "}
-                <DeFiTerm term="spoke" className="text-[0.92em]">
-                  Spoke
-                </DeFiTerm>{" "}
-                architecture, giving the protocol shared liquidity, flexible risk controls, and a stronger
-                security model. Avana builds on that foundation to deliver secure{" "}
-                <DeFiTerm term="lp-position" className="text-[0.92em]">
-                  LP backed borrowing
-                </DeFiTerm>{" "}
-                with transparent onchain execution, resilient{" "}
-                <DeFiTerm term="oracle" className="text-[0.92em]">
-                  oracle
-                </DeFiTerm>{" "}
-                checks, and borrower protection shaped around controlled{" "}
-                <DeFiTerm term="liquidation" className="text-[0.92em]">
-                  liquidation
-                </DeFiTerm>{" "}
-                design.
-              </p>
-            </div>
-          </div>
 
-          <article className="relative mx-auto mt-12 h-[260px] w-full max-w-[86rem] overflow-hidden sm:h-[340px] md:mt-16 md:h-[400px] lg:h-[500px]">
-            <Image
-              src="/images/avana-token-icons-v1.jpg"
-              alt="Avana token icons"
-              fill
-              className="scale-[1.04] object-contain object-[center_42%]"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 86rem"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_68%,rgba(255,255,255,0.28)_86%,#fff_100%)]" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-b from-transparent to-white" />
-          </article>
+            <article className="relative h-[240px] w-full overflow-hidden sm:h-[300px] md:h-[360px] lg:h-[420px] xl:h-[460px]">
+              <Image
+                src="/images/avana-token-icons-v1.jpg"
+                alt="Avana token icons"
+                fill
+                className="scale-[1.04] object-contain object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_68%,rgba(255,255,255,0.28)_86%,#fff_100%)]" />
+            </article>
+          </div>
         </LazySection>
 
         <LazySection minHeight="520px" fallback={<SectionSkeleton minHeight="520px" />}>
