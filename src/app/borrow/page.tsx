@@ -69,14 +69,6 @@ const borrowFeatureItems = [
     title: "Uninterrupted fee accrual",
     description: "Deposited LP positions continue earning trading fees throughout the full life of the loan.",
   },
-  {
-    title: "Minimal volatility risk",
-    description: "Transparent risk parameters and predictable liquidation behavior for peg-aligned pools.",
-  },
-  {
-    title: "Cleaner position monitoring",
-    description: "Track health, usage, and pool-specific limits with a clearer LP-first borrowing workflow.",
-  },
 ] as const
 
 const borrowPartnerFeatures = [
@@ -280,13 +272,13 @@ export default function BorrowPage() {
               {/* Right Column - Text Content */}
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
                   <h1 className="mb-3 max-w-[11ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
-                    <span>Borrow from</span>
+                    <span>Borrow against</span>
                     <br />
                     <span>AMM positions.</span>
                   </h1>
 
                   <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
-                    Access up to 80% of your LP value as a loan at 5.5% APR while your position keeps earning trading fees.
+                    Turn your liquidity pool positions into collateral and borrow against them here without leaving the pool.
                   </p>
 
                   <div className="flex max-w-md flex-row flex-wrap items-start gap-2 sm:gap-3">
@@ -318,10 +310,42 @@ export default function BorrowPage() {
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[90rem]">
             <div className="flex flex-col gap-6">
+              <div className="flex max-w-[600px] flex-col gap-2">
+                <SectionEyebrow tone="violet">How it works</SectionEyebrow>
+                <SectionTitle>Borrowing in three steps</SectionTitle>
+              </div>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                <BorrowMarketCard
+                  number="1"
+                  title="Deposit LP"
+                  description="Choose a supported LP position and deposit it as collateral while your liquidity stays active."
+                />
+
+                <BorrowMarketCard
+                  number="2"
+                  title="Draw liquidity"
+                  description="Borrow against the risk-adjusted value of the position and receive funds straight in your wallet."
+                />
+
+                <BorrowMarketCard
+                  number="3"
+                  title="Manage health"
+                  description="Repay, add collateral, or reduce debt before the position drifts toward the liquidation threshold."
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white site-section-gap">
+        <div className="site-content-shell">
+          <div className="mx-auto w-full max-w-[90rem]">
+            <div className="flex flex-col gap-6">
               <div className="max-w-[48rem]">
                 <SectionEyebrow tone="blue">LP markets strategy</SectionEyebrow>
-                <SectionTitle className="mt-2 max-w-none lg:whitespace-nowrap">
-                  Choose the right Hub for your Pools
+                <SectionTitle className="mt-2 max-w-none">
+                  Choose the market type that matches your LP
                 </SectionTitle>
               </div>
             </div>
@@ -355,73 +379,24 @@ export default function BorrowPage() {
       <section className="bg-white site-section-gap">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem]">
-            <div className="max-w-[58rem] space-y-4 text-left">
+            <div className="max-w-[58rem] space-y-3 text-left sm:space-y-4">
               <SectionEyebrow tone="blue">Borrow with Confidence</SectionEyebrow>
-              <SectionTitle className="max-w-[14ch] lg:max-w-none">
-                <span className="lg:whitespace-nowrap">Protected at the pool level.</span>
+              <SectionTitle className="max-w-[18ch] sm:max-w-[22ch] lg:max-w-none">
+                <span className="block sm:inline">Protected at the</span>{" "}
+                <span className="block sm:inline">pool level.</span>
               </SectionTitle>
             </div>
 
-            <div className="mt-10 -mx-5 overflow-x-auto px-5 pb-1 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] md:mx-0 md:mt-16 md:overflow-visible md:px-0 md:pb-0 md:snap-none [&::-webkit-scrollbar]:hidden">
-              <div className="flex w-max gap-8 md:grid md:w-full md:grid-cols-2 md:gap-x-16 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
-                {borrowPartnerFeatures.map((feature) => (
-                  <article
-                    key={feature.title}
-                    className="flex w-[15rem] shrink-0 snap-start flex-col bg-transparent md:w-auto md:shrink"
-                  >
-                    <feature.icon className="h-11 w-11 text-[#01AACF]" strokeWidth={1.5} aria-hidden="true" />
-                    <FeatureCardTitle className="mt-5">{feature.title}</FeatureCardTitle>
-                    <FeatureCardDescription className="mt-2 max-w-[22rem]">
-                      {feature.description}
-                    </FeatureCardDescription>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white site-section-gap">
-        <div className="site-content-shell">
-          <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-18">
-            <div className="max-w-[33rem]">
-              <SectionEyebrow tone="violet">Working capital</SectionEyebrow>
-              <SectionTitle className="mt-5 max-w-none">
-                <span className="block whitespace-nowrap">Access capital when</span>
-                <span className="block whitespace-nowrap">opportunity calls.</span>
-              </SectionTitle>
-
-              <ol className="mt-7 grid max-w-[32rem] gap-4 text-[0.98rem] leading-[1.55] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
-                <li className="flex gap-3">
-                  <span className="mt-0.5 font-semibold text-[#01AACF]">1.</span>
-                  <span>Deposit LP collateral, draw liquidity, and manage repayment as your position moves.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-0.5 font-semibold text-[#01AACF]">2.</span>
-                  <span>Explore supported pools, collateral limits, and LP markets built for active borrowing.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-0.5 font-semibold text-[#01AACF]">3.</span>
-                  <span>Price, monitor, and limit credit using pool-aware rules built for active LP collateral.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-0.5 font-semibold text-[#01AACF]">4.</span>
-                  <span>See when a position is healthy, when it needs attention, and how liquidation is handled.</span>
-                </li>
-              </ol>
-            </div>
-
-            <div className="relative lg:pt-1">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:aspect-[1.18/1] lg:rounded-[32px]">
-                <Image
-                  src="/images/leverage-hero-placeholder.webp"
-                  alt="Person holding a smartphone showing a finance app"
-                  fill
-                  className="object-cover object-[55%_42%]"
-                  sizes="(max-width: 1024px) 100vw, 54vw"
-                />
-              </div>
+            <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-10 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 md:mt-16 md:gap-x-16 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
+              {borrowPartnerFeatures.map((feature) => (
+                <article key={feature.title} className="flex flex-col bg-transparent">
+                  <feature.icon className="h-10 w-10 text-[#01AACF] sm:h-11 sm:w-11" strokeWidth={1.5} aria-hidden="true" />
+                  <FeatureCardTitle className="mt-4 sm:mt-5">{feature.title}</FeatureCardTitle>
+                  <FeatureCardDescription className="mt-2 max-w-[22rem]">
+                    {feature.description}
+                  </FeatureCardDescription>
+                </article>
+              ))}
             </div>
           </div>
         </div>
@@ -509,37 +484,56 @@ export default function BorrowPage() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-6">
-              <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="violet">How it works</SectionEyebrow>
-                <SectionTitle>Borrowing in three steps</SectionTitle>
-              </div>
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-                <BorrowMarketCard
-                  number="1"
-                  title="Deposit LP"
-                  description="Choose a supported LP position and deposit it as collateral while your liquidity stays active."
-                />
-
-                <BorrowMarketCard
-                  number="2"
-                  title="Draw liquidity"
-                  description="Borrow against the risk-adjusted value of the position and receive funds straight in your wallet."
-                />
-
-                <BorrowMarketCard
-                  number="3"
-                  title="Manage health"
-                  description="Repay, add collateral, or reduce debt before the position drifts toward the liquidation threshold."
-                />
-              </div>
-            </div>
-
             <BorrowPowerSection />
 
           </div>
         </div>
       </PerformanceSection>
+
+      <section className="bg-white site-section-gap">
+        <div className="site-content-shell">
+          <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-18">
+            <div className="max-w-[33rem]">
+              <SectionEyebrow tone="violet">Working capital</SectionEyebrow>
+              <SectionTitle className="mt-5 max-w-none">
+                <span className="block whitespace-nowrap">Access capital when</span>
+                <span className="block whitespace-nowrap">opportunity calls.</span>
+              </SectionTitle>
+
+              <ol className="mt-7 grid max-w-[32rem] gap-4 text-[0.98rem] leading-[1.55] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
+                <li className="flex gap-3">
+                  <span className="mt-0.5 font-semibold text-[#01AACF]">1.</span>
+                  <span>Deposit LP collateral, draw liquidity, and manage repayment as your position moves.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-0.5 font-semibold text-[#01AACF]">2.</span>
+                  <span>Explore supported pools, collateral limits, and LP markets built for active borrowing.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-0.5 font-semibold text-[#01AACF]">3.</span>
+                  <span>Price, monitor, and limit credit using pool-aware rules built for active LP collateral.</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-0.5 font-semibold text-[#01AACF]">4.</span>
+                  <span>See when a position is healthy, when it needs attention, and how liquidation is handled.</span>
+                </li>
+              </ol>
+            </div>
+
+            <div className="relative lg:pt-1">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-transparent md:rounded-[28px] lg:aspect-[1.18/1] lg:rounded-[32px]">
+                <Image
+                  src="/images/leverage-hero-placeholder.webp"
+                  alt="Person holding a smartphone showing a finance app"
+                  fill
+                  className="object-cover object-[55%_42%]"
+                  sizes="(max-width: 1024px) 100vw, 54vw"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
         <div className="flex-1 flex flex-col relative z-0">
@@ -746,97 +740,6 @@ export default function BorrowPage() {
                         <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-gray-100">
                           <div className="h-full w-[64%] rounded-full bg-gray-500" />
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>,
-
-              /* 05 Minimal volatility risk */
-              <div key="p5" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
-                <div className="absolute inset-0 flex items-center justify-center p-5">
-                  <div className="w-full max-w-[15.75rem]">
-                    <div className="overflow-hidden rounded-[20px] border border-gray-200 bg-white p-4">
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="text-[8px] font-medium uppercase tracking-[0.1em] text-gray-400">Range</span>
-                        <span className="shrink-0 rounded-md border border-gray-200 bg-gray-50 px-2 py-0.5 text-[8px] font-medium text-gray-700">
-                          Peg
-                        </span>
-                      </div>
-                      <div className="relative mt-4 h-[5.5rem] overflow-hidden rounded-xl bg-gray-100">
-                        <div className="absolute left-3 right-3 top-3 border-t border-dashed border-gray-400" />
-                        <div className="absolute bottom-3 left-3 right-3 border-b border-dashed border-gray-400" />
-                        <p className="absolute left-2 top-1 text-[7px] font-medium text-rose-400/90">↑</p>
-                        <p className="absolute bottom-1 left-2 text-[7px] font-medium text-rose-400/90">↓</p>
-                        <div className="borrow-risk-zone-breathe absolute inset-x-9 inset-y-7 z-0 rounded-md border border-gray-200 bg-white" />
-                        <div className="relative z-10 h-full w-full">
-                          <div className="borrow-risk-shuttle h-5 w-5 rounded-full border-2 border-gray-600 bg-white" />
-                        </div>
-                      </div>
-                      <div className="mt-3 grid grid-cols-2 gap-2">
-                        <div className="rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-2 text-center">
-                          <span className="block text-[8px] text-gray-500">30d vol</span>
-                          <span className="text-[11px] font-semibold text-[#18323c]">3.2%</span>
-                        </div>
-                        <div className="rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-2 text-center">
-                          <span className="block text-[8px] text-gray-500">Buffer</span>
-                          <span className="text-[11px] font-semibold text-[#18323c]">18%</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>,
-
-              /* 06 Cleaner position monitoring — monitor console */
-              <div key="p6" className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white">
-                <div className="absolute inset-0 flex items-center justify-center px-5">
-                  <div className="w-full max-w-[16rem] rounded-[22px] border border-gray-200 bg-white p-4">
-                    <div className="relative overflow-hidden rounded-[18px] border border-gray-200 bg-gray-50/50 p-4">
-                      <div className="borrow-console-scan absolute left-3 right-3 top-3 h-[1px] bg-gray-400/80" />
-                      <div className="flex items-center justify-between">
-                        <span className="text-[9px] font-medium uppercase tracking-[0.14em] text-gray-400">Console</span>
-                        <div className="flex items-center gap-1.5">
-                          <div className="h-1.5 w-1.5 rounded-full bg-gray-400" />
-                          <div className="h-1.5 w-1.5 rounded-full bg-gray-400" />
-                          <div className="h-1.5 w-1.5 rounded-full bg-gray-500" />
-                        </div>
-                      </div>
-                      <div className="mt-4 flex items-end justify-between gap-3">
-                        <div>
-                          <span className="block text-[10px] font-medium uppercase tracking-[0.08em] text-gray-400">Health</span>
-                          <div className="mt-1 h-[2.8rem] overflow-hidden">
-                            <div className="panel-ticker-v-fast" style={{ animationDuration: '12s' }}>
-                              {["1.82", "1.54", "2.10", "1.82"].map((v, i) => (
-                                <div key={i} className="flex h-[2.8rem] items-center">
-                                  <span className="text-[2.6rem] font-semibold leading-none tracking-[-0.05em] text-[#18323c]">{v}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex h-[60px] items-end gap-1.5 rounded-[16px] border border-gray-200 bg-white px-3 py-2">
-                          <div className="borrow-console-bar-a h-8 w-2 rounded-full bg-gray-400" />
-                          <div className="borrow-console-bar-b h-10 w-2 rounded-full bg-gray-500" />
-                          <div className="borrow-console-bar-c h-12 w-2 rounded-full bg-gray-600" />
-                        </div>
-                      </div>
-                      <div className="mt-4 flex items-center justify-between">
-                        <div className="h-4 overflow-hidden">
-                          <div className="panel-ticker-v-fast" style={{ animationDuration: '12s' }}>
-                            {["ETH / USDC", "WBTC / ETH", "ARB / USDC", "ETH / USDC"].map((v, i) => (
-                              <span key={i} className="block h-4 text-[10px] font-semibold text-[#18323c]">{v}</span>
-                            ))}
-                          </div>
-                        </div>
-                        <span className="text-[10px] font-medium tabular-nums text-gray-400">64%</span>
-                      </div>
-                      <div className="mt-2 h-2 overflow-hidden rounded-full bg-white">
-                        <div className="borrow-fill-main h-full w-[64%] rounded-full bg-emerald-400" />
-                      </div>
-                      <div className="mt-3 flex items-center justify-between">
-                        <span className="text-[10px] text-gray-400">Cap</span>
-                        <span className="text-[10px] font-semibold text-[#18323c]">$2.4M</span>
                       </div>
                     </div>
                   </div>
