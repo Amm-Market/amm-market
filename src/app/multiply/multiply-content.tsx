@@ -7,9 +7,6 @@ import {
   BadgePercent,
   Layers,
   MousePointerClick,
-  Shield,
-  ShieldAlert,
-  TriangleAlert,
   TrendingUp,
   Undo2,
 } from "lucide-react"
@@ -98,50 +95,6 @@ const leverageWorkflowSteps = [
   {
     title: "Manage live",
     description: "Avana borrows, opens, and tracks the position so you can reduce, repay, or close in one place.",
-  },
-] as const
-
-function PositionSafetyCard({
-  title,
-  description,
-  icon,
-}: {
-  title: string
-  description: string
-  icon: LucideIcon
-}) {
-  const Icon = icon
-
-  return (
-    <article className="flex flex-col feature-card rounded-[1.75rem] p-5 md:p-6">
-      <div className="flex h-8 w-8 items-center justify-center text-[#01AACF]">
-        <Icon className="h-8 w-8" strokeWidth={1.85} />
-      </div>
-
-      <FeatureCardTitle className="mt-5 md:mt-6">{title}</FeatureCardTitle>
-      <FeatureCardDescription className="mt-3 max-w-[22rem]">{description}</FeatureCardDescription>
-    </article>
-  )
-}
-
-const positionSafetySteps = [
-  {
-    title: "Safe Zone",
-    description:
-      "Health Factor stays above 1.5, so borrow usage remains within capacity while fees keep accruing.",
-    icon: Shield,
-  },
-  {
-    title: "Warning Zone",
-    description:
-      "Health Factor sits between 1.0 and 1.5, so you can repay, add collateral, or reduce exposure.",
-    icon: TriangleAlert,
-  },
-  {
-    title: "Liquidation",
-    description:
-      "Health Factor drops below 1.0, fees apply first, needed LP unwinds, and residual value returns.",
-    icon: ShieldAlert,
   },
 ] as const
 
@@ -397,27 +350,6 @@ export default function MultiplyPage() {
       <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 sm:px-6">
         <div className="relative z-0 flex flex-1 flex-col">
           <div className="site-content-width flex flex-col site-section-stack site-section-gap pb-16 md:pb-20 2xl:pb-18">
-            <section>
-              <div className="space-y-4 text-left">
-                <SectionEyebrow tone="violet">Position Safety</SectionEyebrow>
-                <SectionTitle>Designed for safe leverage.</SectionTitle>
-                <p className="max-w-[38rem] text-[1.15rem] leading-[1.36] tracking-[-0.045em] text-[#6f7378] md:text-[1.35rem]">
-                  See when a position is healthy, monitor collateral, debt, leverage, and liquidation buffer, and know when a loop needs attention.
-                </p>
-              </div>
-
-              <div className="mt-10 grid grid-cols-1 gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
-                {positionSafetySteps.map((step) => (
-                  <PositionSafetyCard
-                    key={step.title}
-                    title={step.title}
-                    description={step.description}
-                    icon={step.icon}
-                  />
-                ))}
-              </div>
-            </section>
-
             <HomepageNewsroomSection
               collection="leverage"
               eyebrowTone="rose"
