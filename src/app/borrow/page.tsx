@@ -322,10 +322,10 @@ export default function BorrowPage() {
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[90rem]">
             <div className="flex flex-col gap-6">
-              <div className="max-w-[48rem]">
-                <SectionEyebrow tone="blue">LP markets strategy</SectionEyebrow>
-                <SectionTitle className="mt-2 max-w-none">
-                  Choose the market type that matches your LP
+              <div className="max-w-none">
+                <SectionEyebrow tone="blue">Avana Hubs Strategy</SectionEyebrow>
+                <SectionTitle className="mt-2 max-w-none lg:whitespace-nowrap">
+                  Choose the market type for your collateral
                 </SectionTitle>
               </div>
             </div>
