@@ -10,6 +10,7 @@ import { PerformanceSection } from "@/components/ui/performance-section"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
 const BorrowPowerSection = dynamic(() => import("@/components/borrow-power-section"))
+const PositionSafetyCardsSection = dynamic(() => import("@/components/position-safety-cards-section"))
 const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
 
 const openSpokeFaqItems: InlineFaqItem[] = [
@@ -464,7 +465,10 @@ export default function BorrowPage() {
               </div>
             </div>
 
-            <BorrowPowerSection />
+            <div className="flex flex-col gap-12 md:gap-14">
+              <BorrowPowerSection />
+              <PositionSafetyCardsSection />
+            </div>
 
           </div>
         </div>

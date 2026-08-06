@@ -40,6 +40,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import type { CSSProperties } from "react"
+import { useEffect, useRef } from "react"
 import {
   Bug,
   BookOpen,
@@ -176,6 +177,8 @@ const sectionColors: Record<string, { headerBg: string; headerText: string; item
 export default function DeveloperSidebar() {
   const pathname = usePathname()
   const normalizedPathname = pathname || "/"
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const activeItemRef = useRef<HTMLAnchorElement>(null)
   const sidebarTypeScale = {
     "--type-sidebar-link-size": "0.875rem",
   } as CSSProperties
@@ -184,11 +187,53 @@ export default function DeveloperSidebar() {
     return normalizedPathname === href
   }
 
+  // Section overview at /developers must not match every /developers/* path.
   const isSectionActive = (section: (typeof navigationSections)[0]) => {
-    return section.items.some(
-      (item) => normalizedPathname === item.href || normalizedPathname.startsWith(item.href + "/")
-    )
+    return section.items.some((item) => {
+      if (normalizedPathname === item.href) {
+        return true
+      }
+
+      if (item.href === "/developers") {
+        return false
+      }
+
+      return normalizedPathname.startsWith(`${item.href}/`)
+    })
   }
+
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    const activeItem = activeItemRef.current
+    if (!container || !activeItem) {
+      return
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      const containerRect = container.getBoundingClientRect()
+      const itemRect = activeItem.getBoundingClientRect()
+      const isVisible =
+        itemRect.top >= containerRect.top + 8 &&
+        itemRect.bottom <= containerRect.bottom - 8
+
+      if (isVisible) {
+        return
+      }
+
+      const nextScrollTop =
+        container.scrollTop +
+        (itemRect.top - containerRect.top) -
+        container.clientHeight / 2 +
+        itemRect.height / 2
+
+      container.scrollTo({
+        top: Math.max(0, nextScrollTop),
+        behavior: "smooth",
+      })
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [normalizedPathname])
 
   return (
     <aside
@@ -197,6 +242,7 @@ export default function DeveloperSidebar() {
     >
       {/* Scrollable content */}
       <div
+        ref={scrollContainerRef}
         className="h-full overflow-y-auto pr-2"
         style={{
           scrollbarWidth: "none",
@@ -264,6 +310,7 @@ export default function DeveloperSidebar() {
                     return (
                       <li key={item.href}>
                         <Link
+                          ref={itemActive ? activeItemRef : undefined}
                           href={item.href}
                           prefetch={false}
                           className={`type-sidebar-link flex items-center gap-2 py-2 px-2.5 rounded-md font-medium leading-5 transition-all duration-200 group ${itemActive
