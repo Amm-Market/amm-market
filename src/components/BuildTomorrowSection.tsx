@@ -56,8 +56,10 @@ export function BuildTomorrowSection() {
               <strong className="font-semibold text-[#111111]">AMM Market</strong> and proved{" "}
               <strong className="font-semibold text-[#111111]">LP positions</strong> could serve as collateral,
               but it was built for the simpler DEXs of that era.{" "}
-              <strong className="font-semibold text-[#111111]">Avana</strong> picks up where that left off,
-              designed for today&apos;s DEXs and LP types, treating each position as{" "}
+              <strong className="font-semibold text-[#111111]">Avana</strong>
+              {" "}
+              picks up where that left off, designed for today&apos;s DEXs and LP types, treating each
+              position as{" "}
               <strong className="font-semibold text-[#111111]">collateral</strong> shaped by dual oracles and
               stronger risk controls.
             </p>
@@ -71,8 +73,9 @@ export function BuildTomorrowSection() {
                 could serve as collateral, but it was built for the simpler DEXs of that era.
               </span>
               <span className="block whitespace-nowrap">
-                <strong className="font-semibold text-[#111111]">Avana</strong> picks up where that left
-                off, designed for today&apos;s DEXs and LP types,
+                <strong className="font-semibold text-[#111111]">Avana</strong>
+                {" "}
+                picks up where that left off, designed for today&apos;s DEXs and LP types,
               </span>
               <span className="block whitespace-nowrap">
                 treating each position as{" "}
