@@ -201,8 +201,8 @@ export default function HeroSection() {
             <SectionEyebrow tone="cyan">Borrow Markets</SectionEyebrow>
             <SectionTitle>
               <span className="block lg:hidden">Access loans using</span>
-              <span className="block lg:hidden">hundreds of LP collateral.</span>
-              <span className="hidden lg:block lg:whitespace-nowrap">Access loans using hundreds of LP collateral.</span>
+              <span className="block lg:hidden">hundreds of LP collateral</span>
+              <span className="hidden lg:block lg:whitespace-nowrap">Access loans using hundreds of LP collateral</span>
             </SectionTitle>
           </div>
             </div>
@@ -239,7 +239,7 @@ export default function HeroSection() {
             <SectionEyebrow tone="emerald">Lend Markets</SectionEyebrow>
             <SectionTitle className="mt-5 max-w-none">
               <span className="block whitespace-nowrap">Earn interest from</span>
-              <span className="block whitespace-nowrap">LP borrower demand.</span>
+              <span className="block whitespace-nowrap">LP borrower demand</span>
             </SectionTitle>
 
             <div className="mt-7 grid max-w-[32rem] gap-5">
@@ -641,7 +641,7 @@ export default function HeroSection() {
                     </span>
                     ,
                   </span>
-                  <span className="block lg:whitespace-nowrap">Powered by Aave v4.</span>
+                  <span className="block lg:whitespace-nowrap">Powered by Aave v4</span>
                 </SectionTitle>
               </div>
               <div className="text-left text-[#39515b]">

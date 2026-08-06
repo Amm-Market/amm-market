@@ -54,7 +54,7 @@ export default function PositionSafetyCardsSection() {
     <section>
       <div className="space-y-3 text-left">
         <SectionEyebrow tone="violet">Liquidations</SectionEyebrow>
-        <SectionTitle>Built so you don’t just lose the position.</SectionTitle>
+        <SectionTitle>Built so you don’t just lose the position</SectionTitle>
       </div>
 
       <div className="mt-8 grid grid-cols-1 gap-4 md:mt-10 lg:grid-cols-3 lg:gap-5">

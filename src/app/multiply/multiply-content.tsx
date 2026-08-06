@@ -25,39 +25,39 @@ const loopingBenefits: {
   icon: LucideIcon
 }[] = [
   {
-    title: "Stay in the pool",
+    title: "Grow exposure faster",
     description:
-      "Keep your LP active while you loop, so trading fees keep accruing instead of pausing when you take exposure.",
-    icon: Layers,
-  },
-  {
-    title: "Amplify LP yield",
-    description:
-      "Borrow against your position and redeploy capital to increase market exposure without exiting the pool.",
+      "Turn a smaller deposit into larger exposure without parking more capital up front.",
     icon: TrendingUp,
   },
   {
-    title: "Capital efficiency",
+    title: "Stretch every dollar",
     description:
-      "Put the same LP to work as collateral and leverage source so idle liquidity becomes productive credit.",
+      "Use the same capital as collateral and leverage so less of your balance sits idle.",
     icon: BadgePercent,
   },
   {
-    title: "One-click loops",
+    title: "Skip the busywork",
     description:
-      "Open a managed loop from approved markets in a single flow instead of stitching borrow and trade steps yourself.",
+      "Avana opens the full loop so you can skip manual borrow, swap, and redeposit steps.",
     icon: MousePointerClick,
   },
   {
-    title: "Live health control",
+    title: "Set your own multiple",
     description:
-      "Track collateral, debt, and leverage together in real time so you can adjust before a position turns unsafe.",
+      "Pick how aggressive the loop should be and stop where risk still feels right for you.",
+    icon: Layers,
+  },
+  {
+    title: "Watch health live",
+    description:
+      "See debt, exposure, and safety together so you know when to add buffer or take profit.",
     icon: Activity,
   },
   {
-    title: "Flexible unwind",
+    title: "Exit when you want",
     description:
-      "Reduce, repay, or close on your terms with an unwind path that covers debt first and returns residual value.",
+      "Scale down, repay, or close anytime instead of staying locked into a rigid term loan.",
     icon: Undo2,
   },
 ]
@@ -212,7 +212,7 @@ export default function MultiplyPage() {
                   <h1 className="mb-3 max-w-[12ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
                     <span>Amplify yield</span>
                     <br />
-                    <span>under control.</span>
+                    <span>under control</span>
                   </h1>
 
                   <p className="mb-5 max-w-[38ch] text-base leading-relaxed text-gray-600 sm:max-w-[42ch] md:mb-6 md:text-lg">
@@ -283,7 +283,7 @@ export default function MultiplyPage() {
             <div className="max-w-[58rem] space-y-4 text-left">
               <SectionEyebrow tone="violet">Why looping</SectionEyebrow>
               <SectionTitle>
-                <span className="md:whitespace-nowrap">Multiply your yield up to 10x.</span>
+                <span className="md:whitespace-nowrap">Multiply your yield up to 10x</span>
               </SectionTitle>
             </div>
 
@@ -315,7 +315,7 @@ export default function MultiplyPage() {
                 <SectionEyebrow tone="emerald">Position Safety</SectionEyebrow>
                 <SectionTitle className="max-w-[14ch] md:max-w-none">
                   <span className="block">Designed for</span>
-                  <span className="block">safe leverage.</span>
+                  <span className="block">safe leverage</span>
                 </SectionTitle>
                 <ol className="mt-7 grid max-w-[32rem] gap-4 text-[0.98rem] leading-[1.55] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
                   {leverageFeatureItems.map((item, index) => (
@@ -357,7 +357,7 @@ export default function MultiplyPage() {
 
             <div className="pb-16 md:pb-24 2xl:pb-22">
               <InlineFaqSection
-                title="Frequently asked questions."
+                title="Frequently asked questions"
                 items={leverageFaqItems}
                 eyebrowTone="rose"
                 withTopBorder={false}

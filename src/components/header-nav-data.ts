@@ -35,7 +35,6 @@ export const desktopMenuButtons = [
       "/developers/architecture",
       "/developers/liquidation",
       "/developers/integrations/appkit",
-      "/developers/liquidation/liquidators",
     ],
   },
 ] as const

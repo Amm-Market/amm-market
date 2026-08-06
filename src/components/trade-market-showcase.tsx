@@ -195,7 +195,7 @@ export default function TradeMarketShowcase() {
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="emerald">Supply markets</SectionEyebrow>
             <SectionTitle className="max-w-[16ch] md:max-w-none md:whitespace-nowrap">
-              Lend across markets.
+              Lend across markets
             </SectionTitle>
           </div>
 
