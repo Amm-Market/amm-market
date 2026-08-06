@@ -8,7 +8,7 @@ export default function BorrowPowerSection() {
         <div className="space-y-4">
           <SectionEyebrow tone="blue">Borrow Power</SectionEyebrow>
           <SectionTitle className="max-w-[14ch]">
-            Aggregate collateral for more credit.
+            Aggregate collateral for more credit
           </SectionTitle>
 
           <ol className="mt-7 grid max-w-[32rem] gap-4 text-[0.98rem] leading-[1.55] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">

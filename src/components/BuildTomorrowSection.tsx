@@ -49,16 +49,37 @@ export function BuildTomorrowSection() {
               <span className="block">for LP-backed loans</span>
             </SectionTitle>
           </div>
-          <div className="text-left text-[#39515b]">
-            <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
+          <div className="min-w-0 text-left text-[#39515b]">
+            {/* Soft-wrap through laptop sizes; lock five lines from 2xl (wide desktops) */}
+            <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] 2xl:hidden lg:text-[1.18rem]">
               In 2021, <strong className="font-semibold text-[#111111]">Aave</strong> launched{" "}
               <strong className="font-semibold text-[#111111]">AMM Market</strong> and proved{" "}
               <strong className="font-semibold text-[#111111]">LP positions</strong> could serve as collateral,
               but it was built for the simpler DEXs of that era.{" "}
-              <strong className="font-semibold text-[#111111]">Avana</strong>{" "}picks up where that left off,
+              <strong className="font-semibold text-[#111111]">Avana</strong> picks up where that left off,
               designed for today&apos;s DEXs and LP types, treating each position as{" "}
               <strong className="font-semibold text-[#111111]">collateral</strong> shaped by dual oracles and
               stronger risk controls.
+            </p>
+            <p className="hidden text-[1.08rem] leading-[1.6] tracking-[-0.02em] 2xl:block lg:text-[1.18rem]">
+              <span className="block whitespace-nowrap">
+                In 2021, <strong className="font-semibold text-[#111111]">Aave</strong> launched{" "}
+                <strong className="font-semibold text-[#111111]">AMM Market</strong> and proved{" "}
+                <strong className="font-semibold text-[#111111]">LP positions</strong>
+              </span>
+              <span className="block whitespace-nowrap">
+                could serve as collateral, but it was built for the simpler DEXs of that era.
+              </span>
+              <span className="block whitespace-nowrap">
+                <strong className="font-semibold text-[#111111]">Avana</strong> picks up where that left
+                off, designed for today&apos;s DEXs and LP types,
+              </span>
+              <span className="block whitespace-nowrap">
+                treating each position as{" "}
+                <strong className="font-semibold text-[#111111]">collateral</strong> shaped by dual oracles
+                and
+              </span>
+              <span className="block whitespace-nowrap">stronger risk controls.</span>
             </p>
           </div>
         </div>

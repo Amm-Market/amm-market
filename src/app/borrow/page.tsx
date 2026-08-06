@@ -255,7 +255,7 @@ export default function BorrowPage() {
                   <h1 className="mb-3 max-w-[11ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
                     <span>Borrow against</span>
                     <br />
-                    <span>AMM positions.</span>
+                    <span>AMM positions</span>
                   </h1>
 
                   <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
@@ -364,7 +364,7 @@ export default function BorrowPage() {
               <SectionEyebrow tone="blue">Borrow with Confidence</SectionEyebrow>
               <SectionTitle className="max-w-[18ch] sm:max-w-[22ch] lg:max-w-none">
                 <span className="block sm:inline">Protected at the</span>{" "}
-                <span className="block sm:inline">pool level.</span>
+                <span className="block sm:inline">pool level</span>
               </SectionTitle>
             </div>
 
@@ -451,7 +451,7 @@ export default function BorrowPage() {
               <div className="flex max-w-[600px] flex-col gap-2">
                 <SectionEyebrow tone="blue">Liquidity pools</SectionEyebrow>
                 <SectionTitle className="md:whitespace-nowrap">
-                  Every Pool details, fully explained.
+                  Every Pool details, fully explained
                 </SectionTitle>
               </div>
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.35rem] sm:aspect-[2/1] md:rounded-[1.6rem]">
@@ -481,7 +481,7 @@ export default function BorrowPage() {
           <HomepageNewsroomSection collection="borrow" eyebrowTone="blue" />
 
           <div className="pb-16 md:pb-24 2xl:pb-22">
-            <InlineFaqSection title="Frequently asked questions." items={openSpokeFaqItems} eyebrowTone="blue" withTopBorder={false} />
+            <InlineFaqSection title="Frequently asked questions" items={openSpokeFaqItems} eyebrowTone="blue" withTopBorder={false} />
           </div>
         </div>
       </div>

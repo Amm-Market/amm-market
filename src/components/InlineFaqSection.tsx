@@ -20,11 +20,11 @@ interface InlineFaqSectionProps {
 }
 
 function renderFaqTitle(title: string) {
-  if (title === "Frequently asked questions.") {
+  if (title === "Frequently asked questions" || title === "Frequently asked questions.") {
     return (
       <>
         <span className="block whitespace-nowrap">Frequently asked</span>
-        <span className="block whitespace-nowrap">questions.</span>
+        <span className="block whitespace-nowrap">questions</span>
       </>
     )
   }
@@ -36,7 +36,7 @@ function renderFaqTitle(title: string) {
  * InlineFaqSection - Product-page FAQ accordion (Radix, exclusive open).
  */
 export function InlineFaqSection({
-  title = "Frequently asked questions.",
+  title = "Frequently asked questions",
   eyebrow,
   eyebrowTone = "blue",
   items,
