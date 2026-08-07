@@ -1,0 +1,778 @@
+{
+  "posts": [
+    {
+      "slug": "zarządzanie-ryzykiem-lp",
+      "title": "Jak Avana kontroluje LP ryzyko",
+      "date": "24 lipca 2026",
+      "description": "Jak Avana zarządza LP ryzykiem zabezpieczenia na rynkach pomocniczych z ograniczonymi aktualizacjami, niezależnym przeglądem i awaryjnym powstrzymaniem.",
+      "image": "633rs7wh6e4jt08r6tyg",
+      "category": "Deweloperzy",
+      "tag": "Protokół",
+      "sections": [
+        {
+          "id": "dlaczego-ryzyko-lp-jest-inne",
+          "title": "Dlaczego LP ryzyko jest inne",
+          "paragraphs": [
+            "Avana nie może zarządzać LP zabezpieczeniami w taki sposób, w jaki ogólny rynek pożyczkowy zarządza listą tokenów. Każdy rynek charakterystyczny dla danej gałęzi ma własną strukturę puli, tryby awarii i zachowanie w stresie. Stabilna pula nie jest tym samym produktem co skoncentrowany zakres. Koszyk w stylu ważonym Balancer nie jest tym samym produktem co ściśle skorelowany rynek w stylu Curve. Ramy ryzyka Avana są zbudowane wokół tej różnorodności. Obserwuje zmienność, jakość pegów, wykorzystanie, głębokość płynności, koncentrację, stan zdrowia orakli, status rynku, limity podaży i pożyczek, LTV i progi likwidacji, modele stóp procentowych oraz stan pozycji w całym centrum i gałęziach LP razem."
+          ]
+        },
+        {
+          "id": "trzy role",
+          "title": "Trzy role, jasne zadania",
+          "paragraphs": [
+            "Avana rozdziela rutynowe rekomendacje, niezależny przegląd i awaryjne działania na trzy role: Inicjatora Ryzyka, Opiekuna Ryzyka i Obrońcę Ryzyka. Inicjator proponuje rutynowe aktualizacje w ramach zatwierdzonych szablonów, w tym limity, ustawienia zabezpieczeń, stawki i wprowadzanie nowych pul. Każda propozycja jest oznaczana jako obronna lub ukierunkowana na wzrost, zanim trafi na normalną ścieżkę. Opiekun jest warstwą przeglądu i weta. Sprawdza, czy ujawnienie publiczne odpowiada temu, co jest w kolejce, potwierdza, że działanie mieści się w granicach polityki, i może anulować w czasie blokady. Obrońca jest wąsko zdefiniowany przez projekt. Może zmniejszać limity, zamrażać pożyczki lub wyłączać naruszony adapter, gdy czekanie na rutynową ścieżkę pozostawiłoby Avana narażone."
+          ]
+        },
+        {
+          "id": "jak-zmieniają-statek",
+          "title": "Jak rutyna zmienia statek",
+          "paragraphs": [
+            "Standardowa ścieżka aktualizacji na Avana to publiczne ogłoszenie, zgłoszenie, walidacja względem z góry określonych granic, blokada czasowa, przegląd przez Strażnika i wykonanie, jeśli nikt nie zgłosi weta. Deweloperzy, użytkownicy i uczestnicy zarządzania mogą przeczytać uzasadnienie przed wprowadzeniem zmiany i porównać zapisane zasady z zaplanowanym działaniem. W przypadku protokołu opartego na złożonych zabezpieczeniach, ta publiczna spójność jest podstawowym wymogiem, a nie dodatkiem marketingowym.",
+            "Nie każda zmiana korzysta z tej ścieżki. Redukowanie ryzyka ma być łatwiejsze niż dodawanie ryzyka. Skromne dostrojenie w zatwierdzonych zakresach odbywa się zgodnie ze standardowym procesem. Większe ruchy, takie jak nowe rodziny spoke, nowe prymitywy LP, nowe modele oracle lub nowe adaptery likwidacyjne, znajdują się poza rutynowym procesem, ponieważ rozszerzają powierzchnię ryzyka Avana i wymagają dokładniejszej weryfikacji."
+          ]
+        },
+        {
+          "id": "zasilanie awaryjne",
+          "title": "Kiedy Avana używa zasilania awaryjnego",
+          "paragraphs": [
+            "Przypadki awaryjne obejmują niespójność wyroczni, degradację ścieżki likwidacyjnej, nieprawidłowe zachowanie puli, awarię wrappera, kompromitację adaptera lub nagłą niestabilność na poziomie spoke. Nawet wtedy framework pozostaje ostrożny. Władza awaryjna na Avana jest wąska, defensywna i odwracalna. Istnieje na momenty, gdy założenia zawodzą szybciej niż rządzenie timelock może zareagować. Nie jest to ścieżka cienia dla codziennej optymalizacji.",
+            "Biorąc to pod uwagę, Avana dopasowuje strukturę zarządzania do złożoności zabezpieczeń. LP kredyty zabezpieczone wymagają szablonów rynkowych, ograniczonej realizacji, przejrzystego ujawniania informacji oraz wyraźnej granicy między normalnym wzrostem, obronną korektą a szybkim opanowaniem kryzysu. Każda oś zachowuje własne założenia orakulum, logikę likwidacji, zasady przyjmowania oraz ograniczenia operacyjne. Avana nie udaje, że każdy rynek LP jest wymienny."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "dlaczego-zabezpieczenie-lp-potrzebuje-inteligentnych-agentów",
+      "title": "Dlaczego LP Zabezpieczenie Potrzebuje Inteligentnych Agentów",
+      "date": "22 lipca 2026",
+      "description": "Dlaczego Avana używa Inteligentnych Agentów do monitorowania zdrowia, konkretnych stanowisk w miejscach świadczenia usług oraz utrzymywania niezawodnej ochrony likwidacyjnej w warunkach stresu.",
+      "image": "p4krutmpv980j4jv7343",
+      "category": "Deweloperzy",
+      "tag": "Protokół",
+      "sections": [
+        {
+          "id": "pożyczki-lp-są-operacyjne",
+          "title": "LP loans are operational work",
+          "paragraphs": [
+            "Na Avana, LP zabezpieczenie jest aktywne, zależne od ścieżki i operacyjnie wymagające. Generuje opłaty, zmienia skład, modyfikuje ryzyko w miarę ruchu rynków i może wymagać działań specyficznych dla danych miejsc dokładnie wtedy, gdy pozycja staje się napięta. Standardowy rynek tokenów często może zredukować likwidację i monitoring do prostszego wyzwalacza i ścieżki wymiany. Zabezpieczenie LP jest inne. System musi wiedzieć, które pozycje są aktywne, jak przemieszcza się zadłużenie, jak zabezpieczenie wyglądałoby przy rzeczywistym wycofaniu, jak można zrealizować opłaty, która ścieżka usunięcia specyficzna dla danej lokalizacji ma zastosowanie oraz czy likwidacja jest nadal wykonalna po uwzględnieniu poślizgu, trasowania i kosztów wykonania. To szczegóły, które oddzielają teoretyczne pokrycie na papierze od pokrycia, które nadal działa, gdy rynki stają się trudne."
+          ]
+        },
+        {
+          "id": "co robią agenci",
+          "title": "Co robi Avana inteligentnych agentów",
+          "paragraphs": [
+            "Avana's node runtime odczytuje aktywność on-chain, utrzymuje aktualną mapę aktywnych pozycji, odświeża zmieniające się zadłużenie w krótkich odstępach czasu i przeprowadza szersze przeglądy, aby wychwycić przestarzały lub pominięty stan. Interfejs aplikacji, pulpity nawigacyjne, logika monitorowania i procesy likwidacji mają czerpać z tego samego obrazu operacyjnego, zamiast każda warstwa tworzyć własną wersję rynku.",
+            "Likwidacja to moment, w którym to ma największe znaczenie. Kiedy pozycja Avana spadnie poniżej dozwolonej zdolności kredytowej, warstwa wykonawcza musi ocenić, czy zadanie można obsłużyć z zyskiem, pozyskać tymczasową płynność, spłacić dług w warstwie kredytowej, pobrać opłaty, rozwiązać zabezpieczenie przez właściwą drogę, skierować powstałe aktywa, rozliczyć ścieżkę flash, dystrybuować premię likwidacyjną i zachować wartość resztkową pożyczkobiorcy, gdy cokolwiek pozostaje. To jest łańcuch działań, a nie jeden typ transakcji."
+          ]
+        },
+        {
+          "id": "przed-i-wokół-obiektów",
+          "title": "Przed likwidacją i na wszystkich giełdach",
+          "paragraphs": [
+            "Inteligentni agenci mają również znaczenie przed nastąpieniem likwidacji. Indeksowanie Avana pozycji, obserwowanie dryfu długu i utrzymywanie protokołu zgodnego z własnym krzywym cenowym i założeniami ryzyka poprawia gotowość. Opóźnienie operacyjne nie jest darmowe, gdy zabezpieczenie wciąż porusza się wraz z rynkiem.",
+            "LP zabezpieczenie jest problemem adaptera tak samo, jak problemem wyceny. Zamienne LP, skoncentrowane zakresy i niestandardowe projekty pul wymagają różnego traktowania zależnie od miejsca obrotu. Inteligentni Agenci są warstwą Avana do respektowania tych różnic zamiast narzucania jednej uniwersalnej ścieżki każdemu rynkowi. Wyrocznia podaje Avana, ile pozycja mogłaby być warta jako kredyt. Warstwa agentów pomaga określić, czy ta wartość może być faktycznie odzyskana w praktyce.",
+            "Avana nie zastępuje likwidacji bez zezwolenia. Zewnętrzni deweloperzy nadal mogą monitorować i działać. Protokolowe środowiska wykonawcze poprawiają podstawowe pokrycie dla zabezpieczeń, które strukturalnie trudniej obsługiwać. W sytuacjach stresowych ma to duże znaczenie. Najgorszy moment, aby odkryć, że rynek nie ma niezawodnego pokrycia wykonania, to same zdarzenie likwidacyjne."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "jak-powinna-działać-likwidacja-lp",
+      "title": "Jak LP powinna działać likwidacja",
+      "date": "20 lipca 2026",
+      "description": "Jak Avana likwiduje LP zabezpieczenie przy kontrolowanych rozliczeniach, częściowej interwencji, opłatach w pierwszej kolejności tam, gdzie to możliwe, oraz na specyficznych dla miejsca ścieżkach.",
+      "image": "l2927t589gypqu5cri4f",
+      "category": "Deweloperzy",
+      "tag": "Protokół",
+      "sections": [
+        {
+          "id": "nie-sprzedaż-tokenów",
+          "title": "Nie jest to prosta sprzedaż tokenów",
+          "paragraphs": [
+            "Likwidacja zabezpieczenia LP na Avana nie jest tym samym, co likwidacja salda tokena. Zabezpieczenie może zawierać wiele aktywów, nieodebrane opłaty, narażenie na skoncentrowany zakres oraz mechanizmy wyjścia specyficzne dla miejsca. Jeśli pozycja staje się niezdrowa, Avana potrzebuje kontrolowanego wycofania, a nie panicznej sprzedaży, która traktuje LP jak pojedynczy wymienialny żeton."
+          ]
+        },
+        {
+          "id": "sekwencja_wykonania",
+          "title": "Sekwencja czasu wykonywania",
+          "paragraphs": [
+            "W praktyce likwidacja jest sekwencją wykonywaną w czasie rzeczywistym. Niezdrowe konta są wykrywane przy użyciu wartości zabezpieczenia skorygowanych o ryzyko Avana, a nie surowego stanu spot AMM. Płynność wykonawcza jest pozyskiwana, często za pomocą ścieżki w stylu flashloan. Dług jest spłacany w warstwie kredytowej. Pozycja przechodzi do kontrolowanego powiernictwa. Opłaty możliwe do zrealizowania są pobierane tam, gdzie to pomaga. LP jest likwidowane przez właściwą ścieżkę rynku. Po odzyskaniu aktywów bazowych są one kierowane do aktywa dłużnego, płynność wykonawcza jest spłacana, premia likwidacyjna jest dystrybuowana, a wszelka pozostała wartość pożyczkobiorcy jest zwracana.",
+            "Różne LP rodziny na Avana nie dzielą jednej ścieżki wyjścia. Wymienialne LP są usuwane z puli i rozkładane na składniki bazowe. Skoncentrowane zakresy muszą być obsługiwane zgodnie z faktycznym stanem ich zapasów w momencie wycofania, co może wyglądać zupełnie inaczej niż użytkownicy zakładają, jeśli cena przesunęła pozycję na jedną stronę. Niestandardowe pule lub oparte na hakach mogą wymagać dedykowanych adapterów, zanim Avana uzna je za wystarczająco bezpieczne, aby pokryć likwidację. Jeśli Avana nie może prawidłowo wycofać typu zabezpieczenia, nie powinno udawać, że rynek jest w pełni wspierany."
+          ]
+        },
+        {
+          "id": "częściowe-i-opłaty",
+          "title": "Najpierw częściowe cięcia i opłaty",
+          "paragraphs": [
+            "Avana ma na celu przywrócenie docelowego stanu zdrowia, zamiast domyślnego stosowania pełnej likwidacji. Preferowana jest częściowa likwidacja, ponieważ zmniejsza niepotrzebne straty po stronie pożyczkobiorcy i ogranicza zakłócenia w podległym funduszu. Ramy obliczają dług potrzebny do przywrócenia pożyczki na bezpieczniejsze tory i najpierw celują w tę kwotę. Pełna likwidacja pozostaje opcją awaryjną, gdy nie można odzyskać wypłacalności za pomocą mniejszej redukcji.",
+            "Opłaty też mają znaczenie. LP pozycje często zawierają wartość, którą można odzyskać, ale która jeszcze nie została zrealizowana. Jeśli opłaty mogą zmniejszyć ile kapitału trzeba wycofać, Avana powinno je wykorzystać zanim zagłębi się bardziej w pozycję. Poprawia to wyniki pożyczkobiorców i sprawia, że likwidacja jest bardziej precyzyjna. LP pozycje są aktywnymi obiektami finansowymi, a nie pasywnymi saldami tokenów, i proces Avana został napisany tak, aby to odzwierciedlał."
+          ]
+        },
+        {
+          "id": "kto tym zarządza",
+          "title": "Kto prowadzi likwidację",
+          "paragraphs": [
+            "Specjalistyczne środowiska wykonawcze do likwidacji robią tu różnicę. Węzły zbudowane dla Avana LP likwidacji monitorują aktywne pozycje, odświeżają dryf zadłużenia, indeksują stan rynku, symulują ścieżki wycofań, pozyskują płynność do wykonania, kierują aktywa i zamykają transakcje atomowo. Likwidacja pozostaje bez zezwolenia, ale LP zabezpieczenie jest trudniejsze do obsłużenia dla czysto uniwersalnych likwidatorów, ponieważ przepływ pracy jest dłuższy i bardziej specyficzny dla danego miejsca. Likwidatorzy muszą również uwzględnić poślizg cenowy, głębokość ścieżki, koszt flashloanów i ekspozycję na MEV. Duże lub nietypowe wycofania mogą wymagać cichszych ścieżek wykonania, aby zadanie możliwe do odzyskania nie przekształciło się w destruktywne."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "problem-z-oraklem-kosztów-lp",
+      "title": "Wycenianie LP Zabezpieczenia za pomocą lepszych wyroczni",
+      "date": "17 lipca 2026",
+      "description": "Jak Avana Oracle wycenia LP zabezpieczenie, używając wartości możliwej do odzyskania, deterministycznej rekonstrukcji i konserwatywnych haircutów odzysku.",
+      "image": "st6efv7l59dy7v8uxkau",
+      "category": "Deweloperzy",
+      "tag": "Protokół",
+      "sections": [
+        {
+          "id": "co-avana-oracle-pyta",
+          "title": "O co pyta Oracle Avana",
+          "paragraphs": [
+            "Wartość LP zależy od cen instrumentów bazowych, struktury puli, aktualnego podziału zapasów, naliczonych opłat, a w przypadku skoncentrowanej płynności – od relacji między bieżącą ceną a aktywnym zakresem. W systemie pożyczkowym ważne pytanie nie dotyczy tylko tego, co może pokazać oznaczenie na pulpicie. Chodzi o to, co można realistycznie odzyskać, jeśli pozycja musi pokryć pożyczkę. Jeśli Avana pożycza na bazie najlepszych założeń, finansuje inflację zabezpieczenia. Oracle Avana jest zbudowany wokół wartości możliwej do odzyskania, a nie optymistycznej wartości netto aktywów."
+          ]
+        },
+        {
+          "id": "trzystopniowa-linia-produkcji",
+          "title": "Jak powstaje wycena",
+          "paragraphs": [
+            "Wyrocznia jest wielowarstwowym silnikiem wyceny zabezpieczeń. Po pierwsze, Avana wycenia aktywa bazowe na podstawie solidnych zewnętrznych odniesień, zamiast polegać na surowym stanie spot AMM. Po drugie, rekonstruuje pozycję LP w sposób deterministyczny: odtwarzanie salda puli dla zamiennych LP lub bezpośrednia dekompozycja skoncentrowanych pozycji według zakresu, płynności i aktualnej ceny. Po trzecie, dyskontuje tę odtworzoną wartość stosując obniżki odzysku (recovery haircuts), które odzwierciedlają poślizg przy likwidacji, tarcie przy wycofaniu i ryzyko straty nietrwałej. Strata nietrwała to różnica w wartości między trzymaniem aktywów w puli a trzymaniem ich osobno. Wzrasta, gdy połączone aktywa różnią się w cenie. Moc pożyczkowa na Avana pochodzi z wartości zdyskontowanej, a nie z najbardziej korzystnej wyceny."
+          ]
+        },
+        {
+          "id": "dlaczego-proste-oceny-zawodzą",
+          "title": "Dlaczego proste znaki zawodzą",
+          "paragraphs": [
+            "LP zabezpieczenie jest jednym z najprostszych miejsc, w których system pożyczkowy może się oszukać. AMM stan puli może wyglądać zdrowo, podczas gdy jest lokalnie zniekształcony. Skoncentrowana pozycja może wyglądać na silną, podczas gdy znajduje się w bardziej ryzykownej mieszance aktywów niż użytkownicy zakładają. Mała głębokość, manipulacja tymi samymi transakcjami i przestarzałe dane wejściowe mogą wszystkie generować liczby, które wyglądają na precyzyjne, nie będąc godnymi zaufania. Avana oddziela pozorną wartość od wiarygodnej wartości zabezpieczenia, łącząc zewnętrzne wyceny aktywów, deterministyczną LP rekonstrukcję i zabezpieczenia na poziomie protokołu.",
+            "Interfejs wyroczni może również rozróżniać odtworzoną wartość nominalną, wartość opłaty i wartość zarezerwowaną używaną na bufory ryzyka protokołu. Te komponenty nie zasługują na identyczne traktowanie wewnątrz rynku pożyczkowego. Standaryzując je wśród LP typów, warstwa rozgałęziająca może spójnie analizować wymienne LP, oparte na NFT LP oraz pozycje wieloaktywowe, jednocześnie szanując sposób, w jaki różne platformy udostępniają stan."
+          ]
+        },
+        {
+          "id": "kontrole i zabezpieczenia",
+          "title": "Kontrole i zabezpieczenia",
+          "paragraphs": [
+            "Różne AMM rodziny wymagają różnych ścieżek weryfikacji. Curve stabilne LP, Uniswap pary i NFT, Balancer ważone pule oraz Aerodrome pary pokazują stan zabezpieczenia w różny sposób. W Avana, zewnętrzne ceny pozostają głównym punktem odniesienia. Dane specyficzne dla puli i kontrole ważone czasem pomagają zweryfikować, czy zrekonstruowany stan zabezpieczenia jest spójny i trudniejszy do oszukania. Te kontrole ważone czasem nie są główną ceną, na której Avana opiera się przy pożyczkach. Są dodatkowym sprawdzeniem spójności, aby Avana mógł stwierdzić, czy stan zabezpieczenia nadal się zgadza, zanim zostanie uznany za kredyt.",
+            "Odporność na manipulacje w Avana obejmuje progi odchylenia, ograniczenia różnicy cen w puli, straty po odzyskaniu, limity otwartego zainteresowania oraz strażnika wyroczni, który reaguje, gdy kondycja źródła danych się pogarsza lub dane weryfikacyjne przestają się zgadzać. LP zabezpieczenie jest wyjątkowo narażone na nadużycia związane z tymi samymi transakcjami, zniekształcenia na cienkim rynku oraz przestarzałe lub sprzeczne sygnały, ponieważ zabezpieczenie jest bardziej strukturalnie skomplikowane niż zwykły bilans tokenów. Protokół, który obsługuje LP kredyt, musi zakładać, że krzywa cenowa w końcu zostanie przetestowana. Wyrocznia Avana została napisana z takim założeniem."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "dogłębna-analiza-bezpieczeństwa",
+      "title": "Jak Avana zarządza ryzykiem zabezpieczenia LP",
+      "date": "15 lipca 2026",
+      "description": "Jak Avana strukturyzuje warstwowe zabezpieczenia dla LP zabezpieczenia, od architektury i wyroczni po zdrowie, likwidację i operacje.",
+      "image": "kvn8o4spkoig89e47b6m",
+      "category": "Deweloperzy",
+      "tag": "Protokół",
+      "sections": [
+        {
+          "id": "więcej-niż-cena",
+          "title": "Więcej niż cena i LTV",
+          "paragraphs": [
+            "Prosty token można zazwyczaj wycenić za pomocą bezpośredniego odniesienia do rynku i zlikwidować przy użyciu standardowej logiki. Pozycja LP nie może. Jej wartość zależy od aktywów bazowych, struktury puli, relacji między tymi aktywami, narastania opłat, głębokości płynności, a w przypadku skoncentrowanej płynności także od aktywnego zakresu. Pod presją te zmienne się kumulują. Protokół, który wspiera pożyczki zabezpieczone LP na Aave v4, musi zrobić więcej niż tylko przypisać cenę i ustalić wskaźnik loan to value. To jest problem, wokół którego zbudowany jest Avana."
+          ]
+        },
+        {
+          "id": "architektura-i-wróżby",
+          "title": "Architektura i wycena",
+          "paragraphs": [
+            "Pierwsza warstwa bezpieczeństwa jest architektoniczna. Avana korzysta ze struktury hub-and-spoke Aave v4. Hub przechowuje wspólną warstwę płynności, zarządza rozliczeniami rezerwowymi i egzekwuje ograniczenia wypłacalności. Spoke to miejsce, gdzie funkcjonuje specyficzna logika zabezpieczeń LP: dopuszczenie, zasady wyceny, parametry ryzyka dla puli oraz zachowanie w przypadku likwidacji. Jeśli rynek LP znajdzie się w stresie, stres ten ma pozostać ograniczony do spoke, a nie przepisywać założenia dotyczące niezwiązanych typów zabezpieczeń. Na Avana spoke jest częścią granicy bezpieczeństwa.",
+            "Druga warstwa to projektowanie wyceny i wyroczni. LP pozycje nie mogą być bezpiecznie wyceniane przy użyciu jednego, stałego feedu. Avana używa ram dualnego źródła. Zewnętrzne feedy cenowe dostarczają podstawowego odniesienia dla instrumentów bazowych, podczas gdy AMM pochodna wycena działa jako niezależna weryfikacja. Możliwość pożyczania istnieje tylko wtedy, gdy oba źródła pozostają spójne w dopuszczalnej tolerancji. Ryzyko jest przypisywane na poziomie rynku. Struktura puli, korelacja aktywów, głębokość płynności i koncentracja w zakresie kształtują traktowanie zabezpieczenia. Możliwość pożyczania jest zakotwiczona w słabszych aspektach pozycji, z korektami na poziomie puli dla zmienności, jakości płynności i założeń dotyczących stresu."
+          ]
+        },
+        {
+          "id": "zdrowie-i-likwidacja",
+          "title": "Zdrowie i likwidacja",
+          "paragraphs": [
+            "Trzecia warstwa to monitorowanie stanu zdrowia. LP pozycje pozostają aktywne po tym, jak zostaną wystawione jako zabezpieczenie, więc ryzyko nie zostaje zamrożone po otwarciu pożyczki. Wartość zmienia się wraz z ruchami cen, generowaniem opłat, migracją zakresu i zmianami w jakości puli. Avana przeprowadza ciągłą ocenę stanu zdrowia dla każdej pozycji zamiast polegać na okazjonalnych migawkach. Wskaźnik zdrowia jest bieżącym sygnałem, czy model zabezpieczenia nadal obowiązuje dla tej pożyczki.",
+            "Likwidacja to moment, w którym testowane są założenia. LP zabezpieczenie nie może być zlikwidowane jak normalny token. Podejście Avana polega na pobieraniu opłat wbudowanych w pozycję przed zniszczeniem kapitału tam, gdzie jest to możliwe, usuwaniu tylko tyle płynności, ile potrzeba do naprawy pożyczki, oraz kierowaniu procesu likwidacji ścieżkami wykonania, które sprzyjają deterministycznemu rozliczeniu. Inteligentne Agenty zapewniają infrastrukturę wykonawczą: monitorowanie pozycji, uzgadnianie danych, symulowanie wykonania oraz likwidację w warunkach niekorzystnych. Stanowią one część systemu bezpieczeństwa Avana, a nie są dodatkiem przymocowanym później."
+          ]
+        },
+        {
+          "id": "operacje",
+          "title": "Operacje i kontrola zmian",
+          "paragraphs": [
+            "Warstwa operacyjna zakłada, że zarządzanie oraz konfiguracja ryzyka wymagają tej samej dyscypliny co traktowanie zabezpieczeń. Parametry ryzyka zmieniają się poprzez uporządkowany proces. Wrażliwe zmiany są objęte blokadami czasowymi i przeglądem. Istnieją kontrole awaryjne na wypadek naprawdę niekorzystnych warunków. Monitorowanie wykracza poza pojedyncze pozycje na całe kategorie rynkowe. Protokół, który obsługuje LP zabezpieczenia, nie może polegać wyłącznie na statycznej konfiguracji.",
+            "LP zabezpieczenie jest wykonalne na Avana tylko wtedy, gdy zabezpieczenie traktowane jest jako system. Architektura izoluje ryzyko. Orakle weryfikują rzeczywistość. Wycena przekształca złożoność w konserwatywną zdolność kredytową. Kontrole stanu zdrowia monitorują odchylenia. Likwidacja przywraca wypłacalność z taką precyzją, jaką pozwala miejsce. Kontrole operacyjne regulują, jak rozwija się ramy. Żadna z tych warstw sama w sobie nie jest wystarczająca."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pozycja-hedgingowa-lp",
+      "title": "Jak bardziej przemyślanie zabezpieczyć pozycję LP",
+      "date": "13 lipca 2026",
+      "description": "Jak LP może używać Avana do finansowania buforów, offsetów kierunkowych i bardziej zdyscyplinowanych nawyków zabezpieczających bez całkowitego opuszczania puli.",
+      "image": "7jyim76srzukj4jk6iwr",
+      "category": "Przez LPs",
+      "tag": "Przewodniki",
+      "sections": [
+        {
+          "id": "więcej-niż-opłaty",
+          "title": "Więcej niż opłaty",
+          "paragraphs": [
+            "Pozycja LP nigdy nie dotyczy wyłącznie opłat. Odchylenie cen, straty nieuchronne, dryf zakresu i presja zabezpieczenia mogą jednocześnie uderzyć w ten sam portfel. Strata nieuchronna występuje, gdy skład aktywów w puli się zmienia, a LP kończy się na wartości mniejszej niż trzymanie tokenów osobno. Gdy wspierana pozycja może zabezpieczać pożyczki poprzez Avana na Aave v4, pożyczony kapitał może finansować ochronę zamiast tylko lewarowania. Pozycja, która w przeciwnym razie musiałaby zostać całkowicie wycofana, może pozostać aktywna, podczas gdy pożyczony kapitał jest używany do zmniejszenia stresu lub zrównoważenia ekspozycji."
+          ]
+        },
+        {
+          "id": "bufory i przesunięcia",
+          "title": "Bufory i przesunięcia kierunkowe",
+          "paragraphs": [
+            "Najprostsza zabezpieczenie jest często najbardziej praktyczne: bufor w stablecoinach. Pożyczaj ostrożnie na Avana i utrzymuj część dochodów w stablecoinach. Jeśli zdrowie zacznie się pogarszać lub zmienność wzrośnie, ta płynność może spłacić dług lub zmniejszyć stres bez wymuszania reaktywnej sprzedaży LP. To nie chodzi przede wszystkim o zwiększenie zwrotu. Chodzi o zyskanie czasu i zachowanie kontroli, co samo w sobie może mieć duże znaczenie.",
+            "Drugą formą jest przesunięcie kierunkowe. Jeśli LP już niesie wyraźną ekspozycję na jeden niestabilny instrument, kapitał pożyczony może zmniejszyć netto ryzyko kierunkowe zamiast je zwiększać. Metody różnią się w zależności od zaawansowania użytkownika, ale zasada jest prosta. Jeśli LP już zawiera ekspozycję rynkową, pożyczanie może zrównoważyć tę ekspozycję. Zabezpieczenie (hedging) działa najlepiej jako zawężenie ryzyka, a nie jako druga spekulacyjna transakcja obok pierwszej."
+          ]
+        },
+        {
+          "id": "bardziej-zaawansowane-opcje",
+          "title": "Neutralność i łagodniejsze zastrzeżenia",
+          "paragraphs": [
+            "Bardziej zaawansowanym podejściem jest myślenie w kategoriach neutralności: ograniczanie wrażliwości kierunkowej i poleganie na dochodach z opłat. Tego rodzaju struktura może być bardziej stabilna, ale wymaga aktywnego monitorowania i ponownego bilansowania. LP pozycje ewoluują w miarę ruchów rynku, więc neutralna konfiguracja musi być utrzymywana, a nie ustalana jednorazowo. W przypadku większych pozycji, struktury ochronne ograniczające straty mogą definiować scenariusze najgorszego przypadku zamiast jedynie reagować na nie, choć wprowadzają własne koszty i decyzje dotyczące harmonogramu.",
+            "Łagodniejszą formą zabezpieczenia, która jest często pomijana, jest realokacja marginalnej ekspozycji zamiast dotykania jądra LP. W praktyce oznacza to przesuwanie dodatkowego kapitału w kierunku bardziej defensywnych portfeli lub stabilnych wdrożeń, gdy sytuacja się pogarsza, bez całkowitego wycofywania pierwotnej pozycji. Avana pomaga, utrzymując jądro LP jako zabezpieczenie, tak aby każda potrzeba płynności nie zmieniała się w całkowite wyjście."
+          ]
+        },
+        {
+          "id": "praktyczne zasady",
+          "title": "Praktyczne zasady, które dobrze się sprawdzają w podróży",
+          "paragraphs": [
+            "W różnych podejściach kilka nawyków dobrze się sprawdza w Avana. Pożyczaj ostrożnie. Zachowaj prawdziwy bufor. Zakładaj, że warunki mogą pogorszyć się szybciej niż oczekiwano. Traktuj maksymalną zdolność kredytową jako granicę, a nie cel. Stosuj monitorowanie z wcześniej zdefiniowanymi zasadami ograniczania ryzyka zamiast polegać na ciągłej ręcznej reakcji. Jeśli strategia zabezpieczająca staje się tak skomplikowana, że przestajesz rozumieć, co jest zabezpieczone, a co dodane, posunęła się za daleko."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "podręcznik-pętli-wydajności",
+      "title": "Pętla zwrotu z LP zabezpieczeniem",
+      "date": "10 lipca 2026",
+      "description": "Jak myśleć o pętli zysków z zabezpieczeniem Avana LP, w tym bufory, testowanie wytrzymałości, dyscyplina wyjścia i zrównoważona dźwignia.",
+      "image": "oqnljw3ghzp1r1tpusoy",
+      "category": "Przez LPs",
+      "tag": "Przewodniki",
+      "sections": [
+        {
+          "id": "co oznacza pętlenie",
+          "title": "Co oznacza pętla na Avana",
+          "paragraphs": [
+            "Yield looping oznacza utrzymywanie pozycji LP, pożyczanie przeciwko niej i ponowne inwestowanie pożyczonego kapitału w inną strategię generującą zyski, lub w niektórych przypadkach z powrotem w płynność. Avana na Aave v4 umożliwia ten krok zabezpieczenia dla obsługiwanych rynków LP. Atrakcja jest oczywista: looping może zwiększyć efektywną ekspozycję i wzmocnić generowanie opłat. Niebezpieczeństwo jest równie oczywiste: może zmniejszyć marginesy bezpieczeństwa, zwiększyć wrażliwość na likwidacje i sprawić, że pozycja stanie się znacznie bardziej delikatna, gdy warunki się zmienią. Prawdziwym celem powinno być zrównoważone wzmocnienie, a nie maksymalne dźwignie w pierwszym dniu."
+          ]
+        },
+        {
+          "id": "utrzymanie-pierwszej-pętli-w-niewielkim-rozmiarze",
+          "title": "Utrzymanie pierwszej pętli na umiarkowanym poziomie",
+          "paragraphs": [
+            "Najbezpieczniejszą formą loopingu jest skromna. Pożycz stosunkowo niewielką kwotę w oparciu o wspieraną pozycję Avana LP i ponownie zainwestuj w drugie źródło zwrotu, nie zbliżając się do limitu pożyczki. To jest kontrolowane rozszerzenie pierwotnej pozycji, a nie rekurencyjny zakład, że warunki pozostaną idealne. Dla wielu użytkowników, zwłaszcza na początku, jest to właściwy punkt startowy. Nadal uzyskujesz lepsze wykorzystanie kapitału, ale zostawiasz przestrzeń, jeśli oznaczenie LP, dochód z opłat lub stopa pożyczki pójdzie wbrew tobie.",
+            "Bardziej zaawansowane wersje ponownie inwestują pożyczony kapitał w płynność. Może to zwiększyć generowanie opłat w sprzyjających warunkach, ale sprawia też, że struktura staje się bardziej refleksyjna. Stajesz się narażony na wielowarstwową pozycję, w której ruchy cen, jakość zabezpieczenia i bezpieczeństwo zadłużenia oddziałują na siebie szybciej i agresywniej. Dźwignia nie tylko zwiększa zwroty. Zwiększa również szybkość, z jaką zdrowa pozycja Avana może stać się napiętą."
+          ]
+        },
+        {
+          "id": "stres-i-wyjście",
+          "title": "Testowanie odporności na stres i dyscyplina wyjścia",
+          "paragraphs": [
+            "Testowanie odporności na stres jest niezbędne. Każde poważne podejście do pętli powinno być oceniane w trudnych warunkach. Co się stanie, jeśli jedna strona pary poruszy się gwałtownie, jeśli wolumen obrotu osłabnie, jeśli koszty pożyczki wzrosną lub jeśli jakość zabezpieczenia pogorszy się szybciej niż oczekiwano. Struktura, która wygląda atrakcyjnie, gdy opłaty są wysokie a zmienność spokojna, może wyglądać niekomfortowo, gdy te warunki się odwrócą. Jeśli jedynym korzystnym scenariuszem jest spokojny miesiąc opłat, to rozważania nie są zakończone.",
+            "Decyzje dotyczące wychodzenia mają tak samo duże znaczenie jak decyzje dotyczące wejścia. Wiele złych decyzji dotyczących dźwigni nie powstaje przy pierwszej pożyczce. Powstają one przez brak planu redukcji ryzyka. Jeśli wzrasta zmienność, bufory zdrowotne się kurczą lub pogarsza się sytuacja ekonomiczna, ekspozycja powinna być stopniowo redukowana, zamiast bronić jej bezmyślnie. Avana Automatyzacja może pomóc w zbieraniu opłat, redukcji zadłużenia i ograniczaniu ryzyka według reguł, ale automatyzacja pomaga tylko wtedy, gdy podstawowe zasady są uczciwe. Strategia w pętli jest tak silna, jak założenia, na których się opiera."
+          ]
+        },
+        {
+          "id": "bilans-nie-magiczny",
+          "title": "Projekt bilansu, nie darmowy zysk",
+          "paragraphs": [
+            "Pętlenie zysku jest decyzją dotyczącą struktury kapitałowej, a nie skrótem do darmowego zysku. Stosowane ostrożnie na Avana pozwala produktywnej płynności on-chain wspierać szerszy zestaw zwrotów bez konieczności całkowitego likwidowania pierwotnej pozycji. Stosowane nieostrożnie, zamienia zdrową pozycję LP w kruchą. Różnica zwykle sprowadza się do dyscypliny, zarządzania buforem i gotowości traktowania dźwigni jako czegoś, czym należy sterować, a nie maksymalizować."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "uwalnianie-tokenów-lp",
+      "title": "Co umożliwia LP zabezpieczenie",
+      "date": "8 lipca 2026",
+      "description": "Co Avana LP zabezpieczenie umożliwia w zakresie pożyczek, zabezpieczeń, elastyczności skarbowej i bardziej efektywnego wykorzystania płynności produkcyjnej.",
+      "image": "/images/blog/uwalnianie-tokenów-lp.png",
+      "category": "Przez LPs",
+      "tag": "Przewodniki",
+      "sections": [
+        {
+          "id": "od-uwięzionego-do-użytecznego",
+          "title": "Od uwięzionego kapitału do użytecznego kapitału",
+          "paragraphs": [
+            "LP pozycje tradycyjnie były produktywne, ale sztywne. Generują opłaty handlowe i wspierają głębokość rynku, ale jeśli chcesz płynności z tej pozycji, zwykłą drogą jest jej rozwiązanie: rozbicie pozycji, przerwanie generowania opłat i zmiana aktywnego zasobu w nieaktywny bilans. LP zabezpieczenie to zmienia. Poprzez Avana na Aave v4, wspierane pozycje LP mogą pozostać aktywne w bazowym AMM, jednocześnie wspierając pożyczanie."
+          ]
+        },
+        {
+          "id": "prosty-i-użycie-yield",
+          "title": "Konserwatywne ścieżki płynności i drugiego dochodu",
+          "paragraphs": [
+            "Najbardziej konserwatywny przypadek użycia jest prosty. Pożyczasz stabilne aktywa pod wspieraną pozycję Avana LP i używasz tej płynności na kapitał obrotowy, zarządzanie rezerwami lub dochód o niższej zmienności, podczas gdy LP pozostaje aktywna i nadal generuje opłaty. Główna wartość tutaj nie polega na dźwigni jako takiej. Chodzi o dostęp do gotówki bez konieczności całkowitego wyjścia z pierwotnej pozycji.",
+            "Pożyczone stajnie mogą również trafiać do konserwatywnego yieldu onchain, takiego jak pożyczki ukierunkowane na stablecoiny, zarządzanie rezerwami lub inne możliwości o niższej zmienności. LP wciąż generuje opłaty, podczas gdy pożyczony kapitał podąża inną ścieżką. To nie jest nakładanie yieldu z niczego. To bardziej efektywne wykorzystanie kapitału, który w przeciwnym razie wymagałby najpierw zamknięcia pozycji."
+          ]
+        },
+        {
+          "id": "zabezpieczający i aktywny",
+          "title": "Zabezpieczanie i bardziej aktywne strategie",
+          "paragraphs": [
+            "Zabezpieczanie jest kolejną kategorią. LP pozycje narażają użytkowników na zmieniającą się strukturę aktywów i tymczasową stratę, zwłaszcza w pulach, w których jedna strona jest bardziej zmienna. Kredyt przeciwko LP zabezpieczeniu na Avana może stworzyć przestrzeń do zarządzania tym ryzykiem: zmniejszyć koncentrację kierunkową, poprawić planowanie płynności lub zbudować bardziej zrównoważone portfolio wokół istniejącej pozycji.",
+            "Bardziej aktywne strategie ponownie inwestują pożyczony kapitał w płynność, zwiększając ekspozycję na rynku i generowanie opłat. To może działać, ale zarządzasz teraz strukturą rekurencyjną, której ryzyko zmienia się szybko w zależności od warunków rynkowych. Gdy pożyczone aktywa są recyklingowane w dodatkową LP ekspozycję, dyscyplina staje się ważniejsza niż ambicja. Avana otwiera zestaw opcji. Zdrowie, limity pożyczkowe i zasady likwidacji nadal decydują o tym, co jest rozsądne dla danej puli."
+          ]
+        },
+        {
+          "id": "jakie-zmiany",
+          "title": "Co się zmienia dla LPs",
+          "paragraphs": [
+            "LP zabezpieczenie zmienia świadczenie płynności z stosunkowo izolowanej działalności przynoszącej dochód w coś bardziej powiązanego z szerszym DeFi wykorzystaniem kapitału. Pozycja, która wcześniej była produktywna tylko wewnątrz swojej puli, może wspierać pożyczki, planowanie płynności i projektowanie portfela bez konieczności jej najpierw rozbierania. Odpowiednie użycie nadal zależy od twojej tolerancji ryzyka i twojego zrozumienia tego, jak LP wartość, zdolność kredytowa i progi likwidacyjne współdziałają na Avana."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "aerodrome-lp-zabezpieczenie-aave-v4",
+      "title": "Pożyczanie pod zabezpieczenie Aerodrome LP na Aave v4",
+      "date": "6 lipca 2026",
+      "description": "Jak Avana obsługuje Aerodrome LP pozycji na Bazie, aby mogły pozostać aktywne podczas wspierania pożyczania przez dedykowane Aave v4 ramię.",
+      "image": "wpew3tklnkjm7df0sz3r",
+      "category": "Deweloperzy",
+      "tag": "Protokół",
+      "sections": [
+        {
+          "id": "lotnisko-na-avana",
+          "title": "Aerodrome płynność na Avana",
+          "paragraphs": [
+            "Aerodrome LP pozycje znajdują się w centrum aktywności on-chain na Base, gdzie płynność wspiera opłaty transakcyjne, dystrybucję tokenów i głębokość ekosystemu. Jako zabezpieczenie, te pozycje wymagają oceny według struktury puli, jakości aktywów, głębokości płynności i zachowania w warunkach stresu, a nie tylko według nagłówkowego TVL lub samego generowania opłat. Avana jest zbudowany, aby wspierać tego rodzaju zabezpieczenie na Aave v4 z zasadami specyficznymi dla rynku, a nie ogólnym regulaminem obejmującym całą platformę."
+          ]
+        },
+        {
+          "id": "jakość hub-spoke-i-pool",
+          "title": "Jakość hub, spoke i pool",
+          "paragraphs": [
+            "Architektura typu hub-and-spoke Aave v4 sprawia, że kształt produktu działa. Hub zarządza współdzieloną płynnością. Szprycha Avana obsługuje specyficzną logikę zabezpieczenia Aerodrome. Stabilny pool na Base nie powinien być traktowany tak samo jak para w niestabilnym ekosystemie tylko dlatego, że oba są Aerodrome LP. Szprycha definiuje, jak różne kategorie płynności Aerodrome są wyceniane, ile mocy pożyczkowej wspierają i jak działa likwidacja, jeśli pozycja staje się niebezpieczna.",
+            "Aerodrome pule różnią się znacznie. Niektóre obejmują ustalone aktywa o większej płynności. Inne koncentrują się na szybciej poruszających się tokenach w ekosystemie o wyższej zmienności i mniejszej głębokości. Pozycje, które na pierwszy rzut oka wyglądają podobnie, mogą zachowywać się bardzo różnie jako zabezpieczenie. Model szprychowy Avana przypisuje traktowanie według struktury i jakości puli, a nie tylko według nazwy miejsca."
+          ]
+        },
+        {
+          "id": "wycena-i-pożyczka",
+          "title": "Wycena i przepływ pożyczek",
+          "paragraphs": [
+            "Aerodrome LP nie jest pojedynczym tokenem cenowym. Jest to roszczenie do aktywów bazowych w puli, których skład i jakość mają bezpośrednie znaczenie. Avana ocenia wartość zabezpieczenia konserwatywnie, uwzględniając jakość płynności, zmienność, korelację aktywów oraz sposób, w jaki pula zachowuje się, jeśli rynek się odwróci. Pozycja może mieć znaczną wartość nominalną, ale zdolność kredytowa odzwierciedla to, co można odzyskać w warunkach stresu.",
+            "Przepływ pożyczki jest konkretny. Dostarczasz obsługiwany Aerodrome LP przez szprychę Avana, gdzie pozostaje aktywny i generuje opłaty. Szprycha ocenia pozycję przy użyciu logiki zabezpieczenia specyficznej dla puli. Na tej podstawie możesz pożyczać obsługiwane aktywa z płynności centrum. Stabilne pule i pule typu blue chip mogą wspierać silniejsze traktowanie zabezpieczeń. Zmienne lub cieńsze pary mają bardziej restrykcyjne limity i niższe współczynniki."
+          ]
+        },
+        {
+          "id": "jeśli-przerwy-na-zdrowie",
+          "title": "If health breaks",
+          "paragraphs": [
+            "Jeśli pozycja stanie się niebezpieczna, Avana likwiduje aktywną pozycję płynności, rozlicza aktywa bazowe i przywraca wypłacalność przy jak najmniejszym zakłóceniu, jakie pozwala rynek. Struktura puli determinuje, jak działa likwidacja. To kolejny powód, dla którego zabezpieczenie Aerodrome powinno znajdować się w dedykowanym segmencie, a nie jako luźne rozszerzenie szerszego rynku pożyczkowego."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "krzywa-lp-zabezpieczenie-aave-v4",
+      "title": "Pożyczanie pod Curve LP na Aave v4",
+      "date": "3 lipca 2026",
+      "description": "Jak Avana traktuje Curve LP zabezpieczenie dla stabilnych i skorelowanych pul poprzez dedykowane Aave v4 spójne połączenie.",
+      "image": "/images/blog/curve-lp-kolateral.png",
+      "category": "Deweloperzy",
+      "tag": "Protokół",
+      "sections": [
+        {
+          "id": "dlaczego-krzywa-ma-znaczenie",
+          "title": "Dlaczego Curve ma znaczenie na Avana",
+          "paragraphs": [
+            "Curve LP pozycje często znajdują się w centrum rynków stablecoinów i handlu skorelowanymi aktywami, w niektórych z najgłębszych i o najniższym poślizgu pul onchain. To sprawia, że są atrakcyjne jako zabezpieczenie, ale ich strukturalne zachowanie wciąż wymaga specjalistycznego traktowania w systemie pożyczkowym. Avana wspiera Curve LP jako zabezpieczenie na Aave v4 poprzez dedykowane połączenie ze specjalnym traktowaniem zabezpieczenia, ograniczeniami pożyczkowymi i zasadami likwidacji dostosowanymi do struktury rynku Curve."
+          ]
+        },
+        {
+          "id": "stabilny-nie-jest-bezryzykowny",
+          "title": "Wygląd stabilny nie jest pozbawiony ryzyka",
+          "paragraphs": [
+            "Curve pule są zbudowane wokół aktywów, które handlują w ściślejszych relacjach niż standardowe zmienne pary. Pule stablecoinów, pule płynnego stakowania i pule skorelowanych aktywów mogą generować głębsze i bardziej stabilne profile płynności. Stabilne relacje wciąż mogą się załamać, korelacje mogą się osłabić, a pule, które wydają się konserwatywne, mogą zachowywać się źle w sytuacjach stresowych. Avana's ramy zabezpieczeń muszą uwzględniać zarówno względną siłę projektu puli Curve, jak i możliwość, że stres pojawi się dokładnie tam, gdzie użytkownicy spodziewają się stabilności.",
+            "Pozycja Curve LP jest roszczeniem do puli aktywów bazowych, a nie prostym tokenem o stałej cenie. Avana określa, jakie aktywa znajdują się pod pozycją, ile są warte i jaka część tej wartości powinna się liczyć do mocy kredytowej. Ostatni krok jest krytyczny. Wartość zabezpieczenia w ramach konserwatywnego systemu pożyczkowego daje rzeczywisty ciężar składowi puli, korelacji aktywów, jakości płynności i temu, jak pozycja zachowałaby się w stanie stresu."
+          ]
+        },
+        {
+          "id": "użytkownicy-i-przepływ",
+          "title": "Kto z niego korzysta i jak działa pożyczanie",
+          "paragraphs": [
+            "Wiele Curve pozycji jest już wykorzystywanych przez zaawansowanych uczestników DeFi jako podstawowa ekspozycja na płynność. Pula stablecoinów, pary stakingowe z możliwością wypłaty płynnej oraz skorelowane rynki aktywów reprezentują duże ilości gospodarczo istotnego kapitału. Jeśli te pozycje mogą wspierać pożyczanie bez konieczności wycofywania, zwiększa to użyteczność niektórych z najbardziej fundamentalnych zasobów płynności w DeFi, pozostawiając je przy tym w puli.",
+            "Przepływ pożyczek na Avana polega na dostarczaniu wspieranego Curve LP przez rozgałęźnik, gdzie pozostaje aktywny i generuje opłaty. Rozgałęźnik ocenia pozycję, a Ty możesz pożyczać wspierane aktywa z płynności centrum. Pula stablecoinów może wspierać jedną formę traktowania zabezpieczenia, pule powiązanych aktywów inną, a pule o słabszej płynności lub bardziej kruchej relacji mają ostrzejsze ograniczenia."
+          ]
+        },
+        {
+          "id": "likwidacja",
+          "title": "Likwidacja następuje po basenie",
+          "paragraphs": [
+            "Jeśli Curve LP staje się niebezpieczne, Avana cofa tylko to, co jest konieczne do przywrócenia wypłacalności tam, gdzie to możliwe, szanuje podstawową strukturę puli i minimalizuje zakłócenia podczas spłacania długu. Różne typy puli wymagają różnych założeń. To jest sens modelu szprych, i to jest sposób, w jaki Avana może skalować Curve rodzinę po rodzinie bez jednej ogólnej reguły LP dla każdego AMM."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "balancer-lp-zabezpieczenie-aave-v4",
+      "title": "Balancer LP Zabezpieczenie na Aave v4",
+      "date": "1 lipca 2026",
+      "description": "Jak Avana wspiera Balancer ważone pule LP jako zabezpieczenie na Aave v4, podczas gdy ekspozycja pozostaje aktywna.",
+      "image": "v7k2x7i3upofxz905tci",
+      "category": "Deweloperzy",
+      "tag": "Protokół",
+      "sections": [
+        {
+          "id": "zop8lhc4ensdf5a8kyzg",
+          "title": "Papier wartościowy w stylu portfela LP",
+          "paragraphs": [
+            "Pozycja Balancer LP jest często uporządkowanym portfelem w AMM, z niestandardowymi wagami, zdywersyfikowaną ekspozycją i płynnością, która zachowuje się inaczej niż standardowe pule dwóch aktywów. To sprawia, że Balancer LP są interesujące jako zabezpieczenie, a także trudniejsze do obsługi w systemie pożyczkowym stworzonym dla prostszych aktywów. Avana obsługuje to poprzez dedykowane ogniwo w Aave v4."
+          ]
+        },
+        {
+          "id": "ważona-odmiana",
+          "title": "Dlaczego pule ważone potrzebują zasad rynkowych",
+          "paragraphs": [
+            "Balancer pule są z natury zróżnicowane. Stabilna pula stylów nie zachowuje się jak pula o wadze 80/20. Skorelowany koszyk aktywów nie zachowuje się jak szerszy skład indeksu stylów. Nawet pule o podobnej łącznej wartości mogą mieć istotnie różne ryzyko jako zabezpieczenie, w zależności od głębokości płynności, koncentracji aktywów, zmienności i zależności między instrumentami bazowymi. Avana szprycha definiuje, jak każda ważona pula jest wyceniana, jak ograniczana jest zdolność kredytowa i jak przebiega likwidacja.",
+            "Z perspektywy zabezpieczenia, Balancer LP reprezentuje portfel, a nie zwykłą parę aktywów. Jego wartość zależy od aktywów bazowych, ich względnych wag, wyceny rynkowej i struktury puli. Avana musi zrozumieć, co się pod tym kryje, jak ta kompozycja zachowuje się w sytuacjach stresowych i jaka część wartości przekłada się na bezpieczną siłę pożyczkową."
+          ]
+        },
+        {
+          "id": "pożycz-i-odpręż",
+          "title": "Pożyczanie i odprężenie",
+          "paragraphs": [
+            "Wiele Balancer puli wyraża świadome poglądy portfelowe: pary tokenów zarządzających, ważone alokacje indeksów, stabilne i skorelowane koszyki. Jeśli te pozycje staną się pożyczalnym zabezpieczeniem na Avana, użytkownicy nie będą musieli wybierać między utrzymaniem strukturalnej ekspozycji na rynku a dostępem do płynności. Ta sama pozycja w puli pozostaje aktywna, zarabia opłaty i wspiera pożyczanie przez Aave v4.",
+            "Przepływ polega na dostarczaniu wspieranego Balancer LP przez Avana odnogę, gdzie pozycja pozostaje aktywna i generuje opłaty. Odnoga ocenia ją, używając logiki zabezpieczenia specyficznej dla rynku. Bezpieczniejsze rodzaje pooli wspierają silniejsze traktowanie. Skoncentrowane lub zmienne struktury otrzymują bardziej konserwatywne założenia. Struktura rynku determinuje traktowanie pożyczek, a nie sama marka miejsca.",
+            "Jeśli pozycja stanie się niebezpieczna, Avana nie może zakładać, że likwidacja Balancer LP wygląda jak likwidacja prostszej pozycji z dwoma aktywami. Musi uwzględnić rzeczywistą strukturę puli, instrumenty bazowe oraz ścieżkę wykonania niezbędną do przywrócenia wypłacalności przy minimalnych zakłóceniach. Zabezpieczenie określa, jak wygląda bezpieczna likwidacja."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "architektura-smart-kontraktu",
+      "title": "Pożyczanie pod Uniswap LP na Aave v4",
+      "date": "28 czerwca 2026",
+      "description": "Jak Avana zmienia Uniswap LP pozycji w Aave v4 zabezpieczenia, podczas gdy pozostają one w puli i nadal generują opłaty.",
+      "image": "/images/blog/uniswap-lp-kolateral.png",
+      "category": "Deweloperzy",
+      "tag": "Protokół",
+      "sections": [
+        {
+          "id": "uniswap-na-avana",
+          "title": "Uniswap płynność na Avana",
+          "paragraphs": [
+            "Uniswap LP pozycje zapewniają głębokość rynku, ułatwiają handel i generują opłaty, ale tradycyjnie były trudne w użyciu w systemach pożyczkowych bez wcześniejszego wycofania lub restrukturyzacji. Avana został zaprojektowany, aby to zmienić na Aave v4. Centrum zarządza wspólną płynnością. Avana oś to dedykowany rynek dla pożyczek zabezpieczonych LP, w tym Uniswap skoncentrowanej płynności. Oś definiuje, jak oceniana jest wartość zabezpieczenia, jak przypisywana jest zdolność kredytowa oraz jak zarządzane jest ryzyko na poziomie pozycji."
+          ]
+        },
+        {
+          "id": "dlaczego-cl-jest-trudne",
+          "title": "Dlaczego skoncentrowane zakresy są trudnym zabezpieczeniem",
+          "paragraphs": [
+            "Uniswap Skoncentrowane pozycje płynności nie są prostymi wymiennymi tokenami. Wartość zależy od bieżącej ceny instrumentów bazowych, ilości dostarczonej płynności, wybranego zakresu cenowego oraz opłat naliczanych w czasie. Pozycja może być aktywna i przynosić zyski, albo może wyjść poza zakres i zachowywać się zupełnie inaczej. Avana musi rozumieć skład pozycji w czasie rzeczywistym i oceniać, ile jest warta jako zabezpieczenie w zmieniających się warunkach, nie tylko jako wartość nominalna.",
+            "Wycena znajduje się w centrum. Avana określa, jakie instrumenty bazowe dana pozycja aktualnie reprezentuje, stosuje wiarygodne wyceny i przelicza to na zdolność kredytową w ramach konserwatywnego systemu zabezpieczeń. Ważne pytanie nie dotyczy czystej wartości papieru. Chodzi o wartość zabezpieczenia w obrębie aktywnego systemu pożyczkowego. Skoncentrowane pozycje mogą stawać się nieliniowe w miarę przesuwania się cen przez lub poza aktywny zakres, co wymaga świadomego zarządzania ryzykiem."
+          ]
+        },
+        {
+          "id": "pożycz-monitor-likwiduj",
+          "title": "Pożycz, monitoruj, zlikwiduj",
+          "paragraphs": [
+            "Przepływ pożyczek dostarcza wspierane Uniswap LP przez Avana szprychę. Pozycja pozostaje w AMM i nadal generuje opłaty. Szprycha ocenia zabezpieczenie i stosuje logikę ryzyka. Pożyczasz wspierane aktywa z płynności centrum. Zabezpieczenie pozycji nie wyłącza jej. Płynność pozostaje wdrożona, ekspozycja rynkowa pozostaje nienaruszona, a opłaty nadal narastają.",
+            "Ponieważ LP pozycje są aktywne i zmieniają się, Avana monitoruje zdrowie ciągle. W miarę jak ceny się zmieniają, opłaty narastają, a struktura pozycji przesuwa się, zmienia się również bezpieczeństwo pożyczek. Zdrowa pozycja dzisiaj może być mniej zdrowa jutro, nawet jeśli użytkownik niczego nie zmienił.",
+            "Jeżeli pozycja staje się zbyt ryzykowna, likwidacja musi rozwiązać część aktywnej pozycji AMM, uwzględnić aktywa bazowe i przywrócić wypłacalność przy jak najmniejszym zakłóceniu. Struktura rynkowa zabezpieczenia determinuje strukturę likwidacji. To jest jeden z głównych powodów, dla których zabezpieczenie Uniswap LP należy do dedykowanego segmentu Avana, a nie do uogólnionego kosza zabezpieczeń."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "wyzwania-defi-ux",
+      "title": "Uczynienie LP Zabezpieczenia Użytecznym",
+      "date": "25 czerwca 2026",
+      "description": "Dlaczego Avana projektowanie produktu dba o jasną wycenę, limity pożyczkowe i zdrowie, tak aby LP zabezpieczenie było operacyjne, a nie tylko potężne.",
+      "image": "/images/blog/uczynienie-materiałów-lp-użytecznymi.png",
+      "category": "Produkt",
+      "tag": "Przewodniki",
+      "sections": [
+        {
+          "id": "moc-nie-wystarcza",
+          "title": "Siła nie wystarczy",
+          "paragraphs": [
+            "LP zabezpieczenie jest potężne w koncepcji i trudne do wdrożenia w czysty sposób. Na Avana nie zarządzasz tylko pożyczką. Zarządzasz aktywną pozycją płynnościową, której wartość, skład i ryzyko zmieniają się w czasie. To sprawia, że produkt jest bardziej wymagający niż standardowy proces udzielania pożyczek, i jest jedną z głównych przyczyn, dla których LP zabezpieczenie było operacyjnie trudne, nawet gdy pomysł brzmiał kusząco."
+          ]
+        },
+        {
+          "id": "uczynić-cykl-życia-czytelnym",
+          "title": "Uczyń cykl życia czytelnym",
+          "paragraphs": [
+            "Wyzwanie polega na uczynieniu pełnego cyklu życia zrozumiałym: wyceny zabezpieczeń, limitów pożyczkowych, monitorowania kondycji oraz tego, co dzieje się w miarę zmiany warunków. Jeśli te elementy pozostają nieprzejrzyste, produkt będzie ograniczony do wysoce technicznych użytkowników, niezależnie od tego, jak silny jest podstawowy mechanizm.",
+            "Na LP rynkach zabezpieczeń, dobre UX jest częścią projektowania ryzyka. Użytkownicy muszą rozumieć, ile dana pozycja jest warta jako zabezpieczenie, a nie tylko jej wartość rynkową. Muszą widzieć, jak pożyczanie wpływa na elastyczność, jak dryf zakresu lub rozbieżność cen zmienia ryzyko, oraz jak blisko pozycja jest do stresu. Platforma, która ukrywa te rzeczywistości za niejasnymi pulpitami, może na powierzchni wyglądać na prostszą, a jednocześnie stwarzać większe zagrożenie dla użytkownika."
+          ]
+        },
+        {
+          "id": "jeden system",
+          "title": "Jeden połączony system",
+          "paragraphs": [
+            "LP wspierane pożyczanie na Avana powinno być przedstawione jako jeden połączony system. Wpłacanie płynności, używanie jej jako zabezpieczenia, monitorowanie stanu finansowego, pobieranie opłat i zarządzanie ryzykiem są częścią tego samego obiektu finansowego. Związek między pozycją LP a długiem powinien być widoczny od samego początku, aby można było zrozumieć obie strony naraz, zamiast składać obraz z osobnych interfejsów.",
+            "LP pozycje nie są statyczne. Ewoluują wraz z aktywnością handlową, ruchami aktywów bazowych, a w systemach o skoncentrowanej płynności także wraz z samym zakresem pozycji. Pożyczanie pod tego rodzaju aktywa wymaga bardziej rozbudowanego interfejsu i bardziej zdyscyplinowanej struktury produktu. Generowanie opłat, jakość zabezpieczenia i ryzyko likwidacji wzajemnie się przenikają w sposób, który łatwo jest źle zrozumieć, jeśli produkt jest projektowany niedbale.",
+            "Celem jest uczynienie zaawansowanych prymitywów finansowych użytecznymi, bez wprowadzania w błąd. Avana's LP wspierane przez pożyczki muszą być wystarczająco przejrzyste, aby można je było używać, wystarczająco zdyscyplinowane, aby można im było ufać, oraz wystarczająco spójne, aby stały się realną częścią zarządzania kapitałem onchain."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "avana-lp-zabezpieczenie",
+      "title": "Avana i następny krok dla LPs",
+      "date": "23 czerwca 2026",
+      "description": "Dlaczego dostawcy płynności nie powinni musieć wybierać między zarabianiem opłat a dostępem do kapitału, oraz jak Avana rozszerza LP zabezpieczenie na Aave v4.",
+      "image": "/images/blog/avana-next-step-dostawcy-płynności.png",
+      "category": "Społeczność",
+      "tag": "Strategia",
+      "sections": [
+        {
+          "id": "stary-kompromis",
+          "title": "Stary kompromis",
+          "paragraphs": [
+            "Dostawcy płynności zapewniają głębokość, pochłaniają zmienność i zarabiają na opłatach transakcyjnych, ale kapitał znajdujący się w tych pozycjach często wydawał się uwięziony. Jeśli chciałeś mieć dostęp do tego kapitału, zwykłą odpowiedzią było nadal wycofanie, rozbicie pozycji i zaprzestanie robienia tego, co sprawiało, że pozycja była użyteczna w pierwszej kolejności."
+          ]
+        },
+        {
+          "id": "jakie-zmiany-avana",
+          "title": "Jakie Avana zmiany",
+          "paragraphs": [
+            "Avana pozwala obsługiwanym LP pozycjom funkcjonować jako zabezpieczenie na Aave v4, jednocześnie utrzymując aktywną płynność w bazowym AMM. Zamiast wymuszać wybór między generowaniem opłat a dostępem do płynności, ta sama pozycja może robić oba. Pozostaje na rynku, nadal zarabia opłaty i wspiera zdolność kredytową w systemie pożyczkowym zaprojektowanym dla zabezpieczenia LP.",
+            "LP pozycje są bardziej skomplikowane niż standardowe zabezpieczenie. Zmieniają się wraz z cenami bazowymi, składem puli, naliczaniem opłat i w systemach koncentracji płynności przy aktywnym umieszczaniu zakresów. Większość systemów pożyczkowych nie została zbudowana, aby właściwie rozumieć tę wartość. Traktowanie LP jak zwykłych sald tokenów nie oddaje tego, jak one się faktycznie zachowują. Avana istnieje, ponieważ ta luka jest strukturalna, a nie kosmetyczna."
+          ]
+        },
+        {
+          "id": "jak-pasuje-stos",
+          "title": "Jak stos pasuje do siebie",
+          "paragraphs": [
+            "Avana wykorzystuje projekt typu „hub and spoke” Aave v4. Wspólna płynność pozostaje na poziomie centralnym (hub). Specyficzna wycena, traktowanie zabezpieczenia i logika likwidacji LP znajdują się w dedykowanych rynkach typu spoke. Stabilne pule, pule skorelowanych aktywów i skoncentrowane pozycje płynności otrzymują odpowiednie traktowanie ryzyka, zamiast być spłaszczane w jeden ogólny framework.",
+            "Dla LPs, wynik to bardziej efektywne kapitałowo uczestnictwo. Wspierana pozycja pozostaje produktywna w AMM, jednocześnie stając się użyteczną w systemie kredytowym. Zachowujesz ekspozycję, nadal zarabiasz i masz dostęp do płynności bez całkowitego wycofywania. Dla szerszego systemu, LP zabezpieczenie oznacza, że DeFi kapitału może być mniej zfragmentaryzowany. Płynność nie musi opuszczać rynku za każdym razem, gdy potrzebuje stać się użyteczna gdzie indziej.",
+            "Jeśli LP pozycji może pozostać aktywnych przy wspieraniu pożyczek, stają się one czymś więcej niż tylko udziałami w puli generującymi opłaty. Funkcjonują jako ustrukturyzowane pozycje finansowe z generowaniem opłat, ekspozycją na rynek i wartością zabezpieczenia. Avana jest tym mostem między infrastrukturą handlową a infrastrukturą kredytową."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "przypadki-użycia-instytucjonalnego",
+      "title": "LP Zabezpieczenie dla instytucji",
+      "date": "20 czerwca 2026",
+      "description": "Jak Avana LP zabezpieczenie może pomóc DAO, skarbcom, funduszom i firmom z branży kryptowalut w uzyskaniu kapitału bez likwidowania produktywnej płynności.",
+      "image": "/images/blog/lp-kolateral-dla-instytucji.png",
+      "category": "Dla instytucji",
+      "tag": "Instytucje",
+      "sections": [
+        {
+          "id": "funkcja skarbca",
+          "title": "Efektywność kapitałowa jako funkcja skarbca",
+          "paragraphs": [
+            "Dla instytucji działających w łańcuchu bloków, efektywność kapitału jest funkcją skarbu. DAO, skarbce protokołów, fundusze i firmy natywnie związane z kryptowalutami często posiadają duże pozycje w różnych tokenach, rezerwach stabilnych i pulach płynności, jednak znaczna część tego kapitału pozostaje operacyjnie sztywna. LP pozycje mogą generować opłaty i wspierać strategiczną ekspozycję rynkową, ale wciąż trudno je wykorzystać jako elastyczne aktywa skarbowe bez wycofania płynności i zmiany postawy rynkowej."
+          ]
+        },
+        {
+          "id": "co-avana-umożliwia",
+          "title": "Co Avana umożliwia zespołom",
+          "paragraphs": [
+            "Dzięki Avana, LP pozycje mogą pozostać aktywne w AMM, jednocześnie wspierając pożyczki na Aave v4. Skarbiec DAO może finansować granty lub wypłaty dla współpracowników bez zmniejszania ekspozycji na podstawowy rynek. Fundusz może utrzymywać LP pozycji, jednocześnie mając dostęp do stabilnej płynności na potrzeby taktycznego repozycjonowania. Skarbiec firmowy może zarządzać wypłatami lub zobowiązaniami wobec dostawców, nie zmuszając do pełnej rebalansacji rezerw on-chain. Wspólnym mianownikiem jest to, że pożyczanie tworzy kapitał obrotowy bez realizowania pozycji, bez przerywania generowania opłat i bez zmuszania każdej potrzeby płynności do stania się decyzją o sprzedaży.",
+            "W przypadku DAO i skarbców protokołów, LP pozycje utrzymywane jako wsparcie płynności lub strategia skarbcowa są często traktowane jako nieruchome, chyba że governance zdecyduje o ich rozwiązaniu. LP zabezpieczenie oferuje bardziej efektywną kapitałowo drogę. Pozycje skarbcowe mogą pozostać aktywne przy jednoczesnym wspieraniu kontrolowanego dostępu do płynności na runway, wydatki ekosystemowe lub planowanie operacyjne."
+          ]
+        },
+        {
+          "id": "fundusze-i-korporacje",
+          "title": "Fundusze i skarbce korporacyjne",
+          "paragraphs": [
+            "Fundusze i profesjonalni menedżerowie dbają o taktyczną elastyczność. Na szybko poruszających się rynkach wycofanie pozycji przed uzyskaniem kapitału może być powolne, kosztowne i strategicznie niezręczne. Avana LP zabezpieczenie pozwala menedżerowi zachować ekspozycję i obecność na rynku, jednocześnie uwalniając płynność na nowe inwestycje, zabezpieczenie lub zmianę pozycji.",
+            "Skarbnice korporacyjne w biznesach rodzimych dla kryptowalut przechowują rezerwy w łańcuchu, ale nadal potrzebują przewidywalnego dostępu do kapitału na potrzeby operacyjne. Wynagrodzenia, płatności dla dostawców i potrzeby kapitału obrotowego nie zawsze pokrywają się z idealnymi warunkami rynkowymi. Zaciąganie pożyczek pod pozycje LP pozwala skarbnicy zarządzać zobowiązaniami bez przedwczesnej sprzedaży aktywów lub nadmiernego polegania na finansowaniu poza łańcuchem."
+          ]
+        },
+        {
+          "id": "kontrolki",
+          "title": "Kontrolki są na pierwszym miejscu",
+          "paragraphs": [
+            "Instytucjonalna adopcja zależy od kontroli: wyraźnych granic polityki dotyczącej tego, co można pożyczyć, pod jakim zabezpieczeniem, jaką ścieżką zatwierdzeń i z jakimi zasadami ograniczania ryzyka. Avana rynki typu spoke oznaczają, że ryzyko można definiować wokół struktury zabezpieczenia. Stablecoiny, skorelowane pary, skoncentrowana płynność i zmienne pule mogą być zarządzane według różnych założeń. Kontrole operacyjne obejmują rozdzielenie ról, uprawnienia, monitorowanie stanu, możliwość audytu oraz progi zatwierdzeń wielopodpisowych. Są one kluczowe dla tego, czy LP zabezpieczenie staje się wiarygodnym narzędziem skarbowym, a nie tylko narzędziem do dźwigni.",
+            "LP pozycje już odgrywają istotną rolę w tym, jak protokoły, fundusze i firmy związane z kryptowalutami alokują kapitał. Kolejnym krokiem jest uczynienie tych pozycji przydatnymi finansowo poza generowaniem opłat, z powierzchnią zarządczą wymaganą przez instytucje. To jest zadanie, do którego Avana został stworzony."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "przewodnik-integracji",
+      "title": "Budowanie na podstawie Avana LP Infrastruktury",
+      "date": "17 czerwca 2026",
+      "description": "Widok dewelopera na Avana LP infrastrukturę zabezpieczeń, w tym monitorowanie, automatyzację, usługi likwidacyjne i możliwości dla twórców.",
+      "image": "smiisjg1vaj4bvihn388",
+      "category": "Deweloperzy",
+      "tag": "Protokół",
+      "sections": [
+        {
+          "id": "nowa-projektowana-powierzchnia",
+          "title": "A new design surface",
+          "paragraphs": [
+            "Większość DeFi infrastruktury jest zbudowana wokół prostego zabezpieczenia. Pojedyncze aktywa są łatwe do wyceny, monitorowania i zlikwidowania. Pozycje LP są aktywne, dwustronne i strukturalnie bardziej złożone. Ich wartość zmienia się w zależności od aktywów bazowych, składu puli, naliczania opłat i zakresu. Ta złożoność jest powodem, dla którego zabezpieczenie LP było trudne do zintegrowania w systemach pożyczkowych, i dlatego Avana tworzy nową powierzchnię projektową dla deweloperów."
+          ]
+        },
+        {
+          "id": "co-dostają-budowniczowie",
+          "title": "Co budowniczowie otrzymują z Avana",
+          "paragraphs": [
+            "Avana pozwala wykorzystać LP pozycje jako zabezpieczenie poprzez Aave v4. Architektura typu hub and spoke oznacza, że LP pozycje są oceniane, dostosowywane do ryzyka i likwidowane zgodnie ze specyficzną dla rynku logiką, a nie według ogólnego rynku pożyczek, który akceptuje LP. Dla twórców otwiera to możliwości w zakresie interfejsów, systemów monitorowania, narzędzi skarbcowych, warstw strategii i produktów świadomych ryzyka opartych na kredycie zabezpieczonym LP.",
+            "Portfel i infrastruktura monitorowania to naturalna kategoria. LP pożyczki zabezpieczone tworzą bardziej dynamiczną relację między zabezpieczeniem a długiem niż większość DeFi użytkowników jest przyzwyczajona. Pulpity mogą wyświetlać wskaźnik zdrowia, efektywność zabezpieczenia, generowanie opłat i wrażliwość na likwidację, pomagając użytkownikom zdecydować, kiedy zrebalansować, zmniejszyć dług lub traktować pozycję jako bardziej obciążoną niż sugeruje jej wartość podana na pierwszy rzut oka."
+          ]
+        },
+        {
+          "id": "automatyzacja-likwidacja-skarb",
+          "title": "Automatyzacja, likwidacja i narzędzia skarbowe",
+          "paragraphs": [
+            "Infrastruktura automatyzacji i strategii to kolejna dziedzina pracy. Ponieważ LP pozycje pozostają aktywne podczas wspierania pożyczania, deweloperzy mogą budować systemy, które reagują na zmieniające się warunki po obu stronach pozycji: utrzymując docelowe zakresy pożyczania, monitorując dryf zabezpieczenia lub kierując dane z pozycji do systemów skarbowych i portfelowych, które znajdują się powyżej Avana.",
+            "Infrastruktura likwidacyjna i ryzyka również ma znaczenie. LP zabezpieczenie wymaga więcej niż zwykłego obserwowania progów. Wymaga zrozumienia, jak jakość pozycji zmienia się w miarę ruchu rynków i jak ścieżki likwidacji różnią się w zależności od miejsca i rodzaju puli. Zewnętrzne boty, usługi monitorujące i systemy analityczne mogą stać się ważnymi elementami ekosystemu wokół Avana.",
+            "W przypadku narzędzi skarbcowych i instytucjonalnych, jeśli DAO, fundusze lub firmy natywne dla kryptowalut używają pozycji LP jako zabezpieczenia, będą potrzebować systemów do zarządzania limitami polityki, uprawnieniami, warunkami pożyczek i progami ryzyka w obrębie portfeli lub zespołów. Deweloperzy mogą używać Avana jako źródła informacji o stanie zabezpieczenia, stanie zadłużenia oraz strukturze rynku, zamiast traktować ekspozycję LP i ekspozycję pożyczkową jako odrębne światy."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "aave-v4-avana-szprycha",
+      "title": "Wewnątrz Avana's LP Architektury Zabezpieczeń",
+      "date": "14 czerwca 2026",
+      "description": "W wewnętrznej architekturze zabezpieczeń Avana na Aave v4, w tym centrum, promieniach, wycenie, projekcie wyroczni i logice likwidacji.",
+      "image": "urpv8yjy9xfcpn7vrj8u",
+      "category": "Deweloperzy",
+      "tag": "Protokół",
+      "sections": [
+        {
+          "id": "dlaczego-węzeł-i-promień",
+          "title": "Dlaczego system typu hub and spoke",
+          "paragraphs": [
+            "LP zabezpieczenie nie może być wspierane za pomocą ogólnego projektu pożyczkowego. Potrzebny jest system, który obsługuje aktywne pozycje płynności, zmieniający się skład zabezpieczenia, wycenę specyficzną dla rynku oraz ścieżki likwidacji różniące się od standardowego zabezpieczenia tokenowego. Avana jest zbudowane na modelu hub-and-spoke Aave v4, ponieważ pożyczki wspierane przez LP wymagają jednocześnie współdzielonej płynności i izolowanej logiki rynku."
+          ]
+        },
+        {
+          "id": "role typu hub-and-spoke",
+          "title": "Co robi centrum i szprychy",
+          "paragraphs": [
+            "Centrum przechowuje aktywa dostępne do pożyczania i koordynuje dzieloną płynność na rynkach: zarządzanie rezerwami, śledzenie wykorzystania i alokacja kredytów. Centrum to sposób, w jaki Avana łączy zabezpieczenie LP z szerszym systemem pożyczkowym, bez zmuszania każdego rodzaju zabezpieczenia do korzystania z tych samych założeń. Stabilny rynek LP, rynek o skoncentrowanej płynności i zmienna para AMM nie powinny być regulowane w ten sam sposób tylko dlatego, że korzystają z tej samej puli płynności.",
+            "Szprychy to miejsce, w którym LP specyficzna logika działa: rejestracja zabezpieczenia, wycena, dostosowanie ryzyka, monitorowanie i likwidacja. Każda szprycha definiuje, jak traktowane są różne typy puli. Uniswap skoncentrowana pozycja zachowuje się inaczej niż wymienialna Curve LP, która zachowuje się inaczej niż Balancer ważona pula. Szprycha to miejsce, w którym LP zabezpieczenie staje się prawdziwym rynkiem pożyczkowym z własnymi zasadami wewnątrz Avana."
+          ]
+        },
+        {
+          "id": "wycena-wróżbita-likwidacja",
+          "title": "Wycena, wyrocznie i likwidacja",
+          "paragraphs": [
+            "Wycena korzysta z podejścia warstwowego. Po pierwsze, co faktycznie zawiera pozycja LP w obecnym stanie rynku. Po drugie, wyceń te instrumenty bazowe na podstawie wiarygodnych danych dostarczanych przez orakle. Po trzecie, dostosuj poprzez logikę zabezpieczenia, która odzwierciedla rzeczywiste ryzyko puli, a nie nominalną wielkość. Nie każdy dolar w pozycji LP przekłada się na taką samą moc pożyczkową na Avana.",
+            "Projekt orakla znajduje się blisko rdzenia. W przypadku LP zabezpieczenia protokół nie może polegać na jednej liczbie ani na prostym źródle danych o aktywach. Avana stosuje filozofię podwójnego źródła, w której zewnętrzne źródła cen i wyprowadzane wyceny AMM współpracują ze sobą, aby uzyskać bardziej niezawodną wycenę. Celem jest zmniejszenie ryzyka, że tymczasowe zaburzenia, przestarzałe aktualizacje lub lokalne zniekształcenia w puli stworzą niebezpieczne założenia dotyczące zabezpieczeń.",
+            "W przypadku likwidacji, Avana musi w kontrolowany sposób zamykać aktywne pozycje LP, przekształcać powstałe aktywa i spłacać dług bez unikniętej straty. Wypust specjalizuje się w likwidacji dla podstawowej struktury rynku. Centrum zapewnia płynność. Wypust definiuje logikę zabezpieczenia. Każda warstwa robi to, do czego jest przeznaczona: czyste rozdzielenie, silna izolacja i realistyczna ścieżka do skalowania LP puli zabezpieczeń krok po kroku."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "v1-1-wydanie",
+      "title": "Avana v1.1: Lepsze Zabezpieczenie, Lepsza Kontrola",
+      "date": "11 czerwca 2026",
+      "description": "Avana v1.1 rozszerza wielopozycyjne zabezpieczenie, dodaje więcej obsługiwanych pul, ulepsza delegowanie i alerty oraz obniża koszty transakcji.",
+      "image": "/images/blog/avana-v1-1-lepsza-kontrola.png",
+      "category": "Produkt",
+      "tag": "Produkt",
+      "sections": [
+        {
+          "id": "co wysłano",
+          "title": "Co zostało wysłane w wersji 1.1",
+          "paragraphs": [
+            "Avana v1.1 sprawia, że LP oparte na zabezpieczeniu jest bardziej elastyczne, bardziej wydajne i łatwiejsze w zarządzaniu. Ta aktualizacja rozszerza możliwości strukturyzowania zabezpieczeń przez użytkowników, poprawia ocenę pozycji, zmniejsza koszty transakcji i udoskonala panel do zarządzania aktywnymi pozycjami LP na Aave v4."
+          ]
+        },
+        {
+          "id": "wielopozycyjny-i-rynkowy",
+          "title": "Kredyt zabezpieczający wielopozycyjny i więcej rynków",
+          "paragraphs": [
+            "Główna zmiana to wielopozycyjny zabezpieczenie. Użytkownicy mogą deponować wiele pozycji LP i mieć ocenianą zdolność kredytową w całym zestawie zabezpieczeń, zamiast pozycji po pozycji. Daje to większą elastyczność w zarządzaniu płynnością w różnych pulach, aktywach lub typach strategii. Wydanie to również rozszerza obsługiwane pule na Uniswap v3 i v4. Każdy nowy rynek nadal obejmuje dodatkową wycenę, traktowanie zabezpieczeń i pracę w zakresie likwidacji, więc szerszy dostęp nie osłabia standardów ryzyka Avana.",
+            "Częściowe wycofanie pozycji również jest nowością. Użytkownicy mogą zmniejszyć część płynności pozycji LP bez całkowitego opuszczania pozycji zabezpieczającej, pod warunkiem, że pozostałe zabezpieczenie nadal bezpiecznie wspiera pożyczkę. To sprawia, że zarządzanie kapitałem jest mniej binarne. Możesz dostosować ekspozycję, uwolnić płynność lub przekształcić pozycje bez traktowania każdej zmiany jak wszystko albo nic."
+          ]
+        },
+        {
+          "id": "ops-i-panel",
+          "title": "Narzędzia operacyjne i jaśniejszy pulpit nawigacyjny",
+          "paragraphs": [
+            "Wsparcie delegacji pomaga DAO, zespołom i operatorom strukturalnym rozdzielać obowiązki między portfelami lub rolami: kto zarządza depozytami, kto zajmuje się działaniami związanymi z długiem, kto wykonuje konserwację operacyjną. Alerty dotyczące wskaźnika zdrowia zapewniają wcześniejszą widoczność zmian warunków pozycji, zanim pojawi się stres. LP zabezpieczenie może się szybko zmieniać, zwłaszcza gdy dywergencja cen wpływa jednocześnie na efektywność zarobkowania i jakość zabezpieczenia.",
+            "Poprawa wydajności obniża koszty transakcji w przypadku wpłat, pożyczek, spłat i zarządzania. Obsługa Oracle została ulepszona pod kątem opóźnień, zachowań awaryjnych i niezawodności podczas zmieniających się warunków rynkowych. Dla LP zabezpieczeń jakość wykonania zaplecza jest równie ważna jak funkcje frontendu.",
+            "Panel nawigacyjny został udoskonalony, aby pokazywać LP wspierane pożyczki tak, jak faktycznie działają Avana: zdrowie zabezpieczenia, skład pozycji i zależność między aktywną płynnością a długiem. Lepsze podglądy transakcji i bardziej responsywny design sprawiają, że zarządzanie pozycjami jest bardziej czytelne, zanim zatwierdzisz zmianę w łańcuchu."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "wprowadzanie-automatyzacji",
+      "title": "Automatyzacja: Warstwa sterująca dla LP zabezpieczeń",
+      "date": "8 czerwca 2026",
+      "description": "Jak Avana Automate pomaga użytkownikom zarządzać LP zabezpieczeniami dzięki niekustodialnej automatyzacji opłat, równoważenia, ochrony i zdyscyplinowanej konserwacji.",
+      "image": "2k77evsbxsavo8nhg6lm",
+      "category": "Produkt",
+      "tag": "Produkt",
+      "sections": [
+        {
+          "id": "dlaczego-automatyzacja",
+          "title": "Dlaczego LP zabezpieczeń wymaga automatyzacji",
+          "paragraphs": [
+            "Zarządzanie pozycją LP, która jednocześnie służy jako zabezpieczenie, jest wymagające. Opłaty narastają, ale nie zawsze pozostają produktywne. Zakresy płynności zmieniają się wraz z ruchami na rynku. Wskaźniki zdrowia słabną, gdy rozbieżności cen zmieniają profil zabezpieczenia. Obie strony bilansu pozostają aktywne. Pozycja LP ewoluuje, a dług wobec niej zmienia się wraz z warunkami pożyczek. Dla użytkowników pożyczających przeciwko LP za pośrednictwem Avana na Aave v4, to jest codzienna rzeczywistość."
+          ]
+        },
+        {
+          "id": "co-to-jest-automatyzacja",
+          "title": "Czym jest Avana Automate",
+          "paragraphs": [
+            "Automate to niekustodialna warstwa automatyzacji Avana. Wykonuje akcje zatwierdzone przez użytkownika, gdy spełnione są wcześniej określone warunki. Użytkownicy zachowują pełną kontrolę nad aktywami i uprawnieniami. Automate zajmuje się powtarzalną konserwacją i egzekwowaniem dyscypliny pozycji. Nie zastępuje strategii ani osądu. Jest sposobem na zmniejszenie obciążenia operacyjnego związanego z zarządzaniem zabezpieczeniem LP na Avana."
+          ]
+        },
+        {
+          "id": "opłaty-zakresy-ochrona",
+          "title": "Opłaty, zakresy i ochrona",
+          "paragraphs": [
+            "Opłaty transakcyjne kumulują się stopniowo, ale opłaty bierne nie przyczyniają się do efektywności pozycji. Automate może je zbierać i ponownie wykorzystywać zgodnie z preferencjami użytkownika, dzięki czemu pozycje pozostają bardziej produktywne bez stałej ręcznej interwencji. Z czasem dyscyplinowana kontrola opłat może mieć tak samo duże znaczenie jak ogólna stopa zwrotu, szczególnie w przypadku większych strategii pożyczkowych wspieranych przez LP.",
+            "W systemach skoncentrowanej płynności kapitał przestaje działać efektywnie, gdy cena wychodzi poza aktywny zakres, a pozycja może również stać się mniej efektywna jako zabezpieczenie w Avana. Automate może przeprowadzać rebalance według zasad określonych przez użytkownika, zmniejszając obciążenie związane z ręcznym reagowaniem na każdy ruch. Jest to szczególnie przydatne, ponieważ efektywność zabezpieczenia i produktywność płynności są ze sobą ściśle powiązane.",
+            "Pozycje mogą również przechodzić ze stanu zdrowego do stresowanego szybciej niż oczekiwano, szczególnie podczas gwałtownej zmienności lub gdy powiązane aktywa się rozchodzą. Automate monitoruje warunki i wykonuje działania obronne na podstawie progów zdefiniowanych przez użytkownika. Bierne zaniedbanie LP zabezpieczenia wspierającego dług staje się kosztowne. Avana Automate jest do tego zaprojektowane, aby reagować wcześniej."
+          ]
+        },
+        {
+          "id": "operacje drugiego dnia",
+          "title": "Operacje drugiego dnia",
+          "paragraphs": [
+            "Automate jest zbudowany wokół rzeczywistej natury LP zabezpieczenia: pozycji, które zarabiają, dryfują i zmieniają ryzyko, służąc jednocześnie jako zabezpieczenie na Aave v4. Daje użytkownikom możliwość utrzymywania pozycji w sposób spójny, reagowania na zmieniające się warunki z mniejszym tarciem oraz zarządzania pożyczkami zabezpieczonymi LP z dyscypliną, która w przeciwnym razie wymagałaby stałej uwagi manualnej. Ta sama zasada niekustodialna obowiązuje w całym systemie. Avana realizuje Twoją politykę. Nie staje się menedżerem funduszu w rodzaju czarnej skrzynki."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lp-przewodnik-kolosalny",
+      "title": "Przewodnik dla początkujących po LP zabezpieczeniach",
+      "date": "4 czerwca 2026",
+      "description": "Przewodnik dla początkujących po LP zabezpieczeniach na Avana, obejmujący LP zachowanie, LTV, tymczasową utratę wartości, likwidację i ostrożne pierwsze kroki.",
+      "image": "/images/blog/przewodnik-dla-poczatkujacych-lp-materiały.png",
+      "category": "Przez LPs",
+      "tag": "Przewodniki",
+      "sections": [
+        {
+          "id": "podstawowa-idea",
+          "title": "Podstawowa idea",
+          "paragraphs": [
+            "Dostarczanie płynności jest jednym z najczęstszych sposobów zarabiania odsetek w DeFi. Wpłacasz aktywa do puli, ułatwiasz handel i w zamian zarabiasz opłaty. Pozycje LP również były nieelastyczne. Jeśli chciałeś użyć tego kapitału gdzie indziej, zwykle najpierw go wycofywałeś. Zabezpieczenie LP to zmienia. Dzięki Avana na Aave v4, wspierane pozycje LP mogą stanowić zabezpieczenie pożyczek, pozostając aktywne w puli i zarabiając opłaty przez cały czas."
+          ]
+        },
+        {
+          "id": "co-to-jest-lp",
+          "title": "Czym tak naprawdę jest LP",
+          "paragraphs": [
+            "Pozycja LP to aktywna pozycja na rynku. Jej wartość zależy od instrumentów bazowych, od tego, jak poruszają się względem siebie, od narosłych opłat oraz w systemach skoncentrowanej płynności, czy pozycja nadal znajduje się w swoim aktywnym zakresie cenowym. Zmienia się ona w czasie w sposób, w jaki zwykły token będący zabezpieczeniem się nie zmienia. Dlatego też zabezpieczenie LP wymaga bardziej specjalistycznego modelu pożyczkowego i dlatego Avana istnieje do takiego zastosowania."
+          ]
+        },
+        {
+          "id": "ltv-il-likwidacja",
+          "title": "LTV, strata tymczasowa i likwidacja",
+          "paragraphs": [
+            "Loan to value, często skracane do LTV, to część zaakceptowanej wartości zabezpieczenia pozycji, przeciwko której można zaciągnąć pożyczkę. Niższe LTV oznacza większy bufor. Jeśli wartość zabezpieczenia spadnie, jest jeszcze miejsce, zanim pożyczka stanie się zagrożona. Wyższe LTV zapewnia bardziej natychmiastową płynność i mniejszy margines bezpieczeństwa. Na rynkach LP ma to większe znaczenie, ponieważ wartość pozycji może się zmieniać z kilku powodów jednocześnie: ceny bazowe, skład koszyka, naliczanie opłat i ustawienie zakresu.",
+            "Utrata tymczasowa, często skracana do IL, ma miejsce, gdy dwa aktywa w puli poruszają się względem siebie, a pozycja LP kończy z wartością mniejszą niż trzymanie tych aktywów poza pulą. Dla osoby korzystającej z LP jako zabezpieczenia na Avana, IL bezpośrednio wpływa na zdolność kredytową. Nie sprawia to, że zabezpieczenie LP jest z definicji niebezpieczne, ale oznacza to, że użytkownicy muszą rozumieć, że pozycje są dynamiczne, a nie stałe.",
+            "Jeżeli wartość zabezpieczenia spadnie zbyt mocno w stosunku do długu, Avana przywraca bezpieczeństwo poprzez likwidację. W przypadku zabezpieczenia LP jest to bardziej skomplikowane niż sprzedaż prostego tokena. Dochodzi do naliczania opłat, zmiany składu aktywów oraz struktury płynności specyficznej dla danego miejsca. Avana wycenia i likwiduje pozycje LP zgodnie z tymi realiami, zamiast traktować je jak ogólne aktywa. Praktyczna lekcja dla początkujących jest prosta. Pożyczaj ostrożnie, szczególnie na początku."
+          ]
+        },
+        {
+          "id": "pierwsze-kroki",
+          "title": "A sensible first path",
+          "paragraphs": [
+            "Nawet jako zabezpieczenie, pozycja LP nadal zarabia opłaty i utrzymuje ekspozycję rynkową. To jest zysk z efektywności kapitału. Dla początkujących najbezpieczniejszym podejściem jest zaczęcie od konserwatywnego podejścia do Avana: pożyczaj umiarkowanie, używaj najpierw prostszych i bardziej stabilnych typów puli oraz zwracaj uwagę na to, jak zmienia się kondycja pozycji w miarę ruchów na rynku. Kiedy zrozumiesz, jak wartość LP, zadłużenie i progi likwidacyjne oddziałują na siebie, model staje się znacznie łatwiejszy w odpowiedzialnym używaniu."
+          ]
+        }
+      ]
+    }
+  ]
+}

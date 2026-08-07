@@ -1,4 +1,6 @@
 import { revalidateTag, unstable_cache } from "next/cache"
+import { getLocale } from "next-intl/server"
+import { loadBlogContent } from "@/lib/content-i18n/load-content"
 import { blogPosts as blogPostDefinitions } from "@/lib/blog-posts"
 
 /**
@@ -43,19 +45,27 @@ export const blogTagOptions: readonly TagFilter[] = [
 export const BLOG_CONTENT_TAG = "blog-posts"
 export const NEWSROOM_CONTENT_TAG = "newsroom-posts"
 
-const blogPosts: readonly BlogPost[] = blogPostDefinitions.map((post, index) => ({
-  id: index + 1,
-  date: post.date,
-  title: post.title,
-  description: post.description,
-  slug: post.slug,
-  image: post.image,
-  category: post.category,
-  tag: post.tag,
-}))
+function toBlogPosts(definitions: typeof blogPostDefinitions): readonly BlogPost[] {
+  return definitions.map((post, index) => ({
+    id: index + 1,
+    date: post.date,
+    title: post.title,
+    description: post.description,
+    slug: post.slug,
+    image: post.image,
+    category: post.category,
+    tag: post.tag as BlogTag,
+  }))
+}
 
-function makeNewsroomPost(slug: string, byline: string): NewsroomPost {
-  const post = blogPostDefinitions.find((entry) => entry.slug === slug)
+const blogPosts: readonly BlogPost[] = toBlogPosts(blogPostDefinitions)
+
+function makeNewsroomPostFrom(
+  definitions: typeof blogPostDefinitions,
+  slug: string,
+  byline: string,
+): NewsroomPost {
+  const post = definitions.find((entry) => entry.slug === slug)
 
   if (!post) {
     throw new Error(`Missing newsroom post for slug: ${slug}`)
@@ -68,6 +78,10 @@ function makeNewsroomPost(slug: string, byline: string): NewsroomPost {
     description: post.description,
     href: `/newsroom/${post.slug}`,
   }
+}
+
+function makeNewsroomPost(slug: string, byline: string): NewsroomPost {
+  return makeNewsroomPostFrom(blogPostDefinitions, slug, byline)
 }
 
 const newsroomPostsByCollection: Record<NewsroomCollection, readonly NewsroomPost[]> = {
@@ -132,7 +146,18 @@ export function filterBlogPosts(posts: readonly BlogPost[], tag: TagFilter) {
   return posts.filter((post) => post.tag === tag)
 }
 
-export async function getBlogPosts() {
+export async function getBlogPosts(locale?: string) {
+  const resolved = locale ?? (await getLocale())
+
+  if (resolved !== "en") {
+    try {
+      const content = await loadBlogContent(resolved)
+      return toBlogPosts(content.posts as typeof blogPostDefinitions)
+    } catch {
+      // fall through to English catalog
+    }
+  }
+
   if (process.env.NODE_ENV !== "production") {
     return blogPosts
   }

@@ -1,0 +1,321 @@
+{
+  "categories": [
+    {
+      "id": "umum",
+      "name": "Pertanyaan Umum",
+      "summary": "",
+      "questions": [
+        {
+          "id": "apa-itu-avana",
+          "q": "Apa itu Avana?",
+          "a": "Avana adalah protokol peminjaman yang dibangun untuk jaminan LP. Ini memungkinkan pengguna untuk menyetor posisi AMM yang didukung, menjaga posisi tersebut tetap aktif di dalam pool yang mendasarinya, dan meminjam terhadapnya melalui infrastruktur Aave v4.\n\nIde inti adalah bahwa modal LP tidak harus menjadi tidak dapat digunakan hanya karena berada di dalam pool. Avana mengubah posisi LP yang didukung menjadi jaminan yang dapat mendukung kredit sementara posisi asli terus mendukung swap, mendapatkan biaya, dan tetap terkait dengan pasar AMM."
+        },
+        {
+          "id": "masalah-apa-yang-disesaikan-avana",
+          "q": "Masalah apa yang diselesaikan oleh Avana?",
+          "a": "Penyedia likuiditas sering kali harus menghapus likuiditas sebelum mereka dapat meminjam dengan memakai modal mereka. Itu berarti keluar dari pool, melepaskan eksposur biaya, dan mengganggu posisi pasar yang sudah mereka bangun.\n\nAvana menyelesaikan ini dengan membuat posisi LP yang didukung dapat digunakan sebagai jaminan. LP tetap aktif, Avana melacak dan menilai posisi, dan Aave v4 menangani akuntansi sisi pinjaman melalui token jaminan vault internal."
+        },
+        {
+          "id": "bagaimana-avana-berbeda-dari-pinjaman-standar",
+          "q": "Bagaimana Avana berbeda dari pasar pinjaman standar?",
+          "a": "Pasar pinjaman standar biasanya memperlakukan jaminan sebagai saldo token sederhana: ETH, BTC, stablecoin, atau aset ERC-20 lainnya. Avana dibuat untuk jaminan yang berubah bentuk seiring waktu. Posisi LP dapat berisi beberapa aset, menimbun biaya, bergeser dengan pergerakan harga, menjadi satu sisi, atau memerlukan jalur pembongkaran tertentu.\n\nKarena itu, Avana menilai jaminan pada tingkat pasar LP. Setiap pool yang didukung atau keluarga LP dapat memiliki logika penilaian sendiri, faktor jaminan, aset yang dapat dipinjam, asumsi likuidasi, dan batas risiko."
+        },
+        {
+          "id": "amms-apa-yang-dapat-didukung-avana",
+          "q": "Avana dapat mendukung AMM mana?",
+          "a": "Avana mendukung pasar jaminan LP yang dikurasi di seluruh AMM seperti Uniswap, Balancer, Curve, dan Aerodrome saat pasar diluncurkan. Dukungan disetujui per pool, tidak otomatis diberikan untuk setiap pool di suatu tempat.\n\nSetiap pasar yang didukung memiliki persyaratan yang jelas: penetapan harga aset yang dapat diandalkan, kedalaman likuiditas yang cukup, jalur pelepasan yang didefinisikan, batas pasar, dan pengaturan jaminan yang sesuai dengan jenis pool. Inilah sebabnya pasar peluncuran tetap dikurasi sebelum cakupan yang lebih luas diperluas."
+        },
+        {
+          "id": "apakah-avana-mengganti-amm",
+          "q": "Apakah Avana menggantikan AMM tempat likuiditas saya berada?",
+          "a": "Tidak. AMM masih menangani pertukaran, kondisi pool, pergerakan harga, dan generasi biaya. Avana menambahkan lapisan jaminan dan kredit di sekitar posisi LP yang didukung.\n\nKetika Anda menyetor posisi yang memenuhi syarat ke Avana, protokol melacak jaminan LP yang sebenarnya dan menghubungkannya dengan akuntansi sisi pinjaman. AMM yang mendasarinya tetap menjadi tempat di mana posisi likuiditas berada dan menghasilkan biaya."
+        }
+      ]
+    },
+    {
+      "id": "arsitektur-protokol",
+      "name": "Arsitektur Protokol",
+      "summary": "",
+      "questions": [
+        {
+          "id": "bagaimana-avana-bekerja-pada-tingkat-tinggi",
+          "q": "Bagaimana Avana bekerja secara tingkat tinggi?",
+          "a": "Avana bekerja dalam tiga langkah. Pertama, seorang pengguna menyetor posisi LP yang didukung ke dalam Avana. Kedua, Avana mengevaluasi posisi tersebut dengan membaca aset dasarnya, struktur pool, volatilitas, korelasi, kedalaman likuiditas, dan risiko likuidasi. Ketiga, setelah posisi tersebut lolos pemeriksaan pasar, pengguna dapat meminjam berdasarkan nilai yang disesuaikan dengan risikonya.\n\nPosisi LP tetap aktif di AMM. Avana mengelola catatan jaminan, penilaian, dan logika risiko spesifik LP, sementara Aave v4 menangani sisi kredit peminjaman dan akuntansi melalui model Hub-and-Spoke yang terhubung."
+        },
+        {
+          "id": "mengapa-aave-v4-hub-dan-spoke",
+          "q": "Mengapa Avana menggunakan infrastruktur Hub-and-Spoke Aave v4?",
+          "a": "Avana menggunakan Aave v4 karena LP jaminan membutuhkan likuiditas bersama dan logika risiko terisolasi secara bersamaan. Hub menangani lapisan moneter umum: cadangan, pembukuan, model suku bunga, dan koordinasi kredit global.\n\nSpokes menangani pekerjaan spesifik LP: pendaftaran jaminan kolam, penilaian posisi, penegakan risiko, dan pelaksanaan likuidasi. Ini memungkinkan kolam stabil, pasangan berkorelasi, pasangan volatil, dan pasar likuiditas terkonsentrasi menggunakan aturan yang benar-benar mereka butuhkan alih-alih dipaksa ke dalam satu model risiko generik."
+        },
+        {
+          "id": "apa-itu-borrow-spoke",
+          "q": "Apa itu Borrow Spoke?",
+          "a": "Sebuah Pinjaman Spoke adalah pasar jaminan LP yang terisolasi. Pasar ini menentukan pool mana yang didukung, bagaimana setiap posisi LP dinilai, faktor jaminan apa yang berlaku, aset mana yang dapat dipinjam, dan bagaimana likuidasi bekerja untuk pasar tersebut.\n\nPinjaman Spoke dipisahkan karena posisi LP tidak semuanya berperilaku sama. Sebuah posisi stablecoin LP, ETH yang distake dan berkorelasi ETH LP, dan token tata kelola yang volatil LP membutuhkan pengaturan risiko yang berbeda, batas yang berbeda, dan terkadang rute likuidasi yang berbeda."
+        },
+        {
+          "id": "apa-itu-token-vault",
+          "q": "Apa itu Avana token brankas?",
+          "a": "Token brankas adalah aset akuntansi internal ERC-20 yang mewakili jaminan yang disetujui LP pada sisi Aave-menghadap dari sistem. Misalnya, posisi yang didukung LINK/ETH dapat dipetakan ke token jaminan gaya brankas LINKETH, sementara posisi WETH/USDC dapat dipetakan ke token gaya brankas WETHUSDC.\n\nToken brankas adalah jembatan. Avana melacak posisi LP yang nyata dan nilainya, Adapter Aave menyediakan token brankas yang sesuai ke Aave v4, dan Aave menggunakan token itu untuk akuntansi jaminan. Pengguna tidak meminjam hanya terhadap pembungkus abstrak; token brankas tetap didukung oleh posisi LP yang dilacak di belakangnya."
+        },
+        {
+          "id": "apa-itu-modul-protokol-utama",
+          "q": "Apa saja bagian utama dari protokol Avana?",
+          "a": "Avana dibangun di sekitar beberapa modul sempit. Manajer Posisi LP mencatat posisi LP yang sebenarnya, termasuk pemilik, kolam, pasangan, tingkat biaya, rentang, likuiditas, nilai saat ini, biaya yang terakumulasi, dan status jaminan. Modul Risiko menyetujui kolam, aset, kedalaman, rentang, dan batas pasar sebelum posisi mendukung hutang.\n\nModul Kolateralisasi mengambil harga, menilai posisi, memutuskan jumlah jaminan yang didukung, dan mencetak atau menghapus token brankas internal. Adapter Aave menangani sisi yang berhadapan dengan Aave dengan menyediakan jaminan brankas, menariknya, dan menjaga integrasi Aave tetap terpisah dari logika spesifik LP."
+        }
+      ]
+    },
+    {
+      "id": "jaminan-lp",
+      "name": "LP Jaminan",
+      "summary": "",
+      "questions": [
+        {
+          "id": "apa-yang-terjadi-ketika-saya-menyetorkan-jaminan-lp",
+          "q": "Apa yang terjadi ketika saya menyetor LP jaminan?",
+          "a": "Saat Anda menyetor posisi LP yang didukung, Avana mencatat posisi tersebut dan mengarahkannya ke Borrow Spoke yang relevan. Protokol memverifikasi bahwa pool disetujui, membangun kembali posisi tersebut, memeriksa pengaturan risikonya, dan menghitung nilai jaminan yang melekat pada pasar tersebut.\n\nSetelah posisi melewati pemeriksaan tersebut, Avana mencetak token vault internal yang sesuai untuk pencatatan sisi pinjaman. Menyetor tidak otomatis meminjam aset; hal ini menciptakan kapasitas pinjaman yang dapat digunakan akun selama tetap sehat dan pasar memiliki likuiditas yang tersedia."
+        },
+        {
+          "id": "apakah-lp-saya-tetap-aktif",
+          "q": "Apakah posisi LP saya tetap aktif setelah deposit?",
+          "a": "Ya. Posisi LP yang didukung tetap aktif selama mereka berfungsi sebagai jaminan. Likuiditas tetap terikat pada posisi AMM yang mendasarinya, sehingga pool terus memproses swap dan posisi terus memperoleh biaya serta insentif sesuai dengan aturan AMM.\n\nTindakan yang mengubah nilai jaminan diperiksa oleh Avana saat utang masih terbuka. Menarik likuiditas, mengklaim biaya, mengubah rentang, atau memodifikasi posisi dijalankan melalui Borrow Spoke karena tindakan tersebut mempengaruhi nilai yang mendukung pinjaman."
+        },
+        {
+          "id": "bisakah-saya-mengklaim-biaya-lp",
+          "q": "Bisakah saya mengklaim LP biaya saat meminjam?",
+          "a": "Avana memisahkan likuiditas pokok dari biaya yang terakumulasi dalam model penilaiannya. Hal ini memungkinkan protokol untuk mengenali pendapatan biaya dan melepaskan biaya yang dapat diklaim sambil menjaga pokok LP tetap aktif sebagai jaminan.\n\nKlaim biaya melewati pemeriksaan kesehatan sebelum dan sesudah. Jika menghapus nilai biaya membuat akun berada di bawah batas jaminan yang diwajibkan, Avana akan memblokir klaim sampai pengguna melunasi utang atau menambahkan lebih banyak jaminan."
+        },
+        {
+          "id": "apakah-biaya-lp-merupakan-bagian-dari-nilai-agunan",
+          "q": "Apakah LP biaya termasuk dalam nilai jaminan?",
+          "a": "Biaya yang terakumulasi dilacak secara terpisah dari likuiditas pokok. Model oracle Avana membedakan nilai pokok dari nilai biaya, sehingga protokol memahami berapa banyak posisi yang merupakan likuiditas inti dan berapa banyak yang merupakan pendapatan biaya yang dapat diklaim.\n\nPerbedaan ini penting selama likuidasi. Avana menerapkan biaya yang terakumulasi sebelum likuiditas pokok ketika jalur pasar mendukungnya, sehingga mengurangi seberapa banyak posisi inti LP yang harus dibongkar untuk menutupi utang."
+        },
+        {
+          "id": "kapan-saya-bisa-menarik-jaminan",
+          "q": "Kapan saya bisa menarik LP jaminan?",
+          "a": "Anda dapat menarik jaminan setelah utang dilunasi sepenuhnya, atau setelah Avana memastikan bahwa akun yang tersisa masih lolos pemeriksaan kesehatan setelah penarikan. Pelunasan penuh adalah jalur penarikan yang paling bersih karena posisi LP tidak lagi menjamin utang yang masih terbuka.\n\nPerubahan jaminan sebagian dijalankan melalui Borrow Spoke. Avana menghitung ulang akun setelah menghapus atau memodifikasi posisi LP yang diminta, kemudian melepaskan jaminan hanya ketika jaminan yang disetujui yang tersisa masih mendukung utang yang masih outstanding."
+        }
+      ]
+    },
+    {
+      "id": "orakel-penilaian",
+      "name": "Penilaian & Orakel",
+      "summary": "",
+      "questions": [
+        {
+          "id": "bagaimana-harga-avana-kolateral-lp",
+          "q": "Bagaimana Avana memberi harga LP jaminan?",
+          "a": "Avana harga LP jaminan dengan merekonstruksi posisi dan menilai aset di dalamnya. Untuk LP yang dapat dipertukarkan, protokol mengambil nilai dari harga aset eksternal dan rekonstruksi saldo pool. Untuk likuiditas terkonsentrasi, protokol memecah posisi berdasarkan likuiditas, jangkauan, tick saat ini, eksposur token, dan biaya yang diperoleh.\n\nHasilnya kemudian didiskontokan menjadi nilai jaminan yang dapat dipulihkan. Daya pinjam didasarkan pada apa yang secara realistis dapat didukung oleh posisi di bawah asumsi risiko pasar, bukan pada nilai aset bersih yang optimistis."
+        },
+        {
+          "id": "bagaimana-avana-mengurangi-risiko-oracle",
+          "q": "Bagaimana Avana mengurangi risiko oracle dan harga?",
+          "a": "Avana menggunakan kerangka penetapan harga dengan dual-oracle untuk jaminan LP. Feed harga Chainlink menyediakan referensi utama untuk aset dasar, sementara TWAP yang berasal dari AMM bertindak sebagai lapisan verifikasi independen yang berasal dari likuiditas onchain.\n\nKekuatan pinjaman diberikan hanya ketika sumber harga tetap berada dalam batas toleransi pasar. Ini mengurangi paparan terhadap manipulasi flash-loan, distorsi harga AMM sementara, pembaruan usang, dan penilaian jaminan yang buruk yang menciptakan utang yang tidak aman."
+        },
+        {
+          "id": "apa-itu-nilai-yang-dapat-dipulihkan",
+          "q": "Apa itu nilai yang dapat dipulihkan?",
+          "a": "Nilai yang dapat dipulihkan adalah nilai jaminan yang didiskontokan Avana yang digunakan untuk keputusan peminjaman dan likuidasi. Ini mencerminkan berapa nilai posisi LP setelah memperhitungkan jalur pembubaran, penjualan, transfer, atau penyelesaiannya dalam kondisi tekanan.\n\nNilai yang dapat dipulihkan lebih rendah daripada nilai teoritis LP ketika jalur likuidasi mencakup selip, dampak harga, pergerakan kisaran, volatilitas, penanganan biaya, atau kedalaman jalur yang terbatas. Avana menyesuaikan ukuran pinjaman berdasarkan nilai yang dapat dipulihkan karena itulah nilai yang melindungi utang."
+        },
+        {
+          "id": "mengapa-posisi-likuiditas-terkonsentrasi-diperlakukan-dengan-hati-hati",
+          "q": "Mengapa posisi likuiditas terkonsentrasi diperlakukan dengan hati-hati?",
+          "a": "Posisi likuiditas terkonsentrasi mengubah eksposur dengan cepat saat harga bergerak. Sebuah posisi bisa menjadi sebagian besar satu aset, keluar dari jangkauan, berhenti menghasilkan biaya, atau memerlukan penyelesaian pada tingkat posisi NFT penuh.\n\nAvana menghargai posisi terkonsentrasi dengan mendekomposisi kondisi posisi aktual alih-alih memperlakukan NFT sebagai saldo token statis. Pasar kemudian menerapkan faktor jaminan, batasan, dan asumsi likuidasi yang sesuai dengan jangkauan, inventaris, dan risiko pembubaran posisi tersebut."
+        },
+        {
+          "id": "data-apa-yang-dipantau-avana",
+          "q": "Data pasar apa yang dipantau oleh Avana?",
+          "a": "Monitor Borrow Spokes terhadap sinyal yang memengaruhi kualitas jaminan LP: komposisi pool, harga token, korelasi aset, volatilitas, kedalaman likuiditas, akrual biaya, keandalan oracle, dan biaya pelepasan.\n\nSinyal-sinyal tersebut memengaruhi perlakuan jaminan di pasar. Pool yang stabil dan sangat berkorelasi menerima batasan yang berbeda dibandingkan pasangan yang volatil atau diperdagangkan tipis karena profil likuidasi dan slippagenya berbeda."
+        }
+      ]
+    },
+    {
+      "id": "meminjam",
+      "name": "Pasar Peminjaman",
+      "summary": "",
+      "questions": [
+        {
+          "id": "bagaimana-peminjaman-bekerja",
+          "q": "Bagaimana cara peminjaman bekerja di Avana?",
+          "a": "Peminjaman terjadi setelah Borrow Spoke mengakui dan menilai jaminan LP Anda. Ketika Anda meminta suatu aset, spoke memeriksa kapasitas yang tersisa, memastikan posisi tetap sehat setelah utang baru, dan menarik likuiditas dari Hub jika aset tersedia.\n\nAset yang dipinjam dikirimkan ke pengguna, dan akun mencatat utang melalui lapisan akuntansi sisi pinjaman. Bunga bertambah seiring waktu, sehingga kesehatan bisa berubah meskipun posisi jaminan itu sendiri tidak berubah."
+        },
+        {
+          "id": "bagaimana-kapasitas-peminjaman-dihitung",
+          "q": "Bagaimana kapasitas pinjaman dihitung?",
+          "a": "Kapasitas peminjaman berasal dari nilai yang disesuaikan dengan risiko dari posisi-posisi LP yang disetujui di dalam Borrow Spoke. Avana membangun kembali setiap posisi, menilai eksposur dasar, menerapkan perlakuan risiko tingkat pool, dan kemudian menerapkan faktor jaminan pasar.\n\nBorrow Spoke melaporkan kapasitas tersebut ke Hub untuk penegakan. Ketika seorang pengguna memiliki beberapa posisi yang disetujui di pasar yang sama, Avana menggabungkan kapasitas mereka sambil tetap menilai setiap posisi berdasarkan pool, rentang, likuiditas, dan asumsi risiko masing-masing."
+        },
+        {
+          "id": "mengapa-daya-pinjam-lebih-rendah-dari-nilai-lp",
+          "q": "Mengapa daya pinjam lebih rendah dari nilai LP saya?",
+          "a": "Daya pinjam lebih rendah karena Avana menggunakan nilai jaminan yang konservatif, bukan nilai penuh LP. Posisi LP bisa kehilangan nilai melalui perbedaan harga, kerugian sementara, pergeseran rentang, tekanan likuiditas, dan selip likuidasi.\n\nPerbedaan antara nilai LP dan daya pinjam adalah buffer keamanan. Buffer ini melindungi pasar dengan memastikan utang disesuaikan dengan nilai jaminan yang dapat dipulihkan daripada nilai terbaik yang ditampilkan dalam kondisi normal."
+        },
+        {
+          "id": "aset-apa-yang-bisa-saya-pinjam",
+          "q": "Aset apa yang bisa saya pinjam?",
+          "a": "Aset yang dapat dipinjam ditetapkan per pasar. Avana pasar pinjam fokus pada aset likuid seperti stablecoin utama, GHO, ETH, BTC, dan aset lain yang sesuai dengan likuiditas, batas, dan konfigurasi risiko pasar.\n\nAntarmuka menampilkan set pinjaman aktif untuk setiap pasar. Jenis jaminan LP yang didukung tidak secara otomatis membuka setiap aset pinjaman; setiap aset utang adalah bagian dari konfigurasi pasar."
+        },
+        {
+          "id": "bisakah-saya-meminjam-untuk-berbagai-posisi",
+          "q": "Bisakah saya meminjam dengan jaminan beberapa posisi LP sekaligus?",
+          "a": "Ya, ketika posisi didukung di dalam pasar yang relevan. Avana dapat mengagregasikan daya pinjam di berbagai posisi LP yang disetujui dalam Borrow Spoke yang sama, memberikan pengguna satu permukaan kredit gabungan untuk pasar tersebut.\n\nAgregasi tidak menggabungkan risiko secara sembarangan. Setiap posisi masih berkontribusi kapasitas berdasarkan pool, rentang, likuiditas, biaya, dan penanganan risiko masing-masing, dan total akun harus tetap di atas ambang batas kesehatan yang diperlukan."
+        }
+      ]
+    },
+    {
+      "id": "menyediakan-mendapatkan",
+      "name": "Menyuplai & Menghasilkan",
+      "summary": "",
+      "questions": [
+        {
+          "id": "bagaimana-pemberi-pinjaman-menggunakan-avana",
+          "q": "Bagaimana pemberi pinjaman menggunakan Avana?",
+          "a": "Pemberi pinjaman menyediakan aset seperti ETH, BTC, GHO, USDC, USDT, atau aset lain yang didukung ke sisi protokol yang menghadap pemberi pinjaman. Modal tersebut dialirkan melalui Hub untuk mendukung peminjaman di pasar LP-jaminan.\n\nPemberi pinjaman tidak mengelola rentang LP, kerugian tidak permanen, atau operasi jaminan spesifik AMM. Borrow Spokes menangani penjaminan dan logika likuidasi LP, sementara modal pemberi pinjaman menggerakkan lapisan kredit."
+        },
+        {
+          "id": "dari-mana-asal-hasil-pemasok",
+          "q": "Dari mana hasil pemasok berasal?",
+          "a": "Hasil pemasok berasal dari peminjam yang membayar bunga untuk mengakses likuiditas yang didukung oleh LP jaminan. Model Avana menggabungkan suku bunga dasar Hub bersama dengan premi risiko tingkat spoke yang terkait dengan pasar LP yang didanai.\n\nIni berarti hasil dapat mencerminkan baik pemanfaatan normal maupun permintaan tambahan yang dibuat oleh peminjaman yang didukung LP. Suku bunga tetap bergerak sesuai kondisi pasar, likuiditas yang tersedia, pemanfaatan, dan profil risiko pasar peminjam yang mendasarinya."
+        },
+        {
+          "id": "apakah-pemberi-pinjam-mengelola-jaminan-lp",
+          "q": "Apakah pemberi pinjaman mengelola LP jaminan sendiri?",
+          "a": "Tidak. Pemberi pinjaman menyediakan modal bersih ke pasar pinjaman yang didukung. Mereka tidak memilih jangkauan LP, mengklaim biaya LP, atau memutuskan bagaimana posisi AMM tertentu dilikuidasi.\n\nPemisahan itu adalah inti dari Lend Spoke. Modal pemberi pinjaman mendukung permintaan peminjam yang didukung LP khusus sementara Borrow Spokes menjaga penilaian jaminan, pemeriksaan kesehatan, dan penanganan likuidasi tetap terpisah dari alur kerja pemberi pinjaman."
+        },
+        {
+          "id": "apa-yang-melindungi-modal-pemberi-pinjaman",
+          "q": "Apa yang melindungi modal pemberi pinjaman?",
+          "a": "Avana melindungi modal pemberi pinjaman melalui peminjaman yang dijamin lebih dari nilai pinjaman, penilaian LP yang konservatif, pemeriksaan dual-oracle, batas pasar, penegakan faktor kesehatan, dan jalur likuidasi khusus LP. Setiap Borrow Spoke menetapkan harga jaminan sesuai dengan risiko pool-nya sendiri sebelum utang ditarik dari likuiditas Hub.\n\nProtokol ini masih membawa risiko DeFi: risiko kontrak pintar, risiko oracle, risiko eksekusi likuidasi, dan stres pasar. Avana menahan risiko tersebut dengan mengukur jaminan LP pada tingkat pasar alih-alih memperlakukan setiap posisi LP seperti saldo token sederhana."
+        }
+      ]
+    },
+    {
+      "id": "likuidasi",
+      "name": "Kesehatan & Likuidasi",
+      "summary": "",
+      "questions": [
+        {
+          "id": "apa-itu-faktor-kesehatan",
+          "q": "Apa itu faktor kesehatan?",
+          "a": "Faktor kesehatan mengukur hubungan antara nilai jaminan yang disesuaikan dengan risiko dan utang yang masih terhutang di dalam Borrow Spoke. Model sederhana adalah nilai jaminan yang disesuaikan dibagi dengan utang yang masih terhutang.\n\nNilai jaminan yang disesuaikan sudah termasuk penilaian LP dari Avana, faktor jaminan, perlakuan risiko tingkat pool, dan asumsi nilai yang dapat dipulihkan. Jika kesehatan turun di bawah batas likuidasi, posisi menjadi memenuhi syarat untuk likuidasi."
+        },
+        {
+          "id": "faktor-yang-mempengaruhi-kesehatan",
+          "q": "Apa yang memengaruhi faktor kesehatan saya?",
+          "a": "Faktor kesehatan berubah ketika nilai jaminan berubah, utang berubah, biaya diklaim, jaminan ditarik, leverage ditambahkan, atau parameter pasar diperbarui. LP posisi juga dapat berubah karena harga token bergerak, inventaris pool bergeser, biaya menumpuk, atau posisi terkonsentrasi keluar masuk jangkauan.\n\nMeminjam lebih banyak menurunkan kesehatan karena utang naik. Melunasi utang, menambahkan jaminan yang disetujui, atau mengurangi eksposur meningkatkan kesehatan karena akun memiliki dukungan jaminan yang lebih besar relatif terhadap utang."
+        },
+        {
+          "id": "bagaimana-likuidasi-berjalan",
+          "q": "Bagaimana cara likuidasi bekerja di Avana?",
+          "a": "Likuidasi dimulai ketika faktor kesehatan suatu akun jatuh di bawah ambang likuidasi. Aave menangani pencatatan utang, pemeriksaan kesehatan, dan titik masuk likuidasi terhadap agunan brankas ERC-20.  \n\nAvana menangani penyelesaian LP di balik token brankas itu. Adapter membakar agunan brankas, memetakan likuidasi kembali ke posisi nyata LP, dan lapisan penyelesaian mengikuti rute pasar: membalik posisi, menjual, melelang, atau mentransfer posisi pendukung. Utang ditutup terlebih dahulu, kemudian hadiah likuidator dan biaya penyelesaian, dengan surplus ditangani oleh aturan pasar."
+        },
+        {
+          "id": "apakah-likuidasi-tanpa-izin",
+          "q": "Siapa yang bisa melikuidasi posisi yang tidak sehat?",
+          "a": "Likuidasi bersifat tanpa izin begitu suatu posisi melewati ambang likuidasi. Setiap likuidator yang memenuhi syarat dapat melunasi jumlah utang yang diperbolehkan dan memicu jalur penyelesaian.\n\nLP jaminan lebih sulit untuk dibongkar daripada jaminan token sederhana, jadi Avana juga memperhitungkan cakupan likuidasi khusus. Para likuidator melacak status risiko yang sama, pemetaan token-vault, kedalaman rute, dan asumsi pembongkaran yang digunakan oleh protokol."
+        },
+        {
+          "id": "apa-yang-terjadi-pada-biaya-selama-likuidasi",
+          "q": "Apa yang terjadi dengan biaya LP selama likuidasi?",
+          "a": "Avana membedakan biaya yang terakumulasi dari likuiditas pokok. Selama likuidasi, jalur penyelesaian menerapkan biaya yang terakumulasi sebelum likuiditas pokok ketika rute pasar mendukung urutan tersebut.\n\nIni mengurangi seberapa banyak posisi inti LP yang harus terganggu. Jika nilai biaya tidak menutupi cukup utang, lapisan penyelesaian membatalkan atau mentransfer jaminan LP yang diperlukan sesuai dengan jalur likuidasi pasar tersebut."
+        }
+      ]
+    },
+    {
+      "id": "tata kelola",
+      "name": "Proses Tata Kelola",
+      "summary": "",
+      "questions": [
+        {
+          "id": "bagaimana-kolam-baru-ditambahkan",
+          "q": "Bagaimana kolam LP baru ditambahkan?",
+          "a": "LP kolam baru ditambahkan melalui tinjauan pasar dan persetujuan. Sebuah kolam membutuhkan penetapan harga aset dasar yang andal, likuiditas yang cukup, asumsi pelepasan yang jelas, dan parameter risiko yang sesuai dengan jenis jaminan.\n\nAvana dimulai dengan pasar LP yang dikurasi sehingga penilaian dan likuidasi tetap bersih. Cakupan kolam yang lebih luas dapat berkembang seiring waktu seiring dukungan oracle, kedalaman likuiditas, dan data risiko meningkat."
+        },
+        {
+          "id": "apakah-parameter-risiko-bisa-berubah",
+          "q": "Dapatkah parameter risiko berubah setelah peluncuran?",
+          "a": "Ya. Parameter risiko dapat berubah seiring berubahnya kondisi pasar. Suatu pool dapat menjadi kurang likuid, lebih volatil, kurang berkorelasi, atau lebih sulit untuk dibubarkan dibandingkan saat pertama kali terdaftar.\n\nPembaruan parameter dapat memengaruhi faktor jaminan, batas maksimal, pool yang didukung, aset yang dapat dipinjam, jeda, ambang likuidasi, dan bonus likuidasi. Pengguna dengan utang terbuka mengikuti pembaruan ini karena perubahan parameter memengaruhi daya pinjam dan faktor kesehatan."
+        },
+        {
+          "id": "dimana-saya-bisa-mengikuti-tata-kelola",
+          "q": "Di mana saya bisa mengikuti diskusi tentang pemerintahan?",
+          "a": "Sebagian besar pembaruan tata kelola Avana dan diskusi pasar terjadi melalui Avana Labs di X di https://twitter.com/avana_labs. Saluran tersebut mencakup kolam baru, parameter pasar, integrasi, ulasan keamanan, dan fase produk.\n\nUsulan yang lebih panjang, catatan risiko, dan utas tata kelola eksternal ditautkan dari Avana Labs ketika relevan. Untuk posisi besar, pengguna meninjau pembaruan Avana Labs terbaru dan parameter pasar secara langsung sebelum mengandalkan sebuah kolam."
+        },
+        {
+          "id": "apakah-biaya-antarmuka-bisa-berubah",
+          "q": "Dapatkah biaya antarmuka berubah seiring waktu?",
+          "a": "Ya. Avana biaya antarmuka dan layanan adalah pengaturan operasional untuk frontend resmi. Mereka terpisah dari mekanisme inti protokol yang mengatur jaminan, utang, pemeriksaan oracle, dan likuidasi.\n\nKetika biaya antarmuka diterapkan, alur transaksi menampilkannya sebelum tanda tangan sehingga pengguna dapat membedakan biaya frontend dari gas, eksekusi swap, bunga protokol, dan ekonomi likuidasi."
+        }
+      ]
+    },
+    {
+      "id": "koin stabil-gho",
+      "name": "GHO Mata uang kripto stabil",
+      "summary": "",
+      "questions": [
+        {
+          "id": "bisakah-saya-meminjam-gho",
+          "q": "Bisakah saya meminjam GHO melalui Avana?",
+          "a": "GHO adalah salah satu aset sisi pinjaman yang didukung oleh Avana untuk pasar yang mencakup likuiditas GHO. Ketika sebuah pasar menawarkan GHO, pengguna dapat meminjamnya dengan jaminan LP yang disetujui selama akun tetap di atas ambang kesehatan yang diperlukan.\n\nMeminjam GHO bekerja seperti aset utang lainnya di Avana: hal ini meningkatkan utang yang belum dibayar, mempengaruhi faktor kesehatan, menimbulkan bunga, dan dibayar kembali dalam bentuk GHO plus biaya yang berlaku."
+        },
+        {
+          "id": "can-gho-be-lp-jaminan",
+          "q": "Bisakah GHO menjadi bagian dari jaminan LP?",
+          "a": "Ya. GHO bisa menjadi bagian dari jaminan LP ketika pool GHO tertentu disetujui untuk pasar Avana. Pool ini dievaluasi seperti pasar LP lainnya: harga aset, kedalaman likuiditas, korelasi, komposisi token, batasan, dan rute likuidasi semuanya penting.\n\nIni berarti GHO tidak dianggap sebagai persetujuan umum untuk setiap pasangan. Avana mendukung konfigurasi pool, bukan hanya simbol aset."
+        },
+        {
+          "id": "bagaimana-saya-membayar-kembali-gho",
+          "q": "Bagaimana saya membayar hutang GHO?",
+          "a": "GHO utang dilunasi dalam GHO ditambah bunga yang terakumulasi dan biaya yang berlaku. Setelah pembayaran dikonfirmasi, Avana mengurangi utang yang tersisa di akun dan faktor kesehatan meningkat.\n\nSetelah pelunasan penuh, pembatasan jaminan yang terkait dengan utang tersebut dibebaskan sesuai dengan aturan pasar, memungkinkan posisi LP untuk ditarik atau dimodifikasi ketika tidak ada utang lain yang tersisa."
+        }
+      ]
+    },
+    {
+      "id": "pasar-ganda",
+      "name": "Perkalian Pasar",
+      "summary": "",
+      "questions": [
+        {
+          "id": "apa-itu-avana-multiply",
+          "q": "Apa itu Avana Kali?",
+          "a": "Avana Multiply adalah alur kerja leverage yang dikelola yang dibangun di atas kredit yang didukung LP. Seorang pengguna menyetor jaminan LP yang didukung, Avana menilainya, dan antarmuka dapat menggunakan daya pinjaman itu untuk membuka loop yang disetujui atau eksposur leverage dari satu alur.\n\nAlih-alih meminjam secara manual, menukar, menyetor kembali, dan melacak utang di berbagai alat, Multiply mengemas posisi menjadi satu alur kerja yang dipantau dengan jaminan, utang, tingkat leverage, faktor kesehatan, dan kontrol pembongkaran yang ditampilkan bersama-sama."
+        },
+        {
+          "id": "bagaimana-perkalian-berbeda-dari-meminjam",
+          "q": "Bagaimana Multiply berbeda dari meminjam?",
+          "a": "Meminjam memberi pengguna aset yang dapat mereka gunakan secara langsung, selama akun tetap sehat. Multiply menggunakan daya pinjam yang didukung LP di dalam strategi yang dikelola, di mana modal yang dipinjam dialokasikan ke eksposur yang disetujui dan dilacak sebagai satu posisi.\n\nKarena Multiply menambahkan leverage, ini dapat meningkatkan efisiensi modal dan potensi pengembalian, tetapi juga meningkatkan risiko penurunan, likuidasi, dan sensitivitas terhadap pergerakan harga. Tampilan kesehatan menjadi lebih penting, bukan kurang, ketika posisi dilakukan secara berulang."
+        },
+        {
+          "id": "apakah-saya-mempertahankan-lp-saat-menggunakan-multiply",
+          "q": "Apakah saya tetap mempertahankan LP saat menggunakan Multiply?",
+          "a": "Ya. Posisi LP tetap menjadi dasar agunan sementara posisi Multiply terbuka. Pengguna tidak perlu sepenuhnya keluar dari posisi AMM hanya untuk membuat paparan leverage.\n\nPosisi LP masih mendukung utang, sehingga tetap tunduk pada aturan agunan dan likuidasi jika akun menjadi tidak sehat. Pengguna memantau nilai agunan, utang, leverage, dan buffer likuidasi sepanjang masa loop."
+        },
+        {
+          "id": "batas-tingkat-efek-tinggi-maksimum",
+          "q": "Apa yang membatasi leverage maksimum?",
+          "a": "Leverage maksimum tergantung pada kualitas jaminan, likuiditas pool, volatilitas, kepercayaan oracle, aset pinjaman, kapitalisasi pasar, dan asumsi likuidasi. Pool yang stabil atau sangat terkorlasi biasanya dapat mendukung batas leverage yang berbeda dibandingkan dengan pool yang volatil atau tipis.\n\nAvana menggunakan kontrol risiko spesifik pasar sehingga leverage dibatasi oleh jaminan LP yang sebenarnya di belakang posisi, bukan oleh pengali tetap yang diterapkan pada setiap pool."
+        }
+      ]
+    },
+    {
+      "id": "fitur-otomatisasi",
+      "name": "Fitur Otomatisasi",
+      "summary": "",
+      "questions": [
+        {
+          "id": "bisakah-otomatisasi-membantu-mengelola-risiko",
+          "q": "Dapatkah otomatisasi membantu mengelola risiko posisi?",
+          "a": "Otomasi memantau kesehatan akun dan dapat memicu tindakan yang telah ditentukan sebelumnya seperti pembayaran kembali, pengurangan leverage, atau pengurangan eksposur sebelum likuidasi. Ini penting karena posisi yang didukung LP bergerak seiring dengan akumulasi utang dan perubahan pasar pada tingkat pool.\n\nOtomasi adalah alat manajemen risiko, bukan jaminan. Eksekusi masih bisa terpengaruh oleh pergerakan pasar, kondisi likuiditas, keterlambatan transaksi, pembaruan oracle, dan ketersediaan rute."
+        },
+        {
+          "id": "dapat-mendukung-jaminan-perpetual-ekspose",
+          "q": "Bisakah LP mendukung eksposur gaya perps secara jaminan?",
+          "a": "LP sebagai jaminan mendukung leverage yang disetujui atau eksposur gaya perps melalui pasar dan integrasi yang menyalurkan kredit yang didukung LP ke dalam strategi yang terkontrol. Posisi LP menciptakan daya pinjam, dan kredit itu dapat digunakan melalui jalur eksposur yang didukung alih-alih hanya digunakan sebagai pinjaman dompet sederhana.\n\nKetersediaan ditentukan oleh konfigurasi pasar aktif: jenis jaminan, parameter pasar, kepercayaan oracle, likuiditas, aset utang, dan jalur integrasi. Antarmuka menampilkan jalur yang didukung untuk setiap pasar."
+        },
+        {
+          "id": "pengguna-apa-memantau",
+          "q": "Apa yang dipantau pengguna setelah membuka posisi?",
+          "a": "Pengguna memantau faktor kesehatan, penggunaan pinjaman, nilai jaminan, pertumbuhan utang, status rentang LP, akumulasi biaya, dan buffer likuidasi. Untuk posisi Multiply, mereka juga memantau tingkat leverage dan kontrol unwind.\n\nAvana menampilkan nilai-nilai ini di antarmuka sehingga pengguna dapat melihat kapan suatu posisi sehat, kapan membutuhkan perhatian, dan kapan risiko bergerak lebih dekat ke likuidasi."
+        }
+      ]
+    }
+  ]
+}

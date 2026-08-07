@@ -1,0 +1,298 @@
+{
+  "common": {
+    "a11y": {
+      "skipToContent": "Saltar al contenido principal",
+      "primaryNav": "Navegación principal",
+      "mobileMenu": "Menú móvil",
+      "mobileNav": "Navegación móvil",
+      "openMenu": "Abrir menú",
+      "closeMenu": "Cerrar menú",
+      "language": "Idioma: {language}",
+      "logo": "logo de {site}",
+      "helpfulLinks": "Enlaces útiles"
+    },
+    "nav": {
+      "products": "Productos",
+      "resources": "Recursos",
+      "developers": "Desarrolladores",
+      "helpCenter": "Centro de ayuda",
+      "aaveArfc": "⟦ 13  15 15 ",
+      "borrow": "Pedir prestado",
+      "lend": "Prestar",
+      "multiply": "Multiplicar",
+      "about": "Acerca de",
+      "newsroom": "Sala de prensa",
+      "brand": "Marca",
+      "faq": "Preguntas frecuentes",
+      "privacy": "Privacidad",
+      "terms": "Términos",
+      "overview": "Resumen",
+      "architecture": "Arquitectura",
+      "liquidation": "Liquidación"
+    },
+    "cta": {
+      "sandboxShort": "Sandbox",
+      "sandboxLong": "Intenta Sandbox"
+    },
+    "mega": {
+      "exploreProducts": "Explorar Productos",
+      "exploreResources": "Explorar recursos",
+      "exploreDevelopers": "Explorar Desarrolladores",
+      "whatYouCanDo": "Lo que puedes hacer",
+      "whereToLook": "Dónde buscar",
+      "highlights": "Destacados",
+      "borrowAgainstLp": "Pedir prestado contra LP",
+      "borrowAgainstLpDesc": "Desbloquea liquidez de la exposición LP sin salir de la estrategia.",
+      "openMultiply": "Abrir LP multiplicar",
+      "openMultiplyDesc": "Utilice AMM posiciones como garantía para la exposición gestionada en la piscina.",
+      "lendThroughHub": "Prestar a través del Hub",
+      "lendThroughHubDesc": "Asignar capital con un contexto de ejecución más claro.",
+      "aboutDesc": "Tesis de la empresa y del producto detrás de Avana.",
+      "followNotes": "Sigue las notas del producto",
+      "followNotesDesc": "Lanzamientos, actualizaciones técnicas y decisiones sobre la hoja de ruta.",
+      "browseBrand": "Explorar materiales de la marca",
+      "browseBrandDesc": "Marcas, colores y guía visual del socio aprobados.",
+      "startOverview": "Comience con una visión general",
+      "startOverviewDesc": "Modelo de protocolo central antes del detalle de implementación.",
+      "reviewModel": "Modelo de protocolo de revisión",
+      "reviewModelDesc": "Cómo encajan el hub, los radios, la fijación de precios y los controles.",
+      "understandLiquidation": "Entender la liquidación",
+      "understandLiquidationDesc": "Cómo se monitorean y liquidan las posiciones respaldadas por LP."
+    },
+    "footer": {
+      "blurb": "Avana es un protocolo de colateral LP en Aave v4 que ayuda a los proveedores de liquidez a pedir prestado contra posiciones activas mientras permanecen en el pool.",
+      "explore": "Explorar",
+      "resources": "Recursos",
+      "docs": "Documentos",
+      "social": "de la sociedad",
+      "twitter": "En Twitter",
+      "github": "Base de código abierto.",
+      "telegram": "Telegrama",
+      "discourse": "Discurso",
+      "socialAria": "Avana en {network}",
+      "disclosureRisk": "Pedir prestado contra LP tokens implica riesgo, incluyendo la liquidación si las condiciones del mercado se mueven en contra de su posición. Avana no custodia sus fondos, no rehypoteca posiciones LP, ni altera cómo opera su liquidez en los AMM subyacentes. Los términos del préstamo, las tasas de interés y los valores del colateral se aplican en la cadena utilizando sistemas de oráculos transparentes y parámetros de riesgo automáticos. Usted mantiene el control total de su posición en todo momento y puede repagar o ajustar el colateral cuando lo desee. Solo pida prestado cantidades que se sienta cómodo manteniendo durante la volatilidad del mercado.",
+      "disclosureInfo": "Este material es solo para fines informativos y no constituye (i) una oferta, o la solicitud de una oferta, para invertir en, o comprar o vender, cualquier interés o acción, o para participar en cualquier estrategia de inversión o negociación, (ii) está destinado a proporcionar asesoramiento contable, legal o fiscal, o recomendaciones de inversión, o (iii) una declaración oficial de Avana. Consulte con sus asesores antes de tomar cualquier decisión de inversión. No se hace ninguna representación ni garantía, expresa o implícita, con respecto a la exactitud de la información o al desempeño futuro de cualquier activo digital, instrumento financiero u otra medida del mercado o económica. Avana puede tener intereses financieros en, o relaciones con, algunas de las entidades y/o publicaciones discutidas o referenciadas en los materiales. Avana no respalda ni aprueba enlaces o sitios web de terceros que puedan proporcionarse en los materiales."
+    },
+    "notFound": {
+      "title": "Esta página no está disponible.",
+      "body": "La dirección puede estar incorrecta o la página puede haberse movido.",
+      "home": "Go to homepage",
+      "faq": "Preguntas frecuentes"
+    },
+    "sandboxNotice": "Sandbox datos mostrados solo para vista previa. APYs, precios y rendimientos son ilustrativos y pueden diferir de las condiciones reales del mercado.",
+    "blogChrome": {
+      "back": "Atrás",
+      "share": "Compartir",
+      "shareOnX": "Compartir en X",
+      "shareOnLinkedIn": "Compartir en LinkedIn",
+      "previousPost": "Publicación anterior",
+      "nextPost": "Siguiente publicación",
+      "onThisPage": "On this page"
+    },
+    "docs": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "sections": {
+        "introduction": "Introducción",
+        "gettingStarted": "Comenzando",
+        "architecture": "Arquitectura del Protocolo",
+        "liquidation": "Marco de Liquidación",
+        "integrations": "Integraciones compatibles",
+        "safety": "Mecanismos de seguridad",
+        "legal": "Legal y Cumplimiento"
+      },
+      "items": {
+        "overview": "Resumen",
+        "keyConcepts": "Conceptos clave",
+        "testnetRoadmap": "Red de prueba y hoja de ruta",
+        "glossary": "Glosario",
+        "depositLp": "Depósito LP",
+        "borrowAssets": "Pedir prestados activos",
+        "manageLoans": "Gestionar Préstamos",
+        "repayLoans": "Pagar préstamos",
+        "withdrawCollateral": "Retirar Garantía",
+        "claimLpFees": "Reclamación LP Tarifas",
+        "borrowSpoke": "Hablar prestado",
+        "lendSpoke": "Radio de la Palanca",
+        "collateralFactors": "Factores de Garantía",
+        "healthFactor": "Factor de salud",
+        "platformFees": "Tarifas de la plataforma",
+        "incentives": "Incentivos",
+        "liquidationDesign": "Diseño de Liquidación",
+        "liquidators": "Liquidador",
+        "liquidationFlow": "Flujo de liquidación",
+        "liquidationExamples": "Ejemplos de liquidación",
+        "integrationsOverview": "Resumen de integraciones",
+        "appkit": "AppKit",
+        "allowedPools": "Piscinas permitidas LP",
+        "routerAdapters": "Router y adaptadores",
+        "priceOracles": "Oráculos de precios",
+        "riskFramework": "Marco de Riesgo",
+        "contractsSecurity": "Contratos y Seguridad",
+        "bugBounty": "Recompensa por errores",
+        "insuranceFunds": "Fondos de seguro",
+        "securityDisclosures": "Divulgaciones de seguridad",
+        "legalDisclaimer": "Aviso legal"
+      }
+    },
+    "faqUi": {
+      "heading": "¿Cómo podemos ayudar?",
+      "search": "Buscar",
+      "searchPlaceholder": "Buscar",
+      "searchResults": "Resultados de búsqueda",
+      "clearSearch": "Borrar búsqueda",
+      "noResults": "No se encontraron resultados para \"{query}\"",
+      "category": "Categoría: {name}",
+      "categoriesAria": "Categorías de preguntas frecuentes",
+      "articles": "{count} artículos"
+    },
+    "tags": {
+      "all": "Todos",
+      "product": "Producto",
+      "strategy": "Estrategia",
+      "guides": "Guías",
+      "protocol": "Protocolo",
+      "institutions": "Instituciones"
+    },
+    "newsroom": {
+      "latestFrom": "Lo último de Avana",
+      "readNewsroom": "Leer sala de redacción"
+    }
+  },
+  "meta": {
+    "siteTitle": "Avana - Pedir prestado contra LP posiciones en Aave v4",
+    "siteDescription": "Desbloquea liquidez de tus LP tokens. Pide prestado hasta el 80% contra Uniswap, Curve y Balancer posiciones mientras continúas ganando comisiones de trading en Aave v4.",
+    "ogDescription": "Desbloquea liquidez de tus LP tokens mientras continúas ganando comisiones de trading.",
+    "ogSubtitle": "Pedir prestado contra LP posiciones en Aave v4",
+    "twitterTitle": "Avana - Pedir prestado contra LP posiciones",
+    "twitterDescription": "Desbloquea liquidez de tus LP tokens en Aave v4",
+    "titleTemplate": "{title} | Avana",
+    "team": "Avana Equipo",
+    "ogAlt": "Avana - DeFi Protocolo de Liquidez",
+    "home": {
+      "title": "Pedir prestado contra LP posiciones en Aave v4",
+      "description": "Desbloquea liquidez de tus LP tokens. Pide prestado hasta el 80% contra Uniswap, Curve y Balancer posiciones mientras continúas ganando comisiones de trading en Aave v4."
+    },
+    "about": {
+      "title": "Acerca de",
+      "description": "Conoce a Avana, un protocolo dedicado de LP como garantía construido sobre Aave v4 con Spokes especializados, un Hub compartido y un Lend Spoke diseñado para mercados de liquidez AMM."
+    },
+    "borrow": {
+      "title": "Pedir prestado",
+      "description": "Pide prestado contra posiciones en vivo LP sin salir del fondo. Sigue ganando comisiones mientras desbloqueas liquidez en Aave v4."
+    },
+    "lend": {
+      "title": "Prestar",
+      "description": "Proporciona capital al Lend Spoke de Avana y gana rendimiento de los prestatarios respaldados por LP en Aave v4."
+    },
+    "multiply": {
+      "title": "Multiplicar",
+      "description": "Amplifica la exposición LP con estrategias de multiplicación gestionadas respaldadas por posiciones AMM soportadas."
+    },
+    "brand": {
+      "title": "Marca",
+      "description": "Activos de marca oficiales Avana, colores y guía de uso para socios y prensa."
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "description": "Respuestas sobre Avana LP colateral, préstamo, préstamos, multiplicar, liquidación y Aave v4 arquitectura."
+    },
+    "newsroom": {
+      "title": "Sala de prensa",
+      "description": "Últimas publicaciones del equipo Avana sobre LP colaterales, AMM mercados, Aave v4 y desarrollo del protocolo."
+    },
+    "developers": {
+      "title": "Desarrolladores",
+      "description": "Documentación técnica para integrarse con Avana. Aprenda sobre el colateral de tokens LP, factores de salud, flujos de liquidación y arquitectura de contratos inteligentes en Aave v4."
+    },
+    "privacy": {
+      "title": "Política de privacidad",
+      "description": "Avana política de privacidad."
+    },
+    "terms": {
+      "title": "Términos de Uso",
+      "description": "Avana términos de uso."
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Desarrollado por Aave v4",
+      "title": "Pedir prestado contra LP posiciones",
+      "titleLine1": "Pedir prestado contra",
+      "titleLine2": "Posiciones de liquidez",
+      "subtitle": "Sigue ganando comisiones de trading mientras desbloqueas liquidez de las posiciones Uniswap, Curve y Balancer.",
+      "subtitleMobileLines": [
+        "Accede hasta al 80% del valor de tu Pool de Liquidez",
+        "at 5.5% APR without withdrawing liquidity or",
+        "giving up trading fees."
+      ],
+      "subtitleDesktopLines": [
+        "Accede hasta al 80% del valor de tu Fondo de Liquidez al 5.5% APR",
+        "without withdrawing liquidity or giving up trading fees."
+      ],
+      "primaryCta": "Intenta Sandbox",
+      "secondaryCta": "Leer documentos"
+    },
+    "features": {
+      "eyebrow": "Características clave",
+      "title": "Construido para colateral en vivo LP"
+    },
+    "faq": {
+      "title": "Preguntas frecuentes"
+    },
+    "newsroom": {
+      "title": "Lo último de Avana",
+      "cta": "Leer sala de redacción"
+    },
+    "buildTomorrow": {
+      "title": "Conoce Avana",
+      "body": "Avana convierte las LP posiciones en garantía utilizable en Aave v4 para que los proveedores de liquidez puedan pedir prestado sin salir del grupo."
+    }
+  },
+  "product": {
+    "borrow": {
+      "title": "Pedir prestado contra LP",
+      "subtitle": "Desbloquea liquidez de las posiciones activas AMM sin salir del grupo.",
+      "cta": "Intenta Sandbox"
+    },
+    "lend": {
+      "title": "Prestar a LP mercados",
+      "subtitle": "Gana rendimiento de los prestatarios utilizando garantía en vivo LP en Aave v4.",
+      "cta": "Intenta Sandbox"
+    },
+    "multiply": {
+      "title": "Multiplicar LP exposición",
+      "subtitle": "Utilice posiciones respaldadas como garantía para agregar exposición direccional gestionada.",
+      "cta": "Intenta Sandbox"
+    },
+    "about": {
+      "title": "Aproximadamente Avana",
+      "subtitle": "LP-como protocolo de garantía construido sobre Aave v4"
+    },
+    "brand": {
+      "title": "Kit de marca",
+      "subtitle": "Marcas, colores y orientación para las superficies que enfrentan al socio"
+    }
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Respuestas sobre Avana, LP colateral, y Aave v4",
+    "englishOnlyNote": "Las respuestas completas de las preguntas frecuentes se muestran en inglés hasta que se complete la revisión de esta localidad."
+  },
+  "docs": {
+    "hubTitle": "Documentación para desarrolladores",
+    "hubSubtitle": "Integrarse con Avana LP colateral en Aave v4",
+    "englishOnlyNote": "El texto del cuerpo de la documentación recurre al inglés cuando aún no hay disponible una traducción al idioma local."
+  },
+  "blog": {
+    "indexTitle": "Sala de prensa",
+    "indexSubtitle": "Notas de producto, investigaciones y actualizaciones de protocolo",
+    "englishOnlyNote": "Los cuerpos de los artículos vuelven al inglés cuando la traducción al idioma local aún no está disponible."
+  },
+  "legal": {
+    "privacyTitle": "Política de privacidad",
+    "termsTitle": "Términos de Uso",
+    "englishOnlyNote": "Las páginas legales permanecen en inglés hasta que estén disponibles las versiones en el idioma local aprobadas por el asesor legal.",
+    "englishOnlyBadge": "Solo inglés"
+  }
+}
