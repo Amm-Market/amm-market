@@ -4,6 +4,7 @@ import { DeFiTerm } from "@/components/defi-term"
 import { FaqToggleIcons } from "@/components/faq-toggle-icons"
 import { SectionTitle } from "@/components/shared"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { lookupPhrase, usePhraseMap } from "@/components/phrase-map-context"
 import type { ReactNode } from "react"
 
 interface HomepageFaqItem {
@@ -73,12 +74,15 @@ const homepageFaqItems: HomepageFaqItem[] = [
  * HomepageFaqSection - Homepage FAQ using the product-page FAQ layout directly.
  */
 export default function HomepageFaqSection() {
+  const map = usePhraseMap()
+  const t = (text: string) => lookupPhrase(map, text)
+
   return (
     <div className="grid grid-cols-1 gap-8 pb-4 md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:gap-6 md:pb-0 lg:grid-cols-[minmax(0,25rem)_minmax(0,1fr)] lg:gap-8">
       <div className="space-y-3 md:max-w-[25rem] md:pt-2">
         <SectionTitle as="h3" className="max-w-none">
-          <span className="block whitespace-nowrap">Frequently asked</span>
-          <span className="block whitespace-nowrap">questions</span>
+          <span className="block whitespace-nowrap">{t("Frequently asked")}</span>
+          <span className="block whitespace-nowrap">{t("questions")}</span>
         </SectionTitle>
       </div>
       <div className="min-w-0 md:pl-16 lg:pl-24 xl:pl-28">
@@ -86,7 +90,7 @@ export default function HomepageFaqSection() {
           {homepageFaqItems.map((item) => (
             <AccordionItem key={item.value} value={item.value} className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
               <AccordionTrigger className="type-accordion-question group gap-4 p-0 text-left text-gray-900 hover:underline [&>svg.size-4]:hidden">
-                {item.question}
+                {t(item.question)}
                 <FaqToggleIcons />
               </AccordionTrigger>
               <AccordionContent className="type-accordion-answer pt-2 text-gray-600">

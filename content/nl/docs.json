@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "hoe-het-werkt",
+        "id": "how-it-works",
         "title": "Hoe Het Werkt"
       },
       {
-        "id": "leenbare waarde",
+        "id": "borrowable-value",
         "title": "Leenbare Waarde"
       },
       {
-        "id": "notities",
+        "id": "notes",
         "title": "Notities"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "berekening",
+        "id": "calculation",
         "title": "Berekening"
       },
       {
-        "id": "gezondheidsbanden",
+        "id": "health-bands",
         "title": "Monitorbanden"
       },
       {
-        "id": "respons-pad",
+        "id": "response-path",
         "title": "Reactiepad"
       },
       {
-        "id": "gebruikersacties",
+        "id": "user-actions",
         "title": "Gebruikersacties"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "programma-types",
+        "id": "program-types",
         "title": "Programmatypes"
       },
       {
-        "id": "distributieprincipes",
+        "id": "distribution-principles",
         "title": "Verdelingsprincipes"
       },
       {
-        "id": "claimen-en-verzoening",
+        "id": "claiming-and-reconciliation",
         "title": "Verzekeren & Verzoening"
       },
       {
-        "id": "ryobpqx65yksusyphkob",
+        "id": "status",
         "title": "Huidige status"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "hoofdingang",
+        "id": "capital-entry-point",
         "title": "Kapitaaltoegangspunt"
       },
       {
-        "id": "risico-gecorrigeerd rendement",
+        "id": "risk-adjusted-yield",
         "title": "Risico-gecorrigeerd rendement"
       },
       {
-        "id": "dynamische-risicobeheersing",
+        "id": "dynamic-risk-controls",
         "title": "Dynamische Risicobeheersing"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "gebruikerservaring",
+        "id": "user-experience",
         "title": "Gebruikerservaring"
       },
       {
-        "id": "voorbeeld-stroom",
+        "id": "example-flow",
         "title": "Voorbeeldstroom"
       },
       {
-        "id": "drie-lagenarchitectuur",
+        "id": "three-tier-architecture",
         "title": "Drie-lagenarchitectuur"
       },
       {
-        "id": "gegevensstroom",
+        "id": "data-flow",
         "title": "Datastroom"
       },
       {
-        "id": "spaak-verantwoordelijkheden",
+        "id": "spoke-responsibilities",
         "title": "Spoke-verantwoordelijkheden"
       },
       {
-        "id": "hub-rol",
+        "id": "hub-role",
         "title": "Aave v4 Hub Rol"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "interface-versus-protocol",
+        "id": "interface-vs-protocol",
         "title": "Interface versus Protocol"
       },
       {
-        "id": "onthulling",
+        "id": "disclosure",
         "title": "Openbaarmaking"
       },
       {
-        "id": "schatkist-gebruik",
+        "id": "treasury-usage",
         "title": "Schatkistgebruik"
       },
       {
-        "id": "integratie-notities",
+        "id": "integration-notes",
         "title": "Integratienotities"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "leen-cheques",
+        "id": "borrow-checks",
         "title": "Kontrollen lenen"
       },
       {
-        "id": "gezondheidscontrole",
+        "id": "health-check",
         "title": "Gezondheidscontrole"
       },
       {
-        "id": "interne boekhouding",
+        "id": "internal-accounting",
         "title": "Interne Boekhouding"
       },
       {
-        "id": "leenbare activa",
+        "id": "borrowable-assets",
         "title": "Uitleenbare activa"
       },
       {
-        "id": "leenkracht",
+        "id": "borrowing-power",
         "title": "Leenkracht"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "hoe-het-werkt",
+        "id": "how-it-works",
         "title": "Hoe Het Werkt"
       },
       {
-        "id": "gezondheidscontroles",
+        "id": "health-checks",
         "title": "Gezondheidscontroles"
       },
       {
-        "id": "honorarium-administratie",
+        "id": "fee-accounting",
         "title": "Vergoedingenadministratie"
       },
       {
-        "id": "belangrijkste voordelen",
+        "id": "key-benefits",
         "title": "Belangrijkste voordelen"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "meer lenen",
+        "id": "borrowing-more",
         "title": "Meer lenen"
       },
       {
-        "id": "gezondheidsmonitoring",
+        "id": "monitoring-health",
         "title": "Gezondheidsmonitoring"
       },
       {
-        "id": "operationele controle",
+        "id": "operational-control",
         "title": "Operationele Controle"
       },
       {
-        "id": "positie-wijzigingen",
+        "id": "position-changes",
         "title": "Positiewijzigingen"
       },
       {
-        "id": "sleutelbeperkingen",
+        "id": "key-constraints",
         "title": "Belangrijke Beperkingen"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "stortingsstroom",
+        "id": "deposit-flow",
         "title": "Stortingsstroom"
       },
       {
-        "id": "technische details",
+        "id": "technical-details",
         "title": "Technische details"
       },
       {
-        "id": "ondersteunde-lp-tokens",
+        "id": "supported-lp-tokens",
         "title": "Ondersteunde LP positie types"
       },
       {
-        "id": "na-storting",
+        "id": "after-deposit",
         "title": "Na storting"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "terugbetalingsproces",
+        "id": "repay-process",
         "title": "Terugbetalingsproces"
       },
       {
-        "id": "technische details",
+        "id": "technical-details",
         "title": "Technische details"
       },
       {
-        "id": "liquidatiescenario",
+        "id": "liquidation-scenario",
         "title": "Wanneer Terugbetaling Dringend Is"
       },
       {
-        "id": "volledige terugbetaling",
+        "id": "full-repayment",
         "title": "Volledige terugbetaling"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "opnameproces",
+        "id": "withdrawal-process",
         "title": "Opnametraject"
       },
       {
-        "id": "positie-aanpassingen",
+        "id": "position-modifications",
         "title": "Positiewijzigingen"
       },
       {
-        "id": "na-terugtrekking",
+        "id": "after-withdrawal",
         "title": "Na intrekking"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": " beoordelingscriteria",
+        "id": "review-criteria",
         "title": "Beoordelingscriteria"
       },
       {
-        "id": "zwembad-families",
+        "id": "pool-families",
         "title": "Poolfamilies"
       },
       {
-        "id": "risico-toepassing",
+        "id": "risk-application",
         "title": "Risico Toepassing"
       },
       {
-        "id": "integratie-notities",
+        "id": "integration-notes",
         "title": "Integratienotities"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "integratiemodel",
+        "id": "integration-model",
         "title": "Integratiemodel"
       },
       {
-        "id": "partner-controle",
+        "id": "partner-controls",
         "title": "Partnerbeheersing"
       },
       {
-        "id": "lancering-notities",
+        "id": "launch-notes",
         "title": "Lancering Notities"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "fndow1mx6dfws1a4p3ic",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "locatie-families",
+        "id": "venue-families",
         "title": "Locatiefamilies"
       },
       {
-        "id": "inschakelstatus",
+        "id": "enablement-status",
         "title": "Inschakelingsstatus"
       },
       {
-        "id": "beoordelingsvereisten",
+        "id": "review-requirements",
         "title": "Beoordelingsvereisten"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "orakel-interface",
+        "id": "oracle-interface",
         "title": "Oracle-interface"
       },
       {
-        "id": "meerlagige architectuur",
+        "id": "multi-layer-architecture",
         "title": "Meerlagige architectuur"
       },
       {
-        "id": "dex-afhandeling",
+        "id": "dex-handling",
         "title": "DEX-specifieke verwerking"
       },
       {
-        "id": "twap-berekening",
+        "id": "twap-computation",
         "title": "TWAP-berekening"
       },
       {
-        "id": "veiligheidsmaatregelen",
+        "id": "safety-measures",
         "title": "Veiligheid & Manipulatiepreventie"
       },
       {
-        "id": "configureerbare parameters",
+        "id": "configurable-parameters",
         "title": "Configureerbare parameters"
       }
     ],
@@ -968,10 +968,10 @@
       "Curve Stabiel/Stabiel ERC-20 LPs",
       "Externe stablecoin-feeds + pool-statuscontroles + TWAP-verificatie",
       "Externe prijzen verankeren de activa terwijl pool-saldi en fee-accumulatie de verdisconteerde collateralewaarde bepalen.",
-      "5ylw419mbm90bk3jf65i",
+      "Uniswap V2 ERC-20 LP's",
       "Chainlink + reserve reconstructie + TWAP-verificatie",
       "Standaard LP tokens worden gewaardeerd op basis van gereconstrueerde onderliggende saldi, waarbij TWAP wordt gebruikt als een manipulatiebestendige kruiscontrole.",
-      "82lfffxeu8othjwa17uy",
+      "⟦3 V V3 NFT ⟦31 s s",
       "Chainlink + positiedecompositie + tick/TWAP-controles",
       "De NFT wordt ontleed naar liquiditeit, actief bereik en huidige prijs, en vervolgens gekort voor de herstelbare liquidatiewaarde.",
       "Balancer Meerdere activa LPs",
@@ -994,20 +994,20 @@
       "uint256 reserveWaarde",
       "volleWaarde",
       "Gereconstrueerde waarde van de hoofdnatuurlijkheid voordat latere stressaanpassingen bij liquidatie worden toegepast.",
-      "vergoedingwaarde",
+      "feeValue",
       "Waarde van de vergoedingen die door de positie zijn opgebouwd en naast het kapitaal kunnen worden erkend.",
-      "reservewaarde",
+      "reserveValue",
       "Gereserveerd deel achtergehouden voor oracle-, unwind- en protocolrisicobuffers.",
       "De interface verbergt DEX-specifieke infrastructuur voor de spoke. Hierdoor kan dezelfde aanroeper ERC-20 LPs, NFT LPs en multi-asset pools afhandelen via één terugkeerstructuur, terwijl er achter de schermen nog steeds ruimte is voor conservatieve, collateral-familie-specifieke behandeling.",
       "LP waardering is een stapsgewijs proces in plaats van een enkele spotprijsmeting. Het orakelpad gaat door de volgende stappen:",
       "Verschillende locaties onthullen verschillende delen van de staat, en het orakel gebruikt die invoer op verschillende manieren. Het belangrijkste punt is dat venuespecifieke gegevens helpen om de positie te reconstrueren en de prijsstelling te verifiëren; ze worden niet blindelings geaccepteerd als een directe onderpandwaarde.",
-      "jbcsn8g5tg9d7w6dc7ov",
+      "DEX / LP-Type",
       "Oracle-bron",
       "Notities",
       "TWAP-berekening door DEX",
       "TWAP's zijn verificatie-invoeren. Ze staan naast externe activaprijzen en deterministische position reconstructie om te controleren of de waargenomen poolstatus consistent is met een geloofwaardig unwind-pad. Ze helpen verdachte of kortdurende verstoringen af te wijzen, maar ze vervangen het bredere oracle-model niet op zichzelf.",
-      "lxo390olfpkubkd12sqb",
-      "8rtwmso4i3smuxf424gh",
+      "Uniswap V2 & SushiSwap",
+      "Uniswap V3",
       "Positie-bewuste controles omvatten tickbereik, liquiditeitsverdeling en opgebouwde vergoedingen, zodat het protocol de ontlede tokenblootstelling van elke NFT LP kan verifiëren in plaats van de NFT als een zwarte doos te behandelen.",
       "Balancer",
       "Gewogen tokenwaarnemingen worden gecombineerd met poolgewichten om multi-asset inventarisverdelingen te valideren voordat de orakel een conservatieve onderpandwaarde toekent.",
@@ -1030,11 +1030,11 @@
       "Pool-specifieke oracle-instellingen worden per token geconfigureerd via",
       "stelTokenConfiguratieIn",
       ". In de onderstaande tabel staan de parameters die bepalen hoe een token en het bijbehorende pool gecontroleerd moeten worden:",
-      "y4wuhky9tgc39h4hw1a1",
+      "Parameter",
       "Beschrijving",
       "Teken",
       "Onderpand tokenadres",
-      "ghh4d4y7usjrwtetk3ia",
+      "AggregatorV3Interface",
       "Chainlink-feed voor onderliggende token",
       "maxVoerLeeftijd",
       "Maximale aanvaardbare leeftijd voor Chainlink-feed",
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "rol-in-systeem",
+        "id": "role-in-system",
         "title": "Rol in het systeem"
       },
       {
-        "id": "adaptermodel",
+        "id": "adapter-model",
         "title": "Adaptermodel"
       },
       {
-        "id": "ondersteunde-bewerkingen",
+        "id": "supported-operations",
         "title": "Ondersteunde bewerkingen"
       },
       {
-        "id": "uitrolstatus",
+        "id": "deployment-status",
         "title": "Implementatiestatus"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "kernconcepten",
+        "id": "core-concepts",
         "title": "Kernconcepten"
       },
       {
-        "id": "protocolcomponenten",
+        "id": "protocol-components",
         "title": "Protocolcomponenten"
       },
       {
-        "id": "financiële-voorwaarden",
+        "id": "financial-terms",
         "title": "Financiële Termen"
       },
       {
-        "id": "risico-beveiliging",
+        "id": "risk-security",
         "title": "Risico & Beveiliging"
       },
       {
-        "id": "metriek",
+        "id": "metrics",
         "title": "Statistieken"
       },
       {
-        "id": "l4ca80yuazs9q8rg58ah",
+        "id": "disclaimers",
         "title": "Vrijwaringen"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "kerninzicht",
+        "id": "core-insight",
         "title": "Kerninzicht"
       },
       {
-        "id": "gebruikersstroom",
+        "id": "user-flow",
         "title": "Leenmodel"
       },
       {
-        "id": "oracle-waardering",
+        "id": "oracle-valuation",
         "title": "Oracle & Waardering"
       },
       {
-        "id": "leenproces",
+        "id": "borrowing-process",
         "title": "Leencapaciteit"
       },
       {
-        "id": "gezondheidsmonitoring",
+        "id": "health-monitoring",
         "title": "Gezondheid & Liquidatie"
       },
       {
-        "id": "heffing",
+        "id": "fee-collection",
         "title": "Vergoeding Behandeling"
       }
     ],
@@ -1263,7 +1263,7 @@
       "Opgehoopte kosten afzonderlijk erkend van de hoofdkapitaalliquiditeit",
       "Herstelkapsels voor het terugdraaien van slip, tijdelijk verlies en gestreste liquidatie",
       "Capaciteit wordt positie voor positie opgebouwd binnen een Borrow Spoke. Avana legt geen enkele algemene factor op over het hele account of over elk pool in een spoke. Elke positie draagt alleen bij nadat zijn eigen onderpandsfactoren en poolspecifieke controles zijn toegepast.",
-      "x44co7jfpz62ulmehxlk",
+      "Informatie:",
       "Onderpandfactoren",
       "Een Borrow Spoke vergelijkt de aangepaste onderpandwaarde met de uitstaande schuld. Als prijzen, oracle-controles of positiewijzigingen de resterende buffer voldoende verminderen, kan de rekening in het liquidatiegebied terechtkomen.",
       "Gezondheid en liquidatie zijn beide afhankelijk van hetzelfde waarderingspad. Prijsstelling, onderpandfactoren en liquidatierouting moeten op elkaar afgestemd blijven omdat ze uiteindelijk dezelfde solvabiliteitsberekening voeden.",
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "testnet-bereik",
+        "id": "testnet-scope",
         "title": "Testnetbereik"
       },
       {
-        "id": "hoe-te-evalueren",
+        "id": "how-to-evaluate",
         "title": "Hoe te evalueren"
       },
       {
-        "id": "routekaart-kaderen",
+        "id": "roadmap-framing",
         "title": "Routekaart Kaderen"
       },
       {
-        "id": "campagnes-en-status",
+        "id": "campaigns-and-status",
         "title": "Campagnes & Status"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "algemene disclaimer",
+        "id": "general-disclaimer",
         "title": "Algemene disclaimer"
       },
       {
-        "id": "geen-financieel-advies",
+        "id": "no-financial-advice",
         "title": "Geen financieel advies"
       },
       {
-        "id": "risico's",
+        "id": "risks",
         "title": "Risico's"
       },
       {
-        "id": "geen garanties",
+        "id": "no-warranties",
         "title": "Geen garanties"
       },
       {
-        "id": "beperking-van-aansprakelijkheid",
+        "id": "limitation-of-liability",
         "title": "Beperking van aansprakelijkheid"
       },
       {
-        "id": "gerelateerde-beleidsmaatregelen",
+        "id": "related-policies",
         "title": "Gerelateerde beleidslijnen"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "toegangsbeperkingen",
+        "id": "access-restrictions",
         "title": "Toegangsbeperkingen"
       },
       {
-        "id": "beperkte rechtsgebieden",
+        "id": "restricted-jurisdictions",
         "title": "Beperkte rechtsgebieden"
       },
       {
-        "id": "naleving",
+        "id": "compliance",
         "title": "Naleving"
       },
       {
-        "id": "gerelateerde-beleidsmaatregelen",
+        "id": "related-policies",
         "title": "Gerelateerde beleidslijnen"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "verhandelbare-lp",
+        "id": "fungible-lp",
         "title": "Vervangbaar LP Voorbeeld"
       },
       {
-        "id": "geconcentreerde liquiditeit",
+        "id": "concentrated-liquidity",
         "title": "Voorbeeld van geconcentreerde liquiditeit"
       },
       {
-        "id": "nft-liquiditeit",
+        "id": "nft-liquidity",
         "title": "NFT-liquidatie"
       },
       {
-        "id": "multi-positie-account",
+        "id": "multi-position-account",
         "title": "Multi-positieaccount"
       },
       {
-        "id": "randgevallen",
+        "id": "edge-cases",
         "title": "Randgevallen"
       },
       {
-        "id": "samenvatting",
+        "id": "summary",
         "title": "Samenvatting"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "canonieke referentie",
+        "id": "canonical-reference",
         "title": "Gerelateerde beleidsdocumenten"
       },
       {
-        "id": "runtime-volgorde",
+        "id": "runtime-sequence",
         "title": "Runtime-sequentie"
       },
       {
-        "id": "toestandsoverschakelingen",
+        "id": "state-transitions",
         "title": "Toestandsoverschakelingen"
       },
       {
-        "id": "operator-notities",
+        "id": "operator-notes",
         "title": "Operatornotities"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "dekkingmodel",
+        "id": "coverage-model",
         "title": "Dekmodel"
       },
       {
-        "id": "uitvoeringsvereisten",
+        "id": "execution-requirements",
         "title": "Uitvoeringsvereisten"
       },
       {
-        "id": "operationele notities",
+        "id": "operational-notes",
         "title": "Operationele aantekeningen"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "drie lagen",
+        "id": "three-layers",
         "title": "Drie Lagen"
       },
       {
-        "id": "kernregels",
+        "id": "core-rules",
         "title": "Kernregels"
       },
       {
-        "id": "lp-complexiteit",
+        "id": "lp-complexity",
         "title": "LP Collaterale Complexiteit"
       },
       {
-        "id": "liquidatie-paden",
+        "id": "liquidation-pathways",
         "title": "Liquidatiepaden"
       },
       {
-        "id": "positie-toestand",
+        "id": "position-state",
         "title": "Positiestatus"
       },
       {
-        "id": "overschotverwerking",
+        "id": "surplus-handling",
         "title": "Overschotafhandeling"
       },
       {
-        "id": "j3gcaihilz7egiryu8po",
+        "id": "operator-model",
         "title": "Operatormodel"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "welkom",
+        "id": "welcome",
         "title": "Welkom"
       },
       {
-        "id": "wat-is-avana",
+        "id": "what-is-avana",
         "title": "Wat is Avana?"
       },
       {
-        "id": "hoe-het-werkt",
+        "id": "how-it-works",
         "title": "Hoe Het Werkt"
       },
       {
-        "id": "ontgrendelen-lp-zekerheid",
+        "id": "unlocking-lp-collateral",
         "title": "Waarom LP Zekerheden belangrijk zijn"
       },
       {
-        "id": "architectuur",
+        "id": "architecture",
         "title": "Architectuur"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "bereik-en-systeemarchitectuur",
+        "id": "scope-and-system-architecture",
         "title": "Reikwijdte & Systeemarchitectuur"
       },
       {
-        "id": "ernst-filosofie",
+        "id": "severity-philosophy",
         "title": "Ernst Filosofie"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "beveiligingsuitdagingen",
+        "id": "security-challenges",
         "title": "Beveiligingsuitdagingen"
       },
       {
-        "id": "meerdere-lagen-beveiliging",
+        "id": "multi-layer-security",
         "title": "Meerlagige beveiliging"
       },
       {
-        "id": "kern-contract-oppervlakken",
+        "id": "core-contract-surfaces",
         "title": "Kerncontractoppervlakken"
       },
       {
-        "id": "grenzen van vertrouwen",
+        "id": "trust-boundaries",
         "title": "Vertrouwensgrenzen"
       },
       {
-        "id": "auditgereedheid",
+        "id": "audit-readiness",
         "title": "Auditgereedheid"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "doel",
+        "id": "purpose",
         "title": "Doel"
       },
       {
-        "id": "financieringsaanpak",
+        "id": "funding-approach",
         "title": "Financieringsaanpak"
       },
       {
-        "id": "activatiepad",
+        "id": "activation-path",
         "title": "Activeringspad"
       },
       {
-        "id": "dekking-grens",
+        "id": "coverage-boundary",
         "title": "Dekkinggrens"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "overzicht",
+        "id": "overview",
         "title": "Overzicht"
       },
       {
-        "id": "kernprincipes",
+        "id": "core-principles",
         "title": "Kernprincipes"
       },
       {
-        "id": "rollen",
+        "id": "roles",
         "title": "Rollen"
       },
       {
-        "id": "stroom bijwerken",
+        "id": "update-flow",
         "title": "Stroom bijwerken"
       },
       {
-        "id": "parameterklassen",
+        "id": "parameter-classes",
         "title": "Parameterklassen"
       },
       {
-        "id": "openbare bekendmaking",
+        "id": "public-disclosure",
         "title": "Openbare bekendmaking"
       },
       {
-        "id": "noodmaatregelen",
+        "id": "emergency-actions",
         "title": "Noodacties"
       }
     ],

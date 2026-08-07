@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "كيف-يعمل",
+        "id": "how-it-works",
         "title": "كيف يعمل"
       },
       {
-        "id": "القيمة القابلة للاستدانة",
+        "id": "borrowable-value",
         "title": "القيمة القابلة للاستدانة"
       },
       {
-        "id": "ملاحظات",
+        "id": "notes",
         "title": "ملاحظات"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "حساب",
+        "id": "calculation",
         "title": "حساب"
       },
       {
-        "id": "أشرطة صحية",
+        "id": "health-bands",
         "title": "أشرطة المراقبة"
       },
       {
-        "id": "مسار الاستجابة",
+        "id": "response-path",
         "title": "مسار الاستجابة"
       },
       {
-        "id": "إجراءات المستخدم",
+        "id": "user-actions",
         "title": "إجراءات المستخدم"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "أنواع البرامج",
+        "id": "program-types",
         "title": "أنواع البرامج"
       },
       {
-        "id": "مبادئ التوزيع",
+        "id": "distribution-principles",
         "title": "مبادئ التوزيع"
       },
       {
-        "id": "المطالبة والمصالحة",
+        "id": "claiming-and-reconciliation",
         "title": "المطالبة والمصالحة"
       },
       {
-        "id": "الحالة",
+        "id": "status",
         "title": "الحالة الحالية"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "نقطة الدخول الرأسمالية",
+        "id": "capital-entry-point",
         "title": "نقطة الدخول الرأسمالية"
       },
       {
-        "id": "العائد المعدل حسب المخاطر",
+        "id": "risk-adjusted-yield",
         "title": "العائد المعدل حسب المخاطر"
       },
       {
-        "id": "ضوابط المخاطر الديناميكية",
+        "id": "dynamic-risk-controls",
         "title": "ضوابط المخاطر الديناميكية"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "تجربة المستخدم",
+        "id": "user-experience",
         "title": "تجربة المستخدم"
       },
       {
-        "id": "تدفق-مثال",
+        "id": "example-flow",
         "title": "تدفق المثال"
       },
       {
-        "id": "هندسة ذات ثلاث طبقات",
+        "id": "three-tier-architecture",
         "title": "هندسة ذات ثلاث طبقات"
       },
       {
-        "id": "تدفق البيانات",
+        "id": "data-flow",
         "title": "تدفق البيانات"
       },
       {
-        "id": "المسؤوليات_المتحدثة",
+        "id": "spoke-responsibilities",
         "title": "مسؤوليات الحافة"
       },
       {
-        "id": "دور المحور",
+        "id": "hub-role",
         "title": "Aave v4 دور المحور"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "واجهة-مقابل-بروتوكول",
+        "id": "interface-vs-protocol",
         "title": "الواجهة مقابل البروتوكول"
       },
       {
-        "id": "الإفصاح",
+        "id": "disclosure",
         "title": "إفصاح"
       },
       {
-        "id": "استخدام الخزانة",
+        "id": "treasury-usage",
         "title": "استخدام الخزانة"
       },
       {
-        "id": "ملاحظات_الدمج",
+        "id": "integration-notes",
         "title": "ملاحظات التكامل"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "الشيكات المستعارة",
+        "id": "borrow-checks",
         "title": "اقترض الشيكات"
       },
       {
-        "id": "فحص الصحة",
+        "id": "health-check",
         "title": "فحص الصحة"
       },
       {
-        "id": "المحاسبة الداخلية",
+        "id": "internal-accounting",
         "title": "المحاسبة الداخلية"
       },
       {
-        "id": "الأصول القابلة للاستعارة",
+        "id": "borrowable-assets",
         "title": "الأصول القابلة للاستعارة"
       },
       {
-        "id": "القدرة على الاقتراض",
+        "id": "borrowing-power",
         "title": "القدرة على الاقتراض"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "كيف-يعمل",
+        "id": "how-it-works",
         "title": "كيف يعمل"
       },
       {
-        "id": "الفحوصات الصحية",
+        "id": "health-checks",
         "title": "الفحوصات الصحية"
       },
       {
-        "id": "محاسبة الرسوم",
+        "id": "fee-accounting",
         "title": "محاسبة الرسوم"
       },
       {
-        "id": "الفوائد الرئيسية",
+        "id": "key-benefits",
         "title": "الفوائد الرئيسية"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "الاقتراض-المزيد",
+        "id": "borrowing-more",
         "title": "الاقتراض المزيد"
       },
       {
-        "id": "مراقبة الصحة",
+        "id": "monitoring-health",
         "title": "مراقبة الصحة"
       },
       {
-        "id": "التحكم التشغيلي",
+        "id": "operational-control",
         "title": "السيطرة التشغيلية"
       },
       {
-        "id": "تغييرات الموقع",
+        "id": "position-changes",
         "title": "تغييرات الموضع"
       },
       {
-        "id": "قيود المفتاح",
+        "id": "key-constraints",
         "title": "القيود الرئيسية"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "تدفق الإيداع",
+        "id": "deposit-flow",
         "title": "تدفق الإيداع"
       },
       {
-        "id": "التفاصيل الفنية",
+        "id": "technical-details",
         "title": "التفاصيل الفنية"
       },
       {
-        "id": "الرموز المدعومة للسيولة",
+        "id": "supported-lp-tokens",
         "title": "أنواع المواقف المدعومة LP"
       },
       {
-        "id": "بعد الإيداع",
+        "id": "after-deposit",
         "title": "بعد الإيداع"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "عملية السداد",
+        "id": "repay-process",
         "title": "عملية السداد"
       },
       {
-        "id": "التفاصيل الفنية",
+        "id": "technical-details",
         "title": "التفاصيل الفنية"
       },
       {
-        "id": "سيناريو التصفية",
+        "id": "liquidation-scenario",
         "title": "عندما يكون السداد عاجلاً"
       },
       {
-        "id": "السداد الكامل",
+        "id": "full-repayment",
         "title": "السداد الكامل"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "عملية السحب",
+        "id": "withdrawal-process",
         "title": "عملية السحب"
       },
       {
-        "id": "تعديلات الموقع",
+        "id": "position-modifications",
         "title": "تعديلات الموقع"
       },
       {
-        "id": "بعد السحب",
+        "id": "after-withdrawal",
         "title": "بعد السحب"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "معايير المراجعة",
+        "id": "review-criteria",
         "title": "معايير المراجعة"
       },
       {
-        "id": "عائلات المسبح",
+        "id": "pool-families",
         "title": "عائلات المسبح"
       },
       {
-        "id": "تطبيق المخاطر",
+        "id": "risk-application",
         "title": "تطبيق المخاطر"
       },
       {
-        "id": "ملاحظات_الدمج",
+        "id": "integration-notes",
         "title": "ملاحظات التكامل"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "نموذج التكامل",
+        "id": "integration-model",
         "title": "نموذج التكامل"
       },
       {
-        "id": "ضوابط الشريك",
+        "id": "partner-controls",
         "title": "تحكم الشريك"
       },
       {
-        "id": "ملاحظات الإطلاق",
+        "id": "launch-notes",
         "title": "ملاحظات الإطلاق"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "أبتكيت",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "أماكن-العائلات",
+        "id": "venue-families",
         "title": "عائلات المكان"
       },
       {
-        "id": "حالة التمكين",
+        "id": "enablement-status",
         "title": "حالة التمكين"
       },
       {
-        "id": "متطلبات المراجعة",
+        "id": "review-requirements",
         "title": "متطلبات المراجعة"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "واجهة أوراكل",
+        "id": "oracle-interface",
         "title": "واجهة أوراكل"
       },
       {
-        "id": "هندسة متعددة الطبقات",
+        "id": "multi-layer-architecture",
         "title": "العمارة متعددة الطبقات"
       },
       {
-        "id": "التعامل مع الصراف الآلي",
+        "id": "dex-handling",
         "title": "المعالجة الخاصة بـ DEX"
       },
       {
-        "id": "حساب TWAP",
+        "id": "twap-computation",
         "title": "حساب TWAP"
       },
       {
-        "id": "تدابير السلامة",
+        "id": "safety-measures",
         "title": "السلامة ومنع التلاعب"
       },
       {
-        "id": "المعلمات القابلة للتكوين",
+        "id": "configurable-parameters",
         "title": "المعلمات القابلة للتكوين"
       }
     ],
@@ -968,7 +968,7 @@
       "Curve مستقر/مستقر ERC-20 LPث",
       "مصادر العملات المستقرة الخارجية + فحوصات حالة المجمع + التحقق من متوسط السعر المرجح زمنياً (TWAP)",
       "تثبّت الأسعار الخارجية الأصول بينما تحدد أرصدة المجمع وتراكم الرسوم قيمة الضمان المخفضة.",
-      "z01hb2ubag12z61yussg",
+      "مزودو السيولة ERC-20 في يوني سواب V2",
       "تشينلينك + إعادة بناء الاحتياطي + التحقق من TWAP",
       "يتم تقييم الرموز القياسية LP من الأرصدة الأساسية المعاد بناؤها، مع استخدام TWAP كآلية تحقق متقاطعة مقاومة للتلاعب.",
       "Uniswap V3 إن إف تي LPs",
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "الدور في النظام",
+        "id": "role-in-system",
         "title": "الدور في النظام"
       },
       {
-        "id": "نموذج المحول",
+        "id": "adapter-model",
         "title": "نموذج المحول"
       },
       {
-        "id": "العمليات المدعومة",
+        "id": "supported-operations",
         "title": "العمليات المدعومة"
       },
       {
-        "id": "حالة النشر",
+        "id": "deployment-status",
         "title": "حالة النشر"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "المفاهيم الأساسية",
+        "id": "core-concepts",
         "title": "المفاهيم الأساسية"
       },
       {
-        "id": "مكونات البروتوكول",
+        "id": "protocol-components",
         "title": "مكونات البروتوكول"
       },
       {
-        "id": "المصطلحات المالية",
+        "id": "financial-terms",
         "title": "المصطلحات المالية"
       },
       {
-        "id": "مخاطر-أمن",
+        "id": "risk-security",
         "title": "المخاطر والأمن"
       },
       {
-        "id": "المقاييس",
+        "id": "metrics",
         "title": "المقاييس"
       },
       {
-        "id": "إخلاءات المسؤولية",
+        "id": "disclaimers",
         "title": "إخلاءات المسؤولية"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "البصيرة الأساسية",
+        "id": "core-insight",
         "title": "الرؤية الأساسية"
       },
       {
-        "id": "تدفق المستخدم",
+        "id": "user-flow",
         "title": "نموذج الاقتراض"
       },
       {
-        "id": "تقييم أوراكل",
+        "id": "oracle-valuation",
         "title": "أوراكل والتقييم"
       },
       {
-        "id": "عملية الاقتراض",
+        "id": "borrowing-process",
         "title": "القدرة على الاقتراض"
       },
       {
-        "id": "مراقبة الصحة",
+        "id": "health-monitoring",
         "title": "الصحة والتصفية"
       },
       {
-        "id": "تحصيل الرسوم",
+        "id": "fee-collection",
         "title": "علاج الرسوم"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "نطاق الشبكة الاختبارية",
+        "id": "testnet-scope",
         "title": "نطاق شبكة الاختبار"
       },
       {
-        "id": "كيفية التقييم",
+        "id": "how-to-evaluate",
         "title": "كيفية التقييم"
       },
       {
-        "id": "إطار خارطة الطريق",
+        "id": "roadmap-framing",
         "title": "إطار خارطة الطريق"
       },
       {
-        "id": "الحملات والحالة",
+        "id": "campaigns-and-status",
         "title": "الحملات والحالة"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "إخلاء المسؤولية العام",
+        "id": "general-disclaimer",
         "title": "تنبيه عام"
       },
       {
-        "id": "ليست نصيحة مالية",
+        "id": "no-financial-advice",
         "title": "ليست نصيحة مالية"
       },
       {
-        "id": "مخاطر",
+        "id": "risks",
         "title": "المخاطر"
       },
       {
-        "id": "بدون ضمانات",
+        "id": "no-warranties",
         "title": "لا ضمانات"
       },
       {
-        "id": "تحديد المسؤولية",
+        "id": "limitation-of-liability",
         "title": "حدود المسؤولية"
       },
       {
-        "id": "السياسات ذات الصلة",
+        "id": "related-policies",
         "title": "السياسات ذات الصلة"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "قيود الوصول",
+        "id": "access-restrictions",
         "title": "قيود الوصول"
       },
       {
-        "id": "الولايات القضائية المقيدة",
+        "id": "restricted-jurisdictions",
         "title": "الولايات القضائية المحظورة"
       },
       {
-        "id": "الامتثال",
+        "id": "compliance",
         "title": "الامتثال"
       },
       {
-        "id": "السياسات ذات الصلة",
+        "id": "related-policies",
         "title": "السياسات ذات الصلة"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "قابل للتبادل-سيولة",
+        "id": "fungible-lp",
         "title": "مثال على القابلية للاستبدال LP"
       },
       {
-        "id": "السيولة المركزة",
+        "id": "concentrated-liquidity",
         "title": "مثال على السيولة المركزة"
       },
       {
-        "id": "سيولة NFT",
+        "id": "nft-liquidity",
         "title": "تصفيه الرموز غير القابلة للاستبدال"
       },
       {
-        "id": "حساب متعدد الوضعيات",
+        "id": "multi-position-account",
         "title": "حساب متعدد المواقع"
       },
       {
-        "id": "حالات الحافة",
+        "id": "edge-cases",
         "title": "الحالات القصوية"
       },
       {
-        "id": "ملخص",
+        "id": "summary",
         "title": "ملخص"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "مرجع معياري",
+        "id": "canonical-reference",
         "title": "المستندات السياسية ذات الصلة"
       },
       {
-        "id": "تسلسل وقت التشغيل",
+        "id": "runtime-sequence",
         "title": "تسلسل وقت التشغيل"
       },
       {
-        "id": "تحولات الحالة",
+        "id": "state-transitions",
         "title": "تحولات الحالة"
       },
       {
-        "id": "ملاحظات المشغل",
+        "id": "operator-notes",
         "title": "ملاحظات المشغل"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "نموذج التغطية",
+        "id": "coverage-model",
         "title": "نموذج التغطية"
       },
       {
-        "id": "متطلبات التنفيذ",
+        "id": "execution-requirements",
         "title": "متطلبات التنفيذ"
       },
       {
-        "id": "ملاحظات تشغيلية",
+        "id": "operational-notes",
         "title": "ملاحظات تشغيلية"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "ثلاثة طبقات",
+        "id": "three-layers",
         "title": "ثلاث طبقات"
       },
       {
-        "id": "القواعد الأساسية",
+        "id": "core-rules",
         "title": "القواعد الأساسية"
       },
       {
-        "id": "تعقيد LP",
+        "id": "lp-complexity",
         "title": "LP التعقيد الضامن"
       },
       {
-        "id": "مسارات التصفية",
+        "id": "liquidation-pathways",
         "title": "مسارات التصفية"
       },
       {
-        "id": "حالة الموضع",
+        "id": "position-state",
         "title": "حالة الموضع"
       },
       {
-        "id": "معالجة الفائض",
+        "id": "surplus-handling",
         "title": "التعامل مع الفائض"
       },
       {
-        "id": "نموذج المشغل",
+        "id": "operator-model",
         "title": "نموذج المشغل"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "مرحبا",
+        "id": "welcome",
         "title": "مرحبا"
       },
       {
-        "id": "ما هو أفانا",
+        "id": "what-is-avana",
         "title": "ما هو Avana؟"
       },
       {
-        "id": "كيف-يعمل",
+        "id": "how-it-works",
         "title": "كيف يعمل"
       },
       {
-        "id": "فتح-الضمان-lp",
+        "id": "unlocking-lp-collateral",
         "title": "لماذا تعتبر الضمانات مهمة LP"
       },
       {
-        "id": "العمارة",
+        "id": "architecture",
         "title": "العمارة"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "نطاق وهيكل النظام",
+        "id": "scope-and-system-architecture",
         "title": "النطاق وهندسة النظام"
       },
       {
-        "id": "فلسفة الشدة",
+        "id": "severity-philosophy",
         "title": "فلسفة الشدة"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "تحديات الأمن",
+        "id": "security-challenges",
         "title": "تحديات الأمن"
       },
       {
-        "id": "الأمن متعدد الطبقات",
+        "id": "multi-layer-security",
         "title": "الأمن متعدد الطبقات"
       },
       {
-        "id": "أسطح العقد الأساسية",
+        "id": "core-contract-surfaces",
         "title": "أسطح العقد الأساسية"
       },
       {
-        "id": "حدود الثقة",
+        "id": "trust-boundaries",
         "title": "حدود الثقة"
       },
       {
-        "id": "الاستعداد للتدقيق",
+        "id": "audit-readiness",
         "title": "الاستعداد للتدقيق"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "الغرض",
+        "id": "purpose",
         "title": "الغرض"
       },
       {
-        "id": "نهج التمويل",
+        "id": "funding-approach",
         "title": "نهج التمويل"
       },
       {
-        "id": "مسار التفعيل",
+        "id": "activation-path",
         "title": "مسار التفعيل"
       },
       {
-        "id": "حد التغطية",
+        "id": "coverage-boundary",
         "title": "حدود التغطية"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "نظرة عامة",
+        "id": "overview",
         "title": "نظرة عامة"
       },
       {
-        "id": "المبادئ الأساسية",
+        "id": "core-principles",
         "title": "المبادئ الأساسية"
       },
       {
-        "id": "الأدوار",
+        "id": "roles",
         "title": "الأدوار"
       },
       {
-        "id": "تحديث التدفق",
+        "id": "update-flow",
         "title": "تحديث التدفق"
       },
       {
-        "id": "فئات المعلمات",
+        "id": "parameter-classes",
         "title": "فئات المعلمات"
       },
       {
-        "id": "الإفصاح العام",
+        "id": "public-disclosure",
         "title": "الإفصاح العلني"
       },
       {
-        "id": "إجراءات الطوارئ",
+        "id": "emergency-actions",
         "title": "إجراءات الطوارئ"
       }
     ],

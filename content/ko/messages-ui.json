@@ -16,7 +16,7 @@
       "resources": "자원",
       "developers": "개발자",
       "helpCenter": "도움말 센터",
-      "aaveArfc": "1eov3v5v9g1hbx06wm8t",
+      "aaveArfc": "아베 ARFC",
       "borrow": "빌리다",
       "lend": "빌려주다",
       "multiply": "곱하다",
@@ -142,7 +142,7 @@
       "searchResults": "검색 결과",
       "clearSearch": "검색 지우기",
       "noResults": "\"{query}\"에 대한 결과가 없습니다",
-      "category": "카테고리: {name}",
+      "category": "Category: {name}",
       "categoriesAria": "자주 묻는 질문 카테고리",
       "articles": "{count}개의 기사"
     },

@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "jak-to-działa",
+        "id": "how-it-works",
         "title": "Jak to działa"
       },
       {
-        "id": "wartość możliwa do pożyczki",
+        "id": "borrowable-value",
         "title": "Wartość możliwa do pożyczenia"
       },
       {
-        "id": "notatki",
+        "id": "notes",
         "title": "Notatki"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "obliczenie",
+        "id": "calculation",
         "title": "Obliczenie"
       },
       {
-        "id": "opaski zdrowotne",
+        "id": "health-bands",
         "title": "Pasma monitorujące"
       },
       {
-        "id": "ścieżka-odpowiedzi",
+        "id": "response-path",
         "title": "Ścieżka odpowiedzi"
       },
       {
-        "id": "akcje użytkownika",
+        "id": "user-actions",
         "title": "Działania użytkownika"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "typy programów",
+        "id": "program-types",
         "title": "Typy programów"
       },
       {
-        "id": "zasady dystrybucji",
+        "id": "distribution-principles",
         "title": "Zasady dystrybucji"
       },
       {
-        "id": "roszczenia-i-uzgadnianie",
+        "id": "claiming-and-reconciliation",
         "title": "Roszczenia i pojednanie"
       },
       {
-        "id": "o11s4tnk35k3ibs91oxq",
+        "id": "status",
         "title": "Aktualny stan"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "punkt wejścia kapitału",
+        "id": "capital-entry-point",
         "title": "Punkt wejścia kapitału"
       },
       {
-        "id": "stopa zwrotu skorygowana o ryzyko",
+        "id": "risk-adjusted-yield",
         "title": "Stopa zwrotu skorygowana o ryzyko"
       },
       {
-        "id": "dynamiczne-kontrole-ryzyka",
+        "id": "dynamic-risk-controls",
         "title": "Dynamiczne Kontrole Ryzyka"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "doświadczenie użytkownika",
+        "id": "user-experience",
         "title": "Doświadczenie użytkownika"
       },
       {
-        "id": "przykładowy-przepływ",
+        "id": "example-flow",
         "title": "Przykładowy przepływ"
       },
       {
-        "id": "architektura trójwarstwowa",
+        "id": "three-tier-architecture",
         "title": "Architektura trójwarstwowa"
       },
       {
-        "id": "przepływ danych",
+        "id": "data-flow",
         "title": "Przepływ danych"
       },
       {
-        "id": "odpowiedzialności-reprezentanta",
+        "id": "spoke-responsibilities",
         "title": "Odpowiedzialności węzła"
       },
       {
-        "id": "rola-huba",
+        "id": "hub-role",
         "title": "Aave v4 Rola Huba"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "interfejs a protokół",
+        "id": "interface-vs-protocol",
         "title": "Interfejs vs Protokoł"
       },
       {
-        "id": "ujawnienie",
+        "id": "disclosure",
         "title": "Ujawnienie"
       },
       {
-        "id": "użycie skarbu",
+        "id": "treasury-usage",
         "title": "Wykorzystanie skarbu"
       },
       {
-        "id": "notatki-integracyjne",
+        "id": "integration-notes",
         "title": "Notatki z integracji"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "pożyczki-czeki",
+        "id": "borrow-checks",
         "title": "Czeki pożyczkowe"
       },
       {
-        "id": "kontrola stanu zdrowia",
+        "id": "health-check",
         "title": "Kontrola zdrowia"
       },
       {
-        "id": "rachunkowość wewnętrzna",
+        "id": "internal-accounting",
         "title": "Rachunkowość wewnętrzna"
       },
       {
-        "id": "aktywa możliwe do pożyczenia",
+        "id": "borrowable-assets",
         "title": "Aktywa możliwe do pożyczenia"
       },
       {
-        "id": "siła kredytowa",
+        "id": "borrowing-power",
         "title": "Moc kredytowa"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "jak-to-działa",
+        "id": "how-it-works",
         "title": "Jak to działa"
       },
       {
-        "id": "kontrole zdrowotne",
+        "id": "health-checks",
         "title": "Kontrole zdrowotne"
       },
       {
-        "id": "rozliczanie opłat",
+        "id": "fee-accounting",
         "title": "Księgowość opłat"
       },
       {
-        "id": "kluczowe korzyści",
+        "id": "key-benefits",
         "title": "Kluczowe korzyści"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "więcej-pożyczania",
+        "id": "borrowing-more",
         "title": "Pożyczanie więcej"
       },
       {
-        "id": "monitorowanie zdrowia",
+        "id": "monitoring-health",
         "title": "Monitorowanie zdrowia"
       },
       {
-        "id": "kontrola operacyjna",
+        "id": "operational-control",
         "title": "Kontrola operacyjna"
       },
       {
-        "id": "zmiany pozycji",
+        "id": "position-changes",
         "title": "Zmiany pozycji"
       },
       {
-        "id": "ograniczenia klucza",
+        "id": "key-constraints",
         "title": "Kluczowe Ograniczenia"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "przepływ depozytu",
+        "id": "deposit-flow",
         "title": "Przepływ depozytów"
       },
       {
-        "id": "szczegóły techniczne",
+        "id": "technical-details",
         "title": "Szczegóły techniczne"
       },
       {
-        "id": "obsługiwane-tokeny-lp",
+        "id": "supported-lp-tokens",
         "title": "Obsługiwane LP typy stanowisk"
       },
       {
-        "id": "po wpłacie",
+        "id": "after-deposit",
         "title": "Po wpłacie"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "proces spłaty",
+        "id": "repay-process",
         "title": "Proces spłaty"
       },
       {
-        "id": "szczegóły techniczne",
+        "id": "technical-details",
         "title": "Szczegóły techniczne"
       },
       {
-        "id": "scenariusz-likwidacji",
+        "id": "liquidation-scenario",
         "title": "Kiedy spłata jest pilna"
       },
       {
-        "id": "pełna spłata",
+        "id": "full-repayment",
         "title": "Pełna spłata"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "proces wycofywania",
+        "id": "withdrawal-process",
         "title": "Proces wypłaty"
       },
       {
-        "id": "modyfikacje pozycji",
+        "id": "position-modifications",
         "title": "Modyfikacje pozycji"
       },
       {
-        "id": "po wycofaniu",
+        "id": "after-withdrawal",
         "title": "Po wycofaniu"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "kryteria recenzji",
+        "id": "review-criteria",
         "title": "Kryteria oceny"
       },
       {
-        "id": "basen-rodziny",
+        "id": "pool-families",
         "title": "Rodziny basenowe"
       },
       {
-        "id": "zastosowanie ryzyka",
+        "id": "risk-application",
         "title": "Zastosowanie ryzyka"
       },
       {
-        "id": "notatki-integracyjne",
+        "id": "integration-notes",
         "title": "Notatki z integracji"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "model-integracji",
+        "id": "integration-model",
         "title": "Model integracji"
       },
       {
-        "id": "kontrola-partnera",
+        "id": "partner-controls",
         "title": "Kontrola partnera"
       },
       {
-        "id": "notatki z wydania",
+        "id": "launch-notes",
         "title": "Notatki z uruchomienia"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "zestaw aplikacji",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "rodziny miejsc",
+        "id": "venue-families",
         "title": "Rodzaje miejsc"
       },
       {
-        "id": "status-włączenia",
+        "id": "enablement-status",
         "title": "Status włączenia"
       },
       {
-        "id": "wymagania-przeglądu",
+        "id": "review-requirements",
         "title": "Wymagania dotyczące przeglądu"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "interfejs-oracle",
+        "id": "oracle-interface",
         "title": "Interfejs Oracle"
       },
       {
-        "id": "architektura wielowarstwowa",
+        "id": "multi-layer-architecture",
         "title": "Architektura wielowarstwowa"
       },
       {
-        "id": "obsługa DEX",
+        "id": "dex-handling",
         "title": "Specyficzne obsługiwanie DEX"
       },
       {
-        "id": "obliczanie TWAP",
+        "id": "twap-computation",
         "title": "Obliczanie TWAP"
       },
       {
-        "id": "środki bezpieczeństwa",
+        "id": "safety-measures",
         "title": "Bezpieczeństwo i zapobieganie manipulacji"
       },
       {
-        "id": "parametry konfigurowalne",
+        "id": "configurable-parameters",
         "title": "Parametry konfigurowalne"
       }
     ],
@@ -968,10 +968,10 @@
       "Curve Stajnia/Stajnia ERC-20 LPs",
       "Zewnętrzne źródła stablecoinów + sprawdzanie stanu puli + weryfikacja TWAP",
       "Ceny zewnętrzne kotwiczą aktywa, podczas gdy salda pul i narastające opłaty określają zdyskontowaną wartość zabezpieczenia.",
-      "anqzjq66jjdlwshhtbc2",
+      "3 V2 6 31Spl",
       "Chainlink + rekonstrukcja rezerwy + weryfikacja TWAP",
       "Standardowe LP tokeny są wyceniane na podstawie zrekonstruowanych sald podstawowych, przy czym TWAP jest używany jako odporny na manipulacje mechanizm weryfikacyjny.",
-      "8lnoluegefipsa78b3ls",
+      "⟦ 3 V3 NFT z 31 ⟧s",
       "Chainlink + dekompozycja pozycji + kontrola tick/TWAP",
       "NFT jest rozkładany według płynności, aktywnego zakresu i bieżącej ceny, a następnie potrącany o możliwą do odzyskania wartość likwidacyjną.",
       "Balancer Wielo-aktywów LPs",
@@ -1007,7 +1007,7 @@
       "Obliczanie TWAP przez DEX",
       "TWAPy są wejściami weryfikacyjnymi. Siedzą obok zewnętrznych cen aktywów i deterministycznej rekonstrukcji pozycji, aby sprawdzić, czy obserwowany stan puli jest zgodny z wiarygodną ścieżką wycofania. Pomagają odrzucać podejrzane lub krótkotrwałe zakłócenia, ale same w sobie nie zastępują szerszego modelu wyroczni.",
       "Uniswap V2 i SushiSwap",
-      "34tjzvpqfj4bsyy295v5",
+      "3 V303",
       "Kontrole uwzględniające pozycję obejmują zakres znaczników, rozkład płynności i naliczone opłaty, dzięki czemu protokół może weryfikować rozłożoną ekspozycję tokenów każdego NFT LP, zamiast traktować NFT jako czarną skrzynkę.",
       "Balancer",
       "Obserwacje ważonych tokenów są łączone z wagami puli w celu weryfikacji podziałów zapasów wieloekwiwalentowych, zanim orakl przypisze konserwatywną wartość zabezpieczenia.",
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "rola-w-systemie",
+        "id": "role-in-system",
         "title": "Rola w systemie"
       },
       {
-        "id": "model-adaptera",
+        "id": "adapter-model",
         "title": "Model adaptera"
       },
       {
-        "id": "obsługiwane operacje",
+        "id": "supported-operations",
         "title": "Obsługiwane operacje"
       },
       {
-        "id": "status wdrożenia",
+        "id": "deployment-status",
         "title": "Status wdrożenia"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "podstawowe pojęcia",
+        "id": "core-concepts",
         "title": "Podstawowe koncepcje"
       },
       {
-        "id": "elementy protokołu",
+        "id": "protocol-components",
         "title": "Składniki protokołu"
       },
       {
-        "id": "terminy finansowe",
+        "id": "financial-terms",
         "title": "Terminy finansowe"
       },
       {
-        "id": "ryzyko-bezpieczeństwo",
+        "id": "risk-security",
         "title": "Ryzyko i bezpieczeństwo"
       },
       {
-        "id": "metryki",
+        "id": "metrics",
         "title": "Metryki"
       },
       {
-        "id": "zastrzeżenia",
+        "id": "disclaimers",
         "title": "Zastrzeżenia"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "kluczowa wiedza",
+        "id": "core-insight",
         "title": "Kluczowy wgląd"
       },
       {
-        "id": "przepływ użytkownika",
+        "id": "user-flow",
         "title": "Model pożyczania"
       },
       {
-        "id": "wycena-oracle",
+        "id": "oracle-valuation",
         "title": "Oracle i Wycena"
       },
       {
-        "id": "proces pożyczania",
+        "id": "borrowing-process",
         "title": "Zdolność kredytowa"
       },
       {
-        "id": "monitorowanie zdrowia",
+        "id": "health-monitoring",
         "title": "Zdrowie i Likwidacja"
       },
       {
-        "id": "pobór opłat",
+        "id": "fee-collection",
         "title": "Opłata za traktowanie"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "zakres-sieci-testowej",
+        "id": "testnet-scope",
         "title": "Zakres testnetu"
       },
       {
-        "id": "jak ocenić",
+        "id": "how-to-evaluate",
         "title": "Jak ocenić"
       },
       {
-        "id": "ramowanie mapy drogowej",
+        "id": "roadmap-framing",
         "title": "Ramowanie mapy drogowej"
       },
       {
-        "id": "kampanie-i-status",
+        "id": "campaigns-and-status",
         "title": "Kampanie i status"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "ogólne zastrzeżenie",
+        "id": "general-disclaimer",
         "title": "Ogólne zastrzeżenie"
       },
       {
-        "id": "brak-porad-finansowych",
+        "id": "no-financial-advice",
         "title": "Brak doradztwa finansowego"
       },
       {
-        "id": "ryzyka",
+        "id": "risks",
         "title": "Ryzyka"
       },
       {
-        "id": "bez gwarancji",
+        "id": "no-warranties",
         "title": "Brak gwarancji"
       },
       {
-        "id": "ograniczenie odpowiedzialności",
+        "id": "limitation-of-liability",
         "title": "Ograniczenie odpowiedzialności"
       },
       {
-        "id": "powiązane-polityki",
+        "id": "related-policies",
         "title": "Powiązane polityki"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "ograniczenia dostępu",
+        "id": "access-restrictions",
         "title": "Ograniczenia dostępu"
       },
       {
-        "id": "ograniczone jurysdykcje",
+        "id": "restricted-jurisdictions",
         "title": "Ograniczone jurysdykcje"
       },
       {
-        "id": "zgodność",
+        "id": "compliance",
         "title": "Zgodność"
       },
       {
-        "id": "powiązane-polityki",
+        "id": "related-policies",
         "title": "Powiązane polityki"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "zamienny-lp",
+        "id": "fungible-lp",
         "title": "Zbywalny LP Przykład"
       },
       {
-        "id": "skoncentrowana płynność",
+        "id": "concentrated-liquidity",
         "title": "Przykład Skoncentrowanej Płynności"
       },
       {
-        "id": "płynność NFT",
+        "id": "nft-liquidity",
         "title": "Likwidacja NFT"
       },
       {
-        "id": "konto wielopozycyjne",
+        "id": "multi-position-account",
         "title": "Konto wielopozycyjne"
       },
       {
-        "id": "przypadki brzegowe",
+        "id": "edge-cases",
         "title": "Przypadki brzegowe"
       },
       {
-        "id": "streszczenie",
+        "id": "summary",
         "title": "Podsumowanie"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "odnośnik-kanoniczny",
+        "id": "canonical-reference",
         "title": "Powiązane dokumenty polityki"
       },
       {
-        "id": "sekwencja_wykonania",
+        "id": "runtime-sequence",
         "title": "Sekwencja czasu wykonywania"
       },
       {
-        "id": "przejścia-stanu",
+        "id": "state-transitions",
         "title": "Przejścia stanów"
       },
       {
-        "id": "notatki operatora",
+        "id": "operator-notes",
         "title": "Notatki operatora"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "model pokrycia",
+        "id": "coverage-model",
         "title": "Model pokrycia"
       },
       {
-        "id": "wymagania-wykonawcze",
+        "id": "execution-requirements",
         "title": "Wymagania dotyczące wykonania"
       },
       {
-        "id": "notatki-operacyjne",
+        "id": "operational-notes",
         "title": "Notatki operacyjne"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "trzy warstwy",
+        "id": "three-layers",
         "title": "Trzy warstwy"
       },
       {
-        "id": "podstawowe zasady",
+        "id": "core-rules",
         "title": "Podstawowe zasady"
       },
       {
-        "id": "złożoność LP",
+        "id": "lp-complexity",
         "title": "LP Złożoność kolateralna"
       },
       {
-        "id": "ścieżki likwidacji",
+        "id": "liquidation-pathways",
         "title": "Ścieżki likwidacji"
       },
       {
-        "id": "stan pozycji",
+        "id": "position-state",
         "title": "Stan pozycji"
       },
       {
-        "id": "obsługa nadwyżki",
+        "id": "surplus-handling",
         "title": "Obsługa nadwyżek"
       },
       {
-        "id": "model operatora",
+        "id": "operator-model",
         "title": "Model operatora"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "witamy",
+        "id": "welcome",
         "title": "Witamy"
       },
       {
-        "id": "co-to-jest-avana",
+        "id": "what-is-avana",
         "title": "Co to jest Avana?"
       },
       {
-        "id": "jak-to-działa",
+        "id": "how-it-works",
         "title": "Jak to działa"
       },
       {
-        "id": "odblokowywanie-zabezpieczenia-lp",
+        "id": "unlocking-lp-collateral",
         "title": "Dlaczego LP Zabezpieczenie ma znaczenie"
       },
       {
-        "id": "architektura",
+        "id": "architecture",
         "title": "Architektura"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "zakres-i-architektura-systemu",
+        "id": "scope-and-system-architecture",
         "title": "Zakres i architektura systemu"
       },
       {
-        "id": "filozofia-surowości",
+        "id": "severity-philosophy",
         "title": "Filozofia Surowości"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "wyzwania bezpieczeństwa",
+        "id": "security-challenges",
         "title": "Wyzwania związane z bezpieczeństwem"
       },
       {
-        "id": "wielowarstwowe bezpieczeństwo",
+        "id": "multi-layer-security",
         "title": "Wielowarstwowe zabezpieczenia"
       },
       {
-        "id": "powierzchnie rdzeniowo-kontraktowe",
+        "id": "core-contract-surfaces",
         "title": "Podstawowe Powierzchnie Umowy"
       },
       {
-        "id": "granice zaufania",
+        "id": "trust-boundaries",
         "title": "Granice zaufania"
       },
       {
-        "id": "gotowość do audytu",
+        "id": "audit-readiness",
         "title": "Gotowość do audytu"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "cel",
+        "id": "purpose",
         "title": "Cel"
       },
       {
-        "id": "podejście do finansowania",
+        "id": "funding-approach",
         "title": "Podejście do finansowania"
       },
       {
-        "id": "ścieżka aktywacji",
+        "id": "activation-path",
         "title": "Ścieżka aktywacji"
       },
       {
-        "id": "granica pokrycia",
+        "id": "coverage-boundary",
         "title": "Granica pokrycia"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "przegląd",
+        "id": "overview",
         "title": "Przegląd"
       },
       {
-        "id": "zasady podstawowe",
+        "id": "core-principles",
         "title": "Podstawowe zasady"
       },
       {
-        "id": "role",
+        "id": "roles",
         "title": "Role"
       },
       {
-        "id": "aktualizuj-przepływ",
+        "id": "update-flow",
         "title": "Aktualizuj przepływ"
       },
       {
-        "id": "klasy parametrów",
+        "id": "parameter-classes",
         "title": "Klasy parametrów"
       },
       {
-        "id": "ujawnienie publiczne",
+        "id": "public-disclosure",
         "title": "Upublicznienie"
       },
       {
-        "id": "działania w nagłych wypadkach",
+        "id": "emergency-actions",
         "title": "Działania awaryjne"
       }
     ],

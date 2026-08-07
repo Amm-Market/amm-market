@@ -384,7 +384,11 @@
       "Sermayeyi Açığa Çıkar",
       "Amm Pazarlardan",
       "Amm Pazarlarından Sermaye Açığa Çıkar",
-      "Daha fazla bilgi edinin"
+      "Daha fazla bilgi edinin",
+      "2021 yılında, Aave AMM Market'i başlattı ve LP pozisyonların teminat olarak kullanılabileceğini kanıtladı, ancak bu o dönemin daha basit DEX'leri için tasarlanmıştı. Avana, buradan devam ediyor, bugünün DEX'leri ve LP türleri için tasarlandı, her pozisyonu çift oracle ve daha güçlü risk kontrolleri tarafından şekillendirilen teminat olarak ele alıyor.",
+      "Bir borç verme protokolü",
+      "LP destekli krediler için",
+      "LP destekli krediler için bir borç verme protokolü"
     ]
   },
   "homepage/HomepageTestimonialSection": {

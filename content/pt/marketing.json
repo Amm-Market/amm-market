@@ -241,7 +241,7 @@
       "Baixar Kit",
       "Diatipo",
       "Avana usa o Diatype para produtos e superfícies de marketing. Ele mantém o conteúdo denso do protocolo legível, ao mesmo tempo em que parece nítido e editorial.",
-      "pm4p77lh5plmbodcc3wz",
+      "AaBbCc",
       "Roupa",
       "Outfit é um exemplo de substituição para contextos onde Diatype não está disponível. Diatype continua sendo a tipografia principal para a experiência do produto.",
       "Marca de Token Primário",
@@ -384,7 +384,11 @@
       "Desbloquear Capital",
       "da Amm Markets",
       "Desbloquear Capital de Mercados Amm",
-      "Saiba mais"
+      "Saiba mais",
+      "Em 2021, Aave lançou o Mercado AMM e provou que as posições LP poderiam servir como garantia, mas foi construído para os DEXs mais simples daquela época. Avana retoma de onde isso parou, projetado para os DEXs atuais e tipos LP, tratando cada posição como garantia moldada por oráculos duplos e controles de risco mais fortes.",
+      "Um protocolo de empréstimo",
+      "para empréstimos garantidos por LP",
+      "Um protocolo de empréstimo para empréstimos garantidos por LP"
     ]
   },
   "homepage/HomepageTestimonialSection": {
@@ -446,7 +450,7 @@
     "strings": [
       "Calculadora de Crescimento",
       "Veja seu dinheiro crescer",
-      "whf2qn9b3bl8sg844e6n",
+      "Avana APY",
       "Depósito Inicial",
       "Período de tempo (meses)",
       "mês",
@@ -462,15 +466,15 @@
   "trade-market-showcase": {
     "strings": [
       "Moedas estáveis",
-      "3gmlb4vl6u8e2sv0g8ya",
-      "usfhd6oukzlei3dacply",
+      "Ethereum",
+      "Bitcoin",
       "Outros",
       "Moeda USD",
       "Guia",
-      "z3arv6mvsmr3q7xp5hew",
-      "a0wk8b3zk0fa2estawto",
+      "Curve USD",
+      "Frax",
       "USDe",
-      "jzslslhm91b72zw0v1rn",
+      "PayPal USD",
       "LUSD",
       "USDD",
       "Éter",
@@ -588,7 +592,7 @@
       "Prémio Spoke",
       "Ajuste de Risco de Pool",
       "O risco específico da carteira contribui para o spread final, aumentando o potencial de retorno para o mesmo dinheiro ocioso.",
-      "whf2qn9b3bl8sg844e6n",
+      "Avana APY",
       "Mesma Liquidez Ociosa com Retornos Mais Altos APY",
       "% para"
     ]

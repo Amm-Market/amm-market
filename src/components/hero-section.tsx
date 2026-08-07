@@ -19,6 +19,7 @@ import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 import { PerformanceDiv } from "@/components/ui/performance-section"
 import { TokenLogo } from "@/components/token-logo"
+import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 function SectionSkeleton({
   lines = 3,
   minHeight = "320px",
@@ -191,7 +192,20 @@ const lpUseCases: {
   },
 ]
 
-export default function HeroSection() {
+
+export default async function HeroSection() {
+  return withMarketingI18n(
+    [
+      "hero-section",
+      "homepage/HomepageTestimonialSection",
+      "homepage/HomepageFaqSection",
+      "homepage/HomepageNewsroomSection",
+    ],
+    HeroSectionBody(),
+  )
+}
+
+function HeroSectionBody() {
   return (
     <section className="marketing-secondary-shell pb-0">
       <div className="site-content-shell site-section-gap">

@@ -3,51 +3,51 @@
     "title": "Chính sách bảo mật",
     "toc": [
       {
-        "id": "thông-tin-cá-nhân-mà-chúng-tôi-thu-thập",
+        "id": "personal-information-that-we-collect",
         "title": "Thông tin cá nhân mà chúng tôi thu thập"
       },
       {
-        "id": "thông-tin-cá-nhân-được-sử-dụng-và-tiết-lộ-cho-bên-thứ-ba",
+        "id": "personal-information-used-and-disclosed-to-third-parties",
         "title": "Thông tin cá nhân được sử dụng và tiết lộ cho bên thứ ba"
       },
       {
-        "id": "cookie-và-các-công-nghệ-thu-thập-dữ-liệu-khác",
+        "id": "cookies-and-other-data-collection-technologies",
         "title": "Cookie và Các Công Nghệ Thu Thập Dữ Liệu Khác"
       },
       {
-        "id": "thông-báo-đến-cư-dân-của-eee-và-anh",
+        "id": "notice-to-residents-of-the-eea-and-the-uk",
         "title": "Thông báo tới cư dân của Khu vực Kinh tế Châu Âu và Vương quốc Anh"
       },
       {
-        "id": "thông-báo-cho-cư-dân-california",
+        "id": "notice-to-california-residents",
         "title": "Thông báo dành cho cư dân California"
       },
       {
-        "id": "thông báo-cho-cư-dân-của-các-tiểu-bang-khác",
+        "id": "notice-to-residents-of-other-states",
         "title": "Thông báo cho cư dân của các bang khác"
       },
       {
-        "id": "lưu giữ dữ liệu",
+        "id": "data-retention",
         "title": "Lưu trữ dữ liệu"
       },
       {
-        "id": "quyền riêng tư của trẻ em",
+        "id": "childrens-privacy",
         "title": "Quyền riêng tư của trẻ em"
       },
       {
-        "id": "bảo mật thông tin cá nhân của bạn",
+        "id": "security-of-your-personal-information",
         "title": "Bảo mật Thông tin Cá nhân của Bạn"
       },
       {
-        "id": "tiếp thị qua email",
+        "id": "email-marketing",
         "title": "Tiếp thị qua email"
       },
       {
-        "id": "thông-báo-thay-đổi",
+        "id": "notification-of-changes",
         "title": "Thông báo về các thay đổi"
       },
       {
-        "id": "liên-hệ",
+        "id": "contact-us",
         "title": "Liên hệ với chúng tôi"
       }
     ],
@@ -192,7 +192,7 @@
       "Chúng tôi mong muốn giải quyết bất kỳ vấn đề nào mà bạn gặp phải với các thực tiễn về quyền riêng tư của chúng tôi. Nếu bạn có câu hỏi hoặc khiếu nại liên quan đến Chính Sách Bảo Mật này, vui lòng liên hệ với chúng tôi qua email tại:",
       "quyền riêng tư@avana.cc",
       "hoặc",
-      "dsubxk609e8khbg2xmfd",
+      "support@avana.cc",
       ". Vui lòng bao gồm từ \"Quyền riêng tư\" trong dòng chủ đề của yêu cầu của bạn."
     ]
   },
@@ -200,51 +200,51 @@
     "title": "Điều khoản dịch vụ",
     "toc": [
       {
-        "id": "đủ điều kiện",
+        "id": "eligibility",
         "title": "1. Điều kiện đủ"
       },
       {
-        "id": "giao thức avana",
+        "id": "avana-protocol",
         "title": "2. Avana Giao thức"
       },
       {
-        "id": "các dịch vụ",
+        "id": "the-services",
         "title": "3. Các Dịch Vụ"
       },
       {
-        "id": "tài nguyên thông tin",
+        "id": "informational-resources",
         "title": "4. Tài nguyên thông tin"
       },
       {
-        "id": "hoạt-động-cấm",
+        "id": "prohibited-activities",
         "title": "5. Các hoạt động bị cấm"
       },
       {
-        "id": "sở hữu trí tuệ",
+        "id": "intellectual-property",
         "title": "6. Sở hữu trí tuệ"
       },
       {
-        "id": "chấm dứt hợp đồng",
+        "id": "term-termination",
         "title": "7. Thời hạn; Chấm dứt"
       },
       {
-        "id": "rủi ro",
+        "id": "risks",
         "title": "8. Rủi ro"
       },
       {
-        "id": "tuyên bố từ chối bảo hành",
+        "id": "disclaimer-of-warranties",
         "title": "9. Tuyên bố từ chối bảo hành"
       },
       {
-        "id": "giải quyết tranh chấp",
+        "id": "dispute-resolution",
         "title": "10. Giải quyết tranh chấp"
       },
       {
-        "id": "dịch vụ bên thứ ba",
+        "id": "third-party-services",
         "title": "11. Dịch vụ của bên thứ ba"
       },
       {
-        "id": "quy định chung",
+        "id": "general-provisions",
         "title": "12. Các Điều Khoản Chung"
       }
     ],
@@ -327,7 +327,7 @@
       ") tạo thành một thỏa thuận có hiệu lực pháp lý được thực hiện giữa bạn (",
       "bạn",
       "\") và Avana (\"",
-      "0fqtyzglrkqedrqaknl4",
+      "Avana,",
       "chúng tôi",
       "của chúng ta",
       "\" hoặc \"",
@@ -419,7 +419,7 @@
       ". Bằng cách truy cập hoặc sử dụng Dịch vụ, bạn đồng ý nhận các thông tin liên lạc điện tử.",
       "Thông báo",
       ". Avana có thể cung cấp cho bạn thông báo và các thông tin liên lạc khác thông qua các phương tiện điện tử theo quy định của Mục 12.1. Bạn có thể gửi cho chúng tôi thông báo bằng cách gửi địa chỉ email đến",
-      "vxkfutwu36oig082kssm",
+      "legal@avana.cc",
       ". Tất cả các thông báo sẽ được coi là có hiệu lực ngay khi gửi đi.",
       "Miễn trừ",
       ". Để một việc từ bỏ được coi là có hiệu lực, việc từ bỏ phải được lập thành văn bản và có chữ ký của bên từ bỏ. Việc bất kỳ bên nào không thực hiện việc áp dụng bất kỳ điều khoản nào của Điều khoản sẽ không cấu thành việc từ bỏ quyền của bên đó trong việc thực hiện điều khoản đó sau này.",

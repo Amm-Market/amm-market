@@ -223,7 +223,7 @@
       "Voz y ritmo",
       "Tipografía",
       "Sistema de paleta",
-      "7otl6zxg5cfxcrc4daya",
+      "Color",
       "Avana Ficha",
       "Ícono",
       "Úsalo bien",
@@ -241,7 +241,7 @@
       "Descargar kit",
       "Diátipo",
       "Avana utiliza Diatype para superficies de producto y marketing. Mantiene el contenido denso del protocolo legible mientras sigue sintiéndose nítido y editorial.",
-      "v4brlhihlyo9hkc3yjph",
+      "AaBbCc",
       "Conjunto",
       "Outfit es un espécimen de reserva para contextos donde Diatype no está disponible. Diatype sigue siendo la tipografía principal para la experiencia del producto.",
       "Marca de Token Primario",
@@ -384,7 +384,11 @@
       "Desbloquear Capital",
       "de Amm Markets",
       "Desbloquear capital de los mercados Amm",
-      "Aprender más"
+      "Aprender más",
+      "En 2021, Aave lanzó AMM Market y demostró que LP posiciones podían servir como garantía, pero fue construido para los DEXs más simples de esa época. Avana retoma desde donde eso se quedó, diseñado para los DEXs de hoy y los tipos LP, tratando cada posición como garantía modelada por oráculos duales y controles de riesgo más fuertes.",
+      "Un protocolo de préstamos",
+      "para préstamos respaldados por LP",
+      "Un protocolo de préstamos para préstamos respaldados por LP"
     ]
   },
   "homepage/HomepageTestimonialSection": {
@@ -446,7 +450,7 @@
     "strings": [
       "Calculadora de Crecimiento",
       "Ve tu dinero crecer",
-      "dn74f88sz555ovo8sdob",
+      "Avana APY",
       "Depósito inicial",
       "Periodo de tiempo (meses)",
       "mes",
@@ -468,7 +472,7 @@
       "Moneda USD",
       "Amarre",
       "CurveUSD",
-      "9z509lh55c8fxm40mt0w",
+      "Frax",
       "USDe",
       "PayPalUSD",
       "LUSD",
@@ -495,7 +499,7 @@
       "leído",
       "Compuesto",
       "Fabricante",
-      "sintetizador",
+      "Sintético",
       "El gráfico",
       "Mercados de suministro",
       "Prestar a través de los mercados"
@@ -588,7 +592,7 @@
       "Radios Premium",
       "Ajuste de Riesgo de la Piscina",
       "El riesgo específico de la cartera contribuye al margen final, aumentando el potencial de rendimiento para el mismo efectivo inactivo.",
-      "dn74f88sz555ovo8sdob",
+      "Avana APY",
       "Mismo efectivo inactivo con mayores APY rendimientos",
       "% a"
     ]

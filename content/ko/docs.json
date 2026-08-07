@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "작동 방식",
+        "id": "how-it-works",
         "title": "작동 원리"
       },
       {
-        "id": "대출 가능 가치",
+        "id": "borrowable-value",
         "title": "대출 가능 가치"
       },
       {
-        "id": "노트",
+        "id": "notes",
         "title": "노트"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "계산",
+        "id": "calculation",
         "title": "계산"
       },
       {
-        "id": "건강 밴드",
+        "id": "health-bands",
         "title": "모니터링 밴드"
       },
       {
-        "id": "응답 경로",
+        "id": "response-path",
         "title": "응답 경로"
       },
       {
-        "id": "사용자 동작",
+        "id": "user-actions",
         "title": "사용자 동작"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "프로그램 유형",
+        "id": "program-types",
         "title": "프로그램 유형"
       },
       {
-        "id": "분배 원칙",
+        "id": "distribution-principles",
         "title": "배포 원칙"
       },
       {
-        "id": "청구와 정산",
+        "id": "claiming-and-reconciliation",
         "title": "청구 및 정산"
       },
       {
-        "id": "상태",
+        "id": "status",
         "title": "현재 상태"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "수도 진입점",
+        "id": "capital-entry-point",
         "title": "수도 진입점"
       },
       {
-        "id": "위험 조정 수익률",
+        "id": "risk-adjusted-yield",
         "title": "위험 조정 수익률"
       },
       {
-        "id": "동적 위험 통제",
+        "id": "dynamic-risk-controls",
         "title": "동적 위험 통제"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "사용자 경험",
+        "id": "user-experience",
         "title": "사용자 경험"
       },
       {
-        "id": "예시-흐름",
+        "id": "example-flow",
         "title": "예시 흐름"
       },
       {
-        "id": "3계층 아키텍처",
+        "id": "three-tier-architecture",
         "title": "3계층 아키텍처"
       },
       {
-        "id": "데이터 흐름",
+        "id": "data-flow",
         "title": "데이터 흐름"
       },
       {
-        "id": "스포크 책임",
+        "id": "spoke-responsibilities",
         "title": "스포크 책임"
       },
       {
-        "id": "허브 역할",
+        "id": "hub-role",
         "title": "Aave v4 허브 역할"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "인터페이스 대 프로토콜",
+        "id": "interface-vs-protocol",
         "title": "인터페이스 vs 프로토콜"
       },
       {
-        "id": "공개",
+        "id": "disclosure",
         "title": "공개"
       },
       {
-        "id": "재무 사용",
+        "id": "treasury-usage",
         "title": "국고 사용"
       },
       {
-        "id": "통합-노트",
+        "id": "integration-notes",
         "title": "통합 노트"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "대출 수표",
+        "id": "borrow-checks",
         "title": "수표 대출"
       },
       {
-        "id": "건강 점검",
+        "id": "health-check",
         "title": "건강 검사"
       },
       {
-        "id": "내부 회계",
+        "id": "internal-accounting",
         "title": "내부 회계"
       },
       {
-        "id": "대출 가능 자산",
+        "id": "borrowable-assets",
         "title": "대출 가능 자산"
       },
       {
-        "id": "차입 능력",
+        "id": "borrowing-power",
         "title": "차입 능력"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "작동 방식",
+        "id": "how-it-works",
         "title": "작동 원리"
       },
       {
-        "id": "건강 점검",
+        "id": "health-checks",
         "title": "건강 검사"
       },
       {
-        "id": "수수료 회계",
+        "id": "fee-accounting",
         "title": "수수료 회계"
       },
       {
-        "id": "핵심 혜택",
+        "id": "key-benefits",
         "title": "주요 이점"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "더 많이 빌리기",
+        "id": "borrowing-more",
         "title": "더 많이 빌리기"
       },
       {
-        "id": "건강 모니터링",
+        "id": "monitoring-health",
         "title": "건강 모니터링"
       },
       {
-        "id": "운영 통제",
+        "id": "operational-control",
         "title": "운영 통제"
       },
       {
-        "id": "위치 변경",
+        "id": "position-changes",
         "title": "위치 변경"
       },
       {
-        "id": "키 제약 조건",
+        "id": "key-constraints",
         "title": "주요 제약 조건"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "예금 흐름",
+        "id": "deposit-flow",
         "title": "예금 흐름"
       },
       {
-        "id": "기술 세부 사항",
+        "id": "technical-details",
         "title": "기술 세부 사항"
       },
       {
-        "id": "지원되는 LP 토큰",
+        "id": "supported-lp-tokens",
         "title": "지원되는 LP 직위 유형"
       },
       {
-        "id": "입금 후",
+        "id": "after-deposit",
         "title": "입금 후"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "상환-프로세스",
+        "id": "repay-process",
         "title": "상환 절차"
       },
       {
-        "id": "기술 세부 사항",
+        "id": "technical-details",
         "title": "기술 세부 사항"
       },
       {
-        "id": "청산 시나리오",
+        "id": "liquidation-scenario",
         "title": "상환이 급할 때"
       },
       {
-        "id": "전액 상환",
+        "id": "full-repayment",
         "title": "전액 상환"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "출금 절차",
+        "id": "withdrawal-process",
         "title": "출금 절차"
       },
       {
-        "id": "위치 수정",
+        "id": "position-modifications",
         "title": "위치 수정"
       },
       {
-        "id": "탈퇴 후",
+        "id": "after-withdrawal",
         "title": "출금 후"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "검토 기준",
+        "id": "review-criteria",
         "title": "검토 기준"
       },
       {
-        "id": "풀-가족",
+        "id": "pool-families",
         "title": "풀 가족"
       },
       {
-        "id": "위험-적용",
+        "id": "risk-application",
         "title": "위험 적용"
       },
       {
-        "id": "통합-노트",
+        "id": "integration-notes",
         "title": "통합 노트"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "통합 모델",
+        "id": "integration-model",
         "title": "통합 모델"
       },
       {
-        "id": "파트너 제어",
+        "id": "partner-controls",
         "title": "파트너 제어"
       },
       {
-        "id": "출시 노트",
+        "id": "launch-notes",
         "title": "출시 노트"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "앱킷",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "장소-가족",
+        "id": "venue-families",
         "title": "공연장 가족"
       },
       {
-        "id": "활성화 상태",
+        "id": "enablement-status",
         "title": "활성화 상태"
       },
       {
-        "id": "검토 요구사항",
+        "id": "review-requirements",
         "title": "검토 요구 사항"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "오라클 인터페이스",
+        "id": "oracle-interface",
         "title": "오라클 인터페이스"
       },
       {
-        "id": "다층 아키텍처",
+        "id": "multi-layer-architecture",
         "title": "다층 아키텍처"
       },
       {
-        "id": "덱스 처리",
+        "id": "dex-handling",
         "title": "DEX 전용 처리"
       },
       {
-        "id": "TWAP 계산",
+        "id": "twap-computation",
         "title": "TWAP 계산"
       },
       {
-        "id": "안전 조치",
+        "id": "safety-measures",
         "title": "안전 및 조작 방지"
       },
       {
-        "id": "구성 가능한 매개변수",
+        "id": "configurable-parameters",
         "title": "구성 가능한 매개변수"
       }
     ],
@@ -1007,7 +1007,7 @@
       "DEX에 의한 TWAP 계산",
       "TWAP는 검증 입력입니다. 그것들은 외부 자산 가격 및 결정론적 포지션 재구성과 나란히 위치하여 관찰되는 풀 상태가 신뢰할 수 있는 청산 경로와 일치하는지 확인합니다. TWAP는 의심스럽거나 단기간의 왜곡을 차단하는 데 도움을 주지만, 단독으로 더 넓은 오라클 모델을 대체하지는 않습니다.",
       "Uniswap V2 및 SushiSwap",
-      "xgnuwchu17yu6hh7ecit",
+      "유니스왑 V3",
       "포지션 인식 검사는 틱 범위, 유동성 분포 및 누적 수수료를 포함하여 프로토콜이 NFT를 블랙박스로 취급하는 대신 각 NFT의 분해된 토큰 노출을 검증할 수 있도록 합니다LP.",
       "Balancer",
       "가중 토큰 관찰치는 풀 가중치와 결합되어, 오라클이 보수적인 담보 가치를 할당하기 전에 다중 자산 재고 분할을 검증합니다.",
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "시스템 내 역할",
+        "id": "role-in-system",
         "title": "시스템에서의 역할"
       },
       {
-        "id": "어댑터 모델",
+        "id": "adapter-model",
         "title": "어댑터 모델"
       },
       {
-        "id": "지원되는 작업",
+        "id": "supported-operations",
         "title": "지원되는 작업"
       },
       {
-        "id": "배포 상태",
+        "id": "deployment-status",
         "title": "배포 상태"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "핵심 개념",
+        "id": "core-concepts",
         "title": "핵심 개념"
       },
       {
-        "id": "프로토콜 구성요소",
+        "id": "protocol-components",
         "title": "프로토콜 구성 요소"
       },
       {
-        "id": "금융 용어",
+        "id": "financial-terms",
         "title": "금융 용어"
       },
       {
-        "id": "위험-보안",
+        "id": "risk-security",
         "title": "위험 및 보안"
       },
       {
-        "id": "측정항목",
+        "id": "metrics",
         "title": "측정 기준"
       },
       {
-        "id": "면책 조항",
+        "id": "disclaimers",
         "title": "면책 조항"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "핵심 통찰",
+        "id": "core-insight",
         "title": "핵심 통찰"
       },
       {
-        "id": "사용자 흐름",
+        "id": "user-flow",
         "title": "대출 모델"
       },
       {
-        "id": "오라클 평가",
+        "id": "oracle-valuation",
         "title": "오라클 및 평가"
       },
       {
-        "id": "대출 절차",
+        "id": "borrowing-process",
         "title": "대출 한도"
       },
       {
-        "id": "건강 모니터링",
+        "id": "health-monitoring",
         "title": "건강 및 청산"
       },
       {
-        "id": "수수료 징수",
+        "id": "fee-collection",
         "title": "수수료 처리"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "테스트넷-범위",
+        "id": "testnet-scope",
         "title": "테스트넷 범위"
       },
       {
-        "id": "평가하는 방법",
+        "id": "how-to-evaluate",
         "title": "평가하는 방법"
       },
       {
-        "id": "로드맵 구성",
+        "id": "roadmap-framing",
         "title": "로드맵 구성"
       },
       {
-        "id": "캠페인과 상태",
+        "id": "campaigns-and-status",
         "title": "캠페인 및 상태"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "일반 면책 조항",
+        "id": "general-disclaimer",
         "title": "일반 면책 조항"
       },
       {
-        "id": "재정 조언 아님",
+        "id": "no-financial-advice",
         "title": "재정 상담 아님"
       },
       {
-        "id": "위험",
+        "id": "risks",
         "title": "위험"
       },
       {
-        "id": "무보증",
+        "id": "no-warranties",
         "title": "보증 없음"
       },
       {
-        "id": "책임의 제한",
+        "id": "limitation-of-liability",
         "title": "책임의 한계"
       },
       {
-        "id": "관련 정책",
+        "id": "related-policies",
         "title": "관련 정책"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "접근 제한",
+        "id": "access-restrictions",
         "title": "접근 제한"
       },
       {
-        "id": "제한된 관할 구역",
+        "id": "restricted-jurisdictions",
         "title": "제한된 관할 구역"
       },
       {
-        "id": "준수",
+        "id": "compliance",
         "title": "준수"
       },
       {
-        "id": "관련 정책",
+        "id": "related-policies",
         "title": "관련 정책"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "대체 가능 LP",
+        "id": "fungible-lp",
         "title": "대체 가능 LP 예시"
       },
       {
-        "id": "집중 유동성",
+        "id": "concentrated-liquidity",
         "title": "집중 유동성 예시"
       },
       {
-        "id": "NFT 유동성",
+        "id": "nft-liquidity",
         "title": "NFT 청산"
       },
       {
-        "id": "다중 위치 계정",
+        "id": "multi-position-account",
         "title": "다중 위치 계정"
       },
       {
-        "id": "에지 케이스",
+        "id": "edge-cases",
         "title": "경계 사례"
       },
       {
-        "id": "요약",
+        "id": "summary",
         "title": "요약"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "표준 참조",
+        "id": "canonical-reference",
         "title": "관련 정책 문서"
       },
       {
-        "id": "런타임 시퀀스",
+        "id": "runtime-sequence",
         "title": "런타임 시퀀스"
       },
       {
-        "id": "상태 전이",
+        "id": "state-transitions",
         "title": "상태 전환"
       },
       {
-        "id": "운영자 노트",
+        "id": "operator-notes",
         "title": "운영자 메모"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "커버리지 모델",
+        "id": "coverage-model",
         "title": "커버리지 모델"
       },
       {
-        "id": "실행 요구사항",
+        "id": "execution-requirements",
         "title": "실행 요구 사항"
       },
       {
-        "id": "운영 노트",
+        "id": "operational-notes",
         "title": "운영 노트"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "삼층",
+        "id": "three-layers",
         "title": "세 겹"
       },
       {
-        "id": "핵심 규칙",
+        "id": "core-rules",
         "title": "핵심 규칙"
       },
       {
-        "id": "LP-복잡성",
+        "id": "lp-complexity",
         "title": "LP 담보 복잡성"
       },
       {
-        "id": "청산 경로",
+        "id": "liquidation-pathways",
         "title": "청산 경로"
       },
       {
-        "id": "위치 상태",
+        "id": "position-state",
         "title": "위치 상태"
       },
       {
-        "id": "잉여 처리",
+        "id": "surplus-handling",
         "title": "잉여 처리"
       },
       {
-        "id": "연산자 모델",
+        "id": "operator-model",
         "title": "연산자 모델"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "환영합니다",
+        "id": "welcome",
         "title": "환영합니다"
       },
       {
-        "id": "아바나란 무엇인가",
+        "id": "what-is-avana",
         "title": "Avana는 무엇입니까?"
       },
       {
-        "id": "작동 방식",
+        "id": "how-it-works",
         "title": "작동 원리"
       },
       {
-        "id": "LP 담보 잠금 해제",
+        "id": "unlocking-lp-collateral",
         "title": "왜 LP 담보가 중요한가"
       },
       {
-        "id": "건축",
+        "id": "architecture",
         "title": "건축"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "범위 및 시스템 아키텍처",
+        "id": "scope-and-system-architecture",
         "title": "범위 및 시스템 아키텍처"
       },
       {
-        "id": "엄격성-철학",
+        "id": "severity-philosophy",
         "title": "중대성 철학"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "보안 문제",
+        "id": "security-challenges",
         "title": "보안 문제"
       },
       {
-        "id": "다층 보안",
+        "id": "multi-layer-security",
         "title": "다층 보안"
       },
       {
-        "id": "핵심 계약 표면",
+        "id": "core-contract-surfaces",
         "title": "핵심 계약 표면"
       },
       {
-        "id": "신뢰 경계",
+        "id": "trust-boundaries",
         "title": "신뢰 경계"
       },
       {
-        "id": "감사 준비",
+        "id": "audit-readiness",
         "title": "감사 준비"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "목적",
+        "id": "purpose",
         "title": "목적"
       },
       {
-        "id": "자금 조달 접근 방식",
+        "id": "funding-approach",
         "title": "자금 조달 접근 방식"
       },
       {
-        "id": "활성 경로",
+        "id": "activation-path",
         "title": "활성 경로"
       },
       {
-        "id": "보장 범위",
+        "id": "coverage-boundary",
         "title": "커버리지 경계"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "개요",
+        "id": "overview",
         "title": "개요"
       },
       {
-        "id": "핵심 원칙",
+        "id": "core-principles",
         "title": "핵심 원칙"
       },
       {
-        "id": "역할",
+        "id": "roles",
         "title": "역할"
       },
       {
-        "id": "업데이트 흐름",
+        "id": "update-flow",
         "title": "플로우 업데이트"
       },
       {
-        "id": "매개변수 클래스",
+        "id": "parameter-classes",
         "title": "매개변수 클래스"
       },
       {
-        "id": "공개",
+        "id": "public-disclosure",
         "title": "공개"
       },
       {
-        "id": "비상 조치",
+        "id": "emergency-actions",
         "title": "응급 조치"
       }
     ],

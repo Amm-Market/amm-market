@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "cách-hoạt-động",
+        "id": "how-it-works",
         "title": "Cách hoạt động"
       },
       {
-        "id": "giá trị có thể vay mượn",
+        "id": "borrowable-value",
         "title": "Giá trị có thể vay"
       },
       {
-        "id": "ghi chú",
+        "id": "notes",
         "title": "Ghi chú"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "tính toán",
+        "id": "calculation",
         "title": "Tính toán"
       },
       {
-        "id": "vòng sức khỏe",
+        "id": "health-bands",
         "title": "Dải giám sát"
       },
       {
-        "id": "đường dẫn phản hồi",
+        "id": "response-path",
         "title": "Đường phản hồi"
       },
       {
-        "id": "hành động của người dùng",
+        "id": "user-actions",
         "title": "Hành động của người dùng"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "các loại chương trình",
+        "id": "program-types",
         "title": "Các loại chương trình"
       },
       {
-        "id": "nguyên tắc phân phối",
+        "id": "distribution-principles",
         "title": "Nguyên tắc phân phối"
       },
       {
-        "id": "khẳng định và hòa giải",
+        "id": "claiming-and-reconciliation",
         "title": "Yêu cầu & Hòa giải"
       },
       {
-        "id": "trạng thái",
+        "id": "status",
         "title": "Tình trạng hiện tại"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "điểm nhập vốn",
+        "id": "capital-entry-point",
         "title": "Điểm nhập vốn"
       },
       {
-        "id": "lợi suất điều chỉnh theo rủi ro",
+        "id": "risk-adjusted-yield",
         "title": "Lợi suất đã điều chỉnh rủi ro"
       },
       {
-        "id": "kiểm soát rủi ro động",
+        "id": "dynamic-risk-controls",
         "title": "Kiểm soát rủi ro năng động"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "trải nghiệm người dùng",
+        "id": "user-experience",
         "title": "Trải nghiệm người dùng"
       },
       {
-        "id": "ví dụ-dòng",
+        "id": "example-flow",
         "title": "Ví dụ về luồng"
       },
       {
-        "id": "kiến trúc ba tầng",
+        "id": "three-tier-architecture",
         "title": "Kiến trúc ba tầng"
       },
       {
-        "id": "dòng dữ liệu",
+        "id": "data-flow",
         "title": "Dòng dữ liệu"
       },
       {
-        "id": "trách nhiệm được giao",
+        "id": "spoke-responsibilities",
         "title": "Trách nhiệm được phân công"
       },
       {
-        "id": "vai trò trung tâm",
+        "id": "hub-role",
         "title": "Aave v4 Vai Trò Trung Tâm"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "giao diện-vs-giao thức",
+        "id": "interface-vs-protocol",
         "title": "Giao diện vs Giao thức"
       },
       {
-        "id": "tiết lộ",
+        "id": "disclosure",
         "title": "Tiết lộ"
       },
       {
-        "id": "sử dụng ngân khố",
+        "id": "treasury-usage",
         "title": "Sử dụng Kho bạc"
       },
       {
-        "id": "ghi chú-tích hợp",
+        "id": "integration-notes",
         "title": "Ghi chú về tích hợp"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "kiểm tra vay mượn",
+        "id": "borrow-checks",
         "title": "Séc vay"
       },
       {
-        "id": "kiểm tra sức khỏe",
+        "id": "health-check",
         "title": "Kiểm tra sức khỏe"
       },
       {
-        "id": "kế toán nội bộ",
+        "id": "internal-accounting",
         "title": "Kế toán nội bộ"
       },
       {
-        "id": "tài sản có thể vay mượn",
+        "id": "borrowable-assets",
         "title": "Tài sản có thể vay mượn"
       },
       {
-        "id": "khả năng vay mượn",
+        "id": "borrowing-power",
         "title": "Khả năng vay mượn"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "cách-hoạt-động",
+        "id": "how-it-works",
         "title": "Cách hoạt động"
       },
       {
-        "id": "kiểm tra sức khỏe",
+        "id": "health-checks",
         "title": "Kiểm tra sức khỏe"
       },
       {
-        "id": "kế toán phí",
+        "id": "fee-accounting",
         "title": "Kế toán phí"
       },
       {
-        "id": "lợi ích chính",
+        "id": "key-benefits",
         "title": "Lợi ích chính"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "vay thêm",
+        "id": "borrowing-more",
         "title": "Vay thêm"
       },
       {
-        "id": "giám sát sức khỏe",
+        "id": "monitoring-health",
         "title": "Theo dõi sức khỏe"
       },
       {
-        "id": "kiểm soát vận hành",
+        "id": "operational-control",
         "title": "Kiểm soát vận hành"
       },
       {
-        "id": "thay đổi vị trí",
+        "id": "position-changes",
         "title": "Thay đổi vị trí"
       },
       {
-        "id": "ràng buộc khóa",
+        "id": "key-constraints",
         "title": "Ràng buộc chính"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "dòng tiền gửi",
+        "id": "deposit-flow",
         "title": "Dòng tiền gửi"
       },
       {
-        "id": "chi tiết kỹ thuật",
+        "id": "technical-details",
         "title": "Chi tiết kỹ thuật"
       },
       {
-        "id": "token-lp-được-hỗ-trợ",
+        "id": "supported-lp-tokens",
         "title": "Các loại vị trí được hỗ trợ LP"
       },
       {
-        "id": "sau khi gửi tiền",
+        "id": "after-deposit",
         "title": "Sau khi gửi tiền"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "quy trình hoàn trả",
+        "id": "repay-process",
         "title": "Quy trình hoàn trả"
       },
       {
-        "id": "chi tiết kỹ thuật",
+        "id": "technical-details",
         "title": "Chi tiết kỹ thuật"
       },
       {
-        "id": "tình huống thanh lý",
+        "id": "liquidation-scenario",
         "title": "Khi Việc Thanh Toán Là Khẩn Cấp"
       },
       {
-        "id": "trả toàn bộ",
+        "id": "full-repayment",
         "title": "Trả toàn bộ"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "quy trình rút tiền",
+        "id": "withdrawal-process",
         "title": "Quy trình rút tiền"
       },
       {
-        "id": "sửa đổi vị trí",
+        "id": "position-modifications",
         "title": "Sửa đổi vị trí"
       },
       {
-        "id": "sau khi rút",
+        "id": "after-withdrawal",
         "title": "Sau khi rút"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "tiêu chí đánh giá",
+        "id": "review-criteria",
         "title": "Tiêu chí đánh giá"
       },
       {
-        "id": "gia đình hồ bơi",
+        "id": "pool-families",
         "title": "Gia đình hồ bơi"
       },
       {
-        "id": "ứng dụng rủi ro",
+        "id": "risk-application",
         "title": "Ứng dụng Rủi ro"
       },
       {
-        "id": "ghi chú-tích hợp",
+        "id": "integration-notes",
         "title": "Ghi chú về tích hợp"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "mô hình tích hợp",
+        "id": "integration-model",
         "title": "Mô hình tích hợp"
       },
       {
-        "id": "đối tác-kiểm soát",
+        "id": "partner-controls",
         "title": "Kiểm soát đối tác"
       },
       {
-        "id": "ghi chú phát hành",
+        "id": "launch-notes",
         "title": "Ghi chú phát hành"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "bộ công cụ ứng dụng",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "địa điểm-gia đình",
+        "id": "venue-families",
         "title": "Các gia đình địa điểm"
       },
       {
-        "id": "trạng thái kích hoạt",
+        "id": "enablement-status",
         "title": "Trạng thái kích hoạt"
       },
       {
-        "id": "yêu cầu đánh giá",
+        "id": "review-requirements",
         "title": "Yêu cầu đánh giá"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "giao diện oracle",
+        "id": "oracle-interface",
         "title": "Giao diện Oracle"
       },
       {
-        "id": "kiến trúc đa tầng",
+        "id": "multi-layer-architecture",
         "title": "Kiến trúc đa tầng"
       },
       {
-        "id": "xử lý bằng tay khéo léo",
+        "id": "dex-handling",
         "title": "Xử lý riêng cho DEX"
       },
       {
-        "id": "tính toán TWAP",
+        "id": "twap-computation",
         "title": "Tính toán TWAP"
       },
       {
-        "id": "biện pháp an toàn",
+        "id": "safety-measures",
         "title": "An toàn & Phòng ngừa thao túng"
       },
       {
-        "id": "tham-số-có-thể-cấu-hình",
+        "id": "configurable-parameters",
         "title": "Các tham số có thể cấu hình"
       }
     ],
@@ -968,10 +968,10 @@
       "Curve Ổn định/Ổn định ERC-20 LPs",
       "Nguồn dữ liệu stablecoin bên ngoài + kiểm tra trạng thái pool + xác minh TWAP",
       "Giá ngoài neo các tài sản trong khi số dư quỹ và tích lũy phí quyết định giá trị tài sản bảo đảm chiết khấu.",
-      "xdfq192abf5034io6p1n",
+      "Các LP ERC-20 của Uniswap V2",
       "Chainlink + tái cấu trúc dự trữ + xác minh TWAP",
       "Các token tiêu chuẩn LP được định giá dựa trên số dư cơ bản được tái cấu trúc, với TWAP được sử dụng như một phương pháp kiểm tra chéo chống thao túng.",
-      "0hcvzp0k10w7mz9tm9ji",
+      "NFT LPs của Uniswap V3",
       "Chainlink + phân rã vị trí + kiểm tra tick/TWAP",
       "NFT được phân tích theo tính thanh khoản, phạm vi hoạt động và giá hiện tại, sau đó cắt giảm để tính giá trị thanh lý có thể thu hồi.",
       "Balancer Đa tài sản LPs",
@@ -1006,8 +1006,8 @@
       "Ghi chú",
       "Tính toán TWAP bởi DEX",
       "TWAP là các đầu vào xác minh. Chúng nằm cạnh giá tài sản bên ngoài và việc tái tạo vị thế theo kiểu xác định để kiểm tra xem trạng thái của pool đang được quan sát có nhất quán với một đường thoát đáng tin cậy hay không. Chúng giúp loại bỏ các biến động đáng ngờ hoặc tồn tại ngắn, nhưng chúng không thay thế mô hình oracle rộng hơn một cách độc lập.",
-      "cs2bek30gsf2q7edjxh2",
-      "glz7q4qrorugc53kenrj",
+      "Uniswap V2 & SushiSwap",
+      "Uniswap V3",
       "Các kiểm tra nhận biết vị trí kết hợp phạm vi tick, phân phối thanh khoản và phí tích lũy để giao thức có thể xác minh mức độ tiếp xúc token phân tách của từng NFT LP thay vì coi NFT là một hộp đen.",
       "Balancer",
       "Các quan sát token có trọng số được kết hợp với trọng số quỹ để xác thực phân chia tồn kho đa tài sản trước khi oracle gán giá trị tài sản đảm bảo thận trọng.",
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "vai trò trong hệ thống",
+        "id": "role-in-system",
         "title": "Vai trò trong Hệ thống"
       },
       {
-        "id": "mô hình bộ điều hợp",
+        "id": "adapter-model",
         "title": "Mô hình Adapter"
       },
       {
-        "id": "hoạt-động được hỗ trợ",
+        "id": "supported-operations",
         "title": "Các hoạt động được hỗ trợ"
       },
       {
-        "id": "trạng thái triển khai",
+        "id": "deployment-status",
         "title": "Trạng thái triển khai"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "khái niệm cốt lõi",
+        "id": "core-concepts",
         "title": "Các Khái Niệm Cốt Lõi"
       },
       {
-        "id": "các thành phần giao thức",
+        "id": "protocol-components",
         "title": "Các thành phần của giao thức"
       },
       {
-        "id": "thuật ngữ tài chính",
+        "id": "financial-terms",
         "title": "Thuật ngữ Tài chính"
       },
       {
-        "id": "rủi ro-bảo mật",
+        "id": "risk-security",
         "title": "Rủi ro & An ninh"
       },
       {
-        "id": "số liệu",
+        "id": "metrics",
         "title": "Chỉ số"
       },
       {
-        "id": "tuyên bố từ chối trách nhiệm",
+        "id": "disclaimers",
         "title": "Miễn trừ trách nhiệm"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "cốt lõi nhận thức",
+        "id": "core-insight",
         "title": "Nhận thức cốt lõi"
       },
       {
-        "id": "luồng người dùng",
+        "id": "user-flow",
         "title": "Mô hình vay mượn"
       },
       {
-        "id": "định giá oracle",
+        "id": "oracle-valuation",
         "title": "Oracle & Định giá"
       },
       {
-        "id": "quy trình vay mượn",
+        "id": "borrowing-process",
         "title": "Khả năng vay mượn"
       },
       {
-        "id": "giám sát sức khỏe",
+        "id": "health-monitoring",
         "title": "Sức khỏe & Thanh lý"
       },
       {
-        "id": "thu phí",
+        "id": "fee-collection",
         "title": "Xử lý phí"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "phạm vi testnet",
+        "id": "testnet-scope",
         "title": "Phạm vi Testnet"
       },
       {
-        "id": "cách-đánh-giá",
+        "id": "how-to-evaluate",
         "title": "Cách đánh giá"
       },
       {
-        "id": "khung lộ trình",
+        "id": "roadmap-framing",
         "title": "Khung lộ trình"
       },
       {
-        "id": "chiến-dịch-và-trạng-thái",
+        "id": "campaigns-and-status",
         "title": "Chiến dịch & Trạng thái"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "tuyên bố từ chối trách nhiệm chung",
+        "id": "general-disclaimer",
         "title": "Tuyên bố từ chối trách nhiệm chung"
       },
       {
-        "id": "không-tư-vấn-tài-chính",
+        "id": "no-financial-advice",
         "title": "Không có tư vấn tài chính"
       },
       {
-        "id": "rủi ro",
+        "id": "risks",
         "title": "Rủi ro"
       },
       {
-        "id": "không có bảo hành",
+        "id": "no-warranties",
         "title": "Không có bảo đảm"
       },
       {
-        "id": "giới hạn trách nhiệm",
+        "id": "limitation-of-liability",
         "title": "Giới hạn Trách nhiệm"
       },
       {
-        "id": "chính-sách-liên-quan",
+        "id": "related-policies",
         "title": "Chính sách liên quan"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "hạn chế truy cập",
+        "id": "access-restrictions",
         "title": "Hạn chế truy cập"
       },
       {
-        "id": "lãnh thổ bị hạn chế",
+        "id": "restricted-jurisdictions",
         "title": "Lãnh thổ bị hạn chế"
       },
       {
-        "id": "tuân thủ",
+        "id": "compliance",
         "title": "Tuân thủ"
       },
       {
-        "id": "chính-sách-liên-quan",
+        "id": "related-policies",
         "title": "Chính sách liên quan"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "lp có thể thay thế được",
+        "id": "fungible-lp",
         "title": "Ví dụ về tính thay thế LP"
       },
       {
-        "id": "lỏng tập trung",
+        "id": "concentrated-liquidity",
         "title": "Ví dụ về thanh khoản tập trung"
       },
       {
-        "id": "nft-thanh khoản",
+        "id": "nft-liquidity",
         "title": "Thanh lý NFT"
       },
       {
-        "id": "tài khoản đa vị trí",
+        "id": "multi-position-account",
         "title": "Tài khoản nhiều vị trí"
       },
       {
-        "id": "trường hợp biên",
+        "id": "edge-cases",
         "title": "Trường hợp biên"
       },
       {
-        "id": "tóm tắt",
+        "id": "summary",
         "title": "Tóm tắt"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "tham chiếu-chính thức",
+        "id": "canonical-reference",
         "title": "Tài liệu chính sách liên quan"
       },
       {
-        "id": "chuỗi thời gian chạy",
+        "id": "runtime-sequence",
         "title": "Trình tự thời gian chạy"
       },
       {
-        "id": "chuyển đổi trạng thái",
+        "id": "state-transitions",
         "title": "Chuyển đổi trạng thái"
       },
       {
-        "id": "ghi chú của điều hành viên",
+        "id": "operator-notes",
         "title": "Ghi chú của điều hành viên"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "mô hình phủ sóng",
+        "id": "coverage-model",
         "title": "Mô hình phủ sóng"
       },
       {
-        "id": "yêu cầu thực thi",
+        "id": "execution-requirements",
         "title": "Yêu cầu thực hiện"
       },
       {
-        "id": "ghi chú vận hành",
+        "id": "operational-notes",
         "title": "Ghi chú vận hành"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "ba lớp",
+        "id": "three-layers",
         "title": "Ba Lớp"
       },
       {
-        "id": "quy tắc cốt lõi",
+        "id": "core-rules",
         "title": "Quy tắc cốt lõi"
       },
       {
-        "id": "độ phức tạp lp",
+        "id": "lp-complexity",
         "title": "LP Phức tạp Tài sản Thế chấp"
       },
       {
-        "id": "các con đường thanh lý",
+        "id": "liquidation-pathways",
         "title": "Các con đường thanh lý"
       },
       {
-        "id": "trạng thái vị trí",
+        "id": "position-state",
         "title": "Trạng thái vị trí"
       },
       {
-        "id": "xử lý thặng dư",
+        "id": "surplus-handling",
         "title": "Xử lý thặng dư"
       },
       {
-        "id": "mô hình-điều hành",
+        "id": "operator-model",
         "title": "Mô hình vận hành"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "chào mừng",
+        "id": "welcome",
         "title": "Chào mừng"
       },
       {
-        "id": "avana-là-gì",
+        "id": "what-is-avana",
         "title": "Avana là gì?"
       },
       {
-        "id": "cách-hoạt-động",
+        "id": "how-it-works",
         "title": "Cách hoạt động"
       },
       {
-        "id": "mở khóa tài sản đảm bảo LP",
+        "id": "unlocking-lp-collateral",
         "title": "Tại sao LP Tài sản đảm bảo lại quan trọng"
       },
       {
-        "id": "kiến trúc",
+        "id": "architecture",
         "title": "Kiến trúc"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "phạm-vi-và-kiến-trúc-hệ-thống",
+        "id": "scope-and-system-architecture",
         "title": "Phạm vi & Kiến trúc Hệ thống"
       },
       {
-        "id": "triết lý-nghiêm trọng",
+        "id": "severity-philosophy",
         "title": "Triết lý về mức độ nghiêm trọng"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "thách thức an ninh",
+        "id": "security-challenges",
         "title": "Thách thức về an ninh"
       },
       {
-        "id": "bảo mật nhiều lớp",
+        "id": "multi-layer-security",
         "title": "Bảo mật nhiều lớp"
       },
       {
-        "id": "bề-mặt-hợp-đồng-cốt-lõi",
+        "id": "core-contract-surfaces",
         "title": "Bề mặt hợp đồng cốt lõi"
       },
       {
-        "id": "ranh giới tin tưởng",
+        "id": "trust-boundaries",
         "title": "Ranh giới tin cậy"
       },
       {
-        "id": "sẵn sàng kiểm toán",
+        "id": "audit-readiness",
         "title": "Sẵn sàng kiểm toán"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "mục đích",
+        "id": "purpose",
         "title": "Mục đích"
       },
       {
-        "id": "phương pháp tài trợ",
+        "id": "funding-approach",
         "title": "Phương pháp tài trợ"
       },
       {
-        "id": "đường dẫn kích hoạt",
+        "id": "activation-path",
         "title": "Đường kích hoạt"
       },
       {
-        "id": "ranh giới phủ sóng",
+        "id": "coverage-boundary",
         "title": "Ranh giới phủ sóng"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "tổng quan",
+        "id": "overview",
         "title": "Tổng quan"
       },
       {
-        "id": "nguyên tắc cốt lõi",
+        "id": "core-principles",
         "title": "Nguyên tắc cốt lõi"
       },
       {
-        "id": "vai trò",
+        "id": "roles",
         "title": "Vai trò"
       },
       {
-        "id": "cập nhật luồng",
+        "id": "update-flow",
         "title": "Cập nhật luồng"
       },
       {
-        "id": "lớp tham số",
+        "id": "parameter-classes",
         "title": "Các lớp tham số"
       },
       {
-        "id": "công khai",
+        "id": "public-disclosure",
         "title": "Công khai"
       },
       {
-        "id": "hành động khẩn cấp",
+        "id": "emergency-actions",
         "title": "Các hành động khẩn cấp"
       }
     ],

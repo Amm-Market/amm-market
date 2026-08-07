@@ -1,317 +1,317 @@
 {
   "categories": [
     {
-      "id": "ogólny",
+      "id": "general",
       "name": "Ogólne pytania",
       "summary": "",
       "questions": [
         {
-          "id": "co-to-jest-avana",
+          "id": "what-is-avana",
           "q": "Co to jest Avana?",
           "a": "Avana to protokół pożyczkowy zbudowany dla zabezpieczenia LP. Pozwala użytkownikom deponować wspierane pozycje AMM, utrzymywać te pozycje aktywne w bazowym funduszu i pożyczać przeciwko nim za pośrednictwem infrastruktury Aave v4.\n\nGłówna idea polega na tym, że kapitał LP nie musi stać się bezużyteczny tylko dlatego, że znajduje się w funduszu. Avana zamienia wspierane pozycje LP w zabezpieczenie, które może wspierać kredyt, podczas gdy oryginalna pozycja nadal wspiera wymiany, generuje opłaty i pozostaje powiązana z rynkiem AMM."
         },
         {
-          "id": "jaki-problem-rozwiazuje-avana",
+          "id": "what-problem-does-avana-solve",
           "q": "Jaki problem rozwiązuje Avana?",
           "a": "Dostawcy płynności często muszą usunąć płynność, zanim będą mogli pożyczyć kapitał. Oznacza to opuszczenie puli, rezygnację z udziału w opłatach i przerwanie pozycji rynkowej, którą już zbudowali.\n\nAvana rozwiązuje to, pozwalając na wykorzystanie wspieranych pozycji LP jako zabezpieczenia. Pozycja LP pozostaje aktywna, Avana śledzi i wycenia pozycję, a Aave v4 zajmuje się rozliczeniami po stronie pożyczki za pomocą wewnętrznego tokena zabezpieczenia w skarbcu."
         },
         {
-          "id": "jak-avana-różni-się-od-standardowego-pożyczania",
+          "id": "how-is-avana-different-from-standard-lending",
           "q": "Czym Avana różni się od standardowego rynku pożyczkowego?",
           "a": "Standardowe rynki pożyczkowe zazwyczaj traktują zabezpieczenie jako proste salda tokenów: ETH, BTC, stablecoiny lub inne aktywa ERC-20. Avana jest zbudowane dla zabezpieczenia, które zmienia kształt w czasie. Pozycje LP mogą zawierać wiele aktywów, generować opłaty, zmieniać się wraz z ruchem ceny, stawać się jednostronne lub wymagać specjalnej ścieżki wycofania.\n\nZ tego powodu Avana podtrzymuje zabezpieczenie na poziomie rynku LP. Każdy wspierany pool lub rodzina LP może mieć własną logikę wyceny, czynniki zabezpieczenia, pożyczalne aktywa, założenia dotyczące likwidacji i limity ryzyka."
         },
         {
-          "id": "które-amms-mogą-wspierać-avana",
+          "id": "which-amms-can-avana-support",
           "q": "Które AMMs może wspierać Avana?",
           "a": "Avana wspiera starannie wybrane rynki zabezpieczeń LP w ramach AMM, takich jak Uniswap, Balancer, Curve i Aerodrome w miarę uruchamiania rynków. Wsparcie jest przyznawane każdemu poolowi osobno, a nie automatycznie wszystkim poolom na danej platformie.\n\nKażdy wspierany rynek ma jasno określone wymagania: wiarygodne wyceny aktywów, odpowiednią głębokość płynności, określoną ścieżkę wycofania, limity rynkowe oraz ustawienia zabezpieczeń zgodne z typem poolu. Dlatego rynki startowe pozostają starannie wyselekcjonowane, zanim rozszerzy się ich szersze pokrycie."
         },
         {
-          "id": "czy-avana-zastępuje-amm",
+          "id": "does-avana-replace-the-amm",
           "q": "Czy Avana zastępuje AMM, tam gdzie znajduje się moja płynność?",
           "a": "Nie. AMM nadal obsługuje zamiany, stan puli, ruchy cen i generowanie opłat. Avana dodaje warstwę zabezpieczenia i kredytu wokół wspieranych pozycji LP.\n\nKiedy deponujesz kwalifikującą się pozycję do Avana, protokół śledzi rzeczywiste zabezpieczenie LP i łączy je z rozliczeniami po stronie pożyczek. Podstawowe AMM pozostaje miejscem, gdzie pozycja płynności istnieje i generuje opłaty."
         }
       ]
     },
     {
-      "id": "architektura protokołu",
+      "id": "protocol-architecture",
       "name": "Architektura protokołu",
       "summary": "",
       "questions": [
         {
-          "id": "jak-działa-avana-na-wysokim-poziomie",
+          "id": "how-does-avana-work-at-a-high-level",
           "q": "Jak Avana działa na wysokim poziomie?",
           "a": "Avana działa w trzech krokach. Najpierw użytkownik deponuje obsługiwaną pozycję LP w Avana. Następnie Avana ocenia pozycję, analizując jej bazowe aktywa, strukturę pule, zmienność, korelacje, głębokość płynności oraz ryzyko likwidacji. Po trzecie, kiedy pozycja przejdzie kontrole rynkowe, użytkownik może pożyczyć w oparciu o jej wartość skorygowaną o ryzyko.\n\nPozycja LP pozostaje aktywna w AMM. Avana zarządza rejestrem zabezpieczenia, wyceną i specyficzną dla LP logiką ryzyka, podczas gdy Aave v4 zajmuje się kredytem po stronie pożyczającego i księgowością poprzez połączony model Hub-and-Spoke."
         },
         {
-          "id": "dlaczego-aave-v4-hub-i-odnoga",
+          "id": "why-aave-v4-hub-and-spoke",
           "q": "Dlaczego Avana używa infrastruktury typu Hub-and-Spoke Aave v4?",
           "a": "Avana używa Aave v4, ponieważ LP zabezpieczenia potrzebują jednocześnie wspólnej płynności i logiki izolowanego ryzyka. Hub obsługuje wspólną warstwę monetarną: rezerwy, księgowość, modele stóp procentowych i globalną koordynację kredytową.\n\nSpokes zajmują się pracą specyficzną dla LP: rejestracją zabezpieczeń w puli, wyceną pozycji, egzekwowaniem ryzyka i realizacją likwidacji. Pozwala to stabilnym pulom, skorelowanym parom, zmiennym parom i rynkom z skoncentrowaną płynnością korzystać z zasad, których rzeczywiście potrzebują, zamiast być zmuszonym do stosowania jednego uniwersalnego modelu ryzyka."
         },
         {
-          "id": "co to jest pożyczoneń",
+          "id": "what-is-a-borrow-spoke",
           "q": "Czym jest pożyczone ramię?",
           "a": "Borrow Spoke to izolowany rynek LP-zabezpieczony. Decyduje, które pule są obsługiwane, jak wyceniana jest każda pozycja LP, jakie obowiązują współczynniki zabezpieczenia, które aktywa można pożyczać oraz jak działa likwidacja na tym rynku.\n\nBorrow Spokes są rozdzielone, ponieważ pozycje LP nie zachowują się tak samo. Stablecoin LP, skorelowany ETH-stawiony ETH LP oraz niestabilny token zarządzający LP wymagają różnych ustawień ryzyka, różnych limitów i czasami różnych sposobów likwidacji."
         },
         {
-          "id": "czym-są-tokeny-skarbcowe",
+          "id": "what-are-vault-tokens",
           "q": "Czym są Avana tokeny skarbca?",
           "a": "Tokeny skarbca są wewnętrznymi ERC-20 aktywami księgowymi, które reprezentują zatwierdzone LP zabezpieczenie po stronie systemu Aave. Na przykład, obsługiwana pozycja LINK/ETH może odpowiadać tokenowi zabezpieczenia w stylu skarbca LINKETH, podczas gdy pozycja WETH/USDC może odpowiadać tokenowi w stylu skarbca WETHUSDC. \n\nToken skarbca jest mostem. Avana śledzi rzeczywistą pozycję LP i jej wartość, Adapter Aave dostarcza odpowiadający token skarbca do Aave v4, a Aave używa tego tokena do księgowania zabezpieczenia. Użytkownik nie pożycza wyłącznie na bazie abstrakcyjnej powłoki; token skarbca pozostaje zabezpieczony śledzoną pozycją LP stojącą za nim."
         },
         {
-          "id": "jakie-są-główne-moduły-protokółów",
+          "id": "what-are-the-main-protocol-modules",
           "q": "Jakie są główne części protokołu Avana?",
           "a": "Avana jest zbudowany wokół kilku wąskich modułów. Menedżer pozycji LP rejestruje rzeczywistą pozycję LP, w tym właściciela, pulę, parę, poziom opłat, zakres, płynność, bieżącą wartość, naliczone opłaty i status zabezpieczenia. Moduł ryzyka zatwierdza pulę, aktywa, głębokość, zakres i kapitalizację rynkową przed tym, jak pozycja zabezpiecza dług.\n\nModuł zabezpieczenia pobiera ceny, wycenia pozycję, decyduje o obsługiwanej kwocie zabezpieczenia i tworzy lub usuwa wewnętrzny token sejfu. Adapter Aave obsługuje stronę skierowaną do Aave, dostarczając zabezpieczenie sejfu, wycofując je i utrzymując integrację Aave oddzielnie od logiki specyficznej dla LP."
         }
       ]
     },
     {
-      "id": "zastaw LP",
+      "id": "lp-collateral",
       "name": "LP Zabezpieczenie",
       "summary": "",
       "questions": [
         {
-          "id": "co-się-dzieje-gdy-wpłacam-zabezpieczenie-lp",
+          "id": "what-happens-when-i-deposit-lp-collateral",
           "q": "Co się stanie, gdy wpłacę LP zabezpieczenia?",
           "a": "Kiedy wpłacasz obsługiwaną pozycję LP, Avana rejestruje pozycję i kieruje ją do odpowiedniego Borrow Spoke. Protokół weryfikuje, czy pula jest zatwierdzona, rekonstruuje pozycję, sprawdza jej ustawienia ryzyka i oblicza wartość zabezpieczenia przypisaną do tego rynku.\n\nGdy pozycja przejdzie te kontrole, Avana tworzy odpowiadający token wewnętrzny dla rozliczeń po stronie pożyczki. Wpłacanie nie powoduje automatycznego pożyczania aktywów; tworzy możliwość pożyczki, z której konto może korzystać, dopóki pozostaje w dobrej kondycji, a rynek ma dostępną płynność."
         },
         {
-          "id": "czy-moja-lp-pozostaje-aktywna",
+          "id": "does-my-lp-stay-active",
           "q": "Czy moja pozycja LP pozostaje aktywna po wpłacie?",
           "a": "Tak. Obsługiwane LP pozycje pozostają aktywne, dopóki służą jako zabezpieczenie. Płynność pozostaje powiązana z pozycją AMM, więc pula nadal przetwarza wymiany, a pozycja nadal generuje opłaty i zachęty zgodnie z zasadami AMM.\n\nCzynności, które zmieniają wartość zabezpieczenia, są sprawdzane przez Avana, dopóki dług jest otwarty. Wycofanie płynności, pobranie opłat, zmiana zakresu lub modyfikacja pozycji przechodzi przez Borrow Spoke, ponieważ te działania wpływają na wartość zabezpieczającą pożyczkę."
         },
         {
-          "id": "czy-mogę-ubiegać-się-o-opłaty-lp",
+          "id": "can-i-claim-lp-fees",
           "q": "Czy mogę ubiegać się o LP opłat podczas pożyczania?",
           "a": "Avana oddziela kapitał główny od naliczonych opłat w swoim modelu wyceny. Pozwala to protokołowi rozpoznawać przychody z opłat i uwalniać należne opłaty przy jednoczesnym utrzymaniu aktywnego kapitału LP jako zabezpieczenia.\n\nRoszczenia dotyczące opłat przechodzą przez kontrole stanu przed i po. Jeśli usunięcie wartości opłaty spowoduje, że konto znajdzie się poniżej wymaganego progu zabezpieczenia, Avana blokuje roszczenie, aż użytkownik spłaci dług lub doda więcej zabezpieczenia."
         },
         {
-          "id": "czy-opłaty-lp-są-częścią-wartości-zabezpieczenia",
+          "id": "are-lp-fees-part-of-collateral-value",
           "q": "Czy opłaty LP są uwzględnione w wartości zabezpieczenia?",
           "a": "Naliczane opłaty są śledzone oddzielnie od głównej płynności. Model wyroczni Avana rozróżnia wartość główną od wartości opłat, dzięki czemu protokół wie, jaka część pozycji stanowi podstawową płynność, a jaka jest dochodem z tytułu opłat do roszczenia.\n\nTo rozróżnienie ma znaczenie podczas likwidacji. Avana stosuje naliczone opłaty przed główną płynnością, gdy trasa rynkowa na to pozwala, zmniejszając ilość podstawowej pozycji LP, którą trzeba zlikwidować, aby pokryć dług."
         },
         {
-          "id": "kiedy-mogę-wycofać-zabezpieczenie",
+          "id": "when-can-i-withdraw-collateral",
           "q": "Kiedy mogę wycofać LP zabezpieczenia?",
           "a": "Możesz wycofać zabezpieczenie po całkowitej spłacie długu lub po tym, jak Avana potwierdzi, że pozostałe konto nadal przechodzi kontrole stanu po wycofaniu. Pełna spłata jest najczystszą ścieżką wycofania, ponieważ pozycja LP nie zabezpiecza już otwartego długu.\n\nCzęściowe zmiany zabezpieczenia przeprowadzane są przez Borrow Spoke. Avana przelicza konto po usunięciu lub modyfikacji żądanej pozycji LP, a następnie zwalnia zabezpieczenie tylko wtedy, gdy pozostałe zatwierdzone zabezpieczenie nadal wspiera niespłacony dług."
         }
       ]
     },
     {
-      "id": "wycena-orakli",
+      "id": "valuation-oracles",
       "name": "Wycena i Orakle",
       "summary": "",
       "questions": [
         {
-          "id": "jak-cena-avana-lp-zabezpieczenie",
+          "id": "how-does-avana-price-lp-collateral",
           "q": "Jak Avana wycenia LP zabezpieczenie?",
           "a": "Avana ceny LP zabezpieczenia poprzez rekonstrukcję pozycji i wycenę znajdujących się w niej aktywów. W przypadku wymiennych LP protokół określa wartość na podstawie zewnętrznych cen aktywów oraz rekonstrukcji salda puli. W przypadku skoncentrowanej płynności dzieli pozycję na płynność, zakres, bieżący tick, ekspozycję tokenów i naliczone opłaty.\n\nNastępnie wynik jest dyskontowany do możliwej do odzyskania wartości zabezpieczenia. Maksymalna kwota pożyczki opiera się na tym, co pozycja może realistycznie wspierać zgodnie z założeniami ryzyka rynku, a nie na optymistycznej wartości netto aktywów."
         },
         {
-          "id": "jak-avana-redukuje-ryzyko-oracle",
+          "id": "how-does-avana-reduce-oracle-risk",
           "q": "Jak Avana zmniejsza ryzyko związane z oraklem i cenami?",
           "a": "Avana używa dwuwróżkowego systemu ustalania cen dla zabezpieczenia LP. Strumienie cen Chainlink zapewniają główny punkt odniesienia dla aktywów bazowych, podczas gdy TWAPy pochodzące z AMM pełnią rolę niezależnej warstwy weryfikacyjnej czerpiąc dane z płynności on-chain.\n\nMoc pożyczkowa jest przyznawana tylko wtedy, gdy źródła cen mieszczą się w dopuszczalnym zakresie rynku. Redukuje to narażenie na manipulacje flash-loan, przejściowe zniekształcenia cen AMM, nieaktualne aktualizacje i niewłaściwe oznaczenia zabezpieczeń, które tworzą niebezpieczny dług."
         },
         {
-          "id": "jaka-jest-wartość-odzyskiwalna",
+          "id": "what-is-recoverable-value",
           "q": "Co to jest wartość możliwa do odzyskania?",
           "a": "Wartość możliwa do odzyskania to zdyskontowana wartość zabezpieczenia Avana używana do decyzji o pożyczaniu i likwidacji. Odzwierciedla, ile warta jest pozycja LP po uwzględnieniu jej zamknięcia, sprzedaży, przeniesienia lub ścieżki rozliczenia w warunkach stresu.\n\nWartość możliwa do odzyskania jest niższa niż teoretyczna wartość LP, gdy droga likwidacji uwzględnia poślizg, wpływ na cenę, ruch w zakresie, zmienność, obsługę opłat lub ograniczoną głębokość trasy. Avana ustala wielkość pożyczki w oparciu o wartość możliwą do odzyskania, ponieważ to ta wartość chroni dług."
         },
         {
-          "id": "dlaczego-pozycje-o-skoncentrowanej-płynności-są-traktowane-ostrożnie",
+          "id": "why-are-concentrated-liquidity-positions-treated-carefully",
           "q": "Dlaczego pozycje o skoncentrowanej płynności są traktowane ostrożnie?",
           "a": "Skoncentrowane pozycje płynności szybko zmieniają ekspozycję w miarę zmian ceny. Pozycja może stać się w przeważającej części jednym aktywem, wyjść poza zakres, przestać generować opłaty lub wymagać rozliczenia na poziomie całej pozycji NFT.\n\nAvana ocenia skoncentrowane pozycje, dekomponując rzeczywisty stan pozycji zamiast traktować NFT jako statyczną równowartość tokenów. Następnie rynek stosuje wskaźniki zabezpieczeń, limity i założenia likwidacyjne, które odpowiadają zakresowi, inwentarzowi i ryzyku wycofania pozycji."
         },
         {
-          "id": "jakie-dane-monitoruje-avana",
+          "id": "what-data-does-avana-monitor",
           "q": "Jakie dane rynkowe monitoruje Avana?",
           "a": "Monitory Borrow Spokes śledzą sygnały wpływające na LP jakość zabezpieczenia: skład puli, ceny tokenów, korelację aktywów, zmienność, głębokość płynności, naliczanie opłat, niezawodność źródła danych (oracla) oraz koszt likwidacji.\n\nTe sygnały wpływają na traktowanie zabezpieczenia na rynku. Stabilne i wysoko skorelowane pule otrzymują inne limity niż zmienne lub rzadko handlowane pary, ponieważ ich profile likwidacji i poślizgu są inne."
         }
       ]
     },
     {
-      "id": "pożyczanie",
+      "id": "borrowing",
       "name": "Rynki pożyczkowe",
       "summary": "",
       "questions": [
         {
-          "id": "jak-działa-pożyczanie",
+          "id": "how-does-borrowing-work",
           "q": "Jak działa pożyczanie na Avana?",
           "a": "Pożyczanie następuje po tym, jak gałąź pożyczająca przyjmie i wyceni Twoje LP zabezpieczenie. Kiedy prosisz o aktywo, gałąź sprawdza Twoją pozostałą zdolność kredytową, potwierdza, że po nowym długu pozycja pozostaje stabilna, i pobiera płynność z Huba, jeśli aktywo jest dostępne.\n\nPożyczone aktywo zostaje wysłane do użytkownika, a konto rejestruje dług poprzez warstwę księgowości po stronie pożyczki. Odsetki naliczają się z czasem, więc stan zdrowia może się zmieniać, nawet jeśli sama pozycja zabezpieczenia pozostaje niezmieniona."
         },
         {
-          "id": "jak-obliczana-jest-moc-pożyczkowa",
+          "id": "how-is-borrowing-capacity-calculated",
           "q": "Jak oblicza się zdolność kredytową?",
           "a": "Możliwość zaciągania pożyczek wynika z wartości skorygowanej o ryzyko zatwierdzonych LP pozycji w ramach Borrow Spoke. Avana rekonstruuje każdą pozycję, wycenia bazowe narażenie, stosuje traktowanie ryzyka na poziomie puli, a następnie stosuje współczynnik zabezpieczenia rynku.\n\nBorrow Spoke raportuje tę możliwość Hubowi do egzekwowania. Gdy użytkownik ma wiele zatwierdzonych pozycji na tym samym rynku, Avana agreguje ich możliwości, nadal wyceniając każdą pozycję zgodnie z własną pulą, zakresem, płynnością i założeniami ryzyka."
         },
         {
-          "id": "dlaczego-moc-pożyczki-jest-niższa-niż-wartość-lp",
+          "id": "why-is-borrow-power-lower-than-lp-value",
           "q": "Dlaczego moc pożyczkowa jest niższa niż moja wartość LP?",
           "a": "Moc pożyczkowa jest niższa, ponieważ Avana używa konserwatywnej wartości zabezpieczenia, a nie pełnej wartości LP. Pozycje LP mogą tracić na wartości w wyniku rozbieżności cen, straty tymczasowej, dryfu zakresu, stresu płynności i poślizgu likwidacyjnego.\n\nRóżnica między wartością LP a mocą pożyczkową to bufor bezpieczeństwa. Chroni on rynek, zapewniając, że zadłużenie jest dopasowane do odzyskiwalnej wartości zabezpieczenia, a nie do najlepszej wartości pokazywanej w normalnych warunkach."
         },
         {
-          "id": "jakie-aktywa-mogę-pożyczyć",
+          "id": "what-assets-can-i-borrow",
           "q": "Jakie aktywa mogę pożyczyć?",
           "a": "Aktywa możliwe do pożyczenia są określane w zależności od rynku. Avana rynki pożyczkowe koncentrują się na płynnych aktywach, takich jak główne stablecoiny, GHO, ETH, BTC oraz inne aktywa, które pasują do konfiguracji płynności, limitu i ryzyka danego rynku.\n\nInterfejs pokazuje aktywny zestaw pożyczek dla każdego rynku. Obsługiwany typ zabezpieczenia LP nie odblokowuje automatycznie wszystkich aktywów do pożyczki; każdy aktyw dłużny jest częścią konfiguracji rynku."
         },
         {
-          "id": "czy-mogę-pożyczyć-przeciwko-wielu-pozycjom",
+          "id": "can-i-borrow-against-multiple-positions",
           "q": "Czy mogę pożyczyć pod wiele pozycji LP naraz?",
           "a": "Tak, gdy pozycje są wspierane wewnątrz odpowiedniego rynku. Avana może agregować siłę pożyczkową w wielu zatwierdzonych pozycjach LP w tym samym Borrow Spoke, dając użytkownikowi jedną połączoną powierzchnię kredytową dla tego rynku.\n\nAgregacja nie łączy ryzyka bezmyślnie. Każda pozycja nadal wnosi zdolność w oparciu o własny pulę, zakres, płynność, opłaty i sposób traktowania ryzyka, a całe konto musi pozostać powyżej wymaganego progu zdrowotnego."
         }
       ]
     },
     {
-      "id": "dostarczanie-zarabianie",
+      "id": "supplying-earning",
       "name": "Dostarczanie i zarabianie",
       "summary": "",
       "questions": [
         {
-          "id": "jak-pożyczkodawcy-używają-avana",
+          "id": "how-do-lenders-use-avana",
           "q": "Jak kredytodawcy używają Avana?",
           "a": "Pożyczkodawcy dostarczają aktywa takie jak ETH, BTC, GHO, USDC, USDT lub inne obsługiwane aktywa do strony protokołu skierowanej do pożyczkodawców. Ten kapitał przepływa przez Hub, wspierając pożyczki na rynkach z zabezpieczeniem LP.\n\nPożyczkodawcy nie zarządzają zakresami LP, przejściową stratą ani operacjami dotyczącymi zabezpieczeń specyficznych dla AMM. Wypożyczalnie Spokes zajmują się underwritingiem LP i logiką likwidacji, podczas gdy kapitał pożyczkodawców zasila warstwę kredytową."
         },
         {
-          "id": "skąd-pochodzi-wydajność-dostawcy",
+          "id": "where-does-supplier-yield-come-from",
           "q": "Skąd pochodzi wydajność dostawcy?",
           "a": "Dochód dostawcy pochodzi od pożyczkobiorców płacących odsetki za dostęp do płynności zabezpieczonej LP. Model Avana łączy wspólną podstawową stopę Hub z premiami ryzyka na poziomie „spoke” powiązanymi z rynkami LP, które są finansowane.\n\nOznacza to, że dochód może odzwierciedlać zarówno normalne wykorzystanie, jak i dodatkowy popyt stworzony przez pożyczki zabezpieczone LP. Stopy nadal zmieniają się wraz ze stanem rynku, dostępną płynnością, wykorzystaniem oraz profilem ryzyka podstawowych rynków pożyczkobiorców."
         },
         {
-          "id": "czy-pożyczkodawcy-zarządzają-zabezpieczeniem-lp",
+          "id": "do-lenders-manage-lp-collateral",
           "q": "Czy pożyczkodawcy sami zarządzają LP zabezpieczeniem?",
           "a": "Nie. Pożyczkodawcy dostarczają czysty kapitał na wspierane rynki pożyczkowe. Nie wybierają LP zakresów, nie naliczają LP opłat ani nie decydują, jak konkretną pozycję AMM należy rozwiązać.\n\nTo właśnie jest celem Lend Spoke. Kapitał pożyczkodawcy wspiera wyspecjalizowany popyt pożyczkobiorców oparty na LP, podczas gdy Borrow Spokes utrzymują wycenę zabezpieczenia, kontrole stanu zdrowia i obsługę likwidacji odizolowane od przepływu pracy pożyczkodawcy."
         },
         {
-          "id": "co chroni kapitał pożyczkodawcy",
+          "id": "what-protects-lender-capital",
           "q": "Co chroni kapitał pożyczkodawcy?",
           "a": "Avana chroni kapitał pożyczkodawcy poprzez nadmiernie zabezpieczone pożyczki, konserwatywną wycenę LP, podwójne kontrole oracle, limity rynkowe, egzekwowanie wskaźnika zdrowia oraz specyficzne dla LP ścieżki likwidacji. Każde Ramię Pożyczkowe wycenia zabezpieczenie zgodnie z ryzykiem swojej własnej puli, zanim dług zostanie pobrany z płynności Huba.\n\nProtokół nadal niesie ze sobą ryzyko DeFi: ryzyko kontraktu inteligentnego, ryzyko oracle, ryzyko wykonania likwidacji oraz stres rynkowy. Avana ogranicza to ryzyko, mierząc zabezpieczenie LP na poziomie rynku, zamiast traktować każdą pozycję LP jak prosty bilans tokenów."
         }
       ]
     },
     {
-      "id": "likwidacje",
+      "id": "liquidations",
       "name": "Zdrowie i Likwidacja",
       "summary": "",
       "questions": [
         {
-          "id": "co-to-jest-czynnik-zdrowia",
+          "id": "what-is-health-factor",
           "q": "Co to jest wskaźnik zdrowia?",
           "a": "Czynnik zdrowotny mierzy zależność między wartością zabezpieczenia skorygowaną o ryzyko a zaległym zadłużeniem w ramach Borrow Spoke. Uproszczony model to skorygowana wartość zabezpieczenia podzielona przez zaległe zadłużenie.\n\nSkorygowana wartość zabezpieczenia już uwzględnia wycenę Avana’s LP, współczynniki zabezpieczenia, traktowanie ryzyka na poziomie puli oraz założenia dotyczące wartości możliwej do odzyskania. Jeśli czynnik zdrowotny spadnie poniżej granicy likwidacyjnej, pozycja staje się kwalifikowana do likwidacji."
         },
         {
-          "id": "czynnik wpływający na zdrowie",
+          "id": "what-affects-health-factor",
           "q": "Co wpływa na mój wskaźnik zdrowia?",
           "a": "Wskaźnik zdrowia zmienia się, gdy zmienia się wartość zabezpieczenia, zmienia się zadłużenie, pobierane są opłaty, zabezpieczenie jest wycofywane, dodawana jest dźwignia lub aktualizowane są parametry rynkowe. LP pozycje mogą również ulegać zmianie, ponieważ zmieniają się ceny tokenów, przesuwa się inwentarz puli, naliczają się opłaty lub skoncentrowane pozycje wychodzą poza zakres.\n\nWiększe pożyczanie obniża wskaźnik zdrowia, ponieważ rośnie zadłużenie. Spłata długu, dodanie zatwierdzonego zabezpieczenia lub zmniejszenie ekspozycji poprawia wskaźnik zdrowia, ponieważ konto ma większe wsparcie zabezpieczenia w stosunku do długu."
         },
         {
-          "id": "jak-działa-likwidacja",
+          "id": "how-does-liquidation-work",
           "q": "Jak działa likwidacja na Avana?",
           "a": "Likwidacja rozpoczyna się, gdy wskaźnik kondycji konta spada poniżej progu likwidacji. Aave zajmuje się księgowaniem długu, kontrolą kondycji oraz punktem wejścia do likwidacji w odniesieniu do zabezpieczenia sejfu ERC-20.\n\nAvana obsługuje rozliczenie LP za tym tokenem sejfu. Adapter spala zabezpieczenie sejfu, mapuje likwidację z powrotem na rzeczywistą pozycję LP, a warstwa rozliczeń podąża zgodnie ze ścieżką rynkową: rozwinięcie, sprzedaż, aukcja lub transfer pozycji zabezpieczającej. Najpierw pokrywany jest dług, następnie nagroda dla likwidatora i koszty rozliczenia, a nadwyżka jest obsługiwana według zasady rynku."
         },
         {
-          "id": "czy-likwidacje-bez-zezwolenia",
+          "id": "are-liquidations-permissionless",
           "q": "Kto może zlikwidować niezdrową pozycję?",
           "a": "Likwidacje są bezzgodnościowe, gdy pozycja przekracza próg likwidacji. Każdy uprawniony likwidator może spłacić dozwoloną kwotę długu i uruchomić proces rozliczenia.\n\nLP zabezpieczenie jest trudniejsze do zamknięcia niż proste zabezpieczenie tokenem, więc Avana uwzględnia także specjalistyczne pokrycie likwidacyjne. Likwidatorzy śledzą ten sam stan ryzyka, mapowanie skarbców na tokeny, głębokość tras oraz założenia dotyczące zamykania pozycji używane przez protokół."
         },
         {
-          "id": "co-dzieje-się-z-opłatami-podczas-likwidacji",
+          "id": "what-happens-to-fees-during-liquidation",
           "q": "Co dzieje się z opłatami LP podczas likwidacji?",
           "a": "Avana odróżnia naliczone opłaty od płynności podstawowej. Podczas likwidacji ścieżka rozliczenia stosuje naliczone opłaty przed płynnością podstawową, gdy trasa rynkowa obsługuje tę sekwencję.\n\nZmniejsza to, jak bardzo podstawowa pozycja LP musi być naruszona. Jeśli wartość opłat nie pokrywa wystarczająco długu, warstwa rozliczeniowa likwiduje lub przenosi wymagany zabezpieczenie LP zgodnie z ścieżką likwidacji tego rynku."
         }
       ]
     },
     {
-      "id": "zarządzanie",
+      "id": "governance",
       "name": "Proces zarządzania",
       "summary": "",
       "questions": [
         {
-          "id": "jak-dodaje-się-nowe-baseny",
+          "id": "how-are-new-pools-added",
           "q": "Jak dodawane są nowe LP baseny?",
           "a": "Nowe LP pule są dodawane poprzez przegląd rynku i zatwierdzenie. Pool potrzebuje wiarygodnych cen aktywów bazowych, wystarczającej płynności, jasnych założeń dotyczących wycofania oraz parametrów ryzyka odpowiednich dla rodzaju zabezpieczenia.\n\nAvana zaczyna z wyselekcjonowanymi rynkami LP, aby wycena i likwidacja pozostały przejrzyste. Szeroki zakres pooli może się zwiększać w miarę upływu czasu w miarę poprawy wsparcia orakli, głębokości płynności i danych o ryzyku."
         },
         {
-          "id": "czy-parametry-ryzyka-mogą-się-zmienić",
+          "id": "can-risk-parameters-change",
           "q": "Czy parametry ryzyka mogą się zmienić po uruchomieniu?",
           "a": "Tak. Parametry ryzyka mogą się zmieniać w zależności od warunków rynkowych. Pool może stać się mniej płynny, bardziej zmienny, mniej skorelowany lub trudniejszy do zamknięcia niż był w momencie pierwszego notowania.\n\nAktualizacje parametrów mogą wpływać na czynniki zabezpieczenia, limity, obsługiwane pool'e, aktywa do pożyczania, wstrzymania, progi likwidacji oraz premie likwidacyjne. Użytkownicy z otwartym zadłużeniem śledzą te aktualizacje, ponieważ zmiany parametrów wpływają na moc pożyczkową i współczynnik zdrowia."
         },
         {
-          "id": "gdzie-mogę-śledzić-zarządzanie",
+          "id": "where-can-i-follow-governance",
           "q": "Gdzie mogę śledzić dyskusje na temat zarządzania?",
           "a": "Większość Avana aktualizacji dotyczących zarządzania i dyskusji rynkowych odbywa się przez Avana Labs na X pod adresem https://twitter.com/avana_labs. Kanał ten obejmuje nowe pule, parametry rynku, integracje, przeglądy bezpieczeństwa oraz fazy produktu.\n\nDłuższe propozycje, notatki dotyczące ryzyka i zewnętrzne wątki governance są linkowane z Avana Labs, gdy są istotne. Dla dużych pozycji użytkownicy przeglądają najnowsze aktualizacje Avana Labs oraz bieżące parametry rynku, zanim polegną na danej puli."
         },
         {
-          "id": "czy-opłaty-za-interfejs-mogą-ulec-zmianie",
+          "id": "can-interface-fees-change",
           "q": "Czy opłaty za interfejs mogą zmieniać się w czasie?",
           "a": "Tak. Avana opłaty interfejsu i usług są ustawieniami operacyjnymi dla oficjalnych interfejsów użytkownika. Są one oddzielone od podstawowej mechaniki protokołu, która reguluje zabezpieczenia, długi, kontrole orakli i likwidacje.\n\nGdy obowiązuje opłata interfejsu, przepływ transakcji wyświetla ją przed podpisaniem, aby użytkownicy mogli odróżnić koszt interfejsu od opłat za gaz, wykonanie swapu, odsetki protokołu i ekonomię likwidacji."
         }
       ]
     },
     {
-      "id": "Gho-Stablecoin",
-      "name": "45d6evzm3x7qd523gfg9",
+      "id": "gho-stablecoin",
+      "name": "Stablecoin 23 ⟧",
       "summary": "",
       "questions": [
         {
-          "id": "czy-mogę-pożyczyć-gho",
+          "id": "can-i-borrow-gho",
           "q": "Czy mogę pożyczyć GHO przez Avana?",
           "a": "GHO jest jednym z obsługiwanych aktywów po stronie pożyczek Avana dla rynków, które obejmują płynność GHO. Gdy rynek oferuje GHO, użytkownicy mogą je pożyczać w zamian za zatwierdzony zabezpieczeniowy LP, pod warunkiem, że konto pozostaje powyżej wymaganego progu zdrowia.\n\nPożyczanie GHO działa jak każde inne aktywo dłużne w Avana: zwiększa zaległy dług, wpływa na współczynnik zdrowia, nalicza odsetki i jest spłacane w GHO wraz z wszelkimi obowiązującymi kosztami."
         },
         {
-          "id": "can-gho-be-lp-zabezpieczenie",
+          "id": "can-gho-be-lp-collateral",
           "q": "Czy GHO może być częścią LP zabezpieczenia?",
           "a": "Tak. GHO może być częścią zabezpieczenia LP, gdy konkretny pul GHO jest zatwierdzony dla rynku Avana. Pul jest oceniany jak inne rynki LP: mają znaczenie wycena aktywów, głębokość płynności, korelacja, skład tokenów, limity oraz ścieżka likwidacji.\n\nOznacza to, że GHO nie jest traktowane jako ogólne zatwierdzenie dla każdej pary. Avana wspiera konfigurację puli, a nie tylko symbol aktywa."
         },
         {
-          "id": "jak-spłacić-gho",
+          "id": "how-do-i-repay-gho",
           "q": "Jak spłacić GHO dług?",
           "a": "GHO dług jest spłacany w GHO wraz z naliczonymi odsetkami i wszelkimi obowiązującymi kosztami. Po potwierdzeniu spłaty, Avana zmniejsza zaległy dług na koncie, a wskaźnik zdrowia ulega poprawie.\n\nPo pełnej spłacie, ograniczenia dotyczące zabezpieczenia związane z tym długiem zostają zniesione zgodnie z zasadami rynkowymi, co pozwala na wycofanie lub modyfikację pozycji LP, gdy nie pozostaje żaden inny dług."
         }
       ]
     },
     {
-      "id": "wielorynkowy",
+      "id": "multiply-markets",
       "name": "Pomnóż Rynki",
       "summary": "",
       "questions": [
         {
-          "id": "co-to-jest-avana-multiply",
+          "id": "what-is-avana-multiply",
           "q": "Co to jest Avana Mnożenie?",
           "a": "Avana Multiply to zarządzany workflow lewarowania oparty na LP-wspieranym kredycie. Użytkownik deponuje wspierany przez LP zabezpieczenie, Avana je wycenia, a interfejs może wykorzystać tę moc pożyczkową do otwarcia zatwierdzonej pętli lub ekspozycji lewarowanej z jednego przepływu.\n\nZamiast ręcznego pożyczania, swapowania, ponownego deponowania i śledzenia zadłużenia w wielu narzędziach, Multiply pakuje pozycję w jeden monitorowany workflow z zabezpieczeniem, długiem, poziomem lewarowania, wskaźnikiem zdrowia i kontrolami rozwinięcia pokazywane razem."
         },
         {
-          "id": "jak-mnożenie-różni-się-od-życzczenia",
+          "id": "how-is-multiply-different-from-borrowing",
           "q": "Czym różni się mnożenie od pożyczania?",
           "a": "Pożyczanie daje użytkownikom aktywa, których mogą używać bezpośrednio, dopóki konto pozostaje w dobrej kondycji. Multiply wykorzystuje LP-zabezpieczoną zdolność pożyczkową w ramach zarządzanej strategii, gdzie pożyczony kapitał jest kierowany na zatwierdzone ekspozycje i śledzony jako jedna pozycja.\n\nPonieważ Multiply dodaje dźwignię, może zwiększyć efektywność kapitału i potencjalne zyski, ale również zwiększa ryzyko strat, ryzyko likwidacji oraz wrażliwość na zmiany cen. Widok kondycji konta ma większe znaczenie, a nie mniejsze, gdy pozycja jest powielana."
         },
         {
-          "id": "czy-zachowuję-lp-podczas-używania-multiply",
+          "id": "do-i-keep-lp-while-using-multiply",
           "q": "Czy zachowuję mój LP podczas używania Multiply?",
           "a": "Tak. Pozycja LP pozostaje bazą zabezpieczenia, podczas gdy pozycja Multiply jest otwarta. Użytkownik nie musi całkowicie zamykać pozycji AMM tylko po to, aby stworzyć ekspozycję lewarowaną.\n\nPozycja LP nadal zabezpiecza dług, więc nadal podlega zasadom zabezpieczeń i likwidacji, jeśli konto stanie się niewypłacalne. Użytkownicy monitorują wartość zabezpieczenia, dług, lewar oraz bufor likwidacyjny przez cały czas trwania pętli."
         },
         {
-          "id": "jakie-są-ograniczenia-maksymalnej-dźwigni",
+          "id": "what-limits-maximum-leverage",
           "q": "Co ogranicza maksymalną dźwignię?",
           "a": "Maksymalna dźwignia zależy od jakości zabezpieczenia, płynności puli, zmienności, zaufania do wyroczni, pożyczanego aktywa, kapitalizacji rynkowej i założeń dotyczących likwidacji. Stabilne lub mocno skorelowane pule zazwyczaj mogą wspierać inne limity dźwigni niż zmienne lub cienkie pule.\n\nAvana stosuje ryzyko specyficzne dla rynku, więc dźwignia jest ograniczona przez rzeczywiste zabezpieczenie LP stojące za pozycją, a nie stały mnożnik stosowany do każdej puli."
         }
       ]
     },
     {
-      "id": "funkcje automatyzacji",
+      "id": "automation-features",
       "name": "Funkcje automatyzacji",
       "summary": "",
       "questions": [
         {
-          "id": "czy-automatyzacja-może-pomóc-w-zarządzaniu-ryzykiem",
+          "id": "can-automation-help-manage-risk",
           "q": "Czy automatyzacja może pomóc w zarządzaniu ryzykiem pozycji?",
           "a": "Automatyzacja monitoruje kondycję konta i może uruchamiać z góry określone działania, takie jak spłata, redukcja dźwigni lub zmniejszenie ekspozycji przed likwidacją. Ma to znaczenie, ponieważ pozycje zabezpieczone LP zmieniają się zarówno wraz z narastaniem długu, jak i zmianami rynkowymi na poziomie puli.\n\nAutomatyzacja jest narzędziem zarządzania ryzykiem, a nie gwarancją. Wykonanie może nadal być wpływane przez ruchy rynku, warunki płynności, opóźnienia transakcji, aktualizacje wyroczni i dostępność tras."
         },
         {
-          "id": "może-lp-wsparcie-zabezpieczenia-ekspozycja-perpetual",
+          "id": "can-lp-collateral-support-perps-exposure",
           "q": "Czy LP zabezpieczenie może wspierać ekspozycję w stylu perps?",
           "a": "LP zabezpieczenia wspierają zatwierdzony lewar lub ekspozycję w stylu perps poprzez rynki i integracje, które kierują kredyt oparty na LP do kontrolowanych strategii. Pozycja LP tworzy możliwość pożyczania, a ten kredyt może być wykorzystywany przez obsługiwane ścieżki ekspozycji, zamiast używania go wyłącznie jako prostego pożyczania z portfela. \n\nDostępność jest określana przez aktywną konfigurację rynku: typ zabezpieczenia, parametry rynku, wiarygodność źródła danych, płynność, aktywo dłużne i ścieżkę integracji. Interfejs pokazuje obsługiwane ścieżki dla każdego rynku."
         },
         {
-          "id": "jak-użytkownicy-monitorują",
+          "id": "what-users-monitor",
           "q": "Co użytkownicy monitorują po otwarciu pozycji?",
           "a": "Użytkownicy monitorują wskaźnik zdrowia, wykorzystanie pożyczki, wartość zabezpieczenia, wzrost zadłużenia, status zakresu LP, naliczanie opłat i bufor likwidacyjny. W przypadku pozycji Multiply monitorują również poziom dźwigni i kontrolę wyjścia.\n\nAvana wyświetla te wartości w interfejsie, aby użytkownicy mogli zobaczyć, kiedy pozycja jest zdrowa, kiedy wymaga uwagi i kiedy ryzyko zbliża się do likwidacji."
         }

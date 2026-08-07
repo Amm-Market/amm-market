@@ -16,7 +16,7 @@
       "resources": "Ресурсы",
       "developers": "Разработчики",
       "helpCenter": "Центр помощи",
-      "aaveArfc": "lnvukoqfgcdm383rd6gl",
+      "aaveArfc": "Ааве АРФК",
       "borrow": "Занимать",
       "lend": "Одолжить",
       "multiply": "Умножить",
@@ -142,7 +142,7 @@
       "searchResults": "Результаты поиска",
       "clearSearch": "Очистить поиск",
       "noResults": "Результаты для \"{query}\" не найдены",
-      "category": "Категория: {name}",
+      "category": "Category: {name}",
       "categoriesAria": "Категории часто задаваемых вопросов",
       "articles": "{count} статей"
     },
