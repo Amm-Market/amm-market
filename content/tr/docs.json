@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "nasıl-çalışır",
+        "id": "how-it-works",
         "title": "Nasıl Çalışır"
       },
       {
-        "id": "ödünç alınabilir değer",
+        "id": "borrowable-value",
         "title": "Borç Alınabilir Değer"
       },
       {
-        "id": "notlar",
+        "id": "notes",
         "title": "Notlar"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "hesaplama",
+        "id": "calculation",
         "title": "Hesaplama"
       },
       {
-        "id": "sağlık bantları",
+        "id": "health-bands",
         "title": "İzleme Bantları"
       },
       {
-        "id": "yanıt-yolu",
+        "id": "response-path",
         "title": "Yanıt Yolu"
       },
       {
-        "id": "kullanıcı işlemleri",
+        "id": "user-actions",
         "title": "Kullanıcı Eylemleri"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "program türleri",
+        "id": "program-types",
         "title": "Program Türleri"
       },
       {
-        "id": "dağıtım-prensipleri",
+        "id": "distribution-principles",
         "title": "Dağıtım Prensipleri"
       },
       {
-        "id": "iddia-etme-ve-uzlaştırma",
+        "id": "claiming-and-reconciliation",
         "title": "Talep Etme ve Uzlaşma"
       },
       {
-        "id": "durum",
+        "id": "status",
         "title": "Mevcut Durum"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "başkent-giriş-noktası",
+        "id": "capital-entry-point",
         "title": "Başkent Giriş Noktası"
       },
       {
-        "id": "risk-düzeltilmiş-getiri",
+        "id": "risk-adjusted-yield",
         "title": "Risk Ayarlanmış Getiri"
       },
       {
-        "id": "dinamik risk kontrolleri",
+        "id": "dynamic-risk-controls",
         "title": "Dinamik Risk Kontrolleri"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "kullanıcı deneyimi",
+        "id": "user-experience",
         "title": "Kullanıcı Deneyimi"
       },
       {
-        "id": "örnek-akış",
+        "id": "example-flow",
         "title": "Örnek Akış"
       },
       {
-        "id": "üç katmanlı mimari",
+        "id": "three-tier-architecture",
         "title": "Üç Katmanlı Mimari"
       },
       {
-        "id": "veri akışı",
+        "id": "data-flow",
         "title": "Veri Akışı"
       },
       {
-        "id": "konuşma sorumlulukları",
+        "id": "spoke-responsibilities",
         "title": "Sorumlulukları Konuştu"
       },
       {
-        "id": "merkez-rol",
+        "id": "hub-role",
         "title": "Aave v4 Hub Rolü"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "arayüz-protokol",
+        "id": "interface-vs-protocol",
         "title": "Arayüz vs Protokol"
       },
       {
-        "id": "açıklama",
+        "id": "disclosure",
         "title": "Açıklama"
       },
       {
-        "id": "hazine-kullanımı",
+        "id": "treasury-usage",
         "title": "Hazine Kullanımı"
       },
       {
-        "id": "entegrasyon-notları",
+        "id": "integration-notes",
         "title": "Entegrasyon Notları"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "ödünç çekler",
+        "id": "borrow-checks",
         "title": "Ödünç Çekler"
       },
       {
-        "id": "sağlık-taraması",
+        "id": "health-check",
         "title": "Sağlık Kontrolü"
       },
       {
-        "id": "dahili muhasebe",
+        "id": "internal-accounting",
         "title": "Dahili Muhasebe"
       },
       {
-        "id": "ödünç alınabilir varlıklar",
+        "id": "borrowable-assets",
         "title": "Ödünç Verilebilir Varlıklar"
       },
       {
-        "id": "borçlanma gücü",
+        "id": "borrowing-power",
         "title": "Borçlanma Gücü"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "nasıl-çalışır",
+        "id": "how-it-works",
         "title": "Nasıl Çalışır"
       },
       {
-        "id": "sağlık kontrolleri",
+        "id": "health-checks",
         "title": "Sağlık Kontrolleri"
       },
       {
-        "id": "ücret muhasebesi",
+        "id": "fee-accounting",
         "title": "Ücret Muhasebesi"
       },
       {
-        "id": "temel faydalar",
+        "id": "key-benefits",
         "title": "Temel Faydalar"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "daha fazla borçlanma",
+        "id": "borrowing-more",
         "title": "Daha Fazla Borçlanmak"
       },
       {
-        "id": "sağlık izlemesi",
+        "id": "monitoring-health",
         "title": "Sağlığı İzleme"
       },
       {
-        "id": "operasyonel kontrol",
+        "id": "operational-control",
         "title": "Operasyonel Kontrol"
       },
       {
-        "id": "pozisyon-değişiklikleri",
+        "id": "position-changes",
         "title": "Pozisyon Değişiklikleri"
       },
       {
-        "id": "anahtar kısıtlamaları",
+        "id": "key-constraints",
         "title": "Ana Kısıtlamalar"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "mevduat-akışı",
+        "id": "deposit-flow",
         "title": "Mevduat Akışı"
       },
       {
-        "id": "teknik detaylar",
+        "id": "technical-details",
         "title": "Teknik Detaylar"
       },
       {
-        "id": "desteklenen-lp-jetonları",
+        "id": "supported-lp-tokens",
         "title": "Desteklenen LP Pozisyon Türleri"
       },
       {
-        "id": "yatırdıktan-sonra",
+        "id": "after-deposit",
         "title": "Para Yatırdıktan Sonra"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "geri ödeme süreci",
+        "id": "repay-process",
         "title": "Geri Ödeme Süreci"
       },
       {
-        "id": "teknik detaylar",
+        "id": "technical-details",
         "title": "Teknik Detaylar"
       },
       {
-        "id": "tasfiye-senaryosu",
+        "id": "liquidation-scenario",
         "title": "Geri Ödeme Acil Olduğunda"
       },
       {
-        "id": "tam ödeme",
+        "id": "full-repayment",
         "title": "Tam Ödeme"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "çekilme süreci",
+        "id": "withdrawal-process",
         "title": "Para Çekme Süreci"
       },
       {
-        "id": "pozisyon-değişiklikleri",
+        "id": "position-modifications",
         "title": "Pozisyon Değişiklikleri"
       },
       {
-        "id": "çekilme sonrası",
+        "id": "after-withdrawal",
         "title": "Çekilme Sonrası"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "inceleme kriterleri",
+        "id": "review-criteria",
         "title": "Değerlendirme Kriterleri"
       },
       {
-        "id": "havuz-aileleri",
+        "id": "pool-families",
         "title": "Havuz Aileleri"
       },
       {
-        "id": "risk-uygulaması",
+        "id": "risk-application",
         "title": "Risk Uygulaması"
       },
       {
-        "id": "entegrasyon-notları",
+        "id": "integration-notes",
         "title": "Entegrasyon Notları"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "entegrasyon modeli",
+        "id": "integration-model",
         "title": "Entegrasyon Modeli"
       },
       {
-        "id": "ortak-kontroller",
+        "id": "partner-controls",
         "title": "Ortak Kontrolleri"
       },
       {
-        "id": "başlatma notları",
+        "id": "launch-notes",
         "title": "Başlatma Notları"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "uygulama kiti",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "mekân-aileler",
+        "id": "venue-families",
         "title": "Mekan Aileleri"
       },
       {
-        "id": "etkinleştirme durumu",
+        "id": "enablement-status",
         "title": "Etkinleştirme Durumu"
       },
       {
-        "id": "inceleme-gereksinimleri",
+        "id": "review-requirements",
         "title": "İnceleme Gereksinimleri"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "kahin-arayüzü",
+        "id": "oracle-interface",
         "title": "Oracle Arayüzü"
       },
       {
-        "id": "çok katmanlı mimari",
+        "id": "multi-layer-architecture",
         "title": "Çok Katmanlı Mimari"
       },
       {
-        "id": "dekstirle kullanım",
+        "id": "dex-handling",
         "title": "DEX'e Özel İşlem"
       },
       {
-        "id": "twap-hesaplama",
+        "id": "twap-computation",
         "title": "TWAP Hesaplaması"
       },
       {
-        "id": "güvenlik önlemleri",
+        "id": "safety-measures",
         "title": "Güvenlik ve Müdahale Önleme"
       },
       {
-        "id": "yapılandırılabilir-parametreler",
+        "id": "configurable-parameters",
         "title": "Yapılandırılabilir Parametreler"
       }
     ],
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "sistemdeki rol",
+        "id": "role-in-system",
         "title": "Sistemdeki Rol"
       },
       {
-        "id": "adaptör modeli",
+        "id": "adapter-model",
         "title": "Adaptör Modeli"
       },
       {
-        "id": "desteklenen işlemler",
+        "id": "supported-operations",
         "title": "Desteklenen İşlemler"
       },
       {
-        "id": "dağıtım-durumu",
+        "id": "deployment-status",
         "title": "Dağıtım Durumu"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "temel kavramlar",
+        "id": "core-concepts",
         "title": "Temel Kavramlar"
       },
       {
-        "id": "protokol bileşenleri",
+        "id": "protocol-components",
         "title": "Protokol Bileşenleri"
       },
       {
-        "id": "finansal terimler",
+        "id": "financial-terms",
         "title": "Finansal Terimler"
       },
       {
-        "id": "risk-güvenlik",
+        "id": "risk-security",
         "title": "Risk ve Güvenlik"
       },
       {
-        "id": "ölçütler",
+        "id": "metrics",
         "title": "Metrikler"
       },
       {
-        "id": "feragatnameler",
+        "id": "disclaimers",
         "title": "Feragatnameler"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "çekirdek-kavrayış",
+        "id": "core-insight",
         "title": "Temel İçgörü"
       },
       {
-        "id": "kullanıcı akışı",
+        "id": "user-flow",
         "title": "Borçlanma Modeli"
       },
       {
-        "id": "kahin-değerleme",
+        "id": "oracle-valuation",
         "title": "Oracle ve Değerleme"
       },
       {
-        "id": "ödünç alma süreci",
+        "id": "borrowing-process",
         "title": "Borçlanma Kapasitesi"
       },
       {
-        "id": "sağlık izleme",
+        "id": "health-monitoring",
         "title": "Sağlık ve Tasfiye"
       },
       {
-        "id": "ücret tahsili",
+        "id": "fee-collection",
         "title": "Ücret İşlemi"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "testnet kapsamı",
+        "id": "testnet-scope",
         "title": "Testnet Kapsamı"
       },
       {
-        "id": "nasıl-değerlendirilir",
+        "id": "how-to-evaluate",
         "title": "Nasıl Değerlendirilir"
       },
       {
-        "id": "yol haritası çerçeveleme",
+        "id": "roadmap-framing",
         "title": "Yol Haritası Çerçevesi"
       },
       {
-        "id": "kampanyalar-ve-durum",
+        "id": "campaigns-and-status",
         "title": "Kampanyalar ve Durum"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "genel feragatname",
+        "id": "general-disclaimer",
         "title": "Genel Feragatname"
       },
       {
-        "id": "finansal-tavsiye-yok",
+        "id": "no-financial-advice",
         "title": "Mali Tavsiye Değildir"
       },
       {
-        "id": "riskler",
+        "id": "risks",
         "title": "Riskler"
       },
       {
-        "id": "garanti yok",
+        "id": "no-warranties",
         "title": "Garanti Yoktur"
       },
       {
-        "id": "sorumluluğun-sınırlandırılması",
+        "id": "limitation-of-liability",
         "title": "Sorumluluğun Sınırlandırılması"
       },
       {
-        "id": "ilgili politikalar",
+        "id": "related-policies",
         "title": "İlgili Politikalar"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "erişim kısıtlamaları",
+        "id": "access-restrictions",
         "title": "Erişim Kısıtlamaları"
       },
       {
-        "id": "kısıtlı-yargıalanan-bölgeler",
+        "id": "restricted-jurisdictions",
         "title": "Sınırlı Yargı Alanları"
       },
       {
-        "id": "uyum",
+        "id": "compliance",
         "title": "Uyumluluk"
       },
       {
-        "id": "ilgili politikalar",
+        "id": "related-policies",
         "title": "İlgili Politikalar"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "değiştirilebilir-lp",
+        "id": "fungible-lp",
         "title": "Değiştirilebilir LP Örnek"
       },
       {
-        "id": "yoğunlaştırılmış likidite",
+        "id": "concentrated-liquidity",
         "title": "Yoğunlaştırılmış Likidite Örneği"
       },
       {
-        "id": "nft-likidite",
+        "id": "nft-liquidity",
         "title": "NFT Tasfiyesi"
       },
       {
-        "id": "çok pozisyonlu hesap",
+        "id": "multi-position-account",
         "title": "Çok Pozisyonlu Hesap"
       },
       {
-        "id": "uç durumlar",
+        "id": "edge-cases",
         "title": "Uç Durumlar"
       },
       {
-        "id": "özet",
+        "id": "summary",
         "title": "Özet"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "kanonik-referans",
+        "id": "canonical-reference",
         "title": "İlgili Politika Belgeleri"
       },
       {
-        "id": "çalışma zamanı dizisi",
+        "id": "runtime-sequence",
         "title": "Çalışma Zamanı Sıralaması"
       },
       {
-        "id": "durum geçişleri",
+        "id": "state-transitions",
         "title": "Durum Geçişleri"
       },
       {
-        "id": "operatör notları",
+        "id": "operator-notes",
         "title": "Operatör Notları"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "kapsama modeli",
+        "id": "coverage-model",
         "title": "Kapsama Modeli"
       },
       {
-        "id": "yürütme gereksinimleri",
+        "id": "execution-requirements",
         "title": "Yürütme Gereksinimleri"
       },
       {
-        "id": "operasyon-notları",
+        "id": "operational-notes",
         "title": "Operasyonel Notlar"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "üç katman",
+        "id": "three-layers",
         "title": "Üç Katman"
       },
       {
-        "id": "temel kurallar",
+        "id": "core-rules",
         "title": "Temel Kurallar"
       },
       {
-        "id": "lp-karışıklığı",
+        "id": "lp-complexity",
         "title": "LP Dolaylı Karmaşıklık"
       },
       {
-        "id": "tasfiye yolları",
+        "id": "liquidation-pathways",
         "title": "Tasfiye Yolları"
       },
       {
-        "id": "konum durumu",
+        "id": "position-state",
         "title": "Pozisyon Durumu"
       },
       {
-        "id": "fazla-madde-ele alma",
+        "id": "surplus-handling",
         "title": "Artan Malzeme Yönetimi"
       },
       {
-        "id": "operatör-model",
+        "id": "operator-model",
         "title": "Operatör Modeli"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "hoş geldiniz",
+        "id": "welcome",
         "title": "Hoş geldiniz"
       },
       {
-        "id": "avana-nedir",
+        "id": "what-is-avana",
         "title": "Avana nedir?"
       },
       {
-        "id": "nasıl-çalışır",
+        "id": "how-it-works",
         "title": "Nasıl Çalışır"
       },
       {
-        "id": "teminat-lp'nin kilidini açma",
+        "id": "unlocking-lp-collateral",
         "title": "Neden LP Teminat Önemlidir"
       },
       {
-        "id": "mimari",
+        "id": "architecture",
         "title": "Mimarlık"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "kapsam-ve-sistem-mimarisi",
+        "id": "scope-and-system-architecture",
         "title": "Kapsam ve Sistem Mimarisi"
       },
       {
-        "id": "şiddet-felsefesi",
+        "id": "severity-philosophy",
         "title": "Şiddet Felsefesi"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "güvenlik zorlukları",
+        "id": "security-challenges",
         "title": "Güvenlik Zorlukları"
       },
       {
-        "id": "çok katmanlı güvenlik",
+        "id": "multi-layer-security",
         "title": "Çok Katmanlı Güvenlik"
       },
       {
-        "id": "çekirdek-kontrat-yüzeyleri",
+        "id": "core-contract-surfaces",
         "title": "Temel Sözleşme Yüzeyleri"
       },
       {
-        "id": "güven sınırları",
+        "id": "trust-boundaries",
         "title": "Güven Sınırları"
       },
       {
-        "id": "denetim hazırlığı",
+        "id": "audit-readiness",
         "title": "Denetim Hazırlığı"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "amaç",
+        "id": "purpose",
         "title": "Amaç"
       },
       {
-        "id": "fonlama yaklaşımı",
+        "id": "funding-approach",
         "title": "Finansman Yaklaşımı"
       },
       {
-        "id": "aktivasyon-yolu",
+        "id": "activation-path",
         "title": "Aktivasyon Yolu"
       },
       {
-        "id": "kapsam-sınırı",
+        "id": "coverage-boundary",
         "title": "Kapsama Sınırı"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "genel bakış",
+        "id": "overview",
         "title": "Genel Bakış"
       },
       {
-        "id": "temel-prensipler",
+        "id": "core-principles",
         "title": "Temel İlkeler"
       },
       {
-        "id": "roller",
+        "id": "roles",
         "title": "Roller"
       },
       {
-        "id": "akışı-güncelle",
+        "id": "update-flow",
         "title": "Akışı Güncelle"
       },
       {
-        "id": "parametre-sınıfları",
+        "id": "parameter-classes",
         "title": "Parametre Sınıfları"
       },
       {
-        "id": "kamuya açıklama",
+        "id": "public-disclosure",
         "title": "Kamuya Açıklama"
       },
       {
-        "id": "acil durum eylemleri",
+        "id": "emergency-actions",
         "title": "Acil Durum Eylemleri"
       }
     ],

@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "cara-kerjanya",
+        "id": "how-it-works",
         "title": "Cara Kerjanya"
       },
       {
-        "id": "nilai yang dapat dipinjam",
+        "id": "borrowable-value",
         "title": "Nilai yang Bisa Dipinjam"
       },
       {
-        "id": "catatan",
+        "id": "notes",
         "title": "Catatan"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "perhitungan",
+        "id": "calculation",
         "title": "Perhitungan"
       },
       {
-        "id": "gelang kesehatan",
+        "id": "health-bands",
         "title": "Memantau Band"
       },
       {
-        "id": "jalur-respons",
+        "id": "response-path",
         "title": "Jalur Respons"
       },
       {
-        "id": "tindakan-pengguna",
+        "id": "user-actions",
         "title": "Tindakan Pengguna"
       }
     ],
@@ -107,19 +107,19 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "jenis-program",
+        "id": "program-types",
         "title": "Jenis Program"
       },
       {
-        "id": "prinsip-prinsip distribusi",
+        "id": "distribution-principles",
         "title": "Prinsip Distribusi"
       },
       {
-        "id": "menuntut-dan-rekonsiliasi",
+        "id": "claiming-and-reconciliation",
         "title": "Klaim & Rekonsiliasi"
       },
       {
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "titik-masuk-modal",
+        "id": "capital-entry-point",
         "title": "Titik Masuk Modal"
       },
       {
-        "id": "imbal-hasil-tertimbang-risiko",
+        "id": "risk-adjusted-yield",
         "title": "Hasil yang Disesuaikan dengan Risiko"
       },
       {
-        "id": "kontrol risiko dinamis",
+        "id": "dynamic-risk-controls",
         "title": "Kontrol Risiko Dinamis"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "pengalaman pengguna",
+        "id": "user-experience",
         "title": "Pengalaman Pengguna"
       },
       {
-        "id": "contoh-alur",
+        "id": "example-flow",
         "title": "Alur Contoh"
       },
       {
-        "id": "arsitektur tiga tingkat",
+        "id": "three-tier-architecture",
         "title": "Arsitektur Tiga Lapisan"
       },
       {
-        "id": "aliran data",
+        "id": "data-flow",
         "title": "Aliran Data"
       },
       {
-        "id": "tanggung jawab yang diemban",
+        "id": "spoke-responsibilities",
         "title": "Tanggung Jawab Bicara"
       },
       {
-        "id": "peran-hub",
+        "id": "hub-role",
         "title": "Aave v4 Peran Hub"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "antarmuka-vs-protokol",
+        "id": "interface-vs-protocol",
         "title": "Antarmuka vs Protokol"
       },
       {
-        "id": "pengungkapan",
+        "id": "disclosure",
         "title": "Pengungkapan"
       },
       {
-        "id": "penggunaan-perbendaharaan",
+        "id": "treasury-usage",
         "title": "Penggunaan Perbendaharaan"
       },
       {
-        "id": "catatan-integrasi",
+        "id": "integration-notes",
         "title": "Catatan Integrasi"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "cek-pinjam",
+        "id": "borrow-checks",
         "title": "Cek Pinjaman"
       },
       {
-        "id": "cek-kesehatan",
+        "id": "health-check",
         "title": "Pemeriksaan Kesehatan"
       },
       {
-        "id": "akuntansi-internal",
+        "id": "internal-accounting",
         "title": "Akuntansi Internal"
       },
       {
-        "id": "aset yang dapat dipinjam",
+        "id": "borrowable-assets",
         "title": "Aset yang Dapat Dipinjam"
       },
       {
-        "id": "daya pinjam",
+        "id": "borrowing-power",
         "title": "Daya Pinjam"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "cara-kerjanya",
+        "id": "how-it-works",
         "title": "Cara Kerjanya"
       },
       {
-        "id": "pemeriksaan kesehatan",
+        "id": "health-checks",
         "title": "Pemeriksaan Kesehatan"
       },
       {
-        "id": "akuntansi-biaya",
+        "id": "fee-accounting",
         "title": "Akuntansi Biaya"
       },
       {
-        "id": "manfaat-utama",
+        "id": "key-benefits",
         "title": "Manfaat Utama"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "meminjam-lebih",
+        "id": "borrowing-more",
         "title": "Meminjam Lebih Banyak"
       },
       {
-        "id": "pemantauan-kesehatan",
+        "id": "monitoring-health",
         "title": "Memantau Kesehatan"
       },
       {
-        "id": "pengendalian-operasional",
+        "id": "operational-control",
         "title": "Kontrol Operasional"
       },
       {
-        "id": "perubahan posisi",
+        "id": "position-changes",
         "title": "Perubahan Posisi"
       },
       {
-        "id": "batasan-kunci",
+        "id": "key-constraints",
         "title": "Keterbatasan Kunci"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "aliran setoran",
+        "id": "deposit-flow",
         "title": "Aliran Deposit"
       },
       {
-        "id": "detail-teknis",
+        "id": "technical-details",
         "title": "Detail Teknis"
       },
       {
-        "id": "token-lp-yang-didukung",
+        "id": "supported-lp-tokens",
         "title": "Jenis Posisi yang Didukung LP"
       },
       {
-        "id": "setelah deposit",
+        "id": "after-deposit",
         "title": "Setelah Deposit"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "proses-pengembalian",
+        "id": "repay-process",
         "title": "Proses Pembayaran Kembali"
       },
       {
-        "id": "detail-teknis",
+        "id": "technical-details",
         "title": "Detail Teknis"
       },
       {
-        "id": "skenario-likuidasi",
+        "id": "liquidation-scenario",
         "title": "Ketika Pelunasan Mendesak"
       },
       {
-        "id": "pelunasan penuh",
+        "id": "full-repayment",
         "title": "Pelunasan Penuh"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "proses-penarikan",
+        "id": "withdrawal-process",
         "title": "Proses Penarikan"
       },
       {
-        "id": "modifikasi-posisi",
+        "id": "position-modifications",
         "title": "Modifikasi Posisi"
       },
       {
-        "id": "setelah-penarikan",
+        "id": "after-withdrawal",
         "title": "Setelah Penarikan"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "kriteria-ulasan",
+        "id": "review-criteria",
         "title": "Kriteria Peninjauan"
       },
       {
-        "id": "keluarga-kolam",
+        "id": "pool-families",
         "title": "Keluarga Kolam"
       },
       {
-        "id": "aplikasi risiko",
+        "id": "risk-application",
         "title": "Aplikasi Risiko"
       },
       {
-        "id": "catatan-integrasi",
+        "id": "integration-notes",
         "title": "Catatan Integrasi"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "model-integrasi",
+        "id": "integration-model",
         "title": "Model Integrasi"
       },
       {
-        "id": "kontrol-mitra",
+        "id": "partner-controls",
         "title": "Kontrol Mitra"
       },
       {
-        "id": "catatan-peluncuran",
+        "id": "launch-notes",
         "title": "Catatan Peluncuran"
       }
     ],
@@ -854,7 +854,7 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
@@ -862,15 +862,15 @@
         "title": "AppKit"
       },
       {
-        "id": "tempat-keluarga",
+        "id": "venue-families",
         "title": "Keluarga Tempat"
       },
       {
-        "id": "status-aktifasi",
+        "id": "enablement-status",
         "title": "Status Aktivasi"
       },
       {
-        "id": "persyaratan-ulasan",
+        "id": "review-requirements",
         "title": "Persyaratan Tinjauan"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "antarmuka-orakel",
+        "id": "oracle-interface",
         "title": "Antarmuka Oracle"
       },
       {
-        "id": "arsitektur-berlapis",
+        "id": "multi-layer-architecture",
         "title": "Arsitektur Multi-Lapis"
       },
       {
-        "id": "penanganan-dex",
+        "id": "dex-handling",
         "title": "Penanganan Khusus DEX"
       },
       {
-        "id": "perhitungan twap",
+        "id": "twap-computation",
         "title": "Perhitungan TWAP"
       },
       {
-        "id": "tindakan keselamatan",
+        "id": "safety-measures",
         "title": "Keselamatan & Pencegahan Manipulasi"
       },
       {
-        "id": "parameter yang dapat dikonfigurasi",
+        "id": "configurable-parameters",
         "title": "Parameter yang Dapat Dikustomisasi"
       }
     ],
@@ -1007,7 +1007,7 @@
       "Perhitungan TWAP oleh DEX",
       "TWAP adalah input verifikasi. Mereka berada di samping harga aset eksternal dan rekonstruksi posisi deterministik untuk memeriksa apakah status pool yang diamati konsisten dengan jalur unwind yang kredibel. Mereka membantu menolak distorsi yang mencurigakan atau bersifat sementara, tetapi mereka tidak menggantikan model oracle yang lebih luas dengan sendirinya.",
       "Uniswap V2 & Tukar Sushi",
-      "Uniswap V3",
+      "⟦ 3 ⟧ V3",
       "Pemeriksaan yang menyadari posisi menggabungkan jangkauan tick, distribusi likuiditas, dan biaya yang diperoleh sehingga protokol dapat memverifikasi eksposur token yang terurai dari setiap NFT LP daripada memperlakukan NFT sebagai kotak hitam.",
       "Balancer",
       "Observasi token berbobot digabungkan dengan bobot pool untuk memvalidasi pembagian inventaris multi-aset sebelum oracle menetapkan nilai agunan yang konservatif.",
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "peran-dalam-sistem",
+        "id": "role-in-system",
         "title": "Peran dalam Sistem"
       },
       {
-        "id": "model-adapter",
+        "id": "adapter-model",
         "title": "Model Adapter"
       },
       {
-        "id": "operasi-yang-ditunjang",
+        "id": "supported-operations",
         "title": "Operasi yang Didukung"
       },
       {
-        "id": "status-penyebaran",
+        "id": "deployment-status",
         "title": "Status Penempatan"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "konsep-inti",
+        "id": "core-concepts",
         "title": "Konsep Inti"
       },
       {
-        "id": "komponen-protokol",
+        "id": "protocol-components",
         "title": "Komponen Protokol"
       },
       {
-        "id": "istilah keuangan",
+        "id": "financial-terms",
         "title": "Istilah Keuangan"
       },
       {
-        "id": "risiko-keamanan",
+        "id": "risk-security",
         "title": "Risiko & Keamanan"
       },
       {
-        "id": "metrik",
+        "id": "metrics",
         "title": "Metrik"
       },
       {
-        "id": "penyangkalan",
+        "id": "disclaimers",
         "title": "Penafian"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "wawasan inti",
+        "id": "core-insight",
         "title": "Wawasan Inti"
       },
       {
-        "id": "alur pengguna",
+        "id": "user-flow",
         "title": "Model Pinjaman"
       },
       {
-        "id": "penilaian-orakel",
+        "id": "oracle-valuation",
         "title": "Oracle & Penilaian"
       },
       {
-        "id": "proses peminjaman",
+        "id": "borrowing-process",
         "title": "Kapasitas Pinjaman"
       },
       {
-        "id": "pemantauan kesehatan",
+        "id": "health-monitoring",
         "title": "Kesehatan & Likuidasi"
       },
       {
-        "id": "pengumpulan biaya",
+        "id": "fee-collection",
         "title": "Perlakuan Biaya"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "ruang-uji-coba",
+        "id": "testnet-scope",
         "title": "Lingkup Testnet"
       },
       {
-        "id": "cara-menilai",
+        "id": "how-to-evaluate",
         "title": "Cara Menilai"
       },
       {
-        "id": "pembuatan-bingkai-peta-jalan",
+        "id": "roadmap-framing",
         "title": "Kerangka Peta Jalan"
       },
       {
-        "id": "kampanye-dan-status",
+        "id": "campaigns-and-status",
         "title": "Kampanye & Status"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "penafian-umum",
+        "id": "general-disclaimer",
         "title": "Penafian Umum"
       },
       {
-        "id": "bukan-saran-keuangan",
+        "id": "no-financial-advice",
         "title": "Bukan Nasihat Keuangan"
       },
       {
-        "id": "risiko",
+        "id": "risks",
         "title": "Risiko"
       },
       {
-        "id": "tanpa jaminan",
+        "id": "no-warranties",
         "title": "Tanpa Jaminan"
       },
       {
-        "id": "batasan-tanggung-jawab",
+        "id": "limitation-of-liability",
         "title": "Batasan Tanggung Jawab"
       },
       {
-        "id": "kebijakan-terkait",
+        "id": "related-policies",
         "title": "Kebijakan Terkait"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "pembatasan-akses",
+        "id": "access-restrictions",
         "title": "Pembatasan Akses"
       },
       {
-        "id": "wilayah-terbatas",
+        "id": "restricted-jurisdictions",
         "title": "Yurisdiksi Terbatas"
       },
       {
-        "id": "kepatuhan",
+        "id": "compliance",
         "title": "Kepatuhan"
       },
       {
-        "id": "kebijakan-terkait",
+        "id": "related-policies",
         "title": "Kebijakan Terkait"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "lp yang dapat dipertukarkan",
+        "id": "fungible-lp",
         "title": "Fungible LP Contoh"
       },
       {
-        "id": "likuiditas-terkonsentrasi",
+        "id": "concentrated-liquidity",
         "title": "Contoh Likuiditas Terkonsentrasi"
       },
       {
-        "id": "likuiditas-nft",
+        "id": "nft-liquidity",
         "title": " Likuidasi NFT"
       },
       {
-        "id": "akun-multi-posisi",
+        "id": "multi-position-account",
         "title": "Akun Multi-Posisi"
       },
       {
-        "id": "kasus tepi",
+        "id": "edge-cases",
         "title": "Kasus Tepi"
       },
       {
-        "id": "ringkasan",
+        "id": "summary",
         "title": "Ringkasan"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "referensi-kanonik",
+        "id": "canonical-reference",
         "title": "Dokumen Kebijakan Terkait"
       },
       {
-        "id": "urutan-waktu-jalani",
+        "id": "runtime-sequence",
         "title": "Urutan Waktu Jalannya Program"
       },
       {
-        "id": "transisi-keadaan",
+        "id": "state-transitions",
         "title": "Transisi Status"
       },
       {
-        "id": "catatan-operator",
+        "id": "operator-notes",
         "title": "Catatan Operator"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "model-cakupan",
+        "id": "coverage-model",
         "title": "Model Cakupan"
       },
       {
-        "id": "persyaratan-eksekusi",
+        "id": "execution-requirements",
         "title": "Persyaratan Pelaksanaan"
       },
       {
-        "id": "catatan-operasional",
+        "id": "operational-notes",
         "title": "Catatan Operasional"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "tiga lapisan",
+        "id": "three-layers",
         "title": "Tiga Lapisan"
       },
       {
-        "id": "aturan-inti",
+        "id": "core-rules",
         "title": "Aturan Inti"
       },
       {
-        "id": "kompleksitas-lp",
+        "id": "lp-complexity",
         "title": "LP Kompleksitas Jaminan"
       },
       {
-        "id": "jalur-likuidasi",
+        "id": "liquidation-pathways",
         "title": "Jalur Likuidasi"
       },
       {
-        "id": "posisi-keadaan",
+        "id": "position-state",
         "title": "Status Posisi"
       },
       {
-        "id": "penanganan surplus",
+        "id": "surplus-handling",
         "title": "Penanganan Surplus"
       },
       {
-        "id": "model-operator",
+        "id": "operator-model",
         "title": "Model Operator"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "selamat datang",
+        "id": "welcome",
         "title": "Selamat datang"
       },
       {
-        "id": "apa-itu-avana",
+        "id": "what-is-avana",
         "title": "Apa itu Avana?"
       },
       {
-        "id": "cara-kerjanya",
+        "id": "how-it-works",
         "title": "Cara Kerjanya"
       },
       {
-        "id": "membuka-kunci-jaminan-lp",
+        "id": "unlocking-lp-collateral",
         "title": "Mengapa LP Jaminan Penting"
       },
       {
-        "id": "arsitektur",
+        "id": "architecture",
         "title": "Arsitektur"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "cakupan-dan-arsitektur-sistem",
+        "id": "scope-and-system-architecture",
         "title": "Ruang Lingkup & Arsitektur Sistem"
       },
       {
-        "id": "filosofi-keparahan",
+        "id": "severity-philosophy",
         "title": "Filsafat Keseriusan"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "tantangan-keamanan",
+        "id": "security-challenges",
         "title": "Tantangan Keamanan"
       },
       {
-        "id": "keamanan-berlapis",
+        "id": "multi-layer-security",
         "title": "Keamanan Multi-Lapis"
       },
       {
-        "id": "permukaan-kontrak-inti",
+        "id": "core-contract-surfaces",
         "title": "Permukaan Kontrak Inti"
       },
       {
-        "id": "batas-kepercayaan",
+        "id": "trust-boundaries",
         "title": "Batas Kepercayaan"
       },
       {
-        "id": "kesiapan audit",
+        "id": "audit-readiness",
         "title": "Kesiapan Audit"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "tujuan",
+        "id": "purpose",
         "title": "Tujuan"
       },
       {
-        "id": "pendekatan-pendanaan",
+        "id": "funding-approach",
         "title": "Pendekatan Pendanaan"
       },
       {
-        "id": "jalur-aktivasi",
+        "id": "activation-path",
         "title": "Jalur Aktivasi"
       },
       {
-        "id": "batas-cakupan",
+        "id": "coverage-boundary",
         "title": "Batas Cakupan"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "ikhtisar",
+        "id": "overview",
         "title": "Gambaran Umum"
       },
       {
-        "id": "prinsip-inti",
+        "id": "core-principles",
         "title": "Prinsip Inti"
       },
       {
-        "id": "peran",
+        "id": "roles",
         "title": "Peran"
       },
       {
-        "id": "perbarui-alur",
+        "id": "update-flow",
         "title": "Perbarui Alur"
       },
       {
-        "id": "kelas-parameter",
+        "id": "parameter-classes",
         "title": "Kelas Parameter"
       },
       {
-        "id": "pengungkapan publik",
+        "id": "public-disclosure",
         "title": "Pengungkapan Publik"
       },
       {
-        "id": "tindakan-darurat",
+        "id": "emergency-actions",
         "title": "Tindakan Darurat"
       }
     ],

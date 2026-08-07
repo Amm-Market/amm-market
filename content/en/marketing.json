@@ -384,7 +384,11 @@
       "Unlock Capital",
       "from Amm Markets",
       "Unlock Capital from Amm Markets",
-      "Learn more"
+      "Learn more",
+      "In 2021, Aave launched AMM Market and proved LP positions could serve as collateral, but it was built for the simpler DEXs of that era. Avana picks up where that left off, designed for today's DEXs and LP types, treating each position as collateral shaped by dual oracles and stronger risk controls.",
+      "A lending protocol",
+      "for LP-backed loans",
+      "A lending protocol for LP-backed loans"
     ]
   },
   "homepage/HomepageTestimonialSection": {

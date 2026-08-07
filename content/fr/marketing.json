@@ -329,7 +329,7 @@
       "Tampon",
       "Surveillance de la position du nettoyeur",
       "Suivez la santé, l'utilisation et les limites spécifiques aux pools avec un flux d'emprunt LP-premier plus clair.",
-      "qwmp1h3slp9c1875xf93",
+      "Console",
       "Santé",
       "2,4 M$",
       "Pour qui c'est",
@@ -384,7 +384,11 @@
       "Débloquer le capital",
       "de Amm Markets",
       "Débloquer le capital des marchés Amm",
-      "En savoir plus"
+      "En savoir plus",
+      "En 2021, Aave a lancé AMM Market et a prouvé que LP positions pouvaient servir de garantie, mais il a été conçu pour les DEX plus simples de cette époque. Avana reprend là où cela s'est arrêté, conçu pour les DEX d'aujourd'hui et les types de LP, traitant chaque position comme une garantie façonnée par des oracles doubles et des contrôles de risque renforcés.",
+      "Un protocole de prêt",
+      "pour les prêts garantis par les LP",
+      "Un protocole de prêt pour les prêts garantis par des LP"
     ]
   },
   "homepage/HomepageTestimonialSection": {
@@ -446,7 +450,7 @@
     "strings": [
       "Calculateur de croissance",
       "Voyez votre argent croître",
-      "vg3ralgrmepxw49ypiw5",
+      "Avana APY",
       "Dépôt initial",
       "Période (mois)",
       "mois",
@@ -467,7 +471,7 @@
       "Autres",
       "Pièce de Monnaie USD",
       "Laisser",
-      "12zrcp6ur0nf6lbcecgm",
+      "Courbe USD",
       "Fraxe",
       "USDe",
       "Paiement en USD",
@@ -588,7 +592,7 @@
       "Rayon Premium",
       "Ajustement du risque de pool",
       "Le risque spécifique de la pool contribue à la marge finale, augmentant le potentiel de rendement pour le même cash inactif.",
-      "vg3ralgrmepxw49ypiw5",
+      "Avana APY",
       "Même liquidité inutilisée avec des rendements plus élevés APY",
       "% à"
     ]
@@ -608,7 +612,7 @@
       "La liquidation vise le montant nécessaire pour rétablir la sécurité, et non une sortie forcée de votre position complète.",
       "L'excédent vous revient",
       "Après que la dette et les récompenses du liquidateur ont été couvertes, la valeur résiduelle des garanties est renvoyée par le chemin de règlement.",
-      "golintdgr6f7tnftw4l6",
+      "Liquidations",
       "Construit pour que vous ne perdiez pas simplement la position",
       "En savoir plus sur le fonctionnement du règlement dans",
       "Conception de liquidation"

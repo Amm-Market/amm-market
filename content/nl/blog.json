@@ -1,30 +1,30 @@
 {
   "posts": [
     {
-      "slug": "lp-risicobeheer",
+      "slug": "lp-risk-governance",
       "title": "Hoe Avana LP Risico Beheerst",
-      "date": "24 juli 2026",
+      "date": "July 24, 2026",
       "description": "Hoe Avana LP collaterale risico's beheerst in gespreide markten met beperkte updates, onafhankelijke beoordeling en noodbeheersing.",
-      "image": "/ afbeeldingen / blog / lp-risk-governance.png",
-      "category": "Ontwikkelaars",
-      "tag": "d55egcamhfixo8z326u4",
+      "image": "/images/blog/lp-risk-governance.png",
+      "category": "Developers",
+      "tag": "Protocol",
       "sections": [
         {
-          "id": "waarom-lp-risico-verschilt",
+          "id": "why-lp-risk-is-different",
           "title": "Waarom LP risico anders is",
           "paragraphs": [
             "Avana kan LP onderpand niet beheersen op de manier waarop een generieke leenmarkt een lijst met tokens bestuurt. Elke spakenmarkt heeft zijn eigen poolstructuur, faalmodi en stressgedrag. Een stabiele pool is niet hetzelfde product als een geconcentreerd bereik. Een gewogen Balancer-stijl mandje is niet hetzelfde product als een hecht gecorreleerde Curve-stijl markt. Het risicoraamwerk van Avana is opgebouwd rond die variëteit. Het houdt toezicht op volatiliteit, peg-kwaliteit, benutting, liquiditeitsdiepte, concentratie, oracle-gezondheid, marktstatus, aanbod- en leenlimieten, LTV en liquidatiedrempels, rentevoormodellen en de gezondheid van posities over de hub en de LP spaken samen."
           ]
         },
         {
-          "id": "drie rollen",
+          "id": "three-roles",
           "title": "Drie rollen, duidelijke taken",
           "paragraphs": [
             "Avana scheidt routinematige aanbeveling, onafhankelijke beoordeling en noodbeperking in drie rollen: de Risico-Initiator, de Risico-Beschermer en de Risico-Verdediger. De Initiator doet voorstellen voor routinematige updates binnen goedgekeurde sjablonen, inclusief limieten, onderpandinstellingen, tarieven en pool-onboarding. Elk voorstel wordt als defensief of groeigericht gelabeld voordat het het normale pad ingaat. De Beschermer vormt de beoordelings- en veto-laag. Hij controleert of de openbare bekendmaking overeenkomt met wat in de wachtrij staat, bevestigt dat de actie binnen het beleid valt en kan annuleren tijdens de timelock. De Verdediger is opzettelijk beperkt. Hij kan limieten verlagen, lenen bevriezen of een gecompromitteerde adapter uitschakelen wanneer wachten op het routinematige pad Avana bloot zou laten staan."
           ]
         },
         {
-          "id": "hoe-veranderingen-schepen",
+          "id": "how-changes-ship",
           "title": "Hoe routine schepen verandert",
           "paragraphs": [
             "Het standaard updatepad op Avana is openbare kennisgeving, indiening, validatie tegen vooraf gedefinieerde grenzen, timelock, beoordeling door de Guardian, en uitvoering als niemand een veto uitbrengt. Ontwikkelaars, gebruikers en governance-deelnemers kunnen de redenering lezen voordat een wijziging wordt doorgevoerd en het geschreven beleid vergelijken met de wachtrijactie. Voor een protocol dat is gebouwd op complexe onderpanden, is die openbare consistentie een basisvereiste in plaats van een marketingextra.",
@@ -32,7 +32,7 @@
           ]
         },
         {
-          "id": "noodstroom",
+          "id": "emergency-power",
           "title": "Wanneer Avana noodstroom gebruikt",
           "paragraphs": [
             "Noodgevallen omvatten oracle-inconsistentie, degradatie van de liquidatie-route, abnormaal gedrag van het pool, wrapper-falen, compromittering van de adapter of plotselinge instabiliteit van het spoke-niveau. Zelfs dan blijft het framework voorzichtig. Noodbevoegdheid op Avana is beperkt, defensief en omkeerbaar. Het bestaat voor momenten waarop veronderstellingen sneller falen dan de timelock-governance kan reageren. Het is geen schaduwpad voor dagelijkse optimalisatie.",
@@ -42,23 +42,23 @@
       ]
     },
     {
-      "slug": "waarom-lp-onderpand-slimme-agenten-nodig-heeft",
+      "slug": "why-lp-collateral-needs-smart-agents",
       "title": "Waarom LP Zekerheid Slimme Agenten Nodig Heeft",
-      "date": "22 juli 2026",
+      "date": "July 22, 2026",
       "description": "Waarom Avana Smart Agents gebruikt om de gezondheid te bewaken, posities specifiek voor serviceruimtes te monitoren en de dekking voor liquidatie betrouwbaar te houden onder stress.",
-      "image": "/ afbeeldingen / blog / smart-agents-lp-onderpand.png",
-      "category": "Ontwikkelaars",
-      "tag": "d55egcamhfixo8z326u4",
+      "image": "/images/blog/smart-agents-lp-collateral.png",
+      "category": "Developers",
+      "tag": "Protocol",
       "sections": [
         {
-          "id": "lp-leningen-zijn-operationeel",
+          "id": "lp-loans-are-operational",
           "title": "LP loans are operational work",
           "paragraphs": [
             "Bij Avana is LP onderpand actief, padafhankelijk en operationeel veeleisend. Het genereert vergoedingen, verandert de samenstelling, verandert het risico naarmate de markten bewegen en kan locatie-specifieke acties vereisen precies wanneer een positie onder druk komt te staan. Een standaard tokenmarkt kan liquidatie en monitoring vaak terugbrengen tot een eenvoudigere trigger en ruilpad. LP onderpand is anders. Het systeem moet weten welke posities actief zijn, hoe de schuld zich verplaatst, hoe het onderpand eruit zou zien bij een echte afwikkeling, hoe vergoedingen kunnen worden gerealiseerd, welk locatie-specifiek verwijderingspad van toepassing is en of liquidatie nog haalbaar is na glijding, routering en uitvoeringskosten. Die details zijn wat theoretische dekking op papier onderscheidt van dekking die nog steeds werkt wanneer de markten moeilijk worden."
           ]
         },
         {
-          "id": "wat-agenten-doen",
+          "id": "what-agents-do",
           "title": "Wat Avana slimme agenten doen",
           "paragraphs": [
             "Avana's node-runtime leest on-chain activiteit, houdt een live kaart van actieve posities bij, ververst verschuivende schulden op korte intervallen, en voert bredere scans uit om verouderde of gemiste status vast te leggen. De app-UI, dashboards, monitorlogica en liquidatieworkflows zijn bedoeld om uit datzelfde operationele beeld te putten, in plaats van dat elke laag zijn eigen versie van de markt uitvindt.",
@@ -66,7 +66,7 @@
           ]
         },
         {
-          "id": "ervoor-en-daartussen-locaties",
+          "id": "before-and-across-venues",
           "title": "Voor de liquidatie, en op alle locaties",
           "paragraphs": [
             "Slimme agenten zijn ook belangrijk voordat liquidatie plaatsvindt. Het indexeren van Avana posities, het volgen van schuldverschuivingen en het houden van het protocol in overeenstemming met zijn eigen orakel- en risicovooronderstellingen verbeteren de paraatheid. Operationele vertraging is niet gratis wanneer onderpand blijft meebewegen met de markt.",
@@ -77,23 +77,23 @@
       ]
     },
     {
-      "slug": "hoe-lp-liquidatie-werkt",
+      "slug": "how-lp-liquidation-should-work",
       "title": "Hoe LP Liquidatie Zou Moeten Werken",
-      "date": "20 juli 2026",
+      "date": "July 20, 2026",
       "description": "Hoe Avana LP onderpand liquideert met gecontroleerde afwikkelingen, gedeeltelijke interventie, eerst vergoedingen waar mogelijk, en locatiespecifieke trajecten.",
-      "image": "/ images / blog / lp-liquidatie-workflow.png",
-      "category": "Ontwikkelaars",
-      "tag": "d55egcamhfixo8z326u4",
+      "image": "/images/blog/lp-liquidation-workflow.png",
+      "category": "Developers",
+      "tag": "Protocol",
       "sections": [
         {
-          "id": "geen-tokenverkoop",
+          "id": "not-a-token-sale",
           "title": "Niet een eenvoudige tokenverkoop",
           "paragraphs": [
             "Het liquideren van LP onderpand op Avana is niet hetzelfde als het liquideren van een tokenbalans. Het onderpand kan meerdere activa bevatten, niet geïncasseerde vergoedingen, geconcentreerde reikwijdte-exposure en locatie-specifieke uitstapmechanismen. Als een positie ongezond wordt, heeft Avana een gecontroleerde afwikkeling nodig, geen paniekverkoop die LP behandelt als een enkele vervangbare chip."
           ]
         },
         {
-          "id": "runtime-volgorde",
+          "id": "runtime-sequence",
           "title": "De runtimevolgorde",
           "paragraphs": [
             "In de praktijk is liquidatie een runtime-sequentie. Ongezonde accounts worden gedetecteerd met behulp van de risicogecorrigeerde onderpandwaarden van Avana in plaats van de ruwe AMM spotstatus. Uitvoeringsliquiditeit wordt verkregen, vaak via een flashloan-achtige route. Schuld wordt afgelost in de kredietlaag. De positie gaat over in gecontroleerde bewaring. Claimbare vergoedingen worden gerealiseerd waar dat helpt. De LP wordt afgewikkeld via het juiste venue-pad. Nadat de onderliggende waarden zijn teruggewonnen, worden ze omgeleid naar het schuldenproduct, wordt de uitvoeringsliquiditeit terugbetaald, wordt de liquidatiepremie verdeeld, en wordt eventuele resterende waarde van de lener teruggegeven.",
@@ -101,7 +101,7 @@
           ]
         },
         {
-          "id": "gedeeltelijk-en-kosten",
+          "id": "partial-and-fees",
           "title": "Eerst gedeeltelijke opnames en kosten",
           "paragraphs": [
             "Avana is gericht op het herstellen van de gezondheid van het doelwit in plaats van standaard volledige liquidatie toe te passen. Gedeeltelijke liquidatie heeft de voorkeur omdat het onnodig verlies voor de kredietnemer vermindert en de verstoring van de onderliggende pool beperkt. Het kader berekent de schuld die nodig is om de lening weer op een veiliger niveau te brengen en richt zich eerst op dat bedrag. Volledige liquidatie blijft de achtervang wanneer de solvabiliteit niet kan worden hersteld met een kleinere ingreep.",
@@ -109,7 +109,7 @@
           ]
         },
         {
-          "id": "wie-er-het-leidt",
+          "id": "who-runs-it",
           "title": "Wie voert de liquidatie uit",
           "paragraphs": [
             "Gespecialiseerde liquidatie-runtimes maken hier een verschil. Nodes die zijn gebouwd voor Avana LP liquidatie houden actieve posities in de gaten, verversen schulddrift, indexeren de marktomstandigheden, simuleren unwind-paden, zoeken uitvoeringsliquiditeit, routeren activa en sluiten transacties atomair. Liquidatie blijft permissieloos, maar LP onderpand is moeilijker te bedienen voor puur generieke liquidators omdat de workflow langer en meer venuespecifiek is. Liquidators moeten ook rekening houden met slippage, routerdiepte, kosten van flashloans en MEV-blootstelling. Grote of ongebruikelijke unwind-processen kunnen rustigere uitvoeringspaden nodig hebben zodat een herstelbaar werk geen destructief werk wordt."
@@ -118,30 +118,30 @@
       ]
     },
     {
-      "slug": "prijsstelling-lp-waarborg-orakel-probleem",
+      "slug": "pricing-lp-collateral-oracle-problem",
       "title": "Prijsstelling LP Zekerheid met Betere Orakels",
-      "date": "17 juli 2026",
+      "date": "July 17, 2026",
       "description": "Hoe Avana Oracle de prijs van LP onderpand bepaalt met behulp van herwinbare waarde, deterministische reconstructie en conservatieve herstelkortingen.",
-      "image": "/afbeeldingen/blog / lp-collateral-oracle-probleem.png",
-      "category": "Ontwikkelaars",
-      "tag": "d55egcamhfixo8z326u4",
+      "image": "/images/blog/lp-collateral-oracle-problem.png",
+      "category": "Developers",
+      "tag": "Protocol",
       "sections": [
         {
-          "id": "wat-avana-orakel-vraagt",
+          "id": "what-avana-oracle-asks",
           "title": "Wat Avana Oracle vraagt",
           "paragraphs": [
             "De waarde van een LP hangt af van de prijzen van de onderliggende waarden, de structuur van het pool, de huidige voorraadverdeling, opgebouwde vergoedingen, en voor geconcentreerde liquiditeit de relatie tussen de huidige prijs en het actieve bereik. Voor een leenstelsel is de belangrijke vraag niet alleen wat een dashboardwaarde zou kunnen aangeven. Het gaat erom wat realistisch kan worden teruggevorderd als de positie een lening moet dekken. Als Avana uitleent op basis van de best-case aannames, financiert het onderpandinflatie. Avana Oracle is opgebouwd rond terugvorderbare waarde, niet rond optimistische nettovermogenswaarde."
           ]
         },
         {
-          "id": "drie-stappen-pijplijn",
+          "id": "three-step-pipeline",
           "title": "Hoe waardering wordt opgebouwd",
           "paragraphs": [
             "De oracle is een multi-layer collateral waarderingsmotor. Ten eerste Avana prijs de onderliggende activa op basis van robuuste externe referenties in plaats van te vertrouwen op de ruwe AMM spotstatus. Ten tweede reconstrueert het de LP-positie deterministisch: pool-balansreconstructie voor fungibele LPs, of directe decompositie van geconcentreerde posities op basis van bereik, liquiditeit en huidige prijs. Ten derde disconteert het die gereconstrueerde waarde met herstelkortingen die liquidatieglijding, afwikkelingsfrictie en risico op tijdelijk verlies weerspiegelen. Tijdelijk verlies is het verschil in waarde tussen het houden van activa in een pool en het apart houden ervan. Het neemt toe wanneer de gekoppelde activa in prijs uit elkaar gaan. De leenruimte op Avana komt voort uit de gedisconteerde waarde, niet uit de meest gunstige mark."
           ]
         },
         {
-          "id": "waarom-eenvoudige-markeringen-falen",
+          "id": "why-simple-marks-fail",
           "title": "Waarom eenvoudige cijfers falen",
           "paragraphs": [
             "LP onderpand is een van de gemakkelijkste plaatsen voor een leensysteem om zichzelf te misleiden. AMM de staat van het fonds kan er gezond uitzien terwijl het lokaal vertekend is. Een geconcentreerde positie kan er sterk uitzien terwijl het zich in een risicovollere mix van activa bevindt dan gebruikers aannemen. Dunne diepte, dezelfde transactiemanipulatie en verouderde gegevens kunnen allemaal cijfers opleveren die er precies uitzien zonder betrouwbaar te zijn. Avana scheidt schijnbare waarde van betrouwbare onderpandwaarde door externe activaprijzing, deterministische LP reconstructie en protocollaire waarborgen te combineren.",
@@ -149,7 +149,7 @@
           ]
         },
         {
-          "id": "controles-en-waarborgs",
+          "id": "checks-and-safeguards",
           "title": "Controles en waarborgen",
           "paragraphs": [
             "Verschillende AMM families hebben verschillende verificatiepaden nodig. Curve stabiele LPs, Uniswap paren en NFT's, Balancer gewogen pools, en Aerodrome paren tonen de verhoudingstoestand op verschillende manieren. Bij Avana blijven externe prijzen de belangrijkste anker. Poolspecifieke gegevens en tijdgewogen controles helpen verifiëren of de gereconstrueerde verhoudingstoestand coherent is en moeilijker te manipuleren. Die tijdgewogen controles zijn niet de primaire prijs waarop Avana vertrouwt voor leningen. Ze zijn een extra consistentiecontrole zodat Avana kan bepalen of de verhoudingstoestand nog overeenkomt voordat die toestand als krediet wordt behandeld.",
@@ -159,23 +159,23 @@
       ]
     },
     {
-      "slug": "beveiliging-diepe-duik",
+      "slug": "security-deep-dive",
       "title": "Hoe Avana Collateraalrisico LP Beheert",
-      "date": "15 juli 2026",
+      "date": "July 15, 2026",
       "description": "Hoe Avana gelaagde beveiliging structureert voor LP onderpand, van architectuur en orakels tot gezondheid, liquidatie en operaties.",
-      "image": "/afbeeldingen/blog/security-diepgaande-analyse.png",
-      "category": "Ontwikkelaars",
-      "tag": "d55egcamhfixo8z326u4",
+      "image": "/images/blog/security-deep-dive.png",
+      "category": "Developers",
+      "tag": "Protocol",
       "sections": [
         {
-          "id": "meer-dan-een-prijs",
+          "id": "more-than-a-price",
           "title": "Meer dan een prijs en een LTV",
           "paragraphs": [
             "Een eenvoudige token kan meestal worden geprijsd met een directe marktverwijzing en worden geliquideerd met standaardlogica. Een LP-positie kan dat niet. De waarde ervan is afhankelijk van de onderliggende waarden, de poolstructuur, de relatie tussen die activa, het toeschrijven van kosten, de liquiditeitdiepte, en voor geconcentreerde liquiditeit het actieve bereik. Onder stress stapelen die variabelen zich op. Een protocol dat LP-gedekte leningen op Aave v4 ondersteunt, moet meer doen dan een prijs toewijzen en een lening-tot-waarde-verhouding instellen. Dat is het probleem waar Avana omheen is gebouwd."
           ]
         },
         {
-          "id": "architectuur-en-orakels",
+          "id": "architecture-and-oracles",
           "title": "Architectuur en waardering",
           "paragraphs": [
             "De eerste beveiligingslaag is architecturaal. Avana gebruikt de hub-and-spoke-structuur van Aave v4. De hub bevat de gemeenschappelijke liquiditeitslaag, beheert reserveboekhouding en handhaaft solvabiliteitsbeperkingen. De spoke is waar LP specifieke zekerheidslogica leeft: toelating, waarderingsregels, poolspecifieke risicoparameters en liquidatiegedrag. Als een LP-markt onder druk komt te staan, is het de bedoeling dat die stress beperkt blijft tot de spoke in plaats van aannames over niet-gerelateerde zekerheden te herzien. Op Avana maakt de spoke deel uit van de beveiligingsgrens.",
@@ -183,7 +183,7 @@
           ]
         },
         {
-          "id": "gezondheid-en-liquidatie",
+          "id": "health-and-liquidation",
           "title": "Gezondheid en liquidatie",
           "paragraphs": [
             "De derde laag is gezondheidsmonitoring. LP posities blijven actief nadat ze als onderpand zijn geplaatst, dus risico bevriest niet zodra een lening wordt geopend. Waarde verandert met prijsschommelingen, het genereren van vergoedingen, verschuivingen in het bereik en veranderingen in de kwaliteit van het fonds. Avana voert doorlopende gezondheidsbeoordelingen per positie uit in plaats van te vertrouwen op incidentele momentopnames. De gezondheidsfactor is het live signaal of het onderpandmodel nog steeds geldt voor die lening.",
@@ -191,7 +191,7 @@
           ]
         },
         {
-          "id": "operaties",
+          "id": "operations",
           "title": "Operaties en wijzigingsbeheer",
           "paragraphs": [
             "De operationele laag gaat ervan uit dat governance en risicoconfiguratie dezelfde discipline vereisen als de behandeling van zekerheden. Risicoparameters veranderen via een gestructureerd proces. Gevoelige wijzigingen bevinden zich achter timelocks en review. Noodmaatregelen bestaan voor echt nadelige omstandigheden. Monitoring strekt zich uit voorbij individuele posities naar hele marktcategorieën. Een protocol dat LP zekerheden ondersteunt, kan niet alleen op statische configuratie vertrouwen.",
@@ -201,23 +201,23 @@
       ]
     },
     {
-      "slug": "hedge-lp-positie",
+      "slug": "hedge-lp-position",
       "title": "Hoe een LP-positie bedachtzamer af te dekken",
-      "date": "13 juli 2026",
+      "date": "July 13, 2026",
       "description": "Hoe LPs Avana kunnen gebruiken om buffers, directionele offsets en meer gedisciplineerde hedgegewoonten te financieren zonder volledig uit het fonds te stappen.",
-      "image": "/images/blog/hedge-lp-positie.png",
-      "category": "Voor LPs",
-      "tag": "Gidsen",
+      "image": "/images/blog/hedge-lp-position.png",
+      "category": "For LPs",
+      "tag": "Guides",
       "sections": [
         {
-          "id": "meer-dan-kosten",
+          "id": "more-than-fees",
           "title": "Meer dan kosten",
           "paragraphs": [
             "Een LP-positie gaat nooit alleen maar over vergoedingen. Prijsafwijking, tijdelijke verliezen, rangeverschuiving en collateral-druk kunnen allemaal tegelijk hetzelfde boek raken. Tijdelijk verlies is wat er gebeurt wanneer de activamix van het fonds verschuift en de LP uiteindelijk minder waard is dan de tokens afzonderlijk vasthouden. Zodra een ondersteunde positie lenen kan ondersteunen via Avana op Aave v4, kan geleend kapitaal gebruikt worden om bescherming te financieren in plaats van alleen hefboomwerking. Een positie die anders volledig zou moeten worden ingetrokken kan actief blijven terwijl het geleende kapitaal wordt gebruikt om stress te verminderen of blootstelling in evenwicht te brengen."
           ]
         },
         {
-          "id": "buffers-en-offsets",
+          "id": "buffers-and-offsets",
           "title": "Buffers en directionele offsets",
           "paragraphs": [
             "De eenvoudigste hedge is vaak de meest praktische: een buffer van stablecoins. Leen voorzichtig op Avana en houd een deel van de opbrengsten in stablecoins. Als de gezondheid begint te verslechteren of de volatiliteit toeneemt, kan die liquiditeit de schuld terugbetalen of de druk verminderen zonder dat er een gedwongen verkoop van de LP nodig is. Dit gaat niet primair over het verhogen van rendement. Het gaat om tijd winnen en controle behouden, wat op zich al veel kan betekenen.",
@@ -225,7 +225,7 @@
           ]
         },
         {
-          "id": "meer-geavanceerde-opties",
+          "id": "more-advanced-options",
           "title": "Neutraliteit en zachtere afdekking",
           "paragraphs": [
             "Een geavanceerdere benadering is om te denken in termen van neutraliteit: het verminderen van richtingsgevoeligheid en leunen op commissiesinkomsten. Zo'n structuur kan stabieler zijn, maar het vereist actieve monitoring en herbalancering. LP posities evolueren naarmate de markten bewegen, dus een neutrale opzet moet worden onderhouden, niet eenmalig vastgesteld. Voor grotere posities kunnen beschermende neerwaartse structuren het worstcasescenario definiëren in plaats van er alleen op te reageren, hoewel ze hun eigen kosten en timingbeslissingen met zich meebrengen.",
@@ -233,7 +233,7 @@
           ]
         },
         {
-          "id": "praktische regels",
+          "id": "practical-rules",
           "title": "Praktische regels die goed reizen",
           "paragraphs": [
             "Over verschillende benaderingen heen reizen een paar gewoonten goed op Avana. Leen voorzichtig. Houd een echte buffer aan. Ga ervan uit dat de omstandigheden sneller kunnen verslechteren dan verwacht. Beschouw de maximale leencapaciteit als een grens in plaats van een doel. Gebruik monitoring met vooraf gedefinieerde risicobeperkende regels in plaats van te vertrouwen op constante handmatige reactie. Als een hedge-strategie zo ingewikkeld wordt dat je niet meer begrijpt wat wordt gehedged en wat wordt toegevoegd, is het te ver gegaan."
@@ -242,23 +242,23 @@
       ]
     },
     {
-      "slug": "opbrengst-lus-speelboek",
+      "slug": "yield-looping-playbook",
       "title": "Opbrengstlus met LP Zekerheid",
-      "date": "10 juli 2026",
+      "date": "July 10, 2026",
       "description": "Hoe te denken over yield looping met Avana LP onderpand, inclusief buffers, stresstesten, exitdiscipline en duurzame hefboomwerking.",
-      "image": "/ images / blog / yield-looping-playbook.png",
-      "category": "Voor LPs",
-      "tag": "Gidsen",
+      "image": "/images/blog/yield-looping-playbook.png",
+      "category": "For LPs",
+      "tag": "Guides",
       "sections": [
         {
-          "id": "wat-lussen-betekent",
+          "id": "what-looping-means",
           "title": "Wat looping betekent op Avana",
           "paragraphs": [
             "Yield looping betekent het aanhouden van een LP-positie, hiertegen lenen, en het herinvesteren van het geleende kapitaal in een andere rendement genererende strategie, of in sommige gevallen weer in liquiditeit zelf. Avana op Aave v4 maakt die onderpandstap mogelijk voor ondersteunde LP-markten. De aantrekkingskracht is duidelijk: looping kan de effectieve blootstelling vergroten en de fee-generatie versterken. Het gevaar is even duidelijk: het kan veiligheidsmarges verkleinen, de liquidatiegevoeligheid verhogen, en een positie veel kwetsbaarder maken wanneer de omstandigheden veranderen. Het echte doel zou duurzame versterking moeten zijn, niet maximale hefboomwerking op dag één."
           ]
         },
         {
-          "id": "de-eerste-lus-bescheiden-houden",
+          "id": "keeping-the-first-loop-modest",
           "title": "De eerste lus bescheiden houden",
           "paragraphs": [
             "De veiligste vorm van herhalen is bescheiden. Leen een relatief klein bedrag tegen een ondersteunde Avana LP positie en herinvesteer het in een tweede opbrengstbron zonder dicht bij de leengrens te komen. Dat is een gecontroleerde uitbreiding van de oorspronkelijke positie, geen recursieve weddenschap dat de omstandigheden perfect blijven. Voor veel gebruikers, vooral in het begin, is dat het juiste startpunt. Je krijgt nog steeds een beter kapitaalgebruik, maar je laat ruimte als de LP-markering, de vergoeding of het leenpercentage tegen je werkt.",
@@ -266,7 +266,7 @@
           ]
         },
         {
-          "id": "stress-en-uitgang",
+          "id": "stress-and-exit",
           "title": "Stresstesten en exitdiscipline",
           "paragraphs": [
             "Stress testen is essentieel. Elke serieuze lusbenadering moet worden geëvalueerd onder ongunstige omstandigheden. Wat gebeurt er als één kant van het paar scherp beweegt, als het handelsvolume afneemt, als de leenkosten stijgen, of als de kwaliteit van het onderpand sneller verslechtert dan verwacht. Een structuur die aantrekkelijk lijkt wanneer de vergoedingen hoog zijn en de volatiliteit rustig is, kan ongemakkelijk lijken zodra die omstandigheden omkeren. Als het enige gunstige scenario een rustige vergoedingsmaand is, is het denken nog niet afgerond.",
@@ -274,7 +274,7 @@
           ]
         },
         {
-          "id": "balans-geen-magie",
+          "id": "balance-sheet-not-magic",
           "title": "Balansontwerp, niet vrije opbrengst",
           "paragraphs": [
             "Yield looping is een beslissing over de kapitaalstructuur, geen manier om gratis rendement te behalen. Voorzichtig gebruikt op Avana stelt het productieve on-chain liquiditeit in staat een breder scala aan rendementen te ondersteunen zonder dat de oorspronkelijke positie volledig moet worden afgewikkeld. Onvoorzichtig gebruikt verandert het een gezonde LP positie in een fragiele. Het verschil is meestal discipline, bufferbeheer en de bereidheid om hefboomwerking te behandelen als iets om te beheersen in plaats van iets om te maximaliseren."
@@ -283,23 +283,23 @@
       ]
     },
     {
-      "slug": "het-vrijgeven-van-lp-tokens",
+      "slug": "unleashing-lp-tokens",
       "title": "Wat LP Onderpand Mogelijk Maakt",
-      "date": "8 juli 2026",
+      "date": "July 8, 2026",
       "description": "Wat Avana LP onderpand mogelijk maakt op het gebied van lenen, afdekken, treasuryflexibiliteit en een efficiënter kapitaalgebruik van productieve liquiditeit.",
-      "image": "/ images / blog / unleashing-lp-tokens.png",
-      "category": "Voor LPs",
-      "tag": "Gidsen",
+      "image": "/images/blog/unleashing-lp-tokens.png",
+      "category": "For LPs",
+      "tag": "Guides",
       "sections": [
         {
-          "id": "van-gevangen-naar-gebruikbaar",
+          "id": "from-trapped-to-usable",
           "title": "Van vastzittend kapitaal naar bruikbaar kapitaal",
           "paragraphs": [
             "LP posities zijn traditioneel productief maar inflexibel geweest. Ze verdienen handelskosten en ondersteunen de marktdiepte, maar als je liquiditeit uit die positie wilt halen, is de gebruikelijke weg om deze af te wikkelen: de positie uit elkaar halen, het genereren van kosten onderbreken en een productief activum omzetten in niet-actieve tegoeden. LP onderpand verandert dat. Via Avana op Aave v4 kunnen ondersteunde LP posities actief blijven in de onderliggende AMM terwijl ze ook lenen ondersteunen."
           ]
         },
         {
-          "id": "eenvoudig-en-opbrengst-gebruik",
+          "id": "simple-and-yield-use",
           "title": "Conservatieve liquiditeit en tweede rendementsroutes",
           "paragraphs": [
             "Het meest conservatieve gebruiksscenario is eenvoudig. Je leent stabiele activa tegen een ondersteunde Avana LP positie en gebruikt die liquiditeit voor werkkapitaal, reservebeheer of een lager-volatiliteit rendement terwijl de LP actief blijft en doorlopende vergoedingen blijft verdienen. De belangrijkste waarde hier is niet hefboomwerking op zichzelf. Het is toegang tot contant geld zonder te hoeven uit de oorspronkelijke positie te stappen.",
@@ -307,7 +307,7 @@
           ]
         },
         {
-          "id": "afdekken-en-actief",
+          "id": "hedge-and-active",
           "title": "Afdekken en meer actieve strategieën",
           "paragraphs": [
             "Het afdekken is een andere categorie. LP posities stellen gebruikers bloot aan veranderende activasamenstelling en tijdelijke verliezen, vooral in pools waar de ene zijde volatieler is. Krediet tegen LP onderpand op Avana kan ruimte creëren om die blootstelling te beheren: de directionele concentratie verminderen, de liquiditeitsplanning verbeteren of een evenwichtiger portefeuille opbouwen rond een bestaande positie.",
@@ -315,7 +315,7 @@
           ]
         },
         {
-          "id": "wat-veranderingen",
+          "id": "what-changes",
           "title": "Wat verandert voor LPs",
           "paragraphs": [
             "LP onderpand verandert het verstrekken van liquiditeit van een relatief geïsoleerde opbrengstactiviteit in iets dat meer verbonden is met het bredere gebruik van DeFi kapitaal. Een positie die voorheen alleen productief was binnen zijn eigen pool kan nu lenen, liquiditeitsplanning en portefeuilleverdeling ondersteunen zonder eerst afgebroken te worden. Het juiste gebruik hangt nog steeds af van je risicotolerantie en je begrip van hoe LP waarde, leencapaciteit en liquidatiedrempels op Avana met elkaar samenwerken."
@@ -324,23 +324,23 @@
       ]
     },
     {
-      "slug": "vliegveld-lp-zekerheid-aave-v4",
+      "slug": "aerodrome-lp-collateral-aave-v4",
       "title": "Lenen tegen Aerodrome LPs op Aave v4",
-      "date": "6 juli 2026",
+      "date": "July 6, 2026",
       "description": "Hoe Avana Aerodrome LP posities op Base ondersteunt zodat ze actief kunnen blijven terwijl ze lenen ondersteunen via een toegewijde Aave v4 spaak.",
-      "image": "/ afbeeldingen / blog / aerodrome-lp-onderpand.png",
-      "category": "Ontwikkelaars",
-      "tag": "d55egcamhfixo8z326u4",
+      "image": "/images/blog/aerodrome-lp-collateral.png",
+      "category": "Developers",
+      "tag": "Protocol",
       "sections": [
         {
-          "id": "vliegveld-op-avana",
+          "id": "aerodrome-on-avana",
           "title": "Aerodrome liquiditeit op Avana",
           "paragraphs": [
             "Aerodrome LP posities bevinden zich in het centrum van on-chain activiteit op Base, waar liquiditeit handelskosten, tokenverdeling en ecosysteemdiepte ondersteunt. Als onderpand moeten die posities worden geëvalueerd op basis van poolstructuur, activakwaliteit, liquiditeitsdiepte en stresgedrag, niet alleen op basis van kop TVL of fee-generatie. Avana is gebouwd om dit soort onderpand op Aave v4 te ondersteunen met marktspecifieke regels in plaats van een platformbrede algemene regel."
           ]
         },
         {
-          "id": "hub-spoke-en-pool-kwaliteit",
+          "id": "hub-spoke-and-pool-quality",
           "title": "Hub-, spokes- en poolkwaliteit",
           "paragraphs": [
             "De hub-and-spoke-architectuur van Aave v4 is wat het productvormwerk laat functioneren. De hub beheert gedeelde liquiditeit. De Avana-spoke behandelt specifieke Aerodrome-collateraallogica. Een stabiel pool op Base mag niet op dezelfde manier worden behandeld als een volatiel ecosysteem-paar alleen omdat beide Aerodrome LPs zijn. De spoke bepaalt hoe verschillende categorieën van Aerodrome-liquiditeit worden gewaardeerd, hoeveel leenkracht ze ondersteunen, en hoe liquidatie werkt als een positie onveilig wordt.",
@@ -348,7 +348,7 @@
           ]
         },
         {
-          "id": "waardering-en-lenen",
+          "id": "valuation-and-borrow",
           "title": "Waardering en de leningstroom",
           "paragraphs": [
             "Een Aerodrome LP is geen enkel prijs-token. Het is een claim op onderliggende pool-activa waarvan de samenstelling en kwaliteit direct van belang zijn. Avana beoordeelt de waarde van onderpand voorzichtig, waarbij rekening wordt gehouden met de kwaliteit van de liquiditeit, volatiliteit, activacorrelatie en hoe de pool zich gedraagt als de markt omslaat. Een positie kan een aanzienlijke nominale waarde hebben, maar het leenvermogen weerspiegelt wat onder stress kan worden teruggewonnen.",
@@ -356,7 +356,7 @@
           ]
         },
         {
-          "id": "als-gezondheids-pauzes",
+          "id": "if-health-breaks",
           "title": "If health breaks",
           "paragraphs": [
             "Als een positie onveilig wordt, lost Avana de actieve liquiditeitspositie op, rekent af met de onderliggende waarden en herstelt de solvabiliteit met zo min mogelijk verstoring van de markt. De structuur van het pool bepaalt hoe liquidatie werkt. Dat is een andere reden waarom Aerodrome onderpand in een aparte spoke moet worden geplaatst in plaats van als een losse uitbreiding van een bredere leenmarkt."
@@ -365,23 +365,23 @@
       ]
     },
     {
-      "slug": "curve-lp-zekerheid-aave-v4",
+      "slug": "curve-lp-collateral-aave-v4",
       "title": "Lenen tegen Curve LPs op Aave v4",
-      "date": "3 juli 2026",
+      "date": "July 3, 2026",
       "description": "Hoe Avana Curve LP onderpand behandelt voor stabiele en gecorreleerde pools via een speciale Aave v4 spil.",
-      "image": "/afbeeldingen/blog / curve-lp-onderpand.png",
-      "category": "Ontwikkelaars",
-      "tag": "d55egcamhfixo8z326u4",
+      "image": "/images/blog/curve-lp-collateral.png",
+      "category": "Developers",
+      "tag": "Protocol",
       "sections": [
         {
-          "id": "waarom-curve-belangrijk-is",
+          "id": "why-curve-matters",
           "title": "Waarom Curve belangrijk is op Avana",
           "paragraphs": [
             "Curve LP posities bevinden zich vaak in het centrum van stablecoin-markten en handel in gecorreleerde activa, enkele van de diepste en laagste slippage-pools onchain. Dat maakt ze aantrekkelijk als onderpand, maar hun structurele gedrag heeft nog steeds gespecialiseerde behandeling nodig binnen een leenstelsel. Avana ondersteunt Curve LP onderpand op Aave v4 via een toegewijde spoke met een eigen onderpandbehandeling, leenbeperkingen en liquidatieregels die zijn afgestemd op Curve's marktstructuur."
           ]
         },
         {
-          "id": "stabiel-is-niet-risicoloos",
+          "id": "stable-is-not-riskless",
           "title": "Stabiel uitzien is niet zonder risico",
           "paragraphs": [
             "Curve-pools zijn gebouwd rond activa die handelen met nauwere relaties dan standaard volatiele paren. Stablecoin-pools, pools voor liquid staking en pools met gecorreleerde activa kunnen diepere en stabielere liquiditeitsprofielen opleveren. Stabiele relaties kunnen nog steeds breken, correlaties kunnen verzwakken, en pools die conservatief lijken, kunnen zich slecht gedragen onder stress. Avana's collateral-framework moet zowel rekening houden met de relatieve sterkte van Curve's poolontwerp als met de mogelijkheid dat stress precies daar optreedt waar gebruikers stabiliteit verwachten.",
@@ -389,7 +389,7 @@
           ]
         },
         {
-          "id": "gebruikers-en-stroom",
+          "id": "users-and-flow",
           "title": "Wie het gebruikt en hoe lenen werkt",
           "paragraphs": [
             "Veel Curve posities worden al gebruikt door geavanceerde DeFi deelnemers als kernliquiditeitsblootstelling. Stablecoin-pools, liquid staking-paren en gecorreleerde activamarkten vertegenwoordigen grote hoeveelheden economisch belangrijk kapitaal. Als deze posities lenen kunnen ondersteunen zonder opname te vereisen, vergroot dat het nut van sommige van de meest fundamentele liquiditeit in DeFi terwijl het in de pool blijft.",
@@ -397,7 +397,7 @@
           ]
         },
         {
-          "id": "liquidatie",
+          "id": "liquidation",
           "title": "Liquidatie volgt het zwembad",
           "paragraphs": [
             "Als een Curve LP onveilig wordt, wikkelt Avana alleen af wat nodig is om solvabiliteit te herstellen waar mogelijk, respecteert de onderliggende poolstructuur en minimaliseert verstoring tijdens het afbetalen van schulden. Verschillende pooltypes vereisen verschillende aannames. Dat is het punt van het spaakmodel, en het is hoe Avana Curve per familie kan schalen zonder één generieke LP regel voor elke AMM."
@@ -406,23 +406,23 @@
       ]
     },
     {
-      "slug": "balancer-lp-onderpand-aave-v4",
+      "slug": "balancer-lp-collateral-aave-v4",
       "title": "Balancer LP Onderpand op Aave v4",
-      "date": "1 juli 2026",
+      "date": "July 1, 2026",
       "description": "Hoe Avana Balancer gewogen pool LPs als onderpand op Aave v4 ondersteunt terwijl de blootstelling actief blijft.",
-      "image": "/ images / blog / balancer-lp-onderpand.png",
-      "category": "Ontwikkelaars",
-      "tag": "d55egcamhfixo8z326u4",
+      "image": "/images/blog/balancer-lp-collateral.png",
+      "category": "Developers",
+      "tag": "Protocol",
       "sections": [
         {
-          "id": "portfolio-stijl-lps",
+          "id": "portfolio-style-lps",
           "title": "Portefeuille-stijl LP onderpand",
           "paragraphs": [
             "Een Balancer LP-positie is vaak een gestructureerde portefeuille binnen een AMM, met aangepaste gewichten, gediversifieerde blootstelling en liquiditeit die anders reageert dan standaard twee-asset pools. Dat maakt Balancer LPs interessant als onderpand, en ook moeilijker te ondersteunen in een leensysteem dat is gebouwd voor eenvoudigere activa. Avana behandelt dit via een speciale tak op Aave v4."
           ]
         },
         {
-          "id": "gewogen-variëteit",
+          "id": "weighted-variety",
           "title": "Waarom gewogen pools marktregels nodig hebben",
           "paragraphs": [
             "Balancer pools zijn van nature gevarieerd. Een stabiele stijlpool gedraagt zich niet als een 80/20 gewogen pool. Een gecorreleerde activamand gedraagt zich niet als een bredere indexstijl-samenstelling. Zelfs pools met een vergelijkbare totale waarde kunnen wezenlijk verschillende risico's als onderpand hebben, afhankelijk van de diepte van de liquiditeit, activaconcentratie, volatiliteit en de relatie tussen de onderliggende waarden. De Avana spoke bepaalt hoe elke gewogen pool wordt gewaardeerd, hoe de leen capaciteit wordt beperkt en hoe liquidatie werkt.",
@@ -430,7 +430,7 @@
           ]
         },
         {
-          "id": "lenen-en-ontspannen",
+          "id": "borrow-and-unwind",
           "title": "Lenen en ontspannen",
           "paragraphs": [
             "Veel Balancer-pools geven doelbewuste portefeuilleverzinsingen weer: governance-tokenparen, gewogen indexallocaties, stabiele en gecorreleerde mandjes. Als deze posities leenbaar onderpand worden op Avana, hoeven gebruikers niet te kiezen tussen het behouden van gestructureerde marktexposure en toegang tot liquiditeit. Dezelfde poolpositie blijft actief, verdient vergoedingen en ondersteunt lenen via Aave v4.",
@@ -441,23 +441,23 @@
       ]
     },
     {
-      "slug": "slimme-contract-architectuur",
+      "slug": "smart-contract-architecture",
       "title": "Lenen tegen Uniswap LPs op Aave v4",
-      "date": "28 juni 2026",
+      "date": "June 28, 2026",
       "description": "Hoe Avana Uniswap LP posities omzet in Aave v4 onderpand terwijl ze in het zwembad blijven en door blijven verdienen aan vergoedingen.",
-      "image": "/ afbeeldingen / blog / uniswap-lp-onderpand.png",
-      "category": "Ontwikkelaars",
-      "tag": "d55egcamhfixo8z326u4",
+      "image": "/images/blog/uniswap-lp-collateral.png",
+      "category": "Developers",
+      "tag": "Protocol",
       "sections": [
         {
-          "id": "uniswap-op-avana",
+          "id": "uniswap-on-avana",
           "title": "Uniswap liquiditeit op Avana",
           "paragraphs": [
             "Uniswap LP posities bieden markt diepte, vergemakkelijken handel en verdienen vergoedingen, maar ze zijn traditioneel moeilijk te gebruiken binnen uitleensystemen zonder eerst te worden opgenomen of herstructureren. Avana is ontworpen om dat te veranderen op Aave v4. De hub beheert gedeelde liquiditeit. De Avana spoke is een toegewijde markt voor LP ondersteunde leningen, inclusief Uniswap geconcentreerde liquiditeit. De spoke bepaalt hoe onderpand wordt geëvalueerd, hoe leenmachtiging wordt toegewezen, en hoe risico op positieniveau wordt behandeld."
           ]
         },
         {
-          "id": "waarom-cl-is-moeilijk",
+          "id": "why-cl-is-hard",
           "title": "Waarom geconcentreerde reeksen moeilijk onderpand zijn",
           "paragraphs": [
             "Uniswap geconcentreerde liquiditeitsposities zijn geen eenvoudige vervangbare tokens. De waarde hangt af van de huidige prijs van de onderliggende activa, de hoeveelheid verstrekte liquiditeit, het geselecteerde prijsbereik en de in de loop van de tijd opgebouwde vergoedingen. Een positie kan actief en winstgevend zijn, of uit het bereik bewegen en zich heel anders gedragen. Avana moet de samenstelling van de positie in realtime begrijpen en evalueren wat het waard is als onderpand onder veranderende omstandigheden, niet alleen als een nominale papierwaarde.",
@@ -465,7 +465,7 @@
           ]
         },
         {
-          "id": "lenen-toezicht-liquidatie",
+          "id": "borrow-monitor-liquidate",
           "title": "Lenen, controleren, liquideren",
           "paragraphs": [
             "De leenstroom levert een ondersteunde Uniswap LP via de Avana-spoke. De positie blijft in de AMM en blijft vergoedingen verdienen. De spoke evalueert onderpand en past risicologica toe. Je leent ondersteunde activa uit de hub-liquiditeit. Het onderpand van de positie betekent niet dat deze wordt uitgeschakeld. Liquiditeit blijft ingezet, marktexposure blijft intact en vergoedingen blijven oplopen.",
@@ -476,23 +476,23 @@
       ]
     },
     {
-      "slug": "defi-ux-uitdagingen",
+      "slug": "defi-ux-challenges",
       "title": "Het bruikbaar maken van LP onderpand",
-      "date": "25 juni 2026",
+      "date": "June 25, 2026",
       "description": "Waarom Avana productontwerp geeft om duidelijke waardering, leenlimieten en gezondheid, zodat LP onderpand werkbaar is, niet alleen krachtig.",
-      "image": "/ images / blog / making-lp-collateral-usable.png",
-      "category": "mbwrr7svmzo4pqm56pji",
-      "tag": "Gidsen",
+      "image": "/images/blog/making-lp-collateral-usable.png",
+      "category": "Product",
+      "tag": "Guides",
       "sections": [
         {
-          "id": "kracht-is-niet-genoeg",
+          "id": "power-is-not-enough",
           "title": "Macht is niet genoeg",
           "paragraphs": [
             "LP onderpand is krachtig in concept en moeilijk schoon te leveren. Op Avana beheert u niet alleen een lening. U beheert een live liquiditeitspositie waarvan de waarde, samenstelling en risico in de loop van de tijd allemaal veranderen. Dat maakt het product veeleisender dan een standaard leenstroom, en het is een van de belangrijkste redenen waarom LP onderpand operationeel moeilijk is geweest, zelfs wanneer het idee aantrekkelijk klonk."
           ]
         },
         {
-          "id": "maak-de-levenscyclus-leesbaar",
+          "id": "make-the-lifecycle-legible",
           "title": "Maak de levenscyclus leesbaar",
           "paragraphs": [
             "De uitdaging is om de volledige levenscyclus begrijpelijk te maken: waardering van onderpand, leenlimieten, gezondheidsmonitoring en wat er gebeurt als de omstandigheden veranderen. Als die onderdelen ondoorzichtig blijven, blijft het product beperkt tot zeer technische gebruikers, ongeacht hoe sterk het onderliggende mechanisme is.",
@@ -500,7 +500,7 @@
           ]
         },
         {
-          "id": "één-systeem",
+          "id": "one-system",
           "title": "Één verbonden systeem",
           "paragraphs": [
             "LP gefinancierde leningen op Avana zouden als één verbonden systeem moeten worden gepresenteerd. Het storten van liquiditeit, het gebruiken als onderpand, het monitoren van de gezondheid, het innen van vergoedingen en het beheren van risico behoren allemaal tot hetzelfde financiële object. De relatie tussen de LP positie en schuld moet vanaf het begin zichtbaar zijn, zodat je beide kanten tegelijk kunt begrijpen in plaats van het beeld samen te voegen via afzonderlijke interfaces.",
@@ -511,23 +511,23 @@
       ]
     },
     {
-      "slug": "avana-lp-zekerheid",
+      "slug": "avana-lp-collateral",
       "title": "Avana en de volgende stap voor LPs",
-      "date": "23 juni 2026",
+      "date": "June 23, 2026",
       "description": "Waarom liquiditeitsverschaffers niet hoeven te kiezen tussen het verdienen van vergoedingen en toegang tot kapitaal, en hoe Avana LP onderpand op Aave v4 uitbreidt.",
-      "image": "/images/blog/avana-volgende-stap-liquiditeitsverschaffers.png",
-      "category": "Gemeenschap",
-      "tag": "Strategie",
+      "image": "/images/blog/avana-next-step-liquidity-providers.png",
+      "category": "Community",
+      "tag": "Strategy",
       "sections": [
         {
-          "id": "de-oude-afweging",
+          "id": "the-old-tradeoff",
           "title": "De oude afweging",
           "paragraphs": [
             "Liquiditeitsverschaffers leveren diepte, absorberen volatiliteit en verdienen handelskosten, maar het kapitaal in die posities heeft vaak gevangen gevoeld. Als je toegang tot dat kapitaal wilde, was het gebruikelijke antwoord nog steeds om op te nemen, de positie uit elkaar te halen en te stoppen met het doen van het ding dat de positie in de eerste plaats nuttig maakte."
           ]
         },
         {
-          "id": "wat-avana-wijzigingen",
+          "id": "what-avana-changes",
           "title": "Welke Avana veranderingen",
           "paragraphs": [
             "Avana staat toe dat ondersteunde LP-posities functioneren als onderpand op Aave v4 terwijl de liquiditeit actief blijft in de onderliggende AMM. In plaats van een keuze te dwingen tussen het genereren van vergoedingen en toegang tot liquiditeit, kan dezelfde positie beide doen. Het blijft op de markt, genereert vergoedingen en ondersteunt de leen capaciteit binnen een leningssysteem dat is ontworpen voor LP-onderpand.",
@@ -535,7 +535,7 @@
           ]
         },
         {
-          "id": "hoe-de-stapel-past",
+          "id": "how-the-stack-fits",
           "title": "Hoe de stapel in elkaar past",
           "paragraphs": [
             "Avana gebruikt het hub-en-spoke-ontwerp van Aave v4. Gedeelde liquiditeit blijft op het hub-niveau. LP specifieke waardering, onderpandbehandeling en liquidatielogica bevinden zich in aparte spoke-markten. Stabiele pools, gecorreleerde activapools en geconcentreerde liquiditeitsposities krijgen elk een passend risicobeheer in plaats van samengevoegd te worden tot één algemeen kader.",
@@ -546,23 +546,23 @@
       ]
     },
     {
-      "slug": "institutioneel-gebruik-gevallen",
+      "slug": "institutional-use-cases",
       "title": "LP Zekerheden voor instellingen",
-      "date": "20 juni 2026",
+      "date": "June 20, 2026",
       "description": "Hoe Avana LP onderpand DAOs, schatkisten, fondsen en crypto-native bedrijven kan helpen kapitaal te verkrijgen zonder productieve liquiditeit af te wikkelen.",
-      "image": "/images/blog/lp-collateral-voor-instellingen.png",
-      "category": "Voor instellingen",
-      "tag": "Instellingen",
+      "image": "/images/blog/lp-collateral-for-institutions.png",
+      "category": "For Institutions",
+      "tag": "Institutions",
       "sections": [
         {
-          "id": "schatkistfunctie",
+          "id": "treasury-function",
           "title": "Kapitaalefficiëntie als een functie van de schatkist",
           "paragraphs": [
             "Voor instellingen die on-chain opereren, is kapitaalefficiëntie een functie van de schatkist. DAOs, protocolschatkisten, fondsen en crypto-native bedrijven hebben vaak grote posities in verschillende tokens, stabiele reserves en liquiditeitspools, maar een groot deel van dat kapitaal blijft operationeel star. LP posities kunnen vergoedingen genereren en strategische marktpositie ondersteunen, maar ze zijn nog steeds moeilijk te gebruiken als flexibele schatkistactiva zonder liquiditeit terug te trekken en marktpositie te veranderen."
           ]
         },
         {
-          "id": "wat-avana-inschakelt",
+          "id": "what-avana-enables",
           "title": "Wat Avana mogelijk maakt voor teams",
           "paragraphs": [
             "Via Avana kunnen LP posities actief blijven in de AMM terwijl ze lenen op Aave v4 ondersteunen. Een DAO-tresor kan subsidies of betalingen aan bijdragers financieren zonder de kernmarktblootstelling te verminderen. Een fonds kan LP posities aanhouden terwijl het toegang krijgt tot stabiele liquiditeit voor tactische herpositionering. Een bedrijfstresor kan loon- of leveranciersverplichtingen beheren zonder een volledige herbalancering van on-chain reserves te forceren. De gemeenschappelijke draad is dat lenen werkkapitaal creëert zonder posities te realiseren, zonder de opbrengst van vergoedingen te onderbreken en zonder dat elke liquiditeitsbehoefte een verkoopbeslissing hoeft te worden.",
@@ -570,7 +570,7 @@
           ]
         },
         {
-          "id": "fondsen-en-organisaties",
+          "id": "funds-and-corps",
           "title": "Fondsen en bedrijfsfinanciën",
           "paragraphs": [
             "Fondsbeheerders en professionele managers hechten waarde aan tactische flexibiliteit. In snel bewegende markten kan het afwikkelen van een positie voordat toegang tot kapitaal beschikbaar is traag, kostbaar en strategisch ongemakkelijk zijn. Avana LP onderpand stelt een manager in staat om blootstelling en marktpositie te behouden terwijl er liquiditeit vrijkomt voor nieuwe inzet, afdekking of herpositionering.",
@@ -578,7 +578,7 @@
           ]
         },
         {
-          "id": "bedieningen",
+          "id": "controls",
           "title": "Regelaars komen eerst",
           "paragraphs": [
             "Institutionele adoptie hangt af van controles: duidelijke beleidsgrenzen rond wat kan worden geleend, tegen welke onderpand, via welk goedkeuringspad, en met welke risicobeperkende regels. Avana spokes-markten betekenen dat risico kan worden gedefinieerd rond de onderpandstructuur. Stables, gecorreleerde paren, geconcentreerde liquiditeit en volatiele pools kunnen worden beheerd onder verschillende aannames. Operationele controles omvatten rolenscheiding, permissies, gezondheidsmonitoring, controleerbaarheid en goedkeuringsdrempels met meerdere handtekeningen. Deze zijn centraal voor de vraag of LP onderpand een geloofwaardige schatkist-primitive wordt in plaats van slechts een hefboomhulpmiddel.",
@@ -588,23 +588,23 @@
       ]
     },
     {
-      "slug": "integratie-gids",
+      "slug": "integration-guide",
       "title": "Bouwen op Avana LP Infrastructuur",
-      "date": "17 juni 2026",
+      "date": "June 17, 2026",
       "description": "Een ontwikkelaarsweergave van Avana LP collaterale infrastructuur, inclusief monitoring, automatisering, liquidatiediensten en bouwkansen.",
-      "image": "/ afbeeldingen / blog / developer-view-lp-onderpand.png",
-      "category": "Ontwikkelaars",
-      "tag": "d55egcamhfixo8z326u4",
+      "image": "/images/blog/developer-view-lp-collateral.png",
+      "category": "Developers",
+      "tag": "Protocol",
       "sections": [
         {
-          "id": "een-nieuw-ontwerp-oppervlakte",
+          "id": "a-new-design-surface",
           "title": "A new design surface",
           "paragraphs": [
             "De meeste DeFi infrastructuur is gebouwd rond eenvoudige onderpanden. Enkele activa zijn gemakkelijk te waarderen, te monitoren en te liquideren. LP posities zijn actief, tweezijdig en structureel complexer. Hun waarde verandert met de onderliggende activa, de samenstelling van het fonds, het opbouwen van vergoedingen en het bereik. Die complexiteit is de reden waarom LP onderpand moeilijk te integreren is in leensystemen, en het is ook de reden waarom Avana een nieuw ontwerpvlak voor ontwikkelaars creëert."
           ]
         },
         {
-          "id": "wat-bouwers-krijgen",
+          "id": "what-builders-get",
           "title": "Wat bouwers krijgen van Avana",
           "paragraphs": [
             "Avana maakt LP posities bruikbaar als onderpand via Aave v4. Hub-and-spoke-architectuur betekent dat LP posities worden geëvalueerd, risico-gecorrigeerd en geliquideerd volgens markt-specifieke logica, niet een generieke leenmarkt die toevallig LPs accepteert. Voor bouwers opent dat toepassingen rond interfaces, monitoringsystemen, schatkisttools, strategielaag en risicobewuste producten gebouwd op LP-gedekte krediet.",
@@ -612,7 +612,7 @@
           ]
         },
         {
-          "id": "automatisering-liquidatie-schatkist",
+          "id": "automation-liquidation-treasury",
           "title": "Automatisering, liquidatie en schatkisttools",
           "paragraphs": [
             "Automatisering en strategie-infrastructuur is een andere lijn van werk. Omdat LP posities actief blijven terwijl ze lenen ondersteunen, kunnen ontwikkelaars systemen bouwen die reageren op veranderende omstandigheden aan beide zijden van de positie: het behouden van doel-lenerbanden, het monitoren van onderpandafwijkingen, of het routeren van positiedata naar treasury- en portefeuillesystemen die bovenop Avana zitten.",
@@ -623,23 +623,23 @@
       ]
     },
     {
-      "slug": "aave-v4-avana-spaak",
+      "slug": "aave-v4-avana-spoke",
       "title": "Binnen de Avana's LP Collaterale Architectuur",
-      "date": "14 juni 2026",
+      "date": "June 14, 2026",
       "description": "Binnen Avana's LP onderpandarchitectuur op Aave v4, inclusief de hub, spaken, waardering, orakelontwerp en liquidatielogica.",
-      "image": "/images/blog/inside-avana-architectuur.png",
-      "category": "Ontwikkelaars",
-      "tag": "d55egcamhfixo8z326u4",
+      "image": "/images/blog/inside-avana-architecture.png",
+      "category": "Developers",
+      "tag": "Protocol",
       "sections": [
         {
-          "id": "waarom-hub-en-spaak",
+          "id": "why-hub-and-spoke",
           "title": "Waarom hub-and-spoke",
           "paragraphs": [
             "LP onderpand kan niet worden ondersteund met een generiek leenontwerp. Het heeft een systeem nodig dat actieve liquiditeitsposities, veranderende samenstelling van onderpand, marktspecifieke waardering en liquidatiepaden die verschillen van standaard tokenonderpand afhandelt. Avana is gebouwd op het hub-en-spoke-model van Aave v4 omdat LP ondersteunde leningen zowel gedeelde liquiditeit als geïsoleerde marktlogica tegelijkertijd nodig hebben."
           ]
         },
         {
-          "id": "hub-en-spaak-rollen",
+          "id": "hub-and-spoke-roles",
           "title": "Wat de hub en spaken doen",
           "paragraphs": [
             "Het knooppunt houdt uitlenbare activa en coördineert gedeelde liquiditeit over markten: beheer van reserves, bijhouden van benutting en toewijzing van krediet. Een knooppunt is hoe Avana LP onderpand verbindt met een breder uitleenkader zonder dat elke soort onderpand dezelfde aannames hoeft te delen. Een stabiele LP markt, een geconcentreerde liquiditeitsmarkt en een volatiel AMM paar zouden niet allemaal op dezelfde manier beheerd moeten worden alleen omdat ze uit dezelfde liquiditeitspool putten.",
@@ -647,7 +647,7 @@
           ]
         },
         {
-          "id": "waarderings-orakel-liquidatie",
+          "id": "valuation-oracle-liquidation",
           "title": "Waardering, orakels en liquidatie",
           "paragraphs": [
             "Waardering maakt gebruik van een gelaagde aanpak. Ten eerste, wat bevat de LP-positie daadwerkelijk in de huidige marktsituatie. Ten tweede, prijs die onderliggende waarden op basis van betrouwbare oracle-invoer. Ten derde, pas aan via collateral-logica die het werkelijke poolrisico weerspiegelt in plaats van de nominale grootte. Niet elke dollar binnen een LP-positie vertaalt zich in dezelfde leenmogelijkheid op Avana.",
@@ -658,23 +658,23 @@
       ]
     },
     {
-      "slug": "v1-1-uitgave",
+      "slug": "v1-1-release",
       "title": "Avana v1.1: Betere Zekerheid, Betere Controle",
-      "date": "11 juni 2026",
+      "date": "June 11, 2026",
       "description": "Avana v1.1 breidt multi-posities onderpand uit, voegt meer ondersteunde pools toe, verbetert delegatie en meldingen, en verlaagt transactie-overhead.",
-      "image": "/images/blog/avana-v1-1-beter-controle.png",
-      "category": "mbwrr7svmzo4pqm56pji",
-      "tag": "mbwrr7svmzo4pqm56pji",
+      "image": "/images/blog/avana-v1-1-better-control.png",
+      "category": "Product",
+      "tag": "Product",
       "sections": [
         {
-          "id": "wat-verzonden",
+          "id": "what-shipped",
           "title": "Wat verscheen in v1.1",
           "paragraphs": [
             "Avana v1.1 maakt LP ondersteunde leningen flexibeler, efficiënter en gemakkelijker te beheren. Deze update breidt uit hoe gebruikers onderpand structureren, verbetert positiesevaluatie, vermindert transactie-overhead en verfijnt het dashboard voor het beheren van actieve LP posities op Aave v4."
           ]
         },
         {
-          "id": "multi-positie-en-markten",
+          "id": "multi-position-and-markets",
           "title": "Meervoudige positie zekerheid en meer markten",
           "paragraphs": [
             "De belangrijkste verandering is multi-positie onderpand. Gebruikers kunnen meerdere LP posities storten en hun leenvermogen laten evalueren over de volledige set onderpand in plaats van per positie. Dat geeft meer flexibiliteit bij het beheren van liquiditeit over verschillende pools, activa of strategietypen. De release breidt ook de ondersteunde pools uit over Uniswap v3 en v4. Elke nieuwe markt omvat nog steeds extra waardering, behandeling van onderpand en liquidatiewerk, dus bredere toegang verzwakt de risicostandaarden van Avana niet.",
@@ -682,7 +682,7 @@
           ]
         },
         {
-          "id": "ops-en-dashboard",
+          "id": "ops-and-dashboard",
           "title": "Ops-tools en een duidelijker dashboard",
           "paragraphs": [
             "Delegatieondersteuning helpt DAO's, teams en gestructureerde operators om verantwoordelijkheden te scheiden over wallets of rollen: wie beheert stortingen, wie handelt schuldenacties af, wie voert operationeel onderhoud uit. Health factor-waarschuwingen geven eerder zicht op veranderende positievoorwaarden voordat stress ontstaat. LP onderpand kan snel verschuiven, vooral wanneer prijsdivergentie tegelijkertijd zowel de verdienstefficiëntie als de kwaliteit van het onderpand beïnvloedt.",
@@ -693,30 +693,30 @@
       ]
     },
     {
-      "slug": "introduceren-automatiseren",
+      "slug": "introducing-automate",
       "title": "Automatiseer: Een controlelaag voor LP onderpand",
-      "date": "8 juni 2026",
+      "date": "June 8, 2026",
       "description": "Hoe Avana Automate gebruikers helpt bij het beheren van LP onderpand met niet-custodiale automatisering voor kosten, herbalancering, bescherming en gedisciplineerd onderhoud.",
-      "image": "/images/blog / automate-control-layer-lp-collateral.png",
-      "category": "mbwrr7svmzo4pqm56pji",
-      "tag": "mbwrr7svmzo4pqm56pji",
+      "image": "/images/blog/automate-control-layer-lp-collateral.png",
+      "category": "Product",
+      "tag": "Product",
       "sections": [
         {
-          "id": "waarom-automatisering",
+          "id": "why-automation",
           "title": "Waarom LP onderpand automatisering nodig heeft",
           "paragraphs": [
             "Het beheren van een LP-positie die ook als onderpand dient, is veeleisend. Kosten lopen op maar blijven niet altijd productief. Liquiditeitsbereiken verschuiven naarmate de markten bewegen. Gezondheidsfactoren verzwakken naarmate prijsdivergentie het onderpandprofiel verandert. Beide zijden van de balans blijven actief. De LP-positie evolueert, en de schuld daartegen evolueert mee met de leenvoorwaarden. Voor gebruikers die lenen tegen LPs via Avana op Aave v4, is dat de dagelijkse realiteit."
           ]
         },
         {
-          "id": "wat-automatiseren-is",
+          "id": "what-automate-is",
           "title": "Wat Avana Automate is",
           "paragraphs": [
             "Automate is de niet-custodiale automatiseringslaag van Avana. Het voert door gebruikers goedgekeurde acties uit wanneer vooraf gedefinieerde voorwaarden zijn voldaan. Gebruikers behouden de volledige controle over activa en rechten. Automate verzorgt repetitief onderhoud en handhaaft positie-discpline. Het is geen vervanging voor strategie of oordeel. Het is een manier om de operationele last van het beheren van LP onderpand op Avana te verminderen."
           ]
         },
         {
-          "id": "tarief-bereiken-bescherming",
+          "id": "fees-ranges-protection",
           "title": "Kosten, bereiken en bescherming",
           "paragraphs": [
             "Handelskosten stapelen zich geleidelijk op, maar inactieve kosten dragen niet bij aan de efficiëntie van posities. Automatisering kan ze verzamelen en opnieuw inzetten volgens de voorkeuren van de gebruiker, zodat posities productiever blijven zonder constante handmatige tussenkomst. Na verloop van tijd kan gedisciplineerd onderhoud van kosten net zo belangrijk zijn als het rendement, vooral voor grotere LP ondersteunde leensstrategieën.",
@@ -725,7 +725,7 @@
           ]
         },
         {
-          "id": "dag-twee-bewerkingen",
+          "id": "day-two-ops",
           "title": "Dag twee operaties",
           "paragraphs": [
             "Automate is gebouwd rond de werkelijke aard van LP onderpand: posities die verdienen, afdrijven en risico veranderen terwijl ze als onderpand op Aave v4 dienen. Het biedt gebruikers een manier om posities consistent te onderhouden, te reageren op veranderende omstandigheden met minder wrijving, en LP-gedekte leningen te beheren met discipline die anders constante handmatige aandacht zou vereisen. Hetzelfde non-custodial principe doorheen. Avana voert je beleid uit. Het wordt geen black-box fondsbeheerder."
@@ -734,30 +734,30 @@
       ]
     },
     {
-      "slug": "lp-zekerheidsgids",
+      "slug": "lp-collateral-guide",
       "title": "Een beginnersgids voor LP onderpand",
-      "date": "4 juni 2026",
+      "date": "June 4, 2026",
       "description": "Een beginnersgids voor LP onderpand op Avana, met informatie over LP gedrag, LTV, permanent verlies, liquidatie en conservatieve eerste stappen.",
-      "image": "/ afbeeldingen / blog / beginners-Gids-lp-onderpand.png",
-      "category": "Voor LPs",
-      "tag": "Gidsen",
+      "image": "/images/blog/beginners-guide-lp-collateral.png",
+      "category": "For LPs",
+      "tag": "Guides",
       "sections": [
         {
-          "id": "het-basale-idee",
+          "id": "the-basic-idea",
           "title": "Het basisidee",
           "paragraphs": [
             "Het verstrekken van liquiditeit is een van de meest gebruikelijke manieren om rendement te behalen in DeFi. Je stort activa in een pool, faciliteert handel en verdient daar vergoedingen voor. LP-posities waren ook inflexibel. Als je dat kapitaal elders wilde gebruiken, moest je het meestal eerst opnemen. LP-onderpand verandert dat. Via Avana op Aave v4 kunnen ondersteunde LP-posities lenen dekken terwijl ze actief blijven in de pool en de hele tijd vergoedingen blijven verdienen."
           ]
         },
         {
-          "id": "wat-een-lp-is",
+          "id": "what-an-lp-is",
           "title": "Wat een LP eigenlijk is",
           "paragraphs": [
             "Een LP-positie is een actieve positie binnen een markt. De waarde ervan hangt af van de onderliggende waarden, hoe deze zich ten opzichte van elkaar bewegen, opgebouwde vergoedingen en, in systemen met geconcentreerde liquiditeit, of de positie zich nog steeds binnen het actieve prijsklasse bevindt. Het verandert in de loop van de tijd op manieren waarop gewoon tokenonderpand dat niet doet. Daarom heeft LP-onderpand een meer gespecialiseerd leenmodel nodig, en daarom bestaat Avana voor dat gebruiksdoel."
           ]
         },
         {
-          "id": "ltv-il-liquidatie",
+          "id": "ltv-il-liquidation",
           "title": "LTV, tijdelijke verliezen en liquidatie",
           "paragraphs": [
             "Lening ten opzichte van waarde, vaak verkort tot LTV, is het gedeelte van de geaccepteerde onderpandwaarde van een positie waartegen geleend kan worden. Een lagere LTV betekent meer buffer. Als de onderpandwaarde daalt, is er ruimte voordat de lening onder druk komt te staan. Een hogere LTV geeft meer directe liquiditeit en een kleinere veiligheidsmarge. In LP-markten is dit belangrijker omdat de waarde van een positie om meerdere redenen tegelijk kan bewegen: onderliggende prijzen, samenstelling van het fonds, fee-opbouw en plaatsing van het bereik.",
@@ -766,7 +766,7 @@
           ]
         },
         {
-          "id": "eerste-stappen",
+          "id": "first-steps",
           "title": "A sensible first path",
           "paragraphs": [
             "Zelfs als onderpand blijft een LP-positie vergoedingen verdienen en marktblootstelling behouden. Dat is de winst in kapitaalefficiëntie. Voor beginners is de veiligste aanpak om conservatief te beginnen met Avana: leen bescheiden, gebruik eerst eenvoudigere en stabielere pooltypes, en let op hoe de gezondheid van de positie verandert wanneer de markten bewegen. Zodra je begrijpt hoe LP waarde, schuld en liquidatiedrempels op elkaar inwerken, wordt het model veel eenvoudiger verantwoord te gebruiken."

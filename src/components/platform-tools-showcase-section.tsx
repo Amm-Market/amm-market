@@ -1,8 +1,9 @@
 import Image from "next/image"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 
-export default function PlatformToolsShowcaseSection() {
-  return (
+export default async function PlatformToolsShowcaseSection() {
+  return withMarketingI18n(['platform-tools-showcase-section'], (
     <section
       data-section="platform-tools-showcase"
       data-theme="beige"
@@ -25,5 +26,5 @@ export default function PlatformToolsShowcaseSection() {
         />
       </div>
     </section>
-  )
+  ))
 }

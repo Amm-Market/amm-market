@@ -1,4 +1,5 @@
 import ProductFeatureScrollSection from "@/components/product-feature-scroll-section"
+import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 
 const safetyFeatures = [
   {
@@ -18,8 +19,8 @@ const safetyFeatures = [
   },
 ] as const
 
-export default function PositionSafetySection() {
-  return (
+export default async function PositionSafetySection() {
+  return withMarketingI18n(['position-safety-section'], (
     <ProductFeatureScrollSection
       eyebrow="Position Safety"
       eyebrowTone="violet"
@@ -161,5 +162,5 @@ export default function PositionSafetySection() {
         </div>,
       ]}
     />
-  )
+  ))
 }

@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react"
 import { FaqToggleIcons } from "@/components/faq-toggle-icons"
+import { lookupPhrase, usePhraseMap } from "@/components/phrase-map-context"
 import { SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
@@ -19,17 +20,17 @@ interface InlineFaqSectionProps {
   withTopBorder?: boolean
 }
 
-function renderFaqTitle(title: string) {
+function renderFaqTitle(title: string, t: (s: string) => string) {
   if (title === "Frequently asked questions" || title === "Frequently asked questions.") {
     return (
       <>
-        <span className="block whitespace-nowrap">Frequently asked</span>
-        <span className="block whitespace-nowrap">questions</span>
+        <span className="block whitespace-nowrap">{t("Frequently asked")}</span>
+        <span className="block whitespace-nowrap">{t("questions")}</span>
       </>
     )
   }
 
-  return title
+  return t(title)
 }
 
 /**
@@ -42,6 +43,8 @@ export function InlineFaqSection({
   items,
   withTopBorder = true,
 }: InlineFaqSectionProps) {
+  const map = usePhraseMap()
+  const t = (text: string) => lookupPhrase(map, text)
   const contentClassName = "min-w-0 md:pl-16 lg:pl-24 xl:pl-28"
 
   return (
@@ -51,9 +54,9 @@ export function InlineFaqSection({
       }`}
     >
       <div className="space-y-3 md:max-w-[25rem] md:pt-2">
-        {eyebrow ? <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow> : null}
+        {eyebrow ? <SectionEyebrow tone={eyebrowTone}>{t(eyebrow)}</SectionEyebrow> : null}
         <SectionTitle as="h3" className="max-w-none">
-          {renderFaqTitle(title)}
+          {renderFaqTitle(title, t)}
         </SectionTitle>
       </div>
       <div className={contentClassName}>
@@ -65,7 +68,7 @@ export function InlineFaqSection({
               className="border-b border-gray-200 pt-6 pb-6 last:border-b-0"
             >
               <AccordionTrigger className="type-accordion-question group gap-4 p-0 text-left text-gray-900 hover:underline [&>svg.size-4]:hidden">
-                {item.question}
+                {t(item.question)}
                 <FaqToggleIcons />
               </AccordionTrigger>
               <AccordionContent className="type-accordion-answer pt-2 text-gray-600">

@@ -16,7 +16,7 @@
       "resources": "الموارد",
       "developers": "المطورون",
       "helpCenter": "مركز المساعدة",
-      "aaveArfc": "s4sfzxd7gbpbwhtwwsao",
+      "aaveArfc": "آيف ARFC",
       "borrow": "يستعير",
       "lend": "يقترض",
       "multiply": "اضرب",
@@ -142,7 +142,7 @@
       "searchResults": "نتائج البحث",
       "clearSearch": "مسح البحث",
       "noResults": "لم يتم العثور على نتائج لـ \"{query}\"",
-      "category": "الفئة: {name}",
+      "category": "Category: {name}",
       "categoriesAria": "فئات الأسئلة الشائعة",
       "articles": "{count} مقالات"
     },
