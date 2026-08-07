@@ -1,6 +1,7 @@
 "use client"
 
 import dynamic from "next/dynamic"
+import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
 import HeaderLanguageDropdown from "@/components/header-language-dropdown"
 
@@ -32,6 +33,7 @@ function MobileMenuToggleIcon({ open }: { open: boolean }) {
 }
 
 export default function HeaderMobileNavigation() {
+  const t = useTranslations("common")
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileMenuMounted, setMobileMenuMounted] = useState(false)
   const [mobileMenuAnimationCycle, setMobileMenuAnimationCycle] = useState(0)
@@ -46,13 +48,13 @@ export default function HeaderMobileNavigation() {
   }, [mobileMenuOpen])
 
   return (
-    <div className="ml-auto flex items-center gap-2 lg:hidden" data-framer-name="Navigation Mobile">
+    <div className="ms-auto flex items-center gap-2 lg:hidden" data-framer-name="Navigation Mobile">
       <HeaderLanguageDropdown variant="mobile" />
 
       <button
         type="button"
         className="inline-flex h-11 w-11 items-center justify-center text-[#01AACF] transition hover:text-[#01AACF]/80"
-        aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+        aria-label={mobileMenuOpen ? t("a11y.closeMenu") : t("a11y.openMenu")}
         aria-expanded={mobileMenuOpen}
         aria-controls="mobile-site-nav"
         onFocus={warmMobileMenu}

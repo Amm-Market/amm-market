@@ -1,11 +1,11 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import Link from "next/link"
 import { ArrowUpRight, BookOpenText, ChevronDown } from "lucide-react"
-import { usePathname } from "next/navigation"
+import { useTranslations } from "next-intl"
 import { useEffect, useRef, useState } from "react"
 import { desktopMenuButtons, type DesktopMenuId } from "@/components/header-nav-data"
+import { Link, usePathname } from "@/i18n/navigation"
 import { siteRoutes } from "@/lib/site"
 
 const DeferredHeaderDesktopMenuPanel = dynamic(() => import("@/components/header-desktop-menu-panel"), { ssr: false })
@@ -23,6 +23,7 @@ function isPathInSection(pathname: string, matchHrefs: readonly string[]) {
 }
 
 export default function HeaderDesktopNavigation() {
+  const t = useTranslations("common")
   const pathname = usePathname() || "/"
   const [desktopMenuOpen, setDesktopMenuOpen] = useState<DesktopMenuId | null>(null)
   const [desktopMenuRendered, setDesktopMenuRendered] = useState<DesktopMenuId | null>(null)
@@ -59,9 +60,20 @@ export default function HeaderDesktopNavigation() {
 
   useEffect(() => () => clearDesktopCloseTimeout(), [])
 
+  const menuLabels: Record<DesktopMenuId, string> = {
+    products: t("nav.products"),
+    resources: t("nav.resources"),
+    developers: t("nav.developers"),
+  }
+
   return (
     <>
-      <nav aria-label="Primary navigation" className="hidden min-w-0 items-center lg:ml-4 lg:mr-auto lg:flex lg:gap-3 xl:ml-6 xl:gap-7 2xl:gap-8" onMouseEnter={warmDesktopMenuPanel} onMouseLeave={scheduleDesktopMenuClose}>
+      <nav
+        aria-label={t("a11y.primaryNav")}
+        className="hidden min-w-0 items-center lg:ms-4 lg:me-auto lg:flex lg:gap-3 xl:ms-6 xl:gap-7 2xl:gap-8"
+        onMouseEnter={warmDesktopMenuPanel}
+        onMouseLeave={scheduleDesktopMenuClose}
+      >
         {desktopMenuButtons.map((menu) => {
           const isOpen = desktopMenuOpen === menu.id
           const isCurrentSection = isPathInSection(pathname, menu.matchHrefs)
@@ -79,7 +91,7 @@ export default function HeaderDesktopNavigation() {
               onClick={() => openDesktopMenu(menu.id)}
               className={`site-header-nav-link group relative inline-flex items-center gap-1 px-0 py-1 font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out xl:gap-1.5 ${isHighlighted ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
             >
-              <span>{menu.label}</span>
+              <span>{menuLabels[menu.id]}</span>
               <ChevronDown
                 aria-hidden="true"
                 className={`h-[15px] w-[15px] shrink-0 transition-transform duration-200 ease-out ${isOpen ? "rotate-180" : "rotate-0"}`}
@@ -93,39 +105,45 @@ export default function HeaderDesktopNavigation() {
           prefetch={false}
           onMouseEnter={closeDesktopMenu}
           onFocus={closeDesktopMenu}
-          aria-label="Help Center"
-          title="Help Center"
+          aria-label={t("nav.helpCenter")}
+          title={t("nav.helpCenter")}
           className={`site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${pathname === siteRoutes.faq ? "text-[#01AACF]" : "text-black/62 hover:text-[#01AACF]"}`}
         >
-          <span className="hidden xl:inline">Help Center</span>
+          <span className="hidden xl:inline">{t("nav.helpCenter")}</span>
           <BookOpenText
             aria-hidden="true"
             className="h-[17px] w-[17px] shrink-0 transition-transform duration-200 ease-out group-hover:scale-105 xl:h-[15px] xl:w-[15px]"
             strokeWidth={2.35}
           />
         </Link>
-        <Link
+        <a
           href="https://governance.aave.com/"
-          prefetch={false}
           target="_blank"
           rel="noreferrer"
           onMouseEnter={closeDesktopMenu}
           onFocus={closeDesktopMenu}
-          aria-label="Aave ARFC"
-          title="Aave ARFC"
+          aria-label={t("nav.aaveArfc")}
+          title={t("nav.aaveArfc")}
           className="site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 font-[560] tracking-[-0.02em] text-black/62 transition-[color,opacity] duration-200 ease-out hover:text-[#01AACF]"
         >
-          <span className="hidden xl:inline">Aave ARFC</span>
+          <span className="hidden xl:inline">{t("nav.aaveArfc")}</span>
           <ArrowUpRight
             aria-hidden="true"
             className="h-[17px] w-[17px] shrink-0 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 xl:h-[15px] xl:w-[15px]"
             strokeWidth={2.35}
           />
-        </Link>
+        </a>
       </nav>
 
       {desktopMenuRendered !== null ? (
-        <DeferredHeaderDesktopMenuPanel menuId={desktopMenuRendered} isOpen={desktopMenuOpen !== null} onOpen={clearDesktopCloseTimeout} onClose={scheduleDesktopMenuClose} onExited={() => setDesktopMenuRendered(null)} animationCycle={desktopMenuAnimationCycle} />
+        <DeferredHeaderDesktopMenuPanel
+          menuId={desktopMenuRendered}
+          isOpen={desktopMenuOpen !== null}
+          onOpen={clearDesktopCloseTimeout}
+          onClose={scheduleDesktopMenuClose}
+          onExited={() => setDesktopMenuRendered(null)}
+          animationCycle={desktopMenuAnimationCycle}
+        />
       ) : null}
     </>
   )

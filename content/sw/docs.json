@@ -1,0 +1,2201 @@
+{
+  "architecture/collateral-factors": {
+    "meta": {
+      "title": "Vigezo vya Dhamana",
+      "description": "Jinsi Karatasi ya Mkopo inavyotumia thamani ya nafasi LP kuwa uwezo wa kukopa kabla ya kuripoti kwenye Kituo."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "jinsi-inavyofanya-kazi",
+        "title": "Jinsi Inavyofanya Kazi"
+      },
+      {
+        "id": "thamani-inayokopeshwa",
+        "title": "Thamani Inayokopesheka"
+      },
+      {
+        "id": "vidokezo",
+        "title": "Maelezo"
+      }
+    ],
+    "strings": [
+      "Vigezo vya Dhamana",
+      "Jinsi Karatasi ya Mkopo inavyotumia thamani ya nafasi LP kuwa uwezo wa kukopa kabla ya kuripoti kwenye Kituo.",
+      "Muhtasari",
+      "Jinsi Inavyofanya Kazi",
+      "Thamani Inayokopesheka",
+      "Maelezo",
+      "Jinsi Mazingatio ya Mkopo yanavyopanga ni kiasi gani cha nafasi ya LP kinachohesabiwa kuelekea uwezo wa kukopa.",
+      "Vigezo vya dhamana vinajibu swali dogo lakini muhimu: ni kiasi gani cha nafasi hii LP kinapaswa kweli kuunga mkono deni? Katika Avana, jibu hilo halichukuliwi kutoka alama ya kwanza ya LP peke yake. Borrow Spoke kwanza inajenga upya na kupunguza nafasi hiyo, kisha inatumia sheria za soko ambazo zinaamua ni sehemu gani ya thamani hiyo inaweza kuhesabiwa kama uwezo wa kukopa unaotumika.",
+      "Lightpaper inazungumzia kanuni. Ukurasa huu unaelezea mlolongo unaoelekezwa kwa mtaalamu wa maendeleo unaotumika ndani ya tisho kabla ya uwezo wowote kupeanwa kwa Hub.",
+      "Spoke inakubali tu mabwawa au templeti zilizothibitishwa. Ikiwa nafasi haitii ufafanuzi wa soko ulioorodheshwa, haiwafiki hatua za baadaye za tathmini zinazotoa uwezo wa kukopa.",
+      "Inaunda upya nafasi ya LP, inapanga bei ya mali msingi, na kupunguza matokeo hadi thamani ya dhamana inayoweza kurejeshwa. Hatua hiyo ndio ambapo mkondo unahama kutoka kwenye nafasi ya bwawa inayofanana na kuwa na thamani kwa nadharia hadi kwenye thamani ambayo uko tayari kukopa dhidi yake kivitendo.",
+      "Inatumia mipangilio ya dhamana maalum ya soko na hupitisha uwezo wa jumla wa kukopa kwenda Hubi kwa utekelezaji wa mwisho. Hubi inatumia matokeo, lakini tawi ndilo safu iliyoamua ni kiasi gani cha LP kiliweza kuhesabiwa kwa mwanzo.",
+      "Thamani inayoweza kukopwa ni matokeo yaliyozalishwa, si sifa iliyowekwa kwa kila LP kwenye tundu. Nafasi mbili zinaweza kuishi katika masoko tofauti, kutoa thamani tofauti inayoweza kurekebishwa, na kufanikisha mipangilio tofauti ya dhamana hata kama zinavyoonekana vema kwa mara ya kwanza. Hii inahakikisha utekelezaji umeendana na mfano wa uwekaji wa hatari maalum wa LP ulioelezewa mahali pengine kwenye nyaraka.",
+      "Nafasi yenye msaada LP huchangia uwezo wa kukopa tu baada ya gurudumu la mzunguko kulikubali, kulirekebisha na kulipunguzia, na kutumia udhibiti wa dhamana uliowekwa wa soko.",
+      "• Mipangilio halisi ya soko hai na usanidi unaounga mkono wa bwawa badala ya ukurasa huu wa muhtasari.",
+      "• Vikundi vya hatari vya ngazi ya bwawa ni maelezo ya utekelezaji, si ahadi kwamba LP zote zinashiriki LTV moja ya ulimwengu.",
+      "• Soma tabia ya kigezo cha dhamana pamoja na nyaraka za kigezo cha afya na ufutaji ikiwa unatekeleza ufuatiliaji au mantiki ya urejeshaji."
+    ]
+  },
+  "architecture/health-factor": {
+    "meta": {
+      "title": "Kigezo cha Afya",
+      "description": "Jinsi Kihamishi cha Kukopa kinavyolinganishwa thamani iliyorekebishwa ya dhamana na deni ili kubaini ikiwa akaunti inayounga mkono LP iko katika afya nzuri au inaweza kuuzwa kwa uhai."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "hisabati",
+        "title": "Hesabu"
+      },
+      {
+        "id": "vipande vya afya",
+        "title": "Bendi za Ufuatiliaji"
+      },
+      {
+        "id": "njia-ya-jibu",
+        "title": "Njia ya Majibu"
+      },
+      {
+        "id": "vitendo-vya-mtumiaji",
+        "title": "Vitendo vya Mtumiaji"
+      }
+    ],
+    "strings": [
+      "Kigezo cha Afya",
+      "Jinsi Kihamishi cha Kukopa kinavyolinganishwa thamani iliyorekebishwa ya dhamana na deni ili kubaini ikiwa akaunti inayounga mkono LP iko katika afya nzuri au inaweza kuuzwa kwa uhai.",
+      "Muhtasari",
+      "Hesabu",
+      "Bendi za Ufuatiliaji",
+      "Njia ya Majibu",
+      "Vitendo vya Mtumiaji",
+      "Jinsi kipimo cha Borrow Spoke kinavyopima usalama wa akaunti kutokana na thamani iliyorekebishwa ya dhamana na deni lililobaki.",
+      "Kigezo cha afya ni mtazamo wa Borrow Spoke wa kompakt wa kama akaunti bado ina uhakika wa kutosha wa dhamana iliyorekebishwa kusaidia deni lake. Siyo mfano wa hatari tofauti. Njia hiyo ile ile ya uhakiki, mantiki ya kigezo cha dhamana, na makisio ya ufutaji yanayodhibiti ukopaji pia huamuru kigezo cha afya ambacho kiolesura na wafutaji huchambua.",
+      "Wakati afya inapungua kiasi kwamba akaunti haizidi hadi kikomo cha kukopa cha tundu, nafasi inakuwa inaweza kufutwa chini ya kanuni",
+      "Mfumo wa Utoaji Mali",
+      "Afya inahesabiwa kwa kila Kipini cha Mkopo. Kiwango cha juu ni thamani ya dhamana iliyorekebishwa ya mtumiaji ndani ya kipini hicho, ambayo inamaanisha nafasi tayari imepitia urekebishaji, upimaji wa bei, punguzo la thamani inayoweza kurekebishwa, na mipangilio maalum ya dhamana ya soko inayotumika na kipini hicho.",
+      "kigezoChaAfya = thamaniYaDhamanaIliyorekebishwa / deniLilizobaki",
+      "Kama mtumiaji ana dhamana katika Borrow Spoke zaidi ya moja, kila spoke huhesabu afya kulingana na hali yake ya ndani. Nafasi ya ziada katika spoke moja haiwezi moja kwa moja kufunika upungufu katika nyingine, kwa sababu itifaki inaudhibiti hatari katika soko ambapo ilitengenezwa.",
+      "Afya:",
+      "thamani iliyorekebishwa ya dhamana inabaki juu kwa faraja kuliko deni lililobaki, hivyo akaunti ina nafasi kwa mzunguko wa kawaida wa soko bila hatua za haraka.",
+      "Orodha ya kuangalia:",
+      "akaunti bado inapita kupitia ukaguzi wa mguu, lakini kuwepo kwa zaidi kidogo kunatosha kwamba mkopaji anapaswa kuzingatia kulipa deni, kuongeza dhamana, au kuboresha nafasi kwa njia nyingine.",
+      "Inayoweza kuuzwa likizo",
+      "akaunti imafikia au kuvuka kikomo cha uondoaji mali, hivyo njia ya urejeshaji inaweza kuhamia kutoka hatua ya mtumiaji hadi suluhisho lililowekwa na itifaki.",
+      "Onyo za kiolesura zinaweza kuwa makini zaidi kuliko kikomo cha kuuza mali kwa nguvu. Zipo kusaidia watumiaji kuchukua hatua mapema, si kuanzisha seti ya pili ya kanuni za itifaki.",
+      "Iwapo afya inadhoofika, majibu ya kwanza bado ni ya mkopaji. Akaunti inaweza kutengazwa kwa kulipa deni, kuongeza rehani iliyokubaliwa LP, au kubadilisha nafasi kwa njia zinazobaki halali chini ya ukaguzi wa afya wa spoka.",
+      "Mara tu afya inapopita mpaka wa ushawishi wa uuzaji mali, akaunti inatoka kwenye awamu ya uangalizi na kuingia kwenye njia ya urejeshaji. Nod za uuzaji mali na watoaji wa mali wa pande za tatu wanaweza kisha kutoa njia ya dhamana inayohitajika ili kurejesha uwezo wa kulipia kulingana na kanuni za uuzaji mali za soko.",
+      "Kukopa zaidi kunapunguza afya kwa sababu deni lililobaki linaongezeka dhidi ya msingi huo huo wa dhamana.",
+      "Kurejesha deni kunaboresha afya mara moja kwa sababu kigezo kilichopo sehemu ya chini katika uwiano kinashuka.",
+      "Kuongeza dhamana iliyoidhinishwa kunaweza kuongeza nafasi iliyobaki ikiwa tundu linakubali na kuliweka thamani.",
+      "Kudai ada, kutoa dhamana, au kurekebisha nafasi kunaweza kupunguza afya na kunapaswa kuangaliwa dhidi ya hali baada ya kitendo kabla ya utekelezaji.",
+      "Vigezo vya Dhamana"
+    ]
+  },
+  "architecture/incentives": {
+    "meta": {
+      "title": "Programu za Motisha",
+      "description": "Muhtasari wa kazi wa zawadi na motisha Avana, ukieleza jinsi kampeni za hiari zinavyohusiana na itifaki kuu bila kuwa usanifu wa kikanuni."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "aina-za-programu",
+        "title": "Aina za Programu"
+      },
+      {
+        "id": "misingi-ya-usambazaji",
+        "title": "Misingi ya Usambazaji"
+      },
+      {
+        "id": "idai-na-urudisho",
+        "title": "Dai na Ulinganifu"
+      },
+      {
+        "id": "hali",
+        "title": "Hali ya Sasa"
+      }
+    ],
+    "strings": [
+      "Programu za Motisha",
+      "Muhtasari wa kazi wa zawadi na motisha Avana, ukieleza jinsi kampeni za hiari zinavyohusiana na itifaki kuu bila kuwa usanifu wa kikanuni.",
+      "Muhtasari",
+      "Aina za Programu",
+      "Misingi ya Usambazaji",
+      "Dai na Ulinganifu",
+      "Hali ya Sasa",
+      "Zawadi ya hiari na tabaka la kampeni ambalo linaweza kuwepo juu ya usambazaji wa Avana bila kubadilisha mbinu kuu za ukopeshaji.",
+      "Motisha ni nyongeza, sio sehemu ya msingi ya mkopo. Itifaki bado inafafanuliwa na LP tathmini, udhibiti wa hatari wa Borrow Spoke, mali ya Hub, na uhamishaji. Kampeni zinaweza kuhamasisha ushiriki, lakini hazibadilishi mifumo hiyo.",
+      "Kampeni zinafanya kazi na zina muda wa mwisho. Ukurasa huu unaelezea jinsi zinavyohusiana na sehemu nyingine ya Avana. Hii haimaanishi kuwa mpango maalum wa zawadi unaendeshwa kila mara kwenye kila usambazaji.",
+      "• Kampeni zinazolenga wasambazaji ambazo zinaimarisha mtaji katika Lend Spoke au tabaka la ukwasi linalounganishwa.",
+      "• Kampeni zinazowalenga wakopaji ambazo zinahimiza ukopaji wenye afya unaounga mkono LP.",
+      "• Kampeni za mwendeshaji au za mfumo wa ikolojia zinazohusiana na upimaji, muunganiko, au shughuli zinazounga mkono hatari.",
+      "Wakati motisha zipo, zinapaswa kueleweka, kuweza kukaguliwa, na zihifadhiwe tofauti na mantiki kuu ya hatari. Hisabati ya tuzo inaweza kuzingatia shughuli, muda, au sheria za kampeni, lakini haipaswi kubadilisha jinsi Avana inavyothamini dhamana au kuamua uhalali wa ufutaji.",
+      "Kampeni zinaweza kuponyesha tabia inayotakaliwa. Hazipaswi kuhamasisha kutumia mkopo usio salama au kuficha uchumi halisi wa kukopa unaotegemewa na LP.",
+      "Njia za kudai, ratiba za kuweka mali, na mbinu za ukokotoaji ni za kampeni maalum. Zinaweza kushughulikiwa kwenye mnyororo, kupitia kidhibiti maalum cha zawadi, au kupitia uhasibu wa nje wa mnyororo uliochapishwa na mwendeshaji wa kampeni.",
+      "Wahusishaji wanapaswa kila wakati kuthibitisha njia ya dai iliyo hai na kanuni za kustahiki kwa usambazaji wanaoulenga.",
+      "Tafakari motisha kama maalumu kwa usambazaji na msimu wa wakati fulani. Ikiwa kampeni ipo hai, maelezo yake yanapaswa kutangazwa kwa tofauti na nyaraka za usanifu pamoja na tarehe zilizobainishwa, kanuni, na masharti ya usambazaji."
+    ]
+  },
+  "architecture/lend-spoke": {
+    "meta": {
+      "title": "Mkopo wa Spoke",
+      "description": "Jinsi Lend Spoke inavyokubali mali za mkopeshaji na kuzirusha kupitia Hub kwenda masoko ya mkopo yenye dhamana ya LP."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "kiingilio-cha-mji-mkuu",
+        "title": "Kituo cha Kuingia cha Mji Mkuu"
+      },
+      {
+        "id": "zao-lililowekwa-kwa-kidhaifa-cha-mazingatio-ya-kiwango-cha-uhatarisho",
+        "title": "Rudisho Lililorekebishwa Kibenki"
+      },
+      {
+        "id": "udhibiti wa hatari unaobadilika",
+        "title": "Dhibiti Hatari Zinazobadilika"
+      }
+    ],
+    "strings": [
+      "Mkopo wa Spoke",
+      "Jinsi Lend Spoke inavyokubali mali za mkopeshaji na kuzirusha kupitia Hub kwenda masoko ya mkopo yenye dhamana ya LP.",
+      "Muhtasari",
+      "Kituo cha Kuingia cha Mji Mkuu",
+      "Rudisho Lililorekebishwa Kibenki",
+      "Dhibiti Hatari Zinazobadilika",
+      "Kiasi cha Ugavi",
+      "Wakopaji huleta mali kuu kama ETH, BTC, na stablecoins kupitia Lend Spoke badala ya kuingiliana na dhamana ya LP moja kwa moja.",
+      "Njia Kupitia Kituo",
+      "Lend inatuma uchache huo wa fedha kwenda katika Hub, ambapo safu moja ya akiba inaweza kusaidia masoko kadhaa ya kukopa yenye rehani LP.",
+      "Nguvu Kukopa Vipeo",
+      "Kopa Spokes kisha chora kutoka kwenye uchezaji wa Hub huku ukidumisha thamani ya LP, usimamizi wa uuzaji wa mali, na udhibiti wa hatari maalum za soko ukiwa ndani ya kila spoke.",
+      "Muundo wa bwawa na kubadilisha salio la hesabu ya mali",
+      "Kiasi cha biashara na kizalishaji cha ada kilichotimizwa",
+      "Tofauti ya bei kati ya mali zinazofanana",
+      "Mabadiliko ya hali ya tete na uthabiti wa peg",
+      "Utoaji wa fedha unaopatikana wakati wa kuvunjika kwa hali ya msongo",
+      "Sehemu ya kuingilia inayowakilisha mkopeshaji ambayo inahamishia mtaji wa muuzaji kwenda kwenye Hub kwa matumizi na masoko ya mkopo yanayozingatia hati ya LP.",
+      "Lend Spoke ni njia kuu ya kuingiza mitaji kwa wakopaji. Wanaoweka akiba hutoa mali kama ETH, BTC, na stablecoin kubwa hapa, na ukwasi huo kisha unasafirishwa kwenda Hub ili Borrow Spokes ziweze kufadhili mikopo dhidi ya dhamana za LP zinazoungwa mkono bila kuwalazimisha wakopaji kufikiria kuhusu mienendo ya nafasi ya AMM.",
+      "Ugawaji huu ni makusudi. Njia ya mkopeshaji inahusu kutoa mali zinazoweza kukopeshwa na kupokea faida za upande wa ukopeshaji, wakati Spokes wa Kukopa wanamiliki kazi changamano ya LP tathmini, uhalali, ukaguzi wa afya, na kanuni za ufutaji kwa kila familia ya dhamana iliyoorodheshwa.",
+      "Jukumu katika safu:",
+      "Lend Spoke inakubali kuweka mtaji wa mkopo. Borrow Spokes zinabaki na hatari maalum ya LP kwa kila soko, kwa hivyo bwawa moja la mkopo haliitaji mfano mmoja wa dhamana wa kimataifa.",
+      "Amana za mkopaji zinapitishwa kwanza kupitia Lend Spoke, kisha zinaingia kwenye safu ya akiba ya Hub inayoshirikiwa. Hiyo inamaanisha kwamba mtaji hauitaji kugawanywa kwa bwawa moja kwa wakati mmoja na kila soko lililoungwa mkono LP, ingawa sheria za ukopaji upande wa kukopa zinabaki tofauti.",
+      "Mapema katika mzunguko wa itifaki, ukwasi wa Hub pia unaweza kuongezwa na mistari ya mikopo Aave v4. Kadiri muda unavyopita, amana za Lend Spoke zinaweza kuwa sehemu kubwa zaidi ya mkapo wa mkopo wa asili wa itifaki.",
+      "LP dhamana si hesabu ya mali isiyobadilika. Wakati mkopo bado uko wazi, nafasi iliyo msingi inaweza kuendelea kupata ada za biashara, na hiyo ni muhimu kwa jinsi upande wa mkopaji unavyopimwa. Kwa hivyo itifaki haiitambui kila LP kama salio lililo hai ambalo linahamia tu kwa bei za tokeni.",
+      "Tofauti hiyo pia inaathiri upande wa ukopaji. Masharti ya mkopo yanaweza kuonyesha ukweli kwamba baadhi ya soko LP zina utengenezaji wa ada na tabia ya kuondoa ambayo inatofautiana na dhamana isiyoingiza faida, na Aave v4 zana za bima ya hatari zinaweza kuonyesha tofauti hizo wakati sera inaruhusu. Faida halisi za mkopaji bado zinategemea usanidi wa moja kwa moja na hali ya soko, si kwa dhana iliyowekwa kutoka ukurasa huu.",
+      "Kwa wakopeshaji:",
+      "amala kupitia mkopo wa Lend Spoke ambao umewekwa dhidi ya nafasi LP ambazo thamani zinazoweza kurekebishwa, mantiki ya afya, na njia za ulichaji zimefafanuliwa zote katika Borrow Spokes.",
+      "Upande wa kukopesha unategemea upande wa mkopaji kubaki ndani ya mfano wa hatari ambao unaweza kuhamia pamoja na soko. Mipangilio ya mtindo wa Fixed LTV yenyewe haitoshi kwa dhamana ya LP, hivyo mfumo unaweza kujibu mabadiliko katika muundo wa bwawa, kiasi, tofauti, tete, tabia ya peg, na kina cha kufutwa kadri hali hizo zinavyobadilika.",
+      "Katika hali za msongamano wa hali, vikwazo na udhibiti unaohusiana vinaweza kuimarishwa ili kulinda mtaji wa mtoaji mikopo. Katika hali tulivu, vikwazo hivyo hivyo vinaweza kurekebishwa ndani ya mipaka ya sera iliyoidhinishwa. Lengo si kurekebisha mara kwa mara kwa ajili ya sababu zake mwenyewe, bali kuhakikisha tabaka la utoaji mikopo haliwezi kulazimishwa kutendea soko linalobadilika kana kwamba hakuna kilichobadilika.",
+      "Ishara zinazoweza kuarifu masasisho ya hatari",
+      "Mtaji wa mkopaji unafuata njia moja ya kuingiza, lakini soko LP halishiriki wasifu mmoja wa hatari. Borrow Spokes inaweza kuweka vigezo vya soko maalum vya mkoa, jambo ambalo linawezesha familia tofauti LP kufanya kazi chini ya mipangilio tofauti bila kugawanya uzoefu wa mkopaji."
+    ]
+  },
+  "architecture": {
+    "meta": {
+      "title": "Mchakato wa Itifaki - Chukua Spoke",
+      "description": "Kopa usanifu wa Spoke kwa fedha za kibenki zinazounga mkono LP, ikiwemo mtiririko wa mkopaji, mwingiliano wa Hub, na majukumu ya dhamana upande wa Spoke."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "uzoefu wa mtumiaji",
+        "title": "Uzoefu wa Mtumiaji"
+      },
+      {
+        "id": "mfano-mtiririko",
+        "title": "Mfumo wa Mfano"
+      },
+      {
+        "id": "usanifu wa ngazi-tatu",
+        "title": "Usanifu wa Tabaka Tatu"
+      },
+      {
+        "id": "mtiririko wa data",
+        "title": "Mtiririko wa Data"
+      },
+      {
+        "id": "nafasi-za-jumla",
+        "title": "Majukumu ya Pedal"
+      },
+      {
+        "id": "kazi-ya-hub",
+        "title": "Aave v4 Nafasi ya Kituo"
+      }
+    ],
+    "strings": [
+      "Mchakato wa Itifaki - Chukua Spoke",
+      "Kopa usanifu wa Spoke kwa fedha za kibenki zinazounga mkono LP, ikiwemo mtiririko wa mkopaji, mwingiliano wa Hub, na majukumu ya dhamana upande wa Spoke.",
+      "Muhtasari",
+      "Uzoefu wa Mtumiaji",
+      "Mfumo wa Mfano",
+      "Usanifu wa Tabaka Tatu",
+      "Mtiririko wa Data",
+      "Majukumu ya Pedal",
+      "Aave v4 Nafasi ya Kituo",
+      "Kopa Ncha ya Gurudumu",
+      "Safu ya utekelezaji inayokutana na mkopaji inayokubali dhamana LP, inapima hatari, na inakopa dhidi ya mtiririko wa fedha wa Hub.",
+      "The Borrow Spoke ni mahali ambapo nafasi ya LP inakuwa inaweza kutumika kama rehani. Inachukua udhibiti wa nafasi iliyoungwa mkono kwa ajili ya uhasibu, inasoma data zinazohitajika kuelewa nafasi hiyo, inakadiria thamani yake chini ya orakili na sheria za hatari za spoke, na inaonyesha uwezo wa mkopo unaotokana kwa njia ya mkopaji.",
+      "Hiyo inafanya Borrow Spoke iwe tofauti sana na kifuniko cha mali taslimu ya kawaida. Inapaswa kuelewa jinsi LP iliyoorodheshwa inavyojengwa, ni thamani gani inayoweza kurejeshwa wakati wa kufutwa kwa shinikizo, jinsi afya inavyopaswa kufuatiliwa kwa muda, na ni njia gani ya kuuza mali itakayotumika ikiwa akaunti itakoma kutimiza mahitaji ya usalama ya spoke.",
+      "Wigo:",
+      "LP dhamana inatofautiana na mali zisizohamishika, hivyo Spoke ya Kukopa hubadilisha muundo wa hazina, wigo wa bei, ada, na hali ya soko kuwa vigezo vya mikopo na sheria za afya kwa masoko inayoyoorodhesha. Spoke ya Kutoa Mikopo inashughulikia uingizaji wa mtaji. Spoke ya Kukopa inashughulikia LP ukadiriaji wa hatari, ufuatiliaji, na uuzaji kwa masoko yake mwenyewe.",
+      "Mkondo wa Kukopa",
+      "Wakopaji wanashirikiana na uso mmoja unaoelekea kwenye mnyoyo kwa mzunguko mzima wa akaunti: kuweka amana iliyothibitishwa LP dhamana, kuchunguza uwezo uliopo, kuchukua deni, kulipa mizania, na kudai ada wakati soko linaporuhusu. Kiolesura kinaweza kubaki kisichobadilika hata wakati miundo ya msingi ya LP inatofautiana, kwa sababu mnyoyo unashughulikia upatanisho maalum wa AMM.",
+      "Muktadha wa muamala:",
+      "vitendo vinafaa kuonyesha masasisho ya vipengele vya afya, athari ya kipimo cha mkopo, na hali ya dhamana pamoja na muamala ili mkopaji aone hatari baada ya kitendo badala ya kuikisia baada ya muda.",
+      "Mtiririko wa kawaida upande wa mkopaji:",
+      "Hatua 1: Amana ya Awali",
+      "Mkopaji anaweka nafasi iliyokubaliwa LP kwenye Borrow Spoke. Nafasi hiyo inabaki hai kwenye AMM, lakini spoke sasa inaiandika kama dhamana na inaanza kufuatilia data zinazohitajika kwa ajili ya tathmini na afya.",
+      "Hatua ya 2: Nguvu ya Kukopa Imehesabiwa",
+      "The Borrow Spoke inajenga upya nafasi, inaweka bei kwenye mfiduo wa msingi, inaweka kipengele kinachohusika cha dhamana, kisha inaweka matibabu yoyote ya hatari maalum ya kikundi. Matokeo ya mchakato huo ni uwezo wa kukopa unaoonyeshwa kwenye akaunti.",
+      "Hatua ya 3: Kopa Mali Nyingi",
+      "Mkopa anachukua mali dhidi ya uwezo uliothibitishwa na tawi. Baada ya mkopa kutekeleza, tawi linasasisha uwakilishi wa deni wa akaunti na kuhesabu upya afya kwa kutumia sheria sawa za soko ambazo ziliruhusu dhamana.",
+      "Hatua ya 4: Ongeza Hati Zaidi",
+      "Vyeo vya ziada vilivyopitishwa LP vinaweza kuongezwa baadaye. Kila cheo kipya kinapimwa chini ya orodha, bei, na kanuni za hatari za tawi kabla ya mchango wake kuunganishwa katika uwezo wa jumla.",
+      "Njia ya mkopaji ni rahisi kuelewa ikiwa utaweka tofauti ni nani anayeanzisha kitendo, ni tabaka gani linalotafsiri LP dhamana, na ni tabaka gani linalotoa fedha:",
+      "Juu: Wakopaji",
+      "Wakopaji wanapiga simu sehemu ya tundu ili kuweka dhamana LP, kukopa fedha, kulipia deni, na kudai ada. Kwa mtazamo wao, tundu ni njia ya kuingilia kiutendaji kwa akaunti.",
+      "Kati: Mkopo Mzunguko (Avana)",
+      "Safu hii inatafsiri data maalum ya nafasi AMM kuwa hali ya mkopo. Inasimamia ulinzi wa LP, inahesabu hatari maalum ya nafasi, inatekeleza ukaguzi wa afya, na inashirikisha njia ya uingizaji mali wakati dhamana haifaidii deni tena.",
+      "Chini: Aave v4 Kituo & Msingi Uliorudishwa",
+      "Kituo ni chanzo cha pamoja cha uwezekano wa kifedha na safu ya uhasibu chini ya tawi. Mtaji uliopitiwa na tawi wa Kopa na vyanzo vingine vilivyowekwa vya Kituo hufadhili michango ambayo Tawi la Mkopa linathibitisha.",
+      "Njia muhimu ya data inaanzia kutoka kwenye hali ya LP hadi katika uhasibu wa tanuu kwenda kwenye vitendo vya unyumbulifu wa Kituo. Kivitendo inaonekana hivi:",
+      "LP Meneja wa Nafasi anaweka dhamana ndani ya Pengo la Mkopo",
+      "- Sehemu ya mzunguko huhifadhi kumbukumbu ya nafasi, huhifadhi metadata inayohitaji, na huanza kutumia hali hiyo kwa ajili ya tathmini na ufuatiliaji wa afya.",
+      "Wakopaji wanachukua mali kupitia Pindo la Kukopa",
+      "- Mara tu akaunti inapokuwa na uwezo, tawi linaomba fedha taslimu kutoka kwa Kituo kimoja au zaidi kilichosanifiwa.",
+      "Deni inawakilishwa kama hisa za deni",
+      "- Kiwango cha ubadilishaji huzidiwa chini ya mfano wa riba uliowekwa wakati shina linaendelea kuweka hali ya deni na dhamana ya mkopo kwa mlingano na mkopaji.",
+      "Ufisadi hutokea wakati inahitajika",
+      "- Vituo vikuu, Avana nodi za uuzaji wa mali, au wauzaji wa nje wa mali wanaweza kusababisha Mgawanyiko wa Mkopo kusogeza LP kwenye njia sahihi ya kufuta madeni na kulipia deni kupitia mlolongo unaofaa wa uuzaji wa mali.",
+      "Mwingiliano wa Kituo",
+      "Kopa:",
+      "Borrow Spoke inatuma wito wa kutoa kwa Hub when mkopaji anapofungua au kupanua deni",
+      "Lipa tena:",
+      "Mkopaji Analitolea Hub wito wa kurekebisha wakati deni linapolipwa",
+      "Angalia Afya:",
+      "Kituo kinapiga simu kwa Borrow Spoke's",
+      "pataDataYaHati",
+      "kuchukua thamani ya sasa ya dhamana ya mnyororo LP",
+      "Ufadhili wa mali:",
+      "Ikiwa hatari ya kusema jumla inapita kiwango, Kituo kinaweza kuita",
+      "shughulikiaUtoajiMali",
+      "Sehemu",
+      "Wajibu",
+      "Kopa Spoke (kila AMM)",
+      "Inahifadhi rekodi za nafasi, jumla ya dhamana za USD, na deni la USD kwa familia hiyo ya AMM, na inafichua",
+      "pataJumlaYaMtumiaji(mtumiaji)",
+      "KibadilishaUtoajiMaji",
+      "Inakimbiza mkusanyiko wa adhabu, kupunguza kwa upole, na uingizaji mkali wa Spoke ya Mkopo bila kulazimisha kila muundo wa LP kupitia utaratibu mmoja wa jumla wa uingizaji.",
+      "Kazi za Kiambatanisho cha Uondoshaji",
+      "tumiaKirqasha(user)",
+      "tulizaUpyaji(user, maxUsd)",
+      "- hufanya upunguzaji wa sehemu, hukusanya mapato, hubadilisha kadiri inavyohitajika, na hulipa deni hadi kiasi kilichohitajika",
+      "liquidate(mtumiaji)",
+      "Matukio: AdhabuIliyokusanywa, UondoshajiMpoleUlikamilishwa, UuzajiMkaliUlikamilishwa",
+      "The Borrow Spoke haishikili hifadhi za mkopeshaji yenyewe. Inategemea Hub kwa ajili ya uchezaji wa fedha zilizounganishwa, uhasibu wa hifadhi, na upande wa balansi ya kuomba mkopo, wakati spoke inabaki kuzingatia maamuzi ya hatari maalum ya dhamana.",
+      "Ugavi wa Mtaji",
+      "Mali kama USDC, DAI, na ETH zinaweza kuingia kupitia tabaka za mitaji zinazounganishwa na Hub, ikiwa ni pamoja na Lend Spoke. Hub inasimamia bwawa la pamoja na uhasibu wake, wakati Borrow Spoke inaamua ni sehemu gani ya kioo hicho cha fedha akaunti inayoungwa mkono na LP inaweza kufikia kwa usalama.",
+      "Mistari ya Mikopo",
+      "Kitovu kinawapa kila Tawi la Mkopo mstari wa mkopo unaopunguza kiasi cha fedha zinazoweza kuvutwa na tawi hilo. Hii inahakikisha kwamba uandikishaji maalum wa LP unabaki peke yake bila kuachia ufanisi wa mtaji wa safu ya akiba iliyoshirikiwa.",
+      "Vigezo vya Afya vya Kujitegemea",
+      "Mtumiaji mwenye LP dhamana katika Mikoba Mbalimbali ya Kukopa ana kipimo cha afya tofauti katika kila mkoba. Ziada katika soko moja haiokoa tena upungufu katika lingine, ambalo lina hatari kwa soko lililo lidai."
+    ]
+  },
+  "architecture/platform-fees": {
+    "meta": {
+      "title": "Ada za Jukwaa",
+      "description": "Sera ya ada za uendeshaji kwa kiolesura Avana, ikiwa ni pamoja na jinsi ada za kiolesura zinavyotofautiana na uchumi wa itifaki, jinsi zinavyofunuliwa, na jinsi ya kuthibitisha sera ya sasa."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "kiolesura-dhidi-ya-protokoli",
+        "title": "Kiolesura dhidi ya Itifaki"
+      },
+      {
+        "id": "ufichuzi",
+        "title": "Ufichuzi"
+      },
+      {
+        "id": "matumizi ya hazina",
+        "title": "Matumizi ya Hazina"
+      },
+      {
+        "id": "maelezo-ya-unganishaji",
+        "title": "Vidokezo vya Muungano"
+      }
+    ],
+    "strings": [
+      "Ada za Jukwaa",
+      "Sera ya ada za uendeshaji kwa kiolesura Avana, ikiwa ni pamoja na jinsi ada za kiolesura zinavyotofautiana na uchumi wa itifaki, jinsi zinavyofunuliwa, na jinsi ya kuthibitisha sera ya sasa.",
+      "Muhtasari",
+      "Kiolesura dhidi ya Itifaki",
+      "Ufichuzi",
+      "Matumizi ya Hazina",
+      "Vidokezo vya Muungano",
+      "Sera ya ada kwenye ngazi ya kiolesura na mwongozo wa ufichuzi kwa Avana mwisho wa mbele na nyuso za huduma.",
+      "Ukurasa huu unahusu sera ya kiolesura, si jinsi mkopo unavyofanya kazi katika mikataba ya msingi. Avana inaweza kutoza ada za mbele au huduma kwenye nyuso rasmi, lakini malipo hayo ni tofauti na kanuni za dhamana, orakuli, na usambazaji wa mali za itifaki.",
+      "Viwango halisi vya ada, msamaha, na hali ya utekelezaji ni mipangilio ya kiutendaji na inapaswa kuthibitishwa katika kiolesura cha moja kwa moja au nyaraka za kutolewa kabla ya kuitegemea.",
+      "Mikataba ya msingi ya Avana inaongoza uanachama wa LP, uwezo wa kukopa, na tabia ya likwesheni. Ada za kiolesura, ikiwa zimewezeshwa, zipo juu ya mikataba hiyo kama sera ya biashara ya mbele badala ya kuwa mabadiliko kwenye injini ya mkopo au hatari yenyewe.",
+      "• Uchumi wa itifaki unaamua ukuaji wa deni, matibabu ya dhamana, na matokeo ya utakatishaji.",
+      "• Ada za kiolesura ni chaguo la kiutendaji lililounganishwa na sehemu maalum ya mbele au njia ya huduma.",
+      "• Ushirikisho wa mikataba ya moja kwa moja unaweza kufuata makadirio ya ada tofauti na UI rasmi.",
+      "Kiasi chochote cha interface kinapaswa kuonyeshwa wazi kabla ya kusaini ili wajenzi na watumiaji waweze kukitofautisha na gharama za gesi, ada za kubadilisha, na madeni au athari za likwesheni ya ngazi ya itifaki.",
+      "Ufafanuzi mzuri unapaswa kutambulisha chanzo cha fedha, iwe ni hiari au maalum kwa kiolesura, na wapi mapato hayo yanaelekezwa.",
+      "Iwapo fedha za kioo cha kiolesura zinakusanywa, kawaida hufadhili operesheni za bidhaa kama miundombinu, ufuatiliaji, kazi za usalama, nyaraka, na msaada. Utawala unaweza kutia rasmi au kuboresha sera hizo baada ya muda.",
+      "Matumizi ya Hazina yanapaswa kuchapishwa kama taarifa za uendeshaji, si kutiliwa shaka kutoka kwenye usanifu wa dhamana wa itifaki.",
+      "• Wajenzi wanapaswa kuthibitisha sera ya ada ya sasa kabla ya kutoa gharama kwa mtumiaji wa mwisho.",
+      "• Epuka kuweka makadirio ya ada za kiolesura moja kwa moja katika mchanganyiko wa itifaki isipokuwa sera hiyo ichukuliwe rasmi kuwa na toleo.",
+      "• Wakati wa kuandika kumbukumbu za ushirikiano, weka sera ya ada tofauti na uwezo wa kukopa na mantiki ya uuzaji wa mali."
+    ]
+  },
+  "getting-started/borrow-assets": {
+    "meta": {
+      "title": "Kopa Mali",
+      "description": "Jinsi mkopo unavyofanya kazi dhidi ya LP ya dhamana katika Avana, kutoka kupitia ukaguzi wa uwezo wa upande wa gumba hadi uhakiki wa uhai baada ya kukopa wa Hub."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "angalia mkopo",
+        "title": "Angalia Mikopo"
+      },
+      {
+        "id": "ukaguzi wa afya",
+        "title": "Angalia Afya"
+      },
+      {
+        "id": "uhasibu wa ndani",
+        "title": "Uhasibu wa Ndani"
+      },
+      {
+        "id": "mali-kinachokopeshwa",
+        "title": "Mali Zinazokopesheka"
+      },
+      {
+        "id": "nguvu ya kukopa",
+        "title": "Nguvu ya Kukopa"
+      }
+    ],
+    "strings": [
+      "Kopa Mali",
+      "Jinsi mkopo unavyofanya kazi dhidi ya LP ya dhamana katika Avana, kutoka kupitia ukaguzi wa uwezo wa upande wa gumba hadi uhakiki wa uhai baada ya kukopa wa Hub.",
+      "Muhtasari",
+      "Angalia Mikopo",
+      "Angalia Afya",
+      "Uhasibu wa Ndani",
+      "Mali Zinazokopesheka",
+      "Nguvu ya Kukopa",
+      "Kopa dhidi ya uwezo uliounganishwa wa nafasi LP zilizokubaliwa wakati Kituo kinapotoa safu ya uwazi wa pamoja.",
+      "Kukopa kunaanza tu baada ya Borrow Spoke tayari kutambua na kuthamini nafasi LP kwenye akaunti. Wakati huo mtumiaji hajaulizi kwa itifaki kuandika upya kutoka mwanzo. Wanajiuliza kutumia baadhi ya nafasi ya kukopa ambayo Spoke tayari imeitambua.",
+      "Ili mkopo ufanikiwe, tundu lazima ithibitishe kuwa bado kuna uwezo wa kutosha uliobaki, akaunti lazima ibaki yenye afya baada ya deni jipya kuongezwa, na Kituo lazima kiwe na kipengee kilichohitajika kinachopatikana kwa kweli cha kutoa.",
+      "Muhimu:",
+      "kukopa kunazalisha deni linaloongezeka kwa wakati. Uwezo unaweza kubadilika kulingana na hali za soko, hivyo hifadhi salama ni muhimu hata baada ya mkopo kufanikishwa.",
+      "Ukaguzi wa nafasi na umiliki:",
+      "kipumuzi kinahakikisha nafasi bado zinamilikiwa na mkopaji, bado zinatambulika na akaunti, na bado ziko ndani ya seti ya dhamana iliyoruhusiwa.",
+      "Kagua uwezo:",
+      "deni lililoombwa linajaribiwa dhidi ya uwezo uliobaki wa jumla wa mkopo wa mtumiaji ndani ya Spoke ya Kukopa hiyo.",
+      "Ukaguzi wa unyevu na kikomo cha hub:",
+      "hata kama dhamana ni ya kutosha, ombi bado linaweza kushindikana ikiwa Kituo hakina kioo cha kutosha kilichopo au ikiwa mipaka ya kiwango cha mali au kiwango cha itifaki inazuia mkopo zaidi.",
+      "Ukaguzi wa afya baada ya kukopa:",
+      "Ukaguzi wa afya si kanuni tofauti ya njia mfupi. Unatumia njia ya thamani na mipangilio ya hatari ile ile inayosimamia tayari vipengele vya rehani na ufanisi wa uingizaji. Kukopa kunapitisha tu ikiwa akaunti bado ina thamani ya rehani iliyobadilishwa ya kutosha baada ya deni la ziada kuhesabiwa.",
+      "kigezoChaAfya = thamaniYaDhamanaIliyorekebishwa / deniLilizobaki",
+      "Thamani iliyorekebishwa ya dhamana tayari inajumuisha tathmini makini ya LP, viashiria vya dhamana, na udhibiti wa hatari wa ngazi ya ziwa. Angalia",
+      "Kigezo cha Afya",
+      "Vigezo vya Dhamana",
+      "Hisa za deni:",
+      "Kuchora hub:",
+      "Kipande cha Mkopo kinaomba mali kutoka Kituo cha Kati tu baada ya kipande kumaliza ukaguzi wa dhamana, uwezo, na afya.",
+      "Sasa hivi wa taarifa:",
+      "mtumiaji anapokea fedha zilizokopeshwa, na spoka inarekodi hali ya deni iliyotokana ili ukaguzi wa afya wa baadaye, malipo, na mantiki ya uingizaji wa mali yote iwe inaangalia akaunti ile ile iliyosasishwa.",
+      "Mali zinazoweza kukopwa zinapangwa katika tabaka la Hub. Sio mali thabiti ya dhamana yenyewe. Kwa vitendo, utekelezaji kawaida unaanza na sarafu kuu thabiti na mali nyingine zinazojaa kisha kupanua seti hiyo.",
+      "Angalia usanidi wa kueneza au wa kiolesura unaofanya kazi kwa mali halisi zilizowezeshwa kukopeshwa kwa sasa.",
+      "Nguvu ya kukopa ni jumla ya michango iliyokubaliwa ya LP ndani ya Haraka ya Mkopo mmoja. Haikagawiwi kwenye bwawa kwa dhana, na si namba moja ya akaunti isiyotofautishwa iliyotenganishwa na nafasi zinazojihusisha.",
+      "Sheria ya vitendo:",
+      "kadri unavyokopa karibu na uwezo wa juu, ndivyo unavyopungua nafasi ya mabadiliko ya bei, kuongezeka kwa kutoelea kwa bei, na upungufu wa thamani unaoweza kurekebishwa.",
+      "Inapendekezwa:",
+      "Mfumo wa Utoaji Mali"
+    ]
+  },
+  "getting-started/claim-lp-fees": {
+    "meta": {
+      "title": "Kidai LP Ada",
+      "description": "Dai limekusanya ada LP ndani ya Avana bila kufungua kikamilifu msingi wa LP, mradi tu akaunti ibaki afya baada ya dai."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "jinsi-inavyofanya-kazi",
+        "title": "Jinsi Inavyofanya Kazi"
+      },
+      {
+        "id": "ukaguzi wa afya",
+        "title": "Ukaguzi wa Afya"
+      },
+      {
+        "id": "uhasibu wa ada",
+        "title": "Uhasibu wa Ada"
+      },
+      {
+        "id": "faida-kubwa",
+        "title": "Manufaa Muhimu"
+      }
+    ],
+    "strings": [
+      "Kidai LP Ada",
+      "Dai limekusanya ada LP ndani ya Avana bila kufungua kikamilifu msingi wa LP, mradi tu akaunti ibaki afya baada ya dai.",
+      "Muhtasari",
+      "Jinsi Inavyofanya Kazi",
+      "Ukaguzi wa Afya",
+      "Uhasibu wa Ada",
+      "Manufaa Muhimu",
+      "Dai mapato ya ada bila kufunga nafasi ya dhamana, mradi tu akaunti bado inapita ukaguzi wa afya baada ya ada kuondoka.",
+      "Avana inachukulia umflu wa msingi na ada zilizokusanywa kama sehemu tofauti za nafasi ile ile ya LP. Tofauti hiyo ndiyo inayowezesha kupata mapato ya ada bila lazima kuondoa umflu wa msingi unaotumika bado kama dhamana.",
+      "Dai la ada bado linaathiri hali ya dhamana, kwa hivyo linaangaliwa kama kitendo kingine chochote kinachotoa thamani iliyotambuliwa kutoka kwenye akaunti. Sio tu kitufe cha urahisi kilichowekwa juu ya itifaki.",
+      "Itifaki inatumia njia inayofaa ya ukusanyaji wa ada kwa nafasi ya LP. Kwa nafasi zilizo na mkusanyiko wa unywaji wa fedha, hiyo inaweza kuonekana kama simu ya aina ya ukusanyaji ambayo inaacha msingi mahali pake. Kwa LP zinazoweza kubadilishwa, njia ya kudai ada ya jukwaa la mwenyewe inatumiwa wakati jukwaa linapoonyesha moja.",
+      "Kioo muhimu cha kiwango cha itifaki ni kuwa cha kawaida katika aina LP: dai tu kipengele cha ada, wacha nafasi ya msingi iwe hai inapowezekana, na sambaza tena hali ya nafasi iliyopatikana ndani ya Borrow Spoke.",
+      "Ukaguzi wa Mmaduni uliongea kuhusu afya kando na dai la ada kwa sababu ada zilizokusanywa bado zinaweza kuhesabiwa katika hifadhi ya dhamana iliyotambuliwa hadi zitakapoondolewa kutoka nafasi hiyo.",
+      "Kama kuondoa thamani ya ada iliyodaiwa kungeacha akaunti karibu sana au kuvuka kikomo cha kukopa kilichoruhusiwa, njia ya kudai inapaswa kuzuiliwa hadi deni lipunguzwe au dhamana zaidi iongezwe.",
+      "Oracle inatoa fedha kuu tofauti na ada zilizokusanywa ili mfano wa mikopo unaweza kuzifuatilia kando kando badala ya kudanganya kuwa LP ni salio moja la tokeni.",
+      "Mgawanyo huo wa uhasibu pia ni muhimu katika uharibifu, ambapo ada zilizojumlishwa zinaweza kutumika kabla ya itifaki kuhitaji kutoa msingi LP urahisi wa kifedha.",
+      "Mashirika ya Bei",
+      "Mfumo wa Utoaji Mali",
+      "Ada zilizopatikana zinaweza kutimizwa bila kufunga kabisa nafasi ya dhamana",
+      "Hii injini ya hatari ile ile inayopima bei ya LP pia inazuia madai ya ada kuvuta thamani nyingi sana"
+    ]
+  },
+  "getting-started/manage-loans": {
+    "meta": {
+      "title": "Simamia Mikopo",
+      "description": "Dhibiti deni lililo wazi dhidi ya dhamana LP katika Avana kwa kuangalia afya, kusasisha nafasi kwa makini, na kubaki ndani ya mipaka ya spoka na Hub."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "kukopa-zaidi",
+        "title": "Kukopa Zaidi"
+      },
+      {
+        "id": "ufuatiliaji-wa-afya",
+        "title": "Kufuatilia Afya"
+      },
+      {
+        "id": "udhibiti wa operesheni",
+        "title": "Udhibiti wa Kitaalamu"
+      },
+      {
+        "id": "mabadiliko-ya-nafasi",
+        "title": "Mabadiliko ya Nafasi"
+      },
+      {
+        "id": "vikwazo vya funguo",
+        "title": "Vikwazo Muhimu"
+      }
+    ],
+    "strings": [
+      "Simamia Mikopo",
+      "Dhibiti deni lililo wazi dhidi ya dhamana LP katika Avana kwa kuangalia afya, kusasisha nafasi kwa makini, na kubaki ndani ya mipaka ya spoka na Hub.",
+      "Muhtasari",
+      "Kukopa Zaidi",
+      "Kufuatilia Afya",
+      "Udhibiti wa Kitaalamu",
+      "Mabadiliko ya Nafasi",
+      "Vikwazo Muhimu",
+      "Kusimamia mkopo ulio wazi kunamaanisha kushughulikia fedha za dhamana, deni, na jimbo la mahali pamoja kama nafasi moja hai badala ya vitendo tofauti.",
+      "Mkopo hai Avana unaendelea kusogea hata mkopaji haifanyi chochote. LP hesabu za mali zinahamia, ada zinakusanyika, masoko yanapangwa upya bei, na ushirikiano wa fedha unaopatikana kwenye Hub unaweza kubadilika. Usimamizi mzuri wa mkopo unamaanisha kufuata sehemu hizo zinazohamia pamoja badala ya kuangalia namba ya deni peke yake.",
+      "Kukopa zaidi kunawezekana tu wakati Tawi la Mkopo bado linaonyesha uwezo usiotumika baada ya kuthamini upya nafasi za sasa na Kituo bado kinaweza kutoa mali iliyohitajika.",
+      "Malipo ya sehemu yanaelekea katika mwelekeo mwingine. Yanapunguza deni mara moja, yanaboresha afya, na mara nyingi hutoa nafasi inayohitajika kwa hatua za baadaye kama vile uondoaji, kupanga upya, au kubadilisha dhamana.",
+      "Afya:",
+      "thamani ya dhamana iliyorekebishwa inabaki juu ya deni kwa urahisi, ikiacha nafasi kwa mwendo wa kawaida wa bei na mteremko wa nafasi.",
+      "Orodha ya kuangalia:",
+      "akaunti bado inapita ukaguzi, lakini baki lililobaki linaanza kuwa dogo. Huu ndio wakati wa kulipa, kuongeza dhamana iliyokubalika, au kupunguza hatari kabla hali zinavyokuwa mbaya zaidi.",
+      "Inayoweza kuuzwa likizo",
+      "deni limekaribia sana au limezidi mpaka ulio ruhusiwa wa kukopa, kwa hivyo mfumo wa uharibifu unaruhusiwa kuchukua nafasi.",
+      "Kwa ufafanuzi wa kihistoria, tumia",
+      "Kigezo cha Afya",
+      "Lipa sehemu ya deni ili kujenga tena kinga",
+      "Ongeza zaidi ya dhamana iliyokubaliwa LP kwenye Borrows Spoke sawa",
+      "Dai ada zilizojumlishwa tu wakati akaunti bado inapita ukaguzi wa afya baada ya dai",
+      "Toa au punguza ukubwa wa dhamana tu wakati akaunti iliyobaki bado iko katika afya njema",
+      "Vyakati vya ukweli wa mkusanyiko vinaweza kuhitaji kupangwa upya au kubadilishwa kadri bei ya soko inavyosogea. Vyakati vinavyoweza kubadilishana LP vinaweza kubadilishwa ukubwa au kuzungushwa ndani ya seti ya dhamana inayounga mkono.",
+      "Itifaki haionyeshi hatua hizo kama mabadiliko ya urembo. Kila mabadiliko yanayobadilisha ufichaji wa LP hurejeshwa kupitia ukaguzi huo huo wa kuingia, tathmini, na afya unaotumika kwa amana na mikopo.",
+      "Mabadiliko ya dhamana hayawezi kuacha deni lililobaki juu ya uwezo ulioruhusiwa wa spika",
+      "Vyakati vipya au vya kuchukua nafasi lazima vibaki ndani ya kikundi kilichokubaliwa",
+      "Vitendo vya kukopa bado vinaegemea kiasi cha fedha kilicho kwenye Hub na vikwazo vya kikazi",
+      "Hifadhi",
+      "Mfumo wa Utoaji Mali",
+      "Vigezo vya Dhamana"
+    ]
+  },
+  "getting-started": {
+    "meta": {
+      "title": "Kuanzia - Amana LP",
+      "description": "Jifunze jinsi nafasi zilizo kusaidiwa LP zinavyoingia Avana kama rehani na jinsi kila nafasi iliyokubaliwa inaanza kuchangia uwezo wa kukopa ndani ya Borrow Spoke."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "mtiririko wa amana",
+        "title": "Mtiririko wa Amana"
+      },
+      {
+        "id": "maelezo-ya-kiufundi",
+        "title": "Maelezo ya Kiufundi"
+      },
+      {
+        "id": "alama-za-lp-zilizoungwa",
+        "title": "Aina za Nafasi Zilizodhaminiwa LP"
+      },
+      {
+        "id": "baada ya amana",
+        "title": "Baada ya Amana"
+      }
+    ],
+    "strings": [
+      "Kuanzia - Amana LP",
+      "Jifunze jinsi nafasi zilizo kusaidiwa LP zinavyoingia Avana kama rehani na jinsi kila nafasi iliyokubaliwa inaanza kuchangia uwezo wa kukopa ndani ya Borrow Spoke.",
+      "Muhtasari",
+      "Mtiririko wa Amana",
+      "Maelezo ya Kiufundi",
+      "Aina za Nafasi Zilizodhaminiwa LP",
+      "Baada ya Amana",
+      "Nafasi za mtiririko zilizo mkusanyiko",
+      "NFT inayopatikana ndani ya wigo au meneja wa nafasi LPs",
+      "Wigo, nafasi ya tiki, na ukusanyaji wa ada ni sehemu ya njia ya tathmini.",
+      "Stable au zinazobadilishana zinazofanana au zinazohusiana LPs",
+      "Hisa za bwawa la kubadilisha lisilo na mlingano imara",
+      "Orodha ya bwawa na ubora wa kupunguza deni unaendesha nguvu ya kukopa kwa tahadhari.",
+      "Zenye uzito na mali nyingi LP",
+      "Mikopo iliyo na uzito na mabwawa ya tokeni nyingi",
+      "Kila familia inayoungwa mkono inawekwa tu kupitia mifumo ya maelezo iliyoidhinishwa.",
+      "Amana LP",
+      "Amana inahamisha nafasi iliyo supported LP chini ya custody ya spoke ili Avana iweze kuikokotoa kama dhamana na kuibadilisha kuwa uwezo wa kukopa.",
+      "Kuweka amana ndicho jinsi nafasi ya LP inavyoweza kutumika ndani ya Avana. Kihimili cha Mkopo kinachukua udhibiti wa nafasi inayounga mkono, kinarekodi hali inayohitajika kwa tathmini, na kinaanza kuizingatia nafasi hiyo kama dhamana badala ya kama mali iliyo kwenye mkoba.",
+      "Hiyo haimaanishi kuwa uelekezi hupotea kwenye sehemu ya msingi. Nafasi inaweza kubaki hai katika AMM huku kipande kinapofuatilia kufichika kwake, hali ya ada, na matibabu ya hatari kwa ukaguzi wa ukopaji na uhamishaji baadaye.",
+      "Muhimu:",
+      "Avana haiauni nguvu ya kukopa kwa sababu tu nafasi ya LP ipo. Nafasi hiyo lazima iwe ya familia ya mabwawa iliyoidhinishwa, ipitie ukaguzi wa thamani, na ifanye kazi na mpangilio wa hatari wa sasa wa tundu.",
+      "1. Hamisha au Thibitisha Nafasi ya LP",
+      "Mtumiaji anapeleka nafasi ya LP inayounga mkono kwa Kimbere kinachohusika cha Mikopo. Njia halisi inategemea kama dhamana ni inayoweza kubadilishwa au maalum kwa nafasi, lakini matokeo ya itifaki ni yale yale: kimbere lazima kidoe udhibiti wa mali kabla ya kuweza kuihesabu kama dhamana.",
+      "2. Thibitisha Familia ya Ziwa",
+      "Ifuatayo mhimili unathibitisha kuwa nafasi inamiliki hoji rasmi au kiolezo kilichokubalika. Ukaguzi huo kwa kweli ni pakiti ya mahitaji: ulinzi wa oracle lazima uwepo, msaada wa mnyororo na utengenezaji lazima uwepo, na uwekaji lazima tayari uwe na mipangilio ya hatari kwa familia hiyo LP.",
+      "3. Hali ya Nafasi ya Kache",
+      "Mara tu nafasi itakapotambuliwa, itifaki inahifadhi hali inayohitajika kujenga upya nafasi baadaye. Hii inajumuisha metadata inayohitajika kurekebisha mfiduo, kufuatilia ada zilizokusanywa, na kusasisha nguvu ya kukopa wakati bei au hali za bwawa zinapobadilika.",
+      "4. Ongeza Nafasi kwenye Uwezo wa Jumla",
+      "Baada ya tathmini na punguzo la hatari kutumika, nafasi inachangia mchango wake mwenyewe kwa uwezo wa jumla wa mkopo wa mtumiaji ndani ya Spoke ya Mkopo huo. Wakati mtumiaji akikopa baadaye, Hub inategemea sasisho la uwezo huo upande wa spoke.",
+      "Uchambuzi wa thamani unaojua nafasi:",
+      "hali ya amana yenyewe haifungi kiasi cha mkopo kilichowekwa. Nguvu ya kukopa inahesabiwa upya kutoka kwenye nafasi ya moja kwa moja LP kwa kutumia stack ya orakuli na mfano wa kiashiria cha dhamana kila wakati itakapotakiwa na itifaki mtazamo wa sasa.",
+      "Uhifadhi wa aina maalum:",
+      "baadhi ya LP nafasi ni tokeni zinazoweza kubadilishwa, wakati nyingine ni nafasi za kioevu zilizo mkusanyiko na metadata ya ziada. Borrow Spoke inashughulikia tofauti hizo za uhifadhi ili mfumo mwingine wa mikopo bado uweze kuzingatia kwa njia iliyo thabiti.",
+      "kutoa dhamana haimaanishi kufunga LP. Njia ya kufuta imehifadhiwa kwa hatua za mtumiaji baadaye au uuzaji wa mali, si kwa amana ya awali yenyewe.",
+      "Familia",
+      "Mifano",
+      "Maelezo ya Kuingia",
+      "Msaada wa moja kwa moja wa kweli unasimamiwa na orodha ya kikundi iliyothibitishwa. Angalia",
+      "Maziwa Yanayoruhusiwa LP",
+      "Kila nafasi iliyothibitishwa sasa inachangia thamani yake iliyopunguzwa kwenye uwezo wa kukopa wa kiwango cha tundu",
+      "Kiasi cha msingi cha LP kinasalia kuwa hai katika bwawa la msingi na kinaweza kuendelea kukusanya ada",
+      "Kukopa kwa kweli bado kunategemea kioevu cha Hub, ukaguzi wa afya wa spoke, na mipaka ya sababu ya dhamana",
+      "Hatua inayofuata katika mtiririko wa kawaida ni",
+      "Kopa Mali"
+    ]
+  },
+  "getting-started/repay-loans": {
+    "meta": {
+      "title": "Lipa Mikopo",
+      "description": "Jinsi malipo ya deni yanavyopunguza deni katika Avana, kusasisha hisa za deni, kulipa dhidi ya Hub, na kufungua njia ya kurudishwa kwa dhamana."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "mchakato wa kurejesha",
+        "title": "Mchakato wa Kulipa Tena"
+      },
+      {
+        "id": "maelezo-ya-kiufundi",
+        "title": "Maelezo ya Kiufundi"
+      },
+      {
+        "id": "hali-ya-kuondoa-mali",
+        "title": "Wakati Urejeshaji Unapokuwa Haraka"
+      },
+      {
+        "id": "malipo kamili",
+        "title": "Malipo Kamili"
+      }
+    ],
+    "strings": [
+      "Lipa Mikopo",
+      "Jinsi malipo ya deni yanavyopunguza deni katika Avana, kusasisha hisa za deni, kulipa dhidi ya Hub, na kufungua njia ya kurudishwa kwa dhamana.",
+      "Muhtasari",
+      "Mchakato wa Kulipa Tena",
+      "Maelezo ya Kiufundi",
+      "Wakati Urejeshaji Unapokuwa Haraka",
+      "Malipo Kamili",
+      "Kurejesha madeni hupunguza deni, huimarisha afya ya akaunti, na kawaida ni njia safi zaidi ya kupata uhuru juu ya dhamana.",
+      "Kurejesha deni kunabadilisha upande wa deni wa akaunti bila kubadilisha nafasi ya LP yenyewe. Wakati deni linapopungua, akaunti inakuwa yenye afya mara moja kwa sababu dhamana ile ile sasa inasaidia deni dogo zaidi.",
+      "Malipo kamili hayahitajiki ili malipo yawe na maana. Hata kupunguzwa kwa sehemu kunaweza kurejesha nafasi ya kutumia wakati akaunti inapoelekea mpaka wa likwidheshini.",
+      "1. Chagua kiasi:",
+      "lipa sehemu ya kiasi kurejesha nafasi ya kupumua, au lipa salio lote kuondoa deni kabisa.",
+      "2. Wasilisha mali ya deni:",
+      "malipo hayo yanaletwa tena kupitia Borrow Spoke na kutumika kupunguza deni lililobaki.",
+      "3. Hesabu upya afya:",
+      "mara deni linapopunguzwa, kipengele cha afya cha akaunti na uwezo uliobaki hubadilika kutoka salio jipya la deni lililopunguzwa.",
+      "Kurejesha fedha kwa msingi ni kupunguza sehemu ya deni. Iwe mtumiaji anarejesha kwa kutoa kiasi cha mali au, pale panapopowezekana, kiasi cha hisa, itifaki inatatua malipo kuwa na hisa chache za deni zilizobaki na hivyo deni dogo.",
+      "Kikopa Kinachoongea kinasasisha hali ya mkopo wa ndani na kulipa fidia dhidi ya uhasibu wa kioo wa upande wa Hub ili safu ya uhusiano wa fedha iliyo sambazwa na safu ya LP ya dhamana zibakie na picha sawa ya akaunti.",
+      "Wakati akaunti inakaribia kufutwa, malipo ni mojawapo ya njia za haraka zaidi za kuboresha usalama kwa sababu hupunguza deni moja kwa moja. Haiagiwi kwa kusubiri soko lirudie au kuanza kutumia dhamana zaidi kwanza.",
+      "Mara tu mpaka wa uondoaji unapovukwa, mzizi",
+      "Mfumo wa Utoaji Mali",
+      "Mara tu deni linapofikia sifuri, akaunti haidingi tena dhamana ili kufanikisha mkopo wa kawaida. Wakati huo, nafasi LP zilizounganishwa na akaunti hiyo zinaweza kurudi chini ya udhibiti wa kawaida wa mtumiaji kupitia njia ya kutoa dhamana.",
+      "Kulingana na utekelezaji wa dhamana, toleo la mwisho linaweza kutokea kwa moja kwa moja au kupitia hatua ya kufuata kwa wazi. Angalia",
+      "Toa Dhamana"
+    ]
+  },
+  "getting-started/withdraw-collateral": {
+    "meta": {
+      "title": "Toa Dhamana",
+      "description": "Jinsi fedha taslimu LP zinavyoachwa Avana baada ya deni kulipwa au baada ya baki la akaunti bado kupita ukaguzi wa afya bila nafasi iliyovutwa."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "mchakato wa kutoa",
+        "title": "Mchakato wa Utoaji"
+      },
+      {
+        "id": "mabadiliko-ya-nafasi",
+        "title": "Marekebisho ya Nafasi"
+      },
+      {
+        "id": "baada ya kutoa",
+        "title": "Baada ya Utoaji"
+      }
+    ],
+    "strings": [
+      "Toa Dhamana",
+      "Jinsi fedha taslimu LP zinavyoachwa Avana baada ya deni kulipwa au baada ya baki la akaunti bado kupita ukaguzi wa afya bila nafasi iliyovutwa.",
+      "Muhtasari",
+      "Mchakato wa Utoaji",
+      "Marekebisho ya Nafasi",
+      "Baada ya Utoaji",
+      "Dhamana inaweza kuondoka kwenye Borrow Spoke tu wakati akaunti bado inaweza kuunga mkono deni lake baada ya nafasi iliyohitajishwa kuondolewa au kupunguzwa.",
+      "Kutoa dhamana ni upande wa kinyume wa amana, lakini siyo tu uhamisho wa mali. Kabla ya itifaki kutolewa nafasi ya LP, lazima kuthibitisha kwamba kuondoa dhamana hiyo hakutawacha deni lililobaki bila kinga ya kutosha.",
+      "Urejeshaji kamili wa deni ndiyo njia safi zaidi kwa sababu unafuta kabisa haja ya dhamana. Lakini Avana pia inaweza kuruhusu baadhi ya mabadiliko ya dhamana wakati deni bado likiendelea ikiwa akaunti baada ya mabadiliko bado inapita thamani na ukaguzi wa afya uliofanana unaotumika kila mahali katika mfumo.",
+      "1. Punguza au tofautisha deni:",
+      "2. Hesabu tena uwezo wa kukopa:",
+      "Kihamishi cha Kukopa kinapohesabu tena akaunti baada ya kuondoa nafasi iliyohitajika LP au kuibadilisha ukubwa, badala ya kudhani kuwa uwezo wa zamani bado unanendana.",
+      "3. Acha nafasi ya LP:",
+      "ikiwa afya baada ya kutoa ni halali, itifaki inarudisha au kufungua dhamana ili mtumiaji aweze kuisimamia nje ya sehemu ya kipande tena.",
+      "Si kila mabadiliko ya dhamana ni kutoka kabisa. Mtumiaji anaweza kupanua au kupunguza nafasi ya fungible LP, kubadilisha wigo wa mtiririko wa juu wa fedha, au kuhamia kwenye nafasi nyingine iliyokubaliwa huku akiweka mkopo huo huo wazi.",
+      "Mabadiliko hayo yanatambulika tu wakati dhamana mpya au iliyobaki bado inatoka kwenye seti iliyoruhusiwa na akaunti inayotokana inabaki juu ya kikomo cha uuzaji wa mali baada ya mabadiliko kutumika.",
+      "Nafasi ya LP inarudi kwa udhibiti wa kawaida wa mtumiaji",
+      "Mtumiaji anaweza kuiacha katika hazina ya msingi, kuipanga upya, au kuondoa kabisa ukwasi",
+      "Amana LP"
+    ]
+  },
+  "integrations/allowed-pools": {
+    "meta": {
+      "title": "Maziwa Yanayoruhusiwa LP",
+      "description": "Orodha ya ruhusa iliyobainishwa na utawala na vigezo vya ukaguzi kwa mabaki LP ambayo Avana yuko tayari kuyakubali kama dhamana."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "vigezo-vya-mapitio",
+        "title": "Vigezo vya Mapitio"
+      },
+      {
+        "id": "familia-za-bwawa",
+        "title": "Familia za Bwawa"
+      },
+      {
+        "id": "maombi ya hatari",
+        "title": "Maombi ya Hatari"
+      },
+      {
+        "id": "maelezo-ya-unganishaji",
+        "title": "Vidokezo vya Muungano"
+      }
+    ],
+    "strings": [
+      "Maziwa Yanayoruhusiwa LP",
+      "Orodha ya ruhusa iliyobainishwa na utawala na vigezo vya ukaguzi kwa mabaki LP ambayo Avana yuko tayari kuyakubali kama dhamana.",
+      "Muhtasari",
+      "Vigezo vya Mapitio",
+      "Familia za Bwawa",
+      "Maombi ya Hatari",
+      "Vidokezo vya Muungano",
+      "Vyanzo vilivyo imara na vinavyohusiana",
+      "Mara nyingi rahisi zaidi kukubali wakati bei ni ya kuaminika, tabia ya peg inafahamika, na kina cha kuondoa kinaendelea kuwa imara.",
+      "Vibwawa vya volatile vya hisa za bluu-chip",
+      "Inaweza kuungwa mkono, lakini kwa kawaida na vigezo vya dhamana vya kimsingi zaidi, ukaguzi wa fedha taslimu zaidi, na makadirio magumu zaidi ya uuzaji mali.",
+      "Nafasi za mtiririko zilizo mkusanyiko",
+      "Inahitaji tathmini ya kiwango cha nafasi na kushughulikia kwa makini safu ya kisiasa, hesabu ya upande mmoja, na hali ya ada.",
+      "Mbinu za kawaida au za majaribio",
+      "Zinahitajika msaada wa wazi wa ki-oracle, uhifadhi, na fedha kabla ya kuzingatiwa kwa orodha ya ruhusa kabisa.",
+      "Ulinzi wa bei wa nje unaotegemewa kwa mali msingi",
+      "Urefu wa bwawa unaotosha na njia za kuondoa imani wakati wa usambazaji",
+      "Sheria wazi za kuhalalisha kwa familia au kiolezo cha spika cha LP",
+      "Mkazo unaokubalika, uvukizi, na wasifu wa uthabiti wa peg",
+      "Msaada wa kiutendaji kwa kuorodhesha, kushughulikia ada, na kupitisha ulipaji",
+      "Orodha ya ruhusa inayodhibitiwa na utawala kwa mabwawa na familia LP Avana yameandaliwa kupokelewa kama dhamana.",
+      "Avana inakubali tu LP dhamana kutoka kwenye vikundi au mifumo iliyokaguliwa na kuthibitishwa tayari. Orodha ya ruhusa ipo kwa sababu msaada wa LP si tu suala la chapa ya jukwaa au muundo wa tokeni. Itifaki inahitaji taarifa za kutosha ili kuweka bei ya nafasi, kusimamia uuzaji wa mali, na kuweka mipaka ya hatari inayochukuliwa.",
+      "Uidhinishaji wa bwawa unafanya kazi pamoja na",
+      "Vigezo vya Dhamana",
+      "Mfumo wa Hatari",
+      ". Orodhesha kipekee huamua kama bwawa linaweza kuingia mfumo; vigezo vya dhamana huamua ni thamani ngapi inayoweza kukopesheka kila nafasi iliyokubaliwa inaweza kuchangia.",
+      "Bwawa linaingia kwenye orodha ya kuruhusiwa tu wakati itifaki inaweza kujibu maswali hayo ya msingi kila wakati: je, inaweza kuweka bei ya nafasi, je, inaweza kutoka kwenye nafasi, na je, inaweza kufuatilia hatari katika uzalishaji.",
+      "Idhini ya kikundi haimaanishi kuwa nafasi inapata matibabu ya mkopo wa ukarimu. Baada ya kikundi kuingizwa, kila nafasi LP bado inathaminiwa peke yake, ikapunguzwa kulingana na matibabu yake ya hatari, kisha kuongezwa kwenye uwezo wa mkopo wa mtumiaji ndani ya Borrow Spoke.",
+      "Ndiyo sababu idhini ya bwawa na tathmini ya dhamana vimeunganishwa kwa karibu. Bwawa linaweza kuwa salama vya kutosha kuingizwa wakati bado linahitaji vikwazo vya tahadhari, LTV za chini, au uendeshaji mkali wa uuzaji mara linapokuwa hai.",
+      "Wajenzi wanapaswa kufikiria kwa mujibu wa templeti za zaidi ya mabwawa na orodha zinazoruhusiwa maalum kwa utekelezaji, si kama kila LP katika eneo ina uhakika wa kuwa mchezo wa haki.",
+      "Familia mpya za bwawa kawaida zinahitaji kazi iliyoratibiwa katika kushughulikia orakuli, njia za uingizaji wa mali, mipaka ya hatari, na usimamizi wa miundombinu kabla ya kuwa salama kuamuliwa."
+    ]
+  },
+  "integrations/appkit": {
+    "meta": {
+      "title": "AppKit",
+      "description": "Mwongozo wa mtengenezaji wa kuwekwa kwa AppKit, kuhamishwa kwa mshirika, na jinsi mkopo wa Avana unavyowekwa ndani ya uso wa bidhaa za wahusika wengine bila kuhamisha mantiki ya hatari nje ya Avana."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "mfumo-wa-unganisho",
+        "title": "Mfumo wa Uunganisho"
+      },
+      {
+        "id": "udhibiti-wa-mshirika",
+        "title": "Udhibiti wa Mshirika"
+      },
+      {
+        "id": "maelezo-ya-kuanzisha",
+        "title": "Kumbuka Kutolewa"
+      }
+    ],
+    "strings": [
+      "AppKit",
+      "Mwongozo wa mtengenezaji wa kuwekwa kwa AppKit, kuhamishwa kwa mshirika, na jinsi mkopo wa Avana unavyowekwa ndani ya uso wa bidhaa za wahusika wengine bila kuhamisha mantiki ya hatari nje ya Avana.",
+      "Muhtasari",
+      "Mfumo wa Uunganisho",
+      "Udhibiti wa Mshirika",
+      "Kumbuka Kutolewa",
+      "Kukamata nia",
+      "AppKit inafaa mahali ambapo watumiaji tayari wanaelewa nafasi zao za LP, hali ya kifaa chao, au muktadha wa kubadilisha, kwa hivyo kipengele cha kukopa kinaonekana karibu na nia iliyopo badala ya kulazimisha mtiririko mpya kabisa.",
+      "Uhamisho wa itifaki",
+      "Mshirika anapassia mkoba na muktadha wa soko kwenye Avana. Mtiririko wa kukopa unaweza kisha kufunguka ukiwa na muktadha huo tayari umewekwa badala ya kumuuliza mtumiaji kuujenga upya kwa mikono.",
+      "Uchumi wa mshirika",
+      "Washirika wanaweza kutumia miundo ya mapato ya rufaa, upangaji au ujumuishaji, lakini hawakuwa mkopeshaji au kipeo cha hatari. Avana inaendelea na mikopo, hatari, na malipo.",
+      "Weka ingizo la mkopo karibu na nafasi ya LP au muonekano wa jalada ambao mtumiaji tayari anaamini.",
+      "Weka mkoba na muktadha wa soko katika mtiririko wa kukopa ili kupitisha kusaidia hisia ya kubadilisha isihisi kama kuwa upya.",
+      "Acha hatari na usuluhishi kwenye Avana. Usijenge upya tathmini ya kipimo au mantiki ya ulaji katika UI ya mshirika.",
+      "Amua nakala, mahali pa kuweka, na vizuizi vya uzinduzi kabla ya kuanza kuwepo hai kwa sababu vinaunda ujumuisho, si tu safisha safu.",
+      "Wapi uso wa mkopo unaonekana katika bidhaa",
+      "Ni sehemu gani za watumiaji zinaona kipengele cha kuazima",
+      "Elimu au maelezo kiasi gani yanaonekana sambamba na kuhamishwa",
+      "Iwapo bidhaa inatumia uhamisho wa mkono uliojumuishwa kikamilifu au njia nyepesi ya kuingiza inayohifadhi muktadha",
+      "Jinsi washirika wanavyoweka mkopo unaounga mkono Avana LP wakati Avana bado inabakia na jukumu la kukopa, hatari, na makusanyo.",
+      "AppKit ni kwa bidhaa za wahusika wa tatu ambazo tayari zinamiliki uhusiano na mtumiaji, kama vile DEXs, pochi, na programu za mkusanyiko ambapo nafasi za LP tayari zinaonekana. Bidhaa ya mshirika hufafanua wakati huo, inachukua muktadha, na inaamua wapi ingizo la mkopo linaonekana. Avana inaendesha njia halisi ya mkopo.",
+      "Ukurasa huu ni kuhusu upangaji, kuhamisha, na nidhamu ya uzinduzi. Mshirika anamiliki uso wa mtumiaji na usambazaji. Avana anamiliki kanuni za mkopo, makubaliano, na mashine muhimu kwa usalama nyuma ya mtiririko.",
+      "AppKit haibadilishi mfano mmoja wa uwasilishaji. Wadau wanadhibiti njia za kuingiza na kiasi cha mwongozo unaozunguka, huku wakiwaacha maamuzi ya itifaki ndani ya Avana.",
+      "Maelezo ya Utekelezaji",
+      "Muunganiko bora zaidi unajisikia kama kuendeleza mtiririko wa bidhaa uliopo, si kuruka kwa nguvu katika programu ya mkopo isiyohusiana. Maelezo haya ni msingi wa vitendo kwa kupata mpatanishi huo kwa usahihi.",
+      "Anzisha AppKit kama mradi wa ujumuisho, sio tu uwekaji wa kiungo. Thibitisha njia ya mtumiaji, hakiki ambapo kipengele cha kuingia kiko, na hakikisha kwamba njia ya mikopo ya Avana inabaki imegawanyika wazi kutoka kwa ganda la mshirika ambapo majukumu hubadilika.",
+      "Pia angalia yanayotokea wakati uso wa mikopo umefichwa, kama viungo vya moja kwa moja kwenye mtiririko wa kukopa ni salama, na jinsi muktadha wa pochi, soko, au dhamana unaokosekana unavyoshughulikiwa."
+    ]
+  },
+  "integrations": {
+    "meta": {
+      "title": "Integrations Zinazoungiwa Mkono",
+      "description": "Mwongozo unaojali uenezaji kwa familia za ukumbi Avana unaweza kuingiliana nazo, ukaguzi wanayopaswa kupita, na kazi ya ukaguzi inayohitajika kabla ya kuwasha."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "programu",
+        "title": "AppKit"
+      },
+      {
+        "id": "eneo-familia",
+        "title": "Familia za Ukumbi"
+      },
+      {
+        "id": "hali-ya-uwezeshaji",
+        "title": "Hali ya Uwezeshaji"
+      },
+      {
+        "id": "hakiki-mahitaji",
+        "title": "Mahitaji ya Ukaguzi"
+      }
+    ],
+    "strings": [
+      "Integrations Zinazoungiwa Mkono",
+      "Mwongozo unaojali uenezaji kwa familia za ukumbi Avana unaweza kuingiliana nazo, ukaguzi wanayopaswa kupita, na kazi ya ukaguzi inayohitajika kabla ya kuwasha.",
+      "Muhtasari",
+      "AppKit",
+      "Familia za Ukumbi",
+      "Hali ya Uwezeshaji",
+      "Mahitaji ya Ukaguzi",
+      "Viwango vya mikopo iliyounganishwa",
+      "Vituo hivi vinahitaji kushughulikiwa kwa ngazi ya nafasi kwa sababu thamani ya LP inategemea bei ya sasa, anuwai ya kazi, na jinsi hesabu ya bidhaa inavyogawanywa katika nafasi.",
+      "Maziwa yanayobadilika, thabiti na yaliyopewa uzito",
+      "Vyakula hivi vinaonyesha hisa ERC-20 LP ambazo thamani yake inaweza kujengwa upya kutoka salio za bwawa, bei za nje, na makadirio makini ya kufungua.",
+      "Miundo ya kawaida au inayotegemea hook",
+      "Miundo ya kisasa zaidi ya bwawa inaweza tu kuungwa mkono wakati Avana ina mfano wa oracle ulio wazi, njia salama ya uhifadhi, na kiambatanisho cha uondoshaji kwa muundo huo.",
+      "Mwongozo wa rejeleo kwa familia za maeneo Avana ambazo zinaweza kushirikiana na milango ya ukaguzi ambayo lazima ipitiwe kabla ya msaada kuanza rasmi.",
+      "Avana hahusishi maeneo kwa sababu tu ni maarufu au yanafunua tokeni LP. Msaada unategemea kama itifaki inaweza kujenga upya nafasi kwa usahihi, kuithamini kwa tahadhari, na kuiondoa kwa usafi wakati ukomo wa madeni unahitajika.",
+      "Ukurasa huu ni rejeleo la muunganiko, si dashibodi ya uzinduzi wa moja kwa moja. Kwa sera ya kuingia kwenye bwawa, ona",
+      "Maziwa Yanayoruhusiwa LP",
+      ". Kwa dhana za tathmini, ona",
+      "Mashirika ya Bei",
+      "AppKit ni njia inayokabiliwa na washirika kwa bidhaa zinazotaka kuingiza mkopo wa Avana ndani ya safari ya mtumiaji iliyopo badala ya kutuma watumiaji kwenye mchakato huru usio na muktadha.",
+      "Soma",
+      "AppKit mwongozo wa msanidi programu",
+      "kwa udhibiti wa washirika, mifumo ya kuhamisha, na noti za uzinduzi.",
+      "Je, kipimo kinawekwa kwenye mtandao fulani ni uamuzi wa utekelezaji, sio ukweli wa kudumu wa itifaki. Familia ya vipimo inaweza kuungwa mkono kwa nadharia lakini bado ikizimwa kwenye utekelezaji maalum hadi wakati usambazaji wa orakulu, upangaji wa uingizaji, na vigezo vya hatari vyote vitakapo kuwa tayari.",
+      "Wajenzi wanapaswa kuthibitisha usanidi wa sasa wa ueneaji katika programu, kumbuka za kutolewa, au rejista ya mkataba iliyochapishwa badala ya kusoma ukurasa huu kama sehemu ya msaada wa wakati halisi.",
+      "• Sehemu ya mkutano lazima iunge mkono tathmini ya nafasi ya kiasili kutoka bei thabiti za nje na urekebishaji wa serikali unaoweza kuthibitishwa.",
+      "• Itifaki inahitaji njia ya kuondoa kwa uhakika kwa ajili ya uondaji wa mali, ikijumuisha ukusanyaji wa ada na kupitisha kwenye mali ya deni.",
+      "• Kina cha bwawa, hatari ya mkusanyiko, dhana za uhusiano, na ufuatiliaji wa kiutendaji vyote vinapaswa kuendana na mfumo wa hatari.",
+      "• Msaada wa eneo jipya ni uamuzi wa utawala na hatari, si tu sasisho la kiolesura au muungano wa kiambatanishi."
+    ]
+  },
+  "integrations/price-oracles": {
+    "meta": {
+      "title": "Mashirika ya Bei",
+      "description": "Jinsi Avana Oracle inavyopiga bei LP dhamana kupitia vyanzo vya nje, urekebishaji wa nafasi yenye ufanisi thabiti, na punguzo la thamani linaloweza kurekebishwa."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "kiolesura-cha-oracle",
+        "title": "Kiolesura cha Oracle"
+      },
+      {
+        "id": "usanifu wa tabaka nyingi",
+        "title": "Miundo ya Tabaka Nyingi"
+      },
+      {
+        "id": "shughulikiaji ya dex",
+        "title": "Usimamizi Maalumu wa DEX"
+      },
+      {
+        "id": "uhesabu wa twap",
+        "title": "Hesabu ya TWAP"
+      },
+      {
+        "id": "tahadhari za usalama",
+        "title": "Usalama na Kuzuia Uendeshaji Haramu"
+      },
+      {
+        "id": "vigezo-vinavyoweza-kupangwa",
+        "title": "Vigezo Vinavyoweza Kusanidiwa"
+      }
+    ],
+    "strings": [
+      "Mashirika ya Bei",
+      "Jinsi Avana Oracle inavyopiga bei LP dhamana kupitia vyanzo vya nje, urekebishaji wa nafasi yenye ufanisi thabiti, na punguzo la thamani linaloweza kurekebishwa.",
+      "Muhtasari",
+      "Kiolesura cha Oracle",
+      "Miundo ya Tabaka Nyingi",
+      "Usimamizi Maalumu wa DEX",
+      "Hesabu ya TWAP",
+      "Usalama na Kuzuia Uendeshaji Haramu",
+      "Vigezo Vinavyoweza Kusanidiwa",
+      "Bei za mali zinazojitokeza",
+      "Mgawanyo wa akiba au hesabu za bwawa",
+      "Kwa utaalamu wa umwagaji wa kiasi, kidirisha cha sasa ukizingatia wigo wa nafasi",
+      "Iwe nafasi iko ndani ya wigo au kwa kiasi kikubwa upande mmoja",
+      "Pima bei ya mali zinazowezeshwa na mashujaa thabiti wa nje",
+      "Anza kwa vyanzo vya nje vya kudumu kwa mali msingi ili dhamana isipate kelele zote au uwezo wa udanganyifu wa hali ya moja kwa moja ya kirutubisho cha hazina.",
+      "Toa thamani ya LP kwa tahadhari",
+      "Jenga tena salio zinazoweza kubadilishwa LP au gawanisha nafasi za mtiririko wa fedha ulio mkusanyiko kutoka akiba, ujuzi wa fedha, wigo, na ada kwa kutumia njia ya kipekee ambayo tunda linaweza kuelewa.",
+      "Kupunguza kwa hasara isiyo ya kudumu na kuharibika kwa uuzaji",
+      "Punguza alama iliyojengekwa hadi thamani inayoweza kurekebishwa ya dhamana inayokadiria msongo, kuteleza, na kutoka zisizo kamilifu badala ya fidia safi kwa NAV ya nadharia.",
+      "Ufunikaji wa kofia na LP familia na kina cha bwawa",
+      "Tumia udhibiti kulingana na familia ya LP, darasa la bwawa, na kina kilichopo ili masoko nyembamba au magumu zaidi yasipokee vikwazo sawa vya mkopo na yale yenye kina kirefu na rahisi.",
+      "Elemisha kulingana na thamani inayoweza kupatikana ya kubatilisha, sio NAV ya matumaini",
+      "Tumia thamani inayoweza kutimizwa kimsingi kupitia njia ya kuondoa deni wakati wa kutoa nguvu ya kukopa na kuamua uchimbaji mali, badala ya thamani ya alama ya hali bora zaidi.",
+      "Curve Imara/Imara ERC-20 LPs",
+      "Vyanzo vya stablecoin vya nje + ukaguzi wa hali ya bwawa + uthibitisho wa TWAP",
+      "Bei za nje zinashikilia mali wakati salio la benki na ukusanyaji wa ada unakagua thamani ya dhamana iliyopunguzwa.",
+      "Uniswap V2 ERC-20 LPs",
+      "Chainlink + ukarabati wa hifadhi + uthibitisho wa TWAP",
+      "Tokens 31 za kawaida zinathaminiwa kutoka salio lililojengwa upya, na TWAP ikitumika kama ukaguzi wa msalio usio rahisi kudanganywa.",
+      "Uniswap V3 NFT LPs",
+      "Chainlink + mgawanyo wa nafasi + ukaguzi wa tick/TWAP",
+      "NFT inagawanywa kwa ukwasi, wigo wa shughuli, na bei ya sasa, kisha kukatwa kwa thamani inayoweza kurejeshwa ya uuzaji.",
+      "Balancer Mali Nyingi LPs",
+      "Chainlink + urekebishaji wa hesabu zenye uzito",
+      "Maziwa yenye tokens nyingi hutumia bei za nje na hesabu za mfuko zilizopimwa uzito kutathmini thamani ya kifedha kwa tahadhari.",
+      "SushiSwap / Aerodrome",
+      "Uchunguzi unaotokana na bwawa unathibitisha thamani iliyojengwa upya na husaidia kuzuia matumizi mabaya ya muamala mmoja katika masoko yenye uwiano mdogo wa fedha.",
+      "Uthibitisho wa Chainlink + TWAP unaotegemea blok",
+      "Bei za nje zinaendelea kuwa nanga wakati uchunguzi unaotegemea blok hii unathibitisha hali ya nafasi na kusaidia kufuta makisia.",
+      "Jinsi itifaki inavyobadilisha hali ya nafasi LP kuwa thamani za dhamana zinazohusiana na mikopo.",
+      "Avana Oracle sio uangalizi wa bei moja. Ni njia ya tathmini inayobadilisha nafasi ya LP kuwa kitu ambacho mfumo wa ukopeshaji unaweza kutumia kwa uhasibu wa dhamana. Ili kufanya hivyo kwa usalama, inaunganisha vipeperushi vya soko vya nje, urekebishaji wa hakika wa LP, na upunguzaji wa kurejesha kulingana na dhana za kufutwa badala ya kutegemea hali ya moja kwa moja ya AMM peke yake.",
+      "Vingizo halisi vinategemea familia ya hati za dhamana. Fungible LP inaundwa tena kutoka kwenye mizani, akiba, na ada, wakati kioo cha ushirikiano kilichojikita lazima kigeuzwe kupitia wigo wake, kioo, na muktadha wa bei ya sasa. Katika kesi zote mbili, matokeo huingizwa kupitia mantiki ya thamani inayoweza kurekebishwa ili kukopa kutumia nambari ya tahadhari badala ya dhana ya kuondoka bila msuguano.",
+      "Tofauti hiyo kati ya thamani ya alama na thamani inayoweza kurejeshwa ndicho kinachofanya orakulu kuwa muhimu kwa ukopeshaji badala ya uchambuzi tu. ERC-20 LPs, NFT LPs, na mabwawa ya mali nyingi yanaweza kushiriki kiolesura kimoja cha kiwango cha juu kwa sababu kila darasa linapitia ukaguzi wake na mchakato wa kuzuia udanganyifu kabla ya thamani kufikia kipande.",
+      "Kiolesura cha Oracle: IOracle",
+      "Njia za Mkopo zinahitaji uso mmoja wa mkataba ingawa miundo LP inatofautiana sana kati ya DEXs. `IOracle` hutoa umbo hilo la kawaida na inabaki na thamani kuu, ada zilizojumlishwa, na akiba zilizohifadhiwa tofauti ili mantiki ya hatari baadaye isihitaji kubashiri ni sehemu gani ya nafasi inayoangaliwa:",
+      "kazi pataThamani(uint256 kitambulishoChaTokeni, anwani mali)",
+      "mtazamo wa nje unarudisha (",
+      "uint256 thamaniKamilifu,",
+      "uint256 thamaniYaAda,",
+      "thamaniYaAkiba ya uint256",
+      "thamaniKamili",
+      "Thamani iliyojengwa upya ya fedha taslimu kuu kabla ya marekebisho ya msongo wa fedha yatakayofanywa baadaye.",
+      "thamaniYaAda",
+      "Thamani ya ada iliyokusanywa na nafasi ambayo inaweza kutambulika pamoja na msingi.",
+      "thamaniHifadhi",
+      "Sehemu iliyohifadhiwa iliyoachwa kwa oracle, kupunguza, na kinga za hatari za itifaki.",
+      "Kiolesura kinaficha mfumo wa ndani wa DEX kutoka kwenye kipaza sauti. Hii inaruhusu mpiga simu yule yule kushughulikia ERC-20 LPs, NFT LPs, na mabwawa ya mali nyingi kupitia muundo mmoja wa kurudi huku bado ikiweka nafasi kwa utunzaji wa tahadhari, maalumu kwa familia ya dhamana nyuma ya pazia.",
+      "LP tathmini ni mchakato wa hatua kwa hatua badala ya kusoma bei ya sehemu moja. Njia ya mtabiri inapitia hatua zifuatazo:",
+      "Vitsema tofauti vinafunua sehemu tofauti za hali, na mtabiri hutumia pembejeo hizo kwa njia tofauti. Kitu muhimu ni kwamba data maalum ya kisiwa husaidia kutengeneza upya nafasi na kuthibitisha bei; haikubaliwi kama alama ya rehani moja kwa moja bila kuchunguza.",
+      "DEX / LP Aina",
+      "Chanzo cha Oracle",
+      "Maelezo",
+      "Hesabu ya TWAP kwa DEX",
+      "TWAPs ni viingilio vya uthibitisho. Vuko kando ya bei za mali za nje na ujengeaji wa nafasi wa kidhahiri ili kuangalia kama hali ya bwawa inayozingatiwa inalingana na njia halali ya kuvunjika. Husaidia kukataa mabadiliko yenye mashaka au madogo-muda, lakini haviwezi kuchukua nafasi ya mfano mpana wa mlinganyo peke yao.",
+      "Uniswap V2 & SushiSwap",
+      "Uniswap V3",
+      "Ukaguzi unaojua nafasi unajumuisha wigo wa alama, usambazaji wa kioevu, na ada zilizokusanywa ili itaratibu iweza kuthibitisha mfukuto wa tokeni zilizogawanywa za kila NFT LP badala ya kutazama NFT kama kisanduku kisicho na wazi.",
+      "Balancer",
+      "Uchunguzi wa tokeni uliopimwa unachanganywa na uzito wa bwawa kuthibitisha mgawanyo wa hesabu ya mali nyingi kabla ya oracle kupewa thamani ya tahadhari ya dhamana.",
+      "Curve",
+      "Uchunguzi wa stablecoin unatumika hasa kugundua vyanzo vya habari vilivyozimwa, mabadiliko ya hifadhi, na dosari za muda mfupi huku bei za nje zikiwa kizuizi kikuu.",
+      "Muuza Joe & Aerodrome",
+      "Uchunguzi wa bei unaojumlisha katika dirisha la dakika 30-60 husaidia kuthibitisha hali ya bwawa lenye uwiano mdogo wa fedha na kupinga udanganyifu wa muamala huo huo wakati wa uhakiki wa rehani.",
+      "Vikwazo vya Upungufu",
+      "Mikopo mipya au uondoaji inaweza kusitishwa wakati data ya uhakiki inayotokana na bwawa inapotofautiana sana na bei za marejeleo za nje",
+      "tofautiKuu",
+      "tofautiKuuYaBeiYaPooli",
+      "Hii inahakikisha hali inayopendekezwa na bwawa inabaki sambamba na bei za msingi za tokeni na inapunguza udanganyifu wa haraka wa bwawa au matumizi mabaya ya oracle kwenye muamala mmoja.",
+      "Vikwazo vya Maslahi Yaliyo Funguliwa",
+      "Ufuniko una kikomo kutokana na LP familia, kina cha bwawa, na ugumu wa dhamana hivyo soko nyembamba hupokea mipaka mkopo stricter.",
+      "Kukata Nywele za Kupona",
+      "Mtabiri hupunguza thamani ya kiteoriki LP kwa hasara ya muda mfupi, kuteleza kwa kufungua nafasi, na dhana za likwidesheni zenye msongo kabla ya ruhusa yoyote ya kukopa kutolewa.",
+      "Mlinzi wa Oracle",
+      "Oracle Sentinel inatoa uangalizi wa afya ya feed na viingizo vya uhakiki na inaweza kuchochea tabia ya dharura wakati data ni ya zamani, imeharibiwa, au haikubaliani na ukaguzi wa hali ya nafasi.",
+      "Vigezo vya Oracle vinavyoweza kubadilishwa",
+      "Mipangilio ya mngojezi maalum wa bwawa imewekwa kwa kila tokeni kupitia",
+      "wekaMipangilioYaTokeni",
+      ". Jedwali lililopo hapa chini linaonyesha vigezo vinavyobainisha jinsi tokeni na bwawa lake linalohusiana vinavyopaswa kukaguliwa:",
+      "Kigezo",
+      "Maelezo",
+      "Kibali",
+      "Anuani ya tokeni ya dhamana",
+      "KiunganishiChaKukusanyaV3",
+      "Kimbilio cha Chainlink kwa tokeni msingi",
+      "umriKubwaWaKula",
+      "Umri mkubwa unaokubalika wa chakula cha Chainlink",
+      "Bwawa",
+      "Bwawa maalum la DEX (Uniswap V3, Balancer, Curve, n.k.)",
+      "twapSekunde",
+      "Dirisha la hesabu ya TWAP",
+      "Hali",
+      "Hali ya uendeshaji ya Oracle (ya kawaida/ya dharura)",
+      "Kiasi kikubwa kinachoruhusiwa cha tofauti kati ya bei ya DEX na bei ya uthibitisho",
+      "Kwenye vitendo, tabia ya oracle inatokana na mchanganyiko wa upimaji wa mali za nje, LP mantiki ya ujenzi upya, utunzaji wa thamani inayoweza kupatikana, na mipangilio kwa kila tokeni iliyosanidiwa kupitia"
+    ]
+  },
+  "integrations/router-contract": {
+    "meta": {
+      "title": "Mkataba wa Routa",
+      "description": "Marejeleo ya kibiashara kwa ajili ya router na tabaka ya kiunganishi ya Avana, ikijumuisha kile router kinachoratibu, kile kisichoamua, na jinsi msaada wa uwekaji unavyochapishwa."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "juhudi-katika-mfumo",
+        "title": "Kazi katika Mfumo"
+      },
+      {
+        "id": "mfano-wa-kibadilisha",
+        "title": "Mfano wa Kiunganishi"
+      },
+      {
+        "id": "operesheni-ziyozoungwa",
+        "title": "Operesheni Zinazoungiwa"
+      },
+      {
+        "id": "hali-ya-uanzishaji",
+        "title": "Hali ya Utekelezaji"
+      }
+    ],
+    "strings": [
+      "Mkataba wa Routa",
+      "Marejeleo ya kibiashara kwa ajili ya router na tabaka ya kiunganishi ya Avana, ikijumuisha kile router kinachoratibu, kile kisichoamua, na jinsi msaada wa uwekaji unavyochapishwa.",
+      "Muhtasari",
+      "Kazi katika Mfumo",
+      "Mfano wa Kiunganishi",
+      "Operesheni Zinazoungiwa",
+      "Hali ya Utekelezaji",
+      "Unganisha simu za amana, kutoa, na ukusanyaji wa ada za sehemu maalum ya kumbi katika safu ya kiolesura safi",
+      "Ratibu hatua za kupumzika au za upangaji zinazohitajika kwa utekelezaji wa likwidesheni",
+      "Tumia sasisho za nafasi zilizodhibitiwa kama mabadiliko ya wigo au mtiririko wa uhamishaji wakati kiambatanishi cha sehemu kipo",
+      "Onyesha uso wa ujumuishaji wa kudumu bila kuwa hatari au mamlaka ya thamani ya itifaki",
+      "Tabaka la kiolesura cha uendeshaji kwa vitendo vya eneo fulani, wito za kiunganishi, na msaada wa upangaji unaohusiana na ukomo.",
+      "Router ni safu ya utekelezaji, si mahali ambapo Avana huchukua maamuzi ya hatari. Ipo ili kuweka viwango vya vitendo maalum vya eneo ili itifaki isihitaji kusambaza amana, uondoaji, ada, na michakato ya kufuta ndani ya kila mtiririko unaogusa dhamana ya LP.",
+      "Soma ukurasa huu kama rejeleo wa kiutendaji. Kwa usanifu wa kawaida, anza na",
+      "Kopa Ncha ya Gurudumu",
+      "Mfumo wa Utoaji Mali",
+      "Vituo tofauti AMM vinaonyesha njia tofauti za kuingiza, kutoka, na ukusanyaji wa ada. Router inatoa Avana tabaka moja la muunganisho kwa mifumo hiyo ili wajenzi wasiwe na sharti la kutibu kila kituo kama mfumo wa kifani kikamilifu.",
+      "Router haipaswi kamwe kusomeka kama mahali ambapo sababu za dhamana, ukaguzi wa afya, au sifa za likwidheshini hukaguliwa. Hizo zinabaki kuwa masuala ya itifaki ya juu katika Borrow Spoke, Hub, safu ya oracle, na mfumo wa hatari.",
+      "Kila familia ya jukwaa inayounga mkono inapaswa kuwa na kiambatanishi kinachojua kuhusu jukwaa ambacho kinajua jinsi ya kudai ada, kuondoa uadui, na kufunua hatua ambazo itifaki inahitaji kwa muundo huo LP. Hilo linaweka tabia maalum ya jukwaa kuwa imepunguzwa badala ya kuinyanyua kwenye kila njia ya msimbo inayokabili mtumiaji na zinazoshughulikia ufutaji.",
+      "Msaada wa adapter unajihusisha tu wakati unalingana na thamani na msaada wa uuzaji. Adapter mpya yenyewe haifanya eneo kuwa salama kwa kukubalika kwa hati ya dhamana.",
+      "Anwani za router, rejista za adapta, na mitandao iliyowashwa ni data za utekelezaji. Zinapaswa kuchapishwa pamoja na toleo badala ya kubashiri kutoka kwenye nyaraka. Ukurasa huu kwa makusudi uniepuka anwani za kipeo na ahadi za kueneza zinazokisia.",
+      "• Thibitisha anwani maalum za mnyororo kutoka kwa rejista ya mikataba iliyochapishwa au noti za toleo.",
+      "• Thibitisha kwamba kiunganishi cha eneo unachotegemea kimewashwa kwenye usambazaji unaolengwa.",
+      "• Tafsiri msaada wa router kama utegemezi wa kiutendaji, si kama uthibitisho kwamba bwawa limekubaliwa kwa dhamana."
+    ]
+  },
+  "introduction/glossary": {
+    "meta": {
+      "title": "Kamusi ya Maneno",
+      "description": "DeFi kamusi ya maneno kwa Avana - ufafanuzi wa Spoke, Hub, LP NFT, kipengele cha dhamana, hisa za deni, uondoaji, oracle, na maneno mengine ya itifaki."
+    },
+    "toc": [
+      {
+        "id": "dhana-kinyume",
+        "title": "Dhana Muhimu"
+      },
+      {
+        "id": "vipengele vya itifaki",
+        "title": "Vipengele vya Itifaki"
+      },
+      {
+        "id": "masharti ya kifedha",
+        "title": "Masharti ya Kifedha"
+      },
+      {
+        "id": "hatari-usalama",
+        "title": "Hatari na Usalama"
+      },
+      {
+        "id": "vipimo",
+        "title": "Vipimo"
+      },
+      {
+        "id": "vitakasa",
+        "title": "Tangazo la kuepuka wajibu"
+      }
+    ],
+    "strings": [
+      "Kamusi ya Maneno",
+      "DeFi kamusi ya maneno kwa Avana - ufafanuzi wa Spoke, Hub, LP NFT, kipengele cha dhamana, hisa za deni, uondoaji, oracle, na maneno mengine ya itifaki.",
+      "Dhana Muhimu",
+      "Vipengele vya Itifaki",
+      "Masharti ya Kifedha",
+      "Hatari na Usalama",
+      "Vipimo",
+      "Tangazo la kuepuka wajibu",
+      "Kopa Ncha ya Gurudumu",
+      "Kinywaji kinachowakabili wakopaji Avana kinapokea dhamana LP, kinapima nafasi, kinafuata deni, na kuratibu ukopaji na uuzaji dhidi ya kioo cha fedha cha Hub.",
+      "Kipindi cha kuingiza mtaji kinachoelekea kwa mtoaji mkopo kinachopitisha mali zilizotolewa kwenye Kituo ili Mshale wa Mkopo uweze kuchukua umflamu wa pamoja.",
+      "Tabaka la fedha lililosambazwa katika Aave v4 linalosimamia kioo cha fedha, akiba, uhasibu, na uratibu wa mtaji wa itifaki kwa kiwango chote kati ya tawi lililounganishwa.",
+      "Mchoro wa Kituo-na-Mishina",
+      "Muundo ambapo mtaji unaoshirikiwa unaishi katika Kituo huku mantiki maalum ya dhamana ikiwa imekuzwa kwenye tawi. Avana inatumia mfano huu kwa sababu LP dhamana inahitaji tathmini na tabia ya likwidi maalumu kwa eneo.",
+      "Kituo cha Utoaji Mali",
+      "Hali ya kioo ya fedha kutoka kwenye AMM iliyoungwa mkono. Kulingana na sehemu, inaweza kuwa tokeni ya fungible LP, NFT iliyo na mkusanyiko wa kioo, au fomu nyingine ya hisa ya bwawa iliyokubaliwa.",
+      "Kiwango cha Dhamana",
+      "Sehemu ya thamani ya dhamana ya USD inayoweza kuhesabiwa kuelekea uwezo wa kukopa. Katika masoko ya LP, hii inatumika kwa kiwango cha nafasi badala ya yote kwa jumla.",
+      "Uwezo wa Kukopa",
+      "Kiasi ambacho mtumiaji anaweza kukopa ndani ya Borrow Spoke baada ya kila nafasi iliyowekwa LP kuthaminiwa, kurekebishwa kwa hatari, na kuongezwa kwenye uwezo wa jumla wa mtumiaji.",
+      "Bwawa Linaloruhusiwa",
+      "Bwawa lililothibitishwa na utawala ambalo linakidhi mahitaji ya kukubalika kama vile uwepo wa oracle, kina cha ukwasi, ubora wa kufutwa, na urafiki wa spika.",
+      "Mkopo-kwa-Thamani (LTV)",
+      "Uwiano wa kukopa unaohusiana na dhamana baada ya tathmini ya nafasi ya Avana na udhibiti wa hatari maalum wa kirutubisho kutumika.",
+      "Kitengo cha ndani cha uhasibu kinachotumika kufuatilia wajibu wa mkopaji huku riba ikikusanyika kwa muda bila kuandika upya kila salio la mkopo kila wakati.",
+      "Kiwango ambacho wakopa hulipa kwa deni lililobaki. Kinaakisi hali za pamoja za Hub na masuala maalum ya hatari ya LP.",
+      "Kiwango cha Matumizi",
+      "Kiwango cha uharibifu uliokopwa kwa mujibu wa upatikanaji wa raslimali katika tabaka la mitaji linalounganishwa na Kituo husika.",
+      "Ada ya Hatari",
+      "Sehemu ya hatari maalum iliyowekwa juu ya masharti ya msingi ya kusaidia kuonyesha wasifu wa dhamana unaofadhiliwa.",
+      "Kiwango cha Akiba",
+      "Sehemu ya uchumi wa itifaki au mtiririko wa riba uliotengwa kwa mfumo badala ya kupitishwa kabisa kwa watoaji wa ukwasi.",
+      "Kigezo cha Afya",
+      "Uwiano kati ya thamani iliyopunguzwa ya fedha za dhamana na deni lililobaki ndani ya Borrow Spoke. Wakati unaposhuka sana, nafasi husogea karibu na kustahiki kufutwa.",
+      "Mchakato wa kulipa deni dhidi ya nafasi yenye afya duni ya LP-iliyoungwa mkono, kutoa kutosha dhamana ili kurejesha uwezo wa kifedha, na kurudisha thamani yoyote iliyobaki baada ya makubaliano.",
+      "Bonasi ya Likwidishaji",
+      "Ziada ya uondoshaji inayolipwa kwa upande unaotekeleza uondoshaji, ikiwalipa fidia kwa kutumia mtaji, ugumu wa njia, na hatari ya utekelezaji.",
+      "Kifaa cha tathmini cha Avana kwa dhamana ya LP. Kinaunganisha bei za mali za nje, urekebishaji wa nafasi ya LP, na kinga za thamani inayoweza kupatikana.",
+      "Thamani Inayoweza Kupatikana Tena",
+      "Kiasi ambacho itifaki inaamini kinaweza kutekelezwa kwa kweli wakati wa kupungua kwa nguvu baada ya kupoteza kutokana na ushawishi wa uuzaji, hali za bwawa, na kinga za hatari zikizingatiwa.",
+      "Mabadiliko yaliyodhibitiwa ya nafasi yenye dhamana LP, kama vile kurekebisha uwiano au kubadilisha wigo, ambayo inaruhusiwa tu wakati nafasi inayotokana bado inakidhi ukaguzi wa afya wa itifaki.",
+      "Thamani jumla ya mali zilizotolewa kama fedha taslimu au mitaji katika vipengele vinavyounganishwa Avana.",
+      "Deni Lilisalia",
+      "Kiasi kilichokopwa kwa sasa dhidi ya nafasi zilizokubaliwa za dhamana.",
+      "Matumizi ya Mikopo",
+      "Sehemu ya ukwasi unaopatikana wa Hub ambao umechukuliwa na wakopaji.",
+      "Kiwango cha Mkopo",
+      "Tofauti kati ya deni la sasa la mtumiaji na uwezo wa jumla unaobaki wa kukopa ndani ya Borrow Spoke.",
+      "Thamani iliyo baki",
+      "Thamani yoyote iliyobaki katika nafasi baada ya deni, ziada ya ulipaji fedha, na gharama za utekelezaji kuwekwa sawa.",
+      "Uidhinishaji wa Basseini",
+      "Kiwango kinachosema kwamba tu mabwawa yaliyoruhusiwa awali yanaweza kuingizwa kama dhamana, ikipunguza uwezekano wa kupata hasara kutoka kwenye masoko yasiyo supported au yenye ufuatiliaji dhaifu.",
+      "Kukata Nywele kwa Urejesho",
+      "Vikwazo vya Uoneshaji",
+      "Vikwazo vya hatari vinavyopunguza kiwango cha mkopo kinachoweza kupatikana kwa familia ya bwawa, darasa la dhamana, au kina cha fedha taslimu.",
+      "Kizuizi cha Mzunguko",
+      "Udhibiti wa hatari ambao unaweza kuzuia au kupunguza hatua wakati bei, tabia ya soko, au utegemezi wa itifaki unapo kuwa haubilishi au si salama.",
+      "Usalama wa Utawala",
+      "Seti ya majukumu ya mapitio, kufunga muda, kizuizi, na dharura inayotumika na Mfumo wa Hatari kudumisha mabadiliko ya vigezo kwa nidhamu.",
+      "Ulinzi wa Urejeshaji",
+      "Ulinzi wa kiwango cha mkataba unaozuia mtiririko wa kazi unaobadilisha hali kuingizwa tena kabla ya utekelezaji wa kwanza kukamilika.",
+      "Maelezo rasmi kwa istilahi maalum za itifaki na DeFi zinazotumika katika nyaraka zote.",
+      "LP & Mali Msingi",
+      "Deni na Riba",
+      "Utoaji wa mali",
+      "Oracle na Geuza",
+      "Hakuna Ushauri wa Uwekezaji:",
+      "Avana ni itifaki ya programu. Nyaraka hizi hazitoi ushauri wa uwekezaji.",
+      "Hatari ya Kupoteza:",
+      "Watumiaji wanaweza kupoteza fedha kupitia udhaifu wa mikataba smart, mabadiliko ya soko, ufutaji, au udanganyifu wa oracle.",
+      "Hali ya Kisheria:",
+      "Hali ya kisheria ya Avana na token zake (ikiwa zipo) haijahakikishwa na inaweza kutofautiana kulingana na mamlaka ya eneo.",
+      "Hakuna Udhamini:",
+      "Programu inatolewa \"kama ilivyo\" bila dhamana ya aina yoyote."
+    ]
+  },
+  "introduction/key-concepts": {
+    "meta": {
+      "title": "Dhana Muhimu",
+      "description": "Elewa dhana kuu zilizopo nyuma ya Avana, pamoja na tabia ya rehani ya LP, thamani ya kihafidhina, ukopeshaji wa Hub, na uuzaji wa mali kwa nguvu."
+    },
+    "toc": [
+      {
+        "id": "ufahamu wa msingi",
+        "title": "Ufasiri Muhimu"
+      },
+      {
+        "id": "mtiririko wa mtumiaji",
+        "title": "Mfumo wa Kukopa"
+      },
+      {
+        "id": "uthamini wa mtaalam",
+        "title": "Oracle na Thamani"
+      },
+      {
+        "id": "mchakato wa kukopa",
+        "title": "Uwezo wa Kukopa"
+      },
+      {
+        "id": "ufuatiliaji wa afya",
+        "title": "Afya & Utoaji fedha"
+      },
+      {
+        "id": "ukusanyaji wa ada",
+        "title": "Matibabu Bila Malipo"
+      }
+    ],
+    "strings": [
+      "Dhana Muhimu",
+      "Elewa dhana kuu zilizopo nyuma ya Avana, pamoja na tabia ya rehani ya LP, thamani ya kihafidhina, ukopeshaji wa Hub, na uuzaji wa mali kwa nguvu.",
+      "Ufasiri Muhimu",
+      "Mfumo wa Kukopa",
+      "Oracle na Thamani",
+      "Uwezo wa Kukopa",
+      "Afya & Utoaji fedha",
+      "Matibabu Bila Malipo",
+      "Fikra zinazojitokeza mara kwa mara katika nyaraka za Avana za Kubora Mkopo, tathmini, kukopa, na uuzaji.",
+      "Nafasi ya LP si tu ishara yenye bei ya moja kwa moja. Ni nafasi ya uhai ya kioo ya fedha ambayo thamani yake inategemea mali zinazounda msingi, muundo wa bwawa, ukusanyaji wa ada, muundo wa nafasi, na kiasi ambacho itifaki inaweza kurejesha kwa kweli ikiwa ufutaji ungehitajika.",
+      "Kwa nini hili lina maana:",
+      "Avana inasaidia masoko LP yenye sheria za kipekee za tundu na bwawa badala ya mfano mmoja wa mali kwa kila LP.",
+      "Watumiaji wanaweka nafasi zinazoungwa mkono LP ndani ya Borrow Spoke. Nafasi hizo zinaweza kubaki hai katika mabwawa yao wakati itifaki inachukua uhifadhi kwa ajili ya uhakiki wa rehani.",
+      "Kila nafasi iliyoidhinishwa LP inathaminiwa kwa sababu yake. Baada ya vipengele vya dhamana na udhibiti wa hatari ya bwawa kutumika, mchango wake uliopunguzwa unaongezwa kwenye uwezo wa kukopa ndani ya Hali ya Mkopo hiyo.",
+      "Wakati mtumiaji anakopa, tundu hukamata kioo kutoka Kituo. LP hatari ya soko inabaki katika tabaka la tundu, wakati uhasibu wa mtaji wa pamoja unabaki katika Kituo.",
+      "Avana inathamini LP dhamana kwa tahadhari. Bei za mali za nje zinapima mali msingi, wakati data za hazina na hali ya nafasi zinatumika kujenga upya mfiduo badala ya kutegemea tu matokeo ya moja kwa moja ya AMM.",
+      "Bei za mali msingi kutoka kwa vyanzo vya nje vyenye uthabiti",
+      "Mgawanyo wa hesabu za bwawa au ugawaji wa nafasi unaojua wigo",
+      "Ada zilizojumlishwa zinatambuliwa tofauti na uhalisi wa mwelekeo wa msingi",
+      "Kupata upya makato ya nywele kwa ajili ya kupunguza kuondoka, hasara ya muda, na uondishaji wa shinikizo",
+      "Uwezo unajengwa nafasi kwa nafasi ndani ya Borrow Spoke. Avana haweka kipengele kimoja kwa jumla kwenye akaunti nzima au kwenye kila bwawa katika spoke. Kila nafasi huchangia tu baada ya vipengele vyake vya dhamana na udhibiti maalum wa bwawa kutumika.",
+      "Maelezo:",
+      "Vigezo vya Dhamana",
+      "A Borrow Spoke inalinganisha thamani iliyorekebishwa ya dhamana na deni lililobaki. Ikiwa bei, ukaguzi wa orakuli, au mabadiliko ya nafasi yanapopunguza kiasi kilichobaki vya kutosha, akaunti inaweza kuvuka hadi eneo la uuzaji wa mali.",
+      "Afya na uondoaji zote zinategemea njia ile ile ya uthamini. Bei, vigezo vya dhamana, na njia za uondoaji lazima zibaki zimelingana kwa sababu kwa mwisho zinachangia kwenye hesabu ile ile ya uendelevu wa kifedha.",
+      "LP nafasi zinaweza kuendelea kukusanya ada za biashara wakati zinapotumika kama rehani. Avana inaweza kutambua ada hizo katika tathmini na, ikizingatiwa ukaguzi wa afya, kuruhusu watumiaji kuzidai bila kuondoka kabisa kwenye nafasi kuu ya LP.",
+      "Nyaraka zinazohusiana:",
+      "Mashirika ya Bei",
+      "Kidai LP Ada"
+    ]
+  },
+  "introduction": {
+    "meta": {
+      "title": "",
+      "description": ""
+    },
+    "toc": [],
+    "strings": []
+  },
+  "introduction/testnet-roadmap": {
+    "meta": {
+      "title": "Mtandao wa Jaribio na Ramani ya Njia",
+      "description": "Mwongozo wa kiutendaji kwa majaribio ya Avana na upangaji wa ramani ya njia, kwa muktadha wa tathmini badala ya kanuni rasmi za itifaki au ahadi za uzinduzi."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "wigo-wa-testnet",
+        "title": "Wigo wa Mtandao wa Jaribio"
+      },
+      {
+        "id": "jinsi-ya-ku-tathimini",
+        "title": "Jinsi ya Kutathmini"
+      },
+      {
+        "id": "ufafanuzi-wa-ramani-ya-barabara",
+        "title": "Ufafanuzi wa Ramani ya Njia"
+      },
+      {
+        "id": "kampeni-na-hali",
+        "title": "Vijaribu na Hali"
+      }
+    ],
+    "strings": [
+      "Mtandao wa Jaribio na Ramani ya Njia",
+      "Mwongozo wa kiutendaji kwa majaribio ya Avana na upangaji wa ramani ya njia, kwa muktadha wa tathmini badala ya kanuni rasmi za itifaki au ahadi za uzinduzi.",
+      "Muhtasari",
+      "Wigo wa Mtandao wa Jaribio",
+      "Jinsi ya Kutathmini",
+      "Ufafanuzi wa Ramani ya Njia",
+      "Vijaribu na Hali",
+      "Ukurasa wa kiutendaji kwa ajili ya kujaribu uenezaji Avana na kwa ajili ya kusoma taarifa za ramani ya njia kwa kiwango sahihi cha tahadhari.",
+      "Hali ya Testnet, mitandao inayoungwa mkono, na mfuatano wa ramani ya barabara ya umma hubadilika haraka kuliko nyaraka za usanifu. Ukurasa huu upo ili wajenzi waweze kutofautisha hali ya mazingira na muundo thabiti wa itifaki na kuepuka kusoma lugha ya utekelezaji kana kwamba ilikuwa maelezo ya vipimo.",
+      "Tumia lightpaper na hati za waendeleaji wa msingi kwa ajili ya muundo wa itifaki. Tumia ukurasa huu kwa kuwa tayari kwa mazingira, wigo wa jaribio, na muktadha wa kuzindua.",
+      "Utekelezaji wa majaribio unaweza kuonesha sehemu tu ya muundo kamili wa uzalishaji. LP familia, kukopa mali, ulinzi wa orakoli, na zana za likwidi zote zinaweza kuwa nyembamba zaidi au zimepunguzwa sana kwenye mtandao wa majaribio.",
+      "• Thibitisha mtandao unaofanya kazi, rejista ya mikataba, na seti ya mabwawa yanayoumbwa kwa mazingira ya sasa.",
+      "• Tarajia mali zinazochorwa kejeli, upatikanaji wa maeneo uliopunguzwa, na mizunguko mifupi ya operesheni.",
+      "• Tumia tabia ya testnet kama mazingira ya tathmini, si kama ahadi ya uzalishaji wa mwisho.",
+      "Njia yenye manufaa zaidi ya tathmini ni kuweka LP inayostahiki, kuthibitisha thamani ya tundu, kuangalia uwezo wa mkopo jumla, kukopa dhidi ya kioevu cha Hub, na kisha kuangalia jinsi uchunguzi wa afya na malipo yanavyotenda kwenye akaunti hiyo hiyo.",
+      "Pointi, mishiriki, au kampeni nyingine kwenye jaribio la majaribio ni vipengele vya kiutendaji. Sio mfano wa rehani yenyewe.",
+      "Lugha ya ramani ya barabara ina mwongozo. Inaonyesha kuelekea upanuzi mkubwa wa kifamilia LP, msaada mkali zaidi wa oracle, vifaa vya kina vya likwidesheni, na usimamizi wa hatari uliobobea zaidi. Haiwezi kusomwa kama tarehe thabiti ya uzinduzi au ahadi ya nguvu ya mtandao isipokuwa ahadi hiyo itatangazwa kando.",
+      "Vishawishi vinavyofanya kazi, programu za pointi, au maelezo ya utoaji maalum wa mtandao yanapaswa kuwepo katika nyaraka za kampeni au noti za toleo. Kuyazuia kwenye kurasa kuu za itifaki kunafanya nyaraka za waendelezaji kuwa thabiti zaidi wakati kampeni au mipango ya utoaji inabadilika."
+    ]
+  },
+  "legal/disclaimer": {
+    "meta": {
+      "title": "Tangazo la Kisheria",
+      "description": "Avana kielelezo cha kisheria - kielelezo cha jumla, hakuna ushauri wa kifedha, hatari, dhamana, na kikomo cha wajibu."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "kionyo-cha-umum",
+        "title": "Tangazo la Jumla"
+      },
+      {
+        "id": "hakuna-ushauri-wa-kifedha",
+        "title": "Hakuna Ushauri wa Kifedha"
+      },
+      {
+        "id": "hatari",
+        "title": "Hatari"
+      },
+      {
+        "id": "hakuna-dhamana",
+        "title": "Hakuna Dhamana"
+      },
+      {
+        "id": "kizuizi-cha-uwajibikaji",
+        "title": "Kizuizi cha Uhusiano wa Kisheria"
+      },
+      {
+        "id": "sera-zuinazo-husiana",
+        "title": "Sera Zinazohusiana"
+      }
+    ],
+    "strings": [
+      "Tangazo la Kisheria",
+      "Avana kielelezo cha kisheria - kielelezo cha jumla, hakuna ushauri wa kifedha, hatari, dhamana, na kikomo cha wajibu.",
+      "Muhtasari",
+      "Tangazo la Jumla",
+      "Hakuna Ushauri wa Kifedha",
+      "Hatari",
+      "Hakuna Dhamana",
+      "Kizuizi cha Uhusiano wa Kisheria",
+      "Sera Zinazohusiana",
+      "Taarifa za kisheria zinazosimamia matumizi ya itifaki na nyaraka.",
+      "Muhimu:",
+      "Tafadhali soma kielelezo hiki kwa makini kabla ya kutumia Avana. Kwa kutumia itifaki hii, unathibitisha kuwa umeisoma, umeielewa, na unakubali kufungwa na masharti haya. Kwa masharti kamili, tafadhali angalia yetu",
+      "Masharti ya Huduma",
+      "Sera ya Faragha",
+      "Onyo hili linaongeza na linapaswa kusomwa pamoja na kamili yetu",
+      ". Masharti ya Huduma yanaunda makubaliano ya kisheria kati yako na Avana kuhusu upatikanaji na matumizi yako ya itifaki na huduma zinazohusiana.",
+      "Kutoka kwenye ukurasa wetu wa nyumbani:",
+      "Kukopa dhidi ya tokeni LP kunahusisha hatari, ikiwa ni pamoja na uuzaji wa mali kama hali za soko zinapobadilika kinyume na nafasi yako. Avana haishiki fedha zako, haibadilishi nafasi za LP, wala kubadilisha jinsi uelezaji wako unavyofanya kazi kwenye AMM za msingi. Kopa tu kiasi ambacho umejisikia vizuri kudumisha wakati wa mabadiliko ya soko.",
+      "Avana ni itifaki ya fedha isiyo ya kitawala ya majaribio. Itifaki inatolewa \"kama ilivyo\" bila uwakilishi au dhamana yoyote ya aina yoyote, iwe dhahiri au iliyopangwa.",
+      "Kama ilivyotajwa katika Sheria Zetu za Huduma (Kipengele cha 2): \"Itifaki ya Avana inajumuisha ufanyakazi ambapo baadhi ya mkataba mahiri wa chanzo huria unaweza kupokea na kushikilia sarafu fulani za kidijitali au mali nyingine za crypto. Kuna hatari kwamba programu ya chanzo huria, pamoja na masasisho yoyote, inaweza kuingiza mende, virusi, farasi wa Troja, au udhaifu au mabadiliko mengine ambayo yanaweza kusababisha usumbufu wa sehemu au kamili wa itifaki au kupoteza, uharibifu, au uharibikaji wa mali zako za crypto.\"",
+      "Kila tegemezi unaloweka kwenye taarifa kama hiyo ni kwa hatari yako binafsi. Hatutawajibika kwa hasara au uharibifu wowote unaotokea kutokana na matumizi ya itifaki hii au nyaraka zake.",
+      "Kama ilivyoelezwa kwa uwazi katika Masharti Yetu ya Huduma: \"HUDUMA INAJUMUISHA, PAKI KITU KINGINE, RASILIMALI ZA TAARIFA, AMBAYO INAWEZA KUTOA TAARIFA KUHUSU AVANA. AVANA SI MLETA PAMBO, MWEKA PAMBO, KUBADILISHA, MSHIRIKA WA UWEKEAJI, MLEZI AU MUWAKILISHI WA HUDUMA ZA FEDHA WA AINA YOYOTE. HATUWI NA UHUSIANO WA KIFIDUCIARY NA, AU WAHITAJI KWA, WEWE KUHUSU HUDUMA HIZO.\"",
+      "• Nyenzo hii ni kwa madhumuni ya taarifa tu",
+      "• Si ofa au ombi la kuwekeza, kununua, au kuuza hisa au sehemu yoyote",
+      "• Haikusudiwi kutoa ushauri wa uhasibu, kisheria, kodi, au mapendekezo ya uwekezaji",
+      "• Sisi si washauri wa uwekezaji waliojiandikisha au mawakala-wauzaji",
+      "• Hatuwezi kutoa mapendekezo binafsi ya kifedha",
+      "• Utendaji wa zamani hauhakikishi matokeo ya baadaye",
+      "• Unapaswa kushauriana na wataalamu waliyoidhinishwa kabla ya kufanya maamuzi ya kifedha",
+      "• Uwekezaji wa sarafu za kidijitali una tete sana na una hatari",
+      "Sehemu ya 8 ya Masharti Yetu ya Huduma inaelezea hatari zinazohusiana na kutumia Avana:",
+      "Teknolojia ya Majaribio",
+      "Huduma zinaweza kuhusisha teknolojia ya majaribio na ya kipekee na matumizi ya teknolojia hiyo yanahusisha kiwango kikubwa cha hatari. Kuna sababu nyingi kwa nini Huduma au mitandao ya msingi ya blockchain inaweza kushindwa kwa njia isiyotarajiwa, na kusababisha kupotea kabisa na kwa ujumla kwa mali yoyote ya crypto iliyoshikiliwa kwenye pochi yako ya kidijitali.",
+      "Changamoto za Uendeshaji",
+      "Huduma na/au mitandao ya msingi ya blockchain inaweza kukumbwa au kuwa lengo la mashambulizi ya mtandao, kuongezeka kwa ghafla kwa wingi wa miamala, au matatizo mengine ya kiutendaji au kiufundi au udhaifu unaoweza kusababisha kushindikana kwa huduma zinazohusiana na matumizi yako ya Huduma.",
+      "Kutokuwepo Uwazi wa Kuwakilisha Sheria",
+      "Huduma, Itifaki ya Avana na/au mitandao yoyote ya msingi ya blockchain huenda isipatikane au isifae kutumika katika maeneo yote ya kisheria na unaweza kuwa chini ya majukumu ya kisheria na ya kudumu kwa kutumia Huduma katika maeneo fulani ya kisheria.",
+      "LP-Hatari Mahususi",
+      "• Hasara isiyo ya kudumu inaweza kupunguza thamani ya dhamana",
+      "• Hatari ya uuzaji wa haraka ikiwa hali za soko zitakuwa batilini kwa nafasi yako",
+      "• Hatari ya mkataba mahiri wa DEX ya msingi",
+      "• Nafasi za kioevu zilizokusudiwa zinaweza kutokua na thamani pale zilipo nje ya wigo",
+      "Kama ilivyotajwa Kifungu cha 9.1 cha Masharti yetu ya Huduma:",
+      "HUDUMA ZINATOLEWA KWA MUUNDO WA 'KAMA ILIVYO' NA 'KAMA INAVYOPATIKANA' NA AVANA HAKUTOFU YA DAMUYOYO LOLOTO KWA KUHUSIANA NA MUUNDO HIVYO WA 'KAMA ILIVYO' NA 'KAMA INAVYOPATIKANA' AU VINGINEVYO KATIKA MASHARTI NA AVANA HAPA WANAKATIA KUJIONDOA KATIKA DAMUYOYO ZOTE ZILIZO ELEZWA KWA WAKATI, ZILIZO DHIHIRISHWA AU KISHERIA, IKIWEMO DAMUYOYO AU HALI ZOZOTE ZA KUTOINGIZA, KUTOKIWANA, KUTAIKIA KWA KUSUDI MAALUM, UPATIKANA, UTENGENEZAJI BILA KOSA AU UENDESHAJI AMBAYE HAUKUKWISHIWA.",
+      "Kama ilivyotajwa Kifungu cha 9.2 cha Masharti yetu ya Huduma:",
+      "HAKUNA HALI AMBAYO AVANA ITAWAJIBIKA KWAKO KWA HATARI ZOZOTE ZINAZOTOKEA KWA MATOKEO, NGUVU ZA KWENDA MBINU, AU MAUMIVU MAALUM YA AINA YOYOTE KWA NJIA YOYOTE ILIYOYOTOKEA, IKIWEMO, BILA KIKOMO, HATARI ZA MIFANO AU ZINAZOKIUKA, DATA ILIOPOTEA, FAIDA AU MAPATO YALIYOPOZA AU UPUNGUFU WA THAMANI, ZINAZOTOKEA KUTOKA AU KUHUSIANA NA HUDUMA AU MATUMIZO YAKO YA PROTOKOLI YA AVANA.",
+      "Kizuizi hiki kinahusu bila kujali nadharia ya uwajibikaji (mkataba, uhalifu, uwajibikaji wa moja kwa moja, au vinginevyo) na hata kama tumejulishwa juu ya uwezekano wa hasara kama hiyo. Kwa hali yoyote, uwajibikaji wa jumla wa Avana hautazidi dola mia moja za Marekani ($100.00).",
+      "Kwa taarifa kamili za kisheria, tafadhali pitia nyaraka zifuatazo:",
+      "Mkataba kamili unaolazimisha kisheria unaosimamia matumizi yako ya Avana, ikijumuisha uhitaji wa kustahiki, shughuli zinazozuiliwa, mali ya kiakili, utatuzi wa migogoro, na zaidi.",
+      "Jinsi tunavyokusanya, kutumia, na kulinda taarifa zako binafsi, ikiwa ni pamoja na uhifadhi wa data, vitaku vya wavuti, na haki zako chini ya GDPR, CCPA, na kanuni nyingine za faragha.",
+      "Eneo lililozuiliwa",
+      "Orodha ya sasa ya maeneo yaliyopunguzwa kutoka kwa kupata huduma za Avana.",
+      "Imefadhiliwa mwisho:",
+      "Januari 2026",
+      "Kiaribisho hiki kinaweza kusasishwa kutoka wakati hadi wakati. Kuendelea kutumia itifaki kunahesabiwa kama kukubali mabadiliko yoyote. Tafadhali rejelea yetu"
+    ]
+  },
+  "legal": {
+    "meta": {
+      "title": "Kisheria na Uzingatiaji - Ufunuo wa Usalama",
+      "description": "Avana taarifa za kisheria - vikwazo vya upatikanaji, mamlaka zilizopunguzwa, mahitaji ya ufuataji, na ufichuzi wa usalama."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "vikwazo-vya-kuingia",
+        "title": "Vikwazo vya Upatikanaji"
+      },
+      {
+        "id": "eneo-lililozuiliwa",
+        "title": "Hali Zuia"
+      },
+      {
+        "id": "uzingatia",
+        "title": "Utii"
+      },
+      {
+        "id": "sera-zuinazo-husiana",
+        "title": "Sera Zinazohusiana"
+      }
+    ],
+    "strings": [
+      "Kisheria na Uzingatiaji - Ufunuo wa Usalama",
+      "Avana taarifa za kisheria - vikwazo vya upatikanaji, mamlaka zilizopunguzwa, mahitaji ya ufuataji, na ufichuzi wa usalama.",
+      "Muhtasari",
+      "Vikwazo vya Upatikanaji",
+      "Hali Zuia",
+      "Utii",
+      "Sera Zinazohusiana",
+      "Vikwazo vya OFAC",
+      "Ukraine (Mkoa wa Crimea, Donetsk, na Luhansk)",
+      "Marekani",
+      "Inasubiri ufafanuzi wa udhibiti",
+      "Eneo lililozuiliwa",
+      "Ukurasa huu unaendelezwa ili kuonyesha orodha ya hivi karibuni ya Nchi Zilizopunguzwa kwa kikoa cha Avana.",
+      "Masharti ya Matumizi",
+      ", upatikanaji wa tovuti ya Avana na huduma zake zinazohusiana umepunguzwa kwa watu binafsi au shirika katika maeneo fulani ya kijiografia. Ukurasa huu unatoa orodha ya sasa ya maeneo yaliyopunguzwa na kueleza vizuizi vya upatikanaji vilivyopo.",
+      "Muhimu:",
+      "Kila jaribio la kufikia jukwaa la Avana kutoka Kihalisia Kilichozuiliwa litasababisha kuelekezwa mara moja kwenye Masharti ya Matumizi na kunyimwa ufikiaji.",
+      "Ufikiaji wa tovuti ya Avana na huduma zake zinazohusiana unazuiliwa kwa watu binafsi au vyombo ambavyo:",
+      "Kaa ndani ya",
+      "zoezi lolote la Kisheria lililozuiliwa",
+      "Je, raia wa",
+      "Ziko kimwili ndani ya",
+      "Imejumuishwa ndani",
+      "Dumisha ofisi iliyojiandikisha ndani ya",
+      "Vikwazo hivi vimefafanuliwa katika Avana's",
+      "Wakandarasi Waliozuiliwa wa Sasa",
+      "Hali zifuatazo za kisheria kwa sasa zimezuiliwa kutokana na kupata huduma za Avana:",
+      "Mamlaka",
+      "Sababu",
+      "Kumbuka:",
+      "Orodhesha hii inaweza kusasishwa mara kwa mara kama jibu kwa mabadiliko ya sheria zinazotumika, kanuni, au programu za vikwazo. Watumiaji wanawajibika kuhakikisha wanaendelea kuzingatia vizuizi hivi.",
+      "Kama ilivyotajwa katika Masharti Yetu ya Matumizi (Kifungu cha 1.2), huwezi kupata au kutumia Huduma ikiwa wewe ni:",
+      "• Kitu kinachohusiana na vikwazo vyovyote vinavyosimamiwa au kutekelezwa na Ofisi ya Udhibiti wa Mali za Kigeni (OFAC) ya Idara ya Hazina ya Marekani, Idara ya Jimbo ya Marekani, au mamlaka yoyote ya kiserikali yenye mamlaka",
+      "• Imetambuliwa kwenye Orodha za Watu Waliokataliwa, Vihisabi, au Viliohakikishiwa za Idara ya Biashara ya Marekani kupitia Ofisi ya Sekta na Usalama",
+      "• Iko, imepangwa, au anaishi katika nchi au eneo ambalo ni, au whose serikali yake ni, somo la vikwazo vya kiuchumi",
+      "Watumiaji wanawajibika peke yao kuhakikisha kwamba matumizi yao ya itifaki yanafuata sheria na kanuni zote zinazotumika katika mamlaka yao.",
+      "Kwa taarifa kamili kuhusu haki na wajibu wako unapotumia Avana, tafadhali pitia:",
+      "Masharti ya Huduma",
+      "Masharti na vigezo kamili vinavyodhibiti matumizi yako ya huduma za Avana, ikiwa ni pamoja na vigezo vya kustahiki, shughuli zilizopigwa marufuku, na utatuzi wa migogoro.",
+      "Sera ya Faragha",
+      "Taarifa kuhusu jinsi tunavyokusanya, kutumia, na kulinda taarifa zako binafsi unapotumia huduma zetu.",
+      "Tangazo la Kisheria",
+      "Tahadhari muhimu kuhusu hatari, dhamana, na mipaka ya uwajibikaji."
+    ]
+  },
+  "liquidation/examples": {
+    "meta": {
+      "title": "Mifano ya Utoaji Mali",
+      "description": "Mifano ya uwekaji wa zaidi kwa ajili ya Avana, ikionyesha jinsi LP zinazoweza kubadilishwa, ukuaji wa mfukoni, na akaunti zenye nafasi nyingi zinavyofutwa chini ya muundo wa msingi ule ule."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "fungible-lp",
+        "title": "Mfano Unaobadilishika LP"
+      },
+      {
+        "id": "kinywaji kilicholengwa",
+        "title": "Mfano wa Umwagiliaji Mkubwa"
+      },
+      {
+        "id": "uliwapo-liquidity",
+        "title": "Ufadhili wa NFT"
+      },
+      {
+        "id": "akaunti-ya-nafasi-nyingi",
+        "title": "Akaunti ya Nafasi Nyingi"
+      },
+      {
+        "id": "hali-za-kigeni",
+        "title": "Matukio Maalum"
+      },
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      }
+    ],
+    "strings": [
+      "Mifano ya Utoaji Mali",
+      "Mifano ya uwekaji wa zaidi kwa ajili ya Avana, ikionyesha jinsi LP zinazoweza kubadilishwa, ukuaji wa mfukoni, na akaunti zenye nafasi nyingi zinavyofutwa chini ya muundo wa msingi ule ule.",
+      "Muhtasari",
+      "Mfano Unaobadilishika LP",
+      "Mfano wa Umwagiliaji Mkubwa",
+      "Ufadhili wa NFT",
+      "Akaunti ya Nafasi Nyingi",
+      "Matukio Maalum",
+      "Muhtasari",
+      "Nafasi inaweza kuwa upande mmoja zaidi mwanzoni mwa likwidesheni, hasa kwa ukwasi uliounganishwa.",
+      "Urefu wa bwawa unaweza kutosha kwa ajili ya tathmini lakini bado ni mwembamba vya kutosha kuhitaji njia ya kuondoa kwa tahadhari.",
+      "Ada zinazoweza kudaiwa zinaweza kuboresha urejeshaji, lakini hazipaswi kutazamwa kama hakika hadi zipate kutimizwa kweli.",
+      "Mkopesha anaweza kuwa na nafasi kadhaa zinazochangia uwezo wa mkopo wa kiwango cha tundu moja, kwa hivyo mlolongo wa uuzaji unahesabiwa.",
+      "Hali zilizofanyiwa kazi zinaonyesha jinsi mfumo mmoja wa ulipaji fedha unavyotumika kwa aina mbalimbali za dhamana LP.",
+      "Mifano hii ni rahisi kwa makusudi. Lengo ni kuonyesha jinsi uuzaji unavyotokea katika muundo wa kawaida LP bila kubuni kanuni za ziada zaidi ya",
+      "Mfumo wa Utoaji Mali",
+      "Kila kesi kazi ni ile ile: tumia alama za dhamana za tahadhari, lipa deni katika tabaka la mkopo, futa LP kupitia njia yenye msaada, na rudisha thamani yoyote iliyobaki baada ya gharama za utekelezaji na zawadi ya usafirishaji.",
+      "Mkopa ameiweka tokeni ya fungible LP kutoka kwenye bwawa lililothibitishwa la stable au lenye uzito. Kwa muda, muundo wa bwawa na pembejeo za orakili hubadilika vya kutosha kwamba akaunti haina tena thamani ya kutosha ya dhamana iliyorekebishwa kwa deni lake.",
+      "• Kijopo cha likwidishaji kinatambua upungufu na kupata ukwasi wa utekelezaji.",
+      "• Deni linalipwa na tokeni ya LP inabadilishwa kuwa mali zake za msingi.",
+      "• Ada zinazoweza kudaiwa zinapatikana ikiwa zipo na zinaweza kusaidia urejeshaji.",
+      "• Mali za msingi zinaelekezwa kwenye mali ya deni na uondoshaji unakamilika.",
+      "• Thamani yoyote iliyobaki baada ya malipo na zawadi inarudishwa kwa mkopaji.",
+      "Hali ya umande yenye mkusanyiko mkubwa huelekea kwenye ukingo wa wigo wake unaofanya kazi. Akaunti inaweza kubaki yenye afya kwa muda, kisha ikageuka kuwa uuzwaji wa mali mara madeni yanapozidi thamani inayopatikana ya hali ya mnyororo wa sasa.",
+      "• Node inathamini nafasi kutoka kwa wigo wake wa sasa, ushawishi wa kifedha, na mgawanyo wa tokeni.",
+      "• Mara liquidation inaanza, ada zinazoweza kudaiwa zinakaguliwa kabla ya msingi kufutwa.",
+      "• Usambazaji hubadilika kulingana na hesabu halisi iliyorejeshwa badala ya mchanganyiko wa tokeni usiobadilika.",
+      "• Msingi unafuata muundo ule ule: lipa fedha za utekelezaji, lipa zawadi, rudisha thamani iliyobaki.",
+      "Mchakato anaokopa anaweka Uniswap v3 NFT na baadaye nafasi hiyo inakuwa chini ya thamani. Uondoshaji unashughulikiwa kwa kiwango cha nafasi, si kama kipande cha tokeni kilichotengwa, kwa sababu NFT inawakilisha nafasi moja maalum ya msaada.",
+      "• Aave inakamata salio la tokeni ya fedha lililounganishwa na nafasi inayounga mkono NFT.",
+      "• Avana analipua tokeni ya hazina na kuhamisha nafasi halisi ya LP kwenye makubaliano.",
+      "• Moduli ya makubaliano inafungua, kuuza, kuuzisha kwa mnada, au kuhamisha nafasi.",
+      "• Deni linalolipwa kwanza, zawadi ya mtoaji fedha inakuja ifuatayo, na ziada yoyote inafuata kanuni ya soko.",
+      "• Mkopa hahifadhi dai safi la sehemu kwenye NFT hiyo hiyo baada ya uuzaji wa mali.",
+      "Mkopa anaweza kushikilia nafasi kadhaa LP ndani ya Mkoba wa Mikopo mmoja. Uwezo unakusanywa kwa nafasi hizo, lakini kufutwa bado kunapaswa kutokea kwa kiwango cha nafasi mara akaunti inapokuwa hatarini.",
+      "• Mgawanyiko unaripoti uwezo mmoja wa jumla wa kukopa kwa Kituo.",
+      "• Wakati akaunti inapokuwa yenye shida ya kifedha, kiungo cha uondishaji kinasema njia ya kufutisha ambayo inarahisisha kurekebisha uwezo wa kulipa.",
+      "• Nafasi moja inaweza kutosha kufunga pengo, au kadhaa zinaweza kuhitaji kufutwa kwa sehemu au kwa kabisa.",
+      "• Mpangilio wa utekelezaji, uthabiti wa maneno ya kimaandishi, na kina cha njia ni muhimu karibu na alama yenyewe.",
+      "Vifaa vinavyobadilishana LP, wigo uliounganishwa, nafasi za NFT, na akaunti zenye nafasi nyingi zote zina maelezo tofauti ya kuondoa. Lengo linaloshirikiana halibadiliki: kulipa deni kutoka kwenye thamani ya LP inayoweza kurejeshwa bila kutegemea makadirio chanya ya NAV. Sera bado ipo kwenye ukurasa mkuu wa Mfumo wa Uliqishaji."
+    ]
+  },
+  "liquidation/flow": {
+    "meta": {
+      "title": "Mtiririko wa Ukomeshaji",
+      "description": "Mtiririko wa kioo wa uendeshaji kwa Avana, unaojumuisha mfuatano wa wakati wa utekelezaji unaotumika wakati dhamana ya LP inayotegemewa kwenye hifadhi inachukuliwa na kuondolewa."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "marejeo-kinikali",
+        "title": "Nyaraka Zinazohusiana na Sera"
+      },
+      {
+        "id": "mpangilio wa wakati wa utekelezaji",
+        "title": "Mlolongo wa Wakati wa Uendeshaji"
+      },
+      {
+        "id": "mabadiliko-ya-hali",
+        "title": "Mabadiliko ya Hali"
+      },
+      {
+        "id": "maelezo-ya-mtendaji",
+        "title": "Maelezo ya Opereta"
+      }
+    ],
+    "strings": [
+      "Mtiririko wa Ukomeshaji",
+      "Mtiririko wa kioo wa uendeshaji kwa Avana, unaojumuisha mfuatano wa wakati wa utekelezaji unaotumika wakati dhamana ya LP inayotegemewa kwenye hifadhi inachukuliwa na kuondolewa.",
+      "Muhtasari",
+      "Nyaraka Zinazohusiana na Sera",
+      "Mlolongo wa Wakati wa Uendeshaji",
+      "Mabadiliko ya Hali",
+      "Maelezo ya Opereta",
+      "Gundua akaunti isiyo na afya",
+      "Vituo vya ufisadi au walinzi wa nje hufuatilia thamani zile zile za dhamana zilizorekebishwa kwa hatari zinazotumika na itifaki na kufahamu akaunti ambazo deni lake sasa limezidi uwezo wa mkopo unaoruhusiwa.",
+      "Ufadhili wa utekelezaji wa chanzo",
+      "Mtoaji wa likwidi hupata kioo cha muda mfupi, kawaida kupitia njia ya aina ya mkopo wa haraka, ili deni liweze kulipwa bila kulipia mapema kufufua yote kutoka kwenye mfuko binafsi.",
+      "Lipa deni na chukua dhamana ya hazina",
+      "Mkwao husika wa Kukopa unalipa deni katika tabaka la mikopo, unachukua udhibiti wa dhamana ya hazina, na kupeleka nafasi hiyo kwenye makubaliano maalum ya LP.",
+      "Wacha tokeni ya hazina na alama nafasi ya kuunga mkono",
+      "Kibadilishaji huchoma tokeni ya hazina iliyoshikwa na kuwaweka alama nafasi halisi LP kama kwenye malipo ili akiba ya msaada isibaki wazi dhidi ya nafasi ambayo tayari inachukuliwa.",
+      "Leta hali ya LP na funga uondoshaji",
+      "Avana anafungua, anaouza, anaufanyia mnada, au kuhamisha nafasi halisi LP, analipa fedha za utekelezaji, anamlipa likwidi mzozo, na kupeleka ziada yoyote kulingana na kanuni ya soko.",
+      "Mara tu Aave inaporuhusu uuzaji wa mali, nafasi iliyochaguliwa inatoka katika hali ya ACTIVE na kuingia katika hali ya LIQUIDATING. Mkopo haapaswi tena kuwa na uwezo wa kuitoa.",
+      "Baada ya nafasi halisi LP kuondolewa au kuuzwa, usambazaji wa mkopo unafutwa na nafasi inakuwa IMESHAKAMILIKA.",
+      "Sheria ya serikali",
+      "Alama ya hazina haiwezi kubaki hai baada ya nafasi yake ya kuunga mkono LP kuondolewa. Ikiwa alama za hazina zitateketezwa, nafasi ya LP lazima itolewa, ifanyike mnyororo wake, au ihamishwe katika usuluhishi.",
+      "Mfuatano wa wakati wa utekelezaji wa jinsi nafasi za LP-zisizo na afya zinavyosogea kutoka kwenye ugunduzi hadi makubaliano mara liquidation inapoanza.",
+      "Ukurasa huu ni mtazamo wa wakati wa kuondolewa. Umeandikwa kwa wakati akaunti tayari haiko katika hali nzuri na operator anahitaji kuelewa kinachotokea kisha, kwa mpangilio, kutoka kwa kugundua hadi malipo ya mwisho.",
+      "LP usambazaji ni uondoshaji ulioodhibiwa badala ya uuzaji wa tokeni moja. Deni linalipwa, dhamana ya ghala inachukuliwa, tokeni ya ghala inayolingana inachomwa, nafasi halisi ya LP inalipwa, na thamani iliyobaki inarudishwa ikiwa ipo.",
+      "Sera ya uharibifu wa mali inaendelea kuwepo",
+      "Mfumo wa Utoaji Mali",
+      "ukurasa. Mtiririko huu unadhani mfano wa thamani inayoweza kurekebishwa katika",
+      "Mashirika ya Bei",
+      "Vigezo vya Dhamana",
+      "Tumia ukurasa huu kwa mpangilio wa utekelezaji. Vizingiti, tuzo, na kanuni za kuingizwa bado vinatoka kwenye hati za usanifu na hatari, sio kutoka kwenye orodha hii peke yake.",
+      "Familia tofauti LP zote zina jaribu kufikia hali ya mwisho ile ile, lakini hazifikii hapo kupitia milango sawa. Usimamizi unaotumia adapta unaruhusu kila familia ya bwawa ifuate njia ya kutolewa inayolingana na mashine yake mwenyewe.",
+      "Bots za utakatishaji zinapaswa kuweka alama nafasi zinazofanya kazi, kusasisha mwelekeo wa deni, na kupima akaunti kutoka stack moja ya oracle inayotumika na itifaki badala ya kutoka tu kwenye hali ghafi ya AMM.",
+      "Ukaguzi wa faida unapaswa kuzingatia kupungua kwa bei, kina cha njia, gharama za flashloan, na hatari za utekelezaji. Kufungua kwa kiwango kikubwa au kisicho kawaida kunaweza kufaidika na njia za utekelezaji binafsi kupunguza mfiduo hasi wa MEV.",
+      "Tazama ukurasa huu kama orodha ya ukaguzi wa wakati wa utekelezaji. Weka maelezo ya sera kwenye ukurasa mkuu wa uondoshaji mali, oracle, na hatari."
+    ]
+  },
+  "liquidation/liquidators": {
+    "meta": {
+      "title": "Waliolipa deni",
+      "description": "Mwongozo wa mtaalamu kwa waendeshaji wa fedha za kisheria, unaojumuisha ufuatiliaji, mahitaji ya utekelezaji, na tabia maalum ya LP ya kufafanua."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "mfumo-wa-mkxango",
+        "title": "Mfumo wa Ufisadi"
+      },
+      {
+        "id": "mahitaji-ya-utekelezaji",
+        "title": "Mahitaji ya Utekelezaji"
+      },
+      {
+        "id": "maelezo-ya-operesheni",
+        "title": "Maelezo ya Uendeshaji"
+      }
+    ],
+    "strings": [
+      "Waliolipa deni",
+      "Mwongozo wa mtaalamu kwa waendeshaji wa fedha za kisheria, unaojumuisha ufuatiliaji, mahitaji ya utekelezaji, na tabia maalum ya LP ya kufafanua.",
+      "Muhtasari",
+      "Mfumo wa Ufisadi",
+      "Mahitaji ya Utekelezaji",
+      "Maelezo ya Uendeshaji",
+      "Ushiriki bila ruhusa",
+      "Kila mlinda au dawati la utekelezaji linaweza kufutwa ikiwa linaweza kufuatilia nafasi, kupata kirahisi cha utekelezaji, na kutanzua fomati LP ambazo Avana zinaunga mkono.",
+      "LP-ushughulikiaji maalum",
+      "Uliquiddesheni si uuzaji wa tokeni wa aina yoyote. Runtime inahitaji mantiki inayojua mahali kwa utekelezaji wa ada, kuondoa nafasi, upitishaji, na malipo ndani ya mali ya deni.",
+      "Ubora wa mfuko",
+      "LP nafasi ni ngumu zaidi kufungua kuliko tokeni rahisi. Wafanya kazi wanaoiga njia kamili kwa maeneo yanayoungwa mkono kawaida hushughulikia msongo wa mawazo vizuri zaidi kuliko roboti zinazoribu tu kwa kichocheo cha afya.",
+      "Fuatilia hali ile ile ya hatari inayotumika na itifaki, sio kigezo tofauti cha kiajali.",
+      "Futa mabadiliko ya hali safi katika kazi moja ya atomiki kadri iwezekanavyo.",
+      "Uelewa wa ada ya bei, kina cha njia, na thamani iliyobaki kabla ya kuboresha kwa kasi pekee.",
+      "Tibia kufunikwa kwa sehemu na kufunikwa kamili kama visa tofauti na kwa dhana tofauti za upitishaji.",
+      "Ufuatiliaji wa nafasi na ufuatiliaji wa mwelekeo wa deni",
+      "Upigaji wa mfano kwa kina cha njia, kuteleza, na upatikanaji wa fedha taslimu",
+      "Utoaji wa muamala kwa mkopo wa papo hapo au njia za utekelezaji zilizofadhiliwa awali",
+      "Viambatisho vinavyojua eneo kwa familia LP ambazo itifaki inazisaidia",
+      "Jinsi waendeshaji wanavyohudumia uharibifu wa Avana na ni miundombinu gani ya utekelezaji inahitajika kwa deni linaloungwa mkono na LP.",
+      "Wafanyabiashara ni wale wanaofunga nafasi zilizo hatarishi zinazotegemewa na LP. Kazi yao ni kulipa deni, kufuta LP kupitia njia sahihi ya jukwaa, na kurudisha thamani iliyopatikana ndani ya safu ya mkopo.",
+      "Mwendo ni muhimu, lakini hautoshi yenyewe. Wafanyabiashara wanahitaji kuelewa ni nini hasa kinaweza kufunikwa, jinsi LP inavyowakilishwa, na jinsi ada, kuporomoka kwa bei, au mabadiliko ya hesabu upande mmoja yanavyopaswa kurekebishwa kabla ya kuwasilisha chochote kwenye mnyororo.",
+      "Mlolongo wa mali kwa Avana unahitaji zaidi ya roboti ya kichocheo. Unahitaji miundombinu ya kutosha kutathmini nafasi, kuiga uondoaji, kupata mtaji, na kutoa muamala unaoweza kumaliza njia ya uondoaji uliyoanza.",
+      "Sharti la kivitendo",
+      "Jenga kutolewa, utekelezaji wa ada, na malipo ya deni kwa kila kipimo cha ukumbi kama mtiririko mmoja wa kazi. Hatua zilizokatika hufanya iwe rahisi sana kwa ufutaji unaoweza kufunikwa kimsingi kushindwa katika utekelezaji."
+    ]
+  },
+  "liquidation": {
+    "meta": {
+      "title": "Mfumo wa Utoaji Mali",
+      "description": "Jinsi Avana inavyoshughulikia uuzaji wa mali iliyowekewa dhamana ya LP baada ya Aave kutoshea kipengele cha kuanzisha uuzaji."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "tabaka tatu",
+        "title": "Tabaka Tatu"
+      },
+      {
+        "id": "sheria-za-msingi",
+        "title": "Sheria Kuu"
+      },
+      {
+        "id": "ugumu wa lp",
+        "title": "LP Ugumu wa Dhima"
+      },
+      {
+        "id": "njia-za-kuondoa",
+        "title": "Njia za Utoaji Mali"
+      },
+      {
+        "id": "hali ya nafasi",
+        "title": "Hali ya Nafasi"
+      },
+      {
+        "id": "ushughulikiaji wa ziada",
+        "title": "Ushughulikiaji wa Ziada"
+      },
+      {
+        "id": "mfanyabiashara-mtindo",
+        "title": "Mfano wa Opereta"
+      }
+    ],
+    "strings": [
+      "Mfumo wa Utoaji Mali",
+      "Jinsi Avana inavyoshughulikia uuzaji wa mali iliyowekewa dhamana ya LP baada ya Aave kutoshea kipengele cha kuanzisha uuzaji.",
+      "Muhtasari",
+      "Tabaka Tatu",
+      "Sheria Kuu",
+      "LP Ugumu wa Dhima",
+      "Njia za Utoaji Mali",
+      "Hali ya Nafasi",
+      "Ushughulikiaji wa Ziada",
+      "Mfano wa Opereta",
+      "Muundo wa Utoaji Mali",
+      "Jinsi rekodi ya kuliangamiza, kukamatwa kwa ghala, na suluhisho la LP vinagawanyika kati ya Aave na Avana.",
+      "Aave ni mfumo ambao unaamua lini nafasi inaweza kufutwa, lakini haujui jinsi ya kutatua LP halisi. Avana hutumia Aave kwa ajili ya uhasibu wa deni, tathmini za afya, na sehemu ya kuingilia kwa kufutwa, kisha inachukua nafasi ili kutatua nafasi halisi ambayo ipo nyuma ya dhamana ya hazina.",
+      "Kizuizi kikuu cha muundo ni kwamba maoni mawili ya mali lazima yakae sambamba. Aave inaona usawa wa tokeni ya hazina ya ERC-20, wakati Avana inafuatilia nafasi ya LP ambayo kwa kweli inasaidia usawa huo. Ukomeshaji unabaki kuwa sahihi ikiwa kukamata uwakilishi wa hazina daima kunapelekea njia sahihi ya makubaliano ya LP.",
+      "Kwa mlolongo unaoelekea kielekezi cha mwendeshaji, ona",
+      "Waliolipa deni",
+      ". Kwa mlolongo wa utekelezaji, ona",
+      "Mtiririko wa Ukomeshaji",
+      "tabaka",
+      "Inafuatilia deni, salio la dhamana ya hazina, kipengele cha afya, na kipengele cha kuondolewa kwa mali kinachoruhusu kukamata.",
+      "Avana safu ya kiambatisho",
+      "Anapokea dhamana ya ghuba iliyokamatwa, anachoma tokeni ya ghuba inayolingana, na anafananisha tukio la uuzaji wa mali tena na nafasi ya LP ambayo kwa kweli ilinunua.",
+      "tabaka la makazi",
+      "Inatambua nafasi halisi LP, inafanya njia sahihi ya kufutwa au kuuza, inalipa deni, inalipa zawadi ya mliwagi, na inapanga ziada yoyote kulingana na kanuni ya soko.",
+      "Kanuni kuu ni rahisi lakini mkali: Aave inalipiza hati ya dhamana ya ERC-20, na Avana inalipa nafasi ya LP nyuma ya dhamana hiyo ya hifadhi. Kila kitu kingine katika muundo kipo ili kuhakikisha hatua hizo mbili zinafanana.",
+      "Tokens za hazina lazima ziambatane na thamani halisi",
+      "Kiasi cha tokeni kilicholipwa kioo cha hazina lazima daima kiendane na thamani halisi ya LP ya dhamana, si salio la umetengenezwa ambalo haliwezi kurejeshwa.",
+      "Dhamana ya kuunga mkono haiwezi kubaki iliyosalia",
+      "Mara tu nafasi ya LP itakapothibitishwa, tokeni ya hazina inayolingana lazima iunge moto ili uwakilishi usizidishe mali iliyoasiliwa kufuatilia.",
+      "Ugavi wa tokeni hai wa hazina hauwezi kuwepo bila dhamana hai LP nyuma yake.",
+      "Ziada inafuata sheria ya soko",
+      "Deni hulipwa kwanza, kisha zawadi ya mliwaji, kisha gharama za makubaliano, na baada ya hapo tu thamani yoyote iliyobaki hufuata kanuni ya ziada ya soko.",
+      "Vyeo vinavyounga mkono LP si vyote huwa vile vile wakati wa uondoaji. Tokeni ya fungible LP mara nyingi inaweza kulipwa au kuhamishwa kwa uwiano, wakati NFT ya Uniswap v3 ni nafasi moja tofauti ambayo wigo wake, ujumlishaji wa ada, na njia ya kuondoa inahesabiwa kwa kiwango cha nafasi.",
+      "Hivyo basi, safu ya fedha inahitaji kujua familia ya dhamana, nafasi halisi ya msaada, na njia iliyokusudiwa ya kufutwa kabla ya kusafisha usambazaji wa hazina unaolingana.",
+      "Njia ya makubaliano inategemea ni aina gani ya dhamana LP iliyo nyuma ya tokeni ya hazina.",
+      "Hawala zinazobadilishika LP kama dhamana",
+      "• Makubaliano yanaweza kuwa kulingana na deni ambalo lazima lilipwe, badala ya kulazimisha salio lote kupitia uuzaji wa mali.",
+      "• Avana inaweza kulipa fedha au kuhamisha kiasi kilichohitajika tu kwa ufutaji wakati muundo wa soko unasaidia urejeshaji wa sehemu.",
+      "• Nafasi iliyobaki inaweza kubaki hai ikiwa akaunti bado inakidhi ukaguzi unaohitajika wa afya baadaye.",
+      "• Nafasi kamili inahamishwa kwenye malipo wakati inapo chaguliwa kwa ajili ya ufumbuzi kwa sababu NFT yenyewe ndiyo kitengo cha dhamana kinachosuluhishwa.",
+      "• Tokeni zinazofanana za hazina zinachomwa baada ya Aave kuchukua dhamana ya hazina na Avana kurudisha wigo huo kwenye nafasi ya NFT.",
+      "• Avana inaweza kufungua, kuuza, kuuzia mnada, au kuhamisha nafasi halisi ya LP kulingana na sheria za soko kwa familia hiyo ya hati ya dhamana.",
+      "• Zaidi hayatapelekwa moja kwa moja kwa mlazimishaji isipokuwa kanuni za soko zikibainisha wazi hivyo.",
+      "ACTIVE",
+      "Hali bado inachangia thamani ya fedha za dhamana, na tokeni zilizobaki za ghala zinabaki kuwa na msingi kikamilifu na hali hiyo haiyo LP.",
+      "KULIFUTA",
+      "Hati zilizochaguliwa za dhamana hazinaweza tena kutolewa na mkopaji na zinaharakisha kupitia njia ya makubaliano.",
+      "SETTLED",
+      "Nafasi LP imekwisha kutatuliwa, na ishara zinazolingana za hazina hazistahili kuwa wazi tena.",
+      "Thamani ya makubaliano inatumika kwa mpangilio wa kudumu. Kwanza inashughulikia deni, kisha zawadi ya mtoaji wa mali, kisha gharama za makubaliano. Thamani yoyote iliyobaki baada ya wajibu hizo ni ziada, na ziada hiyo inafuata kanuni ya soko kwa dhamana inayokataliwa.",
+      "Kama thamani ya makubaliano haitoshi kufunika deni na zawadi, soko linahitaji njia iliyo wazi ya deni mbaya. Nyaraka za uuzaji mali zinapaswa kueleza mapungufu hayo kama hali halisi inayohitaji kushughulikiwa, sio kama kitu kinachoondoka kiotomatiki.",
+      "Uuzaji wa mali zisizo na thamani unabaki bila ruhusa, lakini LP dhamana mara nyingi inafaidika na msaada wa itifaki unaojua jinsi ya kutekeleza njia ya kutolewa inayotarajiwa. Wauzaji wa mali zisizo na thamani wa kawaida wanaweza kuweza kulipa deni, lakini bado hawana mantiki maalum ya jukwaa inayohitajika ili kusuluhisha nafasi hiyo kwa ufanisi au kwa usalama.",
+      "Wafufuzi lazima waangalie hali ile ile ya hatari na hali ya dhamana ambayo itifaki inatumia.",
+      "Utekelezaji lazima ubaki kuwa wa atomiki kuanzia kulipwa kwa deni hadi makubaliano.",
+      "Uelewa wa ada, kina cha njia, na thamani iliyobaki vinapaswa kuundwa kielelezo kabla ya kuboresha kwa kasi pekee.",
+      "Ufunikaji wa sehemu na ufunikaji kamili ni kesi tofauti na haipaswi kushiriki dhana zilezile za upangaji njia."
+    ]
+  },
+  "hub": {
+    "meta": {
+      "title": "Karibu",
+      "description": "Mkopaji anaweka nafasi iliyoidhinishwa LP kwenye Borrow Spoke husika, lakini mtiririko wa fedha wenyewe unabaki kutumika katika bwawa la msingi badala ya kulipwa kwanza."
+    },
+    "toc": [
+      {
+        "id": "karibu",
+        "title": "Karibu"
+      },
+      {
+        "id": "nini-avana",
+        "title": "Avana ni nini?"
+      },
+      {
+        "id": "jinsi-inavyofanya-kazi",
+        "title": "Jinsi Inavyofanya Kazi"
+      },
+      {
+        "id": "kufungua dhamana ya LP",
+        "title": "Kwa Nini LP Msingi wa Dhamana Unafanya Kazi"
+      },
+      {
+        "id": "usanifu",
+        "title": "Usanifu wa Majengo"
+      }
+    ],
+    "strings": [
+      "Karibu",
+      "Avana ni nini?",
+      "Jinsi Inavyofanya Kazi",
+      "Kwa Nini LP Msingi wa Dhamana Unafanya Kazi",
+      "Usanifu wa Majengo",
+      "Weka amana kwenye nafasi iliyoungwa mkono LP",
+      "Mkopaji anaweka nafasi iliyoidhinishwa LP kwenye Borrow Spoke husika, lakini mtiririko wa fedha wenyewe unabaki kutumika katika bwawa la msingi badala ya kulipwa kwanza.",
+      "Kithamini kwa tahadhari",
+      "Spoke inajenga upya nafasi kutoka kwenye data zake za bwawa, inapanga bei ya mfiduo wa msingi kupitia safu ya kirusi, na kisha inapunguza thamani hiyo kupitia sababu za dhamana na udhibiti maalum wa soko.",
+      "Kopa kupitia Kituo",
+      "Ikiwa uwezo unaopatikana ni wa kutosha, mkopo unachukuliwa kutoka kwenye uokoaji wa Hub wa pamoja huku ukaguzi wa afya, uhasibu wa dhamana, na tabia ya ulipaji wa mali zikiwa bado maalum kwa spoka hiyo.",
+      "Ukinifu unaendelea kuwepo kwenye bwawa",
+      "Itifaki imejengwa kwa nafasi LP ambazo zinapaswa kuendelea kufanya kazi LP. Mkopa haahitaji kutoa fedha taslimu kutoka AMM ili tu kupata pesa dhidi yake.",
+      "Uwezo unafuata halisi LP",
+      "Nguvu ya kukopa inatokana na muundo halisi wa nafasi: mchanganyiko wa tokeni, ada zilizokusanywa, wigo hai inapofaa, kina kinachopatikana, na namna nafasi inaweza kutoka wakati wa msongo.",
+      "Ufisadi una sheria wazi",
+      "LP dhamana haishughulikiwi kama salio la tokeni ya kawaida. Kila soko linalounga mkono linafafanua jinsi thamani inavyopatikana, nini kinachouzwa au kutolewa, na jinsi deni linavyofungwa kama akaunti inakuwa hatarishi.",
+      "Kopa Ncha ya Gurudumu",
+      "Inakubali dhamana zinazounga mkono LP, zinageuzwa kuwa uwezo wa mkopo wa kiwango cha kipini, na umiliki wa sheria za afya na uanzishaji kwa soko hilo.",
+      "Inashikilia hesabu ya pamoja ya mkopo: uhasibu wa akiba, mantiki ya kiwango cha riba, na ukwasi ambao tundu zinazokabiliana na wakopaji zinavuta.",
+      "Mkopo wa Spoke",
+      "Inaleta mali za mkopesha ndani ya mfumo na kuzipa njia kwenda Hub ili LP ukaguzi wa mikopo ubaki tofauti na kuingizwa kwa mtaji.",
+      "Utangulizi",
+      "Avana inaruhusu nafasi zilizokubaliwa LP kurudisha mikopo bila kwanza kutoa fedha taslimu kutoka kwenye hazina. Hati hizi huanza na mgawanyo wa Hub-na-Spoke: spokes zinaelewa hatari ya LP, wakati Hub inasimamia fedha taslimu za mikopo ya pamoja.",
+      "Anza na Dhana Muhimu",
+      "Chunguza Kopa Kuzungumza",
+      "Avana ni itifaki ya mkopo kwa dhamana ya moja kwa moja ya LP. Inatumia modeli ya Kituo na Matawi ya Aave v4 ambapo Kituo kinashughulikia unyeti wa pamoja wakati kila Tawi la Mkopo linashughulikia kuingiza, tathmini, afya, na uuzaji kwa masoko yake ya LP.",
+      "Kusaidia dhamana LP kunamaanisha zaidi ya kuangalia salio la tokeni. Itifaki inahitaji kuelewa ni rasilimali gani nafasi inaonyesha, kiasi gani cha thamani hiyo kinapaswa kuhesabiwa kwa mikopo, ni upunguzaji gani wa soko maalum unaotumika, na ni njia gani ya kufungua ipo ikiwa mkopaji atashuka chini ya kiwango kinachohitajika cha usalama. Avana inaweka mantiki hiyo maalum ya LP kwenye tawi linaloorodhesha dhamana badala ya kujaribu kupindisha kila nafasi ya AMM kuwa njia moja ya mkopo ya kawaida.",
+      "Soma ukurasa huu kama ramani ya nyaraka zote. Sehemu zilizo hapa chini zinaeleza kwanza njia ya msingi ya kukopa, kisha zinakuonyesha kurasa za kina za Borrow Spoke, Lend Spoke, vigezo vya dhamana, mantiki ya mtabiri, ufuatiliaji wa afya, na ukomo wa madeni.",
+      "Mtiririko unaoonekana kwa mtumiaji ni mfupi, lakini kila hatua inaficha kazi maalum ya ukaguzi wa LP. Kurasa za baadaye zinaelezea kwa undani mbinu zilizo nyuma ya kila hatua.",
+      "LP nafasi tayari ziko katika mtaji wa kazi. Bila tabaka la mkopo, kupata fedha tena kawaida inamaanisha kupunguza au kufunga nafasi ya ziwa kwanza.",
+      "Avana inatenga uraia wa mkopo ulio sambazwa kutoka kwa mantiki ya hatari ya LP. Mgawanyiko huo ndio sababu mfumo unaweza kusaidia aina mbalimbali za dhamana bila kuunganisha sheria zao zote pamoja.",
+      "Wajenzi wanapaswa kufikiria mfumo katika nusu mbili. Hub ni hesabu ya pamoja ya uwiano na mchakato wa deni, wakati Borrow Spokes huamua ni soko gani kila LP linaweza kuhimili kwa usalama na jinsi soko hilo linavyopaswa kufutwa ikiwa litashindikana. Lend Spoke hutoa mtaji kwenye Hub ili wasambazaji wasiitegereze kuhusu LP inayofanya kazi tu kutoa ukwasi."
+    ]
+  },
+  "safety/bug-bounty": {
+    "meta": {
+      "title": "Zawadi ya Hitilafu",
+      "description": "Avana Wigo wa uwajibikaji wa ufichaji wa kipimo cha Bug Bounty, LP-uso wa hatari unaohusiana, na falsafa ya ukali wa athari za kiuchumi."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "upeo-na-mchakato-wa-ufundi",
+        "title": "Wigo & Miundo ya Mfumo"
+      },
+      {
+        "id": "ukali-falsafa",
+        "title": "Falsafa ya Ukali"
+      }
+    ],
+    "strings": [
+      "Zawadi ya Hitilafu",
+      "Avana Wigo wa uwajibikaji wa ufichaji wa kipimo cha Bug Bounty, LP-uso wa hatari unaohusiana, na falsafa ya ukali wa athari za kiuchumi.",
+      "Muhtasari",
+      "Wigo & Miundo ya Mfumo",
+      "Falsafa ya Ukali",
+      "Mpango A - Mikopo ya Msingi",
+      "Inashughulikia injini kuu ya mkopo ambapo uaminifu wa uhasibu, uhifadhi wa dhamana, na utekelezaji wa uuzaji wa mali unalinda moja kwa moja fedha za watumiaji.",
+      "Mtiririko wa amana / uondoaji",
+      "Mantiki ya kukopa / kulipa",
+      "Kigezo cha afya na mkusanyiko wa riba",
+      "Uhifadhi wa uhasibu na kuchapisha / kuchoma deni",
+      "Utekelezaji mkuu wa ukomo wa uuzaji wa mali",
+      "Ufisadi wa fedha za mtumiaji",
+      "Uhaba wa akiba",
+      "Kukopa bila dhamana ya kutosha",
+      "Malipo yaliyozuiliwa, uondoaji, au uondoaji wa mali",
+      "Mpango B - LP Mali Za Dhamana & Thamani",
+      "Inashughulikia mfumo wa thamani maalum wa Avana kwa mikopo inayounga mkono LP, ikiwa ni pamoja na jinsi nafasi za LP zinavyopimwa bei, kuzingatiwa kwa uzito wa hatari, na kupimwa msongo chini ya hali za soko zinazobadiliwa.",
+      "Uwezeshaji wa kigezo cha dhamana kwa nafasi LP",
+      "Kushughulikia nafasi ya utaalamu wa kioo wa mtiririko",
+      "Matukio maalum wakati wa kutokubaliana, kupungua kwa thamani, kioo cha fedha kidogo, au hali ya kale ya orakili",
+      "Thamani ya juu zaidi ya mali ya dhamana ya LP",
+      "Uendeshaji wa oracle unaowezesha deni mbaya",
+      "Utoaji wa fedha usio haki kutokana na bei ya chini sana",
+      "Njia za udhaifu zinazorudiwa dhidi ya dhamana iliyopunguzwa bei LP",
+      "Sehemu ya juu zaidi ya ukali: LP upungufu wa bei unaweza kusababisha deni mbaya, ufufuo wa mali usiofaa, au uondokanaji wa haki bila upotevu wa mkataba wa kawaida.",
+      "Mpango C - Utawala, Usimamizi, na Miundombinu ya Itikadi",
+      "Inashughulikia uso wa kudhibiti wenye kipaumbele ambao unaweza kubadilisha vigezo, kusasisha mikataba, kusitisha shughuli, au kuelekeza mali zinazomilikiwa na itifaki.",
+      "Mtendaji wa utawala na kifungo cha muda",
+      "Usimamizi wa nafasi na mifumo ya kuboresha",
+      "Majukumu ya kusitisha / mlezi",
+      "Sistemi za usimamizi wa vigezo",
+      "Hazina, mkusanyaji, na mikataba ya kipekee ya automatisheni",
+      "Hatua ya usimamizi isiyoidhirishwa",
+      "Kuchukua kwa nguvu sasisho",
+      "Uharibifu wa kipengele",
+      "Kuchukua udhibiti au kupotea kwa hazina",
+      "Programu D - Ncha za Nje / Msingi wa Uunganishaji",
+      "Inahusu mifumo ya kuunga mkono ambayo ukiingiliwa inaweza kuathiri shughuli za itifaki zinazotegemewa, mwingiliano wa watumiaji, au tabia ya mlinzi.",
+      "Bots za kufuatilia faharisi au likwidosheni zinazoendeshwa na Avana",
+      "Madhubuti ya mlezi na vyombo vya habari vya mchawi",
+      "API zilizohost katika njia zinazohitaji usalama mkubwa",
+      "Masuala ya mbele na matokeo ya hatari ya mkoba ya moja kwa moja",
+      "Ujenzi wa muamala mbaya",
+      "Mchakato wa uharibifu wa kufutwa au njia za kurusha habari za orakuli",
+      "Hasara ya fedha za mtumiaji kupitia ushirikiano wa kuaminika",
+      "Mikatizo ya uendeshaji inayosimamisha hatua muhimu",
+      "Muhimu",
+      "mpakani-mwekundu-400 nyuma-mwekundu-50/70",
+      "Kupoteza fedha kwa moja kwa moja au kwa njia isiyo ya moja kwa moja, kuunda deni mbaya, ufisadi wa itifaki, au udanganyifu wa mfumo katika tathmini ya dhamana.",
+      "Juu",
+      "mpaka-amber-400 bg-amber-50/70",
+      "Uharibifu wenye maana lakini uliopunguzwa, kama vile tabia isiyo sahihi ya uingizwaji fedha, sehemu ya kuepuka udhibiti wa hatari, au kushindwa kwa hesabu zilizodhibitiwa.",
+      "Medium / Low",
+      "mpaka-kwa-rangi-hii-300 nyuma-ya-rangi-hii-50",
+      "Matokeo yenye athari ndogo, kutokubaliana kwa kesi za kando, masuala ya mantiki yasiyo muhimu, au udhaifu usio na njia halisi ya kusababisha madhara makubwa ya kiuchumi.",
+      "Wigo wa ufichaji wenye uwajibikaji na mwongozo wa kupanga kipaumbele kwa athari za kiuchumi kwa utafiti wa usalama wa Avana.",
+      "Tuzo ya Mendelezo ya Avana inashughulikia ufichaji wa uwajibikaji katika mkataba, mifumo ya hatari, na miundombinu ya msaada ambayo inaweza kuathiri fedha za watumiaji au uwezo wa kifedha wa itifaki.",
+      "Kwa sababu Avana inatumia nafasi AMM za uchezaji wa fedha kama dhamana, wigo unajumuisha na dosari za mkataba wa moja kwa moja na kushindwa ambapo uchezaji wa fedha, bei, au hali ya soko inaweza kubadilishwa kuwa thamani mbaya ya dhamana au uharibifu wa liquidation.",
+      "Ukali ni kiuchumi kwanza:",
+      "zawadi zinafuatilia uwezekano wa kutumia na matokeo kama vile kupotea kwa fedha, kutojikwamua kifedha, deni mbaya, au upungufu wa bei ya dhamana ya mfumo, si tu jinsi mabadiliko ya nambari yanavyoonekana kuwa makubwa.",
+      "Wigo umegawanywa katika mifumo ndogo ili watafiti waweze kuoanisha matokeo na sehemu ya safu ambayo kweli inatishia: mkopo wa msingi, LP tathmini, uratibu na usimamizi, au muunganiko wa nje ya mnyororo.",
+      "Unyeti wa juu zaidi",
+      "Inajumuisha",
+      "Hatari kuu",
+      "Kwa nini ni muhimu:",
+      "Mifumo ndogo inapangwa kimsingi kando, lakini athari bado inapimwa kwa kila kipimo cha ukwasi, usalama wa fedha za mtumiaji, uadilifu wa uongofu, na hatari zinazohusiana na itifaki.",
+      "Alama za hatari za kawaida siyo njia kuu ya upangaji hapa. Matokeo yanapimwa kwa njia za uhalifu zinazotegemewa na kwa matokeo ya kiuchumi ambayo yanaweza kuleta."
+    ]
+  },
+  "safety/contracts": {
+    "meta": {
+      "title": "Usalama wa Mkataba Mahiri",
+      "description": "Avana kumbukumbu ya usalama ya mkataba mahiri ikijumuisha mipaka ya uaminifu, uso wa mikataba, na jinsi ukaguzi na zawadi za hitilafu zinavyofaa katika muundo wa mkopo unaounga mkono LP."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "changamoto za usalama",
+        "title": "Changamoto za Usalama"
+      },
+      {
+        "id": "usalama-wa-tabaka-ngapi",
+        "title": "Usalama wa Tabaka Nyingi"
+      },
+      {
+        "id": "nyuso-za-mkataba-kuu",
+        "title": "Nyuso za Mkataba wa Msingi"
+      },
+      {
+        "id": "mipaka ya kuaminiana",
+        "title": "Mipaka ya Uaminifu"
+      },
+      {
+        "id": "utayari wa ukaguzi",
+        "title": "Uwepo wa Ukaguzi"
+      }
+    ],
+    "strings": [
+      "Usalama wa Mkataba Mahiri",
+      "Avana kumbukumbu ya usalama ya mkataba mahiri ikijumuisha mipaka ya uaminifu, uso wa mikataba, na jinsi ukaguzi na zawadi za hitilafu zinavyofaa katika muundo wa mkopo unaounga mkono LP.",
+      "Muhtasari",
+      "Changamoto za Usalama",
+      "Usalama wa Tabaka Nyingi",
+      "Nyuso za Mkataba wa Msingi",
+      "Mipaka ya Uaminifu",
+      "Uwepo wa Ukaguzi",
+      "Kopa mantiki ya Spoke",
+      "Inashughulikia kuingizwa kwa dhamana, uhasibu wa watumiaji, na mchakato wa maisha upande wa tanuu kwa mikopo inayoungwa mkono na LP.",
+      "Uunganishaji wa Kituo",
+      "Inaleta uhusiano wa uwezo wa kukopa kwa kiwango cha spoka na vizuizi vya fedha na kioo cha mikopo katika tabaka la Hub.",
+      "Adapteta wa oracle na tathmini",
+      "Tafsiri nafasi LP hadi kwenye thamani za hati dhamana zinazoshikiliwa kwa makini ukitumia bei za nje, ujenzi upya wa nafasi, na dhana za thamani zinazoweza kuokolewa.",
+      "Tabaka la utekelezaji wa ukomo",
+      "Kuratibu hufungua njia, utekelezaji wa ada, upangaji, na makubaliano wakati akaunti isiyo na afya lazima ifungwe au ibadilishwe ukubwa.",
+      "Mikataba na Usalama",
+      "Rejeleo la usalama kwa uso wa mkataba, utegemezi wa nje, na mipaka ya ukaguzi nyuma ya ukopeshaji unaounga mkono LP.",
+      "Avana anakopa dhidi ya hati ya mali ya LP, hivyo uhakiki wa usalama lazima uangalie zaidi ya ikiwa mkataba unaunganishwa au kuhamisha salio kwa usahihi. Pia lazima uangalie jinsi bei, uhifadhi, liquidation, na udhibiti wa kipekee unavyofanya kazi wakati soko liko katika shinikizo.",
+      "Ukaguzi wa mkataba, ukaguzi wa kiuchumi, na ukaguzi wa kiutendaji vyote ni muhimu kwa masoko LP. Vinathaniana na vinapaswa kutendewa kama mpango mmoja wa usalama, si kama orodha tatu zisizohusiana.",
+      "• LP thamani inaweza kutegemea njia na mara nyingi inahitaji utunzaji maalum wa eneo na mantiki ya kufuta.",
+      "• Matumizi mabaya ya Oracle au bei zilizopotea zinaweza kusababisha hasara za kiuchumi hata wakati mikataba inatekelezwa kabisa kama ilivyopangwa kwenye msimbo.",
+      "• Utawala, udhibiti wa vigezo, na mwitikio wa dharura yote ni sehemu ya uso wa shambulio.",
+      "Ukaguzi wa mkataba",
+      "Uso wa msingi wa mkataba, viambatanisho, na njia za udhibiti zenye kipaumbele zinapaswa kukaguliwa kabla ya familia mpya LP au njia mpya za utekelezaji ziazimishwe.",
+      "Mtihani wa msongo wa kiuchumi",
+      "Jaribu mshtuko wa soko, kesi za kipekee za manabii, na kushindwa kwa usambazaji wa uondoaji, si tabia ya mkataba wa kiwango cha kitengo tu.",
+      "Njia za ukaguzi wa nje",
+      "Ukaguzi wa kawaida na",
+      "Zawadi ya Hitilafu",
+      "mpango unapaswa kubaki hai zote. Moja haubadilishi jingine.",
+      "• Uhasibu wa kwenye mnyororo na malipo ya ukomo yanapaswa kuwa ya kimaelezo mara tu yanapochaguliwa.",
+      "• Vyanzo vya Oracle, viambatanishi vya sehemu, na miundombinu ya mtoaji wa shughuli ni utegemezi wa nje na inapaswa kufuatiliwa kama hivyo.",
+      "• Utawala, mamlaka ya kusitisha, na maboresho ni nguvu za kipekee ambazo zinapaswa kubaki na mipaka, zikikaguliwa, na zikiwa na muda maalum kila inapowezekana.",
+      "Ukurasa huu hauchapishi ratiba za wakaguzi wa fedha zinazokisia au hatua za katikati. Ripoti za ukaguzi, wigo, na noti za kurekebisha zinapaswa kuchapishwa wakati zinapokuwa halisi na zinaweza kukaguliwa kwa ukamilifu.",
+      "Malengo ya ukaguzi yenye thamani kubwa kwa kawaida hujumuisha msaada wa familia mpya wa LP, njia mpya za uondokanaji wa mali, mifano mipya ya orakili, na mabadiliko yoyote yanayoongeza udhibiti wa kipekee au dhana za thamani inayoweza kurejeshwa."
+    ]
+  },
+  "safety/insurance": {
+    "meta": {
+      "title": "Fondi za Bima",
+      "description": "Muundo uliopangwa wa kinga ya nyuma kwa Avana, ukielezea jinsi mfuko wa bima wa baadaye unaweza kushughulikia upungufu wa uhakika bila kubadilisha mfano wa mkopo unaounga mkono LP."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "kusudi",
+        "title": "Mkusudio"
+      },
+      {
+        "id": "mfumo-wa-kufadhili",
+        "title": "Mbinu ya Ufadhili"
+      },
+      {
+        "id": "njia-ya-kinzani",
+        "title": "Njia ya Uanzishaji"
+      },
+      {
+        "id": "mpaka wa mwafaka",
+        "title": "Mkia wa Mfuko"
+      }
+    ],
+    "strings": [
+      "Fondi za Bima",
+      "Muundo uliopangwa wa kinga ya nyuma kwa Avana, ukielezea jinsi mfuko wa bima wa baadaye unaweza kushughulikia upungufu wa uhakika bila kubadilisha mfano wa mkopo unaounga mkono LP.",
+      "Muhtasari",
+      "Mkusudio",
+      "Mbinu ya Ufadhili",
+      "Njia ya Uanzishaji",
+      "Mkia wa Mfuko",
+      "Safu ya nyuma iliyopangwa kwa kushughulikia deni mbaya lililosalia baada ya njia ya kawaida ya ufutaji LP tayari kukamilika.",
+      "Mistari ya kwanza ya ulinzi ya Avana ni tathmini ya mali ya riba kwa tahadhari, kufungia mfiduo, na uuzaji kwa wakati. Mfuko wa bima wa baadaye ungekaa nyuma ya udhibiti huo na kuonekana tu pale uuzaji bado hauwezi kufunga deni mbaya kikamilifu.",
+      "Ukurasa huu unaeleza safu ya ulinzi iliyopangwa. Haujahakikishi kwamba kuna mfuko wa bima unaoishi katika kila utekelezaji leo.",
+      "Iwapo itaanzishwa, mfuko unaweza kupatiwa mtaji kupitia mgawo wa hazina uliodhibitiwa na uongozi, michango ya akiba, au kipengele maalumu cha usalama. Mchanganyiko halisi wa ufadhili ni uamuzi wa usimamizi wa hatari na unapaswa kuchapishwa pamoja na masharti ya programu.",
+      "• Gundua upungufu uliobaki baada ya njia ya uondoaji iliyoruhusiwa kumalizika.",
+      "• Thibitisha kwamba upungufu unalingana na sera ya bima iliyoidhinishwa ya mfuko.",
+      "• Fanya njia ya upya wa rasilimali au kufunika upungufu iliyoainishwa na uongozi.",
+      "• Chapisha muhtasari wa baada ya tukio unaoelezea kikwazo, majibu, na udhibiti wa fuatiliaji.",
+      "Ushughulikiaji unapaswa kubaki mdogo. Lengo ni kukidhi deni mbaya la itifaki baada ya ulipaji, sio dhamana ya jumla dhidi ya hasara za biashara za mtumiaji, hasara isiyo ya kudumu, mabadiliko ya soko, au kushindwa kwa kila upande wa tatu katika DeFi.",
+      "Upungufu uliofunikwa na hatari ya kawaida ya soko unahitaji mstari mkali ili mfuko usigeuke kuwa fidia kwa matokeo ya kawaida LP."
+    ]
+  },
+  "safety": {
+    "meta": {
+      "title": "Mifumo ya Usalama - Mfumo wa Hatari",
+      "description": "Usimamizi wa hatari katika itifaki kwa Upanuzi wa Avana Hub na LP Collateral Spokes, ikijumuisha majukumu, sasisho zilizopunguzwa, na udhibiti wa dharura."
+    },
+    "toc": [
+      {
+        "id": "muhtasari",
+        "title": "Muhtasari"
+      },
+      {
+        "id": "misingi-ya-msingi",
+        "title": "Kanuni Muhimu"
+      },
+      {
+        "id": "nafasi",
+        "title": "Nguvu"
+      },
+      {
+        "id": "sasisha-mtiririko",
+        "title": "Sasisha Mtiririko"
+      },
+      {
+        "id": "darasa-za-parameter",
+        "title": "Aina za Vigezo"
+      },
+      {
+        "id": "ufichuzi wa umma",
+        "title": "Ufunuo wa Umma"
+      },
+      {
+        "id": "vitendo vya dharura",
+        "title": "Hatua za Dharura"
+      }
+    ],
+    "strings": [
+      "Mifumo ya Usalama - Mfumo wa Hatari",
+      "Usimamizi wa hatari katika itifaki kwa Upanuzi wa Avana Hub na LP Collateral Spokes, ikijumuisha majukumu, sasisho zilizopunguzwa, na udhibiti wa dharura.",
+      "Muhtasari",
+      "Kanuni Muhimu",
+      "Nguvu",
+      "Sasisha Mtiririko",
+      "Aina za Vigezo",
+      "Ufunuo wa Umma",
+      "Hatua za Dharura",
+      "Utoaji wa Nafasi",
+      "Mfumo huo unagawa utayarishaji, ukaguzi, na kudhibiti dharura kwa wahusika tofauti ili upande mmoja usidhibiti njia nzima peke yake.",
+      "Utekelezaji Uliozuiliwa",
+      "Mabadiliko ya hatari ya kawaida hufanyika tu wakati yanaendelea ndani ya mipaka iliyowekwa ya sera na kupita kwenye ukaguzi wa uthibitisho.",
+      "Uthabiti wa Umma",
+      "Sasisho lililoelezwa hadharani linapaswa kuwa sasisho lile lile ambalo kwa kweli limeorodheshwa kwa utekelezaji.",
+      "Uelewa wa Pedal",
+      "Kila kigezo cha dhamana LP kina sheria zake za orodha, dhana za mchunguzi, njia ya ukomo, na wasifu wa hatari.",
+      "Ukosefu wa Usawa wa Kibenki",
+      "Mchakato umebakhitiwa kwa makusudi kwa hivyo kupunguza hatari ni haraka na rahisi kuliko kuipanua.",
+      "Avana Mchochezi wa Hatari",
+      "Kazi inayotoa maandalizi na kupendekeza mabadiliko ya kawaida ya hatari kwa Hub na LP Vinguzo vya Dhamana.",
+      "Chapisha sababu na fafanua sasisho kama la kujilinda au lenye lengo la ukuaji",
+      "Wasilisha masasisho ya kawaida katika njia ya utekelezaji iliyowekwa muda",
+      "Pendekeza vizuizi vya usambazaji, vizuizi vya kukopa, LT/LTV, kigezo cha akiba, na mabadiliko ya kiwango cha riba ndani ya wigo uliopitishwa",
+      "Anzisha kupunguza hatari kwa kiwango cha spika na kuunganisha kikundi ndani ya templeti zilizothibitishwa za spika",
+      "Avana Mlinzi wa Hatari",
+      "Mkaguzi huru aliye na mamlaka ya kuzuia mabadiliko ya kawaida yaliyoorodheshwa.",
+      "Hakikisha kuwa sasisho lililopo katika foleni linaendana na ufunuo wa umma",
+      "Kagua kwamba tendo linaendelea ndani ya mipaka iliyokubaliwa ya sera",
+      "Kataa masasisho yanayotokana na kuzingatia upofu wa oracle batili, ushawishi wa fedha, au fedha zinazotolewa",
+      "Ghairi sasisho lililopangwa wakati wa dirisha la muda uliofungwa linapofanya ustahimilivu wazi katika kiwango cha tundu au kiwango cha kitovu",
+      "Avana Mlinzi wa Hatari",
+      "Kazi ya dharura-tu ilikuwa ikitumika kushughulikia matukio wakati njia ya kawaida yenye kufungwa kwa muda ni polepole zaidi.",
+      "Punguza vizingiti vya mkopo au vizingiti vya usambazaji hadi viwango vya kinga",
+      "Sasa kukwaza mikopo mipya kwenye tundu au kukwaza matumizi ya dhamana kwa bwawa, kiolezo, au tundu",
+      "Zimamisha kiunganishi maalum au njia ya mkopo wakati hali za kushindwa zilizotangazwa awali zinatimizwa",
+      "Zuia kuanzishwa kwa deni jipya katika hali za dharura bila kutumika kwa shughuli za kawaida za uboreshaji au ukuaji",
+      "Tangazo la Umma",
+      "Mianzishaji wa Hatari huchapisha mabadiliko yaliyokusudiwa, kwa nini yanahitajika, na wigo unaotarajiwa kuathiri.",
+      "Mchochezi wa Hatari anaweka mabadiliko yaliyopendekezwa kwenye njia ya utekelezaji inayotumika na mfumo.",
+      "Ukaguzi wa mfumo unathibitisha kwamba sasisho linaendelea ndani ya vizuizi vilivyowekwa na mipaka ya sera iliyothibitishwa.",
+      "Kama uthibitisho unapita, mabadiliko yanaingia kwenye dirisha la muda badala ya kutekelezwa mara moja.",
+      "Mapitio ya Guardian",
+      "Wakati wa kufungwa kwa muda, Mlinzi wa Hatari anapitia mzigo uliowekwa kwa usahihi na anaweza kuufuata ikiwa inahitajika.",
+      "Iwapo mabadiliko yataendelea baada ya ukaguzi, yataendeshwa kiotomatiki baada ya muda wa kizuizi kumalizika.",
+      "Njia ya Dharura",
+      "Ikiwa masharti ya dharura yatatimizwa, Mlinzi wa Hatari anaweza kutumia njia tofauti ya ulinzi yenye mamlaka madogo.",
+      "Mabadiliko ya Kitalifa",
+      "mpakani-mwekundu-400 nyuma-mwekundu-50/70",
+      "Hizi ndizo mabadiliko ya kawaida ya haraka zaidi kwa sababu hupunguza kuwasiliana na itifaki.",
+      "Kupunguza vizingiti vya mikopo",
+      "Kupunguza vizingiti vya usambazaji",
+      "Kupunguza kikomo cha LTV au kufutwa kwa mali",
+      "Kuzuia mikopo au matumizi ya dhamana",
+      "Kukaza mipangilio ya nyuzi",
+      "Mabadiliko ya Kawaida Yaliyopunguzwa",
+      "mpaka-amber-400 bg-amber-50/70",
+      "Hizi zinafuata njia ya kawaida ya Mzinduzi -> Mlinzi -> kufungwa kwa muda ndani ya mipaka iliyoidhinishwa.",
+      "Kuongeza vichungi vya kawaida",
+      "Kurekebisha kwa kiasi vigezo ndani ya safu zilizokubaliwa",
+      "Kuongeza mabwawa mapya ndani ya kiolezo kilicho tayari cha tundu",
+      "Mabadiliko ya Kiwango cha Utawala",
+      "mpaka-kwa-rangi-hii-300 nyuma-ya-rangi-hii-50",
+      "Hizi ziko nje ya mfumo wa kawaida na zinahitaji njia ya uamuzi ya kiwango cha juu.",
+      "Kuunda familia mpya ya mhimili",
+      "Kuwezesha LP mpya ya asili",
+      "Kuongeza mfano mpya wa oracle",
+      "Kuwezesha kiambatisho kipya cha utoaji wa mali",
+      "Kupanua kwa kiasi uso wa hatari zaidi ya makisio yaliyothibitishwa awali",
+      "Sehemu iliyoathirika",
+      "Vibao au mifumo iliyoathiriwa",
+      "Vigezo vya sasa",
+      "Vigezo vilivyopendekezwa",
+      "Sababu ya sasisho",
+      "Iwapo sasisho ni la kujihami au la maendeleo",
+      "Muda unaotarajiwa wa kuwasilisha",
+      "Dirisha la muda wa kugushiwa lengo lililotarajiwa",
+      "Vitegemezi au dhana zinazohusiana",
+      "Kutokubaliana kwa Oracle",
+      "Mchakato wa kuoza wa njia ya utaftaji",
+      "Tabia isiyo ya kawaida ya bwawa",
+      "Kushindwa kwa utegemezi wa kifuniko",
+      "Mgongano wa kiwango cha kiambatanisho",
+      "Kutokuwa na uthabiti ghafla wa kiwango cha sauti",
+      "Hatua iliyochukuliwa",
+      "Muda uliokusudiwa",
+      "Njia ya kurudi kwenye operesheni ya kawaida",
+      "Mfumo wa Hatari",
+      "Jinsi Avana inavyopendekeza, kukagua, na kutekeleza mabadiliko ya hatari kote Hub na LP Matawi ya Hati ya Dhamana.",
+      "Mfumo wa Hatari wa Avana unafafanua jinsi mabadiliko ya vigezo yanavyopendekezwa, kukaguliwa, na kutekelezwa katika Kituo na LP Vyuze vya Dhamana. Unashughulikia udhibiti unaotumika wakati itifaki inapo badilisha vizingiti vya usambazaji na kukopa, mipangilio ya LT/LTV, vigezo vya riba, hali ya soko, na vigezo vingine vinavyotegemea bei, matumizi, kina cha bwawa, mkusanyiko, mabadiliko ya bei, tabia ya peg, vilele vya mzunguko, afya ya nafasi, na hali zinazohusiana.",
+      "LP dhamana si darasa moja la mali lisilo na mchanganyiko. LP thabiti, LP za mali zinazohusiana, mabonde yaliyopimwa, ukwasi wa mkusanyiko, na miundo mingine ya AMM kila moja inaweza kuwa na njia yake ya thamani ya kipekee, njia ya kuliwa, na hali ya kushindwa. Mfumo upo ili tofauti hizo zichaguliwe katika mchakato wa sasisho badala ya kufichwa nyuma ya setting moja ya hatari ya jumla.",
+      "Vigawo vitatu hubaki vigawanyiko katika mchakato huo: Avana Mianzishi wa Hatari, Avana Mlinzi wa Hatari, na Avana Mwanaharakati wa Hatari. Chama kinachopendekeza mabadiliko ya kawaida siyo hicho hicho kinachokagua kwa uhuru, na jukumu ambalo linaweza kuchukua hatua wakati wa dharura linalengwa kuwa dogo kuliko njia ya kawaida.",
+      "Kanuni ya uendeshaji:",
+      "Mabadiliko ya kawaida hufuata njia iliyowekwa ili itaratibu iweze tofautizi kati ya matengenezo ya kawaida ya vigezo na kudhibiti dharura. Mfuatano wa kawaida ni tangazo la umma, uwasilishaji, ukaguzi wa mipaka, lukio la muda, uhakiki wa Mlinzi, na utekelezaji ikiwa pendekezo halikuzuiziwi.",
+      "Mabadiliko ya vigezo si yote yana hatari sawa, hivyo mfumo huviga kwa jinsi gani ya kuwa na mamlaka wanayohitaji na haraka gani wanapaswa kuweza kusonga.",
+      "Kila sasisho la kawaida linapaswa kuchapishwa kabla ya kuwasilishwa kwa njia inayowezesha waendelezaji, watumiaji, na wakaguzi kulinganisha taarifa na kitendo halisi ambacho baadaye kimeorodheshwa.",
+      "Kiwango cha chini cha uwazi",
+      "Ufunuo wa mara kwa mara hufanya iwe rahisi kupitia pendekezo kwa ajili ya kuvimba kwa wigo, makadirio yasiyoendana, au makosa rahisi ya utekelezaji.",
+      "Hatua za dharura ni kwa ajili ya kudhibiti, si kwa ajili ya urekebishaji wa kawaida. Zinapaswa kutumika kwa nadra, ziwe kwa kiwango kidogo iwezekanavyo, na ziwe zimepangwa ili itifaki irejee kwenye njia ya kawaida mara tu hatari ya papo hapo itakapoeleweka. Mlinzi wa Hatari anapaswa kuchukua hatua tu wakati hali ya kushindwa iliyoelezwa au yenye uwezekano mkubwa inafanya njia ya kawaida yenye muda salama isiwe salama.",
+      "Vitu vinavyosababisha dharura",
+      "Ufichaji unaohitajika baada ya hatua",
+      "Mamlaka ya dharura ipo tu kwa ajili ya kesi zilizofafanuliwa au zinazoweza kutokea sana za kushindwa ambapo kusubiri njia ya kawaida ya timelock si salama. Si njia ya ukuaji wa kawaida au uboreshaji.",
+      "Mapendekezo, uhakiki, na udhibiti wa dharura bado ni tofauti kwa sababu LP dhamana ni mkusanyiko wa masoko yenye miundo na njia tofauti za kushindwa, sio orodha moja ya mali zinazobadilishana."
+    ]
+  }
+}

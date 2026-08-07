@@ -1,0 +1,2201 @@
+{
+  "architecture/collateral-factors": {
+    "meta": {
+      "title": "Czynniki zabezpieczenia",
+      "description": "Jak Pożyczka Przemawia przekształca wartość pozycji LP w zdolność do pożyczania przed zgłoszeniem jej do Hub."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "jak-to-działa",
+        "title": "Jak to działa"
+      },
+      {
+        "id": "wartość możliwa do pożyczki",
+        "title": "Wartość możliwa do pożyczenia"
+      },
+      {
+        "id": "notatki",
+        "title": "Notatki"
+      }
+    ],
+    "strings": [
+      "Czynniki zabezpieczenia",
+      "Jak Pożyczka Przemawia przekształca wartość pozycji LP w zdolność do pożyczania przed zgłoszeniem jej do Hub.",
+      "Przegląd",
+      "Jak to działa",
+      "Wartość możliwa do pożyczenia",
+      "Notatki",
+      "Jak Borrow Spoke decyduje, jaka część pozycji LP liczy się do zdolności kredytowej.",
+      "Czynniki zabezpieczenia odpowiadają na wąskie, ale istotne pytanie: jaka część tej pozycji LP powinna faktycznie wspierać dług? W Avana ta odpowiedź nie jest pobierana wyłącznie z nagłówkowej wyceny LP. Borrow Spoke najpierw odbudowuje i dyskontuje pozycję, a następnie stosuje zasady rynkowe, które decydują, jaka część tej wartości może być uznana za możliwą do wykorzystania zdolność kredytową.",
+      "Lightpaper przedstawia zasadę. Ta strona opisuje sekwencję skierowaną do deweloperów używaną w obrębie spoke zanim jakakolwiek pojemność zostanie przekazana do Hub.",
+      "Rozgałęzienie akceptuje tylko zatwierdzone pule lub szablony. Jeśli pozycja nie odpowiada określonej definicji rynku, nigdy nie trafia do późniejszych etapów wyceny, które generują zdolność do pożyczania.",
+      "Odtwarza pozycję LP, wycenia aktywa bazowe i dyskontuje wynik do wartości odzyskiwalnego zabezpieczenia. To etap, w którym odnoga przechodzi od pozycji w puli, która teoretycznie wydaje się wartościowa, do wartości, przeciwko której jest gotowa udzielić pożyczki w praktyce.",
+      "Stosuje ustawienia zabezpieczeń specyficzne dla rynku i przekazuje łączną zdolność kredytową do Huba w celu ostatecznego egzekwowania. Hub wykorzystuje wynik, ale to odgałęzienie jest warstwą, która zdecydowała, ile z LP mogło się w ogóle liczyć.",
+      "Wartość do pożyczenia jest wynikiem pochodnym, a nie stałą cechą przypisaną do każdego LP w rozgałęzieniu. Dwie pozycje mogą istnieć na różnych rynkach, generować różne wartości możliwe do odzyskania i stosować różne ustawienia zabezpieczeń, nawet jeśli na pierwszy rzut oka wyglądają podobnie. To utrzymuje implementację zgodną z modelem underwritingu specyficznym dla LP opisanym w innych częściach dokumentacji.",
+      "Wspierana LP pozycja przyczynia się do zdolności kredytowej dopiero po tym, jak węzeł ją przyjął, odbudował i zdyskontował oraz zastosował skonfigurowane przez rynek kontrolki zabezpieczeń.",
+      "• Dokładne ustawienia rynku działają na żywo z obsługiwaną konfiguracją puli, a nie na tej stronie przeglądu.",
+      "• Poziomy ryzyka w puli są szczegółami implementacyjnymi, a nie obietnicą, że wszystkie LP mają wspólny uniwersalny LTV.",
+      "• Przeczytaj zachowanie współczynnika zabezpieczenia wraz ze współczynnikiem zdrowia i dokumentami dotyczącymi likwidacji, jeśli implementujesz logikę monitorowania lub odzyskiwania."
+    ]
+  },
+  "architecture/health-factor": {
+    "meta": {
+      "title": "Wskaźnik zdrowia",
+      "description": "Jak Borrow Spoke porównuje dostosowaną wartość zabezpieczenia i dług, aby określić, czy konto wspierane przez LP jest zdrowe, czy może zostać zlikwidowane."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "obliczenie",
+        "title": "Obliczenie"
+      },
+      {
+        "id": "opaski zdrowotne",
+        "title": "Pasma monitorujące"
+      },
+      {
+        "id": "ścieżka-odpowiedzi",
+        "title": "Ścieżka odpowiedzi"
+      },
+      {
+        "id": "akcje użytkownika",
+        "title": "Działania użytkownika"
+      }
+    ],
+    "strings": [
+      "Wskaźnik zdrowia",
+      "Jak Borrow Spoke porównuje dostosowaną wartość zabezpieczenia i dług, aby określić, czy konto wspierane przez LP jest zdrowe, czy może zostać zlikwidowane.",
+      "Przegląd",
+      "Obliczenie",
+      "Pasma monitorujące",
+      "Ścieżka odpowiedzi",
+      "Działania użytkownika",
+      "Jak Borrow Spoke mierzy bezpieczeństwo konta na podstawie skorygowanej wartości zabezpieczenia i niespłaconego zadłużenia.",
+      "Czynnik zdrowotności to kompaktowy widok Borrow Spoke na to, czy konto wciąż ma wystarczającą dostosowaną zabezpieczenie, aby pokryć swój dług. Nie jest to osobny model ryzyka. Ta sama ścieżka wyceny, logika współczynnika zabezpieczenia i założenia dotyczące likwidacji, które regulują pożyczanie, również określają czynnik zdrowotności, który odczytują interfejs i likwidatorzy.",
+      "Gdy stan zdrowia spada na tyle, że konto nie spełnia już granicy pożyczkowej szprychy, pozycja staje się możliwa do likwidacji zgodnie z kanonem",
+      "Ramowy plan likwidacji",
+      "Zdrowie jest obliczane na każdy Zaangażowany Odgałęzienie. Licznik to skorygowana wartość zabezpieczenia użytkownika w tym odgałęzieniu, co oznacza, że pozycja przeszła już przez rekonstrukcję, wycenę, dyskontowanie wartości możliwej do odzyskania oraz ustawienia zabezpieczenia specyficzne dla rynku używane przez to odgałęzienie.",
+      "healthFactor = dostosowanaWartośćZabezpieczenia / zaległyDług",
+      "Jeśli użytkownik posiada zabezpieczenie w więcej niż jednym Borrow Spoke, każdy spoke oblicza stan zdrowia na własnym lokalnym stanie. Dodatkowy margines w jednym spoke nie pokrywa automatycznie deficytu w innym, ponieważ protokół zawiera ryzyko na rynku, na którym został stworzony.",
+      "Zdrowy:",
+      "skorygowana wartość zabezpieczenia pozostaje wygodnie powyżej zaległego długu, więc konto ma miejsce na zwykłe ruchy rynkowe bez natychmiastowej interwencji.",
+      "Lista obserwowanych:",
+      "konto nadal przechodzi kontrole przy spoke, ale bufor jest na tyle cienki, że pożyczkobiorca powinien rozważyć spłatę długu, dodanie zabezpieczenia lub w inny sposób poprawić swoją pozycję.",
+      "Podlegający likwidacji:",
+      "konto osiągnęło lub przekroczyło granicę likwidacji, więc ścieżka odzyskiwania może przejść od działania użytkownika do rozliczenia wymuszonego przez protokół.",
+      "Ostrzeżenia interfejsu mogą być bardziej konserwatywne niż próg twardej likwidacji. Są one tam po to, aby pomóc użytkownikom działać wcześniej, a nie wprowadzać drugi zestaw zasad protokołu.",
+      "Jeśli zdrowie słabnie, pierwsza reakcja należy wciąż do dłużnika. Konto można naprawić poprzez spłatę długu, dodanie zatwierdzonego LP zabezpieczenia lub zmianę pozycji w sposób, który pozostaje ważny zgodnie z kontrolami zdrowia węzła.",
+      "Gdy wskaźnik zdrowia przekroczy granicę likwidacji, konto wychodzi z fazy monitorowania i wchodzi na ścieżkę odzyskiwania. Węzły likwidacyjne i zewnętrzni likwidatorzy mogą następnie rozwinąć wymaganą ścieżkę zabezpieczenia, aby przywrócić płynność zgodnie z zasadami likwidacji rynku.",
+      "Zaciąganie większych pożyczek zmniejsza zdrowie, ponieważ niespłacony dług rośnie w stosunku do tej samej bazy zabezpieczenia.",
+      "Spłacanie długów natychmiast poprawia zdrowie, ponieważ mianownik w tej proporcji maleje.",
+      "Dodanie zatwierdzonego zabezpieczenia może zwiększyć pozostały limit, jeśli punkt przyjmie je i wyceni.",
+      "Pobieranie opłat, wycofywanie zabezpieczenia lub zmiana zakresu pozycji może zmniejszyć zdrowie i należy to sprawdzić w stosunku do stanu po działaniu przed wykonaniem.",
+      "Czynniki zabezpieczenia"
+    ]
+  },
+  "architecture/incentives": {
+    "meta": {
+      "title": "Programy motywacyjne",
+      "description": "Przegląd operacyjny Avana zachęt i nagród, wyjaśniający, w jaki sposób opcjonalne kampanie odnoszą się do głównego protokołu, nie stając się przy tym kanoniczną architekturą."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "typy programów",
+        "title": "Typy programów"
+      },
+      {
+        "id": "zasady dystrybucji",
+        "title": "Zasady dystrybucji"
+      },
+      {
+        "id": "roszczenia-i-uzgadnianie",
+        "title": "Roszczenia i pojednanie"
+      },
+      {
+        "id": "o11s4tnk35k3ibs91oxq",
+        "title": "Aktualny stan"
+      }
+    ],
+    "strings": [
+      "Programy motywacyjne",
+      "Przegląd operacyjny Avana zachęt i nagród, wyjaśniający, w jaki sposób opcjonalne kampanie odnoszą się do głównego protokołu, nie stając się przy tym kanoniczną architekturą.",
+      "Przegląd",
+      "Typy programów",
+      "Zasady dystrybucji",
+      "Roszczenia i pojednanie",
+      "Aktualny stan",
+      "Opcjonalna warstwa nagród i kampanii, która może działać na wierzchu wdrożeń Avana bez zmiany podstawowych mechanizmów pożyczkowych.",
+      "Zachęty są nakładką, a nie częścią rdzenia pożyczkowego. Protokół wciąż jest definiowany przez LP wycenę, kontrolę ryzyka Borrow Spoke, płynność Hub i likwidację. Kampanie mogą zachęcać do uczestnictwa, ale nie zmieniają tych mechanizmów.",
+      "Kampanie są operacyjne i mają ograniczony czas trwania. Ta strona opisuje, jak odnoszą się one do reszty Avana. Nie oznacza to, że konkretny program nagród jest aktywny na każdej wdrożeniu.",
+      "• Kampanie skierowane do dostawców, które pogłębiają kapitał w Lend Spoke lub powiązanej warstwie płynności.",
+      "• Kampanie skierowane do pożyczkobiorców, które zachęcają do zdrowego pożyczania wspieranego przez LP.",
+      "• Kampanie operatora lub ekosystemu związane z testowaniem, integracjami lub działalnością wspierającą ryzyko.",
+      "Kiedy istnieją zachęty, powinny być one zrozumiałe, możliwe do audytu i oddzielone od podstawowej logiki ryzyka. Matematyka nagród może zależeć od aktywności, czasu trwania lub zasad kampanii, ale nie powinna wpływać na to, jak Avana wycenia zabezpieczenie ani decyduje o kwalifikowalności do likwidacji.",
+      "Kampanie mogą nagradzać pożądane zachowania. Nie powinny zachęcać do niebezpiecznego użycia dźwigni ani ukrywać rzeczywistej ekonomii pożyczek zabezpieczonych LP.",
+      "Ścieżki roszczeń, harmonogramy nabywania praw i metody uzgadniania są specyficzne dla danej kampanii. Mogą być obsługiwane w łańcuchu, przez dedykowany kontroler nagród lub poprzez księgowość poza łańcuchem publikowaną przez operatora kampanii.",
+      "Integratorzy powinni zawsze weryfikować aktywną ścieżkę roszczeń oraz zasady kwalifikowalności dla wdrożenia, na które celują.",
+      "Traktuj zachęty jako specyficzne dla wdrożenia i sezonu. Jeśli kampania jest aktywna, jej szczegóły powinny być ogłoszone oddzielnie od dokumentacji architektury z wyraźnymi datami, zasadami i warunkami dystrybucji."
+    ]
+  },
+  "architecture/lend-spoke": {
+    "meta": {
+      "title": "Oś pożyczki",
+      "description": "Jak Lend Spoke przyjmuje aktywa pożyczkodawcy i kieruje je przez Hub do rynków pożyczek zabezpieczonych LP."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "punkt wejścia kapitału",
+        "title": "Punkt wejścia kapitału"
+      },
+      {
+        "id": "stopa zwrotu skorygowana o ryzyko",
+        "title": "Stopa zwrotu skorygowana o ryzyko"
+      },
+      {
+        "id": "dynamiczne-kontrole-ryzyka",
+        "title": "Dynamiczne Kontrole Ryzyka"
+      }
+    ],
+    "strings": [
+      "Oś pożyczki",
+      "Jak Lend Spoke przyjmuje aktywa pożyczkodawcy i kieruje je przez Hub do rynków pożyczek zabezpieczonych LP.",
+      "Przegląd",
+      "Punkt wejścia kapitału",
+      "Stopa zwrotu skorygowana o ryzyko",
+      "Dynamiczne Kontrole Ryzyka",
+      "Kapitał zaopatrzeniowy",
+      "Pożyczkodawcy wprowadzają główne aktywa, takie jak ETH, BTC i stablecoiny, przez Lend Spoke zamiast bezpośrednio wchodzić w interakcje z zabezpieczeniem LP.",
+      "Trasa przez węzeł",
+      "Lend przekazuje te środki płynności do Hubu, gdzie jedna warstwa rezerw może wspierać kilka rynków pożyczkowych zabezpieczonych LP.",
+      "Wypożyczanie mocy Szprychy",
+      "Pożycz Szprychy, a następnie korzystaj z płynności z Węzła, jednocześnie utrzymując LP wycenę, obsługę likwidacji i kontrolę ryzyka specyficzną dla rynku zawartą w każdej szprysze.",
+      "Skład puli i zmiana salda zapasów",
+      "Wolumen obrotu i wygenerowane opłaty zrealizowane",
+      "Różnica cen między powiązanymi aktywami",
+      "Zmiany reżimu zmienności a stabilność kursu walutowego",
+      "Dostępna głębokość płynności podczas stresowych wyprzedaży",
+      "Punkt wejścia dla pożyczkodawcy, który przenosi kapitał dostawcy do Hubu do wykorzystania w rynkach pożyczek zabezpieczonych LP.",
+      "Lend Spoke jest główną ścieżką przyjmowania kapitału dla pożyczkodawców. Depozytariusze dostarczają tutaj aktywa takie jak ETH, BTC i główne stablecoiny, a ta płynność jest następnie kierowana do Hub, aby Borrow Spokes mogły finansować pożyczki zabezpieczone obsługiwanym aktywem LP, bez konieczności, aby pożyczkodawcy rozumieli mechanikę pozycji AMM.",
+      "To rozdzielenie jest celowe. Ścieżka pożyczkodawcy polega na dostarczaniu aktywów podlegających pożyczce i otrzymywaniu korzyści ekonomicznych ze strony pożyczkowej, podczas gdy Spokes pożyczkowe zajmują się trudną pracą wyceny LP, dopuszczalności, kontroli stanu zdrowia i zasad likwidacji dla każdej wymienionej rodziny zabezpieczeń.",
+      "Rola w stosie:",
+      "Lend Spoke przyznaje pożyczanie kapitału. Borrow Spokes utrzymują LP-specyficzne ryzyko lokalne dla każdego rynku, więc jeden fundusz pożyczkowy nie wymaga jednego globalnego modelu zabezpieczenia.",
+      "Wpłaty od pożyczkodawcy trafiają najpierw przez Lend Spoke, a następnie przechodzą do wspólnej warstwy rezerw Hub. Oznacza to, że kapitał nie musi być dzielony jedna pula na raz przez każdy obsługiwany LP rynek, mimo że zasady oceny pożyczkobiorcy pozostają odrębne.",
+      "Na wczesnym etapie cyklu życia protokołu, płynność Hub może być również wspomagana przez Aave v4 linie kredytowe. Z czasem depozyty Lend Spoke mogą stać się większą częścią rodzimego kapitału pożyczkowego protokołu.",
+      "LP zabezpieczenie nie jest statycznym zapasem. Podczas gdy pożyczka jest otwarta, podstawowa pozycja może nadal generować opłaty handlowe, co ma znaczenie dla modelowania strony pożyczkowej. Protokół w związku z tym nie traktuje każdego LP jak martwego salda, które porusza się tylko wraz z cenami tokenów.",
+      "Ta różnica wpływa również na stronę udzielania pożyczek. Warunki kredytowe mogą odzwierciedlać fakt, że niektóre LP rynki generują opłaty i zachowania wycofywania, które różnią się od zabezpieczeń nie przynoszących zysku, a Aave v4 narzędzia premii za ryzyko mogą wyrażać te różnice, gdy polityka na to pozwala. Rzeczywiste zwroty pożyczkodawców nadal zależą od aktualnej konfiguracji i stanu rynku, a nie od stałego założenia z tej strony.",
+      "Dla pożyczkodawców:",
+      "wpłaty poprzez fundusz kredytowy Lend Spoke, który jest zabezpieczony LP pozycjami, których wartość możliwa do odzyskania, logika zdrowotna i ścieżki likwidacyjne są wszystkie zdefiniowane w Borrow Spokes.",
+      "Strona pożyczkowa zależy od tego, aby strona pożyczkobiorcy pozostawała w ramach modelu ryzyka, który może się zmieniać wraz z rynkiem. Same ustawienia w stylu stałym LTV nie są wystarczające dla zabezpieczenia LP, więc struktura może reagować na zmiany w składzie puli, wolumenie, rozbieżnościach, zmienności, zachowaniu kursu odniesienia oraz głębokości wycofywania w miarę zmiany tych warunków.",
+      "W warunkach stresowych limity i powiązane kontrole mogą się zaostrzać, aby chronić płynność kredytodawcy. W spokojniejszych warunkach te same kontrole mogą być dostosowywane w ramach zatwierdzonych granic polityki. Chodzi nie o ciągłe dostosowywanie dla samego dostosowywania, ale o upewnienie się, że warstwa kredytowa nie jest zmuszona traktować zmieniającego się rynku LP, jakby nic się nie zmieniło.",
+      "Sygnały, które mogą informować o aktualizacjach ryzyka",
+      "Kapitał pożyczkodawcy podąża jedną ścieżką wejścia, ale rynki LP nie mają wspólnego profilu ryzyka. Borrow Spokes mogą utrzymywać parametry specyficzne dla rynku lokalnie, co pozwala różnym rodzinom LP działać w różnych ustawieniach bez fragmentacji doświadczenia pożyczkodawcy."
+    ]
+  },
+  "architecture": {
+    "meta": {
+      "title": "Architektura protokołu - Borrow Spoke",
+      "description": "Wykorzystaj architekturę typu Spoke do pożyczek zabezpieczonych LP, w tym przepływy pożyczkobiorców, interakcję z Hub oraz obowiązki związane z zabezpieczeniem po stronie spoke."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "doświadczenie użytkownika",
+        "title": "Doświadczenie użytkownika"
+      },
+      {
+        "id": "przykładowy-przepływ",
+        "title": "Przykładowy przepływ"
+      },
+      {
+        "id": "architektura trójwarstwowa",
+        "title": "Architektura trójwarstwowa"
+      },
+      {
+        "id": "przepływ danych",
+        "title": "Przepływ danych"
+      },
+      {
+        "id": "odpowiedzialności-reprezentanta",
+        "title": "Odpowiedzialności węzła"
+      },
+      {
+        "id": "rola-huba",
+        "title": "Aave v4 Rola Huba"
+      }
+    ],
+    "strings": [
+      "Architektura protokołu - Borrow Spoke",
+      "Wykorzystaj architekturę typu Spoke do pożyczek zabezpieczonych LP, w tym przepływy pożyczkobiorców, interakcję z Hub oraz obowiązki związane z zabezpieczeniem po stronie spoke.",
+      "Przegląd",
+      "Doświadczenie użytkownika",
+      "Przykładowy przepływ",
+      "Architektura trójwarstwowa",
+      "Przepływ danych",
+      "Odpowiedzialności węzła",
+      "Aave v4 Rola Huba",
+      "Pożycz Szprychę",
+      "Warstwa wykonawcza skierowana do pożyczkobiorcy, która akceptuje LP zabezpieczenia, mierzy ryzyko i pożycza w oparciu o płynność Hub.",
+      "The Borrow Spoke to miejsce, w którym pozycja LP staje się użyteczna jako zabezpieczenie. Przejmuje nadzór nad wspieraną pozycją w celach księgowych, odczytuje dane potrzebne do zrozumienia tej pozycji, wycenia ją zgodnie z oraklem punktu i zasadami ryzyka oraz udostępnia wynikową zdolność pożyczkową ścieżce pożyczkobiorcy.",
+      "To sprawia, że Borrow Spoke różni się znacznie od typowego opakowania zabezpieczenia. Musi on rozumieć, jak skonstruowana jest notowana LP, jaka wartość jest możliwa do odzyskania w przypadku stresowego wycofania, jak należy monitorować stan zdrowia w czasie oraz która ścieżka likwidacji ma zastosowanie, jeśli konto przestaje spełniać wymagania bezpieczeństwa spokes.",
+      "Zakres:",
+      "LP zabezpieczenie różni się od aktywów statycznych, więc Węzeł Pożyczkowy przekształca skład puli, zakres cenowy, opłaty i stan rynku w parametry kredytowe oraz zasady zdrowia dla rynków, które notuje. Węzeł Pożyczający obsługuje wchodzenie kapitału. Węzeł Pożyczkowy zajmuje się LP underwritingu, monitorowaniem i likwidacją dla własnych rynków.",
+      "Przepływ pożyczki",
+      "Pożyczkobiorcy wchodzą w interakcję z jedną powierzchnią skierowaną ku szprysze przez cały cykl życia konta: deponują zatwierdzone LP zabezpieczenie, sprawdzają dostępną pojemność, zaciągają dług, spłacają salda i pobierają opłaty, gdy rynek na to pozwala. Interfejs może pozostać spójny nawet wtedy, gdy różnią się podstawowe LP formaty, ponieważ szprycha absorbuje obsługę specyficzną dla AMM.",
+      "Kontekst transakcji:",
+      "Działania powinny uwzględniać aktualizacje wskaźników zdrowia, wpływ limitu pożyczki oraz stan zabezpieczenia razem z transakcją, aby pożyczkobiorca widział ryzyko po wykonaniu działania, zamiast wywnioskowywać je po fakcie.",
+      "Typowy przepływ po stronie pożyczkobiorcy:",
+      "Krok 1: Wpłata początkowa",
+      "Pożyczkobiorca deponuje zatwierdzoną pozycję LP w Borrow Spoke. Pozycja pozostaje aktywna w AMM, ale teraz spoke rejestruje ją jako zabezpieczenie i zaczyna śledzić dane potrzebne do wyceny i oceny stanu.",
+      "Krok 2: Obliczanie zdolności kredytowej",
+      "The Borrow Spoke rekonstruuje pozycję, wycenia podstawową ekspozycję, stosuje odpowiedni współczynnik zabezpieczenia, a następnie stosuje wszelkie specyficzne dla puli traktowanie ryzyka. Wynikiem tego procesu jest zdolność pożyczkowa pokazywana na koncie.",
+      "Krok 3: Pożycz wiele aktywów",
+      "Pożyczkobiorca wypłaca aktywa w ramach zdolności zatwierdzonej przez oś. Po dokonaniu przez pożyczkobiorcę operacji, oś aktualizuje reprezentację długu na koncie i ponownie oblicza wskaźnik kondycji, stosując te same zasady rynkowe, które pozwoliły na przyjęcie zabezpieczenia.",
+      "Krok 4: Dodaj więcej zabezpieczenia",
+      "Dodatkowe zatwierdzone LP stanowiska mogą zostać dodane później. Każde nowe stanowisko jest oceniane zgodnie z zasadami listowania, wyceny i ryzyka spółki zależnej, zanim jego wkład zostanie włączony do łącznej pojemności.",
+      "Ścieżka pożyczkobiorcy jest łatwiejsza do zrozumienia, jeśli rozdzielisz, kto inicjuje działanie, która warstwa interpretuje LP zabezpieczenie, a która warstwa dostarcza gotówkę:",
+      "Top: Pożyczkobiorcy",
+      "Pożyczkobiorcy dzwonią do szprychy, aby zdeponować LP zabezpieczenie, pożyczyć środki, spłacić dług i odebrać opłaty. Z ich perspektywy szprycha jest operacyjnym punktem wejścia dla konta.",
+      "Środkowy: Pożyczone Szprycha (Avana)",
+      "Ta warstwa tłumaczy dane dotyczące pozycji specyficzne dla AMM na stan pożyczki. Zarządza LP przechowywaniem, oblicza ryzyko specyficzne dla pozycji, egzekwuje kontrole stanu zdrowia i koordynuje ścieżkę likwidacji, gdy zabezpieczenie nie wspiera już długu.",
+      "Dół: Aave v4 Centrum & Kapitał Trasowany",
+      "Hub jest wspólnym źródłem płynności i warstwą księgową poniżej spoke. Kapitał kierowany przez Lend-Spoke i inne skonfigurowane źródła Hub finansują środki, które Borrow Spoke autoryzuje.",
+      "Główna ścieżka danych przebiega od stanu LP do rozliczeń włókien w związku z działaniami płynności Hub. W praktyce wygląda to tak:",
+      "LP Menedżer pozycji transferuje zabezpieczenie do Pożyczkowego Rozgłośnika",
+      "- Węzeł boczny przechowuje odniesienie do pozycji, buforuje potrzebne metadane i zaczyna używać tego stanu do wyceny i monitorowania stanu zdrowia.",
+      "Pożyczkobiorcy pobierają aktywa przez Pożyczkową Odnogę",
+      "- Gdy konto ma pojemność, punkt końcowy (spoke) żąda płynności od jednego lub więcej skonfigurowanych węzłów centralnych (Hubs).",
+      "Dług jest reprezentowany jako udziały dłużne",
+      "- Kurs wymiany narasta zgodnie z skonfigurowanym modelem stopy procentowej, podczas gdy węzeł peryferyjny utrzymuje w synchronizacji stan zadłużenia i zabezpieczeń poszczególnych pożyczkobiorców.",
+      "Likwidacje następują, gdy jest to wymagane",
+      "- Hubs, Avana węzłów likwidacyjnych lub zewnętrzni likwidatorzy mogą spowodować, że Borrow Spoke przeniesie LP na właściwą ścieżkę wycofania i ureguluje dług poprzez odpowiednią sekwencję likwidacyjną.",
+      "Interakcja z hubem",
+      "Pożyczyć:",
+      "Borrow Spoke wysyła wywołanie draw do Hub, gdy pożyczkobiorca otwiera lub przedłuża dług",
+      "Spłać:",
+      "Adresat pożyczki wysyła wywołanie przywracania do Huba, gdy dług zostanie spłacony",
+      "Kontrola zdrowia:",
+      "Hub dzwoni do Borrow Spoke's",
+      "pobierzDaneZabezpieczenia",
+      "pobrać aktualną LP wartość zabezpieczenia szprychy",
+      "Likwidacja:",
+      "Jeśli łączne zagrożenie mowy przekroczy próg, Hub może zadzwonić",
+      "obsłużLikwidację",
+      "Komponent",
+      "Odpowiedzialność",
+      "Pożyczone Szprychy (na podstawie AMM)",
+      "Utrzymuje rekordy pozycji, zagregowany kapitał USD i zadłużenie USD dla tej AMM rodziny, oraz ujawnia",
+      "pobierzAgregatUzytkownika(uzytkownik)",
+      "AdapterLikwidacji",
+      "Obsługuje naliczanie kar, miękkie wycofanie i twardą likwidację dla Borrow Spoke bez zmuszania każdego formatu LP do przechodzenia przez jedną uniwersalną procedurę likwidacyjną.",
+      "Funkcje LiquidationAdapter",
+      "zastosujKarę(użytkownik)",
+      "softUnwind(użytkownik, maxUsd)",
+      "- wykonuje częściową redukcję, zbiera dochód, dokonuje wymiany w razie potrzeby i spłaca zadłużenie do wymaganej kwoty",
+      "likwidować(użytkownika)",
+      "Zdarzenia: NałożonaKara, WykonanoŁagodneWycofanie, WykonanoTwardąLikwidację",
+      "The Borrow Spoke nie posiada własnych rezerw pożyczkodawcy. Polega na Hubie w zakresie skonsolidowanej płynności, rachunkowości rezerw oraz strony bilansowej pożyczania, podczas gdy spoke koncentruje się na decyzjach dotyczących ryzyka specyficznego dla zabezpieczenia.",
+      "Dostępność kapitału",
+      "Aktywa takie jak USDC, DAI i ETH mogą wchodzić przez warstwy kapitałowe połączone z Hubem, w tym Lend Spoke. Hub zarządza wspólnym funduszem i jego księgowością, podczas gdy Borrow Spoke decyduje, jaka część tej płynności może być bezpiecznie udostępniona dla konta zabezpieczonego LP.",
+      "Linie kredytowe",
+      "The Hub przyznaje każdemu Pożyczającemu Promieniowi linię kredytową, która ogranicza, ile wspólnej płynności ten promień może wykorzystać. Utrzymuje to LP-specyficzne udzielanie kredytów w izolacji, nie rezygnując z efektywności kapitałowej warstwy wspólnej rezerwy.",
+      "Niezależne Czynniki Zdrowotne",
+      "Użytkownik posiadający LP zabezpieczenia w wielu Pierścieniach Pożyczkowych ma osobny wskaźnik zdrowia w każdym pierścieniu. Nadwyżka na jednym rynku nie ratuje automatycznie niedoboru na innym, co wiąże się z ryzykiem w rynku, który go wygenerował."
+    ]
+  },
+  "architecture/platform-fees": {
+    "meta": {
+      "title": "Opłaty platformy",
+      "description": "Polityka opłat operacyjnych dla Avana interfejsów, w tym sposób, w jaki opłaty za interfejs różnią się od ekonomiki protokołu, w jaki sposób są ujawniane oraz jak sprawdzić aktualną politykę."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "interfejs a protokół",
+        "title": "Interfejs vs Protokoł"
+      },
+      {
+        "id": "ujawnienie",
+        "title": "Ujawnienie"
+      },
+      {
+        "id": "użycie skarbu",
+        "title": "Wykorzystanie skarbu"
+      },
+      {
+        "id": "notatki-integracyjne",
+        "title": "Notatki z integracji"
+      }
+    ],
+    "strings": [
+      "Opłaty platformy",
+      "Polityka opłat operacyjnych dla Avana interfejsów, w tym sposób, w jaki opłaty za interfejs różnią się od ekonomiki protokołu, w jaki sposób są ujawniane oraz jak sprawdzić aktualną politykę.",
+      "Przegląd",
+      "Interfejs vs Protokoł",
+      "Ujawnienie",
+      "Wykorzystanie skarbu",
+      "Notatki z integracji",
+      "Polityka opłat na poziomie interfejsu i wytyczne dotyczące ujawniania dla Avana interfejsów front-end i powierzchni usług.",
+      "Ta strona dotyczy polityki interfejsu, a nie tego, jak działa pożyczanie w podstawowych kontraktach. Avana może pobierać opłaty od frontendu lub usług na oficjalnych interfejsach, ale te opłaty są oddzielne od zasad dotyczących zabezpieczeń, wyroczni i likwidacji w protokole.",
+      "Dokładne stawki opłat, zwolnienia i status wdrożenia to ustawienia operacyjne i należy je zweryfikować w działającym interfejsie lub materiałach wydawniczych przed ich wykorzystaniem.",
+      "Podstawowe kontrakty Avana regulują przyjęcie LP, zdolność do pożyczania i zachowanie w przypadku likwidacji. Opłaty interfejsu, jeśli są włączone, działają na tych kontraktach jako polityka biznesowa frontendu, a nie jako zmiana samego mechanizmu pożyczania czy ryzyka.",
+      "• Ekonomia protokołu determinuje narastanie długu, traktowanie zabezpieczeń i wyniki likwidacji.",
+      "• Opłaty za interfejs są wyborem operacyjnym związanym z określonym interfejsem lub ścieżką usługi.",
+      "• Bezpośrednie integracje umów mogą opierać się na innych założeniach dotyczących opłat niż oficjalny interfejs użytkownika.",
+      "Każda opłata za interfejs powinna być jasno pokazana przed podpisaniem, aby twórcy i użytkownicy mogli odróżnić ją od kosztów gazu, opłat za wymiany oraz skutków zadłużenia lub likwidacji na poziomie protokołu.",
+      "Dobre ujawnienie powinno wskazać źródło opłaty, czy jest ona opcjonalna, czy specyficzna dla interfejsu, oraz dokąd trafiają uzyskane środki.",
+      "Jeśli pobierane są opłaty za interfejs, zazwyczaj finansują one operacje związane z produktem, takie jak infrastruktura, monitorowanie, prace związane z bezpieczeństwem, dokumentacja i wsparcie. Zarządzanie może z czasem sformalizować lub zmienić te zasady.",
+      "Wykorzystanie skarbu państwa powinno być publikowane jako raportowanie operacyjne, a nie wywnioskowane z architektury zabezpieczeń protokołu.",
+      "• Budowniczy powinni sprawdzić aktualną politykę opłat przed podaniem kosztów końcowym użytkownikom.",
+      "• Unikaj wprowadzania na stałe założeń dotyczących opłat za interfejs w integracjach protokołu, chyba że polityka jest formalnie wersjonowana.",
+      "• Podczas dokumentowania integracji trzymaj politykę opłat oddzielnie od zdolności kredytowej i logiki likwidacji."
+    ]
+  },
+  "getting-started/borrow-assets": {
+    "meta": {
+      "title": "Pożycz aktywa",
+      "description": "Jak działa pożyczanie z zabezpieczeniem LP w Avana, od kontroli pojemności po stronie odgałęzień przez płynność Hub aż po weryfikację stanu zdrowia po pożyczce."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "pożyczki-czeki",
+        "title": "Czeki pożyczkowe"
+      },
+      {
+        "id": "kontrola stanu zdrowia",
+        "title": "Kontrola zdrowia"
+      },
+      {
+        "id": "rachunkowość wewnętrzna",
+        "title": "Rachunkowość wewnętrzna"
+      },
+      {
+        "id": "aktywa możliwe do pożyczenia",
+        "title": "Aktywa możliwe do pożyczenia"
+      },
+      {
+        "id": "siła kredytowa",
+        "title": "Moc kredytowa"
+      }
+    ],
+    "strings": [
+      "Pożycz aktywa",
+      "Jak działa pożyczanie z zabezpieczeniem LP w Avana, od kontroli pojemności po stronie odgałęzień przez płynność Hub aż po weryfikację stanu zdrowia po pożyczce.",
+      "Przegląd",
+      "Czeki pożyczkowe",
+      "Kontrola zdrowia",
+      "Rachunkowość wewnętrzna",
+      "Aktywa możliwe do pożyczenia",
+      "Moc kredytowa",
+      "Pożyczaj w oparciu o łączną pojemność zatwierdzonych LP stanowisk, podczas gdy Hub zapewnia wspólną warstwę płynności.",
+      "Pożyczanie rozpoczyna się dopiero po tym, jak Borrow Spoke już przyznał i wycenił pozycje LP na koncie. W tym momencie użytkownik nie prosi protokołu o ponowne przeprowadzenie underwriting od podstaw. Prosi o wykorzystanie części limitu pożyczkowego, który spoke już uznał.",
+      "Aby pożyczka się powiodła, uczestnik musi potwierdzić, że nadal pozostała wystarczająca pojemność, konto musi pozostać w dobrej kondycji po dodaniu nowego długu, a Centrum musi faktycznie posiadać żądany zasób do pobrania.",
+      "Ważne:",
+      "Pożyczanie tworzy dług, który narasta w czasie. Zdolność może się zmieniać w zależności od warunków rynkowych, więc bezpieczny bufor ma znaczenie nawet po udanej pożyczce.",
+      "Kontrole pozycji i własności:",
+      "szprycha upewnia się, że pozycje nadal należą do pożyczkobiorcy, są nadal rozpoznawane przez konto i nadal mieszczą się w zatwierdzonym zestawie zabezpieczeń.",
+      "Sprawdzenie pojemności:",
+      "żądany dług jest sprawdzany względem pozostałej łącznej zdolności kredytowej użytkownika w ramach tego Obszaru Pożyczkowego.",
+      "Sprawdzenie płynności i limitów centrum:",
+      "nawet jeśli zabezpieczenie jest wystarczające, wniosek nadal może zostać odrzucony, jeśli Hub nie ma wystarczającej dostępnej płynności lub jeśli limity na poziomie aktywów lub protokołu blokują dalsze pożyczki.",
+      "Kontrola stanu zdrowia po pożyczce:",
+      "Kontrola stanu zdrowia nie jest osobną regułą skrótu. Wykorzystuje tę samą ścieżkę wyceny i ustawienia ryzyka, które już regulują współczynniki zabezpieczenia i kwalifikowalność do likwidacji. Pożyczka zostaje przyznana tylko wtedy, gdy konto wciąż ma wystarczającą skorygowaną wartość zabezpieczenia po zastosowaniu dodatkowego długu.",
+      "healthFactor = dostosowanaWartośćZabezpieczenia / zaległyDług",
+      "Skorygowana wartość zabezpieczenia obejmuje już konserwatywną LP wycenę, czynniki zabezpieczenia i kontrolę ryzyka na poziomie puli. Zobacz",
+      "Wskaźnik zdrowia",
+      "Czynniki zabezpieczenia",
+      "Udziały dłużne:",
+      "Losowanie hubów:",
+      "Odbiorca pożyczki żąda aktywa od Huba dopiero po tym, jak odbiorca zakończy kontrole zabezpieczenia, pojemności i stanu zdrowia.",
+      "Aktualizacja stanu:",
+      "użytkownik otrzymuje pożyczony zasób, a węzeł zapisuje powstały stan zadłużenia, tak aby przyszłe kontrole stanu zdrowia, spłaty i logika likwidacji odwoływały się do tego samego zaktualizowanego konta.",
+      "Aktywa możliwe do pożyczania są konfigurowane na warstwie Hub. Nie są one stałą własnością samego zabezpieczenia. W praktyce wdrożenia zwykle zaczynają się od głównych stablecoinów i innych płynnych aktywów, zanim rozszerzy się zestaw.",
+      "Sprawdź aktywną konfigurację wdrożenia lub interfejsu, aby zobaczyć dokładne zasoby aktualnie dostępne do pożyczania.",
+      "Moc pożyczkowa jest sumą zatwierdzonych LP-pozycji wkładów w ramach jednego Spoke pożyczkowego. Nie jest przypisana do puli w abstrakcji i nie jest jednym niepodzielnym numerem konta oderwanym od podstawowych pozycji.",
+      "Zasada praktyczna:",
+      "Im bliżej pożyczasz do maksymalnej zdolności, tym mniej masz miejsca na ruchy cen, skoki zmienności i obniżki wartości możliwej do odzyskania.",
+      "Zalecane:",
+      "Ramowy plan likwidacji"
+    ]
+  },
+  "getting-started/claim-lp-fees": {
+    "meta": {
+      "title": "Opłaty roszczenia LP",
+      "description": "Roszczenie narosło LP opłat w Avana bez pełnego rozliczenia LP kapitału, o ile konto pozostaje w dobrej kondycji po roszczeniu."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "jak-to-działa",
+        "title": "Jak to działa"
+      },
+      {
+        "id": "kontrole zdrowotne",
+        "title": "Kontrole zdrowotne"
+      },
+      {
+        "id": "rozliczanie opłat",
+        "title": "Księgowość opłat"
+      },
+      {
+        "id": "kluczowe korzyści",
+        "title": "Kluczowe korzyści"
+      }
+    ],
+    "strings": [
+      "Opłaty roszczenia LP",
+      "Roszczenie narosło LP opłat w Avana bez pełnego rozliczenia LP kapitału, o ile konto pozostaje w dobrej kondycji po roszczeniu.",
+      "Przegląd",
+      "Jak to działa",
+      "Kontrole zdrowotne",
+      "Księgowość opłat",
+      "Kluczowe korzyści",
+      "Pobierz dochód z opłat bez zamykania pozycji zabezpieczającej, pod warunkiem że konto nadal przechodzi kontrole stanu po odjęciu opłat.",
+      "Avana traktuje główną płynność i naliczone opłaty jako różne części tej samej pozycji LP. To rozdzielenie umożliwia uzyskanie przychodów z opłat bez konieczności rozmontowywania głównej płynności, która nadal jest używana jako zabezpieczenie.",
+      "Roszczenie opłat nadal wpływa na stan zabezpieczenia, więc jest sprawdzane jak każda inna akcja, która usuwa uznaną wartość z konta. Nie jest to po prostu wygodny przycisk nałożony na protokół.",
+      "Protokół używa odpowiedniej dla miejsca ścieżki pobierania opłat dla pozycji LP. W przypadku pozycji o skoncentrowanej płynności może to wyglądać jak wywołanie w stylu collect, które pozostawia kapitał na miejscu. Dla wymiennych LP używana jest własna ścieżka roszczeń opłat miejsca, jeśli takie miejsce ją udostępnia.",
+      "Ważna zasada na poziomie protokołu jest spójna we wszystkich LP typach: zgłaszaj tylko składnik opłaty, utrzymuj aktywną pozycję główną, gdy to możliwe, i synchronizuj wynikowy stan pozycji z powrotem do Borrow Spoke.",
+      "Kontrolka Borrow Spoke sprawdza zdrowie wokół roszczenia o opłatę, ponieważ naliczone opłaty mogą nadal liczyć się do uznanego bufora zabezpieczenia, dopóki nie zostaną usunięte z pozycji.",
+      "Jeśli usunięcie zgłaszanej wartości opłaty spowodowałoby, że konto znajdowałoby się zbyt blisko granicy dozwolonego zadłużenia lub ją przekroczyło, ścieżka zgłoszenia powinna zostać zablokowana aż do momentu zmniejszenia długu lub dodania większego zabezpieczenia.",
+      "Oracle oddziela główną płynność od naliczonych opłat, aby model kredytowy mógł śledzić je obok siebie, zamiast udawać, że LP to jedna stała wartość tokena.",
+      "Ten podział księgowy ma również znaczenie przy likwidacji, gdzie naliczone opłaty mogą być stosowane zanim protokół będzie musiał zlikwidować kapitał LP płynności.",
+      "Wyrocznie cenowe",
+      "Ramowy plan likwidacji",
+      "Zarobione opłaty można zrealizować bez całkowitego zamknięcia pozycji zabezpieczającej",
+      "Ten sam silnik ryzyka, który wycenia LP, również zapobiega nadmiernemu wyciąganiu wartości przez roszczenia opłat"
+    ]
+  },
+  "getting-started/manage-loans": {
+    "meta": {
+      "title": "Zarządzaj pożyczkami",
+      "description": "Zarządzaj otwartym zadłużeniem wobec LP zabezpieczenia w Avana, kontrolując stan zdrowia, ostrożnie aktualizując pozycje i pozostając w granicach ramion i centrum."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "więcej-pożyczania",
+        "title": "Pożyczanie więcej"
+      },
+      {
+        "id": "monitorowanie zdrowia",
+        "title": "Monitorowanie zdrowia"
+      },
+      {
+        "id": "kontrola operacyjna",
+        "title": "Kontrola operacyjna"
+      },
+      {
+        "id": "zmiany pozycji",
+        "title": "Zmiany pozycji"
+      },
+      {
+        "id": "ograniczenia klucza",
+        "title": "Kluczowe Ograniczenia"
+      }
+    ],
+    "strings": [
+      "Zarządzaj pożyczkami",
+      "Zarządzaj otwartym zadłużeniem wobec LP zabezpieczenia w Avana, kontrolując stan zdrowia, ostrożnie aktualizując pozycje i pozostając w granicach ramion i centrum.",
+      "Przegląd",
+      "Pożyczanie więcej",
+      "Monitorowanie zdrowia",
+      "Kontrola operacyjna",
+      "Zmiany pozycji",
+      "Kluczowe Ograniczenia",
+      "Zarządzanie otwartą pożyczką oznacza traktowanie zabezpieczenia, długu i stanu miejsca jako jednej aktywnej pozycji zamiast oddzielnych działań.",
+      "Aktywna Avana pożyczka ciągle się zmienia, nawet gdy pożyczkobiorca nic nie robi. LP zapasy przesuwają się, opłaty narastają, rynki zmieniają wyceny, a dostępna płynność w Hubie może się zmieniać. Dobre zarządzanie pożyczką oznacza śledzenie tych zmieniających się elementów razem, zamiast patrzenia tylko na samą kwotę zadłużenia w izolacji.",
+      "Pożyczanie więcej jest możliwe tylko wtedy, gdy Oś Pożyczkowa nadal wykazuje niewykorzystaną pojemność po ponownej wycenie bieżących pozycji i gdy Centrum nadal może dostarczyć żądany aktyw.",
+      "Częściowa spłata działa w przeciwnym kierunku. Natychmiast zmniejsza zadłużenie, poprawia kondycję finansową i często tworzy przestrzeń potrzebną do późniejszych działań, takich jak wypłaty, zmiana zakresu lub zastępowanie zabezpieczenia.",
+      "Zdrowy:",
+      "Dostosowana wartość zabezpieczenia pozostaje komfortowo powyżej długu, pozostawiając miejsce na zwykłe wahania cen i dryf pozycji.",
+      "Lista obserwowanych:",
+      "konto wciąż przechodzi kontrole, ale pozostała rezerwa robi się cienka. To czas na spłatę, dodanie zatwierdzonego zabezpieczenia lub ograniczenie ekspozycji, zanim warunki się pogorszą.",
+      "Podlegający likwidacji:",
+      "Dług zbliżył się zbyt blisko lub przekroczył dozwoloną granicę zadłużenia, więc ramy likwidacyjne mogą przejąć kontrolę.",
+      "Dla definicji kanonicznej użyj",
+      "Wskaźnik zdrowia",
+      "Spłać część długu, aby odbudować bufor",
+      "Dodaj więcej zatwierdzonego LP zabezpieczenia do tego samego Punktu Pożyczki",
+      "Roszcz opłaty narosłe tylko wtedy, gdy konto nadal przechodzi kontrole stanu zdrowia po roszczeniu",
+      "Wycofuj lub zmień rozmiar zabezpieczenia tylko wtedy, gdy pozostałe konto nadal pozostaje w dobrej kondycji",
+      "Pozycje o skoncentrowanej płynności mogą wymagać zmiany zakresu lub wymiany w miarę ruchu ceny rynkowej. Wymienne LP pozycje mogą być zmieniane pod względem rozmiaru lub rotowane w ramach obsługiwanego zestawu zabezpieczeń.",
+      "Protokół nie traktuje tych ruchów jako kosmetycznych poprawek. Każda zmiana, która zmienia LP ekspozycję, jest cofana przez te same procedury zatwierdzania, wyceny i kontroli zdrowotnej stosowane do depozytów i pożyczek.",
+      "Zmiany zabezpieczenia nie mogą pozostawiać pozostałego zadłużenia powyżej dozwolonej pojemności ramienia",
+      "Nowe lub zastępcze stanowiska muszą pozostać w ramach zatwierdzonego zbioru",
+      "Działania związane z pożyczaniem wciąż zależą od płynności Hub i aktywnych limitów",
+      "Trzymać",
+      "Ramowy plan likwidacji",
+      "Czynniki zabezpieczenia"
+    ]
+  },
+  "getting-started": {
+    "meta": {
+      "title": "Rozpoczęcie - Wpłata LP",
+      "description": "Dowiedz się, jak wspierane LP pozycje wchodzą Avana jako zabezpieczenie i jak każda przyjęta pozycja zaczyna zwiększać zdolność pożyczkową w ramach Borrow Spoke."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "przepływ depozytu",
+        "title": "Przepływ depozytów"
+      },
+      {
+        "id": "szczegóły techniczne",
+        "title": "Szczegóły techniczne"
+      },
+      {
+        "id": "obsługiwane-tokeny-lp",
+        "title": "Obsługiwane LP typy stanowisk"
+      },
+      {
+        "id": "po wpłacie",
+        "title": "Po wpłacie"
+      }
+    ],
+    "strings": [
+      "Rozpoczęcie - Wpłata LP",
+      "Dowiedz się, jak wspierane LP pozycje wchodzą Avana jako zabezpieczenie i jak każda przyjęta pozycja zaczyna zwiększać zdolność pożyczkową w ramach Borrow Spoke.",
+      "Przegląd",
+      "Przepływ depozytów",
+      "Szczegóły techniczne",
+      "Obsługiwane LP typy stanowisk",
+      "Po wpłacie",
+      "Skoncentrowane pozycje płynności",
+      "NFT ograniczony zakresem lub oparty na menedżerze pozycji LPs",
+      "Zakres, pozycja kroku i naliczanie opłat są częścią ścieżki wyceny.",
+      "Zbywalne stabilne lub skorelowane LPs",
+      "Akcje puli o stabilnej wymianie i ściśle skorelowane",
+      "Inwentaryzacja puli i jakość wycofania napędzają konserwatywną zdolność kredytową.",
+      "Ważone i wieloekresowe LPs",
+      "Koszyki ważone i pule wielomianowe",
+      "Każda obsługiwana rodzina jest przyjmowana tylko za pośrednictwem zatwierdzonych szablonów puli.",
+      "Depozyt LP",
+      "Depozyt przenosi obsługiwane stanowisko LP pod opiekę spokes, aby Avana mógł je uwzględnić jako zabezpieczenie i przekształcić w zdolność do pożyczania.",
+      "Wpłacanie to sposób, w jaki pozycja LP staje się użyteczna w Avana. Gniazdo Pożyczkowe przejmuje opiekę nad wspieraną pozycją, rejestruje stan potrzebny do wyceny i zaczyna traktować tę pozycję jako zabezpieczenie, a nie jako aktywo przechowywane w portfelu.",
+      "To nie oznacza, że płynność znika z podstawowego rynku. Pozycja może pozostać aktywna w AMM, podczas gdy „spoke” śledzi jej ekspozycję, stan opłat i traktowanie ryzyka do późniejszych kontroli pożyczek i likwidacji.",
+      "Ważne:",
+      "Avana nie przyznaje uprawnienia do zaciągania pożyczek tylko dlatego, że istnieje stanowisko LP. Stanowisko musi należeć do zatwierdzonej rodziny pul, przejść kontrole wyceny i pasować do obecnej konfiguracji ryzyka punktu bocznego.",
+      "1. Przenieś lub zatwierdź stanowisko LP",
+      "Użytkownik przekazuje obsługiwaną pozycję LP do odpowiedniego Borrow Spoke. Dokładna ścieżka zależy od tego, czy zabezpieczenie jest wymienne, czy specyficzne dla pozycji, ale wynik protokołu jest taki sam: spoke musi kontrolować aktywo, zanim będzie mogło je traktować jako zabezpieczenie.",
+      "2. Zweryfikuj rodzinę puli",
+      "Następnie spoke potwierdza, że pozycja należy do zatwierdzonego poola lub szablonu. Ta kontrola jest w rzeczywistości pakietem wymagań: musi istnieć pokrycie Oracle, musi istnieć wsparcie dla routingu i likwidacji, a wdrożenie musi już mieć ustawienia ryzyka dla tej rodziny LP.",
+      "3. Stan pozycji pamięci podręcznej",
+      "Gdy pozycja zostanie przyjęta, protokół przechowuje stan, którego potrzebuje do późniejszego odtworzenia pozycji. Obejmuje to metadane wymagane do odtworzenia ekspozycji, monitorowania naliczonych opłat i odświeżania mocy pożyczkowej w miarę zmian cen lub warunków w puli.",
+      "4. Dodaj pozycję do łącznej pojemności",
+      "Po zastosowaniu wyceny i rabatów ryzyka, pozycja dodaje własny wkład do całkowitej zdolności kredytowej użytkownika w ramach danego szczebla pożyczkowego. Kiedy użytkownik później pożycza, Hub opiera się na tym uaktualnieniu zdolności po stronie szczebla.",
+      "Wycena uwzględniająca pozycję:",
+      "Sam depozyt nie blokuje stałej kwoty pożyczki. Moc kredytowa jest przeliczana z aktualnej pozycji LP przy użyciu stosu orakli i modelu współczynnika zabezpieczenia za każdym razem, gdy protokół potrzebuje zaktualizowanego widoku.",
+      "Powiernictwo specyficzne dla formatu:",
+      "Niektóre LP pozycje to tokeny zamienne, podczas gdy inne to pozycje o skoncentrowanej płynności z dodatkowymi metadanymi. Borrow Spoke obsługuje te różnice w przechowywaniu, tak aby reszta systemu kredytowego mogła nadal o nich rozumować w spójny sposób.",
+      "Dostarczanie zabezpieczenia nie oznacza zamknięcia LP. Ścieżka wycofania jest zarezerwowana na późniejsze działania użytkownika lub likwidację, a nie na samą początkową wpłatę.",
+      "Rodzina",
+      "Przykłady",
+      "Notatki przyjęcia",
+      "Dokładne wsparcie na żywo jest regulowane przez zatwierdzoną listę puli. Zobacz",
+      "Dozwolone LP pule",
+      "Każda zatwierdzona pozycja teraz wnosi swoją własną zdyskontowaną wartość do zdolności pożyczkowej na poziomie szprychy",
+      "Główna kwota LP pozostaje aktywna w podstawowej puli i może nadal naliczać opłaty",
+      "Rzeczywiste pożyczanie nadal zależy od płynności centrum, kontroli stanu ramion oraz limitów współczynnika zabezpieczenia",
+      "Następnym krokiem w normalnym przebiegu jest",
+      "Pożycz aktywa"
+    ]
+  },
+  "getting-started/repay-loans": {
+    "meta": {
+      "title": "Spłacać pożyczki",
+      "description": "Jak spłata zmniejsza zadłużenie w Avana, aktualizuje udziały w zadłużeniu, rozlicza się z Hub i oczyszcza drogę do zwolnienia zabezpieczenia."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "proces spłaty",
+        "title": "Proces spłaty"
+      },
+      {
+        "id": "szczegóły techniczne",
+        "title": "Szczegóły techniczne"
+      },
+      {
+        "id": "scenariusz-likwidacji",
+        "title": "Kiedy spłata jest pilna"
+      },
+      {
+        "id": "pełna spłata",
+        "title": "Pełna spłata"
+      }
+    ],
+    "strings": [
+      "Spłacać pożyczki",
+      "Jak spłata zmniejsza zadłużenie w Avana, aktualizuje udziały w zadłużeniu, rozlicza się z Hub i oczyszcza drogę do zwolnienia zabezpieczenia.",
+      "Przegląd",
+      "Proces spłaty",
+      "Szczegóły techniczne",
+      "Kiedy spłata jest pilna",
+      "Pełna spłata",
+      "Spłata zmniejsza zadłużenie, poprawia stan konta i zazwyczaj jest najczystszym sposobem na odzyskanie kontroli nad zastawem.",
+      "Spłata zmienia stronę zadłużenia konta bez zmiany samej pozycji LP. Kiedy zadłużenie spada, konto staje się od razu zdrowsze, ponieważ ta sama zabezpieczenie teraz wspiera mniejsze zobowiązanie.",
+      "Nie jest wymagane pełne spłacenie, aby spłata miała znaczenie. Nawet częściowa redukcja może przywrócić użyteczną przestrzeń, gdy konto zbliża się do granicy likwidacji.",
+      "1. Wybierz kwotę:",
+      "spłacić część kwoty, aby odzyskać trochę swobody finansowej, lub spłacić cały dług, aby całkowicie pozbyć się zobowiązania.",
+      "2. Prześlij aktywo dłużne:",
+      "Spłata jest przekierowywana z powrotem przez Wypożyczający Punkt i potrącana z zaległego zobowiązania.",
+      "3. Przelicz zdrowie:",
+      "Gdy udziały długu zostaną zmniejszone, współczynnik zdrowia konta i pozostała pojemność aktualizują się zgodnie z nowym, niższym saldem długu.",
+      "Spłata jest zasadniczo redukcją udziału w długu. Niezależnie od tego, czy użytkownik spłaca określając kwotę aktywów, czy w miejscach, gdzie to możliwe, kwotę udziału, protokół przekształca płatność w mniejszą liczbę niewyłączonych udziałów w długu, a tym samym mniejszy dług.",
+      "Polecenie Pożyczki aktualizuje lokalny stan zadłużenia i rozlicza spłatę w odniesieniu do księgowości płynności po stronie Hub, tak aby współdzielona warstwa płynności i warstwa LP-zabezpieczenia miały ten sam obraz konta.",
+      "Kiedy konto zbliża się do likwidacji, spłata jest jednym z najszybszych sposobów na poprawę bezpieczeństwa, ponieważ bezpośrednio zmniejsza zadłużenie. Nie zależy to od oczekiwania na odbudowę rynku ani od najpierw wniesienia dodatkowego zabezpieczenia.",
+      "Gdy granica likwidacji zostanie przekroczona, korzeń",
+      "Ramowy plan likwidacji",
+      "Gdy zadłużenie osiągnie zero, konto nie potrzebuje już zabezpieczenia, aby utrzymać aktywną pożyczkę. W tym momencie pozycje LP przypisane do tego konta mogą wrócić do normalnej kontroli użytkownika poprzez ścieżkę wypłaty zabezpieczenia.",
+      "W zależności od wdrożenia zabezpieczenia, ostateczne wydanie może nastąpić automatycznie lub poprzez wyraźne działanie następcze. Zobacz",
+      "Wycofaj Zabezpieczenie"
+    ]
+  },
+  "getting-started/withdraw-collateral": {
+    "meta": {
+      "title": "Wycofaj Zabezpieczenie",
+      "description": "Jak LP zabezpieczenia opuszcza Avana po spłacie długu lub po tym, jak pozostałe konto nadal przechodzi kontrole zdrowotne bez wycofanej pozycji."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "proces wycofywania",
+        "title": "Proces wypłaty"
+      },
+      {
+        "id": "modyfikacje pozycji",
+        "title": "Modyfikacje pozycji"
+      },
+      {
+        "id": "po wycofaniu",
+        "title": "Po wycofaniu"
+      }
+    ],
+    "strings": [
+      "Wycofaj Zabezpieczenie",
+      "Jak LP zabezpieczenia opuszcza Avana po spłacie długu lub po tym, jak pozostałe konto nadal przechodzi kontrole zdrowotne bez wycofanej pozycji.",
+      "Przegląd",
+      "Proces wypłaty",
+      "Modyfikacje pozycji",
+      "Po wycofaniu",
+      "Zabezpieczenie może opuścić Punkt Pożyczkowy tylko wtedy, gdy konto nadal będzie w stanie obsłużyć swój dług po usunięciu lub zmianie rozmiaru żądanej pozycji.",
+      "Wycofanie zabezpieczenia jest odwrotnością depozytu, ale nie jest to tylko transfer aktywów. Zanim protokół zwolni pozycję LP, musi udowodnić, że usunięcie tego zabezpieczenia nie pozostawi pozostałego długu niedobezpieczonego.",
+      "Pełna spłata zadłużenia jest najczystszą ścieżką, ponieważ całkowicie eliminuje potrzebę zabezpieczenia. Jednak Avana może również pozwolić na pewne zmiany zabezpieczenia, podczas gdy zadłużenie pozostaje otwarte, jeśli konto po zmianach nadal przechodzi te same kontrole wyceny i zdrowia, które są stosowane wszędzie w systemie.",
+      "1. Zmniejsz lub spłać dług:",
+      "2. Przelicz ponownie zdolność kredytową:",
+      "Funkcja Borrow Spoke przelicza konto po usunięciu żądanej pozycji LP lub jej zmianie rozmiaru, zamiast zakładać, że stara pojemność nadal obowiązuje.",
+      "3. Zwolnij pozycję LP:",
+      "jeśli stan zdrowia po wypłacie jest prawidłowy, protokół zwraca lub odblokowuje zabezpieczenie, aby użytkownik mógł nim ponownie zarządzać poza rozgałęzieniem.",
+      "Nie każda zmiana zabezpieczenia jest pełnym wyjściem. Użytkownik może zmienić rozmiar pozycji zamiennej LP, zastąpić zakres płynności skoncentrowanej lub przejść do innej zatwierdzonej pozycji, zachowując otwartą tę samą pożyczkę.",
+      "Te zmiany są ważne tylko wtedy, gdy nowy lub pozostały zabezpieczenie nadal należy do zatwierdzonego zestawu, a wynikowe konto pozostaje powyżej granicy likwidacji po zastosowaniu zmiany.",
+      "Pozycja LP wraca do normalnej kontroli użytkownika",
+      "Użytkownik może zachować to w podstawowym pulie, zmienić jego zakres lub całkowicie wycofać płynność",
+      "Depozyt LP"
+    ]
+  },
+  "integrations/allowed-pools": {
+    "meta": {
+      "title": "Dozwolone LP pule",
+      "description": "Lista dozwolonych przez zarządzanie i kryteria przeglądu dla LP pul, które Avana jest gotów przyjąć jako zabezpieczenie."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "kryteria recenzji",
+        "title": "Kryteria oceny"
+      },
+      {
+        "id": "basen-rodziny",
+        "title": "Rodziny basenowe"
+      },
+      {
+        "id": "zastosowanie ryzyka",
+        "title": "Zastosowanie ryzyka"
+      },
+      {
+        "id": "notatki-integracyjne",
+        "title": "Notatki z integracji"
+      }
+    ],
+    "strings": [
+      "Dozwolone LP pule",
+      "Lista dozwolonych przez zarządzanie i kryteria przeglądu dla LP pul, które Avana jest gotów przyjąć jako zabezpieczenie.",
+      "Przegląd",
+      "Kryteria oceny",
+      "Rodziny basenowe",
+      "Zastosowanie ryzyka",
+      "Notatki z integracji",
+      "Stabilne i powiązane pule",
+      "Często najłatwiej przyznać, gdy wycena jest wiarygodna, zachowanie kursu ustalone, a głębokość rozliczeń pozostaje silna.",
+      "Zmiennymi basenami blue-chip",
+      "Może być wspierany, ale zwykle przy bardziej konserwatywnych czynnikach zabezpieczenia, kontrolach płynności i surowszych założeniach dotyczących likwidacji.",
+      "Skoncentrowane pozycje płynności",
+      "Wymaga wyceny na poziomie pozycji oraz ostrożnego obchodzenia się z aktywnym zakresem, jednostronnym zapasem i stanem opłat.",
+      "Projekty niestandardowe lub eksperymentalne",
+      "Potrzebne jest wyraźne wsparcie dla wyroczni, przechowywania i likwidacji, zanim będzie można w ogóle rozważać ich dodanie do listy dozwolonych.",
+      "Niezawodne zewnętrzne pokrycie cenowe dla aktywów bazowych",
+      "Wystarczająca głębokość puli i wiarygodne ścieżki wycofania podczas likwidacji",
+      "Jasne zasady dopuszczalności dla szablonu rodziny lub szprychy LP",
+      "Akceptowalny profil stężenia, zmienności i stabilności powiązania",
+      "Wsparcie operacyjne w zakresie indeksowania, obsługi opłat i kierowania likwidacją",
+      "Lista dozwolonych kontrolowana przez zarządzanie dla pul i LP rodzin Avana została przygotowana do akceptacji jako zabezpieczenie.",
+      "Avana akceptuje tylko LP zabezpieczenia z puli lub szablonów, które zostały już sprawdzone i zatwierdzone. Lista dozwolonych istnieje, ponieważ wsparcie LP nie jest tylko kwestią marki miejsca ani formatu tokena. Protokół potrzebuje wystarczających informacji, aby wycenić pozycję, zarządzać likwidacją i ograniczyć ryzyko, które podejmuje.",
+      "Zatwierdzenie puli działa obok",
+      "Czynniki zabezpieczenia",
+      "Ramy ryzyka",
+      "Lista dozwolonych decyduje, czy pula może wejść do systemu; współczynniki zabezpieczenia decydują, jaką wartość pożyczkową może wnieść każda dopuszczona pozycja.",
+      "Pula wchodzi na listę dozwolonych tylko wtedy, gdy protokół potrafi za każdym razem odpowiedzieć na te same podstawowe pytania: czy potrafi wycenić pozycję, czy może zamknąć pozycję i czy potrafi monitorować ryzyko w środowisku produkcyjnym.",
+      "Zatwierdzenie puli nie oznacza, że pozycja otrzymuje hojne traktowanie kredytowe. Po przyjęciu puli każda pozycja LP jest nadal oceniana indywidualnie, dyskontowana zgodnie z jej traktowaniem ryzyka, a następnie dodawana do zdolności kredytowej użytkownika w ramach Borrow Spoke.",
+      "Dlatego zatwierdzenie puli i wycena zabezpieczenia są ściśle powiązane. Pula może być wystarczająco bezpieczna, aby ją przyjąć, a jednocześnie wymagać konserwatywnych limitów, niższych LTV lub surowszego zarządzania likwidacją po uruchomieniu.",
+      "Budowniczy powinni myśleć w kategoriach zatwierdzonych szablonów puli i specyficznych dla wdrożenia list dozwolonych, a nie tak, jakby każdy LP na terenie był automatycznie dostępny.",
+      "Nowe rodziny puli zazwyczaj wymagają skoordynowanej pracy w zakresie obsługi oracle, routingu likwidacyjnego, limitów ryzyka i infrastruktury monitorującej, zanim będzie bezpieczne ich włączenie."
+    ]
+  },
+  "integrations/appkit": {
+    "meta": {
+      "title": "AppKit",
+      "description": "Przewodnik dla deweloperów dotyczący umieszczania AppKit, przekazywania partnerowi oraz sposobu, w jaki kredyt Avana jest osadzany w powierzchniach produktów stron trzecich bez przenoszenia logiki ryzyka poza Avana."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "model-integracji",
+        "title": "Model integracji"
+      },
+      {
+        "id": "kontrola-partnera",
+        "title": "Kontrola partnera"
+      },
+      {
+        "id": "notatki z wydania",
+        "title": "Notatki z uruchomienia"
+      }
+    ],
+    "strings": [
+      "AppKit",
+      "Przewodnik dla deweloperów dotyczący umieszczania AppKit, przekazywania partnerowi oraz sposobu, w jaki kredyt Avana jest osadzany w powierzchniach produktów stron trzecich bez przenoszenia logiki ryzyka poza Avana.",
+      "Przegląd",
+      "Model integracji",
+      "Kontrola partnera",
+      "Notatki z uruchomienia",
+      "Przechwytywanie intencji",
+      "AppKit należy tam, gdzie użytkownicy już rozumieją swoje pozycje LP, stan portfela lub kontekst swapu, więc wpis pożyczki pojawia się obok istniejącego zamiaru zamiast wymuszać zupełnie nowy proces.",
+      "Przekazanie protokołu",
+      "Partner przekazuje portfel i kontekst rynku do Avana. Następnie przepływ pożyczki może zostać otwarty z już ustawionym tym kontekstem, zamiast prosić użytkownika o jego ręczne odtworzenie.",
+      "Ekonomia partnerów",
+      "Partnerzy mogą korzystać ze struktur przychodów opartych na poleceniach, kierowaniu lub integracji, ale nie stają się pożyczkodawcą ani silnikiem ryzyka. Avana zachowuje kredyt, ryzyko i rozliczenia.",
+      "Umieść wpis kredytowy w pobliżu pozycji LP lub w widoku portfela, któremu użytkownik już ufa.",
+      "Przekaż portfel i kontekst rynku do procesu pożyczki, aby przekazanie nie wydawało się resetem.",
+      "Pozostaw ryzyko i rozliczenie na Avana. Nie przebudowuj logiki wyceny szprych ani likwidacji w interfejsie partnera.",
+      "Zdecyduj o treści, umiejscowieniu i blokadach uruchomieniowych przed startem, ponieważ kształtują one integrację, a nie tylko warstwę wykończeniową.",
+      "Gdzie powierzchnia kredytu pojawia się w produkcie",
+      "Które segmenty użytkowników widzą punkt wejścia do pożyczki",
+      "Ile edukacji lub wyjaśnień pojawia się wraz z przekazaniem",
+      "Czy produkt korzysta z pełnego zintegrowanego transferu, czy z lżejszego wejścia zachowującego kontekst",
+      "Jak partnerzy wprowadzają kredyt wspierany przez Avana LP, podczas gdy Avana zachowuje odpowiedzialność za pożyczanie, ryzyko i rozliczenia.",
+      "AppKit dotyczy produktów firm trzecich, które już mają relację z użytkownikiem, takich jak DEX-y, portfele i aplikacje do zarządzania portfelem, w których pozycje LP są już widoczne. Produkt partnerski określa moment, przechwytuje kontekst i decyduje, gdzie pojawia się wpis pożyczki. Avana realizuje faktyczną ścieżkę pożyczki.",
+      "Ta strona dotyczy rozmieszczenia, przekazania i dyscypliny uruchamiania. Partner odpowiada za powierzchnię użytkownika i dystrybucję. Avana odpowiada za zasady przyznawania kredytów, rozliczenia i mechanikę krytyczną dla bezpieczeństwa stojącą za przepływem.",
+      "AppKit nie narzuca jednego modelu prezentacji. Partnerzy kontrolują punkty wejścia i ilość otaczających wskazówek, pozostawiając decyzje dotyczące protokołu wewnątrz Avana.",
+      "Uwagi dotyczące implementacji",
+      "Najlepsze integracje wydają się kontynuacją istniejącego przepływu produktu, a nie gwałtownym przeskokiem do niezwiązanego z tym aplikacji pożyczkowej. Te notatki stanowią praktyczną bazę do prawidłowego przekazania.",
+      "Uruchom AppKit jako projekt integracyjny, a nie tylko jako umieszczenie linku. Potwierdź ścieżkę użytkownika, przejrzyj, gdzie znajduje się punkt wejścia, i upewnij się, że ścieżka kredytowa Avana pozostaje wyraźnie oddzielona od powłoki partnera, gdzie zmienia się odpowiedzialność.",
+      "Sprawdź także, co się dzieje, gdy powierzchnia kredytu jest ukryta, czy głębokie linki do procesu pożyczkowego są bezpieczne oraz jak obsługiwany jest brak kontekstu portfela, rynku lub zabezpieczenia."
+    ]
+  },
+  "integrations": {
+    "meta": {
+      "title": "Obsługiwane integracje",
+      "description": "Przewodnik świadomy rozmieszczenia po rodzinach miejsc, z którymi można się integrować Avana, kontrole, które muszą przejść, oraz prace przeglądowe wymagane przed uruchomieniem."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "zestaw aplikacji",
+        "title": "AppKit"
+      },
+      {
+        "id": "rodziny miejsc",
+        "title": "Rodzaje miejsc"
+      },
+      {
+        "id": "status-włączenia",
+        "title": "Status włączenia"
+      },
+      {
+        "id": "wymagania-przeglądu",
+        "title": "Wymagania dotyczące przeglądu"
+      }
+    ],
+    "strings": [
+      "Obsługiwane integracje",
+      "Przewodnik świadomy rozmieszczenia po rodzinach miejsc, z którymi można się integrować Avana, kontrole, które muszą przejść, oraz prace przeglądowe wymagane przed uruchomieniem.",
+      "Przegląd",
+      "AppKit",
+      "Rodzaje miejsc",
+      "Status włączenia",
+      "Wymagania dotyczące przeglądu",
+      "Platformy z skoncentrowaną płynnością",
+      "Te miejsca wymagają obsługi na poziomie pozycji, ponieważ wartość LP zależy od bieżącej ceny, aktywnego zakresu oraz tego, jak zapas jest podzielony w ramach pozycji.",
+      "Zbywalne pule stabilne i ważone",
+      "Te miejsca ujawniają ERC-20 LP udziałów, których wartość można odbudować na podstawie sald w puli, cen zewnętrznych i konserwatywnych założeń dotyczących likwidacji.",
+      "Projekty oparte na niestandardowych rozwiązaniach lub hookach",
+      "Bardziej zaawansowane architektury puli są możliwe do obsługi tylko wtedy, gdy Avana ma wyraźny model wyroczni, bezpieczną ścieżkę przechowywania i adapter likwidacyjny dla tego projektu.",
+      "Przewodnik referencyjny po rodzinach miejsc Avana, z którymi można współpracować oraz przez które bramki przeglądowe należy przejść, zanim wsparcie zostanie uruchomione.",
+      "Avana nie integruje miejsc tylko dlatego, że są popularne lub ujawniają LP tokenów. Wsparcie zależy od tego, czy protokół może dokładnie odtworzyć pozycję, ocenić ją konserwatywnie i zamknąć w sposób czysty, gdy wymagana jest likwidacja.",
+      "Ta strona jest odniesieniem do integracji, a nie panelem uruchamiania na żywo. Aby poznać zasady przyjmowania do puli, zobacz",
+      "Dozwolone LP pule",
+      ". W odniesieniu do założeń wyceny patrz",
+      "Wyrocznie cenowe",
+      "AppKit to ścieżka skierowana do partnerów dla produktów, które chcą wprowadzić Avana kredyt w istniejącą ścieżkę użytkownika zamiast wysyłać użytkowników do osobnego procesu bez kontekstu.",
+      "Przeczytaj",
+      "AppKit przewodnik dla dewelopera",
+      "dla kontroli partnerów, wzorców przekazywania i notatek dotyczących uruchomienia.",
+      "Czy miejsce jest aktywowane w danej sieci, jest decyzją wdrożeniową, a nie trwałą prawdą protokołu. Rodzina miejsc może być teoretycznie wspierana, ale wciąż wyłączona w konkretnym wdrożeniu, dopóki nie będą gotowe pokrycie orakla, routowanie likwidacji i parametry ryzyka.",
+      "Budowniczowie powinni weryfikować aktualną konfigurację wdrożenia w aplikacji, notatkach wydania lub opublikowanym rejestrze umów, zamiast czytać tę stronę jako macierz wsparcia w czasie rzeczywistym.",
+      "• Miejsce musi wspierać wycenę pozycji konserwatywnej na podstawie solidnych zewnętrznych cen i możliwej do zweryfikowania rekonstruowanej wartości stanu.",
+      "• Protokół potrzebuje niezawodnej ścieżki wycofania w celu likwidacji, w tym pobierania opłat i kierowania ich do aktywa dłużnego.",
+      "• Głębokość puli, ryzyko koncentracji, założenia dotyczące korelacji oraz monitorowanie operacyjne muszą wszystkie pasować do ram ryzyka.",
+      "• Wsparcie dla nowego miejsca odbywa się w ramach decyzji dotyczącej zarządzania i ryzyka, a nie tylko aktualizacji interfejsu czy scalania adaptera."
+    ]
+  },
+  "integrations/price-oracles": {
+    "meta": {
+      "title": "Wyrocznie cenowe",
+      "description": "Jak Avana Oracle wycenia LP zabezpieczenie poprzez zewnętrzne źródła danych, deterministyczną rekonstrukcję pozycji i zniżki wartości możliwe do odzyskania."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "interfejs-oracle",
+        "title": "Interfejs Oracle"
+      },
+      {
+        "id": "architektura wielowarstwowa",
+        "title": "Architektura wielowarstwowa"
+      },
+      {
+        "id": "obsługa DEX",
+        "title": "Specyficzne obsługiwanie DEX"
+      },
+      {
+        "id": "obliczanie TWAP",
+        "title": "Obliczanie TWAP"
+      },
+      {
+        "id": "środki bezpieczeństwa",
+        "title": "Bezpieczeństwo i zapobieganie manipulacji"
+      },
+      {
+        "id": "parametry konfigurowalne",
+        "title": "Parametry konfigurowalne"
+      }
+    ],
+    "strings": [
+      "Wyrocznie cenowe",
+      "Jak Avana Oracle wycenia LP zabezpieczenie poprzez zewnętrzne źródła danych, deterministyczną rekonstrukcję pozycji i zniżki wartości możliwe do odzyskania.",
+      "Przegląd",
+      "Interfejs Oracle",
+      "Architektura wielowarstwowa",
+      "Specyficzne obsługiwanie DEX",
+      "Obliczanie TWAP",
+      "Bezpieczeństwo i zapobieganie manipulacji",
+      "Parametry konfigurowalne",
+      "Ceny aktywów bazowych",
+      "Rezerwy basenu lub podział zapasów",
+      "Dla skoncentrowanej płynności, bieżący tick w odniesieniu do zakresu pozycji",
+      "Czy pozycja jest w zakresie, czy w większości jednostronna",
+      "Wyceniaj aktywa bazowe za pomocą zewnętrznych solidnych wyroczni",
+      "Zacznij od odpornych zewnętrznych źródeł danych dla aktywów bazowych, aby zabezpieczenie nie przejmowało całego szumu ani podatności na manipulacje surowego stanu spot puli.",
+      "Wyprowadź wartość LP konserwatywnie",
+      "Odbuduj wymienne LP salda lub rozłóż pozycje o skoncentrowanej płynności z rezerw, płynności, zakresu i opłat, używając deterministycznej ścieżki, którą może analizować punkt przyłączeniowy.",
+      "Obniżka na utratę tymczasową i poślizg likwidacyjny",
+      "Obniż wartość odtworzonej marki do odzyskiwalnej wartości zabezpieczenia, która uwzględnia stres, poślizg i nieidealne wyjścia, zamiast czystej wykupu po teoretycznej wartości NAV.",
+      "Ekspozycja czapki według LP głębokości rodziny i basenu",
+      "Stosuj kontrolki w oparciu o rodzinę LP, klasę puli oraz dostępną głębokość, aby płytsze lub bardziej złożone rynki nie otrzymywały takich samych limitów pożyczki jak głębsze i prostsze.",
+      "Likwidować na podstawie możliwej do odzyskania wartości wycofania, a nie optymistycznej wartości netto aktywów (NAV)",
+      "Używaj wartości, którą można rozsądnie zrealizować poprzez ścieżkę wycofania przy przyznawaniu mocy pożyczkowej i podejmowaniu decyzji o likwidacji, zamiast wartości oznaczonej w najlepszym scenariuszu.",
+      "Curve Stajnia/Stajnia ERC-20 LPs",
+      "Zewnętrzne źródła stablecoinów + sprawdzanie stanu puli + weryfikacja TWAP",
+      "Ceny zewnętrzne kotwiczą aktywa, podczas gdy salda pul i narastające opłaty określają zdyskontowaną wartość zabezpieczenia.",
+      "anqzjq66jjdlwshhtbc2",
+      "Chainlink + rekonstrukcja rezerwy + weryfikacja TWAP",
+      "Standardowe LP tokeny są wyceniane na podstawie zrekonstruowanych sald podstawowych, przy czym TWAP jest używany jako odporny na manipulacje mechanizm weryfikacyjny.",
+      "8lnoluegefipsa78b3ls",
+      "Chainlink + dekompozycja pozycji + kontrola tick/TWAP",
+      "NFT jest rozkładany według płynności, aktywnego zakresu i bieżącej ceny, a następnie potrącany o możliwą do odzyskania wartość likwidacyjną.",
+      "Balancer Wielo-aktywów LPs",
+      "Chainlink + ważona rekonstrukcja zapasów",
+      "Wielomonedowe pule używają zewnętrznych cen i ważonego stanu magazynowego puli do oszacowania konserwatywnej wartości zabezpieczenia.",
+      "SushiSwap / Aerodrome",
+      "Observacje pochodzące z puli weryfikują odtworzoną wartość i pomagają przeciwdziałać nadużyciom w ramach tej samej transakcji na rynkach o niższej płynności.",
+      "Weryfikacja TWAP oparta na blokach + Chainlink",
+      "Ceny zewnętrzne pozostają kotwicą, podczas gdy obserwacje blokowe weryfikują stan pozycji i korygują założenia.",
+      "Jak protokół przekształca stan pozycji LP w wartości zabezpieczenia istotne dla kredytu.",
+      "Avana Oracle nie jest pojedynczym wyszukiwaniem ceny. Jest to ścieżka wyceny, która przekształca pozycję LP w coś, co system pożyczkowy może wykorzystać do księgowania zabezpieczeń. Aby to zrobić bezpiecznie, łączy zewnętrzne źródła rynku, deterministyczne odtwarzanie LP oraz odpisy odzysku oparte na założeniach rozliczeniowych zamiast polegać wyłącznie na surowym stanie spot AMM.",
+      "Dokładne dane wejściowe zależą od rodzaju zabezpieczenia. Zbywalny LP jest rekonstruowany na podstawie sald, rezerw i opłat, podczas gdy skoncentrowaną płynność należy rozłożyć na zakres, płynność i bieżący kontekst cenowy. W obu przypadkach wynik jest przetwarzany przez logikę wartości możliwej do odzyskania, tak aby pożyczanie korzystało z konserwatywnej liczby zamiast zakładać bezproblemowe wyjście.",
+      "Ta różnica między wartością księgową a wartością możliwą do odzyskania jest tym, co sprawia, że wyrocznia jest użyteczna do pożyczania, a nie tylko do analiz. ERC-20 LPs, NFT LPs i pule wieloekwiwalentowe mogą korzystać z jednego wysokopoziomowego interfejsu tylko dlatego, że każda klasa przechodzi przez własne kontrole walidacji i odporności na manipulacje, zanim wartość dotrze do rozgałęzienia.",
+      "Interfejs Oracle: IOracle",
+      "Szprychy pożyczkowe potrzebują jednej wspólnej powierzchni kontraktowej, mimo że LP formatów różni się znacznie między DEX-ami. `IOracle` zapewnia ten wspólny kształt i utrzymuje oddzielnie wartość główną, naliczone opłaty i zarezerwowane bufory, aby późniejsza logika ryzyka nie musiała zgadywać, której części pozycji się przygląda:",
+      "funkcja getValue(uint256 tokenId, adres asset)",
+      "widok zewnętrzny zwraca (",
+      "uint256 pełnaWartość,",
+      "uint256 wartośćOpłaty,",
+      "uint256 wartośćRezerwy",
+      "pełnaWartość",
+      "Odtworzona wartość głównej płynności przed zastosowaniem późniejszych korekt stresowych likwidacji.",
+      "wartość opłaty",
+      "Wartość opłat naliczonych przez pozycję, które można rozpoznać wraz z kapitałem.",
+      "wartość rezerwowa",
+      "Zarezerwowana część zatrzymana na bufor dla wyroczni, rozliczenia i ryzyka protokołu.",
+      "Interfejs ukrywa specyficzne dla DEX-a mechanizmy przed podsystemem. Pozwala to temu samemu wywołującemu obsługiwać ERC-20 LP, NFT LP i pule wieloaktywowe przez jeden kształt zwracany, zachowując jednocześnie miejsce na konserwatywne, specyficzne dla rodziny zabezpieczeń traktowanie w tle.",
+      "LP wycena jest procesem etapowym, a nie pojedynczym odczytem ceny spot. Ścieżka orakula przechodzi przez następujące kroki:",
+      "Różne miejsca ujawniają różne fragmenty stanu, a oracle używa tych danych na różne sposoby. Ważne jest to, że dane specyficzne dla miejsca pomagają odtworzyć pozycję i zweryfikować wycenę; nie są one przyjmowane bezkrytycznie jako bezpośrednia wycena zabezpieczenia.",
+      "DEX / LP Typ",
+      "Źródło Oracle",
+      "Notatki",
+      "Obliczanie TWAP przez DEX",
+      "TWAPy są wejściami weryfikacyjnymi. Siedzą obok zewnętrznych cen aktywów i deterministycznej rekonstrukcji pozycji, aby sprawdzić, czy obserwowany stan puli jest zgodny z wiarygodną ścieżką wycofania. Pomagają odrzucać podejrzane lub krótkotrwałe zakłócenia, ale same w sobie nie zastępują szerszego modelu wyroczni.",
+      "Uniswap V2 i SushiSwap",
+      "34tjzvpqfj4bsyy295v5",
+      "Kontrole uwzględniające pozycję obejmują zakres znaczników, rozkład płynności i naliczone opłaty, dzięki czemu protokół może weryfikować rozłożoną ekspozycję tokenów każdego NFT LP, zamiast traktować NFT jako czarną skrzynkę.",
+      "Balancer",
+      "Obserwacje ważonych tokenów są łączone z wagami puli w celu weryfikacji podziałów zapasów wieloekwiwalentowych, zanim orakl przypisze konserwatywną wartość zabezpieczenia.",
+      "Curve",
+      "Obserwacje stablecoinów są używane głównie do wykrywania nieaktualnych źródeł danych, dryfu rezerw oraz krótkoterminowych anomalii, podczas gdy ceny zewnętrzne pozostają głównym punktem odniesienia.",
+      "Trader Joe i Aerodrome",
+      "Kumulacyjne obserwacje cen w oknie 30-60 minut pomagają zweryfikować stan puli o niższej płynności i przeciwdziałać manipulacjom w tej samej transakcji podczas kontroli zabezpieczeń.",
+      "Progi odchylenia",
+      "Nowe pożyczki lub likwidacje mogą zostać wstrzymane, gdy dane weryfikacyjne pochodzące z puli oddalają się zbytnio od zewnętrznych cen referencyjnych",
+      "maksymalnaRóżnica",
+      "maksymalnaRóżnicaCenyPuli",
+      "To utrzymuje stan implikowany przez pulę zgodny z cenami bazowych tokenów i ogranicza natychmiastową manipulację pulą lub nadużycia oracle w tym samym transakcji.",
+      "Limity Otwartych Pozycji",
+      "Ekspozycja jest ograniczona przez LP rodzinę, głębokość puli i złożoność zabezpieczenia, więc cieńsze rynki otrzymują bardziej rygorystyczne limity pożyczek.",
+      "Fryzury regeneracyjne",
+      "Wyrocznia dyskontuje teoretyczną LP wartość ze względu na straty nietrwałe, poślizg przy zamykaniu pozycji oraz założenia dotyczące wymuszonej likwidacji przed przyznaniem jakiejkolwiek mocy pożyczkowej.",
+      "Strażnik Wyroczni",
+      "Oracle Sentinel monitoruje stan kanałów i dane weryfikacyjne oraz może uruchomić tryb awaryjny, gdy dane są przestarzałe, naruszone lub niezgodne z kontrolami stanu pozycji.",
+      "Konfigurowalne parametry Oracle",
+      "Ustawienia konkretnego dla puli orakula są konfigurowane dla każdego tokena poprzez",
+      "ustawKonfiguracjęTokena",
+      ". Poniższa tabela pokazuje parametry definiujące, w jaki sposób token i powiązana z nim pula powinny być sprawdzane:",
+      "Parametr",
+      "Opis",
+      "Znak",
+      "Adres tokena zabezpieczenia",
+      "InterfejsAggregatorV3",
+      "Kanał Chainlink dla tokena bazowego",
+      "maksymalnyWiekKanału",
+      "Maksymalny dopuszczalny wiek źródła Chainlink",
+      "Basen",
+      "Specyficzny pul DEX (Uniswap V3, Balancer, Curve itp.)",
+      "sekundy TWAP",
+      "Okno do obliczania TWAP",
+      "Tryb",
+      "Tryb operacyjny Oracle (standardowy/zapasowy)",
+      "Maksymalna dopuszczalna odchyłka między ceną DEX a ceną weryfikacyjną",
+      "W praktyce zachowanie wyroczni wynika z kombinacji zewnętrznego wyceniania aktywów, LP logiki rekonstrukcji, traktowania wartości możliwej do odzyskania oraz ustawień na token, skonfigurowanych poprzez"
+    ]
+  },
+  "integrations/router-contract": {
+    "meta": {
+      "title": "Umowa na router",
+      "description": "Podręcznik operacyjny dla warstwy routera i adaptera Avana, w tym co koordynuje router, czego nie decyduje oraz jak publikowane jest wsparcie wdrożeniowe."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "rola-w-systemie",
+        "title": "Rola w systemie"
+      },
+      {
+        "id": "model-adaptera",
+        "title": "Model adaptera"
+      },
+      {
+        "id": "obsługiwane operacje",
+        "title": "Obsługiwane operacje"
+      },
+      {
+        "id": "status wdrożenia",
+        "title": "Status wdrożenia"
+      }
+    ],
+    "strings": [
+      "Umowa na router",
+      "Podręcznik operacyjny dla warstwy routera i adaptera Avana, w tym co koordynuje router, czego nie decyduje oraz jak publikowane jest wsparcie wdrożeniowe.",
+      "Przegląd",
+      "Rola w systemie",
+      "Model adaptera",
+      "Obsługiwane operacje",
+      "Status wdrożenia",
+      "Zgrupuj wywołania depozytów, wypłat i pobierania opłat specyficznych dla danego miejsca w czystszej warstwie interfejsu",
+      "Koordynować kroki rozluźnienia lub trasowania potrzebne do wykonania likwidacji",
+      "Obsługuj kontrolowane aktualizacje pozycji, takie jak zmiany zakresu lub przepływy migracyjne, gdy istnieje adapter miejsca",
+      "Udostępnij spójną powierzchnię integracyjną, nie stając się jednocześnie organem ryzyka lub wyceny protokołu",
+      "Warstwa interfejsu operacyjnego dla działań specyficznych dla danego miejsca, wywołań adaptera oraz wsparcia w trasowaniu związanym z likwidacją.",
+      "Router jest warstwą wykonawczą, a nie miejscem, w którym Avana decyduje o ryzyku. Istnieje, aby standaryzować działania specyficzne dla danego miejsca, tak aby protokół nie musiał rozpraszać mechanizmów depozytu, wypłaty, opłat i wycofywania w każdym procesie, który dotyka LP zabezpieczenia.",
+      "Czytaj tę stronę jako odniesienie operacyjne. W przypadku architektury kanonicznej zacznij od",
+      "Pożycz Szprychę",
+      "Ramowy plan likwidacji",
+      "Różne AMM miejsca oferują różne metody wejścia, wyjścia i pobierania opłat. Router daje Avana jedną warstwę integracyjną dla tych mechanik, dzięki czemu twórcy nie są zmuszeni traktować każdego miejsca jak w pełni niestandardowego systemu.",
+      "Router nigdy nie powinien być postrzegany jako miejsce, w którym decyduje się o czynnikach dodatkowych, kontrolach stanu zdrowia ani kwalifikowalności do likwidacji. Te kwestie pozostają zagadnieniami protokołu nadrzędnego w Borrow Spoke, Hub, stacku oracle i ramach ryzyka.",
+      "Każda obsługiwana rodzina miejsc powinna mieć adapter świadomy miejsca, który wie, jak pobierać opłaty, usuwać płynność i udostępniać działania potrzebne protokołowi dla tego formatu LP. To utrzymuje zachowanie specyficzne dla miejsca w izolacji, zamiast wyciekać do każdej ścieżki kodu skierowanej do użytkownika i likwidacji.",
+      "Wsparcie adaptera ma znaczenie tylko wtedy, gdy jest zgodne ze wsparciem wyceny i likwidacji. Nowy adapter sam w sobie nie sprawia, że miejsce jest bezpieczne dla przyjęcia zabezpieczenia.",
+      "Adresy routerów, rejestry adapterów i włączone sieci to dane dotyczące wdrożenia. Powinny być publikowane wraz z wydaniami, zamiast być zgadywane na podstawie dokumentacji. Ta strona celowo unika używania adresów zastępczych i spekulacyjnych obietnic wdrożenia.",
+      "• Sprawdź adresy specyficzne dla łańcucha w opublikowanym rejestrze kontraktów lub w notatkach o wydaniu.",
+      "• Potwierdź, że adapter lokalizacji, na którym polegasz, jest włączony w docelowej instalacji.",
+      "• Traktuj wsparcie routera jako zależność operacyjną, a nie jako dowód, że pula została przyjęta jako zabezpieczenie."
+    ]
+  },
+  "introduction/glossary": {
+    "meta": {
+      "title": "Słownik",
+      "description": "DeFi słownik dla Avana - definicje Spoke, Hub, LP NFT, współczynnika zabezpieczenia, udziałów w zadłużeniu, likwidacji, orakla i innych terminów protokołu."
+    },
+    "toc": [
+      {
+        "id": "podstawowe pojęcia",
+        "title": "Podstawowe koncepcje"
+      },
+      {
+        "id": "elementy protokołu",
+        "title": "Składniki protokołu"
+      },
+      {
+        "id": "terminy finansowe",
+        "title": "Terminy finansowe"
+      },
+      {
+        "id": "ryzyko-bezpieczeństwo",
+        "title": "Ryzyko i bezpieczeństwo"
+      },
+      {
+        "id": "metryki",
+        "title": "Metryki"
+      },
+      {
+        "id": "zastrzeżenia",
+        "title": "Zastrzeżenia"
+      }
+    ],
+    "strings": [
+      "Słownik",
+      "DeFi słownik dla Avana - definicje Spoke, Hub, LP NFT, współczynnika zabezpieczenia, udziałów w zadłużeniu, likwidacji, orakla i innych terminów protokołu.",
+      "Podstawowe koncepcje",
+      "Składniki protokołu",
+      "Terminy finansowe",
+      "Ryzyko i bezpieczeństwo",
+      "Metryki",
+      "Zastrzeżenia",
+      "Pożycz Szprychę",
+      "Interfejs dla pożyczkobiorcy Avana, który otrzymuje LP zabezpieczenia, wycenia pozycje, śledzi zadłużenie i koordynuje pożyczanie oraz likwidację względem płynności Hub.",
+      "Punkt wejścia kapitałowego skierowany do pożyczkodawcy, który kieruje dostarczone aktywa do Hubu, aby Borrow Spokes mogły korzystać ze wspólnej płynności.",
+      "Wspólna warstwa monetarna w Aave v4, która zarządza płynnością, rezerwami, księgowością oraz koordynacją kapitału w całym protokole między połączonymi odnogami.",
+      "Architektura typu gwiazda",
+      "Projekt, w którym wspólny kapitał znajduje się w Centrum, podczas gdy logika specyficzna dla zabezpieczenia jest izolowana w odgałęzieniach. Avana używa tego modelu, ponieważ LP zabezpieczenie wymaga wyceny i zachowania likwidacyjnego specyficznego dla miejsca.",
+      "Węzeł Likwidacji",
+      "Pozycja płynności z obsługiwanego AMM. W zależności od miejsca, może to być zamienny token LP, NFT o skoncentrowanej płynności lub inny zatwierdzony format udziału w puli.",
+      "Wskaźnik zabezpieczenia",
+      "Część wartości zabezpieczenia w USD, która może zostać uwzględniona przy określaniu zdolności kredytowej. Na rynkach LP stosuje się to na poziomie pozycji, a nie całego segmentu.",
+      "Zdolność kredytowa",
+      "Kwota, jaką użytkownik może pożyczyć w ramach Borrow Spoke po tym, jak każda zdeponowana pozycja LP została wyceniona, dostosowana do ryzyka i dodana do łącznej zdolności użytkownika.",
+      "Dozwolony basen",
+      "Pula zatwierdzona przez zarząd, która spełnia wymagania dopuszczalności, takie jak pokrycie przez wyrocznię, głębokość płynności, jakość zamykania pozycji i zgodność z odgałęzieniami.",
+      "Wskaźnik kredyt-wartość (LTV)",
+      "Wskaźnik zadłużenia związany z zabezpieczeniem po dokonaniu wyceny pozycji Avana i zastosowaniu kontroli ryzyka specyficznych dla puli.",
+      "Wewnętrzna jednostka księgowa używana do śledzenia zobowiązań pożyczkobiorcy, podczas gdy odsetki narastają w czasie, bez ciągłego przekształcania salda każdej pożyczki.",
+      "Stawka, którą pożyczkobiorcy płacą od zaległego zadłużenia. Odzwierciedla zarówno wspólne warunki Hub, jak i specyficzne dla LP czynniki ryzyka.",
+      "Wskaźnik wykorzystania",
+      "Proporcja pożyczonej płynności w stosunku do dostępnej podaży w odpowiedniej warstwie kapitałowej połączonej z Hubem.",
+      "Premia za ryzyko",
+      "Składnik specyficzny dla ryzyka nałożony na bazowe warunki pożyczki, aby odzwierciedlić profil LP zabezpieczenia będącego przedmiotem finansowania.",
+      "Wskaźnik rezerwy",
+      "Część ekonomii protokołu lub przepływów odsetkowych zarezerwowana dla systemu, a nie przekazywana w całości dostawcom płynności.",
+      "Wskaźnik zdrowia",
+      "Stosunek między skorygowaną wartością zabezpieczenia a zaległym zadłużeniem w ramach Borrow Spoke. Gdy spada zbyt nisko, pozycja zbliża się do kwalifikowalności do likwidacji.",
+      "Proces spłacania długu w oparciu o niezdrową pozycję zabezpieczoną LP, wycofanie wystarczającej ilości zabezpieczenia w celu przywrócenia wypłacalności oraz zwrot wszelkiej pozostałej wartości po rozliczeniu.",
+      "Premia likwidacyjna",
+      "Premia likwidacyjna wypłacana stronie realizującej rozwinięcie, rekompensująca jej wykorzystanie kapitału, złożoność trasowania oraz ryzyko realizacji.",
+      "Silnik wyceny Avana dla zabezpieczenia LP. Łączy zewnętrzne ceny aktywów, rekonstrukcję pozycji LP oraz zabezpieczenia wartości możliwej do odzyskania.",
+      "Wartość możliwa do odzyskania",
+      "Kwota, którą protokół uważa za realistycznie możliwą do osiągnięcia podczas stresowego wycofywania po uwzględnieniu poślizgu przy likwidacji, warunków puli i buforów ryzyka.",
+      "Kontrolowana modyfikacja zabezpieczonej LP pozycji, taka jak zbalansowanie lub zmiana zakresu, która jest dozwolona tylko wtedy, gdy wynikowa pozycja nadal spełnia kontrole zdrowotne protokołu.",
+      "Całkowita wartość aktywów dostarczonych jako LP zabezpieczenie lub kapitał w ramach Avana połączonych komponentów.",
+      "Zaległy dług",
+      "Kwota obecnie pożyczona pod zatwierdzone pozycje zabezpieczeń.",
+      "Wykorzystanie pożyczki",
+      "Udział dostępnej płynności Hub, która została wykorzystana przez pożyczkobiorców.",
+      "Dopuszczalny poziom zadłużenia",
+      "Różnica między bieżącym zadłużeniem użytkownika a pozostałą łączną zdolnością kredytową w ramach Wypożyczonego Segmentu.",
+      "Wartość rezydualna",
+      "Każda wartość pozostała na pozycji po uregulowaniu długu, premii likwidacyjnej i kosztów wykonania.",
+      "Zatwierdzenie basenu",
+      "Zasada, że tylko uprzednio zatwierdzone pule mogą być przyjmowane jako zabezpieczenie, ograniczając ryzyko związane z nieobsługiwanymi lub słabo nadzorowanymi rynkami.",
+      "Fryzura regeneracyjna",
+      "Limity ekspozycji",
+      "Limity ryzyka, które ograniczają możliwe do pożyczenia zaangażowanie według rodziny puli, klasy zabezpieczenia lub głębokości płynności.",
+      "Wyłącznik nadprądowy",
+      "Kontrola ryzyka, która może wstrzymywać lub ograniczać działania, gdy ceny, zachowanie rynku lub zależności protokołu stają się niespójne lub niebezpieczne.",
+      "Bezpieczeństwo zarządzania",
+      "Zestaw ról przeglądu, blokady czasowej, weta i awaryjnych używanych przez Ramy Ryzyka w celu utrzymania dyscypliny w zmianach parametrów.",
+      "Ochrona przed reentrancyjnym wywołaniem",
+      "Ochrona na poziomie kontraktu, która zapobiega ponownemu wejściu w przepływ pracy zmieniający stan, zanim pierwsze wykonanie zostanie zakończone.",
+      "Kanoniczne definicje terminologii specyficznej dla protokołu i DeFi używanej w całej dokumentacji.",
+      "LP & Zabezpieczenie",
+      "Dług i odsetki",
+      "Likwidacja",
+      "Oracle i Transform",
+      "Brak porady inwestycyjnej:",
+      "Avana to protokół oprogramowania. Niniejsza dokumentacja nie stanowi porady inwestycyjnej.",
+      "Ryzyko straty:",
+      "Użytkownicy mogą stracić środki z powodu podatności kontraktów inteligentnych, zmienności rynku, likwidacji lub manipulacji danymi przez orakle.",
+      "Status regulacyjny:",
+      "Status regulacyjny Avana i jego tokenów (jeśli istnieją) nie jest gwarantowany i może się różnić w zależności od jurysdykcji.",
+      "Brak gwarancji:",
+      "Oprogramowanie jest dostarczane „tak jak jest” bez żadnej gwarancji."
+    ]
+  },
+  "introduction/key-concepts": {
+    "meta": {
+      "title": "Kluczowe pojęcia",
+      "description": "Zrozum podstawowe pojęcia stojące za Avana, w tym LP zachowanie zabezpieczeń, konserwatywną wycenę, pożyczanie w Hub i likwidację."
+    },
+    "toc": [
+      {
+        "id": "kluczowa wiedza",
+        "title": "Kluczowy wgląd"
+      },
+      {
+        "id": "przepływ użytkownika",
+        "title": "Model pożyczania"
+      },
+      {
+        "id": "wycena-oracle",
+        "title": "Oracle i Wycena"
+      },
+      {
+        "id": "proces pożyczania",
+        "title": "Zdolność kredytowa"
+      },
+      {
+        "id": "monitorowanie zdrowia",
+        "title": "Zdrowie i Likwidacja"
+      },
+      {
+        "id": "pobór opłat",
+        "title": "Opłata za traktowanie"
+      }
+    ],
+    "strings": [
+      "Kluczowe pojęcia",
+      "Zrozum podstawowe pojęcia stojące za Avana, w tym LP zachowanie zabezpieczeń, konserwatywną wycenę, pożyczanie w Hub i likwidację.",
+      "Kluczowy wgląd",
+      "Model pożyczania",
+      "Oracle i Wycena",
+      "Zdolność kredytowa",
+      "Zdrowie i Likwidacja",
+      "Opłata za traktowanie",
+      "Pomysły, które pojawiają się wielokrotnie w dokumentach Avana dotyczących Zapożyczania, wyceny, pożyczania i likwidacji.",
+      "Pozycja LP to nie tylko token z ceną spot. Jest to aktywna pozycja płynności, której wartość zależy od aktywów bazowych, składu puli, akumulacji opłat, struktury pozycji oraz kwoty, jaką protokół mógłby realistycznie odzyskać w przypadku konieczności likwidacji.",
+      "Dlaczego to ma znaczenie:",
+      "Avana ubezpiecza LP rynków za pomocą specyficznych zasad dla poszczególnych rozgałęzień i pul, a nie jednego ogólnego modelu aktywów dla każdego z LP.",
+      "Użytkownicy deponują obsługiwane LP pozycje w Borrow Spoke. Pozycje mogą pozostać aktywne w ich pulach, podczas gdy protokół przejmuje opiekę w celu rozliczeń zabezpieczenia.",
+      "Każda zatwierdzona pozycja LP jest wyceniana indywidualnie. Po zastosowaniu czynników zabezpieczenia i kontroli ryzyka w ramach puli, jej zdyskontowany wkład jest dodawany do zdolności kredytowej w ramach tego Wierzchołka Pożyczkowego.",
+      "Kiedy użytkownik pożycza, spoke czerpie płynność z Hub. LP ryzyko rynkowe pozostaje na warstwie spoke, podczas gdy wspólne rozliczanie kapitału pozostaje w Hub.",
+      "Avana wartości LP zabezpieczeń konserwatywnie. Ceny aktywów zewnętrznych odzwierciedlają instrumenty bazowe, podczas gdy dane z puli i stan pozycji są używane do odbudowy ekspozycji zamiast polegania wyłącznie na surowym AMM wyniku spot.",
+      "Ceny aktywów bazowych z solidnych zewnętrznych źródeł",
+      "Podział zapasów puli lub rozkład pozycji z uwzględnieniem zakresu",
+      "Naliczone opłaty rozpoznawane oddzielnie od płynności kapitałowej",
+      "Odzyskiwanie cięć włosów w celu złagodzenia poślizgu, tymczasowej straty i stresującej likwidacji",
+      "Pojemność jest budowana pozycja po pozycji w ramach Borrow Spoke. Avana nie nakłada jednego ogólnego współczynnika na całe konto ani na każdy pul w obrębie spokes. Każda pozycja wnosi wkład dopiero po zastosowaniu jej własnych współczynników zabezpieczenia i kontrolowania specyficznego dla puli.",
+      "Szczegóły:",
+      "Czynniki zabezpieczenia",
+      "A Borrow Spoke porównuje skorygowaną wartość zabezpieczenia z zaległym zadłużeniem. Jeśli ceny, weryfikacje orakula lub zmiany pozycji zmniejszą pozostały bufor wystarczająco, konto może wejść w strefę likwidacji.",
+      "Zdrowie i likwidacja zależą od tej samej ścieżki wyceny. Ceny, czynniki zabezpieczenia i procedury likwidacyjne muszą pozostać zgodne, ponieważ ostatecznie wpływają na te same obliczenia wypłacalności.",
+      "LP pozycje mogą nadal naliczać opłaty handlowe, podczas gdy są używane jako zabezpieczenie. Avana może uwzględniać te opłaty w wycenie i, pod warunkiem przejścia kontroli stanu zdrowia, pozwolić użytkownikom je odebrać bez całkowitego wychodzenia z głównej LP pozycji.",
+      "Powiązane dokumenty:",
+      "Wyrocznie cenowe",
+      "Opłaty roszczenia LP"
+    ]
+  },
+  "introduction": {
+    "meta": {
+      "title": "",
+      "description": ""
+    },
+    "toc": [],
+    "strings": []
+  },
+  "introduction/testnet-roadmap": {
+    "meta": {
+      "title": "Testnet i mapa drogowa",
+      "description": "Przewodnik operacyjny po Avana testowych wdrożeniach i ramach planowania, w kontekście oceny, a nie reguł kanonicznego protokołu czy obietnic uruchomienia."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "zakres-sieci-testowej",
+        "title": "Zakres testnetu"
+      },
+      {
+        "id": "jak ocenić",
+        "title": "Jak ocenić"
+      },
+      {
+        "id": "ramowanie mapy drogowej",
+        "title": "Ramowanie mapy drogowej"
+      },
+      {
+        "id": "kampanie-i-status",
+        "title": "Kampanie i status"
+      }
+    ],
+    "strings": [
+      "Testnet i mapa drogowa",
+      "Przewodnik operacyjny po Avana testowych wdrożeniach i ramach planowania, w kontekście oceny, a nie reguł kanonicznego protokołu czy obietnic uruchomienia.",
+      "Przegląd",
+      "Zakres testnetu",
+      "Jak ocenić",
+      "Ramowanie mapy drogowej",
+      "Kampanie i status",
+      "Strona operacyjna do testowania wdrożeń Avana oraz do czytania oświadczeń z mapy drogowej z odpowiednim poziomem ostrożności.",
+      "Status testnetu, obsługiwane sieci i publiczny harmonogram roadmap zmieniają się szybciej niż dokumentacja architektury. Ta strona istnieje, aby budowniczowie mogli odseparować status środowiska od stabilnego projektu protokołu i unikać odczytywania języka wprowadzania jako specyfikacji.",
+      "Użyj lightpapera i dokumentacji głównych deweloperów do projektowania protokołu. Skorzystaj z tej strony w celu przygotowania środowiska, zakresu próbnego i kontekstu wdrożenia.",
+      "Testowe wdrożenie może ujawniać tylko część pełnego projektu produkcyjnego. LP rodziny, pożyczanie aktywów, pokrycie oraklem i narzędzia likwidacyjne mogą być wszystkie węższe lub bardziej uproszczone na testnecie.",
+      "• Sprawdź aktywną sieć, rejestr kontraktów oraz zestaw obsługiwanych pul dla bieżącego środowiska.",
+      "• Spodziewaj się symulowanych zasobów, ograniczonego pokrycia miejsc i skróconych pętli operacyjnych.",
+      "• Traktuj zachowanie testnetu jako środowisko oceny, a nie jako ostateczną obietnicę produkcyjną.",
+      "Najbardziej użyteczna ścieżka oceny polega na zdeponowaniu kwalifikującego się LP, potwierdzeniu wyceny spoke, obserwowaniu całkowitej zdolności kredytowej, pożyczaniu w stosunku do płynności Hub, a następnie obserwowaniu, jak monitorowanie stanu zdrowia i spłaty zachowują się na tym samym koncie.",
+      "Punkty, zadania lub inne kampanie w testowym wdrożeniu są funkcjami operacyjnymi. Nie są one samym modelem zabezpieczenia.",
+      "Język roadmapy jest kierunkowy. Wskazuje na szersze LP pokrycie rodzin, silniejsze wsparcie orakli, głębsze narzędzia likwidacyjne oraz bardziej dopracowane zarządzanie ryzykiem. Nie należy go odczytywać jako stałej daty uruchomienia ani twardej obietnicy sieci, chyba że to zobowiązanie zostanie ogłoszone osobno.",
+      "Aktywne zachęty, programy punktowe lub szczegóły dotyczące wdrożeń specyficznych dla sieci powinny znajdować się w dokumentach kampanii lub w notatkach o wydaniu. Trzymanie ich poza stronami głównego protokołu sprawia, że dokumentacja dla deweloperów jest bardziej stabilna, gdy kampanie lub plany wdrożenia ulegają zmianie."
+    ]
+  },
+  "legal/disclaimer": {
+    "meta": {
+      "title": "Zastrzeżenie prawne",
+      "description": "Avana zastrzeżenie prawne - ogólne zastrzeżenie, brak porad finansowych, ryzyka, gwarancje i ograniczenie odpowiedzialności."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "ogólne zastrzeżenie",
+        "title": "Ogólne zastrzeżenie"
+      },
+      {
+        "id": "brak-porad-finansowych",
+        "title": "Brak doradztwa finansowego"
+      },
+      {
+        "id": "ryzyka",
+        "title": "Ryzyka"
+      },
+      {
+        "id": "bez gwarancji",
+        "title": "Brak gwarancji"
+      },
+      {
+        "id": "ograniczenie odpowiedzialności",
+        "title": "Ograniczenie odpowiedzialności"
+      },
+      {
+        "id": "powiązane-polityki",
+        "title": "Powiązane polityki"
+      }
+    ],
+    "strings": [
+      "Zastrzeżenie prawne",
+      "Avana zastrzeżenie prawne - ogólne zastrzeżenie, brak porad finansowych, ryzyka, gwarancje i ograniczenie odpowiedzialności.",
+      "Przegląd",
+      "Ogólne zastrzeżenie",
+      "Brak doradztwa finansowego",
+      "Ryzyka",
+      "Brak gwarancji",
+      "Ograniczenie odpowiedzialności",
+      "Powiązane polityki",
+      "Powiadomienia prawne regulujące korzystanie z protokołu i dokumentacji.",
+      "Ważne:",
+      "Prosimy o dokładne przeczytanie niniejszego zastrzeżenia przed korzystaniem z Avana. Korzystając z protokołu, potwierdzasz, że przeczytałeś, zrozumiałeś i zgadzasz się być związany tymi warunkami. Aby zapoznać się z pełnymi warunkami, prosimy o przejrzenie naszego",
+      "Warunki korzystania z usługi",
+      "Polityka prywatności",
+      "Ten zastrzeżenie uzupełnia i powinno być czytane w połączeniu z naszym pełnym",
+      ". Warunki korzystania z usług stanowią prawnie wiążącą umowę między Tobą a Avana dotyczącą Twojego dostępu do protokołu i korzystania z powiązanych usług.",
+      "Z naszej strony głównej:",
+      "Pożyczanie w oparciu o LP tokenów wiąże się z ryzykiem, w tym z likwidacją, jeśli warunki rynkowe będą niekorzystne dla Twojej pozycji. Avana nie przechowuje Twoich środków, nie poddaje ponownej hipotece pozycji LP ani nie zmienia sposobu działania Twojej płynności na bazowych AMM. Pożyczaj tylko takie kwoty, które jesteś w stanie utrzymać w czasie zmienności rynku.",
+      "Avana jest eksperymentalnym zdecentralizowanym protokołem finansowym. Protokół jest dostarczany „tak jak jest” bez jakichkolwiek oświadczeń ani gwarancji jakiegokolwiek rodzaju, wyraźnych ani dorozumianych.",
+      "Jak stwierdzono w naszych Warunkach Świadczenia Usług (Sekcja 2): „Protokół Avana zawiera funkcjonalność, dzięki której niektóre otwarte kontrakty inteligentne mogą otrzymywać i przechowywać określone waluty cyfrowe lub inne aktywa kryptograficzne. Istnieje ryzyko, że otwarte oprogramowanie, w tym wszelkie aktualizacje, może wprowadzać błędy, wirusy, konie trojańskie lub inne podatności albo zmiany, które mogą spowodować częściowe lub całkowite zakłócenie działania protokołu albo utratę, uszkodzenie lub zniszczenie Twoich aktywów kryptograficznych.",
+      "Każde poleganie na takich informacjach odbywa się wyłącznie na własne ryzyko. Nie ponosimy odpowiedzialności za jakiekolwiek straty lub szkody wynikające z korzystania z tego protokołu lub dokumentacji.",
+      "Jak wyraźnie stwierdzono w naszych Warunkach Świadczenia Usług: \"USŁUGI OBEJMUJĄ MIĘDZY INNYMI ZASOBY INFORMACYJNE, KTÓRE MOGĄ DOSTARCZAĆ INFORMACJI ZWIĄZANYCH Z AVANA. AVANA NIE JEST MAKLEREM, DEALEREM, GIEŁDĄ, DORADCĄ INWESTYCYJNYM, KUSTODEM ANI DOSTAWCĄ USŁUG FINANSOWYCH W ŻADNEJ FORMIE. NIE POSIADAMY RELACJI FIDUCJARNEJ Z TOBĄ ANI OBOWIĄZKU WZGLĘDEM CIEBIE W ZWIĄZKU Z USŁUGAMI.\"",
+      "• Ten materiał ma charakter wyłącznie informacyjny",
+      "• Nie jest to oferta ani zachęta do inwestowania, kupowania lub sprzedawania jakichkolwiek udziałów lub akcji",
+      "• Nie ma na celu udzielania porad księgowych, prawnych, podatkowych ani dotyczących inwestycji",
+      "• Nie jesteśmy zarejestrowanymi doradcami inwestycyjnymi ani maklerami",
+      "• Nie udzielamy spersonalizowanych zaleceń finansowych",
+      "• Wyniki historyczne nie gwarantują przyszłych rezultatów",
+      "• Powinieneś skonsultować się z wykwalifikowanymi specjalistami przed podejmowaniem decyzji finansowych",
+      "• Inwestycje w kryptowaluty są wysoce zmienne i ryzykowne",
+      "Sekcja 8 naszych Warunków Świadczenia Usług opisuje ryzyka związane z korzystaniem z Avana:",
+      "Technologia eksperymentalna",
+      "Usługi mogą wykorzystywać eksperymentalną i nowatorską technologię, a korzystanie z takiej technologii wiąże się z wysokim ryzykiem. Istnieje wiele powodów, dla których usługi lub podstawowe sieci blockchain mogą zawieść w nieoczekiwany sposób, co skutkuje całkowitą i absolutną utratą wszelkich aktywów kryptograficznych znajdujących się w Twoim portfelu cyfrowym.",
+      "Wyzwania operacyjne",
+      "Usługi i/lub leżące u ich podstaw sieci blockchain mogą doświadczać lub być celem cyberataków, niespodziewanych wzrostów wolumenu transakcji lub innych trudności operacyjnych bądź technicznych lub podatności, które mogą powodować przerwy związane z korzystaniem z Usług.",
+      "Niepewność regulacyjna",
+      "Usługi, Protocol Avana i/lub wszelkie bazujące na nich sieci blockchain mogą nie być dostępne ani odpowiednie do użytku we wszystkich jurysdykcjach, a Ty możesz podlegać obowiązkom prawnym i regulacyjnym w związku z korzystaniem z Usług w niektórych jurysdykcjach.",
+      "LP-Specyficzne Ryzyka",
+      "• Strata tymczasowa może zmniejszyć wartość zabezpieczenia",
+      "• Ryzyko likwidacji, jeśli warunki rynkowe będą działać na niekorzyść Twojej pozycji",
+      "• Podstawowe ryzyko kontraktu inteligentnego DEX",
+      "• Pozycje o skoncentrowanej płynności mogą stać się bezwartościowe poza zakresem",
+      "Jak podano w Sekcji 9.1 naszych Warunków Świadczenia Usług:",
+      "USŁUGI SĄ ŚWIADCZONE NA ZASADZIE „TAKIE, JAKIE SĄ” ORAZ „DOSTĘPNE W MIARĘ MOŻLIWOŚCI”, A AVANA NIE UDZIELA ŻADNYCH GWARANCJI W ZWIĄZKU Z TAKĄ ZASADĄ „TAKIE, JAKIE SĄ” ORAZ „DOSTĘPNE W MIARĘ MOŻLIWOŚCI” ANI W INNY SPOSÓB W ZWIĄZKU Z NINIEJSZYMI WARUNKAMI, I NINIEJSZYM AVANA WYŁĄCZA WSZELKIE WYRAŹNE, DOROZUMIANE LUB USTAWOWE GWARANCJE I WARUNKI, WŁĄCZAJĄC W TO WSZELKIE GWARANCJE LUB WARUNKI BRAKU NARUSZEŃ, PRZYDATNOŚCI HANDLOWEJ, PRZYDATNOŚCI DO OKREŚLONEGO CELU, DOSTĘPNOŚCI, BEZBŁĘDNEGO LUB NIEPRZERWANIE DZIAŁANIA.",
+      "Jak podano w Sekcji 9.2 naszych Warunków Świadczenia Usług:",
+      "W ŻADNYM WYPADKU FIRMA AVANA NIE PONOSI ODPOWIEDZIALNOŚCI WOBEC CIEBIE ZA JAKIEKOLWIEK SZKODY WTÓRNE, POŚREDNIE, PRZYPADKOWE LUB SPECJALNE JAKIEGOKOLWIEK RODZAJU LUB NATURY, BEZ WZGLĘDU NA TO, JAK POWSTAŁY, W TYM, MIĘDZY INNYMI, SZKODY PRZYKŁADOWE LUB KARY UMOWNE, UTRATĘ DANYCH, UTRATĘ ZYSKÓW LUB PRZYCHODÓW LUB UTRATĘ WARTOŚCI, WYNIKAJĄCE Z USŁUG LUB Z TWOJEGO KORZYSTANIA Z PROTOKOŁU AVANA.",
+      "To ograniczenie ma zastosowanie niezależnie od teorii odpowiedzialności (umowa, delikt, odpowiedzialność bezwzględna lub inna) i nawet jeśli zostaliśmy poinformowani o możliwości wystąpienia takich szkód. W żadnym wypadku łączna odpowiedzialność Avana nie przekroczy stu dolarów amerykańskich (100,00 USD).",
+      "Aby uzyskać pełne informacje prawne, prosimy o zapoznanie się z następującymi dokumentami:",
+      "Kompletna prawnie wiążąca umowa regulująca korzystanie z Avana, w tym kwalifikowalność, działalność zabronioną, własność intelektualną, rozwiązywanie sporów i nie tylko.",
+      "Jak zbieramy, wykorzystujemy i chronimy Twoje dane osobowe, w tym przechowywanie danych, pliki cookie oraz Twoje prawa wynikające z RODO, CCPA i innych przepisów dotyczących prywatności.",
+      "Terytoria ograniczone",
+      "Aktualna lista jurysdykcji, którym zabroniono dostępu do usług Avana.",
+      "Ostatnia aktualizacja:",
+      "Styczeń 2026",
+      "Ten zastrzeżenie może być od czasu do czasu aktualizowane. Kontynuowanie korzystania z protokołu oznacza akceptację wszelkich zmian. Proszę odwołać się do naszego"
+    ]
+  },
+  "legal": {
+    "meta": {
+      "title": "Prawne i zgodność - ujawnienia dotyczące bezpieczeństwa",
+      "description": "Avana informacje prawne - ograniczenia dostępu, ograniczone jurysdykcje, wymagania dotyczące zgodności i ujawnienia dotyczące bezpieczeństwa."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "ograniczenia dostępu",
+        "title": "Ograniczenia dostępu"
+      },
+      {
+        "id": "ograniczone jurysdykcje",
+        "title": "Ograniczone jurysdykcje"
+      },
+      {
+        "id": "zgodność",
+        "title": "Zgodność"
+      },
+      {
+        "id": "powiązane-polityki",
+        "title": "Powiązane polityki"
+      }
+    ],
+    "strings": [
+      "Prawne i zgodność - ujawnienia dotyczące bezpieczeństwa",
+      "Avana informacje prawne - ograniczenia dostępu, ograniczone jurysdykcje, wymagania dotyczące zgodności i ujawnienia dotyczące bezpieczeństwa.",
+      "Przegląd",
+      "Ograniczenia dostępu",
+      "Ograniczone jurysdykcje",
+      "Zgodność",
+      "Powiązane polityki",
+      "sankcje OFAC",
+      "Ukraina (Krym, obwody doniecki i ługański)",
+      "Stany Zjednoczone Ameryki",
+      "Oczekujące wyjaśnienia regulacyjne",
+      "Terytoria ograniczone",
+      "Ta strona jest utrzymywana w celu odzwierciedlenia najbardziej aktualnej listy Jurysdykcji Ograniczonych dla domeny Avana.",
+      "Warunki użytkowania",
+      ", dostęp do strony internetowej Avana i powiązanych z nią usług jest ograniczony dla osób fizycznych lub podmiotów w niektórych jurysdykcjach. Ta strona zawiera aktualną listę terytoriów objętych ograniczeniami i wyjaśnia obowiązujące ograniczenia dostępu.",
+      "Ważne:",
+      "Każda próba uzyskania dostępu do platformy Avana z obszaru o ograniczonym dostępie skutkować będzie natychmiastowym przekierowaniem do Warunków użytkowania i odmową dostępu.",
+      "Dostęp do strony internetowej Avana oraz powiązanych z nią usług jest ograniczony dla osób lub podmiotów, które:",
+      "Mieszkać w",
+      "którekolwiek z Ograniczonych Jurysdykcji",
+      "Czy obywatele",
+      "Są fizycznie zlokalizowane w",
+      "Są włączone w",
+      "Utrzymuj zarejestrowaną siedzibę w",
+      "Te ograniczenia są zdefiniowane w Avana",
+      "Obecnie ograniczone jurysdykcje",
+      "Następujące jurysdykcje mają obecnie ograniczony dostęp do usług Avana:",
+      "Jurysdykcja",
+      "Powód",
+      "Uwaga:",
+      "Ta lista może być aktualizowana od czasu do czasu w odpowiedzi na zmiany obowiązujących przepisów prawa, regulacji lub programów sankcji. Użytkownicy są odpowiedzialni za zapewnienie swojej ciągłej zgodności z tymi ograniczeniami.",
+      "Jak stwierdzono w naszych Warunkach korzystania (Sekcja 1.2), nie możesz uzyskać dostępu ani korzystać z Usług, jeśli jesteś:",
+      "• Podmiot jakichkolwiek sankcji administrowanych lub egzekwowanych przez Biuro Kontroli Aktywów Zagranicznych (OFAC) Departamentu Skarbu USA, Departament Stanu USA lub jakikolwiek inny organ rządowy posiadający jurysdykcję",
+      "• Zidentyfikowano na listach osób, podmiotów lub niezweryfikowanych sporządzanych przez Biuro Przemysłu i Bezpieczeństwa Departamentu Handlu USA",
+      "• Znajdujący się, zorganizowany lub zamieszkały w kraju lub terytorium, które jest objęte sankcjami gospodarczymi lub którego rząd jest ich przedmiotem",
+      "Użytkownicy są wyłącznie odpowiedzialni za zapewnienie, że ich korzystanie z protokołu jest zgodne ze wszystkimi obowiązującymi przepisami prawa i regulacjami w ich jurysdykcji.",
+      "Aby uzyskać pełne informacje na temat swoich praw i obowiązków podczas korzystania z Avana, prosimy o zapoznanie się z:",
+      "Warunki korzystania z usługi",
+      "Pełne warunki i zasady regulujące korzystanie z usług Avana, w tym wymagania dotyczące kwalifikowalności, zakazane działania oraz rozstrzyganie sporów.",
+      "Polityka prywatności",
+      "Informacje o tym, jak zbieramy, wykorzystujemy i chronimy Twoje dane osobowe, gdy korzystasz z naszych usług.",
+      "Zastrzeżenie prawne",
+      "Ważne informacje dotyczące ryzyka, gwarancji i ograniczeń odpowiedzialności."
+    ]
+  },
+  "liquidation/examples": {
+    "meta": {
+      "title": "Przykłady likwidacji",
+      "description": "Ilustracyjne przykłady likwidacji dla Avana, pokazujące, jak jednorodne LP, skoncentrowana płynność oraz konta z wieloma pozycjami są rozwiązywane w ramach tego samego podstawowego schematu."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "zamienny-lp",
+        "title": "Zbywalny LP Przykład"
+      },
+      {
+        "id": "skoncentrowana płynność",
+        "title": "Przykład Skoncentrowanej Płynności"
+      },
+      {
+        "id": "płynność NFT",
+        "title": "Likwidacja NFT"
+      },
+      {
+        "id": "konto wielopozycyjne",
+        "title": "Konto wielopozycyjne"
+      },
+      {
+        "id": "przypadki brzegowe",
+        "title": "Przypadki brzegowe"
+      },
+      {
+        "id": "streszczenie",
+        "title": "Podsumowanie"
+      }
+    ],
+    "strings": [
+      "Przykłady likwidacji",
+      "Ilustracyjne przykłady likwidacji dla Avana, pokazujące, jak jednorodne LP, skoncentrowana płynność oraz konta z wieloma pozycjami są rozwiązywane w ramach tego samego podstawowego schematu.",
+      "Przegląd",
+      "Zbywalny LP Przykład",
+      "Przykład Skoncentrowanej Płynności",
+      "Likwidacja NFT",
+      "Konto wielopozycyjne",
+      "Przypadki brzegowe",
+      "Podsumowanie",
+      "Pozycja może być w dużej mierze jednostronna w momencie rozpoczęcia likwidacji, szczególnie w przypadku skoncentrowanej płynności.",
+      "Głębokość puli może być wystarczająca do wyceny, ale nadal na tyle mała, że wymaga ostrożnego planowania wycofywania.",
+      "Opłaty podlegające roszczeniu mogą poprawić odzyski, ale nie powinny być traktowane jako gwarantowane, dopóki nie zostaną faktycznie zrealizowane.",
+      "Pożyczkobiorca może mieć kilka pozycji przyczyniających się do jednej zdolności pożyczkowej na poziomie ramienia, więc kolejność likwidacji ma znaczenie.",
+      "Przeanalizowane scenariusze pokazujące, jak jeden system likwidacji stosuje się do różnych LP form zabezpieczenia.",
+      "Te przykłady są celowo proste. Celem jest pokazanie, jak wygląda likwidacja w popularnych formatach LP bez wprowadzania dodatkowych zasad poza",
+      "Ramowy plan likwidacji",
+      "W każdym przypadku zadanie jest takie samo: używać konserwatywnych oznaczeń zabezpieczeń, spłacać dług w warstwie kredytowej, wycofywać LP przez wspieraną ścieżkę i zwracać wszelką wartość pozostałą po kosztach wykonania i nagrodzie za likwidację.",
+      "Pożyczkobiorca zdeponował wymienialny LP token z zatwierdzonej stabilnej lub zważonej puli. Z czasem skład puli i dane z wyroczni zmieniają się na tyle, że konto nie ma już wystarczającej skorygowanej wartości zabezpieczenia dla swojego długu.",
+      "• Węzeł likwidacyjny wykrywa deficyt i pozyskuje płynność do realizacji transakcji.",
+      "• Dług zostaje spłacony, a token LP zostaje zrealizowany na jego podstawowe aktywa.",
+      "• Opłaty możliwe do odzyskania są realizowane, jeśli są dostępne i pomocne w odzyskaniu.",
+      "• Aktywa bazowe są kierowane do aktywów dłużnych, a likwidacja zostaje zamknięta.",
+      "• Każda wartość pozostała po spłacie i nagrodzie jest zwracana pożyczkobiorcy.",
+      "Pozycja o skoncentrowanej płynności przesuwa się w kierunku krawędzi swojego aktywnego zakresu. Konto może przez pewien czas pozostawać w dobrej kondycji, a następnie przejść do likwidacji, gdy dług przewyższy odzyskiwalną wartość bieżącego stanu pozycji.",
+      "• Węzeł ocenia pozycję na podstawie swojego aktualnego zakresu, płynności i podziału tokenów.",
+      "• Gdy rozpoczyna się likwidacja, opłaty możliwe do zgłoszenia są sprawdzane przed wycofaniem kapitału.",
+      "• Trasowanie dostosowuje się do faktycznie odzyskanego zapasu, a nie do statycznej mieszanki tokenów.",
+      "• Rozliczenie przebiega według tego samego schematu: spłać płynność wynikającą z egzekucji, wypłać nagrodę, zwróć wartość rezydualną.",
+      "Pożyczkobiorca deponuje NFT Uniswap v3, a później pozycja staje się niedźwiedzia. Wycofanie jest obsługiwane na poziomie pozycji, a nie jako luźny fragment tokena, ponieważ NFT reprezentuje jedną konkretną pozycję zabezpieczającą.",
+      "• Aave przejmuje saldo tokena skarbca powiązanego z pozycją zabezpieczoną NFT.",
+      "• Avana spala token sejfu i przenosi rzeczywistą pozycję LP do rozliczenia.",
+      "• Moduł rozliczeniowy likwiduje, sprzedaje, aukcjonuje lub przenosi pozycję.",
+      "• Najpierw spłaca się dług, następnie następuje wynagrodzenie likwidatora, a wszelkie nadwyżki podążają za zasadą rynku.",
+      "• Pożyczkobiorca nie utrzymuje czystego częściowego roszczenia do tego samego NFT po likwidacji.",
+      "Pożyczkobiorca może posiadać kilka pozycji LP w ramach jednego Borrow Spoke. Pojemność jest sumowana w obrębie tych pozycji, ale wycofanie nadal musi odbywać się na poziomie pozycji, gdy konto stanie się niezdrowe.",
+      "• Odcinek raportuje o jednej łącznej zdolności kredytowej do Węzła.",
+      "• Gdy konto staje się niewypłacalne, węzeł likwidacyjny wybiera ścieżkę wycofania, która najlepiej przywraca wypłacalność.",
+      "• Jedna pozycja może wystarczyć do pokrycia niedoboru, lub kilka może wymagać częściowego lub całkowitego zamknięcia.",
+      "• Kolejność wykonywania, spójność orakula i głębokość trasy mają znaczenie obok samego znaku.",
+      "Zbywalne LP, skoncentrowane zakresy, pozycje NFT i konta z wieloma pozycjami mają różne szczegóły likwidacji. Wspólny cel nigdy się nie zmienia: spłacić dług z wartości LP możliwej do odzyskania bez polegania na optymistycznych założeniach co do NAV. Polityka nadal znajduje się na głównej stronie Ramy Likwidacyjnej."
+    ]
+  },
+  "liquidation/flow": {
+    "meta": {
+      "title": "Przepływ Likwidacji",
+      "description": "Operacyjny przepływ likwidacji dla Avana, obejmujący sekwencję czasu wykonywania używaną, gdy zabezpieczenie LP wspierane przez skarbiec jest zajmowane i likwidowane."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "odnośnik-kanoniczny",
+        "title": "Powiązane dokumenty polityki"
+      },
+      {
+        "id": "sekwencja_wykonania",
+        "title": "Sekwencja czasu wykonywania"
+      },
+      {
+        "id": "przejścia-stanu",
+        "title": "Przejścia stanów"
+      },
+      {
+        "id": "notatki operatora",
+        "title": "Notatki operatora"
+      }
+    ],
+    "strings": [
+      "Przepływ Likwidacji",
+      "Operacyjny przepływ likwidacji dla Avana, obejmujący sekwencję czasu wykonywania używaną, gdy zabezpieczenie LP wspierane przez skarbiec jest zajmowane i likwidowane.",
+      "Przegląd",
+      "Powiązane dokumenty polityki",
+      "Sekwencja czasu wykonywania",
+      "Przejścia stanów",
+      "Notatki operatora",
+      "Wykryj niezdrowe konto",
+      "Węzły likwidacyjne lub zewnętrzni opiekunowie obserwują te same skorygowane o ryzyko wartości zabezpieczenia, które są używane przez protokół, i oznaczają konta, których zadłużenie przekracza teraz dozwoloną zdolność kredytową.",
+      "Płynność wykonania źródła",
+      "Likwidator uzyskuje tymczasową płynność, zwykle poprzez ścieżkę w stylu flashloan, dzięki czemu dług może zostać spłacony bez wcześniejszego finansowania pełnego wycofania z własnej kieszeni.",
+      "Spłać dług i zajmij zabezpieczenie skarbca",
+      "Odpowiedni Borrow Spoke reguluje dług w warstwie kredytowej, przejmuje opiekę nad zabezpieczeniem skarbca i przekazuje pozycję do rozliczenia specyficznego dla LP.",
+      "Spal token sejfu i oznacz pozycję zabezpieczającą",
+      "Adapter spala zablokowany token skarbca i oznacza prawdziwą pozycję LP jako w rozliczeniu, aby podaż zabezpieczająca nie mogła pozostawać niewycofana wobec pozycji, która jest już likwidowana.",
+      "Rozlicz pozycję LP i zamknij likwidację",
+      "Avana rozwiązuje, sprzedaje, wystawia na aukcję lub przenosi rzeczywistą LP pozycję, spłaca płynność wykonawczą, wypłaca nagrodę likwidatorowi i przekazuje wszelkie nadwyżki zgodnie z zasadą rynku.",
+      "Gdy Aave zezwala na likwidację, wybrana pozycja opuszcza stan AKTYWNY i wchodzi w stan LIKWIDACJI. Pożyczkobiorca nie powinien już mieć możliwości jej wypłaty.",
+      "Po tym, jak rzeczywista pozycja LP zostanie rozwinięta lub sprzedana, zapas zabezpieczający zostaje zwolniony, a pozycja staje się ROZLICZONA.",
+      "Rząd państwowy",
+      "Token sejfu nie może pozostawać w obiegu po tym, jak jego wspierająca LP pozycja została usunięta. Jeśli tokeny sejfu zostaną spalone, LP pozycja musi zostać wycofana, zlikwidowana lub przeniesiona do rozliczenia.",
+      "Sekwencja wykonania dla tego, jak niezdrowe pozycje wspierane przez LP przemieszczają się od wykrycia do rozliczenia po rozpoczęciu likwidacji.",
+      "Ta strona przedstawia widok w czasie rzeczywistym likwidacji. Została napisana na moment, gdy konto jest już w złym stanie, a operator musi zrozumieć, co wydarzy się dalej, krok po kroku, od wykrycia do ostatecznego rozliczenia.",
+      "LP likwidacja to kontrolowane wycofywanie się, a nie sprzedaż pojedynczego tokena. Dług jest spłacany, zabezpieczenie skarbca jest zajmowane, odpowiadający token skarbca jest spalany, rzeczywista pozycja LP jest rozliczana, a pozostała wartość jest zwracana, jeśli cokolwiek pozostaje.",
+      "Polityka likwidacyjna trwa",
+      "Ramowy plan likwidacji",
+      "strona. Ten przepływ zakłada model wartości możliwej do odzyskania w",
+      "Wyrocznie cenowe",
+      "Czynniki zabezpieczenia",
+      "Użyj tej strony do kolejności wykonywania. Progi, nagrody i zasady przyjęć nadal pochodzą z dokumentacji architektury i ryzyka, a nie tylko z tej listy kontrolnej.",
+      "Różne LP rodziny próbują osiągnąć ten sam stan końcowy, ale nie docierają tam przez identyczne wyjścia. Obsługa oparta na adapterach pozwala każdej rodzinie puli podążać ścieżką rozwijania, która odpowiada jej własnej mechanice.",
+      "Boty likwidacyjne powinny indeksować aktywne pozycje, odświeżać dryf długu i wyceniać konta z tego samego stosu wyroczni używanego przez protokół, zamiast polegać wyłącznie na surowym stanie AMM spot.",
+      "Kontrole rentowności powinny uwzględniać poślizg, głębokość trasy, koszty flashloan oraz ryzyko wykonania. Duże lub nietypowe wycofania mogą skorzystać z prywatnych ścieżek wykonania w celu zmniejszenia negatywnej ekspozycji na MEV.",
+      "Traktuj tę stronę jako listę kontrolną w czasie rzeczywistym. Zachowaj szczegóły polityki na głównych stronach dotyczących likwidacji, orakla i ryzyka."
+    ]
+  },
+  "liquidation/liquidators": {
+    "meta": {
+      "title": "Likwidatorzy",
+      "description": "Przewodnik dla deweloperów dla operatorów likwidacji, obejmujący monitorowanie, wymagania wykonawcze oraz specyficzne dla LP zachowanie przy wyprowadzaniu."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "model pokrycia",
+        "title": "Model pokrycia"
+      },
+      {
+        "id": "wymagania-wykonawcze",
+        "title": "Wymagania dotyczące wykonania"
+      },
+      {
+        "id": "notatki-operacyjne",
+        "title": "Notatki operacyjne"
+      }
+    ],
+    "strings": [
+      "Likwidatorzy",
+      "Przewodnik dla deweloperów dla operatorów likwidacji, obejmujący monitorowanie, wymagania wykonawcze oraz specyficzne dla LP zachowanie przy wyprowadzaniu.",
+      "Przegląd",
+      "Model pokrycia",
+      "Wymagania dotyczące wykonania",
+      "Notatki operacyjne",
+      "Udział bez zezwolenia",
+      "Każdy keeper lub pulpit wykonawczy może dokonać likwidacji, jeśli może monitorować pozycje, pozyskiwać płynność wykonania i rozwijać formaty LP Avana.",
+      "LP-specyficzne przetwarzanie",
+      "Likwidacja nie jest standardową sprzedażą tokenów. Runtime potrzebuje logiki uwzględniającej miejsce w celu realizacji opłat, usuwania pozycji, trasowania i rozliczenia w aktywach dłużnych.",
+      "Jakość pokrycia",
+      "LP pozycje są trudniejsze do rozliczenia niż proste tokeny. Operatorzy, którzy modelują pełną trasę dla obsługiwanych miejsc, zazwyczaj lepiej radzą sobie ze stresem niż boty, które reagują tylko na wyzwalacz zdrowotny.",
+      "Śledź ten sam stan ryzyka, którego używa protokół, a nie oddzielną heurystykę.",
+      "Cofnij się z czystego stanu przejścia w jednej atomowej operacji, kiedy to możliwe.",
+      "Realizacja opłaty cenowej, głębokość trasy i wartość rezydualna przed optymalizacją wyłącznie pod kątem prędkości.",
+      "Traktuj częściowe pokrycie i pełne pokrycie jako osobne przypadki z odrębnymi założeniami dotyczącymi trasowania.",
+      "Monitorowanie pozycji i śledzenie dryfu zadłużenia",
+      "Symulacja głębokości trasy, poślizgu i dostępności płynności",
+      "Dostarczenie transakcji za pomocą flashloanu lub ścieżek wykonania z wcześniejszym finansowaniem",
+      "Adaptery świadome miejsca dla LP rodzin, które obsługuje protokół",
+      "Jak operatorzy obsługują Avana likwidacje i jaka infrastruktura wykonawcza jest wymagana dla długu wspieranego LP.",
+      "Likwidatorzy to operatorzy, którzy zamykają niezdrowe pozycje wspierane przez LP. Ich zadaniem jest spłata długu, rozliczenie LP za pośrednictwem odpowiedniej ścieżki i przekazanie odzyskanej wartości z powrotem do warstwy kredytowej.",
+      "Szybkość ma znaczenie, ale sama w sobie nie wystarczy. Operatorzy muszą rozumieć, co faktycznie można pokryć, jak reprezentowany jest LP oraz jak opłaty, poślizg lub odzyskiwanie zmian jednostronnych w inwentarzu wpływają zanim cokolwiek zostanie przesłane na łańcuch.",
+      "Likwidator dla Avana potrzebuje więcej niż bota wywołującego. Potrzebuje wystarczającej infrastruktury do wyceny pozycji, symulowania wyjść, pozyskiwania kapitału i przeprowadzenia transakcji, która może zakończyć ścieżkę wycofywania, którą rozpoczął.",
+      "Wymóg praktyczny",
+      "Zbuduj proces wycofywania się, realizacji opłat i spłaty długu specyficzny dla miejsca jako jeden przepływ pracy. Rozłączone kroki znacznie łatwiej sprawiają, że teoretycznie możliwa do pokrycia likwidacja zawiedzie w realizacji."
+    ]
+  },
+  "liquidation": {
+    "meta": {
+      "title": "Ramowy plan likwidacji",
+      "description": "Jak Avana obsługuje likwidację dla zabezpieczenia LP wspieranego skarbcem po tym, jak Aave uruchamia punkt wejścia do likwidacji."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "trzy warstwy",
+        "title": "Trzy warstwy"
+      },
+      {
+        "id": "podstawowe zasady",
+        "title": "Podstawowe zasady"
+      },
+      {
+        "id": "złożoność LP",
+        "title": "LP Złożoność kolateralna"
+      },
+      {
+        "id": "ścieżki likwidacji",
+        "title": "Ścieżki likwidacji"
+      },
+      {
+        "id": "stan pozycji",
+        "title": "Stan pozycji"
+      },
+      {
+        "id": "obsługa nadwyżki",
+        "title": "Obsługa nadwyżek"
+      },
+      {
+        "id": "model operatora",
+        "title": "Model operatora"
+      }
+    ],
+    "strings": [
+      "Ramowy plan likwidacji",
+      "Jak Avana obsługuje likwidację dla zabezpieczenia LP wspieranego skarbcem po tym, jak Aave uruchamia punkt wejścia do likwidacji.",
+      "Przegląd",
+      "Trzy warstwy",
+      "Podstawowe zasady",
+      "LP Złożoność kolateralna",
+      "Ścieżki likwidacji",
+      "Stan pozycji",
+      "Obsługa nadwyżek",
+      "Model operatora",
+      "Projekt likwidacji",
+      "Jak wpis likwidacyjny, zajęcie skarbca i rozliczenie LP są rozdzielane między Aave i Avana.",
+      "Aave to system, który decyduje, kiedy pozycja może zostać zlikwidowana, ale nie wie, jak rozliczyć podstawowy LP. Avana używa Aave do księgowania długu, kontroli stanu zdrowia i punktu wejścia do likwidacji, a następnie przejmuje stery, aby rozwiązać prawdziwą pozycję, która stoi za zabezpieczeniem skarbca.",
+      "Krytycznym ograniczeniem projektowym jest to, że dwa widoki zabezpieczenia muszą pozostać wyrównane. Aave widzi saldo tokena magazynu ERC-20, podczas gdy Avana śledzi pozycję LP, która faktycznie wspiera to saldo. Likwidacja pozostaje poprawna tylko wtedy, gdy zajęcie reprezentacji magazynu zawsze prowadzi do właściwej ścieżki rozliczenia LP.",
+      "Dla sekwencji skierowanej do operatora, zobacz",
+      "Likwidatorzy",
+      ". Aby zobaczyć kolejność wykonywania, zobacz",
+      "Przepływ Likwidacji",
+      "Aave warstwa",
+      "Śledzi zadłużenie, saldo zabezpieczenia w skarbcu, wskaźnik zdrowia oraz punkt wejścia do likwidacji, który upoważnia do zajęcia.",
+      "Avana warstwa adaptera",
+      "Otrzymuje zajęty depozyt zabezpieczający w skarbcu, spala odpowiadający mu token skarbca i przypisuje zdarzenie likwidacyjne z powrotem do pozycji LP, która faktycznie go zabezpieczała.",
+      "Avana warstwa rozliczeniowa",
+      "Identyfikuje rzeczywistą pozycję LP, uruchamia odpowiednią ścieżkę likwidacji lub sprzedaży, spłaca dług, wypłaca nagrodę likwidatorowi i kieruje wszelką nadwyżkę zgodnie z zasadą rynku.",
+      "Główna zasada jest prosta, ale surowa: Aave likwiduje zabezpieczenie skarbca ERC-20, a Avana rozlicza pozycję LP stojącą za tym zabezpieczeniem skarbca. Wszystko inne w tym projekcie istnieje, aby te dwa kroki były spójne.",
+      "Tokeny skarbca muszą odpowiadać rzeczywistej wartości",
+      "Kwota tokenów zlikwidowanego sejfu musi zawsze odpowiadać rzeczywistej wartości LP zabezpieczenia, a nie sztucznej równowartości, której nie można odzyskać.",
+      "Zabezpieczenie wspierające nie może pozostać niespłacone",
+      "Gdy pozycja LP zostanie ustalona, odpowiadający jej token skarbca musi zostać spalony, aby reprezentacja nie przetrwała aktywa, które miała śledzić.",
+      "Aktywna podaż tokenów skarbca nie może istnieć bez aktywnego LP zabezpieczenia za nią.",
+      "Nadwyżka podlega zasadzie rynku",
+      "Najpierw pokrywana jest należność, następnie wynagrodzenie likwidatora, potem koszty rozliczenia, a dopiero potem wszelka pozostała wartość podlega zasadzie nadwyżki rynku.",
+      "Pozycje wspierane przez LP nie zachowują się jednakowo podczas likwidacji. Zamienny token LP można często wykupić lub przenieść proporcjonalnie, podczas gdy NFT Uniswap v3 jest pojedynczą, odrębną pozycją, której zakres, naliczanie opłat i sposób wycofania mają znaczenie na poziomie pozycji.",
+      "Dlatego warstwa rozliczeniowa musi znać rodzinę zabezpieczenia, dokładną pozycję zabezpieczenia oraz zamierzoną ścieżkę wycofania, zanim rozliczy dopasowaną podaż sejfu.",
+      "Ścieżka rozliczenia zależy od rodzaju LP zabezpieczenia stojącego za tokenem skarbca.",
+      "Zbywalne LP zabezpieczenie",
+      "• Rozliczenie może być proporcjonalne do długu, który musi zostać pokryty, zamiast wymuszać całkowite LP saldo poprzez likwidację.",
+      "• Avana może wykupić lub przenieść tylko kwotę potrzebną do likwidacji, gdy konstrukcja rynku wspiera częściowe odzyskiwanie.",
+      "• Pozostała pozycja może pozostać aktywna, jeśli konto nadal spełnia wymagane kontrole stanu zdrowia później.",
+      "• Pełna pozycja przechodzi do rozliczenia, gdy zostaje wybrana do likwidacji, ponieważ sam NFT jest jednostką zabezpieczenia, która jest rozliczana.",
+      "• Odpowiadające tokeny skarbca są spalane po tym, jak Aave przejmuje zabezpieczenie skarbca, a Avana przypisuje to przejęcie z powrotem do pozycji NFT.",
+      "• Avana może rozwiązywać, sprzedawać, licytować lub przenosić rzeczywistą LP pozycję zgodnie z zasadami rynkowymi dla tej rodziny zabezpieczeń.",
+      "• Nadwyżka nie trafia automatycznie do likwidatora, chyba że zasada rynkowa wyraźnie tak stanowi.",
+      "ACTIVE",
+      "Pozycja nadal wnosi wartość zabezpieczenia, a pozostające w obrocie tokeny skarbca pozostają w pełni zabezpieczone przez tę aktywną LP pozycję.",
+      "LIKWIDACJA",
+      "Wybrany zabezpieczenie nie może być już wypłacone przez pożyczkobiorcę i aktywnie przechodzi przez ścieżkę rozliczeniową.",
+      "SETTLED",
+      "Pozycja LP została rozwiązana, a odpowiadające jej tokeny skarbca nie mogą już być w obiegu.",
+      "Wartość rozliczenia stosowana jest w ustalonej kolejności. Najpierw pokrywa zadłużenie, następnie wynagrodzenie likwidatora, a potem koszty rozliczenia. Każda wartość pozostająca po tych zobowiązaniach jest nadwyżką, a ta nadwyżka podlega zasadzie rynkowej dla zabezpieczenia podlegającego rozliczeniu.",
+      "Jeżeli wartość rozliczenia nie jest wystarczająca, aby pokryć dług i nagrodę, rynek potrzebuje wyraźnej ścieżki złego długu. Dokumentacja dotycząca likwidacji powinna opisywać ten niedobór jako rzeczywisty stan do obsłużenia, a nie jako coś, co znika automatycznie.",
+      "Likwidacje pozostają bez konieczności uzyskiwania zgody, ale LP zabezpieczenia często korzystają z wsparcia protokołu, który wie, jak wykonać oczekiwaną ścieżkę wycofania. Ogólni likwidatorzy mogą być w stanie spłacić długi, lecz wciąż brakuje im logiki specyficznej dla danej platformy potrzebnej do efektywnego lub bezpiecznego zamknięcia pozycji.",
+      "Likwidatorzy muszą śledzić ten sam stan ryzyka i stan zabezpieczenia, którego używa protokół.",
+      "Wykonanie musi pozostać atomowe od spłaty zadłużenia aż do rozliczenia.",
+      "Realizacja opłat, głębokość trasy i wartość rezydualna powinny być modelowane przed optymalizacją wyłącznie pod kątem prędkości.",
+      "Częściowe pokrycie i pełne pokrycie to różne przypadki i nie powinny dzielić tych samych założeń dotyczących trasowania."
+    ]
+  },
+  "hub": {
+    "meta": {
+      "title": "Witamy",
+      "description": "Pożyczkobiorca deponuje zatwierdzoną pozycję LP do odpowiedniego Odgałęzienia Pożyczek, ale sama płynność pozostaje rozmieszczona w bazowym pulie zamiast być najpierw odkupiona."
+    },
+    "toc": [
+      {
+        "id": "witamy",
+        "title": "Witamy"
+      },
+      {
+        "id": "co-to-jest-avana",
+        "title": "Co to jest Avana?"
+      },
+      {
+        "id": "jak-to-działa",
+        "title": "Jak to działa"
+      },
+      {
+        "id": "odblokowywanie-zabezpieczenia-lp",
+        "title": "Dlaczego LP Zabezpieczenie ma znaczenie"
+      },
+      {
+        "id": "architektura",
+        "title": "Architektura"
+      }
+    ],
+    "strings": [
+      "Witamy",
+      "Co to jest Avana?",
+      "Jak to działa",
+      "Dlaczego LP Zabezpieczenie ma znaczenie",
+      "Architektura",
+      "Wpłać obsługiwaną pozycję LP",
+      "Pożyczkobiorca deponuje zatwierdzoną pozycję LP do odpowiedniego Odgałęzienia Pożyczek, ale sama płynność pozostaje rozmieszczona w bazowym pulie zamiast być najpierw odkupiona.",
+      "Oceń to konserwatywnie",
+      "Rozgałęzienie odbudowuje pozycję na podstawie danych z własnej puli, wycenia podstawową ekspozycję za pomocą stosu wyroczni, a następnie dyskontuje tę wartość poprzez czynniki zabezpieczenia i specyficzne dla rynku kontrole.",
+      "Wypożycz przez Hub",
+      "Jeśli wynikowa pojemność jest wystarczająca, pożyczka korzysta ze wspólnej płynności Hubu, podczas gdy kontrole stanu zdrowia, księgowość zabezpieczeń i zachowanie w przypadku likwidacji pozostają specyficzne dla tego spoke.",
+      "Płynność pozostaje w puli",
+      "Protokół jest zbudowany dla LP pozycji, które powinny nadal wykonywać LP pracy. Pożyczkobiorca nie musi wycofywać płynności z AMM tylko po to, aby uzyskać dostęp do gotówki przeciwko niej.",
+      "Pojemność podąża za rzeczywistym LP",
+      "Siła pożyczkowa wynika z rzeczywistej struktury pozycji: mieszanki tokenów, naliczonych opłat, aktywnego zakresu, gdy ma to znaczenie, dostępnej głębokości oraz sposobu, w jaki pozycja mogłaby zostać zamknięta w sytuacji stresowej.",
+      "Likwidacja ma wyraźne zasady",
+      "LP zabezpieczenie nie jest traktowane jako ogólny bilans tokenów. Każdy obsługiwany rynek określa, w jaki sposób wartość jest odzyskiwana, co jest sprzedawane lub likwidowane oraz jak dług jest zamykany, jeśli konto staje się niebezpieczne.",
+      "Pożycz Szprychę",
+      "Akceptuje obsługiwane LP zabezpieczenie, przekształca je w zdolność pożyczkową na poziomie węzła i odpowiada za zasady dotyczące zdrowia oraz likwidacji na tym rynku.",
+      "Utrzymuje wspólny bilans pożyczkowy: księgowość rezerw, logikę stóp procentowych oraz płynność, z której korzystają jednostki obsługujące pożyczkobiorców.",
+      "Oś pożyczki",
+      "Wprowadza aktywa pożyczkodawcy do systemu i kieruje je do Huba, aby LP underwriting mógł pozostać oddzielony od wprowadzania kapitału.",
+      "Wprowadzenie",
+      "Avana pozwala na zatwierdzenie LP pozycji zwrotnych pożyczek bez najpierw wyciągania płynności z puli. Te dokumenty zaczynają się od podziału typu Hub-and-Spoke: odnogi rozumieją ryzyko LP, podczas gdy Hub zarządza wspólną płynnością pożyczkową.",
+      "Zacznij od kluczowych pojęć",
+      "Odkryj Pożyczona Szprycha",
+      "Avana to protokół pożyczkowy dla żywego zabezpieczenia LP. Wykorzystuje model Hub-and-Spoke Aave v4, więc Hub obsługuje wspólną płynność, podczas gdy każdy Borrow Spoke zajmuje się przyjęciem, wyceną, zdrowiem i likwidacją dla własnych rynków LP.",
+      "Wspieranie LP zabezpieczenia oznacza więcej niż sprawdzanie salda tokenów. Protokół musi rozumieć, jakie aktywa reprezentuje pozycja, jaka część tej wartości powinna liczyć się do kredytu, jaka specyficzna dla rynku redukcja wartości (haircut) ma zastosowanie oraz jaka ścieżka wyjścia istnieje, jeśli pożyczkobiorca spadnie poniżej wymaganego marginesu bezpieczeństwa. Avana umieszcza tę LP-specyficzną logikę w module, który wymienia zabezpieczenie, zamiast próbować sprowadzać każdą AMM pozycję do jednej uniwersalnej ścieżki pożyczkowej.",
+      "Przeczytaj tę stronę jako mapę dla reszty dokumentów. Poniższe sekcje najpierw wyjaśniają podstawową ścieżkę pożyczania, a następnie kierują Cię do szczegółowych stron dotyczących Borrow Spoke, Lend Spoke, czynników zabezpieczenia, logiki wyroczni, monitorowania stanu zdrowia i likwidacji.",
+      "Proces widoczny dla użytkownika jest krótki, ale każdy etap ukrywa prace underwritingowe specyficzne dla LP. Późniejsze strony rozkładają mechanikę każdego kroku.",
+      "LP pozycje już znajdują się w kapitale obrotowym. Bez warstwy kredytowej, odzyskanie gotówki zwykle oznacza najpierw zmniejszenie lub zamknięcie pozycji w puli.",
+      "Avana oddziela wspólną płynność pożyczkową od logiki ryzyka specyficznej dla LP. To rozdzielenie jest powodem, dla którego system może obsługiwać różne typy zabezpieczeń bez łączenia wszystkich ich zasad razem.",
+      "Budowniczowie powinni myśleć o systemie w dwóch połowach. Hub jest wspólnym bilansem i silnikiem zadłużenia, podczas gdy Borrow Spokes decydują, jaki rynek LP może bezpiecznie utrzymać i jak rynek ten musi zostać zamknięty w przypadku niepowodzenia. Lend Spoke zasila Hub kapitałem, dzięki czemu dostawcy nie muszą rozumieć mechaniki LP, tylko po to, by zapewnić płynność."
+    ]
+  },
+  "safety/bug-bounty": {
+    "meta": {
+      "title": "Program nagród za błędy",
+      "description": "Avana Zakres odpowiedzialnego ujawniania błędów w ramach Bug Bounty, LP-powierzchnie ryzyka pobocznego oraz filozofia dotycząca powagi skutków ekonomicznych."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "zakres-i-architektura-systemu",
+        "title": "Zakres i architektura systemu"
+      },
+      {
+        "id": "filozofia-surowości",
+        "title": "Filozofia Surowości"
+      }
+    ],
+    "strings": [
+      "Program nagród za błędy",
+      "Avana Zakres odpowiedzialnego ujawniania błędów w ramach Bug Bounty, LP-powierzchnie ryzyka pobocznego oraz filozofia dotycząca powagi skutków ekonomicznych.",
+      "Przegląd",
+      "Zakres i architektura systemu",
+      "Filozofia Surowości",
+      "Program A - Podstawowe Udzielanie Pożyczek",
+      "Odnosi się do głównego mechanizmu kredytowego, w którym integralność księgowa, zabezpieczenia i realizacja likwidacji bezpośrednio chronią środki użytkowników.",
+      "Wpływy / wypływy depozytów",
+      "Logika pożyczania / spłacania",
+      "Czynnik zdrowotny i naliczanie odsetek",
+      "Rezerwowe księgowanie oraz bicie / spalanie długu",
+      "Egzekucja rdzenia likwidacji i limity",
+      "Kradzież środków użytkownika",
+      "Rezerwa niewypłacalności",
+      "Pożyczanie pod niewystarczające zabezpieczenie",
+      "Zablokowane spłaty, wypłaty lub likwidacje",
+      "Program B - LP Zabezpieczenia i Wycena",
+      "Omawia Avana-specyficzny system wyceny dla kredytu wspieranego przez LP, w tym sposób wyceny pozycji LP, ich ważenie ryzyka oraz testowanie odporności w warunkach zmiennego rynku.",
+      "Przypisanie współczynnika zabezpieczenia dla LP pozycji",
+      "Obsługa pozycji o skoncentrowanej płynności",
+      "Przypadki brzegowe podczas braku równowagi, depegów, niskiej płynności lub nieaktualnych stanów wyroczni",
+      "Przecénienie zabezpieczenia LP",
+      "Manipulacja w Oracle umożliwiająca powstanie złych długów",
+      "Niesprawiedliwa likwidacja z powodu zaniżania cen",
+      "Rekurencyjne ścieżki eksploatacji przeciwko źle wycenionemu zabezpieczeniu LP",
+      "Najwyższy pułap surowości: LP błędne wyceny mogą powodować złe zobowiązania, niewypłacalność lub niesprawiedliwe likwidacje bez klasycznego wyczerpania kontraktu.",
+      "Program C - Zarządzanie, Administracja i Infrastruktura Protokołu",
+      "Obejmuje uprzywilejowane powierzchnie sterujące, które mogą zmieniać parametry, aktualizować kontrakty, wstrzymywać operacje lub przekierowywać aktywa należące do protokołu.",
+      "Wykonawca zarządzania i blokada czasowa",
+      "Mechanizmy zarządzania rolami i możliwości aktualizacji",
+      "Role pauzy / strażnika",
+      "Parametry systemów administracyjnych",
+      "Kontrakty automatyzacji skarbu, inkasenta i uprzywilejowane",
+      "Nieautoryzowane działanie administratora",
+      "Przejęcie aktualizacji",
+      "Uszkodzenie parametru",
+      "Przejęcie zarządzania lub utrata skarbu",
+      "Program D - Offchain / Powierzchnie integracyjne",
+      "Odnosi się do wspierających systemów, których kompromitacja może wpływać na operacje zaufanych protokołów, interakcje użytkownika lub zachowanie opiekuna.",
+      "Boty do indeksowania lub likwidacji utrzymywane przez Avana",
+      "Założenia strażników i przekaźniki wyroczni",
+      "Hostowane interfejsy API używane w krytycznych ścieżkach bezpieczeństwa",
+      "Problemy z frontendem z bezpośrednimi konsekwencjami dla portfela",
+      "Tworzenie złośliwej transakcji",
+      "Skompromitowane ścieżki likwidacji lub przekazywania danych przez wyrocznię",
+      "Utrata środków użytkownika poprzez zaufane integracje",
+      "Przestoje operacyjne, które blokują krytyczne działania",
+      "Krytyczny",
+      "border-czerwony-400 tło-czerwone-50/70",
+      "Bezpośrednia lub pośrednia utrata funduszy, powstanie złego długu, niewypłacalność protokołu lub systemowa manipulacja wyceną zabezpieczeń.",
+      "Wysoki",
+      "granica-bursztyn-400 bg-bursztyn-50/70",
+      "Znaczące, ale ograniczone szkody, takie jak nieprawidłowe zachowanie przy likwidacji, częściowe obejście kontroli ryzyka lub ograniczone błędy księgowe.",
+      "Medium / Low",
+      "granicy-szary-300 bg-szary-50",
+      "Znaleziska o ograniczonym wpływie, niezgodności w przypadkach brzegowych, nieskrytyczne problemy logiczne lub luki bezpieczeństwa bez wiarygodnej ścieżki do poważnych szkód ekonomicznych.",
+      "Zakres odpowiedzialnego ujawniania informacji i wytyczne dotyczące triage wpływu ekonomicznego dla Avana badań nad bezpieczeństwem.",
+      "Program Bug Bounty Avana obejmuje odpowiedzialne ujawnianie luk w kontraktach, systemach ryzyka oraz infrastrukturze wspierającej, które mogą wpływać na środki użytkowników lub wypłacalność protokołu.",
+      "Ponieważ Avana używa AMM pozycji płynności jako zabezpieczenia, zakres obejmuje zarówno bezpośrednie błędy kontraktów, jak i awarie, gdzie płynność, wycena lub stan rynku mogą prowadzić do złej wartości zabezpieczenia lub uszkodzonych likwidacji.",
+      "Pierwsza jest dotkliwość ekonomiczna:",
+      "nagradzanie śledzi możliwość wykorzystania i wyniki takie jak utrata funduszy, niewypłacalność, złe długi lub systemowe błędy wyceny zabezpieczenia, nie tylko to, jak duża wydaje się zmiana w kodzie.",
+      "Zakres jest podzielony na podsystemy, aby badacze mogli przypisać odkrycie do części stosu, którą faktycznie zagraża: podstawowe pożyczanie, LP wycena, zarządzanie i administracja lub integracje poza łańcuchem.",
+      "Najwyższa czułość",
+      "Zawiera",
+      "Główne ryzyka",
+      "Dlaczego to ma znaczenie:",
+      "Podsystemy są klasyfikowane osobno, ale wpływ jest nadal oceniany w zakresie wypłacalności, bezpieczeństwa funduszy użytkowników, integralności likwidacji oraz powiązanego ryzyka protokołu.",
+      "Ogólne oceny podatności nie są tutaj główną metodą klasyfikacji. Znaleziska są oceniane na podstawie wiarygodnych ścieżek wykorzystania oraz na podstawie wyniku ekonomicznego, jaki mogą stworzyć."
+    ]
+  },
+  "safety/contracts": {
+    "meta": {
+      "title": "Bezpieczeństwo kontraktu inteligentnego",
+      "description": "Avana odniesienie do bezpieczeństwa kontraktów smart, obejmujące granice zaufania, powierzchnie kontraktów oraz to, jak audyty i nagrody za wykrycie błędów wpisują się w projekt pożyczkowy wspierany przez LP."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "wyzwania bezpieczeństwa",
+        "title": "Wyzwania związane z bezpieczeństwem"
+      },
+      {
+        "id": "wielowarstwowe bezpieczeństwo",
+        "title": "Wielowarstwowe zabezpieczenia"
+      },
+      {
+        "id": "powierzchnie rdzeniowo-kontraktowe",
+        "title": "Podstawowe Powierzchnie Umowy"
+      },
+      {
+        "id": "granice zaufania",
+        "title": "Granice zaufania"
+      },
+      {
+        "id": "gotowość do audytu",
+        "title": "Gotowość do audytu"
+      }
+    ],
+    "strings": [
+      "Bezpieczeństwo kontraktu inteligentnego",
+      "Avana odniesienie do bezpieczeństwa kontraktów smart, obejmujące granice zaufania, powierzchnie kontraktów oraz to, jak audyty i nagrody za wykrycie błędów wpisują się w projekt pożyczkowy wspierany przez LP.",
+      "Przegląd",
+      "Wyzwania związane z bezpieczeństwem",
+      "Wielowarstwowe zabezpieczenia",
+      "Podstawowe Powierzchnie Umowy",
+      "Granice zaufania",
+      "Gotowość do audytu",
+      "Pożycz logikę Spoke",
+      "Obsługuje przyjęcie zabezpieczenia, rozliczenia użytkowników oraz cykl życia po stronie rozgałęzień dla pożyczek zabezpieczonych LP.",
+      "Integracja huba",
+      "Łączy zdolność pożyczkową na poziomie przęseł z wspólnymi ograniczeniami kredytowymi i płynnościowymi w warstwie Hub.",
+      "Oracle i adaptery wyceny",
+      "Przekształć LP pozycji w konserwatywne wartości zabezpieczeń przy użyciu cen zewnętrznych, rekonstrukcji pozycji i założeń dotyczących wartości możliwej do odzyskania.",
+      "Warstwa wykonawcza likwidacji",
+      "Koordynuje ścieżki, realizację opłat, trasowanie i rozliczenia, gdy niezdrowe konto musi zostać zamknięte lub zmienione rozmiar.",
+      "Umowy i bezpieczeństwo",
+      "Odniesienie do bezpieczeństwa dla powierzchni kontraktu, zależności zewnętrznych i granic przeglądu w przypadku pożyczania wspieranego przez LP.",
+      "Avana pożycza pod zastaw LP, więc przegląd zabezpieczeń musi obejmować więcej niż tylko to, czy umowa kompiluje się lub poprawnie przenosi salda. Musi również obejmować to, jak wycena, przechowywanie, likwidacja i uprzywilejowane kontrole zachowują się, gdy rynek jest pod presją.",
+      "Przegląd umów, przegląd ekonomiczny i przegląd operacyjny mają znaczenie dla LP rynków. Wzmacniają się nawzajem i powinny być traktowane jako jeden program bezpieczeństwa, a nie jako trzy niezależne listy kontrolne.",
+      "• LP wartość może zależeć od ścieżki i często wymaga logiki powierniczej i rozliczeniowej specyficznej dla danego miejsca.",
+      "• Niewłaściwe użycie wyroczni lub przestarzałe ceny mogą powodować straty ekonomiczne nawet wtedy, gdy kontrakty realizują się dokładnie zgodnie z kodem.",
+      "• Zarządzanie, kontrola parametrów i reagowanie w sytuacjach awaryjnych są częścią powierzchni ataku.",
+      "Przegląd umowy",
+      "Powierzchnie głównych kontraktów, adaptery i uprzywilejowane ścieżki kontroli powinny być przeglądane zanim zostaną włączone nowe rodziny LP lub nowe ścieżki wykonywania.",
+      "Testy odporności ekonomicznej",
+      "Testuj wstrząsy rynkowe, skrajne przypadki oracle i awarie routingu likwidacji, nie tylko zachowanie kontraktu na poziomie jednostkowym.",
+      "Zewnętrzne kanały przeglądu",
+      "Formalne audyty i",
+      "Program nagród za błędy",
+      "Program powinien pozostać aktywny oba. Jeden nie zastępuje drugiego.",
+      "• Księgowość i rozliczenie likwidacyjne w sieci powinny być deterministyczne po ich uruchomieniu.",
+      "• Źródła Oracle, adaptery miejsc i infrastruktura likwidatora operacyjnego są zależnościami zewnętrznymi i należy je monitorować jako takie.",
+      "• Zarządzanie, uprawnienie do wstrzymania oraz aktualizacje to uprzywilejowane moce, które powinny pozostać ograniczone, możliwe do przeglądu i objęte blokadą czasową tam, gdzie to możliwe.",
+      "Ta strona nie publikuje spekulacyjnych harmonogramów audytorów ani tymczasowych kamieni milowych. Raporty z audytu, zakresy i notatki dotyczące napraw powinny być publikowane, gdy faktycznie istnieją i mogą być w pełni przeglądane.",
+      "Cele audytowe o wysokiej wartości zazwyczaj obejmują nowe wsparcie rodziny LP, nowe ścieżki likwidacyjne, nowe modele oracle oraz wszelkie zmiany, które rozszerzają uprzywilejowaną kontrolę lub założenia dotyczące odzyskiwalnej wartości."
+    ]
+  },
+  "safety/insurance": {
+    "meta": {
+      "title": "Fundusze ubezpieczeniowe",
+      "description": "Planowana konstrukcja zabezpieczenia dla Avana, opisująca, jak przyszły fundusz ubezpieczeniowy mógłby zająć się niedoborami płynności bez zmiany podstawowego modelu pożyczkowego zabezpieczonego LP."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "cel",
+        "title": "Cel"
+      },
+      {
+        "id": "podejście do finansowania",
+        "title": "Podejście do finansowania"
+      },
+      {
+        "id": "ścieżka aktywacji",
+        "title": "Ścieżka aktywacji"
+      },
+      {
+        "id": "granica pokrycia",
+        "title": "Granica pokrycia"
+      }
+    ],
+    "strings": [
+      "Fundusze ubezpieczeniowe",
+      "Planowana konstrukcja zabezpieczenia dla Avana, opisująca, jak przyszły fundusz ubezpieczeniowy mógłby zająć się niedoborami płynności bez zmiany podstawowego modelu pożyczkowego zabezpieczonego LP.",
+      "Przegląd",
+      "Cel",
+      "Podejście do finansowania",
+      "Ścieżka aktywacji",
+      "Granica pokrycia",
+      "Planowana warstwa zabezpieczająca do obsługi pozostałych złych długów po zakończeniu normalnej ścieżki likwidacyjnej LP.",
+      "Pierwsze linie obrony Avana to konserwatywna wycena zabezpieczeń, ograniczona ekspozycja i terminowa likwidacja. Przyszły fundusz ubezpieczeniowy znajdowałby się za tymi kontrolami i pojawiałby się dopiero wtedy, gdy likwidacja nadal nie może w pełni pokryć złych długów.",
+      "Ta strona opisuje planowaną warstwę ochronną. Nie jest to obietnica, że na każdym wdrożeniu istnieje obecnie aktywny fundusz ubezpieczeniowy.",
+      "Jeżeli zostanie aktywowany, fundusz może być kapitalizowany poprzez alokacje skarbowe zatwierdzone przez organy zarządzające, wkłady rezerwowe lub dedykowany moduł bezpieczeństwa. Dokładny skład finansowania jest decyzją zarządzania ryzykiem i powinien być opublikowany wraz z warunkami programu.",
+      "• Wykryj pozostały niedobór po zakończeniu dozwolonej ścieżki likwidacji.",
+      "• Sprawdź, czy niedobór mieści się w zatwierdzonej przez fundusz polityce pokrycia.",
+      "• Wykonać ścieżkę dokapitalizowania lub pokrycia deficytu określoną przez zarządzanie.",
+      "• Opublikuj podsumowanie po incydencie opisujące przyczynę, reakcję i działania kontrolne następcze.",
+      "Zakres powinien pozostać wąski. Celem jest kwalifikowanie złych długów protokołu po likwidacji, a nie ogólna gwarancja przeciwko stratom wynikającym z handlu użytkowników, tymczasowej stracie, wahaniom rynku ani każdej awarii stron trzecich w DeFi.",
+      "Pokryte niedobory i zwykłe ryzyko rynkowe wymagają wyraźnej granicy, aby fundusz nie stał się rekompensatą za normalne LP wyniki."
+    ]
+  },
+  "safety": {
+    "meta": {
+      "title": "Mechanizmy Bezpieczeństwa - Ramy Ryzyka",
+      "description": "Zarządzanie ryzykiem w całym protokole dla Avana Hub i LP Collateral Spokes, w tym role, ograniczone aktualizacje i kontrola awaryjna."
+    },
+    "toc": [
+      {
+        "id": "przegląd",
+        "title": "Przegląd"
+      },
+      {
+        "id": "zasady podstawowe",
+        "title": "Podstawowe zasady"
+      },
+      {
+        "id": "role",
+        "title": "Role"
+      },
+      {
+        "id": "aktualizuj-przepływ",
+        "title": "Aktualizuj przepływ"
+      },
+      {
+        "id": "klasy parametrów",
+        "title": "Klasy parametrów"
+      },
+      {
+        "id": "ujawnienie publiczne",
+        "title": "Upublicznienie"
+      },
+      {
+        "id": "działania w nagłych wypadkach",
+        "title": "Działania awaryjne"
+      }
+    ],
+    "strings": [
+      "Mechanizmy Bezpieczeństwa - Ramy Ryzyka",
+      "Zarządzanie ryzykiem w całym protokole dla Avana Hub i LP Collateral Spokes, w tym role, ograniczone aktualizacje i kontrola awaryjna.",
+      "Przegląd",
+      "Podstawowe zasady",
+      "Role",
+      "Aktualizuj przepływ",
+      "Klasy parametrów",
+      "Upublicznienie",
+      "Działania awaryjne",
+      "Oddzielenie ról",
+      "Ramowy plan przypisuje proponowanie, przeglądanie i awaryjne powstrzymywanie różnym podmiotom, aby jedna strona nie kontrolowała całej ścieżki samodzielnie.",
+      "Wykonanie ograniczone",
+      "Rutynowe zmiany ryzyka wykonują się tylko wtedy, gdy pozostają w określonych granicach polityki i przechodzą kontrole walidacyjne.",
+      "Publiczna spójność",
+      "Aktualizacja opisana publicznie powinna być tą samą aktualizacją, która faktycznie jest w kolejce do wykonania.",
+      "Świadomość mowy",
+      "Każdy LP zabezpieczony instrument posiada własne zasady notowań, założenia dotyczące orakula, ścieżkę likwidacji i profil ryzyka.",
+      "Asymetria obronna",
+      "Proces jest celowo stronniczy, więc zmniejszanie ryzyka jest szybsze i prostsze niż jego zwiększanie.",
+      "Avana Inicjator ryzyka",
+      "Rola, która przygotowuje i rekomenduje rutynowe zmiany ryzyka dla Centrum i LP Punktów Zabezpieczenia.",
+      "Opublikuj uzasadnienie i zaklasyfikuj aktualizację jako defensywną lub nastawioną na rozwój",
+      "Prześlij rutynowe aktualizacje do ścieżki wykonawczej z blokadą czasową",
+      "Zalecać limity podaży, limity pożyczek, LT/LTV, współczynnik rezerwy oraz zmiany stóp procentowych w ramach zatwierdzonych zakresów",
+      "Rozpocznij obniżanie ryzyka na poziomie wypustek i wprowadzanie do puli w ramach zatwierdzonych wcześniej szablonów wypustek",
+      "Avana Strażnik Ryzyka",
+      "Niezależny recenzent z prawem weta wobec oczekujących rutynowych zmian.",
+      "Sprawdź, czy oczekująca aktualizacja odpowiada publicznemu ujawnieniu",
+      "Sprawdź, czy działanie mieści się w granicach zatwierdzonej polityki",
+      "Odrzuć aktualizacje oparte na nieważnych założeniach dotyczących wyroczni, płynności lub likwidacji",
+      "Anuluj zaplanowaną aktualizację podczas okna blokady czasowej, gdy powoduje oczywiste niestabilności na poziomie odgałęzień lub węzła centralnego",
+      "Avana Obrońca Ryzyka",
+      "Rola tylko na wypadek nagłych sytuacji była używana do obsługi incydentów, gdy normalna ścieżka z blokadą czasową jest zbyt wolna.",
+      "Zmniejsz limity pożyczek lub limity podaży do poziomów defensywnych",
+      "Zamroź nowe pożyczki na odnodze lub zamroź wykorzystanie zabezpieczenia dla puli, szablonu lub odnogi",
+      "Wyłącz określony adapter lub ścieżkę zapasową, gdy spełnione są z góry określone warunki awarii",
+      "Zablokuj nowe zaciąganie długu w warunkach awaryjnych, bez używania tego do rutynowej optymalizacji lub działań związanych ze wzrostem",
+      "Ogłoszenie publiczne",
+      "Inicjator ryzyka publikuje planowaną zmianę, dlaczego jest potrzebna i jaki zakres ma ona obejmować.",
+      "Inicjator ryzyka umieszcza proponowaną zmianę w ścieżce wykonania używanej przez framework.",
+      "Kontrole frameworku potwierdzają, że aktualizacja pozostaje w ramach wcześniej określonych ograniczeń i zatwierdzonych zasad.",
+      "Jeśli weryfikacja się powiedzie, zmiana wchodzi w okno blokady czasowej zamiast wykonywać się natychmiast.",
+      "Recenzja Guardiana",
+      "Podczas blokady czasowej, Strażnik Ryzyka przegląda dokładnie oczekujący ładunek i może go anulować, jeśli zajdzie taka potrzeba.",
+      "Jeśli zmiana przejdzie przegląd, wykonuje się automatycznie po wygaśnięciu blokady czasowej.",
+      "Ścieżka awaryjna",
+      "Jeśli spełnione są warunki awaryjne, Obrońca Ryzyka może użyć osobnej ścieżki obronnej o węższych uprawnieniach.",
+      "Zmiany w obronie",
+      "border-czerwony-400 tło-czerwone-50/70",
+      "To są najszybsze rutynowe zmiany, ponieważ zmniejszają narażenie protokołu.",
+      "Obniżanie limitów pożyczkowych",
+      "Obniżanie limitów podaży",
+      "Obniżenie LTV lub progu likwidacji",
+      "Blokowanie wykorzystania pożyczki lub zabezpieczenia",
+      "Dokręcanie ustawień szprych",
+      "Rutynowe ograniczone zmiany",
+      "granica-bursztyn-400 bg-bursztyn-50/70",
+      "Podążają one za standardową ścieżką Inicjator -> Strażnik -> blokada czasowa w zatwierdzonych granicach.",
+      "Umiarkowane podwyżki limitu",
+      "Umiarkowane dostosowywanie parametrów w ramach zatwierdzonych zakresów",
+      "Dodawanie nowych pul wewnątrz istniejącego szablonu ramienia",
+      "Zmiany na poziomie zarządzania",
+      "granicy-szary-300 bg-szary-50",
+      "Są one poza rutynowym schematem i wymagają decyzji na wyższym szczeblu.",
+      "Tworzenie nowej rodziny szprych",
+      "Włączanie nowej prymitywnej LP",
+      "Dodawanie nowego modelu orakla",
+      "Włączanie nowego adaptera likwidacyjnego",
+      "Materialne rozszerzanie powierzchni ryzyka poza zatwierdzone wcześniej założenia",
+      "Dotknięty szprych",
+      "Dotknięte pule lub szablony",
+      "Aktualne parametry",
+      "Proponowane parametry",
+      "Powód aktualizacji",
+      "Czy aktualizacja ma charakter obronny czy ukierunkowany na wzrost",
+      "Oczekiwany czas przesłania",
+      "Oczekiwany okres blokady czasowej",
+      "Odpowiednie zależności lub założenia",
+      "Niespójność Oracle",
+      "Degradacja ścieżki likwidacji",
+      "Nieprawidłowe zachowanie puli",
+      "Błąd zależności wrappera",
+      "Kompromis na poziomie adaptera",
+      "Nagła niestabilność poziomu mowy",
+      "Podjęte działanie",
+      "Planowany czas trwania",
+      "Ścieżka powrotu do normalnego działania",
+      "Ramy ryzyka",
+      "Jak Avana proponuje, przegląda i realizuje zmiany ryzyka w całym Hubie i LP Collateral Spokes.",
+      "Ramowy system Avana ryzyka definiuje, jak proponowane są zmiany parametrów, sprawdzane i realizowane w całym Hubie oraz LP Spokes zabezpieczeń. Obejmuje on kontrole stosowane, gdy protokół dostosowuje limity podaży i pożyczek, ustawienia LT/LTV, wskaźniki stóp procentowych, status rynku oraz inne parametry zależne od cen, wykorzystania, głębokości puli, koncentracji, zmienności, zachowania pegu, wyłączników bezpieczeństwa, kondycji pozycji i powiązanego stanu.",
+      "LP zabezpieczenie nie jest jedną, jednorodną klasą aktywów. Stabilne LP, LPy powiązane z innymi aktywami, ważone pule, skoncentrowana płynność i inne projekty AMM mogą mieć każda swoją własną specyficzną dla „spoke” ścieżkę wyceny, ścieżkę likwidacji i tryb awarii. Ramy istnieją po to, aby te różnice były odzwierciedlone w procesie aktualizacji, zamiast być ukryte za jednym ogólnym ustawieniem ryzyka.",
+      "Trzy role pozostają odrębne w całym tym procesie: Avana Inicjator ryzyka, Avana Opiekun ryzyka i Avana Obrońca ryzyka. Strona, która zaleca rutynową zmianę, nie jest tą samą stroną, która sprawdza ją niezależnie, a rola, która może działać w sytuacji awaryjnej, jest celowo węższa niż ścieżka rutynowa.",
+      "Zasada działania:",
+      "Rutynowe zmiany przebiegają według ustalonej ścieżki, dzięki czemu protokół może odróżnić normalną konserwację parametrów od awaryjnego powstrzymywania. Standardowa sekwencja to ogłoszenie publiczne, zgłoszenie, sprawdzenie granic, blokada czasowa, weryfikacja przez Strażnika i wykonanie, jeśli propozycja nie zostanie zawetowana.",
+      "Zmiany parametrów nie niosą ze sobą takiego samego ryzyka, dlatego ramy klasyfikują je według tego, ile uprawnień powinny wymagać i jak szybko powinny móc się wprowadzać.",
+      "Każda rutynowa aktualizacja powinna być opublikowana przed zgłoszeniem w formacie, który pozwala programistom, użytkownikom i recenzentom porównać ogłoszenie z dokładną czynnością, która zostanie później umieszczona w kolejce.",
+      "Minimalny standard ujawniania",
+      "Spójne ujawnianie informacji ułatwia przeglądanie propozycji pod kątem rozszerzenia zakresu, niezgodnych założeń lub prostych błędów wykonawczych.",
+      "Działania awaryjne służą do powstrzymywania sytuacji, a nie do rutynowego dostrajania. Należy ich używać rzadko, utrzymywać je jak najściślej i tak je strukturyzować, aby protokół mógł powrócić do standardowej ścieżki, gdy bezpośrednie zagrożenie zostanie zrozumiane. Obrońca ryzyka powinien działać tylko wtedy, gdy zdefiniowany lub wysoce prawdopodobny warunek awarii czyni normalną drogę z blokadą czasową niebezpieczną.",
+      "Wyzwalacze awaryjne",
+      "Wymagane ujawnienie po działaniu",
+      "Uprawnienia awaryjne istnieją tylko w określonych przypadkach awarii lub wysoce prawdopodobnych sytuacjach, w których czekanie na normalną ścieżkę blokady czasowej jest niebezpieczne. Nie jest to ścieżka do rutynowego rozwoju ani optymalizacji.",
+      "Rekomendacja, przegląd i awaryjne powstrzymanie pozostają oddzielne, ponieważ LP zabezpieczenia to zbiór rynków o różnych strukturach i trybach awarii, a nie jedna wymienna lista aktywów."
+    ]
+  }
+}
