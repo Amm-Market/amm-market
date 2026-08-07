@@ -74,14 +74,16 @@ export async function loadBlogContent(locale: string) {
     try {
       const enData = await loadJson(defaultLocale, "blog")
       const enPosts =
-        (enData as { posts?: Array<{ slug: string; sections?: Array<{ id: string }> }> } | null)
-          ?.posts ?? []
+        (enData as {
+          posts?: Array<{ slug: string; image?: string; sections?: Array<{ id: string }> }>
+        } | null)?.posts ?? []
       parsed.posts = parsed.posts.map((post, index) => {
         const enPost = enPosts[index]
         if (!enPost) return post
         return {
           ...post,
           slug: enPost.slug,
+          image: enPost.image ?? post.image,
           sections: post.sections.map((section, sIndex) => ({
             ...section,
             id: enPost.sections?.[sIndex]?.id ?? section.id,

@@ -219,7 +219,7 @@
     "strings": [
       "Non aggiungere ombre, sfumature, contorni o effetti.",
       "Marchio principale",
-      "hsvtibmf5k52qfdy0rrl",
+      "Logo",
       "Voce e ritmo",
       "Tipografia",
       "Sistema di palette",
@@ -241,7 +241,7 @@
       "Scarica Kit",
       "Diatermo",
       "Avana utilizza Diatype per le superfici di prodotto e marketing. Mantiene il contenuto di protocollo denso leggibile pur risultando nitido e editoriale.",
-      "b8eisbdymxrnt7rjxrmy",
+      "AaBbCc",
       "Completo",
       "Outfit è un esempio di riserva per i contesti in cui Diatype non è disponibile. Diatype rimane il carattere tipografico principale per l'esperienza del prodotto.",
       "Marchio di Token Primario",
@@ -259,7 +259,7 @@
       "Esempio di logo ritagliato",
       "Esempio di logo con effetti",
       "Esempio di spaziatura affollata",
-      "u3itomejhx4wcll77ukq"
+      "Partner"
     ]
   },
   "brand/brand-interactions": {
@@ -272,9 +272,9 @@
       "Ciano completo",
       "Usa il marchio di colore ciano quando la pagina ha già un layout tranquillo e necessita di un segnale Avana più forte. Tienilo su sfondi bianchi o molto chiari.",
       "Avana logo ciano pieno",
-      "hsvtibmf5k52qfdy0rrl",
+      "Logo",
       "Usa l'icona quando il marchio completo sarebbe troppo piccolo per essere leggibile, come ad esempio nelle icone delle app, negli avatar dei social, nei favicon o nelle liste compatte dei partner.",
-      "hm8x2s7w0df9gwweodf6",
+      "Logo di Avana",
       "Colori principali",
       "La palette Avana è intenzionalmente semplice: bianco per lo spazio, inchiostro per la chiarezza e ciano per il riconoscimento.",
       "Avana Bianco",
@@ -345,7 +345,7 @@
       ", resistente",
       "oracolo",
       "controlli e controllato",
-      "liquidazione",
+      "liquidation",
       "Avana icone dei token",
       "senza ritirare liquidità o rinunciare alle commissioni di trading.",
       "al 5,5% di TAE senza ritirare liquidità o rinunciare alle commissioni di trading."
@@ -384,7 +384,11 @@
       "Sblocca Capitale",
       "da Amm Markets",
       "Sbloccare il capitale dai mercati AMM",
-      "Scopri di più"
+      "Scopri di più",
+      "Nel 2021, Aave ha lanciato AMM Market e ha dimostrato che le posizioni LP potevano servire come garanzia, ma era stato costruito per i DEX più semplici di quell'epoca. Avana riprende da dove si era interrotto, progettato per i DEX odierni e i tipi LP, trattando ogni posizione come garanzia modellata da doppi oracoli e controlli di rischio più robusti.",
+      "Un protocollo di prestito",
+      "per prestiti garantiti da LP",
+      "Un protocollo di prestito per prestiti garantiti da LP"
     ]
   },
   "homepage/HomepageTestimonialSection": {
@@ -446,7 +450,7 @@
     "strings": [
       "Calcolatore di Crescita",
       "Vedi crescere il tuo denaro",
-      "zul814xlkvq77qq29uod",
+      "Avana APY",
       "Deposito Iniziale",
       "Periodo di tempo (mesi)",
       "mese",
@@ -462,15 +466,15 @@
   "trade-market-showcase": {
     "strings": [
       "Stablecoin",
-      "bec1gqb47pvsa8lx0cv7",
-      "tx1zzr7bdz7w4ksks628",
+      "Ethereum",
+      "Bitcoin",
       "Altri",
       "Moneta USD",
       "Cordino",
-      "qqqv178rt2l8czjlbpud",
-      "7f3ozuq11kplh4owvzz6",
+      "Curva USD",
+      "Frax",
       "USDe",
-      "aumzo6wfd6tbb0l029b5",
+      "PayPal USD",
       "LUSD",
       "USDD",
       "Etere",
@@ -495,7 +499,7 @@
       "lido",
       "Composto",
       "Creatore",
-      "kst9qrwu4oc942fax4qv",
+      "Synthetix",
       "Il Grafico",
       "Mercati di approvvigionamento",
       "Prestare attraverso i mercati"
@@ -527,7 +531,7 @@
       "Lancio del mercato dei prestiti",
       "Supporto per il routing della liquidità",
       "Verifica del contratto intelligente V2",
-      "78nwt07qyirh1ezye8ev",
+      "Governance v1",
       "Fase 3 - Moltiplicare il mercato",
       "Apri posizioni di leva supportate da LP e gestiscile con un unico flusso di lavoro.",
       "Moltiplicare la progettazione del flusso di lavoro",
@@ -588,7 +592,7 @@
       "Ha parlato Premium",
       "Adeguamento del rischio di pool",
       "Il rischio specifico del pool contribuisce allo spread finale, aumentando il potenziale di rendimento per la stessa liquidità inattiva.",
-      "zul814xlkvq77qq29uod",
+      "Avana APY",
       "Stesso denaro inattivo con rendimenti più alti APY",
       "% a"
     ]

@@ -3,51 +3,51 @@
     "title": "プライバシーポリシー",
     "toc": [
       {
-        "id": "私たちが収集する個人情報",
+        "id": "personal-information-that-we-collect",
         "title": "私たちが収集する個人情報"
       },
       {
-        "id": "個人情報－第三者に使用および開示される",
+        "id": "personal-information-used-and-disclosed-to-third-parties",
         "title": "第三者に使用および開示される個人情報"
       },
       {
-        "id": "クッキーおよびその他のデータ収集技術",
+        "id": "cookies-and-other-data-collection-technologies",
         "title": "クッキーおよびその他のデータ収集技術"
       },
       {
-        "id": "EEAおよび英国の居住者への通知",
+        "id": "notice-to-residents-of-the-eea-and-the-uk",
         "title": "EEAおよび英国の居住者への通知"
       },
       {
-        "id": "カリフォルニア州居住者への通知",
+        "id": "notice-to-california-residents",
         "title": "カリフォルニア州居住者へのお知らせ"
       },
       {
-        "id": "他州居住者への通知",
+        "id": "notice-to-residents-of-other-states",
         "title": "他州の居住者への通知"
       },
       {
-        "id": "データ保持",
+        "id": "data-retention",
         "title": "データ保持"
       },
       {
-        "id": "子どものプライバシー",
+        "id": "childrens-privacy",
         "title": "子どものプライバシー"
       },
       {
-        "id": "あなたの個人情報のセキュリティ",
+        "id": "security-of-your-personal-information",
         "title": "個人情報の安全性"
       },
       {
-        "id": "メールマーケティング",
+        "id": "email-marketing",
         "title": "メールマーケティング"
       },
       {
-        "id": "変更通知",
+        "id": "notification-of-changes",
         "title": "変更の通知"
       },
       {
-        "id": "お問い合わせ",
+        "id": "contact-us",
         "title": "お問い合わせ"
       }
     ],
@@ -192,7 +192,7 @@
       "私たちは、お客様が当社のプライバシー慣行に関して抱えている問題を解決することを目指しています。このプライバシーポリシーに関してご質問や苦情がある場合は、以下のメールアドレスまでご連絡ください:",
       "プライバシー@avana.cc",
       "または",
-      "i5v9rvt739lx2mcy630z",
+      "support@avana.cc",
       ". お問い合わせの件名に「プライバシー」を含めてください。"
     ]
   },
@@ -200,51 +200,51 @@
     "title": "利用規約",
     "toc": [
       {
-        "id": "適格性",
+        "id": "eligibility",
         "title": "1. 適格性"
       },
       {
-        "id": "アヴァナ・プロトコル",
+        "id": "avana-protocol",
         "title": "2. Avana プロトコル"
       },
       {
-        "id": "サービス",
+        "id": "the-services",
         "title": "3. サービス"
       },
       {
-        "id": "情報リソース",
+        "id": "informational-resources",
         "title": "4. 情報リソース"
       },
       {
-        "id": "禁止されている活動",
+        "id": "prohibited-activities",
         "title": "5. 禁止されている活動"
       },
       {
-        "id": "知的財産",
+        "id": "intellectual-property",
         "title": "6. 知的財産"
       },
       {
-        "id": "契約終了",
+        "id": "term-termination",
         "title": "7. 期間; 終了"
       },
       {
-        "id": "リスク",
+        "id": "risks",
         "title": "8. リスク"
       },
       {
-        "id": "保証の免責事項",
+        "id": "disclaimer-of-warranties",
         "title": "9. 免責事項"
       },
       {
-        "id": "紛争解決",
+        "id": "dispute-resolution",
         "title": "10. 紛争解決"
       },
       {
-        "id": "サードパーティサービス",
+        "id": "third-party-services",
         "title": "11. サードパーティサービス"
       },
       {
-        "id": "総則",
+        "id": "general-provisions",
         "title": "12. 一般条項"
       }
     ],
@@ -419,7 +419,7 @@
       "サービスにアクセスまたはサービスを利用することにより、電子通信を受け取ることに同意したものとみなされます。",
       "お知らせ",
       "Avana は、第12.1条で許可されている電子通信を通じて通知その他の連絡を提供する場合があります。お客様は、電子メールアドレスを送信することにより当社に通知を提供できます",
-      "4ny23zbcckwpbcrh4p82",
+      "legal@avana.cc",
       "すべての通知は、送付時に効力を生じるものとみなされます。",
       "免除",
       "免除を有効と見なすためには、免除は免除する当事者によって署名された書面でなければなりません。いずれかの当事者が本規約のいかなる条項の執行を行わなかったとしても、後にその条項を執行する権利の放棄を意味するものではありません。",

@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "仕組み",
+        "id": "how-it-works",
         "title": "仕組み"
       },
       {
-        "id": "借入可能価値",
+        "id": "borrowable-value",
         "title": "借入可能価値"
       },
       {
-        "id": "ノート",
+        "id": "notes",
         "title": "ノート"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "計算",
+        "id": "calculation",
         "title": "計算"
       },
       {
-        "id": "健康バンド",
+        "id": "health-bands",
         "title": "監視バンド"
       },
       {
-        "id": "応答パス",
+        "id": "response-path",
         "title": "応答パス"
       },
       {
-        "id": "ユーザーアクション",
+        "id": "user-actions",
         "title": "ユーザーの操作"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "プログラムの種類",
+        "id": "program-types",
         "title": "プログラムの種類"
       },
       {
-        "id": "分配原則",
+        "id": "distribution-principles",
         "title": "配布の原則"
       },
       {
-        "id": "請求と和解",
+        "id": "claiming-and-reconciliation",
         "title": "請求と和解"
       },
       {
-        "id": "ステータス",
+        "id": "status",
         "title": "現在の状況"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "資本入力ポイント",
+        "id": "capital-entry-point",
         "title": "資本入力ポイント"
       },
       {
-        "id": "リスク調整後利回り",
+        "id": "risk-adjusted-yield",
         "title": "リスク調整後利回り"
       },
       {
-        "id": "動的リスク管理",
+        "id": "dynamic-risk-controls",
         "title": "動的リスク管理"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "ユーザーエクスペリエンス",
+        "id": "user-experience",
         "title": "ユーザーエクスペリエンス"
       },
       {
-        "id": "例フロー",
+        "id": "example-flow",
         "title": "例のフロー"
       },
       {
-        "id": "三層アーキテクチャ",
+        "id": "three-tier-architecture",
         "title": "三層アーキテクチャ"
       },
       {
-        "id": "データフロー",
+        "id": "data-flow",
         "title": "データフロー"
       },
       {
-        "id": "スポーク責任",
+        "id": "spoke-responsibilities",
         "title": "スポークの責任"
       },
       {
-        "id": "ハブ役割",
+        "id": "hub-role",
         "title": "Aave v4 ハブの役割"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "インターフェース対プロトコル",
+        "id": "interface-vs-protocol",
         "title": "インターフェース対プロトコル"
       },
       {
-        "id": "開示",
+        "id": "disclosure",
         "title": "開示"
       },
       {
-        "id": "財務使用",
+        "id": "treasury-usage",
         "title": "財務使用"
       },
       {
-        "id": "統合ノート",
+        "id": "integration-notes",
         "title": "統合ノート"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "借用小切手",
+        "id": "borrow-checks",
         "title": "借用チェック"
       },
       {
-        "id": "健康チェック",
+        "id": "health-check",
         "title": "健康診断"
       },
       {
-        "id": "内部会計",
+        "id": "internal-accounting",
         "title": "内部会計"
       },
       {
-        "id": "借入可能な資産",
+        "id": "borrowable-assets",
         "title": "借入可能な資産"
       },
       {
-        "id": "借入能力",
+        "id": "borrowing-power",
         "title": "借入能力"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "仕組み",
+        "id": "how-it-works",
         "title": "仕組み"
       },
       {
-        "id": "健康チェック",
+        "id": "health-checks",
         "title": "健康診断"
       },
       {
-        "id": "手数料会計",
+        "id": "fee-accounting",
         "title": "手数料会計"
       },
       {
-        "id": "主な利点",
+        "id": "key-benefits",
         "title": "主な利点"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "より多く借りる",
+        "id": "borrowing-more",
         "title": "もっと借りる"
       },
       {
-        "id": "健康の監視",
+        "id": "monitoring-health",
         "title": "健康の監視"
       },
       {
-        "id": "運用管理",
+        "id": "operational-control",
         "title": "運用管理"
       },
       {
-        "id": "位置の変更",
+        "id": "position-changes",
         "title": "ポジションの変更"
       },
       {
-        "id": "キー制約",
+        "id": "key-constraints",
         "title": "主要な制約"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "入金フロー",
+        "id": "deposit-flow",
         "title": "入金フロー"
       },
       {
-        "id": "技術的詳細",
+        "id": "technical-details",
         "title": "技術的な詳細"
       },
       {
-        "id": "サポートされているLPトークン",
+        "id": "supported-lp-tokens",
         "title": "サポートされているLPのポジションタイプ"
       },
       {
-        "id": "入金後",
+        "id": "after-deposit",
         "title": "入金後"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "返済プロセス",
+        "id": "repay-process",
         "title": "返済プロセス"
       },
       {
-        "id": "技術的詳細",
+        "id": "technical-details",
         "title": "技術的な詳細"
       },
       {
-        "id": "清算シナリオ",
+        "id": "liquidation-scenario",
         "title": "返済が差し迫っているとき"
       },
       {
-        "id": "全額返済",
+        "id": "full-repayment",
         "title": "全額返済"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "出金手続き",
+        "id": "withdrawal-process",
         "title": "出金手続き"
       },
       {
-        "id": "位置の変更",
+        "id": "position-modifications",
         "title": "ポジションの変更"
       },
       {
-        "id": "撤退後",
+        "id": "after-withdrawal",
         "title": "撤退後"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "レビュー基準",
+        "id": "review-criteria",
         "title": "レビュー基準"
       },
       {
-        "id": "プール家族",
+        "id": "pool-families",
         "title": "プールの家族"
       },
       {
-        "id": "リスク適用",
+        "id": "risk-application",
         "title": "リスク申請"
       },
       {
-        "id": "統合ノート",
+        "id": "integration-notes",
         "title": "統合ノート"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "統合モデル",
+        "id": "integration-model",
         "title": "統合モデル"
       },
       {
-        "id": "パートナー制御",
+        "id": "partner-controls",
         "title": "パートナーコントロール"
       },
       {
-        "id": "リリースノート",
+        "id": "launch-notes",
         "title": "起動ノート"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "アプリキット",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "会場の家族",
+        "id": "venue-families",
         "title": "会場の家族"
       },
       {
-        "id": "有効化ステータス",
+        "id": "enablement-status",
         "title": "有効化ステータス"
       },
       {
-        "id": "レビュー要件",
+        "id": "review-requirements",
         "title": "レビュー要件"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "オラクル・インターフェース",
+        "id": "oracle-interface",
         "title": "オラクルインターフェース"
       },
       {
-        "id": "多層アーキテクチャ",
+        "id": "multi-layer-architecture",
         "title": "多層アーキテクチャ"
       },
       {
-        "id": "デックスハンドリング",
+        "id": "dex-handling",
         "title": "DEX特有の処理"
       },
       {
-        "id": "TWAP計算",
+        "id": "twap-computation",
         "title": "TWAP計算"
       },
       {
-        "id": "安全対策",
+        "id": "safety-measures",
         "title": "安全性と操作防止"
       },
       {
-        "id": "設定可能なパラメータ",
+        "id": "configurable-parameters",
         "title": "設定可能なパラメータ"
       }
     ],
@@ -968,10 +968,10 @@
       "Curve 安定/安定 ERC-20 LP秒",
       "外部ステーブルコインフィード + プール状態チェック + TWAP検証",
       "外部の価格が資産を固定し、プール残高と手数料の蓄積が割引担保価値を決定します。",
-      "cm9otvm3ej9c09g9z9nm",
+      "Uniswap V2 ERC-20 LP",
       "チェーンリンク + リザーブ再構築 + TWAP検証",
       "標準のLPトークンは再構築された基礎的な残高から評価され、操作耐性のある相互確認としてTWAPが使用されます。",
-      "or6elztdmsh1q9zmj57k",
+      "Uniswap V3 の NFT 流動性提供者",
       "チェーンリンク + ポジション分解 + ティック/TWAP チェック",
       "NFTは流動性、アクティブレンジ、現在の価格によって分解され、その後、回収可能な清算価値のためにヘアカットされます。",
       "Balancer マルチアセット LPず",
@@ -1007,7 +1007,7 @@
       "DEXによるTWAP計算",
       "TWAPは検証入力です。これらは外部資産価格や決定論的なポジション再構築の隣に配置され、観測されているプールの状態が信頼できるアンワインドパスと一致しているかどうかを確認します。これにより、疑わしいまたは短期間の歪みを排除するのに役立ちますが、単独で広範なオラクルモデルに取って代わるものではありません。",
       "Uniswap V2 と SushiSwap",
-      "x9nn0dtxmyn8jlqbm09g",
+      "ユニスワップ V3",
       "ポジション認識のチェックは、ティック範囲、流動性分布、蓄積された手数料を組み込み、プロトコルがNFTをブラックボックスとして扱うのではなく、各NFTの分解されたトークンのエクスポージャーを検証できるようにしますLP。",
       "Balancer",
       "加重トークンの観測値は、オラクルが保守的な担保価値を割り当てる前に、複数資産の在庫分割を検証するためにプールの重みと組み合わされます。",
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "システム内の役割",
+        "id": "role-in-system",
         "title": "システムにおける役割"
       },
       {
-        "id": "アダプターモデル",
+        "id": "adapter-model",
         "title": "アダプターモデル"
       },
       {
-        "id": "サポートされている操作",
+        "id": "supported-operations",
         "title": "サポートされている操作"
       },
       {
-        "id": "展開状況",
+        "id": "deployment-status",
         "title": "展開状況"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "コア概念",
+        "id": "core-concepts",
         "title": "コアコンセプト"
       },
       {
-        "id": "プロトコルコンポーネント",
+        "id": "protocol-components",
         "title": "プロトコルの構成要素"
       },
       {
-        "id": "財務用語",
+        "id": "financial-terms",
         "title": "金融用語"
       },
       {
-        "id": "リスクセキュリティ",
+        "id": "risk-security",
         "title": "リスクとセキュリティ"
       },
       {
-        "id": "指標",
+        "id": "metrics",
         "title": "指標"
       },
       {
-        "id": "免責事項",
+        "id": "disclaimers",
         "title": "免責事項"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "コアインサイト",
+        "id": "core-insight",
         "title": "核心的洞察"
       },
       {
-        "id": "ユーザーフロー",
+        "id": "user-flow",
         "title": "借入モデル"
       },
       {
-        "id": "オラクル評価",
+        "id": "oracle-valuation",
         "title": "オラクルと評価"
       },
       {
-        "id": "借入プロセス",
+        "id": "borrowing-process",
         "title": "借入可能額"
       },
       {
-        "id": "健康モニタリング",
+        "id": "health-monitoring",
         "title": "健康と清算"
       },
       {
-        "id": "料金徴収",
+        "id": "fee-collection",
         "title": "手数料の取り扱い"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "テストネットスコープ",
+        "id": "testnet-scope",
         "title": "テストネットの範囲"
       },
       {
-        "id": "評価方法",
+        "id": "how-to-evaluate",
         "title": "評価の方法"
       },
       {
-        "id": "ロードマップの枠組み",
+        "id": "roadmap-framing",
         "title": "ロードマップの枠組み"
       },
       {
-        "id": "キャンペーンとステータス",
+        "id": "campaigns-and-status",
         "title": "キャンペーンとステータス"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "一般的な免責事項",
+        "id": "general-disclaimer",
         "title": "一般的な免責事項"
       },
       {
-        "id": "財務アドバイスなし",
+        "id": "no-financial-advice",
         "title": "財務アドバイスではありません"
       },
       {
-        "id": "リスク",
+        "id": "risks",
         "title": "リスク"
       },
       {
-        "id": "保証なし",
+        "id": "no-warranties",
         "title": "保証なし"
       },
       {
-        "id": "責任の制限",
+        "id": "limitation-of-liability",
         "title": "責任の制限"
       },
       {
-        "id": "関連方針",
+        "id": "related-policies",
         "title": "関連ポリシー"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "アクセス制限",
+        "id": "access-restrictions",
         "title": "アクセス制限"
       },
       {
-        "id": "制限された管轄区域",
+        "id": "restricted-jurisdictions",
         "title": "制限された管轄区域"
       },
       {
-        "id": "コンプライアンス",
+        "id": "compliance",
         "title": "コンプライアンス"
       },
       {
-        "id": "関連方針",
+        "id": "related-policies",
         "title": "関連ポリシー"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "代替可能LP",
+        "id": "fungible-lp",
         "title": "代替可能 LP 例"
       },
       {
-        "id": "集中流動性",
+        "id": "concentrated-liquidity",
         "title": "集中流動性の例"
       },
       {
-        "id": "NFT流動性",
+        "id": "nft-liquidity",
         "title": "NFT清算"
       },
       {
-        "id": "マルチポジションアカウント",
+        "id": "multi-position-account",
         "title": "マルチポジションアカウント"
       },
       {
-        "id": "エッジケース",
+        "id": "edge-cases",
         "title": "エッジケース"
       },
       {
-        "id": "要約",
+        "id": "summary",
         "title": "要約"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "標準参照",
+        "id": "canonical-reference",
         "title": "関連する政策文書"
       },
       {
-        "id": "ランタイムシーケンス",
+        "id": "runtime-sequence",
         "title": "ランタイムシーケンス"
       },
       {
-        "id": "状態遷移",
+        "id": "state-transitions",
         "title": "状態遷移"
       },
       {
-        "id": "オペレーターのメモ",
+        "id": "operator-notes",
         "title": "オペレーターのメモ"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "カバレッジモデル",
+        "id": "coverage-model",
         "title": "カバレッジモデル"
       },
       {
-        "id": "実行要件",
+        "id": "execution-requirements",
         "title": "実行要件"
       },
       {
-        "id": "運用ノート",
+        "id": "operational-notes",
         "title": "運用ノート"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "三層",
+        "id": "three-layers",
         "title": "三層"
       },
       {
-        "id": "基本ルール",
+        "id": "core-rules",
         "title": "基本ルール"
       },
       {
-        "id": "lp-複雑さ",
+        "id": "lp-complexity",
         "title": "LP 担保の複雑さ"
       },
       {
-        "id": "清算経路",
+        "id": "liquidation-pathways",
         "title": "清算の経路"
       },
       {
-        "id": "位置状態",
+        "id": "position-state",
         "title": "ポジション状態"
       },
       {
-        "id": "余剰処理",
+        "id": "surplus-handling",
         "title": "余剰処理"
       },
       {
-        "id": "オペレーターモデル",
+        "id": "operator-model",
         "title": "オペレーターモデル"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "ようこそ",
+        "id": "welcome",
         "title": "ようこそ"
       },
       {
-        "id": "アバナとは何ですか",
+        "id": "what-is-avana",
         "title": "Avanaは何ですか？"
       },
       {
-        "id": "仕組み",
+        "id": "how-it-works",
         "title": "仕組み"
       },
       {
-        "id": "LP担保の解除",
+        "id": "unlocking-lp-collateral",
         "title": "なぜLP担保が重要なのか"
       },
       {
-        "id": "建築",
+        "id": "architecture",
         "title": "建築"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "範囲とシステムアーキテクチャ",
+        "id": "scope-and-system-architecture",
         "title": "範囲とシステムアーキテクチャ"
       },
       {
-        "id": "厳しさの哲学",
+        "id": "severity-philosophy",
         "title": "重大性の哲学"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "セキュリティの課題",
+        "id": "security-challenges",
         "title": "セキュリティの課題"
       },
       {
-        "id": "多層セキュリティ",
+        "id": "multi-layer-security",
         "title": "多層セキュリティ"
       },
       {
-        "id": "コア契約面",
+        "id": "core-contract-surfaces",
         "title": "コア契約面"
       },
       {
-        "id": "信頼の境界",
+        "id": "trust-boundaries",
         "title": "信頼の境界"
       },
       {
-        "id": "監査準備",
+        "id": "audit-readiness",
         "title": "監査準備"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "目的",
+        "id": "purpose",
         "title": "目的"
       },
       {
-        "id": "資金調達アプローチ",
+        "id": "funding-approach",
         "title": "資金調達アプローチ"
       },
       {
-        "id": "活性化経路",
+        "id": "activation-path",
         "title": "活性化経路"
       },
       {
-        "id": "カバレッジ境界",
+        "id": "coverage-boundary",
         "title": "カバレッジ境界"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "概要",
+        "id": "overview",
         "title": "概要"
       },
       {
-        "id": "基本原則",
+        "id": "core-principles",
         "title": "基本原則"
       },
       {
-        "id": "役割",
+        "id": "roles",
         "title": "役割"
       },
       {
-        "id": "アップデートフロー",
+        "id": "update-flow",
         "title": "フローを更新"
       },
       {
-        "id": "パラメータークラス",
+        "id": "parameter-classes",
         "title": "パラメータクラス"
       },
       {
-        "id": "公開",
+        "id": "public-disclosure",
         "title": "公表"
       },
       {
-        "id": "緊急対応",
+        "id": "emergency-actions",
         "title": "緊急対応"
       }
     ],

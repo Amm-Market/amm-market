@@ -194,6 +194,11 @@ def translate_one(text: str, target: str) -> str:
                             from_language="en",
                             to_language=lang,
                         )
+                        # Reject captcha/noise tokens free engines sometimes return
+                        cleaned = (out or "").strip()
+                        if re.fullmatch(r"[a-z0-9]{12,48}", cleaned):
+                            last = RuntimeError(f"garbled translation from {engine}")
+                            continue
                         if out and out.strip() and out.strip() != chunk.strip():
                             out_chunks.append(out)
                             last = None

@@ -224,7 +224,7 @@
       "Typografie",
       "Palettensystem",
       "Farbe",
-      "0bgmtxd10bn9d0w0jk2w",
+      "Avana-Token",
       "Symbol",
       "Nutze es gut",
       "Logo-Richtlinien",
@@ -241,8 +241,8 @@
       "Download-Kit",
       "Diatyp",
       "Avana verwendet Diatype für Produkt- und Marketingoberflächen. Es hält dichte Protokollinhalte lesbar und wirkt dabei dennoch scharf und redaktionell.",
-      "7de8cvx7c048wjgrjsm2",
-      "5a0inkivau2x2jjbrwpc",
+      "AaBbCc",
+      "Outfit",
       "Outfit ist ein Ersatzexemplar für Kontexte, in denen Diatype nicht verfügbar ist. Diatype bleibt die primäre Schriftart für das Produkterlebnis.",
       "Primärer Token-Mark",
       "Avana Token verwendet das kreisförmige Zeichen als Standardbild für den Vermögenswert bei Börseneinträgen, Token-Seiten, Markttabellen und Startmaterialien.",
@@ -259,7 +259,7 @@
       "Beispiel für ein zugeschnittenes Logo",
       "Logo mit Effektbeispiel",
       "Beispiel für dichte Abstände",
-      "phv52chgxo7rt2wzuq9h"
+      "Partner"
     ]
   },
   "brand/brand-interactions": {
@@ -384,7 +384,11 @@
       "Kapital freisetzen",
       "von Amm Märkten",
       "Kapital aus Amm-Märkten freisetzen",
-      "Mehr erfahren"
+      "Mehr erfahren",
+      "Im Jahr 2021 startete Aave AMM Market und bewies, dass LP-Positionen als Sicherheit dienen könnten, aber es wurde für die einfacheren DEXs jener Zeit entwickelt. Avana setzt dort an, wo das aufgehört hat, und ist für die heutigen DEXs und LP-Typen konzipiert, wobei jede Position als Sicherheit behandelt wird, die von dualen Orakeln und stärkeren Risikokontrollen geprägt ist.",
+      "Ein Kreditprotokoll",
+      "für von LP unterstützte Kredite",
+      "Ein Kreditprotokoll für LP-gestützte Darlehen"
     ]
   },
   "homepage/HomepageTestimonialSection": {
@@ -446,7 +450,7 @@
     "strings": [
       "Wachstumsrechner",
       "Sehen Sie, wie Ihr Geld wächst",
-      "7bi6nrgi7mghrz7rlnzm",
+      "Avana APY",
       "Anfangseinzahlung",
       "Zeitraum (Monate)",
       "Monat",
@@ -461,14 +465,14 @@
   },
   "trade-market-showcase": {
     "strings": [
-      "yd9a8j3rlrd7hwm911h7",
+      "Stablecoins",
       "Ethereum kaufen",
       "Bitcoin kaufen",
       "Andere",
       "USD-Münze",
       "Leine",
-      "jp42b494i3o97xhz4oyo",
-      "gton0kmv99ot27s16oyv",
+      "Kurve USD",
+      "Frax",
       "USDe",
       "Neteller USD",
       "LUSD",
@@ -588,7 +592,7 @@
       "Speiche Premium",
       "Pool-Risikoanpassung",
       "Das spezifische Pool-Risiko trägt zur endgültigen Spanne bei und erhöht das Rückkehrpotenzial für dasselbe ungenutzte Geld.",
-      "7bi6nrgi7mghrz7rlnzm",
+      "Avana APY",
       "Gleiches ruhendes Geld mit höheren APY Renditen",
       "% bis"
     ]

@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "wie-es-funktioniert",
+        "id": "how-it-works",
         "title": "Wie es funktioniert"
       },
       {
-        "id": "ausleihbarer Wert",
+        "id": "borrowable-value",
         "title": "Leihbarer Wert"
       },
       {
-        "id": "Notizen",
+        "id": "notes",
         "title": "Notizen"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Berechnung",
+        "id": "calculation",
         "title": "Berechnung"
       },
       {
-        "id": "Gesundheitsbänder",
+        "id": "health-bands",
         "title": "Überwachungsbänder"
       },
       {
-        "id": "Antwortpfad",
+        "id": "response-path",
         "title": "Antwortpfad"
       },
       {
-        "id": "Benutzeraktionen",
+        "id": "user-actions",
         "title": "Benutzeraktionen"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Programmtypen",
+        "id": "program-types",
         "title": "Programmtypen"
       },
       {
-        "id": "Verteilungsprinzipien",
+        "id": "distribution-principles",
         "title": "Vertriebsgrundsätze"
       },
       {
-        "id": "Anspruch-Ermittlung-und-Abstimmung",
+        "id": "claiming-and-reconciliation",
         "title": "Anspruch & Versöhnung"
       },
       {
-        "id": "Status",
+        "id": "status",
         "title": "Aktueller Status"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Kapital-Einstiegspunkt",
+        "id": "capital-entry-point",
         "title": "Kapital-Einstiegspunkt"
       },
       {
-        "id": "risikoadjustierte Rendite",
+        "id": "risk-adjusted-yield",
         "title": "Risikoangepasste Rendite"
       },
       {
-        "id": "dynamische Risiko-Kontrollen",
+        "id": "dynamic-risk-controls",
         "title": "Dynamische Risikokontrollen"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Benutzererfahrung",
+        "id": "user-experience",
         "title": "Benutzererfahrung"
       },
       {
-        "id": "Beispiel-Fluss",
+        "id": "example-flow",
         "title": "Beispielablauf"
       },
       {
-        "id": "Drei-Ebenen-Architektur",
+        "id": "three-tier-architecture",
         "title": "Drei-Ebenen-Architektur"
       },
       {
-        "id": "Datenfluss",
+        "id": "data-flow",
         "title": "Datenfluss"
       },
       {
-        "id": "Speichenverantwortungen",
+        "id": "spoke-responsibilities",
         "title": "Gesprochene Verantwortlichkeiten"
       },
       {
-        "id": "Hubb-Rolle",
+        "id": "hub-role",
         "title": "Aave v4 Nabenrolle"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Schnittstelle-vs-Protokoll",
+        "id": "interface-vs-protocol",
         "title": "Schnittstelle vs Protokoll"
       },
       {
-        "id": "Offenlegung",
+        "id": "disclosure",
         "title": "Offenlegung"
       },
       {
-        "id": "Schatznutzung",
+        "id": "treasury-usage",
         "title": "Schatznutzung"
       },
       {
-        "id": "Integrationshinweise",
+        "id": "integration-notes",
         "title": "Integrationsnotizen"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Leihscheine",
+        "id": "borrow-checks",
         "title": "Schecks ausleihen"
       },
       {
-        "id": "Gesundheitsprüfung",
+        "id": "health-check",
         "title": "Gesundheitscheck"
       },
       {
-        "id": "interne Buchhaltung",
+        "id": "internal-accounting",
         "title": "Interne Buchhaltung"
       },
       {
-        "id": "leihbare Vermögenswerte",
+        "id": "borrowable-assets",
         "title": "Leihbare Vermögenswerte"
       },
       {
-        "id": "Kreditaufnahmefähigkeit",
+        "id": "borrowing-power",
         "title": "Kreditaufnahmefähigkeit"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "wie-es-funktioniert",
+        "id": "how-it-works",
         "title": "Wie es funktioniert"
       },
       {
-        "id": "Gesundheitsprüfungen",
+        "id": "health-checks",
         "title": "Gesundheitschecks"
       },
       {
-        "id": "Gebührenbuchhaltung",
+        "id": "fee-accounting",
         "title": "Gebührenbuchhaltung"
       },
       {
-        "id": "Hauptvorteile",
+        "id": "key-benefits",
         "title": "Hauptvorteile"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "mehr ausleihen",
+        "id": "borrowing-more",
         "title": "Mehr leihen"
       },
       {
-        "id": "Gesundheitsüberwachung",
+        "id": "monitoring-health",
         "title": "Gesundheitsüberwachung"
       },
       {
-        "id": "operative Kontrolle",
+        "id": "operational-control",
         "title": "Betriebskontrolle"
       },
       {
-        "id": "Positionsänderungen",
+        "id": "position-changes",
         "title": "Positionsänderungen"
       },
       {
-        "id": "Schlüsselbeschränkungen",
+        "id": "key-constraints",
         "title": "Hauptbeschränkungen"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Einzahlungsfluss",
+        "id": "deposit-flow",
         "title": "Einzahlungsfluss"
       },
       {
-        "id": "technische Details",
+        "id": "technical-details",
         "title": "Technische Details"
       },
       {
-        "id": "unterstützte-lp-token",
+        "id": "supported-lp-tokens",
         "title": "Unterstützte LP Positionstypen"
       },
       {
-        "id": "nach Einzahlung",
+        "id": "after-deposit",
         "title": "Nach der Einzahlung"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Rückzahlungsprozess",
+        "id": "repay-process",
         "title": "Rückzahlungsprozess"
       },
       {
-        "id": "technische Details",
+        "id": "technical-details",
         "title": "Technische Details"
       },
       {
-        "id": "Liquidationsszenario",
+        "id": "liquidation-scenario",
         "title": "Wenn die Rückzahlung dringend ist"
       },
       {
-        "id": "vollständige Rückzahlung",
+        "id": "full-repayment",
         "title": "Vollständige Rückzahlung"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Rücknahmeprozess",
+        "id": "withdrawal-process",
         "title": "Auszahlungsprozess"
       },
       {
-        "id": "Positionsänderungen",
+        "id": "position-modifications",
         "title": "Positionsänderungen"
       },
       {
-        "id": "nach dem Rückzug",
+        "id": "after-withdrawal",
         "title": "Nach dem Rückzug"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Bewertungskriterien",
+        "id": "review-criteria",
         "title": "Bewertungskriterien"
       },
       {
-        "id": "Pool-Familien",
+        "id": "pool-families",
         "title": "Poolfamilien"
       },
       {
-        "id": "Risikobewerbung",
+        "id": "risk-application",
         "title": "Risikobewerbung"
       },
       {
-        "id": "Integrationshinweise",
+        "id": "integration-notes",
         "title": "Integrationsnotizen"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Integrationsmodell",
+        "id": "integration-model",
         "title": "Integrationsmodell"
       },
       {
-        "id": "Partnersteuerung",
+        "id": "partner-controls",
         "title": "Partnersteuerungen"
       },
       {
-        "id": "Startnotizen",
+        "id": "launch-notes",
         "title": "Startnotizen"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Appkit",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "Veranstaltungsstätten-Familien",
+        "id": "venue-families",
         "title": "Veranstaltungsorte Familien"
       },
       {
-        "id": "Aktivierungsstatus",
+        "id": "enablement-status",
         "title": "Aktivierungsstatus"
       },
       {
-        "id": "Überprüfungsanforderungen",
+        "id": "review-requirements",
         "title": "Überprüfungsanforderungen"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Oracle-Schnittstelle",
+        "id": "oracle-interface",
         "title": "Oracle-Schnittstelle"
       },
       {
-        "id": "Mehrschichtige Architektur",
+        "id": "multi-layer-architecture",
         "title": "Mehrschichtige Architektur"
       },
       {
-        "id": "Dex-Handhabung",
+        "id": "dex-handling",
         "title": "DEX-spezifische Handhabung"
       },
       {
-        "id": "TWAP-Berechnung",
+        "id": "twap-computation",
         "title": "TWAP-Berechnung"
       },
       {
-        "id": "Sicherheitsmaßnahmen",
+        "id": "safety-measures",
         "title": "Sicherheit & Manipulationsprävention"
       },
       {
-        "id": "konfigurierbare Parameter",
+        "id": "configurable-parameters",
         "title": "Konfigurierbare Parameter"
       }
     ],
@@ -968,10 +968,10 @@
       "Curve Stabil/Stabil ERC-20 LPs",
       "Externe Stablecoin-Datenquellen + Pool-Zustandsprüfungen + TWAP-Überprüfung",
       "Externe Preise verankern die Vermögenswerte, während Poolbestände und Gebührenaufschreibungen den rabattierten Sicherheitenwert bestimmen.",
-      "h038yna4c1hdwuymtd4z",
+      "Uniswap V2 ERC-20 LP",
       "Chainlink + Reservenrekonstruktion + TWAP-Verifizierung",
       "Standard-LP-Token werden aus rekonstruierten zugrunde liegenden Salden bewertet, wobei TWAP als manipulationsresistente Gegenprüfung verwendet wird.",
-      "f75slklv97i3otg9sm6s",
+      "Uniswap V3 NFT-LPs",
       "Chainlink + Positionsaufspaltung + Tick/TWAP-Überprüfungen",
       "Das NFT wird nach Liquidität, aktivem Bereich und aktuellem Preis zerlegt und dann für den wiederherstellbaren Liquidationswert gekürzt.",
       "⟦1 Multi Multi-Anlagevermögen LPs",
@@ -1024,21 +1024,21 @@
       "Die Exponierung wird durch LP Familie, Pooltiefe und Komplexität der Sicherheiten begrenzt, sodass dünnere Märkte strengere Kreditlimits erhalten.",
       "Erholungsfrisuren",
       "Das Orakel berücksichtigt theoretischen LP Wert für vorübergehende Verluste, Auflösungs-Slippage und unter Stress stehende Liquidationsannahmen, bevor irgendeine Kreditmacht gewährt wird.",
-      "7vyqrq9u5nrr7kvhvbr7",
+      "Oracle Sentinel",
       "Oracle Sentinel überwacht die Feed-Gesundheit und Verifizierungsinputs und kann ein Fallback-Verhalten auslösen, wenn Daten veraltet, kompromittiert oder inkonsistent mit Positionszustandsprüfungen sind.",
       "Konfigurierbare Oracle-Parameter",
       "Pool-spezifische Oracle-Einstellungen werden pro Token durch konfiguriert",
       "TokenKonfiguration festlegen",
       ". Die Tabelle unten zeigt die Parameter, die definieren, wie ein Token und sein zugehöriger Pool überprüft werden sollten:",
-      "4gc1gxxelk7hrc8x4dwb",
+      "Parameter",
       "Beschreibung",
-      "axjxa1vdysludf49ilhl",
+      "Token",
       "Sicherheiten-Token-Adresse",
       "AggregatorV3Schnittstelle",
       "Chainlink-Feed für zugrunde liegenden Token",
       "maximalesFutteralter",
       "Maximal akzeptables Alter für Chainlink-Feed",
-      "x7nu45psihdlteq6nsel",
+      "Pool",
       "Spezifischer DEX-Pool (Uniswap V3, Balancer, Curve usw.)",
       "twapSekunden",
       "Fenster für die TWAP-Berechnung",
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Rolle im System",
+        "id": "role-in-system",
         "title": "Rolle im System"
       },
       {
-        "id": "Adapter-Modell",
+        "id": "adapter-model",
         "title": "Adaptermodell"
       },
       {
-        "id": "unterstützte Operationen",
+        "id": "supported-operations",
         "title": "Unterstützte Operationen"
       },
       {
-        "id": "Bereitstellungsstatus",
+        "id": "deployment-status",
         "title": "Bereitstellungsstatus"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "Kernkonzepte",
+        "id": "core-concepts",
         "title": "Kernkonzepte"
       },
       {
-        "id": "Protokoll-Komponenten",
+        "id": "protocol-components",
         "title": "Protokollkomponenten"
       },
       {
-        "id": "Finanzbegriffe",
+        "id": "financial-terms",
         "title": "Finanzbegriffe"
       },
       {
-        "id": "Risiko-Sicherheit",
+        "id": "risk-security",
         "title": "Risiko & Sicherheit"
       },
       {
-        "id": "Metriken",
+        "id": "metrics",
         "title": "Metriken"
       },
       {
-        "id": "Haftungsausschlüsse",
+        "id": "disclaimers",
         "title": "Haftungsausschlüsse"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "Kern-Erkenntnis",
+        "id": "core-insight",
         "title": "Kern Erkenntnis"
       },
       {
-        "id": "Benutzerfluss",
+        "id": "user-flow",
         "title": "Leihmodell"
       },
       {
-        "id": "Orakel-Bewertung",
+        "id": "oracle-valuation",
         "title": "Oracle & Bewertung"
       },
       {
-        "id": "Leihvorgang",
+        "id": "borrowing-process",
         "title": "Aufnahmefähigkeit für Kredite"
       },
       {
-        "id": "Gesundheitsüberwachung",
+        "id": "health-monitoring",
         "title": "Gesundheit & Liquidation"
       },
       {
-        "id": "Gebührenerhebung",
+        "id": "fee-collection",
         "title": "Gebührenbehandlung"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Testnetz-Bereich",
+        "id": "testnet-scope",
         "title": "Testnet-Umfang"
       },
       {
-        "id": "wie-bewerten",
+        "id": "how-to-evaluate",
         "title": "Wie man bewertet"
       },
       {
-        "id": "Fahrplangestaltung",
+        "id": "roadmap-framing",
         "title": "Roadmap-Rahmen"
       },
       {
-        "id": "kampagnen-und-status",
+        "id": "campaigns-and-status",
         "title": "Kampagnen & Status"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "allgemeiner Haftungsausschluss",
+        "id": "general-disclaimer",
         "title": "Allgemeiner Haftungsausschluss"
       },
       {
-        "id": "keine-finanzberatung",
+        "id": "no-financial-advice",
         "title": "Keine Finanzberatung"
       },
       {
-        "id": "Risiken",
+        "id": "risks",
         "title": "Risiken"
       },
       {
-        "id": "Keine Garantien",
+        "id": "no-warranties",
         "title": "Keine Garantien"
       },
       {
-        "id": "Haftungsbeschränkung",
+        "id": "limitation-of-liability",
         "title": "Haftungsbeschränkung"
       },
       {
-        "id": "verwandte Richtlinien",
+        "id": "related-policies",
         "title": "Verwandte Richtlinien"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Zugriffsbeschränkungen",
+        "id": "access-restrictions",
         "title": "Zugangsbeschränkungen"
       },
       {
-        "id": "eingeschränkte Rechtsordnungen",
+        "id": "restricted-jurisdictions",
         "title": "Eingeschränkte Rechtsordnungen"
       },
       {
-        "id": "Einhaltung",
+        "id": "compliance",
         "title": "Einhaltung"
       },
       {
-        "id": "verwandte Richtlinien",
+        "id": "related-policies",
         "title": "Verwandte Richtlinien"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "o3xhyk8sivkeueljv7zq",
+        "id": "fungible-lp",
         "title": "Fungible LP Beispiel"
       },
       {
-        "id": "konzentrierte Liquidität",
+        "id": "concentrated-liquidity",
         "title": "Beispiel für konzentrierte Liquidität"
       },
       {
-        "id": "NFT-Liquidität",
+        "id": "nft-liquidity",
         "title": "NFT-Liquidation"
       },
       {
-        "id": "Mehrpositionskonto",
+        "id": "multi-position-account",
         "title": "Multi-Position-Konto"
       },
       {
-        "id": "Randfälle",
+        "id": "edge-cases",
         "title": "Randfälle"
       },
       {
-        "id": "Zusammenfassung",
+        "id": "summary",
         "title": "Zusammenfassung"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "kanonische Referenz",
+        "id": "canonical-reference",
         "title": "Verwandte Richtliniendokumente"
       },
       {
-        "id": "Laufzeit-Sequenz",
+        "id": "runtime-sequence",
         "title": "Laufzeitsequenz"
       },
       {
-        "id": "Zustandsübergänge",
+        "id": "state-transitions",
         "title": "Zustandsübergänge"
       },
       {
-        "id": "Operator-Notizen",
+        "id": "operator-notes",
         "title": "Bedienerhinweise"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Abdeckungsmodell",
+        "id": "coverage-model",
         "title": "Abdeckungsmodell"
       },
       {
-        "id": "Ausführungsanforderungen",
+        "id": "execution-requirements",
         "title": "Ausführungsanforderungen"
       },
       {
-        "id": "betriebsnotizen",
+        "id": "operational-notes",
         "title": "Betriebsnotizen"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "dreischichtig",
+        "id": "three-layers",
         "title": "Drei Schichten"
       },
       {
-        "id": "Grundregeln",
+        "id": "core-rules",
         "title": "Kernregeln"
       },
       {
-        "id": "lp-komplexität",
+        "id": "lp-complexity",
         "title": "LP Kollisionale Komplexität"
       },
       {
-        "id": "Liquidationswege",
+        "id": "liquidation-pathways",
         "title": "Liquidationspfade"
       },
       {
-        "id": "Positionszustand",
+        "id": "position-state",
         "title": "Positionsstatus"
       },
       {
-        "id": "Überschussbewirtschaftung",
+        "id": "surplus-handling",
         "title": "Überschussbearbeitung"
       },
       {
-        "id": "Operator-Modell",
+        "id": "operator-model",
         "title": "Operator-Modell"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "willkommen",
+        "id": "welcome",
         "title": "Willkommen"
       },
       {
-        "id": "was-ist-avana",
+        "id": "what-is-avana",
         "title": "Was ist Avana?"
       },
       {
-        "id": "wie-es-funktioniert",
+        "id": "how-it-works",
         "title": "Wie es funktioniert"
       },
       {
-        "id": "Freischaltung von LP-Sicherheiten",
+        "id": "unlocking-lp-collateral",
         "title": "Warum LP Sicherheiten eine Rolle spielen"
       },
       {
-        "id": "Architektur",
+        "id": "architecture",
         "title": "Architektur"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Umfang-und-Systemarchitektur",
+        "id": "scope-and-system-architecture",
         "title": "Umfang & Systemarchitektur"
       },
       {
-        "id": "Schwere-Philosophie",
+        "id": "severity-philosophy",
         "title": "Schweregrad-Philosophie"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Sicherheitsherausforderungen",
+        "id": "security-challenges",
         "title": "Sicherheitsherausforderungen"
       },
       {
-        "id": "Mehrschichtige Sicherheit",
+        "id": "multi-layer-security",
         "title": "Mehrschichtige Sicherheit"
       },
       {
-        "id": "Kernvertragsoberflächen",
+        "id": "core-contract-surfaces",
         "title": "Kernvertragsoberflächen"
       },
       {
-        "id": "Vertrauensgrenzen",
+        "id": "trust-boundaries",
         "title": "Vertrauensgrenzen"
       },
       {
-        "id": "Prüfungsbereitschaft",
+        "id": "audit-readiness",
         "title": "Auditbereitschaft"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Zweck",
+        "id": "purpose",
         "title": "Zweck"
       },
       {
-        "id": "Finanzierungsansatz",
+        "id": "funding-approach",
         "title": "Finanzierungsansatz"
       },
       {
-        "id": "Aktivierungspfad",
+        "id": "activation-path",
         "title": "Aktivierungspfad"
       },
       {
-        "id": "Abdeckungsgrenze",
+        "id": "coverage-boundary",
         "title": "Abdeckungsgrenze"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "Übersicht",
+        "id": "overview",
         "title": "Übersicht"
       },
       {
-        "id": "Kernprinzipien",
+        "id": "core-principles",
         "title": "Kernprinzipien"
       },
       {
-        "id": "Rollen",
+        "id": "roles",
         "title": "Rollen"
       },
       {
-        "id": "Aktualisierungsfluss",
+        "id": "update-flow",
         "title": "Fluss aktualisieren"
       },
       {
-        "id": "Parameterklassen",
+        "id": "parameter-classes",
         "title": "Parameterklassen"
       },
       {
-        "id": "öffentliche Bekanntmachung",
+        "id": "public-disclosure",
         "title": "Öffentliche Bekanntmachung"
       },
       {
-        "id": "Notfallmaßnahmen",
+        "id": "emergency-actions",
         "title": "Notfallmaßnahmen"
       }
     ],

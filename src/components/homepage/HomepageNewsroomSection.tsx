@@ -2,6 +2,7 @@ import { Link } from "@/i18n/navigation"
 import { ChevronRight } from "lucide-react"
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
 import { getNewsroomPosts, type NewsroomCollection, type NewsroomPost } from "@/lib/content"
+import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 
 type HomepageNewsroomSectionProps = {
   eyebrow?: string
@@ -29,7 +30,7 @@ export default async function HomepageNewsroomSection({
   const resolvedPosts = posts ?? await getNewsroomPosts(collection)
   const hasTopBorder = showTopBorder ?? showDividers
 
-  return (
+  return withMarketingI18n(['homepage/HomepageNewsroomSection'], (
     <section className="deferred-viewport">
       <div className="mb-8 flex max-w-[48rem] flex-col gap-3 md:mb-10">
         <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow>
@@ -75,5 +76,5 @@ export default async function HomepageNewsroomSection({
         ))}
       </div>
     </section>
-  )
+  ))
 }
