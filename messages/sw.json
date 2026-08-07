@@ -1,0 +1,298 @@
+{
+  "common": {
+    "a11y": {
+      "skipToContent": "Ruka hadi maudhui kuu",
+      "primaryNav": "Uongozi wa msingi",
+      "mobileMenu": "Menyu ya simu ya mkononi",
+      "mobileNav": "Urabati wa simu ya mkononi",
+      "openMenu": "Fungua menyu",
+      "closeMenu": "Funga menyu",
+      "language": "Lugha: {language}",
+      "logo": "Nembo ya {site}",
+      "helpfulLinks": "Viungo vinavyosaidia"
+    },
+    "nav": {
+      "products": "Bidhaa",
+      "resources": "Rasilimali",
+      "developers": "Waendelezaji",
+      "helpCenter": "Kituo cha Msaada",
+      "aaveArfc": "Aave ⟦ 15",
+      "borrow": "Kokotoa",
+      "lend": "Kopa",
+      "multiply": "Zidisha",
+      "about": "Kuhusu",
+      "newsroom": "Chumba cha Habari",
+      "brand": "Chapa",
+      "faq": "Maswali yanayoulizwa mara kwa mara",
+      "privacy": "Faragha",
+      "terms": "Masharti",
+      "overview": "Muhtasari",
+      "architecture": "Usanifu wa Majengo",
+      "liquidation": "Utoaji wa mali"
+    },
+    "cta": {
+      "sandboxShort": "Sandbox",
+      "sandboxLong": "Jaribu Sandbox"
+    },
+    "mega": {
+      "exploreProducts": "Chunguza Bidhaa",
+      "exploreResources": "Chunguza Rasilimali",
+      "exploreDevelopers": "Chunguza Wach разработaji",
+      "whatYouCanDo": "Unachoweza kufanya",
+      "whereToLook": "Mahali pa kuangalia",
+      "highlights": "Vitu vya Kipekee",
+      "borrowAgainstLp": "Kopa dhidi ya LP",
+      "borrowAgainstLpDesc": "Fungua unywaji wa fedha kutoka kwa mfichiko wa LP bila kuacha mkakati.",
+      "openMultiply": "Fungua LP zidisha",
+      "openMultiplyDesc": "Tumia nafasi AMM kama dhamana kwa kufichua kudhibitiwa katika bwawa.",
+      "lendThroughHub": "Kopa kupitia Kituo",
+      "lendThroughHubDesc": "Gawa mtaji kwa muktadha wa utekelezaji ulio wazi zaidi.",
+      "aboutDesc": "Nadharia ya kampuni na bidhaa nyuma ya Avana.",
+      "followNotes": "Fuata maelezo ya bidhaa",
+      "followNotesDesc": "Uzinduzi, masasisho ya kiufundi, na maamuzi ya ramani ya barabara.",
+      "browseBrand": "Vinakili vifaa vya chapa",
+      "browseBrandDesc": "Alama zilizothibitishwa, rangi, na mwongozo wa kuona wa mshirika.",
+      "startOverview": "Anza na muhtasari",
+      "startOverviewDesc": "Mfano wa itifaki kuu kabla ya maelezo ya utekelezaji.",
+      "reviewModel": "Kagua mfano wa itifaki",
+      "reviewModelDesc": "Jinsi kituo, nyuzi, bei, na udhibiti vinavyoungana pamoja.",
+      "understandLiquidation": "Kuelewa ufutaji mali",
+      "understandLiquidationDesc": "Jinsi nafasi zinazotungwa na LP zinavyofuatiliwa na kuliwekwa sawa."
+    },
+    "footer": {
+      "blurb": "Avana ni itifaki ya dhamana ya LP kwenye Aave v4 inayosaidia watoa kioevu kukopa dhidi ya nafasi zilizo hai huku wakibaki kwenye bwawa.",
+      "explore": "Chunguza",
+      "resources": "Rasilimali",
+      "docs": "Nguvu",
+      "social": "Kijamii",
+      "twitter": "Twita",
+      "github": "GitHub",
+      "telegram": "Telegramu",
+      "discourse": "Mahojiano",
+      "socialAria": "Avana kwenye {network}",
+      "disclosureRisk": "Kukopa ukitumia tokeni LP kunahusisha hatari, ikiwemo uuzaji wa dhamana ikiwa hali za soko zitapinga nafasi yako. Avana haikurudishi fedha zako, kuwasha tena nafasi za LP, au kubadilisha jinsi uraia wako unavyofanya kazi kwenye AMM msingi. Masharti ya mkopo, viwango vya riba, na thamani za dhamana hufuatwa kwenye mnyororo kwa kutumia mifumo ya uwazi ya oracle na vigezo vya hatari vilivyoandaliwa kiotomatiki. Unabaki na udhibiti kamili wa nafasi yako wakati wote na unaweza kulipa au kurekebisha dhamana wakati wowote utakapoamua. Kopa tu kiasi ambacho unajisikia vizuri kudumisha wakati wa mabadiliko ya soko.",
+      "disclosureInfo": "Nyenzo hii ni kwa madhumuni ya taarifa tu, na si (i) ofa, au ombi la kutoa ofa, ya kuwekeza, au kununua au kuuza, hisa au sehemu yoyote, au kushiriki katika mpango wowote wa uwekezaji au biashara, (ii) kusudiwa kutoa ushauri wa uhasibu, kisheria, au kodi, au mapendekezo ya uwekezaji au (iii) taarifa rasmi ya Avana. Tafadhali konsultiana na washauri wenu kabla ya kufanya uamuzi wowote wa uwekezaji. Hakuna uwakilishi au dhamana inayotolewa, kwa wazi au kwa jisiri, kuhusiana na usahihi wa taarifa au utendaji wa baadaye wa mali yoyote ya kidijitali, chombo cha kifedha au kipimo chochote cha soko au kiuchumi. Avana inaweza kuwa na maslahi ya kifedha, au uhusiano na baadhi ya mashirika na/au machapisho yaliyotajwa au kurejelewa katika nyenzo hii. Avana haithibitishi au kuthibitisha viungo au tovuti za wahusika wa tatu ambazo zinaweza kutolewa katika nyenzo hizi."
+    },
+    "notFound": {
+      "title": "Ukurasa huu haupatikani.",
+      "body": "Anwani inaweza kuwa si sahihi au ukurasa unaweza kuwa umehamia.",
+      "home": "Go to homepage",
+      "faq": "Maswali yanayoulizwa mara kwa mara"
+    },
+    "sandboxNotice": "Sandbox data imeonyeshwa kwa ajili ya awali tu. APYs, bei, na mapato ni ya mfano na yanaweza kutofautiana na hali halisi za soko.",
+    "blogChrome": {
+      "back": "Nyuma",
+      "share": "Shiriki",
+      "shareOnX": "Sambaza kwenye X",
+      "shareOnLinkedIn": "Shiriki kwenye LinkedIn",
+      "previousPost": "Chapisho lililotangulia",
+      "nextPost": "Chapisho lijalo",
+      "onThisPage": "On this page"
+    },
+    "docs": {
+      "previous": "Iliyopita",
+      "next": "Ifuatayo",
+      "sections": {
+        "introduction": "Utangulizi",
+        "gettingStarted": "Kuanza",
+        "architecture": "Mchakato wa Itifaki",
+        "liquidation": "Mfumo wa Utoaji Mali",
+        "integrations": "Uingizaji wa Msaada",
+        "safety": "Vifaa vya Usalama",
+        "legal": "Kisheria na Uzingatiaji"
+      },
+      "items": {
+        "overview": "Muhtasari",
+        "keyConcepts": "Dhana Muhimu",
+        "testnetRoadmap": "Mtandao wa Jaribio na Ramani ya Njia",
+        "glossary": "Kamusi ya Maneno",
+        "depositLp": "Amana LP",
+        "borrowAssets": "Kopa Mali",
+        "manageLoans": "Dhibiti Mikopo",
+        "repayLoans": "Lipa Mikopo",
+        "withdrawCollateral": "Toa Dhamana",
+        "claimLpFees": "Kidai LP Ada",
+        "borrowSpoke": "Kopa Ncha ya Gurudumu",
+        "lendSpoke": "Mkopo wa Spoke",
+        "collateralFactors": "Vigezo vya Dhamana",
+        "healthFactor": "Kigezo cha Afya",
+        "platformFees": "Ada za Jukwaa",
+        "incentives": "Vichocheo",
+        "liquidationDesign": "Muundo wa Utoaji Mali",
+        "liquidators": "Walioliquidisha",
+        "liquidationFlow": "Mtiririko wa Ukomeshaji",
+        "liquidationExamples": "Mifano ya Utoaji Mali",
+        "integrationsOverview": "Muhtasari wa Ulinganisho",
+        "appkit": "AppKit",
+        "allowedPools": "Maziwa Yanayoruhusiwa LP",
+        "routerAdapters": "Rauta na Viongezaji",
+        "priceOracles": "Mashirika ya Bei",
+        "riskFramework": "Mfumo wa Hatari",
+        "contractsSecurity": "Mikataba na Usalama",
+        "bugBounty": "Zawadi ya Hitilafu",
+        "insuranceFunds": "Fondi za Bima",
+        "securityDisclosures": "Ufadhili wa Usalama",
+        "legalDisclaimer": "Tangazo la Kisheria"
+      }
+    },
+    "faqUi": {
+      "heading": "Tunawezaje kusaidia?",
+      "search": "Tafuta",
+      "searchPlaceholder": "Tafuta",
+      "searchResults": "Matokeo ya Utafutaji",
+      "clearSearch": "Futa utafutaji",
+      "noResults": "Hakuna matokeo yaliyopatikana kwa \"{query}\"",
+      "category": "Kategoria: {name}",
+      "categoriesAria": "Aina za Maswali Yanayoulizwa Mara kwa Mara",
+      "articles": "{count} makala"
+    },
+    "tags": {
+      "all": "Yote",
+      "product": "Bidhaa",
+      "strategy": "Mkakati",
+      "guides": "Viongozi",
+      "protocol": "Itifaki",
+      "institutions": "Taasisi"
+    },
+    "newsroom": {
+      "latestFrom": "Hivi karibuni kutoka Avana",
+      "readNewsroom": "Soma chumba cha habari"
+    }
+  },
+  "meta": {
+    "siteTitle": "Avana - Kopa Kinyume na Nafasi LP kwenye Aave v4",
+    "siteDescription": "Fungua mtiririko wa fedha kutoka kwa tokeni zako LP. Kopa hadi 80% dhidi ya Uniswap, Curve, na Balancer nafasi huku ukiendelea kupata ada za biashara kwenye Aave v4.",
+    "ogDescription": "Fungua uhalisi kutoka kwenye tokeni zako LP huku unaendelea kupata ada za biashara.",
+    "ogSubtitle": "Kopa Dhidi ya Nafasi LP kwenye Aave v4",
+    "twitterTitle": "Avana - Kukopa Dhidi ya Nafasi LP",
+    "twitterDescription": "Fungua uraia kutoka kwenye tokeni zako LP kwenye Aave v4",
+    "titleTemplate": "{title} | Avana",
+    "team": "Avana Timu",
+    "ogAlt": "Avana - DeFi Itawala wa Uwezekano wa Kioo",
+    "home": {
+      "title": "Kopa Dhidi ya Nafasi LP kwenye Aave v4",
+      "description": "Fungua mtiririko wa fedha kutoka kwa tokeni zako LP. Kopa hadi 80% dhidi ya Uniswap, Curve, na Balancer nafasi huku ukiendelea kupata ada za biashara kwenye Aave v4."
+    },
+    "about": {
+      "title": "Kuhusu",
+      "description": "Kutana na Avana, itifaki ya kujitolea ya LP-kama-uhakika iliyojengwa kwenye Aave v4 na Spokes maalum, Hub ya pamoja, na Lend Spoke iliyoundwa kwa soko za kioo cha AMM."
+    },
+    "borrow": {
+      "title": "Kokotoa",
+      "description": "Kopa dhidi ya nafasi za moja kwa moja LP bila kutoka kwenye zaidi. Endelea kupokea ada huku ukifungua uraia kwenye Aave v4."
+    },
+    "lend": {
+      "title": "Kopa",
+      "description": "Toa mtaji kwa Avana Lend Spoke na upate faida kutoka kwa wakopaji waliofadhiliwa na LP kwenye Aave v4."
+    },
+    "multiply": {
+      "title": "Zidisha",
+      "description": "Ongeza kwa nguvu kuonyeshwa kwa LP kwa mikakati iliyosimamiwa zaidi ikihakikiwa na nafasi zilizothibitishwa za AMM."
+    },
+    "brand": {
+      "title": "Chapa",
+      "description": "Rasilimali rasmi za chapa Avana, rangi, na mwongozo wa matumizi kwa washirika na vyombo vya habari."
+    },
+    "faq": {
+      "title": "Maswali yanayoulizwa mara kwa mara",
+      "description": "Majibu kuhusu Avana LP dhamana, mkopo, ukopeshaji, kuzidisha, ufumbuzi wa mali, na Aave v4 usanifu."
+    },
+    "newsroom": {
+      "title": "Chumba cha Habari",
+      "description": "Machapisho mapya zaidi kutoka kwa timu ya Avana kuhusu dhamana LP, masoko AMM, Aave v4, na maendeleo ya itifaki."
+    },
+    "developers": {
+      "title": "Waendelezaji",
+      "description": "Nyaraka za kiufundi kwa ajili ya kuunganishwa na Avana. Jifunze kuhusu dhamana ya tokeni ya LP, vigezo vya kiafya, mtiririko wa uondoaji, na usanifu wa mikataba smart kwenye Aave v4."
+    },
+    "privacy": {
+      "title": "Sera ya Faragha",
+      "description": "Avana sera ya faragha."
+    },
+    "terms": {
+      "title": "Masharti ya Matumizi",
+      "description": "Avana masharti ya matumizi."
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Iliyotiwa nguvu na Aave v4",
+      "title": "Kopa dhidi ya nafasi LP",
+      "titleLine1": "Kopa Dhidi ya",
+      "titleLine2": "Hali za Ukinifu",
+      "subtitle": "Endelea kupata fedha za kibiashara wakati unafungua fedha taslimu kutoka nafasi za Uniswap, Curve, na Balancer.",
+      "subtitleMobileLines": [
+        "Pata upo hadi 80% ya thamani ya Ziwa lako la Uwezekano",
+        "at 5.5% APR without withdrawing liquidity or",
+        "giving up trading fees."
+      ],
+      "subtitleDesktopLines": [
+        "Pata hadi 80% ya thamani ya Maziwa Yako ya Usalama kwa 5.5% APR",
+        "without withdrawing liquidity or giving up trading fees."
+      ],
+      "primaryCta": "Jaribu Sandbox",
+      "secondaryCta": "Soma nyaraka"
+    },
+    "features": {
+      "eyebrow": "Vipengele Muhimu",
+      "title": "Imejengwa kwa dhamana ya moja kwa moja LP"
+    },
+    "faq": {
+      "title": "Maswali yanayoulizwa mara kwa mara"
+    },
+    "newsroom": {
+      "title": "Hivi karibuni kutoka Avana",
+      "cta": "Soma chumba cha habari"
+    },
+    "buildTomorrow": {
+      "title": "Kutana Avana",
+      "body": "Avana ingegeuzwa ikawa rasilimali ya kutumia kutoka kwenye nafasi LP kwenye Aave v4 ili watoa kioevu waweze kukopa bila kuondoka kwenye bwawa."
+    }
+  },
+  "product": {
+    "borrow": {
+      "title": "Kopa dhidi ya LP",
+      "subtitle": "Fungua unywaji kutoka kwenye nafasi hai AMM bila kuondoka kwenye bwawa.",
+      "cta": "Jaribu Sandbox"
+    },
+    "lend": {
+      "title": "Kopa kwa masoko LP",
+      "subtitle": "Pata faida kutoka kwa wakopaji wakitumia dhamana ya moja kwa moja LP kwenye Aave v4.",
+      "cta": "Jaribu Sandbox"
+    },
+    "multiply": {
+      "title": "Zidisha LP mfichiko",
+      "subtitle": "Tumia nafasi zinazoungwa mkono kama dhamana kuongeza mfiduo wa mwelekeo uliosimamiwa.",
+      "cta": "Jaribu Sandbox"
+    },
+    "about": {
+      "title": "Kuhusu Avana",
+      "subtitle": "LP-kama itifaki ya dhamana iliyojengwa juu ya Aave v4"
+    },
+    "brand": {
+      "title": "Kifurushi cha chapa",
+      "subtitle": "Alama, rangi, na mwongozo kwa uso unaokabiliwa na mshirika"
+    }
+  },
+  "faq": {
+    "title": "Maswali yanayoulizwa mara kwa mara",
+    "subtitle": "Majibu kuhusu Avana, fedha za dhamana LP, na Aave v4",
+    "englishOnlyNote": "Jibu kamili la Maswali Yanayoulizwa Mara Kwa Mara yanaonyeshwa kwa Kiingereza hadi uhakiki wa eneo hili kukamilika."
+  },
+  "docs": {
+    "hubTitle": "Nyaraka za waendelezaji",
+    "hubSubtitle": "Unganisha na Avana LP dhamana kwenye Aave v4",
+    "englishOnlyNote": "Maandishi ya mwili wa nyaraka hurudi kwa Kiingereza wakati tafsiri ya eneo haijapatikana bado."
+  },
+  "blog": {
+    "indexTitle": "Chumba cha Habari",
+    "indexSubtitle": "Vidokezo vya bidhaa, utafiti, na masasisho ya itifaki",
+    "englishOnlyNote": "Miili ya makala hujirudisha kwa Kiingereza wakati tafsiri ya eneo bado haipatikani."
+  },
+  "legal": {
+    "privacyTitle": "Sera ya Faragha",
+    "termsTitle": "Masharti ya Matumizi",
+    "englishOnlyNote": "Kurasa za kisheria zinabaki kwa Kiingereza hadi toleo la eneo lililoidhinishwa na wakili lipatikane.",
+    "englishOnlyBadge": "Kiingereza tu"
+  }
+}

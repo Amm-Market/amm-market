@@ -1,144 +1,88 @@
-import { MetadataRoute } from 'next'
-import { SITE_URL, siteRoutes } from "@/lib/site"
+import type { MetadataRoute } from "next"
 import { blogPosts } from "@/lib/blog-posts"
+import { languageAlternates, absoluteLocaleUrl } from "@/lib/i18n/path"
+import { defaultLocale } from "@/i18n/locales"
+import { siteRoutes } from "@/lib/site"
 
 /**
- * Generates the sitemap.xml for the Avana website.
- * 
- * @description
- * This file is automatically processed by Next.js to generate /sitemap.xml.
- * It includes all public pages organized by priority:
- * - Landing pages (priority 0.8-1.0)
- * - Developer documentation (priority 0.7)
- * - Blog posts (priority 0.6)
- * - Legal/utility pages (priority 0.3)
- * 
- * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
+ * Multi-locale sitemap. English (default) uses unprefixed URLs;
+ * other locales use /{locale}/... prefixes (as-needed routing).
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
-  
-  // Main landing pages - highest priority
-  const landingPages: MetadataRoute.Sitemap = [
-    {
-      url: SITE_URL,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.developers}`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.newsroom}`,
-      lastModified: now,
-      changeFrequency: 'daily',
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.faq}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.borrow}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.lend}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.multiply}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.brand}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
+
+  const landingPaths = [
+    "/",
+    siteRoutes.developers,
+    siteRoutes.newsroom,
+    siteRoutes.faq,
+    siteRoutes.borrow,
+    siteRoutes.lend,
+    siteRoutes.multiply,
+    siteRoutes.brand,
+    siteRoutes.about,
   ]
 
-  // Developer documentation pages
-  const developerDocs: MetadataRoute.Sitemap = [
-    // Introduction section
-    '/developers/introduction/key-concepts',
-    '/developers/introduction/glossary',
-    '/developers/introduction/testnet-roadmap',
-    // Getting Started section
-    '/developers/getting-started',
-    '/developers/getting-started/borrow-assets',
-    '/developers/getting-started/manage-loans',
-    '/developers/getting-started/repay-loans',
-    '/developers/getting-started/withdraw-collateral',
-    '/developers/getting-started/claim-lp-fees',
-    // Architecture section
-    '/developers/architecture',
-    '/developers/architecture/lend-spoke',
-    '/developers/architecture/collateral-factors',
-    '/developers/architecture/health-factor',
-    '/developers/architecture/platform-fees',
-    '/developers/architecture/incentives',
-    // Integrations section
-    '/developers/integrations',
-    '/developers/integrations/appkit',
-    '/developers/integrations/allowed-pools',
-    '/developers/integrations/price-oracles',
-    '/developers/integrations/router-contract',
-    // Liquidation section
-    '/developers/liquidation',
-    '/developers/liquidation/liquidators',
-    '/developers/liquidation/flow',
-    '/developers/liquidation/examples',
-    // Safety section
-    '/developers/safety',
-    '/developers/safety/contracts',
-    '/developers/safety/bug-bounty',
-    '/developers/safety/insurance',
-    // Legal section
-    '/developers/legal',
-    '/developers/legal/disclaimer',
-  ].map(path => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: now,
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }))
-
-  // Blog posts
-  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${SITE_URL}/newsroom/${post.slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
-
-  // Legal and utility pages - lowest priority
-  const utilityPages: MetadataRoute.Sitemap = [
-    {
-      url: `${SITE_URL}${siteRoutes.privacy}`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${SITE_URL}${siteRoutes.terms}`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
+  const developerPaths = [
+    "/developers/introduction/key-concepts",
+    "/developers/introduction/glossary",
+    "/developers/introduction/testnet-roadmap",
+    "/developers/getting-started",
+    "/developers/getting-started/borrow-assets",
+    "/developers/getting-started/manage-loans",
+    "/developers/getting-started/repay-loans",
+    "/developers/getting-started/withdraw-collateral",
+    "/developers/getting-started/claim-lp-fees",
+    "/developers/architecture",
+    "/developers/architecture/lend-spoke",
+    "/developers/architecture/collateral-factors",
+    "/developers/architecture/health-factor",
+    "/developers/architecture/platform-fees",
+    "/developers/architecture/incentives",
+    "/developers/integrations",
+    "/developers/integrations/appkit",
+    "/developers/integrations/allowed-pools",
+    "/developers/integrations/price-oracles",
+    "/developers/integrations/router-contract",
+    "/developers/liquidation",
+    "/developers/liquidation/liquidators",
+    "/developers/liquidation/flow",
+    "/developers/liquidation/examples",
+    "/developers/safety",
+    "/developers/safety/contracts",
+    "/developers/safety/bug-bounty",
+    "/developers/safety/insurance",
+    "/developers/legal",
+    "/developers/legal/disclaimer",
   ]
 
-  return [...landingPages, ...developerDocs, ...blogPages, ...utilityPages]
+  const blogPaths = blogPosts.map((post) => `/newsroom/${post.slug}`)
+  const utilityPaths = [siteRoutes.privacy, siteRoutes.terms]
+
+  const pathPriority = (path: string): { changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]; priority: number } => {
+    if (path === "/") return { changeFrequency: "weekly", priority: 1 }
+    if (path === siteRoutes.developers) return { changeFrequency: "weekly", priority: 0.9 }
+    if (path === siteRoutes.newsroom) return { changeFrequency: "daily", priority: 0.8 }
+    if (path.startsWith("/newsroom/")) return { changeFrequency: "monthly", priority: 0.6 }
+    if (path.startsWith("/developers")) return { changeFrequency: "weekly", priority: 0.7 }
+    if (path === siteRoutes.privacy || path === siteRoutes.terms) {
+      return { changeFrequency: "yearly", priority: 0.3 }
+    }
+    return { changeFrequency: "monthly", priority: 0.7 }
+  }
+
+  const allPaths = [...landingPaths, ...developerPaths, ...blogPaths, ...utilityPaths]
+
+  return allPaths.map((path) => {
+    const { changeFrequency, priority } = pathPriority(path)
+    return {
+      url: absoluteLocaleUrl(defaultLocale, path),
+      lastModified: now,
+      changeFrequency,
+      priority,
+      alternates: {
+        languages: languageAlternates(path),
+      },
+    }
+  })
 }

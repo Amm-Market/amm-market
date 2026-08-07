@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { siteRoutes } from "@/lib/site"
 

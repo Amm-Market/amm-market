@@ -1,0 +1,778 @@
+{
+  "posts": [
+    {
+      "slug": "lp-risk-yönetimi",
+      "title": "Avana, LP Riskini Nasıl Yönlendirir",
+      "date": "24 Temmuz 2026",
+      "description": "Avana, sınırlı güncellemeler, bağımsız inceleme ve acil durum kontrolü ile LP teminat riskini yan pazarlar genelinde nasıl yönetir.",
+      "image": "/ resimler / blog / lp-risk yönetimi.png",
+      "category": "Geliştiriciler",
+      "tag": "Protokol",
+      "sections": [
+        {
+          "id": "neden-lp-risk-farklıdır",
+          "title": "Neden LP risk farklıdır",
+          "paragraphs": [
+            "Avana, bir liste hâlindeki tokenları yöneten genel bir kredi piyasası gibi LP teminatını yönetemez. Her bir kol piyasasının kendi havuz yapısı, başarısızlık modları ve stres davranışı vardır. Sabit bir havuz, yoğunlaştırılmış bir aralıkla aynı ürün değildir. Ağırlıklı bir Balancer tarzı sepet, sıkı bir şekilde korele olmuş bir Curve tarzı piyasa ile aynı ürün değildir. Avana'in risk çerçevesi bu çeşitlilik etrafında inşa edilmiştir. Volatiliteyi, peg kalitesini, kullanım oranını, likidite derinliğini, yoğunlaşmayı, oracle sağlığını, piyasa durumunu, arz ve borçlanma sınırlarını, LTV ve tasfiye eşiklerini, faiz oranı modellerini ve hub ile LP kolları genelindeki pozisyon sağlığını izler."
+          ]
+        },
+        {
+          "id": "üç rol",
+          "title": "Üç rol, net işler",
+          "paragraphs": [
+            "Avana, rutin tavsiyeyi, bağımsız incelemeyi ve acil müdahaleyi üç role ayırır: Risk Başlatıcı, Risk Koruyucu ve Risk Savunucusu. Başlatıcı, onaylı şablonlar içinde sınırlamalar, teminat ayarları, oranlar ve havuz katılımını içeren rutin güncellemeleri önerir. Her öneri, normal yoluna girmeden önce savunma veya büyüme odaklı olarak etiketlenir. Koruyucu, inceleme ve veto katmanıdır. Halka açık açıklamanın sıraya alınanla eşleşip eşleşmediğini kontrol eder, eylemin politika sınırları içinde kalmasını doğrular ve zaman kilidi sırasında iptal edebilir. Savunucu ise tasarım gereği dardır. Sınırları azaltabilir, borçlanmayı dondurabilir veya rutin yolun beklenmesi Avana’i açıkta bırakacaksa, tehlikeye düşmüş bir adaptörü devre dışı bırakabilir."
+          ]
+        },
+        {
+          "id": "nasıl-değişimler-gönderi",
+          "title": "Rutin nasıl değişir",
+          "paragraphs": [
+            "Avana üzerindeki standart güncelleme yolu, kamuya duyuru, gönderim, önceden belirlenmiş sınırlar karşısında doğrulama, zaman kilidi, Guardian incelemesi ve kimse veto etmezse yürütmedir. Geliştiriciler, kullanıcılar ve yönetişim katılımcıları, bir değişiklik uygulanmadan önce gerekçeyi okuyabilir ve yazılı politikayı sıradaki eylemle karşılaştırabilir. Karmaşık teminat üzerine kurulu bir protokol için, bu kamuya açık tutarlılık bir pazarlama fazlalığı değil, temel bir gerekliliktir.",
+            "Her değişiklik bu yolu kullanmaz. Risk azaltma, risk eklemekten daha kolay olması amaçlanmıştır. Onaylanmış aralıklar içindeki mütevazı ayarlamalar standart akışı takip eder. Yeni çubuk aileleri, yeni LP primitifler, yeni oracle modelleri veya yeni tasfiye adaptörleri gibi daha büyük hamleler, Avana'in risk yüzeyini genişlettiği ve daha yoğun inceleme gerektirdiği için rutin sürecin dışındadır."
+          ]
+        },
+        {
+          "id": "acil durum gücü",
+          "title": "Avana acil güç kullandığında",
+          "paragraphs": [
+            "Acil durum vakaları, oracle tutarsızlığı, tasfiye yolunun bozulması, anormal havuz davranışı, sarmalayıcı arızası, adaptörün ele geçirilmesi veya ani spoke seviyesi istikrarsızlığını içerir. Yine de çerçeve dikkatli kalır. Avana üzerindeki acil durum yetkisi sınırlı, savunmacı ve geri alınabilirdir. Bu, varsayımların zaman kilidi yönetiminin yanıt veremeyeceği kadar hızlı başarısız olduğu anlar için vardır. Günlük optimizasyon için bir gölge yol değildir.",
+            "Bir arada değerlendirildiğinde, Avana yönetim yapısını teminat karmaşıklığına uyarlar. LP destekli kredilendirme, piyasa şablonlarına, sınırlı yürütmeye, şeffaf açıklamaya ve normal büyüme, savunma ayarlaması ve acil durum kontenmanı arasında sert bir çizgiye ihtiyaç duyar. Her mil kendi tahmin varsayımlarını, tasfiye mantığını, kabul kurallarını ve operasyonel kısıtlamalarını korur. Avana her LP piyasanın değiştirilebilir olduğunu iddia etmez."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "neden-lp-teminat-akıllı-ajanslara-ihityaç-duyar",
+      "title": "Neden LP Teminat Akıllı Ajanlara İhtiyaç Duyar",
+      "date": "22 Temmuz 2026",
+      "description": "Avana'in sağlık, hizmet mekanı özel pozisyonlarını izlemek ve stres altında tasfiye kapsamını güvenilir tutmak için Akıllı Ajanları neden kullandığı.",
+      "image": "/images/blog/akıllı-temsilciler-lp-ek.png",
+      "category": "Geliştiriciler",
+      "tag": "Protokol",
+      "sections": [
+        {
+          "id": "lp-kredileri-operasyonel",
+          "title": "LP loans are operational work",
+          "paragraphs": [
+            "On Avana, LP teminat aktiftir, yol bağımlıdır ve operasyonel olarak zorludur. Ücret kazanır, bileşimi değiştirir, piyasalar hareket ettikçe riski değiştirir ve bir pozisyon stres altına girdiğinde tam olarak belirli bir mekanizmaya özgü işlemler gerektirebilir. Standart bir token piyasası genellikle tasfiye ve izlemeyi daha basit bir tetikleme ve takas yoluna indirebilir. LP teminat farklıdır. Sistem, hangi pozisyonların aktif olduğunu, borcun nasıl kaydığını, gerçek bir tasfiye durumunda teminatın nasıl görüneceğini, ücretlerin nasıl elde edilebileceğini, hangi mekanizmaya özgü çıkarma yolunun uygulandığını ve kayma, yönlendirme ve işlem maliyetinden sonra tasfiye işleminin hâlâ mümkün olup olmadığını bilmek zorundadır. Bu detaylar, kağıt üzerinde teorik kapsama ile piyasalar zorlaştığında hâlâ işe yarayan kapsama arasındaki farkı oluşturur."
+          ]
+        },
+        {
+          "id": "ajanlar-ne-yapar",
+          "title": "Akıllı Ajanlar ne yapar",
+          "paragraphs": [
+            "Avana'in node runtime'ı zincir üzerindeki etkinlikleri okur, aktif pozisyonların canlı bir haritasını tutar, kısa aralıklarla kayan borcu yeniler ve eski veya kaçırılmış durumu yakalamak için daha geniş taramalar yapar. Uygulama kullanıcı arayüzü, panolar, izleme mantığı ve tasfiye iş akışları, pazarın kendi versiyonunu icat etmek yerine, aynı operasyonel resimden bilgi almak üzere tasarlanmıştır.",
+            "Tasfiye, bunun en çok önem taşıdığı yerdir. Bir Avana pozisyon izin verilen borçlanma kapasitesinin altına düştüğünde, yürütme katmanı işin kârlı bir şekilde yapılabilir olup olmadığını değerlendirmek, geçici likidite sağlamak, krediyi kredi katmanına geri ödemek, ücretleri talep etmek, teminatı doğru yöntemle çözmek, ortaya çıkan varlıkları yönlendirmek, flaş yolu üzerinde uzlaşmayı sağlamak, tasfiye primini dağıtmak ve herhangi bir şey kaldığında borçlunun kalan değerini korumak zorundadır. Bu bir iş zinciridir, tek bir işlem türü değil."
+          ]
+        },
+        {
+          "id": "mekanlar öncesi ve mekan genelinde",
+          "title": "Tasfiye öncesi ve mekanlar genelinde",
+          "paragraphs": [
+            "Akıllı Ajanlar, tasfiye gerçekleşmeden önce de önemlidir. Pozisyonları indekslemek Avana, borç kaymasını izlemek ve protokolü kendi kehanet ve risk varsayımlarıyla uyumlu tutmak hazırlığı artırır. Teminat piyasa ile hareket etmeye devam ederken operasyonel gecikme ücretsiz değildir.",
+            "LP teminat, bir değerleme problemi olduğu kadar bir adaptör problemidir. Değiştirilebilir LPler, yoğunlaşmış aralıklar ve özel havuz tasarımları, farklı borsa farkındalığına sahip işleme ihtiyaç duyar. Akıllı Ajanlar, bu farklılıkları dikkate almak için Avana'in katmanıdır; her piyasaya tek bir genel yol dayatmak yerine. Oracle, bir pozisyonun kredi olarak ne kadar değerli olabileceğini Avana'e bildirir. Ajan katmanı ise bu değerin pratikte gerçekten geri kazanılıp kazanılamayacağını belirlemeye yardımcı olur.",
+            "Avana izinsiz tasfiyeyi değiştirmez. Dış geliştiriciler hâlâ izleyebilir ve harekete geçebilir. Protokol tarafından işletilen çalışma zamanları, yapısal olarak hizmet vermesi daha zor olan teminat için temel kapsama alanını iyileştirir. Önemli olan stres anında. Bir piyasanın güvenilir işlem kapsamından yoksun olduğunu keşfetmenin en kötü zamanı, tasfiye olayının kendisi sırasında ortaya çıkar."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lp-likitasyonu-nasıl-çalışmalı",
+      "title": "Likidasyon Nasıl Çalışmalıdır LP",
+      "date": "20 Temmuz 2026",
+      "description": "Avana, kontrol edilen çözümler, kısmi müdahale, mümkün olduğunda önce ücretler ve mekan özel yollar ile LP teminatı nasıl tasfiye eder.",
+      "image": "/ resimler / blog / lp-tasfiye-iş akışı.png",
+      "category": "Geliştiriciler",
+      "tag": "Protokol",
+      "sections": [
+        {
+          "id": "token-satışı-değil",
+          "title": "Basit bir token satışı değil",
+          "paragraphs": [
+            "Avana üzerinde LP teminatını tasfiye etmek, bir token bakiye tasfiyesi ile aynı değildir. Teminat birden fazla varlık, toplanmamış ücretler, yoğunlaşmış aralık maruziyeti ve mekana özgü çıkış mekanizmalarını içerebilir. Bir pozisyon sağlıksız hale gelirse, Avana, LP'i tek bir değiştirilebilir çip gibi ele alan panik satış yerine kontrollü bir çözülmeye ihtiyaç duyar."
+          ]
+        },
+        {
+          "id": "çalışma zamanı dizisi",
+          "title": "Çalışma zamanı dizisi",
+          "paragraphs": [
+            "Pratikte, tasfiye bir çalışma zamanı sırasıdır. Sağlıksız hesaplar, ham AMM spot durum yerine Avana'in riskle düzeltilmiş teminat değerleri kullanılarak tespit edilir. Uygulama likiditesi, genellikle bir flashloan tarzı yol aracılığıyla sağlanır. Borç, kredi katmanına ödenir. Pozisyon kontrollü saklama altına alınır. Talep edilebilir ücretler, bunun yardımcı olduğu durumlarda gerçekleştirilir. LP doğru piyasa yolu ile kapatılır. Temel varlıklar geri alındıktan sonra, borç varlığına yönlendirilir, uygulama likiditesi ödenir, tasfiye primi dağıtılır ve kalan herhangi bir borçlu değeri iade edilir.",
+            "Avana üzerindeki farklı LP aileleri tek bir çıkış yolunu paylaşmaz. Değiştirilebilir LP’ler havuzdan çıkarılır ve temellerine ayrılır. Yoğunlaşmış aralıklar, pozisyon fiyat nedeniyle bir tarafa kaymışsa kullanıcıların varsaydığından çok farklı görünebileceği için, tasfiye zamanında gerçek envanterlerine göre ele alınmalıdır. Özel veya kanca tabanlı havuzlar, Avana’in onları tasfiye kapsamı açısından yeterince güvenli olarak değerlendirmesinden önce özel adaptörler gerektirebilir. Avana bir teminat türünü doğru şekilde tasfiye edemezse, piyasanın tamamen desteklendiği izlenimini vermemelidir."
+          ]
+        },
+        {
+          "id": "kısmi-ve-ücretler",
+          "title": "Önce kısmi kesimler ve ücretler",
+          "paragraphs": [
+            "Avana, tam tasfiye yerine hedef sağlığı geri kazandırmayı amaçlar. Kısmi tasfiye tercih edilir çünkü gereksiz borçlu kaybını azaltır ve altta yatan havuzu bozmayı sınırlar. Çerçeve, krediyi daha güvenli bir duruma getirmek için gereken borcu hesaplar ve önce bu miktarı hedefler. Tam tasfiye, daha küçük bir kesinti ile ödenebilirlik geri kazanılamadığında bir geri dönüş seçeneği olarak kalır.",
+            "Ücretler de önemlidir. LP pozisyonları genellikle henüz gerçekleştirilmemiş talep edilebilir değer içerir. Ücretler, ana paranın ne kadarının çözülmesi gerektiğini azaltabiliyorsa, Avana pozisyona daha derinlemesine girmeden önce onları kullanmalıdır. Bu, borçlunun sonuçlarını iyileştirir ve tasfiye işlemini daha hassas hale getirir. LP pozisyonları canlı finansal nesnelerdir, pasif token bakiyeleri değildir ve Avana'in süreci de buna uygun şekilde yazılmıştır."
+          ]
+        },
+        {
+          "id": "onu kim yönetiyor",
+          "title": "Tasfiye işlemlerini kim yürütür",
+          "paragraphs": [
+            "Özel tasarlanmış tasfiye çalışma zamanları burada fark yaratır. Avana LP tasfiye için oluşturulmuş düğümler, aktif pozisyonları izler, borç sapmasını yeniler, piyasa durumunu indeksler, tasfiye yollarını simüle eder, yürütme likiditesini sağlar, varlıkları yönlendirir ve işlemleri atomik olarak kapatır. Tasfiye izin gerektirmez, ancak LP teminat, tamamen genel tasfiye yapanlar için hizmet vermeyi zorlaştırır çünkü iş akışı daha uzun ve belirli bir piyasaya özeldir. Tasfiye yapanlar ayrıca kayma fiyatını, yönlendirme derinliğini, flashloan maliyetini ve MEV maruziyetini hesaba katmak zorundadır. Büyük veya alışılmadık tasfiyeler, geri kazanılabilir bir işlemin yıkıcı bir işleme dönüşmemesi için daha sessiz yürütme yollarına ihtiyaç duyabilir."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fiyatlandırma-lp-teminat-oracle-sorunu",
+      "title": "Daha İyi Oracle’larla Teminatın Fiyatlandırılması LP",
+      "date": "17 Temmuz 2026",
+      "description": "Oracle, geri kazanılabilir değer, deterministik yeniden yapılandırma ve muhafazakar kurtarma kesintileri kullanarak teminatı nasıl fiyatlandırır.",
+      "image": "/images/blog/lp-teminat-oracle-problemi.png",
+      "category": "Geliştiriciler",
+      "tag": "Protokol",
+      "sections": [
+        {
+          "id": "ne-avana-kahin-sorar",
+          "title": "Oracle'ın sorduğu Avana ne",
+          "paragraphs": [
+            "Bir LP'in değeri, dayanak varlıkların fiyatlarına, havuzun yapısına, mevcut envanter dağılımına, tahakkuk etmiş ücretlere ve yoğunlaştırılmış likidite için mevcut fiyat ile aktif aralık arasındaki ilişkiye bağlıdır. Bir kredi sistemi için önemli soru, sadece bir gösterge paneli işaretinin ne söylediği değildir. Önemli olan, pozisyonun bir krediyi karşılamak zorunda kalması durumunda gerçekte ne kadarının geri alınabileceğidir. Eğer Avana en iyi senaryo varsayımlarına göre borç verirse, teminat enflasyonunu finanse etmiş olur. Avana Oracle, iyimser net varlık değeri üzerine değil, geri alınabilir değer üzerine kuruludur."
+          ]
+        },
+        {
+          "id": "üç adımlı boru hattı",
+          "title": "Değerleme nasıl oluşturulur",
+          "paragraphs": [
+            "Kehanet, çok katmanlı bir teminat değerleme motorudur. Öncelikle, Avana, altındaki varlıkları ham AMM spot durumuna dayanmak yerine sağlam dış referanslardan fiyatlandırır. İkincisi, LP pozisyonunu deterministik olarak yeniden yapılandırır: değiştirilebilir LPler için havuz bakiyesi yeniden yapılandırması veya yoğunlaşmış pozisyonların aralık, likidite ve mevcut fiyata göre doğrudan ayrıştırılması. Üçüncüsü, o yeniden yapılandırılmış değeri tasfiye kayması, çözülme sürtünmesi ve geçici kayıp riskini yansıtan kurtarma indirimleriyle iskonto eder. Geçici kayıp, varlıkları bir havuzda tutmanın ve ayrı ayrı tutmanın değeri arasındaki farktır. Çift varlıkların fiyatları farklılaştıkça büyür. Avana üzerinde borçlanma gücü, en yüksek iştahlı değerlemelerden değil, iskonto edilmiş değerden gelir."
+          ]
+        },
+        {
+          "id": "neden-basit-işaretler-başarısız-olur",
+          "title": "Basit işaretler neden başarısız olur",
+          "paragraphs": [
+            "LP teminat, bir kredi sisteminin kendini kandırması için en kolay yerlerden biridir. AMM havuz durumu, yerel olarak bozulmuş olsa bile sağlıklı görünebilir. Yoğun bir pozisyon, kullanıcıların düşündüğünden daha riskli bir envanter karışımında bulunsa bile güçlü görünebilir. Sığ derinlik, aynı işlem manipülasyonu ve bayat girdiler, güvenilir olmadan dikkatli görünen sayılar üretebilir. Avana, dış varlık fiyatlaması, deterministik LP yeniden yapılandırma ve protokol seviyesinde güvenlik önlemlerini birleştirerek görünür değeri güvenilir teminat değerinden ayırır.",
+            "Kahin arayüzü, protokol risk tamponları için kullanılan yeniden yapılandırılmış ana değer, ücret değeri ve ayrılmış değeri de ayırt edebilir. Bu bileşenler bir kredi piyasasında aynı muameleyi hak etmez. Bunları LP türleri arasında standardize ederek, spoke katmanı değiştirilebilir LPler, NFT tabanlı LPler ve çok varlıklı pozisyonlar hakkında tutarlı bir şekilde akıl yürütebilir ve aynı zamanda farklı platformların durumu nasıl açığa çıkardığını dikkate alabilir."
+          ]
+        },
+        {
+          "id": "kontroller ve güvenlik önlemleri",
+          "title": "Kontroller ve güvenlik önlemleri",
+          "paragraphs": [
+            "Farklı AMM ailelerin farklı doğrulama yollarına ihtiyacı vardır. Curve stabilize LPler, Uniswap çiftler ve NFT'ler, Balancer ağırlıklı havuzlar ve Aerodrome çiftler teminat durumunu farklı şekilde ortaya koyar. Avana üzerinde, dış fiyatlar ana sabit kalır. Havuz spesifik veriler ve zaman ağırlıklı kontroller, yeniden inşa edilen teminat durumunun tutarlı olup olmadığını ve oyun açısından daha zor olup olmadığını doğrulamaya yardımcı olur. Bu zaman ağırlıklı kontroller, Avana'in krediler için dayandığı birincil fiyatlar değildir. Bunlar ek bir tutarlılık kontrolüdür, böylece Avana, teminat durumu kredi olarak görülmeden önce hâlâ uyumlu olup olmadığını anlayabilir.",
+            "Avana üzerindeki manipülasyona direnç, sapma eşiklerini, havuz fiyat farkı kısıtlamalarını, kurtarma kesintilerini, açık pozisyon sınırlarını ve veri sağlığı bozulduğunda veya doğrulama girdileri uyuşmayı bıraktığında tepki veren bir oracle gözlemcisini içerir. LP teminat, teminat basit bir token bakiyesinden daha yapısal olarak karmaşık olduğu için aynı işlem suiistimali, ince piyasa bozulmaları ve eski ya da çelişkili sinyallere alışılmadık derecede açıktır. LP krediyi destekleyen bir protokol, fiyatlama yüzeyinin nihayetinde test edileceğini varsaymak zorundadır. Avana Oracle bu varsayım için yazılmıştır."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "güvenlik-derin-inceleme",
+      "title": "Avana, LP Teminat Riskini Nasıl Yönlendirir",
+      "date": "15 Temmuz 2026",
+      "description": "Avana, mimari ve oracle'lardan sağlık, tasfiye ve operasyonlara kadar LP teminat için katmanlı güvenliği nasıl yapılandırıyor.",
+      "image": "/ resimler / blog / güvenlik-derin dalış.png",
+      "category": "Geliştiriciler",
+      "tag": "Protokol",
+      "sections": [
+        {
+          "id": "fiyatdan-da-önemli",
+          "title": "Bir fiyat ve bir LTV'dan daha fazlası",
+          "paragraphs": [
+            "Basit bir token genellikle doğrudan piyasa referansıyla fiyatlandırılabilir ve standart mantıkla likide edilebilir. LP pozisyonu ise bunu yapamaz. Değeri, dayanak varlıklara, havuz yapısına, bu varlıklar arasındaki ilişkiye, ücret toplanmasına, likidite derinliğine ve yoğunlaştırılmış likidite için aktif aralığa bağlıdır. Baskı altında bu değişkenler birleşir. LP destekli borçlanmayı Aave v4 üzerinde destekleyen bir protokol, sadece bir fiyat atamak ve kredi-değer oranı belirlemekten daha fazlasını yapmak zorundadır. İşte Avana bu sorun etrafında inşa edilmiştir."
+          ]
+        },
+        {
+          "id": "mimari-ve-kahinler",
+          "title": "Mimarlık ve değerleme",
+          "paragraphs": [
+            "İlk güvenlik katmanı mimariseldir. Avana, Aave v4'nin hub ve spoke (merkez ve dal) yapısını kullanır. Hub, ortak likidite katmanını tutar, rezerv hesaplamasını yönetir ve ödeme gücü kısıtlamalarını uygular. Spoke ise LP özel teminat mantığının bulunduğu yerdir: kabul, değerleme kuralları, havuz özel risk parametreleri ve tasfiye davranışı. Eğer bir LP piyasası baskı altına girerse, bu baskının, ilgisiz teminat türleri genelinde varsayımları yeniden yazmak yerine spoke içinde kalması amaçlanır. Avana üzerinde, spoke güvenlik sınırının bir parçasıdır.",
+            "İkinci katman, oracle ve değerleme tasarımıdır. LP pozisyonları tek bir sabit veri kaynağıyla güvenli bir şekilde fiyatlanamaz. Avana çift kaynaklı bir çerçeve kullanır. Dış fiyat kaynakları, dayanak varlıklar için birincil referansı sağlar, AMM türetilmiş fiyatlama ise bağımsız doğrulama işlevi görür. Her iki kaynak tolerans dahilinde uyumlu kaldığında borçlanma gücü oluşur. Risk, piyasa seviyesinde atanır. Havuz yapısı, varlık korelasyonu, likidite derinliği ve dağılım yoğunluğu, teminat muamelesini şekillendirir. Borçlanma gücü, pozisyonun daha zayıf yönlerine dayandırılır ve havuz düzeyinde volatilite, likidite kalitesi ve stres varsayımları için ayarlamalar yapılır."
+          ]
+        },
+        {
+          "id": "sağlık-ve tasfiye",
+          "title": "Sağlık ve tasfiye",
+          "paragraphs": [
+            "Üçüncü katman sağlık izleme. LP Pozisyonlar teminat olarak gönderildikten sonra aktif kalır, bu nedenle kredi açıldığında risk durmaz. Değer, fiyat hareketleri, ücret üretimi, menzil kayması ve havuz kalitesindeki değişikliklerle değişir. Avana aralıklı anlık görüntülere güvenmek yerine pozisyon başına sürekli sağlık değerlendirmesi yapar. Sağlık faktörü, teminat modelinin o kredi için hala geçerli olup olmadığının canlı göstergesidir.",
+            "Tasfiye, varsayımların test edildiği yerdir. LP teminat, normal bir token gibi tasfiye edilemez. Avana'in yaklaşımı, mümkün olduğunda anapara yok edilmeden önce pozisyonda gömülü ücretleri toplayarak, krediyi onarmak için yalnızca yeterli likiditeyi kaldırmak ve çözümlemeyi deterministik uzlaşmayı destekleyen yürütme yolları üzerinden yönlendirmektir. Akıllı Ajanlar yürütme altyapısını sağlar: pozisyonları izlemek, verileri uzlaştırmak, yürütmeyi simüle etmek ve olumsuz koşullar altında çözmek. Bunlar Avana'in güvenlik sisteminin bir parçasıdır, sonradan eklenmiş bir düşünce parçacığı değildir."
+          ]
+        },
+        {
+          "id": "operasyonlar",
+          "title": "Operasyonlar ve değişiklik kontrolü",
+          "paragraphs": [
+            "Operasyonel katman, yönetişim ve risk yapılandırmasının teminat işlemi kadar disiplin gerektirdiğini varsayar. Risk parametreleri yapılandırılmış bir süreç aracılığıyla değişir. Hassas değişiklikler zaman kilitleri ve inceleme arkasında bulunur. Gerçekten olumsuz koşullar için acil kontrol mekanizmaları mevcuttur. İzleme, bireysel pozisyonların ötesine, tüm piyasa kategorilerine uzanır. LP teminatını destekleyen bir protokol yalnızca statik yapılandırmaya güvenemez.",
+            "LP teminat, ancak Avana üzerinde güvenlik bir sistem olarak ele alındığında geçerlidir. Mimari riski izole eder. Kahinler gerçeği doğrular. Değerleme, karmaşıklığı muhafazakar borçlanma gücüne dönüştürür. Sağlık kontrolleri sapmayı izler. Tasfiye, çözümlemeyi mekanın izin verdiği kadar hassasiyetle geri kazandırır. Operasyonel kontroller, çerçevenin nasıl geliştiğini yönetir. Bu katmanların hiçbiri tek başına yeterli değildir."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hedge-lp-konumu",
+      "title": "Bir LP Pozisyonunu Daha Düşünceli Şekilde Nasıl Korumalı",
+      "date": "13 Temmuz 2026",
+      "description": "LPler, tamamen havuzdan çıkmadan, tamponları, yönlü sapmaları ve daha disiplinli hedge alışkanlıklarını finanse etmek için Avanai nasıl kullanabilir.",
+      "image": "/ resimler / blog /hedge-lp-pozisyonu.png",
+      "category": "LP saniye boyunca",
+      "tag": "Rehberler",
+      "sections": [
+        {
+          "id": "ücretlerden fazlası",
+          "title": "Ücretlerden fazlası",
+          "paragraphs": [
+            "Bir LP pozisyonu asla sadece ücretlerle ilgili değildir. Fiyat sapması, geçici kayıp, aralık sürüklenmesi ve teminat baskısı aynı anda aynı defayı etkileyebilir. Geçici kayıp, havuzun varlık karışımı değiştiğinde ve LP ayrı tokenleri tutmaktan daha az değerde olduğunda meydana gelir. Desteklenen bir pozisyon bir Aave v4 üzerinde Avana aracılığıyla borçlanmayı destekleyebildiğinde, borç alınan sermaye yalnızca kaldıraç için değil, aynı zamanda koruma sağlamak için de kullanılabilir. Aksi takdirde tamamen çekilmesi gereken bir pozisyon, borç alınan sermaye stresi azaltmak veya maruziyeti dengelemek için kullanılırken aktif kalabilir."
+          ]
+        },
+        {
+          "id": "tamponlar-ve-ofsetler",
+          "title": "Arabellekler ve yönsel kaymalar",
+          "paragraphs": [
+            "En basit korunma genellikle en pratiktir: bir stablecoin tamponu. Avana üzerinde temkinli bir şekilde borç alın ve gelirin bir kısmını stablecoinlerde tutun. Sağlık sıkışmaya başlarsa veya volatilite artarsa, bu likidite borcu geri ödeyebilir veya stresten azaltabilir, LP'in reaktif bir şekilde satılmasını zorlamadan. Bu öncelikle getiri artırımıyla ilgili değil. Bu, zaman kazanmak ve kontrolü korumakla ilgilidir, ki bu tek başına çok önemli olabilir.",
+            "İkinci bir form yönsel sapmadır. Eğer LP zaten bir volatil varlığa karşı net bir pozisyon taşıyorsa, borçlanmış sermaye net yönsel riski artırmak yerine azaltabilir. Yöntemler kullanıcının bilgi seviyesine göre değişir, ancak prensip basittir. Eğer LP zaten piyasa maruziyeti içeriyorsa, borçlanma bu maruziyeti dengeleyebilir. Hedging, en iyi risk daraltma olarak çalışır, ilk işlemin yanına oturan ikinci bir spekülatif işlem olarak değil."
+          ]
+        },
+        {
+          "id": "daha-gelişmiş-seçenekler",
+          "title": "Tarafsızlık ve daha yumuşak korumalar",
+          "paragraphs": [
+            "Daha ileri bir yaklaşım, tarafsızlık açısından düşünmektir: yönsellik hassasiyetini azaltmak ve ücret gelirine dayanmaktır. Bu tür bir yapı daha istikrarlı olabilir, ancak aktif izleme ve yeniden dengeleme gerektirir. LP pozisyonlar piyasa hareket ettikçe gelişir, bu nedenle tarafsız bir düzenleme bir kez ilan edilerek değil, sürdürülerek korunmalıdır. Daha büyük pozisyonlar için koruyucu aşağı yönlü yapılar, yalnızca tepkide bulunmak yerine en kötü senaryoları tanımlayabilir, ancak bunlar kendi maliyetlerini ve zamanlama kararlarını da beraberinde getirir.",
+            "Sıklıkla göz ardı edilen daha yumuşak bir korunma, çekirdeğe dokunmak yerine marjinal riski yeniden tahsis etmektir LP. Pratikte bu, koşullar kötüleştiğinde orijinal pozisyonu tamamen kapatmadan ek sermayeyi daha savunmacı havuzlara veya istikrarlı dağılımlara kaydırmak anlamına gelir. Avana, her likidite ihtiyacının ya tamamen çıkış ya da hiç olmaması durumuna dönüşmemesi için çekirdeğin LP teminat olarak kullanılabilir durumda kalmasına yardımcı olur."
+          ]
+        },
+        {
+          "id": "pratik kurallar",
+          "title": "İyi taşınan pratik kurallar",
+          "paragraphs": [
+            "Yaklaşımlar arasında, birkaç alışkanlık Avana üzerinde iyi taşınır. Temkinli bir şekilde borç alın. Gerçek bir tampon bulundurun. Koşulların beklenenden daha hızlı kötüleşebileceğini varsayın. Maksimum borçlanma kapasitesini bir hedef olarak değil, bir sınır olarak değerlendirin. Sürekli elle müdahaleye güvenmek yerine önceden tanımlanmış riskten arındırma kurallarıyla izleme kullanın. Bir koruma stratejisi o kadar karmaşık hale gelirse ki neyin korunmakta olduğunu ve neyin eklendiğini artık anlayamazsanız, bu fazla ileri gitmiş demektir."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "üretti-döngü-oyun-kitabı",
+      "title": "LP Teminat ile Getiri Döngüsü",
+      "date": "10 Temmuz 2026",
+      "description": "Tamponlar, stres testi, çıkış disiplini ve sürdürülebilir kaldıraç dahil olmak üzere Avana LP teminat ile getiri döngüsü hakkında nasıl düşünülür.",
+      "image": "/images/blog/verim-dongusu-oyun-kitabi.png",
+      "category": "LP saniye boyunca",
+      "tag": "Rehberler",
+      "sections": [
+        {
+          "id": "döngü yapmanın ne anlama geldiği",
+          "title": "Avana üzerindeki döngüleme ne anlama geliyor",
+          "paragraphs": [
+            "Getiri döngüsü, bir LP pozisyonunu tutmayı, bunun karşılığında borç almayı ve borç alınan sermayeyi başka bir getiri üreten stratejiye veya bazı durumlarda likiditenin kendisine yeniden yatırmayı ifade eder. Avana, desteklenen LP piyasaları için teminat adımını mümkün kılar. Çekicilik açıktır: döngü, etkin maruziyeti artırabilir ve ücret üretimini çoğaltabilir. Tehlike de eşit derecede açıktır: güvenlik marjlarını sıkıştırabilir, tasfiye hassasiyetini artırabilir ve koşullar değiştiğinde bir pozisyonu çok daha kırılgan hale getirebilir. Gerçek hedef sürdürülebilir çoğaltma olmalı, ilk gün maksimum kaldıraç değil."
+          ]
+        },
+        {
+          "id": "ilk-döngüyü-mütevazı-tutmak",
+          "title": "İlk döngüyü mütevazı tutmak",
+          "paragraphs": [
+            "Döngü yapmanın en güvenli yolu mütevazıdır. Desteklenen bir Avana LP pozisyona karşı nispeten küçük bir miktar ödünç alın ve ikinci bir getiri kaynağına yeniden yatırın, ancak borçlanma limitine yaklaşmayın. Bu, orijinal pozisyonun kontrollü bir uzantısıdır, koşulların mükemmel kalacağını varsayan tekrarlayan bir bahis değildir. Pek çok kullanıcı için, özellikle başlangıçta, bu doğru başlangıç noktasıdır. Hâlâ daha iyi sermaye kullanımı elde edersiniz, ancak LP işareti, ücret geliri veya borçlanma oranı aleyhinize hareket ederse boşluk bırakırsınız.",
+            "Daha gelişmiş versiyonlar, ödünç alınan sermayeyi likiditeye geri konuşlandırır. Bu, elverişli ortamlarda ücret üretimini artırabilir, ancak yapıyı aynı zamanda daha yansıtıcı hale getirir. Fiyat hareketi, teminat kalitesi ve borç güvenliği daha agresif bir şekilde etkileşime girdiği katmanlı bir deftere maruz kalırsınız. Kaldıraç, yalnızca getirileri artırmaz. Sağlıklı bir Avana pozisyonun stresli bir pozisyona dönüşme hızını da artırır."
+          ]
+        },
+        {
+          "id": "stres-ve-çıkış",
+          "title": "Stres testi ve çıkış disiplini",
+          "paragraphs": [
+            "Stres testi çok önemlidir. Herhangi bir ciddi döngü yaklaşımı olumsuz koşullar altında değerlendirilmelidir. Eğer çiftin bir tarafı ani hareket ederse, işlem hacmi zayıflarsa, borçlanma maliyetleri yükselirse veya teminat kalitesi beklenenden daha hızlı bozulursa ne olur? Ücretlerin yüksek ve volatilitenin sakin olduğu durumlarda cazip görünen bir yapı, bu koşullar tersine döndüğünde rahatsız edici görünebilir. Eğer tek olumlu senaryo sakin bir ücret ayı ise, düşünce tamamlanmış sayılmaz.",
+            "Çıkış disiplini, giriş kadar önemlidir. Birçok kötü kaldıraç kararı, ilk borçlanmadan kaynaklanmaz. Risk azaltma planının olmamasından kaynaklanır. Volatilite artarsa, sağlık tamponları sıkışır veya ekonomik koşullar zayıflarsa, pozisyonlar körü körüne savunmak yerine kademeli olarak azaltılmalıdır. Otomasyon, ücret toplama, borç azaltma ve kurala dayalı risk azaltma konularında yardımcı olabilir, ancak otomasyon yalnızca temel kurallar dürüstse fayda sağlar. Döngüsel bir strateji, arkasındaki varsayımlar kadar güçlüdür."
+          ]
+        },
+        {
+          "id": "bilanço-büyü-değil",
+          "title": "Bilanço tasarımı, ücretsiz getiri değil",
+          "paragraphs": [
+            "Getiri döngüsü, ücretsiz getiriye giden bir kısayol değil, bir sermaye yapısı kararıdır. Avana üzerinde dikkatli kullanıldığında, verimli zincir üstü likiditenin, orijinal pozisyonun tamamen çözülmesini zorlamadan daha geniş bir getiri setini desteklemesine izin verir. Dikkatsizce kullanıldığında, sağlıklı bir LP pozisyonunu kırılgan hale getirir. Fark genellikle disiplin, tampon yönetimi ve kaldıraçlı işlemleri maksimuma çıkarmak yerine kontrol altına alınacak bir şey olarak ele alma istekliliğidir."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lp-tokenlerini-serbest-bırakmak",
+      "title": "Teminatın Mümkün Kıldığı Şey LP",
+      "date": "8 Temmuz 2026",
+      "description": "Borçlanma, riskten korunma, hazine esnekliği ve üretken likiditenin daha verimli kullanımı gibi alanlarda Avana LP teminatın mümkün kıldığı şeyler.",
+      "image": "/ resimler / blog / serbest bırakma-lp-belirteçleri.png",
+      "category": "LP saniye boyunca",
+      "tag": "Rehberler",
+      "sections": [
+        {
+          "id": "tıkanmış-olan-dan-kullanılabilir-haline",
+          "title": "Sıkışmış sermayeden kullanılabilir sermayeye",
+          "paragraphs": [
+            "LP pozisyonları geleneksel olarak üretken ama esnek değildir. Ticaret ücretleri kazanırlar ve piyasa derinliğini desteklerler, ancak o pozisyondan likidite istiyorsanız, genellikle yapılacak yol onu çözüp dağıtmaktır: pozisyonu parçalayın, ücret kazanımını durdurun ve üretken bir varlığı atıl bakiye haline getirin. LP teminat bunu değiştirir. Avana üzerinden Aave v4 ile LP desteklenen pozisyonlar, aynı zamanda borçlanmayı desteklerken, temel AMM üzerinde aktif kalabilir."
+          ]
+        },
+        {
+          "id": "basit-ve-verimli-kullanım",
+          "title": "Muhafazakar likidite ve ikinci getiri yolları",
+          "paragraphs": [
+            "En muhafazakar kullanım durumu basittir. Desteklenen bir Avana LP pozisyonuna karşı sabit varlıklar ödünç alırsınız ve bu likiditeyi işletme sermayesi, rezerv yönetimi veya LP aktif kalırken ve ücret kazanmaya devam ederken daha düşük volatilite getirisi için kullanırsınız. Buradaki asıl değer, kendi başına kaldıraç değildir. Asıl değer, orijinal pozisyondan tamamen çıkmaya zorlamadan nakde erişim sağlamaktır.",
+            "Ödünç alınmış sabitler ayrıca, sabit odaklı borç verme, rezerv yönetimi veya diğer daha düşük volatilite fırsatları gibi muhafazakar zincir üstü getirilerde de değerlendirilebilir. LP, ödünç alınan sermaye ayrı bir yol izlerken sürekli olarak ücret üretmeye devam eder. Bu, havadan getiri biriktirmek değildir. Aksine, aksi takdirde pozisyonun önce çözülmesini gerektirecek sermayenin daha verimli bir şekilde kullanılmasını sağlar."
+          ]
+        },
+        {
+          "id": "koruma ve aktif",
+          "title": "Hedging ve daha aktif stratejiler",
+          "paragraphs": [
+            "Hedging başka bir kategoridir. LP pozisyonları, özellikle bir tarafı daha volatil olan havuzlarda, kullanıcıları değişen varlık bileşimine ve geçici kayba maruz bırakır. Avana üzerindeki LP teminatına karşı kredi, bu maruziyeti yönetmek için alan yaratabilir: yönsel konsantrasyonu azaltmak, likidite planlamasını iyileştirmek veya mevcut bir pozisyon etrafında daha dengeli bir portföy oluşturmak.",
+            "Daha aktif stratejiler, ödünç alınan sermayeyi tekrar likiditeye yönlendirir ve piyasa maruziyetini ile ücret üretimini artırır. Bu işe yarayabilir, ancak artık piyasa koşullarıyla hızla değişen bir risk yapısını yöneten bir durumdasınız. Ödünç alınan varlıklar ek LP maruziyete dönüştüğünde disiplin, hırstan daha önemli hale gelir. Avana seçenek kümesini açar. Sağlık, borç limitleri ve tasfiye kuralları, belirli bir havuz için neyin makul olduğunu hâlâ belirler."
+          ]
+        },
+        {
+          "id": "ne-değişiklikler",
+          "title": "LP'ler için neler değişiyor",
+          "paragraphs": [
+            "LP teminat, likidite sağlamayı nispeten izole bir getiri faaliyetinden daha geniş DeFi sermaye kullanımına bağlı bir şeye dönüştürür. Daha önce yalnızca havuzunun içinde üretken olan bir pozisyon, önce dağıtılmadan borçlanmayı, likidite planlamasını ve portföy tasarımını destekleyebilir. Doğru kullanım hâlâ risk toleransınıza ve LP değerinin, borçlanma kapasitesinin ve tasfiye eşiklerinin Avana üzerinde nasıl etkileştiğini anlamanıza bağlıdır."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "aerodrome-lp-teminat-aave-v4",
+      "title": "Aave v4 üzerinde Aerodrome LP’a karşı ödünç almak",
+      "date": "6 Temmuz 2026",
+      "description": "Avana, Aave v4 adlı özel bir göbek aracılığıyla borç vermeyi desteklerken Aerodrome LP konumunun Base üzerinde aktif kalmasını nasıl destekler.",
+      "image": "/ resimler /blog/havaalanı-lp-teminat.png",
+      "category": "Geliştiriciler",
+      "tag": "Protokol",
+      "sections": [
+        {
+          "id": "avana üzerindeki havalimanı",
+          "title": "Aerodrome likidite Avana üzerinde",
+          "paragraphs": [
+            "Aerodrome LP pozisyonları, likiditenin ticaret ücretlerini, token dağıtımını ve ekosistem derinliğini desteklediği Base üzerindeki zincir içi etkinliğin merkezinde yer alır. Teminat olarak, bu pozisyonlar yalnızca başlık TVL veya ücret üretimiyle değil, havuz yapısı, varlık kalitesi, likidite derinliği ve stres davranışı ile değerlendirilmelidir. Avana, bu tür teminatları Aave v4 üzerinde, genel bir platform kuralı yerine piyasa spesifik kurallarla desteklemek için inşa edilmiştir."
+          ]
+        },
+        {
+          "id": "merkez-çark-ve-pool-kalite",
+          "title": "Merkez, tekerlek ve havuz kalitesi",
+          "paragraphs": [
+            "Aave v4'nin hub ve spoke mimarisi, ürün şeklinin çalışmasını sağlar. Hub, paylaşılan likiditeyi yönetir. Avana spoke, Aerodrome özel teminat mantığını ele alır. Base üzerinde bir stabil havuz, her ikisi de Aerodrome LP olmasına rağmen, dalgalı bir ekosistem çiftine aynı şekilde muamele görmemelidir. Spoke, farklı kategorilerdeki Aerodrome likiditenin nasıl değerlenir, ne kadar borçlanma gücü sağladığını ve bir pozisyon güvensiz hale gelirse tasfiye işlemlerinin nasıl çalıştığını tanımlar.",
+            "Aerodrome havuzları geniş ölçüde değişir. Bazıları daha güçlü likiditeye sahip yerleşik varlıkları içerir. Diğerleri daha hızlı hareket eden ekosistem token'larına odaklanır ve bunlar daha yüksek volatiliteye ve daha sığ derinliğe sahiptir. Yüzeyde benzer görünen pozisyonlar teminat olarak çok farklı davranabilir. Avana'in spoke modeli, yalnızca mekan adıyla değil, havuz yapısı ve kalitesine göre işlem uygular."
+          ]
+        },
+        {
+          "id": "değerleme-ve-ödünç-alma",
+          "title": "Değerleme ve borç akışı",
+          "paragraphs": [
+            "Bir Aerodrome LP tek bir fiyat token'ı değildir. Bu, bileşimi ve kalitesi doğrudan önemli olan temel havuz varlıkları üzerinde bir haktır. Avana, likidite kalitesi, volatilite, varlık korelasyonu ve piyasa tersine dönerse havuzun nasıl davrandığını dikkate alarak teminat değerini temkinli bir şekilde değerlendirir. Bir pozisyonun önemli bir nominal değeri olabilir, ancak borç alma gücü, stres altında geri kazanılabilecek olanı yansıtır.",
+            "Borçlanma akışı somuttur. Desteklenen bir Aerodrome LP öğesini Avana talaş üzerinden sağlarsınız; burada aktif kalır ve ücret kazanır. Talaş, pozisyonu havuz özel teminat mantığıyla değerlendirir. Buna dayanarak, merkez likiditesinden desteklenen varlıkları ödünç alabilirsiniz. İstikrarlı ve mavi çip tarzı havuzlar daha güçlü teminat muamelesini destekleyebilir. Dalgalı veya daha ince çiftler daha sıkı sınırlar ve daha düşük faktörler alır."
+          ]
+        },
+        {
+          "id": "eğer sağlık bozulursa",
+          "title": "If health breaks",
+          "paragraphs": [
+            "Bir pozisyon güvensiz hale gelirse, Avana aktif likidite pozisyonunu tasfiye eder, dayanakları hesaba katar ve piyasanın izin verdiği minimum aksaklıkla ödeme gücünü geri sağlar. Havuzun yapısı tasfiyenin nasıl çalıştığını belirler. Bu, Aerodrome teminatın daha geniş bir kredi piyasasının gevşek bir uzantısı olarak değil, özel bir dalda bulunması gerektiğinin başka bir nedenidir."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "curve-lp-teminat-aave-v4",
+      "title": "Aave v4 üzerinde Curve LP'a Karşı Ödünç Alma",
+      "date": "3 Temmuz 2026",
+      "description": "Avana, stabil ve korelasyonlu havuzlar için Curve LP teminatı özel bir Aave v4 bağlantısı aracılığıyla nasıl ele alır.",
+      "image": "/images/blog/curve-lp-teminat.png",
+      "category": "Geliştiriciler",
+      "tag": "Protokol",
+      "sections": [
+        {
+          "id": "neden-eğri-önemlidir",
+          "title": "Avana üzerinde Curve neden önemlidir",
+          "paragraphs": [
+            "Curve LP pozisyonları genellikle stablecoin piyasalarının ve ilişkili varlık ticaretinin merkezinde yer alır, zincir üzerinde en derin ve en düşük kayma oranına sahip havuzlardan bazılarıdır. Bu, onları teminat olarak cazip kılar, ancak yapısal davranışları hala bir ödünç verme sistemi içinde özel işlem gerektirir. Avana, Curve LP teminatını Aave v4 üzerinde, kendi teminat işleme, borçlanma kısıtlamaları ve Curve'un piyasa yapısına göre şekillenen tasfiye kurallarıyla özel bir bağlantı aracılığıyla destekler."
+          ]
+        },
+        {
+          "id": "kararlı-risksiz-değildir",
+          "title": "Dengeli görünmek risksiz değildir",
+          "paragraphs": [
+            "Curve havuzları, standart volatil çiftlerden daha sıkı ilişkilerle işlem gören varlıklar etrafında kurulmuştur. Stablecoin havuzları, likit staking havuzları ve korele varlık havuzları daha derin ve daha istikrarlı likidite profilleri oluşturabilir. İstikrarlı ilişkiler hâlâ bozulabilir, korelasyonlar zayıflayabilir ve muhafazakar görünen havuzlar stres altında kötü davranabilir. Avana'in teminat çerçevesi, hem Curve'un havuz tasarımının göreli gücünü hem de stresin kullanıcıların tam olarak istikrar beklediği yerde ortaya çıkma olasılığını dikkate almak zorundadır.",
+            "Bir Curve LP pozisyonu, basit bir sabit fiyatlı token değil, altta yatan varlık havuzuna dair bir taleptir. Avana, pozisyonun altında hangi varlıkların bulunduğunu, bunların değerini ve bu değerin ne kadarının borçlanma gücüne dahil edileceğini belirler. Bu son adım kritik öneme sahiptir. Muhafazakar bir kredi verme çerçevesi altında teminat değeri, havuz bileşimini, varlık korelasyonunu, likidite kalitesini ve pozisyonun stres altındaki durumda nasıl davranacağını gerçek anlamda değerlendirir."
+          ]
+        },
+        {
+          "id": "kullanıcılar-ve-akış",
+          "title": "Bunu kim kullanır ve ödünç alma nasıl çalışır",
+          "paragraphs": [
+            "Birçok Curve pozisyonu, sofistike DeFi katılımcılar tarafından zaten temel likidite maruziyeti olarak kullanılmaktadır. Stablecoin havuzları, likit staking çiftleri ve korele varlık piyasaları ekonomik olarak önemli büyük miktarda sermayeyi temsil eder. Bu pozisyonlar çekilme gerektirmeden borçlanmayı destekleyebilirse, DeFi içindeki en temel likiditenin bazılarını havuzda bırakırken kullanım alanını genişletir.",
+            "Avana üzerindeki borçlanma akışı, Curve LP desteklenen bir varlığın şube aracılığıyla sağlanmasıyla gerçekleşir; burada aktif kalır ve ücret kazanır. Şube pozisyonu değerlendirir ve merkez likiditesinden desteklenen varlıkları ödünç alabilirsiniz. Stablecoin havuzları, bir tür teminat işlemini, korele varlık havuzları başka bir türü destekleyebilir ve daha zayıf likiditeye sahip veya daha kırılgan ilişkilere sahip havuzlar daha sıkı kısıtlamalara tabi olur."
+          ]
+        },
+        {
+          "id": "tasfiye",
+          "title": "Tasfiye havuzu takip eder",
+          "paragraphs": [
+            "Bir Curve LP güvensiz hale gelirse, Avana yalnızca mümkün olduğunda ödeme gücünü geri kazandırmak için gerekli olanı geri alır, altta yatan havuz yapısına saygı gösterir ve borcu öderken kesintiyi en aza indirir. Farklı havuz türleri farklı varsayımlar gerektirir. Bu, tekerlek modeli fikridir ve Avana'in her bir AMM için tek bir genel LP kuralı olmadan Curve ailesini aile bazında ölçeklendirebilme şeklidir."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "balancer-lp-teminat-aave-v4",
+      "title": "Balancer LP Aave v4 teminat",
+      "date": "1 Temmuz 2026",
+      "description": "Avana, maruziyet aktif kaldığı sürece Aave v4 üzerinde teminat olarak Balancer ağırlıklı havuz LPlarını nasıl destekler.",
+      "image": "/images/blog/balancer-lp-teminat.png",
+      "category": "Geliştiriciler",
+      "tag": "Protokol",
+      "sections": [
+        {
+          "id": "portföy-stil-lp'ler",
+          "title": "Portföy tarzı teminat LP",
+          "paragraphs": [
+            "Bir Balancer LP pozisyonu genellikle özelleştirilmiş ağırlıklar, çeşitlendirilmiş maruz kalma ve standart iki varlıklı havuzlardan farklı şekilde davranan likiditeye sahip bir AMM içinde yapılandırılmış bir portföydür. Bu, Balancer LPleri teminat olarak ilginç kılar ve ayrıca daha basit varlıklar için kurulmuş bir borç verme sisteminde desteklemeyi zorlaştırır. Avana bunu Aave v4 üzerindeki özel bir bağlantı aracılığıyla yönetir."
+          ]
+        },
+        {
+          "id": "ağırlıklı çeşitlilik",
+          "title": "Ağırlıklı havuzların piyasa kurallarına neden ihtiyacı var",
+          "paragraphs": [
+            "Balancer havuzlar doğası gereği çeşitlidir. Kararlı bir stil havuzu, %80/%20 ağırlıklı bir havuz gibi davranmaz. Koreleli bir varlık sepeti, daha geniş bir endeks stil kompozisyonu gibi davranmaz. Toplam değeri benzer olan havuzlar bile, likidite derinliği, varlık yoğunluğu, volatilite ve teminatlar arasındaki ilişkiye bağlı olarak teminat olarak maddi açıdan farklı riskler taşıyabilir. Avana spoke, her ağırlıklı havuzun nasıl değerlediğini, borç alma kapasitesinin nasıl kısıtlandığını ve likidasyonun nasıl çalıştığını tanımlar.",
+            "Teminat açısından bakıldığında, bir Balancer LP basit bir varlık çiftinden ziyade bir portföyü temsil eder. Değeri, dayanak varlıklara, bunların göreceli ağırlıklarına, piyasa fiyatlamasına ve havuz yapısına bağlıdır. Avana, altında ne olduğunu, bu bileşimin stres altında nasıl davrandığını ve değerin hangi kısmının güvenli borçlanma gücüne dönüştüğünü anlamalıdır."
+          ]
+        },
+        {
+          "id": "ödünç-al ve gevşe",
+          "title": "Borçlanma ve gevşeme",
+          "paragraphs": [
+            "Birçok Balancer havuzu kasıtlı portföy görüşlerini ifade eder: yönetişim tokeni çiftleri, ağırlıklı endeks tahsisleri, stabil ve ilişkili sepetler. Bu pozisyonlar Avana üzerinde ödünç alınabilir teminat haline gelirse, kullanıcıların yapılandırılmış piyasa maruziyetini sürdürme ile likiditeye erişme arasında seçim yapmalarına gerek kalmaz. Aynı havuz pozisyonu aktif kalır, ücret kazanır ve Aave v4 aracılığıyla borçlanmayı destekler.",
+            "Akış, pozisyonun aktif kaldığı ve ücret kazandığı Avana dişlisi aracılığıyla desteklenen bir Balancer LP tedarik eder. Dişli, bunu piyasa özgü teminat mantığıyla değerlendirir. Daha güvenli havuz türleri daha güçlü tedaviyi destekler. Yoğun veya volatil yapılar daha temkinli varsayımlar alır. Piyasa yapısı, yalnızca mekan markalamasına bağlı olmaksızın borç verme tedavisini belirler.",
+            "Eğer bir pozisyon güvensiz hale gelirse, Avana, bir Balancer LP pozisyonunun tasfiye edilmesinin daha basit iki varlıklı bir pozisyonun tasfiyesi gibi görüneceğini varsayamaz. Temel havuz yapısını, teminatları ve likiditeyi minimum kesintiyle geri kazanmak için gerekli yürütme yolunu göz önünde bulundurmak zorundadır. Teminat, güvenli tasfiye işleminin nasıl görüneceğini belirler."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "akıllı sözleşme mimarisi",
+      "title": "Aave v4 üzerinde Uniswap LP’a Karşı Ödünç Alma",
+      "date": "28 Haziran 2026",
+      "description": "8'in, 3 31 pozisyonunu havuzda kalırken ve ücret kazanmaya devam ederken 2 teminat haline nasıl getirdiği.",
+      "image": "/images/blog/uniswap-lp-teminat.png",
+      "category": "Geliştiriciler",
+      "tag": "Protokol",
+      "sections": [
+        {
+          "id": "uniswap-avana-üzerinde",
+          "title": "Uniswap likidite Avana üzerinde",
+          "paragraphs": [
+            "Uniswap LP pozisyonları piyasa derinliği sağlar, ticareti kolaylaştırır ve ücret kazanır, ancak geleneksel olarak ödünç verme sistemleri içinde kullanılmadan önce önce çekilmeleri veya yeniden yapılandırılmaları gerektiğinden kullanımı zor olmuştur. Avana, bunu Aave v4 üzerinde değiştirmek için tasarlanmıştır. Merkez, paylaşılan likiditeyi yönetir. Avana kolu, LP destekli borçlanma için özel bir pazar olup, Uniswap yoğunlaştırılmış likiditeyi de içerir. Kol, teminatın nasıl değerlendirileceğini, borçlanma gücünün nasıl atanacağını ve riskin pozisyon düzeyinde nasıl yönetileceğini tanımlar."
+          ]
+        },
+        {
+          "id": "neden-cl-zordur",
+          "title": "Yoğunlaşmış menziller neden zor teminattır",
+          "paragraphs": [
+            "Uniswap yoğunlaştırılmış likidite pozisyonları basit değiştirilebilir tokenler değildir. Değer, dayanak varlıkların mevcut fiyatına, sağlanan likidite miktarına, seçilen fiyat aralığına ve zaman içinde biriken ücretlere bağlıdır. Bir pozisyon aktif olabilir ve kazanç sağlayabilir veya aralık dışına çıkabilir ve çok farklı davranabilir. Avana pozisyon bileşimini gerçek zamanlı olarak anlamalı ve değişen koşullar altında bunun teminat olarak değerini, yalnızca nominal kağıt değeri olarak değil, değerlendirmelidir.",
+            "Değerleme merkezdedir. Avana pozisyonun şu anda hangi dayanak varlıkları temsil ettiğini belirler, güvenilir fiyatlama uygular ve bunu muhafazakar bir teminat çerçevesi aracılığıyla borçlanma kapasitesine çevirir. Önemli soru saf kağıt değeri değildir. Önemli olan canlı bir kredi verme sistemi içindeki teminat değeridir. Yoğunlaşmış pozisyonlar, fiyat aktif aralığına girip çıktıkça doğrusal olmayan hale gelebilir, bu da kasıtlı risk yönetimi gerektirir."
+          ]
+        },
+        {
+          "id": "ödünç-al-gözden-çıkar",
+          "title": "Borç almak, izlemek, tasfiye etmek",
+          "paragraphs": [
+            "Borçlanma akışı, Avana kolu aracılığıyla desteklenen bir Uniswap LP sağlar. Pozisyon AMM’da kalır ve ücret kazanmaya devam eder. Kol teminatı değerlendirir ve risk mantığını uygular. Merkez likiditesinden desteklenen varlıkları borç alırsınız. Pozisyonu teminatlandırmak onu kapatmaz. Likidite dağıtılmış kalır, piyasa maruziyeti değişmeden kalır ve ücretler birikmeye devam eder.",
+            "Çünkü LP pozisyon aktif ve değişiyor, Avana sürekli olarak sağlığı izliyor. Fiyatlar hareket ettikçe, ücretler birikiyor ve pozisyon yapısı değişiyor, borçlanma güvenliği de onlarla birlikte değişiyor. Bugün sağlıklı bir pozisyon, kullanıcı hiçbir şey yapmamış olsa bile yarın daha az sağlıklı olabilir.",
+            "Bir pozisyon çok riskli hale gelirse, likidasyon, aktif bir AMM pozisyonun bir kısmını çözmek, temeldeki varlıkları hesaba katmak ve mümkün olan en az kesinti ile ödenebilirliği geri sağlamak zorundadır. Teminatın piyasa yapısı, likidasyon yapısını belirler. Bu, Uniswap LP teminatın genel bir teminat havuzundan ziyade özel bir Avana kola ait olmasının ana nedenlerinden biridir."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "defi-ux-zorlukları",
+      "title": "LP Teminatı Kullanılabilir Hale Getirmek",
+      "date": "25 Haziran 2026",
+      "description": "Neden Avana ürün tasarımı, sadece güçlü değil, aynı zamanda çalışabilir LP teminat için net değerleme, borçlanma limitleri ve sağlıkla ilgileniyor.",
+      "image": "/images/blog/lp-tanıtım-materyalini-kullanılabilir-yapma.png",
+      "category": "Ürün",
+      "tag": "Rehberler",
+      "sections": [
+        {
+          "id": "güç-yetmez",
+          "title": "Güç yeterli değildir",
+          "paragraphs": [
+            "LP teminat, kavramsal olarak güçlüdür ve temiz bir şekilde sunulması zordur. Avana üzerinde sadece bir krediyi yönetmiyorsunuz. Zamanla değeri, bileşimi ve riski değişen canlı bir likidite pozisyonunu yönetiyorsunuz. Bu, ürünü standart bir kredi akışından daha talepkar kılar ve LP teminatın fikir çekici görünse bile operasyonel olarak zor olmasının başlıca nedenlerinden biridir."
+          ]
+        },
+        {
+          "id": "yaşam-döngüsünü-okunaklı-yap",
+          "title": "Yaşam döngüsünü okunabilir hale getirin",
+          "paragraphs": [
+            "Zorluk, tüm yaşam döngüsünü anlaşılır kılmaktır: teminat değerlemesi, borçlanma limitleri, sağlık izleme ve koşullar değiştikçe neler olacağı. Bu parçalar belirsiz kalırsa, ürün temel mekanizma ne kadar güçlü olursa olsun yüksek teknik bilgiye sahip kullanıcılarla sınırlı kalır.",
+            "LP teminat piyasalarında, iyi bir kullanıcı deneyimi risk tasarımının bir parçasıdır. Kullanıcıların, bir pozisyonun sadece piyasa değerini değil, teminat olarak ne kadar değerli olduğunu anlamaları gerekir. Ödünç almanın esnekliği nasıl etkilediğini, aralık sapması veya fiyat farkının riski nasıl değiştirdiğini ve bir pozisyonun strese ne kadar yakın olduğunu görmeleri gerekir. Bu gerçekleri belirsiz panoların arkasına saklayan bir platform, yüzeyde daha basit görünebilir ve yine de kullanıcı için daha fazla tehlike yaratabilir."
+          ]
+        },
+        {
+          "id": "tek-sistem",
+          "title": "Bir bağlı sistem",
+          "paragraphs": [
+            "LP, Avana üzerine yapılan destekli borçlanma, tek bir bağlantılı sistem olarak sunulmalıdır. Likidite yatırmak, bunu teminat olarak kullanmak, sağlığı izlemek, ücretleri toplamak ve riski yönetmek, tümü aynı finansal nesnenin parçasıdır. LP pozisyonu ile borç arasındaki ilişki en başından görünür olmalıdır, böylece resmi ayrı arayüzler üzerinden birleştirmek yerine her iki tarafı bir anda anlayabilirsiniz.",
+            "LP Pozisyonlar statik değildir. Ticaret aktivitesi, temel varlık hareketi ve yoğun likidite sistemlerinde pozisyon aralığıyla birlikte gelişirler. Bu tür bir varlığa karşı borçlanmak, daha ifade edici bir arayüz ve daha disiplinli bir ürün yapısı gerektirir. Ücret üretimi, teminat kalitesi ve tasfiye riski, ürün dikkatsizce tasarlanırsa yanlış anlaşılması kolay olan şekillerde etkileşir.",
+            "Amaç, gelişmiş finansal yapı taşlarını yanıltıcı olmadan kullanılabilir hale getirmektir. Avana'in LP destekli borçlanması, kullanılacak kadar açık, güvenilecek kadar disiplinli ve zincir üzerindeki sermayenin yönetimiyle gerçek bir bütün haline gelecek kadar tutarlı olmalıdır."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "avana-lp-teminat",
+      "title": "Avana ve LPler için Bir Sonraki Adım",
+      "date": "23 Haziran 2026",
+      "description": "Likidite sağlayıcılarının ücret kazanmak ile sermayeye erişim arasında seçim yapmak zorunda olmamaları gerektiği ve Avana'in Aave v4 üzerinde LP teminatı nasıl genişlettiği.",
+      "image": "/images/blog/avana-next-step-likidite-sağlayıcıları.png",
+      "category": "Topluluk",
+      "tag": "Strateji",
+      "sections": [
+        {
+          "id": "eski-takas",
+          "title": "Eski takas",
+          "paragraphs": [
+            "Likidite sağlayıcıları derinlik sağlar, oynaklığı emer ve işlem ücretleri kazanır, ancak bu pozisyonlardaki sermaye genellikle tuzakta gibi hissedilirdi. Eğer bu sermayeye erişmek isteseydiniz, olağan cevap hâlâ çekmek, pozisyonu parçalamak ve pozisyonu faydalı kılan şeyi yapmayı bırakmak olurdu."
+          ]
+        },
+        {
+          "id": "neler-avana-değişiyor",
+          "title": "Ne Avana değişir",
+          "paragraphs": [
+            "Avana, desteklenen LP pozisyonlarının, temel AMM içindeki likiditeyi aktif tutarken Aave v4 üzerinde teminat olarak kullanılmasına olanak tanır. Ücret kazanımı ile likidite erişimi arasında bir seçim yapmaya zorlamak yerine, aynı pozisyon her iki işlevi de yerine getirebilir. Piyasada kalır, ücret kazanmaya devam eder ve LP teminatı için tasarlanmış bir kredi sisteminde borçlanma kapasitesini destekler.",
+            "LP pozisyonları, standart teminatlardan daha karmaşıktır. Temel fiyatlar, havuz bileşimi, ücret birikimi ve aktif aralık yerleştirmesi olan yoğunlaştırılmış likidite sistemlerinde değişirler. Çoğu kredi sistemleri bu değeri doğru şekilde anlamak için inşa edilmemiştir. LP'leri sıradan token bakiyeleri gibi ele almak, aslında nasıl davrandıklarını anlamayı kaçırır. Avana vardır çünkü bu fark yapısaldır, kozmetik değil."
+          ]
+        },
+        {
+          "id": "yığının-uyması",
+          "title": "Yığının nasıl bir araya geldiği",
+          "paragraphs": [
+            "Avana, Aave v4'nin göbek ve çubuk tasarımını kullanır. Paylaşılan likidite göbek düzeyinde kalır. LP spesifik değerleme, teminat işlemi ve tasfiye mantığı özel çubuk piyasalarında bulunur. Stabil havuzlar, korele varlık havuzları ve yoğunlaştırılmış likidite pozisyonları, tek bir genel çerçeveye indirgenmek yerine her biri uygun risk işlemine tabi tutulur.",
+            "LP için sonuç, daha sermaye verimli bir katılımdır. Desteklenen bir pozisyon, AMM içinde üretken kalırken bir kredi sistemi içinde faydalı hale gelir. Pozisyonunuzu korursunuz, kazanmaya devam edersiniz ve tamamen çözmeden likiditeye erişirsiniz. Daha geniş sistem için, LP teminat, DeFi sermayenin daha az parçalanmasını sağlar. Likiditenin her seferinde başka bir yerde faydalı hale gelmesi gerektiğinde piyasayı terk etmesi gerekmez.",
+            "Eğer LP pozisyon aktif kalabilir ve borç almayı destekleyebilirse, bunlar sadece ücret üreten havuz paylarından daha fazlası olur. Bunlar, ücret üretimi, piyasa maruziyeti ve teminat değeri olan yapılandırılmış finansal pozisyonlar olarak işlev görür. Avana, ticaret altyapısı ile kredi altyapısı arasındaki köprüdür."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "kurumsal-kullanım-durumları",
+      "title": "LP Kurumlar için Teminat",
+      "date": "20 Haziran 2026",
+      "description": "Avana LP teminat, DAO'ların, hazinelerin, fonların ve kriptoya özgü şirketlerin üretken likiditeyi çözmeden sermayeye erişmesine nasıl yardımcı olabilir.",
+      "image": "/images/blog/lp-kurumsal-için-malzemeler.png",
+      "category": "Kuruluşlar için",
+      "tag": "Kurumlar",
+      "sections": [
+        {
+          "id": "hazine-fonksiyonu",
+          "title": "Hazine fonksiyonu olarak sermaye verimliliği",
+          "paragraphs": [
+            "Zincir üzerinde faaliyet gösteren kurumlar için sermaye verimliliği bir hazine fonksiyonudur. DAO'lar, protokol hazineleri, fonlar ve kriptoya özgü şirketler genellikle tokenler, sabit rezervler ve likidite havuzları arasında büyük pozisyonlar tutar, ancak bu sermayenin çoğu operasyonel olarak katıdır. LP Pozisyonlar ücret üretebilir ve stratejik piyasa maruziyetini destekleyebilir, ancak likiditeyi çekmek ve piyasa duruşunu değiştirmeden esnek hazine varlıkları olarak kullanmak hâlâ zordur."
+          ]
+        },
+        {
+          "id": "what-avana-etkinleştirir",
+          "title": "Avana'in ekipler için sağladığı olanaklar",
+          "paragraphs": [
+            "Avana aracılığıyla, LP pozisyon AMM içinde aktif kalabilir ve Aave v4 üzerinde borçlanmayı destekleyebilir. Bir DAO hazinesi, temel piyasa maruziyetini azaltmadan hibe veya katkı ödemelerini finanse edebilir. Bir fon, taktiksel yeniden konumlandırma için istikrarlı likiditeye erişim sağlarken LP pozisyonu sürdürebilir. Bir kurumsal hazine, zincir üstü rezervlerin tam yeniden dengelenmesini zorlamadan bordro veya tedarikçi yükümlülüklerini yönetebilir. Ortak payda, borçlanmanın pozisyonları realize etmeden, ücret üretimini kesintiye uğratmadan ve her likidite ihtiyacını bir satış kararına dönüştürmek zorunda kalmadan çalışma sermayesi yaratmasıdır.",
+            "Özellikle DAO'lar ve protokol hazineleri için, LP likidite desteği veya hazine stratejisi olarak tutulan pozisyonlar, yönetişim bunları geri çevirmeye karar vermedikçe genellikle hareketsiz kabul edilir. LP teminat, daha sermaye verimli bir yol sunar. Hazine pozisyonları, runway, ekosistem harcamaları veya operasyonel planlama için likiditeye kontrollü erişimi desteklerken aktif kalabilir."
+          ]
+        },
+        {
+          "id": "fonlar-ve-kurumlar",
+          "title": "Fonlar ve kurumsal hazineler",
+          "paragraphs": [
+            "Fonlar ve profesyonel yöneticiler taktiksel esnekliğe önem verir. Hızla hareket eden piyasalarda, sermayeye erişmeden önce bir pozisyonu kapatmak yavaş, maliyetli ve stratejik olarak garip olabilir. Avana LP teminat, bir yöneticinin maruziyeti ve piyasa varlığını korurken yeni yatırımlar, hedge veya yeniden pozisyon alma için likiditeyi serbest bırakmasına olanak tanır.",
+            "Kriptoya özgü işletmelerdeki kurumsal hazineler zincir üzeri rezervlere sahip olsa da, operasyonlar için öngörülebilir bir sermaye erişimine hâlâ ihtiyaç duyarlar. Bordro, tedarikçi ödemeleri ve işletme sermayesi ihtiyaçları her zaman ideal piyasa koşulları ile uyuşmaz. LP pozisyonlarına karşı borçlanmak, bir hazinenin yükümlülükleri, zamanında olmayan varlık satışlarına veya zincir dışı finansmana aşırı bağımlılığa gerek kalmadan yönetmesini sağlar."
+          ]
+        },
+        {
+          "id": "kontroller",
+          "title": "Kontroller önce gelir",
+          "paragraphs": [
+            "Kurumsal benimseme, kontrollerine bağlıdır: neyin ödünç alınabileceği, hangi teminat karşılığında, hangi onay yolu ile ve hangi risk azaltma kuralları ile ilgili net politika sınırları. Avana konuşlu piyasalar, riskin teminat yapısı etrafında tanımlanabileceği anlamına gelir. Stabil kripto paralar, korelasyonlu çiftler, yoğunlaşmış likidite ve volatil havuzlar, farklı varsayımlar altında yönetilebilir. Operasyonel kontroller arasında rol ayrımı, izinler, sağlığın izlenmesi, denetlenebilirlik ve çok imzalı onay eşikleri bulunur. Bunlar, LP teminatının sadece bir kaldıraç aracı olmaktan ziyade güvenilir bir hazine primi haline gelip gelmeyeceği açısından merkezi öneme sahiptir.",
+            "LP konumlar, protokollerin, fonların ve kriptoya özgü firmaların sermayeyi tahsis etme şeklinde zaten önemli bir rol oynuyor. Bir sonraki adım, bu konumları yalnızca ücret yaratmanın ötesinde finansal olarak faydalı hale getirmek ve kurumların ihtiyaç duyduğu yönetişim yüzeyini sağlamaktır. İşte Avana bunun için inşa edilmiştir."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "entegrasyon-rehberi",
+      "title": "Avana LP Altyapı Üzerine İnşa",
+      "date": "17 Haziran 2026",
+      "description": "Bir geliştiricinin Avana LP teminat altyapısına bakışı, izleme, otomasyon, tasfiye hizmetleri ve geliştirici fırsatları dahil.",
+      "image": "/ resimler / blog / geliştirici-görünüm-lp-teminat.png",
+      "category": "Geliştiriciler",
+      "tag": "Protokol",
+      "sections": [
+        {
+          "id": "yeni-tasarım-yüzey",
+          "title": "A new design surface",
+          "paragraphs": [
+            "Çoğu DeFi altyapı basit teminatlar etrafında inşa edilmiştir. Tek varlıklar fiyatlandırılması, izlenmesi ve tasfiye edilmesi kolaydır. LP pozisyonlar aktiftir, iki taraflıdır ve yapısal olarak daha karmaşıktır. Değerleri dayanak varlıklar, havuz bileşimi, ücret birikimi ve aralık ile değişir. Bu karmaşıklık, LP teminatın kredi sistemlerine entegre edilmesinin neden zor olduğunu ve Avana’in geliştiriciler için yeni bir tasarım alanı yarattığını açıklar."
+          ]
+        },
+        {
+          "id": "ne-üreticiler-alır",
+          "title": "Yapıcıların Avana'den elde ettikleri",
+          "paragraphs": [
+            "Avana, LP pozisyonlarını Aave v4 aracılığıyla teminat olarak kullanılabilir hale getirir. Hub ve spoke mimarisi, LP pozisyonlarının değerlendirildiği, risklerin ayarlandığı ve piyasa özel mantığına göre tasfiye edildiği anlamına gelir; bu, LPleri kabul eden genel bir kredi piyasası değildir. Geliştiriciler için bu, arayüzler, izleme sistemleri, hazine araçları, strateji katmanları ve LP destekli kredi üzerine inşa edilmiş risk bilincine sahip ürünler etrafında uygulamaların açılmasını sağlar.",
+            "Portföy ve izleme altyapısı doğal bir kategoridir. LP destekli borçlanma, teminat ile borç arasında çoğu DeFi kullanıcının alışık olduğundan daha dinamik bir ilişki yaratır. Panolar, sağlık faktörü, teminat verimliliği, ücret üretimi ve tasfiye hassasiyetini görünür hale getirebilir, kullanıcılara yeniden dengelemeye, borcu azaltmaya veya bir pozisyonu başlık değerinin gösterdiğinden daha stresli olarak değerlendirmeye ne zaman karar vereceklerini belirlemede yardımcı olur."
+          ]
+        },
+        {
+          "id": "otomasyon tasfiye hazine",
+          "title": "Otomasyon, tasfiye ve hazine araçları",
+          "paragraphs": [
+            "Otomasyon ve strateji altyapısı başka bir çalışma alanıdır. Çünkü LP pozisyonları borçlanmayı desteklerken aktif kalır, geliştiriciler pozisyonun her iki tarafındaki değişen koşullara yanıt veren sistemler oluşturabilir: hedef borçlanma aralıklarını korumak, teminat kaymasını izlemek veya pozisyon verilerini Avana üzerinde yer alan hazine ve portföy sistemlerine yönlendirmek.",
+            "Tasfiye ve risk altyapısı da önemlidir. LP teminat, basit eşik takibinden daha fazlasını gerektirir. Pozisyon kalitesinin piyasalar hareket ederken nasıl değiştiğini ve tasfiye yollarının platform ve havuz türüne göre nasıl farklılaştığını anlamayı gerektirir. Dış botlar, izleme hizmetleri ve analiz sistemleri, Avana etrafındaki ekosistemin önemli parçaları haline gelebilir.",
+            "Hazine ve kurumsal araçlar için, eğer DAO'lar, fonlar veya kriptoya özgü şirketler LP pozisyonlarını teminat olarak kullanırsa, cüzdanlar veya ekipler arasında politika sınırları, izinler, borçlanma koşulları ve risk eşiklerini yönetecek sistemlere ihtiyaç duyacaklardır. Geliştiriciler, LP maruziyet ve kredi maruziyetini ayrı dünyalar olarak ele almak yerine, teminat durumu, borç durumu ve piyasa seviyesi yapısı kaynağı olarak Avana'i kullanabilirler."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "aave-v4-avana-konuştu",
+      "title": "Avana'in LP Teminat Mimarisi İçinde",
+      "date": "14 Haziran 2026",
+      "description": "Aave v4 üzerindeki Avana'in LP teminat mimarisi içinde, merkez, kollarda, değerleme, kehanet tasarımı ve tasfiye mantığı dahil.",
+      "image": "/ resimler / blog / iç-avana-mimarisi.png",
+      "category": "Geliştiriciler",
+      "tag": "Protokol",
+      "sections": [
+        {
+          "id": "neden-hub-ve-çubuk",
+          "title": "Neden merkez ve halka",
+          "paragraphs": [
+            "LP teminat, genel bir kredi tasarımıyla desteklenemez. Aktif likidite pozisyonlarını, değişen teminat bileşimini, piyasa özel değerlemelerini ve standart token teminatından farklı tasfiye yollarını yöneten bir sisteme ihtiyaç duyar. Avana, LP destekli borçlanmanın aynı anda paylaşılan likidite ve izole piyasa mantığı gerektirdiği için Aave v4'nin hub ve spoke modeli üzerinde inşa edilmiştir."
+          ]
+        },
+        {
+          "id": "merkez-ve-ışın-rolleri",
+          "title": "Hub ve kolların yaptığı şey",
+          "paragraphs": [
+            "Merkez, ödünç alınabilir varlıkları tutar ve piyasalar arasında paylaşılan likiditeyi koordine eder: rezerv yönetimi, kullanım takibi ve kredi tahsisi. Bir merkez, Avana'in LP teminatını, her teminat türünü aynı varsayımları paylaşmaya zorlamadan daha geniş bir kredi çerçevesine bağlama şeklidir. Dengeli bir LP pazarı, yoğunlaşmış bir likidite piyasası ve dalgalı bir AMM çifti, aynı likidite havuzundan besleniyor olsalar bile aynı şekilde yönetilmemelidir.",
+            "Jantlar, belirli mantığın LP yaşadığı yerlerdir: teminat kaydı, değerleme, risk ayarlaması, izleme ve tasfiye. Her jant, farklı havuz tiplerinin nasıl ele alındığını tanımlar. Bir Uniswap yoğun pozisyon, değiştirilebilir bir Curve LP'den farklı davranır ve bu da Balancer ağırlıklı bir havuzdan farklı davranır. Jant, LP teminatın Avana içinde kendi kurallarıyla gerçek bir kredi piyasasına dönüştüğü yerdir."
+          ]
+        },
+        {
+          "id": "değerleme-kahin- Tasfiye",
+          "title": "Değerleme, kehanetler ve tasfiye",
+          "paragraphs": [
+            "Değerleme katmanlı bir yaklaşım kullanır. Öncelikle, LP pozisyonu mevcut piyasa durumunda aslında ne içeriyor. İkinci olarak, bu dayanakları güvenilir oracle girdilerden fiyatlandırın. Üçüncü olarak, temsili büyüklük yerine gerçek havuz riskini yansıtan teminat mantığıyla ayarlayın. Bir LP pozisyonundaki her dolar, Avana üzerinde aynı borçlanma gücüne dönüşmez.",
+            "Oracle tasarımı çekirdeğe yakındır. Teminat için, protokol tek bir sayıya veya basit bir varlık beslemesine güvenemez. Avana, daha güvenilir değerleme sağlamak için dış fiyat beslemeleri ile AMM türetilmiş fiyatlandırmanın birlikte çalıştığı çift kaynak felsefesini kullanır. Amaç, geçici bozulmalar, eski güncellemeler veya yerel havuz bozulmalarının güvenli olmayan teminat varsayımları oluşturma olasılığını azaltmaktır.",
+            "Tasfiye için, Avana aktif LP pozisyonlarını kontrollü bir şekilde çözmeli, ortaya çıkan varlıkları dönüştürmeli ve önlenebilir kayıp olmadan borcu ödemelidir. Spoke, altta yatan piyasa yapısı için tasfiyede uzmandır. Hub likidite sağlar. Spoke teminat mantığını tanımlar. Her katman, uygun olduğu şeyi yapar: temiz ayrım, güçlü izolasyon ve LP teminat havuzunu havuz bazında ölçeklendirmek için gerçekçi bir yol."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "v1-1-sürüm",
+      "title": "Avana v1.1: Daha İyi Teminat, Daha İyi Kontrol",
+      "date": "11 Haziran 2026",
+      "description": "Avana v1.1 çok pozisyonlu teminatı genişletir, daha fazla desteklenen havuz ekler, temsil ve uyarıları geliştirir ve işlem yükünü azaltır.",
+      "image": "/images/blog/avana-v1-1-daha-iyi-kontrol.png",
+      "category": "Ürün",
+      "tag": "Ürün",
+      "sections": [
+        {
+          "id": "ne-gönderildi",
+          "title": "v1.1'de neler gönderildi",
+          "paragraphs": [
+            "Avana v1.1, LP teminatlı borçlanmayı daha esnek, daha verimli ve yönetimi daha kolay hale getiriyor. Bu güncelleme, kullanıcıların teminat yapılarını genişletmelerine, pozisyon değerlendirmesini iyileştirmelerine, işlem yükünü azaltmalarına ve Aave v4 üzerindeki aktif LP pozisyonlarını yönetmek için gösterge panelini rafine etmelerine olanak tanıyor."
+          ]
+        },
+        {
+          "id": "çoklu-konumlar-ve-pazarlar",
+          "title": "Çoklu pozisyon teminatı ve daha fazla piyasa",
+          "paragraphs": [
+            "Ana değişiklik çok pozisyonlu teminattır. Kullanıcılar birden fazla LP pozisyon yatırabilir ve borçlanma kapasitesi, pozisyon bazında değil, tüm teminat seti üzerinden değerlendirilir. Bu, farklı havuzlar, varlıklar veya strateji türleri arasında likiditeyi yönetmek için daha fazla esneklik sağlar. Bu sürüm ayrıca Uniswap v3 ve v4 genelinde desteklenen havuzları genişletiyor. Her yeni piyasa yine ek değerleme, teminat işleme ve tasfiye çalışmasını içerir, bu nedenle daha geniş erişim Avana'in risk standartlarını zayıflatmaz.",
+            "Kısmi pozisyon çekimi de yenidir. Kullanıcılar, kalan teminat hâlâ krediyi güvenli bir şekilde desteklediği sürece, bir LP pozisyonunun likiditesinin bir kısmını tam olarak teminat pozisyonundan çıkmadan azaltabilir. Bu, sermaye yönetimini daha ikili olmayan bir hâle getirir. Maruziyeti ayarlayabilir, likiditeyi serbest bırakabilir veya pozisyonları yeniden şekillendirebilirsiniz; her değişikliği ya hep ya hiç gibi ele almak zorunda kalmazsınız."
+          ]
+        },
+        {
+          "id": "operasyonlar-ve-panolar",
+          "title": "Operasyon araçları ve daha net bir pano",
+          "paragraphs": [
+            "Delegasyon desteği, DAO'ların, ekiplerin ve yapılandırılmış operatörlerin sorumlulukları cüzdanlar veya roller arasında ayırmasına yardımcı olur: kim mevduatları yönetir, kim borç işlemlerini yürütür, kim operasyonel bakımı yapar. Sağlık faktörü uyarıları, stres oluşmadan önce pozisyon koşullarındaki değişiklikleri daha erken görme imkanı sağlar. LP teminat hızla değişebilir, özellikle fiyat farklılaşması hem kazanç verimliliğini hem de teminat kalitesini aynı anda etkilediğinde.",
+            "Performans iyileştirmeleri, mevduatlar, borçlar, geri ödemeler ve yönetim gibi işlemlerde maliyetleri düşürür. Oracle işlemleri, gecikme süresi, yedekleme davranışı ve değişen piyasa koşulları sırasında güvenilirlik açısından iyileştirildi. LP teminat için, arka uç yürütme kalitesi, ön uç özellikleri kadar önemlidir.",
+            "Gösterge paneli, LP destekli borçlanmayı, aslında Avana üzerinde nasıl çalıştığını gösterecek şekilde iyileştirildi: teminat sağlığı, pozisyon bileşimi ve aktif likidite ile borç arasındaki ilişki. Daha iyi işlem önizlemeleri ve daha duyarlı bir tasarım, zincir üzerinde bir değişiklik yapmadan önce pozisyon yönetimini daha anlaşılır hale getirir."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tanıtım-otomatikleştir",
+      "title": "Otomasyon: LP Teminat için Bir Kontrol Katmanı",
+      "date": "8 Haziran 2026",
+      "description": "How Avana Automate, kullanıcıların ücretler, yeniden dengeleme, koruma ve disiplinli bakım için saklamayan otomasyonla LP teminatı yönetmelerine yardımcı olur.",
+      "image": "/images/blog/otomatik-kontrol-katmanı-lp-teminat.png",
+      "category": "Ürün",
+      "tag": "Ürün",
+      "sections": [
+        {
+          "id": "neden-otomasyon",
+          "title": "Neden LP teminat otomasyona ihtiyaç duyar",
+          "paragraphs": [
+            "Teminat olarak da hizmet veren bir LP pozisyonunu yönetmek zordur. Ücretler birikir ama her zaman verimli kalmaz. Likidite aralıkları piyasa hareket ettikçe dalgalanır. Fiyat farklılaşması teminat profilini değiştirdikçe sağlık faktörleri zayıflar. Bilanço taraflarının her ikisi de aktif kalır. LP pozisyon gelişir ve buna karşı olan borç, borçlanma koşullarıyla birlikte gelişir. Aave v4 üzerinde Avana aracılığıyla LP'e borçlanan kullanıcılar için, bu günlük gerçekliktir."
+          ]
+        },
+        {
+          "id": "ne-otomatikleştirir",
+          "title": "Avana Automate nedir",
+          "paragraphs": [
+            "Automate, Avana'nin muhafazalı olmayan otomasyon katmanıdır. Önceden tanımlanmış koşullar karşılandığında, kullanıcı tarafından onaylanmış işlemleri yürütür. Kullanıcılar varlıklar ve izinler üzerinde tam kontrole sahiptir. Automate, tekrar eden bakımı yönetir ve pozisyon disiplinini uygular. Strateji veya yargının yerini almaz. Avana üzerinde LP teminatını yönetmenin operasyonel yükünü azaltmanın bir yoludur."
+          ]
+        },
+        {
+          "id": "ücret-aralıkları-koruma",
+          "title": "Ücretler, aralıklar ve koruma",
+          "paragraphs": [
+            "Ticaret ücretleri zamanla birikir, ancak boş durma ücretleri pozisyon verimliliğine katkıda bulunmaz. Otomasyon, bunları kullanıcı tercihlerine göre toplayabilir ve yeniden dağıtabilir, böylece pozisyonlar sürekli manuel müdahale olmadan daha verimli kalır. Zamanla, disiplinli ücret yönetimi, özellikle daha büyük LP destekli borçlanma stratejileri için başlık getirisi kadar önemli olabilir.",
+            "Yoğunlaştırılmış likidite sistemlerinde, fiyat aktif aralığın dışına çıktığında sermaye verimli bir şekilde çalışmayı durdurur ve pozisyon ayrıca Avana üzerindeki teminat olarak daha az verimli hale gelebilir. Otomasyon, kullanıcı tarafından tanımlanan kurallara göre yeniden dengeleyebilir ve her hareketi manuel olarak takip etme yükünü azaltır. Bu özellikle yararlıdır çünkü teminat verimliliği ve likidite verimliliği yakından ilişkilidir.",
+            "Pozisyonlar, özellikle keskin oynaklık sırasında veya eşleştirilen varlıklar farklı yönlere giderken, beklenenden daha hızlı bir şekilde sağlıklılkten stresli hale geçebilir. Automate, durumları izler ve kullanıcı tarafından belirlenen eşiklere göre savunma işlemleri gerçekleştirir. Borcu destekleyen LP temerrüt bakımını ihmal etmek maliyetli hale gelir. Avana Automate, bu erken tepki için tasarlanmıştır."
+          ]
+        },
+        {
+          "id": "gün-iki-operasyonlar",
+          "title": "İkinci gün operasyonları",
+          "paragraphs": [
+            "Automate, LP teminatının gerçek doğası etrafında inşa edilmiştir: kazanç sağlayan, kayma yaşayan ve Aave v4 üzerinde teminat olarak hizmet verirken riskini değiştiren pozisyonlar. Kullanıcılara pozisyonlarını tutarlı bir şekilde sürdürmenin, değişen koşullara daha az sürtünme ile yanıt vermenin ve aksi takdirde sürekli manuel dikkat gerektirecek disiplinle LP teminatlı borç yönetiminin bir yolunu sunar. Aynı saklama dışı ilke her yerde geçerlidir. Avana politikanızı yürütür. Siyah kutu bir fon yöneticisi haline gelmez."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lp-teminat-rehberi",
+      "title": "Yeni Başlayanlar için LP Teminat Rehberi",
+      "date": "4 Haziran 2026",
+      "description": "Avana üzerinde LP teminatına yönelik bir acemi kılavuzu, LP davranışı, LTV, geçici kayıp, tasfiye ve temkinli ilk adımları kapsıyor.",
+      "image": "/images/blog/yeniben-baslayanlar-rehberi-lp-teminat.png",
+      "category": "LP saniye boyunca",
+      "tag": "Rehberler",
+      "sections": [
+        {
+          "id": "temel-fikir",
+          "title": "Temel fikir",
+          "paragraphs": [
+            "Likidite sağlamak, DeFi içinde getiri elde etmenin en yaygın yollarından biridir. Varlıkları bir havuza yatırırsınız, ticareti kolaylaştırırsınız ve karşılığında ücret kazanırsınız. LP pozisyonları da esnek değildi. Sermayeyi başka bir yerde kullanmak istiyorsanız, genellikle önce çekmek zorundaydınız. LP teminat bunu değiştirir. Aave v4 üzerinde Avana aracılığıyla, desteklenen LP pozisyonları, havuzda aktif kalırken ve tüm süre boyunca ücret kazanırken borçlanmayı destekleyebilir."
+          ]
+        },
+        {
+          "id": "bir-lp-nedir",
+          "title": "Aslında bir LP nedir",
+          "paragraphs": [
+            "Bir LP pozisyon, bir piyasadaki aktif bir pozisyondur. Değeri, dayanak varlıklara, bunların birbirine göre nasıl hareket ettiğine, birikmiş ücretlere ve yoğunlaştırılmış likidite sistemlerinde pozisyonun hâlâ aktif fiyat aralığında olup olmadığına bağlıdır. Zamanla, sıradan token teminatlarının değişmediği şekillerde değişir. Bu nedenle LP teminatı daha özel bir ödünç verme modeline ihtiyaç duyar ve Avana bu kullanım durumu için vardır."
+          ]
+        },
+        {
+          "id": "ltv-il tasfiye",
+          "title": "LTV, geçici kayıp ve tasfiye",
+          "paragraphs": [
+            "Kredi değeri oranı, genellikle LTV olarak kısaltılır, bir pozisyonun kabul edilen teminat değerinin borç alınabilecek kısmıdır. Daha düşük bir LTV daha fazla tampon anlamına gelir. Teminat değeri düştüğünde, kredinin stres altına girmeden önce boşluk vardır. Daha yüksek bir LTV ise daha fazla anlık likidite ve daha az güvenlik payı sağlar. LP piyasalarında bu daha önemlidir çünkü pozisyon değeri birden fazla sebepten dolayı hareket edebilir: temel fiyatlar, havuz bileşimi, ücret tahakkuku ve aralık yerleştirme.",
+            "Geçici kayıp, sıklıkla IL olarak kısaltılır, bir havuzdaki iki varlık birbirine göre hareket ettiğinde ve LP pozisyonu havuz dışındaki bu varlıkları tutmaktan daha az değerli hale geldiğinde meydana gelir. Bir kişi Avana üzerinde teminat olarak LP kullanıyorsa, IL doğrudan borçlanma kapasitesini etkiler. Bu, LP teminatını tanım gereği güvensiz yapmaz, ancak kullanıcıların pozisyonların sabit değil, dinamik olduğunu anlamaları gerektiği anlamına gelir.",
+            "Teminat değeri borca kıyasla çok fazla düşerse, Avana güvenliği tasfiye yoluyla sağlar. LP teminatıyla bu, basit bir token satmaktan daha karmaşıktır. Ücret tahakkuku, değişen varlık bileşimi ve mecra özel likidite yapısı vardır. Avana, LP pozisyonlarını bunları genel varlıklar gibi ele almak yerine bu gerçeklere göre değerler ve tasfiye eder. Yeni başlayanlar için pratik ders basittir. Özellikle başlangıçta temkinli borç alın."
+          ]
+        },
+        {
+          "id": "ilk adımlar",
+          "title": "A sensible first path",
+          "paragraphs": [
+            "Teminat olarak bile, bir LP pozisyonu ücret kazanmaya devam eder ve piyasa pozisyonunu korur. İşte bu sermaye verimliliği kazancıdır. Yeni başlayanlar için en güvenli yaklaşım Avana üzerinde temkinli başlamaktır: ılımlı borç alın, önce daha basit ve daha istikrarlı havuz türlerini kullanın ve pazar hareket ettikçe pozisyon sağlığının nasıl değiştiğine dikkat edin. LP değerinin, borcun ve likidasyon eşiklerinin nasıl etkileşime girdiğini anladıktan sonra, modeli sorumlu bir şekilde kullanmak çok daha kolay hale gelir."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "common": {
+    "a11y": {
+      "skipToContent": "דילג אל התוכן הראשי",
+      "primaryNav": "ניווט ראשי",
+      "mobileMenu": "תפריט נייד",
+      "mobileNav": "ניווט נייד",
+      "openMenu": "פתח תפריט",
+      "closeMenu": "סגור תפריט",
+      "language": "שפה: {language}",
+      "logo": "לוגו {site}",
+      "helpfulLinks": "קישורים מועילים"
+    },
+    "nav": {
+      "products": "מוצרים",
+      "resources": "משאבים",
+      "developers": "מפתחים",
+      "helpCenter": "מרכז העזרה",
+      "aaveArfc": "8 28/1",
+      "borrow": "להשאיל",
+      "lend": "להלוות",
+      "multiply": "להכפיל",
+      "about": "אודות",
+      "newsroom": "חדר חדשות",
+      "brand": "מותג",
+      "faq": "שאלות נפוצות",
+      "privacy": "פרטיות",
+      "terms": "תנאים",
+      "overview": "סקירה",
+      "architecture": "אדריכלות",
+      "liquidation": "פירוק"
+    },
+    "cta": {
+      "sandboxShort": "Sandbox",
+      "sandboxLong": "נסה Sandbox"
+    },
+    "mega": {
+      "exploreProducts": "לחקור מוצרים",
+      "exploreResources": "חקר משאבים",
+      "exploreDevelopers": "חקור מפתחים",
+      "whatYouCanDo": "מה שאתה יכול לעשות",
+      "whereToLook": "איפה לחפש",
+      "highlights": "דגשים",
+      "borrowAgainstLp": "להלוות נגד LP",
+      "borrowAgainstLpDesc": "שחרר נזילות מחשיפה של LP מבלי לעזוב את האסטרטגיה.",
+      "openMultiply": "פתח LP כפל",
+      "openMultiplyDesc": "השתמש ב-AMM עמדות כבטוחה לחשיפה מנוהלת בתוך הבריכה.",
+      "lendThroughHub": "הַלְוָה דרך המרכז",
+      "lendThroughHubDesc": "הקצה הון עם הקשר ביצוע ברור יותר.",
+      "aboutDesc": "התזה של החברה והמוצר מאחורי Avana.",
+      "followNotes": "עקוב אחר ההערות למוצר",
+      "followNotesDesc": "השקות, עדכונים טכניים והחלטות על מפת הדרכים.",
+      "browseBrand": "עיין בחומרים של המותג",
+      "browseBrandDesc": "סימנים, צבעים והנחיות חזותיות של שותפים המאושרים.",
+      "startOverview": "התחל עם סקירה כללית",
+      "startOverviewDesc": "מודל פרוטוקול ליבה לפני פרטי היישום.",
+      "reviewModel": "מודל פרוטוקול סקירה",
+      "reviewModelDesc": "איך המרכז, הקרניים, התמחור והבקרות משתלבים יחד.",
+      "understandLiquidation": "להבין חיסול",
+      "understandLiquidationDesc": "כיצד עוקבים אחרי עמדות הנתמכות על ידי LP ומסדרים אותן."
+    },
+    "footer": {
+      "blurb": "Avana הוא פרוטוקול עם בטחונות LP על Aave v4 שמסייע לספקי נזילות ללוות כנגד פוזיציות פעילות תוך כדי הישארות בבריכה.",
+      "explore": "לחקור",
+      "resources": "משאבים",
+      "docs": "מסמכים",
+      "social": "חברתי",
+      "twitter": "לְצַפְצֵף",
+      "github": "גיטהאב",
+      "telegram": "טלגרם",
+      "discourse": "נאום",
+      "socialAria": "Avana על {network}",
+      "disclosureRisk": "הלוואה נגד LP אסימונים כרוכה בסיכון, כולל הסכמה אם תנאי השוק ינועו נגד עמדתך. Avana אינה מאחסנת את כספיך, אינה מבצעת רה-היפוטקציה של עמדות LP, ואינה משנה את אופן פעולתה של הנזילות שלך על AMMים הבסיסיים. תנאי ההלוואה, שיעורי הריבית, וערכי הערבות נאכפים ברשת באמצעות מערכות אורקל שקופות ופרמטרי סיכון אוטומטיים. אתה נשאר בשליטה מלאה על עמדתך בכל זמן ותוכל להחזיר או להתאים את הערבות בכל עת שתבחר. קח הלוואות רק בסכומים שאתה מרגיש נוח לשמור במהלך תנודות השוק.",
+      "disclosureInfo": "חומר זה מיועד למטרות מידע בלבד, ואינו (i) הצעה או בקשה להצעה להשקיע, או לקנות או למכור, כל עניין או מניות, או להשתתף בכל אסטרטגיית השקעה או מסחר, (ii) מיועד לספק ייעוץ חשבונאי, משפטי או מס, או המלצות השקעה או (iii) הצהרה רשמית של Avana. יש להתייעץ עם היועצים שלכם לפני קבלת כל החלטת השקעה. אין מסירה או אחריות, גלויה או משתמעת, לגבי דיוק המידע או ביצועי העתיד של כל נכס דיגיטלי, כלי פיננסי או מדד שוקי או כלכלי אחר. ייתכן שלAvana יש אינטרסים פיננסיים, או קשרים עם, חלק מהישויות ו/או הפרסומים הנידונים או המוזכרים בחומרים. Avana אינה מאשרת או תומכת בקישורים או אתרי צד שלישי שעשויים להיות מסופקים בחומרים."
+    },
+    "notFound": {
+      "title": "דף זה אינו זמין.",
+      "body": "הכתובת עשויה להיות שגויה או שהדף ייתכן שעבר למקום אחר.",
+      "home": "Go to homepage",
+      "faq": "שאלות נפוצות"
+    },
+    "sandboxNotice": "Sandbox הנתונים מוצגים להצגה בלבד. APY שניות, מחירים ותשואות הם להמחשה ועשויים להיות שונים מתנאי השוק בפועל.",
+    "blogChrome": {
+      "back": "חזור",
+      "share": "שיתוף",
+      "shareOnX": "שתף ב-X",
+      "shareOnLinkedIn": "שתף בלינקדאין",
+      "previousPost": "פוסט קודם",
+      "nextPost": "פוסט הבא",
+      "onThisPage": "On this page"
+    },
+    "docs": {
+      "previous": "קודם",
+      "next": "הבא",
+      "sections": {
+        "introduction": "מבוא",
+        "gettingStarted": "מתחילים",
+        "architecture": "ארכיטקטורת פרוטוקול",
+        "liquidation": "מסגרת פירוק",
+        "integrations": "אינטגרציות נתמכות",
+        "safety": "מנגנוני בטיחות",
+        "legal": "משפטי וציות"
+      },
+      "items": {
+        "overview": "סקירה",
+        "keyConcepts": "מושגים מפתח",
+        "testnetRoadmap": "רשת בדיקה ומפת דרכים",
+        "glossary": "מילון מונחים",
+        "depositLp": "זיכוי LP",
+        "borrowAssets": "השאלת נכסים",
+        "manageLoans": "ניהול הלוואות",
+        "repayLoans": "להחזיר הלוואות",
+        "withdrawCollateral": "משוך משכון",
+        "claimLpFees": "טענת LP עמלות",
+        "borrowSpoke": "לווה ספוק",
+        "lendSpoke": "רכב קדמי",
+        "collateralFactors": "גורמי בטוחה",
+        "healthFactor": "גורם בריאות",
+        "platformFees": "עמלות פלטפורמה",
+        "incentives": "תמריצים",
+        "liquidationDesign": "עיצוב פירוק",
+        "liquidators": "מפרקים",
+        "liquidationFlow": "זרימת מימוש",
+        "liquidationExamples": "דוגמאות לנזילות",
+        "integrationsOverview": "סקירת אינטגרציות",
+        "appkit": "AppKit",
+        "allowedPools": "בריכות מותרות LP",
+        "routerAdapters": "נתב ומתאמים",
+        "priceOracles": "אורקלי מחירים",
+        "riskFramework": "מסגרת סיכונים",
+        "contractsSecurity": "חוזים ואבטחה",
+        "bugBounty": "פרס באגים",
+        "insuranceFunds": "קרנות ביטוח",
+        "securityDisclosures": "גילויים ביטחוניים",
+        "legalDisclaimer": "כתב ויתור משפטי"
+      }
+    },
+    "faqUi": {
+      "heading": "איך אנחנו יכולים לעזור?",
+      "search": "חיפוש",
+      "searchPlaceholder": "חיפוש",
+      "searchResults": "תוצאות חיפוש",
+      "clearSearch": "נקה חיפוש",
+      "noResults": "לא נמצאו תוצאות עבור \"{query}\"",
+      "category": "קטגוריה: {name}",
+      "categoriesAria": "קטגוריות שאלות נפוצות",
+      "articles": "{count} מאמרים"
+    },
+    "tags": {
+      "all": "הכל",
+      "product": "מוצר",
+      "strategy": "אסטרטגיה",
+      "guides": "מדריכים",
+      "protocol": "פרוטוקול",
+      "institutions": "מוסדות"
+    },
+    "newsroom": {
+      "latestFrom": "העדכונים האחרונים מ-Avana",
+      "readNewsroom": "קרא חדר חדשות"
+    }
+  },
+  "meta": {
+    "siteTitle": "Avana - לשאול כנגד LP פוזיציות על Aave v4",
+    "siteDescription": "שחרר נזילות מהטוקנים שלך LP. השאל עד 80% כנגד Uniswap, Curve, ו-Balancer תוך כדי המשך להרוויח עמלות מסחר על Aave v4.",
+    "ogDescription": "שחרר נזילות מהLP הטוקנים שלך תוך כדי המשך להרוויח עמלות מסחר.",
+    "ogSubtitle": "ללוות כנגד LP עמדות על Aave v4",
+    "twitterTitle": "Avana - לשאול כנגד LP עמדות",
+    "twitterDescription": "שחרר נזילות מה-LP אסימונים שלך ב-Aave v4",
+    "titleTemplate": "{title} | Avana",
+    "team": "Avana צוות",
+    "ogAlt": "Avana - DeFi פרוטוקול נזילות",
+    "home": {
+      "title": "ללוות כנגד LP עמדות על Aave v4",
+      "description": "שחרר נזילות מהטוקנים שלך LP. השאל עד 80% כנגד Uniswap, Curve, ו-Balancer תוך כדי המשך להרוויח עמלות מסחר על Aave v4."
+    },
+    "about": {
+      "title": "אודות",
+      "description": "הכירו את Avana, פרוטוקול ייחוסLP עם ערבות בנוי על Aave v4 עם צירים מיוחדים, מרכז משותף, וציר הלוואות המיועד לשווקי נזילות AMM."
+    },
+    "borrow": {
+      "title": "להשאיל",
+      "description": "ללוות נגד עמדות חיות LP מבלי לצאת מהבריכה. המשיך להרוויח עמלות תוך כדי שחרור נזילות על Aave v4."
+    },
+    "lend": {
+      "title": "להלוות",
+      "description": "ספק הון ל-Lend Spoke של Avana והרוויח תשואה מהלווים המגובהים על ידי LP בAave v4."
+    },
+    "multiply": {
+      "title": "להכפיל",
+      "description": "הגבר את החשיפה LP עם אסטרטגיות מוכפלות מנוהלות בגיבוי עמדות AMM נתמכות."
+    },
+    "brand": {
+      "title": "מותג",
+      "description": "נכסי המותג הרשמיים Avana, צבעים והנחיות שימוש לשותפים ולעיתונות."
+    },
+    "faq": {
+      "title": "שאלות נפוצות",
+      "description": "תשובות על Avana LP בטחונות, הלוואה, הלוואה, כפל, פירוק, ו-Aave v4 ארכיטקטורה."
+    },
+    "newsroom": {
+      "title": "חדר חדשות",
+      "description": "הפוסטים האחרונים מצוות Avana על LP ביטחונות, AMM שווקים, Aave v4, ופיתוח פרוטוקול."
+    },
+    "developers": {
+      "title": "מפתחים",
+      "description": "תיעוד טכני לשילוב עם Avana. למדו על ערבויות אסימון LP, גורמי בריאות, תזרימי ליקווידציה, ואדריכלות חוזי חכמים על Aave v4."
+    },
+    "privacy": {
+      "title": "מדיניות פרטיות",
+      "description": "Avana מדיניות פרטיות."
+    },
+    "terms": {
+      "title": "תנאי שימוש",
+      "description": "Avana תנאי שימוש."
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "מופעל על ידי Aave v4",
+      "title": "לוות נגד LP עמדות",
+      "titleLine1": "ללוות כנגד",
+      "titleLine2": "מעמדות נזילות",
+      "subtitle": "המשך להרוויח עמלות מסחר תוך פתיחת נזילות מהעמדות Uniswap, Curve ו-Balancer.",
+      "subtitleMobileLines": [
+        "קבל גישה עד ל-80% מערך בריכת הנזילות שלך",
+        "at 5.5% APR without withdrawing liquidity or",
+        "giving up trading fees."
+      ],
+      "subtitleDesktopLines": [
+        "גש עד ל-80% מערך בריכת הנזילות שלך בריבית של 5.5% APR",
+        "without withdrawing liquidity or giving up trading fees."
+      ],
+      "primaryCta": "נסה Sandbox",
+      "secondaryCta": "קרא מסמכים"
+    },
+    "features": {
+      "eyebrow": "תכונות מפתח",
+      "title": "נבנה להכשרת ערבויות חיות LP"
+    },
+    "faq": {
+      "title": "שאלות נפוצות"
+    },
+    "newsroom": {
+      "title": "העדכונים האחרונים מ-Avana",
+      "cta": "קרא חדר חדשות"
+    },
+    "buildTomorrow": {
+      "title": "פגוש Avana",
+      "body": "Avana הופך LP עמדות לבלתי ניתנות לשימוש בערבות על Aave v4 כך שספקי נזילות יכולים ללוות מבלי לעזוב את הבריכה."
+    }
+  },
+  "product": {
+    "borrow": {
+      "title": "להלוות נגד LP",
+      "subtitle": "שחרר נזילות מעמדות פעילות AMM ללא יציאה מהבריכה.",
+      "cta": "נסה Sandbox"
+    },
+    "lend": {
+      "title": "להלוות ל-LP שווקים",
+      "subtitle": "הרוויח תשואה מלוים באמצעות ביטחונות חיים LP ב-Aave v4.",
+      "cta": "נסה Sandbox"
+    },
+    "multiply": {
+      "title": "להכפיל LP חשיפה",
+      "subtitle": "השתמש בעמדות נתמכות כבטוחה כדי להוסיף חשיפה כיוונית מנוהלת.",
+      "cta": "נסה Sandbox"
+    },
+    "about": {
+      "title": "בערך Avana",
+      "subtitle": "LP-פרוטוקול כביטחונות מבוסס על Aave v4"
+    },
+    "brand": {
+      "title": "ערכת מותג",
+      "subtitle": "סימנים, צבעים והנחיות למשטחים הפונים לשותפים"
+    }
+  },
+  "faq": {
+    "title": "שאלות נפוצות",
+    "subtitle": "תשובות על Avana, LP בטוחה, ו-Aave v4",
+    "englishOnlyNote": "תשובות מלאות לשאלות נפוצות מוצגות באנגלית עד לסיום הבדיקה של שפה זו."
+  },
+  "docs": {
+    "hubTitle": "תיעוד מפתחים",
+    "hubSubtitle": "שילוב עם Avana LP בטוחה על Aave v4",
+    "englishOnlyNote": "טקסט גוף התיעוד חוזר לאנגלית כאשר תרגום למקום מסוים עדיין אינו זמין."
+  },
+  "blog": {
+    "indexTitle": "חדר חדשות",
+    "indexSubtitle": "הערות על המוצר, מחקר ועדכוני פרוטוקול",
+    "englishOnlyNote": "גופי המאמרים חוזרים לאנגלית כאשר תרגום למיקום עדיין אינו זמין."
+  },
+  "legal": {
+    "privacyTitle": "מדיניות פרטיות",
+    "termsTitle": "תנאי שימוש",
+    "englishOnlyNote": "דפי החוק נשארים באנגלית עד שיהיו זמינות גרסאות מקומיות שאושרו על ידי היועץ המשפטי.",
+    "englishOnlyBadge": "אנגלית בלבד"
+  }
+}

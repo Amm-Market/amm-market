@@ -1,0 +1,778 @@
+{
+  "posts": [
+    {
+      "slug": "governance dei rischi lp",
+      "title": "Come Avana governa LP rischio",
+      "date": "24 luglio 2026",
+      "description": "Come Avana governa il rischio collaterale LP nei mercati periferici con aggiornamenti limitati, revisione indipendente e contenimento d'emergenza.",
+      "image": "/immagini/blog / lp-risk-governance.png",
+      "category": "Sviluppatori",
+      "tag": "Protocollo",
+      "sections": [
+        {
+          "id": "perché-il-rischio-lp-è-diverso",
+          "title": "Perché il rischio LP è diverso",
+          "paragraphs": [
+            "Avana non può gestire LP collateral nello stesso modo in cui un mercato di prestiti generico gestisce una lista di token. Ogni mercato a raggio ha la propria struttura del pool, modalità di fallimento e comportamento sotto stress. Un pool stabile non è lo stesso prodotto di un range concentrato. Un basket in stile ponderato Balancer non è lo stesso prodotto di un mercato in stile Curve con alta correlazione. Il framework di rischio di Avana è costruito attorno a questa varietà. Monitora la volatilità, la qualità del peg, l'utilizzo, la profondità della liquidità, la concentrazione, la salute degli oracoli, lo stato del mercato, i limiti di offerta e prestito, LTV e soglie di liquidazione, i modelli dei tassi d'interesse e la salute delle posizioni sia nel hub che nei raggi LP insieme."
+          ]
+        },
+        {
+          "id": "tre-ruoli",
+          "title": "Tre ruoli, compiti chiari",
+          "paragraphs": [
+            "Avana separa la raccomandazione di routine, la revisione indipendente e il contenimento delle emergenze in tre ruoli: l'Iniziatore del Rischio, il Guardiano del Rischio e il Difensore del Rischio. L'Iniziatore propone aggiornamenti di routine all'interno di modelli approvati, inclusi limiti, impostazioni di garanzia, tassi e onboarding dei pool. Ogni proposta viene etichettata come difensiva o orientata alla crescita prima di entrare nel percorso normale. Il Guardiano è lo strato di revisione e veto. Controlla che la divulgazione pubblica corrisponda a quanto in coda, conferma che l'azione rimanga nei limiti della politica e può annullare durante il blocco temporale. Il Difensore è ristretto per design. Può ridurre i limiti, congelare i prestiti o disabilitare un adattatore compromesso quando attendere il percorso di routine lascerebbe Avana esposto."
+          ]
+        },
+        {
+          "id": "come-cambia-la-nave",
+          "title": "Come la routine cambia la nave",
+          "paragraphs": [
+            "Il percorso di aggiornamento standard su Avana è avviso pubblico, presentazione, convalida rispetto ai limiti predefiniti, timelock, revisione del Guardiano ed esecuzione se nessuno pone veto. Sviluppatori, utenti e partecipanti alla governance possono leggere il motivo prima che una modifica venga applicata e confrontare la politica scritta con l'azione in coda. Per un protocollo costruito su garanzie complesse, quella coerenza pubblica è un requisito di base piuttosto che un extra di marketing.",
+            "Non ogni cambiamento utilizza quel percorso. Ridurre il rischio dovrebbe essere più facile che aumentarlo. Modeste regolazioni all'interno dei limiti approvati seguono il flusso standard. Mosse più grandi, come nuove famiglie di raggi, nuovi primitivi LP, nuovi modelli di oracle o nuovi adattatori di liquidazione, si trovano al di fuori del processo di routine perché espandono la superficie di rischio di Avana e necessitano di una revisione più approfondita."
+          ]
+        },
+        {
+          "id": "alimentazione di emergenza",
+          "title": "Quando Avana usa l'alimentazione di emergenza",
+          "paragraphs": [
+            "I casi di emergenza includono incoerenza dell'oracolo, degrado del percorso di liquidazione, comportamento anomalo del pool, malfunzionamento del wrapper, compromissione dell'adattatore o improvvisa instabilità a livello di spoke. Anche in questi casi il framework rimane prudente. L'autorità di emergenza su Avana è limitata, difensiva e reversibile. Esiste per momenti in cui le ipotesi falliscono più rapidamente di quanto la governance del timelock possa rispondere. Non è un percorso ombra per l'ottimizzazione quotidiana.",
+            "Presi insieme, Avana abbina la struttura di governance alla complessità del collaterale. LP il prestito garantito richiede modelli di mercato, esecuzione limitata, divulgazione trasparente e una linea dura tra crescita normale, aggiustamento difensivo e contenimento d'emergenza. Ogni raggio mantiene le proprie ipotesi sull'oracolo, la logica di liquidazione, le regole di ammissione e i vincoli operativi. Avana non finge che ogni mercato LP sia intercambiabile."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "perché-il-collaterale-lp-ha-bisogno-di-agenti-intelligenti",
+      "title": "Perché LP Le garanzie hanno bisogno di agenti intelligenti",
+      "date": "22 luglio 2026",
+      "description": "Perché Avana utilizza Smart Agents per monitorare la salute, le posizioni specifiche dei luoghi di servizio e mantenere affidabile la copertura di liquidazione sotto stress.",
+      "image": "/immagini/blog / smart-agents-lp-collateral.png",
+      "category": "Sviluppatori",
+      "tag": "Protocollo",
+      "sections": [
+        {
+          "id": "i-prestititi-lp-sono-operativi",
+          "title": "LP loans are operational work",
+          "paragraphs": [
+            "L'8, il collaterale 31 è attivo, dipendente dal percorso e operativamente impegnativo. Genera commissioni, cambia composizione, modifica il rischio man mano che i mercati si muovono e può richiedere azioni specifiche per ciascuna sede esattamente quando una posizione diventa stressata. Un mercato standard di token può spesso ridurre liquidazione e monitoraggio a un semplice trigger e percorso di scambio. Il collaterale 31 è diverso. Il sistema deve sapere quali posizioni sono attive, come il debito sta varcando, come apparirebbe il collaterale in caso di reale smobilizzo, come possono essere realizzate le commissioni, quale percorso specifico per sede si applica e se la liquidazione è ancora possibile dopo slippage, instradamento e costo di esecuzione. Questi dettagli sono ciò che separa la copertura teorica su carta dalla copertura che funziona ancora quando i mercati diventano difficili."
+          ]
+        },
+        {
+          "id": "cosa-fanno-gli-agenti",
+          "title": "Cosa fanno gli Avana Agenti Intelligenti",
+          "paragraphs": [
+            "Il runtime del nodo di Avana legge l'attività on-chain, mantiene una mappa aggiornata delle posizioni attive, aggiorna il debito in scadenza a intervalli brevi e esegue scansioni più ampie per catturare stati obsoleti o mancati. L'interfaccia utente dell'app, i dashboard, la logica di monitoraggio e i flussi di lavoro di liquidazione sono progettati per attingere dalla stessa panoramica operativa, anziché ciascun livello inventare la propria versione del mercato.",
+            "La liquidazione è dove questo importa di più. Quando una posizione Avana scende al di sotto della capacità di prestito consentita, il layer di esecuzione deve valutare se il lavoro può essere gestito in modo redditizio, reperire liquidità temporanea, rimborsare il debito nel layer di credito, incassare le commissioni, smobilizzare il collaterale attraverso il percorso di venue corretto, instradare gli asset risultanti, regolare il percorso flash, distribuire il premio di liquidazione e preservare il valore residuo del mutuatario quando rimane qualcosa. Questa è una catena di lavoro, non un singolo tipo di transazione."
+          ]
+        },
+        {
+          "id": "prima-e-attraverso-le-sedi",
+          "title": "Prima della liquidazione e tra le sedi",
+          "paragraphs": [
+            "Anche gli Smart Agent contano prima che avvenga la liquidazione. Indicizzare le posizioni Avana, monitorare la deriva del debito e mantenere il protocollo allineato con il proprio oracolo e le ipotesi di rischio migliora la prontezza. Il ritardo operativo non è gratuito quando il collaterale continua a muoversi con il mercato.",
+            "LP il collaterale è un problema di adattatore tanto quanto un problema di valutazione. LP fungibili, gamme concentrate e design di pool personalizzati necessitano di una gestione consapevole del mercato differente. Gli Smart Agents sono lo strato di Avana per rispettare queste differenze invece di imporre un percorso generico a tutti i mercati. L'oracolo dice a Avana quale potrebbe essere il valore di una posizione come credito. Lo strato agenti aiuta a determinare se quel valore può effettivamente essere recuperato nella pratica.",
+            "Avana non sostituisce la liquidazione senza permessi. I costruttori esterni possono comunque monitorare e agire. I runtime gestiti dal protocollo migliorano la copertura di base per il collaterale che è strutturalmente più difficile da gestire. In situazioni di stress questo conta molto. Il momento peggiore per scoprire che un mercato manca di una copertura di esecuzione affidabile è durante l'evento di liquidazione stesso."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "come-dovrebbe-funzionare-la-liquidazione-lp",
+      "title": "Come dovrebbe funzionare la liquidazione LP",
+      "date": "20 luglio 2026",
+      "description": "Come Avana liquida LP garanzie con smobilizzi controllati, intervento parziale, commissioni prima dove possibile e percorsi specifici per sede.",
+      "image": "/immagini/blog / lp-liquidazione-flusso di lavoro.png",
+      "category": "Sviluppatori",
+      "tag": "Protocollo",
+      "sections": [
+        {
+          "id": "non-una-vendita-di-token",
+          "title": "Non una semplice vendita di token",
+          "paragraphs": [
+            "Liquidare il collaterale LP su Avana non è lo stesso che liquidare un saldo di token. Il collaterale può contenere più asset, commissioni non incassate, esposizione concentrata su un intervallo e meccaniche di uscita specifiche per il mercato. Se una posizione diventa non sana, Avana ha bisogno di una chiusura controllata, non di una vendita panico che tratti il LP come un singolo gettone fungibile."
+          ]
+        },
+        {
+          "id": "sequenza-di-esecuzione",
+          "title": "La sequenza di esecuzione",
+          "paragraphs": [
+            "In pratica, la liquidazione è una sequenza di runtime. I conti non sani vengono rilevati utilizzando i valori di garanzia aggiustati per il rischio di Avana piuttosto che lo stato spot grezzo di AMM. La liquidità per l'esecuzione viene reperita, spesso tramite un percorso in stile flashloan. Il debito viene rimborsato nel livello di credito. La posizione passa alla custodia controllata. Le commissioni riscattabili vengono realizzate dove ciò è utile. Il LP viene smantellato tramite il percorso corretto del luogo. Dopo che gli asset sottostanti sono stati recuperati, vengono indirizzati verso l'asset di debito, la liquidità per l'esecuzione viene rimborsata, il premio di liquidazione distribuito e qualsiasi valore residuo del mutuatario restituito.",
+            "Famiglie LP differenti su Avana non condividono un unico percorso di uscita. Le LP fungibili vengono rimosse dal pool e suddivise negli asset sottostanti. Le gamme concentrate devono essere gestite secondo il loro inventario reale al momento dello unwind, che può apparire molto diverso da ciò che gli utenti presumono se il prezzo ha spinto la posizione da una parte. I pool personalizzati o basati su hook potrebbero necessitare di adattatori dedicati prima che Avana li consideri abbastanza sicuri per la copertura in caso di liquidazione. Se Avana non può eseguire correttamente l'unwind di un tipo di collateral, non dovrebbe fingere che il mercato sia completamente supportato."
+          ]
+        },
+        {
+          "id": "parziale-e-tasse",
+          "title": "Tagli parziali e commissioni prima",
+          "paragraphs": [
+            "Avana mira a ripristinare la salute del target piuttosto che ricorrere alla liquidazione totale. La liquidazione parziale è preferita perché riduce le perdite inutili per il mutuatario e limita le interruzioni del pool sottostante. Il framework calcola il debito necessario per riportare il prestito su basi più sicure e prende di mira quella somma per prima. La liquidazione completa rimane l'opzione di riserva quando la solvibilità non può essere recuperata con un taglio minore.",
+            "Anche le commissioni contano. Le posizioni LP spesso contengono un valore reclamabile che non è ancora stato realizzato. Se le commissioni possono ridurre quanto capitale deve essere smobilizzato, Avana dovrebbe usarle prima di intervenire più profondamente sulla posizione. Questo migliora i risultati per il mutuatario e rende la liquidazione più precisa. Le posizioni LP sono oggetti finanziari attivi, non saldi di token passivi, e il processo di Avana è scritto per rispecchiare questo."
+          ]
+        },
+        {
+          "id": "chi-lo-gestisce",
+          "title": "Chi gestisce la liquidazione",
+          "paragraphs": [
+            "I runtime di liquidazione specializzati fanno la differenza qui. I nodi costruiti per la liquidazione Avana LP monitorano le posizioni attive, aggiornano la deriva del debito, indicizzano lo stato del mercato, simulano percorsi di chiusura, ricercano liquidità di esecuzione, instradano gli asset e chiudono le transazioni in modo atomico. La liquidazione rimane senza permessi, ma il collaterale LP è più difficile da gestire per i liquidatori puramente generici perché il workflow è più lungo e più specifico per il luogo. I liquidatori devono anche considerare lo slittamento, la profondità del routing, il costo del flashloan e l’esposizione al MEV. Le chiusure grandi o insolite potrebbero richiedere percorsi di esecuzione più discreti affinché un lavoro recuperabile non si trasformi in uno distruttivo."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "problema-oracolo-collaterale-prezzatura",
+      "title": "Prezzi LP Collaterale con Oracoli Migliori",
+      "date": "17 luglio 2026",
+      "description": "Come Avana Oracle valuta LP garanzie utilizzando il valore recuperabile, la ricostruzione deterministica e i tagli di recupero conservativi.",
+      "image": "/immagini/blog / lp-collateral-oracle-problema.png",
+      "category": "Sviluppatori",
+      "tag": "Protocollo",
+      "sections": [
+        {
+          "id": "cosa-chiede-oracolo-avana",
+          "title": "Cosa sta chiedendo l'Avana Oracle",
+          "paragraphs": [
+            "Il valore di un LP dipende dai prezzi dei sottostanti, dalla struttura del pool, dalla suddivisione attuale dell'inventario, dalle commissioni maturate e, per la liquidità concentrata, dalla relazione tra il prezzo corrente e l'intervallo attivo. Per un sistema di prestito, la questione importante non è solo ciò che potrebbe indicare un'indicazione sul cruscotto. È ciò che può realisticamente essere recuperato se la posizione deve coprire un prestito. Se Avana presta assumendo il caso migliore, sta finanziando l'inflazione del collaterale. L'Oracle di Avana è costruito attorno al valore recuperabile, non al valore patrimoniale netto ottimistico."
+          ]
+        },
+        {
+          "id": "pipeline a tre fasi",
+          "title": "Come viene costruita la valutazione",
+          "paragraphs": [
+            "L'oracolo è un motore di valutazione del collaterale a più livelli. Innanzitutto, Avana valuta gli asset sottostanti basandosi su riferimenti esterni robusti piuttosto che fare affidamento sullo stato spot grezzo di AMM. In secondo luogo, ricostruisce la posizione LP in maniera deterministica: ricostruzione del bilancio del pool per LP fungibili, o decomposizione diretta delle posizioni concentrate per intervallo, liquidità e prezzo attuale. In terzo luogo, sconta quel valore ricostruito con haircut di recupero che riflettono lo slippage della liquidazione, l'attrito dello smobilizzo e il rischio di perdita impermanente. La perdita impermanente è la differenza di valore tra detenere asset in un pool e detenerli separatamente. Cresce quando gli asset accoppiati divergono nel prezzo. Il potere di prestito su Avana deriva dal valore scontato, non dalla valutazione più favorevole."
+          ]
+        },
+        {
+          "id": "perché-i-semplici-segni-falliscono",
+          "title": "Perché i marchi semplici falliscono",
+          "paragraphs": [
+            "LP Il collaterale è uno dei luoghi più facili in cui un sistema di prestito può ingannare se stesso. AMM Lo stato del pool può sembrare sano pur essendo localmente distorto. Una posizione concentrata può sembrare forte pur trovandosi in un mix di inventario più rischioso di quanto gli utenti pensino. Profondità ridotta, stessa manipolazione delle transazioni e input obsoleti possono tutti produrre numeri che sembrano precisi senza essere affidabili. Avana separa il valore apparente dal valore affidabile del collaterale combinando la valutazione esterna degli asset, la LP ricostruzione deterministica e le salvaguardie a livello di protocollo.",
+            "L'interfaccia dell'oracolo può anche distinguere il valore principale ricostruito, il valore delle commissioni e il valore riservato utilizzato per i buffer di rischio del protocollo. Questi componenti non meritano lo stesso trattamento all'interno di un mercato di prestiti. Standardizzandoli tra LP tipi, il livello spoke può ragionare in modo coerente su LP fungibili, LP basati su NFT e posizioni multi-asset, pur rispettando come diversi mercati espongono lo stato."
+          ]
+        },
+        {
+          "id": "controlli e salvaguardie",
+          "title": "Controlli e salvaguardie",
+          "paragraphs": [
+            "Famiglie diverse AMM necessitano di percorsi di verifica differenti. Curve stable LPs, Uniswap coppie e NFT, Balancer pool ponderate e Aerodrome coppie espongono tutte lo stato del collaterale in modo diverso. Su Avana, i prezzi esterni rimangono l'ancora principale. I dati specifici del pool e i controlli ponderati nel tempo aiutano a verificare se lo stato del collaterale ricostruito è coerente e più difficile da manipolare. Questi controlli ponderati nel tempo non sono il prezzo principale su cui Avana si basa per i prestiti. Sono un controllo di coerenza extra in modo che Avana possa determinare se lo stato del collaterale è ancora allineato prima che tale stato venga trattato come credito.",
+            "La resistenza alla manipolazione su Avana include soglie di deviazione, vincoli sulla differenza di prezzo del pool, haircut di recupero, limiti di interessi aperti e un sentinella dell'oracolo che reagisce quando la salute del feed degrada o gli input di verifica smettono di concordare. LP il collaterale è insolitamente esposto allo stesso abuso di transazioni, distorsioni del mercato sottile e segnali obsoleti o contraddittori perché il collaterale è strutturalmente più complesso di un semplice bilancio di token. Un protocollo che supporta il credito LP deve presumere che la superficie dei prezzi sarà alla fine testata. L'oracolo Avana è scritto assumendo questo presupposto."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "approfondimento-sulla-sicurezza",
+      "title": "Come Avana gestisce il rischio collaterale LP",
+      "date": "15 luglio 2026",
+      "description": "Come Avana struttura la sicurezza a strati per LP garanzie, dall'architettura e dagli oracoli fino alla salute, liquidazione e operazioni.",
+      "image": "/images/blog/immersione-profonda-nella-sicurezza.png",
+      "category": "Sviluppatori",
+      "tag": "Protocollo",
+      "sections": [
+        {
+          "id": "più-di-un-prezzo",
+          "title": "Più di un prezzo e un LTV",
+          "paragraphs": [
+            "Un token semplice può di solito essere valutato con un riferimento diretto di mercato e liquidato con una logica standard. Una posizione LP non può. Il suo valore dipende dagli asset sottostanti, dalla struttura del pool, dalla relazione tra quegli asset, dall'accumulo di commissioni, dalla profondità della liquidità e, per la liquidità concentrata, dall'intervallo attivo. Sotto stress, queste variabili si compongono. Un protocollo che supporta il prestito garantito da LP su Aave v4 deve fare più che assegnare un prezzo e impostare un rapporto prestito/valore. Questo è il problema attorno al quale è costruito Avana."
+          ]
+        },
+        {
+          "id": "architettura-e-oracoli",
+          "title": "Architettura e valutazione",
+          "paragraphs": [
+            "Il primo strato di sicurezza è architetturale. Avana utilizza la struttura a hub e raggi di Aave v4. L'hub contiene il livello di liquidità comune, gestisce la contabilità delle riserve e applica i vincoli di solvibilità. Il raggio è dove vive la logica specifica del collaterale di LP: ammissione, regole di valutazione, parametri di rischio specifici del pool e comportamento di liquidazione. Se un mercato di LP diventa stressato, quello stress è destinato a rimanere contenuto nel raggio piuttosto che riscrivere le assunzioni su tipi di collaterale non correlati. Su Avana, il raggio fa parte del confine di sicurezza.",
+            "Il secondo strato è la progettazione dell'oracolo e della valutazione. LP le posizioni non possono essere valutate in modo sicuro con un unico feed piatto. Avana utilizza un framework a doppia fonte. I feed di prezzo esterni forniscono il riferimento principale per i sottostanti, mentre la determinazione dei prezzi derivata da AMM agisce come verifica indipendente. Il potere di prestito esiste solo quando entrambe le fonti restano coerenti entro la tolleranza. Il rischio viene assegnato a livello di mercato. La struttura del pool, la correlazione degli asset, la profondità della liquidità e la concentrazione del range influenzano tutti il trattamento del collaterale. Il potere di prestito è ancorato agli aspetti più deboli della posizione, con aggiustamenti a livello di pool per volatilità, qualità della liquidità e assunzioni di stress."
+          ]
+        },
+        {
+          "id": "salute-e-liquidazione",
+          "title": "Salute e liquidazione",
+          "paragraphs": [
+            "Il terzo livello è il monitoraggio della salute. LP le posizioni rimangono attive dopo essere state postate come garanzia, quindi il rischio non si blocca una volta aperto un prestito. Il valore varia con i movimenti dei prezzi, la generazione di commissioni, la migrazione dell'intervallo e le variazioni nella qualità del pool. Avana esegue una valutazione continua della salute per posizione piuttosto che fare affidamento su istantanee occasionali. Il fattore di salute è il segnale in tempo reale che indica se il modello di garanzia è ancora valido per quel prestito.",
+            "La liquidazione è il momento in cui le ipotesi vengono messe alla prova. LP il collaterale non può essere liquidato come un token normale. L'approccio di Avana è raccogliere le commissioni incorporate nella posizione prima di distruggere il capitale, ove possibile, rimuovere solo la liquidità necessaria per riparare il prestito e instradare lo scioglimento attraverso percorsi di esecuzione che favoriscono la liquidazione deterministica. Gli Agenti Intelligenti forniscono l'infrastruttura di esecuzione: monitorare le posizioni, riconciliare i dati, simulare l'esecuzione e sciogliere in condizioni avverse. Essi fanno parte del sistema di sicurezza di Avana, non sono un ripensamento aggiunto successivamente."
+          ]
+        },
+        {
+          "id": "operazioni",
+          "title": "Operazioni e controllo dei cambiamenti",
+          "paragraphs": [
+            "Il livello operativo presume che la governance e la configurazione del rischio richiedano la stessa disciplina del trattamento delle garanzie. I parametri di rischio cambiano attraverso un processo strutturato. Le modifiche sensibili sono soggette a timelock e revisione. Esistono controlli di emergenza per condizioni veramente avverse. Il monitoraggio si estende oltre le singole posizioni a intere categorie di mercato. Un protocollo che supporta LP garanzie non può fare affidamento solo su una configurazione statica.",
+            "LP il collaterale è valido su Avana solo se la sicurezza è trattata come un sistema. L'architettura isola il rischio. Gli oracoli convalidano la realtà. La valutazione trasforma la complessità in potere di prestito conservativo. I controlli sanitari monitorano la deriva. La liquidazione ripristina la solvibilità con quanta precisione il luogo consente. I controlli operativi governano come il quadro si evolve. Nessuno di questi livelli è sufficiente da solo."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "posizione-hedge-lp",
+      "title": "Come coprire una posizione LP in modo più riflessivo",
+      "date": "13 luglio 2026",
+      "description": "Come LP può usare Avana per finanziare buffer, compensazioni direzionali e abitudini di copertura più disciplinate senza uscire completamente dal pool.",
+      "image": "/images/blog/posizione-hedge-lp.png",
+      "category": "Per LPs",
+      "tag": "Guide",
+      "sections": [
+        {
+          "id": "più-che-tasse",
+          "title": "Più delle tasse",
+          "paragraphs": [
+            "Una posizione LP non riguarda mai solo le commissioni. Divergenza di prezzo, perdita temporanea, deriva di intervallo e pressione sul collaterale possono colpire lo stesso libro contemporaneamente. La perdita temporanea è ciò che accade quando la combinazione di asset del pool cambia e la LP finisce per valere meno rispetto al possesso separato dei token. Una volta che una posizione supportata può sostenere il prestito tramite Avana su Aave v4, il capitale preso in prestito può finanziare la protezione invece della sola leva. Una posizione che altrimenti dovrebbe essere completamente ritirata può rimanere attiva mentre il capitale preso in prestito viene utilizzato per ridurre lo stress o bilanciare l'esposizione."
+          ]
+        },
+        {
+          "id": "buffer-e-offset",
+          "title": "Buffer e offset direzionali",
+          "paragraphs": [
+            "La copertura più semplice è spesso la più pratica: un buffer in stablecoin. Prendi in prestito in modo conservativo su Avana e conserva parte dei proventi in stablecoin. Se la salute comincia a comprimersi o la volatilità aumenta, quella liquidità può rimborsare il debito o ridurre lo stress senza obbligare a una vendita reattiva dei LP. Non si tratta principalmente di aumentare il rendimento. Si tratta di guadagnare tempo e mantenere il controllo, che di per sé può avere molta importanza.",
+            "Una seconda forma è l'offset direzionale. Se il LP già comporta un'esposizione chiara a un attivo volatile, il capitale preso in prestito può ridurre il rischio direzionale netto invece di aumentarlo. I metodi variano in base alla competenza dell'utente, ma il principio è semplice. Se il LP già incorpora esposizione di mercato, il prestito può bilanciare tale esposizione. La copertura funziona meglio come riduzione del rischio, non come una seconda operazione speculativa accanto alla prima."
+          ]
+        },
+        {
+          "id": "opzioni-più-avanzate",
+          "title": "Neutralità e barriere più morbide",
+          "paragraphs": [
+            "Un approccio più avanzato è pensare in termini di neutralità: ridurre la sensibilità direzionale e fare affidamento sui ricavi da commissioni. Questo tipo di struttura può essere più stabile, ma richiede monitoraggio attivo e riequilibrio. LP Le posizioni evolvono man mano che i mercati si muovono, quindi una configurazione neutrale deve essere mantenuta, non dichiarata una sola volta. Per posizioni più grandi, strutture protettive al ribasso possono definire scenari peggiori invece di reagire solo ad essi, anche se introducono costi propri e decisioni temporali.",
+            "Una copertura più morbida che viene spesso trascurata consiste nel riassegnare l'esposizione marginale piuttosto che toccare il nucleo LP. In pratica, ciò significa spostare capitale incrementale verso pool più difensivi o investimenti stabili quando le condizioni peggiorano, senza smobilizzare completamente la posizione originale. Avana aiuta mantenendo il nucleo LP disponibile come garanzia, così ogni esigenza di liquidità non diventa un'uscita totale o nulla."
+          ]
+        },
+        {
+          "id": "regole pratiche",
+          "title": "Regole pratiche che viaggiano bene",
+          "paragraphs": [
+            "Attraverso gli approcci, alcune abitudini si mantengono bene su Avana. Prendere in prestito con moderazione. Mantenere un vero margine di sicurezza. Presumere che le condizioni possano peggiorare più rapidamente del previsto. Trattare la capacità massima di indebitamento come un confine piuttosto che come un obiettivo. Utilizzare il monitoraggio con regole di riduzione del rischio predefinite invece di fare affidamento su reazioni manuali costanti. Se una strategia di copertura diventa così complicata da non capire più cosa viene coperto e cosa viene aggiunto, ha superato il limite."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "manuale-di-gioco-a-ciclo-di-rendimento",
+      "title": "Looping dei Rendimenti con LP Collaterale",
+      "date": "10 luglio 2026",
+      "description": "Come pensare al yield looping con Avana LP come collateral, inclusi buffer, stress test, disciplina d'uscita e leva sostenibile.",
+      "image": "/ immagini / blog / yield-looping-playbook.png",
+      "category": "Per LPs",
+      "tag": "Guide",
+      "sections": [
+        {
+          "id": "cosa-significa-looping",
+          "title": "Cosa significa looping su Avana",
+          "paragraphs": [
+            "Il yield looping significa mantenere una posizione LP, prendere in prestito contro di essa e reinvestire il capitale preso in prestito in un'altra strategia di generazione di rendimento, o in alcuni casi di nuovo nella liquidità stessa. Avana su Aave v4 rende possibile quel passaggio di garanzia per i mercati LP supportati. L'attrattiva è ovvia: il looping può aumentare l'esposizione effettiva e amplificare la generazione di commissioni. Il pericolo è altrettanto evidente: può comprimere i margini di sicurezza, aumentare la sensibilità alla liquidazione e rendere una posizione molto più fragile quando le condizioni cambiano. L'obiettivo reale dovrebbe essere un'amplificazione sostenibile, non la leva massima al primo giorno."
+          ]
+        },
+        {
+          "id": "mantenere-modesto-il-primo-ciclo",
+          "title": "Mantenere il primo ciclo modesto",
+          "paragraphs": [
+            "La forma più sicura di looping è modesta. Prendi in prestito una quantità relativamente piccola contro una posizione supportata Avana LP e reinvestila in una seconda fonte di rendimento senza avvicinarti al limite di prestito. Questa è un'estensione controllata della posizione originale, non una scommessa ricorsiva che le condizioni rimangano perfette. Per molti utenti, specialmente all'inizio, questo è il punto di partenza giusto. Ottieni comunque un uso migliore del capitale, ma lasci spazio se il segno LP, il reddito da commissioni o il tasso di prestito dovessero muoversi contro di te.",
+            "Le versioni più avanzate reimpiegano il capitale preso in prestito nella liquidità. Questo può aumentare la generazione di commissioni in ambienti favorevoli, ma rende anche la struttura più riflessiva. Si diventa esposti a un libro stratificato in cui il movimento dei prezzi, la qualità del collaterale e la sicurezza del debito interagiscono in modo più aggressivo. La leva finanziaria non amplifica solo i rendimenti. Amplifica anche la velocità con cui una posizione sana Avana può diventare stressata."
+          ]
+        },
+        {
+          "id": "stress-e-uscita",
+          "title": "Test di stress e disciplina di uscita",
+          "paragraphs": [
+            "Il test di stress è essenziale. Qualsiasi approccio di looping serio dovrebbe essere valutato in condizioni avverse. Cosa succede se un lato della coppia si muove bruscamente, se il volume di trading diminuisce, se i costi di prestito aumentano o se la qualità del collaterale peggiora più rapidamente del previsto. Una struttura che sembra attraente quando le commissioni sono alte e la volatilità è calma può sembrare scomoda una volta che queste condizioni si invertono. Se l'unico scenario favorevole è un mese di commissioni tranquille, il ragionamento non è completo.",
+            "La disciplina in uscita conta tanto quanto quella in ingresso. Molte decisioni di leva finanziaria sbagliate non nascono dal primo prestito. Nascono dalla mancanza di un piano per ridurre il rischio. Se la volatilità aumenta, le riserve di salute si comprimono o l'economia si indebolisce, l'esposizione dovrebbe essere ridotta a fasi piuttosto che difesa ciecamente. Avana L'automazione può aiutare nella raccolta delle commissioni, nella riduzione del debito e nella riduzione del rischio basata su regole, ma l'automazione aiuta solo se le regole sottostanti sono corrette. Una strategia in loop è forte solo quanto le assunzioni su cui si basa."
+          ]
+        },
+        {
+          "id": "bilancio-non-magico",
+          "title": "Progettazione del bilancio, non rendimento gratuito",
+          "paragraphs": [
+            "Il looping del rendimento è una decisione di struttura del capitale, non una scorciatoia per ottenere rendimento gratuito. Usato con attenzione su Avana, permette alla liquidità produttiva onchain di supportare un insieme più ampio di rendimenti senza costringere la posizione originale a essere completamente smobilizzata. Usato senza cura, trasforma una posizione sana LP in una fragile. La differenza di solito è la disciplina, la gestione dei buffer e la volontà di trattare la leva come qualcosa da controllare piuttosto che da massimizzare."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rilascio-token-lp",
+      "title": "Cosa rende possibile il LP collaterale",
+      "date": "8 luglio 2026",
+      "description": "Ciò che Avana LP collateral rende possibile in termini di prestito, copertura, flessibilità di tesoreria e utilizzo più efficiente del capitale della liquidità produttiva.",
+      "image": "/images/blog/sblocco-token-lp.png",
+      "category": "Per LPs",
+      "tag": "Guide",
+      "sections": [
+        {
+          "id": "da intrappolato a utilizzabile",
+          "title": "Da capitale intrappolato a capitale utilizzabile",
+          "paragraphs": [
+            "LP le posizioni sono state tradizionalmente produttive ma inflessibili. Guadagnano commissioni di trading e supportano la profondità del mercato, ma se vuoi liquidità da quella posizione, il percorso usuale è smantellarla: scomporre la posizione, interrompere la generazione di commissioni e trasformare un asset produttivo in saldi inattivi. LP collateral cambia questo. Tramite Avana su Aave v4, le posizioni supportate LP possono rimanere attive nel sottostante AMM mentre supportano anche il prestito."
+          ]
+        },
+        {
+          "id": "uso-semplice-e-di-reddito",
+          "title": "Percorsi di liquidità conservativa e secondo rendimento",
+          "paragraphs": [
+            "Il caso d'uso più conservativo è semplice. Prendi in prestito asset stabili contro una posizione supportata Avana LP e utilizzi quella liquidità per capitale circolante, gestione delle riserve o rendimento a minore volatilità mentre la LP resta attiva e continua a guadagnare commissioni. Il valore principale qui non è la leva finanziaria di per sé. È l'accesso al denaro contante senza dover uscire completamente dalla posizione originale.",
+            "Gli stabili presi in prestito possono anche entrare in rendimenti onchain conservativi, come il prestito orientato agli stablecoin, la gestione delle riserve o altre opportunità a bassa volatilità. Il LP continua a generare commissioni mentre il capitale preso in prestito segue un percorso separato. Questo non è l'accumulo di rendimento dal nulla. È un uso più efficiente del capitale che altrimenti richiederebbe di smobilizzare prima la posizione."
+          ]
+        },
+        {
+          "id": "copertura e attivo",
+          "title": "Copertura e strategie più attive",
+          "paragraphs": [
+            "La copertura è un'altra categoria. LP posizioni espongono gli utenti a cambiamenti nella composizione degli asset e a perdite temporanee, specialmente in pool dove un lato è più volatile. Il credito contro il collaterale LP su Avana può creare margine per gestire quella esposizione: ridurre la concentrazione direzionale, migliorare la pianificazione della liquidità o costruire un portafoglio più equilibrato attorno a una posizione esistente.",
+            "Strategie più attive rilanciano il capitale preso in prestito nella liquidità, aumentando l'esposizione al mercato e la generazione di commissioni. Questo può funzionare, ma ora si sta gestendo una struttura ricorsiva il cui rischio cambia rapidamente con le condizioni di mercato. Una volta che gli asset presi in prestito vengono riciclati in un'ulteriore esposizione LP, la disciplina diventa più importante dell'ambizione. Avana apre il set di opzioni. Salute, limiti di prestito e regole di liquidazione decidono comunque cosa è sensato per un dato pool."
+          ]
+        },
+        {
+          "id": "quali-cambiamenti",
+          "title": "Cosa cambia per LPs",
+          "paragraphs": [
+            "LP il collaterale trasforma la fornitura di liquidità da un'attività di rendimento relativamente isolata in qualcosa di più connesso all'uso più ampio del capitale DeFi. Una posizione che prima era produttiva solo all'interno del proprio pool può supportare prestiti, pianificazione della liquidità e progettazione del portafoglio senza essere prima smantellata. Il corretto utilizzo dipende ancora dalla tua tolleranza al rischio e dalla tua comprensione di come il valore LP, la capacità di prestito e le soglie di liquidazione interagiscano su Avana."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "aerodromo-lp-collaterale-aave-v4",
+      "title": "Prendere in prestito contro Aerodrome LP su Aave v4",
+      "date": "6 luglio 2026",
+      "description": "Come Avana supporta Aerodrome LP posizioni su Base in modo che possano rimanere attive mentre supportano il prestito attraverso un apposito raggio Aave v4.",
+      "image": "/immagini/blog / aerodrome-lp-collateral.png",
+      "category": "Sviluppatori",
+      "tag": "Protocollo",
+      "sections": [
+        {
+          "id": "aeroporto-su-avana",
+          "title": "Aerodrome liquidità su Avana",
+          "paragraphs": [
+            "Aerodrome LP posizioni si trovano al centro dell'attività onchain su Base, dove la liquidità supporta le commissioni di trading, la distribuzione dei token e la profondità dell'ecosistema. Come collaterale, queste posizioni necessitano di una valutazione basata sulla struttura del pool, sulla qualità dell'asset, sulla profondità della liquidità e sul comportamento sotto stress, non solo in base al TVL o alla generazione di commissioni. Avana è costruito per supportare questo tipo di collaterale su Aave v4 con regole specifiche di mercato piuttosto che con un approccio uniforme a livello di piattaforma."
+          ]
+        },
+        {
+          "id": "qualità a mozzo-raggio-e-pool",
+          "title": "Hub, spoke e qualità del pool",
+          "paragraphs": [
+            "L'architettura a hub e raggi di Aave v4 è ciò che fa funzionare la forma del prodotto. L'hub gestisce la liquidità condivisa. Il raggio Avana gestisce la logica specifica del collaterale Aerodrome. Un pool stabile su Base non dovrebbe essere trattato allo stesso modo di una coppia di ecosistema volatile solo perché entrambi sono Aerodrome LP. Il raggio definisce come vengono valutate le diverse categorie di liquidità Aerodrome, quanto supportano in termini di potere d'indebitamento e come funziona la liquidazione se una posizione diventa insicura.",
+            "I pool Aerodrome variano ampiamente. Alcuni coinvolgono asset consolidati con liquidità più forte. Altri si concentrano su token dell'ecosistema a movimento più rapido con maggiore volatilità e minor profondità. Le posizioni che sembrano simili in superficie possono comportarsi in modo molto diverso come garanzia. Il modello a raggi di Avana assegna il trattamento in base alla struttura e alla qualità del pool, non solo al nome del luogo."
+          ]
+        },
+        {
+          "id": "valutazione-e-prestitare",
+          "title": "Valutazione e flusso di prestito",
+          "paragraphs": [
+            "Un Aerodrome LP non è un singolo gettone di prezzo. È un diritto sugli asset sottostanti del pool, la cui composizione e qualità contano direttamente. Avana valuta il valore del collaterale in modo conservativo, tenendo conto della qualità della liquidità, della volatilità, della correlazione degli asset e di come si comporta il pool se il mercato cambia. Una posizione può avere un valore nominale sostanziale, ma la capacità di prendere in prestito riflette ciò che può essere recuperato in condizioni di stress.",
+            "Il flusso di prestito è concreto. Fornisci un Aerodrome LP supportato attraverso il mozzo Avana, dove rimane attivo e genera commissioni. Il mozzo valuta la posizione utilizzando la logica del collaterale specifica del pool. Basandosi su questo, puoi prendere in prestito asset supportati dalla liquidità del hub. I pool stabili e in stile blue chip possono supportare un trattamento del collaterale più forte. Le coppie volatili o più sottili ottengono limiti più stretti e fattori inferiori."
+          ]
+        },
+        {
+          "id": "se-interruzioni-di-salute",
+          "title": "If health breaks",
+          "paragraphs": [
+            "Se una posizione diventa pericolosa, Avana liquida la posizione di liquidità attiva, tiene conto dei sottostanti e ripristina la solvibilità con il minimo disturbo che il mercato consente. La struttura del pool determina come funziona la liquidazione. Questo è un altro motivo per cui il collaterale Aerodrome appartiene a un ramo dedicato piuttosto che come estensione libera di un mercato di prestiti più ampio."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "curve-lp-collaterale-aave-v4",
+      "title": "Prendere in prestito contro Curve LP su Aave v4",
+      "date": "3 luglio 2026",
+      "description": "Come Avana tratta Curve LP garanzie per pool stabili e correlati tramite un apposito Aave v4 collegamento.",
+      "image": "/immagini/blog / curve-lp-collateral.png",
+      "category": "Sviluppatori",
+      "tag": "Protocollo",
+      "sections": [
+        {
+          "id": "perché-la-curva-è-importante",
+          "title": "Perché Curve conta su Avana",
+          "paragraphs": [
+            "Curve LP le posizioni spesso si trovano al centro dei mercati di stablecoin e del trading di asset correlati, in alcuni dei pool più profondi e a minore slittamento onchain. Questo le rende attraenti come garanzia, ma il loro comportamento strutturale necessita ancora di una gestione specializzata all'interno di un sistema di prestito. Avana supporta Curve LP come garanzia su Aave v4 attraverso un collegamento dedicato con il proprio trattamento della garanzia, vincoli di prestito e regole di liquidazione modellate sulla struttura di mercato di Curve."
+          ]
+        },
+        {
+          "id": "stabile-non-è-senza-rischio",
+          "title": "Un aspetto stabile non è senza rischio",
+          "paragraphs": [
+            "Curve i pool sono costruiti attorno ad asset che si scambiano con relazioni più strette rispetto alle coppie volatili standard. I pool di stablecoin, i pool di staking liquido e i pool di asset correlati possono produrre profili di liquidità più profondi e stabili. Le relazioni stabili possono comunque rompersi, le correlazioni possono indebolirsi e i pool che sembrano conservativi possono comportarsi male sotto stress. Il framework di collateral di Avana deve tener conto sia della forza relativa del design del pool di Curve sia della possibilità che lo stress si manifesti esattamente dove gli utenti si aspettano stabilità.",
+            "Una posizione Curve LP è una rivendicazione su un pool di sottostanti, non un semplice token con un prezzo fisso. Avana determina quali asset si trovano sotto la posizione, quanto valgono e quanto di quel valore dovrebbe contare ai fini del potere di prestito. Quest'ultimo passaggio è cruciale. Il valore del collaterale in un quadro di prestito conservativo dà reale peso alla composizione del pool, alla correlazione degli asset, alla qualità della liquidità e a come si comporterebbe la posizione in uno stato di stress."
+          ]
+        },
+        {
+          "id": "utenti-e-flusso",
+          "title": "Chi lo usa e come funziona il prestito",
+          "paragraphs": [
+            "Molte Curve posizioni sono già utilizzate da partecipanti sofisticati DeFi come esposizione principale alla liquidità. I pool di stablecoin, le coppie di staking liquide e i mercati di asset correlati rappresentano grandi quantità di capitale economicamente importante. Se queste posizioni possono supportare il prestito senza richiedere il prelievo, ciò amplia l'utilità di alcune delle liquidità più fondamentali in DeFi lasciandola nel pool.",
+            "Il flusso di prestito su Avana consiste nel fornire un Curve LP supportato attraverso il raggi, dove rimane attivo e guadagna commissioni. Il raggi valuta la posizione e puoi prendere in prestito asset supportati dalla liquidità del hub. Le pool di stablecoin possono supportare una forma di trattamento del collaterale, le pool di asset correlati un'altra, e le pool con liquidità più debole o relazioni più fragili ricevono vincoli più rigidi."
+          ]
+        },
+        {
+          "id": "liquidazione",
+          "title": "La liquidazione segue la piscina",
+          "paragraphs": [
+            "Se un Curve LP diventa insicuro, Avana scompone solo ciò che è necessario per ripristinare la solvibilità dove possibile, rispetta la struttura sottostante del pool e minimizza le interruzioni durante il rimborso del debito. Diversi tipi di pool richiedono assunzioni diverse. Questo è il punto del modello a raggi, ed è così che Avana può scalare Curve famiglia per famiglia senza una regola generica LP per ogni AMM."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "bilanciatore-lp-collateral-aave-v4",
+      "title": "Balancer LP Garanzia su Aave v4",
+      "date": "1 luglio 2026",
+      "description": "Come Avana supporta Balancer pool ponderati LP come garanzia su Aave v4 mentre l'esposizione rimane attiva.",
+      "image": "/immagini/blog / balancer-lp-collateral.png",
+      "category": "Sviluppatori",
+      "tag": "Protocollo",
+      "sections": [
+        {
+          "id": "lp in stile portfolio",
+          "title": "Garanzia in stile portafoglio LP",
+          "paragraphs": [
+            "Una posizione Balancer LP è spesso un portafoglio strutturato all'interno di un AMM, con pesi personalizzati, esposizione diversificata e liquidità che si comporta in modo diverso dai pool standard a due asset. Questo rende le Balancer LP interessanti come collateral, e anche più difficili da supportare in un sistema di prestito costruito per asset più semplici. Avana gestisce questo tramite un canale dedicato su Aave v4."
+          ]
+        },
+        {
+          "id": "varietà ponderata",
+          "title": "Perché le pool ponderate hanno bisogno di regole di mercato",
+          "paragraphs": [
+            "Balancer i pool sono intrinsecamente vari. Un pool con stile stabile non si comporta come un pool ponderato 80/20. Un paniere di asset correlati non si comporta come una composizione di stile indice più ampia. Anche i pool con valore totale simile possono avere rischi materiali molto diversi come collateral, a seconda della profondità di liquidità, della concentrazione degli asset, della volatilità e della relazione tra gli strumenti sottostanti. Il Avana raggio definisce come viene valutato ciascun pool ponderato, come è vincolata la capacità di prendere in prestito e come funziona la liquidazione.",
+            "Da una prospettiva collaterale, un Balancer LP rappresenta un portafoglio piuttosto che una semplice coppia di attività. Il suo valore dipende dai sottostanti, dai loro pesi relativi, dalla quotazione di mercato e dalla struttura del pool. Avana deve capire cosa si trova al di sotto, come quella composizione si comporta sotto stress e quale parte del valore si traduce in potere di prestito sicuro."
+          ]
+        },
+        {
+          "id": "prendere-in-prestito-e-rilassarsi",
+          "title": "Prestito e rilassarsi",
+          "paragraphs": [
+            "Molte Balancer pool esprimono opinioni deliberate sul portafoglio: coppie di token di governance, allocazioni di indici ponderati, basket stabili e correlati. Se queste posizioni diventano collaterale prendibile in prestito su Avana, gli utenti non devono scegliere tra mantenere un'esposizione di mercato strutturata e accedere alla liquidità. La stessa posizione della pool rimane attiva, genera commissioni e supporta il prestito tramite Aave v4.",
+            "Il flusso consiste nel fornire un Balancer LP supportato attraverso il raggio Avana, dove la posizione rimane attiva e guadagna commissioni. Il raggio lo valuta utilizzando una logica di collateral specifica per il mercato. Tipi di pool più sicuri supportano trattamenti più forti. Strutture concentrate o volatili ricevono ipotesi più conservative. La struttura del mercato guida il trattamento del prestito, non solo il branding del luogo.",
+            "Se una posizione diventa pericolosa, Avana non può assumere che liquidare una Balancer LP sia simile a liquidare una posizione più semplice con due asset. Deve tenere conto della struttura effettiva del pool, degli underlyings e del percorso di esecuzione necessario per ripristinare la solvibilità con la minima interruzione. Il collaterale determina come appare una liquidazione sicura."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "architettura-dei-smart-contract",
+      "title": "Prendere in prestito contro Uniswap LP su Aave v4",
+      "date": "28 giugno 2026",
+      "description": "Come Avana trasforma Uniswap LP posizioni in Aave v4 collaterale mentre rimangono nel pool e continuano a guadagnare commissioni.",
+      "image": "/immagini/blog / uniswap-lp-collateral.png",
+      "category": "Sviluppatori",
+      "tag": "Protocollo",
+      "sections": [
+        {
+          "id": "uniswap-su-avana",
+          "title": "Uniswap liquidità su Avana",
+          "paragraphs": [
+            "Uniswap LP posizioni forniscono profondità di mercato, facilitano il trading e generano commissioni, ma tradizionalmente sono state difficili da usare all'interno dei sistemi di prestito senza prima essere ritirate o ristrutturate. Avana è progettato per cambiare questo su Aave v4. L'hub gestisce la liquidità condivisa. Lo spoke Avana è un mercato dedicato al prestito supportato da LP, inclusa la Uniswap liquidità concentrata. Lo spoke definisce come viene valutato il collaterale, come viene assegnata la potenza di prestito e come viene gestito il rischio a livello di posizione."
+          ]
+        },
+        {
+          "id": "perché-cl-è-difficile",
+          "title": "Perché le gamme concentrate sono garanzie difficili",
+          "paragraphs": [
+            "Uniswap le posizioni di liquidità concentrata non sono semplici token fungibili. Il valore dipende dal prezzo attuale degli asset sottostanti, dalla quantità di liquidità fornita, dall'intervallo di prezzo selezionato e dalle commissioni accumulate nel tempo. Una posizione può essere attiva e generare guadagni, oppure può uscire dall'intervallo e comportarsi in modo molto diverso. Avana deve comprendere la composizione della posizione in tempo reale e valutare quanto vale come collaterale in condizioni mutevoli, non solo come valore nominale su carta.",
+            "La valutazione è al centro. Avana determina quali sottostanti la posizione rappresenta attualmente, applica una valutazione affidabile e la traduce in capacità di prestito attraverso un quadro di garanzia conservativo. La questione importante non è il valore puramente cartaceo. È il valore della garanzia all'interno di un sistema di prestito attivo. Le posizioni concentrate possono diventare non lineari man mano che il prezzo si muove attraverso o oltre l'intervallo attivo, il che richiede un trattamento deliberato del rischio."
+          ]
+        },
+        {
+          "id": "prendere in prestito-monitorare-liquidare",
+          "title": "Prendere in prestito, monitorare, liquidare",
+          "paragraphs": [
+            "Il flusso di prestito fornisce Uniswap LP supportati attraverso il raggio Avana. La posizione rimane nel AMM e continua a guadagnare commissioni. Il raggio valuta il collaterale e applica la logica di rischio. Si prendono in prestito asset supportati dalla liquidità dell'hub. Mettere a garanzia la posizione non la disattiva. La liquidità rimane impiegata, l'esposizione al mercato resta intatta e le commissioni continuano ad accumularsi.",
+            "Poiché LP posizioni sono attive e in cambiamento, Avana monitora la salute continuamente. Man mano che i prezzi si muovono, le commissioni si accumulano e la struttura della posizione cambia, anche la sicurezza del prestito cambia con esse. Una posizione sana oggi potrebbe essere meno sana domani anche se l'utente non ha toccato nulla.",
+            "Se una posizione diventa troppo rischiosa, la liquidazione deve smobilizzare parte di una posizione attiva AMM, tenere conto degli strumenti sottostanti e ripristinare la solvibilità con il minimo disturbo possibile. La struttura di mercato del collaterale determina la struttura della liquidazione. Questo è uno dei motivi principali per cui il collaterale Uniswap LP appartiene a un raggio dedicato Avana piuttosto che a un contenitore di collaterale generalizzato."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sfide-ux-defi",
+      "title": "Rendere LP Collaterale Utilizzabile",
+      "date": "25 giugno 2026",
+      "description": "Perché il design del prodotto Avana si preoccupa di una valutazione chiara, dei limiti di prestito e della salute affinché il collaterale LP sia operabile, non solo potente.",
+      "image": "/images/blog/realizzare-materiale-lp-utilizzabile.png",
+      "category": "Prodotto",
+      "tag": "Guide",
+      "sections": [
+        {
+          "id": "il-potere-non-basta",
+          "title": "Il potere non è abbastanza",
+          "paragraphs": [
+            "LP il collaterale è potente come concetto e difficile da fornire in modo pulito. Su Avana non stai solo gestendo un prestito. Stai gestendo una posizione di liquidità attiva il cui valore, composizione e rischio cambiano tutti nel tempo. Questo rende il prodotto più impegnativo rispetto a un flusso di prestito standard, ed è uno dei principali motivi per cui il LP collaterale è stato operativamente difficile anche quando l'idea sembrava attraente."
+          ]
+        },
+        {
+          "id": "rendere il ciclo di vita leggibile",
+          "title": "Rendi leggibile il ciclo di vita",
+          "paragraphs": [
+            "La sfida consiste nel rendere comprensibile l'intero ciclo di vita: valutazione del collaterale, limiti di prestito, monitoraggio della salute e cosa succede quando le condizioni cambiano. Se queste parti rimangono opache, il prodotto resta limitato a utenti altamente tecnici, indipendentemente da quanto sia forte il meccanismo sottostante.",
+            "Nei mercati collateral LP, una buona UX fa parte della progettazione del rischio. Gli utenti devono capire quanto vale una posizione come garanzia, non solo il suo valore di mercato. Devono vedere come il prestito influisce sulla flessibilità, come lo scostamento della gamma o la divergenza dei prezzi cambiano il rischio e quanto una posizione sia vicina allo stress. Una piattaforma che nasconde queste realtà dietro cruscotti vaghi può sembrare più semplice in superficie e creare comunque più pericolo per l'utente."
+          ]
+        },
+        {
+          "id": "un-sistema",
+          "title": "Un sistema connesso",
+          "paragraphs": [
+            "LP il prestito garantito su Avana dovrebbe presentarsi come un sistema unico e collegato. Depositare liquidità, usarla come garanzia, monitorare la salute, raccogliere commissioni e gestire il rischio fanno tutti parte dello stesso oggetto finanziario. La relazione tra la posizione LP e il debito dovrebbe essere visibile fin dall'inizio, così da poter comprendere entrambi i lati contemporaneamente, anziché ricostruire il quadro attraverso interfacce separate.",
+            "LP le posizioni non sono statiche. Evolvono con l'attività di trading, il movimento dell'asset sottostante e, nei sistemi a liquidità concentrata, con l'intervallo stesso della posizione. Prendere in prestito contro quel tipo di asset richiede un'interfaccia più espressiva e una struttura di prodotto più disciplinata. La generazione di commissioni, la qualità del collaterale e il rischio di liquidazione interagiscono in modi facili da fraintendere se il prodotto è progettato senza cura.",
+            "L'obiettivo è rendere utilizzabili le primitive finanziarie avanzate senza renderle ingannevoli. Il prestito garantito di Avana's LP deve essere abbastanza chiaro da poterlo usare, abbastanza disciplinato da potersi fidare e abbastanza coerente da diventare una parte reale di come viene gestito il capitale on-chain."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "avana-lp-collaterale",
+      "title": "Avana e il passo successivo per i LP",
+      "date": "23 giugno 2026",
+      "description": "Perché i fornitori di liquidità non dovrebbero dover scegliere tra guadagnare commissioni e accedere al capitale, e come Avana estende LP come garanzia su Aave v4.",
+      "image": "/images/blog/avana-prossimo-passo-fornitori-di-liquidità.png",
+      "category": "Comunità",
+      "tag": "Strategia",
+      "sections": [
+        {
+          "id": "il-vecchio-compromesso",
+          "title": "Il vecchio compromesso",
+          "paragraphs": [
+            "I fornitori di liquidità forniscono profondità, assorbono la volatilità e guadagnano commissioni di trading, ma il capitale all'interno di quelle posizioni spesso è sembrato intrappolato. Se volevi accedere a quel capitale, la risposta solita era ancora ritirarlo, smantellare la posizione e smettere di fare ciò che rendeva utile la posizione in primo luogo."
+          ]
+        },
+        {
+          "id": "quali-cambiamenti-di-avana",
+          "title": "Quali Avana cambiamenti",
+          "paragraphs": [
+            "Avana consente alle LP posizioni supportate di funzionare come garanzia su Aave v4 mantenendo attiva la liquidità nel sottostante AMM. Anziché costringere a scegliere tra generazione di commissioni e accesso alla liquidità, la stessa posizione può fare entrambe le cose. Rimane sul mercato, continua a guadagnare commissioni e supporta la capacità di prestito all'interno di un sistema di prestito progettato per garanzie LP.",
+            "Le posizioni LP sono più complesse rispetto al collaterale standard. Cambiano con i prezzi sottostanti, la composizione del pool, l'accumulo delle commissioni e nei sistemi di liquidità concentrata con posizionamento attivo dell'intervallo. La maggior parte dei sistemi di prestito non è stata progettata per comprendere correttamente quel valore. Trattare le LP come normali saldi di token non coglie il loro comportamento reale. Avana esiste perché quel divario è strutturale, non cosmetico."
+          ]
+        },
+        {
+          "id": "come-si-adatta-la-pila",
+          "title": "Come si incastra lo stack",
+          "paragraphs": [
+            "Avana utilizza il design a hub e raggi di Aave v4. La liquidità condivisa rimane a livello di hub. La valutazione specifica di LP, il trattamento del collaterale e la logica di liquidazione risiedono all'interno di mercati a raggi dedicati. I pool stabili, i pool di asset correlati e le posizioni di liquidità concentrate ricevono ciascuno un trattamento del rischio appropriato piuttosto che essere appiattiti in un unico framework generico.",
+            "Per LPs, il risultato è una partecipazione più efficiente in termini di capitale. Una posizione supportata rimane produttiva nel AMM mentre diventa utile all'interno di un sistema di credito. Si mantiene l'esposizione, si continua a guadagnare e si accede alla liquidità senza dover completamente liquidare. Per il sistema più ampio, il collaterale LP significa che il capitale DeFi può essere meno frammentato. La liquidità non deve lasciare il mercato ogni volta che deve diventare utile altrove.",
+            "Se LP posizioni possono rimanere attive mentre supportano il prestito, esse diventano più di semplici quote del pool che generano commissioni. Funzionano come posizioni finanziarie strutturate con generazione di commissioni, esposizione al mercato e valore collaterale. Avana è quel ponte tra infrastruttura di trading e infrastruttura creditizia."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "casi-d'uso-istituzionali",
+      "title": "LP Garanzie per le Istituzioni",
+      "date": "20 giugno 2026",
+      "description": "Come Avana LP collaterale può aiutare DAOs, tesorerie, fondi e aziende native della criptovaluta ad accedere al capitale senza dover smobilizzare liquidità produttiva.",
+      "image": "/images/blog/lp-materiale-promozionale-per-istituzioni.png",
+      "category": "Per istituzioni",
+      "tag": "Istituzioni",
+      "sections": [
+        {
+          "id": "funzione di tesoreria",
+          "title": "Efficienza del capitale come funzione di tesoreria",
+          "paragraphs": [
+            "Per le istituzioni che operano onchain, l'efficienza del capitale è una funzione di tesoreria. Le DAO, le tesorerie dei protocolli, i fondi e le aziende native crypto spesso detengono grandi posizioni tra token, riserve stabili e pool di liquidità, eppure gran parte di quel capitale rimane operativamente rigido. LP Le posizioni possono generare commissioni e supportare l'esposizione strategica al mercato, ma sono comunque difficili da utilizzare come asset di tesoreria flessibili senza ritirare liquidità e modificare la posizione di mercato."
+          ]
+        },
+        {
+          "id": "cosa-avana-abilita",
+          "title": "Cosa Avana consente per i team",
+          "paragraphs": [
+            "Attraverso Avana, LP posizioni possono rimanere attive nel AMM pur supportando il prestito su Aave v4. Un tesoro DAO può finanziare sovvenzioni o pagamenti ai collaboratori senza ridurre l'esposizione principale al mercato. Un fondo può mantenere le LP posizioni accedendo al contempo a liquidità stabile per il riposizionamento tattico. Un tesoro aziendale può gestire la busta paga o gli obblighi verso i fornitori senza dover effettuare un riequilibrio completo delle riserve on-chain. Il filo conduttore è che il prestito crea capitale circolante senza realizzare le posizioni, senza interrompere la generazione di commissioni, e senza costringere ogni esigenza di liquidità a diventare una decisione di vendita.",
+            "Per le DAO e i tesoretti dei protocolli in particolare, le posizioni LP detenute come supporto di liquidità o strategia del tesoro sono spesso considerate immobili a meno che la governance non decida di scioglierle. Il collaterale LP offre un percorso più efficiente dal punto di vista del capitale. Le posizioni del tesoro possono rimanere attive pur supportando un accesso controllato alla liquidità per runway, spese dell'ecosistema o pianificazione operativa."
+          ]
+        },
+        {
+          "id": "fondi-e-corpi",
+          "title": "Fondi e tesorerie aziendali",
+          "paragraphs": [
+            "Fondi e gestori professionisti si preoccupano della flessibilità tattica. Nei mercati in rapido movimento, liquidare una posizione prima di accedere al capitale può essere lento, costoso e strategicamente imbarazzante. Avana LP il collaterale permette a un gestore di mantenere l'esposizione e la presenza sul mercato mentre libera liquidità per nuovi investimenti, copertura o riposizionamento.",
+            "Le tesorerie aziendali nelle imprese native crypto detengono riserve onchain ma necessitano comunque di un accesso prevedibile al capitale per le operazioni. Stipendi, pagamenti ai fornitori e necessità di capitale circolante non sempre si allineano alle condizioni di mercato ideali. Prendere in prestito contro posizioni LP consente a una tesoreria di gestire gli obblighi senza vendite di asset intempestive o eccessiva dipendenza dal finanziamento offchain."
+          ]
+        },
+        {
+          "id": "controlli",
+          "title": "I controlli vengono prima",
+          "paragraphs": [
+            "L'adozione istituzionale dipende dai controlli: confini di politica chiari su cosa può essere preso in prestito, contro quale collaterale, attraverso quale percorso di approvazione e con quali regole di mitigazione del rischio. I mercati a ruote parlanti significano che il rischio può essere definito intorno alla struttura del collaterale. Stablecoin, coppie correlate, liquidità concentrata e pool volatili possono essere regolati sotto diverse ipotesi. I controlli operativi includono separazione dei ruoli, permessi, monitoraggio della salute, auditabilità e soglie di approvazione multi-firma. Questi sono centrali per determinare se il collaterale diventa una primitiva di tesoreria credibile piuttosto che solo uno strumento di leva finanziaria.",
+            "LP le posizioni giocano già un ruolo importante in come protocolli, fondi e aziende native della crypto allocano il capitale. Il passo successivo è rendere queste posizioni finanziariamente utili oltre alla generazione di commissioni, con la superficie di governance richiesta dalle istituzioni. Questo è il lavoro per cui Avana è stato creato."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "guida all'integrazione",
+      "title": "Costruire su Avana LP Infrastruttura",
+      "date": "17 giugno 2026",
+      "description": "Una visione da sviluppatore dell'infrastruttura collaterale Avana LP, inclusi monitoraggio, automazione, servizi di liquidazione e opportunità per i costruttori.",
+      "image": "/ immagini / blog / developer-view-lp-collateral.png",
+      "category": "Sviluppatori",
+      "tag": "Protocollo",
+      "sections": [
+        {
+          "id": "una-nuova-superficie-di-design",
+          "title": "A new design surface",
+          "paragraphs": [
+            "La maggior parte delle infrastrutture DeFi è costruita attorno a semplici garanzie. I beni singoli sono facili da valutare, monitorare e liquidare. Le posizioni LP sono attive, bilaterali e strutturalmente più complesse. Il loro valore cambia con i sottostanti, la composizione del pool, l'accumulo delle commissioni e l'intervallo. Questa complessità è il motivo per cui le garanzie LP sono state difficili da integrare nei sistemi di prestito, ed è anche il motivo per cui Avana crea una nuova superficie di progettazione per gli sviluppatori."
+          ]
+        },
+        {
+          "id": "cosa-ottengono-i-costruttori",
+          "title": "Cosa ottengono i costruttori da Avana",
+          "paragraphs": [
+            "Avana rende LP posizioni utilizzabili come garanzia tramite Aave v4. L'architettura hub and spoke significa che le LP posizioni sono valutate, adeguate al rischio e liquidate secondo logiche specifiche di mercato, non da un mercato di prestito generico che accetta per caso le LP. Per gli sviluppatori, questo apre applicazioni intorno a interfacce, sistemi di monitoraggio, strumenti di tesoreria, livelli strategici e prodotti consapevoli del rischio costruiti su credito garantito da LP.",
+            "Il portafoglio e l'infrastruttura di monitoraggio sono una categoria naturale. Il prestito garantito da LP crea una relazione più dinamica tra collaterale e debito rispetto a quella a cui la maggior parte degli utenti DeFi è abituata. I cruscotti possono mostrare il fattore di salute, l'efficienza del collaterale, la generazione di commissioni e la sensibilità alla liquidazione, aiutando gli utenti a decidere quando riequilibrare, ridurre il debito o trattare una posizione come più stressata rispetto a quanto suggerisce il suo valore nominale."
+          ]
+        },
+        {
+          "id": "automazione-liquidazione-tesoreria",
+          "title": "Automazione, liquidazione e strumenti di tesoreria",
+          "paragraphs": [
+            "L'automazione e l'infrastruttura strategica sono un'altra linea di lavoro. Poiché le posizioni LP rimangono attive mentre supportano il prestito, gli sviluppatori possono costruire sistemi che rispondono alle condizioni in cambiamento su entrambi i lati della posizione: mantenendo fasce di prestito target, monitorando lo scostamento del collaterale o instradando i dati delle posizioni nei sistemi di tesoreria e portafoglio che stanno sopra Avana.",
+            "Anche l'infrastruttura di liquidazione e il rischio sono importanti. LP Il collaterale richiede più della semplice osservazione delle soglie. Richiede la comprensione di come la qualità delle posizioni cambia con i movimenti dei mercati e di come i percorsi di liquidazione differiscano a seconda della sede e del tipo di pool. Bot esterni, servizi di monitoraggio e sistemi di analisi possono tutti diventare pezzi importanti dell'ecosistema intorno a Avana.",
+            "Per gli strumenti di tesoreria e istituzionali, se DAO, fondi o aziende native crypto utilizzano posizioni LP come garanzia, avranno bisogno di sistemi per limiti di politica, permessi, condizioni di prestito e soglie di rischio tra wallet o team. Gli sviluppatori possono usare Avana come fonte dello stato della garanzia, dello stato del debito e della struttura a livello di mercato, invece di trattare l'esposizione LP e l'esposizione ai prestiti come mondi separati."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "9y836hy5pgnqjun9lura",
+      "title": "Dentro l'Architettura Collaterale di Avana's LP",
+      "date": "14 giugno 2026",
+      "description": "All'interno dell'architettura collaterale di Avana su Aave v4 di LP, inclusi il hub, i raggi, la valutazione, il design dell'oracolo e la logica di liquidazione.",
+      "image": "/immagini/blog / inside-avana-architecture.png",
+      "category": "Sviluppatori",
+      "tag": "Protocollo",
+      "sections": [
+        {
+          "id": "perché-hub-e-spoke",
+          "title": "Perché hub e spoke",
+          "paragraphs": [
+            "LP il collaterale non può essere supportato con un design di prestito generico. Ha bisogno di un sistema che gestisca posizioni di liquidità attive, cambiamenti nella composizione del collaterale, valutazioni specifiche di mercato e percorsi di liquidazione che differiscono dal collaterale standard dei token. Avana è costruito sul modello hub and spoke di Aave v4 perché il prestito garantito da LP necessita di liquidità condivisa e logica di mercato isolata allo stesso tempo."
+          ]
+        },
+        {
+          "id": "ruoli a hub e raggi",
+          "title": "Cosa fanno il mozzo e i raggi",
+          "paragraphs": [
+            "L'hub detiene beni prendibili in prestito e coordina la liquidità condivisa nei mercati: gestione delle riserve, monitoraggio dell'utilizzo e allocazione del credito. Un hub è il modo in cui Avana collega LP collaterale a un quadro di prestito più ampio senza costringere ogni tipo di collaterale a condividere le stesse assunzioni. Un mercato stabile LP, un mercato di liquidità concentrata e una coppia volatile AMM non dovrebbero essere tutti governati nello stesso modo solo perché attingono dalla stessa piscina di liquidità.",
+            "I raggi sono dove vive la logica specifica LP: registrazione del collaterale, valutazione, aggiustamento del rischio, monitoraggio e liquidazione. Ogni raggio definisce come vengono trattati i diversi tipi di pool. Una posizione concentrata Uniswap si comporta in modo diverso da un Curve fungibile LP, che si comporta in modo diverso da un pool ponderato Balancer. Il raggio è dove il collaterale LP diventa un vero mercato di prestito con le proprie regole all'interno di Avana."
+          ]
+        },
+        {
+          "id": "valutazione-oracolo-liquidazione",
+          "title": "Valutazione, oracoli e liquidazione",
+          "paragraphs": [
+            "La valutazione utilizza un approccio a strati. Primo, cosa contiene effettivamente la posizione LP nello stato attuale del mercato. Secondo, prezzare quegli sottostanti tramite input affidabili degli oracoli. Terzo, regolare tramite la logica del collaterale che riflette il rischio effettivo del pool piuttosto che la dimensione nominale. Non ogni dollaro all'interno di una posizione LP si traduce nello stesso potere di prestito su Avana.",
+            "Il design dell'oracolo si trova vicino al nucleo. Per LP collaterale, il protocollo non può fare affidamento su un singolo numero o su un feed di asset semplicistico. Avana utilizza una filosofia a doppia fonte in cui i feed di prezzo esterni e la determinazione dei prezzi derivata da AMM lavorano insieme per una valutazione più affidabile. L'obiettivo è ridurre la possibilità che dislocazioni temporanee, aggiornamenti obsoleti o distorsioni locali del pool creino assunzioni di collaterale non sicure.",
+            "Per la liquidazione, Avana deve smobilizzare le posizioni attive LP in modo controllato, convertire gli asset risultanti e saldare i debiti senza perdite evitabili. Il ramo si specializza nella liquidazione per la struttura del mercato sottostante. Il nodo fornisce liquidità. Il ramo definisce la logica dei collateral. Ogni livello fa ciò per cui è adatto: separazione netta, forte isolamento e un percorso realistico per scalare LP collateral pool per pool."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "v1-1-rilascio",
+      "title": "Avana v1.1: Migliore Garanzia, Miglior Controllo",
+      "date": "11 giugno 2026",
+      "description": "Avana v1.1 espande la garanzia multi-posizione, aggiunge più pool supportati, migliora la delega e gli avvisi e riduce l'overhead delle transazioni.",
+      "image": "/images/blog/avana-v1-1-controllo-migliore.png",
+      "category": "Prodotto",
+      "tag": "Prodotto",
+      "sections": [
+        {
+          "id": "cosa-spedito",
+          "title": "Cosa è stato incluso nella versione 1.1",
+          "paragraphs": [
+            "Avana v1.1 rende il prestito garantito LP più flessibile, più efficiente e più facile da gestire. Questo aggiornamento espande il modo in cui gli utenti strutturano le garanzie, migliora la valutazione delle posizioni, riduce il carico delle transazioni e perfeziona il cruscotto per la gestione delle posizioni LP attive su Aave v4."
+          ]
+        },
+        {
+          "id": "multi-posizione-e-mercati",
+          "title": "Garanzie multi-posizione e più mercati",
+          "paragraphs": [
+            "Il cambiamento principale è il collaterale multi-posizione. Gli utenti possono depositare più posizioni LP e avere la capacità di prestito valutata sull'intero insieme di collaterale invece che posizione per posizione. Ciò offre maggiore flessibilità nella gestione della liquidità tra diverse pool, asset o tipi di strategia. Il rilascio amplia anche le pool supportate tra Uniswap v3 e v4. Ogni nuovo mercato include comunque valutazioni aggiuntive, trattamento del collaterale e lavoro di liquidazione, quindi l'accesso più ampio non indebolisce gli standard di rischio di Avana.",
+            "Il prelievo parziale della posizione è anche una novità. Gli utenti possono ridurre parte della liquidità di una posizione LP senza uscire completamente dalla posizione di garanzia, purché la garanzia rimanente supporti ancora il prestito in modo sicuro. Questo rende la gestione del capitale meno binaria. È possibile regolare l'esposizione, liberare liquidità o rimodellare le posizioni senza trattare ogni cambiamento come tutto o niente."
+          ]
+        },
+        {
+          "id": "operazioni-e-dashboard",
+          "title": "Strumenti Ops e una dashboard più chiara",
+          "paragraphs": [
+            "Il supporto alla delega aiuta le DAO, i team e gli operatori strutturati a separare le responsabilità tra portafogli o ruoli: chi gestisce i depositi, chi gestisce le azioni relative al debito, chi esegue la manutenzione operativa. Gli avvisi sul fattore di salute forniscono una visibilità anticipata sulle condizioni della posizione in evoluzione prima che si sviluppi lo stress. LP il collaterale può cambiare rapidamente, soprattutto quando la divergenza dei prezzi influisce contemporaneamente sia sull'efficienza dei guadagni sia sulla qualità del collaterale.",
+            "I miglioramenti delle prestazioni riducono i costi di transazione su depositi, prestiti, rimborsi e gestione. La gestione di Oracle è stata migliorata per latenza, comportamento di fallback e affidabilità durante le condizioni di mercato in cambiamento. Per LP garanzia, la qualità dell'esecuzione del backend è importante quanto le funzionalità del frontend.",
+            "Il cruscotto è stato perfezionato per mostrare LP prestiti garantiti così come funzionano effettivamente su Avana: salute del collaterale, composizione della posizione e relazione tra liquidità attiva e debito. Anteprime delle transazioni migliori e un design più reattivo rendono la gestione delle posizioni più leggibile prima di confermare una modifica onchain."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "introducendo-automate",
+      "title": "Automatizzare: Un livello di controllo per LP collaterale",
+      "date": "8 giugno 2026",
+      "description": "Come Avana Automate aiuta gli utenti a gestire LP garanzie con automazione non custodiale per commissioni, riequilibrio, protezione e manutenzione disciplinata.",
+      "image": "/ images / blog / automate-control-layer-lp-collateral.png",
+      "category": "Prodotto",
+      "tag": "Prodotto",
+      "sections": [
+        {
+          "id": "perché-automazione",
+          "title": "Perché LP garanzie hanno bisogno di automazione",
+          "paragraphs": [
+            "Gestire una posizione LP che serve anche come garanzia è impegnativo. Le commissioni si accumulano ma non sempre rimangono produttive. Gli intervalli di liquidità divergono man mano che i mercati si muovono. I fattori di salute si indeboliscono mentre la divergenza dei prezzi cambia il profilo della garanzia. Entrambi i lati del bilancio rimangono attivi. La posizione LP evolve, e il debito contro di essa evolve con le condizioni di prestito. Per gli utenti che prendono in prestito contro LP tramite Avana su Aave v4, questa è la realtà quotidiana."
+          ]
+        },
+        {
+          "id": "cos'è-automate",
+          "title": "Cos'è Avana Automate",
+          "paragraphs": [
+            "Automate è il livello di automazione non custodial di Avana. Esegue azioni approvate dall'utente quando vengono soddisfatte condizioni predefinite. Gli utenti mantengono il pieno controllo di asset e permessi. Automate gestisce la manutenzione ripetitiva e impone la disciplina delle posizioni. Non è un sostituto della strategia o del giudizio. È un modo per ridurre il carico operativo della gestione del collaterale LP su Avana."
+          ]
+        },
+        {
+          "id": "tariffe-intervalli-protezione",
+          "title": "Tariffe, gamme e protezione",
+          "paragraphs": [
+            "Le commissioni di trading si accumulano gradualmente, ma le commissioni inattive non contribuiscono all'efficienza della posizione. Il sistema Automate può raccoglierle e ridistribuirle secondo le preferenze dell'utente, così le posizioni rimangono più produttive senza interventi manuali costanti. Col tempo, una gestione disciplinata delle commissioni può contare quanto il rendimento principale, specialmente per strategie di prestito supportate da LP più grandi.",
+            "Nei sistemi di liquidità concentrata, il capitale smette di lavorare in modo efficiente quando il prezzo si muove al di fuori dell'intervallo attivo, e la posizione può anche diventare meno efficiente come garanzia su Avana. Automate può riequilibrare secondo le regole definite dall'utente, riducendo l'onere di reagire manualmente ad ogni movimento. Questo è particolarmente utile perché l'efficienza del collaterale e la produttività della liquidità sono strettamente legate.",
+            "Le posizioni possono anche passare da sane a stressate più velocemente del previsto, in particolare durante una volatilità intensa o quando gli asset abbinati divergono. Automate monitora le condizioni ed esegue azioni difensive basate sulle soglie definite dall'utente. La negligenza passiva del collaterale LP che supporta il debito diventa costosa. Avana Automate è progettato per quella risposta anticipata."
+          ]
+        },
+        {
+          "id": "operazioni-del-secondo-giorno",
+          "title": "Operazioni del secondo giorno",
+          "paragraphs": [
+            "Automate è costruito attorno alla reale natura del collaterale LP: posizioni che guadagnano, si spostano e cambiano rischio mentre fungono da collaterale su Aave v4. Offre agli utenti un modo per mantenere le posizioni in modo coerente, rispondere ai cambiamenti delle condizioni con minore attrito e gestire il prestito garantito da LP con disciplina che altrimenti richiederebbe attenzione manuale costante. Stesso principio non-custodial in tutto. Avana esegue la tua politica. Non diventa un gestore di fondi a scatola nera."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "guida-ai-collaterali-lp",
+      "title": "Guida per principianti al LP Collaterale",
+      "date": "4 giugno 2026",
+      "description": "Guida per principianti ai LP collateral su Avana, coprendo il comportamento di LP, LTV, perdita impermanente, liquidazione e primi passi conservativi.",
+      "image": "/images/blog/guida-per-principianti-lp-materiale.png",
+      "category": "Per LPs",
+      "tag": "Guide",
+      "sections": [
+        {
+          "id": "l'idea-di-base",
+          "title": "L'idea di base",
+          "paragraphs": [
+            "Fornire liquidità è uno dei modi più comuni per guadagnare rendimento in DeFi. Depositi attività in un pool, faciliti il trading e guadagni commissioni in cambio. Le posizioni LP sono state anche poco flessibili. Se volevi usare quel capitale altrove, di solito ritiravi prima. Il collaterale LP cambia le cose. Attraverso Avana su Aave v4, le posizioni supportate LP possono sostenere il prestito rimanendo attive nel pool e guadagnando commissioni per tutto il tempo."
+          ]
+        },
+        {
+          "id": "cos'è-un-lp",
+          "title": "Cos'è effettivamente un LP",
+          "paragraphs": [
+            "Una posizione LP è una posizione attiva all'interno di un mercato. Il suo valore dipende dagli strumenti sottostanti, da come si muovono tra loro, dalle commissioni maturate e, nei sistemi di liquidità concentrata, dal fatto che la posizione sia ancora nel suo intervallo di prezzo attivo. Cambia nel tempo in modi in cui il normale collaterale di token non lo fa. Ecco perché il collaterale LP necessita di un modello di prestito più specializzato, e perché Avana esiste per questo caso d'uso."
+          ]
+        },
+        {
+          "id": "ltv-il-liquidazione",
+          "title": "LTV, perdita impermanente e liquidazione",
+          "paragraphs": [
+            "Il rapporto prestito-valore, spesso abbreviato in LTV, è la parte del valore del collaterale accettato di una posizione che può essere presa in prestito. Un LTV più basso significa più margine di sicurezza. Se il valore del collaterale diminuisce, c'è spazio prima che il prestito diventi a rischio. Un LTV più alto offre maggiore liquidità immediata e un margine di sicurezza minore. Nei mercati LP questo è più importante perché il valore della posizione può variare per diversi motivi contemporaneamente: prezzi sottostanti, composizione del pool, accumulo di commissioni e posizionamento dell'intervallo.",
+            "La perdita impermanente, spesso abbreviata in IL, è ciò che accade quando i due asset in un pool si muovono rispetto l'uno all'altro e la posizione LP finisce per valere meno rispetto al possesso di quegli asset al di fuori del pool. Per qualcuno che utilizza LP come garanzia su Avana, l'IL influisce direttamente sulla capacità di prendere in prestito. Non rende di per sé la garanzia LP non sicura, ma significa che gli utenti devono capire che le posizioni sono dinamiche piuttosto che fisse.",
+            "Se il valore del collaterale scende troppo rispetto al debito, Avana ripristina la sicurezza tramite liquidazione. Con il collaterale LP questo è più complesso che vendere un semplice token. Ci sono l'accumulo di commissioni, il cambiamento della composizione degli asset e la struttura di liquidità specifica del mercato. Avana valuta e liquida le posizioni LP secondo queste realtà, invece di trattarle come asset generici. La lezione pratica per i principianti è semplice. Prendere in prestito in modo prudente, specialmente all'inizio."
+          ]
+        },
+        {
+          "id": "primi-passi",
+          "title": "A sensible first path",
+          "paragraphs": [
+            "Anche come garanzia, una posizione LP continua a generare commissioni e a mantenere l'esposizione al mercato. Questo è il guadagno in efficienza del capitale. Per i principianti, l'approccio più sicuro è iniziare in modo conservativo su Avana: prendere in prestito modestamente, usare prima pool più semplici e stabili, e prestare attenzione a come cambia la salute della posizione man mano che i mercati si muovono. Una volta che si comprende come interagiscono valore LP, debito e soglie di liquidazione, il modello diventa molto più semplice da usare responsabilmente."
+          ]
+        }
+      ]
+    }
+  ]
+}
