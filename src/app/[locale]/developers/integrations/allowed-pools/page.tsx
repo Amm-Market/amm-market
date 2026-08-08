@@ -62,10 +62,10 @@ export default async function AllowedPoolsPage() {
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Avana only accepts LP collateral from pools or templates that have already been reviewed
-            and approved. The allowlist exists because LP support is not just a question of venue
-            brand or token format. The protocol needs enough information to price the position,
-            manage liquidation, and bound the risk it is taking on.
+            Avana only accepts LP collateral from pools that have been reviewed and approved. The
+            allowlist exists because LP support is not automatic for every pool on a DEX. The
+            protocol needs enough information to price the position, manage liquidation, and bound
+            the risk it is taking on.
           </p>
           <p className="text-sm leading-relaxed text-gray-600">
             Pool approval works alongside{" "}
@@ -128,7 +128,7 @@ export default async function AllowedPoolsPage() {
           <div className="space-y-3 text-sm text-gray-600">
             <p>
               Builders should think in terms of approved pool templates and deployment-specific
-              allowlists, not as if every LP in a venue is automatically fair game.
+              allowlists, not as if every LP on a DEX is automatically supported.
             </p>
             <p>
               New pool families usually require coordinated work across oracle handling, liquidation

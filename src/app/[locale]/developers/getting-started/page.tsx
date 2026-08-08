@@ -8,7 +8,7 @@ import { createDocsMetadata } from "@/lib/content-i18n/docs-metadata"
 export async function generateMetadata(): Promise<Metadata> {
   return createDocsMetadata('getting-started', {
     title: "Getting Started - Deposit LP",
-    description: "Learn how supported LP positions enter Avana as collateral and how each admitted position starts contributing borrowing capacity inside a Borrow Spoke.",
+    description: "How to deposit a supported LP position into Avana and start building borrowing capacity.",
   })
 }
 
@@ -43,29 +43,21 @@ export default async function DepositLPPage() {
     <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
-
           title="Deposit LP"
-
-          description="Deposit moves a supported LP position under spoke custody so Avana can account for it as collateral and turn it into borrowable capacity."
-
+          description="Deposit a supported LP position into Avana to use it as collateral while it keeps earning fees in the pool."
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Depositing is how an LP position becomes usable inside Avana. The Borrow Spoke takes
-            custody of the supported position, records the state it needs for valuation, and starts
-            treating that position as collateral instead of as a wallet-held asset.
+            To borrow against LP collateral on Avana, start by depositing a supported position into
+            the app. Pick an approved pool, connect your wallet, and submit the deposit for the LP
+            you already hold on a supported DEX.
           </p>
-          <p className="mb-4 leading-relaxed text-gray-600">
-            That does not mean the liquidity disappears from the underlying venue. The position can
-            remain active in the AMM while the spoke tracks its exposure, fee state, and risk
-            treatment for later borrow and liquidation checks.
-          </p>
-          <p className="text-sm leading-relaxed text-gray-600">
-            <strong>Important:</strong> Avana does not grant borrowing power just because an LP
-            position exists. The position must belong to an approved pool family, pass valuation
-            checks, and fit the spoke&apos;s current risk configuration.
+          <p className="leading-relaxed text-gray-600">
+            Avana records the position, values it, and adds it to your borrowing capacity in the
+            relevant Borrow Spoke. Your liquidity stays in the pool and keeps accruing fees. Deposit
+            does not borrow for you — it sets up the collateral you can borrow against next.
           </p>
         </section>
 
@@ -73,37 +65,39 @@ export default async function DepositLPPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Deposit Flow</h2>
           <div className="space-y-5">
             <div>
-              <h3 className="mb-2 font-semibold text-gray-900">1. Transfer or Approve the LP Position</h3>
+              <h3 className="mb-2 font-semibold text-gray-900">1. Choose a supported pool</h3>
               <p className="text-sm leading-relaxed text-gray-600">
-                The user hands the supported LP position to the relevant Borrow Spoke. The exact
-                path depends on whether the collateral is fungible or position-specific, but the
-                protocol outcome is the same: the spoke must control the asset before it can count
-                it as collateral.
+                Open the Avana interface and select an LP market that is live on your deployment.
+                Only approved pools can be deposited. See{" "}
+                <Link href="/developers/integrations/allowed-pools" className="text-[#01AACF] hover:underline">
+                  Allowed LP Pools
+                </Link>{" "}
+                for how pool support is defined.
               </p>
             </div>
             <div>
-              <h3 className="mb-2 font-semibold text-gray-900">2. Validate the Pool Family</h3>
+              <h3 className="mb-2 font-semibold text-gray-900">2. Approve and deposit your LP</h3>
               <p className="text-sm leading-relaxed text-gray-600">
-                Next the spoke confirms that the position belongs to an approved pool or template.
-                That check is really a package of requirements: oracle coverage must exist, routing
-                and liquidation support must exist, and the deployment must already have risk
-                settings for that LP family.
+                Approve the LP token or position NFT if needed, then confirm the deposit. Avana
+                routes the position into the Borrow Spoke for that market.
               </p>
             </div>
             <div>
-              <h3 className="mb-2 font-semibold text-gray-900">3. Cache Position State</h3>
+              <h3 className="mb-2 font-semibold text-gray-900">3. Wait for valuation</h3>
               <p className="text-sm leading-relaxed text-gray-600">
-                Once the position is admitted, the protocol stores the state it needs to rebuild the
-                position later. That includes the metadata required to reconstruct exposure, monitor
-                accrued fees, and refresh borrowing power as prices or pool conditions move.
+                The spoke checks that the pool is approved, reconstructs the position, and applies
+                collateral factors to calculate how much borrowing capacity the deposit adds.
               </p>
             </div>
             <div>
-              <h3 className="mb-2 font-semibold text-gray-900">4. Add the Position to Aggregate Capacity</h3>
+              <h3 className="mb-2 font-semibold text-gray-900">4. Borrow when ready</h3>
               <p className="text-sm leading-relaxed text-gray-600">
-                After valuation and risk discounts are applied, the position adds its own
-                contribution to the user&apos;s total borrowing capacity inside that Borrow Spoke.
-                When the user later borrows, the Hub relies on that spoke-side capacity update.
+                Once the deposit clears, your borrowing capacity updates in the interface. You can
+                move on to{" "}
+                <Link href="/developers/getting-started/borrow-assets" className="text-[#01AACF] hover:underline">
+                  Borrow Assets
+                </Link>{" "}
+                when you want to draw liquidity from the Hub.
               </p>
             </div>
           </div>
@@ -113,21 +107,19 @@ export default async function DepositLPPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Technical Details</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
-              <strong className="text-gray-900">Position-aware valuation:</strong> the deposit itself
-              does not lock in a fixed loan amount. Borrowing power is recalculated from the live LP
-              position using the oracle stack and collateral-factor model each time the protocol
-              needs an updated view.
+              <strong className="text-gray-900">Borrowing power updates with the market.</strong>{" "}
+              Your capacity is recalculated from the live LP position as prices, fees, and pool state
+              change — not locked at the deposit-time mark.
             </p>
             <p>
-              <strong className="text-gray-900">Format-specific custody:</strong> some LP positions
-              are fungible tokens, while others are concentrated-liquidity positions with extra
-              metadata. The Borrow Spoke handles those custody differences so the rest of the credit
-              system can still reason about them in a consistent way.
+              <strong className="text-gray-900">LP formats differ by DEX.</strong>{" "}
+              Some pools issue fungible LP tokens; concentrated-liquidity DEXs use position NFTs or
+              position-manager shares. Avana handles both through the same spoke custody model.
             </p>
             <p>
-              <strong className="text-gray-900">No forced unwind on deposit:</strong> supplying
-              collateral does not mean closing the LP. The unwind path is reserved for later user
-              actions or liquidation, not for the initial deposit itself.
+              <strong className="text-gray-900">No unwind on deposit.</strong>{" "}
+              You are not removing liquidity from the pool when you deposit. The position stays
+              active in the AMM.
             </p>
           </div>
         </section>
@@ -154,23 +146,16 @@ export default async function DepositLPPage() {
               </tbody>
             </table>
           </div>
-          <p className="mt-3 text-sm text-gray-600">
-            Exact live support is governed by the approved pool list. See{" "}
-            <Link href="/developers/integrations/allowed-pools" className="text-[#01AACF] hover:underline">
-              Allowed LP Pools
-            </Link>{" "}
-            for the admission model.
-          </p>
         </section>
 
         <section id="after-deposit" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">After Deposit</h2>
           <ul className="space-y-2 text-gray-600">
-            <li>Each approved position now contributes its own discounted value to spoke-level borrowing capacity</li>
-            <li>The LP principal stays active in the underlying pool and may continue accruing fees</li>
-            <li>Actual borrowing still depends on Hub liquidity, spoke health checks, and collateral-factor limits</li>
+            <li>Your LP keeps earning trading fees in the underlying pool</li>
+            <li>Borrowing capacity appears in the interface for that Borrow Spoke</li>
+            <li>You can deposit more approved positions in the same market to add capacity</li>
             <li>
-              The next step in the normal flow is{" "}
+              Next step:{" "}
               <Link href="/developers/getting-started/borrow-assets" className="text-[#01AACF] hover:underline">
                 Borrow Assets
               </Link>
@@ -181,7 +166,7 @@ export default async function DepositLPPage() {
 
       <DeveloperScrollSpyRail
         sections={sections}
-        pageSummary="How a supported LP position enters a Borrow Spoke and becomes part of aggregate borrowing capacity."
+        pageSummary="How to deposit a supported LP position and start building borrowing capacity on Avana."
         sectionColor="emerald"
       />
     </div>

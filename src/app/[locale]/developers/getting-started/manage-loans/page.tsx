@@ -8,7 +8,7 @@ import { createDocsMetadata } from "@/lib/content-i18n/docs-metadata"
 export async function generateMetadata(): Promise<Metadata> {
   return createDocsMetadata('getting-started/manage-loans', {
     title: "Manage Loans",
-    description: "Manage open debt against LP collateral in Avana by watching health, updating positions carefully, and staying inside spoke and Hub limits.",
+    description: "How to monitor and manage an open loan backed by LP collateral on Avana.",
   })
 }
 
@@ -26,33 +26,28 @@ export default async function ManageLoansPage() {
     <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
-
           title="Manage Loans"
-
-          description="Managing an open loan means treating collateral, debt, and venue state as one live position instead of separate actions."
-
+          description="Track health, repay debt, claim fees, and adjust collateral while your loan is open."
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="leading-relaxed text-gray-600">
-            A live Avana loan keeps moving even when the borrower does nothing. LP inventory shifts,
-            fees accrue, markets reprice, and available Hub liquidity can change. Good loan
-            management means following those moving parts together instead of looking only at the
-            debt number in isolation.
+            An open loan on Avana is not static. Your LP keeps earning fees, token prices move, and
+            interest accrues on debt. Check health factor in the interface regularly and act before
+            you are close to liquidation.
           </p>
         </section>
 
         <section id="borrowing-more" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Borrowing More</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Borrowing more is only possible when the Borrow Spoke still shows unused capacity after
-            revaluing the current positions and the Hub can still provide the requested asset.
+            You can borrow more if you still have unused capacity and the Hub has liquidity for the
+            asset you want. Each additional borrow runs the same checks as the first one.
           </p>
           <p className="text-sm leading-relaxed text-gray-600">
-            Partial repayment moves in the other direction. It reduces debt immediately, improves
-            health, and often creates the room needed for later actions such as withdrawals,
-            re-ranging, or collateral replacement.
+            Partial repayment frees capacity immediately. It lowers debt, improves health, and can
+            make room for withdrawals or fee claims later.
           </p>
         </section>
 
@@ -60,65 +55,63 @@ export default async function ManageLoansPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Monitoring Health</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
-              <strong className="text-gray-900">Healthy:</strong> adjusted collateral value remains
-              comfortably above debt, leaving space for ordinary price movement and position drift.
+              <strong className="text-gray-900">Healthy:</strong> collateral value stays comfortably
+              above debt, with room for normal market movement.
             </p>
             <p>
               <strong className="text-gray-900">Watchlist:</strong> the account still passes checks,
-              but the remaining buffer is getting thin. This is the time to repay, add approved
-              collateral, or cut exposure before conditions get worse.
+              but the buffer is thin. Consider repaying, adding collateral, or reducing exposure.
             </p>
             <p>
-              <strong className="text-gray-900">Liquidatable:</strong> debt has moved too close to or
-              beyond the allowed borrowing boundary, so the liquidation framework is allowed to take
-              over.
+              <strong className="text-gray-900">Liquidatable:</strong> health has crossed the
+              liquidation threshold. The liquidation framework can take over.
             </p>
           </div>
           <p className="mt-4 text-sm text-gray-600">
-            For the canonical definition, use{" "}
+            See{" "}
             <Link href="/developers/architecture/health-factor" className="text-[#01AACF] hover:underline">
               Health Factor
             </Link>{" "}
-            rather than treating UI warning bands as separate protocol mechanics.
+            for how health is calculated.
           </p>
         </section>
 
         <section id="operational-control" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Operational Control</h2>
-          <ul className="space-y-3 text-gray-600">
+          <ol className="list-decimal space-y-3 ps-5 text-gray-600">
             <li>Repay part of the debt to rebuild buffer</li>
             <li>Add more approved LP collateral to the same Borrow Spoke</li>
-            <li>Claim accrued fees only when the account still passes post-claim health checks</li>
+            <li>Claim accrued fees when the account still passes post-claim health checks</li>
             <li>Withdraw or resize collateral only when the remaining account still stays healthy</li>
-          </ul>
+          </ol>
         </section>
 
         <section id="position-changes" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Position Changes</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
-              Concentrated-liquidity positions may need re-ranging or replacement as market price
-              moves. Fungible LP positions may be resized or rotated within the supported collateral
-              set.
+              While debt is open, your LP position keeps running in the pool. Price moves, fee
+              accrual, and pool inventory shifts can change your collateral value without you taking
+              any action. Avana recalculates health on these changes automatically.
             </p>
             <p>
-              The protocol does not treat those moves as cosmetic edits. Any change that alters LP
-              exposure is pushed back through the same admission, valuation, and health checks used
-              for deposits and borrows.
+              If you want to claim fees, withdraw collateral, or change the position on the DEX, those
+              actions must go through Avana first. The Borrow Spoke checks whether your account stays
+              healthy after the action before allowing it.
             </p>
           </div>
         </section>
 
         <section id="key-constraints" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Key Constraints</h2>
-          <ul className="space-y-2 text-gray-600">
-            <li>Collateral changes cannot leave the remaining debt above allowed spoke capacity</li>
+          <ul className="list-disc space-y-2 ps-5 text-gray-600">
+            <li>Collateral changes cannot leave remaining debt above allowed spoke capacity</li>
             <li>New or replacement positions must stay inside the approved pool set</li>
             <li>Borrow actions still depend on Hub liquidity and active caps</li>
-            <li>At-risk accounts should use repayment or collateral addition before liquidation is triggered</li>
+            <li>Repay or add collateral before health reaches liquidation territory</li>
           </ul>
           <p className="mt-4 text-sm text-gray-600">
-            Keep{" "}
+            See{" "}
             <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
               Liquidation Framework
             </Link>{" "}
@@ -126,14 +119,14 @@ export default async function ManageLoansPage() {
             <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
               Collateral Factors
             </Link>{" "}
-            as the main references when making changes to a live loan.
+            when making changes to a live loan.
           </p>
         </section>
       </div>
 
       <DeveloperScrollSpyRail
         sections={sections}
-        pageSummary="How to manage live debt against LP collateral without drifting outside spoke-level health constraints."
+        pageSummary="How to monitor and manage an open loan backed by LP collateral."
         sectionColor="emerald"
       />
     </div>

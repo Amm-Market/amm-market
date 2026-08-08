@@ -2,7 +2,7 @@
   "architecture/collateral-factors": {
     "meta": {
       "title": "Collateral Factors",
-      "description": "How a Borrow Spoke turns LP position value into borrowable capacity before reporting it to the Hub."
+      "description": "How collateral factors turn LP position value into borrowing capacity inside a Borrow Spoke."
     },
     "toc": [
       {
@@ -24,28 +24,27 @@
     ],
     "strings": [
       "Collateral Factors",
-      "How a Borrow Spoke turns LP position value into borrowable capacity before reporting it to the Hub.",
+      "How collateral factors turn LP position value into borrowing capacity inside a Borrow Spoke.",
       "Overview",
       "How It Works",
       "Borrowable Value",
       "Notes",
-      "How a Borrow Spoke decides how much of an LP position counts toward borrowing capacity.",
-      "Collateral factors answer a narrow but important question: how much of this LP position should actually support debt? In Avana, that answer is not taken from the LP's headline mark alone. The Borrow Spoke first rebuilds and discounts the position, then applies the market rules that decide what fraction of that value can count as usable borrowing capacity.",
-      "The lightpaper states the principle. This page describes the developer-facing sequence used inside a spoke before any capacity is handed off to the Hub.",
-      "The spoke admits only approved pools or templates. If a position does not match a listed market definition, it never reaches the later valuation stages that produce borrowable capacity.",
-      "It reconstructs the LP position, prices the underlying assets, and discounts the result to a recoverable collateral value. That step is where the spoke moves from a pool position that looks valuable in theory to a value it is willing to lend against in practice.",
-      "It applies market-specific collateral settings and passes the aggregate borrowing capacity to the Hub for final enforcement. The Hub consumes the result, but the spoke is the layer that decided how much of the LP could count in the first place.",
-      "Borrowable value is a derived output, not a fixed attribute attached to every LP in the spoke. Two positions can live in different markets, produce different recoverable values, and clear different collateral settings even if they look similar at a glance. That keeps the implementation aligned with the LP-specific underwriting model described elsewhere in the docs.",
-      "A supported LP position contributes borrowing capacity only after the spoke has admitted it, reconstructed and discounted it, and applied the market's configured collateral controls.",
-      "• Exact market settings live with the supported pool configuration rather than this overview page.",
-      "• Pool-level risk bands are implementation details, not a promise that all LPs share one universal LTV.",
-      "• Read collateral-factor behavior together with the health-factor and liquidation docs if you are implementing monitoring or recovery logic."
+      "How much of an LP position counts toward borrowing capacity after risk discounts.",
+      "Collateral factors define what fraction of an LP position's recoverable value can support debt. Avana does not use the LP's headline mark alone. The Borrow Spoke first reconstructs and discounts the position, then applies the market's collateral factor to determine borrowing capacity.",
+      "The spoke admits only approved pools. Unlisted positions never reach valuation.",
+      "The position is reconstructed, underlying assets are priced, and the result is discounted to recoverable collateral value.",
+      "Collateral factors and market settings are applied. The spoke reports aggregate borrowing capacity to the Hub for enforcement.",
+      "Borrowable value is calculated per position, not as one flat number for the whole account. Two positions in different pools can produce different recoverable values and clear different collateral factors even if they look similar.",
+      "A supported LP position contributes borrowing capacity only after the spoke has admitted it, valued it conservatively, and applied the market's collateral factor.",
+      "• Exact collateral factors live in each supported pool's configuration.",
+      "• Different LP families can have different factors, liquidation thresholds, and bonuses.",
+      "• Read this together with Health Factor and Liquidation Framework when building monitoring tools."
     ]
   },
   "architecture/health-factor": {
     "meta": {
       "title": "Health Factor",
-      "description": "How a Borrow Spoke compares adjusted collateral value and debt to determine whether an LP-backed account is healthy or liquidatable."
+      "description": "How Avana measures whether an LP-backed account has enough collateral to support its debt."
     },
     "toc": [
       {
@@ -71,39 +70,39 @@
     ],
     "strings": [
       "Health Factor",
-      "How a Borrow Spoke compares adjusted collateral value and debt to determine whether an LP-backed account is healthy or liquidatable.",
+      "How Avana measures whether an LP-backed account has enough collateral to support its debt.",
       "Overview",
       "Calculation",
       "Monitoring Bands",
       "Response Path",
       "User Actions",
-      "How a Borrow Spoke measures account safety from adjusted collateral value and outstanding debt.",
-      "The health factor is the Borrow Spoke's compact view of whether an account still has enough adjusted collateral to support its debt. It is not a separate risk model. The same valuation path, collateral-factor logic, and liquidation assumptions that govern borrowing also determine the health factor that the interface and liquidators read.",
-      "When health falls far enough that the account no longer satisfies the spoke's borrowing boundary, the position becomes liquidatable under the canonical",
+      "The ratio between risk-adjusted collateral value and outstanding debt inside a Borrow Spoke.",
+      "Health factor measures the relationship between risk-adjusted collateral value and outstanding debt inside a Borrow Spoke. Adjusted collateral value already includes Avana's LP valuation, collateral factors, pool-level risk treatment, and recoverable-value assumptions.",
+      "If health falls below the liquidation boundary, the position becomes eligible for liquidation. See the",
       "Liquidation Framework",
-      "Health is computed per Borrow Spoke. The numerator is the user's adjusted collateral value inside that spoke, which means the position has already gone through reconstruction, pricing, recoverable-value discounting, and the market-specific collateral settings used by that spoke.",
+      "Health is computed per Borrow Spoke. The numerator is adjusted collateral value — already discounted through reconstruction, pricing, collateral factors, and recoverable-value assumptions.",
       "healthFactor = adjustedCollateralValue / outstandingDebt",
-      "If a user has collateral in more than one Borrow Spoke, each spoke computes health on its own local state. Extra margin in one spoke does not automatically cover a deficit in another, because the protocol contains risk at the market where it was created.",
+      "If a user has collateral in more than one Borrow Spoke, each spoke computes health independently. Extra margin in one market does not cover a deficit in another.",
       "Healthy:",
-      "adjusted collateral value stays comfortably above outstanding debt, so the account has room for ordinary market movement without immediate intervention.",
+      "collateral stays comfortably above debt, with room for normal market movement.",
       "Watchlist:",
-      "the account still passes the spoke's checks, but the buffer is thin enough that a borrower should consider repaying debt, adding collateral, or otherwise improving the position.",
+      "the account still passes checks, but the buffer is thin. Consider repaying, adding collateral, or reducing exposure.",
       "Liquidatable:",
-      "the account has reached or crossed the liquidation boundary, so the recovery path can move from user action to protocol-enforced settlement.",
-      "Interface warnings can be more conservative than the hard liquidation threshold. They are there to help users act earlier, not to introduce a second set of protocol rules.",
-      "If health weakens, the first response is still the borrower's. The account can be repaired by repaying debt, adding approved LP collateral, or changing the position in ways that remain valid under the spoke's health checks.",
-      "Once health crosses the liquidation boundary, the account moves out of the monitoring phase and into the recovery path. Liquidation nodes and third-party liquidators can then unwind the required collateral path to restore solvency according to the market's liquidation rules.",
-      "Borrowing more reduces health because outstanding debt increases against the same collateral base.",
-      "Repaying debt improves health immediately because the denominator in the ratio falls.",
-      "Adding approved collateral can increase remaining headroom if the spoke accepts and values it.",
-      "Claiming fees, withdrawing collateral, or re-ranging positions can reduce health and should be checked against the post-action state before execution.",
+      "health has crossed the liquidation threshold. The recovery path can begin.",
+      "Interface warnings may appear earlier than the hard liquidation threshold to give users time to act.",
+      "When health weakens, the borrower can repay debt, add approved LP collateral, or take other actions that improve the account under the spoke's health checks.",
+      "Once health crosses the liquidation boundary, liquidators can unwind the required collateral path to restore solvency according to the market's liquidation rules.",
+      "Borrowing more reduces health because debt rises against the same collateral.",
+      "Repaying debt improves health immediately.",
+      "Adding approved collateral can increase headroom if the spoke accepts and values it.",
+      "Claiming fees, withdrawing collateral, or changing positions can reduce health — check the post-action state first.",
       "Collateral Factors"
     ]
   },
   "architecture/incentives": {
     "meta": {
       "title": "Incentives Programs",
-      "description": "Operational overview of Avana incentives and rewards, explaining how optional campaigns relate to the core protocol without becoming canonical architecture."
+      "description": "How optional reward campaigns relate to Avana without changing core lending mechanics."
     },
     "toc": [
       {
@@ -129,29 +128,28 @@
     ],
     "strings": [
       "Incentives Programs",
-      "Operational overview of Avana incentives and rewards, explaining how optional campaigns relate to the core protocol without becoming canonical architecture.",
+      "How optional reward campaigns relate to Avana without changing core lending mechanics.",
       "Overview",
       "Program Types",
       "Distribution Principles",
       "Claiming & Reconciliation",
       "Current Status",
-      "Optional reward and campaign layer that can sit on top of Avana deployments without changing the core lending mechanics.",
-      "Incentives are an overlay, not part of the lending core. The protocol is still defined by LP valuation, Borrow Spoke risk controls, Hub liquidity, and liquidation. Campaigns can encourage participation, but they do not change those mechanics.",
-      "Campaigns are operational and time limited. This page describes how they relate to the rest of Avana. It does not imply a specific rewards program is live on every deployment.",
-      "• Supplier-facing campaigns that deepen capital in the Lend Spoke or connected liquidity layer.",
-      "• Borrower-facing campaigns that encourage healthy LP-backed borrowing.",
-      "• Operator or ecosystem campaigns tied to testing, integrations, or risk-supporting activity.",
+      "Optional reward campaigns that sit on top of Avana without changing core lending mechanics.",
+      "Incentives are an overlay, not part of the lending core. The protocol is defined by LP valuation, Borrow Spoke risk controls, Hub liquidity, and liquidation. Campaigns can encourage participation, but they do not change those mechanics.",
+      "Campaigns are operational and time limited. This does not imply a specific rewards program is live on every deployment.",
+      "Supplier-facing campaigns that deepen capital in the Lend Spoke or connected liquidity layer",
+      "Borrower-facing campaigns that encourage healthy LP-backed borrowing",
+      "Operator or ecosystem campaigns tied to testing, integrations, or risk-supporting activity",
       "When incentives exist, they should be understandable, auditable, and kept separate from core risk logic. Reward math may depend on activity, duration, or campaign rules, but it should not change how Avana values collateral or decides liquidation eligibility.",
-      "Campaigns can reward desired behavior. They should not encourage unsafe leverage or hide the real economics of LP-backed borrowing.",
       "Claim paths, vesting schedules, and reconciliation methods are campaign-specific. They may be handled onchain, through a dedicated rewards controller, or through offchain accounting published by the campaign operator.",
-      "Integrators should always verify the active claim path and eligibility rules for the deployment they are targeting.",
-      "Treat incentives as deployment-specific and season-specific. If a campaign is live, its details should be announced separately from the architecture docs with explicit dates, rules, and distribution terms."
+      "Integrators should verify the active claim path and eligibility rules for the deployment they are targeting.",
+      "Treat incentives as deployment-specific and season-specific. If a campaign is live, its details should be announced separately with explicit dates, rules, and distribution terms."
     ]
   },
   "architecture/lend-spoke": {
     "meta": {
       "title": "Lend Spoke",
-      "description": "How the Lend Spoke accepts lender assets and routes them through the Hub to LP-collateral borrow markets."
+      "description": "How lenders supply assets through the Lend Spoke to fund LP-collateral borrowing."
     },
     "toc": [
       {
@@ -173,43 +171,37 @@
     ],
     "strings": [
       "Lend Spoke",
-      "How the Lend Spoke accepts lender assets and routes them through the Hub to LP-collateral borrow markets.",
+      "How lenders supply assets through the Lend Spoke to fund LP-collateral borrowing.",
       "Overview",
       "Capital Entry Point",
       "Risk-Adjusted Yield",
       "Dynamic Risk Controls",
-      "Supply Capital",
-      "Lenders bring in major assets such as ETH, BTC, and stablecoins through the Lend Spoke instead of interacting with LP collateral directly.",
-      "Route Through the Hub",
-      "The Lend Spoke forwards that liquidity into the Hub, where one reserve layer can support several LP-collateral borrowing markets.",
-      "Power Borrow Spokes",
-      "Borrow Spokes then draw from Hub liquidity while keeping LP valuation, liquidation handling, and market-specific risk controls contained inside each spoke.",
+      "Supply capital",
+      "Lenders deposit ETH, BTC, stablecoins, and other supported assets through the Lend Spoke.",
+      "Route through the Hub",
+      "Capital moves into the Hub reserve layer, where one pool can support multiple LP-collateral borrow markets.",
+      "Fund Borrow Spokes",
+      "Borrow Spokes draw from Hub liquidity while keeping LP valuation and liquidation rules local to each market.",
       "Pool composition and changing inventory balance",
       "Trading volume and realized fee generation",
       "Price divergence between paired assets",
       "Volatility regime shifts and peg stability",
       "Liquidity depth available during stressed unwinds",
-      "The lender-facing entry point that moves supplier capital into the Hub for use by LP-collateral borrow markets.",
-      "The Lend Spoke is the capital intake path for lenders. Depositors supply assets such as ETH, BTC, and major stablecoins here, and that liquidity is then routed into the Hub so Borrow Spokes can fund loans against supported LP collateral without asking lenders to reason about AMM position mechanics.",
-      "This separation is deliberate. The lender path is about supplying lendable assets and receiving the economics of the lending side, while the Borrow Spokes own the messy work of LP valuation, admissibility, health checks, and liquidation rules for each listed collateral family.",
-      "Role in the stack:",
-      "Lend Spoke admits lending capital. Borrow Spokes keep LP-specific risk local to each market, so one lending pool does not require one global collateral model.",
-      "Lender deposits come through the Lend Spoke first, then move into a shared Hub reserve layer. That means capital does not have to be partitioned one pool at a time by every supported LP market, even though the underwriting rules on the borrowing side stay separate.",
-      "Early in the protocol lifecycle, Hub liquidity may also be supplemented by Aave v4 credit lines. Over time, Lend Spoke deposits can become a larger share of the protocol's native lending capital.",
-      "LP collateral is not static inventory. While a loan is open, the underlying position can continue earning trading fees, and that matters for how the borrowing side is modeled. The protocol therefore does not treat every LP like a dead balance that only moves with token prices.",
-      "That distinction also affects the lending side. Credit terms can reflect the fact that some LP markets have fee generation and unwind behavior that differs from non-yielding collateral, and Aave v4 risk premium tools can express those differences when policy allows it. Actual lender returns still depend on live configuration and market state, not on a fixed assumption from this page.",
-      "For lenders:",
-      "deposits through the Lend Spoke fund credit that is underwritten against LP positions whose recoverable value, health logic, and liquidation paths are all defined in Borrow Spokes.",
-      "The lending side depends on the borrower side staying within a risk model that can move with the market. Fixed LTV-style settings alone are not enough for LP collateral, so the framework can respond to changes in pool composition, volume, divergence, volatility, peg behavior, and unwind depth as those conditions change.",
-      "In stressed conditions, caps and related controls can tighten to protect lender liquidity. In calmer conditions, those same controls can be adjusted inside approved policy bounds. The point is not constant tuning for its own sake, but making sure the lending layer is not forced to treat a changing LP market as if nothing has changed.",
-      "Signals that may inform risk updates",
-      "Lender capital follows one entry path, but LP markets do not share one risk profile. Borrow Spokes can keep market-specific parameters local, which lets different LP families operate under different settings without fragmenting the lender experience."
+      "How lenders supply assets that fund borrowing against LP collateral.",
+      "Lenders supply assets such as ETH, BTC, GHO, USDC, USDT, or other supported tokens into the lender-facing side of the protocol. That capital routes through the Hub to support borrowing across LP-collateral markets.",
+      "Lenders do not manage LP ranges, impermanent loss, or AMM-specific collateral operations. Borrow Spokes handle LP underwriting and liquidation logic, while lender capital powers the credit layer.",
+      "Lender deposits come through the Lend Spoke first, then move into the shared Hub reserve layer. Capital does not need to be partitioned per LP market, even though borrowing rules stay separate on the spoke side.",
+      "Early in the protocol lifecycle, Hub liquidity may also be supplemented by Aave v4 credit lines. Over time, Lend Spoke deposits can become a larger share of native lending capital.",
+      "Supplier yield comes from borrowers paying interest to access liquidity backed by LP collateral. Avana combines the shared Hub base rate with spoke-level risk premiums tied to the LP markets being funded.",
+      "Rates move with market conditions, available liquidity, utilization, and the risk profile of underlying borrower markets. Actual returns depend on live configuration, not a fixed assumption from documentation.",
+      "LP collateral changes with pool composition, volume, divergence, volatility, and unwind depth. Risk controls can respond to those signals rather than relying on static settings alone.",
+      "Signals that may inform risk updates"
     ]
   },
   "architecture": {
     "meta": {
       "title": "Protocol Architecture - Borrow Spoke",
-      "description": "Borrow Spoke architecture for LP-backed borrowing, including borrower flows, Hub interaction, and spoke-side collateral responsibilities."
+      "description": "How the Borrow Spoke accepts LP collateral, values positions, and borrows from Hub liquidity."
     },
     "toc": [
       {
@@ -243,7 +235,7 @@
     ],
     "strings": [
       "Protocol Architecture - Borrow Spoke",
-      "Borrow Spoke architecture for LP-backed borrowing, including borrower flows, Hub interaction, and spoke-side collateral responsibilities.",
+      "How the Borrow Spoke accepts LP collateral, values positions, and borrows from Hub liquidity.",
       "Overview",
       "User Experience",
       "Example Flow",
@@ -252,78 +244,63 @@
       "Spoke Responsibilities",
       "Aave v4 Hub Role",
       "Borrow Spoke",
-      "The borrower-facing execution layer that accepts LP collateral, measures risk, and borrows against Hub liquidity.",
-      "The Borrow Spoke is the place where an LP position becomes usable as collateral. It takes custody of the supported position for accounting, reads the data needed to understand that position, values it under the spoke's oracle and risk rules, and exposes the resulting borrowing capacity to the borrower path.",
-      "That makes the Borrow Spoke very different from a generic collateral wrapper. It has to understand how a listed LP is constructed, what value is recoverable in a stressed unwind, how health should be monitored over time, and which liquidation path applies if the account stops meeting the spoke's safety requirements.",
-      "Scope:",
-      "LP collateral differs from static assets, so the Borrow Spoke turns pool composition, price range, fees, and market state into credit parameters and health rules for the markets it lists. The Lend Spoke handles capital entry. The Borrow Spoke handles LP underwriting, monitoring, and liquidation for its own markets.",
+      "The isolated LP-collateral market where users deposit positions, borrow assets, and manage loan health.",
+      "A Borrow Spoke is an isolated LP-collateral market. It decides which pools are supported, how each LP position is valued, what collateral factors apply, which assets can be borrowed, and how liquidation works for that market.",
+      "Borrow Spokes are separated because LP positions do not all behave the same. A stablecoin LP, a correlated ETH-staked ETH LP, and a volatile governance-token LP need different risk settings, different caps, and sometimes different liquidation routes.",
       "Borrow Flow",
-      "Borrowers interact with one spoke-facing surface for the full account lifecycle: deposit approved LP collateral, inspect available capacity, draw debt, repay balances, and claim fees when the market allows it. The interface can stay consistent even when the underlying LP formats differ, because the spoke absorbs the AMM-specific handling.",
-      "Transaction context:",
-      "actions should surface health factor updates, borrow cap impact, and collateral state alongside the transaction so the borrower sees the post-action risk rather than inferring it after the fact.",
-      "Typical borrower-side flow:",
-      "Step 1: Initial Deposit",
-      "The borrower deposits an approved LP position into the Borrow Spoke. The position stays live in the AMM, but the spoke now records it as collateral and begins tracking the data needed for valuation and health.",
-      "Step 2: Borrowing Power Calculated",
-      "The Borrow Spoke reconstructs the position, prices the underlying exposure, applies the relevant collateral factor, and then applies any pool-specific risk treatment. The output of that process is the borrowing capacity shown to the account.",
-      "Step 3: Borrow Multiple Assets",
-      "The borrower draws assets against the capacity approved by the spoke. After the borrow executes, the spoke updates the account's debt representation and recomputes health using the same market rules that admitted the collateral.",
-      "Step 4: Add More Collateral",
-      "Additional approved LP positions can be added later. Each new position is evaluated under the spoke's listing, pricing, and risk rules before its contribution is folded into aggregate capacity.",
-      "The borrower path is easier to reason about if you separate who initiates the action, which layer interprets LP collateral, and which layer supplies cash:",
-      "Top: Borrowers",
-      "Borrowers call the spoke to deposit LP collateral, borrow funds, repay debt, and claim fees. From their perspective, the spoke is the operational entry point for the account.",
-      "Middle: Borrow Spoke (Avana)",
-      "This layer translates AMM-specific position data into lending state. It manages LP custody, computes position-specific risk, enforces health checks, and coordinates the liquidation path when the collateral no longer supports the debt.",
-      "Bottom: Aave v4 Hub & Routed Capital",
-      "The Hub is the shared liquidity source and accounting layer below the spoke. Lend-Spoke-routed capital and other configured Hub sources fund the draws that the Borrow Spoke authorizes.",
-      "The key data path runs from LP state to spoke accounting to Hub liquidity actions. In practice it looks like this:",
-      "LP Position Manager transfers collateral into the Borrow Spoke",
-      "- The spoke stores the position reference, caches the metadata it needs, and starts using that state for valuation and health tracking.",
-      "Borrowers draw assets through the Borrow Spoke",
-      "- Once the account has capacity, the spoke requests liquidity from one or more configured Hubs.",
-      "Debt is represented as debt shares",
-      "- The exchange rate compounds under the configured interest-rate model while the spoke keeps borrower-specific debt and collateral state in sync.",
-      "Liquidations occur when required",
-      "- Hubs, Avana liquidation nodes, or external liquidators can cause the Borrow Spoke to move the LP into the correct unwind path and settle debt through the appropriate liquidation sequence.",
-      "Hub Interaction",
+      "From the user side, one spoke handles the full account lifecycle: deposit LP collateral, check borrowing capacity, borrow, repay, and claim fees when allowed. The interface stays consistent even when underlying LP formats differ across DEXs.",
+      "Step 1: Deposit LP collateral",
+      "The user deposits an approved LP position. The liquidity stays in the pool, but the spoke records it as collateral and starts tracking value and health.",
+      "Step 2: Capacity is calculated",
+      "The spoke reconstructs the position, prices the underlying exposure, applies collateral factors, and shows the resulting borrowing capacity.",
+      "Step 3: Borrow assets",
+      "The user draws assets from Hub liquidity up to their capacity. Debt and health update in the spoke after the borrow confirms.",
+      "Step 4: Add more collateral",
+      "Additional approved LP positions can be deposited later. Each position is valued on its own before contributing to aggregate capacity.",
+      "Borrowers",
+      "Users interact with the Borrow Spoke to deposit collateral, borrow, repay, and manage their loan.",
+      "Borrow Spoke (Avana)",
+      "Values LP positions, enforces health checks, and coordinates liquidation when collateral no longer supports the debt.",
+      "Aave v4 Hub",
+      "Shared liquidity and accounting layer. Borrow Spokes draw from Hub reserves after spoke-side checks pass.",
+      "Collateral enters the spoke",
+      "— the LP position is recorded and tracked for valuation and health.",
+      "Borrow draws Hub liquidity",
+      "— once capacity checks pass, the spoke requests assets from the Hub.",
+      "Debt accrues as debt shares",
+      "— interest compounds through the configured rate model while the spoke keeps account state in sync.",
+      "Liquidation if required",
+      "— unhealthy accounts move through the liquidation path to restore solvency.",
+      "Hub interaction",
       "Borrow:",
-      "the Borrow Spoke issues a draw call to the Hub when a borrower opens or extends debt",
+      "spoke draws from the Hub when a user opens or extends debt",
       "Repay:",
-      "the Borrow Spoke issues a restore call to the Hub when debt is paid back",
-      "Health Check:",
-      "Hub calls Borrow Spoke's",
+      "spoke restores debt to the Hub when a user repays",
+      "Health check:",
+      "Hub reads spoke collateral data via",
       "getCollateralData",
-      "to fetch the spoke's current LP collateral value",
       "Liquidation:",
-      "If aggregate spoke risk breaches threshold, the Hub can call",
+      "Hub can call",
       "handleLiquidation",
       "Component",
       "Responsibility",
-      "Borrow Spoke (per AMM)",
-      "Maintains position records, aggregate collateral USD, and debt USD for that AMM family, and exposes",
+      "Tracks LP positions, aggregate collateral value, and debt for each AMM family. Exposes",
       "getUserAggregate(user)",
       "LiquidationAdapter",
-      "Runs penalty accrual, soft unwind, and hard liquidation for the Borrow Spoke without forcing every LP format through one generic liquidation routine.",
-      "LiquidationAdapter Functions",
-      "applyPenalty(user)",
-      "softUnwind(user, maxUsd)",
-      "- executes a partial decrease, collects the proceeds, swaps as needed, and repays debt up to the requested amount",
-      "liquidate(user)",
-      "Events: PenaltyAccrued, SoftUnwindExecuted, HardLiquidationExecuted",
-      "The Borrow Spoke does not hold lender reserves on its own. It depends on the Hub for pooled liquidity, reserve accounting, and the balance-sheet side of borrowing, while the spoke stays focused on collateral-specific risk decisions.",
-      "Capital Supply",
-      "Assets such as USDC, DAI, and ETH can enter through Hub-connected capital layers, including the Lend Spoke. The Hub manages the shared pool and its accounting, while the Borrow Spoke decides what portion of that liquidity an LP-backed account may safely access.",
-      "Credit Lines",
-      "The Hub grants each Borrow Spoke a credit line that limits how much shared liquidity that spoke can draw. This keeps LP-specific underwriting isolated without giving up the capital efficiency of a shared reserve layer.",
-      "Independent Health Factors",
-      "A user with LP collateral in multiple Borrow Spokes has a separate health factor in each spoke. Surplus in one market does not automatically rescue a shortfall in another, which contains risk to the market that created it."
+      "Runs penalty accrual, soft unwind, and hard liquidation for LP formats that need specialized handling.",
+      "The Borrow Spoke does not hold lender reserves. The Hub provides pooled liquidity, reserve accounting, and the balance-sheet side of borrowing while the spoke handles LP-specific risk.",
+      "Capital supply",
+      "Assets such as USDC, DAI, and ETH enter through the Lend Spoke and Hub. The Borrow Spoke decides how much of that liquidity an LP-backed account may access.",
+      "Credit lines",
+      "Each Borrow Spoke has a credit line that limits how much Hub liquidity it can draw, keeping LP underwriting isolated while sharing capital efficiency.",
+      "Independent health factors",
+      "Collateral in multiple Borrow Spokes is evaluated separately. Surplus in one market does not automatically cover a deficit in another."
     ]
   },
   "architecture/platform-fees": {
     "meta": {
       "title": "Platform Fees",
-      "description": "Operational fee policy for Avana interfaces, including how interface fees differ from protocol economics, how they are disclosed, and how to verify current policy."
+      "description": "How interface fees on Avana frontends differ from protocol borrowing economics."
     },
     "toc": [
       {
@@ -349,32 +326,29 @@
     ],
     "strings": [
       "Platform Fees",
-      "Operational fee policy for Avana interfaces, including how interface fees differ from protocol economics, how they are disclosed, and how to verify current policy.",
+      "How interface fees on Avana frontends differ from protocol borrowing economics.",
       "Overview",
       "Interface vs Protocol",
       "Disclosure",
       "Treasury Usage",
       "Integration Notes",
-      "Interface-level fee policy and disclosure guidance for Avana frontends and service surfaces.",
-      "This page is about interface policy, not about how borrowing works in the core contracts. Avana may charge frontend or service fees on official surfaces, but those charges are separate from the protocol's collateral, oracle, and liquidation rules.",
-      "Exact fee rates, exemptions, and rollout status are operational settings and should be verified in the live interface or release materials before relying on them.",
-      "Avana's core contracts govern LP admission, borrowing capacity, and liquidation behavior. Interface fees, if enabled, sit on top of those contracts as frontend business policy rather than as a change to the borrow or risk engine itself.",
-      "• Protocol economics determine debt accrual, collateral treatment, and liquidation outcomes.",
-      "• Interface fees are an operational choice tied to a specific frontend or service path.",
-      "• Direct contract integrations may follow different fee assumptions than the official UI.",
-      "Any interface fee should be shown clearly before signature so builders and users can distinguish it from gas costs, swap fees, and protocol-level debt or liquidation effects.",
-      "Good disclosure should identify the fee source, whether it is optional or interface-specific, and where the proceeds are directed.",
-      "If interface fees are collected, they typically fund product operations such as infrastructure, monitoring, security work, documentation, and support. Governance may formalize or revise those policies over time.",
-      "Treasury use should be published as operational reporting, not inferred from the protocol's collateral architecture.",
-      "• Builders should verify current fee policy before quoting end-user costs.",
-      "• Avoid hard-coding interface-fee assumptions into protocol integrations unless the policy is formally versioned.",
-      "• When documenting integrations, keep fee policy separate from borrow capacity and liquidation logic."
+      "Interface-level fees on Avana frontends, separate from protocol borrowing economics.",
+      "Avana may charge frontend or service fees on official interfaces. Those charges are separate from the protocol's collateral, oracle, and liquidation rules.",
+      "Fee rates, exemptions, and rollout status are operational settings. Verify them in the live interface or release materials before relying on them.",
+      "Core contracts govern LP admission, borrowing capacity, and liquidation. Interface fees, if enabled, sit on top as frontend business policy rather than as a change to the borrow or risk engine.",
+      "Protocol economics determine debt accrual, collateral treatment, and liquidation outcomes",
+      "Interface fees are tied to a specific frontend or service path",
+      "Direct contract integrations may follow different fee assumptions than the official UI",
+      "Any interface fee should be shown clearly before signature so users can distinguish it from gas costs, swap fees, and protocol-level debt or liquidation effects.",
+      "If interface fees are collected, they typically fund product operations such as infrastructure, monitoring, security work, and support. Governance may formalize or revise those policies over time.",
+      "Verify current fee policy before quoting end-user costs",
+      "Keep fee policy separate from borrow capacity and liquidation logic in integration docs"
     ]
   },
   "getting-started/borrow-assets": {
     "meta": {
       "title": "Borrow Assets",
-      "description": "How borrowing works against LP collateral in Avana, from spoke-side capacity checks through Hub liquidity and post-borrow health validation."
+      "description": "How to borrow against deposited LP collateral on Avana."
     },
     "toc": [
       {
@@ -404,48 +378,44 @@
     ],
     "strings": [
       "Borrow Assets",
-      "How borrowing works against LP collateral in Avana, from spoke-side capacity checks through Hub liquidity and post-borrow health validation.",
+      "How to borrow against deposited LP collateral on Avana.",
       "Overview",
       "Borrow Checks",
       "Health Check",
       "Internal Accounting",
       "Borrowable Assets",
       "Borrowing Power",
-      "Borrow against the combined capacity of admitted LP positions while the Hub provides the shared liquidity layer.",
-      "Borrowing starts only after the Borrow Spoke has already admitted and valued the LP positions in the account. At that point the user is not asking the protocol to re-underwrite from scratch. They are asking to spend some of the borrowing room the spoke has already recognized.",
-      "For a borrow to succeed, the spoke must confirm there is still enough remaining capacity, the account must stay healthy after new debt is added, and the Hub must actually have the requested asset available to draw.",
-      "Important:",
-      "borrowing creates debt that accrues over time. Capacity can change with market conditions, so a safe buffer matters even after a borrow succeeds.",
-      "Position and ownership checks:",
-      "the spoke makes sure the positions still belong to the borrower, are still recognized by the account, and still sit inside the approved collateral set.",
-      "Capacity check:",
-      "the requested debt is tested against the user's remaining aggregate borrowing capacity inside that Borrow Spoke.",
-      "Hub liquidity and cap checks:",
-      "even if collateral is sufficient, the request can still fail if the Hub does not have enough available liquidity or if asset-level or protocol-level caps block more borrowing.",
-      "Post-borrow health check:",
-      "The health check is not a separate shortcut rule. It uses the same valuation path and risk settings that already govern collateral factors and liquidation eligibility. Borrowing only goes through if the account still has enough adjusted collateral value after the extra debt is applied.",
+      "Borrow stablecoins, ETH, or other enabled assets against the LP collateral you have already deposited.",
+      "After your LP is deposited and valued, you can borrow from the Hub using the capacity shown in the interface. Choose the asset and amount, confirm the transaction, and the borrowed tokens are sent to your wallet.",
+      "Interest accrues on open debt, so your health factor can change even if you do nothing. Leave a buffer below your maximum borrow rather than drawing the full amount.",
+      "Position and ownership checks",
+      "The spoke confirms your LP positions are still in the account, still approved, and still recognized as collateral.",
+      "Capacity check",
+      "The borrow amount must fit within your remaining borrowing capacity in that Borrow Spoke.",
+      "Hub liquidity and cap checks",
+      "The Hub must have enough of the requested asset available, and protocol caps must allow the borrow.",
+      "Post-borrow health check",
+      "Your account must stay above the liquidation threshold after the new debt is added.",
+      "Before a borrow is approved, Avana checks that your account stays healthy after the new debt. Health factor is adjusted collateral value divided by outstanding debt. The adjusted collateral value already includes LP valuation, collateral factors, and recoverable-value discounts.",
       "healthFactor = adjustedCollateralValue / outstandingDebt",
-      "The adjusted collateral value already includes conservative LP valuation, collateral factors, and pool-level risk controls. See",
+      "If health falls below the liquidation boundary, the position becomes eligible for liquidation. See",
       "Health Factor",
-      "Collateral Factors",
       "Debt shares:",
       "Hub draw:",
       "the Borrow Spoke requests the asset from the Hub only after the spoke finishes the collateral, capacity, and health checks.",
       "State update:",
       "the user receives the borrowed asset, and the spoke records the resulting debt state so future health checks, repayments, and liquidation logic all reference the same updated account.",
-      "Borrowable assets are configured at the Hub layer. They are not a fixed property of the collateral itself. In practice, deployments usually begin with major stablecoins and other liquid assets before broadening the set.",
-      "Check the active deployment or interface configuration for the exact assets currently enabled to borrow.",
-      "Borrowing power is the sum of the approved LP-position contributions inside one Borrow Spoke. It is not assigned to a pool in the abstract, and it is not one undifferentiated account number divorced from the underlying positions.",
-      "Practical rule:",
-      "the closer you borrow to maximum capacity, the less room you have for price movement, volatility spikes, and recoverable-value haircuts.",
-      "Recommended:",
-      "Liquidation Framework"
+      "Each market shows which assets you can borrow — typically major stablecoins, GHO, ETH, BTC, and other liquid assets configured for that deployment. A supported LP collateral type does not unlock every borrow asset automatically; each debt asset is part of the market configuration.",
+      "Check the Avana interface on your target deployment for the live borrow list.",
+      "Borrowing power is the sum of your approved LP positions in one Borrow Spoke, after collateral factors and risk discounts. Each position contributes based on its own pool, range, liquidity, and risk settings.",
+      "The closer you borrow to your maximum, the less room you have for price moves or volatility. See",
+      "Collateral Factors"
     ]
   },
   "getting-started/claim-lp-fees": {
     "meta": {
       "title": "Claim LP Fees",
-      "description": "Claim accrued LP fees in Avana without fully unwinding LP principal, as long as the account remains healthy after the claim."
+      "description": "How to claim accrued LP trading fees on Avana without exiting your collateral position."
     },
     "toc": [
       {
@@ -471,31 +441,33 @@
     ],
     "strings": [
       "Claim LP Fees",
-      "Claim accrued LP fees in Avana without fully unwinding LP principal, as long as the account remains healthy after the claim.",
+      "How to claim accrued LP trading fees on Avana without exiting your collateral position.",
       "Overview",
       "How It Works",
       "Health Checks",
       "Fee Accounting",
       "Key Benefits",
-      "Claim fee income without closing the collateral position, provided the account still passes health checks after the fees leave.",
-      "Avana treats principal liquidity and accrued fees as different parts of the same LP position. That separation is what makes it possible to realize fee income without necessarily dismantling the principal liquidity that is still being used as collateral.",
-      "A fee claim still affects collateral state, so it is checked like any other action that removes recognized value from the account. It is not just a convenience button layered on top of the protocol.",
-      "The protocol uses a venue-appropriate fee-collection path for the LP position. For concentrated-liquidity positions, that may look like a collect-style call that leaves principal in place. For fungible LPs, the venue's own fee-claim path is used when the venue exposes one.",
-      "The important protocol-level rule is consistent across LP types: claim only the fee component, keep the principal position active when possible, and sync the resulting position state back into the Borrow Spoke.",
-      "The Borrow Spoke checks health around a fee claim because accrued fees may still count toward the recognized collateral buffer until they are removed from the position.",
-      "If removing the claimed fee value would leave the account too close to or beyond the allowed borrowing boundary, the claim path should be blocked until debt is reduced or more collateral is added.",
-      "Oracle outputs separate principal liquidity from accrued fees so the credit model can track them side by side instead of pretending the LP is one flat token balance.",
-      "That accounting split also matters in liquidation, where accrued fees may be applied before the protocol has to unwind principal LP liquidity.",
+      "Claim trading fees from your LP position while it stays active as collateral.",
+      "Avana tracks principal liquidity and accrued fees separately. That means you can claim fee income from your LP without closing the position that backs your loan.",
+      "Fee claims still affect your collateral value, so Avana runs a health check before and after the claim. If claiming fees would push your account below the required collateral boundary, the claim is blocked until you repay debt or add more collateral.",
+      "In the Avana interface, open the claim-fees action for your deposited position. Avana routes the claim through the DEX-specific path for that LP type.",
+      "For concentrated-liquidity DEXs, that is typically a collect-style call that pulls accrued fees while leaving principal in the pool. For fungible LP tokens, Avana uses the DEX's native fee-claim path when one is available.",
+      "After fees are claimed, Avana syncs the updated position state back into the Borrow Spoke so health and borrowing capacity reflect the new balance.",
+      "Accrued fees can count toward your collateral buffer until they are claimed. When you claim fees, that value leaves the position, which can lower health if your account is already close to the liquidation threshold.",
+      "Repay debt or add collateral first if a fee claim would leave your account under the required boundary.",
+      "Avana's oracle model separates principal value from fee value so the protocol knows how much of the position is core liquidity and how much is claimable fee income.",
+      "During liquidation, accrued fees may be applied before principal liquidity is unwound, reducing how much of the core LP position has to be disturbed to cover debt.",
       "Price Oracles",
       "Liquidation Framework",
-      "Earned fees can be realized without fully closing the collateral position",
-      "The same risk engine that prices the LP also prevents fee claims from pulling out too much value"
+      "Your LP principal keeps earning fees and stays active in the pool while you borrow.",
+      "You can realize fee income without unwinding the collateral position.",
+      "Health checks prevent fee claims from pulling out too much value and leaving debt undersecured."
     ]
   },
   "getting-started/manage-loans": {
     "meta": {
       "title": "Manage Loans",
-      "description": "Manage open debt against LP collateral in Avana by watching health, updating positions carefully, and staying inside spoke and Hub limits."
+      "description": "How to monitor and manage an open loan backed by LP collateral on Avana."
     },
     "toc": [
       {
@@ -525,35 +497,34 @@
     ],
     "strings": [
       "Manage Loans",
-      "Manage open debt against LP collateral in Avana by watching health, updating positions carefully, and staying inside spoke and Hub limits.",
+      "How to monitor and manage an open loan backed by LP collateral on Avana.",
       "Overview",
       "Borrowing More",
       "Monitoring Health",
       "Operational Control",
       "Position Changes",
       "Key Constraints",
-      "Managing an open loan means treating collateral, debt, and venue state as one live position instead of separate actions.",
-      "A live Avana loan keeps moving even when the borrower does nothing. LP inventory shifts, fees accrue, markets reprice, and available Hub liquidity can change. Good loan management means following those moving parts together instead of looking only at the debt number in isolation.",
-      "Borrowing more is only possible when the Borrow Spoke still shows unused capacity after revaluing the current positions and the Hub can still provide the requested asset.",
-      "Partial repayment moves in the other direction. It reduces debt immediately, improves health, and often creates the room needed for later actions such as withdrawals, re-ranging, or collateral replacement.",
+      "Track health, repay debt, claim fees, and adjust collateral while your loan is open.",
+      "An open loan on Avana is not static. Your LP keeps earning fees, token prices move, and interest accrues on debt. Check health factor in the interface regularly and act before you are close to liquidation.",
+      "You can borrow more if you still have unused capacity and the Hub has liquidity for the asset you want. Each additional borrow runs the same checks as the first one.",
+      "Partial repayment frees capacity immediately. It lowers debt, improves health, and can make room for withdrawals or fee claims later.",
       "Healthy:",
-      "adjusted collateral value remains comfortably above debt, leaving space for ordinary price movement and position drift.",
+      "collateral value stays comfortably above debt, with room for normal market movement.",
       "Watchlist:",
-      "the account still passes checks, but the remaining buffer is getting thin. This is the time to repay, add approved collateral, or cut exposure before conditions get worse.",
+      "the account still passes checks, but the buffer is thin. Consider repaying, adding collateral, or reducing exposure.",
       "Liquidatable:",
-      "debt has moved too close to or beyond the allowed borrowing boundary, so the liquidation framework is allowed to take over.",
-      "For the canonical definition, use",
+      "health has crossed the liquidation threshold. The liquidation framework can take over.",
       "Health Factor",
       "Repay part of the debt to rebuild buffer",
       "Add more approved LP collateral to the same Borrow Spoke",
-      "Claim accrued fees only when the account still passes post-claim health checks",
+      "Claim accrued fees when the account still passes post-claim health checks",
       "Withdraw or resize collateral only when the remaining account still stays healthy",
-      "Concentrated-liquidity positions may need re-ranging or replacement as market price moves. Fungible LP positions may be resized or rotated within the supported collateral set.",
-      "The protocol does not treat those moves as cosmetic edits. Any change that alters LP exposure is pushed back through the same admission, valuation, and health checks used for deposits and borrows.",
-      "Collateral changes cannot leave the remaining debt above allowed spoke capacity",
+      "While debt is open, your LP position keeps running in the pool. Price moves, fee accrual, and pool inventory shifts can change your collateral value without you taking any action. Avana recalculates health on these changes automatically.",
+      "If you want to claim fees, withdraw collateral, or change the position on the DEX, those actions must go through Avana first. The Borrow Spoke checks whether your account stays healthy after the action before allowing it.",
+      "Collateral changes cannot leave remaining debt above allowed spoke capacity",
       "New or replacement positions must stay inside the approved pool set",
       "Borrow actions still depend on Hub liquidity and active caps",
-      "Keep",
+      "Repay or add collateral before health reaches liquidation territory",
       "Liquidation Framework",
       "Collateral Factors"
     ]
@@ -561,7 +532,7 @@
   "getting-started": {
     "meta": {
       "title": "Getting Started - Deposit LP",
-      "description": "Learn how supported LP positions enter Avana as collateral and how each admitted position starts contributing borrowing capacity inside a Borrow Spoke."
+      "description": "How to deposit a supported LP position into Avana and start building borrowing capacity."
     },
     "toc": [
       {
@@ -587,7 +558,7 @@
     ],
     "strings": [
       "Getting Started - Deposit LP",
-      "Learn how supported LP positions enter Avana as collateral and how each admitted position starts contributing borrowing capacity inside a Borrow Spoke.",
+      "How to deposit a supported LP position into Avana and start building borrowing capacity.",
       "Overview",
       "Deposit Flow",
       "Technical Details",
@@ -603,40 +574,37 @@
       "Weighted baskets and multi-token pools",
       "Each supported family is admitted only through approved pool templates.",
       "Deposit LP",
-      "Deposit moves a supported LP position under spoke custody so Avana can account for it as collateral and turn it into borrowable capacity.",
-      "Depositing is how an LP position becomes usable inside Avana. The Borrow Spoke takes custody of the supported position, records the state it needs for valuation, and starts treating that position as collateral instead of as a wallet-held asset.",
-      "That does not mean the liquidity disappears from the underlying venue. The position can remain active in the AMM while the spoke tracks its exposure, fee state, and risk treatment for later borrow and liquidation checks.",
-      "Important:",
-      "Avana does not grant borrowing power just because an LP position exists. The position must belong to an approved pool family, pass valuation checks, and fit the spoke's current risk configuration.",
-      "1. Transfer or Approve the LP Position",
-      "The user hands the supported LP position to the relevant Borrow Spoke. The exact path depends on whether the collateral is fungible or position-specific, but the protocol outcome is the same: the spoke must control the asset before it can count it as collateral.",
-      "2. Validate the Pool Family",
-      "Next the spoke confirms that the position belongs to an approved pool or template. That check is really a package of requirements: oracle coverage must exist, routing and liquidation support must exist, and the deployment must already have risk settings for that LP family.",
-      "3. Cache Position State",
-      "Once the position is admitted, the protocol stores the state it needs to rebuild the position later. That includes the metadata required to reconstruct exposure, monitor accrued fees, and refresh borrowing power as prices or pool conditions move.",
-      "4. Add the Position to Aggregate Capacity",
-      "After valuation and risk discounts are applied, the position adds its own contribution to the user's total borrowing capacity inside that Borrow Spoke. When the user later borrows, the Hub relies on that spoke-side capacity update.",
-      "Position-aware valuation:",
-      "the deposit itself does not lock in a fixed loan amount. Borrowing power is recalculated from the live LP position using the oracle stack and collateral-factor model each time the protocol needs an updated view.",
-      "Format-specific custody:",
-      "some LP positions are fungible tokens, while others are concentrated-liquidity positions with extra metadata. The Borrow Spoke handles those custody differences so the rest of the credit system can still reason about them in a consistent way.",
-      "supplying collateral does not mean closing the LP. The unwind path is reserved for later user actions or liquidation, not for the initial deposit itself.",
+      "Deposit a supported LP position into Avana to use it as collateral while it keeps earning fees in the pool.",
+      "To borrow against LP collateral on Avana, start by depositing a supported position into the app. Pick an approved pool, connect your wallet, and submit the deposit for the LP you already hold on a supported DEX.",
+      "Avana records the position, values it, and adds it to your borrowing capacity in the relevant Borrow Spoke. Your liquidity stays in the pool and keeps accruing fees. Deposit does not borrow for you — it sets up the collateral you can borrow against next.",
+      "1. Choose a supported pool",
+      "Open the Avana interface and select an LP market that is live on your deployment. Only approved pools can be deposited. See",
+      "Allowed LP Pools",
+      "2. Approve and deposit your LP",
+      "Approve the LP token or position NFT if needed, then confirm the deposit. Avana routes the position into the Borrow Spoke for that market.",
+      "3. Wait for valuation",
+      "The spoke checks that the pool is approved, reconstructs the position, and applies collateral factors to calculate how much borrowing capacity the deposit adds.",
+      "4. Borrow when ready",
+      "Once the deposit clears, your borrowing capacity updates in the interface. You can move on to",
+      "Borrow Assets",
+      "when you want to draw liquidity from the Hub.",
+      "Borrowing power updates with the market.",
+      "Your capacity is recalculated from the live LP position as prices, fees, and pool state change — not locked at the deposit-time mark.",
+      "Some pools issue fungible LP tokens; concentrated-liquidity DEXs use position NFTs or position-manager shares. Avana handles both through the same spoke custody model.",
+      "You are not removing liquidity from the pool when you deposit. The position stays active in the AMM.",
       "Family",
       "Examples",
       "Admission Notes",
-      "Exact live support is governed by the approved pool list. See",
-      "Allowed LP Pools",
-      "Each approved position now contributes its own discounted value to spoke-level borrowing capacity",
-      "The LP principal stays active in the underlying pool and may continue accruing fees",
-      "Actual borrowing still depends on Hub liquidity, spoke health checks, and collateral-factor limits",
-      "The next step in the normal flow is",
-      "Borrow Assets"
+      "Your LP keeps earning trading fees in the underlying pool",
+      "Borrowing capacity appears in the interface for that Borrow Spoke",
+      "You can deposit more approved positions in the same market to add capacity",
+      "Next step:"
     ]
   },
   "getting-started/repay-loans": {
     "meta": {
       "title": "Repay Loans",
-      "description": "How repayment reduces debt in Avana, updates debt shares, settles against the Hub, and clears the path back to collateral release."
+      "description": "How to repay debt on Avana and restore health on your LP-backed loan."
     },
     "toc": [
       {
@@ -648,49 +616,42 @@
         "title": "Repay Process"
       },
       {
-        "id": "technical-details",
-        "title": "Technical Details"
+        "id": "partial-vs-full",
+        "title": "Partial vs Full Repayment"
       },
       {
-        "id": "liquidation-scenario",
+        "id": "when-urgent",
         "title": "When Repayment Is Urgent"
-      },
-      {
-        "id": "full-repayment",
-        "title": "Full Repayment"
       }
     ],
     "strings": [
       "Repay Loans",
-      "How repayment reduces debt in Avana, updates debt shares, settles against the Hub, and clears the path back to collateral release.",
+      "How to repay debt on Avana and restore health on your LP-backed loan.",
       "Overview",
       "Repay Process",
-      "Technical Details",
+      "Partial vs Full Repayment",
       "When Repayment Is Urgent",
-      "Full Repayment",
-      "Repayment lowers debt, improves account health, and is usually the cleanest way to regain freedom over collateral.",
-      "Repayment changes the debt side of the account without changing the LP position itself. When debt goes down, the account gets healthier immediately because the same collateral is now supporting a smaller liability.",
-      "Full repayment is not required for repayment to matter. Even a partial reduction can restore useful headroom when the account is drifting toward the liquidation boundary.",
-      "1. Choose an amount:",
-      "repay a partial amount to regain breathing room, or repay the full balance to leave the debt side entirely.",
-      "2. Submit the debt asset:",
-      "the repayment is routed back through the Borrow Spoke and applied against the outstanding liability.",
-      "3. Recompute health:",
-      "once debt shares are reduced, the account's health factor and remaining capacity update from the new lower debt balance.",
-      "Repayment is fundamentally a debt-share reduction. Whether a user repays by specifying an asset amount or, where supported, a share amount, the protocol resolves the payment into fewer outstanding debt shares and therefore less debt.",
-      "The Borrow Spoke updates local debt state and settles the repayment against Hub-side liquidity accounting so the shared liquidity layer and the LP-collateral layer keep the same picture of the account.",
-      "When an account is getting close to liquidation, repayment is one of the fastest ways to improve safety because it directly reduces debt. It does not depend on waiting for the market to recover or on onboarding more collateral first.",
-      "Once the liquidation boundary is crossed, the root",
-      "Liquidation Framework",
-      "Once debt reaches zero, the account no longer needs collateral to secure an active borrow. At that point the LP positions attached to that account can move back toward normal user control through the collateral-withdrawal path.",
-      "Depending on the collateral implementation, the final release may happen automatically or through an explicit follow-up action. See",
-      "Withdraw Collateral"
+      "Repay debt to improve health and regain control over your LP collateral.",
+      "Repayment sends the borrowed asset back to the protocol and reduces your outstanding debt. Your LP collateral stays in place — only the debt side of the account changes. Health improves immediately because the same collateral now supports a smaller liability.",
+      "1. Choose an amount",
+      "Select partial repayment to regain buffer, or repay the full balance to clear debt entirely.",
+      "2. Submit the debt asset",
+      "Approve and confirm the repayment transaction. The payment is routed through the Borrow Spoke and applied against your outstanding liability, including accrued interest.",
+      "3. Health updates",
+      "Once the repayment confirms, your health factor and remaining borrowing capacity update in the interface.",
+      "Partial repayment is enough to improve safety when your account is drifting toward liquidation. You do not need to clear the full balance for repayment to matter.",
+      "Full repayment clears all debt for that borrow. At that point, collateral restrictions tied to the loan are released and you can withdraw your LP through",
+      "Withdraw Collateral",
+      "Interest keeps accruing on open debt until you repay. The amount shown in the interface includes accrued interest, not just the original borrow.",
+      "When health is near the liquidation threshold, repayment is the fastest way to improve safety. It directly reduces debt without waiting for markets to recover or adding more collateral first.",
+      "Once health crosses the liquidation boundary, see the",
+      "Liquidation Framework"
     ]
   },
   "getting-started/withdraw-collateral": {
     "meta": {
       "title": "Withdraw Collateral",
-      "description": "How LP collateral leaves Avana after debt is repaid or after the remaining account still passes health checks without the withdrawn position."
+      "description": "How to withdraw LP collateral from Avana after repaying debt or when your account stays healthy."
     },
     "toc": [
       {
@@ -702,8 +663,8 @@
         "title": "Withdrawal Process"
       },
       {
-        "id": "position-modifications",
-        "title": "Position Modifications"
+        "id": "partial-withdrawal",
+        "title": "Partial Withdrawal"
       },
       {
         "id": "after-withdrawal",
@@ -712,23 +673,24 @@
     ],
     "strings": [
       "Withdraw Collateral",
-      "How LP collateral leaves Avana after debt is repaid or after the remaining account still passes health checks without the withdrawn position.",
+      "How to withdraw LP collateral from Avana after repaying debt or when your account stays healthy.",
       "Overview",
       "Withdrawal Process",
-      "Position Modifications",
+      "Partial Withdrawal",
       "After Withdrawal",
-      "Collateral can leave the Borrow Spoke only when the account can still support its debt after the requested position is removed or resized.",
-      "Withdrawing collateral is the reverse side of deposit, but it is not just an asset transfer. Before the protocol releases an LP position, it has to prove that removing that collateral will not leave the remaining debt undersecured.",
-      "Full debt repayment is the cleanest path because it removes the need for collateral entirely. But Avana can also allow some collateral changes while debt remains open if the post-change account still passes the same valuation and health checks used everywhere else in the system.",
-      "1. Reduce or clear debt:",
-      "2. Recompute borrowing capacity:",
-      "the Borrow Spoke recalculates the account after removing the requested LP position or resizing it, rather than assuming the old capacity still applies.",
-      "3. Release the LP position:",
-      "if post-withdraw health is valid, the protocol returns or unlocks the collateral so the user can manage it outside the spoke again.",
-      "Not every collateral change is a full exit. A user may resize a fungible LP position, replace a concentrated-liquidity range, or rotate into a different approved position while keeping the same loan open.",
-      "Those changes are only valid when the new or remaining collateral still belongs to the approved set and the resulting account stays above the liquidation boundary after the change is applied.",
-      "The LP position returns to normal user control",
-      "The user can keep it in the underlying pool, re-range it, or exit liquidity entirely",
+      "Withdraw your LP position from Avana when debt is cleared or your account stays healthy without it.",
+      "Withdrawing returns your LP position from Avana custody back to your wallet. The easiest path is full debt repayment first — once debt is zero, collateral is no longer securing a loan and withdrawal is straightforward.",
+      "You can also withdraw while debt is still open if the remaining collateral still supports the outstanding debt after the withdrawal. Avana runs a health check before releasing the position.",
+      "1. Repay debt if needed",
+      "If you still owe debt, repay enough so the remaining collateral can support what is left. Full repayment is the simplest path.",
+      "2. Request withdrawal",
+      "In the Avana interface, select the LP position you want to withdraw and confirm the transaction.",
+      "3. Health check and release",
+      "The Borrow Spoke recalculates your account without the withdrawn position. If health is still valid, the LP token or position NFT is returned to your wallet.",
+      "You can withdraw one LP position while keeping others deposited, or withdraw part of a fungible LP balance, as long as the remaining collateral still covers open debt. Each withdrawal is checked individually against your current health factor.",
+      "Your LP returns to your wallet and you control it directly again",
+      "You can keep it in the pool, adjust the range on the DEX, or exit liquidity entirely",
+      "You can deposit it again later through",
       "Deposit LP"
     ]
   },
@@ -781,7 +743,7 @@
       "Acceptable concentration, volatility, and peg-stability profile",
       "Operational support for indexing, fee handling, and liquidation routing",
       "Governance-controlled allowlist for the pools and LP families Avana is prepared to accept as collateral.",
-      "Avana only accepts LP collateral from pools or templates that have already been reviewed and approved. The allowlist exists because LP support is not just a question of venue brand or token format. The protocol needs enough information to price the position, manage liquidation, and bound the risk it is taking on.",
+      "Avana only accepts LP collateral from pools that have been reviewed and approved. The allowlist exists because LP support is not automatic for every pool on a DEX. The protocol needs enough information to price the position, manage liquidation, and bound the risk it is taking on.",
       "Pool approval works alongside",
       "Collateral Factors",
       "Risk Framework",
@@ -789,7 +751,7 @@
       "A pool enters the allowlist only when the protocol can answer the same basic questions every time: can it price the position, can it exit the position, and can it monitor the risk in production.",
       "Pool approval does not mean a position gets generous credit treatment. After a pool is admitted, each LP position is still valued on its own, discounted according to its risk treatment, and then added to the user's borrowing capacity inside the Borrow Spoke.",
       "That is why pool approval and collateral valuation are tightly linked. A pool can be safe enough to admit while still requiring conservative caps, lower LTVs, or stricter liquidation handling once it is live.",
-      "Builders should think in terms of approved pool templates and deployment-specific allowlists, not as if every LP in a venue is automatically fair game.",
+      "Builders should think in terms of approved pool templates and deployment-specific allowlists, not as if every LP on a DEX is automatically supported.",
       "New pool families usually require coordinated work across oracle handling, liquidation routing, risk limits, and monitoring infrastructure before they are safe to enable."
     ]
   },
@@ -839,7 +801,7 @@
       "Whether the product uses a full embedded handoff or a lighter context-preserving entry point",
       "How partners embed Avana LP-backed credit while Avana keeps responsibility for borrowing, risk, and settlement.",
       "AppKit is for third-party products that already own the user relationship, such as DEXs, wallets, and portfolio apps where LP positions are already visible. The partner product frames the moment, captures context, and decides where the borrow entry appears. Avana runs the actual loan path.",
-      "This page is about placement, handoff, and launch discipline. The partner owns the user surface and distribution. Avana owns the credit rules, settlement, and safety-critical mechanics behind the flow.",
+      "AppKit is for partners that already own the user relationship — DEXs, wallets, and portfolio apps where LP positions are already visible. The partner controls placement and handoff. Avana runs the actual loan path.",
       "AppKit does not force one presentation model. Partners control the entry points and the amount of surrounding guidance, while leaving protocol decisions inside Avana.",
       "Implementation Notes",
       "The best integrations feel like a continuation of the existing product flow, not a hard jump into an unrelated lending app. These notes are the practical baseline for getting that handoff right.",
@@ -850,7 +812,7 @@
   "integrations": {
     "meta": {
       "title": "Supported Integrations",
-      "description": "Deployment-aware guide to the venue families Avana can integrate with, the checks they must pass, and the review work required before enablement."
+      "description": "Which DEXs and AMMs Avana can integrate with and what must be in place before a market goes live."
     },
     "toc": [
       {
@@ -862,8 +824,8 @@
         "title": "AppKit"
       },
       {
-        "id": "venue-families",
-        "title": "Venue Families"
+        "id": "dex-families",
+        "title": "DEX Families"
       },
       {
         "id": "enablement-status",
@@ -876,34 +838,33 @@
     ],
     "strings": [
       "Supported Integrations",
-      "Deployment-aware guide to the venue families Avana can integrate with, the checks they must pass, and the review work required before enablement.",
+      "Which DEXs and AMMs Avana can integrate with and what must be in place before a market goes live.",
       "Overview",
       "AppKit",
-      "Venue Families",
+      "DEX Families",
       "Enablement Status",
       "Review Requirements",
-      "Concentrated liquidity venues",
-      "These venues require position-level handling because LP value depends on current price, active range, and how inventory is split across the position.",
+      "Concentrated liquidity DEXs",
+      "Uniswap v3-style positions need position-level handling because value depends on current price, active range, and how inventory is split across the position.",
       "Fungible stable and weighted pools",
-      "These venues expose ERC-20 LP shares whose value can be rebuilt from pool balances, external prices, and conservative unwind assumptions.",
+      "Curve, Balancer, and similar DEXs expose ERC-20 LP shares whose value can be rebuilt from pool balances, external prices, and conservative unwind assumptions.",
       "Custom or hook-based designs",
-      "More advanced pool architectures are only supportable when Avana has a clear oracle model, a safe custody path, and a liquidation adapter for the design.",
-      "Reference guide to the venue families Avana can work with and the review gates that have to be cleared before support goes live.",
-      "Avana does not integrate venues just because they are popular or expose LP tokens. Support depends on whether the protocol can reconstruct the position accurately, value it conservatively, and exit it cleanly when liquidation is required.",
-      "This page is an integration reference, not a live launch dashboard. For pool admission policy, see",
+      "Advanced pool architectures need a clear oracle model, safe custody path, and liquidation adapter before they can be supported.",
+      "Which DEXs Avana can work with and what must be reviewed before support goes live.",
+      "Avana supports curated LP collateral markets across AMMs such as Uniswap, Balancer, Curve, and Aerodrome as markets are launched. Support is approved pool by approved pool, not automatically granted to every pool on a DEX.",
+      "Each supported market needs reliable asset pricing, enough liquidity depth, a defined unwind route, market caps, and collateral settings that match the pool type. See",
       "Allowed LP Pools",
-      ". For valuation assumptions, see",
       "Price Oracles",
-      "AppKit is the partner-facing path for products that want to drop Avana credit into an existing user journey instead of sending users to a standalone flow with no context.",
-      "Read the",
-      "AppKit developer guide",
+      "AppKit lets DEXs, wallets, and portfolio apps embed Avana credit inside their existing user flows instead of sending users to a separate lending app.",
+      "See the",
+      "AppKit guide",
       "for partner controls, handoff patterns, and launch notes.",
-      "Whether a venue is enabled on a given network is a deployment decision, not a permanent protocol truth. A venue family can be supportable in theory but still disabled on a specific deployment until oracle coverage, liquidation routing, and risk parameters are all ready.",
-      "Builders should verify current deployment configuration in the app, release notes, or published contract registry instead of reading this page as a real-time support matrix.",
-      "• A venue must support conservative position valuation from robust external prices and verifiable state reconstruction.",
-      "• The protocol needs a dependable unwind path for liquidation, including fee collection and routing into the debt asset.",
-      "• Pool depth, concentration risk, correlation assumptions, and operational monitoring all have to fit the risk framework.",
-      "• New venue support is a governance and risk decision, not just an interface update or adapter merge."
+      "Whether a DEX is enabled on a given network is a deployment decision. A DEX family can be supportable in theory but still disabled on a specific deployment until oracle coverage, liquidation routing, and risk parameters are ready.",
+      "Check the Avana interface, release notes, or contract registry for what is live on your target deployment.",
+      "Conservative position valuation from robust external prices and verifiable state reconstruction",
+      "A dependable unwind path for liquidation, including fee collection and routing into the debt asset",
+      "Pool depth, concentration risk, correlation assumptions, and operational monitoring that fit the risk framework",
+      "Governance and risk review before new DEX or pool family support goes live"
     ]
   },
   "integrations/price-oracles": {
@@ -982,8 +943,8 @@
       "Chainlink + block-based TWAP verification",
       "External prices remain the anchor while block-based observations validate position state and unwind assumptions.",
       "How the protocol turns LP position state into credit-relevant collateral values.",
-      "Avana Oracle is not a single price lookup. It is the valuation path that turns an LP position into something the lending system can use for collateral accounting. To do that safely, it combines external market feeds, deterministic reconstruction of the LP, and recovery haircuts based on unwind assumptions instead of trusting raw AMM spot state on its own.",
-      "The exact inputs depend on the collateral family. A fungible LP is reconstructed from balances, reserves, and fees, while concentrated liquidity must be decomposed through its range, liquidity, and current price context. In both cases the result is pushed through recoverable-value logic so borrowing uses a conservative number rather than a frictionless exit assumption.",
+      "Avana prices LP collateral by reconstructing the position and valuing the assets inside it. For fungible LPs, the protocol derives value from external asset prices and pool balance reconstruction. For concentrated liquidity, it decomposes the position by liquidity, range, current tick, token exposure, and accrued fees.",
+      "The result is discounted into recoverable collateral value. Borrow power is based on what the position can realistically support under the market's risk assumptions, not on an optimistic net asset value.",
       "That distinction between mark value and recoverable value is what keeps the oracle useful for lending instead of just analytics. ERC-20 LPs, NFT LPs, and multi-asset pools can share one high-level interface only because each class goes through its own validation and manipulation-resistance checks before the value reaches the spoke.",
       "Oracle Interface: IOracle",
       "Borrow Spokes need one contract surface even though LP formats differ a lot across DEXs. `IOracle` provides that common shape and keeps principal value, accrued fees, and reserved buffers separate so later risk logic does not have to guess which part of the position it is looking at:",
@@ -1000,7 +961,7 @@
       "Reserved portion held back for oracle, unwind, and protocol risk buffers.",
       "The interface hides DEX-specific plumbing from the spoke. That lets the same caller handle ERC-20 LPs, NFT LPs, and multi-asset pools through one return shape while still leaving room for conservative, collateral-family-specific treatment behind the scenes.",
       "LP valuation is a staged process rather than a single spot-price read. The oracle path moves through the following steps:",
-      "Different venues expose different pieces of state, and the oracle uses those inputs in different ways. The important point is that venue-specific data helps reconstruct the position and verify pricing; it is not accepted blindly as a direct collateral mark.",
+      "Different DEXs expose different pieces of state, and the oracle uses those inputs to reconstruct the position and verify pricing. Pool-derived data is not accepted blindly as a direct collateral mark.",
       "DEX / LP Type",
       "Oracle Source",
       "Notes",
@@ -1051,7 +1012,7 @@
   "integrations/router-contract": {
     "meta": {
       "title": "Router Contract",
-      "description": "Operational reference for the Avana router and adapter layer, including what the router coordinates, what it does not decide, and how deployment support is published."
+      "description": "How the Avana router coordinates DEX-specific deposit, withdraw, fee, and liquidation actions."
     },
     "toc": [
       {
@@ -1077,29 +1038,27 @@
     ],
     "strings": [
       "Router Contract",
-      "Operational reference for the Avana router and adapter layer, including what the router coordinates, what it does not decide, and how deployment support is published.",
+      "How the Avana router coordinates DEX-specific deposit, withdraw, fee, and liquidation actions.",
       "Overview",
       "Role in System",
       "Adapter Model",
       "Supported Operations",
       "Deployment Status",
-      "Bundle venue-specific deposit, withdraw, and fee-collection calls into a cleaner interface layer",
+      "Bundle DEX-specific deposit, withdraw, and fee-collection calls into one interface layer",
       "Coordinate unwind or routing steps needed for liquidation execution",
-      "Support controlled position updates such as range changes or migration flows when a venue adapter exists",
-      "Expose a consistent integration surface without becoming the protocol's risk or valuation authority",
-      "Operational interface layer for venue-specific actions, adapter calls, and liquidation-related routing support.",
-      "The router is an execution layer, not the place where Avana decides risk. It exists to standardize venue-specific actions so the protocol does not have to scatter deposit, withdrawal, fee, and unwind mechanics across every flow that touches LP collateral.",
-      "Read this page as an operational reference. For canonical architecture, start with",
+      "Support controlled position updates such as range changes when a DEX adapter exists",
+      "Expose a consistent integration surface without deciding collateral factors or health checks",
+      "Execution layer for DEX-specific actions, adapter calls, and liquidation routing.",
+      "The router coordinates DEX-specific mechanics — deposits, withdrawals, fee claims, and unwind steps — so those actions do not have to be scattered across every flow that touches LP collateral.",
+      "The router does not decide risk. Collateral factors, health checks, and liquidation eligibility remain in the Borrow Spoke, Hub, oracle stack, and risk framework. See",
       "Borrow Spoke",
       "Liquidation Framework",
-      "Different AMM venues expose different entry, exit, and fee-collection methods. The router gives Avana one integration layer for those mechanics so builders are not forced to treat every venue like a fully custom system.",
-      "The router should never be read as the place where collateral factors, health checks, or liquidation eligibility are decided. Those remain upstream protocol concerns in the Borrow Spoke, Hub, oracle stack, and risk framework.",
-      "Each supported venue family should have a venue-aware adapter that knows how to claim fees, remove liquidity, and expose the actions the protocol needs for that LP format. That keeps venue-specific behavior isolated instead of leaking it into every user-facing and liquidation-facing code path.",
-      "Adapter support only matters when it aligns with valuation and liquidation support. A new adapter by itself does not make a venue safe for collateral admission.",
-      "Router addresses, adapter registries, and enabled networks are deployment data. They should be published with releases instead of being guessed from docs. This page intentionally avoids placeholder addresses and speculative rollout promises.",
-      "• Verify chain-specific addresses from the published contract registry or release notes.",
-      "• Confirm that the venue adapter you rely on is enabled on the target deployment.",
-      "• Treat router support as an operational dependency, not as proof that a pool is admitted for collateral."
+      "Different DEXs expose different entry, exit, and fee-collection methods. The router gives Avana one integration layer for those mechanics so builders are not forced to implement each DEX separately in every flow.",
+      "Each supported DEX family has an adapter that knows how to claim fees, remove liquidity, and expose the actions the protocol needs for that LP format. That keeps DEX-specific behavior isolated instead of leaking into every user-facing code path.",
+      "Adapter support only matters when valuation and liquidation support exist for that DEX. A new adapter by itself does not make a pool safe for collateral admission.",
+      "Router addresses, adapter registries, and enabled networks are deployment-specific. Verify chain-specific addresses from the published contract registry or release notes.",
+      "Confirm the DEX adapter you rely on is enabled on the target deployment",
+      "Router support does not mean a pool is admitted for collateral"
     ]
   },
   "introduction/glossary": {
@@ -1147,9 +1106,9 @@
       "The lender-facing capital entry point that routes supplied assets into the Hub so Borrow Spokes can draw shared liquidity.",
       "The shared monetary layer in Aave v4 that manages liquidity, reserves, accounting, and protocol-wide capital coordination across connected spokes.",
       "Hub-and-Spoke Architecture",
-      "A design where shared capital lives in the Hub while collateral-specific logic is isolated in spokes. Avana uses this model because LP collateral needs venue-specific valuation and liquidation behavior.",
+      "A design where shared capital lives in the Hub while collateral-specific logic is isolated in spokes. Avana uses this model because LP collateral needs DEX-specific valuation and liquidation behavior.",
       "Liquidation Node",
-      "A liquidity position from a supported AMM. Depending on the venue, it may be a fungible LP token, a concentrated-liquidity NFT, or another approved pool-share format.",
+      "A liquidity position from a supported AMM. Depending on the DEX, it may be a fungible LP token, a concentrated-liquidity NFT, or another approved pool-share format.",
       "Collateral Factor",
       "The portion of USD collateral value that may count toward borrowing power. In LP markets, this is applied at the position level rather than to the spoke as a whole.",
       "Borrowing Capacity",
@@ -1195,7 +1154,6 @@
       "The set of review, timelock, veto, and emergency roles used by the Risk Framework to keep parameter changes disciplined.",
       "Reentrancy Protection",
       "The contract-level protection that prevents a state-changing workflow from being entered again before the first execution is complete.",
-      "Canonical definitions for protocol-specific and DeFi terminology used throughout the documentation.",
       "LP & Collateral",
       "Debt & Interest",
       "Liquidation",
@@ -1250,23 +1208,20 @@
       "Borrowing Capacity",
       "Health & Liquidation",
       "Fee Treatment",
-      "The ideas that show up repeatedly across Avana's Borrow Spoke, valuation, borrowing, and liquidation docs.",
-      "An LP position is not just a token with a spot price. It is a live liquidity position whose value depends on the underlying assets, pool composition, fee accrual, position structure, and the amount the protocol could realistically recover if liquidation were needed.",
-      "Why this matters:",
-      "Avana underwrites LP markets with spoke and pool specific rules rather than one generic asset model for every LP.",
+      "Standard lending markets usually treat collateral as simple token balances: ETH, BTC, stablecoins, or other ERC-20 assets. Avana is built for collateral that changes shape over time. LP positions can contain multiple assets, accrue fees, drift with price movement, become one-sided, or require a specific unwind path.",
+      "Because of that, Avana underwrites collateral at the LP market level. Each supported pool or LP family can have its own valuation logic, collateral factors, borrowable assets, liquidation assumptions, and risk limits.",
       "Users deposit supported LP positions into a Borrow Spoke. The positions can remain active in their pools while the protocol takes custody for collateral accounting.",
       "Each approved LP position is valued on its own. After collateral factors and pool risk controls are applied, its discounted contribution is added to borrowing capacity inside that Borrow Spoke.",
       "When the user borrows, the spoke draws liquidity from the Hub. LP market risk stays in the spoke layer, while shared capital accounting stays at the Hub.",
-      "Avana values LP collateral conservatively. External asset prices mark the underlyings, while pool data and position state are used to rebuild exposure instead of leaning on raw AMM spot output alone.",
-      "Underlying asset prices from robust external feeds",
-      "Pool inventory split or range-aware position decomposition",
-      "Accrued fees recognized separately from principal liquidity",
-      "Recovery haircuts for unwind slippage, impermanent loss, and stressed liquidation",
-      "Capacity is built position by position inside a Borrow Spoke. Avana does not slap one wholesale factor across the whole account or across every pool in a spoke. Each position contributes only after its own collateral factors and pool-specific controls have been applied.",
-      "Details:",
+      "Avana prices LP collateral by reconstructing the position and valuing the assets inside it. For fungible LPs, the protocol derives value from external asset prices and pool balance reconstruction. For concentrated liquidity, it decomposes the position by liquidity, range, current tick, token exposure, and accrued fees.",
+      "The result is then discounted into recoverable collateral value. Borrow power is based on what the position can realistically support under the market's risk assumptions, not on an optimistic net asset value.",
+      "Avana uses a dual-oracle pricing framework for LP collateral. Chainlink price feeds provide the primary reference for the underlying assets, while AMM-derived TWAPs act as an independent verification layer sourced from onchain liquidity.",
+      "Borrowing capacity comes from the risk-adjusted value of approved LP positions inside a Borrow Spoke. Avana reconstructs each position, prices the underlying exposure, applies pool-level risk treatment, and then applies the market's collateral factor.",
+      "The Borrow Spoke reports that capacity to the Hub for enforcement. When a user has multiple approved positions in the same market, Avana aggregates their capacity while still valuing each position under its own pool, range, liquidity, and risk assumptions.",
       "Collateral Factors",
-      "A Borrow Spoke compares adjusted collateral value with outstanding debt. If prices, oracle checks, or position changes shrink the remaining buffer far enough, the account can cross into liquidation territory.",
-      "Health and liquidation both depend on the same valuation path. Pricing, collateral factors, and liquidation routing have to stay aligned because they ultimately feed the same solvency calculation.",
+      "for how each market sets collateral factors, liquidation thresholds, and liquidation bonus per asset.",
+      "Avana monitors account health inside each Borrow Spoke using the same valuation path that governs borrowing. Adjusted collateral value — already discounted through LP reconstruction, pricing, collateral factors, and recoverable-value assumptions — is compared against outstanding debt.",
+      "When health falls below the liquidation threshold, Aave handles debt accounting and the liquidation entry point against the ERC-20 vault collateral. Avana handles the LP settlement behind that vault token: burning vault collateral, mapping liquidation back to the real LP position, and following the market route to unwind, sell, auction, or transfer the backing position.",
       "LP positions may keep accruing trading fees while they are used as collateral. Avana can recognize those fees in valuation and, subject to health checks, let users claim them without fully exiting the principal LP position.",
       "Related docs:",
       "Price Oracles",
@@ -1280,54 +1235,6 @@
     },
     "toc": [],
     "strings": []
-  },
-  "introduction/testnet-roadmap": {
-    "meta": {
-      "title": "Testnet & Roadmap",
-      "description": "Operational guide to Avana test deployments and roadmap framing, for evaluation context rather than canonical protocol rules or launch promises."
-    },
-    "toc": [
-      {
-        "id": "overview",
-        "title": "Overview"
-      },
-      {
-        "id": "testnet-scope",
-        "title": "Testnet Scope"
-      },
-      {
-        "id": "how-to-evaluate",
-        "title": "How to Evaluate"
-      },
-      {
-        "id": "roadmap-framing",
-        "title": "Roadmap Framing"
-      },
-      {
-        "id": "campaigns-and-status",
-        "title": "Campaigns & Status"
-      }
-    ],
-    "strings": [
-      "Testnet & Roadmap",
-      "Operational guide to Avana test deployments and roadmap framing, for evaluation context rather than canonical protocol rules or launch promises.",
-      "Overview",
-      "Testnet Scope",
-      "How to Evaluate",
-      "Roadmap Framing",
-      "Campaigns & Status",
-      "Operational page for testing Avana deployments and for reading roadmap statements with the right level of caution.",
-      "Testnet status, supported networks, and public roadmap sequencing change faster than the architecture docs. This page exists so builders can separate environment status from stable protocol design and avoid reading rollout language as if it were a specification.",
-      "Use the lightpaper and core developer docs for protocol design. Use this page for environment readiness, trial scope, and rollout context.",
-      "A test deployment may expose only part of the full production design. LP families, borrow assets, oracle coverage, and liquidation tooling can all be narrower or more heavily simplified on testnet.",
-      "• Verify the active network, contract registry, and supported pool set for the current environment.",
-      "• Expect mocked assets, restricted venue coverage, and shortened operational loops.",
-      "• Treat testnet behavior as an evaluation environment, not as a final production promise.",
-      "The most useful evaluation path is to deposit an eligible LP, confirm spoke valuation, observe aggregate borrowing capacity, borrow against Hub liquidity, and then watch how health monitoring and repayment behave on that same account.",
-      "Points, quests, or other campaigns on a test deployment are operational features. They are not the collateral model itself.",
-      "Roadmap language is directional. It points toward broader LP family coverage, stronger oracle support, deeper liquidation tooling, and more refined risk governance. It should not be read as a fixed launch date or a hard network promise unless that commitment is announced separately.",
-      "Active incentives, points programs, or network-specific rollout details should live in campaign docs or release notes. Keeping them out of the core protocol pages makes the developer docs more stable when campaigns or rollout plans change."
-    ]
   },
   "legal/disclaimer": {
     "meta": {
@@ -1545,7 +1452,7 @@
       "Claimable fees can improve recoveries, but they should not be treated as guaranteed until actually realized.",
       "A borrower may have several positions contributing to one spoke-level borrowing capacity, so liquidation sequencing matters.",
       "Worked scenarios that show how one liquidation framework is applied to different LP collateral shapes.",
-      "These examples are deliberately simple. The goal is to show how liquidation plays out across common LP formats without inventing extra rules beyond the",
+      "These examples show how liquidation plays out across common LP formats under the",
       "Liquidation Framework",
       "In every case the job is the same: use conservative collateral marks, repay debt into the credit layer, unwind the LP through a supported path, and return any residual value left after execution costs and the liquidation reward.",
       "A borrower has deposited a fungible LP token from an approved stable or weighted pool. Over time, pool composition and oracle inputs move enough that the account no longer has sufficient adjusted collateral value for its debt.",
@@ -1570,7 +1477,7 @@
       "• When the account becomes unhealthy, the liquidation node chooses the unwind path that best restores solvency.",
       "• One position may be enough to close the shortfall, or several may need to be partially or fully unwound.",
       "• Order of execution, oracle consistency, and route depth matter next to the mark itself.",
-      "Fungible LPs, concentrated ranges, NFT positions, and multi-position accounts all have different unwind details. The shared goal never changes: repay debt from recoverable LP value without leaning on optimistic NAV assumptions. Policy still lives on the main Liquidation Framework page."
+      "Fungible LPs, concentrated ranges, NFT positions, and multi-position accounts have different unwind details. The shared goal is to repay debt from recoverable LP value, not optimistic NAV assumptions."
     ]
   },
   "liquidation/flow": {
@@ -1584,8 +1491,8 @@
         "title": "Overview"
       },
       {
-        "id": "canonical-reference",
-        "title": "Related Policy Docs"
+        "id": "related-docs",
+        "title": "Related Docs"
       },
       {
         "id": "runtime-sequence",
@@ -1604,7 +1511,7 @@
       "Liquidation Flow",
       "Operational liquidation flow for Avana, covering the runtime sequence used when vault-backed LP collateral is seized and unwound.",
       "Overview",
-      "Related Policy Docs",
+      "Related Docs",
       "Runtime Sequence",
       "State Transitions",
       "Operator Notes",
@@ -1623,24 +1530,23 @@
       "State rule",
       "A vault token cannot remain outstanding after its backing LP position has been removed. If the vault tokens are burned, the LP position must be withdrawn, unwound, or moved into settlement.",
       "Runtime sequence for how unhealthy LP-backed positions move from detection through settlement once liquidation starts.",
-      "This page is the runtime view of liquidation. It is written for the moment an account is already unhealthy and an operator needs to understand what happens next, in order, from detection through final settlement.",
-      "LP liquidation is a controlled unwind rather than a single token sale. Debt is repaid, vault collateral is seized, the matching vault token is burned, the real LP position is settled, and residual value is returned if any remains.",
+      "Liquidation starts when an account's health factor falls below the liquidation threshold. Aave handles debt accounting and the liquidation entry point against the ERC-20 vault collateral. Avana handles the LP settlement behind that vault token.",
+      "Debt is repaid, vault collateral is seized, the matching vault token is burned, the real LP position is settled, and any residual value is returned according to the market rule.",
       "Liquidation policy lives on the",
       "Liquidation Framework",
       "page. This flow assumes the recoverable value model in",
       "Price Oracles",
       "Collateral Factors",
-      "Use this page for execution order. Thresholds, rewards, and admission rules still come from the architecture and risk docs, not from this checklist by itself.",
       "Different LP families are all trying to reach the same end state, but they do not get there through identical exits. Adapter-based handling lets each pool family follow the unwind path that matches its own mechanics.",
       "Liquidation bots should index active positions, refresh debt drift, and price accounts from the same oracle stack used by the protocol rather than from raw AMM spot state alone.",
       "Profitability checks should account for slippage, route depth, flashloan costs, and execution risk. Large or unusual unwinds may benefit from private execution paths to reduce adverse MEV exposure.",
-      "Treat this page as a runtime checklist. Keep policy details on the main liquidation, oracle, and risk pages."
+      "Thresholds, rewards, and admission rules come from the architecture and risk docs."
     ]
   },
   "liquidation/liquidators": {
     "meta": {
-      "title": "Liquidators",
-      "description": "Developer guide for liquidation operators, covering monitoring, execution requirements, and LP-specific unwind behavior."
+      "title": "Permissionless participation",
+      "description": "How liquidation operators close unhealthy LP-backed positions on Avana."
     },
     "toc": [
       {
@@ -1661,18 +1567,12 @@
       }
     ],
     "strings": [
-      "Liquidators",
-      "Developer guide for liquidation operators, covering monitoring, execution requirements, and LP-specific unwind behavior.",
-      "Overview",
-      "Coverage Model",
-      "Execution Requirements",
-      "Operational Notes",
       "Permissionless participation",
       "Any keeper or execution desk can liquidate if it can monitor positions, source execution liquidity, and unwind the LP formats Avana supports.",
-      "LP-specific handling",
-      "Liquidation is not a generic token sale. Runtime needs venue-aware logic for fee realization, position removal, routing, and settlement into the debt asset.",
+      "DEX-specific handling",
+      "Liquidation is not a generic token sale. Operators need DEX-aware logic for fee realization, position removal, routing, and settlement into the debt asset.",
       "Coverage quality",
-      "LP positions are harder to unwind than simple tokens. Operators that model the full route for supported venues usually handle stress better than bots that only react to a health trigger.",
+      "LP positions are harder to unwind than simple tokens. Operators that model the full route for supported DEXs usually handle stress better than bots that only react to a health trigger.",
       "Track the same risk state the protocol uses, not a separate heuristic.",
       "Unwind from a clean state transition in one atomic job whenever possible.",
       "Price fee realization, route depth, and residual value before optimizing for speed alone.",
@@ -1680,13 +1580,17 @@
       "Position monitoring and debt drift tracking",
       "Simulation for route depth, slippage, and liquidity availability",
       "Transaction delivery with flashloan or prefunded execution paths",
-      "Venue-aware adapters for the LP families the protocol supports",
-      "How operators service Avana liquidations and what execution infrastructure is required for LP-backed debt.",
-      "Liquidators are the operators who close unhealthy LP-backed positions. Their job is to repay the debt, unwind the LP through the correct venue path, and settle the recovered value back into the credit layer.",
-      "Speed matters, but it is not enough on its own. Operators need to understand what is actually coverable, how the LP is represented, and how fees, slippage, or one-sided inventory change recovery before they submit anything onchain.",
-      "A liquidator for Avana needs more than a trigger bot. It needs enough infrastructure to value positions, simulate exits, source capital, and deliver a transaction that can finish the unwind path it started.",
-      "Practical requirement",
-      "Build venue-specific unwind, fee realization, and debt repayment as one workflow. Disconnected steps make it much easier for a theoretically coverable liquidation to fail in execution."
+      "Liquidators",
+      "How liquidation operators close unhealthy LP-backed positions on Avana.",
+      "Overview",
+      "Coverage Model",
+      "Execution Requirements",
+      "Operational Notes",
+      "Who can liquidate unhealthy positions and what execution infrastructure is required.",
+      "Liquidations are permissionless once a position crosses the liquidation threshold. Any eligible liquidator can repay the allowed debt amount and trigger the settlement path.",
+      "LP collateral is harder to unwind than simple token collateral. Liquidators track the same risk state, vault-token mapping, route depth, and unwind assumptions used by the protocol.",
+      "A liquidator for Avana needs infrastructure to value positions, simulate exits, source capital, and deliver a transaction that completes the unwind path.",
+      "Build DEX-specific unwind, fee realization, and debt repayment as one workflow. Disconnected steps make it easier for a coverable liquidation to fail in execution."
     ]
   },
   "liquidation": {
@@ -1780,7 +1684,7 @@
       "The LP position has been resolved, and the matching vault tokens must no longer be outstanding.",
       "Settlement value is applied in a fixed order. It first covers debt, then the liquidator reward, then settlement costs. Any value left after those obligations is surplus, and that surplus follows the market rule for the collateral being settled.",
       "If settlement value is not enough to cover the debt and reward, the market needs an explicit bad-debt path. Liquidation documentation should describe that shortfall as a real state to handle, not as something that disappears automatically.",
-      "Liquidations remain permissionless, but LP collateral often benefits from a protocol backstop that knows how to execute the expected unwind path. Generic liquidators may be able to repay debt, yet still lack the venue-specific logic needed to settle the position efficiently or safely.",
+      "Liquidations are permissionless once a position crosses the liquidation threshold. Any eligible liquidator can repay the allowed debt amount and trigger the settlement path. LP collateral is harder to unwind than simple token collateral, so Avana also accounts for specialized liquidation coverage.",
       "Liquidators must track the same risk state and collateral state that the protocol uses.",
       "Execution must remain atomic from debt repayment through settlement.",
       "Fee realization, route depth, and residual value should be modeled before optimizing only for speed.",
@@ -1838,15 +1742,15 @@
       "Lend Spoke",
       "Brings lender assets into the system and routes them to the Hub so LP underwriting can stay separate from capital onboarding.",
       "Introduction",
-      "Avana lets approved LP positions back loans without first pulling liquidity from the pool. These docs start with the Hub-and-Spoke split: spokes understand LP risk, while the Hub manages shared lending liquidity.",
+      "Your LP can keep earning fees in the pool while backing a loan. Avana makes that possible on Aave v4: spokes handle LP-specific risk, the Hub powers shared lending liquidity.",
       "Start with Key Concepts",
       "Explore Borrow Spoke",
-      "Avana is a lending protocol for live LP collateral. It uses Aave v4's Hub-and-Spoke model so the Hub handles shared liquidity while each Borrow Spoke handles admission, valuation, health, and liquidation for its own LP markets.",
-      "Supporting LP collateral means more than checking a token balance. The protocol needs to understand what assets the position represents, how much of that value should count for credit, what market-specific haircut applies, and what unwind path exists if the borrower falls below the required safety margin. Avana puts that LP-specific logic in the spoke that lists the collateral instead of trying to flatten every AMM position into one generic lending path.",
-      "Read this page as the map for the rest of the docs. The sections below explain the basic borrowing path first, then point you to the detailed pages for Borrow Spoke, Lend Spoke, collateral factors, oracle logic, health monitoring, and liquidation.",
+      "Avana is a lending protocol built for LP collateral. It lets users deposit supported AMM positions, keep those positions active in the underlying pool, and borrow against them through Aave v4 infrastructure.",
+      "Liquidity providers often have to remove liquidity before they can borrow against their capital. That means exiting the pool, giving up fee exposure, and interrupting the market position they already built.",
+      "Avana solves this by making supported LP positions usable as collateral. The LP stays live, Avana tracks and values the position, and Aave v4 handles the borrow-side accounting through an internal vault collateral token.",
       "The user-facing flow is short, but each stage hides LP-specific underwriting work. Later pages break down the mechanics behind each step.",
       "LP positions already sit in working capital. Without a lending layer, getting cash back out usually means shrinking or closing the pool position first.",
-      "Avana separates shared lending liquidity from LP-specific risk logic. That split is the reason the system can support different collateral types without merging all of their rules together.",
+      "Avana uses Aave v4 because LP collateral needs shared liquidity and isolated risk logic at the same time. The Hub handles the common monetary layer while spokes handle LP-specific work: pool collateral registration, position valuation, risk enforcement, and liquidation execution.",
       "Builders should think of the system in two halves. The Hub is the common balance sheet and debt engine, while Borrow Spokes decide what each LP market can safely support and how that market must be unwound if it fails. The Lend Spoke feeds capital into the Hub so suppliers do not need to reason about LP mechanics just to provide liquidity."
     ]
   },
@@ -1992,7 +1896,7 @@
       "Security reference for the contract surfaces, external dependencies, and review boundaries behind LP-backed lending.",
       "Avana lends against LP collateral, so security review has to cover more than whether a contract compiles or transfers balances correctly. It also has to cover how pricing, custody, liquidation, and privileged controls behave when the market is under stress.",
       "Contract review, economic review, and operational review all matter for LP markets. They reinforce each other and should be treated as one security program, not as three unrelated checklists.",
-      "• LP value can be path dependent and often needs venue-specific custody and unwind logic.",
+      "• LP value can be path dependent and often needs DEX-specific custody and unwind logic.",
       "• Oracle misuse or stale pricing can create economic loss even when contracts execute exactly as coded.",
       "• Governance, parameter control, and emergency response are all part of the attack surface.",
       "Contract review",
@@ -2004,7 +1908,7 @@
       "Bug Bounty",
       "program should both stay active. One does not replace the other.",
       "• Onchain accounting and liquidation settlement should be deterministic once triggered.",
-      "• Oracle sources, venue adapters, and operational liquidator infrastructure are external dependencies and should be monitored as such.",
+      "• Oracle sources, DEX adapters, and operational liquidator infrastructure are external dependencies and should be monitored as such.",
       "• Governance, pause authority, and upgrades are privileged powers that should remain bounded, reviewable, and timelocked wherever possible.",
       "This page does not publish speculative auditor schedules or placeholder milestones. Audit reports, scopes, and remediation notes should be published when they actually exist and can be reviewed in full.",
       "High value audit targets usually include new LP family support, new liquidation paths, new oracle models, and any change that expands privileged control or recoverable value assumptions."
@@ -2047,7 +1951,7 @@
       "Coverage Boundary",
       "Planned backstop layer for handling residual bad debt after the normal LP liquidation path has already run.",
       "Avana's first lines of defense are conservative collateral valuation, bounded exposure, and timely liquidation. A future insurance fund would sit behind those controls and come into view only when liquidation still cannot fully close bad debt.",
-      "This page describes a planned protection layer. It is not a promise that a live insurance fund exists on every deployment today.",
+      "Insurance funds are a planned protection layer. A live insurance fund may not exist on every deployment today.",
       "If activated, the fund could be capitalized through governance-approved treasury allocations, reserve contributions, or a dedicated safety module. The exact funding mix is a risk-governance decision and should be published with the program terms.",
       "• Detect a residual shortfall after an allowed liquidation path has completed.",
       "• Verify that the shortfall fits the fund's approved coverage policy.",

@@ -8,7 +8,7 @@ import { createDocsMetadata } from "@/lib/content-i18n/docs-metadata"
 export async function generateMetadata(): Promise<Metadata> {
   return createDocsMetadata('architecture/health-factor', {
     title: "Health Factor",
-    description: "How a Borrow Spoke compares adjusted collateral value and debt to determine whether an LP-backed account is healthy or liquidatable.",
+    description: "How Avana measures whether an LP-backed account has enough collateral to support its debt.",
   })
 }
 
@@ -25,38 +25,34 @@ export default async function HealthFactorPage() {
     <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
-
           title="Health Factor"
-
-          description="How a Borrow Spoke measures account safety from adjusted collateral value and outstanding debt."
-
+          description="The ratio between risk-adjusted collateral value and outstanding debt inside a Borrow Spoke."
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            The health factor is the Borrow Spoke&apos;s compact view of whether an account still has
-            enough adjusted collateral to support its debt. It is not a separate risk model. The
-            same valuation path, collateral-factor logic, and liquidation assumptions that govern
-            borrowing also determine the health factor that the interface and liquidators read.
+            Health factor measures the relationship between risk-adjusted collateral value and
+            outstanding debt inside a Borrow Spoke. Adjusted collateral value already includes
+            Avana&apos;s LP valuation, collateral factors, pool-level risk treatment, and
+            recoverable-value assumptions.
           </p>
           <p className="text-sm text-gray-600">
-            When health falls far enough that the account no longer satisfies the spoke&apos;s
-            borrowing boundary, the position becomes liquidatable under the canonical{" "}
+            If health falls below the liquidation boundary, the position becomes eligible for
+            liquidation. See the{" "}
             <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
               Liquidation Framework
-            </Link>
-            .
+            </Link>{" "}
+            for what happens next.
           </p>
         </section>
 
         <section id="calculation" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Calculation</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Health is computed per Borrow Spoke. The numerator is the user&apos;s adjusted collateral
-            value inside that spoke, which means the position has already gone through
-            reconstruction, pricing, recoverable-value discounting, and the market-specific
-            collateral settings used by that spoke.
+            Health is computed per Borrow Spoke. The numerator is adjusted collateral value — already
+            discounted through reconstruction, pricing, collateral factors, and recoverable-value
+            assumptions.
           </p>
 
           <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
@@ -66,9 +62,8 @@ export default async function HealthFactorPage() {
           </div>
 
           <p className="mt-4 text-sm text-gray-600">
-            If a user has collateral in more than one Borrow Spoke, each spoke computes health on
-            its own local state. Extra margin in one spoke does not automatically cover a deficit
-            in another, because the protocol contains risk at the market where it was created.
+            If a user has collateral in more than one Borrow Spoke, each spoke computes health
+            independently. Extra margin in one market does not cover a deficit in another.
           </p>
         </section>
 
@@ -76,24 +71,21 @@ export default async function HealthFactorPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Monitoring Bands</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
-              <strong className="text-gray-900">Healthy:</strong> adjusted collateral value stays
-              comfortably above outstanding debt, so the account has room for ordinary market
-              movement without immediate intervention.
+              <strong className="text-gray-900">Healthy:</strong> collateral stays comfortably above
+              debt, with room for normal market movement.
             </p>
             <p>
-              <strong className="text-gray-900">Watchlist:</strong> the account still passes the
-              spoke&apos;s checks, but the buffer is thin enough that a borrower should consider repaying
-              debt, adding collateral, or otherwise improving the position.
+              <strong className="text-gray-900">Watchlist:</strong> the account still passes checks,
+              but the buffer is thin. Consider repaying, adding collateral, or reducing exposure.
             </p>
             <p>
-              <strong className="text-gray-900">Liquidatable:</strong> the account has reached or
-              crossed the liquidation boundary, so the recovery path can move from user action to
-              protocol-enforced settlement.
+              <strong className="text-gray-900">Liquidatable:</strong> health has crossed the
+              liquidation threshold. The recovery path can begin.
             </p>
           </div>
           <p className="mt-4 text-sm text-gray-600">
-            Interface warnings can be more conservative than the hard liquidation threshold. They
-            are there to help users act earlier, not to introduce a second set of protocol rules.
+            Interface warnings may appear earlier than the hard liquidation threshold to give users
+            time to act.
           </p>
         </section>
 
@@ -101,15 +93,12 @@ export default async function HealthFactorPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Response Path</h2>
           <div className="space-y-4 text-sm text-gray-600">
             <p>
-              If health weakens, the first response is still the borrower&apos;s. The account can be
-              repaired by repaying debt, adding approved LP collateral, or changing the position in
-              ways that remain valid under the spoke&apos;s health checks.
+              When health weakens, the borrower can repay debt, add approved LP collateral, or take
+              other actions that improve the account under the spoke&apos;s health checks.
             </p>
             <p>
-              Once health crosses the liquidation boundary, the account moves out of the monitoring
-              phase and into the recovery path. Liquidation nodes and third-party liquidators can
-              then unwind the required collateral path to restore solvency according to the market&apos;s
-              liquidation rules.
+              Once health crosses the liquidation boundary, liquidators can unwind the required
+              collateral path to restore solvency according to the market&apos;s liquidation rules.
             </p>
           </div>
         </section>
@@ -117,28 +106,24 @@ export default async function HealthFactorPage() {
         <section id="user-actions" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">User Actions</h2>
           <ul className="space-y-2 text-gray-600">
-            <li>Borrowing more reduces health because outstanding debt increases against the same collateral base.</li>
-            <li>Repaying debt improves health immediately because the denominator in the ratio falls.</li>
-            <li>Adding approved collateral can increase remaining headroom if the spoke accepts and values it.</li>
-            <li>Claiming fees, withdrawing collateral, or re-ranging positions can reduce health and should be checked against the post-action state before execution.</li>
+            <li>Borrowing more reduces health because debt rises against the same collateral.</li>
+            <li>Repaying debt improves health immediately.</li>
+            <li>Adding approved collateral can increase headroom if the spoke accepts and values it.</li>
+            <li>Claiming fees, withdrawing collateral, or changing positions can reduce health — check the post-action state first.</li>
           </ul>
           <p className="mt-4 text-sm text-gray-600">
-            Use{" "}
+            See{" "}
             <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
               Collateral Factors
             </Link>{" "}
-            for the numerator logic and{" "}
-            <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
-              Liquidation Framework
-            </Link>{" "}
-            for the recovery path that begins once health is no longer sufficient.
+            for how adjusted collateral value is calculated.
           </p>
         </section>
       </div>
 
       <DeveloperScrollSpyRail
         sections={sections}
-        pageSummary="How a Borrow Spoke computes account safety from adjusted collateral value and debt using the same rules that govern liquidation."
+        pageSummary="How health factor measures account safety from adjusted collateral value and debt."
         sectionColor="violet"
       />
     </div>

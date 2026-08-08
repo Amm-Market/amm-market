@@ -8,14 +8,14 @@ import { createDocsMetadata } from "@/lib/content-i18n/docs-metadata"
 export async function generateMetadata(): Promise<Metadata> {
   return createDocsMetadata('getting-started/withdraw-collateral', {
     title: "Withdraw Collateral",
-    description: "How LP collateral leaves Avana after debt is repaid or after the remaining account still passes health checks without the withdrawn position.",
+    description: "How to withdraw LP collateral from Avana after repaying debt or when your account stays healthy.",
   })
 }
 
 const sections = [
   { id: "overview", title: "Overview" },
   { id: "withdrawal-process", title: "Withdrawal Process" },
-  { id: "position-modifications", title: "Position Modifications" },
+  { id: "partial-withdrawal", title: "Partial Withdrawal" },
   { id: "after-withdrawal", title: "After Withdrawal" },
 ]
 
@@ -24,75 +24,71 @@ export default async function WithdrawCollateralPage() {
     <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
-
           title="Withdraw Collateral"
-
-          description="Collateral can leave the Borrow Spoke only when the account can still support its debt after the requested position is removed or resized."
-
+          description="Withdraw your LP position from Avana when debt is cleared or your account stays healthy without it."
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Withdrawing collateral is the reverse side of deposit, but it is not just an asset
-            transfer. Before the protocol releases an LP position, it has to prove that removing
-            that collateral will not leave the remaining debt undersecured.
+            Withdrawing returns your LP position from Avana custody back to your wallet. The easiest
+            path is full debt repayment first — once debt is zero, collateral is no longer securing
+            a loan and withdrawal is straightforward.
           </p>
           <p className="text-sm leading-relaxed text-gray-600">
-            Full debt repayment is the cleanest path because it removes the need for collateral
-            entirely. But Avana can also allow some collateral changes while debt remains open if
-            the post-change account still passes the same valuation and health checks used
-            everywhere else in the system.
+            You can also withdraw while debt is still open if the remaining collateral still supports
+            the outstanding debt after the withdrawal. Avana runs a health check before releasing
+            the position.
           </p>
         </section>
 
         <section id="withdrawal-process" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Withdrawal Process</h2>
-          <div className="space-y-4 text-sm text-gray-600">
-            <p>
-              <strong className="text-gray-900">1. Reduce or clear debt:</strong> repay enough so the
-              remaining account can still be supported by the collateral left behind.
-            </p>
-            <p>
-              <strong className="text-gray-900">2. Recompute borrowing capacity:</strong> the Borrow
-              Spoke recalculates the account after removing the requested LP position or resizing
-              it, rather than assuming the old capacity still applies.
-            </p>
-            <p>
-              <strong className="text-gray-900">3. Release the LP position:</strong> if post-withdraw
-              health is valid, the protocol returns or unlocks the collateral so the user can manage
-              it outside the spoke again.
-            </p>
+          <div className="space-y-5 text-sm text-gray-600">
+            <div>
+              <p className="font-semibold text-gray-900">1. Repay debt if needed</p>
+              <p className="mt-1 leading-relaxed">
+                If you still owe debt, repay enough so the remaining collateral can support what is
+                left. Full repayment is the simplest path.
+              </p>
+            </div>
+            <div>
+              <p className="font-semibold text-gray-900">2. Request withdrawal</p>
+              <p className="mt-1 leading-relaxed">
+                In the Avana interface, select the LP position you want to withdraw and confirm the
+                transaction.
+              </p>
+            </div>
+            <div>
+              <p className="font-semibold text-gray-900">3. Health check and release</p>
+              <p className="mt-1 leading-relaxed">
+                The Borrow Spoke recalculates your account without the withdrawn position. If health
+                is still valid, the LP token or position NFT is returned to your wallet.
+              </p>
+            </div>
           </div>
         </section>
 
-        <section id="position-modifications" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Position Modifications</h2>
-          <div className="space-y-4 text-sm text-gray-600">
-            <p>
-              Not every collateral change is a full exit. A user may resize a fungible LP position,
-              replace a concentrated-liquidity range, or rotate into a different approved position
-              while keeping the same loan open.
-            </p>
-            <p>
-              Those changes are only valid when the new or remaining collateral still belongs to the
-              approved set and the resulting account stays above the liquidation boundary after the
-              change is applied.
-            </p>
-          </div>
+        <section id="partial-withdrawal" className="mb-12">
+          <h2 className="mb-4 type-section-title text-gray-900">Partial Withdrawal</h2>
+          <p className="leading-relaxed text-gray-600">
+            You can withdraw one LP position while keeping others deposited, or withdraw part of a
+            fungible LP balance, as long as the remaining collateral still covers open debt. Each
+            withdrawal is checked individually against your current health factor.
+          </p>
         </section>
 
         <section id="after-withdrawal" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">After Withdrawal</h2>
           <ul className="space-y-2 text-gray-600">
-            <li>The LP position returns to normal user control</li>
-            <li>The user can keep it in the underlying pool, re-range it, or exit liquidity entirely</li>
+            <li>Your LP returns to your wallet and you control it directly again</li>
+            <li>You can keep it in the pool, adjust the range on the DEX, or exit liquidity entirely</li>
             <li>
-              It can also come back later through{" "}
+              You can deposit it again later through{" "}
               <Link href="/developers/getting-started" className="text-[#01AACF] hover:underline">
                 Deposit LP
               </Link>{" "}
-              if the pool remains approved
+              if the pool is still approved
             </li>
           </ul>
         </section>
@@ -100,7 +96,7 @@ export default async function WithdrawCollateralPage() {
 
       <DeveloperScrollSpyRail
         sections={sections}
-        pageSummary="How LP collateral is released once the remaining account still satisfies Avana health checks."
+        pageSummary="How to withdraw LP collateral from Avana after repaying debt or when health allows."
         sectionColor="emerald"
       />
     </div>
