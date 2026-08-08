@@ -28,7 +28,7 @@
       "terms": "תנאים",
       "overview": "סקירה",
       "architecture": "אדריכלות",
-      "liquidation": "פירוק"
+      "liquidation": "חיסול"
     },
     "cta": {
       "sandboxShort": "Sandbox",
@@ -96,7 +96,7 @@
         "introduction": "מבוא",
         "gettingStarted": "מתחילים",
         "architecture": "ארכיטקטורת פרוטוקול",
-        "liquidation": "מסגרת פירוק",
+        "liquidation": "מסגרת חיסול",
         "integrations": "אינטגרציות נתמכות",
         "safety": "מנגנוני בטיחות",
         "legal": "משפטי וציות"
@@ -117,7 +117,7 @@
         "healthFactor": "גורם בריאות",
         "platformFees": "עמלות פלטפורמה",
         "incentives": "תמריצים",
-        "liquidationDesign": "עיצוב פירוק",
+        "liquidationDesign": "עיצוב חיסול",
         "liquidators": "מפרקים",
         "liquidationFlow": "זרימת מימוש",
         "liquidationExamples": "דוגמאות לנזילות",
@@ -194,7 +194,7 @@
     },
     "faq": {
       "title": "שאלות נפוצות",
-      "description": "תשובות על Avana LP בטחונות, הלוואה, הלוואה, כפל, פירוק, ו-Aave v4 ארכיטקטורה."
+      "description": "תשובות על Avana LP בטחונות, הלוואה, הלוואה, כפל, חיסול, ו-Aave v4 ארכיטקטורה."
     },
     "newsroom": {
       "title": "חדר חדשות",
