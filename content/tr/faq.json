@@ -2,7 +2,7 @@
   "categories": [
     {
       "id": "general",
-      "name": "Genel Sorular",
+      "name": "Genel sorular",
       "summary": "",
       "questions": [
         {
@@ -34,7 +34,7 @@
     },
     {
       "id": "protocol-architecture",
-      "name": "Protokol Mimarisi",
+      "name": "Protokol mimarisi",
       "summary": "",
       "questions": [
         {
@@ -49,7 +49,7 @@
         },
         {
           "id": "what-is-a-borrow-spoke",
-          "q": "Borç Verilen Tekerlek Göbeği Nedir?",
+          "q": "Borrow Spoke nedir?",
           "a": "Bir Borç Konuğu, izole bir LP-teminat piyasasıdır. Hangi havuzların desteklendiğine, her LP pozisyonun nasıl değerlendirildiğine, hangi teminat faktörlerinin uygulandığına, hangi varlıkların ödünç alınabileceğine ve o piyasa için tasfiye işlemlerinin nasıl gerçekleştiğine karar verir. \n\nBorç Konukları ayrılmıştır çünkü LP pozisyonları aynı şekilde davranmaz. Bir stabilcoin LP, ilişkilendirilmiş ETH-stake edilmiş ETH LP ve volatil bir yönetim tokenı LP farklı risk ayarları, farklı limitler ve bazen farklı tasfiye yolları gerektirir."
         },
         {
@@ -66,7 +66,7 @@
     },
     {
       "id": "lp-collateral",
-      "name": "LP Teminat",
+      "name": "LP teminatı",
       "summary": "",
       "questions": [
         {
@@ -98,7 +98,7 @@
     },
     {
       "id": "valuation-oracles",
-      "name": "Değerleme ve Kahinler",
+      "name": "Değerleme ve oracle’lar",
       "summary": "",
       "questions": [
         {
@@ -130,7 +130,7 @@
     },
     {
       "id": "borrowing",
-      "name": "Borçlanma Piyasaları",
+      "name": "Borçlanma piyasaları",
       "summary": "",
       "questions": [
         {
@@ -162,7 +162,7 @@
     },
     {
       "id": "supplying-earning",
-      "name": "Tedarik Etme ve Kazanma",
+      "name": "Arz ve kazanç",
       "summary": "",
       "questions": [
         {
@@ -189,7 +189,7 @@
     },
     {
       "id": "liquidations",
-      "name": "Sağlık ve Tasfiye",
+      "name": "Sağlık ve likidasyon",
       "summary": "",
       "questions": [
         {
@@ -221,7 +221,7 @@
     },
     {
       "id": "governance",
-      "name": "Yönetim Süreci",
+      "name": "Yönetişim süreci",
       "summary": "",
       "questions": [
         {
@@ -248,7 +248,7 @@
     },
     {
       "id": "gho-stablecoin",
-      "name": "GHO Stabilcoin",
+      "name": "GHO stablecoin",
       "summary": "",
       "questions": [
         {
@@ -270,7 +270,7 @@
     },
     {
       "id": "multiply-markets",
-      "name": "Çoğalt Pazarlar",
+      "name": "Multiply piyasaları",
       "summary": "",
       "questions": [
         {
@@ -297,7 +297,7 @@
     },
     {
       "id": "automation-features",
-      "name": "Otomasyon Özellikleri",
+      "name": "Otomasyon özellikleri",
       "summary": "",
       "questions": [
         {

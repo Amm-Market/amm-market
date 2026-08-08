@@ -52,8 +52,7 @@ export default async function BuildTomorrowSection() {
           <div className="space-y-4">
             <SectionEyebrow tone="violet">Meet Avana</SectionEyebrow>
             <SectionTitle>
-              <span className="block">A lending protocol</span>
-              <span className="block">for LP-backed loans</span>
+              A lending protocol for LP-backed loans
             </SectionTitle>
           </div>
           <div className="min-w-0 text-left text-[#39515b]">
@@ -67,9 +66,7 @@ export default async function BuildTomorrowSection() {
           <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
             <SectionEyebrow tone="violet">Avana Markets</SectionEyebrow>
             <SectionTitle>
-              <span className="block md:hidden">Unlock Capital</span>
-              <span className="block md:hidden">from Amm Markets</span>
-              <span className="hidden md:block">Unlock Capital from Amm Markets</span>
+              Unlock Capital from AMM Markets
             </SectionTitle>
           </div>
 

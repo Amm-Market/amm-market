@@ -8,54 +8,54 @@
         {
           "id": "what-is-avana",
           "q": "Wat is Avana?",
-          "a": "Avana is een leenprotocol dat is gebouwd voor LP onderpand. Het stelt gebruikers in staat om ondersteunde AMM posities te storten, die posities actief te houden in de onderliggende pool, en er tegen te lenen via Aave v4 infrastructuur.\n\nHet kernidee is dat LP kapitaal niet onbruikbaar hoeft te worden alleen omdat het in een pool zit. Avana verandert ondersteunde LP posities in onderpand dat krediet kan ondersteunen terwijl de oorspronkelijke positie doorgaat met het ondersteunen van swaps, het verdienen van vergoedingen en het verbonden blijven aan de AMM markt."
+          "a": "Avana is een lendingprotocol gebouwd voor LP-collateral. Gebruikers kunnen ondersteunde AMM-posities storten, die posities actief houden in de onderliggende pool, en ertegen lenen via Aave v4-infrastructuur.\n\nHet kernidee: LP-kapitaal hoeft niet onbruikbaar te worden alleen omdat het in een pool zit. Avana maakt ondersteunde LP-posities tot collateral dat krediet kan dragen terwijl de oorspronkelijke positie swaps blijft ondersteunen, fees verdient en gekoppeld blijft aan haar AMM-markt."
         },
         {
           "id": "what-problem-does-avana-solve",
           "q": "Welk probleem lost Avana op?",
-          "a": "Liquiditeitsverschaffers moeten vaak liquiditeit verwijderen voordat ze tegen hun kapitaal kunnen lenen. Dat betekent dat ze de pool moeten verlaten, afstand moeten doen van hun vergoedingsexposure en de markpositie die ze al hebben opgebouwd, onderbreken.\n\nAvana lost dit op door ondersteunde LP-posities bruikbaar te maken als onderpand. De LP blijft actief, Avana volgt en waardeert de positie, en Aave v4 verzorgt de boekhouding aan de leenzijde via een intern vault-underpandtoken."
+          "a": "Liquiditeitsaanbieders moeten vaak liquiditeit verwijderen voordat ze tegen hun kapitaal kunnen lenen. Dat betekent de pool verlaten, fee-exposure opgeven en de marktpositie die je al hebt opgebouwd onderbreken.\n\nAvana lost dit op door ondersteunde LP-posities bruikbaar te maken als collateral. De LP blijft live, Avana volgt en waardeert de positie, en Aave v4 handelt de leenzijdige boekhouding af via een interne vault-collateraltoken."
         },
         {
           "id": "how-is-avana-different-from-standard-lending",
           "q": "Hoe verschilt Avana van een standaard leenmarkt?",
-          "a": "Standaard leningmarkten behandelen onderpand meestal als eenvoudige tokenbalances: ETH, BTC, stablecoins, of andere ERC-20 activa. Avana is gebouwd voor onderpand dat in de loop van de tijd van vorm verandert. LP posities kunnen meerdere activa bevatten, vergoedingen ophopen, meetrillen met prijsbewegingen, eenzijdig worden, of een specifiek afwikkelingspad vereisen.\n\nDaarom beoordeelt Avana onderpand op het LP marktniveau. Elk ondersteund fonds of LP familie kan zijn eigen waarderingslogica, onderpandfactoren, leenbare activa, liquidatieveronderstellingen, en risicolimieten hebben."
+          "a": "Standaard leenmarkten behandelen collateral meestal als eenvoudige tokensaldi: ETH, BTC, stablecoins of andere ERC-20-assets. Avana is gebouwd voor collateral dat van vorm verandert. LP-posities kunnen meerdere assets bevatten, fees opbouwen, meedrijven met prijsbeweging, eenzijdig worden of een specifiek unwind-pad nodig hebben.\n\nDaarom underwritet Avana collateral op LP-marktniveau. Elke ondersteunde pool of LP-familie kan eigen waarderingslogica, collateral factors, leenbare assets, liquidatieaannames en risicolimieten hebben."
         },
         {
           "id": "which-amms-can-avana-support",
           "q": "Welke AMMs kan Avana ondersteunen?",
-          "a": "Avana ondersteunt samengestelde LP onderpandmarkten op AMMs zoals Uniswap, Balancer, Curve en Aerodrome terwijl markten worden gelanceerd. Ondersteuning wordt goedgekeurd per pool, niet automatisch toegekend aan elke pool op een platform.\n\nElke ondersteunde markt heeft duidelijke vereisten: betrouwbare prijsbepaling van activa, voldoende liquiditeitsdiepte, een gedefinieerde ontmantelingsroute, marktlimieten en onderpandinstellingen die passen bij het type pool. Dit is de reden waarom lanceermarkten samengesteld blijven voordat bredere dekking wordt uitgebreid."
+          "a": "Avana ondersteunt gecureerde LP-collateralmarkten over AMMs zoals Uniswap, Balancer, Curve en Aerodrome naarmate markten live gaan. Support wordt pool per pool goedgekeurd, niet automatisch voor elke pool op een venue.\n\nElke ondersteunde markt heeft duidelijke eisen: betrouwbare assetprijzen, genoeg liquiditeitsdiepte, een gedefinieerde unwind-route, market caps en collateralsettings die bij het pooltype passen. Daarom blijven launch-markten gecureerd voordat bredere dekking groeit."
         },
         {
           "id": "does-avana-replace-the-amm",
           "q": "Vervangt Avana de AMM waar mijn liquiditeit zit?",
-          "a": "Nee. De AMM verwerkt nog steeds swaps, poolstatus, prijsbewegingen en het genereren van vergoedingen. Avana voegt een onderpand- en kredietlaag toe rond ondersteunde LP-posities.\n\nWanneer je een in aanmerking komende positie in Avana stort, volgt het protocol het echte LP-onderpand en koppelt dit aan de boekhouding aan de leenzijde. De onderliggende AMM blijft de plaats waar de liquiditeitspositie bestaat en vergoedingen verdient."
+          "a": "Nee. De AMM blijft swaps, poolstate, prijsbeweging en feegeneratie afhandelen. Avana voegt een collateral- en kredietlaag toe rond ondersteunde LP-posities.\n\nWanneer je een in aanmerking komende positie in Avana stort, volgt het protocol het echte LP-collateral en koppelt het aan leenzijdige boekhouding. De onderliggende AMM blijft de venue waar de liquiditeitspositie bestaat en fees verdient."
         }
       ]
     },
     {
       "id": "protocol-architecture",
-      "name": "Protocollenarchitectuur",
+      "name": "Protocolarchitectuur",
       "summary": "",
       "questions": [
         {
           "id": "how-does-avana-work-at-a-high-level",
-          "q": "Hoe werkt Avana op een hoog niveau?",
-          "a": "Avana werkt in drie stappen. Ten eerste stort een gebruiker een ondersteunde LP-positie in Avana. Ten tweede evalueert Avana de positie door de onderliggende activa, de poolstructuur, volatiliteit, correlatie, liquiditeitsdiepte en het liquidatierisico te lezen. Ten derde, zodra de positie de marktkontroles doorstaat, kan de gebruiker lenen op basis van de risico-aangepaste waarde.\n\nDe LP-positie blijft actief in de AMM. Avana beheert het onderpandregister, de waardering en LP-specifieke risicologica, terwijl Aave v4 de krediet- en boekhoudzijde van het lenen afhandelt via het verbonden Hub-and-Spoke-model."
+          "q": "Hoe werkt Avana op hoog niveau?",
+          "a": "Avana werkt in drie stappen. Eerst stort een gebruiker een ondersteunde LP-positie in Avana. Daarna evalueert Avana de positie via onderliggende assets, poolstructuur, volatiliteit, correlatie, liquiditeitsdiepte en liquidatierisico. Zodra de marktchecks slagen, kan de gebruiker lenen tegen de risico-aangepaste waarde.\n\nDe LP-positie blijft actief in de AMM. Avana beheert collateralrecord, waardering en LP-specifieke risicologica, terwijl Aave v4 het leenzijdige krediet en accounting afhandelt via het gekoppelde Hub-and-Spoke-model."
         },
         {
           "id": "why-aave-v4-hub-and-spoke",
-          "q": "Waarom gebruikt Avana een Aave v4 Hub-and-Spoke-infrastructuur?",
-          "a": "Avana gebruikt Aave v4 omdat LP onderpand tegelijkertijd gedeelde liquiditeit en geïsoleerde risicologica nodig heeft. De Hub behandelt de gemeenschappelijke monetaire laag: reserves, boekhouding, rentemodellen en wereldwijde kredietcoördinatie.\n\nDe Spokes behandelen LP-specifiek werk: registratie van poolonderpand, waardering van posities, handhaving van risico’s en uitvoering van liquidaties. Hierdoor kunnen stabiele pools, gecorreleerde paren, volatiele paren en markten met geconcentreerde liquiditeit de regels gebruiken die ze werkelijk nodig hebben, in plaats van gedwongen te worden in één generiek risicomodel."
+          "q": "Waarom gebruikt Avana Aave v4 Hub-and-Spoke-infrastructuur?",
+          "a": "Avana gebruikt Aave v4 omdat LP-collateral tegelijk gedeelde liquiditeit en geïsoleerde risicologica nodig heeft. De Hub handelt de gemeenschappelijke monetary layer af: reserves, accounting, interest rate models en globale kredietcoördinatie.\n\nDe Spokes doen LP-specifiek werk: pool-collateralregistratie, positiewaardering, risk enforcement en liquidatie-uitvoering. Zo kunnen stabiele pools, gecorreleerde pairs, volatiele pairs en concentrated-liquidity-markten de regels gebruiken die ze echt nodig hebben — in plaats van in één generiek risicomodel te worden geperst."
         },
         {
           "id": "what-is-a-borrow-spoke",
-          "q": "Wat is een geleende spaak?",
-          "a": "Een Borrow Spoke is een geïsoleerde LP-collaterale markt. Het bepaalt welke pools worden ondersteund, hoe elke LP-positie wordt gewaardeerd, welke collateraalfactoren van toepassing zijn, welke activa kunnen worden geleend en hoe liquidatie werkt voor die markt.\n\nBorrow Spokes zijn gescheiden omdat LP-posities niet allemaal hetzelfde gedrag vertonen. Een stablecoin LP, een gecorreleerde ETH-gestakte ETH LP en een volatiel governance-token LP hebben verschillende risicoinstellingen, verschillende limieten en soms verschillende liquidatieroutes nodig."
+          "q": "Wat is een Borrow Spoke?",
+          "a": "Een Borrow Spoke is een geïsoleerde LP-collateralmarkt. Hij bepaalt welke pools ondersteund zijn, hoe elke LP-positie wordt gewaardeerd, welke collateral factors gelden, welke assets leenbaar zijn en hoe liquidatie voor die markt werkt.\n\nBorrow Spokes zijn gescheiden omdat LP-posities niet allemaal hetzelfde gedragen. Een stablecoin-LP, een gecorreleerde ETH–staked-ETH-LP en een volatiele governance-token-LP hebben andere risico-instellingen, caps en soms andere liquidatieroutes nodig."
         },
         {
           "id": "what-are-vault-tokens",
-          "q": "Wat zijn Avana kluis tokens?",
-          "a": "Kluis tokens zijn interne ERC-20 boekhoudkundige activa die goedgekeurde LP zekerheden vertegenwoordigen aan de Aave-zijde van het systeem. Bijvoorbeeld, een ondersteunde LINK/ETH positie kan worden gekoppeld aan een kluisLINKETH-stijl zekerhedentoken, terwijl een WETH/USDC positie kan worden gekoppeld aan een kluisWETHUSDC-stijl token.\n\nHet kluis token is de brug. Avana houdt de werkelijke LP positie en de waarde ervan bij, de Aave Adapter levert het bijbehorende kluis token in Aave v4, en Aave gebruikt dat token voor het bijhouden van zekerheden. De gebruiker leent niet alleen tegen een abstracte wrapper; het kluis token blijft gedekt door de achterliggende LP positie."
+          "q": "Wat zijn Avana vault tokens?",
+          "a": "Vault tokens zijn interne ERC-20 boekhoudkundige activa die goedgekeurde LP-zekerheden vertegenwoordigen aan de Aave-zijde van het systeem. Bijvoorbeeld, een ondersteunde LINK/ETH-positie kan worden gekoppeld aan een vaultLINKETH-stijl collateral-token, terwijl een WETH/USDC-positie kan worden gekoppeld aan een vaultWETHUSDC-stijl token.\n\nHet vault token is de brug. Avana houdt de werkelijke LP-positie en de waarde ervan bij, de Aave Adapter levert het bijbehorende vault token in Aave v4, en Aave gebruikt dat token voor collateral-accounting. De gebruiker leent niet alleen tegen een abstracte wrapper; het vault token blijft gedekt door de achterliggende LP-positie."
         },
         {
           "id": "what-are-the-main-protocol-modules",
@@ -66,7 +66,7 @@
     },
     {
       "id": "lp-collateral",
-      "name": "LP Onderpand",
+      "name": "LP-collateral",
       "summary": "",
       "questions": [
         {
@@ -98,7 +98,7 @@
     },
     {
       "id": "valuation-oracles",
-      "name": "Waardering & Orakels",
+      "name": "Waardering & oracles",
       "summary": "",
       "questions": [
         {
@@ -162,7 +162,7 @@
     },
     {
       "id": "supplying-earning",
-      "name": "Verzorgen & Verdienen",
+      "name": "Uitlenen & verdienen",
       "summary": "",
       "questions": [
         {
@@ -172,8 +172,8 @@
         },
         {
           "id": "where-does-supplier-yield-come-from",
-          "q": "Waar komt het rendement van de leverancier vandaan?",
-          "a": "Het rendement voor leveranciers komt van kredietnemers die rente betalen om toegang te krijgen tot liquiditeit die gedekt is door LP onderpand. Het model van Avana combineert de gedeelde Hub-basistarief met risicopremies op spakeniveau die gekoppeld zijn aan de LP-markten die gefinancierd worden.\n\nDit betekent dat het rendement zowel de normale benutting als de extra vraag veroorzaakt door LP-gedekte leningen kan weerspiegelen. Rentes bewegen nog steeds mee met de marktomstandigheden, beschikbare liquiditeit, benutting en het risicoprofiel van de onderliggende kredietnemersmarkten."
+          "q": "Waar komt supplier-yield vandaan?",
+          "a": "Supplier-yield komt van kredietnemers die rente betalen voor toegang tot liquiditeit die door LP-collateral is gedekt. Avana combineert het gedeelde Hub-basistarief met risicopremies op Spoke-niveau die gekoppeld zijn aan de LP-markten die gefinancierd worden.\n\nYield kan dus zowel normale utilization als de extra vraag van LP-gedekt lenen weerspiegelen. Tarieven bewegen nog steeds met marktomstandigheden, beschikbare liquiditeit, utilization en het risicoprofiel van de onderliggende leenmarkten."
         },
         {
           "id": "do-lenders-manage-lp-collateral",
@@ -189,7 +189,7 @@
     },
     {
       "id": "liquidations",
-      "name": "Gezondheid & Liquidatie",
+      "name": "Health & liquidatie",
       "summary": "",
       "questions": [
         {
@@ -205,12 +205,12 @@
         {
           "id": "how-does-liquidation-work",
           "q": "Hoe werkt liquidatie op Avana?",
-          "a": "Liquidatie begint wanneer de gezondheidsfactor van een account onder de liquidatiedrempel daalt. Aave behandelt schuldadministratie, gezondheidscontroles en het liquidatie-invoerpunt tegen het ERC-20 kluisborging.\n\nAvana behandelt de LP afwikkeling achter dat kluis-token. De Adapter verbrandt de kluisborging, koppelt de liquidatie terug aan de echte LP positie, en de afwikkelingslaag volgt de marktroute: afwikkelen, verkopen, veilen of de achterliggende positie overdragen. Schuld wordt eerst gedekt, daarna de beloning van de liquidator en afwikkelingskosten, met overtollige middelen volgens de marktregel afgewikkeld."
+          "a": "Liquidatie begint wanneer de gezondheidsfactor van een account onder de liquidatiedrempel daalt. Aave behandelt schuldadministratie, gezondheidscontroles en het liquidatie-invoerpunt tegen het ERC-20 vault-collateral.\n\nAvana behandelt de LP-afwikkeling achter dat vault token. De Adapter verbrandt het vault-collateral, koppelt de liquidatie terug aan de echte LP-positie, en de afwikkelingslaag volgt de marktroute: afwikkelen, verkopen, veilen of de achterliggende positie overdragen. Schuld wordt eerst gedekt, daarna de beloning van de liquidator en afwikkelingskosten, met overtollige middelen volgens de marktregel afgewikkeld."
         },
         {
           "id": "are-liquidations-permissionless",
           "q": "Wie kan een ongezonde positie liquideren?",
-          "a": "Liquidaties zijn toegestaan zonder toestemming zodra een positie de liquidatiedrempel overschrijdt. Elke in aanmerking komende liquidator kan het toegestane schuldbedrag aflossen en het afwikkelingspad activeren.\n\nLP onderpand is moeilijker af te wikkelen dan eenvoudig tokenonderpand, dus Avana houdt ook rekening met gespecialiseerde liquidatiebescherming. Liquidators volgen dezelfde risicostatus, kluis-token toewijzing, routediepte en afwikkelingsaannames die door het protocol worden gebruikt."
+          "a": "Liquidaties zijn toegestaan zonder toestemming zodra een positie de liquidatiedrempel overschrijdt. Elke in aanmerking komende liquidator kan het toegestane schuldbedrag aflossen en het afwikkelingspad activeren.\n\nLP onderpand is moeilijker af te wikkelen dan eenvoudig tokenonderpand, dus Avana houdt ook rekening met gespecialiseerde liquidatiebescherming. Liquidators volgen dezelfde risicostatus, vault-token-toewijzing, routediepte en afwikkelingsaannames die door het protocol worden gebruikt."
         },
         {
           "id": "what-happens-to-fees-during-liquidation",
@@ -221,12 +221,12 @@
     },
     {
       "id": "governance",
-      "name": "Bestuursproces",
+      "name": "Governanceproces",
       "summary": "",
       "questions": [
         {
           "id": "how-are-new-pools-added",
-          "q": "Hoe worden nieuwe LP-zwembaden toegevoegd?",
+          "q": "Hoe worden nieuwe LP-pools toegevoegd?",
           "a": "Nieuwe LP pools worden toegevoegd via marktbeoordeling en goedkeuring. Een pool heeft betrouwbare onderliggende activaprijzing, voldoende liquiditeit, duidelijke afwikkelingsaannames en risicoparameters die passen bij het type onderpand nodig.\n\nAvana begint met zorgvuldig geselecteerde LP markten zodat waardering en liquidatie schoon blijven. Een bredere dekking van pools kan in de loop van de tijd worden uitgebreid naarmate oracle-ondersteuning, liquiditeitsdiepte en risicogegevens verbeteren."
         },
         {
@@ -248,7 +248,7 @@
     },
     {
       "id": "gho-stablecoin",
-      "name": " St Stablecoin",
+      "name": "GHO-stablecoin",
       "summary": "",
       "questions": [
         {
@@ -270,7 +270,7 @@
     },
     {
       "id": "multiply-markets",
-      "name": "Vermenigvuldig Markten",
+      "name": "Multiply-markten",
       "summary": "",
       "questions": [
         {

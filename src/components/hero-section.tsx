@@ -214,9 +214,7 @@ function HeroSectionBody() {
           <div className="flex max-w-[600px] flex-col gap-2">
             <SectionEyebrow tone="cyan">Borrow Markets</SectionEyebrow>
             <SectionTitle>
-              <span className="block lg:hidden">Access loans using</span>
-              <span className="block lg:hidden">hundreds of LP collateral</span>
-              <span className="hidden lg:block lg:whitespace-nowrap">Access loans using hundreds of LP collateral</span>
+              Access loans using hundreds of LP collateral
             </SectionTitle>
           </div>
             </div>
@@ -252,8 +250,7 @@ function HeroSectionBody() {
           <div className="max-w-[33rem]">
             <SectionEyebrow tone="emerald">Lend Markets</SectionEyebrow>
             <SectionTitle className="mt-5 max-w-none">
-              <span className="block whitespace-nowrap">Earn interest from</span>
-              <span className="block whitespace-nowrap">LP borrower demand</span>
+              Earn interest from LP borrower demand
             </SectionTitle>
 
             <div className="mt-7 grid max-w-[32rem] gap-5">
@@ -610,8 +607,7 @@ function HeroSectionBody() {
         <div className="max-w-[58rem] space-y-3 text-left sm:space-y-4">
           <SectionEyebrow tone="rose">Who it&apos;s for</SectionEyebrow>
           <SectionTitle className="max-w-[18ch] sm:max-w-[22ch] lg:max-w-none">
-            <span className="block sm:inline">Ways teams put</span>{" "}
-            <span className="block sm:inline">LP credit to work</span>
+            Ways teams put LP credit to work
           </SectionTitle>
         </div>
 
@@ -642,7 +638,7 @@ function HeroSectionBody() {
               <div className="space-y-4">
                 <SectionEyebrow tone="slate">Engineered for resilience</SectionEyebrow>
                 <SectionTitle>
-                  <span className="block lg:whitespace-nowrap">
+                  <span className="block">
                     Backed by{" "}
                     <span className="inline-flex translate-y-[-0.02em] items-center align-middle">
                       <Image
@@ -655,7 +651,7 @@ function HeroSectionBody() {
                     </span>
                     ,
                   </span>
-                  <span className="block lg:whitespace-nowrap">Powered by Aave v4</span>
+                  <span className="block">Powered by Aave v4</span>
                 </SectionTitle>
               </div>
               <div className="text-left text-[#39515b]">

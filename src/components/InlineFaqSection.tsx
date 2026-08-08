@@ -22,12 +22,7 @@ interface InlineFaqSectionProps {
 
 function renderFaqTitle(title: string, t: (s: string) => string) {
   if (title === "Frequently asked questions" || title === "Frequently asked questions.") {
-    return (
-      <>
-        <span className="block whitespace-nowrap">{t("Frequently asked")}</span>
-        <span className="block whitespace-nowrap">{t("questions")}</span>
-      </>
-    )
+    return t("Frequently asked questions")
   }
 
   return t(title)
