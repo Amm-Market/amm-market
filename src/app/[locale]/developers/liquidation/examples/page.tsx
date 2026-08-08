@@ -41,8 +41,7 @@ export default async function LiquidationExamplesPage() {
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            These examples are deliberately simple. The goal is to show how liquidation plays out
-            across common LP formats without inventing extra rules beyond the{" "}
+            These examples show how liquidation plays out across common LP formats under the{" "}
             <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
               Liquidation Framework
             </Link>
@@ -139,10 +138,9 @@ export default async function LiquidationExamplesPage() {
         <section id="summary" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Summary</h2>
           <p className="type-body-copy leading-relaxed text-gray-600">
-            Fungible LPs, concentrated ranges, NFT positions, and multi-position accounts all have
-            different unwind details. The shared goal never changes: repay debt from recoverable LP
-            value without leaning on optimistic NAV assumptions. Policy still lives on the main
-            Liquidation Framework page.
+            Fungible LPs, concentrated ranges, NFT positions, and multi-position accounts have
+            different unwind details. The shared goal is to repay debt from recoverable LP value,
+            not optimistic NAV assumptions.
           </p>
         </section>
       </div>
