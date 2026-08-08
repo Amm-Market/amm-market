@@ -212,7 +212,9 @@
       "L'objectif est une séparation nette, avec l'exécution technique, les opérations, la modélisation du marché et la révision des garanties chacune gérée indépendamment.",
       "Nous sommes une petite équipe travaillant sur un grand problème. Si vous êtes intéressé à rejoindre cet effort de recherche,",
       "Un protocole de prêt pour les prêts garantis par des LP",
-      "Un protocole de prêt pour"
+      "Un protocole de prêt pour",
+      "Voici Avana :",
+      "nous serions ravis d'avoir de vos nouvelles."
     ]
   },
   "brand/page": {
@@ -443,7 +445,25 @@
   },
   "homepage/HomepageNewsroomSection": {
     "strings": [
-      "Lire salle de rédaction"
+      "Voici Avana :",
+      "Actualités",
+      "Les dernières actualités d'Avana",
+      "Lire l'article",
+      "Cadre de risque",
+      "Smart Agents",
+      "Modèle de liquidation",
+      "Guide d'emprunt",
+      "Garantie Uniswap",
+      "Garantie Curve",
+      "Efficacité du capital",
+      "Couverture LP",
+      "Stratégie de trésorerie",
+      "Stratégie de levier",
+      "Contrôles de position",
+      "Conception du risque",
+      "Architecture",
+      "Conception des oracles",
+      "Vue développeur"
     ]
   },
   "invest-growth-calculator-section": {
@@ -479,18 +499,18 @@
       "USDD",
       "Éther",
       "Ether enveloppé",
-      "st 2 24⟧",
+      "stETH",
       "wstETH",
       "rETH",
       "cbETH",
       "nousETH",
       "24 x x",
-      "à partir de 24⟧",
+      "osETH",
       "Bitcoin enveloppé",
       "25 dollars t",
       "cbBTC",
-      "ren 2 25⟧",
-      "25 dollars singapouriens⟧",
+      "renBTC",
+      "sBTC",
       "LBTC",
       "Aave",
       "Uniswap",
@@ -551,7 +571,12 @@
       "Lancement multiple",
       "Ce qui vient ensuite",
       "Feuille de route",
-      "Avana se développe en trois phases. Chaque phase s'appuie sur la précédente : Marchés d'emprunt, Marchés de prêt, puis Marchés de multiplication."
+      "Avana se développe en trois phases. Chaque phase s'appuie sur la précédente : Marchés d'emprunt, Marchés de prêt, puis Marchés de multiplication.",
+      "Objectif T3 2026",
+      "Objectif T4 2026",
+      "Objectif T1 2027",
+      "Publié",
+      "En cours"
     ]
   },
   "position-safety-section": {

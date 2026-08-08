@@ -212,7 +212,9 @@
       "O objetivo é uma separação clara, com execução técnica, operações, modelagem de mercado e revisão de garantias, cada uma sendo de propriedade independente.",
       "Somos uma pequena equipe trabalhando em um grande problema. Se você estiver interessado em participar deste esforço de pesquisa,",
       "Um protocolo de empréstimo para empréstimos garantidos por LP",
-      "Um protocolo de empréstimo para"
+      "Um protocolo de empréstimo para",
+      "Apresentamos a Avana:",
+      "adoraríamos ouvir de você."
     ]
   },
   "brand/page": {
@@ -443,7 +445,25 @@
   },
   "homepage/HomepageNewsroomSection": {
     "strings": [
-      "Ler redação"
+      "Apresentamos a Avana:",
+      "Notícias",
+      "Últimas da Avana",
+      "Ler artigo",
+      "Estrutura de risco",
+      "Smart Agents",
+      "Modelo de liquidação",
+      "Guia de empréstimo",
+      "Colateral Uniswap",
+      "Colateral Curve",
+      "Eficiência de capital",
+      "Cobertura de LP",
+      "Estratégia de tesouraria",
+      "Estratégia de alavancagem",
+      "Controlos de posição",
+      "Design de risco",
+      "Arquitetura",
+      "Design de oráculos",
+      "Visão do programador"
     ]
   },
   "invest-growth-calculator-section": {
@@ -551,7 +571,12 @@
       "Lançamento múltiplo",
       "O que vem a seguir",
       "Roteiro",
-      "Avana se desenvolve em três fases. Cada fase se baseia na anterior: Mercados de Empréstimo, Mercados de Empréstimo, e depois Mercados de Multiplicação."
+      "Avana se desenvolve em três fases. Cada fase se baseia na anterior: Mercados de Empréstimo, Mercados de Empréstimo, e depois Mercados de Multiplicação.",
+      "Meta: T3 2026",
+      "Meta: T4 2026",
+      "Meta: T1 2027",
+      "Lançado",
+      "Em andamento"
     ]
   },
   "position-safety-section": {

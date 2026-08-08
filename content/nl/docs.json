@@ -971,7 +971,7 @@
       "Uniswap V2 ERC-20 LP's",
       "Chainlink + reserve reconstructie + TWAP-verificatie",
       "Standaard LP tokens worden gewaardeerd op basis van gereconstrueerde onderliggende saldi, waarbij TWAP wordt gebruikt als een manipulatiebestendige kruiscontrole.",
-      "⟦3 V V3 NFT ⟦31 s s",
+      "Uniswap V3 NFT LPs",
       "Chainlink + positiedecompositie + tick/TWAP-controles",
       "De NFT wordt ontleed naar liquiditeit, actief bereik en huidige prijs, en vervolgens gekort voor de herstelbare liquidatiewaarde.",
       "Balancer Meerdere activa LPs",

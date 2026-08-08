@@ -21,7 +21,7 @@
       "lend": "借出",
       "multiply": "乘",
       "about": "關於",
-      "newsroom": "新聞編輯室",
+      "newsroom": "新聞中心",
       "brand": "品牌",
       "faq": "常見問題",
       "privacy": "隱私",
@@ -67,8 +67,8 @@
       "social": "社交",
       "twitter": "Twitter",
       "github": "GitHub",
-      "telegram": "電報",
-      "discourse": "話語",
+      "telegram": "Telegram",
+      "discourse": "Discourse",
       "socialAria": "Avana 在 {network} 上",
       "disclosureRisk": "以LP代幣進行借貸涉及風險，包括在市場狀況對你的倉位不利時被清算。Avana不會託管你的資金，不會重複質押LP倉位，也不會改變你在基礎AMM上的流動性運作方式。貸款條款、利率和抵押物價值通過透明的預言機系統和自動化風險參數在鏈上執行。你始終保持對倉位的完全控制，可以隨時償還或調整抵押物。只應借貸你能夠在市場波動中承受的金額。",
       "disclosureInfo": "本資料僅供參考之用，且並非 (i) 提供投資、購買或出售任何權益或股份，或參與任何投資或交易策略的要約或要約邀請，(ii) 用於提供會計、法律或稅務建議，或投資建議，或 (iii) Avana 的官方聲明。在做出任何投資決策前，請諮詢您的顧問。對於信息的準確性或任何數字資產、金融工具或其他市場或經濟指標的未來表現，不作任何明示或暗示的陳述或保證。Avana 可能在材料中討論或提及的一些實體和/或出版物中擁有財務利益或關係。Avana 不對材料中可能提供的鏈接或第三方網站進行背書或認可。"
@@ -155,8 +155,8 @@
       "institutions": "機構"
     },
     "newsroom": {
-      "latestFrom": "來自Avana的最新消息",
-      "readNewsroom": "閱讀新聞編輯部"
+      "latestFrom": "Avana 最新動態",
+      "readNewsroom": "閱讀文章"
     }
   },
   "meta": {
@@ -241,8 +241,8 @@
       "title": "常見問題"
     },
     "newsroom": {
-      "title": "來自Avana的最新消息",
-      "cta": "閱讀新聞編輯部"
+      "title": "Avana 最新動態",
+      "cta": "閱讀文章"
     },
     "buildTomorrow": {
       "title": "遇見Avana",

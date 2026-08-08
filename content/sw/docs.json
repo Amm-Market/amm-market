@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "jinsi-inavyofanya-kazi",
+        "id": "how-it-works",
         "title": "Jinsi Inavyofanya Kazi"
       },
       {
-        "id": "thamani-inayokopeshwa",
+        "id": "borrowable-value",
         "title": "Thamani Inayokopesheka"
       },
       {
-        "id": "vidokezo",
+        "id": "notes",
         "title": "Maelezo"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "hisabati",
+        "id": "calculation",
         "title": "Hesabu"
       },
       {
-        "id": "vipande vya afya",
+        "id": "health-bands",
         "title": "Bendi za Ufuatiliaji"
       },
       {
-        "id": "njia-ya-jibu",
+        "id": "response-path",
         "title": "Njia ya Majibu"
       },
       {
-        "id": "vitendo-vya-mtumiaji",
+        "id": "user-actions",
         "title": "Vitendo vya Mtumiaji"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "aina-za-programu",
+        "id": "program-types",
         "title": "Aina za Programu"
       },
       {
-        "id": "misingi-ya-usambazaji",
+        "id": "distribution-principles",
         "title": "Misingi ya Usambazaji"
       },
       {
-        "id": "idai-na-urudisho",
+        "id": "claiming-and-reconciliation",
         "title": "Dai na Ulinganifu"
       },
       {
-        "id": "hali",
+        "id": "status",
         "title": "Hali ya Sasa"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "kiingilio-cha-mji-mkuu",
+        "id": "capital-entry-point",
         "title": "Kituo cha Kuingia cha Mji Mkuu"
       },
       {
-        "id": "zao-lililowekwa-kwa-kidhaifa-cha-mazingatio-ya-kiwango-cha-uhatarisho",
+        "id": "risk-adjusted-yield",
         "title": "Rudisho Lililorekebishwa Kibenki"
       },
       {
-        "id": "udhibiti wa hatari unaobadilika",
+        "id": "dynamic-risk-controls",
         "title": "Dhibiti Hatari Zinazobadilika"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "uzoefu wa mtumiaji",
+        "id": "user-experience",
         "title": "Uzoefu wa Mtumiaji"
       },
       {
-        "id": "mfano-mtiririko",
+        "id": "example-flow",
         "title": "Mfumo wa Mfano"
       },
       {
-        "id": "usanifu wa ngazi-tatu",
+        "id": "three-tier-architecture",
         "title": "Usanifu wa Tabaka Tatu"
       },
       {
-        "id": "mtiririko wa data",
+        "id": "data-flow",
         "title": "Mtiririko wa Data"
       },
       {
-        "id": "nafasi-za-jumla",
+        "id": "spoke-responsibilities",
         "title": "Majukumu ya Pedal"
       },
       {
-        "id": "kazi-ya-hub",
+        "id": "hub-role",
         "title": "Aave v4 Nafasi ya Kituo"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "kiolesura-dhidi-ya-protokoli",
+        "id": "interface-vs-protocol",
         "title": "Kiolesura dhidi ya Itifaki"
       },
       {
-        "id": "ufichuzi",
+        "id": "disclosure",
         "title": "Ufichuzi"
       },
       {
-        "id": "matumizi ya hazina",
+        "id": "treasury-usage",
         "title": "Matumizi ya Hazina"
       },
       {
-        "id": "maelezo-ya-unganishaji",
+        "id": "integration-notes",
         "title": "Vidokezo vya Muungano"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "angalia mkopo",
+        "id": "borrow-checks",
         "title": "Angalia Mikopo"
       },
       {
-        "id": "ukaguzi wa afya",
+        "id": "health-check",
         "title": "Angalia Afya"
       },
       {
-        "id": "uhasibu wa ndani",
+        "id": "internal-accounting",
         "title": "Uhasibu wa Ndani"
       },
       {
-        "id": "mali-kinachokopeshwa",
+        "id": "borrowable-assets",
         "title": "Mali Zinazokopesheka"
       },
       {
-        "id": "nguvu ya kukopa",
+        "id": "borrowing-power",
         "title": "Nguvu ya Kukopa"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "jinsi-inavyofanya-kazi",
+        "id": "how-it-works",
         "title": "Jinsi Inavyofanya Kazi"
       },
       {
-        "id": "ukaguzi wa afya",
+        "id": "health-checks",
         "title": "Ukaguzi wa Afya"
       },
       {
-        "id": "uhasibu wa ada",
+        "id": "fee-accounting",
         "title": "Uhasibu wa Ada"
       },
       {
-        "id": "faida-kubwa",
+        "id": "key-benefits",
         "title": "Manufaa Muhimu"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "kukopa-zaidi",
+        "id": "borrowing-more",
         "title": "Kukopa Zaidi"
       },
       {
-        "id": "ufuatiliaji-wa-afya",
+        "id": "monitoring-health",
         "title": "Kufuatilia Afya"
       },
       {
-        "id": "udhibiti wa operesheni",
+        "id": "operational-control",
         "title": "Udhibiti wa Kitaalamu"
       },
       {
-        "id": "mabadiliko-ya-nafasi",
+        "id": "position-changes",
         "title": "Mabadiliko ya Nafasi"
       },
       {
-        "id": "vikwazo vya funguo",
+        "id": "key-constraints",
         "title": "Vikwazo Muhimu"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "mtiririko wa amana",
+        "id": "deposit-flow",
         "title": "Mtiririko wa Amana"
       },
       {
-        "id": "maelezo-ya-kiufundi",
+        "id": "technical-details",
         "title": "Maelezo ya Kiufundi"
       },
       {
-        "id": "alama-za-lp-zilizoungwa",
+        "id": "supported-lp-tokens",
         "title": "Aina za Nafasi Zilizodhaminiwa LP"
       },
       {
-        "id": "baada ya amana",
+        "id": "after-deposit",
         "title": "Baada ya Amana"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "mchakato wa kurejesha",
+        "id": "repay-process",
         "title": "Mchakato wa Kulipa Tena"
       },
       {
-        "id": "maelezo-ya-kiufundi",
+        "id": "technical-details",
         "title": "Maelezo ya Kiufundi"
       },
       {
-        "id": "hali-ya-kuondoa-mali",
+        "id": "liquidation-scenario",
         "title": "Wakati Urejeshaji Unapokuwa Haraka"
       },
       {
-        "id": "malipo kamili",
+        "id": "full-repayment",
         "title": "Malipo Kamili"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "mchakato wa kutoa",
+        "id": "withdrawal-process",
         "title": "Mchakato wa Utoaji"
       },
       {
-        "id": "mabadiliko-ya-nafasi",
+        "id": "position-modifications",
         "title": "Marekebisho ya Nafasi"
       },
       {
-        "id": "baada ya kutoa",
+        "id": "after-withdrawal",
         "title": "Baada ya Utoaji"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "vigezo-vya-mapitio",
+        "id": "review-criteria",
         "title": "Vigezo vya Mapitio"
       },
       {
-        "id": "familia-za-bwawa",
+        "id": "pool-families",
         "title": "Familia za Bwawa"
       },
       {
-        "id": "maombi ya hatari",
+        "id": "risk-application",
         "title": "Maombi ya Hatari"
       },
       {
-        "id": "maelezo-ya-unganishaji",
+        "id": "integration-notes",
         "title": "Vidokezo vya Muungano"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "mfumo-wa-unganisho",
+        "id": "integration-model",
         "title": "Mfumo wa Uunganisho"
       },
       {
-        "id": "udhibiti-wa-mshirika",
+        "id": "partner-controls",
         "title": "Udhibiti wa Mshirika"
       },
       {
-        "id": "maelezo-ya-kuanzisha",
+        "id": "launch-notes",
         "title": "Kumbuka Kutolewa"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "programu",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "eneo-familia",
+        "id": "venue-families",
         "title": "Familia za Ukumbi"
       },
       {
-        "id": "hali-ya-uwezeshaji",
+        "id": "enablement-status",
         "title": "Hali ya Uwezeshaji"
       },
       {
-        "id": "hakiki-mahitaji",
+        "id": "review-requirements",
         "title": "Mahitaji ya Ukaguzi"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "kiolesura-cha-oracle",
+        "id": "oracle-interface",
         "title": "Kiolesura cha Oracle"
       },
       {
-        "id": "usanifu wa tabaka nyingi",
+        "id": "multi-layer-architecture",
         "title": "Miundo ya Tabaka Nyingi"
       },
       {
-        "id": "shughulikiaji ya dex",
+        "id": "dex-handling",
         "title": "Usimamizi Maalumu wa DEX"
       },
       {
-        "id": "uhesabu wa twap",
+        "id": "twap-computation",
         "title": "Hesabu ya TWAP"
       },
       {
-        "id": "tahadhari za usalama",
+        "id": "safety-measures",
         "title": "Usalama na Kuzuia Uendeshaji Haramu"
       },
       {
-        "id": "vigezo-vinavyoweza-kupangwa",
+        "id": "configurable-parameters",
         "title": "Vigezo Vinavyoweza Kusanidiwa"
       }
     ],
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "juhudi-katika-mfumo",
+        "id": "role-in-system",
         "title": "Kazi katika Mfumo"
       },
       {
-        "id": "mfano-wa-kibadilisha",
+        "id": "adapter-model",
         "title": "Mfano wa Kiunganishi"
       },
       {
-        "id": "operesheni-ziyozoungwa",
+        "id": "supported-operations",
         "title": "Operesheni Zinazoungiwa"
       },
       {
-        "id": "hali-ya-uanzishaji",
+        "id": "deployment-status",
         "title": "Hali ya Utekelezaji"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "dhana-kinyume",
+        "id": "core-concepts",
         "title": "Dhana Muhimu"
       },
       {
-        "id": "vipengele vya itifaki",
+        "id": "protocol-components",
         "title": "Vipengele vya Itifaki"
       },
       {
-        "id": "masharti ya kifedha",
+        "id": "financial-terms",
         "title": "Masharti ya Kifedha"
       },
       {
-        "id": "hatari-usalama",
+        "id": "risk-security",
         "title": "Hatari na Usalama"
       },
       {
-        "id": "vipimo",
+        "id": "metrics",
         "title": "Vipimo"
       },
       {
-        "id": "vitakasa",
+        "id": "disclaimers",
         "title": "Tangazo la kuepuka wajibu"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "ufahamu wa msingi",
+        "id": "core-insight",
         "title": "Ufasiri Muhimu"
       },
       {
-        "id": "mtiririko wa mtumiaji",
+        "id": "user-flow",
         "title": "Mfumo wa Kukopa"
       },
       {
-        "id": "uthamini wa mtaalam",
+        "id": "oracle-valuation",
         "title": "Oracle na Thamani"
       },
       {
-        "id": "mchakato wa kukopa",
+        "id": "borrowing-process",
         "title": "Uwezo wa Kukopa"
       },
       {
-        "id": "ufuatiliaji wa afya",
+        "id": "health-monitoring",
         "title": "Afya & Utoaji fedha"
       },
       {
-        "id": "ukusanyaji wa ada",
+        "id": "fee-collection",
         "title": "Matibabu Bila Malipo"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "wigo-wa-testnet",
+        "id": "testnet-scope",
         "title": "Wigo wa Mtandao wa Jaribio"
       },
       {
-        "id": "jinsi-ya-ku-tathimini",
+        "id": "how-to-evaluate",
         "title": "Jinsi ya Kutathmini"
       },
       {
-        "id": "ufafanuzi-wa-ramani-ya-barabara",
+        "id": "roadmap-framing",
         "title": "Ufafanuzi wa Ramani ya Njia"
       },
       {
-        "id": "kampeni-na-hali",
+        "id": "campaigns-and-status",
         "title": "Vijaribu na Hali"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "kionyo-cha-umum",
+        "id": "general-disclaimer",
         "title": "Tangazo la Jumla"
       },
       {
-        "id": "hakuna-ushauri-wa-kifedha",
+        "id": "no-financial-advice",
         "title": "Hakuna Ushauri wa Kifedha"
       },
       {
-        "id": "hatari",
+        "id": "risks",
         "title": "Hatari"
       },
       {
-        "id": "hakuna-dhamana",
+        "id": "no-warranties",
         "title": "Hakuna Dhamana"
       },
       {
-        "id": "kizuizi-cha-uwajibikaji",
+        "id": "limitation-of-liability",
         "title": "Kizuizi cha Uhusiano wa Kisheria"
       },
       {
-        "id": "sera-zuinazo-husiana",
+        "id": "related-policies",
         "title": "Sera Zinazohusiana"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "vikwazo-vya-kuingia",
+        "id": "access-restrictions",
         "title": "Vikwazo vya Upatikanaji"
       },
       {
-        "id": "eneo-lililozuiliwa",
+        "id": "restricted-jurisdictions",
         "title": "Hali Zuia"
       },
       {
-        "id": "uzingatia",
+        "id": "compliance",
         "title": "Utii"
       },
       {
-        "id": "sera-zuinazo-husiana",
+        "id": "related-policies",
         "title": "Sera Zinazohusiana"
       }
     ],
@@ -1502,7 +1502,7 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
@@ -1510,23 +1510,23 @@
         "title": "Mfano Unaobadilishika LP"
       },
       {
-        "id": "kinywaji kilicholengwa",
+        "id": "concentrated-liquidity",
         "title": "Mfano wa Umwagiliaji Mkubwa"
       },
       {
-        "id": "uliwapo-liquidity",
+        "id": "nft-liquidity",
         "title": "Ufadhili wa NFT"
       },
       {
-        "id": "akaunti-ya-nafasi-nyingi",
+        "id": "multi-position-account",
         "title": "Akaunti ya Nafasi Nyingi"
       },
       {
-        "id": "hali-za-kigeni",
+        "id": "edge-cases",
         "title": "Matukio Maalum"
       },
       {
-        "id": "muhtasari",
+        "id": "summary",
         "title": "Muhtasari"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "marejeo-kinikali",
+        "id": "canonical-reference",
         "title": "Nyaraka Zinazohusiana na Sera"
       },
       {
-        "id": "mpangilio wa wakati wa utekelezaji",
+        "id": "runtime-sequence",
         "title": "Mlolongo wa Wakati wa Uendeshaji"
       },
       {
-        "id": "mabadiliko-ya-hali",
+        "id": "state-transitions",
         "title": "Mabadiliko ya Hali"
       },
       {
-        "id": "maelezo-ya-mtendaji",
+        "id": "operator-notes",
         "title": "Maelezo ya Opereta"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "mfumo-wa-mkxango",
+        "id": "coverage-model",
         "title": "Mfumo wa Ufisadi"
       },
       {
-        "id": "mahitaji-ya-utekelezaji",
+        "id": "execution-requirements",
         "title": "Mahitaji ya Utekelezaji"
       },
       {
-        "id": "maelezo-ya-operesheni",
+        "id": "operational-notes",
         "title": "Maelezo ya Uendeshaji"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "tabaka tatu",
+        "id": "three-layers",
         "title": "Tabaka Tatu"
       },
       {
-        "id": "sheria-za-msingi",
+        "id": "core-rules",
         "title": "Sheria Kuu"
       },
       {
-        "id": "ugumu wa lp",
+        "id": "lp-complexity",
         "title": "LP Ugumu wa Dhima"
       },
       {
-        "id": "njia-za-kuondoa",
+        "id": "liquidation-pathways",
         "title": "Njia za Utoaji Mali"
       },
       {
-        "id": "hali ya nafasi",
+        "id": "position-state",
         "title": "Hali ya Nafasi"
       },
       {
-        "id": "ushughulikiaji wa ziada",
+        "id": "surplus-handling",
         "title": "Ushughulikiaji wa Ziada"
       },
       {
-        "id": "mfanyabiashara-mtindo",
+        "id": "operator-model",
         "title": "Mfano wa Opereta"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "karibu",
+        "id": "welcome",
         "title": "Karibu"
       },
       {
-        "id": "nini-avana",
+        "id": "what-is-avana",
         "title": "Avana ni nini?"
       },
       {
-        "id": "jinsi-inavyofanya-kazi",
+        "id": "how-it-works",
         "title": "Jinsi Inavyofanya Kazi"
       },
       {
-        "id": "kufungua dhamana ya LP",
+        "id": "unlocking-lp-collateral",
         "title": "Kwa Nini LP Msingi wa Dhamana Unafanya Kazi"
       },
       {
-        "id": "usanifu",
+        "id": "architecture",
         "title": "Usanifu wa Majengo"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "upeo-na-mchakato-wa-ufundi",
+        "id": "scope-and-system-architecture",
         "title": "Wigo & Miundo ya Mfumo"
       },
       {
-        "id": "ukali-falsafa",
+        "id": "severity-philosophy",
         "title": "Falsafa ya Ukali"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "changamoto za usalama",
+        "id": "security-challenges",
         "title": "Changamoto za Usalama"
       },
       {
-        "id": "usalama-wa-tabaka-ngapi",
+        "id": "multi-layer-security",
         "title": "Usalama wa Tabaka Nyingi"
       },
       {
-        "id": "nyuso-za-mkataba-kuu",
+        "id": "core-contract-surfaces",
         "title": "Nyuso za Mkataba wa Msingi"
       },
       {
-        "id": "mipaka ya kuaminiana",
+        "id": "trust-boundaries",
         "title": "Mipaka ya Uaminifu"
       },
       {
-        "id": "utayari wa ukaguzi",
+        "id": "audit-readiness",
         "title": "Uwepo wa Ukaguzi"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "kusudi",
+        "id": "purpose",
         "title": "Mkusudio"
       },
       {
-        "id": "mfumo-wa-kufadhili",
+        "id": "funding-approach",
         "title": "Mbinu ya Ufadhili"
       },
       {
-        "id": "njia-ya-kinzani",
+        "id": "activation-path",
         "title": "Njia ya Uanzishaji"
       },
       {
-        "id": "mpaka wa mwafaka",
+        "id": "coverage-boundary",
         "title": "Mkia wa Mfuko"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "muhtasari",
+        "id": "overview",
         "title": "Muhtasari"
       },
       {
-        "id": "misingi-ya-msingi",
+        "id": "core-principles",
         "title": "Kanuni Muhimu"
       },
       {
-        "id": "nafasi",
+        "id": "roles",
         "title": "Nguvu"
       },
       {
-        "id": "sasisha-mtiririko",
+        "id": "update-flow",
         "title": "Sasisha Mtiririko"
       },
       {
-        "id": "darasa-za-parameter",
+        "id": "parameter-classes",
         "title": "Aina za Vigezo"
       },
       {
-        "id": "ufichuzi wa umma",
+        "id": "public-disclosure",
         "title": "Ufunuo wa Umma"
       },
       {
-        "id": "vitendo vya dharura",
+        "id": "emergency-actions",
         "title": "Hatua za Dharura"
       }
     ],

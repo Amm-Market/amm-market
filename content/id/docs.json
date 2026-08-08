@@ -1007,7 +1007,7 @@
       "Perhitungan TWAP oleh DEX",
       "TWAP adalah input verifikasi. Mereka berada di samping harga aset eksternal dan rekonstruksi posisi deterministik untuk memeriksa apakah status pool yang diamati konsisten dengan jalur unwind yang kredibel. Mereka membantu menolak distorsi yang mencurigakan atau bersifat sementara, tetapi mereka tidak menggantikan model oracle yang lebih luas dengan sendirinya.",
       "Uniswap V2 & Tukar Sushi",
-      "⟦ 3 ⟧ V3",
+      "Uniswap V3",
       "Pemeriksaan yang menyadari posisi menggabungkan jangkauan tick, distribusi likuiditas, dan biaya yang diperoleh sehingga protokol dapat memverifikasi eksposur token yang terurai dari setiap NFT LP daripada memperlakukan NFT sebagai kotak hitam.",
       "Balancer",
       "Observasi token berbobot digabungkan dengan bobot pool untuk memvalidasi pembagian inventaris multi-aset sebelum oracle menetapkan nilai agunan yang konservatif.",

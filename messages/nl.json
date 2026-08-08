@@ -16,15 +16,15 @@
       "resources": "Hulpbronnen",
       "developers": "Ontwikkelaars",
       "helpCenter": "Helpcentrum",
-      "aaveArfc": "zm2cnomhgamk66mr49yg",
+      "aaveArfc": "Aave ARFC",
       "borrow": "Lenen",
       "lend": "Lenen",
       "multiply": "Vermenigvuldigen",
       "about": "Over",
-      "newsroom": "Nieuwsredactie",
+      "newsroom": "Nieuws",
       "brand": "Merk",
       "faq": "Veelgestelde vragen",
-      "privacy": "6wfoav9jxrnv8y24t8wx",
+      "privacy": "Privacy",
       "terms": "Voorwaarden",
       "overview": "Overzicht",
       "architecture": "Architectuur",
@@ -65,10 +65,10 @@
       "resources": "Hulpbronnen",
       "docs": "Documenten",
       "social": "Sociaal",
-      "twitter": "Twitteren",
-      "github": "wg7m7qsxxp9sls7c6xux",
-      "telegram": "4jz3kftqw6898f8snkc7",
-      "discourse": "Discours",
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "telegram": "Telegram",
+      "discourse": "Discourse",
       "socialAria": "Avana op {network}",
       "disclosureRisk": "Lenen tegen LP tokens brengt risico's met zich mee, waaronder liquidatie als de marktomstandigheden zich tegen uw positie keren. Avana bewaart uw fondsen niet, zal de LP posities niet herhypothekeren, noch de werking van uw liquiditeit op onderliggende AMMs aanpassen. Leningvoorwaarden, rentetarieven en onderpandwaarden worden via transparante orakelsystemen en geautomatiseerde risicoparameters on-chain afgedwongen. U behoudt te allen tijde de volledige controle over uw positie en kunt het onderpand altijd terugbetalen of aanpassen wanneer u wilt. Lenen doet u alleen voor bedragen die u comfortabel kunt aanhouden tijdens marktvolatiliteit.",
       "disclosureInfo": "Dit materiaal is uitsluitend bedoeld voor informatieve doeleinden en is niet (i) een aanbod, of een verzoek om een aanbod te doen, om te investeren in, of om te kopen of verkopen van, enige belangen of aandelen, of om deel te nemen aan een investerings- of handelsstrategie, (ii) bedoeld om boekhoudkundig, juridisch of fiscaal advies te geven, of beleggingsaanbevelingen, of (iii) een officiële verklaring van Avana. Raadpleeg uw adviseurs voordat u een investeringsbeslissing neemt. Er wordt geen verklaring of garantie gegeven, expliciet of impliciet, met betrekking tot de juistheid van de informatie of de toekomstige prestaties van enig digitaal actief, financieel instrument of andere markt- of economische maatstaf. Avana kan financiële belangen hebben in, of relaties onderhouden met, enkele van de entiteiten en/of publicaties die in de materialen worden besproken of vermeld. Avana onderschrijft of keurt geen links of websites van derden goed die in de materialen kunnen worden verstrekt."
@@ -148,15 +148,15 @@
     },
     "tags": {
       "all": "Alles",
-      "product": "mbwrr7svmzo4pqm56pji",
+      "product": "Product",
       "strategy": "Strategie",
       "guides": "Gidsen",
-      "protocol": "d55egcamhfixo8z326u4",
+      "protocol": "Protocol",
       "institutions": "Instellingen"
     },
     "newsroom": {
-      "latestFrom": "Laatste van Avana",
-      "readNewsroom": "Lees nieuwsredactie"
+      "latestFrom": "Het laatste van Avana",
+      "readNewsroom": "Artikel lezen"
     }
   },
   "meta": {
@@ -167,7 +167,7 @@
     "twitterTitle": "Avana - Lenen tegen LP Posities",
     "twitterDescription": "Ontgrendel liquiditeit van je LP tokens op Aave v4",
     "titleTemplate": "{title} | Avana",
-    "team": "zuttz0vlf0831bj5b5f2",
+    "team": "Avana Team",
     "ogAlt": "Avana - DeFi Liquiditeitsprotocol",
     "home": {
       "title": "Lenen tegen LP posities op Aave v4",
@@ -241,8 +241,8 @@
       "title": "Veelgestelde vragen"
     },
     "newsroom": {
-      "title": "Laatste van Avana",
-      "cta": "Lees nieuwsredactie"
+      "title": "Het laatste van Avana",
+      "cta": "Artikel lezen"
     },
     "buildTomorrow": {
       "title": "Aan Avana",

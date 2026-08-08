@@ -16,12 +16,12 @@
       "resources": "Albarkatu",
       "developers": "Masu haɓakawa",
       "helpCenter": "Cibiyar Taimako",
-      "aaveArfc": "⟦ 13 ⟦ 15",
+      "aaveArfc": "Aave ARFC",
       "borrow": "Arapa",
       "lend": "Arziki",
       "multiply": "Ninka",
       "about": "Game da",
-      "newsroom": "Dakin labarai",
+      "newsroom": "Dakin Labarai",
       "brand": "Alamar kasuwanci",
       "faq": "Tambayoyin da ake yawan yi",
       "privacy": "Sirri",
@@ -65,10 +65,10 @@
       "resources": "Albarkatu",
       "docs": "Takardu",
       "social": "Na zamantakewa",
-      "twitter": "Twitar",
+      "twitter": "Twitter",
       "github": "GitHub",
       "telegram": "Telegram",
-      "discourse": "Tattaunawa",
+      "discourse": "Discourse",
       "socialAria": "Avana a kan {network}",
       "disclosureRisk": "Arzikin aro kan LP na tokens yana da haɗari, ciki har da lalata idan yanayin kasuwa ya motsa a kan matsayinka. Avana baya riƙe kuɗinka, baya sake amfani da matsayi na LP, ko canza yadda kuɗin ruwa naka ke aiki a kan AMMs na asali. Sharuɗɗan bashi, ƙimar ruwa, da ƙimar jingina ana aiwatar da su a kan-sarkar ta amfani da tsarin gaskiya na oracle da sigogin haɗari masu sarrafa kansu. Kana ci gaba da cikakken iko da matsayinka a kowane lokaci kuma zaka iya biya ko daidaita jingina duk lokacin da ka zaɓa. Ka aro kawai adadin da kake jin daɗin riƙewa ta hanyar canjin kasuwa.",
       "disclosureInfo": "Wannan kayan abu yana nufin bayar da bayani ne kawai, kuma ba shi da (i) tayin ko neman tayin, don zuba jari, ko siyan ko sayar da kowane sha'awa ko hannun jari, ko don shiga kowane dabarun zuba jari ko ciniki, (ii) nufin bayar da shawarwari na lissafin kudi, doka, ko haraji, ko shawarwarin zuba jari, ko (iii) bayanin hukuma na Avana. Tuntuɓi masu ba da shawara kafin yanke kowace shawarar zuba jari. Ba a yi wani wakilci ko garanti ba, an bayyana ko an ɗaura, dangane da daidaiton bayani ko aikin nan gaba na kowane kayan dijital, kayan kuɗi ko wani mataki na kasuwa ko tattalin arziki. Avana na iya samun sha'awa ta kuɗi a cikin, ko dangantaka da, wasu daga cikin ƙungiyoyi da/ko wallafe-wallafen da aka tattauna ko aka ambata a cikin kayan. Avana baya amincewa ko tabbatar da hanyoyin haɗi ko shafukan yanar gizon ɓangare na uku waɗanda za a iya bayarwa a cikin kayan."
@@ -155,8 +155,8 @@
       "institutions": "Hukumomi"
     },
     "newsroom": {
-      "latestFrom": "Sabo daga Avana",
-      "readNewsroom": "Karanta ɗakin labarai"
+      "latestFrom": "Sabbin labarai daga Avana",
+      "readNewsroom": "Karanta labarin"
     }
   },
   "meta": {
@@ -241,8 +241,8 @@
       "title": "Tambayoyi da ake yawan yi"
     },
     "newsroom": {
-      "title": "Sabo daga Avana",
-      "cta": "Karanta ɗakin labarai"
+      "title": "Sabbin labarai daga Avana",
+      "cta": "Karanta labarin"
     },
     "buildTomorrow": {
       "title": "Sadu Avana",

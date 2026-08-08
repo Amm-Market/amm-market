@@ -45,6 +45,38 @@ export const blogTagOptions: readonly TagFilter[] = [
 export const BLOG_CONTENT_TAG = "blog-posts"
 export const NEWSROOM_CONTENT_TAG = "newsroom-posts"
 
+/** English bylines for newsroom teaser rows (translated via marketing phrase map). */
+export const newsroomCollectionSpecs: Record<
+  NewsroomCollection,
+  ReadonlyArray<{ slug: string; byline: string }>
+> = {
+  home: [
+    { slug: "lp-risk-governance", byline: "Risk framework" },
+    { slug: "why-lp-collateral-needs-smart-agents", byline: "Smart Agents" },
+    { slug: "how-lp-liquidation-should-work", byline: "Liquidation model" },
+  ],
+  borrow: [
+    { slug: "lp-collateral-guide", byline: "Borrowing guide" },
+    { slug: "smart-contract-architecture", byline: "Uniswap collateral" },
+    { slug: "curve-lp-collateral-aave-v4", byline: "Curve collateral" },
+  ],
+  invest: [
+    { slug: "unleashing-lp-tokens", byline: "Capital efficiency" },
+    { slug: "hedge-lp-position", byline: "LP hedging" },
+    { slug: "institutional-use-cases", byline: "Treasury strategy" },
+  ],
+  leverage: [
+    { slug: "yield-looping-playbook", byline: "Leverage strategy" },
+    { slug: "introducing-automate", byline: "Position controls" },
+    { slug: "how-lp-liquidation-should-work", byline: "Risk design" },
+  ],
+  platform: [
+    { slug: "aave-v4-avana-spoke", byline: "Architecture" },
+    { slug: "pricing-lp-collateral-oracle-problem", byline: "Oracle design" },
+    { slug: "integration-guide", byline: "Developer view" },
+  ],
+}
+
 function toBlogPosts(definitions: typeof blogPostDefinitions): readonly BlogPost[] {
   return definitions.map((post, index) => ({
     id: index + 1,
@@ -60,56 +92,31 @@ function toBlogPosts(definitions: typeof blogPostDefinitions): readonly BlogPost
 
 const blogPosts: readonly BlogPost[] = toBlogPosts(blogPostDefinitions)
 
-function makeNewsroomPostFrom(
-  definitions: typeof blogPostDefinitions,
-  slug: string,
-  byline: string,
-): NewsroomPost {
-  const post = definitions.find((entry) => entry.slug === slug)
+function buildNewsroomPosts(
+  definitions: ReadonlyArray<{
+    slug: string
+    title: string
+    description: string
+    date: string
+  }>,
+  collection: NewsroomCollection,
+): NewsroomPost[] {
+  const bySlug = new Map(definitions.map((entry) => [entry.slug, entry]))
 
-  if (!post) {
-    throw new Error(`Missing newsroom post for slug: ${slug}`)
-  }
+  return newsroomCollectionSpecs[collection].map(({ slug, byline }) => {
+    const post = bySlug.get(slug)
+    if (!post) {
+      throw new Error(`Missing newsroom post for slug: ${slug}`)
+    }
 
-  return {
-    date: post.date,
-    title: post.title,
-    byline,
-    description: post.description,
-    href: `/newsroom/${post.slug}`,
-  }
-}
-
-function makeNewsroomPost(slug: string, byline: string): NewsroomPost {
-  return makeNewsroomPostFrom(blogPostDefinitions, slug, byline)
-}
-
-const newsroomPostsByCollection: Record<NewsroomCollection, readonly NewsroomPost[]> = {
-  home: [
-    makeNewsroomPost("lp-risk-governance", "Risk framework"),
-    makeNewsroomPost("why-lp-collateral-needs-smart-agents", "Smart Agents"),
-    makeNewsroomPost("how-lp-liquidation-should-work", "Liquidation model"),
-  ],
-  borrow: [
-    makeNewsroomPost("lp-collateral-guide", "Borrowing guide"),
-    makeNewsroomPost("smart-contract-architecture", "Uniswap collateral"),
-    makeNewsroomPost("curve-lp-collateral-aave-v4", "Curve collateral"),
-  ],
-  invest: [
-    makeNewsroomPost("unleashing-lp-tokens", "Capital efficiency"),
-    makeNewsroomPost("hedge-lp-position", "LP hedging"),
-    makeNewsroomPost("institutional-use-cases", "Treasury strategy"),
-  ],
-  leverage: [
-    makeNewsroomPost("yield-looping-playbook", "Leverage strategy"),
-    makeNewsroomPost("introducing-automate", "Position controls"),
-    makeNewsroomPost("how-lp-liquidation-should-work", "Risk design"),
-  ],
-  platform: [
-    makeNewsroomPost("aave-v4-avana-spoke", "Architecture"),
-    makeNewsroomPost("pricing-lp-collateral-oracle-problem", "Oracle design"),
-    makeNewsroomPost("integration-guide", "Developer view"),
-  ],
+    return {
+      date: post.date,
+      title: post.title,
+      byline,
+      description: post.description,
+      href: `/newsroom/${slug}`,
+    }
+  })
 }
 
 const getCachedBlogPosts = unstable_cache(
@@ -118,15 +125,6 @@ const getCachedBlogPosts = unstable_cache(
   {
     revalidate: 3600,
     tags: [BLOG_CONTENT_TAG],
-  },
-)
-
-const getCachedNewsroomPosts = unstable_cache(
-  async (collection: NewsroomCollection) => newsroomPostsByCollection[collection],
-  ["newsroom-posts"],
-  {
-    revalidate: 3600,
-    tags: [NEWSROOM_CONTENT_TAG],
   },
 )
 
@@ -178,20 +176,14 @@ export async function getBlogPostsByTag(tag: TagFilter = "All") {
   return filterBlogPosts(posts, tag)
 }
 
+/**
+ * Newsroom teaser rows for homepage / product pages.
+ * Titles and descriptions come from content/{locale}/blog.json for the active locale.
+ */
 export async function getNewsroomPosts(collection: NewsroomCollection = "home") {
-  if (process.env.NODE_ENV !== "production") {
-    return newsroomPostsByCollection[collection]
-  }
-
-  try {
-    return await getCachedNewsroomPosts(collection)
-  } catch (error) {
-    if (error instanceof Error && error.message.includes("incrementalCache missing")) {
-      return newsroomPostsByCollection[collection]
-    }
-
-    throw error
-  }
+  const locale = await getLocale()
+  const posts = await getBlogPosts(locale)
+  return buildNewsroomPosts(posts, collection)
 }
 
 export function revalidateMarketingContent() {

@@ -212,7 +212,9 @@
       "The goal is clean separation, with technical execution, operations, market modeling, and collateral review each owned independently.",
       "We are a small team working on a large problem. If you're interested in joining this research effort,",
       "A lending protocol for LP-backed loans",
-      "A lending protocol for"
+      "A lending protocol for",
+      "Introducing Avana:",
+      "we would love to hear from you."
     ]
   },
   "brand/page": {
@@ -443,7 +445,25 @@
   },
   "homepage/HomepageNewsroomSection": {
     "strings": [
-      "Read newsroom"
+      "Introducing Avana:",
+      "Newsroom",
+      "Latest from Avana",
+      "Read newsroom",
+      "Risk framework",
+      "Smart Agents",
+      "Liquidation model",
+      "Borrowing guide",
+      "Uniswap collateral",
+      "Curve collateral",
+      "Capital efficiency",
+      "LP hedging",
+      "Treasury strategy",
+      "Leverage strategy",
+      "Position controls",
+      "Risk design",
+      "Architecture",
+      "Oracle design",
+      "Developer view"
     ]
   },
   "invest-growth-calculator-section": {
@@ -551,7 +571,12 @@
       "Multiply launch",
       "What comes next",
       "Roadmap",
-      "Avana develops in three phases. Each phase builds on the one before it: Borrow Markets, Lend Markets, then Multiply Markets."
+      "Avana develops in three phases. Each phase builds on the one before it: Borrow Markets, Lend Markets, then Multiply Markets.",
+      "Target Q3 2026",
+      "Target Q4 2026",
+      "Target Q1 2027",
+      "Released",
+      "In Progress"
     ]
   },
   "position-safety-section": {

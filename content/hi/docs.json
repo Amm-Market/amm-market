@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "यह-कैसे-काम-कرتा-है",
+        "id": "how-it-works",
         "title": "यह कैसे काम करता है"
       },
       {
-        "id": "उधार लेने योग्य मूल्य",
+        "id": "borrowable-value",
         "title": "उधार लेने योग्य मूल्य"
       },
       {
-        "id": "नोट्स",
+        "id": "notes",
         "title": "नोट्स"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "गणना",
+        "id": "calculation",
         "title": "गणना"
       },
       {
-        "id": "स्वास्थ्य-बैंड",
+        "id": "health-bands",
         "title": "निरीक्षण बैंड"
       },
       {
-        "id": "प्रतिक्रिया-पथ",
+        "id": "response-path",
         "title": "प्रतिक्रिया पथ"
       },
       {
-        "id": "उपयोगकर्ता क्रियाएँ",
+        "id": "user-actions",
         "title": "उपयोगकर्ता क्रियाएँ"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "कार्यक्रम प्रकार",
+        "id": "program-types",
         "title": "कार्यक्रम प्रकार"
       },
       {
-        "id": "वितरण सिद्धांत",
+        "id": "distribution-principles",
         "title": "वितरण सिद्धांत"
       },
       {
-        "id": "दावा और मिलान",
+        "id": "claiming-and-reconciliation",
         "title": "दावा और मिलान"
       },
       {
-        "id": "स्थिति",
+        "id": "status",
         "title": "वर्तमान स्थिति"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "राजधानी-प्रवेश-बिंदु",
+        "id": "capital-entry-point",
         "title": "राजधानी प्रवेश बिंदु"
       },
       {
-        "id": "जोखिम-समायोजित उपज",
+        "id": "risk-adjusted-yield",
         "title": "जोखिम-समायोजित उपज"
       },
       {
-        "id": "गतिशील-जोखिम-नियंत्रण",
+        "id": "dynamic-risk-controls",
         "title": "गतिशील जोखिम नियंत्रण"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "उपयोगकर्ता अनुभव",
+        "id": "user-experience",
         "title": "उपयोगकर्ता अनुभव"
       },
       {
-        "id": "उदाहरण-प्रवाह",
+        "id": "example-flow",
         "title": "उदाहरण प्रवाह"
       },
       {
-        "id": "त्रि-स्तरीय वास्तुकला",
+        "id": "three-tier-architecture",
         "title": "त्रि-स्तरीय वास्तुकला"
       },
       {
-        "id": "डेटा-फ्लो",
+        "id": "data-flow",
         "title": "डेटा प्रवाह"
       },
       {
-        "id": "बोली-जिम्मेदारियाँ",
+        "id": "spoke-responsibilities",
         "title": "स्पोक जिम्मेदारियाँ"
       },
       {
-        "id": "हब-भूमिका",
+        "id": "hub-role",
         "title": "Aave v4 हब भूमिका"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "इंटरफ़ेस बनाम प्रोटोकॉल",
+        "id": "interface-vs-protocol",
         "title": "इंटरफ़ेस बनाम प्रोटोकॉल"
       },
       {
-        "id": "प्रकटीकरण",
+        "id": "disclosure",
         "title": "प्रकटीकरण"
       },
       {
-        "id": "कोष-उपयोग",
+        "id": "treasury-usage",
         "title": "कोष उपयोग"
       },
       {
-        "id": "एकीकरण-नोट्स",
+        "id": "integration-notes",
         "title": "एकीकरण नोट्स"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "ऋण-जाँच",
+        "id": "borrow-checks",
         "title": "चेक उधार लें"
       },
       {
-        "id": "स्वास्थ्य-जाँच",
+        "id": "health-check",
         "title": "स्वास्थ्य जांच"
       },
       {
-        "id": "आंतरिक लेखांकन",
+        "id": "internal-accounting",
         "title": "आंतरिक लेखांकन"
       },
       {
-        "id": "उधार लेने योग्य संपत्ति",
+        "id": "borrowable-assets",
         "title": "उधार लेने योग्य संपत्ति"
       },
       {
-        "id": "ऋण लेने की क्षमता",
+        "id": "borrowing-power",
         "title": "उधार लेने की क्षमता"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "यह-कैसे-काम-कرتा-है",
+        "id": "how-it-works",
         "title": "यह कैसे काम करता है"
       },
       {
-        "id": "स्वास्थ्य जांच",
+        "id": "health-checks",
         "title": "स्वास्थ्य जांच"
       },
       {
-        "id": "शुल्क-लेखांकन",
+        "id": "fee-accounting",
         "title": "शुल्क लेखांकन"
       },
       {
-        "id": "मुख्य लाभ",
+        "id": "key-benefits",
         "title": "मुख्य लाभ"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "अधिशेष उधार",
+        "id": "borrowing-more",
         "title": "और अधिक उधार लेना"
       },
       {
-        "id": "स्वास्थ्य की निगरानी",
+        "id": "monitoring-health",
         "title": "स्वास्थ्य निगरानी"
       },
       {
-        "id": "संचालन नियंत्रण",
+        "id": "operational-control",
         "title": "संचालन नियंत्रण"
       },
       {
-        "id": "पद-परिवर्तन",
+        "id": "position-changes",
         "title": "पद परिवर्तन"
       },
       {
-        "id": "कुंजी-प्रतिबंध",
+        "id": "key-constraints",
         "title": "मुख्य प्रतिबंध"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "जमा-प्रवाह",
+        "id": "deposit-flow",
         "title": "जमा प्रवाह"
       },
       {
-        "id": "तकनीकी विवरण",
+        "id": "technical-details",
         "title": "तकनीकी विवरण"
       },
       {
-        "id": "समर्थित-एलपी-टोकन",
+        "id": "supported-lp-tokens",
         "title": "समर्थित LP पद प्रकार"
       },
       {
-        "id": "जमा के बाद",
+        "id": "after-deposit",
         "title": "जमा के बाद"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "वापसी-प्रक्रिया",
+        "id": "repay-process",
         "title": "भुगतान प्रक्रिया"
       },
       {
-        "id": "तकनीकी विवरण",
+        "id": "technical-details",
         "title": "तकनीकी विवरण"
       },
       {
-        "id": "तरलता परिदृश्य",
+        "id": "liquidation-scenario",
         "title": "जब भुगतान अत्यंत आवश्यक हो"
       },
       {
-        "id": "पूर्ण भुगतान",
+        "id": "full-repayment",
         "title": "पूर्ण भुगतान"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "निकासी प्रक्रिया",
+        "id": "withdrawal-process",
         "title": "निकासी प्रक्रिया"
       },
       {
-        "id": "स्थिति-संशोधन",
+        "id": "position-modifications",
         "title": "पद संशोधन"
       },
       {
-        "id": "निकासी के बाद",
+        "id": "after-withdrawal",
         "title": "निकासी के बाद"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "समीक्षा-मानदंड",
+        "id": "review-criteria",
         "title": "समीक्षा मानदंड"
       },
       {
-        "id": "पूल-परिवार",
+        "id": "pool-families",
         "title": "पूल परिवार"
       },
       {
-        "id": "जोखिम-आवेदन",
+        "id": "risk-application",
         "title": "जोखिम अनुप्रयोग"
       },
       {
-        "id": "एकीकरण-नोट्स",
+        "id": "integration-notes",
         "title": "एकीकरण नोट्स"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "एकीकरण-मॉडल",
+        "id": "integration-model",
         "title": "एकीकरण मॉडल"
       },
       {
-        "id": "साझेदार-नियंत्रण",
+        "id": "partner-controls",
         "title": "साझेदार नियंत्रण"
       },
       {
-        "id": "लॉन्च नोट्स",
+        "id": "launch-notes",
         "title": "लॉन्च नोट्स"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "एपकिट",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "स्थल-परिवार",
+        "id": "venue-families",
         "title": "स्थान परिवार"
       },
       {
-        "id": "सक्षम स्थिति",
+        "id": "enablement-status",
         "title": "सक्षम स्थिति"
       },
       {
-        "id": "समीक्षा-आवश्यकताएँ",
+        "id": "review-requirements",
         "title": "समीक्षा आवश्यकताएँ"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "ओरेकल-इंटरफेस",
+        "id": "oracle-interface",
         "title": "ओरेकल इंटरफ़ेस"
       },
       {
-        "id": "मल्टी-लेयर-आर्किटेक्चर",
+        "id": "multi-layer-architecture",
         "title": "मल्टी-लेयर आर्किटेक्चर"
       },
       {
-        "id": "डेक्स-हैंडलिंग",
+        "id": "dex-handling",
         "title": "DEX-विशिष्ट हैंडलिंग"
       },
       {
-        "id": "टीडब्ल्यूपी-गणना",
+        "id": "twap-computation",
         "title": "TWAP गणना"
       },
       {
-        "id": "सुरक्षा उपाय",
+        "id": "safety-measures",
         "title": "सुरक्षा और हेरफेर रोकथाम"
       },
       {
-        "id": "संरचनीय-पैरामीटर्स",
+        "id": "configurable-parameters",
         "title": "संरचनीय पैरामीटर"
       }
     ],
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "सिस्टम में भूमिका",
+        "id": "role-in-system",
         "title": "सिस्टम में भूमिका"
       },
       {
-        "id": "एडैप्टर-मॉडल",
+        "id": "adapter-model",
         "title": "एडैप्टर मॉडल"
       },
       {
-        "id": "सपोर्टेड-ऑपरेशन्स",
+        "id": "supported-operations",
         "title": "संपर्कित संचालन"
       },
       {
-        "id": "तैनाती-स्थिति",
+        "id": "deployment-status",
         "title": "तैनाती की स्थिति"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "मूल अवधारणाएँ",
+        "id": "core-concepts",
         "title": "मुख्य अवधारणाएँ"
       },
       {
-        "id": "प्रोटोकॉल घटक",
+        "id": "protocol-components",
         "title": "प्रोटोकॉल घटक"
       },
       {
-        "id": "वित्तीय-शर्तें",
+        "id": "financial-terms",
         "title": "वित्तीय शब्दावली"
       },
       {
-        "id": "जोखिम-सुरक्षा",
+        "id": "risk-security",
         "title": "जोखिम और सुरक्षा"
       },
       {
-        "id": "मैट्रिक्स",
+        "id": "metrics",
         "title": "मैट्रिक्स"
       },
       {
-        "id": "अस्वीकरण",
+        "id": "disclaimers",
         "title": "अस्वीकरण"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "मूल अंतर्दृष्टि",
+        "id": "core-insight",
         "title": "मुख्य अंतर्दृष्टि"
       },
       {
-        "id": "यूज़र-फ़्लो",
+        "id": "user-flow",
         "title": "उधार लेने का मॉडल"
       },
       {
-        "id": "ओरेकल-मूल्यांकन",
+        "id": "oracle-valuation",
         "title": "ओरेकल और मूल्यांकन"
       },
       {
-        "id": "ऋण लेने की प्रक्रिया",
+        "id": "borrowing-process",
         "title": "उधार लेने की क्षमता"
       },
       {
-        "id": "स्वास्थ्य निगरानी",
+        "id": "health-monitoring",
         "title": "स्वास्थ्य और परिसमापन"
       },
       {
-        "id": "शुल्क संग्रह",
+        "id": "fee-collection",
         "title": "शुल्क उपचार"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "टेस्टनेट-दायरा",
+        "id": "testnet-scope",
         "title": "टेस्टनेट स्कोप"
       },
       {
-        "id": "कैसे-मूल्यांकन-करें",
+        "id": "how-to-evaluate",
         "title": "कैसे मूल्यांकन करें"
       },
       {
-        "id": "रोडमैप-फ़्रेमिंग",
+        "id": "roadmap-framing",
         "title": "रोडमैप फ्रेमिंग"
       },
       {
-        "id": "अभियान और स्थिति",
+        "id": "campaigns-and-status",
         "title": "अभियान और स्थिति"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "सामान्य अस्वीकरण",
+        "id": "general-disclaimer",
         "title": "सामान्य अस्वीकरण"
       },
       {
-        "id": "कोई वित्तीय सलाह नहीं",
+        "id": "no-financial-advice",
         "title": "कोई वित्तीय सलाह नहीं"
       },
       {
-        "id": "जोखिम",
+        "id": "risks",
         "title": "जोखिम"
       },
       {
-        "id": "कोई वारंटी नहीं",
+        "id": "no-warranties",
         "title": "कोई वारंटी नहीं"
       },
       {
-        "id": "दायित्व की सीमा",
+        "id": "limitation-of-liability",
         "title": "उत्तरदायित्व की सीमा"
       },
       {
-        "id": "संबंधित नीतियाँ",
+        "id": "related-policies",
         "title": "संबंधित नीतियाँ"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "पहुंच-प्रतिबंध",
+        "id": "access-restrictions",
         "title": "पहुँच प्रतिबंध"
       },
       {
-        "id": "प्रतिबंधित प्राधिकरण क्षेत्र",
+        "id": "restricted-jurisdictions",
         "title": "सीमित क्षेत्राधिकार"
       },
       {
-        "id": "अनुपालन",
+        "id": "compliance",
         "title": "अनुपालन"
       },
       {
-        "id": "संबंधित नीतियाँ",
+        "id": "related-policies",
         "title": "संबंधित नीतियाँ"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "फंजीबल-एलपी",
+        "id": "fungible-lp",
         "title": "समान रूप से विनिमेय LP उदाहरण"
       },
       {
-        "id": "सघन-द्रवता",
+        "id": "concentrated-liquidity",
         "title": "सघन तरलता उदाहरण"
       },
       {
-        "id": "एनएफटी-लिक्विडिटी",
+        "id": "nft-liquidity",
         "title": "एनएफटी परिसमापन"
       },
       {
-        "id": "मल्टी-पोज़िशन-खाता",
+        "id": "multi-position-account",
         "title": "मल्टी-पोजिशन खाता"
       },
       {
-        "id": "किनारे-मामले",
+        "id": "edge-cases",
         "title": "संपूर्ण मामलों"
       },
       {
-        "id": "सारांश",
+        "id": "summary",
         "title": "सारांश"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "मानक-संदर्भ",
+        "id": "canonical-reference",
         "title": "संबंधित नीति दस्तावेज़"
       },
       {
-        "id": "रनटाइम-क्रम",
+        "id": "runtime-sequence",
         "title": "रनटाइम अनुक्रम"
       },
       {
-        "id": "राज्य-स्थानांतरण",
+        "id": "state-transitions",
         "title": "राज्य संक्रमण"
       },
       {
-        "id": "ऑपरेटर नोट्स",
+        "id": "operator-notes",
         "title": "ऑपरेटर नोट्स"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "कवरेज-मॉडल",
+        "id": "coverage-model",
         "title": "कवरेज मॉडल"
       },
       {
-        "id": "कार्यान्वयन-आवश्यकताएँ",
+        "id": "execution-requirements",
         "title": "अनुपालन आवश्यकताएँ"
       },
       {
-        "id": "संचालन-नोट्स",
+        "id": "operational-notes",
         "title": "संचालन नोट्स"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "तीन-परतें",
+        "id": "three-layers",
         "title": "तीन परतें"
       },
       {
-        "id": "मूल नियम",
+        "id": "core-rules",
         "title": "मुख्य नियम"
       },
       {
-        "id": "एलपी-जटिलता",
+        "id": "lp-complexity",
         "title": "LP आंशिक जटिलता"
       },
       {
-        "id": "विनिवेशन-पथ",
+        "id": "liquidation-pathways",
         "title": "विलयन पथ"
       },
       {
-        "id": "स्थिति-स्थिति",
+        "id": "position-state",
         "title": "स्थिति स्थिति"
       },
       {
-        "id": "अतिरिक्त-हैंडलिंग",
+        "id": "surplus-handling",
         "title": "अधिशेष प्रबंधन"
       },
       {
-        "id": "ऑपरेटर-मॉडल",
+        "id": "operator-model",
         "title": "ऑपरेटर मॉडल"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "स्वागत है",
+        "id": "welcome",
         "title": "स्वागत है"
       },
       {
-        "id": "अवाना क्या है",
+        "id": "what-is-avana",
         "title": "Avana क्या है?"
       },
       {
-        "id": "यह-कैसे-काम-कرتा-है",
+        "id": "how-it-works",
         "title": "यह कैसे काम करता है"
       },
       {
-        "id": "एलपी संपार्श्विक अनलॉक करना",
+        "id": "unlocking-lp-collateral",
         "title": "क्यों LP गारंटी महत्वपूर्ण है"
       },
       {
-        "id": "वास्तुकला",
+        "id": "architecture",
         "title": "वास्तुकला"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "परिधि और प्रणाली वास्तुकला",
+        "id": "scope-and-system-architecture",
         "title": "स्कोप और सिस्टम आर्किटेक्चर"
       },
       {
-        "id": "तीव्रता-दर्शन",
+        "id": "severity-philosophy",
         "title": "तीव्रता दर्शन"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "सुरक्षा चुनौतियाँ",
+        "id": "security-challenges",
         "title": "सुरक्षा चुनौतियाँ"
       },
       {
-        "id": "मल्टी-लेयर सुरक्षा",
+        "id": "multi-layer-security",
         "title": "मल्टी-लेयर सुरक्षा"
       },
       {
-        "id": "मुख्य-संधि-सतहें",
+        "id": "core-contract-surfaces",
         "title": "मुख्य अनुबंध सतहें"
       },
       {
-        "id": "विश्वास-सीमाएँ",
+        "id": "trust-boundaries",
         "title": "विश्वास की सीमाएँ"
       },
       {
-        "id": "ऑडिट-तैयारी",
+        "id": "audit-readiness",
         "title": "ऑडिट तैयारी"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "उद्देश्य",
+        "id": "purpose",
         "title": "उद्देश्य"
       },
       {
-        "id": "वित्त पोषण दृष्टिकोण",
+        "id": "funding-approach",
         "title": "वित्तपोषण दृष्टिकोण"
       },
       {
-        "id": "सक्रियण-पथ",
+        "id": "activation-path",
         "title": "सक्रियण पथ"
       },
       {
-        "id": "कवरेज-सीमा",
+        "id": "coverage-boundary",
         "title": "कवरेज सीमा"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "सारांश",
+        "id": "overview",
         "title": "सारांश"
       },
       {
-        "id": "मुख्य सिद्धांत",
+        "id": "core-principles",
         "title": "मुख्य सिद्धांत"
       },
       {
-        "id": "भूमिकाएँ",
+        "id": "roles",
         "title": "भूमिकाएँ"
       },
       {
-        "id": "अपडेट-फ़्लो",
+        "id": "update-flow",
         "title": "फ़्लो अपडेट करें"
       },
       {
-        "id": "पैरामीटर-क्लासेस",
+        "id": "parameter-classes",
         "title": "पैरामीटर वर्ग"
       },
       {
-        "id": "सार्वजनिक प्रकटीकरण",
+        "id": "public-disclosure",
         "title": "सार्वजनिक प्रकटीकरण"
       },
       {
-        "id": "आपातकालीन कार्रवाई",
+        "id": "emergency-actions",
         "title": "आपातकालीन कार्रवाइयाँ"
       }
     ],
