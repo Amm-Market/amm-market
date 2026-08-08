@@ -1,0 +1,2201 @@
+{
+  "architecture/collateral-factors": {
+    "meta": {
+      "title": "Faktor Agunan",
+      "description": "Bagaimana Borrow Spoke mengubah nilai posisi LP menjadi kapasitas yang dapat dipinjam sebelum melaporkannya ke Hub."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "how-it-works",
+        "title": "Cara Kerjanya"
+      },
+      {
+        "id": "borrowable-value",
+        "title": "Nilai yang Bisa Dipinjam"
+      },
+      {
+        "id": "notes",
+        "title": "Catatan"
+      }
+    ],
+    "strings": [
+      "Faktor Agunan",
+      "Bagaimana Borrow Spoke mengubah nilai posisi LP menjadi kapasitas yang dapat dipinjam sebelum melaporkannya ke Hub.",
+      "Gambaran Umum",
+      "Cara Kerjanya",
+      "Nilai yang Bisa Dipinjam",
+      "Catatan",
+      "Bagaimana seorang Peminjam Berbicara memutuskan berapa banyak posisi LP yang dihitung terhadap kapasitas peminjaman.",
+      "Faktor jaminan menjawab pertanyaan yang sempit namun penting: seberapa besar posisi LP ini seharusnya mendukung utang? Dalam Avana, jawaban itu tidak diambil hanya dari tanda utama LP. Borrow Spoke pertama-tama membangun kembali dan mendiskontokan posisi tersebut, kemudian menerapkan aturan pasar yang menentukan berapa bagian dari nilai itu yang dapat dihitung sebagai kapasitas pinjaman yang dapat digunakan.",
+      "Lightpaper menyatakan prinsipnya. Halaman ini menjelaskan urutan yang digunakan oleh pengembang di dalam spoke sebelum kapasitas apapun diserahkan ke Hub.",
+      "Spoke hanya menerima kolam atau templat yang disetujui. Jika suatu posisi tidak sesuai dengan definisi pasar yang tercantum, posisi tersebut tidak pernah mencapai tahapan penilaian selanjutnya yang menghasilkan kapasitas pinjaman.",
+      "Ini membangun kembali posisi LP, menilai aset yang mendasarinya, dan mendiskontokan hasilnya menjadi nilai jaminan yang dapat dipulihkan. Langkah itu adalah di mana jari-jari bergerak dari posisi pool yang tampak berharga secara teori ke nilai yang bersedia dipinjamkan dalam praktiknya.",
+      "Ini menerapkan pengaturan jaminan spesifik pasar dan meneruskan kapasitas pinjaman agregat ke Hub untuk penegakan akhir. Hub menggunakan hasilnya, tetapi spoke adalah lapisan yang memutuskan seberapa banyak dari LP yang bisa dihitung sejak awal.",
+      "Nilai yang dapat dipinjam adalah output turunan, bukan atribut tetap yang melekat pada setiap LP di spokes. Dua posisi bisa berada di pasar yang berbeda, menghasilkan nilai yang dapat dipulihkan berbeda, dan menyelesaikan pengaturan jaminan yang berbeda meskipun terlihat mirip sekilas. Hal itu menjaga implementasi tetap selaras dengan model penjaminan khusus LP yang dijelaskan di bagian lain dokumen.",
+      "Sebuah posisi yang didukung LP hanya memberikan kapasitas pinjaman setelah jari-jari telah mengakuinya, merekonstruksi dan mendiskontokannya, serta menerapkan kontrol jaminan yang dikonfigurasi pasar.",
+      "• Pengaturan pasar yang tepat langsung dengan konfigurasi pool yang didukung, bukan melalui halaman ikhtisar ini.",
+      "• Tingkatan risiko di tingkat kumpulan adalah rincian pelaksanaan, bukan janji bahwa semua LP berbagi satu LTV universal.",
+      "• Baca perilaku faktor jaminan bersama dengan faktor kesehatan dan dokumen likuidasi jika Anda sedang mengimplementasikan logika pemantauan atau pemulihan."
+    ]
+  },
+  "architecture/health-factor": {
+    "meta": {
+      "title": "Faktor Kesehatan",
+      "description": "Bagaimana Borrow Spoke membandingkan nilai agunan yang disesuaikan dan utang untuk menentukan apakah akun yang didukung LP sehat atau dapat dilikuidasi."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "calculation",
+        "title": "Perhitungan"
+      },
+      {
+        "id": "health-bands",
+        "title": "Memantau Band"
+      },
+      {
+        "id": "response-path",
+        "title": "Jalur Respons"
+      },
+      {
+        "id": "user-actions",
+        "title": "Tindakan Pengguna"
+      }
+    ],
+    "strings": [
+      "Faktor Kesehatan",
+      "Bagaimana Borrow Spoke membandingkan nilai agunan yang disesuaikan dan utang untuk menentukan apakah akun yang didukung LP sehat atau dapat dilikuidasi.",
+      "Gambaran Umum",
+      "Perhitungan",
+      "Memantau Band",
+      "Jalur Respons",
+      "Tindakan Pengguna",
+      "Bagaimana Borrow Spoke mengukur keamanan akun dari nilai jaminan yang disesuaikan dan utang yang belum dibayar.",
+      "Faktor kesehatan adalah pandangan ringkas Borrow Spoke tentang apakah suatu akun masih memiliki cukup jaminan yang disesuaikan untuk mendukung utangnya. Ini bukan model risiko terpisah. Jalur penilaian yang sama, logika faktor jaminan, dan asumsi likuidasi yang mengatur peminjaman juga menentukan faktor kesehatan yang dibaca oleh antarmuka dan likuidator.",
+      "Ketika kesehatan jatuh cukup jauh sehingga akun tidak lagi memenuhi batas peminjaman spoke, posisi menjadi dapat dilikuidasi menurut kanonikal",
+      "Kerangka Likuidasi",
+      "Kesehatan dihitung per Borrow Spoke. Pembilangnya adalah nilai jaminan yang disesuaikan dari pengguna di dalam spoke tersebut, yang berarti posisi tersebut telah melalui rekonstruksi, penetapan harga, diskon nilai yang dapat dipulihkan, dan pengaturan jaminan spesifik-pasar yang digunakan oleh spoke tersebut.",
+      "healthFactor = nilaiAgunanDisesuaikan / utangYangBelumLunas",
+      "Jika seorang pengguna memiliki jaminan di lebih dari satu Borrow Spoke, setiap spoke menghitung kesehatan berdasarkan kondisi lokalnya sendiri. Margin ekstra di satu spoke tidak otomatis menutupi defisit di spoke lain, karena protokol membatasi risiko di pasar tempat ia dibuat.",
+      "Sehat:",
+      "nilai jaminan yang disesuaikan tetap nyaman di atas utang yang belum dibayar, sehingga akun memiliki ruang untuk pergerakan pasar biasa tanpa intervensi langsung.",
+      "Daftar pantauan:",
+      "akun tersebut masih lolos pemeriksaan spoke, tetapi cadangannya cukup tipis sehingga peminjam sebaiknya mempertimbangkan untuk melunasi utang, menambahkan jaminan, atau memperbaiki posisinya dengan cara lain.",
+      "Dapat dilikuidasi:",
+      "akun telah mencapai atau melewati batas likuidasi, sehingga jalur pemulihan dapat berpindah dari tindakan pengguna ke penyelesaian yang ditegakkan oleh protokol.",
+      "Peringatan antarmuka bisa lebih konservatif daripada ambang likuidasi keras. Mereka ada untuk membantu pengguna bertindak lebih awal, bukan untuk memperkenalkan seperangkat aturan protokol kedua.",
+      "Jika kesehatan melemah, respons pertama tetap berasal dari peminjam. Akun dapat diperbaiki dengan melunasi utang, menambahkan jaminan LP yang disetujui, atau mengubah posisi dengan cara yang tetap sah menurut pemeriksaan kesehatan spoke.",
+      "Begitu kesehatan melewati batas likuidasi, akun bergerak keluar dari fase pemantauan dan memasuki jalur pemulihan. Node likuidasi dan likuidator pihak ketiga kemudian dapat membuka jalur jaminan yang diperlukan untuk mengembalikan solvabilitas sesuai dengan aturan likuidasi pasar.",
+      "Meminjam lebih banyak mengurangi kesehatan karena utang yang belum dibayar meningkat terhadap basis jaminan yang sama.",
+      "Membayar utang langsung meningkatkan kesehatan karena penyebut dalam rasio tersebut turun.",
+      "Menambahkan agunan yang disetujui dapat meningkatkan sisa ruang jika cabang menerimanya dan menilainya.",
+      "Mengklaim biaya, menarik jaminan, atau menyesuaikan posisi dapat mengurangi kesehatan dan harus diperiksa terhadap kondisi pasca-tindakan sebelum pelaksanaan.",
+      "Faktor Agunan"
+    ]
+  },
+  "architecture/incentives": {
+    "meta": {
+      "title": "Program Insentif",
+      "description": "Tinjauan operasional mengenai insentif dan hadiah Avana, menjelaskan bagaimana kampanye opsional terkait dengan protokol inti tanpa menjadi arsitektur kanonik."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "program-types",
+        "title": "Jenis Program"
+      },
+      {
+        "id": "distribution-principles",
+        "title": "Prinsip Distribusi"
+      },
+      {
+        "id": "claiming-and-reconciliation",
+        "title": "Klaim & Rekonsiliasi"
+      },
+      {
+        "id": "status",
+        "title": "Status Saat Ini"
+      }
+    ],
+    "strings": [
+      "Program Insentif",
+      "Tinjauan operasional mengenai insentif dan hadiah Avana, menjelaskan bagaimana kampanye opsional terkait dengan protokol inti tanpa menjadi arsitektur kanonik.",
+      "Gambaran Umum",
+      "Jenis Program",
+      "Prinsip Distribusi",
+      "Klaim & Rekonsiliasi",
+      "Status Saat Ini",
+      "Lapisan hadiah dan kampanye opsional yang dapat ditempatkan di atas implementasi Avana tanpa mengubah mekanisme inti peminjaman.",
+      "Insentif adalah tambahan, bukan bagian dari inti pinjaman. Protokol masih ditentukan oleh penilaian LP, kontrol risiko Borrow Spoke, likuiditas Hub, dan likuidasi. Kampanye dapat mendorong partisipasi, tetapi mereka tidak mengubah mekanisme tersebut.",
+      "Kampanye bersifat operasional dan terbatas waktu. Halaman ini menjelaskan bagaimana mereka terkait dengan sisa Avana. Ini tidak menyiratkan bahwa program penghargaan tertentu aktif di setiap penyebaran.",
+      "• Kampanye yang berfokus pada pemasok yang memperdalam modal di Lend Spoke atau lapisan likuiditas yang terhubung.",
+      "• Kampanye yang berfokus pada peminjam yang mendorong peminjaman yang sehat yang didukung oleh LP.",
+      "• Kampanye operator atau ekosistem yang terkait dengan pengujian, integrasi, atau aktivitas pendukung risiko.",
+      "Ketika insentif ada, mereka harus dapat dipahami, dapat diaudit, dan dipisahkan dari logika risiko inti. Perhitungan hadiah mungkin bergantung pada aktivitas, durasi, atau aturan kampanye, tetapi tidak boleh mengubah cara Avana menilai jaminan atau menentukan kelayakan likuidasi.",
+      "Kampanye dapat memberi penghargaan pada perilaku yang diinginkan. Mereka tidak boleh mendorong leverage yang tidak aman atau menyembunyikan ekonomi nyata dari pinjaman yang didukung LP.",
+      "Jalur klaim, jadwal hak, dan metode rekonsiliasi adalah spesifik untuk setiap kampanye. Mereka dapat ditangani secara onchain, melalui pengendali hadiah khusus, atau melalui akuntansi offchain yang diterbitkan oleh operator kampanye.",
+      "Integrator harus selalu memverifikasi jalur klaim aktif dan aturan kelayakan untuk penempatan yang mereka targetkan.",
+      "Anggap insentif sebagai spesifik untuk peluncuran dan spesifik untuk musim. Jika sebuah kampanye sedang berlangsung, rinciannya harus diumumkan secara terpisah dari dokumen arsitektur dengan tanggal, aturan, dan ketentuan distribusi yang jelas."
+    ]
+  },
+  "architecture/lend-spoke": {
+    "meta": {
+      "title": "Jari-jari Luar",
+      "description": "Bagaimana Lend Spoke menerima aset pemberi pinjaman dan mengarahkannya melalui Hub ke pasar pinjaman beragunan LP."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "capital-entry-point",
+        "title": "Titik Masuk Modal"
+      },
+      {
+        "id": "risk-adjusted-yield",
+        "title": "Hasil yang Disesuaikan dengan Risiko"
+      },
+      {
+        "id": "dynamic-risk-controls",
+        "title": "Kontrol Risiko Dinamis"
+      }
+    ],
+    "strings": [
+      "Jari-jari Luar",
+      "Bagaimana Lend Spoke menerima aset pemberi pinjaman dan mengarahkannya melalui Hub ke pasar pinjaman beragunan LP.",
+      "Gambaran Umum",
+      "Titik Masuk Modal",
+      "Hasil yang Disesuaikan dengan Risiko",
+      "Kontrol Risiko Dinamis",
+      "Modal Pasokan",
+      "Pemberi pinjaman membawa aset utama seperti ETH, BTC, dan stablecoin melalui Lend Spoke alih-alih berinteraksi langsung dengan jaminan LP.",
+      "Rute Melalui Pusat",
+      "Lend Spoke meneruskan likuiditas itu ke Hub, di mana satu lapisan cadangan dapat mendukung beberapa pasar peminjaman dengan LP jaminan.",
+      "Tenaga Pinjaman Jari-Jari",
+      "Pinjam Spokes lalu tarik dari likuiditas Hub sambil menjaga penilaian LP, penanganan likuidasi, dan kontrol risiko spesifik pasar tetap terkandung di setiap spoke.",
+      "Komposisi kolam dan perubahan saldo inventaris",
+      "Volume perdagangan dan pendapatan biaya yang direalisasikan",
+      "Divergensi harga antara aset berpasangan",
+      "Perubahan rezim volatilitas dan stabilitas patokan",
+      "Kedalaman likuiditas yang tersedia selama pelonggaran stres",
+      "Titik masuk yang menghadap pemberi pinjaman yang memindahkan modal pemasok ke Hub untuk digunakan oleh pasar pinjaman dengan jaminan LP.",
+      "Lend Spoke adalah jalur penerimaan modal untuk pemberi pinjaman. Penyetor menyediakan aset seperti ETH, BTC, dan stablecoin utama di sini, dan likuiditas itu kemudian dialirkan ke Hub sehingga Borrow Spokes dapat mendanai pinjaman terhadap jaminan LP yang didukung tanpa meminta pemberi pinjaman untuk memikirkan mekanisme posisi AMM.",
+      "Pem separation ini disengaja. Jalur pemberi pinjaman adalah tentang menyediakan aset yang dapat dipinjamkan dan menerima keuntungan dari sisi peminjaman, sementara Borrow Spokes memiliki pekerjaan rumit berupa penilaian LP, kelayakan, pemeriksaan kesehatan, dan aturan likuidasi untuk setiap keluarga jaminan yang terdaftar.",
+      "Peran dalam tumpukan:",
+      "Lend Spoke mengakui peminjaman modal. Borrow Spokes menjaga risiko spesifik LP tetap lokal di setiap pasar, sehingga satu pool peminjaman tidak memerlukan satu model jaminan global.",
+      "Setoran pemberi pinjaman masuk melalui Lend Spoke terlebih dahulu, kemudian pindah ke lapisan cadangan Hub bersama. Itu berarti modal tidak harus dipartisi satu kolam pada satu waktu oleh setiap pasar LP yang didukung, meskipun aturan penjaminan kredit di sisi peminjaman tetap terpisah.",
+      "Di awal siklus hidup protokol, likuiditas Hub juga dapat dilengkapi oleh Aave v4 jalur kredit. Seiring waktu, simpanan Lend Spoke dapat menjadi bagian yang lebih besar dari modal pinjaman asli protokol.",
+      "LP jaminan bukanlah inventaris statis. Selama pinjaman terbuka, posisi yang mendasarinya dapat terus menghasilkan biaya perdagangan, dan itu penting untuk bagaimana sisi peminjam dimodelkan. Oleh karena itu, protokol tidak memperlakukan setiap LP seperti saldo mati yang hanya bergerak dengan harga token.",
+      "Perbedaan itu juga memengaruhi sisi peminjaman. Syarat kredit dapat mencerminkan fakta bahwa beberapa LP pasar memiliki perilaku pembentukan biaya dan pembongkaran yang berbeda dari agunan yang tidak menghasilkan, dan Aave v4 alat premi risiko dapat mengekspresikan perbedaan tersebut ketika kebijakan mengizinkannya. Hasil aktual pemberi pinjaman masih bergantung pada konfigurasi langsung dan kondisi pasar, bukan pada asumsi tetap dari halaman ini.",
+      "Untuk pemberi pinjaman:",
+      "setoran melalui kredit dana Lend Spoke yang dijamin terhadap LP posisi yang nilai yang dapat dipulihkan, logika kesehatan, dan jalur likuidasinya semuanya didefinisikan dalam Borrow Spokes.",
+      "Sisi pemberi pinjaman bergantung pada sisi peminjam yang tetap berada dalam model risiko yang dapat bergerak seiring dengan pasar. Pengaturan gaya tetap LTV saja tidak cukup untuk agunan LP, sehingga kerangka kerja dapat merespons perubahan dalam komposisi pool, volume, divergensi, volatilitas, perilaku peg, dan kedalaman pembongkaran saat kondisi tersebut berubah.",
+      "Dalam kondisi tertekan, batas dan kontrol terkait dapat diperketat untuk melindungi likuiditas pemberi pinjaman. Dalam kondisi yang lebih tenang, kontrol yang sama dapat disesuaikan di dalam batas kebijakan yang disetujui. Intinya bukan melakukan penyetelan terus-menerus hanya untuk tujuan itu sendiri, tetapi memastikan lapisan pemberian pinjaman tidak dipaksa untuk memperlakukan pasar LP yang berubah seolah-olah tidak ada yang berubah.",
+      "Sinyal yang dapat memberi informasi pembaruan risiko",
+      "Modal pemberi pinjaman mengikuti satu jalur masuk, tetapi LP pasar tidak berbagi satu profil risiko. Borrow Spokes dapat menjaga parameter spesifik pasar tetap lokal, yang memungkinkan berbagai keluarga LP beroperasi di bawah pengaturan yang berbeda tanpa memecah pengalaman pemberi pinjaman."
+    ]
+  },
+  "architecture": {
+    "meta": {
+      "title": "Arsitektur Protokol - Meminjam Spoke",
+      "description": "Meminjam arsitektur Spoke untuk peminjaman yang didukung LP, termasuk alur peminjam, interaksi Hub, dan tanggung jawab jaminan di sisi spoke."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "user-experience",
+        "title": "Pengalaman Pengguna"
+      },
+      {
+        "id": "example-flow",
+        "title": "Alur Contoh"
+      },
+      {
+        "id": "three-tier-architecture",
+        "title": "Arsitektur Tiga Lapisan"
+      },
+      {
+        "id": "data-flow",
+        "title": "Aliran Data"
+      },
+      {
+        "id": "spoke-responsibilities",
+        "title": "Tanggung Jawab Bicara"
+      },
+      {
+        "id": "hub-role",
+        "title": "Aave v4 Peran Hub"
+      }
+    ],
+    "strings": [
+      "Arsitektur Protokol - Meminjam Spoke",
+      "Meminjam arsitektur Spoke untuk peminjaman yang didukung LP, termasuk alur peminjam, interaksi Hub, dan tanggung jawab jaminan di sisi spoke.",
+      "Gambaran Umum",
+      "Pengalaman Pengguna",
+      "Alur Contoh",
+      "Arsitektur Tiga Lapisan",
+      "Aliran Data",
+      "Tanggung Jawab Bicara",
+      "Aave v4 Peran Hub",
+      "Pinjam Jari-Jari",
+      "Lapisan eksekusi yang berhadapan dengan peminjam yang menerima LP jaminan, mengukur risiko, dan meminjam terhadap likuiditas Hub.",
+      "The Borrow Spoke adalah tempat di mana posisi LP menjadi dapat digunakan sebagai jaminan. Ia mengambil kendali atas posisi yang didukung untuk pembukuan, membaca data yang dibutuhkan untuk memahami posisi tersebut, menilainya berdasarkan aturan oracle dan risiko dari spoke, dan menampilkan kapasitas pinjaman yang dihasilkan kepada jalur peminjam.",
+      "Itu membuat Borrow Spoke sangat berbeda dari pembungkus agunan umum. Itu harus memahami bagaimana LP yang terdaftar dibangun, nilai apa yang dapat dipulihkan dalam pembubaran yang tertekan, bagaimana kesehatan harus dipantau dari waktu ke waktu, dan jalur likuidasi mana yang berlaku jika akun berhenti memenuhi persyaratan keselamatan spoke.",
+      "Lingkup:",
+      "LP jaminan berbeda dari aset statis, jadi Borrow Spoke mengubah komposisi pool, rentang harga, biaya, dan kondisi pasar menjadi parameter kredit dan aturan kesehatan untuk pasar yang dicatatnya. Lend Spoke menangani masuknya modal. Borrow Spoke menangani LP penjaminan, pemantauan, dan likuidasi untuk pasarannya sendiri.",
+      "Aliran Pinjaman",
+      "Peminjam berinteraksi dengan satu permukaan yang menghadap ke spoke untuk seluruh siklus hidup akun: menyetorkan jaminan yang disetujui LP, memeriksa kapasitas yang tersedia, menarik utang, melunasi saldo, dan mengklaim biaya saat pasar memungkinkan. Antarmuka dapat tetap konsisten bahkan ketika format LP yang mendasari berbeda, karena spoke menyerap penanganan spesifik AMM.",
+      "Konteks transaksi:",
+      "tindakan harus menampilkan pembaruan faktor kesehatan, dampak batas pinjaman, dan status jaminan bersamaan dengan transaksi sehingga peminjam melihat risiko pasca-tindakan daripada menyimpulkannya setelah kejadian.",
+      "Alur khas dari sisi peminjam:",
+      "Langkah 1: Setoran Awal",
+      "Peminjam menyetor posisi LP yang disetujui ke dalam Borrow Spoke. Posisi tersebut tetap aktif di AMM, tetapi spoke sekarang mencatatnya sebagai jaminan dan mulai melacak data yang diperlukan untuk penilaian dan kesehatan.",
+      "Langkah 2: Perhitungan Daya Pinjam",
+      "The Borrow Spoke merekonstruksi posisi, menentukan harga eksposur yang mendasarinya, menerapkan faktor agunan yang relevan, dan kemudian menerapkan perlakuan risiko spesifik pool. Hasil dari proses itu adalah kapasitas pinjaman yang ditunjukkan di akun.",
+      "Langkah 3: Meminjam Beberapa Aset",
+      "Peminjam menarik aset terhadap kapasitas yang disetujui oleh spoke. Setelah peminjam mengeksekusi, spoke memperbarui representasi utang akun dan menghitung ulang kesehatan menggunakan aturan pasar yang sama yang menerima jaminan.",
+      "Langkah 4: Tambahkan Jaminan Lebih Banyak",
+      "Posisi tambahan yang disetujui LP dapat ditambahkan nanti. Setiap posisi baru dievaluasi berdasarkan daftar, harga, dan aturan risiko cabang sebelum kontribusinya digabungkan ke dalam kapasitas agregat.",
+      "Jalur peminjam lebih mudah dipahami jika Anda memisahkan siapa yang memulai tindakan, lapisan mana yang menafsirkan jaminan LP, dan lapisan mana yang menyediakan uang tunai:",
+      "Atas: Peminjam",
+      "Peminjam memanggil spoke untuk menyetor LP jaminan, meminjam dana, melunasi utang, dan mengklaim biaya. Dari perspektif mereka, spoke adalah titik masuk operasional untuk akun.",
+      "Tengah: Pinjam Jari-jari Roda (Avana)",
+      "Lapisan ini menerjemahkan data posisi spesifik AMM menjadi status pinjaman. Ini mengelola kustodi LP, menghitung risiko spesifik posisi, menegakkan pemeriksaan kesehatan, dan mengoordinasikan jalur likuidasi ketika agunan tidak lagi mendukung utang.",
+      "Bawah: Aave v4 Hub & Modal yang Dialihkan",
+      "Hub adalah sumber likuiditas bersama dan lapisan akuntansi di bawah spoke. Modal yang diarahkan melalui Lend-Spoke dan sumber Hub lain yang dikonfigurasi mendanai penarikan yang diotorisasi oleh Borrow Spoke.",
+      "Jalur data utama berjalan dari status LP ke akuntansi spoke hingga tindakan likuiditas Hub. Dalam praktiknya terlihat seperti ini:",
+      "LP Manajer Posisi memindahkan jaminan ke Spoke Pinjaman",
+      "- Spoke menyimpan referensi posisi, menyimpan metadata yang dibutuhkannya, dan mulai menggunakan status tersebut untuk penilaian dan pelacakan kesehatan.",
+      "Peminjam menarik aset melalui Borrow Spoke",
+      "- Setelah akun memiliki kapasitas, spoke meminta likuiditas dari satu atau lebih Hub yang dikonfigurasi.",
+      "Hutang direpresentasikan sebagai saham hutang",
+      "- Nilai tukar bertambah secara majemuk di bawah model suku bunga yang dikonfigurasi sementara spoke menjaga keadaan utang dan jaminan spesifik peminjam tetap sinkron.",
+      " Likuidasi terjadi saat diperlukan",
+      "- Hubs, Avana node likuidasi, atau likuidator eksternal dapat menyebabkan Borrow Spoke memindahkan LP ke jalur pembubaran yang tepat dan menyelesaikan utang melalui urutan likuidasi yang sesuai.",
+      "Interaksi Hub",
+      "Meminjam:",
+      "Borrow Spoke mengeluarkan panggilan draw ke Hub ketika seorang peminjam membuka atau memperpanjang utang",
+      "Bayar kembali:",
+      "Borrow Spoke mengeluarkan panggilan pemulihan ke Hub ketika utang dibayar kembali",
+      "Pemeriksaan Kesehatan:",
+      "Panggilan Hub Meminjam Spoke's",
+      "dapatkanDataJaminan",
+      "untuk mengambil nilai jaminan LP saat ini dari spoke",
+      " Likuidasi:",
+      "Jika risiko bicara agregat melampaui ambang batas, Hub dapat memanggil",
+      "menanganiLikuidasi",
+      "Komponen",
+      "Tanggung jawab",
+      "Pinjam Jari-jari (per AMM)",
+      "Memelihara catatan posisi, mengagregasi jaminan USD, dan utang USD untuk keluarga AMM itu, dan mengekspos",
+      "dapatkanAgregatPengguna(pengguna)",
+      "Adaptor Likuidasi",
+      "Menjalankan akumulasi denda, pelunasan lunak, dan likuidasi keras untuk Borrow Spoke tanpa memaksa setiap format LP melalui satu rutinitas likuidasi generik.",
+      "Fungsi LiquidationAdapter",
+      "terapkanHukuman(pengguna)",
+      "softUnwind(pengguna, maxUsd)",
+      "- melaksanakan pengurangan sebagian, mengumpulkan hasilnya, menukar sesuai kebutuhan, dan membayar kembali utang hingga jumlah yang diminta",
+      "likuidasi(user)",
+      "Acara: PenaltiTerkumpul, PelepasanLembutDijalankan, LikuidasiKerasDijalankan",
+      "The Borrow Spoke tidak menyimpan cadangan pemberi pinjaman sendiri. Itu bergantung pada Hub untuk likuiditas yang digabungkan, akuntansi cadangan, dan sisi neraca dari peminjaman, sementara spoke tetap fokus pada keputusan risiko spesifik jaminan.",
+      "Pasokan Modal",
+      "Aset seperti USDC, DAI, dan ETH dapat masuk melalui lapisan modal yang terhubung dengan Hub, termasuk Lend Spoke. Hub mengelola kumpulan bersama dan akuntansinya, sementara Borrow Spoke memutuskan bagian mana dari likuiditas itu yang dapat diakses dengan aman oleh akun yang didukung LP.",
+      "Garis Kredit",
+      "Hub memberikan setiap Borrow Spoke jalur kredit yang membatasi seberapa banyak likuiditas bersama yang dapat ditarik oleh spoke tersebut. Ini menjaga penjaminanLP-spesifik tetap terisolasi tanpa mengorbankan efisiensi modal dari lapisan cadangan bersama.",
+      "Faktor Kesehatan Independen",
+      "Seorang pengguna dengan LP jaminan di beberapa Borrow Spokes memiliki faktor kesehatan terpisah di setiap spoke. Surplus di satu pasar tidak secara otomatis menutupi kekurangan di pasar lain, yang mengandung risiko bagi pasar yang membuatnya."
+    ]
+  },
+  "architecture/platform-fees": {
+    "meta": {
+      "title": "Biaya Platform",
+      "description": "Kebijakan biaya operasional untuk Avana antarmuka, termasuk bagaimana biaya antarmuka berbeda dari ekonomi protokol, bagaimana biaya tersebut diungkapkan, dan bagaimana memverifikasi kebijakan saat ini."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "interface-vs-protocol",
+        "title": "Antarmuka vs Protokol"
+      },
+      {
+        "id": "disclosure",
+        "title": "Pengungkapan"
+      },
+      {
+        "id": "treasury-usage",
+        "title": "Penggunaan Perbendaharaan"
+      },
+      {
+        "id": "integration-notes",
+        "title": "Catatan Integrasi"
+      }
+    ],
+    "strings": [
+      "Biaya Platform",
+      "Kebijakan biaya operasional untuk Avana antarmuka, termasuk bagaimana biaya antarmuka berbeda dari ekonomi protokol, bagaimana biaya tersebut diungkapkan, dan bagaimana memverifikasi kebijakan saat ini.",
+      "Gambaran Umum",
+      "Antarmuka vs Protokol",
+      "Pengungkapan",
+      "Penggunaan Perbendaharaan",
+      "Catatan Integrasi",
+      "Kebijakan biaya tingkat antarmuka dan panduan pengungkapan untuk Avana antarmuka depan dan permukaan layanan.",
+      "Halaman ini tentang kebijakan antarmuka, bukan tentang bagaimana peminjaman bekerja dalam kontrak inti. Avana dapat mengenakan biaya frontend atau layanan pada permukaan resmi, tetapi biaya tersebut terpisah dari aturan jaminan, oracle, dan likuidasi protokol.",
+      "Tarif biaya yang tepat, pengecualian, dan status peluncuran adalah pengaturan operasional dan harus diverifikasi di antarmuka langsung atau materi rilis sebelum mengandalkannya.",
+      "Kontrak inti Avana mengatur penerimaan LP, kapasitas peminjaman, dan perilaku likuidasi. Biaya antarmuka, jika diaktifkan, berada di atas kontrak-kontrak tersebut sebagai kebijakan bisnis frontend daripada sebagai perubahan pada mesin pinjam atau risiko itu sendiri.",
+      "• Ekonomi protokol menentukan akumulasi utang, perlakuan jaminan, dan hasil likuidasi.",
+      "• Biaya antarmuka adalah pilihan operasional yang terkait dengan frontend atau jalur layanan tertentu.",
+      "• Integrasi kontrak langsung mungkin mengikuti asumsi biaya yang berbeda dari UI resmi.",
+      "Setiap biaya antarmuka harus ditunjukkan dengan jelas sebelum tanda tangan agar pembuat dan pengguna dapat membedakannya dari biaya gas, biaya pertukaran, dan efek utang atau likuidasi tingkat protokol.",
+      "Pengungkapan yang baik harus mengidentifikasi sumber biaya, apakah itu opsional atau spesifik antarmuka, dan ke mana hasilnya diarahkan.",
+      "Jika biaya antarmuka dikumpulkan, biaya tersebut biasanya digunakan untuk mendanai operasi produk seperti infrastruktur, pemantauan, pekerjaan keamanan, dokumentasi, dan dukungan. Tata kelola dapat memformalkan atau merevisi kebijakan tersebut seiring waktu.",
+      "Penggunaan perbendaharaan harus dipublikasikan sebagai laporan operasional, bukan ditafsirkan dari arsitektur agunan protokol.",
+      "• Pembuat harus memverifikasi kebijakan biaya saat ini sebelum mengutip biaya kepada pengguna akhir.",
+      "• Hindari memasukkan asumsi biaya antarmuka secara langsung ke dalam integrasi protokol kecuali kebijakan tersebut secara resmi sudah diberi versi.",
+      "• Saat mendokumentasikan integrasi, pisahkan kebijakan biaya dari kapasitas pinjaman dan logika likuidasi."
+    ]
+  },
+  "getting-started/borrow-assets": {
+    "meta": {
+      "title": "Meminjam Aset",
+      "description": "Cara peminjaman bekerja terhadap LP jaminan di Avana, mulai dari pemeriksaan kapasitas sisi cabang hingga likuiditas Hub dan validasi kesehatan pasca-peminjaman."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "borrow-checks",
+        "title": "Cek Pinjaman"
+      },
+      {
+        "id": "health-check",
+        "title": "Pemeriksaan Kesehatan"
+      },
+      {
+        "id": "internal-accounting",
+        "title": "Akuntansi Internal"
+      },
+      {
+        "id": "borrowable-assets",
+        "title": "Aset yang Dapat Dipinjam"
+      },
+      {
+        "id": "borrowing-power",
+        "title": "Daya Pinjam"
+      }
+    ],
+    "strings": [
+      "Meminjam Aset",
+      "Cara peminjaman bekerja terhadap LP jaminan di Avana, mulai dari pemeriksaan kapasitas sisi cabang hingga likuiditas Hub dan validasi kesehatan pasca-peminjaman.",
+      "Gambaran Umum",
+      "Cek Pinjaman",
+      "Pemeriksaan Kesehatan",
+      "Akuntansi Internal",
+      "Aset yang Dapat Dipinjam",
+      "Daya Pinjam",
+      "Meminjam dengan memanfaatkan kapasitas gabungan dari LP posisi yang diterima sementara Hub menyediakan lapisan likuiditas bersama.",
+      "Peminjaman baru dimulai setelah Borrow Spoke telah mengakui dan menilai posisi LP dalam akun. Pada saat itu pengguna tidak meminta protokol untuk menilai ulang dari awal. Mereka meminta untuk menggunakan sebagian dari ruang peminjaman yang sudah diakui oleh spoke.",
+      "Agar peminjaman berhasil, spoke harus memastikan masih ada kapasitas yang tersisa, akun harus tetap sehat setelah utang baru ditambahkan, dan Hub harus benar-benar memiliki aset yang diminta untuk ditarik.",
+      "Penting:",
+      "meminjam menciptakan utang yang bertambah seiring waktu. Kapasitas dapat berubah dengan kondisi pasar, jadi cadangan yang aman penting bahkan setelah peminjaman berhasil.",
+      "Pemeriksaan posisi dan kepemilikan:",
+      "Jari-jari memastikan bahwa posisi tersebut masih dimiliki oleh peminjam, masih diakui oleh akun, dan masih berada di dalam set jaminan yang disetujui.",
+      "Pemeriksaan kapasitas:",
+      "utang yang diminta diuji terhadap kapasitas pinjaman agregat yang tersisa dari pengguna di dalam Borrow Spoke tersebut.",
+      "Pemeriksaan likuiditas dan batas hub:",
+      "bahkan jika jaminan cukup, permintaan masih bisa gagal jika Hub tidak memiliki likuiditas yang cukup tersedia atau jika batas tingkat aset atau tingkat protokol mencegah peminjaman lebih banyak.",
+      "Pemeriksaan kesehatan setelah meminjam:",
+      "Pemeriksaan kesehatan bukanlah aturan pintasan terpisah. Ini menggunakan jalur penilaian dan pengaturan risiko yang sama yang sudah mengatur faktor jaminan dan kelayakan likuidasi. Peminjaman hanya berlangsung jika akun masih memiliki nilai jaminan yang disesuaikan cukup setelah utang tambahan diterapkan.",
+      "healthFactor = nilaiAgunanDisesuaikan / utangYangBelumLunas",
+      "Nilai jaminan yang disesuaikan sudah mencakup penilaian konservatif LP, faktor jaminan, dan kontrol risiko tingkat pool. Lihat",
+      "Faktor Kesehatan",
+      "Faktor Agunan",
+      "Saham utang:",
+      "Gambar hub:",
+      "Borrow Spoke meminta aset dari Hub hanya setelah spoke menyelesaikan pemeriksaan jaminan, kapasitas, dan kesehatan.",
+      "Pembaruan status:",
+      "pengguna menerima aset yang dipinjam, dan spoke mencatat kondisi utang yang dihasilkan sehingga pemeriksaan kesehatan di masa depan, pembayaran kembali, dan logika likuidasi semuanya merujuk pada akun yang telah diperbarui tersebut.",
+      "Aset yang bisa dipinjam dikonfigurasi di lapisan Hub. Mereka bukan merupakan properti tetap dari jaminan itu sendiri. Dalam praktiknya, penerapan biasanya dimulai dengan stablecoin utama dan aset likuid lainnya sebelum memperluas setnya.",
+      "Periksa penyebaran aktif atau konfigurasi antarmuka untuk aset yang saat ini diizinkan untuk dipinjam.",
+      "Daya pinjam adalah jumlah kontribusi posisi LP yang disetujui di dalam satu Borrow Spoke. Itu tidak dialokasikan ke dalam sebuah pool secara abstrak, dan itu bukan satu nomor akun yang tidak dibedakan yang terpisah dari posisi-posisi yang mendasarinya.",
+      "Aturan praktis:",
+      "semakin dekat Anda meminjam hingga kapasitas maksimum, semakin sedikit ruang yang Anda miliki untuk pergerakan harga, lonjakan volatilitas, dan pemotongan nilai yang dapat dipulihkan.",
+      "Disarankan:",
+      "Kerangka Likuidasi"
+    ]
+  },
+  "getting-started/claim-lp-fees": {
+    "meta": {
+      "title": "Biaya Klaim LP",
+      "description": "Klaim biaya yang telah jatuh tempo LP dalam Avana tanpa sepenuhnya melikuidasi pokok LP, selama akun tetap sehat setelah klaim."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "how-it-works",
+        "title": "Cara Kerjanya"
+      },
+      {
+        "id": "health-checks",
+        "title": "Pemeriksaan Kesehatan"
+      },
+      {
+        "id": "fee-accounting",
+        "title": "Akuntansi Biaya"
+      },
+      {
+        "id": "key-benefits",
+        "title": "Manfaat Utama"
+      }
+    ],
+    "strings": [
+      "Biaya Klaim LP",
+      "Klaim biaya yang telah jatuh tempo LP dalam Avana tanpa sepenuhnya melikuidasi pokok LP, selama akun tetap sehat setelah klaim.",
+      "Gambaran Umum",
+      "Cara Kerjanya",
+      "Pemeriksaan Kesehatan",
+      "Akuntansi Biaya",
+      "Manfaat Utama",
+      "Klaim pendapatan biaya tanpa menutup posisi jaminan, asalkan akun masih lolos pemeriksaan kesehatan setelah biaya tersebut keluar.",
+      "Avana memperlakukan likuiditas pokok dan biaya yang terakumulasi sebagai bagian berbeda dari posisi LP yang sama. Pemisahan itu yang memungkinkan untuk merealisasikan pendapatan biaya tanpa harus membongkar likuiditas pokok yang masih digunakan sebagai jaminan.",
+      "Klaim biaya masih mempengaruhi keadaan jaminan, jadi itu diperiksa seperti tindakan lain yang menghapus nilai yang diakui dari akun. Ini bukan hanya tombol kenyamanan yang ditempatkan di atas protokol.",
+      "Protokol ini menggunakan jalur pengumpulan biaya yang sesuai dengan tempat untuk posisi LP. Untuk posisi likuiditas terfokus, itu bisa terlihat seperti panggilan gaya pengumpulan yang meninggalkan pokok tetap di tempat. Untuk LP yang dapat dipertukarkan, jalur klaim biaya milik tempat itu sendiri digunakan ketika tempat tersebut menyediakan satu.",
+      "Aturan penting di tingkat protokol konsisten di seluruh LP jenis: klaim hanya komponen biaya, pertahankan posisi pokok tetap aktif jika memungkinkan, dan sinkronkan status posisi yang dihasilkan kembali ke Borrow Spoke.",
+      "Pemeriksaan Borrow Spoke memeriksa kesehatan seputar klaim biaya karena biaya yang terakumulasi mungkin masih dihitung terhadap buffer jaminan yang diakui sampai biaya tersebut dihapus dari posisi.",
+      "Jika menghapus nilai biaya yang diklaim akan membuat akun terlalu dekat dengan atau melebihi batas peminjaman yang diizinkan, jalur klaim harus diblokir sampai utang dikurangi atau jaminan tambahan ditambahkan.",
+      "Oracle mengeluarkan likuiditas pokok secara terpisah dari biaya yang diperoleh sehingga model kredit dapat melacaknya secara berdampingan alih-alih berpura-pura bahwa LP adalah satu saldo token tunggal.",
+      "Pembagian akuntansi itu juga penting dalam likuidasi, di mana biaya yang telah terjadi dapat diterapkan sebelum protokol harus membongkar likuiditas pokok LP.",
+      "Oracle Harga",
+      "Kerangka Likuidasi",
+      "Biaya yang diperoleh dapat direalisasikan tanpa menutup posisi jaminan sepenuhnya",
+      "Mesin risiko yang sama yang menghargai LP juga mencegah klaim biaya menarik terlalu banyak nilai"
+    ]
+  },
+  "getting-started/manage-loans": {
+    "meta": {
+      "title": "Kelola Pinjaman",
+      "description": "Kelola utang terbuka terhadap LP agunan di Avana dengan memantau kesehatan, memperbarui posisi dengan hati-hati, dan tetap berada di dalam batas spoke dan Hub."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "borrowing-more",
+        "title": "Meminjam Lebih Banyak"
+      },
+      {
+        "id": "monitoring-health",
+        "title": "Memantau Kesehatan"
+      },
+      {
+        "id": "operational-control",
+        "title": "Kontrol Operasional"
+      },
+      {
+        "id": "position-changes",
+        "title": "Perubahan Posisi"
+      },
+      {
+        "id": "key-constraints",
+        "title": "Keterbatasan Kunci"
+      }
+    ],
+    "strings": [
+      "Kelola Pinjaman",
+      "Kelola utang terbuka terhadap LP agunan di Avana dengan memantau kesehatan, memperbarui posisi dengan hati-hati, dan tetap berada di dalam batas spoke dan Hub.",
+      "Gambaran Umum",
+      "Meminjam Lebih Banyak",
+      "Memantau Kesehatan",
+      "Kontrol Operasional",
+      "Perubahan Posisi",
+      "Keterbatasan Kunci",
+      "Mengelola pinjaman terbuka berarti memperlakukan jaminan, utang, dan negara tempat sebagai satu posisi yang hidup daripada tindakan terpisah.",
+      "Pinjaman Avana yang berjalan terus bergerak meskipun peminjam tidak melakukan apa-apa. LP persediaan bergeser, biaya bertambah, pasar mengubah harga, dan likuiditas Hub yang tersedia dapat berubah. Manajemen pinjaman yang baik berarti mengikuti bagian-bagian yang bergerak itu bersama-sama daripada hanya melihat angka hutang secara terpisah.",
+      "Meminjam lebih banyak hanya memungkinkan ketika Peminjam masih menunjukkan kapasitas yang tidak terpakai setelah menilai kembali posisi saat ini dan Hub masih dapat menyediakan aset yang diminta.",
+      "Pembayaran sebagian bergerak ke arah yang berlawanan. Itu mengurangi utang secara langsung, meningkatkan kesehatan, dan sering menciptakan ruang yang dibutuhkan untuk tindakan selanjutnya seperti penarikan, penyesuaian ulang, atau penggantian jaminan.",
+      "Sehat:",
+      "nilai jaminan yang disesuaikan tetap nyaman di atas utang, meninggalkan ruang untuk pergerakan harga biasa dan penyimpangan posisi.",
+      "Daftar pantauan:",
+      "akun tersebut masih lolos pemeriksaan, tetapi cadangan yang tersisa semakin menipis. Inilah waktunya untuk membayar kembali, menambahkan jaminan yang disetujui, atau mengurangi eksposur sebelum kondisi menjadi lebih buruk.",
+      "Dapat dilikuidasi:",
+      "utang telah bergerak terlalu dekat atau melewati batas pinjaman yang diizinkan, sehingga kerangka likuidasi diizinkan untuk mengambil alih.",
+      "Untuk definisi kanonik, gunakan",
+      "Faktor Kesehatan",
+      "Bayar sebagian utang untuk membangun kembali cadangan",
+      "Tambahkan lebih banyak jaminan LP yang disetujui ke Pinjaman Spoke yang sama",
+      "Klaim biaya yang terakumulasi hanya ketika akun masih lulus pemeriksaan kesehatan setelah klaim",
+      "Tarik atau ubah ukuran agunan hanya ketika akun yang tersisa masih tetap sehat",
+      "Posisi likuiditas terkonsentrasi mungkin perlu diubah jangka atau diganti seiring pergerakan harga pasar. Posisi yang dapat dipertukarkan LP dapat diubah ukurannya atau diputar dalam set jaminan yang didukung.",
+      "Protokol tersebut tidak menganggap gerakan tersebut sebagai pengeditan kosmetik. Setiap perubahan yang mengubah paparan LP akan ditindaklanjuti melalui penerimaan, penilaian, dan pemeriksaan kesehatan yang sama yang digunakan untuk setoran dan pinjaman.",
+      "Perubahan jaminan tidak boleh membuat sisa utang melebihi kapasitas tonggak yang diizinkan",
+      "Posisi baru atau pengganti harus tetap berada dalam set kuota yang disetujui",
+      "Tindakan meminjam masih tergantung pada likuiditas Hub dan batas aktif",
+      "Simpan",
+      "Kerangka Likuidasi",
+      "Faktor Agunan"
+    ]
+  },
+  "getting-started": {
+    "meta": {
+      "title": "Memulai - Setoran LP",
+      "description": "Pelajari bagaimana posisi yang didukung LP masuk Avana sebagai jaminan dan bagaimana setiap posisi yang diterima mulai berkontribusi pada kapasitas pinjaman di dalam Borrow Spoke."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "deposit-flow",
+        "title": "Aliran Deposit"
+      },
+      {
+        "id": "technical-details",
+        "title": "Detail Teknis"
+      },
+      {
+        "id": "supported-lp-tokens",
+        "title": "Jenis Posisi yang Didukung LP"
+      },
+      {
+        "id": "after-deposit",
+        "title": "Setelah Deposit"
+      }
+    ],
+    "strings": [
+      "Memulai - Setoran LP",
+      "Pelajari bagaimana posisi yang didukung LP masuk Avana sebagai jaminan dan bagaimana setiap posisi yang diterima mulai berkontribusi pada kapasitas pinjaman di dalam Borrow Spoke.",
+      "Gambaran Umum",
+      "Aliran Deposit",
+      "Detail Teknis",
+      "Jenis Posisi yang Didukung LP",
+      "Setelah Deposit",
+      "Posisi likuiditas terkonsentrasi",
+      "NFT terbatas jangkauan atau manajer posisi berbasis LPs",
+      "Rentang, posisi tick, dan akumulasi biaya merupakan bagian dari jalur penilaian.",
+      "Stable yang dapat dipertukarkan atau berkorelasi LPs",
+      "Pertukaran stabil dan saham kolam yang berkorelasi erat",
+      "Inventaris kolam dan kualitas pelonggaran mendorong daya pinjam yang konservatif.",
+      "Berbobot dan multi-aset LPs",
+      "Keranjang berbobot dan kumpulan multi-token",
+      "Setiap keluarga yang didukung hanya diterima melalui template kolam yang disetujui.",
+      "Setoran LP",
+      "Deposit memindahkan posisi LP yang didukung di bawah kustodi spoke sehingga Avana dapat memperhitungkannya sebagai jaminan dan mengubahnya menjadi kapasitas pinjaman.",
+      "Menyetor adalah cara sebuah posisi LP menjadi dapat digunakan di dalam Avana. Borrow Spoke mengambil kendali atas posisi yang didukung, mencatat keadaan yang dibutuhkan untuk penilaian, dan mulai memperlakukan posisi itu sebagai jaminan alih-alih sebagai aset yang dipegang di dompet.",
+      "Itu tidak berarti likuiditas menghilang dari tempat dasar. Posisi dapat tetap aktif di AMM sementara cabang melacak eksposurnya, status biaya, dan perlakuan risiko untuk pemeriksaan pinjaman dan likuidasi di kemudian hari.",
+      "Penting:",
+      "Avana tidak memberikan kekuatan peminjaman hanya karena ada posisi LP. Posisi tersebut harus termasuk dalam keluarga pool yang disetujui, lolos pemeriksaan penilaian, dan sesuai dengan konfigurasi risiko saat ini dari spoke.",
+      "1. Transfer atau Setujui Posisi LP",
+      "Pengguna menyerahkan posisi LP yang didukung kepada Borrow Spoke yang relevan. Jalur pastinya tergantung pada apakah agunan bersifat fungibel atau spesifik posisi, tetapi hasil protokolnya sama: spokes harus mengendalikan aset tersebut sebelum dapat menghitungnya sebagai agunan.",
+      "2. Validasi Keluarga Kolam",
+      "Selanjutnya, spoke memastikan bahwa posisi tersebut termasuk dalam pool atau template yang disetujui. Pemeriksaan itu sebenarnya merupakan paket persyaratan: cakupan oracle harus ada, dukungan routing dan likuidasi harus ada, dan penempatan sudah harus memiliki pengaturan risiko untuk keluarga LP itu.",
+      "3. Status Posisi Cache",
+      "Setelah posisi diterima, protokol menyimpan status yang diperlukan untuk membangun kembali posisi tersebut nantinya. Itu termasuk metadata yang diperlukan untuk merekonstruksi eksposur, memantau biaya yang terkumpul, dan menyegarkan daya pinjam saat harga atau kondisi kolam berubah.",
+      "4. Tambahkan Posisi ke Kapasitas Agregat",
+      "Setelah penilaian dan diskon risiko diterapkan, posisi tersebut menambahkan kontribusinya sendiri ke total kapasitas pinjaman pengguna di dalam Borrow Spoke itu. Ketika pengguna kemudian meminjam, Hub mengandalkan pembaruan kapasitas dari sisi spoke tersebut.",
+      "Penilaian yang menyadari posisi:",
+      "deposit itu sendiri tidak mengunci jumlah pinjaman tetap. Daya pinjaman dihitung ulang dari posisi langsung LP menggunakan tumpukan oracle dan model faktor jaminan setiap kali protokol memerlukan tampilan yang diperbarui.",
+      "Penahanan spesifik format:",
+      "beberapa LP posisi adalah token yang dapat dipertukarkan, sementara yang lain adalah posisi likuiditas terkonsentrasi dengan metadata tambahan. Borrow Spoke menangani perbedaan kustodi tersebut sehingga sistem kredit lainnya masih bisa menafsirkannya dengan cara yang konsisten.",
+      "menyediakan jaminan tidak berarti menutup LP. Jalur pembongkaran disediakan untuk tindakan pengguna di kemudian hari atau likuidasi, bukan untuk setoran awal itu sendiri.",
+      "Keluarga",
+      "Contoh",
+      "Catatan Penerimaan",
+      "Dukungan langsung yang tepat diatur oleh daftar pool yang disetujui. Lihat",
+      "Kolam yang Diizinkan LP",
+      "Setiap posisi yang disetujui sekarang memberikan nilai diskonto sendiri terhadap kapasitas pinjaman di tingkat cabang",
+      "LP pokok tetap aktif di kumpulan dasar dan dapat terus mengumpulkan biaya",
+      "Peminjaman aktual masih bergantung pada likuiditas Hub, pemeriksaan kesehatan spoke, dan batas faktor jaminan",
+      "Langkah berikutnya dalam alur normal adalah",
+      "Meminjam Aset"
+    ]
+  },
+  "getting-started/repay-loans": {
+    "meta": {
+      "title": "Melunasi Pinjaman",
+      "description": "Bagaimana pembayaran kembali mengurangi utang di Avana, memperbarui bagian utang, menyelesaikan terhadap Hub, dan membuka jalan kembali untuk pelepasan jaminan."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "repay-process",
+        "title": "Proses Pembayaran Kembali"
+      },
+      {
+        "id": "technical-details",
+        "title": "Detail Teknis"
+      },
+      {
+        "id": "liquidation-scenario",
+        "title": "Ketika Pelunasan Mendesak"
+      },
+      {
+        "id": "full-repayment",
+        "title": "Pelunasan Penuh"
+      }
+    ],
+    "strings": [
+      "Melunasi Pinjaman",
+      "Bagaimana pembayaran kembali mengurangi utang di Avana, memperbarui bagian utang, menyelesaikan terhadap Hub, dan membuka jalan kembali untuk pelepasan jaminan.",
+      "Gambaran Umum",
+      "Proses Pembayaran Kembali",
+      "Detail Teknis",
+      "Ketika Pelunasan Mendesak",
+      "Pelunasan Penuh",
+      "Pelunasan mengurangi utang, meningkatkan kesehatan akun, dan biasanya merupakan cara paling bersih untuk mendapatkan kembali kebebasan atas jaminan.",
+      "Pembayaran mengubah sisi utang dari akun tanpa mengubah posisi LP itu sendiri. Ketika utang berkurang, akun menjadi lebih sehat segera karena jaminan yang sama kini mendukung kewajiban yang lebih kecil.",
+      "Pelunasan penuh tidak diperlukan agar pelunasan menjadi penting. Bahkan pengurangan sebagian dapat mengembalikan ruang manuver yang berguna ketika akun mendekati batas likuidasi.",
+      "1. Pilih jumlah:",
+      "membayar sebagian jumlah untuk mendapatkan ruang bernapas, atau membayar seluruh saldo untuk meninggalkan sisi utang sepenuhnya.",
+      "2. Serahkan aset utang:",
+      "Pembayaran kembali diarahkan kembali melalui Borrow Spoke dan diterapkan terhadap kewajiban yang belum terbayar.",
+      "3. Hitung ulang kesehatan:",
+      "setelah saham utang dikurangi, faktor kesehatan akun dan kapasitas yang tersisa diperbarui dari saldo utang yang lebih rendah baru.",
+      "Pembayaran kembali pada dasarnya adalah pengurangan bagian utang. Baik pengguna membayar kembali dengan menentukan jumlah aset atau, jika didukung, jumlah bagian, protokol menyelesaikan pembayaran tersebut menjadi jumlah bagian utang yang lebih sedikit dan dengan demikian utang yang lebih sedikit.",
+      "Borrow Spoke memperbarui status utang lokal dan menyelesaikan pembayaran kembali terhadap akuntansi likuiditas sisi Hub sehingga lapisan likuiditas bersama dan lapisanLP-agunan tetap memiliki gambaran yang sama dari akun tersebut.",
+      "Ketika sebuah akun mendekati likuidasi, pelunasan adalah salah satu cara tercepat untuk meningkatkan keamanan karena secara langsung mengurangi utang. Ini tidak bergantung pada menunggu pasar pulih atau menambahkan lebih banyak jaminan terlebih dahulu.",
+      "Setelah batas likuidasi dilampaui, akarnya",
+      "Kerangka Likuidasi",
+      "Setelah utang mencapai nol, akun tidak lagi memerlukan jaminan untuk mengamankan pinjaman aktif. Pada titik itu, posisi LP yang terkait dengan akun tersebut dapat kembali menuju kontrol pengguna normal melalui jalur penarikan jaminan.",
+      "Tergantung pada pelaksanaan jaminan, pelepasan akhir dapat terjadi secara otomatis atau melalui tindakan lanjutan yang eksplisit. Lihat",
+      "Tarik Jaminan"
+    ]
+  },
+  "getting-started/withdraw-collateral": {
+    "meta": {
+      "title": "Tarik Jaminan",
+      "description": "Bagaimana LP jaminan ditinggalkan Avana setelah utang dilunasi atau setelah sisa akun masih lulus pemeriksaan kesehatan tanpa posisi yang ditarik."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "withdrawal-process",
+        "title": "Proses Penarikan"
+      },
+      {
+        "id": "position-modifications",
+        "title": "Modifikasi Posisi"
+      },
+      {
+        "id": "after-withdrawal",
+        "title": "Setelah Penarikan"
+      }
+    ],
+    "strings": [
+      "Tarik Jaminan",
+      "Bagaimana LP jaminan ditinggalkan Avana setelah utang dilunasi atau setelah sisa akun masih lulus pemeriksaan kesehatan tanpa posisi yang ditarik.",
+      "Gambaran Umum",
+      "Proses Penarikan",
+      "Modifikasi Posisi",
+      "Setelah Penarikan",
+      "Jaminan hanya dapat meninggalkan Borrow Spoke ketika akun masih dapat mendukung utangnya setelah posisi yang diminta dihapus atau diubah ukurannya.",
+      "Penarikan jaminan adalah sisi sebaliknya dari setoran, tetapi ini bukan sekadar transfer aset. Sebelum protokol melepaskan posisi LP, protokol harus membuktikan bahwa menghapus jaminan tersebut tidak akan membuat utang yang tersisa menjadi kurang aman.",
+      "Pelunasan utang penuh adalah jalan yang paling bersih karena sepenuhnya menghilangkan kebutuhan akan jaminan. Tetapi Avana juga dapat memungkinkan beberapa perubahan jaminan sementara utang tetap terbuka jika akun pasca-perubahan masih lulus penilaian dan pemeriksaan kesehatan yang sama yang digunakan di seluruh sistem.",
+      "1. Kurangi atau lunasi utang:",
+      "2. Hitung kembali kapasitas pinjaman:",
+      "Borrow Spoke menghitung ulang akun setelah menghapus posisi LP yang diminta atau mengubah ukurannya, alih-alih menganggap kapasitas lama masih berlaku.",
+      "3. Lepaskan posisi LP:",
+      "jika kesehatan pasca-penarikan valid, protokol mengembalikan atau membuka jaminan sehingga pengguna dapat mengelolanya di luar spoke lagi.",
+      "Tidak setiap perubahan agunan adalah keluar penuh. Seorang pengguna dapat mengubah ukuran posisi yang dapat dipertukarkan LP, mengganti rentang likuiditas terpusat, atau beralih ke posisi yang disetujui berbeda sambil tetap menjaga pinjaman yang sama tetap terbuka.",
+      "Perubahan tersebut hanya berlaku ketika jaminan baru atau yang tersisa masih termasuk dalam set yang disetujui dan akun yang dihasilkan tetap di atas batas likuidasi setelah perubahan diterapkan.",
+      "Posisi LP kembali ke kontrol pengguna normal",
+      "Pengguna dapat menyimpannya di kumpulan dasar, mengatur ulang jangkauannya, atau keluar dari likuiditas sepenuhnya",
+      "Setoran LP"
+    ]
+  },
+  "integrations/allowed-pools": {
+    "meta": {
+      "title": "Kolam yang Diizinkan LP",
+      "description": "Daftar yang diizinkan dan kriteria tinjauan yang ditetapkan oleh tata kelola untuk LP pool yang Avana bersedia diterima sebagai jaminan."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "review-criteria",
+        "title": "Kriteria Peninjauan"
+      },
+      {
+        "id": "pool-families",
+        "title": "Keluarga Kolam"
+      },
+      {
+        "id": "risk-application",
+        "title": "Aplikasi Risiko"
+      },
+      {
+        "id": "integration-notes",
+        "title": "Catatan Integrasi"
+      }
+    ],
+    "strings": [
+      "Kolam yang Diizinkan LP",
+      "Daftar yang diizinkan dan kriteria tinjauan yang ditetapkan oleh tata kelola untuk LP pool yang Avana bersedia diterima sebagai jaminan.",
+      "Gambaran Umum",
+      "Kriteria Peninjauan",
+      "Keluarga Kolam",
+      "Aplikasi Risiko",
+      "Catatan Integrasi",
+      "Kolam yang stabil dan berkorelasi",
+      "Seringkali paling mudah diakui ketika harga dapat diandalkan, perilaku patokan dipahami, dan kedalaman pembubaran tetap kuat.",
+      "Kolam volatil blue-chip",
+      "Dapat didukung, tetapi biasanya dengan faktor jaminan yang lebih konservatif, pemeriksaan likuiditas, dan asumsi likuidasi yang lebih ketat.",
+      "Posisi likuiditas terkonsentrasi",
+      "Memerlukan penilaian tingkat posisi dan penanganan yang cermat terhadap jangkauan aktif, inventaris satu sisi, dan status biaya.",
+      "Desain kustom atau eksperimental",
+      "Perlu dukungan eksplisit untuk oracle, kustodi, dan likuidasi sebelum mereka dapat dipertimbangkan untuk daftar yang diizinkan sama sekali.",
+      "Cakupan harga eksternal yang andal untuk aset dasar",
+      "Kedalaman kolam yang cukup dan jalur pencairan yang kredibel selama likuidasi",
+      "Aturan keterterimaan yang jelas untuk template keluarga atau cabang LP",
+      "Konsentrasi, volatilitas, dan profil stabilitas peg yang dapat diterima",
+      "Dukungan operasional untuk pengindeksan, penanganan biaya, dan penyaluran likuidasi",
+      "Daftar izin yang dikendalikan oleh tata kelola untuk kolam dan LP keluarga Avana disiapkan untuk diterima sebagai jaminan.",
+      "Avana hanya menerima LP jaminan dari pool atau template yang telah ditinjau dan disetujui. Daftar yang diizinkan ada karena dukungan LP bukan hanya masalah merek tempat atau format token. Protokol membutuhkan cukup informasi untuk menilai posisi, mengelola likuidasi, dan membatasi risiko yang diambilnya.",
+      "Persetujuan kolam bekerja bersama",
+      "Faktor Agunan",
+      "Kerangka Risiko",
+      ". Daftar yang diizinkan menentukan apakah suatu pool dapat masuk ke dalam sistem; faktor jaminan menentukan seberapa besar nilai pinjaman yang dapat disumbangkan oleh setiap posisi yang diterima.",
+      "Sebuah pool hanya masuk ke dalam daftar izinkan ketika protokol dapat menjawab pertanyaan dasar yang sama setiap saat: dapatkah ia menentukan harga posisi, dapatkah ia keluar dari posisi, dan dapatkah ia memantau risiko dalam produksi.",
+      "Persetujuan pool tidak berarti suatu posisi mendapatkan perlakuan kredit yang murah hati. Setelah sebuah pool diterima, setiap posisi LP tetap dinilai secara individu, didiskontokan sesuai dengan perlakuan risikonya, dan kemudian ditambahkan ke kapasitas pinjaman pengguna di dalam Borrow Spoke.",
+      "Itulah mengapa persetujuan pool dan penilaian agunan sangat terkait. Sebuah pool bisa cukup aman untuk diterima meskipun masih memerlukan batas konservatif, LTV yang lebih rendah, atau penanganan likuidasi yang lebih ketat setelah aktif.",
+      "Para pembangun sebaiknya berpikir dalam istilah template kolam yang disetujui dan daftar izinkan spesifik penempatan, bukan seolah-olah setiap LP di suatu tempat secara otomatis dapat digunakan.",
+      "Keluarga kolam baru biasanya memerlukan kerja terkoordinasi di seluruh penanganan oracle, perutean likuidasi, batas risiko, dan infrastruktur pemantauan sebelum aman untuk diaktifkan."
+    ]
+  },
+  "integrations/appkit": {
+    "meta": {
+      "title": "AppKit",
+      "description": "Panduan pengembang untuk penempatan AppKit, penyerahan kepada mitra, dan bagaimana kredit Avana tertanam di dalam permukaan produk pihak ketiga tanpa memindahkan logika risiko dari Avana."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "integration-model",
+        "title": "Model Integrasi"
+      },
+      {
+        "id": "partner-controls",
+        "title": "Kontrol Mitra"
+      },
+      {
+        "id": "launch-notes",
+        "title": "Catatan Peluncuran"
+      }
+    ],
+    "strings": [
+      "AppKit",
+      "Panduan pengembang untuk penempatan AppKit, penyerahan kepada mitra, dan bagaimana kredit Avana tertanam di dalam permukaan produk pihak ketiga tanpa memindahkan logika risiko dari Avana.",
+      "Gambaran Umum",
+      "Model Integrasi",
+      "Kontrol Mitra",
+      "Catatan Peluncuran",
+      "Penangkapan niat",
+      "AppKit ditempatkan di tempat pengguna sudah memahami posisi LP mereka, kondisi portofolio, atau konteks swap, sehingga entri pinjaman muncul di samping niat yang sudah ada alih-alih memaksa alur baru.",
+      "Serah terima protokol",
+      "Mitra meneruskan dompet dan konteks pasar ke Avana. Alur peminjaman kemudian dapat dibuka dengan konteks tersebut sudah diatur sebelumnya alih-alih meminta pengguna untuk membangunnya secara manual.",
+      "Ekonomi mitra",
+      "Mitra dapat menggunakan struktur pendapatan berbasis rujukan, pengalihan, atau integrasi, tetapi mereka tidak menjadi pemberi pinjaman atau mesin risiko. Avana tetap mengelola kredit, risiko, dan penyelesaian.",
+      "Tempatkan entri kredit di dekat posisi LP atau tampilan portofolio yang sudah dipercayai pengguna.",
+      "Masukkan konteks dompet dan pasar ke dalam alur peminjaman sehingga proses serah terima tidak terasa seperti reset.",
+      "Biarkan risiko dan penyelesaian pada Avana. Jangan membangun kembali logika penilaian spoke atau likuidasi di UI mitra.",
+      "Tentukan salinan, penempatan, dan pembatasan peluncuran sebelum tayang karena hal itu membentuk integrasi, bukan hanya lapisan pemoles.",
+      "Di mana permukaan kredit muncul dalam produk",
+      "Segmen pengguna mana yang melihat titik masuk pinjaman",
+      "Seberapa banyak pendidikan atau penjelasan yang muncul bersamaan dengan penyerahan",
+      "Apakah produk menggunakan serah terima penuh yang tersemat atau titik masuk yang lebih ringan yang mempertahankan konteks",
+      "Bagaimana mitra menanamkan kredit yang didukung Avana LP sementara Avana tetap memegang tanggung jawab untuk peminjaman, risiko, dan penyelesaian.",
+      "AppKit adalah untuk produk pihak ketiga yang sudah memiliki hubungan dengan pengguna, seperti DEX, dompet, dan aplikasi portofolio di mana posisi LP sudah terlihat. Produk mitra menentukan momen tersebut, menangkap konteks, dan memutuskan di mana entri pinjaman muncul. Avana menjalankan jalur pinjaman yang sebenarnya.",
+      "Halaman ini tentang penempatan, penyerahan, dan disiplin peluncuran. Mitra memiliki permukaan pengguna dan distribusi. Avana memiliki aturan kredit, penyelesaian, dan mekanik kritis-keamanan di balik alur.",
+      "AppKit tidak memaksa satu model presentasi. Mitra mengontrol titik masuk dan jumlah panduan di sekitarnya, sambil membiarkan keputusan protokol di dalam Avana.",
+      "Catatan Implementasi",
+      "Integrasi terbaik terasa seperti kelanjutan dari alur produk yang ada, bukan loncatan keras ke aplikasi pinjaman yang tidak terkait. Catatan ini adalah dasar praktis untuk membuat penyerahan itu tepat.",
+      "Luncurkan AppKit sebagai proyek integrasi, bukan sekadar penempatan tautan. Konfirmasi jalur pengguna, tinjau di mana entri berada, dan pastikan jalur kredit Avana tetap terpisah dengan jelas dari kerangka mitra di mana tanggung jawab berubah.",
+      "Juga periksa apa yang terjadi ketika permukaan kredit disembunyikan, apakah tautan mendalam ke alur peminjaman aman, dan bagaimana konteks dompet, pasar, atau jaminan yang hilang ditangani."
+    ]
+  },
+  "integrations": {
+    "meta": {
+      "title": "Integrasi yang Didukung",
+      "description": "Panduan yang sadar penyebaran untuk keluarga tempat Avana dapat terintegrasi dengan, pemeriksaan yang harus mereka lalui, dan pekerjaan tinjauan yang diperlukan sebelum diaktifkan."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "appkit",
+        "title": "AppKit"
+      },
+      {
+        "id": "venue-families",
+        "title": "Keluarga Tempat"
+      },
+      {
+        "id": "enablement-status",
+        "title": "Status Aktivasi"
+      },
+      {
+        "id": "review-requirements",
+        "title": "Persyaratan Tinjauan"
+      }
+    ],
+    "strings": [
+      "Integrasi yang Didukung",
+      "Panduan yang sadar penyebaran untuk keluarga tempat Avana dapat terintegrasi dengan, pemeriksaan yang harus mereka lalui, dan pekerjaan tinjauan yang diperlukan sebelum diaktifkan.",
+      "Gambaran Umum",
+      "AppKit",
+      "Keluarga Tempat",
+      "Status Aktivasi",
+      "Persyaratan Tinjauan",
+      "Tempat likuiditas terkonsentrasi",
+      "Tempat-tempat ini memerlukan penanganan tingkat posisi karena nilai LP bergantung pada harga saat ini, rentang aktif, dan bagaimana inventaris dibagi di seluruh posisi.",
+      "Kolam stabil dan berbobot yang dapat dipertukarkan",
+      "Tempat-tempat ini mengekspos ERC-20 LP saham yang nilainya dapat dibangun kembali dari saldo kolam, harga eksternal, dan asumsi pembongkaran konservatif.",
+      "Desain berbasis kustom atau hook",
+      "Arsitektur kolam yang lebih canggih hanya dapat didukung ketika Avana memiliki model oracle yang jelas, jalur kustodi yang aman, dan adaptor likuidasi untuk desain tersebut.",
+      "Panduan referensi untuk keluarga tempat Avana bisa bekerja sama dan gerbang tinjauan yang harus dilewati sebelum dukungan mulai berlaku.",
+      "Avana tidak mengintegrasikan tempat hanya karena mereka populer atau menampilkan LP token. Dukungan tergantung pada apakah protokol dapat merekonstruksi posisi dengan akurat, menilainya secara konservatif, dan mengeksekusinya dengan bersih ketika likuidasi diperlukan.",
+      "Halaman ini adalah referensi integrasi, bukan dasbor peluncuran langsung. Untuk kebijakan penerimaan kolam, lihat",
+      "Kolam yang Diizinkan LP",
+      ". Untuk asumsi penilaian, lihat",
+      "Oracle Harga",
+      "AppKit adalah jalur yang berorientasi pada mitra bagi produk yang ingin menambahkan kredit Avana ke dalam perjalanan pengguna yang sudah ada daripada mengarahkan pengguna ke alur mandiri tanpa konteks.",
+      "Baca",
+      "AppKit panduan pengembang",
+      "untuk kontrol mitra, pola penyerahan, dan catatan peluncuran.",
+      "Apakah suatu tempat diaktifkan di jaringan tertentu adalah keputusan implementasi, bukan kebenaran protokol permanen. Satu keluarga tempat dapat didukung secara teoritis tetapi tetap dinonaktifkan pada implementasi tertentu hingga cakupan oracle, rute likuidasi, dan parameter risiko semuanya siap.",
+      "Para pembangun harus memverifikasi konfigurasi penyebaran saat ini di aplikasi, catatan rilis, atau registri kontrak yang diterbitkan alih-alih membaca halaman ini sebagai matriks dukungan waktu nyata.",
+      "• Suatu tempat harus mendukung penilaian posisi konservatif dari harga eksternal yang kuat dan rekonstruksi kondisi yang dapat diverifikasi.",
+      "• Protokol membutuhkan jalur pembongkaran yang dapat diandalkan untuk likuidasi, termasuk pengumpulan biaya dan pengalihan ke aset utang.",
+      "• Kedalaman pool, risiko konsentrasi, asumsi korelasi, dan pemantauan operasional semuanya harus sesuai dengan kerangka risiko.",
+      "• Dukungan tempat baru adalah keputusan tata kelola dan risiko, bukan hanya pembaruan antarmuka atau penggabungan adaptor."
+    ]
+  },
+  "integrations/price-oracles": {
+    "meta": {
+      "title": "Oracle Harga",
+      "description": "Bagaimana Avana Oracle menentukan harga LP jaminan melalui feed eksternal, rekonstruksi posisi deterministik, dan diskon nilai yang dapat dipulihkan."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "oracle-interface",
+        "title": "Antarmuka Oracle"
+      },
+      {
+        "id": "multi-layer-architecture",
+        "title": "Arsitektur Multi-Lapis"
+      },
+      {
+        "id": "dex-handling",
+        "title": "Penanganan Khusus DEX"
+      },
+      {
+        "id": "twap-computation",
+        "title": "Perhitungan TWAP"
+      },
+      {
+        "id": "safety-measures",
+        "title": "Keselamatan & Pencegahan Manipulasi"
+      },
+      {
+        "id": "configurable-parameters",
+        "title": "Parameter yang Dapat Dikustomisasi"
+      }
+    ],
+    "strings": [
+      "Oracle Harga",
+      "Bagaimana Avana Oracle menentukan harga LP jaminan melalui feed eksternal, rekonstruksi posisi deterministik, dan diskon nilai yang dapat dipulihkan.",
+      "Gambaran Umum",
+      "Antarmuka Oracle",
+      "Arsitektur Multi-Lapis",
+      "Penanganan Khusus DEX",
+      "Perhitungan TWAP",
+      "Keselamatan & Pencegahan Manipulasi",
+      "Parameter yang Dapat Dikustomisasi",
+      "Harga aset dasar",
+      "Cadangan kolam atau pembagian inventaris",
+      "Untuk likuiditas terkonsentrasi, tick saat ini relatif terhadap rentang posisi",
+      "Apakah posisinya berada dalam jangkauan atau sebagian besar satu sisi",
+      "Tetapkan harga aset dasar dari oracle eksternal yang kuat",
+      "Mulailah dari feed eksternal yang tangguh untuk aset dasar sehingga agunan tidak mewarisi seluruh kebisingan atau kemampuannya untuk dimanipulasi dari keadaan spot pool mentah.",
+      "Turunkan nilai LP secara konservatif",
+      "Membangun kembali saldo yang dapat dipertukarkan LP atau memecah posisi likuiditas terkonsentrasi dari cadangan, likuiditas, jangkauan, dan biaya menggunakan jalur deterministik yang dapat dipahami oleh spoke.",
+      "Pemotongan untuk kerugian sementara dan selisih likuidasi",
+      "Diskon tanda yang direkonstruksi menjadi nilai jaminan yang dapat dipulihkan yang mengasumsikan tekanan, selip, dan keluaran yang tidak sempurna daripada penebusan bersih pada NAV teoritis.",
+      "Paparan topi oleh kedalaman keluarga dan kolam LP",
+      "Terapkan kontrol berdasarkan keluarga LP, kelas kolam, dan kedalaman yang tersedia sehingga pasar yang lebih tipis atau lebih kompleks tidak menerima batas pinjaman yang sama dengan pasar yang lebih dalam dan lebih sederhana.",
+      "Likuidasi berdasarkan nilai pembongkaran yang dapat dipulihkan, bukan NAV optimis",
+      "Gunakan nilai yang secara wajar dapat direalisasikan melalui jalur unwind saat memberikan kekuatan pinjaman dan memutuskan likuidasi, daripada nilai mark terbaik.",
+      "Curve Stabil/Stabil ERC-20 LPs",
+      "Umpan stablecoin eksternal + pemeriksaan status pool + verifikasi TWAP",
+      "Harga eksternal menambatkan aset sementara saldo kolam dan akumulasi biaya menentukan nilai jaminan yang didiskontokan.",
+      "Uniswap V2 ERC-20 LPdtk",
+      "Chainlink + rekonstruksi cadangan + verifikasi TWAP",
+      "Token standar LP dinilai dari saldo dasar yang direkonstruksi, dengan TWAP digunakan sebagai pemeriksaan silang yang tahan manipulasi.",
+      "Uniswap V3 NFT LPs",
+      "Chainlink + dekomposisi posisi + pemeriksaan tick/TWAP",
+      "NFT diuraikan berdasarkan likuiditas, rentang aktif, dan harga saat ini, kemudian dipotong untuk nilai likuidasi yang dapat dipulihkan.",
+      "Balancer Multi-Aset LPs",
+      "Chainlink + rekonstruksi inventaris berbobot",
+      "Kolam multi-token menggunakan harga eksternal dan inventaris kolam berbobot untuk memperkirakan nilai jaminan yang konservatif.",
+      "SushiSwap / Aerodrome",
+      "Observasi yang berasal dari kolam memverifikasi nilai yang direkonstruksi dan membantu menahan penyalahgunaan transaksi yang sama di pasar dengan likuiditas rendah.",
+      "Verifikasi TWAP berbasis blok + Chainlink",
+      "Harga eksternal tetap menjadi jangkar sementara pengamatan berbasis blok memvalidasi status posisi dan membalik asumsi.",
+      "Bagaimana protokol mengubah status posisi LP menjadi nilai jaminan yang relevan dengan kredit.",
+      "Avana Oracle bukanlah sekadar pencarian harga tunggal. Ini adalah jalur penilaian yang mengubah posisi LP menjadi sesuatu yang dapat digunakan oleh sistem peminjaman untuk akuntansi jaminan. Untuk melakukannya dengan aman, ia menggabungkan umpan pasar eksternal, rekonstruksi deterministik dari LP, dan pemotongan pemulihan berdasarkan asumsi pelepasan daripada hanya mengandalkan kondisi spot AMM mentah itu sendiri.",
+      "Input yang tepat bergantung pada keluarga jaminan. Sebuah LP yang dapat dipertukarkan direkonstruksi dari saldo, cadangan, dan biaya, sementara likuiditas terkonsentrasi harus didekomposisi melalui rentang, likuiditas, dan konteks harga saat ini. Dalam kedua kasus, hasilnya diteruskan melalui logika nilai yang dapat dipulihkan sehingga peminjaman menggunakan angka konservatif daripada asumsi keluar tanpa gesekan.",
+      "Perbedaan antara nilai pasar dan nilai yang dapat dipulihkan inilah yang membuat oracle berguna untuk peminjaman alih-alih hanya analitik. ERC-20 LPs, NFT LPs, dan kumpulan multi-aset dapat menggunakan satu antarmuka tingkat tinggi hanya karena setiap kelas melalui pemeriksaan validasi dan ketahanan terhadap manipulasi sendiri sebelum nilai mencapai spoke.",
+      "Antarmuka Oracle: IOracle",
+      "Jari-jari Peminjaman membutuhkan satu permukaan kontrak meskipun LP format sangat berbeda di berbagai DEX. `IOracle` menyediakan bentuk umum itu dan menjaga nilai pokok, biaya yang diperoleh, dan buffer yang disisihkan tetap terpisah sehingga logika risiko nantinya tidak perlu menebak bagian posisi mana yang sedang dilihat:",
+      "fungsi getValue(uint256 tokenId, alamat aset)",
+      "tampilan eksternal mengembalikan (",
+      "uint256 nilaiPenuh,",
+      "uint256 nilaiBiaya,",
+      "uint256 nilaiCadangan",
+      "nilaiPenuh",
+      "Nilai yang direkonstruksi dari likuiditas pokok sebelum penyesuaian stres likuidasi berikutnya diterapkan.",
+      "nilaiBiaya",
+      "Nilai biaya yang diakumulasikan oleh posisi yang dapat diakui bersamaan dengan pokok.",
+      "nilaiCadangan",
+      "Bagian yang disisihkan ditahan untuk oracle, unwind, dan buffer risiko protokol.",
+      "Antarmuka menyembunyikan detail teknis spesifik DEX dari spoke. Hal ini memungkinkan pemanggil yang sama menangani ERC-20 LPs, NFT LPs, dan kolam multi-aset melalui satu bentuk pengembalian sambil tetap memberi ruang untuk perlakuan konservatif yang spesifik pada keluarga jaminan di belakang layar.",
+      "LP penilaian adalah sebuah proses bertahap daripada hanya pembacaan harga tunggal. Jalur oracle melewati langkah-langkah berikut:",
+      "Tempat yang berbeda menampilkan bagian-bagian negara yang berbeda, dan oracle menggunakan input tersebut dengan cara yang berbeda. Poin pentingnya adalah bahwa data spesifik tempat membantu merekonstruksi posisi dan memverifikasi harga; itu tidak diterima begitu saja sebagai tanda jaminan langsung.",
+      "DEX / LP Tipe",
+      "Sumber Oracle",
+      "Catatan",
+      "Perhitungan TWAP oleh DEX",
+      "TWAP adalah input verifikasi. Mereka berada di samping harga aset eksternal dan rekonstruksi posisi deterministik untuk memeriksa apakah status pool yang diamati konsisten dengan jalur unwind yang kredibel. Mereka membantu menolak distorsi yang mencurigakan atau bersifat sementara, tetapi mereka tidak menggantikan model oracle yang lebih luas dengan sendirinya.",
+      "Uniswap V2 & Tukar Sushi",
+      "Uniswap V3",
+      "Pemeriksaan yang menyadari posisi menggabungkan jangkauan tick, distribusi likuiditas, dan biaya yang diperoleh sehingga protokol dapat memverifikasi eksposur token yang terurai dari setiap NFT LP daripada memperlakukan NFT sebagai kotak hitam.",
+      "Balancer",
+      "Observasi token berbobot digabungkan dengan bobot pool untuk memvalidasi pembagian inventaris multi-aset sebelum oracle menetapkan nilai agunan yang konservatif.",
+      "Curve",
+      "Pengamatan stablecoin terutama digunakan untuk mendeteksi umpan yang usang, pergeseran cadangan, dan anomali jangka pendek sementara harga eksternal tetap menjadi jangkar utama.",
+      "Pedagang Joe & Aerodrome",
+      "Pengamatan harga kumulatif selama jendela 30-60 menit membantu memvalidasi keadaan pool dengan likuiditas lebih rendah dan menahan manipulasi transaksi yang sama selama pemeriksaan jaminan.",
+      "Ambang Penyimpangan",
+      "Pinjaman baru atau likuidasi dapat dihentikan sementara ketika data verifikasi yang berasal dari pool bergerak terlalu jauh dari harga referensi eksternal",
+      "perbedaanMaksimal",
+      "perbedaanHargaMaksimum",
+      "Ini menjaga kondisi yang tersirat dalam kolam tetap selaras dengan harga token yang mendasarinya dan membatasi manipulasi kolam secara instan atau penyalahgunaan oracle dalam transaksi yang sama.",
+      "Batas Minat Terbuka",
+      "Eksposur dibatasi oleh LP keluarga, kedalaman pool, dan kompleksitas jaminan sehingga pasar yang lebih tipis menerima batas pinjaman yang lebih ketat.",
+      "Potongan Rambut Pemulihan",
+      "Oracle mengabaikan nilai teoretis LP untuk kerugian sementara, slippage pembongkaran, dan asumsi likuidasi tertekan sebelum kekuatan pinjaman diberikan.",
+      "Oracle Penjaga",
+      "Oracle Sentinel memantau kesehatan umpan dan input verifikasi serta dapat memicu perilaku cadangan ketika data sudah usang, terganggu, atau tidak konsisten dengan pemeriksaan status posisi.",
+      "Parameter Oracle yang Dapat Dikonfigurasi",
+      "Pengaturan oracle khusus kolam dikonfigurasi per token melalui",
+      "aturKonfigurasiToken",
+      ". Tabel di bawah ini menunjukkan parameter yang menentukan bagaimana sebuah token dan pool yang terkait dengannya harus diperiksa:",
+      "Parameter",
+      "Deskripsi",
+      "Token",
+      "Alamat token jaminan",
+      "AntarmukaAggregatorV3",
+      "Feed Chainlink untuk token dasar",
+      "maksUmurFeed",
+      "Usia maksimum yang diterima untuk feed Chainlink",
+      "Kolam Renang",
+      "Kolam DEX spesifik (Uniswap V3, Balancer, Curve, dll.)",
+      "detikTwap",
+      "Jendela untuk perhitungan TWAP",
+      "Mode",
+      "Mode operasional Oracle (standar/cadangan)",
+      "Deviasi maksimum yang diizinkan antara harga DEX dan harga verifikasi",
+      "Dalam praktiknya, perilaku oracle berasal dari kombinasi penentuan harga aset eksternal, logika rekonstruksi LP, perlakuan nilai yang dapat dipulihkan, dan pengaturan per-token yang dikonfigurasi melalui"
+    ]
+  },
+  "integrations/router-contract": {
+    "meta": {
+      "title": "Kontrak Router",
+      "description": "Referensi operasional untuk router Avana dan lapisan adaptor, termasuk apa yang dikordinasikan oleh router, apa yang tidak diputuskan olehnya, dan bagaimana dukungan penyebaran dipublikasikan."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "role-in-system",
+        "title": "Peran dalam Sistem"
+      },
+      {
+        "id": "adapter-model",
+        "title": "Model Adapter"
+      },
+      {
+        "id": "supported-operations",
+        "title": "Operasi yang Didukung"
+      },
+      {
+        "id": "deployment-status",
+        "title": "Status Penempatan"
+      }
+    ],
+    "strings": [
+      "Kontrak Router",
+      "Referensi operasional untuk router Avana dan lapisan adaptor, termasuk apa yang dikordinasikan oleh router, apa yang tidak diputuskan olehnya, dan bagaimana dukungan penyebaran dipublikasikan.",
+      "Gambaran Umum",
+      "Peran dalam Sistem",
+      "Model Adapter",
+      "Operasi yang Didukung",
+      "Status Penempatan",
+      "Gabungkan panggilan setoran, penarikan, dan pengumpulan biaya khusus tempat menjadi lapisan antarmuka yang lebih rapi",
+      "Koordinasikan langkah-langkah pembubaran atau perutean yang diperlukan untuk pelaksanaan likuidasi",
+      "Dukung pembaruan posisi yang dikendalikan seperti perubahan jangkauan atau aliran migrasi saat ada adaptor tempat",
+      "Membuka permukaan integrasi yang konsisten tanpa menjadi otoritas risiko atau penilaian protokol",
+      "Lapisan antarmuka operasional untuk tindakan spesifik tempat, panggilan adaptor, dan dukungan routing terkait likuidasi.",
+      "Router adalah lapisan eksekusi, bukan tempat di mana Avana memutuskan risiko. Router ada untuk menstandarkan tindakan spesifik tempat sehingga protokol tidak perlu menyebarkan mekanisme setoran, penarikan, biaya, dan pembubaran di setiap alur yang menyentuh jaminan LP.",
+      "Baca halaman ini sebagai referensi operasional. Untuk arsitektur kanonik, mulailah dengan",
+      "Pinjam Jari-Jari",
+      "Kerangka Likuidasi",
+      "Berbagai AMM tempat menawarkan metode masuk, keluar, dan pengumpulan biaya yang berbeda. Router memberikan Avana satu lapisan integrasi untuk mekanisme tersebut sehingga pembuat tidak dipaksa untuk memperlakukan setiap tempat seperti sistem yang sepenuhnya khusus.",
+      "Router seharusnya tidak pernah dianggap sebagai tempat di mana faktor jaminan, pemeriksaan kesehatan, atau kelayakan likuidasi diputuskan. Hal-hal tersebut tetap menjadi perhatian protokol hulu di Borrow Spoke, Hub, tumpukan oracle, dan kerangka risiko.",
+      "Setiap keluarga venue yang didukung harus memiliki adaptor yang menyadari venue yang tahu cara mengklaim biaya, menghapus likuiditas, dan mengekspos tindakan yang dibutuhkan protokol untuk format LP itu. Itu menjaga perilaku spesifik venue tetap terisolasi alih-alih membocorkannya ke setiap jalur kode yang berhadapan dengan pengguna dan likuidasi.",
+      "Dukungan adaptor hanya penting ketika sejalan dengan dukungan penilaian dan likuidasi. Adaptor baru saja tidak membuat suatu tempat aman untuk penerimaan jaminan.",
+      "Alamat router, registri adaptor, dan jaringan yang diaktifkan adalah data penyebaran. Mereka sebaiknya dipublikasikan bersamaan dengan rilis daripada ditebak dari dokumen. Halaman ini sengaja menghindari alamat sementara dan janji peluncuran yang bersifat spekulatif.",
+      "• Verifikasi alamat spesifik rantai dari registri kontrak yang diterbitkan atau catatan rilis.",
+      "• Konfirmasikan bahwa adaptor lokasi yang Anda andalkan diaktifkan pada penyebaran target.",
+      "• Perlakukan dukungan router sebagai ketergantungan operasional, bukan sebagai bukti bahwa sebuah pool diterima untuk jaminan."
+    ]
+  },
+  "introduction/glossary": {
+    "meta": {
+      "title": "Glosarium",
+      "description": "DeFi glosarium untuk Avana - definisi dari Spoke, Hub, LP NFT, faktor jaminan, saham utang, likuidasi, oracle, dan istilah protokol lainnya."
+    },
+    "toc": [
+      {
+        "id": "core-concepts",
+        "title": "Konsep Inti"
+      },
+      {
+        "id": "protocol-components",
+        "title": "Komponen Protokol"
+      },
+      {
+        "id": "financial-terms",
+        "title": "Istilah Keuangan"
+      },
+      {
+        "id": "risk-security",
+        "title": "Risiko & Keamanan"
+      },
+      {
+        "id": "metrics",
+        "title": "Metrik"
+      },
+      {
+        "id": "disclaimers",
+        "title": "Penafian"
+      }
+    ],
+    "strings": [
+      "Glosarium",
+      "DeFi glosarium untuk Avana - definisi dari Spoke, Hub, LP NFT, faktor jaminan, saham utang, likuidasi, oracle, dan istilah protokol lainnya.",
+      "Konsep Inti",
+      "Komponen Protokol",
+      "Istilah Keuangan",
+      "Risiko & Keamanan",
+      "Metrik",
+      "Penafian",
+      "Pinjam Jari-Jari",
+      "Antarmuka yang menghadap peminjam Avana berbicara yang menerima jaminan LP, menilai posisi, melacak utang, dan mengoordinasikan peminjaman serta likuidasi terhadap likuiditas Hub.",
+      "Titik masuk modal yang menghadap pemberi pinjaman yang mengarahkan aset yang disediakan ke Hub sehingga Borrow Spokes dapat menarik likuiditas bersama.",
+      "Lapisan moneter bersama di Aave v4 yang mengelola likuiditas, cadangan, akuntansi, dan koordinasi modal di seluruh protokol di antara spoke yang terhubung.",
+      "Arsitektur Hub-dan-Spoke",
+      "Sebuah desain di mana modal bersama berada di Hub sementara logika spesifik kolateral diisolasi di spoke. Avana menggunakan model ini karena kolateral LP membutuhkan penilaian dan perilaku likuidasi yang spesifik untuk venue.",
+      "Node Likuidasi",
+      "Posisi likuiditas dari AMM yang didukung. Tergantung pada tempatnya, itu bisa berupa token LP yang dapat dipertukarkan, NFT likuiditas terkonsentrasi, atau format saham-pool lain yang disetujui.",
+      "Faktor Agunan",
+      "Bagian dari nilai jaminan USD yang dapat dihitung untuk daya pinjam. Di pasar LP, ini diterapkan pada tingkat posisi daripada ke seluruh cabang.",
+      "Kapasitas Pinjaman",
+      "Jumlah yang dapat dipinjam pengguna di dalam Borrow Spoke setelah setiap posisi LP yang disetorkan telah dinilai, disesuaikan risikonya, dan ditambahkan ke kapasitas agregat pengguna.",
+      "Kolam yang Diizinkan",
+      "Sebuah pool yang disetujui oleh tata kelola yang memenuhi persyaratan kelayakan seperti cakupan oracle, kedalaman likuiditas, kualitas pembongkaran, dan kompatibilitas spoke.",
+      "Rasio Pinjaman-terhadap-Nilai (LTV)",
+      "Rasio peminjaman yang terkait dengan jaminan setelah penilaian posisi Avana dan kontrol risiko spesifik pool diterapkan.",
+      "Unit akuntansi internal yang digunakan untuk melacak kewajiban peminjam sementara bunga bertambah seiring waktu tanpa menulis ulang setiap saldo pinjaman secara terus-menerus.",
+      "Tingkat yang dibayarkan peminjam atas utang yang belum dibayar. Ini mencerminkan kondisi Hub yang umum dan pertimbangan risiko spesifik LP.",
+      "Tingkat Pemanfaatan",
+      "Proporsi likuiditas pinjaman relatif terhadap pasokan yang tersedia di lapisan modal yang terhubung dengan Hub terkait.",
+      "Premi Risiko",
+      "Komponen spesifik risiko yang ditempatkan di atas kondisi peminjaman dasar untuk mencerminkan profil jaminan LP yang dibiayai.",
+      "Faktor Cadangan",
+      "Bagian dari ekonomi protokol atau aliran bunga yang diperuntukkan bagi sistem daripada sepenuhnya diteruskan kepada penyedia likuiditas.",
+      "Faktor Kesehatan",
+      "Rasio antara nilai jaminan yang disesuaikan dan utang yang masih ada di dalam Borrow Spoke. Ketika rasio ini turun terlalu rendah, posisi mendekati kelayakan likuidasi.",
+      "Proses membayar kembali utang terhadap posisi yang tidak sehat LP-didukung, melepas cukup jaminan untuk mengembalikan kelayakan finansial, dan mengembalikan setiap nilai sisa setelah penyelesaian.",
+      "Bonus Likuidasi",
+      "Premi likuidasi yang dibayarkan kepada pihak yang melaksanakan pembubaran, sebagai kompensasi atas penggunaan modal, kompleksitas pengaturan, dan risiko pelaksanaan.",
+      "Mesin penilaian Avana untuk jaminan LP. Ini menggabungkan harga aset eksternal, rekonstruksi posisi LP, dan pengamanan nilai yang dapat dipulihkan.",
+      "Nilai yang Dapat Dipulihkan",
+      "Jumlah yang diyakini protokol dapat direalisasikan secara realistis selama pelepasan stres setelah mempertimbangkan selip likuidasi, kondisi pool, dan buffer risiko.",
+      "Modifikasi terkendali dari posisi yang dijaminkan LP, seperti penyeimbangan ulang atau perubahan jangkauan, yang hanya diizinkan ketika posisi yang dihasilkan masih memenuhi pemeriksaan kesehatan protokol.",
+      "Total nilai aset yang disediakan sebagai LP jaminan atau modal di seluruh komponen yang terhubung Avana.",
+      "Hutang Tertunggak",
+      "Jumlah yang saat ini dipinjam terhadap posisi agunan yang disetujui.",
+      "Pemanfaatan Pinjaman",
+      "Bagian dari likuiditas Hub yang tersedia yang telah ditarik oleh peminjam.",
+      "Batas Pinjaman",
+      "Perbedaan antara utang saat ini pengguna dan sisa kapasitas pinjaman agregat di dalam Borrow Spoke.",
+      "Nilai Sisa",
+      "Setiap nilai yang tersisa dalam suatu posisi setelah utang, premi likuidasi, dan biaya pelaksanaan telah diselesaikan.",
+      "Persetujuan Kolam",
+      "Aturan bahwa hanya kolam yang telah disetujui sebelumnya yang dapat diterima sebagai jaminan, membatasi eksposur ke pasar yang tidak didukung atau dipantau secara lemah.",
+      "Potongan Rambut Pemulihan",
+      "Batas Paparan",
+      "Batas risiko yang membatasi eksposur yang dapat dipinjam berdasarkan keluarga pool, kelas jaminan, atau kedalaman likuiditas.",
+      "Pemutus Sirkuit",
+      "Kontrol risiko yang dapat menghentikan atau membatasi tindakan ketika harga, perilaku pasar, atau ketergantungan protokol menjadi tidak konsisten atau tidak aman.",
+      "Keamanan Tata Kelola",
+      "Sekumpulan peran tinjauan, penguncian waktu, veto, dan darurat yang digunakan oleh Kerangka Kerja Risiko untuk menjaga perubahan parameter tetap terkontrol.",
+      "Perlindungan Reentransi",
+      "Perlindungan tingkat kontrak yang mencegah alur kerja yang mengubah status masuk kembali sebelum eksekusi pertama selesai.",
+      "Definisi kanonik untuk terminologi spesifik-protokol dan DeFi yang digunakan di seluruh dokumentasi.",
+      "LP & Agunan",
+      "Utang & Bunga",
+      "Likuidasi",
+      "Oracle & Transformasi",
+      "Bukan Nasihat Investasi:",
+      "Avana adalah protokol perangkat lunak. Dokumentasi ini tidak merupakan saran investasi.",
+      "Risiko Kerugian:",
+      "Pengguna dapat kehilangan dana melalui kerentanan kontrak pintar, volatilitas pasar, likuidasi, atau manipulasi oracle.",
+      "Status Regulasi:",
+      "Status regulasi dari Avana dan token-tokennya (jika ada) tidak dijamin dan dapat berbeda-beda menurut yurisdiksi.",
+      "Tanpa Jaminan:",
+      "Perangkat lunak disediakan \"sebagaimana adanya\" tanpa jaminan apa pun."
+    ]
+  },
+  "introduction/key-concepts": {
+    "meta": {
+      "title": "Konsep Kunci",
+      "description": "Pahami konsep inti di balik Avana, termasuk perilaku agunan LP, penilaian konservatif, peminjaman Hub, dan likuidasi."
+    },
+    "toc": [
+      {
+        "id": "core-insight",
+        "title": "Wawasan Inti"
+      },
+      {
+        "id": "user-flow",
+        "title": "Model Pinjaman"
+      },
+      {
+        "id": "oracle-valuation",
+        "title": "Oracle & Penilaian"
+      },
+      {
+        "id": "borrowing-process",
+        "title": "Kapasitas Pinjaman"
+      },
+      {
+        "id": "health-monitoring",
+        "title": "Kesehatan & Likuidasi"
+      },
+      {
+        "id": "fee-collection",
+        "title": "Perlakuan Biaya"
+      }
+    ],
+    "strings": [
+      "Konsep Kunci",
+      "Pahami konsep inti di balik Avana, termasuk perilaku agunan LP, penilaian konservatif, peminjaman Hub, dan likuidasi.",
+      "Wawasan Inti",
+      "Model Pinjaman",
+      "Oracle & Penilaian",
+      "Kapasitas Pinjaman",
+      "Kesehatan & Likuidasi",
+      "Perlakuan Biaya",
+      "Ide-ide yang muncul berulang kali di dokumen Borrow Spoke, penilaian, peminjaman, dan likuidasi milik Avana.",
+      "Sebuah posisi LP bukan sekadar token dengan harga spot. Ini adalah posisi likuiditas langsung yang nilainya bergantung pada aset yang mendasarinya, komposisi pool, akumulasi biaya, struktur posisi, dan jumlah yang secara realistis bisa dipulihkan protokol jika likuidasi diperlukan.",
+      "Mengapa ini penting:",
+      "Avana menanggung risiko LP pasar dengan aturan spesifik spoke dan pool daripada satu model aset umum untuk setiap LP.",
+      "Pengguna menyetor posisi LP yang didukung ke dalam Borrow Spoke. Posisi tersebut dapat tetap aktif di pool mereka sementara protokol mengambil alih untuk pencatatan jaminan.",
+      "Setiap posisi LP yang disetujui dinilai secara terpisah. Setelah faktor jaminan dan kontrol risiko pool diterapkan, kontribusi yang didiskontokan ditambahkan ke kapasitas pinjaman di dalam Borrow Spoke tersebut.",
+      "Ketika pengguna meminjam, spoke menarik likuiditas dari Hub. LP risiko pasar tetap berada di lapisan spoke, sementara akuntansi modal bersama tetap di Hub.",
+      "Avana menilai LP jaminan secara konservatif. Harga aset eksternal menandai underlying, sementara data pool dan status posisi digunakan untuk membangun kembali eksposur alih-alih hanya mengandalkan output spot AMM mentah.",
+      "Harga aset dasar dari sumber eksternal yang kuat",
+      "Pemecahan inventaris kolam atau dekomposisi posisi yang menyadari rentang",
+      "Biaya yang terakumulasi diakui secara terpisah dari likuiditas pokok",
+      "Potongan rambut pemulihan untuk mengatasi slippage, kerugian sementara, dan likuidasi yang tertekan",
+      "Kapasitas dibangun posisi demi posisi di dalam Borrow Spoke. Avana tidak menerapkan satu faktor secara menyeluruh ke seluruh akun atau ke setiap pool di dalam spoke. Setiap posisi berkontribusi hanya setelah faktor agunan dan kontrol spesifik-poolnya sendiri diterapkan.",
+      "Rincian:",
+      "Faktor Agunan",
+      "A Borrow Spoke membandingkan nilai agunan yang disesuaikan dengan utang yang masih ada. Jika harga, pemeriksaan oracle, atau perubahan posisi mengurangi sisa buffer hingga cukup jauh, akun tersebut bisa memasuki wilayah likuidasi.",
+      "Kesehatan dan likuidasi keduanya bergantung pada jalur penilaian yang sama. Penetapan harga, faktor jaminan, dan jalur likuidasi harus tetap selaras karena pada akhirnya semuanya mempengaruhi perhitungan solvabilitas yang sama.",
+      "LP posisi dapat terus mengakumulasi biaya perdagangan saat digunakan sebagai jaminan. Avana dapat mengakui biaya tersebut dalam penilaian dan, tergantung pada pemeriksaan kesehatan, memungkinkan pengguna mengklaimnya tanpa sepenuhnya keluar dari posisi pokok LP.",
+      "Dokumen terkait:",
+      "Oracle Harga",
+      "Biaya Klaim LP"
+    ]
+  },
+  "introduction": {
+    "meta": {
+      "title": "",
+      "description": ""
+    },
+    "toc": [],
+    "strings": []
+  },
+  "introduction/testnet-roadmap": {
+    "meta": {
+      "title": "Jaringan Uji & Peta Jalan",
+      "description": "Panduan operasional untuk Avana penyebaran uji coba dan pembingkaian peta jalan, untuk konteks evaluasi daripada aturan protokol kanonik atau janji peluncuran."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "testnet-scope",
+        "title": "Lingkup Testnet"
+      },
+      {
+        "id": "how-to-evaluate",
+        "title": "Cara Menilai"
+      },
+      {
+        "id": "roadmap-framing",
+        "title": "Kerangka Peta Jalan"
+      },
+      {
+        "id": "campaigns-and-status",
+        "title": "Kampanye & Status"
+      }
+    ],
+    "strings": [
+      "Jaringan Uji & Peta Jalan",
+      "Panduan operasional untuk Avana penyebaran uji coba dan pembingkaian peta jalan, untuk konteks evaluasi daripada aturan protokol kanonik atau janji peluncuran.",
+      "Gambaran Umum",
+      "Lingkup Testnet",
+      "Cara Menilai",
+      "Kerangka Peta Jalan",
+      "Kampanye & Status",
+      "Halaman operasional untuk menguji Avana penyebaran dan untuk membaca pernyataan peta jalan dengan tingkat kehati-hatian yang tepat.",
+      "Status testnet, jaringan yang didukung, dan perubahan urutan roadmap publik berubah lebih cepat daripada dokumen arsitektur. Halaman ini ada agar pembuat dapat memisahkan status lingkungan dari desain protokol yang stabil dan menghindari membaca bahasa peluncuran seolah-olah itu adalah spesifikasi.",
+      "Gunakan lightpaper dan dokumen pengembang inti untuk desain protokol. Gunakan halaman ini untuk kesiapan lingkungan, cakupan percobaan, dan konteks peluncuran.",
+      "Sebuah penyebaran uji coba mungkin hanya menampilkan sebagian dari desain produksi penuh. LP keluarga, peminjaman aset, cakupan oracle, dan alat likuidasi semuanya bisa lebih sempit atau lebih disederhanakan di testnet.",
+      "• Verifikasi jaringan aktif, registri kontrak, dan set pool yang didukung untuk lingkungan saat ini.",
+      "• Harapkan aset yang diolok-olok, cakupan tempat yang dibatasi, dan siklus operasional yang dipersingkat.",
+      "• Perlakukan perilaku testnet sebagai lingkungan evaluasi, bukan sebagai janji produksi akhir.",
+      "Jalur evaluasi yang paling berguna adalah menyetor LP yang memenuhi syarat, mengonfirmasi penilaian spoke, mengamati kapasitas pinjaman agregat, meminjam terhadap likuiditas Hub, dan kemudian melihat bagaimana pemantauan kesehatan dan pembayaran kembali berperilaku pada akun yang sama itu.",
+      "Poin, misi, atau kampanye lain pada penyebaran uji adalah fitur operasional. Mereka bukan model agunan itu sendiri.",
+      "Bahasa roadmap bersifat arahan. Ini menunjuk ke arah cakupan keluarga LP yang lebih luas, dukungan oracle yang lebih kuat, alat likuidasi yang lebih mendalam, dan tata kelola risiko yang lebih halus. Ini tidak boleh dibaca sebagai tanggal peluncuran tetap atau janji jaringan yang keras kecuali komitmen tersebut diumumkan secara terpisah.",
+      "Insentif aktif, program poin, atau detail peluncuran khusus jaringan sebaiknya disimpan dalam dokumen kampanye atau catatan rilis. Menjaganya agar tidak masuk ke halaman protokol inti membuat dokumen pengembang lebih stabil ketika kampanye atau rencana peluncuran berubah."
+    ]
+  },
+  "legal/disclaimer": {
+    "meta": {
+      "title": "Penafian Hukum",
+      "description": "Avana penafian hukum - penafian umum, bukan nasihat keuangan, risiko, jaminan, dan batasan tanggung jawab."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "general-disclaimer",
+        "title": "Penafian Umum"
+      },
+      {
+        "id": "no-financial-advice",
+        "title": "Bukan Nasihat Keuangan"
+      },
+      {
+        "id": "risks",
+        "title": "Risiko"
+      },
+      {
+        "id": "no-warranties",
+        "title": "Tanpa Jaminan"
+      },
+      {
+        "id": "limitation-of-liability",
+        "title": "Batasan Tanggung Jawab"
+      },
+      {
+        "id": "related-policies",
+        "title": "Kebijakan Terkait"
+      }
+    ],
+    "strings": [
+      "Penafian Hukum",
+      "Avana penafian hukum - penafian umum, bukan nasihat keuangan, risiko, jaminan, dan batasan tanggung jawab.",
+      "Gambaran Umum",
+      "Penafian Umum",
+      "Bukan Nasihat Keuangan",
+      "Risiko",
+      "Tanpa Jaminan",
+      "Batasan Tanggung Jawab",
+      "Kebijakan Terkait",
+      "Pemberitahuan hukum yang mengatur penggunaan protokol dan dokumentasi.",
+      "Penting:",
+      "Harap baca penafian ini dengan cermat sebelum menggunakan Avana. Dengan menggunakan protokol ini, Anda menyatakan bahwa Anda telah membaca, memahami, dan menyetujui untuk terikat oleh ketentuan ini. Untuk ketentuan lengkap, silakan tinjau kami",
+      "Syarat Layanan",
+      "Kebijakan Privasi",
+      "Penafian ini melengkapi dan harus dibaca bersamaan dengan seluruh",
+      ". Ketentuan Layanan merupakan perjanjian yang memiliki kekuatan hukum antara Anda dan Avana mengenai akses dan penggunaan Anda terhadap protokol serta layanan terkait.",
+      "Dari halaman utama kami:",
+      "Meminjam menggunakan LP token melibatkan risiko, termasuk likuidasi jika kondisi pasar bergerak melawan posisi Anda. Avana tidak menyimpan dana Anda, tidak melakukan rehypothecation pada posisi LP, atau mengubah cara likuiditas Anda beroperasi pada AMM yang mendasari. Hanya pinjam jumlah yang Anda nyaman pertahankan selama volatilitas pasar.",
+      "Avana adalah protokol keuangan terdesentralisasi eksperimental. Protokol ini disediakan \"apa adanya\" tanpa pernyataan atau jaminan apa pun, baik secara tersurat maupun tersirat.",
+      "Seperti yang dinyatakan dalam Ketentuan Layanan kami (Bagian 2): \"Protokol Avana mencakup fungsionalitas di mana kontrak pintar sumber terbuka tertentu dapat menerima dan menyimpan mata uang digital tertentu atau aset kripto lainnya. Ada risiko bahwa perangkat lunak sumber terbuka, termasuk setiap pembaruan, dapat memperkenalkan bug, virus, Trojan, atau kerentanan atau perubahan lain yang dapat mengakibatkan gangguan sebagian atau keseluruhan pada protokol atau kehilangan, kerusakan, atau penghancuran aset kripto Anda.\"",
+      "Setiap ketergantungan yang Anda tempatkan pada informasi tersebut sepenuhnya merupakan risiko Anda sendiri. Kami tidak akan bertanggung jawab atas kehilangan atau kerusakan yang timbul dari penggunaan protokol atau dokumentasi ini.",
+      "Seperti yang tercantum dengan jelas dalam Ketentuan Layanan kami: \"LAYANAN TERMASUK, DI ANTARA HAL LAINNYA, SUMBER INFORMASI, YANG DAPAT MEMBERIKAN INFORMASI TERKAIT DENGAN AVANA. AVANA BUKANLAH SEORANG BROKER, DEALER, PENUKARAN, PENASIHAT INVESTASI, KUSTODIAN, ATAU PENYEDIA JASA KEUANGAN DARI JENIS APAPUN. KAMI TIDAK MEMILIKI HUBUNGAN FIDUSIARI DENGAN, ATAU KEWAJIBAN KEPADA, ANDA SEHUBUNGAN DENGAN LAYANAN INI.\"",
+      "• Materi ini hanya untuk tujuan informasi",
+      "• Ini bukan merupakan tawaran atau ajakan untuk berinvestasi, membeli, atau menjual kepentingan atau saham apa pun",
+      "• Ini tidak dimaksudkan untuk memberikan saran akuntansi, hukum, pajak, atau rekomendasi investasi",
+      "• Kami bukan penasihat investasi atau pialang terdaftar",
+      "• Kami tidak memberikan rekomendasi keuangan yang dipersonalisasi",
+      "• Kinerja masa lalu tidak menjamin hasil di masa depan",
+      "• Anda sebaiknya berkonsultasi dengan profesional yang berkualitas sebelum membuat keputusan keuangan",
+      "• Investasi cryptocurrency sangat fluktuatif dan berisiko tinggi",
+      "Bagian 8 dari Ketentuan Layanan kami menjelaskan risiko yang terkait dengan penggunaan Avana:",
+      "Teknologi Eksperimental",
+      "Layanan dapat menggabungkan teknologi eksperimental dan baru, dan penggunaan teknologi tersebut melibatkan tingkat risiko yang tinggi. Ada banyak alasan mengapa Layanan atau jaringan blockchain yang mendasarinya dapat gagal secara tak terduga, yang mengakibatkan hilangnya total dan mutlak dari setiap aset kripto yang disimpan di dompet digital Anda.",
+      "Tantangan Operasional",
+      "Layanan dan/atau jaringan blockchain yang mendasarinya mungkin mengalami atau menjadi sasaran serangan siber, lonjakan volume transaksi yang tidak terduga, atau kesulitan atau kerentanan operasional atau teknis lainnya yang dapat menyebabkan gangguan terkait dengan penggunaan Anda atas Layanan.",
+      "Ketidakpastian Regulasi",
+      "Layanan, Protokol Avana dan/atau jaringan blockchain yang mendasarinya mungkin tidak tersedia atau tepat untuk digunakan di semua yurisdiksi dan Anda mungkin tunduk pada kewajiban kepatuhan hukum dan regulasi sehubungan dengan penggunaan Layanan di yurisdiksi tertentu.",
+      "LP-Risiko Spesifik",
+      "• Kerugian sementara dapat mengurangi nilai agunan",
+      "• Risiko likuidasi jika kondisi pasar bergerak melawan posisi Anda",
+      "• Risiko kontrak pintar DEX yang mendasar",
+      "• Posisi likuiditas terkonsentrasi bisa menjadi tidak berharga jika berada di luar jangkauan",
+      "Seperti yang dinyatakan dalam Bagian 9.1 dari Ketentuan Layanan kami:",
+      "LAYANAN DIBERIKAN DENGAN DASAR 'APA ADANYA' DAN 'SESUAI KETERSEDIAAN' DAN AVANA TIDAK MEMBERIKAN JAMINAN APA PUN TERHADAP DASAR 'APA ADANYA' DAN 'SESUAI KETERSEDIAAN' TERSEBUT ATAU SEBALIKNYA DALAM KONEKSI DENGAN SYARAT-SYARAT DAN AVANA DENGAN INI MENOLAK SEGALA JAMINAN DAN KONDISI YANG TERSURAT, TERSIRAT, ATAU YANG DIATUR OLEH UNDANG-UNDANG, TERMASUK JAMINAN ATAU KONDISI TIDAK PELECEHAN, DAYA JUAL, KESESUAIAN UNTUK TUJUAN TERTENTU, KETERSEDIAAN, KEBEBASAN DARI KESALAHAN ATAU OPERASI TANPA GANGGUAN.",
+      "Seperti yang dinyatakan dalam Bagian 9.2 dari Ketentuan Layanan kami:",
+      "DALAM KEADAAN APA PUN AVANA TIDAK AKAN BERTANGGUNG JAWAB KEPADA ANDA ATAS KERUSAKAN KONSEKUENSIAL, TIDAK LANGSUNG, INSIDEN, ATAU KHUSUS DARI JENIS ATAU SIFAT APA PUN BAGI APA PUN SEBABNYA, TERMASUK, TANPA BATASAN, KERUSAKAN PENEGASAN ATAU HUKUMAN, DATA YANG HILANG, KEUNTUNGAN ATAU PENDAPATAN YANG HILANG ATAU PENURUNAN NILAI, YANG TIMBUL DARI ATAU BERKAITAN DENGAN LAYANAN ATAU PENGGUNAAN ANDA TERHADAP PROTOKOL AVANA.",
+      "Batasan ini berlaku terlepas dari teori tanggung jawab (kontrak, perbuatan melawan hukum, tanggung jawab mutlak, atau lainnya) dan bahkan jika kami telah diberitahu tentang kemungkinan kerugian tersebut. Dalam keadaan apa pun, tanggung jawab agregat Avana tidak akan melebihi seratus Dolar Amerika Serikat (USD 100,00).",
+      "Untuk informasi hukum lengkap, silakan tinjau dokumen berikut:",
+      "Perjanjian yang mengikat secara hukum secara lengkap yang mengatur penggunaan Anda atas Avana, termasuk kelayakan, kegiatan yang dilarang, kekayaan intelektual, penyelesaian sengketa, dan lainnya.",
+      "Bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi pribadi Anda, termasuk retensi data, cookie, dan hak-hak Anda di bawah GDPR, CCPA, dan peraturan privasi lainnya.",
+      "Wilayah Terlarang",
+      "Daftar saat ini dari yurisdiksi yang dibatasi untuk mengakses layanan Avana.",
+      "Terakhir Diperbarui:",
+      "Januari 2026",
+      "Penafian ini dapat diperbarui dari waktu ke waktu. Penggunaan protokol yang berkelanjutan merupakan penerimaan terhadap setiap perubahan. Silakan merujuk ke"
+    ]
+  },
+  "legal": {
+    "meta": {
+      "title": "Hukum & Kepatuhan - Pengungkapan Keamanan",
+      "description": "Avana informasi hukum - batasan akses, yurisdiksi terbatas, persyaratan kepatuhan, dan pengungkapan keamanan."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "access-restrictions",
+        "title": "Pembatasan Akses"
+      },
+      {
+        "id": "restricted-jurisdictions",
+        "title": "Yurisdiksi Terbatas"
+      },
+      {
+        "id": "compliance",
+        "title": "Kepatuhan"
+      },
+      {
+        "id": "related-policies",
+        "title": "Kebijakan Terkait"
+      }
+    ],
+    "strings": [
+      "Hukum & Kepatuhan - Pengungkapan Keamanan",
+      "Avana informasi hukum - batasan akses, yurisdiksi terbatas, persyaratan kepatuhan, dan pengungkapan keamanan.",
+      "Gambaran Umum",
+      "Pembatasan Akses",
+      "Yurisdiksi Terbatas",
+      "Kepatuhan",
+      "Kebijakan Terkait",
+      "sanksi OFAC",
+      "Ukraina (wilayah Krimea, Donetsk, dan Luhansk)",
+      "Amerika Serikat",
+      "Menunggu kejelasan regulasi",
+      "Wilayah Terlarang",
+      "Halaman ini dipelihara untuk mencerminkan daftar terkini Yurisdiksi Terbatas untuk domain Avana.",
+      "Syarat Penggunaan",
+      ", akses ke situs web Avana dan layanan terkaitnya dibatasi untuk individu atau entitas di yurisdiksi tertentu. Halaman ini menyediakan daftar wilayah terbatas saat ini dan menjelaskan pembatasan akses yang diterapkan.",
+      "Penting:",
+      "Setiap upaya untuk mengakses platform Avana dari Yurisdiksi yang Dibatasi akan mengakibatkan pengalihan segera ke Ketentuan Penggunaan dan penolakan akses.",
+      "Akses ke situs web Avana dan layanan terkaitnya dibatasi untuk individu atau entitas yang:",
+      "Tinggal di dalam",
+      "setiap yurisdiksi yang dibatasi",
+      "Apakah warga negara dari",
+      "Berada secara fisik di dalam",
+      "Diinkorporasikan dalam",
+      "Mempertahankan kantor terdaftar di dalam",
+      "Pembatasan ini didefinisikan dalam Avana's",
+      "Yurisdiksi Terkini yang Dibatasi",
+      "Yurisdiksi berikut saat ini dibatasi dari mengakses layanan Avana:",
+      "Yurisdiksi",
+      "Alasan",
+      "Catatan:",
+      "Daftar ini dapat diperbarui dari waktu ke waktu sebagai tanggapan terhadap perubahan dalam undang-undang, peraturan, atau program sanksi yang berlaku. Pengguna bertanggung jawab untuk memastikan kepatuhan mereka yang berkelanjutan terhadap pembatasan ini.",
+      "Seperti yang dinyatakan dalam Ketentuan Penggunaan kami (Bagian 1.2), Anda tidak boleh mengakses atau menggunakan Layanan jika Anda:",
+      "• Subjek dari setiap sanksi yang diadministrasikan atau diberlakukan oleh Kantor Pengendalian Aset Asing (OFAC) Departemen Keuangan AS, Departemen Luar Negeri AS, atau otoritas pemerintah lainnya yang memiliki yurisdiksi",
+      "• Diidentifikasi dalam Daftar Orang, Entitas, atau yang Tidak Terverifikasi dari Biro Industri dan Keamanan Departemen Perdagangan AS",
+      "• Berlokasi, terorganisir, atau berdomisili di negara atau wilayah yang menjadi subjek sanksi ekonomi, atau pemerintahnya yang menjadi subjek sanksi ekonomi",
+      "Pengguna sepenuhnya bertanggung jawab untuk memastikan penggunaan protokol mereka mematuhi semua undang-undang dan peraturan yang berlaku di yurisdiksi mereka.",
+      "Untuk informasi lengkap tentang hak dan kewajiban Anda saat menggunakan Avana, harap tinjau:",
+      "Syarat Layanan",
+      "Syarat dan ketentuan lengkap yang mengatur penggunaan layanan Avana Anda, termasuk persyaratan kelayakan, kegiatan yang dilarang, dan penyelesaian sengketa.",
+      "Kebijakan Privasi",
+      "Informasi tentang bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi pribadi Anda saat Anda menggunakan layanan kami.",
+      "Penafian Hukum",
+      "Pernyataan penting mengenai risiko, jaminan, dan batasan tanggung jawab."
+    ]
+  },
+  "liquidation/examples": {
+    "meta": {
+      "title": "Contoh Likuidasi",
+      "description": "Contoh likuidasi ilustratif untuk Avana, menunjukkan bagaimana LP yang dapat dipertukarkan, likuiditas terkonsentrasi, dan akun multi-posisi dibongkar di bawah kerangka inti yang sama."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "fungible-lp",
+        "title": "Fungible LP Contoh"
+      },
+      {
+        "id": "concentrated-liquidity",
+        "title": "Contoh Likuiditas Terkonsentrasi"
+      },
+      {
+        "id": "nft-liquidity",
+        "title": " Likuidasi NFT"
+      },
+      {
+        "id": "multi-position-account",
+        "title": "Akun Multi-Posisi"
+      },
+      {
+        "id": "edge-cases",
+        "title": "Kasus Tepi"
+      },
+      {
+        "id": "summary",
+        "title": "Ringkasan"
+      }
+    ],
+    "strings": [
+      "Contoh Likuidasi",
+      "Contoh likuidasi ilustratif untuk Avana, menunjukkan bagaimana LP yang dapat dipertukarkan, likuiditas terkonsentrasi, dan akun multi-posisi dibongkar di bawah kerangka inti yang sama.",
+      "Gambaran Umum",
+      "Fungible LP Contoh",
+      "Contoh Likuiditas Terkonsentrasi",
+      " Likuidasi NFT",
+      "Akun Multi-Posisi",
+      "Kasus Tepi",
+      "Ringkasan",
+      "Posisi tersebut mungkin sebagian besar condong ke satu sisi saat likuidasi dimulai, terutama untuk likuiditas yang terkonsentrasi.",
+      "Kedalaman kolam mungkin cukup untuk penilaian tetapi masih cukup tipis sehingga memerlukan pengaturan pelepasan yang konservatif.",
+      "Biaya yang dapat diklaim dapat meningkatkan pemulihan, tetapi tidak boleh dianggap sebagai jaminan sampai benar-benar direalisasikan.",
+      "Seorang peminjam dapat memiliki beberapa posisi yang berkontribusi pada satu kapasitas peminjaman tingkat-spoke, sehingga urutan likuidasi menjadi penting.",
+      "Skenario yang dijalankan yang menunjukkan bagaimana satu kerangka likuidasi diterapkan pada berbagai bentuk jaminan LP.",
+      "Contoh-contoh ini sengaja dibuat sederhana. Tujuannya adalah untuk menunjukkan bagaimana likuidasi terjadi di berbagai format LP yang umum tanpa menambahkan aturan tambahan di luar",
+      "Kerangka Likuidasi",
+      "Dalam setiap kasus pekerjaannya sama: gunakan tanda jaminan konservatif, bayar kembali utang ke lapisan kredit, buka LP melalui jalur yang didukung, dan kembalikan nilai sisa apa pun yang tersisa setelah biaya eksekusi dan hadiah likuidasi.",
+      "Seorang peminjam telah menyetor token LP yang dapat dipertukarkan dari pool stabil atau berbobot yang disetujui. Seiring waktu, komposisi pool dan input oracle bergerak sedemikian rupa sehingga akun tersebut tidak lagi memiliki nilai agunan yang disesuaikan yang cukup untuk utangnya.",
+      "• Node likuidasi mendeteksi kekurangan dan mencari likuiditas eksekusi.",
+      "• Utang dibayar kembali dan token LP ditebus menjadi aset dasarnya.",
+      "• Biaya yang dapat diklaim direalisasikan jika tersedia dan membantu pemulihan.",
+      "• Aset dasar dialihkan ke aset utang dan likuidasi selesai.",
+      "• Setiap nilai yang tersisa setelah pembayaran kembali dan imbalan dikembalikan kepada peminjam.",
+      "Posisi likuiditas terkonsentrasi bergerak menuju tepi jangkauan aktifnya. Akun mungkin tetap sehat untuk sementara waktu, kemudian jatuh ke likuidasi ketika utang melebihi nilai yang dapat dipulihkan dari keadaan posisi saat ini.",
+      "• Node menilai posisi dari jangkauannya saat ini, likuiditas, dan pembagian token.",
+      "• Setelah likuidasi dimulai, biaya yang dapat diklaim diperiksa sebelum pokok dibongkar.",
+      "• Perutean menyesuaikan dengan inventaris aktual yang dipulihkan daripada campuran token statis.",
+      "• Penyelesaian mengikuti pola yang sama: membayar kembali likuiditas eksekusi, membayar hadiah, mengembalikan nilai sisa.",
+      "Seorang peminjam menyetor NFT Uniswap v3 dan kemudian posisi tersebut menjadi negatif. Penyelesaian dilakukan pada tingkat posisi, bukan sebagai potongan token yang terpisah, karena NFT tersebut mewakili satu posisi pendukung tertentu.",
+      "• Aave mengambil saldo token brankas yang terkait dengan posisi yang didukung NFT.",
+      "• Avana membakar token brankas dan memindahkan posisi nyata LP ke penyelesaian.",
+      "• Modul penyelesaian membatalkan, menjual, melelang, atau mentransfer posisi.",
+      "• Utang dibayar terlebih dahulu, kemudian imbalan likuidator, dan surplus apa pun mengikuti aturan pasar.",
+      "• Peminjam tidak mempertahankan klaim parsial bersih pada NFT yang sama setelah likuidasi.",
+      "Seorang peminjam dapat memegang beberapa posisi LP di dalam satu Borrow Spoke. Kapasitas dijumlahkan di seluruh posisi tersebut, tetapi pembubaran masih harus dilakukan pada tingkat posisi setelah akun menjadi tidak sehat.",
+      "• Cabang melaporkan satu kapasitas pinjaman agregat ke Hub.",
+      "• Ketika akun menjadi tidak sehat, node likuidasi memilih jalur pelepasan yang paling baik untuk memulihkan solvabilitas.",
+      "• Satu posisi mungkin cukup untuk menutup kekurangan, atau beberapa mungkin perlu dibuka sebagian atau sepenuhnya.",
+      "• Urutan eksekusi, konsistensi oracle, dan kedalaman rute penting selain tanda itu sendiri.",
+      "Fungible LP, rentang terkonsentrasi, posisi NFT, dan akun multi-posisi semuanya memiliki rincian likuidasi yang berbeda. Tujuan bersama tidak pernah berubah: membayar utang dari nilai LP yang dapat dipulihkan tanpa bergantung pada asumsi NAV yang optimis. Kebijakan masih ada di halaman utama Kerangka Likuidasi."
+    ]
+  },
+  "liquidation/flow": {
+    "meta": {
+      "title": "Arus Likuidasi",
+      "description": "Aliran likuidasi operasional untuk Avana, mencakup urutan runtime yang digunakan ketika jaminan LP yang didukung oleh brankas disita dan dibubarkan."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "canonical-reference",
+        "title": "Dokumen Kebijakan Terkait"
+      },
+      {
+        "id": "runtime-sequence",
+        "title": "Urutan Waktu Jalannya Program"
+      },
+      {
+        "id": "state-transitions",
+        "title": "Transisi Status"
+      },
+      {
+        "id": "operator-notes",
+        "title": "Catatan Operator"
+      }
+    ],
+    "strings": [
+      "Arus Likuidasi",
+      "Aliran likuidasi operasional untuk Avana, mencakup urutan runtime yang digunakan ketika jaminan LP yang didukung oleh brankas disita dan dibubarkan.",
+      "Gambaran Umum",
+      "Dokumen Kebijakan Terkait",
+      "Urutan Waktu Jalannya Program",
+      "Transisi Status",
+      "Catatan Operator",
+      "Mendeteksi akun yang tidak sehat",
+      "Node likuidasi atau pengawas eksternal memantau nilai jaminan yang disesuaikan dengan risiko yang sama yang digunakan oleh protokol dan menandai akun yang utangnya sekarang melebihi kapasitas pinjaman yang diizinkan.",
+      "Likuiditas eksekusi sumber",
+      "Likuidator memperoleh likuiditas sementara, biasanya melalui jalur gaya flashloan, sehingga utang dapat dilunasi tanpa membiayai penuh pembongkaran dari kantong sendiri.",
+      "Bayar utang dan sita jaminan brankas",
+      "Spoke Pinjam yang relevan menyelesaikan utang ke dalam lapisan kredit, mengambil kustodi atas jaminan brankas, dan menyerahkan posisi ke penyelesaian spesifik LP.",
+      "Bakar token brankas dan tandai posisi penyangga",
+      "Adaptor membakar token brankas yang macet dan menandai posisi nyata LP sebagai dalam penyelesaian sehingga pasokan cadangan tidak dapat tetap tertunggak terhadap posisi yang sudah sedang dibongkar.",
+      "Selesaikan posisi LP dan tutup likuidasi",
+      "Avana membongkar, menjual, melelang, atau mentransfer posisi nyata LP, membayar kembali likuiditas eksekusi, membayar imbalan likuidator, dan menyalurkan kelebihan sesuai dengan aturan pasar.",
+      "Setelah Aave mengizinkan likuidasi, posisi yang dipilih keluar dari status AKTIF dan masuk ke status LIKUIDASI. Peminjam seharusnya tidak lagi dapat menariknya.",
+      "Setelah posisi nyata LP dibuka atau dijual, suplai penyangga dibersihkan dan posisi menjadi TERSETEL.",
+      "Aturan negara",
+      "Token brankas tidak dapat tetap beredar setelah posisi LP yang mendukungnya dihapus. Jika token brankas dibakar, posisi LP harus ditarik, dibalik, atau dipindahkan ke penyelesaian.",
+      "Urutan waktu nyata tentang bagaimana posisi yang didukung LP yang tidak sehat bergerak dari deteksi hingga penyelesaian setelah likuidasi dimulai.",
+      "Halaman ini adalah tampilan runtime dari likuidasi. Halaman ini ditulis untuk saat ketika sebuah akun sudah tidak sehat dan seorang operator perlu memahami apa yang terjadi selanjutnya, secara berurutan, dari deteksi hingga penyelesaian akhir.",
+      "LP likuidasi adalah pembubaran yang dikendalikan daripada penjualan token tunggal. Utang dilunasi, jaminan brankas disita, token brankas yang sesuai dibakar, posisi nyata LP diselesaikan, dan nilai sisa dikembalikan jika masih ada.",
+      "Kebijakan likuidasi tetap ada",
+      "Kerangka Likuidasi",
+      "halaman. Alur ini mengasumsikan model nilai yang dapat dipulihkan dalam",
+      "Oracle Harga",
+      "Faktor Agunan",
+      "Gunakan halaman ini untuk urutan eksekusi. Ambang batas, hadiah, dan aturan penerimaan tetap berasal dari dokumen arsitektur dan risiko, bukan dari daftar periksa ini sendiri.",
+      "Berbagai LP keluarga semuanya mencoba mencapai keadaan akhir yang sama, tetapi mereka tidak sampai di sana melalui jalur keluar yang identik. Penanganan berbasis adapter memungkinkan setiap keluarga pool mengikuti jalur lepas yang sesuai dengan mekanismenya sendiri.",
+      "Bot likuidasi harus mengindeks posisi aktif, menyegarkan pergeseran utang, dan menilai akun dari tumpukan oracle yang sama yang digunakan oleh protokol daripada hanya dari keadaan spot mentah AMM saja.",
+      "Pemeriksaan profitabilitas harus memperhitungkan slippage, kedalaman rute, biaya flashloan, dan risiko eksekusi. Likuidasi besar atau tidak biasa mungkin mendapat manfaat dari jalur eksekusi privat untuk mengurangi eksposur MEV yang merugikan.",
+      "Anggap halaman ini sebagai daftar periksa saat berjalan. Simpan rincian kebijakan pada halaman utama likuidasi, oracle, dan risiko."
+    ]
+  },
+  "liquidation/liquidators": {
+    "meta": {
+      "title": "Likuidator",
+      "description": "Panduan pengembang untuk operator likuidasi, mencakup pemantauan, persyaratan eksekusi, dan perilaku pembubaran khusus LP."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "coverage-model",
+        "title": "Model Cakupan"
+      },
+      {
+        "id": "execution-requirements",
+        "title": "Persyaratan Pelaksanaan"
+      },
+      {
+        "id": "operational-notes",
+        "title": "Catatan Operasional"
+      }
+    ],
+    "strings": [
+      "Likuidator",
+      "Panduan pengembang untuk operator likuidasi, mencakup pemantauan, persyaratan eksekusi, dan perilaku pembubaran khusus LP.",
+      "Gambaran Umum",
+      "Model Cakupan",
+      "Persyaratan Pelaksanaan",
+      "Catatan Operasional",
+      "Partisipasi tanpa izin",
+      "Setiap penjaga atau meja eksekusi dapat melikuidasi jika dapat memantau posisi, mendapatkan likuiditas eksekusi, dan membongkar format LP dan mendukung Avana.",
+      "penanganan spesifik LP",
+      " Likuidasi bukanlah penjualan token umum. Runtime membutuhkan logika yang menyadari lokasi untuk realisasi biaya, penghapusan posisi, routing, dan penyelesaian ke aset utang.",
+      "Kualitas cakupan",
+      "LP posisi lebih sulit untuk diurai daripada token sederhana. Operator yang memodelkan rute penuh untuk tempat yang didukung biasanya menangani tekanan lebih baik daripada bot yang hanya bereaksi terhadap pemicu kesehatan.",
+      "Lacak status risiko yang sama yang digunakan protokol, bukan heuristik terpisah.",
+      "Membatalkan dari transisi status bersih dalam satu pekerjaan atomik kapan pun memungkinkan.",
+      "Realisasi biaya harga, kedalaman rute, dan nilai sisa sebelum dioptimalkan hanya untuk kecepatan.",
+      "Perlakukan cakupan sebagian dan cakupan penuh sebagai kasus yang terpisah dengan asumsi pengaturan rute yang terpisah.",
+      "Pemantauan posisi dan pelacakan pergeseran utang",
+      "Simulasi untuk kedalaman rute, slip, dan ketersediaan likuiditas",
+      "Pengiriman transaksi dengan jalur eksekusi flashloan atau prafunded",
+      "Adaptor yang sadar lokasi untuk LP keluarga yang didukung protokol",
+      "Bagaimana operator menangani likuidasi Avana dan infrastruktur eksekusi apa yang dibutuhkan untuk utang yang didukung LP.",
+      "Likuidator adalah operator yang menutup posisi yang didukung LP yang tidak sehat. Tugas mereka adalah melunasi utang, membalikkan LP melalui jalur tempat yang benar, dan menyelesaikan nilai yang diperoleh kembali ke dalam lapisan kredit.",
+      "Kecepatan penting, tapi itu tidak cukup dengan sendirinya. Operator perlu memahami apa yang sebenarnya dapat dicakup, bagaimana LP direpresentasikan, dan bagaimana biaya, slippage, atau pemulihan perubahan inventaris satu sisi sebelum mereka mengirim apa pun ke onchain.",
+      "Seorang likuidator untuk Avana membutuhkan lebih dari sekadar bot pemicu. Itu membutuhkan infrastruktur yang cukup untuk menilai posisi, mensimulasikan keluar, mencari modal, dan melakukan transaksi yang dapat menyelesaikan jalur pembubaran yang telah dimulainya.",
+      "Persyaratan praktis",
+      "Bangun proses lepas, realisasi biaya, dan pelunasan utang yang spesifik untuk tempat sebagai satu alur kerja. Langkah-langkah yang terpisah membuat likuidasi yang secara teoritis dapat ditutup menjadi lebih mudah gagal dalam pelaksanaannya."
+    ]
+  },
+  "liquidation": {
+    "meta": {
+      "title": "Kerangka Likuidasi",
+      "description": "Bagaimana Avana menangani likuidasi untuk agunan LP yang didukung oleh brankas setelah Aave memicu titik masuk likuidasi."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "three-layers",
+        "title": "Tiga Lapisan"
+      },
+      {
+        "id": "core-rules",
+        "title": "Aturan Inti"
+      },
+      {
+        "id": "lp-complexity",
+        "title": "LP Kompleksitas Jaminan"
+      },
+      {
+        "id": "liquidation-pathways",
+        "title": "Jalur Likuidasi"
+      },
+      {
+        "id": "position-state",
+        "title": "Status Posisi"
+      },
+      {
+        "id": "surplus-handling",
+        "title": "Penanganan Surplus"
+      },
+      {
+        "id": "operator-model",
+        "title": "Model Operator"
+      }
+    ],
+    "strings": [
+      "Kerangka Likuidasi",
+      "Bagaimana Avana menangani likuidasi untuk agunan LP yang didukung oleh brankas setelah Aave memicu titik masuk likuidasi.",
+      "Gambaran Umum",
+      "Tiga Lapisan",
+      "Aturan Inti",
+      "LP Kompleksitas Jaminan",
+      "Jalur Likuidasi",
+      "Status Posisi",
+      "Penanganan Surplus",
+      "Model Operator",
+      "Desain Likuidasi",
+      "Bagaimana pencatatan likuidasi, penyitaan brankas, dan penyelesaian LP dibagi antara Aave dan Avana.",
+      "Aave adalah sistem yang menentukan kapan suatu posisi dapat dilikuidasi, tetapi sistem ini tidak tahu bagaimana menyelesaikan LP yang mendasarinya. Avana menggunakan Aave untuk akuntansi hutang, pemeriksaan kesehatan, dan titik masuk likuidasi, lalu mengambil alih untuk menyelesaikan posisi nyata yang berada di balik jaminan brankas.",
+      "Kendala desain kritis adalah bahwa dua pandangan dari jaminan harus tetap sejajar. Aave melihat saldo token brankas ERC-20, sementara Avana melacak posisi LP yang sebenarnya mendukung saldo itu. Likuidasi tetap valid hanya jika penyitaan representasi brankas selalu mengarah ke jalur penyelesaian LP yang benar.",
+      "Untuk urutan yang menghadap operator, lihat",
+      "Likuidator",
+      ". Untuk urutan eksekusi, lihat",
+      "Arus Likuidasi",
+      "Aave lapisan",
+      "Melacak utang, saldo jaminan brankas, faktor kesehatan, dan titik masuk likuidasi yang mengizinkan penyitaan.",
+      "lapisan adaptor Avana",
+      "Menerima jaminan brankas yang disita, membakar token brankas yang sesuai, dan memetakan kembali peristiwa likuidasi ke posisi LP yang sebenarnya mendukungnya.",
+      "lapisan penyelesaian",
+      "Mengidentifikasi posisi LP yang sebenarnya, menjalankan jalur likuidasi atau penjualan yang sesuai, melunasi utang, membayar hadiah likuidator, dan mengarahkan surplus sesuai aturan pasar.",
+      "Aturan utama sederhana tetapi ketat: Aave melikuidasi jaminan brankas ERC-20, dan Avana menyelesaikan posisi LP di balik jaminan brankas itu. Segala hal lain dalam desain ini ada untuk menjaga kedua langkah tersebut tetap konsisten.",
+      "Token brankas harus dipetakan ke nilai nyata",
+      "Jumlah token brankas yang dilikuidasi harus selalu sesuai dengan nilai jaminan nyata LP, bukan saldo sintetis yang tidak dapat dipulihkan.",
+      "Agunan pendukung tidak boleh tetap belum terselesaikan",
+      "Setelah posisi LP ditetapkan, token brankas yang sesuai harus dibakar agar representasinya tidak hidup lebih lama daripada aset yang dimaksud untuk dilacak.",
+      "Pasokan token brankas aktif tidak dapat ada tanpa adanya jaminan LP aktif di belakangnya.",
+      "Surplus mengikuti aturan pasar",
+      "Utang dibayar terlebih dahulu, kemudian imbalan likuidator, kemudian biaya penyelesaian, dan baru setelah itu sisa nilai mengikuti aturan surplus pasar.",
+      "Posisi yang didukung LP tidak semuanya berperilaku sama selama likuidasi. Token LP yang dapat dipertukarkan sering kali dapat ditebus atau dipindahkan secara proporsional, sementara NFT Uniswap v3 adalah posisi tunggal yang terpisah di mana rentang, akumulasi biaya, dan jalur pelepasan penting pada tingkat posisi.",
+      "Itulah mengapa lapisan penyelesaian perlu mengetahui keluarga jaminan, posisi pendukung yang tepat, dan jalur pelepasan yang dimaksud sebelum membersihkan pasokan brankas yang cocok.",
+      "Jalur penyelesaian tergantung pada jenis jaminan LP yang ada di belakang token brankas.",
+      "Agunan yang dapat dipertukarkan LP",
+      "• Penyelesaian dapat sebanding dengan utang yang harus ditanggung, daripada memaksa seluruh saldo LP melalui likuidasi.",
+      "• Avana hanya dapat menebus atau mentransfer jumlah yang diperlukan untuk likuidasi ketika desain pasar mendukung pemulihan sebagian.",
+      "• Posisi yang tersisa dapat tetap aktif jika akun masih memenuhi pemeriksaan kesehatan yang diperlukan setelahnya.",
+      "• Posisi penuh berpindah ke penyelesaian ketika dipilih untuk likuidasi karena NFT itu sendiri adalah unit jaminan yang sedang diselesaikan.",
+      "• Token vault yang cocok dibakar setelah Aave mengambil alih jaminan vault dan Avana memetakan pengambilalihan itu kembali ke posisi NFT.",
+      "• Avana dapat membatalkan, menjual, melelang, atau mentransfer posisi nyata LP berdasarkan aturan pasar untuk keluarga jaminan tersebut.",
+      "• Surplus tidak otomatis pergi ke likuidator kecuali aturan pasar secara eksplisit menyatakan demikian.",
+      "ACTIVE",
+      "Posisi tersebut masih memberikan nilai jaminan, dan token vault yang belum dibayar tetap sepenuhnya didukung oleh posisi LP yang aktif itu.",
+      "LIKUIDASI",
+      "Jaminan yang dipilih tidak lagi dapat ditarik oleh peminjam dan sedang bergerak melalui jalur penyelesaian.",
+      "SETTLED",
+      "Posisi LP telah diselesaikan, dan token brankas yang sesuai tidak boleh lagi beredar.",
+      "Nilai penyelesaian diterapkan dalam urutan tetap. Pertama menutupi utang, kemudian hadiah likuidator, lalu biaya penyelesaian. Setiap nilai yang tersisa setelah kewajiban tersebut adalah surplus, dan surplus itu mengikuti aturan pasar untuk jaminan yang sedang diselesaikan.",
+      "Jika nilai penyelesaian tidak cukup untuk menutupi utang dan imbalan, pasar memerlukan jalur utang buruk yang jelas. Dokumentasi likuidasi harus menggambarkan kekurangan itu sebagai keadaan nyata yang harus ditangani, bukan sebagai sesuatu yang hilang secara otomatis.",
+      " Likuidasi tetap tanpa izin, tetapi LP agunan sering mendapat manfaat dari penyangga protokol yang tahu cara mengeksekusi jalur pembubaran yang diharapkan. Likuidator umum mungkin mampu melunasi utang, namun masih kekurangan logika spesifik tempat yang diperlukan untuk menyelesaikan posisi secara efisien atau aman.",
+      "Likuidator harus melacak status risiko dan status jaminan yang sama yang digunakan oleh protokol.",
+      "Pelaksanaan harus tetap atomik dari pelunasan utang hingga penyelesaian.",
+      "Realisasi biaya, kedalaman rute, dan nilai sisa harus dimodelkan sebelum mengoptimalkan hanya untuk kecepatan.",
+      "Cakupan sebagian dan cakupan penuh adalah kasus yang berbeda dan seharusnya tidak menggunakan asumsi routing yang sama."
+    ]
+  },
+  "hub": {
+    "meta": {
+      "title": "Selamat datang",
+      "description": "Seorang peminjam menyetorkan posisi LP yang disetujui ke Dalam Borrow Spoke yang relevan, tetapi likuiditas itu sendiri tetap digunakan di pool dasar alih-alih ditebus terlebih dahulu."
+    },
+    "toc": [
+      {
+        "id": "welcome",
+        "title": "Selamat datang"
+      },
+      {
+        "id": "what-is-avana",
+        "title": "Apa itu Avana?"
+      },
+      {
+        "id": "how-it-works",
+        "title": "Cara Kerjanya"
+      },
+      {
+        "id": "unlocking-lp-collateral",
+        "title": "Mengapa LP Jaminan Penting"
+      },
+      {
+        "id": "architecture",
+        "title": "Arsitektur"
+      }
+    ],
+    "strings": [
+      "Selamat datang",
+      "Apa itu Avana?",
+      "Cara Kerjanya",
+      "Mengapa LP Jaminan Penting",
+      "Arsitektur",
+      "Setor posisi LP yang didukung",
+      "Seorang peminjam menyetorkan posisi LP yang disetujui ke Dalam Borrow Spoke yang relevan, tetapi likuiditas itu sendiri tetap digunakan di pool dasar alih-alih ditebus terlebih dahulu.",
+      "Nilai secara konservatif",
+      "Spoke membangun kembali posisi dari data pool-nya, menentukan harga eksposur dasar melalui tumpukan oracle, dan kemudian mendiskontokan nilai tersebut melalui faktor agunan dan kontrol spesifik pasar.",
+      "Pinjam melalui Hub",
+      "Jika kapasitas yang dihasilkan cukup, pinjaman ditarik dari likuiditas Hub bersama sementara pemeriksaan kesehatan, akuntansi jaminan, dan perilaku likuidasi tetap spesifik untuk spoke tersebut.",
+      "Likuiditas tetap berada di kolam",
+      "Protokol ini dibuat untuk LP posisi yang seharusnya terus melakukan LP pekerjaan. Seorang peminjam tidak harus menarik likuiditas dari AMM hanya untuk mengakses uang tunai terhadapnya.",
+      "Kapasitas mengikuti yang nyata LP",
+      "Kekuatan pinjaman berasal dari struktur posisi yang sebenarnya: campuran token, biaya yang diperoleh, rentang aktif saat relevan, kedalaman yang tersedia, dan cara posisi dapat keluar selama tekanan.",
+      "Likuidasi memiliki aturan yang jelas",
+      "LP agunan tidak ditangani sebagai saldo token umum. Setiap pasar yang didukung menentukan bagaimana nilai dipulihkan, apa yang dijual atau dibubarkan, dan bagaimana utang ditutup jika akun menjadi tidak aman.",
+      "Pinjam Jari-Jari",
+      "Menerima jaminan LP yang didukung, mengubahnya menjadi kapasitas pinjaman tingkat spoke, dan memiliki aturan kesehatan serta likuidasi untuk pasar tersebut.",
+      "Memegang neraca pinjaman bersama: akuntansi cadangan, logika suku bunga, dan likuiditas yang diambil oleh ujung yang berhadapan dengan peminjam.",
+      "Jari-jari Luar",
+      "Membawa aset pemberi pinjaman ke dalam sistem dan mengarahkannya ke Hub sehingga penjaminan LP dapat tetap terpisah dari onboarding modal.",
+      "Pendahuluan",
+      "Avana memungkinkan LP posisi menyetujui pinjaman kembali tanpa terlebih dahulu menarik likuiditas dari pool. Dokumen-dokumen ini dimulai dengan pembagian Hub-and-Spoke: spokes memahami risiko LP, sementara Hub mengelola likuiditas pinjaman bersama.",
+      "Mulai dengan Konsep Kunci",
+      "Jelajahi Pinjam Berbicara",
+      "Avana adalah protokol peminjaman untuk jaminan LP yang aktif. Ia menggunakan model Hub-and-Spoke dari Aave v4 sehingga Hub menangani likuiditas bersama sementara setiap Borrow Spoke menangani penerimaan, penilaian, kesehatan, dan likuidasi untuk pasar LP masing-masing.",
+      "Mendukung LP agunan berarti lebih dari sekadar memeriksa saldo token. Protokol perlu memahami aset apa yang direpresentasikan oleh posisi tersebut, berapa banyak nilai tersebut yang harus dihitung untuk kredit, diskon spesifik pasar apa yang berlaku, dan jalur pembongkaran apa yang ada jika peminjam jatuh di bawah margin keamanan yang diperlukan. Avana menempatkan logika spesifik LP itu di cabang yang mencantumkan agunan alih-alih mencoba meratakan setiap posisi AMM menjadi satu jalur pinjaman umum.",
+      "Bacalah halaman ini sebagai peta untuk sisa dokumen. Bagian-bagian di bawah menjelaskan jalur peminjaman dasar terlebih dahulu, kemudian mengarahkan Anda ke halaman-halaman rinci untuk Borrow Spoke, Lend Spoke, faktor jaminan, logika oracle, pemantauan kesehatan, dan likuidasi.",
+      "Alur yang terlihat pengguna singkat, tetapi setiap tahap menyembunyikan pekerjaan penjaminan risiko khusus LP. Halaman-halaman selanjutnya menjelaskan mekanisme di balik setiap langkah.",
+      "LP posisi sudah berada dalam modal kerja. Tanpa lapisan pinjaman, mendapatkan kembali uang tunai biasanya berarti mengecilkan atau menutup posisi pool terlebih dahulu.",
+      "Avana memisahkan likuiditas pinjaman bersama dari logika risiko khusus LP. Pemisahan itu adalah alasan sistem dapat mendukung berbagai jenis jaminan tanpa menggabungkan semua aturannya menjadi satu.",
+      "Para pembangun harus memikirkan sistem dalam dua bagian. Hub adalah neraca umum dan mesin utang, sementara Borrow Spokes memutuskan apa yang dapat didukung dengan aman oleh masing-masing LP pasar dan bagaimana pasar itu harus dibubarkan jika gagal. Lend Spoke memasukkan modal ke Hub sehingga pemasok tidak perlu memikirkan mekanisme LP hanya untuk menyediakan likuiditas."
+    ]
+  },
+  "safety/bug-bounty": {
+    "meta": {
+      "title": "Hadiah Bug",
+      "description": "Avana Ruang lingkup pengungkapan bertanggung jawab Bug Bounty, LP-permukaan risiko tambahan, dan filosofi tingkat keparahan dampak ekonomi."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "scope-and-system-architecture",
+        "title": "Ruang Lingkup & Arsitektur Sistem"
+      },
+      {
+        "id": "severity-philosophy",
+        "title": "Filsafat Keseriusan"
+      }
+    ],
+    "strings": [
+      "Hadiah Bug",
+      "Avana Ruang lingkup pengungkapan bertanggung jawab Bug Bounty, LP-permukaan risiko tambahan, dan filosofi tingkat keparahan dampak ekonomi.",
+      "Gambaran Umum",
+      "Ruang Lingkup & Arsitektur Sistem",
+      "Filsafat Keseriusan",
+      "Program A - Pinjaman Inti",
+      "Mencakup mesin kredit utama di mana integritas akuntansi, pengikatan jaminan, dan pelaksanaan likuidasi secara langsung melindungi dana pengguna.",
+      "Aliran setoran / penarikan",
+      "Logika meminjam / mengembalikan",
+      "Faktor kesehatan dan akrual bunga",
+      "Akuntansi cadangan dan pencetakan / pembakaran utang",
+      "Eksekusi inti likuidasi dan batasan",
+      "Pencurian dana pengguna",
+      "Cadangan kebangkrutan",
+      "Peminjaman tanpa jaminan yang cukup",
+      "Pembayaran kembali, penarikan, atau likuidasi yang diblokir",
+      "Program B - LP Jaminan & Penilaian",
+      "Mencakup sistem penilaian khusus Avana untuk kredit yang didukung LP, termasuk bagaimana posisi LP dinilai, diberi bobot risiko, dan diuji stres di bawah kondisi pasar yang bergejolak.",
+      "Penetapan faktor jaminan untuk LP posisi",
+      "Penanganan posisi likuiditas terkonsentrasi",
+      "Kasus tepi selama ketidakseimbangan, depeg, likuiditas rendah, atau status oracle yang usang",
+      "Kelebihan penilaian agunan LP",
+      "Manipulasi oracle yang memungkinkan utang buruk",
+      " Likuidasi yang tidak adil akibat penetapan harga terlalu rendah",
+      "Jalur eksploitasi rekursif terhadap jaminan LP yang salah harga",
+      "Atap keparahan tertinggi: LP kesalahan penetapan harga dapat menyebabkan utang macet, kebangkrutan, atau likuidasi yang tidak adil tanpa pengurasan kontrak klasik.",
+      "Program C - Tata Kelola, Administrasi, dan Infrastruktur Protokol",
+      "Mencakup permukaan kontrol istimewa yang dapat mengubah parameter, meningkatkan kontrak, menghentikan operasi, atau mengalihkan aset milik protokol.",
+      "Pelaksana tata kelola dan penguncian waktu",
+      "Manajemen peran dan mekanisme peningkatan",
+      "Peran jeda / wali",
+      "Parameter sistem admin",
+      "Kontrak otomatisasi perbendaharaan, kolektor, dan istimewa",
+      "Tindakan admin yang tidak sah",
+      "Pembajakan peningkatan",
+      "Korupsi parameter",
+      "Pengambilalihan tata kelola atau kehilangan kas",
+      "Program D - Offchain / Permukaan Integrasi",
+      "Mencakup sistem pendukung yang komprominya dapat memengaruhi operasi protokol yang terpercaya, interaksi pengguna, atau perilaku penjaga.",
+      "Bot pengindeksan atau likuidasi yang dipelihara oleh Avana",
+      "Asumsi penjaga dan relay peramal",
+      "API yang dihosting digunakan dalam jalur yang kritis terhadap keselamatan",
+      "Masalah frontend dengan konsekuensi risiko dompet langsung",
+      "Konstruksi transaksi berbahaya",
+      "Likuidasi atau jalur relay oracle yang terganggu",
+      "Kehilangan dana pengguna melalui integrasi tepercaya",
+      "Gangguan operasional yang membekukan tindakan kritis",
+      "Kritis",
+      "border-merah-400 bg-merah-50/70",
+      "Kehilangan dana secara langsung atau tidak langsung, penciptaan utang tak tertagih, kebangkrutan protokol, atau manipulasi sistemik terhadap penilaian jaminan.",
+      "Tinggi",
+      "perbatasan-amber-400 bg-amber-50/70",
+      "Kerusakan yang berarti tetapi terbatas, seperti perilaku likuidasi yang salah, sebagian melewati kontrol risiko, atau kegagalan akuntansi yang terkendali.",
+      "Medium / Low",
+      "border-abu-abu-300 bg-abu-abu-50",
+      "Temuan dengan dampak terbatas, ketidakkonsistenan pada kasus tepi, masalah logika non-kritis, atau kerentanan tanpa jalur yang kredibel menuju kerugian ekonomi besar.",
+      "Panduan lingkup pengungkapan bertanggung jawab dan triase dampak ekonomi untuk penelitian keamanan Avana.",
+      "Program Bug Bounty Avana mencakup pengungkapan yang bertanggung jawab di seluruh kontrak, sistem risiko, dan infrastruktur pendukung yang dapat memengaruhi dana pengguna atau solvabilitas protokol.",
+      "Karena Avana menggunakan AMM posisi likuiditas sebagai jaminan, ruang lingkup mencakup baik bug kontrak langsung maupun kegagalan di mana likuiditas, penetapan harga, atau kondisi pasar dapat diubah menjadi nilai jaminan yang buruk atau likuidasi yang rusak.",
+      "Keparahan adalah ekonomi pertama:",
+      "hadiah melacak kerentanan eksploitasi dan hasil seperti kerugian dana, kebangkrutan, utang macet, atau salah harga jaminan sistemik, bukan hanya seberapa besar perubahan kode terlihat.",
+      "Ruang lingkup dibagi menjadi subsistem sehingga peneliti dapat memetakan temuan ke bagian dari tumpukan yang sebenarnya terancam: peminjaman inti, LP penilaian, tata kelola dan administrasi, atau integrasi offchain.",
+      "Sensitivitas tertinggi",
+      "Termasuk",
+      "Risiko utama",
+      "Mengapa ini penting:",
+      "Subsistem dipilah secara terpisah, tetapi dampaknya tetap dinilai berdasarkan solvabilitas, keamanan dana pengguna, integritas likuidasi, dan risiko protokol terkait.",
+      "Skor kerentanan umum bukanlah metode peringkat utama di sini. Temuan dinilai berdasarkan jalur eksploitasi yang kredibel dan hasil ekonomi yang bisa mereka ciptakan."
+    ]
+  },
+  "safety/contracts": {
+    "meta": {
+      "title": "Keamanan Kontrak Cerdas",
+      "description": "Avana referensi keamanan smart contract yang mencakup batas kepercayaan, permukaan kontrak, dan bagaimana audit serta bug bounty cocok dengan desain pinjaman yang didukung LP."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "security-challenges",
+        "title": "Tantangan Keamanan"
+      },
+      {
+        "id": "multi-layer-security",
+        "title": "Keamanan Multi-Lapis"
+      },
+      {
+        "id": "core-contract-surfaces",
+        "title": "Permukaan Kontrak Inti"
+      },
+      {
+        "id": "trust-boundaries",
+        "title": "Batas Kepercayaan"
+      },
+      {
+        "id": "audit-readiness",
+        "title": "Kesiapan Audit"
+      }
+    ],
+    "strings": [
+      "Keamanan Kontrak Cerdas",
+      "Avana referensi keamanan smart contract yang mencakup batas kepercayaan, permukaan kontrak, dan bagaimana audit serta bug bounty cocok dengan desain pinjaman yang didukung LP.",
+      "Gambaran Umum",
+      "Tantangan Keamanan",
+      "Keamanan Multi-Lapis",
+      "Permukaan Kontrak Inti",
+      "Batas Kepercayaan",
+      "Kesiapan Audit",
+      "Meminjam logika Spoke",
+      "Menangani penerimaan agunan, akuntansi pengguna, dan siklus hidup sisi spoke untuk pinjaman yang didukung LP.",
+      "Integrasi hub",
+      "Menghubungkan kapasitas pinjaman pada tingkat spoke dengan batasan kredit dan likuiditas bersama di lapisan Hub.",
+      "Adaptor oracle dan valuasi",
+      "Terjemahkan LP posisi menjadi nilai jaminan konservatif menggunakan harga eksternal, rekonstruksi posisi, dan asumsi nilai yang dapat dipulihkan.",
+      "Lapisan eksekusi likuidasi",
+      "Mengkoordinasikan jalur, realisasi biaya, pengaturan rute, dan penyelesaian ketika akun yang tidak sehat harus ditutup atau diubah ukurannya.",
+      "Kontrak & Keamanan",
+      "Referensi keamanan untuk permukaan kontrak, ketergantungan eksternal, dan batasan tinjauan di balik peminjaman yang didukung LP.",
+      "Avana meminjamkan terhadap jaminan LP, jadi tinjauan keamanan harus mencakup lebih dari sekadar apakah suatu kontrak dapat dikompilasi atau mentransfer saldo dengan benar. Tinjauan tersebut juga harus mencakup bagaimana harga, kustodi, likuidasi, dan kontrol istimewa berperilaku ketika pasar berada dalam tekanan.",
+      "Tinjauan kontrak, tinjauan ekonomi, dan tinjauan operasional semuanya penting bagi LP pasar. Ketiganya saling memperkuat dan sebaiknya diperlakukan sebagai satu program keamanan, bukan sebagai tiga daftar periksa yang tidak terkait.",
+      "• LP nilai dapat bergantung pada jalur dan sering membutuhkan logika kustodi dan pembalikan yang spesifik untuk tempat.",
+      "• Penyalahgunaan oracle atau harga yang kadaluwarsa dapat menyebabkan kerugian ekonomi bahkan ketika kontrak dijalankan persis seperti yang dikodekan.",
+      "• Tata kelola, kontrol parameter, dan respons darurat semuanya merupakan bagian dari permukaan serangan.",
+      "Tinjauan kontrak",
+      "Permukaan kontrak inti, adaptor, dan jalur kontrol istimewa harus ditinjau sebelum keluarga LP baru atau jalur eksekusi baru diaktifkan.",
+      "Pengujian stres ekonomi",
+      "Uji guncangan pasar, kasus tepi oracle, dan kegagalan pengaturan likuidasi, bukan hanya perilaku kontrak pada tingkat unit.",
+      "Saluran tinjauan eksternal",
+      "Audit formal dan",
+      "Hadiah Bug",
+      "Program sebaiknya tetap aktif keduanya. Satu tidak menggantikan yang lain.",
+      "• Akuntansi dan penyelesaian likuidasi onchain harus deterministik begitu dipicu.",
+      "• Sumber Oracle, adaptor tempat, dan infrastruktur likuidator operasional adalah ketergantungan eksternal dan harus dipantau sebagai demikian.",
+      "• Tata kelola, wewenang jeda, dan peningkatan adalah kekuatan istimewa yang seharusnya tetap terbatas, dapat ditinjau, dan terkunci waktu jika memungkinkan.",
+      "Halaman ini tidak mempublikasikan jadwal auditor spekulatif atau tonggak sementara. Laporan audit, ruang lingkup, dan catatan remediasi harus dipublikasikan ketika mereka benar-benar ada dan dapat ditinjau secara menyeluruh.",
+      "Target audit bernilai tinggi biasanya mencakup dukungan keluarga baru LP, jalur likuidasi baru, model oracle baru, dan setiap perubahan yang memperluas kontrol istimewa atau asumsi nilai yang dapat dipulihkan."
+    ]
+  },
+  "safety/insurance": {
+    "meta": {
+      "title": "Dana Asuransi",
+      "description": "Desain backstop yang direncanakan untuk Avana, menjelaskan bagaimana dana asuransi di masa depan dapat menangani kekurangan likuidasi tanpa mengubah model pinjaman berbasis LP yang inti."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "purpose",
+        "title": "Tujuan"
+      },
+      {
+        "id": "funding-approach",
+        "title": "Pendekatan Pendanaan"
+      },
+      {
+        "id": "activation-path",
+        "title": "Jalur Aktivasi"
+      },
+      {
+        "id": "coverage-boundary",
+        "title": "Batas Cakupan"
+      }
+    ],
+    "strings": [
+      "Dana Asuransi",
+      "Desain backstop yang direncanakan untuk Avana, menjelaskan bagaimana dana asuransi di masa depan dapat menangani kekurangan likuidasi tanpa mengubah model pinjaman berbasis LP yang inti.",
+      "Gambaran Umum",
+      "Tujuan",
+      "Pendekatan Pendanaan",
+      "Jalur Aktivasi",
+      "Batas Cakupan",
+      "Lapisan penopang yang direncanakan untuk menangani utang macet residual setelah jalur likuidasi normal LP telah dijalankan.",
+      "Avana garis pertahanan pertama adalah penilaian jaminan yang konservatif, eksposur yang terbatas, dan likuidasi tepat waktu. Dana asuransi di masa depan akan berada di belakang kontrol tersebut dan baru terlihat ketika likuidasi masih tidak dapat sepenuhnya menutup utang buruk.",
+      "Halaman ini menjelaskan lapisan perlindungan yang direncanakan. Ini bukan janji bahwa dana asuransi yang aktif ada di setiap penyebaran saat ini.",
+      "Jika diaktifkan, dana tersebut dapat diakses melalui alokasi kas yang disetujui oleh tata kelola, kontribusi cadangan, atau modul keselamatan khusus. Komposisi pendanaan yang tepat adalah keputusan tata kelola risiko dan harus dipublikasikan bersama dengan ketentuan program.",
+      "• Mendeteksi kekurangan sisa setelah jalur likuidasi yang diizinkan selesai.",
+      "• Verifikasi bahwa kekurangan tersebut sesuai dengan kebijakan cakupan yang disetujui oleh dana.",
+      "• Laksanakan jalur rekapitalisasi atau penutupan defisit yang ditetapkan oleh tata kelola.",
+      "• Terbitkan ringkasan pasca-insiden yang menjelaskan pemicu, respons, dan kontrol tindak lanjut.",
+      "Cakupan harus tetap sempit. Targetnya adalah memenuhi syarat utang buruk protokol setelah likuidasi, bukan jaminan menyeluruh terhadap kerugian perdagangan pengguna, kerugian sementara, pergerakan pasar, atau setiap kegagalan pihak ketiga di DeFi.",
+      "Kekurangan yang tertutupi dan risiko pasar biasa perlu batas yang tegas agar dana tidak berubah menjadi kompensasi untuk hasil LP yang normal."
+    ]
+  },
+  "safety": {
+    "meta": {
+      "title": "Mekanisme Keamanan - Kerangka Risiko",
+      "description": "Manajemen risiko secara protokol untuk Avana Hub dan LP Spokes Jaminan, termasuk peran, pembaruan terbatas, dan kontrol darurat."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Gambaran Umum"
+      },
+      {
+        "id": "core-principles",
+        "title": "Prinsip Inti"
+      },
+      {
+        "id": "roles",
+        "title": "Peran"
+      },
+      {
+        "id": "update-flow",
+        "title": "Perbarui Alur"
+      },
+      {
+        "id": "parameter-classes",
+        "title": "Kelas Parameter"
+      },
+      {
+        "id": "public-disclosure",
+        "title": "Pengungkapan Publik"
+      },
+      {
+        "id": "emergency-actions",
+        "title": "Tindakan Darurat"
+      }
+    ],
+    "strings": [
+      "Mekanisme Keamanan - Kerangka Risiko",
+      "Manajemen risiko secara protokol untuk Avana Hub dan LP Spokes Jaminan, termasuk peran, pembaruan terbatas, dan kontrol darurat.",
+      "Gambaran Umum",
+      "Prinsip Inti",
+      "Peran",
+      "Perbarui Alur",
+      "Kelas Parameter",
+      "Pengungkapan Publik",
+      "Tindakan Darurat",
+      "Pemisahan Peran",
+      "Kerangka kerja menetapkan pengusulan, peninjauan, dan penahanan darurat kepada aktor yang berbeda sehingga satu pihak tidak mengendalikan seluruh jalur sendirian.",
+      "Eksekusi Terbatas",
+      "Perubahan risiko rutin hanya dijalankan ketika tetap berada di dalam batas kebijakan yang telah ditentukan dan lulus pemeriksaan validasi.",
+      "Konsistensi Publik",
+      "Pembaruan yang dijelaskan secara publik seharusnya merupakan pembaruan yang sama yang sebenarnya sedang antre untuk dieksekusi.",
+      "Kesadaran Bicara",
+      "Setiap LP jaminan tambahan memiliki aturan pencatatan, asumsi oracle, jalur likuidasi, dan profil risiko masing-masing.",
+      "Asimetri Defensif",
+      "Proses ini sengaja dibuat berpihak sehingga mengurangi risiko lebih cepat dan lebih sederhana daripada memperluasnya.",
+      "Avana Inisiator Risiko",
+      "Peran yang menyiapkan dan merekomendasikan perubahan risiko rutin untuk Hub dan LP Cabang Agunan.",
+      "Publikasikan alasannya dan klasifikasikan pembaruan sebagai defensif atau berorientasi pada pertumbuhan",
+      "Kirim pembaruan rutin ke jalur eksekusi yang terkunci waktu",
+      "Rekomendasikan batas pasokan, batas pinjaman, LT/LTV, faktor cadangan, dan perubahan suku bunga di dalam rentang yang disetujui",
+      "Memulai pengurangan risiko tingkat spoke dan onboarding pool di dalam template spoke yang telah disetujui sebelumnya",
+      "Avana Penjaga Risiko",
+      "Peninjau independen dengan wewenang veto atas perubahan rutin yang mengantri.",
+      "Verifikasi bahwa pembaruan yang antre sesuai dengan pengungkapan publik",
+      "Periksa bahwa tindakan tetap berada di dalam batas kebijakan yang disetujui",
+      "Tolak pembaruan berdasarkan asumsi oracle, likuiditas, atau likuidasi yang tidak valid",
+      "Batalkan pembaruan yang antre selama jendela penguncian waktu ketika itu menimbulkan ketidakstabilan yang jelas di tingkat spoke atau hub",
+      "Avana Pembela Risiko",
+      "Peran hanya untuk darurat dulu digunakan untuk menangani insiden ketika jalur terkunci waktu normal terlalu lambat.",
+      "Kurangi batas pinjaman atau batas pasokan ke level defensif",
+      "Bekukan peminjaman baru pada sebuah cabang atau bekukan penggunaan jaminan untuk sebuah kumpulan, templat, atau cabang",
+      "Nonaktifkan adaptor tertentu atau jalur pinjaman ketika kondisi kegagalan yang telah ditentukan terpenuhi",
+      "Blokir penciptaan utang baru dalam kondisi darurat tanpa digunakan untuk tindakan optimasi rutin atau pertumbuhan",
+      "Pemberitahuan Publik",
+      "Penginisiasi Risiko menerbitkan perubahan yang dimaksud, mengapa perubahan itu diperlukan, dan lingkup yang diperkirakan akan terpengaruh.",
+      "Pemrakarsa Risiko menempatkan perubahan yang diusulkan ke dalam jalur eksekusi yang digunakan oleh kerangka kerja.",
+      "Pemeriksaan kerangka kerja memastikan bahwa pembaruan tetap berada dalam batasan yang telah ditentukan dan batas kebijakan yang disetujui.",
+      "Jika validasi berhasil, perubahan akan masuk ke jendela timelock alih-alih dijalankan segera.",
+      "Ulasan Guardian",
+      "Selama timelock, Penjaga Risiko meninjau muatan yang sedang antre secara tepat dan dapat membatalkannya jika diperlukan.",
+      "Jika perubahan tersebut lolos tinjauan, perubahan itu akan dijalankan secara otomatis setelah masa penguncian berakhir.",
+      "Jalur Darurat",
+      "Jika kondisi darurat terpenuhi, Risk Defender dapat menggunakan jalur pertahanan terpisah dengan wewenang yang lebih sempit.",
+      "Perubahan Pertahanan",
+      "border-merah-400 bg-merah-50/70",
+      "Ini adalah perubahan rutin tercepat karena mereka mengurangi eksposur protokol.",
+      "Menurunkan batas pinjaman",
+      "Menurunkan batas pasokan",
+      "Mengurangi LTV atau ambang likuidasi",
+      "Membekukan penggunaan pinjaman atau jaminan",
+      "Mengencangkan pengaturan jari-jari",
+      "Perubahan Terbatas Rutin",
+      "perbatasan-amber-400 bg-amber-50/70",
+      "Ini mengikuti jalur standar Inisiator -> Penjaga -> kunci waktu di dalam batas yang disetujui.",
+      "Kenaikan batas yang sederhana",
+      "Penyetelan parameter yang sederhana di dalam rentang yang disetujui",
+      "Menambahkan kolam baru di dalam template spok yang ada",
+      "Perubahan Tingkat Tata Kelola",
+      "border-abu-abu-300 bg-abu-abu-50",
+      "Ini berada di luar kerangka rutin dan memerlukan jalur keputusan tingkat yang lebih tinggi.",
+      "Membuat keluarga spoke baru",
+      "Mengaktifkan primitif LP baru",
+      "Menambahkan model oracle baru",
+      "Mengaktifkan adaptor likuidasi baru",
+      "Secara material memperluas permukaan risiko melebihi asumsi yang disetujui sebelumnya",
+      "Pembicara yang terkena",
+      "Kolam atau templat yang terpengaruh",
+      "Parameter saat ini",
+      "Parameter yang diusulkan",
+      "Alasan pembaruan",
+      "Apakah pembaruan bersifat defensif atau berorientasi pada pertumbuhan",
+      "Perkiraan waktu pengiriman",
+      "Perkiraan jendela penguncian waktu",
+      "Ketergantungan atau asumsi yang relevan",
+      "Ketidakkonsistenan oracle",
+      "Degradasi jalur likuidasi",
+      "Perilaku kolam yang tidak normal",
+      "Kegagalan dependensi pembungkus",
+      "Kompromi tingkat adaptor",
+      "Ketidakstabilan tingkat berbicara secara tiba-tiba",
+      "Tindakan yang diambil",
+      "Durasi yang dimaksud",
+      "Jalan kembali ke operasi normal",
+      "Kerangka Risiko",
+      "Bagaimana Avana mengusulkan, meninjau, dan melaksanakan perubahan risiko di seluruh Hub dan LP Collateral Spokes.",
+      "Kerangka Risiko Avana mendefinisikan bagaimana perubahan parameter diusulkan, diperiksa, dan dilaksanakan di seluruh Hub dan LP Collateral Spokes. Ini mencakup kontrol yang digunakan ketika protokol menyesuaikan batas pasokan dan pinjaman, pengaturan LT/LTV, input tingkat bunga, status pasar, dan parameter lain yang bergantung pada harga, pemanfaatan, kedalaman pool, konsentrasi, volatilitas, perilaku peg, pemutus sirkuit, kesehatan posisi, dan kondisi terkait lainnya.",
+      "LP jaminan bukanlah satu kelas aset yang homogen. LP yang stabil, LP aset-terkorelasi, kumpulan berbobot, likuiditas terkonsentrasi, dan desain AMM lainnya masing-masing dapat memiliki jalur penilaian khusus-spoke, jalur likuidasi, dan modus kegagalan mereka sendiri. Kerangka kerja ini ada agar perbedaan tersebut tercermin dalam proses pembaruan alih-alih disembunyikan di balik satu pengaturan risiko generik.",
+      "Tiga peran tetap terpisah sepanjang proses itu: Avana Inisiator Risiko, Avana Penjaga Risiko, dan Avana Pembela Risiko. Pihak yang merekomendasikan perubahan rutin bukanlah pihak yang secara independen memeriksanya, dan peran yang dapat bertindak selama keadaan darurat sengaja lebih sempit daripada jalur rutin.",
+      "Aturan operasi:",
+      "Perubahan rutin mengikuti jalur tetap sehingga protokol dapat membedakan pemeliharaan parameter normal dari penanganan darurat. Urutan standar adalah pemberitahuan publik, pengajuan, pemeriksaan batas, penguncian waktu, tinjauan Guardian, dan pelaksanaan jika proposal tidak diveto.",
+      "Perubahan parameter tidak semuanya membawa risiko yang sama, jadi kerangka kerja mengelompokkannya berdasarkan seberapa banyak wewenang yang harus mereka miliki dan seberapa cepat mereka harus dapat bergerak.",
+      "Setiap pembaruan rutin harus diterbitkan sebelum pengajuan dalam format yang memungkinkan pengembang, pengguna, dan peninjau membandingkan pemberitahuan dengan tindakan tepat yang kemudian akan dimasukkan ke dalam antrean.",
+      "Standar pengungkapan minimum",
+      "Pengungkapan yang konsisten membuat lebih mudah untuk meninjau sebuah proposal terkait meluasnya lingkup, asumsi yang tidak sesuai, atau kesalahan eksekusi sederhana.",
+      "Tindakan darurat adalah untuk penahanan, bukan penyetelan rutin. Mereka harus digunakan sesedikit mungkin, dijaga agar se-sempit mungkin, dan disusun sehingga protokol dapat kembali ke jalur standar setelah risiko segera dipahami. Penjaga Risiko hanya boleh bertindak ketika kondisi kegagalan yang telah didefinisikan atau sangat mungkin terjadi membuat jalur normal yang terkunci waktu menjadi tidak aman.",
+      "Pemicu darurat",
+      "Pengungkapan pasca-tindakan yang diperlukan",
+      "Wewenang darurat hanya ada untuk kasus kegagalan yang telah ditentukan atau sangat mungkin terjadi di mana menunggu jalur kunci waktu normal tidak aman. Ini bukan jalur untuk pertumbuhan atau optimisasi rutin.",
+      "Rekomendasi, tinjauan, dan penanganan darurat tetap terpisah karena LP agunan adalah kumpulan pasar dengan struktur dan mode kegagalan yang berbeda, bukan satu daftar aset yang dapat dipertukarkan."
+    ]
+  }
+}

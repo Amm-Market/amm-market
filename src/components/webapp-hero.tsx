@@ -1,7 +1,8 @@
 import Image from "next/image"
+import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 
-export default function WebappHero() {
-  return (
+export default async function WebappHero() {
+  return withMarketingI18n(['webapp-hero'], (
     <div className="relative overflow-hidden bg-white">
       <div className="site-content-shell pt-8 pb-0 sm:pt-10 lg:pt-12">
         <div className="relative mx-auto w-full">
@@ -19,5 +20,5 @@ export default function WebappHero() {
         </div>
       </div>
     </div>
-  )
+  ))
 }

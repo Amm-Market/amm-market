@@ -1,0 +1,298 @@
+{
+  "common": {
+    "a11y": {
+      "skipToContent": "メインコンテンツへスキップ",
+      "primaryNav": "メインナビゲーション",
+      "mobileMenu": "モバイルメニュー",
+      "mobileNav": "モバイルナビゲーション",
+      "openMenu": "メニューを開く",
+      "closeMenu": "メニューを閉じる",
+      "language": "言語: {language}",
+      "logo": "{site} ロゴ",
+      "helpfulLinks": "関連リンク"
+    },
+    "nav": {
+      "products": "プロダクト",
+      "resources": "リソース",
+      "developers": "開発者",
+      "helpCenter": "ヘルプセンター",
+      "aaveArfc": "Aave ARFC",
+      "borrow": "借りる",
+      "lend": "供給する",
+      "multiply": "Multiply",
+      "about": "紹介",
+      "newsroom": "ニュース",
+      "brand": "ブランド",
+      "faq": "よくある質問",
+      "privacy": "プライバシー",
+      "terms": "利用規約",
+      "overview": "概要",
+      "architecture": "アーキテクチャ",
+      "liquidation": "清算"
+    },
+    "cta": {
+      "sandboxShort": "Sandbox",
+      "sandboxLong": "Sandbox を試す"
+    },
+    "mega": {
+      "exploreProducts": "プロダクトを見る",
+      "exploreResources": "リソースを見る",
+      "exploreDevelopers": "開発者向けを見る",
+      "whatYouCanDo": "できること",
+      "whereToLook": "探し先",
+      "highlights": "ハイライト",
+      "borrowAgainstLp": "LP を担保に借りる",
+      "borrowAgainstLpDesc": "戦略を崩さず、LP エクスポージャーから流動性を引き出します。",
+      "openMultiply": "LP Multiply を開く",
+      "openMultiplyDesc": "AMM ポジションを担保に、プール内で管理されたエクスポージャーを取ります。",
+      "lendThroughHub": "Hub 経由で供給する",
+      "lendThroughHubDesc": "より明確な執行コンテキストで資本を配分します。",
+      "aboutDesc": "Avana の会社とプロダクトの考え方。",
+      "followNotes": "プロダクトノートを追う",
+      "followNotesDesc": "ローンチ、技術アップデート、ロードマップの判断。",
+      "browseBrand": "ブランド資料を見る",
+      "browseBrandDesc": "承認済みマーク、カラー、パートナー向けビジュアルガイド。",
+      "startOverview": "概要から始める",
+      "startOverviewDesc": "実装詳細の前に押さえるコアプロトコルモデル。",
+      "reviewModel": "プロトコルモデルを確認",
+      "reviewModelDesc": "Hub、Spokes、価格付け、コントロールがどう組み合わさるか。",
+      "understandLiquidation": "清算を理解する",
+      "understandLiquidationDesc": "LP 担保ポジションがどう監視され、決済されるか。"
+    },
+    "footer": {
+      "blurb": "Avana は Aave v4 上の LP 担保プロトコルです。流動性プロバイダーはプールに留まったまま、アクティブなポジションを担保に借り入れできます。",
+      "explore": "探索",
+      "resources": "リソース",
+      "docs": "ドキュメント",
+      "social": "ソーシャル",
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "telegram": "Telegram",
+      "discourse": "Discourse",
+      "socialAria": "{network} の Avana",
+      "disclosureRisk": "LP トークンを担保にした借り入れには、市場が不利に動いた場合の清算を含むリスクがあります。Avana は資金をカストディせず、LP ポジションを再担保に供せず、基盤 AMM 上の流動性の動きも変えません。ローン条件、金利、担保価値は透明なオラクルと自動リスクパラメータによりオンチェーンで執行されます。ポジションのコントロールは常にあなたにあり、いつでも返済や担保調整が可能です。市場変動を通じて維持できる金額だけを借りてください。",
+      "disclosureInfo": "本資料は情報提供のみを目的とし、(i) 持分や株式への投資・売買、または投資／取引戦略への参加の申込みもしくは勧誘、(ii) 会計・法律・税務助言または投資推奨、(iii) Avana の公式声明のいずれでもありません。投資判断の前にアドバイザーへご相談ください。情報の正確性や、デジタル資産・金融商品・その他の市場／経済指標の将来パフォーマンスについて、明示・黙示を問わず表明または保証は行いません。Avana は資料で言及される一部の主体および／または出版物に対して財務上の利害関係を持つ場合があります。Avana は資料内のリンクや第三者サイトを推奨・承認しません。"
+    },
+    "notFound": {
+      "title": "このページは利用できません。",
+      "body": "アドレスが誤っているか、ページが移動した可能性があります。",
+      "home": "ホームへ",
+      "faq": "よくある質問"
+    },
+    "sandboxNotice": "Sandbox データはプレビュー専用です。APY・価格・リターンは例示であり、ライブ市場と異なる場合があります。",
+    "blogChrome": {
+      "back": "戻る",
+      "share": "共有",
+      "shareOnX": "X で共有",
+      "shareOnLinkedIn": "LinkedIn で共有",
+      "previousPost": "前の記事",
+      "nextPost": "次の記事",
+      "onThisPage": "このページ内"
+    },
+    "docs": {
+      "previous": "前へ",
+      "next": "次へ",
+      "sections": {
+        "introduction": "はじめに",
+        "gettingStarted": "スタートガイド",
+        "architecture": "プロトコルアーキテクチャ",
+        "liquidation": "清算フレームワーク",
+        "integrations": "対応インテグレーション",
+        "safety": "セーフティ機構",
+        "legal": "法務とコンプライアンス"
+      },
+      "items": {
+        "overview": "概要",
+        "keyConcepts": "重要概念",
+        "testnetRoadmap": "Testnet とロードマップ",
+        "glossary": "用語集",
+        "depositLp": "LP を預ける",
+        "borrowAssets": "資産を借りる",
+        "manageLoans": "ローンを管理する",
+        "repayLoans": "ローンを返済する",
+        "withdrawCollateral": "担保を引き出す",
+        "claimLpFees": "LP 手数料を請求する",
+        "borrowSpoke": "Borrow Spoke",
+        "lendSpoke": "Lend Spoke",
+        "collateralFactors": "担保係数",
+        "healthFactor": "Health factor",
+        "platformFees": "プラットフォーム手数料",
+        "incentives": "インセンティブ",
+        "liquidationDesign": "清算デザイン",
+        "liquidators": "清算者",
+        "liquidationFlow": "清算フロー",
+        "liquidationExamples": "清算の例",
+        "integrationsOverview": "インテグレーション概要",
+        "appkit": "AppKit",
+        "allowedPools": "許可された LP プール",
+        "routerAdapters": "Router とアダプタ",
+        "priceOracles": "価格オラクル",
+        "riskFramework": "リスクフレームワーク",
+        "contractsSecurity": "コントラクトとセキュリティ",
+        "bugBounty": "Bug bounty",
+        "insuranceFunds": "保険基金",
+        "securityDisclosures": "セキュリティ開示",
+        "legalDisclaimer": "法的免責事項"
+      }
+    },
+    "faqUi": {
+      "heading": "お困りですか？",
+      "search": "検索",
+      "searchPlaceholder": "検索",
+      "searchResults": "検索結果",
+      "clearSearch": "検索をクリア",
+      "noResults": "「{query}」に一致する結果はありません",
+      "category": "カテゴリ: {name}",
+      "categoriesAria": "FAQ カテゴリ",
+      "articles": "{count} 件の記事"
+    },
+    "tags": {
+      "all": "すべて",
+      "product": "プロダクト",
+      "strategy": "ストラテジー",
+      "guides": "ガイド",
+      "protocol": "プロトコル",
+      "institutions": "機関投資家"
+    },
+    "newsroom": {
+      "latestFrom": "Avana の最新情報",
+      "readNewsroom": "記事を読む"
+    }
+  },
+  "meta": {
+    "siteTitle": "Avana — Aave v4 で LP ポジションを担保に借りる",
+    "siteDescription": "LP トークンから流動性を引き出します。Uniswap、Curve、Balancer のポジションを担保に最大 80% まで借りながら、Aave v4 で取引手数料を稼ぎ続けます。",
+    "ogDescription": "取引手数料を稼ぎ続けながら、LP トークンから流動性を引き出します。",
+    "ogSubtitle": "Aave v4 で LP ポジションを担保に借りる",
+    "twitterTitle": "Avana — LP ポジションを担保に借りる",
+    "twitterDescription": "Aave v4 で LP トークンから流動性を引き出す",
+    "titleTemplate": "{title} | Avana",
+    "team": "Avana チーム",
+    "ogAlt": "Avana — DeFi 流動性プロトコル",
+    "home": {
+      "title": "Aave v4 で LP ポジションを担保に借りる",
+      "description": "LP トークンから流動性を引き出します。Uniswap、Curve、Balancer のポジションを担保に最大 80% まで借りながら、Aave v4 で取引手数料を稼ぎ続けます。"
+    },
+    "about": {
+      "title": "紹介",
+      "description": "Avana は Aave v4 上の LP-as-collateral プロトコルです。専用 Spokes、共有 Hub、AMM 流動性市場向け Lend Spoke を備えます。"
+    },
+    "borrow": {
+      "title": "借りる",
+      "description": "プールを抜けずに、ライブ LP ポジションを担保に借り入れ。手数料を稼ぎながら Aave v4 で流動性を引き出します。"
+    },
+    "lend": {
+      "title": "供給する",
+      "description": "Avana の Lend Spoke に資本を供給し、Aave v4 上の LP 担保借り手から利回りを得ます。"
+    },
+    "multiply": {
+      "title": "Multiply",
+      "description": "対応 AMM ポジションを担保に、管理された Multiply 戦略で LP エクスポージャーを拡大します。"
+    },
+    "brand": {
+      "title": "ブランド",
+      "description": "パートナーとメディア向けの公式 Avana ブランドアセット、カラー、利用ガイド。"
+    },
+    "faq": {
+      "title": "よくある質問",
+      "description": "Avana の LP 担保、借り入れ、供給、Multiply、清算、Aave v4 アーキテクチャに関する回答。"
+    },
+    "newsroom": {
+      "title": "ニュース",
+      "description": "LP 担保、AMM 市場、Aave v4、プロトコル開発に関する Avana チームの最新投稿。"
+    },
+    "developers": {
+      "title": "開発者",
+      "description": "Avana 連携の技術ドキュメント。LP トークン担保、health factor、清算フロー、Aave v4 のスマートコントラクト構成を解説します。"
+    },
+    "privacy": {
+      "title": "プライバシーポリシー",
+      "description": "Avana のプライバシーポリシー。"
+    },
+    "terms": {
+      "title": "利用規約",
+      "description": "Avana の利用規約。"
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Aave v4 搭載",
+      "title": "LP ポジションを担保に借りる",
+      "titleLine1": "流動性ポジションを",
+      "titleLine2": "担保に借りる",
+      "subtitle": "Uniswap、Curve、Balancer のポジションから流動性を引き出しつつ、取引手数料を稼ぎ続けます。",
+      "subtitleMobileLines": [
+        "Liquidity Pool 価値の最大 80% にアクセス",
+        "流動性を引き出さず、取引手数料も手放さず",
+        "5.5% APR で。"
+      ],
+      "subtitleDesktopLines": [
+        "Liquidity Pool 価値の最大 80% に 5.5% APR でアクセス",
+        "流動性を引き出さず、取引手数料も手放さずに。"
+      ],
+      "primaryCta": "Sandbox を試す",
+      "secondaryCta": "ドキュメントを読む"
+    },
+    "features": {
+      "eyebrow": "主な特長",
+      "title": "ライブ LP 担保のために設計"
+    },
+    "faq": {
+      "title": "よくある質問"
+    },
+    "newsroom": {
+      "title": "Avana の最新情報",
+      "cta": "記事を読む"
+    },
+    "buildTomorrow": {
+      "title": "Avana のご紹介",
+      "body": "Avana は対応 LP ポジションを Aave v4 で使える担保に変え、流動性プロバイダーがプールを抜けずに借り入れできるようにします。"
+    }
+  },
+  "product": {
+    "borrow": {
+      "title": "LP を担保に借りる",
+      "subtitle": "プールを抜けずに、アクティブな AMM ポジションから流動性を引き出します。",
+      "cta": "Sandbox を試す"
+    },
+    "lend": {
+      "title": "LP 市場へ供給する",
+      "subtitle": "Aave v4 上のライブ LP 担保借り手から利回りを得ます。",
+      "cta": "Sandbox を試す"
+    },
+    "multiply": {
+      "title": "LP エクスポージャーを Multiply",
+      "subtitle": "対応ポジションを担保に、管理された方向性エクスポージャーを追加します。",
+      "cta": "Sandbox を試す"
+    },
+    "about": {
+      "title": "Avana について",
+      "subtitle": "Aave v4 上の LP-as-collateral プロトコル"
+    },
+    "brand": {
+      "title": "ブランドキット",
+      "subtitle": "パートナー向けのマーク、カラー、ガイドライン"
+    }
+  },
+  "faq": {
+    "title": "よくある質問",
+    "subtitle": "Avana、LP 担保、Aave v4 についての回答",
+    "englishOnlyNote": "このロケールのレビューが完了するまで、よくある質問の全文は英語で表示されます。"
+  },
+  "docs": {
+    "hubTitle": "開発者ドキュメント",
+    "hubSubtitle": "Aave v4 上の Avana LP 担保と連携する",
+    "englishOnlyNote": "ロケール翻訳がまだない場合、ドキュメント本文は英語にフォールバックします。"
+  },
+  "blog": {
+    "indexTitle": "ニュース",
+    "indexSubtitle": "プロダクトノート、リサーチ、プロトコル更新",
+    "englishOnlyNote": "ロケール翻訳がまだない場合、記事本文は英語にフォールバックします。"
+  },
+  "legal": {
+    "privacyTitle": "プライバシーポリシー",
+    "termsTitle": "利用規約",
+    "englishOnlyNote": "法務承認済みのロケール版が用意されるまで、法務ページは英語のままです。",
+    "englishOnlyBadge": "English only"
+  }
+}

@@ -1,6 +1,7 @@
 import Image from "next/image"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 import { siteRoutes } from "@/lib/site"
 
 /**
@@ -10,7 +11,8 @@ import { siteRoutes } from "@/lib/site"
 const productCards = [
   {
     title: "Borrow",
-    description: "Borrow against LP positions while your liquidity stays active in the underlying AMM.",
+    description:
+      "Borrow against LP positions while your liquidity stays active in the underlying AMM.",
     href: siteRoutes.borrow,
     image: "/images/home-product-borrow-cropped.png",
     imageAlt: "Borrow capacity interface",
@@ -18,7 +20,8 @@ const productCards = [
   },
   {
     title: "Lend",
-    description: "Supply capital into Hub-connected lending markets and earn from LP-backed borrower demand.",
+    description:
+      "Supply capital into Hub-connected lending markets and earn from LP-backed borrower demand.",
     href: siteRoutes.lend,
     image: "/images/home-product-lend.png",
     imageAlt: "Lend market cash account interface",
@@ -26,7 +29,8 @@ const productCards = [
   },
   {
     title: "Multiply",
-    description: "Use LP-backed credit to create managed leverage without exiting your base liquidity position.",
+    description:
+      "Use LP-backed credit to create managed leverage without exiting your base liquidity position.",
     href: siteRoutes.multiply,
     image: "/images/home-product-multiply.png",
     imageAlt: "Portfolio interface",
@@ -34,8 +38,11 @@ const productCards = [
   },
 ] as const
 
-export function BuildTomorrowSection() {
-  return (
+const MEET_PARAGRAPH =
+  "In 2021, Aave launched AMM Market and proved LP positions could serve as collateral, but it was built for the simpler DEXs of that era. Avana picks up where that left off, designed for today's DEXs and LP types, treating each position as collateral shaped by dual oracles and stronger risk controls."
+
+export default async function BuildTomorrowSection() {
+  return withMarketingI18n(["BuildTomorrowSection"], (
     <section
       data-section="ways-to-use-avana"
       className="w-full bg-inherit site-section-gap"
@@ -45,44 +52,12 @@ export function BuildTomorrowSection() {
           <div className="space-y-4">
             <SectionEyebrow tone="violet">Meet Avana</SectionEyebrow>
             <SectionTitle>
-              <span className="block">A lending protocol</span>
-              <span className="block">for LP-backed loans</span>
+              A lending protocol for LP-backed loans
             </SectionTitle>
           </div>
           <div className="min-w-0 text-left text-[#39515b]">
-            {/* Soft-wrap through laptop sizes; lock five lines from 2xl (wide desktops) */}
-            <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] 2xl:hidden lg:text-[1.18rem]">
-              In 2021, <strong className="font-semibold text-[#111111]">Aave</strong> launched{" "}
-              <strong className="font-semibold text-[#111111]">AMM Market</strong> and proved{" "}
-              <strong className="font-semibold text-[#111111]">LP positions</strong> could serve as collateral,
-              but it was built for the simpler DEXs of that era.{" "}
-              <strong className="font-semibold text-[#111111]">Avana</strong>
-              {" "}
-              picks up where that left off, designed for today&apos;s DEXs and LP types, treating each
-              position as{" "}
-              <strong className="font-semibold text-[#111111]">collateral</strong> shaped by dual oracles and
-              stronger risk controls.
-            </p>
-            <p className="hidden text-[1.08rem] leading-[1.6] tracking-[-0.02em] 2xl:block lg:text-[1.18rem]">
-              <span className="block whitespace-nowrap">
-                In 2021, <strong className="font-semibold text-[#111111]">Aave</strong> launched{" "}
-                <strong className="font-semibold text-[#111111]">AMM Market</strong> and proved{" "}
-                <strong className="font-semibold text-[#111111]">LP positions</strong>
-              </span>
-              <span className="block whitespace-nowrap">
-                could serve as collateral, but it was built for the simpler DEXs of that era.
-              </span>
-              <span className="block whitespace-nowrap">
-                <strong className="font-semibold text-[#111111]">Avana</strong>
-                {" "}
-                picks up where that left off, designed for today&apos;s DEXs and LP types,
-              </span>
-              <span className="block whitespace-nowrap">
-                treating each position as{" "}
-                <strong className="font-semibold text-[#111111]">collateral</strong> shaped by dual oracles
-                and
-              </span>
-              <span className="block whitespace-nowrap">stronger risk controls.</span>
+            <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
+              {MEET_PARAGRAPH}
             </p>
           </div>
         </div>
@@ -91,9 +66,7 @@ export function BuildTomorrowSection() {
           <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
             <SectionEyebrow tone="violet">Avana Markets</SectionEyebrow>
             <SectionTitle>
-              <span className="block md:hidden">Unlock Capital</span>
-              <span className="block md:hidden">from Amm Markets</span>
-              <span className="hidden md:block">Unlock Capital from Amm Markets</span>
+              Unlock Capital from AMM Markets
             </SectionTitle>
           </div>
 
@@ -134,7 +107,5 @@ export function BuildTomorrowSection() {
         </div>
       </div>
     </section>
-  )
+  ))
 }
-
-export default BuildTomorrowSection

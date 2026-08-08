@@ -1,0 +1,778 @@
+{
+  "posts": [
+    {
+      "slug": "lp-risk-governance",
+      "title": "Cách Avana Quản trị Rủi ro LP",
+      "date": "July 24, 2026",
+      "description": "Cách Avana quản trị rủi ro tài sản thế chấp LP trên các thị trường Spoke với cập nhật có giới hạn, rà soát độc lập và kiểm soát khẩn cấp.",
+      "image": "/images/blog/lp-risk-governance.png",
+      "category": "Developers",
+      "tag": "Giao thức",
+      "sections": [
+        {
+          "id": "why-lp-risk-is-different",
+          "title": "Tại sao LP rủi ro lại khác nhau",
+          "paragraphs": [
+            "Avana không thể quản lý LP tài sản thế chấp theo cách một thị trường cho vay chung quản lý một danh sách token. Mỗi thị trường nhánh có cấu trúc quỹ riêng, chế độ thất bại riêng và hành vi căng thẳng riêng. Một quỹ ổn định không phải là cùng sản phẩm với một phạm vi tập trung. Một rổ Balancer trọng số không phải là cùng sản phẩm với một thị trường Curve mật thiết tương quan. Khung rủi ro của Avana được xây dựng xung quanh sự đa dạng đó. Nó theo dõi biến động, chất lượng neo, mức sử dụng, độ sâu thanh khoản, độ tập trung, tình trạng oracle, trạng thái thị trường, giới hạn cung và vay, LTV và ngưỡng thanh lý, mô hình lãi suất, và tình trạng vị trí trên cả trung tâm và các nhánh LP cùng nhau."
+          ]
+        },
+        {
+          "id": "three-roles",
+          "title": "Ba vai trò, công việc rõ ràng",
+          "paragraphs": [
+            "Avana tách khuyến nghị thường quy, xem xét độc lập và phòng ngừa khẩn cấp thành ba vai trò: Người Khởi Xướng Rủi Ro, Người Bảo Vệ Rủi Ro và Người Phòng Thủ Rủi Ro. Người Khởi Xướng đề xuất các cập nhật thường xuyên trong các mẫu đã được phê duyệt, bao gồm giới hạn, cài đặt tài sản đảm bảo, tỷ lệ và việc gia nhập pool. Mỗi đề xuất được gắn nhãn phòng thủ hoặc hướng tới tăng trưởng trước khi đi vào quy trình thông thường. Người Bảo Vệ là lớp xem xét và quyền phủ quyết. Họ kiểm tra rằng việc công bố công khai khớp với những gì đã xếp hàng, xác nhận rằng hành động nằm trong giới hạn chính sách và có thể hủy bỏ trong thời gian khóa. Người Phòng Thủ có phạm vi hẹp theo thiết kế. Họ có thể giảm giới hạn, đóng băng việc vay hoặc vô hiệu hóa một bộ điều hợp bị xâm phạm khi việc chờ đợi quy trình thông thường sẽ khiến Avana bị phơi bày."
+          ]
+        },
+        {
+          "id": "how-changes-ship",
+          "title": "Cách thói quen thay đổi tàu",
+          "paragraphs": [
+            "Con đường cập nhật tiêu chuẩn trên Avana là thông báo công khai, gửi hồ sơ, xác thực theo các giới hạn đã định trước, khóa thời gian, đánh giá của Guardian, và thực hiện nếu không ai phủ quyết. Các nhà phát triển, người dùng và những người tham gia quản trị có thể đọc lý do trước khi thay đổi được áp dụng và so sánh chính sách đã viết với hành động đang chờ xử lý. Đối với một giao thức xây dựng trên tài sản thế chấp phức tạp, sự nhất quán công khai đó là một yêu cầu cơ bản thay vì một tiện ích tiếp thị.",
+            "Không phải mọi thay đổi đều sử dụng con đường đó. Giảm rủi ro nhằm mục đích dễ dàng hơn so với việc tăng rủi ro. Việc điều chỉnh khiêm tốn trong phạm vi được phê duyệt tuân theo quy trình tiêu chuẩn. Những thay đổi lớn hơn, chẳng hạn như các gia đình spoke mới, các nguyên thủy LP mới, các mô hình oracle mới, hoặc các bộ chuyển đổi thanh lý mới, nằm ngoài quy trình thông thường vì chúng mở rộng bề mặt rủi ro của Avana và cần xem xét kỹ lưỡng hơn."
+          ]
+        },
+        {
+          "id": "emergency-power",
+          "title": "Khi Avana sử dụng điện khẩn cấp",
+          "paragraphs": [
+            "Các trường hợp khẩn cấp bao gồm sự không nhất quán của oracle, suy giảm đường dẫn thanh lý, hành vi bất thường của pool, sự cố của wrapper, việc adapter bị xâm phạm, hoặc sự bất ổn đột ngột ở cấp spoke. Ngay cả trong những trường hợp đó, khung vẫn cẩn trọng. Thẩm quyền khẩn cấp trên Avana là hạn hẹp, phòng thủ và có thể đảo ngược. Nó tồn tại cho những thời điểm khi các giả định thất bại nhanh hơn khả năng phản ứng của quản trị timelock. Nó không phải là con đường bí mật để tối ưu hóa hàng ngày.",
+            "Tổng thể, Avana phù hợp cấu trúc quản trị với độ phức tạp của tài sản thế chấp. LP cho vay có bảo đảm cần các mẫu thị trường, thực thi có giới hạn, công bố minh bạch và một ranh giới nghiêm ngặt giữa tăng trưởng bình thường, điều chỉnh phòng thủ và kiểm soát khẩn cấp. Mỗi nhánh giữ các giả định oracle riêng, logic thanh lý, quy tắc nhập môn và giới hạn vận hành riêng. Avana không một mực cho rằng mọi thị trường LP đều có thể thay thế lẫn nhau."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "why-lp-collateral-needs-smart-agents",
+      "title": "Vì sao Tài sản thế chấp LP cần Smart Agents",
+      "date": "July 22, 2026",
+      "description": "Vì sao Avana dùng Smart Agents để theo dõi health, xử lý vị thế theo từng venue và giữ độ phủ thanh lý ổn định khi thị trường căng thẳng.",
+      "image": "/images/blog/smart-agents-lp-collateral.png",
+      "category": "Developers",
+      "tag": "Giao thức",
+      "sections": [
+        {
+          "id": "lp-loans-are-operational",
+          "title": "LP loans are operational work",
+          "paragraphs": [
+            "Vào Avana, LP tài sản đảm bảo đang hoạt động, phụ thuộc vào đường đi, và đòi hỏi vận hành cao. Nó tạo ra phí, thay đổi thành phần, thay đổi rủi ro khi thị trường biến động, và có thể yêu cầu các hành động riêng cho từng sàn giao dịch đúng lúc một vị thế gặp áp lực. Một thị trường token tiêu chuẩn thường có thể giảm việc thanh lý và giám sát xuống một kích hoạt và đường trao đổi đơn giản hơn. LP tài sản đảm bảo thì khác. Hệ thống phải biết vị thế nào đang hoạt động, nợ đang biến động như thế nào, tài sản đảm bảo sẽ trông như thế nào khi thực hiện thoái lui thực, phí có thể được thực hiện ra sao, con đường loại bỏ riêng theo từng sàn nào áp dụng, và liệu việc thanh lý còn khả thi sau khi trượt giá, định tuyến, và chi phí thực hiện. Những chi tiết đó chính là những gì phân biệt sự bao phủ lý thuyết trên giấy tờ với sự bao phủ vẫn hoạt động khi thị trường trở nên khó khăn."
+          ]
+        },
+        {
+          "id": "what-agents-do",
+          "title": "Những tác nhân thông minh Avana làm gì",
+          "paragraphs": [
+            "Avana's node runtime đọc hoạt động trên chuỗi, duy trì bản đồ trực tiếp về các vị trí đang hoạt động, làm mới nợ bị trôi theo các khoảng thời gian ngắn, và chạy các quét rộng hơn để bắt các trạng thái cũ hoặc bị bỏ sót. Giao diện người dùng ứng dụng, bảng điều khiển, logic giám sát và quy trình thanh lý đều được thiết kế để lấy từ cùng một bức tranh vận hành đó, thay vì mỗi lớp tự tạo phiên bản thị trường riêng của mình.",
+            "Thanh lý là nơi điều này quan trọng nhất. Khi một vị thế Avana giảm xuống dưới khả năng vay cho phép, lớp thực thi phải đánh giá liệu công việc có thể được phục vụ có lợi nhuận hay không, tìm nguồn thanh khoản tạm thời, trả nợ vào lớp tín dụng, thu phí, giải phóng tài sản thế chấp qua lộ trình đúng, định tuyến các tài sản thu được, thanh toán lộ trình flash, phân phối phần thưởng thanh lý, và bảo toàn giá trị còn lại của người vay khi còn bất cứ thứ gì. Đó là một chuỗi công việc, không phải là một loại giao dịch duy nhất."
+          ]
+        },
+        {
+          "id": "before-and-across-venues",
+          "title": "Trước khi thanh lý, và trên các địa điểm",
+          "paragraphs": [
+            "Các Đại lý Thông minh cũng quan trọng trước khi thanh lý xảy ra. Việc lập chỉ mục các vị trí Avana, theo dõi sự trôi dạt nợ, và giữ cho giao thức phù hợp với oracle và các giả định rủi ro của chính nó cải thiện khả năng sẵn sàng. Trì hoãn hoạt động không phải là miễn phí khi tài sản đảm bảo tiếp tục di chuyển theo thị trường.",
+            "LP tài sản thế chấp vừa là một vấn đề về bộ chuyển đổi vừa là một vấn đề về định giá. Các LP có thể thay thế cho nhau, phạm vi tập trung và thiết kế bể tùy chỉnh cần cách xử lý phù hợp với từng sàn. Các Tác nhân Thông minh là lớp của Avana để tôn trọng những khác biệt đó thay vì ép buộc một con đường chung cho mọi thị trường. Oracle cho Avana biết một vị thế có thể có giá trị bao nhiêu dưới dạng tín dụng. Lớp tác nhân giúp xác định liệu giá trị đó có thể thực sự thu hồi trong thực tế hay không.",
+            "Avana không thay thế việc thanh lý không cần phép. Các nhà phát triển bên ngoài vẫn có thể giám sát và hành động. Các runtime do giao thức vận hành cải thiện phạm vi cơ bản cho tài sản thế chấp mà về cấu trúc khó phục vụ hơn. Trong các tình huống căng thẳng điều này rất quan trọng. Khoảnh khắc tệ nhất để nhận ra rằng một thị trường thiếu phạm vi thực thi đáng tin cậy là trong chính sự kiện thanh lý."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "how-lp-liquidation-should-work",
+      "title": "Thanh lý LP nên hoạt động thế nào",
+      "date": "July 20, 2026",
+      "description": "Cách Avana thanh lý tài sản thế chấp LP với unwind có kiểm soát, can thiệp một phần, ưu tiên phí khi có thể, và lộ trình theo từng venue.",
+      "image": "/images/blog/lp-liquidation-workflow.png",
+      "category": "Developers",
+      "tag": "Giao thức",
+      "sections": [
+        {
+          "id": "not-a-token-sale",
+          "title": "Không phải một đợt bán token đơn giản",
+          "paragraphs": [
+            "Thanh lý LP tài sản đảm bảo trên Avana không giống như việc thanh lý số dư token. Tài sản đảm bảo có thể chứa nhiều loại tài sản, phí chưa thu, rủi ro tập trung theo phạm vi, và cơ chế thoát đặc thù của từng sàn. Nếu một vị thế trở nên không lành mạnh, Avana cần một quá trình giải thoát có kiểm soát, chứ không phải bán hoảng loạn coi LP như một chip có thể thay thế đơn lẻ."
+          ]
+        },
+        {
+          "id": "runtime-sequence",
+          "title": "Trình tự thời gian chạy",
+          "paragraphs": [
+            "Trong thực tiễn, thanh lý là một chuỗi thời gian chạy. Các tài khoản không lành mạnh được phát hiện bằng cách sử dụng giá trị tài sản đảm bảo đã điều chỉnh rủi ro của Avana thay vì trạng thái giao ngay thô của AMM. Thanh khoản thực hiện được cung cấp, thường thông qua một đường dẫn kiểu vay flashloan. Nợ được trả vào lớp tín dụng. Vị trí chuyển sang quản lý kiểm soát. Phí có thể đòi được được thực hiện khi điều đó có ích. LP được giải quyết thông qua đúng con đường cơ sở. Sau khi các tài sản cơ sở được thu hồi, chúng được chuyển thành tài sản nợ, thanh khoản thực hiện được hoàn trả, phần thưởng thanh lý được phân phối, và bất kỳ giá trị dư thừa nào của người đi vay được trả lại.",
+            "Các gia đình LP khác nhau trên Avana không chia sẻ cùng một đường thoát. Các LP có thể thay thế được sẽ bị loại khỏi quỹ và tách thành các thành phần cơ sở. Các phạm vi tập trung phải được xử lý theo kho thực tế của chúng vào thời điểm giải phóng một vị thế, điều này có thể khác rất nhiều so với những gì người dùng tưởng nếu giá đã đẩy vị thế sang một bên. Các quỹ tùy chỉnh hoặc dựa trên hook có thể cần các bộ chuyển đổi riêng trước khi Avana coi chúng là đủ an toàn để bao phủ thanh lý. Nếu Avana không thể giải phóng đúng một loại tài sản đảm bảo, nó không nên giả vờ rằng thị trường được hỗ trợ đầy đủ."
+          ]
+        },
+        {
+          "id": "partial-and-fees",
+          "title": "Cắt một phần và phí trước",
+          "paragraphs": [
+            "Avana nhằm phục hồi sức khỏe mục tiêu thay vì mặc định thanh lý toàn bộ. Thanh lý một phần được ưu tiên vì nó giảm thiểu tổn thất không cần thiết cho người vay và hạn chế sự gián đoạn đối với quỹ cơ bản. Khung này tính toán khoản nợ cần thiết để đưa khoản vay trở lại trạng thái an toàn hơn và nhắm vào khoản đó trước tiên. Thanh lý toàn bộ vẫn là phương án dự phòng khi khả năng thanh toán không thể được phục hồi bằng một khoản cắt nhỏ hơn.",
+            "Phí cũng quan trọng. LP các vị thế thường chứa giá trị có thể yêu cầu nhưng chưa được thực hiện. Nếu phí có thể giảm số tiền gốc phải được tháo gỡ, Avana nên sử dụng chúng trước khi cắt giảm sâu hơn vào vị thế. Điều đó cải thiện kết quả cho người vay và làm cho việc thanh lý chính xác hơn. LP các vị thế là các đối tượng tài chính trực tiếp, không phải số dư token thụ động, và quá trình của Avana được viết để phù hợp với điều đó."
+          ]
+        },
+        {
+          "id": "who-runs-it",
+          "title": "Ai điều hành thanh lý",
+          "paragraphs": [
+            "Các môi trường thực thi thanh lý chuyên biệt tạo ra sự khác biệt ở đây. Các nút được xây dựng cho Avana LP thanh lý giám sát các vị trí hoạt động, làm mới sự trôi nợ, lập chỉ mục trạng thái thị trường, mô phỏng các đường thoái vốn, tìm nguồn thanh khoản thực hiện, định tuyến tài sản và đóng các giao dịch một cách nguyên tử. Việc thanh lý vẫn là không cần phép, nhưng LP tài sản đảm bảo khó phục vụ hơn đối với các nhà thanh lý hoàn toàn chung vì quy trình dài hơn và phụ thuộc nhiều hơn vào từng sàn giao dịch cụ thể. Các nhà thanh lý cũng phải tính toán trượt giá, độ sâu định tuyến, chi phí flashloan và rủi ro MEV. Những việc thoái vốn lớn hoặc bất thường có thể cần các đường thực thi yên tĩnh hơn để một công việc có thể phục hồi không biến thành một công việc phá hủy."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pricing-lp-collateral-oracle-problem",
+      "title": "Định giá Tài sản thế chấp LP với Oracle tốt hơn",
+      "date": "July 17, 2026",
+      "description": "Cách Avana Oracle định giá tài sản thế chấp LP bằng giá trị có thể thu hồi, tái dựng xác định và haircut thu hồi thận trọng.",
+      "image": "/images/blog/lp-collateral-oracle-problem.png",
+      "category": "Developers",
+      "tag": "Giao thức",
+      "sections": [
+        {
+          "id": "what-avana-oracle-asks",
+          "title": "Oracle Avana đang hỏi gì",
+          "paragraphs": [
+            "Giá trị của một LP phụ thuộc vào giá của các tài sản cơ sở, cấu trúc của pool, tỷ lệ phân bổ tồn kho hiện tại, các khoản phí đã tích lũy, và đối với thanh khoản tập trung là mối quan hệ giữa giá hiện tại và phạm vi hoạt động. Đối với một hệ thống cho vay, câu hỏi quan trọng không chỉ là bảng điểm hiển thị có thể nói gì. Điều quan trọng là có thể thu hồi thực tế được bao nhiêu nếu vị thế đó phải dùng để bảo đảm một khoản vay. Nếu Avana cho vay dựa trên các giả định tốt nhất, điều đó đồng nghĩa với việc tài trợ cho sự lạm phát tài sản đảm bảo. Avana Oracle được xây dựng dựa trên giá trị có thể thu hồi, không phải giá trị tài sản ròng lạc quan."
+          ]
+        },
+        {
+          "id": "three-step-pipeline",
+          "title": "Cách đánh giá được xây dựng",
+          "paragraphs": [
+            "Oracle là một công cụ đánh giá tài sản thế chấp nhiều lớp. Thứ nhất, Avana định giá các tài sản cơ sở từ các tham chiếu bên ngoài đáng tin cậy thay vì dựa vào trạng thái giao ngay AMM thô. Thứ hai, nó tái cấu trúc vị thế LP một cách xác định: tái cấu trúc số dư quỹ cho các LP có thể thay thế, hoặc phân tích trực tiếp các vị thế tập trung theo phạm vi, thanh khoản và giá hiện tại. Thứ ba, nó chiết khấu giá trị được tái cấu trúc đó với các mức giảm phục hồi phản ánh trượt giá thanh lý, ma sát khi tháo bỏ vị thế và rủi ro mất mát tạm thời. Mất mát tạm thời là sự khác biệt về giá trị giữa việc giữ tài sản trong quỹ và giữ chúng riêng lẻ. Nó tăng lên khi các tài sản ghép đôi lệch giá theo giá. Khả năng vay trên Avana đến từ giá trị đã chiết khấu, không phải từ mức định giá cao nhất."
+          ]
+        },
+        {
+          "id": "why-simple-marks-fail",
+          "title": "Tại sao các dấu đơn giản thất bại",
+          "paragraphs": [
+            "LP tài sản đảm bảo là một trong những nơi dễ khiến hệ thống cho vay tự đánh lừa nhất. AMM trạng thái quỹ có thể trông khỏe mạnh trong khi thực tế bị sai lệch cục bộ. Một vị thế tập trung có thể trông mạnh mẽ trong khi thực tế nằm trong một hỗn hợp tài sản rủi ro hơn so với người dùng tưởng. Độ sâu mỏng, thao túng giao dịch tương tự, và dữ liệu đầu vào lỗi thời đều có thể tạo ra các con số trông chính xác nhưng không đáng tin cậy. Avana tách giá trị hiển thị khỏi giá trị tài sản đảm bảo đáng tin cậy bằng cách kết hợp định giá tài sản bên ngoài, LP tái tạo định deterministic và các biện pháp bảo vệ ở cấp giao thức.",
+            "Giao diện oracle cũng có thể phân biệt giá trị gốc được tái cấu trúc, giá trị phí và giá trị dự trữ được sử dụng cho các bộ đệm rủi ro của giao thức. Những thành phần này không xứng đáng được đối xử như nhau trong một thị trường cho vay. Bằng cách chuẩn hóa chúng trên LP loại, lớp spoke có thể lý luận về LP khả chuyển, LP dựa trên NFT và các vị thế đa tài sản một cách nhất quán trong khi vẫn tôn trọng cách các sàn khác nhau hiển thị trạng thái."
+          ]
+        },
+        {
+          "id": "checks-and-safeguards",
+          "title": "Kiểm tra và biện pháp bảo vệ",
+          "paragraphs": [
+            "Các AMM loại gia đình khác nhau cần các đường dẫn xác minh khác nhau. Curve stable LP, Uniswap cặp và NFT, Balancer một số pool có trọng số, và Aerodrome cặp tất cả hiển thị trạng thái tài sản đảm bảo khác nhau. Trên Avana, giá bên ngoài vẫn là điểm neo chính. Dữ liệu cụ thể của pool và kiểm tra theo thời gian giúp xác minh xem trạng thái tài sản đảm bảo được tái tạo có nhất quán và khó bị thao túng hay không. Những kiểm tra theo thời gian này không phải là giá chính mà Avana dựa vào cho các khoản vay. Chúng là một bước kiểm tra nhất quán bổ sung để Avana có thể biết liệu trạng thái tài sản đảm bảo vẫn khớp trước khi trạng thái đó được coi là tín dụng.",
+            "Kháng thao túng trên Avana bao gồm các ngưỡng sai lệch, giới hạn chênh lệch giá của pool, tỉ lệ giảm giá hồi phục, giới hạn vị thế mở và một cảm biến oracle phản ứng khi sức khỏe dữ liệu nguồn giảm sút hoặc các đầu vào xác minh ngừng đồng ý. LP tài sản thế chấp thường bị phơi bày với việc lạm dụng giao dịch tương tự, các biến dạng thị trường mỏng và các tín hiệu lỗi thời hoặc mâu thuẫn vì tài sản thế chấp về cấu trúc phức tạp hơn so với một số dư token đơn giản. Một giao thức hỗ trợ tín dụng LP phải giả định rằng bề mặt định giá cuối cùng sẽ bị thử nghiệm. Avana Oracle được viết theo giả định đó."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "security-deep-dive",
+      "title": "Cách Avana Quản lý Rủi ro Tài sản thế chấp LP",
+      "date": "July 15, 2026",
+      "description": "Cách Avana cấu trúc bảo mật nhiều lớp cho tài sản thế chấp LP, từ kiến trúc và oracle đến health, thanh lý và vận hành.",
+      "image": "/images/blog/security-deep-dive.png",
+      "category": "Developers",
+      "tag": "Giao thức",
+      "sections": [
+        {
+          "id": "more-than-a-price",
+          "title": "Hơn cả một mức giá và một LTV",
+          "paragraphs": [
+            "Một token đơn giản thường có thể được định giá bằng cách tham chiếu thị trường trực tiếp và thanh lý bằng logic tiêu chuẩn. Một vị trí LP thì không thể. Giá trị của nó phụ thuộc vào các tài sản cơ sở, cấu trúc pool, mối quan hệ giữa các tài sản đó, sự tích lũy phí, độ sâu thanh khoản, và đối với thanh khoản tập trung thì phạm vi hoạt động. Khi căng thẳng, những biến số này sẽ nhân lên. Một giao thức hỗ trợ vay dựa trên LP trên Aave v4 phải làm nhiều hơn là chỉ gán giá và đặt tỷ lệ cho vay trên giá trị. Đó là vấn đề mà Avana được xây dựng xoay quanh."
+          ]
+        },
+        {
+          "id": "architecture-and-oracles",
+          "title": "Kiến trúc và định giá",
+          "paragraphs": [
+            "Lớp bảo mật đầu tiên là kiến trúc. Avana sử dụng cấu trúc trung tâm và nanh của Aave v4. Trung tâm giữ lớp thanh khoản chung, quản lý kế toán dự trữ và thực thi các hạn chế khả năng thanh toán. Nan hay là nơi mà logic tài sản thế chấp cụ thể của LP tồn tại: điều kiện chấp nhận, quy tắc định giá, các thông số rủi ro cụ thể của quỹ và hành vi thanh lý. Nếu một thị trường LP bị căng thẳng, căng thẳng đó được giữ trong nan thay vì viết lại các giả định trên các loại tài sản thế chấp không liên quan. Trên Avana, nan là một phần của ranh giới bảo mật.",
+            "Lớp thứ hai là thiết kế định giá và oracle. LP các vị thế không thể được định giá an toàn chỉ với một nguồn dữ liệu đơn giản. Avana sử dụng một khung nguồn kép. Các nguồn dữ liệu giá bên ngoài cung cấp tham chiếu chính cho các tài sản cơ sở, trong khi định giá suy ra từ AMM đóng vai trò như sự xác minh độc lập. Năng lực vay chỉ tồn tại khi cả hai nguồn vẫn nhất quán trong giới hạn cho phép. Rủi ro được phân bổ ở mức thị trường. Cấu trúc pool, tương quan tài sản, độ sâu thanh khoản và tập trung phạm vi đều ảnh hưởng đến cách xử lý tài sản bảo đảm. Năng lực vay được neo vào các khía cạnh yếu hơn của vị thế, với các điều chỉnh ở mức pool cho biến động, chất lượng thanh khoản và các giả định về tình trạng căng thẳng."
+          ]
+        },
+        {
+          "id": "health-and-liquidation",
+          "title": "Sức khỏe và thanh lý",
+          "paragraphs": [
+            "Lớp thứ ba là giám sát sức khỏe. LP các vị trí vẫn hoạt động sau khi chúng được đăng ký làm tài sản thế chấp, vì vậy rủi ro không bị đóng băng khi một khoản vay được mở. Giá trị thay đổi theo chuyển động giá, sinh phí, di chuyển phạm vi và thay đổi chất lượng quỹ. Avana thực hiện đánh giá sức khỏe liên tục cho từng vị trí thay vì dựa vào các ảnh chụp trường hợp thỉnh thoảng. Yếu tố sức khỏe là tín hiệu trực tiếp cho biết mô hình thế chấp vẫn còn áp dụng cho khoản vay đó hay không.",
+            "Thanh lý là nơi các giả định được kiểm chứng. LP tài sản đảm bảo không thể được thanh lý như một token thông thường. Cách tiếp cận của Avana là thu phí nhúng trong vị thế trước khi phá hủy vốn gốc khi có thể, chỉ loại bỏ đủ thanh khoản để sửa khoản vay, và dẫn hướng quá trình tháo gỡ qua các đường thực thi ưu tiên giải quyết xác định. Các Đại lý Thông minh cung cấp cơ sở hạ tầng thực thi: theo dõi các vị thế, đối chiếu dữ liệu, mô phỏng thực thi, và tháo gỡ trong các điều kiện bất lợi. Họ là một phần của hệ thống an toàn của Avana, không phải là một ý tưởng phụ gắn thêm sau này."
+          ]
+        },
+        {
+          "id": "operations",
+          "title": "Vận hành và kiểm soát thay đổi",
+          "paragraphs": [
+            "Lớp vận hành giả định rằng quản trị và cấu hình rủi ro cần cùng một kỷ luật như việc xử lý tài sản đảm bảo. Các thông số rủi ro thay đổi thông qua quy trình có cấu trúc. Các thay đổi nhạy cảm được đặt sau các khóa thời gian và đánh giá. Các biện pháp kiểm soát khẩn cấp tồn tại cho các điều kiện thực sự bất lợi. Việc giám sát mở rộng vượt ra ngoài từng vị thế cá nhân sang các danh mục thị trường tổng thể. Một giao thức hỗ trợ LP tài sản đảm bảo không thể chỉ dựa vào cấu hình tĩnh.",
+            "LP tài sản đảm bảo chỉ khả thi trên Avana nếu bảo mật được coi là một hệ thống. Kiến trúc tách biệt rủi ro. Các Oracle xác thực thực tế. Đánh giá biến phức tạp thành khả năng vay thận trọng. Kiểm tra sức khỏe giám sát sự lệch hướng. Thanh lý phục hồi khả năng thanh toán với độ chính xác mà sàn giao dịch cho phép. Kiểm soát vận hành điều chỉnh cách khung hoạt động tiến triển. Không một lớp nào trong số đó đủ nếu chỉ riêng lẻ."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hedge-lp-position",
+      "title": "Cách Hedge Vị thế LP một cách Có chủ đích hơn",
+      "date": "July 13, 2026",
+      "description": "Cách LP dùng Avana để tài trợ buffer, offset hướng và thói quen hedge kỷ luật hơn mà không cần thoát hoàn toàn khỏi pool.",
+      "image": "/images/blog/hedge-lp-position.png",
+      "category": "For LPs",
+      "tag": "Hướng dẫn",
+      "sections": [
+        {
+          "id": "more-than-fees",
+          "title": "Hơn cả phí",
+          "paragraphs": [
+            "Một vị thế LP không bao giờ chỉ liên quan đến phí. Sự chênh lệch giá, tổn thất tạm thời, dịch chuyển phạm vi và áp lực tài sản thế chấp đều có thể ảnh hưởng đến cùng một sổ sách cùng lúc. Tổn thất tạm thời xảy ra khi tỷ lệ tài sản trong pool thay đổi và LP có giá trị thấp hơn so với việc giữ các token riêng lẻ. Khi một vị thế được hỗ trợ có thể bảo vệ việc vay thông qua Avana trên Aave v4, vốn vay có thể được sử dụng để bảo vệ thay vì chỉ tăng đòn bẩy. Một vị thế mà nếu không thì sẽ cần được rút hoàn toàn vẫn có thể hoạt động trong khi vốn vay được dùng để giảm căng thẳng hoặc cân bằng rủi ro."
+          ]
+        },
+        {
+          "id": "buffers-and-offsets",
+          "title": "Bộ đệm và độ lệch theo hướng",
+          "paragraphs": [
+            "Hàng rào đơn giản nhất thường là thực tế nhất: một bù đắp bằng stablecoin. Vay một cách thận trọng trên Avana và giữ một phần số tiền thu được bằng stablecoin. Nếu sức khỏe bắt đầu thu hẹp hoặc biến động tăng lên, thanh khoản đó có thể trả nợ hoặc giảm căng thẳng mà không buộc phải bán phản ứng LP. Điều này không chủ yếu để tăng lợi nhuận. Nó là để mua thời gian và duy trì kiểm soát, điều này một mình nó cũng có thể rất quan trọng.",
+            "Một hình thức thứ hai là sai lệch theo hướng. Nếu LP đã mang mức tiếp xúc rõ ràng với một tài sản dễ biến động, vốn vay có thể giảm rủi ro hướng tổng thể thay vì tăng nó. Các phương pháp khác nhau tùy theo trình độ người sử dụng, nhưng nguyên tắc là đơn giản. Nếu LP đã tích hợp mức tiếp xúc với thị trường, việc vay mượn có thể cân bằng mức tiếp xúc đó. Phòng ngừa rủi ro hiệu quả nhất khi thu hẹp rủi ro, không phải như một giao dịch đầu cơ thứ hai đặt cạnh giao dịch đầu tiên."
+          ]
+        },
+        {
+          "id": "more-advanced-options",
+          "title": "Trung lập và hàng rào mềm hơn",
+          "paragraphs": [
+            "Một phương pháp tiên tiến hơn là suy nghĩ theo hướng trung lập: giảm độ nhạy theo phương hướng và dựa vào thu nhập từ phí. Loại cấu trúc đó có thể ổn định hơn, nhưng nó đòi hỏi phải theo dõi và tái cân bằng tích cực. LP các vị thế thay đổi khi thị trường biến động, vì vậy một thiết lập trung lập cần được duy trì, chứ không chỉ tuyên bố một lần. Đối với các vị thế lớn hơn, các cấu trúc bảo vệ rủi ro giảm có thể xác định các kịch bản xấu nhất thay vì chỉ phản ứng với chúng, mặc dù chúng cũng mang lại chi phí và quyết định về thời gian riêng.",
+            "Một biện pháp phòng ngừa rủi ro nhẹ nhàng hơn mà thường bị bỏ qua là tái phân bổ mức độ phơi nhiễm biên thay vì chạm vào phần cốt lõi LP. Trong thực tế, điều đó có nghĩa là chuyển vốn tăng thêm sang các nhóm phòng thủ hơn hoặc các triển khai ổn định khi điều kiện trở nên xấu đi, mà không hoàn toàn gỡ bỏ vị thế ban đầu. Avana giúp giữ phần cốt lõi LP sẵn có làm tài sản đảm bảo để nhu cầu thanh khoản nào cũng không trở thành việc rút lui tất cả hay không có gì."
+          ]
+        },
+        {
+          "id": "practical-rules",
+          "title": "Các quy tắc thực tiễn dễ áp dụng",
+          "paragraphs": [
+            "Trong các phương pháp tiếp cận, một số thói quen vẫn hiệu quả trên Avana. Vay một cách thận trọng. Giữ một khoản dự phòng thực sự. Giả định rằng các điều kiện có thể xấu đi nhanh hơn dự kiến. Xem khả năng vay tối đa như một giới hạn thay vì mục tiêu. Sử dụng giám sát với các quy tắc giảm rủi ro đã được định trước thay vì dựa vào phản ứng thủ công liên tục. Nếu một chiến lược phòng ngừa trở nên quá phức tạp đến mức bạn không còn hiểu mình đang phòng ngừa điều gì và đang thêm gì, thì nó đã đi quá xa."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "yield-looping-playbook",
+      "title": "Yield Looping với Tài sản thế chấp LP",
+      "date": "July 10, 2026",
+      "description": "Cách nghĩ về yield looping với tài sản thế chấp LP của Avana: buffer, stress test, kỷ luật thoát lệnh và đòn bẩy bền vững.",
+      "image": "/images/blog/yield-looping-playbook.png",
+      "category": "For LPs",
+      "tag": "Hướng dẫn",
+      "sections": [
+        {
+          "id": "what-looping-means",
+          "title": "Ý nghĩa của lặp vòng trên Avana",
+          "paragraphs": [
+            "Vòng lặp lợi suất có nghĩa là giữ một vị thế LP, vay dựa trên nó, và tái triển khai số vốn vay này vào một chiến lược tạo lợi suất khác, hoặc trong một số trường hợp, quay lại thanh khoản chính nó. Avana trên Aave v4 làm bước tài sản đảm bảo đó khả thi cho các thị trường LP được hỗ trợ. Sức hấp dẫn là rõ ràng: vòng lặp có thể tăng mức độ tiếp xúc hiệu quả và khuếch đại việc tạo phí. Nguy cơ cũng rõ ràng không kém: nó có thể nén các biên an toàn, tăng độ nhạy cảm với thanh lý, và khiến một vị thế trở nên dễ vỡ hơn khi điều kiện thay đổi. Mục tiêu thực sự nên là khuếch đại bền vững, chứ không phải đòn bẩy tối đa ngay ngày đầu tiên."
+          ]
+        },
+        {
+          "id": "keeping-the-first-loop-modest",
+          "title": "Giữ vòng lặp đầu tiên khiêm tốn",
+          "paragraphs": [
+            "Hình thức lặp an toàn nhất là khiêm tốn. Vay một số tiền tương đối nhỏ dựa trên vị trí Avana LP được hỗ trợ và triển khai lại vào nguồn lợi suất thứ hai mà không đẩy gần giới hạn vay. Đó là một sự mở rộng có kiểm soát của vị trí ban đầu, không phải là một cược đệ quy rằng các điều kiện sẽ luôn hoàn hảo. Đối với nhiều người dùng, đặc biệt là khi mới bắt đầu, đó là điểm khởi đầu đúng đắn. Bạn vẫn sử dụng vốn tốt hơn, nhưng để lại không gian nếu chỉ số LP, thu nhập phí hoặc lãi suất vay đi ngược lại với bạn.",
+            "Các phiên bản tiên tiến hơn sẽ tái triển khai vốn vay trở lại tính thanh khoản. Điều đó có thể tăng tạo phí trong môi trường thuận lợi, nhưng nó cũng làm cho cấu trúc trở nên phản xạ hơn. Bạn sẽ trở nên tiếp xúc với một sổ lệnh nhiều lớp, nơi chuyển động giá, chất lượng tài sản thế chấp và độ an toàn của nợ tương tác mạnh mẽ hơn. Đòn bẩy không chỉ khuếch đại lợi nhuận. Nó cũng khuếch đại tốc độ mà một vị thế Avana lành mạnh có thể trở thành một vị thế căng thẳng."
+          ]
+        },
+        {
+          "id": "stress-and-exit",
+          "title": "Kiểm tra căng thẳng và kỷ luật rút lui",
+          "paragraphs": [
+            "Kiểm tra căng thẳng là điều cần thiết. Bất kỳ phương pháp vòng lặp nghiêm túc nào cũng nên được đánh giá dưới các điều kiện bất lợi. Chuyện gì sẽ xảy ra nếu một bên của cặp biến động mạnh, nếu khối lượng giao dịch giảm, nếu chi phí vay tăng, hoặc nếu chất lượng tài sản đảm bảo xấu đi nhanh hơn dự kiến. Một cấu trúc trông có vẻ hấp dẫn khi phí cao và biến động thấp có thể trở nên khó khăn khi những điều kiện đó đảo ngược. Nếu kịch bản thuận lợi duy nhất là một tháng phí một cách bình lặng, thì suy nghĩ chưa kết thúc.",
+            "Rời khỏi kỷ luật quan trọng không kém việc nhập cảnh. Nhiều quyết định vay đòn bẩy tồi không phải do khoản vay đầu tiên gây ra. Chúng được tạo ra bởi việc không có kế hoạch giảm rủi ro. Nếu sự biến động tăng lên, các đệm sức khỏe bị thu hẹp, hoặc kinh tế suy yếu, việc tiếp xúc nên được giảm dần theo các giai đoạn thay vì bảo vệ một cách mù quáng. Avana Tự động hóa có thể giúp trong việc thu phí, giảm nợ, và giảm rủi ro dựa trên quy tắc, nhưng tự động hóa chỉ hữu ích nếu các quy tắc cơ bản là trung thực. Một chiến lược lặp lại chỉ mạnh bằng các giả định đứng sau nó."
+          ]
+        },
+        {
+          "id": "balance-sheet-not-magic",
+          "title": "Thiết kế bảng cân đối kế toán, không phải lợi suất miễn phí",
+          "paragraphs": [
+            "Vòng lặp lợi suất là một quyết định về cấu trúc vốn, không phải là một cách tắt để có lợi suất miễn phí. Khi được sử dụng cẩn thận trên Avana, nó cho phép thanh khoản trên chuỗi có năng suất hỗ trợ một tập hợp lợi suất rộng hơn mà không buộc phải giải phóng hoàn toàn vị thế ban đầu. Nếu sử dụng một cách cẩu thả, nó sẽ biến một vị thế LP khỏe mạnh thành một vị thế dễ vỡ. Sự khác biệt thường là kỷ luật, quản lý dự phòng và sẵn sàng coi đòn bẩy là thứ cần kiểm soát thay vì tối đa hóa."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "unleashing-lp-tokens",
+      "title": "Tài sản thế chấp LP Mở ra điều gì",
+      "date": "July 8, 2026",
+      "description": "Những gì tài sản thế chấp LP của Avana cho phép: vay, hedge, linh hoạt ngân quỹ và dùng vốn thanh khoản hiệu quả hơn.",
+      "image": "/images/blog/unleashing-lp-tokens.png",
+      "category": "For LPs",
+      "tag": "Hướng dẫn",
+      "sections": [
+        {
+          "id": "from-trapped-to-usable",
+          "title": "Từ vốn bị mắc kẹt đến vốn khả dụng",
+          "paragraphs": [
+            "LP các vị trí truyền thống vốn năng suất nhưng kém linh hoạt. Chúng kiếm phí giao dịch và hỗ trợ độ sâu thị trường, nhưng nếu bạn muốn thanh khoản từ vị trí đó, con đường thông thường là giải tỏa nó: tách vị trí ra, ngắt nguồn tạo phí, và biến một tài sản năng suất thành số dư nhàn rỗi. LP tài sản đảm bảo thay đổi điều đó. Thông qua Avana trên Aave v4, các vị trí LP được hỗ trợ có thể vẫn hoạt động trên AMM cơ bản trong khi cũng hỗ trợ việc vay mượn."
+          ]
+        },
+        {
+          "id": "simple-and-yield-use",
+          "title": "Đường thanh khoản bảo thủ và lợi suất thứ cấp",
+          "paragraphs": [
+            "Trường hợp sử dụng bảo thủ nhất là đơn giản. Bạn vay tài sản ổn định dựa trên một vị thế Avana LP được hỗ trợ và sử dụng tính thanh khoản đó cho vốn lưu động, quản lý dự trữ, hoặc lợi suất ít biến động hơn trong khi LP vẫn hoạt động và tiếp tục kiếm phí. Giá trị chính ở đây không phải là đòn bẩy chỉ vì bản thân nó. Nó là quyền truy cập vào tiền mặt mà không buộc phải rút hoàn toàn khỏi vị thế ban đầu.",
+            "Những khoản vay ổn định cũng có thể được đưa vào lợi suất onchain bảo thủ, chẳng hạn như cho vay hướng đến stable, quản lý dự trữ, hoặc các cơ hội có biến động thấp khác. LP tiếp tục tạo ra phí trong khi vốn vay đi theo một con đường riêng. Điều đó không phải là xếp chồng lợi suất từ hư vô. Đó là cách sử dụng vốn hiệu quả hơn mà nếu không sẽ cần phải tháo lệnh trước."
+          ]
+        },
+        {
+          "id": "hedge-and-active",
+          "title": "Phòng ngừa rủi ro và các chiến lược chủ động hơn",
+          "paragraphs": [
+            "Phòng ngừa rủi ro là một loại khác. LP vị trí khiến người dùng phải đối mặt với sự thay đổi thành phần tài sản và lỗ không vĩnh viễn, đặc biệt trong các nhóm mà một bên biến động hơn. Tín dụng đối với tài sản đảm bảo LP trên Avana có thể tạo ra không gian để quản lý sự phơi nhiễm đó: giảm tập trung theo hướng, cải thiện kế hoạch thanh khoản, hoặc xây dựng danh mục cân bằng hơn xung quanh một vị trí hiện có.",
+            "Các chiến lược năng động hơn tái triển khai vốn vay vào tính thanh khoản, tăng mức độ tiếp xúc thị trường và tạo ra phí. Điều đó có thể hiệu quả, nhưng bạn giờ đang quản lý một cấu trúc đệ quy mà rủi ro thay đổi nhanh chóng theo điều kiện thị trường. Khi tài sản vay được tái sử dụng để tăng tiếp xúc LP bổ sung, kỷ luật trở nên quan trọng hơn tham vọng. Avana mở ra tập lựa chọn. Sức khỏe, giới hạn vay và các quy tắc thanh lý vẫn quyết định điều gì là hợp lý cho một pool nhất định."
+          ]
+        },
+        {
+          "id": "what-changes",
+          "title": "Những thay đổi đối với LPs",
+          "paragraphs": [
+            "LP tài sản thế chấp biến việc cung cấp thanh khoản từ một hoạt động sinh lợi tương đối riêng lẻ thành một điều gì đó gắn kết hơn với việc sử dụng vốn DeFi rộng lớn hơn. Một vị thế trước đây chỉ sinh lợi bên trong quỹ của nó có thể hỗ trợ việc vay, lập kế hoạch thanh khoản và thiết kế danh mục đầu tư mà không cần phải phá bỏ trước. Việc sử dụng đúng cách vẫn phụ thuộc vào khả năng chịu rủi ro của bạn và sự hiểu biết của bạn về cách LP giá trị, khả năng vay và ngưỡng thanh lý tương tác trên Avana."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "aerodrome-lp-collateral-aave-v4",
+      "title": "Vay với LP Aerodrome trên Aave v4",
+      "date": "July 6, 2026",
+      "description": "Cách Avana hỗ trợ vị thế LP Aerodrome trên Base để chúng vẫn hoạt động trong khi hỗ trợ vay qua Spoke Aave v4 riêng.",
+      "image": "/images/blog/aerodrome-lp-collateral.png",
+      "category": "Developers",
+      "tag": "Giao thức",
+      "sections": [
+        {
+          "id": "aerodrome-on-avana",
+          "title": "Aerodrome thanh khoản trên Avana",
+          "paragraphs": [
+            "Aerodrome LP vị trí nằm ở trung tâm của hoạt động trên chuỗi trên Base, nơi thanh khoản hỗ trợ phí giao dịch, phân phối token và độ sâu hệ sinh thái. Là tài sản thế chấp, những vị trí đó cần được đánh giá dựa trên cấu trúc pool, chất lượng tài sản, độ sâu thanh khoản và hành vi chịu áp lực, chứ không chỉ dựa vào TVL hay việc tạo ra phí. Avana được xây dựng để hỗ trợ loại tài sản thế chấp này trên Aave v4 với các quy tắc cụ thể theo thị trường thay vì một chính sách chung áp dụng toàn sàn."
+          ]
+        },
+        {
+          "id": "hub-spoke-and-pool-quality",
+          "title": "Chất lượng trung tâm, nhánh và nhóm",
+          "paragraphs": [
+            "Kiến trúc trung tâm và tia của Aave v4 là thứ làm cho cấu trúc sản phẩm hoạt động. Trung tâm quản lý thanh khoản chia sẻ. Tia Avana xử lý logic tài sản bảo đảm cụ thể của Aerodrome. Một nhóm ổn định trên Base không nên được xem giống như một cặp hệ sinh thái biến động chỉ vì cả hai đều là Aerodrome LPs. Tia xác định cách các loại thanh khoản Aerodrome khác nhau được định giá, mức độ sức mạnh vay mà chúng hỗ trợ, và cách thanh lý hoạt động nếu một vị thế trở nên không an toàn.",
+            "Các quỹ Aerodrome có sự đa dạng lớn. Một số liên quan đến các tài sản đã được thiết lập với tính thanh khoản mạnh hơn. Những quỹ khác tập trung vào các token hệ sinh thái di chuyển nhanh hơn với biến động cao hơn và độ sâu mỏng hơn. Các vị thế trông giống nhau bề ngoài có thể hành xử rất khác nhau khi là tài sản thế chấp. Mô hình spoke của Avana phân bổ xử lý theo cấu trúc và chất lượng của quỹ, không chỉ dựa vào tên sàn."
+          ]
+        },
+        {
+          "id": "valuation-and-borrow",
+          "title": "Định giá và dòng tiền vay",
+          "paragraphs": [
+            "Một Aerodrome LP không phải là một token giá đơn lẻ. Nó là một quyền yêu cầu đối với tài sản trong pool cơ bản, mà thành phần và chất lượng của nó ảnh hưởng trực tiếp. Avana đánh giá giá trị tài sản thế chấp một cách thận trọng, tính đến chất lượng thanh khoản, biến động, sự tương quan giữa các tài sản, và cách pool hoạt động nếu thị trường đảo chiều. Một vị thế có thể có giá trị danh nghĩa đáng kể, nhưng khả năng vay chỉ phản ánh những gì có thể thu hồi trong tình huống căng thẳng.",
+            "Luồng vay mượn là cụ thể. Bạn cung cấp một Aerodrome LP được hỗ trợ thông qua nhánh Avana, nơi nó vẫn hoạt động và kiếm phí. Nhánh đánh giá vị trí bằng cách sử dụng logic tài sản thế chấp cụ thể của quỹ. Dựa trên đó, bạn có thể vay các tài sản được hỗ trợ từ thanh khoản trung tâm. Các quỹ ổn định và kiểu blue chip có thể hỗ trợ việc xử lý tài sản thế chấp mạnh hơn. Các cặp biến động hoặc ít thanh khoản hơn sẽ có giới hạn chặt chẽ hơn và hệ số thấp hơn."
+          ]
+        },
+        {
+          "id": "if-health-breaks",
+          "title": "If health breaks",
+          "paragraphs": [
+            "Nếu một vị trí trở nên không an toàn, Avana sẽ giải phóng vị trí thanh khoản đang hoạt động, tính toán các tài sản cơ sở, và khôi phục khả năng thanh toán với mức gián đoạn tối thiểu theo khả năng của thị trường. Cấu trúc của quỹ quyết định cách thức thanh lý hoạt động. Đó là một lý do khác mà tài sản bảo đảm Aerodrome nên thuộc về một nhánh riêng, thay vì là một phần mở rộng tự do của thị trường cho vay rộng hơn."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "curve-lp-collateral-aave-v4",
+      "title": "Vay với LP Curve trên Aave v4",
+      "date": "July 3, 2026",
+      "description": "Cách Avana xử lý tài sản thế chấp LP Curve cho pool ổn định và tương quan qua Spoke Aave v4 riêng.",
+      "image": "/images/blog/curve-lp-collateral.png",
+      "category": "Developers",
+      "tag": "Giao thức",
+      "sections": [
+        {
+          "id": "why-curve-matters",
+          "title": "Tại sao Curve quan trọng trên Avana",
+          "paragraphs": [
+            "Curve LP thường chiếm vị trí trung tâm trong thị trường stablecoin và giao dịch tài sản có tương quan, là một trong những bể thanh khoản sâu nhất và ít trượt giá nhất trên chuỗi. Điều đó làm chúng trở nên hấp dẫn như tài sản thế chấp, nhưng hành vi cấu trúc của chúng vẫn cần được xử lý chuyên biệt trong hệ thống cho vay. Avana hỗ trợ Curve LP làm tài sản thế chấp trên Aave v4 thông qua một nhánh riêng biệt với cách xử lý tài sản thế chấp riêng, các hạn chế vay và quy tắc thanh lý được định hình xung quanh cấu trúc thị trường của Curve."
+          ]
+        },
+        {
+          "id": "stable-is-not-riskless",
+          "title": "Trông ổn định không có nghĩa là không rủi ro",
+          "paragraphs": [
+            "Curve các pool được xây dựng xung quanh các tài sản giao dịch với mối quan hệ chặt chẽ hơn so với các cặp biến động tiêu chuẩn. Các pool stablecoin, pool staking thanh khoản, và pool tài sản tương quan có thể tạo ra hồ sơ thanh khoản sâu hơn và ổn định hơn. Các mối quan hệ ổn định vẫn có thể bị phá vỡ, sự tương quan có thể yếu đi, và các pool có vẻ bảo thủ có thể hành xử tệ trong điều kiện căng thẳng. Cơ chế đảm bảo của Avana phải tính đến cả sức mạnh tương đối của thiết kế pool của Curve và khả năng căng thẳng xuất hiện đúng nơi mà người dùng mong đợi sự ổn định.",
+            "Một vị trí Curve LP là một yêu cầu đối với một nhóm tài sản cơ bản, không phải là một token đơn giản với giá cố định. Avana xác định những tài sản nào nằm dưới vị trí, giá trị của chúng là bao nhiêu, và bao nhiêu trong giá trị đó nên được tính vào khả năng vay mượn. Bước cuối cùng này là rất quan trọng. Giá trị tài sản thế chấp trong một khung cho vay thận trọng mang lại trọng số thực sự cho cơ cấu nhóm, sự tương quan giữa các tài sản, chất lượng thanh khoản, và cách mà vị trí sẽ diễn biến trong trạng thái căng thẳng."
+          ]
+        },
+        {
+          "id": "users-and-flow",
+          "title": "Ai sử dụng nó và cách thức vay mượn hoạt động",
+          "paragraphs": [
+            "Nhiều vị trí Curve đã được các thành viên DeFi tinh vi sử dụng như là nguồn phơi bày thanh khoản cốt lõi. Các nhóm stablecoin, các cặp staking thanh khoản và các thị trường tài sản tương quan đại diện cho khối lượng lớn vốn quan trọng về mặt kinh tế. Nếu những vị trí này có thể hỗ trợ vay mà không yêu cầu rút ra, điều đó sẽ mở rộng tính hữu ích của một số thanh khoản nền tảng nhất trong DeFi đồng thời giữ chúng trong nhóm.",
+            "Dòng vay trên Avana là cung cấp một Curve LP được hỗ trợ thông qua trục, nơi nó vẫn hoạt động và kiếm phí. Trục đánh giá vị trí, và bạn có thể vay tài sản được hỗ trợ từ thanh khoản trung tâm. Các pool stablecoin có thể hỗ trợ một hình thức xử lý tài sản thế chấp, các pool tài sản tương quan hỗ trợ hình thức khác, và các pool có thanh khoản yếu hơn hoặc mối quan hệ mong manh hơn sẽ nhận các hạn chế chặt chẽ hơn."
+          ]
+        },
+        {
+          "id": "liquidation",
+          "title": "Thanh lý theo nhóm",
+          "paragraphs": [
+            "Nếu một Curve LP trở nên không an toàn, Avana chỉ gỡ bỏ những gì cần thiết để khôi phục khả năng thanh khoản nếu có thể, tôn trọng cấu trúc cơ sở của nhóm và giảm thiểu gián đoạn trong khi trả nợ. Các loại nhóm khác nhau yêu cầu các giả định khác nhau. Đó là mục đích của mô hình spoke, và đó là cách Avana có thể mở rộng Curve theo từng gia đình mà không cần một quy tắc LP chung cho mọi AMM."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "balancer-lp-collateral-aave-v4",
+      "title": "Tài sản thế chấp LP Balancer trên Aave v4",
+      "date": "July 1, 2026",
+      "description": "Cách Avana hỗ trợ LP pool có trọng số của Balancer làm tài sản thế chấp trên Aave v4 trong khi mức phơi nhiễm vẫn hoạt động.",
+      "image": "/images/blog/balancer-lp-collateral.png",
+      "category": "Developers",
+      "tag": "Giao thức",
+      "sections": [
+        {
+          "id": "portfolio-style-lps",
+          "title": "Tài sản thế chấp theo phong cách danh mục đầu tư LP",
+          "paragraphs": [
+            "Một vị trí Balancer LP thường là một danh mục đầu tư có cấu trúc bên trong một AMM, với trọng số tùy chỉnh, sự đa dạng hóa rủi ro, và tính thanh khoản hoạt động khác so với các nhóm hai tài sản tiêu chuẩn. Điều đó khiến Balancer LP trở nên thú vị như tài sản thế chấp, và cũng khó hỗ trợ hơn trong một hệ thống cho vay được xây dựng cho các tài sản đơn giản hơn. Avana xử lý điều này thông qua một nhánh chuyên dụng trên Aave v4."
+          ]
+        },
+        {
+          "id": "weighted-variety",
+          "title": "Tại sao các quỹ có trọng số cần quy tắc thị trường",
+          "paragraphs": [
+            "Balancer các quỹ bể là đa dạng theo bản chất. Một quỹ bể phong cách ổn định không hoạt động giống như một quỹ bể được cân nhắc 80/20. Một giỏ tài sản có tương quan không hoạt động giống như một thành phần phong cách chỉ số rộng hơn. Ngay cả các quỹ bể có tổng giá trị tương tự cũng có thể có rủi ro làm tài sản thế chấp khác nhau đáng kể, tùy thuộc vào độ sâu thanh khoản, tập trung tài sản, biến động và mối quan hệ giữa các tài sản cơ sở. Trục Avana xác định cách mỗi quỹ bể được cân nhắc định giá, cách giới hạn khả năng vay, và cách thức thanh lý hoạt động.",
+            "Từ góc độ tài sản đảm bảo, một Balancer LP đại diện cho một danh mục đầu tư hơn là một cặp tài sản đơn giản. Giá trị của nó phụ thuộc vào các tài sản cơ bản, trọng số tương đối của chúng, giá thị trường và cấu trúc của quỹ. Avana phải hiểu những gì nằm bên dưới, cách mà thành phần đó hoạt động trong điều kiện căng thẳng, và phần giá trị nào chuyển thành khả năng vay an toàn."
+          ]
+        },
+        {
+          "id": "borrow-and-unwind",
+          "title": "Vay mượn và thư giãn",
+          "paragraphs": [
+            "Nhiều hồ bơi Balancer thể hiện quan điểm danh mục đầu tư có chủ đích: các cặp token quản trị, phân bổ chỉ số có trọng số, rổ ổn định và có tương quan. Nếu các vị thế này trở thành tài sản thế chấp có thể vay trên Avana, người dùng không phải lựa chọn giữa việc duy trì tiếp xúc thị trường có cấu trúc và truy cập thanh khoản. Vị thế cùng hồ bơi vẫn hoạt động, kiếm phí và hỗ trợ vay thông qua Aave v4.",
+            "Dòng chảy là cung cấp một Balancer LP được hỗ trợ thông qua trục Avana, nơi vị trí vẫn hoạt động và kiếm phí. Trục đánh giá nó bằng cách sử dụng logic tài sản thế chấp cụ thể theo thị trường. Các loại hồ bơi an toàn hơn hỗ trợ xử lý mạnh hơn. Các cấu trúc tập trung hoặc biến động nhận các giả định thận trọng hơn. Cấu trúc thị trường quyết định cách xử lý cho vay, không chỉ dựa vào thương hiệu của sàn giao dịch.",
+            "Nếu một vị trí trở nên không an toàn, Avana không thể giả định rằng việc gỡ bỏ một Balancer LP trông giống như gỡ bỏ một vị trí hai tài sản đơn giản hơn. Nó phải tính đến cấu trúc quỹ thực tế, các tài sản cơ sở và con đường thực hiện cần thiết để khôi phục khả năng thanh toán với sự gián đoạn tối thiểu. Tài sản đảm bảo xác định việc thanh lý an toàn trông như thế nào."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "smart-contract-architecture",
+      "title": "Vay với LP Uniswap trên Aave v4",
+      "date": "June 28, 2026",
+      "description": "Cách Avana biến vị thế LP Uniswap thành tài sản thế chấp Aave v4 trong khi chúng vẫn trong pool và tiếp tục nhận phí.",
+      "image": "/images/blog/uniswap-lp-collateral.png",
+      "category": "Developers",
+      "tag": "Giao thức",
+      "sections": [
+        {
+          "id": "uniswap-on-avana",
+          "title": "Uniswap thanh khoản trên Avana",
+          "paragraphs": [
+            "Uniswap LP cung cấp độ sâu thị trường, tạo điều kiện cho giao dịch và kiếm phí, nhưng chúng truyền thống đã khó sử dụng trong các hệ thống cho vay mà không rút ra hoặc cấu trúc lại trước. Avana được thiết kế để thay đổi điều đó trên Aave v4. Trung tâm quản lý tính thanh khoản chung. Nhánh Avana là một thị trường chuyên dụng cho vay được hỗ trợ bởi LP, bao gồm Uniswap thanh khoản tập trung. Nhánh này xác định cách đánh giá tài sản thế chấp, cách phân bổ quyền vay, và cách xử lý rủi ro ở cấp độ vị trí."
+          ]
+        },
+        {
+          "id": "why-cl-is-hard",
+          "title": "Tại sao các phạm vi tập trung lại là tài sản đảm bảo khó khăn",
+          "paragraphs": [
+            "Uniswap các vị trí thanh khoản tập trung không phải là các token dễ thay thế đơn giản. Giá trị phụ thuộc vào giá hiện tại của các tài sản cơ sở, lượng thanh khoản được cung cấp, phạm vi giá được chọn và phí tích lũy theo thời gian. Một vị trí có thể đang hoạt động và sinh lời, hoặc nó có thể đi ra ngoài phạm vi và có hành vi rất khác. Avana phải hiểu thành phần vị trí theo thời gian thực và đánh giá giá trị của nó như tài sản thế chấp trong điều kiện thay đổi, không chỉ như giá trị danh nghĩa trên giấy.",
+            "Định giá nằm ở trung tâm. Avana xác định các tài sản cơ sở mà vị thế hiện tại đại diện, áp dụng định giá đáng tin cậy và chuyển đổi điều đó thành khả năng vay thông qua một khung tài sản đảm bảo thận trọng. Câu hỏi quan trọng không phải là giá trị trên giấy thuần túy. Nó là giá trị tài sản đảm bảo trong một hệ thống cho vay đang hoạt động. Các vị thế tập trung có thể trở nên phi tuyến khi giá di chuyển qua hoặc vượt quá phạm vi hoạt động, điều này đòi hỏi xử lý rủi ro một cách có chủ ý."
+          ]
+        },
+        {
+          "id": "borrow-monitor-liquidate",
+          "title": "Vay, giám sát, thanh lý",
+          "paragraphs": [
+            "Dòng vay là cung cấp một Uniswap LP được hỗ trợ thông qua trục Avana. Vị thế giữ trong AMM và tiếp tục kiếm phí. Trục đánh giá tài sản đảm bảo và áp dụng logic rủi ro. Bạn vay các tài sản được hỗ trợ từ thanh khoản trung tâm. Thế chấp vị thế không làm nó tắt. Thanh khoản vẫn được triển khai, sự tiếp xúc với thị trường vẫn nguyên vẹn, và phí tiếp tục tích lũy.",
+            "Vì LP vị trí đang hoạt động và thay đổi, Avana giám sát sức khỏe liên tục. Khi giá di chuyển, phí tích lũy, và cấu trúc vị trí thay đổi, mức an toàn khi vay cũng thay đổi theo. Một vị trí khỏe mạnh hôm nay có thể kém khỏe hơn vào ngày mai ngay cả khi người dùng không chạm vào bất cứ thứ gì.",
+            "Nếu một vị trí trở nên quá rủi ro, việc thanh lý phải thực hiện việc phá vỡ một phần vị trí AMM đang hoạt động, tính toán các tài sản cơ sở, và khôi phục khả năng thanh toán với mức gián đoạn thấp nhất có thể. Cấu trúc thị trường của tài sản đảm bảo quyết định cấu trúc thanh lý. Đó là một trong những lý do chính Uniswap LP tài sản đảm bảo nên thuộc vào một nhánh Avana riêng thay vì một thùng tài sản đảm bảo tổng quát."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "defi-ux-challenges",
+      "title": "Làm cho Tài sản thế chấp LP Dễ dùng",
+      "date": "June 25, 2026",
+      "description": "Vì sao thiết kế sản phẩm Avana chú trọng định giá rõ, hạn mức vay và health để tài sản thế chấp LP vận hành được, không chỉ mạnh trên giấy.",
+      "image": "/images/blog/making-lp-collateral-usable.png",
+      "category": "Sản phẩm",
+      "tag": "Hướng dẫn",
+      "sections": [
+        {
+          "id": "power-is-not-enough",
+          "title": "Quyền lực là không đủ",
+          "paragraphs": [
+            "LP tài sản đảm bảo mạnh mẽ về mặt khái niệm và khó thực hiện một cách trôi chảy. Trên Avana, bạn không chỉ quản lý một khoản vay. Bạn đang quản lý một vị thế thanh khoản sống động mà giá trị, thành phần và rủi ro của nó đều thay đổi theo thời gian. Điều đó làm cho sản phẩm đòi hỏi cao hơn so với một dòng cho vay tiêu chuẩn, và đây là một trong những lý do chính khiến LP tài sản đảm bảo hoạt động khó khăn ngay cả khi ý tưởng nghe có vẻ hấp dẫn."
+          ]
+        },
+        {
+          "id": "make-the-lifecycle-legible",
+          "title": "Làm cho vòng đời dễ đọc",
+          "paragraphs": [
+            "Thách thức là làm cho toàn bộ vòng đời trở nên dễ hiểu: định giá tài sản đảm bảo, giới hạn vay, giám sát sức khỏe và những gì sẽ xảy ra khi điều kiện thay đổi. Nếu những phần đó vẫn mờ mịt, sản phẩm sẽ vẫn bị giới hạn cho những người dùng có chuyên môn cao bất kể cơ chế nền tảng mạnh đến đâu.",
+            "Trong LP thị trường tài sản thế chấp, trải nghiệm người dùng tốt là một phần của thiết kế rủi ro. Người dùng cần hiểu vị trí có giá trị bao nhiêu như tài sản thế chấp, không chỉ giá trị thị trường của nó. Họ cần thấy được cách vay ảnh hưởng đến tính linh hoạt, cách dao động phạm vi hay lệch giá thay đổi rủi ro, và một vị trí gần căng thẳng đến mức nào. Một nền tảng che giấu những thực tế đó sau các bảng điều khiển mơ hồ có thể trông đơn giản hơn bề ngoài nhưng vẫn tạo ra nhiều nguy cơ hơn cho người dùng."
+          ]
+        },
+        {
+          "id": "one-system",
+          "title": "Một hệ thống kết nối",
+          "paragraphs": [
+            "LP vay được hỗ trợ trên Avana nên được trình bày như một hệ thống liên kết. Gửi tiền thanh khoản, sử dụng nó làm tài sản thế chấp, theo dõi tình trạng, thu phí và quản lý rủi ro đều là một phần của cùng một đối tượng tài chính. Mối quan hệ giữa vị thế LP và nợ nên được nhìn thấy ngay từ đầu, để bạn có thể hiểu cả hai phía cùng một lúc thay vì ghép bức tranh lại qua các giao diện riêng biệt.",
+            "LP vị thế không tĩnh. Chúng phát triển theo hoạt động giao dịch, di chuyển của tài sản cơ sở, và trong các hệ thống thanh khoản tập trung cùng với phạm vi vị thế chính nó. Vay dựa trên loại tài sản đó đòi hỏi một giao diện biểu đạt hơn và một cấu trúc sản phẩm kỷ luật hơn. Việc tạo phí, chất lượng tài sản đảm bảo, và rủi ro thanh lý tương tác theo những cách mà dễ bị hiểu nhầm nếu sản phẩm được thiết kế một cách cẩu thả.",
+            "Mục tiêu là làm cho các nguyên tắc tài chính tiên tiến có thể sử dụng được mà không gây hiểu lầm. Việc vay có bảo đảm LP của Avana cần đủ rõ ràng để sử dụng, đủ kỷ luật để tin tưởng và đủ mạch lạc để trở thành một phần thực sự của cách quản lý vốn trên chuỗi."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "avana-lp-collateral",
+      "title": "Avana và Bước tiếp theo cho LP",
+      "date": "June 23, 2026",
+      "description": "Vì sao nhà cung cấp thanh khoản không phải chọn giữa nhận phí và tiếp cận vốn, và cách Avana mở rộng tài sản thế chấp LP trên Aave v4.",
+      "image": "/images/blog/avana-next-step-liquidity-providers.png",
+      "category": "Community",
+      "tag": "Chiến lược",
+      "sections": [
+        {
+          "id": "the-old-tradeoff",
+          "title": "Sự đánh đổi cũ",
+          "paragraphs": [
+            "Các nhà cung cấp thanh khoản cung cấp độ sâu, hấp thụ biến động và kiếm phí giao dịch, nhưng vốn bên trong những vị thế đó thường cảm thấy bị mắc kẹt. Nếu bạn muốn tiếp cận nguồn vốn đó, câu trả lời thông thường vẫn là rút ra, phá vỡ vị thế và ngừng làm điều đã làm cho vị thế đó trở nên hữu ích ngay từ đầu."
+          ]
+        },
+        {
+          "id": "what-avana-changes",
+          "title": "Những thay đổi Avana",
+          "paragraphs": [
+            "Avana cho phép các vị trí LP được hỗ trợ hoạt động như tài sản thế chấp trên Aave v4 trong khi vẫn giữ tính thanh khoản hoạt động trong AMM cơ bản. Thay vì buộc phải chọn giữa việc tạo phí và truy cập thanh khoản, cùng một vị trí có thể làm cả hai. Nó vẫn ở trên thị trường, tiếp tục kiếm phí và hỗ trợ khả năng vay mượn trong một hệ thống cho vay được thiết kế cho tài sản thế chấp LP.",
+            "LP các vị trí phức tạp hơn so với tài sản thế chấp tiêu chuẩn. Chúng thay đổi theo giá cơ sở, thành phần của quỹ, tích lũy phí, và trong các hệ thống thanh khoản tập trung với việc đặt phạm vi hoạt động. Hầu hết các hệ thống cho vay không được xây dựng để hiểu giá trị đó một cách chính xác. Xử lý LP như các số dư token thông thường bỏ qua cách chúng thực sự hoạt động. Avana tồn tại vì khoảng cách đó là cấu trúc, không phải bề ngoài."
+          ]
+        },
+        {
+          "id": "how-the-stack-fits",
+          "title": "Cách các thành phần của ngăn xếp khớp với nhau",
+          "paragraphs": [
+            "Avana sử dụng thiết kế trung tâm và nhánh của Aave v4. Thanh khoản chung vẫn giữ ở cấp trung tâm. Định giá cụ thể, xử lý tài sản đảm bảo và logic thanh lý của LP nằm trong các thị trường nhánh riêng biệt. Các nhóm ổn định, nhóm tài sản có tương quan và các vị trí thanh khoản tập trung đều nhận được xử lý rủi ro phù hợp thay vì bị hợp nhất thành một khuôn khổ chung.",
+            "Đối với LPs, kết quả là sự tham gia sử dụng vốn hiệu quả hơn. Một vị trí được hỗ trợ vẫn giữ được năng suất trong AMM đồng thời trở nên hữu ích trong hệ thống tín dụng. Bạn giữ được sự tiếp xúc, tiếp tục kiếm lợi nhuận và truy cập thanh khoản mà không cần phải giải phóng hoàn toàn. Đối với hệ thống rộng hơn, tài sản thế chấp LP có nghĩa là vốn DeFi có thể ít bị phân tán hơn. Thanh khoản không cần phải rời khỏi thị trường mỗi khi cần trở nên hữu ích ở nơi khác.",
+            "Nếu LP vị trí có thể duy trì hoạt động trong khi hỗ trợ vay mượn, chúng trở thành nhiều hơn các cổ phần tạo phí trong pool. Chúng hoạt động như các vị thế tài chính có cấu trúc với khả năng tạo phí, tiếp xúc thị trường và giá trị tài sản thế chấp. Avana chính là cầu nối giữa hạ tầng giao dịch và hạ tầng tín dụng."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "institutional-use-cases",
+      "title": "Tài sản thế chấp LP cho Tổ chức",
+      "date": "June 20, 2026",
+      "description": "Cách tài sản thế chấp LP của Avana giúp DAO, treasury, quỹ và công ty crypto tiếp cận vốn mà không tháo thanh khoản đang tạo doanh thu.",
+      "image": "/images/blog/lp-collateral-for-institutions.png",
+      "category": "For Institutions",
+      "tag": "Tổ chức",
+      "sections": [
+        {
+          "id": "treasury-function",
+          "title": "Hiệu quả sử dụng vốn như một chức năng của kho bạc",
+          "paragraphs": [
+            "Đối với các tổ chức hoạt động trên chuỗi, hiệu quả vốn là một chức năng của kho bạc. DAOs, kho bạc giao thức, quỹ và các công ty gốc tiền điện tử thường nắm giữ các vị thế lớn trên các token, dự trữ ổn định và các pool thanh khoản, tuy nhiên phần lớn vốn đó vẫn còn cứng nhắc về mặt vận hành. Các vị thế LP có thể tạo ra phí và hỗ trợ việc tiếp xúc thị trường chiến lược, nhưng chúng vẫn khó sử dụng như tài sản kho bạc linh hoạt mà không rút thanh khoản và thay đổi tư thế thị trường."
+          ]
+        },
+        {
+          "id": "what-avana-enables",
+          "title": "Những gì Avana cho phép cho các nhóm",
+          "paragraphs": [
+            "Thông qua Avana, LP vị trí có thể duy trì hoạt động trong AMM trong khi hỗ trợ vay trên Aave v4. Quỹ kho bạc DAO có thể tài trợ các khoản trợ cấp hoặc thanh toán cho cộng tác viên mà không giảm tiếp xúc với thị trường cốt lõi. Một quỹ có thể duy trì LP vị trí trong khi tiếp cận thanh khoản ổn định để tái định vị chiến thuật. Kho bạc doanh nghiệp có thể quản lý tiền lương hoặc nghĩa vụ với nhà cung cấp mà không buộc phải cân đối lại toàn bộ dự trữ trên chuỗi. Điểm chung là vay tạo ra vốn lưu động mà không hiện thực hóa các vị trí, không gián đoạn việc tạo ra phí, và không buộc mọi nhu cầu thanh khoản phải trở thành quyết định bán.",
+            "Đối với các DAO và kho bạc giao thức cụ thể, LP các vị trí được giữ như hỗ trợ thanh khoản hoặc chiến lược kho bạc thường được coi là bất động trừ khi quản trị quyết định giải phóng chúng. LP tài sản thế chấp cung cấp một con đường hiệu quả về vốn hơn. Các vị trí trong kho bạc có thể vẫn hoạt động trong khi hỗ trợ truy cập có kiểm soát tới thanh khoản cho runway, chi tiêu hệ sinh thái hoặc lập kế hoạch hoạt động."
+          ]
+        },
+        {
+          "id": "funds-and-corps",
+          "title": "Quỹ và kho bạc công ty",
+          "paragraphs": [
+            "Các quỹ và nhà quản lý chuyên nghiệp quan tâm đến sự linh hoạt về chiến thuật. Trong các thị trường biến động nhanh, việc giải phóng một vị thế trước khi tiếp cận vốn có thể chậm, tốn kém và khó xử về mặt chiến lược. Avana LP tài sản đảm bảo cho phép một nhà quản lý duy trì mức tiếp xúc và hiện diện trên thị trường trong khi giải phóng thanh khoản để tái triển khai, phòng ngừa rủi ro hoặc tái định vị.",
+            "Kho bạc doanh nghiệp trong các doanh nghiệp gốc tiền điện tử giữ các dự trữ trên chuỗi nhưng vẫn cần truy cập vốn dự đoán được cho hoạt động. Lương bổng, thanh toán cho nhà cung cấp và nhu cầu vốn lưu động không phải lúc nào cũng phù hợp với điều kiện thị trường lý tưởng. Vay dựa trên các vị trí LP cho phép kho bạc quản lý nghĩa vụ mà không cần bán tài sản không đúng thời điểm hoặc phụ thuộc quá mức vào tài chính ngoài chuỗi."
+          ]
+        },
+        {
+          "id": "controls",
+          "title": "Điều khiển đi trước",
+          "paragraphs": [
+            "Việc áp dụng theo thể chế phụ thuộc vào các kiểm soát: ranh giới chính sách rõ ràng về những gì có thể được vay, dựa trên tài sản thế chấp nào, theo con đường phê duyệt nào và với những quy tắc giảm rủi ro nào. Thị trường dạng Avana spoke có nghĩa là rủi ro có thể được xác định dựa trên cấu trúc tài sản thế chấp. Các stablecoin, các cặp tương quan, thanh khoản tập trung và các nhóm biến động có thể được quản lý theo các giả định khác nhau. Các kiểm soát vận hành bao gồm phân tách vai trò, quyền hạn, giám sát sức khỏe, khả năng kiểm toán và ngưỡng phê duyệt đa chữ ký. Những yếu tố này là trung tâm để liệu tài sản thế chấp LP có trở thành một công cụ quỹ đáng tin cậy hay chỉ là một công cụ đòn bẩy.",
+            "LP các vị trí đã đóng vai trò chính trong việc các giao thức, quỹ và các công ty tiền điện tử phân bổ vốn. Bước tiếp theo là làm cho những vị trí đó hữu ích về mặt tài chính ngoài việc tạo ra phí, với bề mặt quản trị mà các tổ chức yêu cầu. Đó là công việc mà Avana được tạo ra để thực hiện."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "integration-guide",
+      "title": "Xây trên Hạ tầng LP của Avana",
+      "date": "June 17, 2026",
+      "description": "Góc nhìn developer về hạ tầng tài sản thế chấp LP của Avana: giám sát, tự động hóa, dịch vụ thanh lý và cơ hội cho builder.",
+      "image": "/images/blog/developer-view-lp-collateral.png",
+      "category": "Developers",
+      "tag": "Giao thức",
+      "sections": [
+        {
+          "id": "a-new-design-surface",
+          "title": "A new design surface",
+          "paragraphs": [
+            "Hầu hết cơ sở hạ tầng DeFi được xây dựng xung quanh tài sản thế chấp đơn giản. Các tài sản đơn lẻ dễ định giá, theo dõi và thanh lý. Các vị thế LP hoạt động, có hai bên, và cấu trúc phức tạp hơn. Giá trị của chúng thay đổi theo tài sản cơ sở, thành phần của quỹ, phí tích lũy và phạm vi. Sự phức tạp đó là lý do tại sao tài sản thế chấp LP khó được tích hợp vào hệ thống cho vay, và đó cũng là lý do tại sao Avana tạo ra một bề mặt thiết kế mới cho các nhà phát triển."
+          ]
+        },
+        {
+          "id": "what-builders-get",
+          "title": "Những gì các thợ xây nhận được từ Avana",
+          "paragraphs": [
+            "Avana làm cho LP vị trí có thể sử dụng làm tài sản thế chấp thông qua Aave v4. Kiến trúc hub and spoke nghĩa là LP vị trí được đánh giá, điều chỉnh rủi ro và thanh lý theo logic thị trường cụ thể, không phải thị trường cho vay chung mà tình cờ chấp nhận LP. Đối với các nhà phát triển, điều đó mở ra các ứng dụng xoay quanh giao diện, hệ thống giám sát, công cụ kho bạc, lớp chiến lược và các sản phẩm nhận thức rủi ro được xây dựng trên tín dụng được hỗ trợ bởi LP.",
+            "Danh mục đầu tư và cơ sở hạ tầng giám sát là một loại hình tự nhiên. LP vay mượn được bảo đảm tạo ra mối quan hệ năng động hơn giữa tài sản đảm bảo và nợ so với hầu hết người dùng DeFi đã quen. Bảng điều khiển có thể hiển thị yếu tố sức khỏe, hiệu quả tài sản đảm bảo, tạo phí và độ nhạy thanh lý, giúp người dùng quyết định khi nào nên cân bằng lại, giảm nợ, hoặc coi một vị trí là căng thẳng hơn so với giá trị chủ yếu của nó gợi ý."
+          ]
+        },
+        {
+          "id": "automation-liquidation-treasury",
+          "title": "Tự động hóa, thanh lý và công cụ quản lý quỹ",
+          "paragraphs": [
+            "Cơ sở hạ tầng tự động hóa và chiến lược là một lĩnh vực công việc khác. Vì LP vị trí vẫn hoạt động trong khi hỗ trợ vay mượn, các nhà phát triển có thể xây dựng các hệ thống phản ứng với các điều kiện thay đổi ở cả hai phía của vị trí: duy trì các dải vay mục tiêu, giám sát sự dịch chuyển tài sản đảm bảo, hoặc định tuyến dữ liệu vị trí vào các hệ thống kho bạc và danh mục nằm trên Avana.",
+            "Hạ thanh lý và cơ sở hạ tầng rủi ro cũng quan trọng. LP tài sản đảm bảo cần nhiều hơn việc chỉ quan sát ngưỡng đơn giản. Nó đòi hỏi hiểu cách chất lượng vị thế thay đổi khi thị trường biến động và cách các đường thanh lý khác nhau tùy theo sàn giao dịch và loại quỹ. Các bot bên ngoài, dịch vụ giám sát và hệ thống phân tích đều có thể trở thành những phần quan trọng của hệ sinh thái xung quanh Avana.",
+            "Đối với công cụ quản lý quỹ và tổ chức, nếu các DAO, quỹ, hoặc các công ty tiền điện tử sử dụng vị trí LP làm tài sản thế chấp, họ sẽ cần các hệ thống để giới hạn chính sách, quyền truy cập, điều kiện vay mượn và ngưỡng rủi ro trên các ví hoặc đội nhóm. Các nhà phát triển có thể sử dụng Avana như một nguồn trạng thái tài sản thế chấp, trạng thái nợ và cấu trúc ở mức thị trường thay vì coi việc tiếp xúc với LP và tiếp xúc cho vay như hai thế giới tách biệt."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "aave-v4-avana-spoke",
+      "title": "Bên trong Kiến trúc Tài sản thế chấp LP của Avana",
+      "date": "June 14, 2026",
+      "description": "Bên trong kiến trúc tài sản thế chấp LP của Avana trên Aave v4, gồm Hub, Spoke, định giá, thiết kế oracle và logic thanh lý.",
+      "image": "/images/blog/inside-avana-architecture.png",
+      "category": "Developers",
+      "tag": "Giao thức",
+      "sections": [
+        {
+          "id": "why-hub-and-spoke",
+          "title": "Tại sao lại là hub and spoke",
+          "paragraphs": [
+            "LP tài sản đảm bảo không thể được hỗ trợ bằng một thiết kế cho vay tổng quát. Nó cần một hệ thống quản lý các vị trí thanh khoản năng động, thay đổi thành phần tài sản đảm bảo, định giá theo từng thị trường, và các lộ trình thanh lý khác với tài sản đảm bảo token tiêu chuẩn. Avana được xây dựng trên mô hình trung tâm và nhánh của Aave v4 vì việc vay được bảo đảm bởi LP cần thanh khoản được chia sẻ và logic thị trường tách biệt đồng thời."
+          ]
+        },
+        {
+          "id": "hub-and-spoke-roles",
+          "title": "Những gì trung tâm và các nhánh làm",
+          "paragraphs": [
+            "Trung tâm giữ các tài sản có thể vay mượn và điều phối thanh khoản chung trên các thị trường: quản lý dự trữ, theo dõi sử dụng, và phân bổ tín dụng. Một trung tâm là cách Avana kết nối LP làm tài sản bảo đảm với một khuôn khổ cho vay rộng hơn mà không buộc mọi loại tài sản bảo đảm phải chia sẻ cùng một giả định. Một thị trường LP ổn định, một thị trường thanh khoản tập trung, và một cặp AMM biến động không nên được quản lý theo cùng một cách chỉ vì chúng đều lấy từ cùng một quỹ thanh khoản.",
+            "Các nan hoa là nơi tồn tại LP logic cụ thể: đăng ký tài sản thế chấp, định giá, điều chỉnh rủi ro, giám sát và thanh lý. Mỗi nan hoa xác định cách các loại pool khác nhau được xử lý. Một vị thế tập trung Uniswap hành xử khác với một Curve LP có thể thay thế, điều này lại hành xử khác với một pool Balancer có trọng số. Nan hoa là nơi LP tài sản thế chấp trở thành một thị trường cho vay thực sự với các quy tắc riêng bên trong Avana."
+          ]
+        },
+        {
+          "id": "valuation-oracle-liquidation",
+          "title": "Định giá, tiên tri, và thanh lý",
+          "paragraphs": [
+            "Định giá sử dụng một phương pháp nhiều lớp. Đầu tiên, vị trí LP thực sự chứa gì tại trạng thái thị trường hiện tại. Thứ hai, định giá những tài sản cơ sở đó dựa trên các đầu vào oracle đáng tin cậy. Thứ ba, điều chỉnh thông qua logic tài sản thế chấp phản ánh rủi ro thực tế của quỹ thay vì kích thước danh nghĩa. Không phải đồng đô la nào bên trong vị trí LP cũng chuyển thành cùng một sức mạnh vay trên Avana.",
+            "Thiết kế Oracle nằm gần trung tâm. Đối với tài sản thế chấp LP, giao thức không thể dựa vào một con số duy nhất hoặc một nguồn dữ liệu tài sản đơn giản. Avana sử dụng triết lý hai nguồn, nơi các nguồn giá bên ngoài và giá trị được dẫn xuất từ AMM hoạt động cùng nhau để đánh giá đáng tin cậy hơn. Mục tiêu là giảm nguy cơ những biến động tạm thời, cập nhật lỗi thời hoặc sự biến dạng của các pool cục bộ tạo ra các giả định tài sản thế chấp không an toàn.",
+            "Để thanh lý, Avana phải giải quyết các vị thế LP đang hoạt động một cách có kiểm soát, chuyển đổi các tài sản phát sinh và giải quyết nợ mà không gây tổn thất không cần thiết. Bộ phận chuyên môn hóa thanh lý cho cấu trúc thị trường cơ bản. Trung tâm cung cấp thanh khoản. Bộ phận chuyên môn xác định logic tài sản đảm bảo. Mỗi lớp thực hiện những gì phù hợp với nó: tách biệt rõ ràng, cách ly mạnh mẽ và một lộ trình thực tế để mở rộng nguồn tài sản đảm bảo LP theo từng nhóm."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "v1-1-release",
+      "title": "Avana v1.1: Tài sản thế chấp tốt hơn, Kiểm soát tốt hơn",
+      "date": "June 11, 2026",
+      "description": "Avana v1.1 mở rộng thế chấp nhiều vị thế, thêm pool được hỗ trợ, cải thiện ủy quyền và cảnh báo, đồng thời giảm chi phí giao dịch.",
+      "image": "/images/blog/avana-v1-1-better-control.png",
+      "category": "Sản phẩm",
+      "tag": "Sản phẩm",
+      "sections": [
+        {
+          "id": "what-shipped",
+          "title": "Những gì đã được phát hành trong v1.1",
+          "paragraphs": [
+            "Avana v1.1 làm cho việc vay có bảo đảm LP trở nên linh hoạt hơn, hiệu quả hơn và dễ quản lý hơn. Cập nhật này mở rộng cách người dùng cấu trúc tài sản thế chấp, cải thiện đánh giá vị thế, giảm tải giao dịch và tinh chỉnh bảng điều khiển để quản lý các vị thế LP đang hoạt động trên Aave v4."
+          ]
+        },
+        {
+          "id": "multi-position-and-markets",
+          "title": "Tài sản thế chấp đa vị trí và nhiều thị trường hơn",
+          "paragraphs": [
+            "Thay đổi chính là tài sản thế chấp đa vị trí. Người dùng có thể gửi nhiều vị trí LP và khả năng vay được đánh giá trên toàn bộ tập hợp tài sản thế chấp thay vì từng vị trí riêng lẻ. Điều đó mang lại sự linh hoạt hơn trong việc quản lý thanh khoản giữa các pool, tài sản hoặc loại chiến lược khác nhau. Phiên bản phát hành cũng mở rộng các pool được hỗ trợ trên Uniswap v3 và v4. Mỗi thị trường mới vẫn bao gồm các công việc đánh giá bổ sung, xử lý tài sản thế chấp và thanh lý, vì vậy việc truy cập rộng hơn không làm yếu các tiêu chuẩn rủi ro của Avana.",
+            "Rút một phần vị thế cũng là điều mới. Người dùng có thể giảm một phần thanh khoản của một vị thế LP mà không rút hoàn toàn vị thế tài sản thế chấp, với điều kiện phần tài sản thế chấp còn lại vẫn đảm bảo khoản vay một cách an toàn. Điều đó giúp quản lý vốn trở nên không nhị phân. Bạn có thể điều chỉnh mức độ tiếp xúc, giải phóng thanh khoản hoặc tái cấu trúc các vị thế mà không cần coi mỗi thay đổi là tất cả hoặc không có gì."
+          ]
+        },
+        {
+          "id": "ops-and-dashboard",
+          "title": "Các công cụ vận hành và bảng điều khiển rõ ràng hơn",
+          "paragraphs": [
+            "Hỗ trợ ủy quyền giúp các DAO, đội nhóm và các nhà vận hành có cấu trúc phân chia trách nhiệm giữa các ví hoặc vai trò: ai quản lý tiền gửi, ai xử lý các hành động nợ, ai thực hiện bảo trì vận hành. Cảnh báo yếu tố sức khỏe cung cấp khả năng quan sát sớm hơn về điều kiện vị trí thay đổi trước khi căng thẳng phát triển. LP tài sản thế chấp có thể thay đổi nhanh chóng, đặc biệt khi sự chênh lệch giá ảnh hưởng đến cả hiệu quả kiếm lợi và chất lượng tài sản thế chấp cùng một lúc.",
+            "Cải thiện hiệu suất giúp giảm chi phí giao dịch trên các khoản tiền gửi, vay, trả nợ và quản lý. Xử lý Oracle được cải thiện về độ trễ, hành vi dự phòng và độ tin cậy trong điều kiện thị trường thay đổi. Đối với LP tài sản thế chấp, chất lượng thực thi phía backend quan trọng ngang với các tính năng phía frontend.",
+            "Bảng điều khiển được tinh chỉnh để hiển thị LP khoản vay được đảm bảo khi nó thực sự hoạt động trên Avana: sức khỏe tài sản thế chấp, thành phần vị trí và mối quan hệ giữa thanh khoản hoạt động và nợ. Các bản xem trước giao dịch tốt hơn và thiết kế đáp ứng hơn giúp quản lý vị trí rõ ràng hơn trước khi bạn cam kết thay đổi trên chuỗi."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "introducing-automate",
+      "title": "Automate: Lớp Kiểm soát cho Tài sản thế chấp LP",
+      "date": "June 8, 2026",
+      "description": "Cách Avana Automate giúp người dùng quản lý tài sản thế chấp LP với tự động hóa không giám hộ cho phí, tái cân bằng, bảo vệ và bảo trì có kỷ luật.",
+      "image": "/images/blog/automate-control-layer-lp-collateral.png",
+      "category": "Sản phẩm",
+      "tag": "Sản phẩm",
+      "sections": [
+        {
+          "id": "why-automation",
+          "title": "Tại sao tài sản thế chấp LP cần tự động hóa",
+          "paragraphs": [
+            "Quản lý một vị trí LP cũng đồng thời được dùng làm tài sản thế chấp là việc đòi hỏi nhiều công sức. Phí tích lũy nhưng không phải lúc nào cũng sinh lợi. Thanh khoản dao động khi thị trường biến động. Các yếu tố sức khỏe yếu đi khi sự chênh lệch giá thay đổi hồ sơ tài sản thế chấp. Cả hai bên của bảng cân đối kế toán vẫn hoạt động. Vị trí LP phát triển, và khoản nợ so với nó phát triển theo điều kiện vay. Đối với người dùng vay dựa trên LP thông qua Avana trên Aave v4, đó là thực tế hàng ngày."
+          ]
+        },
+        {
+          "id": "what-automate-is",
+          "title": "Cái mà Avana Tự động hóa là",
+          "paragraphs": [
+            "Automate là lớp tự động hóa không giám sát của Avana. Nó thực hiện các hành động đã được người dùng phê duyệt khi các điều kiện đã định trước được đáp ứng. Người dùng giữ toàn quyền kiểm soát tài sản và quyền hạn. Automate xử lý việc bảo trì lặp đi lặp lại và duy trì kỷ luật vị trí. Nó không phải là sự thay thế cho chiến lược hay phán đoán. Đây là cách để giảm gánh nặng vận hành khi quản lý tài sản thế chấp LP trên Avana."
+          ]
+        },
+        {
+          "id": "fees-ranges-protection",
+          "title": "Phí, phạm vi và sự bảo vệ",
+          "paragraphs": [
+            "Phí giao dịch tích lũy dần dần, nhưng phí nhàn rỗi không đóng góp vào hiệu quả vị thế. Tự động hóa có thể thu thập và tái triển khai chúng theo sở thích của người dùng, vì vậy các vị thế giữ được năng suất cao hơn mà không cần can thiệp thủ công liên tục. Theo thời gian, việc duy trì phí một cách kỷ luật có thể quan trọng ngang với lợi suất chính, đặc biệt đối với các chiến lược vay được hỗ trợ lớn LP.",
+            "Trong các hệ thống thanh khoản tập trung, vốn sẽ ngừng hoạt động hiệu quả khi giá di chuyển ra ngoài phạm vi hoạt động, và vị trí cũng có thể trở nên kém hiệu quả hơn như là tài sản thế chấp trên Avana. Tự động hóa có thể cân bằng lại theo các quy tắc do người dùng định nghĩa, giảm bớt gánh nặng phải phản ứng với mọi biến động một cách thủ công. Điều này đặc biệt hữu ích vì hiệu quả tài sản thế chấp và năng suất thanh khoản có sự liên kết chặt chẽ.",
+            "Các vị thế cũng có thể chuyển từ khỏe mạnh sang căng thẳng nhanh hơn dự kiến, đặc biệt trong thời kỳ biến động mạnh hoặc khi các tài sản ghép đôi chênh lệch. Automate theo dõi điều kiện và thực hiện các hành động phòng thủ dựa trên các ngưỡng do người dùng xác định. Việc bỏ mặc thụ động LP tài sản đảm bảo hỗ trợ nợ sẽ trở nên tốn kém. Avana Automate được xây dựng để phản ứng sớm hơn đó."
+          ]
+        },
+        {
+          "id": "day-two-ops",
+          "title": "Hoạt động ngày thứ hai",
+          "paragraphs": [
+            "Automate được xây dựng xung quanh bản chất thực sự của LP tài sản thế chấp: các vị thế sinh lời, thay đổi và rủi ro trong khi vẫn được sử dụng làm tài sản thế chấp trên Aave v4. Nó cung cấp cho người dùng một cách để duy trì các vị thế một cách nhất quán, phản ứng với các điều kiện thay đổi với ít ma sát hơn, và quản lý việc vay mượn có LP làm tài sản bảo đảm với kỷ luật mà nếu không sẽ yêu cầu chú ý thủ công liên tục. Nguyên tắc phi lưu ký không đổi suốt quá trình. Avana vận hành chính sách của bạn. Nó không trở thành một nhà quản lý quỹ hộp đen."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lp-collateral-guide",
+      "title": "Hướng dẫn Cơ bản về Tài sản thế chấp LP",
+      "date": "June 4, 2026",
+      "description": "Hướng dẫn cơ bản về tài sản thế chấp LP trên Avana: hành vi LP, LTV, impermanent loss, thanh lý và các bước đầu thận trọng.",
+      "image": "/images/blog/beginners-guide-lp-collateral.png",
+      "category": "For LPs",
+      "tag": "Hướng dẫn",
+      "sections": [
+        {
+          "id": "the-basic-idea",
+          "title": "Ý tưởng cơ bản",
+          "paragraphs": [
+            "Cung cấp thanh khoản là một trong những cách phổ biến nhất để kiếm lợi suất trong DeFi. Bạn gửi tài sản vào một quỹ, tạo điều kiện cho giao dịch, và nhận phí đổi lại. Các vị thế LP cũng đã khá cứng nhắc. Nếu bạn muốn sử dụng số vốn đó ở nơi khác, bạn thường phải rút ra trước. Tài sản đảm bảo LP thay đổi điều đó. Thông qua Avana trên Aave v4, các vị thế được hỗ trợ LP có thể dùng làm tài sản thế chấp cho việc vay mượn trong khi vẫn hoạt động trong quỹ và kiếm phí suốt thời gian đó."
+          ]
+        },
+        {
+          "id": "what-an-lp-is",
+          "title": "Một LP thực sự là gì",
+          "paragraphs": [
+            "Một vị trí LP là một vị trí hoạt động trong thị trường. Giá trị của nó phụ thuộc vào các tài sản cơ sở, cách chúng di chuyển so với nhau, các khoản phí phát sinh, và trong các hệ thống thanh khoản tập trung, liệu vị trí đó còn nằm trong phạm vi giá hoạt động hay không. Nó thay đổi theo thời gian theo những cách mà tài sản thế chấp thông thường không làm được. Đó là lý do tại sao tài sản thế chấp LP cần một mô hình cho vay chuyên biệt hơn, và tại sao Avana tồn tại cho trường hợp sử dụng đó."
+          ]
+        },
+        {
+          "id": "ltv-il-liquidation",
+          "title": "LTV, tổn thất không thường xuyên, và thanh lý",
+          "paragraphs": [
+            "Tỷ lệ khoản vay trên giá trị, thường được viết tắt là LTV, là phần giá trị tài sản đảm bảo được chấp nhận của một vị trí có thể vay được. Một LTV thấp hơn có nghĩa là có nhiều đệm hơn. Nếu giá trị tài sản đảm bảo giảm, vẫn còn khoảng trống trước khi khoản vay trở nên căng thẳng. Một LTV cao hơn mang lại tính thanh khoản ngay lập tức nhiều hơn và biên an toàn ít hơn. Trong các thị trường LP, điều này quan trọng hơn vì giá trị vị trí có thể biến động vì nhiều lý do cùng một lúc: giá cơ sở, cơ cấu quỹ, tích lũy phí và vị trí phạm vi.",
+            "Lỗ tạm thời, thường được viết tắt là IL, xảy ra khi hai tài sản trong một pool di chuyển tương đối với nhau và vị thế LP cuối cùng có giá trị thấp hơn so với việc nắm giữ những tài sản đó bên ngoài pool. Đối với người sử dụng LP làm tài sản thế chấp trên Avana, IL ảnh hưởng trực tiếp đến khả năng vay. Nó không làm cho tài sản thế chấp LP trở nên không an toàn theo định nghĩa, nhưng điều này có nghĩa là người dùng cần hiểu rằng các vị thế có tính động chứ không phải cố định.",
+            "Nếu giá trị tài sản đảm bảo giảm quá thấp so với khoản nợ, Avana khôi phục an toàn thông qua việc thanh lý. Với tài sản đảm bảo LP, việc này phức tạp hơn việc bán một token đơn giản. Có sự tích lũy phí, thay đổi thành phần tài sản, và cấu trúc thanh khoản theo từng sàn giao dịch. Avana đánh giá và thanh lý các vị thế LP dựa trên những thực tế đó thay vì xem chúng như các tài sản chung. Bài học thực tiễn cho người mới bắt đầu rất đơn giản. Hãy vay một cách thận trọng, đặc biệt là khi mới bắt đầu."
+          ]
+        },
+        {
+          "id": "first-steps",
+          "title": "A sensible first path",
+          "paragraphs": [
+            "Ngay cả khi được dùng làm tài sản đảm bảo, một vị trí LP vẫn tiếp tục kiếm phí và duy trì tiếp xúc với thị trường. Đó là lợi ích của hiệu quả sử dụng vốn. Đối với người mới bắt đầu, cách tiếp cận an toàn nhất là bắt đầu thận trọng với Avana: vay một cách vừa phải, sử dụng các loại pool đơn giản và ổn định trước, và chú ý đến cách sức khỏe vị trí thay đổi khi thị trường biến động. Khi bạn hiểu cách giá trị LP, nợ và ngưỡng thanh lý tương tác với nhau, mô hình trở nên dễ sử dụng hơn để quản lý một cách có trách nhiệm."
+          ]
+        }
+      ]
+    }
+  ]
+}

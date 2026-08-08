@@ -1,12 +1,13 @@
 import Image from "next/image"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 
-export default function LeverageGlanceShowcaseSection() {
-  return (
+export default async function LeverageGlanceShowcaseSection() {
+  return withMarketingI18n(['leverage-glance-showcase-section'], (
     <section className="deferred-viewport bg-inherit">
       <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
         <SectionEyebrow tone="rose">Core Product</SectionEyebrow>
-        <SectionTitle className="md:whitespace-nowrap">
+        <SectionTitle>
           Tools built to make looping easier for first-timers
         </SectionTitle>
       </div>
@@ -21,5 +22,5 @@ export default function LeverageGlanceShowcaseSection() {
         />
       </div>
     </section>
-  )
+  ))
 }

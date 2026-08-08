@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { useLocalizedPhrase, usePhraseMap, lookupPhrase } from "@/components/phrase-map-context"
 import { cn } from "@/lib/utils"
 
 type ApyStage = {
@@ -79,10 +80,14 @@ function buildHeatmap(stageIndex: number): HeatmapCell[][] {
 }
 
 export default function InvestApySection() {
+  const map = usePhraseMap()
+  const t = (text: string) => lookupPhrase(map, text)
   const [activeStageIndex, setActiveStageIndex] = useState(0)
   const activeStage = APY_STAGES[activeStageIndex]
   const heatmap = buildHeatmap(activeStageIndex)
   const touchStartX = useRef<number | null>(null)
+  const eyebrow = useLocalizedPhrase("Avana APY")
+  const sectionTitle = useLocalizedPhrase("Same Idle Cash with Higher APY Returns")
 
   const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     touchStartX.current = event.touches[0]?.clientX ?? null
@@ -115,9 +120,9 @@ export default function InvestApySection() {
     <section className="deferred-viewport bg-white site-section-gap">
       <div className="site-content-shell">
         <div className="space-y-4">
-          <SectionEyebrow tone="cyan">Avana APY</SectionEyebrow>
-          <SectionTitle className="max-w-none md:whitespace-nowrap">
-            Same Idle Cash with Higher APY Returns
+          <SectionEyebrow tone="cyan">{eyebrow}</SectionEyebrow>
+          <SectionTitle className="max-w-none">
+            {sectionTitle}
           </SectionTitle>
         </div>
 
@@ -125,10 +130,10 @@ export default function InvestApySection() {
           <div className="space-y-5">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <span className="text-[clamp(1.4rem,2vw,2rem)] font-semibold tracking-[-0.05em] text-[#163042]">
-                {activeStage.minApy.toFixed(1)}% to {activeStage.maxApy.toFixed(1)}%
+                {`${activeStage.minApy.toFixed(1)}% ${t("to")} ${activeStage.maxApy.toFixed(1)}%`}
               </span>
               <span className="text-sm text-[#728196]">
-                {activeStage.title}
+                {t(activeStage.title)}
               </span>
             </div>
 
@@ -182,11 +187,11 @@ export default function InvestApySection() {
                       active ? "text-[#01AACF]" : "text-[#9ea3aa]",
                     )}
                   >
-                    {stage.title}
+                    {t(stage.title)}
                   </h3>
                   {active ? (
                     <p className="mt-4 hidden max-w-[20rem] text-base leading-[1.7] text-[#6f7681] md:block">
-                      {stage.description}
+                      {t(stage.description)}
                     </p>
                   ) : null}
                 </button>
@@ -195,7 +200,7 @@ export default function InvestApySection() {
           </div>
 
           <p className="mt-4 text-sm leading-[1.7] text-[#6f7681] md:hidden">
-            {activeStage.description}
+            {t(activeStage.description)}
           </p>
         </div>
       </div>

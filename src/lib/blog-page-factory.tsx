@@ -1,7 +1,10 @@
 import type { Metadata } from "next"
 import { existsSync } from "fs"
 import { join } from "path"
+import { getLocale } from "next-intl/server"
+import { formatContentDate } from "@/lib/content-i18n/format-date"
 import BlogPostLayout from "@/components/blog-post-layout"
+import { loadBlogContent } from "@/lib/content-i18n/load-content"
 import { buildOgImagePath, SITE_NAME } from "@/lib/site"
 import { blogPosts, blogPostsBySlug, type BlogPostDefinition, type BlogSection } from "@/lib/blog-posts"
 
@@ -333,24 +336,47 @@ function getPostImage(image?: string) {
 }
 
 export function createBlogPage(slug: string) {
-  const post = getBlogPost(slug)
-  const sections = buildReadableSections(post)
-  const index = blogPosts.findIndex((entry) => entry.slug === slug)
-  const prevPost = index > 0 ? blogPosts[index - 1] : undefined
-  const nextPost = index >= 0 && index < blogPosts.length - 1 ? blogPosts[index + 1] : undefined
-  const tableOfContents = sections.map((section, sectionIndex) => ({
-    id: section.id,
-    title: section.title ?? (sections.length === 1 ? "Article" : `Section ${sectionIndex + 1}`),
-  }))
-  const sectionColorsById = Object.fromEntries(
-    sections.map((section, index) => [section.id, sectionTones[index % sectionTones.length]]),
-  )
-  const image = getPostImage(post.image)
-  function Page() {
+  const enPost = getBlogPost(slug)
+  const image = getPostImage(enPost.image)
+
+  async function generateMetadata(): Promise<Metadata> {
+    const locale = await getLocale()
+    const localizedPosts = (await loadBlogContent(locale)).posts as BlogPostDefinition[]
+    const fallbackIndex = blogPosts.findIndex((entry) => entry.slug === slug)
+    const post =
+      localizedPosts.find((entry) => entry.slug === slug) ??
+      (fallbackIndex >= 0 ? localizedPosts[fallbackIndex] : undefined) ??
+      enPost
+    return buildBlogMetadata(post as BlogPostDefinition)
+  }
+
+  async function Page() {
+    const locale = await getLocale()
+    const localizedPosts = (await loadBlogContent(locale)).posts as BlogPostDefinition[]
+    // English slug routes; loadBlogContent restores EN slugs on each locale file.
+    const bySlug = localizedPosts.find((entry) => entry.slug === slug) as BlogPostDefinition | undefined
+    const fallbackIndex = blogPosts.findIndex((entry) => entry.slug === slug)
+    const byIndex =
+      fallbackIndex >= 0 ? (localizedPosts[fallbackIndex] as BlogPostDefinition | undefined) : undefined
+    const post = bySlug ?? byIndex ?? enPost
+    const sections = buildReadableSections(post)
+    const index = localizedPosts.findIndex((entry) => entry.slug === slug)
+    const list = index >= 0 || byIndex ? localizedPosts : blogPosts
+    const i = index >= 0 ? index : fallbackIndex
+    const prevPost = i > 0 ? list[i - 1] : undefined
+    const nextPost = i >= 0 && i < list.length - 1 ? list[i + 1] : undefined
+    const tableOfContents = sections.map((section, sectionIndex) => ({
+      id: section.id,
+      title: section.title ?? (sections.length === 1 ? "Article" : `Section ${sectionIndex + 1}`),
+    }))
+    const sectionColorsById = Object.fromEntries(
+      sections.map((section, index) => [section.id, sectionTones[index % sectionTones.length]]),
+    )
+
     return (
       <BlogPostLayout
         title={post.title}
-        date={post.date}
+        date={formatContentDate(post.date, locale)}
         description={post.description}
         image={image}
         tableOfContents={tableOfContents}
@@ -365,5 +391,5 @@ export function createBlogPage(slug: string) {
     )
   }
 
-  return { post, metadata: buildBlogMetadata(post), Page }
+  return { post: enPost, generateMetadata, Page }
 }
