@@ -1,0 +1,2201 @@
+{
+  "architecture/collateral-factors": {
+    "meta": {
+      "title": "Onderpandfactoren",
+      "description": "Hoe een Borrow Spoke LP positie waarde omzet in leenbare capaciteit voordat het aan de Hub wordt gerapporteerd."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "how-it-works",
+        "title": "Hoe Het Werkt"
+      },
+      {
+        "id": "borrowable-value",
+        "title": "Leenbare Waarde"
+      },
+      {
+        "id": "notes",
+        "title": "Notities"
+      }
+    ],
+    "strings": [
+      "Onderpandfactoren",
+      "Hoe een Borrow Spoke LP positie waarde omzet in leenbare capaciteit voordat het aan de Hub wordt gerapporteerd.",
+      "Overzicht",
+      "Hoe Het Werkt",
+      "Leenbare Waarde",
+      "Notities",
+      "Hoe een Borrow Spoke bepaalt hoeveel van een LP positie meetelt voor de leencapaciteit.",
+      "Zekerheidsfactoren beantwoorden een smalle maar belangrijke vraag: hoeveel van deze LP-positie moet daadwerkelijk schuld ondersteunen? In Avana wordt dat antwoord niet alleen gehaald uit de hoofdmarktwaarde van de LP. De Lening-Spreekpost herbouwt eerst de positie en brengt kortingen aan, en past vervolgens de marktregels toe die bepalen welk deel van die waarde als bruikbare leencapaciteit kan worden meegerekend.",
+      "Het lightpaper stelt het principe vast. Deze pagina beschrijft de ontwikkelaar-gerichte volgorde die wordt gebruikt binnen een spokes voordat enige capaciteit aan de Hub wordt overgedragen.",
+      "De spokes accepteren alleen goedgekeurde pools of sjablonen. Als een positie niet overeenkomt met een opgegeven markdefinitie, bereikt deze nooit de latere waarderingsstadia die leencapaciteit produceren.",
+      "Het reconstrueert de LP positie, prijst de onderliggende activa en disconteert het resultaat naar een terugvorderbare onderpandwaarde. Die stap is waar de spil beweegt van een poolpositie die in theorie waardevol lijkt naar een waarde waartegen hij in de praktijk bereid is te lenen.",
+      "Het past marktspecifieke onderpandinstellingen toe en geeft de totale leencapaciteit door aan de Hub voor definitieve handhaving. De Hub gebruikt het resultaat, maar de spoke is de laag die in eerste instantie heeft besloten hoeveel van de LP mee mocht tellen.",
+      "De uitleenbare waarde is een afgeleid resultaat, geen vaste eigenschap die aan elke LP in de Spoke is gekoppeld. Twee posities kunnen in verschillende markten bestaan, verschillende terugvorderbare waarden genereren en verschillende zekerheidsinstellingen vrijgeven, zelfs als ze in eerste instantie vergelijkbaar lijken. Dat houdt de implementatie in lijn met het LP-specifieke acceptatiemodel dat elders in de documentatie wordt beschreven.",
+      "Een ondersteunde LP positie draagt bij aan de leencapaciteit alleen nadat de Spoke deze heeft erkend, gereconstrueerd en gedisconteerd, en de door de markt ingestelde zekerheidscontroles heeft toegepast.",
+      "• Exacte marktinstellingen live met de ondersteunde poolconfiguratie in plaats van deze overzichtspagina.",
+      "• Risicobanden op poolniveau zijn implementatiedetails, geen belofte dat alle LPs één universele LTV delen.",
+      "• Lees het gedrag van de collateral-factor samen met de health-factor en liquidatie-documenten als u monitoring- of herstel-logica implementeert."
+    ]
+  },
+  "architecture/health-factor": {
+    "meta": {
+      "title": "Gezondheidsfactor",
+      "description": "Hoe een Borrow Spoke de aangepaste zekerheidswaarde en schuld vergelijkt om te bepalen of een LP-gedekte rekening gezond of liquidabel is."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "calculation",
+        "title": "Berekening"
+      },
+      {
+        "id": "health-bands",
+        "title": "Monitorbanden"
+      },
+      {
+        "id": "response-path",
+        "title": "Reactiepad"
+      },
+      {
+        "id": "user-actions",
+        "title": "Gebruikersacties"
+      }
+    ],
+    "strings": [
+      "Gezondheidsfactor",
+      "Hoe een Borrow Spoke de aangepaste zekerheidswaarde en schuld vergelijkt om te bepalen of een LP-gedekte rekening gezond of liquidabel is.",
+      "Overzicht",
+      "Berekening",
+      "Monitorbanden",
+      "Reactiepad",
+      "Gebruikersacties",
+      "Hoe een Borrow Spoke de veiligheid van een account meet op basis van de aangepaste waarde van onderpand en uitstaande schulden.",
+      "De gezondheidsfactor is het compacte overzicht van Borrow Spoke over of een account nog genoeg aangepaste onderpand heeft om zijn schuld te ondersteunen. Het is geen apart risicomodel. Hetzelfde waarderingspad, de logica van de onderpandfactor en de liquidatieveronderstellingen die het lenen bepalen, bepalen ook de gezondheidsfactor die de interface en de liquidators aflezen.",
+      "Wanneer de gezondheid zo ver daalt dat de rekening niet langer voldoet aan de leenlimiet van de Spoke, wordt de positie verhandelbaar volgens de canonieke regels",
+      "Liquidatiekader",
+      "Gezondheid wordt berekend per Borrow Spoke. De teller is de aangepaste zekerheidswaarde van de gebruiker binnen die Spoke, wat betekent dat de positie al door reconstructie, prijsbepaling, korting op terugvorderbare waarde en de marktspecifieke zekerheidsinstellingen die door die Spoke worden gebruikt, is gegaan.",
+      "gezondheidsFactor = aangepasteZekerheidswaarde / uitstaandeSchuld",
+      "Als een gebruiker onderpand heeft in meer dan één Borrow Spoke, berekent elke spoke de gezondheid op zijn eigen lokale toestand. Extra marge in de ene spoke dekt niet automatisch een tekort in een andere, omdat het protocol risico's bevat op de markt waar het is gecreëerd.",
+      "Gezond:",
+      "de aangepaste onderpandwaarde blijft ruim boven de uitstaande schuld, zodat de rekening ruimte heeft voor normale marktschommelingen zonder directe tussenkomst.",
+      "Volglijst:",
+      "Het account doorstaat nog steeds de controles van de Spoke, maar de buffer is dun genoeg dat een kredietnemer zou moeten overwegen om schuld af te lossen, extra onderpand toe te voegen of anderszins de positie te verbeteren.",
+      "Liquideerbaar:",
+      "Het account heeft de liquidatiegrens bereikt of overschreden, dus het hersteltraject kan verschuiven van gebruikersactie naar door het protocol opgelegde afwikkeling.",
+      "Interfacewaarschuwingen kunnen conservatiever zijn dan de harde liquidatiedrempel. Ze zijn er om gebruikers te helpen eerder te handelen, niet om een tweede set protocollregels in te voeren.",
+      "Als de gezondheid verslechtert, is de eerste reactie nog steeds die van de lener. De rekening kan worden hersteld door schulden af te lossen, goedgekeurde LP zekerheden toe te voegen, of de positie op manieren te wijzigen die geldig blijven onder de gezondheidscontroles van de Spokes.",
+      "Zodra de gezondheid de liquidatiegrens overschrijdt, verplaatst de rekening zich uit de monitoringsfase en gaat deze naar het herstelpad. Liquidatieknooppunten en externe liquideerders kunnen vervolgens het vereiste zekerhedenpad afwikkelen om de solvabiliteit te herstellen volgens de liquidatieregels van de markt.",
+      "Meer lenen vermindert de gezondheid omdat de uitstaande schuld toeneemt ten opzichte van dezelfde onderpandbasis.",
+      "Het afbetalen van schulden verbetert de gezondheid onmiddellijk omdat de noemer in de verhouding daalt.",
+      "Het toevoegen van goedgekeurde onderpand kan de resterende ruimte vergroten als de spil het accepteert en waardeert.",
+      "Het terugvorderen van kosten, het opnemen van onderpand of het herschikken van posities kan de gezondheid verminderen en moet vóór uitvoering worden gecontroleerd tegen de toestand na de actie.",
+      "Onderpandfactoren"
+    ]
+  },
+  "architecture/incentives": {
+    "meta": {
+      "title": "Incentiveprogramma's",
+      "description": "Operationeel overzicht van Avana incentives en beloningen, waarin wordt uitgelegd hoe optionele campagnes zich verhouden tot het kernprotocol zonder canonieke architectuur te worden."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "program-types",
+        "title": "Programmatypes"
+      },
+      {
+        "id": "distribution-principles",
+        "title": "Verdelingsprincipes"
+      },
+      {
+        "id": "claiming-and-reconciliation",
+        "title": "Verzekeren & Verzoening"
+      },
+      {
+        "id": "status",
+        "title": "Huidige status"
+      }
+    ],
+    "strings": [
+      "Incentiveprogramma's",
+      "Operationeel overzicht van Avana incentives en beloningen, waarin wordt uitgelegd hoe optionele campagnes zich verhouden tot het kernprotocol zonder canonieke architectuur te worden.",
+      "Overzicht",
+      "Programmatypes",
+      "Verdelingsprincipes",
+      "Verzekeren & Verzoening",
+      "Huidige status",
+      "Optionele belonings- en campagneniveau dat bovenop Avana-implementaties kan zitten zonder de kernmechanica van het uitlenen te veranderen.",
+      "Incentives zijn een overlay, geen onderdeel van de kern van het lenen. Het protocol wordt nog steeds bepaald door LP waardering, Borrow Spoke risicocontroles, Hub liquiditeit en liquidatie. Campagnes kunnen deelname aanmoedigen, maar ze veranderen die mechanismen niet.",
+      "Campagnes zijn operationeel en tijdgebonden. Deze pagina beschrijft hoe ze zich verhouden tot de rest van Avana. Het impliceert niet dat een specifiek beloningsprogramma op elke implementatie actief is.",
+      "• Campagnes gericht op leveranciers die het kapitaal in de Lend Spoke of verbonden liquiditeitslaag verdiepen.",
+      "• Campagnes gericht op de lener die gezond lenen met LP ondersteunen aanmoedigen.",
+      "• Operator- of ecosysteemcampagnes gekoppeld aan testing, integraties of risicogerelateerde ondersteunende activiteiten.",
+      "Wanneer er prikkels bestaan, moeten deze begrijpelijk, controleerbaar en gescheiden van de kernlogica van risico zijn. De berekening van beloningen kan afhangen van activiteit, duur of campagneregels, maar mag niet veranderen hoe Avana onderpand waardeert of bepaalt wie in aanmerking komt voor liquidatie.",
+      "Campagnes kunnen gewenst gedrag belonen. Ze zouden geen onveilige hefboomwerking moeten aanmoedigen of de werkelijke economie van LP-ondersteunde leningen verbergen.",
+      "Claimschema's, vestigingsschema's en reconciliatiemethoden zijn specifiek voor de campagne. Ze kunnen on-chain worden afgehandeld, via een speciale beloningscontroller, of via off-chain boekhouding die door de campagneoperator wordt gepubliceerd.",
+      "Integratoren moeten altijd het actieve claimpad en de geschiktheidsregels verifiëren voor de uitrol waarop zij zich richten.",
+      "Behandel incentives als specifieke voor de inzet en specifieke voor het seizoen. Als een campagne actief is, moeten de details daarvan afzonderlijk worden aangekondigd van de architectuurdocumenten met expliciete datums, regels en distributievoorwaarden."
+    ]
+  },
+  "architecture/lend-spoke": {
+    "meta": {
+      "title": "Lend Spoke",
+      "description": "Hoe de Lend Spoke geldschieteractiva accepteert en deze via de Hub naar LP-collateral leenmarkten leidt."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "capital-entry-point",
+        "title": "Kapitaaltoegangspunt"
+      },
+      {
+        "id": "risk-adjusted-yield",
+        "title": "Risico-gecorrigeerd rendement"
+      },
+      {
+        "id": "dynamic-risk-controls",
+        "title": "Dynamische Risicobeheersing"
+      }
+    ],
+    "strings": [
+      "Lend Spoke",
+      "Hoe de Lend Spoke geldschieteractiva accepteert en deze via de Hub naar LP-collateral leenmarkten leidt.",
+      "Overzicht",
+      "Kapitaaltoegangspunt",
+      "Risico-gecorrigeerd rendement",
+      "Dynamische Risicobeheersing",
+      "Aanvoerkapitaal",
+      "Kredietverstrekkers brengen grote activa zoals ETH, BTC en stablecoins binnen via de Lend Spoke in plaats van direct met LP-onderpand te interageren.",
+      "Route door de hub",
+      "De Lend Spoke brengt die liquiditeit naar de Hub, waar één reserve-laag meerdere LP-collaterale leenmarkten kan ondersteunen.",
+      "Vermogenslening Spaken",
+      "Leen Spokes en trek vervolgens uit Hub-liquiditeit terwijl je de LP-waardering, liquidatieafhandeling en markt-specifieke risicobeheersing binnen elke spoke houdt.",
+      "Samenstelling van het pool en veranderende voorraadbalans",
+      "Handelsvolume en gerealiseerde opbrengst uit vergoedingen",
+      "Prijsafwijking tussen gekoppelde activa",
+      "Schommelingsregimeverschuivingen en stabiliteit van de peg",
+      "Beschikbare liquiditeitsdiepte tijdens stressvolle afwikkelingen",
+      "Het toegangspunt voor kredietverleners dat leverancierskapitaal naar de Hub verplaatst voor gebruik door LP-gedekte leningenmarkten.",
+      "De Lend Spoke is het belangrijkste kapitaalinnametraject voor kredietverstrekkers. Deposanten leveren hier activa zoals ETH, BTC, en grote stablecoins, en die liquiditeit wordt vervolgens naar de Hub geleid zodat Borrow Spokes leningen kunnen financieren met ondersteunde LP-onderpand zonder dat van kredietverstrekkers verwacht wordt dat zij nadenken over de AMM-positie-mechanica.",
+      "Deze scheiding is opzettelijk. Het pad van de kredietgever gaat over het leveren van uitleenbare activa en het ontvangen van de economische voordelen van de uitleenzijde, terwijl de Borrow Spokes het rommelige werk van LP waardering, toelaatbaarheid, gezondheidscontroles en liquidatieregels voor elke geregistreerde zekerheidsfamilie beheren.",
+      "Rol in de stack:",
+      "Lend Spoke geeft toe dat het kapitaal uitleent. Borrow Spokes houden LP-specifiek risico lokaal voor elke markt, zodat één uitleenpool niet één wereldwijd onderpandmodel nodig heeft.",
+      "Lenersstortingen komen eerst via de Lend Spoke binnen en gaan vervolgens naar een gedeelde Hub-reservelaag. Dat betekent dat kapitaal niet één pool tegelijk door elke ondersteunde LP markt hoeft te worden verdeeld, ook al blijven de onderwritingregels aan de leenzijde gescheiden.",
+      "Vroeg in de levenscyclus van het protocol kan de Hub-liquiditeit ook worden aangevuld door Aave v4 kredietlijnen. Na verloop van tijd kunnen Lend Spoke-stortingen een groter aandeel vormen van het native leenvermogen van het protocol.",
+      "LP onderpand is geen statische voorraad. Terwijl een lening openstaat, kan de onderliggende positie blijven handelen en handelskosten verdienen, en dat is belangrijk voor hoe de kant van de leningnemer wordt gemodelleerd. Het protocol behandelt daarom niet elke LP als een dode balans die alleen met de tokenprijzen beweegt.",
+      "Dat onderscheid beïnvloedt ook de kredietkant. Kredietvoorwaarden kunnen weerspiegelen dat sommige LP markten kosten genereren en terugdraaiingsgedrag vertonen dat verschilt van niet-renderende zekerheden, en Aave v4 risicopremiegereedschappen kunnen die verschillen uitdrukken wanneer het beleid dit toelaat. De werkelijke rendementen van de kredietverstrekker hangen nog steeds af van de actuele configuratie en de marktsituatie, niet van een vaste aanname van deze pagina.",
+      "Voor kredietverstrekkers:",
+      "stortingen via het Lend Spoke-fondskrediet dat wordt onderschreven op basis van LP posities waarvan de terugvorderbare waarde, gezondheidslogica en liquidatiepaden allemaal zijn gedefinieerd in Borrow Spokes.",
+      "De uitleenkant is afhankelijk van dat de leenkant binnen een risicomodel blijft dat mee kan bewegen met de markt. Alleen vaste LTV-stijl instellingen zijn niet voldoende voor LP onderpand, zodat het kader kan reageren op veranderingen in de samenstelling van het fonds, volume, afwijking, volatiliteit, peg-gedrag en afwikkelingsdiepte naarmate die omstandigheden veranderen.",
+      "In gespannen omstandigheden kunnen limieten en gerelateerde controles worden aangescherpt om de liquiditeit van de kredietverstrekker te beschermen. In rustigere omstandigheden kunnen diezelfde controles worden aangepast binnen goedgekeurde beleidsgrenzen. Het doel is niet om voortdurend bij te stellen om wille van bijstellen, maar om ervoor te zorgen dat de kredietverlenende laag een veranderende LP markt niet moet behandelen alsof er niets is veranderd.",
+      "Signalen die risicobijwerkingen kunnen informeren",
+      "Het kapitaal van de geldschieter volgt één toegangsroute, maar LP markten delen niet één risicoprofiel. Borrow Spokes kan marktspecifieke parameters lokaal houden, waardoor verschillende LP families onder verschillende instellingen kunnen opereren zonder de ervaring van de geldschieter te fragmenteren."
+    ]
+  },
+  "architecture": {
+    "meta": {
+      "title": "Protocolarchitectuur - Borrow Spoke",
+      "description": "Leen Spoke-architectuur voor LP-ondersteund lenen, inclusief lenersstromen, Hub-interactie en verantwoordelijkheden aan de spoke-kant voor onderpand."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "user-experience",
+        "title": "Gebruikerservaring"
+      },
+      {
+        "id": "example-flow",
+        "title": "Voorbeeldstroom"
+      },
+      {
+        "id": "three-tier-architecture",
+        "title": "Drie-lagenarchitectuur"
+      },
+      {
+        "id": "data-flow",
+        "title": "Datastroom"
+      },
+      {
+        "id": "spoke-responsibilities",
+        "title": "Spoke-verantwoordelijkheden"
+      },
+      {
+        "id": "hub-role",
+        "title": "Aave v4 Hub Rol"
+      }
+    ],
+    "strings": [
+      "Protocolarchitectuur - Borrow Spoke",
+      "Leen Spoke-architectuur voor LP-ondersteund lenen, inclusief lenersstromen, Hub-interactie en verantwoordelijkheden aan de spoke-kant voor onderpand.",
+      "Overzicht",
+      "Gebruikerservaring",
+      "Voorbeeldstroom",
+      "Drie-lagenarchitectuur",
+      "Datastroom",
+      "Spoke-verantwoordelijkheden",
+      "Aave v4 Hub Rol",
+      "Leen Spoke",
+      "De uitvoeringslaag gericht op de lener die LP onderpand accepteert, risico meet en leent tegen Hub-liquiditeit.",
+      "De Borrow Spoke is de plaats waar een LP positie bruikbaar wordt als onderpand. Het neemt het beheer van de ondersteunde positie over voor boekhoudkundige doeleinden, leest de gegevens die nodig zijn om die positie te begrijpen, waardeert deze volgens het orakel van de spoke en de risicoregels, en maakt de resulterende leencapaciteit beschikbaar voor het lenerspad.",
+      "Dat maakt de Borrow Spoke heel anders dan een generieke onderpandomhulsel. Het moet begrijpen hoe een genoteerde LP is opgebouwd, welke waarde herstelbaar is bij een gespannen afwikkeling, hoe de gezondheid in de loop van de tijd moet worden gemonitord, en welk liquidatiepad van toepassing is als het account niet langer voldoet aan de veiligheidsvereisten van de spoke.",
+      "Reikwijdte:",
+      "LP onderpand verschilt van statische activa, dus de Borrow Spoke zet pool-samenstelling, prijsklasse, vergoedingen en marktomstandigheden om in kredietparameters en gezondheidsregels voor de markten die het vermeldt. De Lend Spoke regelt het kapitaaltoetreding. De Borrow Spoke regelt LP ondertekening, monitoring en liquidatie voor zijn eigen markten.",
+      "Leenstroom",
+      "Kredietnemers communiceren met één spaakgerichte interface gedurende de volledige levenscyclus van een account: goedgekeurde storting LP onderpand, beschikbare capaciteit inspecteren, schuld opnemen, saldi terugbetalen en vergoedingen opeisen wanneer de markt het toestaat. De interface kan consistent blijven, zelfs wanneer de onderliggende LP-formaten verschillen, omdat de Spoke de AMM-specifieke afhandeling absorbeert.",
+      "Transactiescontext:",
+      "Acties moeten updates van gezondheidsfactoren, de impact op de leenlimiet en de staat van het onderpand samen met de transactie weergeven, zodat de lener het risico na de actie ziet in plaats van het achteraf te moeten afleiden.",
+      "Typische stroom aan de kant van de kredietnemer:",
+      "Stap 1: Aanvangstorting",
+      "De kredietnemer stort een goedgekeurde LP-positie in de Borrow Spoke. De positie blijft actief in de AMM, maar de spoke registreert deze nu als onderpand en begint de gegevens bij te houden die nodig zijn voor waardering en gezondheid.",
+      "Stap 2: Leencapaciteit Berekenen",
+      "De Borrow Spoke reconstrueert de positie, prijst de onderliggende blootstelling, past de relevante onderpandfactor toe en past vervolgens een eventuele poolspecifieke risicobehandeling toe. Het resultaat van dat proces is de leen capaciteit die aan de rekening wordt getoond.",
+      "Stap 3: Meerdere activa lenen",
+      "De lener trekt activa aan tegen de capaciteit die door de spoke is goedgekeurd. Nadat de lening is uitgevoerd, werkt de spoke de schuldenweergave van de rekening bij en berekent de gezondheid opnieuw met dezelfde markregels die het onderpand hebben toegelaten.",
+      "Stap 4: Voeg meer onderpand toe",
+      "Extra goedgekeurde LP posities kunnen later worden toegevoegd. Elke nieuwe positie wordt geëvalueerd volgens de lijst-, prijs- en risicoregels van de Spokes voordat de bijdrage ervan wordt opgenomen in de totale capaciteit.",
+      "Het pad van de lener is gemakkelijker te begrijpen als je scheidt wie de actie start, welke laag het LP onderpand interpreteert, en welke laag contant geld levert:",
+      "Top: Leners",
+      "Leners bellen de spoke om LP onderpand te storten, geld te lenen, schulden af te lossen en vergoedingen te innen. Vanuit hun perspectief is de spoke het operationele toegangspunt voor de rekening.",
+      "Midden: Geleende Spoke (Avana)",
+      "Deze laag vertaalt AMM-specifieke positiedata naar de uitleenstatus. Het beheert LP bewaring, berekent positieg-specifiek risico, handhaaft gezondheidscontroles en coördineert het liquidatiepad wanneer het onderpand de schuld niet langer dekt.",
+      "Onderkant: Aave v4 Hub & Gerouteerd Kapitaal",
+      "De Hub is de gedeelde liquiditeitsbron en boekhoudlaag onder de spoke. Het via Lend-Spoke gerouteerde kapitaal en andere geconfigureerde Hub-bronnen financieren de opnames die de Borrow Spoke autoriseert.",
+      "Het belangrijkste gegevenspad loopt van LP staat naar spoke-accounting naar Hub-likiditeitsacties. In de praktijk ziet het er zo uit:",
+      "LP Positiemanager brengt onderpand over naar de Lening Spoke",
+      "- De spoke slaat de positieverwijzing op, bewaart de metadata die het nodig heeft en begint die status te gebruiken voor waardering en gezondheidsbewaking.",
+      "Leners halen activa op via de Lening Spoke",
+      "- Zodra de account capaciteit heeft, vraagt de spoke liquiditeit aan bij een of meer geconfigureerde Hubs.",
+      "Schuld wordt weergegeven als schuld aandelen",
+      "- De wisselkoers wordt samengesteld onder het geconfigureerde rentevoetmodel, terwijl de hub de schulden- en zekerheidsstatus per lener synchroon houdt.",
+      "Verliquidaties vinden plaats wanneer vereist",
+      "- Hubs, Avana liquidatiepunten, of externe liquidators kunnen ervoor zorgen dat de Borrow Spoke de LP in het juiste afwikkelpad verplaatst en de schuld afwikkelt via de juiste liquidatiereeks.",
+      "Hubinteractie",
+      "Lenen:",
+      "de Borrow Spoke doet een draw-oproep naar de Hub wanneer een lener schuld opent of verlengt",
+      "Terugbetalen:",
+      "de Borrow Spoke doet een restore-oproep naar de Hub wanneer de schuld wordt terugbetaald",
+      "Gezondheidscontrole:",
+      "Hub belt naar Borrow Spoke's",
+      "krijgOnderpandGegevens",
+      "om de huidige LP onderpandwaarde van de Spoke op te halen",
+      "Liquidatie:",
+      "Als het totale spreekrisico de drempel overschrijdt, kan de Hub bellen",
+      "afhandelingVerkoop",
+      "Onderdeel",
+      "Verantwoordelijkheid",
+      "Huur Spoke (per AMM)",
+      "Houdt positiegegevens bij, het totale onderpand in USD en de schuld in USD voor dat AMM familie, en maakt bekend",
+      "krijgGebruikerAggregaat(gebruiker)",
+      "LiquidatieAdapter",
+      "Voert boetetoerekening, zachte afwikkeling en harde liquidatie uit voor de Borrow Spoke zonder elke LP-indeling door één algemene liquidatieroutine te dwingen.",
+      "LiquidatieAdapter Functies",
+      "pasBoeteToe(gebruiker)",
+      "softUnwind(gebruiker, maxUsd)",
+      "- voert een gedeeltelijke vermindering uit, incasseert de opbrengsten, ruilt indien nodig en betaalt de schuld terug tot het gevraagde bedrag",
+      "liquideren(gebruiker)",
+      "Evenementen: BoeteOpgelopen, ZachteAfwikkelingUitgevoerd, HardeLiquidatieUitgevoerd",
+      "De Borrow Spoke houdt zelf geen kredietverstrekkersreserves aan. Het is afhankelijk van de Hub voor gebundelde liquiditeit, reserverapportage en de balanszijde van het lenen, terwijl de spoke zich blijft concentreren op risico-beslissingen die specifiek zijn voor onderpand.",
+      "Kapitaaltoevoer",
+      "Activa zoals USDC, DAI en ETH kunnen binnenkomen via Hub-verbonden kapitaallagen, inclusief de Lend Spoke. De Hub beheert het gedeelde fonds en de boekhouding ervan, terwijl de Borrow Spoke bepaalt welk deel van die liquiditeit een LP-gedekte rekening veilig kan benutten.",
+      "Kredietlijnen",
+      "De Hub verstrekt elke Borrow Spoke een kredietlijn die beperkt hoeveel gedeelde liquiditeit die spoke kan opnemen. Dit houdt LP-specifieke underwriting geïsoleerd zonder afstand te doen van de kapitaalefficiëntie van een gedeelde reserve-laag.",
+      "Onafhankelijke gezondheidsfactoren",
+      "Een gebruiker met LP onderpand in meerdere leen-Spokes heeft een afzonderlijke gezondheidsfactor in elke Spoke. Overschotten in de ene markt redden niet automatisch een tekort in een andere, wat risico inhoudt voor de markt die het heeft gecreëerd."
+    ]
+  },
+  "architecture/platform-fees": {
+    "meta": {
+      "title": "Platformkosten",
+      "description": "Beleid voor operationele vergoedingen voor Avana interfaces, inclusief hoe interfacekosten verschillen van protocoleconomie, hoe ze worden bekendgemaakt en hoe het huidige beleid kan worden geverifieerd."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "interface-vs-protocol",
+        "title": "Interface versus Protocol"
+      },
+      {
+        "id": "disclosure",
+        "title": "Openbaarmaking"
+      },
+      {
+        "id": "treasury-usage",
+        "title": "Schatkistgebruik"
+      },
+      {
+        "id": "integration-notes",
+        "title": "Integratienotities"
+      }
+    ],
+    "strings": [
+      "Platformkosten",
+      "Beleid voor operationele vergoedingen voor Avana interfaces, inclusief hoe interfacekosten verschillen van protocoleconomie, hoe ze worden bekendgemaakt en hoe het huidige beleid kan worden geverifieerd.",
+      "Overzicht",
+      "Interface versus Protocol",
+      "Openbaarmaking",
+      "Schatkistgebruik",
+      "Integratienotities",
+      "Beleid voor vergoedingen op interface-niveau en richtlijnen voor openbaarmaking voor Avana frontends en dienstoppervlakken.",
+      "Deze pagina gaat over interfacebeleid, niet over hoe lenen werkt in de kerncontracten. Avana kan frontend- of servicekosten in rekening brengen op officiële oppervlakken, maar die kosten zijn afzonderlijk van de onderpand-, oracle- en liquidatieregels van het protocol.",
+      "Exacte tariefpercentages, vrijstellingen en uitrolstatus zijn operationele instellingen en moeten worden gecontroleerd in de live-interface of in de release-materialen voordat erop wordt vertrouwd.",
+      "De kerncontracten van Avana regelen de toelating van LP, de leenmogelijkheden en het gedrag bij liquidatie. Interfacekosten, indien ingeschakeld, zitten bovenop die contracten als frontend-bedrijfsbeleid in plaats van als een wijziging van de leen- of risicomotor zelf.",
+      "• Protocol-economie bepaalt de schuldenopbouw, de behandeling van onderpand en de liquidatie-uitkomsten.",
+      "• Interfacekosten zijn een operationele keuze die gekoppeld is aan een specifieke frontend of servicepad.",
+      "• Directe contractintegraties kunnen andere veronderstellingen over kosten volgen dan de officiële UI.",
+      "Elke interfacevergoeding moet duidelijk worden weergegeven vóór de handtekening, zodat bouwers en gebruikers deze kunnen onderscheiden van gaskosten, swapkosten en schuld- of liquidatie-effecten op protocolleniveau.",
+      "Goede openbaarmaking moet de bron van de vergoeding identificeren, aangeven of deze optioneel of interface-specifiek is, en waar de opbrengsten naartoe gaan.",
+      "Als interfacekosten worden geïnd, financieren ze meestal productactiviteiten zoals infrastructuur, monitoring, beveiligingswerk, documentatie en ondersteuning. Bestuur kan die beleidslijnen na verloop van tijd formaliseren of herzien.",
+      "Het gebruik van de schatkist moet worden gepubliceerd als operationele rapportage, en niet worden afgeleid uit de onderpandarchitectuur van het protocol.",
+      "• Aannemers moeten het huidige vergoedingsbeleid verifiëren voordat ze de kosten voor de eindgebruiker opgeven.",
+      "• Vermijd het hard-coderen van aannames over interfacekosten in protocolintegraties, tenzij het beleid formeel van versie is gewijzigd.",
+      "• Bij het documenteren van integraties, houd het vergoedingbeleid apart van de leenruimte en liquidatielogica."
+    ]
+  },
+  "getting-started/borrow-assets": {
+    "meta": {
+      "title": "Activa Lenen",
+      "description": "Hoe lenen werkt met LP onderpand in Avana, van controles van de capaciteit aan de spreekzijde tot Hub-liquiditeit en gezondheidsvalidatie na het lenen."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "borrow-checks",
+        "title": "Kontrollen lenen"
+      },
+      {
+        "id": "health-check",
+        "title": "Gezondheidscontrole"
+      },
+      {
+        "id": "internal-accounting",
+        "title": "Interne Boekhouding"
+      },
+      {
+        "id": "borrowable-assets",
+        "title": "Uitleenbare activa"
+      },
+      {
+        "id": "borrowing-power",
+        "title": "Leenkracht"
+      }
+    ],
+    "strings": [
+      "Activa Lenen",
+      "Hoe lenen werkt met LP onderpand in Avana, van controles van de capaciteit aan de spreekzijde tot Hub-liquiditeit en gezondheidsvalidatie na het lenen.",
+      "Overzicht",
+      "Kontrollen lenen",
+      "Gezondheidscontrole",
+      "Interne Boekhouding",
+      "Uitleenbare activa",
+      "Leenkracht",
+      "Leen op basis van de gecombineerde capaciteit van toegestane LP posities terwijl de Hub de gedeelde liquiditeitslaag biedt.",
+      "Leningen beginnen pas nadat de Lening-spoke de LP posities op de rekening al heeft erkend en gewaardeerd. Op dat moment vraagt de gebruiker het protocol niet om opnieuw vanaf nul te herbeoordelen. Ze vragen om een deel van de leenruimte te gebruiken die de spoke al heeft erkend.",
+      "Om een lening succesvol te laten zijn, moet de spoke bevestigen dat er nog genoeg beschikbare capaciteit is, moet de rekening gezond blijven nadat nieuwe schulden zijn toegevoegd, en moet de Hub daadwerkelijk het gevraagde actief beschikbaar hebben om op te nemen.",
+      "Belangrijk:",
+      "Lenen creëert schuld die in de loop van de tijd oploopt. Capaciteit kan veranderen met de marktomstandigheden, dus een veilige buffer is belangrijk, zelfs nadat een lening is voltooid.",
+      "Positie- en eigendomcontroles:",
+      "De Spoke zorgt ervoor dat de posities nog steeds toebehoren aan de kredietnemer, nog steeds door de rekening worden erkend en nog steeds binnen de goedgekeurde onderpandenset vallen.",
+      "Capaciteitscontrole:",
+      "De gevraagde schuld wordt getest tegen de resterende totale leencapaciteit van de gebruiker binnen die Borrow Spoke.",
+      "Hubliquiditeit en kapitaalscontroles:",
+      "zelfs als onderpand voldoende is, kan het verzoek toch mislukken als de Hub niet genoeg beschikbare liquiditeit heeft of als limieten op activaniveau of protocolniveau verdere leningen blokkeren.",
+      "Gezondheidscontrole na lening:",
+      "De gezondheidscontrole is geen aparte snelkoppelingsregel. Het gebruikt hetzelfde waarderingspad en dezelfde risico-instellingen die al gelden voor onderpandfactoren en liquidatiegeschiktheid. Lenen gaat alleen door als het account nog steeds voldoende aangepast onderpandwaarde heeft nadat de extra schuld is toegepast.",
+      "gezondheidsFactor = aangepasteZekerheidswaarde / uitstaandeSchuld",
+      "De aangepaste onderpandwaarde omvat reeds conservatieve LP waardering, onderpandfactoren en risico-controles op poolniveau. Zie",
+      "Gezondheidsfactor",
+      "Onderpandfactoren",
+      "Schuldaandelen:",
+      "Hub-tekening:",
+      "De Borrow Spoke vraagt het activum aan bij de Hub pas nadat de spoke de borg, capaciteit en gezondheidscontroles heeft voltooid.",
+      "Statusupdate:",
+      "de gebruiker ontvangt het geleende activum, en de hub registreert de resulterende schuldstatus zodat toekomstige gezondheidscontroles, terugbetalingen en liquidatielogica allemaal naar dezelfde bijgewerkte account verwijzen.",
+      "Uitleenbare activa worden geconfigureerd op het Hub-niveau. Ze zijn geen vaste eigenschap van het onderpand zelf. In de praktijk beginnen implementaties meestal met belangrijke stablecoins en andere liquide activa voordat het assortiment wordt uitgebreid.",
+      "Controleer de actieve implementatie of interfaceconfiguratie voor de exacte activa die momenteel kunnen worden geleend.",
+      "Leenkracht is de som van de goedgekeurde LP-positie bijdragen binnen één Borrow Spoke. Het wordt niet toegewezen aan een pool in het abstract, en het is geen enkel ongedeeld rekeningnummer losgekoppeld van de onderliggende posities.",
+      "Praktische regel:",
+      "Hoe dichter je bij de maximale capaciteit leent, hoe minder ruimte je hebt voor prijsschommelingen, volatiliteitspieken en waardeverliesaanpassingen die te herstellen zijn.",
+      "Aanbevolen:",
+      "Liquidatiekader"
+    ]
+  },
+  "getting-started/claim-lp-fees": {
+    "meta": {
+      "title": "Vordering LP Kosten",
+      "description": "Eis opgebouwde LP vergoedingen op in Avana zonder de LP hoofdsom volledig af te wikkelen, zolang de rekening gezond blijft na de claim."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "how-it-works",
+        "title": "Hoe Het Werkt"
+      },
+      {
+        "id": "health-checks",
+        "title": "Gezondheidscontroles"
+      },
+      {
+        "id": "fee-accounting",
+        "title": "Vergoedingenadministratie"
+      },
+      {
+        "id": "key-benefits",
+        "title": "Belangrijkste voordelen"
+      }
+    ],
+    "strings": [
+      "Vordering LP Kosten",
+      "Eis opgebouwde LP vergoedingen op in Avana zonder de LP hoofdsom volledig af te wikkelen, zolang de rekening gezond blijft na de claim.",
+      "Overzicht",
+      "Hoe Het Werkt",
+      "Gezondheidscontroles",
+      "Vergoedingenadministratie",
+      "Belangrijkste voordelen",
+      "Claim vergoeding zonder de onderpandpositie te sluiten, op voorwaarde dat de rekening nog steeds slagen voor de gezondheidscontroles nadat de vergoedingen zijn afgetrokken.",
+      "Avana behandelt hoofdlijke liquiditeit en opgebouwde vergoedingen als verschillende onderdelen van dezelfde LP-positie. Die scheiding is wat het mogelijk maakt om fee-inkomsten te realiseren zonder noodzakelijkerwijs de hoofdlijke liquiditeit die nog steeds als onderpand wordt gebruikt, af te breken.",
+      "Een vordering op kosten beïnvloedt nog steeds de onderpandstaat, dus het wordt gecontroleerd zoals elke andere actie die erkende waarde van de rekening verwijdert. Het is niet slechts een gemakkelijke knop die bovenop het protocol is gelegd.",
+      "Het protocol gebruikt een locatie-geschikt kostenincassopad voor de LP-positie. Voor geconcentreerde liquiditeitsposities kan dat eruitzien als een incassostijl oproep die het kapitaal op zijn plaats laat. Voor fungibele LP's wordt het eigen kosten-claimpad van de locatie gebruikt wanneer de locatie er een blootstelt.",
+      "De belangrijke protocolniveau-regel is consistent over LP typen: claim alleen het vergoedingselement, houd de hoofdsompositie actief wanneer mogelijk, en synchroniseer de resulterende positietoestand terug in de Borrow Spoke.",
+      "De Borrow Spoke controleert de gezondheid rond een vergoedingsclaim omdat opgebouwde vergoedingen nog steeds kunnen meetellen voor de erkende onderpandbuffer totdat ze uit de positie worden verwijderd.",
+      "Als het verwijderen van de opgegeven vergoedingswaarde het account te dicht bij of voorbij de toegestane leenlimiet zou brengen, moet het claimpad worden geblokkeerd totdat de schuld is verminderd of er meer onderpand is toegevoegd.",
+      "Oracle geeft afzonderlijke hoofdliquiditeit weer van opgebouwde vergoedingen zodat het kredietmodel ze naast elkaar kan volgen in plaats van te doen alsof de LP één enkel tokenbalans is.",
+      "Die boekhoudkundige verdeling is ook van belang bij liquidatie, waar opgebouwde vergoedingen kunnen worden toegepast voordat het protocol het kapitaal LP liquiditeit moet afwikkelen.",
+      "Prijsorakels",
+      "Liquidatiekader",
+      "Verdiende vergoedingen kunnen worden gerealiseerd zonder de onderpandenpositie volledig te sluiten",
+      "Dezelfde risicomotor die de LP prijst, voorkomt ook dat vergoedingseisen te veel waarde weghalen"
+    ]
+  },
+  "getting-started/manage-loans": {
+    "meta": {
+      "title": "Leningen Beheren",
+      "description": "Beheer openstaande schulden tegen LP onderpand in Avana door de gezondheid in de gaten te houden, posities zorgvuldig bij te werken en binnen de spoke- en Hub-limieten te blijven."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "borrowing-more",
+        "title": "Meer lenen"
+      },
+      {
+        "id": "monitoring-health",
+        "title": "Gezondheidsmonitoring"
+      },
+      {
+        "id": "operational-control",
+        "title": "Operationele Controle"
+      },
+      {
+        "id": "position-changes",
+        "title": "Positiewijzigingen"
+      },
+      {
+        "id": "key-constraints",
+        "title": "Belangrijke Beperkingen"
+      }
+    ],
+    "strings": [
+      "Leningen Beheren",
+      "Beheer openstaande schulden tegen LP onderpand in Avana door de gezondheid in de gaten te houden, posities zorgvuldig bij te werken en binnen de spoke- en Hub-limieten te blijven.",
+      "Overzicht",
+      "Meer lenen",
+      "Gezondheidsmonitoring",
+      "Operationele Controle",
+      "Positiewijzigingen",
+      "Belangrijke Beperkingen",
+      "Het beheren van een open lening betekent dat onderpand, schuld en locatie staat worden behandeld als één actieve positie in plaats van aparte handelingen.",
+      "Een actieve Avana lening blijft bewegen, zelfs wanneer de lener niets doet. LP voorraden verschuiven, kosten lopen op, markten herprijzen en de beschikbare Hub-liquiditeit kan veranderen. Goed leningenbeheer betekent dat je deze bewegende onderdelen samen volgt in plaats van alleen naar het schuldbedrag afzonderlijk te kijken.",
+      "Meer lenen is alleen mogelijk wanneer de Lening-Spoke nog ongebruikte capaciteit toont na het herwaarderen van de huidige posities en de Hub nog steeds het gevraagde activum kan leveren.",
+      "Deelbetaling beweegt in de andere richting. Het vermindert de schuld onmiddellijk, verbetert de gezondheid en creëert vaak de ruimte die later nodig is voor acties zoals opnames, herschikking of vervanging van onderpand.",
+      "Gezond:",
+      "De aangepaste onderpandwaarde blijft ruimschoots boven de schuld, waardoor er ruimte is voor gewone prijsschommelingen en positieafwijkingen.",
+      "Volglijst:",
+      "Het account slaagt nog steeds voor controles, maar de resterende marge wordt dun. Dit is het moment om terug te betalen, goedgekeurde onderpanden toe te voegen, of de blootstelling te verminderen voordat de omstandigheden verslechteren.",
+      "Liquideerbaar:",
+      "schuld is te dicht bij of voorbij de toegestane leenlimiet gekomen, dus het liquidatiekader mag het overnemen.",
+      "Voor de canonieke definitie, gebruik",
+      "Gezondheidsfactor",
+      "Betaal een deel van de schuld terug om de buffer opnieuw op te bouwen",
+      "Voeg meer goedgekeurde LP onderpand toe aan dezelfde Lening Spoke",
+      "Schrijf alleen opgebouwde vergoedingen toe wanneer de rekening nog steeds slaagt voor de gezondheidscontroles na de claim",
+      "Neem alleen onderpand op of wijzig de omvang ervan wanneer de resterende rekening nog steeds gezond blijft",
+      "Posities met geconcentreerde liquiditeit moeten mogelijk opnieuw worden ingesteld of vervangen naarmate de marktprijs beweegt. Vervangbare LP posities kunnen worden aangepast of gedraaid binnen de ondersteunde onderpoolsset.",
+      "Het protocol behandelt die bewegingen niet als cosmetische aanpassingen. Elke wijziging die LP blootstelling verandert, wordt teruggevoerd via dezelfde toelating, waardering en gezondheidscontroles die worden gebruikt voor stortingen en leningen.",
+      "Nevenveranderingen mogen de resterende schuld niet boven de toegestane spaakcapaciteit laten uitkomen",
+      "Nieuwe of vervangende functies moeten binnen de goedgekeurde pool set blijven",
+      "Leningacties zijn nog steeds afhankelijk van de liquiditeit van de Hub en de actieve limieten",
+      "Houden",
+      "Liquidatiekader",
+      "Onderpandfactoren"
+    ]
+  },
+  "getting-started": {
+    "meta": {
+      "title": "Aan de slag - Storten LP",
+      "description": "Leer hoe ondersteunde LP posities Avana als onderpand binnengaan en hoe elke toegelaten positie begint bij te dragen aan de leencapaciteit binnen een Borrow Spoke."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "deposit-flow",
+        "title": "Stortingsstroom"
+      },
+      {
+        "id": "technical-details",
+        "title": "Technische details"
+      },
+      {
+        "id": "supported-lp-tokens",
+        "title": "Ondersteunde LP positie types"
+      },
+      {
+        "id": "after-deposit",
+        "title": "Na storting"
+      }
+    ],
+    "strings": [
+      "Aan de slag - Storten LP",
+      "Leer hoe ondersteunde LP posities Avana als onderpand binnengaan en hoe elke toegelaten positie begint bij te dragen aan de leencapaciteit binnen een Borrow Spoke.",
+      "Overzicht",
+      "Stortingsstroom",
+      "Technische details",
+      "Ondersteunde LP positie types",
+      "Na storting",
+      "Gefocuste liquiditeitsposities",
+      "Range-gebonden NFT of positie-manager gebaseerde LPs",
+      "Bereik, tikpositie en vergoedingstoerekening maken deel uit van het waarderingspad.",
+      "Inwisselbare stabiele of gecorreleerde LPs",
+      "Stable-swap en sterk gecorreleerde poolaandelen",
+      "Poolvoorraad en de kwaliteit van afwikkeling zorgen voor conservatieve leencapaciteit.",
+      "Gewogen en multi-asset LPs",
+      "Gewogen manden en multi-token pools",
+      "Elke ondersteunde familie wordt alleen toegelaten via goedgekeurde poolsjablonen.",
+      "Storting LP",
+      "Storten verplaatst een ondersteunde LP positie onder het toezicht van Spoke zodat Avana het als onderpand kan verantwoorden en omzetten in leenbare capaciteit.",
+      "Storten is hoe een LP-positie bruikbaar wordt binnen Avana. De Borrow Spoke neemt het beheer van de ondersteunde positie op zich, registreert de staat die het nodig heeft voor waardering, en begint die positie te behandelen als onderpand in plaats van als een in de portemonnee gehouden activum.",
+      "Dat betekent niet dat de liquiditeit verdwijnt van de onderliggende locatie. De positie kan actief blijven in de AMM terwijl de spook zijn blootstelling, kostenstatus en risicobehandeling bijhoudt voor latere leen- en liquidatiecontroles.",
+      "Belangrijk:",
+      "Avana verleent geen leenbevoegdheid alleen omdat er een LP-positie bestaat. De positie moet tot een goedgekeurde poolfamilie behoren, waarderingscontroles doorstaan en passen bij de huidige risicoconfiguratie van de Spoke.",
+      "1. Overdragen of goedkeuren van de LP positie",
+      "De gebruiker geeft de ondersteunde LP positie aan de relevante Borrow Spoke. Het exacte pad hangt af van of de onderpand verhandelbaar is of positie-specifiek, maar het protocolresultaat is hetzelfde: de spoke moet het activum beheersen voordat het als onderpand kan worden meegeteld.",
+      "2. Verifieer de Poolfamilie",
+      "Vervolgens bevestigt de spoke dat de positie behoort tot een goedgekeurde pool of sjabloon. Die controle is eigenlijk een pakket van vereisten: er moet oracle-dekking bestaan, routing- en liquidatieondersteuning moeten bestaan, en de implementatie moet al risicoinstellingen hebben voor die LP-familie.",
+      "3. Cachepositie-status",
+      "Zodra de positie wordt toegelaten, slaat het protocol de staat op die nodig is om de positie later te herstellen. Dat omvat de metadata die nodig is om blootstelling te reconstrueren, opgebouwde vergoedingen te monitoren en de leencapaciteit bij te werken als prijzen of poolvoorwaarden veranderen.",
+      "4. Voeg de positie toe aan de totale capaciteit",
+      "Nadat waardering en risikokortingen zijn toegepast, voegt de positie haar eigen bijdrage toe aan de totale leenmogelijkheid van de gebruiker binnen die Borrow Spoke. Wanneer de gebruiker later leent, vertrouwt de Hub op die capaciteit-update aan de zijde van de spoke.",
+      "Positie-bewuste waardering:",
+      "de aanbetaling zelf vergrendelt geen vast leenbedrag. De leenpower wordt elke keer dat het protocol een bijgewerkte weergave nodig heeft, opnieuw berekend op basis van de actuele LP positie met behulp van de oracle-stack en het model voor de onderpandfactor.",
+      "Format-specifieke bewaring:",
+      "sommige LP posities zijn fungibele tokens, terwijl andere geconcentreerde liquiditeitsposities met extra metadata zijn. De Borrow Spoke behandelt die bewaarschillen zodat de rest van het kredietsysteem nog steeds op een consistente manier over hen kan redeneren.",
+      "Het verstrekken van onderpand betekent niet dat de LP wordt gesloten. Het afwikkelingspad is gereserveerd voor latere gebruikersacties of liquidatie, niet voor de initiële storting zelf.",
+      "Familie",
+      "Voorbeelden",
+      "Opnameaantekeningen",
+      "Exact live-ondersteuning wordt geregeld door de goedgekeurde poollijst. Zie",
+      "Toegestaan LP Pools",
+      "Elke goedgekeurde positie draagt nu zijn eigen verdisconteerde waarde bij aan de kredietcapaciteit op spaakniveau",
+      "De LP hoofdsom blijft actief in het onderliggende fonds en kan blijven kosten opbouwen",
+      "Werkelijke leningen zijn nog steeds afhankelijk van de liquiditeit van de hub, de gezondheidscontroles van de spokes en de limieten van de onderpandfactor",
+      "De volgende stap in de normale flow is",
+      "Activa Lenen"
+    ]
+  },
+  "getting-started/repay-loans": {
+    "meta": {
+      "title": "Leningen terugbetalen",
+      "description": "Hoe terugbetaling de schuld in Avana vermindert, de schuldverdelingen bijwerkt, afrekent met de Hub en de weg vrijmaakt voor het vrijgeven van onderpand."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "repay-process",
+        "title": "Terugbetalingsproces"
+      },
+      {
+        "id": "technical-details",
+        "title": "Technische details"
+      },
+      {
+        "id": "liquidation-scenario",
+        "title": "Wanneer Terugbetaling Dringend Is"
+      },
+      {
+        "id": "full-repayment",
+        "title": "Volledige terugbetaling"
+      }
+    ],
+    "strings": [
+      "Leningen terugbetalen",
+      "Hoe terugbetaling de schuld in Avana vermindert, de schuldverdelingen bijwerkt, afrekent met de Hub en de weg vrijmaakt voor het vrijgeven van onderpand.",
+      "Overzicht",
+      "Terugbetalingsproces",
+      "Technische details",
+      "Wanneer Terugbetaling Dringend Is",
+      "Volledige terugbetaling",
+      "Terugbetaling verlaagt de schuld, verbetert de gezondheid van de rekening en is meestal de schoonste manier om de controle over onderpand te herwinnen.",
+      "Terugbetaling verandert de schuldkant van de rekening zonder de LP positie zelf te veranderen. Wanneer de schuld afneemt, wordt de rekening onmiddellijk gezonder omdat hetzelfde onderpand nu een kleinere verplichting ondersteunt.",
+      "Volledige terugbetaling is niet vereist om terugbetaling belangrijk te maken. Zelfs een gedeeltelijke vermindering kan nuttige speelruimte herstellen wanneer de rekening naar de liquidatiegrens neigt.",
+      "1. Kies een bedrag:",
+      "betaal een gedeeltelijk bedrag terug om ademruimte te krijgen, of betaal het volledige saldo terug om de schuldenkant volledig te verlaten.",
+      "2. Dien het schuldinstrument in:",
+      "De terugbetaling wordt teruggeleid via de Lening Spoke en toegepast op de uitstaande schuld.",
+      "3. Herbereken gezondheid:",
+      "Zodra de schuldaandelen worden verminderd, worden de gezondheidsfactor en de resterende capaciteit van de rekening bijgewerkt op basis van het nieuwe lagere schuldbedrag.",
+      "Terugbetaling is in wezen een vermindering van het schuldaandeel. Of een gebruiker nu terugbetaalt door een activumhoeveelheid op te geven of, indien ondersteund, een aantal aandelen, lost het protocol de betaling op in minder uitstaande schuldaandelen en dus minder schuld.",
+      "De Borrow Spoke werkt de lokale schuldstatus bij en vereffent de terugbetaling tegen de Hub-zijde liquiditeitsboekhouding zodat de gedeelde liquiditeitslaag en de LP-collaterallaag hetzelfde beeld van de rekening behouden.",
+      "Wanneer een account dicht bij liquidatie komt, is terugbetaling een van de snelste manieren om de veiligheid te verbeteren omdat het de schuld direct vermindert. Het hangt niet af van het wachten tot de markt herstelt of van het eerst inbrengen van meer onderpand.",
+      "Zodra de liquidatiegrens wordt overschreden, de wortel",
+      "Liquidatiekader",
+      "Zodra de schuld nul bereikt, heeft de rekening geen onderpand meer nodig om een actieve lening te garanderen. Op dat moment kunnen de LP posities die aan die rekening zijn gekoppeld, terugkeren naar normaal gebruik van de gebruiker via het pad voor het terugtrekken van onderpand.",
+      "Afhankelijk van de uitvoering van het onderpand, kan de uiteindelijke vrijgave automatisch gebeuren of via een expliciete vervolgactie. Zie",
+      "Onderpand opnemen"
+    ]
+  },
+  "getting-started/withdraw-collateral": {
+    "meta": {
+      "title": "Onderpand opnemen",
+      "description": "Hoe LP onderpand wordt vrijgegeven Avana nadat de schuld is afbetaald of nadat de resterende rekening nog steeds door de gezondheidscontroles komt zonder de teruggetrokken positie."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "withdrawal-process",
+        "title": "Opnametraject"
+      },
+      {
+        "id": "position-modifications",
+        "title": "Positiewijzigingen"
+      },
+      {
+        "id": "after-withdrawal",
+        "title": "Na intrekking"
+      }
+    ],
+    "strings": [
+      "Onderpand opnemen",
+      "Hoe LP onderpand wordt vrijgegeven Avana nadat de schuld is afbetaald of nadat de resterende rekening nog steeds door de gezondheidscontroles komt zonder de teruggetrokken positie.",
+      "Overzicht",
+      "Opnametraject",
+      "Positiewijzigingen",
+      "Na intrekking",
+      "Onderpand kan het Lening-gesprek alleen verlaten wanneer de rekening nog steeds haar schuld kan ondersteunen nadat de gevraagde positie is verwijderd of aangepast.",
+      "Het intrekken van onderpand is het tegenovergestelde van storten, maar het is niet slechts een activatransfer. Voordat het protocol een LP-positie vrijgeeft, moet het bewijzen dat het verwijderen van dat onderpand de resterende schuld niet ondergedekt achterlaat.",
+      "Volledige terugbetaling van de schuld is de schoonste weg omdat het de noodzaak voor onderpand volledig wegneemt. Maar Avana kan ook enkele veranderingen in het onderpand toestaan terwijl de schuld openblijft, als de account na de verandering nog steeds dezelfde waardering- en gezondheidscontroles doorstaat die elders in het systeem worden gebruikt.",
+      "1. Verminder of los schulden af:",
+      "2. Herbereken leencapaciteit:",
+      "de Borrow Spoke berekent het account opnieuw nadat de gevraagde LP positie is verwijderd of van grootte is veranderd, in plaats van aan te nemen dat de oude capaciteit nog steeds van toepassing is.",
+      "3. Laat de LP positie los:",
+      "Als de gezondheid na opname geldig is, retourneert het protocol of ontgrendelt het de onderpand zodat de gebruiker het opnieuw buiten de Spoke kan beheren.",
+      "Niet elke bijkomende wijziging is een volledige exit. Een gebruiker kan een verhandelbare LP positie verkleinen of vergroten, een geconcentreerd-liquiditeitsbereik vervangen, of roteren naar een andere goedgekeurde positie terwijl dezelfde lening open blijft.",
+      "Die wijzigingen zijn alleen geldig wanneer het nieuwe of resterende onderpand nog steeds tot de goedgekeurde reeks behoort en het resulterende account boven de liquidatiegrens blijft na het toepassen van de wijziging.",
+      "De LP-positie keert terug naar normale gebruikerscontrole",
+      "De gebruiker kan het in de onderliggende pool houden, het opnieuw rangschikken, of de liquiditeit volledig verlaten",
+      "Storting LP"
+    ]
+  },
+  "integrations/allowed-pools": {
+    "meta": {
+      "title": "Toegestaan LP Pools",
+      "description": "Door governance gedefinieerde toegestane lijst en beoordelingscriteria voor LP pools die Avana bereid is toe te laten als onderpand."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "review-criteria",
+        "title": "Beoordelingscriteria"
+      },
+      {
+        "id": "pool-families",
+        "title": "Poolfamilies"
+      },
+      {
+        "id": "risk-application",
+        "title": "Risico Toepassing"
+      },
+      {
+        "id": "integration-notes",
+        "title": "Integratienotities"
+      }
+    ],
+    "strings": [
+      "Toegestaan LP Pools",
+      "Door governance gedefinieerde toegestane lijst en beoordelingscriteria voor LP pools die Avana bereid is toe te laten als onderpand.",
+      "Overzicht",
+      "Beoordelingscriteria",
+      "Poolfamilies",
+      "Risico Toepassing",
+      "Integratienotities",
+      "Stabiele en gecorreleerde pools",
+      "Vaak het gemakkelijkst om toe te geven wanneer de prijzing betrouwbaar is, het gedrag van de peg wordt begrepen en de unwind-diepte sterk blijft.",
+      "Blue-chip volatiele pools",
+      "Kan worden ondersteund, maar meestal met meer conservatieve onderpandfactoren, liquiditeitscontroles en strengere veronderstellingen voor liquidatie.",
+      "Gefocuste liquiditeitsposities",
+      "Vereis waardering op positieniveau en zorgvuldige omgang met actieve reikwijdte, eenzijdige voorraad en fee-status.",
+      "Aangepaste of experimentele ontwerpen",
+      "Expliciete ondersteuning voor oracle, bewaring en liquidatie is nodig voordat ze überhaupt voor de whitelist in aanmerking kunnen komen.",
+      "Betrouwbare externe prijsdekking voor de onderliggende activa",
+      "Voldoende zwembaddiepte en geloofwaardige afwikkelingspaden tijdens liquidatie",
+      "Duidelijke toelaatbaarheidsregels voor het LP familie- of spaaktemplate",
+      "Aanvaardbare concentratie-, vluchtigheids- en peg-stabiliteitsprofiel",
+      "Operationele ondersteuning voor indexering, vergoedingafhandeling en liquidatierouting",
+      "Door governance gecontroleerde allowlist voor de pools en LP families Avana is voorbereid om te accepteren als onderpand.",
+      "Avana accepteert alleen LP onderpand van pools of sjablonen die al zijn beoordeeld en goedgekeurd. De toegestane lijst bestaat omdat LP-ondersteuning niet alleen een kwestie is van het merk van de locatie of het tokenformaat. Het protocol heeft voldoende informatie nodig om de positie te waarderen, de liquidatie te beheren en het risico dat het neemt te beperken.",
+      "Goedkeuring van het pool werkt samen met",
+      "Onderpandfactoren",
+      "Risicokader",
+      ". De whitelist bepaalt of een pool het systeem mag betreden; onderpandfactoren bepalen hoeveel leenbare waarde elke toegelaten positie kan bijdragen.",
+      "Een pool komt alleen op de allowlist wanneer het protocol elke keer dezelfde basisvragen kan beantwoorden: kan het de positie prijzen, kan het de positie sluiten, en kan het het risico in productie monitoren.",
+      "Poolgoedkeuring betekent niet dat een positie genereuze kredietbehandeling krijgt. Nadat een pool is toegelaten, wordt elke LP positie nog steeds afzonderlijk gewaardeerd, verdisconteerd volgens de risicobehandeling, en vervolgens toegevoegd aan de leencapaciteit van de gebruiker binnen de Borrow Spoke.",
+      "Daarom zijn goedkeuring van pools en waardering van onderpand nauw met elkaar verbonden. Een pool kan veilig genoeg zijn om toe te laten, terwijl het toch conservatieve limieten, lagere LTVs of strengere liquidatieafhandeling vereist zodra het actief is.",
+      "Bouwers zouden moeten denken in termen van goedgekeurde pooltemplates en implementatiespecifieke toelatingslijsten, niet alsof elke LP in een locatie automatisch vrij spel is.",
+      "Nieuwe poolfamilies vereisen doorgaans gecoördineerd werk op het gebied van oracle-afhandeling, liquidatierouting, risicolimieten en monitoringsinfrastructuur voordat ze veilig kunnen worden ingeschakeld."
+    ]
+  },
+  "integrations/appkit": {
+    "meta": {
+      "title": "AppKit",
+      "description": "Ontwikkelaarsgids voor AppKit-plaatsing, partneroverdracht en hoe Avana-krediet ingebed is in producten van derden zonder de risicologica uit Avana te verplaatsen."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "integration-model",
+        "title": "Integratiemodel"
+      },
+      {
+        "id": "partner-controls",
+        "title": "Partnerbeheersing"
+      },
+      {
+        "id": "launch-notes",
+        "title": "Lancering Notities"
+      }
+    ],
+    "strings": [
+      "AppKit",
+      "Ontwikkelaarsgids voor AppKit-plaatsing, partneroverdracht en hoe Avana-krediet ingebed is in producten van derden zonder de risicologica uit Avana te verplaatsen.",
+      "Overzicht",
+      "Integratiemodel",
+      "Partnerbeheersing",
+      "Lancering Notities",
+      "Intent vastleggen",
+      "AppKit behoort te staan waar gebruikers hun LP-posities, portefeuillestatus of swapcontext al begrijpen, zodat de leenvermelding naast de bestaande intentie verschijnt in plaats van een geheel nieuwe stroom af te dwingen.",
+      "Protocoloverdracht",
+      "De partner geeft portemonnee en marktcontext door aan Avana. De leenstroom kan dan worden geopend met die context al ingesteld in plaats van dat de gebruiker deze met de hand moet opbouwen.",
+      "Partnereconomie",
+      "Partners kunnen verwijzings-, routerings- of integratie-inkomstenstructuren gebruiken, maar zij worden niet de kredietverstrekker of de risicomotor. Avana behoudt krediet, risico en afwikkeling.",
+      "Plaats de creditboeking nabij de LP positie of portfolioweergave die de gebruiker al vertrouwt.",
+      "Geef de portemonnee en marktcontext door in de leenflow zodat de overdracht niet als een reset aanvoelt.",
+      "Laat risico en afwikkeling op Avana staan. Bouw de waardering of liquidatielogica van de Spoke niet opnieuw op in de partner-UI.",
+      "Bepaal de tekst, plaatsing en lanceringsbeperkingen voordat je live gaat, omdat ze de integratie vormen, niet alleen de afwerkingslaag.",
+      "Waar het creditscherm in het product verschijnt",
+      "Welke gebruikerssegmenten zien het leen-invoerpunt",
+      "Hoeveel onderwijs of uitleg verschijnt er bij de overdracht",
+      "Of het product een volledige ingebedde overdracht gebruikt of een lichtere contextbehoudende ingang",
+      "Hoe partners Avana LP-ondersteunde krediet inbouwen terwijl Avana de verantwoordelijkheid voor lenen, risico en afwikkeling behoudt.",
+      "AppKit is voor producten van derden die al de gebruikersrelatie hebben, zoals DEXs, wallets en portfolio-apps waar LP posities al zichtbaar zijn. Het partnerproduct kadert het moment, legt de context vast en beslist waar het leen-item verschijnt. Avana voert het daadwerkelijke leenpad uit.",
+      "Deze pagina gaat over plaatsing, overdracht en lanceringsdiscipline. De partner beheert het gebruikersoppervlak en de distributie. Avana beheert de kredietregels, afwikkeling en veiligheidskritieke mechanismen achter de stroom.",
+      "AppKit dwingt geen enkel presentatiemodel af. Partners controleren de toetredingspunten en de hoeveelheid omliggende begeleiding, terwijl ze protocolbeslissingen binnen Avana laten.",
+      "Implementatienotities",
+      "De beste integraties voelen als een voortzetting van de bestaande productstroom, niet als een harde sprong naar een niet-gerelateerde leenapp. Deze aantekeningen zijn de praktische basis om die overdracht goed te laten verlopen.",
+      "Start AppKit als een integratieproject, niet alleen als een linkplaatsing. Bevestig het gebruikerspad, bekijk waar de toegang zich bevindt en zorg ervoor dat het Avana-kredietpad duidelijk gescheiden blijft van de partneromgeving waar de verantwoordelijkheid verandert.",
+      "Controleer ook wat er gebeurt wanneer het kredietoppervlak verborgen is, of diepe links naar het leenproces veilig zijn, en hoe ontbrekende portemonnee-, markt- of onderpandcontext wordt afgehandeld."
+    ]
+  },
+  "integrations": {
+    "meta": {
+      "title": "Ondersteunde integraties",
+      "description": "Implementatiebewuste handleiding voor de locatiefamilies Avana waarmee kan worden geïntegreerd, de controles die ze moeten doorstaan, en het beoordelingswerk dat vereist is vóór activering."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "appkit",
+        "title": "AppKit"
+      },
+      {
+        "id": "venue-families",
+        "title": "Locatiefamilies"
+      },
+      {
+        "id": "enablement-status",
+        "title": "Inschakelingsstatus"
+      },
+      {
+        "id": "review-requirements",
+        "title": "Beoordelingsvereisten"
+      }
+    ],
+    "strings": [
+      "Ondersteunde integraties",
+      "Implementatiebewuste handleiding voor de locatiefamilies Avana waarmee kan worden geïntegreerd, de controles die ze moeten doorstaan, en het beoordelingswerk dat vereist is vóór activering.",
+      "Overzicht",
+      "AppKit",
+      "Locatiefamilies",
+      "Inschakelingsstatus",
+      "Beoordelingsvereisten",
+      "Gefocuste liquiditeitslocaties",
+      "Deze locaties vereisen positioneel beheer omdat LP-waarde afhankelijk is van de huidige prijs, het actieve bereik en hoe de voorraad over de positie verdeeld is.",
+      "Verhandelbare stabiele en gewogen pools",
+      "Deze locaties tonen ERC-20 LP aandelen waarvan de waarde kan worden herbouwd aan de hand van pool-saldi, externe prijzen en conservatieve afwikkelingsaannames.",
+      "Aangepaste of op hooks gebaseerde ontwerpen",
+      "Meer geavanceerde poolarchitecturen zijn alleen ondersteunbaar wanneer Avana een duidelijk orakelmodel, een veilig bewaarpad en een liquidatie-adapter voor het ontwerp heeft.",
+      "Referentiegids voor de locatie-families Avana waarmee kan worden gewerkt en de beoordelingspoorten die moeten worden doorlopen voordat ondersteuning live gaat.",
+      "Avana integreert locaties niet alleen omdat ze populair zijn of LP tokens blootstellen. Ondersteuning hangt af van of het protocol de positie nauwkeurig kan reconstrueren, deze conservatief kan waarderen en er schoon uit kan stappen wanneer liquidatie nodig is.",
+      "Deze pagina is een integratiereferentie, geen live lanceringsdashboard. Voor het toelatingsbeleid van de pool, zie",
+      "Toegestaan LP Pools",
+      ". Voor waarderingsveronderstellingen, zie",
+      "Prijsorakels",
+      "AppKit is het partnergerichte pad voor producten die Avana tegoed willen toevoegen aan een bestaande gebruikersreis in plaats van gebruikers te sturen naar een op zichzelf staande flow zonder context.",
+      "Lees de",
+      "AppKit ontwikkelaarsgids",
+      "voor partnercontroles, overdrachtspatronen en lanceringsnotities.",
+      "Of een locatie op een bepaald netwerk is ingeschakeld, is een implementatiebeslissing, geen permanente protocollaire waarheid. Een locatiefamilie kan in theorie ondersteund worden, maar nog steeds uitgeschakeld zijn bij een specifieke implementatie totdat oracle-dekking, liquidatierouting en risicoparameters allemaal gereed zijn.",
+      "Bouwers zouden de huidige implementatieconfiguratie in de app, release-opmerkingen of het gepubliceerde contractregister moeten verifiëren in plaats van deze pagina te lezen als een real-time ondersteuningsmatrix.",
+      "• Een locatie moet conservatieve positiewaardering ondersteunen op basis van robuuste externe prijzen en verifieerbare staatsreconstructie.",
+      "• Het protocol heeft een betrouwbare terugtrekroute nodig voor liquidatie, inclusief het innen van vergoedingen en het doorsturen naar het schuldactivum.",
+      "• Zwembaddiepte, concentratierisico, correlatieaannames en operationele monitoring moeten allemaal binnen het risicokader passen.",
+      "• Ondersteuning voor nieuwe locaties is een besluit over bestuur en risico's, niet alleen een interface-update of adapter-integratie."
+    ]
+  },
+  "integrations/price-oracles": {
+    "meta": {
+      "title": "Prijsorakels",
+      "description": "Hoe Avana Oracle prijzen LP onderpand door externe feeds, deterministische positieweergave en terugvorderbare-waardekortingen."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "oracle-interface",
+        "title": "Oracle-interface"
+      },
+      {
+        "id": "multi-layer-architecture",
+        "title": "Meerlagige architectuur"
+      },
+      {
+        "id": "dex-handling",
+        "title": "DEX-specifieke verwerking"
+      },
+      {
+        "id": "twap-computation",
+        "title": "TWAP-berekening"
+      },
+      {
+        "id": "safety-measures",
+        "title": "Veiligheid & Manipulatiepreventie"
+      },
+      {
+        "id": "configurable-parameters",
+        "title": "Configureerbare parameters"
+      }
+    ],
+    "strings": [
+      "Prijsorakels",
+      "Hoe Avana Oracle prijzen LP onderpand door externe feeds, deterministische positieweergave en terugvorderbare-waardekortingen.",
+      "Overzicht",
+      "Oracle-interface",
+      "Meerlagige architectuur",
+      "DEX-specifieke verwerking",
+      "TWAP-berekening",
+      "Veiligheid & Manipulatiepreventie",
+      "Configureerbare parameters",
+      "De prijzen van de onderliggende activa",
+      "De verdeling van de poolreserves of voorraad",
+      "Voor geconcentreerde liquiditeit, de huidige tick ten opzichte van het positiebereik",
+      "Of de positie binnen bereik is of meestal eenzijdig",
+      "Prijs onderliggende activa via externe robuuste orakels",
+      "Begin met veerkrachtige externe feeds voor de onderliggende activa, zodat onderpand niet de volledige ruis of manipuleerbaarheid van de ruwe pool-spotstatus overneemt.",
+      "Bepaal de waarde LP conservatief",
+      "Bouw vervangbare LP saldi opnieuw op of decomprimeer geconcentreerde liquiditeitposities uit reserves, liquiditeit, bereik en vergoedingen met behulp van een deterministisch pad waarover de spoke kan redeneren.",
+      "Kapsel voor tijdelijk verlies en liquidatieglijding",
+      "Kort het gereconstrueerde merk af tot een herstelbare onderpandwaarde die rekening houdt met stress, glijfactoren en imperfecte exits in plaats van een schone inlossing tegen de theoretische NAV.",
+      "Cap-blootstelling door LP familie en zwembaddiepte",
+      "Pas controles toe op basis van LP familie, poolklasse en beschikbare diepte, zodat dunnere of complexere markten niet dezelfde leengrenzen krijgen als diepere en eenvoudigere markten.",
+      "Liquideer op basis van de te recupereren afwikkelwaarde, niet op optimistische NAV",
+      "Gebruik de waarde die redelijkerwijs kan worden gerealiseerd via het afwikkelpandspad bij het verlenen van leenbevoegdheid en het beslissen over liquidatie, in plaats van de best-case markwaarde.",
+      "Curve Stabiel/Stabiel ERC-20 LPs",
+      "Externe stablecoin-feeds + pool-statuscontroles + TWAP-verificatie",
+      "Externe prijzen verankeren de activa terwijl pool-saldi en fee-accumulatie de verdisconteerde collateralewaarde bepalen.",
+      "Uniswap V2 ERC-20 LP's",
+      "Chainlink + reserve reconstructie + TWAP-verificatie",
+      "Standaard LP tokens worden gewaardeerd op basis van gereconstrueerde onderliggende saldi, waarbij TWAP wordt gebruikt als een manipulatiebestendige kruiscontrole.",
+      "Uniswap V3 NFT LPs",
+      "Chainlink + positiedecompositie + tick/TWAP-controles",
+      "De NFT wordt ontleed naar liquiditeit, actief bereik en huidige prijs, en vervolgens gekort voor de herstelbare liquidatiewaarde.",
+      "Balancer Meerdere activa LPs",
+      "Chainlink + gewogen inventarisreconstructie",
+      "Multi-token pools gebruiken externe prijzen en gewogen poolvoorraad om een conservatieve onderpandwaarde te schatten.",
+      "SushiSwap / Aerodrome",
+      "Observaties afkomstig uit de pool verifiëren de gereconstrueerde waarde en helpen misbruik bij dezelfde transactie in markten met lagere liquiditeit te weerstaan.",
+      "Chainlink + blokgebaseerde TWAP-verificatie",
+      "Externe prijzen blijven het anker terwijl op blokken gebaseerde waarnemingen de positietoestand valideren en aannames afbouwen.",
+      "Hoe het protocol de LP positietoestand omzet in kredietrelevante zekerheidswaarden.",
+      "Avana Oracle is geen enkele prijsopzoeking. Het is het waarderingspad dat een LP-positie omzet in iets dat het uitleensysteem kan gebruiken voor onderpandsadministratie. Om dat veilig te doen, combineert het externe marktfeeds, deterministische reconstructie van de LP, en herstelheffingen op basis van veronderstellingen over afwikkeling in plaats van alleen te vertrouwen op de ruwe AMM-spotstatus.",
+      "De exacte invoer hangt af van de onderpandfamilie. Een vervangbaar LP wordt gereconstrueerd uit saldi, reserves en vergoedingen, terwijl geconcentreerde liquiditeit moet worden ontleed via het bereik, de liquiditeit en de huidige prijskontekst. In beide gevallen wordt het resultaat door een logica van herstelbare waarde geleid, zodat lenen een conservatief cijfer gebruikt in plaats van een aanname van frictieloze uittreding.",
+      "Dat onderscheid tussen marktwaarde en realiseerbare waarde is wat de oracle nuttig houdt voor lenen in plaats van alleen voor analyse. ERC-20 LPs, NFT LPs en multi-assetpools kunnen één hoogwaardig interface delen alleen omdat elke klasse zijn eigen validatie- en manipulatiebestendigheidscontroles doorloopt voordat de waarde de spoke bereikt.",
+      "Oracle-interface: IOracle",
+      "Borrow Spokes hebben één contractoppervlak nodig, ook al verschillen LP formaten sterk tussen DEXs. `IOracle` biedt die gemeenschappelijke vorm en houdt de hoofdsom, opgebouwde vergoedingen en gereserveerde buffers gescheiden, zodat de latere risicologica niet hoeft te raden naar welk deel van de positie het kijkt:",
+      "functie getWaarde(uint256 tokenId, adres asset)",
+      "externe view returns (",
+      "uint256 volledigeWaarde,",
+      "uint256 vergoedingWaarde,",
+      "uint256 reserveWaarde",
+      "volleWaarde",
+      "Gereconstrueerde waarde van de hoofdnatuurlijkheid voordat latere stressaanpassingen bij liquidatie worden toegepast.",
+      "feeValue",
+      "Waarde van de vergoedingen die door de positie zijn opgebouwd en naast het kapitaal kunnen worden erkend.",
+      "reserveValue",
+      "Gereserveerd deel achtergehouden voor oracle-, unwind- en protocolrisicobuffers.",
+      "De interface verbergt DEX-specifieke infrastructuur voor de spoke. Hierdoor kan dezelfde aanroeper ERC-20 LPs, NFT LPs en multi-asset pools afhandelen via één terugkeerstructuur, terwijl er achter de schermen nog steeds ruimte is voor conservatieve, collateral-familie-specifieke behandeling.",
+      "LP waardering is een stapsgewijs proces in plaats van een enkele spotprijsmeting. Het orakelpad gaat door de volgende stappen:",
+      "Verschillende locaties onthullen verschillende delen van de staat, en het orakel gebruikt die invoer op verschillende manieren. Het belangrijkste punt is dat venuespecifieke gegevens helpen om de positie te reconstrueren en de prijsstelling te verifiëren; ze worden niet blindelings geaccepteerd als een directe onderpandwaarde.",
+      "DEX / LP-Type",
+      "Oracle-bron",
+      "Notities",
+      "TWAP-berekening door DEX",
+      "TWAP's zijn verificatie-invoeren. Ze staan naast externe activaprijzen en deterministische position reconstructie om te controleren of de waargenomen poolstatus consistent is met een geloofwaardig unwind-pad. Ze helpen verdachte of kortdurende verstoringen af te wijzen, maar ze vervangen het bredere oracle-model niet op zichzelf.",
+      "Uniswap V2 & SushiSwap",
+      "Uniswap V3",
+      "Positie-bewuste controles omvatten tickbereik, liquiditeitsverdeling en opgebouwde vergoedingen, zodat het protocol de ontlede tokenblootstelling van elke NFT LP kan verifiëren in plaats van de NFT als een zwarte doos te behandelen.",
+      "Balancer",
+      "Gewogen tokenwaarnemingen worden gecombineerd met poolgewichten om multi-asset inventarisverdelingen te valideren voordat de orakel een conservatieve onderpandwaarde toekent.",
+      "Curve",
+      "Observaties van stablecoins worden voornamelijk gebruikt om verouderde feeds, reserveafwijkingen en kortetermijnanomalieën te detecteren, terwijl externe prijzen het primaire anker blijven.",
+      "Handelaar Joe & Aerodrome",
+      "Cumulatieve prijsobservaties over een venster van 30-60 minuten helpen de status van een pool met lagere liquiditeit te valideren en weerstand te bieden tegen manipulatie in dezelfde transactie tijdens onderpandcontroles.",
+      "Afwijkingsdrempels",
+      "Nieuwe leningen of liquidaties kunnen worden gepauzeerd wanneer door de pool afgeleide verificatiegegevens te ver afwijken van externe referentieprijzen",
+      "maximaleVerschil",
+      "maximalePrijsVerschil",
+      "Dit houdt de door het pool geïmpliceerde staat in overeenstemming met de onderliggende tokenprijzen en beperkt onmiddellijke zwembadmanipulatie of frauduleus gebruik van de oracle in dezelfde transactie.",
+      "Openstaande posities limieten",
+      "De blootstelling wordt beperkt door LP familie, pooldiepte en complexiteit van onderpand, zodat dunnere markten strakkere leenlimieten krijgen.",
+      "Herstelkapsels",
+      "Het orakel houdt geen rekening met theoretische LP waarde voor tijdelijke verliezen, afwikkelingsslippage en veronderstellingen over stressvolle liquidaties voordat enige leenbevoegdheid wordt verleend.",
+      "Oracle Wachter",
+      "Oracle Sentinel bewaakt de gezondheid van feeds en verificatie-invoer en kan een terugvalgedrag activeren wanneer gegevens verouderd, gecompromitteerd of inconsistent zijn met de positie-statuscontroles.",
+      "Configureerbare Oracle-parameters",
+      "Pool-specifieke oracle-instellingen worden per token geconfigureerd via",
+      "stelTokenConfiguratieIn",
+      ". In de onderstaande tabel staan de parameters die bepalen hoe een token en het bijbehorende pool gecontroleerd moeten worden:",
+      "Parameter",
+      "Beschrijving",
+      "Teken",
+      "Onderpand tokenadres",
+      "AggregatorV3Interface",
+      "Chainlink-feed voor onderliggende token",
+      "maxVoerLeeftijd",
+      "Maximale aanvaardbare leeftijd voor Chainlink-feed",
+      "Zwembad",
+      "Specifiek DEX-pool (Uniswap V3, Balancer, Curve, enz.)",
+      "twapSeconden",
+      "Venster voor TWAP-berekening",
+      "Modus",
+      "Oracle operationele modus (standaard/fallback)",
+      "Maximaal toegestane afwijking tussen DEX en verificatieprijs",
+      "In de praktijk komt het gedrag van de oracle voort uit de combinatie van externe activaprijzing, LP reconstructielogica, behandeling van terugvorderbare waarde en de per-token instellingen die zijn geconfigureerd via"
+    ]
+  },
+  "integrations/router-contract": {
+    "meta": {
+      "title": "Routercontract",
+      "description": "Operationele referentie voor de Avana-router- en adapterlaag, inclusief wat de router coördineert, wat hij niet beslist en hoe de ondersteuning voor implementatie wordt gepubliceerd."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "role-in-system",
+        "title": "Rol in het systeem"
+      },
+      {
+        "id": "adapter-model",
+        "title": "Adaptermodel"
+      },
+      {
+        "id": "supported-operations",
+        "title": "Ondersteunde bewerkingen"
+      },
+      {
+        "id": "deployment-status",
+        "title": "Implementatiestatus"
+      }
+    ],
+    "strings": [
+      "Routercontract",
+      "Operationele referentie voor de Avana-router- en adapterlaag, inclusief wat de router coördineert, wat hij niet beslist en hoe de ondersteuning voor implementatie wordt gepubliceerd.",
+      "Overzicht",
+      "Rol in het systeem",
+      "Adaptermodel",
+      "Ondersteunde bewerkingen",
+      "Implementatiestatus",
+      "Bundel locatiespecifieke aanbetalings-, terugtrekings- en kostenincassoprocedures in een schonere interface-laag",
+      "Coördineer de ontbindings- of routeringsstappen die nodig zijn voor de uitvoering van de liquidatie",
+      "Ondersteun gecontroleerde positiewijzigingen zoals bereikveranderingen of migratiestromen wanneer er een locatie-adapter bestaat",
+      "Bied een consistente integratieoppervlakte zonder de risicobeoordelings- of waarderingsautoriteit van het protocol te worden",
+      "Operationele interfacelaag voor locatie-specifieke acties, adapteroproepen en routingondersteuning met betrekking tot liquidatie.",
+      "De router is een uitvoeringslaag, niet de plaats waar Avana risico beslist. Het bestaat om venue-specifieke acties te standaardiseren zodat het protocol niet depositie-, opname-, vergoedings- en afwikkelmechanismen over elke flow die LP onderpand raakt, hoeft te verspreiden.",
+      "Lees deze pagina als een operationele referentie. Voor de canonieke architectuur, begin met",
+      "Leen Spoke",
+      "Liquidatiekader",
+      "Verschillende AMM locaties hebben verschillende in- en uitgangs- en kostenverzamelmethoden. De router biedt Avana één integratielaag voor die mechanismen, zodat bouwers niet gedwongen zijn om elke locatie als een volledig aangepast systeem te behandelen.",
+      "De router mag nooit worden gezien als de plek waar nevenfactoren, gezondheidscontroles of liquidatiegeschiktheid worden bepaald. Die blijven upstream-protocolzaken in de Borrow Spoke, Hub, oracle-stack en risicokader.",
+      "Elke ondersteunde zaalfamilie zou een zaal-compatibele adapter moeten hebben die weet hoe kosten te innen, liquiditeit te verwijderen en de acties bloot te stellen die het protocol nodig heeft voor dat LP-formaat. Dat houdt zaal-specifiek gedrag geïsoleerd in plaats van het te laten lekken in elk gebruikersgerichte en liquidatiegerichte codepad.",
+      "Adapterondersteuning is alleen belangrijk wanneer deze in lijn is met waardering en liquidatieondersteuning. Een nieuwe adapter op zich maakt een locatie niet veilig voor onderpandtoelating.",
+      "Routeradressen, adapterregistraties en ingeschakelde netwerken zijn implementatiegegevens. Ze moeten met releases worden gepubliceerd in plaats van te worden geraden uit documentatie. Deze pagina vermijdt opzettelijk tijdelijke adressen en speculatieve uitrolbeloften.",
+      "• Verifieer keten-specifieke adressen vanuit het gepubliceerde contractregister of de release-opmerkingen.",
+      "• Bevestig dat de door u gebruikte venue-adapter is ingeschakeld op de doeldeployment.",
+      "• Beschouw routerondersteuning als een operationele afhankelijkheid, niet als bewijs dat een pool is toegelaten voor onderpand."
+    ]
+  },
+  "introduction/glossary": {
+    "meta": {
+      "title": "Woordenlijst",
+      "description": "DeFi woordenlijst voor Avana - definities van Spoke, Hub, LP NFT, onderpandfactor, schuldaandelen, liquidatie, orakel en andere protocoltermen."
+    },
+    "toc": [
+      {
+        "id": "core-concepts",
+        "title": "Kernconcepten"
+      },
+      {
+        "id": "protocol-components",
+        "title": "Protocolcomponenten"
+      },
+      {
+        "id": "financial-terms",
+        "title": "Financiële Termen"
+      },
+      {
+        "id": "risk-security",
+        "title": "Risico & Beveiliging"
+      },
+      {
+        "id": "metrics",
+        "title": "Statistieken"
+      },
+      {
+        "id": "disclaimers",
+        "title": "Vrijwaringen"
+      }
+    ],
+    "strings": [
+      "Woordenlijst",
+      "DeFi woordenlijst voor Avana - definities van Spoke, Hub, LP NFT, onderpandfactor, schuldaandelen, liquidatie, orakel en andere protocoltermen.",
+      "Kernconcepten",
+      "Protocolcomponenten",
+      "Financiële Termen",
+      "Risico & Beveiliging",
+      "Statistieken",
+      "Vrijwaringen",
+      "Leen Spoke",
+      "De voor de lener zichtbare Avana spreektafel die LP onderpand ontvangt, posities waardeert, schulden bijhoudt en het lenen en liquideren tegen Hub-liquiditeit coördineert.",
+      "Het kapitaalingangspunt aan de kant van de kredietverstrekker dat geleverde activa naar de Hub leidt zodat Borrow Spokes gedeelde liquiditeit kan opnemen.",
+      "De gedeelde monetaire laag in Aave v4 die liquiditeit, reserves, boekhouding en protocolbrede kapitaalcoördinatie over verbonden Spokes beheert.",
+      "Hub-en-Spoke Architectuur",
+      "Een ontwerp waarbij gedeeld kapitaal in de Hub leeft terwijl collateraal-specifieke logica geïsoleerd is in de Spokes. Avana gebruikt dit model omdat LP collateraal locatie-specifieke waardering en liquidatiegedrag nodig heeft.",
+      "Liquidatieknooppunt",
+      "Een liquiditeitspositie van een ondersteunde AMM. Afhankelijk van de locatie kan het een verhandelbare LP token, een geconcentreerde liquiditeit NFT, of een ander goedgekeurd pool-aandeelformaat zijn.",
+      "Onderpandfactor",
+      "Het deel van de USD-onderpandwaarde dat kan meetellen voor de leenlimiet. In LP markten wordt dit toegepast op het niveau van de positie in plaats van op de spoke als geheel.",
+      "Leencapaciteit",
+      "Het bedrag dat een gebruiker kan lenen binnen een Borrow Spoke nadat elke gedeponeerde LP positie is gewaardeerd, risicogecorrigeerd en toegevoegd aan de totale capaciteit van de gebruiker.",
+      "Toegestaan pool",
+      "Een door het bestuur goedgekeurde pool die voldoet aan de toelaatbaarheidsvereisten zoals oracle-dekking, liquiditeitsdiepte, afwikkelingskwaliteit en spokes-compatibiliteit.",
+      "Lening-tot-waarde (LTV)",
+      "De leenkingsratio die verbonden is aan onderpand nadat de positiewaardering van Avana en poolspecifieke risicobeheersingen zijn toegepast.",
+      "De interne boekhoudkundige eenheid die wordt gebruikt om de verplichtingen van de kredietnemer bij te houden terwijl rente in de loop van de tijd wordt opgebouwd zonder voortdurend elke leningbalans opnieuw te hoeven schrijven.",
+      "Het tarief dat kredietnemers betalen over uitstaande schulden. Het weerspiegelt zowel gedeelde Hub-omstandigheden als LP-specifieke risico-overwegingen.",
+      "Benuttingspercentage",
+      "De verhouding van geleende liquiditeit ten opzichte van de beschikbare voorraad in de relevante Hub-verbonden kapitaallaag.",
+      "Risicopremie",
+      "Het risico-specifieke onderdeel dat bovenop de basisleenvormen wordt gelegd om het LP onderpandprofiel dat wordt gefinancierd weer te geven.",
+      "Reservefactor",
+      "Het gedeelte van protocoleconomie of rente-inkomsten dat voor het systeem wordt gereserveerd in plaats van volledig doorgegeven aan liquiditeitsverschaffers.",
+      "Gezondheidsfactor",
+      "De verhouding tussen de aangepaste onderpandwaarde en de uitstaande schuld binnen een Borrow Spoke. Wanneer deze te laag wordt, nadert de positie de liquidatiegeschiktheid.",
+      "Het proces van het aflossen van schuld tegen een ongezonde LP-gedekte positie, het terugdraaien van genoeg onderpand om de solvabiliteit te herstellen, en het teruggeven van eventuele resterende waarde na afwikkeling.",
+      "Liquidatiebonus",
+      "De liquidatiepremie die wordt betaald aan de partij die het afwikkelen uitvoert, als compensatie voor het gebruik van kapitaal, de complexiteit van de routing en het uitvoeringsrisico.",
+      "Avana’s waarderingsmotor voor LP onderpand. Het combineert externe activaprijzen, LP positiereconstructie en waarborgen voor herstelbare waarde.",
+      "Herstelbare waarde",
+      "Het bedrag waarvan het protocol gelooft dat het realistisch gerealiseerd kan worden tijdens een stressvolle afwikkeling, nadat rekening is gehouden met liquidatieslippage, poolcondities en risicobuffers.",
+      "Een gecontroleerde wijziging van een gedekte LP positie, zoals een herbalancering of verandering van het bereik, die alleen is toegestaan wanneer de resulterende positie nog steeds voldoet aan de gezondheidscontroles van het protocol.",
+      "Totale waarde van activa geleverd als LP onderpand of kapitaal over Avana verbonden componenten.",
+      "Openstaande schuld",
+      "Het momenteel geleende bedrag tegen goedgekeurde onderpandposities.",
+      "Leningbenutting",
+      "Het aandeel van de beschikbare Hub-liquiditeit dat door leners is opgenomen.",
+      "Leenruimte",
+      "Het verschil tussen de huidige schuld van een gebruiker en de resterende totale leencapaciteit binnen een Borrow Spoke.",
+      "Restwaarde",
+      "Elke waarde die overblijft in een positie nadat schulden, liquidatiepremie en uitvoeringskosten zijn vereffend.",
+      "Poolgoedkeuring",
+      "De regel dat alleen vooraf goedgekeurde pools als onderpand mogen worden toegelaten, waardoor de blootstelling aan onbeheerde of slecht gecontroleerde markten wordt beperkt.",
+      "Herstelkapsel",
+      "Blootstellingsplafonds",
+      "Risicolimieten die de leenbare blootstelling begrenzen per poolfamilie, onderpandklasse of liquiditeitsdiepte.",
+      "Stroomonderbreker",
+      "Een risicobeheersing die acties kan pauzeren of beperken wanneer prijzen, marktg... of protocolafhankelijkheden inconsistent of onveilig worden.",
+      "Bestuurlijke Veiligheid",
+      "De reeks van review-, timelock-, veto- en noodrollen die door het Risicokader wordt gebruikt om parameterwijzigingen gedisciplineerd te houden.",
+      "Herentree-bescherming",
+      "De contractniveaubescherming die voorkomt dat een state-changing workflow opnieuw wordt gestart voordat de eerste uitvoering is voltooid.",
+      "Canonieke definities voor protocolspecifieke en DeFi terminologie die door de documentatie wordt gebruikt.",
+      "LP & Zekerheid",
+      "Schuld & Rente",
+      "Liquidatie",
+      "Oracle & Transformeren",
+      "Geen beleggingsadvies:",
+      "Avana is een softwareprotocol. Deze documentatie vormt geen beleggingsadvies.",
+      "Risico van verlies:",
+      "Gebruikers kunnen geld verliezen door kwetsbaarheden in slimme contracten, marktvolatiliteit, liquidatie of oracle-manipulatie.",
+      "Regelgevende status:",
+      "De regelgevende status van Avana en zijn tokens (indien aanwezig) is niet gegarandeerd en kan per jurisdictie verschillen.",
+      "Geen garantie:",
+      "De software wordt geleverd 'zoals het is' zonder enige garantie."
+    ]
+  },
+  "introduction/key-concepts": {
+    "meta": {
+      "title": "Belangrijke concepten",
+      "description": "Begrijp de kernconcepten achter Avana, inclusief LP onderpandgedrag, conservatieve waardering, Hub-lening en liquidatie."
+    },
+    "toc": [
+      {
+        "id": "core-insight",
+        "title": "Kerninzicht"
+      },
+      {
+        "id": "user-flow",
+        "title": "Leenmodel"
+      },
+      {
+        "id": "oracle-valuation",
+        "title": "Oracle & Waardering"
+      },
+      {
+        "id": "borrowing-process",
+        "title": "Leencapaciteit"
+      },
+      {
+        "id": "health-monitoring",
+        "title": "Gezondheid & Liquidatie"
+      },
+      {
+        "id": "fee-collection",
+        "title": "Vergoeding Behandeling"
+      }
+    ],
+    "strings": [
+      "Belangrijke concepten",
+      "Begrijp de kernconcepten achter Avana, inclusief LP onderpandgedrag, conservatieve waardering, Hub-lening en liquidatie.",
+      "Kerninzicht",
+      "Leenmodel",
+      "Oracle & Waardering",
+      "Leencapaciteit",
+      "Gezondheid & Liquidatie",
+      "Vergoeding Behandeling",
+      "De ideeën die herhaaldelijk voorkomen in de documenten van Avana over Borrow Spoke, waardering, lenen en liquidatie.",
+      "Een LP-positie is niet zomaar een token met een spotprijs. Het is een levende liquiditeitspositie waarvan de waarde afhangt van de onderliggende activa, de samenstelling van het pool, de vergoedingsopbouw, de structuur van de positie en het bedrag dat het protocol realistisch zou kunnen terugvorderen als liquidatie nodig zou zijn.",
+      "Waarom dit belangrijk is:",
+      "Avana dekt LP markten met specifieke regels per spokes en pool in plaats van één generiek activamodel voor elke LP.",
+      "Gebruikers storten ondersteunde LP posities in een Borrow Spoke. De posities kunnen actief blijven in hun pools terwijl het protocol het beheer overneemt voor de onderpandadministratie.",
+      "Elke goedgekeurde LP positie wordt op zichzelf gewaardeerd. Nadat aanvullende factoren en risicobeheersingen voor de pool zijn toegepast, wordt de verdisconteerde bijdrage toegevoegd aan de leenbehoefte binnen die Borrow Spoke.",
+      "Wanneer de gebruiker leent, trekt de Spoke liquiditeit van de Hub aan. LP Marktrisico blijft in de spaaklaag, terwijl gedeelde kapitaaladministratie bij de Hub blijft.",
+      "Avana waardeert LP onderpand conservatief. Externe activa prijzen geven de onderliggende waarden aan, terwijl poolgegevens en positie-informatie worden gebruikt om blootstelling opnieuw op te bouwen in plaats van alleen te leunen op ruwe AMM spotoutput.",
+      "Onderliggende activaprijzen afkomstig van robuuste externe feeds",
+      "Poolvoorraad splitsing of bereikbewuste positiedecompositie",
+      "Opgehoopte kosten afzonderlijk erkend van de hoofdkapitaalliquiditeit",
+      "Herstelkapsels voor het terugdraaien van slip, tijdelijk verlies en gestreste liquidatie",
+      "Capaciteit wordt positie voor positie opgebouwd binnen een Borrow Spoke. Avana legt geen enkele algemene factor op over het hele account of over elk pool in een spoke. Elke positie draagt alleen bij nadat zijn eigen onderpandsfactoren en poolspecifieke controles zijn toegepast.",
+      "Informatie:",
+      "Onderpandfactoren",
+      "Een Borrow Spoke vergelijkt de aangepaste onderpandwaarde met de uitstaande schuld. Als prijzen, oracle-controles of positiewijzigingen de resterende buffer voldoende verminderen, kan de rekening in het liquidatiegebied terechtkomen.",
+      "Gezondheid en liquidatie zijn beide afhankelijk van hetzelfde waarderingspad. Prijsstelling, onderpandfactoren en liquidatierouting moeten op elkaar afgestemd blijven omdat ze uiteindelijk dezelfde solvabiliteitsberekening voeden.",
+      "LP posities kunnen handelskosten blijven opbouwen terwijl ze als onderpand worden gebruikt. Avana kan die kosten in de waardering herkennen en, afhankelijk van gezondheidscontroles, gebruikers toestaan ze op te eisen zonder volledig uit de LP hoofdpositie te stappen.",
+      "Gerelateerde documenten:",
+      "Prijsorakels",
+      "Vordering LP Kosten"
+    ]
+  },
+  "introduction": {
+    "meta": {
+      "title": "",
+      "description": ""
+    },
+    "toc": [],
+    "strings": []
+  },
+  "introduction/testnet-roadmap": {
+    "meta": {
+      "title": "Testnet & Routekaart",
+      "description": "Operationele gids voor Avana testimplementaties en kaderstelling van de roadmap, voor evaluatiecontext in plaats van canonieke protocolregels of lanceringsbeloften."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "testnet-scope",
+        "title": "Testnetbereik"
+      },
+      {
+        "id": "how-to-evaluate",
+        "title": "Hoe te evalueren"
+      },
+      {
+        "id": "roadmap-framing",
+        "title": "Routekaart Kaderen"
+      },
+      {
+        "id": "campaigns-and-status",
+        "title": "Campagnes & Status"
+      }
+    ],
+    "strings": [
+      "Testnet & Routekaart",
+      "Operationele gids voor Avana testimplementaties en kaderstelling van de roadmap, voor evaluatiecontext in plaats van canonieke protocolregels of lanceringsbeloften.",
+      "Overzicht",
+      "Testnetbereik",
+      "Hoe te evalueren",
+      "Routekaart Kaderen",
+      "Campagnes & Status",
+      "Operationele pagina voor het testen van Avana implementaties en voor het lezen van roadmap-verklaringen met het juiste niveau van voorzichtigheid.",
+      "De status van het testnet, ondersteunde netwerken en de volgorde van de openbare roadmap veranderen sneller dan de architectuurdocumenten. Deze pagina bestaat zodat ontwikkelaars de status van de omgeving kunnen scheiden van het stabiele protocolontwerp en kunnen voorkomen dat ze uitroltaal lezen alsof het een specificatie is.",
+      "Gebruik het lightpaper en de kernontwikkelaarsdocumentatie voor protocolontwerp. Gebruik deze pagina voor de gereedheid van de omgeving, proefomvang en uitrolcontext.",
+      "Een testimplementatie kan slechts een deel van het volledige productieontwerp blootstellen. LP families, het lenen van activa, oracle-dekking en liquidatiegereedschappen kunnen allemaal beperkter of meer vereenvoudigd zijn op het testnet.",
+      "• Controleer het actieve netwerk, het contractregister en de ondersteunde set pools voor de huidige omgeving.",
+      "• Verwacht gemockte activa, beperkte locatie-dekking en ingekorte operationele cycli.",
+      "• Behandel het gedrag van het testnet als een evaluatieomgeving, niet als een definitieve productieverplichting.",
+      "Het meest nuttige evaluatiepad is om een in aanmerking komend LP te storten, de spaakwaardering te bevestigen, de totale leencapaciteit te observeren, te lenen tegen Hub-liquiditeit, en vervolgens te kijken hoe gezondheidsmonitoring en terugbetaling zich op datzelfde account gedragen.",
+      "Punten, quests of andere campagnes op een testimplementatie zijn operationele functies. Ze zijn niet het collateral-model zelf.",
+      "De taal van de roadmap is richtinggevend. Het wijst op een bredere dekking van de LP-familie, sterkere oracle-ondersteuning, geavanceerdere liquidatietools en verfijndere risicobeheersing. Het moet niet worden gelezen als een vaste lanceringsdatum of een harde netwerkaankondiging, tenzij die toezegging afzonderlijk wordt aangekondigd.",
+      "Actieve prikkels, puntenprogramma's of netwerk-specifieke uitrolgegevens moeten in campagnedocumenten of release-opmerkingen worden opgenomen. Door ze uit de kernprotocolpagina's te houden, blijven de ontwikkelaarsdocumenten stabieler wanneer campagnes of uitrolplannen veranderen."
+    ]
+  },
+  "legal/disclaimer": {
+    "meta": {
+      "title": "Juridische disclaimer",
+      "description": "Avana juridische disclaimer - algemene disclaimer, geen financieel advies, risico’s, garanties en beperking van aansprakelijkheid."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "general-disclaimer",
+        "title": "Algemene disclaimer"
+      },
+      {
+        "id": "no-financial-advice",
+        "title": "Geen financieel advies"
+      },
+      {
+        "id": "risks",
+        "title": "Risico's"
+      },
+      {
+        "id": "no-warranties",
+        "title": "Geen garanties"
+      },
+      {
+        "id": "limitation-of-liability",
+        "title": "Beperking van aansprakelijkheid"
+      },
+      {
+        "id": "related-policies",
+        "title": "Gerelateerde beleidslijnen"
+      }
+    ],
+    "strings": [
+      "Juridische disclaimer",
+      "Avana juridische disclaimer - algemene disclaimer, geen financieel advies, risico’s, garanties en beperking van aansprakelijkheid.",
+      "Overzicht",
+      "Algemene disclaimer",
+      "Geen financieel advies",
+      "Risico's",
+      "Geen garanties",
+      "Beperking van aansprakelijkheid",
+      "Gerelateerde beleidslijnen",
+      "Juridische kennisgevingen die het gebruik van het protocol en de documentatie regelen.",
+      "Belangrijk:",
+      "Lees deze disclaimer zorgvuldig door voordat u Avana gebruikt. Door het protocol te gebruiken, erkent u dat u deze voorwaarden hebt gelezen, begrepen en ermee instemt daaraan gebonden te zijn. Voor volledige voorwaarden kunt u onze",
+      "Servicevoorwaarden",
+      "Privacybeleid",
+      "Deze disclaimer vult onze volledige [documenten] aan en moet in samenhang daarmee worden gelezen",
+      ". De Servicevoorwaarden vormen een juridisch bindende overeenkomst tussen u en Avana met betrekking tot uw toegang tot en gebruik van het protocol en de gerelateerde diensten.",
+      "Van onze startpagina:",
+      "Lenen tegen LP tokens brengt risico's met zich mee, inclusief liquidatie als de marktomstandigheden tegen je positie in bewegen. Avana bewaart je fondsen niet, herfinanciert LP posities niet, en verandert niet hoe je liquiditeit werkt op de onderliggende AMMs. Leen alleen bedragen waarvan je comfortabel kunt onderhouden tijdens marktvolatiliteit.",
+      "Avana is een experimenteel gedecentraliseerd financieel protocol. Het protocol wordt geleverd \"zoals het is\" zonder enige verklaringen of garanties van welke aard dan ook, hetzij expliciet of impliciet.",
+      "Zoals vermeld in onze Servicevoorwaarden (Sectie 2): \"Het Avana Protocol omvat functionaliteit waarbij bepaalde open source smart contracts bepaalde digitale valuta of andere crypto-activa kunnen ontvangen en vasthouden. Er is een risico dat de open source software, inclusief eventuele upgrades, bugs, virussen, Trojaanse paarden of andere kwetsbaarheden of veranderingen kan introduceren die kunnen leiden tot een gedeeltelijke of volledige verstoring van het protocol of verlies, schade, of vernietiging van uw crypto-activa.\"",
+      "Elk vertrouwen dat u in dergelijke informatie stelt, is volledig voor eigen risico. Wij zijn niet aansprakelijk voor enig verlies of schade die voortvloeit uit het gebruik van dit protocol of deze documentatie.",
+      "Zoals duidelijk vermeld in onze Servicevoorwaarden: \"DE DIENSTEN OMVATTEN ONDER ANDERE DE INFORMATIEBRONNEN, DIE INFORMATIE KUNNEN BIEDEN GERELATEERD AAN AVANA. AVANA IS GEEN MAKELAAR, HANDELAAR, BEURS, BELEGGINGSADVIES, CUSTODE OF FINANCIËLE DIENSTVERLENER VAN WELKE SOORT DAN OOK. WE HEBBEN GEEN FIDUCIAIRE RELATIE MET U, OF VERPLICHTING TEGENOVER U, IN VERBAND MET DE DIENSTEN.\"",
+      "• Dit materiaal is uitsluitend voor informatieve doeleinden",
+      "• Het is geen aanbod of uitnodiging om te investeren in, te kopen of te verkopen van enige belangen of aandelen",
+      "• Het is niet bedoeld om boekhoudkundige, juridische, fiscale adviezen of beleggingsaanbevelingen te geven",
+      "• Wij zijn geen geregistreerde beleggingsadviseurs of effectenmakelaars",
+      "• We geven geen gepersonaliseerde financiële aanbevelingen",
+      "• Verleden prestaties vormen geen garantie voor toekomstige resultaten",
+      "• U moet gekwalificeerde professionals raadplegen voordat u financiële beslissingen neemt",
+      "• Investeringen in cryptocurrency zijn zeer volatiel en risicovol",
+      "Sectie 8 van onze Servicevoorwaarden beschrijft de risico's die gepaard gaan met het gebruik van Avana:",
+      "Experimentele technologie",
+      "De Diensten kunnen experimentele en nieuwe technologie bevatten en het gebruik van dergelijke technologie brengt een hoog risico met zich mee. Er zijn tal van redenen waarom de Diensten of de onderliggende blockchain-netwerken op onverwachte wijze kunnen falen, wat kan resulteren in het totale en absolute verlies van eventuele crypto-activa die in uw digitale portemonnee worden gehouden.",
+      "Operationele uitdagingen",
+      "De Diensten en/of onderliggende blockchain-netwerken kunnen het slachtoffer zijn van cyberaanvallen, onverwachte pieken in het transactievolume, of andere operationele of technische moeilijkheden of kwetsbaarheden die onderbrekingen in verband met uw gebruik van de Diensten kunnen veroorzaken.",
+      "Regelgevende onzekerheid",
+      "De Diensten, het Avana Protocol en/of eventuele onderliggende blockchain-netwerken zijn mogelijk niet beschikbaar of geschikt voor gebruik in alle rechtsgebieden en u kunt onderworpen zijn aan juridische en reglementaire nalevingsverplichtingen in verband met uw gebruik van de Diensten in bepaalde rechtsgebieden.",
+      "LP-Specifieke Risico's",
+      "• Tijdelijk verlies kan de waarde van onderpand verminderen",
+      "• Liquidatierisico als de marktomstandigheden zich tegen uw positie keren",
+      "• Onderliggend DEX smart contract risico",
+      "• Geconcentreerde liquiditeitsposities kunnen waardeloos worden buiten het bereik",
+      "Zoals vermeld in Sectie 9.1 van onze Servicevoorwaarden:",
+      "DE DIENSTEN WORDEN VERLEEND OP BASIS VAN 'ZOALS ZE ZIJN' EN 'ZOALS BESCHIKBAAR' EN AVANA DOET GEEN AANSPRAKEN MET BETREKKING TOT DERGELIJKE 'ZOALS ZE ZIJN' EN 'ZOALS BESCHIKBAAR' BASIS OF ANDERSZINS IN VERBAND MET DE VOORWAARDEN, EN AVANA WIJST HIERBIJ ALLE UITDRUKKELIJKE, IMPLICIETE OF WETTELIJKE GARANTIES EN VOORWAARDEN AF, INCLUSIEF ALLE GARANTIES OF VOORWAARDEN VAN NIET-INBREUK, VERKOOPBAARHEID, GESCHIKTHEID VOOR EEN BEPAALD DOEL, BESCHIKBAARHEID, FOUTLOZE OF ONONDERBROKEN WERKING.",
+      "Zoals vermeld in Sectie 9.2 van onze Servicevoorwaarden:",
+      "IN GEEN GEVAL ZAL AVANA AAN U AANSPRAKELIJK ZIJN VOOR ENIGE GEVOLGSCHADE, INDIRECTE SCHADE, INCIDENTELE SCHADE OF SPECIALE SCHADE VAN WELKE SOORT OF NATUUR DAN OOK, HOE DAN OOK ONTSTAAN, INCLUSIEF, ZONDER BEPERKING, EXEMPLARISCHE OF PUNITIEVE SCHADE, VERLOREN GEGEVENS, VERLOREN WINST OF OMZET OF WAARDEVERMINDERING, VOORTKOMEND UIT OF IN VERBAND MET DE DIENSTEN OF UW GEBRUIK VAN HET AVANA-PROTOCOL.",
+      "Deze beperking is van toepassing ongeacht de aansprakelijkheidsleer (contract, onrechtmatige daad, objectieve aansprakelijkheid of anderszins) en zelfs als ons is geadviseerd over de mogelijkheid van dergelijke schade. Onder geen enkele omstandigheid zal de totale aansprakelijkheid van Avana meer dan honderd Amerikaanse dollars ($100,00) bedragen.",
+      "Voor volledige juridische informatie, gelieve de volgende documenten te bekijken:",
+      "De volledige juridisch bindende overeenkomst die uw gebruik van Avana regelt, inclusief geschiktheid, verboden activiteiten, intellectueel eigendom, geschiloplossing en meer.",
+      "Hoe wij uw persoonlijke gegevens verzamelen, gebruiken en beschermen, inclusief gegevensbewaring, cookies en uw rechten onder de AVG, CCPA en andere privacyregelgeving.",
+      "Beperkte Gebieden",
+      "Huidige lijst van rechtsgebieden die beperkt zijn in het toegang krijgen tot Avana-diensten.",
+      "Laatst bijgewerkt:",
+      "januari 2026",
+      "Deze disclaimer kan van tijd tot tijd worden bijgewerkt. Voortgezet gebruik van het protocol houdt aanvaarding van eventuele wijzigingen in. Raadpleeg alstublieft onze"
+    ]
+  },
+  "legal": {
+    "meta": {
+      "title": "Juridisch & Compliance - Beveiligingsopenbaarmakingen",
+      "description": "Avana juridische informatie - toegangbeperkingen, beperkte rechtsgebieden, nalevingsvereisten en beveiligingsopenbaarmakingen."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "access-restrictions",
+        "title": "Toegangsbeperkingen"
+      },
+      {
+        "id": "restricted-jurisdictions",
+        "title": "Beperkte rechtsgebieden"
+      },
+      {
+        "id": "compliance",
+        "title": "Naleving"
+      },
+      {
+        "id": "related-policies",
+        "title": "Gerelateerde beleidslijnen"
+      }
+    ],
+    "strings": [
+      "Juridisch & Compliance - Beveiligingsopenbaarmakingen",
+      "Avana juridische informatie - toegangbeperkingen, beperkte rechtsgebieden, nalevingsvereisten en beveiligingsopenbaarmakingen.",
+      "Overzicht",
+      "Toegangsbeperkingen",
+      "Beperkte rechtsgebieden",
+      "Naleving",
+      "Gerelateerde beleidslijnen",
+      "OFAC-sancties",
+      "Oekraïne (Krim, Donetsk- en Loehansk-regio's)",
+      "Verenigde Staten van Amerika",
+      "In afwachting van regelgevende duidelijkheid",
+      "Beperkte Gebieden",
+      "Deze pagina wordt onderhouden om de meest actuele lijst van Beperkte Rechtsgebieden voor het Avana-domein weer te geven.",
+      "Gebruiksvoorwaarden",
+      ", de toegang tot de Avana-website en de bijbehorende diensten is beperkt voor individuen of entiteiten in bepaalde rechtsgebieden. Deze pagina biedt de huidige lijst van beperkte gebieden en legt de toegangsbeperkingen uit die van kracht zijn.",
+      "Belangrijk:",
+      "Elke poging om toegang te krijgen tot het Avana-platform vanuit een Beperkte Jurisdictie zal resulteren in onmiddellijke omleiding naar de Gebruiksvoorwaarden en een weigering van toegang.",
+      "Toegang tot de Avana-website en de bijbehorende diensten is beperkt voor individuen of entiteiten die:",
+      "Verblijven binnen",
+      "een van de Beperkte Rechtsgebieden",
+      "Zijn staatsburgers van",
+      "Fysiek aanwezig binnen",
+      "Zijn opgenomen binnen",
+      "Een geregistreerd kantoor onderhouden binnen",
+      "Deze beperkingen worden gedefinieerd in Avana's",
+      "Huidige Beperkte Rechtsgebieden",
+      "De volgende rechtsgebieden hebben momenteel geen toegang tot Avana-diensten:",
+      "Bevoegdheid",
+      "Reden",
+      "Opmerking:",
+      "Deze lijst kan van tijd tot tijd worden bijgewerkt als reactie op veranderingen in toepasselijke wetten, voorschriften of sanctieprogramma's. Gebruikers zijn verantwoordelijk voor het waarborgen van hun voortdurende naleving van deze beperkingen.",
+      "Zoals vermeld in onze Gebruiksvoorwaarden (Sectie 1.2), mag u de Diensten niet openen of gebruiken als u:",
+      "• Het onderwerp van enige sancties die worden beheerd of opgelegd door het Office of Foreign Assets Control (OFAC) van het Amerikaanse ministerie van Financiën, het Amerikaanse ministerie van Buitenlandse Zaken, of een andere overheidsautoriteit met jurisdictie",
+      "• Geïdentificeerd op de lijsten van geweigerde personen, entiteiten of niet-geverifieerden van het Bureau of Industry and Security van het U.S. Department of Commerce",
+      "• Gelegen, georganiseerd of woonachtig in een land of gebied dat, of waarvan de regering, het voorwerp is van economische sancties",
+      "Gebruikers zijn uitsluitend verantwoordelijk voor het ervoor zorgen dat hun gebruik van het protocol voldoet aan alle toepasselijke wetten en regelgeving in hun rechtsgebied.",
+      "Voor volledige informatie over uw rechten en plichten bij het gebruik van Avana, raadpleegt u alstublieft:",
+      "Servicevoorwaarden",
+      "Volledige algemene voorwaarden die het gebruik van de diensten van Avana regelen, inclusief vereisten voor geschiktheid, verboden activiteiten en geschillenbeslechting.",
+      "Privacybeleid",
+      "Informatie over hoe we uw persoonlijke gegevens verzamelen, gebruiken en beschermen wanneer u onze diensten gebruikt.",
+      "Juridische disclaimer",
+      "Belangrijke disclaimers met betrekking tot risico's, garanties en aansprakelijkheidsbeperkingen."
+    ]
+  },
+  "liquidation/examples": {
+    "meta": {
+      "title": "Voorbeelden van liquidatie",
+      "description": "Illustratieve liquidatievoorbeelden voor Avana, waarin wordt getoond hoe verhandelbare LPs, geconcentreerde liquiditeit en multi-positie rekeningen worden afgewikkeld onder hetzelfde kernkader."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "fungible-lp",
+        "title": "Vervangbaar LP Voorbeeld"
+      },
+      {
+        "id": "concentrated-liquidity",
+        "title": "Voorbeeld van geconcentreerde liquiditeit"
+      },
+      {
+        "id": "nft-liquidity",
+        "title": "NFT-liquidatie"
+      },
+      {
+        "id": "multi-position-account",
+        "title": "Multi-positieaccount"
+      },
+      {
+        "id": "edge-cases",
+        "title": "Randgevallen"
+      },
+      {
+        "id": "summary",
+        "title": "Samenvatting"
+      }
+    ],
+    "strings": [
+      "Voorbeelden van liquidatie",
+      "Illustratieve liquidatievoorbeelden voor Avana, waarin wordt getoond hoe verhandelbare LPs, geconcentreerde liquiditeit en multi-positie rekeningen worden afgewikkeld onder hetzelfde kernkader.",
+      "Overzicht",
+      "Vervangbaar LP Voorbeeld",
+      "Voorbeeld van geconcentreerde liquiditeit",
+      "NFT-liquidatie",
+      "Multi-positieaccount",
+      "Randgevallen",
+      "Samenvatting",
+      "De positie kan grotendeels eenzijdig zijn tegen de tijd dat de liquidatie begint, vooral bij geconcentreerde liquiditeit.",
+      "De diepte van het pool kan voldoende zijn voor waardering, maar nog steeds dun genoeg om conservatieve afwikkelingsrouting te vereisen.",
+      "Op te eisen kosten kunnen de terugvorderingen verbeteren, maar ze mogen niet als gegarandeerd worden beschouwd totdat ze daadwerkelijk zijn gerealiseerd.",
+      "Een kredietnemer kan meerdere posities hebben die bijdragen aan één spilniveau leenruimte, dus de volgorde van liquidatie is belangrijk.",
+      "Uitgewerkte scenario's die laten zien hoe één liquidatiekader wordt toegepast op verschillende LP vormen van onderpand.",
+      "Deze voorbeelden zijn opzettelijk eenvoudig. Het doel is om te laten zien hoe liquidatie zich ontvouwt in veelvoorkomende LP-formaten zonder extra regels te verzinnen bovenop de",
+      "Liquidatiekader",
+      "In ieder geval is de taak dezelfde: gebruik conservatieve onderpandmarkeringen, los schulden af in de kredietlaag, werk de LP af via een ondersteund pad, en retourneer elke resterende waarde die overblijft na uitvoeringskosten en de liquidatiebeloning.",
+      "Een lener heeft een verhandelbare LP token uit een goedgekeurde stabiele of gewogen pool gestort. Na verloop van tijd veranderen de samenstelling van de pool en de oracle-invoer voldoende zodat de rekening niet langer voldoende aangepaste onderpandwaarde heeft voor haar schuld.",
+      "• De liquidatieknooppunt detecteert het tekort en verkrijgt uitvoeringsliquiditeit.",
+      "• Schuld wordt terugbetaald en de LP token wordt ingewisseld voor de onderliggende activa.",
+      "• Verhaalbare kosten worden gerealiseerd indien beschikbaar en behulpzaam voor terugvordering.",
+      "• Onderliggende activa worden naar het schuldactief geleid en de liquidatie sluit.",
+      "• Elke waarde die overblijft na terugbetaling en beloning wordt aan de lener teruggegeven.",
+      "Een geconcentreerde liquiditeitspositie drijft naar de rand van zijn actieve bereik. De rekening kan een tijdje gezond blijven, en dan omslaan naar liquidatie zodra de schuld de terugvorderbare waarde van de huidige positietoestand overstijgt.",
+      "• De knoop waardeert de positie op basis van zijn huidige bereik, liquiditeit en tokenverdeling.",
+      "• Zodra de liquidatie begint, worden de opeisbare kosten gecontroleerd voordat het kapitaal wordt teruggedraaid.",
+      "• Routering past zich aan op de daadwerkelijk herwonnen voorraad in plaats van een statische tokenmix.",
+      "• Afwikkeling volgt hetzelfde patroon: terugbetalen van uitvoeringsliquiditeit, beloning betalen, resterende waarde teruggeven.",
+      "Een lener stort een Uniswap v3 NFT en later komt de positie onder water te staan. Het afwikkelen wordt op het positiesniveau afgehandeld, niet als een los tokenfragment, omdat de NFT één specifieke onderliggende positie vertegenwoordigt.",
+      "• Aave grijpt het kluiskast-tokenbalans dat verbonden is aan de NFT-ondersteunde positie.",
+      "• Avana verbrandt het kluis-token en verplaatst de echte LP-positie naar afwikkeling.",
+      "• De afwikkelingsmodule wikkelt de positie af, verkoopt, veilt of draagt deze over.",
+      "• Schuld wordt eerst terugbetaald, de beloning van de curator komt daarna, en eventuele overtollige middelen volgen de marktregel.",
+      "• De leningnemer behoudt geen schone gedeeltelijke aanspraak op dezelfde NFT na liquidatie.",
+      "Een lener kan meerdere LP posities binnen één Borrow Spoke hebben. De capaciteit wordt samengevoegd over die posities, maar het afbouwen moet nog steeds op het niveau van de positie gebeuren zodra de rekening ongezond wordt.",
+      "• De Spoke rapporteert één totale leencapaciteit aan de Hub.",
+      "• Wanneer de rekening ongezond wordt, kiest de liquidatieknooppunt het afwikkelingspad dat de solvabiliteit het beste herstelt.",
+      "• Eén positie kan genoeg zijn om het tekort te dekken, of er moeten mogelijk meerdere gedeeltelijk of volledig worden afgewikkeld.",
+      "• Volgorde van uitvoering, oracle-consistentie en routedypte zijn belangrijk naast het merkteken zelf.",
+      "Vervangbare LPs, geconcentreerde bereiken, NFT-posities en rekeningen met meerdere posities hebben allemaal verschillende details voor ontbinding. Het gedeelde doel verandert nooit: schulden terugbetalen uit de terugvorderbare LP-waarde zonder te leunen op optimistische NAV-veronderstellingen. Het beleid blijft nog steeds op de hoofdpagina van het Liquidatiekader."
+    ]
+  },
+  "liquidation/flow": {
+    "meta": {
+      "title": "Liquidatiestroom",
+      "description": "Operationele liquidatiestroom voor Avana, die de runtime-volgorde behandelt die wordt gebruikt wanneer kluis-ondersteunde LP-onderpand wordt in beslag genomen en afgewikkeld."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "canonical-reference",
+        "title": "Gerelateerde beleidsdocumenten"
+      },
+      {
+        "id": "runtime-sequence",
+        "title": "Runtime-sequentie"
+      },
+      {
+        "id": "state-transitions",
+        "title": "Toestandsoverschakelingen"
+      },
+      {
+        "id": "operator-notes",
+        "title": "Operatornotities"
+      }
+    ],
+    "strings": [
+      "Liquidatiestroom",
+      "Operationele liquidatiestroom voor Avana, die de runtime-volgorde behandelt die wordt gebruikt wanneer kluis-ondersteunde LP-onderpand wordt in beslag genomen en afgewikkeld.",
+      "Overzicht",
+      "Gerelateerde beleidsdocumenten",
+      "Runtime-sequentie",
+      "Toestandsoverschakelingen",
+      "Operatornotities",
+      "Detecteer een ongezond account",
+      "Liquidatieknooppunten of externe beheerders houden dezelfde risico-gecorrigeerde onderpandwaarden in de gaten die door het protocol worden gebruikt en markeren accounts waarvan de schuld nu de toegestane leencapaciteit overschrijdt.",
+      "Bronuitvoeringsliquiditeit",
+      "De vereffenaar verkrijgt tijdelijke liquiditeit, vaak via een flashloan-achtig pad, zodat schulden kunnen worden terugbetaald zonder vooraf de volledige afwikkeling uit eigen zak te financieren.",
+      "Los de schuld af en verover het kluiswaar",
+      "De relevante Borrow Spoke vereffent de schuld in de credietlaag, neemt het beheer van het kluisonderpand op zich en draagt de positie over aan LP-specifieke afwikkeling.",
+      "Verbrand de kluis-token en markeer de achterliggende positie",
+      "De adapter verbrandt de vastgelopen kluis-token en markeert de echte LP-positie als in afwikkeling, zodat de onderliggende voorraad niet open kan blijven staan tegen een positie die al wordt afgewikkeld.",
+      "Regel de LP positie en sluit de liquidatie",
+      "Avana wikkelt af, verkoopt, veilt of draagt de reële LP positie over, betaalt de uitvoering liquiditeit terug, betaalt de beloning aan de liquiderende partij, en leidt eventuele overtollige middelen volgens de marktregel.",
+      "Zodra Aave liquidatie toestaat, verlaat de geselecteerde positie de ACTIEVE status en gaat over in de LIQUIDERENDE status. De lener zou het niet langer moeten kunnen opnemen.",
+      "Nadat de werkelijke LP positie is geliquideerd of verkocht, wordt de reserve opgeheven en wordt de positie GESCHIKT.",
+      "Staatsregel",
+      "Een kluis-token kan niet uitstaan nadat de ondersteunende LP-positie is verwijderd. Als de kluis-tokens worden verbrand, moet de LP-positie worden teruggetrokken, teruggedraaid of in afwikkeling worden gebracht.",
+      "Runtime-sequentie voor hoe ongezonde LP-ondersteunde posities zich verplaatsen van detectie tot afwikkeling zodra liquidatie begint.",
+      "Deze pagina is de runtime-weergave van liquidatie. Het is geschreven voor het moment dat een account al ongezond is en een operator moet begrijpen wat er vervolgens gebeurt, in volgorde, van detectie tot definitieve afwikkeling.",
+      "LP liquidatie is een gecontroleerde afwikkeling in plaats van een enkele tokenverkoop. Schulden worden afbetaald, de kluiskollateralen worden in beslag genomen, de bijbehorende kluistoken wordt vernietigd, de echte LP-positie wordt afgehandeld en eventueel overgebleven waarde wordt teruggegeven.",
+      "Liquidatiebeleid leeft voort",
+      "Liquidatiekader",
+      "pagina. Deze stroom gaat uit van het model voor terugvorderbare waarde in",
+      "Prijsorakels",
+      "Onderpandfactoren",
+      "Gebruik deze pagina voor de uitvoeringsvolgorde. Drempels, beloningen en toelatingsregels komen nog steeds uit de architectuur- en risico-documenten, niet alleen uit deze checklist.",
+      "Verschillende LP families proberen allemaal hetzelfde eindresultaat te bereiken, maar ze komen daar niet via identieke uitgangen. Adapter-gebaseerde verwerking laat elke poolfamilie het terugdraaidpad volgen dat overeenkomt met zijn eigen mechanica.",
+      "Liquidatiebots zouden actieve posities moeten indexeren, schuldverschuiving vernieuwen en accounts prijzen vanuit dezelfde oraclestack die door het protocol wordt gebruikt in plaats van alleen vanuit de ruwe AMM spotstaat.",
+      "Winstgevendheidscontroles moeten rekening houden met slippage, route-diepte, flashloan-kosten en uitvoeringsrisico. Grote of ongebruikelijke afwikkelingen kunnen baat hebben bij privé-uitvoeringspaden om blootstelling aan nadelige MEV te verminderen.",
+      "Behandel deze pagina als een runtime-checklist. Houd beleidsdetails op de hoofdpagina's over liquidatie, orakel en risico."
+    ]
+  },
+  "liquidation/liquidators": {
+    "meta": {
+      "title": "Likwidateurs",
+      "description": "Ontwikkelaarsgids voor liquidatie-operators, met betrekking tot monitoring, uitvoeringsvereisten en LP-specifiek unwind-gedrag."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "coverage-model",
+        "title": "Dekmodel"
+      },
+      {
+        "id": "execution-requirements",
+        "title": "Uitvoeringsvereisten"
+      },
+      {
+        "id": "operational-notes",
+        "title": "Operationele aantekeningen"
+      }
+    ],
+    "strings": [
+      "Likwidateurs",
+      "Ontwikkelaarsgids voor liquidatie-operators, met betrekking tot monitoring, uitvoeringsvereisten en LP-specifiek unwind-gedrag.",
+      "Overzicht",
+      "Dekmodel",
+      "Uitvoeringsvereisten",
+      "Operationele aantekeningen",
+      "Toestemmingloze deelname",
+      "Elke keeper of uitvoeringsdesk kan liquideren als het posities kan monitoren, bronuitvoeringsliquiditeit kan vinden en de LP formaten kan afwikkelen die Avana ondersteunt.",
+      "LP-specifieke verwerking",
+      "Liquidatie is geen generieke tokenverkoop. Runtime heeft locatierelevante logica nodig voor het realiseren van vergoedingen, het verwijderen van posities, routering en afwikkeling in het schuldactivum.",
+      "Dekking kwaliteit",
+      "LP posities zijn moeilijker te ontmantelen dan eenvoudige tokens. Operators die de volledige route voor ondersteunde locaties modelleren, kunnen meestal beter met stress omgaan dan bots die alleen reageren op een gezondheids-trigger.",
+      "Volg dezelfde risicostatus die het protocol gebruikt, en niet een aparte heuristiek.",
+      "Werk vanaf een schone statusovergang terug in één atomaire taak wanneer mogelijk.",
+      "Prijsvergoeding realisatie, route diepte en restwaarde voordat alleen op snelheid wordt geoptimaliseerd.",
+      "Behandel gedeeltelijke dekking en volledige dekking als afzonderlijke gevallen met afzonderlijke routeringsaannames.",
+      "Positiemonitoring en het volgen van schulddrift",
+      "Simulatie voor routediepte, slippage en beschikbaarheid van liquiditeit",
+      "Transactieaflevering met flashloan- of vooraf gefinancierde uitvoeringspaden",
+      "Locatiebewuste adapters voor de LP families die het protocol ondersteunt",
+      "Hoe operators Avana liquidaties afhandelen en welke uitvoeringsinfrastructuur vereist is voor LP-gedekte schulden.",
+      "Likvidateurs zijn de operatoren die ongezonde LP-ondersteunde posities sluiten. Hun taak is om de schuld terug te betalen, de LP via het juiste traject af te wikkelen, en de teruggewonnen waarde terug te storten in de kredietlaag.",
+      "Snelheid is belangrijk, maar het is op zichzelf niet voldoende. Operators moeten begrijpen wat daadwerkelijk gedekt kan worden, hoe de LP wordt weergegeven en hoe vergoedingen, slippage of eenzijdige voorraadwijzigingsherstel werken voordat ze iets onchain indienen.",
+      "Een curator voor Avana heeft meer nodig dan een triggerbot. Het heeft genoeg infrastructuur nodig om posities te waarderen, exits te simuleren, kapitaal te vinden en een transactie te leveren die het afwikkelpad dat het is gestart kan voltooien.",
+      "Praktische vereiste",
+      "Bouw locatie-specifieke afwikkeling, vergoedingsrealisatie en schuldaflossing op als één workflow. Losse stappen maken het veel eenvoudiger voor een theoretisch dekkende liquidatie om in de uitvoering te mislukken."
+    ]
+  },
+  "liquidation": {
+    "meta": {
+      "title": "Liquidatiekader",
+      "description": "Hoe Avana de liquidatie voor kluis-ondersteunde LP onderpand afhandelt nadat Aave het liquidatie-ingangspunt activeert."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "three-layers",
+        "title": "Drie Lagen"
+      },
+      {
+        "id": "core-rules",
+        "title": "Kernregels"
+      },
+      {
+        "id": "lp-complexity",
+        "title": "LP Collaterale Complexiteit"
+      },
+      {
+        "id": "liquidation-pathways",
+        "title": "Liquidatiepaden"
+      },
+      {
+        "id": "position-state",
+        "title": "Positiestatus"
+      },
+      {
+        "id": "surplus-handling",
+        "title": "Overschotafhandeling"
+      },
+      {
+        "id": "operator-model",
+        "title": "Operatormodel"
+      }
+    ],
+    "strings": [
+      "Liquidatiekader",
+      "Hoe Avana de liquidatie voor kluis-ondersteunde LP onderpand afhandelt nadat Aave het liquidatie-ingangspunt activeert.",
+      "Overzicht",
+      "Drie Lagen",
+      "Kernregels",
+      "LP Collaterale Complexiteit",
+      "Liquidatiepaden",
+      "Positiestatus",
+      "Overschotafhandeling",
+      "Operatormodel",
+      "Liquidatieontwerp",
+      "Hoe liquidatieboeking, kluisin beslagname en LP afwikkeling worden verdeeld over Aave en Avana.",
+      "Aave is het systeem dat beslist wanneer een positie geliquideerd kan worden, maar het weet niet hoe de onderliggende LP moet worden afgewikkeld. Avana gebruikt Aave voor schuldenadministratie, gezondheidscontroles en het ingangspunt voor liquidatie, en neemt daarna het over om de echte positie die achter het kluisonderpand zit, op te lossen.",
+      "De kritieke ontwerpeis is dat twee weergaven van onderpand uitgelijnd moeten blijven. Aave ziet een ERC-20 kluis-tokenbalans, terwijl Avana de LP positie bijhoudt die die balans daadwerkelijk ondersteunt. Liquidatie blijft alleen correct als het in beslag nemen van de kluisweergave altijd leidt tot het juiste LP afwikkelingspad.",
+      "Voor de operatorgerichte volgorde, zie",
+      "Likwidateurs",
+      ". Voor de uitvoeringsvolgorde, zie",
+      "Liquidatiestroom",
+      "Aave laag",
+      "Volgt schuld, kluiscollateraalbalans, gezondheidsfactor en het liquidatiepunt dat inbeslagname autoriseert.",
+      "Avana adapterlaag",
+      "Ontvangt het in beslag genomen kluiscollateraal, verbrandt de bijbehorende kluistoken en brengt het liquidatiegebeurtenis terug in kaart naar de LP positie die het daadwerkelijk ondersteunde.",
+      "Avana nederzettingslaag",
+      "Identificeert de werkelijke LP-positie, voert het juiste afwikkelings- of verkooptraject uit, lost schulden af, betaalt de beloning aan de vereffenaar en leidt eventueel overschot volgens de marktnorm.",
+      "De hoofdregel is eenvoudig maar streng: Aave liquideert het ERC-20 kluiscollateraal, en Avana regelt de LP positie achter dat kluiscollateraal. Alles anders in het ontwerp bestaat om deze twee stappen consistent te houden.",
+      "Kluis tokens moeten overeenkomen met echte waarde",
+      "Een geliquideerd kluis tokenbedrag moet altijd overeenkomen met de echte LP onderpandwaarde, niet met een synthetisch saldo dat niet kan worden teruggewonnen.",
+      "Onderpand kan niet uitstaan",
+      "Zodra de LP positie is vastgesteld, moet de bijbehorende kluis-token worden verbrand zodat de representatie de activa die het moest volgen niet overleeft.",
+      "De actieve voorraad van vault tokens kan niet bestaan zonder actieve LP onderliggende zekerheid.",
+      "Overschot volgt de markregel",
+      "Schulden worden eerst gedekt, dan de beloning van de vereffenaar, vervolgens de afwikkelingskosten, en pas daarna volgt elke resterende waarde de overschotregel van de markt.",
+      "LP-ondersteunde posities gedragen zich tijdens liquidatie niet allemaal hetzelfde. Een vervangbare LP-token kan vaak proportioneel worden ingewisseld of overgedragen, terwijl een Uniswap v3 NFT een enkele discrete positie is waarvan het bereik, de vergoedingsopbouw en de afwikkelingsroute op positiesniveau belangrijk zijn.",
+      "Dat is de reden waarom de afwikkellaag de onderpandfamilie, de exacte ondersteunende positie en het beoogde afwikkelpad moet kennen voordat het de overeenkomende kluisaanvoer vrijgeeft.",
+      "Het afwikkelingspad hangt af van wat voor soort LP onderpand achter de kluis-token zit.",
+      "Inwisselbare LP onderpand",
+      "• Schikking kan proportioneel zijn aan de schuld die moet worden gedekt, in plaats van het gehele LP saldo via liquidatie af te dwingen.",
+      "• Avana kan alleen het bedrag dat nodig is voor de liquidatie terugvorderen of overdragen wanneer het marktontwerp gedeeltelijk herstel ondersteunt.",
+      "• De resterende positie kan actief blijven als de rekening daarna nog steeds aan de vereiste gezondheidscontroles voldoet.",
+      "• De volledige positie gaat naar afwikkeling wanneer deze wordt geselecteerd voor liquidatie omdat de NFT zelf de onderpandeenheid is die wordt vereffend.",
+      "• De bijbehorende kluis tokens worden verbrand nadat Aave het kluiskapitaal in beslag neemt en Avana die inbeslagname terugkoppelt naar de NFT-positie.",
+      "• Avana kan de werkelijke LP positie ontbinden, verkopen, veilen of overdragen op basis van de marktregels voor die onderpandsfamilie.",
+      "• Overschot gaat niet automatisch naar de vereffenaar tenzij de markregel expliciet dat zegt.",
+      "ACTIVE",
+      "De positie draagt nog steeds bij aan de onderpandwaarde, en de uitstaande kluis tokens blijven volledig gedekt door die lopende LP positie.",
+      "LIQUIDEREN",
+      "Het geselecteerde onderpand kan niet langer door de kredietnemer worden opgenomen en beweegt actief door het afwikkelingspad.",
+      "SETTLED",
+      "De LP positie is opgelost en de bijbehorende kluis-tokens mogen niet langer uitstaand zijn.",
+      "De afwikkelingswaarde wordt in een vaste volgorde toegepast. Eerst dekt het de schuld, vervolgens de beloning van de vereffenaar, daarna de afwikkelingskosten. Eventuele waarde die overblijft na die verplichtingen is surplus, en dat surplus volgt de markregel voor de onderliggende zekerheidsstelling die wordt afgewikkeld.",
+      "Als de afwikkelingswaarde niet voldoende is om de schuld en beloning te dekken, heeft de markt een expliciet pad voor slechte schulden nodig. De documentatie van liquidatie moet dat tekort beschrijven als een echte toestand om mee om te gaan, en niet als iets dat automatisch verdwijnt.",
+      "Liquidaties blijven zonder toestemming, maar LP onderpand profiteert vaak van een protocol-achtervang dat weet hoe het verwachte ontkoppelpad moet worden uitgevoerd. Generieke liquidators kunnen mogelijk de schuld terugbetalen, maar missen nog steeds de locatie-specifieke logica die nodig is om de positie efficiënt of veilig af te wikkelen.",
+      "Liquidators moeten dezelfde risicostaat en zekerheidsstaat bijhouden die het protocol gebruikt.",
+      "De uitvoering moet atomair blijven van schuldaflossing tot afwikkeling.",
+      "Honorariumrealisatie, route-diepte en restwaarde moeten worden gemodelleerd voordat er alleen op snelheid wordt geoptimaliseerd.",
+      "Deels dekking en volledige dekking zijn verschillende gevallen en zouden niet dezelfde routeringsaanname moeten delen."
+    ]
+  },
+  "hub": {
+    "meta": {
+      "title": "Welkom",
+      "description": "Een kredietnemer stort een goedgekeurde LP positie in de betreffende Borrow Spoke, maar de liquiditeit zelf blijft ingezet in de onderliggende pool in plaats van eerst te worden ingewisseld."
+    },
+    "toc": [
+      {
+        "id": "welcome",
+        "title": "Welkom"
+      },
+      {
+        "id": "what-is-avana",
+        "title": "Wat is Avana?"
+      },
+      {
+        "id": "how-it-works",
+        "title": "Hoe Het Werkt"
+      },
+      {
+        "id": "unlocking-lp-collateral",
+        "title": "Waarom LP Zekerheden belangrijk zijn"
+      },
+      {
+        "id": "architecture",
+        "title": "Architectuur"
+      }
+    ],
+    "strings": [
+      "Welkom",
+      "Wat is Avana?",
+      "Hoe Het Werkt",
+      "Waarom LP Zekerheden belangrijk zijn",
+      "Architectuur",
+      "Stort een ondersteunde LP-positie",
+      "Een kredietnemer stort een goedgekeurde LP positie in de betreffende Borrow Spoke, maar de liquiditeit zelf blijft ingezet in de onderliggende pool in plaats van eerst te worden ingewisseld.",
+      "Waardeer het conservatief",
+      "De Spoke bouwt de positie opnieuw op vanuit zijn poolgegevens, prijst de onderliggende blootstelling via de orakelstack, en disconteert die waarde vervolgens via onderpandfactoren en markt-specifieke controles.",
+      "Lenen via de Hub",
+      "Als de resulterende capaciteit voldoende is, wordt de lening opgenomen uit gedeelde Hub-liquiditeit, terwijl gezondheidscontroles, onderpandboekhouding en liquidatiegedrag specifiek blijven voor die spoke.",
+      "Liquiditeit blijft in het pool",
+      "Het protocol is gebouwd voor LP posities die LP werk moeten blijven doen. Een lener hoeft geen liquiditeit uit de AMM te halen alleen om er contant geld tegen te verkrijgen.",
+      "Capaciteit volgt de realiteit LP",
+      "Leenkracht komt voort uit de feitelijke structuur van de positie: tokenmix, opgebouwde vergoedingen, actieve range indien relevant, beschikbare diepte en de manier waarop de positie tijdens stress kan worden beëindigd.",
+      "Liquidatie heeft expliciete regels",
+      "LP onderpand wordt niet behandeld als een generiek token-saldo. Elke ondersteunde markt definieert hoe de waarde wordt teruggewonnen, wat wordt verkocht of afgewikkeld, en hoe de schuld wordt gesloten als de rekening onveilig wordt.",
+      "Leen Spoke",
+      "Accepteert ondersteunde LP onderpanden, zet deze om in leencapaciteit op spaakniveau en beheert de gezondheids- en liquidatieregels voor die markt.",
+      "Houdt de gedeelde kredietbalans aan: reserveringsboekhouding, rente-logica en de liquiditeit die kredietnemergerichte spokes benutten.",
+      "Lend Spoke",
+      "Brengt kredietverstrekkersactiva in het systeem en leidt ze naar de Hub zodat LP underwriting gescheiden kan blijven van kapitaal onboarding.",
+      "Inleiding",
+      "Avana laat goedgekeurde LP posities leningen teruggeven zonder eerst liquiditeit uit het fonds te halen. Deze documenten beginnen met de Hub-and-Spoke splitsing: spokes begrijpen LP risico, terwijl de Hub gedeelde leenliquiditeit beheert.",
+      "Begin met sleutelconcepten",
+      "Verkennen Lenen Gesproken",
+      "Avana is een uitleenprotocol voor live LP onderpand. Het gebruikt het Hub-en-Spoke-model van Aave v4, waarbij de Hub gedeelde liquiditeit beheert terwijl elke Borrow Spoke toelating, waardering, gezondheid en liquidatie voor zijn eigen LP markten afhandelt.",
+      "Het ondersteunen van LP onderpand betekent meer dan alleen het controleren van een tokenbalans. Het protocol moet begrijpen welke activa de positie vertegenwoordigt, hoeveel van die waarde meetelt voor krediet, welke marktspecifieke korting van toepassing is en welk ontmantelingspad er bestaat als de lener onder de vereiste veiligheidsmarge valt. Avana plaatst die LP-specifieke logica in de spokes die het onderpand vermelden in plaats van te proberen elke AMM positie samen te voegen tot één generiek leenpad.",
+      "Lees deze pagina als de kaart voor de rest van de documenten. De onderstaande secties leggen eerst het basisleningpad uit en verwijzen je daarna naar de gedetailleerde pagina's voor Borrow Spoke, Lend Spoke, onderpandfactoren, oracle-logica, gezondheidsmonitoring en liquidatie.",
+      "De gebruikersgerichte flow is kort, maar elke fase verbergt LP-specifiek acceptatiewerk. Latere pagina's werken de mechanica achter elke stap verder uit.",
+      "LP posities zitten al in werkkapitaal. Zonder een kredietlaag betekent het terugkrijgen van contant geld meestal eerst het verkleinen of sluiten van de poolpositie.",
+      "Avana scheidt gedeelde uitleenliquiditeit van LP-specifieke risicologica. Die scheiding is de reden dat het systeem verschillende onderpandtypes kan ondersteunen zonder al hun regels samen te voegen.",
+      "Bouwers moeten aan het systeem denken in twee helften. De Hub is de gemeenschappelijke balans en schuldenmotor, terwijl de Borrow Spokes bepalen wat elk LP markt veilig kan ondersteunen en hoe die markt moet worden afgewikkeld als het mislukt. De Lend Spoke voedt kapitaal in de Hub zodat leveranciers niet over LP mechanica hoeven na te denken alleen om liquiditeit te bieden."
+    ]
+  },
+  "safety/bug-bounty": {
+    "meta": {
+      "title": "Bug-bounty",
+      "description": "Avana Bug Bounty verantwoorde openbaarmakingsbereik, LP-nevenrisicovlakken, en economische-impact ernstfilosofie."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "scope-and-system-architecture",
+        "title": "Reikwijdte & Systeemarchitectuur"
+      },
+      {
+        "id": "severity-philosophy",
+        "title": "Ernst Filosofie"
+      }
+    ],
+    "strings": [
+      "Bug-bounty",
+      "Avana Bug Bounty verantwoorde openbaarmakingsbereik, LP-nevenrisicovlakken, en economische-impact ernstfilosofie.",
+      "Overzicht",
+      "Reikwijdte & Systeemarchitectuur",
+      "Ernst Filosofie",
+      "Programma A - Kernleningen",
+      "Behandelt de primaire kredietmotor waarbij de integriteit van de boekhouding, collateralizatie en uitvoering van liquidatie direct de gelden van gebruikers beschermen.",
+      "Stortings-/opnamestromen",
+      "Lenen / aflossen logica",
+      "Gezondheidsfactor en renteopbouw",
+      "Reserveboekhouding en schuld slaan / verbranden",
+      "Liquidatie kernuitvoering en limieten",
+      "Diefstal van gebruikersfondsen",
+      "Reserve insolventie",
+      "Ondergecollateraliseerde lening",
+      "Geblokkeerde terugbetalingen, opnames of liquidaties",
+      "Programma B - LP Onderpand & Waardering",
+      "Behandelt het Avana-specifieke waarderingssysteem voor LP-ondersteunde kredietverlening, inclusief hoe LP-posities worden geprijsd, risicogewogen en stresstests onderworpen aan volatiele marktomstandigheden.",
+      "Toewijzing van onderpandfactor voor LP posities",
+      "Beheer van geconcentreerde liquiditeitsposities",
+      "Randgevallen tijdens onevenwicht, depegs, lage liquiditeit of verouderde oracle-statussen",
+      "Overwaardering van LP onderpand",
+      "Oracle-manipulatie die slechte schulden mogelijk maakt",
+      "Oneerlijke liquidatie door te lage prijsstelling",
+      "Recursieve exploitpaden tegen verkeerd geprijsde LP onderpand",
+      "Hoogste ernstniveau plafond: LP verkeerde prijsstelling kan slechte schulden, insolventie of oneerlijke liquidaties veroorzaken zonder een klassiek contractlek.",
+      "Programma C - Bestuur, Administratie en Protocolinfrastructuur",
+      "Behandelt geprivilegieerde bedieningsoppervlakken die parameters kunnen wijzigen, contracten kunnen upgraden, operaties kunnen pauzeren of door het protocol beheerde activa kunnen omleiden.",
+      "Governance-uitvoerder en timelock",
+      "Rolbeheer en upgrade-mechanismen",
+      "Pauze / bewaker rollen",
+      "Parameter admin systemen",
+      "Schatkist-, incasso- en bevoordeelde automatiseringscontracten",
+      "Ongeautoriseerde beheerdersactie",
+      "Upgrade kapen",
+      "Parameterbeschadiging",
+      "Overname van bestuur of verlies van schatkist",
+      "Programma D - Offchain / Integratieoppervlakken",
+      "Behandelt ondersteunende systemen waarvan de compromittering invloed kan hebben op de werking van vertrouwde protocollen, gebruikersinteracties of het gedrag van de beheerder.",
+      "Indexerings- of liquidatiebots onderhouden door Avana",
+      "Bewakingsveronderstellingen en orakelrelais",
+      "Gehoste API's die worden gebruikt in veiligheidskritieke paden",
+      "Frontend-problemen met directe wallet-risicogevolgen",
+      "Kwaadaardige transactieconstructie",
+      "Gecompromitteerde liquidatie- of oracle-relaisroutes",
+      "Gebruikersverlies van fondsen via vertrouwde integraties",
+      "Operationele storingen die kritieke acties bevriezen",
+      "Kritiek",
+      "rand-rood-400 bg-rood-50/70",
+      "Direct of indirect verlies van fondsen, ontstaan van dubieuze debiteuren, protocolinsolventie of systematische manipulatie van onderpandwaardering.",
+      "Hoog",
+      "rand-amber-400 bg-amber-50/70",
+      "Zinvolle maar beperkte schade, zoals verkeerd liquidatiegedrag, gedeeltelijke omzeiling van risicocontroles, of beperkte boekhoudkundige fouten.",
+      "Medium / Low",
+      "rand-grijs-300 achtergrond-grijs-50",
+      "Bevindingen met beperkte impact, randgeval-inconsistenties, niet-kritieke logische problemen, of kwetsbaarheden zonder een geloofwaardig pad naar grote economische schade.",
+      "Bereik van verantwoord melden en richtlijnen voor het triëren van economische impact voor Avana beveiligingsonderzoek.",
+      "De Avana Bug Bounty dekt verantwoordelijke openbaarmaking over contracten, risicosystemen en ondersteunende infrastructuur die de fondsen van gebruikers of de solvabiliteit van het protocol kunnen beïnvloeden.",
+      "Omdat Avana AMM liquiditeitsposities als onderpand gebruikt, omvat de reikwijdte zowel directe contractfouten als mislukkingen waarbij liquiditeit, prijsstelling of de marktomstandigheid kan worden omgezet in slechte onderpandwaarde of gebroken liquidaties.",
+      "Ernst is economisch eerst:",
+      "beloningen volgen exploitatiegevoeligheid en uitkomsten zoals verlies van fondsen, insolventie, slechte schuld, of systemische onderwaardering van onderpand, niet alleen hoe groot de codewijziging lijkt.",
+      "Het bereik is opgesplitst in subsystemen zodat onderzoekers een bevinding kunnen koppelen aan het deel van de stack dat het daadwerkelijk bedreigt: kernleningen, LP waardering, bestuur en administratie, of offchain-integraties.",
+      "Hoogste gevoeligheid",
+      "Omvat",
+      "Primaire risico's",
+      "Waarom het belangrijk is:",
+      "Subsystemen worden afzonderlijk beoordeeld, maar de impact wordt nog steeds gescoord op solvabiliteit, veiligheid van gebruikersfondsen, integriteit van liquidatie en gerelateerd protocolrisico.",
+      "Generieke kwetsbaarheidsscores zijn hier niet de belangrijkste rangschikkingsmethode. Bevindingen worden beoordeeld op geloofwaardige exploitatiepaden en op het economische resultaat dat ze kunnen creëren."
+    ]
+  },
+  "safety/contracts": {
+    "meta": {
+      "title": "Slimme contractbeveiliging",
+      "description": "Avana referentie voor slimme contractbeveiliging die vertrouwensgrenzen, contractoppervlakken behandelt en hoe audits en bug bounty-programma’s passen in het door LP ondersteunde leenontwerp."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "security-challenges",
+        "title": "Beveiligingsuitdagingen"
+      },
+      {
+        "id": "multi-layer-security",
+        "title": "Meerlagige beveiliging"
+      },
+      {
+        "id": "core-contract-surfaces",
+        "title": "Kerncontractoppervlakken"
+      },
+      {
+        "id": "trust-boundaries",
+        "title": "Vertrouwensgrenzen"
+      },
+      {
+        "id": "audit-readiness",
+        "title": "Auditgereedheid"
+      }
+    ],
+    "strings": [
+      "Slimme contractbeveiliging",
+      "Avana referentie voor slimme contractbeveiliging die vertrouwensgrenzen, contractoppervlakken behandelt en hoe audits en bug bounty-programma’s passen in het door LP ondersteunde leenontwerp.",
+      "Overzicht",
+      "Beveiligingsuitdagingen",
+      "Meerlagige beveiliging",
+      "Kerncontractoppervlakken",
+      "Vertrouwensgrenzen",
+      "Auditgereedheid",
+      "Leen Spoke-logica",
+      "Beheert onderpandtoelating, gebruikersadministratie en de spoke-zijde levenscyclus voor LP-gedekte leningen.",
+      "Hub-integratie",
+      "Verbindt het leenvermogen op spraakniveaus met gedeelde krediet- en liquiditeitsbeperkingen in de Hub-laag.",
+      "Oracle- en waarderingsadapters",
+      "Vertaal LP posities naar conservatieve zekerheidswaarden met behulp van externe prijzen, positionele reconstructie en aannames over terugvorderbare waarde.",
+      "Uitvoeringslaag voor liquidatie",
+      "Coördineert paden, kostenrealisatie, routering en afwikkeling wanneer een ongezonde rekening moet worden gesloten of aangepast.",
+      "Contracten & Beveiliging",
+      "Beveiligingsreferentie voor de contractoppervlakken, externe afhankelijkheden en beoordelingsgrenzen achter LP-ondersteunde leningen.",
+      "Avana leent tegen LP onderpand, dus de veiligheidsbeoordeling moet meer omvatten dan alleen of een contract compileert of saldi correct overboekt. Het moet ook omvatten hoe prijsstelling, bewaring, liquidatie en bevoorrechte controles zich gedragen wanneer de markt onder stress staat.",
+      "Contractbeoordeling, economische beoordeling en operationele beoordeling zijn allemaal belangrijk voor LP markten. Ze versterken elkaar en moeten worden behandeld als één beveiligingsprogramma, niet als drie niet-verwante checklists.",
+      "• LP waarde kan padafhankelijk zijn en heeft vaak locatie-specifieke bewaarneming en afwikkelingslogica nodig.",
+      "• Misbruik van orakels of verouderde prijzen kan economische verliezen veroorzaken, zelfs wanneer contracten exact worden uitgevoerd zoals gecodeerd.",
+      "• Bestuur, parametercontrole en noodrespons maken allemaal deel uit van het aanvalsoppervlak.",
+      "Contractbeoordeling",
+      "Kerncontractoppervlakken, adapters en geprivilegieerde controlepaden moeten worden beoordeeld voordat nieuwe LP-families of nieuwe uitvoeringspaden worden ingeschakeld.",
+      "Economische stresstests",
+      "Test markt schokken, oracle randgevallen en liquidatie routeringsfouten, niet alleen het gedrag van contracten op unit-niveau.",
+      "Externe beoordelingskanalen",
+      "Formele audits en de",
+      "Bug-bounty",
+      "het programma moet allebei actief blijven. Het ene vervangt het andere niet.",
+      "• Onchain boekhouding en afwikkeling van liquidaties moeten deterministisch zijn zodra ze worden geactiveerd.",
+      "• Oracle-bronnen, locatie-adapters en operationele liquidatorinfrastructuur zijn externe afhankelijkheden en moeten als zodanig worden gemonitord.",
+      "• Bestuur, pauzeautoriteit en upgrades zijn bevoorrechte bevoegdheden die waar mogelijk begrensd, toetsbaar en tijdsgebonden moeten blijven.",
+      "Deze pagina publiceert geen speculatieve auditroosters of tijdelijke mijlpalen. Auditrapporten, -omvang en herstelnotities moeten worden gepubliceerd wanneer ze daadwerkelijk bestaan en volledig kunnen worden bekeken.",
+      "Hoogwaardige auditdoelen omvatten meestal nieuwe LP gezinsondersteuning, nieuwe liquidatiepaden, nieuwe orakelmodellen, en elke wijziging die bevoorrechte controle of herstelbare waardeaannames uitbreidt."
+    ]
+  },
+  "safety/insurance": {
+    "meta": {
+      "title": "Verzekeringsfondsen",
+      "description": "Gepland backstop-ontwerp voor Avana, waarin wordt beschreven hoe een toekomstig verzekeringsfonds liquidatietekorten zou kunnen aanpakken zonder het kernLP-gedekte leenmodel te veranderen."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "purpose",
+        "title": "Doel"
+      },
+      {
+        "id": "funding-approach",
+        "title": "Financieringsaanpak"
+      },
+      {
+        "id": "activation-path",
+        "title": "Activeringspad"
+      },
+      {
+        "id": "coverage-boundary",
+        "title": "Dekkinggrens"
+      }
+    ],
+    "strings": [
+      "Verzekeringsfondsen",
+      "Gepland backstop-ontwerp voor Avana, waarin wordt beschreven hoe een toekomstig verzekeringsfonds liquidatietekorten zou kunnen aanpakken zonder het kernLP-gedekte leenmodel te veranderen.",
+      "Overzicht",
+      "Doel",
+      "Financieringsaanpak",
+      "Activeringspad",
+      "Dekkinggrens",
+      "Geplande backstoplaag voor het afhandelen van resterende slechte schulden nadat het normale LP liquidatieproces al heeft plaatsgevonden.",
+      "Avana's eerste verdedigingslinies zijn conservatieve waardering van onderpand, beperkte blootstelling en tijdige liquidatie. Een toekomstig verzekeringsfonds zou achter die controles zitten en pas in beeld komen wanneer liquidatie nog steeds geen volledig afwikkeling van slechte schulden mogelijk maakt.",
+      "Deze pagina beschrijft een geplande beschermingslaag. Het is geen belofte dat er vandaag de dag op elke implementatie een actief verzekeringsfonds bestaat.",
+      "Indien geactiveerd, kan het fonds worden gekapitaliseerd door governance-goedgekeurde schatkisttoewijzingen, reservebijdragen of een toegewijd veiligheidsmodule. De exacte financieringsmix is een risico-governancebeslissing en moet worden gepubliceerd samen met de programmatatieven.",
+      "• Detecteer een resterend tekort nadat een toegestaan liquidatietraject is voltooid.",
+      "• Controleer of het tekort binnen het goedgekeurde dekkingsbeleid van het fonds past.",
+      "• Voer het door het bestuur gedefinieerde pad voor herkapitalisatie of dekking van tekorten uit.",
+      "• Publiceer een samenvatting na het incident waarin de oorzaak, de reactie en de opvolgcontrole worden beschreven.",
+      "De dekking moet beperkt blijven. Het doel is het kwalificeren van protocol-slechte schulden na liquidatie, niet een algemene garantie tegen verlies bij gebruikershandel, tijdelijke verliezen, marktbewegingen of elke externe storing in DeFi.",
+      "Gedekte tekorten en gewone marktrisico's hebben een scherpe lijn nodig zodat het fonds niet verandert in compensatie voor normale LP uitkomsten."
+    ]
+  },
+  "safety": {
+    "meta": {
+      "title": "Veiligheidsmechanismen - Risicokader",
+      "description": "Protocolbrede risicobeheersing voor de Avana Hub en LP Collateral Spokes, inclusief rollen, beperkte updates en noodmaatregelen."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Overzicht"
+      },
+      {
+        "id": "core-principles",
+        "title": "Kernprincipes"
+      },
+      {
+        "id": "roles",
+        "title": "Rollen"
+      },
+      {
+        "id": "update-flow",
+        "title": "Stroom bijwerken"
+      },
+      {
+        "id": "parameter-classes",
+        "title": "Parameterklassen"
+      },
+      {
+        "id": "public-disclosure",
+        "title": "Openbare bekendmaking"
+      },
+      {
+        "id": "emergency-actions",
+        "title": "Noodacties"
+      }
+    ],
+    "strings": [
+      "Veiligheidsmechanismen - Risicokader",
+      "Protocolbrede risicobeheersing voor de Avana Hub en LP Collateral Spokes, inclusief rollen, beperkte updates en noodmaatregelen.",
+      "Overzicht",
+      "Kernprincipes",
+      "Rollen",
+      "Stroom bijwerken",
+      "Parameterklassen",
+      "Openbare bekendmaking",
+      "Noodacties",
+      "Rolverdeling",
+      "Het kader wijst het voorstellen, beoordelen en noodbeheersing toe aan verschillende actoren zodat één partij het volledige proces niet alleen beheerst.",
+      "Beperkte uitvoering",
+      "Routine risicowijzigingen worden alleen uitgevoerd wanneer ze binnen de vooraf gedefinieerde beleidsgrenzen blijven en validatiecontroles doorstaan.",
+      "Publieke consistentie",
+      "De openbaar beschreven update zou dezelfde update moeten zijn die daadwerkelijk in de wachtrij staat voor uitvoering.",
+      "Spakenbewustzijn",
+      "Elke LP onderpandspreker heeft zijn eigen notatieregels, oracle-veronderstellingen, liquidatiepad en risicoprofiel.",
+      "Verdedigende Asymmetrie",
+      "Het proces is opzettelijk bevooroordeeld zodat het verkleinen van risico sneller en eenvoudiger is dan het vergroten ervan.",
+      "Avana Risico Initiator",
+      "De rol die routinewijzigingen in risico's voor de Hub en LP Collateral Spokes voorbereidt en aanbeveelt.",
+      "Publiceer de rationale en classificeer de update als defensief of groeigericht",
+      "Dien routinematige updates in via het tijdslot-uitvoeringspad",
+      "Beveel voorraadlimieten, leencaps, LT/LTV, reserveringsfactor en renteveranderingen binnen goedgekeurde reeksen aan",
+      "Initieer spraak-niveau risicoreductie en pool onboarding binnen vooraf goedgekeurde spraaktemplates",
+      "Avana Risicobewaker",
+      "De onafhankelijke beoordelaar met vetorecht over geplaatste routinematige wijzigingen.",
+      "Controleer of de geplande update overeenkomt met de openbare bekendmaking",
+      "Controleer of de actie binnen de goedgekeurde beleidsgrenzen blijft",
+      "Weiger updates op basis van ongeldige aannames over orakel, liquiditeit of liquidatie",
+      "Annuleer een geplande update tijdens het timelock-venster wanneer deze duidelijke instabiliteit op spoke-niveau of hub-niveau veroorzaakt",
+      "Avana Risicobeschermer",
+      "De nood-only rol werd gebruikt om incidenten te bevatten wanneer het normale tijdsgebonden pad te langzaam is.",
+      "Verlaag leenlimieten of voorraadlimieten tot defensieve niveaus",
+      "Bevries nieuwe leningen op een Spoke of bevries het gebruik van onderpand voor een pool, sjabloon of Spoke",
+      "Schakel een specifieke adapter of leenpad uit wanneer vooraf gedefinieerde storingsvoorwaarden worden voldaan",
+      "Blokkeer het aangaan van nieuwe schulden onder noodomstandigheden zonder dat dit wordt gebruikt voor routinematige optimalisatie- of groeihandelingen",
+      "Openbare kennisgeving",
+      "De Risico-Initiator publiceert de beoogde verandering, waarom deze nodig is, en het bereik dat naar verwachting wordt beïnvloed.",
+      "De Risico-Initiator plaatst de voorgestelde wijziging in het uitvoeringspad dat door het framework wordt gebruikt.",
+      "Frameworkcontroles bevestigen dat de update binnen de vooraf gedefinieerde beperkingen en goedgekeurde beleidsgrenzen blijft.",
+      "Als de validatie slaagt, komt de wijziging in een timelock-venster in plaats van onmiddellijk te worden uitgevoerd.",
+      "Guardian Recensie",
+      "Tijdens de timelock bekijkt de Risicobeschermer de exacte in de wachtrij geplaatste payload en kan deze indien nodig annuleren.",
+      "Als de wijziging de beoordeling doorstaat, wordt deze automatisch uitgevoerd nadat de timelock is verlopen.",
+      "Noodpad",
+      "Als aan noodomstandigheden wordt voldaan, kan de Risicobeschermer een apart verdedigingspad gebruiken met beperktere bevoegdheid.",
+      "Verdedigende wijzigingen",
+      "rand-rood-400 bg-rood-50/70",
+      "Dit zijn de snelste routinematige wijzigingen omdat ze de blootstelling aan het protocol verminderen.",
+      "Verlagen van leenlimieten",
+      "Verlagen van leveringslimieten",
+      "Het verlagen van LTV of liquidatiedrempel",
+      "Bevriezing van lening of onderpandgebruik",
+      "Verstrakken van spaakinstellingen",
+      "Routine Beperkte Veranderingen",
+      "rand-amber-400 bg-amber-50/70",
+      "Deze volgen de standaardroute Initiator -> Guardian -> tijdslot binnen goedgekeurde grenzen.",
+      "Bescheiden kapitaalverhogingen",
+      "Bescheiden afstemming van parameters binnen goedgekeurde bereiken",
+      "Nieuwe pools toevoegen binnen een bestaand spoke-sjabloon",
+      "Veranderingen op governance-niveau",
+      "rand-grijs-300 achtergrond-grijs-50",
+      "Deze vallen buiten het routinematige kader en vereisen een beslispad op hoger niveau.",
+      "Een nieuwe spaafamilie creëren",
+      "Het inschakelen van een nieuwe LP primitieve",
+      "Een nieuw orakelmodel toevoegen",
+      "Het inschakelen van een nieuwe liquidatie-adapter",
+      "Het materieel uitbreiden van het risicoppervlak voorbij vooraf goedgekeurde aannames",
+      "Aangetaste Spoke",
+      "Getroffen pools of sjablonen",
+      "Huidige parameters",
+      "Voorgestelde parameters",
+      "Reden voor de update",
+      "Of de update defensief of op groei gericht is",
+      "Verwachte indieningstijd",
+      "Verwachte timelock-venster",
+      "Relevante afhankelijkheden of aannames",
+      "Oracle-inconsistentie",
+      "Afscheidingspaddegradatie",
+      "Abnormaal zwembadgedrag",
+      "Wrapper afhankelijkheidsfout",
+      "Compromis op adaptorniveau",
+      "Plotselinge instabiliteit van het spraakniveau",
+      "De genomen actie",
+      "De beoogde duur",
+      "Het pad terug naar normale werking",
+      "Risicokader",
+      "Hoe Avana risicowijzigingen voorstelt, beoordeelt en uitvoert in het Hub en de LP Collateral Spokes.",
+      "Het Avana Risicokader definieert hoe parameterwijzigingen worden voorgesteld, gecontroleerd en uitgevoerd binnen de Hub en LP Zekerheidsspaken. Het behandelt de controles die worden gebruikt wanneer het protocol de limieten voor aanbod en lenen aanpast, LT/LTV instellingen, rentetariefinvoer, marktstatus en andere parameters die afhankelijk zijn van prijzen, benutting, diepte van het fonds, concentratie, volatiliteit, peg-gedrag, stroomonderbrekers, positiegezondheid en gerelateerde toestand.",
+      "LP onderpand is geen enkele homogene activaklasse. Stabiele LPs, gecorreleerde activum LPs, gewogen pools, geconcentreerde liquiditeit en andere AMM-ontwerpen kunnen elk hun eigen Spokes-specifieke waarderingspad, liquidatiepad en faalmodus hebben. Het kader bestaat zodat die verschillen worden weerspiegeld in het updateproces in plaats van verborgen te worden achter één generieke risicoinstelling.",
+      "Drie rollen blijven gescheiden gedurende dat proces: Avana Risico-Initiator, Avana Risico-Bewaarder en Avana Risico-Verdediger. De partij die een routinematige wijziging aanbeveelt, is niet dezelfde partij die deze onafhankelijk controleert, en de rol die tijdens een noodsituatie kan optreden, is bewust beperkter dan het routinematige pad.",
+      "Bedieningsregel:",
+      "Routinewijzigingen volgen een vast pad zodat het protocol normaal parameteronderhoud kan onderscheiden van noodbeheersing. De standaardvolgorde is openbare kennisgeving, indiening, grenscontroles, timelock, beoordeling door de Guardian, en uitvoering als het voorstel niet wordt geblokkeerd.",
+      "Parameterwijzigingen brengen niet allemaal hetzelfde risico met zich mee, dus het raamwerk groepeert ze op basis van hoeveel bevoegdheid ze zouden moeten vereisen en hoe snel ze zouden moeten kunnen bewegen.",
+      "Elke routinematige update moet vóór indienen worden gepubliceerd in een formaat waarmee ontwikkelaars, gebruikers en beoordelaars de kennisgeving kunnen vergelijken met de exacte actie die later in de wachtrij wordt geplaatst.",
+      "Minimale openbaarmakingsnorm",
+      "Consistente openbaarmaking maakt het gemakkelijker om een voorstel te beoordelen op scope creep, niet-overeenkomende aannames of eenvoudige uitvoeringsfouten.",
+      "Noodmaatregelen zijn bedoeld voor beheersing, niet voor routinematige afstemming. Ze moeten zelden worden gebruikt, zo beperkt mogelijk gehouden en zo gestructureerd dat het protocol kan terugkeren naar het standaardpad zodra het directe risico is begrepen. De Risicoverdediger moet alleen handelen wanneer een gedefinieerde of zeer waarschijnlijke storingsvoorwaarde de normale tijdvergrendelde route onveilig maakt.",
+      "Noodtriggers",
+      "Vereiste berichtgeving na actie",
+      "Noodbevoegdheid bestaat alleen voor gedefinieerde of hoogst waarschijnlijke faalgevallen waar het wachten op het normale tijdslotpad onveilig is. Het is geen pad voor routinematige groei of optimalisatie.",
+      "Aanbeveling, beoordeling en noodbeperking blijven gescheiden omdat LP onderpand een verzameling van markten is met verschillende structuren en faalmodes, niet één uitwisselbare activalijst."
+    ]
+  }
+}

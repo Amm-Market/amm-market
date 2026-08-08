@@ -1,0 +1,321 @@
+{
+  "categories": [
+    {
+      "id": "general",
+      "name": "Maswali ya jumla",
+      "summary": "",
+      "questions": [
+        {
+          "id": "what-is-avana",
+          "q": "Avana ni nini?",
+          "a": "Avana ni itifaki ya mikopo iliyojengwa kwa dhamana ya LP. Inawawezesha watumiaji kuweka nafasi za AMM zinazoungwa mkono, kuweka nafasi hizo zikazi ndani ya pool la msingi, na kukopa dhidi yake kupitia miundombinu ya Aave v4.\n\nWazo kuu ni kwamba mtaji wa LP hauhitaji kuwa hauwezi kutumika kwa sababu uko ndani ya pool. Avana hubadilisha nafasi za LP zinazoungwa mkono kuwa dhamana inayoweza kutoa mkopo wakati nafasi ya awali inaendelea kusaidia ubadilishaji, kupata ada, na kubaki imeunganishwa na soko lake la AMM."
+        },
+        {
+          "id": "what-problem-does-avana-solve",
+          "q": "Avana inatatua tatizo gani?",
+          "a": "Watoa fedha mara nyingi huhitaji kuondoa kioo cha fedha kabla ya kukopa dhidi ya mtaji wao. Hii inamaanisha kutoka kwenye pool, kukata tamaa ya ada, na kuingilia nafasi ya soko waliyotengeneza tayari.\n\nAvana inatatua hili kwa kufanya nafasi zinazounga mkono za LP zikitumike kama dhamana. LP inabaki hai, Avana inafuata na kuthamini nafasi hiyo, na Aave v4 inashughulikia ukurasa wa ukopeshaji kupitia tokeni ya dhamana ya hazina ya ndani."
+        },
+        {
+          "id": "how-is-avana-different-from-standard-lending",
+          "q": "Avana inatofautianaje na soko la mikopo la kawaida?",
+          "a": "Soko la kawaida la mikopo kawaida hushughulikia dhamana kama salio rahisi la tokeni: ETH, BTC, stablecoins, au mali nyingine za ERC-20. Avana imejengwa kwa ajili ya dhamana inayobadilika kwa muda. Nafasi za LP zinaweza kuwa na mali nyingi, kukusanya ada, kubadilika na mabadiliko ya bei, kuwa upande mmoja, au kuhitaji njia maalumu ya kuondoa.\n\nKutokana na hili, Avana hushughulikia dhamana kwenye kiwango cha soko la LP. Kila pool linaloungwa mkono au familia ya LP linaweza kuwa na mantiki yake ya tathmini, vigezo vya dhamana, mali zinazoweza kukopwa, dhana za uelekezaji, na mipaka ya hatari."
+        },
+        {
+          "id": "which-amms-can-avana-support",
+          "q": "Ni AMM zipi ambazo Avana inaweza kuziunga mkono?",
+          "a": "Avana inasaidia masoko yaliyochaguliwa ya hati za LP kupitia AMM kama Uniswap, Balancer, Curve, na Aerodrome kila unapozinduliwa soko. Usaidizi unaidhinishwa kutoka kwenye pool lililokubaliwa hadi lingine lililokubaliwa, sio kila pool katika jukwaa linapewa moja kwa moja.\n\nKila soko linaloungwa mkono lina mahitaji wazi: upatikanaji wa bei za mali zinazotegemewa, kina cha kutosha cha uenezaji, njia iliyofafanuliwa ya kuondoa hati, kikwazo cha soko, na mipangilio ya hati inayolingana na aina ya pool. Hii ndilo sababu masoko yanapobadilishwa hubaki yamechaguliwa kabla ya upanuzi wa upatikanaji kwa wingi."
+        },
+        {
+          "id": "does-avana-replace-the-amm",
+          "q": "Je, Avana inachukua nafasi ya AMM ambapo uraibu wangu uko?",
+          "a": "Hapana. AMM bado inashughulikia kubadilisha, hali ya pool, mabadiliko ya bei, na uzalishaji wa ada. Avana inaongeza kipengele cha dhamana na mkopo kuzunguka nafasi za LP zinazotegemewa.\n\nUnapoweka nafasi inayostahiki kwenye Avana, itifaki inafuatilia dhamana halisi ya LP na kuiunganisha na hesabu za upande wa mkopo. AMM iliyopo chini inabaki kuwa mahali ambapo nafasi ya ukuaji iko na kupata ada."
+        }
+      ]
+    },
+    {
+      "id": "protocol-architecture",
+      "name": "Usanifu wa itifaki",
+      "summary": "",
+      "questions": [
+        {
+          "id": "how-does-avana-work-at-a-high-level",
+          "q": "Avana inafanya kazi vipi kwa kiwango cha juu?",
+          "a": "Avana hufanya kazi katika hatua tatu. Kwanza, mtumiaji anaweka nafasi ya LP inayoungwa mkono katika Avana. Pili, Avana inatathmini nafasi hiyo kwa kusoma mali zake zinazojitegemea, muundo wa pool, mabadiliko ya thamani, uhusiano, kina cha kioo, na hatari ya uuzaji. Tatu, mara tu nafasi inapopita ukaguzi wa soko, mtumiaji anaweza kukopa dhidi ya thamani yake iliyokaguliwa kwa hatari.\n\nNafasi ya LP inabaki hai katika AMM. Avana inasimamia rekodi ya dhamana, tathmini, na mantiki ya hatari maalum ya LP, wakati Aave v4 inashughulikia mkopo na uhasibu kupitia mfano wa Hub-and-Spoke uliounganishwa."
+        },
+        {
+          "id": "why-aave-v4-hub-and-spoke",
+          "q": "Kwa nini Avana inatumia miundombinu ya Hub-and-Spoke ya Aave v4?",
+          "a": "Avana inatumia Aave v4 kwa sababu dhamana ya LP inahitaji umwagaji wa fedha unaoshirikiwa na mantiki ya hatari iliyotengwa kwa wakati mmoja. Kituo hughandle tabaka la kawaida la kifedha: akiba, uhasibu, mifumo ya riba, na uratibu wa kimataifa wa mkopo.\n\nMiongo inashughulikia kazi maalum za LP: usajili wa dhamana ya pool, tathmini ya nafasi, utekelezaji wa hatari, na utekelezaji wa ukombozi. Hii inaruhusu pool imara, jozi zinazohusiana, jozi zenye mabadiliko makali, na masoko ya umwagaji wa fedha makini kutumia sheria wanazohitaji kweli badala ya kulazimishwa ndani ya mfano mmoja wa hatari wa jumla."
+        },
+        {
+          "id": "what-is-a-borrow-spoke",
+          "q": "Spoka ya Kukopa ni nini?",
+          "a": "Kisumaki cha Mkopo ni soko la pekee la dhamana la LP. Kinaamua ni pool yapi yanayoungwa mkono, jinsi kila nafasi ya LP inavyopimwa, ni vipengele gani vya dhamana vinavyotumika, ni mali zipi zinaweza kukopwa, na jinsi ufutaji unavyofanya kazi kwa soko hilo.\n\nVikundi vya Mkopo vinatofautishwa kwa sababu nafasi za LP zote hazitendeki kwa njia ile ile. LP ya sarafu thabiti, LP ya ETH iliyowekwa kwenye ETH inayohusiana, na LP ya ishara ya utawala yenye mabadiliko makubwa zinahitaji mipangilio tofauti ya hatari, mipaka tofauti, na wakati mwingine njia tofauti za ufutaji."
+        },
+        {
+          "id": "what-are-vault-tokens",
+          "q": "Je, mikopo ya hazina ya Avana ni nini?",
+          "a": "Tokensi za hifadhi ni mali za hesabu za ndani za ERC-20 ambazo zinawakilisha dhamana za LP zilizokubaliwa upande wa mfumo unaokabiliana na Aave. Kwa mfano, nafasi inayounga mkono ya LINK/ETH inaweza kuambatanishwa na tokeni ya dhamana ya mtindo vaultLINKETH, wakati nafasi ya WETH/USDC inaweza kuambatanishwa na tokeni ya mtindo vaultWETHUSDC.\n\nTokeni ya hifadhi ni daraja. Avana inafuatilia nafasi halisi ya LP na thamani yake, Adapter ya Aave inatoa tokeni inayofanana ya hifadhi ndani ya Aave v4, na Aave inatumia tokeni hiyo kwa ajili ya hesabu ya dhamana. Mtumiaji hakopangi dhidi ya kizuizi cha kufunika tu; tokeni ya hifadhi inaendelea kuwa na dhamana ya nafasi ya LP iliyofuatiliwa iliyo nyuma yake."
+        },
+        {
+          "id": "what-are-the-main-protocol-modules",
+          "q": "Ni sehemu gani kuu za itifaki ya Avana?",
+          "a": "Avana imeundwa kuzunguka moduli kadhaa nyembamba. Meneja wa Nafasi ya LP anarekodi nafasi halisi ya LP, ikiwa ni pamoja na mmiliki, pool, jozi, kiwango cha ada, safu, kioo, thamani ya sasa, ada zilizokusanywa, na hali ya dhamana. Moduli ya Hatari inakubali pool, mali, kina, safu, na vichwa vya soko kabla ya nafasi kuunga mkono deni.\n\nModuli ya Uhakikisho wa Dhamana inachukua bei, inathamini nafasi, inaamua kiwango cha dhamana kinachoungwa mkono, na kutengeneza au kuondoa tokeni ya hazina ya ndani. Kiunganishi cha Aave hushughulikia upande unaoangalia Aave kwa kutoa dhamana ya hazina, kuiondoa, na kuweka mchanganyiko wa Aave tofauti na mantiki maalum ya LP."
+        }
+      ]
+    },
+    {
+      "id": "lp-collateral",
+      "name": "Dhamana ya LP",
+      "summary": "",
+      "questions": [
+        {
+          "id": "what-happens-when-i-deposit-lp-collateral",
+          "q": "Nini kinatokea ninapoweka dhamana ya LP?",
+          "a": "Unapoweka nafasi ya LP inayounga mkono, Avana inarekodi nafasi hiyo na kuipeleka kwenye Borrow Spoke inayofaa. Itifaki inathibitisha kuwa pool limeidhinishwa, inarekebisha nafasi hiyo, inakagua mipangilio yake ya hatari, na kuhesabu thamani ya dhamana inayounganishwa na soko hilo.\n\nMara tu nafasi inapopita ukaguzi huo, Avana inatengeneza tokeni ya ndani inayolingana kwa ajili ya uhasibu wa upande wa mkopo. Kuweka hazimaanishi kuchukua mali moja kwa moja; inaunda uwezo wa kukopa ambao akaunti inaweza kutumia mradi inabaki yenye afya na soko lina maji ya kutosha."
+        },
+        {
+          "id": "does-my-lp-stay-active",
+          "q": "Je, nafasi yangu ya LP inabaki hai baada ya kuwekeza?",
+          "a": "Ndiyo. Nafasi za LP zinazoungwa mkono zinabaki hai wakati zinapotumika kama dhamana. Uwekezaji wa fedha unabaki umefungwa kwenye nafasi ya msingi ya AMM, hivyo pool linaendelea kushughulikia mabadilishano na nafasi inaendelea kupata ada na motisha kwa mujibu wa sheria za AMM.\n\nHatua zinazobadilisha thamani ya dhamana hukaguliwa na Avana wakati deni bado lipo wazi. Kutoa fedha kutoka kwenye uwekezaji, kudai ada, kubadilisha wigo, au kurekebisha nafasi huenda kupitia Borrow Spoke kwa sababu hatua hizo zinaathiri thamani inayounga mkono mkopo."
+        },
+        {
+          "id": "can-i-claim-lp-fees",
+          "q": "Je, naweza kudai ada za LP wakati nikipa mkopo?",
+          "a": "Avana inatofautisha ujuzi mkuu wa kioevu kutoka kwenye ada zilizokusanywa katika mfano wake wa tathmini. Hiyo inaruhusu itifaki kutambua mapato ya ada na kutoa ada zinazoweza kudaiwa huku ikihifadhi mfululizo wa LP ukiwa hai kama dhamana.\n\nMadai ya ada yanapitia kupitia ukaguzi wa afya kabla na baada. Ikiwa kuondoa thamani ya ada kunabaki na akaunti kuwa chini ya kikomo chake cha dhamana kinachohitajika, Avana inazuia dai hadi mtumiaji alipe deni au ongeze dhamana zaidi."
+        },
+        {
+          "id": "are-lp-fees-part-of-collateral-value",
+          "q": "Je, ada za LP zimo katika thamani ya rehani?",
+          "a": "Ada zilizojikusanya zinafuatiliwa kando na fedha kuu. Mfano wa oracle wa Avana unatofautisha thamani kuu na thamani ya ada, kwa hivyo itifaki inaelewa ni kiasi gani cha nafasi ni fedha kuu na ni kiasi gani ni mapato ya ada yanayoweza kudaiwa.\n\nTofauti hiyo ni muhimu wakati wa likwidishaji. Avana inatumia ada zilizojikusanya kabla ya fedha kuu wakati njia ya soko inaiunga mkono, kupunguza ni kiasi gani cha nafasi kuu ya LP kinapaswa kufutwa ili kufidia deni."
+        },
+        {
+          "id": "when-can-i-withdraw-collateral",
+          "q": "Naweza kutoa dhamana ya LP lini?",
+          "a": "Unaweza kutoa dhamana baada ya deni kulipwa kwa ukamilifu, au baada ya Avana kuthibitisha kuwa akaunti iliyobaki bado inapita vipimo vya afya baada ya kutoa. Ulipaji kamili ni njia safi ya kutoa kwa sababu nafasi ya LP haithibiti tena deni lililo wazi.\n\nMabadiliko ya sehemu ya dhamana hufanyika kupitia Borrow Spoke. Avana hurudisha upya hesabu baada ya kuondoa au kubadilisha nafasi ya LP iliyohitajiwa, kisha hutoa dhamana tu wakati dhamana iliyokubaliwa iliyobaki bado inasaidia deni lililo wazi."
+        }
+      ]
+    },
+    {
+      "id": "valuation-oracles",
+      "name": "Uthamini na oracle",
+      "summary": "",
+      "questions": [
+        {
+          "id": "how-does-avana-price-lp-collateral",
+          "q": "Je, Avana inalipa vipi dhamana za LP?",
+          "a": "Avana inakadiria thamani ya dhamana ya LP kwa kurekebisha nafasi na kuthamini mali zilizo ndani yake. Kwa LP zinazoweza kubadilishana, itifaki inapata thamani kutoka kwa bei za mali za nje na urejeshaji wa usawa wa pool. Kwa ujasiri wa liquidity uliokithiriwa, inavunja nafasi kwa kuzingatia liquidity, safu, tick ya sasa, kufichuliwa kwa tokeni, na ada zilizokusanywa.\n\nMatokeo hayo kisha yanapunguzwa kuwa thamani ya dhamana inayoweza kurejelewa. Nguvu ya kukopa inategemea kile ambacho nafasi inaweza kusaidia kwa kweli chini ya dhana za hatari za soko, siyo kwenye thamani ya jumla ya mali yenye matumaini."
+        },
+        {
+          "id": "how-does-avana-reduce-oracle-risk",
+          "q": "Je, Avana inapunguza vipi hatari ya orakili na bei?",
+          "a": "Avana inatumia mfumo wa bei wa kisiri wa dual-oracle kwa dhamana ya LP. Vyanzo vya bei vya Chainlink vinatoa kumbukumbu kuu kwa mali za msingi, wakati TWAP zinazotokana na AMM hutumika kama safu ya uhakiki huru inayopatikana kutoka kwa ukwasi wa onchain.\n\nNguvu ya kukopa inatolewa tu wakati vyanzo vya bei vinabaki ndani ya upeo wa uvumilivu wa soko. Hii inapunguza kufichuliwa kwa utengenezaji wa mkopo wa ghafla, upotoshaji wa bei wa muda mfupi wa AMM, masasisho yasiyo ya kisasa, na viashiria vibaya vya dhamana vinavyounda deni lisilo salama."
+        },
+        {
+          "id": "what-is-recoverable-value",
+          "q": "Thamani inayoweza kurekebishwa ni nini?",
+          "a": "Thamani inayoweza kurejeshwa ni thamani ya dhamana iliyopunguzwa ambayo Avana inatumia kwa maamuzi ya kukopa na kufutwa. Inaonyesha kile ambacho nafasi ya LP inastahili baada ya kuzingatia kuvunjwa kwake, mauzo, uhamisho, au njia ya makubaliano chini ya msongo.\n\nThamani inayoweza kurejeshwa ni ya chini kuliko thamani ya kinadharia ya LP wakati njia ya kufutwa inajumuisha kupungua kwa bei, athari ya bei, mzunguko wa kiwango, mabadiliko, kushughulikia ada, au kina kidogo cha njia. Avana inapangilia kukopa kulingana na thamani inayoweza kurejeshwa kwa sababu hiyo ndiyo thamani inayolinda deni."
+        },
+        {
+          "id": "why-are-concentrated-liquidity-positions-treated-carefully",
+          "q": "Kwa nini nafasi za umwagaji mkusanyiko zinashughulikiwa kwa makini?",
+          "a": "Maeneo ya umwagaji uliokusudiwa hubadilisha kwa haraka uwazi wa hatari kama bei inavyobadilika. Nafasi inaweza kuwa nyingi kwa hisa moja, kutoka nje ya wigo, kuacha kupata ada, au kuhitaji malipo kwa kiwango kamili cha nafasi ya NFT.\n\nAvana inakadiria thamani za nafasi zilizokusudiwa kwa kuchanganua hali halisi ya nafasi badala ya kuwachukulia NFT kama salio tokeo la stagnant. Soko kisha linaweka vigezo vya dhamana, vichwa, na dhana za ukombozi zinazolingana na wigo wa nafasi, hesabu ya mali, na hatari ya kufungua nafasi."
+        },
+        {
+          "id": "what-data-does-avana-monitor",
+          "q": "Je, Avana inafuatilia data gani za soko?",
+          "a": "Vikuluzi vya Borrow Spokes vinachunguza ishara zinazoathiri ubora wa dhamana za LP: muundo wa pool, bei za tokeni, uhusiano wa mali, mabadiliko ya bei, kina cha kifedha, ukusanyaji wa ada, uaminifu wa orakuli, na gharama ya kuvunja.\n\nIshara hizo hutoa mwongozo wa jinsi soko linavyotumia dhamana. Maŵawa tulivu na yenye uhusiano wa juu hupokea mipaka tofauti kuliko jozi zenye mabadiliko makali au zinazouzwa kwa wingi mdogo kwa sababu profaili zao za uondoaji na kupungua kwa bei ni tofauti."
+        }
+      ]
+    },
+    {
+      "id": "borrowing",
+      "name": "Masoko ya kukopa",
+      "summary": "",
+      "questions": [
+        {
+          "id": "how-does-borrowing-work",
+          "q": "Kukopa kunafanya kazi vipi kwenye Avana?",
+          "a": "Kukopa hufanyika baada ya Borrow Spoke kukubali na kuthamini dhamana yako ya LP. Unapobaini rasilimali, spoke hushauri uwezo wako uliobaki, kuthibitisha kuwa nafasi inabaki afya baada ya deni jipya, na kuchukua fedha kutoka Hub ikiwa rasilimali inapatikana.\n\nRasilimali iliyokopwa inatumwa kwa mtumiaji, na akaunti inarekodi deni kupitia safu ya uhasibu wa upande wa mkopo. Riba inakusanywa kwa muda, kwa hivyo afya inaweza kubadilika hata kama nafasi ya dhamana yenyewe haijabadilika."
+        },
+        {
+          "id": "how-is-borrowing-capacity-calculated",
+          "q": "Kiasi cha mikopo kinahesabiwaje?",
+          "a": "Uwezo wa kukopa unatokana na thamani iliyorekebishwa kwa hatari ya nafasi zilizothibitishwa za LP ndani ya Spoke ya Kukopa. Avana inajenga upya kila nafasi, inatathmini thamani ya mfiduo wa msingi, inatumia matibabu ya hatari ya kiwango cha pool, na kisha inatumia kigezo cha dhamana cha soko.\n\nSpoke ya Kukopa inaripoti uwezo huo kwa Hub kwa ajili ya utekelezaji. Wakati mtumiaji ana nafasi nyingi zilizothibitishwa katika soko moja, Avana inakusanya uwezo wao huku ikizingatia thamani ya kila nafasi chini ya pool lake, wigo, uhitaji wa kioo, na makisio ya hatari."
+        },
+        {
+          "id": "why-is-borrow-power-lower-than-lp-value",
+          "q": "Kwa nini nguvu ya kukopa ni chini ya thamani yangu ya LP?",
+          "a": "Nguvu ya kukopa ni ya chini kwa sababu Avana inatumia thamani ya mali salama, si alama kamili ya LP. Nafasi za LP zinaweza kupoteza thamani kupitia utofauti wa bei, hasara isiyo ya kudumu, kuteleza kwa wigo, msongo wa ukwasi, na kuteleza kwa ukaguzi wa mali.\n\nTofauti kati ya thamani ya LP na nguvu ya kukopa ni kinga ya usalama. Inalinda soko kwa kuhakikisha deni limepimwa dhidi ya thamani ya mali inayoweza kurekebishwa badala ya thamani ya hali bora inayoonyeshwa wakati wa hali za kawaida."
+        },
+        {
+          "id": "what-assets-can-i-borrow",
+          "q": "Ninaweza kukopa mali gani?",
+          "a": "Mali zinazoweza kukopeshwa zimewekwa kwa soko moja kila moja. Masoko ya kukopa ya Avana yanazingatia mali zinazoweza kubadilishwa kwa urahisi kama vile stablecoins kuu, GHO, ETH, BTC, na mali nyingine zinazofaa kwa uligaji, kiwango, na mpangilio wa hatari wa soko.\n\nKiolesura kinaonyesha seti ya madeni yenye shughuli kwenye kila soko. Aina ya dhamana ya LP inayounga mkono haifunguzi moja kwa moja kila mali ya mkopo; kila mali ya deni ni sehemu ya mpangilio wa soko."
+        },
+        {
+          "id": "can-i-borrow-against-multiple-positions",
+          "q": "Je, ninaweza kukopa dhidi ya nafasi nyingi za LP kwa wakati mmoja?",
+          "a": "Ndiyo, wakati nafasi zinapoungwa mkono ndani ya soko husika. Avana inaweza kuunganisha nguvu ya kukopa kwenye nafasi nyingi zilizothibitishwa za LP katika Borrow Spoke ile ile, ikimpa mtumiaji uso mmoja unaounganisha mkopo kwa soko hilo.\n\nUchanganuzi hauchangani hatari kwa upuuzi. Kila nafasi bado inachangia uwezo kulingana na ziwa lake wenyewe, wigo, uhamishaji wa fedha, ada, na matibabu ya hatari, na akaunti jumla lazima ibaki juu ya kiwango cha afya kinachohitajika."
+        }
+      ]
+    },
+    {
+      "id": "supplying-earning",
+      "name": "Kuweka na kupata",
+      "summary": "",
+      "questions": [
+        {
+          "id": "how-do-lenders-use-avana",
+          "q": "Wakopaji hutumia Avana vipi?",
+          "a": "Watoa mikopo hutoa mali kama ETH, BTC, GHO, USDC, USDT, au mali nyingine zinazounga mkono kwenye upande wa watoa mikopo wa itifaki. Mtaji huo unapita kupitia Hub ili kusaidia kukopa katika masoko ya rehani ya LP.\n\nWatoa mikopo hawasimami viwango vya LP, hasara isiyo ya kudumu, au operesheni za rehani maalumu za AMM. Vipande vya Mkopo vinashughulikia upangaji wa LP na mantiki ya uuzaji, wakati mtaji wa mtoa mkopo unatoa nguvu kwa tabaka la mkopo."
+        },
+        {
+          "id": "where-does-supplier-yield-come-from",
+          "q": "Utoaji wa muuzaji unatokana na wapi?",
+          "a": "Mavuno ya wasambazaji yanatokana na wakopaji kulipa riba ili kupata fedha taslimu zilizothibitishwa na dhamana ya LP. Mfano wa Avana unachanganya kiwango cha msingi cha Hub kilichogawanywa na posho za hatari za kila tawi zinazohusiana na masoko ya LP yanayofadhiliwa.\n\nHii inamaanisha mavuno yanaweza kuakisi matumizi ya kawaida pamoja na mahitaji ya ziada yanayoundwa na ukopaji unaothibitishwa na LP. Viwango bado vinatenda kulingana na hali za soko, fedha taslimu zilizopo, matumizi, na wasifu wa hatari wa masoko ya wakopaji yasiyo ya msingi."
+        },
+        {
+          "id": "do-lenders-manage-lp-collateral",
+          "q": "Je, wakopeshaji wanadhibiti dhamana ya LP wenyewe?",
+          "a": "Hapana. Watoa mkopo hutoa mtaji safi kwenye masoko ya mkopo yanayounga mkono. Hawachagui anuwai za LP, hawadai ada za LP, au kuamua jinsi nafasi maalum ya AMM inavyotolewa.\n\nUtofauti huo ndilo msingi wa Lend Spoke. Mtaji wa mtoaji mkopo unasaidia mahitaji maalum ya wakopaji yanayotokana na LP, huku Borrow Spokes zikihifadhi tathmini ya dhamana, ukaguzi wa afya, na usimamizi wa uuzaji wa mali ili ziwe mbali na mtiririko wa kazi wa mtoaji mkopo."
+        },
+        {
+          "id": "what-protects-lender-capital",
+          "q": "Nini kinacholinda mtaji wa mkopeshaji?",
+          "a": "Avana inalinda mtaji wa mkopeshaji kupitia kukopa kwa riba ya ziada, tathmini ya tahadhari ya LP, ukaguzi wa orodha mbili, mipaka ya soko, utekelezaji wa kipimo cha afya, na njia za uuzaji maalum za LP. Kila Taa ya Mkopo inapanga thamani ya dhamana kulingana na hatari za pool lake kabla ya deni kuchukuliwa kutoka kwenye unyonyaji wa Hub.\n\nItifaki bado ina hatari ya DeFi: hatari ya mkataba mahiri, hatari ya orodha, hatari ya utekelezaji wa uuzaji, na msongo wa soko. Avana inashughulikia hatari hiyo kwa kupima dhamana ya LP kwa kiwango cha soko badala ya kuhukumu kila nafasi ya LP kama salio rahisi la tokeni."
+        }
+      ]
+    },
+    {
+      "id": "liquidations",
+      "name": "Health na uuzaji wa dhamana",
+      "summary": "",
+      "questions": [
+        {
+          "id": "what-is-health-factor",
+          "q": "Je, kipengele cha afya ni nini?",
+          "a": "Kigezo cha afya kinapima uhusiano kati ya thamani ya dhamana iliyorekebishwa kwa hatari na deni lililobaki ndani ya Borrow Spoke. Mfano uliorahisishwa ni thamani ya dhamana iliyorekebishwa gawanywa kwa deni lililobaki.\n\nThamani ya dhamana iliyorekebishwa tayari inajumuisha tathmini ya LP ya Avana, vigezo vya dhamana, matibabu ya hatari kwa kiwango cha pooli, na assumptions za thamani zinazoweza kurejeshwa. Ikiwa afya inapungua chini ya kikomo cha usafishaji, nafasi hiyo inakuwa yenye kustahiki kusafishwa."
+        },
+        {
+          "id": "what-affects-health-factor",
+          "q": "Nini kinaathiri kipengele changu cha afya?",
+          "a": "Kigezo cha afya hubadilika wakati thamani ya dhamana inabadilika, deni linabadilika, ada zinadaiwa, dhamana inatolewa, mkopo unaongezwa, au vigezo vya soko vinapobadilika. Nafasi za LP pia zinaweza kubadilika kwa sababu bei za tokeni zinabadilika, hesabu ya mfuko inabadilika, ada zinakusanywa, au nafasi zilizojikita zinabadilika ndani na nje ya wigo.\n\nKukopa zaidi kunapunguza afya kwa sababu deni linaongezeka. Kurejesha deni, kuongeza dhamana iliyokubaliwa, au kupunguza mfiduo kunaboresha afya kwa sababu akaunti ina msaada zaidi wa dhamana ikilinganishwa na deni."
+        },
+        {
+          "id": "how-does-liquidation-work",
+          "q": "Je, uharibifu wa mali unafanya kazi vipi kwenye Avana?",
+          "a": "Upunguzaji huanza wakati kipimo cha afya cha akaunti kinaposhuka chini ya kikomo cha upunguzaji. Aave inashughulikia uhasibu wa deni, ukaguzi wa afya, na sehemu ya kuingilia upunguzaji dhidi ya dhamana ya hazina ya ERC-20.\n\nAvana inashughulikia makubaliano ya LP nyuma ya tokeni hiyo ya hazina. Adapter inachoma dhamana ya hazina, inaunganisha upunguzaji na nafasi halisi ya LP, na safu ya makubaliano inafuata njia ya soko: kufungua, kuuza, mnada, au kuhamisha nafasi ya msaada. Deni linashughulikiwa kwanza, kisha zawadi ya mtozao wa upunguzaji na gharama za makubaliano, huku ziada zinashughulikiwa na kanuni ya soko."
+        },
+        {
+          "id": "are-liquidations-permissionless",
+          "q": "Nani anaweza kuondoa nafasi isiyo na afya?",
+          "a": "Utoaji wa mali unaweza kufanywa bila ruhusa mara tu nafasi inapopita kikomo cha utoaji wa mali. Kila mtoaji wa mali anayefaa anaweza kulipa kiasi kilichoruhusiwa cha deni na kuanzisha njia ya malipo.\n\nHifadhi ya LP ni ngumu kufungua kuliko hifadhi rahisi ya tokeni, kwa hivyo Avana pia inazingatia ulinzi maalum wa utoaji wa mali. Watoa mali hufuata hali ile ile ya hatari, ramani ya hazina-tokeni, kina cha njia, na makadirio ya ufunguzi yanayotumika na itifaki."
+        },
+        {
+          "id": "what-happens-to-fees-during-liquidation",
+          "q": "Je, ada za LP zinatokea nini wakati wa utoaji wa mali?",
+          "a": "Avana inatofautisha ada zilizokusanywa kutoka kwenye kioo kikuu cha fedha. Wakati wa uondoaji, njia ya malipo inatumia ada zilizokusanywa kabla ya kioo kikuu cha fedha wakati njia ya soko inaunga mkono mpangilio huo.\n\nHii inapunguza ni kiasi gani cha nafasi ya msingi ya LP kinachohitajika kuingiliwa. Ikiwa thamani ya ada haifunika deni la kutosha, tabaka la malipo linafuta au kuhamisha dhamana inayohitajika ya LP kulingana na njia hiyo ya uondoaji wa soko."
+        }
+      ]
+    },
+    {
+      "id": "governance",
+      "name": "Mchakato wa utawala",
+      "summary": "",
+      "questions": [
+        {
+          "id": "how-are-new-pools-added",
+          "q": "Je, mikusanyiko mipya ya LP inaongezwa vipi?",
+          "a": "Maziwa mapya ya LP yanaongezwa kupitia uhakiki wa soko na idhini. Maziwa yanahitaji upatikanaji wa bei za mali za msingi zinazoaminika, kiwango cha kutosha cha kioo, dhana wazi za kufunga, na vigezo vya hatari vinavyofaa aina ya dhamana.\n\nAvana inaanza na masoko yaliyochaguliwa ya LP ili tathmini na ufungaji ubaki safi. Ujumuishaji mpana wa maziwa unaweza kuwapo kwa muda kadri msaada wa ukurasa, kina cha kioo, na data za hatari zinavyoboreshwa."
+        },
+        {
+          "id": "can-risk-parameters-change",
+          "q": "Je, vigezo vya hatari vinaweza kubadilika baada ya uzinduzi?",
+          "a": "Ndiyo. Vigezo vya hatari vinaweza kubadilika kadiri hali za soko zinavyobadilika. Ziwa linaweza kuwa na mifumo michache ya kioo, kuwa na mabadiliko makali zaidi, kuwa na ulinganifu mdogo, au kuwa mgumu zaidi kufutika kuliko lilivyokuwa lilipoanza kuorodheshwa.\n\nMabadiliko ya vigezo yanaweza kuathiri viashiria vya dhamana, mipaka, maziwa yaliyo supported, mali zinazoweza kukopeshwa, kusitishwa kwa shughuli, viwango vya ufutaji, na zawadi za ufutaji. Watumiaji wenye madeni wazi hufuata mabadiliko haya kwa sababu mabadiliko ya vigezo yanaathiri nguvu za kukopa na kipimo cha afya."
+        },
+        {
+          "id": "where-can-i-follow-governance",
+          "q": "Naweza kufuatilia majadiliano ya utawala wapi?",
+          "a": "Mara nyingi masasisho ya utawala wa Avana na mjadala wa soko hutokea kupitia Avana Labs kwenye X kwa https://twitter.com/avana_labs. Kituo hicho kinahusu pool mapya, vigezo vya soko, ujumuisho, mapitio ya usalama, na hatua za bidhaa.\n\nMapendekezo marefu, vidokezo vya hatari, na nyuzi za utawala wa nje huhusishwa kutoka Avana Labs pale zinapofaa. Kwa nafasi kubwa, watumiaji hupitia masasisho ya hivi karibuni ya Avana Labs na vigezo vya soko vya moja kwa moja kabla ya kutegemea pool."
+        },
+        {
+          "id": "can-interface-fees-change",
+          "q": "Je, ada za kiolesura zinaweza kubadilika kwa muda?",
+          "a": "Ndiyo. Ada za kiolesura na huduma za Avana ni mipangilio ya kiutendaji kwa violesura rasmi. Zina tofauti na mbinu kuu za itifaki zinazodhibiti dhamana, deni, ukaguzi wa oracle, na uharibifu.\n\nWakati ada ya kiolesura inatumika, mtiririko wa muamala unaonyesha kabla ya saini ili watumiaji waweze kutofautisha gharama ya kiolesura na kiwango cha gesi, utekelezaji wa kubadilisha, riba ya itifaki, na uchumi wa uharibifu."
+        }
+      ]
+    },
+    {
+      "id": "gho-stablecoin",
+      "name": "Stablecoin ya GHO",
+      "summary": "",
+      "questions": [
+        {
+          "id": "can-i-borrow-gho",
+          "q": "Je, naweza kukopa GHO kupitia Avana?",
+          "a": "GHO ni mojawapo ya mali za kuomba mkopo zilizopo kwenye Avana kwa masoko yanayojumuisha kioevu cha GHO. Wakati soko linapotoa GHO, watumiaji wanaweza kulikopa dhidi ya dhamana ya LP iliyokubaliwa mradi akaunti iko juu ya viwango vinavyohitajika vya afya.\n\nUkopa GHO unafanya kazi kama mali yoyote ya deni katika Avana: huongeza deni lililo wazi, huathiri kipengele cha afya, hukusanya riba, na hurejeshwa kwa GHO pamoja na gharama yoyote inayotumika."
+        },
+        {
+          "id": "can-gho-be-lp-collateral",
+          "q": "Je, GHO inaweza kuwa sehemu ya dhamana ya LP?",
+          "a": "Ndiyo. GHO inaweza kuwa sehemu ya dhamana ya LP wakati pool maalum la GHO limeidhinishwa kwa soko la Avana. Bwawa hilo linaangaliwa kama masoko mengine ya LP: upungufu wa bei ya mali, kina cha unywaji, uhusiano, muundo wa tokeni, vikwazo, na njia za uuzaji vyote ni muhimu.\n\nHii ina maana kuwa GHO haichukuliwi kama idhini ya jumla kwa kila jozi. Avana inaunga mkono usanidi wa pool, si tu alama ya mali."
+        },
+        {
+          "id": "how-do-i-repay-gho",
+          "q": "Ninawezaje kulipa deni la GHO?",
+          "a": "Deni la GHO linalolipwa kwa GHO pamoja na riba iliyojumlishwa na gharama zozote zinazotakiwa. Mara tu malipo yanapothibitishwa, Avana hupunguza deni lisilolipwa la akaunti na kiashiria cha afya huboreka.\n\nBaada ya kulipa kwa ukamilifu, vizuizi vya dhamana vinavyohusiana na deni hilo vinaachiliwa kulingana na sheria za soko, kuruhusu nafasi ya LP kuvutwa au kubadilishwa wakati hakuna deni jingine lililobaki."
+        }
+      ]
+    },
+    {
+      "id": "multiply-markets",
+      "name": "Masoko ya Multiply",
+      "summary": "",
+      "questions": [
+        {
+          "id": "what-is-avana-multiply",
+          "q": "Avana Multiply ni nini?",
+          "a": "Avana Multiply ni mtiririko wa kazi wa leverage unaosimamiwa uliotengenezwa juu ya mikopo inayotolewa na LP. Mtumiaji anaweka dhamana inayounga mkono LP, Avana inaithamini, na kiolesura kinaweza kutumia nguvu ya kukopa hiyo kufungua exposure ya loop au leverage iliyothibitishwa kutoka mtiririko mmoja.\n\nBadala ya kukopa, kubadilisha, kuweka tena, na kufuatilia deni katika zana nyingi kwa mikono, Multiply inafunga nafasi katika mtiririko mmoja unaosimamiwa na dhamana, deni, kiwango cha leverage, kipengele cha afya, na udhibiti wa kufutwa unaonyeshwa pamoja."
+        },
+        {
+          "id": "how-is-multiply-different-from-borrowing",
+          "q": "Je, Kuzidisha kunatofautiana vipi na kukopa?",
+          "a": "Kukopa kunawapa watumiaji mali ambazo wanaweza kuzitumia moja kwa moja, mradi tu akaunti iko katika hali nzuri. Multiply inatumia nguvu ya kukopa inayofaidiana na LP ndani ya mkakati unaosimamiwa, ambapo mtaji uliokopesha unaelekezwa kwenye mfiduo uliokubaliwa na unafuatiliwa kama nafasi moja.\n\nKwa kuwa Multiply inaongeza kuwasha nguvu, inaweza kuongeza ufanisi wa mtaji na faida zinazoweza kupatikana, lakini pia inaongeza hasara, hatari ya uondoaji, na unyeti kwa mabadiliko ya bei. Mtazamo wa afya ni muhimu zaidi, si kidogo, wakati nafasi imezungushwa."
+        },
+        {
+          "id": "do-i-keep-lp-while-using-multiply",
+          "q": "Je, ninaweka LP yangu wakati niki tumia Multiply?",
+          "a": "Ndiyo. Nafasi ya LP inaendelea kuwa msingi wa rehani wakati nafasi ya Multiply iko wazi. Mtumiaji hahitaji kutoka kikamilifu kwenye nafasi ya AMM ili tu kuunda uwekaji wa mkopo wenye kuzidishwa.\n\nLP bado inaunga mkono deni, kwa hivyo inaendelea kuwa chini ya sheria za rehani na uuzaji wa dhamana ikiwa akaunti inakuwa hatarini. Watumiaji hufuatilia thamani ya rehani, deni, mkopo, na kinga ya uuzaji wa dhamana katika maisha yote ya mzunguko."
+        },
+        {
+          "id": "what-limits-maximum-leverage",
+          "q": "Nini kinapunguza mikopo ya juu zaidi?",
+          "a": "Uchunguzi wa juu unategemea ubora wa hati ya dhamana, kioo cha soko, tete, uaminifu wa beeni, mali ya kukopa, ukubwa wa masoko, na makadirio ya uondoshaji. Viunganisho thabiti au vinavyohusiana sana kawaida vinaweza kuvumilia viwango vya tofauti vya uchunguzi kuliko viunganisho vinavyotetereka au vyenye utupu.\n\nAvana inatumia udhibiti wa hatari maalum wa soko hivyo uchunguzi unadhibitiwa na dhamana halisi ya LP nyuma ya nafasi badala ya kuzidisha kwa kiwango thabiti kinachotumika kwa kila kiunganisho."
+        }
+      ]
+    },
+    {
+      "id": "automation-features",
+      "name": "Vipengele vya otomatiki",
+      "summary": "",
+      "questions": [
+        {
+          "id": "can-automation-help-manage-risk",
+          "q": "Je, uendeshaji wa mashine unaweza kusaidia kusimamia hatari ya nafasi?",
+          "a": "Uendeshaji wa kiotomatiki unafuatilia afya ya akaunti na unaweza kusababisha hatua zilizowekwa hapo awali kama vile malipo ya deni, kupunguza madeni, au kupunguza kiwango cha hatari kabla ya ukomo. Hii ni muhimu kwa sababu nafasi zinazoungwa mkono na LP husogea pamoja na ukuaji wa deni na mabadiliko ya soko kwa kiwango cha pooli.\n\nUendeshaji wa kiotomatiki ni chombo cha usimamizi wa hatari, si dhamana. Utekelezaji bado unaweza kuathiriwa na mabadiliko ya soko, hali ya ukwasi, ucheleweshaji wa miamala, masasisho ya oracle, na upatikanaji wa njia."
+        },
+        {
+          "id": "can-lp-collateral-support-perps-exposure",
+          "q": "Je, dhamana ya LP inaweza kuunga mkono mfiduo wa aina ya perps?",
+          "a": "Risasi za LP zinasaidia leverage iliyothibitishwa au mfumo wa perps kupitia masoko na muunganisho unaosafirisha mikopo inayoungwa mkono na LP kwenye mikakati iliyodhibitiwa. Nafasi ya LP inaunda nguvu ya kukopa, na mkopo huo unaweza kutumika kupitia njia za maonyesho zinazoungwa mkono badala ya kutumika kama mkopo rahisi wa pochi tu.\n\nUpatikanaji unafafanuliwa na usanidi wa soko unaoendelea: aina ya risasi, vigezo vya soko, uaminifu wa orakuli, kioevu, mali ya deni, na njia ya muunganisho. Kiolesura kinaonyesha njia zinazoungwa mkono kwa kila soko."
+        },
+        {
+          "id": "what-users-monitor",
+          "q": "Watumiaji hufuatilia nini baada ya kufungua nafasi?",
+          "a": "Watumiaji hufuatilia kipengele cha afya, matumizi ya mkopo, thamani ya dhamana, ukuaji wa deni, hali ya wigo wa LP, ukusanyaji wa ada, na buffer ya uingizaji kifedha. Kwa nafasi za Multiply, pia hufuatilia kiwango cha mkopo na udhibiti wa kuvunja.\n\nAvana inaonyesha thamani hizi kwenye kiolesura ili watumiaji waweze kuona wakati nafasi iko katika hali nzuri, wakati inahitaji kuangaliwa, na wakati hatari inakaribia kufutwa."
+        }
+      ]
+    }
+  ]
+}

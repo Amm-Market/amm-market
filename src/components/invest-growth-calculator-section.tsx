@@ -2,6 +2,7 @@
 
 import { useId, useMemo, useState } from "react"
 import { SandboxNotice, SectionEyebrow, SectionTitle } from "@/components/shared"
+import { lookupPhrase, usePhraseMap } from "@/components/phrase-map-context"
 
 const AVANA_APY = 12
 const FLUID_APY = 3.5
@@ -48,6 +49,8 @@ function formatDepositInput(value: string) {
 }
 
 export default function InvestGrowthCalculatorSection() {
+  const map = usePhraseMap()
+  const t = (text: string) => lookupPhrase(map, text)
   const inputId = useId()
   const rangeId = useId()
   const [depositInput, setDepositInput] = useState(DEFAULT_DEPOSIT)
@@ -85,9 +88,9 @@ export default function InvestGrowthCalculatorSection() {
     <section className="deferred-viewport-tall">
       <div className="space-y-6 lg:space-y-10">
         <div className="space-y-3">
-          <SectionEyebrow tone="emerald">Growth Calculator</SectionEyebrow>
-          <SectionTitle className="max-w-none whitespace-nowrap">
-            See your cash grow
+          <SectionEyebrow tone="emerald">{t("Growth Calculator")}</SectionEyebrow>
+          <SectionTitle className="max-w-none">
+            {t("See your cash grow")}
           </SectionTitle>
         </div>
 
@@ -95,7 +98,7 @@ export default function InvestGrowthCalculatorSection() {
           <div className="space-y-6 lg:space-y-8 lg:pt-4">
             <div className="flex items-center justify-between gap-6 border-b border-gray-200 pb-4 lg:pb-6">
               <p className="text-sm font-semibold tracking-[-0.03em] text-[#728196]">
-                Avana APY
+                {t("Avana APY")}
               </p>
               <div className="inline-flex items-center rounded-full bg-[#01AACF]/10 px-4 py-2 text-[#01AACF] ring-1 ring-[#01AACF]/25">
                 <span className="text-[1.15rem] font-semibold tracking-[-0.04em] md:text-[1.35rem]">
@@ -106,7 +109,7 @@ export default function InvestGrowthCalculatorSection() {
 
             <div className="space-y-2.5">
               <label htmlFor={inputId} className="block text-[1.2rem] font-semibold tracking-[-0.03em] text-[#203650]">
-                Initial Deposit
+                {t("Initial Deposit")}
               </label>
               <div className="relative">
                 <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[1.6rem] tracking-[-0.04em] text-[#395273]">
@@ -126,10 +129,10 @@ export default function InvestGrowthCalculatorSection() {
             <div className="space-y-4">
               <div className="flex items-end justify-between gap-4">
                 <label htmlFor={rangeId} className="block text-[1.2rem] font-semibold tracking-[-0.03em] text-[#203650]">
-                  Time Period (months)
+                  {t("Time Period (months)")}
                 </label>
                 <p className="text-sm text-[#728196]">
-                  {months} month{months === 1 ? "" : "s"}
+                  {months} {months === 1 ? t("month") : t("months")}
                 </p>
               </div>
 
@@ -148,7 +151,7 @@ export default function InvestGrowthCalculatorSection() {
                   style={{ left: `calc(${thumbPosition}% * 0.96 + 2%)` }}
                 >
                   <div className="text-[0.92rem] font-semibold leading-none tracking-[-0.03em] md:text-[1rem]">
-                    {months} months
+                    {months} {t("months")}
                   </div>
                 </div>
               </div>
@@ -161,7 +164,7 @@ export default function InvestGrowthCalculatorSection() {
                 <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4">
                   <div className="space-y-1">
                     <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#01AACF]/80">
-                      Projected Value
+                      {t("Projected Value")}
                     </p>
                     <p className="text-[2.35rem] whitespace-nowrap leading-[0.9] tracking-[-0.08em] text-[#01AACF]">
                       {projectedValueDisplay}
@@ -169,7 +172,7 @@ export default function InvestGrowthCalculatorSection() {
                   </div>
                   <div className="space-y-1 text-right">
                     <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#8b98a7]">
-                      Avana Interest
+                      {t("Avana Interest")}
                     </p>
                     <p className="text-[1.05rem] font-semibold tracking-[-0.04em] text-[#163042]">
                       {currencyFormatter.format(avanaInterest)}
@@ -180,14 +183,14 @@ export default function InvestGrowthCalculatorSection() {
 
               <div className="hidden space-y-4 sm:block">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#01AACF]/80">
-                  Projected Value
+                  {t("Projected Value")}
                 </p>
                 <p className={`${projectedValueSize} max-w-full whitespace-nowrap leading-[0.88] tracking-[-0.09em] text-[#01AACF]`}>
                   {projectedValueDisplay}
                 </p>
                 <div className="flex flex-wrap items-center gap-3">
                   <p className="text-sm text-[#728196]">
-                    Avana Interest
+                    {t("Avana Interest")}
                   </p>
                   <p className="text-[1.2rem] font-semibold tracking-[-0.04em] text-[#163042]">
                     {currencyFormatter.format(avanaInterest)}
@@ -197,7 +200,7 @@ export default function InvestGrowthCalculatorSection() {
 
               <div className="flex items-baseline justify-between gap-4 border-t border-gray-200 pt-4 md:pt-5">
                 <p className="text-sm font-medium text-[#728196]">
-                  3.5% APY
+                  {t("3.5% APY")}
                 </p>
                 <p className="text-[1.15rem] font-semibold tracking-[-0.04em] text-[#163042] md:text-[1.35rem]">
                   {fluidValueDisplay}

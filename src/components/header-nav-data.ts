@@ -2,7 +2,8 @@ import { siteRoutes } from "@/lib/site"
 
 export interface NavLink {
   href: string
-  label: string
+  labelKey?: string
+  label?: string
   external?: boolean
 }
 
@@ -10,26 +11,18 @@ export type DesktopMenuId = "products" | "resources" | "developers"
 
 export const desktopMenuButtons = [
   {
-    id: "products",
-    label: "Products",
-    matchHrefs: [
-      siteRoutes.borrow,
-      siteRoutes.lend,
-      siteRoutes.multiply,
-    ],
+    id: "products" as const,
+    labelKey: "nav.products",
+    matchHrefs: [siteRoutes.borrow, siteRoutes.lend, siteRoutes.multiply],
   },
   {
-    id: "resources",
-    label: "Resources",
-    matchHrefs: [
-      siteRoutes.about,
-      siteRoutes.newsroom,
-      siteRoutes.brand,
-    ],
+    id: "resources" as const,
+    labelKey: "nav.resources",
+    matchHrefs: [siteRoutes.about, siteRoutes.newsroom, siteRoutes.brand],
   },
   {
-    id: "developers",
-    label: "Developers",
+    id: "developers" as const,
+    labelKey: "nav.developers",
     matchHrefs: [
       siteRoutes.developers,
       "/developers/architecture",
@@ -40,5 +33,5 @@ export const desktopMenuButtons = [
 ] as const
 
 export const desktopUtilityLinks: readonly NavLink[] = [
-  { href: "https://app.avana.cc", label: "Try Sandbox", external: true },
+  { href: "https://app.avana.cc", labelKey: "cta.sandboxLong", external: true },
 ]

@@ -1,0 +1,2201 @@
+{
+  "architecture/collateral-factors": {
+    "meta": {
+      "title": "Abubuwan Bada Bashi",
+      "description": "Yadda Maganar Bashi ke sauya ƙimar matsayi LP zuwa iyakar bashi kafin a kai rahoto zuwa Hub."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "how-it-works",
+        "title": "Yadda Yake Aiki"
+      },
+      {
+        "id": "borrowable-value",
+        "title": "Darajar Ƙarabawa"
+      },
+      {
+        "id": "notes",
+        "title": "Bayanan kula"
+      }
+    ],
+    "strings": [
+      "Abubuwan Bada Bashi",
+      "Yadda Maganar Bashi ke sauya ƙimar matsayi LP zuwa iyakar bashi kafin a kai rahoto zuwa Hub.",
+      "Bayanin Gabaɗaya",
+      "Yadda Yake Aiki",
+      "Darajar Ƙarabawa",
+      "Bayanan kula",
+      "Yadda Magana ta Mazaji ke yanke shawarar nawa daga matsayin LP zai ƙidaya wajen iyakar aron kudi.",
+      "Abubuwan jingina suna amsa tambaya mai takamaiman muhimmanci: nawa daga wannan matsayi LP ya kamata ya tallafawa bashi? A cikin Avana, ba a ɗauki wannan amsa daga babban alamun LP kawai ba. Spoke ɗin Bashi farko yana sake ginawa da rage darajar matsayi, sannan yana amfani da ƙa'idodin kasuwa da ke yanke shawara wane kaso na wannan ƙima za a iya ƙididdige shi a matsayin ikon aro mai amfani.",
+      "Takardar haske tana bayyana ƙa'idar. Wannan shafi yana bayyana jerin matakai da masu haɓakawa ke amfani da shi a cikin reshe kafin a mika kowace ƙarfin aiki ga Hub.",
+      "Reshe yana karɓar kawai tafkunan da aka amince da su ko samfura. Idan matsayi bai dace da ƙayyadadden kasuwa da aka jera ba, ba ya isa matakan kimantawa na gaba da ke samar da damar aron kudi.",
+      "Yana sake gina matsayi na LP, yana ƙididdige farashin kadarorin da ke ƙasa, sannan yana rage sakamakon zuwa darajar jinginar da za a iya farfado da ita. Wannan matakin ne inda abin da aka ce yana canzawa daga matsayin tafkin da yake da ƙima a ƙa'ida zuwa ƙimar da yake shirye ya bayar a matsayin lamuni a aikace.",
+      "Yana amfani da saitunan jingina na musamman ga kasuwa kuma yana watsa yawan damar aro zuwa Hub don aiwatarwa na ƙarshe. Hub ɗin yana amfani da sakamakon, amma reshe shine matakin da ya yanke shawarar nawa daga LP za a iya lissafawa a farko.",
+      "Ƙimar ɗaukar lamuni sakamakon fitarwa ce, ba wani siffa da aka daɗa wa kowane LP a cikin reshe ba. Matsayi biyu na iya zama a kasuwanni daban-daban, su samar da ƙimar da za a iya mayarwa daban-daban, kuma su share saitunan jinginar daban-daban ko da suna kama da juna a farko. Wannan yana kiyaye aiwatarwa daidai da tsarin bayar da rance na musamman ga LP da aka bayyana a wani wuri a cikin takardun.",
+      "Matsayi mai tallafi LP yana bayar da gudunmawar ƙarfin aro ne kawai bayan bangaren ya amince da shi, ya sake ginawa kuma ya rage darajarsa, sannan ya yi amfani da sarrafawar jinginar da kasuwar ta saita.",
+      "• Saitunan kasuwa na ainihi suna rayuwa tare da tsarin tafkin da ake goyon baya maimakon wannan shafin bayyani.",
+      "• Rukuni-rukunin haɗari na matakin tafki suna da alaƙa da aiwatarwa, ba alƙawarin cewa duk LP suna da raba ɗaya LTV ba.",
+      "• Karanta halayen abubuwan jinginar da tasirin lafiya da takardun kammala kudi idan kana aiwatar da lura ko dabarun dawo da kudi."
+    ]
+  },
+  "architecture/health-factor": {
+    "meta": {
+      "title": "Abubuwan Lafiya",
+      "description": "Yadda Borrow Spoke ke kwatanta ƙimar jingina da bashi daidaita don tantance ko asusun da ke goyan bayan LP yana da lafiya ko za a iya sayar da shi."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "calculation",
+        "title": "Lissafi"
+      },
+      {
+        "id": "health-bands",
+        "title": "Sauraran Ƙungiyoyi"
+      },
+      {
+        "id": "response-path",
+        "title": "Hanyar Amsa"
+      },
+      {
+        "id": "user-actions",
+        "title": "Ayyukan Mai Amfani"
+      }
+    ],
+    "strings": [
+      "Abubuwan Lafiya",
+      "Yadda Borrow Spoke ke kwatanta ƙimar jingina da bashi daidaita don tantance ko asusun da ke goyan bayan LP yana da lafiya ko za a iya sayar da shi.",
+      "Bayanin Gabaɗaya",
+      "Lissafi",
+      "Sauraran Ƙungiyoyi",
+      "Hanyar Amsa",
+      "Ayyukan Mai Amfani",
+      "Yadda Maganar Lamuni ta auna lafiyar asusun daga ƙimar jinginar da aka daidaita da bashin da ba a biya ba.",
+      "Alamar lafiya ita ce ra'ayin gajeren lokaci na Borrow Spoke game da ko asusun har yanzu yana da isasshen jinginar da aka daidaita don tallafawa bashi. Ba wani samfurin haɗari daban ba ne. Hanyar kimanta iri ɗaya, dabarun ƙimar jinginar, da ƙididdigar lalacewa da ke jagorantar aro suna kuma ƙayyade alamar lafiya da ke bayyana a fuska da masu lalata bashi ke karantawa.",
+      "Lokacin da lafiya ta faɗi har zuwa matakin da asusun ba ya cika iyakar aron da waken ya kayyade ba, matsayin ya zama mai iya canzawa zuwa kudi ƙarƙashin tsarin da aka saba",
+      "Tsarin Ƙarshewa",
+      "Lafiya ana ƙididdige ta a kowane Harƙo na Lamuni. Mai lamba shine ƙimar jinginar da aka daidaita ta mai amfani a cikin wannan harƙon, wanda ke nufin an riga an sake gina matsayi, ƙididdigar farashi, rage ƙimar da za a iya dawo da ita, da saitunan jinginar kasuwa na wannan harƙon.",
+      "healthFactor = darajarAjiyarDaAkaGyara / bashinDaBa aBiyaBa",
+      "Idan mai amfani yana da jinginar a fiye da Wani Rassa na Bashi ɗaya, kowanne rassa yana lissafin lafiya a cikin yanayinsa na gida. Karin iyaka a wani rassa ba ya rufe gibin da ke wani rassa ta atomatik, saboda tsarin yana ƙunsar haɗari a kasuwar da aka ƙirƙe shi.",
+      "Lafiya:",
+      "darajar jinginar da aka daidaita tana kasancewa a sama da bashi da ake bin shi cikin kwanciyar hankali, don haka asusun yana da sarari don motsi na kasuwa na yau da kullum ba tare da shiga tsakani nan da nan ba.",
+      "Jerin Kallo:",
+      "asibitin har yanzu yana wuce duba na ƙarshen, amma mararƙashi yana da siriri sosai cewa mai lamuni ya kamata ya yi la'akari da biyan bashi, ƙara jinginar, ko kuma inganta matsayin.",
+      "Mai iya cirewa ko mayar da ruwa",
+      "asusun ya kai ko ya wuce iyakar warware kudi, don haka hanyar farfadowa na iya canzawa daga aikin mai amfani zuwa sulhu da ƙa’idar ke tilasta wa.",
+      "Gargadin fuska na iya zama masu kiyaye fiye da iyakar kwangilar tsauri. Suna nan ne don taimakawa masu amfani suyi mataki da wuri, ba don gabatar da wani sabon tsarin dokoki ba.",
+      "Idan lafiya ta raunana, amsar farko har yanzu ta mai bashi ce. Za a iya gyara asusun ta hanyar biyan bashi, ƙara jinginar da aka amince da ita LP, ko canza matsayi ta hanyoyin da suke nan daram ƙarƙashin duban lafiya na wuka.",
+      "Da zarar lafiyar ta ketare iyakar lalacewa, asusun yana fita daga matakin sa ido kuma yana shiga hanyar farfadowa. Dandalin lalacewa da masu lalacewa na uku za su iya warware hanyar jinginar da ake bukata don dawo da biyan basussuka bisa ga ka'idojin lalacewar kasuwa.",
+      "Karɓar bashi da yawa yana rage lafiya saboda bashin da ake bin bashi yana ƙaruwa akan tushen jinginar daidai.",
+      "Biya bashi yana inganta lafiya nan da nan saboda ƙasa a cikin rabo yana sauka.",
+      "Ƙara amintaccen jinginar na iya ƙara saura sarari idan reshe ya yarda kuma ya ƙima shi.",
+      "Neman kuɗaɗe, janye jingina, ko sake tsara matsayi na iya rage lafiya kuma ya kamata a duba shi da yanayin bayan aiki kafin aiwatarwa.",
+      "Abubuwan Bada Bashi"
+    ]
+  },
+  "architecture/incentives": {
+    "meta": {
+      "title": "Shirye-shiryen Ƙarfafawa",
+      "description": "Bayanan aiki na Avana ƙarfafawa da lada, yana bayyana yadda kamfen na zaɓi suke da alaƙa da babban tsarin aiki ba tare da zama tsarin gine-gine na gama gari ba."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "program-types",
+        "title": "Nau'ikan Shirye-shirye"
+      },
+      {
+        "id": "distribution-principles",
+        "title": "Ka'idojin Rarrabawa"
+      },
+      {
+        "id": "claiming-and-reconciliation",
+        "title": "Ikirari & Sasanci"
+      },
+      {
+        "id": "status",
+        "title": "Matsayi Na Yanzu"
+      }
+    ],
+    "strings": [
+      "Shirye-shiryen Ƙarfafawa",
+      "Bayanan aiki na Avana ƙarfafawa da lada, yana bayyana yadda kamfen na zaɓi suke da alaƙa da babban tsarin aiki ba tare da zama tsarin gine-gine na gama gari ba.",
+      "Bayanin Gabaɗaya",
+      "Nau'ikan Shirye-shirye",
+      "Ka'idojin Rarrabawa",
+      "Ikirari & Sasanci",
+      "Matsayi Na Yanzu",
+      "Zaɓin lada da matakin kamfen wanda zai iya zama a saman aikace-aikacen Avana ba tare da canza manyan hanyoyin aron kuɗi ba.",
+      "Karfafa wa mutane yin wani abu kari ne, ba wani ɓangare na babban tsarin ba. Har yanzu an ayyana ƙa'idar ta hanyar kimanta LP, sarrafa haɗarin Borrow Spoke, ruwa a Hub, da tsiratarwa. Kamfen na iya ƙarfafa shiga, amma ba su canza waɗannan dabarun ba.",
+      "Kamfen suna aiki kuma suna da iyaka na lokaci. Wannan shafin yana bayyana yadda suke da alaƙa da sauran Avana. Ba ya nufin wani shirin lada na musamman yana aiki a kowane wurin shigarwa ba.",
+      "• Kamfen da suka shafi masu samarwa waɗanda ke zurfafa jari a cikin Lend Spoke ko tsarin haɗin ruwa na haɗin gwiwa.",
+      "• Kamfen ɗin da ke fuskantar masu ɗaukar bashi waɗanda ke ƙarfafa ɗaukar bashi da ke da goyon baya na lafiya LP.",
+      "• Kamfen din mai aiki ko na tsarin muhalli da aka danganta da gwaji, haɗawa, ko aikin tallafawa haɗari.",
+      "Idan akwai abubuwan ƙarfafawa, ya kamata a fahimce su, a iya bincika su, kuma a raba su da mahimmin tsarin haɗarin. Lissafin lada na iya dogara ne akan aiki, lokaci, ko ƙa'idodin kamfen, amma bai kamata ya canza yadda Avana ke ƙayyade abin jingina ko yanke shawarar cancantar sayar da kadarori ba.",
+      "Kamfen na iya ladaftar da hali mai so. Ba su kamata su karfafa amfani da rashin lafiya ko ɓoye gaskiyar tattalin arzikin aron da aka goyi da LP ba.",
+      "Hanyar da za a nemi hakkoki, jadawalin mallaka, da hanyoyin daidaitawa suna musamman ga kamfen. Ana iya gudanar da su a kan sarkar, ta hanyar mai kula da lada na musamman, ko ta hanyar kididdigar da ba ta kan sarkar ba da mai gudanar da kamfen ya buga.",
+      "Masu haɗawa ya kamata koyaushe su tabbatar da hanyar da'awar mai aiki da ƙa'idodin cancanta don aikace-aikacen da suke niyya.",
+      "Yi la'akari da abubuwan ƙarfafawa a matsayin na musamman ga aikin da lokaci. Idan wani kamfen yana gudana, ya kamata a sanar da cikakkun bayanansa daban daga takardun tsarin fasaha tare da bayyana kwanaki, ƙa'idoji, da sharuɗɗan rarrabawa."
+    ]
+  },
+  "architecture/lend-spoke": {
+    "meta": {
+      "title": "Bako na Baya",
+      "description": "Yadda Lend Spoke ke karɓar kadarorin mai bayar da rance kuma ya tura su ta hanyar Hub zuwa kasuwannin aro na LP da jingina."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "capital-entry-point",
+        "title": "Babban Ƙofar Shiga"
+      },
+      {
+        "id": "risk-adjusted-yield",
+        "title": "Ribarsa Bisa Hadarin"
+      },
+      {
+        "id": "dynamic-risk-controls",
+        "title": "Kula da Hadari Mai Gudana"
+      }
+    ],
+    "strings": [
+      "Bako na Baya",
+      "Yadda Lend Spoke ke karɓar kadarorin mai bayar da rance kuma ya tura su ta hanyar Hub zuwa kasuwannin aro na LP da jingina.",
+      "Bayanin Gabaɗaya",
+      "Babban Ƙofar Shiga",
+      "Ribarsa Bisa Hadarin",
+      "Kula da Hadari Mai Gudana",
+      "Jari na Bada",
+      "Masu bayar da rance suna kawo manyan kadarori kamar ETH, BTC, da stablecoins ta hanyar Lend Spoke maimakon yin mu'amala da LP jinginar kai tsaye.",
+      "Hanya Ta Ta Cibiyar",
+      "Lend yana turawa gaba da wannan kudin shiga cikin Hub, inda daya daga cikin matakan ajiyar kudi zai iya tallafawa kasuwannin aron bashi da yawa masu jingina LP.",
+      "Arziki Ara Naƙiyoyi",
+      "Aro Spokes sannan a jawo daga liqudity na Hub yayin da ake kiyaye ƙimar LP, sarrafa likwidasiyo, da kuma sarrafa haɗarin kasuwa na musamman da aka haɗa a cikin kowace spoke.",
+      "Haɗin tafkin da sauya ma'aunin kayan ajiya",
+      "Yawan kasuwanci da samar da kuɗin hukumar da aka aiwatar",
+      "Bambancin farashi tsakanin kadarorin da aka haɗa",
+      "Sauye-sauyen yanayin tashin hankali da daidaiton tsari",
+      "Zurfin ruwa da ake da shi yayin rushewar damuwa",
+      "Matsayin shigar mai bashi wanda ke motsa jarin mai kaya zuwa Cibiyar don amfani da kasuwannin aro da ake tallafa wa LP.",
+      "Lend Spoke shine hanyar shigar babban birni ga masu bada lamuni. Masu ajiya suna samar da kadarori kamar ETH, BTC, da manyan stablecoins anan, sannan wannan ruwa ana tura shi cikin Hub don Borrow Spokes su iya bayar da lamuni akan goyon baya LP jingina ba tare da neman masu bada lamuni su yi tunanin dabarun matsayin AMM ba.",
+      "Wannan rabuwa an yi shi da gangan. Hanyar mai ba da rance tana da alaƙa da samar da kadarorin da za a iya ba da rance kuma samun ribar ɓangaren ba da rance, yayin da Ƙungiyoyin Masu Akarin Rance ke da aikin ƙwarai na LP ƙimar, yarda, binciken lafiya, da ƙa'idodin sayarwa ga kowace dangi mai jinginar da aka jera.",
+      "Matsayi a cikin tsari:",
+      "Lend Spoke yana amincewa da bayar da jari. Borrow Spokes suna kiyaye haɗarin musamman na LP a kowanne kasuwa, don haka wani tafkin bashi ɗaya ba ya buƙatar samfurin jinginar duniya ɗaya.",
+      "Ajiyar mai bayar da bashi na zuwa ta hanyar Lend Spoke farko, sannan su motsa zuwa cikin rukunin ajiya na Hub da aka raba. Wannan na nufin ba lallai ne a rarraba babban jari a cikin tafkin guda ɗaya lokaci guda ga kowanne kasuwa da aka tallafawa ba LP, ko da yake ƙa'idojin bayar da bashi a ɓangaren mai aro suna ci gaba da kasancewa daban.",
+      "A farkon rayuwar tsarin aiki, ana iya ƙara ruwa na Hub ta hanyoyin aron kuɗi Aave v4. A hankali, ajiyar Lend Spoke na iya zama babban ɓangare na babban jarin rance na tsarin aiki.",
+      "LP jinginar kudi ba ajiyar kaya ne da ke tsaye ba. Yayin da aro yake bude, matsayin da ke ƙarƙashin zai iya ci gaba da samun kuɗin ciniki, kuma wannan yana da mahimmanci ga yadda ake tsara bangaren aro. Saboda haka, tsarin baya ɗaukar kowanne LP kamar wani ƙididdigar mutu kawai da ke motsawa da farashin token kawai.",
+      "Wannan bambanci yana shafar ɓangaren bayar da lamuni ma. Sharuɗɗan bashi na iya nuna cewa wasu LP kasuwanni suna da halayen ƙirƙirar kuɗi da warwarewa waɗanda suka bambanta da jinginar da ba ta samar da kuɗi ba, kuma Aave v4 kayan aikin ƙarin haɗari na iya bayyana waɗannan bambance-bambancen idan manufofi suna ba da izini. Gaskiyar ribar mai bayar da lamuni har yanzu tana dogara ne akan tsarin aiki na yanzu da yanayin kasuwa, ba akan wani zato na dindindin daga wannan shafin ba.",
+      "Ga masu bayar da bashi:",
+      "ajiya ta hanyar bashi ta asusun Lend Spoke wanda aka yi ƙarƙashin gurbin LP wanda ƙimar dawowarsa, tsarin lafiya, da hanyoyin kashewa duk an bayyana su a cikin Borrow Spokes.",
+      "Bangaren ba da rance yana dogara da bangaren mai karɓa ya kasance cikin samfurin haɗari wanda zai iya motsawa tare da kasuwa. Saitunan salo na dindindin LTV kaɗai ba su isa ga jingina LP ba, don haka tsarin zai iya amsawa ga canje-canje a tsarin tafkin, girma, bambanci, tashin hankali, halayen peg, da zurfin warwarewa yayin da waɗannan yanayi ke canzawa.",
+      "A yanayin damuwa, iyaka da sauran hanyoyin sarrafawa na iya ƙara ƙarfi don kare ruwa na mai bayar da aron. A yanayin kwanciyar hankali, za a iya daidaita waɗannan hanyoyin sarrafawa cikin iyakokin manufofi da aka amince da su. Maƙasudin ba shine ci gaba da daidaitawa saboda kansa ba, amma don tabbatar da cewa tsarin bayar da aro ba a tilasta masa ya ɗauki kasuwa mai canzawa kamar babu abin da ya canza ba.",
+      "Alamomi da ka iya sanar da sabuntawar haɗari",
+      "Babban jari na mai ba da bashi yana bi hanya guda, amma kasuwanni LP ba su da irin haɗarin guda. Borrow Spokes na iya kiyaye takamaiman sigogi na kasuwa a gida, wanda ke ba iyalai daban-daban LP damar aiki a ƙarƙashin saituna daban-daban ba tare da lalata ƙwarewar mai ba da bashi ba."
+    ]
+  },
+  "architecture": {
+    "meta": {
+      "title": "Tsarin Ƙa'idar - Barnar Ƙarfi",
+      "description": "Ara tsarin Spoke don aro mai goyan bayan LP, ciki har da hanyoyin mai aro, hulɗa da Hub, da alhakin jinginar gefen spoke."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "user-experience",
+        "title": "Kwarewar Mai Amfani"
+      },
+      {
+        "id": "example-flow",
+        "title": "Misalin Gudana"
+      },
+      {
+        "id": "three-tier-architecture",
+        "title": "Tsarin Ginshiƙi Uku"
+      },
+      {
+        "id": "data-flow",
+        "title": "Gudanar da Bayanai"
+      },
+      {
+        "id": "spoke-responsibilities",
+        "title": "Ayyukan da aka ba wa harsashi"
+      },
+      {
+        "id": "hub-role",
+        "title": "Aave v4 Matsayin Hub"
+      }
+    ],
+    "strings": [
+      "Tsarin Ƙa'idar - Barnar Ƙarfi",
+      "Ara tsarin Spoke don aro mai goyan bayan LP, ciki har da hanyoyin mai aro, hulɗa da Hub, da alhakin jinginar gefen spoke.",
+      "Bayanin Gabaɗaya",
+      "Kwarewar Mai Amfani",
+      "Misalin Gudana",
+      "Tsarin Ginshiƙi Uku",
+      "Gudanar da Bayanai",
+      "Ayyukan da aka ba wa harsashi",
+      "Aave v4 Matsayin Hub",
+      "Ara Spoke",
+      "Matsayin aiwatarwa na fuskantar mai aro wanda ke karɓar LP jingina, yana auna haɗari, kuma yana aro daga ƙarfafa kuɗi na Hub.",
+      "The Borrow Spoke shine wurin da matsayi LP ya zama mai amfani a matsayin jinginar kudi. Yana ɗaukar kulawa da matsayi da ake tallafawa don lissafi, yana karanta bayanan da ake bukata don fahimtar wannan matsayi, yana kimanta shi a ƙarƙashin ka'idodin hasashen ja da haɗarin spoke, kuma yana bayyana ƙarfin aron da aka samu ga hanyar mai aro.",
+      "Wannan yana sanya Borrow Spoke ya bambanta sosai da murfin jinginar gama gari. Dole ne ya fahimci yadda aka gina LP da aka jera, wane ƙima za a iya dawo da shi a lokacin tsanani, yadda za a kiyaye lafiyar cikin lokaci, da kuma wane hanyar sayar da kaya ya dace idan asusun ya daina cika buƙatun tsaron spoke ɗin.",
+      "Yankin aiki:",
+      "LP jinginar kaya yana bambanta da kadarorin tsaye, don haka Rukunin Ara yana canza haɗin tafkin, iyakar farashi, kudade, da yanayin kasuwa zuwa sigogi na bashi da ƙa'idodin lafiya don kasuwannin da yake jera. Rukunin Ba Lamuni yana kula da shigar da jari. Rukunin Ara yana kula da LP ɗaukar nauyi, sa ido, da lalacewa don kasuwannin sa na kansa.",
+      "Ruwan Hayar",
+      "Masu aron kudi suna hulɗa da wani fuska ɗaya mai fuskantar reshe ga duk tsawon rayuwar asusun: amince da ajiya LP jinginar, duba ƙarfin da ake da shi, ɗaukar bashi, biya ragowar lamuni, da karɓar kuɗin sabis lokacin da kasuwa ta ba da dama. Fuskar na iya kasancewa daidai ko da lokacin da tsarukan LP na asali suka bambanta, saboda reshen yana ɗaukar sarrafa musamman ga AMM.",
+      "Yanayin ma'amala:",
+      "aikace-aikace ya kamata su bayyana sabbin abubuwan da suka shafi lafiyar kudi, tasirin iyakar aron kudi, da yanayin jinginar kaya tare da ma'amala domin mai aro ya ga haɗarin bayan-aiki maimakon ya fassara shi daga baya.",
+      "Yanayin aikin mai karbar bashi na yau da kullum:",
+      "Mataki na 1: Ajiya ta Farko",
+      "Mai aron kudi yana ajiyewa matsayin LP da aka amince da shi a cikin Borrow Spoke. Matsayin yana ci gaba da kasancewa a cikin AMM, amma yanzu spoke ɗin yana rikodin shi a matsayin jingina kuma yana fara bibiyar bayanan da ake bukata don kimantawa da lafiyar sa.",
+      "Mataki na 2: An Ƙididdige Ƙarfin Lamuni",
+      "The Borrow Spoke yana sake gina matsayin, yana ƙididdige farashin fuskantar asalin, yana amfani da abin da ya dace na haɗin gwiwar jinginar, sannan yana amfani da duk wani maganin haɗari na musamman ga rijiya. Abubuwan da ke fitowa daga wannan tsarin sune iyakar aron da aka nuna ga asusun.",
+      "Mataki na 3: Ara Samfuran Dukiya da yawa",
+      "Mai aro yana jan kadarori bisa ikon da reshen ya amince da shi. Bayan mai aro ya aiwatar, reshen yana sabunta wakilcin bashi na asusun kuma yana sake ƙididdige lafiyar ta amfani da waɗannan ƙa'idodin kasuwa iri ɗaya da suka amince da jinginar.",
+      "Mataki na 4: Ƙara Ƙarin Jari",
+      "Ana iya ƙara ƙarin wuraren da aka amince da su LP a baya. Ana tantance kowane sabon matsayi ƙarƙashin jerin wuraren, farashi, da ƙa'idodin haɗarin na reshe kafin a haɗa gudummawar sa cikin jimillar ƙarfin aiki.",
+      "Hanyar mai aro tana da sauƙi a fahimta idan ka raba wanda ke fara aikin, wane mataki yake fassara LP jinginar, da wane mataki yake samar da kuɗi:",
+      "Sama: Masu aro",
+      "Masu aro suna kiran reshe don ajiye LP jinginar kudi, aro kudade, biya bashi, da karɓar kuɗaɗen aiki. Daga hangen nesa na su, reshe shine hanyar shiga aiki don asusun.",
+      "Tsakiyar: Ara Fadace (Avana)",
+      "Wannan mataki yana fassara bayanan matsayi na AMM zuwa yanayin bashi. Yana sarrafa kulawar LP, yana lissafin hadarin musamman ga matsayi, yana tabbatar da duba lafiya, kuma yana tsara hanyar sayar da dukiya idan jinginar ba ta goyi bayan bashi ba.",
+      "Ƙasa: Aave v4 Hub & Babban Birni da Aka Jagoranta",
+      "Hub shine tushen raba kudi da kuma matakin lissafin da ke ƙasa da spoke. Kudaden da aka jagoranta ta Lend-Spoke da sauran tushen Hub da aka kafa suna ba da kuɗin da Borrow Spoke ke ba da izini.",
+      "Babban hanyar bayanai tana gudana daga LP jihar zuwa lissafin faɗin magana zuwa ayyukan ruwa na Hub. A aikace yana kama da haka:",
+      "LP Manajan Matsayi yana canja wurin jinginar zuwa Rassa Mai Karɓa",
+      "- Kafar tana adana tunatarwar matsayi, tana rike bayanan da take bukata, sannan tana fara amfani da wannan yanayi don kimanta kima da lura da lafiya.",
+      "Masu aro suna ja kadarori ta hanyar Hanyar Aro",
+      "- Da zarar asusun yana da damar amfani, reshen zai nemi ruwa daga ɗaya ko fiye da Hubs da aka saita.",
+      "Bashi ana wakilta shi a matsayin hannun jari na bashi",
+      "- Farashin musanya yana haɗuwa ƙarƙashin tsarin kuɗin ruwa da aka saita yayin da ƙafar ke kiyaye yanayin bashi na musamman ga mai aro da jinginar a cikin daidaito.",
+      "Ana yin sallama lokacin da ake bukata",
+      "- Hubs, Avana nodes na rushewa, ko masu rushewa na waje na iya sa Borrow Spoke ya motsa LP zuwa hanyar da ta dace ta warwarewa kuma ya biya bashi ta hanyar tsari na rushewa da ya dace.",
+      "Tattaunawar Hub",
+      "Arziki:",
+      "Borrow Spoke yana fitar da kiran zana wa Hub lokacin da mai aron kudi ya bude ko ya tsawaita bashi",
+      "Biya:",
+      "mai aro yana fitar da kira na dawo wa Hub lokacin da aka biya bashi",
+      "Binciken Lafiya:",
+      "Hub yana kiran Borrow Spoke's",
+      "samiBayananHadinGwiwa",
+      "don ɗaukar ƙimar jinginar LP na batun yanzu",
+      "Rarrabawa:",
+      "Idan haɗakar haɗarin magana ya wuce iyaka, Hub ɗin na iya kiran",
+      "maganceRufewa",
+      "Sashi",
+      "Alhaki",
+      "A aro Tiben (kowane AMM)",
+      "Yana kiyaye rikodin matsayin, jimillar jingina USD, da bashi USD na wannan AMM iyali, kuma yana bayyana",
+      "samiJimillarMaiAmfani(user)",
+      "Mai Haɗa Ƙarshen Dukiya",
+      "Yana gudanar da tara hukuncin kudi, sassauta hankali, da tsauraran lalacewa ga Borrow Spoke ba tare da tilasta kowanne LP tsarin ta hanyar wata hanya ta gama-gari ta lalacewa ba.",
+      "Ayyukan LiquidationAdapter",
+      "aiwatarDaHukunci(user)",
+      "softUnwind(maƙoƙi, maxUsd)",
+      "- yana aiwatar da raguwar wani bangare, yana tattara kudaden shiga, yana musanya idan an buƙata, kuma yana biya bashi har zuwa adadin da aka nema",
+      "share da mai amfani",
+      "Abubuwan da suka faru: Tara Hukunci, Sake Sakin Laushi An Aiwana, An Aiwana Lalata Mai Tsanani",
+      "The Borrow Spoke ba shi da riƙon ajiyar mai bayar da bashi a kansa. Yana dogara ga Hub don haɗin kuɗi, lissafin ajiya, da gefen takardar-balance na aron kuɗi, yayin da spoke ke mai da hankali kan yanke shawarar haɗarin takamaiman jingina.",
+      "Samar da Jari",
+      "Kayan aiki kamar USDC, DAI, da ETH za su iya shiga ta hanyar matakan babban birni da aka haɗa da Hub, ciki har da Lend Spoke. Hub yana sarrafa ruwan pool ɗin da aka raba da lissafinsa, yayin da Borrow Spoke ke yanke shawarar wane ɓangare na wannan ruwan zamantakewa asusun da aka tallafa wa LP zai iya samun damar amintacce.",
+      "Layin Bashi",
+      "Hub ɗin yana ba kowace Rassa Mai Arziki layin bashi wanda ke iyakance yawan ruwan kuɗi na haɗin gwiwa da wannan rassa zai iya cirewa. Wannan yana kiyaye musamman aikin bada lamuni na LP ba tare da mika ingancin babban jari na rukunin ajiya na haɗin gwiwa ba.",
+      "Abubuwan Lafiya Masu 'Yanci",
+      "Mai amfani da LP jinginar a cikin ƙungiyoyi da yawa na Lamuni yana da wani al'amari na lafiya a kowace ƙungiya. Ragowar a kasuwa ɗaya ba ta ceton ƙarancin a wani ba ta atomatik, wanda ke ɗauke da haɗari ga kasuwar da ta ƙirƙire shi."
+    ]
+  },
+  "architecture/platform-fees": {
+    "meta": {
+      "title": "Kudin Dandalin",
+      "description": "Doka kan kudin aiki don Avana hanyoyin haɗin, gami da yadda kudaden haɗin ke bambanta da tattalin arzikin tsarin, yadda ake bayyana su, da yadda ake tabbatar da tsarin da ake amfani da shi a yanzu."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "interface-vs-protocol",
+        "title": "Fuskar Mai Amfani da Tsarin Hanyar Sadarwa"
+      },
+      {
+        "id": "disclosure",
+        "title": "Bayyanawa"
+      },
+      {
+        "id": "treasury-usage",
+        "title": "Amfani da Ma'ajiyar Kudi"
+      },
+      {
+        "id": "integration-notes",
+        "title": "Bayanan Hadewa"
+      }
+    ],
+    "strings": [
+      "Kudin Dandalin",
+      "Doka kan kudin aiki don Avana hanyoyin haɗin, gami da yadda kudaden haɗin ke bambanta da tattalin arzikin tsarin, yadda ake bayyana su, da yadda ake tabbatar da tsarin da ake amfani da shi a yanzu.",
+      "Bayanin Gabaɗaya",
+      "Fuskar Mai Amfani da Tsarin Hanyar Sadarwa",
+      "Bayyanawa",
+      "Amfani da Ma'ajiyar Kudi",
+      "Bayanan Hadewa",
+      "Manufar kuɗin matakin fuska da jagorar bayyana ga Avana na gaba da saman ayyuka.",
+      "Wannan shafi yana magana ne akan manufofin fuska, ba akan yadda aron ke aiki a cikin kwangiloli na asali ba. Avana na iya cajin kudaden gaba ko na sabis a kan manyan fuskar hukuma, amma waɗannan cajin sun bambanta da dokokin jingina, masu hasashen farashi, da na rushewar tsarin.",
+      "Daidai ƙimar kuɗaɗe, ƙyaututtuka, da matsayin shirin aiwatarwa su ne saitunan aiki kuma ya kamata a tabbatar da su a cikin na'urar aiki kai tsaye ko kayan sakin kafin dogaro da su.",
+      "Manyan kwangilolin Avana suna kula da karɓa na LP, ƙarfin aron kuɗi, da halayen likwidoshi. Kuɗin haɗin gwiwa, idan an kunna su, suna saman waɗannan kwangilolin a matsayin ƙa'idar kasuwanci ta gaba-gaba ba wai a matsayin canji ga injin aron kuɗi ko haɗari ba.",
+      "• Tattalin arzikin yarjejeniya yana ƙayyade tara bashi, kula da jingina, da sakamakon warwarewa.",
+      "• Kudaden dubawa zaɓi ne na aiki da aka haɗa da takamaiman gaba ko hanyar sabis.",
+      "• Hade-haden kwangila kai tsaye na iya bin wasu tsammanin kuɗi daban da na hukuma UI.",
+      "Dole ne a nuna kowace kudin haɗin gwiwa a fili kafin sanya hannu domin masu gine-gine da masu amfani su iya bambanta ta daga kudin gas, kudin musayar, da tasirin bashi ko rushewar matakin tsarin.",
+      "Bayyanawa mai kyau ya kamata ya bayyana tushen kuɗin, ko zaɓi ne ko na musamman ga dubawa, da inda ake tura ribar.",
+      "Idan ana karɓar kuɗin haɗin gwiwa, yawanci suna ba da kuɗi ga ayyukan samfur kamar kayan aiki, sa ido, aikin tsaro, rubuce-rubuce, da goyon baya. Gwamnati na iya tsarawa ko sake duba waɗannan manufofin lokaci zuwa lokaci.",
+      "Amfani da Ma'ajiya ya kamata a wallafa shi a matsayin rahoton aiki, ba a ƙayyade shi daga tsarin jinginar da tsarin ba.",
+      "• Masu gine-gine su tabbatar da manufofin kudin yanzu kafin bayar da farashin ga mai amfani na ƙarshe.",
+      "• Guji saka fata-fatan kuɗin haɗin fuska kai tsaye cikin haɗin tsarin idan ba a ƙaddamar da sigar manufofin ba.",
+      "• Lokacin yin rubuce-rubucen haɗin kai, a raba tsarin kuɗin daga ƙarfin aron kudi da ƙa’idar sayar da kaya."
+    ]
+  },
+  "getting-started/borrow-assets": {
+    "meta": {
+      "title": "Arziki Bashi",
+      "description": "Yadda aro ke aiki akan LP jinginar a cikin Avana, daga binciken ƙarfafa gefen magana har zuwa likiditi na Hub da tabbatar da lafiya bayan aro."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "borrow-checks",
+        "title": "Binciken Bashi"
+      },
+      {
+        "id": "health-check",
+        "title": "Duba Lafiya"
+      },
+      {
+        "id": "internal-accounting",
+        "title": "Lissafin Cikin Gida"
+      },
+      {
+        "id": "borrowable-assets",
+        "title": "Kadarorin da za a iya aro"
+      },
+      {
+        "id": "borrowing-power",
+        "title": "Ƙarfin Ƙarabawa"
+      }
+    ],
+    "strings": [
+      "Arziki Bashi",
+      "Yadda aro ke aiki akan LP jinginar a cikin Avana, daga binciken ƙarfafa gefen magana har zuwa likiditi na Hub da tabbatar da lafiya bayan aro.",
+      "Bayanin Gabaɗaya",
+      "Binciken Bashi",
+      "Duba Lafiya",
+      "Lissafin Cikin Gida",
+      "Kadarorin da za a iya aro",
+      "Ƙarfin Ƙarabawa",
+      "A aro bisa haɗin ƙarfin waɗanda aka amince da matsayi LP yayin da Cibiya ke samar da matakin ruwa na haɗin kai.",
+      "Karɓar aron yana farawa ne kawai bayan Borrows Spoke ya riga ya amince da kuma ƙima matsayi LP a cikin asusun. A wannan lokacin ba mai amfani yake tambayar tsarin ya sake yin ƙirƙirar ba daga farko ba. Suna tambayar yin amfani da wani ɓangare na damar aron da spoke ɗin ya riga ya gane.",
+      "Domin aro ya yi nasara, dole ne wanda ke magana ya tabbatar cewa har yanzu akwai isasshen damar saura, asusun dole ne ya ci gaba da kasancewa lafiya bayan an kara sabon bashi, kuma Hub din dole ne a zahiri ya samu dukiyar da aka nema don amfani da ita.",
+      "Muhimmi:",
+      "cin rance yana haifar da bashi wanda yake karuwa a lokaci. Iyawa na iya canzawa tare da yanayin kasuwa, don haka samun kariya mai aminci na da mahimmanci ko bayan an samu nasarar rance.",
+      "Binciken matsayi da mallaka:",
+      "maƙalar tana tabbatar da cewa matsayi har yanzu suna na mai aro, har yanzu ana gane su ta asusun, kuma har yanzu suna cikin saitin jinginar da aka amince da shi.",
+      "Binciken ƙarfi:",
+      "bashi da aka nema ana gwada shi da ragowar ƙarfin lamuni gaba ɗaya na mai amfani a cikin wannan Rarraba Lamuni.",
+      "Duba ruwa da iyakar cibiyar:",
+      "ko da har an samu isasshen jingina, buƙatar na iya kasa idan Hub bai da isasshen kuɗi ko idan iyakokin matakin kadarori ko matakin tsarin sun hana ƙarin aro.",
+      "Binciken lafiya bayan aro:",
+      "Binciken lafiya ba dokar gajeriyar hanya ta daban ba ne. Yana amfani da hanyar kimantawa da saitunan haɗari guda ɗaya da ke sarrafa abubuwan jinginar da cancantar yin rushewa. Karɓar bashi yana faruwa ne kawai idan asusun har yanzu yana da isasshen ƙimar jinginar da aka daidaita bayan an ƙara ƙarin bashi.",
+      "healthFactor = darajarAjiyarDaAkaGyara / bashinDaBa aBiyaBa",
+      "Darajar jinginar da aka daidaita ta riga ta haɗa da ƙimar ƙididdiga mai hankali LP, abubuwan jinginar, da ƙididdigar haɗarin matakin tafki. Duba",
+      "Abubuwan Lafiya",
+      "Abubuwan Bada Bashi",
+      "Rabo na bashi:",
+      "Zana cibiyar:",
+      "Bashin Spoke yana neman dukiyar daga Hub ne kawai bayan spoke ta kammala binciken jinginar, iyawa, da lafiya.",
+      "Sabunta jiha:",
+      "mai amfani yana karɓar dukiyar da aka aro, kuma reshen yana rikodin yanayin bashi da aka samu don duk binciken lafiya na gaba, biyan kuɗi, da tsarin sassauta su duka su danganta da asusun da aka sabunta ɗaya.",
+      "Kayayyakin da za a iya aron su suna daidaitawa a matakin Hub. Ba su da mallakar dindindin na jingina kanta. A aikace, yawanci a fara da manyan kudaden stablecoins da sauran kayayyakin ruwa kafin a fadada saitin.",
+      "Duba saitin aikace-aikacen ko na’urar haɗi don samun cikakkun kayan da ake iya arowa a yanzu.",
+      "Ƙarfin aron kuɗi shine jimillar gudummawar matsayi LP da aka amince da su a cikin ɗayan Hanya na Arziki. Ba a ba shi wata tafki a cikin ƙididdiga kawai, kuma ba lambar asusu guda ɗaya ce da ba ta da alaƙa da matsayi na ainihi ba.",
+      "Dokar aiki:",
+      "ko da kusa ka ci bashi har zuwa iyakar karfin, kaɗan ne sarari da kake da shi don motsin farashi, tsananin canje-canje, da rage ƙimar da za a iya dawo da ita.",
+      "An ba da shawarar:",
+      "Tsarin Ƙarshewa"
+    ]
+  },
+  "getting-started/claim-lp-fees": {
+    "meta": {
+      "title": "Kira LP Kuɗaɗe",
+      "description": "Ikirarin ya tara kuɗaɗen LP a cikin Avana ba tare da sassauta cikakken asalin LP ba, muddin asusun ya ci gaba da kasancewa lafiya bayan ikirarin."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "how-it-works",
+        "title": "Yadda Yake Aiki"
+      },
+      {
+        "id": "health-checks",
+        "title": "Binciken Lafiya"
+      },
+      {
+        "id": "fee-accounting",
+        "title": "Lissafin Kuɗi"
+      },
+      {
+        "id": "key-benefits",
+        "title": "Manyan Amfanin"
+      }
+    ],
+    "strings": [
+      "Kira LP Kuɗaɗe",
+      "Ikirarin ya tara kuɗaɗen LP a cikin Avana ba tare da sassauta cikakken asalin LP ba, muddin asusun ya ci gaba da kasancewa lafiya bayan ikirarin.",
+      "Bayanin Gabaɗaya",
+      "Yadda Yake Aiki",
+      "Binciken Lafiya",
+      "Lissafin Kuɗi",
+      "Manyan Amfanin",
+      "Karɓi kuɗin kuɗaɗen da ba tare da rufe matsayin jinginar ba, muddin asusun har yanzu yana wuce gwaje-gwajen lafiya bayan kuɗaɗen sun fita.",
+      "Avana yana ɗaukar babban ruwa da kuɗaɗen da aka tara a matsayin sassa daban-daban na matsayi ɗaya na LP. Wannan rarraba shine abin da ke sa yiwuwa a sami kuɗin shiga ba tare da lallai a rushe babban ruwan da ake amfani da shi a matsayin jingina ba.",
+      "Aikin karɓar kudi har yanzu yana shafar jihar jingina, don haka ana bincikensa kamar kowane aiki na daban da ke cire ƙimar da aka gane daga asusu. Ba kawai maɓallin jin daɗi bane da aka sanya a saman tsarin aikin.",
+      "Tsarin yana amfani da hanyar tattara kuɗi da ta dace da wuri don matsayi LP. Ga matsayi masu mayar da hankali kan ruwa, hakan na iya kama da kiran nau'in tattarawa da ke barin babban jari a wuri. Ga LP masu musanyawa, ana amfani da hanyar karɓar kuɗi ta wurin lokacin da wurin ya bayyana ɗaya.",
+      "Muhimmin ƙaƙƙarfan ƙa'idar matakin yarjejeniya yana da daidaito a cikin nau'ikan LP: yi da'awar kawai sashen kuɗin, ci gaba da aikin matsayin babban abu idan zai yiwu, kuma daidaita matsayin sakamakon komawa cikin Borrow Spoke.",
+      "Binciken Magana na Bashi yana duba lafiya game da ƙarƙashin ƙarfin kuɗi saboda kuɗaɗen da aka tara har yanzu na iya ƙidayar zuwa ga ajiyar abin jingina da aka amince da shi har sai an cire su daga matsayin.",
+      "Idan cire ƙimar kuɗin da ake ikirarin zai bar asusun kusa da ko ya wuce iyakar lamuni da aka yarda, ya kamata a toshe hanyar ikirarin har sai an rage bashi ko an ƙara ƙarin jingina.",
+      "Oracle yana fitar da babban kudi na musamman daga kudaden da aka tara don haka samfurin bashi zai iya bibiyar su a gefe guda maimakon yin kamar LP shine ɗaya ɗimbin adadin alamar.",
+      "Wannan rarraba lissafin ma yana da mahimmanci a lokacin shari'ar rufe kasuwanci, inda ake iya amfani da kudaden da aka tara kafin tsarin ya tilasta sakin babban jari LP na ruwa.",
+      "Masu Bada Farashi",
+      "Tsarin Ƙarshewa",
+      "Ana iya samun kuɗaɗen da aka samu ba tare da rufe matsayin jingina gaba ɗaya ba",
+      "Irin wannan injin haɗarin wanda ke ƙayyade farashin LP kuma yana hana da'awar kuɗin fitar da yawa daga darajar"
+    ]
+  },
+  "getting-started/manage-loans": {
+    "meta": {
+      "title": "Sarrafa Bashi",
+      "description": "Sarrafa bashi mai buɗewa bisa LP na jingina a Avana ta hanyar lura da lafiya, sabunta matsayi cikin kulawa, da kuma kasancewa cikin iyakokin spoke da Hub."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "borrowing-more",
+        "title": "Karɓar Ƙari"
+      },
+      {
+        "id": "monitoring-health",
+        "title": "Kula da Lafiya"
+      },
+      {
+        "id": "operational-control",
+        "title": "Kula da Aiki"
+      },
+      {
+        "id": "position-changes",
+        "title": "Canje-canje na Matsayi"
+      },
+      {
+        "id": "key-constraints",
+        "title": "Manyan Takunkumi"
+      }
+    ],
+    "strings": [
+      "Sarrafa Bashi",
+      "Sarrafa bashi mai buɗewa bisa LP na jingina a Avana ta hanyar lura da lafiya, sabunta matsayi cikin kulawa, da kuma kasancewa cikin iyakokin spoke da Hub.",
+      "Bayanin Gabaɗaya",
+      "Karɓar Ƙari",
+      "Kula da Lafiya",
+      "Kula da Aiki",
+      "Canje-canje na Matsayi",
+      "Manyan Takunkumi",
+      "Gudanar da aron bude yana nufin ɗaukar jinginar, bashi, da jihar wurin a matsayin matsayi ɗaya na rayuwa maimakon ayyuka daban-daban.",
+      "Bashi mai rai Avana yana ci gaba da motsawa ko da mai karbar bashi bai yi komai ba. LP canje-canje a cikin kaya, biyan kuɗi yana tarawa, kasuwanni suna sake farashi, kuma iyakar ruwa a Hub na iya canzawa. Kyakkyawan sarrafa bashi yana nufin bin waɗannan abubuwan dake motsi tare maimakon kallon adadin bashi kaɗai kadai.",
+      "A karɓi rance ƙari zai yiwu ne kawai idan Reshen Bashi har yanzu yana nuna ƙarfin da ba a yi amfani da shi ba bayan sake ƙima na matsayin yanzu kuma Cibiyar har yanzu za ta iya samar da kayan da aka nema.",
+      "Biyan rance kashi-kashi yana motsawa a cikin akasin hanya. Yana rage bashi nan take, yana inganta lafiya, kuma sau da yawa yana ƙirƙirar sararin da ake buƙata don ayyuka na gaba kamar cire kuɗi, sake tsara, ko maye gurbin jinginar.",
+      "Lafiya:",
+      "ƙimar jinginar da aka daidaita tana nan a sama da bashi cikin sauƙi, tana barin sarari don motsin farashi na yau da kullum da karkatar matsayi.",
+      "Jerin Kallo:",
+      "asusun har yanzu yana wuce duba, amma ragowar kari yana fara zama kaɗan. Wannan shi ne lokaci na biyan bashi, ƙara amincewar jingina, ko rage haɗari kafin yanayi ya ƙara tsananta.",
+      "Mai iya cirewa ko mayar da ruwa",
+      "bashin ya kusanci ko ya wuce iyakar aro da aka yarda, don haka an ba da izinin tsarin sayar da dukiya ya karɓi iko.",
+      "Don ma'anar canonical, yi amfani da",
+      "Abubuwan Lafiya",
+      "Biya wani ɓangare na bashi don gina ƙari",
+      "Ƙara ƙarin jinginar da aka amince da ita LP zuwa Wurin Ara ɗaya",
+      "Karɓi kuɗaɗen da aka tara ne kawai idan asusun har yanzu yana wucewa gwaje-gwajen lafiya bayan ƙarɓar da'awa",
+      "Cire ko rage girman jinginar kawai idan asusun da ya rage yana cikin koshin lafiya",
+      "Matsayin ruwa mai ƙarfi na iya buƙatar sake tsara ko maye gurbinsa yayin motsin farashin kasuwa. Matsayin da za a iya musanya LP na iya a daidaita ko juya shi cikin saitin jinginar da aka goyi baya.",
+      "Tsarin bai ɗauki waɗannan motsi a matsayin gyare-gyare na kyan gani ba. Duk wani canji da ke canza bayyana LP ana turƙasa shi ta hanyar shigarwa ɗaya, kimantawa, da gwaje-gwajen lafiya da ake amfani da su don ajiya da aro.",
+      "Canjin jingina ba zai iya barin sauran bashin ya wuce iyakar ƙarfin sandar da aka yarda ba",
+      "Sabbin mukamai ko maye gurbin dole ne su kasance cikin wurin da aka amince da shi",
+      "Ayyukan aro har yanzu suna dogara ne da kayan kuɗi na Hub da iyakokin aiki",
+      "Riƙe",
+      "Tsarin Ƙarshewa",
+      "Abubuwan Bada Bashi"
+    ]
+  },
+  "getting-started": {
+    "meta": {
+      "title": "Farawa - Ajiya LP",
+      "description": "Koyi yadda matsayin da aka tallafa LP ke shiga Avana a matsayin jingina da yadda kowanne matsayin da aka amince da shi ke fara ba da gudummawa ga iyawar aro a cikin Spoke na Bashi."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "deposit-flow",
+        "title": "Gudanar da Ajiya"
+      },
+      {
+        "id": "technical-details",
+        "title": "Bayanan Fasaha"
+      },
+      {
+        "id": "supported-lp-tokens",
+        "title": "Nau'ikan Matsayi LP da Aka Taimaka"
+      },
+      {
+        "id": "after-deposit",
+        "title": "Bayan Ajiyar"
+      }
+    ],
+    "strings": [
+      "Farawa - Ajiya LP",
+      "Koyi yadda matsayin da aka tallafa LP ke shiga Avana a matsayin jingina da yadda kowanne matsayin da aka amince da shi ke fara ba da gudummawa ga iyawar aro a cikin Spoke na Bashi.",
+      "Bayanin Gabaɗaya",
+      "Gudanar da Ajiya",
+      "Bayanan Fasaha",
+      "Nau'ikan Matsayi LP da Aka Taimaka",
+      "Bayan Ajiyar",
+      "Matsayin tsayayyen ruwa",
+      "NFT mai iyaka ko manajan matsayi bisa LPs",
+      "Iyakar, matsayin alamar duba, da tarawa kuɗi sune ɓangare na hanyar ƙima.",
+      "Masu musanya masu ɗorewa ko masu alaƙa LPs",
+      "Raba wuraren ajiya masu daidaito da kuma haɗin kai sosai",
+      "Jerin kayan tafki da sassauta inganci suna motsa ƙarfin aron hankali.",
+      "Ƙididdiga da kadarorin da yawa LP",
+      "Keken da aka auna nauyi da tafkunan alamar da dama",
+      "Kowane iyali da ake tallafawa ana karɓa ne kawai ta hanyar samfuran tafkin da aka amince da su.",
+      "Ajiya LP",
+      "Ajiya yana motsa matsayi mai goyan baya LP ƙarƙashin kulawar faifan don haka Avana zai iya lissafa shi a matsayin jingina kuma ya mayar da shi zuwa ƙarfin aron.",
+      "Ajiya shine yadda matsayi LP yake zama mai amfani a ciki Avana. Hanyar Bashin tana karɓar kulawa da matsayi da aka tallafa, tana rubuta yanayin da take buƙata don kimantawa, kuma tana fara ɗaukar wannan matsayi a matsayin jinginar maimakon a matsayin dukiyar da ke cikin walat.",
+      "Wannan ba yana nufin ruwa zai bace daga wurin da ake kasuwanci na asali ba. Matsayin na iya ci gaba da kasancewa a cikin AMM yayin da reshe ke bibiyar bayyanarsa, yanayin kuɗin, da maganin haɗari don duba aro da sayarwa a gaba.",
+      "Muhimmi:",
+      "Avana baya ba da ikon yin aro kawai saboda akwai matsayi na LP. Dole ne matsayin ya kasance na iyali na rukunin da aka amince da shi, ya wuce gwaje-gwajen ƙima, kuma ya dace da tsarin haɗarin da ƙafar ke ciki a yanzu.",
+      "1. Canja wuri ko Amince da Matsayi LP",
+      "Mai amfani yana mika matsayi mai goyan baya LP ga Spoke na Ara da ya dace. Hanyar daidai tana dogara ne ko dai kudin jingina zai iya musanya ko matsayi ne na musamman, amma sakamakon tsarin iri ɗaya ne: dole ne Spoke ya sarrafa kadarar kafin ya iya ƙirga ta a matsayin jingina.",
+      "2. Tabbatar da Iyalin Tiben Ruwa",
+      "Sannan magana ta tabbatar cewa matsayin yana cikin rukunin da aka amince da shi ko samfuri. Wannan bincike a hakikanin gaskiya fakitin buƙatu ne: dole ne a sami rufe oracle, dole ne a sami tallafi don turawa da warwarewa, kuma dole ne wurin aikawa ya riga ya sami saitunan haɗari don wannan LP ɗangi.",
+      "3. Matsayin Matsayi na Cache",
+      "Da zarar an amince da matsayin, tsarin aiki yana adana yanayin da yake buƙata don sake gina matsayin daga baya. Wannan ya haɗa da bayanan da ake buƙata don sake gina haɗarin, sa ido kan kuɗaɗen da aka tara, da sabunta ƙarfin aro yayin da farashin ko yanayin tafkin ya canza.",
+      "4. Ƙara Matsayi zuwa Ƙimar Haɗin Gabaɗaya",
+      "Bayan an yi ƙimar abubuwa da ragin haɗari, matsayin yana ƙara gudunmawarsa ga jimillar ikon cin bashi na mai amfani a cikin wannan Reshe na Bashi. Lokacin da mai amfani ya ci gaba da aro, Cibiyar tana dogara da wannan sabuntawar ikon gefe na reshe.",
+      "Kimantawa mai lura da matsayi:",
+      "aikin ajiya da kansa ba ya kulle adadin bashi na dindindin. Ana sake ƙididdige ƙarfin aron kuɗi daga matsayin LP na ainihi ta amfani da tsarin oracle da samfurin ƙimar jingina a kowane lokaci da tsarin ke buƙatar sabon hangen nesa.",
+      "Kula da nau'in tsari:",
+      "wasu LP matsayi su ne token na musanya, yayin da wasu su ne matsayi na ruwa mai tarin yawa da ƙarin bayanan metadata. Sashin Lamuni yana kula da waɗannan bambance-bambancen riƙe don haka sauran tsarin bashi zai iya ci gaba da fahimtar su a hanya mai daidaito.",
+      "bayar da jinginar kaya ba yana nufin rufe LP ba. Hanyar cirewa an tanadar da ita don ayyukan masu amfani na gaba ko siyar da kaya, ba don ajiya na farko ba.",
+      "Iyali",
+      "Misalai",
+      "Bayanan Shiga",
+      "Taimakon kai tsaye na ainihi ana sarrafa shi ta hanyar jerin rukunin da aka amince da su. Duba",
+      "An yarda da LP Tafki",
+      "Kowane matsayi da aka amince da shi yanzu yana ba da nasa ƙimar ragin zuwa ƙarfin aro na matakin reshe",
+      "Babban LP yana ci gaba da aiki a cikin tafkin asali kuma zai iya ci gaba da tara kuɗi",
+      "Ainihin aron kudi har yanzu yana dogara ne akan ruwa na Hub, gwajin lafiya na spokes, da iyakokin kason jinginar",
+      "Mataki na gaba a cikin yanayin al'ada shi ne",
+      "Arziki Bashi"
+    ]
+  },
+  "getting-started/repay-loans": {
+    "meta": {
+      "title": "Biya Bashi",
+      "description": "Yadda biyan bashi ke rage bashi a Avana, yana sabunta rabon bashi, yana kammala a kan Hub, kuma yana share hanyar dawowa zuwa sakin jingina."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "repay-process",
+        "title": "Tsarin Biyan Bashi"
+      },
+      {
+        "id": "technical-details",
+        "title": "Bayanan Fasaha"
+      },
+      {
+        "id": "liquidation-scenario",
+        "title": "Lokacin da Biya ke da Gaggawa"
+      },
+      {
+        "id": "full-repayment",
+        "title": "Cikakken Biyan Kuɗi"
+      }
+    ],
+    "strings": [
+      "Biya Bashi",
+      "Yadda biyan bashi ke rage bashi a Avana, yana sabunta rabon bashi, yana kammala a kan Hub, kuma yana share hanyar dawowa zuwa sakin jingina.",
+      "Bayanin Gabaɗaya",
+      "Tsarin Biyan Bashi",
+      "Bayanan Fasaha",
+      "Lokacin da Biya ke da Gaggawa",
+      "Cikakken Biyan Kuɗi",
+      "Biya rance yana rage bashi, yana inganta lafiyar asusu, kuma yawanci shine hanya mafi tsafta don samun 'yanci akan jinginar da aka bayar.",
+      "Biya zai sauya bangaren bashi na asusun ba tare da sauya matsayin LP da kanta ba. Lokacin da bashi ya ragu, asusun yana kara lafiya nan take saboda irin wannan jinginar yanzu tana tallafawa karancin bashi.",
+      "Ba a buƙatar biyan cikakken kudin don biyan kudi ya shafi. Ko ragin ɗan kashi kaɗan na iya dawo da amfani lokacin da asusun ke tunkarowa iyakar sayarwa.",
+      "1. Zaɓi adadi:",
+      "biya wani ɓangare na kuɗi don samun ɗan ‘yanci na numfashi, ko biya cikakken adadin don barin bashin gaba ɗaya.",
+      "2. Bayar da kadarar bashi:",
+      "biyan bashin ana mayar da shi ta hanyar Borrow Spoke kuma ana amfani da shi don rage basussukan da ke kankarewa.",
+      "3. Sake ƙididdige lafiya:",
+      "da zarar an rage rabo na bashi, lafiyar asusun da sauran damar sa sun sabunta daga sabon ƙaramin matsayin bashi.",
+      "Biya a asali ragewar rabo na bashi ne. Ko mai amfani ya biya ta hanyar kayyade yawan kadarar ko, inda aka tallafa, yawan rabon, tsarin zai warware biyan cikin raguwar rabon bashin da ake da shi don haka kuma rage bashin.",
+      "Sashin Bashi na Borrow Spoke yana sabunta yanayin bashi na gida kuma yana warware biyan bashin dangane da lissafin ruwa na gefen Hub don haka tsarin raba ruwan jiki da kuma tsarin jinginar LP suna kiyaye hoto guda na asusun.",
+      "Lokacin da wani asusu ke kusa da lalacewa, biyan bashin yana daya daga cikin hanyoyin da sauri don inganta aminci saboda yana rage bashi kai tsaye. Ba ya dogara da jiran kasuwa ta farfado ko kan kawo karin jingina farko.",
+      "Da zarar an ketare iyakar warwatsewa, tushen",
+      "Tsarin Ƙarshewa",
+      "Da zarar bashi ya kai sifili, asusun ba ya buƙatar jinginar kaya don tabbatar da aro mai aiki. A wannan lokacin, matsayin LP da aka haɗa da wannan asusun zai iya komawa ga ikon mai amfani na al'ada ta hanyar hanyar cire jinginar kaya.",
+      "Dangane da aiwatar da jingina, sakin ƙarshe na iya faruwa ta atomatik ko ta hanyar wani aikin biye kai tsaye. Duba",
+      "Cire Bada Baya"
+    ]
+  },
+  "getting-started/withdraw-collateral": {
+    "meta": {
+      "title": "Cire Bada Baya",
+      "description": "Yadda LP jinginar ya tafi Avana bayan an biya bashi ko bayan sauran asusun ya ci gaba da wuce gwajin lafiya ba tare da matsayi da aka janye ba."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "withdrawal-process",
+        "title": "Tsarin Janyewa"
+      },
+      {
+        "id": "position-modifications",
+        "title": "Gyaran Matsayi"
+      },
+      {
+        "id": "after-withdrawal",
+        "title": "Bayan Janyewa"
+      }
+    ],
+    "strings": [
+      "Cire Bada Baya",
+      "Yadda LP jinginar ya tafi Avana bayan an biya bashi ko bayan sauran asusun ya ci gaba da wuce gwajin lafiya ba tare da matsayi da aka janye ba.",
+      "Bayanin Gabaɗaya",
+      "Tsarin Janyewa",
+      "Gyaran Matsayi",
+      "Bayan Janyewa",
+      "Jari na iya barin Bakin Lamuni ne kawai idan asusun zai iya ci gaba da tallafawa bashi bayan an cire ko rage matsayin da aka nema.",
+      "Cire jinginar kudi shi ne akasin ajiyar kudi, amma ba kawai canjin dukiya ba ne. Kafin tsarin ya saki matsayi LP, dole ne ya tabbatar cewa cire wannan jinginar ba zai bar bashin da ya rage a ƙarƙashin tsaro ba.",
+      "Biyan bashin gaba ɗaya shine hanya mafi tsabta saboda yana cire buƙatar jinginar gaba ɗaya. Amma Avana na iya kuma ba da damar wasu canje-canje na jinginar yayin da bashin yake buɗe idan asusun bayan canjin har yanzu yana wucewa a irin wannan ƙididdiga da binciken lafiya da ake amfani da su a ko'ina cikin tsarin.",
+      "1. Rage ko share bashi:",
+      "2. Sake lissafin ƙarfin aro:",
+      "Ma'aji ya sake lissafin asusun bayan cire matsayi da aka nema LP ko yin ƙananan girma ga shi, maimakon ɗaukar cewa tsohuwar ƙarfin har yanzu yana aiki.",
+      "3. Saki matsayin LP:",
+      "idan lafiyar bayan janyewa ta dace, tsarin zai dawo ko bude jinginar don haka mai amfani zai iya sarrafa shi a waje na reshen sake.",
+      "Ba kowanne canjin jinginar ba ne cikakken fita. Mai amfani na iya sauya girman matsayin LP mai jurewa, maye gurbin zangon ruwa na musamman, ko juya zuwa wani matsayin da aka amince da shi yayin da yake riƙe da bashin ɗaya a buɗe.",
+      "Wadannan canje-canjen sun dace ne kawai idan sabon ko ragowar jinginar har yanzu na cikin kundin da aka amince da shi kuma asusun da aka samu ya ci gaba da kasancewa sama da iyakar sayarwa bayan an aiwatar da canjin.",
+      "Matsayin LP ya koma ikon mai amfani na al'ada",
+      "Mai amfani zai iya ajiye shi a cikin rumbun kasa, sake tsara shi, ko fita daga ruwa gaba ɗaya",
+      "Ajiya LP"
+    ]
+  },
+  "integrations/allowed-pools": {
+    "meta": {
+      "title": "An yarda da LP Tafki",
+      "description": "Jerin amintattun da aka ayyana da tsarin duba shari'a don LP gidajen ajiya da Avana ke son karɓa a matsayin jingina."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "review-criteria",
+        "title": "Ka'idodin Bita"
+      },
+      {
+        "id": "pool-families",
+        "title": "Iyalan wurin wanka"
+      },
+      {
+        "id": "risk-application",
+        "title": "Aikace-aikacen Hadari"
+      },
+      {
+        "id": "integration-notes",
+        "title": "Bayanan Hadewa"
+      }
+    ],
+    "strings": [
+      "An yarda da LP Tafki",
+      "Jerin amintattun da aka ayyana da tsarin duba shari'a don LP gidajen ajiya da Avana ke son karɓa a matsayin jingina.",
+      "Bayanin Gabaɗaya",
+      "Ka'idodin Bita",
+      "Iyalan wurin wanka",
+      "Aikace-aikacen Hadari",
+      "Bayanan Hadewa",
+      "Tushen mai ɗorewa da alaƙa",
+      "Sau da yawa yana da sauƙin yarda lokacin da farashi yake tabbatacce, ana fahimtar halayen daidaitawa, kuma zurfin sassauta ya kasance mai ƙarfi.",
+      "Tukunyar mai canjin-farin jini na blue-chip",
+      "Ana iya tallafawa, amma yawanci tare da abubuwan jingina masu tsauri, duba kudi, da ƙa'idodin sayar da kaya mafi tsauri.",
+      "Matsayin tsayayyen ruwa",
+      "Bukatar kimantawa a matakin matsayi da kulawa sosai ga kewayon aiki, jari na gefe guda, da yanayin kuɗi.",
+      "Zane na al'ada ko na gwaji",
+      "Suna buƙatar tallafi na fili na oracle, kula da dukiya, da rufewar kudi kafin a iya ɗaukar su don jerin izini gaba ɗaya.",
+      "Tabbataccen rufin farashin waje don kadarorin asali",
+      "Isasshen zurfin tafki da hanyoyin fitarwa masu sahihanci yayin sayarwa",
+      "Ka'idojin karɓuwa masu bayyana don ƙa'idar iyali ko na harsashi LP",
+      "Yawan da ake yarda da shi, saurin canjawa, da tsarin daidaiton PEG",
+      "Tallafin aiki don yin jeri, sarrafa kuɗaɗe, da jagorancin batutuwan biyan kuɗi",
+      "Jerin izini da gwamnati ta sarrafa don tafkuna da LP iyalai Avana an shirya su don karɓa a matsayin jingina.",
+      "Avana yana karɓar LP kawai daga matattara ko samfura waɗanda aka riga aka bita kuma aka amince da su. Jerin izini yana wanzuwa saboda tallafin LP ba wai kawai batun alamar wurin taron ko tsarin token ba ne. Tsarin yana buƙatar isasshen bayani don ƙididdige matsayin, sarrafa lalacewa, da iyakance haɗarin da yake ɗauka.",
+      "Amincewar tafkin yana aiki tare da",
+      "Abubuwan Bada Bashi",
+      "Tsarin Hadarin",
+      "Jerin izini yana yanke shawarar ko rijiya za ta shiga cikin tsarin; abubuwan jingina suna tantance yawan ƙimar aron da kowace matsayin da aka amince da ita za ta iya bayarwa.",
+      "Wani tafki yana shiga jerin izni ne kawai idan tsarin zai iya amsa waɗannan tambayoyin na asali a kowane lokaci: shin zai iya ƙididdige matsayin, shin zai iya fitar da matsayin, kuma shin zai iya sa ido kan haɗarin a cikin samarwa.",
+      "Amincewar rijiya ba yana nufin wani matsayi zai samu kyakkyawan kulawar bashi ba. Bayan an amince da rijiyar, har yanzu kowane matsayi LP yana da ƙima a kansa, ana rage shi gwargwadon yadda ake kula da hadarinsa, sannan a ƙara shi zuwa ƙarfin aro na mai amfani a cikin Borrow Spoke.",
+      "Shi ya sa amincewar tafki da kimanta jingina suke da alaƙa sosai. Ana iya yarda da tafki ya zama lafiya isasshe don a amince da shi yayin da har yanzu yake buƙatar iyakokin hankali, ƙananan LTV, ko tsauraran kula da sayarwa idan ya fara aiki.",
+      "Masu gine-gine su kamata su yi tunani bisa shaci na amincewa na ruwa da jerin abubuwan da aka yarda musamman don tura su, ba kamar kowanne LP a wuri yana da 'yancin amfani kai tsaye ba.",
+      "Sabbin iyalan tafki sau da yawa suna buƙatar haɗin gwiwar aiki a fannin sarrafa oracle, tura likwidashi, iyakokin haɗari, da kuma duba kayan aiki kafin su zama lafiya a kunna su."
+    ]
+  },
+  "integrations/appkit": {
+    "meta": {
+      "title": "AppKit",
+      "description": "Jagorar mai haɓakawa zuwa wurin AppKit, mika abokin haɗin gwiwa, da yadda ake haɗa bashi na Avana a cikin samfurorin ɓangare na uku ba tare da matsar da tsarin haɗarin daga Avana ba."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "integration-model",
+        "title": "Samfurin Haɗin Kai"
+      },
+      {
+        "id": "partner-controls",
+        "title": "Kula da Abokin Hulɗa"
+      },
+      {
+        "id": "launch-notes",
+        "title": "Bayanan Kaddamarwa"
+      }
+    ],
+    "strings": [
+      "AppKit",
+      "Jagorar mai haɓakawa zuwa wurin AppKit, mika abokin haɗin gwiwa, da yadda ake haɗa bashi na Avana a cikin samfurorin ɓangare na uku ba tare da matsar da tsarin haɗarin daga Avana ba.",
+      "Bayanin Gabaɗaya",
+      "Samfurin Haɗin Kai",
+      "Kula da Abokin Hulɗa",
+      "Bayanan Kaddamarwa",
+      "Kamawa niyyar",
+      "AppKit yana dacewa inda masu amfani suka riga sun fahimci matsayinsu na LP, matsayin fayil ɗin su, ko yanayin musayar, don haka shigarwar aron tana bayyana kusa da niyyar da take akwai maimakon tilasta sabon tsarin.",
+      "Mika yarjejeniya",
+      "Abokin haɗin yana watsa walat da mahallin kasuwa cikin Avana. Ana iya buɗe tsarin aron da wannan mahallin tuni an saita shi maimakon tambayar mai amfani ya sake gina shi da hannu.",
+      "Tattalin arzikin abokin tarayya",
+      "Abokan hulɗa na iya amfani da tsarin samun kuɗi na tura abokan hulɗa, hanyar sadarwa, ko haɗaɗɗen tsarin, amma ba sa zama mai ba da lamuni ko injin haɗarin. Avana yana riƙe da bashi, haɗari, da biyan kuɗi.",
+      "Sanya shigar bashi kusa da matsayi LP ko duba fayil ɗin da mai amfani ya riga ya yarda da shi.",
+      "Kada a ji kamar an sake farawa ta hanyar ɗaukar aljihun kudi da yanayin kasuwa zuwa cikin aikin aro.",
+      "Bar haɗari da warwarewa a Avana. Kada a sake gina ƙimar magana ko ƙa'idar sayarwa a cikin UI na abokin haɗin gwiwa.",
+      "Yanke shawarar kwafi, wurin da za a sanya, da ƙuntatawa kafin a fara aiki saboda suna tsara haɗin kai, ba wai kawai matakin kyan gani ba.",
+      "Inda saman katin bashi ya bayyana a cikin samfurin",
+      "Wadanne sashe na masu amfani ke ganin wurin shiga aro",
+      "Nawa ilimi ko bayanin ke bayyana tare da mika aikin",
+      "Ko samfurin yana amfani da cikakken mika hannu na haɗe ko sauƙaƙan wurin shigar da ke adana mahallin",
+      "Yadda abokan hulɗa suke haɗa bashi da aka tallafa wa Avana LP yayin da Avana ke ɗaukar nauyin aron kuɗi, haɗari, da warwarewa.",
+      "AppKit yana nufin kayayyakin na uku da suka riga sun mallaki alaƙar mai amfani, kamar DEXs, walat, da manhajojin fayil na kasafin kuɗi inda matsayi LP ke riga ya bayyana. Samfurin abokin hulɗa yana tsara lokacin, yana kama mahallin, kuma yana yanke shawara inda shigarwar aro zata bayyana. Avana yana gudanar da ainihin hanyar lamuni.",
+      "Wannan shafin yana magana ne akan sanya, mika, da tsari na kaddamarwa. Abokin haɗin gwiwa yana da ikon saman mai amfani da rarrabawa. Avana yana da dokokin bashi, sashe, da ingantattun hanyoyin aminci a bayan tsarin.",
+      "AppKit ba ya tilasta wani samfurin gabatarwa guda. Abokan haɗin gwiwa na sarrafa wuraren shiga da yawan shawarwari da ke kewaye, yayin da suke barin yanke shawarar tsari a cikin Avana.",
+      "Bayanan Aiwana",
+      "Haɗaɗɗun abubuwa mafi kyau suna jin kamar ci gaba ne na tsarin samfurin da ke akwai, ba tsalle mai tsanani cikin wani manhajar aro da ba ta da alaƙa ba. Wadannan bayanan su ne tushen aiki na yin wannan mika hannu daidai.",
+      "Kaddamar da AppKit a matsayin aikin haɗin gwiwa, ba kawai sanya mahaɗi ba. Tabbatar da hanyar mai amfani, duba inda shigarwar take, kuma tabbatar cewa hanyar bashi ta Avana tana nan a sarari daga ramin abokin haɗin gwiwa inda alhakin ke canzawa.",
+      "Hakanan duba abin da ke faruwa lokacin da fuskar bashi ta boye, ko hanyoyin zurfi cikin tsarin aro suna da aminci, da kuma yadda ake sarrafa rashin cikakken bayani game da walat, kasuwa, ko jinginar."
+    ]
+  },
+  "integrations": {
+    "meta": {
+      "title": "Haɗin da ake tallafawa",
+      "description": "Jagorar fahimtar tura zuwa wuraren iyalai Avana na iya haɗawa da su, binciken da dole su wuce, da aikin bita da ake buƙata kafin kunna su."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "appkit",
+        "title": "AppKit"
+      },
+      {
+        "id": "venue-families",
+        "title": "Iyalan Wuri"
+      },
+      {
+        "id": "enablement-status",
+        "title": "Matsayin Kunna"
+      },
+      {
+        "id": "review-requirements",
+        "title": "Bincika Bukatu"
+      }
+    ],
+    "strings": [
+      "Haɗin da ake tallafawa",
+      "Jagorar fahimtar tura zuwa wuraren iyalai Avana na iya haɗawa da su, binciken da dole su wuce, da aikin bita da ake buƙata kafin kunna su.",
+      "Bayanin Gabaɗaya",
+      "AppKit",
+      "Iyalan Wuri",
+      "Matsayin Kunna",
+      "Bincika Bukatu",
+      "Wuraren mayar da hankali na ruwa",
+      "Wadannan wuraren suna bukatar kulawa a matakin matsayi saboda ƙimar LP tana dogara ne akan farashin yanzu, iyakar aiki, da yadda aka raba kayan cikin matsayi.",
+      "Tushen wurare masu musanya, masu ɗorewa da nauyi",
+      "Wadannan wurare suna bayyana ERC-20 LP hannun jari waɗanda za a iya sake ginawa darajarsu daga daidaitattun ajiyar ruwa, farashin waje, da tsammanin sassauta hankali.",
+      "Zane-zane na al'ada ko na tsarin mai ɗaure",
+      "Ana iya tallafawa tsarin tafkin ci gaba ne kawai idan Avana yana da model na oracle mai kyau, hanyar tsaron ajiya, da kuma mai haɗawa na sayar da kaya don ƙirar.",
+      "Jagorar tunani game da rukunin wuraren da za a iya aiki da su Avana da ƙofofin bita da za a bi kafin tallafi ya fara aiki.",
+      "Avana baya haɗa wurare kawai saboda suna da shahara ko suna bayyana LP alamomi. Taimako yana dogara ne akan ko tsarin aikin zai iya sake gina matsayi daidai, kimanta shi cikin hankali, kuma fice da shi cikin tsabta idan bukatar sayarwa ta taso.",
+      "Wannan shafin wani tunani ne na haɗa abubuwa, ba dashboard ɗin kaddamarwa kai tsaye ba. Don manufofin shiga tafki, duba",
+      "An yarda da LP Tafki",
+      ". Don hasashen kimanta ƙima, duba",
+      "Masu Bada Farashi",
+      "AppKit ita ce hanyar fuskantar abokan hulɗa don samfuran da suke son saka Avana bashi cikin tafiyar mai amfani da ke akwai maimakon tura masu amfani zuwa wani sabon tsari wanda ba shi da mahallin.",
+      "Karanta",
+      "AppKit jagorar mai haɓakawa",
+      "domin sarrafa abokan hulɗa, samfuran miƙa hannu, da bayanan ƙaddamarwa.",
+      "Ko wurin taro yana aiki a wani cibiyar sadarwa ya kasance shawarar tura shi ne, ba gaskiyar dindindin ta tsarin ba. Ana iya tallafawa nau’in wurin taro a cikin ƙa’ida amma har yanzu a kashe shi a wani takamaiman tura har sai an shirya dukkanin rufe oracle, hanyoyin rarraba kayan kasuwa, da ƙa’idodin haɗari.",
+      "Masu gini ya kamata su tabbatar da tsarin ƙaddamarwa na yanzu a cikin aikace-aikacen, bayanan sakin, ko rijistar kwangila da aka buga maimakon karanta wannan shafin a matsayin tsarin tallafi na ainihi.",
+      "• Wuri dole ne ya tallafa wa kimanta matsayi na masu tsattsauran ra’ayi daga farashin waje mai ƙarfi da sake ginin gwamnati da za a iya tabbatarwa.",
+      "• Ka'idar tana buƙatar hanyar warwarewa mai dogaro don kaddarar kudi, ciki har da tattara kuɗi da hanyar shiga cikin kadarar bashi.",
+      "• Zurfin tafki, haɗarin mai da hankali, zato na haɗin kai, da sa ido na aiki duka dole ne su dace da tsarin haɗari.",
+      "• Tallafin sabon wuri shawara ce ta shugabanci da haɗari, ba kawai sabuntawar fuska ko haɗa na'ura ba."
+    ]
+  },
+  "integrations/price-oracles": {
+    "meta": {
+      "title": "Masu Bada Farashi",
+      "description": "Yadda Avana Oracle ke ƙididdige farashin LP jinginar ta hanyar hanyoyin waje, sake ginawa na matsayi mai tabbas, da rangwamen darajar da za a iya farfado da ita."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "oracle-interface",
+        "title": "Fuskar Oracle"
+      },
+      {
+        "id": "multi-layer-architecture",
+        "title": "Tsarin Ginshiƙai da yawa"
+      },
+      {
+        "id": "dex-handling",
+        "title": "Magance Musamman na DEX"
+      },
+      {
+        "id": "twap-computation",
+        "title": "Lissafin TWAP"
+      },
+      {
+        "id": "safety-measures",
+        "title": "Tsaro & Hana Sarrafa"
+      },
+      {
+        "id": "configurable-parameters",
+        "title": "Sigogin da za a iya saita su"
+      }
+    ],
+    "strings": [
+      "Masu Bada Farashi",
+      "Yadda Avana Oracle ke ƙididdige farashin LP jinginar ta hanyar hanyoyin waje, sake ginawa na matsayi mai tabbas, da rangwamen darajar da za a iya farfado da ita.",
+      "Bayanin Gabaɗaya",
+      "Fuskar Oracle",
+      "Tsarin Ginshiƙai da yawa",
+      "Magance Musamman na DEX",
+      "Lissafin TWAP",
+      "Tsaro & Hana Sarrafa",
+      "Sigogin da za a iya saita su",
+      "Farashin kayan da ake amfani da su a asali",
+      "Rabuwar ajiyar wurin wanka ko kayan ajiya",
+      "Don haɗaɗɗiyar ruwa, alamar yanzu dangane da kewayon matsayi",
+      "Ko matsayin yana cikin kewaye ko mafi yawanci gefe guda",
+      "Saita farashin kadarorin da ke ƙarƙashin daga majiyoyi masu ƙarfi na waje",
+      "Fara daga tushen waje mai juriya ga kadarorin da ke ƙasa don haka jinginar ba ta gada duk hayaniya ko sauƙin sarrafa halin ainihin wurin tafkin.",
+      "Fitar da ƙimar LP cikin hankali",
+      "Sake gina daidaitattun LP ma'auni ko rarraba matsayi na ruwa mai zurfi daga ajiyar kudi, ruwa, zangon aiki, da kudade ta amfani da hanyar da za a iya tabbatarwa wadda reshe zai iya fahimta.",
+      "Ragewa ga asarar wucin gadi da giciye na fataucin likiditi",
+      "Rage alamar da aka sake ginawa zuwa ƙimar jinginar da za a iya dawo da ita wacce ke ɗaukar damuwa, jinkiri, da rashin cikakkiyar fita maimakon fansho mai tsabta a teburin NAV na ƙarya.",
+      "Bayyanar hula ta LP iyali da zurfin tafkin",
+      "Aiwatar da ƙuntatawa bisa ga iyali LP, ajin tafkin, da zurfin da ake da shi don kasuwanni masu siriri ko masu rikitarwa su karɓi iyakokin aro iri ɗaya da masu zurfi da masu sauƙi ba.",
+      "Kwashe bisa ga ƙimar dawo da za a iya dawo da shi, ba NAV mai fatan alheri ba",
+      "Yi amfani da ƙimar da za a iya cimma ta hanyar hanyar warwarewa lokacin bayar da ikon aro da yanke shawarar sayarwa, maimakon mafi kyawun ƙimar alamar.",
+      "Curve Tsayayye/Tsayayye ERC-20 LPs",
+      "Kayan bayanan stablecoin na waje + duba halin tafkin + tabbatarwa ta TWAP",
+      "Farashin waje yana ɗaure kadarorin yayin da ma'aunin tafkin da tarin kuɗi ke tantance ƙarancin ƙimar jinginar.",
+      "Uniswap V2 ERC-20 LPs",
+      "Chainlink + sake gina ajiyar + tabbatar da TWAP",
+      "Ana ba da ƙimar token na al'ada LP daga ma'auni na asali da aka sake gina, tare da yin amfani da TWAP a matsayin bincike na gabaɗaya mai juriya ga damben-hanci.",
+      "Uniswap V3 NFT LPs",
+      "Chainlink + rarrabewar matsayi + binciken tick/TWAP",
+      "Ana rarraba NFT ta hanyar ruwa, zangon aiki, da farashin yanzu, sannan a rage shi don darajar sayarwa mai dawowa.",
+      "Balancer Dukiya da yawa LPs",
+      "Chainlink + sake ginawa na kayan da aka auna",
+      "Taron alamar da dama suna amfani da farashin waje da ajiyar taron da aka rarraba don kimanta darajar jinginar mai taka tsantsan.",
+      "SushiSwap / Aerodrome",
+      "Observations daga tafkin suna tabbatar da ƙimar da aka sake gina kuma suna taimakawa wajen hana cin zarafi na ma'amala iri ɗaya a kasuwannin da ke da ƙarancin ruwa.",
+      "Chainlink + tabbacin TWAP bisa tubalin",
+      "Farashin waje yana ci gaba da zama ginshiƙi yayin da batutuwan da suka danganci toshe-toshe ke tabbatar da matsayin matsayi da warware tsammanin.",
+      "Yadda yarjejeniya ke juya matsayin matsayi LP zuwa ƙima masu dacewa da bashi na jinginar kaya.",
+      "Avana Oracle ba kawai binciken farashin guda ba ne. Shi ne hanyar kimanta da ke canza matsayin LP zuwa wani abu da tsarin bashi zai iya amfani da shi don lissafin jinginar kudi. Don yin hakan cikin aminci, yana haɗa bayanan kasuwa na waje, sake gina LP a hanya ta tabbatacce, da rage darajar dawowa bisa hasashen warwarewa maimakon dogaro da yanayin AMM na asali kadai.",
+      "Takamaiman abubuwan da ake sakawa sun dogara da iyalin jinginar. Ana sake ginawa fungible LP daga ma'auni, ajiyar kudi, da kudade, yayin da dole ne a warware ƙayyadadden ruwa ta hanyar kewaye, ruwa, da yanayin farashin yanzu. A dukkan lokuta, sakamakon ana turawa ta tsarin darajar da za a iya farfado da ita don haka aron yana amfani da adadi mai hankali maimakon zato na fita ba tare da matsala ba.",
+      "Wannan bambanci tsakanin darajar alama da darajar da za a iya dawo da ita shi ne abin da ke sanya oracle mai amfani ga bayar da rance maimakon kawai don nazari. ERC-20 LPs, NFT LPs, da tafkin dukiyar da yawa za su iya raba ɗaya babban fuska kawai saboda kowace rukuni tana wucewa ta nata bincike da dubawa na kariya kafin darajar ta kai ga reshe.",
+      "Fuskar Oracle: IOracle",
+      "Buƙatar Spokes na cin bashi yana buƙatar fuskar kwangila ɗaya kodayake LP tsarin suna bambanta sosai a tsakanin DEXs. `IOracle` yana samar da wannan siffar gama-gari kuma yana raba babban ƙima, kuɗaɗen da aka tara, da ajiyar tanadi don haka daga baya tsarin haɗarin baya buƙatar hango wace ɓangare na matsayi yake dubawa:",
+      "aiki samunKima(uint256 tokenId, adireshin kadara)",
+      "ra'ayi na waje yana dawowa (",
+      "uint256 cikakkenKima,",
+      "uint256 ƙimar kuɗi,",
+      "uint256 ƙimar ajiya",
+      "cikakken ƙima",
+      "Kimar da aka sake gina na babban kuɗin ruwa kafin a yi amfani da gyare-gyaren matsin lamba na karshe.",
+      "ƙimar kuɗi",
+      "Kimar kudaden da matsayi ya tara wanda za a iya gane tare da babban jari.",
+      "ajiyeKima",
+      "Sashe mai ajiya da aka ajiye don oracle, sassauta, da ma'ajiyar haɗarin tsarin aiki.",
+      "Fuskar tana ɓoye aikin DEX na musamman daga ɓangaren magana. Wannan yana ba da damar mai kiran guda ɗaya ya sarrafa ERC-20 LPs, NFT LPs, da rumbunan kayan haɗin mai yawa ta hanyar ɗaya tsarin dawo da sakamako yayin da har yanzu tana ba da sarari don kulawa mai hankali, musamman ga nau'in jinginar kayan da ke bayan fage.",
+      "LP kimantawa hanya ce ta matakai maimakon karanta farashin wuri guda. Hanyar allahn tana bi ta wadannan matakai:",
+      "Wurare daban-daban suna bayyana sassa daban-daban na jiha, kuma annabcin yana amfani da waɗannan bayanai ta hanyoyi daban-daban. Muhimmin abu shi ne cewa bayanan na musamman ga wuri suna taimakawa wajen sake gina matsayi da tabbatar da farashin; ba a karɓa su da idon rufe kawai a matsayin alamar jingina kai tsaye ba.",
+      "DEX / LP Nau'i",
+      "Tushen Oracle",
+      "Bayanan kula",
+      "Lissafin TWAP ta DEX",
+      "TWAPs sune shigarwar tantancewa. Suna zaune tare da farashin kadarorin waje da sake gina matsayi na tabbatacce don duba ko matsayin tafkin da ake lura da shi ya dace da hanyar cirewa mai inganci. Suna taimakawa wajen ƙin amincewa da karkacewar da ake zargi ko wucin gadi, amma ba sa maye gurbin tsarin oracle mafi fadi da kansu.",
+      "Uniswap V2 & SushiSwap",
+      "Uniswap V3",
+      "Binciken da ya san matsayi yana haɗa da zangon allura, rarraba ruwa, da kuɗaɗen da aka tara don haka tsarin zai iya tabbatar da bayyanar token da aka raba na kowane NFT LP maimakon ɗaukar NFT a matsayin akwatin baki.",
+      "Balancer",
+      "Ana haɗa lura da tikiti masu nauyi tare da nauyin rijiya don tabbatar da rarrabuwa na abubuwa da yawa na kayan ajiya kafin orakula ya sanya ƙimar jinginar da ta fi taka tsantsan.",
+      "Curve",
+      "Ana amfani da lura da Stablecoin musamman don gano bayanan da suka daina aiki, karkatar da ajiya, da rashin daidaituwa na ɗan lokaci yayin da farashin waje ke ci gaba da kasancewa babban maƙasudi.",
+      "Mai sayar da kaya Joe & Aerodrome",
+      "Hadin gwanin lura da farashi a cikin taga na minti 30-60 yana taimakawa tabbatar da yanayin rijiyar ƙarancin ruwa kuma yana ƙin kirkiro irin wannan ciniki yayin duba jinginar kuɗi.",
+      "Iyakar Bada Baya",
+      "Ana iya dakatar da sabbin rance ko lalacewa lokacin da bayanan tabbatarwa daga tafkin suka yi nisa sosai daga farashin tunani na waje fiye da",
+      "babbanBambanci",
+      "matsakaicinBambancinFarashiNaPool",
+      "Wannan yana tabbatar da cewa yanayin da tafkin ke nuna ya dace da farashin token da ke ƙasa kuma yana iyakance rashin daidaito na gaggawa na tafkin ko cin zarafin na'urar hasashen cikin ma'amala ɗaya.",
+      "Iyakar Bude Sha'awa",
+      "Hadin kai ana iyakance shi ta LP iyali, zurfin tafki, da rikitarwar jingina don haka kasuwanni masu siriri suna samun iyakokin aro mafi ƙarfi.",
+      "Gyaran Gashi Bayan Warkewa",
+      "Majagaba yana rage ƙima ta ƙayyadadden ƙima LP don rashin ɗorewa, yin ficewar slippage, da ƙididdigar ficewar tashin hankali kafin a ba da kowace ƙarfi ta aro.",
+      "Oracle Sentinel",
+      "Oracle Sentinel yana sa ido kan lafiyar bayanai da shigarwar tabbatarwa kuma zai iya kunna aikin maye gurbin lokacin da bayanai suka tsufa, sun lalace, ko ba su daidaita da binciken matsayin-matsayi ba.",
+      "Sigogin Oracle da za a iya daidaita su",
+      "An saita saitunan orakul na musamman na tafkin kowane token ta hanyar",
+      "saitaTsarinToken",
+      ". Teburin da ke ƙasa yana nuna ƙayyadaddun abubuwan da ke bayyana yadda za a duba token da tafkin da ya haɗa da shi:",
+      "Sigogi",
+      "Bayani",
+      "Alamar",
+      "Adireshin alamar jingina",
+      "Mai haɗaV3Fuska",
+      "Abincin Chainlink don alamar da ke ƙarƙashin",
+      "matsakaicinShekarinCiyarwa",
+      "Matsakaicin shekarun da ake yarda da shi don ciyarwar Chainlink",
+      "Biliyar",
+      "Takamaiman ramin DEX (Uniswap V3, Balancer, Curve, da sauransu)",
+      "daƙiƙa biyu",
+      "Taga don lissafin TWAP",
+      "Hali",
+      "Yanayin aiki na Oracle (na al'ada/na madadin)",
+      "Mafi yawan bambanci da aka yarda tsakanin farashin DEX da na tabbatarwa",
+      "A aikace, halayen oracle yana fitowa ne daga haɗin farashin kadarorin waje, LP tsarin sake gina bayanai, maganin ƙimar da za a iya dawo da ita, da saitunan kowane token da aka saita ta"
+    ]
+  },
+  "integrations/router-contract": {
+    "meta": {
+      "title": "Kwantaragin Na'urar Routa",
+      "description": "Madauwari na aiki don na'urar Avana da matakin mai haɗawa, ciki har da abin da na'urar ke tsara, abin da ba ta yanke shawara ba, da yadda ake wallafa tallafin tura na'urar."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "role-in-system",
+        "title": "Matsayi a Tsari"
+      },
+      {
+        "id": "adapter-model",
+        "title": "Samfurin Adafta"
+      },
+      {
+        "id": "supported-operations",
+        "title": "Ayyukan da ake goyon baya"
+      },
+      {
+        "id": "deployment-status",
+        "title": "Matsayin Aiwatarwa"
+      }
+    ],
+    "strings": [
+      "Kwantaragin Na'urar Routa",
+      "Madauwari na aiki don na'urar Avana da matakin mai haɗawa, ciki har da abin da na'urar ke tsara, abin da ba ta yanke shawara ba, da yadda ake wallafa tallafin tura na'urar.",
+      "Bayanin Gabaɗaya",
+      "Matsayi a Tsari",
+      "Samfurin Adafta",
+      "Ayyukan da ake goyon baya",
+      "Matsayin Aiwatarwa",
+      "Hadu da kiran ajiya, cire kudi, da tarin kuɗi na wurin zuwa cikin tsari mai tsabta na fuska",
+      "Daidaita matakan sassauta ko tsara hanyoyi da ake bukata don aiwatar da rushewa",
+      "Tallafa wa sabunta matsayin da ake sarrafawa kamar canje-canje na kewaya ko kwararar hijira idan akwai mai daidaita wurin taro",
+      "Bayyana fuskar haɗin gwiwa mai daidaito ba tare da zama haɗarin ko hukumar ƙimar ƙa'idar ba",
+      "Matakin haɗin aiki don ayyuka na musamman ga wurare, kiran na'ura mai dacewa, da tallafin tsarin jigilar da ya shafi cire kudi.",
+      "Na'urar sadarwa mataki ne na aiwatarwa, ba wurin da Avana ke yanke haɗari ba. Yana wanzuwa ne don daidaita ayyuka na musamman ga wurare domin tsarin ba zai buƙaci yada ajiyar kuɗi, cire kuɗi, kuɗin aiki, da hanyoyin warwarewa a kowane tsarin da ya shafi LP jinginar da ke akwai ba.",
+      "Karanta wannan shafi a matsayin kayan aiki na aiki. Don ingantacciyar tsarin gine-gine, fara da",
+      "Ara Spoke",
+      "Tsarin Ƙarshewa",
+      "Guraben daban-daban AMM suna bayyana hanyoyi daban-daban na shiga, fita, da tattara kuɗi. Na’urar haɗa hanyar sadarwa tana ba Avana matakin haɗin gwiwa ɗaya ga waɗannan hanyoyin aikin don haka masu gina ba sa tilas su ɗauki kowane wuri kamar cikakken tsarin na musamman.",
+      "Ba a kamata a taɓa ɗaukar hanyar na'ura mai ba da sigina a matsayin wurin da ake yanke shawara kan abubuwan haɗin gwiwa, binciken lafiya, ko cancantar sassauta bashi. Wadannan suna nan a matsayin abubuwa masu damuwa na tsari a sashin Bashin Spoke, Hub, tsarin hasashen oracle, da tsarin haɗarin.",
+      "Duk iyalin wurin taron da aka tallafa wa ya kamata ya sami na'urar haɗawa da wurin taro wadda ta san yadda ake karɓar kuɗi, cire ruwa, da bayyana ayyukan da tsari ke buƙata don wannan tsarin LP. Wannan yana kiyaye halayen musamman na wurin taro daga ɓoyuwa maimakon yaduwa cikin duk hanyar lambobin da ke fuskantar mai amfani da fuskantar lalacewa.",
+      "Tallafin na'ura mai haɗawa yana da muhimmanci ne kawai idan ya dace da tallafin ƙima da lalacewa. Sabuwar na'ura mai haɗawa da kanta ba ta sa wuri ya zama lafiyayye don karɓar jingina ba.",
+      "Adireshin na'ura mai ba da hanya, rajistan na'ura mai haɗawa, da hanyoyin sadarwa da aka kunna su bayanan tura su ne. Ya kamata a wallafa su tare da sakin su maimakon a hango su daga takardu. Wannan shafi an yi niyya ya guji adireshin wurin wasa da alkawuran fitowar hasashe.",
+      "• Tabbatar da adireshin musamman na sarkar daga rajistar kwangila da aka buga ko bayanan sakin.",
+      "• Tabbatar cewa kayan haɗin wurin taron da kake dogara da shi an kunna shi a kan tsarin da aka nufa.",
+      "• Yi la'akari da tallafin na'urar haɗa hanyar sadarwa a matsayin dogaro na aiki, ba a matsayin shaidar cewa an yarda da rijiya don jinginar ba."
+    ]
+  },
+  "introduction/glossary": {
+    "meta": {
+      "title": "Jerin Kalma",
+      "description": "DeFi kundin ma'anoni don Avana - ma'anar Spoke, Hub, LP NFT, alamar jingina, rabon bashi, lalata, oracle, da sauran sharuɗɗan tsarin."
+    },
+    "toc": [
+      {
+        "id": "core-concepts",
+        "title": "Mahimman Ra'ayoyi"
+      },
+      {
+        "id": "protocol-components",
+        "title": "Sassan Tsarin"
+      },
+      {
+        "id": "financial-terms",
+        "title": "Sharuddan Kuɗi"
+      },
+      {
+        "id": "risk-security",
+        "title": "Hadari & Tsaro"
+      },
+      {
+        "id": "metrics",
+        "title": "Ma'auni"
+      },
+      {
+        "id": "disclaimers",
+        "title": "Bayanan Ƙaryar"
+      }
+    ],
+    "strings": [
+      "Jerin Kalma",
+      "DeFi kundin ma'anoni don Avana - ma'anar Spoke, Hub, LP NFT, alamar jingina, rabon bashi, lalata, oracle, da sauran sharuɗɗan tsarin.",
+      "Mahimman Ra'ayoyi",
+      "Sassan Tsarin",
+      "Sharuddan Kuɗi",
+      "Hadari & Tsaro",
+      "Ma'auni",
+      "Bayanan Ƙaryar",
+      "Ara Spoke",
+      "Maganar mai karɓar bashi Avana tana karɓar jinginar LP, tana ƙididdige matsayi, tana bin bashi, kuma tana haɗa aro da sayarwa a kan ruwaɗin Hub.",
+      "Wurin shigar babban jari na mai ba da lamuni wanda ke tura kadarorin da aka kawo zuwa Hub domin Borrow Spokes su iya ɗaukar ruwan jari na haɗin gwiwa.",
+      "Haɗin kuɗin da aka raba a Aave v4 wanda ke sarrafa ruwa, ajiyar kuɗi, lissafin kuɗi, da haɗin gwiwar babban birnin tsarin duka a tsakanin rassan da aka haɗa.",
+      "Tsarin Hub-da-Spoke",
+      "Wani zane inda jari ɗaya ke zaune a Hub yayin da ƙa'idodin takamaiman jingina suke keɓewa a spokes. Avana yana amfani da wannan samfurin saboda LP jingina na buƙatar ƙimar wurin musamman da halayyar sayarwa.",
+      "Cibiyar Rushewa",
+      "Matsayin ruwa daga wani goyan baya AMM. Dangane da wurin, zai iya zama token ɗin LP mai musanya, NFT mai mayar da hankali kan ruwa, ko wani nau'in raba tafkin da aka amince da shi.",
+      "Abubuwan Amincewa",
+      "Kashi na darajar jinginar USD da za a iya ƙirga zuwa ƙarfin aron kuɗi. A kasuwannin LP, ana amfani da wannan a matakin matsayi maimakon ga haɗin gaba ɗaya.",
+      "Iyawar Bashi",
+      "Adadin da mai amfani zai iya aro a cikin Waya Ta Ara Bayan kowace matsayi da aka ajiye LP an kimanta, an daidaita haɗarin, kuma an ƙara zuwa jimillar ƙarfin mai amfani.",
+      "Ruwan Sha da Aka Yarda",
+      "Wani rijiya da aka amince da shi ta gwamnati wanda ke cika buƙatun karɓuwa kamar rufe oracle, zurfin likiditi, ingancin warwarewa, da dacewar magana.",
+      "Rance-da-Kimar (LTV)",
+      "Dangantakar aron kudi da ke hade da jingina bayan kimanta matsayin Avana da kuma amfani da matakan sarrafa haɗarin musamman na ruwan wukake.",
+      "Rukunin lissafin cikin gida da ake amfani da shi don bibiyar wajibai na masu aro yayin da riba ke tarawa a kan lokaci ba tare da sake rubuta dukkan ragowar bashi ba akai-akai.",
+      "Kudin ruwa da masu bashi ke biya akan basussukan da ke kankare. Yana nuna yanayin Hub na gama gari da kuma la'akari da haɗarin musamman ga LP.",
+      "Adadin Amfani",
+      "Adadin aron kuɗi dangane da samuwar da ake da ita a cikin matakin babban birnin da ke haɗe da Hub ɗin da ya dace.",
+      "Karin Hadarin",
+      "Sashin haɗarin musamman da aka sanya a saman yanayin aro na asali don nuna bayanin jinginar da ake ba da kuɗi a kai.",
+      "Abubuwan Ajiya",
+      "Sashin tattalin arzikin yarjejeniya ko kwararar sha'awa da aka tanada ga tsarin maimakon a watsar da shi gaba ɗaya zuwa masu samar da ruwa.",
+      "Abubuwan Lafiya",
+      "Dangantaka tsakanin ƙimar jinginar da aka daidaita da bashi da ke wanzuwa a cikin Rassa na Bashi. Idan ta faɗi ƙasa sosai, matsayin yana kusantar cancantar likidation.",
+      "Tsarin biyan bashi akan matsayin da ba shi da lafiya mai ɗauke da LP, saki isasshen jinginar don dawo da ƙarfin biyan bashi, da kuma mayar da duk wani ƙima da ya rage bayan warwarewa.",
+      "Karin Kuɗin Rufe Harkoki",
+      "Karin kuɗin batsewa da ake biya wa ɓangaren da ke aiwatar da warwarewa, yana biya musu diyya saboda amfani da babban kuɗi, rikitarwar hanyar, da haɗarin aiwatarwa.",
+      "Injin kimanta ƙimar Avana na jingina LP. Yana haɗa farashin kadarori na waje, sake gina matsayin LP, da tsare-tsaren ƙimar da za a iya farfado da ita.",
+      "Darajar da za a iya murmurewa",
+      "Adadin da tsarin ke ganin za a iya samu cikin gaskiya yayin sake warwarewa mai wahala bayan an la'akari da karkatarwa na sayarwa, yanayin tafkin, da matakan kariya na hadari.",
+      "Wani canji da aka sarrafa na matsayi wanda aka jingina LP, kamar sake daidaitawa ko canjin iyaka, wanda ana yarda da shi kawai idan matsayinsa da aka samu har yanzu ya cika binciken lafiya na tsarin.",
+      "Jimillar darajar kadarorin da aka bayar a matsayin LP jinginar ko babban jari a fadin abubuwa Avana da aka hada.",
+      "Bashi da ake bi",
+      "Adadin da aka aro a halin yanzu bisa matsayin jinginar da aka amince da shi.",
+      "Amfani da Ara",
+      "Rabon tsarin samun kudin Hub da aka jawo ta masu aro.",
+      "Iyakar Ara Bashi",
+      "Bambanci tsakanin bashin da mai amfani ke da shi a yanzu da kuma ragowar damar aron kudi gaba ɗaya a cikin Ƙwararren Ara.",
+      "Darajar Ragowa",
+      "Duk wani ƙima da ya rage a cikin matsayi bayan an biya bashi, ƙarin kudi na kakkabe, da kuɗaɗen aiwatarwa.",
+      "Amincewa da Tafkin",
+      "Dokar da ke cewa kawai tafkuna da aka amince da su a gaba za a iya karɓa a matsayin jinginar, tana iyakance haɗarin kasuwanni marasa tallafi ko waɗanda ba a kula da su sosai.",
+      "Gyaran Gashi Bayan Warkewa",
+      "Iyakar Bayyana",
+      "Iyakan haɗari waɗanda ke ƙayyade yawan abin da za a iya aro dangane da ƙungiyar tafki, nau'in jinginar, ko zurfin ruwa.",
+      "Mai Tsagewa na Wutar Lantarki",
+      "Wani iko na sarrafa haɗari wanda zai iya dakatarwa ko iyakance ayyuka lokacin da farashi, halayen kasuwa, ko dogaro da tsarin suka zama marasa daidaito ko marasa lafiya.",
+      "Tsaron Mulki",
+      "Saitin nazari, kulle lokaci, watsi, da rawar gaggawa da Tsarin Hadarin ke amfani da su don kiyaye canje-canjen ƙa’idodi cikin tsari.",
+      "Kariya daga maimaita shiga",
+      "Kariya a matakin kwangila wadda ke hana shigar wani tsarin aiki mai canza jiha kafin a kammala aiwatarwar farko.",
+      "Ma'anoni na al'ada don ƙayyadaddun ka'idoji da DeFi ƙamus da ake amfani da su a duk faɗin takardun.",
+      "LP & Magaji",
+      "Bashi & Sha'awa",
+      "Rufi",
+      "Oracle & Sauya",
+      "Babu Shawarar Zuba Jari:",
+      "Avana wata hanyar sadarwar software ce. Wannan takaddar ba ta zama shawarar saka jari ba.",
+      "Hadarin Asara:",
+      "Masu amfani za su iya rasa kuɗi ta hanyar rauni na kwangilar mai hankali, canjin kasuwa, tsarkakewa, ko karkatar da bayanan oracles.",
+      "Matsayin Dokoki:",
+      "Matsayin ƙa'ida na Avana da tokens ɗinsa (idan akwai) ba a tabbatar da shi ba kuma na iya bambanta bisa yanki.",
+      "Babu Garanti:",
+      "An bayar da software ɗin kamar yadda take ba tare da wani tabbacin kowane iri ba."
+    ]
+  },
+  "introduction/key-concepts": {
+    "meta": {
+      "title": "Muhimman Ra'ayoyi",
+      "description": "Fahimci manyan ka'idoji a bayan Avana, ciki har da halayen jinginar LP, kimanta abin da ya dace, aro daga Hub, da rushewa."
+    },
+    "toc": [
+      {
+        "id": "core-insight",
+        "title": "Babban Fahimta"
+      },
+      {
+        "id": "user-flow",
+        "title": "Samfurin Ara"
+      },
+      {
+        "id": "oracle-valuation",
+        "title": "Oracle da Kimantawa"
+      },
+      {
+        "id": "borrowing-process",
+        "title": "Iyawar Bashi"
+      },
+      {
+        "id": "health-monitoring",
+        "title": "Lafiya & Rarrabawa"
+      },
+      {
+        "id": "fee-collection",
+        "title": "Maganin Kudin"
+      }
+    ],
+    "strings": [
+      "Muhimman Ra'ayoyi",
+      "Fahimci manyan ka'idoji a bayan Avana, ciki har da halayen jinginar LP, kimanta abin da ya dace, aro daga Hub, da rushewa.",
+      "Babban Fahimta",
+      "Samfurin Ara",
+      "Oracle da Kimantawa",
+      "Iyawar Bashi",
+      "Lafiya & Rarrabawa",
+      "Maganin Kudin",
+      "Ra'ayoyin da sau da yawa suke bayyana a cikin takardun Avana na Borrow Spoke, kimantawa, aro, da warwarewa.",
+      "Matsayi na LP ba kawai alamar da ke da farashin waje ba ne. Matsayi ne na ainihi na ruwa wanda ƙimarsa ta dogara da kadarorin da ke ƙasa, haɗin gwiwar tafkin, tarin kuɗi, tsarin matsayi, da adadin da tsarin zai iya dawo da shi a gaskiya idan an buƙaci sayarwa.",
+      "Dalilin da ya sa wannan yake da muhimmanci:",
+      "Avana yana bayar da inshora ga kasuwanni LP tare da ƙa'idoji na musamman ga reshe da tafkin maimakon amfani da samfurin dukiya ɗaya ga dukkan LP.",
+      "Masu amfani suna ajiye matsayi LP da aka goyi bayan su cikin Borrow Spoke. Ana iya barin matakan su kasance masu aiki a cikin kwatance su yayin da tsarin ya ɗauki kulawa don ƙididdigar jingina.",
+      "An kima kowane matsayi da aka amince da shi LP bisa kansa. Bayan an yi amfani da abubuwan jingina da kuma kulawa da haɗarin rijiya, an ƙara gudummawar da aka rage darajarta zuwa ƙarfin aro a cikin wannan Rukunin Aro.",
+      "Lokacin da mai amfani ya aro, shafin yana ja ruwa daga Hub. LP haɗarin kasuwa yana nan a matakin shafin, yayin da lissafin babban jari da aka raba yana nan a Hub.",
+      "Avana yana kimanta LP jinginar kudi cikin taka tsantsan. Farashin kadarorin waje na nuna ainihin darajar abubuwan da ake da su, yayin da bayanan tafkin da matsayin matsayi ake amfani da su don sake gina fuskantar hadari maimakon dogaro da ƙidin AMM kai tsaye kawai.",
+      "Farashin kadarorin da ke ƙarƙashin su daga ingantattun hanyoyin waje",
+      "Rarraba kayan ajiyar tafki ko warware matsayin da ke cikin kewayo",
+      "Kudin da aka tara da aka gane daban daga babban jari na ruwa",
+      "Yanka gashi na dawowa don sassauta zamewa, asarar ɗan lokaci, da matsin lamba na kudi",
+      "Ƙarfin yana gina matsayi-matsayi a cikin Borrow Spoke. Avana baya manna ɗaya daga cikin manyan abubuwan gaba ɗaya a duk asusun ko a cikin kowace tafki a cikin spoke. Kowanne matsayi yana ba da gudummawa ne kawai bayan an yi amfani da nasa abubuwan jingina da kuma takamaiman kulawar tafki.",
+      "Cikakkun bayanai:",
+      "Abubuwan Bada Bashi",
+      "A Borrow Spoke yana kwatanta darajar jinginar da aka gyara da bashi da ake bin su. Idan farashin, binciken oracle, ko canje-canje na matsayi sun rage ragowar ajiyar sosai, asusun na iya shiga cikin yankin warwarewa.",
+      "Lafiya da rushewa duka suna dogara ne akan hanya ɗaya ta ƙima. Farashi, abubuwan jinginar kudi, da hanyoyin rushewa dole ne su kasance daidaitacce saboda a ƙarshe suna samar da lissafin iya biya ɗaya.",
+      "LP matsayi na iya ci gaba da tara kudaden ciniki yayin da ake amfani da su a matsayin jinginar kudi. Avana na iya gane waɗannan kudaden a cikin ƙididdiga, kuma, bisa ga binciken lafiya, ya bar masu amfani su karɓi su ba tare da ficewa gaba ɗaya daga babban LP matsayi ba.",
+      "Takardun da suka shafi:",
+      "Masu Bada Farashi",
+      "Kira LP Kuɗaɗe"
+    ]
+  },
+  "introduction": {
+    "meta": {
+      "title": "",
+      "description": ""
+    },
+    "toc": [],
+    "strings": []
+  },
+  "introduction/testnet-roadmap": {
+    "meta": {
+      "title": "Testnet & Taswirar Hanyar",
+      "description": "Jagorar aiki zuwa Avana gwaje-gwajen tura aiki da tsara taswirar hanya, don mahallin tantancewa maimakon ƙa'idodin tsarin gargajiya ko alkawuran ƙaddamarwa."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "testnet-scope",
+        "title": "Iyakar Gwajin Sadarwa"
+      },
+      {
+        "id": "how-to-evaluate",
+        "title": "Yadda Ake Kimanta"
+      },
+      {
+        "id": "roadmap-framing",
+        "title": "Tsarin Taswirar Hanya"
+      },
+      {
+        "id": "campaigns-and-status",
+        "title": "Kamfen da Matsayi"
+      }
+    ],
+    "strings": [
+      "Testnet & Taswirar Hanyar",
+      "Jagorar aiki zuwa Avana gwaje-gwajen tura aiki da tsara taswirar hanya, don mahallin tantancewa maimakon ƙa'idodin tsarin gargajiya ko alkawuran ƙaddamarwa.",
+      "Bayanin Gabaɗaya",
+      "Iyakar Gwajin Sadarwa",
+      "Yadda Ake Kimanta",
+      "Tsarin Taswirar Hanya",
+      "Kamfen da Matsayi",
+      "Shafin aiki don gwada Avana naɗaɗɗen ayyuka da kuma don karanta bayanan taswirar hanya tare da matakin hankali da ya dace.",
+      "Matsayin Testnet, hanyoyin sadarwa da ake goyon baya, da jerin hanyar taswirar jama'a suna canzawa cikin sauri fiye da takardun tsarin gine-gine. Wannan shafin yana akwai ne don masu gina tsarin su iya raba matsayin muhalli daga ƙirar tsarin da ta kware kuma su guji karanta harshen ƙaddamarwa kamar dai takamaiman bayani ne.",
+      "Yi amfani da takaddun haske da takaddun masu haɓaka na asali don ƙirar ka'ida. Yi amfani da wannan shafin don shirye-shiryen yanayi, iyakar gwaji, da mahallin sakin.",
+      "Gwajin aikawa na iya bayyana kawai wani ɓangare na cikakken ƙirar samarwa. LP iyalai, aro kadarori, rufin allahn tsinkaye, da kayan aikin cire kudi duk suna iya zama ƙasa ko a sauƙaƙe sosai a kan gwajin cibiyar sadarwa.",
+      "• Tabbatar da hanyar sadarwa mai aiki, rajistar kwangila, da saitin ruwan shakatawa da ake tallafawa don yanayin yanzu.",
+      "• Tsaftar kadarori da aka yi dariya da su, iyakance batun wurin taro, da rage tsarin aiki.",
+      "• Yi amfani da halayen testnet a matsayin muhalli na kimantawa, ba a matsayin alkawarin karshe na samarwa ba.",
+      "Hanyar tantancewa mafi amfani ita ce a ajiye mai cancanta LP, tabbatar da ƙimar tifa, lura da jimillar iyakar aron kudi, aro a kan liquidity na Hub, sannan a kalli yadda sa ido kan lafiya da biyan kuɗi ke tafiya a wannan asusun ɗaya.",
+      "Makullai, tambayoyi, ko sauran kamfen a kan gwajin aiki abubuwa ne na aiki. Ba su ne samfurin jinginar ba da kansa.",
+      "Harshe na taswirar hanya yana nuna shugabanci. Yana nuni zuwa ga samun rufin iyali mafi fadi, karfin tallafi na oracle, zurfin kayan aikin likidum, da kuma ingantaccen tsarin gudanar da haɗari. Ba a kamata a karanta shi a matsayin ranar ƙaddamarwa ta dindindin ko tabbacin ƙwararriyar hanyar sadarwa ba sai an sanar da wannan alkawari daban.",
+      "Karfafa masu aiki, shirye-shiryen maki, ko cikakkun bayanai na hanyar sadarwa ta musamman ya kamata su kasance a cikin takardun yakin neman zabe ko bayanan saki. Tsallake su daga shafukan tsarin aikin asali yana sa takardun masu haɓakawa su kasance masu ɗorewa lokacin da yakin neman zabe ko shirin saki ya canza."
+    ]
+  },
+  "legal/disclaimer": {
+    "meta": {
+      "title": "Bayani na Shari'a",
+      "description": "Avana sanarwar doka - sanarwa ta gaba ɗaya, ba shawarwarin kuɗi ba, haɗari, garantin, da iyakokin alhaki."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "general-disclaimer",
+        "title": "Gargadi na Gabaɗaya"
+      },
+      {
+        "id": "no-financial-advice",
+        "title": "Babu Shawarar Kudi"
+      },
+      {
+        "id": "risks",
+        "title": "Hadari"
+      },
+      {
+        "id": "no-warranties",
+        "title": "Babu Garanti"
+      },
+      {
+        "id": "limitation-of-liability",
+        "title": "Iyakan Nauyi"
+      },
+      {
+        "id": "related-policies",
+        "title": "Manufofi Masu Alaka"
+      }
+    ],
+    "strings": [
+      "Bayani na Shari'a",
+      "Avana sanarwar doka - sanarwa ta gaba ɗaya, ba shawarwarin kuɗi ba, haɗari, garantin, da iyakokin alhaki.",
+      "Bayanin Gabaɗaya",
+      "Gargadi na Gabaɗaya",
+      "Babu Shawarar Kudi",
+      "Hadari",
+      "Babu Garanti",
+      "Iyakan Nauyi",
+      "Manufofi Masu Alaka",
+      "Sanarwar doka da ke kula da amfani da tsarin aiki da takardun bayanai.",
+      "Muhimmi:",
+      "Da fatan za a karanta wannan sanarwar rashin alhaki da kyau kafin amfani da Avana. Ta amfani da tsarin, kuna amincewa cewa kun karanta, kun fahimta, kuma kun yarda da bin waɗannan sharuddan. Don cikakken bayani kan sharuddan, da fatan za a duba namu",
+      "Sharuɗɗan Sabis",
+      "Dokar Sirri",
+      "Wannan gargadi yana ƙara bayani kuma ya kamata a karanta shi tare da cikakken bayani na mu",
+      ". Sharuddan Hidima suna ƙunshe da yarjejeniya mai ɗaƙiƙa na doka tsakanin ku da Avana game da samun damar ku da amfani da tsarin da ayyukan da suka danganci shi.",
+      "Daga shafinmu na farko:",
+      "A aro da ƙididdigar LP na da haɗari, ciki har da rufe matsayin idan yanayin kasuwa ya motsa a kan matsayinka. Avana baya kula da kuɗinka, baya sake amfani da matsayin LP, ko canza yadda kuɗin ruwa yake aiki a kan AMM na asali. Ka aro kawai adadin da kake jin daɗin kiyaye shi duk da canjin kasuwa.",
+      "Avana shi ne wani shirin kuɗi na rarrabawa na gwaji. An bayar da shirin 'kamar yadda yake' ba tare da wata wakilci ko tabbaci na kowace irin hanya ba, ko dai a fili ko a kaikaice.",
+      "Kamar yadda aka bayyana a cikin Sharuɗɗan Sabis ɗinmu (Sashe na 2): “Manufar Avana tana haɗa aikin da wasu kwangiloli masu fasahar buɗe tushen za su iya karɓa da riƙe wasu kuɗaɗen dijital ko wasu kadarorin crypto. Akwai haɗari cewa software ɗin buɗe tushen, ciki har da kowane haɓakawa, na iya kawo kurakurai, ƙwayoyin cuta, Trojan horses, ko wasu rauni ko canje-canje waɗanda za su iya haifar da tashin hankali na wani ɓangare ko gabaɗaya na manufar ko asara, lalacewa, ko hallaka kadarorin ku na crypto.",
+      "Duk wani dogaro da kuke yi akan irin wannan bayanin yana cikin haɗarin ku kadai. Ba za mu ɗauki alhakin wani hasara ko lahani da ya taso daga amfani da wannan tsarin ko takardun ba.",
+      "Kamar yadda aka bayyana sosai a cikin Sharuɗɗan Sabis ɗinmu: \"SABISƘƘUN SUNA HADA, BA TARE DA IYAKA BA, KAYAN BAYANI, WANDA ZAI IYA BAYAR DA BAYANI DA YA SHAFI AVANA. AVANA BA JARIDA BA NE, DILLALI, CANJIN KUDI, SHAWARWARIN ZUBA JARI, MA'AIKACI KO MAI BAYAR DA SABIS NA KUƊI NA KOWANE IRIN. BA MU DA HULDA TA FIDUCIARY DA KU, KO WAJIBI A KAN KU, A CIKIN HARKOKIN SABISƘƘUN.\"",
+      "• Wannan kayan aiki na nufin bayar da bayani ne kawai",
+      "• Ba tayin ko neman zuba jari ba ne, ko saye, ko sayar da kowane sha’awa ko hannun jari",
+      "• Ba an nufin bayar da shawara game da lissafin kudi, shari'a, haraji, ko zuba jari ba",
+      "• Ba mu rijista a matsayin masu ba da shawara kan zuba jari ko dillalan hannayen jari ba",
+      "• Ba mu bayar da shawarwarin kudi na musamman ba",
+      "• Ayyukan da suka gabata ba su tabbatar da sakamakon nan gaba ba",
+      "• Ya kamata ku tuntubi kwararru masu cancanta kafin ku yanke shawarar kudi",
+      "• Zuba jari a cikin kudaden cryptocurrency yana da saurin canjawa da haɗari sosai",
+      "Sashe na 8 na Sharuɗɗan Aikinmu yana fayyace haɗarin da ke tattare da amfani da Avana:",
+      "Fasahar Gwaji",
+      "Ayyukan na iya haɗa fasaha mai gwaji da sabon salo kuma amfani da irin wannan fasaha yana ɗauke da babban haɗari. Akwai dalilai da yawa da za su iya sa ayyukan ko hanyoyin sadarwar blockchain da ke ƙasa su gaza a hanya ba zato ba tsammani, wanda zai haifar da asarar gaba ɗaya da cikakke na kowane kadarorin crypto da ke cikin walat ɗin ku na dijital.",
+      "Kalubale na Aiki",
+      "Sabis ɗin da/ko hanyoyin sadarwar blockchain na asali na iya fuskantar ko zama abin hare-haren yanar gizo, tashin hankali maras tsammani a adadin ma'amaloli, ko wasu matsalolin aiki ko fasaha ko raunana waɗanda ka iya haifar da tsaiko dangane da amfani da Sabis ɗin.",
+      "Rashin Tabbas na Dokoki",
+      "Ayyukan, Ka'idar Avana da/ko kowanne daga cikin hanyoyin sadarwar blockchain da ke ƙasa na iya rashin samuwa ko dacewa da amfani a dukkan yankuna, kuma kuna iya kasancewa ƙarƙashin wajibcin biyan doka da ƙa'idodin gwamnati dangane da amfani da Ayyukan a wasu yankuna.",
+      "LP-Hadurran Musamman",
+      "• Asarar wucin gadi na iya rage ƙimar jinginar kayan aiki",
+      "• Hadarin likwidasiyo idan yanayin kasuwa ya motsa a kan matsayinka",
+      "• Hadarin kwangilar wayo na DEX da ke ƙasa",
+      "• Matsayin ruwa mai mai da hankali na iya zama marar amfani idan ya fita daga kewaye",
+      "Kamar yadda aka bayyana a Sashe na 9.1 na Sharuɗɗan Sabis ɗinmu:",
+      "ANA BAYAR DA KYAUTATAWA AKAN ASALINSU DA KAWAI KUMA AVANA BA TA BAYAR DA KO WANE IRIN GARANTIN GAME DA WANNAN ASALIN DA KAWAI KO KOWANE IRIN SU BA KO AKASARI BA A CIKIN SHARUDDAN BA, KUMA AVANA TA KAKABA DUK WANNAN DA KO WANE IRIN GARANTIN DA AKA NUNA, AN BIYAR, KO NA DOKOKI DA SHARUDDAN, CIKIN HARI KO WANNAN GARANTIN KO SHARUDDAN NA KADA KAWO TAURITYA, CYANAR DA KAYAN KASUWANCI, DAidaituwa DON WANI MANUFA NA MUSAMMAN, SAMUN SA, AIKI BA TARE DA KUSKURE BA KO RAGALA.",
+      "Kamar yadda aka bayyana a Sashe na 9.2 na Sharuɗɗan Sabis ɗinmu:",
+      "A KO WANNE LOKACI, AVANA BA ZAI IYA ZAMA MAI LAIFI GARE KU BA DOMIN KO WANE IRIN HASARA NA SAKAMAKO, MARAS TSARI, NA GURBI KO NA MUSAMMAN KO NA KOWANE IRIN KO HALAYYAR KOWANE HANYA DA AKA SAMU, HAR DA, BA TARE DA HANA BA, HASARAR MISALI KO NA TUKA, BAYANAN DA AKA RASA, RIBAR DA AKA RASA KO KUDIN SHIGA KO RAGUWAR KIMAR ABU, DA AKA HAƘO DAGA KO DA YA SHAFI AIKIN KO AMFANIN KU DA PROTOKOLIN AVANA.",
+      "Wannan ƙuntatawa tana aiki ba tare da la’akari da ka’idar ɗawainiya ba (kwangila, laifi, ɗawainiya mai tsauri, ko wani) kuma ko da an ba mu shawarwarin yiwuwar irin waɗannan asarar. A karkashin kowace yanayi ba za a zarce jimillar ɗawainiya ta Avana dala ɗari ɗaya na Amurka ($100.00).",
+      "Don cikakken bayani na shari'a, da fatan za a duba takardun masu zuwa:",
+      "Cikakken yarjejeniya mai doka da ke da tasiri kan yadda kake amfani da Avana, ciki har da cancanta, ayyukan da aka haramta, dukiyar hankali, warware rikice-rikice, da sauran su.",
+      "Yadda muke tattarawa, amfani, da kare bayanan sirrinka, ciki har da riƙewar bayanai, kukis, da hakkokinka ƙarƙashin GDPR, CCPA, da sauran dokokin sirrin bayanai.",
+      "Yankunan da aka takaita",
+      "Jerin hukumomin da aka haramta samun damar yin amfani da Avana sabis a yanzu.",
+      "An Sabunta Zuwa Na Ƙarshe:",
+      "Janairu 2026",
+      "Ana iya sabunta wannan bayanin rashin alhaki lokaci-lokaci. Ci gaba da amfani da tsarin yana nufin yarda da kowane canji. Don Allah a duba"
+    ]
+  },
+  "legal": {
+    "meta": {
+      "title": "Hukuma & Bin Doka - Bayyanannun Tsaro",
+      "description": "Avana bayanan doka - takunkumin samun dama, yankunan da aka takaita, bukatun bin doka, da bayyanannun tsaro."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "access-restrictions",
+        "title": "Takaitaccen Samun"
+      },
+      {
+        "id": "restricted-jurisdictions",
+        "title": "Yankunan da aka takaita"
+      },
+      {
+        "id": "compliance",
+        "title": "Bin doka"
+      },
+      {
+        "id": "related-policies",
+        "title": "Manufofi Masu Alaka"
+      }
+    ],
+    "strings": [
+      "Hukuma & Bin Doka - Bayyanannun Tsaro",
+      "Avana bayanan doka - takunkumin samun dama, yankunan da aka takaita, bukatun bin doka, da bayyanannun tsaro.",
+      "Bayanin Gabaɗaya",
+      "Takaitaccen Samun",
+      "Yankunan da aka takaita",
+      "Bin doka",
+      "Manufofi Masu Alaka",
+      "Takunkumin OFAC",
+      "Ukarina (Yankin Crimea, Donetsk, da Luhansk)",
+      "Ƙasar Amurka",
+      "Har yanzu ana jiran bayyana ka’idojin hukuma",
+      "Yankunan da aka takaita",
+      "An kula da wannan shafin don nuna jerin Kasashen da ke da Takunkumi mafi sabo don yanki Avana.",
+      "Sharuɗɗan Amfani",
+      ", samun damar zuwa gidan yanar gizon Avana da ayyukan da ke hade da shi an takaita ga mutane ko kungiyoyi a wasu yankuna. Wannan shafin yana bayar da jerin yankunan da aka takaita a yanzu kuma yana bayanin takunkumin samun dama da aka kafa.",
+      "Muhimmi:",
+      "Kowane yunkuri na shiga dandamalin Avana daga Ƙasar da aka Takaita zai haifar da kai tsaye zuwa Ka'idojin Amfani da kuma hana samun dama.",
+      "Samun damar zuwa shafin yanar gizo na Avana da ayyukansa da aka haɗa an iyakance ga mutane ko hukumomi waɗanda:",
+      "Zaune a ciki",
+      "duk wani ɗayan Yankunan da aka Takaita",
+      "Shin 'yan ƙasa na",
+      "An kasance a jikin",
+      "An haɗa a ciki",
+      "Rike ofishin da aka yi rajista a ciki",
+      "An fayyace waɗannan ƙuntatawa a cikin Avana's",
+      "Yankunan da aka Takaita a Yanzu",
+      "Ana takaita wadannan yankuna daga samun damar ayyukan Avana a yanzu:",
+      "Yankin hukuma",
+      "Dalili",
+      "Lura:",
+      "Ana iya sabunta wannan jerin lokaci zuwa lokaci bisa ga canje-canje a cikin dokoki, ka'idoji, ko shirye-shiryen takunkumi da suka dace. Masu amfani suna da alhakin tabbatar da ci gaba da bin waɗannan ƙuntatawa.",
+      "Kamar yadda aka bayyana a cikin Sharuɗɗan Amfani da Mu (Sashe na 1.2), ba za ku iya samun dama ko amfani da Ayyukan ba idan kai:",
+      "• Batun kowace takunkumi da Ofishin Kula da Hanyoyin Waje na Ma'aikatar Kudi ta Amurka (OFAC), Ma'aikatar Harkokin Wajen Amurka, ko kowace hukumar gwamnati mai iko ta aiwatar ko tilasta",
+      "• An gano shi a jerin Mutane, Ƙungiya, ko Marasa Tabbatarwa na Ofishin Kasuwanci na Ma'aikatar Kasuwanci ta Amurka",
+      "• Da ke cikin, tsararraki, ko mazaunin ƙasa ko yanki wanda yake, ko gwamnatin sa take, ƙarƙashin takunkumin tattalin arziki",
+      "Masu amfani su kadai ke da alhakin tabbatar da cewa amfani da su da tsarin yana bin dukkan dokoki da ka'idoji masu aiki a yankinsu.",
+      "Don cikakken bayani game da hakkoki da wajibai naka lokacin amfani da Avana, don Allah a duba:",
+      "Sharuɗɗan Sabis",
+      "Cikakkun sharuɗɗa da ƙa'idoji waɗanda ke shafar amfani da ku da ayyukan Avana, ciki har da buƙatun cancanta, ayyukan da aka haramta, da magance rikice-rikice.",
+      "Dokar Sirri",
+      "Bayanai game da yadda muke tattarawa, amfani da kare bayanan ku na sirri lokacin da kuke amfani da ayyukanmu.",
+      "Bayani na Shari'a",
+      "Muhimman bayanan faɗakarwa game da haɗari, garanti, da iyakokin alhaki."
+    ]
+  },
+  "liquidation/examples": {
+    "meta": {
+      "title": "Misalan Rushewar Harka",
+      "description": "Misalan bayyanawa na sayar da dukiya ga Avana, suna nuna yadda ake warware LPs masu musayar juna, ƙwahƙwaran ruwa, da asusun matsayi da yawa ƙarƙashin tsarin asali ɗaya."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "fungible-lp",
+        "title": "Misali na Fungible LP"
+      },
+      {
+        "id": "concentrated-liquidity",
+        "title": "Misalin Mayar da Hankali ga Ruwa"
+      },
+      {
+        "id": "nft-liquidity",
+        "title": "Rarrabuwar NFT"
+      },
+      {
+        "id": "multi-position-account",
+        "title": "Asusun Matsayi da yawa"
+      },
+      {
+        "id": "edge-cases",
+        "title": "Yanayin Iyaka"
+      },
+      {
+        "id": "summary",
+        "title": "Takaitawa"
+      }
+    ],
+    "strings": [
+      "Misalan Rushewar Harka",
+      "Misalan bayyanawa na sayar da dukiya ga Avana, suna nuna yadda ake warware LPs masu musayar juna, ƙwahƙwaran ruwa, da asusun matsayi da yawa ƙarƙashin tsarin asali ɗaya.",
+      "Bayanin Gabaɗaya",
+      "Misali na Fungible LP",
+      "Misalin Mayar da Hankali ga Ruwa",
+      "Rarrabuwar NFT",
+      "Asusun Matsayi da yawa",
+      "Yanayin Iyaka",
+      "Takaitawa",
+      "Matsayin na iya zama mafi yawanci a gefe guda lokacin da fara tsari na rufe matsayi, musamman ga ƙarfin ruwa mai tarawa.",
+      "Zurfin tafkin na iya zama isasshe don kimantawa amma har yanzu yana iya kasancewa kaɗan wanda ke buƙatar shirin warwarewa mai hankali.",
+      "Kudin da za a iya karɓa na iya inganta dawo da kuɗi, amma bai kamata a ɗauke su a matsayin tabbaci har sai an samu su a zahiri.",
+      "Mai aron kudi na iya samun matsayi da yawa da ke ba da gudummawa ga damar aron kudi a matakin reshe daya, don haka tsari na fitar da kaya yana da muhimmanci.",
+      "An yi ayyuka na yanayi da ke nuna yadda ake amfani da tsarin warware bashi ɗaya ga nau'ikan jinginar daban-daban.",
+      "Wadannan misalan an yi su da sauƙi da gangan. Manufar ita ce nuna yadda likwidashi ke gudana a cikin shahararrun LP tsarin ba tare da ƙirƙirar ƙarin ƙa'idoji ba",
+      "Tsarin Ƙarshewa",
+      "A kowane hali aikin iri ɗaya ne: amfani da alamun jinginar da na gargajiya, biya bashi cikin matakin bashi, rushe LP ta hanyar hanya mai tallafi, kuma mayar da duk wani ƙimar da ta rage bayan farashin aiwatarwa da ladan sassauta kadarori.",
+      "Wani mai ciwo ya ajiye token na fungible LP daga wani tabarma ko nau'in ruwan da aka amince da shi. A tsawon lokaci, haɗin tabarma da shigarwar oracle sun motsa har asusun bai ƙara daidaita ƙimar jinginar sa don bashin sa ba.",
+      "• Ƙungiyar likidashan tana gano ƙarancin kuɗi kuma tana samo ruwa don aiwatarwa.",
+      "• Bashi ana biya kuma an mayar da token LP zuwa kayan ƙarƙashin sa.",
+      "• Ana samun kudaden da za a iya karba idan suna nan kuma suna taimakawa wajen dawo da su.",
+      "• Ana tura kadarorin da ke ƙasa cikin kadarar bashi kuma batsewar tana rufewa.",
+      "• Duk wani ƙima da ya rage bayan biyan aron da lada ana mayarwa ga mai aron.",
+      "Matsayin ruwa mai yawa yana gangarowa zuwa gefen iyakar yanayin aiki. Asusun na iya ci gaba da kasancewa cikin koshin lafiya na ɗan lokaci, sannan ya rushe zuwa sayarwa idan bashi ya fi darajar da za a iya dawo da ita ta matsayin yanzu.",
+      "• Node ɗin yana ƙima matsayin daga cikin rangen sa na yanzu, sauƙin juyawa, da rabon token.",
+      "• Da zarar an fara likwidation, ana duba kuɗaɗen da za a iya karɓa kafin a warware babban kuɗi.",
+      "• Hanyar jigilar kayan tana daidaita zuwa ainihin kayan da aka dawo da su maimakon cakuda alamar tsayayye.",
+      "• Warwarewa tana bin tsarin iri ɗaya: biya batun kuɗin aiwatarwa, biya lada, dawo da ƙimar saura.",
+      "Mai aro ya sanya Uniswap v3 NFT a ajiya kuma daga baya matsayin ya shiga cikin rashin riba. Ana gudanar da warwarewa a matakin matsayi, ba a matsayin yankan token ɗin da aka raba ba, saboda NFT ɗin yana wakiltar takamaiman matsayin tallafi guda ɗaya.",
+      "• Aave yana kwace ma'aunin alamar amfanin ma'ajiyar da aka daure da matsayin NFT.",
+      "• Avana yana ƙone alamar ajiyar kudi kuma yana matsar da ainihin matsayi LP cikin sulhu.",
+      "• Module na sulhu yana warware, sayarwa, yin kasuwar kaya, ko canja matsayi.",
+      "• Bashi ana biya shi da farko, lada na mai warware kaddarorin yana zuwa na gaba, sannan duk wani karin kudi yana bin dokar kasuwa.",
+      "• Mai aron ba ya riƙe da ƙananan haƙƙi mara lahani akan NFT ɗaya bayan sayarwa.",
+      "Wani mai aron kudi na iya riƙe da wurare da yawa LP a cikin ɗaya Borrow Spoke. Ƙarfin ana haɗa shi a duk waɗannan wuraren, amma dole ne a yi warwarewar a matakin wuri da zarar asusun ya zama mara lafiya.",
+      "• Anfanin yana bayar da rahoton ƙarfin aron jimla guda ɗaya ga Hub.",
+      "• Idan asusun ya koma mara lafiya, ma'aunin likwidashi yana zaɓar hanyar warwarewa da ta fi dacewa don dawo da ƙarfin biyan basus.",
+      "• Wata matsayi guda na iya isa don rufe gibin, ko kuma za a iya buƙatar a sassauta wasu da yawa ko gaba ɗaya.",
+      "• Tsarin aiwatarwa, daidaiton oracle, da zurfin hanya suna da muhimmanci kusa da alamar kanta.",
+      "Fungible LPs, rukunin da aka mayar da hankali, matsayi na NFT, da asusun matsayi da yawa duk suna da bayanan warwarewa daban-daban. Burin da aka raba bai canza ba: biya bashi daga ƙimar LP da za a iya dawo da ita ba tare da dogaro da tsammanin NAV mai kyau ba. Doka har yanzu tana kan babban shafin Tsarin Warwarewa."
+    ]
+  },
+  "liquidation/flow": {
+    "meta": {
+      "title": "Gudanar da Rufe Harka",
+      "description": "Gudanar da kwararar warwarewa don Avana, wanda ya ƙunshi jerin lokacin aiki da ake amfani da shi lokacin da aka kwace kuma aka sassauta jinginar LP da aka tallafawa da ma'ajiyar kuɗi."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "canonical-reference",
+        "title": "Takardun Manufofi Masu Alaƙa"
+      },
+      {
+        "id": "runtime-sequence",
+        "title": "Jerin Lokacin Gudanuwa"
+      },
+      {
+        "id": "state-transitions",
+        "title": "Canjin Jiha"
+      },
+      {
+        "id": "operator-notes",
+        "title": "Bayanan Mai Aiki"
+      }
+    ],
+    "strings": [
+      "Gudanar da Rufe Harka",
+      "Gudanar da kwararar warwarewa don Avana, wanda ya ƙunshi jerin lokacin aiki da ake amfani da shi lokacin da aka kwace kuma aka sassauta jinginar LP da aka tallafawa da ma'ajiyar kuɗi.",
+      "Bayanin Gabaɗaya",
+      "Takardun Manufofi Masu Alaƙa",
+      "Jerin Lokacin Gudanuwa",
+      "Canjin Jiha",
+      "Bayanan Mai Aiki",
+      "Gano asusun da ba shi da lafiya",
+      "Nodes ɗin likwidashi ko masu kula na waje suna kallo iri ɗaya na ƙimar jinginar da aka daidaita da haɗari da tsarin ke amfani da su kuma suna nuna asusun da bashi yanzu ya wuce iyakar ƙarfin aron da aka amince da shi.",
+      "Samun ruwa na aiwatarwa",
+      "Mai warware bashi yana samun ruwa na wucin gadi, sau da yawa ta hanyar hanyar irin flashloan, domin a biya bashi ba tare da an tanadi dukkan kudin warwarewa daga aljihun kansa ba.",
+      "Biya bashi kuma kama jinginar dakin ajiya",
+      "Mashin Bashi mai dacewa yana biyan bashi cikin matakin bashi, yana kula da jinginar ma'ajiyar kudi, kuma yana mika matsayin zuwa ciniki na musamman na LP.",
+      "Ƙone alamar ma'ajiyar kuɗi kuma alama matsayin tallafi",
+      "Mai haɗawa yana ƙone alamar kwandon da aka kama kuma yana alamar ainihin matsayi LP a matsayin a cikin sulhu don haka ba za a iya barin ajiyar goyon baya a buɗe ba dangane da matsayi wanda ake raba shi yanzu.",
+      "Sanya matsayi na LP kuma rufe sayar da dukiya",
+      "Avana yana sassauta, sayarwa, yin sayarwa ta gaggawa, ko canja wurin matsayin gaskiya LP, yana biya ruwa na aiwatarwa, yana biyan ladan mai shayarwa, sannan yana tura duk wani abin da ya rage bisa ga ƙa'idar kasuwa.",
+      "Da zarar Aave ya ba da izinin siyarwa, matsayin da aka zaɓa yana barin yanayin AKTIF kuma yana shiga yanayin SIYARWA. Mai aro bai kamata ya iya cire shi ba.",
+      "Bayan an sassauta ko an sayar da ainihin matsayin LP, ana share kayan tallafi kuma matsayin yana zama AN TABBATA.",
+      "Dokar jiha",
+      "Ba za a iya barin token ɗin ma'ajiyar ya kasance a waje ba bayan an cire matsayin LP da ke goyon bayansa. Idan an ƙone token ɗin ma'ajiyar, dole ne a janye matsayin LP, a warware shi, ko kuma a mayar da shi cikin sassauta biyan.",
+      "Tsarin lokaci na yadda matsayi marasa lafiya LP ke motsi daga gano su har zuwa warwarewa da zarar fara sayarwa.",
+      "Wannan shafin shi ne kallon lokacin gudana na rashin biyan kudi. An rubuta shi don lokacin da asusun ya riga ya zama mara lafiya kuma mai aiki yana bukatar fahimtar abin da zai faru a gaba, a tsari, daga ganowa har zuwa biyan karshe.",
+      "LP biyan bashin yana nufin sassauta iko da jari maimakon sayar da wata alama guda. Ana biyan bashi, an kama jinginar rumbun ajiya, an kona alamun rumbun ajiya da suka dace, a biya matsayin gaske na LP, sannan a mayar da abin da ya rage idan akwai.",
+      "Manufar warware harka tana ci gaba",
+      "Tsarin Ƙarshewa",
+      "shafi. Wannan tsarin yana ɗauka samfurin ƙima mai dawo da hankali a cikin",
+      "Masu Bada Farashi",
+      "Abubuwan Bada Bashi",
+      "Yi amfani da wannan shafi don jerin aiwatarwa. Ƙayyadaddun iyaka, lada, da ka’idojin shiga har yanzu suna fitowa ne daga tsarin gine-gine da takardun haɗari, ba daga wannan jerin duba kaɗai ba.",
+      "Iyala daban-daban LP duk suna ƙoƙarin isa ga wannan yanayin ƙarshe guda, amma ba sa isa wurin ta hanyar ƙofar fita iri ɗaya. Sarrafa ta hanyar mai haɗawa yana baiwa kowace iyalan tafkin damar bin hanyar baci da ta dace da hanyoyinta na musamman.",
+      "Dole ne bots na tsarkakewa su sanya alamar matsayi mai aiki, su sabunta kwararar bashi, kuma su ƙayyade farashin asusu daga wannan stack na oracle da tsarin ya yi amfani da shi maimakon daga yanayin spot AMM kawai.",
+      "Duba ribar ya kamata su haɗa da sauƙin rashin daidaito, zurfin hanya, farashin aron kuɗi na ɗan lokaci, da haɗarin aiwatarwa. Manyan ko ƙayatarwa marasa yawa na iya cin gajiyar hanyoyin aiwatarwa na sirri don rage haɗarin rashin kyau na MEV.",
+      "Yi wannan shafin a matsayin jerin abubuwan da za a duba yayin aiki. Adana cikakkun bayanai na manufofi a manyan shafukan lalacewa, oracles, da haɗari."
+    ]
+  },
+  "liquidation/liquidators": {
+    "meta": {
+      "title": "Masu warware kamfani",
+      "description": "Jagoran mai haɓakawa don masu gudanar da rufe-kashe, wanda ke rufe sa ido, bukatun aiwatarwa, da halayen rushewar musamman na LP."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "coverage-model",
+        "title": "Samfurin Rufe"
+      },
+      {
+        "id": "execution-requirements",
+        "title": "Bukatun Aiwana"
+      },
+      {
+        "id": "operational-notes",
+        "title": "Bayanan Aiki"
+      }
+    ],
+    "strings": [
+      "Masu warware kamfani",
+      "Jagoran mai haɓakawa don masu gudanar da rufe-kashe, wanda ke rufe sa ido, bukatun aiwatarwa, da halayen rushewar musamman na LP.",
+      "Bayanin Gabaɗaya",
+      "Samfurin Rufe",
+      "Bukatun Aiwana",
+      "Bayanan Aiki",
+      "Shiga ba tare da izini ba",
+      "Kowane mai riƙe ko teburin aiwatarwa na iya fitar da ruwa idan zai iya sa ido kan matsayi, samun tushen ruwa na aiwatarwa, da warware tsarin LP da Avana ke tallafawa.",
+      "LP-musamman sarrafawa",
+      "Rufe kasuwanci ba sayar da token na kowa bane. Runtime na bukatar dabarun da suke sane da wurin don samun kudin shiga, cire matsayi, tsara hanya, da biyan bashin cikin kadarar bashi.",
+      "Ingancin rufewa",
+      "LP matsayi suna da wuya a sassauta fiye da sauƙaƙƙun token. Masu aiki da ke tsara cikakken hanya don wuraren da ake tallafawa galibi suna sarrafa matsin lamba mafi kyau fiye da bots da kawai suke amsawa ga alamar lafiya.",
+      "Bi tsarin haɗarin guda ɗaya da ƙa’idar ke amfani da shi, ba wata dabara daban ba.",
+      "Sake dawo da yanayin tsabta cikin aikin atomatik guda ɗaya duk lokacin da zai yiwu.",
+      "Ganin kashi na farashi, zurfin hanya, da ƙimar saura kafin inganta don saurin kawai.",
+      "Ka ɗauki rufin ɓangare da cikakken rufi a matsayin lamura daban-daban tare da ƙayyadaddun tsammanin hanyoyi daban-daban.",
+      "Sauraron matsayin da bin diddigin bashi",
+      "Kwasan kwaikwayo don zurfin hanya, zamewa, da samuwar ruwa",
+      "Isar da musayar kuɗi tare da flashloan ko hanyoyin aiwatarwa masu cike da kuɗi a gaba",
+      "Masu haɗa kayan aiki masu sani wurin taro don LP iyalai da yarjejeniya ke goyan baya",
+      "Yadda masu aiki ke kula da Avana cire kudi da irin tsarin aiwatarwa da ake buƙata don bashi da aka tallafa da LP.",
+      "Masu rushewa sune masu aiki waɗanda ke rufe matsayi marasa lafiya da aka tallafa wa da LP. Aikin su shine biyan bashi, warware LP ta hanyar madaidaicin hanyar wurin, da kuma mayar da ƙimar da aka karɓa cikin layin bashi.",
+      "Gudun yana da mahimmanci, amma bai isa shi kaɗai ba. Masu aiki suna buƙatar su fahimci abin da za a iya rufe a zahiri, yadda LP yake wakilta, da yadda kuɗaɗe, rashin daidaito, ko sauyin kayan ɗaya kawai ke murmurewa kafin su aika kome a kan sarkar.",
+      "Mai shayar da ruwa don Avana yana bukatar fiye da bot na kirkiro aiki. Yana bukatar isasshen tsarin aiki don kimanta matsayi, yin kwaikwayon ficewa, nemo jari, da isar da ciniki da zai iya kammala hanyar warwarewa da ya fara.",
+      "Bukatar aiki",
+      "Gina sassauta, fahimtar kudi, da biyan bashi musamman ga wurin a matsayin tsarin aiki guda. Matakai masu rabuwa suna sanya samun nasarar rufe likidation ɗin da za a iya ɗauka a hankali ya kasa a aiwatarwa."
+    ]
+  },
+  "liquidation": {
+    "meta": {
+      "title": "Tsarin Ƙarshewa",
+      "description": "Yadda Avana ke sarrafa sayar da kaya don jinginar da aka tallafa wa LP bayan Aave ya kunna wurin shiga sayar da kaya."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "three-layers",
+        "title": "Matsayi Uku"
+      },
+      {
+        "id": "core-rules",
+        "title": "Ka'idojin Asali"
+      },
+      {
+        "id": "lp-complexity",
+        "title": "LP Rikicin Lamuni"
+      },
+      {
+        "id": "liquidation-pathways",
+        "title": "Hanyoyin Ƙarshen Dukiya"
+      },
+      {
+        "id": "position-state",
+        "title": "Matsayin Ƙasa"
+      },
+      {
+        "id": "surplus-handling",
+        "title": "Sarrafa Ragowa"
+      },
+      {
+        "id": "operator-model",
+        "title": "Samfurin Mai Aiki"
+      }
+    ],
+    "strings": [
+      "Tsarin Ƙarshewa",
+      "Yadda Avana ke sarrafa sayar da kaya don jinginar da aka tallafa wa LP bayan Aave ya kunna wurin shiga sayar da kaya.",
+      "Bayanin Gabaɗaya",
+      "Matsayi Uku",
+      "Ka'idojin Asali",
+      "LP Rikicin Lamuni",
+      "Hanyoyin Ƙarshen Dukiya",
+      "Matsayin Ƙasa",
+      "Sarrafa Ragowa",
+      "Samfurin Mai Aiki",
+      "Zanen Ƙarshe",
+      "Yadda shigarwar likwidasiyo, karɓar dakin ajiya, da biyan LP suke rarrabuwa tsakanin Aave da Avana.",
+      "Aave ita ce tsarin da ke yanke shawara lokacin da za a iya yin sayar da wani matsayi, amma ba ta san yadda za a warware ainihin LP ba. Avana yana amfani da Aave don lissafin bashi, dubawa lafiyar, da wurin shiga sayarwa, sannan ya ɗauki nauyi don warware ainihin matsayin da ke bayan jinginar akwati.",
+      "Matsalar ƙira mafi muhimmanci ita ce cewa yakamata a daidaita ra'ayoyi biyu na bashi a kowane lokaci. Aave yana ganin ma'aunin alamar ma'ajiyar ERC-20, yayin da Avana ke bibiyar matsayi na LP wanda a hakikanin gaskiya ke tallafawa wannan ma'auni. Ana ci gaba da samun ingancin sayarwa ne kawai idan kwace wakilcin ma'ajiyar koyaushe yana kaiwa ga hanyar warwarewa ta LP daidai.",
+      "Don jerin da ke fuskantar mai aiki, duba",
+      "Masu warware kamfani",
+      ". Don jerin aiwatarwa, duba",
+      "Gudanar da Rufe Harka",
+      "Aave tsarin",
+      "Yana bin bashi, ma'aunin jingina a cikin ma'ajiyar kudi, ma'aunin lafiya, da wurin shiga sayar da kaya wanda ke ba da izini na kame kaya.",
+      "Avana matakin mai haɗawa",
+      "Yana karɓar jinginar kanti da aka kwace, yana ƙone token ɗin kanti da ya dace, kuma yana haɗa abin da ya faru na sallama zuwa matsayin LP wanda ya goyi bayan sa a zahiri.",
+      "Avana matakin sulhu",
+      "Yana gano ainihin matsayin LP, yana gudanar da hanyar fitarwa ko sayarwa da ta dace, yana biya bashi, yana biyan lada ga mai tsarkakewa, kuma yana tura duk wani karin kudi bisa ga dokar kasuwa.",
+      "Babban ƙa'ida mai sauƙi amma tsauri: Aave yana kawar da jinginar gidan ajiyar ERC-20, kuma Avana yana biya matsayi LP da ke bayan wannan jinginar gidan ajiyar. Duk wani abu a cikin ƙirar yana nan ne don kiyaye waɗannan matakai biyu su kasance daidaito.",
+      "Dole ne alamun ajiyar kuɗi su dace da ainihin ƙima",
+      "Adadin token ɗin kwalin da aka rufe dole ne koyaushe ya dace da ainihin ƙimar jinginar LP, ba daidaitaccen ma'auni na sinadari ba wanda ba za a iya dawo da shi ba.",
+      "Ba za a iya barin jinginar da ke tallafawa ba",
+      "Da zarar an daidaita matsayin LP, dole ne a ƙona token ɗin ma'ajiyar da ta dace don haka wakilcin ba zai wuce lokacin dukiyar da aka yi niyya ya bi ba.",
+      "Ba za a iya samun isasshen alamar ajiya mai aiki ba tare da jinginar LP mai aiki a bayansa ba.",
+      "Riba tana bin ƙa'idar kasuwa",
+      "Bashi yana samun biya farko, sannan lada na mai warware kudi, sannan kuɗaɗen sulhu, kuma sai daga baya duk ƙimar da ta rage ta bi ƙa'idar ragowar kasuwa.",
+      "Matsayin da LP ke tallafawa ba duka suke yin aiki iri ɗaya ba yayin warwarewa. Ana iya sake dawo da ko canja wurin alamar LP mai amfani da yawa a sauƙaƙe, yayin da Uniswap v3 NFT guda ɗaya ne na musamman wanda kewaye, tarawa kuɗi, da hanyar warwarewa suna da mahimmanci a matakin matsayin.",
+      "Shi ya sa matakin sulhu yake bukatar sanin dangin jinginar, madaidaitan matsayin tallafi, da hanyar nufin fitarwa kafin ya share damar daidaita ajiyar maɓallin.",
+      "Hanyar biyan bashin tana dogara ne akan irin LP jinginar da ke bayan tambarin matattara.",
+      "Kayan jingina mai musanya LP",
+      "• Biyan bashin na iya kasancewa gwargwadon bashin da dole a rufe, maimakon tilasta dukkan LP ragowar ta hanyar sayar da dukiya.",
+      "• Avana na iya fansa ko canja wuri kawai adadin da ake bukata don warwarewa idan tsarin kasuwa yana goyon bayan samun ragi na wani bangare.",
+      "• Matsayin da ya rage na iya ci gaba da aiki idan asusun har yanzu yana cika bukatun duba lafiya da ake bukata a baya.",
+      "• Cikakken matsayi yana shiga cikin shari'a lokacin da aka zaɓe shi don sulhu saboda NFT ɗin kanta ita ce naúrar jinginar da ake warwarewa.",
+      "• Ana ƙonewa da alamomin ma'ajiyar da suka dace bayan Aave ya kwace gurbin ajiyar kuma Avana ya maido wannan kwacen zuwa matsayin NFT.",
+      "• Avana zai iya sassauta, siyarwa, yin sayarwa ta gasa, ko canja matsayin LP na gaske bisa ga dokokin kasuwa na wannan dangin jinginar.",
+      "• Yawancin riba ba ta kai ga mai warwarewa kai tsaye sai dai idan ƙa'idar kasuwa ta bayyana hakan a fili.",
+      "ACTIVE",
+      "Matsayin har yanzu yana kara ƙimar jingina, kuma alamomin ƙarƙashin shingen da ba a biya ba suna nan gaba ɗaya suna da goyon baya daga wannan matsayin na rayuwa LP.",
+      "Rage Harsashi",
+      "Kadarar da aka zaɓa ba za a iya janyewa daga mai aron ba kuma tana motsawa cikin hanya ta shari'a.",
+      "SETTLED",
+      "An warware matsayi na LP, kuma dole ne a daina samun katunan ajiya masu dacewa da ba a biya ba.",
+      "Kimar sashe na biya ana amfani da ita a tsari na dindindin. Da farko tana rufe bashi, sai ladan mai warware matsala, sai kudaden sashe na biya. Duk wani daraja da ta rage bayan wadannan wajibai shine karin kudi, kuma wannan karin kudi yana bin dokar kasuwa don jinginar da ake biya.",
+      "Idan darajar sulhu ba ta isa ba don rufe bashi da lada, kasuwa na bukatar hanya ta bayyana ta bashin da ba a biya ba. Takardun kashe-haja ya kamata su bayyana wannan gibin a matsayin wani lamari na gaske da za a kula da shi, ba a matsayin wani abu da yake ɓacewa ta atomatik ba.",
+      "Tsarin fitar da dukiya yana ci gaba da kasancewa ba tare da izini ba, ammaLP yawancin jinginar na cin gajiyar tallafin tsarin da ya san yadda ake aiwatar da hanyar biyan bashin da ake tsammani. Masu fitar da dukiya na gama-gari na iya biyan bashi, amma har yanzu suna rasa tsarin ilimin takamaiman wuri da ake bukata don kammala matsayin cikin inganci ko lafiya.",
+      "Masu wargaza dole su bi diddigin irin wannan yanayin haɗari da yanayin jingina da tsarin yake amfani da shi.",
+      "Aiwarwa dole ne ta kasance ɗaya daga biyan bashi har zuwa sulhu.",
+      "Ya kamata a tsara samun kuɗi, zurfin hanya, da ƙimar saura kafin a inganta don sauri kawai.",
+      "Rufe wani ɓangare da cikakken rufe suna da batutuwa daban-daban kuma bai kamata su raba irin waɗannan shawarwarin hanyar ba."
+    ]
+  },
+  "hub": {
+    "meta": {
+      "title": "Barka da zuwa",
+      "description": "Mai aro yana ajiye matsayin LP da aka amince da shi cikin Borrow Spoke ɗin da ya dace, amma kuɗin jari kansa yana ci gaba da kasancewa a cikin tafkin asali maimakon a karɓe shi da farko."
+    },
+    "toc": [
+      {
+        "id": "welcome",
+        "title": "Barka da zuwa"
+      },
+      {
+        "id": "what-is-avana",
+        "title": "Menene Avana?"
+      },
+      {
+        "id": "how-it-works",
+        "title": "Yadda Yake Aiki"
+      },
+      {
+        "id": "unlocking-lp-collateral",
+        "title": "Dalilin da ya sa LP Bashi ke da Mahimmanci"
+      },
+      {
+        "id": "architecture",
+        "title": "Gine-gine"
+      }
+    ],
+    "strings": [
+      "Barka da zuwa",
+      "Menene Avana?",
+      "Yadda Yake Aiki",
+      "Dalilin da ya sa LP Bashi ke da Mahimmanci",
+      "Gine-gine",
+      "Ajiye wata matsayi LP da ake tallafawa",
+      "Mai aro yana ajiye matsayin LP da aka amince da shi cikin Borrow Spoke ɗin da ya dace, amma kuɗin jari kansa yana ci gaba da kasancewa a cikin tafkin asali maimakon a karɓe shi da farko.",
+      "Kimanta shi cikin tsanaki",
+      "Wuka ta sake gina matsayin daga bayanan tafkin ta, tana tantance haɗarin da ke ƙasa ta hanyar tsararren allon annabci, sannan ta rage wannan ƙimar ta hanyar abubuwan tallafi da kuma sarrafawa na kasuwa na musamman.",
+      "Arziki ta hanyar Hub",
+      "Idan ƙarfin da aka samu ya isa, aron za a ɗauka daga ruwan jari na Hub na haɗin gwiwa yayin da binciken lafiya, lissafin jingina, da halayen sayar da dukiya suka kasance na wannan reshe ne kawai.",
+      "Ruwa mai tsabta yana kasancewa a cikin tafki",
+      "An gina tsarin don LP matsayi waɗanda ya kamata su ci gaba da yin LP aiki. Mai aro ba lallai ne ya cire kuɗi daga AMM ba kawai don samun kuɗi a kansa.",
+      "Ƙarfi yana bin gaskiya LP",
+      "Ƙarfin aron kuɗi yana fitowa daga tsarin ainihi na matsayin: haɗin alamar, kuɗaɗen da aka tara, kewayon aiki lokacin da ya dace, zurfin da ake da shi, da yadda za a iya fita daga matsayin yayin matsin lamba.",
+      "Rufewar kamfani tana da ƙa'idoji bayyanannu",
+      "LP jinginar ba a sarrafa shi kamar daidaitaccen ma'aunin alamar token ba. Kowace kasuwa da aka tallafawa tana bayyana yadda ake dawo da ƙima, abin da ake siyarwa ko warwarewa, da yadda ake rufe bashi idan asusun ya zama ba lafiya.",
+      "Ara Spoke",
+      "Yana karɓar jingina da aka goyi baya LP, yana mayar da shi zuwa ikon aro na matakin spoke, kuma yana da ikon mallakar ƙa'idodin lafiya da na rushewar kasuwa don wannan kasuwar.",
+      "Yana rike da littafin hada-hadar bashi na gama gari: lissafin ajiya, ka'idar riba, da kuma kudin ruwa da rassan da ke fuskantar masu aron kudi ke amfani da su.",
+      "Bako na Baya",
+      "Yana kawo kadarorin mai bayar da rance cikin tsarin kuma yana tura su zuwa Hub domin LP tantancewar basussuka su kasance daban da shigar da babban jari.",
+      "Gabatarwa",
+      "Avana yana barin amincewar LP matsayi don bayar da lamuni ba tare da cire ruwa daga tafkin farko ba. Wadannan takardu suna farawa da rabon Hub-da-Spoke: spokes suna fahimtar haɗarin LP, yayin da Hub ke kula da hadin gwiwar ruwa na bayar da lamuni.",
+      "Fara da Muhimman Ra'ayoyi",
+      "Bincika Bashi Spoke",
+      "Avana wata hanya ce ta bayar da rance don LP na rayuwa. Yana amfani da samfurin Hub-and-Spoke na Aave v4 don haka Hub yana kula da hadin gwiwar ruwan kudi yayin da kowace Borrow Spoke ke kula da shiga, kimanta, lafiya, da tarwatsa don kasuwannin LP nata.",
+      "Tallafawa LP jinginar kudi yana nufin fiye da kawai duba ma'aunin token. Tsarin yana bukatar fahimtar irin kadarorin da matsayin ke wakilta, nawa daga wannan darajar ya kamata a lissafta don bashi, wane ragi na kasuwa na musamman ake amfani da shi, da wane hanya ce mai saukowa ake da shi idan mai aro ya kasa wuce iyakar aminci da ake bukata. Avana yana sanya wannan ƙa'idar ta musamman ta LP a cikin reshen da ke lissafa jinginar kudin maimakon ƙoƙarin haɗa duk matsayin AMM cikin hanya ɗaya ta lamuni ta gaba ɗaya.",
+      "Karanta wannan shafi kamar yadda taswira ce don sauran takardun. Sassan da ke ƙasa suna bayyana hanyar aro ta asali da farko, sannan suna nuna maka zuwa shafuka cikakke don Borrow Spoke, Lend Spoke, abubuwan haɗin bashi, tsarin oracle, sa ido kan lafiya, da kwashewa.",
+      "Gudanarwar da mai amfani ke gani gajere ce, amma kowace mataki tana ɓoye aikin tantance haɗarin LP na musamman. Shafukan daga baya suna bayyana yadda kowace mataki ke aiki.",
+      "LP matsayi sun riga sun zauna a cikin babban aikin kudi. Ba tare da wani matakin bayar da rance ba, samun kuɗi daga baya yawanci yana nufin rage ko rufe matsayin tafkin farko.",
+      "Avana yana raba rabo na lamunin haɗin gwiwa daga ƙa'idodin haɗarin LP na musamman. Wannan rabuwa shine dalilin da yasa tsarin zai iya tallafawa nau'ikan jinginar daban-daban ba tare da haɗa duk ƙa'idodinsu ba.",
+      "Masu gine-gine ya kamata su yi tunanin tsarin a cikin rabin biyu. Hub shine takardar kididdiga gama gari da injin bashi, yayin da Rassa na Ara wucewa suke yanke shawara game da abin da kowace kasuwa LP zata iya tallafawa cikin aminci da yadda dole ne a warware wannan kasuwa idan ta gaza. Rassa na Bashi yana ciyar da jari cikin Hub domin masu samarwa ba sa bukatar fahimtar LP dabaru kawai don samar da ruwa."
+    ]
+  },
+  "safety/bug-bounty": {
+    "meta": {
+      "title": "Lambar Ladabi ga Kwari",
+      "description": "Avana Iyakar bayyanar da laifukan Bug Bounty masu alhakin, LP-fuskokin haɗarin abubuwan haɗin gwiwa, da falsafar tsanani na tasirin tattalin arziki."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "scope-and-system-architecture",
+        "title": "Iyawa & Tsarin Tsarin"
+      },
+      {
+        "id": "severity-philosophy",
+        "title": "Falsafar Tsanani"
+      }
+    ],
+    "strings": [
+      "Lambar Ladabi ga Kwari",
+      "Avana Iyakar bayyanar da laifukan Bug Bounty masu alhakin, LP-fuskokin haɗarin abubuwan haɗin gwiwa, da falsafar tsanani na tasirin tattalin arziki.",
+      "Bayanin Gabaɗaya",
+      "Iyawa & Tsarin Tsarin",
+      "Falsafar Tsanani",
+      "Shirin A - Babban Lamuni",
+      "Ya rufe babban injin bashi inda gaskiyar lissafi, jingina, da aiwatar da sayarwa kai tsaye ke kare kudaden mai amfani.",
+      "Zuba jari / cire kuɗi",
+      "Arziki / dawo da bashi",
+      "Abubuwan lafiya da tarin ribar sha'awa",
+      "Ajiye lissafin ajiyar kuɗi da bashi / ƙirƙira ko ƙonawa",
+      "Liquidation core kisa da caps",
+      "Satar kudaden mai amfani",
+      "Ajiye rashawar kudi",
+      "Ara mai ƙarancin jingina",
+      "An toshe biya-biyan bashi, cire kudi, ko rusa kuɗi",
+      "Shirin B - LP Dukiya & Kimantawa",
+      "Yana rufe tsarin ƙima na Avana na musamman don bashi mai tallafin LP, ciki har da yadda ake saka farashin matsayi na LP, auna haɗari, da gwada ƙarfin su a ƙarƙashin yanayin kasuwa mai canzawa.",
+      "Kaddamar da ma'aunin jinginar kayan aiki don matsayi LP",
+      "Sarrafa matsayin ruwa mai daidaitacce",
+      "Yanayin ƙarshen yayin rashin daidaito, depegs, ƙarancin ruwa, ko tsofaffin yanayin oracle",
+      "Yawan ƙima fiye da kima na jinginar LP",
+      "Sauya bayanan Oracle don ba da damar bashi mara kyau",
+      "Sayar da kaya ba daidai ba saboda rage farashi",
+      "Hanyoyin fa'idar dawowa kan jinginar da ba a ƙima ba LP",
+      "Iyakacin tsanani mafi girma: LP kuskuren farashi na iya haifar da bashi mara kyau, rashin iya biyan bashi, ko sassauta kudi ba tare da asarar kwangila ta al'ada ba.",
+      "Shirin C - Gudanarwa, Harkokin Gwamnati, da Tsarin Ka'idoji",
+      "Ya rufe wuraren sarrafa masu fifiko waɗanda za su iya canza ƙayyadaddun abubuwa, haɓaka kwangiloli, dakatar da ayyuka, ko canja hanyar kadarorin da ke mallakar tsarin.",
+      "Mai aiwatar da mulki da tsarin dakatarwa na lokaci",
+      "Gudanar da matsayin aiki da hanyoyin haɓakawa",
+      "Dakatarwa / rawar mai kula",
+      "Tsarin gudanar da ma'aikata",
+      "Ma'ajiyar kudi, mai tarawa, da kwangilolin atomatik masu fifiko",
+      "Aikin mai gudanarwa ba tare da izini ba",
+      "Satar haɓakawa",
+      "Lalata sigogi",
+      "Karɓar mulki ko asarar ma'aikata",
+      "Shirin D - Offchain / Fuskar Haɗin Kai",
+      "Yana rufe tsarin tallafi waɗanda rashin tsaronsu zai iya shafar ayyukan yarjejeniya mai aminci, hulɗar masu amfani, ko halayyar mai riƙe.",
+      "Bot ɗin lissafi ko na tsarkakewa da Avana ke kula da su",
+      "Hasashen mai kula da na'ura da tsarin watsa labaru na oracle",
+      "APIs da ake masauki da ake amfani da su a hanyoyin da suka shafi aminci sosai",
+      "Matsalolin gaba da haɗarin walat kai tsaye",
+      "Gina ma'amala mai cutarwa",
+      "Hanyoyin sulhu na likwidasiyo ko na watsawar orac",
+      "Asarar kudin mai amfani ta hanyar haɗin kai na amintattu",
+      "Tangardar aiki da ke dakatar da muhimman ayyuka",
+      "Muhimmi",
+      "iyaka-ja-400 bango-ja-50/70",
+      "Rashin kuɗi kai tsaye ko a kaikaice, kirkirar bashi mara kyau, ƙarancin kuɗi na tsarin aiki, ko sarrafa tsarin kimanta jinginar ƙaya.",
+      "Matsayi",
+      "iyaka-amber-400 bango-amber-50/70",
+      "Lalacewa mai ma'ana amma iyakance, kamar rashin daidaiton gudanar da tsari na fitar da kudi, wuce gona da iri na wasu hanyoyin sarrafa haɗari, ko gazawar lissafi da aka iyakance.",
+      "Medium / Low",
+      "iyaka-fari-300 baya-fari-50",
+      "Sakamakon tasiri mai iyaka, rashin daidaito a lokutan karshe, matsalolin hankali marasa mahimmanci, ko raunuka ba tare da hanya mai karfi zuwa babbar asarar tattalin arziki ba.",
+      "Hanyar bayyana alhaki da jagorar rarrabuwa tasirin tattalin arziki don binciken tsaro na Avana.",
+      "Avana Bug Bounty yana rufe bayyana kurakurai masu alhakin a duk kwangiloli, tsarin haɗari, da kayan aikin tallafi da zai iya shafar kuɗin masu amfani ko ɗimbin kuɗin tsarin.",
+      "Saboda Avana yana amfani da AMM matsayin wuraren ruwa azaman jingina, fannin ya haɗa da kurakuran kai tsaye na kwangila da kuma gazawar inda ruwa, farashi, ko yanayin kasuwa za a iya sauya su zuwa rashin ƙimar jingina ko karyewar siyarwar rance.",
+      "Matsananci shine tattalin arziki na farko:",
+      "lazimci yana bibiyar yadda za a iya yin amfani da shi da abubuwan da suka faru kamar asarar kudi, gajiya, bashi mara kyau, ko kuskuren farashin jinginar tsarin, ba kawai yadda canjin lambar ya bayyana ba.",
+      "An raba fagen aiki zuwa ƙananan tsarin domin masu bincike su iya haɗa gano matsala da ɓangaren tsarin da yake barazana a kai: babbar bayar da lamuni, ƙimar LP, shugabanci da gudanarwa, ko haɗin kai na waje.",
+      "Mafi girman hankali",
+      "Ya haɗa da",
+      "Manyan haɗari",
+      "Dalilin da ya sa yake da mahimmanci:",
+      "Ana raba tsarin ƙarƙashin-tsarin daban-daban, amma har yanzu ana kimanta tasirin a fadin ɗorewa, aminci na kuɗin mai amfani, daidaito na warwarewa, da haɗarin tsarin da ya danganci shi.",
+      "Ba a nan ana amfani da maki na rashin ƙarfi na gama gari a matsayin babban hanyar jeri ba. Ana hukunta abubuwan da aka gano ta hanyoyin amfani masu aminci da kuma ta sakamakon tattalin arziki da zasu iya haifarwa."
+    ]
+  },
+  "safety/contracts": {
+    "meta": {
+      "title": "Tsaron Kwantiragin Hankali",
+      "description": "Avana tunani kan tsaro na kwangila mai kaifin basira wanda ke rufe iyakokin amana, fuskar kwangila, da yadda bincike da ladar kurakurai suka dace da tsararren rance wanda LP ke tallafawa."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "security-challenges",
+        "title": "Kalubalen Tsaro"
+      },
+      {
+        "id": "multi-layer-security",
+        "title": "Tsaron Matakai da yawa"
+      },
+      {
+        "id": "core-contract-surfaces",
+        "title": "Fuskar Kwantiragin Core"
+      },
+      {
+        "id": "trust-boundaries",
+        "title": "Iyakokin Amincewa"
+      },
+      {
+        "id": "audit-readiness",
+        "title": "Shirye-shiryen Bincike"
+      }
+    ],
+    "strings": [
+      "Tsaron Kwantiragin Hankali",
+      "Avana tunani kan tsaro na kwangila mai kaifin basira wanda ke rufe iyakokin amana, fuskar kwangila, da yadda bincike da ladar kurakurai suka dace da tsararren rance wanda LP ke tallafawa.",
+      "Bayanin Gabaɗaya",
+      "Kalubalen Tsaro",
+      "Tsaron Matakai da yawa",
+      "Fuskar Kwantiragin Core",
+      "Iyakokin Amincewa",
+      "Shirye-shiryen Bincike",
+      "Arƙiri magana",
+      "Yana kula da karɓar jinginar hannu, lissafin mai amfani, da tsarin rayuwa na ɓangaren magana don basussukan da LP ke tallafawa.",
+      "Haɗin cibiyar",
+      "Yana haɗa ikon aro a matakin faifan da aka faɗa zuwa iyakokin raba bashi da ruwa a cikin matakin Hub.",
+      "Oracle da masu daidaita ƙima",
+      "Fassara LP matsayi zuwa ƙimar jinginar kankare ta amfani da farashin waje, sake gina matsayi, da hasashen ƙimar da za a iya dawo da ita.",
+      "Matakin aiwatar da rushewa",
+      "Yana tsara hanyoyi, fahimtar kuɗi, hanyar isarwa, da shawo kan matsala lokacin da dole a rufe ko gyara asusun da bai lafiya ba.",
+      "Kwantiragi & Tsaro",
+      "Matsayin tsaro don kwangilar saman, dogaro na waje, da iyakokin nazari bayan lamunin da LP ke tallafawa.",
+      "Avana na bayar da lamuni da jinginar LP, don haka dole ne bita na tsaro ya rufe fiye da ko kwangila ta yi daidai ko tana canza ma'auni yadda ya kamata. Haka kuma dole ne ta rufe yadda farashi, ajiyar kaya, karyewar kasuwanci, da kulawa ta musamman suke aiki lokacin da kasuwa ke cikin matsin lamba.",
+      "Bita na kwangila, bita na tattalin arziki, da bita na aiki duk suna da mahimmanci ga kasuwanni LP. Suna ƙarfafa juna kuma ya kamata a ɗauke su a matsayin shirin tsaro ɗaya, ba a matsayin jerin abubuwa uku da ba su da alaƙa ba.",
+      "• LP ƙima na iya dogara da hanya kuma sau da yawa yana buƙatar kulawa ta musamman da dabarun warwarewa na wurin.",
+      "• Yin amfani da Oracle ba daidai ba ko tsohon farashi na iya haifar da asarar tattalin arziki koda lokacin da kwangiloli ke aiwatarwa yadda aka tsara su daidai.",
+      "• Gudanarwa, sarrafa sigogi, da martani na gaggawa duk suna cikin fannin hari.",
+      "Binciken kwangila",
+      "Ya kamata a duba saman kwangila na asali, masu haɗawa, da hanyoyin sarrafawa na musamman kafin a kunna sababbin LP iyalai ko sababbin hanyoyin aiwatarwa.",
+      "Gwajin damuwa na tattalin arziki",
+      "Gwada girgizar kasuwa, yanayin gefen oracle, da gazawar hanyar juyar da kudi, ba kawai halayen kwangilar matakin raka'a ba.",
+      "Tashoshin bita na waje",
+      "Binciken hukuma da",
+      "Lambar Ladabi ga Kwari",
+      "shirin ya kamata su kasance masu aiki duka biyun. Baya ɗaya ba ya maye gurbin ɗayan.",
+      "• Lissafin kan-sarkar da warware kuɗin rabuwa ya kamata ya kasance mai tabbas da zarar an kunna shi.",
+      "• Masu samar da Oracle, masu haɗa wuraren taro, da tsarin rarraba aiki na waje su ne abubuwan dogaro na waje kuma ya kamata a saka idanu a matsayin haka.",
+      "• Mulki, ikon dakatarwa, da haɓakawa su ne ƙwarewar musamman waɗanda ya kamata su kasance cikin iyaka, a iya duba su, kuma su kasance da ƙayyadadden lokaci duk inda zai yiwu.",
+      "Wannan shafin baya buga jadawalin masu duba na hasashe ko mahimman matakai na wucin gadi. Dole ne a buga rahotannin bincike, iyakoki, da bayanan gyara lokacin da suka wanzu a zahiri kuma za a iya duba su gaba ɗaya.",
+      "Babban darajar abubuwan da ake duba a binciken kudi yawanci sun haɗa da sabuwar LP tallafin iyali, sabbin hanyoyin wargaza kaya, sababbin samfuran oracle, da duk wani canji da ke faɗaɗa ikon fifiko ko ƙididdigar darajar da za a iya dawo da ita."
+    ]
+  },
+  "safety/insurance": {
+    "meta": {
+      "title": "Kudaden Inshora",
+      "description": "Tsarin kariya da aka tsara don Avana, yana bayanin yadda asusun inshora na gaba zai iya magance rashin cikawa na likidashen ba tare da canza asalin samfurin lamuni da LP ke goyon baya ba."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "purpose",
+        "title": "Manufa"
+      },
+      {
+        "id": "funding-approach",
+        "title": "Hanyar Samun Kudi"
+      },
+      {
+        "id": "activation-path",
+        "title": "Hanyar Kunna"
+      },
+      {
+        "id": "coverage-boundary",
+        "title": "Iyakokin Rufe"
+      }
+    ],
+    "strings": [
+      "Kudaden Inshora",
+      "Tsarin kariya da aka tsara don Avana, yana bayanin yadda asusun inshora na gaba zai iya magance rashin cikawa na likidashen ba tare da canza asalin samfurin lamuni da LP ke goyon baya ba.",
+      "Bayanin Gabaɗaya",
+      "Manufa",
+      "Hanyar Samun Kudi",
+      "Hanyar Kunna",
+      "Iyakokin Rufe",
+      "An shirya matakin kariya na baya don kula da ragowar bashi mara kyau bayan hanyar warwarewar LP na al'ada ta riga ta gudana.",
+      "Layin farko na kariya na Avana shine kimanta kadarori cikin hankali, iyakance hadari, da sayarwa a kan lokaci. Wani kudin inshorar gaba zai tsaya bayan wadannan matakan kuma zai bayyana ne kawai idan sayarwar bai rufe bashin mara kyau gaba daya ba.",
+      "Wannan shafi yana bayanin wani shirin kariya da aka tsara. Ba alkawari ba ne cewa akwai asusun inshora na rayuwa a kowane wurin aiki a yau.",
+      "Idan aka kunna, za a iya tara kuɗin ta hanyar keɓaɓɓun rabon kuɗaɗen gwamnati da aka amince da su, gudummawar ajiyar kuɗi, ko wani sashen tsaro na musamman. Haɗin kuɗin daidai shine shawarar kula da haɗarin kuma ya kamata a buga tare da sharuɗɗan shirin.",
+      "• Gano ragowar ƙaranci bayan an kammala hanyar sashewar da aka yarda.",
+      "• Tabbatar cewa gibin ya dace da manufofin rufewar da hukumar ta amince da su.",
+      "• Aiƙa hanyar sake samun jari ko rufewar gibin da hukumar shugabanci ta ayyana.",
+      "• Fitar da takaitaccen rahoton bayan abin da ya faru wanda ke bayyana abin da ya jawo shi, yadda aka mayar da martani, da matakan kulawa na gaba.",
+      "Rufe ya kamata ya ci gaba da zama kunkuru. Manufar ita ce tantance bashi mara kyau na ƙa'idar bayan tarwatsewa, ba tabbacin gaba ɗaya ba kan asarar ciniki na mai amfani, rashin ɗorewa na asara, motsin kasuwa, ko kowace gazawar ɓangare na uku a DeFi.",
+      "Rashin cika buƙatu da haɗarin kasuwa na yau da kullum suna buƙatar tsayayyen iyaka domin kada asusun ya koma fansho ga sakamakon yau da kullum LP."
+    ]
+  },
+  "safety": {
+    "meta": {
+      "title": "Hanyoyin Tsaro - Tsarin Hadari",
+      "description": "Gudanar da haɗarin gaba ɗaya na shirin don Avana Hub da LP Collateral Spokes, ciki har da rawar da ake takawa, sabuntawa iyakantattu, da kuma sarrafawa na gaggawa."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Bayanin Gabaɗaya"
+      },
+      {
+        "id": "core-principles",
+        "title": "Ka'idojin Asali"
+      },
+      {
+        "id": "roles",
+        "title": "Rawar"
+      },
+      {
+        "id": "update-flow",
+        "title": "Sabunta Gudun"
+      },
+      {
+        "id": "parameter-classes",
+        "title": "Ajin Sigogi"
+      },
+      {
+        "id": "public-disclosure",
+        "title": "Bayyanawa ga Jama'a"
+      },
+      {
+        "id": "emergency-actions",
+        "title": "Matakan Gaggawa"
+      }
+    ],
+    "strings": [
+      "Hanyoyin Tsaro - Tsarin Hadari",
+      "Gudanar da haɗarin gaba ɗaya na shirin don Avana Hub da LP Collateral Spokes, ciki har da rawar da ake takawa, sabuntawa iyakantattu, da kuma sarrafawa na gaggawa.",
+      "Bayanin Gabaɗaya",
+      "Ka'idojin Asali",
+      "Rawar",
+      "Sabunta Gudun",
+      "Ajin Sigogi",
+      "Bayyanawa ga Jama'a",
+      "Matakan Gaggawa",
+      "Raba Matsayi",
+      "Tsarin yana raba bayarwa, bita, da rufe gaggawa ga masu ruwa da tsaki daban-daban domin kada wani bangare ya sarrafa dukkan hanyan shi kadai.",
+      "Aiwatar da Ƙuntata",
+      "Canjin haɗari na yau da kullum yana faruwa ne kawai idan ya kasance a cikin iyakokin manufofi da aka ƙayyade kuma ya wuce gwaje-gwajen tantancewa.",
+      "Daidaici na Jama'a",
+      "Sabuntawar da aka bayyana a fili ya kamata ta zama iri ɗaya da sabuntawar da aka ajiye don aiwatarwa.",
+      "Wayewar Baki",
+      "Kowane ɗayan LP jinginar da aka haɗa yana da nasa ƙa'idodin jeri, tsammanin majigi, hanyar sayarwa, da bayanin haɗarin.",
+      "Rashin Daidaito na Kariya",
+      "Ana yin tsarin ne da gangan ya nuna son zuciya don haka rage haɗari yana da sauri da sauƙi fiye da ƙara shi.",
+      "Avana Mai Haifar da Hadari",
+      "Matsayin da ke shirya da ba da shawarar canje-canje na haɗari na yau da kullum don Hub da LP Harsunan Kayan Garanti.",
+      "Buga dalilin kuma rarraba sabuntawar a matsayin ta kariya ko mai mayar da hankali kan ci gaba",
+      "Gabatar da sabuntawa na yau da kullum cikin hanyar aiwatarwa mai makulli na lokaci",
+      "Ba da shawarar iyakokin samarwa, iyakokin aro, LT/LTV, hanyar ajiya, da sauye-sauyen ribar cikin iyakokin da aka amince da su",
+      "Fara rage haɗari a matakin reshe da haɗa masu amfani a cikin samfuran reshe da aka amince da su",
+      "Avana Mai Kula da Hadari",
+      "Mai bita mai zaman kansa wanda ke da ikon ƙin amincewa akan canje-canje na yau da kullum da aka jera.",
+      "Tabbatar cewa sabon gyara da aka jera ya dace da bayyana wa jama'a",
+      "Tabbatar cewa aikin yana cikin iyakokin manufofin da aka amince da su",
+      "Karyata sabuntawa bisa ƙididdigar ƙarya na oracle, ruwa, ko batutuwan sayar da kadara",
+      "Soke sabuntawa da aka jera yayin taga ɗaure lokaci lokacin da yake haifar da rashin daidaito bayyananne a matakin reshe ko matakin cibiyar",
+      "Avana Mai Kare Hadari",
+      "Matsayin gaggawa-kaɗai ana amfani da shi don kula da abubuwan da suka faru lokacin da hanyar da aka kulle da lokaci na yau da kullum ta yi jinkiri sosai.",
+      "Rage iyakokin aron ko iyakokin samarwa zuwa matakan kariya",
+      "Dakatar da sabon aro a wani reshe ko dakatar da amfani da jinginar don rijiya, tsarin, ko reshe",
+      "Kashe wani mai haɗawa na musamman ko aro hanyar lokacin da aka cika sharuɗɗan gazawa da aka riga aka tsara",
+      "Hana kirkirar sabon bashi a yanayi na gaggawa ba tare da amfani da shi don ingantawa na yau da kullum ko ayyukan haɓaka ba",
+      "Sanarwa ta Jama'a",
+      "Mai Kaddamar da Hadari yana buga sauyin da ake shirin yi, dalilin da yasa ake bukatarsa, da yankin da ake tsammanin zai shafa.",
+      "Mai Haifar da Hadari ya sanya canjin da aka bayar cikin hanyar aiwatarwa da tsarin yake amfani da ita.",
+      "Binciken tsarin yana tabbatar da cewa sabuntawa yana cikin iyakokin da aka rigaya ƙayyade da ƙa'idodin da aka amince da su.",
+      "Idan an wuce gwajin inganci, canjin zai shiga cikin taga na lokacinta maimakon aiwatarwa nan da nan.",
+      "Binciken Guardian",
+      "A lokacin kulle lokaci, Mai Kula da Hatsari yana duba ainihin kundin aikin da aka jera kuma zai iya soke shi idan an buƙata.",
+      "Idan canjin ya wuce bincike, zai aiwatar da kansa ta atomatik bayan lokacin tsaiko ya ƙare.",
+      "Hanyar Gaggawa",
+      "Idan an cika yanayin gaggawa, Mai Kare Hadari na iya amfani da wata hanya ta kariya daban da ke da ikon iyaka kaɗan.",
+      "Canje-canje na tsaro",
+      "iyaka-ja-400 bango-ja-50/70",
+      "Wadannan su ne canje-canje na yau da kullum mafi sauri saboda suna rage fallasa protokol.",
+      "Rage iyakokin aron kudi",
+      "Rage iyakokin samarwa",
+      "Rage LTV ko ƙa’idar likwidasyon",
+      "Dakatar da amfani da aro ko jinginar",
+      "Matse saitunan igiyoyin",
+      "Canje-canje Na Zuwa Kai Tsaye",
+      "iyaka-amber-400 bango-amber-50/70",
+      "Waɗannan suna bin hanyar ƙa'idar Mai Farawa -> Mai Kula -> kulle lokaci a cikin iyakokin da aka amince da su.",
+      "Ƙaruwar hula kaɗan",
+      "Ƙananan daidaita sigogi a cikin iyakokin da aka amince da su",
+      "Ƙara sabbin tafkuna a cikin samfuri na gada mai wanzuwa",
+      "Canje-canje a Matakin Gwamnati",
+      "iyaka-fari-300 baya-fari-50",
+      "Wadannan suna wajen tsarin yau da kullum kuma suna buƙatar hanyar yanke shawara ta matakin gaba.",
+      "Ƙirƙirar sabon iyali na maƙuntar",
+      "Kunna sabon LP asali",
+      "Ƙara sabon samfurin orakulu",
+      "Bada damar sabon na'urar sulhu",
+      "Faɗaɗa tsarin haɗari fiye da abin da aka riga aka amince da shi",
+      "Majiyar da ta shafa",
+      "Tukunyar ruwa ko samfuran da abin ya shafa",
+      "Saitunan yanzu",
+      "Sigogin da aka ba da shawara",
+      "Dalilin sabuntawa",
+      "Ko sabuntawar na kariya ne ko ta haɓaka",
+      "Lokacin da ake tsammanin bayarwa",
+      "Taga mai tsayayyen lokaci da ake tsammani",
+      "Muhimman dogaro ko zato",
+      "Rikicewar Oracle",
+      "Raguwar hanyar tsarkakewa",
+      "Halayen tafkin da ba na al'ada ba",
+      "Gazawar dogaro na mai kunnawa",
+      "Lalata a matakin na’ura mai haɗawa",
+      "Rashin daidaiton murya daga ɗan lokaci zuwa ɗan lokaci",
+      "Aikin da aka ɗauka",
+      "Tsawon lokacin da aka nufa",
+      "Hanyar dawowa ga aikin yau da kullum",
+      "Tsarin Hadarin",
+      "Yadda Avana ke ba da shawara, nazari, da aiwatar da canje-canjen haɗari a fadin Hub da LP Rassa na Kayayyaki.",
+      "Tsarin Kasada Avana yana bayyana yadda ake bayar da shawara, duba, da aiwatar da canje-canjen sigogi a duk Hub da LP Collateral Spokes. Yana rufe kulawa da ake amfani da su lokacin da tsarin ke daidaita iyakokin bayar da bashi da aro, saitunan LT/LTV, shigar da kudin ruwa, matsayin kasuwa, da sauran sigogi da suke dogara da farashi, amfani, zurfin tafkin, tarin, canjin kudi, halayen peg, masu katsewa na'ura, lafiyar matsayin, da yanayi mai alaka.",
+      "LP jinginar ba shine nau'in dukiya guda ɗaya ba. Tsayayyun LPs, LPs mai alaƙa da kadarori, rukuni masu nauyi, danko mai yawa, da sauran ƙirar AMM na iya samun hanyar kimanta kashin kansu, hanyar sayarwa, da yanayin gazawa. Tsarin yana nan don waɗannan bambance-bambancen su kasance a cikin tsarin sabuntawa maimakon ɓoyewa a bayan saitin haɗari ɗaya na gama-gari.",
+      "Ayyuka uku suna kasancewa daban a duk tsawon wannan tsarin: Avana Mai Fara Hadari, Avana Mai Kula da Hadari, da Avana Mai Kare Hadari. Bangaren da ke ba da shawarar canjin yau da kullum ba shi ne bangaren da ke duba shi kai tsaye ba, kuma rawar da za ta iya aiki yayin gaggawa an takaita ta da gangan fiye da hanyar yau da kullum.",
+      "Ka'idar aiki:",
+      "Canje-canje na yau da kullum suna bin wata hanya ta dindindin don haka ka’ida za ta iya bambance kulawa ta al’ada na sigogi daga dakile gaggawa. Tsarin da aka saba shi ne sanarwa ga jama’a, gabatarwa, binciken iyaka, lukewar lokaci, bita na Guardian, da aiwatarwa idan ba a ƙi shawarar ba.",
+      "Canje-canje na sigogi ba duka suke ɗauke da irin wannan haɗari ba, don haka tsarin yana rarraba su bisa yawan iko da ya kamata su buƙata da yadda sauri zasu iya motsawa.",
+      "Duk sabunta al'ada ya kamata a buga shi kafin gabatarwa a cikin tsari wanda ke ba wa masu haɓakawa, masu amfani, da masu duba damar kwatanta sanarwar da ainihin aikin da aka sanyaya daga baya.",
+      "Mafi ƙanƙantar matsayin bayyanawa",
+      "Bayyanawa akai-akai yana sauƙaƙa don duba wani shiri don ƙaruwar iyaka, rashin daidaiton tsammani, ko kuskuren aiwatarwa na yau da kullum.",
+      "Ayyukan gaggawa na nufin kakkabe matsala ne, ba don daidaita abubuwa a kullum ba. Ya kamata a yi amfani da su kaɗan, a kiyaye su cikin iyaka kamar yadda zai yiwu, sannan a tsara su ta yadda za a iya komawa ga hanyar al'ada da zarar an fahimci haɗarin nan take. Mai Kariya na Hadari ya kamata ya aikata ne kawai lokacin da yanayin gazawa da aka bayyana ko wanda ake da tabbacin gaske ya sa hanyar lokaci ta al'ada ba ta da aminci.",
+      "Abubuwan da ke haifar da gaggawa",
+      "Bukatun bayyanawa bayan aiki",
+      "Ikon gaggawa yana wanzuwa ne kawai don shari'o'in gazawa da aka bayyana ko waɗanda ke da yiwuwar gaske inda jiran hanyar agogo ta al'ada ba lafiya. Ba hanya ce ta haɓakar yau da kullum ko ingantawa ba.",
+      "Shawarwari, bita, da dakile gaggawa suna ci gaba da zama daban saboda LP jinginar kadarori tarin kasuwanni ne masu tsarin daban-daban da hanyoyin gazawa, ba jerin kadara guda daya da za a iya musanya ba."
+    ]
+  }
+}

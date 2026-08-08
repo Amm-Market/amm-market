@@ -1,7 +1,8 @@
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import type { LucideIcon } from "lucide-react"
 import { ShieldCheck, TriangleAlert, Undo2 } from "lucide-react"
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
+import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 
 const liquidationProtectionSteps: {
   title: string
@@ -49,8 +50,8 @@ function LiquidationCard({
   )
 }
 
-export default function PositionSafetyCardsSection() {
-  return (
+export default async function PositionSafetyCardsSection() {
+  return withMarketingI18n(["position-safety-cards-section"], (
     <section>
       <div className="space-y-3 text-left">
         <SectionEyebrow tone="violet">Liquidations</SectionEyebrow>
@@ -80,5 +81,5 @@ export default function PositionSafetyCardsSection() {
         .
       </p>
     </section>
-  )
+  ))
 }

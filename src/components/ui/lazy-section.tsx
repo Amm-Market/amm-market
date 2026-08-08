@@ -41,7 +41,9 @@ export function LazySection({
   fallback = null,
   minHeight = "200px",
 }: LazySectionProps) {
-  const [isVisible, setIsVisible] = useState(false)
+  // Start visible so SSR ships real (localized) section content instead of
+  // empty fallbacks. IO still runs but only as a no-op once already shown.
+  const [isVisible, setIsVisible] = useState(true)
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

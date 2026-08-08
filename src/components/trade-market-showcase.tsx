@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { lookupPhrase, usePhraseMap } from "@/components/phrase-map-context"
 
 type MarketCategory = "stablecoins" | "ethereum" | "bitcoin" | "others"
 type LogoSet = [string, string?]
@@ -171,6 +172,8 @@ function MarqueeRow({
 }
 
 export default function TradeMarketShowcase() {
+  const map = usePhraseMap()
+  const t = (text: string) => lookupPhrase(map, text)
   const [selectedTab, setSelectedTab] = useState<MarketCategory>("stablecoins")
 
   const filteredItems = useMemo(() => {
@@ -193,9 +196,9 @@ export default function TradeMarketShowcase() {
       <div className="site-content-shell">
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="emerald">Supply markets</SectionEyebrow>
-            <SectionTitle className="max-w-[16ch] md:max-w-none md:whitespace-nowrap">
-              Lend across markets
+            <SectionEyebrow tone="emerald">{t("Supply markets")}</SectionEyebrow>
+            <SectionTitle className="max-w-[16ch] md:max-w-none">
+              {t("Lend across markets")}
             </SectionTitle>
           </div>
 
@@ -216,7 +219,7 @@ export default function TradeMarketShowcase() {
                     ].join(" ")}
                     aria-pressed={active}
                   >
-                    {tab.label}
+                    {t(tab.label)}
                   </button>
                 )
               })}

@@ -1,0 +1,321 @@
+{
+  "categories": [
+    {
+      "id": "general",
+      "name": "Genel sorular",
+      "summary": "",
+      "questions": [
+        {
+          "id": "what-is-avana",
+          "q": "Avana nedir?",
+          "a": "Avana, LP teminat için inşa edilmiş bir borç verme protokolüdür. Kullanıcıların desteklenen AMM pozisyonlarını yatırmasına, bu pozisyonları temel havuzda aktif tutmasına ve bunlara karşı Aave v4 altyapısı aracılığıyla borç almasına olanak tanır.\n\nTemel fikir, LP sermayenin bir havuzun içinde olması nedeniyle kullanılamaz hale gelmek zorunda olmamasıdır. Avana, desteklenen LP pozisyonlarını, orijinal pozisyon takasları desteklemeye, ücret kazanmaya devam ederken ve kendi AMM piyasasına bağlı kalırken kredi sağlayabilecek teminata dönüştürür."
+        },
+        {
+          "id": "what-problem-does-avana-solve",
+          "q": "Avana hangi problemi çözer?",
+          "a": "Likidite sağlayıcıları, sermayeleri karşılığında borç alabilmeden önce genellikle likiditeyi çekmek zorundadır. Bu, havuzdan çıkmak, ücret gelirinden vazgeçmek ve zaten oluşturdukları piyasa pozisyonunu kesintiye uğratmak anlamına gelir.\n\nAvana, desteklenen LP pozisyonlarını teminat olarak kullanılabilir hale getirerek bunu çözer. LP aktif kalır, Avana pozisyonu takip eder ve değerler, Aave v4 ise dahili bir kasa teminat tokenı aracılığıyla borç tarafı muhasebesini yönetir."
+        },
+        {
+          "id": "how-is-avana-different-from-standard-lending",
+          "q": "Avana standart bir kredi piyasasından nasıl farklıdır?",
+          "a": "Standart kredi piyasaları genellikle teminatı basit token bakiyeleri olarak ele alır: ETH, BTC, stablecoinler veya diğer ERC-20 varlıklar. Avana, zamanla şekil değiştiren teminatlar için inşa edilmiştir. LP pozisyonları birden fazla varlık içerebilir, ücret biriktirebilir, fiyat hareketiyle değişebilir, tek taraflı hale gelebilir veya belirli bir çözme yoluna ihtiyaç duyabilir.  \n\nBu nedenle, Avana teminatı LP piyasa seviyesinde değerlendirir. Desteklenen her havuz veya LP ailesi kendi değerleme mantığına, teminat faktörlerine, ödünç alınabilir varlıklara, tasfiye varsayımlarına ve risk limitlerine sahip olabilir."
+        },
+        {
+          "id": "which-amms-can-avana-support",
+          "q": "Hangi AMMleri Avana destekleyebilir?",
+          "a": "Avana, piyasaya sürüldükçe Uniswap, Balancer, Curve ve Aerodrome gibi AMM’larda küratörlüğü yapılan LP teminat piyasalarını destekler. Destek, her havuza otomatik olarak verilmez, yalnızca onaylı havuz bazında onaylanır.\n\nHer desteklenen piyasanın belirli gereksinimleri vardır: güvenilir varlık fiyatlaması, yeterli likidite derinliği, tanımlanmış bir tasfiye yolu, piyasa tavanları ve havuz tipi ile uyumlu teminat ayarları. Bu nedenle, piyasalar daha geniş kapsam genişlemeden önce küratörlü kalır."
+        },
+        {
+          "id": "does-avana-replace-the-amm",
+          "q": "Avana, likiditemin bulunduğu AMM ile yer değiştiriyor mu?",
+          "a": "Hayır. AMM hâlâ takasları, havuz durumunu, fiyat hareketini ve ücret üretimini yönetiyor. Avana, desteklenen LP pozisyonların etrafında bir teminat ve kredi katmanı ekliyor.\n\nBir uygun pozisyonu Avana'e yatırdığınızda, protokol gerçek LP teminatını takip eder ve bunu borç tarafı muhasebesiyle bağlar. Temel AMM, likidite pozisyonunun bulunduğu ve ücret kazandığı yer olmaya devam eder."
+        }
+      ]
+    },
+    {
+      "id": "protocol-architecture",
+      "name": "Protokol mimarisi",
+      "summary": "",
+      "questions": [
+        {
+          "id": "how-does-avana-work-at-a-high-level",
+          "q": "Avana yüksek seviyede nasıl çalışır?",
+          "a": "Avana üç adımda çalışır. İlk olarak, bir kullanıcı, Avana'ye desteklenen bir LP pozisyonu yatırır. İkincisi, Avana, pozisyonu altında yatan varlıkları, havuz yapısını, volatiliteyi, korelasyonu, likidite derinliğini ve tasfiye riskini okuyarak değerlendirir. Üçüncüsü, pozisyon piyasa kontrollerinden geçtikten sonra, kullanıcı risk ayarlanmış değeri karşılığında borç alabilir.  \n\nLP pozisyonu, AMM içinde aktif kalır. Avana teminat kaydını, değerlemeyi ve LP'e özgü risk mantığını yönetirken, Aave v4 bağlı Hub-and-Spoke modeli aracılığıyla borç tarafı kredi ve muhasebesini yönetir."
+        },
+        {
+          "id": "why-aave-v4-hub-and-spoke",
+          "q": "Avana neden Aave v4 Hub-and-Spoke altyapısını kullanıyor?",
+          "a": "Avana, LP teminatın aynı anda paylaşılan likidite ve izole risk mantığına ihtiyaç duyması nedeniyle Aave v4’yi kullanır. Hub, ortak parasal katmanı yönetir: rezervler, muhasebe, faiz oranı modelleri ve küresel kredi koordinasyonu.\n\nSpokes ise LP’e özgü işleri yönetir: havuz teminat kaydı, pozisyon değerlemesi, risk uygulaması ve tasfiye gerçekleştirme. Bu sayede sabit havuzlar, korele çiftler, volatil çiftler ve yoğunlaştırılmış likidite piyasaları, tek bir genel risk modeline zorlanmak yerine gerçekten ihtiyaç duydukları kuralları kullanabilirler."
+        },
+        {
+          "id": "what-is-a-borrow-spoke",
+          "q": "Borrow Spoke nedir?",
+          "a": "Bir Borç Konuğu, izole bir LP-teminat piyasasıdır. Hangi havuzların desteklendiğine, her LP pozisyonun nasıl değerlendirildiğine, hangi teminat faktörlerinin uygulandığına, hangi varlıkların ödünç alınabileceğine ve o piyasa için tasfiye işlemlerinin nasıl gerçekleştiğine karar verir. \n\nBorç Konukları ayrılmıştır çünkü LP pozisyonları aynı şekilde davranmaz. Bir stabilcoin LP, ilişkilendirilmiş ETH-stake edilmiş ETH LP ve volatil bir yönetim tokenı LP farklı risk ayarları, farklı limitler ve bazen farklı tasfiye yolları gerektirir."
+        },
+        {
+          "id": "what-are-vault-tokens",
+          "q": "Avana kasa jetonları nedir?",
+          "a": "Kasa tokenleri, sistemin Aave tarafında onaylanmış LP temsili teminatı gösteren dahili ERC-20 muhasebe varlıklarıdır. Örneğin, desteklenen bir LINK/ETH pozisyon, bir kasaLINKETH tarzı teminat tokenine eşlenebilirken, bir WETH/USDC pozisyon, bir kasaWETHUSDC tarzı token ile eşlenebilir.\n\nKasa tokeni köprüdür. Avana gerçek LP pozisyonu ve değerini takip eder, Aave Adaptör ilgili kasa tokenini Aave v4 içine sağlar ve Aave bu tokeni teminat muhasebesi için kullanır. Kullanıcı sadece soyut bir kapsayıcıya karşı borçlanmaz; kasa tokeni, arkasındaki takip edilen LP pozisyon tarafından desteklenmeye devam eder."
+        },
+        {
+          "id": "what-are-the-main-protocol-modules",
+          "q": "Avana protokolünün ana bölümleri nelerdir?",
+          "a": "Avana birkaç dar modül etrafında inşa edilmiştir. LP Pozisyon Yöneticisi, sahibi, havuz, çift, ücret seviyesi, aralık, likidite, mevcut değer, tahakkuk eden ücretler ve teminat durumunu içeren gerçek LP pozisyonunu kaydeder. Risk Modülü, pozisyon borç desteklemeden önce havuzu, varlıkları, derinliği, aralığı ve piyasa değerlerini onaylar.\n\nTeminatlandırma Modülü, fiyatlandırmayı çeker, pozisyonu değerlendirir, desteklenen teminat miktarına karar verir ve dahili kasa tokenını basar veya kaldırır. Aave Adaptörü, Aave tarafıyla ilgilenir, kasa teminatı sağlar, çeker ve Aave entegrasyonunu LP-özgü mantıktan ayrı tutar."
+        }
+      ]
+    },
+    {
+      "id": "lp-collateral",
+      "name": "LP teminatı",
+      "summary": "",
+      "questions": [
+        {
+          "id": "what-happens-when-i-deposit-lp-collateral",
+          "q": "LP teminat yatırdığımda ne olur?",
+          "a": "Desteklenen bir LP pozisyonunu yatırdığınızda, Avana pozisyonu kaydeder ve ilgili Borçlu Dallanmasına yönlendirir. Protokol, havuzun onaylı olduğunu doğrular, pozisyonu yeniden oluşturur, risk ayarlarını kontrol eder ve o pazara bağlı teminat değerini hesaplar.  \n\nPozisyon bu kontrollerden geçtiğinde, Avana borç tarafı muhasebesi için eşleşen dahili kasa tokenini basar. Yatırmak, otomatik olarak varlık ödünç almak anlamına gelmez; bunun yerine, hesap sağlıklı olduğu sürece ve piyasada kullanılabilir likidite bulunduğu sürece kullanabileceği bir borç alma kapasitesi oluşturur."
+        },
+        {
+          "id": "does-my-lp-stay-active",
+          "q": "Mevduattan sonra LP pozisyonum aktif kalıyor mu?",
+          "a": "Evet. Desteklenen LP pozisyonlar, teminat olarak hizmet ettikleri sürece aktif kalır. Likidite, altında yatan AMM pozisyonla bağlı kalmaya devam eder, bu yüzden havuz takasları işlemeye devam eder ve pozisyon, AMM kurallarına göre ücret ve teşvik biriktirmeye devam eder.\n\nTeminat değerini değiştiren işlemler, borç açık olduğu sürece Avana tarafından kontrol edilir. Likidite çekmek, ücret talep etmek, aralığı değiştirmek veya pozisyonu değiştirmek gibi işlemler Borrow Spoke üzerinden yürütülür çünkü bu işlemler krediyi destekleyen değeri etkiler."
+        },
+        {
+          "id": "can-i-claim-lp-fees",
+          "q": "Borç alırken LP ücretlerini talep edebilir miyim?",
+          "a": "Avana, değerleme modelinde ana likiditeyi birikmiş ücretlerden ayırır. Bu, protokolün ücret gelirini tanımasını ve talep edilebilir ücretleri serbest bırakmasını sağlarken, LP ana parayı teminat olarak aktif tutar. \n\nÜcret talepleri, öncesi ve sonrası sağlık kontrollerinden geçer. Ücret değeri çıkarıldığında hesabın gereken teminat sınırının altına düşmesi durumunda, Avana talebi kullanıcı borcunu ödeyene veya daha fazla teminat ekleyene kadar engeller."
+        },
+        {
+          "id": "are-lp-fees-part-of-collateral-value",
+          "q": "Teminat değerine LP ücreti dahil mi?",
+          "a": "Biriken ücretler, ana likiditeden ayrı olarak izlenir. Avana’in oracle modeli, ana değer ile ücret değerini ayırır, böylece protokol, pozisyonun ne kadarının temel likidite ve ne kadarının talep edilebilir ücret geliri olduğunu anlar.\n\nBu ayrım likidasyon sırasında önemlidir. Avana, piyasa yolu bunu desteklediğinde, borcu karşılamak için temel LP pozisyonunun ne kadarının çözülmesi gerektiğini azaltarak, ana likiditeden önce biriken ücretleri uygular."
+        },
+        {
+          "id": "when-can-i-withdraw-collateral",
+          "q": "LP teminatı ne zaman çekebilirim?",
+          "a": "Borç tamamen ödendikten sonra veya Avana, kalan hesabın çekim sonrası hâlâ sağlık kontrollerinden geçtiğini onayladıktan sonra teminatı çekebilirsiniz. Tam ödeme, LP pozisyonu artık açık borcu güvence altına almadığı için en temiz çekim yoludur.  \n\nKısmi teminat değişiklikleri Borrow Spoke üzerinden gerçekleştirilir. Avana, istenen LP pozisyonunu kaldırdıktan veya değiştirdikten sonra hesabı yeniden hesaplar ve yalnızca kalan onaylı teminat hâlâ mevcut borcu destekliyorsa teminatı serbest bırakır."
+        }
+      ]
+    },
+    {
+      "id": "valuation-oracles",
+      "name": "Değerleme ve oracle’lar",
+      "summary": "",
+      "questions": [
+        {
+          "id": "how-does-avana-price-lp-collateral",
+          "q": "Avana, LP teminatı nasıl fiyatlandırır?",
+          "a": "Avana fiyatlar, pozisyonu yeniden inşa ederek ve içindeki varlıkları değerleyerek LP teminatı belirler. Fungible LPlar için protokol, değeri dış varlık fiyatları ve havuz bakiye yeniden inşasından türetir. Yoğunlaştırılmış likidite için, pozisyonu likidite, aralık, mevcut tick, token maruziyeti ve birikmiş ücretler açısından ayrıştırır.\n\nSonuç daha sonra geri kazanılabilir teminat değerine indirgenir. Borç alma gücü, piyasanın risk varsayımları altında pozisyonun gerçekte neyi destekleyebileceğine dayanır, iyimser bir net varlık değerine değil."
+        },
+        {
+          "id": "how-does-avana-reduce-oracle-risk",
+          "q": "Avana, oracle ve fiyatlama riskini nasıl azaltır?",
+          "a": "Avana, LP teminatları için çift-kehanet fiyatlandırma çerçevesi kullanır. Chainlink fiyat beslemeleri, temel varlıklar için birincil referans sağlar, oysa AMM kaynaklı TWAP’ler, zincir üstü likiditeden elde edilen bağımsız bir doğrulama katmanı görevi görür.  \n\nBorçlanma gücü yalnızca fiyat kaynakları piyasanın tolerans bandı içinde kaldığında verilir. Bu, flaş-kredi manipülasyonuna, geçici AMM fiyat bozulmalarına, güncellemelerin gecikmesine ve tehlikeli borç oluşturan kötü teminat işaretlerine maruziyeti azaltır."
+        },
+        {
+          "id": "what-is-recoverable-value",
+          "q": "Geri kazanılabilir değer nedir?",
+          "a": "Geri kazanılabilir değer, Avana tarafından borç alma ve tasfiye kararlarında kullanılan iskonto edilmiş teminat değeridir. Bu değer, LP pozisyonunun, stres altında çözülme, satış, transfer veya uzlaşma yolunun hesaba katılması sonrasında ne kadar değerli olduğunu yansıtır.\n\nGeri kazanılabilir değer, tasfiye yolunun slippage (kayma), fiyat etkisi, aralık hareketi, volatilite, ücret yönetimi veya sınırlı rota derinliği gibi unsurları içerdiği durumlarda teorik LP değerinden daha düşüktür. Avana, borcun korunmasını sağlayan değer olduğu için geri kazanılabilir değere karşı borçlanmayı boyutlandırır."
+        },
+        {
+          "id": "why-are-concentrated-liquidity-positions-treated-carefully",
+          "q": "Yoğunlaştırılmış likidite pozisyonları neden dikkatlice ele alınır?",
+          "a": "Yoğunlaştırılmış likidite pozisyonları, fiyat hareket ettikçe maruziyeti hızlı bir şekilde değiştirir. Bir pozisyon çoğunlukla tek bir varlık haline gelebilir, aralık dışına çıkabilir, ücret kazanmamayı durdurabilir veya tam NFT-pozisyon seviyesinde tasfiyeyi gerektirebilir.\n\nAvana, NFT'yi statik bir token bakiyesi olarak ele almak yerine, gerçek pozisyon durumunu parçalayarak yoğun pozisyonları değerlendirir. Daha sonra piyasa, pozisyonun aralığa, envantere ve çözülme riskine uygun teminat faktörleri, tavanlar ve tasfiye varsayımları uygular."
+        },
+        {
+          "id": "what-data-does-avana-monitor",
+          "q": "Avana hangi piyasa verilerini izliyor?",
+          "a": "Borrow Spokes, LP teminat kalitesini etkileyen sinyalleri izler: havuz bileşimi, token fiyatları, varlık korelasyonu, volatilite, likidite derinliği, ücret tahakkuku, oracle güvenilirliği ve tasfiye maliyeti.\n\nBu sinyaller, piyasanın teminat muamelesine yön verir. Stabil ve yüksek korelasyonlu havuzlar, tasfiye ve slipaj profilleri farklı olduğu için, volatil veya az işlem gören çiftlerden farklı limitler alır."
+        }
+      ]
+    },
+    {
+      "id": "borrowing",
+      "name": "Borçlanma piyasaları",
+      "summary": "",
+      "questions": [
+        {
+          "id": "how-does-borrowing-work",
+          "q": "Avana'de borçlanma nasıl çalışır?",
+          "a": "Borç alma, Borç Konuşucu sizin LP teminatınızı kabul edip değer biçtikten sonra gerçekleşir. Bir varlık talep ettiğinizde, konuşucu kalan kapasitenizi kontrol eder, yeni borç sonrası pozisyonun sağlıklı kalmasını onaylar ve varlık uygunsa likiditeyi Merkez'den çeker.\n\nBorç alınan varlık kullanıcıya gönderilir ve hesap, borç tarafı muhasebe katmanı aracılığıyla borcu kaydeder. Zamanla faiz birikir, bu nedenle teminat pozisyonu değişmese bile sağlık durumu değişebilir."
+        },
+        {
+          "id": "how-is-borrowing-capacity-calculated",
+          "q": "Borçlanma kapasitesi nasıl hesaplanır?",
+          "a": "Borçlanma kapasitesi, Bir Borç Alma Bağlantısı içindeki onaylanmış LP pozisyonların risk ayarlı değerinden elde edilir. Avana her pozisyonu yeniden yapılandırır, temel maruziyeti fiyatlar, havuz düzeyinde risk uygulaması yapar ve ardından piyasanın teminat faktörünü uygular.\n\nBorç Alma Bağlantısı, bu kapasiteyi uygulama için Hub’a bildirir. Bir kullanıcının aynı piyasada birden fazla onaylanmış pozisyonu olduğunda, Avana her pozisyonu kendi havuzu, aralığı, likiditesi ve risk varsayımları altında değerlerken, toplam kapasiteyi birleştirir."
+        },
+        {
+          "id": "why-is-borrow-power-lower-than-lp-value",
+          "q": "Borçlanma gücü, LP değerimden neden daha düşük?",
+          "a": "Borçlanma gücü daha düşüktür çünkü Avana tam LP işaretini değil, temkinli teminat değerini kullanır. LP pozisyonları fiyat sapması, geçici kayıp, aralık kayması, likidite stresi ve tasfiye kayması nedeniyle değer kaybedebilir.\n\nLP değeri ile borçlanma gücü arasındaki fark güvenlik tamponudur. Bu, borcun normal koşullar altında gösterilen en iyi değer yerine geri alınabilir teminat değerine göre boyutlandırılmasını sağlayarak piyasayı korur."
+        },
+        {
+          "id": "what-assets-can-i-borrow",
+          "q": "Hangi varlıkları ödünç alabilirim?",
+          "a": "Ödünç alınabilir varlıklar her pazar için belirlenir. Avana ödünç alma piyasaları, büyük stablecoinler gibi likit varlıklara odaklanır, GHO, ETH, BTC ve piyasanın likidite, değer ve risk yapılandırmasına uyan diğer varlıklar.\n\nArayüz, her pazar için aktif ödünç alma setini gösterir. Desteklenen bir LP teminat türü, her ödünç alma varlığının otomatik olarak kilidini açmaz; her borç varlığı, pazar yapılandırmasının bir parçasıdır."
+        },
+        {
+          "id": "can-i-borrow-against-multiple-positions",
+          "q": "Birden fazla LP pozisyona aynı anda karşılık olarak ödünç alabilir miyim?",
+          "a": "Evet, pozisyonlar ilgili pazarın içinde desteklendiğinde. Avana aynı Borrow Spoke içindeki birden fazla onaylanmış LP pozisyonu üzerinden borçlanma gücünü birleştirebilir ve kullanıcıya o pazar için tek bir birleşik kredi alanı sağlar.\n\nBirleştirme riski körü körüne birleştirmez. Her pozisyon kendi havuzu, aralığı, likiditesi, ücretleri ve risk muamelesine göre kapasiteye katkıda bulunur ve toplam hesap gerekli sağlık eşiğinin üzerinde kalmalıdır."
+        }
+      ]
+    },
+    {
+      "id": "supplying-earning",
+      "name": "Arz ve kazanç",
+      "summary": "",
+      "questions": [
+        {
+          "id": "how-do-lenders-use-avana",
+          "q": "Kredi verenler Avana'i nasıl kullanır?",
+          "a": "Borç verenler, ETH, BTC, GHO, USDC, USDT veya diğer desteklenen varlıklar gibi varlıkları, protokolün borç verene yönelik tarafına sağlar. Bu sermaye, LP teminat piyasalarındaki borçlanmayı desteklemek için Hub üzerinden yönlendirilir.\n\nBorç verenler, LP aralıklarını, geçici kaybı veya AMM'ya özgü teminat işlemlerini yönetmez. Borrow Spokes, LP kredi onayını ve likidasyon mantığını yönetirken, borç veren sermayesi kredi katmanını besler."
+        },
+        {
+          "id": "where-does-supplier-yield-come-from",
+          "q": "Tedarikçi verimi nereden geliyor?",
+          "a": "Tedarikçi getirisi, borç alanların LP teminatla desteklenen likiditeye erişmek için faiz ödemesinden gelir. Avana’in modeli, paylaşılan Hub taban oranını, fon sağlanan LP pazarlarına bağlı spoke düzeyindeki risk primleriyle birleştirir.\n\nBu, getirinin hem normal kullanım hem de LP teminatlı borçlanmanın yarattığı ek talebi yansıtabileceği anlamına gelir. Faiz oranları hala piyasa koşulları, mevcut likidite, kullanım ve altta yatan borç alan pazarların risk profili ile hareket eder."
+        },
+        {
+          "id": "do-lenders-manage-lp-collateral",
+          "q": "Kredi verenler teminatı kendileri mi yönetir?",
+          "a": "Hayır. Borç verenler, desteklenen kredi piyasalarına temiz sermaye sağlar. LP aralıklarını seçmiyor, LP ücretleri talep etmiyor veya belirli bir AMM pozisyonun nasıl tasfiye edileceğine karar vermiyorlar.\n\nBu ayrım, Lend Spoke'un amacıdır. Borç veren sermayesi, özel LP destekli borçlu talebini desteklerken, Borrow Spokes teminat değerlemesi, sağlık kontrolleri ve tasfiye işlemlerini borç veren iş akışından izole tutar."
+        },
+        {
+          "id": "what-protects-lender-capital",
+          "q": "Borç verici sermayesini ne korur?",
+          "a": "Avana, aşırı teminatlandırılmış borçlanma, muhafazakar LP değerlemesi, çift oracle kontrolleri, piyasa üst sınırları, sağlık faktörü uygulaması ve LP-özgü tasfiye yolları ile borç veren sermayesini korur. Her Borç Aksı, Hub likiditesinden borç çekilmeden önce teminatı kendi havuz risklerine göre fiyatlandırır.\n\nProtokol yine de DeFi riskini taşır: akıllı sözleşme riski, oracle riski, tasfiye yürütme riski ve piyasa stresi. Avana, her LP pozisyonunu basit bir token bakiyesi gibi ele almak yerine, LP teminatını piyasa seviyesinde ölçerek bu riski sınırlar."
+        }
+      ]
+    },
+    {
+      "id": "liquidations",
+      "name": "Sağlık ve likidasyon",
+      "summary": "",
+      "questions": [
+        {
+          "id": "what-is-health-factor",
+          "q": "Sağlık faktörü nedir?",
+          "a": "Sağlık faktörü, bir Ödünç Alma Dönencesi içindeki risk ayarlı teminat değeri ile mevcut borç arasındaki ilişkiyi ölçer. Basitleştirilmiş model, ayarlanmış teminat değerinin mevcut borca bölünmesiyle hesaplanır.\n\nAyarlanmış teminat değeri zaten Avana’in LP değerlemesini, teminat faktörlerini, havuz düzeyinde risk işleme yöntemlerini ve geri kazanılabilir değer varsayımlarını içerir. Sağlık seviyesi tasfiye sınırının altına düşerse, pozisyon tasfiye için uygun hale gelir."
+        },
+        {
+          "id": "what-affects-health-factor",
+          "q": "Sağlık faktörümü ne etkiler?",
+          "a": "Sağlık faktörü, teminat değeri değiştiğinde, borç değiştiğinde, ücretler talep edildiğinde, teminat geri çekildiğinde, kaldıraç eklendiğinde veya piyasa parametreleri güncellendiğinde değişir. LP pozisyonlar ayrıca token fiyatları hareket ettiğinde, havuz envanteri kaydında değişiklik olduğunda, ücretler biriktiğinde veya yoğunlaştırılmış pozisyonlar menzile girip çıktığında değişebilir.\n\nDaha fazla borç almak sağlığı düşürür çünkü borç artar. Borcu ödemek, onaylanmış teminat eklemek veya pozisyonu azaltmak sağlığı iyileştirir çünkü hesap, borca kıyasla daha fazla teminat desteğine sahip olur."
+        },
+        {
+          "id": "how-does-liquidation-work",
+          "q": "Avana'de tasfiye nasıl çalışır?",
+          "a": "Tasfiye, bir hesabın sağlık faktörü tasfiye eşiğinin altına düştüğünde başlar. Aave, borç hesaplaması, sağlık kontrolleri ve tasfiye giriş noktasını ERC-20 kasa teminatına karşı yönetir.  \n\nAvana, o kasa tokeninin arkasındaki LP takasını yönetir. Adaptör, kasa teminatını yakar, tasfiyeyi gerçek LP pozisyonuna geri eşler ve takas katmanı piyasa yolunu izler: çöz, sat, açık artırma yap veya destekleyen pozisyonu transfer et. Önce borç karşılanır, ardından likidatör ödülü ve takas maliyetleri, fazlalık ise piyasa kuralıyla işlenir."
+        },
+        {
+          "id": "are-liquidations-permissionless",
+          "q": "Sağlıksız bir pozisyonu kim tasfiye edebilir?",
+          "a": "Tasfiyeler, bir pozisyon tasfiye eşiğini geçtiğinde izin gerektirmez. Herhangi bir uygun tasfiye edici, izin verilen borç miktarını geri ödeyebilir ve tasfiye yolunu tetikleyebilir.\n\nLP teminat, basit token teminatına göre geri alınması daha zordur, bu yüzden Avana aynı zamanda özel tasfiye teminatını da hesaba katar. Tasfiye ediciler, protokol tarafından kullanılan aynı risk durumu, kasa-token eşlemesi, yol derinliği ve geri alma varsayımlarını takip eder."
+        },
+        {
+          "id": "what-happens-to-fees-during-liquidation",
+          "q": "Tasfiye sırasında LP ücretlerine ne olur?",
+          "a": "Avana birikmiş ücretleri ana likiditeden ayırır. Tasfiye sırasında, piyasa yolu bu sırayı desteklediğinde birikmiş ücretler, ana likiditeden önce uygulanır.\n\nBu, temel LP pozisyonunun ne kadarının bozulması gerektiğini azaltır. Ücret değeri yeterli borcu karşılamazsa, tasfiye katmanı, ilgili piyasanın tasfiye yoluna göre gereken LP teminatı geri alır veya aktarır."
+        }
+      ]
+    },
+    {
+      "id": "governance",
+      "name": "Yönetişim süreci",
+      "summary": "",
+      "questions": [
+        {
+          "id": "how-are-new-pools-added",
+          "q": "Yeni LP havuzlar nasıl eklenir?",
+          "a": "Yeni LP havuzlar, piyasa incelemesi ve onayı yoluyla eklenir. Bir havuzun güvenilir temel varlık fiyatlandırmasına, yeterli likiditeye, net çözünme varsayımlarına ve teminat türüne uygun risk parametrelerine sahip olması gerekir.\n\nAvana, değerleme ve tasfiye işlemlerinin temiz kalması için özenle seçilmiş LP piyasalarla başlar. Oracle desteği, likidite derinliği ve risk verileri geliştikçe daha geniş havuz kapsamı zaman içinde genişleyebilir."
+        },
+        {
+          "id": "can-risk-parameters-change",
+          "q": "Lansmandan sonra risk parametreleri değişebilir mi?",
+          "a": "Evet. Piyasa koşulları değiştikçe risk parametreleri değişebilir. Bir havuz, ilk listelendiği zamana göre daha az likit, daha volatil, daha az korelasyona sahip veya çözülmesi daha zor hale gelebilir.\n\nParametre güncellemeleri, teminat faktörlerini, sınırları, desteklenen havuzları, ödünç alınabilir varlıkları, duraklamaları, tasfiye eşiklerini ve tasfiye bonuslarını etkileyebilir. Açık borcu olan kullanıcılar bu güncellemeleri takip eder çünkü parametre değişiklikleri borçlanma gücünü ve sağlık faktörünü etkiler."
+        },
+        {
+          "id": "where-can-i-follow-governance",
+          "q": "Yönetim tartışmalarını nereden takip edebilirim?",
+          "a": "Çoğu Avana yönetişim güncellemeleri ve piyasa tartışmaları, https://twitter.com/avana_labs adresinde X üzerindeki Avana Labs aracılığıyla gerçekleşir. Bu kanal yeni havuzları, piyasa parametrelerini, entegrasyonları, güvenlik incelemelerini ve ürün aşamalarını kapsar.  \n\nDaha uzun öneriler, risk notları ve dış yönetişim konuları ilgili olduklarında Avana Labs'tan bağlantı verilir. Büyük pozisyonlar için kullanıcılar, bir havuza güvenmeden önce en son Avana Labs güncellemelerini ve canlı piyasa parametrelerini inceler."
+        },
+        {
+          "id": "can-interface-fees-change",
+          "q": "Arayüz ücretleri zamanla değişebilir mi?",
+          "a": "Evet. Avana arayüz ve hizmet ücretleri, resmi ön yüzler için operasyonel ayarlardır. Bunlar, teminat, borç, oracle kontrolleri ve tasfiye işlemlerini yöneten temel protokol mekaniklerinden ayrıdır.\n\nBir arayüz ücreti uygulandığında, işlem akışı imza öncesinde bunu gösterir, böylece kullanıcılar ön yüz maliyetini gaz, takas yürütme, protokol faizi ve tasfiye ekonomiklerinden ayırt edebilir."
+        }
+      ]
+    },
+    {
+      "id": "gho-stablecoin",
+      "name": "GHO stablecoin",
+      "summary": "",
+      "questions": [
+        {
+          "id": "can-i-borrow-gho",
+          "q": "Avana aracılığıyla GHO ödünç alabilir miyim?",
+          "a": "GHO, GHO likiditesini içeren piyasalar için Avana’in desteklediği ödünç alma tarafı varlıklarından biridir. Bir piyasa GHO sunuyorsa, kullanıcılar hesabı gereken sağlık eşiğinin üzerinde olduğu sürece onaylanmış LP teminat karşılığında bunu ödünç alabilirler. \n\nGHO ödünç alma, Avana’deki diğer borç varlıkları gibi çalışır: mevcut borcu artırır, sağlık faktörünü etkiler, faiz biriktirir ve uygulanabilir tüm maliyetlerle birlikte GHO olarak geri ödenir."
+        },
+        {
+          "id": "can-gho-be-lp-collateral",
+          "q": "GHO, LP teminatının bir parçası olabilir mi?",
+          "a": "Evet. GHO, belirli GHO havuzu bir Avana piyasası için onaylandığında LP teminatının bir parçası olabilir. Havuz, diğer LP piyasalar gibi değerlendirilir: varlık fiyatlandırması, likidite derinliği, korelasyon, token bileşimi, limitler ve tasfiye yöntemi hepsi önemlidir.\n\nBu, GHO'ün her çift için genel bir onay olarak değerlendirilmediği anlamına gelir. Avana, sadece varlık sembolünü değil, havuz konfigürasyonunu destekler."
+        },
+        {
+          "id": "how-do-i-repay-gho",
+          "q": "GHO borcunu nasıl öderim?",
+          "a": "GHO borcu, GHO artı tahakkuk eden faiz ve uygulanabilir masraflarla geri ödenir. Geri ödeme teyit edildikten sonra, Avana hesabın mevcut borcunu azaltır ve sağlık faktörü iyileşir.\n\nTam geri ödemeden sonra, o borca bağlı teminat kısıtlamaları piyasa kurallarına göre serbest bırakılır ve böylece LP pozisyonu başka bir borç kalmadığında çekilebilir veya değiştirilebilir."
+        }
+      ]
+    },
+    {
+      "id": "multiply-markets",
+      "name": "Multiply piyasaları",
+      "summary": "",
+      "questions": [
+        {
+          "id": "what-is-avana-multiply",
+          "q": "Avana Çarpma nedir?",
+          "a": "Avana Multiply, LP destekli kredi üzerine inşa edilmiş yönetilen kaldıraç iş akışıdır. Bir kullanıcı desteklenen LP teminatını yatırır, Avana bunu değerlendirir ve arayüz, bu borçlanma gücünü tek bir akıştan onaylanmış döngü veya kaldıraç pozisyonu açmak için kullanabilir.\n\nManuel olarak borç almak, takas yapmak, yeniden yatırmak ve birden fazla araçta borcu takip etmek yerine, Multiply pozisyonu tek bir izlenen iş akışına paketler; teminat, borç, kaldıraç seviyesi, sağlık faktörü ve çözme kontrolleri birlikte gösterilir."
+        },
+        {
+          "id": "how-is-multiply-different-from-borrowing",
+          "q": "Çarpma ödünç almadan nasıl farklıdır?",
+          "a": "Borçlanma, kullanıcılara hesap sağlıklı kaldığı sürece doğrudan kullanabilecekleri varlıklar sağlar. Multiply, yönetilen bir strateji içinde LP destekli borçlanma gücünü kullanır; burada borç alınan sermaye onaylı pozisyonlara yönlendirilir ve tek bir pozisyon olarak takip edilir.\n\nMultiply kaldıraç eklediğinden, sermaye verimliliğini ve potansiyel getirileri artırabilir, ancak bu aynı zamanda aşağı yönlü riskleri, tasfiye riskini ve fiyat hareketine duyarlılığı da artırır. Bir pozisyon döngüye alındığında sağlıklı görünüm daha az değil, daha çok önemlidir."
+        },
+        {
+          "id": "do-i-keep-lp-while-using-multiply",
+          "q": "Çarpmayı kullanırken LP'imi koruyor muyum?",
+          "a": "Evet. LP pozisyonu, Multiply pozisyonu açıkken teminat temeli olarak kalır. Kullanıcının kaldıraçlı pozisyon oluşturmak için AMM pozisyonunu tamamen kapatması gerekmez.\n\nLP hâlâ borcu destekliyor, bu yüzden hesap sağlıksız hâle gelirse teminat kurallarına ve tasfiyeye tabidir. Kullanıcılar döngü boyunca teminat değeri, borç, kaldıraç ve tasfiye tamponunu izlerler."
+        },
+        {
+          "id": "what-limits-maximum-leverage",
+          "q": "Maksimum kaldıraç neyi sınırlar?",
+          "a": "Maksimum kaldıraç, teminat kalitesine, havuz likiditesine, volatiliteye, oracle güvenine, borç alınan varlığa, piyasa değerlerine ve tasfiye varsayımlarına bağlıdır. Stabil veya yüksek oranda ilişkilendirilmiş havuzlar genellikle volatil veya az likit havuzlardan farklı kaldıraç limitlerini destekleyebilir.\n\nAvana, kaldıraç, her havuza uygulanan sabit bir çarpan yerine pozisyonun arkasındaki gerçek LP teminat ile sınırlı olduğu için piyasa özel risk kontrolleri kullanır."
+        }
+      ]
+    },
+    {
+      "id": "automation-features",
+      "name": "Otomasyon özellikleri",
+      "summary": "",
+      "questions": [
+        {
+          "id": "can-automation-help-manage-risk",
+          "q": "Otomasyon, pozisyon riskini yönetmeye yardımcı olabilir mi?",
+          "a": "Otomasyon, hesap sağlığını izler ve tasfiye öncesinde geri ödeme, kaldıraç azaltma veya risk azaltma gibi önceden tanımlanmış eylemleri tetikleyebilir. Bu önemlidir çünkü LP destekli pozisyonlar hem borç birikimi hem de havuz seviyesi piyasa değişiklikleri ile hareket eder.\n\nOtomasyon bir risk yönetimi aracıdır, garanti değildir. Uygulama hâlâ piyasa hareketlerinden, likidite koşullarından, işlem gecikmelerinden, oracle güncellemelerinden ve rota kullanılabilirliğinden etkilenebilir."
+        },
+        {
+          "id": "can-lp-collateral-support-perps-exposure",
+          "q": "⊟31⊟ teminat, suçlular tarzı maruziyeti destekleyebilir mi?",
+          "a": "LP teminat, LP destekli krediyi kontrollü stratejilere yönlendiren piyasalar ve entegrasyonlar aracılığıyla onaylanmış kaldıraç veya perps tarzı pozisyonu destekler. LP pozisyonu borçlanma gücü yaratır ve bu kredi, sadece basit bir cüzdan borcu olarak kullanılmak yerine desteklenen pozisyon yolları aracılığıyla kullanılabilir.\n\nKullanılabilirlik, aktif piyasa yapılandırmasıyla tanımlanır: teminat türü, piyasa parametreleri, oracle güveni, likidite, borç varlığı ve entegrasyon yolu. Arayüz, her piyasa için desteklenen yolları gösterir."
+        },
+        {
+          "id": "what-users-monitor",
+          "q": "Kullanıcılar bir pozisyon açtıktan sonra neyi izler?",
+          "a": "Kullanıcılar sağlık faktörünü, borç kullanımını, teminat değerini, borç artışını, LP aralık durumunu, ücret tahakkukunu ve tasfiye tamponunu izler. Multiply pozisyonları için ayrıca kaldıraç seviyesini ve çözülme kontrollerini de izlerler.\n\nAvana bu değerleri arayüzde gösterir, böylece kullanıcılar bir pozisyonun ne zaman sağlıklı olduğunu, ne zaman dikkat edilmesi gerektiğini ve riskin tasfiyeye ne zaman yaklaştığını görebilir."
+        }
+      ]
+    }
+  ]
+}
