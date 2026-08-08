@@ -212,7 +212,9 @@
       "Mục tiêu là tách biệt rõ ràng, với việc thực hiện kỹ thuật, vận hành, mô hình thị trường và đánh giá tài sản đảm bảo mỗi phần được sở hữu độc lập.",
       "Chúng tôi là một nhóm nhỏ đang làm việc trên một vấn đề lớn. Nếu bạn quan tâm đến việc tham gia nỗ lực nghiên cứu này,",
       "Một giao thức cho vay cho các khoản vay được đảm bảo bởi LP",
-      "Một giao thức cho vay cho"
+      "Một giao thức cho vay cho",
+      "Giới thiệu Avana:",
+      "chúng tôi rất muốn nghe từ bạn."
     ]
   },
   "brand/page": {
@@ -443,7 +445,25 @@
   },
   "homepage/HomepageNewsroomSection": {
     "strings": [
-      "Đọc phòng tin"
+      "Giới thiệu Avana:",
+      "Tin tức",
+      "Tin mới nhất từ Avana",
+      "Đọc bài viết",
+      "Khung rủi ro",
+      "Smart Agents",
+      "Mô hình thanh lý",
+      "Hướng dẫn vay",
+      "Tài sản thế chấp Uniswap",
+      "Tài sản thế chấp Curve",
+      "Hiệu quả vốn",
+      "Phòng hộ LP",
+      "Chiến lược ngân quỹ",
+      "Chiến lược đòn bẩy",
+      "Kiểm soát vị thế",
+      "Thiết kế rủi ro",
+      "Kiến trúc",
+      "Thiết kế oracle",
+      "Góc nhìn nhà phát triển"
     ]
   },
   "invest-growth-calculator-section": {
@@ -551,7 +571,12 @@
       "Phóng nhiều lần",
       "Cái gì tiếp theo",
       "Lộ trình",
-      "Avana phát triển theo ba giai đoạn. Mỗi giai đoạn được xây dựng dựa trên giai đoạn trước: Thị trường Vay, Thị trường Cho Vay, sau đó là Thị trường Nhân đa lên."
+      "Avana phát triển theo ba giai đoạn. Mỗi giai đoạn được xây dựng dựa trên giai đoạn trước: Thị trường Vay, Thị trường Cho Vay, sau đó là Thị trường Nhân đa lên.",
+      "Mục tiêu: Quý 3/2026",
+      "Mục tiêu: Quý 4/2026",
+      "Mục tiêu: Quý 1/2027",
+      "Đã phát hành",
+      "Đang tiến hành"
     ]
   },
   "position-safety-section": {

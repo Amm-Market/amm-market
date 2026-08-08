@@ -212,7 +212,9 @@
       "Manufar ita ce rabuwa mai tsabta, tare da aiwatarwa na fasaha, ayyuka, samfurin kasuwa, da dubawa na jingina kowanne yana mallaka da kansa.",
       "Mu ƙungiya ce ƙanana dake aiki kan babban matsala. Idan kuna sha'awar shiga wannan yunƙurin bincike,",
       "Tsarin ba da lamuni don bashi mai tallafi na LP",
-      "Wata ƙa'idar bayar da rance don"
+      "Wata ƙa'idar bayar da rance don",
+      "Gabatar da Avana:",
+      "za mu yi farin cikin jin daga gare ku."
     ]
   },
   "brand/page": {
@@ -443,21 +445,39 @@
   },
   "homepage/HomepageNewsroomSection": {
     "strings": [
-      "Karanta ɗakin labarai"
+      "Gabatar da Avana:",
+      "Dakin Labarai",
+      "Sabbin labarai daga Avana",
+      "Karanta labarin",
+      "Tsarin haɗari",
+      "Smart Agents",
+      "Tsarin biyan bashi",
+      "Jagorar aro",
+      "Jingina ta Uniswap",
+      "Jingina ta Curve",
+      "Ingancin jari",
+      "Kariyar LP",
+      "Dabarar baitulmali",
+      "Dabarar leverage",
+      "Sarrafa matsayi",
+      "Zane na haɗari",
+      "Gine-gine",
+      "Zane na oracle",
+      "Ra'ayin mai haɓakawa"
     ]
   },
   "invest-growth-calculator-section": {
     "strings": [
       "Mai Lissafin Ci Gaba",
       "Duba yadda kuɗin ka ke girma",
-      "8⃣ ⟦28⃣",
+      "Avana APY",
       "Farko Ajiyar",
       "Lokacin (watanni)",
       "wata",
       "watanni",
       "Darajar da aka tsara",
       "Avana Sha'awa",
-      "3.5% ⟦28"
+      "3.5% APY"
     ]
   },
   "product-feature-scroll-section": {
@@ -479,18 +499,18 @@
       "USDD",
       "Eter",
       "Ether ɗin da aka nade",
-      "⟦24",
+      "stETH",
       "wstETH",
       "rETH",
       "cbETH",
       "muETH",
-      "⟦24 x",
+      "ETHx",
       "osETH",
       "Bitcoin ɗin da aka nadawa",
-      "t 25 ⟦",
+      "tBTC",
       "cbBTC",
       "renBTC",
-      "s⟦25",
+      "sBTC",
       "LBTC",
       "Aave",
       "Uniswap",
@@ -551,7 +571,12 @@
       "Haɗa ƙaddamarwa",
       "Menene ke zuwa na gaba",
       "Taswirar hanya",
-      "Avana yana bunkasa a cikin matakai uku. Kowanne mataki yana gina ne a kan na baya: Kasuwannin Arziki, Kasuwannin Lamuni, sannan Kasuwannin Ninkawa."
+      "Avana yana bunkasa a cikin matakai uku. Kowanne mataki yana gina ne a kan na baya: Kasuwannin Arziki, Kasuwannin Lamuni, sannan Kasuwannin Ninkawa.",
+      "Manufa: Kwata na 3, 2026",
+      "Manufa: Kwata na 4, 2026",
+      "Manufa: Kwata na 1, 2027",
+      "An fitar",
+      "Ana kan aiki"
     ]
   },
   "position-safety-section": {
@@ -592,7 +617,7 @@
       "Maganar Premium",
       "Daidaicin Hadarin Tafkin",
       "Hadarin takamaiman rijiya yana ba da gudummawar bambancin ƙarshe, yana ƙara yuwuwar dawowa ga wannan kuɗin da bai motsa ba.",
-      "8⃣ ⟦28⃣",
+      "Avana APY",
       "Irin wannan Kudin Shakatawa tare da Manyan APY Ribobi",
       "% zuwa"
     ]

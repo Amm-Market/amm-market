@@ -212,7 +212,9 @@
       "Lengo ni mgawanyo safi, huku utekelezaji wa kiufundi, operesheni, usanifu wa soko, na ukaguzi wa dhamana kila mmoja ukimilikiwa kwa uhuru.",
       "Sisi ni timu ndogo inayofanya kazi kwenye tatizo kubwa. Ikiwa una nia ya kujiunga na jitihada hizi za utafiti,",
       "Itifaki ya ukopeshaji kwa mikopo inayounga mkopo wa LP",
-      "Itifaki ya ukopeshaji kwa"
+      "Itifaki ya ukopeshaji kwa",
+      "Tunawasilisha Avana:",
+      "tungependa kusikia kutoka kwako."
     ]
   },
   "brand/page": {
@@ -443,7 +445,25 @@
   },
   "homepage/HomepageNewsroomSection": {
     "strings": [
-      "Soma chumba cha habari"
+      "Tunawasilisha Avana:",
+      "Chumba cha Habari",
+      "Habari mpya kutoka Avana",
+      "Soma makala",
+      "Mfumo wa hatari",
+      "Smart Agents",
+      "Muundo wa ulipaji",
+      "Mwongozo wa kukopa",
+      "Dhamana ya Uniswap",
+      "Dhamana ya Curve",
+      "Ufanisi wa mtaji",
+      "Kinga ya LP",
+      "Mkakati wa hazina",
+      "Mkakati wa uwiano",
+      "Udhibiti wa nafasi",
+      "Muundo wa hatari",
+      "Usanifu",
+      "Muundo wa oracle",
+      "Mtazamo wa msanidi"
     ]
   },
   "invest-growth-calculator-section": {
@@ -551,7 +571,12 @@
       "Uzidishaji wa uzinduzi",
       "Nini kinachofuata",
       "Ramani ya barabara",
-      "Avana inakua katika hatua tatu. Kila hatua inajengwa juu ya ile iliyotangulia: Masoko ya Kukopa, Masoko ya Kukopesha, kisha Masoko ya Kuzidisha."
+      "Avana inakua katika hatua tatu. Kila hatua inajengwa juu ya ile iliyotangulia: Masoko ya Kukopa, Masoko ya Kukopesha, kisha Masoko ya Kuzidisha.",
+      "Lengo: Robo ya 3, 2026",
+      "Lengo: Robo ya 4, 2026",
+      "Lengo: Robo ya 1, 2027",
+      "Imetolewa",
+      "Inaendelea"
     ]
   },
   "position-safety-section": {

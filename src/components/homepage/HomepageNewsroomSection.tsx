@@ -1,6 +1,14 @@
+import { getLocale, getTranslations } from "next-intl/server"
+import { formatContentDate } from "@/lib/content-i18n/format-date"
 import { Link } from "@/i18n/navigation"
 import { ChevronRight } from "lucide-react"
-import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
+import {
+  FeatureCardDescription,
+  FeatureCardTitle,
+  SectionEyebrow,
+  SectionTitle,
+  type SectionEyebrowTone,
+} from "@/components/shared"
 import { getNewsroomPosts, type NewsroomCollection, type NewsroomPost } from "@/lib/content"
 import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 
@@ -17,24 +25,33 @@ type HomepageNewsroomSectionProps = {
 /**
  * HomepageNewsroomSection renders cached newsroom rows for the homepage and
  * product pages without duplicating the content map in each route.
+ *
+ * Post titles/descriptions load from content/{locale}/blog.json.
+ * Section chrome (eyebrow / title / CTA / bylines) uses messages + phrase map.
  */
 export default async function HomepageNewsroomSection({
-  eyebrow = "Newsroom",
+  eyebrow,
   eyebrowTone = "blue",
-  title = "Latest from Avana",
+  title,
   collection = "home",
   posts,
   showDividers = true,
   showTopBorder,
 }: HomepageNewsroomSectionProps) {
-  const resolvedPosts = posts ?? await getNewsroomPosts(collection)
+  const locale = await getLocale()
+  const tNav = await getTranslations("common.nav")
+  const tNews = await getTranslations("common.newsroom")
+  const resolvedEyebrow = eyebrow ?? tNav("newsroom")
+  const resolvedTitle = title ?? tNews("latestFrom")
+  const readCta = tNews("readNewsroom")
+  const resolvedPosts = posts ?? (await getNewsroomPosts(collection))
   const hasTopBorder = showTopBorder ?? showDividers
 
-  return withMarketingI18n(['homepage/HomepageNewsroomSection'], (
-    <section className="deferred-viewport">
+  return withMarketingI18n(["homepage/HomepageNewsroomSection"], (
+    <section className="deferred-viewport" data-section="newsroom-teasers">
       <div className="mb-8 flex max-w-[48rem] flex-col gap-3 md:mb-10">
-        <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow>
-        <SectionTitle>{title}</SectionTitle>
+        <SectionEyebrow tone={eyebrowTone}>{resolvedEyebrow}</SectionEyebrow>
+        <SectionTitle>{resolvedTitle}</SectionTitle>
       </div>
 
       <div className={hasTopBorder ? "border-t border-gray-200" : ""}>
@@ -45,7 +62,7 @@ export default async function HomepageNewsroomSection({
               showDividers ? "border-b border-gray-200" : ""
             }`}
           >
-            <p className="text-sm text-gray-500">{post.date}</p>
+            <p className="text-sm text-gray-500">{formatContentDate(post.date, locale)}</p>
 
             <div className="space-y-2">
               <FeatureCardTitle className="max-w-[22rem]">{post.title}</FeatureCardTitle>
@@ -63,7 +80,7 @@ export default async function HomepageNewsroomSection({
                 className="group inline-flex h-10 items-center justify-center rounded-full border border-[#151c22]/80 bg-white px-5 text-[0.98rem] font-[620] tracking-[-0.035em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white"
               >
                 <span className="inline-flex items-center gap-2.5">
-                  <span>Read newsroom</span>
+                  <span>{readCta}</span>
                   <ChevronRight
                     aria-hidden="true"
                     className="h-4 w-4 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-0.5"

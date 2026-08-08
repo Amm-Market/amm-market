@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { existsSync } from "fs"
 import { join } from "path"
 import { getLocale } from "next-intl/server"
+import { formatContentDate } from "@/lib/content-i18n/format-date"
 import BlogPostLayout from "@/components/blog-post-layout"
 import { loadBlogContent } from "@/lib/content-i18n/load-content"
 import { buildOgImagePath, SITE_NAME } from "@/lib/site"
@@ -375,7 +376,7 @@ export function createBlogPage(slug: string) {
     return (
       <BlogPostLayout
         title={post.title}
-        date={post.date}
+        date={formatContentDate(post.date, locale)}
         description={post.description}
         image={image}
         tableOfContents={tableOfContents}

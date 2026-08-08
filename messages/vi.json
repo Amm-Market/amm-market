@@ -16,12 +16,12 @@
       "resources": "Tài nguyên",
       "developers": "Nhà phát triển",
       "helpCenter": "Trung tâm Trợ giúp",
-      "aaveArfc": "1fregl6aerdqcukpov8a",
+      "aaveArfc": "Aave ARFC",
       "borrow": "Mượn",
       "lend": "Cho mượn",
       "multiply": "Nhân",
       "about": "Giới thiệu",
-      "newsroom": "Phòng tin tức",
+      "newsroom": "Tin tức",
       "brand": "Thương hiệu",
       "faq": "Câu hỏi thường gặp",
       "privacy": "Quyền riêng tư",
@@ -65,10 +65,10 @@
       "resources": "Tài nguyên",
       "docs": "Tài liệu",
       "social": "Xã hội",
-      "twitter": "g3ovk9973igcltquie52",
-      "github": "yuae98z3g9x5oeg2hzs3",
-      "telegram": "điện tín",
-      "discourse": "Bài diễn thuyết",
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "telegram": "Telegram",
+      "discourse": "Discourse",
       "socialAria": "Avana trên {network}",
       "disclosureRisk": "Vay dựa trên LP token có rủi ro, bao gồm thanh lý nếu điều kiện thị trường đi ngược lại vị thế của bạn. Avana không lưu giữ quỹ của bạn, không tái thế chấp các vị thế LP, hoặc thay đổi cách hoạt động thanh khoản của bạn trên các AMM cơ sở. Điều khoản vay, lãi suất và giá trị tài sản thế chấp được thực thi trên chuỗi thông qua hệ thống oracle minh bạch và các tham số rủi ro tự động. Bạn luôn kiểm soát hoàn toàn vị thế của mình và có thể trả nợ hoặc điều chỉnh tài sản thế chấp bất cứ khi nào bạn muốn. Chỉ vay số tiền mà bạn cảm thấy thoải mái duy trì trong biến động thị trường.",
       "disclosureInfo": "Tài liệu này chỉ nhằm mục đích cung cấp thông tin và không phải là (i) một đề nghị hoặc lời mời chào để đầu tư, mua bán bất kỳ lợi ích hoặc cổ phần nào, hoặc tham gia vào bất kỳ chiến lược đầu tư hay giao dịch nào, (ii) nhằm cung cấp lời khuyên về kế toán, pháp lý hoặc thuế, hoặc khuyến nghị đầu tư, hoặc (iii) một tuyên bố chính thức của Avana. Hãy tham khảo ý kiến cố vấn của bạn trước khi đưa ra bất kỳ quyết định đầu tư nào. Không có bất kỳ tuyên bố hay bảo đảm nào được đưa ra, cả trực tiếp hay gián tiếp, về độ chính xác của thông tin hoặc hiệu suất trong tương lai của bất kỳ tài sản kỹ thuật số, công cụ tài chính hoặc đo lường thị trường hay kinh tế nào khác. Avana có thể có lợi ích tài chính trong, hoặc quan hệ với, một số tổ chức và/hoặc ấn phẩm được thảo luận hoặc tham khảo trong tài liệu. Avana không xác nhận hoặc phê duyệt các liên kết hay trang web của bên thứ ba có thể được cung cấp trong tài liệu."
@@ -155,8 +155,8 @@
       "institutions": "Các tổ chức"
     },
     "newsroom": {
-      "latestFrom": "Mới nhất từ Avana",
-      "readNewsroom": "Đọc phòng tin"
+      "latestFrom": "Tin mới nhất từ Avana",
+      "readNewsroom": "Đọc bài viết"
     }
   },
   "meta": {
@@ -241,8 +241,8 @@
       "title": "Câu hỏi thường gặp"
     },
     "newsroom": {
-      "title": "Mới nhất từ Avana",
-      "cta": "Đọc phòng tin"
+      "title": "Tin mới nhất từ Avana",
+      "cta": "Đọc bài viết"
     },
     "buildTomorrow": {
       "title": "Gặp Avana",

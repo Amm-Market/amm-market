@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "工作原理",
+        "id": "how-it-works",
         "title": "它是如何運作的"
       },
       {
-        "id": "可借價值",
+        "id": "borrowable-value",
         "title": "可藉價值"
       },
       {
-        "id": "筆記",
+        "id": "notes",
         "title": "筆記"
       }
     ],
@@ -34,7 +34,7 @@
       "光紙說明了原理。 本頁描述了在將任何容量移交給 Hub 之前在輻條內使用的面向開發人員的順序。",
       "輻條僅允許批准的池或範本。 如果一個部位與上市市場定義不匹配，它就永遠不會達到產生可藉貸能力的後期估值階段。",
       "它重建LP頭寸，對標的資產進行定價，並將結果折現為可收回的抵押品價值。 這一步是輻條從理論上看起來有價值的池位置轉變為在實踐中願意借出的價值的地方。",
-      "It applies market-specific collateral settings and passes the aggregate borrowing capacity to the Hub for final enforcement. The Hub consumes the result, but the spoke is the layer that decided how much of the LP could count in the first place.",
+      "它應用特定於市場的抵押品設置，並將總借貸能力傳遞給中心以進行最終執行。 集線器消耗結果，但輻條是先決定 LP 的數量可以計數的層。",
       "可藉值是派生輸出，而不是附加到輻條中每個 LP 的固定屬性。 兩個頭寸可以存在於不同的市場，產生不同的可收回價值，並清除不同的抵押品設置，即使它們乍一看很相似。 這使得實施與文件其他地方描述的LP特定承保模型保持一致。",
       "僅在輻條承認、重構和貼現並應用市場配置的抵押品控制後，受支持的LP頭寸才會貢獻借貸能力。",
       "• 準確的市場設定與支援的池配置一起存在，而不是此概述頁面。",
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "計算",
+        "id": "calculation",
         "title": "計算"
       },
       {
-        "id": "健康手環",
+        "id": "health-bands",
         "title": "監視器段"
       },
       {
-        "id": "回應路徑",
+        "id": "response-path",
         "title": "回應路徑"
       },
       {
-        "id": "使用者操作",
+        "id": "user-actions",
         "title": "使用者操作"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "程式類型",
+        "id": "program-types",
         "title": "節目類型"
       },
       {
-        "id": "分配原則",
+        "id": "distribution-principles",
         "title": "分配原則"
       },
       {
-        "id": "索賠與和解",
+        "id": "claiming-and-reconciliation",
         "title": "索賠與和解"
       },
       {
-        "id": "地位",
+        "id": "status",
         "title": "目前狀態"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "資本入口點",
+        "id": "capital-entry-point",
         "title": "資本進入點"
       },
       {
-        "id": "風險調整效益",
+        "id": "risk-adjusted-yield",
         "title": "風險調整報酬率"
       },
       {
-        "id": "動態風險控制",
+        "id": "dynamic-risk-controls",
         "title": "動態風險控制"
       }
     ],
@@ -197,7 +197,7 @@
       "貸方存款首先通過 Lend Spoke，然後進入共享 Hub 儲備層。 這意味著即使借款方的承銷規則保持獨立，但資本不必一次由每個受支援的 LP 市場劃分為一個池。",
       "在協議生命週期的早期，Hub 流動性還可以透過 Aave v4 信用額度來補充。 隨著時間的推移，Lend Spoke 存款可能會在該協議的原生借貸資本中佔據更大的份額。",
       "LP 抵押品不是靜態庫存。 當貸款開放時，基礎部位可以繼續賺取交易費用，這對於借款方的建模方式很重要。 因此，該協議不會將每個LP視為僅隨代幣價格變化的死平衡。",
-      "That distinction also affects the lending side. Credit terms can reflect the fact that some LP markets have fee generation and unwind behavior that differs from non-yielding collateral, and Aave v4 risk premium tools can express those differences when policy allows it. Actual lender returns still depend on live configuration and market state, not on a fixed assumption from this page.",
+      "這種差異也會影響貸款方。 信貸條款可以反映這樣一個事實，即一些有限合夥人市場的費用產生和平倉行為與非收益抵押品不同，而 Aave v4 風險溢價工具可以在政策允許的情況下表達這些差異。 實際貸方回報仍然取決於即時配置和市場狀況，而不是本頁的固定假設。",
       "對於貸方：",
       "透過 Lend Spoke 基金信貸進行存款，該基金信貸針對 LP 頭寸承保，其可收回價值、健康邏輯和清算路徑均在 Borrow Spokes 中定義。",
       "貸款方取決於借款方是否處於可以隨市場變化的風險模型內。 僅固定 LTV 式設定不足以支持 LP 抵押品，因此框架可以隨著條件的變化響應資金池構成、交易量、背離、波動性、掛鉤行為和平倉深度的變化。",
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "使用者體驗",
+        "id": "user-experience",
         "title": "使用者體驗"
       },
       {
-        "id": "範例流程",
+        "id": "example-flow",
         "title": "流程範例"
       },
       {
-        "id": "三層架構",
+        "id": "three-tier-architecture",
         "title": "三層架構"
       },
       {
-        "id": "資料流",
+        "id": "data-flow",
         "title": "資料流"
       },
       {
-        "id": "輪到責任",
+        "id": "spoke-responsibilities",
         "title": "發言職責"
       },
       {
-        "id": "樞紐角色",
+        "id": "hub-role",
         "title": "Aave v4 樞紐角色"
       }
     ],
@@ -287,8 +287,8 @@
       "需要時進行清算",
       "- 集線器、Avana清算節點或外部清算人可以導致借用輻條將LP移至正確的展開路徑，並透過適當的清算順序解決債務。",
       "樞紐互動",
-      "借：",
-      "the Borrow Spoke issues a draw call to the Hub when a borrower opens or extends debt",
+      "Borrow:",
+      "當借款人開立或延期債務時，Borrow Spoke 向 Hub 發出提款請求",
       "償還：",
       "償還債務後，Borrow Spoke 向 Hub 發出恢復調用",
       "健康檢查：",
@@ -323,33 +323,33 @@
   "architecture/platform-fees": {
     "meta": {
       "title": "平台費用",
-      "description": "Operational fee policy for Avana interfaces, including how interface fees differ from protocol economics, how they are disclosed, and how to verify current policy."
+      "description": "Avana 介面的營運費用政策，包括介面費用與協議經濟學有何不同、如何揭露以及如何驗證當前政策。"
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "介面與協定",
+        "id": "interface-vs-protocol",
         "title": "介面與協定"
       },
       {
-        "id": "披露",
+        "id": "disclosure",
         "title": "揭露"
       },
       {
-        "id": "國庫使用",
+        "id": "treasury-usage",
         "title": "國庫用途"
       },
       {
-        "id": "整合註釋",
+        "id": "integration-notes",
         "title": "整合說明"
       }
     ],
     "strings": [
       "平台費用",
-      "Operational fee policy for Avana interfaces, including how interface fees differ from protocol economics, how they are disclosed, and how to verify current policy.",
+      "Avana 介面的營運費用政策，包括介面費用與協議經濟學有何不同、如何揭露以及如何驗證當前政策。",
       "概覽",
       "介面與協定",
       "揭露",
@@ -359,7 +359,7 @@
       "本頁是關於介面策略的，而不是關於核心合約中藉貸如何運作的。 Avana 可能會在官方平台上收取前端或服務費，但這些費用與協議的抵押品、預言機和清算規則無關。",
       "確切的費率、豁免和推出狀態屬於操作設置，在依賴它們之前應在實時介面或發布材料中進行驗證。",
       "Avana的核心合約管理LP的准入、借貸能力和清算行為。 介面費用（如果啟用）將作為前端業務策略置於這些合約之上，而不是作為借款或風險引擎本身的變更。",
-      "• Protocol economics determine debt accrual, collateral treatment, and liquidation outcomes.",
+      "• 協議經濟學決定債務應計、抵押品處理和清算結果。",
       "• 介面費用是與特定前端或服務路徑相關的操作選擇。",
       "• 直接合約整合可能遵循與官方使用者介面不同的費用假設。",
       "任何介面費用都應在簽名前清楚顯示，以便建造者和用戶可以將其與天然氣成本、交換費用以及協議級債務或清算效應區分開來。",
@@ -367,7 +367,7 @@
       "如果收取介面費，它們通常會為基礎設施、監控、安全工作、文件和支援等產品營運提供資金。 隨著時間的推移，治理可能會正式確定或修改這些政策。",
       "資金使用情況應作為​​營運報告發布，而不是從協議的抵押品架構中推斷出來。",
       "• 建築商應在向最終用戶報價之前核實當前的收費政策。",
-      "• Avoid hard-coding interface-fee assumptions into protocol integrations unless the policy is formally versioned.",
+      "• 避免將介面費用假設硬編碼到協定整合中，除非策略已正式版本化。",
       "• 在記錄整合時，將費用政策與借貸能力和清算邏輯分開。"
     ]
   },
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "借用支票",
+        "id": "borrow-checks",
         "title": "借用支票"
       },
       {
-        "id": "健康檢查",
+        "id": "health-check",
         "title": "健康檢查"
       },
       {
-        "id": "內部會計",
+        "id": "internal-accounting",
         "title": "內部會計"
       },
       {
-        "id": "可借資產",
+        "id": "borrowable-assets",
         "title": "可藉資產"
       },
       {
-        "id": "借貸能力",
+        "id": "borrowing-power",
         "title": "借貸能力"
       }
     ],
@@ -434,7 +434,7 @@
       "狀態更新：",
       "使用者收到借來的資產，輻條記錄由此產生的債務狀態，因此未來的健康檢查、還款和清算邏輯都引用相同的更新帳戶。",
       "可藉資產在Hub層進行配置。 它們不是抵押品本身的固定財產。 在實踐中，部署通常從主要穩定幣和其他流動資產開始，然後再擴大範圍。",
-      "Check the active deployment or interface configuration for the exact assets currently enabled to borrow.",
+      "檢查活動部署或介面配置，以了解目前啟用借用的確切資產。",
       "借用能力是一個借用輻條內核准的LP位置貢獻的總和。 它不是抽像地分配給一個資金池，也不是一個脫離基礎頭寸的無差別帳戶號碼。",
       "實用規則：",
       "你的借貸越接近最大容量，價格變動、波動性飆升和可收回價值削減的空間就越小。",
@@ -445,33 +445,33 @@
   "getting-started/claim-lp-fees": {
     "meta": {
       "title": "索取LP費用",
-      "description": "Claim accrued LP fees in Avana without fully unwinding LP principal, as long as the account remains healthy after the claim."
+      "description": "只要索賠後帳戶保持健康，即可在 Avana 中索賠應計的 LP 費用，無需完全解除 LP 本金。"
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "工作原理",
+        "id": "how-it-works",
         "title": "它是如何運作的"
       },
       {
-        "id": "健康檢查",
+        "id": "health-checks",
         "title": "健康檢查"
       },
       {
-        "id": "費用核算",
+        "id": "fee-accounting",
         "title": "費用核算"
       },
       {
-        "id": "主要優點",
+        "id": "key-benefits",
         "title": "主要優點"
       }
     ],
     "strings": [
       "索取LP費用",
-      "Claim accrued LP fees in Avana without fully unwinding LP principal, as long as the account remains healthy after the claim.",
+      "只要索賠後帳戶保持健康，即可在 Avana 中索賠應計的 LP 費用，無需完全解除 LP 本金。",
       "概覽",
       "它是如何運作的",
       "健康檢查",
@@ -483,7 +483,7 @@
       "該協議對LP位置使用適合場地的收費路徑。 對於流動性集中的頭寸，這可能看起來像是一次收取方式的調用，但保留了本金。 對於可替代的LP，當場地暴露一個時，會使用場地自己的收費路徑。",
       "重要的協議級規則在 LP 類型中是一致的：僅索取費用部分，盡可能保持本金頭寸活躍，並將結果頭寸狀態同步回借用輻條。",
       "借用輻條會檢查費用索賠的健康狀況，因為應計費用仍可能計入公認的抵押品緩衝區，直到它們從頭寸中刪除。",
-      "If removing the claimed fee value would leave the account too close to or beyond the allowed borrowing boundary, the claim path should be blocked until debt is reduced or more collateral is added.",
+      "如果刪除索賠的費用值會使帳戶太接近或超出允許的借貸邊界，則應阻止索賠路徑，直到債務減少或添加更多抵押品。",
       "Oracle 輸出將本金流動性與應計費用分開，因此信用模型可以並排追蹤它們，而不是假裝 LP 是一個固定的代幣餘額。",
       "這種會計分割在清算中也很重要，在協議必須釋放本金 LP 流動性之前，可能會應用應計費用。",
       "價格預言機",
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "借更多",
+        "id": "borrowing-more",
         "title": "借更多"
       },
       {
-        "id": "健康監測",
+        "id": "monitoring-health",
         "title": "健康監測"
       },
       {
-        "id": "操作控制",
+        "id": "operational-control",
         "title": "操作控制"
       },
       {
-        "id": "位置變化",
+        "id": "position-changes",
         "title": "職位變動"
       },
       {
-        "id": "關鍵約束",
+        "id": "key-constraints",
         "title": "主要限制因素"
       }
     ],
@@ -547,11 +547,11 @@
       "償還部分債務以重建緩衝",
       "在同一個借用輻條上增加更多已核准的 LP 抵押品",
       "僅當帳戶仍通過索賠後健康檢查時才索賠應計費用",
-      "Withdraw or resize collateral only when the remaining account still stays healthy",
+      "僅當剩餘帳戶仍保持健康時才提取抵押品或調整抵押品大小",
       "隨著市場價格的變動，集中流動性部位可能需要重新調整或更換。 可替代的LP頭寸可以在支持的抵押品集中調整大小或旋轉。",
       "該協議不會將這些動作視為修飾性編輯。 任何改變LP風險的變化都會透過與存款和借款相同的准入、估值和健康檢查來推遲。",
       "抵押品變更不能使剩餘債務高於允許的輻條容量",
-      "New or replacement positions must stay inside the approved pool set",
+      "新的或替換的職位必須留在批准的池組內",
       "借款行動仍取決於中心流動性和活躍上限",
       "保持",
       "清算框架",
@@ -561,33 +561,33 @@
   "getting-started": {
     "meta": {
       "title": "開始使用 - 存款 LP",
-      "description": "Learn how supported LP positions enter Avana as collateral and how each admitted position starts contributing borrowing capacity inside a Borrow Spoke."
+      "description": "了解支持的 LP 頭寸如何進入 Avana 作為抵押品，以及每個承認的頭寸如何開始在 Borrow Spoke 內貢獻借貸能力。"
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "存款流量",
+        "id": "deposit-flow",
         "title": "存款流向"
       },
       {
-        "id": "技術細節",
+        "id": "technical-details",
         "title": "技術細節"
       },
       {
-        "id": "支援的 lp 令牌",
+        "id": "supported-lp-tokens",
         "title": "支援LP倉位類型"
       },
       {
-        "id": "存款後",
+        "id": "after-deposit",
         "title": "存款後"
       }
     ],
     "strings": [
       "開始使用 - 存款 LP",
-      "Learn how supported LP positions enter Avana as collateral and how each admitted position starts contributing borrowing capacity inside a Borrow Spoke.",
+      "了解支持的 LP 頭寸如何進入 Avana 作為抵押品，以及每個承認的頭寸如何開始在 Borrow Spoke 內貢獻借貸能力。",
       "概覽",
       "存款流向",
       "技術細節",
@@ -603,13 +603,13 @@
       "加權籃子和多代幣池",
       "每個受支持的家庭只能通過批准的池模板才能進入。",
       "押金LP",
-      "Deposit moves a supported LP position under spoke custody so Avana can account for it as collateral and turn it into borrowable capacity.",
+      "存款將受支持的有限合夥人頭寸轉移到輻條託管下，以便 Avana 可以將其作為抵押品並將其轉化為可藉用能力。",
       "存款是LP部位在Avana內變成可用的方式。 Borrow Spoke 保管受支援的頭寸，記錄其估值所需的狀態，並開始將該頭寸視為抵押品，而不是錢包持有的資產。",
       "這並不意味著流動性從基礎場所消失。 此部位可在 AMM 中保持活躍，同時輻條追蹤其風險敞口、費用狀態和風險處理，以便日後借款和清算檢查。",
       "重要的：",
       "Avana 不會僅僅因為存在 LP 頭寸就授予借貸能力。 該職位必須屬於經批准的池系列，通過估值檢查，並適合輻條當前的風險配置。",
       "1. 轉讓或批准LP職位",
-      "The user hands the supported LP position to the relevant Borrow Spoke. The exact path depends on whether the collateral is fungible or position-specific, but the protocol outcome is the same: the spoke must control the asset before it can count it as collateral.",
+      "用戶將支援的LP位置交給相關的Borrow Spoke。 確切的路徑取決於抵押品是可替代的還是特定位置的，但協議結果是相同的：輻條必須控制資產才能將其視為抵押品。",
       "2. 驗證池系列",
       "接下來，輻條確認該職位屬於已批准的池或範本。 該檢查實際上是一系列要求：必須存在預言機覆蓋範圍，必須存在路由和清算支持，並且部署必須已經具有該 LP 系列的風險設定。",
       "3. 快取位置狀態",
@@ -627,7 +627,7 @@
       "確切的即時支援由批准的池列表管理。 看",
       "允許的 LP 個池子",
       "現在，每個批准的職位都會為輻條級借貸能力貢獻自己的折扣值",
-      "The LP principal stays active in the underlying pool and may continue accruing fees",
+      "有限合夥人本金在基礎池中保持活躍，並可能繼續產生費用",
       "實際借款仍取決於中心流動性、分支健康檢查和抵押品因素限制",
       "The next step in the normal flow is",
       "借入資產"
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "還款流程",
+        "id": "repay-process",
         "title": "還款流程"
       },
       {
-        "id": "技術細節",
+        "id": "technical-details",
         "title": "技術細節"
       },
       {
-        "id": "清算場景",
+        "id": "liquidation-scenario",
         "title": "當還款緊急時"
       },
       {
-        "id": "全額還款",
+        "id": "full-repayment",
         "title": "全額還款"
       }
     ],
@@ -668,9 +668,9 @@
       "技術細節",
       "當還款緊急時",
       "全額還款",
-      "Repayment lowers debt, improves account health, and is usually the cleanest way to regain freedom over collateral.",
+      "還款可以降低債務，改善帳戶健康，通常是重新獲得抵押品自由的最乾淨的方式。",
       "還款改變了帳戶的債務方，但不改變LP部位本身。 當債務減少時，帳戶立即變得更健康，因為相同的抵押品現在支持較小的負債。",
-      "Full repayment is not required for repayment to matter. Even a partial reduction can restore useful headroom when the account is drifting toward the liquidation boundary.",
+      "還款並不需要全額還款。 當帳戶逐漸接近清算邊界時，即使部分減少也可以恢復有用的空間。",
       "1. 選擇金額：",
       "償還部分金額以重新獲得喘息空間，或償還全部餘額以完全離開債務方。",
       "2、提交債務資產：",
@@ -690,29 +690,29 @@
   "getting-started/withdraw-collateral": {
     "meta": {
       "title": "提取抵押品",
-      "description": "How LP collateral leaves Avana after debt is repaid or after the remaining account still passes health checks without the withdrawn position."
+      "description": "債務償還後或剩餘帳戶在未撤回頭寸的情況下仍通過健康檢查後，LP 抵押品如何離開 Avana。"
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "提款過程",
+        "id": "withdrawal-process",
         "title": "提款流程"
       },
       {
-        "id": "位置修改",
+        "id": "position-modifications",
         "title": "職位修改"
       },
       {
-        "id": "撤藥後",
+        "id": "after-withdrawal",
         "title": "提款後"
       }
     ],
     "strings": [
       "提取抵押品",
-      "How LP collateral leaves Avana after debt is repaid or after the remaining account still passes health checks without the withdrawn position.",
+      "債務償還後或剩餘帳戶在未撤回頭寸的情況下仍通過健康檢查後，LP 抵押品如何離開 Avana。",
       "概覽",
       "提款流程",
       "職位修改",
@@ -725,7 +725,7 @@
       "借用輻條在刪除請求的 LP 位置或調整其大小後重新計算帳戶，而不是假設舊容量仍然適用。",
       "3、釋放LP位置：",
       "如果提款後的健康狀況有效，協議將返回或解鎖抵押品，以便用戶可以在分支之外再次對其進行管理。",
-      "Not every collateral change is a full exit. A user may resize a fungible LP position, replace a concentrated-liquidity range, or rotate into a different approved position while keeping the same loan open.",
+      "並非每一次附帶變更都是完全退出。 用戶可以調整可替代的有限合夥人頭寸的大小，更換集中流動性範圍，或在保持相同貸款開放的情況下輪換到不同的批准頭寸。",
       "只有當新的或剩餘的抵押品仍屬於批准的集合並且應用更改後生成的帳戶保持在清算邊界之上時，這些更改才有效。",
       "LP位置恢復正常用戶控制",
       "使用者可以將其保留在基礎池中、重新調整範圍或完全退出流動性",
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "審查標準",
+        "id": "review-criteria",
         "title": "審核標準"
       },
       {
-        "id": "泳池家庭",
+        "id": "pool-families",
         "title": "泳池家庭"
       },
       {
-        "id": "風險應用",
+        "id": "risk-application",
         "title": "風險申請"
       },
       {
-        "id": "整合註釋",
+        "id": "integration-notes",
         "title": "整合說明"
       }
     ],
@@ -768,18 +768,18 @@
       "風險申請",
       "整合說明",
       "穩定且相關的池",
-      "Often the easiest to admit when pricing is reliable, peg behavior is understood, and unwind depth remains strong.",
+      "當定價可靠、掛鉤行為被理解並且平倉深度仍然強勁時，通常最容易承認這一點。",
       "藍籌波動池",
-      "Can be supported, but usually with more conservative collateral factors, liquidity checks, and tougher liquidation assumptions.",
+      "可以得到支持，但通常需要更保守的抵押品因素、流動性檢查和更嚴格的清算假設。",
       "流動性部位集中",
-      "Require position-level valuation and careful handling of active range, one-sided inventory, and fee state.",
+      "需要頭寸層面的估值，並謹慎處理活躍區間、單邊庫存和費用狀態。",
       "定製或實驗設計",
       "需要明確的預言機、託管和清算支持，才能考慮將其列入許可名單。",
       "Reliable external price coverage for the underlying assets",
       "清算期間足夠的池深和可靠的平倉路徑",
       "LP 系列或輻條範本的明確准入規則",
       "可接受的濃度、波動性和掛鉤穩定性概況",
-      "Operational support for indexing, fee handling, and liquidation routing",
+      "索引、費用處理和清算路由的營運支持",
       "治理控制的礦池和LP家庭Avana準備接受作為抵押品。",
       "Avana 僅接受來自已審核並核准的池或範本的 LP 抵押品。 允許名單的存在是因為 LP 支援不僅僅是場地品牌或代幣格式的問題。 該協議需要足夠的資訊來為頭寸定價、管理清算並限制其所承擔的風險。",
       "礦池審批同時進行",
@@ -788,9 +788,9 @@
       "。 白名單決定池是否可以進入系統；抵押因素決定了每個承認的職位可以貢獻多少可藉價值。",
       "只有當協議每次都能回答相同的基本問題時，礦池才會進入許可名單：是否可以為頭寸定價，是否可以退出頭寸，以及是否可以監控生產中的風險。",
       "資金池批准並不意味著某個職位會獲得慷慨的信貸待遇。 池子被接納後，每個LP頭寸仍然會自行估值，根據其風險處理進行貼現，然後添加到Borrow Spoke內用戶的借貸能力中。",
-      "That is why pool approval and collateral valuation are tightly linked. A pool can be safe enough to admit while still requiring conservative caps, lower LTVs, or stricter liquidation handling once it is live.",
+      "這就是為什麼資金池批准和抵押品估值緊密相連的原因。 礦池足夠安全，可以承認，但在上線後仍需要保守的上限、較低的 LTV 或更嚴格的清算處理。",
       "建造者應該考慮批准的池模板和特定於部署的允許列表，而不是好像場地中的每個LP都是自動公平的遊戲。",
-      "New pool families usually require coordinated work across oracle handling, liquidation routing, risk limits, and monitoring infrastructure before they are safe to enable."
+      "新的礦池系列通常需要在預言機處理、清算路由、風險限制和監控基礎設施方面進行協調工作，然後才能安全地啟用。"
     ]
   },
   "integrations/appkit": {
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "整合模型",
+        "id": "integration-model",
         "title": "整合模式"
       },
       {
-        "id": "合作夥伴控制",
+        "id": "partner-controls",
         "title": "合作夥伴控制"
       },
       {
-        "id": "啟動說明",
+        "id": "launch-notes",
         "title": "發布說明"
       }
     ],
@@ -824,13 +824,13 @@
       "合作夥伴控制",
       "發布說明",
       "意圖捕捉",
-      "AppKit belongs where users already understand their LP positions, portfolio state, or swap context, so the borrow entry appears next to existing intent instead of forcing a brand-new flow.",
+      "AppKit 屬於使用者已經了解其 LP 頭寸、投資組合狀態或互換上下文的位置，因此借入條目出現在現有意圖旁邊，而不是強制執行全新的流程。",
       "協定切換",
       "合作夥伴將錢包和市場背景傳遞給Avana。 然後，借用流程可以在已設定的上下文中打開，而不是要求使用者手動重建它。",
       "合夥人經濟學",
       "合作夥伴可以使用推薦、路由或整合收入結構，但他們不會成為貸方或風險引擎。 Avana 保持信用、風險和結算。",
       "將信用條目放置在使用者已信任的LP部位或投資組合視圖附近。",
-      "Pass wallet and market context into the borrow flow so the handoff does not feel like a reset.",
+      "將錢包和市場環境傳遞到借入流程中，這樣切換就不會感覺像是重置。",
       "將風險和結算留在Avana。 不要在合作夥伴 UI 中重建分支估值或清算邏輯。",
       "在上線之前決定複製、放置和啟動選通，因為它們塑造集成，而不僅僅是拋光層。",
       "信用面出現在產品中的位置",
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "應用程式包",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "場地家庭",
+        "id": "venue-families",
         "title": "場地家庭"
       },
       {
-        "id": "啟用狀態",
+        "id": "enablement-status",
         "title": "啟用狀態"
       },
       {
-        "id": "審查要求",
+        "id": "review-requirements",
         "title": "審查要求"
       }
     ],
@@ -887,10 +887,10 @@
       "可替代的穩定池和加權池",
       "這些場所公開 ERC-20 LP 股票，其價值可以根據資金池餘額、外部價格和保守的平倉假設重建。",
       "自訂或基於掛鉤的設計",
-      "More advanced pool architectures are only supportable when Avana has a clear oracle model, a safe custody path, and a liquidation adapter for the design.",
+      "只有當 Avana 擁有清晰的預言機模型、安全的託管路徑和設計的清算適配器時，才能支援更先進的礦池架構。",
       "家庭 Avana 可以合作的場地參考指南以及在支援上線之前必須通過的審核關卡。",
       "Avana不會僅因為場所受歡迎或暴露LP代幣而整合場所。 支持程度取決於協議能否準確地重建頭寸、保守地估值以及在需要清算時乾淨利落地退出。",
-      "This page is an integration reference, not a live launch dashboard. For pool admission policy, see",
+      "此頁面是整合參考，而不是即時啟動儀表板。 有關泳池准入政策，請參閱",
       "允許的 LP 個池子",
       "。 有關估值假設，請參閱",
       "價格預言機",
@@ -902,48 +902,48 @@
       "建置者應驗證應用程式、發行說明或已發布的合約註冊表中的目前部署配置，而不是將此頁面視為即時支援矩陣。",
       "• 場所必須支持根據強勁的外部價格和可驗證的狀態重建進行保守的頭寸估值。",
       "• 該協議需要可靠的清算路徑，包括費用收集和轉移到債務資產。",
-      "• Pool depth, concentration risk, correlation assumptions, and operational monitoring all have to fit the risk framework.",
+      "• 資金池深度、集中度風險、相關性假設和營運監控都必須符合風險架構。",
       "• 新場地支援是一項治理和風險決策，而不僅僅是介面更新或適配器合併。"
     ]
   },
   "integrations/price-oracles": {
     "meta": {
       "title": "價格預言機",
-      "description": "How Avana Oracle prices LP collateral through external feeds, deterministic position reconstruction, and recoverable-value discounts."
+      "description": "Avana Oracle 如何透過外部來源、確定性部位重建和可收回價值折扣對 LP 抵押品進行定價。"
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "oracle介面",
+        "id": "oracle-interface",
         "title": "甲骨文接口"
       },
       {
-        "id": "多層架構",
+        "id": "multi-layer-architecture",
         "title": "多層架構"
       },
       {
-        "id": "dex 處理",
+        "id": "dex-handling",
         "title": "DEX 特定處理"
       },
       {
-        "id": "twap計算",
+        "id": "twap-computation",
         "title": "TWAP 計算"
       },
       {
-        "id": "安全措施",
+        "id": "safety-measures",
         "title": "安全和操縱預防"
       },
       {
-        "id": "可配置參數",
+        "id": "configurable-parameters",
         "title": "可配置參數"
       }
     ],
     "strings": [
       "價格預言機",
-      "How Avana Oracle prices LP collateral through external feeds, deterministic position reconstruction, and recoverable-value discounts.",
+      "Avana Oracle 如何透過外部來源、確定性部位重建和可收回價值折扣對 LP 抵押品進行定價。",
       "概覽",
       "甲骨文接口",
       "多層架構",
@@ -995,7 +995,7 @@
       "全值",
       "在應用後來的清算壓力調整之前重建的本金流動性價值。",
       "費用值",
-      "Value of the fees accrued by the position that can be recognized alongside principal.",
+      "職位所產生的費用價值可以與本金一起確認。",
       "儲備值",
       "保留部分保留給預言機、展開和協議風險緩衝。",
       "此介面對輻條隱藏了 DEX 特定的管道。 這使得同一個呼叫者可以透過一個返回形狀來處理 ERC-20 LP、NFT LP 和多資產池，同時仍然為幕後保守的、特定於抵押家庭的處理留出空間。",
@@ -1005,7 +1005,7 @@
       "甲骨文來源",
       "筆記",
       "TWAP Computation by DEX",
-      "TWAPs are verification inputs. They sit beside external asset prices and deterministic position reconstruction to check whether the pool state being observed is consistent with a credible unwind path. They help reject suspicious or short-lived distortions, but they do not replace the broader oracle model on their own.",
+      "TWAP 是驗證輸入。 它們與外部資產價格和確定性頭寸重建一起檢查觀察到的池狀態是否與可信的平倉路徑一致。 它們有助於拒絕可疑或短暫的扭曲，但它們本身並不能取代更廣泛的預言模型。",
       "Uniswap V2 & SushiSwap",
       "UniswapV3",
       "位置感知檢查包含報價範圍、流動性分佈和應計費用，因此協議可以驗證每個 NFT LP 的分解代幣暴露，而不是將 NFT 視為黑盒子。",
@@ -1029,7 +1029,7 @@
       "可配置的 Oracle 參數",
       "池特定的預言機設定是透過以下方式為每個令牌配置的",
       "設定令牌配置",
-      ". The table below shows the parameters that define how a token and its associated pool should be checked:",
+      "。 下表显示了定义如何检查令牌及其关联池的参数：",
       "範圍",
       "描述",
       "代幣",
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "系統中的角色",
+        "id": "role-in-system",
         "title": "在系統中的角色"
       },
       {
-        "id": "適配器模型",
+        "id": "adapter-model",
         "title": "適配器型號"
       },
       {
-        "id": "支援的操作",
+        "id": "supported-operations",
         "title": "支援的操作"
       },
       {
-        "id": "部署狀態",
+        "id": "deployment-status",
         "title": "部署狀態"
       }
     ],
@@ -1087,7 +1087,7 @@
       "協調清算執行所需的平倉或路由步驟",
       "當場地適配器存在時，支援受控位置更新，例如範圍變化或遷移流",
       "公開一致的整合表面，而無需成為協議的風險或評估權威",
-      "Operational interface layer for venue-specific actions, adapter calls, and liquidation-related routing support.",
+      "用於特定場所操作、適配器呼叫和清算相關路由支援的操作介面層。",
       "路由器是執行層，不是Avana決定風險的地方。 它的存在是為了標準化特定場所的操作，因此協議不必在涉及 LP 抵押品的每個流程中分散存款、取款、費用和解除機制。",
       "閱讀本頁作為操作參考。 對於規範架構，從",
       "借用輻條",
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "核心概念",
+        "id": "core-concepts",
         "title": "核心概念"
       },
       {
-        "id": "協議元件",
+        "id": "protocol-components",
         "title": "協定組件"
       },
       {
-        "id": "財務術語",
+        "id": "financial-terms",
         "title": "財務術語"
       },
       {
-        "id": "風險-安全",
+        "id": "risk-security",
         "title": "風險與安全"
       },
       {
-        "id": "指標",
+        "id": "metrics",
         "title": "指標"
       },
       {
-        "id": "免責聲明",
+        "id": "disclaimers",
         "title": "免責聲明"
       }
     ],
@@ -1151,14 +1151,14 @@
       "清算節點",
       "支持AMM的流動性部位。 根據場所的不同，它可能是可替代的 LP 代幣、集中流動性 NFT 或其他經批准的池共享格式。",
       "Collateral Factor",
-      "The portion of USD collateral value that may count toward borrowing power. In LP markets, this is applied at the position level rather than to the spoke as a whole.",
+      "美元抵押品價值中可計入借貸能力的部分。 在 LP 市場中，這適用於位置級別，而不是整個輻條。",
       "借貸能力",
       "每個存入的 LP 頭寸經過估值、風險調整併添加到用戶的總容量後，用戶可以在藉用輻條內借入的金額。",
       "允許池",
       "經治理批准的礦池，滿足預言機覆蓋範圍、流動性深度、展開品質和分支相容性等准入要求。",
       "貸款成數 (LTV)",
       "應用Avana頭寸評估和池特定風險控制後與抵押品相關的借款比率。",
-      "The internal accounting unit used to track borrower obligations while interest accrues over time without rewriting every loan balance continuously.",
+      "內部會計單位用於追蹤借款人的債務，而利息會隨著時間的推移而累積，而無需不斷重寫每筆貸款餘額。",
       "借款人為未償債務所支付的利率。 它反映了共享中心條件和LP特定風險考慮因素。",
       "使用率",
       "借入流動性相對於相關樞紐連接資本層可用供應的比例。",
@@ -1174,10 +1174,10 @@
       "Avana LP 抵押品的估值引擎。 它結合了外部資產價格、LP頭寸重建和可收回價值保障。",
       "Recoverable Value",
       "協議認為在考慮清算滑點、資金池條件和風險緩衝後，在壓力平倉期間可以實際實現的金額。",
-      "A controlled modification of a collateralized LP position, such as a rebalance or range change, that is only allowed when the resulting position still satisfies protocol health checks.",
+      "僅在結果部位仍滿足協議健康檢查時才允許對抵押 LP 部位進行受控修改，例如重新平衡或範圍變更。",
       "作為 Avana 連接組件的LP 抵押品或資本提供的資產總價值。",
       "未償債務",
-      "The amount currently borrowed against approved collateral positions.",
+      "目前根據核准的抵押品頭寸借入的金額。",
       "Borrow Utilization",
       "借款人已提取的可用 Hub 流動性份額。",
       "借貸空間",
@@ -1192,10 +1192,10 @@
       "斷路器",
       "當價格、市場行為或協議依賴性變得不一致或不安全時，可以暫停或限制操作的風險控制。",
       "治理安全",
-      "The set of review, timelock, veto, and emergency roles used by the Risk Framework to keep parameter changes disciplined.",
+      "風險框架使用的一組審查、時間鎖定、否決和緊急角色來維持參數變更的紀律。",
       "重入保護",
       "合約層級保護可防止在第一次執行完成之前再次進入狀態變更工作流程。",
-      "Canonical definitions for protocol-specific and DeFi terminology used throughout the documentation.",
+      "整個文件中使用的特定於協議和 DeFi 術語的規範定義。",
       "LP 及抵押品",
       "債務與利息",
       "清算",
@@ -1203,7 +1203,7 @@
       "沒有投資建議：",
       "Avana 是一個軟體協定。 本文檔不構成投資建議。",
       "損失風險：",
-      "Users can lose funds through smart contract vulnerabilities, market volatility, liquidation, or oracle manipulation.",
+      "用戶可能會因智能合約漏洞、市場波動、清算或預言機操縱而損失資金。",
       "監管狀況：",
       "Avana及其代幣（如果有）的監管狀態不受保證，並且可能因司法管轄區而異。",
       "無保固：",
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "核心洞察",
+        "id": "core-insight",
         "title": "核心洞察"
       },
       {
-        "id": "用戶流量",
+        "id": "user-flow",
         "title": "借貸模式"
       },
       {
-        "id": "預言機估值",
+        "id": "oracle-valuation",
         "title": "預言機和估值"
       },
       {
-        "id": "借用過程",
+        "id": "borrowing-process",
         "title": "借貸能力"
       },
       {
-        "id": "健康監測",
+        "id": "health-monitoring",
         "title": "健康與清算"
       },
       {
-        "id": "收費",
+        "id": "fee-collection",
         "title": "費用待遇"
       }
     ],
@@ -1257,12 +1257,12 @@
       "用戶將受支援的 LP 部位存入借用輻條。 當協議託管抵押品會計時，這些頭寸可以在其池中保持活躍。",
       "每個批准的LP職位都有其自身的價值。 在應用抵押品因素和資金池風險控制後，其折現貢獻將被添加到借款輻條內的借款能力中。",
       "當用戶借款時，輻條從中心吸取流動性。 LP 市場風險留在輻條層，而共享資本會計則留在樞紐層。",
-      "Avana values LP collateral conservatively. External asset prices mark the underlyings, while pool data and position state are used to rebuild exposure instead of leaning on raw AMM spot output alone.",
+      "Avana 對 LP 抵押品的估價較為保守。 外部資產價格標誌著標的資產的價格，而池數據和頭寸狀態則用於重建敞口，而不是僅依靠原始 AMM 現貨產出。",
       "來自強勁外部資訊的基礎資產價格",
       "池庫存分割或範圍感知部位分解",
       "應計費用與本金流動性分開確認",
       "針對平倉滑點、無常損失和壓力清算的恢復理髮",
-      "Capacity is built position by position inside a Borrow Spoke. Avana does not slap one wholesale factor across the whole account or across every pool in a spoke. Each position contributes only after its own collateral factors and pool-specific controls have been applied.",
+      "容量是在藉用輻條內逐個位置建構的。 Avana 不會在整個帳戶或輻條中的每個池中施加一個批發因素。 每個頭寸僅在應用其自身的附帶因素和池特定控制後才做出貢獻。",
       "細節：",
       "擔保因素",
       "借款輻條將調整後的抵押品價值與未償債務進行比較。 如果價格、預言機檢查或頭寸變化將剩餘緩衝區縮小得足夠遠，則該帳戶可能會進入清算區域。",
@@ -1284,33 +1284,33 @@
   "introduction/testnet-roadmap": {
     "meta": {
       "title": "測試網和路線圖",
-      "description": "Operational guide to Avana test deployments and roadmap framing, for evaluation context rather than canonical protocol rules or launch promises."
+      "description": "Avana 測試部署和路線圖框架的操作指南，用於評估上下文而不是規範的協議規則或發布承諾。"
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "測試網範圍",
+        "id": "testnet-scope",
         "title": "測試網範圍"
       },
       {
-        "id": "如何評價",
+        "id": "how-to-evaluate",
         "title": "如何評價"
       },
       {
-        "id": "路線圖框架",
+        "id": "roadmap-framing",
         "title": "路線圖構框"
       },
       {
-        "id": "活動和狀態",
+        "id": "campaigns-and-status",
         "title": "活動與狀態"
       }
     ],
     "strings": [
       "測試網和路線圖",
-      "Operational guide to Avana test deployments and roadmap framing, for evaluation context rather than canonical protocol rules or launch promises.",
+      "Avana 測試部署和路線圖框架的操作指南，用於評估上下文而不是規範的協議規則或發布承諾。",
       "概覽",
       "測試網範圍",
       "如何評價",
@@ -1320,7 +1320,7 @@
       "測試網狀態、支援的網路和公共路線圖排序的變化速度比架構文件更快。 此頁面的存在是為了讓建構者可以將環境狀態與穩定的協定設計分開，並避免將推出語言視為規範。",
       "使用 lightpaper 和核心開發人員文件進行協議設計。 使用此頁面了解環境準備情況、試用範圍和推出背景。",
       "測試部署可能僅公開完整生產設計的一部分。 LP 家庭、借入資產、預言機覆蓋範圍和清算工具都可以在測試網上縮小或進一步簡化。",
-      "• Verify the active network, contract registry, and supported pool set for the current environment.",
+      "• 驗證目前環境的活動網路、合約註冊表和支援的池集。",
       "• 預計會出現模擬資產、受限的場地覆蓋以及縮短的營運循環。",
       "• 將測試網行為視為評估環境，而非最終的生產承諾。",
       "最有用的評估路徑是存入符合資格的LP，確認輪輻估值，觀察總借貸能力，根據 Hub 流動性借款，然後觀察同一帳戶的健康監控和還款行為。",
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "一般免責聲明",
+        "id": "general-disclaimer",
         "title": "一般免責聲明"
       },
       {
-        "id": "無財務建議",
+        "id": "no-financial-advice",
         "title": "沒有財務建議"
       },
       {
-        "id": "風險",
+        "id": "risks",
         "title": "風險"
       },
       {
-        "id": "無保證",
+        "id": "no-warranties",
         "title": "無保證"
       },
       {
-        "id": "責任限制",
+        "id": "limitation-of-liability",
         "title": "責任限制"
       },
       {
-        "id": "相關政策",
+        "id": "related-policies",
         "title": "相關政策"
       }
     ],
@@ -1379,11 +1379,11 @@
       "請在使用Avana前仔細閱讀本免責聲明。 透過使用該協議，您承認您已閱讀、瞭解並同意受這些條款的約束。 如需完整條款，請查看我們的",
       "服務條款",
       "隱私權政策",
-      "This disclaimer supplements and should be read in conjunction with our full",
+      "本免責聲明是補充，應與我們的完整聲明一起閱讀",
       "。 本服務條款構成您與Avana之間關於您存取和使用協議及相關服務的具有法律約束力的協議。",
       "從我們的主頁：",
       "「以 LP 代幣借款涉及風險，包括在市場狀況對您的頭寸不利時進行清算。Avana 不會託管您的資金、重新抵押 LP 頭寸，或改變您的流動性在標的 AMM 上的運作金額僅可藉入您的方式。",
-      "Avana is an experimental decentralized finance protocol. The protocol is provided \"as is\" without any representations or warranties of any kind, either express or implied.",
+      "Avana 是一個實驗性的去中心化金融協議。 該協議按「原樣」提供，不帶任何明示或暗示的陳述或保證。",
       "正如我們的服務條款（第 2 節）所述：「Avana 協議包括某些開源智能合約可以接收和持有某些數位貨幣或其他加密資產的功能。開源軟體（包括任何升級）可能會引入錯誤、病毒、特洛伊木馬或其他漏洞或更改，從而可能導致協議部分或完全中斷或您的加密資產毀壞、病毒、損壞或損壞。」",
       "您對此類資訊的任何依賴均需自行承擔風險。 對於因使用本協議或文件而造成的任何損失或損害，我們不承擔任何責任。",
       "正如我們的服務條款中明確指出的：“服務包括可能提供與 AVANA 相關信息的資訊資源。AVANA 不是任何類型的經紀人、交易商、交易所、投資顧問、託管人或金融服務提供者。我們沒有與您在服務方面的信託關係或義務。”",
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "訪問限制",
+        "id": "access-restrictions",
         "title": "存取限制"
       },
       {
-        "id": "限制性司法管轄區",
+        "id": "restricted-jurisdictions",
         "title": "受限司法管轄區"
       },
       {
-        "id": "遵守",
+        "id": "compliance",
         "title": "合規"
       },
       {
-        "id": "相關政策",
+        "id": "related-policies",
         "title": "相關政策"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "可替代流動性提供者",
+        "id": "fungible-lp",
         "title": "可替代 LP 範例"
       },
       {
-        "id": "流動性集中",
+        "id": "concentrated-liquidity",
         "title": "集中流動性範例"
       },
       {
-        "id": "nft-流動性",
+        "id": "nft-liquidity",
         "title": "NFT 清算"
       },
       {
-        "id": "多倉帳戶",
+        "id": "multi-position-account",
         "title": "多位置帳戶"
       },
       {
-        "id": "邊緣情況",
+        "id": "edge-cases",
         "title": "邊緣情況"
       },
       {
-        "id": "概括",
+        "id": "summary",
         "title": "概括"
       }
     ],
@@ -1543,7 +1543,7 @@
       "到清算開始時，頭寸可能大多是一邊倒的，特別是對於集中的流動性而言。",
       "池深度可能足以進行估值，但仍然足夠薄，需要保守的平倉路由。",
       "可索賠的費用可以提高回收率，但在實際實現之前不應將其視為有保證的。",
-      "A borrower may have several positions contributing to one spoke-level borrowing capacity, so liquidation sequencing matters.",
+      "借款人可能擁有多個職位來貢獻一個輻條等級的借款能力，因此清算順序很重要。",
       "展示如何將一種清算框架應用於不同 LP 抵押品形狀的工作場景。",
       "這些例子故意簡化。 目標是展示清算如何在常見的 LP 格式中發揮作用，而無需發明超出規則之外的額外規則",
       "清算框架",
@@ -1554,7 +1554,7 @@
       "• 若有且有助於恢復，可索償的費用將被實現。",
       "• 基礎資產轉入債務資產，清盤結束。",
       "• 還款和獎勵後剩餘的任何價值均返還給借款人。",
-      "A concentrated-liquidity position drifts toward the edge of its active range. The account may remain healthy for a while, then tip into liquidation once debt outpaces the recoverable value of the current position state.",
+      "流動性集中的部位向其活躍範圍的邊緣漂移。 該帳戶可能會在一段時間內保持健康，然後一旦債務超過當前頭寸狀態的可收回價值，就會陷入清算。",
       "• 節點根據目前範圍、流動性和代幣分割來評估部位。",
       "• 清算開始後，在本金解除之前會檢查可索賠的費用。",
       "• 路由適應實際回收的庫存，而不是靜態令牌組合。",
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "規範參考",
+        "id": "canonical-reference",
         "title": "相關政策文件"
       },
       {
-        "id": "執行時序列",
+        "id": "runtime-sequence",
         "title": "運行時順序"
       },
       {
-        "id": "狀態轉換",
+        "id": "state-transitions",
         "title": "狀態轉換"
       },
       {
-        "id": "操作員註釋",
+        "id": "operator-notes",
         "title": "操作員註記"
       }
     ],
@@ -1609,16 +1609,16 @@
       "狀態轉換",
       "操作員註記",
       "檢測不健康的帳戶",
-      "Liquidation nodes or external keepers watch the same risk-adjusted collateral values used by the protocol and flag accounts whose debt now exceeds allowed borrowing capacity.",
+      "清算節點或外部保管人監視協議使用的相同風險調整抵押品價值，並標記債務現在超過允許借貸能力的帳戶。",
       "來源執行流動性",
       "清算人通常透過閃貸式的途徑獲得臨時流動性，因此可以償還債務，而無需預先自掏腰包為全部清償提供資金。",
       "Repay debt and seize the vault collateral",
       "相關的 Borrow Spoke 將債務結算到信用層，保管金庫抵押品，並將頭寸移交給 LP 特定的結算。",
       "銷毀金庫代幣並標記支援位置",
-      "The adapter burns the seized vault token and marks the real LP position as in settlement so the backing supply cannot remain outstanding against a position that is already being unwound.",
+      "適配器會燒毀扣押的金庫代幣，並將真實的 LP 頭寸標記為結算狀態，因此支持供應不能相對於已經平倉的頭寸保持未償狀態。",
       "結算LP倉位並平倉",
       "Avana平倉、出售、拍賣或轉讓真實LP頭寸，償還執行流動性，支付清算人獎勵，並根據市場規則傳送任何盈餘。",
-      "Once Aave permits liquidation, the selected position leaves ACTIVE state and enters LIQUIDATING state. The borrower should no longer be able to withdraw it.",
+      "一旦 Aave 允許清算，所選部位就會離開 ACTIVE 狀態並進入 LIQUIDATING 狀態。 借款人不應再能夠提取貸款。",
       "在實際 LP 頭寸被平倉或賣出後，支持供應被清除，頭寸變為已結算。",
       "國家統治",
       "在其支援 LP 位置被移除後，金庫代幣將無法保持未償狀態。 如果金庫代幣被燒毀，LP頭寸必須撤回、平倉或進入結算。",
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "覆蓋模型",
+        "id": "coverage-model",
         "title": "覆蓋模型"
       },
       {
-        "id": "執行要求",
+        "id": "execution-requirements",
         "title": "執行要求"
       },
       {
-        "id": "操作筆記",
+        "id": "operational-notes",
         "title": "操作注意事項"
       }
     ],
@@ -1673,14 +1673,14 @@
       "清算不是一般的代幣銷售。 運行時需要場地感知邏輯來實現費用、頭寸移除、路由和債務資產結算。",
       "覆蓋品質",
       "LP 部位比簡單代幣更難平倉。 為受支援的場館建立完整路線模型的操作員通常比僅對健康觸發因素做出反應的機器人能夠更好地應對壓力。",
-      "Track the same risk state the protocol uses, not a separate heuristic.",
+      "追蹤協議使用的相同風險狀態，而不是單獨的啟發式。",
       "只要有可能，就可以從一個原子作業中的乾淨狀態轉換中解脫出來。",
       "僅針對速度進行最佳化之前的價格費用實現、路線深度和殘值。",
       "將部分覆蓋和完全覆蓋視為具有單獨路由假設的單獨情況。",
       "頭寸監控和債務漂移跟踪",
       "模擬路線深度、滑點和流動性可用性",
       "透過閃貸或預資助執行路徑進行交易交付",
-      "Venue-aware adapters for the LP families the protocol supports",
+      "協議支援的 LP 系列的場地感知適配器",
       "營運商如何服務Avana清算以及LP支援債務需要哪些執行基礎設施。",
       "清算人是關閉不健康的 LP 支持頭寸的操作者。 他們的工作是償還債務，透過正確的場地路徑平倉LP，並將收回的價值結算回信用層。",
       "速度很重要，但光有速度還不夠。 營運商在鏈上提交任何內容之前，需要了解實際涵蓋的內容、LP 的表示方式以及費用、滑點或單方面庫存變更如何恢復。",
@@ -1692,45 +1692,45 @@
   "liquidation": {
     "meta": {
       "title": "清算框架",
-      "description": "How Avana handles liquidation for vault-backed LP collateral after Aave triggers the liquidation entry point."
+      "description": "在 Aave 觸發清算入口點後，Avana 如何處理金庫支援的 LP 抵押品的清算。"
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "三層",
+        "id": "three-layers",
         "title": "三層"
       },
       {
-        "id": "核心規則",
+        "id": "core-rules",
         "title": "核心規則"
       },
       {
-        "id": "LP 複雜度",
+        "id": "lp-complexity",
         "title": "LP 附帶複雜性"
       },
       {
-        "id": "清算途徑",
+        "id": "liquidation-pathways",
         "title": "清算途徑"
       },
       {
-        "id": "位置狀態",
+        "id": "position-state",
         "title": "位置狀態"
       },
       {
-        "id": "剩餘處理",
+        "id": "surplus-handling",
         "title": "剩餘處理"
       },
       {
-        "id": "操作員模型",
+        "id": "operator-model",
         "title": "營運商模型"
       }
     ],
     "strings": [
       "清算框架",
-      "How Avana handles liquidation for vault-backed LP collateral after Aave triggers the liquidation entry point.",
+      "在 Aave 觸發清算入口點後，Avana 如何處理金庫支援的 LP 抵押品的清算。",
       "概覽",
       "三層",
       "核心規則",
@@ -1740,7 +1740,7 @@
       "剩餘處理",
       "營運商模型",
       "清算設計",
-      "How liquidation entry, vault seizure, and LP settlement are split across Aave and Avana.",
+      "清算進入、金庫扣押和有限合夥人結算如何在 Aave 和 Avana 之間分配。",
       "Aave是決定部位何時可以強平的系統，但它不知道如何結算底層LP。 Avana使用Aave進行債務核算、健康檢查和清算入口點，然後接管以解決位於金庫抵押品後面的真實頭寸。",
       "關鍵的設計約束是抵押品的兩個視圖必須保持一致。 Aave看到ERC-20金庫代幣餘額，而Avana則追蹤實際支持該餘額的LP頭寸。 只有當奪取金庫代表始終導致正確的 LP 結算路徑時，清算才保持健全。",
       "對於操作員導向的序列，請參見",
@@ -1748,16 +1748,16 @@
       "。 執行順序參見",
       "清算流程",
       "Aave層",
-      "Tracks debt, vault collateral balance, health factor, and the liquidation entry point that authorizes seizure.",
+      "追蹤債務、金庫抵押品餘額、健康因素以及授權扣押的清算入口點。",
       "Avana 適配器層",
       "接收扣押的金庫抵押品，銷毀相應的金庫代幣，並將清算事件映射回實際支持它的LP頭寸。",
       "Avana沉降層",
       "識別真實的LP頭寸，運行適當的平倉或出售路徑，償還債務，支付清算人獎勵，並根據市場規則傳送任何盈餘。",
       "主要規則簡單但嚴格：Aave清算ERC-20金庫抵押品，Avana結算該金庫抵押品後面的LP頭寸。 設計中的其他所有內容都是為了保持這兩個步驟的一致性。",
       "Vault 代幣必須對應到實際價值",
-      "A liquidated vault token amount must always correspond to real LP collateral value, not a synthetic balance that cannot be recovered.",
+      "清算的金庫代幣金額必須始終與真實的 LP 抵押品價值相對應，而不是無法恢復的合成餘額。",
       "支持抵押品不能保持未償還狀態",
-      "Once the LP position is settled, the corresponding vault token must be burned so the representation does not outlive the asset it was meant to track.",
+      "一旦 LP 頭寸結算，相應的金庫代幣就必須被銷毀，這樣該代表就不會比它要追蹤的資產壽命更長。",
       "如果沒有活躍的 LP 抵押品，活躍的金庫代幣供應就不可能存在。",
       "過剩遵循市場規律",
       "首先償還債務，然後是清算人獎勵，然後是結算成本，只有這樣，任何剩餘價值才會遵循市場剩餘規則。",
@@ -1775,12 +1775,12 @@
       "ACTIVE",
       "該頭寸仍在貢獻抵押品價值，且未償金庫代幣仍由該實時LP頭寸提供充分支持。",
       "LIQUIDATING",
-      "The selected collateral is no longer withdrawable by the borrower and is actively moving through the settlement path.",
+      "所選抵押品不再可由借款人提取，並且正在積極通過結算路徑。",
       "SETTLED",
       "LP位置已解決，匹配的金庫代幣不得再處於未清狀態。",
-      "Settlement value is applied in a fixed order. It first covers debt, then the liquidator reward, then settlement costs. Any value left after those obligations is surplus, and that surplus follows the market rule for the collateral being settled.",
+      "結算價值按固定順序應用。 它首先涵蓋債務，然後是清算人獎勵，然後是結算成本。 這些義務之後留下的任何價值都是盈餘，並且該盈餘遵循所結算的抵押品的市場規則。",
       "如果結算價值不足以涵蓋債務和獎勵，市場需要一個明確的壞帳路徑。 清算文件應該將這種短缺描述為需要處理的真實狀態，而不是自動消失的東西。",
-      "Liquidations remain permissionless, but LP collateral often benefits from a protocol backstop that knows how to execute the expected unwind path. Generic liquidators may be able to repay debt, yet still lack the venue-specific logic needed to settle the position efficiently or safely.",
+      "清算仍然是無需許可的，但有限合夥人的抵押品通常受益於知道如何執行預期解除路徑的協議支援。 一般清算人可能能夠償還債務，但仍缺乏有效或安全地結算部位所需的特定場所邏輯。",
       "清算人必須追蹤協議使用的相同風險狀態和抵押品狀態。",
       "從債務償還到結算，執行必須保持原子性。",
       "在僅針對速​​度進行最佳化之前，應對費用實現、路線深度和殘值進行建模。",
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "歡迎",
+        "id": "welcome",
         "title": "歡迎"
       },
       {
-        "id": "什麼是阿瓦納",
+        "id": "what-is-avana",
         "title": "Avana是什麼？"
       },
       {
-        "id": "工作原理",
+        "id": "how-it-works",
         "title": "它是如何運作的"
       },
       {
-        "id": "解鎖 lp 抵押品",
+        "id": "unlocking-lp-collateral",
         "title": "為何LP擔保品很重要"
       },
       {
-        "id": "建築",
+        "id": "architecture",
         "title": "建築學"
       }
     ],
@@ -1838,45 +1838,45 @@
       "倫德輻條",
       "將貸方資產引入系統並將其路由到中心，以便LP承銷可以與資本引入分開。",
       "介紹",
-      "Avana lets approved LP positions back loans without first pulling liquidity from the pool. These docs start with the Hub-and-Spoke split: spokes understand LP risk, while the Hub manages shared lending liquidity.",
+      "Avana 讓經批准的有限合夥人頭寸支持貸款，而無需先從資金池中提取流動性。 這些文件從中心與輻條的分割開始：輻條了解有限合夥人風險，而中心管理共享貸款流動性。",
       "從關鍵概念開始",
       "Explore Borrow Spoke",
-      "Avana is a lending protocol for live LP collateral. It uses Aave v4's Hub-and-Spoke model so the Hub handles shared liquidity while each Borrow Spoke handles admission, valuation, health, and liquidation for its own LP markets.",
-      "Supporting LP collateral means more than checking a token balance. The protocol needs to understand what assets the position represents, how much of that value should count for credit, what market-specific haircut applies, and what unwind path exists if the borrower falls below the required safety margin. Avana puts that LP-specific logic in the spoke that lists the collateral instead of trying to flatten every AMM position into one generic lending path.",
+      "Avana 是一種實時 LP 抵押品的借貸協議。 它使用 Aave v4 的 Hub-and-Spoke 模型，因此 Hub 處理共享流動性，而每個 Borrow Spoke 處理其自己的 LP 市場的准入、估值、健康和清算。",
+      "支持 LP 抵押品不僅僅意味著檢查代幣餘額。 該協議需要了解該頭寸代表什麼資產、該價值的多少應計入信貸、適用於特定市場的折扣，以及如果借款人低於所需的安全邊際，存在什麼解除路徑。 Avana 將特定於 LP 的邏輯置於列出抵押品的輪輻中，而不是試圖將每個 AMM 頭寸扁平化為一條通用貸款路徑。",
       "閱讀此頁面作為其餘文件的地圖。 以下的部分首先解釋了基本的借貸路徑，然後引導您進入借入輻條、借出輻條、抵押因素、預言機邏輯、健康監控和清算的詳細頁面。",
       "面向使用者的流程很短，但每個階段都隱藏了LP特定的核保工作。 後面的幾頁詳細介紹了每個步驟背後的機制。",
       "LP 職位已處於營運資金中。 如果沒有貸款層，收回現金通常意味著首先縮小或關閉資金池頭寸。",
       "Avana將共享借貸流動性與LP特定的風險邏輯分開。 這種劃分是系統可以支援不同抵押品類型而無需將所有規則合併在一起的原因。",
-      "Builders should think of the system in two halves. The Hub is the common balance sheet and debt engine, while Borrow Spokes decide what each LP market can safely support and how that market must be unwound if it fails. The Lend Spoke feeds capital into the Hub so suppliers do not need to reason about LP mechanics just to provide liquidity."
+      "建構者應該將系統分為兩半。 中心是共同的資產負債表和債務引擎，而藉貸輻條則決定每個有限合夥人市場可以安全支持的內容以及如果該市場失敗則必須如何解除該市場。 Lend Spoke 將資金注入 Hub，因此供應商無需僅為了提供流動性而推理 LP 機制。"
     ]
   },
   "safety/bug-bounty": {
     "meta": {
       "title": "漏洞賞金",
-      "description": "Avana Bug Bounty responsible disclosure scope, LP-collateral risk surfaces, and economic-impact severity philosophy."
+      "description": "Avana Bug Bounty 負責任的揭露範圍、有限合夥人抵押品風險面以及經濟影響嚴重性理念。"
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "範圍和系統架構",
+        "id": "scope-and-system-architecture",
         "title": "範圍與系統架構"
       },
       {
-        "id": "嚴肅哲學",
+        "id": "severity-philosophy",
         "title": "嚴謹理念"
       }
     ],
     "strings": [
       "漏洞賞金",
-      "Avana Bug Bounty responsible disclosure scope, LP-collateral risk surfaces, and economic-impact severity philosophy.",
+      "Avana Bug Bounty 負責任的揭露範圍、有限合夥人抵押品風險面以及經濟影響嚴重性理念。",
       "概覽",
       "範圍與系統架構",
       "嚴謹理念",
       "計劃 A - 核心貸款",
-      "Covers the primary credit engine where accounting integrity, collateralization, and liquidation execution directly protect user funds.",
+      "涵蓋主要信用引擎，其中會計誠信、抵押和清算執行直接保護用戶資金。",
       "存款/提款流量",
       "借/還邏輯",
       "健康因素和應計利息",
@@ -1887,7 +1887,7 @@
       "抵押不足的借款",
       "受阻還款、提款或清算",
       "計劃 B - LP 抵押品和估值",
-      "Covers the Avana-specific valuation system for LP-backed credit, including how LP positions are priced, risk-weighted, and stress-tested under volatile market conditions.",
+      "涵蓋針對有限合夥人支持的信貸的 Avana 特定估值系統，包括如何在波動的市場條件下對有限合夥人頭寸進行定價、風險加權和壓力測試。",
       "LP 職位的抵押因素分配",
       "集中流動性部位處理",
       "不平衡、脫鉤、低流動性或過時的預言機狀態期間的邊緣情況",
@@ -1895,7 +1895,7 @@
       "甲骨文操縱導致壞帳",
       "定價過低導致的不公平清算",
       "針對定價錯誤的 LP 抵押品的遞歸利用路徑",
-      "Highest severity ceiling: LP mispricing can create bad debt, insolvency, or unfair liquidations without a classic contract drain.",
+      "最高嚴重性上限：有限合夥人定價錯誤可能會造成壞帳、破產或不公平清算，而無需典型的合約流失。",
       "計劃 C - 治理、管理和協議基礎設施",
       "涵蓋可以更改參數、升級合約、暫停操作或重定向協議擁有的資產的特權控制介面。",
       "治理執行者和時間鎖",
@@ -1936,7 +1936,7 @@
       "包括",
       "主要風險",
       "為什麼它很重要：",
-      "Subsystems are triaged separately, but impact is still scored across solvency, user fund safety, liquidation integrity, and related protocol risk.",
+      "子系統是單獨分類的，但影響仍然根據償付能力、用戶資金安全、清算完整性和相關協議風險進行評分。",
       "通用漏洞評分不是這裡的主要排名方法。 調查結果是根據可靠的開發路徑及其可以創造的經濟成果來判斷的。"
     ]
   },
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "安全挑戰",
+        "id": "security-challenges",
         "title": "安全挑戰"
       },
       {
-        "id": "多層安全",
+        "id": "multi-layer-security",
         "title": "多層安全"
       },
       {
-        "id": "核心-契約-表面",
+        "id": "core-contract-surfaces",
         "title": "核心合約面"
       },
       {
-        "id": "信任界限",
+        "id": "trust-boundaries",
         "title": "信任邊界"
       },
       {
-        "id": "審計準備狀況",
+        "id": "audit-readiness",
         "title": "審計準備"
       }
     ],
@@ -1985,12 +1985,12 @@
       "集線器集成",
       "將輻條級借貸能力與中心層的共享信用和流動性約束連接起來。",
       "Oracle 和評估適配器",
-      "Translate LP positions into conservative collateral values using external prices, position reconstruction, and recoverable-value assumptions.",
+      "使用外部價格、部位重建和可收回價值假設，將有限合夥人部位轉換為保守的抵押品價值。",
       "清算執行層",
       "當必須關閉或調整不健康帳戶時，協調解除路徑、費用實現、路由和結算。",
       "合約與保障",
       "LP 支持的貸款背後的合約表面、外部依賴關係和審查邊界的安全參考。",
-      "Avana lends against LP collateral, so security review has to cover more than whether a contract compiles or transfers balances correctly. It also has to cover how pricing, custody, liquidation, and privileged controls behave when the market is under stress.",
+      "Avana 以 LP 抵押品提供貸款，因此安全審查必須涵蓋的不僅僅是合約是否正確編製或轉移餘額。 它還必須涵蓋市場面臨壓力時定價、託管、清算和特權控制的表現。",
       "合約審查、經濟審查和營運審查對於 LP 市場都很重要。 它們相輔相成，應被視為一個安全計劃，而不是三個不相關的清單。",
       "• LP 值可能與路徑相關，並且通常需要特定於場所的保管和展開邏輯。",
       "• 即使合約完全按照編碼執行，Oracle 濫用或過時的定價也可能造成經濟損失。",
@@ -2004,7 +2004,7 @@
       "漏洞賞金",
       "程序應該都保持活動狀態。 其中之一不能取代另一個。",
       "• 鏈上記帳和清算結算一旦觸發就應具有確定性。",
-      "• Oracle sources, venue adapters, and operational liquidator infrastructure are external dependencies and should be monitored as such.",
+      "• Oracle 來源、場所適配器和營運清算人基礎架構是外部相依項，因此應進行監控。",
       "• 治理、暫停權限和升級屬於特權權力，應盡可能保持有限的、可審查的和有時間限制的。",
       "此頁面不發布推測性審計計劃或占位里程碑。 審計報告、範圍和補救說明應在實際存在時予以公佈，並可進行全面審查。",
       "高價值審計目標通常包括新的LP家族支持、新的清算路徑、新的預言機模型以及任何擴大特權控製或可收回價值假設的變化。"
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "目的",
+        "id": "purpose",
         "title": "目的"
       },
       {
-        "id": "資金方式",
+        "id": "funding-approach",
         "title": "資助方式"
       },
       {
-        "id": "啟動路徑",
+        "id": "activation-path",
         "title": "啟動路徑"
       },
       {
-        "id": "覆蓋範圍邊界",
+        "id": "coverage-boundary",
         "title": "覆蓋邊界"
       }
     ],
@@ -2049,7 +2049,7 @@
       "Avana的第一道防線是保守的抵押品估值、有限的曝險和及時的清算。 未來的保險基金將置於這些控制措施的後面，只有在清算仍無法完全消除壞帳時才會出現。",
       "本頁描述了計劃的保護層。 這並不是說今天的每一次部署都會有活生生的保險基金。",
       "如果啟動，該基金可以透過治理批准的國庫撥款、儲備金繳款或專用安全模組進行資本化。 確切的資金組合是風險治理決定，應與計畫條款一起公佈。",
-      "• Detect a residual shortfall after an allowed liquidation path has completed.",
+      "• 在允許的清算路徑完成後偵測剩餘短缺。",
       "• 核實缺口是否符合基金核准的承保政策。",
       "• 執行治理確定的資本重組或赤字彌補路徑。",
       "• 發布事件後摘要，描述觸發、回應和後續控制。",
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "概述",
+        "id": "overview",
         "title": "概覽"
       },
       {
-        "id": "核心原則",
+        "id": "core-principles",
         "title": "核心原則"
       },
       {
-        "id": "角色",
+        "id": "roles",
         "title": "角色"
       },
       {
-        "id": "更新流程",
+        "id": "update-flow",
         "title": "更新流程"
       },
       {
-        "id": "參數類別",
+        "id": "parameter-classes",
         "title": "參數類別"
       },
       {
-        "id": "公開揭露",
+        "id": "public-disclosure",
         "title": "公開揭露"
       },
       {
-        "id": "緊急行動",
+        "id": "emergency-actions",
         "title": "緊急行動"
       }
     ],
@@ -2103,7 +2103,7 @@
       "公開揭露",
       "緊急行動",
       "角色分離",
-      "The framework assigns proposing, reviewing, and emergency containment to different actors so one party does not control the full path alone.",
+      "該框架將提議、審查和緊急遏制分配給不同的參與者，因此一方無法單獨控制整個路徑。",
       "約束執行",
       "只有當常規風險變更保持在預先定義的策略範圍內並通過驗證檢查時，才會執行。",
       "公共一致性",
@@ -2114,7 +2114,7 @@
       "這個過程是故意有偏差的，因此降低風險比擴大風險更快、更簡單。",
       "Avana 風險發起者",
       "為中心和 LP 抵押輻條準備並建議日常風險變更的角色。",
-      "Publish the rationale and classify the update as defensive or growth-oriented",
+      "發布理由並將更新分類為防禦型或增長型",
       "Submit routine updates into the timelocked execution path",
       "建議在批准的範圍內調整供應上限、借貸上限、LT/LTV、準備金率和利率變化",
       "在預先批准的輻條模板內啟動輻條級去風險和池加入",
@@ -2161,7 +2161,7 @@
       "啟用新的 LP 原語",
       "新增新的預言機模型",
       "啟用新的清算適配器",
-      "Materially expanding the risk surface beyond preapproved assumptions",
+      "大幅擴大風險面，超出預先核准的假設",
       "受影響的輻條",
       "受影響的資源池或範本",
       "目前參數",

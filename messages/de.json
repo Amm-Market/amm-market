@@ -16,12 +16,12 @@
       "resources": "Ressourcen",
       "developers": "Entwickler",
       "helpCenter": "Hilfezentrum",
-      "aaveArfc": "t7755pda17byvjdkbgua",
+      "aaveArfc": "Aave ARFC",
       "borrow": "Leihen",
       "lend": "Leihen",
       "multiply": "Multiplizieren",
       "about": "Über",
-      "newsroom": "Nachrichtenredaktion",
+      "newsroom": "Newsroom",
       "brand": "Marke",
       "faq": "Häufig gestellte Fragen",
       "privacy": "Privatsphäre",
@@ -65,10 +65,10 @@
       "resources": "Ressourcen",
       "docs": "Dokumente",
       "social": "Sozial",
-      "twitter": "thjpcw9an2hfica02ku3",
-      "github": "zdjycj2vv5dr5kdi5163",
-      "telegram": "Telegramm",
-      "discourse": "Diskurs",
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "telegram": "Telegram",
+      "discourse": "Discourse",
       "socialAria": "Avana auf {network}",
       "disclosureRisk": "Die Aufnahme von Krediten gegen LP Token birgt Risiken, einschließlich Liquidation, wenn sich die Marktbedingungen gegen Ihre Position entwickeln. Avana verwahrt Ihre Mittel nicht, rehypotheziert LP-Positionen nicht und verändert nicht, wie Ihre Liquidität auf den zugrunde liegenden AMM betrieben wird. Kreditbedingungen, Zinssätze und Sicherheitenwerte werden On-Chain mit transparenten Oracle-Systemen und automatisierten Risikoparametern durchgesetzt. Sie behalten jederzeit die volle Kontrolle über Ihre Position und können Sicherheiten zurückzahlen oder anpassen, wann immer Sie möchten. Leihen Sie nur Beträge, die Sie bereit sind, während der Marktschwankungen zu halten.",
       "disclosureInfo": "Dieses Material dient ausschließlich Informationszwecken und ist weder (i) ein Angebot oder eine Aufforderung zur Abgabe eines Angebots, in irgendeine Beteiligung oder Aktie zu investieren oder zu kaufen oder zu verkaufen oder an irgendeiner Investitions- oder Handelsstrategie teilzunehmen, noch (ii) dazu bestimmt, Buchhaltungs-, Rechts- oder Steuerberatung oder Anlageempfehlungen zu geben, noch (iii) eine offizielle Erklärung von Avana. Konsultieren Sie Ihre Berater, bevor Sie eine Investitionsentscheidung treffen. Es wird keine ausdrückliche oder stillschweigende Zusicherung oder Garantie hinsichtlich der Richtigkeit der Informationen oder der zukünftigen Leistung eines digitalen Vermögenswerts, Finanzinstruments oder eines anderen Markt- oder Wirtschaftsmaßstabs gegeben. Avana kann finanzielle Interessen an einigen der in den Materialien behandelten oder erwähnten Einheiten und/oder Veröffentlichungen haben oder Beziehungen zu diesen unterhalten. Avana unterstützt oder genehmigt keine in den Materialien gegebenen Links oder Drittanbieter-Websites."
@@ -155,8 +155,8 @@
       "institutions": "Institutionen"
     },
     "newsroom": {
-      "latestFrom": "Neueste von Avana",
-      "readNewsroom": "Nachrichtenraum lesen"
+      "latestFrom": "Neues von Avana",
+      "readNewsroom": "Artikel lesen"
     }
   },
   "meta": {
@@ -167,7 +167,7 @@
     "twitterTitle": "Avana - Gegen LP Positionen leihen",
     "twitterDescription": "Schalte Liquidität aus deinen LP Token auf Aave v4 frei",
     "titleTemplate": "{title} | Avana",
-    "team": "crmgj6j8xz6cuv6ic88y",
+    "team": "Avana Team",
     "ogAlt": "Avana - DeFi Liquiditätsprotokoll",
     "home": {
       "title": "Gegen LP Positionen auf Aave v4 leihen",
@@ -241,8 +241,8 @@
       "title": "Häufig gestellte Fragen"
     },
     "newsroom": {
-      "title": "Neueste von Avana",
-      "cta": "Nachrichtenraum lesen"
+      "title": "Neues von Avana",
+      "cta": "Artikel lesen"
     },
     "buildTomorrow": {
       "title": "Treffen Avana",

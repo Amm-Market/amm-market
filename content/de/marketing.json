@@ -212,7 +212,9 @@
       "Das Ziel ist eine klare Trennung, wobei technische Ausführung, Betrieb, Marktmodellierung und Sicherheitenprüfung jeweils unabhängig verwaltet werden.",
       "Wir sind ein kleines Team, das an einem großen Problem arbeitet. Wenn Sie daran interessiert sind, sich diesem Forschungsprojekt anzuschließen,",
       "Ein Kreditprotokoll für LP-gestützte Darlehen",
-      "Ein Kreditprotokoll für"
+      "Ein Kreditprotokoll für",
+      "Avana stellt sich vor:",
+      "würden wir uns freuen, von Ihnen zu hören."
     ]
   },
   "brand/page": {
@@ -443,7 +445,25 @@
   },
   "homepage/HomepageNewsroomSection": {
     "strings": [
-      "Nachrichtenraum lesen"
+      "Avana stellt sich vor:",
+      "Newsroom",
+      "Neues von Avana",
+      "Artikel lesen",
+      "Risikorahmen",
+      "Smart Agents",
+      "Liquidationsmodell",
+      "Leitfaden zum Ausleihen",
+      "Uniswap-Sicherheiten",
+      "Curve-Sicherheiten",
+      "Kapitaleffizienz",
+      "LP-Absicherung",
+      "Treasury-Strategie",
+      "Hebelstrategie",
+      "Positionskontrollen",
+      "Risikodesign",
+      "Architektur",
+      "Oracle-Design",
+      "Entwicklersicht"
     ]
   },
   "invest-growth-calculator-section": {
@@ -479,18 +499,18 @@
       "USDD",
       "Äther",
       "Eingewickeltes Ether",
-      "st⟦ 24⟧",
+      "stETH",
       "wstETH",
       "rETH",
       "cbETH",
       "wirETH",
-      "⟦ 24⟧x",
+      "ETHx",
       "dasETH",
       "Eingewickeltes Bitcoin",
       "dBTC",
       "cbBTC",
-      "ren⟦ 25⟧",
-      "m⟦ 25⟧",
+      "renBTC",
+      "sBTC",
       "LBTC",
       "Aave",
       "Uniswap",
@@ -551,7 +571,12 @@
       "Mehrfachstart",
       "Was kommt als Nächstes",
       "Fahrplan",
-      "Avana entwickelt sich in drei Phasen. Jede Phase baut auf der vorherigen auf: Kreditmärkte, Verleihmärkte, dann Multiplikationsmärkte."
+      "Avana entwickelt sich in drei Phasen. Jede Phase baut auf der vorherigen auf: Kreditmärkte, Verleihmärkte, dann Multiplikationsmärkte.",
+      "Ziel: Q3 2026",
+      "Ziel: Q4 2026",
+      "Ziel: Q1 2027",
+      "Veröffentlicht",
+      "In Arbeit"
     ]
   },
   "position-safety-section": {

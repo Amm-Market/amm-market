@@ -971,7 +971,7 @@
       "3 V2 6 31Spl",
       "Chainlink + rekonstrukcja rezerwy + weryfikacja TWAP",
       "Standardowe LP tokeny są wyceniane na podstawie zrekonstruowanych sald podstawowych, przy czym TWAP jest używany jako odporny na manipulacje mechanizm weryfikacyjny.",
-      "⟦ 3 V3 NFT z 31 ⟧s",
+      "Uniswap V3 NFT LPs",
       "Chainlink + dekompozycja pozycji + kontrola tick/TWAP",
       "NFT jest rozkładany według płynności, aktywnego zakresu i bieżącej ceny, a następnie potrącany o możliwą do odzyskania wartość likwidacyjną.",
       "Balancer Wielo-aktywów LPs",

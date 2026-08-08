@@ -1001,7 +1001,7 @@
       "L'interface cache les détails spécifiques à DEX à partir du spoke. Cela permet au même appelant de gérer des ERC-20 LPs, des NFT LPs et des pools multi-actifs à travers une seule forme de retour tout en laissant de la place pour un traitement conservateur spécifique à la famille de collatéraux en coulisses.",
       "LP L'évaluation est un processus par étapes plutôt qu'une lecture unique du prix au comptant. Le parcours de l'oracle passe par les étapes suivantes :",
       "Différents lieux exposent différentes parties de l'état, et l'oracle utilise ces entrées de différentes manières. L'important est que les données spécifiques à chaque lieu aident à reconstruire la position et à vérifier les prix ; elles ne sont pas acceptées aveuglément comme une marque de garantie directe.",
-      "DEX / Type de 31⟧ ",
+      "DEX / LP Type",
       "Source Oracle",
       "Remarques",
       "Calcul TWAP par DEX",

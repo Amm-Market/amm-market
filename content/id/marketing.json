@@ -212,7 +212,9 @@
       "Tujuannya adalah pemisahan yang bersih, dengan pelaksanaan teknis, operasi, pemodelan pasar, dan tinjauan agunan masing-masing dimiliki secara independen.",
       "Kami adalah tim kecil yang bekerja pada masalah besar. Jika Anda tertarik untuk bergabung dalam upaya penelitian ini,",
       "Sebuah protokol pinjaman untuk pinjaman yang didukung LP",
-      "Sebuah protokol peminjaman untuk"
+      "Sebuah protokol peminjaman untuk",
+      "Memperkenalkan Avana:",
+      "kami ingin mendengar dari Anda."
     ]
   },
   "brand/page": {
@@ -443,7 +445,25 @@
   },
   "homepage/HomepageNewsroomSection": {
     "strings": [
-      "Baca ruang berita"
+      "Memperkenalkan Avana:",
+      "Ruang Berita",
+      "Terbaru dari Avana",
+      "Baca artikel",
+      "Kerangka risiko",
+      "Smart Agents",
+      "Model likuidasi",
+      "Panduan pinjaman",
+      "Agunan Uniswap",
+      "Agunan Curve",
+      "Efisiensi modal",
+      "Lindung nilai LP",
+      "Strategi perbendaharaan",
+      "Strategi leverage",
+      "Kontrol posisi",
+      "Desain risiko",
+      "Arsitektur",
+      "Desain oracle",
+      "Tampilan pengembang"
     ]
   },
   "invest-growth-calculator-section": {
@@ -551,7 +571,12 @@
       "Luncurkan berganda",
       "Apa yang berikutnya",
       "Peta Jalan",
-      "Avana berkembang dalam tiga fase. Setiap fase dibangun berdasarkan fase sebelumnya: Pasar Pinjam, Pasar Pinjamkan, kemudian Pasar Gandakan."
+      "Avana berkembang dalam tiga fase. Setiap fase dibangun berdasarkan fase sebelumnya: Pasar Pinjam, Pasar Pinjamkan, kemudian Pasar Gandakan.",
+      "Target Kuartal 3 2026",
+      "Target Kuartal 4 2026",
+      "Target Kuartal 1 2027",
+      "Dirilis",
+      "Sedang berjalan"
     ]
   },
   "position-safety-section": {

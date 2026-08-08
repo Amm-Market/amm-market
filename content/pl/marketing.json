@@ -212,7 +212,9 @@
       "Celem jest czysta separacja, przy czym wykonanie techniczne, operacje, modelowanie rynku i przegląd zabezpieczeń są każdorazowo zarządzane niezależnie.",
       "Jesteśmy małym zespołem pracującym nad dużym problemem. Jeśli jesteś zainteresowany dołączeniem do tych badań,",
       "Protokół pożyczkowy dla pożyczek zabezpieczonych przez LP",
-      "Protokół pożyczkowy dla"
+      "Protokół pożyczkowy dla",
+      "Poznaj Avanę:",
+      "chętnie o Tobie usłyszymy."
     ]
   },
   "brand/page": {
@@ -443,7 +445,25 @@
   },
   "homepage/HomepageNewsroomSection": {
     "strings": [
-      "Czytaj newsroom"
+      "Poznaj Avanę:",
+      "Aktualności",
+      "Najnowsze od Avana",
+      "Czytaj artykuł",
+      "Ramy ryzyka",
+      "Smart Agents",
+      "Model likwidacji",
+      "Przewodnik pożyczania",
+      "Zabezpieczenie Uniswap",
+      "Zabezpieczenie Curve",
+      "Efektywność kapitału",
+      "Hedging LP",
+      "Strategia skarbowa",
+      "Strategia dźwigni",
+      "Kontrola pozycji",
+      "Projektowanie ryzyka",
+      "Architektura",
+      "Projektowanie wyroczni",
+      "Widok programisty"
     ]
   },
   "invest-growth-calculator-section": {
@@ -485,7 +505,7 @@
       "cbETH",
       "myETH",
       "ETHx godziny na dobę",
-      "Os⟦ 24",
+      "osETH",
       "Opakowany Bitcoin",
       "-tBTC",
       "cbBTC",
@@ -551,7 +571,12 @@
       "Wielokrotne uruchomienie",
       "Co będzie dalej",
       "Mapa drogowa",
-      "Avana rozwija się w trzech fazach. Każda faza opiera się na poprzedniej: Rynki pożyczek, Rynki udzielania pożyczek, a następnie Rynki mnożenia."
+      "Avana rozwija się w trzech fazach. Każda faza opiera się na poprzedniej: Rynki pożyczek, Rynki udzielania pożyczek, a następnie Rynki mnożenia.",
+      "Cel: III kw. 2026",
+      "Cel: IV kw. 2026",
+      "Cel: I kw. 2027",
+      "Wydano",
+      "W toku"
     ]
   },
   "position-safety-section": {

@@ -16,12 +16,12 @@
       "resources": "Kaynaklar",
       "developers": "Geliştiriciler",
       "helpCenter": "Yardım Merkezi",
-      "aaveArfc": "⟦ 13  ⟦ 15 ",
+      "aaveArfc": "Aave ARFC",
       "borrow": "Ödünç almak",
       "lend": "Ödünç vermek",
       "multiply": "Çarpmak",
       "about": "Hakkında",
-      "newsroom": "Haber Odası",
+      "newsroom": "Haberler",
       "brand": "Marka",
       "faq": "Sıkça sorulan sorular",
       "privacy": "Gizlilik",
@@ -65,10 +65,10 @@
       "resources": "Kaynaklar",
       "docs": "Belgeler",
       "social": "Sosyal",
-      "twitter": "heyecan",
-      "github": "Github",
-      "telegram": "Telgraf",
-      "discourse": "Söylem",
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "telegram": "Telegram",
+      "discourse": "Discourse",
       "socialAria": "Avana {network} üzerinde",
       "disclosureRisk": "LP tokenleri teminat göstererek borç almak, piyasa koşulları pozisyonunuza karşı hareket ederse tasfiye dahil olmak üzere risk içerir. Avana fonlarınızı saklamaz, LP pozisyonlarını yeniden teminat olarak kullanmaz veya likiditenizin temel AMMlerde nasıl çalıştığını değiştirmez. Kredi şartları, faiz oranları ve teminat değerleri şeffaf oracle sistemleri ve otomatik risk parametreleri kullanılarak zincir üzerinde uygulanır. Pozisyonunuzun tam kontrolü her zaman sizdedir ve teminatı istediğiniz zaman geri ödeyebilir veya ayarlayabilirsiniz. Piyasa dalgalanmalarına karşı idare edebileceğiniz miktarlarda borç alın.",
       "disclosureInfo": "Bu materyal yalnızca bilgilendirme amaçlıdır ve (i) herhangi bir yatırım veya ticaret stratejisine katılmak, herhangi bir payı veya hisseleri satın almak veya satmak için teklif veya teklif çağrısı yapmak, (ii) muhasebe, hukuki veya vergi danışmanlığı veya yatırım önerileri sağlamak amacı taşımamakta, veya (iii) Avana’in resmi bir beyanı değildir. Herhangi bir yatırım kararı vermeden önce danışmanlarınıza başvurun. Bilgilerin doğruluğu veya herhangi bir dijital varlığın, finansal aracın veya diğer piyasa ya da ekonomik ölçütün gelecekteki performansı hakkında açık veya ima edilen herhangi bir beyan veya garanti verilmemektedir. Avana, materyallerde tartışılan veya atıfta bulunulan bazı kuruluşlarda ve/veya yayınlarda mali çıkarlar veya ilişkiler taşıyor olabilir. Avana, materyallerde sağlanabilecek bağlantıları veya üçüncü taraf web sitelerini onaylamaz veya onay vermez."
@@ -155,8 +155,8 @@
       "institutions": "Kurumlar"
     },
     "newsroom": {
-      "latestFrom": "Avana'den en son",
-      "readNewsroom": "Haber odasını oku"
+      "latestFrom": "Avana'dan son haberler",
+      "readNewsroom": "Makaleyi oku"
     }
   },
   "meta": {
@@ -241,8 +241,8 @@
       "title": "Sık sorulan sorular"
     },
     "newsroom": {
-      "title": "Avana'den en son",
-      "cta": "Haber odasını oku"
+      "title": "Avana'dan son haberler",
+      "cta": "Makaleyi oku"
     },
     "buildTomorrow": {
       "title": "Tanış Avana",

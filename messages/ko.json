@@ -16,7 +16,7 @@
       "resources": "자원",
       "developers": "개발자",
       "helpCenter": "도움말 센터",
-      "aaveArfc": "1eov3v5v9g1hbx06wm8t",
+      "aaveArfc": "Aave ARFC",
       "borrow": "빌리다",
       "lend": "빌려주다",
       "multiply": "곱하다",
@@ -65,10 +65,10 @@
       "resources": "자원",
       "docs": "문서",
       "social": "사회적인",
-      "twitter": "지저귀다",
-      "github": "깃허브",
-      "telegram": "텔레그램",
-      "discourse": "담론",
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "telegram": "Telegram",
+      "discourse": "Discourse",
       "socialAria": "Avana {network}에서",
       "disclosureRisk": "LP 토큰을 담보로 대출하는 것은 시장 상황이 귀하의 포지션에 불리하게 움직일 경우 청산을 포함한 위험을 수반합니다. Avana은 귀하의 자금을 보관하지 않으며, LP 포지션을 재담보하지도 않고, 기초 AMM에서 유동성이 작동하는 방식을 변경하지도 않습니다. 대출 조건, 이자율, 담보 가치는 투명한 오라클 시스템과 자동화된 리스크 매개변수를 사용하여 온체인에서 집행됩니다. 귀하는 항상 귀하의 포지션을 완전히 통제할 수 있으며, 원하는 때 언제든지 상환하거나 담보를 조정할 수 있습니다. 시장 변동성을 통해 유지할 수 있는 금액만 대출하세요.",
       "disclosureInfo": "이 자료는 정보 제공 목적으로만 제공되며, (i) 어떠한 투자 또는 매매 제안이나 권유, 또는 투자 또는 거래 전략에 참여하도록 하는 제안이 아니며, (ii) 회계, 법률, 세무 조언 또는 투자 권고를 제공하려는 의도가 아니고, (iii) Avana의 공식 성명이 아닙니다. 투자 결정을 내리기 전에 반드시 자문가와 상의하십시오. 정보의 정확성이나 디지털 자산, 금융 상품 또는 기타 시장·경제 지표의 미래 성과에 대해 명시적이거나 묵시적인 어떠한 진술이나 보증도 제공되지 않습니다. Avana는 자료에서 논의되거나 참조된 일부 단체 및/또는 간행물에 재정적 이해관계 또는 관계를 가질 수 있습니다. Avana는 자료에 제공될 수 있는 링크나 제3자 웹사이트를 승인하거나 추천하지 않습니다."
@@ -155,8 +155,8 @@
       "institutions": "기관"
     },
     "newsroom": {
-      "latestFrom": "Avana의 최신 소식",
-      "readNewsroom": "뉴스룸을 읽다"
+      "latestFrom": "Avana 최신 소식",
+      "readNewsroom": "기사 읽기"
     }
   },
   "meta": {
@@ -241,8 +241,8 @@
       "title": "자주 묻는 질문"
     },
     "newsroom": {
-      "title": "Avana의 최신 소식",
-      "cta": "뉴스룸을 읽다"
+      "title": "Avana 최신 소식",
+      "cta": "기사 읽기"
     },
     "buildTomorrow": {
       "title": "만나 Avana",
