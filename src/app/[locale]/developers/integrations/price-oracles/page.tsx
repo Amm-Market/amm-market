@@ -106,18 +106,15 @@ export default async function PriceOraclesPage() {
         <section id="overview" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">Overview</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Avana Oracle is not a single price lookup. It is the valuation path that turns an LP
-            position into something the lending system can use for collateral accounting. To do
-            that safely, it combines external market feeds, deterministic reconstruction of the LP,
-            and recovery haircuts based on unwind assumptions instead of trusting raw AMM spot
-            state on its own.
+            Avana prices LP collateral by reconstructing the position and valuing the assets inside
+            it. For fungible LPs, the protocol derives value from external asset prices and pool
+            balance reconstruction. For concentrated liquidity, it decomposes the position by
+            liquidity, range, current tick, token exposure, and accrued fees.
           </p>
           <p className="text-gray-600 leading-relaxed mb-4">
-            The exact inputs depend on the collateral family. A fungible LP is reconstructed from
-            balances, reserves, and fees, while concentrated liquidity must be decomposed through
-            its range, liquidity, and current price context. In both cases the result is pushed
-            through recoverable-value logic so borrowing uses a conservative number rather than a
-            frictionless exit assumption.
+            The result is discounted into recoverable collateral value. Borrow power is based on what
+            the position can realistically support under the market&apos;s risk assumptions, not on
+            an optimistic net asset value.
           </p>
           <p className="text-gray-600 leading-relaxed mb-6">
             That distinction between mark value and recoverable value is what keeps the oracle
@@ -207,9 +204,9 @@ export default async function PriceOraclesPage() {
         <section id="dex-handling" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-4">DEX-Specific Handling</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Different venues expose different pieces of state, and the oracle uses those inputs in
-            different ways. The important point is that venue-specific data helps reconstruct the
-            position and verify pricing; it is not accepted blindly as a direct collateral mark.
+            Different DEXs expose different pieces of state, and the oracle uses those inputs to
+            reconstruct the position and verify pricing. Pool-derived data is not accepted blindly
+            as a direct collateral mark.
           </p>
           
           <div className="overflow-x-auto">

@@ -26,7 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const developerPaths = [
     "/developers/introduction/key-concepts",
     "/developers/introduction/glossary",
-    "/developers/introduction/testnet-roadmap",
     "/developers/getting-started",
     "/developers/getting-started/borrow-assets",
     "/developers/getting-started/manage-loans",

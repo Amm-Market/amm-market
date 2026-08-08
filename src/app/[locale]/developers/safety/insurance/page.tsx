@@ -39,8 +39,8 @@ export default async function InsuranceFundsPage() {
             controls and come into view only when liquidation still cannot fully close bad debt.
           </p>
           <p className="border-l-4 border-rose-400 pl-3 text-sm text-gray-600">
-            This page describes a planned protection layer. It is not a promise that a live
-            insurance fund exists on every deployment today.
+            Insurance funds are a planned protection layer. A live insurance fund may not exist on
+            every deployment today.
           </p>
         </section>
 
