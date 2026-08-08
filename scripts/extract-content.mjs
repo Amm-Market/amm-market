@@ -28,15 +28,16 @@ const ATTRS = new Set([
 ])
 
 function decodeEntities(s) {
+  // Decode &amp; last so sequences like &amp;lt; stay correct.
   return s
     .replace(/&nbsp;/g, " ")
     .replace(/&apos;/g, "'")
     .replace(/&#39;/g, "'")
     .replace(/&quot;/g, '"')
-    .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&#8209;/g, "-")
+    .replace(/&amp;/g, "&")
 }
 
 function isJunk(s) {
