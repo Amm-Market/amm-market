@@ -212,7 +212,9 @@
       "Amaç, teknik uygulama, operasyonlar, pazar modellemesi ve teminat incelemesinin her birinin bağımsız olarak sahiplenildiği temiz bir ayrım sağlamaktır.",
       "Biz büyük bir problem üzerinde çalışan küçük bir ekibiz. Bu araştırma çabasına katılmakla ilgileniyorsanız,",
       "LP destekli krediler için bir borç verme protokolü",
-      "İçin bir borç verme protokolü"
+      "İçin bir borç verme protokolü",
+      "Karşınızda Avana:",
+      "sizden haber almak isteriz."
     ]
   },
   "brand/page": {
@@ -443,7 +445,25 @@
   },
   "homepage/HomepageNewsroomSection": {
     "strings": [
-      "Haber odasını oku"
+      "Karşınızda Avana:",
+      "Haberler",
+      "Avana'dan son haberler",
+      "Makaleyi oku",
+      "Risk çerçevesi",
+      "Smart Agents",
+      "Tasfiye modeli",
+      "Borçlanma rehberi",
+      "Uniswap teminatı",
+      "Curve teminatı",
+      "Sermaye verimliliği",
+      "LP riskten korunma",
+      "Hazine stratejisi",
+      "Kaldıraç stratejisi",
+      "Pozisyon kontrolleri",
+      "Risk tasarımı",
+      "Mimari",
+      "Oracle tasarımı",
+      "Geliştirici görünümü"
     ]
   },
   "invest-growth-calculator-section": {
@@ -551,7 +571,12 @@
       "Çoklu başlat",
       "Sonra ne gelir",
       "Yol Haritası",
-      "Avana üç aşamada gelişir. Her aşama, bir öncekinin üzerine inşa edilir: Borç Alma Piyasaları, Ödünç Verme Piyasaları ve sonra Çoğaltma Piyasaları."
+      "Avana üç aşamada gelişir. Her aşama, bir öncekinin üzerine inşa edilir: Borç Alma Piyasaları, Ödünç Verme Piyasaları ve sonra Çoğaltma Piyasaları.",
+      "Hedef: 2026 3. çeyrek",
+      "Hedef: 2026 4. çeyrek",
+      "Hedef: 2027 1. çeyrek",
+      "Yayınlandı",
+      "Devam ediyor"
     ]
   },
   "position-safety-section": {

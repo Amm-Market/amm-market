@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "yadda yake aiki",
+        "id": "how-it-works",
         "title": "Yadda Yake Aiki"
       },
       {
-        "id": "ɗaukar-bashi-kima",
+        "id": "borrowable-value",
         "title": "Darajar Ƙarabawa"
       },
       {
-        "id": "littattafai",
+        "id": "notes",
         "title": "Bayanan kula"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "lissafi",
+        "id": "calculation",
         "title": "Lissafi"
       },
       {
-        "id": "ɗaure lafiya",
+        "id": "health-bands",
         "title": "Sauraran Ƙungiyoyi"
       },
       {
-        "id": "hanyar-amsa",
+        "id": "response-path",
         "title": "Hanyar Amsa"
       },
       {
-        "id": "ayyukan mai amfani",
+        "id": "user-actions",
         "title": "Ayyukan Mai Amfani"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "nau'ikan shirye-shirye",
+        "id": "program-types",
         "title": "Nau'ikan Shirye-shirye"
       },
       {
-        "id": "ka'idojin rarrabawa",
+        "id": "distribution-principles",
         "title": "Ka'idojin Rarrabawa"
       },
       {
-        "id": "ikirari-da-sake-hada",
+        "id": "claiming-and-reconciliation",
         "title": "Ikirari & Sasanci"
       },
       {
-        "id": "matsayi",
+        "id": "status",
         "title": "Matsayi Na Yanzu"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "babban-tashar-shiga",
+        "id": "capital-entry-point",
         "title": "Babban Ƙofar Shiga"
       },
       {
-        "id": "amfanin-da-aka-daidaita-da-hatsari",
+        "id": "risk-adjusted-yield",
         "title": "Ribarsa Bisa Hadarin"
       },
       {
-        "id": "ikon-gudanar-da-hadarin-dinamiƙ",
+        "id": "dynamic-risk-controls",
         "title": "Kula da Hadari Mai Gudana"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "kwarewar mai amfani",
+        "id": "user-experience",
         "title": "Kwarewar Mai Amfani"
       },
       {
-        "id": "misali-kwarara",
+        "id": "example-flow",
         "title": "Misalin Gudana"
       },
       {
-        "id": "tsarin gine-gine mai matakai uku",
+        "id": "three-tier-architecture",
         "title": "Tsarin Ginshiƙi Uku"
       },
       {
-        "id": "kwararan bayanai",
+        "id": "data-flow",
         "title": "Gudanar da Bayanai"
       },
       {
-        "id": "nauyin da aka ɗora a baki",
+        "id": "spoke-responsibilities",
         "title": "Ayyukan da aka ba wa harsashi"
       },
       {
-        "id": "matsayin-tushen",
+        "id": "hub-role",
         "title": "Aave v4 Matsayin Hub"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "fuskar mai amfani-da-protocol",
+        "id": "interface-vs-protocol",
         "title": "Fuskar Mai Amfani da Tsarin Hanyar Sadarwa"
       },
       {
-        "id": "bayyanawa",
+        "id": "disclosure",
         "title": "Bayyanawa"
       },
       {
-        "id": "amfani da babban asusu",
+        "id": "treasury-usage",
         "title": "Amfani da Ma'ajiyar Kudi"
       },
       {
-        "id": "bayanan-hada-haduwa",
+        "id": "integration-notes",
         "title": "Bayanan Hadewa"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "bashi-takardun",
+        "id": "borrow-checks",
         "title": "Binciken Bashi"
       },
       {
-        "id": "duba lafiya",
+        "id": "health-check",
         "title": "Duba Lafiya"
       },
       {
-        "id": "lissafin-ciki",
+        "id": "internal-accounting",
         "title": "Lissafin Cikin Gida"
       },
       {
-        "id": "kadaran da za a iya aro",
+        "id": "borrowable-assets",
         "title": "Kadarorin da za a iya aro"
       },
       {
-        "id": "ikon-cin-bashi",
+        "id": "borrowing-power",
         "title": "Ƙarfin Ƙarabawa"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "yadda yake aiki",
+        "id": "how-it-works",
         "title": "Yadda Yake Aiki"
       },
       {
-        "id": "duba-lafiya",
+        "id": "health-checks",
         "title": "Binciken Lafiya"
       },
       {
-        "id": "lissafin kuɗi",
+        "id": "fee-accounting",
         "title": "Lissafin Kuɗi"
       },
       {
-        "id": "muhimman fa'idodi",
+        "id": "key-benefits",
         "title": "Manyan Amfanin"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "arin-bashi",
+        "id": "borrowing-more",
         "title": "Karɓar Ƙari"
       },
       {
-        "id": "sa ido kan lafiya",
+        "id": "monitoring-health",
         "title": "Kula da Lafiya"
       },
       {
-        "id": "ikon-aiki",
+        "id": "operational-control",
         "title": "Kula da Aiki"
       },
       {
-        "id": "canje-canje na matsayi",
+        "id": "position-changes",
         "title": "Canje-canje na Matsayi"
       },
       {
-        "id": "ƙuntatawar maɓalli",
+        "id": "key-constraints",
         "title": "Manyan Takunkumi"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "kwararar ajiya",
+        "id": "deposit-flow",
         "title": "Gudanar da Ajiya"
       },
       {
-        "id": "bayanan fasaha",
+        "id": "technical-details",
         "title": "Bayanan Fasaha"
       },
       {
-        "id": "tallafawa-lp-tokens",
+        "id": "supported-lp-tokens",
         "title": "Nau'ikan Matsayi LP da Aka Taimaka"
       },
       {
-        "id": "bayan ajiya",
+        "id": "after-deposit",
         "title": "Bayan Ajiyar"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "tsarin-biya",
+        "id": "repay-process",
         "title": "Tsarin Biyan Bashi"
       },
       {
-        "id": "bayanan fasaha",
+        "id": "technical-details",
         "title": "Bayanan Fasaha"
       },
       {
-        "id": "yanayin warwarewa",
+        "id": "liquidation-scenario",
         "title": "Lokacin da Biya ke da Gaggawa"
       },
       {
-        "id": "biyan cikakke",
+        "id": "full-repayment",
         "title": "Cikakken Biyan Kuɗi"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "tsarin cire kudi",
+        "id": "withdrawal-process",
         "title": "Tsarin Janyewa"
       },
       {
-        "id": "gyaran-matsayi",
+        "id": "position-modifications",
         "title": "Gyaran Matsayi"
       },
       {
-        "id": "bayan-ja-da-baya",
+        "id": "after-withdrawal",
         "title": "Bayan Janyewa"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "ka'idojin bita",
+        "id": "review-criteria",
         "title": "Ka'idodin Bita"
       },
       {
-        "id": "iyalan-birar",
+        "id": "pool-families",
         "title": "Iyalan wurin wanka"
       },
       {
-        "id": "aikace-aikacen haɗari",
+        "id": "risk-application",
         "title": "Aikace-aikacen Hadari"
       },
       {
-        "id": "bayanan-hada-haduwa",
+        "id": "integration-notes",
         "title": "Bayanan Hadewa"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "samfurin haɗin kai",
+        "id": "integration-model",
         "title": "Samfurin Haɗin Kai"
       },
       {
-        "id": "abokin-hada",
+        "id": "partner-controls",
         "title": "Kula da Abokin Hulɗa"
       },
       {
-        "id": "bayanan-fara",
+        "id": "launch-notes",
         "title": "Bayanan Kaddamarwa"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "kit ɗin manhaja",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "wurin taro-na iyalai",
+        "id": "venue-families",
         "title": "Iyalan Wuri"
       },
       {
-        "id": "matsayin kunna",
+        "id": "enablement-status",
         "title": "Matsayin Kunna"
       },
       {
-        "id": "binciken-bukatun",
+        "id": "review-requirements",
         "title": "Bincika Bukatu"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "maɗaukakin-ma'auni",
+        "id": "oracle-interface",
         "title": "Fuskar Oracle"
       },
       {
-        "id": "tsarin gine-gine mai matakai da yawa",
+        "id": "multi-layer-architecture",
         "title": "Tsarin Ginshiƙai da yawa"
       },
       {
-        "id": "sarrafa dex",
+        "id": "dex-handling",
         "title": "Magance Musamman na DEX"
       },
       {
-        "id": "ƙididdigar twap",
+        "id": "twap-computation",
         "title": "Lissafin TWAP"
       },
       {
-        "id": "matakan-tsaro",
+        "id": "safety-measures",
         "title": "Tsaro & Hana Sarrafa"
       },
       {
-        "id": "sigogin-da-za-a-iyawa-saita",
+        "id": "configurable-parameters",
         "title": "Sigogin da za a iya saita su"
       }
     ],
@@ -968,7 +968,7 @@
       "Curve Tsayayye/Tsayayye ERC-20 LPs",
       "Kayan bayanan stablecoin na waje + duba halin tafkin + tabbatarwa ta TWAP",
       "Farashin waje yana ɗaure kadarorin yayin da ma'aunin tafkin da tarin kuɗi ke tantance ƙarancin ƙimar jinginar.",
-      "3⟧ V2 ERC-20 LP",
+      "Uniswap V2 ERC-20 LPs",
       "Chainlink + sake gina ajiyar + tabbatar da TWAP",
       "Ana ba da ƙimar token na al'ada LP daga ma'auni na asali da aka sake gina, tare da yin amfani da TWAP a matsayin bincike na gabaɗaya mai juriya ga damben-hanci.",
       "Uniswap V3 NFT LPs",
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "matsayi-a-cikin-tsarin",
+        "id": "role-in-system",
         "title": "Matsayi a Tsari"
       },
       {
-        "id": "misalin-maɗaukaki",
+        "id": "adapter-model",
         "title": "Samfurin Adafta"
       },
       {
-        "id": "ayyukan da ake goyon baya",
+        "id": "supported-operations",
         "title": "Ayyukan da ake goyon baya"
       },
       {
-        "id": "matsayin-tura",
+        "id": "deployment-status",
         "title": "Matsayin Aiwatarwa"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "mahimmancin tushen",
+        "id": "core-concepts",
         "title": "Mahimman Ra'ayoyi"
       },
       {
-        "id": "sassan ka'ida",
+        "id": "protocol-components",
         "title": "Sassan Tsarin"
       },
       {
-        "id": "sharuɗɗan kuɗi",
+        "id": "financial-terms",
         "title": "Sharuddan Kuɗi"
       },
       {
-        "id": "hatsari-tsaro",
+        "id": "risk-security",
         "title": "Hadari & Tsaro"
       },
       {
-        "id": "ma'auni",
+        "id": "metrics",
         "title": "Ma'auni"
       },
       {
-        "id": "fassarar magana",
+        "id": "disclaimers",
         "title": "Bayanan Ƙaryar"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "babban-fahimta",
+        "id": "core-insight",
         "title": "Babban Fahimta"
       },
       {
-        "id": "tafiyar mai amfani",
+        "id": "user-flow",
         "title": "Samfurin Ara"
       },
       {
-        "id": "kimanta-tabbacin",
+        "id": "oracle-valuation",
         "title": "Oracle da Kimantawa"
       },
       {
-        "id": "tsarin aro",
+        "id": "borrowing-process",
         "title": "Iyawar Bashi"
       },
       {
-        "id": "sa ido kan lafiya",
+        "id": "health-monitoring",
         "title": "Lafiya & Rarrabawa"
       },
       {
-        "id": "tarin kuɗi",
+        "id": "fee-collection",
         "title": "Maganin Kudin"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "gwajin-girar",
+        "id": "testnet-scope",
         "title": "Iyakar Gwajin Sadarwa"
       },
       {
-        "id": "yadda-za-a-kimanta",
+        "id": "how-to-evaluate",
         "title": "Yadda Ake Kimanta"
       },
       {
-        "id": "tsarin-tituna",
+        "id": "roadmap-framing",
         "title": "Tsarin Taswirar Hanya"
       },
       {
-        "id": "kamfen-da-matsayi",
+        "id": "campaigns-and-status",
         "title": "Kamfen da Matsayi"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "fassarar-tambaya",
+        "id": "general-disclaimer",
         "title": "Gargadi na Gabaɗaya"
       },
       {
-        "id": "babu-shawarwarin-kuɗi",
+        "id": "no-financial-advice",
         "title": "Babu Shawarar Kudi"
       },
       {
-        "id": "hatsari",
+        "id": "risks",
         "title": "Hadari"
       },
       {
-        "id": "babu-garanti",
+        "id": "no-warranties",
         "title": "Babu Garanti"
       },
       {
-        "id": "iyakan-alhakin",
+        "id": "limitation-of-liability",
         "title": "Iyakan Nauyi"
       },
       {
-        "id": "manufofi-da-suke-da-alaka",
+        "id": "related-policies",
         "title": "Manufofi Masu Alaka"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "ƙuntatawar shiga",
+        "id": "access-restrictions",
         "title": "Takaitaccen Samun"
       },
       {
-        "id": "ƙasashe da aka iyakance",
+        "id": "restricted-jurisdictions",
         "title": "Yankunan da aka takaita"
       },
       {
-        "id": "bin doka",
+        "id": "compliance",
         "title": "Bin doka"
       },
       {
-        "id": "manufofi-da-suke-da-alaka",
+        "id": "related-policies",
         "title": "Manufofi Masu Alaka"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "m-lp",
+        "id": "fungible-lp",
         "title": "Misali na Fungible LP"
       },
       {
-        "id": "ruwan-mai-da hankali",
+        "id": "concentrated-liquidity",
         "title": "Misalin Mayar da Hankali ga Ruwa"
       },
       {
-        "id": "nft-ruwan-jari",
+        "id": "nft-liquidity",
         "title": "Rarrabuwar NFT"
       },
       {
-        "id": "asusu mai matsayi da yawa",
+        "id": "multi-position-account",
         "title": "Asusun Matsayi da yawa"
       },
       {
-        "id": "yanayin-tsoho",
+        "id": "edge-cases",
         "title": "Yanayin Iyaka"
       },
       {
-        "id": "taƙaitawa",
+        "id": "summary",
         "title": "Takaitawa"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "maɗaukakin-maƙala",
+        "id": "canonical-reference",
         "title": "Takardun Manufofi Masu Alaƙa"
       },
       {
-        "id": "lokacin-aiwatarwa-tsari",
+        "id": "runtime-sequence",
         "title": "Jerin Lokacin Gudanuwa"
       },
       {
-        "id": "canjin-jihar",
+        "id": "state-transitions",
         "title": "Canjin Jiha"
       },
       {
-        "id": "bayanan mai aiki",
+        "id": "operator-notes",
         "title": "Bayanan Mai Aiki"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "samfurin rufewa",
+        "id": "coverage-model",
         "title": "Samfurin Rufe"
       },
       {
-        "id": "buƙatun-aiwatarwa",
+        "id": "execution-requirements",
         "title": "Bukatun Aiwana"
       },
       {
-        "id": "bayanan-aiki",
+        "id": "operational-notes",
         "title": "Bayanan Aiki"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "ɗakuna uku",
+        "id": "three-layers",
         "title": "Matsayi Uku"
       },
       {
-        "id": "ka'idojin asali",
+        "id": "core-rules",
         "title": "Ka'idojin Asali"
       },
       {
-        "id": "rikicewar-lp",
+        "id": "lp-complexity",
         "title": "LP Rikicin Lamuni"
       },
       {
-        "id": "hanyoyin tsarkake kudi",
+        "id": "liquidation-pathways",
         "title": "Hanyoyin Ƙarshen Dukiya"
       },
       {
-        "id": "matsayi-jihar",
+        "id": "position-state",
         "title": "Matsayin Ƙasa"
       },
       {
-        "id": "sarrafa karin kaya",
+        "id": "surplus-handling",
         "title": "Sarrafa Ragowa"
       },
       {
-        "id": "manhajar mai aiki",
+        "id": "operator-model",
         "title": "Samfurin Mai Aiki"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "barka da zuwa",
+        "id": "welcome",
         "title": "Barka da zuwa"
       },
       {
-        "id": "menene avana",
+        "id": "what-is-avana",
         "title": "Menene Avana?"
       },
       {
-        "id": "yadda yake aiki",
+        "id": "how-it-works",
         "title": "Yadda Yake Aiki"
       },
       {
-        "id": "buɗe-haƙƙin-lp",
+        "id": "unlocking-lp-collateral",
         "title": "Dalilin da ya sa LP Bashi ke da Mahimmanci"
       },
       {
-        "id": "gine-gine",
+        "id": "architecture",
         "title": "Gine-gine"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "ma'auni-da-tsarin-gine-ginen-tsari",
+        "id": "scope-and-system-architecture",
         "title": "Iyawa & Tsarin Tsarin"
       },
       {
-        "id": "tsanani-falsafa",
+        "id": "severity-philosophy",
         "title": "Falsafar Tsanani"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "kalubalen-tsaro",
+        "id": "security-challenges",
         "title": "Kalubalen Tsaro"
       },
       {
-        "id": "tsaro mai matakai da dama",
+        "id": "multi-layer-security",
         "title": "Tsaron Matakai da yawa"
       },
       {
-        "id": "mahadi-na-asali-surfoci",
+        "id": "core-contract-surfaces",
         "title": "Fuskar Kwantiragin Core"
       },
       {
-        "id": "iyakokin amana",
+        "id": "trust-boundaries",
         "title": "Iyakokin Amincewa"
       },
       {
-        "id": "shiri don binciken kudi",
+        "id": "audit-readiness",
         "title": "Shirye-shiryen Bincike"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "manufa",
+        "id": "purpose",
         "title": "Manufa"
       },
       {
-        "id": "hanyar-kudin",
+        "id": "funding-approach",
         "title": "Hanyar Samun Kudi"
       },
       {
-        "id": "hanyar kunna aiki",
+        "id": "activation-path",
         "title": "Hanyar Kunna"
       },
       {
-        "id": "iyakar rufewa",
+        "id": "coverage-boundary",
         "title": "Iyakokin Rufe"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "taƙaitaccen bayani",
+        "id": "overview",
         "title": "Bayanin Gabaɗaya"
       },
       {
-        "id": "ka'idoji na asali",
+        "id": "core-principles",
         "title": "Ka'idojin Asali"
       },
       {
-        "id": "rawar",
+        "id": "roles",
         "title": "Rawar"
       },
       {
-        "id": "sabunta-kwarara",
+        "id": "update-flow",
         "title": "Sabunta Gudun"
       },
       {
-        "id": "azuzuwan sigogi",
+        "id": "parameter-classes",
         "title": "Ajin Sigogi"
       },
       {
-        "id": "bayyanawa ga jama'a",
+        "id": "public-disclosure",
         "title": "Bayyanawa ga Jama'a"
       },
       {
-        "id": "ayyukan gaggawa",
+        "id": "emergency-actions",
         "title": "Matakan Gaggawa"
       }
     ],

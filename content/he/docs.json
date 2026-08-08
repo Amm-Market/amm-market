@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "איך-זה-פועל",
+        "id": "how-it-works",
         "title": "איך זה עובד"
       },
       {
-        "id": "ערך להשאלה",
+        "id": "borrowable-value",
         "title": "ערך להשאלה"
       },
       {
-        "id": "הערות",
+        "id": "notes",
         "title": "הערות"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "חישוב",
+        "id": "calculation",
         "title": "חישוב"
       },
       {
-        "id": "צמידי בריאות",
+        "id": "health-bands",
         "title": "רצועות ניטור"
       },
       {
-        "id": "נתיב-תגובה",
+        "id": "response-path",
         "title": "נתיב תגובה"
       },
       {
-        "id": "פעולות משתמש",
+        "id": "user-actions",
         "title": "פעולות משתמש"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "סוגי תוכניות",
+        "id": "program-types",
         "title": "סוגי תוכניות"
       },
       {
-        "id": "עקרונות הפצה",
+        "id": "distribution-principles",
         "title": "עקרונות ההפצה"
       },
       {
-        "id": "תביעה-ופיוס",
+        "id": "claiming-and-reconciliation",
         "title": "תביעה ופישור"
       },
       {
-        "id": "סטטוס",
+        "id": "status",
         "title": "סטטוס נוכחי"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "נקודת כניסה להון",
+        "id": "capital-entry-point",
         "title": "נקודת כניסה ראשית"
       },
       {
-        "id": "תשואה מותאמת לסיכון",
+        "id": "risk-adjusted-yield",
         "title": "תשואה מותאמת לסיכון"
       },
       {
-        "id": "בקרות סיכון דינמיות",
+        "id": "dynamic-risk-controls",
         "title": "בקרות סיכונים דינמיות"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "חוויית משתמש",
+        "id": "user-experience",
         "title": "חוויית משתמש"
       },
       {
-        "id": "דוגמת-זרימה",
+        "id": "example-flow",
         "title": "זרימת דוגמה"
       },
       {
-        "id": "ארכיטקטורה בת שלושה שכבות",
+        "id": "three-tier-architecture",
         "title": "ארכיטקטורה בת שלושה שכבות"
       },
       {
-        "id": "זרימת נתונים",
+        "id": "data-flow",
         "title": "זרימת נתונים"
       },
       {
-        "id": "אחריות-מדוברת",
+        "id": "spoke-responsibilities",
         "title": "אחריות דוברת"
       },
       {
-        "id": "תפקיד-מרכז",
+        "id": "hub-role",
         "title": "Aave v4 תפקיד הצומת"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "ממשק מול פרוטוקול",
+        "id": "interface-vs-protocol",
         "title": "ממשק מול פרוטוקול"
       },
       {
-        "id": "גילוי",
+        "id": "disclosure",
         "title": "גילוי"
       },
       {
-        "id": "שימוש בקופת האוצר",
+        "id": "treasury-usage",
         "title": "שימוש בקופה"
       },
       {
-        "id": "הערות-אינטגרציה",
+        "id": "integration-notes",
         "title": "הערות אינטגרציה"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "צ'קים להלוואה",
+        "id": "borrow-checks",
         "title": "צ'קים להשאלה"
       },
       {
-        "id": "בדיקת בריאות",
+        "id": "health-check",
         "title": "בדיקת בריאות"
       },
       {
-        "id": "חשבונאות פנימית",
+        "id": "internal-accounting",
         "title": "חשבונאות פנימית"
       },
       {
-        "id": "נכסים שניתנים להשאלה",
+        "id": "borrowable-assets",
         "title": "נכסים שניתנים להשאלה"
       },
       {
-        "id": "כוח הלוואה",
+        "id": "borrowing-power",
         "title": "כוח מיחזור"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "איך-זה-פועל",
+        "id": "how-it-works",
         "title": "איך זה עובד"
       },
       {
-        "id": "בדיקות בריאות",
+        "id": "health-checks",
         "title": "בדיקות בריאות"
       },
       {
-        "id": "חשבונאות עמלות",
+        "id": "fee-accounting",
         "title": "חשבונאות דמי שירות"
       },
       {
-        "id": "יתרונות מפתח",
+        "id": "key-benefits",
         "title": "יתרונות עיקריים"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "לקיחת הלוואות נוספת",
+        "id": "borrowing-more",
         "title": "לקחת הלוואות נוספות"
       },
       {
-        "id": "ניטור בריאות",
+        "id": "monitoring-health",
         "title": "מעקב אחר בריאות"
       },
       {
-        "id": "בקרת תפעול",
+        "id": "operational-control",
         "title": "בקרה תפעולית"
       },
       {
-        "id": "שינויים במיקום",
+        "id": "position-changes",
         "title": "שינויים במיקום"
       },
       {
-        "id": "מגבלות מפתח",
+        "id": "key-constraints",
         "title": "מגבלות עיקריות"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "זרימת פיקדון",
+        "id": "deposit-flow",
         "title": "זרימת פיקדונות"
       },
       {
-        "id": "פרטים-טכניים",
+        "id": "technical-details",
         "title": "פרטים טכניים"
       },
       {
-        "id": "אסימוני LP נתמכים",
+        "id": "supported-lp-tokens",
         "title": "סוגי משרות נתמכים LP"
       },
       {
-        "id": "לאחר הפקד",
+        "id": "after-deposit",
         "title": "לאחר ההפקדה"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "תהליך החזר",
+        "id": "repay-process",
         "title": "תהליך החזר"
       },
       {
-        "id": "פרטים-טכניים",
+        "id": "technical-details",
         "title": "פרטים טכניים"
       },
       {
-        "id": "תסריט לִכְלׇס",
+        "id": "liquidation-scenario",
         "title": "כאשר ההחזר דחוף"
       },
       {
-        "id": "פרעון מלא",
+        "id": "full-repayment",
         "title": "פרעון מלא"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "תהליך משיכה",
+        "id": "withdrawal-process",
         "title": "תהליך משיכה"
       },
       {
-        "id": "שינויים במיקום",
+        "id": "position-modifications",
         "title": "שינויים במיקום"
       },
       {
-        "id": "לאחר משיכה",
+        "id": "after-withdrawal",
         "title": "לאחר משיכה"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "קריטריוני ביקורת",
+        "id": "review-criteria",
         "title": "קריטריוני סקירה"
       },
       {
-        "id": "בריכת משפחות",
+        "id": "pool-families",
         "title": "משפחות בריכה"
       },
       {
-        "id": "יישום סיכון",
+        "id": "risk-application",
         "title": "יישום סיכון"
       },
       {
-        "id": "הערות-אינטגרציה",
+        "id": "integration-notes",
         "title": "הערות אינטגרציה"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "מודל אינטגרציה",
+        "id": "integration-model",
         "title": "מודל אינטגרציה"
       },
       {
-        "id": "בקרות-שותף",
+        "id": "partner-controls",
         "title": "בקרות שותף"
       },
       {
-        "id": "הערות השקה",
+        "id": "launch-notes",
         "title": "הערות להשקה"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "אפקיט",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "משפחות-זירה",
+        "id": "venue-families",
         "title": "משפחות מיקומים"
       },
       {
-        "id": "סטטוס-הפעלה",
+        "id": "enablement-status",
         "title": "סטטוס הפעלה"
       },
       {
-        "id": "דרישות לבחינה",
+        "id": "review-requirements",
         "title": "דרישות ביקורת"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "ממשק אורקל",
+        "id": "oracle-interface",
         "title": "ממשק אורקל"
       },
       {
-        "id": "ארכיטקטורה מרובדת",
+        "id": "multi-layer-architecture",
         "title": "ארכיטקטורה מרובדת"
       },
       {
-        "id": "טיפול ביד דקסטר",
+        "id": "dex-handling",
         "title": "טיפול ספציפי ל-DEX"
       },
       {
-        "id": "חישוב TWAP",
+        "id": "twap-computation",
         "title": "חישוב TWAP"
       },
       {
-        "id": "אמצעי בטיחות",
+        "id": "safety-measures",
         "title": "בטיחות ומניעת מניפולציה"
       },
       {
-        "id": "פרמטרים ניתנים לקונפיגורציה",
+        "id": "configurable-parameters",
         "title": "פרמטרים הניתנים להגדרה"
       }
     ],
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "תפקיד-במערכת",
+        "id": "role-in-system",
         "title": "תפקיד במערכת"
       },
       {
-        "id": "מודל-מתאם",
+        "id": "adapter-model",
         "title": "מודל מתאם"
       },
       {
-        "id": "פעולות נתמכות",
+        "id": "supported-operations",
         "title": "פעולות נתמכות"
       },
       {
-        "id": "סטטוס פריסה",
+        "id": "deployment-status",
         "title": "סטטוס פריסה"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "מושגי ליבה",
+        "id": "core-concepts",
         "title": "מושגים עיקריים"
       },
       {
-        "id": "רכיבי פרוטוקול",
+        "id": "protocol-components",
         "title": "רכיבי פרוטוקול"
       },
       {
-        "id": "מונחים פיננסיים",
+        "id": "financial-terms",
         "title": "מונחים פיננסיים"
       },
       {
-        "id": "סיכון-ביטחון",
+        "id": "risk-security",
         "title": "סיכון ואבטחה"
       },
       {
-        "id": "מדדים",
+        "id": "metrics",
         "title": "מדדים"
       },
       {
-        "id": "כתב ויתור",
+        "id": "disclaimers",
         "title": "כתב ויתור"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "תובנה מרכזית",
+        "id": "core-insight",
         "title": "תובנה מרכזית"
       },
       {
-        "id": "זרימת משתמש",
+        "id": "user-flow",
         "title": "מודל הלוואות"
       },
       {
-        "id": "אורקל-הערכה",
+        "id": "oracle-valuation",
         "title": "אורקל והערכת שווי"
       },
       {
-        "id": "תהליך ההשאלה",
+        "id": "borrowing-process",
         "title": "יכולת הלוואה"
       },
       {
-        "id": "ניטור בריאות",
+        "id": "health-monitoring",
         "title": "בריאות ופירוק"
       },
       {
-        "id": "גבית דמי כניסה",
+        "id": "fee-collection",
         "title": "טיפול בתשלום"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "טסטנט-סקופ",
+        "id": "testnet-scope",
         "title": "טווח רשת בדיקה"
       },
       {
-        "id": "איך להעריך",
+        "id": "how-to-evaluate",
         "title": "איך להעריך"
       },
       {
-        "id": "מסגור מפת דרכים",
+        "id": "roadmap-framing",
         "title": "מסגרת מפת דרכים"
       },
       {
-        "id": "קמפיינים-ומצב",
+        "id": "campaigns-and-status",
         "title": "קמפיינים ומצבים"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "כתב ויתור כללי",
+        "id": "general-disclaimer",
         "title": "כתב ויתור כללי"
       },
       {
-        "id": "אין ייעוץ פיננסי",
+        "id": "no-financial-advice",
         "title": "אין ייעוץ פיננסי"
       },
       {
-        "id": "סיכונים",
+        "id": "risks",
         "title": "סיכונים"
       },
       {
-        "id": "ללא אחריות",
+        "id": "no-warranties",
         "title": "ללא אחריות"
       },
       {
-        "id": "הגבלת אחריות",
+        "id": "limitation-of-liability",
         "title": "הגבלת אחריות"
       },
       {
-        "id": "מדיניות קשורה",
+        "id": "related-policies",
         "title": "מדיניות קשורה"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "הגבלות גישה",
+        "id": "access-restrictions",
         "title": "מגבלות גישה"
       },
       {
-        "id": "תחומים מוגבלים",
+        "id": "restricted-jurisdictions",
         "title": "תחומים מוגבלים"
       },
       {
-        "id": "ציות",
+        "id": "compliance",
         "title": "ציות"
       },
       {
-        "id": "מדיניות קשורה",
+        "id": "related-policies",
         "title": "מדיניות קשורה"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "Fungible-LP",
+        "id": "fungible-lp",
         "title": "ניתן להחלפה LP דוגמה"
       },
       {
-        "id": "נזילות מרוכזת",
+        "id": "concentrated-liquidity",
         "title": "דוגמה לנזילות מרוכזת"
       },
       {
-        "id": "נזילות-NFT",
+        "id": "nft-liquidity",
         "title": "נזילות NFT"
       },
       {
-        "id": "חשבון רב-מזוזות",
+        "id": "multi-position-account",
         "title": "חשבון רב-מקומות"
       },
       {
-        "id": "מקרי קצה",
+        "id": "edge-cases",
         "title": "מקרי קצה"
       },
       {
-        "id": "תקציר",
+        "id": "summary",
         "title": "תקציר"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "אזכור קנוני",
+        "id": "canonical-reference",
         "title": "מסמכי מדיניות קשורים"
       },
       {
-        "id": "רצף זמן ריצה",
+        "id": "runtime-sequence",
         "title": "רצף זמן ריצה"
       },
       {
-        "id": "מעברי מצב",
+        "id": "state-transitions",
         "title": "מעברי מצב"
       },
       {
-        "id": "הערות מפעיל",
+        "id": "operator-notes",
         "title": "הערות מפעיל"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "מודל כיסוי",
+        "id": "coverage-model",
         "title": "מודל כיסוי"
       },
       {
-        "id": "דרישות ביצוע",
+        "id": "execution-requirements",
         "title": "דרישות ביצוע"
       },
       {
-        "id": "הערות-מבצעיות",
+        "id": "operational-notes",
         "title": "הערות תפעול"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "שלוש שכבות",
+        "id": "three-layers",
         "title": "שלוש שכבות"
       },
       {
-        "id": "חוקי יסוד",
+        "id": "core-rules",
         "title": "חוקי יסוד"
       },
       {
-        "id": "מורכבות LP",
+        "id": "lp-complexity",
         "title": "LP מורכבות משועבדת"
       },
       {
-        "id": "מסלולי ליקווידציה",
+        "id": "liquidation-pathways",
         "title": "נתיבי הסגרה"
       },
       {
-        "id": "מעמד מיקום",
+        "id": "position-state",
         "title": "מצב מיקום"
       },
       {
-        "id": "טיפול בעודפים",
+        "id": "surplus-handling",
         "title": "טיפול בעודף"
       },
       {
-        "id": "מודל מפעיל",
+        "id": "operator-model",
         "title": "מודל מפעיל"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "ברוך הבא",
+        "id": "welcome",
         "title": "ברוך הבא"
       },
       {
-        "id": "מה-אוונה",
+        "id": "what-is-avana",
         "title": "מה זה Avana?"
       },
       {
-        "id": "איך-זה-פועל",
+        "id": "how-it-works",
         "title": "איך זה עובד"
       },
       {
-        "id": "שחרור-הבטוחה-של-lp",
+        "id": "unlocking-lp-collateral",
         "title": "למה LP ערבות חשובה"
       },
       {
-        "id": "אדריכלות",
+        "id": "architecture",
         "title": "אדריכלות"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "טווח-ומבנה-מערכתי",
+        "id": "scope-and-system-architecture",
         "title": "תחום ואדריכלות מערכת"
       },
       {
-        "id": "חומרת-פילוסופיה",
+        "id": "severity-philosophy",
         "title": "פילוסופיית חומרה"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "אתגרי ביטחון",
+        "id": "security-challenges",
         "title": "אתגרים ביטחוניים"
       },
       {
-        "id": "אבטחה רב-שכבתית",
+        "id": "multi-layer-security",
         "title": "בטחון רב-שכבתי"
       },
       {
-        "id": "משטחים-ליבתיים-חוזיים",
+        "id": "core-contract-surfaces",
         "title": "משטחים עיקריים של החוזה"
       },
       {
-        "id": "גבולות אמון",
+        "id": "trust-boundaries",
         "title": "גבולות אמון"
       },
       {
-        "id": "מוכנות לביקורת",
+        "id": "audit-readiness",
         "title": "מוכנות לביקורת"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "מטרה",
+        "id": "purpose",
         "title": "מטרה"
       },
       {
-        "id": "גישת מימון",
+        "id": "funding-approach",
         "title": "גישת מימון"
       },
       {
-        "id": "נתיב-הפעלה",
+        "id": "activation-path",
         "title": "נתיב הפעלה"
       },
       {
-        "id": "גבול כיסוי",
+        "id": "coverage-boundary",
         "title": "גבול הכיסוי"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "סקירה",
+        "id": "overview",
         "title": "סקירה כללית"
       },
       {
-        "id": "עקרונות ליבה",
+        "id": "core-principles",
         "title": "עקרונות יסוד"
       },
       {
-        "id": "תפקידים",
+        "id": "roles",
         "title": "תפקידים"
       },
       {
-        "id": "עדכון-זרם",
+        "id": "update-flow",
         "title": "עדכן זרימה"
       },
       {
-        "id": "מחלקות פרמטר",
+        "id": "parameter-classes",
         "title": "מחלקות פרמטר"
       },
       {
-        "id": "גילוי לציבור",
+        "id": "public-disclosure",
         "title": "גילוי לציבור"
       },
       {
-        "id": "פעולות חירום",
+        "id": "emergency-actions",
         "title": "פעולות חירום"
       }
     ],

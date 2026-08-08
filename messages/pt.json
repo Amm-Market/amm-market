@@ -16,12 +16,12 @@
       "resources": "Recursos",
       "developers": "Desenvolvedores",
       "helpCenter": "Central de Ajuda",
-      "aaveArfc": "u33rqw049pdaiu44rt6k",
+      "aaveArfc": "Aave ARFC",
       "borrow": "Pegar emprestado",
       "lend": "Emprestar",
       "multiply": "Multiplicar",
       "about": "Sobre",
-      "newsroom": "Redação",
+      "newsroom": "Notícias",
       "brand": "Marca",
       "faq": "Perguntas frequentes",
       "privacy": "Privacidade",
@@ -64,11 +64,11 @@
       "explore": "Explorar",
       "resources": "Recursos",
       "docs": "Documentos",
-      "social": "5soqawf7aplgq52b1cfb",
-      "twitter": "ljkl1s9va7c21pjospr3",
-      "github": "h25j9cmcabncp33kzqig",
-      "telegram": "Telegrama",
-      "discourse": "Discurso",
+      "social": "Social",
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "telegram": "Telegram",
+      "discourse": "Discourse",
       "socialAria": "Avana em {network}",
       "disclosureRisk": "Tomar empréstimo usando LP tokens envolve riscos, incluindo liquidação caso as condições de mercado se movam contra sua posição. Avana não guarda seus fundos, não rehipoteca posições LP, nem altera a forma como sua liquidez opera sobre AMMs subjacentes. Os termos do empréstimo, taxas de juros e valores de garantia são aplicados on-chain usando sistemas de oráculo transparentes e parâmetros automatizados de risco. Você permanece com controle total da sua posição o tempo todo e pode pagar ou ajustar a garantia sempre que desejar. Só empreste valores com os quais se sinta confortável em manter durante a volatilidade do mercado.",
       "disclosureInfo": "Este material é apenas para fins informativos e não constitui (i) uma oferta, ou solicitação de uma oferta, para investir em, ou comprar ou vender, quaisquer interesses ou ações, ou para participar de qualquer estratégia de investimento ou negociação, (ii) tem a intenção de fornecer aconselhamento contábil, legal ou fiscal, ou recomendações de investimento, ou (iii) uma declaração oficial da Avana. Consulte seus consultores antes de tomar qualquer decisão de investimento. Nenhuma declaração ou garantia é feita, expressa ou implícita, em relação à precisão das informações ou ao desempenho futuro de qualquer ativo digital, instrumento financeiro ou outra medida de mercado ou econômica. Avana pode ter interesses financeiros em, ou relações com, algumas das entidades e/ou publicações discutidas ou referenciadas nos materiais. Avana não endossa nem aprova links ou sites de terceiros que possam ser fornecidos nos materiais."
@@ -155,8 +155,8 @@
       "institutions": "Instituições"
     },
     "newsroom": {
-      "latestFrom": "Último de Avana",
-      "readNewsroom": "Ler redação"
+      "latestFrom": "Últimas da Avana",
+      "readNewsroom": "Ler artigo"
     }
   },
   "meta": {
@@ -241,8 +241,8 @@
       "title": "Perguntas frequentes"
     },
     "newsroom": {
-      "title": "Último de Avana",
-      "cta": "Ler redação"
+      "title": "Últimas da Avana",
+      "cta": "Ler artigo"
     },
     "buildTomorrow": {
       "title": "Conheça Avana",

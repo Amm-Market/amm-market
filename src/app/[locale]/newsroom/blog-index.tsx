@@ -1,7 +1,8 @@
 "use client"
 
 import { Link } from "@/i18n/navigation"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
+import { formatContentDate } from "@/lib/content-i18n/format-date"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useMemo, useRef, useState } from "react"
 import type { BlogPost, TagFilter } from "@/lib/content"
@@ -137,6 +138,7 @@ export function BlogIndex({
   activeTag: TagFilter
 }) {
   const t = useTranslations("common.tags")
+  const locale = useLocale()
   const tagLabel = (tag: TagFilter) => {
     if (tag === "All") return t("all")
     const key = tag.toLowerCase() as "product" | "strategy" | "guides" | "protocol" | "institutions"
@@ -240,7 +242,7 @@ export function BlogIndex({
                         {post.title}
                       </h2>
                       <span className={`relative z-10 mt-4 text-xs font-medium ${theme.muted}`}>
-                        {post.date}
+                        {formatContentDate(post.date, locale)}
                       </span>
                     </div>
                   </div>

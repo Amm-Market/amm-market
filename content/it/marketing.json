@@ -212,7 +212,9 @@
       "L'obiettivo è una separazione chiara, con l'esecuzione tecnica, le operazioni, la modellazione del mercato e la revisione dei collateral ciascuna gestita in modo indipendente.",
       "Siamo un piccolo team che lavora su un grande problema. Se sei interessato a unirti a questo sforzo di ricerca,",
       "Un protocollo di prestito per prestiti garantiti da LP",
-      "Un protocollo di prestito per"
+      "Un protocollo di prestito per",
+      "Vi presentiamo Avana:",
+      "ci piacerebbe sentirti."
     ]
   },
   "brand/page": {
@@ -443,7 +445,25 @@
   },
   "homepage/HomepageNewsroomSection": {
     "strings": [
-      "Leggi la redazione"
+      "Vi presentiamo Avana:",
+      "Notizie",
+      "Le ultime da Avana",
+      "Leggi l'articolo",
+      "Quadro di rischio",
+      "Smart Agents",
+      "Modello di liquidazione",
+      "Guida al prestito",
+      "Collaterale Uniswap",
+      "Collaterale Curve",
+      "Efficienza del capitale",
+      "Copertura LP",
+      "Strategia di tesoreria",
+      "Strategia di leva",
+      "Controlli di posizione",
+      "Progettazione del rischio",
+      "Architettura",
+      "Progettazione degli oracle",
+      "Vista sviluppatore"
     ]
   },
   "invest-growth-calculator-section": {
@@ -479,18 +499,18 @@
       "USDD",
       "Etere",
       "Ether Avvolto",
-      "st 2 24⟧",
+      "stETH",
       "wstETH",
       "rETH",
       "cbETH",
       "noiETH",
-      "⟦24 x x",
-      "os 2 24⟧",
+      "ETHx",
+      "osETH",
       "Bitcoin Avvolto",
-      "t5 25⟧",
+      "tBTC",
       "cbBTC",
-      "ren 2 25⟧",
-      "s 2 25⟧",
+      "renBTC",
+      "sBTC",
       "LBTC",
       "Aave",
       "Uniswap",
@@ -551,7 +571,12 @@
       "Lancio multiplo",
       "Cosa viene dopo",
       "Tabella di marcia",
-      "Avana si sviluppa in tre fasi. Ogni fase si basa su quella precedente: mercati di prestito, mercati di credito, poi mercati moltiplicatori."
+      "Avana si sviluppa in tre fasi. Ogni fase si basa su quella precedente: mercati di prestito, mercati di credito, poi mercati moltiplicatori.",
+      "Obiettivo: T3 2026",
+      "Obiettivo: T4 2026",
+      "Obiettivo: T1 2027",
+      "Rilasciato",
+      "In corso"
     ]
   },
   "position-safety-section": {

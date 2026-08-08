@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "یہ کیسے کام کرتا ہے",
+        "id": "how-it-works",
         "title": "یہ کیسے کام کرتا ہے"
       },
       {
-        "id": "قرض لینے کے قابل قدر",
+        "id": "borrowable-value",
         "title": "قابلِ قرض قیمت"
       },
       {
-        "id": "نوٹس",
+        "id": "notes",
         "title": "نوٹس"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "حساب",
+        "id": "calculation",
         "title": "حساب"
       },
       {
-        "id": "صحت بینڈز",
+        "id": "health-bands",
         "title": "مانیٹرنگ بینڈز"
       },
       {
-        "id": "جواب-راستہ",
+        "id": "response-path",
         "title": "جوابی راستہ"
       },
       {
-        "id": "صارف کی کارروائیاں",
+        "id": "user-actions",
         "title": "صارف کی کارروائیاں"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "پروگرام کی اقسام",
+        "id": "program-types",
         "title": "پروگرام کی اقسام"
       },
       {
-        "id": "تقسیم کے اصول",
+        "id": "distribution-principles",
         "title": "تقسیم کے اصول"
       },
       {
-        "id": "دعویٰ اور مصالحت",
+        "id": "claiming-and-reconciliation",
         "title": "دعویٰ اور مصالحت"
       },
       {
-        "id": "حالت",
+        "id": "status",
         "title": "موجودہ صورتحال"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "دارالحکومت داخلے کا نقطہ",
+        "id": "capital-entry-point",
         "title": "دارالحکومت داخلے کا نقطہ"
       },
       {
-        "id": "خطرے کے مطابق منافع",
+        "id": "risk-adjusted-yield",
         "title": "خطرے کے مطابق پیداوار"
       },
       {
-        "id": "متحرک خطرے کے کنٹرولز",
+        "id": "dynamic-risk-controls",
         "title": "متحرک خطرے کے کنٹرولز"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "صارف کا تجربہ",
+        "id": "user-experience",
         "title": "صارف کا تجربہ"
       },
       {
-        "id": "مثال بہاؤ",
+        "id": "example-flow",
         "title": "مثالی بہاؤ"
       },
       {
-        "id": "تین درجوں کی ساخت",
+        "id": "three-tier-architecture",
         "title": "تین درجوں کی ساخت"
       },
       {
-        "id": "ڈیٹا فلو",
+        "id": "data-flow",
         "title": "ڈیٹا فلو"
       },
       {
-        "id": "ذمہ داریوں کی وضاحت",
+        "id": "spoke-responsibilities",
         "title": "بولے گئے ذمہ داریاں"
       },
       {
-        "id": "حب-کردار",
+        "id": "hub-role",
         "title": "Aave v4 حب کا کردار"
       }
     ],
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "انٹرفیس بمقابلہ پروٹوکول",
+        "id": "interface-vs-protocol",
         "title": "انٹرفیس بمقابلہ پروٹوکول"
       },
       {
-        "id": "افشاء",
+        "id": "disclosure",
         "title": "افشاء"
       },
       {
-        "id": "خزانے کا استعمال",
+        "id": "treasury-usage",
         "title": "خزانہ کا استعمال"
       },
       {
-        "id": "انٹیگریشن نوٹس",
+        "id": "integration-notes",
         "title": "انضمام کے نوٹس"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "ادھار چیکس",
+        "id": "borrow-checks",
         "title": "چیکس ادھار لینا"
       },
       {
-        "id": "صحت کی جانچ",
+        "id": "health-check",
         "title": "صحت کی جانچ"
       },
       {
-        "id": "اندرونی حسابداری",
+        "id": "internal-accounting",
         "title": "داخلی حسابداری"
       },
       {
-        "id": "قرض لینے کے قابل اثاثے",
+        "id": "borrowable-assets",
         "title": "قرض لینے کے قابل اثاثے"
       },
       {
-        "id": "ادھار لینے کی طاقت",
+        "id": "borrowing-power",
         "title": "ادھار لینے کی طاقت"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "یہ کیسے کام کرتا ہے",
+        "id": "how-it-works",
         "title": "یہ کیسے کام کرتا ہے"
       },
       {
-        "id": "صحت کی جانچ",
+        "id": "health-checks",
         "title": "صحت کی جانچ"
       },
       {
-        "id": "فیس اکاؤنٹنگ",
+        "id": "fee-accounting",
         "title": "فیس اکاؤنٹنگ"
       },
       {
-        "id": "اہم فوائد",
+        "id": "key-benefits",
         "title": "اہم فوائد"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "زیادہ ادھار لینا",
+        "id": "borrowing-more",
         "title": "زیادہ ادھار لینا"
       },
       {
-        "id": "صحت کی نگرانی",
+        "id": "monitoring-health",
         "title": "صحت کی نگرانی"
       },
       {
-        "id": "عملی کنٹرول",
+        "id": "operational-control",
         "title": "عملیاتی کنٹرول"
       },
       {
-        "id": "مقام میں تبدیلیاں",
+        "id": "position-changes",
         "title": "مقام کی تبدیلیاں"
       },
       {
-        "id": "کلیدی پابندیاں",
+        "id": "key-constraints",
         "title": "اہم پابندیاں"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "جمع ہونے والا بہاؤ",
+        "id": "deposit-flow",
         "title": "جمع ہونے والا بہاؤ"
       },
       {
-        "id": "تکنیکی تفصیلات",
+        "id": "technical-details",
         "title": "تکنیکی تفصیلات"
       },
       {
-        "id": "سپورٹ شدہ ایل پی ٹوکنز",
+        "id": "supported-lp-tokens",
         "title": "مستند LP پوزیشن کی اقسام"
       },
       {
-        "id": "جمع کے بعد",
+        "id": "after-deposit",
         "title": "جمع ہونے کے بعد"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "واپسی کا عمل",
+        "id": "repay-process",
         "title": "واپسی کا عمل"
       },
       {
-        "id": "تکنیکی تفصیلات",
+        "id": "technical-details",
         "title": "تکنیکی تفصیلات"
       },
       {
-        "id": "تحلیل کا منظرنامہ",
+        "id": "liquidation-scenario",
         "title": "جب ادائیگی فوری ہو"
       },
       {
-        "id": "مکمل ادائیگی",
+        "id": "full-repayment",
         "title": "مکمل ادائیگی"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "رقم نکالنے کا عمل",
+        "id": "withdrawal-process",
         "title": "واپس لینے کا عمل"
       },
       {
-        "id": "مقام میں تبدیلیاں",
+        "id": "position-modifications",
         "title": "مقام میں تبدیلیاں"
       },
       {
-        "id": "واپس لینے کے بعد",
+        "id": "after-withdrawal",
         "title": "واپس لینے کے بعد"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "جائزہ کے معیار",
+        "id": "review-criteria",
         "title": "جائزے کے معیار"
       },
       {
-        "id": "سوئمنگ پول والے خاندان",
+        "id": "pool-families",
         "title": "پول خاندان"
       },
       {
-        "id": "خطرے کی درخواست",
+        "id": "risk-application",
         "title": "خطرے کی درخواست"
       },
       {
-        "id": "انٹیگریشن نوٹس",
+        "id": "integration-notes",
         "title": "انضمام کے نوٹس"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "انٹیگریشن ماڈل",
+        "id": "integration-model",
         "title": "انٹیگریشن ماڈل"
       },
       {
-        "id": "شریک-کنٹرولز",
+        "id": "partner-controls",
         "title": "شریک کنٹرول"
       },
       {
-        "id": "لانچ نوٹس",
+        "id": "launch-notes",
         "title": "ریلیز نوٹ"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "ایپ کٹ",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "مقام-خاندان",
+        "id": "venue-families",
         "title": "مقام خاندان"
       },
       {
-        "id": "فعالیت کی حیثیت",
+        "id": "enablement-status",
         "title": "فعالیت کی حیثیت"
       },
       {
-        "id": "جائزہ لینے کی ضروریات",
+        "id": "review-requirements",
         "title": "جائزے کی ضروریات"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "اوریکل انٹرفیس",
+        "id": "oracle-interface",
         "title": "اوریکل انٹرفیس"
       },
       {
-        "id": "کثیر تہہ ساخت",
+        "id": "multi-layer-architecture",
         "title": "کثیر تہہ ساخت"
       },
       {
-        "id": "ڈیکس ہینڈلنگ",
+        "id": "dex-handling",
         "title": "DEX-خصوصی ہینڈلنگ"
       },
       {
-        "id": "ٹی ڈبلیو اے پی حساب",
+        "id": "twap-computation",
         "title": "ٹی ڈبلیو اے پی حساب"
       },
       {
-        "id": "حفاظتی اقدامات",
+        "id": "safety-measures",
         "title": "حفاظت اور جوڑ توڑ سے بچاؤ"
       },
       {
-        "id": "قابل ترتیب پیرامیٹرز",
+        "id": "configurable-parameters",
         "title": "قابل ترتیب پیرا میٹرز"
       }
     ],
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "نظام میں کردار",
+        "id": "role-in-system",
         "title": "نظام میں کردار"
       },
       {
-        "id": "ایڈاپٹر ماڈل",
+        "id": "adapter-model",
         "title": "ایڈاپٹر ماڈل"
       },
       {
-        "id": "مدد یافتہ آپریشنز",
+        "id": "supported-operations",
         "title": "موافقت شدہ آپریشنز"
       },
       {
-        "id": "تعیناتی کی حیثیت",
+        "id": "deployment-status",
         "title": "تعیناتی کی صورتحال"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "مرکزی تصورات",
+        "id": "core-concepts",
         "title": "اہم تصورات"
       },
       {
-        "id": "پروٹوکول کے اجزاء",
+        "id": "protocol-components",
         "title": "پروٹوکول کے اجزاء"
       },
       {
-        "id": "مالیاتی شرائط",
+        "id": "financial-terms",
         "title": "مالیاتی شرائط"
       },
       {
-        "id": "خطرہ-سلامتی",
+        "id": "risk-security",
         "title": "خطرہ اور سیکیورٹی"
       },
       {
-        "id": "میٹرکس",
+        "id": "metrics",
         "title": "میٹرکس"
       },
       {
-        "id": "دستبرداری کے نوٹس",
+        "id": "disclaimers",
         "title": "دستبرداری کے نوٹس"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "مرکزی بصیرت",
+        "id": "core-insight",
         "title": "اہم بصیرت"
       },
       {
-        "id": "صارف کی روانی",
+        "id": "user-flow",
         "title": "ادھار لینے کا ماڈل"
       },
       {
-        "id": "اوریکل-تشخیص",
+        "id": "oracle-valuation",
         "title": "اوریکل اور قدردانی"
       },
       {
-        "id": "ادھار لینے کا عمل",
+        "id": "borrowing-process",
         "title": "قرض لینے کی صلاحیت"
       },
       {
-        "id": "صحت کی نگرانی",
+        "id": "health-monitoring",
         "title": "صحت اور تصفیہ"
       },
       {
-        "id": "فیس جمع کروانا",
+        "id": "fee-collection",
         "title": "فیس کا علاج"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "ٹیسٹ نیٹ دائرہ",
+        "id": "testnet-scope",
         "title": "ٹیسٹ نیٹ دائرہ کار"
       },
       {
-        "id": "کس طرح جانچنا",
+        "id": "how-to-evaluate",
         "title": "کس طرح جائزہ لیا جائے"
       },
       {
-        "id": "روڈ میپ فریم ورک",
+        "id": "roadmap-framing",
         "title": "روڈ میپ کی فریم بندی"
       },
       {
-        "id": "مہمات اور حیثیت",
+        "id": "campaigns-and-status",
         "title": "مہمات اور حیثیت"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "عمومی دستبرداری",
+        "id": "general-disclaimer",
         "title": "عمومی دستبرداری"
       },
       {
-        "id": "مالی مشورہ نہیں",
+        "id": "no-financial-advice",
         "title": "کوئی مالی مشورہ نہیں"
       },
       {
-        "id": "خطرات",
+        "id": "risks",
         "title": "خطرات"
       },
       {
-        "id": "کوئی ضمانت نہیں",
+        "id": "no-warranties",
         "title": "کوئی ضمانت نہیں"
       },
       {
-        "id": "ذمہ داری کی حد",
+        "id": "limitation-of-liability",
         "title": "ذمہ داری کی حد"
       },
       {
-        "id": "متعلقہ پالیسیاں",
+        "id": "related-policies",
         "title": "متعلقہ پالیسیاں"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "رسائی کی پابندیاں",
+        "id": "access-restrictions",
         "title": "رسائی کی پابندیاں"
       },
       {
-        "id": "محدود دائرہ اختیارات",
+        "id": "restricted-jurisdictions",
         "title": "محدود دائرہ اختیار"
       },
       {
-        "id": "مطابقت",
+        "id": "compliance",
         "title": "مطابقت"
       },
       {
-        "id": "متعلقہ پالیسیاں",
+        "id": "related-policies",
         "title": "متعلقہ پالیسیاں"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "قابل تبادلہ-ایل پی",
+        "id": "fungible-lp",
         "title": "قابل تبادلہ LP مثال"
       },
       {
-        "id": "مرکوز مائع",
+        "id": "concentrated-liquidity",
         "title": "مرکوز لیکویڈیٹی کی مثال"
       },
       {
-        "id": "این ایف ٹی لیکوئڈیٹی",
+        "id": "nft-liquidity",
         "title": "این ایف ٹی کی لیکویڈیشن"
       },
       {
-        "id": "ملٹی پوزیشن اکاؤنٹ",
+        "id": "multi-position-account",
         "title": "کثیر مقاماتی اکاؤنٹ"
       },
       {
-        "id": "حد کے معاملات",
+        "id": "edge-cases",
         "title": "کنارے کے کیسز"
       },
       {
-        "id": "خلاصہ",
+        "id": "summary",
         "title": "خلاصہ"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "کینیونیکل ریفرنس",
+        "id": "canonical-reference",
         "title": "متعلقہ پالیسی دستاویزات"
       },
       {
-        "id": "رن ٹائم سیکوینس",
+        "id": "runtime-sequence",
         "title": "رن ٹائم سیکوئنس"
       },
       {
-        "id": "ریاست-منتقل",
+        "id": "state-transitions",
         "title": "ریاست کی تبدیلیاں"
       },
       {
-        "id": "آپریٹر کے نوٹس",
+        "id": "operator-notes",
         "title": "آپریٹر کے نوٹس"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "کوریج ماڈل",
+        "id": "coverage-model",
         "title": "کوریج ماڈل"
       },
       {
-        "id": "عمل درآمد کی ضروریات",
+        "id": "execution-requirements",
         "title": "عمل درآمد کی ضروریات"
       },
       {
-        "id": "عملیاتی نوٹس",
+        "id": "operational-notes",
         "title": "عملی نوٹس"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "تین پرتیں",
+        "id": "three-layers",
         "title": "تین تہیں"
       },
       {
-        "id": "مرکزی قواعد",
+        "id": "core-rules",
         "title": "اہم قواعد"
       },
       {
-        "id": "ایل پی پیچیدگی",
+        "id": "lp-complexity",
         "title": "LP ضمنی پیچیدگی"
       },
       {
-        "id": "تحلیل کے راستے",
+        "id": "liquidation-pathways",
         "title": "تحلیل کے راستے"
       },
       {
-        "id": "مقام کی حالت",
+        "id": "position-state",
         "title": "حالت مقام"
       },
       {
-        "id": "اضافی سامان سنبھالنا",
+        "id": "surplus-handling",
         "title": "اضافی سامان کی سنبھال"
       },
       {
-        "id": "آپریٹر ماڈل",
+        "id": "operator-model",
         "title": "آپریٹر ماڈل"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "خوش آمدید",
+        "id": "welcome",
         "title": "خوش آمدید"
       },
       {
-        "id": "ایوانا کیا ہے",
+        "id": "what-is-avana",
         "title": "Avana کیا ہے؟"
       },
       {
-        "id": "یہ کیسے کام کرتا ہے",
+        "id": "how-it-works",
         "title": "یہ کیسے کام کرتا ہے"
       },
       {
-        "id": "ایل پی ضمانت کو ان لاک کرنا",
+        "id": "unlocking-lp-collateral",
         "title": "کیوں LP ضامن اہمیت رکھتا ہے"
       },
       {
-        "id": "معماری",
+        "id": "architecture",
         "title": "معماری"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "دائرہ کار اور نظام کی ساخت",
+        "id": "scope-and-system-architecture",
         "title": "دائرہ کار اور نظام کا فن تعمیر"
       },
       {
-        "id": "شدت-فلسفہ",
+        "id": "severity-philosophy",
         "title": "شدت فلسفہ"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "سیکیورٹی کے چیلنجز",
+        "id": "security-challenges",
         "title": "سیکیورٹی کے چیلنجز"
       },
       {
-        "id": "کثیر پرت حفاظتی",
+        "id": "multi-layer-security",
         "title": "کثیر تہہ سیکیورٹی"
       },
       {
-        "id": "مرکزی معاہدے کی سطحیں",
+        "id": "core-contract-surfaces",
         "title": "مرکزی معاہدے کی سطحیں"
       },
       {
-        "id": "اعتماد کی حدود",
+        "id": "trust-boundaries",
         "title": "اعتماد کی حدود"
       },
       {
-        "id": "آڈٹ کی تیاری",
+        "id": "audit-readiness",
         "title": "آڈٹ کی تیاری"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "مقصد",
+        "id": "purpose",
         "title": "مقصد"
       },
       {
-        "id": "فنڈنگ کا طریقہ",
+        "id": "funding-approach",
         "title": "فنڈنگ کا طریقہ"
       },
       {
-        "id": "فعالیت-راستہ",
+        "id": "activation-path",
         "title": "فعالیت کا راستہ"
       },
       {
-        "id": "دائرہ کار کی حد",
+        "id": "coverage-boundary",
         "title": "کوریج حد"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "جائزہ",
+        "id": "overview",
         "title": "جائزہ"
       },
       {
-        "id": "بنیادی اصول",
+        "id": "core-principles",
         "title": "اہم اصول"
       },
       {
-        "id": "کردار",
+        "id": "roles",
         "title": "کردار"
       },
       {
-        "id": "اپ ڈیٹ فلو",
+        "id": "update-flow",
         "title": "فلو کو اپ ڈیٹ کریں"
       },
       {
-        "id": "پیرا میٹر کلاسز",
+        "id": "parameter-classes",
         "title": "پیرا میٹر کلاسز"
       },
       {
-        "id": "عوامی انکشاف",
+        "id": "public-disclosure",
         "title": "عوامی انکشاف"
       },
       {
-        "id": "ہنگامی اقدامات",
+        "id": "emergency-actions",
         "title": "ایمرجنسی اقدامات"
       }
     ],

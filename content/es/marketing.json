@@ -212,7 +212,9 @@
       "El objetivo es una separación clara, con la ejecución técnica, las operaciones, la modelización del mercado y la revisión de colaterales, cada una gestionada de forma independiente.",
       "Somos un equipo pequeño que trabaja en un problema grande. Si estás interesado en unirte a este esfuerzo de investigación,",
       "Un protocolo de préstamos para préstamos respaldados por LP",
-      "Un protocolo de préstamos para"
+      "Un protocolo de préstamos para",
+      "Presentamos Avana:",
+      "nos encantaría saber de ti."
     ]
   },
   "brand/page": {
@@ -443,7 +445,25 @@
   },
   "homepage/HomepageNewsroomSection": {
     "strings": [
-      "Leer sala de redacción"
+      "Presentamos Avana:",
+      "Noticias",
+      "Lo último de Avana",
+      "Leer artículo",
+      "Marco de riesgo",
+      "Smart Agents",
+      "Modelo de liquidación",
+      "Guía de préstamo",
+      "Colateral de Uniswap",
+      "Colateral de Curve",
+      "Eficiencia del capital",
+      "Cobertura de LP",
+      "Estrategia de tesorería",
+      "Estrategia de apalancamiento",
+      "Controles de posición",
+      "Diseño de riesgo",
+      "Arquitectura",
+      "Diseño de oráculos",
+      "Vista de desarrollador"
     ]
   },
   "invest-growth-calculator-section": {
@@ -479,15 +499,15 @@
       "USDD",
       "Éter",
       "Ether Envuelto",
-      "st 2 24⟧",
+      "stETH",
       "wstETH",
       "rETH",
       "cbETH",
       "nosotrosETH",
       "x 24 x x",
-      "os 2 24⟧",
+      "osETH",
       "Bitcoin Envuelto",
-      "t 2 25⟧",
+      "tBTC",
       "cbBTC",
       "ren 2 25 re",
       "s 2 25 s",
@@ -551,7 +571,12 @@
       "Lanzamiento múltiple",
       "Qué sigue",
       "Hoja de ruta",
-      "Avana se desarrolla en tres fases. Cada fase se basa en la anterior: Mercados de Préstamo, Mercados de Préstamo, luego Mercados de Multiplicación."
+      "Avana se desarrolla en tres fases. Cada fase se basa en la anterior: Mercados de Préstamo, Mercados de Préstamo, luego Mercados de Multiplicación.",
+      "Objetivo: T3 2026",
+      "Objetivo: T4 2026",
+      "Objetivo: T1 2027",
+      "Publicado",
+      "En curso"
     ]
   },
   "position-safety-section": {

@@ -6,19 +6,19 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "工作原理",
+        "id": "how-it-works",
         "title": "运作方式"
       },
       {
-        "id": "可借价值",
+        "id": "borrowable-value",
         "title": "可借价值"
       },
       {
-        "id": "笔记",
+        "id": "notes",
         "title": "笔记"
       }
     ],
@@ -49,23 +49,23 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "计算",
+        "id": "calculation",
         "title": "计算"
       },
       {
-        "id": "健康手环",
+        "id": "health-bands",
         "title": "监控波段"
       },
       {
-        "id": "响应路径",
+        "id": "response-path",
         "title": "响应路径"
       },
       {
-        "id": "用户操作",
+        "id": "user-actions",
         "title": "用户操作"
       }
     ],
@@ -107,23 +107,23 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "程序类型",
+        "id": "program-types",
         "title": "程序类型"
       },
       {
-        "id": "分配原则",
+        "id": "distribution-principles",
         "title": "分配原则"
       },
       {
-        "id": "索赔与调解",
+        "id": "claiming-and-reconciliation",
         "title": "索赔与调解"
       },
       {
-        "id": "状态",
+        "id": "status",
         "title": "当前状态"
       }
     ],
@@ -155,19 +155,19 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "资本入口",
+        "id": "capital-entry-point",
         "title": "资本入口"
       },
       {
-        "id": "风险调整收益",
+        "id": "risk-adjusted-yield",
         "title": "风险调整收益"
       },
       {
-        "id": "动态风险控制",
+        "id": "dynamic-risk-controls",
         "title": "动态风险控制"
       }
     ],
@@ -213,31 +213,31 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "用户体验",
+        "id": "user-experience",
         "title": "用户体验"
       },
       {
-        "id": "示例流程",
+        "id": "example-flow",
         "title": "示例流程"
       },
       {
-        "id": "三层架构",
+        "id": "three-tier-architecture",
         "title": "三层架构"
       },
       {
-        "id": "数据流",
+        "id": "data-flow",
         "title": "数据流"
       },
       {
-        "id": "发言责任",
+        "id": "spoke-responsibilities",
         "title": "轮辐职责"
       },
       {
-        "id": "集线器角色",
+        "id": "hub-role",
         "title": "Aave v4 集线器角色"
       }
     ],
@@ -287,7 +287,7 @@
       "在需要时进行清算",
       "- 集线器、Avana 清算节点或外部清算者可以促使借贷分支将 LP 移动到正确的解除路径，并通过适当的清算流程结清债务。",
       "集线器交互",
-      "借：",
+      "Borrow:",
       "当借款人开立或延长债务时，借款方会向集线器发出提款请求",
       "偿还：",
       "当债务偿还时，借款端会向枢纽发出恢复调用",
@@ -327,23 +327,23 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "接口与协议",
+        "id": "interface-vs-protocol",
         "title": "接口与协议"
       },
       {
-        "id": "披露",
+        "id": "disclosure",
         "title": "披露"
       },
       {
-        "id": "国库使用",
+        "id": "treasury-usage",
         "title": "国库使用"
       },
       {
-        "id": "集成笔记",
+        "id": "integration-notes",
         "title": "集成说明"
       }
     ],
@@ -378,27 +378,27 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "借支支票",
+        "id": "borrow-checks",
         "title": "借支支票"
       },
       {
-        "id": "健康检查",
+        "id": "health-check",
         "title": "健康检查"
       },
       {
-        "id": "内部会计",
+        "id": "internal-accounting",
         "title": "内部会计"
       },
       {
-        "id": "可借资产",
+        "id": "borrowable-assets",
         "title": "可借资产"
       },
       {
-        "id": "借贷能力",
+        "id": "borrowing-power",
         "title": "借贷能力"
       }
     ],
@@ -449,23 +449,23 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "工作原理",
+        "id": "how-it-works",
         "title": "运作方式"
       },
       {
-        "id": "健康检查",
+        "id": "health-checks",
         "title": "健康检查"
       },
       {
-        "id": "费用会计",
+        "id": "fee-accounting",
         "title": "费用会计"
       },
       {
-        "id": "主要好处",
+        "id": "key-benefits",
         "title": "主要好处"
       }
     ],
@@ -499,27 +499,27 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "借更多",
+        "id": "borrowing-more",
         "title": "借更多"
       },
       {
-        "id": "健康监测",
+        "id": "monitoring-health",
         "title": "健康监测"
       },
       {
-        "id": "操作控制",
+        "id": "operational-control",
         "title": "操作控制"
       },
       {
-        "id": "位置变动",
+        "id": "position-changes",
         "title": "职位变动"
       },
       {
-        "id": "关键约束",
+        "id": "key-constraints",
         "title": "关键约束"
       }
     ],
@@ -565,23 +565,23 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "存款流",
+        "id": "deposit-flow",
         "title": "存款流程"
       },
       {
-        "id": "技术细节",
+        "id": "technical-details",
         "title": "技术细节"
       },
       {
-        "id": "支持的 LP 代币",
+        "id": "supported-lp-tokens",
         "title": "支持的 LP 个职位类型"
       },
       {
-        "id": "存款后",
+        "id": "after-deposit",
         "title": "存款后"
       }
     ],
@@ -640,23 +640,23 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "还款流程",
+        "id": "repay-process",
         "title": "还款流程"
       },
       {
-        "id": "技术细节",
+        "id": "technical-details",
         "title": "技术细节"
       },
       {
-        "id": "清算情景",
+        "id": "liquidation-scenario",
         "title": "当还款紧急时"
       },
       {
-        "id": "全额偿还",
+        "id": "full-repayment",
         "title": "全额偿还"
       }
     ],
@@ -694,19 +694,19 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "提款流程",
+        "id": "withdrawal-process",
         "title": "取款流程"
       },
       {
-        "id": "位置修改",
+        "id": "position-modifications",
         "title": "位置修改"
       },
       {
-        "id": "取款后",
+        "id": "after-withdrawal",
         "title": "取款后"
       }
     ],
@@ -739,23 +739,23 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "审查标准",
+        "id": "review-criteria",
         "title": "审核标准"
       },
       {
-        "id": "泳池家庭",
+        "id": "pool-families",
         "title": "泳池家庭"
       },
       {
-        "id": "风险应用",
+        "id": "risk-application",
         "title": "风险应用"
       },
       {
-        "id": "集成笔记",
+        "id": "integration-notes",
         "title": "集成说明"
       }
     ],
@@ -800,19 +800,19 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "集成模型",
+        "id": "integration-model",
         "title": "集成模型"
       },
       {
-        "id": "合作伙伴控制",
+        "id": "partner-controls",
         "title": "合作伙伴控制"
       },
       {
-        "id": "发布说明",
+        "id": "launch-notes",
         "title": "发布说明"
       }
     ],
@@ -854,23 +854,23 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "应用工具包",
+        "id": "appkit",
         "title": "AppKit"
       },
       {
-        "id": "场地-家庭",
+        "id": "venue-families",
         "title": "场地系列"
       },
       {
-        "id": "启用状态",
+        "id": "enablement-status",
         "title": "启用状态"
       },
       {
-        "id": "审核要求",
+        "id": "review-requirements",
         "title": "审核要求"
       }
     ],
@@ -913,31 +913,31 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "甲骨文界面",
+        "id": "oracle-interface",
         "title": "甲骨文界面"
       },
       {
-        "id": "多层架构",
+        "id": "multi-layer-architecture",
         "title": "多层架构"
       },
       {
-        "id": "去中心化交易所操作",
+        "id": "dex-handling",
         "title": "DEX 特定处理"
       },
       {
-        "id": "TWAP计算",
+        "id": "twap-computation",
         "title": "TWAP 计算"
       },
       {
-        "id": "安全措施",
+        "id": "safety-measures",
         "title": "安全与防止操作"
       },
       {
-        "id": "可配置参数",
+        "id": "configurable-parameters",
         "title": "可配置参数"
       }
     ],
@@ -1055,23 +1055,23 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "系统中的角色",
+        "id": "role-in-system",
         "title": "系统中的角色"
       },
       {
-        "id": "适配器模型",
+        "id": "adapter-model",
         "title": "适配器模型"
       },
       {
-        "id": "支持的操作",
+        "id": "supported-operations",
         "title": "支持的操作"
       },
       {
-        "id": "部署状态",
+        "id": "deployment-status",
         "title": "部署状态"
       }
     ],
@@ -1109,27 +1109,27 @@
     },
     "toc": [
       {
-        "id": "核心概念",
+        "id": "core-concepts",
         "title": "核心概念"
       },
       {
-        "id": "协议组件",
+        "id": "protocol-components",
         "title": "协议组件"
       },
       {
-        "id": "财务术语",
+        "id": "financial-terms",
         "title": "财务术语"
       },
       {
-        "id": "风险安全",
+        "id": "risk-security",
         "title": "风险与安全"
       },
       {
-        "id": "指标",
+        "id": "metrics",
         "title": "指标"
       },
       {
-        "id": "免责声明",
+        "id": "disclaimers",
         "title": "免责声明"
       }
     ],
@@ -1217,27 +1217,27 @@
     },
     "toc": [
       {
-        "id": "核心洞察",
+        "id": "core-insight",
         "title": "核心洞察"
       },
       {
-        "id": "用户流程",
+        "id": "user-flow",
         "title": "借贷模型"
       },
       {
-        "id": "甲骨文估值",
+        "id": "oracle-valuation",
         "title": "甲骨文与估值"
       },
       {
-        "id": "借贷流程",
+        "id": "borrowing-process",
         "title": "借款能力"
       },
       {
-        "id": "健康监测",
+        "id": "health-monitoring",
         "title": "健康与清算"
       },
       {
-        "id": "收费",
+        "id": "fee-collection",
         "title": "费用处理"
       }
     ],
@@ -1288,23 +1288,23 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "测试网范围",
+        "id": "testnet-scope",
         "title": "测试网范围"
       },
       {
-        "id": "如何评估",
+        "id": "how-to-evaluate",
         "title": "如何评估"
       },
       {
-        "id": "路线图框架",
+        "id": "roadmap-framing",
         "title": "路线图框架"
       },
       {
-        "id": "活动与状态",
+        "id": "campaigns-and-status",
         "title": "活动与状态"
       }
     ],
@@ -1336,31 +1336,31 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "一般免责声明",
+        "id": "general-disclaimer",
         "title": "一般免责声明"
       },
       {
-        "id": "非财务建议",
+        "id": "no-financial-advice",
         "title": "非财务建议"
       },
       {
-        "id": "风险",
+        "id": "risks",
         "title": "风险"
       },
       {
-        "id": "不保证",
+        "id": "no-warranties",
         "title": "不保证"
       },
       {
-        "id": "责任限制",
+        "id": "limitation-of-liability",
         "title": "责任限制"
       },
       {
-        "id": "相关政策",
+        "id": "related-policies",
         "title": "相关政策"
       }
     ],
@@ -1429,23 +1429,23 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "访问限制",
+        "id": "access-restrictions",
         "title": "访问限制"
       },
       {
-        "id": "受限司法管辖区",
+        "id": "restricted-jurisdictions",
         "title": "受限司法管辖区"
       },
       {
-        "id": "合规",
+        "id": "compliance",
         "title": "遵从"
       },
       {
-        "id": "相关政策",
+        "id": "related-policies",
         "title": "相关政策"
       }
     ],
@@ -1502,31 +1502,31 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "可替代流动性提供者",
+        "id": "fungible-lp",
         "title": "可替代的 LP 示例"
       },
       {
-        "id": "集中流动性",
+        "id": "concentrated-liquidity",
         "title": "集中流动性示例"
       },
       {
-        "id": "NFT流动性",
+        "id": "nft-liquidity",
         "title": "NFT 清算"
       },
       {
-        "id": "多位置账户",
+        "id": "multi-position-account",
         "title": "多职位账户"
       },
       {
-        "id": "边缘情况",
+        "id": "edge-cases",
         "title": "边缘情况"
       },
       {
-        "id": "摘要",
+        "id": "summary",
         "title": "摘要"
       }
     ],
@@ -1580,23 +1580,23 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "规范参考",
+        "id": "canonical-reference",
         "title": "相关政策文件"
       },
       {
-        "id": "运行时序列",
+        "id": "runtime-sequence",
         "title": "运行时序列"
       },
       {
-        "id": "状态转换",
+        "id": "state-transitions",
         "title": "状态转换"
       },
       {
-        "id": "操作员备注",
+        "id": "operator-notes",
         "title": "操作员备注"
       }
     ],
@@ -1644,19 +1644,19 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "覆盖模型",
+        "id": "coverage-model",
         "title": "覆盖模型"
       },
       {
-        "id": "执行要求",
+        "id": "execution-requirements",
         "title": "执行要求"
       },
       {
-        "id": "操作笔记",
+        "id": "operational-notes",
         "title": "操作说明"
       }
     ],
@@ -1696,35 +1696,35 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "三层",
+        "id": "three-layers",
         "title": "三层"
       },
       {
-        "id": "核心规则",
+        "id": "core-rules",
         "title": "核心规则"
       },
       {
-        "id": "线性规划复杂度",
+        "id": "lp-complexity",
         "title": "LP 抵押品复杂性"
       },
       {
-        "id": "清算途径",
+        "id": "liquidation-pathways",
         "title": "清算途径"
       },
       {
-        "id": "位置状态",
+        "id": "position-state",
         "title": "职位状态"
       },
       {
-        "id": "剩余处理",
+        "id": "surplus-handling",
         "title": "盈余处理"
       },
       {
-        "id": "操作员模型",
+        "id": "operator-model",
         "title": "操作员模型"
       }
     ],
@@ -1794,23 +1794,23 @@
     },
     "toc": [
       {
-        "id": "欢迎",
+        "id": "welcome",
         "title": "欢迎"
       },
       {
-        "id": "什么是阿伐那",
+        "id": "what-is-avana",
         "title": "Avana 是什么？"
       },
       {
-        "id": "工作原理",
+        "id": "how-it-works",
         "title": "运作方式"
       },
       {
-        "id": "解锁 LP 抵押品",
+        "id": "unlocking-lp-collateral",
         "title": "为什么LP抵押品很重要"
       },
       {
-        "id": "建筑学",
+        "id": "architecture",
         "title": "建筑学"
       }
     ],
@@ -1857,15 +1857,15 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "范围与系统架构",
+        "id": "scope-and-system-architecture",
         "title": "范围与系统架构"
       },
       {
-        "id": "严重性哲学",
+        "id": "severity-philosophy",
         "title": "严重性哲学"
       }
     ],
@@ -1947,27 +1947,27 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "安全挑战",
+        "id": "security-challenges",
         "title": "安全挑战"
       },
       {
-        "id": "多层安全",
+        "id": "multi-layer-security",
         "title": "多层安全"
       },
       {
-        "id": "核心合同面",
+        "id": "core-contract-surfaces",
         "title": "核心合同面"
       },
       {
-        "id": "信任界限",
+        "id": "trust-boundaries",
         "title": "信任界限"
       },
       {
-        "id": "审计准备",
+        "id": "audit-readiness",
         "title": "审计准备"
       }
     ],
@@ -2017,23 +2017,23 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "目的",
+        "id": "purpose",
         "title": "目的"
       },
       {
-        "id": "资金方式",
+        "id": "funding-approach",
         "title": "资金筹措方式"
       },
       {
-        "id": "激活路径",
+        "id": "activation-path",
         "title": "激活路径"
       },
       {
-        "id": "覆盖范围边界",
+        "id": "coverage-boundary",
         "title": "覆盖范围边界"
       }
     ],
@@ -2064,31 +2064,31 @@
     },
     "toc": [
       {
-        "id": "概览",
+        "id": "overview",
         "title": "概览"
       },
       {
-        "id": "核心原则",
+        "id": "core-principles",
         "title": "核心原则"
       },
       {
-        "id": "角色",
+        "id": "roles",
         "title": "角色"
       },
       {
-        "id": "更新流程",
+        "id": "update-flow",
         "title": "更新流程"
       },
       {
-        "id": "参数类",
+        "id": "parameter-classes",
         "title": "参数类"
       },
       {
-        "id": "公开披露",
+        "id": "public-disclosure",
         "title": "公开披露"
       },
       {
-        "id": "紧急行动",
+        "id": "emergency-actions",
         "title": "紧急措施"
       }
     ],

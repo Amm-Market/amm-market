@@ -1,30 +1,30 @@
 {
   "posts": [
     {
-      "slug": "tata-kelola-risiko-lp",
+      "slug": "lp-risk-governance",
       "title": "Bagaimana Avana Mengatur Risiko LP",
-      "date": "24 Juli 2026",
+      "date": "July 24, 2026",
       "description": "Bagaimana Avana mengatur risiko jaminan LP di pasar cabang dengan pembaruan terbatas, tinjauan independen, dan penanggulangan darurat.",
-      "image": "/gambar/blog/lp-tata-kelola-risiko.png",
+      "image": "/images/blog/lp-risk-governance.png",
       "category": "Pengembang",
       "tag": "Protokol",
       "sections": [
         {
-          "id": "mengapa-risiko-lp-berbeda",
+          "id": "why-lp-risk-is-different",
           "title": "Mengapa risiko LP berbeda",
           "paragraphs": [
             "Avana tidak dapat mengatur LP jaminan seperti cara pasar pinjaman generik mengatur daftar token. Setiap pasar cabang memiliki struktur pool, mode kegagalan, dan perilaku tekanan sendiri. Pool stabil bukan produk yang sama dengan rentang terkonsentrasi. Keranjang bergaya Balancer berbobot bukan produk yang sama dengan pasar gaya Curve yang sangat berkorelasi. Kerangka risiko Avana dibangun di sekitar keragaman itu. Ia mengamati volatilitas, kualitas peg, pemanfaatan, kedalaman likuiditas, konsentrasi, kesehatan oracle, status pasar, batas pasokan dan pinjaman, LTV dan ambang likuidasi, model suku bunga, dan kesehatan posisi di seluruh hub dan cabang LP secara bersama-sama."
           ]
         },
         {
-          "id": "tiga-peran",
+          "id": "three-roles",
           "title": "Tiga peran, pekerjaan yang jelas",
           "paragraphs": [
             "Avana memisahkan rekomendasi rutin, tinjauan independen, dan penanganan darurat menjadi tiga peran: Risk Initiator, Risk Guardian, dan Risk Defender. Initiator mengusulkan pembaruan rutin dalam template yang disetujui, termasuk batas, pengaturan jaminan, suku bunga, dan onboarding pool. Setiap proposal diberi label bersifat defensif atau berorientasi pertumbuhan sebelum masuk jalur normal. Guardian adalah lapisan tinjauan dan veto. Ia memeriksa bahwa pengungkapan publik sesuai dengan yang sudah antre, memastikan tindakan tetap dalam batas kebijakan, dan dapat membatalkan selama timelock. Defender dirancang sempit. Ia dapat mengurangi batas, membekukan peminjaman, atau menonaktifkan adapter yang telah dikompromikan ketika menunggu jalur rutin akan membuat Avana terekspos."
           ]
         },
         {
-          "id": "bagaimana-perubahan-kapal",
+          "id": "how-changes-ship",
           "title": "Bagaimana perubahan rutin dikirim",
           "paragraphs": [
             "Jalur pembaruan standar pada Avana adalah pemberitahuan publik, pengajuan, validasi terhadap batas yang telah ditentukan, timelock, tinjauan Guardian, dan eksekusi jika tidak ada yang memveto. Pengembang, pengguna, dan peserta tata kelola dapat membaca alasan sebelum suatu perubahan diterapkan dan membandingkan kebijakan tertulis dengan tindakan yang antre. Untuk protokol yang dibangun di atas agunan kompleks, konsistensi publik itu adalah persyaratan dasar, bukan tambahan pemasaran.",
@@ -32,7 +32,7 @@
           ]
         },
         {
-          "id": "tenaga-darurat",
+          "id": "emergency-power",
           "title": "Ketika Avana menggunakan daya darurat",
           "paragraphs": [
             "Kasus darurat termasuk inkonsistensi oracle, degradasi jalur likuidasi, perilaku pool yang abnormal, kegagalan wrapper, kompromi adapter, atau ketidakstabilan tingkat spoke yang tiba-tiba. Bahkan saat itu framework tetap berhati-hati. Otoritas darurat pada Avana bersifat sempit, defensif, dan dapat dibatalkan. Otoritas ini ada untuk momen ketika asumsi gagal lebih cepat daripada kemampuan pemerintahan timelock untuk merespons. Ini bukan jalur bayangan untuk optimisasi sehari-hari.",
@@ -42,23 +42,23 @@
       ]
     },
     {
-      "slug": "mengapa-jaminan-lp-membutuhkan-agen-pintar",
+      "slug": "why-lp-collateral-needs-smart-agents",
       "title": "Mengapa LP Agunan Membutuhkan Agen Cerdas",
-      "date": "22 Juli 2026",
+      "date": "July 22, 2026",
       "description": "Mengapa Avana menggunakan Agen Pintar untuk memantau kesehatan, posisi spesifik tempat pelayanan, dan menjaga cakupan likuidasi agar tetap andal di bawah tekanan.",
-      "image": "/gambar/blog/smart-agents-lp-collateral.png",
+      "image": "/images/blog/smart-agents-lp-collateral.png",
       "category": "Pengembang",
       "tag": "Protokol",
       "sections": [
         {
-          "id": "pinjaman-lp-beroperasi",
+          "id": "lp-loans-are-operational",
           "title": "LP loans are operational work",
           "paragraphs": [
             "Pada Avana, LP jaminan bersifat aktif, bergantung pada jalur, dan menuntut secara operasional. Jaminan ini menghasilkan biaya, mengubah komposisi, mengubah risiko seiring pergerakan pasar, dan dapat memerlukan tindakan spesifik di tempat tertentu tepat ketika posisi menjadi tertekan. Pasar token standar sering dapat menyederhanakan likuidasi dan pemantauan menjadi pemicu dan jalur swap yang lebih sederhana. Jaminan LP berbeda. Sistem harus mengetahui posisi mana yang aktif, bagaimana utang bergerak, bagaimana jaminan akan terlihat dalam likuidasi nyata, bagaimana biaya dapat direalisasikan, jalur penghapusan spesifik lokasi mana yang berlaku, dan apakah likuidasi masih layak setelah memperhitungkan slippage, pengaturan jalur, dan biaya eksekusi. Rincian tersebut adalah yang membedakan cakupan teoritis di atas kertas dengan cakupan yang masih berfungsi ketika pasar menjadi sulit."
           ]
         },
         {
-          "id": "apa-yang-dilakukan-agen",
+          "id": "what-agents-do",
           "title": "Apa yang dilakukan Avana Agen Cerdas",
           "paragraphs": [
             "Runtime node Avana membaca aktivitas onchain, menjaga peta hidup posisi aktif, menyegarkan utang yang mengambang dalam interval pendek, dan menjalankan sapuan lebih luas untuk menangkap status yang basi atau terlewat. UI aplikasi, dashboard, logika pemantauan, dan alur kerja likuidasi dimaksudkan untuk mengambil dari gambaran operasional yang sama itu, daripada setiap lapisan menciptakan versi pasar sendiri.",
@@ -66,7 +66,7 @@
           ]
         },
         {
-          "id": "sebelum-dan-di-berbagai-lokasi",
+          "id": "before-and-across-venues",
           "title": "Sebelum likuidasi, dan di berbagai tempat",
           "paragraphs": [
             "Agen Cerdas juga penting sebelum likuidasi terjadi. Mengindeks posisi Avana, mengamati pergeseran utang, dan menjaga protokol tetap selaras dengan oracle dan asumsi risiko sendiri meningkatkan kesiapan. Penundaan operasional tidak gratis ketika jaminan terus bergerak mengikuti pasar.",
@@ -77,23 +77,23 @@
       ]
     },
     {
-      "slug": "cara-lp-likuidasi-seharusnya-berjalan",
+      "slug": "how-lp-liquidation-should-work",
       "title": "Bagaimana LP Likuidasi Seharusnya Bekerja",
-      "date": "20 Juli 2026",
+      "date": "July 20, 2026",
       "description": "Bagaimana Avana melikuidasi LP jaminan dengan pelepasan terkendali, intervensi sebagian, biaya diutamakan jika memungkinkan, dan jalur spesifik tempat.",
-      "image": "/gambar/blog/alur-kerja-likuidasi-lp.png",
+      "image": "/images/blog/lp-liquidation-workflow.png",
       "category": "Pengembang",
       "tag": "Protokol",
       "sections": [
         {
-          "id": "bukan-penjualan-token",
+          "id": "not-a-token-sale",
           "title": "Bukan penjualan token yang sederhana",
           "paragraphs": [
             "Melikuidasi jaminan LP pada Avana tidak sama dengan melikuidasi saldo token. Jaminan tersebut mungkin berisi beberapa aset, biaya yang belum diterima, eksposur jangkauan terkonsentrasi, dan mekanisme keluar khusus lokasi. Jika suatu posisi menjadi tidak sehat, Avana membutuhkan pembongkaran yang terkendali, bukan penjualan panik yang memperlakukan LP seperti satu chip yang dapat dipertukarkan."
           ]
         },
         {
-          "id": "urutan-waktu-jalani",
+          "id": "runtime-sequence",
           "title": "Urutan waktu jalan",
           "paragraphs": [
             "Dalam praktiknya, likuidasi adalah urutan saat runtime. Akun yang tidak sehat terdeteksi menggunakan nilai agunan yang disesuaikan dengan risiko dari Avana, bukan status spot mentah dari AMM. Likuiditas eksekusi diperoleh, sering melalui jalur gaya flashloan. Hutang dibayar kembali ke lapisan kredit. Posisi dipindahkan ke kustodi terkendali. Biaya yang dapat diklaim direalisasikan jika itu membantu. LP dibongkar melalui jalur venue yang benar. Setelah aset dasar dipulihkan, mereka diarahkan ke aset hutang, likuiditas eksekusi dibayar kembali, premi likuidasi didistribusikan, dan nilai peminjam residual dikembalikan.",
@@ -101,7 +101,7 @@
           ]
         },
         {
-          "id": "parsial-dan-biaya",
+          "id": "partial-and-fees",
           "title": "Potongan dan biaya parsial terlebih dahulu",
           "paragraphs": [
             "Avana bertujuan untuk mengembalikan kesehatan target daripada secara default melakukan likuidasi penuh. Likuidasi parsial lebih disukai karena mengurangi kerugian peminjam yang tidak perlu dan membatasi gangguan pada pool yang mendasarinya. Kerangka kerja ini menghitung jumlah utang yang diperlukan untuk mengembalikan pinjaman ke kondisi yang lebih aman dan menargetkan jumlah itu terlebih dahulu. Likuidasi penuh tetap menjadi pilihan terakhir ketika solvabilitas tidak dapat dipulihkan dengan pemotongan yang lebih kecil.",
@@ -109,7 +109,7 @@
           ]
         },
         {
-          "id": "siapa-yang-menjalankannya",
+          "id": "who-runs-it",
           "title": "Siapa yang mengelola likuidasi",
           "paragraphs": [
             "Runtime likuidasi khusus membuat perbedaan di sini. Node yang dibangun untuk Avana LP likuidasi memantau posisi aktif, menyegarkan drift utang, mengindeks keadaan pasar, mensimulasikan jalur unwind, mencari likuiditas eksekusi, mengarahkan aset, dan menutup transaksi secara atomik. Likuidasi tetap tanpa izin, tetapi LP jaminan lebih sulit dilayani oleh likuidator murni generik karena alur kerjanya lebih panjang dan lebih spesifik terhadap venue. Likuidator juga harus memperhitungkan slippage, kedalaman rute, biaya flashloan, dan eksposur MEV. Unwind besar atau tidak biasa mungkin memerlukan jalur eksekusi yang lebih tenang sehingga pekerjaan yang bisa dipulihkan tidak berubah menjadi destruktif."
@@ -118,30 +118,30 @@
       ]
     },
     {
-      "slug": "masalah-orakel-agunan-halaman-harga",
+      "slug": "pricing-lp-collateral-oracle-problem",
       "title": "Penentuan Harga LP Jaminan dengan Oracle yang Lebih Baik",
-      "date": "17 Juli 2026",
+      "date": "July 17, 2026",
       "description": "Bagaimana Avana Oracle menilai LP jaminan menggunakan nilai yang dapat dipulihkan, rekonstruksi deterministik, dan pemotongan pemulihan konservatif.",
-      "image": "/images/blog/lp-collateral-Oracle-problem.png",
+      "image": "/images/blog/lp-collateral-oracle-problem.png",
       "category": "Pengembang",
       "tag": "Protokol",
       "sections": [
         {
-          "id": "apa-avana-oracle-bertanya",
+          "id": "what-avana-oracle-asks",
           "title": "Apa yang ditanyakan Oracle Avana",
           "paragraphs": [
             "Nilai LP tergantung pada harga aset dasar, struktur pool, pembagian inventaris saat ini, biaya yang terakumulasi, dan untuk likuiditas terkonsentrasi hubungan antara harga saat ini dan rentang aktif. Untuk sistem peminjaman, pertanyaan penting bukan hanya apa yang mungkin ditunjukkan oleh penanda dashboard. Yang penting adalah apa yang secara realistis dapat dipulihkan jika posisi harus menutup pinjaman. Jika Avana meminjam dengan asumsi terbaik, ini berarti membiayai inflasi jaminan. Oracle Avana dibangun berdasarkan nilai yang dapat dipulihkan, bukan nilai aset bersih optimistis."
           ]
         },
         {
-          "id": "jalur-tiga-langkah",
+          "id": "three-step-pipeline",
           "title": "Bagaimana penilaian dibangun",
           "paragraphs": [
             "Oracle adalah mesin penilaian jaminan multi lapisan. Pertama, Avana menilai aset dasar dari referensi eksternal yang kuat daripada mengandalkan kondisi spot AMM mentah. Kedua, ia merekonstruksi posisi LP secara deterministik: rekonstruksi saldo pool untuk LP yang dapat dipertukarkan, atau dekomposisi langsung dari posisi terkonsentrasi berdasarkan rentang, likuiditas, dan harga saat ini. Ketiga, ia mendiskontokan nilai yang direkonstruksi tersebut dengan pemotongan pemulihan yang mencerminkan slippage likuidasi, gesekan pembongkaran, dan risiko kerugian sementara. Kerugian sementara adalah selisih nilai antara memegang aset dalam pool dan memegangnya secara terpisah. Kerugian ini meningkat ketika harga aset pasangan menyimpang. Daya pinjam pada Avana berasal dari nilai yang didiskontokan, bukan dari penilaian yang paling menguntungkan."
           ]
         },
         {
-          "id": "mengapa-tanda-sederhana-gagal",
+          "id": "why-simple-marks-fail",
           "title": "Mengapa tanda sederhana gagal",
           "paragraphs": [
             "LP jaminan adalah salah satu tempat termudah bagi sistem peminjaman untuk menipu dirinya sendiri. AMM kondisi pool dapat terlihat sehat sementara sebenarnya terdistorsi secara lokal. Posisi yang terkonsentrasi dapat terlihat kuat sementara berada dalam campuran inventaris yang lebih berisiko daripada yang diasumsikan pengguna. Kedalaman yang tipis, manipulasi transaksi yang sama, dan input yang usang semuanya dapat menghasilkan angka yang tampak presisi tanpa dapat dipercaya. Avana memisahkan nilai yang tampak dari nilai jaminan yang dapat diandalkan dengan menggabungkan penetapan harga aset eksternal, rekonstruksi LP deterministik, dan langkah pengamanan tingkat protokol.",
@@ -149,7 +149,7 @@
           ]
         },
         {
-          "id": "cek-dan-pengamanan",
+          "id": "checks-and-safeguards",
           "title": "Pemeriksaan dan pengamanan",
           "paragraphs": [
             "Keluarga AMM yang berbeda membutuhkan jalur verifikasi yang berbeda. Curve stable LP, Uniswap pasangan dan NFT, Balancer pool berbobot, dan Aerodrome pasangan semuanya mengekspos keadaan jaminan secara berbeda. Pada Avana, harga eksternal tetap menjadi jangkar utama. Data spesifik pool dan pemeriksaan berbobot waktu membantu memverifikasi apakah keadaan jaminan yang direkonstruksi koheren dan lebih sulit untuk dimanipulasi. Pemeriksaan berbobot waktu itu bukan harga utama yang diandalkan Avana untuk pinjaman. Mereka adalah pemeriksaan konsistensi tambahan sehingga Avana bisa mengetahui apakah keadaan jaminan masih sesuai sebelum keadaan itu diperlakukan sebagai kredit.",
@@ -159,23 +159,23 @@
       ]
     },
     {
-      "slug": "penyelaman-mendalam-ke-aman",
+      "slug": "security-deep-dive",
       "title": "Bagaimana Avana Mengelola LP Risiko Agunan",
-      "date": "15 Juli 2026",
+      "date": "July 15, 2026",
       "description": "Bagaimana Avana menyusun keamanan berlapis untuk LP jaminan, mulai dari arsitektur dan orakel hingga kesehatan, likuidasi, dan operasi.",
-      "image": "/gambar/blog/sidik-jari-keamanan.png",
+      "image": "/images/blog/security-deep-dive.png",
       "category": "Pengembang",
       "tag": "Protokol",
       "sections": [
         {
-          "id": "lebih-dari-sebuah-harga",
+          "id": "more-than-a-price",
           "title": "Lebih dari sekadar harga dan sebuah LTV",
           "paragraphs": [
             "Token sederhana biasanya dapat diberi harga dengan referensi pasar langsung dan dilikuidasi dengan logika standar. Posisi LP tidak bisa. Nilainya bergantung pada aset dasar, struktur pool, hubungan antara aset tersebut, akumulasi biaya, kedalaman likuiditas, dan untuk likuiditas terkonsentrasi, jangkauan aktif. Dalam kondisi stres, variabel-variabel itu saling memperkuat. Protokol yang mendukung peminjaman berbasis LP pada Aave v4 harus melakukan lebih dari sekadar menetapkan harga dan menentukan rasio pinjaman terhadap nilai. Itulah masalah yang menjadi fokus Avana."
           ]
         },
         {
-          "id": "arsitektur-dan-orakel",
+          "id": "architecture-and-oracles",
           "title": "Arsitektur dan penilaian",
           "paragraphs": [
             "Lapisan keamanan pertama bersifat arsitektural. Avana menggunakan struktur hub and spoke Aave v4. Hub memegang lapisan likuiditas umum, mengelola akuntansi cadangan, dan menegakkan batasan solvabilitas. Spoke adalah tempat logika agunan khusus LP berada: penerimaan, aturan penilaian, parameter risiko spesifik pool, dan perilaku likuidasi. Jika pasar LP menjadi tertekan, tekanan tersebut dimaksudkan untuk tetap terkandung di spoke daripada menulis ulang asumsi di seluruh jenis agunan yang tidak terkait. Di Avana, spoke merupakan bagian dari batas keamanan.",
@@ -183,7 +183,7 @@
           ]
         },
         {
-          "id": "kesehatan-dan-likuidasi",
+          "id": "health-and-liquidation",
           "title": "Kesehatan dan likuidasi",
           "paragraphs": [
             "Lapisan ketiga adalah pemantauan kesehatan. LP posisi tetap aktif setelah mereka ditempatkan sebagai jaminan, sehingga risiko tidak membeku begitu pinjaman dibuka. Nilai berubah dengan pergerakan harga, pembentukan biaya, migrasi jangkauan, dan pergeseran kualitas pool. Avana menjalankan penilaian kesehatan per posisi secara terus-menerus daripada mengandalkan snapshot sesekali. Faktor kesehatan adalah sinyal langsung apakah model jaminan masih berlaku untuk pinjaman tersebut.",
@@ -191,7 +191,7 @@
           ]
         },
         {
-          "id": "operasi",
+          "id": "operations",
           "title": "Operasi dan pengendalian perubahan",
           "paragraphs": [
             "Lapisan operasional menganggap bahwa konfigurasi tata kelola dan risiko memerlukan disiplin yang sama seperti perlakuan agunan. Parameter risiko berubah melalui proses yang terstruktur. Perubahan sensitif berada di balik penguncian waktu dan tinjauan. Kontrol darurat ada untuk kondisi yang benar-benar merugikan. Pemantauan melampaui posisi individu hingga kategori pasar secara keseluruhan. Protokol yang mendukung LP agunan tidak dapat hanya bergantung pada konfigurasi statis.",
@@ -201,23 +201,23 @@
       ]
     },
     {
-      "slug": "posisi-lp-hedge",
+      "slug": "hedge-lp-position",
       "title": "Cara Melindungi Posisi LP dengan Lebih Penuh Pertimbangan",
-      "date": "13 Juli 2026",
+      "date": "July 13, 2026",
       "description": "Bagaimana LP dapat menggunakan Avana untuk mendanai buffer, offset arah, dan kebiasaan lindung nilai yang lebih disiplin tanpa sepenuhnya keluar dari pool.",
-      "image": "/gambar/blog/posisi-hedge-lp.png",
+      "image": "/images/blog/hedge-lp-position.png",
       "category": "Selama LP detik",
       "tag": "Panduan",
       "sections": [
         {
-          "id": "lebih-dari-biaya",
+          "id": "more-than-fees",
           "title": "Lebih dari biaya",
           "paragraphs": [
             "Sebuah posisi LP tidak pernah hanya tentang biaya. Penyimpangan harga, kerugian sementara, pergeseran rentang, dan tekanan agunan semuanya dapat memengaruhi buku yang sama sekaligus. Kerugian sementara terjadi ketika campuran aset dalam pool berubah dan LP akhirnya bernilai lebih rendah daripada memegang token secara terpisah. Setelah posisi yang didukung dapat mendukung peminjaman melalui Avana pada Aave v4, modal yang dipinjam dapat digunakan untuk perlindungan dan tidak hanya untuk leverage. Posisi yang seharusnya perlu ditarik sepenuhnya dapat tetap aktif sementara modal yang dipinjam digunakan untuk mengurangi tekanan atau menyeimbangkan eksposur."
           ]
         },
         {
-          "id": "penyangga-dan-ofset",
+          "id": "buffers-and-offsets",
           "title": "Buffer dan offset arah",
           "paragraphs": [
             "Hedge yang paling sederhana sering kali adalah yang paling praktis: buffer stablecoin. Pinjam secara konservatif di Avana dan simpan sebagian hasilnya dalam stablecoin. Jika kesehatan mulai menurun atau volatilitas meningkat, likuiditas itu bisa digunakan untuk melunasi utang atau mengurangi tekanan tanpa memaksa penjualan reaktif dari LP. Ini bukan terutama tentang meningkatkan pengembalian. Ini tentang membeli waktu dan menjaga kontrol, yang pada dirinya sendiri bisa sangat penting.",
@@ -225,7 +225,7 @@
           ]
         },
         {
-          "id": "opsi-lebih-lanjut",
+          "id": "more-advanced-options",
           "title": "Netralitas dan perlindungan yang lebih lembut",
           "paragraphs": [
             "Pendekatan yang lebih maju adalah berpikir dalam hal netralitas: mengurangi sensitivitas arah dan mengandalkan pendapatan biaya. Struktur semacam itu bisa lebih stabil, tetapi memerlukan pemantauan dan penyeimbangan kembali yang aktif. Posisi LP berkembang seiring pergerakan pasar, sehingga pengaturan netral harus dipertahankan, bukan hanya dinyatakan sekali. Untuk posisi yang lebih besar, struktur perlindungan penurunan dapat mendefinisikan skenario terburuk daripada hanya bereaksi terhadapnya, meskipun mereka memperkenalkan biaya dan keputusan waktu mereka sendiri.",
@@ -233,7 +233,7 @@
           ]
         },
         {
-          "id": "aturan-praktis",
+          "id": "practical-rules",
           "title": "Aturan praktis yang mudah diterapkan di mana pun",
           "paragraphs": [
             "Di berbagai pendekatan, beberapa kebiasaan tetap berlaku dengan baik pada Avana. Pinjam secara konservatif. Pertahankan cadangan nyata. Asumsikan kondisi bisa memburuk lebih cepat dari yang diharapkan. Perlakukan kapasitas pinjaman maksimum sebagai batasan, bukan target. Gunakan pemantauan dengan aturan pengurangan risiko yang telah ditentukan sebelumnya alih-alih mengandalkan reaksi manual terus menerus. Jika strategi lindung nilai menjadi begitu rumit sehingga Anda tidak lagi memahami apa yang sedang dilindungi dan apa yang sedang ditambahkan, itu telah terlalu jauh."
@@ -242,23 +242,23 @@
       ]
     },
     {
-      "slug": "buku-panduan-perulangan-yield",
+      "slug": "yield-looping-playbook",
       "title": "Looping Hasil dengan LP Jaminan",
-      "date": "10 Juli 2026",
+      "date": "July 10, 2026",
       "description": "Cara memikirkan tentang loop hasil dengan Avana LP agunan, termasuk buffer, pengujian tekanan, disiplin keluar, dan leverage yang berkelanjutan.",
-      "image": "/images/blog/playbook-looping-hasil.png",
+      "image": "/images/blog/yield-looping-playbook.png",
       "category": "Selama LP detik",
       "tag": "Panduan",
       "sections": [
         {
-          "id": "apa-arti-looping",
+          "id": "what-looping-means",
           "title": "Apa arti looping pada Avana",
           "paragraphs": [
             "Yield looping berarti menahan posisi LP, meminjam dengan jaminan tersebut, dan menempatkan kembali modal yang dipinjam ke strategi yang menghasilkan yield lain, atau dalam beberapa kasus, kembali ke likuiditas itu sendiri. Avana pada Aave v4 membuat langkah jaminan itu mungkin untuk pasar LP yang didukung. Daya tariknya jelas: looping dapat meningkatkan eksposur efektif dan memperbesar pendapatan dari biaya. Bahayanya juga jelas: ini dapat mempersempit margin keamanan, meningkatkan sensitivitas likuidasi, dan membuat posisi jauh lebih rapuh ketika kondisi berubah. Tujuan sebenarnya seharusnya adalah amplifikasi yang berkelanjutan, bukan leverage maksimum pada hari pertama."
           ]
         },
         {
-          "id": "menjaga-loop-pertama-sederhana",
+          "id": "keeping-the-first-loop-modest",
           "title": "Menjaga loop pertama tetap sederhana",
           "paragraphs": [
             "Bentuk looping yang paling aman adalah bersahaja. Pinjam jumlah yang relatif kecil terhadap posisi Avana LP yang didukung dan alihkan kembali ke sumber hasil kedua tanpa mendekati batas pinjaman. Itu adalah perpanjangan terkendali dari posisi awal, bukan taruhan rekursif bahwa kondisinya tetap sempurna. Bagi banyak pengguna, terutama di awal, itu adalah titik awal yang tepat. Anda masih mendapatkan penggunaan modal yang lebih baik, tetapi tetap memberi ruang jika tanda LP, pendapatan biaya, atau tingkat pinjaman bergerak melawan Anda.",
@@ -266,7 +266,7 @@
           ]
         },
         {
-          "id": "stres-dan-keluar",
+          "id": "stress-and-exit",
           "title": "Pengujian stres dan disiplin keluar",
           "paragraphs": [
             "Pengujian stres itu penting. Setiap pendekatan looping yang serius harus dievaluasi dalam kondisi buruk. Apa yang terjadi jika salah satu sisi pasangan bergerak tajam, jika volume perdagangan melemah, jika biaya pinjaman naik, atau jika kualitas jaminan memburuk lebih cepat dari yang diharapkan. Sebuah struktur yang terlihat menarik saat biaya tinggi dan volatilitas tenang bisa terlihat tidak nyaman begitu kondisi tersebut berbalik. Jika satu-satunya skenario yang menguntungkan adalah bulan biaya yang tenang, pemikiran itu belum selesai.",
@@ -274,7 +274,7 @@
           ]
         },
         {
-          "id": "neraca-buku-tidak-ajaib",
+          "id": "balance-sheet-not-magic",
           "title": "Desain neraca, bukan hasil gratis",
           "paragraphs": [
             "Yield looping adalah keputusan struktur modal, bukan jalan pintas untuk mendapatkan hasil gratis. Digunakan dengan hati-hati pada Avana, ini memungkinkan likuiditas onchain yang produktif mendukung rangkaian hasil yang lebih luas tanpa memaksa posisi asli untuk sepenuhnya dibongkar. Digunakan dengan ceroboh, ini mengubah posisi LP yang sehat menjadi rapuh. Perbedaannya biasanya adalah disiplin, manajemen buffer, dan kesediaan untuk memperlakukan leverage sebagai sesuatu yang harus dikendalikan daripada sesuatu yang harus dimaksimalkan."
@@ -283,23 +283,23 @@
       ]
     },
     {
-      "slug": "melepas-token-lp",
+      "slug": "unleashing-lp-tokens",
       "title": "Apa yang LP Agunan Mungkinkan",
-      "date": "8 Juli 2026",
+      "date": "July 8, 2026",
       "description": "Apa yang Avana LP agunan memungkinkan di seluruh peminjaman, lindung nilai, fleksibilitas perbendaharaan, dan penggunaan likuiditas produktif yang lebih efisien modal.",
-      "image": "/images/blog/membebaskan-token-lp.png",
+      "image": "/images/blog/unleashing-lp-tokens.png",
       "category": "Selama LP detik",
       "tag": "Panduan",
       "sections": [
         {
-          "id": "dari-terjebak-menjadi-bisa-digunakan",
+          "id": "from-trapped-to-usable",
           "title": "Dari modal yang terperangkap menjadi modal yang dapat digunakan",
           "paragraphs": [
             "LP posisi secara tradisional produktif tetapi kaku. Mereka menghasilkan biaya perdagangan dan mendukung kedalaman pasar, tetapi jika Anda menginginkan likuiditas dari posisi itu, jalan yang biasa adalah membongkarnya: memecah posisi, menghentikan penghasilan biaya, dan mengubah aset produktif menjadi saldo yang menganggur. LP jaminan mengubah itu. Melalui Avana pada Aave v4, posisi LP yang didukung dapat tetap aktif dalam AMM yang mendasarinya sambil juga mendukung peminjaman."
           ]
         },
         {
-          "id": "sederhana-dan-penggunaan-yield",
+          "id": "simple-and-yield-use",
           "title": "Likuiditas konservatif dan jalur hasil kedua",
           "paragraphs": [
             "Kasus penggunaan yang paling konservatif cukup sederhana. Anda meminjam aset stabil dengan jaminan posisi Avana LP yang didukung dan menggunakan likuiditas tersebut untuk modal kerja, pengelolaan cadangan, atau hasil dengan volatilitas lebih rendah sementara LP tetap aktif dan terus menghasilkan biaya. Nilai utama di sini bukanlah leverage untuk tujuan itu sendiri. Nilainya adalah akses ke uang tunai tanpa harus melakukan keluar sepenuhnya dari posisi asli.",
@@ -307,7 +307,7 @@
           ]
         },
         {
-          "id": "lindung-dan-aktif",
+          "id": "hedge-and-active",
           "title": "Strategi lindung nilai dan strategi yang lebih aktif",
           "paragraphs": [
             "Hedging adalah kategori lain. LP posisi mengekspos pengguna pada perubahan komposisi aset dan kerugian sementara, terutama di kolam di mana salah satu sisi lebih fluktuatif. Kredit terhadap agunan LP pada Avana dapat menciptakan ruang untuk mengelola eksposur itu: mengurangi konsentrasi arah, meningkatkan perencanaan likuiditas, atau membangun portofolio yang lebih seimbang di sekitar posisi yang sudah ada.",
@@ -315,7 +315,7 @@
           ]
         },
         {
-          "id": "apa-perubahan",
+          "id": "what-changes",
           "title": "Apa perubahan untuk LPs",
           "paragraphs": [
             "LP agunan mengubah penyediaan likuiditas dari kegiatan hasil yang relatif terisolasi menjadi sesuatu yang lebih terhubung dengan penggunaan modal DeFi yang lebih luas. Posisi yang sebelumnya hanya produktif di dalam kolamnya dapat mendukung peminjaman, perencanaan likuiditas, dan desain portofolio tanpa harus dibongkar terlebih dahulu. Penggunaan yang tepat masih bergantung pada toleransi risiko Anda dan pemahaman Anda tentang bagaimana nilai LP, kapasitas peminjaman, dan ambang likuidasi berinteraksi di Avana."
@@ -324,23 +324,23 @@
       ]
     },
     {
-      "slug": "aerodrome-lp-jaminan-aave-v4",
+      "slug": "aerodrome-lp-collateral-aave-v4",
       "title": "Meminjam dengan Agunan Aerodrome LPs pada Aave v4",
-      "date": "6 Juli 2026",
+      "date": "July 6, 2026",
       "description": "Bagaimana Avana mendukung Aerodrome LP posisi di Base sehingga mereka bisa tetap aktif sambil mendukung peminjaman melalui spok Aave v4 khusus.",
-      "image": "/Gambar/blog/aerodrome-lp-collateral.png",
+      "image": "/images/blog/aerodrome-lp-collateral.png",
       "category": "Pengembang",
       "tag": "Protokol",
       "sections": [
         {
-          "id": "aerodrome-di-avana",
+          "id": "aerodrome-on-avana",
           "title": "Aerodrome likuiditas di Avana",
           "paragraphs": [
             "Aerodrome LP posisi berada di pusat aktivitas onchain di Base, di mana likuiditas mendukung biaya perdagangan, distribusi token, dan kedalaman ekosistem. Sebagai jaminan, posisi-posisi tersebut perlu dievaluasi berdasarkan struktur pool, kualitas aset, kedalaman likuiditas, dan perilaku stres, bukan hanya berdasarkan TVL atau penghasilan biaya saja. Avana dibangun untuk mendukung jenis jaminan ini di Aave v4 dengan aturan spesifik pasar daripada aturan umum seluruh tempat."
           ]
         },
         {
-          "id": "kualitas-hub-spoke-dan-pool",
+          "id": "hub-spoke-and-pool-quality",
           "title": "Kualitas hub, spoke, dan pool",
           "paragraphs": [
             "Arsitektur hub dan spoke Aave v4 adalah yang membuat bentuk produk berfungsi. Hub mengelola likuiditas bersama. Spoke Avana menangani logika jaminan spesifik Aerodrome. Pool stabil di Base seharusnya tidak diperlakukan sama seperti pasangan ekosistem berfluktuasi hanya karena keduanya merupakan Aerodrome LP. Spoke menentukan bagaimana kategori likuiditas Aerodrome yang berbeda dinilai, seberapa besar daya pinjam yang mereka dukung, dan bagaimana likuidasi bekerja jika suatu posisi menjadi tidak aman.",
@@ -348,7 +348,7 @@
           ]
         },
         {
-          "id": "penilaian-dan-peminjaman",
+          "id": "valuation-and-borrow",
           "title": "Penilaian dan aliran pinjaman",
           "paragraphs": [
             "Sebuah Aerodrome LP bukanlah token harga tunggal. Itu adalah klaim terhadap aset dasar dalam pool yang komposisi dan kualitasnya sangat penting. Avana menilai nilai jaminan secara konservatif, dengan mempertimbangkan kualitas likuiditas, volatilitas, korelasi aset, dan bagaimana pool berperilaku jika pasar berbalik. Suatu posisi mungkin memiliki nilai nominal yang besar, tetapi daya pinjam mencerminkan apa yang bisa dipulihkan dalam kondisi tekanan.",
@@ -356,7 +356,7 @@
           ]
         },
         {
-          "id": "jika-kesehatan-berhenti",
+          "id": "if-health-breaks",
           "title": "If health breaks",
           "paragraphs": [
             "Jika suatu posisi menjadi tidak aman, Avana membongkar posisi likuiditas aktif, menghitung aset yang mendasarinya, dan memulihkan solvabilitas dengan gangguan sesedikit mungkin sesuai yang diizinkan pasar. Struktur kolam menentukan bagaimana likuidasi bekerja. Itu adalah alasan lain mengapa jaminan Aerodrome sebaiknya ditempatkan di cabang khusus daripada sebagai perpanjangan longgar dari pasar pinjaman yang lebih luas."
@@ -365,23 +365,23 @@
       ]
     },
     {
-      "slug": "curve-lp-jaminan-aave-v4",
+      "slug": "curve-lp-collateral-aave-v4",
       "title": "Meminjam dengan Agunan Curve LPs pada Aave v4",
-      "date": "3 Juli 2026",
+      "date": "July 3, 2026",
       "description": "Bagaimana Avana memperlakukan Curve LP agunan untuk pool stabil dan terkorelasi melalui Aave v4 poros khusus.",
-      "image": "/gambar/blog/kolateral-curve-lp.png",
+      "image": "/images/blog/curve-lp-collateral.png",
       "category": "Pengembang",
       "tag": "Protokol",
       "sections": [
         {
-          "id": "mengapa-lengkungan-penting",
+          "id": "why-curve-matters",
           "title": "Mengapa Curve penting pada Avana",
           "paragraphs": [
             "Curve LP posisi sering berada di pusat pasar stablecoin dan perdagangan aset yang berkorelasi, beberapa pool dengan kedalaman dan slippage terendah di onchain. Itu membuat mereka menarik sebagai jaminan, tetapi perilaku struktural mereka masih memerlukan penanganan khusus di dalam sistem pinjaman. Avana mendukung jaminan Curve LP di Aave v4 melalui sebuah saluran khusus dengan perlakuan jaminan sendiri, batasan peminjaman, dan aturan likuidasi yang dibentuk berdasarkan struktur pasar Curve."
           ]
         },
         {
-          "id": "stabil-tidak-tanpa-risiko",
+          "id": "stable-is-not-riskless",
           "title": "Tampilan stabil tidaklah tanpa risiko",
           "paragraphs": [
             "Curve kumpulan dibangun di sekitar aset yang diperdagangkan dengan hubungan yang lebih erat dibandingkan pasangan yang volatil standar. Kumpulan stablecoin, kumpulan staking likuid, dan kumpulan aset yang berkorelasi dapat menghasilkan profil likuiditas yang lebih dalam dan lebih stabil. Hubungan yang stabil tetap bisa putus, korelasi bisa melemah, dan kumpulan yang tampak konservatif bisa berperilaku buruk di bawah tekanan. Kerangka agunan Avana harus memperhitungkan baik kekuatan relatif desain kumpulan Curve maupun kemungkinan bahwa tekanan muncul tepat di tempat pengguna mengharapkan stabilitas.",
@@ -389,7 +389,7 @@
           ]
         },
         {
-          "id": "pengguna-dan-aliran",
+          "id": "users-and-flow",
           "title": "Siapa yang menggunakannya dan bagaimana peminjaman bekerja",
           "paragraphs": [
             "Banyak posisi Curve sudah digunakan oleh peserta DeFi yang canggih sebagai eksposur likuiditas inti. Kolam stablecoin, pasangan staking likuid, dan pasar aset yang berkorelasi mewakili jumlah modal yang sangat penting secara ekonomi. Jika posisi-posisi ini dapat mendukung peminjaman tanpa memerlukan penarikan, itu memperluas kegunaan beberapa likuiditas paling mendasar di DeFi sambil meninggalkannya di kolam.",
@@ -397,7 +397,7 @@
           ]
         },
         {
-          "id": "likuidasi",
+          "id": "liquidation",
           "title": "Likuidasi mengikuti kolam",
           "paragraphs": [
             "Jika sebuah Curve LP menjadi tidak aman, Avana hanya membongkar apa yang diperlukan untuk memulihkan kesehatan keuangan jika memungkinkan, menghormati struktur kumpulan yang mendasari, dan meminimalkan gangguan sambil melunasi utang. Jenis kumpulan yang berbeda memerlukan asumsi yang berbeda. Itulah tujuan model spoke, dan itulah cara Avana dapat memperluas Curve keluarga demi keluarga tanpa satu aturan LP umum untuk setiap AMM."
@@ -406,23 +406,23 @@
       ]
     },
     {
-      "slug": "balancer-lp-kolateral-aave-v4",
+      "slug": "balancer-lp-collateral-aave-v4",
       "title": "Balancer LP Agunan pada Aave v4",
-      "date": "1 Juli 2026",
+      "date": "July 1, 2026",
       "description": "Bagaimana Avana mendukung Balancer pool berbobot LP sebagai jaminan di Aave v4 sementara eksposurnya tetap aktif.",
-      "image": "/gambar/blog/kolateral-lp-balancer.png",
+      "image": "/images/blog/balancer-lp-collateral.png",
       "category": "Pengembang",
       "tag": "Protokol",
       "sections": [
         {
-          "id": "lps-gaya-portfolio",
+          "id": "portfolio-style-lps",
           "title": "Agunan gaya portofolio LP",
           "paragraphs": [
             "Posisi Balancer LP sering kali merupakan portofolio terstruktur di dalam AMM, dengan bobot khusus, eksposur yang beragam, dan likuiditas yang berperilaku berbeda dari pool dua aset standar. Itu membuat Balancer LP menarik sebagai jaminan, dan juga lebih sulit untuk didukung dalam sistem pinjaman yang dibangun untuk aset yang lebih sederhana. Avana menangani ini melalui spoke khusus di Aave v4."
           ]
         },
         {
-          "id": "varietas-terbobot",
+          "id": "weighted-variety",
           "title": "Mengapa kolam berbobot membutuhkan aturan pasar",
           "paragraphs": [
             "Balancer kumpulan bersifat bervariasi secara inheren. Kumpulan gaya yang stabil tidak berperilaku seperti kumpulan berbobot 80/20. Keranjang aset yang berkorelasi tidak berperilaku seperti komposisi gaya indeks yang lebih luas. Bahkan kumpulan dengan nilai total serupa dapat memiliki risiko sebagai jaminan yang secara material berbeda, tergantung pada kedalaman likuiditas, konsentrasi aset, volatilitas, dan hubungan antara aset dasar. Avana spoke menentukan bagaimana setiap kumpulan berbobot dinilai, bagaimana kapasitas pinjaman dibatasi, dan bagaimana likuidasi bekerja.",
@@ -430,7 +430,7 @@
           ]
         },
         {
-          "id": "pinjam-dan-tenangkan",
+          "id": "borrow-and-unwind",
           "title": "Meminjam dan bersantai",
           "paragraphs": [
             "Banyak Balancer kolam mengekspresikan pandangan portofolio yang disengaja: pasangan token tata kelola, alokasi indeks berbobot, keranjang stabil dan berkorelasi. Jika posisi-posisi ini menjadi jaminan yang dapat dipinjam di Avana, pengguna tidak perlu memilih antara mempertahankan eksposur pasar yang terstruktur dan mengakses likuiditas. Posisi kolam yang sama tetap aktif, menghasilkan biaya, dan mendukung peminjaman melalui Aave v4.",
@@ -441,23 +441,23 @@
       ]
     },
     {
-      "slug": "arsitektur-kontrak-pintar",
+      "slug": "smart-contract-architecture",
       "title": "Meminjam Melawan Uniswap LPs pada Aave v4",
-      "date": "28 Juni 2026",
+      "date": "June 28, 2026",
       "description": "Bagaimana Avana mengubah Uniswap LP posisi menjadi Aave v4 jaminan sementara mereka tetap berada di dalam pool dan terus menghasilkan biaya.",
-      "image": "/gambar/blog/uniswap-lp-jaminan.png",
+      "image": "/images/blog/uniswap-lp-collateral.png",
       "category": "Pengembang",
       "tag": "Protokol",
       "sections": [
         {
-          "id": "uniswap-di-avana",
+          "id": "uniswap-on-avana",
           "title": "Uniswap likuiditas pada Avana",
           "paragraphs": [
             "Uniswap LP posisi memberikan kedalaman pasar, memfasilitasi perdagangan, dan menghasilkan biaya, tetapi secara tradisional sulit digunakan di dalam sistem peminjaman tanpa terlebih dahulu ditarik atau diubah strukturnya. Avana dirancang untuk mengubah hal itu pada Aave v4. Hub mengelola likuiditas bersama. Spoke Avana adalah pasar khusus untuk peminjaman yang didukung LP, termasuk Uniswap likuiditas terkonsentrasi. Spoke mendefinisikan bagaimana agunan dinilai, bagaimana daya pinjam ditetapkan, dan bagaimana risiko ditangani pada tingkat posisi."
           ]
         },
         {
-          "id": "mengapa-cl-sulit",
+          "id": "why-cl-is-hard",
           "title": "Mengapa rentang yang terkonsentrasi merupakan jaminan yang sulit",
           "paragraphs": [
             "Uniswap posisi likuiditas terkonsentrasi bukan token fungibel sederhana. Nilainya bergantung pada harga saat ini dari aset yang mendasarinya, jumlah likuiditas yang disediakan, rentang harga yang dipilih, dan biaya yang terkumpul seiring waktu. Sebuah posisi bisa aktif dan menghasilkan, atau bisa keluar dari rentang dan berperilaku sangat berbeda. Avana harus memahami komposisi posisi secara real-time dan menilai nilainya sebagai jaminan di bawah kondisi yang berubah, bukan hanya sebagai nilai kertas nominal.",
@@ -465,7 +465,7 @@
           ]
         },
         {
-          "id": "pinjam-pantau-likuidasi",
+          "id": "borrow-monitor-liquidate",
           "title": "Meminjam, memantau, melikuidasi",
           "paragraphs": [
             "Aliran peminjaman adalah pasokan Uniswap LP yang didukung melalui Avana spoke. Posisi tetap dalam AMM dan terus memperoleh biaya. Spoke mengevaluasi agunan dan menerapkan logika risiko. Anda meminjam aset yang didukung dari likuiditas hub. Mengagunkan posisi tidak akan mematikannya. Likuiditas tetap diterapkan, eksposur pasar tetap utuh, dan biaya terus bertambah.",
@@ -476,23 +476,23 @@
       ]
     },
     {
-      "slug": "tantangan-ux-defi",
+      "slug": "defi-ux-challenges",
       "title": "Membuat LP Agunan Dapat Digunakan",
-      "date": "25 Juni 2026",
+      "date": "June 25, 2026",
       "description": "Mengapa desain produk Avana peduli tentang penilaian yang jelas, batas peminjaman, dan kesehatan sehingga LP agunan dapat dioperasikan, bukan hanya kuat.",
-      "image": "/images/blog/membuat-kolateral-lp-dapat-digunakan.png",
+      "image": "/images/blog/making-lp-collateral-usable.png",
       "category": "Produk",
       "tag": "Panduan",
       "sections": [
         {
-          "id": "kekuatan-tidak-cukup",
+          "id": "power-is-not-enough",
           "title": "Kekuatan tidak cukup",
           "paragraphs": [
             "LP agunan sangat kuat dalam konsep dan sulit disampaikan dengan baik. Pada Avana Anda tidak hanya mengelola pinjaman. Anda mengelola posisi likuiditas yang hidup yang nilai, komposisi, dan risikonya semuanya berubah seiring waktu. Itu membuat produk ini lebih menuntut daripada aliran pinjaman standar, dan ini adalah salah satu alasan utama mengapa agunan LP telah sulit dijalankan secara operasional bahkan ketika idenya terdengar menarik."
           ]
         },
         {
-          "id": "buat-siklus-hidup-terbaca",
+          "id": "make-the-lifecycle-legible",
           "title": "Buat siklus hidup terbaca",
           "paragraphs": [
             "Tantangannya adalah membuat seluruh siklus hidup dapat dipahami: penilaian jaminan, batas pinjaman, pemantauan kesehatan, dan apa yang terjadi saat kondisi berubah. Jika bagian-bagian itu tetap tidak jelas, produk akan tetap terbatas pada pengguna yang sangat teknis tidak peduli sekuat apa pun mekanisme dasarnya.",
@@ -500,7 +500,7 @@
           ]
         },
         {
-          "id": "satu-sistem",
+          "id": "one-system",
           "title": "Satu sistem yang terhubung",
           "paragraphs": [
             "LP pinjaman yang didukung pada Avana seharusnya ditampilkan sebagai satu sistem yang terhubung. Menyetorkan likuiditas, menggunakannya sebagai jaminan, memantau kesehatan, mengumpulkan biaya, dan mengelola risiko semuanya adalah bagian dari objek keuangan yang sama. Hubungan antara posisi LP dan utang seharusnya terlihat sejak awal, sehingga Anda bisa memahami kedua sisi sekaligus daripada menyatukan gambaran melalui antarmuka yang terpisah.",
@@ -511,23 +511,23 @@
       ]
     },
     {
-      "slug": "avana-lp-jaminan",
+      "slug": "avana-lp-collateral",
       "title": "Avana dan Langkah Berikutnya untuk LPs",
-      "date": "23 Juni 2026",
+      "date": "June 23, 2026",
       "description": "Mengapa penyedia likuiditas tidak harus memilih antara mendapatkan biaya dan mengakses modal, serta bagaimana Avana memperluas jaminan LP pada Aave v4.",
-      "image": "/images/blog/avana-langkah-berikutnya-penyedia-likuiditas.png",
+      "image": "/images/blog/avana-next-step-liquidity-providers.png",
       "category": "Komunitas",
       "tag": "Strategi",
       "sections": [
         {
-          "id": "pertukaran-lama",
+          "id": "the-old-tradeoff",
           "title": "Pertukaran lama",
           "paragraphs": [
             "Penyedia likuiditas menyediakan kedalaman, menyerap volatilitas, dan memperoleh biaya trading, tetapi modal di dalam posisi tersebut sering terasa terjebak. Jika Anda ingin mengakses modal itu, jawaban yang biasanya tetap adalah menariknya, memecah posisi, dan berhenti melakukan hal yang membuat posisi tersebut berguna sejak awal."
           ]
         },
         {
-          "id": "perubahan-avana",
+          "id": "what-avana-changes",
           "title": "Perubahan Avana",
           "paragraphs": [
             "Avana memungkinkan LP posisi yang didukung untuk berfungsi sebagai jaminan pada Aave v4 sembari menjaga likuiditas tetap aktif di AMM yang mendasarinya. Alih-alih memaksa memilih antara menghasilkan biaya atau mengakses likuiditas, posisi yang sama dapat melakukan keduanya. Posisi ini tetap berada di pasar, terus menghasilkan biaya, dan mendukung kapasitas pinjaman di dalam sistem peminjaman yang dirancang untuk jaminan LP.",
@@ -535,7 +535,7 @@
           ]
         },
         {
-          "id": "bagaimana-tumpukan-cocok",
+          "id": "how-the-stack-fits",
           "title": "Bagaimana tumpukan saling cocok",
           "paragraphs": [
             "Avana menggunakan desain hub dan spoke dari Aave v4. Likuiditas bersama tetap berada pada tingkat hub. Penilaian spesifik LP, perlakuan jaminan, dan logika likuidasi berada di dalam pasar spoke yang khusus. Kolam stabil, kolam aset yang berkorelasi, dan posisi likuiditas terkonsentrasi masing-masing mendapatkan perlakuan risiko yang sesuai daripada diubah menjadi satu kerangka umum.",
@@ -546,23 +546,23 @@
       ]
     },
     {
-      "slug": "kasus-penggunaan-lembaga",
+      "slug": "institutional-use-cases",
       "title": "LP Agunan untuk Lembaga",
-      "date": "20 Juni 2026",
+      "date": "June 20, 2026",
       "description": "Bagaimana Avana LP jaminan dapat membantu DAO, bendahara, dana, dan perusahaan asli kripto mengakses modal tanpa mengurai likuiditas yang produktif.",
-      "image": "/images/blog/lp-collateral-untuk-institusi.png",
+      "image": "/images/blog/lp-collateral-for-institutions.png",
       "category": "Untuk Lembaga",
       "tag": "Institusi",
       "sections": [
         {
-          "id": "fungsi-treasury",
+          "id": "treasury-function",
           "title": "Efisiensi modal sebagai fungsi perbendaharaan",
           "paragraphs": [
             "Bagi institusi yang beroperasi onchain, efisiensi modal adalah fungsi perbendaharaan. DAO, perbendaharaan protokol, dana, dan perusahaan kripto asli sering memegang posisi besar di berbagai token, cadangan stabil, dan pool likuiditas, namun banyak dari modal tersebut tetap kaku secara operasional. Posisi LP mungkin menghasilkan biaya dan mendukung eksposur pasar strategis, tetapi tetap sulit digunakan sebagai aset perbendaharaan yang fleksibel tanpa menarik likuiditas dan mengubah posisi pasar."
           ]
         },
         {
-          "id": "apa-avana-mengaktifkan",
+          "id": "what-avana-enables",
           "title": "Apa yang Avana memungkinkan bagi tim",
           "paragraphs": [
             "Melalui Avana, LP posisi dapat tetap aktif di AMM sambil mendukung peminjaman di Aave v4. Perbendaharaan DAO dapat membiayai hibah atau pembayaran kontributor tanpa mengurangi eksposur pasar inti. Sebuah dana dapat mempertahankan LP posisi sambil mengakses likuiditas stabil untuk reposisi taktis. Perbendaharaan perusahaan dapat mengelola penggajian atau kewajiban vendor tanpa memaksa rebalancing penuh dari cadangan onchain. Benang merahnya adalah bahwa peminjaman menciptakan modal kerja tanpa merealisasikan posisi, tanpa mengganggu generasi biaya, dan tanpa memaksa setiap kebutuhan likuiditas menjadi keputusan untuk menjual.",
@@ -570,7 +570,7 @@
           ]
         },
         {
-          "id": "dana-dan-korporasi",
+          "id": "funds-and-corps",
           "title": "Dana dan perbendaharaan perusahaan",
           "paragraphs": [
             "Dana dan manajer profesional memperhatikan fleksibilitas taktis. Di pasar yang bergerak cepat, membongkar posisi sebelum mengakses modal bisa lambat, mahal, dan secara strategis canggung. Avana LP jaminan memungkinkan seorang manajer mempertahankan eksposur dan kehadiran di pasar sambil membebaskan likuiditas untuk penyebaran baru, lindung nilai, atau reposisi.",
@@ -578,7 +578,7 @@
           ]
         },
         {
-          "id": "kontrol",
+          "id": "controls",
           "title": "Kontrol datang terlebih dahulu",
           "paragraphs": [
             "Adopsi institusional bergantung pada kontrol: batas kebijakan yang jelas mengenai apa yang dapat dipinjam, terhadap jaminan apa, melalui jalur persetujuan apa, dan dengan aturan pengurangan risiko apa. Pasar berbentuk spoke berarti risiko dapat didefinisikan berdasarkan struktur jaminan. Stablecoin, pasangan yang berkorelasi, likuiditas yang terkonsentrasi, dan pool yang volatil dapat diatur di bawah asumsi yang berbeda. Kontrol operasional mencakup pemisahan peran, izin, pemantauan kesehatan, auditabilitas, dan ambang persetujuan multi-tanda tangan. Semua itu penting apakah jaminan LP menjadi primitif treasury yang dapat dipercaya, bukan hanya alat leverage.",
@@ -588,23 +588,23 @@
       ]
     },
     {
-      "slug": "panduan-integrasi",
+      "slug": "integration-guide",
       "title": "Membangun di atas Avana LP Infrastruktur",
-      "date": "17 Juni 2026",
+      "date": "June 17, 2026",
       "description": "Pandangan pengembang tentang infrastruktur agunan Avana LP, termasuk pemantauan, otomatisasi, layanan likuidasi, dan peluang bagi pembuat.",
-      "image": "/gambar/blog/tampilan-pengembang-dokumen-promosi-lp.png",
+      "image": "/images/blog/developer-view-lp-collateral.png",
       "category": "Pengembang",
       "tag": "Protokol",
       "sections": [
         {
-          "id": "permukaan-desain-baru",
+          "id": "a-new-design-surface",
           "title": "A new design surface",
           "paragraphs": [
             "Sebagian besar DeFi infrastruktur dibangun di sekitar jaminan sederhana. Aset tunggal mudah untuk dinilai, dipantau, dan dilikuidasi. Posisi LP bersifat aktif, dua sisi, dan secara struktural lebih kompleks. Nilainya berubah sesuai dengan aset dasar, komposisi pool, akumulasi biaya, dan rentang. Kompleksitas itulah yang membuat jaminan LP sulit untuk diintegrasikan ke dalam sistem pinjaman, dan itulah alasan Avana menciptakan permukaan desain baru bagi pengembang."
           ]
         },
         {
-          "id": "apa-yang-didapat-pembangun",
+          "id": "what-builders-get",
           "title": "Apa yang didapat pembangun dari Avana",
           "paragraphs": [
             "Avana membuat LP posisi dapat digunakan sebagai jaminan melalui Aave v4. Arsitektur hub dan spoke berarti LP posisi dievaluasi, disesuaikan risikonya, dan dilikuidasi sesuai logika pasar spesifik, bukan pasar pinjaman umum yang kebetulan menerima LP. Bagi para pembuat, itu membuka aplikasi seputar antarmuka, sistem pemantauan, alat perbendaharaan, lapisan strategi, dan produk yang sadar risiko yang dibangun di atas kredit yang didukung LP.",
@@ -612,7 +612,7 @@
           ]
         },
         {
-          "id": "otomasi-likuidasi-perbendaharaan",
+          "id": "automation-liquidation-treasury",
           "title": "Otomasi, likuidasi, dan alat perbendaharaan",
           "paragraphs": [
             "Infrastruktur otomasi dan strategi adalah lini pekerjaan lainnya. Karena posisi LP tetap aktif saat mendukung peminjaman, pengembang dapat membangun sistem yang merespons kondisi yang berubah di kedua sisi posisi: mempertahankan batas peminjaman target, memantau pergeseran jaminan, atau mengarahkan data posisi ke dalam sistem perbendaharaan dan portofolio yang berada di atas Avana.",
@@ -623,23 +623,23 @@
       ]
     },
     {
-      "slug": "aave-v4-avana-berbicara",
+      "slug": "aave-v4-avana-spoke",
       "title": "Di Dalam Arsitektur Agunan LP Avana",
-      "date": "14 Juni 2026",
+      "date": "June 14, 2026",
       "description": "Di dalam arsitektur jaminan Avana's LP di Aave v4, termasuk hub, spoke, penilaian, desain oracle, dan logika likuidasi.",
-      "image": "/gambar/blog/arsitektur-dalam-avana.png",
+      "image": "/images/blog/inside-avana-architecture.png",
       "category": "Pengembang",
       "tag": "Protokol",
       "sections": [
         {
-          "id": "mengapa-hub-dan-bercak",
+          "id": "why-hub-and-spoke",
           "title": "Mengapa hub dan spoke",
           "paragraphs": [
             "LP jaminan tidak dapat didukung dengan desain peminjaman umum. Ini membutuhkan sistem yang menangani posisi likuiditas aktif, perubahan komposisi jaminan, penilaian spesifik pasar, dan jalur likuidasi yang berbeda dari jaminan token standar. Avana dibangun di atas model hub and spoke Aave v4 karena peminjaman yang didukung LP membutuhkan likuiditas bersama dan logika pasar terisolasi pada saat yang sama."
           ]
         },
         {
-          "id": "peran hub-dan-spoke",
+          "id": "hub-and-spoke-roles",
           "title": "Apa yang dilakukan hub dan spoke",
           "paragraphs": [
             "Pusat ini menyimpan aset yang dapat dipinjam dan mengoordinasikan likuiditas bersama di seluruh pasar: manajemen cadangan, pelacakan pemanfaatan, dan alokasi kredit. Sebuah pusat adalah cara Avana menghubungkan agunan LP ke kerangka pinjaman yang lebih luas tanpa memaksa setiap jenis agunan untuk berbagi asumsi yang sama. Pasar LP yang stabil, pasar likuiditas terkonsentrasi, dan pasangan AMM yang volatil seharusnya tidak semuanya diatur dengan cara yang sama hanya karena mereka mengambil dari kolam likuiditas yang sama.",
@@ -647,7 +647,7 @@
           ]
         },
         {
-          "id": "penilaian-orakel-likuidasi",
+          "id": "valuation-oracle-liquidation",
           "title": "Penilaian, oracle, dan likuidasi",
           "paragraphs": [
             "Penilaian menggunakan pendekatan bertingkat. Pertama, apa yang sebenarnya terkandung dalam posisi LP pada kondisi pasar saat ini. Kedua, tentukan harga aset dasar tersebut dari input oracle yang terpercaya. Ketiga, sesuaikan melalui logika jaminan yang mencerminkan risiko pool yang sebenarnya daripada ukuran nominal. Tidak setiap dolar di dalam posisi LP diterjemahkan menjadi kekuatan pinjaman yang sama di Avana.",
@@ -658,23 +658,23 @@
       ]
     },
     {
-      "slug": "v1-1-rilis",
+      "slug": "v1-1-release",
       "title": "Avana v1.1: Jaminan Lebih Baik, Kontrol Lebih Baik",
-      "date": "11 Juni 2026",
+      "date": "June 11, 2026",
       "description": "Avana v1.1 memperluas jaminan multi posisi, menambahkan lebih banyak pool yang didukung, meningkatkan delegasi dan peringatan, serta mengurangi beban transaksi.",
-      "image": "/images/blog/avana-v1-1-kontrol-lebih-baik.png",
+      "image": "/images/blog/avana-v1-1-better-control.png",
       "category": "Produk",
       "tag": "Produk",
       "sections": [
         {
-          "id": "apa yang dikirim",
+          "id": "what-shipped",
           "title": "Apa yang dikirimkan di v1.1",
           "paragraphs": [
             "Avana v1.1 membuat peminjaman yang didukung LP lebih fleksibel, lebih efisien, dan lebih mudah dikelola. Pembaruan ini memperluas cara pengguna menyusun jaminan, meningkatkan evaluasi posisi, mengurangi beban transaksi, dan menyempurnakan dasbor untuk mengelola posisi LP yang aktif di Aave v4."
           ]
         },
         {
-          "id": "multi-posisi-dan-pasar",
+          "id": "multi-position-and-markets",
           "title": "Aset jaminan multi posisi dan lebih banyak pasar",
           "paragraphs": [
             "Perubahan utama adalah jaminan multi posisi. Pengguna dapat menyetor beberapa posisi LP dan memiliki kapasitas pinjaman yang dievaluasi di seluruh set jaminan daripada per posisi. Hal ini memberikan fleksibilitas lebih dalam mengelola likuiditas di berbagai kolam, aset, atau jenis strategi. Rilis ini juga memperluas kolam yang didukung di Uniswap v3 dan v4. Setiap pasar baru masih mencakup penilaian tambahan, perlakuan jaminan, dan pekerjaan likuidasi, jadi akses yang lebih luas tidak melemahkan standar risiko Avana.",
@@ -682,7 +682,7 @@
           ]
         },
         {
-          "id": "ops-dan-dashboard",
+          "id": "ops-and-dashboard",
           "title": "Alat ops dan dasbor yang lebih jelas",
           "paragraphs": [
             "Dukungan delegasi membantu DAO, tim, dan operator terstruktur memisahkan tanggung jawab di berbagai dompet atau peran: siapa yang mengelola setoran, siapa yang menangani tindakan utang, siapa yang melakukan pemeliharaan operasional. Peringatan faktor kesehatan memberikan visibilitas lebih awal terhadap perubahan kondisi posisi sebelum stres berkembang. LP agunan dapat berubah dengan cepat, terutama ketika perbedaan harga memengaruhi efisiensi pendapatan dan kualitas agunan secara bersamaan.",
@@ -693,30 +693,30 @@
       ]
     },
     {
-      "slug": "memperkenalkan-otomatisasi",
+      "slug": "introducing-automate",
       "title": "Otomatisasi: Lapisan Kontrol untuk LP Agunan",
-      "date": "8 Juni 2026",
+      "date": "June 8, 2026",
       "description": "Bagaimana Avana Automate membantu pengguna mengelola LP agunan dengan otomatisasi non kustodian untuk biaya, penyeimbangan ulang, perlindungan, dan pemeliharaan disiplin.",
-      "image": "/images/blog/otomatisasikan-layer-kontrol-lp-agunan.png",
+      "image": "/images/blog/automate-control-layer-lp-collateral.png",
       "category": "Produk",
       "tag": "Produk",
       "sections": [
         {
-          "id": "mengapa-otomatisasi",
+          "id": "why-automation",
           "title": "Mengapa LP jaminan membutuhkan otomatisasi",
           "paragraphs": [
             "Mengelola posisi LP yang juga berfungsi sebagai jaminan itu menuntut. Biaya bertambah tetapi tidak selalu tetap produktif. Rentang likuiditas berubah seiring pergerakan pasar. Faktor kesehatan melemah saat perbedaan harga mengubah profil jaminan. Kedua sisi neraca tetap aktif. Posisi LP berkembang, dan utang terhadapnya berkembang seiring kondisi peminjaman. Bagi pengguna yang meminjam terhadap LP melalui Avana di Aave v4, itulah realitas sehari-hari."
           ]
         },
         {
-          "id": "apa-otomatisasi-adalah",
+          "id": "what-automate-is",
           "title": "Apa itu Avana Automate",
           "paragraphs": [
             "Automate adalah lapisan otomatisasi non-kuasai milik Avana. Ini mengeksekusi tindakan yang disetujui pengguna saat kondisi yang telah ditentukan terpenuhi. Pengguna tetap memegang kendali penuh atas aset dan izin. Automate menangani pemeliharaan yang berulang dan menegakkan disiplin posisi. Ini bukan pengganti strategi atau penilaian. Ini adalah cara untuk mengurangi beban operasional dalam mengelola jaminan LP di Avana."
           ]
         },
         {
-          "id": "jangkauan-biaya-perlindungan",
+          "id": "fees-ranges-protection",
           "title": "Biaya, jangkauan, dan perlindungan",
           "paragraphs": [
             "Biaya perdagangan terakumulasi secara bertahap, tetapi biaya menganggur tidak berkontribusi pada efisiensi posisi. Otomatisasi dapat mengumpulkan dan menempatkannya kembali sesuai dengan preferensi pengguna, sehingga posisi tetap lebih produktif tanpa intervensi manual terus-menerus. Seiring waktu, pemeliharaan biaya yang disiplin bisa sama pentingnya dengan hasil utama, terutama untuk strategi pinjaman yang didukung LP lebih besar.",
@@ -725,7 +725,7 @@
           ]
         },
         {
-          "id": "hari-dua-ops",
+          "id": "day-two-ops",
           "title": "Operasi hari kedua",
           "paragraphs": [
             "Automate dibangun berdasarkan sifat sebenarnya dari LP jaminan: posisi yang menghasilkan, bergerak, dan mengubah risiko sambil berfungsi sebagai jaminan pada Aave v4. Ini memberi pengguna cara untuk mempertahankan posisi secara konsisten, merespons perubahan kondisi dengan gesekan yang lebih sedikit, dan mengelola pinjaman yang didukung LP dengan disiplin yang sebaliknya memerlukan perhatian manual terus-menerus. Prinsip non kustodian yang sama berlaku sepanjang waktu. Avana menjalankan kebijakan Anda. Ini tidak menjadi manajer dana kotak hitam."
@@ -734,30 +734,30 @@
       ]
     },
     {
-      "slug": "panduan-agunan-lp",
+      "slug": "lp-collateral-guide",
       "title": "Panduan Pemula untuk LP Jaminan",
-      "date": "4 Juni 2026",
+      "date": "June 4, 2026",
       "description": "Panduan pemula untuk LP jaminan di Avana, mencakup perilaku LP, LTV, kerugian sementara, likuidasi, dan langkah pertama yang konservatif.",
-      "image": "/images/blog/panduan-pemula-lp-kolateral.png",
+      "image": "/images/blog/beginners-guide-lp-collateral.png",
       "category": "Selama LP detik",
       "tag": "Panduan",
       "sections": [
         {
-          "id": "gagasan-dasar",
+          "id": "the-basic-idea",
           "title": "Ide dasar",
           "paragraphs": [
             "Menyediakan likuiditas adalah salah satu cara paling umum untuk mendapatkan imbal hasil di DeFi. Anda menyetorkan aset ke dalam sebuah pool, memfasilitasi perdagangan, dan memperoleh biaya sebagai imbalannya. Posisi LP juga sebelumnya tidak fleksibel. Jika Anda ingin menggunakan modal tersebut di tempat lain, biasanya Anda harus menariknya terlebih dahulu. Jaminan LP mengubah hal itu. Melalui Avana di Aave v4, posisi LP yang didukung dapat menjadi jaminan pinjaman sambil tetap aktif di pool dan memperoleh biaya sepanjang waktu."
           ]
         },
         {
-          "id": "apa-itu-lp",
+          "id": "what-an-lp-is",
           "title": "Apa sebenarnya LP itu",
           "paragraphs": [
             "Sebuah posisi LP adalah posisi aktif di dalam pasar. Nilainya bergantung pada aset dasar, bagaimana mereka bergerak relatif satu sama lain, biaya yang terakumulasi, dan dalam sistem likuiditas terkonsentrasi apakah posisi tersebut masih berada dalam kisaran harga aktifnya. Nilainya berubah dari waktu ke waktu dengan cara yang tidak terjadi pada jaminan token biasa. Itulah mengapa jaminan LP membutuhkan model peminjaman yang lebih khusus, dan mengapa Avana ada untuk kasus penggunaan tersebut."
           ]
         },
         {
-          "id": "ltv-il-likuidasi",
+          "id": "ltv-il-liquidation",
           "title": "LTV, kerugian sementara, dan likuidasi",
           "paragraphs": [
             "Pinjaman terhadap nilai, yang sering disingkat menjadi LTV, adalah bagian dari nilai jaminan posisi yang diterima yang dapat dipinjam. LTV yang lebih rendah berarti lebih banyak buffer. Jika nilai jaminan turun, ada ruang sebelum pinjaman menjadi tertekan. LTV yang lebih tinggi memberikan likuiditas yang lebih segera dan margin keamanan yang lebih sedikit. Dalam pasar LP hal ini lebih penting karena nilai posisi dapat bergerak karena beberapa alasan sekaligus: harga dasar, komposisi pool, akumulasi biaya, dan penempatan rentang.",
@@ -766,7 +766,7 @@
           ]
         },
         {
-          "id": "langkah-pertama",
+          "id": "first-steps",
           "title": "A sensible first path",
           "paragraphs": [
             "Bahkan sebagai jaminan, posisi LP tetap menghasilkan biaya dan mempertahankan eksposur pasar. Itulah keuntungan efisiensi modal. Bagi pemula, pendekatan yang paling aman adalah memulai secara konservatif pada Avana: meminjam secara sederhana, menggunakan jenis pool yang lebih sederhana dan stabil terlebih dahulu, dan memperhatikan bagaimana kesehatan posisi berubah seiring pergerakan pasar. Setelah Anda memahami bagaimana nilai LP, utang, dan ambang likuidasi saling berinteraksi, model ini menjadi jauh lebih mudah digunakan secara bertanggung jawab."
