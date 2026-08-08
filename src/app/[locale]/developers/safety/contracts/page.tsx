@@ -73,7 +73,7 @@ export default async function ContractsArchitecturePage() {
         <section id="security-challenges" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Security Challenges</h2>
           <ul className="space-y-3 text-sm text-gray-600">
-            <li>• LP value can be path dependent and often needs venue-specific custody and unwind logic.</li>
+            <li>• LP value can be path dependent and often needs DEX-specific custody and unwind logic.</li>
             <li>• Oracle misuse or stale pricing can create economic loss even when contracts execute exactly as coded.</li>
             <li>• Governance, parameter control, and emergency response are all part of the attack surface.</li>
           </ul>
@@ -125,7 +125,7 @@ export default async function ContractsArchitecturePage() {
           <h2 className="mb-4 type-section-title text-gray-900">Trust Boundaries</h2>
           <ul className="space-y-3 text-sm text-gray-600">
             <li>• Onchain accounting and liquidation settlement should be deterministic once triggered.</li>
-            <li>• Oracle sources, venue adapters, and operational liquidator infrastructure are external dependencies and should be monitored as such.</li>
+            <li>• Oracle sources, DEX adapters, and operational liquidator infrastructure are external dependencies and should be monitored as such.</li>
             <li>• Governance, pause authority, and upgrades are privileged powers that should remain bounded, reviewable, and timelocked wherever possible.</li>
           </ul>
         </section>

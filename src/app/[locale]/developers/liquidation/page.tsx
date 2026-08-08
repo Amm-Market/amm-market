@@ -210,10 +210,10 @@ export default async function LiquidationDesignPage() {
         <section id="operator-model" className="mb-12">
           <h2 className="type-section-title mb-4 text-gray-900">Operator Model</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Liquidations remain permissionless, but LP collateral often benefits from a protocol
-            backstop that knows how to execute the expected unwind path. Generic liquidators may be
-            able to repay debt, yet still lack the venue-specific logic needed to settle the
-            position efficiently or safely.
+            Liquidations are permissionless once a position crosses the liquidation threshold. Any
+            eligible liquidator can repay the allowed debt amount and trigger the settlement path.
+            LP collateral is harder to unwind than simple token collateral, so Avana also accounts
+            for specialized liquidation coverage.
           </p>
           <ul className="space-y-2 type-body-copy text-gray-600">
             <li>Liquidators must track the same risk state and collateral state that the protocol uses.</li>

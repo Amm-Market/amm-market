@@ -2,29 +2,29 @@
   "common": {
     "a11y": {
       "skipToContent": "Ga naar de hoofdinhoud",
-      "primaryNav": "Hoofdnavigatie",
+      "primaryNav": "Primaire navigatie",
       "mobileMenu": "Mobiel menu",
       "mobileNav": "Mobiele navigatie",
       "openMenu": "Menu openen",
-      "closeMenu": "Menu sluiten",
+      "closeMenu": "Sluit menu",
       "language": "Taal: {language}",
       "logo": "{site}-logo",
-      "helpfulLinks": "Nuttige links"
+      "helpfulLinks": "Handige links"
     },
     "nav": {
       "products": "Producten",
-      "resources": "Bronnen",
+      "resources": "Hulpbronnen",
       "developers": "Ontwikkelaars",
       "helpCenter": "Helpcentrum",
-      "aaveArfc": "Aave ARFC",
+      "aaveArfc": "zm2cnomhgamk66mr49yg",
       "borrow": "Lenen",
-      "lend": "Uitlenen",
-      "multiply": "Multiply",
-      "about": "Over ons",
-      "newsroom": "Nieuws",
+      "lend": "Lenen",
+      "multiply": "Vermenigvuldigen",
+      "about": "Over",
+      "newsroom": "Nieuwsredactie",
       "brand": "Merk",
-      "faq": "FAQ",
-      "privacy": "Privacy",
+      "faq": "Veelgestelde vragen",
+      "privacy": "6wfoav9jxrnv8y24t8wx",
       "terms": "Voorwaarden",
       "overview": "Overzicht",
       "architecture": "Architectuur",
@@ -32,54 +32,54 @@
     },
     "cta": {
       "sandboxShort": "Sandbox",
-      "sandboxLong": "Sandbox proberen"
+      "sandboxLong": "Probeer Sandbox"
     },
     "mega": {
-      "exploreProducts": "Producten ontdekken",
-      "exploreResources": "Bronnen ontdekken",
-      "exploreDevelopers": "Voor ontwikkelaars",
+      "exploreProducts": "Ontdek Producten",
+      "exploreResources": "Ontdek bronnen",
+      "exploreDevelopers": "Ontdek Ontwikkelaars",
       "whatYouCanDo": "Wat je kunt doen",
       "whereToLook": "Waar te kijken",
-      "highlights": "Highlights",
+      "highlights": "Hoogtepunten",
       "borrowAgainstLp": "Lenen tegen LP",
-      "borrowAgainstLpDesc": "Maak liquiditeit vrij uit LP-exposure zonder je strategie te verlaten.",
-      "openMultiply": "LP Multiply openen",
-      "openMultiplyDesc": "Gebruik AMM-posities als onderpand voor beheerde exposure in de pool.",
+      "borrowAgainstLpDesc": "Ontgrendel liquiditeit van LP blootstelling zonder de strategie te verlaten.",
+      "openMultiply": "Open LP vermenigvuldigen",
+      "openMultiplyDesc": "Gebruik AMM posities als onderpand voor beheerde blootstelling in het zwembad.",
       "lendThroughHub": "Uitlenen via de Hub",
-      "lendThroughHubDesc": "Kapitaal toewijzen met een duidelijker uitvoeringskader.",
-      "aboutDesc": "Bedrijf en productthese achter Avana.",
-      "followNotes": "Productnotes volgen",
-      "followNotesDesc": "Launches, technische updates en roadmapbeslissingen.",
-      "browseBrand": "Merkmaterialen bekijken",
-      "browseBrandDesc": "Goedgekeurde merken, kleuren en visuele partnerrichtlijnen.",
-      "startOverview": "Begin met het overzicht",
-      "startOverviewDesc": "Kernmodel van het protocol vóór implementatiedetails.",
-      "reviewModel": "Protocolmodel bekijken",
-      "reviewModelDesc": "Hoe Hub, Spokes, pricing en controls samenkomen.",
-      "understandLiquidation": "Liquidatie begrijpen",
-      "understandLiquidationDesc": "Hoe LP-gedekte posities worden bewaakt en afgewikkeld."
+      "lendThroughHubDesc": "Wijs kapitaal toe met een duidelijkere uitvoeringscontext.",
+      "aboutDesc": "Bedrijfs- en productthesis achter Avana.",
+      "followNotes": "Volg de productnotities",
+      "followNotesDesc": "Lanceringen, technische updates en routekaartbeslissingen.",
+      "browseBrand": "Blader door merkmaterialen",
+      "browseBrandDesc": "Goedgekeurde merken, kleuren en visuele richtlijnen van partners.",
+      "startOverview": "Begin met overzicht",
+      "startOverviewDesc": "Kernprotocolmodel vóór implementatiedetail.",
+      "reviewModel": "Beoordelingsprotocolmodel",
+      "reviewModelDesc": "Hoe hub, spokes, prijsstelling en controles samen passen.",
+      "understandLiquidation": "Begrijp liquidatie",
+      "understandLiquidationDesc": "Hoe LP-ondersteunde posities worden gecontroleerd en afgehandeld."
     },
     "footer": {
-      "blurb": "Avana is een LP-collateralprotocol op Aave v4 waarmee liquiditeitsaanbieders tegen actieve posities kunnen lenen terwijl ze in de pool blijven.",
-      "explore": "Ontdekken",
-      "resources": "Bronnen",
-      "docs": "Docs",
-      "social": "Social",
-      "twitter": "Twitter",
-      "github": "GitHub",
-      "telegram": "Telegram",
-      "discourse": "Discourse",
+      "blurb": "Avana is een LP-collateraalprotocol op Aave v4 dat liquiditeitsverschaffers helpt te lenen tegen actieve posities terwijl ze in het pool blijven.",
+      "explore": "Verkennen",
+      "resources": "Hulpbronnen",
+      "docs": "Documenten",
+      "social": "Sociaal",
+      "twitter": "Twitteren",
+      "github": "wg7m7qsxxp9sls7c6xux",
+      "telegram": "4jz3kftqw6898f8snkc7",
+      "discourse": "Discours",
       "socialAria": "Avana op {network}",
-      "disclosureRisk": "Lenen tegen LP-tokens brengt risico’s mee, inclusief liquidatie als marktomstandigheden tegen je positie bewegen. Avana bewaart je middelen niet, herhypothekeert geen LP-posities en verandert niet hoe je liquiditeit op onderliggende AMMs werkt. Leningvoorwaarden, rentes en collateralwaarden worden on-chain afgedwongen via transparante oracle-systemen en geautomatiseerde risicoparameters. Je houdt altijd volledige controle en kunt altijd terugbetalen of collateral aanpassen. Leen alleen bedragen die je comfortabel kunt aanhouden bij volatiliteit.",
-      "disclosureInfo": "Dit materiaal is uitsluitend bedoeld ter informatie en is niet (i) een aanbod of uitnodiging om te investeren in, of te kopen of verkopen van, belangen of aandelen, of deel te nemen aan een beleggings- of handelsstrategie, (ii) bedoeld als boekhoudkundig, juridisch of fiscaal advies of beleggingsaanbeveling, of (iii) een officiële verklaring van Avana. Raadpleeg je adviseurs voordat je een beleggingsbeslissing neemt. Er wordt geen garantie gegeven — uitdrukkelijk of stilzwijgend — over de juistheid van de informatie of de toekomstige performance van enig digitaal asset, financieel instrument of andere markt- of economische maatstaf. Avana kan financiële belangen hebben in, of relaties met, sommige van de genoemde entiteiten en/of publicaties. Avana onderschrijft geen links of websites van derden in het materiaal."
+      "disclosureRisk": "Lenen tegen LP tokens brengt risico's met zich mee, waaronder liquidatie als de marktomstandigheden zich tegen uw positie keren. Avana bewaart uw fondsen niet, zal de LP posities niet herhypothekeren, noch de werking van uw liquiditeit op onderliggende AMMs aanpassen. Leningvoorwaarden, rentetarieven en onderpandwaarden worden via transparante orakelsystemen en geautomatiseerde risicoparameters on-chain afgedwongen. U behoudt te allen tijde de volledige controle over uw positie en kunt het onderpand altijd terugbetalen of aanpassen wanneer u wilt. Lenen doet u alleen voor bedragen die u comfortabel kunt aanhouden tijdens marktvolatiliteit.",
+      "disclosureInfo": "Dit materiaal is uitsluitend bedoeld voor informatieve doeleinden en is niet (i) een aanbod, of een verzoek om een aanbod te doen, om te investeren in, of om te kopen of verkopen van, enige belangen of aandelen, of om deel te nemen aan een investerings- of handelsstrategie, (ii) bedoeld om boekhoudkundig, juridisch of fiscaal advies te geven, of beleggingsaanbevelingen, of (iii) een officiële verklaring van Avana. Raadpleeg uw adviseurs voordat u een investeringsbeslissing neemt. Er wordt geen verklaring of garantie gegeven, expliciet of impliciet, met betrekking tot de juistheid van de informatie of de toekomstige prestaties van enig digitaal actief, financieel instrument of andere markt- of economische maatstaf. Avana kan financiële belangen hebben in, of relaties onderhouden met, enkele van de entiteiten en/of publicaties die in de materialen worden besproken of vermeld. Avana onderschrijft of keurt geen links of websites van derden goed die in de materialen kunnen worden verstrekt."
     },
     "notFound": {
       "title": "Deze pagina is niet beschikbaar.",
-      "body": "Het adres klopt mogelijk niet of de pagina is verplaatst.",
-      "home": "Naar homepage",
-      "faq": "FAQ"
+      "body": "Het adres kan verkeerd zijn of de pagina kan verplaatst zijn.",
+      "home": "Go to homepage",
+      "faq": "Veelgestelde vragen"
     },
-    "sandboxNotice": "Sandbox-gegevens alleen ter preview. APYs, prijzen en rendementen zijn illustratief en kunnen afwijken van live marktomstandigheden.",
+    "sandboxNotice": "Sandbox gegevens getoond voor voorbeeldweergave alleen. APYs, prijzen en rendementen zijn illustratief en kunnen afwijken van de actuele marktomstandigheden.",
     "blogChrome": {
       "back": "Terug",
       "share": "Delen",
@@ -87,51 +87,50 @@
       "shareOnLinkedIn": "Delen op LinkedIn",
       "previousPost": "Vorige post",
       "nextPost": "Volgende post",
-      "onThisPage": "Op deze pagina"
+      "onThisPage": "On this page"
     },
     "docs": {
       "previous": "Vorige",
       "next": "Volgende",
       "sections": {
-        "introduction": "Introductie",
+        "introduction": "Inleiding",
         "gettingStarted": "Aan de slag",
-        "architecture": "Protocolarchitectuur",
-        "liquidation": "Liquidatieframework",
+        "architecture": "Protocollenarchitectuur",
+        "liquidation": "Liquidatiekader",
         "integrations": "Ondersteunde integraties",
         "safety": "Veiligheidsmechanismen",
-        "legal": "Juridisch & compliance"
+        "legal": "Juridisch & Compliance"
       },
       "items": {
         "overview": "Overzicht",
-        "keyConcepts": "Kernconcepten",
-        "testnetRoadmap": "Testnet & roadmap",
-        "glossary": "Verklarende woordenlijst",
-        "depositLp": "LP storten",
-        "borrowAssets": "Assets lenen",
-        "manageLoans": "Leningen beheren",
-        "repayLoans": "Leningen aflossen",
-        "withdrawCollateral": "Collateral opnemen",
-        "claimLpFees": "LP-fees claimen",
-        "borrowSpoke": "Borrow Spoke",
-        "lendSpoke": "Lend Spoke",
-        "collateralFactors": "Collateral factors",
-        "healthFactor": "Health factor",
-        "platformFees": "Platformfees",
-        "incentives": "Incentives",
+        "keyConcepts": "Belangrijke concepten",
+        "glossary": "Woordenlijst",
+        "depositLp": "Storting LP",
+        "borrowAssets": "Activa Lenen",
+        "manageLoans": "Leningen Beheren",
+        "repayLoans": "Leningen terugbetalen",
+        "withdrawCollateral": "Onderpand opnemen",
+        "claimLpFees": "Vordering LP Kosten",
+        "borrowSpoke": "Leen Spoke",
+        "lendSpoke": "Leen sprak",
+        "collateralFactors": "Onderpandfactoren",
+        "healthFactor": "Gezondheidsfactor",
+        "platformFees": "Platformkosten",
+        "incentives": "Prikkels",
         "liquidationDesign": "Liquidatieontwerp",
-        "liquidators": "Liquidators",
+        "liquidators": "Likwidateurs",
         "liquidationFlow": "Liquidatiestroom",
-        "liquidationExamples": "Liquidatievoorbeelden",
-        "integrationsOverview": "Integratieoverzicht",
+        "liquidationExamples": "Voorbeelden van liquidatie",
+        "integrationsOverview": "Overzicht van integraties",
         "appkit": "AppKit",
-        "allowedPools": "Toegestane LP pools",
-        "routerAdapters": "Router & adapters",
-        "priceOracles": "Price oracles",
-        "riskFramework": "Risicoframework",
-        "contractsSecurity": "Contracts & security",
-        "bugBounty": "Bug bounty",
-        "insuranceFunds": "Insurance funds",
-        "securityDisclosures": "Security disclosures",
+        "allowedPools": "Toegestaan LP Pools",
+        "routerAdapters": "Router en adapters",
+        "priceOracles": "Prijsorakels",
+        "riskFramework": "Risicokader",
+        "contractsSecurity": "Contracten & Beveiliging",
+        "bugBounty": "Bug-bounty",
+        "insuranceFunds": "Verzekeringsfondsen",
+        "securityDisclosures": "Beveiligingsmeldingen",
         "legalDisclaimer": "Juridische disclaimer"
       }
     },
@@ -141,158 +140,158 @@
       "searchPlaceholder": "Zoeken",
       "searchResults": "Zoekresultaten",
       "clearSearch": "Zoekopdracht wissen",
-      "noResults": "Geen resultaten voor \"{query}\"",
+      "noResults": "Geen resultaten gevonden voor \"{query}\"",
       "category": "Categorie: {name}",
       "categoriesAria": "FAQ-categorieën",
       "articles": "{count} artikelen"
     },
     "tags": {
       "all": "Alles",
-      "product": "Product",
+      "product": "mbwrr7svmzo4pqm56pji",
       "strategy": "Strategie",
       "guides": "Gidsen",
-      "protocol": "Protocol",
-      "institutions": "Instituties"
+      "protocol": "d55egcamhfixo8z326u4",
+      "institutions": "Instellingen"
     },
     "newsroom": {
       "latestFrom": "Laatste van Avana",
-      "readNewsroom": "Nieuws lezen"
+      "readNewsroom": "Lees nieuwsredactie"
     }
   },
   "meta": {
-    "siteTitle": "Avana – Lenen tegen LP-posities op Aave v4",
-    "siteDescription": "Maak liquiditeit vrij uit je LP-tokens. Leen tot 80% tegen Uniswap-, Curve- en Balancer-posities terwijl je trading fees blijft verdienen op Aave v4.",
-    "ogDescription": "Maak liquiditeit vrij uit je LP-tokens terwijl je trading fees blijft verdienen.",
-    "ogSubtitle": "Lenen tegen LP-posities op Aave v4",
-    "twitterTitle": "Avana – Lenen tegen LP-posities",
-    "twitterDescription": "Maak liquiditeit vrij uit je LP-tokens op Aave v4",
+    "siteTitle": "Avana - Lenen tegen LP posities op Aave v4",
+    "siteDescription": "Ontgrendel liquiditeit van uw LP tokens. Leen tot 80% tegen Uniswap, Curve en Balancer posities terwijl u doorgaat met het verdienen van handelskosten op Aave v4.",
+    "ogDescription": "Ontgrendel liquiditeit van je LP tokens terwijl je doorgaat met het verdienen van handelskosten.",
+    "ogSubtitle": "Lenen tegen LP posities op Aave v4",
+    "twitterTitle": "Avana - Lenen tegen LP Posities",
+    "twitterDescription": "Ontgrendel liquiditeit van je LP tokens op Aave v4",
     "titleTemplate": "{title} | Avana",
-    "team": "Avana-team",
-    "ogAlt": "Avana – DeFi-liquiditeitsprotocol",
+    "team": "zuttz0vlf0831bj5b5f2",
+    "ogAlt": "Avana - DeFi Liquiditeitsprotocol",
     "home": {
-      "title": "Lenen tegen LP-posities op Aave v4",
-      "description": "Maak liquiditeit vrij uit je LP-tokens. Leen tot 80% tegen Uniswap-, Curve- en Balancer-posities terwijl je trading fees blijft verdienen op Aave v4."
+      "title": "Lenen tegen LP posities op Aave v4",
+      "description": "Ontgrendel liquiditeit van uw LP tokens. Leen tot 80% tegen Uniswap, Curve en Balancer posities terwijl u doorgaat met het verdienen van handelskosten op Aave v4."
     },
     "about": {
-      "title": "Over ons",
-      "description": "Maak kennis met Avana, een dedicated LP-as-collateralprotocol op Aave v4 met gespecialiseerde Spokes, een gedeelde Hub en een Lend Spoke voor AMM-liquiditeitsmarkten."
+      "title": "Over",
+      "description": "Ontmoet Avana, een toegewijd LP-als-zekerheid protocol gebouwd op Aave v4 met gespecialiseerde Spokes, een gedeelde Hub, en een Lend Spoke ontworpen voor AMM liquiditeitsmarkten."
     },
     "borrow": {
       "title": "Lenen",
-      "description": "Leen tegen live LP-posities zonder de pool te verlaten. Blijf fees verdienen terwijl je liquiditeit vrijmaakt op Aave v4."
+      "description": "Leen tegen live LP posities zonder het pool te verlaten. Blijf vergoedingen verdienen terwijl je liquiditeit ontgrendelt op Aave v4."
     },
     "lend": {
-      "title": "Uitlenen",
-      "description": "Lever kapitaal aan Avana’s Lend Spoke en verdien yield van LP-gedekte kredietnemers op Aave v4."
+      "title": "Lenen",
+      "description": "Lever kapitaal aan Avana's Lend Spoke en verdien rendement van LP-ondersteunde leners op Aave v4."
     },
     "multiply": {
-      "title": "Multiply",
-      "description": "Versterk LP-exposure met beheerde Multiply-strategieën, gedekt door ondersteunde AMM-posities."
+      "title": "Vermenigvuldigen",
+      "description": "Vergroot LP blootstelling met beheerde vermenigvuldigingsstrategieën ondersteund door ondersteunde AMM posities."
     },
     "brand": {
       "title": "Merk",
-      "description": "Officiële Avana-merkassets, kleuren en gebruiksrichtlijnen voor partners en pers."
+      "description": "Officiële Avana merkassets, kleuren en gebruiksrichtlijnen voor partners en pers."
     },
     "faq": {
-      "title": "FAQ",
-      "description": "Antwoorden over Avana LP-collateral, lenen, uitlenen, Multiply, liquidatie en Aave v4-architectuur."
+      "title": "Veelgestelde vragen",
+      "description": "Antwoorden over Avana LP onderpand, lenen, uitlenen, vermenigvuldigen, liquidatie en Aave v4 architectuur."
     },
     "newsroom": {
-      "title": "Nieuws",
-      "description": "Laatste posts van het Avana-team over LP-collateral, AMM-markten, Aave v4 en protocolontwikkeling."
+      "title": "Nieuwsredactie",
+      "description": "Laatste berichten van het Avana team over LP onderpand, AMM markten, Aave v4, en protocolontwikkeling."
     },
     "developers": {
       "title": "Ontwikkelaars",
-      "description": "Technische documentatie voor integratie met Avana. Leer over LP-token-collateral, health factors, liquidatiestromen en smartcontractarchitectuur op Aave v4."
+      "description": "Technische documentatie voor integratie met Avana. Leer meer over LP token onderpand, gezondheidsfactoren, liquidatiestromen en smart contract architectuur op Aave v4."
     },
     "privacy": {
       "title": "Privacybeleid",
-      "description": "Avana-privacybeleid."
+      "description": "Avana privacybeleid."
     },
     "terms": {
       "title": "Gebruiksvoorwaarden",
-      "description": "Avana-gebruiksvoorwaarden."
+      "description": "Avana gebruiksvoorwaarden."
     }
   },
   "home": {
     "hero": {
-      "eyebrow": "Powered by Aave v4",
-      "title": "Lenen tegen LP-posities",
+      "eyebrow": "Aangedreven door Aave v4",
+      "title": "Lenen tegen LP posities",
       "titleLine1": "Lenen tegen",
-      "titleLine2": "Liquidity Positions",
-      "subtitle": "Blijf trading fees verdienen terwijl je liquiditeit vrijmaakt uit Uniswap-, Curve- en Balancer-posities.",
+      "titleLine2": "Liquiditeitsposities",
+      "subtitle": "Blijf handelskosten verdienen terwijl je liquiditeit vrijmaakt uit Uniswap, Curve en Balancer posities.",
       "subtitleMobileLines": [
-        "Toegang tot tot 80% van je Liquidity Pool-waarde",
-        "tegen 5,5% APR zonder liquiditeit op te nemen of",
-        "trading fees op te geven."
+        "Krijg toegang tot maximaal 80% van de waarde van je liquiditeitspool",
+        "at 5.5% APR without withdrawing liquidity or",
+        "giving up trading fees."
       ],
       "subtitleDesktopLines": [
-        "Toegang tot tot 80% van je Liquidity Pool-waarde tegen 5,5% APR",
-        "zonder liquiditeit op te nemen of trading fees op te geven."
+        "Toegang tot maximaal 80% van de waarde van uw liquiditeitspool tegen 5,5% APR",
+        "without withdrawing liquidity or giving up trading fees."
       ],
-      "primaryCta": "Sandbox proberen",
-      "secondaryCta": "Docs lezen"
+      "primaryCta": "Probeer Sandbox",
+      "secondaryCta": "Lees documenten"
     },
     "features": {
-      "eyebrow": "Key features",
-      "title": "Gebouwd voor live LP-collateral"
+      "eyebrow": "Belangrijkste kenmerken",
+      "title": "Gebouwd voor live LP onderpand"
     },
     "faq": {
       "title": "Veelgestelde vragen"
     },
     "newsroom": {
       "title": "Laatste van Avana",
-      "cta": "Nieuws lezen"
+      "cta": "Lees nieuwsredactie"
     },
     "buildTomorrow": {
-      "title": "Maak kennis met Avana",
-      "body": "Avana maakt ondersteunde LP-posities bruikbaar als collateral op Aave v4, zodat liquiditeitsaanbieders kunnen lenen zonder de pool te verlaten."
+      "title": "Aan Avana",
+      "body": "Avana biedt ondersteuning voor LP posities als bruikbaar onderpand op Aave v4 zodat liquiditeitsverschaffers kunnen lenen zonder het fonds te verlaten."
     }
   },
   "product": {
     "borrow": {
       "title": "Lenen tegen LP",
-      "subtitle": "Maak liquiditeit vrij uit actieve AMM-posities zonder de pool te verlaten.",
-      "cta": "Sandbox proberen"
+      "subtitle": "Ontgrendel liquiditeit van actieve AMM posities zonder het verlaten van het pool.",
+      "cta": "Probeer Sandbox"
     },
     "lend": {
-      "title": "Uitlenen aan LP-markten",
-      "subtitle": "Verdien yield van kredietnemers die live LP-collateral gebruiken op Aave v4.",
-      "cta": "Sandbox proberen"
+      "title": "Uitlenen aan LP markten",
+      "subtitle": "Verdien rendement van leners met gebruik van live LP onderpand op Aave v4.",
+      "cta": "Probeer Sandbox"
     },
     "multiply": {
-      "title": "LP-exposure vermenigvuldigen",
-      "subtitle": "Gebruik ondersteunde posities als collateral voor beheerde directionele exposure.",
-      "cta": "Sandbox proberen"
+      "title": "Vermenigvuldig LP belichting",
+      "subtitle": "Gebruik ondersteunde posities als onderpand om beheerde directionele blootstelling toe te voegen.",
+      "cta": "Probeer Sandbox"
     },
     "about": {
-      "title": "Over Avana",
-      "subtitle": "LP-as-collateralprotocol gebouwd op Aave v4"
+      "title": "Ongeveer Avana",
+      "subtitle": "LP-als-onderpandprotocol gebouwd op Aave v4"
     },
     "brand": {
-      "title": "Brandkit",
-      "subtitle": "Merken, kleuren en richtlijnen voor partneroppervlakken"
+      "title": "Merkit",
+      "subtitle": "Markeringen, kleuren en richtlijnen voor partnersgerichte oppervlakken"
     }
   },
   "faq": {
-    "title": "FAQ",
-    "subtitle": "Antwoorden over Avana, LP-collateral en Aave v4",
-    "englishOnlyNote": "Volledige FAQ-antwoorden worden in het Engels getoond tot de review voor deze locale klaar is."
+    "title": "Veelgestelde vragen",
+    "subtitle": "Antwoorden over Avana, LP onderpand, en Aave v4",
+    "englishOnlyNote": "Volledige FAQ-antwoorden worden in het Engels weergegeven totdat de beoordeling van deze locatie is voltooid."
   },
   "docs": {
-    "hubTitle": "Developer docs",
-    "hubSubtitle": "Integreer met Avana LP-collateral op Aave v4",
-    "englishOnlyNote": "Documentatietekst valt terug op Engels wanneer een localevertaling nog niet beschikbaar is."
+    "hubTitle": "Ontwikkelaarsdocumentatie",
+    "hubSubtitle": "Integreer met Avana LP onderpand op Aave v4",
+    "englishOnlyNote": "De hoofdtekst van de documentatie valt terug op het Engels wanneer een vertaling voor de locale nog niet beschikbaar is."
   },
   "blog": {
-    "indexTitle": "Nieuws",
-    "indexSubtitle": "Productnotities, research en protocolupdates",
-    "englishOnlyNote": "Artikelteksten vallen terug op Engels wanneer een localevertaling nog niet beschikbaar is."
+    "indexTitle": "Nieuwsredactie",
+    "indexSubtitle": "Productnotities, onderzoek en protocolupdates",
+    "englishOnlyNote": "Artikelen vallen terug op Engels wanneer een vertaling voor de lokale taal nog niet beschikbaar is."
   },
   "legal": {
     "privacyTitle": "Privacybeleid",
     "termsTitle": "Gebruiksvoorwaarden",
-    "englishOnlyNote": "Juridische pagina’s blijven in het Engels tot counsel-goedgekeurde localeversies beschikbaar zijn.",
+    "englishOnlyNote": "Juridische pagina's blijven in het Engels totdat door een juridisch adviseur goedgekeurde lokale versies beschikbaar zijn.",
     "englishOnlyBadge": "Alleen Engels"
   }
 }
