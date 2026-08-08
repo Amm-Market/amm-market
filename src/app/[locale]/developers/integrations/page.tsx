@@ -1,6 +1,6 @@
 import { withDocsI18n } from "@/lib/content-i18n/with-docs-i18n"
-import type { Metadata } from "next"
 import { Link } from "@/i18n/navigation"
+import type { Metadata } from "next"
 import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 import { createDocsMetadata } from "@/lib/content-i18n/docs-metadata"
@@ -8,33 +8,33 @@ import { createDocsMetadata } from "@/lib/content-i18n/docs-metadata"
 export async function generateMetadata(): Promise<Metadata> {
   return createDocsMetadata('integrations', {
     title: "Supported Integrations",
-    description: "Deployment-aware guide to the venue families Avana can integrate with, the checks they must pass, and the review work required before enablement.",
+    description: "Which DEXs and AMMs Avana can integrate with and what must be in place before a market goes live.",
   })
 }
 
 const sections = [
   { id: "overview", title: "Overview" },
   { id: "appkit", title: "AppKit" },
-  { id: "venue-families", title: "Venue Families" },
+  { id: "dex-families", title: "DEX Families" },
   { id: "enablement-status", title: "Enablement Status" },
   { id: "review-requirements", title: "Review Requirements" },
 ]
 
-const venueFamilies = [
+const dexFamilies = [
   {
-    title: "Concentrated liquidity venues",
+    title: "Concentrated liquidity DEXs",
     body:
-      "These venues require position-level handling because LP value depends on current price, active range, and how inventory is split across the position.",
+      "Uniswap v3-style positions need position-level handling because value depends on current price, active range, and how inventory is split across the position.",
   },
   {
     title: "Fungible stable and weighted pools",
     body:
-      "These venues expose ERC-20 LP shares whose value can be rebuilt from pool balances, external prices, and conservative unwind assumptions.",
+      "Curve, Balancer, and similar DEXs expose ERC-20 LP shares whose value can be rebuilt from pool balances, external prices, and conservative unwind assumptions.",
   },
   {
     title: "Custom or hook-based designs",
     body:
-      "More advanced pool architectures are only supportable when Avana has a clear oracle model, a safe custody path, and a liquidation adapter for the design.",
+      "Advanced pool architectures need a clear oracle model, safe custody path, and liquidation adapter before they can be supported.",
   },
 ]
 
@@ -43,53 +43,50 @@ export default async function SupportedIntegrationsPage() {
     <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
-
           title="Supported Integrations"
-
-          description="Reference guide to the venue families Avana can work with and the review gates that have to be cleared before support goes live."
-
+          description="Which DEXs Avana can work with and what must be reviewed before support goes live."
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Avana does not integrate venues just because they are popular or expose LP tokens.
-            Support depends on whether the protocol can reconstruct the position accurately, value
-            it conservatively, and exit it cleanly when liquidation is required.
+            Avana supports curated LP collateral markets across AMMs such as Uniswap, Balancer,
+            Curve, and Aerodrome as markets are launched. Support is approved pool by approved pool,
+            not automatically granted to every pool on a DEX.
           </p>
           <p className="text-sm leading-relaxed text-gray-600">
-            This page is an integration reference, not a live launch dashboard. For pool admission
-            policy, see{" "}
+            Each supported market needs reliable asset pricing, enough liquidity depth, a defined
+            unwind route, market caps, and collateral settings that match the pool type. See{" "}
             <Link href="/developers/integrations/allowed-pools" className="text-[#01AACF] hover:underline">
               Allowed LP Pools
-            </Link>
-            . For valuation assumptions, see{" "}
+            </Link>{" "}
+            and{" "}
             <Link href="/developers/integrations/price-oracles" className="text-[#01AACF] hover:underline">
               Price Oracles
-            </Link>
-            .
+            </Link>{" "}
+            for admission and valuation details.
           </p>
         </section>
 
         <section id="appkit" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">AppKit</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            AppKit is the partner-facing path for products that want to drop Avana credit into an
-            existing user journey instead of sending users to a standalone flow with no context.
+            AppKit lets DEXs, wallets, and portfolio apps embed Avana credit inside their existing
+            user flows instead of sending users to a separate lending app.
           </p>
           <p className="text-sm text-gray-600">
-            Read the{" "}
+            See the{" "}
             <Link href="/developers/integrations/appkit" className="text-[#01AACF] hover:underline">
-              AppKit developer guide
+              AppKit guide
             </Link>{" "}
             for partner controls, handoff patterns, and launch notes.
           </p>
         </section>
 
-        <section id="venue-families" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Venue Families</h2>
+        <section id="dex-families" className="mb-12">
+          <h2 className="mb-4 type-section-title text-gray-900">DEX Families</h2>
           <div className="space-y-4">
-            {venueFamilies.map((family) => (
+            {dexFamilies.map((family) => (
               <div key={family.title} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
                 <h3 className="mb-2 font-semibold text-gray-900">{family.title}</h3>
                 <p className="text-sm text-gray-600">{family.body}</p>
@@ -101,31 +98,30 @@ export default async function SupportedIntegrationsPage() {
         <section id="enablement-status" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Enablement Status</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Whether a venue is enabled on a given network is a deployment decision, not a permanent
-            protocol truth. A venue family can be supportable in theory but still disabled on a
-            specific deployment until oracle coverage, liquidation routing, and risk parameters are
-            all ready.
+            Whether a DEX is enabled on a given network is a deployment decision. A DEX family can
+            be supportable in theory but still disabled on a specific deployment until oracle
+            coverage, liquidation routing, and risk parameters are ready.
           </p>
-          <div className="rounded-lg border border-cyan-200 bg-cyan-50 p-4 text-sm text-cyan-900">
-            Builders should verify current deployment configuration in the app, release notes, or
-            published contract registry instead of reading this page as a real-time support matrix.
-          </div>
+          <p className="text-sm text-gray-600">
+            Check the Avana interface, release notes, or contract registry for what is live on your
+            target deployment.
+          </p>
         </section>
 
         <section id="review-requirements" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Review Requirements</h2>
-          <ul className="space-y-3 text-sm text-gray-600">
-            <li>• A venue must support conservative position valuation from robust external prices and verifiable state reconstruction.</li>
-            <li>• The protocol needs a dependable unwind path for liquidation, including fee collection and routing into the debt asset.</li>
-            <li>• Pool depth, concentration risk, correlation assumptions, and operational monitoring all have to fit the risk framework.</li>
-            <li>• New venue support is a governance and risk decision, not just an interface update or adapter merge.</li>
+          <ul className="list-disc space-y-2 ps-5 text-sm text-gray-600">
+            <li>Conservative position valuation from robust external prices and verifiable state reconstruction</li>
+            <li>A dependable unwind path for liquidation, including fee collection and routing into the debt asset</li>
+            <li>Pool depth, concentration risk, correlation assumptions, and operational monitoring that fit the risk framework</li>
+            <li>Governance and risk review before new DEX or pool family support goes live</li>
           </ul>
         </section>
       </div>
 
       <DeveloperScrollSpyRail
         sections={sections}
-        pageSummary="Governance-aware overview of which AMM venue families Avana can safely support."
+        pageSummary="Which DEX families Avana can support and what must be reviewed before enablement."
         sectionColor="cyan"
       />
     </div>

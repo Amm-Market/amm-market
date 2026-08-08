@@ -7,7 +7,7 @@ import { createDocsMetadata } from "@/lib/content-i18n/docs-metadata"
 export async function generateMetadata(): Promise<Metadata> {
   return createDocsMetadata('architecture/lend-spoke', {
     title: "Lend Spoke",
-    description: "How the Lend Spoke accepts lender assets and routes them through the Hub to LP-collateral borrow markets.",
+    description: "How lenders supply assets through the Lend Spoke to fund LP-collateral borrowing.",
   })
 }
 
@@ -20,19 +20,19 @@ const sections = [
 
 const capitalFlow = [
   {
-    title: "Supply Capital",
+    title: "Supply capital",
     description:
-      "Lenders bring in major assets such as ETH, BTC, and stablecoins through the Lend Spoke instead of interacting with LP collateral directly.",
+      "Lenders deposit ETH, BTC, stablecoins, and other supported assets through the Lend Spoke.",
   },
   {
-    title: "Route Through the Hub",
+    title: "Route through the Hub",
     description:
-      "The Lend Spoke forwards that liquidity into the Hub, where one reserve layer can support several LP-collateral borrowing markets.",
+      "Capital moves into the Hub reserve layer, where one pool can support multiple LP-collateral borrow markets.",
   },
   {
-    title: "Power Borrow Spokes",
+    title: "Fund Borrow Spokes",
     description:
-      "Borrow Spokes then draw from Hub liquidity while keeping LP valuation, liquidation handling, and market-specific risk controls contained inside each spoke.",
+      "Borrow Spokes draw from Hub liquidity while keeping LP valuation and liquidation rules local to each market.",
   },
 ]
 
@@ -49,41 +49,30 @@ export default async function LendSpokePage() {
     <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
-
           title="Lend Spoke"
-
-          description="The lender-facing entry point that moves supplier capital into the Hub for use by LP-collateral borrow markets."
-
+          description="How lenders supply assets that fund borrowing against LP collateral."
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            The Lend Spoke is the capital intake path for lenders. Depositors supply assets such
-            as ETH, BTC, and major stablecoins here, and that liquidity is then routed into the
-            Hub so Borrow Spokes can fund loans against supported LP collateral without asking
-            lenders to reason about AMM position mechanics.
+            Lenders supply assets such as ETH, BTC, GHO, USDC, USDT, or other supported tokens into
+            the lender-facing side of the protocol. That capital routes through the Hub to support
+            borrowing across LP-collateral markets.
           </p>
-          <p className="mb-4 text-gray-600 leading-relaxed">
-            This separation is deliberate. The lender path is about supplying lendable assets and
-            receiving the economics of the lending side, while the Borrow Spokes own the messy work
-            of LP valuation, admissibility, health checks, and liquidation rules for each listed
-            collateral family.
-          </p>
-          <p className="text-sm text-gray-600">
-            <strong>Role in the stack:</strong> Lend Spoke admits lending capital. Borrow Spokes
-            keep LP-specific risk local to each market, so one lending pool does not require one
-            global collateral model.
+          <p className="text-gray-600 leading-relaxed">
+            Lenders do not manage LP ranges, impermanent loss, or AMM-specific collateral
+            operations. Borrow Spokes handle LP underwriting and liquidation logic, while lender
+            capital powers the credit layer.
           </p>
         </section>
 
         <section id="capital-entry-point" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Capital Entry Point</h2>
           <p className="mb-6 text-gray-600 leading-relaxed">
-            Lender deposits come through the Lend Spoke first, then move into a shared Hub reserve
-            layer. That means capital does not have to be partitioned one pool at a time by every
-            supported LP market, even though the underwriting rules on the borrowing side stay
-            separate.
+            Lender deposits come through the Lend Spoke first, then move into the shared Hub reserve
+            layer. Capital does not need to be partitioned per LP market, even though borrowing
+            rules stay separate on the spoke side.
           </p>
 
           <div className="space-y-4">
@@ -99,47 +88,32 @@ export default async function LendSpokePage() {
           </div>
 
           <p className="mt-6 text-sm text-gray-600 border-l-4 border-violet-400 pl-3">
-            Early in the protocol lifecycle, Hub liquidity may also be supplemented by Aave v4
-            credit lines. Over time, Lend Spoke deposits can become a larger share of the protocol&apos;s
-            native lending capital.
+            Early in the protocol lifecycle, Hub liquidity may also be supplemented by Aave v4 credit
+            lines. Over time, Lend Spoke deposits can become a larger share of native lending
+            capital.
           </p>
         </section>
 
         <section id="risk-adjusted-yield" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Risk-Adjusted Yield</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            LP collateral is not static inventory. While a loan is open, the underlying position
-            can continue earning trading fees, and that matters for how the borrowing side is
-            modeled. The protocol therefore does not treat every LP like a dead balance that only
-            moves with token prices.
-          </p>
-          <p className="mb-4 text-gray-600 leading-relaxed">
-            That distinction also affects the lending side. Credit terms can reflect the fact that
-            some LP markets have fee generation and unwind behavior that differs from non-yielding
-            collateral, and Aave v4 risk premium tools can express those differences when policy
-            allows it. Actual lender returns still depend on live configuration and market state,
-            not on a fixed assumption from this page.
+            Supplier yield comes from borrowers paying interest to access liquidity backed by LP
+            collateral. Avana combines the shared Hub base rate with spoke-level risk premiums tied
+            to the LP markets being funded.
           </p>
           <p className="text-sm text-gray-600">
-            <strong>For lenders:</strong> deposits through the Lend Spoke fund credit that is
-            underwritten against LP positions whose recoverable value, health logic, and
-            liquidation paths are all defined in Borrow Spokes.
+            Rates move with market conditions, available liquidity, utilization, and the risk
+            profile of underlying borrower markets. Actual returns depend on live configuration, not
+            a fixed assumption from documentation.
           </p>
         </section>
 
         <section id="dynamic-risk-controls" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Dynamic Risk Controls</h2>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            The lending side depends on the borrower side staying within a risk model that can move
-            with the market. Fixed LTV-style settings alone are not enough for LP collateral, so
-            the framework can respond to changes in pool composition, volume, divergence,
-            volatility, peg behavior, and unwind depth as those conditions change.
-          </p>
-          <p className="mb-4 text-gray-600 leading-relaxed">
-            In stressed conditions, caps and related controls can tighten to protect lender
-            liquidity. In calmer conditions, those same controls can be adjusted inside approved
-            policy bounds. The point is not constant tuning for its own sake, but making sure the
-            lending layer is not forced to treat a changing LP market as if nothing has changed.
+            LP collateral changes with pool composition, volume, divergence, volatility, and unwind
+            depth. Risk controls can respond to those signals rather than relying on static settings
+            alone.
           </p>
 
           <div className="rounded-xl border border-gray-200 bg-gray-50 p-5">
@@ -154,18 +128,12 @@ export default async function LendSpokePage() {
               ))}
             </ul>
           </div>
-
-          <p className="mt-6 text-sm leading-relaxed text-gray-600">
-            Lender capital follows one entry path, but LP markets do not share one risk profile.
-            Borrow Spokes can keep market-specific parameters local, which lets different LP
-            families operate under different settings without fragmenting the lender experience.
-          </p>
         </section>
       </div>
 
       <DeveloperScrollSpyRail
         sections={sections}
-        pageSummary="How lender capital enters the protocol, reaches the Hub, and funds LP-collateral borrowing without merging collateral rules together."
+        pageSummary="How lender capital enters the protocol and funds LP-collateral borrowing through the Hub."
         sectionColor="violet"
       />
     </div>

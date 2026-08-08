@@ -8,20 +8,20 @@
       "openMenu": "Mở menu",
       "closeMenu": "Đóng menu",
       "language": "Ngôn ngữ: {language}",
-      "logo": "logo {site}",
+      "logo": "Logo {site}",
       "helpfulLinks": "Liên kết hữu ích"
     },
     "nav": {
       "products": "Sản phẩm",
       "resources": "Tài nguyên",
-      "developers": "Developer",
-      "helpCenter": "Trung tâm trợ giúp",
-      "aaveArfc": "Aave ARFC",
-      "borrow": "Borrow",
-      "lend": "Cung cấp",
-      "multiply": "Multiply",
+      "developers": "Nhà phát triển",
+      "helpCenter": "Trung tâm Trợ giúp",
+      "aaveArfc": "1fregl6aerdqcukpov8a",
+      "borrow": "Mượn",
+      "lend": "Cho mượn",
+      "multiply": "Nhân",
       "about": "Giới thiệu",
-      "newsroom": "Tin tức",
+      "newsroom": "Phòng tin tức",
       "brand": "Thương hiệu",
       "faq": "FAQ",
       "privacy": "Quyền riêng tư",
@@ -35,59 +35,59 @@
       "sandboxLong": "Thử Sandbox"
     },
     "mega": {
-      "exploreProducts": "Khám phá sản phẩm",
+      "exploreProducts": "Khám phá Sản phẩm",
       "exploreResources": "Khám phá Tài nguyên",
-      "exploreDevelopers": "Khám phá các Nhà phát triển",
+      "exploreDevelopers": "Khám phá các nhà phát triển",
       "whatYouCanDo": "Những gì bạn có thể làm",
       "whereToLook": "Nơi để tìm",
       "highlights": "Điểm nổi bật",
-      "borrowAgainstLp": "Vay với LP",
-      "borrowAgainstLpDesc": "Mở khóa thanh khoản từ việc tiếp xúc LP mà không rời khỏi chiến lược.",
-      "openMultiply": "Mở Multiply LP",
-      "openMultiplyDesc": "Sử dụng vị trí AMM làm tài sản đảm bảo cho việc quản lý rủi ro trong bể.",
-      "lendThroughHub": "Lend qua Hub",
+      "borrowAgainstLp": "Vay dựa trên LP",
+      "borrowAgainstLpDesc": "Mở khóa thanh khoản từ LP tiếp xúc mà không rời khỏi chiến lược.",
+      "openMultiply": "Mở LP nhân",
+      "openMultiplyDesc": "Sử dụng AMM vị trí làm tài sản đảm bảo cho việc tiếp xúc được quản lý trong bể.",
+      "lendThroughHub": "Cho vay qua Trung tâm",
       "lendThroughHubDesc": "Phân bổ vốn với bối cảnh thực thi rõ ràng hơn.",
-      "aboutDesc": "Luận điểm công ty và sản phẩm đằng sau Avana.",
+      "aboutDesc": "Luận điểm về công ty và sản phẩm đằng sau Avana.",
       "followNotes": "Theo dõi ghi chú sản phẩm",
       "followNotesDesc": "Các lần ra mắt, cập nhật kỹ thuật và các quyết định về lộ trình.",
       "browseBrand": "Duyệt các tài liệu thương hiệu",
-      "browseBrandDesc": "Dấu hiệu được phê duyệt, màu sắc và hướng dẫn trực quan cho đối tác.",
+      "browseBrandDesc": "Các dấu hiệu, màu sắc và hướng dẫn hình ảnh đối tác đã được phê duyệt.",
       "startOverview": "Bắt đầu với tổng quan",
       "startOverviewDesc": "Mô hình giao thức cốt lõi trước chi tiết triển khai.",
-      "reviewModel": "Mô hình giao thức xem xét",
+      "reviewModel": "Mô hình quy trình xem xét",
       "reviewModelDesc": "Cách trung tâm, các nhánh, giá cả và các kiểm soát liên kết với nhau.",
       "understandLiquidation": "Hiểu về thanh lý",
-      "understandLiquidationDesc": "Cách các vị thế được hỗ trợ bởi LP được giám sát và thanh toán."
+      "understandLiquidationDesc": "Cách các vị trí được hỗ trợ bởi LP được giám sát và thanh toán."
     },
     "footer": {
-      "blurb": "Avana là một giao thức tài sản thế chấp LP trên Aave v4 giúp các nhà cung cấp thanh khoản vay dựa trên các vị thế đang hoạt động trong khi vẫn ở trong pool.",
+      "blurb": "Avana là một giao thức thế chấp LP trên Aave v4 giúp các nhà cung cấp thanh khoản vay dựa trên các vị thế đang hoạt động trong khi vẫn giữ trong pool.",
       "explore": "Khám phá",
       "resources": "Tài nguyên",
       "docs": "Tài liệu",
       "social": "Xã hội",
-      "twitter": "Twitter",
-      "github": "GitHub",
-      "telegram": "Telegram",
-      "discourse": "Discourse",
-      "socialAria": "Avana ở {network}",
-      "disclosureRisk": "Vay dựa trên token LP có liên quan đến rủi ro, bao gồm việc thanh lý nếu điều kiện thị trường đi ngược lại vị thế của bạn. Avana không giữ quỹ của bạn, không tái sử dụng vị thế LP, và không thay đổi cách thanh khoản của bạn hoạt động trên các AMM cơ bản. Điều khoản vay, lãi suất và giá trị tài sản thế chấp được thực thi trên chuỗi thông qua các hệ thống oracle minh bạch và các tham số rủi ro tự động. Bạn luôn kiểm soát hoàn toàn vị thế của mình và có thể trả nợ hoặc điều chỉnh tài sản thế chấp bất cứ khi nào bạn muốn. Chỉ vay số tiền mà bạn cảm thấy thoải mái duy trì trong suốt biến động thị trường.",
-      "disclosureInfo": "Tài liệu này chỉ mang tính chất thông tin và không phải là (i) một đề nghị, hoặc lời mời chào để đầu tư vào, hoặc mua hoặc bán, bất kỳ quyền lợi hay cổ phần nào, hoặc tham gia vào bất kỳ chiến lược đầu tư hay giao dịch nào, (ii) nhằm cung cấp tư vấn kế toán, pháp lý, hoặc thuế, hoặc khuyến nghị đầu tư, hoặc (iii) tuyên bố chính thức của Avana. Hãy tham khảo ý kiến cố vấn của bạn trước khi đưa ra bất kỳ quyết định đầu tư nào. Không có sự đảm bảo hay cam kết nào, dù rõ ràng hay ngụ ý, về độ chính xác của thông tin hoặc về hiệu suất tương lai của bất kỳ tài sản kỹ thuật số, công cụ tài chính hoặc các chỉ số thị trường hay kinh tế khác. Avana có thể có lợi ích tài chính trong, hoặc có mối quan hệ với, một số thực thể và/hoặc ấn phẩm được thảo luận hoặc tham chiếu trong tài liệu. Avana không ủng hộ hoặc phê duyệt các liên kết hoặc trang web của bên thứ ba có thể được cung cấp trong tài liệu."
+      "twitter": "g3ovk9973igcltquie52",
+      "github": "yuae98z3g9x5oeg2hzs3",
+      "telegram": "điện tín",
+      "discourse": "Bài diễn thuyết",
+      "socialAria": "Avana trên {network}",
+      "disclosureRisk": "Vay dựa trên LP token có rủi ro, bao gồm thanh lý nếu điều kiện thị trường đi ngược lại vị thế của bạn. Avana không lưu giữ quỹ của bạn, không tái thế chấp các vị thế LP, hoặc thay đổi cách hoạt động thanh khoản của bạn trên các AMM cơ sở. Điều khoản vay, lãi suất và giá trị tài sản thế chấp được thực thi trên chuỗi thông qua hệ thống oracle minh bạch và các tham số rủi ro tự động. Bạn luôn kiểm soát hoàn toàn vị thế của mình và có thể trả nợ hoặc điều chỉnh tài sản thế chấp bất cứ khi nào bạn muốn. Chỉ vay số tiền mà bạn cảm thấy thoải mái duy trì trong biến động thị trường.",
+      "disclosureInfo": "Tài liệu này chỉ nhằm mục đích cung cấp thông tin và không phải là (i) một đề nghị hoặc lời mời chào để đầu tư, mua bán bất kỳ lợi ích hoặc cổ phần nào, hoặc tham gia vào bất kỳ chiến lược đầu tư hay giao dịch nào, (ii) nhằm cung cấp lời khuyên về kế toán, pháp lý hoặc thuế, hoặc khuyến nghị đầu tư, hoặc (iii) một tuyên bố chính thức của Avana. Hãy tham khảo ý kiến cố vấn của bạn trước khi đưa ra bất kỳ quyết định đầu tư nào. Không có bất kỳ tuyên bố hay bảo đảm nào được đưa ra, cả trực tiếp hay gián tiếp, về độ chính xác của thông tin hoặc hiệu suất trong tương lai của bất kỳ tài sản kỹ thuật số, công cụ tài chính hoặc đo lường thị trường hay kinh tế nào khác. Avana có thể có lợi ích tài chính trong, hoặc quan hệ với, một số tổ chức và/hoặc ấn phẩm được thảo luận hoặc tham khảo trong tài liệu. Avana không xác nhận hoặc phê duyệt các liên kết hay trang web của bên thứ ba có thể được cung cấp trong tài liệu."
     },
     "notFound": {
       "title": "Trang này không khả dụng.",
       "body": "Địa chỉ có thể sai hoặc trang có thể đã bị di chuyển.",
-      "home": "Về trang chủ",
+      "home": "Go to homepage",
       "faq": "FAQ"
     },
-    "sandboxNotice": "Dữ liệu sandbox chỉ hiển thị để xem trước. Lợi suất hàng năm (APY), giá cả và lợi nhuận chỉ mang tính minh họa và có thể khác với điều kiện thị trường thực tế.",
+    "sandboxNotice": "Sandbox dữ liệu chỉ hiển thị để xem trước. APYs, giá cả và lợi nhuận chỉ mang tính minh họa và có thể khác với điều kiện thị trường thực tế.",
     "blogChrome": {
       "back": "Quay lại",
       "share": "Chia sẻ",
       "shareOnX": "Chia sẻ trên X",
       "shareOnLinkedIn": "Chia sẻ trên LinkedIn",
-      "previousPost": "Bài trước",
-      "nextPost": "Bài tiếp",
-      "onThisPage": "Trên trang này"
+      "previousPost": "Bài viết trước",
+      "nextPost": "Bài viết tiếp theo",
+      "onThisPage": "On this page"
     },
     "docs": {
       "previous": "Trước",
@@ -104,16 +104,15 @@
       "items": {
         "overview": "Tổng quan",
         "keyConcepts": "Các khái niệm chính",
-        "testnetRoadmap": "Mạng thử nghiệm & Lộ trình",
         "glossary": "Thuật ngữ",
-        "depositLp": "Gửi LP",
+        "depositLp": "Tiền gửi LP",
         "borrowAssets": "Vay Tài Sản",
         "manageLoans": "Quản lý khoản vay",
         "repayLoans": "Trả nợ",
         "withdrawCollateral": "Rút tài sản đảm bảo",
-        "claimLpFees": "Yêu cầu Phí LP",
-        "borrowSpoke": "Borrow Spoke",
-        "lendSpoke": "Lend Spoke",
+        "claimLpFees": "Yêu cầu LP Phí",
+        "borrowSpoke": "Mượn căm",
+        "lendSpoke": "Bán kính cho",
         "collateralFactors": "Yếu tố tài sản đảm bảo",
         "healthFactor": "Yếu tố sức khỏe",
         "platformFees": "Phí nền tảng",
@@ -124,13 +123,13 @@
         "liquidationExamples": "Ví dụ về thanh lý",
         "integrationsOverview": "Tổng quan về tích hợp",
         "appkit": "AppKit",
-        "allowedPools": "Các nhóm LP được phép",
+        "allowedPools": "Hồ bơi được phép LP",
         "routerAdapters": "Bộ định tuyến & Bộ chuyển đổi",
         "priceOracles": "Đồng hồ báo giá",
         "riskFramework": "Khung rủi ro",
         "contractsSecurity": "Hợp đồng & Bảo mật",
         "bugBounty": "Tiền thưởng lỗi phần mềm",
-        "insuranceFunds": "Quỹ Bảo hiểm",
+        "insuranceFunds": "Quỹ bảo hiểm",
         "securityDisclosures": "Công bố bảo mật",
         "legalDisclaimer": "Tuyên bố pháp lý"
       }
@@ -141,8 +140,8 @@
       "searchPlaceholder": "Tìm kiếm",
       "searchResults": "Kết quả tìm kiếm",
       "clearSearch": "Xóa tìm kiếm",
-      "noResults": "Không tìm thấy kết quả cho {query}",
-      "category": "Thể loại: {name}",
+      "noResults": "Không tìm thấy kết quả cho \"{query}\"",
+      "category": "Danh mục: {name}",
       "categoriesAria": "Các danh mục Câu hỏi thường gặp",
       "articles": "{count} bài viết"
     },
@@ -156,118 +155,118 @@
     },
     "newsroom": {
       "latestFrom": "Mới nhất từ Avana",
-      "readNewsroom": "Xem tin tức"
+      "readNewsroom": "Đọc phòng tin"
     }
   },
   "meta": {
-    "siteTitle": "Avana - Vay Thế Chấp Dựa Trên Vị Trí LP trên Aave v4",
-    "siteDescription": "Mở khóa thanh khoản từ các token LP của bạn. Vay lên đến 80% dựa trên các vị thế Uniswap, Curve và Balancer trong khi tiếp tục kiếm phí giao dịch trên Aave v4.",
-    "ogDescription": "Mở khóa thanh khoản từ các token LP của bạn trong khi tiếp tục kiếm phí giao dịch.",
-    "ogSubtitle": "Vay dựa trên các vị thế LP trên Aave v4",
-    "twitterTitle": "Avana - Vay Thế Chấp Vị Trí LP",
-    "twitterDescription": "Mở khóa thanh khoản từ các token LP của bạn trên Aave v4",
+    "siteTitle": "Avana - Vay Dựa Trên LP Vị Trí trên Aave v4",
+    "siteDescription": "Mở khóa thanh khoản từ LP token của bạn. Vay lên đến 80% dựa trên các vị trí Uniswap, Curve và Balancer trong khi vẫn tiếp tục kiếm phí giao dịch trên Aave v4.",
+    "ogDescription": "Giải phóng tính thanh khoản từ LP token của bạn trong khi tiếp tục kiếm phí giao dịch.",
+    "ogSubtitle": "Vay dựa trên LP vị trí trên Aave v4",
+    "twitterTitle": "Avana - Vay Dựa Trên LP Vị Trí",
+    "twitterDescription": "Mở khóa tính thanh khoản từ LP token của bạn trên Aave v4",
     "titleTemplate": "{title} | Avana",
-    "team": "Đội Avana",
-    "ogAlt": "Avana - Giao thức Thanh khoản DeFi",
+    "team": "Avana Đội",
+    "ogAlt": "Avana - DeFi Giao thức Thanh khoản",
     "home": {
-      "title": "Vay dựa trên các vị thế LP trên Aave v4",
-      "description": "Mở khóa thanh khoản từ các token LP của bạn. Vay lên đến 80% dựa trên các vị thế Uniswap, Curve và Balancer trong khi tiếp tục kiếm phí giao dịch trên Aave v4."
+      "title": "Vay dựa trên LP vị trí trên Aave v4",
+      "description": "Mở khóa thanh khoản từ LP token của bạn. Vay lên đến 80% dựa trên các vị trí Uniswap, Curve và Balancer trong khi vẫn tiếp tục kiếm phí giao dịch trên Aave v4."
     },
     "about": {
       "title": "Giới thiệu",
-      "description": "Gặp gỡ Avana, một giao thức LP-as-collateral tận tâm được xây dựng trên Aave v4 với các Spokes chuyên biệt, một Hub chung và một Lend Spoke được thiết kế cho các thị trường thanh khoản AMM."
+      "description": "Gặp gỡ Avana, một giao thức LP với tài sản thế chấp được xây dựng trên Aave v4 với các Spokes chuyên biệt, một Hub chung và một Lend Spoke được thiết kế cho các thị trường thanh khoản AMM."
     },
     "borrow": {
-      "title": "Borrow",
-      "description": "Vay dựa trên các vị thế LP đang hoạt động mà không rút khỏi pool. Tiếp tục kiếm phí trong khi giải phóng tính thanh khoản trên Aave v4."
+      "title": "Mượn",
+      "description": "Vay dựa trên các vị trí LP đang hoạt động mà không rút khỏi quỹ. Tiếp tục kiếm phí trong khi mở khóa thanh khoản trên Aave v4."
     },
     "lend": {
-      "title": "Lend",
-      "description": "Cung cấp vốn cho Lend Spoke của Avana và kiếm lợi nhuận từ người vay được hỗ trợ bởi LP trên Aave v4."
+      "title": "Cho mượn",
+      "description": "Cung cấp vốn cho Lend Spoke của Avana và kiếm lợi nhuận từ những người vay được đảm bảo bởi LP trên Aave v4."
     },
     "multiply": {
-      "title": "Multiply",
-      "description": "Tăng cường tiếp xúc LP với các chiến lược nhân quản lý được hỗ trợ bởi các vị thế AMM được hỗ trợ."
+      "title": "Nhân",
+      "description": "Khuếch đại LP tiếp xúc với các chiến lược nhân quản lý được hỗ trợ bởi các vị trí AMM được hỗ trợ."
     },
     "brand": {
       "title": "Thương hiệu",
-      "description": "Tài sản thương hiệu Avana chính thức, màu sắc và hướng dẫn sử dụng cho đối tác và báo chí."
+      "description": "Tài sản thương hiệu Avana chính thức, màu sắc và hướng dẫn sử dụng cho đối tác và truyền thông."
     },
     "faq": {
-      "title": "FAQ",
-      "description": "Các câu trả lời về tài sản thế chấp Avana LP, vay mượn, cho vay, nhân số, thanh lý và kiến trúc Aave v4."
+      "title": "Câu hỏi thường gặp",
+      "description": "Các câu trả lời về Avana LP tài sản đảm bảo, vay mượn, cho vay, nhân lên, thanh lý, và Aave v4 kiến trúc."
     },
     "newsroom": {
-      "title": "Tin tức",
-      "description": "Các bài đăng mới nhất từ nhóm Avana về tài sản thế chấp LP, thị trường AMM, Aave v4 và phát triển giao thức."
+      "title": "Phòng tin tức",
+      "description": "Các bài đăng mới nhất từ nhóm Avana về LP tài sản đảm bảo, AMM thị trường, Aave v4 và phát triển giao thức."
     },
     "developers": {
-      "title": "Developer",
-      "description": "Tài liệu kỹ thuật về việc tích hợp với Avana. Tìm hiểu về tài sản thế chấp LP token, các yếu tố sức khỏe, quy trình thanh lý và kiến trúc hợp đồng thông minh trên Aave v4."
+      "title": "Nhà phát triển",
+      "description": "Tài liệu kỹ thuật để tích hợp với Avana. Tìm hiểu về tài sản đảm bảo token LP, các yếu tố sức khỏe, quy trình thanh lý và kiến trúc hợp đồng thông minh trên Aave v4."
     },
     "privacy": {
-      "title": "Chính sách quyền riêng tư",
-      "description": "Chính sách bảo mật của Avana."
+      "title": "Chính sách bảo mật",
+      "description": "Avana chính sách quyền riêng tư."
     },
     "terms": {
-      "title": "Điều khoản sử dụng",
-      "description": "Các điều khoản sử dụng Avana."
+      "title": "Điều khoản Sử dụng",
+      "description": "Avana điều khoản sử dụng."
     }
   },
   "home": {
     "hero": {
-      "eyebrow": "Được hỗ trợ bởi Aave v4",
-      "title": "Vay với vị thế LP",
+      "eyebrow": "Được cung cấp bởi Aave v4",
+      "title": "Vay dựa trên LP vị trí",
       "titleLine1": "Vay chống lại",
       "titleLine2": "Vị trí thanh khoản",
-      "subtitle": "Tiếp tục kiếm phí giao dịch trong khi mở khóa thanh khoản từ các vị trí trên Uniswap, Curve và Balancer.",
+      "subtitle": "Tiếp tục kiếm phí giao dịch trong khi mở khóa thanh khoản từ các vị trí Uniswap, Curve và Balancer.",
       "subtitleMobileLines": [
         "Truy cập lên đến 80% giá trị của Bể Thanh Khoản của bạn",
-        "với lãi suất 5,5% APR mà không rút thanh khoản hoặc",
-        "từ bỏ phí giao dịch."
+        "at 5.5% APR without withdrawing liquidity or",
+        "giving up trading fees."
       ],
       "subtitleDesktopLines": [
-        "Truy cập lên đến 80% giá trị Khoản thanh khoản của bạn với lãi suất hàng năm 5,5%",
-        "mà không rút thanh khoản hoặc từ bỏ phí giao dịch."
+        "Truy cập tới 80% giá trị của Quỹ Thanh khoản của bạn với lãi suất 5,5% APR",
+        "without withdrawing liquidity or giving up trading fees."
       ],
       "primaryCta": "Thử Sandbox",
-      "secondaryCta": "Đọc docs"
+      "secondaryCta": "Đọc tài liệu"
     },
     "features": {
       "eyebrow": "Các tính năng chính",
-      "title": "Thiết kế cho tài sản thế chấp LP đang hoạt động"
+      "title": "Được xây dựng cho tài sản đảm bảo trực tiếp LP"
     },
     "faq": {
       "title": "Câu hỏi thường gặp"
     },
     "newsroom": {
       "title": "Mới nhất từ Avana",
-      "cta": "Xem tin tức"
+      "cta": "Đọc phòng tin"
     },
     "buildTomorrow": {
       "title": "Gặp Avana",
-      "body": "Avana biến các vị trí LP được hỗ trợ thành tài sản thế chấp có thể sử dụng trên Aave v4 để các nhà cung cấp thanh khoản có thể vay mà không rời khỏi pool."
+      "body": "Avana chuyển LP vị trí thành tài sản đảm bảo có thể sử dụng trên Aave v4 để các nhà cung cấp thanh khoản có thể vay mà không rời khỏi nhóm."
     }
   },
   "product": {
     "borrow": {
-      "title": "Vay với LP",
-      "subtitle": "Mở khóa thanh khoản từ các vị trí AMM đang hoạt động mà không rời khỏi pool.",
+      "title": "Vay dựa trên LP",
+      "subtitle": "Mở khóa tính thanh khoản từ các vị thế hoạt động AMM mà không rút khỏi pool.",
       "cta": "Thử Sandbox"
     },
     "lend": {
-      "title": "Cho vay vào thị trường LP",
-      "subtitle": "Kiếm lợi nhuận từ người vay sử dụng tài sản thế chấp LP trực tiếp trên Aave v4.",
+      "title": "Cho vay đến LP thị trường",
+      "subtitle": "Kiếm lợi suất từ người vay sử dụng tài sản thế chấp trực tiếp LP trên Aave v4.",
       "cta": "Thử Sandbox"
     },
     "multiply": {
-      "title": "Nhân nhân tố phơi nhiễm LP",
+      "title": "Nhân LP phơi sáng",
       "subtitle": "Sử dụng các vị thế được hỗ trợ làm tài sản đảm bảo để tăng cường tiếp xúc có hướng quản lý.",
       "cta": "Thử Sandbox"
     },
     "about": {
-      "title": "Về Avana",
-      "subtitle": "Giao thức sử dụng LP làm tài sản thế chấp xây dựng trên Aave v4"
+      "title": "Khoảng Avana",
+      "subtitle": "LP-giao thức thế chấp được xây dựng trên Aave v4"
     },
     "brand": {
       "title": "Bộ nhận diện thương hiệu",
@@ -276,22 +275,22 @@
   },
   "faq": {
     "title": "FAQ",
-    "subtitle": "Các câu trả lời về Avana, tài sản đảm bảo LP và Aave v4",
+    "subtitle": "Câu trả lời về Avana, LP tài sản thế chấp, và Aave v4",
     "englishOnlyNote": "Toàn bộ câu trả lời FAQ được hiển thị bằng tiếng Anh cho đến khi đánh giá của ngôn ngữ này hoàn tất."
   },
   "docs": {
-    "hubTitle": "Docs cho developer",
-    "hubSubtitle": "Tích hợp với tài sản đảm bảo Avana LP trên Aave v4",
+    "hubTitle": "Tài liệu cho nhà phát triển",
+    "hubSubtitle": "Tích hợp với Avana LP tài sản thế chấp trên Aave v4",
     "englishOnlyNote": "Nội dung chính của tài liệu sẽ trở về tiếng Anh khi bản dịch theo ngôn ngữ địa phương chưa có sẵn."
   },
   "blog": {
-    "indexTitle": "Tin tức",
+    "indexTitle": "Phòng tin tức",
     "indexSubtitle": "Ghi chú sản phẩm, nghiên cứu và cập nhật quy trình",
     "englishOnlyNote": "Nội dung bài viết sẽ quay về tiếng Anh khi bản dịch theo ngôn ngữ địa phương chưa có sẵn."
   },
   "legal": {
-    "privacyTitle": "Chính sách quyền riêng tư",
-    "termsTitle": "Điều khoản sử dụng",
+    "privacyTitle": "Chính sách bảo mật",
+    "termsTitle": "Điều khoản Sử dụng",
     "englishOnlyNote": "Các trang pháp lý vẫn giữ nguyên bằng tiếng Anh cho đến khi các phiên bản địa phương được luật sư phê duyệt có sẵn.",
     "englishOnlyBadge": "Chỉ tiếng Anh"
   }
