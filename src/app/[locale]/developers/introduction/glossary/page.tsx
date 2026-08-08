@@ -40,7 +40,7 @@ const glossaryTerms = {
     {
       term: "Hub-and-Spoke Architecture",
       definition:
-        "A design where shared capital lives in the Hub while collateral-specific logic is isolated in spokes. Avana uses this model because LP collateral needs venue-specific valuation and liquidation behavior.",
+        "A design where shared capital lives in the Hub while collateral-specific logic is isolated in spokes. Avana uses this model because LP collateral needs DEX-specific valuation and liquidation behavior.",
     },
     {
       term: "Liquidation Node",
@@ -52,7 +52,7 @@ const glossaryTerms = {
     {
       term: "LP Position",
       definition:
-        "A liquidity position from a supported AMM. Depending on the venue, it may be a fungible LP token, a concentrated-liquidity NFT, or another approved pool-share format.",
+        "A liquidity position from a supported AMM. Depending on the DEX, it may be a fungible LP token, a concentrated-liquidity NFT, or another approved pool-share format.",
     },
     {
       term: "Collateral Factor",
@@ -182,13 +182,7 @@ export default async function GlossaryPage() {
     <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
       {/* Main content */}
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
-        <DeveloperDocPageHeader
-
-          title="Glossary"
-
-          description="Canonical definitions for protocol-specific and DeFi terminology used throughout the documentation."
-
-        />
+        <DeveloperDocPageHeader title="Glossary" />
 
         <section id="core-concepts" className="mb-12">
           <h2 className="type-section-title text-gray-900 mb-6 pb-2 border-b border-gray-200">
@@ -312,7 +306,6 @@ export default async function GlossaryPage() {
       {/* Right scroll-spy sidebar */}
       <DeveloperScrollSpyRail 
         sections={sections} 
-        pageSummary="Canonical definitions for protocol-specific and DeFi terminology used throughout the documentation."
         sectionColor="blue"
       />
     </div>

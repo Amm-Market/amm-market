@@ -7,7 +7,7 @@ import { createDocsMetadata } from "@/lib/content-i18n/docs-metadata"
 export async function generateMetadata(): Promise<Metadata> {
   return createDocsMetadata('architecture/incentives', {
     title: "Incentives Programs",
-    description: "Operational overview of Avana incentives and rewards, explaining how optional campaigns relate to the core protocol without becoming canonical architecture.",
+    description: "How optional reward campaigns relate to Avana without changing core lending mechanics.",
   })
 }
 
@@ -24,32 +24,29 @@ export default async function IncentivesPage() {
     <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
-
           title="Incentives Programs"
-
-          description="Optional reward and campaign layer that can sit on top of Avana deployments without changing the core lending mechanics."
-
+          description="Optional reward campaigns that sit on top of Avana without changing core lending mechanics."
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Incentives are an overlay, not part of the lending core. The protocol is still defined
-            by LP valuation, Borrow Spoke risk controls, Hub liquidity, and liquidation. Campaigns
-            can encourage participation, but they do not change those mechanics.
+            Incentives are an overlay, not part of the lending core. The protocol is defined by LP
+            valuation, Borrow Spoke risk controls, Hub liquidity, and liquidation. Campaigns can
+            encourage participation, but they do not change those mechanics.
           </p>
           <p className="text-sm leading-relaxed text-gray-600">
-            Campaigns are operational and time limited. This page describes how they relate to the
-            rest of Avana. It does not imply a specific rewards program is live on every deployment.
+            Campaigns are operational and time limited. This does not imply a specific rewards
+            program is live on every deployment.
           </p>
         </section>
 
         <section id="program-types" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Program Types</h2>
-          <ul className="space-y-3 text-sm text-gray-600">
-            <li>• Supplier-facing campaigns that deepen capital in the Lend Spoke or connected liquidity layer.</li>
-            <li>• Borrower-facing campaigns that encourage healthy LP-backed borrowing.</li>
-            <li>• Operator or ecosystem campaigns tied to testing, integrations, or risk-supporting activity.</li>
+          <ul className="list-disc space-y-2 ps-5 text-sm text-gray-600">
+            <li>Supplier-facing campaigns that deepen capital in the Lend Spoke or connected liquidity layer</li>
+            <li>Borrower-facing campaigns that encourage healthy LP-backed borrowing</li>
+            <li>Operator or ecosystem campaigns tied to testing, integrations, or risk-supporting activity</li>
           </ul>
         </section>
 
@@ -57,13 +54,9 @@ export default async function IncentivesPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Distribution Principles</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             When incentives exist, they should be understandable, auditable, and kept separate from
-            core risk logic. Reward math may depend on activity, duration, or campaign rules, but
-            it should not change how Avana values collateral or decides liquidation eligibility.
+            core risk logic. Reward math may depend on activity, duration, or campaign rules, but it
+            should not change how Avana values collateral or decides liquidation eligibility.
           </p>
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
-            Campaigns can reward desired behavior. They should not encourage unsafe leverage or hide
-            the real economics of LP-backed borrowing.
-          </div>
         </section>
 
         <section id="claiming-and-reconciliation" className="mb-12">
@@ -74,24 +67,24 @@ export default async function IncentivesPage() {
             accounting published by the campaign operator.
           </p>
           <p className="text-sm leading-relaxed text-gray-600">
-            Integrators should always verify the active claim path and eligibility rules for the
-            deployment they are targeting.
+            Integrators should verify the active claim path and eligibility rules for the deployment
+            they are targeting.
           </p>
         </section>
 
         <section id="status" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Current Status</h2>
           <p className="leading-relaxed text-gray-600">
-            Treat incentives as deployment-specific and season-specific. If a campaign is live, its
-            details should be announced separately from the architecture docs with explicit dates,
-            rules, and distribution terms.
+            Treat incentives as deployment-specific and season-specific. If a campaign is live,
+            its details should be announced separately with explicit dates, rules, and distribution
+            terms.
           </p>
         </section>
       </div>
 
       <DeveloperScrollSpyRail
         sections={sections}
-        pageSummary="Operational overview of optional rewards and campaign mechanics."
+        pageSummary="Optional rewards and campaign mechanics on top of Avana."
         sectionColor="violet"
       />
     </div>

@@ -1,6 +1,6 @@
 import { withDocsI18n } from "@/lib/content-i18n/with-docs-i18n"
-import type { Metadata } from "next"
 import { Link } from "@/i18n/navigation"
+import type { Metadata } from "next"
 import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 import { createDocsMetadata } from "@/lib/content-i18n/docs-metadata"
@@ -8,7 +8,7 @@ import { createDocsMetadata } from "@/lib/content-i18n/docs-metadata"
 export async function generateMetadata(): Promise<Metadata> {
   return createDocsMetadata('integrations/router-contract', {
     title: "Router Contract",
-    description: "Operational reference for the Avana router and adapter layer, including what the router coordinates, what it does not decide, and how deployment support is published.",
+    description: "How the Avana router coordinates DEX-specific deposit, withdraw, fee, and liquidation actions.",
   })
 }
 
@@ -21,10 +21,10 @@ const sections = [
 ]
 
 const supportedOperations = [
-  "Bundle venue-specific deposit, withdraw, and fee-collection calls into a cleaner interface layer",
+  "Bundle DEX-specific deposit, withdraw, and fee-collection calls into one interface layer",
   "Coordinate unwind or routing steps needed for liquidation execution",
-  "Support controlled position updates such as range changes or migration flows when a venue adapter exists",
-  "Expose a consistent integration surface without becoming the protocol's risk or valuation authority",
+  "Support controlled position updates such as range changes when a DEX adapter exists",
+  "Expose a consistent integration surface without deciding collateral factors or health checks",
 ]
 
 export default async function RouterContractPage() {
@@ -32,22 +32,20 @@ export default async function RouterContractPage() {
     <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
-
           title="Router Contract"
-
-          description="Operational interface layer for venue-specific actions, adapter calls, and liquidation-related routing support."
-
+          description="Execution layer for DEX-specific actions, adapter calls, and liquidation routing."
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            The router is an execution layer, not the place where Avana decides risk. It exists to
-            standardize venue-specific actions so the protocol does not have to scatter deposit,
-            withdrawal, fee, and unwind mechanics across every flow that touches LP collateral.
+            The router coordinates DEX-specific mechanics — deposits, withdrawals, fee claims, and
+            unwind steps — so those actions do not have to be scattered across every flow that
+            touches LP collateral.
           </p>
           <p className="text-sm leading-relaxed text-gray-600">
-            Read this page as an operational reference. For canonical architecture, start with{" "}
+            The router does not decide risk. Collateral factors, health checks, and liquidation
+            eligibility remain in the Borrow Spoke, Hub, oracle stack, and risk framework. See{" "}
             <Link href="/developers/architecture" className="text-[#01AACF] hover:underline">
               Borrow Spoke
             </Link>{" "}
@@ -62,38 +60,30 @@ export default async function RouterContractPage() {
         <section id="role-in-system" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Role in System</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Different AMM venues expose different entry, exit, and fee-collection methods. The
-            router gives Avana one integration layer for those mechanics so builders are not forced
-            to treat every venue like a fully custom system.
+            Different DEXs expose different entry, exit, and fee-collection methods. The router
+            gives Avana one integration layer for those mechanics so builders are not forced to
+            implement each DEX separately in every flow.
           </p>
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
-            The router should never be read as the place where collateral factors, health checks, or
-            liquidation eligibility are decided. Those remain upstream protocol concerns in the
-            Borrow Spoke, Hub, oracle stack, and risk framework.
-          </div>
         </section>
 
         <section id="adapter-model" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Adapter Model</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Each supported venue family should have a venue-aware adapter that knows how to claim
-            fees, remove liquidity, and expose the actions the protocol needs for that LP format.
-            That keeps venue-specific behavior isolated instead of leaking it into every user-facing
-            and liquidation-facing code path.
+            Each supported DEX family has an adapter that knows how to claim fees, remove liquidity,
+            and expose the actions the protocol needs for that LP format. That keeps DEX-specific
+            behavior isolated instead of leaking into every user-facing code path.
           </p>
           <p className="text-sm leading-relaxed text-gray-600">
-            Adapter support only matters when it aligns with valuation and liquidation support. A new
-            adapter by itself does not make a venue safe for collateral admission.
+            Adapter support only matters when valuation and liquidation support exist for that DEX.
+            A new adapter by itself does not make a pool safe for collateral admission.
           </p>
         </section>
 
         <section id="supported-operations" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Supported Operations</h2>
-          <ul className="space-y-3 text-sm text-gray-600">
+          <ul className="list-disc space-y-2 ps-5 text-sm text-gray-600">
             {supportedOperations.map((operation) => (
-              <li key={operation} className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
-                {operation}
-              </li>
+              <li key={operation}>{operation}</li>
             ))}
           </ul>
         </section>
@@ -101,21 +91,19 @@ export default async function RouterContractPage() {
         <section id="deployment-status" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Deployment Status</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Router addresses, adapter registries, and enabled networks are deployment data. They
-            should be published with releases instead of being guessed from docs. This page
-            intentionally avoids placeholder addresses and speculative rollout promises.
+            Router addresses, adapter registries, and enabled networks are deployment-specific.
+            Verify chain-specific addresses from the published contract registry or release notes.
           </p>
-          <ul className="space-y-2 text-sm text-gray-600">
-            <li>• Verify chain-specific addresses from the published contract registry or release notes.</li>
-            <li>• Confirm that the venue adapter you rely on is enabled on the target deployment.</li>
-            <li>• Treat router support as an operational dependency, not as proof that a pool is admitted for collateral.</li>
+          <ul className="list-disc space-y-2 ps-5 text-sm text-gray-600">
+            <li>Confirm the DEX adapter you rely on is enabled on the target deployment</li>
+            <li>Router support does not mean a pool is admitted for collateral</li>
           </ul>
         </section>
       </div>
 
       <DeveloperScrollSpyRail
         sections={sections}
-        pageSummary="Operational reference for Avana's router and adapter layer."
+        pageSummary="How the router coordinates DEX-specific actions and liquidation routing."
         sectionColor="cyan"
       />
     </div>
