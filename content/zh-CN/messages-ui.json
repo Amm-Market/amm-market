@@ -8,8 +8,8 @@
       "openMenu": "打开菜单",
       "closeMenu": "关闭菜单",
       "language": "语言：{language}",
-      "logo": "{site} 徽标",
-      "helpfulLinks": "有用的链接"
+      "logo": "{site} logo",
+      "helpfulLinks": "实用链接"
     },
     "nav": {
       "products": "产品",
@@ -17,50 +17,50 @@
       "developers": "开发者",
       "helpCenter": "帮助中心",
       "aaveArfc": "Aave ARFC",
-      "borrow": "借",
-      "lend": "借出",
-      "multiply": "乘",
+      "borrow": "借款",
+      "lend": "出借",
+      "multiply": "Multiply",
       "about": "关于",
-      "newsroom": "新闻编辑室",
+      "newsroom": "资讯",
       "brand": "品牌",
       "faq": "常见问题",
       "privacy": "隐私",
       "terms": "条款",
       "overview": "概览",
-      "architecture": "建筑学",
+      "architecture": "架构",
       "liquidation": "清算"
     },
     "cta": {
       "sandboxShort": "Sandbox",
-      "sandboxLong": "尝试 Sandbox"
+      "sandboxLong": "试用 Sandbox"
     },
     "mega": {
       "exploreProducts": "探索产品",
       "exploreResources": "探索资源",
       "exploreDevelopers": "探索开发者",
       "whatYouCanDo": "你可以做什么",
-      "whereToLook": "看哪里",
+      "whereToLook": "从哪里开始",
       "highlights": "亮点",
-      "borrowAgainstLp": "以LP作为抵押借款",
-      "borrowAgainstLpDesc": "在不离开策略的情况下，从LP风险敞口中解锁流动性。",
-      "openMultiply": "打开 LP 乘",
-      "openMultiplyDesc": "使用AMM个头寸作为池内管理敞口的抵押品。",
-      "lendThroughHub": "通过中心借出",
-      "lendThroughHubDesc": "在更清晰的执行背景下分配资本。",
-      "aboutDesc": "Avana背后的公司和产品论点。",
-      "followNotes": "遵循产品说明",
-      "followNotesDesc": "发布、技术更新和路线图决策。",
-      "browseBrand": "浏览品牌资料",
-      "browseBrandDesc": "批准的标志、颜色和合作伙伴视觉指南。",
-      "startOverview": "从概述开始",
-      "startOverviewDesc": "在实现细节之前的核心协议模型。",
-      "reviewModel": "审查协议模型",
-      "reviewModelDesc": "枢纽、辐射、定价和控制如何组合在一起。",
+      "borrowAgainstLp": "以 LP 抵押借款",
+      "borrowAgainstLpDesc": "无需离开策略，即可从 LP 敞口解锁流动性。",
+      "openMultiply": "开启 LP Multiply",
+      "openMultiplyDesc": "用 AMM 仓位作为抵押，在资金池内获得可管理敞口。",
+      "lendThroughHub": "通过 Hub 出借",
+      "lendThroughHubDesc": "在更清晰的执行背景下配置资金。",
+      "aboutDesc": "Avana 背后的公司与产品主张。",
+      "followNotes": "关注产品动态",
+      "followNotesDesc": "上线、技术更新与路线图决策。",
+      "browseBrand": "浏览品牌素材",
+      "browseBrandDesc": "官方标识、颜色与合作视觉指南。",
+      "startOverview": "从概览开始",
+      "startOverviewDesc": "进入实现细节前的核心协议模型。",
+      "reviewModel": "查看协议模型",
+      "reviewModelDesc": "Hub、Spoke、定价与控制如何协同。",
       "understandLiquidation": "了解清算",
-      "understandLiquidationDesc": "如何监控和结算LP支持的头寸。"
+      "understandLiquidationDesc": "如何监控与结算 LP 支持仓位。"
     },
     "footer": {
-      "blurb": "Avana 是一个在 Aave v4 上的 LP 抵押协议，它帮助流动性提供者在保持在池中的同时，对活跃头寸进行借贷。",
+      "blurb": "Avana 是构建在 Aave v4 上的 LP 抵押协议，帮助流动性提供者在留在资金池的同时对活跃仓位借款。",
       "explore": "探索",
       "resources": "资源",
       "docs": "文档",
@@ -69,32 +69,32 @@
       "github": "GitHub",
       "telegram": "Telegram",
       "discourse": "Discourse",
-      "socialAria": "Avana 在 {network} 上",
-      "disclosureRisk": "以LP代币进行借贷涉及风险，包括在市场状况对你的仓位不利时被清算。Avana不会托管你的资金，不会重复质押LP仓位，也不会改变你在基础AMM上的流动性运作方式。贷款条款、利率和抵押物价值通过透明的预言机系统和自动化风险参数在链上执行。你始终保持对仓位的完全控制，可以随时偿还或调整抵押物。只应借贷你能够在市场波动中承受的金额。",
-      "disclosureInfo": "本资料仅供参考之用，且并非 (i) 提供投资、购买或出售任何权益或股份，或参与任何投资或交易策略的要约或要约邀请，(ii) 用于提供会计、法律或税务建议，或投资建议，或 (iii) Avana 的官方声明。在做出任何投资决策前，请咨询您的顾问。对于信息的准确性或任何数字资产、金融工具或其他市场或经济指标的未来表现，不作任何明示或暗示的陈述或保证。Avana 可能在材料中讨论或提及的一些实体和/或出版物中拥有财务利益或关系。Avana 不对材料中可能提供的链接或第三方网站进行背书或认可。"
+      "socialAria": "Avana 在 {network}",
+      "disclosureRisk": "以 LP 代币借款存在风险，包括市场状况不利于你的仓位时被清算。Avana 不托管你的资金，不会再抵押 LP 仓位，也不会改变你在底层 AMM 上的流动性运作方式。贷款条款、利率与抵押价值通过透明预言机系统与自动化风险参数在链上执行。你始终完全控制仓位，可随时还款或调整抵押。请只借入你能在市场波动中维持的金额。",
+      "disclosureInfo": "本资料仅供参考，并非 (i) 投资、购买或出售任何权益或股份，或参与任何投资或交易策略的要约或要约邀请，(ii) 旨在提供会计、法律或税务建议或投资推荐，或 (iii) Avana 的官方声明。做出任何投资决策前请咨询你的顾问。对于信息准确性或任何数字资产、金融工具或其他市场或经济指标的未来表现，不作明示或暗示的陈述或保证。Avana 可能在材料中讨论或提及的部分实体和/或出版物中拥有财务利益或关系。Avana 不对材料中可能提供的链接或第三方网站背书或认可。"
     },
     "notFound": {
       "title": "此页面不可用。",
-      "body": "地址可能错误，或者页面可能已移动。",
-      "home": "转到主页",
+      "body": "地址可能有误，或页面已移动。",
+      "home": "返回首页",
       "faq": "常见问题"
     },
-    "sandboxNotice": "Sandbox 数据仅供预览。APY 秒、价格和回报为示例，可能与实时市场情况不同。",
+    "sandboxNotice": "Sandbox 数据仅供预览。APY、价格与回报为示意，可能与实时市场条件不同。",
     "blogChrome": {
       "back": "返回",
       "share": "分享",
-      "shareOnX": "分享到X",
-      "shareOnLinkedIn": "分享到领英",
+      "shareOnX": "分享到 X",
+      "shareOnLinkedIn": "分享到 LinkedIn",
       "previousPost": "上一篇",
-      "nextPost": "下一篇帖子",
-      "onThisPage": "在此页面上"
+      "nextPost": "下一篇",
+      "onThisPage": "本页目录"
     },
     "docs": {
-      "previous": "上一个",
-      "next": "下一步",
+      "previous": "上一篇",
+      "next": "下一篇",
       "sections": {
         "introduction": "介绍",
-        "gettingStarted": "入门",
+        "gettingStarted": "快速开始",
         "architecture": "协议架构",
         "liquidation": "清算框架",
         "integrations": "支持的集成",
@@ -103,19 +103,19 @@
       },
       "items": {
         "overview": "概览",
-        "keyConcepts": "关键概念",
+        "keyConcepts": "核心概念",
         "testnetRoadmap": "测试网与路线图",
-        "glossary": "词汇表",
-        "depositLp": "存款 LP",
+        "glossary": "术语表",
+        "depositLp": "存入 LP",
         "borrowAssets": "借入资产",
         "manageLoans": "管理贷款",
         "repayLoans": "偿还贷款",
-        "withdrawCollateral": "提取抵押品",
-        "claimLpFees": "权利要求 LP 费用",
-        "borrowSpoke": "借用辐条",
-        "lendSpoke": "放贷辐条",
-        "collateralFactors": "抵押因素",
-        "healthFactor": "健康因素",
+        "withdrawCollateral": "提取抵押",
+        "claimLpFees": "领取 LP 手续费",
+        "borrowSpoke": "Borrow Spoke",
+        "lendSpoke": "Lend Spoke",
+        "collateralFactors": "抵押因子",
+        "healthFactor": "健康因子",
         "platformFees": "平台费用",
         "incentives": "激励",
         "liquidationDesign": "清算设计",
@@ -124,26 +124,26 @@
         "liquidationExamples": "清算示例",
         "integrationsOverview": "集成概览",
         "appkit": "AppKit",
-        "allowedPools": "允许的 LP 个池",
-        "routerAdapters": "路由器和适配器",
+        "allowedPools": "允许的 LP 资金池",
+        "routerAdapters": "路由与适配器",
         "priceOracles": "价格预言机",
         "riskFramework": "风险框架",
-        "contractsSecurity": "合同与安全",
+        "contractsSecurity": "合约与安全",
         "bugBounty": "漏洞赏金",
         "insuranceFunds": "保险基金",
         "securityDisclosures": "安全披露",
-        "legalDisclaimer": "法律免责声明"
+        "legalDisclaimer": "法律声明"
       }
     },
     "faqUi": {
-      "heading": "我们能帮什么忙？",
+      "heading": "需要什么帮助？",
       "search": "搜索",
       "searchPlaceholder": "搜索",
       "searchResults": "搜索结果",
       "clearSearch": "清除搜索",
-      "noResults": "未找到“{query}”的结果",
-      "category": "类别：{name}",
-      "categoriesAria": "常见问题类别",
+      "noResults": "未找到与 “{query}” 相关的结果",
+      "category": "分类：{name}",
+      "categoriesAria": "常见问题分类",
       "articles": "{count} 篇文章"
     },
     "tags": {
@@ -155,55 +155,55 @@
       "institutions": "机构"
     },
     "newsroom": {
-      "latestFrom": "来自Avana的最新消息",
-      "readNewsroom": "阅读新闻编辑部"
+      "latestFrom": "Avana 最新动态",
+      "readNewsroom": "阅读资讯"
     }
   },
   "meta": {
-    "siteTitle": "Avana - 在 Aave v4 上借贷 LP 个头寸",
-    "siteDescription": "从您的LP代币中释放流动性。对Uniswap、Curve和Balancer头寸借款最高可达80%，同时继续在Aave v4上赚取交易费用。",
-    "ogDescription": "在继续赚取交易费用的同时，从您的LP个代币中释放流动性。",
-    "ogSubtitle": "在Aave v4上以LP头寸作为抵押借款",
-    "twitterTitle": "Avana - 借用 LP 仓位",
-    "twitterDescription": "在Aave v4上从你的LP代币中解锁流动性",
+    "siteTitle": "Avana - 在 Aave v4 上以 LP 仓位抵押借款",
+    "siteDescription": "从 LP 代币解锁流动性。在 Uniswap、Curve 与 Balancer 仓位上最高借款 80%，同时继续在 Aave v4 上赚取交易手续费。",
+    "ogDescription": "从 LP 代币解锁流动性，同时继续赚取交易手续费。",
+    "ogSubtitle": "在 Aave v4 上以 LP 仓位抵押借款",
+    "twitterTitle": "Avana - 以 LP 仓位抵押借款",
+    "twitterDescription": "在 Aave v4 上从 LP 代币解锁流动性",
     "titleTemplate": "{title} | Avana",
-    "team": "Avana 队",
+    "team": "Avana 团队",
     "ogAlt": "Avana - DeFi 流动性协议",
     "home": {
-      "title": "在Aave v4上以LP头寸作为抵押借款",
-      "description": "从您的LP代币中释放流动性。对Uniswap、Curve和Balancer头寸借款最高可达80%，同时继续在Aave v4上赚取交易费用。"
+      "title": "在 Aave v4 上以 LP 仓位抵押借款",
+      "description": "从 LP 代币解锁流动性。在 Uniswap、Curve 与 Balancer 仓位上最高借款 80%，同时继续在 Aave v4 上赚取交易手续费。"
     },
     "about": {
       "title": "关于",
-      "description": "认识Avana，一个基于Aave v4构建、以LP作为抵押的专用协议，配备了专门的Spokes、共享Hub，以及为AMM流动性市场设计的Lend Spoke。"
+      "description": "认识 Avana：基于 Aave v4 的专用 LP 抵押协议，具备专用 Spoke、共享 Hub，以及面向 AMM 流动性市场的 Lend Spoke。"
     },
     "borrow": {
-      "title": "借",
-      "description": "在不退出资金池的情况下，对活跃的LP个头寸进行借款。在解锁Aave v4上的流动性的同时继续赚取费用。"
+      "title": "借款",
+      "description": "无需退出资金池即可对活跃 LP 仓位借款。在 Aave v4 上解锁流动性的同时继续赚取手续费。"
     },
     "lend": {
-      "title": "借出",
-      "description": "向Avana的借贷分支提供资金，并从在Aave v4上的LP支持的借款人那里获得收益。"
+      "title": "出借",
+      "description": "向 Avana 的 Lend Spoke 供应资金，并从 Aave v4 上的 LP 支持借款人赚取收益。"
     },
     "multiply": {
-      "title": "乘",
-      "description": "通过受支持的AMM头寸，利用管理的倍增策略来放大LP曝光。"
+      "title": "Multiply",
+      "description": "用受支持的 AMM 仓位支持的可管理 Multiply 策略放大 LP 敞口。"
     },
     "brand": {
       "title": "品牌",
-      "description": "官方 Avana 品牌资产、颜色以及合作伙伴和媒体的使用指南。"
+      "description": "面向合作伙伴与媒体的官方 Avana 品牌素材、颜色与使用指南。"
     },
     "faq": {
       "title": "常见问题",
-      "description": "关于Avana LP 抵押品、借贷、放贷、乘法、清算以及Aave v4 架构的答案。"
+      "description": "关于 Avana LP 抵押、借款、出借、Multiply、清算与 Aave v4 架构的解答。"
     },
     "newsroom": {
-      "title": "新闻编辑室",
-      "description": "来自Avana团队关于LP种抵押品、AMM个市场、Aave v4以及协议开发的最新帖子。"
+      "title": "资讯",
+      "description": "Avana 团队关于 LP 抵押、AMM 市场、Aave v4 与协议进展的最新文章。"
     },
     "developers": {
       "title": "开发者",
-      "description": "用于与Avana集成的技术文档。了解LP代币抵押、健康因子、清算流程以及在Aave v4上的智能合约架构。"
+      "description": "集成 Avana 的技术文档。了解 LP 代币抵押、健康因子、清算流程，以及 Aave v4 上的智能合约架构。"
     },
     "privacy": {
       "title": "隐私政策",
@@ -216,83 +216,83 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "由Aave v4提供支持",
-      "title": "以LP个头寸借款",
-      "titleLine1": "以……作抵押借款",
-      "titleLine2": "流动性头寸",
-      "subtitle": "在从Uniswap、Curve和Balancer头寸解锁流动性的同时继续赚取交易费用。",
+      "eyebrow": "由 Aave v4 驱动",
+      "title": "以 LP 仓位抵押借款",
+      "titleLine1": "借款抵押",
+      "titleLine2": "流动性仓位",
+      "subtitle": "在 Uniswap、Curve 与 Balancer 仓位上解锁流动性，同时继续赚取交易手续费。",
       "subtitleMobileLines": [
-        "访问高达您流动性池价值的80%",
-        "在5.5% APR 不撤出流动性或",
-        "放弃交易费用。"
+        "最高可用流动性池价值的 80%",
+        "以 5.5% APR 借款，无需提取流动性或",
+        "放弃交易手续费。"
       ],
       "subtitleDesktopLines": [
-        "以5.5%的利率访问高达您流动性池价值的80% APR",
-        "无需撤回流动性或放弃交易费用。"
+        "最高可用流动性池价值的 80%，以 5.5% APR 借款，",
+        "无需提取流动性或放弃交易手续费。"
       ],
-      "primaryCta": "尝试 Sandbox",
+      "primaryCta": "试用 Sandbox",
       "secondaryCta": "阅读文档"
     },
     "features": {
-      "eyebrow": "主要特点",
-      "title": "为直播 LP 抵押品而建"
+      "eyebrow": "核心能力",
+      "title": "为活跃 LP 抵押而建"
     },
     "faq": {
       "title": "常见问题"
     },
     "newsroom": {
-      "title": "来自Avana的最新消息",
-      "cta": "阅读新闻编辑部"
+      "title": "Avana 最新动态",
+      "cta": "阅读资讯"
     },
     "buildTomorrow": {
-      "title": "遇见Avana",
-      "body": "Avana 将 LP 个仓位转化为在 Aave v4 上可用的抵押品，以便流动性提供者可以在不离开资金池的情况下借款。"
+      "title": "认识 Avana",
+      "body": "Avana 把受支持的 LP 仓位变成 Aave v4 上可用的抵押，让流动性提供者无需离开资金池即可借款。"
     }
   },
   "product": {
     "borrow": {
-      "title": "以LP作为抵押借款",
-      "subtitle": "无需退出池，即可从活跃的AMM头寸中解锁流动性。",
-      "cta": "尝试 Sandbox"
+      "title": "以 LP 抵押借款",
+      "subtitle": "无需退出资金池，即可从活跃 AMM 仓位解锁流动性。",
+      "cta": "试用 Sandbox"
     },
     "lend": {
-      "title": "向LP个市场借出",
-      "subtitle": "通过在 Aave v4 上使用实时 LP 抵押品向借款人赚取收益。",
-      "cta": "尝试 Sandbox"
+      "title": "向 LP 市场出借",
+      "subtitle": "从 Aave v4 上使用活跃 LP 抵押的借款人赚取收益。",
+      "cta": "试用 Sandbox"
     },
     "multiply": {
-      "title": "倍增LP曝光",
-      "subtitle": "使用支持的头寸作为抵押品以增加受管理的方向性敞口。",
-      "cta": "尝试 Sandbox"
+      "title": "放大 LP 敞口",
+      "subtitle": "用受支持仓位作为抵押，增加可管理的方向性敞口。",
+      "cta": "试用 Sandbox"
     },
     "about": {
-      "title": "大约Avana",
-      "subtitle": "基于Aave v4的LP作抵押协议"
+      "title": "关于 Avana",
+      "subtitle": "基于 Aave v4 的 LP 抵押协议"
     },
     "brand": {
       "title": "品牌套件",
-      "subtitle": "面向合作伙伴的表面的标记、颜色和指引"
+      "subtitle": "面向合作界面的标识、颜色与指南"
     }
   },
   "faq": {
     "title": "常见问题",
-    "subtitle": "关于Avana、LP抵押品和Aave v4的答案",
-    "englishOnlyNote": "完整的常见问题解答将在此语言版本审查完成之前以英文显示。"
+    "subtitle": "关于 Avana、LP 抵押与 Aave v4 的解答",
+    "englishOnlyNote": "在此语言环境的审阅完成前，完整常见问题答案以英文显示。"
   },
   "docs": {
     "hubTitle": "开发者文档",
-    "hubSubtitle": "在 Aave v4 上与 Avana LP 担保品集成",
-    "englishOnlyNote": "当尚未提供某个语言的翻译时，文档正文文本会回退到英文。"
+    "hubSubtitle": "在 Aave v4 上集成 Avana LP 抵押",
+    "englishOnlyNote": "当语言环境译文尚不可用时，文档正文回退为英文。"
   },
   "blog": {
-    "indexTitle": "新闻编辑室",
-    "indexSubtitle": "产品说明、研究和协议更新",
-    "englishOnlyNote": "当本地化翻译尚不可用时，文章正文会退回使用英文。"
+    "indexTitle": "资讯",
+    "indexSubtitle": "产品动态、研究与协议更新",
+    "englishOnlyNote": "当语言环境译文尚不可用时，文章正文回退为英文。"
   },
   "legal": {
     "privacyTitle": "隐私政策",
     "termsTitle": "使用条款",
-    "englishOnlyNote": "法律页面将保持英文，直到获得律师批准的本地版本可用为止。",
-    "englishOnlyBadge": "仅限英语"
+    "englishOnlyNote": "在律师批准的语言版本可用前，法律页面保持英文。",
+    "englishOnlyBadge": "仅英文"
   }
 }

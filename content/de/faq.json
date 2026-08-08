@@ -8,27 +8,27 @@
         {
           "id": "what-is-avana",
           "q": "Was ist Avana?",
-          "a": "Avana ist ein Lending-Protokoll, das für LP-Sicherheiten entwickelt wurde. Es ermöglicht den Nutzern, unterstützte AMM-Positionen einzuzahlen, diese Positionen im zugrunde liegenden Pool aktiv zu halten und gegen sie über die Aave v4-Infrastruktur Kredite aufzunehmen.\n\nDie Kernidee ist, dass LP-Kapital nicht unbrauchbar werden muss, nur weil es sich in einem Pool befindet. Avana verwandelt unterstützte LP-Positionen in Sicherheiten, die Kredit absichern können, während die ursprüngliche Position weiterhin Swaps unterstützt, Gebühren erwirtschaftet und an ihren AMM-Markt gebunden bleibt."
+          "a": "Avana ist ein Lending-Protokoll für LP-Collateral. Nutzer können unterstützte AMM-Positionen einzahlen, sie im zugrunde liegenden Pool aktiv halten und über Aave-v4-Infrastruktur dagegen ausleihen.\n\nDie Kernidee: LP-Kapital muss nicht unbrauchbar werden, nur weil es in einem Pool liegt. Avana macht unterstützte LP-Positionen zu Collateral, das Kredit tragen kann — während die Originalposition weiter Swaps stützt, Fees verdient und an ihren AMM-Markt gebunden bleibt."
         },
         {
           "id": "what-problem-does-avana-solve",
           "q": "Welches Problem löst Avana?",
-          "a": "Liquiditätsanbieter müssen oft Liquidität entfernen, bevor sie gegen ihr Kapital leihen können. Das bedeutet, dass sie den Pool verlassen, die Gebührenerträge aufgeben und die Marktposition unterbrechen, die sie bereits aufgebaut haben.\n\nAvana löst dies, indem unterstützte LP-Positionen als Sicherheiten nutzbar gemacht werden. Die LP bleibt aktiv, Avana verfolgt und bewertet die Position, und Aave v4 übernimmt die Buchhaltung auf der Kreditseite über ein internes Tresorsicherheits-Token."
+          "a": "Liquidity Provider müssen oft Liquidität entfernen, bevor sie gegen ihr Kapital ausleihen können. Das heißt: Pool verlassen, Fee-Exposure aufgeben und die aufgebaute Marktposition unterbrechen.\n\nAvana löst das, indem unterstützte LP-Positionen als Collateral nutzbar werden. Das LP bleibt live, Avana trackt und bewertet die Position, und Aave v4 übernimmt die Ausleih-Buchhaltung über einen internen Vault-Collateral-Token."
         },
         {
           "id": "how-is-avana-different-from-standard-lending",
-          "q": "Wie unterscheidet sich Avana von einem normalen Kreditmarkt?",
-          "a": "Standard-Lendermärkte behandeln Sicherheiten normalerweise als einfache Token-Bestände: ETH, BTC, Stablecoins oder andere ERC-20-Assets. Avana ist für Sicherheiten gebaut, die sich im Laufe der Zeit verändern. LP-Positionen können mehrere Assets enthalten, Gebühren akkumulieren, sich mit Preisbewegungen verschieben, einseitig werden oder einen spezifischen Entwindungspfad erfordern.\n\nDeshalb bewertet Avana Sicherheiten auf Marktlevel von LP. Jeder unterstützte Pool oder jede LP-Familie kann ihre eigene Bewertungslogik, Sicherheitsfaktoren, ausleihbare Assets, Liquidationsannahmen und Risikolimits haben."
+          "q": "Worin unterscheidet sich Avana von einem Standard-Lending-Markt?",
+          "a": "Standard-Lending-Märkte behandeln Collateral meist als einfache Token-Salden: ETH, BTC, Stablecoins oder andere ERC-20-Assets. Avana ist für Collateral gebaut, das sich über die Zeit verändert. LP-Positionen können mehrere Assets enthalten, Fees aufbauen, mit Preisbewegungen driften, einseitig werden oder einen spezifischen Unwind-Pfad brauchen.\n\nDeshalb underwritet Avana Collateral auf LP-Marktebene. Jeder unterstützte Pool oder jede LP-Familie kann eigene Bewertungslogik, Collateral Factors, ausleihbare Assets, Liquidationsannahmen und Risikolimits haben."
         },
         {
           "id": "which-amms-can-avana-support",
           "q": "Welche AMMs kann Avana unterstützen?",
-          "a": "Avana unterstützt kuratierte LP-Kollateralmärkte über AMMs wie Uniswap, Balancer, Curve und Aerodrome, während Märkte eingeführt werden. Unterstützung wird poolweise genehmigt, nicht automatisch jedem Pool auf einer Plattform gewährt.\n\nJeder unterstützte Markt hat klare Anforderungen: zuverlässige Preisgestaltung der Vermögenswerte, ausreichende Liquiditätstiefe, eine definierte Abwicklungsroute, Marktkapitalisierungen und Kollateraleinstellungen, die zum Pooltyp passen. Deshalb bleiben Einführungsmärkte kuratiert, bevor die breitere Abdeckung erweitert wird."
+          "a": "Avana unterstützt kuratierte LP-Collateral-Märkte über AMMs wie Uniswap, Balancer, Curve und Aerodrome — sobald Märkte live gehen. Support wird Pool für Pool freigegeben, nicht automatisch für jeden Pool einer Venue.\n\nJeder unterstützte Markt hat klare Anforderungen: zuverlässige Asset-Preise, genug Liquiditätstiefe, definierte Unwind-Route, Market Caps und Collateral-Settings passend zum Pool-Typ. Deshalb bleiben Launch-Märkte kuratiert, bevor die Abdeckung wächst."
         },
         {
           "id": "does-avana-replace-the-amm",
-          "q": "Ersetzt Avana die AMM, wo meine Liquidität liegt?",
-          "a": "Nein. Die AMM verwaltet weiterhin Swaps, Poolzustand, Preisbewegungen und Gebührengenerierung. Avana fügt eine Sicherheiten- und Kreditlage um unterstützte LP-Positionen hinzu.\n\nWenn Sie eine berechtigte Position in Avana einzahlen, verfolgt das Protokoll die tatsächliche LP-Sicherheit und verbindet sie mit der Buchführung auf der Kreditaufnahme-Seite. Die zugrunde liegende AMM bleibt der Ort, an dem die Liquiditätsposition existiert und Gebühren erwirtschaftet."
+          "q": "Ersetzt Avana den AMM, in dem meine Liquidität sitzt?",
+          "a": "Nein. Der AMM übernimmt weiterhin Swaps, Pool-State, Preisbewegung und Fee-Generierung. Avana addiert eine Collateral- und Kreditschicht um unterstützte LP-Positionen.\n\nWenn Sie eine berechtigte Position in Avana einzahlen, trackt das Protokoll das reale LP-Collateral und verbindet es mit der Ausleih-Buchhaltung. Der zugrunde liegende AMM bleibt die Venue, in der die Liquiditätsposition existiert und Fees verdient."
         }
       ]
     },
@@ -40,17 +40,17 @@
         {
           "id": "how-does-avana-work-at-a-high-level",
           "q": "Wie funktioniert Avana auf hoher Ebene?",
-          "a": "Avana funktioniert in drei Schritten. Zuerst hinterlegt ein Nutzer eine unterstützte LP-Position bei Avana. Zweitens bewertet Avana die Position, indem es deren zugrunde liegende Vermögenswerte, Pool-Struktur, Volatilität, Korrelation, Liquiditätstiefe und Liquidationsrisiko analysiert. Drittens, sobald die Position die Marktprüfungen besteht, kann der Nutzer gegen ihren risikoadjustierten Wert leihen.\n\nDie LP-Position bleibt im AMM aktiv. Avana verwaltet die Sicherheitenaufzeichnung, Bewertung und LP-spezifische Risikologie, während Aave v4 die Kredit- und Buchhaltungsseite des Darlehens über das verbundene Hub-and-Spoke-Modell abwickelt."
+          "a": "Avana arbeitet in drei Schritten. Erstens zahlt ein Nutzer eine unterstützte LP-Position in Avana ein. Zweitens bewertet Avana die Position anhand Underlying Assets, Poolstruktur, Volatilität, Korrelation, Liquiditätstiefe und Liquidationsrisiko. Drittens kann der Nutzer gegen den risikobereinigten Wert ausleihen, sobald die Marktchecks bestanden sind.\n\nDie LP-Position bleibt im AMM aktiv. Avana managt Collateral-Record, Bewertung und LP-spezifische Risikologik, während Aave v4 den Ausleih-Kredit und das Accounting über das verbundene Hub-and-Spoke-Modell übernimmt."
         },
         {
           "id": "why-aave-v4-hub-and-spoke",
-          "q": "Warum verwendet Avana eine Aave v4 Hub-and-Spoke-Infrastruktur?",
-          "a": "Avana verwendet Aave v4, weil LP Sicherheiten gleichzeitig gemeinsame Liquidität und isolierte Risikologik benötigen. Der Hub übernimmt die gemeinsame monetäre Ebene: Reserven, Buchhaltung, Zinssatzmodelle und globale Kreditskoordination.\n\nDie Spokes übernehmen LP-spezifische Aufgaben: Registrierung von Pool-Sicherheiten, Positionsbewertung, Durchsetzung von Risiken und Durchführung von Liquidationen. Dies ermöglicht es stabilen Pools, korrelierten Paaren, volatilen Paaren und Märkten mit konzentrierter Liquidität, die Regeln zu verwenden, die sie tatsächlich benötigen, anstatt in ein generisches Risikomodell gezwungen zu werden."
+          "q": "Warum nutzt Avana Aave-v4-Hub-and-Spoke-Infrastruktur?",
+          "a": "Avana nutzt Aave v4, weil LP-Collateral gleichzeitig geteilte Liquidität und isolierte Risikologik braucht. Der Hub übernimmt die gemeinsame Monetary Layer: Reserves, Accounting, Interest-Rate-Models und globale Kreditkoordination.\n\nDie Spokes übernehmen LP-spezifische Arbeit: Pool-Collateral-Registrierung, Positionsbewertung, Risk Enforcement und Liquidationsausführung. So können stabile Pools, korrelierte Paare, volatile Paare und Concentrated-Liquidity-Märkte die Regeln nutzen, die sie wirklich brauchen — statt in ein generisches Risikomodell gezwungen zu werden."
         },
         {
           "id": "what-is-a-borrow-spoke",
-          "q": "Was ist ein Borrow-Spoke?",
-          "a": "Ein Borrow Spoke ist ein isolierter LP-Kollateralmarkt. Er entscheidet, welche Pools unterstützt werden, wie jede LP-Position bewertet wird, welche Kollateralfaktoren gelten, welche Vermögenswerte geliehen werden können und wie die Liquidation für diesen Markt funktioniert.\n\nBorrow Spokes sind getrennt, weil LP-Positionen sich nicht alle gleich verhalten. Eine Stablecoin-LP-Position, eine korrelierte ETH-gestakte ETH LP-Position und eine volatile Governance-Token-LP-Position benötigen unterschiedliche Risikoeinstellungen, unterschiedliche Limits und manchmal unterschiedliche Liquidationswege."
+          "q": "Was ist ein Borrow Spoke?",
+          "a": "Ein Borrow Spoke ist ein isolierter LP-Collateral-Markt. Er entscheidet, welche Pools unterstützt werden, wie jede LP-Position bewertet wird, welche Collateral Factors gelten, welche Assets ausleihbar sind und wie Liquidation für diesen Markt funktioniert.\n\nBorrow Spokes sind getrennt, weil LP-Positionen sich nicht alle gleich verhalten. Ein Stablecoin-LP, ein korreliertes ETH–staked-ETH-LP und ein volatiles Governance-Token-LP brauchen unterschiedliche Risikoeinstellungen, Caps und manchmal unterschiedliche Liquidationsrouten."
         },
         {
           "id": "what-are-vault-tokens",
@@ -66,7 +66,7 @@
     },
     {
       "id": "lp-collateral",
-      "name": "LP Sicherheiten",
+      "name": "LP-Collateral",
       "summary": "",
       "questions": [
         {
@@ -98,7 +98,7 @@
     },
     {
       "id": "valuation-oracles",
-      "name": "Bewertung & Orakel",
+      "name": "Bewertung & Oracles",
       "summary": "",
       "questions": [
         {
@@ -130,7 +130,7 @@
     },
     {
       "id": "borrowing",
-      "name": "Leihmärkte",
+      "name": "Ausleihmärke",
       "summary": "",
       "questions": [
         {
@@ -162,7 +162,7 @@
     },
     {
       "id": "supplying-earning",
-      "name": "Liefern & Verdienen",
+      "name": "Supply & Verdienen",
       "summary": "",
       "questions": [
         {
@@ -172,8 +172,8 @@
         },
         {
           "id": "where-does-supplier-yield-come-from",
-          "q": "Woher kommt die Lieferantenquote?",
-          "a": "Die Rendite für Lieferanten ergibt sich daraus, dass Kreditnehmer Zinsen zahlen, um Zugang zu Liquidität zu erhalten, die durch LP-Sicherheiten abgesichert ist. Das Modell von Avana kombiniert den gemeinsamen Hub-Basiszinssatz mit risikobezogenen Aufschlägen auf Ebene der Spokes, die an die von LP finanzierten Märkte gebunden sind.\n\nDies bedeutet, dass die Rendite sowohl die normale Auslastung als auch die zusätzliche Nachfrage, die durch das leihweise auf LP basierende Geldschöpfen entsteht, widerspiegeln kann. Die Zinssätze bewegen sich weiterhin mit den Marktbedingungen, der verfügbaren Liquidität, der Auslastung und dem Risikoprofil der zugrunde liegenden Kreditnehmermärkte."
+          "q": "Woher kommt die Supplier-Rendite?",
+          "a": "Supplier-Rendite kommt daher, dass Kreditnehmer Zinsen zahlen, um Liquidität zu nutzen, die durch LP-Collateral abgesichert ist. Avana kombiniert die geteilte Hub-Basisrate mit Spoke-Level-Risikoprämien, die an die finanzierten LP-Märkte gebunden sind.\n\nYield kann also sowohl normale Utilization als auch die zusätzliche Nachfrage durch LP-besichertes Ausleihen widerspiegeln. Raten bewegen sich weiterhin mit Marktbedingungen, verfügbarer Liquidität, Utilization und dem Risikoprofil der zugrunde liegenden Kreditnehmermärkte."
         },
         {
           "id": "do-lenders-manage-lp-collateral",
@@ -189,7 +189,7 @@
     },
     {
       "id": "liquidations",
-      "name": "Gesundheit & Liquidation",
+      "name": "Health & Liquidation",
       "summary": "",
       "questions": [
         {
@@ -226,8 +226,8 @@
       "questions": [
         {
           "id": "how-are-new-pools-added",
-          "q": "Wie werden neue LP Pools hinzugefügt?",
-          "a": "Neue LP Pools werden durch Marktüberprüfung und Genehmigung hinzugefügt. Ein Pool benötigt zuverlässige Preisgestaltung der zugrunde liegenden Vermögenswerte, ausreichende Liquidität, klare Annahmen zur Auflösung und Risikoparameter, die zum Sicherheiten-Typ passen.\n\nAvana beginnt mit kuratierten LP Märkten, damit Bewertung und Liquidation sauber bleiben. Eine breitere Poolabdeckung kann im Laufe der Zeit erweitert werden, wenn Oracle-Unterstützung, Liquiditätstiefe und Risikodaten verbessert werden."
+          "q": "Wie werden neue LP-Pools hinzugefügt?",
+          "a": "Neue LP-Pools werden über Marktreview und Approval hinzugefügt. Ein Pool braucht zuverlässige Underlying-Asset-Preise, ausreichende Liquidität, klare Unwind-Annahmen und Risikoparameter, die zum Collateral-Typ passen.\n\nAvana startet mit kuratierten LP-Märkten, damit Bewertung und Liquidation sauber bleiben. Breitere Pool-Abdeckung kann wachsen, sobald Oracle-Support, Liquiditätstiefe und Risikodaten besser werden."
         },
         {
           "id": "can-risk-parameters-change",
@@ -270,7 +270,7 @@
     },
     {
       "id": "multiply-markets",
-      "name": "Märkte multiplizieren",
+      "name": "Multiply-Märkte",
       "summary": "",
       "questions": [
         {
@@ -297,7 +297,7 @@
     },
     {
       "id": "automation-features",
-      "name": "Automatisierungsfunktionen",
+      "name": "Automation Features",
       "summary": "",
       "questions": [
         {

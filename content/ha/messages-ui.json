@@ -12,42 +12,42 @@
       "helpfulLinks": "Mahimman hanyoyi"
     },
     "nav": {
-      "products": "Kayayyaki",
+      "products": "Samfura",
       "resources": "Albarkatu",
       "developers": "Masu haɓakawa",
-      "helpCenter": "Cibiyar Taimako",
+      "helpCenter": "Cibiyar taimako",
       "aaveArfc": "Aave ARFC",
-      "borrow": "Arapa",
-      "lend": "Arziki",
-      "multiply": "Ninka",
+      "borrow": "Borrow",
+      "lend": "Lend",
+      "multiply": "Multiply",
       "about": "Game da",
       "newsroom": "Dakin labarai",
-      "brand": "Alamar kasuwanci",
+      "brand": "Alama",
       "faq": "FAQ",
       "privacy": "Sirri",
       "terms": "Sharuɗɗa",
-      "overview": "Bayanin Gabaɗaya",
-      "architecture": "Gine-gine",
-      "liquidation": "Rufi"
+      "overview": "Bayyani",
+      "architecture": "Tsarin gini",
+      "liquidation": "Sayar da jingina"
     },
     "cta": {
       "sandboxShort": "Sandbox",
       "sandboxLong": "Gwada Sandbox"
     },
     "mega": {
-      "exploreProducts": "Binciki Kayayyaki",
+      "exploreProducts": "Bincika samfura",
       "exploreResources": "Binciki Albarkatu",
       "exploreDevelopers": "Binciki Masu Haɓakawa",
       "whatYouCanDo": "Abin da za ka iya yi",
       "whereToLook": "Ina za a duba",
       "highlights": "Manyan abubuwa",
-      "borrowAgainstLp": "A aro da LP",
-      "borrowAgainstLpDesc": "Buɗe ruwa daga LP fallasa ba tare da barin dabarar ba.",
-      "openMultiply": "Bude LP ninka",
-      "openMultiplyDesc": "Yi amfani da AMM matsayi a matsayin jinginar don sarrafa fitowar haɗari a cikin tafki.",
-      "lendThroughHub": "Bada bashi ta hanyar cibiyar",
+      "borrowAgainstLp": "Ari akan LP",
+      "borrowAgainstLpDesc": "Bude ruwa daga fallasar LP ba tare da barin dabarar ba.",
+      "openMultiply": "Buɗe Multiply na LP",
+      "openMultiplyDesc": "Yi amfani da matsayi na AMM a matsayin jinginar don sarrafa fuskantar haɗari a cikin pool.",
+      "lendThroughHub": "Bayar ta hanyar Hub",
       "lendThroughHubDesc": "Raba babban jari tare da fahimtar aiwatarwa da ƙari.",
-      "aboutDesc": "Ƙungiya da taken samfurin a bayan Avana.",
+      "aboutDesc": "Kamfani da manufar samfurin a bayan Avana.",
       "followNotes": "Bi bayanin samfur",
       "followNotesDesc": "Fara ayyuka, sabuntawa na fasaha, da shawarwarin taswirar hanya.",
       "browseBrand": "Bincika kayan alama",
@@ -57,10 +57,10 @@
       "reviewModel": "Samfurin tsarin bita",
       "reviewModelDesc": "Yadda cibiyar, faɗaɗɗen hanyoyi, farashi, da sarrafawa suke haɗuwa.",
       "understandLiquidation": "Fahimtar rushewar kudi",
-      "understandLiquidationDesc": "Yadda ake sa ido da warware wuraren da LP ke tallafawa."
+      "understandLiquidationDesc": "Yadda ake sa ido da warware matsayi na LP-backed."
     },
     "footer": {
-      "blurb": "Avana shi ne wani tsarin jinginar LP a kan Aave v4 wanda ke taimaka wa masu samar da ruwa su aro daidai da matsayi mai aiki yayin da suke cikin tafkin.",
+      "blurb": "Avana shine tsarin jinginar LP a kan Aave v4 wanda ke taimakawa masu bayar da ruwa su ara kudi bisa matsayin da suke ciki yayin da suke cikin pooln.",
       "explore": "Bincika",
       "resources": "Albarkatu",
       "docs": "Takardu",
@@ -70,24 +70,24 @@
       "telegram": "Telegram",
       "discourse": "Discourse",
       "socialAria": "Avana a kan {network}",
-      "disclosureRisk": "Arzikin aro kan LP na tokens yana da haɗari, ciki har da lalata idan yanayin kasuwa ya motsa a kan matsayinka. Avana baya riƙe kuɗinka, baya sake amfani da matsayi na LP, ko canza yadda kuɗin ruwa naka ke aiki a kan AMMs na asali. Sharuɗɗan bashi, ƙimar ruwa, da ƙimar jingina ana aiwatar da su a kan-sarkar ta amfani da tsarin gaskiya na oracle da sigogin haɗari masu sarrafa kansu. Kana ci gaba da cikakken iko da matsayinka a kowane lokaci kuma zaka iya biya ko daidaita jingina duk lokacin da ka zaɓa. Ka aro kawai adadin da kake jin daɗin riƙewa ta hanyar canjin kasuwa.",
-      "disclosureInfo": "Wannan kayan abu yana nufin bayar da bayani ne kawai, kuma ba shi da (i) tayin ko neman tayin, don zuba jari, ko siyan ko sayar da kowane sha'awa ko hannun jari, ko don shiga kowane dabarun zuba jari ko ciniki, (ii) nufin bayar da shawarwari na lissafin kudi, doka, ko haraji, ko shawarwarin zuba jari, ko (iii) bayanin hukuma na Avana. Tuntuɓi masu ba da shawara kafin yanke kowace shawarar zuba jari. Ba a yi wani wakilci ko garanti ba, an bayyana ko an ɗaura, dangane da daidaiton bayani ko aikin nan gaba na kowane kayan dijital, kayan kuɗi ko wani mataki na kasuwa ko tattalin arziki. Avana na iya samun sha'awa ta kuɗi a cikin, ko dangantaka da, wasu daga cikin ƙungiyoyi da/ko wallafe-wallafen da aka tattauna ko aka ambata a cikin kayan. Avana baya amincewa ko tabbatar da hanyoyin haɗi ko shafukan yanar gizon ɓangare na uku waɗanda za a iya bayarwa a cikin kayan."
+      "disclosureRisk": "Karɓar aron kuɗi bisa ga alamomin LP yana da haɗari, ciki har da rushewa idan yanayin kasuwa suka motsa a kan matsayinka. Avana ba ta adana kuɗinka ba, ba ta sake amfani da matsayi na LP, ko sauya yadda ruwan kuɗinka ke aiki a kan AMMs na asali. Sharuɗɗan bashi, ƙimar ruwa, da ƙimar jingina ana aiwatar da su a kan-sarkar ta amfani da tsarin haske na oracle da ma'aunai na haɗari na atomatik. Kuna ci gaba da samun cikakken iko da matsayinku a kowane lokaci kuma zaku iya biya ko gyara jingina duk lokacin da kuka zaɓa. Kar ku aro fiye da adadin da kuke jin daɗin kula da shi ta hanyar canjin kasuwa.",
+      "disclosureInfo": "Wannan kayan aiki ne don dalilai na bayani kawai, kuma ba (i) tayin, ko neman tayin, don saka hannun jari a cikin, ko siye ko siyar da, duk wani ruwa ko hannun jari, ko shiga cikin kowace dabarar zuba jari ko kasuwanci ba, (ii) an nufa don bayar da shawarar lissafi, shari'a, ko haraji, ko shawarwarin zuba jari ko (iii) bayani na hukuma daga Avana. Tuntuɓi masu ba da shawarar ku kafin yanke kowace shawara kan zuba jari. Ba a bayar da wani wakilci ko tabbaci, na bayyana ko na jin daɗi ba dangane da daidaiton bayanin ko ga aikin nan gaba na kowace kadarar dijital, kayan kudi ko wani matakin kasuwa ko tattalin arziƙi. Avana na iya samun riba ta kudi a cikin, ko dangantaka da, wasu daga cikin kamfanoni da/ko wallafe-wallafen da aka tattauna ko aka ambata a cikin kayan aikin. Avana ba ya goyon baya ko amincewa da hanyoyin haɗi ko shafukan yanar gizo na uku da za a iya bayarwa a cikin kayan aikin."
     },
     "notFound": {
       "title": "Wannan shafi ba ya samuwa.",
       "body": "Adireshin na iya zama ba daidai ba ko shafin na iya yin motsi.",
-      "home": "Go to homepage",
+      "home": "Je shafin gida",
       "faq": "FAQ"
     },
-    "sandboxNotice": "Sandbox bayanai an nuna su don duba kawai. APYs, farashi, da ribar suna misali ne kuma na iya bambanta da yanayin kasuwa na ainihi.",
+    "sandboxNotice": "Bayanan gwaji aka nuna don kallo kawai. APYs, farashi, da ribobi misalai ne kawai kuma na iya bambanta da yanayin kasuwa na ainihi.",
     "blogChrome": {
-      "back": "Baya",
+      "back": "Komawa",
       "share": "Raba",
       "shareOnX": "Raba a X",
       "shareOnLinkedIn": "Raba a LinkedIn",
-      "previousPost": "Sakon da ya gabata",
-      "nextPost": "Sakon na gaba",
-      "onThisPage": "On this page"
+      "previousPost": "Rubutu na baya",
+      "nextPost": "Rubutu na gaba",
+      "onThisPage": "A wannan shafi"
     },
     "docs": {
       "previous": "Na baya",
@@ -95,50 +95,50 @@
       "sections": {
         "introduction": "Gabatarwa",
         "gettingStarted": "Fara Amfani",
-        "architecture": "Tsarin Tsarin Ka'idoji",
-        "liquidation": "Tsarin Ƙarshewa",
+        "architecture": "Tsarin ginin protocol",
+        "liquidation": "Tsarin Rushewar Harka",
         "integrations": "Haɗin da ake tallafawa",
         "safety": "Hanyoyin Tsaro",
         "legal": "Shari'a da Bin Doka"
       },
       "items": {
-        "overview": "Bayanin Gabaɗaya",
+        "overview": "Bayyani",
         "keyConcepts": "Muhimman Ra'ayoyi",
         "testnetRoadmap": "Testnet & Taswirar Hanyar",
         "glossary": "Jerin Kalma",
-        "depositLp": "Ajiya LP",
+        "depositLp": "Ajiye LP",
         "borrowAssets": "Arziki Bashi",
         "manageLoans": "Sarrafa Bashi",
         "repayLoans": "Biya Bashi",
         "withdrawCollateral": "Cire Bada Baya",
-        "claimLpFees": "Kira LP Kuɗaɗe",
+        "claimLpFees": "Nemi Kuɗin LP",
         "borrowSpoke": "Ara Spoke",
         "lendSpoke": "Bako na Baya",
         "collateralFactors": "Abubuwan Bada Bashi",
         "healthFactor": "Abubuwan Lafiya",
         "platformFees": "Kudin Dandalin",
         "incentives": "Karfafawa",
-        "liquidationDesign": "Zanen Rushewa",
+        "liquidationDesign": "Zanen Ƙarshe",
         "liquidators": "Masu warware kamfani",
         "liquidationFlow": "Gudanar da Rufe Harka",
         "liquidationExamples": "Misalan Rushewar Harka",
-        "integrationsOverview": "Bayanin Hada-Hadar Tsarin",
+        "integrationsOverview": "Bayanan Haɗin Kai",
         "appkit": "AppKit",
-        "allowedPools": "An yarda da LP Tafkin",
+        "allowedPools": "Tushen LP da Aka Yarda",
         "routerAdapters": "Na'urar mai ba da hanyar sadarwa da Na'urorin haɗi",
         "priceOracles": "Masu Bada Farashi",
         "riskFramework": "Tsarin Hadarin",
         "contractsSecurity": "Kwantiragi & Tsaro",
-        "bugBounty": "Lambar Ladabi ga Kwari",
+        "bugBounty": "Lambar Ladabi na Kwari",
         "insuranceFunds": "Kudaden Inshora",
         "securityDisclosures": "Bayanan Tsaro",
         "legalDisclaimer": "Bayani na Shari'a"
       }
     },
     "faqUi": {
-      "heading": "Ta yaya za mu iya taimakawa?",
-      "search": "Bincika",
-      "searchPlaceholder": "Bincika",
+      "heading": "Yaya za mu taimaka?",
+      "search": "Nema",
+      "searchPlaceholder": "Nema",
       "searchResults": "Sakamakon Bincike",
       "clearSearch": "Goge bincike",
       "noResults": "Babu wani sakamako da aka samu don \"{query}\"",
@@ -155,119 +155,119 @@
       "institutions": "Hukumomi"
     },
     "newsroom": {
-      "latestFrom": "Sabo daga Avana",
-      "readNewsroom": "Karanta ɗakin labarai"
+      "latestFrom": "Sabuwar daga Avana",
+      "readNewsroom": "Karanta dakin labarai"
     }
   },
   "meta": {
-    "siteTitle": "Avana - Ara Bisa Ga Matsayi LP Akan Aave v4",
-    "siteDescription": "Buɗe ruwa daga cikin LP alamomin ku. Ara har zuwa 80% akan Uniswap, Curve, da Balancer matsayi yayin da kuke ci gaba da samun kuɗin ciniki akan Aave v4.",
-    "ogDescription": "Buɗe ƙarar kuɗi daga cikin tikiti ɗinku LP yayin da kuke ci gaba da samun kuɗin ciniki.",
-    "ogSubtitle": "A aro da LP Matsayi a kan Aave v4",
-    "twitterTitle": "Avana - Ara Akan LP Matsayi",
-    "twitterDescription": "Buɗe ƙwazon kuɗi daga LP tokens ɗinku a Aave v4",
+    "siteTitle": "Avana - Ara Daga Matsayin LP a Aave v4",
+    "siteDescription": "Buɗe damar samun kuɗi daga alamun LP ɗinku. Ara har zuwa 80% ta amfani da matsayin Uniswap, Curve, da Balancer yayin da kuke ci gaba da samun kuɗin ciniki a Aave v4.",
+    "ogDescription": "Buɗe ruwa daga alamomin LP ɗinka yayin ci gaba da samun kuɗin ciniki.",
+    "ogSubtitle": "Cin bashi da Matsayin LP a Aave v4",
+    "twitterTitle": "Avana - Ara Bisa Matsayin LP",
+    "twitterDescription": "Buɗe ruwa daga alamun LP ɗinku a Aave v4",
     "titleTemplate": "{title} | Avana",
-    "team": "Avana Ƙungiya",
-    "ogAlt": "Avana - DeFi Tsarin Ruwa",
+    "team": "Ƙungiyar Avana",
+    "ogAlt": "Avana - Tsarin Ruwa na DeFi",
     "home": {
-      "title": "A aro da LP Matsayi a kan Aave v4",
-      "description": "Buɗe ruwa daga cikin LP alamomin ku. Ara har zuwa 80% akan Uniswap, Curve, da Balancer matsayi yayin da kuke ci gaba da samun kuɗin ciniki akan Aave v4."
+      "title": "Cin bashi da Matsayin LP a Aave v4",
+      "description": "Buɗe damar samun kuɗi daga alamun LP ɗinku. Ara har zuwa 80% ta amfani da matsayin Uniswap, Curve, da Balancer yayin da kuke ci gaba da samun kuɗin ciniki a Aave v4."
     },
     "about": {
       "title": "Game da",
-      "description": "Sadu da Avana, wani ƙa'ida mai sadaukarwa na LP-a-matsayi na jingina an gina shi a kan Aave v4 tare da Spokes na musamman, Hub ɗin da aka raba, da Lend Spoke da aka ƙera don kasuwannin ruwa na AMM."
+      "description": "Sadu da Avana, wani kwarin gwiwar tsarin LP-a-matsayin jingina wanda aka gina a kan Aave v4 tare da Spokes na musamman, Hub da aka raba, da Lend Spoke da aka tsara don kasuwannin ruwa na AMM."
     },
     "borrow": {
-      "title": "Arapa",
-      "description": "A aro bisa matsayi na rayuwa LP ba tare da fita daga tafkin ruwa ba. Ci gaba da samun kudin shiga yayin bude ruwa a Aave v4."
+      "title": "Borrow",
+      "description": "Arziki bisa matsayi na LP na rai ba tare da fita daga pool ba. Ci gaba da samun kudaden shiga yayin bude ruwa a Aave v4."
     },
     "lend": {
-      "title": "Arziki",
-      "description": "Samar da babban jari ga Lend Spoke na Avana kuma sami riba daga masu bashi da ke goyan bayan LP a kan Aave v4."
+      "title": "Lend",
+      "description": "Ba ku babban jari ga Lend Spoke na Avana kuma ku sami riba daga masu aro da aka goyi bayan LP a Aave v4."
     },
     "multiply": {
-      "title": "Ninka",
-      "description": "Kara haske LP da dabaru masu sarrafawa na ninka da ke goyan bayan matsayi AMM da aka tallafa."
+      "title": "Multiply",
+      "description": "Ƙara bayyana LP tare da dabaru masu sarrafawa masu ninki waɗanda ke tallafawa matsayi na AMM da aka goyi baya."
     },
     "brand": {
-      "title": "Alamar kasuwanci",
-      "description": "Kayayyakin alamar hukuma Avana, launuka, da jagororin amfani ga abokan hulɗa da 'yan jarida."
+      "title": "Alama",
+      "description": "Hanyoyin amfani da kayan alamar Avana na hukuma, launuka, da jagororin amfani ga abokan hulɗa da 'yan jarida."
     },
     "faq": {
-      "title": "Tambayoyin da ake yawan yi",
-      "description": "Amsoshi game da Avana LP jinginar kaya, aro, bayar da aron kudi, ninka, sallama bashin, da Aave v4 gine-gine."
+      "title": "FAQ",
+      "description": "Amsoshi game da jinginar Avana LP, aro, bayar da rance, ninka, kakkabe, da tsarin gine-ginen Aave v4."
     },
     "newsroom": {
       "title": "Dakin labarai",
-      "description": "Sabbin sakonni daga ƙungiyar Avana akan LP na jingina, AMM kasuwanni, Aave v4, da bunƙasa tsarin."
+      "description": "Sabbin sakonni daga ƙungiyar Avana akan kayan jingina na LP, kasuwannin AMM, Aave v4, da ci gaban tsarin."
     },
     "developers": {
       "title": "Masu haɓakawa",
-      "description": "Takardun fasaha don haɗawa da Avana. Koyi game da jinginar token LP, abubuwan lafiyar kuɗi, hanyoyin sayar da dukiya, da gine-ginen kwangilar hankali a kan Aave v4."
+      "description": "Takaddun fasaha don haɗawa da Avana. Koyi game da jinginar token na LP, abubuwan lafiyar kuɗi, hanyoyin warware bashi, da tsarin kwangiloli masu wayo a Aave v4."
     },
     "privacy": {
-      "title": "Dokar Sirri",
-      "description": "Avana manufar sirri."
+      "title": "Manufar sirri",
+      "description": "Manufar sirrin Avana."
     },
     "terms": {
-      "title": "Sharuɗɗan Amfani",
-      "description": "Avana sharuɗɗan amfani."
+      "title": "Sharuɗɗan amfani",
+      "description": "Sharuɗɗan amfani da Avana."
     }
   },
   "home": {
     "hero": {
       "eyebrow": "Ana amfani da Aave v4",
-      "title": "Arziki daidai da LP matsayi",
+      "title": "Ari akan matsayin LP",
       "titleLine1": "Arziki da",
-      "titleLine2": "Matsayin Ruwa",
-      "subtitle": "Ci gaba da samun kudin ciniki yayin bude kudaden shigar daga matsayi Uniswap, Curve, da Balancer.",
+      "titleLine2": "Matsayin Ƙarar Ƙudi",
+      "subtitle": "Ci gaba da samun kuɗin ciniki yayin bude ruwa daga matsayin Uniswap, Curve, da Balancer.",
       "subtitleMobileLines": [
         "Samun dama zuwa kashi 80% na ƙimar Tafkin Ruwa naka",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "a 5.5% APR ba tare da cire ruwan kuɗi ko",
+        "kasancewa ba tare da kuɗin ciniki ba."
       ],
       "subtitleDesktopLines": [
-        "Samu damar amfani da har zuwa kashi 80% na ƙimar Ruwan Kuɗi naka a 5.5% APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "Samu damar har zuwa kashi 80% na darajar Tafkin Ruwan Kuɗinka a 5.5% APR",
+        "ba tare da janye ruwa ko barin kudaden ciniki ba."
       ],
       "primaryCta": "Gwada Sandbox",
-      "secondaryCta": "Karanta takardu"
+      "secondaryCta": "Karanta docs"
     },
     "features": {
       "eyebrow": "Manyan Fasali",
-      "title": "An gina shi don rayuwa LP jinginar"
+      "title": "An gina don jinginar LP mai aiki"
     },
     "faq": {
-      "title": "Tambayoyi da ake yawan yi"
+      "title": "Tambayoyin da ake yawan yi"
     },
     "newsroom": {
-      "title": "Sabo daga Avana",
-      "cta": "Karanta ɗakin labarai"
+      "title": "Sabuwar daga Avana",
+      "cta": "Karanta dakin labarai"
     },
     "buildTomorrow": {
-      "title": "Sadu Avana",
-      "body": "Avana yana sauya goyon bayan LP matsayi zuwa abin amfani a matsayin jinginar kudi a Aave v4 don haka masu bayar da ruwa za su iya aro ba tare da barin tafkin ba."
+      "title": "Haɗu da Avana",
+      "body": "Avana tana juya matsayi na LP da aka tallafa zuwa matsayin jinginar da za a iya amfani da shi a Aave v4 don haka masu samar da ruwa za su iya aro ba tare da barin pooln ba."
     }
   },
   "product": {
     "borrow": {
-      "title": "A aro da LP",
-      "subtitle": "Buɗe ruwa daga cikin AMM matsayi masu aiki ba tare da barin tafkin ba.",
+      "title": "Ari akan LP",
+      "subtitle": "Buɗe tsarin samun kuɗi daga matsayi na AMM mai aiki ba tare da barin pooln ba.",
       "cta": "Gwada Sandbox"
     },
     "lend": {
-      "title": "Bada rance ga LP kasuwanni",
-      "subtitle": "Samu ribar daga masu aro ta amfani da jinginar rayuwa LP a Aave v4.",
+      "title": "Bada bashi ga kasuwannin LP",
+      "subtitle": "Samu riba daga masu aro ta amfani da jinginar LP mai rai a Aave v4.",
       "cta": "Gwada Sandbox"
     },
     "multiply": {
-      "title": "Ninka LP fallasa",
-      "subtitle": "Yi amfani da matsayin da ake tallafawa a matsayin jinginar kuɗi don ƙara tasirin shugabanci mai sarrafawa.",
+      "title": "Haɓaka fallasa LP",
+      "subtitle": "Yi amfani da matsayin da ake tallafawa a matsayin jingina don ƙara haɗarin shugabanci da aka sarrafa.",
       "cta": "Gwada Sandbox"
     },
     "about": {
       "title": "Game da Avana",
-      "subtitle": "LP-a matsayin jinginar al'ada da aka gina a kan Aave v4"
+      "subtitle": "Tsarin LP-a-matsayi na jinginar da aka gina a kan Aave v4"
     },
     "brand": {
       "title": "Kayan tambari",
@@ -276,12 +276,12 @@
   },
   "faq": {
     "title": "FAQ",
-    "subtitle": "Amsoshi game da Avana, LP jinginar, da Aave v4",
+    "subtitle": "Amsoshi game da Avana, jinginar LP, da Aave v4",
     "englishOnlyNote": "Amsoshin cikakken FAQ ana nuna su da Turanci har sai an kammala bita na wannan yanki."
   },
   "docs": {
-    "hubTitle": "Takardun mai haɓaka",
-    "hubSubtitle": "Haɗa tare da Avana LP jinginar a Aave v4",
+    "hubTitle": "Docs na masu haɓakawa",
+    "hubSubtitle": "Hada kai da jinginar Avana LP a Aave v4",
     "englishOnlyNote": "Rubutun jikin takardun yana mayar da hankali ga Turanci idan ba a sami fassarar yare ba tukuna."
   },
   "blog": {
@@ -290,8 +290,8 @@
     "englishOnlyNote": "Jikin labarai yana dawowa cikin Turanci idan ba a samu fassarar yaren gida ba tukuna."
   },
   "legal": {
-    "privacyTitle": "Dokar Sirri",
-    "termsTitle": "Sharuɗɗan Amfani",
+    "privacyTitle": "Manufar sirri",
+    "termsTitle": "Sharuɗɗan amfani",
     "englishOnlyNote": "Shafukan doka za su ci gaba da kasancewa a Turanci har sai an samo sigar yanki da lauyan ya amince da shi.",
     "englishOnlyBadge": "Turanci kawai"
   }

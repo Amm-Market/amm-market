@@ -1,11 +1,11 @@
 {
   "common": {
     "a11y": {
-      "skipToContent": "تجاوز إلى المحتوى الرئيسي",
-      "primaryNav": "التنقل الأساسي",
+      "skipToContent": "تخطَّ إلى المحتوى الرئيسي",
+      "primaryNav": "التنقل الرئيسي",
       "mobileMenu": "قائمة الجوال",
       "mobileNav": "التنقل عبر الهاتف المحمول",
-      "openMenu": "افتح القائمة",
+      "openMenu": "فتح القائمة",
       "closeMenu": "إغلاق القائمة",
       "language": "اللغة: {language}",
       "logo": "شعار {site}",
@@ -14,20 +14,20 @@
     "nav": {
       "products": "المنتجات",
       "resources": "الموارد",
-      "developers": "المطورون",
+      "developers": "المطوّرون",
       "helpCenter": "مركز المساعدة",
       "aaveArfc": "Aave ARFC",
-      "borrow": "يستعير",
-      "lend": "يقترض",
-      "multiply": "اضرب",
-      "about": "حول",
-      "newsroom": "غرفة الأخبار",
-      "brand": "علامة تجارية",
+      "borrow": "اقتراض",
+      "lend": "إقراض",
+      "multiply": "Multiply",
+      "about": "عنّا",
+      "newsroom": "الأخبار",
+      "brand": "العلامة",
       "faq": "الأسئلة الشائعة",
       "privacy": "الخصوصية",
       "terms": "الشروط",
       "overview": "نظرة عامة",
-      "architecture": "العمارة",
+      "architecture": "الهندسة",
       "liquidation": "التصفية"
     },
     "cta": {
@@ -42,25 +42,25 @@
       "whereToLook": "أين تنظر",
       "highlights": "أبرز الأحداث",
       "borrowAgainstLp": "اقترض مقابل LP",
-      "borrowAgainstLpDesc": "افتح السيولة من التعرض LP دون مغادرة الاستراتيجية.",
-      "openMultiply": "فتح LP اضرب",
-      "openMultiplyDesc": "استخدم AMM مواضع كضمان للتعرض المدار داخل البِركة.",
-      "lendThroughHub": "أقرِض عبر المركز",
-      "lendThroughHubDesc": "تخصيص رأس المال بسياق تنفيذ أوضح.",
+      "borrowAgainstLpDesc": "افتح السيولة من تعرّض LP دون مغادرة الاستراتيجية.",
+      "openMultiply": "افتح Multiply على LP",
+      "openMultiplyDesc": "استخدم مراكز AMM كضمان لتعرّض مُدار داخل المجمّع.",
+      "lendThroughHub": "أقرض عبر الـ Hub",
+      "lendThroughHubDesc": "خصّص رأس المال بسياق تنفيذ أوضح.",
       "aboutDesc": "أطروحة الشركة والمنتج وراء Avana.",
-      "followNotes": "اتبع ملاحظات المنتج",
+      "followNotes": "تابع ملاحظات المنتج",
       "followNotesDesc": "إطلاقات، التحديثات التقنية، وقرارات خارطة الطريق.",
       "browseBrand": "تصفح مواد العلامة التجارية",
       "browseBrandDesc": "العلامات والألوان المعتمدة وإرشادات الشريك البصرية.",
       "startOverview": "ابدأ بنظرة عامة",
       "startOverviewDesc": "نموذج البروتوكول الأساسي قبل تفاصيل التنفيذ.",
       "reviewModel": "نموذج بروتوكول المراجعة",
-      "reviewModelDesc": "كيف تتناسب المحور، والتفرعات، والتسعير، والضوابط معًا.",
-      "understandLiquidation": "فهم التصفية",
+      "reviewModelDesc": "كيف تتلاءم Hub وSpokes والتسعير والضوابط.",
+      "understandLiquidation": "افهم التصفية",
       "understandLiquidationDesc": "كيف يتم مراقبة وتسوية المناصب المدعومة بـ LP."
     },
     "footer": {
-      "blurb": "Avana هو بروتوكول LP مضمون على Aave v4 يساعد مزودي السيولة على الاقتراض مقابل المراكز النشطة مع البقاء في المجمع.",
+      "blurb": "Avana بروتوكول ضمان LP على Aave v4 يساعد مزوّدي السيولة على الاقتراض مقابل مراكز نشطة مع البقاء في المجمّع.",
       "explore": "اِسْتَكْشِف",
       "resources": "الموارد",
       "docs": "مستندات",
@@ -76,10 +76,10 @@
     "notFound": {
       "title": "هذه الصفحة غير متوفرة.",
       "body": "قد يكون العنوان خاطئًا أو أن الصفحة قد انتقلت.",
-      "home": "Go to homepage",
+      "home": "الانتقال إلى الصفحة الرئيسية",
       "faq": "الأسئلة الشائعة"
     },
-    "sandboxNotice": "Sandbox البيانات المعروضة للمعاينة فقط. APY الأسعار والعوائد توضيحية وقد تختلف عن ظروف السوق الحية.",
+    "sandboxNotice": "بيانات Sandbox للمعاينة فقط. قيم APY والأسعار والعوائد توضيحية وقد تختلف عن ظروف السوق الحيّة.",
     "blogChrome": {
       "back": "عودة",
       "share": "شارك",
@@ -95,7 +95,7 @@
       "sections": {
         "introduction": "مقدمة",
         "gettingStarted": "البدء",
-        "architecture": "هيكلية البروتوكول",
+        "architecture": "هندسة البروتوكول",
         "liquidation": "إطار التصفية",
         "integrations": "التكاملات المدعومة",
         "safety": "آليات السلامة",
@@ -112,8 +112,8 @@
         "repayLoans": "سداد القروض",
         "withdrawCollateral": "سحب الضمان",
         "claimLpFees": "المطالبة LP الرسوم",
-        "borrowSpoke": "استعار سبوك",
-        "lendSpoke": "لسان الدعامة",
+        "borrowSpoke": "Borrow Spoke",
+        "lendSpoke": "Lend Spoke",
         "collateralFactors": "العوامل الضامنة",
         "healthFactor": "عامل الصحة",
         "platformFees": "رسوم المنصة",
@@ -141,7 +141,7 @@
       "searchPlaceholder": "بحث",
       "searchResults": "نتائج البحث",
       "clearSearch": "مسح البحث",
-      "noResults": "لم يتم العثور على نتائج لـ \"{query}\"",
+      "noResults": "لا نتائج لـ \"{query}\"",
       "category": "الفئة: {name}",
       "categoriesAria": "فئات الأسئلة الشائعة",
       "articles": "{count} مقالات"
@@ -155,55 +155,55 @@
       "institutions": "المؤسسات"
     },
     "newsroom": {
-      "latestFrom": "أحدث أخبار Avana",
-      "readNewsroom": "اقرأ المقال"
+      "latestFrom": "أحدث من Avana",
+      "readNewsroom": "اقرأ الأخبار"
     }
   },
   "meta": {
-    "siteTitle": "Avana - الاقتراض مقابل LP مواقع على Aave v4",
-    "siteDescription": "افتح السيولة من رموزك LP. اقترض حتى 80٪ مقابل Uniswap وCurve وBalancer بينما تستمر في كسب رسوم التداول على Aave v4.",
-    "ogDescription": "افتح السيولة من LP رمزًا خاصًا بك مع الاستمرار في كسب رسوم التداول.",
-    "ogSubtitle": "اقترض مقابل LP مركزًا على Aave v4",
-    "twitterTitle": "Avana - الاقتراض مقابل LP مراكز",
-    "twitterDescription": "افتح السيولة من LP رموزك على Aave v4",
+    "siteTitle": "Avana - اقترض مقابل مراكز LP على Aave v4",
+    "siteDescription": "افتح السيولة من رموز LP. اقترض حتى 80% مقابل مراكز Uniswap وCurve وBalancer مع مواصلة كسب رسوم التداول على Aave v4.",
+    "ogDescription": "افتح السيولة من رموز LP مع مواصلة كسب رسوم التداول.",
+    "ogSubtitle": "اقترض مقابل مراكز LP على Aave v4",
+    "twitterTitle": "Avana - اقترض مقابل مراكز LP",
+    "twitterDescription": "افتح السيولة من رموز LP على Aave v4",
     "titleTemplate": "{title} | Avana",
-    "team": "Avana الفريق",
-    "ogAlt": "Avana - DeFi بروتوكول السيولة",
+    "team": "فريق Avana",
+    "ogAlt": "Avana - بروتوكول سيولة DeFi",
     "home": {
-      "title": "اقترض مقابل LP مركزًا على Aave v4",
-      "description": "افتح السيولة من رموزك LP. اقترض حتى 80٪ مقابل Uniswap وCurve وBalancer بينما تستمر في كسب رسوم التداول على Aave v4."
+      "title": "اقترض مقابل مراكز LP على Aave v4",
+      "description": "افتح السيولة من رموز LP. اقترض حتى 80% مقابل مراكز Uniswap وCurve وBalancer مع مواصلة كسب رسوم التداول على Aave v4."
     },
     "about": {
-      "title": "حول",
-      "description": "قابل Avana، بروتوكول LP مخصص كضمان مبني على Aave v4 مع محاور متخصصة، ومحور مشترك، ومحور إقراض مصمم لأسواق سيولة AMM."
+      "title": "عنّا",
+      "description": "تعرّف على Avana، بروتوكول مخصّص لـ LP كضمان مبني على Aave v4 مع Spokes متخصصة وHub مشترك وLend Spoke مصمَّم لأسواق سيولة AMM."
     },
     "borrow": {
-      "title": "يستعير",
-      "description": "اقترض مقابل مواقع LP الحية دون الخروج من المجموعة. استمر في كسب الرسوم أثناء تحرير السيولة على Aave v4."
+      "title": "اقتراض",
+      "description": "اقترض مقابل مراكز LP حيّة دون الخروج من المجمّع. واصل كسب الرسوم مع فتح السيولة على Aave v4."
     },
     "lend": {
-      "title": "يقترض",
-      "description": "زوّد رأس المال إلى Lend Spoke الخاص بـ Avana واربح عائدًا من المقترضين المدعومين بـ LP على Aave v4."
+      "title": "إقراض",
+      "description": "زوّد رأس المال إلى Lend Spoke في Avana واكسب عائدًا من مقترضي LP على Aave v4."
     },
     "multiply": {
-      "title": "اضرب",
-      "description": "عزز التعرض LP باستخدام استراتيجيات مضاعفة مُدارة مدعومة بمواقف AMM مدعومة."
+      "title": "Multiply",
+      "description": "ضخّم تعرّض LP باستراتيجيات Multiply مُدارة مدعومة بمراكز AMM مدعومة."
     },
     "brand": {
       "title": "علامة تجارية",
-      "description": "الأصول الرسمية للعلامة التجارية Avana، والألوان، وإرشادات الاستخدام للشركاء والصحافة."
+      "description": "أصول علامة Avana الرسمية والألوان وإرشادات الاستخدام للشركاء والصحافة."
     },
     "faq": {
       "title": "الأسئلة الشائعة",
-      "description": "إجابات حول Avana LP الضمانات، الاقتراض، الإقراض، التضاعف، التصفية، وAave v4 الهندسة المعمارية."
+      "description": "إجابات عن ضمان LP في Avana والاقتراض والإقراض وMultiply والتصفية وهندسة Aave v4."
     },
     "newsroom": {
-      "title": "غرفة الأخبار",
-      "description": "أحدث المنشورات من فريق Avana حول LP الضمانات، AMM الأسواق، Aave v4، وتطوير البروتوكول."
+      "title": "الأخبار",
+      "description": "أحدث منشورات فريق Avana عن ضمان LP وأسواق AMM وAave v4 وتطوير البروتوكول."
     },
     "developers": {
       "title": "المطورون",
-      "description": "الوثائق التقنية للتكامل مع Avana. تعرف على ضمانات رمز LP، عوامل الصحة، تدفقات التصفية، وهندسة العقود الذكية على Aave v4."
+      "description": "وثائق تقنية للتكامل مع Avana. تعرّف على ضمان رموز LP وعوامل الصحة وتدفّقات التصفية وهندسة العقود الذكية على Aave v4."
     },
     "privacy": {
       "title": "سياسة الخصوصية",
@@ -216,53 +216,53 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "مدعوم بواسطة Aave v4",
-      "title": "اقترض مقابل LP مواضع",
+      "eyebrow": "مدعوم بـ Aave v4",
+      "title": "اقترض مقابل مراكز LP",
       "titleLine1": "اقترض مقابل",
       "titleLine2": "مراكز السيولة",
-      "subtitle": "استمر في كسب رسوم التداول أثناء تحرير السيولة من المواقع Uniswap وCurve وBalancer.",
+      "subtitle": "واصل كسب رسوم التداول مع فتح السيولة من مراكز Uniswap وCurve وBalancer.",
       "subtitleMobileLines": [
-        "الوصول إلى ما يصل إلى 80٪ من قيمة تجمع السيولة الخاص بك",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "الوصول حتى 80% من قيمة مجمّع السيولة",
+        "بـ 5.5% APR دون سحب السيولة أو",
+        "التخلي عن رسوم التداول."
       ],
       "subtitleDesktopLines": [
-        "الوصول إلى ما يصل إلى 80٪ من قيمة حوض السيولة الخاص بك بنسبة 5.5٪ APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "الوصول حتى 80% من قيمة مجمّع السيولة بـ 5.5% APR",
+        "دون سحب السيولة أو التخلي عن رسوم التداول."
       ],
       "primaryCta": "جرّب Sandbox",
       "secondaryCta": "اقرأ المستندات"
     },
     "features": {
       "eyebrow": "الميزات الرئيسية",
-      "title": "مصمم لضمانات مباشرة LP"
+      "title": "مبني لضمان LP الحيّ"
     },
     "faq": {
       "title": "الأسئلة الشائعة"
     },
     "newsroom": {
-      "title": "أحدث أخبار Avana",
-      "cta": "اقرأ المقال"
+      "title": "أحدث من Avana",
+      "cta": "اقرأ الأخبار"
     },
     "buildTomorrow": {
-      "title": "قابل Avana",
-      "body": "Avana يحول المواقع المدعومة LP إلى ضمان قابل للاستخدام على Aave v4 بحيث يمكن لمقدمي السيولة الاقتراض دون مغادرة المجمع."
+      "title": "تعرّف على Avana",
+      "body": "يحوّل Avana مراكز LP المدعومة إلى ضمان قابل للاستخدام على Aave v4 حتى يقترض مزوّدو السيولة دون مغادرة المجمّع."
     }
   },
   "product": {
     "borrow": {
       "title": "اقترض مقابل LP",
-      "subtitle": "افتح السيولة من AMM مركزًا نشطًا دون الخروج من المسبح.",
+      "subtitle": "افتح السيولة من مراكز AMM النشطة دون الخروج من المجمّع.",
       "cta": "جرّب Sandbox"
     },
     "lend": {
-      "title": "أقرض إلى LP سوقًا",
-      "subtitle": "اكسب عائدًا من المقترضين باستخدام ضمان حي LP على Aave v4.",
+      "title": "أقرض لأسواق LP",
+      "subtitle": "اكسب عائدًا من مقترضين يستخدمون ضمان LP حيًّا على Aave v4.",
       "cta": "جرّب Sandbox"
     },
     "multiply": {
-      "title": "ضاعف LP التعرض",
-      "subtitle": "استخدم المراكز المدعومة كضمان لإضافة تعرض موجه مدار.",
+      "title": "ضاعف تعرّض LP",
+      "subtitle": "استخدم المراكز المدعومة كضمان لإضافة تعرّض اتجاهي مُدار.",
       "cta": "جرّب Sandbox"
     },
     "about": {
@@ -276,17 +276,17 @@
   },
   "faq": {
     "title": "الأسئلة الشائعة",
-    "subtitle": "أجوبة حول Avana، LP الضمان، وAave v4",
+    "subtitle": "إجابات عن Avana وضمان LP وAave v4",
     "englishOnlyNote": "يتم عرض إجابات الأسئلة الشائعة الكاملة باللغة الإنجليزية حتى اكتمال مراجعة هذه النسخة الإقليمية."
   },
   "docs": {
-    "hubTitle": "مستندات المطور",
-    "hubSubtitle": "اندماج مع Avana LP الضمان على Aave v4",
+    "hubTitle": "مستندات المطوّرين",
+    "hubSubtitle": "ادمج مع ضمان LP في Avana على Aave v4",
     "englishOnlyNote": "يعود نص جسم المستندات إلى الإنجليزية عندما لا تكون الترجمة المحلية متاحة بعد."
   },
   "blog": {
-    "indexTitle": "غرفة الأخبار",
-    "indexSubtitle": "ملاحظات المنتج، البحث، وتحديثات البروتوكول",
+    "indexTitle": "الأخبار",
+    "indexSubtitle": "ملاحظات المنتج والأبحاث وتحديثات البروتوكول",
     "englishOnlyNote": "تعود نصوص المقالات إلى الإنجليزية عندما لا يكون الترجمة المحلية متاحة بعد."
   },
   "legal": {

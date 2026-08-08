@@ -2,296 +2,296 @@
   "categories": [
     {
       "id": "general",
-      "name": "Preguntas Generales",
+      "name": "Preguntas generales",
       "summary": "",
       "questions": [
         {
           "id": "what-is-avana",
           "q": "¿Qué es Avana?",
-          "a": "Avana es un protocolo de préstamos diseñado para LP como garantía. Permite a los usuarios depositar posiciones de AMM compatibles, mantener esas posiciones activas en el pool subyacente y pedir prestado contra ellas a través de la infraestructura de Aave v4.\n\nLa idea principal es que el capital de LP no tiene que volverse inutilizable solo porque esté dentro de un pool. Avana convierte las posiciones de LP compatibles en garantías que pueden respaldar crédito mientras la posición original continúa respaldando intercambios, generando tarifas y permaneciendo vinculada a su mercado de AMM."
+          "a": "Avana es un protocolo de préstamo pensado para colateral LP. Permite depositar posiciones AMM compatibles, mantenerlas activas en el pool subyacente y pedir prestado contra ellas a través de la infraestructura Aave v4.\n\nLa idea central es que el capital LP no tiene que volverse inutilizable solo porque está dentro de un pool. Avana convierte posiciones LP compatibles en colateral que puede respaldar crédito mientras la posición original sigue apoyando swaps, ganando comisiones y permaneciendo ligada a su mercado AMM."
         },
         {
           "id": "what-problem-does-avana-solve",
           "q": "¿Qué problema resuelve Avana?",
-          "a": "Los proveedores de liquidez a menudo tienen que retirar liquidez antes de poder pedir prestado contra su capital. Eso significa salir del pool, renunciar a la exposición a las comisiones e interrumpir la posición de mercado que ya han construido.\n\nAvana resuelve esto haciendo que las posiciones LP compatibles sean utilizables como garantía. La LP permanece activa, Avana rastrea y valora la posición, y Aave v4 maneja la contabilidad del lado del préstamo a través de un token de garantía de bóveda interna."
+          "a": "Los proveedores de liquidez a menudo tienen que retirar liquidez antes de poder pedir prestado contra su capital. Eso significa salir del pool, renunciar a la exposición a comisiones e interrumpir la posición de mercado que ya construyeron.\n\nAvana lo resuelve haciendo que las posiciones LP compatibles sean usables como colateral. El LP sigue en vivo, Avana sigue y valora la posición, y Aave v4 gestiona la contabilidad del lado del préstamo a través de un token de colateral vault interno."
         },
         {
           "id": "how-is-avana-different-from-standard-lending",
-          "q": "¿Cómo se diferencia Avana de un mercado de préstamos estándar?",
-          "a": "Los mercados de préstamos estándar suelen tratar el colateral como balances simples de tokens: ETH, BTC, stablecoins u otros activos ERC-20. Avana está diseñado para colateral que cambia de forma con el tiempo. Las posiciones LP pueden contener múltiples activos, acumular tarifas, variar con el movimiento de precios, volverse unilaterales o requerir una ruta específica de deshacer.\n\nDebido a eso, Avana garantiza el colateral a nivel del mercado LP. Cada pool compatible o familia LP puede tener su propia lógica de valoración, factores de colateral, activos préstamos disponibles, suposiciones de liquidación y límites de riesgo."
+          "q": "¿En qué se diferencia Avana de un mercado de préstamo estándar?",
+          "a": "Los mercados de préstamo estándar suelen tratar el colateral como saldos simples de tokens: ETH, BTC, stablecoins u otros activos ERC-20. Avana está pensado para colateral que cambia de forma con el tiempo. Las posiciones LP pueden contener varios activos, acumular comisiones, derivar con el precio, volverse unilaterales o requerir una ruta de unwind específica.\n\nPor eso Avana suscribe el colateral a nivel de mercado LP. Cada pool o familia LP compatible puede tener su propia lógica de valoración, factores de colateral, activos prestables, supuestos de liquidación y límites de riesgo."
         },
         {
           "id": "which-amms-can-avana-support",
-          "q": "¿Qué AMMs puede soportar Avana?",
-          "a": "Avana admite mercados de colateral LP seleccionados en AMMs como Uniswap, Balancer, Curve y Aerodrome a medida que se lanzan los mercados. El soporte se aprueba pool por pool, no se concede automáticamente a todos los pools en un lugar.\n\nCada mercado soportado tiene requisitos claros: precios de activos fiables, suficiente profundidad de liquidez, una ruta definida de desmantelamiento, límites de mercado y configuraciones de colateral que coincidan con el tipo de pool. Por esto los mercados de lanzamiento se mantienen seleccionados antes de que se amplíe la cobertura general."
+          "q": "¿Qué AMM puede admitir Avana?",
+          "a": "Avana admite mercados de colateral LP seleccionados en AMM como Uniswap, Balancer, Curve y Aerodrome a medida que se lanzan. El soporte se aprueba pool por pool, no se concede automáticamente a todos los pools de un venue.\n\nCada mercado compatible tiene requisitos claros: precios de activos fiables, suficiente profundidad de liquidez, una ruta de unwind definida, caps de mercado y ajustes de colateral acordes al tipo de pool. Por eso los mercados de lanzamiento se mantienen curados antes de ampliar la cobertura."
         },
         {
           "id": "does-avana-replace-the-amm",
-          "q": "¿Reemplaza Avana al AMM donde se encuentra mi liquidez?",
-          "a": "No. El AMM todavía maneja los intercambios, el estado del pool, el movimiento de precios y la generación de tarifas. Avana añade una capa de garantía y crédito alrededor de las posiciones LP compatibles.\n\nCuando depositas una posición elegible en Avana, el protocolo rastrea la garantía real de LP y la conecta a la contabilidad del lado del préstamo. El AMM subyacente sigue siendo el lugar donde existe la posición de liquidez y genera tarifas."
+          "q": "¿Avana reemplaza al AMM donde está mi liquidez?",
+          "a": "No. El AMM sigue gestionando swaps, estado del pool, movimiento de precios y generación de comisiones. Avana añade una capa de colateral y crédito alrededor de las posiciones LP compatibles.\n\nCuando depositas una posición elegible en Avana, el protocolo sigue el colateral LP real y lo conecta a la contabilidad del lado del préstamo. El AMM subyacente sigue siendo el venue donde existe la posición de liquidez y gana comisiones."
         }
       ]
     },
     {
       "id": "protocol-architecture",
-      "name": "Arquitectura del Protocolo",
+      "name": "Arquitectura del protocolo",
       "summary": "",
       "questions": [
         {
           "id": "how-does-avana-work-at-a-high-level",
-          "q": "¿Cómo funciona Avana a un nivel alto?",
-          "a": "Avana funciona en tres pasos. Primero, un usuario deposita una posición LP compatible en Avana. Segundo, Avana evalúa la posición leyendo sus activos subyacentes, la estructura del pool, la volatilidad, la correlación, la profundidad de la liquidez y el riesgo de liquidación. Tercero, una vez que la posición pasa las verificaciones del mercado, el usuario puede pedir prestado contra su valor ajustado por riesgo.\n\nLa posición LP permanece activa en el AMM. Avana gestiona el registro del colateral, la valoración y la lógica de riesgo específica de LP, mientras que Aave v4 se encarga del crédito del lado del préstamo y la contabilidad a través del modelo conectado Hub-and-Spoke."
+          "q": "¿Cómo funciona Avana a alto nivel?",
+          "a": "Avana funciona en tres pasos. Primero, un usuario deposita una posición LP compatible en Avana. Segundo, Avana evalúa la posición leyendo sus activos subyacentes, estructura del pool, volatilidad, correlación, profundidad de liquidez y riesgo de liquidación. Tercero, una vez que la posición supera los checks del mercado, el usuario puede pedir prestado contra su valor ajustado por riesgo.\n\nLa posición LP permanece activa en el AMM. Avana gestiona el registro de colateral, la valoración y la lógica de riesgo específica de LP, mientras Aave v4 se encarga del crédito y la contabilidad del lado del préstamo a través del modelo Hub-and-Spoke conectado."
         },
         {
           "id": "why-aave-v4-hub-and-spoke",
-          "q": "¿Por qué Avana utiliza la infraestructura de concentrador y radios Aave v4?",
-          "a": "Avana utiliza Aave v4 porque LP colateral necesita liquidez compartida y lógica de riesgo aislado al mismo tiempo. El Hub maneja la capa monetaria común: reservas, contabilidad, modelos de tasas de interés y coordinación global del crédito.\n\nLos Spokes manejan el trabajo específico de LP: registro de colateral de los pools, valoración de posiciones, aplicación del riesgo y ejecución de liquidaciones. Esto permite que pools estables, pares correlacionados, pares volátiles y mercados de liquidez concentrada utilicen las reglas que realmente necesitan en lugar de estar forzados a un modelo de riesgo genérico."
+          "q": "¿Por qué Avana usa la infraestructura Hub-and-Spoke de Aave v4?",
+          "a": "Avana usa Aave v4 porque el colateral LP necesita liquidez compartida y lógica de riesgo aislada al mismo tiempo. El Hub gestiona la capa monetaria común: reservas, contabilidad, modelos de tasas de interés y coordinación global del crédito.\n\nLos Spokes gestionan el trabajo específico de LP: registro de colateral del pool, valoración de posiciones, aplicación del riesgo y ejecución de liquidaciones. Así, pools estables, pares correlacionados, pares volátiles y mercados de liquidez concentrada pueden usar las reglas que realmente necesitan en lugar de un modelo de riesgo genérico."
         },
         {
           "id": "what-is-a-borrow-spoke",
-          "q": "¿Qué es un radio de préstamo?",
-          "a": "Un Borrow Spoke es un mercado de colateral LP aislado. Decide qué pools son admitidos, cómo se valúa cada posición LP, qué factores de colateral aplican, qué activos pueden ser prestados y cómo funciona la liquidación en ese mercado.\n\nLos Borrow Spokes están separados porque las posiciones LP no se comportan todas igual. Un LP de stablecoin, un ETH ETH LP con staking correlacionado y un LP de token de gobernanza volátil necesitan diferentes configuraciones de riesgo, diferentes límites y, a veces, diferentes rutas de liquidación."
+          "q": "¿Qué es un Borrow Spoke?",
+          "a": "Un Borrow Spoke es un mercado de colateral LP aislado. Decide qué pools son compatibles, cómo se valora cada posición LP, qué factores de colateral aplican, qué activos pueden pedirse prestados y cómo funciona la liquidación en ese mercado.\n\nLos Borrow Spokes están separados porque las posiciones LP no se comportan todas igual. Un LP de stablecoin, un LP correlacionado ETH–staked ETH y un LP de token de gobernanza volátil necesitan distintas configuraciones de riesgo, distintos caps y, a veces, distintas rutas de liquidación."
         },
         {
           "id": "what-are-vault-tokens",
-          "q": "¿Qué son Avana tokens de bóveda?",
-          "a": "Los tokens de bóveda son activos contables internos ERC-20 que representan garantías aprobadas LP en el lado Aave del sistema. Por ejemplo, una posición soportada LINK/ETH puede mapearse a un token de garantía estilo bóveda LINKETH, mientras que una posición WETH/USDC puede mapearse a un token estilo bóveda WETHUSDC.\n\nEl token de bóveda es el puente. Avana realiza un seguimiento de la posición real LP y su valor, el Adaptador Aave suministra el token de bóveda correspondiente a Aave v4, y Aave utiliza ese token para la contabilidad de garantías. El usuario no está pidiendo prestado únicamente contra un envoltorio abstracto; el token de bóveda sigue estando respaldado por la posición LP que se rastrea detrás de él."
+          "q": "¿Qué son los vault tokens de Avana?",
+          "a": "Los vault tokens son activos internos ERC-20 de contabilidad que representan colateral LP aprobado en el lado orientado a Aave del sistema. Por ejemplo, una posición LINK/ETH compatible puede mapearse a un token de colateral estilo vaultLINKETH, mientras que una posición WETH/USDC puede mapearse a un token estilo vaultWETHUSDC.\n\nEl vault token es el puente. Avana sigue la posición LP real y su valor, el Aave Adapter aporta el vault token correspondiente a Aave v4, y Aave usa ese token para la contabilidad de colateral. El usuario no pide prestado solo contra un wrapper abstracto; el vault token sigue respaldado por la posición LP rastreada detrás."
         },
         {
           "id": "what-are-the-main-protocol-modules",
-          "q": "¿Cuáles son las principales partes del protocolo Avana?",
-          "a": "Avana se construye alrededor de varios módulos estrechos. El Administrador de Posiciones LP registra la posición real LP, incluyendo el propietario, el pool, el par, el nivel de comisiones, el rango, la liquidez, el valor actual, las comisiones acumuladas y el estado del colateral. El Módulo de Riesgo aprueba el pool, los activos, la profundidad, el rango y los techos de mercado antes de que la posición respalde la deuda.\n\nEl Módulo de Colateralización obtiene precios, valora la posición, decide el monto de colateral soportado y emite o retira el token interno del vault. El Adaptador Aave maneja el lado orientado a Aave proporcionando colateral del vault, retirándolo y manteniendo la integración Aave separada de la lógica específica de LP."
+          "q": "¿Cuáles son las partes principales del protocolo Avana?",
+          "a": "Avana se construye en torno a varios módulos acotados. El LP Position Manager registra la posición LP real, incluidos owner, pool, par, fee tier, rango, liquidez, valor actual, comisiones acumuladas y estado de colateral. El Risk Module aprueba el pool, los activos, la profundidad, el rango y los caps de mercado antes de que la posición respalde deuda.\n\nEl Collateralization Module incorpora precios, valora la posición, decide el importe de colateral compatible y acuña o retira el vault token interno. El Aave Adapter gestiona el lado orientado a Aave aportando y retirando vault collateral, y mantiene la integración Aave separada de la lógica específica de LP."
         }
       ]
     },
     {
       "id": "lp-collateral",
-      "name": "LP Colateral",
+      "name": "Colateral LP",
       "summary": "",
       "questions": [
         {
           "id": "what-happens-when-i-deposit-lp-collateral",
-          "q": "¿Qué pasa cuando deposito LP de garantía?",
-          "a": "Cuando depositas una posición LP compatible, Avana registra la posición y la dirige al Spoke de Préstamo correspondiente. El protocolo verifica que el pool esté aprobado, reconstruye la posición, revisa sus configuraciones de riesgo y calcula el valor del colateral asociado a ese mercado.\n\nUna vez que la posición supera esas verificaciones, Avana emite el token interno de la bóveda correspondiente para la contabilidad del lado de préstamos. Depositar no toma automáticamente prestados activos; crea capacidad de préstamo que la cuenta puede usar mientras se mantenga saludable y el mercado tenga liquidez disponible."
+          "q": "¿Qué pasa cuando deposito colateral LP?",
+          "a": "Cuando depositas una posición LP compatible, Avana registra la posición y la enruta al Borrow Spoke correspondiente. El protocolo verifica que el pool esté aprobado, reconstruye la posición, revisa sus ajustes de riesgo y calcula el valor de colateral asociado a ese mercado.\n\nUna vez que la posición supera esos checks, Avana acuña el vault token interno correspondiente para la contabilidad del lado del préstamo. Depositar no pide prestado activos automáticamente; crea capacidad de préstamo que la cuenta puede usar mientras se mantenga saludable y el mercado tenga liquidez disponible."
         },
         {
           "id": "does-my-lp-stay-active",
           "q": "¿Mi posición LP sigue activa después del depósito?",
-          "a": "Sí. Las LP posiciones compatibles permanecen activas mientras sirven como garantía. La liquidez sigue vinculada a la posición subyacente AMM, por lo que el pool continúa procesando intercambios y la posición sigue acumulando tarifas e incentivos según las reglas de AMM.\n\nLas acciones que cambian el valor de la garantía son verificadas por Avana mientras la deuda esté abierta. Retirar liquidez, reclamar tarifas, cambiar un rango o modificar la posición se realiza a través del Borrow Spoke porque esas acciones afectan el valor que respalda el préstamo."
+          "a": "Sí. Las posiciones LP compatibles permanecen activas mientras sirven como colateral. La liquidez sigue ligada a la posición AMM subyacente, así que el pool continúa procesando swaps y la posición sigue acumulando comisiones e incentivos según las reglas del AMM.\n\nLas acciones que cambian el valor del colateral las revisa Avana mientras hay deuda abierta. Retirar liquidez, reclamar comisiones, cambiar un rango o modificar la posición pasa por el Borrow Spoke porque esas acciones afectan el valor que respalda el préstamo."
         },
         {
           "id": "can-i-claim-lp-fees",
-          "q": "¿Puedo reclamar LP tarifas mientras tomo prestado?",
-          "a": "Avana separa la liquidez principal de las comisiones acumuladas en su modelo de valoración. Eso permite que el protocolo reconozca los ingresos por comisiones y libere las comisiones reclamables mientras mantiene el principal de LP activo como garantía.\n\nLas reclamaciones de comisiones pasan por verificaciones de salud antes y después. Si eliminar el valor de la comisión deja la cuenta por debajo de su límite de garantía requerido, Avana bloquea la reclamación hasta que el usuario pague la deuda o agregue más garantía."
+          "q": "¿Puedo reclamar comisiones LP mientras pido prestado?",
+          "a": "Avana separa la liquidez principal de las comisiones acumuladas en su modelo de valoración. Eso permite reconocer ingresos por comisiones y liberar comisiones reclamables manteniendo el principal LP activo como colateral.\n\nLas reclamaciones de comisiones pasan por checks de salud antes y después. Si quitar el valor de las comisiones deja la cuenta por debajo del límite de colateral requerido, Avana bloquea la reclamación hasta que el usuario reembolse deuda o añada más colateral."
         },
         {
           "id": "are-lp-fees-part-of-collateral-value",
-          "q": "¿Están LP tarifas incluidas en el valor del colateral?",
-          "a": "Las tarifas acumuladas se registran por separado del capital de liquidez. El modelo de oráculo de Avana distingue el valor del principal del valor de las tarifas, por lo que el protocolo entiende cuánto de la posición es liquidez principal y cuánto es ingreso por tarifas reclamable.\n\nEsa distinción importa durante la liquidación. Avana aplica las tarifas acumuladas antes que la liquidez principal cuando la ruta del mercado lo permite, reduciendo cuánto de la posición principal de LP debe liquidarse para cubrir la deuda."
+          "q": "¿Las comisiones LP forman parte del valor del colateral?",
+          "a": "Las comisiones acumuladas se siguen por separado de la liquidez principal. El modelo de oráculo de Avana distingue el valor principal del valor de comisiones, de modo que el protocolo entiende cuánto de la posición es liquidez núcleo y cuánto es ingreso por comisiones reclamable.\n\nEsa distinción importa en la liquidación. Avana aplica las comisiones acumuladas antes que la liquidez principal cuando la ruta del mercado lo admite, reduciendo cuánto del LP núcleo hay que desarmar para cubrir la deuda."
         },
         {
           "id": "when-can-i-withdraw-collateral",
-          "q": "¿Cuándo puedo retirar LP de garantía?",
-          "a": "Puedes retirar la garantía después de que la deuda esté completamente pagada, o después de que Avana confirme que la cuenta restante todavía pasa las verificaciones de salud tras el retiro. El reembolso completo es la forma más limpia de retirar porque la posición LP ya no respalda deuda abierta.\n\nLos cambios parciales de garantía se realizan a través del Borrow Spoke. Avana recalcula la cuenta después de eliminar o modificar la posición LP solicitada, y solo libera la garantía cuando la garantía aprobada restante todavía respalda la deuda pendiente."
+          "q": "¿Cuándo puedo retirar colateral LP?",
+          "a": "Puedes retirar colateral después de reembolsar la deuda por completo, o después de que Avana confirme que la cuenta restante sigue pasando los checks de salud tras el retiro. El reembolso completo es el camino más limpio porque la posición LP ya no asegura deuda abierta.\n\nLos cambios parciales de colateral pasan por el Borrow Spoke. Avana recalcula la cuenta tras eliminar o modificar la posición LP solicitada y solo libera colateral cuando el colateral aprobado restante sigue respaldando la deuda pendiente."
         }
       ]
     },
     {
       "id": "valuation-oracles",
-      "name": "Valoración y Oráculos",
+      "name": "Valoración y oráculos",
       "summary": "",
       "questions": [
         {
           "id": "how-does-avana-price-lp-collateral",
-          "q": "¿Cómo tasar Avana el LP colateral?",
-          "a": "Avana precios LP colateral reconstruyendo la posición y valorando los activos dentro de ella. Para LPs fungibles, el protocolo obtiene el valor a partir de los precios de activos externos y la reconstrucción del balance del pool. Para la liquidez concentrada, descompone la posición por liquidez, rango, tick actual, exposición a tokens y comisiones acumuladas.\n\nEl resultado luego se descuenta hasta el valor de colateral recuperable. El poder de préstamo se basa en lo que la posición puede soportar de manera realista bajo las suposiciones de riesgo del mercado, no en un valor neto de activos optimista."
+          "q": "¿Cómo valora Avana el colateral LP?",
+          "a": "Avana valora el colateral LP reconstruyendo la posición y valorando los activos que contiene. En LP fungibles, el protocolo deriva el valor de precios externos de activos y de la reconstrucción de saldos del pool. En liquidez concentrada, descompone la posición por liquidez, rango, tick actual, exposición a tokens y comisiones acumuladas.\n\nEl resultado se descuenta después hasta el valor de colateral recuperable. El poder de préstamo se basa en lo que la posición puede respaldar de forma realista bajo los supuestos de riesgo del mercado, no en un NAV optimista."
         },
         {
           "id": "how-does-avana-reduce-oracle-risk",
           "q": "¿Cómo reduce Avana el riesgo de oráculo y de precios?",
-          "a": "Avana utiliza un marco de precios de doble oráculo para el colateral LP. Los feeds de precios de Chainlink proporcionan la referencia principal para los activos subyacentes, mientras que los TWAP derivados de AMM actúan como una capa de verificación independiente obtenida de la liquidez en cadena.\n\nLa capacidad de préstamo se concede solo cuando las fuentes de precios se mantienen dentro de la banda de tolerancia del mercado. Esto reduce la exposición a la manipulación mediante préstamos flash, distorsiones temporales del precio de AMM, actualizaciones obsoletas y marcas de colateral incorrectas que crean deuda insegura."
+          "a": "Avana usa un marco de precios de doble oráculo para el colateral LP. Los price feeds de Chainlink aportan la referencia primaria de los activos subyacentes, mientras que los TWAP derivados del AMM actúan como capa de verificación independiente procedente de la liquidez onchain.\n\nEl poder de préstamo solo se concede cuando las fuentes de precios se mantienen dentro de la banda de tolerancia del mercado. Eso reduce la exposición a manipulación flash-loan, distorsiones transitorias de precios del AMM, actualizaciones stale y marcas de colateral incorrectas que crean deuda insegura."
         },
         {
           "id": "what-is-recoverable-value",
-          "q": "¿Cuál es el valor recuperable?",
-          "a": "El valor recuperable es el valor descontado del colateral que Avana utiliza para decisiones de préstamo y liquidación. Refleja lo que vale la posición LP después de tener en cuenta su deshacer, venta, transferencia o ruta de liquidación bajo estrés.\n\nEl valor recuperable es menor que el valor teórico de LP cuando la ruta de liquidación incluye slippage, impacto en el precio, movimiento en el rango, volatilidad, manejo de comisiones o profundidad limitada de la ruta. Avana dimensiona el préstamo contra el valor recuperable porque ese es el valor que protege la deuda."
+          "q": "¿Qué es el valor recuperable?",
+          "a": "El valor recuperable es el valor de colateral descontado que Avana usa para decisiones de préstamo y liquidación. Refleja lo que vale la posición LP tras contabilizar su ruta de unwind, venta, transferencia o settlement bajo estrés.\n\nEl valor recuperable es menor que el valor teórico del LP cuando la ruta de liquidación incluye slippage, impacto de precio, movimiento de rango, volatilidad, manejo de comisiones o poca profundidad de ruta. Avana dimensiona el préstamo contra el valor recuperable porque ese es el valor que protege la deuda."
         },
         {
           "id": "why-are-concentrated-liquidity-positions-treated-carefully",
-          "q": "¿Por qué se tratan con cuidado las posiciones de liquidez concentrada?",
-          "a": "Las posiciones de liquidez concentrada cambian la exposición rápidamente a medida que el precio se mueve. Una posición puede convertirse en mayormente un solo activo, salir del rango, dejar de generar comisiones o requerir liquidación a nivel completo de la posición NFT.\n\nAvana valora las posiciones concentradas descomponiendo el estado real de la posición en lugar de tratar al NFT como un saldo de token estático. Luego, el mercado aplica factores de colateral, límites y supuestos de liquidación que coinciden con el rango, inventario y riesgo de deshacer la posición."
+          "q": "¿Por qué las posiciones de liquidez concentrada se tratan con cuidado?",
+          "a": "Las posiciones de liquidez concentrada cambian de exposición con rapidez cuando se mueve el precio. Una posición puede volverse mayormente un solo activo, salir de rango, dejar de ganar comisiones o requerir settlement a nivel de posición NFT completa.\n\nAvana valora las posiciones concentradas descomponiendo el estado real de la posición en lugar de tratar el NFT como un saldo de token estático. El mercado aplica después factores de colateral, caps y supuestos de liquidación acordes al rango, inventario y riesgo de unwind de la posición."
         },
         {
           "id": "what-data-does-avana-monitor",
-          "q": "¿Qué datos del mercado monitorea Avana?",
-          "a": "Los monitores de Borrow Spokes supervisan las señales que afectan la calidad del colateral LP: composición del grupo, precios de los tokens, correlación de activos, volatilidad, profundidad de liquidez, acumulación de tarifas, fiabilidad del oráculo y costo de deshacer posiciones.\n\nEsas señales alimentan el tratamiento del colateral en el mercado. Los grupos estables y altamente correlacionados reciben límites diferentes a los pares volátiles o poco negociados porque sus perfiles de liquidación y deslizamiento son diferentes."
+          "q": "¿Qué datos de mercado monitorea Avana?",
+          "a": "Los Borrow Spokes monitorean las señales que afectan la calidad del colateral LP: composición del pool, precios de tokens, correlación de activos, volatilidad, profundidad de liquidez, acumulación de comisiones, fiabilidad del oráculo y coste de unwind.\n\nEsas señales alimentan el tratamiento de colateral del mercado. Los pools estables y muy correlacionados reciben límites distintos a los de pares volátiles o poco negociados porque sus perfiles de liquidación y slippage son diferentes."
         }
       ]
     },
     {
       "id": "borrowing",
-      "name": "Mercados de Préstamo",
+      "name": "Mercados de préstamo",
       "summary": "",
       "questions": [
         {
           "id": "how-does-borrowing-work",
-          "q": "¿Cómo funciona el préstamo en Avana?",
-          "a": "El préstamo ocurre después de que el Radio de Préstamo admite y valora su garantía LP. Cuando solicita un activo, el radio verifica su capacidad restante, confirma que la posición se mantenga saludable después de la nueva deuda y obtiene liquidez del Hub si el activo está disponible.\n\nEl activo prestado se envía al usuario, y la cuenta registra la deuda a través de la capa contable del lado de los préstamos. El interés se acumula con el tiempo, por lo que la salud puede cambiar incluso si la posición de la garantía en sí no ha cambiado."
+          "q": "¿Cómo funciona pedir prestado en Avana?",
+          "a": "El préstamo ocurre después de que el Borrow Spoke admite y valora tu colateral LP. Cuando solicitas un activo, el Spoke revisa tu capacidad restante, confirma que la posición sigue saludable tras la nueva deuda y extrae liquidez del Hub si el activo está disponible.\n\nEl activo prestado se envía al usuario y la cuenta registra la deuda a través de la capa de contabilidad del lado del préstamo. Los intereses se acumulan con el tiempo, así que la salud puede cambiar aunque la posición de colateral en sí no cambie."
         },
         {
           "id": "how-is-borrowing-capacity-calculated",
-          "q": "¿Cómo se calcula la capacidad de endeudamiento?",
-          "a": "La capacidad de endeudamiento proviene del valor ajustado por riesgo de las posiciones aprobadas LP dentro de un Enlace de Préstamo. Avana reconstruye cada posición, valora la exposición subyacente, aplica el tratamiento de riesgo a nivel de fondo y luego aplica el factor de garantía del mercado.\n\nEl Enlace de Préstamo informa esa capacidad al Hub para su cumplimiento. Cuando un usuario tiene múltiples posiciones aprobadas en el mismo mercado, Avana agrega su capacidad mientras sigue valorando cada posición bajo sus propias suposiciones de fondo, rango, liquidez y riesgo."
+          "q": "¿Cómo se calcula la capacidad de préstamo?",
+          "a": "La capacidad de préstamo proviene del valor ajustado por riesgo de las posiciones LP aprobadas dentro de un Borrow Spoke. Avana reconstruye cada posición, valora la exposición subyacente, aplica el tratamiento de riesgo a nivel de pool y luego aplica el factor de colateral del mercado.\n\nEl Borrow Spoke reporta esa capacidad al Hub para su aplicación. Cuando un usuario tiene varias posiciones aprobadas en el mismo mercado, Avana agrega su capacidad valorando cada posición según su propio pool, rango, liquidez y supuestos de riesgo."
         },
         {
           "id": "why-is-borrow-power-lower-than-lp-value",
-          "q": "¿Por qué el poder de préstamo es menor que mi valor LP?",
-          "a": "El poder de préstamo es menor porque Avana utiliza un valor de garantía conservador, no la marca completa de LP. Las posiciones de LP pueden perder valor debido a la divergencia de precios, la pérdida impermanente, la deriva del rango, el estrés de liquidez y el deslizamiento en la liquidación.\n\nLa diferencia entre el valor de LP y el poder de préstamo es el margen de seguridad. Protege el mercado al asegurar que la deuda esté dimensionada en función del valor de garantía recuperable en lugar del valor en el mejor escenario mostrado durante condiciones normales."
+          "q": "¿Por qué el poder de préstamo es menor que el valor de mi LP?",
+          "a": "El poder de préstamo es menor porque Avana usa un valor de colateral conservador, no la marca completa del LP. Las posiciones LP pueden perder valor por divergencia de precios, pérdida impermanente, deriva de rango, estrés de liquidez y slippage de liquidación.\n\nLa diferencia entre el valor LP y el poder de préstamo es el buffer de seguridad. Protege al mercado asegurando que la deuda se dimensione contra el valor de colateral recuperable y no contra el mejor caso en condiciones normales."
         },
         {
           "id": "what-assets-can-i-borrow",
           "q": "¿Qué activos puedo pedir prestados?",
-          "a": "Los activos que se pueden pedir prestados se establecen por mercado. Avana los mercados de préstamo se centran en activos líquidos como las principales monedas estables, GHO, ETH, BTC y otros activos que se ajustan a la liquidez, el límite y la configuración de riesgo del mercado.\n\nLa interfaz muestra el conjunto de préstamos activos para cada mercado. Un tipo de garantía LP compatible no desbloquea automáticamente todos los activos que se pueden pedir prestados; cada activo de deuda forma parte de la configuración del mercado."
+          "a": "Los activos prestables se definen por mercado. Los mercados de préstamo de Avana se centran en activos líquidos como stablecoins principales, GHO, ETH, BTC y otros activos que encajan con la liquidez, caps y configuración de riesgo del mercado.\n\nLa interfaz muestra el conjunto activo de préstamo de cada mercado. Un tipo de colateral LP compatible no desbloquea automáticamente todos los activos de deuda; cada activo de deuda forma parte de la configuración del mercado."
         },
         {
           "id": "can-i-borrow-against-multiple-positions",
           "q": "¿Puedo pedir prestado contra varias posiciones LP a la vez?",
-          "a": "Sí, cuando las posiciones están respaldadas dentro del mercado relevante. Avana puede agregar poder de endeudamiento a través de múltiples posiciones LP aprobadas en el mismo Spoke de Préstamo, dando al usuario una superficie de crédito combinada para ese mercado.\n\nLa agregación no fusiona el riesgo de manera ciega. Cada posición todavía contribuye con capacidad basada en su propio fondo, rango, liquidez, honorarios y tratamiento del riesgo, y la cuenta total debe mantenerse por encima del umbral de salud requerido."
+          "a": "Sí, cuando las posiciones son compatibles dentro del mercado relevante. Avana puede agregar poder de préstamo a través de varias posiciones LP aprobadas en el mismo Borrow Spoke, dando al usuario una superficie de crédito combinada para ese mercado.\n\nLa agregación no fusiona el riesgo a ciegas. Cada posición sigue aportando capacidad según su propio pool, rango, liquidez, comisiones y tratamiento de riesgo, y la cuenta total debe permanecer por encima del umbral de salud requerido."
         }
       ]
     },
     {
       "id": "supplying-earning",
-      "name": "Suministrando y Ganando",
+      "name": "Aportar y ganar",
       "summary": "",
       "questions": [
         {
           "id": "how-do-lenders-use-avana",
-          "q": "¿Cómo usan los prestamistas Avana?",
-          "a": "Los prestamistas suministran activos como ETH, BTC, GHO, USDC, USDT, u otros activos compatibles en el lado del protocolo destinado a prestamistas. Ese capital se canaliza a través del Hub para apoyar el préstamo en los mercados con garantía LP.\n\nLos prestamistas no gestionan los rangos LP, la pérdida impermanente ni las operaciones de garantía específicas de AMM. Los Borrow Spokes manejan la suscripción y la lógica de liquidación de LP, mientras que el capital de los prestamistas impulsa la capa de crédito."
+          "q": "¿Cómo usan Avana los prestamistas?",
+          "a": "Los prestamistas aportan activos como ETH, BTC, GHO, USDC, USDT u otros activos compatibles en el lado orientado a prestamistas del protocolo. Ese capital se enruta a través del Hub para respaldar el préstamo en los mercados de colateral LP.\n\nLos prestamistas no gestionan rangos LP, pérdida impermanente ni operaciones de colateral específicas de AMM. Los Borrow Spokes gestionan la suscripción y la lógica de liquidación de LP, mientras el capital del prestamista impulsa la capa de crédito."
         },
         {
           "id": "where-does-supplier-yield-come-from",
-          "q": "¿De dónde proviene el rendimiento del proveedor?",
-          "a": "El rendimiento del proveedor proviene de que los prestatarios paguen intereses para acceder a liquidez respaldada por LP garantías. El modelo de Avana combina la tasa base compartida del Hub con primas de riesgo a nivel de eje vinculadas a los mercados LP que se están financiando.\n\nEsto significa que el rendimiento puede reflejar tanto la utilización normal como la demanda adicional creada por el préstamo respaldado por LP. Las tasas aún se mueven con las condiciones del mercado, la liquidez disponible, la utilización y el perfil de riesgo de los mercados de prestatarios subyacentes."
+          "q": "¿De dónde viene el rendimiento del proveedor?",
+          "a": "El rendimiento del proveedor proviene de los prestatarios que pagan intereses para acceder a liquidez respaldada por colateral LP. El modelo de Avana combina la tasa base compartida del Hub con primas de riesgo a nivel de Spoke ligadas a los mercados LP financiados.\n\nEso significa que el rendimiento puede reflejar tanto la utilización normal como la demanda adicional creada por el préstamo respaldado por LP. Las tasas siguen moviéndose con las condiciones de mercado, la liquidez disponible, la utilización y el perfil de riesgo de los mercados de prestatarios subyacentes."
         },
         {
           "id": "do-lenders-manage-lp-collateral",
-          "q": "¿Los prestamistas gestionan LP garantías por sí mismos?",
-          "a": "No. Los prestamistas suministran capital limpio en mercados de préstamo respaldados. No están eligiendo rangos LP, reclamando tarifas LP, ni decidiendo cómo se liquida una posición específica AMM.\n\nEsa separación es el objetivo del Lend Spoke. El capital del prestamista respalda la demanda de los prestatarios respaldada por LP, mientras que los Borrow Spokes mantienen la valoración del colateral, las revisiones de salud y el manejo de liquidaciones aislados del flujo de trabajo del prestamista."
+          "q": "¿Los prestamistas gestionan el colateral LP ellos mismos?",
+          "a": "No. Los prestamistas aportan capital limpio a mercados de préstamo compatibles. No eligen rangos LP, no reclaman comisiones LP ni deciden cómo se desarma una posición AMM concreta.\n\nEsa separación es el objetivo del Lend Spoke. El capital del prestamista respalda la demanda especializada de prestatarios respaldados por LP, mientras los Borrow Spokes mantienen la valoración de colateral, los checks de salud y el manejo de liquidación aislados del flujo del prestamista."
         },
         {
           "id": "what-protects-lender-capital",
           "q": "¿Qué protege el capital del prestamista?",
-          "a": "Avana protege el capital del prestamista a través de préstamos sobrecolateralizados, valoración conservadora de LP, verificaciones de doble oráculo, límites de mercado, aplicación del factor de salud y vías de liquidación específicas de LP. Cada Spoke de Préstamo valora la garantía según los riesgos de su propio pool antes de que la deuda se extraiga de la liquidez del Hub.\n\nEl protocolo todavía conlleva riesgo DeFi: riesgo de contrato inteligente, riesgo de oráculo, riesgo de ejecución de liquidación y estrés de mercado. Avana contiene ese riesgo midiendo la garantía LP a nivel de mercado en lugar de tratar cada posición LP como un simple balance de tokens."
+          "a": "Avana protege el capital del prestamista mediante préstamos sobregarantizados, valoración conservadora de LP, checks de doble oráculo, caps de mercado, aplicación del factor de salud y rutas de liquidación específicas de LP. Cada Borrow Spoke valora el colateral según los riesgos de su propio pool antes de que se extraiga deuda de la liquidez del Hub.\n\nEl protocolo sigue conllevando riesgo DeFi: riesgo de smart contract, riesgo de oráculo, riesgo de ejecución de liquidación y estrés de mercado. Avana contiene ese riesgo midiendo el colateral LP a nivel de mercado en lugar de tratar cada posición LP como un simple saldo de tokens."
         }
       ]
     },
     {
       "id": "liquidations",
-      "name": "Salud y Liquidación",
+      "name": "Salud y liquidación",
       "summary": "",
       "questions": [
         {
           "id": "what-is-health-factor",
           "q": "¿Qué es el factor de salud?",
-          "a": "El factor de salud mide la relación entre el valor del colateral ajustado por riesgo y la deuda pendiente dentro de un Borrow Spoke. El modelo simplificado es el valor del colateral ajustado dividido por la deuda pendiente.\n\nEl valor del colateral ajustado ya incluye la valoración LP de Avana, los factores de colateral, el tratamiento de riesgo a nivel de pool y las suposiciones de valor recuperable. Si la salud cae por debajo del límite de liquidación, la posición se vuelve elegible para liquidación."
+          "a": "El factor de salud mide la relación entre el valor de colateral ajustado por riesgo y la deuda pendiente dentro de un Borrow Spoke. El modelo simplificado es valor de colateral ajustado dividido por deuda pendiente.\n\nEl valor de colateral ajustado ya incluye la valoración LP de Avana, los factores de colateral, el tratamiento de riesgo a nivel de pool y los supuestos de valor recuperable. Si la salud cae por debajo del límite de liquidación, la posición pasa a ser elegible para liquidación."
         },
         {
           "id": "what-affects-health-factor",
           "q": "¿Qué afecta a mi factor de salud?",
-          "a": "El factor de salud cambia cuando el valor del colateral cambia, la deuda cambia, se reclaman tarifas, se retira colateral, se añade apalancamiento o se actualizan los parámetros del mercado. LP las posiciones también pueden cambiar porque los precios de los tokens se mueven, la inventario del pool cambia, se acumulan tarifas o las posiciones concentradas se desplazan dentro y fuera del rango.\n\nPedir prestado más disminuye la salud porque la deuda aumenta. Pagar la deuda, agregar colateral aprobado o reducir la exposición mejora la salud porque la cuenta tiene más soporte de colateral en relación con la deuda."
+          "a": "El factor de salud cambia cuando cambia el valor del colateral, la deuda, se reclaman comisiones, se retira colateral, se añade apalancamiento o se actualizan parámetros de mercado. Las posiciones LP también pueden cambiar porque se mueven los precios de los tokens, cambia el inventario del pool, se acumulan comisiones o las posiciones concentradas entran y salen de rango.\n\nPedir más prestado baja la salud porque sube la deuda. Reembolsar deuda, añadir colateral aprobado o reducir exposición mejora la salud porque la cuenta tiene más soporte de colateral respecto a la deuda."
         },
         {
           "id": "how-does-liquidation-work",
           "q": "¿Cómo funciona la liquidación en Avana?",
-          "a": "La liquidación comienza cuando el factor de salud de una cuenta cae por debajo del umbral de liquidación. Aave maneja la contabilidad de la deuda, los controles de salud y el punto de entrada de la liquidación contra el colateral del bóveda ERC-20.\n\nAvana maneja el LP asentamiento detrás de ese token de bóveda. El Adaptador quema el colateral de la bóveda, asigna la liquidación de nuevo a la posición real LP, y la capa de asentamiento sigue la ruta del mercado: deshacer, vender, subastar o transferir la posición subyacente. La deuda se cubre primero, luego la recompensa del liquidador y los costos de asentamiento, con el excedente manejado por la regla del mercado."
+          "a": "La liquidación empieza cuando el factor de salud de una cuenta cae por debajo del umbral de liquidación. Aave gestiona la contabilidad de la deuda, los checks de salud y el punto de entrada de liquidación contra el colateral vault ERC-20.\n\nAvana gestiona el settlement LP detrás de ese vault token. El Adapter quema el vault collateral, mapea la liquidación de vuelta a la posición LP real y la capa de settlement sigue la ruta del mercado: unwind, venta, subasta o transferencia de la posición de respaldo. Primero se cubre la deuda, luego la recompensa del liquidador y los costes de settlement, con el excedente según la regla del mercado."
         },
         {
           "id": "are-liquidations-permissionless",
           "q": "¿Quién puede liquidar una posición no saludable?",
-          "a": "Las liquidaciones no requieren permiso una vez que una posición supera el umbral de liquidación. Cualquier liquidador elegible puede reembolsar la cantidad de deuda permitida y activar el camino de liquidación.\n\nEl colateral LP es más difícil de liquidar que el colateral simple de tokens, por lo que Avana también considera la cobertura de liquidación especializada. Los liquidadores siguen el mismo estado de riesgo, la asignación de tokens de la bóveda, la profundidad de la ruta y las suposiciones de liquidación utilizadas por el protocolo."
+          "a": "Las liquidaciones son permissionless una vez que una posición cruza el umbral de liquidación. Cualquier liquidador elegible puede reembolsar el importe de deuda permitido y disparar la ruta de settlement.\n\nEl colateral LP es más difícil de desarmar que el colateral token simple, así que Avana también contempla cobertura de liquidación especializada. Los liquidadores siguen el mismo estado de riesgo, mapeo de vault token, profundidad de ruta y supuestos de unwind que usa el protocolo."
         },
         {
           "id": "what-happens-to-fees-during-liquidation",
-          "q": "¿Qué pasa con las tarifas LP durante la liquidación?",
-          "a": "Avana distingue las tarifas devengadas de la liquidez principal. Durante la liquidación, la ruta de liquidación aplica las tarifas devengadas antes que la liquidez principal cuando la ruta del mercado soporta esa secuencia.\n\nEsto reduce cuánto de la posición central LP tiene que ser perturbada. Si el valor de las tarifas no cubre suficiente deuda, la capa de liquidación deshace o transfiere el colateral LP requerido según la ruta de liquidación de ese mercado."
+          "q": "¿Qué pasa con las comisiones LP durante la liquidación?",
+          "a": "Avana distingue las comisiones acumuladas de la liquidez principal. Durante la liquidación, la ruta de settlement aplica las comisiones acumuladas antes que la liquidez principal cuando la ruta del mercado admite esa secuencia.\n\nEso reduce cuánto hay que alterar del LP núcleo. Si el valor de las comisiones no cubre suficiente deuda, la capa de settlement desarma o transfiere el colateral LP necesario según la ruta de liquidación de ese mercado."
         }
       ]
     },
     {
       "id": "governance",
-      "name": "Proceso de Gobernanza",
+      "name": "Proceso de gobernanza",
       "summary": "",
       "questions": [
         {
           "id": "how-are-new-pools-added",
-          "q": "¿Cómo se agregan nuevas piscinas LP?",
-          "a": "Se añaden LP nuevos pools mediante revisión y aprobación del mercado. Un pool necesita una valoración confiable de los activos subyacentes, liquidez suficiente, supuestos claros de deshacer posiciones y parámetros de riesgo que se ajusten al tipo de colateral.\n\nAvana comienza con mercados LP seleccionados cuidadosamente para que la valoración y la liquidación se mantengan claras. La cobertura de pools más amplia puede expandirse con el tiempo a medida que mejore el soporte de oráculos, la profundidad de liquidez y los datos de riesgo."
+          "q": "¿Cómo se añaden nuevos pools LP?",
+          "a": "Los nuevos pools LP se añaden mediante revisión y aprobación de mercado. Un pool necesita precios fiables de los activos subyacentes, liquidez suficiente, supuestos claros de unwind y parámetros de riesgo que encajen con el tipo de colateral.\n\nAvana empieza con mercados LP curados para que la valoración y la liquidación se mantengan limpias. La cobertura más amplia de pools puede crecer con el tiempo a medida que mejoran el soporte de oráculos, la profundidad de liquidez y los datos de riesgo."
         },
         {
           "id": "can-risk-parameters-change",
           "q": "¿Pueden cambiar los parámetros de riesgo después del lanzamiento?",
-          "a": "Sí. Los parámetros de riesgo pueden cambiar a medida que cambian las condiciones del mercado. Un pool puede volverse menos líquido, más volátil, menos correlacionado o más difícil de liquidar que cuando se listó por primera vez.\n\nLas actualizaciones de parámetros pueden afectar los factores de colateral, los límites, los pools compatibles, los activos prestables, las pausas, los umbrales de liquidación y los bonos de liquidación. Los usuarios con deuda abierta siguen estas actualizaciones porque los cambios de parámetros afectan el poder de préstamo y el factor de salud."
+          "a": "Sí. Los parámetros de riesgo pueden cambiar cuando cambian las condiciones de mercado. Un pool puede volverse menos líquido, más volátil, menos correlacionado o más difícil de desarmar que cuando se listó.\n\nLas actualizaciones de parámetros pueden afectar factores de colateral, caps, pools compatibles, activos prestables, pausas, umbrales de liquidación y bonos de liquidación. Los usuarios con deuda abierta siguen estas actualizaciones porque los cambios de parámetros afectan el poder de préstamo y el factor de salud."
         },
         {
           "id": "where-can-i-follow-governance",
-          "q": "¿Dónde puedo seguir la discusión sobre gobernanza?",
-          "a": "La mayoría de las actualizaciones de gobernanza Avana y la discusión del mercado ocurren a través de Avana Labs en X en https://twitter.com/avana_labs. Ese canal cubre nuevos pools, parámetros del mercado, integraciones, revisiones de seguridad y fases de producto.\n\nPropuestas más extensas, notas de riesgo y hilos de gobernanza externos se enlazan desde Avana Labs cuando son relevantes. Para posiciones grandes, los usuarios revisan las últimas actualizaciones de Avana Labs y los parámetros del mercado en vivo antes de depender de un pool."
+          "q": "¿Dónde puedo seguir la discusión de gobernanza?",
+          "a": "La mayoría de las actualizaciones de gobernanza y discusión de mercado de Avana ocurren a través de Avana Labs en X en https://twitter.com/avana_labs. Ese canal cubre nuevos pools, parámetros de mercado, integraciones, revisiones de seguridad y fases de producto.\n\nLas propuestas más largas, notas de riesgo e hilos de gobernanza externos se enlazan desde Avana Labs cuando son relevantes. Para posiciones grandes, los usuarios revisan las últimas actualizaciones de Avana Labs y los parámetros de mercado en vivo antes de confiar en un pool."
         },
         {
           "id": "can-interface-fees-change",
-          "q": "¿Pueden cambiar las tarifas de la interfaz con el tiempo?",
-          "a": "Sí. Avana las tarifas de interfaz y de servicio son configuraciones operativas para frontends oficiales. Son independientes de la mecánica central del protocolo que rige el colateral, la deuda, las verificaciones del oráculo y la liquidación.\n\nCuando se aplica una tarifa de interfaz, el flujo de la transacción la muestra antes de la firma para que los usuarios puedan distinguir el costo del frontend del gas, la ejecución del intercambio, los intereses del protocolo y la economía de la liquidación."
+          "q": "¿Pueden cambiar las comisiones de interfaz con el tiempo?",
+          "a": "Sí. Las comisiones de interfaz y servicio de Avana son ajustes operativos de los frontends oficiales. Están separadas de la mecánica central del protocolo que gobierna colateral, deuda, checks de oráculo y liquidación.\n\nCuando aplica una comisión de interfaz, el flujo de la transacción la muestra antes de la firma para que los usuarios distingan el coste del frontend del gas, la ejecución de swap, los intereses del protocolo y la economía de liquidación."
         }
       ]
     },
     {
       "id": "gho-stablecoin",
-      "name": "GHO Moneda estable",
+      "name": "Stablecoin GHO",
       "summary": "",
       "questions": [
         {
           "id": "can-i-borrow-gho",
           "q": "¿Puedo pedir prestado GHO a través de Avana?",
-          "a": "GHO es uno de los activos de préstamo soportados por Avana para mercados que incluyen liquidez de GHO. Cuando un mercado ofrece GHO, los usuarios pueden pedirlo prestado contra colateral aprobado LP mientras la cuenta permanezca por encima del umbral de salud requerido.\n\nPedir prestado GHO funciona como cualquier otro activo de deuda en Avana: aumenta la deuda pendiente, afecta el factor de salud, acumula intereses y se devuelve en GHO más cualquier costo aplicable."
+          "a": "GHO es uno de los activos del lado del préstamo compatibles de Avana en mercados que incluyen liquidez GHO. Cuando un mercado ofrece GHO, los usuarios pueden pedirlo prestado contra colateral LP aprobado mientras la cuenta se mantiene por encima del umbral de salud requerido.\n\nPedir prestado GHO funciona como cualquier otro activo de deuda en Avana: aumenta la deuda pendiente, afecta el factor de salud, acumula intereses y se reembolsa en GHO más cualquier coste aplicable."
         },
         {
           "id": "can-gho-be-lp-collateral",
-          "q": "¿Puede GHO ser parte de la garantía LP?",
-          "a": "Sí. GHO puede ser parte del colateral de LP cuando el fondo específico de GHO es aprobado para un mercado de Avana. El fondo se evalúa como otros mercados de LP: precio de los activos, profundidad de liquidez, correlación, composición de tokens, límites y ruta de liquidación, todos importan.\n\nEsto significa que GHO no se trata como una aprobación general para cada par. Avana soporta la configuración del fondo, no solo el símbolo del activo."
+          "q": "¿Puede GHO formar parte del colateral LP?",
+          "a": "Sí. GHO puede formar parte del colateral LP cuando el pool GHO concreto está aprobado para un mercado Avana. El pool se evalúa como otros mercados LP: precios de activos, profundidad de liquidez, correlación, composición de tokens, caps y ruta de liquidación importan.\n\nEso significa que GHO no se trata como una aprobación general para cada par. Avana admite la configuración del pool, no solo el símbolo del activo."
         },
         {
           "id": "how-do-i-repay-gho",
-          "q": "¿Cómo puedo pagar GHO de deuda?",
-          "a": "GHO la deuda se paga en GHO más los intereses devengados y cualquier costo aplicable. Una vez confirmada la devolución, Avana reduce la deuda pendiente de la cuenta y mejora el factor de salud.\n\nDespués del reembolso completo, las restricciones de garantía vinculadas a esa deuda se liberan de acuerdo con las normas del mercado, lo que permite que la posición LP sea retirada o modificada cuando no quede ninguna otra deuda."
+          "q": "¿Cómo reembolso deuda GHO?",
+          "a": "La deuda GHO se reembolsa en GHO más intereses acumulados y cualquier coste aplicable. Una vez confirmado el reembolso, Avana reduce la deuda pendiente de la cuenta y mejora el factor de salud.\n\nTras el reembolso completo, las restricciones de colateral ligadas a esa deuda se liberan según las reglas del mercado, permitiendo retirar o modificar la posición LP cuando no queda otra deuda."
         }
       ]
     },
     {
       "id": "multiply-markets",
-      "name": "Multiplicar Mercados",
+      "name": "Mercados Multiply",
       "summary": "",
       "questions": [
         {
           "id": "what-is-avana-multiply",
-          "q": "¿Qué es Avana Multiplicar?",
-          "a": "Avana Multiply es el flujo de trabajo de apalancamiento gestionado construido sobre crédito respaldado por LP. Un usuario deposita garantía LP admitida, Avana la valora, y la interfaz puede usar ese poder de endeudamiento para abrir exposición aprobada de ciclo o apalancamiento desde un flujo.\n\nEn lugar de pedir prestado manualmente, intercambiar, volver a depositar y rastrear la deuda a través de múltiples herramientas, Multiply empaqueta la posición en un flujo de trabajo monitoreado único con garantía, deuda, nivel de apalancamiento, factor de salud y controles de cierre mostrados juntos."
+          "q": "¿Qué es Avana Multiply?",
+          "a": "Avana Multiply es el flujo de apalancamiento gestionado construido sobre crédito respaldado por LP. Un usuario deposita colateral LP compatible, Avana lo valora y la interfaz puede usar ese poder de préstamo para abrir exposición de loop o apalancamiento aprobada desde un solo flujo.\n\nEn lugar de pedir prestado, hacer swap, redepositar y seguir la deuda a mano en varias herramientas, Multiply empaqueta la posición en un flujo monitoreado con colateral, deuda, nivel de apalancamiento, factor de salud y controles de unwind mostrados juntos."
         },
         {
           "id": "how-is-multiply-different-from-borrowing",
-          "q": "¿Cómo se diferencia Multiplicar de pedir prestado?",
-          "a": "El préstamo proporciona a los usuarios activos que pueden utilizar directamente, siempre que la cuenta permanezca saludable. Multiply utiliza el poder de préstamo respaldado por LP dentro de una estrategia gestionada, donde el capital prestado se dirige a exposición aprobada y se rastrea como una sola posición.\n\nDebido a que Multiply agrega apalancamiento, puede aumentar la eficiencia del capital y los rendimientos potenciales, pero también incrementa el riesgo a la baja, el riesgo de liquidación y la sensibilidad al movimiento de los precios. La vista de salud importa más, no menos, cuando una posición está en bucle."
+          "q": "¿En qué se diferencia Multiply de pedir prestado?",
+          "a": "Pedir prestado da a los usuarios activos que pueden usar directamente, siempre que la cuenta se mantenga saludable. Multiply usa el poder de préstamo respaldado por LP dentro de una estrategia gestionada, donde el capital prestado se enruta a exposición aprobada y se sigue como una sola posición.\n\nComo Multiply añade apalancamiento, puede aumentar la eficiencia de capital y los retornos potenciales, pero también aumenta el downside, el riesgo de liquidación y la sensibilidad al movimiento de precios. La vista de salud importa más, no menos, cuando una posición está en loop."
         },
         {
           "id": "do-i-keep-lp-while-using-multiply",
-          "q": "¿Mantengo mi LP mientras uso Multiplicar?",
-          "a": "Sí. La posición LP sigue siendo la base colateral mientras la posición Multiply está abierta. El usuario no necesita salir completamente de la posición AMM solo para crear exposición apalancada.\n\nLa LP todavía respalda la deuda, por lo que sigue sujeta a las reglas de colateral y a la liquidación si la cuenta se vuelve insalubre. Los usuarios monitorean el valor del colateral, la deuda, el apalancamiento y el margen de liquidación durante toda la vida del ciclo."
+          "q": "¿Conservo mi LP mientras uso Multiply?",
+          "a": "Sí. La posición LP sigue siendo la base de colateral mientras la posición Multiply está abierta. El usuario no necesita salir del todo de la posición AMM solo para crear exposición apalancada.\n\nEl LP sigue respaldando deuda, así que permanece sujeto a las reglas de colateral y a liquidación si la cuenta se vuelve no saludable. Los usuarios monitorean valor de colateral, deuda, apalancamiento y buffer de liquidación durante toda la vida del loop."
         },
         {
           "id": "what-limits-maximum-leverage",
           "q": "¿Qué limita el apalancamiento máximo?",
-          "a": "El apalancamiento máximo depende de la calidad del colateral, la liquidez del grupo, la volatilidad, la confianza en el oráculo, el activo prestado, las capitalizaciones de mercado y las suposiciones de liquidación. Los grupos estables o altamente correlacionados usualmente pueden soportar límites de apalancamiento diferentes a los de grupos volátiles o poco líquidos.\n\nAvana utiliza controles de riesgo específicos del mercado, por lo que el apalancamiento está limitado por el LP colateral real detrás de la posición en lugar de un multiplicador fijo aplicado a cada grupo."
+          "a": "El apalancamiento máximo depende de la calidad del colateral, la liquidez del pool, la volatilidad, la confianza del oráculo, el activo de préstamo, los caps de mercado y los supuestos de liquidación. Los pools estables o muy correlacionados suelen soportar límites de apalancamiento distintos a los de pools volátiles o poco profundos.\n\nAvana usa controles de riesgo específicos del mercado para que el apalancamiento quede acotado por el colateral LP real detrás de la posición, no por un multiplicador plano aplicado a todos los pools."
         }
       ]
     },
@@ -302,18 +302,18 @@
       "questions": [
         {
           "id": "can-automation-help-manage-risk",
-          "q": "¿Puede la automatización ayudar a gestionar el riesgo de posición?",
-          "a": "La automatización supervisa la salud de la cuenta y puede desencadenar acciones predefinidas como el reembolso, la reducción de apalancamiento o la disminución de exposición antes de la liquidación. Esto es importante porque las posiciones respaldadas por LP se mueven tanto con la acumulación de deuda como con los cambios de mercado a nivel del pool.\n\nLa automatización es una herramienta de gestión de riesgos, no una garantía. La ejecución aún puede verse afectada por movimientos del mercado, condiciones de liquidez, retrasos en las transacciones, actualizaciones del oráculo y disponibilidad de rutas."
+          "q": "¿Puede la automatización ayudar a gestionar el riesgo de la posición?",
+          "a": "La automatización monitorea la salud de la cuenta y puede disparar acciones predefinidas como reembolso, deleveraging o reducción de exposición antes de la liquidación. Esto importa porque las posiciones respaldadas por LP se mueven tanto con la acumulación de deuda como con los cambios de mercado a nivel de pool.\n\nLa automatización es una herramienta de gestión de riesgo, no una garantía. La ejecución todavía puede verse afectada por movimientos de mercado, condiciones de liquidez, retrasos de transacción, actualizaciones de oráculo y disponibilidad de rutas."
         },
         {
           "id": "can-lp-collateral-support-perps-exposure",
-          "q": "¿Puede LP respaldar exposición al estilo de los delincuentes?",
-          "a": "LP respalda colateral aprobado para apalancamiento o exposición al estilo de perps a través de mercados e integraciones que canalizan crédito respaldado por LP hacia estrategias controladas. La posición de LP crea poder de endeudamiento, y ese crédito puede ser deployado a través de rutas de exposición compatibles en lugar de ser usado solo como un simple préstamo de cartera.\n\nLa disponibilidad se define por la configuración activa del mercado: tipo de colateral, parámetros del mercado, confianza del oráculo, liquidez, activo de deuda y ruta de integración. La interfaz muestra las rutas compatibles para cada mercado."
+          "q": "¿Puede el colateral LP respaldar exposición estilo perps?",
+          "a": "El colateral LP respalda apalancamiento o exposición estilo perps aprobados a través de mercados e integraciones que enrutan crédito respaldado por LP a estrategias controladas. La posición LP crea poder de préstamo, y ese crédito puede desplegarse por rutas de exposición compatibles en lugar de usarse solo como un préstamo simple a la wallet.\n\nLa disponibilidad la define la configuración activa del mercado: tipo de colateral, parámetros de mercado, confianza del oráculo, liquidez, activo de deuda y ruta de integración. La interfaz muestra las rutas compatibles de cada mercado."
         },
         {
           "id": "what-users-monitor",
           "q": "¿Qué monitorean los usuarios después de abrir una posición?",
-          "a": "Los usuarios monitorean el factor de salud, el uso del préstamo, el valor del colateral, el crecimiento de la deuda, el estado del rango LP, la acumulación de tarifas y el margen de liquidación. Para las posiciones Multiply, también monitorean el nivel de apalancamiento y los controles de desmantelamiento.\n\nAvana muestra estos valores en la interfaz para que los usuarios puedan ver cuándo una posición está saludable, cuándo necesita atención y cuándo el riesgo se está acercando a la liquidación."
+          "a": "Los usuarios monitorean factor de salud, uso del préstamo, valor del colateral, crecimiento de la deuda, estado del rango LP, acumulación de comisiones y buffer de liquidación. En posiciones Multiply, también monitorean el nivel de apalancamiento y los controles de unwind.\n\nAvana muestra estos valores en la interfaz para que los usuarios vean cuándo una posición está saludable, cuándo necesita atención y cuándo el riesgo se acerca a la liquidación."
         }
       ]
     }

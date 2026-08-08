@@ -2,12 +2,12 @@
   "posts": [
     {
       "slug": "lp-risk-governance",
-      "title": "Comment Avana régit le risque LP",
+      "title": "Comment Avana gouverne le risque LP",
       "date": "July 24, 2026",
-      "description": "Comment Avana gouverne le risque collatéral LP à travers les marchés satellites avec des mises à jour limitées, une révision indépendante et une containment d'urgence.",
+      "description": "Comment Avana gouverne le risque de collatéral LP sur les marchés Spoke, avec des mises à jour bornées, une revue indépendante et un confinement d’urgence.",
       "image": "/images/blog/lp-risk-governance.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Protocole",
       "sections": [
         {
           "id": "why-lp-risk-is-different",
@@ -28,7 +28,7 @@
           "title": "Comment la routine change le navire",
           "paragraphs": [
             "Le chemin de mise à jour standard sur Avana consiste en un avis public, une soumission, une validation par rapport aux limites prédéfinies, un verrou temporel, un examen par le Gardien, et une exécution si personne ne veto. Les développeurs, les utilisateurs et les participants à la gouvernance peuvent lire la justification avant qu’un changement soit appliqué et comparer la politique écrite à l’action en attente. Pour un protocole fondé sur des garanties complexes, cette cohérence publique est une exigence de base plutôt qu’un extra marketing.",
-            "Tous les changements n'utilisent pas ce chemin. Réduire le risque est censé être plus facile qu'ajouter du risque. Un réglage modeste à l'intérieur des plages approuvées suit le flux standard. Les mouvements plus importants, tels que de nouvelles familles de rayons, de nouveaux primitifs LP, de nouveaux modèles d'oracle ou de nouveaux adaptateurs de liquidation, se situent en dehors du processus routinier car ils élargissent la surface de risque de Avana et nécessitent un contrôle plus approfondi."
+            "Tous les changements n'utilisent pas ce chemin. Réduire le risque est censé être plus facile qu'ajouter du risque. Un réglage modeste à l'intérieur des plages approuvées suit le flux standard. Les mouvements plus importants, tels que de nouvelles familles de Spokes, de nouveaux primitifs LP, de nouveaux modèles d'oracle ou de nouveaux adaptateurs de liquidation, se situent en dehors du processus routinier car ils élargissent la surface de risque de Avana et nécessitent un contrôle plus approfondi."
           ]
         },
         {
@@ -36,19 +36,19 @@
           "title": "Lorsque Avana utilise l'alimentation d'urgence",
           "paragraphs": [
             "Les cas d'urgence incluent l'incohérence de l'oracle, la dégradation du chemin de liquidation, le comportement anormal du pool, la défaillance du wrapper, la compromission de l'adaptateur ou l'instabilité soudaine au niveau des spokes. Même alors, le cadre reste prudent. L'autorité d'urgence sur Avana est étroite, défensive et réversible. Elle existe pour les moments où les hypothèses échouent plus rapidement que la gouvernance par timelock ne peut réagir. Ce n'est pas une voie alternative pour l'optimisation quotidienne.",
-            "Pris dans son ensemble, Avana adapte la structure de gouvernance à la complexité des garanties. LP, le prêt garanti, nécessite des modèles de marché, une exécution limitée, une divulgation transparente et une ligne dure entre la croissance normale, l'ajustement défensif et le confinement d'urgence. Chaque rayon conserve ses propres hypothèses d'oracle, sa logique de liquidation, ses règles d'admission et ses contraintes opérationnelles. Avana ne prétend pas que chaque marché LP est interchangeable."
+            "Pris dans son ensemble, Avana adapte la structure de gouvernance à la complexité des garanties. LP, le prêt garanti, nécessite des modèles de marché, une exécution limitée, une divulgation transparente et une ligne dure entre la croissance normale, l'ajustement défensif et le confinement d'urgence. Chaque Spoke conserve ses propres hypothèses d'oracle, sa logique de liquidation, ses règles d'admission et ses contraintes opérationnelles. Avana ne prétend pas que chaque marché LP est interchangeable."
           ]
         }
       ]
     },
     {
       "slug": "why-lp-collateral-needs-smart-agents",
-      "title": "Pourquoi LP Les garanties nécessitent des agents intelligents",
+      "title": "Pourquoi le collatéral LP a besoin de Smart Agents",
       "date": "July 22, 2026",
-      "description": "Pourquoi Avana utilise des Agents Intelligents pour surveiller la santé, les postes spécifiques aux lieux de service et maintenir la couverture de liquidation fiable en période de stress.",
+      "description": "Pourquoi Avana utilise des Smart Agents pour surveiller la santé, gérer les positions propres à chaque lieu et garder une couverture de liquidation fiable sous stress.",
       "image": "/images/blog/smart-agents-lp-collateral.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Protocole",
       "sections": [
         {
           "id": "lp-loans-are-operational",
@@ -78,12 +78,12 @@
     },
     {
       "slug": "how-lp-liquidation-should-work",
-      "title": "Comment LP La liquidation devrait fonctionner",
+      "title": "Comment la liquidation LP devrait fonctionner",
       "date": "July 20, 2026",
-      "description": "Comment Avana liquide LP garanties avec des désengagements contrôlés, une intervention partielle, les frais en priorité lorsque possible, et des parcours spécifiques selon le lieu.",
+      "description": "Comment Avana liquide le collatéral LP avec des désengagements contrôlés, une intervention partielle, les frais d’abord lorsque c’est possible, et des chemins propres à chaque lieu.",
       "image": "/images/blog/lp-liquidation-workflow.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Protocole",
       "sections": [
         {
           "id": "not-a-token-sale",
@@ -119,12 +119,12 @@
     },
     {
       "slug": "pricing-lp-collateral-oracle-problem",
-      "title": "Tarification LP des garanties avec de meilleurs oracles",
+      "title": "Pricer le collatéral LP avec de meilleurs oracles",
       "date": "July 17, 2026",
-      "description": "Comment Avana Oracle évalue LP les garanties en utilisant la valeur recouvrable, la reconstruction déterministe et les décotes de récupération conservatrices.",
+      "description": "Comment Avana Oracle évalue le collatéral LP via la valeur récupérable, une reconstruction déterministe et des décotes de récupération conservatrices.",
       "image": "/images/blog/lp-collateral-oracle-problem.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Protocole",
       "sections": [
         {
           "id": "what-avana-oracle-asks",
@@ -160,12 +160,12 @@
     },
     {
       "slug": "security-deep-dive",
-      "title": "Comment Avana gère le risque collatéral LP",
+      "title": "Comment Avana gère le risque de collatéral LP",
       "date": "July 15, 2026",
-      "description": "Comment Avana structure une sécurité à plusieurs niveaux pour LP garanties, de l'architecture et des oracles jusqu'à la santé, la liquidation et les opérations.",
+      "description": "Comment Avana structure une sécurité en couches pour le collatéral LP, de l’architecture et des oracles jusqu’à la santé, la liquidation et les opérations.",
       "image": "/images/blog/security-deep-dive.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Protocole",
       "sections": [
         {
           "id": "more-than-a-price",
@@ -178,7 +178,7 @@
           "id": "architecture-and-oracles",
           "title": "Architecture et évaluation",
           "paragraphs": [
-            "La première couche de sécurité est architecturale. Avana utilise la structure en hub et rayon de Aave v4. Le hub contient la couche de liquidité commune, gère la comptabilité des réserves et impose des contraintes de solvabilité. Le rayon est l'endroit où vit la logique spécifique du collatéral LP : admission, règles d'évaluation, paramètres de risque spécifiques aux pools et comportement de liquidation. Si un marché LP devient stressé, ce stress est censé rester contenu dans le rayon plutôt que de réécrire les hypothèses sur des types de collatéral non liés. Sur Avana, le rayon fait partie de la limite de sécurité.",
+            "La première couche de sécurité est architecturale. Avana utilise la structure en hub et Spoke de Aave v4. Le hub contient la couche de liquidité commune, gère la comptabilité des réserves et impose des contraintes de solvabilité. Le Spoke est l'endroit où vit la logique spécifique du collatéral LP : admission, règles d'évaluation, paramètres de risque spécifiques aux pools et comportement de liquidation. Si un marché LP devient stressé, ce stress est censé rester contenu dans le Spoke plutôt que de réécrire les hypothèses sur des types de collatéral non liés. Sur Avana, le Spoke fait partie de la limite de sécurité.",
             "La deuxième couche est la conception de l'oracle et de l'évaluation. LP Les positions ne peuvent pas être évaluées en toute sécurité avec un seul flux fixe. Avana utilise un cadre à double source. Les flux de prix externes fournissent la référence principale pour les sous-jacents, tandis que la tarification dérivée AMM agit comme une vérification indépendante. Le pouvoir d'emprunt n'existe que lorsque les deux sources restent cohérentes dans la tolérance. Le risque est attribué au niveau du marché. La structure du pool, la corrélation des actifs, la profondeur de liquidité et la concentration de la fourchette influencent tous le traitement des garanties. Le pouvoir d'emprunt est ancré aux aspects les plus faibles de la position, avec des ajustements au niveau du pool pour la volatilité, la qualité de la liquidité et les hypothèses de stress."
           ]
         },
@@ -202,9 +202,9 @@
     },
     {
       "slug": "hedge-lp-position",
-      "title": "Comment couvrir une position LP de manière plus réfléchie",
+      "title": "Comment couvrir une position LP plus judicieusement",
       "date": "July 13, 2026",
-      "description": "Comment les LP peuvent utiliser Avana pour financer des tampons, des écarts directionnels et des habitudes de couverture plus disciplinées sans sortir complètement du pool.",
+      "description": "Comment les LPs peuvent utiliser Avana pour financer des buffers, des offsets directionnels et des habitudes de couverture plus disciplinées sans sortir entièrement du pool.",
       "image": "/images/blog/hedge-lp-position.png",
       "category": "For LPs",
       "tag": "Guides",
@@ -243,9 +243,9 @@
     },
     {
       "slug": "yield-looping-playbook",
-      "title": "Bouclage de rendement avec LP garanties",
+      "title": "Boucler du rendement avec du collatéral LP",
       "date": "July 10, 2026",
-      "description": "Comment penser à la boucle de rendement avec un collatéral Avana LP, y compris les tampons, les tests de résistance, la discipline de sortie et l'effet de levier durable.",
+      "description": "Comment penser le yield looping avec le collatéral LP Avana : buffers, tests de stress, discipline de sortie et levier soutenable.",
       "image": "/images/blog/yield-looping-playbook.png",
       "category": "For LPs",
       "tag": "Guides",
@@ -284,9 +284,9 @@
     },
     {
       "slug": "unleashing-lp-tokens",
-      "title": "Ce que le LP garantie rend possible",
+      "title": "Ce que le collatéral LP rend possible",
       "date": "July 8, 2026",
-      "description": "Ce que le Avana LP collatéral rend possible à travers l'emprunt, la couverture, la flexibilité de trésorerie et un usage du capital plus efficace de la liquidité productive.",
+      "description": "Ce que le collatéral LP Avana rend possible : emprunt, couverture, flexibilité de trésorerie et usage plus efficace du capital de liquidité productive.",
       "image": "/images/blog/unleashing-lp-tokens.png",
       "category": "For LPs",
       "tag": "Guides",
@@ -325,12 +325,12 @@
     },
     {
       "slug": "aerodrome-lp-collateral-aave-v4",
-      "title": "Emprunter contre Aerodrome LPs sur Aave v4",
+      "title": "Emprunter sur des LP Aerodrome via Aave v4",
       "date": "July 6, 2026",
-      "description": "Comment Avana soutient Aerodrome LP positions sur Base afin qu'elles puissent rester actives tout en soutenant l'emprunt via un rayon dédié Aave v4.",
+      "description": "Comment Avana prend en charge les positions LP Aerodrome sur Base pour qu’elles restent actives tout en soutenant l’emprunt via un Spoke Aave v4 dédié.",
       "image": "/images/blog/aerodrome-lp-collateral.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Protocole",
       "sections": [
         {
           "id": "aerodrome-on-avana",
@@ -343,8 +343,8 @@
           "id": "hub-spoke-and-pool-quality",
           "title": "Hub, spoke et qualité de pool",
           "paragraphs": [
-            "L'architecture en hub et rayons de Aave v4 est ce qui fait fonctionner la forme du produit. Le hub gère la liquidité partagée. Le rayon Avana gère la logique spécifique des garanties Aerodrome. Un pool stable sur Base ne devrait pas être traité de la même manière qu'une paire d'écosystème volatile juste parce que les deux sont des Aerodrome LP. Le rayon définit comment différentes catégories de liquidité Aerodrome sont valorisées, combien de pouvoir d'emprunt elles soutiennent et comment la liquidation fonctionne si une position devient dangereuse.",
-            "Les pools Aerodrome varient largement. Certains impliquent des actifs établis avec une liquidité plus forte. D'autres se concentrent sur des tokens d'écosystème plus rapides avec une volatilité plus élevée et une profondeur plus faible. Les positions qui semblent similaires en surface peuvent se comporter très différemment en tant que garantie. Le modèle en rayon de Avana attribue le traitement selon la structure et la qualité du pool, et non simplement selon le nom du lieu."
+            "L'architecture en hub et Spokes de Aave v4 est ce qui fait fonctionner la forme du produit. Le hub gère la liquidité partagée. Le Spoke Avana gère la logique spécifique des garanties Aerodrome. Un pool stable sur Base ne devrait pas être traité de la même manière qu'une paire d'écosystème volatile juste parce que les deux sont des Aerodrome LP. Le Spoke définit comment différentes catégories de liquidité Aerodrome sont valorisées, combien de pouvoir d'emprunt elles soutiennent et comment la liquidation fonctionne si une position devient dangereuse.",
+            "Les pools Aerodrome varient largement. Certains impliquent des actifs établis avec une liquidité plus forte. D'autres se concentrent sur des tokens d'écosystème plus rapides avec une volatilité plus élevée et une profondeur plus faible. Les positions qui semblent similaires en surface peuvent se comporter très différemment en tant que garantie. Le modèle en Spoke de Avana attribue le traitement selon la structure et la qualité du pool, et non simplement selon le nom du lieu."
           ]
         },
         {
@@ -352,26 +352,26 @@
           "title": "Évaluation et le flux d'emprunt",
           "paragraphs": [
             "Un Aerodrome LP n'est pas un simple jeton de prix. C'est une créance sur les actifs sous-jacents du pool dont la composition et la qualité importent directement. Avana évalue la valeur du collatéral de manière prudente, en tenant compte de la qualité de la liquidité, de la volatilité, de la corrélation des actifs et du comportement du pool si le marché tourne. Une position peut avoir une valeur notionnelle substantielle, mais le pouvoir d'emprunt reflète ce qui peut être récupéré en cas de stress.",
-            "Le flux d'emprunt est concret. Vous fournissez un Aerodrome LP pris en charge via le rayon Avana, où il reste actif et génère des frais. Le rayon évalue la position en utilisant la logique de garantie spécifique au pool. En fonction de cela, vous pouvez emprunter des actifs pris en charge à partir de la liquidité du hub. Les pools de style stable et blue chip peuvent supporter un traitement de garantie plus strict. Les paires volatiles ou moins liquides obtiennent des limites plus strictes et des facteurs plus faibles."
+            "Le flux d'emprunt est concret. Vous fournissez un Aerodrome LP pris en charge via le Spoke Avana, où il reste actif et génère des frais. Le Spoke évalue la position en utilisant la logique de garantie spécifique au pool. En fonction de cela, vous pouvez emprunter des actifs pris en charge à partir de la liquidité du hub. Les pools de style stable et blue chip peuvent supporter un traitement de garantie plus strict. Les paires volatiles ou moins liquides obtiennent des limites plus strictes et des facteurs plus faibles."
           ]
         },
         {
           "id": "if-health-breaks",
           "title": "If health breaks",
           "paragraphs": [
-            "Si une position devient dangereuse, Avana liquidera la position de liquidité active, tiendra compte des sous-jacents et rétablira la solvabilité avec le moins de perturbations possible selon ce que le marché permet. La structure du pool détermine le fonctionnement de la liquidation. C'est une autre raison pour laquelle le collatéral de Aerodrome doit se trouver dans un rayon dédié plutôt qu'en tant qu'extension lâche d'un marché de prêt plus large."
+            "Si une position devient dangereuse, Avana liquidera la position de liquidité active, tiendra compte des sous-jacents et rétablira la solvabilité avec le moins de perturbations possible selon ce que le marché permet. La structure du pool détermine le fonctionnement de la liquidation. C'est une autre raison pour laquelle le collatéral de Aerodrome doit se trouver dans un Spoke dédié plutôt qu'en tant qu'extension lâche d'un marché de prêt plus large."
           ]
         }
       ]
     },
     {
       "slug": "curve-lp-collateral-aave-v4",
-      "title": "Emprunter contre Curve LPs sur Aave v4",
+      "title": "Emprunter sur des LP Curve via Aave v4",
       "date": "July 3, 2026",
-      "description": "Comment Avana traite Curve LP garanties pour les pools stables et corrélés via un Aave v4 dédié.",
+      "description": "Comment Avana traite le collatéral LP Curve pour les pools stables et corrélés via un Spoke Aave v4 dédié.",
       "image": "/images/blog/curve-lp-collateral.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Protocole",
       "sections": [
         {
           "id": "why-curve-matters",
@@ -393,26 +393,26 @@
           "title": "Qui l'utilise et comment fonctionne l'emprunt",
           "paragraphs": [
             "De nombreuses Curve positions sont déjà utilisées par des participants DeFi sophistiqués comme exposition principale à la liquidité. Les pools de stablecoins, les paires de staking liquide et les marchés d'actifs corrélés représentent d'importantes sommes de capitaux économiquement importants. Si ces positions peuvent soutenir l'emprunt sans nécessiter de retrait, cela élargit l'utilité de certaines des liquidités les plus fondamentales dans DeFi tout en les laissant dans le pool.",
-            "Le flux d'emprunt sur Avana est une offre d'un Curve LP pris en charge via le rayon, où il reste actif et génère des frais. Le rayon évalue la position, et vous pouvez emprunter des actifs pris en charge à partir de la liquidité du hub. Les pools de stablecoins peuvent prendre en charge une forme de traitement des garanties, les pools d'actifs corrélés une autre, et les pools avec une liquidité plus faible ou des relations plus fragiles obtiennent des contraintes plus strictes."
+            "Le flux d'emprunt sur Avana est une offre d'un Curve LP pris en charge via le Spoke, où il reste actif et génère des frais. Le Spoke évalue la position, et vous pouvez emprunter des actifs pris en charge à partir de la liquidité du hub. Les pools de stablecoins peuvent prendre en charge une forme de traitement des garanties, les pools d'actifs corrélés une autre, et les pools avec une liquidité plus faible ou des relations plus fragiles obtiennent des contraintes plus strictes."
           ]
         },
         {
           "id": "liquidation",
-          "title": "La liquidation suit la piscine",
+          "title": "La liquidation suit la pool",
           "paragraphs": [
-            "Si un Curve LP devient dangereux, Avana ne déroule que ce qui est nécessaire pour rétablir la solvabilité lorsque cela est possible, respecte la structure sous-jacente du pool, et minimise les perturbations tout en remboursant la dette. Différents types de pools nécessitent différentes hypothèses. C'est le but du modèle en rayons, et c'est ainsi que Avana peut évoluer Curve famille par famille sans qu'une règle générique LP ne s'applique à chaque AMM."
+            "Si un Curve LP devient dangereux, Avana ne déroule que ce qui est nécessaire pour rétablir la solvabilité lorsque cela est possible, respecte la structure sous-jacente du pool, et minimise les perturbations tout en remboursant la dette. Différents types de pools nécessitent différentes hypothèses. C'est le but du modèle en Spokes, et c'est ainsi que Avana peut évoluer Curve famille par famille sans qu'une règle générique LP ne s'applique à chaque AMM."
           ]
         }
       ]
     },
     {
       "slug": "balancer-lp-collateral-aave-v4",
-      "title": "Balancer LP Garantie sur Aave v4",
+      "title": "Collatéral LP Balancer sur Aave v4",
       "date": "July 1, 2026",
-      "description": "Comment Avana soutient Balancer pools pondérés LP en tant que garantie sur Aave v4 tandis que l'exposition reste active.",
+      "description": "Comment Avana prend en charge les LP de pools pondérés Balancer comme garantie sur Aave v4, pendant que l’exposition reste active.",
       "image": "/images/blog/balancer-lp-collateral.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Protocole",
       "sections": [
         {
           "id": "portfolio-style-lps",
@@ -434,7 +434,7 @@
           "title": "Emprunter et se détendre",
           "paragraphs": [
             "De nombreuses Balancer pools expriment des vues de portefeuille délibérées : paires de jetons de gouvernance, allocations d'indices pondérées, paniers stables et corrélés. Si ces positions deviennent des garanties empruntables sur Avana, les utilisateurs n'ont pas à choisir entre maintenir une exposition de marché structurée et accéder à la liquidité. La même position de pool reste active, génère des frais et soutient l'emprunt via Aave v4.",
-            "Le flux consiste à fournir un Balancer LP pris en charge à travers le rayon Avana, où la position reste active et génère des frais. Le rayon l’évalue en utilisant la logique de garantie spécifique au marché. Les types de pool plus sûrs soutiennent un traitement plus solide. Les structures concentrées ou volatiles obtiennent des hypothèses plus prudentes. La structure du marché détermine le traitement du prêt, et non uniquement le branding du lieu.",
+            "Le flux consiste à fournir un Balancer LP pris en charge à travers le Spoke Avana, où la position reste active et génère des frais. Le Spoke l’évalue en utilisant la logique de garantie spécifique au marché. Les types de pool plus sûrs soutiennent un traitement plus solide. Les structures concentrées ou volatiles obtiennent des hypothèses plus prudentes. La structure du marché détermine le traitement du prêt, et non uniquement le branding du lieu.",
             "Si une position devient dangereuse, Avana ne peut pas supposer que le dénouement d'une Balancer LP ressemble au dénouement d'une position plus simple avec deux actifs. Il doit tenir compte de la structure réelle du pool, des sous-jacents et du chemin d'exécution nécessaire pour rétablir la solvabilité avec un minimum de perturbation. Le collatéral détermine à quoi ressemble une liquidation sûre."
           ]
         }
@@ -442,12 +442,12 @@
     },
     {
       "slug": "smart-contract-architecture",
-      "title": "Emprunter contre Uniswap LPs sur Aave v4",
+      "title": "Emprunter sur des LP Uniswap via Aave v4",
       "date": "June 28, 2026",
-      "description": "Comment Avana transforme Uniswap LP positions en Aave v4 garanties pendant qu'elles restent dans le pool et continuent de générer des frais.",
+      "description": "Comment Avana transforme les positions LP Uniswap en collatéral Aave v4 pendant qu’elles restent dans le pool et continuent de générer des frais.",
       "image": "/images/blog/uniswap-lp-collateral.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Protocole",
       "sections": [
         {
           "id": "uniswap-on-avana",
@@ -468,20 +468,20 @@
           "id": "borrow-monitor-liquidate",
           "title": "Emprunter, surveiller, liquider",
           "paragraphs": [
-            "Le flux d'emprunt fournit un support Uniswap LP par le moyeu Avana. La position reste dans le AMM et continue de générer des frais. Le moyeu évalue la garantie et applique la logique de risque. Vous empruntez des actifs pris en charge à partir de la liquidité du hub. Garantir la position ne la désactive pas. La liquidité reste déployée, l'exposition au marché reste intacte, et les frais continuent de s'accumuler.",
+            "Le flux d'emprunt fournit un support Uniswap LP par le Hub Avana. La position reste dans le AMM et continue de générer des frais. Le Hub évalue la garantie et applique la logique de risque. Vous empruntez des actifs pris en charge à partir de la liquidité du hub. Garantir la position ne la désactive pas. La liquidité reste déployée, l'exposition au marché reste intacte, et les frais continuent de s'accumuler.",
             "Parce que LP positions sont actives et changeantes, Avana surveille la santé en continu. À mesure que les prix évoluent, les frais s'accumulent et la structure des positions change, la sécurité de l'emprunt évolue avec elles. Une position saine aujourd'hui peut être moins saine demain même si l'utilisateur n'a rien touché.",
-            "Si une position devient trop risquée, la liquidation doit démanteler une partie d'une position active AMM, tenir compte des sous-jacents et rétablir la solvabilité avec le moins de perturbation possible. La structure du marché des garanties détermine la structure de la liquidation. C'est l'une des principales raisons pour lesquelles la garantie Uniswap LP appartient à un rayon Avana dédié plutôt qu'à un compartiment général de garanties."
+            "Si une position devient trop risquée, la liquidation doit démanteler une partie d'une position active AMM, tenir compte des sous-jacents et rétablir la solvabilité avec le moins de perturbation possible. La structure du marché des garanties détermine la structure de la liquidation. C'est l'une des principales raisons pour lesquelles la garantie Uniswap LP appartient à un Spoke Avana dédié plutôt qu'à un compartiment général de garanties."
           ]
         }
       ]
     },
     {
       "slug": "defi-ux-challenges",
-      "title": "Rendre LP garanties utilisables",
+      "title": "Rendre le collatéral LP utilisable",
       "date": "June 25, 2026",
-      "description": "Pourquoi le design du produit Avana se soucie d'une évaluation claire, des limites d'emprunt et de la santé afin que LP le collatéral soit opérationnel, pas seulement puissant.",
+      "description": "Pourquoi le design produit Avana insiste sur une évaluation claire, des plafonds d’emprunt et la santé — pour que le collatéral LP soit opérable, pas seulement puissant.",
       "image": "/images/blog/making-lp-collateral-usable.png",
-      "category": "Product",
+      "category": "Produit",
       "tag": "Guides",
       "sections": [
         {
@@ -512,12 +512,12 @@
     },
     {
       "slug": "avana-lp-collateral",
-      "title": "Avana et l'étape suivante pour les LP",
+      "title": "Avana et l’étape suivante pour les LP",
       "date": "June 23, 2026",
-      "description": "Pourquoi les fournisseurs de liquidité ne devraient pas avoir à choisir entre percevoir des frais et accéder au capital, et comment Avana étend la garantie de LP sur Aave v4.",
+      "description": "Pourquoi les LPs ne devraient pas devoir choisir entre gagner des frais et accéder au capital, et comment Avana étend le collatéral LP sur Aave v4.",
       "image": "/images/blog/avana-next-step-liquidity-providers.png",
       "category": "Community",
-      "tag": "Strategy",
+      "tag": "Stratégie",
       "sections": [
         {
           "id": "the-old-tradeoff",
@@ -538,7 +538,7 @@
           "id": "how-the-stack-fits",
           "title": "Comment la pile s'emboîte",
           "paragraphs": [
-            "Avana utilise la conception en hub et rayons de Aave v4. La liquidité partagée reste au niveau du hub. La valorisation spécifique LP, le traitement des garanties et la logique de liquidation se trouvent à l'intérieur de marchés rayons dédiés. Les pools stables, les pools d'actifs corrélés et les positions de liquidité concentrée reçoivent chacun un traitement des risques approprié plutôt que d'être aplatis dans un cadre générique unique.",
+            "Avana utilise la conception en hub et Spokes de Aave v4. La liquidité partagée reste au niveau du hub. La valorisation spécifique LP, le traitement des garanties et la logique de liquidation se trouvent à l'intérieur de marchés Spokes dédiés. Les pools stables, les pools d'actifs corrélés et les positions de liquidité concentrée reçoivent chacun un traitement des risques approprié plutôt que d'être aplatis dans un cadre générique unique.",
             "Pour LPs, le résultat est une participation plus efficace en capital. Une position soutenue reste productive dans le AMM tout en devenant utile à l'intérieur d'un système de crédit. Vous conservez l'exposition, continuez à gagner et accédez à la liquidité sans liquider complètement. Pour le système plus large, le collatéral LP signifie que le capital DeFi peut être moins fragmenté. La liquidité n'a pas à quitter le marché chaque fois qu'elle doit devenir utile ailleurs.",
             "Si LP positions peuvent rester actives tout en supportant l'emprunt, elles deviennent plus que des parts de pool génératrices de frais. Elles fonctionnent comme des positions financières structurées avec génération de frais, exposition au marché et valeur de garantie. Avana est ce pont entre l'infrastructure de trading et l'infrastructure de crédit."
           ]
@@ -547,9 +547,9 @@
     },
     {
       "slug": "institutional-use-cases",
-      "title": "LP Garanties pour les institutions",
+      "title": "Collatéral LP pour les institutions",
       "date": "June 20, 2026",
-      "description": "Comment Avana LP collatéral peut aider les DAO, les trésoreries, les fonds et les entreprises natives de la crypto à accéder au capital sans liquider la liquidité productive.",
+      "description": "Comment le collatéral LP Avana peut aider DAO, trésoreries, fonds et entreprises crypto-natives à accéder au capital sans dénouer une liquidité productive.",
       "image": "/images/blog/lp-collateral-for-institutions.png",
       "category": "For Institutions",
       "tag": "Institutions",
@@ -589,12 +589,12 @@
     },
     {
       "slug": "integration-guide",
-      "title": "S'appuyant sur Avana LP Infrastructure",
+      "title": "Construire sur l’infrastructure LP Avana",
       "date": "June 17, 2026",
-      "description": "Une vue du développeur sur l'infrastructure collatérale Avana LP, y compris la surveillance, l'automatisation, les services de liquidation et les opportunités pour les développeurs.",
+      "description": "Une vue développeur de l’infrastructure de collatéral LP Avana : monitoring, automatisation, services de liquidation et opportunités pour les builders.",
       "image": "/images/blog/developer-view-lp-collateral.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Protocole",
       "sections": [
         {
           "id": "a-new-design-surface",
@@ -607,7 +607,7 @@
           "id": "what-builders-get",
           "title": "Ce que les constructeurs obtiennent de Avana",
           "paragraphs": [
-            "Avana rend LP positions utilisables comme garantie via Aave v4. L'architecture en hub et rayons signifie que les LP positions sont évaluées, ajustées en fonction du risque et liquidées selon une logique spécifique au marché, et non sur un marché de prêt générique qui accepte par hasard les LP. Pour les développeurs, cela ouvre des applications autour des interfaces, des systèmes de surveillance, des outils de trésorerie, des couches stratégiques et des produits conscients du risque construits sur un crédit garanti par LP.",
+            "Avana rend LP positions utilisables comme garantie via Aave v4. L'architecture en hub et Spokes signifie que les LP positions sont évaluées, ajustées en fonction du risque et liquidées selon une logique spécifique au marché, et non sur un marché de prêt générique qui accepte par hasard les LP. Pour les développeurs, cela ouvre des applications autour des interfaces, des systèmes de surveillance, des outils de trésorerie, des couches stratégiques et des produits conscients du risque construits sur un crédit garanti par LP.",
             "Le portefeuille et l'infrastructure de suivi constituent une catégorie naturelle. Le prêt garanti LP crée une relation plus dynamique entre le collatéral et la dette que celle à laquelle la plupart des utilisateurs DeFi sont habitués. Les tableaux de bord peuvent mettre en évidence le facteur de santé, l'efficacité du collatéral, la génération de frais et la sensibilité à la liquidation, aidant les utilisateurs à décider quand rééquilibrer, réduire la dette ou considérer qu'une position est plus stressée que ce que sa valeur principale suggère."
           ]
         },
@@ -624,26 +624,26 @@
     },
     {
       "slug": "aave-v4-avana-spoke",
-      "title": "À l'intérieur de l'architecture collatérale de Avana LP",
+      "title": "À l’intérieur de l’architecture de collatéral LP d’Avana",
       "date": "June 14, 2026",
-      "description": "À l'intérieur de l'architecture collatérale de Avana pour LP sur Aave v4, y compris le hub, les rayons, l'évaluation, la conception de l'oracle et la logique de liquidation.",
+      "description": "À l’intérieur de l’architecture de collatéral LP d’Avana sur Aave v4 : Hub, Spokes, évaluation, design d’oracle et logique de liquidation.",
       "image": "/images/blog/inside-avana-architecture.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Protocole",
       "sections": [
         {
           "id": "why-hub-and-spoke",
-          "title": "Pourquoi hub et rayon",
+          "title": "Pourquoi hub et Spoke",
           "paragraphs": [
             "LP le collatéral ne peut pas être soutenu par une conception générique de prêt. Il nécessite un système qui gère les positions de liquidité actives, la composition changeante du collatéral, l'évaluation spécifique au marché et les chemins de liquidation qui diffèrent du collatéral standard en tokens. Avana est construit sur le modèle hub and spoke de Aave v4 parce que l'emprunt garanti par LP nécessite à la fois une liquidité partagée et une logique de marché isolée."
           ]
         },
         {
           "id": "hub-and-spoke-roles",
-          "title": "Ce que font le moyeu et les rayons",
+          "title": "Ce que font le Hub et les Spokes",
           "paragraphs": [
             "Le hub détient des actifs empruntables et coordonne la liquidité partagée à travers les marchés : gestion des réserves, suivi de l'utilisation et allocation du crédit. Un hub est la manière dont Avana connecte LP en tant que garantie à un cadre de prêt plus large sans obliger chaque type de garantie à partager les mêmes hypothèses. Un marché stable de LP, un marché à liquidité concentrée et une paire volatile de AMM ne devraient pas tous être régis de la même manière simplement parce qu'ils tirent de la même réserve de liquidité.",
-            "Les rayons sont l'endroit où vit la logique spécifique LP : enregistrement des garanties, évaluation, ajustement du risque, suivi et liquidation. Chaque rayon définit comment différents types de pools sont traités. Une position concentrée Uniswap se comporte différemment d'un Curve LP fongible, qui se comporte différemment d'un pool pondéré Balancer. Le rayon est l'endroit où la garantie LP devient un véritable marché de prêts avec ses propres règles à l'intérieur de Avana."
+            "Les Spokes sont l'endroit où vit la logique spécifique LP : enregistrement des garanties, évaluation, ajustement du risque, suivi et liquidation. Chaque Spoke définit comment différents types de pools sont traités. Une position concentrée Uniswap se comporte différemment d'un Curve LP fongible, qui se comporte différemment d'un pool pondéré Balancer. Le Spoke est l'endroit où la garantie LP devient un véritable marché de prêts avec ses propres règles à l'intérieur de Avana."
           ]
         },
         {
@@ -652,19 +652,19 @@
           "paragraphs": [
             "L'évaluation utilise une approche en couches. Tout d'abord, que contient réellement la position LP à l'état actuel du marché. Deuxièmement, valorisez ces sous-jacents à partir d'entrées d'oracle fiables. Troisièmement, ajustez via une logique de garantie qui reflète le risque réel du pool plutôt que la taille notionnelle. Tous les dollars à l'intérieur d'une position LP ne se traduisent pas par le même pouvoir d'emprunt sur Avana.",
             "La conception de l'oracle se situe près du noyau. Pour LP collatéral, le protocole ne peut pas se fier à un seul chiffre ou à un flux d'actifs simpliste. Avana utilise une philosophie à double source où les flux de prix externes et la tarification dérivée de AMM travaillent ensemble pour une valorisation plus fiable. L'objectif est de réduire le risque que des déséquilibres temporaires, des mises à jour obsolètes ou des distorsions locales des pools créent des hypothèses de collatéral non sécurisées.",
-            "Pour la liquidation, Avana doit liquider les positions actives LP de manière contrôlée, convertir les actifs résultants et régler la dette sans perte évitable. Le rayon se spécialise dans la liquidation pour la structure de marché sous-jacente. Le hub fournit la liquidité. Le rayon définit la logique de garantie. Chaque couche fait ce pour quoi elle est adaptée : séparation claire, forte isolation et une voie réaliste pour augmenter LP le pool de garanties, pool par pool."
+            "Pour la liquidation, Avana doit liquider les positions actives LP de manière contrôlée, convertir les actifs résultants et régler la dette sans perte évitable. Le Spoke se spécialise dans la liquidation pour la structure de marché sous-jacente. Le hub fournit la liquidité. Le Spoke définit la logique de garantie. Chaque couche fait ce pour quoi elle est adaptée : séparation claire, forte isolation et une voie réaliste pour augmenter LP le pool de garanties, pool par pool."
           ]
         }
       ]
     },
     {
       "slug": "v1-1-release",
-      "title": "Avana v1.1 : Meilleure garantie, meilleur contrôle",
+      "title": "Avana v1.1 : meilleure garantie, meilleur contrôle",
       "date": "June 11, 2026",
-      "description": "Avana v1.1 étend le collatéral multi-position, ajoute plus de pools pris en charge, améliore la délégation et les alertes, et réduit les frais de transaction.",
+      "description": "Avana v1.1 élargit le collatéral multi-positions, ajoute davantage de pools pris en charge, améliore délégation et alertes, et réduit les frais de transaction.",
       "image": "/images/blog/avana-v1-1-better-control.png",
-      "category": "Product",
-      "tag": "Product",
+      "category": "Produit",
+      "tag": "Produit",
       "sections": [
         {
           "id": "what-shipped",
@@ -694,12 +694,12 @@
     },
     {
       "slug": "introducing-automate",
-      "title": "Automate : Une couche de contrôle pour LP collatéral",
+      "title": "Automate : une couche de contrôle pour le collatéral LP",
       "date": "June 8, 2026",
-      "description": "Comment Avana Automate aide les utilisateurs à gérer LP garanties avec une automatisation non dépositaire pour les frais, le rééquilibrage, la protection et l'entretien discipliné.",
+      "description": "Comment Avana Automate aide à gérer le collatéral LP avec une automatisation non custodiale pour frais, rééquilibrage, protection et maintenance disciplinée.",
       "image": "/images/blog/automate-control-layer-lp-collateral.png",
-      "category": "Product",
-      "tag": "Product",
+      "category": "Produit",
+      "tag": "Produit",
       "sections": [
         {
           "id": "why-automation",
@@ -735,9 +735,9 @@
     },
     {
       "slug": "lp-collateral-guide",
-      "title": "Guide du débutant sur les LP garanties",
+      "title": "Guide du débutant sur le collatéral LP",
       "date": "June 4, 2026",
-      "description": "Un guide du débutant sur le LP collatéral sur Avana, couvrant le comportement du LP, le LTV, la perte impermanente, la liquidation et les premières étapes conservatrices.",
+      "description": "Un guide du débutant sur le collatéral LP sur Avana : comportement LP, LTV, perte impermanente, liquidation et premiers pas prudents.",
       "image": "/images/blog/beginners-guide-lp-collateral.png",
       "category": "For LPs",
       "tag": "Guides",

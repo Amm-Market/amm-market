@@ -8,27 +8,27 @@
         {
           "id": "what-is-avana",
           "q": "Avana là gì?",
-          "a": "Avana là một giao thức cho vay được xây dựng cho tài sản thế chấp LP. Nó cho phép người dùng gửi các vị trí AMM được hỗ trợ, giữ các vị trí đó hoạt động trong pool cơ sở, và vay dựa trên chúng thông qua cơ sở hạ tầng Aave v4.\n\nÝ tưởng cốt lõi là vốn LP không phải trở nên không thể sử dụng chỉ vì nó nằm trong một pool. Avana biến các vị trí LP được hỗ trợ thành tài sản thế chấp có thể bảo đảm tín dụng trong khi vị trí ban đầu tiếp tục hỗ trợ hoán đổi, kiếm phí và vẫn gắn liền với thị trường AMM của nó."
+          "a": "Avana là một giao thức cho vay được xây dựng dành cho tài sản đảm bảo LP. Nó cho phép người dùng gửi các vị trí AMM được hỗ trợ, giữ các vị trí đó hoạt động trong pool cơ sở, và vay dựa trên chúng thông qua hạ tầng Aave v4.\n\nÝ tưởng chính là vốn LP không cần phải trở nên không thể sử dụng chỉ vì nó đang ở trong một pool. Avana biến các vị trí LP được hỗ trợ thành tài sản đảm bảo có thể hỗ trợ tín dụng trong khi vị trí gốc tiếp tục hỗ trợ các giao dịch, kiếm phí, và vẫn liên kết với thị trường AMM của nó."
         },
         {
           "id": "what-problem-does-avana-solve",
           "q": "Avana giải quyết vấn đề gì?",
-          "a": "Các nhà cung cấp thanh khoản thường phải rút thanh khoản trước khi họ có thể vay dựa trên vốn của mình. Điều đó có nghĩa là rời khỏi pool, từ bỏ việc hưởng phí, và gián đoạn vị thế thị trường mà họ đã xây dựng.\n\nAvana giải quyết vấn đề này bằng cách làm cho các vị thế LP được hỗ trợ có thể sử dụng làm tài sản thế chấp. LP vẫn hoạt động, Avana theo dõi và định giá vị thế, và Aave v4 xử lý kế toán bên vay thông qua một token tài sản thế chấp nội bộ."
+          "a": "Các nhà cung cấp thanh khoản thường phải rút thanh khoản trước khi họ có thể vay dựa trên vốn của mình. Điều đó có nghĩa là rời khỏi pool, từ bỏ việc hưởng phí và làm gián đoạn vị thế thị trường mà họ đã xây dựng.\n\nAvana giải quyết vấn đề này bằng cách biến các vị trí LP được hỗ trợ thành tài sản thế chấp có thể sử dụng được. LP vẫn hoạt động, Avana theo dõi và định giá vị trí, và Aave v4 xử lý việc kế toán bên vay thông qua một token tài sản thế chấp nội bộ."
         },
         {
           "id": "how-is-avana-different-from-standard-lending",
-          "q": "Avana khác với một thị trường cho vay tiêu chuẩn như thế nào?",
-          "a": "Thị trường cho vay tiêu chuẩn thường coi tài sản thế chấp như các số dư token đơn giản: ETH, BTC, stablecoin, hoặc các tài sản ERC-20 khác. Avana được xây dựng cho tài sản thế chấp thay đổi theo thời gian. Vị trí LP có thể chứa nhiều tài sản, tích lũy phí, dao động theo biến động giá, trở nên một phía, hoặc yêu cầu một lộ trình giải phóng cụ thể.\n\nVì lý do đó, Avana định giá tài sản thế chấp ở cấp độ thị trường LP. Mỗi pool được hỗ trợ hoặc gia đình LP có thể có logic định giá riêng, hệ số tài sản thế chấp, tài sản có thể vay, giả định thanh lý và giới hạn rủi ro riêng."
+          "q": "Avana khác một thị trường cho vay tiêu chuẩn như thế nào?",
+          "a": "Các thị trường cho vay tiêu chuẩn thường coi tài sản đảm bảo chỉ là số dư token đơn giản: ETH, BTC, stablecoin hoặc các tài sản ERC-20 khác. Avana được xây dựng cho tài sản đảm bảo thay đổi hình dạng theo thời gian. Vị trí LP có thể chứa nhiều tài sản, tích lũy phí, dao động theo biến động giá, trở nên một chiều, hoặc cần một đường dẫn giải ngân cụ thể.\n\nVì lý do đó, Avana đánh giá tài sản đảm bảo ở cấp độ thị trường LP. Mỗi pool hoặc nhóm LP được hỗ trợ có thể có logic định giá, hệ số đảm bảo, tài sản có thể vay, giả định thanh lý và giới hạn rủi ro riêng."
         },
         {
           "id": "which-amms-can-avana-support",
-          "q": "AMM nào mà Avana có thể hỗ trợ?",
-          "a": "Avana hỗ trợ các thị trường tài sản thế chấp LP được tuyển chọn trên các AMM như Uniswap, Balancer, Curve và Aerodrome khi các thị trường được ra mắt. Sự hỗ trợ được phê duyệt một pool tại một thời điểm, không tự động áp dụng cho mọi pool trên một nền tảng.\n\nMỗi thị trường được hỗ trợ đều có yêu cầu rõ ràng: định giá tài sản đáng tin cậy, đủ chiều sâu thanh khoản, lộ trình thoát vị thế được xác định, giới hạn thị trường và các thiết lập tài sản thế chấp phù hợp với loại pool. Đây là lý do các thị trường ra mắt vẫn được tuyển chọn trước khi phạm vi bao phủ mở rộng."
+          "q": "Avana có thể hỗ trợ những AMM nào?",
+          "a": "Avana hỗ trợ các thị trường tài sản thế chấp LP được tuyển chọn trên các AMM như Uniswap, Balancer, Curve và Aerodrome khi các thị trường được ra mắt. Sự hỗ trợ được phê duyệt từng pool một, không tự động áp dụng cho mọi pool trên một nền tảng.\n\nMỗi thị trường được hỗ trợ đều có các yêu cầu rõ ràng: định giá tài sản đáng tin cậy, độ sâu thanh khoản đủ, lộ trình giải chấp được xác định, giới hạn vốn hóa thị trường và cài đặt tài sản thế chấp phù hợp với loại pool. Đây là lý do các thị trường ra mắt vẫn được tuyển chọn trước khi mở rộng phạm vi rộng hơn."
         },
         {
           "id": "does-avana-replace-the-amm",
-          "q": "Liệu Avana có thay thế AMM nơi thanh khoản của tôi đang đứng không?",
-          "a": "Không. AMM vẫn xử lý các giao dịch hoán đổi, trạng thái pool, biến động giá và tạo phí. Avana thêm một lớp tài sản thế chấp và tín dụng xung quanh các vị trí LP được hỗ trợ.\n\nKhi bạn gửi một vị trí đủ điều kiện vào Avana, giao thức theo dõi tài sản thế chấp LP thực tế và kết nối nó với kế toán phía vay. AMM cơ sở vẫn là nơi mà vị trí thanh khoản tồn tại và kiếm phí."
+          "q": "Avana có thay thế AMM nơi thanh khoản của tôi đang nằm không?",
+          "a": "Không. AMM vẫn xử lý các giao dịch hoán đổi, trạng thái quỹ, biến động giá và sinh phí. Avana thêm một lớp tài sản thế chấp và tín dụng xung quanh các vị trí LP được hỗ trợ.\n\nKhi bạn gửi một vị trí đủ điều kiện vào Avana, giao thức sẽ theo dõi tài sản thế chấp LP thực tế và kết nối nó với kế toán phía vay. AMM cơ bản vẫn là nơi tồn tại vị trí thanh khoản và kiếm phí."
         }
       ]
     },
@@ -39,183 +39,183 @@
       "questions": [
         {
           "id": "how-does-avana-work-at-a-high-level",
-          "q": "Avana hoạt động như thế nào ở cấp độ cao?",
-          "a": "Avana hoạt động qua ba bước. Đầu tiên, người dùng gửi một vị thế LP được hỗ trợ vào Avana. Thứ hai, Avana đánh giá vị thế bằng cách đọc các tài sản cơ bản của nó, cấu trúc quỹ, biến động, tương quan, độ sâu thanh khoản và rủi ro thanh lý. Thứ ba, khi vị thế vượt qua các kiểm tra thị trường, người dùng có thể vay dựa trên giá trị đã điều chỉnh rủi ro của nó.\n\nVị thế LP vẫn hoạt động trong AMM. Avana quản lý hồ sơ tài sản đảm bảo, định giá và logic rủi ro riêng cho LP, trong khi Aave v4 xử lý tín dụng vay và kế toán thông qua mô hình Hub-and-Spoke kết nối."
+          "q": "Avana hoạt động như thế nào ở mức cao?",
+          "a": "Avana hoạt động theo ba bước. Đầu tiên, người dùng gửi một vị thế LP được hỗ trợ vào Avana. Thứ hai, Avana đánh giá vị thế bằng cách đọc các tài sản cơ bản, cấu trúc quỹ, biến động, tương quan, độ sâu thanh khoản và rủi ro thanh lý. Thứ ba, khi vị thế vượt qua các kiểm tra thị trường, người dùng có thể vay dựa trên giá trị đã điều chỉnh rủi ro của nó.\n\nVị thế LP vẫn hoạt động trong AMM. Avana quản lý hồ sơ tài sản đảm bảo, định giá và logic rủi ro riêng của LP, trong khi Aave v4 xử lý tín dụng và kế toán bên vay thông qua mô hình Hub-and-Spoke kết nối."
         },
         {
           "id": "why-aave-v4-hub-and-spoke",
-          "q": "Tại sao Avana sử dụng cơ sở hạ tầng Hub-and-Spoke Aave v4?",
-          "a": "Avana sử dụng Aave v4 vì LP tài sản thế chấp cần chia sẻ thanh khoản và logic rủi ro cô lập cùng lúc. Trung tâm (Hub) xử lý lớp tiền tệ chung: dự trữ, kế toán, mô hình lãi suất và phối hợp tín dụng toàn cầu.\n\nCác Nhánh (Spokes) xử lý công việc cụ thể của LP: đăng ký tài sản thế chấp trong pool, định giá vị thế, thực thi kiểm soát rủi ro và thanh lý. Điều này cho phép các pool ổn định, các cặp tương quan, các cặp biến động, và các thị trường thanh khoản tập trung sử dụng các quy tắc mà họ thật sự cần thay vì bị buộc theo một mô hình rủi ro chung."
+          "q": "Tại sao Avana sử dụng cơ sở hạ tầng Hub-and-Spoke của Aave v4?",
+          "a": "Avana sử dụng Aave v4 vì tài sản thế chấp LP cần cả tính thanh khoản chia sẻ và logic rủi ro tách biệt cùng một lúc. Hub xử lý lớp tiền tệ chung: dự trữ, kế toán, mô hình lãi suất và phối hợp tín dụng toàn cầu.\n\nCác Spoke xử lý công việc cụ thể cho LP: đăng ký tài sản thế chấp trong pool, định giá vị thế, thực thi kiểm soát rủi ro và thanh lý. Điều này cho phép các pool ổn định, các cặp một cách tương quan, các cặp biến động và các thị trường thanh khoản tập trung sử dụng các quy tắc mà họ thực sự cần thay vì bị ép buộc vào một mô hình rủi ro chung."
         },
         {
           "id": "what-is-a-borrow-spoke",
           "q": "Một Borrow Spoke là gì?",
-          "a": "Một Borrow Spoke là một thị trường tài sản thế chấp tách biệt LP. Nó quyết định các nhóm nào được hỗ trợ, cách định giá từng vị thế LP, các yếu tố tài sản thế chấp áp dụng ra sao, tài sản nào có thể được vay, và cách thức thanh lý hoạt động cho thị trường đó.\n\nCác Borrow Spoke được tách riêng vì các vị thế LP không phải lúc nào cũng giống nhau. Một vị thế LP của stablecoin, một vị thế ETH-staked ETH LP có sự tương quan, và một vị thế LP token quản trị biến động cần các cài đặt rủi ro khác nhau, giới hạn khác nhau, và đôi khi là các cơ chế thanh lý khác nhau."
+          "a": "Một Borrow Spoke là một thị trường tài sản thế chấp LP riêng lẻ. Nó quyết định các pool nào được hỗ trợ, mỗi vị trí LP được định giá như thế nào, các yếu tố thế chấp áp dụng ra sao, những tài sản nào có thể được vay, và cách thức thanh lý hoạt động cho thị trường đó.\n\nCác Borrow Spokes được tách riêng vì các vị trí LP không phải lúc nào cũng cùng cách hoạt động. Một LP stablecoin, một LP ETH đặt cược ETH có tương quan, và một LP token quản trị biến động cần các thiết lập rủi ro khác nhau, các giới hạn khác nhau, và đôi khi là các tuyến thanh lý khác nhau."
         },
         {
           "id": "what-are-vault-tokens",
-          "q": "Avana token kho là gì?",
-          "a": "Token kho là tài sản kế toán nội bộ ERC-20 đại diện cho tài sản đảm bảo được phê duyệt LP ở phía Aave của hệ thống. Ví dụ, một vị trí được hỗ trợ LINK/ETH có thể ánh xạ thành token tài sản đảm bảo kiểu vault LINKETH, trong khi một vị trí WETH/USDC có thể ánh xạ thành token kiểu vault WETHUSDC.\n\nToken kho là cầu nối. Avana theo dõi vị trí thực LP và giá trị của nó, Bộ Chuyển đổi Aave cung cấp token kho tương ứng vào Aave v4, và Aave sử dụng token đó cho việc kế toán tài sản đảm bảo. Người dùng không chỉ vay dựa trên một lớp bọc trừu tượng; token kho vẫn được hỗ trợ bởi vị trí LP được theo dõi phía sau nó."
+          "q": "Token Avana vault là gì?",
+          "a": "Token kho là các tài sản kế toán ERC-20 nội bộ đại diện cho tài sản thế chấp LP được phê duyệt trên phía Aave của hệ thống. Ví dụ, một vị trí hỗ trợ LINK/ETH có thể được ánh xạ thành token thế chấp kiểu vaultLINKETH, trong khi một vị trí WETH/USDC có thể được ánh xạ thành token kiểu vaultWETHUSDC.\n\nToken kho là cầu nối. Avana theo dõi vị trí LP thực tế và giá trị của nó, Aave Adapter cung cấp token kho tương ứng vào Aave v4, và Aave sử dụng token đó cho việc kế toán thế chấp. Người dùng không chỉ vay dựa trên một lớp trừu tượng; token kho vẫn được hỗ trợ bởi vị trí LP được theo dõi ở phía sau nó."
         },
         {
           "id": "what-are-the-main-protocol-modules",
           "q": "Các phần chính của giao thức Avana là gì?",
-          "a": "Avana được xây dựng xung quanh một số mô-đun hẹp. Trình Quản Lý Vị Trí LP ghi lại vị trí LP thực, bao gồm chủ sở hữu, pool, cặp giao dịch, mức phí, phạm vi, tính thanh khoản, giá trị hiện tại, phí tích lũy và trạng thái tài sản thế chấp. Mô-đun Rủi ro phê duyệt pool, tài sản, độ sâu, phạm vi và vốn hóa thị trường trước khi vị trí hỗ trợ nợ.\n\nMô-đun Tài sản Thế chấp lấy dữ liệu giá, định giá vị trí, quyết định số lượng tài sản thế chấp được hỗ trợ và tạo hoặc loại bỏ token kho nội bộ. Trình Kết Nối Aave xử lý phía Aave bằng cách cung cấp tài sản thế chấp cho kho, rút chúng, và giữ cho tích hợp Aave tách biệt khỏi logic cụ thể của LP."
+          "a": "Avana được xây dựng xung quanh một số mô-đun hẹp. Trình Quản Lý Vị Trí LP ghi lại vị trí LP thực tế, bao gồm chủ sở hữu, pool, cặp, mức phí, phạm vi, thanh khoản, giá trị hiện tại, phí tích lũy và trạng thái tài sản thế chấp. Mô-đun Rủi ro phê duyệt pool, tài sản, độ sâu, phạm vi và vốn hóa thị trường trước khi vị trí hỗ trợ nợ.\n\nMô-đun Tài sản Thế chấp lấy giá, định giá vị trí, quyết định số lượng tài sản thế chấp được hỗ trợ, và phát hành hoặc loại bỏ token vault nội bộ. Bộ Chuyển Đổi Aave xử lý phía Aave bằng cách cung cấp tài sản thế chấp vào vault, rút nó ra, và giữ tích hợp Aave tách biệt khỏi logic cụ thể của LP."
         }
       ]
     },
     {
       "id": "lp-collateral",
-      "name": "LP Tài sản đảm bảo",
+      "name": "Tài sản thế chấp LP",
       "summary": "",
       "questions": [
         {
           "id": "what-happens-when-i-deposit-lp-collateral",
-          "q": "Điều gì sẽ xảy ra khi tôi gửi LP tiền đảm bảo?",
-          "a": "Khi bạn gửi một vị thế LP được hỗ trợ, Avana ghi lại vị thế đó và định tuyến nó vào Borrow Spoke tương ứng. Giao thức xác minh rằng pool đã được phê duyệt, tái tạo vị thế, kiểm tra các cài đặt rủi ro và tính toán giá trị tài sản thế chấp gắn với thị trường đó.\n\nKhi vị thế vượt qua các kiểm tra đó, Avana phát hành token kho nội bộ tương ứng để ghi nhận bên vay. Việc gửi không tự động vay tài sản; nó tạo ra khả năng vay mà tài khoản có thể sử dụng miễn là tài khoản còn khỏe mạnh và thị trường còn thanh khoản sẵn có."
+          "q": "Điều gì xảy ra khi tôi gửi tài sản đảm bảo LP?",
+          "a": "Khi bạn gửi một vị trí LP được hỗ trợ, Avana sẽ ghi nhận vị trí đó và định tuyến nó vào Borrow Spoke liên quan. Giao thức sẽ xác minh rằng pool được phê duyệt, tái tạo vị trí, kiểm tra các cài đặt rủi ro của nó và tính toán giá trị tài sản thế chấp gắn liền với thị trường đó.\n\nKhi vị trí vượt qua các kiểm tra đó, Avana sẽ phát hành token kho nội bộ tương ứng để ghi nhận nợ mượn một cách phù hợp. Việc gửi không tự động mượn tài sản; nó tạo ra khả năng vay mà tài khoản có thể sử dụng khi vẫn duy trì tình trạng an toàn và thị trường có tính thanh khoản sẵn có."
         },
         {
           "id": "does-my-lp-stay-active",
-          "q": "Vị trí LP của tôi có vẫn hoạt động sau khi gửi tiền không?",
-          "a": "Vâng. Các vị trí được hỗ trợ LP vẫn hoạt động trong khi chúng được sử dụng làm tài sản thế chấp. Thanh khoản vẫn được gắn với vị trí cơ sở AMM, vì vậy pool tiếp tục xử lý trao đổi và vị trí tiếp tục tích lũy phí và ưu đãi theo các quy tắc AMM.\n\nCác hành động làm thay đổi giá trị tài sản thế chấp được Avana kiểm tra trong khi khoản nợ còn mở. Rút thanh khoản, yêu cầu phí, thay đổi phạm vi, hoặc điều chỉnh vị trí đều được thực hiện thông qua Borrow Spoke vì những hành động đó ảnh hưởng đến giá trị đảm bảo khoản vay."
+          "q": "Vị trí LP của tôi có vẫn hoạt động sau khi nạp tiền không?",
+          "a": "Đúng. Các vị trí LP được hỗ trợ vẫn hoạt động trong khi chúng được sử dụng làm tài sản thế chấp. Thanh khoản vẫn được gắn với vị trí AMM cơ bản, vì vậy pool tiếp tục xử lý các giao dịch hoán đổi và vị trí tiếp tục tích lũy phí và các khoản thưởng theo quy tắc của AMM.\n\nCác hành động làm thay đổi giá trị tài sản thế chấp được Avana kiểm tra trong khi nợ vẫn đang mở. Rút thanh khoản, nhận phí, thay đổi phạm vi, hoặc điều chỉnh vị trí đều phải thông qua Borrow Spoke vì những hành động này ảnh hưởng đến giá trị đảm bảo cho khoản vay."
         },
         {
           "id": "can-i-claim-lp-fees",
-          "q": "Tôi có thể yêu cầu LP phí khi vay không?",
-          "a": "Avana tách biệt thanh khoản gốc khỏi phí tích lũy trong mô hình định giá của nó. Điều đó cho phép giao thức nhận diện thu nhập từ phí và phát hành các khoản phí có thể yêu cầu trong khi vẫn giữ thanh khoản gốc LP hoạt động như tài sản đảm bảo.\n\nCác yêu cầu phí phải trải qua kiểm tra sức khỏe trước và sau. Nếu việc loại bỏ giá trị phí khiến tài khoản dưới mức ranh giới tài sản đảm bảo cần thiết, Avana sẽ chặn yêu cầu cho đến khi người dùng trả nợ hoặc thêm nhiều tài sản đảm bảo hơn."
+          "q": "Tôi có thể yêu cầu phí LP trong khi vay không?",
+          "a": "Avana tách riêng thanh khoản gốc và phí tích lũy trong mô hình định giá của mình. Điều này cho phép giao thức ghi nhận thu nhập từ phí và phát hành các khoản phí có thể yêu cầu trong khi vẫn giữ tiền gốc của LP hoạt động như tài sản thế chấp.\n\nCác yêu cầu phí phải trải qua kiểm tra sức khỏe trước và sau. Nếu việc loại bỏ giá trị phí khiến tài khoản dưới giới hạn tài sản thế chấp yêu cầu, Avana sẽ chặn yêu cầu cho đến khi người dùng trả nợ hoặc thêm nhiều tài sản thế chấp hơn."
         },
         {
           "id": "are-lp-fees-part-of-collateral-value",
-          "q": "Các khoản phí LP có được bao gồm trong giá trị tài sản đảm bảo không?",
-          "a": "Phí tích lũy được theo dõi riêng biệt với thanh khoản gốc. Mô hình oracle của Avana phân biệt giá trị gốc với giá trị phí, do đó giao thức hiểu được bao nhiêu trong vị trí là thanh khoản cốt lõi và bao nhiêu là thu nhập phí có thể yêu cầu.\n\nSự phân biệt này quan trọng trong quá trình thanh lý. Avana áp dụng phí tích lũy trước thanh khoản gốc khi tuyến thị trường hỗ trợ, giảm bớt lượng vị trí LP cốt lõi phải được giải phóng để trả nợ."
+          "q": "Phí LP có được bao gồm trong giá trị tài sản đảm bảo không?",
+          "a": "Phí tích lũy được theo dõi riêng biệt với thanh khoản gốc. Mô hình oracle của Avana phân biệt giá trị gốc với giá trị phí, vì vậy giao thức hiểu được phần nào của vị thế là thanh khoản cốt lõi và phần nào là thu nhập phí có thể yêu cầu.\n\nSự phân biệt này quan trọng trong quá trình thanh lý. Avana áp dụng phí tích lũy trước khi sử dụng thanh khoản gốc khi tuyến thị trường hỗ trợ, giảm bớt lượng vị thế LP cốt lõi phải giải phóng để trang trải nợ."
         },
         {
           "id": "when-can-i-withdraw-collateral",
-          "q": "Khi nào tôi có thể rút LP tài sản thế chấp?",
-          "a": "Bạn có thể rút tài sản thế chấp sau khi nợ được thanh toán đầy đủ, hoặc sau khi Avana xác nhận rằng tài khoản còn lại vẫn vượt qua các kiểm tra sức khỏe sau khi rút. Thanh toán đầy đủ là con đường rút tiền sạch sẽ nhất vì vị thế LP không còn đảm bảo nợ mở.\n\nCác thay đổi tài sản thế chấp một phần được thực hiện qua Borrow Spoke. Avana tính toán lại tài khoản sau khi loại bỏ hoặc điều chỉnh vị thế LP được yêu cầu, sau đó chỉ giải phóng tài sản thế chấp khi phần tài sản còn lại được chấp thuận vẫn hỗ trợ cho khoản nợ đang tồn tại."
+          "q": "Khi nào tôi có thể rút tài sản đảm bảo LP?",
+          "a": "Bạn có thể rút tài sản đảm bảo sau khi khoản nợ được trả đầy đủ, hoặc sau khi Avana xác nhận rằng tài khoản còn lại vẫn vượt qua kiểm tra sức khỏe sau khi rút. Trả nợ đầy đủ là con đường rút vốn sạch nhất vì vị thế LP không còn bảo đảm cho nợ mở.\n\nCác thay đổi tài sản đảm bảo một phần được thực hiện thông qua Borrow Spoke. Avana tính toán lại tài khoản sau khi loại bỏ hoặc điều chỉnh vị thế LP yêu cầu, sau đó chỉ giải phóng tài sản đảm bảo khi tài sản đảm bảo còn lại một khi được phê duyệt vẫn hỗ trợ cho khoản nợ chưa thanh toán."
         }
       ]
     },
     {
       "id": "valuation-oracles",
-      "name": "Định giá & Tiên tri",
+      "name": "Định giá & oracle",
       "summary": "",
       "questions": [
         {
           "id": "how-does-avana-price-lp-collateral",
-          "q": "Avana định giá LP tài sản thế chấp như thế nào?",
-          "a": "Avana định giá LP tài sản đảm bảo bằng cách tái cấu trúc vị thế và định giá các tài sản bên trong nó. Đối với LP có thể thay thế, giao thức suy ra giá trị từ giá tài sản bên ngoài và tái cấu trúc cân bằng quỹ. Đối với thanh khoản tập trung, nó phân tích vị thế theo thanh khoản, phạm vi, tick hiện tại, tiếp xúc với token và phí tích lũy.\n\nKết quả sau đó được chiết khấu thành giá trị tài sản đảm bảo có thể thu hồi. Quyền vay dựa trên khả năng mà vị thế có thể thực sự hỗ trợ theo các giả định rủi ro của thị trường, không dựa trên giá trị tài sản ròng lạc quan."
+          "q": "Avana định giá tài sản đảm bảo LP như thế nào?",
+          "a": "Avana định giá tài sản thế chấp LP bằng cách tái cấu trúc vị thế và đánh giá các tài sản bên trong nó. Đối với các LP có tính hoán đổi, giao thức xác định giá trị từ giá tài sản bên ngoài và tái cấu trúc cân bằng của pool. Đối với thanh khoản tập trung, nó phân tách vị thế theo thanh khoản, phạm vi, tick hiện tại, sự tiếp xúc với token và phí tích lũy.\n\nKết quả sau đó được chiết khấu thành giá trị tài sản thế chấp có thể thu hồi. Sức mạnh vay dựa trên khả năng mà vị thế có thể thực sự hỗ trợ dưới các giả định rủi ro của thị trường, không dựa trên giá trị tài sản ròng lạc quan."
         },
         {
           "id": "how-does-avana-reduce-oracle-risk",
-          "q": "Avana giảm rủi ro oracle và định giá như thế nào?",
-          "a": "Avana sử dụng một khuôn khổ định giá hai nguồn tin cho tài sản thế chấp LP. Các nguồn dữ liệu giá của Chainlink cung cấp tham chiếu chính cho các tài sản cơ sở, trong khi TWAP được dẫn xuất từ AMM hoạt động như một lớp xác minh độc lập lấy từ thanh khoản trên chuỗi.\n\nKhả năng vay chỉ được cấp khi các nguồn định giá nằm trong một dải dung sai của thị trường. Điều này giảm tiếp xúc với việc thao túng flash-loan, những biến động giá AMM tạm thời, các cập nhật lỗi thời và các đánh dấu tài sản thế chấp xấu gây ra nợ không an toàn."
+          "q": "Avana giảm rủi ro về oracle và giá cả như thế nào?",
+          "a": "Avana sử dụng một khuôn khổ định giá với hai nguồn oracle cho tài sản thế chấp LP. Các nguồn giá của Chainlink cung cấp tham chiếu chính cho các tài sản cơ sở, trong khi TWAP từ AMM hoạt động như một lớp xác minh độc lập được lấy từ thanh khoản trên chuỗi.\n\nQuyền vay chỉ được cấp khi các nguồn định giá giữ trong phạm vi dung sai của thị trường. Điều này giảm thiểu rủi ro bị thao túng bởi flash loan, biến động giá tạm thời trên AMM, cập nhật lỗi thời và đánh dấu tài sản thế chấp xấu dẫn đến nợ không an toàn."
         },
         {
           "id": "what-is-recoverable-value",
           "q": "Giá trị có thể thu hồi là gì?",
-          "a": "Giá trị có thể thu hồi là giá trị tài sản thế chấp đã được chiết khấu mà Avana sử dụng cho các quyết định vay và thanh lý. Nó phản ánh giá trị của vị thế LP sau khi tính đến quá trình tháo gỡ, bán, chuyển nhượng hoặc giải quyết dưới áp lực.\n\nGiá trị có thể thu hồi thấp hơn giá trị lý thuyết LP khi lộ trình thanh lý bao gồm trượt giá, tác động giá, biến động phạm vi, biến động, xử lý phí, hoặc độ sâu lộ trình hạn chế. Avana định mức vay dựa trên giá trị có thể thu hồi vì đó là giá trị bảo vệ khoản nợ."
+          "a": "Giá trị có thể thu hồi là giá trị tài sản bảo đảm đã được chiết khấu mà Avana sử dụng cho các quyết định vay mượn và thanh lý. Nó phản ánh giá trị của vị thế LP sau khi tính đến việc giải phóng, bán, chuyển nhượng hoặc thanh toán theo đường đi chịu áp lực.\n\nGiá trị có thể thu hồi thấp hơn giá trị LP lý thuyết khi lộ trình thanh lý bao gồm trượt giá, tác động giá, biến động phạm vi, biến động giá cả, xử lý phí hoặc độ sâu lộ trình hạn chế. Avana định mức vay dựa trên giá trị có thể thu hồi vì đó là giá trị bảo vệ khoản nợ."
         },
         {
           "id": "why-are-concentrated-liquidity-positions-treated-carefully",
           "q": "Tại sao các vị thế thanh khoản tập trung lại được xử lý cẩn thận?",
-          "a": "Các vị trí thanh khoản tập trung thay đổi mức độ phơi nhiễm nhanh chóng khi giá biến động. Một vị trí có thể trở thành chủ yếu một loại tài sản, nằm ngoài phạm vi, ngừng kiếm phí, hoặc yêu cầu thanh toán ở cấp độ vị trí NFT đầy đủ.\n\nAvana đánh giá các vị trí tập trung bằng cách phân tích trạng thái vị trí thực tế thay vì xem NFT như một số dư token tĩnh. Thị trường sau đó áp dụng các hệ số tài sản thế chấp, giới hạn, và các giả định thanh lý phù hợp với phạm vi, tồn kho và rủi ro giải phóng vị trí của vị trí đó."
+          "a": "Các vị thế thanh khoản tập trung thay đổi mức độ tiếp xúc nhanh chóng khi giá di chuyển. Một vị thế có thể trở nên chủ yếu là một loại tài sản, ra khỏi phạm vi, ngừng kiếm phí, hoặc yêu cầu thanh toán ở mức toàn bộ vị thế NFT.\n\nAvana định giá các vị thế tập trung bằng cách phân tách trạng thái vị thế thực tế thay vì coi NFT là một số dư token tĩnh. Thị trường sau đó áp dụng các hệ số tài sản thế chấp, giới hạn và giả định thanh lý phù hợp với phạm vi, tồn kho và rủi ro một vị thế có thể giải thoát."
         },
         {
           "id": "what-data-does-avana-monitor",
-          "q": "Avana giám sát dữ liệu thị trường nào?",
-          "a": "Các Spokes của Borrow theo dõi các tín hiệu ảnh hưởng đến chất lượng tài sản đảm bảo LP: thành phần của nhóm, giá token, tương quan tài sản, biến động, độ sâu thanh khoản, tích lũy phí, độ tin cậy của oracle và chi phí giải ngân.\n\nNhững tín hiệu đó ảnh hưởng đến cách thị trường xử lý tài sản đảm bảo. Các nhóm ổn định và có tương quan cao nhận các giới hạn khác so với các cặp biến động hoặc giao dịch mỏng vì hồ sơ thanh lý và trượt giá của chúng khác nhau."
+          "q": "Avana theo dõi dữ liệu thị trường nào?",
+          "a": "Borrow Spokes giám sát các tín hiệu ảnh hưởng đến chất lượng tài sản đảm bảo LP: thành phần của pool, giá token, tương quan tài sản, độ biến động, độ sâu thanh khoản, tích luỹ phí, độ tin cậy của oracle và chi phí giải ngân.\n\nNhững tín hiệu đó cung cấp thông tin cho cách thị trường xử lý tài sản đảm bảo. Các pool ổn định và có tương quan cao nhận được giới hạn khác với các cặp biến động hoặc giao dịch mỏng vì hồ sơ thanh lý và trượt giá của chúng khác nhau."
         }
       ]
     },
     {
       "id": "borrowing",
-      "name": "Thị trường vay mượn",
+      "name": "Thị trường vay",
       "summary": "",
       "questions": [
         {
           "id": "how-does-borrowing-work",
-          "q": "Mượn hoạt động như thế nào trên Avana?",
-          "a": "Việc vay xảy ra sau khi Chi nhánh Vay thừa nhận và định giá tài sản đảm bảo LP của bạn. Khi bạn yêu cầu một tài sản, chi nhánh sẽ kiểm tra khả năng vay còn lại của bạn, xác nhận vị thế vẫn giữ được sức khỏe sau khoản nợ mới, và rút thanh khoản từ Trung tâm nếu tài sản có sẵn.\n\nTài sản vay được gửi đến người dùng, và tài khoản ghi nhận nợ thông qua lớp kế toán phía vay. Lãi suất tích lũy theo thời gian, vì vậy sức khỏe có thể thay đổi ngay cả khi vị thế tài sản đảm bảo không thay đổi."
+          "q": "Vay mượn hoạt động như thế nào trên Avana?",
+          "a": "Việc vay xảy ra sau khi Borrow Spoke chấp nhận và định giá tài sản thế chấp LP của bạn. Khi bạn yêu cầu một tài sản, spoke sẽ kiểm tra khả năng còn lại của bạn, xác nhận vị thế vẫn an toàn sau khoản nợ mới, và rút thanh khoản từ Hub nếu tài sản có sẵn.\n\nTài sản vay được gửi cho người dùng, và tài khoản ghi nhận nợ thông qua lớp kế toán phía vay. Lãi suất phát sinh theo thời gian, vì vậy tình trạng an toàn có thể thay đổi ngay cả khi vị trí thế chấp chưa thay đổi."
         },
         {
           "id": "how-is-borrowing-capacity-calculated",
           "q": "Khả năng vay được tính toán như thế nào?",
-          "a": "Khả năng vay đến từ giá trị được điều chỉnh theo rủi ro của các vị thế LP được phê duyệt bên trong một Nhánh Vay. Avana tái cấu trúc từng vị thế, định giá phần tiếp xúc cơ sở, áp dụng điều trị rủi ro ở cấp độ nhóm, và sau đó áp dụng hệ số tài sản đảm bảo của thị trường.\n\nNhánh Vay báo cáo khả năng này đến Trung tâm để thực thi. Khi một người dùng có nhiều vị thế được phê duyệt trong cùng một thị trường, Avana tổng hợp khả năng của họ trong khi vẫn định giá từng vị thế theo nhóm, phạm vi, thanh khoản, và giả định rủi ro riêng của nó."
+          "a": "Khả năng vay đến từ giá trị đã điều chỉnh theo rủi ro của các vị trí LP được phê duyệt trong một Borrow Spoke. Avana tái cấu trúc từng vị trí, định giá khoản rủi ro cơ bản, áp dụng xử lý rủi ro cấp pool, rồi sau đó áp dụng hệ số tài sản thế chấp của thị trường.\n\nBorrow Spoke báo cáo khả năng đó lên Hub để thực thi. Khi một người dùng có nhiều vị trí được phê duyệt trong cùng một thị trường, Avana tổng hợp khả năng của họ trong khi vẫn định giá từng vị trí theo pool, phạm vi, thanh khoản và giả định rủi ro riêng của nó."
         },
         {
           "id": "why-is-borrow-power-lower-than-lp-value",
           "q": "Tại sao khả năng vay lại thấp hơn giá trị LP của tôi?",
-          "a": "Sức mua vay thấp hơn vì Avana sử dụng giá trị tài sản đảm bảo thận trọng, không phải mức đánh dấu đầy đủ LP. Các vị thế LP có thể mất giá trị do sự khác biệt giá, thua lỗ không thường xuyên, trôi dải, áp lực thanh khoản và trượt thanh lý.\n\nSự khác biệt giữa giá trị LP và sức mua vay là bộ đệm an toàn. Nó bảo vệ thị trường bằng cách đảm bảo rằng khoản nợ được định lượng dựa trên giá trị tài sản đảm bảo có thể thu hồi thay vì giá trị tốt nhất được hiển thị trong điều kiện bình thường."
+          "a": "Sức mạnh vay thấp hơn vì Avana sử dụng giá trị tài sản đảm bảo thận trọng, không phải toàn bộ giá trị đánh dấu LP. Các vị thế LP có thể mất giá trị do sự chênh lệch giá, lỗ tạm thời, trôi dải, áp lực thanh khoản và trượt thanh lý.\n\nSự khác biệt giữa giá trị LP và sức mạnh vay chính là đệm an toàn. Nó bảo vệ thị trường bằng cách đảm bảo nợ được định kích thước dựa trên giá trị tài sản bảo đảm có thể thu hồi thay vì giá trị tốt nhất hiển thị trong điều kiện bình thường."
         },
         {
           "id": "what-assets-can-i-borrow",
           "q": "Tôi có thể vay những tài sản nào?",
-          "a": "Tài sản có thể vay được được thiết lập theo từng thị trường. Avana Các thị trường cho vay tập trung vào các tài sản thanh khoản như các stablecoin chính, GHO, ETH, BTC, và các tài sản khác phù hợp với thanh khoản, vốn hóa và cấu hình rủi ro của thị trường.\n\nGiao diện hiển thị tập hợp các khoản vay đang hoạt động cho mỗi thị trường. Một loại tài sản thế chấp LP được hỗ trợ không tự động mở khóa mọi tài sản vay; mỗi tài sản nợ là một phần của cấu hình thị trường."
+          "a": "Tài sản có thể vay được được thiết lập theo từng thị trường. Thị trường vay Avana tập trung vào các tài sản thanh khoản như các stablecoin chính, GHO, ETH, BTC và các tài sản khác phù hợp với thanh khoản, giới hạn và cấu hình rủi ro của thị trường.\n\nGiao diện hiển thị bộ vay đang hoạt động cho mỗi thị trường. Một loại tài sản bảo đảm LP được hỗ trợ không tự động mở khóa mọi tài sản vay; mỗi tài sản nợ là một phần của cấu hình thị trường."
         },
         {
           "id": "can-i-borrow-against-multiple-positions",
           "q": "Tôi có thể vay dựa trên nhiều vị trí LP cùng một lúc không?",
-          "a": "Vâng, khi các vị trí được hỗ trợ bên trong thị trường liên quan. Avana có thể tổng hợp sức mạnh vay mượn qua nhiều vị trí LP được phê duyệt trong cùng một Borrow Spoke, cho phép người dùng có một bề mặt tín dụng kết hợp cho thị trường đó.\n\nViệc tổng hợp không hợp nhất rủi ro một cách mù quáng. Mỗi vị trí vẫn đóng góp khả năng dựa trên quỹ của chính nó, phạm vi, thanh khoản, phí và cách xử lý rủi ro, và tổng số dư tài khoản phải luôn ở trên ngưỡng sức khỏe bắt buộc."
+          "a": "Vâng, khi các vị trí được hỗ trợ bên trong thị trường liên quan. Avana có thể tổng hợp sức mạnh vay Across nhiều vị trí LP được phê duyệt trong cùng một Borrow Spoke, cung cấp cho người dùng một bề mặt tín dụng kết hợp cho thị trường đó. \n\nViệc tổng hợp không hợp nhất rủi ro một cách mù quáng. Mỗi vị trí vẫn đóng góp năng lực dựa trên nhóm của chính nó, phạm vi, thanh khoản, phí và cách xử lý rủi ro, và tổng tài khoản phải duy trì trên ngưỡng sức khỏe yêu cầu."
         }
       ]
     },
     {
       "id": "supplying-earning",
-      "name": "Cung cấp & Kiếm tiền",
+      "name": "Cung cấp & kiếm lãi",
       "summary": "",
       "questions": [
         {
           "id": "how-do-lenders-use-avana",
           "q": "Các nhà cho vay sử dụng Avana như thế nào?",
-          "a": "Người cho vay cung cấp các tài sản như ETH, BTC, GHO, USDC, USDT, hoặc các tài sản được hỗ trợ khác vào phía giao diện dành cho người cho vay của giao thức. Vốn đó đi qua Hub để hỗ trợ cho vay trên các thị trường LP-tài sản thế chấp.\n\nNgười cho vay không quản lý phạm vi LP, tổn thất tạm thời, hoặc các hoạt động tài sản thế chấp cụ thể của AMM. Các Borrow Spoke xử lý logic thẩm định và thanh lý LP, trong khi vốn của người cho vay cung cấp năng lượng cho lớp tín dụng."
+          "a": "Các nhà cho vay cung cấp tài sản như ETH, BTC, GHO, USDC, USDT hoặc các tài sản được hỗ trợ khác vào phía giao diện cho nhà cho vay của giao thức. Vốn đó được điều hướng qua Hub để hỗ trợ việc vay mượn trên các thị trường tài sản đảm bảo LP.\n\nCác nhà cho vay không quản lý phạm vi LP, tổn thất tạm thời hoặc các hoạt động tài sản đảm bảo cụ thể của AMM. Các Borrow Spokes xử lý việc thẩm định LP và logic thanh lý, trong khi vốn của nhà cho vay cung cấp năng lượng cho lớp tín dụng."
         },
         {
           "id": "where-does-supplier-yield-come-from",
           "q": "Năng suất của nhà cung cấp đến từ đâu?",
-          "a": "Lợi nhuận của nhà cung cấp đến từ việc người vay trả lãi để tiếp cận thanh khoản được bảo đảm bằng tài sản thế chấp LP. Mô hình của Avana kết hợp lãi suất cơ sở Hub chung với các khoản phí rủi ro ở cấp độ nhánh liên quan đến các thị trường LP đang được tài trợ.\n\nĐiều này có nghĩa là lợi suất có thể phản ánh cả mức sử dụng bình thường lẫn nhu cầu bổ sung được tạo ra bởi các khoản vay được đảm bảo bằng LP. Lãi suất vẫn biến động theo điều kiện thị trường, thanh khoản sẵn có, mức sử dụng và hồ sơ rủi ro của các thị trường người vay cơ sở."
+          "a": "Lợi suất nhà cung cấp đến từ việc người vay trả lãi để truy cập thanh khoản được đảm bảo bằng tài sản bảo đảm LP. Mô hình của Avana kết hợp lãi suất cơ sở chia sẻ của Hub với các khoản phí rủi ro theo cấp độ spoke liên quan đến các thị trường LP đang được cấp vốn.\n\nĐiều này có nghĩa là lợi suất có thể phản ánh cả việc sử dụng bình thường và nhu cầu bổ sung được tạo ra bởi việc vay có bảo đảm LP. Lãi suất vẫn thay đổi theo điều kiện thị trường, thanh khoản có sẵn, mức độ sử dụng, và hồ sơ rủi ro của các thị trường người vay cơ bản."
         },
         {
           "id": "do-lenders-manage-lp-collateral",
-          "q": "Các bên cho vay có tự quản lý LP tài sản thế chấp không?",
-          "a": "Không. Người cho vay cung cấp vốn sạch vào các thị trường cho vay được hỗ trợ. Họ không chọn các phạm vi LP, tuyên bố các khoản phí LP, hoặc quyết định cách thức một vị trí AMM cụ thể được giải quyết.\n\nSự tách biệt đó chính là điểm của Lend Spoke. Vốn của người cho vay hỗ trợ nhu cầu của người đi vay có LP chuyên biệt trong khi Borrow Spokes giữ việc định giá tài sản thế chấp, kiểm tra sức khỏe và xử lý thanh lý tách biệt khỏi quy trình làm việc của người cho vay."
+          "q": "Các nhà cho vay có tự quản lý tài sản đảm bảo của LP không?",
+          "a": "Không. Các bên cho vay cung cấp vốn sạch vào các thị trường cho vay được hỗ trợ. Họ không chọn phạm vi LP, không yêu cầu phí LP, và không quyết định cách một vị trí AMM cụ thể được giải phóng.\n\nSự tách biệt đó chính là mục đích của Lend Spoke. Vốn của bên cho vay hỗ trợ nhu cầu vay được bảo đảm bởi LP chuyên biệt trong khi Borrow Spokes giữ việc định giá tài sản thế chấp, kiểm tra sức khỏe, và xử lý thanh lý tách biệt khỏi quy trình làm việc của bên cho vay."
         },
         {
           "id": "what-protects-lender-capital",
           "q": "Điều gì bảo vệ vốn của người cho vay?",
-          "a": "Avana bảo vệ vốn cho người cho vay thông qua việc vay được bảo đảm vượt mức, định giá LP thận trọng, kiểm tra kép từ oracle, giới hạn thị trường, thực thi hệ số sức khỏe và các đường dẫn thanh lý riêng cho LP. Mỗi Trụ Vay định giá tài sản thế chấp theo rủi ro của chính nhóm của nó trước khi khoản nợ được rút từ thanh khoản của Hub.\n\nGiao thức vẫn mang rủi ro DeFi: rủi ro hợp đồng thông minh, rủi ro oracle, rủi ro thực thi thanh lý và áp lực thị trường. Avana kiểm soát rủi ro đó bằng cách đo lường tài sản thế chấp LP ở cấp độ thị trường thay vì coi mọi vị thế LP như một số dư token đơn giản."
+          "a": "Avana bảo vệ vốn của người cho vay thông qua vay mượn quá mức tài sản đảm bảo, định giá LP thận trọng, kiểm tra hai nguồn oracle, giới hạn thị trường, thực thi hệ số sức khỏe, và các lộ trình thanh lý riêng cho LP. Mỗi Spoke Vay định giá tài sản đảm bảo theo rủi ro của riêng quỹ trước khi nợ được rút từ thanh khoản của Hub.\n\nGiao thức vẫn mang rủi ro DeFi: rủi ro hợp đồng thông minh, rủi ro oracle, rủi ro thực thi thanh lý, và áp lực thị trường. Avana kiểm soát rủi ro đó bằng cách đo lường tài sản đảm bảo của LP ở cấp độ thị trường thay vì coi mỗi vị thế LP như một số dư token đơn giản."
         }
       ]
     },
     {
       "id": "liquidations",
-      "name": "Sức khỏe & Thanh lý",
+      "name": "Health & thanh lý",
       "summary": "",
       "questions": [
         {
           "id": "what-is-health-factor",
           "q": "Yếu tố sức khỏe là gì?",
-          "a": "Yếu tố sức khỏe đo lường mối quan hệ giữa giá trị tài sản đảm bảo đã điều chỉnh theo rủi ro và nợ còn dư bên trong một Borrow Spoke. Mô hình đơn giản hóa là giá trị tài sản đảm bảo đã điều chỉnh chia cho nợ còn dư.\n\nGiá trị tài sản đảm bảo đã điều chỉnh đã bao gồm định giá LP của Avana, các yếu tố tài sản đảm bảo, cách xử lý rủi ro ở mức pool, và các giả định về giá trị có thể thu hồi. Nếu sức khỏe giảm xuống dưới giới hạn thanh lý, vị thế sẽ đủ điều kiện để bị thanh lý."
+          "a": "Yếu tố sức khỏe đo lường mối quan hệ giữa giá trị tài sản thế chấp đã điều chỉnh theo rủi ro và nợ còn tồn trong một Borrow Spoke. Mô hình đơn giản hóa là giá trị tài sản thế chấp đã điều chỉnh chia cho nợ còn tồn.\n\nGiá trị tài sản thế chấp đã điều chỉnh đã bao gồm đánh giá LP của Avana, các yếu tố tài sản thế chấp, xử lý rủi ro ở cấp độ pool và các giả định về giá trị có thể thu hồi. Nếu yếu tố sức khỏe giảm xuống dưới ngưỡng thanh lý, vị thế sẽ đủ điều kiện để bị thanh lý."
         },
         {
           "id": "what-affects-health-factor",
           "q": "Những gì ảnh hưởng đến yếu tố sức khỏe của tôi?",
-          "a": "Yếu tố sức khỏe thay đổi khi giá trị tài sản thế chấp thay đổi, nợ thay đổi, phí được yêu cầu, tài sản thế chấp bị rút, đòn bẩy được thêm, hoặc các thông số thị trường cập nhật. LP các vị trí cũng có thể thay đổi vì giá token biến động, tồn kho quỹ thay đổi, phí tích lũy, hoặc các vị trí tập trung đi ra ngoài hoặc vào phạm vi.  \n\nVay thêm làm giảm sức khỏe vì nợ tăng. Trả nợ, thêm tài sản thế chấp được chấp thuận, hoặc giảm mức độ rủi ro cải thiện sức khỏe vì tài khoản có nhiều sự hỗ trợ tài sản thế chấp so với nợ."
+          "a": "Yếu tố sức khỏe thay đổi khi giá trị tài sản thế chấp thay đổi, nợ thay đổi, phí được tính, tài sản thế chấp được rút ra, đòn bẩy được thêm vào, hoặc các tham số thị trường được cập nhật. Các vị trí LP cũng có thể thay đổi vì giá token biến động, tồn kho của pool thay đổi, phí tích lũy, hoặc các vị trí tập trung di chuyển ra vào phạm vi.\n\nVay nhiều hơn làm giảm sức khỏe vì nợ tăng lên. Trả nợ, thêm tài sản thế chấp được phê duyệt, hoặc giảm mức phơi bày cải thiện sức khỏe vì tài khoản có nhiều hỗ trợ tài sản thế chấp hơn so với nợ."
         },
         {
           "id": "how-does-liquidation-work",
           "q": "Thanh lý hoạt động như thế nào trên Avana?",
-          "a": "Việc thanh lý bắt đầu khi hệ số sức khỏe của một tài khoản giảm xuống dưới ngưỡng thanh lý. Aave xử lý kế toán nợ, kiểm tra sức khỏe và điểm vào thanh lý đối với tài sản đảm bảo của kho ERC-20.\n\nAvana xử lý việc thanh toán LP đằng sau token kho đó. Bộ điều hợp (Adapter) sẽ đốt tài sản đảm bảo của kho, ánh xạ việc thanh lý trở lại vị trí thực tế LP, và lớp thanh toán sẽ theo lộ trình thị trường: mở vị trí, bán, đấu giá, hoặc chuyển vị trí hỗ trợ. Nợ được thanh toán trước, sau đó là phần thưởng cho người thanh lý và chi phí thanh toán, với phần dư được xử lý theo quy tắc thị trường."
+          "a": "Thanh lý bắt đầu khi chỉ số sức khỏe của một tài khoản giảm xuống dưới ngưỡng thanh lý. Aave xử lý kế toán nợ, kiểm tra sức khỏe và điểm vào thanh lý đối với tài sản thế chấp ERC-20 của kho tiền.\n\nAvana xử lý việc thanh toán LP phía sau token kho tiền đó. Bộ chuyển đổi (Adapter) đốt tài sản thế chấp của kho tiền, liên kết việc thanh lý trở lại vị trí LP thực, và lớp thanh toán tuân theo lộ trình thị trường: giải thế, bán, đấu giá hoặc chuyển giao vị trí hỗ trợ. Nợ được trả trước tiên, sau đó là phần thưởng cho người thanh lý và chi phí thanh toán, phần dư được xử lý theo quy tắc thị trường."
         },
         {
           "id": "are-liquidations-permissionless",
           "q": "Ai có thể thanh lý một vị trí không lành mạnh?",
-          "a": "Việc thanh lý không cần phép khi một vị thế vượt qua ngưỡng thanh lý. Bất kỳ người thanh lý đủ điều kiện nào cũng có thể trả số nợ được phép và kích hoạt đường dẫn giải quyết.\n\nLP tài sản thế chấp khó giải phóng hơn so với tài sản thế chấp đơn giản bằng token, vì vậy Avana cũng tính đến việc bao phủ thanh lý chuyên biệt. Các người thanh lý theo dõi cùng trạng thái rủi ro, ánh xạ vault-token, độ sâu đường dẫn, và các giả định giải phóng được một giao thức sử dụng."
+          "a": "Việc thanh lý không cần xin phép khi một vị thế vượt qua ngưỡng thanh lý. Bất kỳ người thanh lý đủ điều kiện nào cũng có thể trả số nợ được phép và kích hoạt đường dẫn giải quyết.\n\nTài sản thế chấp LP khó giải phóng hơn so với tài sản thế chấp token đơn giản, vì vậy Avana cũng tính đến việc bao phủ thanh lý chuyên biệt. Những người thanh lý theo dõi cùng trạng thái rủi ro, ánh xạ kho lưu trữ-token, độ sâu tuyến đường và các giả định giải phóng được sử dụng bởi giao thức."
         },
         {
           "id": "what-happens-to-fees-during-liquidation",
-          "q": "Điều gì xảy ra với các khoản phí LP trong quá trình thanh lý?",
-          "a": "Avana phân biệt phí tích lũy với thanh khoản gốc. Trong quá trình thanh lý, đường giải quyết áp dụng phí tích lũy trước thanh khoản gốc khi lộ trình thị trường hỗ trợ trình tự đó.\n\nĐiều này giảm mức độ phải xáo trộn vị thế LP cốt lõi. Nếu giá trị phí không đủ để trả nợ, lớp giải quyết sẽ mở hoặc chuyển lượng tài sản thế chấp LP cần thiết theo đường thanh lý của thị trường đó."
+          "q": "Phí LP sẽ như thế nào trong quá trình thanh lý?",
+          "a": "Avana phân biệt phí tích lũy với thanh khoản gốc. Trong quá trình thanh lý, con đường giải quyết áp dụng phí tích lũy trước thanh khoản gốc khi lộ trình thị trường hỗ trợ thứ tự đó.\n\nĐiều này giảm mức độ ảnh hưởng đến vị thế LP cốt lõi. Nếu giá trị phí không đủ để trang trải nợ, lớp giải quyết sẽ giải phóng hoặc chuyển khoản đảm bảo LP cần thiết theo lộ trình thanh lý của thị trường đó."
         }
       ]
     },
@@ -226,8 +226,8 @@
       "questions": [
         {
           "id": "how-are-new-pools-added",
-          "q": "Làm thế nào để thêm các hồ bơi LP mới?",
-          "a": "Thêm LP pool mới thông qua xem xét và phê duyệt thị trường. Một pool cần có định giá tài sản cơ sở đáng tin cậy, thanh khoản đủ, các giả định giải thể rõ ràng và các tham số rủi ro phù hợp với loại tài sản thế chấp.\n\nAvana bắt đầu với các thị trường LP được tuyển chọn để định giá và thanh lý giữ sạch sẽ. Việc mở rộng phạm vi pool lớn hơn có thể phát triển theo thời gian khi hỗ trợ oracle, độ sâu thanh khoản và dữ liệu rủi ro được cải thiện."
+          "q": "Làm thế nào các pool LP mới được thêm vào?",
+          "a": "Các pool LP mới được thêm thông qua việc xem xét thị trường và phê duyệt. Một pool cần có định giá tài sản cơ sở đáng tin cậy, thanh khoản đủ, các giả định phá sản rõ ràng và các tham số rủi ro phù hợp với loại tài sản thế chấp.\n\nAvana bắt đầu với các thị trường LP được tuyển chọn để định giá và thanh lý luôn minh bạch. Phạm vi pool rộng hơn có thể được mở rộng theo thời gian khi hỗ trợ oracle, độ sâu thanh khoản và dữ liệu rủi ro được cải thiện."
         },
         {
           "id": "can-risk-parameters-change",
@@ -237,61 +237,61 @@
         {
           "id": "where-can-i-follow-governance",
           "q": "Tôi có thể theo dõi các cuộc thảo luận về quản trị ở đâu?",
-          "a": "Hầu hết các cập nhật về quản trị và thảo luận thị trường được thực hiện thông qua Avana Labs trên X tại https://twitter.com/avana_labs. Kênh này bao gồm các pool mới, các tham số thị trường, tích hợp, đánh giá an toàn và các giai đoạn sản phẩm.\n\nCác đề xuất dài hạn, ghi chú rủi ro và các chuỗi quản trị ngoại vi được liên kết từ Avana Labs khi chúng có liên quan. Đối với các vị thế lớn, người dùng xem xét các cập nhật mới nhất từ Avana Labs và các tham số thị trường trực tiếp trước khi dựa vào một pool."
+          "a": "Hầu hết các cập nhật về quản trị Avana và thảo luận về thị trường đều diễn ra thông qua Avana Labs trên X tại https://twitter.com/avana_labs. Kênh này bao gồm các pool mới, các thông số thị trường, tích hợp, đánh giá an toàn và các giai đoạn sản phẩm.\n\nCác đề xuất dài hạn, ghi chú rủi ro và các chủ đề quản trị bên ngoài được liên kết từ Avana Labs khi chúng có liên quan. Đối với các vị thế lớn, người dùng xem lại các cập nhật mới nhất của Avana Labs và các thông số thị trường trực tiếp trước khi dựa vào một pool."
         },
         {
           "id": "can-interface-fees-change",
           "q": "Phí giao diện có thể thay đổi theo thời gian không?",
-          "a": "Vâng. Avana phí giao diện và dịch vụ là các thiết lập vận hành cho các giao diện chính thức. Chúng tách biệt với cơ chế cốt lõi của giao thức điều chỉnh tài sản đảm bảo, nợ, kiểm tra oracle và thanh lý.\n\nKhi phí giao diện được áp dụng, luồng giao dịch hiển thị nó trước khi ký nên người dùng có thể phân biệt được chi phí giao diện với phí gas, thực hiện hoán đổi, lãi suất giao thức và kinh tế thanh lý."
+          "a": "Vâng. Phí giao diện và dịch vụ Avana là các thiết lập hoạt động cho các giao diện chính thức. Chúng tách biệt với cơ chế lõi của giao thức điều chỉnh tài sản đảm bảo, nợ, kiểm tra oracle và thanh lý.\n\nKhi có áp dụng phí giao diện, luồng giao dịch sẽ hiển thị phí đó trước khi ký, để người dùng có thể phân biệt chi phí giao diện với phí gas, thực hiện hoán đổi, lãi suất giao thức và kinh tế thanh lý."
         }
       ]
     },
     {
       "id": "gho-stablecoin",
-      "name": "GHO Tiền ổn định",
+      "name": "Stablecoin GHO",
       "summary": "",
       "questions": [
         {
           "id": "can-i-borrow-gho",
           "q": "Tôi có thể mượn GHO qua Avana không?",
-          "a": "GHO là một trong các tài sản vay được Avana hỗ trợ cho các thị trường bao gồm thanh khoản GHO. Khi một thị trường cung cấp GHO, người dùng có thể vay nó dựa trên tài sản thế chấp LP được phê duyệt miễn là tài khoản vẫn nằm trên ngưỡng sức khỏe yêu cầu.\n\nViệc vay GHO hoạt động giống như bất kỳ tài sản nợ nào khác trong Avana: nó làm tăng nợ tồn đọng, ảnh hưởng đến hệ số sức khỏe, tích lũy lãi suất, và được trả lại bằng GHO cùng với bất kỳ chi phí áp dụng nào."
+          "a": "GHO là một trong những tài sản vay mà Avana hỗ trợ cho các thị trường bao gồm thanh khoản GHO. Khi một thị trường cung cấp GHO, người dùng có thể vay nó bằng tài sản thế chấp LP được chấp thuận miễn là tài khoản vẫn cao hơn ngưỡng sức khỏe yêu cầu.\n\nVay GHO hoạt động giống như bất kỳ tài sản nợ nào khác trong Avana: nó làm tăng nợ tồn đọng, ảnh hưởng đến hệ số sức khỏe, tích lũy lãi suất, và được hoàn trả bằng GHO cộng với bất kỳ chi phí áp dụng nào."
         },
         {
           "id": "can-gho-be-lp-collateral",
           "q": "Liệu GHO có thể là một phần của tài sản thế chấp LP không?",
-          "a": "Vâng. GHO có thể là một phần của tài sản thế chấp LP khi pool GHO cụ thể được phê duyệt cho thị trường Avana. Pool được đánh giá giống như các thị trường LP khác: định giá tài sản, độ sâu thanh khoản, tương quan, thành phần token, giới hạn và đường dẫn thanh lý đều quan trọng.\n\nĐiều này có nghĩa là GHO không được coi là sự phê duyệt chung cho mọi cặp. Avana hỗ trợ cấu hình pool, không chỉ là ký hiệu tài sản."
+          "a": "Vâng. GHO có thể là một phần của tài sản đảm bảo LP khi pool GHO cụ thể được phê duyệt cho một thị trường Avana. Pool này được đánh giá giống như các thị trường LP khác: giá tài sản, độ sâu thanh khoản, sự tương quan, thành phần token, giới hạn và lộ trình thanh lý đều quan trọng.\n\nĐiều này có nghĩa là GHO không được coi là sự phê duyệt chung cho mọi cặp. Avana hỗ trợ cấu hình pool, không chỉ riêng ký hiệu tài sản."
         },
         {
           "id": "how-do-i-repay-gho",
-          "q": "Làm thế nào tôi trả nợ GHO?",
-          "a": "GHO nợ được trả bằng GHO cùng với lãi suất phát sinh và bất kỳ chi phí áp dụng nào. Khi việc trả nợ được xác nhận, Avana giảm nợ còn lại của tài khoản và yếu tố sức khỏe cải thiện.\n\nSau khi trả hết nợ, các hạn chế về tài sản thế chấp liên quan đến khoản nợ đó được gỡ bỏ theo quy tắc thị trường, cho phép vị trí LP được rút hoặc điều chỉnh khi không còn nợ khác."
+          "q": "Làm thế nào để tôi trả nợ GHO?",
+          "a": "Nợ GHO được trả bằng GHO cộng với lãi suất phát sinh và bất kỳ chi phí áp dụng nào. Khi việc trả nợ được xác nhận, Avana sẽ giảm nợ còn lại của tài khoản và hệ số sức khỏe sẽ được cải thiện.\n\nSau khi trả nợ đầy đủ, các hạn chế về tài sản thế chấp liên quan đến khoản nợ đó sẽ được gỡ bỏ theo quy tắc của thị trường, cho phép vị trí LP được rút hoặc điều chỉnh khi không còn nợ khác."
         }
       ]
     },
     {
       "id": "multiply-markets",
-      "name": "Nhân Thị Trường",
+      "name": "Thị trường Multiply",
       "summary": "",
       "questions": [
         {
           "id": "what-is-avana-multiply",
-          "q": "Avana Nhân là gì?",
-          "a": "Avana Multiply là quy trình quản lý đòn bẩy được xây dựng trên nền tảng tín dụng do LP hỗ trợ. Người dùng gửi tài sản thế chấp LP được hỗ trợ, Avana định giá nó, và giao diện có thể sử dụng sức mạnh vay đó để mở vòng lặp được phê duyệt hoặc tiếp xúc đòn bẩy từ một luồng.\n\nThay vì phải vay thủ công, hoán đổi, gửi lại và theo dõi nợ trên nhiều công cụ khác nhau, Multiply đóng gói vị thế vào một quy trình được giám sát duy nhất với tài sản thế chấp, nợ, mức đòn bẩy, hệ số sức khỏe và các điều khiển giải phóng hiển thị cùng nhau."
+          "q": "Avana Multiply là gì?",
+          "a": "Avana Multiply là quy trình quản lý đòn bẩy được xây dựng trên nền tảng tín dụng có bảo chứng LP. Người dùng gửi tài sản thế chấp LP được hỗ trợ, Avana định giá nó, và giao diện có thể sử dụng quyền vay đó để mở vòng lặp được phê duyệt hoặc tiếp xúc đòn bẩy từ một luồng.\n\nThay vì phải tự vay, hoán đổi, gửi lại, và theo dõi nợ trên nhiều công cụ, Multiply đóng gói vị thế vào một quy trình theo dõi duy nhất với tài sản thế chấp, nợ, mức đòn bẩy, chỉ số sức khỏe, và các kiểm soát giải phóng hiển thị cùng nhau."
         },
         {
           "id": "how-is-multiply-different-from-borrowing",
           "q": "Phép nhân khác phép mượn như thế nào?",
-          "a": "Vay mượn cung cấp cho người dùng tài sản mà họ có thể sử dụng trực tiếp, miễn là tài khoản vẫn khỏe mạnh. Multiply sử dụng sức mua vay dựa trên LP bên trong một chiến lược được quản lý, nơi vốn vay được chuyển vào các khoản tiếp xúc được phê duyệt và được theo dõi như một vị thế duy nhất.\n\nVì Multiply thêm đòn bẩy, nó có thể tăng hiệu quả sử dụng vốn và tiềm năng lợi nhuận, nhưng cũng làm tăng rủi ro giảm giá, rủi ro thanh lý và độ nhạy với biến động giá. Việc xem sức khỏe tài khoản quan trọng hơn, không ít đi, khi một vị thế bị lặp lại."
+          "a": "Vay mượn cung cấp cho người dùng các tài sản mà họ có thể sử dụng trực tiếp, miễn là tài khoản vẫn khỏe mạnh. Multiply sử dụng sức mua vay dựa trên LP trong một chiến lược được quản lý, nơi vốn vay được chuyển vào tiếp xúc đã được phê duyệt và được theo dõi như một vị trí duy nhất.\n\nVì Multiply thêm đòn bẩy, nó có thể tăng hiệu quả sử dụng vốn và khả năng sinh lời, nhưng nó cũng làm tăng rủi ro giảm giá, rủi ro thanh lý và độ nhạy với biến động giá. Quan điểm về sức khỏe tài khoản quan trọng hơn, chứ không phải ít hơn, khi một vị trí bị lặp lại."
         },
         {
           "id": "do-i-keep-lp-while-using-multiply",
-          "q": "Tôi có giữ LP của mình khi sử dụng Nhân không?",
-          "a": "Vâng. Vị trí LP vẫn giữ vai trò là cơ sở tài sản thế chấp trong khi vị trí Multiply vẫn mở. Người dùng không cần phải thoát hoàn toàn vị trí AMM chỉ để tạo ra mức độ đòn bẩy.\n\nLP vẫn đang hỗ trợ nợ, vì vậy nó vẫn phải tuân theo các quy tắc về tài sản thế chấp và có thể bị thanh lý nếu tài khoản trở nên không lành mạnh. Người dùng theo dõi giá trị tài sản thế chấp, nợ, đòn bẩy và bộ đệm thanh lý trong suốt quá trình của vòng lặp."
+          "q": "Tôi có giữ được LP khi sử dụng Multiply không?",
+          "a": "Vâng. Vị trí LP vẫn là cơ sở tài sản thế chấp trong khi vị trí Khuếch đại vẫn đang mở. Người dùng không cần phải thoát hoàn toàn khỏi vị trí AMM chỉ để tạo ra mức độ phơi bày có đòn bẩy.\n\nLP vẫn đang bảo đảm nợ, vì vậy nó vẫn phải tuân theo các quy tắc về tài sản thế chấp và thanh lý nếu tài khoản trở nên không lành mạnh. Người dùng theo dõi giá trị tài sản thế chấp, nợ, đòn bẩy và bộ đệm thanh lý trong suốt quá trình của vòng lặp."
         },
         {
           "id": "what-limits-maximum-leverage",
           "q": "Điều gì giới hạn đòn bẩy tối đa?",
-          "a": "Đòn bẩy tối đa phụ thuộc vào chất lượng tài sản đảm bảo, tính thanh khoản của quỹ, biến động, độ tin cậy của oracle, tài sản vay, vốn hóa thị trường và các giả định về thanh lý. Các quỹ ổn định hoặc có mối tương quan cao thường có thể hỗ trợ các giới hạn đòn bẩy khác với các quỹ biến động hoặc thanh khoản thấp.\n\nAvana sử dụng các biện pháp kiểm soát rủi ro theo thị trường nên đòn bẩy bị giới hạn bởi tài sản đảm bảo LP thực tế đứng sau vị thế thay vì một hệ số nhân cố định áp dụng cho mọi quỹ."
+          "a": "Đòn bẩy tối đa phụ thuộc vào chất lượng tài sản bảo đảm, thanh khoản của quỹ, độ biến động, độ tin cậy của oracle, tài sản vay, vốn hóa thị trường và các giả định về thanh lý. Các quỹ ổn định hoặc có độ tương quan cao thường có thể hỗ trợ các giới hạn đòn bẩy khác với các quỹ biến động hoặc thanh khoản thấp.\n\nAvana sử dụng các biện pháp kiểm soát rủi ro theo thị trường cụ thể nên đòn bẩy được giới hạn bởi tài sản LP thực sự phía sau vị thế thay vì một hệ số cố định áp dụng cho mọi quỹ."
         }
       ]
     },
@@ -303,17 +303,17 @@
         {
           "id": "can-automation-help-manage-risk",
           "q": "Tự động hóa có thể giúp quản lý rủi ro vị thế không?",
-          "a": "Tự động hóa giám sát tình trạng tài khoản và có thể kích hoạt các hành động được định trước như trả nợ, giảm đòn bẩy, hoặc giảm rủi ro trước khi thanh lý. Điều này quan trọng vì các vị trí được LP hỗ trợ di chuyển cùng với cả sự tích lũy nợ và thay đổi thị trường ở cấp độ pool.\n\nTự động hóa là một công cụ quản lý rủi ro, không phải là sự đảm bảo. Việc thực hiện vẫn có thể bị ảnh hưởng bởi biến động thị trường, điều kiện thanh khoản, độ trễ giao dịch, cập nhật oracle, và khả năng khả dụng của lộ trình."
+          "a": "Tự động hóa theo dõi sức khỏe tài khoản và có thể kích hoạt các hành động đã định sẵn như trả nợ, giảm đòn bẩy, hoặc giảm mức độ tiếp xúc trước khi thanh lý. Điều này quan trọng vì các vị thế được hỗ trợ bởi LP di chuyển theo cả tích lũy nợ và thay đổi thị trường ở cấp độ pool.\n\nTự động hóa là một công cụ quản lý rủi ro, không phải là sự đảm bảo. Việc thực hiện vẫn có thể bị ảnh hưởng bởi biến động thị trường, điều kiện thanh khoản, chậm trễ giao dịch, cập nhật oracle và khả năng định tuyến."
         },
         {
           "id": "can-lp-collateral-support-perps-exposure",
-          "q": "Có thể LP hỗ trợ tài sản thế chấp theo kiểu perps không?",
-          "a": "LP tài sản đảm bảo hỗ trợ tỷ lệ đòn bẩy được phê duyệt hoặc mức độ tiếp xúc kiểu perps thông qua các thị trường và tích hợp mà dẫn tín dụng dựa trên LP vào các chiến lược được kiểm soát. Vị trí LP tạo ra khả năng vay mượn, và tín dụng đó có thể được triển khai thông qua các đường tiếp xúc được hỗ trợ thay vì chỉ sử dụng một cách đơn giản như vay từ ví.\n\nTính khả dụng được xác định bởi cấu hình thị trường hoạt động: loại tài sản đảm bảo, tham số thị trường, độ tin cậy của oracle, tính thanh khoản, tài sản nợ và lộ trình tích hợp. Giao diện hiển thị các lộ trình được hỗ trợ cho mỗi thị trường."
+          "q": "Tài sản đảm bảo LP có thể hỗ trợ mức độ rủi ro kiểu perps không?",
+          "a": "Tài sản thế chấp LP hỗ trợ mức đòn bẩy được phê duyệt hoặc mức tiếp xúc theo phong cách perps thông qua các thị trường và tích hợp chuyển tín dụng được hỗ trợ bởi LP vào các chiến lược được kiểm soát. Vị thế LP tạo ra khả năng vay mượn, và tín dụng đó có thể được triển khai thông qua các đường tiếp xúc được hỗ trợ thay vì chỉ được sử dụng như một khoản vay từ ví đơn giản.\n\nKhả năng sẵn có được xác định bởi cấu hình thị trường đang hoạt động: loại tài sản thế chấp, các tham số thị trường, độ tin cậy của oracle, thanh khoản, tài sản nợ và tuyến tích hợp. Giao diện hiển thị các tuyến đường được hỗ trợ cho mỗi thị trường."
         },
         {
           "id": "what-users-monitor",
           "q": "Người dùng theo dõi gì sau khi mở vị thế?",
-          "a": "Người dùng theo dõi hệ số sức khỏe, mức sử dụng vay, giá trị tài sản thế chấp, sự tăng trưởng nợ, trạng thái phạm vi LP, tích lũy phí và bộ đệm thanh lý. Đối với các vị thế Multiply, họ cũng theo dõi mức đòn bẩy và các kiểm soát tháo gỡ.\n\nAvana hiển thị các giá trị này trên giao diện để người dùng có thể thấy khi nào một vị thế khỏe mạnh, khi nào cần chú ý và khi nào rủi ro đang tiến gần đến việc thanh lý."
+          "a": "Người dùng theo dõi các yếu tố sức khỏe, mức sử dụng vay, giá trị tài sản thế chấp, sự tăng trưởng nợ, trạng thái phạm vi LP, tích lũy phí và đệm thanh lý. Đối với các vị thế Multiply, họ cũng theo dõi mức đòn bẩy và các kiểm soát giải phóng.\n\nAvana hiển thị các giá trị này trên giao diện để người dùng có thể thấy khi nào một vị thế là lành mạnh, khi nào cần chú ý và khi nào rủi ro đang tiến gần đến thanh lý."
         }
       ]
     }
