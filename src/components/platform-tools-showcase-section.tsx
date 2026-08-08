@@ -12,7 +12,7 @@ export default async function PlatformToolsShowcaseSection() {
       <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
         <SectionEyebrow tone="emerald">Lending tools</SectionEyebrow>
         <SectionTitle>
-          <span className="lg:whitespace-nowrap">Supply once. We’ll handle the complexity</span>
+          Supply once. We’ll handle the complexity
         </SectionTitle>
       </div>
 

@@ -2,9 +2,9 @@
   "posts": [
     {
       "slug": "lp-risk-governance",
-      "title": "Avana如何支配LP风险",
+      "title": "Avana 如何治理 LP 风险",
       "date": "July 24, 2026",
-      "description": "7如何通过有界更新、独立审查和紧急控制管理23个分支市场的抵押风险。",
+      "description": "Avana 如何通过有界更新、独立审查与紧急遏制，在各 Spoke 市场治理 LP 抵押风险。",
       "image": "/images/blog/lp-risk-governance.png",
       "category": "开发者",
       "tag": "协议",
@@ -43,9 +43,9 @@
     },
     {
       "slug": "why-lp-collateral-needs-smart-agents",
-      "title": "为什么LP抵押品需要智能代理",
+      "title": "为什么 LP 抵押需要 Smart Agents",
       "date": "July 22, 2026",
-      "description": "为什么Avana使用智能代理来监控健康状况、服务场所特定职位，并在压力下保持清算覆盖的可靠性。",
+      "description": "为什么 Avana 使用 Smart Agents 监控健康度、服务场地专属仓位，并在压力下保持可靠清算覆盖。",
       "image": "/images/blog/smart-agents-lp-collateral.png",
       "category": "开发者",
       "tag": "协议",
@@ -78,9 +78,9 @@
     },
     {
       "slug": "how-lp-liquidation-should-work",
-      "title": "清算应该如何进行LP",
+      "title": "LP 清算应如何运作",
       "date": "July 20, 2026",
-      "description": "Avana 如何通过受控平仓、部分干预、尽可能先收取费用以及特定场地路径来清算 LP 抵押品。",
+      "description": "Avana 如何通过受控解绑、部分干预、优先手续费以及场地专属路径清算 LP 抵押。",
       "image": "/images/blog/lp-liquidation-workflow.png",
       "category": "开发者",
       "tag": "协议",
@@ -119,9 +119,9 @@
     },
     {
       "slug": "pricing-lp-collateral-oracle-problem",
-      "title": "使用更好的预言机定价LP担保品",
+      "title": "用更好的预言机为 LP 抵押定价",
       "date": "July 17, 2026",
-      "description": "Oracle如何使用可回收价值、确定性重建和保守回收折扣对抵押品定价。",
+      "description": "Avana Oracle 如何通过可回收价值、确定性重建与保守回收折扣为 LP 抵押估值。",
       "image": "/images/blog/lp-collateral-oracle-problem.png",
       "category": "开发者",
       "tag": "协议",
@@ -160,9 +160,9 @@
     },
     {
       "slug": "security-deep-dive",
-      "title": "7 如何管理 23 的担保风险",
+      "title": "Avana 如何管理 LP 抵押风险",
       "date": "July 15, 2026",
-      "description": "Avana 如何为 LP 担保安排分层安全，从架构和预言机到健康、清算和操作。",
+      "description": "Avana 如何从架构与预言机到健康度、清算与运营，构建分层的 LP 抵押安全。",
       "image": "/images/blog/security-deep-dive.png",
       "category": "开发者",
       "tag": "协议",
@@ -202,9 +202,9 @@
     },
     {
       "slug": "hedge-lp-position",
-      "title": "如何更周到地对冲LP头寸",
+      "title": "如何更审慎地对冲 LP 仓位",
       "date": "July 13, 2026",
-      "description": "23可以使用7来为缓冲、方向性偏差以及更有纪律的对冲习惯提供资金，而无需完全退出池子。",
+      "description": "流动性提供者如何利用 Avana 为缓冲、方向性对冲与更有纪律的对冲习惯融资，而无需完全退出资金池。",
       "image": "/images/blog/hedge-lp-position.png",
       "category": "持续LP秒",
       "tag": "指南",
@@ -243,9 +243,9 @@
     },
     {
       "slug": "yield-looping-playbook",
-      "title": "使用LP抵押品的收益循环",
+      "title": "用 LP 抵押进行收益循环",
       "date": "July 10, 2026",
-      "description": "如何看待使用 Avana LP 抵押品进行收益循环，包括缓冲、压力测试、退出纪律和可持续的杠杆。",
+      "description": "如何用 Avana LP 抵押思考收益循环：缓冲、压力测试、退出纪律与可持续杠杆。",
       "image": "/images/blog/yield-looping-playbook.png",
       "category": "持续LP秒",
       "tag": "指南",
@@ -284,9 +284,9 @@
     },
     {
       "slug": "unleashing-lp-tokens",
-      "title": "抵押品能实现的 LP 项目",
+      "title": "LP 抵押让什么成为可能",
       "date": "July 8, 2026",
-      "description": "7和23号抵押品使借贷、对冲、财务灵活性以及生产性流动性的更高效资本使用成为可能。",
+      "description": "Avana LP 抵押让什么成为可能：借款、对冲、资金库灵活，以及更高效地使用生产性流动性资本。",
       "image": "/images/blog/unleashing-lp-tokens.png",
       "category": "持续LP秒",
       "tag": "指南",
@@ -325,9 +325,9 @@
     },
     {
       "slug": "aerodrome-lp-collateral-aave-v4",
-      "title": "以 Aave v4 上的 Aerodrome LP 借款",
+      "title": "在 Aave v4 上以 Aerodrome LP 抵押借款",
       "date": "July 6, 2026",
-      "description": "Avana 如何支持 Base 上的 Aerodrome LP 个位置，以便它们在通过专用的 Aave v4 辐条支持借用时保持活跃。",
+      "description": "Avana 如何支持 Base 上的 Aerodrome LP 仓位，使其在保持活跃的同时通过专用 Aave v4 Spoke 支持借款。",
       "image": "/images/blog/aerodrome-lp-collateral.png",
       "category": "开发者",
       "tag": "协议",
@@ -352,7 +352,7 @@
           "title": "估值与借贷流",
           "paragraphs": [
             "一个AerodromeLP不是单一的价格代币。它是对基础池资产的一个权利声明，而这些资产的构成和质量直接相关。Avana保守地评估抵押品价值，考虑流动性质量、波动性、资产相关性，以及当市场出现变化时池的表现。一个头寸可能具有相当大的名义价值，但借款能力反映的是在压力情况下可以回收的价值。",
-            "借贷流程是具体的。你通过Avana辐条提供支持的Aerodrome LP，它将保持活跃并赚取费用。辐条使用特定池的抵押逻辑评估该仓位。基于此，你可以从枢纽流动性中借入支持的资产。稳定和蓝筹风格的池可能支持更强的抵押处理。波动较大或流动性较薄的配对会有更严格的限制和较低的因子。"
+            "借贷流程是具体的。你通过AvanaSpoke提供支持的Aerodrome LP，它将保持活跃并赚取费用。Spoke使用特定池的抵押逻辑评估该仓位。基于此，你可以从枢纽流动性中借入支持的资产。稳定和蓝筹风格的池可能支持更强的抵押处理。波动较大或流动性较薄的配对会有更严格的限制和较低的因子。"
           ]
         },
         {
@@ -366,9 +366,9 @@
     },
     {
       "slug": "curve-lp-collateral-aave-v4",
-      "title": "以 Aave v4 上的 Curve LP 借款",
+      "title": "在 Aave v4 上以 Curve LP 抵押借款",
       "date": "July 3, 2026",
-      "description": "7 如何通过专用的 2 号分支处理 8 23 抵押品用于稳定和相关的资金池。",
+      "description": "Avana 如何通过专用 Aave v4 Spoke 处理稳定与相关资金池的 Curve LP 抵押。",
       "image": "/images/blog/curve-lp-collateral.png",
       "category": "开发者",
       "tag": "协议",
@@ -407,9 +407,9 @@
     },
     {
       "slug": "balancer-lp-collateral-aave-v4",
-      "title": "Balancer LP 抵押品于 Aave v4",
+      "title": "Aave v4 上的 Balancer LP 抵押",
       "date": "July 1, 2026",
-      "description": "如何Avana支持Balancer加权池LP作为Aave v4上的抵押品，同时风险敞口保持活跃。",
+      "description": "Avana 如何在敞口保持活跃的同时，将 Balancer 加权资金池 LP 作为 Aave v4 抵押支持。",
       "image": "/images/blog/balancer-lp-collateral.png",
       "category": "开发者",
       "tag": "协议",
@@ -442,9 +442,9 @@
     },
     {
       "slug": "smart-contract-architecture",
-      "title": "以 Aave v4 上的 Uniswap LP 借款",
+      "title": "在 Aave v4 上以 Uniswap LP 抵押借款",
       "date": "June 28, 2026",
-      "description": "当 Avana 将 Uniswap LP 个仓位转化为 Aave v4 个抵押品时，它们仍然留在池中并继续赚取费用。",
+      "description": "Avana 如何在 Uniswap LP 仓位留在资金池并继续赚取手续费的同时，将其变成 Aave v4 抵押。",
       "image": "/images/blog/uniswap-lp-collateral.png",
       "category": "开发者",
       "tag": "协议",
@@ -477,9 +477,9 @@
     },
     {
       "slug": "defi-ux-challenges",
-      "title": "使LP担保可用",
+      "title": "让 LP 抵押真正可用",
       "date": "June 25, 2026",
-      "description": "为什么Avana产品设计关心清晰的估值、借款限额和健康状况，以便LP抵押品可操作，而不仅仅是强大。",
+      "description": "为什么 Avana 产品设计强调清晰估值、借款上限与健康度——让 LP 抵押可操作，而不只是强大。",
       "image": "/images/blog/making-lp-collateral-usable.png",
       "category": "产品",
       "tag": "指南",
@@ -512,9 +512,9 @@
     },
     {
       "slug": "avana-lp-collateral",
-      "title": "Avana 和 LP 的下一步",
+      "title": "Avana 与 LP 的下一步",
       "date": "June 23, 2026",
-      "description": "为什么流动性提供者不应该在赚取费用和获取资金之间做出选择，以及Avana如何在Aave v4上扩展LP的抵押品。",
+      "description": "为什么流动性提供者不应在赚取手续费与获取资金之间二选一，以及 Avana 如何在 Aave v4 上扩展 LP 抵押。",
       "image": "/images/blog/avana-next-step-liquidity-providers.png",
       "category": "社区",
       "tag": "策略",
@@ -538,7 +538,7 @@
           "id": "how-the-stack-fits",
           "title": "堆栈如何组合在一起",
           "paragraphs": [
-            "Avana 使用 Aave v4 的轮毂与辐条设计。共享流动性保持在轮毂层级。LP 的特定估值、抵押品处理和清算逻辑存在于专用的辐条市场中。稳定池、相关资产池和集中流动性头寸各自获得适当的风险处理，而不是被简化到一个通用框架中。",
+            "Avana 使用 Aave v4 的轮毂与Spoke设计。共享流动性保持在轮毂层级。LP 的特定估值、抵押品处理和清算逻辑存在于专用的Spoke市场中。稳定池、相关资产池和集中流动性头寸各自获得适当的风险处理，而不是被简化到一个通用框架中。",
             "对于LP，结果是资本效率更高的参与。一个被支持的头寸在AMM中保持生产力，同时在信贷系统中变得有用。你保持风险敞口，继续收益，并且在不完全平仓的情况下获得流动性。对于更广泛的系统来说，LP担保意味着DeFi资本可以减少分散。每次流动性需要在其他地方发挥作用时，并不需要离开市场。",
             "如果 LP 个头寸在支持借贷的同时可以保持活跃，它们就不仅仅是产生费用的池份额。它们的功能类似于具有费用生成、市场风险敞口和抵押价值的结构化金融头寸。Avana 是交易基础设施和信用基础设施之间的桥梁。"
           ]
@@ -547,9 +547,9 @@
     },
     {
       "slug": "institutional-use-cases",
-      "title": "LP 机构担保",
+      "title": "面向机构的 LP 抵押",
       "date": "June 20, 2026",
-      "description": "如何 Avana LP 抵押品可以帮助 DAO、金库、基金和加密本地公司在不解除生产性流动性的情况下获得资本。",
+      "description": "Avana LP 抵押如何帮助 DAO、资金库、基金与原生加密企业在不解绑生产性流动性的情况下获取资金。",
       "image": "/images/blog/lp-collateral-for-institutions.png",
       "category": "面向机构",
       "tag": "机构",
@@ -589,9 +589,9 @@
     },
     {
       "slug": "integration-guide",
-      "title": "基于Avana LP基础设施",
+      "title": "构建在 Avana LP 基础设施之上",
       "date": "June 17, 2026",
-      "description": "开发者视角看Avana LP 的抵押基础设施，包括监控、自动化、清算服务以及构建者机会。",
+      "description": "开发者视角下的 Avana LP 抵押基础设施：监控、自动化、清算服务与构建者机会。",
       "image": "/images/blog/developer-view-lp-collateral.png",
       "category": "开发者",
       "tag": "协议",
@@ -624,9 +624,9 @@
     },
     {
       "slug": "aave-v4-avana-spoke",
-      "title": "在Avana的LP抵押架构内部",
+      "title": "深入 Avana 的 LP 抵押架构",
       "date": "June 14, 2026",
-      "description": "在Aave v4上Avana的LP抵押架构内部，包括中心、分支、估值、预言机设计和清算逻辑。",
+      "description": "深入 Avana 在 Aave v4 上的 LP 抵押架构：Hub、Spoke、估值、预言机设计与清算逻辑。",
       "image": "/images/blog/inside-avana-architecture.png",
       "category": "开发者",
       "tag": "协议",
@@ -643,7 +643,7 @@
           "title": "枢纽和辐轮的作用",
           "paragraphs": [
             "枢纽持有可借用的资产，并协调跨市场的共享流动性：储备管理、利用率跟踪和信贷分配。枢纽是 Avana 连接 LP 抵押品到更广泛的借贷框架的方式，而不必强制每种抵押品类型共享相同的假设。一个稳定的 LP 市场、一个集中流动性市场和一个波动的 AMM 交易对，不应仅因为它们来自同一流动性池而以相同的方式管理。",
-            "辐条是 LP 特定逻辑存在的地方：抵押品登记、估值、风险调整、监控和清算。每个辐条定义了不同池类型的处理方式。一个 Uniswap 集中头寸的行为方式与可替代的 Curve LP 不同，后者的行为又不同于 Balancer 加权池。辐条是 LP 抵押品在 Avana 内部变成具有自身规则的真实借贷市场的地方。"
+            "Spoke是 LP 特定逻辑存在的地方：抵押品登记、估值、风险调整、监控和清算。每个Spoke定义了不同池类型的处理方式。一个 Uniswap 集中头寸的行为方式与可替代的 Curve LP 不同，后者的行为又不同于 Balancer 加权池。Spoke是 LP 抵押品在 Avana 内部变成具有自身规则的真实借贷市场的地方。"
           ]
         },
         {
@@ -659,9 +659,9 @@
     },
     {
       "slug": "v1-1-release",
-      "title": "Avana v1.1：更好的抵押品，更好的控制",
+      "title": "Avana v1.1：更好的抵押，更好的控制",
       "date": "June 11, 2026",
-      "description": "Avana v1.1 扩展了多位置抵押品，增加了更多支持的池，改进了委托和警报，并降低了交易开销。",
+      "description": "Avana v1.1 扩展多仓位抵押、增加更多受支持资金池、改进委托与警报，并降低交易费用。",
       "image": "/images/blog/avana-v1-1-better-control.png",
       "category": "产品",
       "tag": "产品",
@@ -694,9 +694,9 @@
     },
     {
       "slug": "introducing-automate",
-      "title": "自动化：LP 担保品的控制层",
+      "title": "Automate：LP 抵押的控制层",
       "date": "June 8, 2026",
-      "description": "Avana Automate 如何通过非托管自动化帮助用户管理 LP 抵押品，包括费用、再平衡、保护和有纪律的维护。",
+      "description": "Avana Automate 如何通过非托管自动化帮助管理 LP 抵押：手续费、再平衡、保护与有纪律的维护。",
       "image": "/images/blog/automate-control-layer-lp-collateral.png",
       "category": "产品",
       "tag": "产品",
@@ -735,9 +735,9 @@
     },
     {
       "slug": "lp-collateral-guide",
-      "title": "LP 抵押品入门指南",
+      "title": "LP 抵押入门指南",
       "date": "June 4, 2026",
-      "description": "初学者指南：关于 Avana 上的 LP 抵押品，涵盖 LP 行为、LTV、无常损失、清算及保守的初步步骤。",
+      "description": "Avana 上 LP 抵押的入门指南：LP 行为、LTV、无常损失、清算与审慎起步。",
       "image": "/images/blog/beginners-guide-lp-collateral.png",
       "category": "持续LP秒",
       "tag": "指南",

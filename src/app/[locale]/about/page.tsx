@@ -25,11 +25,7 @@ export default async function AboutPage() {
               <span className="text-gray-950">{`Introducing ${SITE_NAME}:`}</span>
               <br />
               <span className="text-[#01AACF]">
-                <span className="hidden lg:inline whitespace-nowrap">A lending protocol for LP&#8209;backed loans</span>
-                <span className="lg:hidden">
-                  <span className="block md:inline">A lending protocol for</span>
-                  <span className="block md:inline md:ml-2">LP&#8209;backed loans</span>
-                </span>
+                A lending protocol for LP-backed loans
               </span>
             </h1>
           </div>

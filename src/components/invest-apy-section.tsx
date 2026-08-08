@@ -121,7 +121,7 @@ export default function InvestApySection() {
       <div className="site-content-shell">
         <div className="space-y-4">
           <SectionEyebrow tone="cyan">{eyebrow}</SectionEyebrow>
-          <SectionTitle className="max-w-none md:whitespace-nowrap">
+          <SectionTitle className="max-w-none">
             {sectionTitle}
           </SectionTitle>
         </div>
@@ -130,9 +130,7 @@ export default function InvestApySection() {
           <div className="space-y-5">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <span className="text-[clamp(1.4rem,2vw,2rem)] font-semibold tracking-[-0.05em] text-[#163042]">
-                {activeStage.minApy.toFixed(1)}
-                {t("% to")}
-                {activeStage.maxApy.toFixed(1)}%
+                {`${activeStage.minApy.toFixed(1)}% ${t("to")} ${activeStage.maxApy.toFixed(1)}%`}
               </span>
               <span className="text-sm text-[#728196]">
                 {t(activeStage.title)}

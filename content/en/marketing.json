@@ -121,7 +121,8 @@
       "on your assets",
       "Same Idle Cash with Higher APY Returns",
       "See your cash grow",
-      "Supply once. We'll handle the complexity"
+      "Supply once. We'll handle the complexity",
+      "Earn interest on your assets"
     ]
   },
   "multiply/multiply-content": {
@@ -350,7 +351,10 @@
       "liquidation",
       "Avana token icons",
       "without withdrawing liquidity or giving up trading fees.",
-      "at 5.5% APR without withdrawing liquidity or giving up trading fees."
+      "at 5.5% APR without withdrawing liquidity or giving up trading fees.",
+      "Earn interest from LP borrower demand",
+      "Ways teams put LP credit to work",
+      "LP credit to work"
     ]
   },
   "webapp-hero": {
@@ -384,8 +388,8 @@
       "picks up where that left off, designed for today's DEXs and LP types,",
       "Avana Markets",
       "Unlock Capital",
-      "from Amm Markets",
-      "Unlock Capital from Amm Markets",
+      "from AMM Markets",
+      "Unlock Capital from AMM Markets",
       "Learn more",
       "In 2021, Aave launched AMM Market and proved LP positions could serve as collateral, but it was built for the simpler DEXs of that era. Avana picks up where that left off, designed for today's DEXs and LP types, treating each position as collateral shaped by dual oracles and stronger risk controls.",
       "A lending protocol",
@@ -440,7 +444,8 @@
       ", or",
       "withdraw",
       "Frequently asked",
-      "questions"
+      "questions",
+      "Frequently asked questions"
     ]
   },
   "homepage/HomepageNewsroomSection": {
@@ -619,7 +624,7 @@
       "Specific pool risk contributes the final spread, lifting return potential for the same idle cash.",
       "Avana APY",
       "Same Idle Cash with Higher APY Returns",
-      "% to"
+      "to"
     ]
   },
   "leverage-glance-showcase-section": {

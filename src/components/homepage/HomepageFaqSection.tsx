@@ -13,76 +13,83 @@ interface HomepageFaqItem {
   answer: ReactNode
 }
 
-const homepageFaqItems: HomepageFaqItem[] = [
-  {
-    value: "item-1",
-    question: "Do I have to sell or exit my LP position?",
-    answer: (
-      <>
-        No. Your <DeFiTerm term="lp">LP</DeFiTerm> remains in the pool and continues earning trading fees.
-        {" "}Avana uses your LP shares as <DeFiTerm term="collateral">collateral</DeFiTerm> without removing liquidity.
-      </>
-    ),
-  },
-  {
-    value: "item-2",
-    question: "How much can I borrow?",
-    answer: (
-      <>
-        Up to 70% of your LP&apos;s value, depending on pool type, volatility, and{" "}
-        <DeFiTerm term="oracle">oracle</DeFiTerm> confidence. No minimum amounts. Higher-quality collateral
-        unlocks more borrowing room.
-      </>
-    ),
-  },
-  {
-    value: "item-3",
-    question: "What happens if my LP value drops?",
-    answer: (
-      <>
-        If your <DeFiTerm term="ltv">loan-to-value ratio</DeFiTerm> exceeds the{" "}
-        <DeFiTerm term="liquidation-threshold">liquidation threshold</DeFiTerm>, part of your position may
-        be <DeFiTerm term="liquidation">liquidated</DeFiTerm> to maintain system solvency.
-      </>
-    ),
-  },
-  {
-    value: "item-4",
-    question: "Is my risk isolated?",
-    answer: (
-      <>
-        Yes. Each <DeFiTerm term="lp-position">LP position</DeFiTerm> is managed independently with isolated
-        risk. System-wide safety is enforced through Aave v4&apos;s <DeFiTerm term="hub">Hub</DeFiTerm>-and-
-        <DeFiTerm term="spoke">Spoke</DeFiTerm> architecture.
-      </>
-    ),
-  },
-  {
-    value: "item-5",
-    question: "Can I repay early or close my position?",
-    answer: (
-      <>
-        Yes. <DeFiTerm term="repay">Repay</DeFiTerm> anytime, reduce your{" "}
-        <DeFiTerm term="borrow">borrow</DeFiTerm>, or <DeFiTerm term="withdraw">withdraw</DeFiTerm> your LP
-        once debt is cleared.
-      </>
-    ),
-  },
-]
-
 /**
  * HomepageFaqSection - Homepage FAQ using the product-page FAQ layout directly.
+ * Answer copy is composed from marketing phrase-map fragments so locales localize.
  */
 export default function HomepageFaqSection() {
   const map = usePhraseMap()
   const t = (text: string) => lookupPhrase(map, text)
 
+  const homepageFaqItems: HomepageFaqItem[] = [
+    {
+      value: "item-1",
+      question: "Do I have to sell or exit my LP position?",
+      answer: (
+        <>
+          {t("No. Your")} <DeFiTerm term="lp">LP</DeFiTerm>{" "}
+          {t("Avana uses your LP shares as")}{" "}
+          <DeFiTerm term="collateral">{t("collateral")}</DeFiTerm>.
+        </>
+      ),
+    },
+    {
+      value: "item-2",
+      question: "How much can I borrow?",
+      answer: (
+        <>
+          {t("Up to 70% of your LP's value, depending on pool type, volatility, and")}{" "}
+          <DeFiTerm term="oracle">{t("oracle")}</DeFiTerm>{" "}
+          {t("confidence. No minimum amounts. Higher-quality collateral unlocks more borrowing room.")}
+        </>
+      ),
+    },
+    {
+      value: "item-3",
+      question: "What happens if my LP value drops?",
+      answer: (
+        <>
+          {t("If your")} <DeFiTerm term="ltv">{t("loan-to-value ratio")}</DeFiTerm>{" "}
+          {t("exceeds the")}{" "}
+          <DeFiTerm term="liquidation-threshold">{t("liquidation threshold")}</DeFiTerm>
+          {t(", part of your position may be")}{" "}
+          <DeFiTerm term="liquidation">{t("liquidated")}</DeFiTerm>.
+        </>
+      ),
+    },
+    {
+      value: "item-4",
+      question: "Is my risk isolated?",
+      answer: (
+        <>
+          {t("Yes. Each")} <DeFiTerm term="lp-position">{t("LP position")}</DeFiTerm>{" "}
+          {t(
+            "is managed independently with isolated risk. System-wide safety is enforced through Aave v4's",
+          )}{" "}
+          <DeFiTerm term="hub">Hub</DeFiTerm>
+          {t("-and-")}
+          <DeFiTerm term="spoke">{t("Spoke")}</DeFiTerm> {t("architecture.")}
+        </>
+      ),
+    },
+    {
+      value: "item-5",
+      question: "Can I repay early or close my position?",
+      answer: (
+        <>
+          {t("Yes.")} <DeFiTerm term="repay">{t("Repay")}</DeFiTerm> {t("anytime, reduce your")}{" "}
+          <DeFiTerm term="borrow">{t("borrow")}</DeFiTerm>
+          {t(", or")} <DeFiTerm term="withdraw">{t("withdraw")}</DeFiTerm>.
+        </>
+      ),
+    },
+  ]
+
   return (
     <div className="grid grid-cols-1 gap-8 pb-4 md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:gap-6 md:pb-0 lg:grid-cols-[minmax(0,25rem)_minmax(0,1fr)] lg:gap-8">
       <div className="space-y-3 md:max-w-[25rem] md:pt-2">
         <SectionTitle as="h3" className="max-w-none">
-          <span className="block whitespace-nowrap">{t("Frequently asked")}</span>
-          <span className="block whitespace-nowrap">{t("questions")}</span>
+          {t("Frequently asked questions")}
         </SectionTitle>
       </div>
       <div className="min-w-0 md:pl-16 lg:pl-24 xl:pl-28">

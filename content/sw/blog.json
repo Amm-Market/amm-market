@@ -2,12 +2,12 @@
   "posts": [
     {
       "slug": "lp-risk-governance",
-      "title": "Jinsi Avana Inavyotawala Hatari ya LP",
+      "title": "Jinsi Avana Inavyosimamia Hatari ya LP",
       "date": "July 24, 2026",
-      "description": "Jinsi Avana inavyodhibiti hatari ya hati ya mali isiyohamishika ya LP katika masoko yenye matawi na masasisho yaliyopunguzwa, uhakiki huru, na udhibiti wa dharura.",
+      "description": "Jinsi Avana inavyosimamia hatari ya dhamana ya LP katika masoko ya Spoke kwa masasisho yenye mipaka, ukaguzi huru, na udhibiti wa dharura.",
       "image": "/images/blog/lp-risk-governance.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Itifaki",
       "sections": [
         {
           "id": "why-lp-risk-is-different",
@@ -43,12 +43,12 @@
     },
     {
       "slug": "why-lp-collateral-needs-smart-agents",
-      "title": "Kwa Nini LP Msaada wa Mratibu wa Akili Unahitajika",
+      "title": "Kwa nini Dhamana ya LP Inahitaji Smart Agents",
       "date": "July 22, 2026",
-      "description": "Kwa nini Avana inatumia Wakala Wenye Akili kusimamia afya, nafasi maalum za mahali pa huduma, na kuhakikisha mwafaka wa ulipaji unakuwa wa kuaminika wakati wa msongo.",
+      "description": "Kwa nini Avana hutumia Smart Agents kufuatilia health, kuhudumia nafasi mahususi za venue, na kuweka cakupan ya uuzaji dhamana kuwa ya kuaminika chini ya mkazo.",
       "image": "/images/blog/smart-agents-lp-collateral.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Itifaki",
       "sections": [
         {
           "id": "lp-loans-are-operational",
@@ -78,12 +78,12 @@
     },
     {
       "slug": "how-lp-liquidation-should-work",
-      "title": "Jinsi Utoaji Maji Unavyopaswa Kufanya Kazi",
+      "title": "Jinsi Uuzaji wa Dhamana ya LP Unavyopaswa Kufanya Kazi",
       "date": "July 20, 2026",
-      "description": "Jinsi Avana inavyouza LP dhamana kwa uchakataji ulioamrikishwa, uingiliaji wa sehemu, ada kwanza inapowezekana, na njia maalumu za eneo.",
+      "description": "Jinsi Avana inavyouza dhamana ya LP kwa unwind iliyodhibitiwa, uingiliaji wa sehemu, ada kwanza inapowezekana, na njia mahususi za venue.",
       "image": "/images/blog/lp-liquidation-workflow.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Itifaki",
       "sections": [
         {
           "id": "not-a-token-sale",
@@ -119,12 +119,12 @@
     },
     {
       "slug": "pricing-lp-collateral-oracle-problem",
-      "title": "Kuweka Bei LP Dhamana kwa Kutumia Oracles Bora",
+      "title": "Kupanga Bei ya Dhamana ya LP kwa Oracle Bora",
       "date": "July 17, 2026",
-      "description": "Jinsi Avana Oracle inavyopiga bei LP dhamana kwa kutumia thamani inayorejelewa, urejeleaji wa uhakika, na kupunguza marejesho ya tahadhari.",
+      "description": "Jinsi Avana Oracle inavyopanga bei ya dhamana ya LP kwa kutumia thamani inayoweza kurejeshwa, ujenzi wa upya wa uhakika, na haircut za kurejesha zenye tahadhari.",
       "image": "/images/blog/lp-collateral-oracle-problem.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Itifaki",
       "sections": [
         {
           "id": "what-avana-oracle-asks",
@@ -160,12 +160,12 @@
     },
     {
       "slug": "security-deep-dive",
-      "title": "Jinsi Avana Inavyosimamia Hatari ya Dhamana LP",
+      "title": "Jinsi Avana Inavyosimamia Hatari ya Dhamana ya LP",
       "date": "July 15, 2026",
-      "description": "Jinsi Avana inavyopanga usalama wa tabaka kwa LP dhamana, kuanzia usanifu na manabii hadi afya, ulipaji wa madeni, na uendeshaji.",
+      "description": "Jinsi Avana inavyounda usalama wa tabaka kwa dhamana ya LP, kutoka usanifu na oracle hadi health, uuzaji dhamana, na uendeshaji.",
       "image": "/images/blog/security-deep-dive.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Itifaki",
       "sections": [
         {
           "id": "more-than-a-price",
@@ -202,12 +202,12 @@
     },
     {
       "slug": "hedge-lp-position",
-      "title": "Jinsi ya Kufunika Nafasi ya LP Kwa Uangalifu Zaidi",
+      "title": "Jinsi ya Kuhedge Nafasi ya LP kwa Uangalifu Zaidi",
       "date": "July 13, 2026",
-      "description": "Jinsi LPs wanaweza kutumia Avana kufadhili buffers, mabadiliko ya mwelekeo, na tabia zenye nidhamu ya kujikinga bila kutoka kabisa kwenye bwawa.",
+      "description": "Jinsi LP zinavyoweza kutumia Avana kufadhili buffer, fidia za mwelekeo, na tabia bora za hedge bila kuondoka kabisa kwenye pool.",
       "image": "/images/blog/hedge-lp-position.png",
       "category": "For LPs",
-      "tag": "Guides",
+      "tag": "Mwongozo",
       "sections": [
         {
           "id": "more-than-fees",
@@ -243,12 +243,12 @@
     },
     {
       "slug": "yield-looping-playbook",
-      "title": "Kurudia Pato na LP Dhamana",
+      "title": "Yield Looping kwa Dhamana ya LP",
       "date": "July 10, 2026",
-      "description": "Jinsi ya kufikiria kuhusu kurudia mapato na Avana LP dhamana, ikijumuisha buffers, majaribio ya msongo, nidhamu ya kutoka, na uonekana wa muda mrefu wa madeni.",
+      "description": "Jinsi ya kufikiria yield looping kwa dhamana ya LP ya Avana, ikiwa ni pamoja na buffer, majaribio ya mkazo, nidhamu ya kutoka, na leverage endelevu.",
       "image": "/images/blog/yield-looping-playbook.png",
       "category": "For LPs",
-      "tag": "Guides",
+      "tag": "Mwongozo",
       "sections": [
         {
           "id": "what-looping-means",
@@ -284,12 +284,12 @@
     },
     {
       "slug": "unleashing-lp-tokens",
-      "title": "Nini LP Kifedha cha Kuhakikishiwa Kinawezesha",
+      "title": "Dhamana ya LP Inawezesha Nini",
       "date": "July 8, 2026",
-      "description": "Nini fedha taslimu ya dhamana ya Avana LP inayoweza kufanya katika kukopa, kufunika hatari, urahisi wa hazina, na matumizi bora ya mtaji wa kioevu unaotoa tija.",
+      "description": "Yale ambayo dhamana ya LP ya Avana inawezesha katika ukopaji, hedging, unyumbufu wa hazina, na matumizi bora ya mtaji wa ukwasi wenye tija.",
       "image": "/images/blog/unleashing-lp-tokens.png",
       "category": "For LPs",
-      "tag": "Guides",
+      "tag": "Mwongozo",
       "sections": [
         {
           "id": "from-trapped-to-usable",
@@ -325,12 +325,12 @@
     },
     {
       "slug": "aerodrome-lp-collateral-aave-v4",
-      "title": "Kukopa Kinyume na Aerodrome LPs kwenye Aave v4",
+      "title": "Kukopa Dhidi ya LP za Aerodrome kwenye Aave v4",
       "date": "July 6, 2026",
-      "description": "Jinsi Avana inavyounga mkono nafasi Aerodrome LP kwenye Base ili waweze kubaki hai huku wakiunga mkono kukopa kupitia kipande cha kipekee Aave v4.",
+      "description": "Jinsi Avana inavyosaidia nafasi za LP za Aerodrome kwenye Base zibaki hai huku zikiunga mkono ukopaji kupitia Spoke maalum ya Aave v4.",
       "image": "/images/blog/aerodrome-lp-collateral.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Itifaki",
       "sections": [
         {
           "id": "aerodrome-on-avana",
@@ -366,12 +366,12 @@
     },
     {
       "slug": "curve-lp-collateral-aave-v4",
-      "title": "Kukopa Kinyume na Curve LPs juu ya Aave v4",
+      "title": "Kukopa Dhidi ya LP za Curve kwenye Aave v4",
       "date": "July 3, 2026",
-      "description": "Jinsi Avana inavyoshughulikia Curve LP dhamana kwa ziwa thabiti na zenye uhusiano kupitia spika maalum ya Aave v4.",
+      "description": "Jinsi Avana inavyoshughulikia dhamana ya LP ya Curve kwa pool thabiti na zinazohusiana kupitia Spoke maalum ya Aave v4.",
       "image": "/images/blog/curve-lp-collateral.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Itifaki",
       "sections": [
         {
           "id": "why-curve-matters",
@@ -407,12 +407,12 @@
     },
     {
       "slug": "balancer-lp-collateral-aave-v4",
-      "title": "Balancer LP Dhamana juu ya Aave v4",
+      "title": "Dhamana ya LP ya Balancer kwenye Aave v4",
       "date": "July 1, 2026",
-      "description": "Jinsi Avana inavyounga mkono Balancer mabaki ya uzito LP kama dhamana kwenye Aave v4 huku hatari ikiwa haiyakishi.",
+      "description": "Jinsi Avana inavyosaidia LP za weighted pool za Balancer kama dhamana kwenye Aave v4 huku mfiduo ukibaki hai.",
       "image": "/images/blog/balancer-lp-collateral.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Itifaki",
       "sections": [
         {
           "id": "portfolio-style-lps",
@@ -442,12 +442,12 @@
     },
     {
       "slug": "smart-contract-architecture",
-      "title": "Kukopa Kinyume na Uniswap LPs juu ya Aave v4",
+      "title": "Kukopa Dhidi ya LP za Uniswap kwenye Aave v4",
       "date": "June 28, 2026",
-      "description": "Jinsi Avana inavyobadilisha Uniswap LP nafasi kuwa Aave v4 dhamana wakati zinabaki kwenye bwawa na kuendelea kupata ada.",
+      "description": "Jinsi Avana inavyogeuza nafasi za LP za Uniswap kuwa dhamana ya Aave v4 huku zikiendelea kuwa kwenye pool na kupata ada.",
       "image": "/images/blog/uniswap-lp-collateral.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Itifaki",
       "sections": [
         {
           "id": "uniswap-on-avana",
@@ -477,12 +477,12 @@
     },
     {
       "slug": "defi-ux-challenges",
-      "title": "Kufanya LP Haki Kutumike",
+      "title": "Kufanya Dhamana ya LP Iweze Kutumika",
       "date": "June 25, 2026",
-      "description": "Kwa nini Avana muundo wa bidhaa unajali kuhusu tathmini wazi, mipaka ya kukopa, na afya ili LP dhamana iwe ya kutumika, si tu yenye nguvu.",
+      "description": "Kwa nini ubunifu wa bidhaa wa Avana unajali uthamini wazi, mipaka ya kukopa, na health ili dhamana ya LP iweze kuendeshwa, si kuwa na nguvu tu.",
       "image": "/images/blog/making-lp-collateral-usable.png",
-      "category": "Product",
-      "tag": "Guides",
+      "category": "Bidhaa",
+      "tag": "Mwongozo",
       "sections": [
         {
           "id": "power-is-not-enough",
@@ -512,12 +512,12 @@
     },
     {
       "slug": "avana-lp-collateral",
-      "title": "Avana na Hatua Inayofuata kwa LPs",
+      "title": "Avana na Hatua Ifuatayo kwa LP",
       "date": "June 23, 2026",
-      "description": "Sababu kwa nini watoaji wa kioo hawapaswi kuhitajika kuchagua kati ya kupata ada na kupata mtaji, na jinsi Avana inavyopanua hati ya dhamana ya LP kwenye Aave v4.",
+      "description": "Kwa nini watoa ukwasi hawapaswi kuchagua kati ya kupata ada na kupata mtaji, na jinsi Avana inavyopanua dhamana ya LP kwenye Aave v4.",
       "image": "/images/blog/avana-next-step-liquidity-providers.png",
       "category": "Community",
-      "tag": "Strategy",
+      "tag": "Mkakati",
       "sections": [
         {
           "id": "the-old-tradeoff",
@@ -547,12 +547,12 @@
     },
     {
       "slug": "institutional-use-cases",
-      "title": "LP Dhamana kwa Taasisi",
+      "title": "Dhamana ya LP kwa Taasisi",
       "date": "June 20, 2026",
-      "description": "Jinsi Avana LP rehani inaweza kusaidia DAOs, hazina, mitaji, na kampuni za asili za crypto kupata mtaji bila kuvunja uhaba wa fedha unaozalisha.",
+      "description": "Jinsi dhamana ya LP ya Avana inavyoweza kusaidia DAO, hazina, fedha, na kampuni za crypto kupata mtaji bila kufungua ukwasi wenye tija.",
       "image": "/images/blog/lp-collateral-for-institutions.png",
       "category": "For Institutions",
-      "tag": "Institutions",
+      "tag": "Taasisi",
       "sections": [
         {
           "id": "treasury-function",
@@ -589,12 +589,12 @@
     },
     {
       "slug": "integration-guide",
-      "title": "Kujenga juu ya Avana LP Miundombinu",
+      "title": "Kujenga kwenye Miundombinu ya LP ya Avana",
       "date": "June 17, 2026",
-      "description": "Mtazamo wa mendelezaji wa miundombinu ya dhamana ya Avana LP, ikijumuisha ufuatiliaji, otomatiki, huduma za uuzaji wa mali, na fursa za wajenzi.",
+      "description": "Mtazamo wa msanidi wa miundombinu ya dhamana ya LP ya Avana, ikijumuisha ufuatiliaji, otomatiki, huduma za uuzaji dhamana, na fursa za wajenzi.",
       "image": "/images/blog/developer-view-lp-collateral.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Itifaki",
       "sections": [
         {
           "id": "a-new-design-surface",
@@ -624,12 +624,12 @@
     },
     {
       "slug": "aave-v4-avana-spoke",
-      "title": "Ndani ya Ujenzi wa Mali ya Dhamana ya Avana's LP",
+      "title": "Ndani ya Usanifu wa Dhamana ya LP ya Avana",
       "date": "June 14, 2026",
-      "description": "Ndani ya usanifu wa hati ya dhamana ya Avana kwenye Aave v4, ikijumuisha kitovu, tundu, tathmini, muundo wa oracle, na mantiki ya uuzaji wa dhahabu.",
+      "description": "Ndani ya usanifu wa dhamana ya LP ya Avana kwenye Aave v4, ikijumuisha Hub, Spoke, uthamini, muundo wa oracle, na mantiki ya uuzaji dhamana.",
       "image": "/images/blog/inside-avana-architecture.png",
       "category": "Developers",
-      "tag": "Protocol",
+      "tag": "Itifaki",
       "sections": [
         {
           "id": "why-hub-and-spoke",
@@ -661,10 +661,10 @@
       "slug": "v1-1-release",
       "title": "Avana v1.1: Dhamana Bora, Udhibiti Bora",
       "date": "June 11, 2026",
-      "description": "Avana v1.1 inaongeza dhamana yenye nafasi nyingi, inaongeza mabwawa zaidi yanayounga mkono, inaboresha uteuzi na arifa, na inapunguza mzigo wa miamala.",
+      "description": "Avana v1.1 inapanua dhamana ya nafasi nyingi, inaongeza pool zinazoungwa mkono, inaboresha ugawaji na arifa, na inapunguza gharama za muamala.",
       "image": "/images/blog/avana-v1-1-better-control.png",
-      "category": "Product",
-      "tag": "Product",
+      "category": "Bidhaa",
+      "tag": "Bidhaa",
       "sections": [
         {
           "id": "what-shipped",
@@ -694,12 +694,12 @@
     },
     {
       "slug": "introducing-automate",
-      "title": "Automatisha: Safu ya Kudhibiti kwa LP Dhamana",
+      "title": "Automate: Tabaka la Udhibiti kwa Dhamana ya LP",
       "date": "June 8, 2026",
-      "description": "Jinsi Avana Automate inavyosaidia watumiaji kusimamia LP dhamana kwa uendeshaji wa kisasa usio wa uhifadhi kwa ada, ulinganifu upya, ulinzi, na matengenezo kwa nidhamu.",
+      "description": "Jinsi Avana Automate inavyosaidia watumiaji kusimamia dhamana ya LP kwa otomatiki isiyo ya uhifadhi kwa ada, urekebishaji, ulinzi, na matengenezo yenye nidhamu.",
       "image": "/images/blog/automate-control-layer-lp-collateral.png",
-      "category": "Product",
-      "tag": "Product",
+      "category": "Bidhaa",
+      "tag": "Bidhaa",
       "sections": [
         {
           "id": "why-automation",
@@ -735,12 +735,12 @@
     },
     {
       "slug": "lp-collateral-guide",
-      "title": "Mwongozo wa Mwanzo wa LP Dhamana",
+      "title": "Mwongozo wa Kompyuta kwa Dhamana ya LP",
       "date": "June 4, 2026",
-      "description": "Mwongozo wa mwanzoni kwa LP dhamana kwenye Avana, unaojumuisha LP tabia, LTV, hasara isiyo ya kudumu, utaratibu wa kuuza mali, na hatua za kwanza za tahadhari.",
+      "description": "Mwongozo wa kompyuta kwa dhamana ya LP kwenye Avana, ukijumuisha tabia ya LP, LTV, impermanent loss, uuzaji dhamana, na hatua za kwanza za tahadhari.",
       "image": "/images/blog/beginners-guide-lp-collateral.png",
       "category": "For LPs",
-      "tag": "Guides",
+      "tag": "Mwongozo",
       "sections": [
         {
           "id": "the-basic-idea",

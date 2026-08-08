@@ -1,10 +1,10 @@
 {
   "common": {
     "a11y": {
-      "skipToContent": "주요 내용으로 건너뛰기",
-      "primaryNav": "주요 내비게이션",
+      "skipToContent": "본문으로 건너뛰기",
+      "primaryNav": "주요 탐색",
       "mobileMenu": "모바일 메뉴",
-      "mobileNav": "모바일 내비게이션",
+      "mobileNav": "모바일 탐색",
       "openMenu": "메뉴 열기",
       "closeMenu": "메뉴 닫기",
       "language": "언어: {language}",
@@ -13,81 +13,81 @@
     },
     "nav": {
       "products": "제품",
-      "resources": "자원",
+      "resources": "리소스",
       "developers": "개발자",
       "helpCenter": "도움말 센터",
       "aaveArfc": "Aave ARFC",
-      "borrow": "빌리다",
-      "lend": "빌려주다",
-      "multiply": "곱하다",
+      "borrow": "대출",
+      "lend": "공급",
+      "multiply": "Multiply",
       "about": "소개",
       "newsroom": "뉴스룸",
       "brand": "브랜드",
       "faq": "자주 묻는 질문",
       "privacy": "개인정보",
-      "terms": "약관",
+      "terms": "이용약관",
       "overview": "개요",
-      "architecture": "건축",
+      "architecture": "아키텍처",
       "liquidation": "청산"
     },
     "cta": {
       "sandboxShort": "Sandbox",
-      "sandboxLong": "Sandbox을 시도해 보세요"
+      "sandboxLong": "Sandbox 체험"
     },
     "mega": {
-      "exploreProducts": "제품 탐색",
-      "exploreResources": "리소스 탐색",
-      "exploreDevelopers": "개발자 탐색",
-      "whatYouCanDo": "당신이 할 수 있는 것",
-      "whereToLook": "어디를 볼지",
+      "exploreProducts": "제품 살펴보기",
+      "exploreResources": "리소스 살펴보기",
+      "exploreDevelopers": "개발자 자료 보기",
+      "whatYouCanDo": "할 수 있는 일",
+      "whereToLook": "찾아볼 곳",
       "highlights": "하이라이트",
-      "borrowAgainstLp": "LP을 담보로 빌리기",
-      "borrowAgainstLpDesc": "전략을 벗어나지 않고 LP 노출로부터 유동성을 확보하세요.",
-      "openMultiply": "열기 LP 곱하기",
-      "openMultiplyDesc": "풀 내 관리되는 노출을 위해 AMM 위치를 담보로 사용하세요.",
-      "lendThroughHub": "허브를 통해 대출하기",
-      "lendThroughHubDesc": "더 명확한 실행 맥락을 가지고 자본을 배분하십시오.",
-      "aboutDesc": "Avana 뒤에 있는 회사 및 제품 논문.",
-      "followNotes": "제품 설명을 따르세요",
-      "followNotesDesc": "출시, 기술 업데이트 및 로드맵 결정.",
-      "browseBrand": "브랜드 자료 둘러보기",
-      "browseBrandDesc": "승인된 마크, 색상, 파트너 시각 가이드라인.",
-      "startOverview": "개요부터 시작하세요",
-      "startOverviewDesc": "구현 세부 사항 이전의 핵심 프로토콜 모델.",
+      "borrowAgainstLp": "LP 담보 대출",
+      "borrowAgainstLpDesc": "전략을 유지한 채 LP 익스포저에서 유동성을 확보하세요.",
+      "openMultiply": "LP Multiply 열기",
+      "openMultiplyDesc": "AMM 포지션을 담보로 풀 안에서 관리형 익스포저를 취합니다.",
+      "lendThroughHub": "Hub를 통해 공급",
+      "lendThroughHubDesc": "더 명확한 실행 맥락으로 자본을 배분하세요.",
+      "aboutDesc": "Avana의 회사와 제품 방향성.",
+      "followNotes": "제품 노트 팔로우",
+      "followNotesDesc": "런칭, 기술 업데이트, 로드맵 결정.",
+      "browseBrand": "브랜드 자료 보기",
+      "browseBrandDesc": "승인된 마크, 색상, 파트너 비주얼 가이드.",
+      "startOverview": "개요부터 시작",
+      "startOverviewDesc": "구현 세부사항 전에 보는 핵심 프로토콜 모델.",
       "reviewModel": "프로토콜 모델 검토",
-      "reviewModelDesc": "허브, 스포크, 가격 책정 및 통제가 어떻게 함께 맞물리는지.",
-      "understandLiquidation": "청산 이해",
-      "understandLiquidationDesc": "LP 지원 위치가 모니터링되고 정산되는 방법."
+      "reviewModelDesc": "Hub, Spokes, 가격 산정, 통제가 어떻게 맞물리는지.",
+      "understandLiquidation": "청산 이해하기",
+      "understandLiquidationDesc": "LP 담보 포지션이 어떻게 모니터링되고 정산되는지."
     },
     "footer": {
-      "blurb": "Avana는 Aave v4 위에서 LP-담보 프로토콜로, 유동성 제공자가 풀에 머무르면서 활성 포지션을 담보로 대출할 수 있도록 도와줍니다.",
-      "explore": "탐험하다",
-      "resources": "자원",
+      "blurb": "Avana는 Aave v4 위의 LP 담보 프로토콜로, 유동성 공급자가 풀에 남으면서 활성 포지션을 담보로 대출할 수 있게 돕습니다.",
+      "explore": "둘러보기",
+      "resources": "리소스",
       "docs": "문서",
-      "social": "사회적인",
+      "social": "소셜",
       "twitter": "Twitter",
       "github": "GitHub",
       "telegram": "Telegram",
       "discourse": "Discourse",
-      "socialAria": "Avana {network}에서",
-      "disclosureRisk": "LP 토큰을 담보로 대출하는 것은 시장 상황이 귀하의 포지션에 불리하게 움직일 경우 청산을 포함한 위험을 수반합니다. Avana은 귀하의 자금을 보관하지 않으며, LP 포지션을 재담보하지도 않고, 기초 AMM에서 유동성이 작동하는 방식을 변경하지도 않습니다. 대출 조건, 이자율, 담보 가치는 투명한 오라클 시스템과 자동화된 리스크 매개변수를 사용하여 온체인에서 집행됩니다. 귀하는 항상 귀하의 포지션을 완전히 통제할 수 있으며, 원하는 때 언제든지 상환하거나 담보를 조정할 수 있습니다. 시장 변동성을 통해 유지할 수 있는 금액만 대출하세요.",
-      "disclosureInfo": "이 자료는 정보 제공 목적으로만 제공되며, (i) 어떠한 투자 또는 매매 제안이나 권유, 또는 투자 또는 거래 전략에 참여하도록 하는 제안이 아니며, (ii) 회계, 법률, 세무 조언 또는 투자 권고를 제공하려는 의도가 아니고, (iii) Avana의 공식 성명이 아닙니다. 투자 결정을 내리기 전에 반드시 자문가와 상의하십시오. 정보의 정확성이나 디지털 자산, 금융 상품 또는 기타 시장·경제 지표의 미래 성과에 대해 명시적이거나 묵시적인 어떠한 진술이나 보증도 제공되지 않습니다. Avana는 자료에서 논의되거나 참조된 일부 단체 및/또는 간행물에 재정적 이해관계 또는 관계를 가질 수 있습니다. Avana는 자료에 제공될 수 있는 링크나 제3자 웹사이트를 승인하거나 추천하지 않습니다."
+      "socialAria": "{network}의 Avana",
+      "disclosureRisk": "LP 토큰을 담보로 한 대출에는 시장이 불리하게 움직일 경우의 청산을 포함한 위험이 있습니다. Avana는 자금을 보관하지 않고, LP 포지션을 재담보로 사용하지 않으며, 기반 AMM에서 유동성이 작동하는 방식을 바꾸지 않습니다. 대출 조건, 금리, 담보 가치는 투명한 오라클과 자동 리스크 파라미터로 온체인에서 집행됩니다. 포지션 통제권은 항상 사용자에게 있으며 언제든 상환하거나 담보를 조정할 수 있습니다. 시장 변동성 속에서도 유지할 수 있는 금액만 대출하세요.",
+      "disclosureInfo": "본 자료는 정보 제공 목적이며 (i) 지분·주식에 대한 투자·매매 또는 투자/트레이딩 전략 참여에 대한 제안이나 권유, (ii) 회계·법률·세무 조언 또는 투자 권고, (iii) Avana의 공식 성명에 해당하지 않습니다. 투자 결정 전 자문가와 상의하세요. 정보의 정확성이나 디지털 자산·금융상품·기타 시장/경제 지표의 미래 성과에 대해 명시적·묵시적 진술이나 보증을 하지 않습니다. Avana는 자료에 언급된 일부 주체 및/또는 출판물과 재무적 이해관계가 있을 수 있습니다. Avana는 자료에 제공될 수 있는 링크나 제3자 웹사이트를 승인하지 않습니다."
     },
     "notFound": {
       "title": "이 페이지를 사용할 수 없습니다.",
       "body": "주소가 잘못되었거나 페이지가 이동했을 수 있습니다.",
-      "home": "Go to homepage",
+      "home": "홈으로 이동",
       "faq": "자주 묻는 질문"
     },
-    "sandboxNotice": "Sandbox 데이터는 미리 보기용으로만 표시됩니다. APY초, 가격 및 수익률은 예시일 뿐이며 실제 시장 상황과 다를 수 있습니다.",
+    "sandboxNotice": "Sandbox 데이터는 미리보기용입니다. APY, 가격, 수익은 예시이며 실제 시장과 다를 수 있습니다.",
     "blogChrome": {
-      "back": "뒤",
+      "back": "뒤로",
       "share": "공유",
-      "shareOnX": "X에서 공유",
+      "shareOnX": "X에 공유",
       "shareOnLinkedIn": "LinkedIn에 공유",
-      "previousPost": "이전 게시물",
+      "previousPost": "이전 글",
       "nextPost": "다음 글",
-      "onThisPage": "On this page"
+      "onThisPage": "이 페이지에서"
     },
     "docs": {
       "previous": "이전",
@@ -97,57 +97,57 @@
         "gettingStarted": "시작하기",
         "architecture": "프로토콜 아키텍처",
         "liquidation": "청산 프레임워크",
-        "integrations": "지원되는 통합",
+        "integrations": "지원 통합",
         "safety": "안전 장치",
-        "legal": "법률 및 준수"
+        "legal": "법률 및 컴플라이언스"
       },
       "items": {
         "overview": "개요",
         "keyConcepts": "핵심 개념",
-        "testnetRoadmap": "테스트넷 및 로드맵",
+        "testnetRoadmap": "Testnet 및 로드맵",
         "glossary": "용어집",
-        "depositLp": "예금 LP",
-        "borrowAssets": "자산을 빌리다",
+        "depositLp": "LP 예치",
+        "borrowAssets": "자산 대출",
         "manageLoans": "대출 관리",
         "repayLoans": "대출 상환",
         "withdrawCollateral": "담보 인출",
-        "claimLpFees": "청구 LP 수수료",
-        "borrowSpoke": "빌린 스포크",
-        "lendSpoke": "렌드 스포크",
-        "collateralFactors": "담보 요인",
-        "healthFactor": "건강 요소",
+        "claimLpFees": "LP 수수료 수령",
+        "borrowSpoke": "Borrow Spoke",
+        "lendSpoke": "Lend Spoke",
+        "collateralFactors": "담보 계수",
+        "healthFactor": "Health factor",
         "platformFees": "플랫폼 수수료",
         "incentives": "인센티브",
         "liquidationDesign": "청산 설계",
-        "liquidators": "청산인",
+        "liquidators": "청산자",
         "liquidationFlow": "청산 흐름",
         "liquidationExamples": "청산 예시",
         "integrationsOverview": "통합 개요",
         "appkit": "AppKit",
         "allowedPools": "허용된 LP 풀",
-        "routerAdapters": "라우터 및 어댑터",
+        "routerAdapters": "Router 및 어댑터",
         "priceOracles": "가격 오라클",
-        "riskFramework": "위험 프레임워크",
-        "contractsSecurity": "계약 및 보안",
-        "bugBounty": "버그 바운티",
+        "riskFramework": "리스크 프레임워크",
+        "contractsSecurity": "컨트랙트 및 보안",
+        "bugBounty": "Bug bounty",
         "insuranceFunds": "보험 기금",
         "securityDisclosures": "보안 공개",
         "legalDisclaimer": "법적 고지"
       }
     },
     "faqUi": {
-      "heading": "어떻게 도와드릴까요?",
+      "heading": "무엇을 도와드릴까요?",
       "search": "검색",
       "searchPlaceholder": "검색",
       "searchResults": "검색 결과",
       "clearSearch": "검색 지우기",
       "noResults": "\"{query}\"에 대한 결과가 없습니다",
       "category": "카테고리: {name}",
-      "categoriesAria": "자주 묻는 질문 카테고리",
-      "articles": "{count}개의 기사"
+      "categoriesAria": "FAQ 카테고리",
+      "articles": "글 {count}개"
     },
     "tags": {
-      "all": "모두",
+      "all": "전체",
       "product": "제품",
       "strategy": "전략",
       "guides": "가이드",
@@ -160,82 +160,82 @@
     }
   },
   "meta": {
-    "siteTitle": "Avana - Aave v4에서 LP 포지션을 담보로 빌리기",
-    "siteDescription": "LP 토큰에서 유동성을 잠금 해제하세요. Uniswap, Curve, Balancer 포지션에 대해 최대 80%까지 대출을 받으면서 Aave v4에서 거래 수수료를 계속해서 벌 수 있습니다.",
-    "ogDescription": "거래 수수료를 계속 벌면서 LP 토큰에서 유동성을 해제하세요.",
-    "ogSubtitle": "Aave v4에서 LP 포지션을 담보로 대출",
-    "twitterTitle": "Avana - LP 포지션을 담보로 대출",
-    "twitterDescription": "Aave v4에서 LP 토큰의 유동성을 해제하세요",
+    "siteTitle": "Avana — Aave v4에서 LP 포지션 담보 대출",
+    "siteDescription": "LP 토큰에서 유동성을 확보하세요. Uniswap, Curve, Balancer 포지션을 담보로 최대 80%까지 대출하면서 Aave v4에서 거래 수수료를 계속 받으세요.",
+    "ogDescription": "거래 수수료를 계속 받으면서 LP 토큰에서 유동성을 확보하세요.",
+    "ogSubtitle": "Aave v4에서 LP 포지션 담보 대출",
+    "twitterTitle": "Avana — LP 포지션 담보 대출",
+    "twitterDescription": "Aave v4에서 LP 토큰 유동성 확보",
     "titleTemplate": "{title} | Avana",
     "team": "Avana 팀",
-    "ogAlt": "Avana - DeFi 유동성 프로토콜",
+    "ogAlt": "Avana — DeFi 유동성 프로토콜",
     "home": {
-      "title": "Aave v4에서 LP 포지션을 담보로 대출",
-      "description": "LP 토큰에서 유동성을 잠금 해제하세요. Uniswap, Curve, Balancer 포지션에 대해 최대 80%까지 대출을 받으면서 Aave v4에서 거래 수수료를 계속해서 벌 수 있습니다."
+      "title": "Aave v4에서 LP 포지션 담보 대출",
+      "description": "LP 토큰에서 유동성을 확보하세요. Uniswap, Curve, Balancer 포지션을 담보로 최대 80%까지 대출하면서 Aave v4에서 거래 수수료를 계속 받으세요."
     },
     "about": {
       "title": "소개",
-      "description": "만나보세요 Avana, 전문화된 스포크, 공유 허브, 그리고 AMM 유동성 시장을 위해 설계된 렌드 스포크를 갖춘 Aave v4 위에 구축된 전용 LP 담보 프로토콜입니다."
+      "description": "Avana는 전문화된 Spokes, 공유 Hub, AMM 유동성 시장용 Lend Spoke를 갖춘 Aave v4 기반 LP-as-collateral 프로토콜입니다."
     },
     "borrow": {
-      "title": "빌리다",
-      "description": "풀에서 나가지 않고 라이브 LP 포지션을 담보로 대출하세요. Aave v4에서 유동성을 해제하는 동안 수수료를 계속 벌 수 있습니다."
+      "title": "대출",
+      "description": "풀을 빠져나오지 않고 라이브 LP 포지션을 담보로 대출하세요. Aave v4에서 유동성을 확보하면서 수수료를 계속 받으세요."
     },
     "lend": {
-      "title": "빌려주다",
-      "description": "Avana의 Lend Spoke에 자본을 공급하고 Aave v4에서 LP로 뒷받침되는 차용인으로부터 수익을 얻으세요."
+      "title": "공급",
+      "description": "Avana Lend Spoke에 자본을 공급하고 Aave v4에서 LP 담보 차입자로부터 수익을 얻으세요."
     },
     "multiply": {
-      "title": "곱하다",
-      "description": "지원되는 AMM 포지션으로 뒷받침되는 관리형 다중 전략으로 LP 노출을 증폭하세요."
+      "title": "Multiply",
+      "description": "지원되는 AMM 포지션을 담보로 관리형 Multiply 전략에서 LP 익스포저를 확대하세요."
     },
     "brand": {
       "title": "브랜드",
-      "description": "공식 Avana 브랜드 자산, 색상 및 파트너와 언론을 위한 사용 가이드."
+      "description": "파트너와 언론을 위한 공식 Avana 브랜드 자산, 색상, 사용 가이드."
     },
     "faq": {
       "title": "자주 묻는 질문",
-      "description": "Avana LP 담보, 차입, 대출, 곱하기, 청산 및 Aave v4 아키텍처에 대한 답변."
+      "description": "Avana LP 담보, 대출, 공급, Multiply, 청산, Aave v4 아키텍처에 대한 답변."
     },
     "newsroom": {
       "title": "뉴스룸",
-      "description": "Avana 팀의 최신 게시물: LP 담보, AMM 시장, Aave v4, 그리고 프로토콜 개발에 관한 내용."
+      "description": "LP 담보, AMM 시장, Aave v4, 프로토콜 개발에 대한 Avana 팀의 최신 글."
     },
     "developers": {
       "title": "개발자",
-      "description": "Avana와 통합하기 위한 기술 문서입니다. Aave v4에서 LP 토큰 담보, 헬스 팩터, 청산 흐름 및 스마트 계약 아키텍처에 대해 알아보세요."
+      "description": "Avana 연동을 위한 기술 문서. LP 토큰 담보, health factor, 청산 흐름, Aave v4 스마트 컨트랙트 아키텍처를 확인하세요."
     },
     "privacy": {
       "title": "개인정보 처리방침",
       "description": "Avana 개인정보 처리방침."
     },
     "terms": {
-      "title": "이용 약관",
-      "description": "Avana 이용 약관."
+      "title": "이용약관",
+      "description": "Avana 이용약관."
     }
   },
   "home": {
     "hero": {
-      "eyebrow": "Aave v4로 구동됨",
-      "title": "LP 포지션을 담보로 대출",
-      "titleLine1": "담보로 빌리다",
-      "titleLine2": "유동성 포지션",
-      "subtitle": "Uniswap, Curve, Balancer 포지션에서 유동성을 해제하면서 거래 수수료를 계속 벌어보세요.",
+      "eyebrow": "Aave v4로 구동",
+      "title": "LP 포지션 담보 대출",
+      "titleLine1": "유동성 포지션을",
+      "titleLine2": "담보로 대출하세요",
+      "subtitle": "Uniswap, Curve, Balancer 포지션에서 유동성을 확보하면서 거래 수수료를 계속 받으세요.",
       "subtitleMobileLines": [
-        "유동성 풀이 값의 최대 80%까지 이용 가능",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "Liquidity Pool 가치의 최대 80%에 접근",
+        "유동성을 인출하거나 거래 수수료를",
+        "포기하지 않고 5.5% APR로."
       ],
       "subtitleDesktopLines": [
-        "유동성 풀 가치의 최대 80%를 5.5%로 이용하세요 APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "Liquidity Pool 가치의 최대 80%에 5.5% APR로 접근",
+        "유동성 인출이나 거래 수수료 포기 없이."
       ],
-      "primaryCta": "Sandbox을 시도해 보세요",
+      "primaryCta": "Sandbox 체험",
       "secondaryCta": "문서 읽기"
     },
     "features": {
-      "eyebrow": "주요 특징",
-      "title": "라이브 LP 담보용으로 제작됨"
+      "eyebrow": "핵심 기능",
+      "title": "라이브 LP 담보를 위해 설계"
     },
     "faq": {
       "title": "자주 묻는 질문"
@@ -245,54 +245,54 @@
       "cta": "기사 읽기"
     },
     "buildTomorrow": {
-      "title": "만나 Avana",
-      "body": "Avana는 LP 위치를 Aave v4에서 사용 가능한 담보로 전환하여 유동성 공급자가 풀을 떠나지 않고도 대출할 수 있도록 합니다."
+      "title": "Avana를 만나보세요",
+      "body": "Avana는 지원 LP 포지션을 Aave v4에서 쓸 수 있는 담보로 바꿔, 유동성 공급자가 풀을 빠져나오지 않고 대출할 수 있게 합니다."
     }
   },
   "product": {
     "borrow": {
-      "title": "LP을 담보로 빌리기",
-      "subtitle": "풀에서 나가지 않고 활성 AMM 포지션에서 유동성을 해제하세요.",
-      "cta": "Sandbox을 시도해 보세요"
+      "title": "LP 담보 대출",
+      "subtitle": "풀을 빠져나오지 않고 활성 AMM 포지션에서 유동성을 확보하세요.",
+      "cta": "Sandbox 체험"
     },
     "lend": {
-      "title": "LP개 시장에 대출",
-      "subtitle": "Aave v4에서 실시간 LP 담보를 사용하는 차입자에게서 수익을 얻으세요.",
-      "cta": "Sandbox을 시도해 보세요"
+      "title": "LP 시장에 공급",
+      "subtitle": "Aave v4에서 라이브 LP 담보 차입자로부터 수익을 얻으세요.",
+      "cta": "Sandbox 체험"
     },
     "multiply": {
-      "title": "LP 노출 곱하기",
-      "subtitle": "지원되는 포지션을 담보로 사용하여 관리되는 방향성 익스포저를 추가하십시오.",
-      "cta": "Sandbox을 시도해 보세요"
+      "title": "LP 익스포저 Multiply",
+      "subtitle": "지원 포지션을 담보로 관리형 방향성 익스포저를 추가하세요.",
+      "cta": "Sandbox 체험"
     },
     "about": {
-      "title": "약 Avana",
-      "subtitle": "LP-을 담보로 한 프로토콜이 Aave v4 위에 구축됨"
+      "title": "Avana 소개",
+      "subtitle": "Aave v4 기반 LP-as-collateral 프로토콜"
     },
     "brand": {
       "title": "브랜드 키트",
-      "subtitle": "파트너를 향한 표면에 대한 표시, 색상 및 안내"
+      "subtitle": "파트너용 마크, 색상, 가이드"
     }
   },
   "faq": {
     "title": "자주 묻는 질문",
-    "subtitle": "Avana, LP 담보 및 Aave v4에 대한 답변",
-    "englishOnlyNote": "전체 FAQ 답변은 이 지역의 검토가 완료될 때까지 영어로 표시됩니다."
+    "subtitle": "Avana, LP 담보, Aave v4에 대한 답변",
+    "englishOnlyNote": "이 로케일 검수가 끝날 때까지 자주 묻는 질문의 전체 답변은 영어로 표시됩니다."
   },
   "docs": {
     "hubTitle": "개발자 문서",
-    "hubSubtitle": "Aave v4에 Avana LP 담보를 통합",
-    "englishOnlyNote": "문서 본문 텍스트는 로케일 번역이 아직 제공되지 않은 경우 영어로 대체됩니다."
+    "hubSubtitle": "Aave v4의 Avana LP 담보와 연동하기",
+    "englishOnlyNote": "로케일 번역이 아직 없으면 문서 본문은 영어로 폴백됩니다."
   },
   "blog": {
     "indexTitle": "뉴스룸",
-    "indexSubtitle": "제품 노트, 연구 및 프로토콜 업데이트",
-    "englishOnlyNote": "기사 본문은 지역 번역이 아직 제공되지 않은 경우 영어로 돌아갑니다."
+    "indexSubtitle": "제품 노트, 리서치, 프로토콜 업데이트",
+    "englishOnlyNote": "로케일 번역이 아직 없으면 기사 본문은 영어로 폴백됩니다."
   },
   "legal": {
     "privacyTitle": "개인정보 처리방침",
-    "termsTitle": "이용 약관",
-    "englishOnlyNote": "법적 페이지는 변호사 승인을 받은 현지 버전이 제공될 때까지 영어로 유지됩니다.",
-    "englishOnlyBadge": "영어만"
+    "termsTitle": "이용약관",
+    "englishOnlyNote": "법무 승인된 로케일 버전이 준비될 때까지 법률 페이지는 영어로 유지됩니다.",
+    "englishOnlyBadge": "English only"
   }
 }
