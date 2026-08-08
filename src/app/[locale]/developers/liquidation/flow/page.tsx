@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const sections = [
   { id: "overview", title: "Overview" },
-  { id: "canonical-reference", title: "Related Policy Docs" },
+  { id: "related-docs", title: "Related Docs" },
   { id: "runtime-sequence", title: "Runtime Sequence" },
   { id: "state-transitions", title: "State Transitions" },
   { id: "operator-notes", title: "Operator Notes" },
@@ -78,19 +78,18 @@ export default async function LiquidationFlowPage() {
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            This page is the runtime view of liquidation. It is written for the moment an account is
-            already unhealthy and an operator needs to understand what happens next, in order, from
-            detection through final settlement.
+            Liquidation starts when an account&apos;s health factor falls below the liquidation
+            threshold. Aave handles debt accounting and the liquidation entry point against the
+            ERC-20 vault collateral. Avana handles the LP settlement behind that vault token.
           </p>
-          <p className="type-body-copy text-gray-600">
-            LP liquidation is a controlled unwind rather than a single token sale. Debt is repaid,
-            vault collateral is seized, the matching vault token is burned, the real LP position is
-            settled, and residual value is returned if any remains.
+          <p className="text-sm leading-relaxed text-gray-600">
+            Debt is repaid, vault collateral is seized, the matching vault token is burned, the real
+            LP position is settled, and any residual value is returned according to the market rule.
           </p>
         </section>
 
-        <section id="canonical-reference" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Related Policy Docs</h2>
+        <section id="related-docs" className="mb-12">
+          <h2 className="mb-4 type-section-title text-gray-900">Related Docs</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             Liquidation policy lives on the{" "}
             <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
@@ -100,15 +99,11 @@ export default async function LiquidationFlowPage() {
             <Link href="/developers/integrations/price-oracles" className="text-[#01AACF] hover:underline">
               Price Oracles
             </Link>{" "}
-            and position level aggregation in{" "}
+            and position-level aggregation in{" "}
             <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
               Collateral Factors
             </Link>
             .
-          </p>
-          <p className="type-body-copy text-gray-600">
-            Use this page for execution order. Thresholds, rewards, and admission rules still come
-            from the architecture and risk docs, not from this checklist by itself.
           </p>
         </section>
 
@@ -158,8 +153,7 @@ export default async function LiquidationFlowPage() {
               reduce adverse MEV exposure.
             </p>
             <p>
-              Treat this page as a runtime checklist. Keep policy details on the main liquidation,
-              oracle, and risk pages.
+              Thresholds, rewards, and admission rules come from the architecture and risk docs.
             </p>
           </div>
         </section>

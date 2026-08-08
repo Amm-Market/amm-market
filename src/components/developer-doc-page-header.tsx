@@ -2,7 +2,7 @@ import dynamic from "next/dynamic"
 
 interface DeveloperDocPageHeaderProps {
   title: string
-  description: string
+  description?: string
 }
 
 const DeferredLlmExportMenu = dynamic(
@@ -32,7 +32,9 @@ export function DeveloperDocPageHeader({ title, description }: DeveloperDocPageH
 
       <div className="mt-4 border-b border-slate-200" />
 
-      <p className="type-page-lead mt-6 max-w-4xl text-slate-600">{description}</p>
+      {description ? (
+        <p className="type-page-lead mt-6 max-w-4xl text-slate-600">{description}</p>
+      ) : null}
     </div>
   )
 }
