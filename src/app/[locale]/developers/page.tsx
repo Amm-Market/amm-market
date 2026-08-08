@@ -122,7 +122,7 @@ export default async function DevelopersPage() {
         <section id="welcome" className="scroll-mt-32 pb-10">
           <DeveloperDocPageHeader
             title="Introduction"
-            description="Avana lets approved LP positions back loans without first pulling liquidity from the pool. These docs start with the Hub-and-Spoke split: spokes understand LP risk, while the Hub manages shared lending liquidity."
+            description="Your LP can keep earning fees in the pool while backing a loan. Avana makes that possible on Aave v4: spokes handle LP-specific risk, the Hub powers shared lending liquidity."
           />
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <Link
@@ -145,21 +145,18 @@ export default async function DevelopersPage() {
         <section id="what-is-avana" className="deferred-viewport mt-12 scroll-mt-32">
           <SectionHeader
             title="What is Avana?"
-            description="Avana is a lending protocol for live LP collateral. It uses Aave v4&apos;s Hub-and-Spoke model so the Hub handles shared liquidity while each Borrow Spoke handles admission, valuation, health, and liquidation for its own LP markets."
+            description="Avana is a lending protocol built for LP collateral. It lets users deposit supported AMM positions, keep those positions active in the underlying pool, and borrow against them through Aave v4 infrastructure."
           />
 
           <p className="max-w-3xl text-sm leading-7 text-slate-600">
-            Supporting LP collateral means more than checking a token balance. The protocol needs
-            to understand what assets the position represents, how much of that value should count
-            for credit, what market-specific haircut applies, and what unwind path exists if the
-            borrower falls below the required safety margin. Avana puts that LP-specific logic in
-            the spoke that lists the collateral instead of trying to flatten every AMM position
-            into one generic lending path.
+            Liquidity providers often have to remove liquidity before they can borrow against their
+            capital. That means exiting the pool, giving up fee exposure, and interrupting the
+            market position they already built.
           </p>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
-            Read this page as the map for the rest of the docs. The sections below explain the
-            basic borrowing path first, then point you to the detailed pages for Borrow Spoke,
-            Lend Spoke, collateral factors, oracle logic, health monitoring, and liquidation.
+            Avana solves this by making supported LP positions usable as collateral. The LP stays
+            live, Avana tracks and values the position, and Aave v4 handles the borrow-side
+            accounting through an internal vault collateral token.
           </p>
         </section>
 
@@ -208,7 +205,7 @@ export default async function DevelopersPage() {
         <section id="architecture" className="deferred-viewport mt-12 scroll-mt-32">
           <SectionHeader
             title="Architecture"
-            description="Avana separates shared lending liquidity from LP-specific risk logic. That split is the reason the system can support different collateral types without merging all of their rules together."
+            description="Avana uses Aave v4 because LP collateral needs shared liquidity and isolated risk logic at the same time. The Hub handles the common monetary layer while spokes handle LP-specific work: pool collateral registration, position valuation, risk enforcement, and liquidation execution."
           />
 
           <div className="grid gap-6 lg:grid-cols-3">

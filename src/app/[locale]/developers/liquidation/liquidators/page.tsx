@@ -4,20 +4,6 @@ import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
 import { createDocsMetadata } from "@/lib/content-i18n/docs-metadata"
 
-export async function generateMetadata(): Promise<Metadata> {
-  return createDocsMetadata('liquidation/liquidators', {
-    title: "Liquidators",
-    description: "Developer guide for liquidation operators, covering monitoring, execution requirements, and LP-specific unwind behavior.",
-  })
-}
-
-const sections = [
-  { id: "overview", title: "Overview" },
-  { id: "coverage-model", title: "Coverage Model" },
-  { id: "execution-requirements", title: "Execution Requirements" },
-  { id: "operational-notes", title: "Operational Notes" },
-]
-
 const coverageModel = [
   {
     title: "Permissionless participation",
@@ -25,14 +11,14 @@ const coverageModel = [
       "Any keeper or execution desk can liquidate if it can monitor positions, source execution liquidity, and unwind the LP formats Avana supports.",
   },
   {
-    title: "LP-specific handling",
+    title: "DEX-specific handling",
     body:
-      "Liquidation is not a generic token sale. Runtime needs venue-aware logic for fee realization, position removal, routing, and settlement into the debt asset.",
+      "Liquidation is not a generic token sale. Operators need DEX-aware logic for fee realization, position removal, routing, and settlement into the debt asset.",
   },
   {
     title: "Coverage quality",
     body:
-      "LP positions are harder to unwind than simple tokens. Operators that model the full route for supported venues usually handle stress better than bots that only react to a health trigger.",
+      "LP positions are harder to unwind than simple tokens. Operators that model the full route for supported DEXs usually handle stress better than bots that only react to a health trigger.",
   },
 ]
 
@@ -47,7 +33,21 @@ const executionRequirements = [
   "Position monitoring and debt drift tracking",
   "Simulation for route depth, slippage, and liquidity availability",
   "Transaction delivery with flashloan or prefunded execution paths",
-  "Venue-aware adapters for the LP families the protocol supports",
+  "DEX adapters for the LP families the protocol supports",
+]
+
+export async function generateMetadata(): Promise<Metadata> {
+  return createDocsMetadata('liquidation/liquidators', {
+    title: "Liquidators",
+    description: "How liquidation operators close unhealthy LP-backed positions on Avana.",
+  })
+}
+
+const sections = [
+  { id: "overview", title: "Overview" },
+  { id: "coverage-model", title: "Coverage Model" },
+  { id: "execution-requirements", title: "Execution Requirements" },
+  { id: "operational-notes", title: "Operational Notes" },
 ]
 
 export default async function DeveloperLiquidatorsPage() {
@@ -56,20 +56,19 @@ export default async function DeveloperLiquidatorsPage() {
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
           title="Liquidators"
-          description="How operators service Avana liquidations and what execution infrastructure is required for LP-backed debt."
+          description="Who can liquidate unhealthy positions and what execution infrastructure is required."
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            Liquidators are the operators who close unhealthy LP-backed positions. Their job is to
-            repay the debt, unwind the LP through the correct venue path, and settle the recovered
-            value back into the credit layer.
+            Liquidations are permissionless once a position crosses the liquidation threshold. Any
+            eligible liquidator can repay the allowed debt amount and trigger the settlement path.
           </p>
-          <p className="type-body-copy leading-relaxed text-gray-600">
-            Speed matters, but it is not enough on its own. Operators need to understand what is
-            actually coverable, how the LP is represented, and how fees, slippage, or one-sided
-            inventory change recovery before they submit anything onchain.
+          <p className="text-sm leading-relaxed text-gray-600">
+            LP collateral is harder to unwind than simple token collateral. Liquidators track the
+            same risk state, vault-token mapping, route depth, and unwind assumptions used by the
+            protocol.
           </p>
         </section>
 
@@ -79,7 +78,7 @@ export default async function DeveloperLiquidatorsPage() {
             {coverageModel.map((item) => (
               <div key={item.title}>
                 <h3 className="mb-1 font-semibold text-gray-900">{item.title}</h3>
-                <p className="type-body-copy text-gray-600">{item.body}</p>
+                <p className="text-sm leading-relaxed text-gray-600">{item.body}</p>
               </div>
             ))}
           </div>
@@ -88,43 +87,33 @@ export default async function DeveloperLiquidatorsPage() {
         <section id="execution-requirements" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Execution Requirements</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            A liquidator for Avana needs more than a trigger bot. It needs enough infrastructure to
-            value positions, simulate exits, source capital, and deliver a transaction that can
-            finish the unwind path it started.
+            A liquidator for Avana needs infrastructure to value positions, simulate exits, source
+            capital, and deliver a transaction that completes the unwind path.
           </p>
-          <ul className="space-y-2 type-body-copy text-gray-600">
+          <ul className="list-disc space-y-2 ps-5 text-sm text-gray-600">
             {executionRequirements.map((item) => (
-              <li key={item}>
-                {item}
-              </li>
+              <li key={item}>{item}</li>
             ))}
           </ul>
         </section>
 
         <section id="operational-notes" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Operational Notes</h2>
-          <div className="space-y-3 type-body-copy text-gray-600">
+          <ul className="list-disc space-y-2 ps-5 text-sm text-gray-600">
             {operationalChecklist.map((item) => (
-              <p key={item}>
-                {item}
-              </p>
+              <li key={item}>{item}</li>
             ))}
-          </div>
-        </section>
-
-        <section className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Practical requirement</h2>
-          <p className="type-body-copy leading-relaxed text-gray-600">
-            Build venue-specific unwind, fee realization, and debt repayment as one workflow.
-            Disconnected steps make it much easier for a theoretically coverable liquidation to fail
-            in execution.
+          </ul>
+          <p className="mt-4 text-sm leading-relaxed text-gray-600">
+            Build DEX-specific unwind, fee realization, and debt repayment as one workflow.
+            Disconnected steps make it easier for a coverable liquidation to fail in execution.
           </p>
         </section>
       </div>
 
       <DeveloperScrollSpyRail
         sections={sections}
-        pageSummary="Developer guide for operators that service Avana liquidation coverage."
+        pageSummary="How liquidation operators close unhealthy LP-backed positions on Avana."
         sectionColor="amber"
       />
     </div>
