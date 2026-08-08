@@ -1,93 +1,93 @@
 {
   "common": {
     "a11y": {
-      "skipToContent": "Ana içeriğe geç",
-      "primaryNav": "Ana navigasyon",
+      "skipToContent": "Ana içeriğe atla",
+      "primaryNav": "Birincil navigasyon",
       "mobileMenu": "Mobil menü",
       "mobileNav": "Mobil navigasyon",
       "openMenu": "Menüyü aç",
       "closeMenu": "Menüyü kapat",
       "language": "Dil: {language}",
       "logo": "{site} logosu",
-      "helpfulLinks": "Faydalı bağlantılar"
+      "helpfulLinks": "Yararlı bağlantılar"
     },
     "nav": {
       "products": "Ürünler",
       "resources": "Kaynaklar",
       "developers": "Geliştiriciler",
       "helpCenter": "Yardım Merkezi",
-      "aaveArfc": "Aave ARFC",
-      "borrow": "Borçlan",
-      "lend": "Likidite sağla",
-      "multiply": "Multiply",
+      "aaveArfc": "⟦ 13  ⟦ 15 ",
+      "borrow": "Ödünç almak",
+      "lend": "Ödünç vermek",
+      "multiply": "Çarpmak",
       "about": "Hakkında",
-      "newsroom": "Haberler",
+      "newsroom": "Haber Odası",
       "brand": "Marka",
-      "faq": "SSS",
+      "faq": "FAQ",
       "privacy": "Gizlilik",
-      "terms": "Koşullar",
-      "overview": "Genel bakış",
-      "architecture": "Mimari",
-      "liquidation": "Likidasyon"
+      "terms": "Şartlar",
+      "overview": "Genel Bakış",
+      "architecture": "Mimarlık",
+      "liquidation": "Tasfiye"
     },
     "cta": {
       "sandboxShort": "Sandbox",
-      "sandboxLong": "Sandbox’ı dene"
+      "sandboxLong": "Deneyin Sandbox"
     },
     "mega": {
-      "exploreProducts": "Ürünleri keşfet",
-      "exploreResources": "Kaynakları keşfet",
-      "exploreDevelopers": "Geliştirici kaynakları",
-      "whatYouCanDo": "Neler yapabilirsiniz",
-      "whereToLook": "Nereye bakmalı",
-      "highlights": "Öne çıkanlar",
-      "borrowAgainstLp": "LP karşılığı borçlan",
-      "borrowAgainstLpDesc": "Stratejiden çıkmadan LP pozisyonundan likidite açın.",
-      "openMultiply": "LP Multiply aç",
-      "openMultiplyDesc": "Havuz içinde yönetilen ekspozisyon için AMM pozisyonlarını teminat olarak kullanın.",
-      "lendThroughHub": "Hub üzerinden likidite sağla",
-      "lendThroughHubDesc": "Daha net bir yürütme bağlamıyla sermaye tahsis edin.",
-      "aboutDesc": "Avana’nın şirket ve ürün tezini keşfedin.",
-      "followNotes": "Ürün notlarını takip et",
-      "followNotesDesc": "Lansmanlar, teknik güncellemeler ve yol haritası kararları.",
-      "browseBrand": "Marka materyallerine bak",
-      "browseBrandDesc": "Onaylı işaretler, renkler ve partner görsel rehberi.",
+      "exploreProducts": "Ürünleri Keşfet",
+      "exploreResources": "Kaynakları Keşfet",
+      "exploreDevelopers": "Geliştiricileri Keşfet",
+      "whatYouCanDo": "Ne yapabilirsiniz",
+      "whereToLook": "Nereye bakılmalı",
+      "highlights": "Öne Çıkanlar",
+      "borrowAgainstLp": "LP karşılığında borç almak",
+      "borrowAgainstLpDesc": "Stratejiden ayrılmadan LP maruziyetinden likiditeyi açın.",
+      "openMultiply": "Aç LP çarp",
+      "openMultiplyDesc": "Havuz içindeki yönetilen maruziyet için teminat olarak AMM pozisyonu kullanın.",
+      "lendThroughHub": "Merkez üzerinden ödünç ver",
+      "lendThroughHubDesc": "Sermayeyi daha net yürütme bağlamıyla tahsis edin.",
+      "aboutDesc": "Avana'in arkasındaki şirket ve ürün tezi.",
+      "followNotes": "Ürün notlarını takip edin",
+      "followNotesDesc": "Başlatmalar, teknik güncellemeler ve yol haritası kararları.",
+      "browseBrand": "Marka materyallerine göz at",
+      "browseBrandDesc": "Onaylanmış işaretler, renkler ve ortak görsel rehberlik.",
       "startOverview": "Genel bakışla başla",
-      "startOverviewDesc": "Uygulama detayından önce temel protokol modeli.",
-      "reviewModel": "Protokol modelini incele",
-      "reviewModelDesc": "Hub, Spokes, fiyatlama ve kontrollerin nasıl birleştiği.",
-      "understandLiquidation": "Likidasyonu anla",
-      "understandLiquidationDesc": "LP teminatlı pozisyonların nasıl izlendiği ve kapatıldığı."
+      "startOverviewDesc": "Uygulama detayından önce çekirdek protokol modeli.",
+      "reviewModel": "İnceleme protokol modeli",
+      "reviewModelDesc": "Merkez, akslar, fiyatlandırma ve kontrollerin nasıl bir araya geldiği.",
+      "understandLiquidation": "Tasfiyeyi anlamak",
+      "understandLiquidationDesc": "LP destekli pozisyonlar nasıl izlenir ve sonuçlandırılır."
     },
     "footer": {
-      "blurb": "Avana, Aave v4 üzerinde çalışan bir LP teminat protokolüdür; likidite sağlayıcıların aktif pozisyonlara karşı borçlanırken havuzda kalmasına yardımcı olur.",
+      "blurb": "Avana, likidite sağlayıcılarının aktif pozisyonlarına karşı borç almasına yardımcı olan ve havuzda kalmasını sağlayan Aave v4 üzerinde bir LP teminatlı protokoldür.",
       "explore": "Keşfet",
       "resources": "Kaynaklar",
-      "docs": "Dokümanlar",
+      "docs": "Belgeler",
       "social": "Sosyal",
-      "twitter": "Twitter",
-      "github": "GitHub",
-      "telegram": "Telegram",
-      "discourse": "Discourse",
+      "twitter": "heyecan",
+      "github": "Github",
+      "telegram": "Telgraf",
+      "discourse": "Söylem",
       "socialAria": "Avana {network} üzerinde",
-      "disclosureRisk": "LP token’lara karşı borçlanmak, piyasa koşulları aleyhinize dönerse likidasyon dahil risk içerir. Avana fonlarınızı saklamaz, LP pozisyonlarını rehypothecate etmez ve likiditenizin temel AMM’lerde nasıl çalıştığını değiştirmez. Kredi koşulları, faiz oranları ve teminat değerleri şeffaf oracle sistemleri ve otomatik risk parametreleriyle on-chain uygulanır. Pozisyonunuz her zaman sizin kontrolünüzdedir; istediğiniz zaman geri ödeme yapabilir veya teminatı ayarlayabilirsiniz. Yalnızca piyasa oynaklığı boyunca taşıyabileceğiniz tutarlarda borçlanın.",
-      "disclosureInfo": "Bu içerik yalnızca bilgilendirme amaçlıdır ve (i) herhangi bir paya yatırım, alım-satım veya bir yatırım/ticaret stratejisine katılım teklifi ya da daveti, (ii) muhasebe, hukuk veya vergi tavsiyesi ya da yatırım önerisi veya (iii) Avana’nın resmi beyanı değildir. Yatırım kararı öncesi danışmanlarınıza başvurun. Bilgilerin doğruluğu veya herhangi bir dijital varlık, finansal enstrüman ya da diğer piyasa ölçütünün gelecekteki performansı hakkında açık veya zımni beyan ya da garanti verilmez. Avana, materyallerde geçen bazı kuruluşlar ve/veya yayınlarla finansal ilişkilere sahip olabilir. Avana, materyallerde yer alabilecek bağlantıları veya üçüncü taraf siteleri onaylamaz."
+      "disclosureRisk": "LP tokenleri teminat göstererek borç almak, piyasa koşulları pozisyonunuza karşı hareket ederse tasfiye dahil olmak üzere risk içerir. Avana fonlarınızı saklamaz, LP pozisyonlarını yeniden teminat olarak kullanmaz veya likiditenizin temel AMMlerde nasıl çalıştığını değiştirmez. Kredi şartları, faiz oranları ve teminat değerleri şeffaf oracle sistemleri ve otomatik risk parametreleri kullanılarak zincir üzerinde uygulanır. Pozisyonunuzun tam kontrolü her zaman sizdedir ve teminatı istediğiniz zaman geri ödeyebilir veya ayarlayabilirsiniz. Piyasa dalgalanmalarına karşı idare edebileceğiniz miktarlarda borç alın.",
+      "disclosureInfo": "Bu materyal yalnızca bilgilendirme amaçlıdır ve (i) herhangi bir yatırım veya ticaret stratejisine katılmak, herhangi bir payı veya hisseleri satın almak veya satmak için teklif veya teklif çağrısı yapmak, (ii) muhasebe, hukuki veya vergi danışmanlığı veya yatırım önerileri sağlamak amacı taşımamakta, veya (iii) Avana’in resmi bir beyanı değildir. Herhangi bir yatırım kararı vermeden önce danışmanlarınıza başvurun. Bilgilerin doğruluğu veya herhangi bir dijital varlığın, finansal aracın veya diğer piyasa ya da ekonomik ölçütün gelecekteki performansı hakkında açık veya ima edilen herhangi bir beyan veya garanti verilmemektedir. Avana, materyallerde tartışılan veya atıfta bulunulan bazı kuruluşlarda ve/veya yayınlarda mali çıkarlar veya ilişkiler taşıyor olabilir. Avana, materyallerde sağlanabilecek bağlantıları veya üçüncü taraf web sitelerini onaylamaz veya onay vermez."
     },
     "notFound": {
       "title": "Bu sayfa kullanılamıyor.",
       "body": "Adres yanlış olabilir veya sayfa taşınmış olabilir.",
-      "home": "Ana sayfaya git",
-      "faq": "SSS"
+      "home": "Go to homepage",
+      "faq": "FAQ"
     },
-    "sandboxNotice": "Sandbox verileri yalnızca önizleme içindir. APY, fiyatlar ve getiriler örnektir; canlı piyasadan farklı olabilir.",
+    "sandboxNotice": "Sandbox veriler sadece önizleme için gösterilmektedir. APYler, fiyatlar ve getiriler örnek teşkil eder ve gerçek piyasa koşullarından farklı olabilir.",
     "blogChrome": {
       "back": "Geri",
       "share": "Paylaş",
-      "shareOnX": "X’te paylaş",
-      "shareOnLinkedIn": "LinkedIn’de paylaş",
-      "previousPost": "Önceki yazı",
-      "nextPost": "Sonraki yazı",
-      "onThisPage": "Bu sayfada"
+      "shareOnX": "X'te paylaş",
+      "shareOnLinkedIn": "LinkedIn'de paylaş",
+      "previousPost": "Önceki gönderi",
+      "nextPost": "Sonraki gönderi",
+      "onThisPage": "On this page"
     },
     "docs": {
       "previous": "Önceki",
@@ -95,59 +95,58 @@
       "sections": {
         "introduction": "Giriş",
         "gettingStarted": "Başlarken",
-        "architecture": "Protokol mimarisi",
-        "liquidation": "Likidasyon çerçevesi",
-        "integrations": "Desteklenen entegrasyonlar",
-        "safety": "Güvenlik mekanizmaları",
-        "legal": "Hukuk ve uyum"
+        "architecture": "Protokol Mimarisi",
+        "liquidation": "Tasfiye Çerçevesi",
+        "integrations": "Desteklenen Entegrasyonlar",
+        "safety": "Güvenlik Mekanizmaları",
+        "legal": "Hukuk & Uyum"
       },
       "items": {
-        "overview": "Genel bakış",
-        "keyConcepts": "Temel kavramlar",
-        "testnetRoadmap": "Testnet ve yol haritası",
+        "overview": "Genel Bakış",
+        "keyConcepts": "Temel Kavramlar",
         "glossary": "Sözlük",
-        "depositLp": "LP yatır",
-        "borrowAssets": "Varlık borçlan",
-        "manageLoans": "Kredileri yönet",
-        "repayLoans": "Kredileri geri öde",
-        "withdrawCollateral": "Teminatı çek",
-        "claimLpFees": "LP ücretlerini talep et",
-        "borrowSpoke": "Borrow Spoke",
-        "lendSpoke": "Lend Spoke",
-        "collateralFactors": "Teminat faktörleri",
-        "healthFactor": "Health factor",
-        "platformFees": "Platform ücretleri",
+        "depositLp": "Mevduat LP",
+        "borrowAssets": "Varlık Ödünç Al",
+        "manageLoans": "Kredileri Yönet",
+        "repayLoans": "Kredileri Geri Öde",
+        "withdrawCollateral": "Teminatı Çek",
+        "claimLpFees": "Talep LP Ücretler",
+        "borrowSpoke": "Borç Aldı Konuştu",
+        "lendSpoke": "Verdi Konuştu",
+        "collateralFactors": "Teminat Faktörleri",
+        "healthFactor": "Sağlık Faktörü",
+        "platformFees": "Platform Ücretleri",
         "incentives": "Teşvikler",
-        "liquidationDesign": "Likidasyon tasarımı",
-        "liquidators": "Likidatörler",
-        "liquidationFlow": "Likidasyon akışı",
-        "liquidationExamples": "Likidasyon örnekleri",
-        "integrationsOverview": "Entegrasyonlara genel bakış",
+        "liquidationDesign": "Tasfiye Tasarımı",
+        "liquidators": "Tasfiye Memurları",
+        "liquidationFlow": "Tasfiye Akışı",
+        "liquidationExamples": "Tasfiye Örnekleri",
+        "integrationsOverview": "Entegrasyonlar Genel Bakış",
         "appkit": "AppKit",
-        "allowedPools": "İzinli LP havuzları",
-        "routerAdapters": "Router ve adaptörler",
-        "priceOracles": "Fiyat oracle’ları",
-        "riskFramework": "Risk çerçevesi",
-        "contractsSecurity": "Kontratlar ve güvenlik",
-        "bugBounty": "Bug bounty",
-        "insuranceFunds": "Sigorta fonları",
-        "securityDisclosures": "Güvenlik açıklamaları",
-        "legalDisclaimer": "Yasal uyarı"
+        "allowedPools": "İzin Verilen LP Havuzlar",
+        "routerAdapters": "Yönlendirici ve Adaptörler",
+        "priceOracles": "Fiyat Kehanetleri",
+        "riskFramework": "Risk Çerçevesi",
+        "contractsSecurity": "Sözleşmeler ve Güvenlik",
+        "bugBounty": "Hata Ödülü",
+        "insuranceFunds": "Sigorta Fonları",
+        "securityDisclosures": "Güvenlik Açıklamaları",
+        "legalDisclaimer": "Yasal Uyarı"
       }
     },
     "faqUi": {
       "heading": "Nasıl yardımcı olabiliriz?",
       "search": "Ara",
       "searchPlaceholder": "Ara",
-      "searchResults": "Arama sonuçları",
+      "searchResults": "Arama Sonuçları",
       "clearSearch": "Aramayı temizle",
-      "noResults": "“{query}” için sonuç bulunamadı",
+      "noResults": "\"{query}\" için sonuç bulunamadı",
       "category": "Kategori: {name}",
       "categoriesAria": "SSS kategorileri",
       "articles": "{count} makale"
     },
     "tags": {
-      "all": "Tümü",
+      "all": "Hepsi",
       "product": "Ürün",
       "strategy": "Strateji",
       "guides": "Rehberler",
@@ -155,144 +154,144 @@
       "institutions": "Kurumlar"
     },
     "newsroom": {
-      "latestFrom": "Avana’dan son gelişmeler",
-      "readNewsroom": "Haberi oku"
+      "latestFrom": "Avana'den en son",
+      "readNewsroom": "Haber odasını oku"
     }
   },
   "meta": {
-    "siteTitle": "Avana — Aave v4’te LP pozisyonlarına karşı borçlanın",
-    "siteDescription": "LP token’larınızdan likidite açın. Uniswap, Curve ve Balancer pozisyonlarına karşı %80’e kadar borçlanırken Aave v4’te işlem ücretleri kazanmaya devam edin.",
-    "ogDescription": "İşlem ücretleri kazanmaya devam ederken LP token’larınızdan likidite açın.",
-    "ogSubtitle": "Aave v4’te LP pozisyonlarına karşı borçlanın",
-    "twitterTitle": "Avana — LP pozisyonlarına karşı borçlanın",
-    "twitterDescription": "Aave v4’te LP token’larınızdan likidite açın",
+    "siteTitle": "Avana - Aave v4 üzerinde LP Pozisyona Karşı Ödünç Al",
+    "siteDescription": "LP tokenlerinizden likiditeyi açın. Uniswap, Curve ve Balancer pozisyonlarına karşı %80'e kadar borç alın ve Aave v4 üzerinden ticaret ücretleri kazanmaya devam edin.",
+    "ogDescription": "Ticaret ücretleri kazanmaya devam ederken LP jetonunuzdan likidite açın.",
+    "ogSubtitle": "Aave v4 Üzerindeki LP Pozisyona Karşı Ödünç Al",
+    "twitterTitle": "Avana - LP Pozisyona Karşı Borç Al",
+    "twitterDescription": "Aave v4 üzerindeki LP tokeninizden likidite açın",
     "titleTemplate": "{title} | Avana",
-    "team": "Avana Ekibi",
-    "ogAlt": "Avana — DeFi likidite protokolü",
+    "team": "Avana Takım",
+    "ogAlt": "Avana - DeFi Likidite Protokolü",
     "home": {
-      "title": "Aave v4’te LP pozisyonlarına karşı borçlanın",
-      "description": "LP token’larınızdan likidite açın. Uniswap, Curve ve Balancer pozisyonlarına karşı %80’e kadar borçlanırken Aave v4’te işlem ücretleri kazanmaya devam edin."
+      "title": "Aave v4 Üzerindeki LP Pozisyona Karşı Ödünç Al",
+      "description": "LP tokenlerinizden likiditeyi açın. Uniswap, Curve ve Balancer pozisyonlarına karşı %80'e kadar borç alın ve Aave v4 üzerinden ticaret ücretleri kazanmaya devam edin."
     },
     "about": {
       "title": "Hakkında",
-      "description": "Avana’yı tanıyın: Aave v4 üzerinde özel Spokes, paylaşımlı Hub ve AMM likidite piyasaları için Lend Spoke ile LP-as-collateral protokolü."
+      "description": "Tanışın Avana ile, Aave v4 üzerinde inşa edilmiş, özel Spokes, paylaşılan bir Hub ve AMM likidite piyasaları için tasarlanmış bir Lend Spoke içeren, teminat olarak LP adanmış bir protokol."
     },
     "borrow": {
-      "title": "Borçlan",
-      "description": "Havuzdan çıkmadan canlı LP pozisyonlarına karşı borçlanın. Aave v4’te likidite açarken ücret kazanmaya devam edin."
+      "title": "Ödünç almak",
+      "description": "Havuzdan çıkmadan mevcut LP pozisyonlara karşı borç alın. Aave v4 üzerinde likiditeyi açarken ücret kazanmaya devam edin."
     },
     "lend": {
-      "title": "Likidite sağla",
-      "description": "Avana’nın Lend Spoke’una sermaye sağlayın ve Aave v4’te LP teminatlı borçlulardan getiri elde edin."
+      "title": "Ödünç vermek",
+      "description": "Avana'in Borç Verme Dairesi'ne sermaye sağlayın ve Aave v4 üzerinde LP destekli borçlulardan getiri kazanın."
     },
     "multiply": {
-      "title": "Multiply",
-      "description": "Desteklenen AMM pozisyonlarıyla yönetilen Multiply stratejilerinde LP ekspozisyonunu büyütün."
+      "title": "Çarpmak",
+      "description": "Desteklenen AMM pozisyonlarla desteklenen yönetilen çarpan stratejileriyle LP maruziyeti artırın."
     },
     "brand": {
       "title": "Marka",
-      "description": "Partnerler ve basın için resmi Avana marka varlıkları, renkler ve kullanım rehberi."
+      "description": "Ortaklar ve basın için resmi Avana marka varlıkları, renkler ve kullanım kılavuzu."
     },
     "faq": {
-      "title": "SSS",
-      "description": "Avana LP teminatı, borçlanma, likidite sağlama, Multiply, likidasyon ve Aave v4 mimarisi hakkında yanıtlar."
+      "title": "Sıkça sorulan sorular",
+      "description": "Avana LP teminat, borç alma, ödünç verme, çarpma, tasfiye ve Aave v4 mimari hakkında cevaplar."
     },
     "newsroom": {
-      "title": "Haberler",
-      "description": "Avana ekibinden LP teminatı, AMM piyasaları, Aave v4 ve protokol gelişimi üzerine son yazılar."
+      "title": "Haber Odası",
+      "description": "Avana ekibinden LP teminat, AMM piyasa, Aave v4 ve protokol geliştirme üzerine en son gönderiler."
     },
     "developers": {
       "title": "Geliştiriciler",
-      "description": "Avana entegrasyonu için teknik dokümantasyon. LP token teminatı, health factor, likidasyon akışları ve Aave v4 akıllı kontrat mimarisini öğrenin."
+      "description": "Avana ile entegrasyon için teknik dokümantasyon. LP token teminatı, sağlık faktörleri, tasfiye akışları ve Aave v4 üzerindeki akıllı sözleşme mimarisi hakkında bilgi edinin."
     },
     "privacy": {
       "title": "Gizlilik Politikası",
       "description": "Avana gizlilik politikası."
     },
     "terms": {
-      "title": "Kullanım Koşulları",
+      "title": "Kullanım Şartları",
       "description": "Avana kullanım koşulları."
     }
   },
   "home": {
     "hero": {
-      "eyebrow": "Aave v4 ile güçlendirildi",
-      "title": "LP pozisyonlarına karşı borçlanın",
-      "titleLine1": "Likidite pozisyonlarına",
-      "titleLine2": "karşı borçlanın",
+      "eyebrow": "Aave v4 tarafından desteklenmektedir",
+      "title": "LP pozisyona karşı borç al",
+      "titleLine1": "Teminat Karşılığı Ödünç Al",
+      "titleLine2": "Likidite Pozisyonları",
       "subtitle": "Uniswap, Curve ve Balancer pozisyonlarından likidite açarken işlem ücretleri kazanmaya devam edin.",
       "subtitleMobileLines": [
-        "Liquidity Pool değerinizin %80’ine kadar erişin",
-        "likidite çekmeden veya işlem ücretlerinden",
-        "vazgeçmeden %5,5 APR ile."
+        "Likidite Havuzunuzun değerinin %80'ine kadar erişim sağlayın",
+        "at 5.5% APR without withdrawing liquidity or",
+        "giving up trading fees."
       ],
       "subtitleDesktopLines": [
-        "Liquidity Pool değerinizin %80’ine kadar %5,5 APR ile erişin",
-        "likidite çekmeden veya işlem ücretlerinden vazgeçmeden."
+        "Likidite Havuzunuzun değerinin %80'ine kadar %5,5 ile erişim sağlayın APR",
+        "without withdrawing liquidity or giving up trading fees."
       ],
-      "primaryCta": "Sandbox’ı dene",
-      "secondaryCta": "Dokümanları oku"
+      "primaryCta": "Deneyin Sandbox",
+      "secondaryCta": "Belgeleri oku"
     },
     "features": {
-      "eyebrow": "Temel özellikler",
-      "title": "Canlı LP teminatı için tasarlandı"
+      "eyebrow": "Temel Özellikler",
+      "title": "Canlı LP teminat için yapılmıştır"
     },
     "faq": {
       "title": "Sık sorulan sorular"
     },
     "newsroom": {
-      "title": "Avana’dan son gelişmeler",
-      "cta": "Haberi oku"
+      "title": "Avana'den en son",
+      "cta": "Haber odasını oku"
     },
     "buildTomorrow": {
-      "title": "Avana ile tanışın",
-      "body": "Avana, desteklenen LP pozisyonlarını Aave v4’te kullanılabilir teminata dönüştürür; böylece likidite sağlayıcılar havuzdan çıkmadan borçlanabilir."
+      "title": "Tanış Avana",
+      "body": "Avana, LP pozisyonu kullanılabilir teminat haline getirir Aave v4 üzerinde, böylece likidite sağlayıcıları havuzdan çıkmadan borç alabilir."
     }
   },
   "product": {
     "borrow": {
-      "title": "LP karşılığı borçlan",
-      "subtitle": "Havuzdan çıkmadan aktif AMM pozisyonlarından likidite açın.",
-      "cta": "Sandbox’ı dene"
+      "title": "LP karşılığında borç almak",
+      "subtitle": "Havuzdan çıkmadan aktif AMM pozisyondan likidite açın.",
+      "cta": "Deneyin Sandbox"
     },
     "lend": {
-      "title": "LP piyasalarına likidite sağla",
-      "subtitle": "Aave v4’te canlı LP teminatı kullanan borçlulardan getiri elde edin.",
-      "cta": "Sandbox’ı dene"
+      "title": "LP pazara ödünç ver",
+      "subtitle": "Aave v4 üzerinde canlı LP teminat kullanan borçlulardan getiri kazanın.",
+      "cta": "Deneyin Sandbox"
     },
     "multiply": {
-      "title": "LP ekspozisyonunu Multiply et",
-      "subtitle": "Yönetilen yönlü ekspozisyon için desteklenen pozisyonları teminat olarak kullanın.",
-      "cta": "Sandbox’ı dene"
+      "title": "LP pozlamayı çarp",
+      "subtitle": "Yönetilen yönlü pozisyon eklemek için desteklenen pozisyonları teminat olarak kullanın.",
+      "cta": "Deneyin Sandbox"
     },
     "about": {
-      "title": "Avana hakkında",
-      "subtitle": "Aave v4 üzerinde LP-as-collateral protokolü"
+      "title": "Yaklaşık Avana",
+      "subtitle": "LP-teminat protokolü Aave v4 üzerine inşa edilmiştir"
     },
     "brand": {
-      "title": "Marka kiti",
-      "subtitle": "Partner yüzeyleri için işaretler, renkler ve rehber"
+      "title": "Marka seti",
+      "subtitle": "Ortak taraflara bakan yüzeyler için işaretler, renkler ve yönergeler"
     }
   },
   "faq": {
-    "title": "SSS",
-    "subtitle": "Avana, LP teminatı ve Aave v4 hakkında yanıtlar",
-    "englishOnlyNote": "Bu dilin incelemesi tamamlanana kadar SSS yanıtları İngilizce gösterilir."
+    "title": "FAQ",
+    "subtitle": "Avana, LP teminat ve Aave v4 hakkındaki cevaplar",
+    "englishOnlyNote": "Tam SSS yanıtları bu yerelleştirmenin incelemesi tamamlanana kadar İngilizce olarak gösterilir."
   },
   "docs": {
-    "hubTitle": "Geliştirici dokümanları",
-    "hubSubtitle": "Aave v4 üzerinde Avana LP teminatıyla entegre olun",
-    "englishOnlyNote": "Yerel çeviri henüz yoksa dokümantasyon metni İngilizceye düşer."
+    "hubTitle": "Geliştirici belgeleri",
+    "hubSubtitle": "Aave v4 üzerinde Avana LP teminat ile entegre edin",
+    "englishOnlyNote": "Belgeleme gövde metni, bir yerel çeviri henüz mevcut olmadığında İngilizceye geri döner."
   },
   "blog": {
-    "indexTitle": "Haberler",
-    "indexSubtitle": "Ürün notları, araştırmalar ve protokol güncellemeleri",
-    "englishOnlyNote": "Yerel çeviri henüz yoksa makale gövdeleri İngilizceye düşer."
+    "indexTitle": "Haber Odası",
+    "indexSubtitle": "Ürün notları, araştırma ve protokol güncellemeleri",
+    "englishOnlyNote": "Makale gövdeleri, bir yerel çeviri henüz mevcut olmadığında İngilizce'ye geri döner."
   },
   "legal": {
     "privacyTitle": "Gizlilik Politikası",
-    "termsTitle": "Kullanım Koşulları",
-    "englishOnlyNote": "Hukuk onaylı yerel sürümler hazır olana kadar yasal sayfalar İngilizce kalır.",
-    "englishOnlyBadge": "Yalnızca English"
+    "termsTitle": "Kullanım Şartları",
+    "englishOnlyNote": "Hukuki sayfalar, avukat onaylı yerel sürümler kullanıma hazır olana kadar İngilizce olarak kalır.",
+    "englishOnlyBadge": "Sadece İngilizce"
   }
 }

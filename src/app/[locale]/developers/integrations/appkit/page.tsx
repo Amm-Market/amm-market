@@ -68,9 +68,9 @@ export default async function DeveloperAppKitPage() {
             Avana runs the actual loan path.
           </p>
           <p className="text-sm leading-relaxed text-gray-600">
-            This page is about placement, handoff, and launch discipline. The partner owns the user
-            surface and distribution. Avana owns the credit rules, settlement, and safety-critical
-            mechanics behind the flow.
+            AppKit is for partners that already own the user relationship — DEXs, wallets, and
+            portfolio apps where LP positions are already visible. The partner controls placement
+            and handoff. Avana runs the actual loan path.
           </p>
         </section>
 

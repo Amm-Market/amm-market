@@ -52,7 +52,6 @@ import {
   Scale,
   FileText,
   Lightbulb,
-  Map as MapIcon,
   BookMarked,
   Download,
   Coins,
@@ -88,7 +87,6 @@ export const navigationSections = [
     items: [
       { href: "/developers", labelKey: "docs.items.overview", icon: FileText },
       { href: "/developers/introduction/key-concepts", labelKey: "docs.items.keyConcepts", icon: Lightbulb },
-      { href: "/developers/introduction/testnet-roadmap", labelKey: "docs.items.testnetRoadmap", icon: MapIcon },
       { href: "/developers/introduction/glossary", labelKey: "docs.items.glossary", icon: BookMarked },
     ],
   },
