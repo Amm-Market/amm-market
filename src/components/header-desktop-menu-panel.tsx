@@ -1,112 +1,27 @@
 "use client"
 
-import Link from "next/link"
+import { useTranslations } from "next-intl"
+import type { DesktopMenuId } from "@/components/header-nav-data"
+import { Link } from "@/i18n/navigation"
 import { siteRoutes } from "@/lib/site"
-import type { DesktopMenuId, NavLink } from "@/components/header-nav-data"
 
-interface DesktopMenuItem extends NavLink {
+interface DesktopMenuItem {
+  href: string
+  label: string
   description?: string
+  external?: boolean
 }
 
 interface DesktopMenuGroup {
   id: DesktopMenuId
-  label: string
   eyebrow: string
   items: DesktopMenuItem[]
   supportingTitle?: string
   supportingItems: DesktopMenuItem[]
 }
 
-const desktopMenus: readonly DesktopMenuGroup[] = [
-  {
-    id: "products",
-    label: "Products",
-    eyebrow: "Explore Products",
-    items: [
-      { href: siteRoutes.borrow, label: "Borrow" },
-      { href: siteRoutes.lend, label: "Lend" },
-      { href: siteRoutes.multiply, label: "Multiply" },
-    ],
-    supportingTitle: "What you can do",
-    supportingItems: [
-      {
-        href: siteRoutes.borrow,
-        label: "Borrow against LP positions",
-        description: "Unlock liquidity from concentrated or volatile LP exposure without leaving the strategy.",
-      },
-      {
-        href: siteRoutes.multiply,
-        label: "Open LP-backed multiply",
-        description: "Use supported AMM positions as collateral to add managed directional exposure without leaving the pool.",
-      },
-      {
-        href: siteRoutes.lend,
-        label: "Lend capital through the Hub",
-        description: "Move borrowed capital into structured allocation paths with clearer execution context.",
-      },
-    ],
-  },
-  {
-    id: "resources",
-    label: "Resources",
-    eyebrow: "Explore Resources",
-    items: [
-      { href: siteRoutes.about, label: "About" },
-      { href: siteRoutes.newsroom, label: "Newsroom" },
-      { href: siteRoutes.brand, label: "Brand" },
-    ],
-    supportingTitle: "Where to look",
-    supportingItems: [
-      {
-        href: siteRoutes.about,
-        label: "About",
-        description: "Read more about the current company and product thesis behind Avana.",
-      },
-      {
-        href: siteRoutes.newsroom,
-        label: "Follow product notes",
-        description: "Track launches, technical updates, and the product decisions shaping the roadmap.",
-      },
-      {
-        href: siteRoutes.brand,
-        label: "Browse brand materials",
-        description: "Review approved marks, colors, and visual guidance for partner-facing surfaces.",
-      },
-    ],
-  },
-  {
-    id: "developers",
-    label: "Developers",
-    eyebrow: "Explore Developers",
-    items: [
-      { href: siteRoutes.developers, label: "Overview" },
-      { href: "/developers/architecture", label: "Architecture" },
-      { href: "/developers/liquidation", label: "Liquidation" },
-    ],
-    supportingTitle: "Highlights",
-    supportingItems: [
-      {
-        href: siteRoutes.developers,
-        label: "Start with the overview",
-        description: "Get the core protocol mental model before moving into implementation detail.",
-      },
-      {
-        href: "/developers/architecture",
-        label: "Review the protocol model",
-        description: "Understand how the hub, spokes, pricing, and controls fit together.",
-      },
-      {
-        href: "/developers/liquidation",
-        label: "Understand liquidation",
-        description: "Learn how LP-backed loans settle when health fails and residual value is protected.",
-      },
-    ],
-  },
-] as const
-
 function toSentenceCase(value: string) {
   if (!value) return value
-
   return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
 }
 
@@ -127,11 +42,94 @@ export default function HeaderDesktopMenuPanel({
   onExited,
   animationCycle,
 }: HeaderDesktopMenuPanelProps) {
-  const menu = desktopMenus.find((entry) => entry.id === menuId)
+  const t = useTranslations("common")
 
-  if (!menu) {
-    return null
-  }
+  const desktopMenus: readonly DesktopMenuGroup[] = [
+    {
+      id: "products",
+      eyebrow: t("mega.exploreProducts"),
+      items: [
+        { href: siteRoutes.borrow, label: t("nav.borrow") },
+        { href: siteRoutes.lend, label: t("nav.lend") },
+        { href: siteRoutes.multiply, label: t("nav.multiply") },
+      ],
+      supportingTitle: t("mega.whatYouCanDo"),
+      supportingItems: [
+        {
+          href: siteRoutes.borrow,
+          label: t("mega.borrowAgainstLp"),
+          description: t("mega.borrowAgainstLpDesc"),
+        },
+        {
+          href: siteRoutes.multiply,
+          label: t("mega.openMultiply"),
+          description: t("mega.openMultiplyDesc"),
+        },
+        {
+          href: siteRoutes.lend,
+          label: t("mega.lendThroughHub"),
+          description: t("mega.lendThroughHubDesc"),
+        },
+      ],
+    },
+    {
+      id: "resources",
+      eyebrow: t("mega.exploreResources"),
+      items: [
+        { href: siteRoutes.about, label: t("nav.about") },
+        { href: siteRoutes.newsroom, label: t("nav.newsroom") },
+        { href: siteRoutes.brand, label: t("nav.brand") },
+      ],
+      supportingTitle: t("mega.whereToLook"),
+      supportingItems: [
+        {
+          href: siteRoutes.about,
+          label: t("nav.about"),
+          description: t("mega.aboutDesc"),
+        },
+        {
+          href: siteRoutes.newsroom,
+          label: t("mega.followNotes"),
+          description: t("mega.followNotesDesc"),
+        },
+        {
+          href: siteRoutes.brand,
+          label: t("mega.browseBrand"),
+          description: t("mega.browseBrandDesc"),
+        },
+      ],
+    },
+    {
+      id: "developers",
+      eyebrow: t("mega.exploreDevelopers"),
+      items: [
+        { href: siteRoutes.developers, label: t("nav.overview") },
+        { href: "/developers/architecture", label: t("nav.architecture") },
+        { href: "/developers/liquidation", label: t("nav.liquidation") },
+      ],
+      supportingTitle: t("mega.highlights"),
+      supportingItems: [
+        {
+          href: siteRoutes.developers,
+          label: t("mega.startOverview"),
+          description: t("mega.startOverviewDesc"),
+        },
+        {
+          href: "/developers/architecture",
+          label: t("mega.reviewModel"),
+          description: t("mega.reviewModelDesc"),
+        },
+        {
+          href: "/developers/liquidation",
+          label: t("mega.understandLiquidation"),
+          description: t("mega.understandLiquidationDesc"),
+        },
+      ],
+    },
+  ]
+
+  const menu = desktopMenus.find((entry) => entry.id === menuId)
+  if (!menu) return null
 
   return (
     <div
@@ -143,7 +141,7 @@ export default function HeaderDesktopMenuPanel({
           onExited()
         }
       }}
-      className={`fixed left-0 right-0 top-16 z-40 hidden transform-gpu md:top-[54px] md:block transition-[opacity,transform] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+      className={`fixed inset-x-0 top-16 z-40 hidden transform-gpu transition-[opacity,transform] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] md:top-[54px] md:block ${
         isOpen ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-6 opacity-0"
       }`}
       aria-hidden={!isOpen}
@@ -155,22 +153,22 @@ export default function HeaderDesktopMenuPanel({
             className="grid gap-6 lg:min-h-[14.75rem] lg:grid-cols-[minmax(0,19rem)_minmax(15rem,18rem)] lg:gap-2.5 xl:grid-cols-[minmax(0,20rem)_minmax(15rem,18rem)] xl:gap-3"
           >
             <div className="space-y-2.5">
-              <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-[#01AACF]">{toSentenceCase(menu.eyebrow)}</p>
+              <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-[#01AACF]">
+                {toSentenceCase(menu.eyebrow)}
+              </p>
               <div className="space-y-1">
                 {menu.items.map((item, index) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     prefetch={false}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noreferrer" : undefined}
                     suppressHydrationWarning
-                    className={`group flex items-start gap-4 py-1.5 text-left text-black transition-[opacity,color,filter] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-black/74 ${
+                    className={`group flex items-start gap-4 py-1.5 text-start text-black transition-[opacity,color,filter] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-black/74 ${
                       isOpen ? "opacity-100 blur-0" : "opacity-[0.18] blur-[0.2px]"
                     }`}
                     style={{ transitionDelay: `${180 + index * 55}ms` }}
                   >
-                    <span className="text-[clamp(1.5rem,1.95vw,2.45rem)] font-[430] leading-[1.04] tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1">
+                    <span className="text-[clamp(1.5rem,1.95vw,2.45rem)] font-[430] leading-[1.04] tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
                       {item.label}
                     </span>
                   </Link>
@@ -190,28 +188,23 @@ export default function HeaderDesktopMenuPanel({
               <div className="space-y-3">
                 {menu.supportingItems.map((item, index) => (
                   <Link
-                    key={item.href}
+                    key={`${item.href}-${item.label}`}
                     href={item.href}
                     prefetch={false}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noreferrer" : undefined}
                     aria-label={item.label}
                     suppressHydrationWarning
-                    className="group block min-h-[2.8rem] text-left"
+                    className="group block min-h-[2.8rem] text-start"
                   >
                     <div className="flex items-start gap-[0.6875rem]">
-                      <span
-                        aria-hidden="true"
-                        className="pt-1 text-[0.56rem] font-medium tracking-[0.16em] text-black/24"
-                      >
+                      <span aria-hidden="true" className="pt-1 text-[0.56rem] font-medium tracking-[0.16em] text-black/24">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <div>
-                        <p className="text-[0.78rem] font-medium leading-[1.24] tracking-[-0.02em] text-black/76 transition-colors duration-200 group-hover:text-black">
+                        <p className="line-clamp-2 text-[0.78rem] font-medium leading-[1.24] tracking-[-0.02em] text-black/76 transition-colors duration-200 group-hover:text-black">
                           {item.label}
                         </p>
                         {item.description ? (
-                          <p className="mt-1 max-w-[24rem] text-[0.68rem] leading-[1.42] tracking-[-0.01em] text-black/46 transition-colors duration-200 group-hover:text-black/58">
+                          <p className="mt-1 line-clamp-2 max-w-[24rem] text-[0.68rem] leading-[1.42] tracking-[-0.01em] text-black/46 transition-colors duration-200 group-hover:text-black/58">
                             {item.description}
                           </p>
                         ) : null}

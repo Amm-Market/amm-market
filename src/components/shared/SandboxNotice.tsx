@@ -1,13 +1,16 @@
-const SANDBOX_NOTICE =
-  "Sandbox data shown for preview only. APYs, prices, and returns are illustrative and may differ from live market conditions."
+"use client"
+
+import { useTranslations } from "next-intl"
 
 export function SandboxNotice({ className = "" }: { className?: string }) {
+  const t = useTranslations("common")
+
   return (
     <p className={`flex items-start gap-2.5 text-xs font-medium leading-5 text-[#44546a] md:text-sm ${className}`.trim()}>
       <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#01AACF] text-sm leading-none text-white">
         !
       </span>
-      <span className="max-w-[1000px]">{SANDBOX_NOTICE}</span>
+      <span className="max-w-[1000px]">{t("sandboxNotice")}</span>
     </p>
   )
 }

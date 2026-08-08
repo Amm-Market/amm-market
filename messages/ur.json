@@ -1,0 +1,298 @@
+{
+  "common": {
+    "a11y": {
+      "skipToContent": "اہم مواد پر جائیں",
+      "primaryNav": "اہم نیویگیشن",
+      "mobileMenu": "موبائل مینو",
+      "mobileNav": "موبائل نیوی گیشن",
+      "openMenu": "مینو کھولیں",
+      "closeMenu": "مینو بند کریں",
+      "language": "زبان: {language}",
+      "logo": "{site} لوگو",
+      "helpfulLinks": "مددگار روابط"
+    },
+    "nav": {
+      "products": "پروڈکٹس",
+      "resources": "وسائل",
+      "developers": "ڈویلپرز",
+      "helpCenter": "مدد مرکز",
+      "aaveArfc": "Aave ARFC",
+      "borrow": "قرض لیں",
+      "lend": "قرض دیں",
+      "multiply": "Multiply",
+      "about": "تعارف",
+      "newsroom": "خبریں",
+      "brand": "برانڈ",
+      "faq": "عمومی سوالات",
+      "privacy": "رازداری",
+      "terms": "شرائط",
+      "overview": "جائزہ",
+      "architecture": "آرکیٹیکچر",
+      "liquidation": "لیکویڈیشن"
+    },
+    "cta": {
+      "sandboxShort": "Sandbox",
+      "sandboxLong": "Sandbox آزمائیں"
+    },
+    "mega": {
+      "exploreProducts": "مصنوعات کو دریافت کریں",
+      "exploreResources": "وسائل کی تلاش کریں",
+      "exploreDevelopers": "ڈویلپرز دریافت کریں",
+      "whatYouCanDo": "آپ کیا کر سکتے ہیں",
+      "whereToLook": "کہاں دیکھنا ہے",
+      "highlights": "اہم نکات",
+      "borrowAgainstLp": "LP پر قرض لیں",
+      "borrowAgainstLpDesc": "حکمت عملی چھوڑے بغیر LP ایکسپوژر سے لیکویڈیٹی کھولیں۔",
+      "openMultiply": "LP پر Multiply کھولیں",
+      "openMultiplyDesc": "پول کے اندر منظم ایکسپوژر کے لیے AMM پوزیشنز کو ضمانت بنائیں۔",
+      "lendThroughHub": "Hub کے ذریعے قرض دیں",
+      "lendThroughHubDesc": "صاف تر عمل درآمد سیاق کے ساتھ سرمایہ مختص کریں۔",
+      "aboutDesc": "Avana کے پیچھے کمپنی اور پروڈکٹ تھیسس۔",
+      "followNotes": "پروڈکٹ نوٹس فالو کریں",
+      "followNotesDesc": "لانچز، تکنیکی اپ ڈیٹس، اور روڈ میپ کے فیصلے۔",
+      "browseBrand": "برانڈ مواد دیکھیں",
+      "browseBrandDesc": "منظور شدہ نشانات، رنگ اور شراکت دار کی بصری رہنمائی۔",
+      "startOverview": "جائزہ سے شروع کریں",
+      "startOverviewDesc": "عمل درآمد کی تفصیل سے پہلے بنیادی پروٹوکول ماڈل۔",
+      "reviewModel": "پروٹوکول ماڈل کا جائزہ",
+      "reviewModelDesc": "Hub، Spokes، قیمت اور کنٹرولز کیسے ملتے ہیں۔",
+      "understandLiquidation": "لیکویڈیشن سمجھیں",
+      "understandLiquidationDesc": "31-معاون پوزیشنز کی نگرانی اور تصفیہ کیسے کیا جاتا ہے۔"
+    },
+    "footer": {
+      "blurb": "Avana Aave v4 پر ایک LP ضمانت پروٹوکول ہے جو لیکویڈیٹی فراہم کنندگان کو پول میں رہتے ہوئے فعال پوزیشنز پر قرض لینے میں مدد دیتا ہے۔",
+      "explore": "کھوجنا",
+      "resources": "وسائل",
+      "docs": "دستاویزات",
+      "social": "سماجی",
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "telegram": "Telegram",
+      "discourse": "Discourse",
+      "socialAria": "Avana پر {network}",
+      "disclosureRisk": "LP ٹوکنز کے خلاف قرض لینا خطرات کے ساتھ ہوتا ہے، جس میں مارکیٹ کی صورتحال کے آپ کے موقف کے خلاف ہونے پر لیکوئیڈیشن شامل ہے۔ Avana آپ کے فنڈز کی حفاظت نہیں کرتا، LP کے موقف کو دوبارہ ہائپو تھیسائز نہیں کرتا، اور نہ ہی یہ طے کرتا ہے کہ آپ کی لیکویڈیٹی بنیادی AMM پر کس طرح کام کرتی ہے۔ قرض کی شرائط، سود کی شرحیں، اور ضمانتی قیمتیں شفاف اوریکل سسٹمز اور خودکار رسک پیرامیٹرز کے ذریعے آن چین نافذ کی جاتی ہیں۔ آپ ہر وقت اپنے موقف پر مکمل کنٹرول رکھتے ہیں اور جب چاہیں قرض کی ادائیگی یا ضمانت کو ایڈجسٹ کر سکتے ہیں۔ صرف وہی رقم قرض لیں جسے آپ مارکیٹ کی اتار چڑھاؤ کے دوران برقرار رکھنے میں آرام دہ محسوس کریں۔",
+      "disclosureInfo": "یہ مواد صرف معلوماتی مقاصد کے لیے ہے، اور یہ نہ تو (i) کسی دلچسپی یا شیئر میں سرمایہ کاری کرنے یا خریدنے یا بیچنے کی پیشکش، یا کوئی پیشکش کی دعوت ہے، یا کسی سرمایہ کاری یا تجارتی حکمت عملی میں حصہ لینے کی دعوت ہے، (ii) اکاؤنٹنگ، قانونی، یا ٹیکس مشورہ دینے یا سرمایہ کاری کی سفارشات فراہم کرنے کے لیے ہے، یا (iii) Avana کا سرکاری بیان ہے۔ کسی بھی سرمایہ کاری کے فیصلے سے پہلے اپنے مشیران سے مشورہ کریں۔ معلومات کی درستگی یا کسی بھی ڈیجیٹل اثاثہ، مالیاتی آلے یا دیگر مارکیٹ یا اقتصادی پیمانے کی مستقبل کی کارکردگی کے حوالے سے کوئی نمائندگی یا وارنٹی ظاہر یا ضمنی طور پر نہیں دی جاتی۔ Avana کے کچھ مالی مفاد یا تعلقات مواد میں زیر بحث یا حوالہ دی گئی کچھ اداروں اور/یا اشاعتوں کے ساتھ ہو سکتے ہیں۔ Avana مواد میں فراہم کیے گئے روابط یا تیسرے فریق کی ویب سائٹس کی توثیق یا منظوری نہیں دیتا۔"
+    },
+    "notFound": {
+      "title": "یہ صفحہ دستیاب نہیں ہے۔",
+      "body": "پتہ غلط ہو سکتا ہے یا صفحہ منتقل ہو چکا ہے۔",
+      "home": "ہوم پیج پر جائیں",
+      "faq": "عمومی سوالات"
+    },
+    "sandboxNotice": "Sandbox ڈیٹا صرف پیش منظر کے لیے۔ APY، قیمتیں اور منافع مثالی ہیں اور لائیو مارکیٹ سے مختلف ہو سکتے ہیں۔",
+    "blogChrome": {
+      "back": "پیچھے",
+      "share": "شیئر کریں",
+      "shareOnX": "ایکس پر شئیر کریں",
+      "shareOnLinkedIn": "لنکڈ اِن پر شیئر کریں",
+      "previousPost": "پچھلا پوسٹ",
+      "nextPost": "اگلا پوسٹ",
+      "onThisPage": "On this page"
+    },
+    "docs": {
+      "previous": "پچھلا",
+      "next": "اگلا",
+      "sections": {
+        "introduction": "تعارف",
+        "gettingStarted": "شروع کرنا",
+        "architecture": "پروٹوکول آرکیٹیکچر",
+        "liquidation": "لیکویڈیشن فریم ورک",
+        "integrations": "معاونت یافتہ انضمام",
+        "safety": "حفاظتی میکنزم",
+        "legal": "قانونی اور تعمیل"
+      },
+      "items": {
+        "overview": "جائزہ",
+        "keyConcepts": "اہم تصورات",
+        "testnetRoadmap": "ٹیسٹ نیٹ اور روڈ میپ",
+        "glossary": "اصطلاحات کی فہرست",
+        "depositLp": "جمع LP",
+        "borrowAssets": "اثاثے ادھار لیں",
+        "manageLoans": "قرضوں کا انتظام کریں",
+        "repayLoans": "قرض واپس کریں",
+        "withdrawCollateral": "ضمانت نکالیں",
+        "claimLpFees": "دعویٰ LP فیسیں",
+        "borrowSpoke": "Borrow Spoke",
+        "lendSpoke": "Lend Spoke",
+        "collateralFactors": "ضمانتی عوامل",
+        "healthFactor": "صحت کا عنصر",
+        "platformFees": "پلیٹ فارم فیس",
+        "incentives": "ترغیبات",
+        "liquidationDesign": "لیکویڈیشن ڈیزائن",
+        "liquidators": "لیکویڈیٹرز",
+        "liquidationFlow": "لیکویڈیشن کا سلسلہ",
+        "liquidationExamples": "لیکویڈیشن کی مثالیں",
+        "integrationsOverview": "انٹیگریشنز کا جائزہ",
+        "appkit": "AppKit",
+        "allowedPools": "اجازت یافتہ LP پولز",
+        "routerAdapters": "روٹر اور اڈاپٹرز",
+        "priceOracles": "قیمت کے اوریکل",
+        "riskFramework": "خطرے کا فریم ورک",
+        "contractsSecurity": "معاہدے اور سیکیورٹی",
+        "bugBounty": "بگ باؤنٹی",
+        "insuranceFunds": "انشورنس فنڈز",
+        "securityDisclosures": "سیکیورٹی انکشافات",
+        "legalDisclaimer": "قانونی دستبرداری"
+      }
+    },
+    "faqUi": {
+      "heading": "ہم کیسے مدد کر سکتے ہیں؟",
+      "search": "تلاش کریں",
+      "searchPlaceholder": "تلاش کریں",
+      "searchResults": "تلاش کے نتائج",
+      "clearSearch": "تلاش صاف کریں",
+      "noResults": "\"{query}\" کے لیے کوئی نتیجہ نہیں",
+      "category": "زمرہ: {name}",
+      "categoriesAria": "اکثر پوچھے جانے والے سوالات کے زمروں",
+      "articles": "{count} مضامین"
+    },
+    "tags": {
+      "all": "سب",
+      "product": "مصنوعہ",
+      "strategy": "حکمت عملی",
+      "guides": "گائیڈز",
+      "protocol": "پروٹوکول",
+      "institutions": "ادارے"
+    },
+    "newsroom": {
+      "latestFrom": "Avana کی تازہ ترین",
+      "readNewsroom": "خبریں پڑھیں"
+    }
+  },
+  "meta": {
+    "siteTitle": "Avana - Aave v4 پر LP پوزیشنز پر قرض",
+    "siteDescription": "LP ٹوکنز سے لیکویڈیٹی کھولیں۔ Uniswap، Curve اور Balancer پوزیشنز پر 80% تک قرض لیں اور Aave v4 پر ٹریڈنگ فیس کماتے رہیں۔",
+    "ogDescription": "LP ٹوکنز سے لیکویڈیٹی کھولیں اور ٹریڈنگ فیس کماتے رہیں۔",
+    "ogSubtitle": "Aave v4 پر LP پوزیشنز پر قرض",
+    "twitterTitle": "Avana - LP پوزیشنز پر قرض",
+    "twitterDescription": "اپنے LP ٹوکنز کو Aave v4 پر لیکویڈیٹی سے آزاد کریں",
+    "titleTemplate": "{title} | Avana",
+    "team": "Avana ٹیم",
+    "ogAlt": "Avana - DeFi لیکوئڈیٹی پروٹوکول",
+    "home": {
+      "title": "Aave v4 پر LP پوزیشنز پر قرض",
+      "description": "LP ٹوکنز سے لیکویڈیٹی کھولیں۔ Uniswap، Curve اور Balancer پوزیشنز پر 80% تک قرض لیں اور Aave v4 پر ٹریڈنگ فیس کماتے رہیں۔"
+    },
+    "about": {
+      "title": "تعارف",
+      "description": "Avana سے ملیں — Aave v4 پر مخصوص LP-as-collateral پروٹوکول، مخصوص Spokes، مشترکہ Hub، اور AMM لیکویڈیٹی مارکیٹس کے لیے Lend Spoke کے ساتھ۔"
+    },
+    "borrow": {
+      "title": "قرض لیں",
+      "description": "پول چھوڑے بغیر لائیو LP پوزیشنز پر قرض لیں۔ Aave v4 پر لیکویڈیٹی کھولتے ہوئے فیس کماتے رہیں۔"
+    },
+    "lend": {
+      "title": "قرض دیں",
+      "description": "Avana کے Lend Spoke کو سرمایہ سپلائی کریں اور Aave v4 پر LP تقویت یافتہ قرض داروں سے منافع کمائیں۔"
+    },
+    "multiply": {
+      "title": "Multiply",
+      "description": "معاون AMM پوزیشنز پر مبنی منظم Multiply حکمت عملیوں سے LP ایکسپوژر بڑھائیں۔"
+    },
+    "brand": {
+      "title": "برانڈ",
+      "description": "شراکت داروں اور پریس کے لیے سرکاری Avana برانڈ اثاثے، رنگ، اور استعمال کی رہنمائی۔"
+    },
+    "faq": {
+      "title": "عمومی سوالات",
+      "description": "Avana LP ضمانت، قرض، Multiply، لیکویڈیشن اور Aave v4 آرکیٹیکچر کے جوابات۔"
+    },
+    "newsroom": {
+      "title": "خبریں",
+      "description": "Avana ٹیم کی تازہ پوسٹس: LP ضمانت، AMM مارکیٹس، Aave v4 اور پروٹوکول ترقی۔"
+    },
+    "developers": {
+      "title": "ڈیولپرز",
+      "description": "Avana کے ساتھ انضمام کے لیے تکنیکی دستاویزات۔ LP ٹوکن کولٹرل، ہیلتھ فیکٹرز، لیکوئڈیشن فلو، اور Aave v4 پر اسمارٹ کانٹریکٹ آرکیٹیکچر کے بارے میں معلومات حاصل کریں۔"
+    },
+    "privacy": {
+      "title": "رازداری کی پالیسی",
+      "description": "Avana پرائیویسی پالیسی۔"
+    },
+    "terms": {
+      "title": "استعمال کی شرائط",
+      "description": "Avana استعمال کی شرائط۔"
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Aave v4 سے تقویت یافتہ",
+      "title": "LP پوزیشنز پر قرض لیں",
+      "titleLine1": "قرض لیں",
+      "titleLine2": "لیکویڈیٹی پوزیشنز پر",
+      "subtitle": "Uniswap، Curve اور Balancer پوزیشنز سے لیکویڈیٹی کھولتے ہوئے ٹریڈنگ فیس کماتے رہیں۔",
+      "subtitleMobileLines": [
+        "لیکویڈیٹی پول ویلیو کے 80% تک رسائی",
+        "5.5% APR پر بغیر لیکویڈیٹی نکالے یا",
+        "ٹریڈنگ فیس چھوڑے۔"
+      ],
+      "subtitleDesktopLines": [
+        "لیکویڈیٹی پول ویلیو کے 80% تک رسائی 5.5% APR پر",
+        "بغیر لیکویڈیٹی نکالے یا ٹریڈنگ فیس چھوڑے۔"
+      ],
+      "primaryCta": "Sandbox آزمائیں",
+      "secondaryCta": "دستاویزات پڑھیں"
+    },
+    "features": {
+      "eyebrow": "اہم خصوصیات",
+      "title": "لائیو LP ضمانت کے لیے بنایا گیا"
+    },
+    "faq": {
+      "title": "عمومی سوالات"
+    },
+    "newsroom": {
+      "title": "Avana کی تازہ ترین",
+      "cta": "خبریں پڑھیں"
+    },
+    "buildTomorrow": {
+      "title": "Avana سے ملیں",
+      "body": "Avana معاون LP پوزیشنز کو Aave v4 پر قابل استعمال ضمانت بناتا ہے تاکہ لیکویڈیٹی فراہم کنندگان پول چھوڑے بغیر قرض لیں۔"
+    }
+  },
+  "product": {
+    "borrow": {
+      "title": "LP پر قرض لیں",
+      "subtitle": "پول چھوڑے بغیر فعال AMM پوزیشنز سے لیکویڈیٹی کھولیں۔",
+      "cta": "کوشش کریں Sandbox"
+    },
+    "lend": {
+      "title": "LP مارکیٹس کو قرض دیں",
+      "subtitle": "Aave v4 پر لائیو LP ضمانت استعمال کرنے والے قرض داروں سے منافع کمائیں۔",
+      "cta": "کوشش کریں Sandbox"
+    },
+    "multiply": {
+      "title": "LP ایکسپوژر بڑھائیں",
+      "subtitle": "منظم سمتی ایکسپوژر بڑھانے کے لیے معاون پوزیشنز کو ضمانت بنائیں۔",
+      "cta": "کوشش کریں Sandbox"
+    },
+    "about": {
+      "title": "تقریباً Avana",
+      "subtitle": "LP-بحیثیت ضمانت پروٹوکول Aave v4 پر بنایا گیا"
+    },
+    "brand": {
+      "title": "برانڈ کٹ",
+      "subtitle": "ساتھی کے سامنے والے سطحوں کے لیے نشان، رنگ اور رہنمائی"
+    }
+  },
+  "faq": {
+    "title": "عمومی سوالات",
+    "subtitle": "Avana، LP ضمانت اور Aave v4 کے جوابات",
+    "englishOnlyNote": "مکمل FAQ کے جوابات اس وقت انگریزی میں دکھائے جاتے ہیں جب تک کہ اس مقامی زبان کا جائزہ مکمل نہ ہو جائے۔"
+  },
+  "docs": {
+    "hubTitle": "ڈویلپر دستاویزات",
+    "hubSubtitle": "Aave v4 پر Avana LP ضمانت کے ساتھ انضمام",
+    "englishOnlyNote": "جب کسی مقام کی ترجمہ دستیاب نہ ہو تب دستاویزی متن انگریزی پر واپس آ جاتا ہے۔"
+  },
+  "blog": {
+    "indexTitle": "خبریں",
+    "indexSubtitle": "پروڈکٹ نوٹس، تحقیق اور پروٹوکول اپڈیٹس",
+    "englishOnlyNote": "جب کسی مقامی زبان کا ترجمہ دستیاب نہیں ہوتا تو آرٹیکل کے متن انگریزی پر واپس چلے جاتے ہیں۔"
+  },
+  "legal": {
+    "privacyTitle": "رازداری کی پالیسی",
+    "termsTitle": "استعمال کی شرائط",
+    "englishOnlyNote": "قانونی صفحات انگریزی میں ہی رہیں گے جب تک کہ وکیل کی منظوری شدہ مقامی ورژنز دستیاب نہ ہوں۔",
+    "englishOnlyBadge": "صرف انگریزی"
+  }
+}

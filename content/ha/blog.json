@@ -1,0 +1,778 @@
+{
+  "posts": [
+    {
+      "slug": "lp-risk-governance",
+      "title": "Yadda Avana Ke Gudanar da Haɗarin LP",
+      "date": "July 24, 2026",
+      "description": "Yadda Avana ke gudanar da haɗarin jinginar LP a kasuwannin Spoke tare da sabuntawa mai iyaka, bita mai zaman kansa, da kame gaggawa.",
+      "image": "/images/blog/lp-risk-governance.png",
+      "category": "Masu haɓakawa",
+      "tag": "Ka'ida",
+      "sections": [
+        {
+          "id": "why-lp-risk-is-different",
+          "title": "Dalilin da yasa haɗari LP ya bambanta",
+          "paragraphs": [
+            "Avana ba zai iya kula da LP jinginar dukiya kamar yadda kasuwar lamuni ta gama-gari ke kula da jerin tokens ba. Kowace kasuwa mai reshe tana da tsarin tafkin nata, hanyoyin gazawa, da halayyar damuwa. Tafkin daidaito ba iri ɗaya da samfurin kewayon mai tsanani ba ne. Kwandon salo Balancer mai nauyi ba iri ɗaya da kasuwar salo Curve mai haɗin kai sosai ba ne. Tsarin haɗarin Avana an gina shi ne a kan wannan bambancin. Yana lura da canje-canje, ingancin daidaito, amfani, zurfin ruwa, taruwa, lafiyar malami, matsayin kasuwa, iyakoki na bayarwa da aro, LTV da iyakacin rushewa, samfuran riba, da lafiyar matsayi a duk cibiyar da reshin LP tare."
+          ]
+        },
+        {
+          "id": "three-roles",
+          "title": "Ayyuka uku, ayyuka bayyanannu",
+          "paragraphs": [
+            "Avana ya raba shawarwarin yau da kullum, bita mai zaman kanta, da dakile gaggawa zuwa cikin ayyuka uku: Mai Kaddamar da Hatsari, Mai Kula da Hatsari, da Mai Kare Hatsari. Mai Kaddamarwa yana ba da shawarar sabuntawa na yau da kullum a cikin samfuran da aka amince da su, ciki har da iyakoki, saitunan jingina, ƙimar ribar, da shigar da pool. Kowace shawara ana yi mata lakabi ko kariya ce ko kuma tana da nufin ci gaba kafin ta shiga hanyarta ta al'ada. Mai Kula da Hatsari shi ne matakin bita da murkushe shawara. Yana duba cewa bayyana ga jama'a ya dace da abin da aka daura, yana tabbatar da cewa matakin ya kasance cikin iyakokin manufofi, kuma zai iya soke a cikin lokacin jiran. Mai Kare Hatsari an tsara shi da iyaka ne. Zai iya rage iyakoki, dakatar da aron kudi, ko kashe mai haɗa kayan haɗari idan jiran hanyar yau da kullum zai bar Avana cikin hadari."
+          ]
+        },
+        {
+          "id": "how-changes-ship",
+          "title": "Yadda canje-canje na yau da kullum ke motsa jirgi",
+          "paragraphs": [
+            "Hanyar sabunta tsarin a kan Avana tana faruwa ne ta hanyar sanarwa ga jama'a, gabatarwa, tabbatarwa daidai da iyakoki da aka riga aka tsara, jiran lokaci, dubawa daga Guardian, da aiwatarwa idan babu wanda ya sanya veto. Masu haɓakawa, masu amfani, da mahalarta gwamnati na iya karanta hujjar kafin a aiwatar da wani canji kuma su kwatanta manufar da aka rubuta da aikin da ke cikin jerin. Ga wata hanya da aka gina bisa hadaddiyar jinginar kaya, wannan daidaiton jama'a shine buƙata ta asali maimakon ƙari na talla.",
+            "Ba kowanne canji ke amfani da wannan hanyar ba. Rage haɗari an yi niyya ya kasance mai sauƙi fiye da ƙara haɗari. Ƙananan gyare-gyare a cikin iyakokin da aka amince da su suna bi tsarin da aka saba. Manyan motsi, kamar sabbin iyalai na sanduna, sabbin LP abubuwan asali, sabbin samfuran oracle, ko sabbin masu haɗa fitar da kuɗi, suna waje da tsarin yau da kullum saboda suna faɗaɗa fuskar haɗarin Avana kuma suna buƙatar dubawa mai nauyi."
+          ]
+        },
+        {
+          "id": "emergency-power",
+          "title": "Lokacin da Avana ke amfani da wutar gaggawa",
+          "paragraphs": [
+            "Harkokin gaggawa sun haɗa da rashin daidaito na oracle, lalacewar hanyar rabuwa, rashin al'ada a aikin tafkin, gazawar marufi, keta adapter, ko rashin kwanciyar hankali na matakin ƙafafun ba zato ba tsammani. Ko da haka, tsarin yana ci gaba da kasancewa mai kulawa. Ikon gaggawa a Avana ya yi ƙanƙanta, kariya, kuma za a iya juyawa. Yana wanzuwa ne don lokutan da zato ke gaza fiye da yadda gwamnati ta timelock za ta iya amsawa. Ba hanyar inuwa bane don ingantawa na yau da kullum.",
+            "Idan aka haɗa, Avana yana daidaita tsarin mulki da rikitarwa na jinginar kuɗi. LP jinginar da take da tallafi tana buƙatar samfuran kasuwa, aiwatarwa mai iyaka, bayyana bayyananne, da kuma layi mai ƙarfi tsakanin haɓaka na al'ada, daidaita kariya, da kuma dakile gaggawa. Kowanne reshe yana riƙe da nasa tsammanin allahntaka, tsarin sayarwa, ƙa'idodin karɓa, da iyakokin aiki. Avana baya yin kamar kowanne kasuwar LP za a iya musanya."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "why-lp-collateral-needs-smart-agents",
+      "title": "Me Ya Sa Jinginar LP Ke Buƙatar Smart Agents",
+      "date": "July 22, 2026",
+      "description": "Me ya sa Avana ke amfani da Smart Agents don saka idanu akan health, kula da matsayi na musamman na venue, da kiyaye ɗaukar sayar da jingina a ƙarƙashin matsin lamba.",
+      "image": "/images/blog/smart-agents-lp-collateral.png",
+      "category": "Masu haɓakawa",
+      "tag": "Ka'ida",
+      "sections": [
+        {
+          "id": "lp-loans-are-operational",
+          "title": "LP loans are operational work",
+          "paragraphs": [
+            "A ranar Avana, LP jingina yana aiki, yana dogara da hanya, kuma yana buƙatar aiki da fasaha sosai. Yana samun kuɗaɗe, yana canza haɗuwa, yana canza haɗari yayin da kasuwanni ke motsi, kuma yana iya buƙatar matakai na musamman na wurin daidai lokacin da matsayin ya fara damuwa. Kasuwar alamar da ta yi daidaito sau da yawa na iya rage tarwatsa da sa ido zuwa wata hanya mai sauƙi ta kunna kayan aiki da musayar hanya. LP jingina yana da bambanci. Tsarin dole ne ya san waɗanne matsayi ne ke aiki, yadda bashi ke tafiya, yadda jingina zai kasance a ƙarƙashin ainihin warwarewa, yadda za a iya samun kuɗaɗe, wacce hanya ta musamman ta wurin cirewa ta dace, da ko har yanzu tarwatsa zai yiwu bayan ragowar ciki, jigilar kaya, da ƙimar aiwatarwa. Waɗannan bayanai ne ke rarrabe rufewar ka'idar a takarda daga rufewar da har yanzu ke aiki lokacin da kasuwanni suka yi wuya."
+          ]
+        },
+        {
+          "id": "what-agents-do",
+          "title": "Abin da Wakilan Hankali 8 suke yi",
+          "paragraphs": [
+            "Avana's node runtime na karanta ayyukan kan sarkar, yana kiyaye taswira mai rai na matsayi masu aiki, yana sabunta basussukan da ke ja da baya a kan ɗan gajeren lokaci, kuma yana gudanar da bincike mafi girma don kama tsofaffin halaye ko wadanda aka rasa. UI na app, allunan bita, tsarin lura, da tsarin kwace kayan suna nufin su ja daga wannan irin tsarin aiki ɗaya, maimakon kowane mataki ya ƙirƙiri nasa nau'in kasuwar.",
+            "Rarrabawa shine inda wannan ke da mahimmanci sosai. Lokacin da matsayi Avana ya fadi ƙasa da ƙimar bashi da aka yarda, dole ne matakin aiwatarwa ya tantance ko aikin za a iya biyan shi cikin riba, samun ɗan lokaci na wucin gadi na ruwa, biya bashi a cikin matakin bashi, karɓar kuɗin, warware jinginar ta hanyar da ta dace, tsara kadarorin da aka samu, biya hanyar sauri, rarraba karin kuɗin rarrabawa, kuma a kiyaye ƙimar abin da mai bashi ya rage idan wani abu ya saura. Wannan wani sarkakiya ne na aiki, ba nau'in ma'amala guda ɗaya ba."
+          ]
+        },
+        {
+          "id": "before-and-across-venues",
+          "title": "Kafin tsabtace kuɗi, kuma a faɗin wurare",
+          "paragraphs": [
+            "Hukumomin Hankali suna da mahimmanci kafin a yi wargaza. Yin lissafin matsayi Avana, lura da tafiyar bashi, da kiyaye tsari ya dace da orakul dinsa da hasashen haɗari suna inganta shiri. Jinkirin aiki ba kyauta bane idan jinginar tana ci gaba da motsawa tare da kasuwa.",
+            "LP jinginar kaya matsala ce ta mai daidaitawa kamar yadda take matsala ta kimanta kima. LP masu sauƙin musanya, hanyoyi masu taruwa, da ƙirar tafkin na musamman suna buƙatar kulawa da wurare daban-daban. Wakilan Hankali sashi ne na Avana don girmama waɗannan bambance-bambancen maimakon tilasta hanya ɗaya na gama gari a duk kasuwa. Orakle yana gaya wa Avana abin da wani matsayi zai iya kasancewa da kima a matsayin bashi. Sashin wakilin yana taimakawa wajen tantance ko za a iya samun wannan ƙimar a aikace.",
+            "Avana ba ya maye gurbin cire-hakkoki ba tare da izini ba. Masu gina daga waje har yanzu za su iya lura da yin aiki. Gudanar da lokaci a karkashin tsarin dandamali yana inganta rufe tushe don jinginar da kayan da ke da wahalar kulawa daga tsarin. A cikin matsin lamba wannan yana da matukar muhimmanci. Lokacin da ya fi muni don gano cewa kasuwa ba ta da ingantaccen rufe aiwatarwa shi ne a lokacin da ake aiwatar da cire hakkoki da kansa."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "how-lp-liquidation-should-work",
+      "title": "Yadda Sayar da Jinginar LP Ya Kamata Ya Yi Aiki",
+      "date": "July 20, 2026",
+      "description": "Yadda Avana ke sayar da jinginar LP tare da unwind mai sarrafawa, shiga bangare, farashi na farko inda zai yiwu, da hanyoyi na musamman na venue.",
+      "image": "/images/blog/lp-liquidation-workflow.png",
+      "category": "Masu haɓakawa",
+      "tag": "Ka'ida",
+      "sections": [
+        {
+          "id": "not-a-token-sale",
+          "title": "Ba sayar da alamar mai sauƙi ba",
+          "paragraphs": [
+            "Rage LP jinginar kaya a kan Avana ba iri ɗaya ba ne da rage ma'aunin token. Jinginar na iya ƙunsar dukiya da dama, kuɗaɗen da ba a tattara ba, haɗarin yanayi mai tsanani, da hanyoyin fita na musamman na wurin. Idan matsayin ya zama mara lafiya, Avana na buƙatar sassauta shi a hankali, ba sayar da gaggawa ba wanda ke ɗaukar LP kamar một chip mai canzawa guda ɗaya."
+          ]
+        },
+        {
+          "id": "runtime-sequence",
+          "title": "Tsarin lokacin gudu",
+          "paragraphs": [
+            "A aikace, warwarewa wani jeri ne na lokaci na aiki. Ana gano asusun da ba su da lafiya ta amfani da ƙimar jinginar da aka daidaita da haɗari na Avana maimakon yanayin spot na AMM. Ana samo ruwa na aiwatarwa, akai-akai ta hanyar hanyar flashloan. Ana biya bashi cikin layin bashi. Matsayin yana shiga kulawa mai iko. Ana samun kuɗaɗen da za a iya karɓa inda hakan zai taimaka. Ana warware LP ta hanyar hanyar da ta dace. Bayan an dawo da abubuwan da ke karkashin su, ana turasu cikin kadarorin bashi, ana biya ruwa na aiwatarwa, ana rarraba ƙarin ciniki na warwarewa, kuma duk wani ƙima da mai aro yake da shi yana dawo da shi.",
+            "Iyali daban-daban LP a kan Avana ba sa raba hanya ɗaya ta fita. Ana cire fungible LP daga tafkin kuma a rushe su zuwa abubuwan da ke ƙarƙashin su. Ana buƙatar sarrafa kewayon da aka mai da hankali sosai gwargwadon adadin su na ainihi a lokacin warwarewa, wanda zai iya bambanta sosai da abin da masu amfani ke zato idan farashin ya matsa matsayin zuwa gefe ɗaya. Ana iya buƙatar masu haɗin kai na musamman ko na musamman a cikin tafkunan kafin Avana ta ɗauke su a matsayin masu aminci sosai don rufe tallafin rarrabawa. Idan Avana ba zai iya warware nau'in jinginar ba daidai, bai kamata ya yi kamar kasuwa tana da cikakken goyon baya ba."
+          ]
+        },
+        {
+          "id": "partial-and-fees",
+          "title": "Yanke-yanke na wani sashe da kuɗaɗen farko",
+          "paragraphs": [
+            "Avana na da nufin mayar da lafiyar manufa maimakon komawa ga cikakken sayarwa. Ana fifita ragin kashi saboda yana rage asarar mai aro da ba ta da amfani kuma yana iyakance tashin hankali ga rumbun da ke karkashin. Tsarin yana lissafin bashin da ake bukata don mayar da aro cikin yanayi mafi aminci kuma yana nufin wannan adadin da farko. Cikakken sayarwa na ci gaba da kasancewa mafita lokacin da ba za a iya dawo da ƙarfin biya da ragi ƙanƙani ba.",
+            "Kuɗaɗen suna da muhimmanci ma. Matsayi LP sau da yawa suna ɗauke da ƙimar da za a iya karɓa wadda ba a taɓa fahimtarta ba tukuna. Idan kuɗaɗen za su iya rage yadda babban abu dole ne a saki, Avana ya kamata su yi amfani da su kafin su ci gaba da yanke cikin matsayin. Wannan yana inganta sakamakon mai aro kuma yana sa tsarkakewa ta zama mafi daidaito. Matsayi LP abubuwa ne na kuɗi masu rai, ba kawai ajiye alamu na tsayuwa ba, kuma tsarin Avana an rubuta shi don dacewa da wannan."
+          ]
+        },
+        {
+          "id": "who-runs-it",
+          "title": "Wanene ke gudanar da tsabtace kudi",
+          "paragraphs": [
+            "Lokutan fasahar musamman na likwidasyon suna da bambanci a nan. Nodes da aka gina don Avana LP likwidasyon suna kula da matsayin masu aiki, sabunta ratar bashi, lissafin yanayin kasuwa, kwaikwayon hanyoyin sake fashewa, samo ruwa na aiwatarwa, tsara kadarori, da rufe mu'amaloli gaba ɗaya. Likwidasyon yana ci gaba da kasancewa ba tare da izini ba, amma LP jinginar yana da wuya ga masu likwidar da ba su kware sosai su yi hidima saboda aikin yana da tsawo kuma yana da takamaiman wuri. Masu likwidar kuma dole su yi la'akari da karkatacciyar farashi, zurfin hanyar rarrabawa, farashin aro na gaggawa, da fuskantar MEV. Babban ko abubuwan da ba na kowa ba na sake fashewa na iya bukatar hanyoyin aiwatarwa mafi shiru domin aikin da za a iya dawo da shi ba zai zama mai lalatawa ba."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pricing-lp-collateral-oracle-problem",
+      "title": "Saita Farashin Jinginar LP da Mafi kyawun Oracle",
+      "date": "July 17, 2026",
+      "description": "Yadda Avana Oracle ke saita farashin jinginar LP ta amfani da ƙimar da za a iya dawo da ita, sake ginawa mai tabbas, da haircut na dawo da kuɗi mai taka tsantsan.",
+      "image": "/images/blog/lp-collateral-oracle-problem.png",
+      "category": "Masu haɓakawa",
+      "tag": "Ka'ida",
+      "sections": [
+        {
+          "id": "what-avana-oracle-asks",
+          "title": "Abin da Avana Oracle ke tambaya",
+          "paragraphs": [
+            "Darajar LP ya dogara da farashin abubuwan da ke ƙasa, tsarin tafkin, yadda aka raba kayan yanzu, kudaden da aka tara, kuma ga ruwa mai daɗi dangantaka tsakanin farashin yanzu da kewayon aiki. Ga tsarin rance, tambaya mai mahimmanci ba wai abin da alamun dashboard za su iya faɗa kadai ba ne. Shi ne abin da za a iya dawowa da gaskiya idan matsayi dole ne ya rufe rance. Idan Avana ya bayar da rance bisa mafi kyawun tsammanin, yana kuɗaɗe hauhawan jingina. Oracle ɗin Avana an gina shi a kan ƙima mai dawowa, ba darajar haɗin ganowa mai kyakkyawa ba."
+          ]
+        },
+        {
+          "id": "three-step-pipeline",
+          "title": "Yadda ake gina kimantawa",
+          "paragraphs": [
+            "Oracle ɗin wani injin kimanta kadarori ne mai matakai da yawa. Na farko, Avana yana kimanta farashin manyan kadarori daga sahihan tushen bayani na waje maimakon dogaro da yanayin farashin AMM na yanzu. Na biyu, yana sake gina matsayin LP ta hanya mai tabbas: sake gina daidaiton ajiyar pool don LPs masu musanyawa, ko kuma rarrabewa kai tsaye na matsayi mai rufi ta hanyar kewayon farashi, ruwa, da farashi na yanzu. Na uku, yana rage wannan ƙimar da aka sake gina ta hanyar rage ragi da ke nuna durkushewar siyarwa, cikas na warwarewa, da haɗarin asarar ɗan lokaci. Asarar ɗan lokaci shine bambanci a ƙima tsakanin rike kadarori a cikin pool da kuma riƙe su daban. Yana ƙaruwa lokacin da kadarorin da aka haɗa suka bambanta a farashi. Ikon aro akan Avana yana fitowa daga ƙimar da aka rage, ba daga mafi kyawun alamar farashi ba."
+          ]
+        },
+        {
+          "id": "why-simple-marks-fail",
+          "title": "Me yasa alamomi masu sauki ke kasa",
+          "paragraphs": [
+            "LP jinginar da bashi yana ɗaya daga cikin wuraren da tsarin bayar da rance zai iya yaudara kansa cikin sauƙi. AMM yanayin rijiya na iya bayyana lafiya yayin da yake karkatacce a gida. Matsayi mai tsanani na iya nuna ƙarfi yayin da yake cikin haɗarin haɗakar kayan ajiyar fiye da yadda masu amfani suka ɗauka. Kadan cikin zurfin, irin wannan sarrafa mu'amala, da tsofaffin bayanai na iya haifar da lambobi da ke bayyana daidai ba tare da kasancewa abin dogara ba. Avana yana raba bayyanar ƙima daga ƙimar jinginar da abin dogara ta hanyar haɗa farashin kadarorin waje, sake gina LP na tabbataccen tsari, da matakan tsaro na matakin tsarin.",
+            "Maƙerin magana kuma zai iya bambanta ƙimar asali da aka sake ginawa, ƙimar kuɗi, da ƙimar ajiyar da ake amfani da su don bufer na haɗarin ƙa'idar. Waɗannan abubuwan ba sa cancantar a ɗauke su iri ɗaya a cikin kasuwar bashi. Ta hanyar daidaita su a duk nau'ikan LP, matakin harsashi zai iya fahimtar LP masu musanyawa, LP bisa NFT, da matsayin dukiya da yawa cikin daidaito yayin har yanzu yana girmama yadda wurare daban-daban ke bayyana yanayi."
+          ]
+        },
+        {
+          "id": "checks-and-safeguards",
+          "title": "Bincike da kariya",
+          "paragraphs": [
+            "Iyali daban-daban AMM suna bukatar hanyoyin tabbatarwa daban-daban. Curve mai ƙarfi LPs, Uniswap ma'aurata da NFTs, Balancer manyan famfo masu nauyi, da Aerodrome ma'aurata duka suna nuna yanayin jinginar daban-daban. A Avana, farashin waje suna ci gaba da zama babban ma'auni. Bayanai na musamman ga famfo da dubawa mai nauyin lokaci suna taimakawa tabbatar da ko yanayin jinginar da aka sake ginawa yana da tsari kuma yana da wuya a yaudarar shi. Wadannan dubawa masu nauyin lokaci ba su ne babban farashin da Avana ke dogara da shi don bashin ba. Su wani karin dubawa ne na daidaito don haka Avana zai iya gane ko yanayin jinginar har yanzu yana daidai kafin a dauki wannan yanayi a matsayin bashi.",
+            "Karewa daga yin magudi a kan Avana ya haɗa da iyakokin karkata, ƙuntatattun bambancin farashi na tafkin, ragowar dawo da kuɗi, iyakokin sha'awa ta buɗe, da kuma mai lura da mai ba da hasashen da ke amsa lokacin da lafiyar bayanai ta lalace ko shigarwar tabbatarwa suka daina daidaita. LP jingina yana fuskantar barazana musamman ga irin wannan amfani da ma'amala, karkatattun kasuwanni masu ƙanƙanta, da alamomi tsofaffi ko sabanin gaskiya saboda jinginar ya fi tsari mai rikitarwa fiye da sauƙaƙan adadin token. Tsarin da ke tallafawa bashin LP dole ne ya ɗauka cewa farashin zai kasance a ƙarƙashin gwaji a ƙarshe. Ana rubuta Avana Oracle don wannan ɗaukar."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "security-deep-dive",
+      "title": "Yadda Avana Ke Gudanar da Haɗarin Jinginar LP",
+      "date": "July 15, 2026",
+      "description": "Yadda Avana ke tsara tsaro mai yawa don jinginar LP, daga tsarin gini da oracle har zuwa health, sayar da jingina, da aiki.",
+      "image": "/images/blog/security-deep-dive.png",
+      "category": "Masu haɓakawa",
+      "tag": "Ka'ida",
+      "sections": [
+        {
+          "id": "more-than-a-price",
+          "title": "Fiye da farashi da LTV",
+          "paragraphs": [
+            "Ana iya farashin alamar sauƙi da amfani da ma'ana kai tsaye ta kasuwa kuma a mayar da ita da ƙa'idar al'ada. Matsayin LP ba zai iya ba. Kimarsa tana dogara da abubuwan da ke ƙasa, tsarin ruwan pool, dangantaka tsakanin waɗannan kadarorin, tarin kuɗin kuɗi, zurfin ruwa, kuma ga ruwan mai daidaituwa matsakaici mai aiki. A ƙarƙashin matsin lamba waɗannan ƙididdigar suna haɗuwa. Tsarin da ke tallafawa aro mai goyon bayan LP a kan Aave v4 dole ne ya yi fiye da sanya farashi da saita rabo na aro zuwa ƙimar. Wannan shi ne matsalar da Avana aka gina akai."
+          ]
+        },
+        {
+          "id": "architecture-and-oracles",
+          "title": "Gine-gine da kimantawa",
+          "paragraphs": [
+            "Matsa lamba na farko na tsaro na fasaha ne. Avana yana amfani da tsarin hub da spokes na Aave v4. Hub din yana dauke da layer na ruwan jari na gama gari, yana sarrafa lissafin ajiyar kudi, kuma yana tilasta iyakokin iya biya. Spoke shine inda ake rayuwa da ƙa'idodin takamaiman jingina na LP: shigarwa, ƙa'idodin kimanta kima, sigogi na haɗarin musamman na tafki, da halayen cire jari. Idan kasuwar LP ta sami matsin lamba, an nufa wannan matsin ya tsaya a cikin spoke maimakon sake rubuta zato a kan nau'ikan jingina da ba su da alaka. A Avana, spoke shine wani ɓangare na iyakar tsaro.",
+            "Matsayin na biyu shine ƙira ta oracle da ƙimar kudi. LP matsayi ba za a iya ƙima su cikin aminci da ƙaramin bayanin farashi guda ɗaya ba. Avana yana amfani da tsarin tushen biyu. Bayanan farashin waje suna samar da babban tunani ga abubuwan da ke ƙarƙashin su, yayin da AMM farashi da aka samo ya zama tabbaci mai zaman kansa. Ƙarfin aro yana wanzu ne kawai idan duka tushen biyu sun kasance masu daidaito cikin haƙuri. Hadari yana da alaƙa da kasuwa gaba ɗaya. Tsarin tafkin, haɗin kai na kadarori, zurfin ruwa, da yanayin rarrabuwa duk suna tsara maganin jinginar. Ƙarfin aro yana ɗaure ga rauni mafi ƙarfin matsayi, tare da daidaito na matakin tafkin don canjin daraja, ingancin ruwa, da hasashen matsin lamba."
+          ]
+        },
+        {
+          "id": "health-and-liquidation",
+          "title": "Lafiya da warwarewa",
+          "paragraphs": [
+            "Mataki na uku shi ne lura da lafiya. LP matsayi suna ci gaba da aiki bayan an sanya su a matsayin jingina, don haka haɗari ba ya tsaya cak lokacin da rance ya buɗe. Ƙimar tana canzawa tare da motsin farashi, samar da kuɗi, canjin kewaye, da canje-canje a ingancin tafki. Avana yana gudanar da ci gaba da ƙimar lafiyar kowanne matsayi maimakon dogaro da ɗaukar hoto lokaci-lokaci. Factor na lafiya shine siginar kai tsaye na ko tsarin jingina har yanzu yana aiki don wannan rance.",
+            "Liquidation shine inda ake gwada hasashe. LP ba za a iya mayar da jinginar kamar alamar yau da kullum ba. Hanyar Avana ita ce tattara kudade da aka saka a cikin matsayin kafin lalata babban jari idan zai yiwu, cire isasshen ruwa kawai don gyara bashi, da kuma sake tsara warwarewa ta hanyoyin aiwatarwa da ke goyon bayan sashe mai tabbaci. Wakilai Masu Hankali suna bada tsarin aiwatarwa: sa ido kan matsayi, daidaita bayanai, kwaikwayon aiwatarwa, da kuma warwarewa a ƙarƙashin yanayi masu wahala. Suna cikin tsarin tsaro na Avana, ba tunanin da aka haɗa daga baya ba."
+          ]
+        },
+        {
+          "id": "operations",
+          "title": "Ayyuka da kulawa da canje-canje",
+          "paragraphs": [
+            "Matsayin aiki yana dauka cewa tsarin shugabanci da tsari na haɗari suna buƙatar irin wannan ladabi kamar yadda ake amfani da kayayyakin jingina. Sigogin haɗari suna canzawa ta hanyar tsari mai kyau. Canje-canje masu mahimmanci suna zaune bayan takurawar lokaci da bita. An tanadi matakan gaggawa don yanayi masu matuƙar illa. Kula yana wuce matakin wurare ɗaya-ɗaya zuwa ga dukkan rukuni na kasuwa. Tsarin aiki da ke tallafawa LP jingina ba zai iya dogaro da tsarin da ba ya canzawa kaɗai ba.",
+            "LP jinginar kudi na yin aiki a kan Avana ne kawai idan an dauki tsaro a matsayin tsarin. Tsarin gine-gine yana ware hadari. Oracles suna tabbatar da gaskiya. Kimanta kudi yana maida rikitarwa zuwa ikon aro mai hankali. Duba lafiya yana sa ido kan karkata. Kashe-kashe suna dawo da ikon biyan bashi daidai gwargwadon yadda wurin yake ba da dama. Kula da ayyukan aiki yana tsara yadda tsarin yake tafiya. Babu wani daga cikin wadannan matakan da zai isa shi kadai."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hedge-lp-position",
+      "title": "Yadda Za a Yi Hedge ga Matsayin LP da Fahimta",
+      "date": "July 13, 2026",
+      "description": "Yadda LP za su yi amfani da Avana don ba da kuɗi ga buffer, daidaita alkibla, da ƙarin dabi'un hedge masu horo ba tare da fita daga pool gaba ɗaya ba.",
+      "image": "/images/blog/hedge-lp-position.png",
+      "category": "Na tsawon LP na biyu",
+      "tag": "Jagorori",
+      "sections": [
+        {
+          "id": "more-than-fees",
+          "title": "Fiye da kuɗaɗe",
+          "paragraphs": [
+            "Matsayi LP ba koyaushe game da kuɗaɗe kawai ba ne. Banbancin farashi, asarar wucin gadi, ja daɗin kewayon, da matsin lamba na jingina duk na iya shafar littafi ɗaya lokaci guda. Asarar wucin gadi ita ce abin da ke faruwa lokacin da haɗin kadarorin rijiya ya canza kuma LP ya ƙare da daraja ƙasa da riƙe tokens ɗin daban-daban. Da zarar an goyi bayan matsayi don tallafawa aro ta hanyar Avana a Aave v4, jarin da aka aro na iya tallafawa kariya maimakon kawai amfani da riba. Matsayi wanda a wasu lokuta zai buƙaci a janye gaba ɗaya na iya kasancewa a aiki yayin da ake amfani da jarin da aka aro don rage damuwa ko daidaita fuskantar haɗari."
+          ]
+        },
+        {
+          "id": "buffers-and-offsets",
+          "title": "Buffa da bambance-bambancen shugabanci",
+          "paragraphs": [
+            "Hedji mafi sauki yawanci shine mafi amfani: tsayayyen kudin tsaye (stablecoin) don kariya. A aro cikin hikima a Avana kuma a adana wani kaso na kudaden da aka samu a cikin stables. Idan lafiyar ta fara matsawa ko rashin kwanciyar hankali ya karu, wannan ruwa na kudi na iya biyan bashi ko rage damuwa ba tare da tilasta sayar da LP ba. Wannan ba game da samun riba kawai ba ne. Wannan yana game da samun lokaci da kiyaye iko, wanda shi kadai na iya zama mai muhimmanci sosai.",
+            "Wani tsari na biyu shi ne karkatar da shugabanci. Idan LP ya riga ya ɗauki bayyanannen haɗarin wani kayan hannu mai canzawa, aron kuɗi na iya rage haɗarin shugabanci kai tsaye maimakon ƙara shi. Hanyoyi suna bambanta da ƙwarewar mai amfani, amma ƙa'idar tana da sauƙi. Idan LP ya riga ya haɗa da haɗarin kasuwa, aron kuɗi na iya daidaita wannan haɗarin. Yin inshora yafi aiki a matsayin rage haɗari, ba a matsayin wata ciniki ce ta biyu mai hasashen da ke zaune kusa da na farko ba."
+          ]
+        },
+        {
+          "id": "more-advanced-options",
+          "title": "Rashin tsayayya da shinge masu laushi",
+          "paragraphs": [
+            "Wani hanyar ci gaba shi ne tunani a fannin rashin gefe: rage jin daɗin shugabanci da dogaro kan samun kuɗin kudade. Irin wannan tsarin na iya zama mafi ɗorewa, amma yana bukatar kulawa mai aiki da daidaitawa. LP matsayi suna canzawa yayin da kasuwanni ke motsawa, don haka dole ne a kula da saitin rashin gefe, ba kawai a bayyana shi sau ɗaya ba. Ga manyan matsayi, tsare-tsaren kariya na fuskantar asara za su iya bayyana mafi munin yanayi maimakon kawai amsawa ga su, duk da cewa suna kawo nasu farashi da shawarar lokaci.",
+            "Hanya mafi laushi ta yin inshora wadda ake yawan watsi da ita ita ce sake rarraba ƙaramin haɗari maimakon taɓa babban ɓangare LP. A aikace, hakan na nufin mayar da ƙarin kuɗi zuwa wurare masu kariya ko ayyuka masu ɗorewa lokacin da yanayi ya tabarbare, ba tare da kwashe matsayin asali gaba ɗaya ba. Avana na taimakawa ta hanyar riƙe babban ɓangare LP a matsayin jingina domin kowanne buƙatar kuɗi kada ta zama fita gaba ɗaya ko babu komai."
+          ]
+        },
+        {
+          "id": "practical-rules",
+          "title": "Ka'idojin amfani da su da suke dacewa wajen tafiya",
+          "paragraphs": [
+            "A fadin hanyoyi, wasu ɗabi'u kaɗan suna tafiya da kyau a Avana. A aro cikin hankali. Ka sami ainihin kariya. Yi tsammanin yanayi zai iya tsananta da sauri fiye da yadda ake tsammani. Ka ɗauki iyakar ƙarfin aro a matsayin iyaka maimakon manufa. Yi amfani da sa ido tare da ka'idojin rage haɗari da aka riga aka tsara maimakon dogaro da amsawa da hannu akai-akai. Idan dabarun rufewa ya zama mai rikitarwa har ba ka ƙara fahimtar abin da ake rufe da abin da ake ƙara ba, to ya wuce gona da iri."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "yield-looping-playbook",
+      "title": "Yield Looping da Jinginar LP",
+      "date": "July 10, 2026",
+      "description": "Yadda za a yi tunani game da yield looping da jinginar LP na Avana, ciki har da buffer, gwajin matsin lamba, horon fita, da leverage mai dorewa.",
+      "image": "/images/blog/yield-looping-playbook.png",
+      "category": "Na tsawon LP na biyu",
+      "tag": "Jagorori",
+      "sections": [
+        {
+          "id": "what-looping-means",
+          "title": "Menene ma'anar zagayawa a kan Avana",
+          "paragraphs": [
+            "Yin madauwari na haɓaka ribar nufin rike matsayi na LP, aro da shi, sannan a sake saka babban kuɗin da aka aro cikin wata dabarar samar da riba, ko a wasu lokuta ma cikin ruwa kai tsaye. Avana a Aave v4 yana sa wannan matakin jinginar ya yiwu don kasuwannin LP da ake tallafawa. Abin jan hankali a fili ne: yin madauwari na iya ƙara tasirin tasiri da kuma haɓaka samun kuɗaɗen kuɗi. Hadarin kuma a bayyane yake: zai iya matsa iyakokin tsaro, ƙara jin kai ga warwarewa, kuma ya sanya matsayi ya fi saukin lalacewa idan yanayi ya canza. Manufar gaske ya kamata ta kasance haɓaka mai ɗorewa, ba ƙara dogara ga bashi a rana ta farko ba."
+          ]
+        },
+        {
+          "id": "keeping-the-first-loop-modest",
+          "title": "Rike zagaye na farko cikin sauki",
+          "paragraphs": [
+            "Mafi aminci nau’in maimaitawa shi ne mai tawali’u. Ara ɗan ƙaramin adadi gwargwadon matsayin da aka goyi baya Avana LP ka kuma mayar da shi zuwa wata hanyar samun riba ta biyu ba tare da kusantar iyakar aron ba. Wannan ci gaba ne da aka sarrafa ga matsayin asali, ba caca mai maimaituwa ba wadda ke tsammanin cewa yanayi suna daidai. Ga masu amfani da yawa, musamman a farko, wannan shine madaidaicin wurin farawa. Har yanzu kana samun amfani mafi kyau na babban jari, amma kana barin sarari idan alamar LP, kudin shiga na kuɗi, ko ƙimar aron sun motsa a kan ka.",
+            "Sigar da suka ci gaba suna sake saka jarin da aka aro cikin ruwa. Wannan na iya ƙara samun kuɗin shiga a yanayi masu kyau, amma kuma yana sanya tsarin ya zama mai dawowa da martani. Kana fuskantar littafin da ya rabu zuwa matakai inda motsin farashi, ingancin jinginar kaya, da aminci bashin suke hulɗa cikin ƙarfi. Leverage ba kawai yana ƙara ribar ba. Har ila yau yana ƙara saurin yadda matsayi mai ƙoshin lafiya Avana zai iya zama matsayi mai matsin lamba."
+          ]
+        },
+        {
+          "id": "stress-and-exit",
+          "title": "Gwajin damuwa da ɗabi'ar fita",
+          "paragraphs": [
+            "Gwajin matsin lamba yana da mahimmanci. Duk wani babbar hanyar zagayawa ya kamata a tantance ta a ƙarƙashin yanayi marasa kyau. Me zai faru idan ɗaya daga cikin bangarorin ya motsa cikin sauri, idan ƙarfin ciniki ya raunana, idan kudin aro ya tashi, ko idan ingancin jinginar ya lalace da sauri fiye da yadda ake tsammani. Tsarin da yake da jan hankali lokacin da kuɗaɗe ke da yawa kuma rashin tabbas yana da nutsuwa zai iya zama marar jin daɗi da zarar waɗannan yanayi sun juya. Idan kawai yanayin alheri shine wata mai kuɗi mai nutsuwa, to tunanin bai ƙare ba.",
+            "Fitar da horo yana da muhimmanci kamar shigarwa. Yawancin yanke shawara mara kyau ba a halitta su ne ta hanyar aron farko ba. Ana halitta su ne saboda rashin shirin rage haɗari. Idan tashin hankali ya karu, ajiyar lafiya ya matse, ko tattalin arziki ya raunana, ya kamata a rage haɗari a matakai maimakon kare shi ba tare da tunani ba. Avana Atomatik na iya taimakawa wajen tattara kuɗi, rage bashi, da rage haɗari bisa ka'ida, amma atomatik na taimakawa ne kawai idan ka'idodin da ke bayan sa gaskiya ne. Dabarun maimaitawa suna da ƙarfi ne kawai bisa ga tsammanin da ke bayan su."
+          ]
+        },
+        {
+          "id": "balance-sheet-not-magic",
+          "title": "Zane na takardar daidaito, ba kyauta ribar",
+          "paragraphs": [
+            "Maimaicin samun riba ta hanyar looping yanke shawara ce ta tsarin babban birki, ba hanya ce ta samun riba kyauta ba. Idan aka yi amfani da shi a hankali a kan Avana, yana barin hanyoyin samun ruwa na onchain masu amfani su tallafa wa babban tsarin samun riba ba tare da tilasta a saki matsayin asali gaba ɗaya ba. Idan aka yi amfani da shi ba tare da hankali ba, yana mayar da matsayin LP mai lafiya ya zama rauni. Bambancin yawanci yana cikin ladabi, sarrafa kariya, da kuma kasancewa a shirye don ɗaukar leverage a matsayin abin da za a sarrafa ba a matsayin abin da za a ƙara ba."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "unleashing-lp-tokens",
+      "title": "Abin da Jinginar LP Ta Yi Yiwu",
+      "date": "July 8, 2026",
+      "description": "Abin da jinginar LP na Avana ta yi yiwu a cikin ari, hedging, sassaucin baitul mali, da amfani da jarin ruwan kuɗi mai amfani yadda ya kamata.",
+      "image": "/images/blog/unleashing-lp-tokens.png",
+      "category": "Na tsawon LP na biyu",
+      "tag": "Jagorori",
+      "sections": [
+        {
+          "id": "from-trapped-to-usable",
+          "title": "Daga babban jari da aka makale zuwa babban jari da za a iya amfani da shi",
+          "paragraphs": [
+            "LP mukamai sun kasance masu fa'ida amma ba masu sassauci ba. Suna samun kudaden ciniki kuma suna goyon bayan zurfin kasuwa, amma idan kana son ruwa daga wannan matsayi, hanyar da aka saba ita ce a saki shi: raba matsayin, dakatar da samun kudaden, kuma juya wani kadara mai fa'ida zuwa daidaitattun ajiyoyi. LP jinginar ya canza hakan. Ta hanyar Avana a kan Aave v4, an goyi bayan LP mukamai su iya ci gaba da aiki a cikin asalin AMM yayin da suke kuma tallafawa aron kudi."
+          ]
+        },
+        {
+          "id": "simple-and-yield-use",
+          "title": "Hanyoyin ruwa na adanawa da samun riba na biyu",
+          "paragraphs": [
+            "Amfanin mafi tsayayye shine kai tsaye. Kana aro kayayyakin tsayayye bisa ga matsayi na Avana LP da ake goyan baya kuma ka yi amfani da wannan kudin shiga don babban jari na aiki, sarrafa ajiyar kudi, ko samun riba mai ƙarancin tashin hankali yayin da LP ke nan kuma yana ci gaba da samun kuɗi. Babban darajar a nan ba shine samun ƙarfi ne don kansa ba. Wannan hanya ce ta samun kuɗi ba tare da tilasta ficewa gaba ɗaya daga matsayi na asali ba.",
+            "Za a iya sanya dakunan ajiye da aka aro a cikin samun riba na onchain mai kiyaye, kamar rance mai daidaitaccen bashi, kula da ajiyar kudi, ko wasu damar da ba su da girman canji sosai. LP yana ci gaba da samar da kudade yayin da kuɗin da aka aro ke bin wata hanya daban. Wannan ba tarawa ribar daga iska ba ne. Hanya ce mafi inganci ta amfani da kuɗi wanda idan ba haka ba zai buƙaci a warware matsayin da farko."
+          ]
+        },
+        {
+          "id": "hedge-and-active",
+          "title": "Hedging da dabaru masu aiki sosai",
+          "paragraphs": [
+            "Hedging wata rukuni ce dabam. LP matsayi yana ba masu amfani damar fuskantar canjin haɗin kadarori da rashin dindindin na riba, musamman a cikin ruwoyi inda bangare ɗaya yafi canzawa. Cire bashi daga LP jinginar akan Avana na iya samar da dama don sarrafa wannan hadarin: rage maida hankali kan hanya guda, inganta shirin ruwa, ko gina fayil mai daidaito a kusa da wani matsayi da ake da shi.",
+            "Mafi yawan dabaru masu aiki suna sake amfani da jarin da aka aro zuwa cikin ruwa, suna kara fallasa kasuwa da samar da kudaden shiga. Wannan na iya aiki, amma yanzu kuna sarrafa tsarin dawowa wanda hadarinsa ke canzawa cikin sauri tare da yanayin kasuwa. Da zarar an sake amfani da kadarorin da aka aro zuwa karin LP fallasa, ladabi ya fi muhimmanci fiye da buri. Avana yana bude saitin zaɓuɓɓuka. Lafiya, iyakokin aro, da ka'idojin sayarwa har yanzu suna yanke shawara abin da ya dace ga wani tafki."
+          ]
+        },
+        {
+          "id": "what-changes",
+          "title": "Menene canji ga LPs",
+          "paragraphs": [
+            "LP jinginar kaya yana mayar da bayar da ruwa daga aiki mai samun riba kadai zuwa wani abu da ya fi haɗaka da amfani da babban birnin DeFi. Matsayin da daɗe yana samarwa ne kawai a cikin tafkin sa zai iya tallafawa aro, tsare-tsaren ruwa, da ƙirar fayil, ba tare da buƙatar a rushe shi da farko ba. Amfani daidai har yanzu yana dogara ne ga juriyar haɗari da fahimtarka na yadda ƙimar LP, iya aro, da iyakokin rushewa ke hulɗa a Avana."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "aerodrome-lp-collateral-aave-v4",
+      "title": "Ari akan LP na Aerodrome a kan Aave v4",
+      "date": "July 6, 2026",
+      "description": "Yadda Avana ke tallafawa matsayin LP na Aerodrome a Base don su ci gaba da aiki yayin tallafawa ari ta hanyar Spoke na Aave v4 na musamman.",
+      "image": "/images/blog/aerodrome-lp-collateral.png",
+      "category": "Masu haɓakawa",
+      "tag": "Ka'ida",
+      "sections": [
+        {
+          "id": "aerodrome-on-avana",
+          "title": "Aerodrome ruwan jari a kan Avana",
+          "paragraphs": [
+            "Aerodrome LP matsayi suna zaune a tsakiyar ayyukan kan-sarkar a Base, inda ruwa ke tallafawa kudaden ciniki, rabon token, da zurfin tsarin yanayi. A matsayin jingina, waɗannan matsayi suna buƙatar kimantawa ta tsarin tafki, ingancin kadarori, zurfin ruwa, da yanayin tashin hankali, ba bisa manyan labarai TVL ko samar da kudin shiga kaɗai ba. Avana an gina shi don tallafawa wannan nau'in jingina a Aave v4 tare da ƙa'idodin kasuwa na musamman maimakon ainihin duka wurare."
+          ]
+        },
+        {
+          "id": "hub-spoke-and-pool-quality",
+          "title": "Ingancin hub, spoke, da pool",
+          "paragraphs": [
+            "Tsarin wuri da sandar Aave v4 shine abin da ke sanya fasalin samfurin ya yi aiki. Wuri yana sarrafa ruwan jari da aka raba. Sandar Avana tana kula da takamaiman dabarun jinginar Aerodrome. Ba a kamata a ɗauki wurin ajiya mai ƙarfi a Base iri ɗaya da haɗin yanayin da ke da canji kawai saboda duka su ne Aerodrome LPs. Sandar tana bayyana yadda ake ƙima nau'ikan ruwa Aerodrome daban-daban, yadda ake tallafawa ƙarfin jinginar su, da yadda aikin siyarwa ke aiki idan matsayin ya zama mara aminci.",
+            "Aerodrome tafkunan sun sha bamban sosai. Wasu suna kunshe da kadarori da aka kafa tare da ruwa mai ƙarfi. Wasu kuma suna mayar da hankali kan alamun yanayin muhalli masu motsi da sauri tare da rashin zurfi da yawa. Matsayi da suke kama da juna a fili na iya nuna halaye daban-daban idan ana amfani da su a matsayin jingina. Avana tsarin majigi na rassa yana ba da kulawa bisa tsarin tafki da inganci, ba kawai bisa ga sunan wurin ba."
+          ]
+        },
+        {
+          "id": "valuation-and-borrow",
+          "title": "Kimantawa da gudunmawar aron",
+          "paragraphs": [
+            "An Aerodrome LP ba tsabar kuɗi ɗaya ba ne. Shi wata hujja ce akan kadarorin asusun rijiya waɗanda haɗin kai da ingancinsu ke da muhimmanci kai tsaye. Avana yana kimanta ƙimar jingina cikin hankali, yana la'akari da ingancin ruwa, girgizar kasuwa, alaƙar kadarori, da yadda rijiyar ke aiki idan kasuwa ta juya. Matsayi na iya samun babban ƙimar asali, amma ƙarfin aro yana nuna abin da za a iya dawo da shi ƙarƙashin matsin lamba.",
+            "Gudanar da aro yana da tabbas. Kana ba da Aerodrome LP da aka goyi baya ta hanyar ƙafafun Avana, inda yake ci gaba da aiki kuma yana samun kuɗin kuɗi. Ƙafar tana kimanta matsayin ta amfani da dabarun jinginar kayan da suka dace da rijiya. Bisa ga hakan, zaka iya aro kayan da aka goyi baya daga ruwan sha na hub. Rijiyoyin da ba sa canzawa kuma na nau'in blue chip na iya goyan bayan maganin jingina mai ƙarfi. Ma'aurata masu canzawa ko masu sirara suna samun iyakoki masu tsauri da ƙananan abubuwa."
+          ]
+        },
+        {
+          "id": "if-health-breaks",
+          "title": "If health breaks",
+          "paragraphs": [
+            "Idan wani matsayi ya zama mara lafiya, Avana yana saki matsayin kudin ruwa mai aiki, yana lissafa tushen abubuwan da ke ƙarƙashinsa, kuma yana dawo da ƙarfin biyan bashi cikin ƙoƙarin rage katsewa yadda kasuwa ta yarda. Tsarin tafkin yana ƙayyade yadda warwarewa yake aiki. Wannan wani dalili ne kuma da ya sa kadarorin Aerodrome suke cikin reshe na musamman maimakon a matsayin wani faɗaɗa mara kyau na babban kasuwar lamuni."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "curve-lp-collateral-aave-v4",
+      "title": "Ari akan LP na Curve a kan Aave v4",
+      "date": "July 3, 2026",
+      "description": "Yadda Avana ke kula da jinginar LP na Curve don pool masu kwanciyar hankali da masu alaƙa ta hanyar Spoke na Aave v4 na musamman.",
+      "image": "/images/blog/curve-lp-collateral.png",
+      "category": "Masu haɓakawa",
+      "tag": "Ka'ida",
+      "sections": [
+        {
+          "id": "why-curve-matters",
+          "title": "Me yasa Curve yake da muhimmanci a kan Avana",
+          "paragraphs": [
+            "Curve LP matsayi sau da yawa suna zaune a cibiyar kasuwannin stablecoin da cinikayyar kadarorin da suke da alaƙa, wasu daga cikin zurfin da mafi ƙarancin slippage a kan sarka. Wannan yana sa su zama abin jan hankali a matsayin jingina, amma tsarin halayensu har yanzu yana buƙatar kulawa ta musamman a cikin tsarin bayar da lamuni. Avana yana tallafawa Curve LP jingina a kan Aave v4 ta hanyar wata reshe ta musamman da ke da nasa tsarin kulawa da jingina, ƙuntatawar aron, da dokokin kakkabewa da aka tsara bisa tsarin kasuwar Curve."
+          ]
+        },
+        {
+          "id": "stable-is-not-riskless",
+          "title": "Duba kamar yana da tabbaci ba shi da haɗari",
+          "paragraphs": [
+            "Curve ana ginawa ne a kusa da kadarorin da suke musayar da alaƙa mafi ƙarfi fiye da ma'aurata masu canji na yau da kullum. Pools na stablecoin, pools na liquid staking, da pools na kadarorin da ke da alaƙa za su iya samar da zurfi da tsayayyen tsarin ruwa. Dangantaka mai ƙarfi na iya fashewa, alaƙa na iya raɗaɗa, kuma pools da suka bayyana masu hankali na iya yin mummunan hali lokacin matsin lamba. Tsarin jinginar Avana dole ne ya ƙunshi ƙarfin dangantaka na ƙira na Curve da yiwuwar ganin matsin lamba inda masu amfani ke tsammanin tsayayye.",
+            "Matsayi na Curve LP wani bukata ne akan rukunin abubuwan da ke ƙasa, ba kawai alamar farashi ɗaya ba. Avana yana ƙayyade waɗanne kadarori suke ƙarƙashin matsayin, menene ƙimarsu, da kuma yawan wannan ƙima da ya kamata a ƙidaya wajen ikon aron kuɗi. Wannan mataki na ƙarshe yana da matuƙar muhimmanci. Ƙimar jingina a ƙarƙashin tsarin bayar da bashi mai tsaro yana ba da ainihin nauyi ga haɗin gwiwar rukunin, haɗin kadarori, ingancin ruwa, da yadda matsayin zai kasance a cikin yanayi mai wahala."
+          ]
+        },
+        {
+          "id": "users-and-flow",
+          "title": "Wa yake amfani da shi da yadda aro ke aiki",
+          "paragraphs": [
+            "Ana riga ana amfani da wurare da yawa Curve ta masu halartar DeFi na zamani a matsayin babban fitowar ruwa. Tafkin stablecoin, ma'auratan staking masu ruwa, da kasuwannin kadarori masu alaƙa suna wakiltar manyan adadin babban jari mai muhimmanci ga tattalin arziki. Idan waɗannan wuraren zasu iya tallafawa aro ba tare da buƙatar cirewa ba, hakan zai faɗaɗa amfani da wasu daga cikin mafi mahimmancin ruwa a DeFi yayin da yake cikin tafkin.",
+            "Gudanarwar aro a kan Avana shine samar da Curve LP ta hanyar reshe, inda yake ci gaba da aiki kuma yana samun kudin shiga. Reshen yana tantance matsayin, kuma zaka iya aro kadarorin da ake goyon baya daga ruwa na hub. Manyan kudade masu tsayayye na iya goyon bayan wata hanyar kula da jingina, manyan kudade masu alaƙa da wasu kadarori suna goyon bayan wani, kuma manyan kudade masu rauni ko dangantaka mafi rauni suna samun ƙuntatawa mafi ƙarfi."
+          ]
+        },
+        {
+          "id": "liquidation",
+          "title": "Rufewar kudi tana bi sahun tafkin",
+          "paragraphs": [
+            "Idan Curve LP ya zama ba lafiya, Avana yana juyar da abin da ya zama dole kawai don dawo da iya biyan bashin inda zai yiyu, yana girmama tsarin rukunin asali, kuma yana rage tashin hankali yayin da ake biyan bashi. Nau'ikan rukuni daban-daban suna buƙatar tsammanin daban-daban. Wannan shine dalilin da ya sa ake amfani da tsarin tasha, kuma shine yadda Avana zai iya fadada Curve iyali bayan iyali ba tare da wata ƙa'ida ta gama-gari ta LP ga kowace AMM ba."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "balancer-lp-collateral-aave-v4",
+      "title": "Jinginar LP na Balancer a kan Aave v4",
+      "date": "July 1, 2026",
+      "description": "Yadda Avana ke tallafawa LP na weighted pool na Balancer a matsayin jingina a kan Aave v4 yayin da fallasa ke ci gaba da aiki.",
+      "image": "/images/blog/balancer-lp-collateral.png",
+      "category": "Masu haɓakawa",
+      "tag": "Ka'ida",
+      "sections": [
+        {
+          "id": "portfolio-style-lps",
+          "title": "Hanyar ajiyar hannun jari LP",
+          "paragraphs": [
+            "Matsayin Balancer LP sau da yawa yana kasancewa a cikin fayil mai tsari a cikin AMM, tare da nauyin al'ada, faɗaɗɗen bayyana, da ruwa wanda yake aiki daban da tafkin kayan biyu na yau da kullum. Wannan yana sa Balancer LPs masu ban sha'awa a matsayin jingina, kuma kuma yana da wahalar tallafawa a cikin tsarin bashi da aka gina don kayan sauƙi. Avana yana magance wannan ta hanyar reshe na musamman a kan Aave v4."
+          ]
+        },
+        {
+          "id": "weighted-variety",
+          "title": "Dalilin da ya sa tafkuna masu nauyi suke buƙatar ƙa'idodin kasuwa",
+          "paragraphs": [
+            "Balancer ƙungiyoyi suna da bambance-bambance ta hanyar dabi'a. Ƙungiyar salo mai dorewa ba ta aiki kamar ƙungiya mai nauyin 80/20 ba. Kwandon kadarorin da ke da alaƙa ba ya aiki kamar tsarin haɗin salo na index mafi faɗi. Ko ƙungiyoyi masu kama da jimillar ƙima na iya samun haɗari daban-daban sosai a matsayin jingina, dangane da zurfin ruwa, tarin kadarori, canjin ƙima, da dangantaka tsakanin abubuwan da suka dace. Avana reshe yana bayyana yadda kowace ƙungiya mai nauyi take kimantawa, yadda iyakar aro take iyakancewa, da yadda sayarwa take aiki.",
+            "Daga hangen alƙawari, Balancer LP yana wakiltar fayil na kadarori maimakon kawai ma'aurata kadarori. Darajarsa tana dogara ne akan abubuwan da ke ƙasa, nauyin su dangane da juna, farashin kasuwa, da tsarin tafkin. Avana dole ne ya fahimci abin da ke ƙasa, yadda wannan haɗin ke aiki a ƙarƙashin matsin lamba, da kuma wane ɓangare na darajar ke juya zuwa ƙarfin aro mai aminci."
+          ]
+        },
+        {
+          "id": "borrow-and-unwind",
+          "title": "Arziki da hutu",
+          "paragraphs": [
+            "Yawancin Balancer wuraren ruwa suna nuna ra'ayoyi na musamman kan fayil: haɗin alamomin shugabanci, rabon nauyi na index, kwandon daidaito da mai daidaito. Idan waɗannan matsayi sun zama jinginar da za a iya aro a Avana, masu amfani ba su da buƙatar zaɓar tsakanin riƙe tsari na kasuwa da samun damar samun kuɗi. Haka wannan matsayin wurin ruwa yana ci gaba da aiki, yana samun kuɗaɗe, kuma yana tallafawa aro ta Aave v4.",
+            "Gudun yana samar da Balancer LP mai goyon baya ta hanyar reshe Avana, inda matsayi yake ci gaba da aiki kuma yana samun kuɗi. Reshen yana kimanta shi ta amfani da fasahar jingina ta musamman ga kasuwa. Nau'in tafkin da ya fi aminci yana tallafawa magani mai ƙarfi. Tsarin mai ɗaukar nauyi ko mai canzawa yana samun tsammanin da suka fi kiyaye. Tsarin kasuwa ne ke tafiyar da maganin lamuni, ba kawai tambarin wuri ba.",
+            "Idan wani matsayi ya zama mara lafiya, Avana ba zai iya ɗauka cewa warware Balancer LP kamar warware matsayi mai sauƙi na kayan biyu ba. Dole ne ya yi la’akari da ainihin tsarin tafki, abubuwan da ke ƙarƙashin shi, da hanyar aiwatarwa da ake bukata don dawo da lafiyar kuɗi tare da ƙarancin tashin hankali. Katin jingina ne ke ƙayyade yadda tsaro mai lafiya zai kasance."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "smart-contract-architecture",
+      "title": "Ari akan LP na Uniswap a kan Aave v4",
+      "date": "June 28, 2026",
+      "description": "Yadda Avana ke mayar da matsayin LP na Uniswap zuwa jinginar Aave v4 yayin da suke cikin pool kuma suna ci gaba da samun kuɗin ciniki.",
+      "image": "/images/blog/uniswap-lp-collateral.png",
+      "category": "Masu haɓakawa",
+      "tag": "Ka'ida",
+      "sections": [
+        {
+          "id": "uniswap-on-avana",
+          "title": "Uniswap ruwan jiki a kan Avana",
+          "paragraphs": [
+            "Uniswap LP matsayi suna bayar da zurfin kasuwa, suna saukaka ciniki, kuma suna samun kuɗi, amma a al'ada sun kasance da wuya a yi amfani da su a cikin tsarin aron kudi ba tare da an cire su ko an sake tsara su ba. Avana an tsara shi don canza hakan a kan Aave v4. Cibiyar tana sarrafa ruwa mai raba. Wilferin Avana wani kasuwa ne na musamman don aro da ke da goyon bayan LP, ciki har da Uniswap mai zurfin ruwa mai maida hankali. Wilferin yana bayyana yadda ake tantance jingina, yadda ake bayar da ikon aro, da yadda ake tafiyar da haɗari a matakin matsayi."
+          ]
+        },
+        {
+          "id": "why-cl-is-hard",
+          "title": "Me yasa tsauraran kewaya suke zama haɗin kai mai wuya",
+          "paragraphs": [
+            "Uniswap matsayi na samun kudin shiga mai mayar da hankali ba kawai alamar musanya ce mai sauƙi ba. Darajar tana dogara ne akan farashin yanzu na abubuwan da ke ƙasa, adadin kudin da aka samar, kewayon farashin da aka zaɓa, da kudaden shiga da aka tara a tsawon lokaci. Matsayi na iya zama aiki kuma yana samun riba, ko kuma yana iya fita daga kewayon kuma ya bambanta sosai. Avana dole ne ya fahimci haɗin matsayi a ainihin lokaci kuma ya kimanta abin da ya dace da shi a matsayin jingina a ƙarƙashin yanayi masu canzawa, ba kawai a matsayin ƙimar takarda ta jinƙai ba.",
+            "Kimantawa yana zaune a tsakiyar. Avana yana tantance abin da matsayi yake wakilta a halin yanzu, yana amfani da farashi mai dogaro, kuma yana fassara hakan zuwa ikon aro ta hanyar tsarin jinginar kudi mai kiyaye. Muhimmin tambaya ba darajar takarda kawai ba ce. Shi ne darajar jingina a cikin tsarin aron kudi na gaske. Matsayi mai yawa zai iya zama ba layi-layi yayin da farashi ya motsa ta ko ya wuce iyakar aiki, wanda ke bukatar a yi amfani da kulawa ta musamman ga haɗarin."
+          ]
+        },
+        {
+          "id": "borrow-monitor-liquidate",
+          "title": "Ara, sa ido, sayar da hannun jari",
+          "paragraphs": [
+            "Gudanar da aron kuɗi yana ba da tallafin Uniswap LP ta hanyar wuka Avana. Matsayin yana kasancewa a cikin AMM kuma yana ci gaba da samun kuɗaɗen sabis. Wukar tana tantance jinginar kuɗi kuma tana amfani da dabarun haɗari. Kuna aro kadarorin da ake tallafawa daga ruwa na hub. Jinginar matsayin bai kashe shi ba. Ruwa yana ci gaba da zama a amfani, bayyanar kasuwa tana nan, kuma kuɗaɗen sabis suna ci gaba da tarawa.",
+            "Saboda LP matsayi suna aiki kuma suna canzawa, Avana na lura da lafiya akai-akai. Yayin da farashin ke motsawa, kuɗin suna tarawa, kuma tsarin matsayi yana canzawa, tsaron aro yana canzawa tare da su. Matsayi mai lafiya a yau na iya kasancewa baya lafiya gobe ko da mai amfani bai taba komai ba.",
+            "Idan wani matsayi ya zama haɗari sosai, dole ne a fitar da wani ɓangare na matsayi mai aiki AMM, a yi la'akari da abubuwan da ke ƙarƙashin, kuma a dawo da ikon biyan bashi tare da ƙarancin katsalandan da zai yiwu. Tsarin kasuwar jinginar yana tantance tsarin fitarwa. Wannan shi ne ɗaya daga cikin manyan dalilan da yasa jinginar Uniswap LP ya dace ya kasance a cikin reshe na musamman Avana maimakon akwati na jinginar gaba ɗaya."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "defi-ux-challenges",
+      "title": "Sanya Jinginar LP Ta Zama Mai Amfani",
+      "date": "June 25, 2026",
+      "description": "Me ya sa ƙirar samfurin Avana ke kula da bayyane ƙima, iyakokin ari, da health don jinginar LP ta zama mai sarrafawa, ba kawai mai ƙarfi ba.",
+      "image": "/images/blog/making-lp-collateral-usable.png",
+      "category": "Samfur",
+      "tag": "Jagorori",
+      "sections": [
+        {
+          "id": "power-is-not-enough",
+          "title": "Ƙarfi ba ya isa",
+          "paragraphs": [
+            "LP jinginar kaya yana da ƙarfi a ƙa'ida kuma yana da wuya a isar da shi cikin tsabta. A Avana ba wai kawai kana sarrafa lamuni bane. Kana sarrafa matsayin ruwa mai rai wanda ƙimarsa, haɗuwarsa, da haɗarinsa duk suna canzawa lokaci zuwa lokaci. Wannan yana sanya samfurin ya fi buƙata fiye da tsarin bayar da lamuni na yau da kullum, kuma shi ne ɗaya daga cikin manyan dalilan da yasa LP jinginar kaya ya kasance mai wahalar aiki koda kuwa ra'ayin ya zama abin so."
+          ]
+        },
+        {
+          "id": "make-the-lifecycle-legible",
+          "title": "Sanya rayuwar samfurin a bayyane",
+          "paragraphs": [
+            "Kalubalen shine sanya cikakken tsarin rayuwa ya zama abin fahimta: kimar jingina, iyakokin aro, kulawa da lafiya, da abin da ke faruwa yayin da yanayi ya canza. Idan waɗannan sassan sun kasance masu ɓoye, samfurin zai ci gaba da kasancewa ga masu amfani da ƙwarewa sosai duk da yadda tsarin da ke ƙasa yake da ƙarfi.",
+            "A cikin kasuwannin jinginar LP, ingantaccen UX wani ɓangare ne na ƙira ta haɗari. Masu amfani suna bukatar su fahimci ƙimar matsayin a matsayin jingina, ba kawai ƙimar kasuwancin sa ba. Suna bukatar su ga yadda aro ke shafar sassauci, yadda canjin iyaka ko bambancin farashi ke canza haɗari, da yadda matsayin yake kusa da matsin lamba. Wani dandali da yake ɓoye waɗannan gaskiyar a bayan allon na gumaka na iya bayyana mai sauƙi a fuskar, amma har yanzu yana iya haifar da ƙarin haɗari ga mai amfani."
+          ]
+        },
+        {
+          "id": "one-system",
+          "title": "Tsarin da aka haɗa ɗaya",
+          "paragraphs": [
+            "LP jinginar aro a kan Avana ya kamata a nuna a matsayin tsarin da aka haɗa. Ajiye kuɗi, amfani da shi a matsayin jinginar, sa ido kan lafiyar kuɗi, tattara kuɗaɗen haraji, da sarrafa haɗari duk suna cikin abu guda na kuɗi. Dangantaka tsakanin matsayin LP da bashi ya kamata a gani tun farko, don haka za ka iya fahimtar bangarorin biyu a lokaci guda maimakon haɗa hoton daga bangarori daban-daban na dubawa.",
+            "LP matsayi ba su tsaya cik ba. Suna canzawa tare da aikin kasuwanci, motsin kadarorin da ke a ciki, da kuma a cikin tsarin ruwa mai yawa tare da kewayon matsayin kanta. Yin aro akan irin wannan kadarar yana buƙatar fuska mai bayyana sosai da kuma tsarin samfurin da aka tsara cikin tsari. Samar da kudin shiga, ingancin jingina, da haɗarin rushewa suna mu'amala ta hanyoyi da sauƙi a fahimta idan an tsara samfurin ba tare da kulawa ba.",
+            "Manufar ita ce sanya manyan abubuwan kudi masu ci gaba su zama masu amfani ba tare da sanyawa su zama masu yaudara ba. Avana's LP bashi da goyon baya dole ne ya kasance a bayyana sosai don a iya amfani da shi, a tsara shi sosai don a dogara da shi, kuma a kasance mai tsari sosai don ya zama wani ɓangare na gaske na yadda ake sarrafa babban jari a kan layin-chain."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "avana-lp-collateral",
+      "title": "Avana da Mataki na Gaba ga LP",
+      "date": "June 23, 2026",
+      "description": "Me ya sa masu bayar da ruwan kuɗi ba sa buƙatar zaɓi tsakanin samun kuɗin ciniki da samun jari, da yadda Avana ke faɗaɗa jinginar LP a kan Aave v4.",
+      "image": "/images/blog/avana-next-step-liquidity-providers.png",
+      "category": "Al'umma",
+      "tag": "Dabaru",
+      "sections": [
+        {
+          "id": "the-old-tradeoff",
+          "title": "Tsohon musaya",
+          "paragraphs": [
+            "Masu samar da ruwa suna bayar da zurfi, suna shaɓe canjin farashi, kuma suna samun kuɗin ciniki, amma jarin da ke cikin waɗannan matsayi galibi yana jin kamar an makale shi. Idan kuna so ku sami damar samun wannan jari, amsar da aka saba ita ce har yanzu ta kasance a janye shi, a raba matsayin, kuma a daina yin abin da ya sa matsayin ya zama amfani tun da farko."
+          ]
+        },
+        {
+          "id": "what-avana-changes",
+          "title": "Menene Avana canje-canje",
+          "paragraphs": [
+            "Avana yana ba da damar matsayi LP da ake goyon baya su yi aiki a matsayin jingina a kan Aave v4 yayin da suke ci gaba da riƙe ruwa a cikin asalin AMM. Maimakon tilasta zaɓi tsakanin samar da kuɗi daga kudade da samun damar ruwa, wannan matsayi ɗaya na iya yin duka biyun. Yana ci gaba da kasancewa a kasuwa, yana ci gaba da samun kuɗi, kuma yana tallafawa ƙarfin aron cikin tsarin bayar da lamuni da aka ƙera don jingina LP.",
+            "LP matsayi sun fi haɗari fiye da kayan jingina na yau da kullum. Suna canzawa tare da farashin tushe, haɗin ganga, tarin kuɗin kuɗi, da a cikin tsarin ruwa mai mayar da hankali tare da sanya yanayi mai aiki. Yawancin tsarin aro ba a gina su don fahimtar wannan ƙima yadda ya kamata ba. Kula da LP kamar daidaitattun ma'aunin alamar ya rasa yadda suke aiki a zahiri. Avana yana wanzuwa saboda wannan tazara itace asali, ba don kyalli ba."
+          ]
+        },
+        {
+          "id": "how-the-stack-fits",
+          "title": "Yadda tarin abubuwa ke hade da juna",
+          "paragraphs": [
+            "Avana yana amfani da tsarin hub da spoke na Aave v4. Raba ruwa yana tsaya a matakin hub. LP takamaiman ƙimar, jiyya na jinginar da, da ƙa'idojin lalata suna cikin kasuwannin spoke na musamman. Tafkin tsayayye, tafkin kadarorin da suka dace, da matsayi mai zurfin rarraba ruwa kowannensu yana samun dacewar jiyya na haɗari maimakon a haɗa su cikin tsarin gama-gari guda ɗaya.",
+            "Ga LPs, sakamakon shine shiga cikin aikin da yake amfani da babban jari sosai. Matsayi da aka tallafawa yana ci gaba da kasancewa mai amfani a cikin AMM yayin da yake zama amfani a tsarin bashi. Kana ci gaba da kasancewa a bude, kana samun kudin shiga, kuma kana samun damar ruwa ba tare da cire duk abin da ke akwai ba. Ga tsarin gaba ɗaya, jinginar LP yana nufin cewa babban jari DeFi zai iya zama ƙasa da yawa. Ba lallai ba ne ruwa ya bar kasuwa duk lokacin da yake buƙatar zama mai amfani a wani wuri.",
+            "Idan LP matsayi za su iya ci gaba da aiki yayin da suke tallafawa aro, suna zama fiye da rabon riba daga kudin shiga. Suna aiki a matsayin matsayi na kudi da aka tsara tare da samar da kudi, bayyana kasuwa, da ƙimar jinginar kaya. Avana shine gadar tsakanin tsarin ciniki da tsarin bashi."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "institutional-use-cases",
+      "title": "Jinginar LP ga Cibiyoyi",
+      "date": "June 20, 2026",
+      "description": "Yadda jinginar LP na Avana za ta taimaka wa DAO, baitul mali, asusu, da kamfanonin crypto su sami jari ba tare da buɗe ruwan kuɗi mai amfani ba.",
+      "image": "/images/blog/lp-collateral-for-institutions.png",
+      "category": "Ga Cibiyoyi",
+      "tag": "Hukumomi",
+      "sections": [
+        {
+          "id": "treasury-function",
+          "title": "Ingancin babban jari a matsayin aikin ma'aikatar kudi",
+          "paragraphs": [
+            "Ga cibiyoyin da ke aiki a kan sarkar, ingancin jari aiki ne na ma'ajiyar kudi. DAOs, ma'ajiyar kudin tsarin, kudade, da kamfanonin da suke da asali a cikin crypto sau da yawa suna rike manyan matsayi a cikin alamu, ajiyar da ba ta motsi, da tafkuna na ruwa, amma yawancin wannan jarin na ci gaba da kasancewa mai tsauri wajen aiki. LP matsayi na iya haifar da kudade da goyan bayan samun damar kasuwa na dabaru, amma har yanzu suna da wahalar amfani a matsayin kadarorin ma'ajiyar kudi masu sassauci ba tare da cire ruwa da canza halayen kasuwa ba."
+          ]
+        },
+        {
+          "id": "what-avana-enables",
+          "title": "Abin da Avana ke bai wa ƙungiyoyi damar yi",
+          "paragraphs": [
+            "Ta hanyar Avana, ana iya ci gaba da aiki da wuraren LP a cikin AMM yayin tallafawa aro a Aave v4. Kudin ajiyar DAO na iya tallafawa bayar da tallafi ko biyan masu ba da gudummawa ba tare da rage kasuwar asali ba. Asusun na iya ci gaba da riƙe wuraren LP yayin samun damar samun lafiya mai ƙarfi don sake daidaita dabaru. Kudin ajiyar kamfani na iya sarrafa albashi ko wajibcin masu kaya ba tare da tilasta cikakken sake daidaita ajiyar a kan layi ba. Abin da ya haɗa komai shi ne cewa aro yana samar da babban kuɗi ba tare da fahimtar wuraren da ake da su ba, ba tare da dakatar da samar da kuɗin cajin ba, kuma ba tare da tilasta duk buƙatun ruwa su zama shawarar siyarwa ba.",
+            "Ga DAOs da asusun kudin tsare-tsaren kai tsaye, LP matsayi da aka riƙe a matsayin tallafin ruwa ko dabarun asusu yawanci ana ɗauka ba za a iya motsawa ba sai idan shugabanci ya yanke shawarar warware su. LP jinginar yana ba da hanya mafi tasiri wajen amfani da babban jari. Matsayin asusu na iya ci gaba da aiki yayin da yake tallafawa samun damar sarrafa ruwa don dogon lokaci, kashe kuɗi a cikin tsarin muhalli, ko shirin aiki."
+          ]
+        },
+        {
+          "id": "funds-and-corps",
+          "title": "Kudade da asusun kamfanoni",
+          "paragraphs": [
+            "Kudade da manajoji ƙwararru suna kula da sassaucin dabarun aiki. A cikin kasuwanni masu saurin motsi, rabuwa da matsayi kafin samun kuɗi na iya zama jinkiri, mai tsada, kuma mai ɗan wahala a dabaru. Avana LP jinginar kuɗi yana ba manaja damar kiyaye haɗarin kasuwa da kasancewar kasuwa yayin da yake sakin kuɗi don sabon amfani, tsaro, ko sake tsara matsayi.",
+            "Bankunan kudi na kamfanoni a cikin kasuwancin crypto suna riƙe da ajiya a kan sarka amma har yanzu suna buƙatar samun damar kuɗi mai tsammani don ayyuka. Albashi, biyan masu kaya, da bukatun kuɗi na kasuwanci ba koyaushe suke daidaita da yanayin kasuwa mafi dacewa ba. Arziki da aka aro akan matsayi LP yana ba bankin kudi damar sarrafa wajibai ba tare da sayar da kadarori a lokacin da bai dace ba ko dogaro da kuɗaɗen waje ba."
+          ]
+        },
+        {
+          "id": "controls",
+          "title": "Kula da iko na zo na farko",
+          "paragraphs": [
+            "Karɓar ciki na hukuma ya dogara ne akan kulawa: iyakokin manufofi masu bayyana game da abin da za a iya aro, akan wanne jingina, a ƙarƙashin wacce hanyar amincewa, da kuma tare da waɗanne ƙa'idodin rage haɗari. Kasuwanni masu tsarin jijiyoyi Avana na nufin cewa za a iya bayyana haɗari a cikin tsarin jingina. Tsayayyiyar kuɗi, haɗin nau'i-nau'i masu alaƙa, ruwa mai yawa a cikin wuri guda, da tafkin canji mai saurin motsi za a iya sarrafa su a ƙarƙashin tunani daban-daban. Kulawar aiki sun haɗa da rarraba ayyuka, izini, lura da lafiya, iya bincike, da iyakokin amincewa da sa hannu da yawa. Waɗannan suna da mahimmanci ko jingina LP zai zama tushen ajiyar kuɗi mai ƙarfi maimakon kawai kayan aiki na leverage.",
+            "LP matsayi sun riga sun taka muhimmiyar rawa a yadda ƙa'idodi, kuɗaɗe, da kamfanonin ƙirar crypto ke rarraba kuɗi. Mataki na gaba shine sanya waɗannan matsayi su zama masu amfani ta fuskar kuɗi fiye da samar da kuɗin sabis, tare da tsarin mulki da cibiyoyi ke buƙata. Wannan shine aikin da Avana aka gina don shi."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "integration-guide",
+      "title": "Gina a kan Kayayyakin LP na Avana",
+      "date": "June 17, 2026",
+      "description": "Ra'ayin mai haɓakawa game da kayayyakin jinginar LP na Avana, ciki har da saka idanu, atomatik, ayyukan sayar da jingina, da damar masu gina.",
+      "image": "/images/blog/developer-view-lp-collateral.png",
+      "category": "Masu haɓakawa",
+      "tag": "Ka'ida",
+      "sections": [
+        {
+          "id": "a-new-design-surface",
+          "title": "A new design surface",
+          "paragraphs": [
+            "Yawancin DeFi ababen more rayuwa ana ginawa ne a kan saukin jingina. Kayayyaki guda suna da saukin kimantawa, lura, da sayarwa. LP matsayi suna aiki, suna da bangarori biyu, kuma suna da tsari mai rikitarwa. Kimarsu tana canzawa tare da abubuwan da ke ƙarƙashi, haɗin tafki, tara kuɗi, da kewayon. Wannan rikitarwa shine dalilin da yasa jingina na LP ya kasance mai wahalar haɗawa cikin tsarin bashi, kuma shine dalilin da yasa Avana ke ƙirƙirar sabon tsari ga masu haɓaka."
+          ]
+        },
+        {
+          "id": "what-builders-get",
+          "title": "Abin da masu gina suke samu daga Avana",
+          "paragraphs": [
+            "Avana yana sa LP matsayi su zama masu amfani a matsayin jinginar ta hanyar Aave v4. Tsarin hub da spoke yana nufin ana tantance matsayi LP, ana daidaita haɗari, sannan a cire su bisa ka'idojin kasuwa na musamman, ba kasuwar lamuni ta gama-gari ba wacce kawai ke karɓar LP. Ga masu gini, hakan yana buɗe aikace-aikace game da keɓaɓɓun hanyoyin hulɗa, tsarin lura, kayan aikin kudi, layukan dabaru, da samfuran da suka sani haɗari da aka gina a kan bashi mai tallafin LP.",
+            "Taron aikace-aikace da sa ido na gine-gine wani nau'i ne na dabi'a. LP bashi da goyon baya yana ƙirƙirar dangantaka mai ƙarfi tsakanin jingina da bashi fiye da yadda yawancin DeFi masu amfani suke saba. Allunan dashboard na iya nuna matsayin lafiya, ingancin jingina, samar da kuɗi, da ƙarfin gaggawar sayarwa, suna taimaka wa masu amfani su yanke shawara lokacin da za su sake daidaita, rage bashi, ko ɗaukar matsayin a matsayin yana cikin matsin lamba fiye da abin da ƙimar jagora ke nuna."
+          ]
+        },
+        {
+          "id": "automation-liquidation-treasury",
+          "title": "Aikin atomatik, warwarewa, da kayan aikin ma'ajiyar kudi",
+          "paragraphs": [
+            "Tsarin aikin atomatik da dabarun fasaha wani nau'in aiki ne daban. Saboda LP wuraren aiki suna aiki yayin da suke tallafawa aro, masu haɓakawa za su iya gina tsarin da zai amsa canje-canjen yanayi a bangarori biyu na matsayi: kiyaye ƙayyadadden band na aro, lura da juyawar jinginar kaya, ko tura bayanan matsayi zuwa tsarin kididdiga da na fayil wanda ke saman Avana.",
+            "Hanyar likidation da tsarin haɗarin ma suna da mahimmanci. LP jinginar kaya yana buƙatar fiye da kawai lura da ƙimar iyaka. Yana buƙatar fahimtar yadda ingancin matsayin ke canzawa yayin da kasuwanni ke motsawa da yadda hanyoyin likidation ke bambanta bisa wurin kasuwa da nau'in tafkin. Bots na waje, ayyukan sa ido, da tsarin bincike duk na iya zama muhimman kayan ginin tsarin da ke kewaye da Avana.",
+            "Don kayan aikin kudade da na cibiyoyi, idan DAOs, asusun kuɗi, ko kamfanonin ƙasar crypto suna amfani da LP matsayin jinginar, za su buƙaci tsarin iyakokin manufofi, izini, sharuɗɗan aro, da iyakokin haɗari a duk cikin wallet ko ƙungiyoyi. Masu haɓakawa za su iya amfani da Avana a matsayin tushen yanayin jinginar, yanayin bashi, da tsarin matakin kasuwa maimakon ɗaukar haɗarin LP da haɗarin aron azaman duniya daban."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "aave-v4-avana-spoke",
+      "title": "A Cikin Tsarin Jinginar LP na Avana",
+      "date": "June 14, 2026",
+      "description": "A cikin tsarin jinginar LP na Avana a kan Aave v4, ciki har da Hub, Spoke, ƙima, ƙirar oracle, da dabaru na sayar da jingina.",
+      "image": "/images/blog/inside-avana-architecture.png",
+      "category": "Masu haɓakawa",
+      "tag": "Ka'ida",
+      "sections": [
+        {
+          "id": "why-hub-and-spoke",
+          "title": "Me yasa cibiyar da igiya",
+          "paragraphs": [
+            "LP jinginar ba za a iya tallafawa ta hanyar tsarin ba da rance na gama gari ba. Yana bukatar tsarin da ke kula da matsayi mai aiki na ruwa, canza hadadden jinginar, kimar kasuwa ta musamman, da hanyoyin sayarwa da suka bambanta da jinginar al'ada ta token. Avana an gina shi akan tsarin hub da spokes na Aave v4 saboda LP jinginar da aka goyi baya tana bukatar ruwa mai raba da kuma ka'idar kasuwa ta musamman a lokaci guda."
+          ]
+        },
+        {
+          "id": "hub-and-spoke-roles",
+          "title": "Abin da cibiyar da sanduna ke yi",
+          "paragraphs": [
+            "Cibiyar tana rike abubuwan da za a iya aro kuma tana tsara rarraba ruwa tsakanin kasuwanni: gudanar da ajiya, bin diddigin amfani, da rarraba lamuni. Cibiyar ita ce yadda Avana ke haɗa LP a matsayin jingina zuwa wani babban tsarin ba da lamuni ba tare da tilasta kowane nau'in jingina ya yi amfani da irin ɗimbin hasashe ɗaya ba. Kasuwa mai tsayayyen LP, kasuwa mai hade-hade na ruwa, da nau'in AMM mai canzawa ba za su kamata a gudanar da su ta hanya ɗaya ba kawai saboda suna ɗaukar ruwa daga wurin ajiyar ɗaya.",
+            "Harsasai sune inda LP ƙayyadadden hankali yake: rajistar jingina, ƙima, gyaran haɗari, sa ido, da lalacewa. Kowace harsashi tana fayyace yadda ake mu'amala da nau'ikan rumbun daban-daban. Matsayi mai taruwa Uniswap yana aiki daban da ƙwayar Curve LP, wanda yake aiki daban da nau'in rumbu mai nauyi Balancer. Harsashi shi ne inda LP jingina ke zama kasuwar aron gaske tare da dokokinta na ciki a cikin Avana."
+          ]
+        },
+        {
+          "id": "valuation-oracle-liquidation",
+          "title": "Kimantawa, annabawa, da sayar da kadarori",
+          "paragraphs": [
+            "Kimantawa na amfani da hanyar tsari mai matakai. Da farko, menene matsayi LP yake dauke da shi a halin kasuwa na yanzu. Na biyu, kayyade farashin waɗannan abubuwan daga sahihan bayanan alkawari. Na uku, daidaita ta hanyar tsarin jinginar da ke nuna ainihin haɗarin tafkin maimakon girman sunan kawai. Ba kowane dalar da ke cikin matsayi LP ke juya zuwa ƙarfin aro iri ɗaya a Avana ba.",
+            "Zanen Oracle yana zaune kusa da tsakiyar tsarin. Ga LP jingina, tsarin ba zai iya dogara da lamba guda ɗaya ko mai sauƙin samar da ƙimar kadarori ba. Avana yana amfani da falsafar tushen biyu inda bayanan farashi na waje da ƙimar da AMM ta samar ke aiki tare don samun ƙimar ƙarfi da amintacce. Manufar ita ce rage yiwuwar cewa ƙaramin ɗigon rikici na ɗan lokaci, sabuntawa tsofaffi, ko karkacewar pool na gida su haifar da zaton jingina mara lafiya.",
+            "Domin warwarewa, Avana dole ne ya kawo ƙarshen wuraren LP masu aiki a hanya mai sarrafawa, ya mayar da kadarorin da aka samu, sannan ya biya bashi ba tare da asara da za a iya kauce wa ba. Reshen yana ƙwarewa wajen warwarewa don tsarin kasuwa na ainihi. Babban cibiyar tana ba da ruwa mai aiki. Reshen yana fayyace dabarun jinginar kudi. Kowace mataki tana yin abin da ya dace da ita: rarrabuwa mai tsabta, keɓewar ƙarfi, da sahihin hanya zuwa haɓaka LP tarin jinginar kudi daga taro zuwa taro."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "v1-1-release",
+      "title": "Avana v1.1: Mafi kyawun Jingina, Mafi kyawun Sarrafawa",
+      "date": "June 11, 2026",
+      "description": "Avana v1.1 yana faɗaɗa jinginar matsayi da yawa, yana ƙara pool da ake tallafawa, yana inganta wakilci da faɗakarwa, kuma yana rage farashin ma'amala.",
+      "image": "/images/blog/avana-v1-1-better-control.png",
+      "category": "Samfur",
+      "tag": "Samfur",
+      "sections": [
+        {
+          "id": "what-shipped",
+          "title": "Menene aka fitar a v1.1",
+          "paragraphs": [
+            "Avana v1.1 yana sa aro mai tallafi na LP ya zama mai sassauci, mafi inganci, kuma mai saukin sarrafawa. Wannan sabuntawa yana fadada yadda masu amfani ke tsara jinginar su, yana inganta kimanta matsayi, yana rage nauyin mu'amala, kuma yana kyautata dashboard don sarrafa matsayi na rayuwa na LP a kan Aave v4."
+          ]
+        },
+        {
+          "id": "multi-position-and-markets",
+          "title": "Haɗaɗɗun kadarorin da kasuwanni da yawa",
+          "paragraphs": [
+            "Babban canjin shine jinginar da dama a lokaci guda. Masu amfani za su iya ajiye matsayi da dama LP kuma a tantance ƙarfin lamuni a duk tarin jinginar maimakon matsayi-matsayi. Wannan yana ba da ƙarin sassauci wajen sarrafa kuɗin shiga a cikin tafkuna daban-daban, kadarori, ko nau'ikan dabaru. Sakin kuma yana faɗaɗa tafkuna da ake tallafawa a cikin Uniswap v3 da v4. Kowace kasuwa ta ƙara tana haɗa ƙarin ƙima, maganin jingina, da aikin rushewa, don haka samun damar faɗi ba ya rage ka'idojin haɗarin Avana.",
+            "Cire wani ɓangare na matsayi ma sabo ne. Masu amfani za su iya rage wani ɓangare na ruwa na matsayi LP ba tare da ficewa gaba ɗaya daga matsayin jinginar ba, muddin ragowar jinginar har yanzu tana tallafawa lamuni cikin aminci. Wannan yana sanya sarrafa babban jari ya zama ba mai tsauri ba. Za ka iya daidaita haɗari, sakin ruwa, ko sake tsara matsayi ba tare da ɗaukar kowane canji a matsayin duka ko babu komai ba."
+          ]
+        },
+        {
+          "id": "ops-and-dashboard",
+          "title": "Kayan aikin Ops da dashboard mafi bayyananne",
+          "paragraphs": [
+            "Tallafin wakilci yana taimaka wa DAOs, ƙungiyoyi, da masu aiki masu tsari su raba alhakin tsakanin walat ɗin ko rawar da ake yi: wanda ke sarrafa ajiyar kuɗi, wanda ke kula da ayyukan bashi, wanda ke gudanar da kiyaye aiki. Gargadin lafiyar jiki yana ba da ganin canjin yanayin matsayi tun farko kafin tashin hankali ya bayyana. LP jinginar zai iya sauyawa cikin sauri, musamman lokacin da bambancin farashi ya shafi duk ingancin samun riba da ingancin jingina a lokaci guda.",
+            "Ingantaccen aiki yana rage farashin ma'amaloli a cikin ajiya, aro, biya, da gudanarwa. Kulawar Oracle ta inganta don jan lokaci, halayen dawo baya, da dogaro yayin sauyin yanayin kasuwa. Ga LP kayan jinginar, ingancin aiwatarwar baya yana da mahimmanci kamar fasalolin gaba.",
+            "An inganta allon bincike don nuna LP ɗaukar lamuni da aka tallafa yayin da yake aiki a kan Avana: lafiyar jingina, ƙungiyar matsayin, da dangantaka tsakanin ruwa mai aiki da bashi. Kyakkyawan hangen kasuwanci da ƙirar da ta fi saurin amsawa suna sa sarrafa matsayin ya zama mai bayyana kafin ka tabbatar da canji a kan sarkar."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "introducing-automate",
+      "title": "Automate: Layer na Sarrafawa don Jinginar LP",
+      "date": "June 8, 2026",
+      "description": "Yadda Avana Automate ke taimaka wa masu amfani su sarrafa jinginar LP tare da atomatik maras tsarewa don kuɗi, sake daidaitawa, kariya, da kiyayewa mai horo.",
+      "image": "/images/blog/automate-control-layer-lp-collateral.png",
+      "category": "Samfur",
+      "tag": "Samfur",
+      "sections": [
+        {
+          "id": "why-automation",
+          "title": "Dalilin da ya sa LP jinginar buƙatar sarrafa kansa",
+          "paragraphs": [
+            "Sarrafa matsayin LP wanda kuma yake aiki a matsayin jinginar abu mai wuya ne. Kudin hidima suna tarawa amma ba koyaushe suke ci gaba da amfani ba. Yanayin ruwa yana motsawa yayin da kasuwanni ke canzawa. Abubuwan lafiya suna rauni yayin da bambancin farashi ke canza tsarin jinginar. Duk bangarorin takardar kudi suna cikin aiki. Matsayin LP yana canzawa, kuma bashin da ke akansa yana canzawa tare da yanayin aron kudi. Ga masu amfani da suke aro kan LPs ta hanyar Avana a kan Aave v4, wannan shi ne gaskiyar yau da kullum."
+          ]
+        },
+        {
+          "id": "what-automate-is",
+          "title": "Menene Avana Automate",
+          "paragraphs": [
+            "Automate shine matakin automation mara kulawa na Avana. Yana aiwatar da ayyukan da masu amfani suka amince da su lokacin da aka cika sharuddan da aka ƙayyade. Masu amfani suna ci gaba da samun cikakken iko akan kadarori da izini. Automate yana kula da aikin kula mai maimaitawa kuma yana tabbatar da tsari a matsayin matsayi. Ba madadin dabaru ko hukunci bane. Hanya ce don rage nauyin gudanarwa na sarrafa LP jingina a kan Avana."
+          ]
+        },
+        {
+          "id": "fees-ranges-protection",
+          "title": "Kudin shiga, iyakoki, da kariya",
+          "paragraphs": [
+            "Kudin kasuwanci yana taruwa a hankali, amma kudin da ba a amfani da su ba baya taimakawa wajen ingancin matsayi. Tsarin atomatik zai iya tattara su kuma sake amfani da su bisa ga abin da mai amfani ya fi so, don haka matsayi yana ci gaba da zama mai amfani ba tare da tsoma hannun hannu a kai a kai ba. A tsawon lokaci, kiyaye kudade cikin tsarin natsuwa na iya zama mai mahimmanci kamar babban ribar da ake talla, musamman ga manyan dabarun karɓar bashi da aka tallafawa LP.",
+            "A cikin tsarin ruɗani mai zurfi, babban jari yana dakatar da aiki yadda ya kamata lokacin da farashi ya fita daga iyakar aiki, kuma matsayin na iya zama ƙasa da inganci a matsayin jinginar a Avana. Ana iya sake daidaita ta atomatik gwargwadon ƙa'idodin da mai amfani ya ƙayyade, yana rage nauyin amsawa ga kowane motsi da hannu. Wannan yana da amfani musamman saboda ingancin jinginar da yawan aiki na ruwa suna da alaƙa sosai.",
+            "Matsayi na iya kuma motsawa daga lafiya zuwa damuwa cikin sauri fiye da yadda ake tsammani, musamman a lokacin tashin hankali mai tsanani ko lokacin da kadarori masu haɗin kai suka bambanta. Automate yana lura da yanayi kuma yana aiwatar da matakan kariya bisa ga iyakokin da mai amfani ya ƙayyade. Watsi da LP jinginar da ke tallafawa bashi yana da tsada. Avana Automate an gina shi don wannan martani na farko."
+          ]
+        },
+        {
+          "id": "day-two-ops",
+          "title": "Ayyukan rana ta biyu",
+          "paragraphs": [
+            "Automate an gina shi ne a kusa da ainihin yanayin LP jinginar kudi: matsayi da ke samun riba, motsawa, da sauya haɗari yayin da suke aiki a matsayin jinginar kudi a Aave v4. Yana ba masu amfani hanya don kula da matsayi a kullum, amsawa ga yanayi mai canzawa tare da ƙasa da jinkiri, da kuma sarrafa aron da aka jingina da LP cikin tsari wanda akasin haka zai buƙaci kulawa ta hannu koyaushe. Haka ƙa'idar rashin gadon duk faɗin. Avana yana gudanar da manufarka. Ba ya zama mai kula da kuɗi a cikin akwatin baki."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lp-collateral-guide",
+      "title": "Jagorar Farko ga Jinginar LP",
+      "date": "June 4, 2026",
+      "description": "Jagorar farko ga jinginar LP a kan Avana, wanda ya ƙunshi halayen LP, LTV, impermanent loss, sayar da jingina, da matakai na farko masu taka tsantsan.",
+      "image": "/images/blog/beginners-guide-lp-collateral.png",
+      "category": "Na tsawon LP na biyu",
+      "tag": "Jagorori",
+      "sections": [
+        {
+          "id": "the-basic-idea",
+          "title": "Babban ra'ayi",
+          "paragraphs": [
+            "Bayar da ruwa yana daya daga cikin hanyoyin da aka fi sani don samun riba a DeFi. Kuna ajiye kadarori cikin tafkin, kuna taimakawa wajen ciniki, sannan ku sami kudin shiga a madadin haka. Matsayin LP kuma bai kasance mai sassauci ba. Idan kuna so ku yi amfani da wannan babban jari a wani wuri, akasari kuna fitar da shi da farko. LP jingina ya canza wannan. Ta hanyar Avana akan Aave v4, matsayin LP da ake tallafawa na iya goyan bayan aro yayin da suke ci gaba da kasancewa cikin tafkin da samun kudin shiga a kowane lokaci."
+          ]
+        },
+        {
+          "id": "what-an-lp-is",
+          "title": "Menene LP a zahiri",
+          "paragraphs": [
+            "Matsayi na LP matsayi ne mai rai a cikin kasuwa. Darajarsa tana dogara da abubuwan da ke ƙasa, yadda suke motsawa dangane da juna, kuɗaɗen da aka tara, da kuma a cikin tsarin narke kudade na musamman ko matsayi har yanzu yana cikin kewayon farashin sa mai aiki. Yana canzawa a kan lokaci ta hanyoyi da ake samun sukar token na yau da kullum ba ya yi. Shi ya sa ake buƙatar samfurin aro na musamman ga LP, kuma shi ya sa Avana ke akwai don wannan yanayin amfani."
+          ]
+        },
+        {
+          "id": "ltv-il-liquidation",
+          "title": "LTV, hasarar wucin gadi, da rushewa",
+          "paragraphs": [
+            "Bashi da ƙimar daraja, wanda ake ragewa zuwa LTV, shi ne ɓangare na ƙimar jinginar wurin da aka amince da cewa za a iya aro daga gare shi. Ƙaramin LTV yana nufin karin kariya. Idan ƙimar jingina ta ragu, akwai sarari kafin bashin ya shiga cikin damuwa. Babban LTV yana bayar da karin ruwa nan da nan amma yana da ƙarancin kariya. A kasuwannin LP wannan yana da muhimmanci saboda ƙimar wurin na iya motsawa saboda dalilai da dama a lokaci guda: farashin ainihi, tsarin ruwan wuta, tarawa kudade, da kuma yadda aka sanya iyaka.",
+            "Rashin ɗorewa a asara, wanda ake rage masa zuwa IL, shine abin da ke faruwa lokacin da kadarorin biyu a cikin tafki suka motsa dangane da juna kuma matsayin LP ya ƙare da ƙima ƙasa da riƙe waɗannan kadarorin a wajen tafki. Ga wanda ke amfani da LP a matsayin jinginar a Avana, IL yana shafar ƙimar aron kai tsaye. Ba ya sa jinginar LP ta zama mara lafiya ta al'ada, amma yana nufin masu amfani suna buƙatar fahimtar cewa matsayi suna canzawa ba su dindindin ba.",
+            "Idan ƙimar jingina ta faɗi sosai idan aka kwatanta da bashi, Avana yana dawo da tsaro ta hanyar sayar da kaya. Tare da jinginar LP wannan yana da ɗan wahala fiye da sayar da token ɗin sauƙi. Akwai tara kuɗi, canza haɗin kadarori, da tsarin ruwa na wurare na musamman. Avana yana ƙima kuma yana sayar da matsayin LP bisa waɗannan hakikanin halaye maimakon ɗaukar su a matsayin kadarori na gama gari. Darasin aiki ga masu farawa yana da sauƙi. Ƙarɓi bashi cikin hankali, musamman a farkon."
+          ]
+        },
+        {
+          "id": "first-steps",
+          "title": "A sensible first path",
+          "paragraphs": [
+            "Ko da a matsayin jingina, matsayi na LP yana ci gaba da samun kuɗaɗe da kuma kula da fitowar kasuwa. Wannan shine samun ƙarfin amfani da babban jari. Ga masu farawa, hanya mafi aminci ita ce fara da hankali akan Avana: aro kaɗan, amfani da nau'ikan tafkin da suka fi sauƙi da kwanciyar hankali da farko, sannan a kula da yadda lafiyar matsayi ke canzawa yayin da kasuwanni ke motsi. Da zarar ka fahimci yadda darajar LP, bashi, da iyakokin wargajewa ke hulɗa, samfurin zai zama mafi sauƙi a yi amfani da shi cikin alhaki."
+          ]
+        }
+      ]
+    }
+  ]
+}

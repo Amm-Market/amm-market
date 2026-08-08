@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 import bundleAnalyzer from "@next/bundle-analyzer";
+import createNextIntlPlugin from "next-intl/plugin";
 import { legacyBlogRedirects } from "./src/lib/site";
+
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
@@ -103,6 +106,14 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   /**
+   * When root layout is a pass-through (html lives under `[locale]`), global 404s
+   * need their own document via `app/global-not-found.tsx`.
+   * @see https://nextjs.org/docs/app/api-reference/file-conventions/not-found
+   */
+  experimental: {
+    globalNotFound: true,
+  },
+  /**
    * Image optimization configuration
    * Defines allowed external image domains for Next.js Image component
    */
@@ -155,4 +166,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withBundleAnalyzer(nextConfig);
+export default withNextIntl(withBundleAnalyzer(nextConfig));

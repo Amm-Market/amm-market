@@ -1,8 +1,9 @@
 import dynamic from "next/dynamic"
 import Image from "next/image"
-import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
+import { getTranslations } from "next-intl/server"
 import { SectionTitle } from "@/components/shared"
+import { Link } from "@/i18n/navigation"
 
 const DeferredLlmExportMenu = dynamic(
   () => import("@/components/llm-export-menu").then((module) => module.LlmExportMenu),
@@ -42,7 +43,7 @@ interface BlogPostLayoutProps {
   nextPost?: { slug: string; title: string }
 }
 
-export default function BlogPostLayout({
+export default async function BlogPostLayout({
   title,
   date,
   image,
@@ -52,6 +53,7 @@ export default function BlogPostLayout({
   prevPost,
   nextPost,
 }: BlogPostLayoutProps) {
+  const t = await getTranslations("common")
   const showToc = Boolean(tableOfContents && tableOfContents.length > 0)
 
   return (
@@ -61,8 +63,8 @@ export default function BlogPostLayout({
         prefetch={false}
         className="type-supporting mb-5 inline-flex items-center text-gray-500 transition hover:text-gray-900 xl:mb-8"
       >
-        <ChevronLeft className="h-5 w-5" />
-        Back
+        <ChevronLeft className="h-5 w-5 rtl:rotate-180" />
+        {t("blogChrome.back")}
       </Link>
 
       {/* Mobile/tablet: one full-width column. Desktop xl+: article + "On this page" rail. */}
@@ -104,10 +106,10 @@ export default function BlogPostLayout({
           </div>
 
           <div className="block py-8 xl:hidden">
-            <div className="type-supporting text-gray-500">Share this article</div>
+            <div className="type-supporting text-gray-500">{t("blogChrome.share")}</div>
             <div className="mt-4 flex items-center gap-4">
               <a
-                aria-label="Share on X"
+                aria-label={t("blogChrome.shareOnX")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-gray-900"
@@ -118,7 +120,7 @@ export default function BlogPostLayout({
                 </svg>
               </a>
               <a
-                aria-label="Share on LinkedIn"
+                aria-label={t("blogChrome.shareOnLinkedIn")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-gray-900"
@@ -137,7 +139,7 @@ export default function BlogPostLayout({
                 <Link href={`/newsroom/${prevPost.slug}`} prefetch={false}>
                   <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-gray-200 p-3.5 transition hover:bg-gray-50 md:min-h-[8.25rem] md:p-4">
                     <div className="space-y-3">
-                      <p className="text-[0.88rem] font-medium tracking-[-0.01em] text-gray-500 md:text-[0.92rem]">Previous post</p>
+                      <p className="text-[0.88rem] font-medium tracking-[-0.01em] text-gray-500 md:text-[0.92rem]">{t("blogChrome.previousPost")}</p>
                       <h4 className="line-clamp-2 text-[0.9rem] font-medium leading-5 tracking-[-0.02em] text-gray-900 md:text-[0.96rem]">
                         {prevPost.title}
                       </h4>
@@ -149,9 +151,9 @@ export default function BlogPostLayout({
             {nextPost ? (
               <div className={`${prevPost ? "" : "col-start-1"} h-full min-w-0`}>
                 <Link href={`/newsroom/${nextPost.slug}`} prefetch={false}>
-                  <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-gray-200 p-3.5 text-right transition hover:bg-gray-50 md:min-h-[8.25rem] md:p-4">
+                  <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-gray-200 p-3.5 text-end transition hover:bg-gray-50 md:min-h-[8.25rem] md:p-4">
                     <div className="space-y-3">
-                      <p className="text-[0.88rem] font-medium tracking-[-0.01em] text-gray-500 md:text-[0.92rem]">Next post</p>
+                      <p className="text-[0.88rem] font-medium tracking-[-0.01em] text-gray-500 md:text-[0.92rem]">{t("blogChrome.nextPost")}</p>
                       <h4 className="line-clamp-2 text-[0.9rem] font-medium leading-5 tracking-[-0.02em] text-gray-900 md:text-[0.96rem]">
                         {nextPost.title}
                       </h4>

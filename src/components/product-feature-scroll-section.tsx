@@ -1,5 +1,6 @@
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle, type SectionEyebrowTone } from "@/components/shared"
 import type { ReactNode } from "react"
+import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 
 type ProductFeatureItem = {
   title: string
@@ -15,7 +16,7 @@ type ProductFeatureScrollSectionProps = {
   panels?: ReactNode[]
 }
 
-export default function ProductFeatureScrollSection({
+export default async function ProductFeatureScrollSection({
   eyebrow = "Key Features",
   eyebrowTone = "blue",
   title,
@@ -23,7 +24,7 @@ export default function ProductFeatureScrollSection({
   items,
   panels,
 }: ProductFeatureScrollSectionProps) {
-  return (
+  return withMarketingI18n(['product-feature-scroll-section'], (
     <section className="deferred-viewport-tall">
       <div className="mb-8 max-w-[650px] space-y-3 text-left">
         <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow>
@@ -70,5 +71,5 @@ export default function ProductFeatureScrollSection({
         </div>
       </div>
     </section>
-  )
+  ))
 }

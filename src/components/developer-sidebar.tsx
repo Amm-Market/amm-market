@@ -37,10 +37,10 @@
  * @see src/app/developers/layout.tsx - Where this component is rendered
  * @see src/components/page-navigation.tsx - Uses exported navigationSections
  */
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { useTranslations } from "next-intl"
 import type { CSSProperties } from "react"
 import { useEffect, useRef } from "react"
+import { Link, usePathname } from "@/i18n/navigation"
 import {
   Bug,
   BookOpen,
@@ -83,85 +83,85 @@ import {
 export const navigationSections = [
   {
     id: "introduction",
-    title: "Introduction",
+    titleKey: "docs.sections.introduction",
     icon: BookOpen,
     items: [
-      { href: "/developers", label: "Overview", icon: FileText },
-      { href: "/developers/introduction/key-concepts", label: "Key Concepts", icon: Lightbulb },
-      { href: "/developers/introduction/testnet-roadmap", label: "Testnet & Roadmap", icon: MapIcon },
-      { href: "/developers/introduction/glossary", label: "Glossary", icon: BookMarked },
+      { href: "/developers", labelKey: "docs.items.overview", icon: FileText },
+      { href: "/developers/introduction/key-concepts", labelKey: "docs.items.keyConcepts", icon: Lightbulb },
+      { href: "/developers/introduction/testnet-roadmap", labelKey: "docs.items.testnetRoadmap", icon: MapIcon },
+      { href: "/developers/introduction/glossary", labelKey: "docs.items.glossary", icon: BookMarked },
     ],
   },
   {
     id: "getting-started",
-    title: "Getting Started",
+    titleKey: "docs.sections.gettingStarted",
     icon: Rocket,
     items: [
-      { href: "/developers/getting-started", label: "Deposit LP", icon: Download },
-      { href: "/developers/getting-started/borrow-assets", label: "Borrow Assets", icon: Coins },
-      { href: "/developers/getting-started/manage-loans", label: "Manage Loans", icon: Settings },
-      { href: "/developers/getting-started/repay-loans", label: "Repay Loans", icon: CreditCard },
-      { href: "/developers/getting-started/withdraw-collateral", label: "Withdraw Collateral", icon: LogOut },
-      { href: "/developers/getting-started/claim-lp-fees", label: "Claim LP Fees", icon: Gift },
+      { href: "/developers/getting-started", labelKey: "docs.items.depositLp", icon: Download },
+      { href: "/developers/getting-started/borrow-assets", labelKey: "docs.items.borrowAssets", icon: Coins },
+      { href: "/developers/getting-started/manage-loans", labelKey: "docs.items.manageLoans", icon: Settings },
+      { href: "/developers/getting-started/repay-loans", labelKey: "docs.items.repayLoans", icon: CreditCard },
+      { href: "/developers/getting-started/withdraw-collateral", labelKey: "docs.items.withdrawCollateral", icon: LogOut },
+      { href: "/developers/getting-started/claim-lp-fees", labelKey: "docs.items.claimLpFees", icon: Gift },
     ],
   },
   {
     id: "architecture",
-    title: "Protocol Architecture",
+    titleKey: "docs.sections.architecture",
     icon: Layers,
     items: [
-      { href: "/developers/architecture", label: "Borrow Spoke", icon: Workflow },
-      { href: "/developers/architecture/lend-spoke", label: "Lend Spoke", icon: Coins },
-      { href: "/developers/architecture/collateral-factors", label: "Collateral Factors", icon: Percent },
-      { href: "/developers/architecture/health-factor", label: "Health Factor", icon: Heart },
-      { href: "/developers/architecture/platform-fees", label: "Platform Fees", icon: DollarSign },
-      { href: "/developers/architecture/incentives", label: "Incentives", icon: Award },
+      { href: "/developers/architecture", labelKey: "docs.items.borrowSpoke", icon: Workflow },
+      { href: "/developers/architecture/lend-spoke", labelKey: "docs.items.lendSpoke", icon: Coins },
+      { href: "/developers/architecture/collateral-factors", labelKey: "docs.items.collateralFactors", icon: Percent },
+      { href: "/developers/architecture/health-factor", labelKey: "docs.items.healthFactor", icon: Heart },
+      { href: "/developers/architecture/platform-fees", labelKey: "docs.items.platformFees", icon: DollarSign },
+      { href: "/developers/architecture/incentives", labelKey: "docs.items.incentives", icon: Award },
     ],
   },
   {
     id: "liquidation",
-    title: "Liquidation Framework",
+    titleKey: "docs.sections.liquidation",
     icon: AlertTriangle,
     items: [
-      { href: "/developers/liquidation", label: "Liquidation Design", icon: Flame },
-      { href: "/developers/liquidation/liquidators", label: "Liquidators", icon: Coins },
-      { href: "/developers/liquidation/flow", label: "Liquidation Flow", icon: ArrowRight },
-      { href: "/developers/liquidation/examples", label: "Liquidation Examples", icon: ListChecks },
+      { href: "/developers/liquidation", labelKey: "docs.items.liquidationDesign", icon: Flame },
+      { href: "/developers/liquidation/liquidators", labelKey: "docs.items.liquidators", icon: Coins },
+      { href: "/developers/liquidation/flow", labelKey: "docs.items.liquidationFlow", icon: ArrowRight },
+      { href: "/developers/liquidation/examples", labelKey: "docs.items.liquidationExamples", icon: ListChecks },
     ],
   },
   {
     id: "integrations",
-    title: "Supported Integrations",
+    titleKey: "docs.sections.integrations",
     icon: Plug,
     items: [
-      { href: "/developers/integrations", label: "Integrations Overview", icon: Server },
-      { href: "/developers/integrations/appkit", label: "AppKit", icon: Plug },
-      { href: "/developers/integrations/allowed-pools", label: "Allowed LP Pools", icon: Droplets },
-      { href: "/developers/integrations/router-contract", label: "Router & Adapters", icon: Router },
-      { href: "/developers/integrations/price-oracles", label: "Price Oracles", icon: BarChart3 },
+      { href: "/developers/integrations", labelKey: "docs.items.integrationsOverview", icon: Server },
+      { href: "/developers/integrations/appkit", labelKey: "docs.items.appkit", icon: Plug },
+      { href: "/developers/integrations/allowed-pools", labelKey: "docs.items.allowedPools", icon: Droplets },
+      { href: "/developers/integrations/router-contract", labelKey: "docs.items.routerAdapters", icon: Router },
+      { href: "/developers/integrations/price-oracles", labelKey: "docs.items.priceOracles", icon: BarChart3 },
     ],
   },
   {
     id: "safety",
-    title: "Safety Mechanisms",
+    titleKey: "docs.sections.safety",
     icon: Shield,
     items: [
-      { href: "/developers/safety", label: "Risk Framework", icon: Gauge },
-      { href: "/developers/safety/contracts", label: "Contracts & Security", icon: Building },
-      { href: "/developers/safety/bug-bounty", label: "Bug Bounty", icon: Bug },
-      { href: "/developers/safety/insurance", label: "Insurance Funds", icon: Umbrella },
+      { href: "/developers/safety", labelKey: "docs.items.riskFramework", icon: Gauge },
+      { href: "/developers/safety/contracts", labelKey: "docs.items.contractsSecurity", icon: Building },
+      { href: "/developers/safety/bug-bounty", labelKey: "docs.items.bugBounty", icon: Bug },
+      { href: "/developers/safety/insurance", labelKey: "docs.items.insuranceFunds", icon: Umbrella },
     ],
   },
   {
     id: "legal",
-    title: "Legal & Compliance",
+    titleKey: "docs.sections.legal",
     icon: Scale,
     items: [
-      { href: "/developers/legal", label: "Security Disclosures", icon: FileWarning },
-      { href: "/developers/legal/disclaimer", label: "Legal Disclaimer", icon: Gavel },
+      { href: "/developers/legal", labelKey: "docs.items.securityDisclosures", icon: FileWarning },
+      { href: "/developers/legal/disclaimer", labelKey: "docs.items.legalDisclaimer", icon: Gavel },
     ],
   },
-]
+] as const
 
 // Color palette per section
 const sectionColors: Record<string, { headerBg: string; headerText: string; itemBg: string; itemText: string; icon: string }> = {
@@ -175,6 +175,7 @@ const sectionColors: Record<string, { headerBg: string; headerText: string; item
 }
 
 export default function DeveloperSidebar() {
+  const t = useTranslations("common")
   const pathname = usePathname()
   const normalizedPathname = pathname || "/"
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -188,7 +189,7 @@ export default function DeveloperSidebar() {
   }
 
   // Section overview at /developers must not match every /developers/* path.
-  const isSectionActive = (section: (typeof navigationSections)[0]) => {
+  const isSectionActive = (section: (typeof navigationSections)[number]) => {
     return section.items.some((item) => {
       if (normalizedPathname === item.href) {
         return true
@@ -295,14 +296,14 @@ export default function DeveloperSidebar() {
                       className={`h-4 w-4 transition-all duration-300 group-hover-wiggle ${sectionActive ? colors.icon : "text-gray-500 group-hover:text-gray-700"
                         }`}
                     />
-                    <span className="transition-transform duration-200 group-hover:translate-x-1">
-                      {section.title}
+                    <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+                      {t(section.titleKey)}
                     </span>
                   </div>
                 </div>
 
                 {/* Section Items */}
-                <ul className="mt-1 ml-3 pl-3 border-l border-gray-200 space-y-0.5">
+                <ul className="mt-1 ms-3 ps-3 border-s border-gray-200 space-y-0.5">
                   {section.items.map((item) => {
                     const ItemIcon = item.icon
                     const itemActive = isActive(item.href)
@@ -324,8 +325,8 @@ export default function DeveloperSidebar() {
                                 : "text-gray-400 group-hover:text-gray-500"
                               }`}
                           />
-                          <span className="transition-transform duration-200 group-hover:translate-x-1">
-                            {item.label}
+                          <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+                            {t(item.labelKey)}
                           </span>
                         </Link>
                       </li>

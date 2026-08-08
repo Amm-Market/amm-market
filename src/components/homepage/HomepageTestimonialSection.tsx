@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { lookupPhrase, usePhraseMap } from "@/components/phrase-map-context"
 import { useSectionActivity } from "@/components/ui/use-section-activity"
 
 const FEATURE_DURATION = 10000
@@ -83,14 +84,17 @@ export default function HomepageTestimonialSection() {
   }
 
   const feature = featureHighlights[currentFeature]
+  const map = usePhraseMap()
+  const t = (text: string) => lookupPhrase(map, text)
+
   return (
     <div
       ref={ref}
       data-performance-active={isActive ? "true" : "false"}
     >
       <div className="mb-8 space-y-3 md:mb-10">
-        <SectionEyebrow tone="rose">Safety by design</SectionEyebrow>
-        <SectionTitle>Risk designed around liquidity positions</SectionTitle>
+        <SectionEyebrow tone="rose">{t("Safety by design")}</SectionEyebrow>
+        <SectionTitle>{t("Risk designed around liquidity positions")}</SectionTitle>
       </div>
 
       <div className="flex flex-col lg:flex-row">
@@ -103,12 +107,12 @@ export default function HomepageTestimonialSection() {
               className="cursor-pointer py-4 border-b border-gray-100 last:border-b-0"
               role="button"
               tabIndex={0}
-              aria-label={`View ${entry.label}`}
+              aria-label={t(`View ${entry.label}`)}
               aria-pressed={currentFeature === index}
             >
               <div className="flex justify-between items-center gap-6">
                 <span className={`text-base transition-all duration-300 ${currentFeature === index ? "font-semibold text-gray-900" : "text-gray-500"}`}>
-                  {entry.label}
+                  {t(entry.label)}
                 </span>
                 <span className={`text-sm transition-all duration-300 ${currentFeature === index ? "text-gray-900 font-medium" : "text-gray-400"}`}>
                   {String(index + 1).padStart(2, "0")}
@@ -133,7 +137,7 @@ export default function HomepageTestimonialSection() {
         <div className="lg:w-3/5 lg:pl-12 pt-8 lg:pt-0 flex flex-col justify-center">
           <div className={`min-h-[200px] md:min-h-[180px] transition-opacity duration-300 ${isAnimating ? "opacity-0" : "opacity-100"}`}>
             <p className="max-w-[39rem] text-[1rem] leading-[1.55] text-gray-900 md:text-[1.18rem] lg:text-[1.35rem]">
-              {feature.description}
+              {t(feature.description)}
             </p>
           </div>
         </div>

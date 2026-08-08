@@ -44,3 +44,6 @@ next-env.d.ts
 
 # local Cursor/Claude launcher config
 .claude/launch.json
+
+# i18n translation cache
+content/.cache/

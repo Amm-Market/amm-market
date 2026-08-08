@@ -1,0 +1,2201 @@
+{
+  "architecture/collateral-factors": {
+    "meta": {
+      "title": "Teminat Faktörleri",
+      "description": "Bir Borç Konuşması, Hub’a bildirmeden önce LP pozisyon değerini borç alınabilir kapasiteye nasıl dönüştürür."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "how-it-works",
+        "title": "Nasıl Çalışır"
+      },
+      {
+        "id": "borrowable-value",
+        "title": "Borç Alınabilir Değer"
+      },
+      {
+        "id": "notes",
+        "title": "Notlar"
+      }
+    ],
+    "strings": [
+      "Teminat Faktörleri",
+      "Bir Borç Konuşması, Hub’a bildirmeden önce LP pozisyon değerini borç alınabilir kapasiteye nasıl dönüştürür.",
+      "Genel Bakış",
+      "Nasıl Çalışır",
+      "Borç Alınabilir Değer",
+      "Notlar",
+      "Bir Ödünç Konuşması, bir LP pozisyonunun ödünç alma kapasitesine ne kadarının sayılacağını belirler.",
+      "Teminat faktörleri dar ama önemli bir soruyu yanıtlar: Bu LP pozisyonun ne kadarının aslında borcu desteklemesi gerekir? Avana'de, bu cevap yalnızca LP'in başlık fiyatından alınmaz. Borç Konuşması önce pozisyonu yeniden oluşturur ve indirger, ardından bu değerin hangi kısmının kullanılabilir borçlanma kapasitesi olarak sayılabileceğini belirleyen piyasa kurallarını uygular.",
+      "Lightpaper prensibi belirtir. Bu sayfa, herhangi bir kapasite Hub'a devredilmeden önce bir spoke içinde geliştiriciye yönelik kullanılan sıralamayı açıklar.",
+      "Merkez dışı birim yalnızca onaylanmış havuzları veya şablonları kabul eder. Bir pozisyon listelenmiş bir piyasa tanımıyla eşleşmiyorsa, ödünç alınabilir kapasite üreten sonraki değerleme aşamalarına asla ulaşmaz.",
+      "LP pozisyonunu yeniden oluşturur, temel varlıkları fiyatlar ve sonucu geri kazanılabilir teminat değerine indirger. Bu adım, göbeğin teoride değerli görünen bir havuz pozisyonundan, uygulamada ödünç vermeye istekli olduğu bir değere geçtiği adımdır.",
+      "Piyasa özelinde teminat ayarlarını uygular ve toplam borçlanma kapasitesini nihai uygulama için Hub'a iletir. Hub sonucu tüketir, ancak spok, LP'in ne kadarının önce sayılabileceğine karar veren katmandır.",
+      "Borç alınabilir değer, türetilmiş bir çıktıdır, halkadaki her LP üzerine eklenmiş sabit bir özellik değildir. İki pozisyon farklı piyasalarda bulunabilir, farklı geri kazanılabilir değerler üretebilir ve ilk bakışta benzer görünseler bile farklı teminat ayarlarını temizleyebilir. Bu, uygulamanın belgelerde başka yerlerde açıklanan LP-özgü kredi değerlendirme modeliyle uyumlu kalmasını sağlar.",
+      "Desteklenen LP bir pozisyon, yalnızca telin bunu kabul etmesinden, yeniden yapılandırıp iskonto etmesinden ve piyasanın yapılandırılmış teminat kontrollerini uygulamasından sonra borçlanma kapasitesine katkıda bulunur.",
+      "• Bu genel bakış sayfası yerine desteklenen havuz yapılandırmasıyla canlı tam piyasa ayarları.",
+      "• Havuz düzeyindeki risk bantları uygulama detaylarıdır, tüm LPlerin tek bir evrensel LTV paylaştığına dair bir vaat değildir.",
+      "• İzleme veya kurtarma mantığını uyguluyorsanız, teminat katsayısı davranışını sağlık faktörü ve tasfiye belgeleri ile birlikte okuyun."
+    ]
+  },
+  "architecture/health-factor": {
+    "meta": {
+      "title": "Sağlık Faktörü",
+      "description": "Bir Borrow Spoke'un, LP teminatlı bir hesabın sağlıklı mı yoksa tasfiye edilebilir mi olduğunu belirlemek için ayarlanmış teminat değeri ve borcu nasıl karşılaştırdığını."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "calculation",
+        "title": "Hesaplama"
+      },
+      {
+        "id": "health-bands",
+        "title": "İzleme Bantları"
+      },
+      {
+        "id": "response-path",
+        "title": "Yanıt Yolu"
+      },
+      {
+        "id": "user-actions",
+        "title": "Kullanıcı Eylemleri"
+      }
+    ],
+    "strings": [
+      "Sağlık Faktörü",
+      "Bir Borrow Spoke'un, LP teminatlı bir hesabın sağlıklı mı yoksa tasfiye edilebilir mi olduğunu belirlemek için ayarlanmış teminat değeri ve borcu nasıl karşılaştırdığını.",
+      "Genel Bakış",
+      "Hesaplama",
+      "İzleme Bantları",
+      "Yanıt Yolu",
+      "Kullanıcı Eylemleri",
+      "Bir Borrow Spoke'un, ayarlanmış teminat değeri ve mevcut borçtan hesap güvenliğini nasıl ölçtüğünü.",
+      "Sağlık faktörü, Borrow Spoke'un bir hesabın borcunu destekleyecek kadar ayarlanmış teminatının olup olmadığını gösteren kompakt görünümüdür. Bu ayrı bir risk modeli değildir. Borçlanmayı yöneten aynı değerleme yolu, teminat faktörü mantığı ve tasfiye varsayımları, arayüzün ve tasfiyecilerin okuduğu sağlık faktörünü de belirler.",
+      "Sağlık, hesabın batıktaki borçlanma sınırını artık karşılamayacak kadar düştüğünde, pozisyon kanonik kurallara göre tasfiye edilebilir hale gelir",
+      "Tasfiye Çerçevesi",
+      "Sağlık, Ödünç Menteşe başına hesaplanır. Payın paydasında, kullanıcının o menteşe içindeki ayarlanmış teminat değeri bulunur; bu, pozisyonun zaten yeniden yapılandırma, fiyatlandırma, geri kazanılabilir değer indirimi ve o menteşenin kullandığı piyasa spesifik teminat ayarlarından geçtiği anlamına gelir.",
+      "healthFactor = ayarlanmışTeminatDeğeri / mevcutBorç",
+      "Bir kullanıcının birden fazla Borrow Spoke'ta teminatı varsa, her spoke kendi yerel durumu üzerinde sağlık hesaplaması yapar. Bir spoke'taki ekstra marj, otomatik olarak diğerindeki açığı karşılamaz, çünkü protokol, oluşturulduğu piyasadaki riski içerir.",
+      "Sağlıklı:",
+      "Ayarlanmış teminat değeri, batık borcun oldukça üzerinde kalır, bu nedenle hesap, derhal müdahale gerektirmeden sıradan piyasa hareketlerine açıktır.",
+      "İzleme Listesi:",
+      "Hesap hâlâ dişlinin kontrollerinden geçiyor, ama tampon o kadar ince ki bir borçlunun borcu geri ödemeyi, teminat eklemeyi veya durumu başka şekilde iyileştirmeyi düşünmesi gerekir.",
+      "Likide edilebilir:",
+      "Hesap tasfiye sınırına ulaşmış veya sınırı geçmiş, bu yüzden kurtarma yolu kullanıcı eyleminden protokol tarafından zorunlu kılınan çözümlemeye geçebilir.",
+      "Arayüz uyarıları, zorunlu tasfiye eşiğinden daha ihtiyatlı olabilir. Bunlar, kullanıcılara daha erken hareket etmeleri için yardımcı olmak amacıyla vardır; ikinci bir protokol kuralı seti sunmak için değildir.",
+      "Sağlık zayıfladığında, ilk tepki hâlâ borçluya aittir. Hesap, borcun ödenmesi, onaylanmış LP teminatın eklenmesi veya pozisyonun, spoke’un sağlık kontrolleri altında geçerli kalacak şekilde değiştirilmesiyle onarılabilir.",
+      "Sağlık likidasyon sınırını aştığında, hesap izleme aşamasından çıkar ve kurtarma yoluna girer. Daha sonra likidasyon düğümleri ve üçüncü taraf likidatörler, piyasanın likidasyon kurallarına göre ödeme gücünü yeniden sağlamak için gerekli teminat yolunu geri alabilir.",
+      "Daha fazla borç almak sağlığı azaltır çünkü mevcut borç, aynı teminat tabanı karşısında artar.",
+      "Borcu ödemek sağlığı hemen iyileştirir çünkü oran içindeki payda düşer.",
+      "Onaylanmış teminat eklemek, eğer dağıtım noktası bunu kabul eder ve değer biçerse, kalan limitin artmasını sağlayabilir.",
+      "Ücret talep etmek, teminat çekmek veya pozisyonları yeniden düzenlemek sağlığı azaltabilir ve uygulanmadan önce işlem sonrası durumla karşılaştırılmalıdır.",
+      "Teminat Faktörleri"
+    ]
+  },
+  "architecture/incentives": {
+    "meta": {
+      "title": "Teşvik Programları",
+      "description": "Avana teşvikler ve ödüllerin operasyonel genel görünümü, isteğe bağlı kampanyaların çekirdek protokolle nasıl ilişkili olduğunu, ancak kanonik mimari haline gelmeden açıklar."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "program-types",
+        "title": "Program Türleri"
+      },
+      {
+        "id": "distribution-principles",
+        "title": "Dağıtım Prensipleri"
+      },
+      {
+        "id": "claiming-and-reconciliation",
+        "title": "Talep Etme ve Uzlaşma"
+      },
+      {
+        "id": "status",
+        "title": "Mevcut Durum"
+      }
+    ],
+    "strings": [
+      "Teşvik Programları",
+      "Avana teşvikler ve ödüllerin operasyonel genel görünümü, isteğe bağlı kampanyaların çekirdek protokolle nasıl ilişkili olduğunu, ancak kanonik mimari haline gelmeden açıklar.",
+      "Genel Bakış",
+      "Program Türleri",
+      "Dağıtım Prensipleri",
+      "Talep Etme ve Uzlaşma",
+      "Mevcut Durum",
+      "Çekirdek borç verme mekaniklerini değiştirmeden Avana dağıtımlarının üzerine oturabilecek isteğe bağlı ödül ve kampanya katmanı.",
+      "Teşvikler bir katman olarak eklenir, kredi verme çekirdeğinin bir parçası değildir. Protokol hala LP değerlemesi, Borç Alma Dönencesi risk kontrolleri, Merkez likiditesi ve tasfiye tarafından tanımlanır. Kampanyalar katılımı teşvik edebilir, ancak bu mekanikleri değiştirmezler.",
+      "Kampanyalar operasyondadır ve zaman sınırlıdır. Bu sayfa, bunların Avana'in geri kalanıyla nasıl ilişkili olduğunu açıklar. Bu, her dağıtımda belirli bir ödül programının aktif olduğu anlamına gelmez.",
+      "• Lend Spoke ya da bağlantılı likidite katmanında sermayeyi derinleştiren tedarikçi odaklı kampanyalar.",
+      "• Sağlıklı LP destekli borçlanmayı teşvik eden borçlu odaklı kampanyalar.",
+      "• Test etme, entegrasyonlar veya risk destekleyici faaliyetle ilişkili operatör veya ekosistem kampanyaları.",
+      "Teşvikler mevcut olduğunda, anlaşılır, denetlenebilir olmalı ve temel risk mantığından ayrı tutulmalıdır. Ödül hesaplaması faaliyet, süre veya kampanya kurallarına bağlı olabilir, ancak Avana teminat değerini nasıl belirlediğini veya tasfiye uygunluğunu nasıl kararlaştırdığını değiştirmemelidir.",
+      "Kampanyalar istenen davranışı ödüllendirebilir. Güvensiz kaldıraç kullanımını teşvik etmemeli veya LP destekli borçlanmanın gerçek ekonomisini gizlememelidir.",
+      "Talep yolları, hak kazanma takvimleri ve mutabakat yöntemleri kampanyaya özgüdür. Bunlar zincir üstü, özel bir ödül denetleyicisi aracılığıyla veya kampanya operatörü tarafından yayımlanan zincir dışı muhasebe yoluyla yönetilebilir.",
+      "Entegratörler, hedefledikleri dağıtım için aktif talep yolunu ve uygunluk kurallarını her zaman doğrulamalıdır.",
+      "Teşvikleri, dağıtıma özgü ve sezona özgü olarak ele alın. Eğer bir kampanya canlı ise, detayları mimari belgelerden ayrı olarak, açık tarihler, kurallar ve dağıtım şartları ile birlikte duyurulmalıdır."
+    ]
+  },
+  "architecture/lend-spoke": {
+    "meta": {
+      "title": "Verdi Konuştu",
+      "description": "Lend Spoke'un alacaklı varlıklarını nasıl kabul ettiği ve bunları Hub üzerinden LP teminatlı borç piyasalarına yönlendirdiği."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "capital-entry-point",
+        "title": "Başkent Giriş Noktası"
+      },
+      {
+        "id": "risk-adjusted-yield",
+        "title": "Risk Ayarlanmış Getiri"
+      },
+      {
+        "id": "dynamic-risk-controls",
+        "title": "Dinamik Risk Kontrolleri"
+      }
+    ],
+    "strings": [
+      "Verdi Konuştu",
+      "Lend Spoke'un alacaklı varlıklarını nasıl kabul ettiği ve bunları Hub üzerinden LP teminatlı borç piyasalarına yönlendirdiği.",
+      "Genel Bakış",
+      "Başkent Giriş Noktası",
+      "Risk Ayarlanmış Getiri",
+      "Dinamik Risk Kontrolleri",
+      "Tedarik Sermayesi",
+      "Kredi verenler, LP teminatıyla doğrudan etkileşime girmek yerine Lend Spoke aracılığıyla ETH, BTC ve stablecoinler gibi büyük varlıkları getirir.",
+      "Merkez Üzerinden Güzergah",
+      "Lend, likiditeyi Hub'a yönlendirir, burada bir rezerv katmanı birden fazla LP teminatlı borçlanma piyasasını destekleyebilir.",
+      "Güç Ödünç Alma Telli Çubuklar",
+      "Her bir çubuk içinde LP değerlemesini, tasfiye işlemlerini ve piyasa özel risk kontrollerini tutarken Çubuklardan borç alın ve Merkez likiditesinden çekim yapın.",
+      "Havuz bileşimi ve stok bakiyesinin değiştirilmesi",
+      "Ticaret hacmi ve gerçekleşmiş ücret üretimi",
+      "Eşleştirilmiş varlıklar arasındaki fiyat ayrışması",
+      "Oynaklık rejimi değişiklikleri ve sabit kur istikrarı",
+      "Strese maruz kalan çözünmeler sırasında mevcut likidite derinliği",
+      "Tedarikçi sermayesini LP teminatlı borç piyasalarında kullanım için Hub’a taşıyan, alacaklıya yönelik giriş noktası.",
+      "Lend Spoke, borç verenler için sermaye giriş yoludur. Mevduat sahipleri burada ETH, BTC ve büyük stablecoinler gibi varlıklar sağlar ve bu likidite daha sonra Hub’a yönlendirilir, böylece Borrow Spokes, borç verenlerin AMM pozisyon mekaniklerini anlamasını istemeden desteklenen LP teminatı karşılığında kredileri finanse edebilir.",
+      "Bu ayrım kasıtlıdır. Borç verici yolu, ödünç verilebilir varlıkları sağlamak ve borç verme tarafının ekonomik kazançlarını almakla ilgilidir, oysa Borç Alım Sütunları her listelenmiş teminat ailesi için LP değerleme, uygunluk, sağlık kontrolleri ve tasfiye kuralları gibi karmaşık işleri üstlenir.",
+      "Yığındaki rol:",
+      "Lend Spoke sermaye ödünç vermeyi kabul eder. Borrow Spokes her piyasaya özgü LP riskini yerel olarak tutar, bu nedenle bir ödünç verme havuzu bir global teminat modeli gerektirmez.",
+      "Kredi veren mevduatları önce Lend Spoke üzerinden gelir, sonra paylaşılan bir Hub rezerv katmanına geçer. Bu, sermayenin her desteklenen LP pazar tarafından bir seferde bir havuza bölünmesi gerekmediği anlamına gelir, borçlanma tarafındaki kredilendirme kuralları ayrı kalmasına rağmen.",
+      "Protokol yaşam döngüsünün başlarında, Hub likiditesi aynı zamanda Aave v4 kredi hattıyla da desteklenebilir. Zamanla, Lend Spoke mevduatları protokolün yerel kredi sermayesinin daha büyük bir payı haline gelebilir.",
+      "LP teminat statik bir envanter değildir. Bir kredi açıkken, altta yatan pozisyon işlem ücretleri kazanmayı sürdürebilir ve bu, borçlanma tarafının nasıl modellenmesi gerektiği açısından önemlidir. Bu nedenle protokol, her LP öğesini sadece token fiyatlarıyla hareket eden ölü bir bakiye gibi kabul etmez.",
+      "Bu ayrım aynı zamanda kredi tarafını da etkiler. Kredi şartları, bazı LP piyasaların, getiri sağlamayan teminattan farklı olarak ücret üretme ve çözme davranışına sahip olduğu gerçeğini yansıtabilir ve Aave v4 risk primi araçları, politika izin verdiğinde bu farklılıkları ifade edebilir. Gerçek kredi verenin getirisi hâlâ canlı yapılandırma ve piyasa durumuna bağlıdır, bu sayfadan yapılan sabit varsayıma değil.",
+      "Krediler için:",
+      "Borç Düğümleri'nde tüm geri kazanılabilir değerleri, sağlık mantıkları ve tasfiye yolları tanımlanmış olan LP pozisyona karşı sigortalanmış Lend Spoke fon kredi aracılığıyla mevduatlar.",
+      "Borç verme tarafı, borç alan tarafın piyasayla hareket edebilen bir risk modeli içinde kalmasına bağlıdır. Sadece sabit LTV tarzı ayarlar LP teminat için yeterli değildir, bu nedenle çerçeve, havuz bileşimi, hacim, sapma, volatilite, sabitleme davranışı ve çözülme derinliği gibi koşullar değiştikçe bunlara yanıt verebilir.",
+      "Stresli koşullarda, tavanlar ve ilgili kontroller, kredi verenin likiditesini korumak için sıkılaştırılabilir. Daha sakin koşullarda, aynı kontroller onaylanmış politika sınırları içinde ayarlanabilir. Önemli olan sürekli ayar yapmak değil, kredi katmanının değişen bir LP piyasayı hiçbir şey değişmemiş gibi işlemeye zorlanmamasını sağlamaktır.",
+      "Risk güncellemelerini bilgilendirebilecek sinyaller",
+      "Borç veren sermayesi tek bir giriş yolunu takip eder, ancak LP pazarlarının tek bir risk profili yoktur. Borrow Spokes, pazar özelinde parametreleri yerel tutabilir, bu da farklı LP ailelerinin borç veren deneyimini parçalamadan farklı ayarlar altında faaliyet göstermesine olanak tanır."
+    ]
+  },
+  "architecture": {
+    "meta": {
+      "title": "Protokol Mimarisi - Borrow Spoke",
+      "description": "Borç alan akışları, Hub etkileşimi ve spoke tarafı teminat sorumlulukları dahil olmak üzere LP destekli borçlanma için Spoke mimarisini ödünç alın."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "user-experience",
+        "title": "Kullanıcı Deneyimi"
+      },
+      {
+        "id": "example-flow",
+        "title": "Örnek Akış"
+      },
+      {
+        "id": "three-tier-architecture",
+        "title": "Üç Katmanlı Mimari"
+      },
+      {
+        "id": "data-flow",
+        "title": "Veri Akışı"
+      },
+      {
+        "id": "spoke-responsibilities",
+        "title": "Sorumlulukları Konuştu"
+      },
+      {
+        "id": "hub-role",
+        "title": "Aave v4 Hub Rolü"
+      }
+    ],
+    "strings": [
+      "Protokol Mimarisi - Borrow Spoke",
+      "Borç alan akışları, Hub etkileşimi ve spoke tarafı teminat sorumlulukları dahil olmak üzere LP destekli borçlanma için Spoke mimarisini ödünç alın.",
+      "Genel Bakış",
+      "Kullanıcı Deneyimi",
+      "Örnek Akış",
+      "Üç Katmanlı Mimari",
+      "Veri Akışı",
+      "Sorumlulukları Konuştu",
+      "Aave v4 Hub Rolü",
+      "Borç Aldı Konuştu",
+      "LP teminatı kabul eden, riski ölçen ve Hub likiditesine karşı borç alan borçluya yönelik yürütme katmanı.",
+      "Ödünç Alma Şubesi, bir LP pozisyonunun teminat olarak kullanılabilir hale geldiği yerdir. Desteklenen pozisyonun muhasebe için kontrolünü üstlenir, o pozisyonu anlamak için gereken verileri okur, onu şubenin oracle ve risk kuralları çerçevesinde değerler ve ortaya çıkan borçlanma kapasitesini borçlu yoluna sunar.",
+      "Bu, Borrow Spoke'u genel bir teminat sarmalayıcısından çok farklı kılar. Bir listeleme LPin nasıl oluşturulduğunu, stresli bir çözülmede hangi değerin geri kazanılabileceğini, sağlığın zaman içinde nasıl izlenmesi gerektiğini ve hesap spoke'un güvenlik gereksinimlerini karşılamayı durdurursa hangi tasfiye yolunun uygulanacağını anlaması gerekir.",
+      "Kapsam:",
+      "LP teminat, statik varlıklardan farklıdır, bu nedenle Borrow Spoke havuz kompozisyonunu, fiyat aralığını, ücretleri ve piyasa durumunu listelediği pazarlar için kredi parametrelerine ve sağlık kurallarına dönüştürür. Lend Spoke sermaye girişini yönetir. Borrow Spoke kendi pazarları için LP sigorta, izleme ve tasfiye işlemlerini yönetir.",
+      "Ödünç Akışı",
+      "Borçlular, depo onaylandı LP teminat, mevcut kapasiteyi denetleme, borç çekme, bakiyeleri geri ödeme ve piyasa izin verdiğinde ücret talep etme dahil olmak üzere tüm hesap yaşam döngüsü boyunca bir tekerlek-yönlü yüzeyle etkileşime girerler. Temel LP formatları farklı olsa bile arayüz tutarlı kalabilir, çünkü tekerlek AMM-ye özgü işlemleri absorbe eder.",
+      "İşlem bağlamı:",
+      "Eylemler, borçlu işlemin yanında sağlık faktörü güncellemelerini, borçlanma sınırı etkisini ve teminat durumunu göstermelidir, böylece borçlu sonucu sonradan çıkarım yapmak yerine işlem sonrası riski görebilir.",
+      "Tipik borçlu taraf akışı:",
+      "Adım 1: İlk Para Yatırma",
+      "Borçlu, onaylanmış bir LP pozisyonunu Borç Verme Düğümlüğü'ne yatırır. Pozisyon AMM içinde aktif kalır, ancak düğüm artık bunu teminat olarak kaydeder ve değerleme ve sağlık için gereken verileri takip etmeye başlar.",
+      "Adım 2: Borçlanma Gücü Hesaplandı",
+      "Borç Alma Konumu, pozisyonu yeniden oluşturur, temel maruziyeti fiyatlandırır, ilgili teminat faktörünü uygular ve ardından herhangi bir havuz özel risk tedavisini uygular. Bu sürecin çıktısı, hesaba gösterilen borçlanma kapasitesidir.",
+      "Adım 3: Birden Fazla Varlık Ödünç Alın",
+      "Borçlu, onaylanmış kapasiteye karşı varlık çeker. Borçlu işlem yaptıktan sonra, spokes hesabın borç temsilini günceller ve ipoteği kabul eden aynı piyasa kurallarını kullanarak sağlığı yeniden hesaplar.",
+      "Adım 4: Daha Fazla Teminat Ekleyin",
+      "Daha sonra ek onaylanmış LP pozisyonlar eklenebilir. Her yeni pozisyon, katkısı toplam kapasiteye dahil edilmeden önce tekerlek listesindeki, fiyatlandırma ve risk kuralları altında değerlendirilir.",
+      "Borç alan yolu, kimin işlemi başlattığını, hangi katmanın LP teminatı yorumladığını ve hangi katmanın nakit sağladığını ayırırsanız üzerinde düşünmesi daha kolaydır:",
+      "Üst: Borç Alanlar",
+      "Borçlular teminat yatırmak, fon ödünç almak, borcu geri ödemek ve ücret talep etmek için spoke'u arar LP. Onların bakış açısından, spoke hesabın operasyonel giriş noktasıdır.",
+      "Orta: Ödünç Konuştu (Avana)",
+      "Bu katman, AMM-spesifik konum verilerini borç verme durumuna çevirir. LP saklamayı yönetir, konum-spesifik riski hesaplar, sağlık kontrollerini uygular ve teminat borcu artık desteklemiyorsa tasfiye yolunu koordine eder.",
+      "Alt: Aave v4 Merkez ve Yönlendirilen Sermaye",
+      "Hub, spoke'un altındaki paylaşılan likidite kaynağı ve muhasebe katmanıdır. Lend-Spoke yönlendirmeli sermaye ve diğer yapılandırılmış Hub kaynakları, Borrow Spoke'un yetkilendirdiği çekimleri finanse eder.",
+      "Ana veri yolu LP durumundan spoke muhasebesine ve Hub likidite işlemlerine kadar uzanır. Pratikte bu şöyle görünür:",
+      "LP Pozisyon Yöneticisi, teminatı Borç Alma Düğümüne aktarır",
+      "- Konuşulan düğüm, konum referansını depolar, ihtiyaç duyduğu meta verileri önbelleğe alır ve değerleme ile sağlık takibi için o durumu kullanmaya başlar.",
+      "Borçlular, Vade Borçlanma Yolu aracılığıyla varlık çeker",
+      "- Hesabın kapasitesi olduğunda, spoke bir veya daha fazla yapılandırılmış Hub'dan likidite talep eder.",
+      "Borç, borç hisseleri olarak temsil edilir",
+      "- Döviz kuru, yapılandırılmış faiz oranı modeli altında bileşikleşirken, yan birim borçluya özgü borç ve teminat durumunu senkron tutar.",
+      "Likidasyonlar gerektiğinde gerçekleşir",
+      "- Merkezler, Avana tasfiye düğümleri veya dış tasfiye edenler, Borç Düğümlerinin LP öğesini doğru çözülme yoluna taşımasını ve uygun tasfiye dizisi aracılığıyla borcu kapatmasını sağlayabilir.",
+      "Merkez Etkileşimi",
+      "Ödünç almak:",
+      "Borçlu, borç açtığında veya uzattığında, Borrow Spoke Hub'a bir çekim çağrısı yapar",
+      "Geri ödemek:",
+      "Borç Alan, borç geri ödendiğinde Hub'a bir geri yükleme çağrısı gönderir",
+      "Sağlık Kontrolü:",
+      "Hub, Borrow Spoke'u arar",
+      "teminatVerileriniAl",
+      "çubuğun mevcut LP teminat değerini almak için",
+      "Tasfiye:",
+      "Eğer toplam konuşma riski eşik değerini aşarsa, Hub arayabilir",
+      "tasfiyeİşle",
+      "Bileşen",
+      "Sorumluluk",
+      "Kirala Telli (her AMM)",
+      "O AMM aile için pozisyon kayıtlarını, toplam teminat USD ve borç USD'sini tutar ve açığa çıkarır",
+      "kullanıcıToplamınıAl(kullanıcı)",
+      "TasfiyeAdaptörü",
+      "Her LP formatını tek bir genel tasfiye rutininden geçirmek zorunda kalmadan, Borrow Spoke için ceza tahakkukunu, yumuşak geri dönüşü ve sert tasfiyeyi çalıştırır.",
+      "TasfiyeAdaptörü Fonksiyonları",
+      "cezayıUygula(kullanıcı)",
+      "softUnwind(kullanıcı, maxUsd)",
+      "- kısmi bir azaltma yapar, gelirleri toplar, gerektiğinde takas yapar ve talep edilen miktara kadar borcu öder",
+      "tasfiye_et(kullanıcı)",
+      "Olaylar: CezaBiriktirildi, YumuşakTasfiyeGerçekleşti, SertLikidasyonGerçekleşti",
+      "Borrow Spoke, kendi başına borç veren rezervlerini tutmaz. Havuzlanmış likidite, rezerv muhasebesi ve borçlanmanın bilanço tarafı için Hub’a bağımlıdır, spok ise teminat spesifik risk kararlarına odaklanmaya devam eder.",
+      "Sermaye Arzı",
+      "USDC, DAI ve ETH gibi varlıklar, Lend Spoke da dahil olmak üzere Hub'a bağlı sermaye katmanları aracılığıyla giriş yapabilir. Hub, paylaşılan havuzu ve muhasebesini yönetirken, Borrow Spoke, bir LP ile desteklenen hesabın bu likiditenin hangi kısmına güvenli bir şekilde erişebileceğine karar verir.",
+      "Kredi Limiti",
+      "Merkez, her Ödünç Alma Çubuğuna, o çubuğun çekebileceği ortak likiditeyi sınırlayan bir kredi hattı verir. Bu, LP-özgü risk değerlendirmesini izole tutarken, ortak rezerv katmanının sermaye verimliliğinden ödün vermemeyi sağlar.",
+      "Bağımsız Sağlık Faktörleri",
+      "Çoklu Ödünç Mili'nde LP teminata sahip bir kullanıcının her bir milde ayrı bir sağlık faktörü vardır. Bir piyasadaki fazla, diğerindeki eksikliği otomatik olarak kurtarmaz; bu, eksikliği yaratmış olan piyasa için risk içerir."
+    ]
+  },
+  "architecture/platform-fees": {
+    "meta": {
+      "title": "Platform Ücretleri",
+      "description": "Avana arayüz için işlem ücreti politikası, arayüz ücretlerinin protokol ekonomisinden nasıl farklılaştığı, nasıl açıklanacağı ve mevcut politikanın nasıl doğrulanacağı dahil."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "interface-vs-protocol",
+        "title": "Arayüz vs Protokol"
+      },
+      {
+        "id": "disclosure",
+        "title": "Açıklama"
+      },
+      {
+        "id": "treasury-usage",
+        "title": "Hazine Kullanımı"
+      },
+      {
+        "id": "integration-notes",
+        "title": "Entegrasyon Notları"
+      }
+    ],
+    "strings": [
+      "Platform Ücretleri",
+      "Avana arayüz için işlem ücreti politikası, arayüz ücretlerinin protokol ekonomisinden nasıl farklılaştığı, nasıl açıklanacağı ve mevcut politikanın nasıl doğrulanacağı dahil.",
+      "Genel Bakış",
+      "Arayüz vs Protokol",
+      "Açıklama",
+      "Hazine Kullanımı",
+      "Entegrasyon Notları",
+      "Avana ön yüzler ve hizmet yüzeyleri için arayüz düzeyinde ücret politikası ve açıklama rehberi.",
+      "Bu sayfa arayüz politikası ile ilgilidir, çekirdek sözleşmelerde borçlanmanın nasıl çalıştığıyla değil. Avana resmi yüzeylerde ön uç veya hizmet ücretleri talep edebilir, ancak bu ücretler protokolün teminat, oracle ve tasfiye kurallarından ayrı tutulur.",
+      "Kesin ücret oranları, muafiyetler ve uygulama durumu operasyonel ayarlardır ve bunlara güvenmeden önce canlı arayüz veya yayın materyallerinde doğrulanmalıdır.",
+      "Avana'in temel sözleşmeleri, LP kabulünü, borçlanma kapasitesini ve tasfiye davranışını yönetir. Arayüz ücretleri, etkinleştirilmişse, borç verme veya risk motorunda bir değişiklik yerine, bu sözleşmelerin üzerinde bir ön uç iş politikası olarak yer alır.",
+      "• Protokol ekonomisi, borç birikimini, teminat muamelesini ve tasfiye sonuçlarını belirler.",
+      "• Arayüz ücretleri, belirli bir ön yüz veya hizmet yoluna bağlı bir operasyonel tercihtir.",
+      "• Doğrudan sözleşme entegrasyonları, resmi kullanıcı arayüzünden farklı ücret varsayımlarını takip edebilir.",
+      "Herhangi bir arayüz ücreti, imzadan önce açıkça gösterilmelidir, böylece geliştiriciler ve kullanıcılar bunu gaz maliyetlerinden, takas ücretlerinden ve protokol düzeyindeki borç veya tasfiye etkilerinden ayırt edebilir.",
+      "İyi bir açıklama, ücret kaynağını, bunun isteğe bağlı mı yoksa arayüz özel mi olduğunu ve gelirlerin nereye yönlendirildiğini belirtmelidir.",
+      "Arayüz ücretleri toplanırsa, genellikle altyapı, izleme, güvenlik çalışmaları, dokümantasyon ve destek gibi ürün operasyonlarını finanse ederler. Yönetişim, zamanla bu politikaları resmileştirebilir veya revize edebilir.",
+      "Hazine kullanımı, protokolün teminat mimarisinden çıkarılmak yerine operasyonel raporlama olarak yayımlanmalıdır.",
+      "• İnşaatçılar, son kullanıcı maliyetlerini belirtmeden önce mevcut ücret politikasını doğrulamalıdır.",
+      "• Politika resmi olarak sürümlendirilmedikçe, protokol entegrasyonlarına arayüz ücreti varsayımlarını sabit kodlamaktan kaçının.",
+      "• Entegrasyonları belgeleyen zaman, ücret politikasını borç alma kapasitesinden ve tasfiye mantığından ayrı tutun."
+    ]
+  },
+  "getting-started/borrow-assets": {
+    "meta": {
+      "title": "Varlık Ödünç Al",
+      "description": "Borç almanın LP teminat karşılığında Avana içinde nasıl çalıştığı, konuşma tarafı kapasite kontrollerinden Hub likiditesine ve borç sonrası sağlık doğrulamasına kadar."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "borrow-checks",
+        "title": "Ödünç Çekler"
+      },
+      {
+        "id": "health-check",
+        "title": "Sağlık Kontrolü"
+      },
+      {
+        "id": "internal-accounting",
+        "title": "Dahili Muhasebe"
+      },
+      {
+        "id": "borrowable-assets",
+        "title": "Ödünç Verilebilir Varlıklar"
+      },
+      {
+        "id": "borrowing-power",
+        "title": "Borçlanma Gücü"
+      }
+    ],
+    "strings": [
+      "Varlık Ödünç Al",
+      "Borç almanın LP teminat karşılığında Avana içinde nasıl çalıştığı, konuşma tarafı kapasite kontrollerinden Hub likiditesine ve borç sonrası sağlık doğrulamasına kadar.",
+      "Genel Bakış",
+      "Ödünç Çekler",
+      "Sağlık Kontrolü",
+      "Dahili Muhasebe",
+      "Ödünç Verilebilir Varlıklar",
+      "Borçlanma Gücü",
+      "Hub paylaşılan likidite katmanını sağlarken, kabul edilen LP pozisyonun toplam kapasitesine karşı ödünç alın.",
+      "Borçlanma, yalnızca Borçlanma Halkası zaten hesapta LP pozisyonunu kabul edip değerledikten sonra başlar. O noktada kullanıcı, protokolden baştan yeniden değerlendirme yapmasını istemiyor. Kullanıcı, halka tarafından halihazırda tanınan borçlanma alanından bir kısmını harcamak istiyor.",
+      "Bir borç almanın başarılı olabilmesi için, spokes hâlâ yeterli kapasitenin kaldığını teyit etmeli, hesaba yeni borç eklendikten sonra hesabın sağlıklı kalması ve Hub'un talep edilen varlığa gerçekten sahip olması gerekmektedir.",
+      "Önemli:",
+      "Borçlanma, zamanla biriken borç yaratır. Kapasite piyasa koşullarına göre değişebilir, bu yüzden bir borç başarılı olduktan sonra bile güvenli bir yedek önemli olur.",
+      "Pozisyon ve mülkiyet kontrolleri:",
+      "Telden, pozisyonların hâlâ borçluya ait olduğundan, hâlâ hesap tarafından tanındığından ve hâlâ onaylanmış teminat seti içinde bulunduğundan emin olur.",
+      "Kapasite kontrolü:",
+      "Talep edilen borç, kullanıcının o Borç Alma Düğümü içindeki kalan toplam borçlanma kapasitesine karşı test edilir.",
+      "Hub likiditesi ve sermaye kontrolleri:",
+      "Teminat yeterli olsa bile, Hub yeterli kullanılabilir likiditeye sahip değilse veya varlık düzeyindeki ya da protokol düzeyindeki limitler daha fazla borçlanmayı engelliyorsa talep yine de başarısız olabilir.",
+      "Borç sonrası sağlık kontrolü:",
+      "Sağlık kontrolü ayrı bir kısayol kuralı değildir. Zaten teminat faktörlerini ve tasfiye uygunluğunu yöneten aynı değerleme yolu ve risk ayarlarını kullanır. Borçlanma, ek borç uygulandıktan sonra hesabın hala yeterli ayarlanmış teminat değeri varsa gerçekleşir.",
+      "healthFactor = ayarlanmışTeminatDeğeri / mevcutBorç",
+      "Ayarlanmış teminat değeri, zaten muhafazakar LP değerleme, teminat faktörleri ve havuz düzeyinde risk kontrollerini içermektedir. Bakınız",
+      "Sağlık Faktörü",
+      "Teminat Faktörleri",
+      "Borç payları:",
+      "Merkez çizimi:",
+      "Borç Alan Konnektör, teminat, kapasite ve sağlık kontrollerini tamamladıktan sonra varlığı yalnızca Hub'dan talep eder.",
+      "Durum güncellemesi:",
+      "Kullanıcı ödünç aldığı varlığı alır ve spoke ortaya çıkan borç durumunu kaydeder, böylece gelecekteki sağlık kontrolleri, geri ödemeler ve tasfiye mantığı aynı güncellenmiş hesaba başvurur.",
+      "Borç alınabilir varlıklar, Hub katmanında yapılandırılır. Bunlar, teminatın kendisinin sabit bir özelliği değildir. Pratikte, dağıtımlar genellikle büyük stabilcoinler ve diğer likit varlıklarla başlar, ardından set genişletilir.",
+      "Şu anda ödünç alınmaya açık olan kesin varlıklar için etkin dağıtım veya arayüz yapılandırmasını kontrol edin.",
+      "Borçlanma gücü, bir Borç Odak noktasındaki onaylanmış LP pozisyon katkılarının toplamıdır. Soyut bir havuza atanmaz ve temel pozisyonlardan bağımsız tek bir farklılaştırılmamış hesap numarası değildir.",
+      "Pratik kural:",
+      "Maksimum kapasiteye ne kadar yakın borç alırsanız, fiyat hareketi, volatilite artışları ve geri kazanılabilir değer kesintileri için o kadar az alanınız olur.",
+      "Önerilen:",
+      "Tasfiye Çerçevesi"
+    ]
+  },
+  "getting-started/claim-lp-fees": {
+    "meta": {
+      "title": "Talep LP Ücretler",
+      "description": "Talep, hesabın talep sonrasında sağlıklı kalması koşuluyla, LP anaparayı tamamen çözmeden Avana içinde LP ücret biriktirdi."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "how-it-works",
+        "title": "Nasıl Çalışır"
+      },
+      {
+        "id": "health-checks",
+        "title": "Sağlık Kontrolleri"
+      },
+      {
+        "id": "fee-accounting",
+        "title": "Ücret Muhasebesi"
+      },
+      {
+        "id": "key-benefits",
+        "title": "Temel Faydalar"
+      }
+    ],
+    "strings": [
+      "Talep LP Ücretler",
+      "Talep, hesabın talep sonrasında sağlıklı kalması koşuluyla, LP anaparayı tamamen çözmeden Avana içinde LP ücret biriktirdi.",
+      "Genel Bakış",
+      "Nasıl Çalışır",
+      "Sağlık Kontrolleri",
+      "Ücret Muhasebesi",
+      "Temel Faydalar",
+      "Ücretler çıktıktan sonra hesap hâlâ sağlık kontrollerinden geçiyorsa, teminat pozisyonunu kapatmadan ücret gelirini talep edin.",
+      "Avana, ana likiditeyi ve tahakkuk etmiş ücretleri aynı LP pozisyonunun farklı parçaları olarak ele alır. İşte bu ayrım, hala teminat olarak kullanılan ana likiditeyi zorunlu olarak dağıtmadan ücret gelirini gerçekleştirmeyi mümkün kılar.",
+      "Bir ücret talebi hâlâ teminat durumunu etkiler, bu yüzden hesaptan tanınmış değeri kaldıran diğer tüm işlemler gibi kontrol edilir. Bu, protokolün üzerine eklenmiş sadece bir kullanım kolaylığı düğmesi değildir.",
+      "Protokol, LP pozisyonu için mekâna uygun bir ücret toplama yolu kullanır. Yoğun likidite pozisyonları için, bu ana sermayeyi yerinde bırakan bir toplama tarzı çağrı şeklinde görünebilir. Fungible LPler için, mekân birini açığa çıkardığında mekanın kendi ücret talep yolu kullanılır.",
+      "Önemli protokol düzeyi kuralı LP türü arasında tutarlıdır: yalnızca ücret bileşenini talep edin, mümkün olduğunda ana pozisyonu aktif tutun ve ortaya çıkan pozisyon durumunu Borç Çubuğuna geri senkronize edin.",
+      "Borç Konuşması, bir ücret talebi etrafında sağlığı kontrol eder çünkü birikmiş ücretler, pozisyondan kaldırılıncaya kadar tanınan teminat tamponuna hala sayılabilir.",
+      "Talep edilen ücret değeri kaldırılırsa hesabı izin verilen borç sınırına çok yakın veya ötesine bırakacaksa, borç azaltılana veya daha fazla teminat eklenene kadar talep yolu engellenmelidir.",
+      "Oracle, kredi modeli, LP’in tek bir düz token bakiyesi gibi davranmak yerine, bunları yan yana takip edebilmesi için ana likiditeyi tahakkuk eden ücretlerden ayrı olarak sunar.",
+      "Bu muhasebe bölünmesi, protokol ana parayı çözmek zorunda kalmadan önce tahakkuk etmiş ücretlerin uygulanabileceği tasfiye durumunda da önemlidir LP likidite.",
+      "Fiyat Kehanetleri",
+      "Tasfiye Çerçevesi",
+      "Kazanılan ücretler, teminat pozisyonunu tamamen kapatmadan gerçekleştirilebilir",
+      "Aynı risk motoru, LP’i fiyatlandırmanın yanı sıra, ücret taleplerinin fazla değer çekmesini de önler"
+    ]
+  },
+  "getting-started/manage-loans": {
+    "meta": {
+      "title": "Kredileri Yönet",
+      "description": "Avana içindeki LP teminata karşı açık borcu, sağlığı takip ederek, pozisyonları dikkatlice güncelleyerek ve spoke ve Hub limitleri içinde kalarak yönetin."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "borrowing-more",
+        "title": "Daha Fazla Borçlanmak"
+      },
+      {
+        "id": "monitoring-health",
+        "title": "Sağlığı İzleme"
+      },
+      {
+        "id": "operational-control",
+        "title": "Operasyonel Kontrol"
+      },
+      {
+        "id": "position-changes",
+        "title": "Pozisyon Değişiklikleri"
+      },
+      {
+        "id": "key-constraints",
+        "title": "Ana Kısıtlamalar"
+      }
+    ],
+    "strings": [
+      "Kredileri Yönet",
+      "Avana içindeki LP teminata karşı açık borcu, sağlığı takip ederek, pozisyonları dikkatlice güncelleyerek ve spoke ve Hub limitleri içinde kalarak yönetin.",
+      "Genel Bakış",
+      "Daha Fazla Borçlanmak",
+      "Sağlığı İzleme",
+      "Operasyonel Kontrol",
+      "Pozisyon Değişiklikleri",
+      "Ana Kısıtlamalar",
+      "Açık bir krediyi yönetmek, teminatı, borcu ve işlem yapılan eyaleti ayrı eylemler olarak değil, tek bir canlı pozisyon olarak ele almak anlamına gelir.",
+      "Canlı bir Avana kredi, borçlu hiçbir şey yapmasa bile hareket etmeye devam eder. LP envanter değişir, ücretler birikir, piyasalar yeniden fiyatlandırılır ve mevcut Hub likiditesi değişebilir. İyi kredi yönetimi, bu hareketli parçaları birlikte takip etmek anlamına gelir, sadece borç miktarına tecrit edilmiş olarak bakmak yerine.",
+      "Mevcut pozisyonlar yeniden değerledikten sonra Borrow Spoke hala kullanılmamış kapasite gösteriyorsa ve Hub talep edilen varlığı sağlayabiliyorsa daha fazla borç almak mümkündür.",
+      "Kısmi geri ödeme diğer yönde hareket eder. Borcu hemen azaltır, sağlığı iyileştirir ve genellikle daha sonra yapılacak işlemler için gereken alanı yaratır; bu işlemler arasında çekimler, yeniden düzenleme veya teminat değişimi bulunur.",
+      "Sağlıklı:",
+      "Ayarlanmış teminat değeri, borcun oldukça üzerinde kalmaya devam ederek, olağan fiyat hareketi ve pozisyon sapması için alan bırakır.",
+      "İzleme Listesi:",
+      "Hesap hâlâ kontrollerden geçiyor, ancak kalan tampon azalıyor. Koşullar kötüleşmeden önce borcu ödemek, onaylı teminat eklemek veya riski azaltmak zamanı.",
+      "Likide edilebilir:",
+      "borç, izin verilen borçlanma sınırına çok yaklaşmış veya aşmış olduğundan, tasfiye çerçevesinin devreye girmesine izin verilir.",
+      "Kanonik tanım için kullanın",
+      "Sağlık Faktörü",
+      "Aracı yeniden oluşturmak için borcun bir kısmını öde",
+      "Aynı Borç Mili'ne daha fazla onaylanmış LP teminat ekleyin",
+      "Hesap talep sonrası sağlık kontrollerinden geçiyorsa yalnızca birikmiş ücretleri talep edin",
+      "Kalan hesap hâlâ sağlıklı olduğunda teminatı yalnızca çekin veya yeniden boyutlandırın",
+      "Yoğunlaşmış likidite pozisyonlarının, piyasa fiyatı hareket ettikçe yeniden ayarlanması veya değiştirilmesi gerekebilir. Değiştirilebilir LP pozisyonlar, desteklenen teminat seti içinde yeniden boyutlandırılabilir veya döndürülebilir.",
+      "Protokol, bu hareketleri kozmetik düzenlemeler olarak ele almaz. LP maruziyetini değiştiren herhangi bir değişiklik, mevduatlar ve borçlar için kullanılan aynı kabul, değerleme ve sağlık kontrolleri aracılığıyla geri iletilir.",
+      "Teminat değişiklikleri, kalan borcu izin verilen mil kapasitesinin üzerine çıkaramaz",
+      "Yeni veya değiştirme pozisyonları onaylanmış havuz seti içinde kalmalıdır",
+      "Borç alma işlemleri hâlâ Hub likiditesine ve aktif limitlere bağlıdır",
+      "Tutmak",
+      "Tasfiye Çerçevesi",
+      "Teminat Faktörleri"
+    ]
+  },
+  "getting-started": {
+    "meta": {
+      "title": "Başlarken - Para Yatırma LP",
+      "description": "Desteklenen LP pozisyonların teminat olarak Avana içine nasıl girdiğini ve her kabul edilen pozisyonun Borç Alma Dışa Bağlantısı içinde borçlanma kapasitesine nasıl katkıda bulunmaya başladığını öğrenin."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "deposit-flow",
+        "title": "Mevduat Akışı"
+      },
+      {
+        "id": "technical-details",
+        "title": "Teknik Detaylar"
+      },
+      {
+        "id": "supported-lp-tokens",
+        "title": "Desteklenen LP Pozisyon Türleri"
+      },
+      {
+        "id": "after-deposit",
+        "title": "Para Yatırdıktan Sonra"
+      }
+    ],
+    "strings": [
+      "Başlarken - Para Yatırma LP",
+      "Desteklenen LP pozisyonların teminat olarak Avana içine nasıl girdiğini ve her kabul edilen pozisyonun Borç Alma Dışa Bağlantısı içinde borçlanma kapasitesine nasıl katkıda bulunmaya başladığını öğrenin.",
+      "Genel Bakış",
+      "Mevduat Akışı",
+      "Teknik Detaylar",
+      "Desteklenen LP Pozisyon Türleri",
+      "Para Yatırdıktan Sonra",
+      "Yoğunlaştırılmış likidite pozisyonları",
+      "Aralıkla sınırlı NFT veya pozisyon yöneticisi tabanlı LPler",
+      "Aralık, tik pozisyonu ve ücret tahakkuku değerleme yolunun bir parçasıdır.",
+      "Değiştirilebilir sabit veya ilişkili LPler",
+      "Stabil takas ve sıkı şekilde korele havuz payları",
+      "Havuz envanteri ve çözülme kalitesi, temkinli borçlanma gücünü yönlendirir.",
+      "Ağırlıklı ve çok varlıklı LP'ler",
+      "Ağırlıklı sepetler ve çok jetonlu havuzlar",
+      "Desteklenen her aile yalnızca onaylanmış havuz şablonları aracılığıyla kabul edilir.",
+      "Mevduat LP",
+      "Mevduat, desteklenen bir LP pozisyonunu spoke gözetimi altına alır, böylece Avana bunu teminat olarak hesaplayabilir ve ödünç alınabilir bir kapasiteye dönüştürebilir.",
+      "Yatırma, bir LP pozisyonunun Avana içinde kullanılabilir hale gelmesi şeklidir. Borç Alma Desteği, desteklenen pozisyonun gözetimini üstlenir, değerleme için ihtiyaç duyduğu durumu kaydeder ve o pozisyonu cüzdanda tutulan bir varlık yerine teminat olarak işlemeye başlar.",
+      "Bu, likiditenin temel piyasadan kaybolduğu anlamına gelmez. Pozisyon, AMM içinde aktif kalabilirken, spoke daha sonra borç alma ve tasfiye kontrolleri için maruziyetini, ücret durumunu ve risk yönetimini takip eder.",
+      "Önemli:",
+      "Avana, sadece bir LP pozisyonu bulunduğu için borçlanma yetkisi vermez. Pozisyon onaylanmış bir havuz ailesine ait olmalı, değerleme kontrollerinden geçmeli ve spokes'un mevcut risk yapılandırmasına uygun olmalıdır.",
+      "1. LP Pozisyonunu Transfer Et veya Onayla",
+      "Kullanıcı, desteklenen LP pozisyonu ilgili Borç Dallarına devreder. Tam yol, teminatın değiştirilebilir mi yoksa pozisyona özel mi olduğuna bağlıdır, ancak protokol sonucu aynıdır: dal, varlığı teminat olarak sayabilmeden önce kontrol etmelidir.",
+      "2. Havuz Ailesini Doğrulayın",
+      "Sonraki adım, konuşmacının pozisyonun onaylanmış bir havuz veya şablona ait olduğunu doğrulamasıdır. Bu kontrol aslında bir dizi gerekliliktir: oracle kapsaması olmalıdır, yönlendirme ve tasfiye desteği olmalıdır ve dağıtım zaten o LP ailesi için risk ayarlarına sahip olmalıdır.",
+      "3. Önbellek Pozisyon Durumu",
+      "Pozisyon kabul edildikten sonra, protokol daha sonra pozisyonu yeniden inşa etmek için ihtiyaç duyduğu durumu saklar. Bu, maruziyeti yeniden oluşturmak, biriken ücretleri izlemek ve fiyatlar veya havuz koşulları değiştikçe borçlanma gücünü yenilemek için gerekli meta verileri içerir.",
+      "4. Pozisyonu Toplam Kapasiteye Ekleyin",
+      "Değerleme ve risk indirimleri uygulandıktan sonra, pozisyon, kullanıcının o Borç Alma Çubuğu içindeki toplam borçlanma kapasitesine kendi katkısını ekler. Kullanıcı daha sonra borç aldığında, Hub o çubuk tarafı kapasite güncellemesine güvenir.",
+      "Pozisyon farkında değerleme:",
+      "Teminatın kendisi sabit bir kredi miktarını kilitlemez. Borçlanma gücü, protokolün güncellenmiş bir görünüm gerektiğinde her seferinde canlı LP pozisyonundan oracle yığını ve teminat-faktör modeli kullanılarak yeniden hesaplanır.",
+      "Format spesifik saklama:",
+      "bazı LP pozisyonlar değiştirilebilir tokenlerdir, bazıları ise ekstra meta veriye sahip yoğun likidite pozisyonlarıdır. Borrow Spoke, geri kalan kredi sisteminin bunları tutarlı bir şekilde değerlendirebilmesi için bu saklama farklarını yönetir.",
+      "Teminat sağlamak, LP’i kapatmak anlamına gelmez. Geri alma yolu, ilk mevduat için değil, daha sonraki kullanıcı işlemleri veya tasfiye için ayrılmıştır.",
+      "Aile",
+      "Örnekler",
+      "Kabul Notları",
+      "Kesin canlı destek, onaylanmış havuz listesi tarafından yönetilir. Bakınız",
+      "İzin Verilen LP Havuzlar",
+      "Artık her onaylanmış pozisyon, kendi indirimli değerini çubuk düzeyinde borçlanma kapasitesine katkıda bulunur",
+      "LP ana, temel havuzda aktif kalır ve ücret kazanmaya devam edebilir",
+      "Gerçek borçlanma hâlâ Hub likiditesine, batı sağlığı kontrollerine ve teminat faktörü limitlerine bağlıdır",
+      "Normal akıştaki bir sonraki adım",
+      "Varlık Ödünç Al"
+    ]
+  },
+  "getting-started/repay-loans": {
+    "meta": {
+      "title": "Kredileri Geri Öde",
+      "description": "Geri ödemenin Avana'de borcu nasıl azalttığını, borç paylarını nasıl güncellediğini, Hub ile nasıl kapattığını ve teminatın serbest bırakılmasının yolunu nasıl açtığını."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "repay-process",
+        "title": "Geri Ödeme Süreci"
+      },
+      {
+        "id": "technical-details",
+        "title": "Teknik Detaylar"
+      },
+      {
+        "id": "liquidation-scenario",
+        "title": "Geri Ödeme Acil Olduğunda"
+      },
+      {
+        "id": "full-repayment",
+        "title": "Tam Ödeme"
+      }
+    ],
+    "strings": [
+      "Kredileri Geri Öde",
+      "Geri ödemenin Avana'de borcu nasıl azalttığını, borç paylarını nasıl güncellediğini, Hub ile nasıl kapattığını ve teminatın serbest bırakılmasının yolunu nasıl açtığını.",
+      "Genel Bakış",
+      "Geri Ödeme Süreci",
+      "Teknik Detaylar",
+      "Geri Ödeme Acil Olduğunda",
+      "Tam Ödeme",
+      "Geri ödeme borcu azaltır, hesap sağlığını iyileştirir ve genellikle teminat üzerindeki özgürlüğü geri kazanmanın en temiz yoludur.",
+      "Geri ödeme, borcun kendisini değiştirmeden hesabın borç tarafını değiştirir. Borç azaldığında, aynı teminat artık daha küçük bir borcu desteklediği için hesap hemen daha sağlıklı hale gelir.",
+      "Geri ödemenin önemli olması için tam geri ödeme gerekmez. Hesap tasfiye sınırına doğru kayarken, kısmi bir azalma bile faydalı boşluk sağlayabilir.",
+      "1. Bir miktar seçin:",
+      "Nefes alma alanı kazanmak için kısmi bir miktarı ödeyin veya borç tarafını tamamen bırakmak için tüm bakiyeyi ödeyin.",
+      "2. Borç varlığını gönderin:",
+      "geri ödeme Borç Merkezinden geri yönlendirilir ve mevcut borca uygulanır.",
+      "3. Sağlığı yeniden hesapla:",
+      "Borç payları azaltıldıktan sonra, hesabın sağlık faktörü ve kalan kapasitesi yeni daha düşük borç bakiyesinden güncellenir.",
+      "Geri ödeme temel olarak bir borç-hisse azaltımıdır. Bir kullanıcı bir varlık miktarını belirterek veya destekleniyorsa bir hisse miktarını belirterek geri ödeme yaparsa, protokol ödemeyi daha az borç hissesi ve dolayısıyla daha az borç olarak çözümler.",
+      "Borç Konuşması, yerel borç durumunu günceller ve Hub tarafı likidite muhasebesine karşı geri ödemeyi sonuçlandırır, böylece paylaşılan likidite katmanı ve LP teminat katmanı hesabın aynı görüntüsünü korur.",
+      "Bir hesap tasfiye olmaya yaklaştığında, geri ödeme güvenliği artırmanın en hızlı yollarından biridir çünkü doğrudan borcu azaltır. Bu, piyasanın toparlanmasını beklemeye veya önce daha fazla teminat eklemeye bağlı değildir.",
+      "Tasfiye sınırı aşıldığında, kök",
+      "Tasfiye Çerçevesi",
+      "Borç sıfıra ulaştığında, hesap aktif bir borcu güvence altına almak için teminat gerektirmez. O noktada, o hesaba bağlı LP pozisyon, teminat-çekme yolu aracılığıyla normal kullanıcı kontrolüne geri dönebilir.",
+      "Teminatın uygulanmasına bağlı olarak, nihai serbest bırakma otomatik olarak veya açık bir takip eylemi aracılığıyla gerçekleşebilir. Bakınız",
+      "Teminatı Çek"
+    ]
+  },
+  "getting-started/withdraw-collateral": {
+    "meta": {
+      "title": "Teminatı Çek",
+      "description": "Borç ödendikten sonra veya kalan hesap, çekilen pozisyon olmadan sağlık kontrollerinden geçmeye devam ettikten sonra LP teminat Avana nasıl ayrılır."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "withdrawal-process",
+        "title": "Para Çekme Süreci"
+      },
+      {
+        "id": "position-modifications",
+        "title": "Pozisyon Değişiklikleri"
+      },
+      {
+        "id": "after-withdrawal",
+        "title": "Çekilme Sonrası"
+      }
+    ],
+    "strings": [
+      "Teminatı Çek",
+      "Borç ödendikten sonra veya kalan hesap, çekilen pozisyon olmadan sağlık kontrollerinden geçmeye devam ettikten sonra LP teminat Avana nasıl ayrılır.",
+      "Genel Bakış",
+      "Para Çekme Süreci",
+      "Pozisyon Değişiklikleri",
+      "Çekilme Sonrası",
+      "Teminat, yalnızca hesabın talep edilen pozisyon kaldırıldıktan veya boyutu değiştirildikten sonra borcunu karşılamaya devam edebileceği durumda Borrow Spoke'tan ayrılabilir.",
+      "Teminat çekmek, mevduatın ters yüzüdür, ancak sadece bir varlık transferi değildir. Protokol bir LP pozisyonu serbest bırakmadan önce, o teminatın kaldırılmasının kalan borcu yetersiz teminatlı bırakmayacağını kanıtlamak zorundadır.",
+      "Tam borç ödemesi, teminat ihtiyacını tamamen ortadan kaldırdığı için en temiz yoldur. Ancak Avana, borç açık kaldığı sürece bazı teminat değişikliklerine de izin verebilir, eğer değişiklik sonrası hesap sisteme her yerde kullanılan aynı değerleme ve sağlık kontrollerinden geçiyorsa.",
+      "1. Borcu azaltın veya tamamen temizleyin:",
+      "2. Borçlanma kapasitesini yeniden hesaplayın:",
+      "Borç Konuşması, eski kapasitenin hala geçerli olduğunu varsaymak yerine, istenen LP konumu kaldırıldıktan veya yeniden boyutlandırıldıktan sonra hesabı yeniden hesaplar.",
+      "3. LP pozisyonunu bırakın:",
+      "Eğer çekim sonrası sağlık geçerliyse, protokol teminatı geri verir veya kilidini açar, böylece kullanıcı tekrar dışarıda yönetebilir.",
+      "Her teminat değişikliği tam bir çıkış anlamına gelmez. Bir kullanıcı, değiştirilebilir LP pozisyonunu yeniden boyutlandırabilir, yoğunlaştırılmış likidite aralığını değiştirebilir veya aynı krediyi açık tutarken farklı bir onaylanmış pozisyona geçiş yapabilir.",
+      "Bu değişiklikler yalnızca yeni veya kalan teminat hâlâ onaylanmış sette bulunduğunda ve değişiklik uygulandıktan sonra ortaya çıkan hesap tasfiye sınırının üzerinde kaldığında geçerlidir.",
+      "LP pozisyonu normal kullanıcı kontrolüne geri dönüyor",
+      "Kullanıcı bunu temel havuzda tutabilir, yeniden sıralayabilir veya likiditeden tamamen çıkabilir",
+      "Mevduat LP"
+    ]
+  },
+  "integrations/allowed-pools": {
+    "meta": {
+      "title": "İzin Verilen LP Havuzlar",
+      "description": "Yönetim tarafından tanımlanmış, Avana'in teminat olarak kabul etmeye istekli olduğu LP havuzlar için izin listesi ve inceleme kriterleri."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "review-criteria",
+        "title": "Değerlendirme Kriterleri"
+      },
+      {
+        "id": "pool-families",
+        "title": "Havuz Aileleri"
+      },
+      {
+        "id": "risk-application",
+        "title": "Risk Uygulaması"
+      },
+      {
+        "id": "integration-notes",
+        "title": "Entegrasyon Notları"
+      }
+    ],
+    "strings": [
+      "İzin Verilen LP Havuzlar",
+      "Yönetim tarafından tanımlanmış, Avana'in teminat olarak kabul etmeye istekli olduğu LP havuzlar için izin listesi ve inceleme kriterleri.",
+      "Genel Bakış",
+      "Değerlendirme Kriterleri",
+      "Havuz Aileleri",
+      "Risk Uygulaması",
+      "Entegrasyon Notları",
+      "Stabil ve ilişkili havuzlar",
+      "Fiyatlamanın güvenilir olduğu, sabit kur davranışının anlaşıldığı ve çözülme derinliğinin güçlü kaldığı durumlarda genellikle kabul etmek en kolay olandır.",
+      "Mavi çipli dalgalı havuzlar",
+      "Desteklenebilir, ancak genellikle daha muhafazakar teminat faktörleri, likidite kontrolleri ve daha sıkı tasfiye varsayımları ile.",
+      "Yoğunlaştırılmış likidite pozisyonları",
+      "Pozisyon düzeyinde değerleme ve aktif menzil, tek taraflı envanter ve ücret durumunun dikkatli bir şekilde ele alınmasını gerektirir.",
+      "Özel veya deneysel tasarımlar",
+      "Allowliste dahil edilebilmeleri için öncelikle açıkça belirlenmiş oracle, saklama ve tasfiye desteğine ihtiyaç var.",
+      "Altta yatan varlıklar için güvenilir dış fiyat kapsaması",
+      "Likidasyon sırasında yeterli havuz derinliği ve güvenilir çözülme yolları",
+      "LP aile veya kol şablonu için açık kabul edilebilirlik kuralları",
+      "Kabul edilebilir konsantrasyon, uçuculuk ve peg-kararlılık profili",
+      "İndeksleme, ücret yönetimi ve tasfiye yönlendirmesi için operasyonel destek",
+      "Havuzlar ve teminat olarak kabul edilmeye hazırlanmış LP aileler Avana için yönetişim kontrollü izinli liste hazırlanmıştır.",
+      "Avana sadece daha önce incelenmiş ve onaylanmış havuzlardan veya şablonlardan LP teminat kabul eder. İzin verilenler listesi, LP desteğinin sadece mekan markası veya token formatı meselesi olmadığı için vardır. Protokol, pozisyonu fiyatlandırmak, tasfiye yönetmek ve üstlendiği riski sınırlamak için yeterli bilgiye ihtiyaç duyar.",
+      "Havuz onayı ile birlikte çalışır",
+      "Teminat Faktörleri",
+      "Risk Çerçevesi",
+      "İzinli liste, bir havuzun sisteme girip giremeyeceğine karar verir; teminat faktörleri ise kabul edilen her pozisyonun ne kadar borçlanılabilir değer sağlayabileceğini belirler.",
+      "Bir havuz sadece protokol her seferinde aynı temel soruları yanıtlayabildiğinde allowliste girer: pozisyonu fiyatlayabilir mi, pozisyondan çıkabilir mi ve üretimde riski izleyebilir mi.",
+      "Havuz onayı, bir pozisyonun cömert kredi muamelesi göreceği anlamına gelmez. Bir havuz kabul edildikten sonra, her LP pozisyon yine kendi başına değerlendirilir, risk muamelesine göre iskonto edilir ve ardından Kullanıcının Borrow Spoke içindeki borç alma kapasitesine eklenir.",
+      "İşte bu yüzden havuz onayı ve teminat değerlemesi sıkı bir şekilde bağlantılıdır. Bir havuz, kabul edilecek kadar güvenli olabilir, ancak canlı hale geldiğinde yine de muhafazakar sınırlar, daha düşük LTV’ler veya daha sıkı tasfiye yönetimi gerektirebilir.",
+      "Yapımcılar, her mekandaki LP öğesinin otomatik olarak serbest kullanımda olduğu varsayımıyla değil, onaylanmış havuz şablonları ve dağıtıma özgü izin listeleri açısından düşünmelidir.",
+      "Yeni havuz aileleri genellikle etkinleştirilmeleri güvenli hale gelmeden önce oracle işlemleri, tasfiye yönlendirmesi, risk limitleri ve izleme altyapısı arasında koordineli çalışma gerektirir."
+    ]
+  },
+  "integrations/appkit": {
+    "meta": {
+      "title": "AppKit",
+      "description": "Geliştirici rehberi: AppKit yerleşimi, ortak devri ve Avana kredisinin üçüncü taraf ürün yüzeylerine, risk mantığını Avana dışına taşımadan nasıl gömüldüğü."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "integration-model",
+        "title": "Entegrasyon Modeli"
+      },
+      {
+        "id": "partner-controls",
+        "title": "Ortak Kontrolleri"
+      },
+      {
+        "id": "launch-notes",
+        "title": "Başlatma Notları"
+      }
+    ],
+    "strings": [
+      "AppKit",
+      "Geliştirici rehberi: AppKit yerleşimi, ortak devri ve Avana kredisinin üçüncü taraf ürün yüzeylerine, risk mantığını Avana dışına taşımadan nasıl gömüldüğü.",
+      "Genel Bakış",
+      "Entegrasyon Modeli",
+      "Ortak Kontrolleri",
+      "Başlatma Notları",
+      "Niyet yakalama",
+      "AppKit, kullanıcıların zaten LP pozisyonlarını, portföy durumunu veya takas bağlamını anladıkları yerde yer alır, böylece borç girişleri, tamamen yeni bir akış zorlamak yerine mevcut niyetin yanına görünür.",
+      "Protokol devri",
+      "Ortak, cüzdan ve pazar bağlamını Avana'e geçirir. Borç alma akışı, kullanıcıdan bunu elle yeniden oluşturmasını istemek yerine, zaten ayarlanmış olan bu bağlamla açılabilir.",
+      "Ortak ekonomi",
+      "Ortaklar yönlendirme, yönlendirme veya entegrasyon gelir yapıları kullanabilir, ancak borç veren veya risk motoru haline gelmezler. Avana kredi, risk ve mutabakatı elinde tutar.",
+      "Kredi girişini, kullanıcının zaten güvendiği LP konumu veya portföy görünümünün yakınında yerleştirin.",
+      "Cüzdan ve piyasa bağlamını borç alma akışına iletin, böylece devretme işlemi bir sıfırlama gibi hissettirmez.",
+      "Risk ve tasfiyeyi Avana üzerinde bırakın. Partner kullanıcı arayüzünde çubuk değerleme veya tasfiye mantığını yeniden kurmayın.",
+      "Canlıya geçmeden önce metin, yerleşim ve lansman engellerini belirleyin çünkü bunlar sadece cilalama katmanı değil, entegrasyonu şekillendirir.",
+      "Üründe kredi yüzeyinin göründüğü yer",
+      "Hangi kullanıcı segmentleri ödünç alma giriş noktasını görür",
+      "Devretme ile birlikte ne kadar eğitim veya açıklama yer alıyor",
+      "Ürün tam gömülü devretme mi yoksa daha hafif bir bağlam koruyucu giriş noktası mı kullanıyor",
+      "Ortaklar Avana LP destekli krediyi nasıl entegre ederken Avana borçlanma, risk ve uzlaşma sorumluluğunu sürdürür.",
+      "AppKit, kullanıcı ilişkisine zaten sahip olan üçüncü taraf ürünleri içindir; örneğin, LP pozisyonlarının zaten görünür olduğu DEX’ler, cüzdanlar ve portföy uygulamaları. Partner ürün, anı çerçeveler, bağlamı yakalar ve borç girişinin nerede görüneceğine karar verir. Avana, gerçek kredi yolunu çalıştırır.",
+      "Bu sayfa yerleştirme, devretme ve başlatma disiplini ile ilgilidir. Ortak, kullanıcı yüzeyinin ve dağıtımın sahibidir. Avana akreditasyon kuralları, mutabakat ve akışın güvenlik açısından kritik mekaniklerinden sorumludur.",
+      "AppKit tek bir sunum modelini dayatmaz. Ortaklar giriş noktalarını ve çevresindeki rehberlik miktarını kontrol ederken, protokol kararlarını Avana içinde bırakırlar.",
+      "Uygulama Notları",
+      "En iyi entegrasyonlar, mevcut ürün akışının bir devamı gibi hissettirir, alakasız bir kredi uygulamasına sert bir geçiş gibi değil. Bu notlar, o geçişi doğru yapmak için pratik bir temel niteliğindedir.",
+      "AppKit'i sadece bir bağlantı yerleştirmesi olarak değil, bir entegrasyon projesi olarak başlatın. Kullanıcı yolunu onaylayın, girişin nerede durduğunu gözden geçirin ve Avana kredi yolunun sorumluluğun değiştiği ortak kabuktan net bir şekilde ayrıldığından emin olun.",
+      "Ayrıca kredi yüzeyi gizlendiğinde ne olduğunu, borç alma akışına yapılan derin bağlantıların güvenli olup olmadığını ve cüzdan, piyasa veya teminat bağlamının eksik olduğunda nasıl işlendiğini kontrol edin."
+    ]
+  },
+  "integrations": {
+    "meta": {
+      "title": "Desteklenen Entegrasyonlar",
+      "description": "Dağıtım farkındalığına sahip kılavuz, Avana ile entegre olabilecek mekan ailelerini, geçmeleri gereken kontrolleri ve etkinleştirme öncesi gereken inceleme çalışmalarını içerebilir."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "appkit",
+        "title": "AppKit"
+      },
+      {
+        "id": "venue-families",
+        "title": "Mekan Aileleri"
+      },
+      {
+        "id": "enablement-status",
+        "title": "Etkinleştirme Durumu"
+      },
+      {
+        "id": "review-requirements",
+        "title": "İnceleme Gereksinimleri"
+      }
+    ],
+    "strings": [
+      "Desteklenen Entegrasyonlar",
+      "Dağıtım farkındalığına sahip kılavuz, Avana ile entegre olabilecek mekan ailelerini, geçmeleri gereken kontrolleri ve etkinleştirme öncesi gereken inceleme çalışmalarını içerebilir.",
+      "Genel Bakış",
+      "AppKit",
+      "Mekan Aileleri",
+      "Etkinleştirme Durumu",
+      "İnceleme Gereksinimleri",
+      "Yoğunlaştırılmış likidite alanları",
+      "Bu mekanlar pozisyon düzeyinde işlem gerektirir çünkü LP değeri mevcut fiyat, aktif aralık ve envanterin pozisyon arasında nasıl bölündüğüne bağlıdır.",
+      "Fungible sabit ve ağırlıklı havuzlar",
+      "Bu mekanlar, değeri havuz bakiyelerinden, dış fiyatlardan ve muhafazakar çözülme varsayımlarından yeniden inşa edilebilecek ERC-20 LP hisseleri açığa çıkarır.",
+      "Özel veya kanca tabanlı tasarımlar",
+      "Daha gelişmiş havuz mimarileri yalnızca Avana açık bir oracle modeli, güvenli bir saklama yolu ve tasarım için bir tasfiye adaptörü olduğunda desteklenebilir.",
+      "Destek canlı yayına geçmeden önce çalışabilecek mekan aileleri Avana ve aşılması gereken inceleme kapıları için referans kılavuzu.",
+      "Avana, mekanları sadece popüler oldukları veya LP tokenleri ortaya çıkardıkları için entegre etmez. Destek, protokolün pozisyonu doğru şekilde yeniden oluşturup oluşturamayacağına, değerini ihtiyatlı bir şekilde değerlendirmesine ve tasfiye gerektiğinde pozisyondan temiz bir şekilde çıkış yapabilmesine bağlıdır.",
+      "Bu sayfa bir entegrasyon referansıdır, canlı bir başlatma panosu değildir. Havuz kabul politikası için bkz",
+      "İzin Verilen LP Havuzlar",
+      ". Değerleme varsayımları için bkz",
+      "Fiyat Kehanetleri",
+      "AppKit, kullanıcıları bağlamı olmayan bağımsız bir akışa göndermek yerine mevcut bir kullanıcı yolculuğuna Avana kredisi bırakmak isteyen ürünler için ortaklara yönelik yoldur.",
+      "Oku",
+      "AppKit geliştirici rehberi",
+      "Ortak kontroller, devretme desenleri ve başlatma notları için.",
+      "Bir mekanın belirli bir ağda etkin olup olmadığı bir dağıtım kararıdır, kalıcı bir protokol gerçeği değildir. Bir mekan ailesi teorik olarak desteklenebilir olabilir, ancak oracle kapsaması, tasfiye yönlendirmesi ve risk parametrelerinin tamamı hazır olana kadar belirli bir dağıtımda hala devre dışı olabilir.",
+      "Geliştiriciler, bu sayfayı gerçek zamanlı bir destek matrisi olarak okumak yerine mevcut dağıtım yapılandırmasını uygulamada, sürüm notlarında veya yayınlanmış sözleşme kaydında doğrulamalıdır.",
+      "• Bir mekan, sağlam dış fiyatlardan ve doğrulanabilir devlet yeniden yapımından muhafazakar pozisyon değerlemesini desteklemelidir.",
+      "• Protokolün likidasyon için güvenilir bir çözülme yolu olması gerekiyor, bu yol ücret tahsilatı ve borç varlığına yönlendirmeyi içermelidir.",
+      "• Havuz derinliği, yoğunlaşma riski, korelasyon varsayımları ve operasyonel izleme, tümü risk çerçevesine uymalıdır.",
+      "• Yeni mekan desteği, sadece bir arayüz güncellemesi veya adaptör birleştirmesi değil, bir yönetişim ve risk kararındır."
+    ]
+  },
+  "integrations/price-oracles": {
+    "meta": {
+      "title": "Fiyat Kehanetleri",
+      "description": "Oracle, dış beslemeler, deterministik pozisyon yeniden inşası ve geri kazanılabilir değer indirimleri aracılığıyla teminatları nasıl fiyatlandırır."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "oracle-interface",
+        "title": "Oracle Arayüzü"
+      },
+      {
+        "id": "multi-layer-architecture",
+        "title": "Çok Katmanlı Mimari"
+      },
+      {
+        "id": "dex-handling",
+        "title": "DEX'e Özel İşlem"
+      },
+      {
+        "id": "twap-computation",
+        "title": "TWAP Hesaplaması"
+      },
+      {
+        "id": "safety-measures",
+        "title": "Güvenlik ve Müdahale Önleme"
+      },
+      {
+        "id": "configurable-parameters",
+        "title": "Yapılandırılabilir Parametreler"
+      }
+    ],
+    "strings": [
+      "Fiyat Kehanetleri",
+      "Oracle, dış beslemeler, deterministik pozisyon yeniden inşası ve geri kazanılabilir değer indirimleri aracılığıyla teminatları nasıl fiyatlandırır.",
+      "Genel Bakış",
+      "Oracle Arayüzü",
+      "Çok Katmanlı Mimari",
+      "DEX'e Özel İşlem",
+      "TWAP Hesaplaması",
+      "Güvenlik ve Müdahale Önleme",
+      "Yapılandırılabilir Parametreler",
+      "Temel varlıkların fiyatları",
+      "Havuz rezervleri veya envanter bölünmesi",
+      "Yoğunlaştırılmış likidite için, mevcut tik pozisyon aralığına göre",
+      "Pozisyonun menzil içinde mi yoksa çoğunlukla tek taraflı mı olduğu",
+      "Fiyatı belirlemek için varlıkları dış sağlam oracle'lardan alın",
+      "Teminatın ham havuz spot durumunun tüm gürültüsünü veya manipüle edilebilirliğini miras almaması için, temel varlıklar için dayanıklı harici beslemelerden başlayın.",
+      "LP değerini tedbirli bir şekilde türetin",
+      "Bir spoke'un üzerine düşünebileceği deterministik bir yol kullanarak rezervlerden, likiditeden, aralıktan ve ücretlerden değiştirilebilir LP bakiyeleri yeniden inşa edin veya yoğunlaştırılmış likidite pozisyonlarını parçalayın.",
+      "Geçici kayıp ve tasfiye kayması için kesinti",
+      "Yeniden yapılandırılmış işareti, teorik NET VARLIK DEĞERİ üzerinden temiz bir geri alımdan ziyade stres, kayma ve kusurlu çıkışları varsayan geri kazanılabilir teminat değerine indirin.",
+      "LP aile ve havuz derinliği tarafından tavan maruziyeti",
+      "Aile LP, havuz sınıfı ve mevcut derinliğe dayalı kontroller uygulayın, böylece daha sığ veya daha karmaşık piyasalar, daha derin ve daha basit olanlarla aynı borç limitlerini almaz.",
+      "İyimser NAV yerine geri kazanılabilir çözülme değerine göre tasfiye edin",
+      "Borç verme yetkisi verirken ve tasfiye kararı verirken en iyi senaryo piyasa değeri yerine, makul şekilde geri kazanılabilecek değeri kullanın.",
+      "Curve Sabit/Sabit ERC-20 LPs",
+      "Harici stablecoin beslemeleri + havuz durumu kontrolleri + TWAP doğrulaması",
+      "Dış fiyatlar varlıkları sabitlerken havuz bakiyeleri ve ücret tahakkuku indirimli teminat değerini belirler.",
+      "Uniswap V2 ERC-20 LPs",
+      "Chainlink + rezerv yeniden yapılandırması + TWAP doğrulaması",
+      "Standart LP tokenler, yeniden yapılandırılmış temel bakiyelerden değerlenir ve TWAP, manipülasyona dayanıklı çapraz kontrol olarak kullanılır.",
+      "Uniswap V3 NFT LP'ler",
+      "Chainlink + pozisyon ayrıştırması + tick/TWAP kontrolleri",
+      "NFT, likidite, aktif aralık ve mevcut fiyat ile ayrıştırılır, ardından geri kazanılabilir tasfiye değeri için indirim uygulanır.",
+      "Balancer Çok Varlıklı LPler",
+      "Chainlink + ağırlıklı envanter yeniden inşası",
+      "Çoklu token havuzları, temkinli teminat değerini tahmin etmek için dış fiyatları ve ağırlıklı havuz envanterini kullanır.",
+      "SushiSwap / Aerodrome",
+      "Havuz kaynaklı gözlemler, yeniden yapılandırılmış değeri doğrular ve düşük likiditeye sahip piyasalarda aynı işlem kötüye kullanımına karşı direnmeye yardımcı olur.",
+      "Chainlink + blok tabanlı TWAP doğrulaması",
+      "Dış fiyatlar hâlâ çapa olarak kalırken, blok tabanlı gözlemler pozisyon durumunu doğrular ve varsayımları çözümleyip geri alır.",
+      "Protokolün LP pozisyon durumunu krediyle ilgili teminat değerlerine nasıl dönüştürdüğü.",
+      "Avana Oracle tek bir fiyat sorgulaması değildir. Bu, bir LP pozisyonunu ödünç verme sisteminin teminat muhasebesi için kullanabileceği bir değere dönüştüren değerleme yoludur. Bunu güvenli bir şekilde yapmak için, dış piyasa verilerini, LP pozisyonunun deterministik yeniden oluşturulmasını ve ham AMM spot durumuna sadece güvenmek yerine çözülme varsayımlarına dayalı kurtarma indirgeme oranlarını birleştirir.",
+      "Kesin girdiler teminat ailesine bağlıdır. Fungible bir LP, bakiyeler, rezervler ve ücretlerden yeniden oluşturulurken, yoğunlaştırılmış likidite menzili, likiditesi ve mevcut fiyat bağlamı üzerinden ayrıştırılmalıdır. Her iki durumda da sonuç, borç almanın sürtünmesiz çıkış varsayımı yerine muhafazakar bir sayı kullanmasını sağlamak için geri kazanılabilir değer mantığı üzerinden geçirilir.",
+      "Mark değeri ile geri kazanılabilir değer arasındaki o ayrım, oracle'ın sadece analiz için değil, kredi vermede de kullanışlı olmasını sağlar. ERC-20 LPs, NFT LPs ve çok varlıklı havuzlar, her bir sınıfın değerin kola ulaşmadan önce kendi doğrulama ve manipülasyona karşı direnç kontrollerinden geçtiği için yalnızca tek bir yüksek seviyeli arayüz paylaşabilir.",
+      "Oracle Arayüzü: IOracle",
+      "Borç Alma Gövdeleri, formatlar DEX'ler arasında çok farklı olsa da bir sözleşme yüzeyine ihtiyaç duyar. `IOracle` bu ortak şekli sağlar ve ana değer, birikmiş ücretler ve ayrılmış tamponları ayrı tutar, böylece sonraki risk mantığı pozisyonun hangi kısmına baktığını tahmin etmek zorunda kalmaz:",
+      "işlev getValue (uınt256 tokenId, adres varlığı)",
+      "dış görünüm döndürür (",
+      "uint256 tamDeğer,",
+      "uint256 ücretDeğeri,",
+      "uint256 rezervDeğeri",
+      "tamDeğer",
+      "Daha sonraki tasfiye stresi ayarlamaları uygulanmadan önce ana likiditenin yeniden yapılandırılmış değeri.",
+      "ücretDeğeri",
+      "Ana para ile birlikte tanınabilecek pozisyon tarafından biriken ücretlerin değeri.",
+      "rezervDeğeri",
+      "Oracle, çözülme ve protokol risk tamponları için ayrılmış olan rezerve kısmı.",
+      "Arayüz, DEX'e özgü altyapıyı konuşmadan gizler. Bu, aynı çağıranın ERC-20 LP'leri, NFT LP'leri ve çok varlıklı havuzları tek bir dönüş şekli üzerinden işlemesine olanak tanırken, sahnelerin arkasında temkinli, teminat ailesine özgü muamele için hâlâ alan bırakır.",
+      "LP değerleme tek seferlik bir anlık fiyat okuması yerine aşamalı bir süreçtir. Oracle yolu aşağıdaki adımlardan geçer:",
+      "Farklı mekanlar farklı durum parçalarını ortaya çıkarır ve kehanet bu girdileri farklı şekillerde kullanır. Önemli nokta, mekanlara özgü verilerin pozisyonu yeniden oluşturmayı ve fiyatlamayı doğrulamayı sağlamasıdır; doğrudan teminat değeri olarak körü körüne kabul edilmez.",
+      "DEX / LP Tür",
+      "Oracle Kaynağı",
+      "Notlar",
+      "DEX Tarafından TWAP Hesaplaması",
+      "TWAP'ler doğrulama girdileridir. İzlenen havuz durumunun güvenilir bir çözülme yolu ile tutarlı olup olmadığını kontrol etmek için harici varlık fiyatlarının ve deterministik pozisyon yeniden yapılandırmanın yanında yer alırlar. Şüpheli veya kısa ömürlü sapmaları reddetmeye yardımcı olurlar, ancak kendi başlarına daha geniş oracle modelinin yerini almazlar.",
+      "Uniswap V2 & SushiSwap",
+      "Uniswap V3",
+      "Pozisyona duyarlı kontroller, protokolün her NFT'nin LP ayrıştırılmış token maruziyetini doğrulayabilmesi için tik aralığını, likidite dağılımını ve birikmiş ücretleri içerir; NFT'yi kara kutu olarak ele almak yerine.",
+      "Balancer",
+      "Ağırlıklı token gözlemleri, oracle muhafazakar bir teminat değeri atamadan önce çok varlıklı envanter bölünmelerini doğrulamak için havuz ağırlıklarıyla birleştirilir.",
+      "Curve",
+      "Stablecoin gözlemleri, dış fiyatlar ana dayanak olarak kalırken, genellikle eski veri akışlarını, rezerv kaymalarını ve kısa vadeli anormallikleri tespit etmek için kullanılır.",
+      "Tüccar Joe & Aerodrome",
+      "30-60 dakikalık bir pencere boyunca kümülatif fiyat gözlemleri, düşük likiditeli havuz durumunu doğrulamaya yardımcı olur ve teminat kontrolleri sırasında aynı işlem manipülasyonuna karşı direnç gösterir.",
+      "Sapma Eşikleri",
+      "Havuzdan elde edilen doğrulama verileri, harici referans fiyatlardan çok uzaklaştığında yeni krediler veya tasfiyeler duraklatılabilir",
+      "maksimumFark",
+      "maksimumHavuzFiyatFarkı",
+      "Bu, havuzun ima edilen durumunu temel token fiyatlarıyla hizalı tutar ve ani havuz manipülasyonunu veya aynı işlemde oracle kötüye kullanımını sınırlar.",
+      "Açık Pozisyon Limitleri",
+      "Maruz kalma, LP aile, havuz derinliği ve teminat karmaşıklığı ile sınırlanır, bu nedenle daha ince piyasalar daha sıkı borçlanma limitleri alır.",
+      "İyileşme Saç Kesimleri",
+      "Kehanet, herhangi bir borçlanma yetkisi verilmeden önce geçici kayıp, çözülme kayması ve stres altındaki tasfiye varsayımları için teorik LP değeri indirir.",
+      "Oracle Sentineli",
+      "Oracle Sentinel, besleme sağlığını ve doğrulama girdilerini izler ve veriler eski, bozulmuş veya pozisyon-durum kontrolleriyle tutarsız olduğunda yedek davranışı tetikleyebilir.",
+      "Yapılandırılabilir Oracle Parametreleri",
+      "Havuz özel oracle ayarları, her token için şu şekilde yapılandırılır",
+      "setTokenKonfigürasyonu",
+      ". Aşağıdaki tablo, bir token ve ilişkili havuzunun nasıl kontrol edilmesi gerektiğini tanımlayan parametreleri göstermektedir:",
+      "Parametre",
+      "Açıklama",
+      "Jeton",
+      "Teminat token adresi",
+      "AggregatorV3Arayüzü",
+      "Temel token için Chainlink beslemesi",
+      "maksimumBeslemeYaşı",
+      "Chainlink beslemesi için kabul edilebilir maksimum yaş",
+      "Havuz",
+      "Belirli DEX havuzu (Uniswap V3, Balancer, Curve, vb.)",
+      "twapSaniye",
+      "TWAP hesaplaması için pencere",
+      "Mod",
+      "Oracle işletim modu (standart/yedek)",
+      "DEX ile doğrulama fiyatı arasındaki izin verilen maksimum sapma",
+      "Pratikte, oracle davranışı dış varlık fiyatlandırmasının, LP yeniden yapılandırma mantığının, kurtarılabilir değer işleminin ve token başına yapılandırılan ayarların birleşiminden kaynaklanır"
+    ]
+  },
+  "integrations/router-contract": {
+    "meta": {
+      "title": "Yönlendirici Sözleşmesi",
+      "description": "Avana yönlendirici ve adaptör katmanı için operasyonel referans, yönlendiricinin neyi koordine ettiği, neyi kararlaştırmadığı ve dağıtım desteğinin nasıl yayınlandığı dahil."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "role-in-system",
+        "title": "Sistemdeki Rol"
+      },
+      {
+        "id": "adapter-model",
+        "title": "Adaptör Modeli"
+      },
+      {
+        "id": "supported-operations",
+        "title": "Desteklenen İşlemler"
+      },
+      {
+        "id": "deployment-status",
+        "title": "Dağıtım Durumu"
+      }
+    ],
+    "strings": [
+      "Yönlendirici Sözleşmesi",
+      "Avana yönlendirici ve adaptör katmanı için operasyonel referans, yönlendiricinin neyi koordine ettiği, neyi kararlaştırmadığı ve dağıtım desteğinin nasıl yayınlandığı dahil.",
+      "Genel Bakış",
+      "Sistemdeki Rol",
+      "Adaptör Modeli",
+      "Desteklenen İşlemler",
+      "Dağıtım Durumu",
+      "Mekan özelindeki depozito, çekme ve ücret toplama çağrılarını daha temiz bir arayüz katmanında birleştirin",
+      "Tasfiye yürütümü için gereken çözülme veya yönlendirme adımlarını koordine edin",
+      "Bir mekan adaptörü mevcut olduğunda, alan değişiklikleri veya göç akışları gibi kontrollü pozisyon güncellemelerini destekleyin",
+      "Protokolün risk veya değerleme otoritesi haline gelmeden tutarlı bir entegrasyon yüzeyi sunun",
+      "Mekan özelindeki işlemler, adaptör çağrıları ve tasfiye ile ilgili yönlendirme desteği için operasyonel arayüz katmanı.",
+      "Yönlendirici bir yürütme katmanıdır, riskin Avana tarafından belirlendiği yer değildir. Protokolün LP teminatla ilgili her akışa depozito, çekim, ücret ve geri alma mekaniklerini dağıtmak zorunda kalmaması için, mekanizmayı belirli bir platforma özgü eylemleri standartlaştırmak amacıyla vardır.",
+      "Bu sayfayı operasyonel bir referans olarak okuyun. Kanonik mimari için, şuna başlayın",
+      "Borç Aldı Konuştu",
+      "Tasfiye Çerçevesi",
+      "Farklı AMM mekanlar farklı giriş, çıkış ve ücret toplama yöntemleri sunar. Yönlendirici, Avana bu mekanikler için bir entegrasyon katmanı sağlar, böylece geliştiriciler her mekanı tamamen özelleştirilmiş bir sistem gibi ele almak zorunda kalmazlar.",
+      "Yönlendirici, teminat faktörlerinin, sağlık kontrollerinin veya tasfiye uygunluğunun belirlendiği yer olarak asla okunmamalıdır. Bunlar, Borrow Spoke, Hub, oracle yığını ve risk çerçevesi gibi üst akış protokol konuları olarak kalır.",
+      "Her desteklenen platform ailesinin, ücretleri talep etmeyi, likiditeyi kaldırmayı bilen ve protokolün o LP formatı için ihtiyaç duyduğu işlemleri sunan bir platform farkında adaptöre sahip olması gerekir. Bu, platforma özgü davranışın her kullanıcıya ve tasfiye ile ilgili kod yoluna sızmasını önleyip izole edilmesini sağlar.",
+      "Adaptör desteği yalnızca değerleme ve tasfiye desteği ile uyumlu olduğunda önemlidir. Yeni bir adaptör tek başına bir mekanı teminat kabulü için güvenli hale getirmez.",
+      "Yönlendirici adresleri, adaptör kayıtları ve etkin ağlar dağıtım verileridir. Bu veriler belgelerden tahmin edilmek yerine sürümlerle birlikte yayımlanmalıdır. Bu sayfa kasıtlı olarak yer tutucu adreslerden ve spekülatif dağıtım vaatlerinden kaçınmaktadır.",
+      "• Yayınlanmış sözleşme kayıt defteri veya sürüm notlarından zincire özel adresleri doğrulayın.",
+      "• Güvendiğiniz mekan adaptörünün hedef dağıtımda etkinleştirildiğini doğrulayın.",
+      "• Yönlendirici desteğini bir teminat havuzunun kabul edildiğinin kanıtı olarak değil, operasyonel bir bağımlılık olarak değerlendirin."
+    ]
+  },
+  "introduction/glossary": {
+    "meta": {
+      "title": "Sözlük",
+      "description": "DeFi, Avana için sözlük - Spoke, Hub, LP NFT, teminat faktörü, borç payları, tasfiye, oracle ve diğer protokol terimlerinin tanımları."
+    },
+    "toc": [
+      {
+        "id": "core-concepts",
+        "title": "Temel Kavramlar"
+      },
+      {
+        "id": "protocol-components",
+        "title": "Protokol Bileşenleri"
+      },
+      {
+        "id": "financial-terms",
+        "title": "Finansal Terimler"
+      },
+      {
+        "id": "risk-security",
+        "title": "Risk ve Güvenlik"
+      },
+      {
+        "id": "metrics",
+        "title": "Metrikler"
+      },
+      {
+        "id": "disclaimers",
+        "title": "Feragatnameler"
+      }
+    ],
+    "strings": [
+      "Sözlük",
+      "DeFi, Avana için sözlük - Spoke, Hub, LP NFT, teminat faktörü, borç payları, tasfiye, oracle ve diğer protokol terimlerinin tanımları.",
+      "Temel Kavramlar",
+      "Protokol Bileşenleri",
+      "Finansal Terimler",
+      "Risk ve Güvenlik",
+      "Metrikler",
+      "Feragatnameler",
+      "Borç Aldı Konuştu",
+      "Borçluya yönelik Avana, LP teminat alan, pozisyonları değerlendiren, borcu takip eden ve Hub likiditesine karşı borçlanma ve tasfiye işlemlerini koordine eden konuşmacıdır.",
+      "Borç alan Dalların ortak likidite çekebilmesi için sağlanan varlıkları Hub'a yönlendiren borç veren odaklı sermaye giriş noktası.",
+      "Bağlı bağlantılar arasındaki likidite, rezervler, muhasebe ve protokol genelinde sermaye koordinasyonunu yöneten Aave v4'deki paylaşılan parasal katman.",
+      "Merkez ve Çubuk Mimarisi",
+      "Paylaşılan sermayenin Merkezde bulunduğu, teminat-spesifik mantığın ise çubuklarda izole edildiği bir tasarım. Avana bu modeli kullanıyor çünkü LP teminat, mekan-spesifik değerleme ve tasfiye davranışı gerektiriyor.",
+      "Tasfiye Düğümü",
+      "Desteklenen bir AMM'dan bir likidite pozisyonu. Mekâna bağlı olarak, bu değiştirilebilir bir LP tokenı, yoğunlaştırılmış likidite NFT'si veya başka bir onaylanmış havuz payı formatı olabilir.",
+      "Teminat Faktörü",
+      "Borçlanma gücüne sayılabilecek USD teminat değerinin bir kısmı. LP piyasalarında, bu tüm halka yerine pozisyon düzeyinde uygulanır.",
+      "Borçlanma Kapasitesi",
+      "Bir kullanıcının Bir Borç Mili içinde ödünç alabileceği miktar, her yatırılan LP pozisyon değerlendirildikten, risk ayarlamasından geçirildikten ve kullanıcının toplam kapasitesine eklendikten sonra belirlenir.",
+      "İzin Verilen Havuz",
+      "Yönetim tarafından onaylanmış ve oracle kapsamı, likidite derinliği, çözülme kalitesi ve spoke uyumluluğu gibi uygunluk gereksinimlerini karşılayan bir havuz.",
+      "Kredi-Değer Oranı (LTV)",
+      "Avana’in pozisyon değerlemesi ve havuz özel risk kontrolleri uygulandıktan sonra teminatla ilişkili borçlanma oranı.",
+      "Faiz zaman içinde biriktiği halde her kredi bakiyesini sürekli yeniden yazmadan borçlu yükümlülüklerini izlemek için kullanılan dahili muhasebe birimi.",
+      "Borçluların mevcut borç için ödediği oran. Hem ortak Hub koşullarını hem de LP özgü risk hususlarını yansıtır.",
+      "Kullanım Oranı",
+      "İlgili Hub bağlantılı sermaye katmanındaki mevcut arz ile karşılaştırıldığında ödünç alınan likiditenin oranı.",
+      "Risk Primi",
+      "Finanse edilen teminat profilini yansıtmak için temel borçlanma koşullarının üzerine eklenen risk-spesifik bileşen.",
+      "Rezerv Faktörü",
+      "Sisteme ayrılan, tamamen likidite sağlayıcılarına aktarılmayan protokol ekonomisi veya faiz akışlarının kısmı.",
+      "Sağlık Faktörü",
+      "Bir Borç Noktası içindeki ayarlanmış teminat değeri ile mevcut borç arasındaki oran. Çok düşük olduğunda, pozisyon tasfiye uygunluğuna yaklaşır.",
+      "Sağlıksız bir LP destekli pozisyona karşı borcu geri ödeme süreci, yeterli teminatı çözerek ödeme gücünü yeniden sağlama ve tasfiye sonrasında kalan herhangi bir değeri iade etme.",
+      "Tasfiye Primi",
+      "Tasfiye işlemini yürüten tarafa ödenen tasfiye primi, sermaye kullanımı, yönlendirme karmaşıklığı ve yürütme riskini telafi eder.",
+      "Avana’in LP teminatı için değerleme motoru. Bu motor, dış varlık fiyatlarını, LP pozisyon yeniden yapılandırmasını ve geri kazanılabilir değer güvenlik önlemlerini birleştirir.",
+      "Geri Kazanılabilir Değer",
+      "Protokolün, tasfiye kaymaları, havuz koşulları ve risk tamponları göz önünde bulundurulduğunda stresli bir çözülme sırasında gerçekçi bir şekilde gerçekleştirilebileceğine inandığı miktar.",
+      "Teminatlandırılmış LP bir pozisyonun, örneğin yeniden dengeleme veya aralık değişikliği gibi kontrollü bir değişikliği, yalnızca ortaya çıkan pozisyon hâlâ protokol sağlık kontrollerini karşıladığında izin verilir.",
+      "Avana bağlantılı bileşenler genelinde LP teminat veya sermaye olarak sağlanan varlıkların toplam değeri.",
+      "Ödenmemiş Borç",
+      "Onaylanmış teminat pozisyonlarına karşı şu anda borç alınan tutar.",
+      "Borç Kullanımı",
+      "Borç alanlar tarafından çekilen mevcut Hub likiditesinin payı.",
+      "Borçlanma Başlığı",
+      "Bir kullanıcının mevcut borcu ile bir Borç Alma Düğümü içindeki kalan toplam borçlanma kapasitesi arasındaki fark.",
+      "Artık Değer",
+      "Borç, tasfiye primi ve icra masrafları ödendikten sonra bir pozisyonda kalan herhangi bir değer.",
+      "Havuz Onayı",
+      "Sadece önceden onaylanmış havuzların teminat olarak kabul edilebileceği kuralı, desteklenmeyen veya zayıf şekilde denetlenen piyasalara maruziyeti sınırlamaktadır.",
+      "İyileşme Saç Kesimi",
+      "Maruziyet Sınırları",
+      "Havuz ailesi, teminat sınıfı veya likidite derinliği ile borçlanılabilir maruziyeti sınırlayan risk limitleri.",
+      "Sigorta",
+      "Fiyatlar, piyasa davranışı veya protokol bağımlılıkları tutarsız veya güvensiz hale geldiğinde işlemleri duraklatabilen veya kısıtlayabilen bir risk kontrolü.",
+      "Yönetim Güvenliği",
+      "Risk Çerçevesi tarafından parametre değişikliklerini disipline etmek için kullanılan inceleme, zaman kilidi, veto ve acil durum rollerinin seti.",
+      "Yeniden Giriş Koruması",
+      "İlk yürütme tamamlanmadan önce bir durum değiştiren iş akışının tekrar başlatılmasını önleyen sözleşme düzeyinde koruma.",
+      "Belgelerde kullanılan protokol spesifik ve DeFi terminoloji için kanonik tanımlar.",
+      "LP ve Teminat",
+      "Borç ve Faiz",
+      "Tasfiye",
+      "Oracle & Dönüştür",
+      "Yatırım Tavsiyesi Değildir:",
+      "Avana bir yazılım protokolüdür. Bu dokümantasyon yatırım tavsiyesi teşkil etmez.",
+      "Kayıp Riski:",
+      "Kullanıcılar, akıllı sözleşme güvenlik açıkları, piyasa oynaklığı, likidasyon veya oracle manipülasyonu yoluyla fon kaybedebilir.",
+      "Düzenleyici Durum:",
+      "Avana ve onun tokenlarının (varsa) düzenleyici durumu garanti edilmez ve yargı alanına göre değişebilir.",
+      "Garanti Yok:",
+      "Yazılım, herhangi bir tür garanti olmaksızın “olduğu gibi” sağlanmaktadır."
+    ]
+  },
+  "introduction/key-concepts": {
+    "meta": {
+      "title": "Temel Kavramlar",
+      "description": "Avana'in temel kavramlarını, LP teminat davranışı, muhafazakar değerleme, Hub borçlanması ve tasfiye dahil olmak üzere anlayın."
+    },
+    "toc": [
+      {
+        "id": "core-insight",
+        "title": "Temel İçgörü"
+      },
+      {
+        "id": "user-flow",
+        "title": "Borçlanma Modeli"
+      },
+      {
+        "id": "oracle-valuation",
+        "title": "Oracle ve Değerleme"
+      },
+      {
+        "id": "borrowing-process",
+        "title": "Borçlanma Kapasitesi"
+      },
+      {
+        "id": "health-monitoring",
+        "title": "Sağlık ve Tasfiye"
+      },
+      {
+        "id": "fee-collection",
+        "title": "Ücret İşlemi"
+      }
+    ],
+    "strings": [
+      "Temel Kavramlar",
+      "Avana'in temel kavramlarını, LP teminat davranışı, muhafazakar değerleme, Hub borçlanması ve tasfiye dahil olmak üzere anlayın.",
+      "Temel İçgörü",
+      "Borçlanma Modeli",
+      "Oracle ve Değerleme",
+      "Borçlanma Kapasitesi",
+      "Sağlık ve Tasfiye",
+      "Ücret İşlemi",
+      "Avana'in Borrow Spoke, değerleme, borçlanma ve tasfiye belgelerinde tekrar tekrar ortaya çıkan fikirler.",
+      "Bir LP pozisyonu sadece bir spot fiyatla ilgili bir token değildir. Bu, değeri temel varlıklara, havuz bileşimine, ücret birikimine, pozisyon yapısına ve tasfiye gerekirse protokolün gerçekçi olarak toparlayabileceği miktara bağlı olan canlı bir likidite pozisyonudur.",
+      "Bunun önemli olmasının nedeni:",
+      "Avana, her LP için tek bir genel varlık modeli yerine, jant ve havuz özel kuralları ile LP pazarı garanti eder.",
+      "Kullanıcılar desteklenen LP pozisyonları Bir Ödünç Alma Noktasına yatırır. Pozisyonlar, protokol teminat muhasebesi için kontrolü alırken havuzlarında aktif kalabilir.",
+      "Her onaylanmış LP pozisyon kendi başına değerlendirilir. Teminat faktörleri ve havuz risk kontrolleri uygulandıktan sonra, indirimli katkısı o Borç Mili içindeki borçlanma kapasitesine eklenir.",
+      "Kullanıcı ödünç aldığında, jant Hub'dan likidite çeker. LP piyasa riski jant katmanında kalırken, paylaşılan sermaye muhasebesi Hub'da kalır.",
+      "Avana değerlerini LP teminat olarak temkinli bir şekilde tutar. Harici varlık fiyatları dayanakları işaretlerken, havuz verileri ve pozisyon durumu, yalnızca ham AMM spot çıktısına dayanmaktansa maruziyeti yeniden oluşturmak için kullanılır.",
+      "Güçlü dış kaynaklardan gelen teminat varlık fiyatları",
+      "Havuz envanteri bölünmesi veya aralık farkındalığı pozisyon ayrıştırması",
+      "Ana likiditeden ayrı olarak tanınan tahakkuk eden ücretler",
+      "Gevşeme kaybı, geçici zarar ve stresli tasfiye için toparlanma saç kesimleri",
+      "Kapasite, bir Borç Göbeği içinde pozisyon bazında oluşturulur. Avana, tek bir tüm faktörü tüm hesap üzerinde veya bir göbekteki her havuz üzerinde topluca uygulamaz. Her pozisyon, yalnızca kendi teminat faktörleri ve havuz spesifik kontrolleri uygulandıktan sonra katkıda bulunur.",
+      "Detaylar:",
+      "Teminat Faktörleri",
+      "A Borrow Spoke, düzeltilmiş teminat değerini mevcut borç ile karşılaştırır. Fiyatlar, oracle kontrolleri veya pozisyon değişiklikleri kalan tamponu yeterince azaltırsa, hesap tasfiye alanına girebilir.",
+      "Sağlık ve tasfiye her ikisi de aynı değerleme yoluna bağlıdır. Fiyatlandırma, teminat faktörleri ve tasfiye yönlendirmesi uyumlu kalmak zorundadır çünkü nihayetinde aynı ödenebilirlik hesaplamasına besleme yaparlar.",
+      "LP pozisyonlar teminat olarak kullanıldıkları sürece ticaret ücretleri kazanmaya devam edebilir. Avana bu ücretleri değerlemede tanıyabilir ve sağlık kontrollerine tabi olarak, kullanıcıların ana LP pozisyondan tamamen çıkmadan bunları talep etmelerine izin verebilir.",
+      "İlgili belgeler:",
+      "Fiyat Kehanetleri",
+      "Talep LP Ücretler"
+    ]
+  },
+  "introduction": {
+    "meta": {
+      "title": "",
+      "description": ""
+    },
+    "toc": [],
+    "strings": []
+  },
+  "introduction/testnet-roadmap": {
+    "meta": {
+      "title": "Testnet ve Yol Haritası",
+      "description": "Değerlendirme bağlamı için, kanonik protokol kuralları veya başlatma vaatleri yerine, Avana test konuşlandırmaları ve yol haritası çerçevesi için operasyonel rehber."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "testnet-scope",
+        "title": "Testnet Kapsamı"
+      },
+      {
+        "id": "how-to-evaluate",
+        "title": "Nasıl Değerlendirilir"
+      },
+      {
+        "id": "roadmap-framing",
+        "title": "Yol Haritası Çerçevesi"
+      },
+      {
+        "id": "campaigns-and-status",
+        "title": "Kampanyalar ve Durum"
+      }
+    ],
+    "strings": [
+      "Testnet ve Yol Haritası",
+      "Değerlendirme bağlamı için, kanonik protokol kuralları veya başlatma vaatleri yerine, Avana test konuşlandırmaları ve yol haritası çerçevesi için operasyonel rehber.",
+      "Genel Bakış",
+      "Testnet Kapsamı",
+      "Nasıl Değerlendirilir",
+      "Yol Haritası Çerçevesi",
+      "Kampanyalar ve Durum",
+      "Avana dağıtımları test etmek ve yol haritası ifadelerini doğru düzeyde dikkatle okumak için operasyonel sayfa.",
+      "Testnet durumu, desteklenen ağlar ve genel yol haritası sıralaması, mimari belgelerden daha hızlı değişir. Bu sayfa, geliştiricilerin ortam durumunu istikrarlı protokol tasarımından ayırabilmesi ve dağıtım dilini bir spesifikasyon gibi okumaktan kaçınabilmesi için vardır.",
+      "Protokol tasarımı için lightpaper ve temel geliştirici belgelerini kullanın. Ortam hazırlığı, deneme kapsamı ve yayılım bağlamı için bu sayfayı kullanın.",
+      "Bir test dağıtımı, tam üretim tasarımının yalnızca bir kısmını ortaya çıkarabilir. LP aileler, varlık ödünç alma, oracle kapsamı ve tasfiye araçları testnet'te daha dar veya daha fazla basitleştirilmiş olabilir.",
+      "• Mevcut ortam için aktif ağı, sözleşme kayıt defterini ve desteklenen havuz setini doğrulayın.",
+      "• Taklit edilmiş varlıklar, sınırlı mekan kapsamı ve kısaltılmış operasyon döngüleri bekleyin.",
+      "• Testnet davranışını son bir üretim garantisi olarak değil, bir değerlendirme ortamı olarak ele alın.",
+      "En kullanışlı değerlendirme yolu, uygun bir LP yatırmak, konuşma değerlemesini onaylamak, toplam borçlanma kapasitesini gözlemlemek, Hub likiditesine karşı borç almak ve ardından aynı hesapta sağlık izleme ve geri ödemenin nasıl davrandığını izlemektir.",
+      "Bir test dağıtımındaki puanlar, görevler veya diğer kampanyalar operasyonel özelliklerdir. Bunlar, yan modelin kendisi değildir.",
+      "Yol haritası dili yönlendiricidir. Daha geniş LP aile kapsamına, daha güçlü oracle desteğine, daha derin tasfiye araçlarına ve daha rafine edilmiş risk yönetimine işaret eder. Ayrı olarak açıklanmadıkça bu, sabit bir lansman tarihi veya kesin bir ağ vaadi olarak okunmamalıdır.",
+      "Aktif teşvikler, puan programları veya ağa özel yayılım detayları kampanya belgelerinde veya sürüm notlarında yer almalıdır. Bunları ana protokol sayfalarının dışında tutmak, kampanyalar veya yayılım planları değiştiğinde geliştirici belgelerinin daha istikrarlı olmasını sağlar."
+    ]
+  },
+  "legal/disclaimer": {
+    "meta": {
+      "title": "Yasal Uyarı",
+      "description": "Avana yasal uyarı - genel uyarı, finansal tavsiye yok, riskler, garanti ve sorumluluğun sınırlandırılması."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "general-disclaimer",
+        "title": "Genel Feragatname"
+      },
+      {
+        "id": "no-financial-advice",
+        "title": "Mali Tavsiye Değildir"
+      },
+      {
+        "id": "risks",
+        "title": "Riskler"
+      },
+      {
+        "id": "no-warranties",
+        "title": "Garanti Yoktur"
+      },
+      {
+        "id": "limitation-of-liability",
+        "title": "Sorumluluğun Sınırlandırılması"
+      },
+      {
+        "id": "related-policies",
+        "title": "İlgili Politikalar"
+      }
+    ],
+    "strings": [
+      "Yasal Uyarı",
+      "Avana yasal uyarı - genel uyarı, finansal tavsiye yok, riskler, garanti ve sorumluluğun sınırlandırılması.",
+      "Genel Bakış",
+      "Genel Feragatname",
+      "Mali Tavsiye Değildir",
+      "Riskler",
+      "Garanti Yoktur",
+      "Sorumluluğun Sınırlandırılması",
+      "İlgili Politikalar",
+      "Protokol ve belgelerin kullanımını düzenleyen yasal bildirimler.",
+      "Önemli:",
+      "Lütfen Avana'i kullanmadan önce bu feragatnamenin tamamını dikkatlice okuyun. Protokolü kullanarak, bu şartları okuduğunuzu, anladığınızı ve bunlara bağlı kalmayı kabul ettiğinizi onaylamış olursunuz. Tam şartlar için lütfen bizimle iletişime geçin",
+      "Hizmet Şartları",
+      "Gizlilik Politikası",
+      "Bu feragatname, tam metnimizle birlikte okunmalı ve onu tamamlar.",
+      ". Hizmet Şartları, protokol ve ilgili hizmetlere erişiminiz ve bunları kullanmanız ile ilgili olarak sizin ile Avana arasında yasal olarak bağlayıcı bir anlaşmayı oluşturur.",
+      "Anasayfamızdan:",
+      "LP tokenlere karşı borçlanmak risk içerir, piyasa koşulları pozisyonunuza karşı hareket ederse tasfiye dahil. Avana fonlarınızı saklamaz, LP pozisyonları yeniden teminat göstermez veya altyapı AMMlerindeki likiditenizin işleyişini değiştirmez. Sadece piyasa dalgalanması süresince sürdürebileceğiniz miktarlarda borç alın.",
+      "Avana deneysel bir merkeziyetsiz finans protokolüdür. Protokol, herhangi bir açık veya zımni beyan veya garanti olmaksızın \"olduğu gibi\" sunulmaktadır.",
+      "Hizmet Şartlarımızda belirtildiği gibi (Bölüm 2): \"Avana Protokolü, belirli açık kaynaklı akıllı sözleşmelerin belirli dijital para birimlerini veya diğer kripto varlıkları alıp tutabilmesini sağlayan işlevselliği içerir. Açık kaynaklı yazılımın, herhangi bir güncellemeyi de içerecek şekilde, hatalar, virüsler, Truva atları veya protokolün kısmi veya tamamen çalışmamasına ya da kripto varlıklarınızın kaybına, zarar görmesine veya yok olmasına yol açabilecek diğer güvenlik açıkları veya değişiklikler getirme riski bulunmaktadır.\"",
+      "Böyle bir bilgilere dayanmanız tamamen kendi riskinizdedir. Bu protokolün veya dokümantasyonun kullanımından kaynaklanan herhangi bir kayıp veya zarardan sorumlu olmayacağız.",
+      "Hizmet Şartlarımızda belirgin bir şekilde belirtildiği gibi: \"HİZMETLER, DIĞER ŞEYLERİN YANINDA, AVANA İLE İLGİLİ BİLGİLER SAĞLAYABİLECEK BİLGİ KAYNAKLARINI İÇERİR. AVANA, HİÇBİR ŞEKİLDE ARACI, KOMİSYONCU, BORSACI, YATIRIM DANIŞMANI, VASIYETİ VEYA FİNANSAL HİZMET SAĞLAYICISI DEĞİLDİR. HİZMETLER İLE İLGİLİ OLARAK SİZİNLE HİÇBİR YÜKÜMLÜLÜĞÜMÜZ VEYA FİDÜSİYER İLİŞKİMİZ YOKTUR.\"",
+      "• Bu materyal yalnızca bilgilendirme amaçlıdır",
+      "• Bu, herhangi bir menfaat veya hisseyi yatırım yapma, satın alma veya satma teklif veya çağrısı değildir",
+      "• Muhasebe, hukuk, vergi danışmanlığı veya yatırım önerileri sağlamak amacı taşımamaktadır",
+      "• Biz kayıtlı yatırım danışmanları veya aracı kurumlar değiliz",
+      "• Kişiselleştirilmiş finansal öneriler sağlamıyoruz",
+      "• Geçmiş performans gelecekteki sonuçları garanti etmez",
+      "• Finansal kararlar vermeden önce nitelikli uzmanlara danışmalısınız",
+      "• Kripto para yatırımları son derece değişken ve risklidir",
+      "Hizmet Şartlarımızın 8. Bölümü, Avana kullanımıyla ilgili riskleri açıklar:",
+      "Deneysel Teknoloji",
+      "Hizmetler deneysel ve yenilikçi teknoloji içerebilir ve bu tür teknolojilerin kullanımı yüksek bir risk düzeyi içerir. Hizmetlerin veya temel blok zinciri ağlarının beklenmedik şekilde başarısız olmasının birçok nedeni vardır ve bu durum, dijital cüzdanınızda tutulan herhangi bir kripto varlığın tamamen ve mutlak olarak kaybolmasına yol açabilir.",
+      "Operasyonel Zorluklar",
+      "Hizmetler ve/veya altta yatan blok zinciri ağları siber saldırılara, beklenmeyen işlem hacmi artışlarına veya Hizmetlerin kullanımınızla ilgili kesintilere yol açabilecek diğer operasyonel veya teknik zorluklara veya açıklıklara maruz kalabilir veya bunların hedefi olabilir.",
+      "Düzenleyici Belirsizlik",
+      "Hizmetler, Avana Protokolü ve/veya herhangi bir temel blok zinciri ağı tüm yargı bölgelerinde mevcut veya uygun olmayabilir ve belirli yargı bölgelerinde Hizmetleri kullanmanızla bağlantılı olarak hukuki ve düzenleyici uyumluluk yükümlülüklerine tabi olabilirsiniz.",
+      "LP-Özel Riskler",
+      "• Geçici kayıp, teminat değerini azaltabilir",
+      "• Piyasa koşulları pozisyonunuza karşı hareket ederse likidasyon riski",
+      "• Temel DEX akıllı sözleşme riski",
+      "• Yoğunlaştırılmış likidite pozisyonları, aralık dışına çıktığında değersiz hale gelebilir",
+      "Hizmet Şartlarımızın 9.1. Bölümünde belirtildiği gibi:",
+      "HİZMETLER 'MEVCUT OLDUĞU GİBİ' VE 'MEVCUT OLDUĞU DURUMDA' SUNULUR VE AVANA, SÖZ KONUSU 'MEVCUT OLDUĞU GİBİ' VE 'MEVCUT OLDUĞU DURUMDA' TEMELİYLE YA DA ŞARTLARLA İLGİLİ OLARAK HERHANGİ BİR GARANTİ VERMEZ VE AVANA, HERHANGİ BİR İHLAL, TİCARİ UYGUNLUK, BELİRLİ BİR AMACA UYGUNLUK, MEVCUTLUK, HATASIZ VE YA DA KESİNTİSİZ ÇALIŞMA GARANTİLERİ DE DAHİL, İFADE EDİLMİŞ, ZIMNİ VEYA YASAL HER TÜRLÜ GARANTİ VE KOŞULU REDDER.",
+      "Hizmet Şartlarımızın 9.2. Bölümünde belirtildiği gibi:",
+      "HER HALÜKARDA AVANA, HİZMETLERDEN VEYA AVANA PROTOKOLÜNÜ KULLANMANIZLA İLGİLİ OLARAK ORTAYA ÇIKAN, HER TÜRLÜ SONUÇLAR, DOLAYLI, TESADÜFİ VEYA ÖZEL ZARARLARDAN, SINIRSIZ OLMAK ÜZERE ÖRNEK TEŞEKKÜR EDİCİ VEYA CEZAİ ZARARLAR, KAYIP VERİLER, KAYIP KARLAR VEYA GELİRLER VEYA DEĞER AZALMASINDAN, HER NE ŞEKİLDE OLSA SORUMLU TUTULAMAZ.",
+      "Bu sınırlama, sorumluluk teorisi (sözleşme, haksız fiil, sıkı sorumluluk veya diğer) ne olursa olsun ve böyle bir zararın olasılığı konusunda bilgilendirilmiş olsak bile geçerlidir. Hiçbir koşulda Avana'in toplam sorumluluğu yüz ABD dolarını ($100,00) aşamaz.",
+      "Tam yasal bilgi için lütfen aşağıdaki belgeleri inceleyin:",
+      "Avana kullanımınızı yöneten, uygunluk, yasaklanmış faaliyetler, fikri mülkiyet, uyuşmazlık çözümü ve daha fazlasını içeren tam olarak yasal bağlayıcı anlaşma.",
+      "Kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu, veri saklama, çerezler ve GDPR, CCPA ve diğer gizlilik düzenlemeleri kapsamında haklarınızı da dahil olmak üzere.",
+      "Sınırlı Bölgeler",
+      "Avana hizmetlerine erişimi kısıtlanan mevcut yargı bölgeleri listesi.",
+      "Son Güncelleme:",
+      "Ocak 2026",
+      "Bu feragatname zaman zaman güncellenebilir. Protokolün kullanmaya devam edilmesi, herhangi bir değişikliği kabul etmek anlamına gelir. Lütfen bizim"
+    ]
+  },
+  "legal": {
+    "meta": {
+      "title": "Hukuk ve Uyum - Güvenlik Açıklamaları",
+      "description": "Avana yasal bilgiler - erişim kısıtlamaları, sınırlı yetki alanları, uyumluluk gereklilikleri ve güvenlik açıklamaları."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "access-restrictions",
+        "title": "Erişim Kısıtlamaları"
+      },
+      {
+        "id": "restricted-jurisdictions",
+        "title": "Sınırlı Yargı Alanları"
+      },
+      {
+        "id": "compliance",
+        "title": "Uyumluluk"
+      },
+      {
+        "id": "related-policies",
+        "title": "İlgili Politikalar"
+      }
+    ],
+    "strings": [
+      "Hukuk ve Uyum - Güvenlik Açıklamaları",
+      "Avana yasal bilgiler - erişim kısıtlamaları, sınırlı yetki alanları, uyumluluk gereklilikleri ve güvenlik açıklamaları.",
+      "Genel Bakış",
+      "Erişim Kısıtlamaları",
+      "Sınırlı Yargı Alanları",
+      "Uyumluluk",
+      "İlgili Politikalar",
+      "OFAC yaptırımları",
+      "Ukrayna (Kırım, Donetsk ve Luhansk bölgeleri)",
+      "Amerika Birleşik Devletleri",
+      "Bekleyen düzenleyici netlik",
+      "Sınırlı Bölgeler",
+      "Bu sayfa, Avana alanı için Güncel Kısıtlı Yargı Bölgeleri listesini yansıtacak şekilde korunmaktadır.",
+      "Kullanım Şartları",
+      ", belirli yargı bölgelerindeki bireyler veya kuruluşlar için Avana web sitesine ve bağlantılı hizmetlerine erişim kısıtlanmıştır. Bu sayfa, kısıtlı bölgelerin güncel listesini sağlar ve uygulanan erişim kısıtlamalarını açıklar.",
+      "Önemli:",
+      "Sınırlı Yetki Alanı'ndan Avana platformuna herhangi bir erişim girişimi, derhal Kullanım Şartları sayfasına yönlendirilme ve erişimin reddedilmesi ile sonuçlanacaktır.",
+      "Avana web sitesine ve bununla ilişkili hizmetlere erişim, aşağıdaki kişiler veya kuruluşlarla sınırlıdır:",
+      "İçinde ikamet etmek",
+      "Sınırlı Yargı Alanlarından herhangi biri",
+      "Vatandaşları",
+      "Fiziksel olarak içinde bulunur",
+      "İçine dahil edilmiştir",
+      "İçinde kayıtlı bir ofisi sürdürmek",
+      "Bu kısıtlamalar Avana'de tanımlanmıştır",
+      "Mevcut Kısıtlı Yargı Alanları",
+      "Aşağıdaki yargı bölgeleri şu anda Avana hizmetlerine erişimden kısıtlanmıştır:",
+      "Yargı yetkisi",
+      "Sebep",
+      "Not:",
+      "Bu liste, yürürlükteki yasalar, düzenlemeler veya yaptırım programlarındaki değişikliklere yanıt olarak zaman zaman güncellenebilir. Kullanıcılar, bu kısıtlamalara uyumlarının devamını sağlamakla sorumludur.",
+      "Kullanım Şartlarımızda belirtildiği gibi (Bölüm 1.2), aşağıdaki durumlarda Hizmetlere erişemez veya kullanamazsınız:",
+      "• ABD Hazine Bakanlığı Yabancı Varlıklar Kontrol Ofisi (OFAC), ABD Dışişleri Bakanlığı veya yetkisi olan herhangi bir diğer devlet otoritesi tarafından uygulanan veya yürürlüğe konulan herhangi bir yaptırımın konusu",
+      "• ABD Ticaret Bakanlığı Endüstri ve Güvenlik Bürosu'nun Reddedilen Kişiler, Kuruluşlar veya Doğrulanmamış Listelerinde tanımlandı",
+      "• Ekonomik yaptırımların konusu olan bir ülke veya bölgeye yerleşmiş, düzenlenmiş veya ikamet eden",
+      "Kullanıcılar, protokolün kullanımının kendi yargı bölgelerindeki tüm geçerli yasa ve düzenlemelere uygun olmasını sağlamakla tamamen sorumludur.",
+      "Avana kullanırken haklarınız ve yükümlülükleriniz hakkında tam bilgi için lütfen şunu inceleyin:",
+      "Hizmet Şartları",
+      "Avana hizmetlerini kullanımınızı düzenleyen, uygunluk gereksinimleri, yasaklanmış etkinlikler ve uyuşmazlık çözümü de dahil olmak üzere tam şartlar ve koşullar.",
+      "Gizlilik Politikası",
+      "Hizmetlerimizi kullandığınızda kişisel bilgilerinizi nasıl topladığımız, kullandığımız ve koruduğumuz hakkında bilgi.",
+      "Yasal Uyarı",
+      "Riskler, garanti ve sorumluluk sınırlamaları ile ilgili önemli feragatnameler."
+    ]
+  },
+  "liquidation/examples": {
+    "meta": {
+      "title": "Tasfiye Örnekleri",
+      "description": "Avana için açıklayıcı tasfiye örnekleri, değiştirilebilir LPlerin, yoğunlaştırılmış likiditenin ve çok pozisyonlu hesapların aynı temel çerçeve altında nasıl çözülüğünü gösteriyor."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "fungible-lp",
+        "title": "Değiştirilebilir LP Örnek"
+      },
+      {
+        "id": "concentrated-liquidity",
+        "title": "Yoğunlaştırılmış Likidite Örneği"
+      },
+      {
+        "id": "nft-liquidity",
+        "title": "NFT Tasfiyesi"
+      },
+      {
+        "id": "multi-position-account",
+        "title": "Çok Pozisyonlu Hesap"
+      },
+      {
+        "id": "edge-cases",
+        "title": "Uç Durumlar"
+      },
+      {
+        "id": "summary",
+        "title": "Özet"
+      }
+    ],
+    "strings": [
+      "Tasfiye Örnekleri",
+      "Avana için açıklayıcı tasfiye örnekleri, değiştirilebilir LPlerin, yoğunlaştırılmış likiditenin ve çok pozisyonlu hesapların aynı temel çerçeve altında nasıl çözülüğünü gösteriyor.",
+      "Genel Bakış",
+      "Değiştirilebilir LP Örnek",
+      "Yoğunlaştırılmış Likidite Örneği",
+      "NFT Tasfiyesi",
+      "Çok Pozisyonlu Hesap",
+      "Uç Durumlar",
+      "Özet",
+      "Likidasyon başladığında pozisyon büyük ölçüde tek taraflı olabilir, özellikle yoğun likidite için.",
+      "Havuz derinliği değerleme için yeterli olabilir, ancak yine de muhafazakar bir tasfiye yönlendirmesi gerektirecek kadar sığ olabilir.",
+      "Talep edilebilir ücretler geri kazanımları artırabilir, ancak gerçekte elde edilene kadar garanti olarak görülmemelidir.",
+      "Bir borçlunun, bir tekerlek düzeyindeki borçlanma kapasitesine katkıda bulunan birkaç pozisyonu olabilir, bu yüzden tasfiye sıralaması önemlidir.",
+      "Bir tasfiye çerçevesinin farklı LP teminat şekillerine nasıl uygulandığını gösteren çalışılmış senaryolar.",
+      "Bu örnekler kasıtlı olarak basittir. Amaç, ek kurallar icat etmeden tasfiyenin yaygın LP formatlarda nasıl gerçekleştiğini göstermektir",
+      "Tasfiye Çerçevesi",
+      "Her durumda iş aynı: muhafazakar teminat işaretlerini kullanmak, krediyi kredi katmanına geri ödemek, LP'i desteklenen bir yol aracılığıyla çözmek ve yürütme maliyetleri ile tasfiye ödülünden sonra kalan herhangi bir artık değeri geri vermek.",
+      "Bir borçlu, onaylanmış bir stable veya ağırlıklı havuzdan değiştirilebilir LP token yatırmıştır. Zamanla, havuz bileşimi ve oracle girdileri öyle bir noktaya gelir ki, hesap artık borcu için yeterli ayarlanmış teminat değerine sahip değildir.",
+      "• Tasfiye düğümü açığı tespit eder ve yürütme likiditesini sağlar.",
+      "• Borç geri ödenir ve LP tokeni, dayandığı varlıklara çevrilir.",
+      "• Talep edilebilir ücretler, mevcut ve kurtarmaya yardımcıysa gerçekleştirilir.",
+      "• Temel varlıklar borç varlığına yönlendirilir ve tasfiye kapanır.",
+      "• Geri ödeme ve ödül sonrası kalan herhangi bir değer borçluya geri verilir.",
+      "Yoğunlaştırılmış likidite pozisyonu, aktif aralığının kenarına doğru kayar. Hesap bir süre sağlıklı kalabilir, sonra borç mevcut pozisyon durumunun geri kazanılabilir değerini aşınca tasfiyeye düşebilir.",
+      "• Düğüm mevcut aralığından, likiditesinden ve token dağılımından pozisyonu değerlendirir.",
+      "• Tasfiye başladıktan sonra, ana para çözülmeden önce talep edilebilir ücretler kontrol edilir.",
+      "• Yönlendirme, sabit bir token karışımı yerine geri kazanılan gerçek envantere uyum sağlar.",
+      "• Ödeme aynı deseni izler: icra likiditesini geri öde, ödülü öde, kalan değeri iade et.",
+      "Bir borçlu Uniswap v3 NFT'sini yatırır ve daha sonra pozisyon değer kaybeder. Çözülme, gevşek bir token dilimi olarak değil, pozisyon düzeyinde ele alınır, çünkü NFT tek bir belirli teminat pozisyonunu temsil eder.",
+      "• Aave, NFT destekli pozisyona bağlı kasa tokeni bakiyesini ele geçirir.",
+      "• Avana kasa tokenini yakar ve gerçek LP pozisyonunu uzlaşmaya taşır.",
+      "• Uzlaşma modülü pozisyonu çözer, satar, açık artırmaya çıkarır veya aktarır.",
+      "• Borç önce ödenir, tasfiye memurunun ödülü sonra gelir ve artan kısım piyasa kuralına göre dağıtılır.",
+      "• Borçlu, tasfiye sonrasında aynı NFT üzerinde temiz bir kısmi hak talebini elinde bulundurmaz.",
+      "Bir borçlu, bir Borç Merkezinin içinde birden fazla LP pozisyona sahip olabilir. Kapasite bu pozisyonlar arasında toplanır, ancak hesap sağlıksız duruma geldiğinde çözülme yine pozisyon seviyesinde gerçekleşmek zorundadır.",
+      "• Konuşan, Hub'a tek bir toplu borçlanma kapasitesi rapor eder.",
+      "• Hesap sağlıksız hale geldiğinde, tasfiye düğümü, ödenebilirliği en iyi şekilde geri kazandıran çözme yolunu seçer.",
+      "• Açığı kapatmak için bir pozisyon yeterli olabilir veya birkaçının kısmen veya tamamen kapatılması gerekebilir.",
+      "• Yürütme sırası, oracle tutarlılığı ve rota derinliği, işaretin kendisinin yanındaki önemlidir.",
+      "Değiştirilebilir LPler, yoğunlaşmış aralıklar, NFT pozisyonları ve çok pozisyonlu hesapların hepsinin farklı çözülme detayları vardır. Paylaşılan hedef asla değişmez: iyileştirilebilir LP değerinden borcu geri ödemek ve iyimser NAV varsayımlarına dayanmak değildir. Politika hâlâ ana Tasfiye Çerçevesi sayfasında yer almaktadır."
+    ]
+  },
+  "liquidation/flow": {
+    "meta": {
+      "title": "Tasfiye Akışı",
+      "description": "Kasaya dayalı LP teminat ele geçirildiğinde ve tasfiye edildiğinde kullanılan çalışma zamanı sırasını kapsayan Avana için operasyonel tasfiye akışı."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "canonical-reference",
+        "title": "İlgili Politika Belgeleri"
+      },
+      {
+        "id": "runtime-sequence",
+        "title": "Çalışma Zamanı Sıralaması"
+      },
+      {
+        "id": "state-transitions",
+        "title": "Durum Geçişleri"
+      },
+      {
+        "id": "operator-notes",
+        "title": "Operatör Notları"
+      }
+    ],
+    "strings": [
+      "Tasfiye Akışı",
+      "Kasaya dayalı LP teminat ele geçirildiğinde ve tasfiye edildiğinde kullanılan çalışma zamanı sırasını kapsayan Avana için operasyonel tasfiye akışı.",
+      "Genel Bakış",
+      "İlgili Politika Belgeleri",
+      "Çalışma Zamanı Sıralaması",
+      "Durum Geçişleri",
+      "Operatör Notları",
+      "Sağlıksız bir hesabı tespit et",
+      "Tasfiye düğümleri veya harici bekçiler, protokol tarafından kullanılan aynı risk ayarlı teminat değerlerini izler ve artık borçlanma kapasitesini aşan hesapları işaretler.",
+      "Kaynak yürütme likiditesi",
+      "Tasfiye eden kişi, borcun cebinden tamamen finanse edilmeden geri ödenebilmesi için genellikle flashloan tarzı bir yol üzerinden geçici likidite edinir.",
+      "Borcu öde ve kasa teminatını ele geçir",
+      "İlgili Borç Konuşması, borcu kredi katmanına öder, kasa teminatını emanet eder ve pozisyonu LP-spesifik uzlaşmaya teslim eder.",
+      "Kasa tokenını yak ve teminat pozisyonunu işaretle",
+      "Adaptör, sıkışmış kasa jetonunu yakar ve gerçek LP pozisyonunu çözülme aşamasında olarak işaretler, böylece destekleyici arz, zaten tasfiye edilmekte olan bir pozisyonun karşısında beklemede kalamaz.",
+      "LP pozisyonunu kapat ve tasfiyeyi tamamla",
+      "Avana çözülür, satar, açık artırma yapar veya gerçek LP pozisyonu devreder, icra likiditesini öder, tasfiye edici ödülünü öder ve fazla kalanı piyasa kuralına göre yönlendirir.",
+      "Bir kez Aave tasfiyeye izin verdiğinde, seçilen pozisyon AKTİF durumdan çıkar ve TASFIYE EDİLİYOR durumuna girer. Borçlunun artık bunu çekmesi mümkün olmamalıdır.",
+      "Gerçek LP pozisyon çözülmüş veya satılmış olduktan sonra, destekleyici arz temizlenir ve pozisyon DENGEYE GELİR.",
+      "Devlet yönetimi",
+      "Bir kasa tokeni, destekleyen LP pozisyon kaldırıldıktan sonra bakiye olarak kalamaz. Eğer kasa tokenleri yakılırsa, LP pozisyonunun çekilmesi, çözülmesi veya takas işlemine geçirilmesi gerekir.",
+      "Likitasyon başladığında, sağlıksız LP destekli pozisyonların tespit edilmesinden uzlaşmaya kadar nasıl hareket ettiğine dair çalışma zamanı sıralaması.",
+      "Bu sayfa, tasfiye işleminin çalışma zamanındaki görünümüdür. Bir hesabın zaten sağlıksız olduğu ve bir operatörün tespitten nihai kapanışa kadar sırayla ne olduğunu anlaması gerektiği an için yazılmıştır.",
+      "LP tasfiye, tek bir token satışı yerine kontrollü bir çözülmedir. Borç ödenir, kasa teminatı ele geçirilir, eşleşen kasa tokeni yakılır, gerçek LP pozisyonu kapatılır ve kalan değer varsa iade edilir.",
+      "Tasfiye politikası devam ediyor",
+      "Tasfiye Çerçevesi",
+      "sayfa. Bu akış, geri kazanılabilir değer modelini varsayar",
+      "Fiyat Kehanetleri",
+      "Teminat Faktörleri",
+      "Bu sayfayı yürütme sırası için kullanın. Eşikler, ödüller ve kabul kuralları hâlâ mimari ve risk belgelerinden gelir, sadece bu kontrol listesi kendisinden değil.",
+      "Farklı LP aileler hepsi aynı nihai duruma ulaşmaya çalışıyor, ancak bunu aynı çıkışlarla başaramıyorlar. Adaptör tabanlı işlem, her havuz ailesinin kendi mekaniklerine uygun şekilde geri çözme yolunu izlemesine olanak tanır.",
+      "Tasfiye botları, aktif pozisyonları indekslemeli, borç kaymasını yenilemeli ve hesap fiyatlarını yalnızca ham AMM spot durumundan değil, protokol tarafından kullanılan aynı oracle yığını üzerinden belirlemelidir.",
+      "Kârlılık kontrolleri, kaymayı, yol derinliğini, flashloan maliyetlerini ve icra riskini göz önünde bulundurmalıdır. Büyük veya olağandışı çözülmeler, olumsuz MEV maruziyetini azaltmak için özel icra yollarından fayda sağlayabilir.",
+      "Bu sayfayı bir çalışma zamanlı kontrol listesi olarak düşünün. Politika ayrıntılarını ana tasfiye, oracle ve risk sayfalarında tutun."
+    ]
+  },
+  "liquidation/liquidators": {
+    "meta": {
+      "title": "Tasfiye Memurları",
+      "description": "Likitasyon operatörleri için geliştirici kılavuzu, izleme, yürütme gereksinimleri ve LP-e özgü çözülme davranışını kapsar."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "coverage-model",
+        "title": "Kapsama Modeli"
+      },
+      {
+        "id": "execution-requirements",
+        "title": "Yürütme Gereksinimleri"
+      },
+      {
+        "id": "operational-notes",
+        "title": "Operasyonel Notlar"
+      }
+    ],
+    "strings": [
+      "Tasfiye Memurları",
+      "Likitasyon operatörleri için geliştirici kılavuzu, izleme, yürütme gereksinimleri ve LP-e özgü çözülme davranışını kapsar.",
+      "Genel Bakış",
+      "Kapsama Modeli",
+      "Yürütme Gereksinimleri",
+      "Operasyonel Notlar",
+      "İzinsiz katılım",
+      "Herhangi bir saklayıcı veya işlem masası, pozisyonları izleyebiliyor, kaynak yürütme likiditesini sağlayabiliyor ve LP formatlarını Avana desteklerini çözebiliyorsa tasfiye edebilir.",
+      "LP-spesifik işlem",
+      "Tasfiye, genel bir token satışı değildir. Runtime, ücret tahsili, pozisyon kaldırma, yönlendirme ve borç varlığına yerleştirme için mekân farkında mantığa ihtiyaç duyar.",
+      "Kapsama kalitesi",
+      "LP pozisyonları, basit tokenlerden daha zor çözülür. Desteklenen mekanlar için tam rotayı modelleyen operatörler, genellikle sadece bir sağlık tetikleyicisine tepki veren botlardan daha iyi stresle başa çıkar.",
+      "Ayrı bir sezgisel yerine, protokolün kullandığı aynı risk durumunu izleyin.",
+      "Mümkün olduğunda tek bir atomik işlemde temiz bir durum geçişinden geri dönün.",
+      "Fiyat ücreti gerçekleşimi, rota derinliği ve yalnızca hız için optimize etmeden önce kalan değer.",
+      "Kısmi kapsama ve tam kapsama alanını ayrı yönlendirme varsayımlarıyla ayrı durumlar olarak ele alın.",
+      "Pozisyon izleme ve borç kayması takibi",
+      "Rota derinliği, kayma ve likidite kullanılabilirliği için simülasyon",
+      "Flashloan veya önceden fonlanmış yürütme yollarıyla işlem teslimatı",
+      "Protokolün desteklediği LP aileler için mekan farkındalıklı adaptörler",
+      "Operatörler Avana tasfiyeleri nasıl hizmet verir ve LP destekli borç için hangi yürütme altyapısı gereklidir.",
+      "Tasfiye edenler, sağlıksız LP destekli pozisyonları kapatan operatörlerdir. İşleri, borcu ödemek, LP'i doğru kanal yolu üzerinden çözmek ve geri kazanılan değeri kredi katmanına geri yerleştirmektir.",
+      "Hız önemlidir, ancak tek başına yeterli değildir. Operatörlerin, aslında neyin kapsanabilir olduğunu, LP'in nasıl temsil edildiğini ve zincire herhangi bir şey göndermeden önce ücretler, kayma veya tek taraflı envanter değişimi geri kazanımını anlamaları gerekir.",
+      "Avana için bir tasfiye görevlisi, tetikleyici bir bottan daha fazlasına ihtiyaç duyar. Pozisyonları değerlemek, çıkışları simüle etmek, sermaye sağlamak ve başladığı tasfiye yolunu tamamlayabilecek bir işlemi gerçekleştirmek için yeterli altyapıya ihtiyaç duyar.",
+      "Pratik gereklilik",
+      "Mekanlara özel çözülme, ücret tahsili ve borç geri ödemesini tek bir iş akışı olarak oluşturun. Bağlantısız adımlar, teorik olarak kapatılabilir bir tasfiye işleminin uygulamada başarısız olmasını çok daha kolay hale getirir."
+    ]
+  },
+  "liquidation": {
+    "meta": {
+      "title": "Tasfiye Çerçevesi",
+      "description": "Aave tasfiye giriş noktasını tetikledikten sonra Avana, kasaya dayalı LP teminat için tasfiyeyi nasıl ele alır."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "three-layers",
+        "title": "Üç Katman"
+      },
+      {
+        "id": "core-rules",
+        "title": "Temel Kurallar"
+      },
+      {
+        "id": "lp-complexity",
+        "title": "LP Dolaylı Karmaşıklık"
+      },
+      {
+        "id": "liquidation-pathways",
+        "title": "Tasfiye Yolları"
+      },
+      {
+        "id": "position-state",
+        "title": "Pozisyon Durumu"
+      },
+      {
+        "id": "surplus-handling",
+        "title": "Artan Malzeme Yönetimi"
+      },
+      {
+        "id": "operator-model",
+        "title": "Operatör Modeli"
+      }
+    ],
+    "strings": [
+      "Tasfiye Çerçevesi",
+      "Aave tasfiye giriş noktasını tetikledikten sonra Avana, kasaya dayalı LP teminat için tasfiyeyi nasıl ele alır.",
+      "Genel Bakış",
+      "Üç Katman",
+      "Temel Kurallar",
+      "LP Dolaylı Karmaşıklık",
+      "Tasfiye Yolları",
+      "Pozisyon Durumu",
+      "Artan Malzeme Yönetimi",
+      "Operatör Modeli",
+      "Tasfiye Tasarımı",
+      "Tasfiye kaydı, kasa haczi ve LP uzlaşmanın Aave ve Avana arasında nasıl bölündüğü.",
+      "Aave, bir pozisyonun ne zaman tasfiye edilebileceğine karar veren sistemdir, ancak temel LP'in nasıl kapatılacağını bilmez. Avana, borç muhasebesi, sağlık kontrolleri ve tasfiye giriş noktası için Aave'ü kullanır, ardından kasa teminatının arkasında duran gerçek pozisyonu çözmek için devralır.",
+      "Kritik tasarım kısıtı, teminatın iki görünümünün hizalı kalması gerektiğidir. Aave bir ERC-20 kasa token bakiyesini görürken, Avana aslında bu bakiyeyi destekleyen LP pozisyonu izler. Likidasyon yalnızca, kasa temsilini ele geçirmenin her zaman doğru LP çözüm yoluna yol açması durumunda sağlam kalır.",
+      "Operatörle ilgili dizi için bakınız",
+      "Tasfiye Memurları",
+      ". Yürütme sırası için bkz",
+      "Tasfiye Akışı",
+      "Aave katman",
+      "Borcu, kasa teminat bakiyesini, sağlık faktörünü ve el koymayı yetkilendiren tasfiye giriş noktasını takip eder.",
+      "Avana adaptör katmanı",
+      "El konulan kasa teminatını alır, ilgili kasa tokenini yakar ve tasfiye olayını gerçekte onu destekleyen LP pozisyonuna geri eşler.",
+      "Avana yerleşim katmanı",
+      "Gerçek LP pozisyonunu tespit eder, uygun çözülme veya satış yolunu uygular, borcu öder, tasfiye ödülünü öder ve fazla bakiyeyi piyasa kuralına göre yönlendirir.",
+      "Ana kural basit ama katıdır: Aave ERC-20 kasa teminatını tasfiye eder ve Avana o kasa teminatının arkasındaki LP pozisyonu kapatır. Tasarımdaki diğer her şey, bu iki adımı tutarlı tutmak için vardır.",
+      "Kasadaki jetonlar gerçek bir değere karşılık gelmelidir",
+      "Tasfiye edilmiş bir kasa token miktarı, her zaman geri kazanılamayan sentetik bir bakiye değil, gerçek LP teminat değerine karşılık gelmelidir.",
+      "Teminat olarak verilen varlık ödenmemiş olarak kalamaz",
+      "LP pozisyonu belirlendikten sonra, karşılık gelen kasa tokeni yakılmalıdır, böylece temsil ettiği varlıktan daha uzun süre hayatta kalmaz.",
+      "Aktif kasa token arzı, arkasında aktif LP teminat olmadan var olamaz.",
+      "Fazlalık piyasa kuralını takip eder",
+      "Borç önce ödenir, sonra tasfiye memurunun ödülü, ardından çözüm maliyetleri ve ancak bundan sonra kalan değer piyasanın fazlalık kuralına göre dağıtılır.",
+      "LP destekli pozisyonlar tasfiye sırasında aynı şekilde davranmaz. Fungible bir LP token genellikle orantılı olarak geri alınabilir veya transfer edilebilirken, bir Uniswap v3 NFT tek bir ayrı pozisyondur ve bu pozisyonun aralığı, ücret tahakkuku ve tasfiye yolu pozisyon düzeyinde önemlidir.",
+      "Bu yüzden tasfiye katmanının, eşleştirme kasa arzını temizlemeden önce teminat ailesini, tam destek pozisyonunu ve planlanan çözülme yolunu bilmesi gerekir.",
+      "Ödeme yolu, kasa tokeninin arkasında hangi tür LP teminatın bulunduğuna bağlıdır.",
+      "Değiştirilebilir LP teminat",
+      "• Uzlaşma, tüm bakiyeyi tasfiye yoluyla zorlamak yerine, karşılanması gereken borca orantılı olabilir.",
+      "• Avana piyasa tasarımı kısmi kurtarmayı desteklediğinde, yalnızca tasfiye için gereken miktarı geri alabilir veya transfer edebilir.",
+      "• Hesap daha sonra gerekli sağlık kontrollerini karşılamaya devam ediyorsa, kalan pozisyon aktif kalabilir.",
+      "• NFT'nin kendisi çözülmekte olan teminat birimi olduğu için, pozisyon tasfiye için seçildiğinde tüm pozisyon takasa geçirilir.",
+      "• Karşılık gelen kasa tokenleri, Aave kasadaki teminatı ele geçirdiğinde ve Avana bu el koymayı NFT pozisyonuna geri eşlediğinde yakılır.",
+      "• Avana teminat ailesi için piyasa kurallarına dayalı olarak gerçek LP pozisyonunu çözebilir, satabilir, açık artırmaya çıkarabilir veya devredebilir.",
+      "• Fazlalık, piyasa kuralı açıkça aksi belirtilmedikçe otomatik olarak tasfiye edilene gitmez.",
+      "ACTIVE",
+      "Pozisyon hâlâ teminat değeri kazandırıyor ve mevcut kasa token’ları o canlı LP pozisyon tarafından tamamen desteklenmeye devam ediyor.",
+      "LİKİTLEŞTİRME",
+      "Seçilen teminat artık borçlu tarafından geri çekilemez ve aktif olarak uzlaşma yolunda ilerlemektedir.",
+      "SETTLED",
+      "LP pozisyonu çözülmüştür ve eşleşen kasa jetonları artık beklemede olmamalıdır.",
+      "Tahsilat değeri sabit bir sırayla uygulanır. Önce borçları karşılar, sonra tasfiye görevlisinin ödülünü, ardından tahsilat maliyetlerini. Bu yükümlülüklerden sonra kalan herhangi bir değer fazla olarak kabul edilir ve bu fazla, tahsil edilen teminatın piyasa kuralına uyar.",
+      "Eğer uzlaşma değeri borcu ve ödülü karşılamak için yeterli değilse, piyasanın açık bir kötü borç yolu gerekir. Tasfiye belgeleri, bu eksikliği otomatik olarak kaybolan bir şey olarak değil, ele alınması gereken gerçek bir durum olarak tanımlamalıdır.",
+      "Tasfiye işlemleri izinsiz olarak devam etmektedir, ancak LP teminat genellikle beklenen tasfiye yolunu nasıl yürüteceğini bilen bir protokol destek mekanizmasından faydalanır. Genel tasfiye edenler borcu geri ödeyebilir, ancak yine de pozisyonu verimli veya güvenli bir şekilde kapatmak için gereken mekanizma-spesifik mantığa sahip olmayabilirler.",
+      "Tasfiye edenler, protokolün kullandığı aynı risk durumu ve teminat durumunu takip etmelidir.",
+      "İcra, borcun ödenmesinden takasa kadar atomik olarak kalmalıdır.",
+      "Ücreti gerçekleştirme, rota derinliği ve kalıntı değeri, sadece hız için optimize etmeden önce modellenmelidir.",
+      "Kısmi kapsama ve tam kapsama farklı durumlardır ve aynı yönlendirme varsayımlarını paylaşmamalıdır."
+    ]
+  },
+  "hub": {
+    "meta": {
+      "title": "Hoş geldiniz",
+      "description": "Borçlu, onaylanmış bir LP pozisyonu ilgili Borç Konisi'ne yatırır, ancak likidite kendisi öncelikle geri alınmak yerine altta yatan havuzda kullanılmaya devam eder."
+    },
+    "toc": [
+      {
+        "id": "welcome",
+        "title": "Hoş geldiniz"
+      },
+      {
+        "id": "what-is-avana",
+        "title": "Avana nedir?"
+      },
+      {
+        "id": "how-it-works",
+        "title": "Nasıl Çalışır"
+      },
+      {
+        "id": "unlocking-lp-collateral",
+        "title": "Neden LP Teminat Önemlidir"
+      },
+      {
+        "id": "architecture",
+        "title": "Mimarlık"
+      }
+    ],
+    "strings": [
+      "Hoş geldiniz",
+      "Avana nedir?",
+      "Nasıl Çalışır",
+      "Neden LP Teminat Önemlidir",
+      "Mimarlık",
+      "Desteklenen bir LP pozisyonu yatırın",
+      "Borçlu, onaylanmış bir LP pozisyonu ilgili Borç Konisi'ne yatırır, ancak likidite kendisi öncelikle geri alınmak yerine altta yatan havuzda kullanılmaya devam eder.",
+      "Muhafazakâr bir şekilde değer biçin",
+      "Simli parça, konumunu havuz verilerinden yeniden oluşturur, temel riski oracle yığını aracılığıyla fiyatlandırır ve ardından bu değeri teminat faktörleri ve piyasa özelindeki kontroller üzerinden iskonto eder.",
+      "Merkez aracılığıyla ödünç al",
+      "Elde edilen kapasite yeterliyse, kredi paylaşılan Hub likiditesinden çekilirken sağlık kontrolleri, teminat muhasebesi ve tasfiye davranışı o spok'a özgü kalır.",
+      "Likidite havuzda kalır",
+      "Protokol, LP pozisyon için oluşturulmuştur ve bu pozisyonlar LP işi yapmaya devam etmelidir. Bir borçlu, yalnızca nakde erişebilmek için AMM'dan likidite çekmek zorunda değildir.",
+      "Kapasite gerçekliği takip eder LP",
+      "Borçlanma gücü, pozisyonun gerçek yapısından gelir: token karışımı, birikmiş ücretler, ilgili olduğunda aktif aralık, mevcut derinlik ve pozisyonun stres sırasında nasıl kapatılabileceği.",
+      "Tasfiye açık kurallara sahiptir",
+      "LP teminat, genel bir token bakiyesi olarak ele alınmaz. Her desteklenen piyasa, değerin nasıl geri kazanılacağını, neyin satılacağını veya tasfiye edileceğini ve hesap güvensiz hale gelirse borcun nasıl kapatılacağını tanımlar.",
+      "Borç Aldı Konuştu",
+      "Desteklenen LP teminatı kabul eder, bunu spoke düzeyinde borçlanma kapasitesine dönüştürür ve o pazar için sağlık ve tasfiye kurallarına sahip olur.",
+      "Ortak kredi bilançosunu tutar: rezerv muhasebesi, faiz oranı mantığı ve borçluya yönelik kolların çektiği likidite.",
+      "Verdi Konuştu",
+      "Borç veren varlıklarını sisteme getirir ve bunları Hub'a yönlendirir, böylece LP kredi değerlendirmesi sermaye onboarding'den ayrı kalabilir.",
+      "Giriş",
+      "Avana onaylanmış LP pozisyonların havuzdan likidite çekmeden önce kredileri geri vermesine izin veriyor. Bu belgeler Hub-and-Spoke (Merkez ve Çubuk) ayrımıyla başlar: çubuklar LP riski anlar, Hub ise paylaşılan kredi likiditesini yönetir.",
+      "Ana Kavramlarla Başlayın",
+      "Keşfet Ödünç Aldı Konuştu",
+      "Avana, canlı LP teminatı için bir borç verme protokolüdür. Aave v4'nin Hub-and-Spoke modelini kullanır, böylece Hub paylaşılan likiditeyi yönetirken her Birim Borç Sohbeti kendi LP piyasaları için kabul, değerleme, sağlık ve tasfiye işlemlerini yönetir.",
+      "LP teminatı desteklemek, sadece bir token bakiyesini kontrol etmekten daha fazlasını ifade eder. Protokolün, pozisyonun hangi varlıkları temsil ettiğini, bu değerin ne kadarının kredi için sayılması gerektiğini, hangi piyasa özel kesintisinin uygulanacağını ve borçlu gerekli güvenlik marjının altına düşerse hangi çözüm yolunun bulunduğunu anlaması gerekir. Avana, her AMM pozisyonu tek bir genel kredi yoluna dönüştürmeye çalışmak yerine, teminatı listeleyen spoke'a bu LP-spesifik mantığı koyar.",
+      "Bu sayfayı belgelerin geri kalanı için harita olarak okuyun. Aşağıdaki bölümler önce temel borçlanma yolunu açıklar, ardından sizi Borrow Spoke, Lend Spoke, teminat faktörleri, oracle mantığı, sağlık takibi ve tasfiye için ayrıntılı sayfalara yönlendirir.",
+      "Kullanıcıya yönelik akış kısadır, ancak her aşama LP-özgü sigorta değerlendirme çalışmalarını gizler. Daha sonraki sayfalar, her adımın arkasındaki mekanikleri ayrıntılı olarak açıklar.",
+      "LP pozisyon zaten işletme sermayesinde yer alıyor. Bir kredi katmanı olmadan, nakdi geri almak genellikle önce havuz pozisyonunu küçültmek veya kapatmak anlamına gelir.",
+      "Avana, paylaşılan ödünç verme likiditesini LP-özgü risk mantığından ayırır. Bu ayrım, sistemin tüm kurallarını birleştirmeden farklı teminat türlerini destekleyebilmesinin nedenidir.",
+      "İnşaatçılar sistemi iki yarı olarak düşünmelidir. Hub, ortak bilanço ve borç motoru iken, Borrow Spokes her bir LP pazarın güvenle neyi destekleyebileceğine ve eğer başarısız olursa o pazarın nasıl çözülmesi gerektiğine karar verir. Lend Spoke ise Hub’a sermaye besler, böylece tedarikçilerin sadece likidite sağlamak için LP mekaniklerini düşünmesine gerek olmaz."
+    ]
+  },
+  "safety/bug-bounty": {
+    "meta": {
+      "title": "Hata Ödülü",
+      "description": "Avana Bug Bounty sorumlu açıklama kapsamı, LP-yan risk yüzeyleri ve ekonomik etki şiddet felsefesi."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "scope-and-system-architecture",
+        "title": "Kapsam ve Sistem Mimarisi"
+      },
+      {
+        "id": "severity-philosophy",
+        "title": "Şiddet Felsefesi"
+      }
+    ],
+    "strings": [
+      "Hata Ödülü",
+      "Avana Bug Bounty sorumlu açıklama kapsamı, LP-yan risk yüzeyleri ve ekonomik etki şiddet felsefesi.",
+      "Genel Bakış",
+      "Kapsam ve Sistem Mimarisi",
+      "Şiddet Felsefesi",
+      "Program A - Temel Kredilendirme",
+      "Muhasebe bütünlüğünün, teminatlandırmanın ve tasfiye yürütmenin doğrudan kullanıcı fonlarını koruduğu birincil kredi motorunu kapsar.",
+      "Para yatırma / çekme akışları",
+      "Ödünç alma / geri ödeme mantığı",
+      "Sağlık faktörü ve faiz tahakkuku",
+      "Rezerv muhasebesi ve borç basımı / yakımı",
+      "Tasfiye çekirdek yürütme ve kapaklar",
+      "Kullanıcı fonlarının çalınması",
+      "Rezerv iflası",
+      "Yetersiz teminatla borçlanma",
+      "Engellenmiş geri ödemeler, çekimler veya tasfiyeler",
+      "Program B - LP Teminat ve Değerleme",
+      "LP destekli kredi için Avana-özgü değerleme sistemini kapsar; buna LP pozisyonlarının nasıl fiyatlandırıldığı, risk ağırlıklı olduğu ve dalgalı piyasa koşullarında stres-testine tabi tutulduğu dahildir.",
+      "LP pozisyon için teminat faktörü ataması",
+      "Yoğunlaştırılmış likidite pozisyonu yönetimi",
+      "Dengesizlik, depegler, düşük likidite veya güncel olmayan oracle durumları sırasında uç durumlar",
+      "LP teminatının aşırı değerlemesi",
+      "Kötü borcu mümkün kılan oracle manipülasyonu",
+      "Düşük fiyatlandırmadan dolayı haksız tasfiye",
+      "Yanlış fiyatlandırılmış LP teminatına karşı özyinelemeli sömürü yolları",
+      "En yüksek şiddet tavanı: LP yanlış fiyatlama, klasik bir sözleşme boşalması olmadan kötü borç, iflas veya haksız tasfiyeler yaratabilir.",
+      "Program C - Yönetişim, Yönetim ve Protokol Altyapısı",
+      "Parametreleri değiştirebilen, sözleşmeleri yükseltebilen, işlemleri duraklatabilen veya protokol sahipli varlıkları yönlendirebilen ayrıcalıklı kontrol yüzeylerini kapsar.",
+      "Yönetim yürütücüsü ve zaman kilidi",
+      "Rol yönetimi ve yükseltilebilirlik mekanizmaları",
+      "Duraklat / koruyucu roller",
+      "Parametre yönetici sistemleri",
+      "Hazine, tahsildar ve ayrıcalıklı otomasyon sözleşmeleri",
+      "Yetkisiz yönetici işlemi",
+      "Yükseltme korsanlığı",
+      "Parametre bozulması",
+      "Yönetim devralması veya hazine kaybı",
+      "Program D - Offchain / Entegrasyon Yüzeyleri",
+      "Güvenilen protokol işlemlerini, kullanıcı etkileşimlerini veya tutucu davranışını etkileyebilecek şekilde tehlikeye girebilecek destekleyici sistemleri kapsar.",
+      "Avana tarafından sürdürülen indeksleme veya tasfiye botları",
+      "Bekçi varsayımları ve kehanet röleleri",
+      "Güvenlik açısından kritik yollarında kullanılan barındırılan API'ler",
+      "Doğrudan cüzdan riski sonuçlarıyla ilgili frontend sorunları",
+      "Kötü niyetli işlem oluşturma",
+      "İhlal edilmiş tasfiye veya oracle iletim yolları",
+      "Kullanıcı fon kaybı güvenilen entegrasyonlar aracılığıyla",
+      "Kritik eylemleri durduran operasyonel kesintiler",
+      "Kritik",
+      "kenar-kırmızı-400 arka-plan-kırmızı-50/70",
+      "Doğrudan veya dolaylı fon kaybı, kötü borç oluşumu, protokol iflası veya teminat değerlemesinin sistemik manipülasyonu.",
+      "Yüksek",
+      "sınır-kehribar-400 arka-plan-kehribar-50/70",
+      "Yanlış tasfiye davranışı, risk kontrollerinin kısmen aşılması veya sınırlı muhasebe hataları gibi anlamlı ama sınırlı zarar.",
+      "Medium / Low",
+      "kenar-grisi-300 arka-plan-grisi-50",
+      "Sınırlı etkili bulgular, uç durum tutarsızlıkları, kritik olmayan mantık sorunları veya büyük ekonomik zarara yol açma olasılığı olmayan güvenlik açıkları.",
+      "Avana güvenlik araştırmaları için sorumlu açıklama kapsamı ve ekonomik etki önceliklendirme rehberi.",
+      "Avana Bug Bounty, kullanıcı fonlarını veya protokol ödenebilirliğini etkileyebilecek sözleşmeler, risk sistemleri ve destekleyici altyapılar üzerindeki sorumlu bildirimleri kapsar.",
+      "Avana, AMM likidite pozisyonlarını teminat olarak kullandığı için kapsam, hem doğrudan sözleşme hatalarını hem de likidite, fiyatlandırma veya piyasa durumu kötü teminat değeri veya bozuk tasfiye haline dönüşebilecek başarısızlıkları içerir.",
+      "Ciddiyet önce ekonomiktir:",
+      "ödüller, sadece kod değişikliğinin ne kadar büyük göründüğünü değil, aynı zamanda fon kaybı, iflas, kötü borç veya sistemik teminat yanlış fiyatlaması gibi sonuçları ve istismar edilebilirliği takip eder.",
+      "Kapsam, araştırmacıların bir bulguyu aslında tehdit ettiği yığın parçasına eşleyebilmeleri için alt sistemlere ayrılmıştır: çekirdek ödünç verme, LP değerleme, yönetişim ve yönetim veya zincir dışı entegrasyonlar.",
+      "En yüksek hassasiyet",
+      "İçerir",
+      "Birincil riskler",
+      "Neden önemli:",
+      "Alt sistemler ayrı ayrı önceliklendirilir, ancak etki hâlâ likidite, kullanıcı fonlarının güvenliği, tasfiye bütünlüğü ve ilgili protokol riski üzerinden puanlanır.",
+      "Genel güvenlik açıkları puanları burada ana sıralama yöntemi değildir. Bulgular, güvenilir sömürü yolları ve yaratabilecekleri ekonomik sonuçlara göre değerlendirilir."
+    ]
+  },
+  "safety/contracts": {
+    "meta": {
+      "title": "Akıllı Sözleşme Güvenliği",
+      "description": "Avana akıllı sözleşme güvenliği referansı, güven sınırlarını, sözleşme yüzeylerini ve denetimler ile hata ödül programlarının LP destekli borç verme tasarımına nasıl uyduğunu kapsıyor."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "security-challenges",
+        "title": "Güvenlik Zorlukları"
+      },
+      {
+        "id": "multi-layer-security",
+        "title": "Çok Katmanlı Güvenlik"
+      },
+      {
+        "id": "core-contract-surfaces",
+        "title": "Temel Sözleşme Yüzeyleri"
+      },
+      {
+        "id": "trust-boundaries",
+        "title": "Güven Sınırları"
+      },
+      {
+        "id": "audit-readiness",
+        "title": "Denetim Hazırlığı"
+      }
+    ],
+    "strings": [
+      "Akıllı Sözleşme Güvenliği",
+      "Avana akıllı sözleşme güvenliği referansı, güven sınırlarını, sözleşme yüzeylerini ve denetimler ile hata ödül programlarının LP destekli borç verme tasarımına nasıl uyduğunu kapsıyor.",
+      "Genel Bakış",
+      "Güvenlik Zorlukları",
+      "Çok Katmanlı Güvenlik",
+      "Temel Sözleşme Yüzeyleri",
+      "Güven Sınırları",
+      "Denetim Hazırlığı",
+      "Spoke mantığını ödünç al",
+      "LP destekli krediler için teminat kabulü, kullanıcı muhasebesi ve çubuk tarafı yaşam döngüsünü yönetir.",
+      "Merkez entegrasyonu",
+      "Halka katmanındaki paylaşılan kredi ve likidite kısıtlamalarına tekerlek düzeyindeki borçlanma kapasitesini bağlar.",
+      "Oracle ve değerleme adaptörleri",
+      "LP pozisyonları, dış fiyatlar, pozisyon yeniden inşası ve geri kazanılabilir değer varsayımları kullanarak muhafazakar teminat değerlerine çevirin.",
+      "Tasfiye yürütme katmanı",
+      "Koordinatlar, sağlıksız bir hesabın kapatılması veya yeniden boyutlandırılması gerektiğinde yolları, ücret gerçekleştirmesini, yönlendirmeyi ve mutabakatı çözümleyebilir.",
+      "Sözleşmeler ve Güvenlik",
+      "LP destekli kredilendirme kapsamında, sözleşme yüzeyleri, dış bağımlılıklar ve inceleme sınırları için güvenlik referansı.",
+      "Avana, LP teminatına karşı borç verir, bu nedenle güvenlik incelemesi sadece bir sözleşmenin derlenip derlenmediğini veya bakiyeleri doğru şekilde aktarıp aktarmadığını kapsamakla kalmaz. Ayrıca, piyasa baskı altındayken fiyatlandırma, saklama, tasfiye ve ayrıcalıklı kontrollerin nasıl davrandığını da kapsamalıdır.",
+      "Sözleşme incelemesi, ekonomik inceleme ve operasyonel inceleme tümü LP pazar için önemlidir. Birbirlerini pekiştirirler ve üç ayrı kontrol listesi olarak değil, tek bir güvenlik programı olarak ele alınmalıdırlar.",
+      "• LP değer yol bağımlı olabilir ve çoğu zaman mekan-spesifik saklama ve çözme mantığı gerektirir.",
+      "• Oracle'ın yanlış kullanımı veya eski fiyatlandırma, sözleşmeler tam olarak kodlandığı gibi yürütüldüğünde bile ekonomik kayba yol açabilir.",
+      "• Yönetişim, parametre kontrolü ve acil durum müdahalesi, saldırı yüzeyinin bir parçasıdır.",
+      "Sözleşme incelemesi",
+      "Yeni LP aileleri veya yeni yürütme yolları etkinleştirilmeden önce temel sözleşme yüzeyleri, adaptörler ve ayrıcalıklı kontrol yolları gözden geçirilmelidir.",
+      "Ekonomik stres testi",
+      "Sadece birim seviyesindeki sözleşme davranışını değil, piyasa şoklarını, oracle uç durumlarını ve tasfiye yönlendirme hatalarını da test edin.",
+      "Harici inceleme kanalları",
+      "Resmî denetimler ve",
+      "Hata Ödülü",
+      "Program her ikisi de aktif kalmalıdır. Biri diğeri yerine geçmez.",
+      "• Başlatıldığında, zincir üstü muhasebe ve tasfiye hesabı belirleyici olmalıdır.",
+      "• Oracle kaynakları, mekan adaptörleri ve operasyonel tasfiye altyapısı dış bağımlılıklardır ve bu şekilde izlenmelidir.",
+      "• Yönetişim, durdurma yetkisi ve yükseltmeler, mümkün olduğunda sınırlı, incelenebilir ve zaman kilitli kalması gereken ayrıcalıklı yetkilerdir.",
+      "Bu sayfa, spekülatif denetçi takvimlerini veya geçici dönüm noktalarını yayımlamaz. Denetim raporları, kapsamları ve düzeltme notları, gerçekten mevcut olduklarında ve tam olarak incelenebildiklerinde yayımlanmalıdır.",
+      "Yüksek değerli denetim hedefleri genellikle yeni LP aile desteği, yeni tasfiye yolları, yeni oracle modelleri ve ayrıcalıklı kontrolü veya geri kazanılabilir değer varsayımlarını genişleten herhangi bir değişikliği içerir."
+    ]
+  },
+  "safety/insurance": {
+    "meta": {
+      "title": "Sigorta Fonları",
+      "description": "Avana için planlanan destek tasarımı, gelecekte bir sigorta fonunun likidasyon açıklarını LP destekli borçlanma modelinin temelini değiştirmeden nasıl ele alabileceğini açıklıyor."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "purpose",
+        "title": "Amaç"
+      },
+      {
+        "id": "funding-approach",
+        "title": "Finansman Yaklaşımı"
+      },
+      {
+        "id": "activation-path",
+        "title": "Aktivasyon Yolu"
+      },
+      {
+        "id": "coverage-boundary",
+        "title": "Kapsama Sınırı"
+      }
+    ],
+    "strings": [
+      "Sigorta Fonları",
+      "Avana için planlanan destek tasarımı, gelecekte bir sigorta fonunun likidasyon açıklarını LP destekli borçlanma modelinin temelini değiştirmeden nasıl ele alabileceğini açıklıyor.",
+      "Genel Bakış",
+      "Amaç",
+      "Finansman Yaklaşımı",
+      "Aktivasyon Yolu",
+      "Kapsama Sınırı",
+      "Normal LP tasfiye yolu zaten çalıştıktan sonra kalan kötü borcun ele alınması için planlanan yedek katman.",
+      "Avana'in ilk savunma hattı, temkinli teminat değerlemesi, sınırlı risk maruziyeti ve zamanında tasfiyedir. Gelecekteki bir sigorta fonu, bu kontrollerin arkasında yer alacak ve yalnızca tasfiye kötü borcu tamamen kapatamadığında devreye girecektir.",
+      "Bu sayfa planlanan bir koruma katmanını tanımlar. Bugün her dağıtımda canlı bir sigorta fonunun bulunduğuna dair bir garanti değildir.",
+      "Aktifleştirildiğinde, fon yönetim tarafından onaylanmış hazine tahsisleri, rezerv katkıları veya özel bir güvenlik modülü aracılığıyla finanse edilebilir. Kesin finansman karışımı bir risk-yönetimi kararıdır ve program şartları ile birlikte yayımlanmalıdır.",
+      "• İzin verilen bir tasfiye yolu tamamlandıktan sonra kalan bir açığı tespit edin.",
+      "• Açığın, fonun onaylanmış kapsam politikasına uygun olup olmadığını doğrulayın.",
+      "• Yönetişim tarafından belirlenen sermaye artırımı veya açık kapatma yolunu uygulayın.",
+      "• Tetikleyici olay, verilen yanıt ve takip kontrollerini açıklayan bir olay sonrası özet yayımlayın.",
+      "Kapsam dar tutulmalıdır. Hedef, likidasyon sonrası protokol kötü borcunu karşılamak olup, kullanıcı işlem kayıpları, geçici kayıplar, piyasa hareketleri veya DeFi'deki her üçüncü tarafın başarısızlığına karşı genel bir garanti vermek değildir.",
+      "Karşılanan açıklar ve olağan piyasa riski için keskin bir çizgi gereklidir, böylece fon normal LP sonuçlar için tazminata dönüşmez."
+    ]
+  },
+  "safety": {
+    "meta": {
+      "title": "Güvenlik Mekanizmaları - Risk Çerçevesi",
+      "description": "Avana Hub ve LP Teminat Dalları için rol, sınırlı güncellemeler ve acil durum kontrollerini içeren protokol genelinde risk yönetimi."
+    },
+    "toc": [
+      {
+        "id": "overview",
+        "title": "Genel Bakış"
+      },
+      {
+        "id": "core-principles",
+        "title": "Temel İlkeler"
+      },
+      {
+        "id": "roles",
+        "title": "Roller"
+      },
+      {
+        "id": "update-flow",
+        "title": "Akışı Güncelle"
+      },
+      {
+        "id": "parameter-classes",
+        "title": "Parametre Sınıfları"
+      },
+      {
+        "id": "public-disclosure",
+        "title": "Kamuya Açıklama"
+      },
+      {
+        "id": "emergency-actions",
+        "title": "Acil Durum Eylemleri"
+      }
+    ],
+    "strings": [
+      "Güvenlik Mekanizmaları - Risk Çerçevesi",
+      "Avana Hub ve LP Teminat Dalları için rol, sınırlı güncellemeler ve acil durum kontrollerini içeren protokol genelinde risk yönetimi.",
+      "Genel Bakış",
+      "Temel İlkeler",
+      "Roller",
+      "Akışı Güncelle",
+      "Parametre Sınıfları",
+      "Kamuya Açıklama",
+      "Acil Durum Eylemleri",
+      "Rol Ayrımı",
+      "Çerçeve, önerme, gözden geçirme ve acil durum kontrolünü farklı aktörlere atar, böylece tek bir taraf tüm süreci tek başına kontrol etmez.",
+      "Kısıtlanmış Çalıştırma",
+      "Rutin risk değişiklikleri yalnızca önceden belirlenmiş politika sınırları içinde kaldıklarında ve doğrulama kontrollerinden geçtiklerinde gerçekleştirilir.",
+      "Kamu Tutarlılığı",
+      "Halka açık olarak tanımlanan güncelleme, aslında yürütülmek üzere sıraya alınmış olan aynı güncelleme olmalıdır.",
+      "Konuşma Farkındalığı",
+      "Her LP teminat varlığı kendi listeleme kurallarına, oracle varsayımlarına, tasfiye yoluna ve risk profiline sahiptir.",
+      "Savunma Asimetrisi",
+      "Süreç kasıtlı olarak önyargılıdır, bu nedenle riski azaltmak, riski artırmaktan daha hızlı ve daha basittir.",
+      "Avana Risk Başlatıcı",
+      "Hub ve LP Teminat Dallar için rutin risk değişikliklerini hazırlayan ve tavsiye eden rol.",
+      "Gerekçeyi yayınlayın ve güncellemeyi savunma odaklı mı yoksa büyüme odaklı mı olarak sınıflandırın",
+      "Rutin güncellemeleri zaman kilitli yürütme yoluna gönderin",
+      "Onaylanmış aralıklar içinde tedarik sınırları, borçlanma sınırları, LT/LTV, rezerv faktörü ve faiz oranı değişikliklerini önerin",
+      "Önceden onaylanmış konuşma şablonları içinde konuşma düzeyinde risk azaltmayı başlatın ve havuz katılımını başlatın",
+      "Avana Risk Koruyucusu",
+      "Sıradaki rutin değişiklikler üzerinde veto yetkisine sahip bağımsız inceleyici.",
+      "Kuyruğa alınmış güncellemenin kamuya açıklama ile eşleştiğini doğrulayın",
+      "Eylemin onaylanmış politika sınırları içinde kaldığını kontrol edin",
+      "Geçersiz oracle, likidite veya tasfiye varsayımlarına dayalı güncellemeleri reddet",
+      "Belirgin bir spoke düzeyi veya hub düzeyi istikrarsızlık oluşturduğunda zaman kilidi penceresi sırasında sıradaki güncellemeyi iptal edin",
+      "Avana Risk Savunucusu",
+      "Sadece acil durum rolü, normal zaman kilitli yol çok yavaş olduğunda olayları içermek için kullanılırdı.",
+      "Borç alma sınırlarını veya arz sınırlarını savunma seviyelerine düşürün",
+      "Bir kola yeni borç almayı durdurun veya bir havuz, şablon veya kola için teminat kullanımını dondurun",
+      "Önceden tanımlanmış arıza koşulları karşılandığında belirli bir adaptörü veya ödünç yolunu devre dışı bırak",
+      "Acil durum koşulları altında yeni borç oluşturmayı engelle, rutin optimizasyon veya büyüme eylemleri için kullanılmamalıdır",
+      "Halk Duyurusu",
+      "Risk Başlatıcısı, planlanan değişikliği, neden gerekli olduğunu ve etkilemesi beklenen kapsamı yayınlar.",
+      "Risk Başlatıcı, önerilen değişikliği framework tarafından kullanılan yürütme yoluna yerleştirir.",
+      "Çerçeve kontrolleri, güncellemenin önceden tanımlanmış sınırlamalar ve onaylanmış politika sınırları içinde kaldığını doğrular.",
+      "Doğrulama geçerse, değişiklik hemen yürütülmek yerine bir zaman kilidi penceresine girer.",
+      "Guardian İncelemesi",
+      "Zaman kilidi sırasında, Risk Koruyucusu sıraya alınmış tam yükü gözden geçirir ve gerekirse iptal edebilir.",
+      "Değişiklik incelemeyi geçerse, zaman kilidi sona erdiğinde otomatik olarak yürütülür.",
+      "Acil Yol",
+      "Acil durum koşulları karşılandığında, Risk Savunucusu daha sınırlı yetkiye sahip ayrı bir savunma yolunu kullanabilir.",
+      "Savunma Değişiklikleri",
+      "kenar-kırmızı-400 arka-plan-kırmızı-50/70",
+      "Bunlar en hızlı rutin değişikliklerdir çünkü protokol maruziyetini azaltırlar.",
+      "Borçlanma sınırlarını düşürmek",
+      "Arz sınırlarını düşürmek",
+      "LTV veya tasfiye eşiğini azaltmak",
+      "Borç veya teminat kullanımını dondurma",
+      "Göbek ayarlarını sıkma",
+      "Rutin Sınırlı Değişiklikler",
+      "sınır-kehribar-400 arka-plan-kehribar-50/70",
+      "Bunlar, onaylanmış sınırlar içinde standart Başlatıcı -> Koruyucu -> zaman kilidi yolunu izler.",
+      "Mütevazı tavan artışları",
+      "Onaylı aralıklar içinde mütevazı parametre ayarı",
+      "Mevcut bir spoke şablonunun içine yeni havuzlar eklemek",
+      "Yönetim Düzeyi Değişiklikleri",
+      "kenar-grisi-300 arka-plan-grisi-50",
+      "Bunlar rutin çerçevenin dışındadır ve daha yüksek düzeyde bir karar yoluna ihtiyaç duyar.",
+      "Yeni bir spoke ailesi oluşturma",
+      "Yeni bir LP ilkelini etkinleştirme",
+      "Yeni bir oracle modeli eklemek",
+      "Yeni bir tasfiye adaptörünü etkinleştirme",
+      "Risk yüzeyini önceden onaylanmış varsayımların ötesinde maddi olarak genişletmek",
+      "Etkilenen konuşma",
+      "Etkilenen havuzlar veya şablonlar",
+      "Mevcut parametreler",
+      "Önerilen parametreler",
+      "Güncellemenin nedeni",
+      "Güncelleme savunmacı mı yoksa büyümeye yönelik mi",
+      "Beklenen teslim zamanı",
+      "Beklenen zaman kilidi penceresi",
+      "İlgili bağımlılıklar veya varsayımlar",
+      "Oracle tutarsızlığı",
+      "Tasfiye yolu bozulması",
+      "Anormal havuz davranışı",
+      "Sarmalayıcı bağımlılık hatası",
+      "Adaptör düzeyinde ihlal",
+      "Ani konuşma düzeyi kararsızlığı",
+      "Alınan eylem",
+      "Planlanan süre",
+      "Normal çalışmaya geri dönüş yolu",
+      "Risk Çerçevesi",
+      "Avana, Hub ve LP Teminat Dallarında risk değişikliklerini nasıl önerir, gözden geçirir ve uygular.",
+      "Avana Risk Çerçevesi, parametre değişikliklerinin Hub ve LP Teminat Dallarında nasıl önerildiğini, kontrol edildiğini ve uygulandığını tanımlar. Protokolün arz ve borç tavanlarını, LT/LTV ayarlarını, faiz oranı girdilerini, piyasa durumunu ve fiyatlara, kullanım oranına, havuz derinliğine, yoğunluğa, volatiliteye, sabit değer davranışına, devre kesicilere, pozisyon sağlığına ve ilgili duruma bağlı diğer parametreleri ayarlarken kullanılan kontrolleri kapsar.",
+      "LP teminat tek bir homojen varlık sınıfı değildir. Sabit LPler, korelasyonlu varlık LPleri, ağırlıklı havuzlar, yoğunlaştırılmış likidite ve diğer AMM tasarımları her biri kendi özel değerlendirme yolu, tasfiye yolu ve başarısızlık moduna sahip olabilir. Çerçeve, bu farklılıkların tek bir genel risk ayarının arkasına gizlenmek yerine güncelleme sürecinde yansıtılmasını sağlamak için mevcuttur.",
+      "Bu süreç boyunca üç rol ayrı tutulur: Avana Risk Başlatıcısı, Avana Risk Koruyucusu ve Avana Risk Savunucusu. Rutin bir değişikliği öneren taraf, bunu bağımsız olarak kontrol eden taraf ile aynı değildir ve acil durum sırasında hareket edebilecek rol, rutin yoldan kasıtlı olarak daha sınırlıdır.",
+      "Çalışma kuralı:",
+      "Rutin değişiklikler belirli bir yolu izler, böylece protokol normal parametre bakımını acil durum önlemelerinden ayırt edebilir. Standart sırayla halka duyuru, sunum, sınır kontrolleri, zaman kilidi, Guardian incelemesi ve öneri veto edilmezse yürütme yapılır.",
+      "Parametre değişikliklerinin hepsi aynı riski taşımaz, bu yüzden çerçeve onları ne kadar yetki gerektirmeleri gerektiğine ve ne kadar hızlı hareket edebilmeleri gerektiğine göre gruplar.",
+      "Her rutin güncelleme, geliştiricilerin, kullanıcıların ve değerlendiricilerin bildiriyi daha sonra sıraya alınan tam işlemle karşılaştırabilmesini sağlayan bir formatta göndermeden önce yayımlanmalıdır.",
+      "Asgari açıklama standardı",
+      "Tutarlı açıklama, bir öneriyi kapsam kayması, uyumsuz varsayımlar veya basit uygulama hataları açısından gözden geçirmeyi kolaylaştırır.",
+      "Acil eylemler, rutin ayarlamalar için değil, sınırlama içindir. Nadiren kullanılmalı, mümkün olduğunca dar tutulmalı ve protokol, acil risk anlaşıldıktan sonra standart yola geri dönecek şekilde yapılandırılmalıdır. Risk Savunucusu, yalnızca tanımlanmış veya yüksek olasılıklı bir arıza durumu normal zaman kilitli yolu güvensiz hale getirdiğinde hareket etmelidir.",
+      "Acil durum tetikleyicileri",
+      "Gerekli işlem sonrası açıklama",
+      "Acil durum yetkisi, normal zaman kilidi yolunda beklemenin güvenli olmadığı tanımlanmış veya yüksek olasılıklı arıza durumları için geçerlidir. Bu, rutin büyüme veya optimizasyon için bir yol değildir.",
+      "Tavsiye, inceleme ve acil önlem ayrı kalır çünkü LP teminat, tek bir değiştirilebilir varlık listesi değil, farklı yapılar ve başarısızlık biçimlerine sahip bir piyasa koleksiyonudur."
+    ]
+  }
+}

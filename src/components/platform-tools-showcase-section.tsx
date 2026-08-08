@@ -1,8 +1,9 @@
 import Image from "next/image"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 
-export default function PlatformToolsShowcaseSection() {
-  return (
+export default async function PlatformToolsShowcaseSection() {
+  return withMarketingI18n(['platform-tools-showcase-section'], (
     <section
       data-section="platform-tools-showcase"
       data-theme="beige"
@@ -11,7 +12,7 @@ export default function PlatformToolsShowcaseSection() {
       <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
         <SectionEyebrow tone="emerald">Lending tools</SectionEyebrow>
         <SectionTitle>
-          <span className="lg:whitespace-nowrap">Supply once. We’ll handle the complexity</span>
+          Supply once. We’ll handle the complexity
         </SectionTitle>
       </div>
 
@@ -25,5 +26,5 @@ export default function PlatformToolsShowcaseSection() {
         />
       </div>
     </section>
-  )
+  ))
 }
