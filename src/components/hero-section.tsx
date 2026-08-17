@@ -58,38 +58,6 @@ function repeatItems<T>(items: T[], count: number, offset: number) {
   return output
 }
 
-const poolTokenLogoUrls: Record<string, string> = {
-  AAVE: "https://coin-logos.simplr.sh/images/aave/standard.png",
-  AERO: "https://coin-logos.simplr.sh/images/aerodrome-finance/standard.png",
-  ARB: "https://coin-logos.simplr.sh/images/arbitrum/standard.png",
-  COMP: "https://coin-logos.simplr.sh/images/compound-governance-token/standard.png",
-  CRV: "https://coin-logos.simplr.sh/images/curve-dao-token/standard.png",
-  DAI: "https://coin-logos.simplr.sh/images/dai/standard.png",
-  ETH: "https://coin-logos.simplr.sh/images/ethereum/standard.png",
-  FRAX: "https://coin-logos.simplr.sh/images/frax/standard.png",
-  GRT: "https://coin-logos.simplr.sh/images/the-graph/standard.png",
-  LDO: "https://coin-logos.simplr.sh/images/lido-dao/standard.png",
-  LINK: "https://coin-logos.simplr.sh/images/chainlink/standard.png",
-  MATIC: "https://coin-logos.simplr.sh/images/matic-network/standard.png",
-  MKR: "https://coin-logos.simplr.sh/images/maker/standard.png",
-  OP: "https://coin-logos.simplr.sh/images/optimism/standard.png",
-  rETH: "https://coin-logos.simplr.sh/images/rocket-pool-eth/standard.png",
-  RPL: "https://coin-logos.simplr.sh/images/rocket-pool/standard.png",
-  SNX: "https://coin-logos.simplr.sh/images/synthetix-network-token/standard.png",
-  stETH: "https://coin-logos.simplr.sh/images/staked-ether/standard.png",
-  USDC: "https://coin-logos.simplr.sh/images/usd-coin/standard.png",
-  USDT: "https://coin-logos.simplr.sh/images/tether/standard.png",
-  UNI: "https://coin-logos.simplr.sh/images/uniswap/standard.png",
-  WBTC: "https://coin-logos.simplr.sh/images/wrapped-bitcoin/standard.png",
-  WETH: "https://coin-logos.simplr.sh/images/weth/standard.png",
-  cbETH: "https://coin-logos.simplr.sh/images/coinbase-wrapped-staked-eth/standard.png",
-  wstETH: "https://coin-logos.simplr.sh/images/wrapped-steth/standard.png",
-}
-
-function getPoolTokenLogo(symbol: string) {
-  return poolTokenLogoUrls[symbol] ?? `https://coin-logos.simplr.sh/images/${symbol.toLowerCase()}/standard.png`
-}
-
 const DeferredTestimonialSection = dynamic(() => import("@/components/homepage/HomepageTestimonialSection"), {
   loading: () => <SectionSkeleton minHeight="360px" />,
 })
@@ -108,8 +76,8 @@ function PoolCard({ pool }: { pool: HomepagePool }) {
   return (
     <div className="flex h-[58px] flex-shrink-0 items-center gap-2.5 rounded-full border border-[#d8e1ef] bg-white px-3.5 shadow-[0_2px_10px_rgba(15,23,42,0.03)] transition duration-150 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(15,23,42,0.06)]">
       <div className="relative flex items-center shrink-0">
-        <TokenLogo src={getPoolTokenLogo(pool.token0.symbol)} className="z-10" />
-        <TokenLogo src={getPoolTokenLogo(pool.token1.symbol)} className="-ml-2" />
+        <TokenLogo symbol={pool.token0.symbol} className="z-10" />
+        <TokenLogo symbol={pool.token1.symbol} className="-ml-2" />
       </div>
       <div className="min-w-0">
         <div className="flex items-baseline gap-1.5 whitespace-nowrap">

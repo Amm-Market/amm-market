@@ -98,15 +98,15 @@ const lpHubMarkets = [
     title: "Stable LP Hub",
     description:
       "Stablecoin LP markets built for tight pricing, low slippage, and minimal impermanent loss.",
-    pools: ["USDC / GHO", "USDT / USDC", "USDe / sUSDe", "GHO / USDe", "sUSDe / USDC"],
-    borrowable: ["sUSDe", "USDC", "USDT", "GHO", "USDe"],
+    pools: ["USDC / GHO", "USDT / USDC", "GHO / USDe", "USDe / USDC", "USDT / GHO"],
+    borrowable: ["USDC", "USDT", "GHO", "USDe", "DAI"],
   },
   {
     category: "Global Strategy hub",
     title: "Correlated LP Hub",
     description:
       "LP markets for assets that move together, built for tighter risk bands and cleaner borrowing power.",
-    pools: ["ETH / wstETH", "wstETH / cbETH", "ETH / rETH", "USDe / sUSDe", "GHO / USDe"],
+    pools: ["ETH / wstETH", "wstETH / cbETH", "ETH / rETH", "USDe / USDC", "GHO / USDe"],
     borrowable: ["ETH", "wstETH", "USDC", "GHO", "USDe"],
   },
   {
@@ -118,25 +118,6 @@ const lpHubMarkets = [
     borrowable: ["ETH", "wstETH", "WBTC", "cbBTC", "USDT", "USDC", "GHO", "AAVE"],
   },
 ] as const
-
-const hubTokenLogoUrls: Record<string, string> = {
-  AAVE: "https://coin-logos.simplr.sh/images/aave/standard.png",
-  cbBTC: "https://coin-logos.simplr.sh/images/coinbase-wrapped-btc/standard.png",
-  cbETH: "https://coin-logos.simplr.sh/images/coinbase-wrapped-staked-eth/standard.png",
-  ETH: "https://coin-logos.simplr.sh/images/ethereum/standard.png",
-  GHO: "https://coin-logos.simplr.sh/images/gho/standard.png",
-  rETH: "https://coin-logos.simplr.sh/images/rocket-pool-eth/standard.png",
-  sUSDe: "https://coin-logos.simplr.sh/images/staked-usde/standard.png",
-  USDC: "https://coin-logos.simplr.sh/images/usd-coin/standard.png",
-  USDe: "https://coin-logos.simplr.sh/images/usde/standard.png",
-  USDT: "https://coin-logos.simplr.sh/images/tether/standard.png",
-  WBTC: "https://coin-logos.simplr.sh/images/wrapped-bitcoin/standard.png",
-  wstETH: "https://coin-logos.simplr.sh/images/wrapped-steth/standard.png",
-}
-
-function getHubTokenLogo(symbol: string) {
-  return hubTokenLogoUrls[symbol] ?? `https://coin-logos.simplr.sh/images/${symbol.toLowerCase()}/standard.png`
-}
 
 function HubPoolIcon({ pool }: { pool: string }) {
   if (pool.includes("More")) {
@@ -154,7 +135,7 @@ function HubPoolIcon({ pool }: { pool: string }) {
       {[first, second].map((token, index) => (
         <TokenLogo
           key={`${pool}-${token}`}
-          src={getHubTokenLogo(token)}
+          symbol={token}
           className={`h-5 w-5 rounded-full ring-2 ring-white ${index > 0 ? "-ml-1.5" : ""}`}
         />
       ))}
@@ -165,7 +146,7 @@ function HubPoolIcon({ pool }: { pool: string }) {
 function HubSingleTokenIcon({ token }: { token: string }) {
   return (
     <TokenLogo
-      src={getHubTokenLogo(token)}
+      symbol={token}
       className="h-5 w-5 rounded-full ring-2 ring-white"
     />
   )
