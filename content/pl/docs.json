@@ -38,7 +38,7 @@
       "Obsługiwana pozycja LP wnosi zdolność pożyczkową dopiero po tym, jak spoke ją dopuści, wyceni konserwatywnie i zastosuje collateral factor rynku.",
       "• Dokładne collateral factors żyją w konfiguracji każdego obsługiwanego poola.",
       "• Różne rodziny LP mogą mieć różne factors, progi likwidacji i bonusy.",
-      "• Czytaj to razem z Health Factor i Ramy likwidacji, gdy budujesz narzędzia monitoringu."
+      "• Czytaj to razem z Health Factor i Liquidation Framework, gdy budujesz narzędzia monitoringu."
     ]
   },
   "architecture/health-factor": {
@@ -79,7 +79,7 @@
       "Stosunek skorygowanej o ryzyko wartości zabezpieczenia do niespłaconego długu wewnątrz Borrow Spoke.",
       "Współczynnik zdrowia mierzy relację między skorygowaną o ryzyko wartością zabezpieczenia a niespłaconym długiem w Borrow Spoke. Skorygowana wartość zabezpieczenia obejmuje już wycenę LP Avana, collateral factors, traktowanie ryzyka na poziomie poola oraz założenia wartości odzyskiwalnej.",
       "Jeśli zdrowie spadnie poniżej granicy likwidacji, pozycja staje się kwalifikowana do likwidacji. Zobacz",
-      "Ramy likwidacji",
+      "Liquidation Framework",
       "Zdrowie jest liczone per Borrow Spoke. Licznik to skorygowana wartość zabezpieczenia — już zdyskontowana przez rekonstrukcję, pricing, collateral factors i założenia wartości odzyskiwalnej.",
       "healthFactor = adjustedCollateralValue / outstandingDebt",
       "Jeśli użytkownik ma zabezpieczenie w więcej niż jednym Borrow Spoke, każde spoke liczy zdrowie niezależnie. Nadwyżka w jednym rynku nie pokrywa deficytu w innym.",
@@ -200,7 +200,7 @@
   },
   "architecture": {
     "meta": {
-      "title": "Architektura protokołu — Borrow Spoke",
+      "title": "Protocol Architecture - Borrow Spoke",
       "description": "Jak Borrow Spoke przyjmuje zabezpieczenie LP, wycenia pozycje i pożycza z płynności Hubu."
     },
     "toc": [
@@ -234,7 +234,7 @@
       }
     ],
     "strings": [
-      "Architektura protokołu — Borrow Spoke",
+      "Protocol Architecture - Borrow Spoke",
       "Jak Borrow Spoke przyjmuje zabezpieczenie LP, wycenia pozycje i pożycza z płynności Hubu.",
       "Przegląd",
       "Doświadczenie użytkownika",
@@ -458,7 +458,7 @@
       "Model oracle Avana oddziela wartość principalu od wartości opłat, żeby protokół wiedział, ile pozycji to płynność bazowa, a ile — odbieralny dochód z opłat.",
       "Podczas likwidacji naliczone opłaty mogą być zastosowane, zanim odwijana jest płynność principalu — to zmniejsza, ile rdzennej pozycji LP trzeba naruszyć, by pokryć dług.",
       "Price Oracles",
-      "Ramy likwidacji",
+      "Liquidation Framework",
       "Twój principal LP nadal zarabia opłaty i pozostaje aktywny w poolu, gdy pożyczasz.",
       "Możesz zrealizować dochód z opłat bez odwijania pozycji zabezpieczenia.",
       "Kontrole zdrowia chronią przed takimi odbiorami opłat, które wyciągnęłyby zbyt dużo wartości i zostawiły dług niedostatecznie zabezpieczony."
@@ -525,13 +525,13 @@
       "Nowe lub zastępcze pozycje muszą pozostawać w zatwierdzonym zestawie pooli",
       "Akcje pożyczki nadal zależą od płynności Hubu i aktywnych capów",
       "Spłać lub dodaj zabezpieczenie, zanim zdrowie wejdzie w strefę likwidacji",
-      "Ramy likwidacji",
+      "Liquidation Framework",
       "Collateral Factors"
     ]
   },
   "getting-started": {
     "meta": {
-      "title": "Pierwsze kroki — wpłata LP",
+      "title": "Getting Started - Deposit LP",
       "description": "Jak wpłacić obsługiwaną pozycję LP do Avana i zacząć budować zdolność pożyczkową."
     },
     "toc": [
@@ -557,7 +557,7 @@
       }
     ],
     "strings": [
-      "Pierwsze kroki — wpłata LP",
+      "Getting Started - Deposit LP",
       "Jak wpłacić obsługiwaną pozycję LP do Avana i zacząć budować zdolność pożyczkową.",
       "Przegląd",
       "Przepływ wpłaty",
@@ -645,7 +645,7 @@
       "Odsetki naliczają się od otwartego długu, aż go spłacisz. Kwota w interfejsie obejmuje naliczone odsetki, nie tylko pierwotną pożyczkę.",
       "Gdy zdrowie jest blisko progu likwidacji, spłata to najszybszy sposób poprawy bezpieczeństwa. Bezpośrednio zmniejsza dług — bez czekania na odbicie rynków ani wcześniejszego dodawania zabezpieczenia.",
       "Gdy zdrowie przekroczy granicę likwidacji, zobacz",
-      "Ramy likwidacji"
+      "Liquidation Framework"
     ]
   },
   "getting-started/withdraw-collateral": {
@@ -1052,7 +1052,7 @@
       "Router koordynuje mechaniki właściwe dla DEX-a — wpłaty, wycofania, odbiór opłat i kroki unwindu — żeby te akcje nie musiały być rozsiane po każdym flow, które dotyka zabezpieczenia LP.",
       "Router nie decyduje o ryzyku. Collateral factors, kontrole zdrowia i kwalifikacja do likwidacji pozostają w Borrow Spoke, Hubie, stacku oracle i frameworku ryzyka. Zobacz",
       "Borrow Spoke",
-      "Ramy likwidacji",
+      "Liquidation Framework",
       "Różne DEX-y udostępniają różne metody wejścia, wyjścia i odbioru opłat. Router daje Avana jedną warstwę integracji dla tych mechanik, żeby builderzy nie musieli implementować każdego DEX-a osobno w każdym flow.",
       "Każda obsługiwana rodzina DEX ma adapter, który wie, jak odbierać opłaty, usuwać płynność i udostępniać akcje potrzebne protokołowi dla tego formatu LP. To utrzymuje zachowanie właściwe dla DEX-a w izolacji zamiast wyciekać do każdej ścieżki kodu skierowanej do użytkownika.",
       "Support adaptera ma znaczenie dopiero wtedy, gdy istnieje support wyceny i likwidacji dla tego DEX-a. Sam nowy adapter nie czyni poola bezpiecznym do dopuszczenia jako zabezpieczenie.",
@@ -1176,7 +1176,7 @@
     "toc": [
       {
         "id": "core-insight",
-        "title": "Kluczowy wniosek"
+        "title": "Główny insight"
       },
       {
         "id": "user-flow",
@@ -1202,7 +1202,7 @@
     "strings": [
       "Key Concepts",
       "Zrozum kluczowe pojęcia stojące za Avana — zachowanie zabezpieczenia LP, konserwatywną wycenę, pożyczanie z Hubu i likwidację.",
-      "Kluczowy wniosek",
+      "Główny insight",
       "Model pożyczania",
       "Oracle i wycena",
       "Zdolność pożyczkowa",
@@ -1331,7 +1331,7 @@
   },
   "legal": {
     "meta": {
-      "title": "Prawo i zgodność — ujawnienia bezpieczeństwa",
+      "title": "Legal & Compliance - Security Disclosures",
       "description": "Informacje prawne Avana — ograniczenia dostępu, ograniczone jurysdykcje, wymagania compliance i ujawnienia bezpieczeństwa."
     },
     "toc": [
@@ -1357,7 +1357,7 @@
       }
     ],
     "strings": [
-      "Prawo i zgodność — ujawnienia bezpieczeństwa",
+      "Legal & Compliance - Security Disclosures",
       "Informacje prawne Avana — ograniczenia dostępu, ograniczone jurysdykcje, wymagania compliance i ujawnienia bezpieczeństwa.",
       "Przegląd",
       "Ograniczenia dostępu",
@@ -1453,7 +1453,7 @@
       "Pożyczkobiorca może mieć kilka pozycji wnoszących wkład do jednej zdolności pożyczkowej na poziomie spoke — dlatego sekwencja likwidacji ma znaczenie.",
       "Przepracowane scenariusze pokazujące, jak jeden framework likwidacji jest stosowany do różnych kształtów zabezpieczenia LP.",
       "Te przykłady pokazują, jak likwidacja przebiega na typowych formatach LP w ramach",
-      "Ramy likwidacji",
+      "Liquidation Framework",
       "W każdym przypadku zadanie jest to samo: użyć konserwatywnych wycen zabezpieczenia, spłacić dług do warstwy kredytu, odwinąć LP obsługiwaną ścieżką i zwrócić ewentualną wartość rezydualną po kosztach egzekucji oraz nagrodzie likwidacyjnej.",
       "Pożyczkobiorca wpłacił fungible token LP z zatwierdzonego poola stable lub ważonego. Z czasem skład poola i wejścia oracle ruszają się na tyle, że konto nie ma już wystarczającej skorygowanej wartości zabezpieczenia względem długu.",
       "• Liquidation node wykrywa niedobór i pozyskuje płynność egzekucyjną.",
@@ -1533,7 +1533,7 @@
       "Likwidacja zaczyna się, gdy współczynnik zdrowia konta spadnie poniżej progu likwidacji. Aave obsługuje księgowość długu i punkt wejścia likwidacji wobec zabezpieczenia vault ERC-20. Avana obsługuje settlement LP stojący za tym vault tokenem.",
       "Dług jest spłacany, vault collateral przejmowane, odpowiadający vault token spalany, rzeczywista pozycja LP rozliczana, a ewentualna wartość rezydualna zwracana według reguły rynku.",
       "Polityka likwidacji żyje na stronie",
-      "Ramy likwidacji",
+      "Liquidation Framework",
       ". Ten przepływ zakłada model wartości odzyskiwalnej w",
       "Price Oracles",
       "Collateral Factors",
@@ -1595,7 +1595,7 @@
   },
   "liquidation": {
     "meta": {
-      "title": "Ramy likwidacji",
+      "title": "Liquidation Framework",
       "description": "Jak Avana obsługuje likwidację zabezpieczenia LP opartego na vault, gdy Aave uruchomi punkt wejścia likwidacji."
     },
     "toc": [
@@ -1609,7 +1609,7 @@
       },
       {
         "id": "core-rules",
-        "title": "Kluczowe reguły"
+        "title": "Core reguły"
       },
       {
         "id": "lp-complexity",
@@ -1633,11 +1633,11 @@
       }
     ],
     "strings": [
-      "Ramy likwidacji",
+      "Liquidation Framework",
       "Jak Avana obsługuje likwidację zabezpieczenia LP opartego na vault, gdy Aave uruchomi punkt wejścia likwidacji.",
       "Przegląd",
       "Trzy warstwy",
-      "Kluczowe reguły",
+      "Core reguły",
       "Złożoność zabezpieczenia LP",
       "Ścieżki likwidacji",
       "Stan pozycji",
@@ -1963,7 +1963,7 @@
   },
   "safety": {
     "meta": {
-      "title": "Mechanizmy bezpieczeństwa — ramy ryzyka",
+      "title": "Safety Mechanisms - Risk Framework",
       "description": "Zarządzanie ryzykiem w skali protokołu dla Hubu Avana i LP Collateral Spokes — w tym role, ograniczone aktualizacje i kontrole awaryjne."
     },
     "toc": [
@@ -1997,7 +1997,7 @@
       }
     ],
     "strings": [
-      "Mechanizmy bezpieczeństwa — ramy ryzyka",
+      "Safety Mechanisms - Risk Framework",
       "Zarządzanie ryzykiem w skali protokołu dla Hubu Avana i LP Collateral Spokes — w tym role, ograniczone aktualizacje i kontrole awaryjne.",
       "Przegląd",
       "Core zasady",
