@@ -35,7 +35,7 @@ export default async function AboutPage() {
               src="/images/Avana About.webp"
               alt="Avana about hero image"
               fill
-              preload
+              priority
               sizes="(min-width: 1024px) 1024px, 100vw"
               className="object-cover"
             />
