@@ -140,9 +140,9 @@ export default async function BlogPostLayout({
                   <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-gray-200 p-3.5 transition hover:bg-gray-50 md:min-h-[8.25rem] md:p-4">
                     <div className="space-y-3">
                       <p className="text-[0.88rem] font-medium tracking-[-0.01em] text-gray-500 md:text-[0.92rem]">{t("blogChrome.previousPost")}</p>
-                      <h4 className="line-clamp-2 text-[0.9rem] font-medium leading-5 tracking-[-0.02em] text-gray-900 md:text-[0.96rem]">
+                      <p className="line-clamp-2 text-[0.9rem] font-medium leading-5 tracking-[-0.02em] text-gray-900 md:text-[0.96rem]">
                         {prevPost.title}
-                      </h4>
+                      </p>
                     </div>
                   </div>
                 </Link>
@@ -154,9 +154,9 @@ export default async function BlogPostLayout({
                   <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-gray-200 p-3.5 text-end transition hover:bg-gray-50 md:min-h-[8.25rem] md:p-4">
                     <div className="space-y-3">
                       <p className="text-[0.88rem] font-medium tracking-[-0.01em] text-gray-500 md:text-[0.92rem]">{t("blogChrome.nextPost")}</p>
-                      <h4 className="line-clamp-2 text-[0.9rem] font-medium leading-5 tracking-[-0.02em] text-gray-900 md:text-[0.96rem]">
+                      <p className="line-clamp-2 text-[0.9rem] font-medium leading-5 tracking-[-0.02em] text-gray-900 md:text-[0.96rem]">
                         {nextPost.title}
-                      </h4>
+                      </p>
                     </div>
                   </div>
                 </Link>
