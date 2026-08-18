@@ -1,17 +1,16 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
+import { useMemo, useState } from "react"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
 import { lookupPhrase, usePhraseMap } from "@/components/phrase-map-context"
+import { getTokenIconSrc } from "@/lib/token-icons"
 
 type MarketCategory = "stablecoins" | "ethereum" | "bitcoin" | "others"
-type LogoSet = [string, string?]
 
 type MarketItem = {
   name: string
   ticker: string
   category: MarketCategory
-  logos: LogoSet
 }
 
 const tabs: { id: MarketCategory; label: string }[] = [
@@ -21,53 +20,64 @@ const tabs: { id: MarketCategory; label: string }[] = [
   { id: "others", label: "Others" },
 ]
 
-const coinLogo = (slug: string) => `https://coin-logos.simplr.sh/images/${slug}/standard.png`
-const siteFaviconLogo = (domain: string) => `https://www.google.com/s2/favicons?sz=128&domain=${domain}`
-const fallbackLogo = "/file.svg"
 const MARKET_ITEMS_PER_ROW = 9
 
 const marketItems: MarketItem[] = [
   // Stablecoins
-  { name: "USD Coin", ticker: "USDC", category: "stablecoins", logos: [coinLogo("usd-coin")] },
-  { name: "Tether", ticker: "USDT", category: "stablecoins", logos: [coinLogo("tether")] },
-  { name: "Dai", ticker: "DAI", category: "stablecoins", logos: [coinLogo("dai")] },
-  { name: "GHO", ticker: "GHO", category: "stablecoins", logos: [coinLogo("gho")] },
-  { name: "Curve USD", ticker: "crvUSD", category: "stablecoins", logos: [coinLogo("crvusd")] },
-  { name: "Frax", ticker: "FRAX", category: "stablecoins", logos: [coinLogo("frax")] },
-  { name: "USDe", ticker: "USDe", category: "stablecoins", logos: [coinLogo("ethena-usde")] },
-  { name: "PayPal USD", ticker: "PYUSD", category: "stablecoins", logos: [coinLogo("paypal-usd")] },
-  { name: "LUSD", ticker: "LUSD", category: "stablecoins", logos: [coinLogo("liquity-usd")] },
-  { name: "USDD", ticker: "USDD", category: "stablecoins", logos: [coinLogo("usdd")] },
+  { name: "USD Coin", ticker: "USDC", category: "stablecoins" },
+  { name: "Tether", ticker: "USDT", category: "stablecoins" },
+  { name: "Dai", ticker: "DAI", category: "stablecoins" },
+  { name: "GHO", ticker: "GHO", category: "stablecoins" },
+  { name: "Frax", ticker: "FRAX", category: "stablecoins" },
+  { name: "USDe", ticker: "USDe", category: "stablecoins" },
+  { name: "Ripple USD", ticker: "RLUSD", category: "stablecoins" },
+  { name: "Global Dollar", ticker: "USDG", category: "stablecoins" },
+  { name: "Euro Coin", ticker: "EURC", category: "stablecoins" },
+  { name: "USD+", ticker: "USD+", category: "stablecoins" },
+  { name: "Savings Dai", ticker: "sDAI", category: "stablecoins" },
+  { name: "Frax USD", ticker: "frxUSD", category: "stablecoins" },
 
   // Ethereum-based
-  { name: "Ether", ticker: "ETH", category: "ethereum", logos: [coinLogo("ethereum")] },
-  { name: "Wrapped Ether", ticker: "WETH", category: "ethereum", logos: [coinLogo("weth")] },
-  { name: "stETH", ticker: "stETH", category: "ethereum", logos: [coinLogo("staked-ether")] },
-  { name: "wstETH", ticker: "wstETH", category: "ethereum", logos: [coinLogo("wrapped-steth")] },
-  { name: "rETH", ticker: "rETH", category: "ethereum", logos: [coinLogo("rocket-pool-eth")] },
-  { name: "cbETH", ticker: "cbETH", category: "ethereum", logos: [coinLogo("coinbase-wrapped-staked-eth")] },
-  { name: "weETH", ticker: "weETH", category: "ethereum", logos: [coinLogo("wrapped-eeth")] },
-  { name: "ETHx", ticker: "ETHx", category: "ethereum", logos: [siteFaviconLogo("staderlabs.com")] },
-  { name: "osETH", ticker: "osETH", category: "ethereum", logos: [siteFaviconLogo("stakewise.io")] },
+  { name: "Ether", ticker: "ETH", category: "ethereum" },
+  { name: "Wrapped Ether", ticker: "WETH", category: "ethereum" },
+  { name: "stETH", ticker: "stETH", category: "ethereum" },
+  { name: "wstETH", ticker: "wstETH", category: "ethereum" },
+  { name: "rETH", ticker: "rETH", category: "ethereum" },
+  { name: "cbETH", ticker: "cbETH", category: "ethereum" },
+  { name: "weETH", ticker: "weETH", category: "ethereum" },
 
   // Bitcoin-based
-  { name: "Wrapped Bitcoin", ticker: "WBTC", category: "bitcoin", logos: [coinLogo("wrapped-bitcoin")] },
-  { name: "tBTC", ticker: "tBTC", category: "bitcoin", logos: [coinLogo("tbtc")] },
-  { name: "cbBTC", ticker: "cbBTC", category: "bitcoin", logos: [siteFaviconLogo("coinbase.com")] },
-  { name: "renBTC", ticker: "renBTC", category: "bitcoin", logos: [coinLogo("renbtc")] },
-  { name: "sBTC", ticker: "sBTC", category: "bitcoin", logos: [siteFaviconLogo("synthetix.io")] },
-  { name: "LBTC", ticker: "LBTC", category: "bitcoin", logos: [siteFaviconLogo("lombard.finance")] },
+  { name: "Bitcoin", ticker: "BTC", category: "bitcoin" },
+  { name: "Wrapped Bitcoin", ticker: "WBTC", category: "bitcoin" },
+  { name: "cbBTC", ticker: "cbBTC", category: "bitcoin" },
 
   // Others
-  { name: "Aave", ticker: "AAVE", category: "others", logos: [coinLogo("aave")] },
-  { name: "Uniswap", ticker: "UNI", category: "others", logos: [coinLogo("uniswap")] },
-  { name: "Chainlink", ticker: "LINK", category: "others", logos: [coinLogo("chainlink")] },
-  { name: "Curve", ticker: "CRV", category: "others", logos: [coinLogo("curve-dao-token")] },
-  { name: "Lido", ticker: "LDO", category: "others", logos: [coinLogo("lido-dao")] },
-  { name: "Compound", ticker: "COMP", category: "others", logos: [coinLogo("compound-governance-token")] },
-  { name: "Maker", ticker: "MKR", category: "others", logos: [coinLogo("maker")] },
-  { name: "Synthetix", ticker: "SNX", category: "others", logos: [coinLogo("synthetix-network-token")] },
-  { name: "The Graph", ticker: "GRT", category: "others", logos: [coinLogo("the-graph")] },
+  { name: "Aave", ticker: "AAVE", category: "others" },
+  { name: "Uniswap", ticker: "UNI", category: "others" },
+  { name: "Chainlink", ticker: "LINK", category: "others" },
+  { name: "Curve", ticker: "CRV", category: "others" },
+  { name: "Lido", ticker: "LDO", category: "others" },
+  { name: "Compound", ticker: "COMP", category: "others" },
+  { name: "Convex", ticker: "CVX", category: "others" },
+  { name: "Balancer", ticker: "BAL", category: "others" },
+  { name: "Aura", ticker: "AURA", category: "others" },
+  { name: "SushiSwap", ticker: "SUSHI", category: "others" },
+  { name: "PancakeSwap", ticker: "CAKE", category: "others" },
+  { name: "Aerodrome", ticker: "AERO", category: "others" },
+  { name: "Arbitrum", ticker: "ARB", category: "others" },
+  { name: "Optimism", ticker: "OP", category: "others" },
+  { name: "Polygon", ticker: "POL", category: "others" },
+  { name: "Base", ticker: "BASE", category: "others" },
+  { name: "BNB", ticker: "BNB", category: "others" },
+  { name: "Solana", ticker: "SOL", category: "others" },
+  { name: "Avalanche", ticker: "AVAX", category: "others" },
+  { name: "Blast", ticker: "BLAST", category: "others" },
+  { name: "Zora", ticker: "ZORA", category: "others" },
+  { name: "Worldcoin", ticker: "WORLD", category: "others" },
+  { name: "Moonwell", ticker: "WELL", category: "others" },
+  { name: "Gnosis", ticker: "GNO", category: "others" },
+  { name: "Degen", ticker: "DEGEN", category: "others" },
+  { name: "Brett", ticker: "BRETT", category: "others" },
 ]
 
 function repeatItems<T>(items: T[], count: number, offset: number) {
@@ -80,50 +90,30 @@ function repeatItems<T>(items: T[], count: number, offset: number) {
   return output
 }
 
-function LogoPill({ logos }: { logos: LogoSet }) {
-  if (logos.length === 2) {
-    const [firstLogo, secondLogo] = logos as [string, string]
-    if (firstLogo === secondLogo) {
-      return <LogoImage src={firstLogo} className="h-[2.25rem] w-[2.25rem]" />
-    }
+function LogoPill({ ticker }: { ticker: string }) {
+  const src = getTokenIconSrc(ticker)
 
+  if (!src) {
+    const initials = ticker.slice(0, 4).toUpperCase()
     return (
-      <div className="flex items-center -space-x-1.5">
-        <LogoImage src={firstLogo} className="h-8 w-8" />
-        <LogoImage src={secondLogo} className="h-8 w-8" />
-      </div>
+      <span
+        aria-hidden="true"
+        className="inline-flex h-[2.25rem] w-[2.25rem] shrink-0 items-center justify-center rounded-full bg-[#e6eefc] text-[0.6rem] font-semibold text-[#1f2937]"
+      >
+        {initials}
+      </span>
     )
   }
-
-  return <LogoImage src={logos[0]} fallbackSrc={logos[1]} className="h-[2.25rem] w-[2.25rem]" />
-}
-
-function LogoImage({ src, fallbackSrc, className }: { src: string; fallbackSrc?: string; className: string }) {
-  const [currentSrc, setCurrentSrc] = useState(src)
-
-  useEffect(() => {
-    setCurrentSrc(src)
-  }, [src])
 
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={currentSrc}
+      src={src}
       alt=""
       aria-hidden="true"
       loading="lazy"
       decoding="async"
-      className={`${className} rounded-none object-contain`}
-      onError={() => {
-        if (currentSrc === src && fallbackSrc) {
-          setCurrentSrc(fallbackSrc)
-          return
-        }
-
-        if (currentSrc !== fallbackLogo) {
-          setCurrentSrc(fallbackLogo)
-        }
-      }}
+      className="h-[2.25rem] w-[2.25rem] rounded-full object-contain"
     />
   )
 }
@@ -131,7 +121,7 @@ function LogoImage({ src, fallbackSrc, className }: { src: string; fallbackSrc?:
 function MarketChip({ item }: { item: MarketItem }) {
   return (
     <article className="flex h-[3.45rem] w-[8.6rem] shrink-0 items-center gap-2.5 rounded-full border border-[#d8e1ef] bg-white px-2.5 shadow-[0_3px_8px_rgba(15,23,42,0.02)] sm:w-[8.95rem]">
-      <LogoPill logos={item.logos} />
+      <LogoPill ticker={item.ticker} />
       <div className="min-w-0">
         <div className="truncate text-[0.8rem] font-semibold leading-tight tracking-[-0.02em] text-slate-800">
           {item.name}
