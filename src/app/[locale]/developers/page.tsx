@@ -1,7 +1,6 @@
 import { withDocsI18n } from "@/lib/content-i18n/with-docs-i18n"
 import { createPageMetadata } from "@/lib/i18n/page-metadata"
 import { Link } from "@/i18n/navigation"
-import type { Metadata } from "next"
 import type { LucideIcon } from "lucide-react"
 import {
   ArrowRight,
@@ -13,7 +12,6 @@ import {
 } from "lucide-react"
 import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
-import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 
 const sections = [
   { id: "welcome", title: "Welcome" },
