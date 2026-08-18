@@ -1,10 +1,8 @@
 import { createPageMetadata } from "@/lib/i18n/page-metadata"
-import type { Metadata } from "next"
 import { LocalizedLegal } from "@/components/localized-legal"
 import { Link } from "@/i18n/navigation"
 import { ScrollSpySidebar } from "@/components/scroll-spy-sidebar"
 import { diatypeItalicFont } from "@/app/site-fonts"
-import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
 const sections = [
   { id: "eligibility", title: "1. Eligibility" },

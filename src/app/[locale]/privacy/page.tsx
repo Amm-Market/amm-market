@@ -1,10 +1,8 @@
 import { createPageMetadata } from "@/lib/i18n/page-metadata"
-import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 import { LocalizedLegal } from "@/components/localized-legal"
 import { Link } from "@/i18n/navigation"
 import { diatypeItalicFont } from "@/app/site-fonts"
-import { buildOgImagePath, siteRoutes } from "@/lib/site"
 
 const ScrollSpySidebar = dynamic(() => import("@/components/scroll-spy-sidebar").then((mod) => mod.ScrollSpySidebar))
 

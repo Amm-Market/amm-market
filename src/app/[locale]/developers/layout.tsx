@@ -1,9 +1,7 @@
 import { createPageMetadata } from "@/lib/i18n/page-metadata"
 import type React from "react"
-import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 import { DeveloperContentWrapper } from "@/components/developer-content-wrapper"
-import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 
 const DeferredDeveloperSidebar = dynamic(
   () => import("@/components/developer-sidebar"),

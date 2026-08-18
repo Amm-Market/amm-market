@@ -1,5 +1,4 @@
 import { createPageMetadata } from "@/lib/i18n/page-metadata"
-import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
@@ -7,7 +6,6 @@ import type { LucideIcon } from "lucide-react"
 import { Gauge, Layers, LockKeyhole, MoveRight, TrendingUp, WalletCards } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
-import { buildOgImagePath, siteRoutes } from "@/lib/site"
 import { LocalizedMarketing } from "@/components/localized-marketing"
 
 const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
@@ -15,9 +13,6 @@ const PlatformToolsShowcaseSection = dynamic(() => import("@/components/platform
 const InvestApySection = dynamic(() => import("@/components/invest-apy-section"))
 const InvestGrowthCalculatorSection = dynamic(() => import("@/components/invest-growth-calculator-section"))
 const DeferredTradeMarketShowcase = dynamic(() => import("@/components/deferred-trade-market-showcase"))
-
-const pageDescription =
-  "Supply single assets into LP-backed credit markets, keep liquidity flexible, and earn demand-driven yield across Avana."
 
 const stableSpokeFaqItems: InlineFaqItem[] = [
   {

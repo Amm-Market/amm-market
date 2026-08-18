@@ -177,9 +177,6 @@ function walk(dir, base = "") {
       const strings = collectFromSource(full)
       // pull metadata title/description separately if present
       const meta = { title: "", description: "" }
-      for (const s of strings) {
-        // metadata usually included via property assignment
-      }
       const src = fs.readFileSync(full, "utf8")
       const titleM = src.match(/title:\s*["'`]([^"'`]+)["'`]/)
       const descM = src.match(/description:\s*["'`]([^"'`]+)["'`]|description:\s*\n\s*["'`]([^"'`]+)["'`]/)
