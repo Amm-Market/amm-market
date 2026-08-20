@@ -44,8 +44,8 @@ export default async function CopilotProtocolsPage() {
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
             The router&apos;s reach is built on <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-gray-800">ILiquidityAdapter</code>{" "}
-            contracts. Each adapter is a standardized interface that bridges the router and AI
-            Copilot to a specific DeFi protocol, abstracting away protocol-specific complexity so
+            contracts. Each adapter is a standardized interface that bridges the router and Ask
+            AI to a specific DeFi protocol, abstracting away protocol-specific complexity so
             new integrations can be added without changing the caller.
           </p>
           <p className="text-sm leading-relaxed text-gray-600">

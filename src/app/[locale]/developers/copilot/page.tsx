@@ -21,9 +21,9 @@ import { createDocsMetadata } from "@/lib/content-i18n/docs-metadata"
 
 export async function generateMetadata(): Promise<Metadata> {
   return createDocsMetadata("copilot", {
-    title: "AI Copilot",
+    title: "Ask AI",
     description:
-      "How Avana's AI Copilot turns natural-language investment intent into data-driven, automated DeFi actions.",
+      "How Avana's Ask AI turns natural-language investment intent into data-driven, automated DeFi actions.",
   })
 }
 
@@ -99,20 +99,20 @@ export default async function CopilotIntroductionPage() {
     <div className="flex min-w-0 flex-col gap-8 xl:flex-row xl:items-start xl:gap-12">
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
-          title="AI Copilot"
+          title="Ask AI"
           description="An AI-driven layer that simplifies how people discover, assess, and act on DeFi opportunities on Avana."
         />
 
         <section id="overview" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            The Avana AI Copilot deploys independent operators to automate a wide range of DeFi
+            Avana&apos;s Ask AI deploys independent operators to automate a wide range of DeFi
             tasks from a single, conversational interface. It combines language understanding with
             real-time data aggregation so users can execute complex operations, track project
             updates, and analyze market trends without stitching together separate tools.
           </p>
           <p className="text-sm leading-relaxed text-gray-600">
-            The Copilot is built to lower the barrier to entry for liquidity provision. It
+            Ask AI is built to lower the barrier to entry for liquidity provision. It
             identifies and implements pool strategies while abstracting away wallet selection, chain
             switching, and LP setup, so more users can reach the earning potential of active LP
             positions.
@@ -160,7 +160,7 @@ export default async function CopilotIntroductionPage() {
         <section id="strategies" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">Trading Strategies</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            The Copilot navigates volatile markets with a combination of established indicators and
+            Ask AI navigates volatile markets with a combination of established indicators and
             adaptive machine learning.
           </p>
           <div className="space-y-4">
@@ -212,7 +212,7 @@ export default async function CopilotIntroductionPage() {
 
       <DeveloperScrollSpyRail
         sections={sections}
-        pageSummary="How the AI Copilot turns natural-language intent into automated, risk-aware DeFi actions across supported protocols."
+        pageSummary="How Ask AI turns natural-language intent into automated, risk-aware DeFi actions across supported protocols."
         sectionColor="cyan"
       />
     </div>
