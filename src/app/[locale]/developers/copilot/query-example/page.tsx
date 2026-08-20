@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return createDocsMetadata("copilot/query-example", {
     title: "Prompt Examples",
     description:
-      "How to craft precise, actionable prompts for the Avana AI Copilot, with end-to-end workflow examples.",
+      "How to craft precise, actionable prompts for Avana's Ask AI, with end-to-end workflow examples.",
   })
 }
 
@@ -56,11 +56,11 @@ const detailedSteps = [
   },
   {
     title: "Off-chain processing",
-    body: "The Copilot parses the request into a target asset (ETH), a condition (price < $1,800), and an action (buy 1 ETH), then determines it needs real-time price data.",
+    body: "Ask AI parses the request into a target asset (ETH), a condition (price < $1,800), and an action (buy 1 ETH), then determines it needs real-time price data.",
   },
   {
     title: "Oracle data fetch",
-    body: "The Copilot triggers an oracle query via middleware, and the oracle returns the current price.",
+    body: "Ask AI triggers an oracle query via middleware, and the oracle returns the current price.",
   },
   {
     title: "Decision-making",
@@ -68,7 +68,7 @@ const detailedSteps = [
   },
   {
     title: "Trade execution",
-    body: "When the condition is met, the Copilot prepares the transaction, signs it securely, and submits it to the network.",
+    body: "When the condition is met, Ask AI prepares the transaction, signs it securely, and submits it to the network.",
   },
   {
     title: "On-chain result",
@@ -128,7 +128,7 @@ export default async function CopilotQueryExamplePage() {
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
           title="Prompt Examples"
-          description="Craft precise, actionable prompts so the Copilot executes exactly what you intend."
+          description="Craft precise, actionable prompts so Ask AI executes exactly what you intend."
         />
 
         <section id="principles" className="mb-12">
@@ -156,7 +156,7 @@ export default async function CopilotQueryExamplePage() {
         <section id="interpretation" className="mb-12">
           <h2 className="mb-4 type-section-title text-gray-900">How Prompts Are Read</h2>
           <p className="mb-4 leading-relaxed text-gray-600">
-            The Copilot breaks each prompt into three components before it acts.
+            Ask AI breaks each prompt into three components before it acts.
           </p>
           <div className="grid gap-4 sm:grid-cols-3">
             {interpretation.map(({ title, body }) => (

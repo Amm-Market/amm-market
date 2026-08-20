@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return createDocsMetadata("copilot/workflow", {
     title: "Agent Workflow",
     description:
-      "The end-to-end workflow the Avana AI Copilot follows to turn intent into secure, optimized on-chain results.",
+      "The end-to-end workflow Avana's Ask AI follows to turn intent into secure, optimized on-chain results.",
   })
 }
 
@@ -62,7 +62,7 @@ const steps: Step[] = [
           <li><span className="font-medium text-gray-900">Risk &amp; strategy validation.</span> Cross-checks the request against historical data and preferences for viability.</li>
         </ul>
         <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-          The Copilot does not account for personal financial goals. Always validate suggestions against your own risk profile.
+          Ask AI does not account for personal financial goals. Always validate suggestions against your own risk profile.
         </p>
       </>
     ),
@@ -161,7 +161,7 @@ export default async function CopilotWorkflowPage() {
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader
           title="Agent Workflow"
-          description="The Copilot's end-to-end workflow translates intent into secure, optimized results. Here is how a request moves from question to outcome."
+          description="Ask AI's end-to-end workflow translates intent into secure, optimized results. Here is how a request moves from question to outcome."
         />
 
         <div className="space-y-12">
@@ -185,7 +185,7 @@ export default async function CopilotWorkflowPage() {
         <div className="mt-12 rounded-lg border border-gray-200 bg-gray-50 p-6">
           <h2 className="mb-2 type-section-title text-gray-900">From question to outcome</h2>
           <p className="text-sm leading-7 text-gray-600">
-            The Copilot goes beyond simple trade execution. It turns unstructured queries into
+            Ask AI goes beyond simple trade execution. It turns unstructured queries into
             auditable, optimized strategies, with every action backed by real-time data and executed
             through the router&apos;s standardized protocol adapters.
           </p>
