@@ -76,6 +76,9 @@ import {
   Umbrella,
   FileWarning,
   Gavel,
+  Bot,
+  Boxes,
+  MessageSquare,
 } from "lucide-react"
 
 // Navigation structure - exported for use in PageNavigation component
@@ -128,6 +131,17 @@ export const navigationSections = [
     ],
   },
   {
+    id: "copilot",
+    titleKey: "docs.sections.copilot",
+    icon: Bot,
+    items: [
+      { href: "/developers/copilot", labelKey: "docs.items.aiIntroduction", icon: Bot },
+      { href: "/developers/copilot/protocols", labelKey: "docs.items.copilotProtocols", icon: Boxes },
+      { href: "/developers/copilot/query-example", labelKey: "docs.items.copilotPrompts", icon: MessageSquare },
+      { href: "/developers/copilot/workflow", labelKey: "docs.items.copilotWorkflow", icon: Workflow },
+    ],
+  },
+  {
     id: "integrations",
     titleKey: "docs.sections.integrations",
     icon: Plug,
@@ -167,6 +181,7 @@ const sectionColors: Record<string, { headerBg: string; headerText: string; item
   "getting-started": { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
   architecture: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
   liquidation: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
+  copilot: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
   integrations: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
   safety: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
   legal: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },

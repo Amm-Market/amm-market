@@ -3,7 +3,7 @@ import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 import ProtocolRoadmapSection from "@/components/protocol-roadmap-section"
 import { SectionEyebrow, SectionTitle } from "@/components/shared"
-import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
+import { SITE_NAME } from "@/lib/site"
 import { LocalizedMarketing } from "@/components/localized-marketing"
 
 export async function generateMetadata() {
@@ -35,7 +35,7 @@ export default async function AboutPage() {
               src="/images/Avana About.webp"
               alt="Avana about hero image"
               fill
-              preload
+              priority
               sizes="(min-width: 1024px) 1024px, 100vw"
               className="object-cover"
             />

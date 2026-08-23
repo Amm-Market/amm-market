@@ -11,8 +11,7 @@ export default async function WebappHero() {
             alt="Avana homepage hero visual"
             width={1444}
             height={869}
-            preload
-            fetchPriority="high"
+            priority
             quality={62}
             className="h-auto w-full rounded-none"
             sizes="(max-width: 768px) 100vw, (max-width: 1536px) 64rem, 72rem"

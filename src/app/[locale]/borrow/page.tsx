@@ -224,10 +224,9 @@ export default async function BorrowPage() {
                       width={1200}
                       height={1200}
                       quality={58}
-                      preload
+                      priority
                       className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                       sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
-                      fetchPriority="high"
                     />
                 </div>
               </div>
@@ -397,12 +396,12 @@ export default async function BorrowPage() {
                 <div className="flex w-full flex-1">
                   <div className="flex h-[150px] w-full flex-col items-center justify-center rounded-lg bg-gradient-to-b from-blue-50 to-blue-100 p-2 text-center sm:h-auto">
                     <div className="flex size-full flex-col items-center justify-center rounded-md border border-blue-200 bg-white">
-                      <h4 className="text-base font-medium leading-normal text-blue-600 md:text-lg">
+                      <div className="text-base font-medium leading-normal text-blue-600 md:text-lg">
                         <div className={`flex items-center text-[32px] font-bold md:text-[48px] ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>
                           12+
                         </div>
                         <span>DEX Integrations</span>
-                      </h4>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -152,6 +152,7 @@ export default function InvestApySection() {
                         data-slot="apy-cell"
                         data-band={cell.band}
                         data-active={cell.band !== "inactive"}
+                        role="img"
                         aria-label={`${cell.apy.toFixed(1)}% APY`}
                         className="aspect-square w-full rounded-[5px] transition-colors duration-500"
                         style={{ backgroundColor: BAND_COLORS[cell.band] }}

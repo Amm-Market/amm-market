@@ -1,6 +1,4 @@
 import { createPageMetadata } from "@/lib/i18n/page-metadata"
-import type { Metadata } from "next"
-import { buildOgImagePath, SITE_NAME, siteRoutes } from "@/lib/site"
 
 /**
  * Newsroom section layout with SEO metadata

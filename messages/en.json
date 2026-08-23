@@ -97,6 +97,7 @@
         "gettingStarted": "Getting Started",
         "architecture": "Protocol Architecture",
         "liquidation": "Liquidation Framework",
+        "copilot": "Ask AI",
         "integrations": "Supported Integrations",
         "safety": "Safety Mechanisms",
         "legal": "Legal & Compliance"
@@ -121,6 +122,10 @@
         "liquidators": "Liquidators",
         "liquidationFlow": "Liquidation Flow",
         "liquidationExamples": "Liquidation Examples",
+        "aiIntroduction": "AI Introduction",
+        "copilotProtocols": "Supported Protocols",
+        "copilotPrompts": "Prompt Examples",
+        "copilotWorkflow": "Agent Workflow",
         "integrationsOverview": "Integrations Overview",
         "appkit": "AppKit",
         "allowedPools": "Allowed LP Pools",

@@ -1,5 +1,4 @@
 import { createPageMetadata } from "@/lib/i18n/page-metadata"
-import type { Metadata } from "next"
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 import type { LucideIcon } from "lucide-react"
@@ -15,11 +14,8 @@ import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSect
 import LeverageGlanceShowcaseSection from "@/components/leverage-glance-showcase-section"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
-import { buildOgImagePath, siteRoutes } from "@/lib/site"
+import { siteRoutes } from "@/lib/site"
 import { LocalizedMarketing } from "@/components/localized-marketing"
-
-const pageDescription =
-  "Use supported AMM positions as collateral to unlock LP-backed leverage and managed perps exposure through one unified Avana workflow."
 
 const loopingBenefits: {
   title: string
@@ -167,10 +163,9 @@ export default async function MultiplyPage() {
                       alt="Avana leverage market interface"
                       width={1400}
                       height={1400}
-                      preload
+                      priority
                       className="w-full h-auto rounded-[24px] md:rounded-[32px] lg:rounded-[40px]"
                       sizes="(max-width: 1024px) calc(100vw - 40px), 700px"
-                      fetchPriority="high"
                     />
                   </div>
                 </div>
