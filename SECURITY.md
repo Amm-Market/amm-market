@@ -22,8 +22,8 @@ If this repository is still in active development and has not reached a stable p
 Please report vulnerabilities through one of the private channels below:
 
 - GitHub Private Vulnerability Reporting for this repository, if enabled
-- Email: **security@avana.xyz**
-- Security contact page: **https://avana.xyz/security**
+- Email: **support@avana.cc**
+- Security contact page: **http://app.avana.cc/support-center**
 
 If you do not yet have a dedicated security email or page, replace the contact details above before publishing this file.
 
