@@ -1,6 +1,28 @@
-# Avana
+# Avana Marketing Site
 
 **Avana** is a lending protocol built on Aave V4 that enables AMM liquidity pool positions to be used as collateral. Liquidity providers from Uniswap, Balancer, Curve, or Aerodrome can deposit supported LP positions, have them evaluated inside market-specific risk frameworks, and borrow against them while the positions stay active in the underlying pools.
 
-The closest comparable system is [Fluid](https://fluid.instadapp.io/) (Instadapp). Fluid’s innovation is a unified liquidity layer where debt and collateral become DEX liquidity inside a vertically integrated stack. Avana’s design is different: it turns third-party AMM LP positions from across venues into borrowable collateral in a horizontally aggregative system. Fluid owns the liquidity rails; Avana works with the rails that already exist. The distinction shows up when you ask where liquidity lives, who controls the infrastructure, and what exactly is being collateralized.
+Avana competitor is [Fluid](https://fluid.instadapp.io/) (Instadapp). Fluid built their own unified liquidity layer that combines both lending and dex together, where collateral and debt can also be used as DEX liquidity inside one vertically integrated system. Avana takes a different approach. Instead of owning the liquidity rails, Avana plugs into the AMMs that already exist and lets users borrow against LP positions from across different Dexes. So the big difference is pretty simple: Fluid builds and controls the liquidity infrastructure, while Avana aggregates liquidity positions from the broader DeFi ecosystem and turns them into usable collateral.
 
+
+## Links
+
+* Website: https://avana.cc
+* App: https://app.avana.cc
+
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+## License
+
+Licensed under the MIT License.
