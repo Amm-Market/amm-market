@@ -14,7 +14,7 @@ export function FeatureCardTitle({
   return (
     <Tag
       className={cn(
-        "feature-card-title text-[1.45rem] font-medium leading-[1.08] tracking-[-0.045em] text-[#18323c]",
+        "feature-card-title text-[var(--type-card-title-size)] leading-[1.25] tracking-[-0.01em] text-[#18323c]",
         className,
       )}
     >
