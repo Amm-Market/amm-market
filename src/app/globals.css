@@ -1161,7 +1161,8 @@ body:has([data-developer-doc-shell]) footer.site-content-shell {
 }
 
 .dark .feature-card {
-  background-color: var(--surface-muted);
+  background-color: var(--card);
+  border: 1px solid var(--border);
 }
 
 .dark .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section h2,
