@@ -149,7 +149,7 @@ const parameterClasses = [
   },
   {
     title: "Governance-Level Changes",
-    tone: "border-gray-300 bg-muted/40",
+    tone: "border-gray-300 bg-gray-50",
     description: "These are outside the routine framework and require a higher-level decision path.",
     examples: [
       "Creating a new spoke family",
@@ -202,8 +202,8 @@ export default async function RiskFrameworkPage() {
         />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4">Overview</h2>
-          <p className="mb-4">
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
+          <p className="mb-4 text-gray-600 leading-relaxed">
             The Avana Risk Framework defines how parameter changes are proposed, checked, and
             executed across the Hub and LP Collateral Spokes. It covers the controls used when the
             protocol adjusts supply and borrow caps, LT/LTV settings, interest-rate inputs, market
@@ -211,36 +211,36 @@ export default async function RiskFrameworkPage() {
             concentration, volatility, peg behavior, circuit breakers, position health, and
             related state.
           </p>
-          <p className="mb-4">
+          <p className="mb-4 text-gray-600 leading-relaxed">
             LP collateral is not one homogeneous asset class. Stable LPs, correlated-asset LPs,
             weighted pools, concentrated liquidity, and other AMM designs can each have their own
             spoke-specific valuation path, liquidation path, and failure mode. The framework exists
             so those differences are reflected in the update process instead of being hidden behind
             a single generic risk setting.
           </p>
-          <p className="mb-4">
+          <p className="mb-4 text-gray-600 leading-relaxed">
             Three roles stay separate throughout that process: Avana Risk Initiator, Avana Risk
             Guardian, and Avana Risk Defender. The party that recommends a routine change is not
             the same party that independently checks it, and the role that can act during an
             emergency is intentionally narrower than the routine path.
           </p>
-          <p className="border-l-4 border-rose-400 pl-3">
+          <p className="text-sm text-gray-600 border-l-4 border-rose-400 pl-3">
             <strong>Operating rule:</strong> reducing risk should be easier than expanding it.
           </p>
         </section>
 
         <section id="core-principles" className="mb-12">
-          <h2 className="mb-4">Core Principles</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Core Principles</h2>
           <div className="grid gap-4 md:grid-cols-2">
             {corePrinciples.map((principle) => (
               <div
                 key={principle.title}
-                className="rounded-xl border border-border bg-white p-4"
+                className="rounded-xl border border-gray-200 bg-white p-4"
               >
-                <h3 className="mb-2 text-base">
+                <h3 className="mb-2 text-base font-semibold text-gray-900">
                   {principle.title}
                 </h3>
-                <p>
+                <p className="text-sm leading-relaxed text-gray-600">
                   {principle.description}
                 </p>
               </div>
@@ -249,16 +249,16 @@ export default async function RiskFrameworkPage() {
         </section>
 
         <section id="roles" className="mb-12">
-          <h2 className="mb-4">Roles</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Roles</h2>
           <div className="space-y-5">
             {roles.map((role) => (
               <div
                 key={role.title}
-                className="rounded-xl border border-border bg-white p-5"
+                className="rounded-xl border border-gray-200 bg-white p-5"
               >
-                <h3 className="text-lg">{role.title}</h3>
-                <p className="mt-2">{role.summary}</p>
-                <ul className="mt-4 space-y-2 text-sm text-type-secondary">
+                <h3 className="text-lg font-semibold text-gray-900">{role.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">{role.summary}</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600">
                   {role.responsibilities.map((item) => (
                     <li key={item} className="border-l-4 border-rose-300 pl-3">
                       {item}
@@ -271,8 +271,8 @@ export default async function RiskFrameworkPage() {
         </section>
 
         <section id="update-flow" className="mb-12">
-          <h2 className="mb-4">Update Flow</h2>
-          <p className="mb-6">
+          <h2 className="mb-4 type-section-title text-gray-900">Update Flow</h2>
+          <p className="mb-6 text-gray-600 leading-relaxed">
             Routine changes follow a fixed path so the protocol can distinguish normal parameter
             maintenance from emergency containment. The standard sequence is public notice,
             submission, bound checks, timelock, Guardian review, and execution if the proposal is
@@ -283,17 +283,17 @@ export default async function RiskFrameworkPage() {
             {updateFlow.map((item, index) => (
               <div
                 key={item.step}
-                className="rounded-xl border border-border bg-white p-4"
+                className="rounded-xl border border-gray-200 bg-white p-4"
               >
                 <div className="flex items-start gap-3">
                   <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-rose-100 text-xs font-semibold text-rose-700">
                     {index + 1}
                   </span>
                   <div>
-                    <h3 className="mb-1 text-base">
+                    <h3 className="mb-1 text-base font-semibold text-gray-900">
                       {item.step}
                     </h3>
-                    <p>
+                    <p className="text-sm leading-relaxed text-gray-600">
                       {item.description}
                     </p>
                   </div>
@@ -304,8 +304,8 @@ export default async function RiskFrameworkPage() {
         </section>
 
         <section id="parameter-classes" className="mb-12">
-          <h2 className="mb-4">Parameter Classes</h2>
-          <p className="mb-6">
+          <h2 className="mb-4 type-section-title text-gray-900">Parameter Classes</h2>
+          <p className="mb-6 text-gray-600 leading-relaxed">
             Parameter changes do not all carry the same risk, so the framework groups them by how
             much authority they should require and how quickly they should be able to move.
           </p>
@@ -316,13 +316,13 @@ export default async function RiskFrameworkPage() {
                 key={group.title}
                 className={`rounded-xl border p-4 ${group.tone}`}
               >
-                <h3 className="mb-1 text-base">
+                <h3 className="mb-1 text-base font-semibold text-gray-900">
                   {group.title}
                 </h3>
-                <p className="mb-3">
+                <p className="mb-3 text-sm leading-relaxed text-gray-700">
                   {group.description}
                 </p>
-                <ul className="space-y-2 text-sm text-type-secondary">
+                <ul className="space-y-2 text-sm text-gray-700">
                   {group.examples.map((item) => (
                     <li key={item} className="border-l-4 border-white/70 pl-3">
                       {item}
@@ -335,18 +335,18 @@ export default async function RiskFrameworkPage() {
         </section>
 
         <section id="public-disclosure" className="mb-12">
-          <h2 className="mb-4">Public Disclosure</h2>
-          <p className="mb-6">
+          <h2 className="mb-4 type-section-title text-gray-900">Public Disclosure</h2>
+          <p className="mb-6 text-gray-600 leading-relaxed">
             Every routine update should be published before submission in a format that lets
             developers, users, and reviewers compare the notice with the exact action that is later
             queued.
           </p>
 
-          <div className="rounded-xl border border-border bg-muted/40 p-5">
-            <h3 className="mb-3 text-base">
+          <div className="rounded-xl border border-gray-200 bg-gray-50 p-5">
+            <h3 className="mb-3 text-base font-semibold text-gray-900">
               Minimum disclosure standard
             </h3>
-            <ul className="grid gap-3 text-sm text-type-secondary md:grid-cols-2">
+            <ul className="grid gap-3 text-sm text-gray-600 md:grid-cols-2">
               {disclosureItems.map((item) => (
                 <li key={item} className="border-l-4 border-gray-300 pl-3">
                   {item}
@@ -355,15 +355,15 @@ export default async function RiskFrameworkPage() {
             </ul>
           </div>
 
-          <p className="mt-4">
+          <p className="mt-4 text-sm text-gray-600">
             Consistent disclosure makes it easier to review a proposal for scope creep, mismatched
             assumptions, or simple execution mistakes.
           </p>
         </section>
 
         <section id="emergency-actions" className="mb-12">
-          <h2 className="mb-4">Emergency Actions</h2>
-          <p className="mb-4">
+          <h2 className="mb-4 type-section-title text-gray-900">Emergency Actions</h2>
+          <p className="mb-4 text-gray-600 leading-relaxed">
             Emergency actions are for containment, not routine tuning. They should be used rarely,
             kept as narrow as possible, and structured so the protocol can return to the standard
             path once the immediate risk is understood. The Risk Defender should only act when a
@@ -372,10 +372,10 @@ export default async function RiskFrameworkPage() {
 
           <div className="grid gap-4 md:grid-cols-2">
             <div className="rounded-xl border border-red-200 bg-red-50/70 p-4">
-              <h3 className="mb-3 text-base">
+              <h3 className="mb-3 text-base font-semibold text-gray-900">
                 Emergency triggers
               </h3>
-              <ul className="space-y-2 text-sm text-type-secondary">
+              <ul className="space-y-2 text-sm text-gray-700">
                 {emergencyTriggers.map((item) => (
                   <li key={item} className="border-l-4 border-red-300 pl-3">
                     {item}
@@ -384,11 +384,11 @@ export default async function RiskFrameworkPage() {
               </ul>
             </div>
 
-            <div className="rounded-xl border border-border bg-white p-4">
-              <h3 className="mb-3 text-base">
+            <div className="rounded-xl border border-gray-200 bg-white p-4">
+              <h3 className="mb-3 text-base font-semibold text-gray-900">
                 Required post-action disclosure
               </h3>
-              <ul className="space-y-2 text-sm text-type-secondary">
+              <ul className="space-y-2 text-sm text-gray-600">
                 {emergencyDisclosures.map((item) => (
                   <li key={item} className="border-l-4 border-gray-300 pl-3">
                     {item}
@@ -398,14 +398,14 @@ export default async function RiskFrameworkPage() {
             </div>
           </div>
 
-          <p className="mt-6 border-l-4 border-rose-400 pl-3">
+          <p className="mt-6 text-sm text-gray-600 border-l-4 border-rose-400 pl-3">
             Emergency authority exists only for defined or highly probable failure cases where
             waiting on the normal timelock path is unsafe. It is not a path for routine growth or
             optimization.
           </p>
         </section>
 
-        <p>
+        <p className="text-sm leading-relaxed text-gray-600">
           Recommendation, review, and emergency containment remain separate because LP collateral
           is a collection of markets with different structures and failure modes, not one
           interchangeable asset list.

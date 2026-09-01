@@ -103,6 +103,8 @@
   --type-page-lead-size: 0.9375rem;
   --type-page-lead-size-sm: 1rem;
   --type-section-title-size: clamp(1.75rem, 2.2vw, 2rem);
+  --type-doc-section-title-size: 1.125rem;
+  --type-doc-section-title-size-sm: 1.25rem;
   --type-card-title-size: 1.25rem;
   --type-eyebrow-size: 0.9375rem;
   --type-body-size: 1rem;
@@ -631,10 +633,17 @@
   color: var(--type-color-secondary);
 }
 
-.developer-content[data-developer-doc-shell] section h2,
 .site-article-content h2,
 .site-editorial-content h3 {
   font-size: var(--type-section-title-size);
+  font-weight: var(--type-weight-emphasis);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+}
+
+.developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section h2 {
+  font-size: var(--type-doc-section-title-size);
   font-weight: var(--type-weight-emphasis);
   line-height: 1.25;
   letter-spacing: -0.01em;
@@ -650,7 +659,7 @@
   color: var(--foreground);
 }
 
-.developer-content[data-developer-doc-shell] section :is(p, li, td, dd),
+.developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section :is(p, li, td, dd),
 .site-article-content :is(p, li, td),
 .site-editorial-content :is(p, li, td) {
   font-size: var(--type-body-size);
@@ -672,11 +681,11 @@
   color: var(--foreground);
 }
 
-.developer-content[data-developer-doc-shell] a {
-  color: var(--avana-cyan);
+.developer-content[data-developer-doc-shell] [data-developer-doc-export-root] a {
+  color: #01aacf;
 }
 
-.developer-content[data-developer-doc-shell] a:hover {
+.developer-content[data-developer-doc-shell] [data-developer-doc-export-root] a:hover {
   text-decoration: underline;
 }
 
@@ -725,7 +734,10 @@
     font-size: var(--type-page-lead-size-sm);
   }
 
-  .developer-content[data-developer-doc-shell] section h2,
+  .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section h2 {
+    font-size: var(--type-doc-section-title-size-sm);
+  }
+
   .site-article-content h2,
   .site-editorial-content h3 {
     font-size: var(--type-section-title-size);
@@ -735,7 +747,7 @@
     font-size: var(--type-section-title-size);
   }
 
-  .developer-content[data-developer-doc-shell] section :is(p, li, td, dd),
+  .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section :is(p, li, td, dd),
   .site-article-content :is(p, li, td),
   .site-editorial-content :is(p, li, td) {
     font-size: var(--type-body-size-sm);

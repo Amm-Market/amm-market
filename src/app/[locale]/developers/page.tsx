@@ -101,10 +101,10 @@ function SectionHeader({
 }) {
   return (
     <div className="mb-6">
-      <h2>
+      <h2 className="type-section-title text-slate-950">
         {title}
       </h2>
-      <p className="mt-3 max-w-3xl type-body-copy">{description}</p>
+      <p className="mt-3 max-w-3xl type-body-copy text-slate-600">{description}</p>
     </div>
   )
 }
@@ -125,14 +125,14 @@ export default async function DevelopersPage() {
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <Link
               href="/developers/introduction/key-concepts"
-              className="inline-flex items-center gap-2 font-medium text-type-accent transition hover:opacity-80 hover:underline"
+              className="inline-flex items-center gap-2 font-medium text-[#01AACF] transition hover:opacity-80 hover:underline"
             >
               Start with Key Concepts
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/developers/architecture"
-              className="inline-flex items-center gap-2 font-medium text-type-secondary transition hover:text-foreground hover:underline"
+              className="inline-flex items-center gap-2 font-medium text-slate-700 transition hover:text-slate-950 hover:underline"
             >
               Explore Borrow Spoke
               <ArrowRight className="h-4 w-4" />
@@ -146,12 +146,12 @@ export default async function DevelopersPage() {
             description="Avana is a lending protocol built for LP collateral. It lets users deposit supported AMM positions, keep those positions active in the underlying pool, and borrow against them through Aave v4 infrastructure."
           />
 
-          <p className="max-w-3xl leading-7">
+          <p className="max-w-3xl text-sm leading-7 text-slate-600">
             Liquidity providers often have to remove liquidity before they can borrow against their
             capital. That means exiting the pool, giving up fee exposure, and interrupting the
             market position they already built.
           </p>
-          <p className="mt-3 max-w-3xl leading-7">
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
             Avana solves this by making supported LP positions usable as collateral. The LP stays
             live, Avana tracks and values the position, and Aave v4 handles the borrow-side
             accounting through an internal vault collateral token.
@@ -167,12 +167,12 @@ export default async function DevelopersPage() {
           <ol className="space-y-4">
             {flowSteps.map(({ step, title, description }) => (
               <li key={step} className="flex gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-sm font-semibold text-type-accent">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-sm font-semibold text-[#01AACF]">
                   {step}
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-base text-foreground">{title}</h3>
-                  <p className="mt-1 leading-7">{description}</p>
+                  <h3 className="text-base font-semibold text-slate-950">{title}</h3>
+                  <p className="mt-1 text-sm leading-7 text-slate-600">{description}</p>
                 </div>
               </li>
             ))}
@@ -188,12 +188,12 @@ export default async function DevelopersPage() {
           <ul className="space-y-4">
             {collateralHighlights.map(({ icon: Icon, title, description }) => (
               <li key={title} className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-type-accent">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-[#01AACF]">
                   <Icon className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-base text-foreground">{title}</h3>
-                  <p className="mt-1 leading-7">{description}</p>
+                  <h3 className="text-base font-semibold text-slate-950">{title}</h3>
+                  <p className="mt-1 text-sm leading-7 text-slate-600">{description}</p>
                 </div>
               </li>
             ))}
@@ -209,16 +209,16 @@ export default async function DevelopersPage() {
           <div className="grid gap-6 lg:grid-cols-3">
             {architectureBlocks.map(({ icon: Icon, title, description }) => (
               <div key={title}>
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-50 text-type-accent">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-50 text-[#01AACF]">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-4 text-base text-foreground">{title}</h3>
-                <p className="mt-2 leading-7">{description}</p>
+                <h3 className="mt-4 text-base font-semibold text-slate-950">{title}</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-600">{description}</p>
               </div>
             ))}
           </div>
 
-          <p className="mt-4 max-w-3xl leading-7">
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
             Builders should think of the system in two halves. The Hub is the common balance sheet
             and debt engine, while Borrow Spokes decide what each LP market can safely support and
             how that market must be unwound if it fails. The Lend Spoke feeds capital into the Hub

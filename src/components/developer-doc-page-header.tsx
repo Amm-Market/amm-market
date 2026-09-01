@@ -21,7 +21,7 @@ export function DeveloperDocPageHeader({ title, description }: DeveloperDocPageH
   return (
     <div className="mb-10">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <h1 className="type-page-title min-w-0 text-foreground">
+        <h1 className="type-page-title min-w-0 text-slate-950">
           {title}
         </h1>
 
@@ -30,10 +30,10 @@ export function DeveloperDocPageHeader({ title, description }: DeveloperDocPageH
         </div>
       </div>
 
-      <div className="mt-4 border-b border-border" />
+      <div className="mt-4 border-b border-slate-200" />
 
       {description ? (
-        <p className="type-page-lead mt-6 max-w-4xl text-type-secondary">{description}</p>
+        <p className="type-page-lead mt-6 max-w-4xl text-slate-600">{description}</p>
       ) : null}
     </div>
   )

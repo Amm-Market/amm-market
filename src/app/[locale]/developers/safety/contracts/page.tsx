@@ -57,13 +57,13 @@ export default async function ContractsArchitecturePage() {
         />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4">Overview</h2>
-          <p className="mb-4">
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
             Avana lends against LP collateral, so security review has to cover more than whether a
             contract compiles or transfers balances correctly. It also has to cover how pricing,
             custody, liquidation, and privileged controls behave when the market is under stress.
           </p>
-          <p>
+          <p className="text-sm leading-relaxed text-gray-600">
             Contract review, economic review, and operational review all matter for LP markets.
             They reinforce each other and should be treated as one security program, not as three
             unrelated checklists.
@@ -71,8 +71,8 @@ export default async function ContractsArchitecturePage() {
         </section>
 
         <section id="security-challenges" className="mb-12">
-          <h2 className="mb-4">Security Challenges</h2>
-          <ul className="space-y-3 text-sm text-type-secondary">
+          <h2 className="mb-4 type-section-title text-gray-900">Security Challenges</h2>
+          <ul className="space-y-3 text-sm text-gray-600">
             <li>• LP value can be path dependent and often needs DEX-specific custody and unwind logic.</li>
             <li>• Oracle misuse or stale pricing can create economic loss even when contracts execute exactly as coded.</li>
             <li>• Governance, parameter control, and emergency response are all part of the attack surface.</li>
@@ -80,25 +80,25 @@ export default async function ContractsArchitecturePage() {
         </section>
 
         <section id="multi-layer-security" className="mb-12">
-          <h2 className="mb-4">Multi-Layer Security</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Multi-Layer Security</h2>
           <div className="space-y-4">
-            <div className="rounded-lg border border-border bg-muted/40 p-4">
-              <h3 className="mb-1">Contract review</h3>
-              <p>
+            <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+              <h3 className="mb-1 font-semibold text-gray-900">Contract review</h3>
+              <p className="text-sm text-gray-600">
                 Core contract surfaces, adapters, and privileged control paths should be reviewed
                 before new LP families or new execution paths are enabled.
               </p>
             </div>
-            <div className="rounded-lg border border-border bg-muted/40 p-4">
-              <h3 className="mb-1">Economic stress testing</h3>
-              <p>
+            <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+              <h3 className="mb-1 font-semibold text-gray-900">Economic stress testing</h3>
+              <p className="text-sm text-gray-600">
                 Test market shocks, oracle edge cases, and liquidation routing failures, not just
                 unit-level contract behavior.
               </p>
             </div>
-            <div className="rounded-lg border border-border bg-muted/40 p-4">
-              <h3 className="mb-1">External review channels</h3>
-              <p>
+            <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+              <h3 className="mb-1 font-semibold text-gray-900">External review channels</h3>
+              <p className="text-sm text-gray-600">
                 Formal audits and the{" "}
                 <Link href="/developers/safety/bug-bounty" className="text-blue-600 hover:underline">
                   Bug Bounty
@@ -110,20 +110,20 @@ export default async function ContractsArchitecturePage() {
         </section>
 
         <section id="core-contract-surfaces" className="mb-12">
-          <h2 className="mb-4">Core Contract Surfaces</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Core Contract Surfaces</h2>
           <div className="space-y-4">
             {coreSurfaces.map((surface) => (
               <div key={surface.title} className="border-b border-gray-100 pb-4 last:border-b-0 last:pb-0">
-                <h3 className="mb-1">{surface.title}</h3>
-                <p>{surface.body}</p>
+                <h3 className="mb-1 font-semibold text-gray-900">{surface.title}</h3>
+                <p className="text-sm text-gray-600">{surface.body}</p>
               </div>
             ))}
           </div>
         </section>
 
         <section id="trust-boundaries" className="mb-12">
-          <h2 className="mb-4">Trust Boundaries</h2>
-          <ul className="space-y-3 text-sm text-type-secondary">
+          <h2 className="mb-4 type-section-title text-gray-900">Trust Boundaries</h2>
+          <ul className="space-y-3 text-sm text-gray-600">
             <li>• Onchain accounting and liquidation settlement should be deterministic once triggered.</li>
             <li>• Oracle sources, DEX adapters, and operational liquidator infrastructure are external dependencies and should be monitored as such.</li>
             <li>• Governance, pause authority, and upgrades are privileged powers that should remain bounded, reviewable, and timelocked wherever possible.</li>
@@ -131,13 +131,13 @@ export default async function ContractsArchitecturePage() {
         </section>
 
         <section id="audit-readiness" className="mb-12">
-          <h2 className="mb-4">Audit Readiness</h2>
-          <p className="mb-4">
+          <h2 className="mb-4 type-section-title text-gray-900">Audit Readiness</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
             This page does not publish speculative auditor schedules or placeholder milestones.
             Audit reports, scopes, and remediation notes should be published when they actually
             exist and can be reviewed in full.
           </p>
-          <p>
+          <p className="text-sm text-gray-600">
             High value audit targets usually include new LP family support, new liquidation paths,
             new oracle models, and any change that expands privileged control or recoverable value
             assumptions.

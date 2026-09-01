@@ -9,7 +9,7 @@ const DeferredDeveloperSidebar = dynamic(
     loading: () => (
       <aside
         aria-hidden="true"
-        className="hidden h-[calc(100vh-73px)] w-64 shrink-0 border-r border-border xl:block"
+        className="hidden h-[calc(100vh-73px)] w-64 shrink-0 border-r border-gray-200 xl:block"
       />
     ),
   },

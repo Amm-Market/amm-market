@@ -104,14 +104,14 @@ export default async function CopilotIntroductionPage() {
         />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4">Overview</h2>
-          <p className="mb-4">
+          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
             Avana&apos;s Ask AI deploys independent operators to automate a wide range of DeFi
             tasks from a single, conversational interface. It combines language understanding with
             real-time data aggregation so users can execute complex operations, track project
             updates, and analyze market trends without stitching together separate tools.
           </p>
-          <p>
+          <p className="text-sm leading-relaxed text-gray-600">
             Ask AI is built to lower the barrier to entry for liquidity provision. It
             identifies and implements pool strategies while abstracting away wallet selection, chain
             switching, and LP setup, so more users can reach the earning potential of active LP
@@ -120,20 +120,20 @@ export default async function CopilotIntroductionPage() {
         </section>
 
         <section id="router" className="mb-12">
-          <h2 className="mb-4">Router Contract</h2>
-          <p className="mb-4">
+          <h2 className="mb-4 type-section-title text-gray-900">Router Contract</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
             Avana introduces a router contract that standardizes interaction between DeFi
             applications. It acts as a universal communication layer, much like a USB port for
             DeFi, giving the AI a consistent way to connect and act across protocols and fostering
             interoperability across the ecosystem.
           </p>
-          <p>
+          <p className="text-sm text-gray-600">
             See the{" "}
-            <Link href="/developers/integrations/router-contract" className="text-type-accent hover:underline">
+            <Link href="/developers/integrations/router-contract" className="text-[#01AACF] hover:underline">
               Router &amp; Adapters
             </Link>{" "}
             reference and{" "}
-            <Link href="/developers/copilot/protocols" className="text-type-accent hover:underline">
+            <Link href="/developers/copilot/protocols" className="text-[#01AACF] hover:underline">
               Supported Protocols
             </Link>{" "}
             for the adapter interfaces this relies on.
@@ -141,16 +141,16 @@ export default async function CopilotIntroductionPage() {
         </section>
 
         <section id="core-features" className="mb-12">
-          <h2 className="mb-4">Core Features</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Core Features</h2>
           <div className="space-y-4">
             {coreFeatures.map(({ icon: Icon, title, body }) => (
-              <div key={title} className="flex items-start gap-4 rounded-lg border border-border bg-muted/40 p-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-type-accent">
+              <div key={title} className="flex items-start gap-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-[#01AACF]">
                   <Icon className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="mb-1">{title}</h3>
-                  <p>{body}</p>
+                  <h3 className="mb-1 font-semibold text-gray-900">{title}</h3>
+                  <p className="text-sm text-gray-600">{body}</p>
                 </div>
               </div>
             ))}
@@ -158,20 +158,20 @@ export default async function CopilotIntroductionPage() {
         </section>
 
         <section id="strategies" className="mb-12">
-          <h2 className="mb-4">Trading Strategies</h2>
-          <p className="mb-4">
+          <h2 className="mb-4 type-section-title text-gray-900">Trading Strategies</h2>
+          <p className="mb-4 leading-relaxed text-gray-600">
             Ask AI navigates volatile markets with a combination of established indicators and
             adaptive machine learning.
           </p>
           <div className="space-y-4">
             {strategies.map(({ icon: Icon, title, body }) => (
               <div key={title} className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-type-accent">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-[#01AACF]">
                   <Icon className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-base">{title}</h3>
-                  <p className="mt-1 leading-7">{body}</p>
+                  <h3 className="text-base font-semibold text-gray-900">{title}</h3>
+                  <p className="mt-1 text-sm leading-7 text-gray-600">{body}</p>
                 </div>
               </div>
             ))}
@@ -179,29 +179,29 @@ export default async function CopilotIntroductionPage() {
         </section>
 
         <section id="benefits" className="mb-12">
-          <h2 className="mb-4">Key Benefits</h2>
+          <h2 className="mb-4 type-section-title text-gray-900">Key Benefits</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             {benefits.map(({ icon: Icon, title, body }) => (
-              <div key={title} className="rounded-lg border border-border bg-muted/40 p-4">
+              <div key={title} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
                 <div className="flex items-center gap-2.5">
-                  <Icon className="h-5 w-5 text-type-accent" />
-                  <h3>{title}</h3>
+                  <Icon className="h-5 w-5 text-[#01AACF]" />
+                  <h3 className="font-semibold text-gray-900">{title}</h3>
                 </div>
-                <p className="mt-2">{body}</p>
+                <p className="mt-2 text-sm text-gray-600">{body}</p>
               </div>
             ))}
           </div>
           <div className="mt-8 flex flex-wrap gap-4 text-sm">
             <Link
               href="/developers/copilot/workflow"
-              className="inline-flex items-center gap-2 font-medium text-type-accent transition hover:opacity-80 hover:underline"
+              className="inline-flex items-center gap-2 font-medium text-[#01AACF] transition hover:opacity-80 hover:underline"
             >
               See the agent workflow
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/developers/copilot/query-example"
-              className="inline-flex items-center gap-2 font-medium text-type-secondary transition hover:text-foreground hover:underline"
+              className="inline-flex items-center gap-2 font-medium text-gray-700 transition hover:text-gray-900 hover:underline"
             >
               Explore prompt examples
               <ArrowRight className="h-4 w-4" />
