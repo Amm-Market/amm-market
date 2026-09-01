@@ -165,14 +165,14 @@ function HubTokenGroup({
 }) {
   return (
     <div className="mt-5 first:mt-0">
-      <p className="mb-2 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[#7b858c]">
+      <p className="mb-2 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-type-tertiary">
         {label}
       </p>
       <div className="flex flex-wrap gap-2">
         {tokens.map((token) => (
           <span
             key={`${label}-${token}`}
-            className="inline-flex h-8 items-center gap-2 rounded-full border border-gray-200 bg-white px-3 text-sm font-semibold tracking-[-0.015em] text-[#2f3940]"
+            className="inline-flex h-8 items-center gap-2 rounded-full border border-border bg-card px-3 text-sm font-semibold tracking-[-0.015em] text-foreground"
           >
             {withPoolIcons ? <HubPoolIcon pool={token} /> : null}
             {withTokenIcons ? <HubSingleTokenIcon token={token} /> : null}
@@ -316,7 +316,7 @@ export default async function BorrowPage() {
               {lpHubMarkets.map((hub) => (
                 <article
                   key={hub.title}
-                  className="flex h-full flex-col feature-card rounded-2xl border border-gray-200 !bg-white p-6 md:p-8"
+                  className="flex h-full flex-col feature-card rounded-2xl border border-border p-6 md:p-8"
                 >
                   <p className="text-sm font-semibold tracking-[-0.01em] text-[#01AACF]">
                     {hub.category}
@@ -326,7 +326,7 @@ export default async function BorrowPage() {
                     {hub.description}
                   </FeatureCardDescription>
 
-                  <div className="mt-8 border-t border-gray-200 pt-6">
+                  <div className="mt-8 border-t border-border pt-6">
                     <HubTokenGroup label="LP pool collateral" tokens={hub.pools} withPoolIcons />
                     <HubTokenGroup label="Borrowable" tokens={hub.borrowable} withTokenIcons />
                   </div>
