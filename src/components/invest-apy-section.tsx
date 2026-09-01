@@ -129,10 +129,10 @@ export default function InvestApySection() {
         <div className="mt-10">
           <div className="space-y-5">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="text-[clamp(1.4rem,2vw,2rem)] font-semibold tracking-[-0.05em] text-[#163042]">
+              <span className="type-card-title text-[clamp(1.4rem,2vw,2rem)] tracking-[-0.05em]">
                 {`${activeStage.minApy.toFixed(1)}% ${t("to")} ${activeStage.maxApy.toFixed(1)}%`}
               </span>
-              <span className="text-sm text-[#728196]">
+              <span className="type-meta-label">
                 {t(activeStage.title)}
               </span>
             </div>
@@ -184,14 +184,14 @@ export default function InvestApySection() {
                   />
                   <h3
                     className={cn(
-                      "text-[clamp(0.92rem,3.6vw,1.9rem)] font-semibold leading-[1.06] tracking-[-0.05em] transition-colors duration-200",
-                      active ? "text-[#01AACF]" : "text-[#9ea3aa]",
+                      "type-card-title text-[clamp(0.92rem,3.6vw,1.9rem)] leading-[1.06] tracking-[-0.05em] transition-colors duration-200",
+                      active ? "text-type-accent" : "text-type-tertiary",
                     )}
                   >
                     {t(stage.title)}
                   </h3>
                   {active ? (
-                    <p className="mt-4 hidden max-w-[20rem] text-base leading-[1.7] text-[#6f7681] md:block">
+                    <p className="type-body-copy mt-4 hidden max-w-[20rem] md:block">
                       {t(stage.description)}
                     </p>
                   ) : null}
@@ -200,7 +200,7 @@ export default function InvestApySection() {
             })}
           </div>
 
-          <p className="mt-4 text-sm leading-[1.7] text-[#6f7681] md:hidden">
+          <p className="type-body-copy mt-4 md:hidden">
             {t(activeStage.description)}
           </p>
         </div>

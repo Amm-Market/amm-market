@@ -13,7 +13,7 @@ import {
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import LeverageGlanceShowcaseSection from "@/components/leverage-glance-showcase-section"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionIntro } from "@/components/shared"
 import { siteRoutes } from "@/lib/site"
 import { LocalizedMarketing } from "@/components/localized-marketing"
 
@@ -177,7 +177,7 @@ export default async function MultiplyPage() {
                     <span>under control</span>
                   </h1>
 
-                  <p className="mb-5 max-w-[38ch] text-base leading-relaxed text-type-secondary sm:max-w-[42ch] md:mb-6 md:text-lg">
+                  <p className="type-display-lead mb-5 max-w-[38ch] sm:max-w-[42ch] md:mb-6">
                     Borrow, reinvest, and repeat through managed strategies designed to increase your market exposure.
                   </p>
 
@@ -194,7 +194,7 @@ export default async function MultiplyPage() {
                     <Link
                       href={siteRoutes.developers}
                       prefetch={false}
-                      className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-900 transition-colors hover:bg-gray-100"
+                      className="inline-flex items-center justify-center rounded-full border border-border bg-white px-4 py-2 text-xs text-foreground transition-colors hover:bg-muted"
                     >
                       View Docs
                     </Link>
@@ -206,21 +206,22 @@ export default async function MultiplyPage() {
         </div>
       </div>
 
-      <section className="deferred-viewport border-t border-[#01AACF] bg-white site-section-gap">
+      <section className="deferred-viewport border-t border-border/80 bg-white site-section-gap">
         <div className="site-content-shell">
           <div className="flex flex-col gap-6">
             <div className="flex max-w-[600px] flex-col gap-2">
-              <SectionEyebrow tone="rose">How it works</SectionEyebrow>
-              <SectionTitle>
-                <span className="block lg:whitespace-nowrap">Looping in three steps</span>
-              </SectionTitle>
+              <SectionIntro
+                eyebrow="How it works"
+                eyebrowTone="rose"
+                title={<span className="block lg:whitespace-nowrap">Looping in three steps</span>}
+              />
             </div>
           </div>
 
           <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
             {leverageWorkflowSteps.map((step, index) => (
               <article key={step.title} className="feature-card rounded-2xl p-6 md:p-8">
-                <span className="text-4xl text-gray-300/80 md:text-5xl">
+                <span className="type-step-index">
                   {index + 1}
                 </span>
                 <FeatureCardTitle className="mt-6">{step.title}</FeatureCardTitle>
@@ -243,10 +244,11 @@ export default async function MultiplyPage() {
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem]">
             <div className="max-w-[58rem] space-y-4 text-left">
-              <SectionEyebrow tone="violet">Why looping</SectionEyebrow>
-              <SectionTitle>
-                <span className="md:whitespace-nowrap">Multiply your yield up to 10x</span>
-              </SectionTitle>
+              <SectionIntro
+                eyebrow="Why looping"
+                eyebrowTone="violet"
+                title={<span className="md:whitespace-nowrap">Multiply your yield up to 10x</span>}
+              />
             </div>
 
             <div className="mt-10 -mx-5 overflow-x-auto px-5 pb-1 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] md:mx-0 md:mt-16 md:overflow-visible md:px-0 md:pb-0 md:snap-none [&::-webkit-scrollbar]:hidden">
@@ -256,7 +258,7 @@ export default async function MultiplyPage() {
                     key={feature.title}
                     className="flex w-[15rem] shrink-0 snap-start flex-col bg-transparent md:w-auto md:shrink"
                   >
-                    <feature.icon className="h-11 w-11 text-[#01AACF]" strokeWidth={1.5} aria-hidden="true" />
+                    <feature.icon className="h-11 w-11 text-type-tertiary" strokeWidth={1.5} aria-hidden="true" />
                     <FeatureCardTitle className="mt-5">{feature.title}</FeatureCardTitle>
                     <FeatureCardDescription className="mt-2 max-w-[22rem]">
                       {feature.description}
@@ -274,19 +276,24 @@ export default async function MultiplyPage() {
           <div className="mx-auto w-full max-w-[76rem]">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-start md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
               <div className="space-y-4 md:self-start">
-                <SectionEyebrow tone="emerald">Position Safety</SectionEyebrow>
-                <SectionTitle className="max-w-[14ch] md:max-w-none">
-                  <span className="block">Designed for</span>
-                  <span className="block">safe leverage</span>
-                </SectionTitle>
-                <ol className="mt-7 grid max-w-[32rem] gap-4 text-[0.98rem] leading-[1.55] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
+                <SectionIntro
+                  eyebrow="Position Safety"
+                  eyebrowTone="emerald"
+                  title={
+                    <>
+                      <span className="block">Designed for</span>
+                      <span className="block">safe leverage</span>
+                    </>
+                  }
+                  titleClassName="max-w-[14ch] md:max-w-none"
+                />
+                <ol className="mt-7 grid max-w-[32rem] gap-4">
                   {leverageFeatureItems.map((item, index) => (
                     <li key={item.title} className="flex gap-3">
-                      <span className="mt-0.5 font-semibold text-[#01AACF]">{index + 1}.</span>
-                      <span>
-                        <span className="font-semibold text-[#111111]">{item.title}.</span>{" "}
-                        {item.description}
-                      </span>
+                      <span className="type-meta-label mt-0.5 shrink-0">{index + 1}.</span>
+                      <p className="type-body-copy">
+                        <span className="text-foreground">{item.title}.</span> {item.description}
+                      </p>
                     </li>
                   ))}
                 </ol>

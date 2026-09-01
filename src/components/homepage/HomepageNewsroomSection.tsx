@@ -62,11 +62,11 @@ export default async function HomepageNewsroomSection({
               showDividers ? "border-b border-gray-200" : ""
             }`}
           >
-            <p className="text-sm text-gray-500">{formatContentDate(post.date, locale)}</p>
+            <p className="type-meta-label">{formatContentDate(post.date, locale)}</p>
 
             <div className="space-y-2">
               <FeatureCardTitle className="max-w-[22rem]">{post.title}</FeatureCardTitle>
-              <p className="text-sm text-gray-500">{post.byline}</p>
+              <p className="type-meta-label">{post.byline}</p>
             </div>
 
             <FeatureCardDescription className="max-w-[38rem] md:pt-1">
@@ -77,7 +77,7 @@ export default async function HomepageNewsroomSection({
               <Link
                 href={post.href}
                 prefetch={false}
-                className="group inline-flex h-10 items-center justify-center rounded-full border border-[#151c22]/80 bg-white px-5 text-[0.98rem] font-semibold tracking-[-0.02em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white"
+                className="group inline-flex h-10 items-center justify-center rounded-full border border-foreground/80 bg-white px-5 text-[0.98rem] tracking-[-0.02em] text-foreground transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white"
               >
                 <span className="inline-flex items-center gap-2.5">
                   <span>{readCta}</span>

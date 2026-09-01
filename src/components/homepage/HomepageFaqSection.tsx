@@ -88,7 +88,7 @@ export default function HomepageFaqSection() {
   return (
     <div className="grid grid-cols-1 gap-8 pb-4 md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:gap-6 md:pb-0 lg:grid-cols-[minmax(0,25rem)_minmax(0,1fr)] lg:gap-8">
       <div className="space-y-3 md:max-w-[25rem] md:pt-2">
-        <SectionTitle as="h3" className="max-w-none">
+        <SectionTitle className="max-w-none">
           {t("Frequently asked questions")}
         </SectionTitle>
       </div>
@@ -96,11 +96,11 @@ export default function HomepageFaqSection() {
         <Accordion type="single" collapsible orientation="vertical" className="w-full">
           {homepageFaqItems.map((item) => (
             <AccordionItem key={item.value} value={item.value} className="border-b border-gray-200 pt-6 pb-6 last:border-b-0">
-              <AccordionTrigger className="type-accordion-question group gap-4 p-0 text-left text-gray-900 hover:underline [&>svg.size-4]:hidden">
+              <AccordionTrigger className="type-accordion-question group gap-4 p-0 text-left text-foreground hover:underline [&>svg.size-4]:hidden">
                 {t(item.question)}
                 <FaqToggleIcons />
               </AccordionTrigger>
-              <AccordionContent className="type-accordion-answer pt-2 text-gray-600">
+              <AccordionContent className="type-accordion-answer pt-2 text-type-secondary">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>

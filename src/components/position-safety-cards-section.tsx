@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/navigation"
 import type { LucideIcon } from "lucide-react"
 import { ShieldCheck, TriangleAlert, Undo2 } from "lucide-react"
-import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionIntro } from "@/components/shared"
 import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 
 const liquidationProtectionSteps: {
@@ -40,7 +40,7 @@ function LiquidationCard({
 }) {
   return (
     <article className="flex flex-col feature-card rounded-[1.75rem] p-5 md:p-6">
-      <div className="flex h-8 w-8 items-center justify-center text-[#01AACF]">
+      <div className="flex h-8 w-8 items-center justify-center text-type-tertiary">
         <Icon className="h-8 w-8" strokeWidth={1.85} />
       </div>
 
@@ -54,8 +54,11 @@ export default async function PositionSafetyCardsSection() {
   return withMarketingI18n(["position-safety-cards-section"], (
     <section>
       <div className="space-y-3 text-left">
-        <SectionEyebrow tone="violet">Liquidations</SectionEyebrow>
-        <SectionTitle>Built so you don’t just lose the position</SectionTitle>
+        <SectionIntro
+          eyebrow="Liquidations"
+          eyebrowTone="violet"
+          title="Built so you don’t just lose the position"
+        />
       </div>
 
       <div className="mt-8 grid grid-cols-1 gap-4 md:mt-10 lg:grid-cols-3 lg:gap-5">
@@ -69,12 +72,12 @@ export default async function PositionSafetyCardsSection() {
         ))}
       </div>
 
-      <p className="mt-6 text-[0.98rem] leading-[1.55] tracking-[-0.01em] text-[#6f7378] md:text-[1.04rem]">
+      <p className="type-body-copy mt-6">
         Read more about how settlement works in{" "}
         <Link
           href="/developers/liquidation"
           prefetch={false}
-          className="font-semibold text-[#01AACF] transition-colors hover:text-[#0097b8]"
+          className="text-type-accent transition-colors hover:text-[#0097b8]"
         >
           Liquidation Design
         </Link>

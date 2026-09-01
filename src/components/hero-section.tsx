@@ -14,7 +14,7 @@ import {
 } from "lucide-react"
 import { DeFiTerm } from "@/components/defi-term"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionIntro } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
 import { LazySection } from "@/components/ui/lazy-section"
 import { PerformanceDiv } from "@/components/ui/performance-section"
@@ -81,14 +81,14 @@ function PoolCard({ pool }: { pool: HomepagePool }) {
       </div>
       <div className="min-w-0">
         <div className="flex items-baseline gap-1.5 whitespace-nowrap">
-          <span className="text-[0.88rem] font-semibold tracking-[-0.02em] text-[#18323c]">
+          <span className="text-[0.88rem] tracking-[-0.02em] text-foreground">
             {pool.token0.symbol} / {pool.token1.symbol}
           </span>
-          <span className="text-[0.8rem] text-[#6b7280]">{pool.dex}</span>
+          <span className="text-[0.8rem] text-type-tertiary">{pool.dex}</span>
         </div>
         <div className="mt-0.5 flex items-center gap-1.5">
-          <span className="text-[0.72rem] font-medium uppercase tracking-[0.12em] text-[#8a97a6]">TVL</span>
-          <span className="text-[0.76rem] font-semibold text-[#18323c]">{pool.tvl}</span>
+          <span className="type-meta-label">TVL</span>
+          <span className="text-[0.76rem] text-type-secondary">{pool.tvl}</span>
         </div>
       </div>
     </div>
@@ -175,15 +175,16 @@ export default async function HeroSection() {
 
 function HeroSectionBody() {
   return (
-    <section className="marketing-secondary-shell pb-0">
+    <section className="pb-0">
       <div className="site-content-shell site-section-gap">
         <PerformanceDiv className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-6">
           <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="cyan">Borrow Markets</SectionEyebrow>
-            <SectionTitle>
-              Access loans using hundreds of LP collateral
-            </SectionTitle>
+            <SectionIntro
+              eyebrow="Borrow Markets"
+              eyebrowTone="cyan"
+              title="Access loans using hundreds of LP collateral"
+            />
           </div>
             </div>
 
@@ -216,18 +217,20 @@ function HeroSectionBody() {
       <div className="site-content-shell site-section-gap">
         <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-18">
           <div className="max-w-[33rem]">
-            <SectionEyebrow tone="emerald">Lend Markets</SectionEyebrow>
-            <SectionTitle className="mt-5 max-w-none">
-              Earn interest from LP borrower demand
-            </SectionTitle>
+            <SectionIntro
+              eyebrow="Lend Markets"
+              eyebrowTone="emerald"
+              title="Earn interest from LP borrower demand"
+              titleClassName="mt-5 max-w-none"
+            />
 
             <div className="mt-7 grid max-w-[32rem] gap-5">
               {lendingSavingsCards.map((card, index) => (
-                <div key={card.title} className="flex gap-3 text-[0.98rem] leading-[1.55] tracking-[-0.01em] md:text-[1.04rem]">
-                  <span className="mt-0.5 shrink-0 font-semibold text-[#01AACF]">{index + 1}.</span>
+                <div key={card.title} className="flex gap-3">
+                  <span className="type-meta-label mt-0.5 shrink-0">{index + 1}.</span>
                   <div>
-                    <p className="font-semibold text-[#111111]">{card.title}</p>
-                    <p className="mt-1 text-[#111111]/80">{card.description}</p>
+                    <FeatureCardTitle as="p">{card.title}</FeatureCardTitle>
+                    <FeatureCardDescription className="mt-1">{card.description}</FeatureCardDescription>
                   </div>
                 </div>
               ))}
@@ -252,10 +255,11 @@ function HeroSectionBody() {
         <PerformanceDiv>
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="amber">Multiply Markets</SectionEyebrow>
-                <SectionTitle>
-                  <span className="block">Increase Your Yield with Built-In Risk Controls</span>
-                </SectionTitle>
+                <SectionIntro
+                  eyebrow="Multiply Markets"
+                  eyebrowTone="amber"
+                  title={<span className="block">Increase Your Yield with Built-In Risk Controls</span>}
+                />
               </div>
             </div>
             <div className="relative mt-10 md:mt-16">
@@ -268,7 +272,7 @@ function HeroSectionBody() {
                         <FeatureCardTitle>Loop LP capital</FeatureCardTitle>
                         <FeatureCardDescription className="max-w-[16rem]">Supply LP collateral, borrow against it, resupply the borrowed capital, and repeat until your risk limit.</FeatureCardDescription>
                       </div>
-                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">01</div>
+                      <div className="type-meta-label shrink-0">01</div>
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
@@ -292,7 +296,7 @@ function HeroSectionBody() {
                         <FeatureCardTitle>Risk tuned to pools</FeatureCardTitle>
                         <FeatureCardDescription className="max-w-[16rem]">Continuous risk scoring tracks pool volatility and health quality.</FeatureCardDescription>
                       </div>
-                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">02</div>
+                      <div className="type-meta-label shrink-0">02</div>
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
@@ -398,7 +402,7 @@ function HeroSectionBody() {
                           Transparent risk parameters and predictable liquidation behavior for peg-aligned pools.
                         </FeatureCardDescription>
                       </div>
-                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">03</div>
+                      <div className="type-meta-label shrink-0">03</div>
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
@@ -447,7 +451,7 @@ function HeroSectionBody() {
                           Track health, usage, and pool-specific limits with a clearer LP-first borrowing workflow.
                         </FeatureCardDescription>
                       </div>
-                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">04</div>
+                      <div className="type-meta-label shrink-0">04</div>
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
@@ -573,10 +577,12 @@ function HeroSectionBody() {
 
       <div>
         <div className="max-w-[58rem] space-y-3 text-left sm:space-y-4">
-          <SectionEyebrow tone="rose">Who it&apos;s for</SectionEyebrow>
-          <SectionTitle className="max-w-[18ch] sm:max-w-[22ch] lg:max-w-none">
-            Ways teams put LP credit to work
-          </SectionTitle>
+          <SectionIntro
+            eyebrow="Who it's for"
+            eyebrowTone="rose"
+            title="Ways teams put LP credit to work"
+            titleClassName="max-w-[18ch] sm:max-w-[22ch] lg:max-w-none"
+          />
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-10 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 md:mt-16 md:gap-x-16 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
@@ -585,7 +591,7 @@ function HeroSectionBody() {
 
             return (
               <article key={item.title} className="flex flex-col bg-transparent">
-                <Icon className="h-10 w-10 text-[#01AACF] sm:h-11 sm:w-11" strokeWidth={1.5} aria-hidden="true" />
+                <Icon className="h-10 w-10 text-type-tertiary sm:h-11 sm:w-11" strokeWidth={1.5} aria-hidden="true" />
                 <FeatureCardTitle className="mt-4 sm:mt-5">{item.title}</FeatureCardTitle>
                 <FeatureCardDescription className="mt-2 max-w-[22rem]">
                   {item.description}
@@ -604,26 +610,31 @@ function HeroSectionBody() {
           <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 xl:gap-16">
             <div className="max-w-[36rem] space-y-6">
               <div className="space-y-4">
-                <SectionEyebrow tone="slate">Engineered for resilience</SectionEyebrow>
-                <SectionTitle>
-                  <span className="block">
-                    Backed by{" "}
-                    <span className="inline-flex translate-y-[-0.02em] items-center align-middle">
-                      <Image
-                        src="/images/brand/avana-token-circle.jpg"
-                        alt="Avana"
-                        width={56}
-                        height={56}
-                        className="h-[1.2em] w-[1.2em] rounded-full object-cover"
-                      />
-                    </span>
-                    ,
-                  </span>
-                  <span className="block">Powered by Aave v4</span>
-                </SectionTitle>
+                <SectionIntro
+                  eyebrow="Engineered for resilience"
+                  eyebrowTone="slate"
+                  title={
+                    <>
+                      <span className="block">
+                        Backed by{" "}
+                        <span className="inline-flex translate-y-[-0.02em] items-center align-middle">
+                          <Image
+                            src="/images/brand/avana-token-circle.jpg"
+                            alt="Avana"
+                            width={56}
+                            height={56}
+                            className="h-[1.2em] w-[1.2em] rounded-full object-cover"
+                          />
+                        </span>
+                        ,
+                      </span>
+                      <span className="block">Powered by Aave v4</span>
+                    </>
+                  }
+                />
               </div>
-              <div className="text-left text-[#39515b]">
-                <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
+              <div className="text-left text-type-secondary">
+                <p className="type-display-lead max-w-[42rem]">
                   Aave v4 uses{" "}
                   <DeFiTerm term="hub" className="text-[0.92em]">
                     Hub

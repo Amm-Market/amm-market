@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { SectionIntro } from "@/components/shared"
 import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 
 export default async function BorrowPowerSection() {
@@ -7,35 +7,37 @@ export default async function BorrowPowerSection() {
     <section className="bg-white">
       <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] md:gap-8 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)] lg:gap-10 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
         <div className="space-y-4">
-          <SectionEyebrow tone="blue">Borrow Power</SectionEyebrow>
-          <SectionTitle className="max-w-[14ch]">
-            Aggregate collateral for more credit
-          </SectionTitle>
+          <SectionIntro
+            eyebrow="Borrow Power"
+            eyebrowTone="blue"
+            title="Aggregate collateral for more credit"
+            titleClassName="max-w-[14ch]"
+          />
 
-          <ol className="mt-7 grid max-w-[32rem] gap-4 text-[0.98rem] leading-[1.55] tracking-[-0.01em] text-[#111111]/80 md:text-[1.04rem]">
+          <ol className="mt-7 grid max-w-[32rem] gap-4">
             <li className="flex gap-3">
-              <span className="mt-0.5 font-semibold text-[#01AACF]">1.</span>
-              <span>
+              <span className="type-meta-label mt-0.5 shrink-0">1.</span>
+              <p className="type-body-copy">
                 Stack borrowing power across multiple
                 <br />
                 supported LP positions in one market.
-              </span>
+              </p>
             </li>
             <li className="flex gap-3">
-              <span className="mt-0.5 font-semibold text-[#01AACF]">2.</span>
-              <span>
+              <span className="type-meta-label mt-0.5 shrink-0">2.</span>
+              <p className="type-body-copy">
                 Track each position’s health alongside
                 <br />
                 your total account credit.
-              </span>
+              </p>
             </li>
             <li className="flex gap-3">
-              <span className="mt-0.5 font-semibold text-[#01AACF]">3.</span>
-              <span>
+              <span className="type-meta-label mt-0.5 shrink-0">3.</span>
+              <p className="type-body-copy">
                 Add or adjust collateral as market
                 <br />
                 conditions and capacity change.
-              </span>
+              </p>
             </li>
           </ol>
         </div>

@@ -111,10 +111,10 @@ export default function HomepageTestimonialSection() {
               aria-pressed={currentFeature === index}
             >
               <div className="flex justify-between items-center gap-6">
-                <span className={`text-base transition-all duration-300 ${currentFeature === index ? "font-semibold text-gray-900" : "text-gray-500"}`}>
+                <span className={`text-base transition-colors duration-300 ${currentFeature === index ? "text-foreground" : "text-type-tertiary"}`}>
                   {t(entry.label)}
                 </span>
-                <span className={`text-sm transition-all duration-300 ${currentFeature === index ? "text-gray-900 font-medium" : "text-gray-400"}`}>
+                <span className={`type-meta-label transition-colors duration-300 ${currentFeature === index ? "text-type-secondary" : "text-type-tertiary"}`}>
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
@@ -136,7 +136,7 @@ export default function HomepageTestimonialSection() {
 
         <div className="lg:w-3/5 lg:pl-12 pt-8 lg:pt-0 flex flex-col justify-center">
           <div className={`min-h-[200px] md:min-h-[180px] transition-opacity duration-300 ${isAnimating ? "opacity-0" : "opacity-100"}`}>
-            <p className="max-w-[39rem] text-[1rem] leading-[1.55] text-gray-900 md:text-[1.18rem] lg:text-[1.35rem]">
+            <p className="type-section-lead max-w-[39rem]">
               {t(feature.description)}
             </p>
           </div>

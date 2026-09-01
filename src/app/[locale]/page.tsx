@@ -110,7 +110,7 @@ export default async function Home() {
               </SectionTitle>
             </div>
             <div className="space-y-8">
-              <p className="mx-auto max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] text-type-secondary md:mx-0 lg:text-[1.18rem]">
+              <p className="type-display-lead mx-auto max-w-[42rem] md:mx-0">
                 <span className="md:hidden">
                   {t("hero.subtitleMobileLines.0")}
                   <br />
@@ -130,7 +130,7 @@ export default async function Home() {
       </section>
       <WebappHero />
       <div className="pt-8 md:pt-10">
-        <div className="border-t border-[#01AACF]" aria-hidden="true" />
+        <div className="border-t border-border/80" aria-hidden="true" />
       </div>
       <LazySection
         rootMargin="240px"

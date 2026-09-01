@@ -12,12 +12,7 @@ export function FeatureCardTitle({
   as: Tag = "h3",
 }: FeatureCardTitleProps) {
   return (
-    <Tag
-      className={cn(
-        "feature-card-title text-[var(--type-card-title-size)] leading-[1.25] tracking-[-0.01em] text-[#18323c]",
-        className,
-      )}
-    >
+    <Tag className={cn("feature-card-title", className)}>
       {children}
     </Tag>
   )
@@ -33,7 +28,7 @@ export function FeatureCardDescription({
   className = "",
 }: FeatureCardDescriptionProps) {
   return (
-    <p className={cn("feature-card-description text-[0.9375rem] leading-[1.65] text-gray-600", className)}>
+    <p className={cn("feature-card-description", className)}>
       {children}
     </p>
   )
