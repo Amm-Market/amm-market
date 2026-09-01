@@ -122,7 +122,7 @@ const lpHubMarkets = [
 function HubPoolIcon({ pool }: { pool: string }) {
   if (pool.includes("More")) {
     return (
-      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#01AACF] text-[0.7rem] font-bold text-white">
+      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#01AACF] text-[0.7rem] font-semibold text-white">
         +
       </span>
     )
@@ -195,7 +195,7 @@ function BorrowMarketCard({
 }) {
   return (
     <div className="flex h-full flex-col feature-card rounded-2xl p-6 md:p-8">
-      <span className="text-5xl font-bold text-gray-300 md:text-6xl">{number}</span>
+      <span className="text-4xl text-gray-300/80 md:text-5xl">{number}</span>
       <FeatureCardTitle className="mt-6">{title}</FeatureCardTitle>
       <FeatureCardDescription className="mt-3">{description}</FeatureCardDescription>
     </div>
@@ -233,13 +233,13 @@ export default async function BorrowPage() {
 
               {/* Right Column - Text Content */}
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
-                  <h1 className="mb-3 max-w-[11ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
+                  <h1 className="type-display-title mb-3 max-w-[11ch] text-foreground md:mb-5">
                     <span>Borrow against</span>
                     <br />
                     <span>AMM positions</span>
                   </h1>
 
-                  <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
+                  <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-type-secondary sm:max-w-[38ch] md:mb-6 md:text-lg">
                     Turn your liquidity pool positions into collateral and borrow against them here without leaving the pool.
                   </p>
 
@@ -397,7 +397,7 @@ export default async function BorrowPage() {
                   <div className="flex h-[150px] w-full flex-col items-center justify-center rounded-lg bg-gradient-to-b from-blue-50 to-blue-100 p-2 text-center sm:h-auto">
                     <div className="flex size-full flex-col items-center justify-center rounded-md border border-blue-200 bg-white">
                       <div className="text-base font-medium leading-normal text-blue-600 md:text-lg">
-                        <div className={`flex items-center text-[32px] font-bold md:text-[48px] ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>
+                        <div className={`flex items-center text-[32px] font-semibold md:text-[48px] ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>
                           12+
                         </div>
                         <span>DEX Integrations</span>

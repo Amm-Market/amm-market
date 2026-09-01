@@ -145,11 +145,11 @@ export default async function LendPage() {
 
               {/* Right Column - Text Content */}
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
-                  <h1 className="mb-3 max-w-[18ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[16ch] md:text-5xl lg:text-5xl xl:text-6xl">
+                  <h1 className="type-display-title mb-3 max-w-[18ch] text-foreground md:mb-5 md:max-w-[16ch]">
                     Earn interest on your assets
                   </h1>
 
-                  <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
+                  <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-type-secondary sm:max-w-[38ch] md:mb-6 md:text-lg">
                     Supply single assets and earn yields where LP collateral creates real borrow utilization.
                   </p>
 
@@ -187,7 +187,7 @@ export default async function LendPage() {
 
           <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
             <div className="feature-card rounded-2xl p-6 md:p-8">
-              <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
+              <span className="text-4xl text-gray-300/80 md:text-5xl">1</span>
               <FeatureCardTitle className="mt-6">Pick a market</FeatureCardTitle>
               <FeatureCardDescription className="mt-3">
                 Browse lending markets like GHO, USDC, USDT, ETH, and WBTC while tracking APY, utilization, and borrower demand.
@@ -195,7 +195,7 @@ export default async function LendPage() {
             </div>
 
             <div className="feature-card rounded-2xl p-6 md:p-8">
-              <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
+              <span className="text-4xl text-gray-300/80 md:text-5xl">2</span>
               <FeatureCardTitle className="mt-6">Supply assets</FeatureCardTitle>
               <FeatureCardDescription className="mt-3">
                 Connect your wallet, approve the asset, and supply so your funds enter the pool and start earning right away.
@@ -203,7 +203,7 @@ export default async function LendPage() {
             </div>
 
             <div className="feature-card rounded-2xl p-6 md:p-8">
-              <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
+              <span className="text-4xl text-gray-300/80 md:text-5xl">3</span>
               <FeatureCardTitle className="mt-6">Earn and withdraw</FeatureCardTitle>
               <FeatureCardDescription className="mt-3">
                 Interest accrues continuously, and you can withdraw principal plus yield anytime with no lock-up period.

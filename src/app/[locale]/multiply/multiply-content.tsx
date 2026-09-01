@@ -171,13 +171,13 @@ export default async function MultiplyPage() {
                 </div>
 
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
-                  <h1 className="mb-3 max-w-[12ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
+                  <h1 className="type-display-title mb-3 max-w-[12ch] text-foreground md:mb-5">
                     <span>Amplify yield</span>
                     <br />
                     <span>under control</span>
                   </h1>
 
-                  <p className="mb-5 max-w-[38ch] text-base leading-relaxed text-gray-600 sm:max-w-[42ch] md:mb-6 md:text-lg">
+                  <p className="mb-5 max-w-[38ch] text-base leading-relaxed text-type-secondary sm:max-w-[42ch] md:mb-6 md:text-lg">
                     Borrow, reinvest, and repeat through managed strategies designed to increase your market exposure.
                   </p>
 
@@ -220,7 +220,7 @@ export default async function MultiplyPage() {
           <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
             {leverageWorkflowSteps.map((step, index) => (
               <article key={step.title} className="feature-card rounded-2xl p-6 md:p-8">
-                <span className="text-5xl font-bold text-gray-300 md:text-6xl">
+                <span className="text-4xl text-gray-300/80 md:text-5xl">
                   {index + 1}
                 </span>
                 <FeatureCardTitle className="mt-6">{step.title}</FeatureCardTitle>
