@@ -141,11 +141,11 @@ const utilityItems: MenuItem[] = [
 function MenuIcon({ item }: { item: MenuItem }) {
   if (item.mark) {
     const Mark = item.mark
-    return <Mark className="h-3 w-3 text-slate-700" />
+    return <Mark className="h-3 w-3 text-foreground/80" />
   }
 
   const Icon = item.icon ?? Bot
-  return <Icon className="h-3 w-3 text-slate-500" />
+  return <Icon className="h-3 w-3 text-type-tertiary" />
 }
 
 function MenuRow({
@@ -159,19 +159,19 @@ function MenuRow({
     <button
       type="button"
       onClick={() => onClick(item.action)}
-      className="flex w-full items-start gap-1.25 rounded-[10px] px-[5px] py-[2px] text-left transition hover:bg-slate-50"
+      className="flex w-full items-start gap-1.25 rounded-[10px] px-[5px] py-[2px] text-left transition hover:bg-muted"
     >
-      <span className="mt-0.5 flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-[7px] border border-slate-200 bg-white text-slate-500">
+      <span className="mt-0.5 flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-[7px] border border-border bg-card text-type-tertiary">
         <MenuIcon item={item} />
       </span>
       <span className="min-w-0 flex-1">
-        <span className="type-supporting block text-[0.79rem] font-semibold leading-[1.1rem] text-slate-900">
+        <span className="type-supporting block text-[0.79rem] font-semibold leading-[1.1rem] text-foreground">
           {item.title}
           {item.action.startsWith("open-") ? (
-            <span className="ml-1 align-middle text-[0.8em] text-slate-500">↗</span>
+            <span className="ml-1 align-middle text-[0.8em] text-type-tertiary">↗</span>
           ) : null}
         </span>
-        <span className="type-supporting mt-0 block text-[0.65rem] leading-3 text-slate-500">
+        <span className="type-supporting mt-0 block text-[0.65rem] leading-3 text-type-tertiary">
           {item.description}
         </span>
       </span>
@@ -282,41 +282,41 @@ export function LlmExportMenu({ className }: LlmExportMenuProps) {
         <button
           type="button"
           onClick={() => setIsOpen((previous) => !previous)}
-          className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1.25 text-slate-600 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900"
+          className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1.25 text-foreground/80 transition hover:border-border hover:bg-muted hover:text-foreground"
           aria-expanded={isOpen}
           aria-haspopup="menu"
         >
           {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
           <span className="text-[0.82rem] font-medium">{copied ? "Copied" : "Copy page"}</span>
-          <span className="h-3.5 w-px bg-slate-300" aria-hidden="true" />
+          <span className="h-3.5 w-px bg-border" aria-hidden="true" />
           <ChevronDown className={`h-3.5 w-3.5 transition ${isOpen ? "rotate-180" : ""}`} />
         </button>
 
         {isOpen && (
           <div
             role="menu"
-            className="absolute right-0 z-20 mt-2 w-[min(16.5rem,calc(100vw-1rem))] overflow-hidden rounded-[15px] border border-slate-200 bg-white shadow-[0_8px_18px_rgba(15,23,42,0.05)] sm:w-[16.5rem]"
+            className="absolute right-0 z-20 mt-2 w-[min(16.5rem,calc(100vw-1rem))] overflow-hidden rounded-[15px] border border-border bg-popover shadow-[0_8px_18px_rgba(15,23,42,0.05)] dark:shadow-[0_8px_18px_rgba(0,0,0,0.45)] sm:w-[16.5rem]"
           >
             <div className="p-[2px]">
               <button
                 type="button"
                 onClick={() => handleAction(topAction.action)}
-                className="flex w-full items-start gap-1.25 rounded-[10px] px-[5px] py-[2px] text-left transition hover:bg-slate-50"
+                className="flex w-full items-start gap-1.25 rounded-[10px] px-[5px] py-[2px] text-left transition hover:bg-muted"
               >
-                <span className="mt-0.5 flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-[7px] border border-slate-200 bg-white text-slate-500">
+                <span className="mt-0.5 flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-[7px] border border-border bg-card text-type-tertiary">
                   <TopActionIcon className="h-[9px] w-[9px]" />
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="type-supporting block text-[0.79rem] font-semibold leading-[1.1rem] text-slate-900">
+                  <span className="type-supporting block text-[0.79rem] font-semibold leading-[1.1rem] text-foreground">
                     {topAction.title}
                   </span>
-                  <span className="type-supporting mt-0 block text-[0.65rem] leading-3 text-slate-500">
+                  <span className="type-supporting mt-0 block text-[0.65rem] leading-3 text-type-tertiary">
                     {topAction.description}
                   </span>
                 </span>
               </button>
 
-              <div className="my-[2px] h-px bg-slate-200" />
+              <div className="my-[2px] h-px bg-border" />
 
               <div className="space-y-0">
                 {[...aiItems, ...utilityItems].map((item) => (
