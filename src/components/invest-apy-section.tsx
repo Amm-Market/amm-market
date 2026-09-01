@@ -42,10 +42,10 @@ const HEATMAP_ROWS = 5
 const HEATMAP_COLUMNS_LINEAR = 20
 const STAGE_FILLED_COUNTS = [20, 60, 100] as const
 const BAND_COLORS = {
-  inactive: "#eef2f6",
-  base: "#d5f3fa",
-  premium: "#7dd4e8",
-  risk: "#01AACF",
+  inactive: "var(--apy-band-inactive)",
+  base: "var(--apy-band-base)",
+  premium: "var(--apy-band-premium)",
+  risk: "var(--apy-band-risk)",
 } as const
 
 function buildHeatmap(stageIndex: number): HeatmapCell[][] {
@@ -179,7 +179,7 @@ export default function InvestApySection() {
                   <div
                     className={cn(
                       "mb-5 h-[3px] w-full rounded-full transition-colors duration-200",
-                      active ? "bg-[#01AACF]" : "bg-[#eceff3]",
+                      active ? "bg-[#01AACF]" : "bg-muted",
                     )}
                   />
                   <h3

@@ -134,6 +134,10 @@
   --header-surface: rgba(255, 255, 255, 0.94);
   --surface-muted: #eef3f5;
   --surface-elevated: #ffffff;
+  --apy-band-inactive: #eef2f6;
+  --apy-band-base: #d5f3fa;
+  --apy-band-premium: #7dd4e8;
+  --apy-band-risk: #01aacf;
 }
 
 .dark {
@@ -175,6 +179,10 @@
   --header-surface: rgba(10, 16, 20, 0.94);
   --surface-muted: #1a232b;
   --surface-elevated: #151d24;
+  --apy-band-inactive: color-mix(in oklab, var(--foreground) 10%, transparent);
+  --apy-band-base: color-mix(in oklab, var(--avana-cyan) 22%, var(--background));
+  --apy-band-premium: color-mix(in oklab, var(--avana-cyan) 48%, var(--background));
+  --apy-band-risk: var(--avana-cyan);
 }
 
 @layer base {
