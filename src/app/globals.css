@@ -1,6 +1,15 @@
 @import "tailwindcss";
 
 @theme inline {
+  --font-weight-thin: 400;
+  --font-weight-extralight: 400;
+  --font-weight-light: 400;
+  --font-weight-normal: 400;
+  --font-weight-medium: 400;
+  --font-weight-semibold: 400;
+  --font-weight-bold: 400;
+  --font-weight-extrabold: 400;
+  --font-weight-black: 400;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -90,20 +99,23 @@
   --type-page-title-size-sm: 1.75rem;
   --type-page-lead-size: 0.9375rem;
   --type-page-lead-size-sm: 1rem;
-  --type-section-title-size: 1.125rem;
-  --type-section-title-size-sm: 1.25rem;
-  --type-body-size: 0.9375rem;
+  --type-section-title-size: clamp(1.75rem, 2.2vw, 2rem);
+  --type-card-title-size: 1.25rem;
+  --type-body-size: 1rem;
   --type-body-size-sm: 1rem;
   --type-supporting-size: 0.875rem;
-  --type-supporting-size-sm: 0.9375rem;
-  --type-meta-size: 0.875rem;
+  --type-supporting-size-sm: 0.875rem;
+  --type-meta-size: 0.8125rem;
   --type-sidebar-link-size: 0.9375rem;
   --type-sidebar-summary-size: 0.9375rem;
-  --type-display-title-size: clamp(2.5rem, 4.2vw, 4rem);
+  --type-display-title-size: clamp(2.25rem, 3.5vw, 3.5rem);
+  --type-index-title-size: clamp(2rem, 3vw, 2.75rem);
   --type-display-lead-size: clamp(0.95rem, 1.7vw, 1.25rem);
-  --type-weight-ui: 450;
-  --type-weight-emphasis: 600;
-  --type-weight-display: 620;
+  --type-weight-ui: 400;
+  --type-weight-emphasis: 400;
+  --type-weight-display: 400;
+  --type-color-secondary: color-mix(in oklab, var(--foreground) 68%, transparent);
+  --type-color-tertiary: color-mix(in oklab, var(--foreground) 48%, transparent);
 }
 
 @layer base {
@@ -136,6 +148,11 @@
     font: inherit;
   }
 
+  strong,
+  b {
+    font-weight: 400;
+  }
+
   code,
   kbd,
   pre,
@@ -144,10 +161,24 @@
   }
 }
 
+.type-card-title {
+  font-size: var(--type-card-title-size);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
 .type-display-title {
   font-size: var(--type-display-title-size);
   font-weight: var(--type-weight-display);
-  line-height: 1.08;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.type-index-title {
+  font-size: var(--type-index-title-size);
+  font-weight: 400;
+  line-height: 1.12;
   letter-spacing: -0.02em;
 }
 
@@ -526,7 +557,7 @@
   .site-header-nav-link {
     font-size: 0.9rem;
     line-height: 1.5;
-    font-weight: 560;
+    font-weight: 400;
     letter-spacing: -0.03em;
   }
 
@@ -563,10 +594,10 @@
 }
 
 .feature-card-title {
-  font-size: 1.45rem;
-  font-weight: 500;
-  line-height: 1.08;
-  letter-spacing: -0.045em;
+  font-size: var(--type-card-title-size);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   color: #18323c;
 }
 
@@ -657,7 +688,7 @@
   margin-bottom: 1rem;
   text-align: left;
   font-size: 1.375rem;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.15;
   letter-spacing: -0.03em;
   color: #18323c;
@@ -695,7 +726,7 @@
   content: attr(data-eyebrow);
   display: inline-flex;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.2;
   letter-spacing: -0.01em;
   margin-bottom: 0.05rem;
@@ -711,18 +742,6 @@
     font-size: var(--type-page-lead-size-sm);
   }
 
-  .type-section-title {
-    font-size: var(--type-section-title-size-sm);
-  }
-
-  .type-body-copy {
-    font-size: var(--type-body-size-sm);
-  }
-
-  .type-supporting {
-    font-size: var(--type-supporting-size-sm);
-  }
-
   .type-marketing-section-title {
     font-size: 1.5rem;
   }
@@ -734,7 +753,7 @@
   .developer-content[data-developer-doc-shell] section h2,
   .site-article-content h2,
   .site-editorial-content h3 {
-    font-size: var(--type-section-title-size-sm);
+    font-size: var(--type-section-title-size);
   }
 
   .site-blog-article section[id] > h2 {
@@ -812,6 +831,14 @@
     width: 100%;
     max-width: 64rem;
     margin-inline: auto;
+  }
+
+  .text-type-secondary {
+    color: var(--type-color-secondary);
+  }
+
+  .text-type-tertiary {
+    color: var(--type-color-tertiary);
   }
 
   .text-xs {
@@ -895,7 +922,7 @@
 .developer-content h1 {
   font-size: 1.5rem;
   line-height: 2rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #111827;
   margin-bottom: 0.5rem;
 }
@@ -903,7 +930,7 @@
 .developer-content h2 {
   font-size: 1.25rem;
   line-height: 1.75rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #111827;
   margin-bottom: 1rem;
 }
@@ -911,7 +938,7 @@
 .developer-content h3 {
   font-size: 1rem;
   line-height: 1.5rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #111827;
   margin-bottom: 0.5rem;
 }
@@ -937,7 +964,7 @@
 
 .developer-content th {
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .developer-content td {
