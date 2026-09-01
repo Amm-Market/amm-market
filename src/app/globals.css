@@ -460,14 +460,6 @@
   line-height: 1.75;
 }
 
-.deferred-viewport {
-  contain-intrinsic-size: 1px 720px;
-}
-
-.deferred-viewport-tall {
-  contain-intrinsic-size: 1px 960px;
-}
-
 /* Canonical marketing inter-section rhythm
    (Borrow Markets → Lend Markets reference).
    Apply to the START of the next section; keep previous pb-0. */
@@ -497,13 +489,6 @@
 
   .site-section-stack {
     row-gap: 7rem; /* 2xl:space-y-28 */
-  }
-}
-
-@supports (content-visibility: auto) {
-  .deferred-viewport,
-  .deferred-viewport-tall {
-    content-visibility: auto;
   }
 }
 

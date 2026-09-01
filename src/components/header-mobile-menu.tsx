@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl"
 import { HeaderHelpCenterMobileRow } from "@/components/header-help-center-button"
 import { HeaderThemeToggleMobileRow } from "@/components/header-theme-toggle"
 import { Link } from "@/i18n/navigation"
-import { siteRoutes } from "@/lib/site"
+import { AAVE_ARFC_LABEL, siteRoutes } from "@/lib/site"
 
 interface HeaderMobileMenuProps {
   open: boolean
@@ -25,7 +25,7 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
     { href: siteRoutes.newsroom, label: t("nav.newsroom") },
     { href: siteRoutes.faq, label: t("nav.helpCenter") },
     { href: siteRoutes.developers, label: t("nav.developers") },
-    { href: "https://governance.aave.com/", label: t("nav.aaveArfc"), external: true },
+    { href: "https://governance.aave.com/", label: AAVE_ARFC_LABEL, external: true },
     { href: "https://app.avana.cc", label: t("cta.sandboxLong"), external: true },
   ] as const
 

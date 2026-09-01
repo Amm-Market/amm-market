@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl"
 import { useEffect, useRef, useState } from "react"
 import { desktopMenuButtons, type DesktopMenuId } from "@/components/header-nav-data"
 import { Link, usePathname } from "@/i18n/navigation"
-import { siteRoutes } from "@/lib/site"
+import { AAVE_ARFC_LABEL, siteRoutes } from "@/lib/site"
 
 const DeferredHeaderDesktopMenuPanel = dynamic(() => import("@/components/header-desktop-menu-panel"), { ssr: false })
 
@@ -122,11 +122,11 @@ export default function HeaderDesktopNavigation() {
           rel="noreferrer"
           onMouseEnter={closeDesktopMenu}
           onFocus={closeDesktopMenu}
-          aria-label={t("nav.aaveArfc")}
-          title={t("nav.aaveArfc")}
+          aria-label={AAVE_ARFC_LABEL}
+          title={AAVE_ARFC_LABEL}
           className="site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 font-medium tracking-[-0.02em] text-foreground/62 transition-[color,opacity] duration-200 ease-out hover:text-type-accent"
         >
-          <span className="hidden xl:inline">{t("nav.aaveArfc")}</span>
+          <span className="hidden xl:inline">{AAVE_ARFC_LABEL}</span>
           <ArrowUpRight
             aria-hidden="true"
             className="h-[17px] w-[17px] shrink-0 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 xl:h-[15px] xl:w-[15px]"

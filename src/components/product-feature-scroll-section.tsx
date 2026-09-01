@@ -25,7 +25,7 @@ export default async function ProductFeatureScrollSection({
   panels,
 }: ProductFeatureScrollSectionProps) {
   return withMarketingI18n(['product-feature-scroll-section'], (
-    <section className="deferred-viewport-tall">
+    <section>
       <div className="mb-8 max-w-[650px] space-y-3 text-left">
         <SectionEyebrow tone={eyebrowTone}>{eyebrow}</SectionEyebrow>
         <SectionTitle>{title}</SectionTitle>

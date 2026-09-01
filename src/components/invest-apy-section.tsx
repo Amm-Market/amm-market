@@ -117,7 +117,7 @@ export default function InvestApySection() {
   }
 
   return (
-    <section className="deferred-viewport bg-white site-section-gap">
+    <section className="bg-white site-section-gap">
       <div className="site-content-shell">
         <div className="space-y-4">
           <SectionEyebrow tone="cyan">{eyebrow}</SectionEyebrow>

@@ -206,7 +206,7 @@ export default async function MultiplyPage() {
         </div>
       </div>
 
-      <section className="deferred-viewport border-t border-border/80 bg-white site-section-gap">
+      <section className="border-t border-border/80 bg-white site-section-gap">
         <div className="site-content-shell">
           <div className="flex flex-col gap-6">
             <div className="flex max-w-[600px] flex-col gap-2">
@@ -234,13 +234,13 @@ export default async function MultiplyPage() {
         </div>
       </section>
 
-      <section className="deferred-viewport bg-white site-section-gap">
+      <section className="bg-white site-section-gap">
         <div className="site-content-shell">
           <LeverageGlanceShowcaseSection />
         </div>
       </section>
 
-      <section className="deferred-viewport bg-white site-section-gap">
+      <section className="bg-white site-section-gap">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem]">
             <div className="max-w-[58rem] space-y-4 text-left">
@@ -271,7 +271,7 @@ export default async function MultiplyPage() {
         </div>
       </section>
 
-      <section className="deferred-viewport bg-white site-section-gap">
+      <section className="bg-white site-section-gap">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem]">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] md:items-start md:gap-8 lg:gap-10 xl:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">

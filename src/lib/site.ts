@@ -4,6 +4,7 @@ export const SUPPORT_EMAIL = "support@avana.cc"
 export const LOGO_PATH = "/Avana%20Logo.png"
 export const HEADER_WORDMARK_PATH = "/images/avana-wordmark.webp"
 export const SOCIAL_HANDLE = "@dexmini"
+export const AAVE_ARFC_LABEL = "Aave ARFC"
 export const DEFAULT_OG_SUBTITLE = "Borrow Against LP Positions on Aave v4"
 export const DEFAULT_SITE_DESCRIPTION =
   "Unlock liquidity from your LP tokens. Borrow up to 80% against Uniswap, Curve, and Balancer positions while continuing to earn trading fees on Aave v4."

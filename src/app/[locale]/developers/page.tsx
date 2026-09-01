@@ -134,7 +134,7 @@ export default async function DevelopersPage() {
           </div>
         </section>
 
-        <section id="what-is-avana" className="deferred-viewport mt-10 scroll-mt-32">
+        <section id="what-is-avana" className="mt-10 scroll-mt-32">
           <SectionHeader
             title="What is Avana?"
             description="Avana is a lending protocol built for LP collateral. It lets users deposit supported AMM positions, keep those positions active in the underlying pool, and borrow against them through Aave v4 infrastructure."
@@ -152,7 +152,7 @@ export default async function DevelopersPage() {
           </p>
         </section>
 
-        <section id="how-it-works" className="deferred-viewport mt-10 scroll-mt-32">
+        <section id="how-it-works" className="mt-10 scroll-mt-32">
           <SectionHeader
             title="How It Works"
             description="The user-facing flow is short, but each stage hides LP-specific underwriting work. Later pages break down the mechanics behind each step."
@@ -173,7 +173,7 @@ export default async function DevelopersPage() {
           </ol>
         </section>
 
-        <section id="unlocking-lp-collateral" className="deferred-viewport mt-10 scroll-mt-32">
+        <section id="unlocking-lp-collateral" className="mt-10 scroll-mt-32">
           <SectionHeader
             title="Why LP Collateral Matters"
             description="LP positions already sit in working capital. Without a lending layer, getting cash back out usually means shrinking or closing the pool position first."
@@ -194,7 +194,7 @@ export default async function DevelopersPage() {
           </ul>
         </section>
 
-        <section id="architecture" className="deferred-viewport mt-10 scroll-mt-32">
+        <section id="architecture" className="mt-10 scroll-mt-32">
           <SectionHeader
             title="Architecture"
             description="Avana uses Aave v4 because LP collateral needs shared liquidity and isolated risk logic at the same time. The Hub handles the common monetary layer while spokes handle LP-specific work: pool collateral registration, position valuation, risk enforcement, and liquidation execution."

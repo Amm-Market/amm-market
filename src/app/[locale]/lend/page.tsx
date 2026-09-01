@@ -212,7 +212,7 @@ export default async function LendPage() {
         </div>
       </section>
 
-      <section className="deferred-viewport-tall bg-white">
+      <section className="bg-white">
         <DeferredTradeMarketShowcase />
       </section>
 

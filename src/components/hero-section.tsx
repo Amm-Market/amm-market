@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic"
 import Image from "next/image"
 import type { LucideIcon } from "lucide-react"
 import {
@@ -13,40 +12,14 @@ import {
   Zap,
 } from "lucide-react"
 import { DeFiTerm } from "@/components/defi-term"
+import HomepageFaqSection from "@/components/homepage/HomepageFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
+import HomepageTestimonialSection from "@/components/homepage/HomepageTestimonialSection"
 import { FeatureCardDescription, FeatureCardTitle, SectionIntro } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
-import { LazySection } from "@/components/ui/lazy-section"
 import { PerformanceDiv } from "@/components/ui/performance-section"
 import { TokenLogo } from "@/components/token-logo"
 import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
-function SectionSkeleton({
-  lines = 3,
-  minHeight = "320px",
-}: {
-  lines?: number
-  minHeight?: string
-}) {
-  return (
-    <div
-      aria-hidden="true"
-      className="feature-card rounded-[28px] border border-gray-200 p-6"
-      style={{ minHeight }}
-    >
-      <div className="animate-pulse space-y-4">
-        <div className="h-3 w-28 rounded-full bg-gray-200" />
-        <div className="h-10 w-72 max-w-full rounded-2xl bg-gray-200" />
-        {Array.from({ length: lines }).map((_, index) => (
-          <div
-            key={index}
-            className="h-4 rounded-full bg-gray-200"
-            style={{ width: `${92 - index * 14}%` }}
-          />
-        ))}
-      </div>
-    </div>
-  )
-}
 
 function repeatItems<T>(items: T[], count: number, offset: number) {
   if (items.length === 0) return []
@@ -58,19 +31,8 @@ function repeatItems<T>(items: T[], count: number, offset: number) {
   return output
 }
 
-const DeferredTestimonialSection = dynamic(() => import("@/components/homepage/HomepageTestimonialSection"), {
-  loading: () => <SectionSkeleton minHeight="360px" />,
-})
-
-const DeferredHomepageFaqSection = dynamic(() => import("@/components/homepage/HomepageFaqSection"), {
-  loading: () => <SectionSkeleton lines={4} minHeight="420px" />,
-})
-
 /**
  * HeroSection - Homepage secondary content shell.
- *
- * Static sections render on the server while heavier interactive islands are
- * deferred until they approach the viewport.
  */
 function PoolCard({ pool }: { pool: HomepagePool }) {
   return (
@@ -602,12 +564,9 @@ function HeroSectionBody() {
         </div>
       </div>
 
-        <LazySection minHeight="400px" fallback={<SectionSkeleton minHeight="360px" />}>
-          <DeferredTestimonialSection />
-        </LazySection>
+        <HomepageTestimonialSection />
 
-        <LazySection minHeight="660px" fallback={<SectionSkeleton minHeight="660px" />}>
-          <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 xl:gap-16">
+        <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 xl:gap-16">
             <div className="max-w-[36rem] space-y-6">
               <div className="space-y-4">
                 <SectionIntro
@@ -671,17 +630,14 @@ function HeroSectionBody() {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_68%,rgba(255,255,255,0.28)_86%,#fff_100%)]" />
             </article>
           </div>
-        </LazySection>
 
         <div className="-mt-8 md:-mt-12">
           <HomepageNewsroomSection eyebrowTone="rose" />
         </div>
 
-        <LazySection minHeight="480px" fallback={<SectionSkeleton minHeight="480px" />}>
-          <div className="pb-16 md:pb-24 2xl:pb-22">
-            <DeferredHomepageFaqSection />
-          </div>
-        </LazySection>
+        <div className="pb-16 md:pb-24 2xl:pb-22">
+          <HomepageFaqSection />
+        </div>
       </div>
     </section>
   )

@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { diatypeFont } from "@/app/site-fonts"
 import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeInitScript } from "@/components/theme-init-script"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { getLocaleDefinition, getLocaleDir } from "@/i18n/locales"
@@ -147,6 +148,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
       </head>
       <body className="overflow-x-clip bg-background font-sans text-foreground">
+        <ThemeInitScript />
         <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
           <a
