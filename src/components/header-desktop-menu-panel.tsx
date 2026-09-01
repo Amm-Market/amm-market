@@ -168,7 +168,7 @@ export default function HeaderDesktopMenuPanel({
                     }`}
                     style={{ transitionDelay: `${180 + index * 55}ms` }}
                   >
-                    <span className="text-[clamp(1.5rem,1.95vw,2.45rem)] font-[430] leading-[1.04] tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+                    <span className="text-[clamp(1.5rem,1.95vw,2.45rem)] font-normal leading-[1.04] tracking-[-0.03em] transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
                       {item.label}
                     </span>
                   </Link>

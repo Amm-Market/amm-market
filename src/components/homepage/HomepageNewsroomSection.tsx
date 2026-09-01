@@ -77,7 +77,7 @@ export default async function HomepageNewsroomSection({
               <Link
                 href={post.href}
                 prefetch={false}
-                className="group inline-flex h-10 items-center justify-center rounded-full border border-[#151c22]/80 bg-white px-5 text-[0.98rem] font-[620] tracking-[-0.035em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white"
+                className="group inline-flex h-10 items-center justify-center rounded-full border border-[#151c22]/80 bg-white px-5 text-[0.98rem] font-semibold tracking-[-0.02em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white"
               >
                 <span className="inline-flex items-center gap-2.5">
                   <span>{readCta}</span>

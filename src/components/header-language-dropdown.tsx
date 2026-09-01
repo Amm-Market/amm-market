@@ -70,7 +70,7 @@ export default function HeaderLanguageDropdown({
         onClick={() => setIsOpen((current) => !current)}
         aria-label={t("a11y.language", { language: selected.label })}
         disabled={isPending}
-        className={`site-header-nav-link group relative inline-flex items-center justify-center px-0 py-1 font-[560] tracking-[-0.035em] transition-[color,opacity] duration-200 ease-out ${
+        className={`site-header-nav-link group relative inline-flex items-center justify-center px-0 py-1 font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${
           isMobile
             ? "h-10 gap-2 text-[1rem] text-[#01AACF]"
             : `h-9 gap-1.5 xl:gap-2 ${isOpen ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`
@@ -103,7 +103,7 @@ export default function HeaderLanguageDropdown({
                   type="button"
                   role="menuitem"
                   onClick={() => selectLocale(language.code)}
-                  className={`flex h-12 w-full items-center justify-between gap-4 px-5 text-start text-[1rem] font-[520] tracking-[-0.03em] transition-colors duration-150 ease-out hover:bg-black/[0.045] ${
+                  className={`flex h-12 w-full items-center justify-between gap-4 px-5 text-start text-[1rem] font-medium tracking-[-0.03em] transition-colors duration-150 ease-out hover:bg-black/[0.045] ${
                     isSelected ? "bg-black/[0.025] text-[#01AACF]" : "text-[#303236]"
                   }`}
                 >

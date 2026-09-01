@@ -84,7 +84,7 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
                     className="flex items-end justify-between gap-5 py-3"
                     onClick={onClose}
                   >
-                    <span className="text-[clamp(1.7rem,7.1vw,2.45rem)] font-[560] leading-[0.98] tracking-[-0.05em] text-black/95">
+                    <span className="text-[clamp(1.7rem,7.1vw,2.45rem)] font-medium leading-[0.98] tracking-[-0.03em] text-black/95">
                       {link.label}
                     </span>
                     <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-[#01AACF]">
@@ -98,7 +98,7 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
                     className="flex items-end justify-between gap-5 py-3"
                     onClick={onClose}
                   >
-                    <span className="text-[clamp(1.7rem,7.1vw,2.45rem)] font-[560] leading-[0.98] tracking-[-0.05em] text-black/95">
+                    <span className="text-[clamp(1.7rem,7.1vw,2.45rem)] font-medium leading-[0.98] tracking-[-0.03em] text-black/95">
                       {link.label}
                     </span>
                     <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-[#01AACF]">

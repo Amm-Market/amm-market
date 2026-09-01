@@ -60,7 +60,7 @@ export default function Header(): React.JSX.Element {
             href="https://app.avana.cc"
             target="_blank"
             rel="noreferrer"
-            className="site-header-cta group inline-flex h-8 items-center justify-center rounded-full border border-[#151c22]/80 bg-white px-2.5 font-[620] tracking-[-0.035em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white xl:h-[34px] xl:px-3.5"
+            className="site-header-cta group inline-flex h-8 items-center justify-center rounded-full border border-[#151c22]/80 bg-white px-2.5 font-semibold tracking-[-0.02em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white xl:h-[34px] xl:px-3.5"
           >
             <span className="inline-flex items-center gap-1.5 xl:gap-2.5">
               <span className="xl:hidden">{t("cta.sandboxShort")}</span>
