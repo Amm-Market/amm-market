@@ -26,7 +26,7 @@
       "newsroom": "Redazione",
       "brand": "Marca",
       "faq": "Domande frequenti",
-      "privacy": "Privacy",
+      "privacy": "Riservatezza",
       "terms": "Termini",
       "overview": "Panoramica",
       "architecture": "Architettura",
@@ -78,7 +78,7 @@
     "notFound": {
       "title": "Questa pagina non è disponibile.",
       "body": "L'indirizzo potrebbe essere sbagliato oppure la pagina potrebbe essere stata spostata.",
-      "home": "Go to homepage",
+      "home": "Vai alla homepage",
       "faq": "Domande frequenti"
     },
     "sandboxNotice": "Sandbox dati mostrati solo in anteprima. APYs, prezzi e rendimenti sono indicativi e possono differire dalle condizioni di mercato in tempo reale.",
@@ -89,7 +89,7 @@
       "shareOnLinkedIn": "Condividi su LinkedIn",
       "previousPost": "Post precedente",
       "nextPost": "Prossimo post",
-      "onThisPage": "On this page"
+      "onThisPage": "In questa pagina"
     },
     "docs": {
       "previous": "Precedente",
@@ -101,7 +101,8 @@
         "liquidation": "Quadro di liquidazione",
         "integrations": "Integrazioni supportate",
         "safety": "Meccanismi di sicurezza",
-        "legal": "Legale e Conformità"
+        "legal": "Legale e Conformità",
+        "copilot": "Chiedi all'IA"
       },
       "items": {
         "overview": "Panoramica",
@@ -133,7 +134,11 @@
         "bugBounty": "Premio per la scoperta di bug",
         "insuranceFunds": "Fondi assicurativi",
         "securityDisclosures": "Divulgazioni sulla sicurezza",
-        "legalDisclaimer": "Disclaimer legale"
+        "legalDisclaimer": "Disclaimer legale",
+        "aiIntroduction": "Introduzione all'IA",
+        "copilotProtocols": "Protocolli supportati",
+        "copilotPrompts": "Esempi di prompt",
+        "copilotWorkflow": "Flusso dell'agente"
       }
     },
     "faqUi": {
@@ -164,6 +169,19 @@
       "darkMode": "Modalità scura",
       "systemMode": "Sistema",
       "tapToChange": "Tocca per cambiare"
+    },
+    "exportMenu": {
+      "copyPage": "Copia pagina",
+      "copied": "Copiato",
+      "copyPageMarkdown": "Copia pagina come Markdown",
+      "copyPageLink": "Copia link della pagina",
+      "copyPageLinkDescription": "Copia l'URL di questa pagina negli appunti",
+      "openInChatGPT": "Apri in ChatGPT",
+      "openInClaude": "Apri in Claude",
+      "openInGrok": "Apri in Grok",
+      "openInPerplexity": "Apri in Perplexity",
+      "askAboutPage": "Fai domande su questa pagina",
+      "reviewPrompt": "Esamina il contenuto di questa pagina Avana e rispondi alle domande."
     }
   },
   "meta": {
@@ -230,12 +248,12 @@
       "subtitle": "Continua a guadagnare commissioni di trading mentre sblocchi liquidità dalle posizioni Uniswap, Curve e Balancer.",
       "subtitleMobileLines": [
         "Accedi fino all'80% del valore del tuo Pool di Liquidità",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "al 5,5% APR senza prelevare liquidità o",
+        "rinunciare alle commissioni di trading."
       ],
       "subtitleDesktopLines": [
         "Accedi fino all'80% del valore del tuo Pool di Liquidità al 5,5% APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "al 5,5% APR senza prelevare liquidità o rinunciare alle commissioni di trading."
       ],
       "primaryCta": "Prova Sandbox",
       "secondaryCta": "Leggi i documenti"

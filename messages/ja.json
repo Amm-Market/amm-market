@@ -78,7 +78,7 @@
     "notFound": {
       "title": "このページは利用できません。",
       "body": "アドレスが間違っているか、ページが移動した可能性があります。",
-      "home": "Go to homepage",
+      "home": "ホームページへ",
       "faq": "よくある質問"
     },
     "sandboxNotice": "Sandbox データはプレビュー用のみ表示されています。APY、価格およびリターンは例示的なものであり、実際の市場状況とは異なる場合があります。",
@@ -89,7 +89,7 @@
       "shareOnLinkedIn": "LinkedInで共有",
       "previousPost": "前の投稿",
       "nextPost": "次の投稿",
-      "onThisPage": "On this page"
+      "onThisPage": "このページの内容"
     },
     "docs": {
       "previous": "前",
@@ -101,7 +101,8 @@
         "liquidation": "清算の枠組み",
         "integrations": "サポートされている統合",
         "safety": "安全装置",
-        "legal": "法務・コンプライアンス"
+        "legal": "法務・コンプライアンス",
+        "copilot": "AI に質問"
       },
       "items": {
         "overview": "概要",
@@ -133,7 +134,11 @@
         "bugBounty": "バグ報奨金",
         "insuranceFunds": "保険基金",
         "securityDisclosures": "セキュリティの開示",
-        "legalDisclaimer": "法的免責事項"
+        "legalDisclaimer": "法的免責事項",
+        "aiIntroduction": "AI 入門",
+        "copilotProtocols": "対応プロトコル",
+        "copilotPrompts": "プロンプト例",
+        "copilotWorkflow": "エージェントのワークフロー"
       }
     },
     "faqUi": {
@@ -164,6 +169,19 @@
       "darkMode": "ダークモード",
       "systemMode": "システム",
       "tapToChange": "タップして変更"
+    },
+    "exportMenu": {
+      "copyPage": "ページをコピー",
+      "copied": "コピーしました",
+      "copyPageMarkdown": "Markdown としてページをコピー",
+      "copyPageLink": "ページリンクをコピー",
+      "copyPageLinkDescription": "このページの URL をクリップボードにコピー",
+      "openInChatGPT": "ChatGPT で開く",
+      "openInClaude": "Claude で開く",
+      "openInGrok": "Grok で開く",
+      "openInPerplexity": "Perplexity で開く",
+      "askAboutPage": "このページについて質問する",
+      "reviewPrompt": "以下の Avana ページの内容を確認し、質問に答えてください。"
     }
   },
   "meta": {
@@ -230,12 +248,12 @@
       "subtitle": "Uniswap、Curve、Balancerのポジションから流動性を解放しながら、取引手数料の獲得を続けましょう。",
       "subtitleMobileLines": [
         "流動性プールの価値の最大80%にアクセス",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "年利 5.5% で、流動性を引き出さず",
+        "取引手数料を諦めることなく"
       ],
       "subtitleDesktopLines": [
         "流動性プールの価値の最大80%に、5.5%でアクセスできます APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "流動性を引き出したり取引手数料を諦めたりせず、年利 5.5% で利用できます。"
       ],
       "primaryCta": "Sandboxを試してみてください",
       "secondaryCta": "ドキュメントを読む"

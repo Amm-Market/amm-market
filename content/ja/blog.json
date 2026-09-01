@@ -6,37 +6,37 @@
       "date": "July 24, 2026",
       "description": "Spoke 市場全体で、限定的な更新・独立レビュー・緊急時の封じ込めにより、Avana が LP 担保リスクをどう統治するか。",
       "image": "/images/blog/lp-risk-governance.png",
-      "category": "Developers",
+      "category": "開発者",
       "tag": "プロトコル",
       "sections": [
         {
           "id": "why-lp-risk-is-different",
-          "title": "Why LP risk is different",
+          "title": "LPリスクが異なる理由",
           "paragraphs": [
-            "Avana cannot govern LP collateral the way a generic lending market governs a list of tokens. Each spoke market has its own pool structure, failure modes, and stress behavior. A stable pool is not the same product as a concentrated range. A weighted Balancer style basket is not the same product as a tightly correlated Curve style market. Avana's risk framework is built around that variety. It watches volatility, peg quality, utilization, liquidity depth, concentration, oracle health, market status, supply and borrow caps, LTV and liquidation thresholds, interest rate models, and position health across the hub and the LP spokes together."
+            "Avanaは、一般的なレンディング市場がトークンリストを管理するのと同じ方法でLP担保を管理することはできません。各spoke市場には独自のプール構造、障害モード、ストレス時の挙動があります。ステーブルプールは集中レンジと同じプロダクトではありません。Balancer型の加重バスケットは、Curve型の高相関市場と同じプロダクトでもありません。Avanaのリスクフレームワークはこの多様性を前提に構築されています。ボラティリティ、ペッグ品質、利用率、流動性の深さ、集中度、オラクルの健全性、市場ステータス、供給・借入上限、LTVと清算閾値、金利モデル、そしてhubとLP spoke全体のポジション健全性を監視します。"
           ]
         },
         {
           "id": "three-roles",
-          "title": "Three roles, clear jobs",
+          "title": "3つの役割、明確な責務",
           "paragraphs": [
-            "Avana separates routine recommendation, independent review, and emergency containment into three roles: the Risk Initiator, the Risk Guardian, and the Risk Defender. The Initiator proposes routine updates inside approved templates, including caps, collateral settings, rates, and pool onboarding. Each proposal is labeled defensive or growth oriented before it enters the normal path. The Guardian is the review and veto layer. It checks that the public disclosure matches what is queued, confirms the action stays inside policy bounds, and can cancel during the timelock. The Defender is narrow by design. It can reduce caps, freeze borrowing, or disable a compromised adapter when waiting for the routine path would leave Avana exposed."
+            "Avanaは、日常的な提言、独立したレビュー、緊急封じ込めを3つの役割に分けます：Risk Initiator、Risk Guardian、Risk Defenderです。Initiatorは上限、担保設定、金利、プールのオンボーディングなど、承認済みテンプレート内でのルーティン更新を提案します。各提案は通常の経路に入る前に防御的か成長志向かがラベル付けされます。Guardianはレビューと拒否権のレイヤーです。公開開示がキュー内容と一致するか確認し、行動がポリシー範囲内かを検証し、タイムロック中にキャンセルできます。Defenderは設計上狭い権限です。ルーティン経路を待つとAvanaが露出する場合、上限を下げ、借入を凍結し、侵害されたアダプターを無効化できます。"
           ]
         },
         {
           "id": "how-changes-ship",
-          "title": "How routine changes ship",
+          "title": "ルーティン変更の出荷方法",
           "paragraphs": [
-            "The standard update path on Avana is public notice, submission, validation against predefined bounds, timelock, Guardian review, and execution if nobody vetoes. Developers, users, and governance participants can read the rationale before a change lands and compare the written policy to the queued action. For a protocol built on complex collateral, that public consistency is a basic requirement rather than a marketing extra.",
-            "Not every change uses that path. Cutting risk is meant to be easier than adding risk. Modest tuning inside approved ranges follows the standard flow. Larger moves, such as new spoke families, new LP primitives, new oracle models, or new liquidation adapters, sit outside routine process because they expand Avana's risk surface and need heavier review."
+            "Avanaの標準更新パスは、公開通知、提出、事前定義された範囲での検証、タイムロック、Guardianレビュー、拒否がなければ実行です。開発者、ユーザー、ガバナンス参加者は変更が適用される前に根拠を読み、文書化されたポリシーとキューされた行動を比較できます。複雑な担保を基盤とするプロトコルにとって、この公開的一貫性はマーケティングの付加物ではなく基本的要件です。",
+            "すべての変更がそのパスを使うわけではありません。リスクの削減はリスクの追加より容易であるべきです。承認済み範囲内の控えめな調整は標準フローに従います。新しいspokeファミリー、新しいLPプリミティブ、新しいオラクルモデル、新しい清算アダプターなどの大きな変更は、Avanaのリスク表面を拡大し、より重いレビューを必要とするため、ルーティンプロセスの外に位置します。"
           ]
         },
         {
           "id": "emergency-power",
-          "title": "When Avana uses emergency power",
+          "title": "Avanaが緊急権限を使うとき",
           "paragraphs": [
-            "Emergency cases include oracle inconsistency, liquidation path degradation, abnormal pool behavior, wrapper failure, adapter compromise, or sudden spoke level instability. Even then the framework stays careful. Emergency authority on Avana is narrow, defensive, and reversible. It exists for moments when assumptions are failing faster than timelock governance can respond. It is not a shadow path for everyday optimization.",
-            "Taken together, Avana matches governance structure to collateral complexity. LP backed lending needs market templates, bounded execution, transparent disclosure, and a hard line between normal growth, defensive adjustment, and emergency containment. Each spoke keeps its own oracle assumptions, liquidation logic, admission rules, and operational constraints. Avana does not pretend every LP market is interchangeable."
+            "緊急ケースには、オラクルの不整合、清算パスの劣化、異常なプール挙動、ラッパーの障害、アダプターの侵害、spokeレベルの突然の不安定さが含まれます。それでもフレームワークは慎重さを保ちます。Avanaの緊急権限は狭く、防御的で、可逆的です。前提がタイムロックガバナンスの対応より速く崩れる瞬間のために存在します。日常の最適化のための影の経路ではありません。",
+            "総合すると、Avanaはガバナンス構造を担保の複雑さに合わせます。LP担保レンディングには、市場テンプレート、境界のある実行、透明な開示、通常の成長・防御的調整・緊急封じ込めの間の明確な線が必要です。各spokeは独自のオラクル前提、清算ロジック、准入ルール、運用制約を保持します。AvanaはすべてのLP市場が互換可能であるかのように振る舞いません。"
           ]
         }
       ]
@@ -47,31 +47,31 @@
       "date": "July 22, 2026",
       "description": "ヘルス監視、venue 固有ポジションの運用、ストレス下でも信頼できる清算カバレッジのために Avana が Smart Agents を使う理由。",
       "image": "/images/blog/smart-agents-lp-collateral.png",
-      "category": "Developers",
+      "category": "開発者",
       "tag": "プロトコル",
       "sections": [
         {
           "id": "lp-loans-are-operational",
-          "title": "LP loans are operational work",
+          "title": "LPローンは運用業務である",
           "paragraphs": [
-            "On Avana, LP collateral is active, path dependent, and operationally demanding. It earns fees, shifts composition, changes risk as markets move, and can require venue specific actions exactly when a position becomes stressed. A standard token market can often reduce liquidation and monitoring to a simpler trigger and swap path. LP collateral is different. The system has to know which positions are active, how debt is drifting, what the collateral would look like under a real unwind, how fees can be realized, which venue specific removal path applies, and whether liquidation is still viable after slippage, routing, and execution cost. Those details are what separate theoretical coverage on paper from coverage that still works when markets get hard."
+            "Avanaでは、LP担保はアクティブで、パス依存であり、運用上要求が高いものです。手数料を稼ぎ、構成が変わり、市場の動きに応じてリスクが変化し、ポジションがストレスを受けるまさにその時にvenue固有のアクションが必要になることがあります。標準的なトークン市場は、清算とモニタリングをより単純なトリガーとスワップパスに還元できることが多いです。LP担保は異なります。システムはどのポジションがアクティブか、負債がどう漂流しているか、実際のアンウィンド下で担保がどう見えるか、手数料をどう実現できるか、どのvenue固有の除去パスが適用されるか、スリッページ、ルーティング、実行コスト後も清算が実行可能かを知る必要があります。これらの詳細が、紙上の理論的カバレッジと、市場が厳しくなっても機能するカバレッジを分けます。"
           ]
         },
         {
           "id": "what-agents-do",
-          "title": "What Avana Smart Agents do",
+          "title": "Avana Smart Agentsの役割",
           "paragraphs": [
-            "Avana's node runtime reads onchain activity, keeps a live map of active positions, refreshes drifting debt on short intervals, and runs broader sweeps to catch stale or missed state. The app UI, dashboards, monitoring logic, and liquidation workflows are meant to draw from that same operational picture, rather than each layer inventing its own version of the market.",
-            "Liquidation is where this matters most. When an Avana position falls below allowed borrowing capacity, the execution layer has to evaluate whether the job can be serviced profitably, source temporary liquidity, repay debt into the credit layer, claim fees, unwind the collateral through the correct venue path, route the resulting assets, settle the flash path, distribute the liquidation premium, and preserve borrower residual value when anything remains. That is a chain of work, not a single transaction type."
+            "Avanaのノードランタイムはオンチェーン活動を読み取り、アクティブなポジションのライブマップを維持し、短い間隔で漂流する負債を更新し、古いまたは見逃された状態を捕捉するための広範なスイープを実行します。アプリUI、ダッシュボード、モニタリングロジック、清算ワークフローは、各レイヤーが独自の市場バージョンを作るのではなく、この同じ運用像から描画されることを意図しています。",
+            "清算はここが最も重要です。Avanaポジションが許容借入容量を下回ると、実行レイヤーはジョブが利益を出して処理できるか評価し、一時的な流動性を調達し、クレジットレイヤーに負債を返済し、手数料を請求し、正しいvenueパスで担保をアンウィンドし、結果の資産をルーティングし、フラッシュパスを決済し、清算プレミアムを分配し、残りがあれば借り手の残余価値を保持する必要があります。これは単一のトランザクションタイプではなく、作業の連鎖です。"
           ]
         },
         {
           "id": "before-and-across-venues",
-          "title": "Before liquidation, and across venues",
+          "title": "清算前、そしてvenueを横断して",
           "paragraphs": [
-            "Smart Agents also matter before liquidation happens. Indexing Avana positions, watching debt drift, and keeping the protocol aligned with its own oracle and risk assumptions improve readiness. Operational delay is not free when collateral keeps moving with the market.",
-            "LP collateral is an adapter problem as much as a valuation problem. Fungible LPs, concentrated ranges, and custom pool designs need different venue aware handling. Smart Agents are Avana's layer for respecting those differences instead of forcing one generic pathway onto every market. The oracle tells Avana what a position might be worth as credit. The agent layer helps determine whether that value can actually be recovered in practice.",
-            "Avana does not replace permissionless liquidation. External builders can still monitor and act. Protocol operated runtimes improve baseline coverage for collateral that is structurally harder to service. In stress that matters a lot. The worst moment to discover that a market lacks reliable execution coverage is during the liquidation event itself."
+            "Smart Agentsは清算が起きる前にも重要です。Avanaポジションのインデックス化、負債漂流の監視、プロトコルを自身のオラクルとリスク前提に整合させることで、準備態勢が向上します。担保が市場とともに動き続けるとき、運用の遅延は無料ではありません。",
+            "LP担保は評価問題と同時にアダプター問題でもあります。代替可能なLP、集中レンジ、カスタムプール設計には異なるvenue対応の処理が必要です。Smart Agentsは、すべての市場に汎用パスを強制するのではなく、これらの違いを尊重するAvanaのレイヤーです。オラクルはポジションがクレジットとしてどれだけの価値があるかをAvanaに伝えます。エージェントレイヤーは、その価値が実際に回収可能かを判断するのに役立ちます。",
+            "Avanaはパーミッションレス清算を置き換えません。外部ビルダーは引き続き監視し行動できます。プロトコル運用のランタイムは、構造的にサービスが難しい担保のベースラインカバレッジを改善します。ストレス時にはそれが大きく重要になります。市場に信頼できる実行カバレッジがないことを発見する最悪の瞬間は、清算イベントそのものの最中です。"
           ]
         }
       ]
@@ -82,37 +82,37 @@
       "date": "July 20, 2026",
       "description": "制御された unwind、部分介入、可能な限り手数料優先、venue 固有パスで Avana が LP 担保を清算する方法。",
       "image": "/images/blog/lp-liquidation-workflow.png",
-      "category": "Developers",
+      "category": "開発者",
       "tag": "プロトコル",
       "sections": [
         {
           "id": "not-a-token-sale",
-          "title": "Not a simple token sale",
+          "title": "単純なトークン売却ではない",
           "paragraphs": [
-            "Liquidating LP collateral on Avana is not the same as liquidating a token balance. The collateral may contain multiple assets, uncollected fees, concentrated range exposure, and venue specific exit mechanics. If a position becomes unhealthy, Avana needs a controlled unwind, not a panic sale that treats the LP like a single fungible chip."
+            "AvanaでのLP担保の清算は、トークン残高の清算と同じではありません。担保には複数の資産、未回収の手数料、集中レンジのエクスポージャー、venue固有の出口メカニズムが含まれる場合があります。ポジションが不健全になると、AvanaにはLPを単一の代替可能チップのように扱うパニック売りではなく、制御されたアンウィンドが必要です。"
           ]
         },
         {
           "id": "runtime-sequence",
-          "title": "The runtime sequence",
+          "title": "ランタイムシーケンス",
           "paragraphs": [
-            "In practice, liquidation is a runtime sequence. Unhealthy accounts are detected using Avana's risk adjusted collateral values rather than raw AMM spot state. Execution liquidity is sourced, often through a flashloan style path. Debt is repaid into the credit layer. The position moves into controlled custody. Claimable fees are realized where that helps. The LP is unwound through the correct venue path. After the underlyings are recovered, they are routed into the debt asset, execution liquidity is repaid, the liquidation premium is distributed, and any residual borrower value is returned.",
-            "Different LP families on Avana do not share one exit path. Fungible LPs are removed from the pool and broken into underlyings. Concentrated ranges have to be handled according to their actual inventory at unwind time, which can look very different from what users assume if price has pushed the position to one side. Custom or hook based pools may need dedicated adapters before Avana treats them as safe enough for liquidation coverage at all. If Avana cannot unwind a collateral type correctly, it should not pretend the market is fully supported."
+            "実際には、清算はランタイムシーケンスです。不健全なアカウントは生のAMMスポット状態ではなく、Avanaのリスク調整済み担保価値で検出されます。実行流動性は、多くの場合flashloanスタイルのパスで調達されます。負債はクレジットレイヤーに返済されます。ポジションは制御されたカストディに移動します。役立つ場合は請求可能な手数料が実現されます。LPは正しいvenueパスでアンウィンドされます。原資産が回収された後、負債資産にルーティングされ、実行流動性が返済され、清算プレミアムが分配され、残余の借り手価値が返還されます。",
+            "Avana上の異なるLPファミリーは1つの出口パスを共有しません。代替可能なLPはプールから除去され、原資産に分解されます。集中レンジはアンウィンド時の実際のインベントリに応じて処理する必要があり、価格がポジションを片側に押し出した場合、ユーザーの想定と大きく異なることがあります。カスタムまたはhookベースのプールは、Avanaが清算カバレッジに十分安全と見なす前に専用アダプターが必要な場合があります。Avanaが担保タイプを正しくアンウィンドできないなら、市場が完全にサポートされているかのように装うべきではありません。"
           ]
         },
         {
           "id": "partial-and-fees",
-          "title": "Partial cuts and fees first",
+          "title": "部分削減と手数料優先",
           "paragraphs": [
-            "Avana aims to restore target health rather than defaulting to full liquidation. Partial liquidation is preferred because it reduces unnecessary borrower loss and limits disruption to the underlying pool. The framework computes the debt needed to put the loan back on safer ground and targets that amount first. Full liquidation remains the fallback when solvency cannot be recovered with a smaller cut.",
-            "Fees matter too. LP positions often contain claimable value that has not been realized yet. If fees can reduce how much principal must be unwound, Avana should use them before cutting deeper into the position. That improves borrower outcomes and makes liquidation more precise. LP positions are live financial objects, not passive token balances, and Avana's process is written to match that."
+            "Avanaは完全清算をデフォルトにするのではなく、目標ヘルスを回復することを目指します。部分清算は、不要な借り手の損失を減らし、原資産プールへの混乱を制限するため優先されます。フレームワークはローンをより安全な状態に戻すために必要な負債を計算し、まずその金額を対象とします。より小さな削減でソルベンシーを回復できない場合、完全清算がフォールバックとなります。",
+            "手数料も重要です。LPポジションにはまだ実現されていない請求可能な価値が含まれることが多いです。手数料がアンウィンドすべき元本を減らせるなら、Avanaはポジションをより深く削る前にそれを使うべきです。それは借り手の結果を改善し、清算をより精密にします。LPポジションは受動的なトークン残高ではなく、生きた金融オブジェクトであり、Avanaのプロセスはそれに合わせて書かれています。"
           ]
         },
         {
           "id": "who-runs-it",
-          "title": "Who runs liquidation",
+          "title": "誰が清算を実行するか",
           "paragraphs": [
-            "Specialized liquidation runtimes make a difference here. Nodes built for Avana LP liquidation watch active positions, refresh debt drift, index market state, simulate unwind paths, source execution liquidity, route assets, and close transactions atomically. Liquidation remains permissionless, but LP collateral is harder for purely generic liquidators to service because the workflow is longer and more venue specific. Liquidators also have to price in slippage, route depth, flashloan cost, and MEV exposure. Large or unusual unwinds may need quieter execution paths so a recoverable job does not turn into a destructive one."
+            "専用の清算ランタイムがここで違いを生みます。Avana LP清算用に構築されたノードは、アクティブなポジションを監視し、負債漂流を更新し、市場状態をインデックス化し、アンウィンドパスをシミュレートし、実行流動性を調達し、資産をルーティングし、トランザクションをアトミックにクローズします。清算はパーミッションレスのままですが、ワークフローが長くvenue固有であるため、LP担保は純粋に汎用的な清算者にはサービスが難しいです。清算者はスリッページ、ルート深度、flashloanコスト、MEVエクスポージャーも価格に織り込む必要があります。大規模または異例のアンウィンドには、回収可能なジョブが破壊的なものにならないよう、より静かな実行パスが必要な場合があります。"
           ]
         }
       ]
@@ -123,37 +123,37 @@
       "date": "July 17, 2026",
       "description": "recoverable value、決定的な再構成、保守的な recovery haircut で Avana Oracle が LP 担保を価格付けする方法。",
       "image": "/images/blog/lp-collateral-oracle-problem.png",
-      "category": "Developers",
+      "category": "開発者",
       "tag": "プロトコル",
       "sections": [
         {
           "id": "what-avana-oracle-asks",
-          "title": "What Avana Oracle is asking",
+          "title": "Avana Oracleが問うていること",
           "paragraphs": [
-            "An LP's value depends on the prices of the underlyings, the structure of the pool, the current inventory split, accrued fees, and for concentrated liquidity the relationship between current price and the active range. For a lending system, the important question is not only what a dashboard mark might say. It is what can realistically be recovered if the position has to cover a loan. If Avana lends against best case assumptions, it is financing collateral inflation. Avana Oracle is built around recoverable value, not optimistic net asset value."
+            "LPの価値は原資産の価格、プール構造、現在のインベントリ分割、未収手数料、集中流動性の場合は現在価格とアクティブレンジの関係に依存します。レンディングシステムにとって重要なのは、ダッシュボードのマークが何と言うかだけではありません。ポジションがローンをカバーしなければならない場合に現実的に回収できるものは何か、です。Avanaが最良ケースの前提で貸し出すなら、担保インフレを資金提供していることになります。Avana Oracleは楽観的な純資産価値ではなく、回収可能価値を中心に構築されています。"
           ]
         },
         {
           "id": "three-step-pipeline",
-          "title": "How valuation is built",
+          "title": "評価の構築方法",
           "paragraphs": [
-            "The oracle is a multi layer collateral valuation engine. First, Avana prices the underlying assets from robust external references rather than leaning on raw AMM spot state. Second, it reconstructs the LP position deterministically: pool balance reconstruction for fungible LPs, or direct decomposition of concentrated positions by range, liquidity, and current price. Third, it discounts that reconstructed value with recovery haircuts that reflect liquidation slippage, unwind friction, and impermanent loss risk. Impermanent loss is the difference in value between holding assets in a pool and holding them separately. It grows when the paired assets diverge in price. Borrowing power on Avana comes from the discounted value, not from the most flattering mark."
+            "オラクルは多層の担保評価エンジンです。まず、Avanaは生のAMMスポット状態に頼るのではなく、堅牢な外部参照から原資産を価格付けします。次に、LPポジションを決定論的に再構築します：代替可能LPのプール残高再構築、またはレンジ、流動性、現在価格による集中ポジションの直接分解。第三に、清算スリッページ、アンウィンド摩擦、インパーマネントロスリスクを反映する回収ヘアカットで再構築価値を割引します。インパーマネントロスは、プールで資産を保有することと別々に保有することの価値の差です。ペア資産の価格が乖離すると増大します。Avanaの借入力は最も好意的なマークではなく、割引後の価値から生まれます。"
           ]
         },
         {
           "id": "why-simple-marks-fail",
-          "title": "Why simple marks fail",
+          "title": "単純なマークが失敗する理由",
           "paragraphs": [
-            "LP collateral is one of the easiest places for a lending system to fool itself. AMM pool state can look healthy while being locally distorted. A concentrated position can look strong while sitting in a riskier inventory mix than users assume. Thin depth, same transaction manipulation, and stale inputs can all produce numbers that look precise without being trustworthy. Avana separates apparent value from reliable collateral value by combining external asset pricing, deterministic LP reconstruction, and protocol level safeguards.",
-            "The oracle interface can also distinguish reconstructed principal value, fee value, and reserved value used for protocol risk buffers. Those components do not deserve identical treatment inside a lending market. By standardizing them across LP types, the spoke layer can reason about fungible LPs, NFT based LPs, and multi asset positions consistently while still respecting how different venues expose state."
+            "LP担保は、レンディングシステムが自分自身を欺く最も容易な場所の一つです。AMMプール状態は局所的に歪んでいながら健全に見えることがあります。集中ポジションは、ユーザーが想定するよりリスクの高いインベントリミックスに座りながら強く見えることがあります。薄い深度、同一トランザクション操作、古い入力はすべて、信頼できないのに正確に見える数値を生み出すことがあります。Avanaは外部資産価格付け、決定論的LP再構築、プロトコルレベルのセーフガードを組み合わせて、見かけの価値と信頼できる担保価値を分離します。",
+            "オラクルインターフェースは、再構築された元本価値、手数料価値、プロトコルリスクバッファに使用される予約価値も区別できます。これらのコンポーネントはレンディング市場内で同一の扱いに値しません。LPタイプ間で標準化することで、spokeレイヤーは代替可能LP、NFTベースLP、マルチアセットポジションについて一貫して推論でき、異なるvenueが状態を公開する方法も尊重できます。"
           ]
         },
         {
           "id": "checks-and-safeguards",
-          "title": "Checks and safeguards",
+          "title": "チェックとセーフガード",
           "paragraphs": [
-            "Different AMM families need different verification paths. Curve stable LPs, Uniswap pairs and NFTs, Balancer weighted pools, and Aerodrome pairs all expose collateral state differently. On Avana, external prices remain the main anchor. Pool specific data and time weighted checks help verify whether the reconstructed collateral state is coherent and harder to game. Those time weighted checks are not the primary price Avana relies on for loans. They are an extra consistency check so Avana can tell whether the collateral state still lines up before that state is treated as credit.",
-            "Manipulation resistance on Avana includes deviation thresholds, pool price difference constraints, recovery haircuts, open interest caps, and an oracle sentinel that reacts when feed health degrades or verification inputs stop agreeing. LP collateral is unusually exposed to same transaction abuse, thin market distortions, and stale or contradictory signals because the collateral is more structurally complex than a simple token balance. A protocol that supports LP credit has to assume the pricing surface will eventually be tested. Avana Oracle is written for that assumption."
+            "異なるAMMファミリーには異なる検証パスが必要です。CurveステーブルLP、UniswapペアとNFT、Balancer加重プール、Aerodromeペアはすべて異なる方法で担保状態を公開します。Avanaでは外部価格が主なアンカーです。プール固有のデータと時間加重チェックは、再構築された担保状態が一貫しており、操作が難しいかを検証するのに役立ちます。これらの時間加重チェックは、Avanaがローンに依存する主要価格ではありません。その状態がクレジットとして扱われる前に、担保状態がまだ整合しているかをAvanaが判断できる追加の一貫性チェックです。",
+            "Avanaの操作耐性には、偏差閾値、プール価格差制約、回収ヘアカット、オープンインタレスト上限、フィード健全性が低下したり検証入力が一致しなくなったときに反応するオラクルセンチネルが含まれます。LP担保は単純なトークン残高より構造的に複雑なため、同一トランザクション悪用、薄い市場の歪み、古いまたは矛盾するシグナルに異常にさらされます。LPクレジットをサポートするプロトコルは、価格設定面がいずれテストされることを前提にする必要があります。Avana Oracleはその前提のために書かれています。"
           ]
         }
       ]
@@ -164,38 +164,38 @@
       "date": "July 15, 2026",
       "description": "アーキテクチャとオラクルからヘルス、清算、オペレーションまで、Avana が LP 担保の多層セキュリティをどう構築するか。",
       "image": "/images/blog/security-deep-dive.png",
-      "category": "Developers",
+      "category": "開発者",
       "tag": "プロトコル",
       "sections": [
         {
           "id": "more-than-a-price",
-          "title": "More than a price and an LTV",
+          "title": "価格とLTV以上のもの",
           "paragraphs": [
-            "A simple token can usually be priced with a direct market reference and liquidated with standard logic. An LP position cannot. Its value depends on underlyings, pool structure, the relationship between those assets, fee accrual, liquidity depth, and for concentrated liquidity the active range. Under stress those variables compound. A protocol that supports LP backed borrowing on Aave v4 has to do more than assign a price and set a loan to value ratio. That is the problem Avana is built around."
+            "単純なトークンは通常、直接的な市場参照で価格付けされ、標準ロジックで清算できます。LPポジションはできません。その価値は原資産、プール構造、資産間の関係、手数料の発生、流動性の深さ、集中流動性の場合はアクティブレンジに依存します。ストレス下ではこれらの変数が複合します。Aave v4でLP担保借入をサポートするプロトコルは、価格を割り当てLTVを設定する以上のことをしなければなりません。それがAvanaが構築されている問題です。"
           ]
         },
         {
           "id": "architecture-and-oracles",
-          "title": "Architecture and valuation",
+          "title": "アーキテクチャと評価",
           "paragraphs": [
-            "The first security layer is architectural. Avana uses Aave v4's hub and spoke structure. The hub holds the common liquidity layer, manages reserve accounting, and enforces solvency constraints. The spoke is where LP specific collateral logic lives: admission, valuation rules, pool specific risk parameters, and liquidation behavior. If an LP market becomes stressed, that stress is meant to stay contained in the spoke rather than rewriting assumptions across unrelated collateral types. On Avana, the spoke is part of the security boundary.",
-            "The second layer is oracle and valuation design. LP positions cannot be safely priced with a single flat feed. Avana uses a dual source framework. External price feeds provide the primary reference for underlyings, while AMM derived pricing acts as independent verification. Borrowing power exists only when both sources stay coherent within tolerance. Risk is assigned at the market level. Pool structure, asset correlation, liquidity depth, and range concentration all shape collateral treatment. Borrowing power is anchored to the weaker aspects of the position, with pool level adjustments for volatility, liquidity quality, and stress assumptions."
+            "第一のセキュリティレイヤーはアーキテクチャです。AvanaはAave v4のhub-and-spoke構造を使用します。hubは共通流動性レイヤーを保持し、リザーブ会計を管理し、ソルベンシー制約を強制します。spokeはLP固有の担保ロジックが存在する場所です：准入、評価ルール、プール固有のリスクパラメータ、清算動作。LP市場がストレスを受けた場合、そのストレスは無関係な担保タイプ全体の前提を書き換えるのではなく、spoke内に封じ込められることを意図しています。Avanaでは、spokeはセキュリティ境界の一部です。",
+            "第二のレイヤーはオラクルと評価設計です。LPポジションは単一のフラットフィードで安全に価格付けできません。Avanaはデュアルソースフレームワークを使用します。外部価格フィードが原資産の主要参照を提供し、AMM由来の価格付けが独立した検証として機能します。借入力は両ソースが許容範囲内で一貫している場合にのみ存在します。リスクは市場レベルで割り当てられます。プール構造、資産相関、流動性深度、レンジ集中度がすべて担保処理を形成します。借入力はポジションの弱い側面に固定され、ボラティリティ、流動性品質、ストレス前提に対するプールレベルの調整が加わります。"
           ]
         },
         {
           "id": "health-and-liquidation",
-          "title": "Health and liquidation",
+          "title": "ヘルスと清算",
           "paragraphs": [
-            "The third layer is health monitoring. LP positions remain active after they are posted as collateral, so risk does not freeze once a loan opens. Value changes with price moves, fee generation, range migration, and shifts in pool quality. Avana runs continuous per position health assessment rather than relying on occasional snapshots. Health factor is the live signal of whether the collateral model still holds for that loan.",
-            "Liquidation is where the assumptions get tested. LP collateral cannot be liquidated like a normal token. Avana's approach is to collect fees embedded in the position before destroying principal where possible, remove only enough liquidity to repair the loan, and route the unwind through execution paths that favor deterministic settlement. Smart Agents provide the execution infrastructure: monitoring positions, reconciling data, simulating execution, and unwinding under adverse conditions. They are part of Avana's safety system, not an afterthought bolted on later."
+            "第三のレイヤーはヘルスモニタリングです。LPポジションは担保として投稿された後もアクティブなままなので、ローンが開かれた後もリスクは凍結しません。価値は価格変動、手数料生成、レンジ移行、プール品質の変化とともに変わります。Avanaは時折のスナップショットに頼るのではなく、ポジションごとの継続的なヘルス評価を実行します。ヘルスファクターは、そのローンに対して担保モデルがまだ成立しているかのライブシグナルです。",
+            "清算は前提が試される場所です。LP担保は通常のトークンのように清算できません。Avanaのアプローチは、可能な場合は元本を破壊する前にポジションに埋め込まれた手数料を回収し、ローンを修復するのに十分な流動性のみを除去し、決定論的決済を優先する実行パスでアンウィンドをルーティングすることです。Smart Agentsは実行インフラを提供します：ポジションの監視、データの照合、実行のシミュレーション、逆境下でのアンウィンド。それらは後から取り付けられた考え余りではなく、Avanaの安全システムの一部です。"
           ]
         },
         {
           "id": "operations",
-          "title": "Operations and change control",
+          "title": "オペレーションと変更管理",
           "paragraphs": [
-            "The operational layer assumes governance and risk configuration need the same discipline as collateral treatment. Risk parameters change through structured process. Sensitive changes sit behind timelocks and review. Emergency controls exist for genuinely adverse conditions. Monitoring extends beyond individual positions to whole market categories. A protocol that supports LP collateral cannot rely on static configuration alone.",
-            "LP collateral is viable on Avana only if security is treated as a system. Architecture isolates risk. Oracles validate reality. Valuation turns complexity into conservative borrowing power. Health checks monitor drift. Liquidation restores solvency with as much precision as the venue allows. Operational controls govern how the framework evolves. None of those layers is enough by itself."
+            "運用レイヤーは、ガバナンスとリスク設定が担保処理と同じ規律を必要とすることを前提とします。リスクパラメータは構造化されたプロセスを通じて変更されます。機密性の高い変更はタイムロックとレビューの背後にあります。緊急コントロールは真に不利な状況のために存在します。モニタリングは個別ポジションを超えて市場カテゴリ全体に及びます。LP担保をサポートするプロトコルは静的設定だけに頼ることはできません。",
+            "LP担保は、セキュリティがシステムとして扱われる場合にのみAvanaで実現可能です。アーキテクチャがリスクを分離します。オラクルが現実を検証します。評価が複雑さを保守的な借入力に変換します。ヘルスチェックが漂流を監視します。清算がvenueが許す限りの精度でソルベンシーを回復します。運用コントロールがフレームワークの進化を統治します。これらのレイヤーのどれも単独では十分ではありません。"
           ]
         }
       ]
@@ -206,37 +206,37 @@
       "date": "July 13, 2026",
       "description": "プールを完全に抜けずに、バッファや方向性オフセット、より規律あるヘッジ習慣を Avana でどう資金調達できるか。",
       "image": "/images/blog/hedge-lp-position.png",
-      "category": "For LPs",
+      "category": "LP向け",
       "tag": "ガイド",
       "sections": [
         {
           "id": "more-than-fees",
-          "title": "More than fees",
+          "title": "手数料以上のもの",
           "paragraphs": [
-            "An LP position is never only about fees. Price divergence, impermanent loss, range drift, and collateral pressure can all hit the same book at once. Impermanent loss is what happens when the pool's asset mix shifts and the LP ends up worth less than holding the tokens separately. Once a supported position can back borrowing through Avana on Aave v4, borrowed capital can fund protection rather than only leverage. A position that would otherwise need to be fully withdrawn can stay active while the borrowed capital is used to reduce stress or balance exposure."
+            "LPポジションは決して手数料だけの話ではありません。価格乖離、インパーマネントロス、レンジドリフト、担保圧力がすべて同時に同じブックに襲いかかることがあります。インパーマネントロスは、プールの資産ミックスがシフトし、LPがトークンを別々に保有するより価値が低くなるときに起こります。サポートされたポジションがAave v4上のAvanaを通じて借入を裏付けできるようになると、借りた資本はレバレッジだけでなく保護にも使えます。そうでなければ完全に引き出す必要があるポジションは、借りた資本がストレスを軽減したりエクスポージャーをバランスさせるために使われながらアクティブなままでいられます。"
           ]
         },
         {
           "id": "buffers-and-offsets",
-          "title": "Buffers and directional offsets",
+          "title": "バッファと方向性オフセット",
           "paragraphs": [
-            "The simplest hedge is often the most practical: a stablecoin buffer. Borrow conservatively on Avana and keep part of the proceeds in stables. If health starts to compress or volatility picks up, that liquidity can repay debt or reduce stress without forcing a reactive sale of the LP. This is not primarily about return enhancement. It is about buying time and preserving control, which on its own can matter a lot.",
-            "A second form is directional offset. If the LP already carries clear exposure to one volatile asset, borrowed capital can reduce net directional risk instead of increasing it. Methods vary with user sophistication, but the principle is straightforward. If the LP already embeds market exposure, borrowing can balance that exposure. Hedging works best as risk narrowing, not as a second speculative trade sitting next to the first one."
+            "最もシンプルなヘッジはしばしば最も実用的です：ステーブルコインバッファー。Avanaで保守的に借り、収益の一部をステーブルで保持します。ヘルスが圧縮され始めたりボラティリティが上がったりした場合、その流動性はLPの反応的な売却を強制せずに負債を返済したりストレスを軽減できます。これは主にリターン向上のためではありません。時間を買い、コントロールを維持することであり、それ自体が大きな意味を持つことがあります。",
+            "第二の形は方向性オフセットです。LPがすでに1つのボラタイル資産への明確なエクスポージャーを持っている場合、借りた資本はそれを増やすのではなく、純方向性リスクを減らせます。方法はユーザーの熟練度によって異なりますが、原則は単純です。LPがすでに市場エクスポージャーを内包しているなら、借入はそのエクスポージャーをバランスできます。ヘッジは最初の投機的取引の隣に座る第二の投機的取引ではなく、リスクの絞り込みとして最も効果的です。"
           ]
         },
         {
           "id": "more-advanced-options",
-          "title": "Neutrality and softer hedges",
+          "title": "ニュートラリティとソフトヘッジ",
           "paragraphs": [
-            "A more advanced approach is to think in terms of neutrality: reducing directional sensitivity and leaning on fee income. That kind of structure can be more stable, but it requires active monitoring and rebalancing. LP positions evolve as markets move, so a neutral setup has to be maintained, not declared once. For larger positions, protective downside structures can define worst case scenarios instead of only reacting to them, though they introduce their own costs and timing decisions.",
-            "A softer hedge that is often overlooked is reallocating marginal exposure rather than touching the core LP. In practice that means shifting incremental capital toward more defensive pools or stable deployments when conditions deteriorate, without fully unwinding the original position. Avana helps by keeping the core LP available as collateral so every liquidity need does not become an all or nothing exit."
+            "より高度なアプローチは、ニュートラリティの観点で考えることです：方向性感度を下げ、手数料収入に頼る。そうした構造はより安定し得ますが、積極的なモニタリングとリバランスが必要です。LPポジションは市場の動きとともに進化するため、ニュートラル設定は一度宣言するのではなく維持されなければなりません。大きなポジションでは、保護的なダウンサイド構造が最悪ケースに単に反応するのではなくそれを定義できますが、独自のコストとタイミング判断を伴います。",
+            "見落とされがちなソフトヘッジは、コアLPに触れるのではなく限界的エクスポージャーを再配分することです。実際には、状況が悪化したときに元のポジションを完全にアンウィンドせず、増分資本をより防御的なプールやステーブル配置にシフトすることを意味します。AvanaはコアLPを担保として利用可能に保つことで、すべての流動性ニーズがオールオアナッシングの出口にならないよう助けます。"
           ]
         },
         {
           "id": "practical-rules",
-          "title": "Practical rules that travel well",
+          "title": "どこでも通用する実践的ルール",
           "paragraphs": [
-            "Across approaches, a few habits travel well on Avana. Borrow conservatively. Keep a real buffer. Assume conditions can worsen faster than expected. Treat maximum borrowing capacity as a boundary rather than a target. Use monitoring with predefined de risking rules instead of relying on constant manual reaction. If a hedge strategy becomes so complicated that you no longer understand what is being hedged and what is being added, it has gone too far."
+            "アプローチを横断して、Avanaで通用する習慣がいくつかあります。保守的に借りる。実際のバッファーを持つ。条件が予想より速く悪化しうると想定する。最大借入容量を目標ではなく境界として扱う。常に手動で反応するのではなく、事前定義されたデリスクルールでモニタリングを使う。ヘッジ戦略が複雑すぎて何がヘッジされ何が追加されているか理解できなくなったら、行き過ぎです。"
           ]
         }
       ]
@@ -247,37 +247,37 @@
       "date": "July 10, 2026",
       "description": "バッファ、ストレステスト、退出規律、持続可能なレバレッジを含めた、Avana LP 担保での yield looping の考え方。",
       "image": "/images/blog/yield-looping-playbook.png",
-      "category": "For LPs",
+      "category": "LP向け",
       "tag": "ガイド",
       "sections": [
         {
           "id": "what-looping-means",
-          "title": "What looping means on Avana",
+          "title": "Avanaでのルーピングの意味",
           "paragraphs": [
-            "Yield looping means holding an LP position, borrowing against it, and redeploying the borrowed capital into another yield producing strategy, or in some cases back into liquidity itself. Avana on Aave v4 makes that collateral step possible for supported LP markets. The attraction is obvious: looping can increase effective exposure and amplify fee generation. The danger is equally obvious: it can compress safety margins, raise liquidation sensitivity, and make a position much more fragile when conditions shift. The real objective should be sustainable amplification, not maximum leverage on day one."
+            "イールドルーピングとは、LPポジションを保有し、それに対して借り、借りた資本を別のイールド生成戦略、場合によっては流動性自体に再配分することです。Aave v4上のAvanaは、サポートされたLP市場でその担保ステップを可能にします。魅力は明らかです：ルーピングは実効エクスポージャーを増やし、手数料生成を増幅できます。危険も同様に明らかです：安全マージンを圧縮し、清算感度を高め、条件が変わるとポジションをはるかに脆弱にできます。真の目標は初日の最大レバレッジではなく、持続可能な増幅であるべきです。"
           ]
         },
         {
           "id": "keeping-the-first-loop-modest",
-          "title": "Keeping the first loop modest",
+          "title": "最初のループは控えめに",
           "paragraphs": [
-            "The safest form of looping is modest. Borrow a relatively small amount against a supported Avana LP position and redeploy into a second yield source without pushing near the borrowing limit. That is a controlled extension of the original position, not a recursive bet that conditions stay perfect. For many users, especially early on, that is the right starting point. You still get better capital use, but you leave room if the LP mark, fee income, or borrow rate moves against you.",
-            "More advanced versions redeploy borrowed capital back into liquidity. That can increase fee generation in favorable environments, but it also makes the structure more reflexive. You become exposed to a layered book where price movement, collateral quality, and debt safety interact more aggressively. Leverage does not only amplify returns. It also amplifies the speed at which a healthy Avana position can become a stressed one."
+            "最も安全なルーピングの形は控えめです。サポートされたAvana LPポジションに対して比較的少額を借り、借入限度に近づけずに第二のイールド源に再配分します。それは条件が完璧なままであるという再帰的な賭けではなく、元のポジションの制御された拡張です。多くのユーザー、特に初期には、それが正しい出発点です。資本効率は向上しますが、LPマーク、手数料収入、借入金利が不利に動いた場合の余地を残せます。",
+            "より高度なバージョンは借りた資本を流動性に戻します。好環境では手数料生成を増やせますが、構造をより反射的にします。価格変動、担保品質、負債の安全性がより攻撃的に相互作用する多層のブックにさらされます。レバレッジはリターンを増幅するだけではありません。健全なAvanaポジションがストレス状態になる速度も増幅します。"
           ]
         },
         {
           "id": "stress-and-exit",
-          "title": "Stress testing and exit discipline",
+          "title": "ストレステストと出口規律",
           "paragraphs": [
-            "Stress testing is essential. Any serious looping approach should be evaluated under adverse conditions. What happens if one side of the pair moves sharply, if trading volume weakens, if borrow costs rise, or if collateral quality deteriorates faster than expected. A structure that looks attractive when fees are high and volatility is calm can look uncomfortable once those conditions reverse. If the only favorable scenario is a calm fee month, the thinking is not finished.",
-            "Exit discipline matters as much as entry. Many poor leverage decisions are not created by the first borrow. They are created by having no plan for reducing risk. If volatility rises, health buffers compress, or the economics weaken, exposure should be reduced in stages rather than defended blindly. Avana Automate can help with fee harvesting, debt reduction, and rule based de risking, but automation only helps if the underlying rules are honest. A looped strategy is only as strong as the assumptions behind it."
+            "ストレステストは不可欠です。真剣なルーピングアプローチは不利な条件下で評価されるべきです。ペアの片側が急激に動いたら、取引量が弱まったら、借入コストが上がったら、担保品質が予想より速く悪化したらどうなるか。手数料が高くボラティリティが穏やかなとき魅力的に見える構造は、条件が逆転すると不快に見えることがあります。好ましいシナリオが穏やかな手数料の月だけなら、思考は終わっていません。",
+            "出口規律はエントリーと同じくらい重要です。多くの悪いレバレッジ判断は最初の借入で生まれるのではありません。リスクを減らす計画がないことで生まれます。ボラティリティが上がり、ヘルスバッファーが圧縮され、経済性が弱まるなら、盲目的に守るのではなく段階的にエクスポージャーを減らすべきです。Avana Automateは手数料収穫、負債削減、ルールベースのデリスクに役立ちますが、基盤のルールが誠実でなければ自動化は助けになりません。ループ戦略はその背後にある前提と同じくらい強いだけです。"
           ]
         },
         {
           "id": "balance-sheet-not-magic",
-          "title": "Balance sheet design, not free yield",
+          "title": "バランスシート設計であり、タダのイールドではない",
           "paragraphs": [
-            "Yield looping is a capital structure decision, not a shortcut to free yield. Used carefully on Avana, it lets productive onchain liquidity support a broader set of returns without forcing the original position to be fully unwound. Used carelessly, it turns a healthy LP position into a fragile one. The difference is usually discipline, buffer management, and a willingness to treat leverage as something to control rather than something to maximize."
+            "イールドルーピングは資本構造の決定であり、タダのイールドへの近道ではありません。Avanaで慎重に使えば、生産的なオンチェーン流動性が元のポジションを完全にアンウィンドすることなく、より広いリターンセットを支えられます。不注意に使えば、健全なLPポジションを脆弱なものに変えます。違いは通常、規律、バッファー管理、レバレッジを最大化するものではなく制御するものとして扱う意志です。"
           ]
         }
       ]
@@ -288,37 +288,37 @@
       "date": "July 8, 2026",
       "description": "借り入れ、ヘッジ、トレジャリーの柔軟性、より資本効率の高い利用まで、Avana LP 担保が可能にすること。",
       "image": "/images/blog/unleashing-lp-tokens.png",
-      "category": "For LPs",
+      "category": "LP向け",
       "tag": "ガイド",
       "sections": [
         {
           "id": "from-trapped-to-usable",
-          "title": "From trapped capital to usable capital",
+          "title": "閉じ込められた資本から使える資本へ",
           "paragraphs": [
-            "LP positions have traditionally been productive but inflexible. They earn trading fees and support market depth, but if you want liquidity from that position, the usual path is to unwind it: break the position apart, interrupt fee generation, and turn a productive asset into idle balances. LP collateral changes that. Through Avana on Aave v4, supported LP positions can stay active in the underlying AMM while also supporting borrowing."
+            "LPポジションは伝統的に生産的ですが柔軟性がありませんでした。取引手数料を稼ぎ市場深度を支えますが、そのポジションから流動性が欲しければ、通常の道はアンウィンドすることです：ポジションを分解し、手数料生成を中断し、生産的資産を遊休残高に変えます。LP担保はそれを変えます。Aave v4上のAvanaを通じて、サポートされたLPポジションは借入も支えながら基盤AMMでアクティブなままでいられます。"
           ]
         },
         {
           "id": "simple-and-yield-use",
-          "title": "Conservative liquidity and second yield paths",
+          "title": "保守的流動性と第二のイールド経路",
           "paragraphs": [
-            "The most conservative use case is straightforward. You borrow stable assets against a supported Avana LP position and use that liquidity for working capital, reserve management, or lower volatility yield while the LP stays active and keeps earning fees. The main value here is not leverage for its own sake. It is access to cash without forcing a full exit from the original position.",
-            "Borrowed stables can also go into conservative onchain yield, such as stable oriented lending, reserve management, or other lower volatility opportunities. The LP keeps generating fees while borrowed capital follows a separate path. That is not yield stacking out of thin air. It is a more efficient use of capital that would otherwise require unwinding the position first."
+            "最も保守的なユースケースは単純です。サポートされたAvana LPポジションに対してステーブル資産を借り、その流動性を運転資本、リザーブ管理、または低ボラティリティイールドに使いながらLPはアクティブなまま手数料を稼ぎ続けます。ここでの主な価値はそれ自体のためのレバレッジではありません。元のポジションから完全に退出することなくキャッシュにアクセスすることです。",
+            "借りたステーブルは、ステーブル志向のレンディング、リザーブ管理、その他の低ボラティリティ機会など、保守的なオンチェーンイールドにも回せます。LPは手数料を生成し続け、借りた資本は別の経路を辿ります。それは空中からのイールドスタッキングではありません。そうでなければまずポジションをアンウィンドする必要がある資本の、より効率的な使い方です。"
           ]
         },
         {
           "id": "hedge-and-active",
-          "title": "Hedging and more active strategies",
+          "title": "ヘッジとよりアクティブな戦略",
           "paragraphs": [
-            "Hedging is another category. LP positions expose users to changing asset composition and impermanent loss, especially in pools where one side is more volatile. Credit against LP collateral on Avana can create room to manage that exposure: reduce directional concentration, improve liquidity planning, or build a more balanced portfolio around an existing position.",
-            "More active strategies redeploy borrowed capital back into liquidity, increasing market exposure and fee generation. That can work, but you are now managing a recursive structure whose risk changes quickly with market conditions. Once borrowed assets are recycled into additional LP exposure, discipline becomes more important than ambition. Avana opens the option set. Health, borrow limits, and liquidation rules still decide what is sane for a given pool."
+            "ヘッジは別のカテゴリーです。LPポジションは、特に片側がよりボラタイルなプールでは、変化する資産構成とインパーマネントロスにユーザーをさらします。AvanaでのLP担保に対するクレジットは、そのエクスポージャーを管理する余地を作れます：方向性の集中を減らし、流動性計画を改善し、既存ポジションの周りによりバランスの取れたポートフォリオを構築します。",
+            "よりアクティブな戦略は借りた資本を流動性に戻し、市場エクスポージャーと手数料生成を増やします。それは機能し得ますが、リスクが市場条件とともに急速に変わる再帰的構造を管理することになります。借りた資産が追加のLPエクスポージャーにリサイクルされると、野心より規律が重要になります。Avanaはオプションセットを開きます。ヘルス、借入限度、清算ルールが特定のプールにとって何が健全かを依然として決めます。"
           ]
         },
         {
           "id": "what-changes",
-          "title": "What changes for LPs",
+          "title": "LPにとって何が変わるか",
           "paragraphs": [
-            "LP collateral turns liquidity provision from a relatively isolated yield activity into something more connected to broader DeFi capital use. A position that used to be productive only inside its pool can support borrowing, liquidity planning, and portfolio design without first being dismantled. The right use still depends on your risk tolerance and your understanding of how LP value, borrowing capacity, and liquidation thresholds interact on Avana."
+            "LP担保は流動性提供を比較的孤立したイールド活動から、より広いDeFi資本利用につながるものに変えます。かつてプール内でのみ生産的だったポジションが、まず分解されることなく借入、流動性計画、ポートフォリオ設計を支えられます。正しい使い方は依然としてリスク許容度と、AvanaでLP価値、借入容量、清算閾値がどう相互作用するかの理解に依存します。"
           ]
         }
       ]
@@ -329,37 +329,37 @@
       "date": "July 6, 2026",
       "description": "Base 上の Aerodrome LP をアクティブに保ちつつ、専用市場経由で借り入れを支える Avana の仕組み。",
       "image": "/images/blog/aerodrome-lp-collateral.png",
-      "category": "Developers",
+      "category": "開発者",
       "tag": "プロトコル",
       "sections": [
         {
           "id": "aerodrome-on-avana",
-          "title": "Aerodrome liquidity on Avana",
+          "title": "Avana上のAerodrome流動性",
           "paragraphs": [
-            "Aerodrome LP positions sit at the center of onchain activity on Base, where liquidity supports trading fees, token distribution, and ecosystem depth. As collateral, those positions need evaluation by pool structure, asset quality, liquidity depth, and stress behavior, not by headline TVL or fee generation alone. Avana is built to support this kind of collateral on Aave v4 with market specific rules rather than a venue wide blanket."
+            "Aerodrome LPポジションはBaseのオンチェーン活動の中心にあり、流動性は取引手数料、トークン配布、エコシステム深度を支えます。担保として、それらのポジションは見出しTVLや手数料生成だけでなく、プール構造、資産品質、流動性深度、ストレス時の挙動で評価される必要があります。Avanaはvenue全体の一律ではなく、市場固有のルールでAave v4上のこの種の担保をサポートするよう構築されています。"
           ]
         },
         {
           "id": "hub-spoke-and-pool-quality",
-          "title": "Hub, spoke, and pool quality",
+          "title": "Hub、spoke、プール品質",
           "paragraphs": [
-            "Aave v4's hub and spoke architecture is what makes the product shape work. The hub manages shared liquidity. The Avana spoke handles Aerodrome specific collateral logic. A stable pool on Base should not be treated the same as a volatile ecosystem pair just because both are Aerodrome LPs. The spoke defines how different categories of Aerodrome liquidity are valued, how much borrowing power they support, and how liquidation works if a position becomes unsafe.",
-            "Aerodrome pools vary widely. Some involve established assets with stronger liquidity. Others center on faster moving ecosystem tokens with higher volatility and thinner depth. Positions that look similar on the surface can behave very differently as collateral. Avana's spoke model assigns treatment by pool structure and quality, not by venue name alone."
+            "Aave v4のhub-and-spokeアーキテクチャがプロダクト形状を機能させます。hubは共有流動性を管理します。Avana spokeはAerodrome固有の担保ロジックを処理します。Baseのステーブルプールは、両方がAerodrome LPだからといってボラタイルなエコシステムペアと同じ扱いをされるべきではありません。spokeは異なるカテゴリーのAerodrome流動性がどう評価され、どれだけ借入力を支え、ポジションが不安全になった場合に清算がどう機能するかを定義します。",
+            "Aerodromeプールは大きく異なります。確立された資産とより強い流動性を伴うものもあれば、より高いボラティリティと薄い深度の速く動くエコシステムトークンを中心とするものもあります。表面は似て見えるポジションでも、担保としては大きく異なる挙動を示すことがあります。Avanaのspokeモデルはvenue名だけでなく、プール構造と品質で処理を割り当てます。"
           ]
         },
         {
           "id": "valuation-and-borrow",
-          "title": "Valuation and the borrow flow",
+          "title": "評価と借入フロー",
           "paragraphs": [
-            "An Aerodrome LP is not a single price token. It is a claim on underlying pool assets whose composition and quality matter directly. Avana judges collateral value conservatively, factoring in liquidity quality, volatility, asset correlation, and how the pool behaves if the market turns. A position may have substantial notional value, but borrowing power reflects what can be recovered under stress.",
-            "The borrowing flow is concrete. You supply a supported Aerodrome LP through the Avana spoke, where it stays active and earns fees. The spoke evaluates the position using pool specific collateral logic. Based on that, you can borrow supported assets from hub liquidity. Stable and blue chip style pools may support stronger collateral treatment. Volatile or thinner pairs get tighter limits and lower factors."
+            "Aerodrome LPは単一価格トークンではありません。構成と品質が直接重要な原資産プール資産への請求権です。Avanaは流動性品質、ボラティリティ、資産相関、市場が転換した場合のプール挙動を考慮して担保価値を保守的に判断します。ポジションは名目価値が大きいかもしれませんが、借入力はストレス下で回収できるものを反映します。",
+            "借入フローは具体的です。Avana spokeを通じてサポートされたAerodrome LPを供給し、そこでアクティブなまま手数料を稼ぎます。spokeはプール固有の担保ロジックでポジションを評価します。それに基づき、hub流動性からサポートされた資産を借りられます。ステーブルおよびブルーチップスタイルのプールはより強い担保処理を支え得ます。ボラタイルまたは薄いペアはより厳しい限度と低いファクターを受けます。"
           ]
         },
         {
           "id": "if-health-breaks",
-          "title": "If health breaks",
+          "title": "ヘルスが崩れた場合",
           "paragraphs": [
-            "If a position becomes unsafe, Avana unwinds the active liquidity position, accounts for the underlyings, and restores solvency with as little disruption as the market allows. The pool's structure determines how liquidation works. That is another reason Aerodrome collateral belongs in a dedicated spoke rather than as a loose extension of a broader lending market."
+            "ポジションが不安全になると、Avanaはアクティブな流動性ポジションをアンウィンドし、原資産を計上し、市場が許す限り最小の混乱でソルベンシーを回復します。プール構造が清算の仕組みを決定します。それがAerodrome担保がより広いレンディング市場の緩い拡張ではなく、専用spokeに属するべきであるもう一つの理由です。"
           ]
         }
       ]
@@ -370,37 +370,37 @@
       "date": "July 3, 2026",
       "description": "安定・相関プール向けに、専用 Aave v4 Spoke で Curve LP 担保をどう扱うか。",
       "image": "/images/blog/curve-lp-collateral.png",
-      "category": "Developers",
+      "category": "開発者",
       "tag": "プロトコル",
       "sections": [
         {
           "id": "why-curve-matters",
-          "title": "Why Curve matters on Avana",
+          "title": "AvanaでCurveが重要な理由",
           "paragraphs": [
-            "Curve LP positions often sit at the center of stablecoin markets and correlated asset trading, some of the deepest and lowest slippage pools onchain. That makes them attractive as collateral, but their structural behavior still needs specialized handling inside a lending system. Avana supports Curve LP collateral on Aave v4 through a dedicated spoke with its own collateral treatment, borrowing constraints, and liquidation rules shaped around Curve's market structure."
+            "Curve LPポジションはしばしばステーブルコイン市場と相関資産取引の中心にあり、オンチェーンで最も深くスリッページの低いプールの一部です。それが担保として魅力的にしますが、構造的挙動はレンディングシステム内で依然として専門的な処理が必要です。AvanaはCurveの市場構造に沿った独自の担保処理、借入制約、清算ルールを持つ専用spokeを通じて、Aave v4でCurve LP担保をサポートします。"
           ]
         },
         {
           "id": "stable-is-not-riskless",
-          "title": "Stable looking is not riskless",
+          "title": "安定に見えてもリスクゼロではない",
           "paragraphs": [
-            "Curve pools are built around assets that trade with tighter relationships than standard volatile pairs. Stablecoin pools, liquid staking pools, and correlated asset pools can produce deeper and more stable liquidity profiles. Stable relationships can still break, correlations can weaken, and pools that appear conservative can behave badly under stress. Avana's collateral framework has to account for both the relative strength of Curve's pool design and the possibility that stress shows up exactly where users expect stability.",
-            "A Curve LP position is a claim on a pool of underlyings, not a simple token with a flat price. Avana determines what assets sit beneath the position, what they are worth, and how much of that value should count toward borrowing power. That last step is critical. Collateral value under a conservative lending framework gives real weight to pool composition, asset correlation, liquidity quality, and how the position would behave in a stressed state."
+            "Curveプールは、標準的なボラティルペアよりも密接な関係で取引される資産を中心に構築されています。ステーブルコインプール、リキッドステーキングプール、相関資産プールは、より深く安定した流動性プロファイルを生み出せます。しかし安定した関係も崩れ、相関は弱まり、保守的に見えるプールもストレス下では悪挙動を示すことがあります。Avanaの担保フレームワークは、Curveのプール設計の相対的な強みと、ユーザーが安定を期待するまさにその場所でストレスが現れる可能性の両方を考慮する必要があります。",
+            "Curve LPポジションは、固定価格の単純なトークンではなく、原資産プールに対する請求権です。Avanaはポジションの下にある資産、それらの価値、そしてその価値のどれだけを借入力に算入すべきかを判断します。この最後のステップが重要です。保守的なレンディングフレームワークにおける担保価値は、プール構成、資産相関、流動性の質、ストレス状態でのポジションの挙動に実質的な重みを与えます。"
           ]
         },
         {
           "id": "users-and-flow",
-          "title": "Who uses it and how borrowing works",
+          "title": "利用者と借入の仕組み",
           "paragraphs": [
-            "Many Curve positions are already used by sophisticated DeFi participants as core liquidity exposure. Stablecoin pools, liquid staking pairs, and correlated asset markets represent large amounts of economically important capital. If these positions can support borrowing without requiring withdrawal, that expands the usefulness of some of the most foundational liquidity in DeFi while leaving it in the pool.",
-            "The borrowing flow on Avana is supply a supported Curve LP through the spoke, where it stays active and earns fees. The spoke evaluates the position, and you can borrow supported assets from hub liquidity. Stablecoin pools may support one form of collateral treatment, correlated asset pools another, and pools with weaker liquidity or more fragile relationships get tighter constraints."
+            "多くのCurveポジションは、すでに洗练されたDeFi参加者によって中核的な流動性エクスポージャーとして使われています。ステーブルコインプール、リキッドステーキングペア、相関資産マーケットは、経済的に重要な大量の資本を表します。これらのポジションが引き出しなしに借入を支えられるなら、DeFiで最も基盤的な流動性の一部の有用性が、プール内に留まったまま拡大します。",
+            "Avanaでの借入フローは、サポートされたCurve LPをSpoke経由で供給し、プール内でアクティブなまま手数料を獲得することです。Spokeがポジションを評価し、Hubの流動性からサポートされた資産を借り入れられます。ステーブルコインプールはある種の担保扱いを、相関資産プールは別の扱いを受け、流動性が弱いか関係が脆弱なプールにはより厳しい制約が適用されます。"
           ]
         },
         {
           "id": "liquidation",
-          "title": "Liquidation follows the pool",
+          "title": "清算はプールに従う",
           "paragraphs": [
-            "If a Curve LP becomes unsafe, Avana unwinds only what is necessary to restore solvency where possible, respects the underlying pool structure, and minimizes disruption while repaying debt. Different pool types require different assumptions. That is the point of the spoke model, and it is how Avana can scale Curve family by family without one generic LP rule for every AMM."
+            "Curve LPが安全でなくなった場合、Avanaは可能な限り返済能力を回復するために必要な分だけを解消し、原資産プール構造を尊重し、混乱を最小限に抑えます。プールタイプごとに異なる前提が必要です。それがSpokeモデルの要点であり、AvanaがすべてのAMMに共通の汎用LPルールを適用せず、Curveファミリーごとにスケールできる理由です。"
           ]
         }
       ]
@@ -411,31 +411,31 @@
       "date": "July 1, 2026",
       "description": "エクスポージャーをアクティブに保ちながら、Balancer 加重プール LP を Aave v4 担保としてどうサポートするか。",
       "image": "/images/blog/balancer-lp-collateral.png",
-      "category": "Developers",
+      "category": "開発者",
       "tag": "プロトコル",
       "sections": [
         {
           "id": "portfolio-style-lps",
-          "title": "Portfolio style LP collateral",
+          "title": "ポートフォリオ型LP担保",
           "paragraphs": [
-            "A Balancer LP position is often a structured portfolio inside an AMM, with custom weights, diversified exposure, and liquidity that behaves differently from standard two asset pools. That makes Balancer LPs interesting as collateral, and also harder to support in a lending system built for simpler assets. Avana handles this through a dedicated spoke on Aave v4."
+            "Balancer LPポジションは、AMM内の構造化ポートフォリオであることが多く、カスタムウェイト、分散エクスポージャー、標準的な2資産プールとは異なる挙動をする流動性を持ちます。これがBalancer LPを担保として興味深く、かつシンプルな資産向けに構築されたレンディングシステムではサポートが難しくします。AvanaはAave v4上の専用Spokeでこれに対応します。"
           ]
         },
         {
           "id": "weighted-variety",
-          "title": "Why weighted pools need market rules",
+          "title": "加重プールにマーケットルールが必要な理由",
           "paragraphs": [
-            "Balancer pools are inherently varied. A stable style pool does not behave like an 80/20 weighted pool. A correlated asset basket does not behave like a broader index style composition. Even pools with similar total value can have materially different risk as collateral, depending on liquidity depth, asset concentration, volatility, and the relationship between underlyings. The Avana spoke defines how each weighted pool is valued, how borrowing capacity is constrained, and how liquidation works.",
-            "From a collateral perspective, a Balancer LP represents a portfolio rather than a simple asset pair. Its value depends on the underlyings, their relative weights, market pricing, and pool structure. Avana has to understand what sits underneath, how that composition behaves under stress, and what portion of the value translates into safe borrowing power."
+            "Balancerプールは本質的に多様です。ステーブルスタイルのプールは80/20加重プールのように振る舞いません。相関資産バスケットは、より広いインデックス型構成のように振る舞いません。総価値が似ていても、流動性の深さ、資産集中度、ボラティリティ、原資産間の関係によって、担保としてのリスクは大きく異なり得ます。Avana Spokeは各加重プールの評価方法、借入容量の制約、清算の仕組みを定義します。",
+            "担保の観点から、Balancer LPは単純な資産ペアではなくポートフォリオを表します。その価値は原資産、相対ウェイト、市場価格、プール構造に依存します。Avanaはその下にあるもの、ストレス下での構成の挙動、価値のどの部分が安全な借入力に変換されるかを理解する必要があります。"
           ]
         },
         {
           "id": "borrow-and-unwind",
-          "title": "Borrowing and unwind",
+          "title": "借入と解消",
           "paragraphs": [
-            "Many Balancer pools express deliberate portfolio views: governance token pairs, weighted index allocations, stable and correlated baskets. If these positions become borrowable collateral on Avana, users do not have to choose between maintaining structured market exposure and accessing liquidity. The same pool position stays active, earns fees, and supports borrowing through Aave v4.",
-            "The flow is supply a supported Balancer LP through the Avana spoke, where the position remains active and earns fees. The spoke evaluates it using market specific collateral logic. Safer pool types support stronger treatment. Concentrated or volatile structures get more conservative assumptions. Market structure drives lending treatment, not venue branding alone.",
-            "If a position becomes unsafe, Avana cannot assume that unwinding a Balancer LP looks like unwinding a simpler two asset position. It has to account for actual pool structure, underlyings, and the execution path needed to restore solvency with minimal disruption. The collateral determines what safe liquidation looks like."
+            "多くのBalancerプールは意図的なポートフォリオビューを表現します：ガバナンストークンペア、加重インデックス配分、ステーブルおよび相関バスケット。これらのポジションがAvanaで借入可能な担保になれば、ユーザーは構造化されたマーケットエクスポージャーを維持するか流動性にアクセスするかを選ぶ必要がありません。同じプールポジションがアクティブなまま、手数料を獲得し、Aave v4を通じて借入を支えます。",
+            "フローは、Avana Spoke経由でサポートされたBalancer LPを供給し、ポジションがアクティブなまま手数料を獲得することです。Spokeはマーケット固有の担保ロジックで評価します。より安全なプールタイプはより強い扱いを受け、集中型やボラティルな構造にはより保守的な前提が適用されます。レンディングの扱いを決めるのはマーケット構造であり、Venueのブランディングだけではありません。",
+            "ポジションが安全でなくなった場合、AvanaはBalancer LPの解消がより単純な2資産ポジションの解消と同じだと仮定できません。実際のプール構造、原資産、混乱を最小限に抑えて返済能力を回復するための実行パスを考慮する必要があります。担保が安全な清算の形を決定します。"
           ]
         }
       ]
@@ -446,31 +446,31 @@
       "date": "June 28, 2026",
       "description": "プールに留まり手数料を稼ぎ続けながら、Uniswap LP を Aave v4 担保へ変える Avana の仕組み。",
       "image": "/images/blog/uniswap-lp-collateral.png",
-      "category": "Developers",
+      "category": "開発者",
       "tag": "プロトコル",
       "sections": [
         {
           "id": "uniswap-on-avana",
-          "title": "Uniswap liquidity on Avana",
+          "title": "Avana上のUniswap流動性",
           "paragraphs": [
-            "Uniswap LP positions provide market depth, facilitate trading, and earn fees, but they have traditionally been hard to use inside lending systems without first being withdrawn or restructured. Avana is designed to change that on Aave v4. The hub manages shared liquidity. The Avana spoke is a dedicated market for LP backed borrowing, including Uniswap concentrated liquidity. The spoke defines how collateral is evaluated, how borrowing power is assigned, and how risk is handled at position level."
+            "Uniswap LPポジションはマーケット深度を提供し、取引を促進し、手数料を獲得しますが、従来は引き出しや再構築なしにレンディングシステム内で使うのが難しかったものです。AvanaはAave v4上でそれを変えるよう設計されています。Hubが共有流動性を管理します。Avana SpokeはUniswap集中流動性を含むLP担保借入の専用マーケットです。Spokeは担保の評価方法、借入力の割り当て、ポジションレベルでのリスク処理を定義します。"
           ]
         },
         {
           "id": "why-cl-is-hard",
-          "title": "Why concentrated ranges are hard collateral",
+          "title": "集中レンジが担保として難しい理由",
           "paragraphs": [
-            "Uniswap concentrated liquidity positions are not simple fungible tokens. Value depends on the current price of the underlyings, the amount of liquidity provided, the selected price range, and fees accrued over time. A position can be active and earning, or it can move out of range and behave very differently. Avana has to understand position composition in real time and evaluate what it is worth as collateral under changing conditions, not only as a notional paper value.",
-            "Valuation sits at the center. Avana determines what underlyings the position currently represents, applies reliable pricing, and translates that into borrowing capacity through a conservative collateral framework. The important question is not pure paper value. It is collateral value inside a live lending system. Concentrated positions can become nonlinear as price moves through or beyond the active range, which requires deliberate risk treatment."
+            "Uniswap集中流動性ポジションは単純な代替可能トークンではありません。価値は原資産の現在価格、提供された流動性量、選択された価格レンジ、時間経過で蓄積された手数料に依存します。ポジションはアクティブで収益を上げている場合もあれば、レンジ外に移動して全く異なる挙動を示す場合もあります。Avanaはリアルタイムでポジション構成を理解し、名目上の帳簿価値だけでなく、変化する条件下での担保価値を評価する必要があります。",
+            "評価が中心にあります。Avanaはポジションが現在何を表しているかを判断し、信頼できる価格設定を適用し、保守的な担保フレームワークを通じて借入容量に変換します。重要なのは純粋な帳簿価値ではありません。稼働中のレンディングシステム内での担保価値です。集中ポジションは価格がアクティブレンジを通過または超えたときに非線形になり得るため、意図的なリスク処理が必要です。"
           ]
         },
         {
           "id": "borrow-monitor-liquidate",
-          "title": "Borrow, monitor, liquidate",
+          "title": "借入、監視、清算",
           "paragraphs": [
-            "The borrowing flow is supply a supported Uniswap LP through the Avana spoke. The position stays in the AMM and keeps earning fees. The spoke evaluates collateral and applies risk logic. You borrow supported assets from hub liquidity. Collateralizing the position does not turn it off. Liquidity stays deployed, market exposure stays intact, and fees keep accruing.",
-            "Because LP positions are live and changing, Avana monitors health continuously. As prices move, fees accumulate, and the position structure shifts, borrowing safety shifts with them. A healthy position today may be less healthy tomorrow even if the user has not touched anything.",
-            "If a position becomes too risky, liquidation must unwind part of an active AMM position, account for underlyings, and restore solvency with as little disruption as practical. The collateral's market structure determines the liquidation structure. That is one of the main reasons Uniswap LP collateral belongs in a dedicated Avana spoke rather than a generalized collateral bucket."
+            "借入フローは、Avana Spoke経由でサポートされたUniswap LPを供給することです。ポジションはAMM内に留まり、手数料を獲得し続けます。Spokeが担保を評価し、リスクロジックを適用します。Hubの流動性からサポートされた資産を借り入れます。担保化してもポジションはオフになりません。流動性はデプロイされたまま、マーケットエクスポージャーは維持され、手数料は蓄積され続けます。",
+            "LPポジションはライブで変化するため、Avanaはヘルスを継続的に監視します。価格が動き、手数料が蓄積し、ポジション構造が変わるにつれ、借入の安全性も変わります。ユーザーが何も触れていなくても、今日健全なポジションが明日はあまり健全でないかもしれません。",
+            "ポジションがリスク過多になった場合、清算はアクティブなAMMポジションの一部を解消し、原資産を考慮し、実用的な限り混乱を最小限に抑えて返済能力を回復する必要があります。担保のマーケット構造が清算構造を決定します。これがUniswap LP担保が汎用担保バケットではなく専用Avana Spokeに属する主な理由の一つです。"
           ]
         }
       ]
@@ -486,26 +486,26 @@
       "sections": [
         {
           "id": "power-is-not-enough",
-          "title": "Power is not enough",
+          "title": "力だけでは不十分",
           "paragraphs": [
-            "LP collateral is powerful in concept and hard to deliver cleanly. On Avana you are not only managing a loan. You are managing a live liquidity position whose value, composition, and risk all change over time. That makes the product more demanding than a standard lending flow, and it is one of the main reasons LP collateral has been operationally difficult even when the idea sounded appealing."
+            "LP担保は概念として強力ですが、きれいに提供するのは難しいものです。Avanaではローンだけを管理しているのではありません。価値、構成、リスクがすべて時間とともに変わるライブな流動性ポジションを管理しています。これが標準的なレンディングフローよりも要求の高いプロダクトにし、アイデアが魅力的に聞こえてもLP担保が運用上困難だった主な理由の一つです。"
           ]
         },
         {
           "id": "make-the-lifecycle-legible",
-          "title": "Make the lifecycle legible",
+          "title": "ライフサイクルを読みやすくする",
           "paragraphs": [
-            "The challenge is making the full lifecycle understandable: collateral valuation, borrowing limits, health monitoring, and what happens as conditions change. If those pieces stay opaque, the product stays limited to highly technical users no matter how strong the underlying mechanism is.",
-            "In LP collateral markets, good UX is part of risk design. Users need to understand what a position is worth as collateral, not just its market value. They need to see how borrowing affects flexibility, how range drift or price divergence changes risk, and how close a position is to stress. A platform that hides those realities behind vague dashboards may look simpler on the surface and still create more danger for the user."
+            "課題は、担保評価、借入限度、ヘルス監視、条件変化時の挙動を含むライフサイクル全体を理解可能にすることです。これらが不透明なままなら、基盤メカニズムがどれほど強力でも、プロダクトは高度に技術的なユーザーに限定され続けます。",
+            "LP担保マーケットでは、良いUXはリスク設計の一部です。ユーザーはマーケット価値だけでなく、担保としてのポジション価値を理解する必要があります。借入が柔軟性にどう影響するか、レンジドリフトや価格乖離がリスクをどう変えるか、ポジションがストレスにどれだけ近いかを見る必要があります。曖昧なダッシュボードの裏にこれらの現実を隠すプラットフォームは、表面はシンプルに見えてもユーザーにより大きな危険をもたらす可能性があります。"
           ]
         },
         {
           "id": "one-system",
-          "title": "One connected system",
+          "title": "一つの連結されたシステム",
           "paragraphs": [
-            "LP backed borrowing on Avana should present as one connected system. Depositing liquidity, using it as collateral, monitoring health, collecting fees, and managing risk are all part of the same financial object. The relationship between LP position and debt should be visible from the beginning, so you can understand both sides at once rather than stitching the picture together across separate interfaces.",
-            "LP positions are not static. They evolve with trading activity, underlying asset movement, and in concentrated liquidity systems with the position range itself. Borrowing against that kind of asset requires a more expressive interface and a more disciplined product structure. Fee generation, collateral quality, and liquidation risk interact in ways that are easy to misunderstand if the product is designed carelessly.",
-            "The goal is making advanced financial primitives usable without making them misleading. Avana's LP backed borrowing needs to be clear enough to use, disciplined enough to trust, and coherent enough to become a real part of how onchain capital is managed."
+            "Avana上のLP担保借入は、一つの連結されたシステムとして提示されるべきです。流動性の供給、担保としての利用、ヘルス監視、手数料の回収、リスク管理はすべて同じ金融オブジェクトの一部です。LPポジションと負債の関係は最初から見えるべきで、別々のインターフェースをまたいで像を縫い合わせるのではなく、両面を同時に理解できるようにします。",
+            "LPポジションは静的ではありません。取引活動、原資産の動き、集中流動性システムではポジションレンジ自体とともに進化します。そのような資産に対する借入には、より表現力のあるインターフェースとより規律あるプロダクト構造が必要です。手数料生成、担保品質、清算リスクは、プロダクトが不注意に設計されると誤解しやすい形で相互作用します。",
+            "目標は、高度な金融プリミティブを誤解を招かずに使えるようにすることです。AvanaのLP担保借入は、使うのに十分明確で、信頼するのに十分規律があり、オンチェーン資本の管理方法の実際の一部となるのに十分一貫している必要があります。"
           ]
         }
       ]
@@ -516,31 +516,31 @@
       "date": "June 23, 2026",
       "description": "手数料獲得と資本アクセスの二者択一をなくし、Avana が LP の使い方をどう広げるか。",
       "image": "/images/blog/avana-next-step-liquidity-providers.png",
-      "category": "Community",
+      "category": "コミュニティ",
       "tag": "戦略",
       "sections": [
         {
           "id": "the-old-tradeoff",
-          "title": "The old tradeoff",
+          "title": "従来のトレードオフ",
           "paragraphs": [
-            "Liquidity providers supply depth, absorb volatility, and earn trading fees, but the capital inside those positions has often felt trapped. If you wanted access to that capital, the usual answer was still to withdraw, break the position apart, and stop doing the thing that made the position useful in the first place."
+            "流動性提供者は深度を供給し、ボラティリティを吸収し、取引手数料を獲得しますが、それらのポジション内の資本はしばしば閉じ込められたように感じられてきました。その資本にアクセスしたい場合、通常の答えは依然として引き出し、ポジションを分解し、そもそもポジションを有用にしていたことをやめることでした。"
           ]
         },
         {
           "id": "what-avana-changes",
-          "title": "What Avana changes",
+          "title": "Avanaが変えること",
           "paragraphs": [
-            "Avana allows supported LP positions to function as collateral on Aave v4 while keeping the liquidity active in the underlying AMM. Instead of forcing a choice between fee generation and liquidity access, the same position can do both. It stays in the market, keeps earning fees, and supports borrowing capacity inside a lending system designed for LP collateral.",
-            "LP positions are more complex than standard collateral. They change with underlying prices, pool composition, fee accrual, and in concentrated liquidity systems with active range placement. Most lending systems were not built to understand that value properly. Treating LPs like ordinary token balances misses how they actually behave. Avana exists because that gap is structural, not cosmetic."
+            "Avanaは、原資産AMMで流動性をアクティブに保ちながら、サポートされたLPポジションをAave v4上の担保として機能させます。手数料生成と流動性アクセスの選択を強いる代わりに、同じポジションが両方を実行できます。マーケットに留まり、手数料を獲得し続け、LP担保向けに設計されたレンディングシステム内で借入容量を支えます。",
+            "LPポジションは標準的な担保より複雑です。原資産価格、プール構成、手数料蓄積、集中流動性システムではアクティブレンジ配置とともに変化します。ほとんどのレンディングシステムはその価値を適切に理解するよう構築されていませんでした。LPを通常のトークン残高のように扱うと、実際の挙動を見逃します。Avanaはそのギャップが表面的ではなく構造的だからこそ存在します。"
           ]
         },
         {
           "id": "how-the-stack-fits",
-          "title": "How the stack fits together",
+          "title": "スタックの全体像",
           "paragraphs": [
-            "Avana uses Aave v4's hub and spoke design. Shared liquidity stays at the hub level. LP specific valuation, collateral treatment, and liquidation logic live inside dedicated spoke markets. Stable pools, correlated asset pools, and concentrated liquidity positions each get appropriate risk treatment rather than being flattened into one generic framework.",
-            "For LPs, the result is more capital efficient participation. A supported position stays productive in the AMM while becoming useful inside a credit system. You keep exposure, keep earning, and access liquidity without fully unwinding. For the broader system, LP collateral means DeFi capital can be less fragmented. Liquidity does not have to leave the market every time it needs to become useful elsewhere.",
-            "If LP positions can remain active while supporting borrowing, they become more than fee generating pool shares. They function as structured financial positions with fee generation, market exposure, and collateral value. Avana is that bridge between trading infrastructure and credit infrastructure."
+            "AvanaはAave v4のHub and Spoke設計を使用します。共有流動性はHubレベルに留まります。LP固有の評価、担保扱い、清算ロジックは専用Spokeマーケット内にあります。ステーブルプール、相関資産プール、集中流動性ポジションは、汎用フレームワークに平坦化されるのではなく、それぞれ適切なリスク処理を受けます。",
+            "LPにとっての結果は、より資本効率的な参加です。サポートされたポジションはAMM内で生産的なまま、クレジットシステム内で有用になります。エクスポージャーを維持し、収益を継続し、完全に解消せずに流動性にアクセスできます。より広いシステムにとって、LP担保はDeFi資本がより少なく分散化されることを意味します。流動性は他处で有用になるたびにマーケットを離れる必要がありません。",
+            "LPポジションが借入を支えながらアクティブなままでいられるなら、手数料生成プールシェア以上のものになります。手数料生成、マーケットエクスポージャー、担保価値を持つ構造化金融ポジションとして機能します。Avanaは取引インフラとクレジットインフラの間の架け橋です。"
           ]
         }
       ]
@@ -551,38 +551,38 @@
       "date": "June 20, 2026",
       "description": "DAO、トレジャリー、ファンド、crypto-native 企業がポジションを崩さず資本にアクセスするために Avana LP 担保がどう役立つか。",
       "image": "/images/blog/lp-collateral-for-institutions.png",
-      "category": "For Institutions",
+      "category": "機関投資家向け",
       "tag": "機関",
       "sections": [
         {
           "id": "treasury-function",
-          "title": "Capital efficiency as a treasury function",
+          "title": "トレジャリー機能としての資本効率",
           "paragraphs": [
-            "For institutions operating onchain, capital efficiency is a treasury function. DAOs, protocol treasuries, funds, and crypto native companies often hold large positions across tokens, stable reserves, and liquidity pools, yet much of that capital remains operationally rigid. LP positions may generate fees and support strategic market exposure, but they are still hard to use as flexible treasury assets without withdrawing liquidity and changing market posture."
+            "オンチェーンで運営する機関にとって、資本効率はトレジャリー機能です。DAO、プロトコルトレジャリー、ファンド、暗号ネイティブ企業は、トークン、ステーブル準備金、流動性プールにわたって大規模なポジションを保有することが多いですが、その資本の多くは運用上硬直的なままです。LPポジションは手数料を生み、戦略的マーケットエクスポージャーを支えるかもしれませんが、流動性を引き出しマーケット姿勢を変えずに柔軟なトレジャリー資産として使うのは依然として難しいです。"
           ]
         },
         {
           "id": "what-avana-enables",
-          "title": "What Avana enables for teams",
+          "title": "Avanaがチームにもたらすもの",
           "paragraphs": [
-            "Through Avana, LP positions can stay active in the AMM while supporting borrowing on Aave v4. A DAO treasury can fund grants or contributor payments without reducing core market exposure. A fund can maintain LP positions while accessing stable liquidity for tactical repositioning. A corporate treasury can manage payroll or vendor obligations without forcing a full rebalance of onchain reserves. The common thread is that borrowing creates working capital without realizing positions, without interrupting fee generation, and without forcing every liquidity need to become a sell decision.",
-            "For DAOs and protocol treasuries specifically, LP positions held as liquidity support or treasury strategy are often treated as immobile unless governance decides to unwind them. LP collateral offers a more capital efficient path. Treasury positions can stay active while supporting controlled access to liquidity for runway, ecosystem spending, or operational planning."
+            "Avanaを通じて、LPポジションはAave v4上の借入を支えながらAMM内でアクティブなままでいられます。DAOトレジャリーは中核的なマーケットエクスポージャーを減らさずに助成金や貢献者への支払いを資金調達できます。ファンドはLPポジションを維持しながら、戦術的な再配置のためのステーブル流動性にアクセスできます。企業トレジャリーは、オンチェーン準備金の全面リバランスを強制せずに給与やベンダー支払いを管理できます。共通点は、借入がポジションを実現せず、手数料生成を中断せず、すべての流動性ニーズを売却判断にしないまま運転資本を生み出すことです。",
+            "DAOとプロトコルトレジャリーに特に、流動性支援やトレジャリー戦略として保有するLPポジションは、ガバナンスが解消を決めない限り不動的に扱われることが多いです。LP担保はより資本効率的な道を提供します。トレジャリーポジションは、ランウェイ、エコシステム支出、運用計画のための制御された流動性アクセスを支えながらアクティブなままでいられます。"
           ]
         },
         {
           "id": "funds-and-corps",
-          "title": "Funds and corporate treasuries",
+          "title": "ファンドと企業トレジャリー",
           "paragraphs": [
-            "Funds and professional managers care about tactical flexibility. In fast moving markets, unwinding a position before accessing capital can be slow, costly, and strategically awkward. Avana LP collateral lets a manager preserve exposure and market presence while freeing liquidity for new deployment, hedging, or repositioning.",
-            "Corporate treasuries in crypto native businesses hold onchain reserves but still need predictable access to capital for operations. Payroll, vendor payments, and working capital needs do not always align with ideal market conditions. Borrowing against LP positions allows a treasury to manage obligations without untimely asset sales or over reliance on offchain financing."
+            "ファンドとプロのマネージャーは戦術的柔軟性を重視します。動きの速いマーケットでは、資本にアクセスする前にポジションを解消するのは遅く、コストがかかり、戦略的に不都合です。Avana LP担保は、マネージャーがエクスポージャーとマーケットプレゼンスを維持しながら、新規展開、ヘッジ、再配置のための流動性を解放できます。",
+            "暗号ネイティブ企業の企業トレジャリーはオンチェーン準備金を保有しますが、運用のための予測可能な資本アクセスは依然として必要です。給与、ベンダー支払い、運転資本のニーズは必ずしも理想的なマーケット条件と一致しません。LPポジションに対する借入により、トレジャリーは不適切な資産売却やオフチェーン資金調達への過度な依存なしに義務を管理できます。"
           ]
         },
         {
           "id": "controls",
-          "title": "Controls come first",
+          "title": "コントロールが最優先",
           "paragraphs": [
-            "Institutional adoption depends on controls: clear policy boundaries around what can be borrowed, against which collateral, under what approval path, and with what de risking rules. Avana spoke markets mean risk can be defined around collateral structure. Stables, correlated pairs, concentrated liquidity, and volatile pools can be governed under different assumptions. Operational controls include role separation, permissions, health monitoring, auditability, and multi signature approval thresholds. Those are central to whether LP collateral becomes a credible treasury primitive rather than just a leverage tool.",
-            "LP positions already play a major role in how protocols, funds, and crypto native firms allocate capital. The next step is making those positions financially useful beyond fee generation, with the governance surface institutions require. That is the job Avana is built for."
+            "機関の採用はコントロールに依存します：何を、どの担保に対して、どの承認パスで、どのようなデリスクルールで借入できるかの明確なポリシー境界。Avana Spokeマーケットは、担保構造に基づいてリスクを定義できることを意味します。ステーブル、相関ペア、集中流動性、ボラティルプールは異なる前提の下で管理できます。運用コントロールには、役割分離、権限、ヘルス監視、監査可能性、マルチシグ承認閾値が含まれます。これらはLP担保が単なるレバレッジツールではなく、信頼できるトレジャリープリミティブになるかどうかの中心です。",
+            "LPポジションは、プロトコル、ファンド、暗号ネイティブ企業が資本を配分する方法においてすでに大きな役割を果たしています。次のステップは、機関が求めるガバナンス面を備え、手数料生成を超えてそれらのポジションを金融的に有用にすることです。それがAvanaが構築された仕事です。"
           ]
         }
       ]
@@ -593,31 +593,31 @@
       "date": "June 17, 2026",
       "description": "監視、自動化、清算サービス、連携を含む Avana LP 担保インフラの開発者向け視点。",
       "image": "/images/blog/developer-view-lp-collateral.png",
-      "category": "Developers",
+      "category": "開発者",
       "tag": "プロトコル",
       "sections": [
         {
           "id": "a-new-design-surface",
-          "title": "A new design surface",
+          "title": "新しい設計領域",
           "paragraphs": [
-            "Most DeFi infrastructure is built around simple collateral. Single assets are easy to price, monitor, and liquidate. LP positions are active, two sided, and structurally more complex. Their value changes with underlyings, pool composition, fee accrual, and range. That complexity is why LP collateral has been hard to integrate into lending systems, and it is why Avana creates a new design surface for developers."
+            "ほとんどのDeFiインフラはシンプルな担保を中心に構築されています。単一資産は価格設定、監視、清算が容易です。LPポジションはアクティブで両面性があり、構造的により複雑です。その価値は原資産、プール構成、手数料蓄積、レンジとともに変化します。この複雑さがLP担保をレンディングシステムに統合しにくくした理由であり、Avanaが開発者向けの新しい設計領域を生み出す理由です。"
           ]
         },
         {
           "id": "what-builders-get",
-          "title": "What builders get from Avana",
+          "title": "開発者がAvanaから得るもの",
           "paragraphs": [
-            "Avana makes LP positions usable as collateral through Aave v4. Hub and spoke architecture means LP positions are evaluated, risk adjusted, and liquidated according to market specific logic, not a generic lending market that happens to accept LPs. For builders, that opens applications around interfaces, monitoring systems, treasury tools, strategy layers, and risk aware products built on LP backed credit.",
-            "Portfolio and monitoring infrastructure is a natural category. LP backed borrowing creates a more dynamic relationship between collateral and debt than most DeFi users are used to. Dashboards can surface health factor, collateral efficiency, fee generation, and liquidation sensitivity, helping users decide when to rebalance, reduce debt, or treat a position as more stressed than its headline value suggests."
+            "AvanaはAave v4を通じてLPポジションを担保として使えるようにします。Hub and Spokeアーキテクチャにより、LPポジションはたまたまLPを受け入れる汎用レンディングマーケットではなく、マーケット固有のロジックに従って評価、リスク調整、清算されます。開発者にとって、これはインターフェース、監視システム、トレジャリーツール、戦略レイヤー、LP担保クレジット上に構築されたリスク認識型プロダクト周辺のアプリケーションを開きます。",
+            "ポートフォリオと監視インフラは自然なカテゴリーです。LP担保借入は、ほとんどのDeFiユーザーが慣れ親しんでいるよりも担保と負債の間により動的な関係を生み出します。ダッシュボードはヘルスファクター、担保効率、手数料生成、清算感度を表示し、リバランス、負債削減、または見かけの価値以上にストレスが高いと判断するタイミングの決定を支援します。"
           ]
         },
         {
           "id": "automation-liquidation-treasury",
-          "title": "Automation, liquidation, and treasury tooling",
+          "title": "自動化、清算、トレジャリーツール",
           "paragraphs": [
-            "Automation and strategy infrastructure is another line of work. Because LP positions stay active while supporting borrowing, developers can build systems that respond to changing conditions on both sides of the position: maintaining target borrowing bands, monitoring collateral drift, or routing position data into treasury and portfolio systems that sit on top of Avana.",
-            "Liquidation and risk infrastructure also matter. LP collateral requires more than simple threshold watching. It requires understanding how position quality changes as markets move and how liquidation paths differ by venue and pool type. External bots, monitoring services, and analytics systems can all become important pieces of the ecosystem around Avana.",
-            "For treasury and institutional tooling, if DAOs, funds, or crypto native companies use LP positions as collateral, they will need systems for policy limits, permissions, borrowing conditions, and risk thresholds across wallets or teams. Developers can use Avana as a source of collateral state, debt state, and market level structure rather than treating LP exposure and lending exposure as disconnected worlds."
+            "自動化と戦略インフラは別の作業領域です。LPポジションは借入を支えながらアクティブなままであるため、開発者はポジションの両面で変化する条件に応答するシステムを構築できます：目標借入バンドの維持、担保ドリフトの監視、Avana上に構築されたトレジャリーとポートフォリオシステムへのポジションデータのルーティング。",
+            "清算とリスクインフラも重要です。LP担保には単純な閾値監視以上のものが必要です。マーケットが動くにつれてポジション品質がどう変わるか、Venueとプールタイプごとに清算パスがどう異なるかを理解する必要があります。外部ボット、監視サービス、分析システムはすべてAvana周辺のエコシステムの重要な要素になり得ます。",
+            "トレジャリーと機関向けツールにおいて、DAO、ファンド、暗号ネイティブ企業がLPポジションを担保として使うなら、ウォレットやチーム間でポリシー制限、権限、借入条件、リスク閾値のためのシステムが必要です。開発者はLPエクスポージャーとレンディングエクスポージャーを切り離された世界として扱うのではなく、Avanaを担保状態、負債状態、マーケットレベル構造のソースとして使えます。"
           ]
         }
       ]
@@ -628,31 +628,31 @@
       "date": "June 14, 2026",
       "description": "Aave v4 上の Avana LP 担保アーキテクチャ: Hub、Spokes、評価、オラクル設計、清算。",
       "image": "/images/blog/inside-avana-architecture.png",
-      "category": "Developers",
+      "category": "開発者",
       "tag": "プロトコル",
       "sections": [
         {
           "id": "why-hub-and-spoke",
-          "title": "Why hub and spoke",
+          "title": "Hub and Spokeの理由",
           "paragraphs": [
-            "LP collateral cannot be supported with a generic lending design. It needs a system that handles active liquidity positions, changing collateral composition, market specific valuation, and liquidation paths that differ from standard token collateral. Avana is built on Aave v4's hub and spoke model because LP backed borrowing needs shared liquidity and isolated market logic at the same time."
+            "LP担保は汎用的なレンディング設計ではサポートできません。アクティブな流動性ポジション、変化する担保構成、マーケット固有の評価、標準的なトークン担保とは異なる清算パスを処理するシステムが必要です。AvanaはAave v4のHub and Spokeモデル上に構築されています。LP担保借入には共有流動性と分離されたマーケットロジックが同時に必要だからです。"
           ]
         },
         {
           "id": "hub-and-spoke-roles",
-          "title": "What the hub and spokes do",
+          "title": "HubとSpokeの役割",
           "paragraphs": [
-            "The hub holds borrowable assets and coordinates shared liquidity across markets: reserve management, utilization tracking, and credit allocation. A hub is how Avana connects LP collateral to a broader lending framework without forcing every collateral type to share the same assumptions. A stable LP market, a concentrated liquidity market, and a volatile AMM pair should not all be governed the same way just because they draw from the same liquidity pool.",
-            "Spokes are where LP specific logic lives: collateral registration, valuation, risk adjustment, monitoring, and liquidation. Each spoke defines how different pool types are treated. A Uniswap concentrated position behaves differently from a fungible Curve LP, which behaves differently from a Balancer weighted pool. The spoke is where LP collateral becomes a real lending market with its own rules inside Avana."
+            "Hubは借入可能資産を保持し、マーケット間で共有流動性を調整します：準備金管理、利用率追跡、クレジット配分。Hubは、すべての担保タイプに同じ前提を共有させることなく、LP担保をより広いレンディングフレームワークに接続する方法です。ステーブルLPマーケット、集中流動性マーケット、ボラティルAMMペアは、同じ流動性プールから引き出すからといってすべて同じ方法で管理されるべきではありません。",
+            "SpokeはLP固有ロジックが存在する場所です：担保登録、評価、リスク調整、監視、清算。各Spokeは異なるプールタイプの扱い方を定義します。Uniswap集中ポジションはfungibleなCurve LPとは異なる挙動を示し、それはBalancer加重プールとも異なります。SpokeはLP担保がAvana内で独自のルールを持つ本物のレンディングマーケットになる場所です。"
           ]
         },
         {
           "id": "valuation-oracle-liquidation",
-          "title": "Valuation, oracles, and liquidation",
+          "title": "評価、オラクル、清算",
           "paragraphs": [
-            "Valuation uses a layered approach. First, what does the LP position actually contain at the current market state. Second, price those underlyings from reliable oracle inputs. Third, adjust through collateral logic that reflects actual pool risk rather than notional size. Not every dollar inside an LP position translates into the same borrowing power on Avana.",
-            "Oracle design sits close to the core. For LP collateral, the protocol cannot rely on a single number or a simplistic asset feed. Avana uses a dual source philosophy where external price feeds and AMM derived pricing work together for more reliable valuation. The goal is reducing the chance that temporary dislocations, stale updates, or local pool distortions create unsafe collateral assumptions.",
-            "For liquidation, Avana must unwind active LP positions in a controlled way, convert the resulting assets, and settle debt without avoidable loss. The spoke specializes liquidation for the underlying market structure. The hub provides liquidity. The spoke defines collateral logic. Each layer does what it is suited for: clean separation, strong isolation, and a realistic path to scaling LP collateral pool by pool."
+            "評価はレイヤードアプローチを使用します。第一に、現在のマーケット状態でLPポジションが実際に何を含むか。第二に、信頼できるオラクル入力から原資産に価格を付ける。第三に、名目サイズではなく実際のプールリスクを反映する担保ロジックで調整する。LPポジション内のすべてのドルがAvanaで同じ借入力に変換されるわけではありません。",
+            "オラクル設計はコアに近い位置にあります。LP担保に対して、プロトコルは単一の数値や単純な資産フィードに依存できません。Avanaは外部価格フィードとAMM由来の価格設定が連携するデュアルソース哲学を採用し、より信頼性の高い評価を実現します。目標は、一時的な乖離、古い更新、ローカルプールの歪みが安全でない担保前提を生まないようにすることです。",
+            "清算において、AvanaはアクティブなLPポジションを制御された方法で解消し、結果の資産を変換し、回避可能な損失なく負債を決済する必要があります。Spokeは原資産マーケット構造向けに清算を専門化します。Hubが流動性を提供します。Spokeが担保ロジックを定義します。各レイヤーは適した役割を果たします：明確な分離、強い分離、プールごとにLP担保をスケールする現実的な道。"
           ]
         }
       ]
@@ -668,26 +668,26 @@
       "sections": [
         {
           "id": "what-shipped",
-          "title": "What shipped in v1.1",
+          "title": "v1.1でリリースされた内容",
           "paragraphs": [
-            "Avana v1.1 makes LP backed borrowing more flexible, more efficient, and easier to manage. This update expands how users structure collateral, improves position evaluation, reduces transaction overhead, and refines the dashboard for managing live LP positions on Aave v4."
+            "Avana v1.1はLP担保借入をより柔軟で、より効率的で、管理しやすくします。このアップデートは担保の構成方法を拡張し、ポジション評価を改善し、トランザクションオーバーヘッドを削減し、Aave v4上のライブLPポジション管理用ダッシュボードを洗練します。"
           ]
         },
         {
           "id": "multi-position-and-markets",
-          "title": "Multi position collateral and more markets",
+          "title": "マルチポジション担保とより多くのマーケット",
           "paragraphs": [
-            "The main change is multi position collateral. Users can deposit multiple LP positions and have borrowing capacity evaluated across the full collateral set rather than position by position. That gives more flexibility for managing liquidity across different pools, assets, or strategy types. The release also expands supported pools across Uniswap v3 and v4. Each new market still includes additional valuation, collateral treatment, and liquidation work, so broader access does not weaken Avana's risk standards.",
-            "Partial position withdrawal is also new. Users can reduce part of an LP position's liquidity without fully exiting the collateral position, provided the remaining collateral still supports the loan safely. That makes capital management less binary. You can adjust exposure, release liquidity, or reshape positions without treating every change as all or nothing."
+            "主な変更はマルチポジション担保です。ユーザーは複数のLPポジションを預け入れ、ポジションごとではなく担保セット全体で借入容量を評価できます。これにより、異なるプール、資産、戦略タイプにわたる流動性管理の柔軟性が高まります。リリースはUniswap v3とv4のサポートプールも拡張します。各新マーケットには依然として追加の評価、担保処理、清算作業が含まれるため、より広いアクセスがAvanaのリスク基準を弱めることはありません。",
+            "部分ポジション引き出しも新機能です。残りの担保がローンを安全に支え続ける限り、担保ポジションを完全に退出せずにLPポジションの流動性の一部を減らせます。これにより資本管理がより二元的でなくなります。すべての変更をオールオアナッシングとして扱わず、エクスポージャー調整、流動性解放、ポジション再構成ができます。"
           ]
         },
         {
           "id": "ops-and-dashboard",
-          "title": "Ops tools and a clearer dashboard",
+          "title": "運用ツールとより明確なダッシュボード",
           "paragraphs": [
-            "Delegation support helps DAOs, teams, and structured operators separate responsibilities across wallets or roles: who manages deposits, who handles debt actions, who does operational maintenance. Health factor alerts give earlier visibility into changing position conditions before stress develops. LP collateral can shift quickly, especially when price divergence affects both earning efficiency and collateral quality at the same time.",
-            "Performance improvements lower transaction costs across deposits, borrows, repays, and management. Oracle handling improved for latency, fallback behavior, and reliability during changing market conditions. For LP collateral, backend execution quality is as important as frontend features.",
-            "The dashboard is refined to show LP backed borrowing as it actually works on Avana: collateral health, position composition, and the relationship between active liquidity and debt. Better transaction previews and a more responsive design make position management more legible before you commit a change onchain."
+            "委任サポートは、DAO、チーム、構造化オペレーターがウォレットやロール間で責任を分離するのに役立ちます：預金管理、負債アクション、運用メンテナンスの担当者。ヘルスファクターアラートは、ストレスが発生する前に変化するポジション条件への早期の可視性を提供します。LP担保は、特に価格乖離が収益効率と担保品質の両方に同時に影響する場合、急速に変化できます。",
+            "パフォーマンス改善により、預入、借入、返済、管理全体でトランザクションコストが低下します。オラクル処理は、レイテンシ、フォールバック動作、変化するマーケット条件での信頼性が改善されました。LP担保において、バックエンド実行品質はフロントエンド機能と同様に重要です。",
+            "ダッシュボードは、Avana上で実際に機能するLP担保借入を表示するよう洗練されました：担保ヘルス、ポジション構成、アクティブ流動性と負債の関係。より良いトランザクションプレビューとよりレスポンシブなデザインにより、オンチェーンで変更を確定する前にポジション管理がより読みやすくなります。"
           ]
         }
       ]
@@ -703,32 +703,32 @@
       "sections": [
         {
           "id": "why-automation",
-          "title": "Why LP collateral needs automation",
+          "title": "LP担保に自動化が必要な理由",
           "paragraphs": [
-            "Managing an LP position that also serves as collateral is demanding. Fees accumulate but do not always stay productive. Liquidity ranges drift as markets move. Health factors weaken as price divergence changes the collateral profile. Both sides of the balance sheet stay live. The LP position evolves, and the debt against it evolves with borrowing conditions. For users borrowing against LPs through Avana on Aave v4, that is the day to day reality."
+            "担保としても機能するLPポジションの管理は要求が高いものです。手数料は蓄積しますが、常に生産的とは限りません。マーケットが動くにつれ流動性レンジはドリフトします。価格乖離が担保プロファイルを変えるにつれヘルスファクターは弱まります。貸借対照表の両面がライブのままです。LPポジションは進化し、それに対する負債も借入条件とともに進化します。Aave v4上のAvanaを通じてLPに対して借入するユーザーにとって、それが日々の現実です。"
           ]
         },
         {
           "id": "what-automate-is",
-          "title": "What Avana Automate is",
+          "title": "Avana Automateとは",
           "paragraphs": [
-            "Automate is Avana's non custodial automation layer. It executes user approved actions when predefined conditions are met. Users keep full control of assets and permissions. Automate handles repetitive maintenance and enforces position discipline. It is not a replacement for strategy or judgment. It is a way to reduce the operational burden of managing LP collateral on Avana."
+            "AutomateはAvanaの非カストディアル自動化レイヤーです。事前定義された条件が満たされたときにユーザー承認済みのアクションを実行します。ユーザーは資産と権限の完全なコントロールを維持します。Automateは反復的なメンテナンスを処理し、ポジション規律を強制します。戦略や判断の代替ではありません。Avana上でLP担保を管理する運用負担を軽減する方法です。"
           ]
         },
         {
           "id": "fees-ranges-protection",
-          "title": "Fees, ranges, and protection",
+          "title": "手数料、レンジ、保護",
           "paragraphs": [
-            "Trading fees accumulate gradually, but idle fees do not contribute to position efficiency. Automate can collect and redeploy them according to user preferences, so positions stay more productive without constant manual intervention. Over time, disciplined fee maintenance can matter as much as headline yield, especially for larger LP backed borrowing strategies.",
-            "In concentrated liquidity systems, capital stops working efficiently when price moves outside the active range, and the position may also become less efficient as collateral on Avana. Automate can rebalance according to user defined rules, reducing the burden of reacting to every move by hand. That is especially useful because collateral efficiency and liquidity productivity are closely linked.",
-            "Positions can also move from healthy to stressed faster than expected, particularly during sharp volatility or when paired assets diverge. Automate monitors conditions and executes defensive actions based on user defined thresholds. Passive neglect of LP collateral that supports debt gets expensive. Avana Automate is built for that earlier response."
+            "取引手数料は徐々に蓄積されますが、未使用の手数料はポジション効率に寄与しません。Automateはユーザー設定に従って手数料を回収・再デプロイでき、常時の手動介入なしにポジションをより生産的に保てます。時間とともに、規律ある手数料メンテナンスは、特に大規模なLP担保借入戦略では、見かけの利回りと同様に重要になり得ます。",
+            "集中流動性システムでは、価格がアクティブレンジ外に動くと資本の効率的な稼働が止まり、Avana上の担保としてもポジションの効率が低下する可能性があります。Automateはユーザー定義ルールに従ってリバランスでき、すべての動きに手動で対応する負担を軽減します。担保効率と流動性生産性が密接にリンクしているため、特に有用です。",
+            "ポジションは、特に急激なボラティリティやペア資産の乖離時に、予想より速く健全からストレス状態へ移行することもあります。Automateは条件を監視し、ユーザー定義の閾値に基づいて防御的アクションを実行します。負債を支えるLP担保を放置するとコストがかかります。Avana Automateはその早期対応のために構築されています。"
           ]
         },
         {
           "id": "day-two-ops",
-          "title": "Day two operations",
+          "title": "デイツー運用",
           "paragraphs": [
-            "Automate is built around the actual nature of LP collateral: positions that earn, drift, and change risk while serving as collateral on Aave v4. It gives users a way to maintain positions consistently, respond to changing conditions with less friction, and manage LP backed borrowing with discipline that would otherwise require constant manual attention. Same non custodial principle throughout. Avana runs your policy. It does not become a black box fund manager."
+            "AutomateはLP担保の実際の性質を中心に構築されています：Aave v4上で担保として機能しながら収益を上げ、ドリフトし、リスクが変化するポジション。ユーザーにポジションを一貫して維持し、変化する条件により低い摩擦で対応し、常時の手動注意を必要とする規律でLP担保借入を管理する方法を提供します。一貫して非カストディアル原則。Avanaはあなたのポリシーを実行します。ブラックボックス型ファンドマネージャーにはなりません。"
           ]
         }
       ]
@@ -739,37 +739,37 @@
       "date": "June 4, 2026",
       "description": "Avana の LP 担保入門: LP の挙動、LTV、impermanent loss、清算、保守的な使い方。",
       "image": "/images/blog/beginners-guide-lp-collateral.png",
-      "category": "For LPs",
+      "category": "LP向け",
       "tag": "ガイド",
       "sections": [
         {
           "id": "the-basic-idea",
-          "title": "The basic idea",
+          "title": "基本的な考え方",
           "paragraphs": [
-            "Providing liquidity is one of the most common ways to earn yield in DeFi. You deposit assets into a pool, facilitate trading, and earn fees in return. LP positions have also been inflexible. If you wanted to use that capital elsewhere, you usually withdrew first. LP collateral changes that. Through Avana on Aave v4, supported LP positions can back borrowing while staying active in the pool and earning fees the whole time."
+            "流動性提供はDeFiで利回りを得る最も一般的な方法の一つです。資産をプールに預け、取引を促進し、手数料を獲得します。LPポジションはまた、柔軟性に欠けてきました。その資本を他处で使いたい場合、通常はまず引き出す必要がありました。LP担保がそれを変えます。Aave v4上のAvanaを通じて、サポートされたLPポジションはプール内でアクティブなまま、常に手数料を獲得しながら借入を裏付けできます。"
           ]
         },
         {
           "id": "what-an-lp-is",
-          "title": "What an LP actually is",
+          "title": "LPの実体",
           "paragraphs": [
-            "An LP position is a live position inside a market. Its value depends on the underlyings, how they move relative to each other, accrued fees, and in concentrated liquidity systems whether the position is still in its active price range. It changes over time in ways ordinary token collateral does not. That is why LP collateral needs a more specialized lending model, and why Avana exists for that use case."
+            "LPポジションはマーケット内のライブポジションです。その価値は原資産、相互の相対的動き、蓄積手数料、集中流動性システムではアクティブ価格レンジ内にあるかどうかに依存します。通常のトークン担保にはない形で時間とともに変化します。だからLP担保にはより専門化されたレンディングモデルが必要で、Avanaはそのユースケースのために存在します。"
           ]
         },
         {
           "id": "ltv-il-liquidation",
-          "title": "LTV, impermanent loss, and liquidation",
+          "title": "LTV、IL、清算",
           "paragraphs": [
-            "Loan to value, often shortened to LTV, is the portion of a position's accepted collateral value that can be borrowed against. A lower LTV means more buffer. If collateral value drops, there is room before the loan becomes stressed. A higher LTV gives more immediate liquidity and less safety margin. In LP markets this matters more because position value can move for several reasons at once: underlying prices, pool composition, fee accrual, and range placement.",
-            "Impermanent loss, often shortened to IL, is what happens when the two assets in a pool move relative to each other and the LP position ends up worth less than holding those assets outside the pool. For someone using the LP as collateral on Avana, IL directly affects borrowing capacity. It does not make LP collateral unsafe by definition, but it means users need to understand that positions are dynamic rather than fixed.",
-            "If collateral value falls too far relative to debt, Avana restores safety through liquidation. With LP collateral this is more complex than selling a simple token. There is fee accrual, changing asset composition, and venue specific liquidity structure. Avana values and liquidates LP positions according to those realities rather than treating them as generic assets. The practical lesson for beginners is simple. Borrow conservatively, especially at the start."
+            "Loan to value、略してLTVは、ポジションの受け入れられた担保価値のうち借入可能な割合です。低いLTVはより多くのバッファを意味します。担保価値が下落しても、ローンがストレス状態になる前に余裕があります。高いLTVはより即座の流動性とより少ない安全マージンを提供します。LPマーケットでは、原資産価格、プール構成、手数料蓄積、レンジ配置など複数の理由で同時にポジション価値が動くため、より重要です。",
+            "Impermanent loss、略してILは、プール内の2資産が相互に動き、LPポジションがプール外でそれらの資産を保有するより価値が低くなる現象です。AvanaでLPを担保として使う人にとって、ILは借入容量に直接影響します。定義上LP担保を安全でないものにするわけではありませんが、ポジションが固定ではなく動的であることを理解する必要があることを意味します。",
+            "担保価値が負債に対して大きく下落した場合、Avanaは清算を通じて安全性を回復します。LP担保では単純なトークンの売却より複雑です。手数料蓄積、変化する資産構成、Venue固有の流動性構造があります。Avanaは汎用資産として扱うのではなく、これらの現実に従ってLPポジションを評価・清算します。初心者への実践的教訓はシンプルです。特に最初は保守的に借入してください。"
           ]
         },
         {
           "id": "first-steps",
-          "title": "A sensible first path",
+          "title": "堅実な最初の一歩",
           "paragraphs": [
-            "Even as collateral, an LP position keeps earning fees and maintaining market exposure. That is the capital efficiency gain. For beginners, the safest approach is to start conservative on Avana: borrow modestly, use simpler and more stable pool types first, and pay attention to how position health changes as markets move. Once you understand how LP value, debt, and liquidation thresholds interact, the model becomes much more straightforward to use responsibly."
+            "担保であっても、LPポジションは手数料を獲得し続け、マーケットエクスポージャーを維持します。それが資本効率の利得です。初心者にとって最も安全なアプローチは、Avanaで保守的に始めることです：控えめに借入し、まずよりシンプルで安定したプールタイプを使い、マーケットが動くにつれポジションヘルスがどう変わるかに注意を払うこと。LP価値、負債、清算閾値がどう相互作用するか理解すれば、モデルは責任を持って使うのがはるかに straightforward になります。"
           ]
         }
       ]

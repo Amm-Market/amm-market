@@ -36,6 +36,7 @@
  * @see src/app/developers - Used in documentation pages
  */
 import { AlignLeft } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { useEffect, useMemo, useState } from "react"
 
 /** Represents a trackable section on the page */
@@ -124,6 +125,7 @@ export function ScrollSpySidebar({
   sectionColor = "blue",
   sectionColorsById,
 }: ScrollSpySidebarProps) {
+  const t = useTranslations("common.blogChrome")
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id ?? "")
   const [barProgress, setBarProgress] = useState(0)
 
@@ -205,7 +207,7 @@ export function ScrollSpySidebar({
       <div className="flex w-full flex-col items-start justify-start gap-0">
         <p className="type-sidebar-link mb-2.5 flex items-center gap-1.5 pl-6 tracking-[-0.01em] text-gray-500">
           <AlignLeft aria-hidden="true" className="h-3.5 w-3.5 shrink-0" strokeWidth={2.25} />
-          On this page
+          {t("onThisPage")}
         </p>
 
         {/* Page summary at top */}

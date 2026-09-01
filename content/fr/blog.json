@@ -6,7 +6,7 @@
       "date": "July 24, 2026",
       "description": "Comment Avana gouverne le risque de collatéral LP sur les marchés Spoke, avec des mises à jour bornées, une revue indépendante et un confinement d’urgence.",
       "image": "/images/blog/lp-risk-governance.png",
-      "category": "Developers",
+      "category": "Développeurs",
       "tag": "Protocole",
       "sections": [
         {
@@ -47,12 +47,12 @@
       "date": "July 22, 2026",
       "description": "Pourquoi Avana utilise des Smart Agents pour surveiller la santé, gérer les positions propres à chaque lieu et garder une couverture de liquidation fiable sous stress.",
       "image": "/images/blog/smart-agents-lp-collateral.png",
-      "category": "Developers",
+      "category": "Développeurs",
       "tag": "Protocole",
       "sections": [
         {
           "id": "lp-loans-are-operational",
-          "title": "LP loans are operational work",
+          "title": "Les prêts LP sont un travail opérationnel",
           "paragraphs": [
             "Sur Avana, le collatéral LP est actif, dépendant du chemin et exigeant opérationnellement. Il génère des frais, modifie sa composition, change le risque en fonction des mouvements du marché, et peut nécessiter des actions spécifiques au lieu exactement au moment où une position devient stressée. Un marché standard de tokens peut souvent réduire la liquidation et la surveillance à un déclencheur et un chemin d’échange plus simples. Le collatéral LP est différent. Le système doit savoir quelles positions sont actives, comment la dette évolue, à quoi ressemblerait le collatéral lors d’un vrai désengagement, comment les frais peuvent être réalisés, quel chemin spécifique au lieu s’applique pour le retrait, et si la liquidation reste viable après glissement, routage et coût d’exécution. Ces détails sont ce qui sépare la couverture théorique sur le papier d’une couverture qui fonctionne encore lorsque les marchés deviennent difficiles."
           ]
@@ -82,7 +82,7 @@
       "date": "July 20, 2026",
       "description": "Comment Avana liquide le collatéral LP avec des désengagements contrôlés, une intervention partielle, les frais d’abord lorsque c’est possible, et des chemins propres à chaque lieu.",
       "image": "/images/blog/lp-liquidation-workflow.png",
-      "category": "Developers",
+      "category": "Développeurs",
       "tag": "Protocole",
       "sections": [
         {
@@ -123,7 +123,7 @@
       "date": "July 17, 2026",
       "description": "Comment Avana Oracle évalue le collatéral LP via la valeur récupérable, une reconstruction déterministe et des décotes de récupération conservatrices.",
       "image": "/images/blog/lp-collateral-oracle-problem.png",
-      "category": "Developers",
+      "category": "Développeurs",
       "tag": "Protocole",
       "sections": [
         {
@@ -164,7 +164,7 @@
       "date": "July 15, 2026",
       "description": "Comment Avana structure une sécurité en couches pour le collatéral LP, de l’architecture et des oracles jusqu’à la santé, la liquidation et les opérations.",
       "image": "/images/blog/security-deep-dive.png",
-      "category": "Developers",
+      "category": "Développeurs",
       "tag": "Protocole",
       "sections": [
         {
@@ -206,8 +206,8 @@
       "date": "July 13, 2026",
       "description": "Comment les LPs peuvent utiliser Avana pour financer des buffers, des offsets directionnels et des habitudes de couverture plus disciplinées sans sortir entièrement du pool.",
       "image": "/images/blog/hedge-lp-position.png",
-      "category": "For LPs",
-      "tag": "Guides",
+      "category": "Pour les LPs",
+      "tag": "Guides Touristiques",
       "sections": [
         {
           "id": "more-than-fees",
@@ -247,8 +247,8 @@
       "date": "July 10, 2026",
       "description": "Comment penser le yield looping avec le collatéral LP Avana : buffers, tests de stress, discipline de sortie et levier soutenable.",
       "image": "/images/blog/yield-looping-playbook.png",
-      "category": "For LPs",
-      "tag": "Guides",
+      "category": "Pour les LPs",
+      "tag": "Guides Touristiques",
       "sections": [
         {
           "id": "what-looping-means",
@@ -288,8 +288,8 @@
       "date": "July 8, 2026",
       "description": "Ce que le collatéral LP Avana rend possible : emprunt, couverture, flexibilité de trésorerie et usage plus efficace du capital de liquidité productive.",
       "image": "/images/blog/unleashing-lp-tokens.png",
-      "category": "For LPs",
-      "tag": "Guides",
+      "category": "Pour les LPs",
+      "tag": "Guides Touristiques",
       "sections": [
         {
           "id": "from-trapped-to-usable",
@@ -329,7 +329,7 @@
       "date": "July 6, 2026",
       "description": "Comment Avana prend en charge les positions LP Aerodrome sur Base pour qu’elles restent actives tout en soutenant l’emprunt via un Spoke Aave v4 dédié.",
       "image": "/images/blog/aerodrome-lp-collateral.png",
-      "category": "Developers",
+      "category": "Développeurs",
       "tag": "Protocole",
       "sections": [
         {
@@ -357,7 +357,7 @@
         },
         {
           "id": "if-health-breaks",
-          "title": "If health breaks",
+          "title": "Si la santé se dégrade",
           "paragraphs": [
             "Si une position devient dangereuse, Avana liquidera la position de liquidité active, tiendra compte des sous-jacents et rétablira la solvabilité avec le moins de perturbations possible selon ce que le marché permet. La structure du pool détermine le fonctionnement de la liquidation. C'est une autre raison pour laquelle le collatéral de Aerodrome doit se trouver dans un Spoke dédié plutôt qu'en tant qu'extension lâche d'un marché de prêt plus large."
           ]
@@ -370,7 +370,7 @@
       "date": "July 3, 2026",
       "description": "Comment Avana traite le collatéral LP Curve pour les pools stables et corrélés via un Spoke Aave v4 dédié.",
       "image": "/images/blog/curve-lp-collateral.png",
-      "category": "Developers",
+      "category": "Développeurs",
       "tag": "Protocole",
       "sections": [
         {
@@ -411,7 +411,7 @@
       "date": "July 1, 2026",
       "description": "Comment Avana prend en charge les LP de pools pondérés Balancer comme garantie sur Aave v4, pendant que l’exposition reste active.",
       "image": "/images/blog/balancer-lp-collateral.png",
-      "category": "Developers",
+      "category": "Développeurs",
       "tag": "Protocole",
       "sections": [
         {
@@ -446,7 +446,7 @@
       "date": "June 28, 2026",
       "description": "Comment Avana transforme les positions LP Uniswap en collatéral Aave v4 pendant qu’elles restent dans le pool et continuent de générer des frais.",
       "image": "/images/blog/uniswap-lp-collateral.png",
-      "category": "Developers",
+      "category": "Développeurs",
       "tag": "Protocole",
       "sections": [
         {
@@ -482,7 +482,7 @@
       "description": "Pourquoi le design produit Avana insiste sur une évaluation claire, des plafonds d’emprunt et la santé — pour que le collatéral LP soit opérable, pas seulement puissant.",
       "image": "/images/blog/making-lp-collateral-usable.png",
       "category": "Produit",
-      "tag": "Guides",
+      "tag": "Guides Touristiques",
       "sections": [
         {
           "id": "power-is-not-enough",
@@ -516,7 +516,7 @@
       "date": "June 23, 2026",
       "description": "Pourquoi les LPs ne devraient pas devoir choisir entre gagner des frais et accéder au capital, et comment Avana étend le collatéral LP sur Aave v4.",
       "image": "/images/blog/avana-next-step-liquidity-providers.png",
-      "category": "Community",
+      "category": "Communauté",
       "tag": "Stratégie",
       "sections": [
         {
@@ -551,8 +551,8 @@
       "date": "June 20, 2026",
       "description": "Comment le collatéral LP Avana peut aider DAO, trésoreries, fonds et entreprises crypto-natives à accéder au capital sans dénouer une liquidité productive.",
       "image": "/images/blog/lp-collateral-for-institutions.png",
-      "category": "For Institutions",
-      "tag": "Institutions",
+      "category": "Pour les institutions",
+      "tag": "Établissements",
       "sections": [
         {
           "id": "treasury-function",
@@ -593,12 +593,12 @@
       "date": "June 17, 2026",
       "description": "Une vue développeur de l’infrastructure de collatéral LP Avana : monitoring, automatisation, services de liquidation et opportunités pour les builders.",
       "image": "/images/blog/developer-view-lp-collateral.png",
-      "category": "Developers",
+      "category": "Développeurs",
       "tag": "Protocole",
       "sections": [
         {
           "id": "a-new-design-surface",
-          "title": "A new design surface",
+          "title": "Une nouvelle surface de conception",
           "paragraphs": [
             "La plupart des infrastructures DeFi sont construites autour de garanties simples. Les actifs uniques sont faciles à évaluer, à surveiller et à liquider. Les positions LP sont actives, à double sens et structurellement plus complexes. Leur valeur change en fonction des sous-jacents, de la composition du pool, de l'accumulation des frais et de la plage. Cette complexité explique pourquoi les garanties LP ont été difficiles à intégrer dans les systèmes de prêt, et c'est pourquoi Avana crée une nouvelle surface de conception pour les développeurs."
           ]
@@ -628,7 +628,7 @@
       "date": "June 14, 2026",
       "description": "À l’intérieur de l’architecture de collatéral LP d’Avana sur Aave v4 : Hub, Spokes, évaluation, design d’oracle et logique de liquidation.",
       "image": "/images/blog/inside-avana-architecture.png",
-      "category": "Developers",
+      "category": "Développeurs",
       "tag": "Protocole",
       "sections": [
         {
@@ -739,8 +739,8 @@
       "date": "June 4, 2026",
       "description": "Un guide du débutant sur le collatéral LP sur Avana : comportement LP, LTV, perte impermanente, liquidation et premiers pas prudents.",
       "image": "/images/blog/beginners-guide-lp-collateral.png",
-      "category": "For LPs",
-      "tag": "Guides",
+      "category": "Pour les LPs",
+      "tag": "Guides Touristiques",
       "sections": [
         {
           "id": "the-basic-idea",
@@ -767,7 +767,7 @@
         },
         {
           "id": "first-steps",
-          "title": "A sensible first path",
+          "title": "Un premier chemin raisonnable",
           "paragraphs": [
             "Même en tant que garantie, une position LP continue de générer des frais et de maintenir une exposition au marché. C'est le gain en efficacité du capital. Pour les débutants, l'approche la plus sûre est de commencer prudemment sur Avana : emprunter modestement, utiliser d'abord des types de pools plus simples et plus stables, et faire attention à la façon dont la santé de la position change lorsque les marchés évoluent. Une fois que vous comprenez comment la valeur, la dette et les seuils de liquidation de LP interagissent, le modèle devient beaucoup plus facile à utiliser de manière responsable."
           ]

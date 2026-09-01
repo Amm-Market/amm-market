@@ -52,7 +52,7 @@
       "sections": [
         {
           "id": "lp-loans-are-operational",
-          "title": "LP loans are operational work",
+          "title": "Pinjaman LP adalah pekerjaan operasional",
           "paragraphs": [
             "Pada Avana, LP jaminan bersifat aktif, bergantung pada jalur, dan menuntut secara operasional. Jaminan ini menghasilkan biaya, mengubah komposisi, mengubah risiko seiring pergerakan pasar, dan dapat memerlukan tindakan spesifik di tempat tertentu tepat ketika posisi menjadi tertekan. Pasar token standar sering dapat menyederhanakan likuidasi dan pemantauan menjadi pemicu dan jalur swap yang lebih sederhana. Jaminan LP berbeda. Sistem harus mengetahui posisi mana yang aktif, bagaimana utang bergerak, bagaimana jaminan akan terlihat dalam likuidasi nyata, bagaimana biaya dapat direalisasikan, jalur penghapusan spesifik lokasi mana yang berlaku, dan apakah likuidasi masih layak setelah memperhitungkan slippage, pengaturan jalur, dan biaya eksekusi. Rincian tersebut adalah yang membedakan cakupan teoritis di atas kertas dengan cakupan yang masih berfungsi ketika pasar menjadi sulit."
           ]
@@ -357,7 +357,7 @@
         },
         {
           "id": "if-health-breaks",
-          "title": "If health breaks",
+          "title": "Jika kesehatan memburuk",
           "paragraphs": [
             "Jika suatu posisi menjadi tidak aman, Avana membongkar posisi likuiditas aktif, menghitung aset yang mendasarinya, dan memulihkan solvabilitas dengan gangguan sesedikit mungkin sesuai yang diizinkan pasar. Struktur kolam menentukan bagaimana likuidasi bekerja. Itu adalah alasan lain mengapa jaminan Aerodrome sebaiknya ditempatkan di cabang khusus daripada sebagai perpanjangan longgar dari pasar pinjaman yang lebih luas."
           ]
@@ -598,7 +598,7 @@
       "sections": [
         {
           "id": "a-new-design-surface",
-          "title": "A new design surface",
+          "title": "Permukaan desain baru",
           "paragraphs": [
             "Sebagian besar DeFi infrastruktur dibangun di sekitar jaminan sederhana. Aset tunggal mudah untuk dinilai, dipantau, dan dilikuidasi. Posisi LP bersifat aktif, dua sisi, dan secara struktural lebih kompleks. Nilainya berubah sesuai dengan aset dasar, komposisi pool, akumulasi biaya, dan rentang. Kompleksitas itulah yang membuat jaminan LP sulit untuk diintegrasikan ke dalam sistem pinjaman, dan itulah alasan Avana menciptakan permukaan desain baru bagi pengembang."
           ]
@@ -767,7 +767,7 @@
         },
         {
           "id": "first-steps",
-          "title": "A sensible first path",
+          "title": "Jalur pertama yang masuk akal",
           "paragraphs": [
             "Bahkan sebagai jaminan, posisi LP tetap menghasilkan biaya dan mempertahankan eksposur pasar. Itulah keuntungan efisiensi modal. Bagi pemula, pendekatan yang paling aman adalah memulai secara konservatif pada Avana: meminjam secara sederhana, menggunakan jenis pool yang lebih sederhana dan stabil terlebih dahulu, dan memperhatikan bagaimana kesehatan posisi berubah seiring pergerakan pasar. Setelah Anda memahami bagaimana nilai LP, utang, dan ambang likuidasi saling berinteraksi, model ini menjadi jauh lebih mudah digunakan secara bertanggung jawab."
           ]

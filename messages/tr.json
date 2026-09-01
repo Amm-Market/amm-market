@@ -78,7 +78,7 @@
     "notFound": {
       "title": "Bu sayfa kullanılamıyor.",
       "body": "Adres yanlış olabilir veya sayfa taşınmış olabilir.",
-      "home": "Go to homepage",
+      "home": "Ana sayfaya git",
       "faq": "Sıkça sorulan sorular"
     },
     "sandboxNotice": "Sandbox veriler sadece önizleme için gösterilmektedir. APYler, fiyatlar ve getiriler örnek teşkil eder ve gerçek piyasa koşullarından farklı olabilir.",
@@ -89,7 +89,7 @@
       "shareOnLinkedIn": "LinkedIn'de paylaş",
       "previousPost": "Önceki gönderi",
       "nextPost": "Sonraki gönderi",
-      "onThisPage": "On this page"
+      "onThisPage": "Bu sayfada"
     },
     "docs": {
       "previous": "Önceki",
@@ -101,7 +101,8 @@
         "liquidation": "Tasfiye Çerçevesi",
         "integrations": "Desteklenen Entegrasyonlar",
         "safety": "Güvenlik Mekanizmaları",
-        "legal": "Hukuk & Uyum"
+        "legal": "Hukuk & Uyum",
+        "copilot": "Yapay zekaya sor"
       },
       "items": {
         "overview": "Genel Bakış",
@@ -133,7 +134,11 @@
         "bugBounty": "Hata Ödülü",
         "insuranceFunds": "Sigorta Fonları",
         "securityDisclosures": "Güvenlik Açıklamaları",
-        "legalDisclaimer": "Yasal Uyarı"
+        "legalDisclaimer": "Yasal Uyarı",
+        "aiIntroduction": "Yapay zekaya giriş",
+        "copilotProtocols": "Desteklenen protokoller",
+        "copilotPrompts": "Prompt örnekleri",
+        "copilotWorkflow": "Ajan iş akışı"
       }
     },
     "faqUi": {
@@ -164,6 +169,19 @@
       "darkMode": "Koyu mod",
       "systemMode": "Sistem",
       "tapToChange": "Değiştirmek için dokunun"
+    },
+    "exportMenu": {
+      "copyPage": "Sayfayı kopyala",
+      "copied": "Kopyalandı",
+      "copyPageMarkdown": "Sayfayı Markdown olarak kopyala",
+      "copyPageLink": "Sayfa bağlantısını kopyala",
+      "copyPageLinkDescription": "Bu sayfanın URL'sini panoya kopyala",
+      "openInChatGPT": "ChatGPT'de aç",
+      "openInClaude": "Claude'da aç",
+      "openInGrok": "Grok'ta aç",
+      "openInPerplexity": "Perplexity'de aç",
+      "askAboutPage": "Bu sayfa hakkında soru sor",
+      "reviewPrompt": "Aşağıdaki Avana sayfasının içeriğini inceleyin ve soruları yanıtlayın."
     }
   },
   "meta": {
@@ -230,12 +248,12 @@
       "subtitle": "Uniswap, Curve ve Balancer pozisyonlarından likidite açarken işlem ücretleri kazanmaya devam edin.",
       "subtitleMobileLines": [
         "Likidite Havuzunuzun değerinin %80'ine kadar erişim sağlayın",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "%5,5 APR ile likiditeyi çekmeden veya",
+        "işlem ücretlerinden vazgeçmeden."
       ],
       "subtitleDesktopLines": [
         "Likidite Havuzunuzun değerinin %80'ine kadar %5,5 ile erişim sağlayın APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "%5,5 APR ile likiditeyi çekmeden veya işlem ücretlerinden vazgeçmeden."
       ],
       "primaryCta": "Deneyin Sandbox",
       "secondaryCta": "Belgeleri oku"

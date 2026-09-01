@@ -1,0 +1,865 @@
+{
+  "zh-CN": {
+    "common": {
+      "notFound": { "home": "返回首页" },
+      "blogChrome": { "onThisPage": "本页内容" },
+      "exportMenu": {
+        "copyPage": "复制页面",
+        "copied": "已复制",
+        "copyPageMarkdown": "以 Markdown 格式复制页面",
+        "copyPageLink": "复制页面链接",
+        "copyPageLinkDescription": "将此页面 URL 复制到剪贴板",
+        "openInChatGPT": "在 ChatGPT 中打开",
+        "openInClaude": "在 Claude 中打开",
+        "openInGrok": "在 Grok 中打开",
+        "openInPerplexity": "在 Perplexity 中打开",
+        "askAboutPage": "就此页面提问",
+        "reviewPrompt": "请查阅以下 Avana 页面内容并回答问题。"
+      },
+      "docs": {
+        "sections": { "copilot": "询问 AI" },
+        "items": {
+          "aiIntroduction": "AI 简介",
+          "copilotProtocols": "支持的协议",
+          "copilotPrompts": "提示示例",
+          "copilotWorkflow": "智能体工作流"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [
+          null,
+          "年利率 5.5%，无需撤出流动性或",
+          "放弃交易手续费。"
+        ],
+        "subtitleDesktopLines": [
+          null,
+          "年利率 5.5%，无需撤出流动性或放弃交易手续费。"
+        ]
+      }
+    }
+  },
+  "zh-TW": {
+    "common": {
+      "notFound": { "home": "返回首頁" },
+      "blogChrome": { "onThisPage": "本頁內容" },
+      "exportMenu": {
+        "copyPage": "複製頁面",
+        "copied": "已複製",
+        "copyPageMarkdown": "以 Markdown 格式複製頁面",
+        "copyPageLink": "複製頁面連結",
+        "copyPageLinkDescription": "將此頁面 URL 複製到剪貼簿",
+        "openInChatGPT": "在 ChatGPT 中開啟",
+        "openInClaude": "在 Claude 中開啟",
+        "openInGrok": "在 Grok 中開啟",
+        "openInPerplexity": "在 Perplexity 中開啟",
+        "askAboutPage": "就此頁面提問",
+        "reviewPrompt": "請查閱以下 Avana 頁面內容並回答問題。"
+      },
+      "docs": {
+        "sections": { "copilot": "詢問 AI" },
+        "items": {
+          "aiIntroduction": "AI 簡介",
+          "copilotProtocols": "支援的協議",
+          "copilotPrompts": "提示範例",
+          "copilotWorkflow": "智能體工作流程"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "年利率 5.5%，無需撤出流動性或", "放棄交易手續費。"],
+        "subtitleDesktopLines": [null, "年利率 5.5%，無需撤出流動性或放棄交易手續費。"]
+      }
+    }
+  },
+  "ko": {
+    "common": {
+      "docs": {
+        "sections": { "copilot": "AI에게 묻기" },
+        "items": {
+          "aiIntroduction": "AI 소개",
+          "copilotProtocols": "지원 프로토콜",
+          "copilotPrompts": "프롬프트 예시",
+          "copilotWorkflow": "에이전트 워크플로"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "연 5.5% APR로 유동성을 인출하지 않고도", "거래 수수료를 포기하지 않고"],
+        "subtitleDesktopLines": [null, "유동성을 인출하거나 거래 수수료를 포기하지 않고 연 5.5% APR로 이용할 수 있습니다."]
+      }
+    }
+  },
+  "ja": {
+    "common": {
+      "notFound": { "home": "ホームページへ" },
+      "blogChrome": { "onThisPage": "このページの内容" },
+      "exportMenu": {
+        "copyPage": "ページをコピー",
+        "copied": "コピーしました",
+        "copyPageMarkdown": "Markdown としてページをコピー",
+        "copyPageLink": "ページリンクをコピー",
+        "copyPageLinkDescription": "このページの URL をクリップボードにコピー",
+        "openInChatGPT": "ChatGPT で開く",
+        "openInClaude": "Claude で開く",
+        "openInGrok": "Grok で開く",
+        "openInPerplexity": "Perplexity で開く",
+        "askAboutPage": "このページについて質問する",
+        "reviewPrompt": "以下の Avana ページの内容を確認し、質問に答えてください。"
+      },
+      "docs": {
+        "sections": { "copilot": "AI に質問" },
+        "items": {
+          "aiIntroduction": "AI 入門",
+          "copilotProtocols": "対応プロトコル",
+          "copilotPrompts": "プロンプト例",
+          "copilotWorkflow": "エージェントのワークフロー"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "年利 5.5% で、流動性を引き出さず", "取引手数料を諦めることなく"],
+        "subtitleDesktopLines": [null, "流動性を引き出したり取引手数料を諦めたりせず、年利 5.5% で利用できます。"]
+      }
+    }
+  },
+  "es": {
+    "common": {
+      "notFound": { "home": "Ir a la página de inicio" },
+      "blogChrome": { "onThisPage": "En esta página" },
+      "exportMenu": {
+        "copyPage": "Copiar página",
+        "copied": "Copiado",
+        "copyPageMarkdown": "Copiar página como Markdown",
+        "copyPageLink": "Copiar enlace de la página",
+        "copyPageLinkDescription": "Copiar la URL de esta página al portapapeles",
+        "openInChatGPT": "Abrir en ChatGPT",
+        "openInClaude": "Abrir en Claude",
+        "openInGrok": "Abrir en Grok",
+        "openInPerplexity": "Abrir en Perplexity",
+        "askAboutPage": "Hacer preguntas sobre esta página",
+        "reviewPrompt": "Revisa el contenido de esta página de Avana y responde las preguntas."
+      },
+      "docs": {
+        "sections": { "copilot": "Preguntar a la IA" },
+        "items": {
+          "aiIntroduction": "Introducción a la IA",
+          "copilotProtocols": "Protocolos compatibles",
+          "copilotPrompts": "Ejemplos de prompts",
+          "copilotWorkflow": "Flujo del agente"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "al 5,5 % TAE sin retirar liquidez ni", "renunciar a las comisiones de trading."],
+        "subtitleDesktopLines": [null, "al 5,5 % TAE sin retirar liquidez ni renunciar a las comisiones de trading."]
+      }
+    }
+  },
+  "fr": {
+    "common": {
+      "notFound": { "home": "Aller à l'accueil" },
+      "blogChrome": { "onThisPage": "Sur cette page" },
+      "exportMenu": {
+        "copyPage": "Copier la page",
+        "copied": "Copié",
+        "copyPageMarkdown": "Copier la page en Markdown",
+        "copyPageLink": "Copier le lien de la page",
+        "copyPageLinkDescription": "Copier l'URL de cette page dans le presse-papiers",
+        "openInChatGPT": "Ouvrir dans ChatGPT",
+        "openInClaude": "Ouvrir dans Claude",
+        "openInGrok": "Ouvrir dans Grok",
+        "openInPerplexity": "Ouvrir dans Perplexity",
+        "askAboutPage": "Poser des questions sur cette page",
+        "reviewPrompt": "Consultez le contenu de cette page Avana et répondez aux questions."
+      },
+      "docs": {
+        "sections": { "copilot": "Demander à l'IA" },
+        "items": {
+          "aiIntroduction": "Introduction à l'IA",
+          "copilotProtocols": "Protocoles pris en charge",
+          "copilotPrompts": "Exemples de prompts",
+          "copilotWorkflow": "Flux de l'agent",
+          "borrowSpoke": "Spoke d'emprunt",
+          "lendSpoke": "Spoke de prêt"
+        }
+      },
+      "faqUi": { "articles": "{count} articles publiés" }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "à 5,5 % TAEG sans retirer de liquidité ni", "abandonner les frais de trading."],
+        "subtitleDesktopLines": [null, "à 5,5 % TAEG sans retirer de liquidité ni abandonner les frais de trading."]
+      }
+    }
+  },
+  "de": {
+    "common": {
+      "notFound": { "home": "Zur Startseite" },
+      "blogChrome": { "onThisPage": "Auf dieser Seite" },
+      "theme": { "systemMode": "Systemmodus" },
+      "exportMenu": {
+        "copyPage": "Seite kopieren",
+        "copied": "Kopiert",
+        "copyPageMarkdown": "Seite als Markdown kopieren",
+        "copyPageLink": "Seitenlink kopieren",
+        "copyPageLinkDescription": "URL dieser Seite in die Zwischenablage kopieren",
+        "openInChatGPT": "In ChatGPT öffnen",
+        "openInClaude": "In Claude öffnen",
+        "openInGrok": "In Grok öffnen",
+        "openInPerplexity": "In Perplexity öffnen",
+        "askAboutPage": "Fragen zu dieser Seite stellen",
+        "reviewPrompt": "Prüfen Sie den Inhalt dieser Avana-Seite und beantworten Sie Fragen."
+      },
+      "docs": {
+        "sections": { "copilot": "KI fragen" },
+        "items": {
+          "aiIntroduction": "KI-Einführung",
+          "copilotProtocols": "Unterstützte Protokolle",
+          "copilotPrompts": "Prompt-Beispiele",
+          "copilotWorkflow": "Agenten-Workflow",
+          "borrowSpoke": "Borrow-Spoke",
+          "lendSpoke": "Lend-Spoke"
+        }
+      },
+      "footer": { "twitter": "Twitter" }
+    },
+    "meta": { "team": "Avana-Team" },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "zu 5,5 % APR, ohne Liquidität abzuziehen oder", "auf Handelsgebühren zu verzichten."],
+        "subtitleDesktopLines": [null, "zu 5,5 % APR, ohne Liquidität abzuziehen oder auf Handelsgebühren zu verzichten."]
+      }
+    }
+  },
+  "ar": {
+    "common": {
+      "notFound": { "home": "الانتقال إلى الصفحة الرئيسية" },
+      "blogChrome": { "onThisPage": "في هذه الصفحة" },
+      "exportMenu": {
+        "copyPage": "نسخ الصفحة",
+        "copied": "تم النسخ",
+        "copyPageMarkdown": "نسخ الصفحة بصيغة Markdown",
+        "copyPageLink": "نسخ رابط الصفحة",
+        "copyPageLinkDescription": "نسخ عنوان URL لهذه الصفحة إلى الحافظة",
+        "openInChatGPT": "فتح في ChatGPT",
+        "openInClaude": "فتح في Claude",
+        "openInGrok": "فتح في Grok",
+        "openInPerplexity": "فتح في Perplexity",
+        "askAboutPage": "اطرح أسئلة حول هذه الصفحة",
+        "reviewPrompt": "راجع محتوى صفحة Avana أدناه وأجب عن الأسئلة."
+      },
+      "docs": {
+        "sections": { "copilot": "اسأل الذكاء الاصطناعي" },
+        "items": {
+          "aiIntroduction": "مقدمة عن الذكاء الاصطناعي",
+          "copilotProtocols": "البروتوكولات المدعومة",
+          "copilotPrompts": "أمثلة على المطالبات",
+          "copilotWorkflow": "سير عمل الوكيل"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "بنسبة 5.5% APR دون سحب السيولة أو", "التخلي عن رسوم التداول."],
+        "subtitleDesktopLines": [null, "بنسبة 5.5% APR دون سحب السيولة أو التخلي عن رسوم التداول."]
+      }
+    }
+  },
+  "hi": {
+    "common": {
+      "notFound": { "home": "होमपेज पर जाएं" },
+      "blogChrome": { "onThisPage": "इस पृष्ठ पर" },
+      "exportMenu": {
+        "copyPage": "पृष्ठ कॉपी करें",
+        "copied": "कॉपी हो गया",
+        "copyPageMarkdown": "पृष्ठ को Markdown के रूप में कॉपी करें",
+        "copyPageLink": "पृष्ठ लिंक कॉपी करें",
+        "copyPageLinkDescription": "इस पृष्ठ का URL क्लिपबोर्ड पर कॉपी करें",
+        "openInChatGPT": "ChatGPT में खोलें",
+        "openInClaude": "Claude में खोलें",
+        "openInGrok": "Grok में खोलें",
+        "openInPerplexity": "Perplexity में खोलें",
+        "askAboutPage": "इस पृष्ठ के बारे में प्रश्न पूछें",
+        "reviewPrompt": "नीचे दिए Avana पृष्ठ की सामग्री की समीक्षा करें और प्रश्नों के उत्तर दें।"
+      },
+      "docs": {
+        "sections": { "copilot": "AI से पूछें" },
+        "items": {
+          "aiIntroduction": "AI परिचय",
+          "copilotProtocols": "समर्थित प्रोटोकॉल",
+          "copilotPrompts": "प्रॉम्प्ट उदाहरण",
+          "copilotWorkflow": "एजेंट वर्कफ़्लो"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "5.5% APR पर, तरलता निकाले बिना या", "ट्रेडिंग शुल्क छोड़े बिना।"],
+        "subtitleDesktopLines": [null, "5.5% APR पर, तरलता निकाले या ट्रेडिंग शुल्क छोड़े बिना।"]
+      }
+    }
+  },
+  "bn": {
+    "common": {
+      "notFound": { "home": "হোমপেজে যান" },
+      "blogChrome": { "onThisPage": "এই পৃষ্ঠায়" },
+      "exportMenu": {
+        "copyPage": "পৃষ্ঠা কপি করুন",
+        "copied": "কপি হয়েছে",
+        "copyPageMarkdown": "Markdown হিসেবে পৃষ্ঠা কপি করুন",
+        "copyPageLink": "পৃষ্ঠার লিংক কপি করুন",
+        "copyPageLinkDescription": "এই পৃষ্ঠার URL ক্লিপবোর্ডে কপি করুন",
+        "openInChatGPT": "ChatGPT-এ খুলুন",
+        "openInClaude": "Claude-এ খুলুন",
+        "openInGrok": "Grok-এ খুলুন",
+        "openInPerplexity": "Perplexity-তে খুলুন",
+        "askAboutPage": "এই পৃষ্ঠা সম্পর্কে প্রশ্ন করুন",
+        "reviewPrompt": "নিচের Avana পৃষ্ঠার বিষয়বস্তু পর্যালোচনা করে প্রশ্নের উত্তর দিন।"
+      },
+      "docs": {
+        "sections": { "copilot": "AI-কে জিজ্ঞাসা করুন" },
+        "items": {
+          "aiIntroduction": "AI পরিচিতি",
+          "copilotProtocols": "সমর্থিত প্রোটোকল",
+          "copilotPrompts": "প্রম্পট উদাহরণ",
+          "copilotWorkflow": "এজেন্ট ওয়ার্কফ্লো"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "৫.৫% APR-এ, লিকুইডিটি তুলে না নিয়ে বা", "ট্রেডিং ফি ছাড় না দিয়ে।"],
+        "subtitleDesktopLines": [null, "৫.৫% APR-এ, লিকুইডিটি তুলে না নিয়ে বা ট্রেডিং ফি ছাড় না দিয়ে।"]
+      }
+    }
+  },
+  "pt": {
+    "common": {
+      "notFound": { "home": "Ir para a página inicial" },
+      "blogChrome": { "onThisPage": "Nesta página" },
+      "exportMenu": {
+        "copyPage": "Copiar página",
+        "copied": "Copiado",
+        "copyPageMarkdown": "Copiar página como Markdown",
+        "copyPageLink": "Copiar link da página",
+        "copyPageLinkDescription": "Copiar o URL desta página para a área de transferência",
+        "openInChatGPT": "Abrir no ChatGPT",
+        "openInClaude": "Abrir no Claude",
+        "openInGrok": "Abrir no Grok",
+        "openInPerplexity": "Abrir no Perplexity",
+        "askAboutPage": "Fazer perguntas sobre esta página",
+        "reviewPrompt": "Revise o conteúdo desta página da Avana e responda às perguntas."
+      },
+      "docs": {
+        "sections": { "copilot": "Perguntar à IA" },
+        "items": {
+          "aiIntroduction": "Introdução à IA",
+          "copilotProtocols": "Protocolos suportados",
+          "copilotPrompts": "Exemplos de prompts",
+          "copilotWorkflow": "Fluxo do agente"
+        }
+      },
+      "footer": { "social": "Redes sociais" }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "a 5,5% APR sem retirar liquidez ou", "abrir mão das taxas de trading."],
+        "subtitleDesktopLines": [null, "a 5,5% APR sem retirar liquidez ou abrir mão das taxas de trading."]
+      }
+    }
+  },
+  "ru": {
+    "common": {
+      "notFound": { "home": "На главную" },
+      "blogChrome": { "onThisPage": "На этой странице" },
+      "exportMenu": {
+        "copyPage": "Копировать страницу",
+        "copied": "Скопировано",
+        "copyPageMarkdown": "Копировать страницу как Markdown",
+        "copyPageLink": "Копировать ссылку на страницу",
+        "copyPageLinkDescription": "Скопировать URL этой страницы в буфер обмена",
+        "openInChatGPT": "Открыть в ChatGPT",
+        "openInClaude": "Открыть в Claude",
+        "openInGrok": "Открыть в Grok",
+        "openInPerplexity": "Открыть в Perplexity",
+        "askAboutPage": "Задать вопросы об этой странице",
+        "reviewPrompt": "Изучите содержимое страницы Avana ниже и ответьте на вопросы."
+      },
+      "docs": {
+        "sections": { "copilot": "Спросить ИИ" },
+        "items": {
+          "aiIntroduction": "Введение в ИИ",
+          "copilotProtocols": "Поддерживаемые протоколы",
+          "copilotPrompts": "Примеры промптов",
+          "copilotWorkflow": "Рабочий процесс агента"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "под 5,5% APR без вывода ликвидности и", "без отказа от торговых комиссий."],
+        "subtitleDesktopLines": [null, "под 5,5% APR без вывода ликвидности и без отказа от торговых комиссий."]
+      }
+    }
+  },
+  "uk": {
+    "common": {
+      "notFound": { "home": "На головну" },
+      "blogChrome": { "onThisPage": "На цій сторінці" },
+      "exportMenu": {
+        "copyPage": "Копіювати сторінку",
+        "copied": "Скопійовано",
+        "copyPageMarkdown": "Копіювати сторінку як Markdown",
+        "copyPageLink": "Копіювати посилання на сторінку",
+        "copyPageLinkDescription": "Скопіювати URL цієї сторінки в буфер обміну",
+        "openInChatGPT": "Відкрити в ChatGPT",
+        "openInClaude": "Відкрити в Claude",
+        "openInGrok": "Відкрити в Grok",
+        "openInPerplexity": "Відкрити в Perplexity",
+        "askAboutPage": "Поставити запитання про цю сторінку",
+        "reviewPrompt": "Перегляньте вміст сторінки Avana нижче та дайте відповіді на запитання."
+      },
+      "docs": {
+        "sections": { "copilot": "Запитати ШІ" },
+        "items": {
+          "aiIntroduction": "Вступ до ШІ",
+          "copilotProtocols": "Підтримувані протоколи",
+          "copilotPrompts": "Приклади промптів",
+          "copilotWorkflow": "Робочий процес агента"
+        }
+      },
+      "footer": { "twitter": "Twitter" }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "під 5,5% APR без виведення ліквідності чи", "відмови від торгових комісій."],
+        "subtitleDesktopLines": [null, "під 5,5% APR без виведення ліквідності чи відмови від торгових комісій."]
+      }
+    }
+  },
+  "ur": {
+    "common": {
+      "notFound": { "home": "ہوم پیج پر جائیں" },
+      "blogChrome": { "onThisPage": "اس صفحے پر" },
+      "exportMenu": {
+        "copyPage": "صفحہ کاپی کریں",
+        "copied": "کاپی ہو گیا",
+        "copyPageMarkdown": "صفحہ Markdown کے طور پر کاپی کریں",
+        "copyPageLink": "صفحے کا لنک کاپی کریں",
+        "copyPageLinkDescription": "اس صفحے کا URL کلپ بورڈ پر کاپی کریں",
+        "openInChatGPT": "ChatGPT میں کھولیں",
+        "openInClaude": "Claude میں کھولیں",
+        "openInGrok": "Grok میں کھولیں",
+        "openInPerplexity": "Perplexity میں کھولیں",
+        "askAboutPage": "اس صفحے کے بارے میں سوالات پوچھیں",
+        "reviewPrompt": "نیچے دیے گئے Avana صفحے کا مواد دیکھیں اور سوالات کے جوابات دیں۔"
+      },
+      "docs": {
+        "sections": { "copilot": "AI سے پوچھیں" },
+        "items": {
+          "aiIntroduction": "AI تعارف",
+          "copilotProtocols": "معاون پروٹوکولز",
+          "copilotPrompts": "پرامپٹ مثالیں",
+          "copilotWorkflow": "ایجنٹ ورک فلو"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "5.5% APR پر، لیکویڈیٹی نکالے بغیر یا", "ٹریڈنگ فیس چھوڑے بغیر۔"],
+        "subtitleDesktopLines": [null, "5.5% APR پر، لیکویڈیٹی نکالے یا ٹریڈنگ فیس چھوڑے بغیر۔"]
+      }
+    }
+  },
+  "id": {
+    "common": {
+      "notFound": { "home": "Ke beranda" },
+      "blogChrome": { "onThisPage": "Di halaman ini" },
+      "exportMenu": {
+        "copyPage": "Salin halaman",
+        "copied": "Disalin",
+        "copyPageMarkdown": "Salin halaman sebagai Markdown",
+        "copyPageLink": "Salin tautan halaman",
+        "copyPageLinkDescription": "Salin URL halaman ini ke papan klip",
+        "openInChatGPT": "Buka di ChatGPT",
+        "openInClaude": "Buka di Claude",
+        "openInGrok": "Buka di Grok",
+        "openInPerplexity": "Buka di Perplexity",
+        "askAboutPage": "Ajukan pertanyaan tentang halaman ini",
+        "reviewPrompt": "Tinjau konten halaman Avana di bawah dan jawab pertanyaannya."
+      },
+      "docs": {
+        "sections": { "copilot": "Tanya AI" },
+        "items": {
+          "aiIntroduction": "Pengantar AI",
+          "copilotProtocols": "Protokol yang didukung",
+          "copilotPrompts": "Contoh prompt",
+          "copilotWorkflow": "Alur kerja agen"
+        }
+      },
+      "footer": { "twitter": "Twitter", "telegram": "Telegram" }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "dengan APR 5,5% tanpa menarik likuiditas atau", "mengorbankan biaya trading."],
+        "subtitleDesktopLines": [null, "dengan APR 5,5% tanpa menarik likuiditas atau mengorbankan biaya trading."]
+      }
+    }
+  },
+  "fa": {
+    "common": {
+      "notFound": { "home": "رفتن به صفحه اصلی" },
+      "blogChrome": { "onThisPage": "در این صفحه" },
+      "exportMenu": {
+        "copyPage": "کپی صفحه",
+        "copied": "کپی شد",
+        "copyPageMarkdown": "کپی صفحه به‌صورت Markdown",
+        "copyPageLink": "کپی لینک صفحه",
+        "copyPageLinkDescription": "کپی URL این صفحه در کلیپ‌بورد",
+        "openInChatGPT": "باز کردن در ChatGPT",
+        "openInClaude": "باز کردن در Claude",
+        "openInGrok": "باز کردن در Grok",
+        "openInPerplexity": "باز کردن در Perplexity",
+        "askAboutPage": "پرسش درباره این صفحه",
+        "reviewPrompt": "محتوای صفحه Avana زیر را بررسی کنید و به سؤالات پاسخ دهید."
+      },
+      "docs": {
+        "sections": { "copilot": "پرسش از هوش مصنوعی" },
+        "items": {
+          "aiIntroduction": "معرفی هوش مصنوعی",
+          "copilotProtocols": "پروتکل‌های پشتیبانی‌شده",
+          "copilotPrompts": "نمونه پرامپت‌ها",
+          "copilotWorkflow": "گردش کار عامل"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "با APR 5.5٪ بدون برداشت نقدینگی یا", "چشم‌پوشی از کارمزد معاملات."],
+        "subtitleDesktopLines": [null, "با APR 5.5٪ بدون برداشت نقدینگی یا چشم‌پوشی از کارمزد معاملات."]
+      }
+    }
+  },
+  "sw": {
+    "common": {
+      "notFound": { "home": "Nenda kwenye ukurasa wa mwanzo" },
+      "blogChrome": { "onThisPage": "Kwenye ukurasa huu" },
+      "exportMenu": {
+        "copyPage": "Nakili ukurasa",
+        "copied": "Imenakiliwa",
+        "copyPageMarkdown": "Nakili ukurasa kama Markdown",
+        "copyPageLink": "Nakili kiungo cha ukurasa",
+        "copyPageLinkDescription": "Nakili URL ya ukurasa huu kwenye ubao wa kunakili",
+        "openInChatGPT": "Fungua katika ChatGPT",
+        "openInClaude": "Fungua katika Claude",
+        "openInGrok": "Fungua katika Grok",
+        "openInPerplexity": "Fungua katika Perplexity",
+        "askAboutPage": "Uliza maswali kuhusu ukurasa huu",
+        "reviewPrompt": "Kagua maudhui ya ukurasa wa Avana hapa chini na ujibu maswali."
+      },
+      "docs": {
+        "sections": { "copilot": "Uliza AI" },
+        "items": {
+          "aiIntroduction": "Utangulizi wa AI",
+          "copilotProtocols": "Itifaki zinazotumika",
+          "copilotPrompts": "Mifano ya prompt",
+          "copilotWorkflow": "Mtiririko wa wakala"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "kwa APR 5.5% bila kutoa ukwasi au", "kuacha ada za biashara."],
+        "subtitleDesktopLines": [null, "kwa APR 5.5% bila kutoa ukwasi au kuacha ada za biashara."]
+      }
+    }
+  },
+  "vi": {
+    "common": {
+      "notFound": { "home": "Về trang chủ" },
+      "blogChrome": { "onThisPage": "Trên trang này" },
+      "exportMenu": {
+        "copyPage": "Sao chép trang",
+        "copied": "Đã sao chép",
+        "copyPageMarkdown": "Sao chép trang dưới dạng Markdown",
+        "copyPageLink": "Sao chép liên kết trang",
+        "copyPageLinkDescription": "Sao chép URL trang này vào bảng nhớ tạm",
+        "openInChatGPT": "Mở trong ChatGPT",
+        "openInClaude": "Mở trong Claude",
+        "openInGrok": "Mở trong Grok",
+        "openInPerplexity": "Mở trong Perplexity",
+        "askAboutPage": "Đặt câu hỏi về trang này",
+        "reviewPrompt": "Xem nội dung trang Avana bên dưới và trả lời các câu hỏi."
+      },
+      "docs": {
+        "sections": { "copilot": "Hỏi AI" },
+        "items": {
+          "aiIntroduction": "Giới thiệu AI",
+          "copilotProtocols": "Giao thức được hỗ trợ",
+          "copilotPrompts": "Ví dụ prompt",
+          "copilotWorkflow": "Quy trình tác nhân"
+        }
+      },
+      "footer": { "twitter": "Twitter" }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "với APR 5,5% mà không rút thanh khoản hay", "từ bỏ phí giao dịch."],
+        "subtitleDesktopLines": [null, "với APR 5,5% mà không rút thanh khoản hay từ bỏ phí giao dịch."]
+      }
+    }
+  },
+  "tr": {
+    "common": {
+      "notFound": { "home": "Ana sayfaya git" },
+      "blogChrome": { "onThisPage": "Bu sayfada" },
+      "exportMenu": {
+        "copyPage": "Sayfayı kopyala",
+        "copied": "Kopyalandı",
+        "copyPageMarkdown": "Sayfayı Markdown olarak kopyala",
+        "copyPageLink": "Sayfa bağlantısını kopyala",
+        "copyPageLinkDescription": "Bu sayfanın URL'sini panoya kopyala",
+        "openInChatGPT": "ChatGPT'de aç",
+        "openInClaude": "Claude'da aç",
+        "openInGrok": "Grok'ta aç",
+        "openInPerplexity": "Perplexity'de aç",
+        "askAboutPage": "Bu sayfa hakkında soru sor",
+        "reviewPrompt": "Aşağıdaki Avana sayfasının içeriğini inceleyin ve soruları yanıtlayın."
+      },
+      "docs": {
+        "sections": { "copilot": "Yapay zekaya sor" },
+        "items": {
+          "aiIntroduction": "Yapay zekaya giriş",
+          "copilotProtocols": "Desteklenen protokoller",
+          "copilotPrompts": "Prompt örnekleri",
+          "copilotWorkflow": "Ajan iş akışı"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "%5,5 APR ile likiditeyi çekmeden veya", "işlem ücretlerinden vazgeçmeden."],
+        "subtitleDesktopLines": [null, "%5,5 APR ile likiditeyi çekmeden veya işlem ücretlerinden vazgeçmeden."]
+      }
+    }
+  },
+  "ha": {
+    "common": {
+      "notFound": { "home": "Je shafin gida" },
+      "blogChrome": { "onThisPage": "A wannan shafi" },
+      "exportMenu": {
+        "copyPage": "Kwafi shafi",
+        "copied": "An kwafa",
+        "copyPageMarkdown": "Kwafi shafi a matsayin Markdown",
+        "copyPageLink": "Kwafi hanyar shafi",
+        "copyPageLinkDescription": "Kwafi URL na wannan shafi zuwa allo",
+        "openInChatGPT": "Bude a ChatGPT",
+        "openInClaude": "Bude a Claude",
+        "openInGrok": "Bude a Grok",
+        "openInPerplexity": "Bude a Perplexity",
+        "askAboutPage": "Yi tambayoyi game da wannan shafi",
+        "reviewPrompt": "Duba abun cikin shafin Avana a kasa kuma ka amsa tambayoyi."
+      },
+      "docs": {
+        "sections": { "copilot": "Tambayi AI" },
+        "items": {
+          "aiIntroduction": "Gabatarwar AI",
+          "copilotProtocols": "Protocols da ake goyan baya",
+          "copilotPrompts": "Misalan prompt",
+          "copilotWorkflow": "Tsarin aikin wakili"
+        }
+      },
+      "footer": { "telegram": "Telegram" }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "a APR 5.5% ba tare da cire liquidity ko", "barin kuɗin ciniki ba."],
+        "subtitleDesktopLines": [null, "a APR 5.5% ba tare da cire liquidity ko barin kuɗin ciniki ba."]
+      }
+    }
+  },
+  "it": {
+    "common": {
+      "notFound": { "home": "Vai alla homepage" },
+      "blogChrome": { "onThisPage": "In questa pagina" },
+      "exportMenu": {
+        "copyPage": "Copia pagina",
+        "copied": "Copiato",
+        "copyPageMarkdown": "Copia pagina come Markdown",
+        "copyPageLink": "Copia link della pagina",
+        "copyPageLinkDescription": "Copia l'URL di questa pagina negli appunti",
+        "openInChatGPT": "Apri in ChatGPT",
+        "openInClaude": "Apri in Claude",
+        "openInGrok": "Apri in Grok",
+        "openInPerplexity": "Apri in Perplexity",
+        "askAboutPage": "Fai domande su questa pagina",
+        "reviewPrompt": "Esamina il contenuto di questa pagina Avana e rispondi alle domande."
+      },
+      "docs": {
+        "sections": { "copilot": "Chiedi all'IA" },
+        "items": {
+          "aiIntroduction": "Introduzione all'IA",
+          "copilotProtocols": "Protocolli supportati",
+          "copilotPrompts": "Esempi di prompt",
+          "copilotWorkflow": "Flusso dell'agente"
+        }
+      },
+      "nav": { "privacy": "Riservatezza" },
+      "footer": { "twitter": "Twitter" }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "al 5,5% APR senza prelevare liquidità o", "rinunciare alle commissioni di trading."],
+        "subtitleDesktopLines": [null, "al 5,5% APR senza prelevare liquidità o rinunciare alle commissioni di trading."]
+      }
+    }
+  },
+  "th": {
+    "common": {
+      "notFound": { "home": "ไปที่หน้าแรก" },
+      "blogChrome": { "onThisPage": "ในหน้านี้" },
+      "exportMenu": {
+        "copyPage": "คัดลอกหน้า",
+        "copied": "คัดลอกแล้ว",
+        "copyPageMarkdown": "คัดลอกหน้าเป็น Markdown",
+        "copyPageLink": "คัดลอกลิงก์หน้า",
+        "copyPageLinkDescription": "คัดลอก URL ของหน้านี้ไปยังคลิปบอร์ด",
+        "openInChatGPT": "เปิดใน ChatGPT",
+        "openInClaude": "เปิดใน Claude",
+        "openInGrok": "เปิดใน Grok",
+        "openInPerplexity": "เปิดใน Perplexity",
+        "askAboutPage": "ถามคำถามเกี่ยวกับหน้านี้",
+        "reviewPrompt": "ตรวจสอบเนื้อหาหน้า Avana ด้านล่างและตอบคำถาม"
+      },
+      "docs": {
+        "sections": { "copilot": "ถาม AI" },
+        "items": {
+          "aiIntroduction": "แนะนำ AI",
+          "copilotProtocols": "โปรโตคอลที่รองรับ",
+          "copilotPrompts": "ตัวอย่างพรอมต์",
+          "copilotWorkflow": "เวิร์กโฟลว์ของเอเจนต์"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "ที่ APR 5.5% โดยไม่ถอนสภาพคล่องหรือ", "สละค่าธรรมเนียมการเทรด"],
+        "subtitleDesktopLines": [null, "ที่ APR 5.5% โดยไม่ถอนสภาพคล่องหรือสละค่าธรรมเนียมการเทรด"]
+      }
+    }
+  },
+  "pl": {
+    "common": {
+      "notFound": { "home": "Przejdź do strony głównej" },
+      "blogChrome": { "onThisPage": "Na tej stronie" },
+      "theme": { "systemMode": "Systemowy" },
+      "exportMenu": {
+        "copyPage": "Kopiuj stronę",
+        "copied": "Skopiowano",
+        "copyPageMarkdown": "Kopiuj stronę jako Markdown",
+        "copyPageLink": "Kopiuj link do strony",
+        "copyPageLinkDescription": "Skopiuj adres URL tej strony do schowka",
+        "openInChatGPT": "Otwórz w ChatGPT",
+        "openInClaude": "Otwórz w Claude",
+        "openInGrok": "Otwórz w Grok",
+        "openInPerplexity": "Otwórz w Perplexity",
+        "askAboutPage": "Zadaj pytania o tę stronę",
+        "reviewPrompt": "Przejrzyj treść tej strony Avana i odpowiedz na pytania."
+      },
+      "docs": {
+        "sections": { "copilot": "Zapytaj AI" },
+        "items": {
+          "aiIntroduction": "Wprowadzenie do AI",
+          "copilotProtocols": "Obsługiwane protokoły",
+          "copilotPrompts": "Przykłady promptów",
+          "copilotWorkflow": "Przepływ agenta"
+        }
+      },
+      "footer": { "telegram": "Telegram" }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "przy 5,5% APR bez wycofywania płynności ani", "rezygnacji z opłat transakcyjnych."],
+        "subtitleDesktopLines": [null, "przy 5,5% APR bez wycofywania płynności ani rezygnacji z opłat transakcyjnych."]
+      }
+    }
+  },
+  "nl": {
+    "common": {
+      "notFound": { "home": "Naar homepage" },
+      "blogChrome": { "onThisPage": "Op deze pagina" },
+      "exportMenu": {
+        "copyPage": "Pagina kopiëren",
+        "copied": "Gekopieerd",
+        "copyPageMarkdown": "Pagina kopiëren als Markdown",
+        "copyPageLink": "Paginalink kopiëren",
+        "copyPageLinkDescription": "Kopieer de URL van deze pagina naar het klembord",
+        "openInChatGPT": "Openen in ChatGPT",
+        "openInClaude": "Openen in Claude",
+        "openInGrok": "Openen in Grok",
+        "openInPerplexity": "Openen in Perplexity",
+        "askAboutPage": "Stel vragen over deze pagina",
+        "reviewPrompt": "Bekijk de inhoud van deze Avana-pagina en beantwoord de vragen."
+      },
+      "docs": {
+        "sections": { "copilot": "Vraag AI" },
+        "items": {
+          "aiIntroduction": "AI-introductie",
+          "copilotProtocols": "Ondersteunde protocollen",
+          "copilotPrompts": "Promptvoorbeelden",
+          "copilotWorkflow": "Agentworkflow"
+        }
+      },
+      "nav": { "privacy": "Privacybeleid" },
+      "tags": { "product": "Productaanbod", "protocol": "Protocolstack" },
+      "footer": { "telegram": "Telegram" }
+    },
+    "meta": { "team": "Avana-team" },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "tegen 5,5% APR zonder liquiditeit op te nemen of", "handelskosten op te geven."],
+        "subtitleDesktopLines": [null, "tegen 5,5% APR zonder liquiditeit op te nemen of handelskosten op te geven."]
+      }
+    }
+  },
+  "he": {
+    "common": {
+      "notFound": { "home": "לדף הבית" },
+      "blogChrome": { "onThisPage": "בעמוד זה" },
+      "exportMenu": {
+        "copyPage": "העתק עמוד",
+        "copied": "הועתק",
+        "copyPageMarkdown": "העתק עמוד כ-Markdown",
+        "copyPageLink": "העתק קישור לעמוד",
+        "copyPageLinkDescription": "העתק את כתובת העמוד ללוח",
+        "openInChatGPT": "פתח ב-ChatGPT",
+        "openInClaude": "פתח ב-Claude",
+        "openInGrok": "פתח ב-Grok",
+        "openInPerplexity": "פתח ב-Perplexity",
+        "askAboutPage": "שאל שאלות על עמוד זה",
+        "reviewPrompt": "עיין בתוכן עמוד Avana למטה וענה על השאלות."
+      },
+      "docs": {
+        "sections": { "copilot": "שאל את הבינה המלאכותית" },
+        "items": {
+          "aiIntroduction": "מבוא לבינה מלאכותית",
+          "copilotProtocols": "פרוטוקולים נתמכים",
+          "copilotPrompts": "דוגמאות לפרומפטים",
+          "copilotWorkflow": "זרימת עבודה של הסוכן"
+        }
+      }
+    },
+    "home": {
+      "hero": {
+        "subtitleMobileLines": [null, "ב-5.5% APR בלי למשוך נזילות או", "לוותר על עמלות מסחר."],
+        "subtitleDesktopLines": [null, "ב-5.5% APR בלי למשוך נזילות או לוותר על עמלות מסחר."]
+      }
+    }
+  }
+}

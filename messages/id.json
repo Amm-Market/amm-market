@@ -78,7 +78,7 @@
     "notFound": {
       "title": "Halaman ini tidak tersedia.",
       "body": "Alamat mungkin salah atau halaman mungkin telah berpindah.",
-      "home": "Go to homepage",
+      "home": "Ke beranda",
       "faq": "Pertanyaan yang sering diajukan"
     },
     "sandboxNotice": "Sandbox data ditampilkan hanya untuk pratinjau. APYs, harga, dan hasil adalah ilustratif dan dapat berbeda dari kondisi pasar nyata.",
@@ -89,7 +89,7 @@
       "shareOnLinkedIn": "Bagikan di LinkedIn",
       "previousPost": "Postingan sebelumnya",
       "nextPost": "Postingan berikutnya",
-      "onThisPage": "On this page"
+      "onThisPage": "Di halaman ini"
     },
     "docs": {
       "previous": "Sebelumnya",
@@ -101,7 +101,8 @@
         "liquidation": "Kerangka Likuidasi",
         "integrations": "Integrasi yang Didukung",
         "safety": "Mekanisme Keamanan",
-        "legal": "Hukum & Kepatuhan"
+        "legal": "Hukum & Kepatuhan",
+        "copilot": "Tanya AI"
       },
       "items": {
         "overview": "Gambaran Umum",
@@ -133,7 +134,11 @@
         "bugBounty": "Hadiah Bug",
         "insuranceFunds": "Dana Asuransi",
         "securityDisclosures": "Pengungkapan Keamanan",
-        "legalDisclaimer": "Penafian Hukum"
+        "legalDisclaimer": "Penafian Hukum",
+        "aiIntroduction": "Pengantar AI",
+        "copilotProtocols": "Protokol yang didukung",
+        "copilotPrompts": "Contoh prompt",
+        "copilotWorkflow": "Alur kerja agen"
       }
     },
     "faqUi": {
@@ -164,6 +169,19 @@
       "darkMode": "Mode Gelap",
       "systemMode": "Sistem",
       "tapToChange": "Ketuk untuk mengubah"
+    },
+    "exportMenu": {
+      "copyPage": "Salin halaman",
+      "copied": "Disalin",
+      "copyPageMarkdown": "Salin halaman sebagai Markdown",
+      "copyPageLink": "Salin tautan halaman",
+      "copyPageLinkDescription": "Salin URL halaman ini ke papan klip",
+      "openInChatGPT": "Buka di ChatGPT",
+      "openInClaude": "Buka di Claude",
+      "openInGrok": "Buka di Grok",
+      "openInPerplexity": "Buka di Perplexity",
+      "askAboutPage": "Ajukan pertanyaan tentang halaman ini",
+      "reviewPrompt": "Tinjau konten halaman Avana di bawah dan jawab pertanyaannya."
     }
   },
   "meta": {
@@ -230,12 +248,12 @@
       "subtitle": "Terus dapatkan biaya perdagangan sambil membuka likuiditas dari posisi Uniswap, Curve, dan Balancer.",
       "subtitleMobileLines": [
         "Akses hingga 80% dari nilai Pool Likuiditas Anda",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "dengan APR 5,5% tanpa menarik likuiditas atau",
+        "mengorbankan biaya trading."
       ],
       "subtitleDesktopLines": [
         "Akses hingga 80% dari nilai Pool Likuiditas Anda dengan 5,5% APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "dengan APR 5,5% tanpa menarik likuiditas atau mengorbankan biaya trading."
       ],
       "primaryCta": "Coba Sandbox",
       "secondaryCta": "Baca dokumen"

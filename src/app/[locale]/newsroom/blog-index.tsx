@@ -234,7 +234,7 @@ export function BlogIndex({
                       <BookSpine spineColor={theme.spineColor} coverColor={theme.coverColor} />
                       <div className="relative z-10 flex items-start justify-between gap-4">
                         <span className={`text-[0.8rem] font-semibold uppercase tracking-[0.22em] ${theme.text}`}>
-                          {post.tag}
+                          {tagLabel(post.tag)}
                         </span>
                         <span className={`font-mono text-sm ${theme.number}`}>{getBookNumber(index)}</span>
                       </div>

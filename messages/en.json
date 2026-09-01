@@ -97,6 +97,19 @@
       "nextPost": "Next post",
       "onThisPage": "On this page"
     },
+    "exportMenu": {
+      "copyPage": "Copy page",
+      "copied": "Copied",
+      "copyPageMarkdown": "Copy page as Markdown",
+      "copyPageLink": "Copy page link",
+      "copyPageLinkDescription": "Copy this page URL to clipboard",
+      "openInChatGPT": "Open in ChatGPT",
+      "openInClaude": "Open in Claude",
+      "openInGrok": "Open in Grok",
+      "openInPerplexity": "Open in Perplexity",
+      "askAboutPage": "Ask questions about this page",
+      "reviewPrompt": "Review this Avana page and answer questions using the content below."
+    },
     "docs": {
       "previous": "Previous",
       "next": "Next",

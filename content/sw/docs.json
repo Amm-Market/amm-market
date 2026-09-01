@@ -43,7 +43,7 @@
   },
   "architecture/health-factor": {
     "meta": {
-      "title": "Health Factor",
+      "title": "health factor",
       "description": "Jinsi Avana inavyopima ikiwa akaunti inayoungwa mkono na LP ina dhamana ya kutosha kulipia deni lake."
     },
     "toc": [
@@ -69,7 +69,7 @@
       }
     ],
     "strings": [
-      "Health Factor",
+      "health factor",
       "Jinsi Avana inavyopima ikiwa akaunti inayoungwa mkono na LP ina dhamana ya kutosha kulipia deni lake.",
       "Muhtasari",
       "Hesabu",
@@ -259,7 +259,7 @@
       "Nafasi za ziada zilizoidhinishwa za LP zinaweza kuwekwa baadaye. Kila nafasi inathaminiwa peke yake kabla ya kuchangia kwa jumla ya uwezo.",
       "Wakopaji",
       "Watumiaji huingiliana na Borrow Spoke ili kuweka dhamana, kukopa, kurejesha na kudhibiti mkopo wao.",
-      "Borrow Spoke (Avana)",
+      "Spoke ya mkopo (Avana)",
       "Thamani nafasi za LP, hutekeleza ukaguzi wa afya, na kuratibu ufilisi wakati dhamana haitoi deni tena.",
       "Aave v4 Hub",
       "Ukwasi wa pamoja na safu ya uhasibu. Borrow Spoke huchota kutoka kwa hifadhi za Hub baada ya ukaguzi wa upande wa mazungumzo kupita.",
@@ -399,7 +399,7 @@
       "Kabla ya mkopo kuidhinishwa, Avana hukagua kama akaunti yako inaendelea kuwa na afya baada ya deni jipya. Sababu ya afya ni kurekebishwa dhamana thamani kugawanywa na deni bora. Thamani ya dhamana iliyorekebishwa tayari inajumuisha hesabu ya LP, vipengele vya dhamana na mapunguzo ya thamani zinazoweza kurejeshwa.",
       "healthFactor = adjustedCollateralValue / outstandingDebt",
       "Ikiwa afya iko chini ya kikomo cha kufilisi, nafasi hiyo itastahiki kufutwa. Tazama",
-      "Health Factor",
+      "health factor",
       "Hisa za deni:",
       "Mchoro wa Hub:",
       "Borrow Spoke huomba kipengee kutoka kwa Hub baada tu ya mzungumzaji kumaliza dhamana, uwezo na ukaguzi wa afya.",
@@ -514,7 +514,7 @@
       "akaunti bado hupitisha ukaguzi, lakini bafa ni nyembamba. Zingatia kulipa, kuongeza dhamana, au kupunguza udhihirisho.",
       "Inaweza kuliqidate:",
       "afya imevuka kizingiti cha kufilisi. Mfumo wa kufilisi unaweza kuchukua nafasi.",
-      "Health Factor",
+      "health factor",
       "Rejesha sehemu ya deni ili kujenga upya bafa",
       "Ongeza dhamana zaidi ya LP iliyoidhinishwa kwa Borrow Spoke sawa",
       "Dai ada zilizoongezwa wakati akaunti bado inapitisha ukaguzi wa afya baada ya dai",
@@ -879,7 +879,7 @@
       },
       {
         "id": "oracle-interface",
-        "title": "Oracle Interface"
+        "title": "Kiolesura cha oracle"
       },
       {
         "id": "multi-layer-architecture",
@@ -906,7 +906,7 @@
       "Oracle za Bei",
       "Jinsi bei ya Avana Oracle inavyoweka dhamana ya LP kupitia milisho ya nje, urekebishaji wa nafasi maalum, na mapunguzo ya thamani inayoweza kurejeshwa.",
       "Muhtasari",
-      "Oracle Interface",
+      "Kiolesura cha oracle",
       "Usanifu wa Tabaka nyingi",
       "Ushughulikiaji Maalum wa DEX",
       "Uhesabuji wa TWAP",
@@ -967,14 +967,14 @@
       "Maelezo",
       "Uhesabuji wa TWAP kwa DEX",
       "TWAP ni pembejeo za uthibitishaji. Wanakaa kando ya bei za mali ya nje na uundaji upya wa nafasi ili kuangalia kama hali ya pool inayozingatiwa inaambatana na njia inayoaminika ya kupumzika. Wanasaidia kukataa upotovu wa tuhuma au wa muda mfupi, lakini hawabadilishi mfano wa oracle pana wao wenyewe.",
-      "Uniswap V2 & SushiSwap",
+      "Uniswap V2 na SushiSwap",
       "Uniswap V3",
       "Ukaguzi unaotambua nafasi hujumuisha kiwango cha tiki, usambazaji wa ukwasi, na ada zilizokusanywa ili itifaki iweze kuthibitisha udhihirisho wa tokeni ulioharibika wa kila NFT LP badala ya kutibu NFT kama kisanduku cheusi.",
       "Balancer",
       "Uchunguzi wa ishara zilizopimwa huunganishwa na uzani wa pool ili kudhibitisha migawanyiko ya hesabu ya mali nyingi kabla ya chumba cha ndani kutoa dhamana ya kihafidhina.",
       "Curve",
       "Uchunguzi wa Stablecoin hutumiwa hasa kugundua milisho iliyochakaa, kuteremka kwa hifadhi, na hitilafu za muda mfupi huku bei za nje zikisalia kuwa msingi mkuu.",
-      "Trader Joe & Aerodrome",
+      "Trader Joe na Aerodrome",
       "Uchunguzi wa bei uliojumlishwa katika kipindi cha dakika 30-60 husaidia kuthibitisha hali ya pool la maji yenye ubora wa chini na kupinga udukuzi wa muamala mmoja wakati wa ukaguzi wa dhamana.",
       "Vizingiti vya Kupotoka",
       "Mikopo mipya au ufilisi unaweza kusitishwa wakati data ya uthibitishaji inayotokana na hifadhi inaposogezwa mbali sana na bei za marejeleo ya nje zaidi.",
@@ -985,7 +985,7 @@
       "Mfiduo hudhibitiwa na familia ya LP, kina cha pool, na utata wa dhamana ili masoko nyembamba kupokea vikomo vikali vya kukopa.",
       "Kukata nywele kwa kurejesha",
       "Oracle inapunguza thamani ya kinadharia ya LP kwa hasara ya kudumu, kuteleza kwa utulivu, na kusisitiza mawazo ya kufilisi kabla ya kutolewa kwa nguvu yoyote ya kukopa.",
-      "Oracle Sentinel",
+      "Mlinzi wa oracle",
       "Oracle Sentinel hutazama pembejeo za afya na uthibitishaji na inaweza kusababisha tabia mbadala wakati data ni ya zamani, imeathiriwa, au haiendani na ukaguzi wa hali ya msimamo.",
       "Vigezo vya Oracle vinavyoweza kusanidiwa",
       "Mipangilio ya oracle maalum ya pool imesanidiwa kwa ishara kupitia",
@@ -1109,7 +1109,7 @@
       "Muundo ambapo mtaji wa pamoja unaishi katika Hub huku mantiki mahususi ya dhamana ikiwa imetengwa katika spika. Avana hutumia modeli hii kwa sababu dhamana ya LP inahitaji tathmini mahususi ya DEX na tabia ya kufilisi.",
       "Njia ya Uondoaji",
       "Nafasi ya ukwasi kutoka kwa AMM inayotumika. Kulingana na DEX, inaweza kuwa tokeni ya LP inayoweza kuvumbuliwa, kiwango cha kioevu kilichokolea NFT, au umbizo lingine lililoidhinishwa la kushiriki pool.",
-      "Collateral Factor",
+      "Kipengele cha dhamana",
       "Sehemu ya thamani ya dhamana ya USD ambayo inaweza kuhesabiwa kuelekea nguvu za kukopa. Katika masoko ya LP, hii inatumika katika kiwango cha nafasi badala ya kuzungumza kwa ujumla.",
       "Uwezo wa Kukopa",
       "Kiasi ambacho mtumiaji anaweza kukopa ndani ya Borrow Spoke baada ya kila nafasi iliyowekwa ya LP kuthaminiwa, kurekebishwa kwa hatari na kuongezwa kwa jumla ya uwezo wa mtumiaji.",
@@ -1125,7 +1125,7 @@
       "Kipengele mahususi cha hatari kilichowekwa juu ya masharti ya msingi ya kukopa ili kuonyesha wasifu wa dhamana wa LP unaofadhiliwa.",
       "Sababu ya Hifadhi",
       "Sehemu ya uchumi wa itifaki au mtiririko wa faida uliotengwa kwa ajili ya mfumo badala ya kupitishwa kabisa kwa wasambazaji wa ukwasi.",
-      "Health Factor",
+      "health factor",
       "Uwiano kati ya thamani ya dhamana iliyorekebishwa na deni ambalo halijalipwa ndani ya Borrow Spoke. Inaposhuka sana, nafasi hiyo inakaribia ustahiki wa kufilisishwa.",
       "Mchakato wa kulipa deni dhidi ya nafasi mbaya inayoungwa mkono na LP, kufungua dhamana ya kutosha ili kurejesha deni, na kurejesha thamani yoyote iliyobaki baada ya kulipwa.",
       "Bonasi ya Uondoaji",
@@ -1156,8 +1156,8 @@
       "Ulinzi wa kiwango cha mkataba unaozuia mtiririko wa kazi unaobadilisha hali kuingizwa tena kabla ya utekelezaji wa kwanza kukamilika.",
       "LP & Dhamana",
       "Deni na Riba",
-      "Liquidation",
-      "Oracle & Transform",
+      "Ukomeshaji",
+      "Oracle na ubadilishaji",
       "Hakuna Ushauri wa Uwekezaji:",
       "Avana ni itifaki ya programu. Hati hizi hazijumuishi ushauri wa uwekezaji.",
       "Hatari ya Kupoteza:",
@@ -1184,7 +1184,7 @@
       },
       {
         "id": "oracle-valuation",
-        "title": "Oracle & Valuation"
+        "title": "Oracle na tathmini"
       },
       {
         "id": "borrowing-process",
@@ -1204,7 +1204,7 @@
       "Elewa dhana za msingi za Avana, ikiwa ni pamoja na tabia ya dhamana ya LP, uthamini wa kihafidhina, ukopaji wa Hub, na ufilisi.",
       "Ufahamu wa Msingi",
       "Mfano wa Kukopa",
-      "Oracle & Valuation",
+      "Oracle na tathmini",
       "Uwezo wa Kukopa",
       "Afya & Ufilisi",
       "Matibabu ya Ada",
@@ -1756,7 +1756,7 @@
   },
   "safety/bug-bounty": {
     "meta": {
-      "title": "Bug Bounty",
+      "title": "Zawadi ya Hitilafu",
       "description": "Mawanda ya ufichuzi wa Fadhila ya Mdudu ya Avana, nyuso za hatari za dhamana za LP, na falsafa ya ukali wa athari za kiuchumi."
     },
     "toc": [
@@ -1774,7 +1774,7 @@
       }
     ],
     "strings": [
-      "Bug Bounty",
+      "Zawadi ya Hitilafu",
       "Mawanda ya ufichuzi wa Fadhila ya Mdudu ya Avana, nyuso za hatari za dhamana za LP, na falsafa ya ukali wa athari za kiuchumi.",
       "Muhtasari",
       "Upeo & Usanifu wa Mfumo",
@@ -1905,7 +1905,7 @@
       "Jaribu misukosuko ya soko, kesi za ukingo wa oracle, na hitilafu za uondoaji wa njia, si tu tabia ya mkataba wa kiwango cha kitengo.",
       "Njia za ukaguzi wa nje",
       "Ukaguzi rasmi na",
-      "Bug Bounty",
+      "Zawadi ya Hitilafu",
       "mpango lazima wote kukaa hai. Moja haibadilishi nyingine.",
       "• Uhasibu wa Onchain na malipo ya ufilisi yanapaswa kuwa ya kuamua mara yanapoanzishwa.",
       "• Vyanzo vya Oracle, adapta za DEX, na miundomsingi ya kifilisi inayofanya kazi ni tegemezi kutoka nje na inapaswa kufuatiliwa hivyo.",

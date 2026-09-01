@@ -1,0 +1,105 @@
+{
+  "faq.json": {
+    "Health & Liquidation": {
+      "de": "Gesundheit und Liquidation"
+    },
+    "GHO Stablecoin": {
+      "de": "GHO-Stablecoin"
+    },
+    "Automation Features": {
+      "de": "Automatisierungsfunktionen"
+    }
+  },
+  "legal.json": {
+    "Avana,": {
+      "bn": "অভানা,",
+      "fa": "آوانا،",
+      "fr": "Avana,",
+      "ha": "Avana,",
+      "he": "Avana,",
+      "hi": "एवाना,",
+      "id": "Avana,",
+      "it": "Avana,",
+      "nl": "Avana,",
+      "pt": "Avana,",
+      "sw": "Avana,",
+      "tr": "Avana,",
+      "uk": "Avana,",
+      "vi": "Avana,",
+      "zh-TW": "Avana、"
+    },
+    "support@avana.cc": {
+      "ar": "support@avana.cc",
+      "bn": "support@avana.cc",
+      "de": "support@avana.cc",
+      "fa": "support@avana.cc",
+      "fr": "support@avana.cc",
+      "ha": "support@avana.cc",
+      "he": "support@avana.cc",
+      "hi": "support@avana.cc",
+      "it": "support@avana.cc",
+      "ja": "support@avana.cc",
+      "ko": "support@avana.cc",
+      "nl": "support@avana.cc",
+      "ru": "support@avana.cc",
+      "sw": "support@avana.cc",
+      "th": "support@avana.cc",
+      "uk": "support@avana.cc",
+      "ur": "support@avana.cc",
+      "vi": "support@avana.cc"
+    },
+    "legal@avana.cc": {
+      "ar": "legal@avana.cc",
+      "bn": "legal@avana.cc",
+      "de": "legal@avana.cc",
+      "es": "legal@avana.cc",
+      "fa": "legal@avana.cc",
+      "ha": "legal@avana.cc",
+      "he": "legal@avana.cc",
+      "id": "legal@avana.cc",
+      "it": "legal@avana.cc",
+      "ja": "legal@avana.cc",
+      "ko": "legal@avana.cc",
+      "nl": "legal@avana.cc",
+      "pt": "legal@avana.cc",
+      "sw": "legal@avana.cc",
+      "th": "legal@avana.cc",
+      "tr": "legal@avana.cc",
+      "uk": "legal@avana.cc",
+      "ur": "legal@avana.cc",
+      "vi": "legal@avana.cc"
+    },
+    "2. Avana Protocol": {
+      "ar": "٢. بروتوكول Avana",
+      "bn": "২. Avana প্রোটোকল",
+      "fa": "۲. پروتکل Avana"
+    },
+    "privacy@avana.cc": {
+      "bn": "privacy@avana.cc",
+      "fa": "privacy@avana.cc",
+      "he": "privacy@avana.cc",
+      "it": "privacy@avana.cc",
+      "nl": "privacy@avana.cc",
+      "uk": "privacy@avana.cc",
+      "ur": "privacy@avana.cc"
+    },
+    "\") and Avana (\"": {
+      "bn": "\") এবং Avana (\""
+    },
+    "Avana Protocol": {
+      "fa": "پروتکل Avana"
+    },
+    "AVANA PROTOCOL": {
+      "ha": "BƘA'IDAR AVANA"
+    },
+    "Feedback": {
+      "it": "Riscontri"
+    },
+    "developer documentation": {
+      "nl": "ontwikkelaarsdocumentatie"
+    },
+    "Testnet": {
+      "nl": "Testnet"
+    }
+  }
+}

@@ -78,7 +78,7 @@
     "notFound": {
       "title": "Ukurasa huu haupatikani.",
       "body": "Anwani inaweza kuwa si sahihi au ukurasa unaweza kuwa umehamia.",
-      "home": "Go to homepage",
+      "home": "Nenda kwenye ukurasa wa mwanzo",
       "faq": "Maswali yanayoulizwa mara kwa mara"
     },
     "sandboxNotice": "Sandbox data imeonyeshwa kwa ajili ya awali tu. APYs, bei, na mapato ni ya mfano na yanaweza kutofautiana na hali halisi za soko.",
@@ -89,7 +89,7 @@
       "shareOnLinkedIn": "Shiriki kwenye LinkedIn",
       "previousPost": "Chapisho lililotangulia",
       "nextPost": "Chapisho lijalo",
-      "onThisPage": "On this page"
+      "onThisPage": "Kwenye ukurasa huu"
     },
     "docs": {
       "previous": "Iliyopita",
@@ -101,7 +101,8 @@
         "liquidation": "Mfumo wa Utoaji Mali",
         "integrations": "Uingizaji wa Msaada",
         "safety": "Vifaa vya Usalama",
-        "legal": "Kisheria na Uzingatiaji"
+        "legal": "Kisheria na Uzingatiaji",
+        "copilot": "Uliza AI"
       },
       "items": {
         "overview": "Muhtasari",
@@ -133,7 +134,11 @@
         "bugBounty": "Zawadi ya Hitilafu",
         "insuranceFunds": "Fondi za Bima",
         "securityDisclosures": "Ufadhili wa Usalama",
-        "legalDisclaimer": "Tangazo la Kisheria"
+        "legalDisclaimer": "Tangazo la Kisheria",
+        "aiIntroduction": "Utangulizi wa AI",
+        "copilotProtocols": "Itifaki zinazotumika",
+        "copilotPrompts": "Mifano ya prompt",
+        "copilotWorkflow": "Mtiririko wa wakala"
       }
     },
     "faqUi": {
@@ -164,6 +169,19 @@
       "darkMode": "Hali ya giza",
       "systemMode": "Mfumo",
       "tapToChange": "Gusa kubadilisha"
+    },
+    "exportMenu": {
+      "copyPage": "Nakili ukurasa",
+      "copied": "Imenakiliwa",
+      "copyPageMarkdown": "Nakili ukurasa kama Markdown",
+      "copyPageLink": "Nakili kiungo cha ukurasa",
+      "copyPageLinkDescription": "Nakili URL ya ukurasa huu kwenye ubao wa kunakili",
+      "openInChatGPT": "Fungua katika ChatGPT",
+      "openInClaude": "Fungua katika Claude",
+      "openInGrok": "Fungua katika Grok",
+      "openInPerplexity": "Fungua katika Perplexity",
+      "askAboutPage": "Uliza maswali kuhusu ukurasa huu",
+      "reviewPrompt": "Kagua maudhui ya ukurasa wa Avana hapa chini na ujibu maswali."
     }
   },
   "meta": {
@@ -230,12 +248,12 @@
       "subtitle": "Endelea kupata fedha za kibiashara wakati unafungua fedha taslimu kutoka nafasi za Uniswap, Curve, na Balancer.",
       "subtitleMobileLines": [
         "Pata upo hadi 80% ya thamani ya Ziwa lako la Uwezekano",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "kwa APR 5.5% bila kutoa ukwasi au",
+        "kuacha ada za biashara."
       ],
       "subtitleDesktopLines": [
         "Pata hadi 80% ya thamani ya Maziwa Yako ya Usalama kwa 5.5% APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "kwa APR 5.5% bila kutoa ukwasi au kuacha ada za biashara."
       ],
       "primaryCta": "Jaribu Sandbox",
       "secondaryCta": "Soma nyaraka"

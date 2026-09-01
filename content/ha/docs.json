@@ -43,7 +43,7 @@
   },
   "architecture/health-factor": {
     "meta": {
-      "title": "Health Factor",
+      "title": "health factor",
       "description": "Yadda Avana ke auna ko asusun tallafi na LP yana da isassun lamuni don tallafawa bashinsa."
     },
     "toc": [
@@ -69,7 +69,7 @@
       }
     ],
     "strings": [
-      "Health Factor",
+      "health factor",
       "Yadda Avana ke auna ko asusun tallafi na LP yana da isassun lamuni don tallafawa bashinsa.",
       "Bayani",
       "Lissafi",
@@ -259,7 +259,7 @@
       "Ana iya adana ƙarin matsayi na LP da aka amince da su daga baya. Kowane matsayi yana da ƙima da kansa kafin ya ba da gudummawa ga yawan iya aiki.",
       "Masu bashi",
       "Masu amfani suna hulɗa tare da Borrow Spoke don saka hannun jari, aro, biya, da sarrafa lamuni.",
-      "Borrow Spoke (Avana)",
+      "Spoke na bashi (Avana)",
       "Ƙimar matsayi na LP, yana tilasta duba lafiyar lafiya, da kuma daidaita yawan liquidation lokacin da haɗin gwiwa ya daina tallafawa bashin.",
       "Aave v4 Hub",
       "Shared liquidity da lissafin kudi Layer. Borrow Spokes sun zana daga ajiyar Hub bayan wucewa ta gefen magana.",
@@ -279,7 +279,7 @@
       "Duba lafiya:",
       "Hub yana karanta bayanan haɗin gwiwa ta hanyar",
       "getCollateralData",
-      "Liquidation:",
+      "Share kamfani:",
       "Hub na iya kira",
       "handleLiquidation",
       "Sashi",
@@ -309,7 +309,7 @@
       },
       {
         "id": "interface-vs-protocol",
-        "title": "Interface vs Protocol"
+        "title": "Fuskar da itifaki"
       },
       {
         "id": "disclosure",
@@ -328,7 +328,7 @@
       "Kuɗin dandamali",
       "Ta yaya kuɗin haɗin yanar gizo akan gaba na Avana ya bambanta da tsarin aro na tattalin arziki.",
       "Bayani",
-      "Interface vs Protocol",
+      "Fuskar da itifaki",
       "Bayyanawa",
       "Amfanin Baitulmali",
       "Bayanin haɗawa",
@@ -399,7 +399,7 @@
       "Kafin a amince da lamuni, Avana yana bincika cewa asusun ku ya kasance lafiya bayan sabon bashin. Kiwon lafiya yana daidaita ƙimar lamuni da aka raba ta fitaccen bashi. Ƙimar da aka daidaita ta riga ta haɗa da ƙimar LP, abubuwan haɗin gwiwa, da rangwamen ƙima.",
       "healthFactor = adjustedCollateralValue / outstandingDebt",
       "Idan kiwon lafiya da dama a kasa da liquidation iyaka, da matsayi ya zama m ga liquidation. Duba",
-      "Health Factor",
+      "health factor",
       "Rabon bashi:",
       "Zane Hub:",
       "Borrow Spoke yana buƙatar kadari daga Hub kawai bayan magana ta ƙare haɗin gwiwa, iyawa, da duba lafiyar lafiya.",
@@ -514,7 +514,7 @@
       "har yanzu asusun yana wucewa cak, amma buffer yana sirara. Yi la'akari da biya, ƙara jingina, ko rage fallasa.",
       "Za a iya liquidation:",
       "lafiya ya ketare iyakar liquidation. Tsarin liquidation zai iya ɗauka.",
-      "Health Factor",
+      "health factor",
       "Biya wani ɓangare na bashin don sake gina buffer",
       "Ƙara ƙarin amincewar LP zuwa Borrow Spoke guda ɗaya",
       "Yi da'awar tara kudade lokacin da asusun har yanzu ya wuce gwajin lafiya bayan da'awar",
@@ -879,11 +879,11 @@
       },
       {
         "id": "oracle-interface",
-        "title": "Oracle Interface"
+        "title": "Fuskar oracle"
       },
       {
         "id": "multi-layer-architecture",
-        "title": "Multi-Layer Architecture"
+        "title": "Tsarin gini mai yawa"
       },
       {
         "id": "dex-handling",
@@ -906,8 +906,8 @@
       "Oracle na Farashi",
       "Ta yaya Avana Oracle farashin LP ta hanyar ciyarwar waje, ƙayyadaddun gyare-gyaren matsayi, da rangwamen ƙima.",
       "Bayani",
-      "Oracle Interface",
-      "Multi-Layer Architecture",
+      "Fuskar oracle",
+      "Tsarin gini mai yawa",
       "DEX-Takamaiman Gudanarwa",
       "Farashin TWAP",
       "Rigakafin Tsaro & Manufa",
@@ -963,7 +963,7 @@
       "Ƙimar LP tsari ne da aka tsara maimakon karantawa tabo guda ɗaya. Hanyar baka tana tafiya ta matakai masu zuwa:",
       "DEX daban-daban suna fallasa sassa daban-daban na jihohi, kuma oracle yana amfani da waɗancan abubuwan don sake gina matsayi da tabbatar da farashi. Ba a karɓar bayanan da aka samo daga pool a makance azaman alamar haɗin kai kai tsaye.",
       "DEX / LP Nau'in",
-      "Oracle Source",
+      "Tushen oracle",
       "Bayanai",
       "Ƙididdigar TWAP ta DEX",
       "TWAPs sune abubuwan tabbatarwa. Suna zaune kusa da farashin kadari na waje da ƙayyadaddun matsayi na sake ginawa don bincika ko yanayin pool da ake lura da shi ya yi daidai da ingantaccen hanyar rashin iska. Suna taimakawa wajen ƙin murdiya na zato ko gajere, amma ba sa maye gurbin mafi girman samfurin baka da kansu.",
@@ -985,7 +985,7 @@
       "Iyalin LP ne ke rufe fallasa, zurfin pool, da kuma hadaddun lamurra don haka ƙananan kasuwanni suna karɓar madaidaicin iyakoki.",
       "Gyaran Gashi",
       "Oracle yana ragi darajar LP na ka'idar don asarar da ba ta dawwama, zamewar iska, da matsananciyar zato ta liquidation kafin a ba da ikon lamuni.",
-      "Oracle Sentinel",
+      "Tsaron oracle",
       "Oracle Sentinel Watches yana ciyar da lafiya da abubuwan tabbatarwa kuma yana iya haifar da halayen koma baya lokacin da bayanai suka lalace, sun lalace, ko kuma basu dace ba tare da duban matsayi-jihar.",
       "Ma'auni na Oracle masu daidaitawa",
       "Takamaiman Pool-takamaiman oracle saituna an saita ta kowace alama ta hanyar",
@@ -999,7 +999,7 @@
       "Chainlink abinci don alamar alama",
       "maxFeedAge",
       "Matsakaicin shekarun yarda don ciyarwar Chainlink",
-      "Pool",
+      "Tafki",
       "Takamaiman pool DEX (Uniswap V3, Balancer, Curve, da sauransu)",
       "twapSeconds",
       "Taga don lissafin TWAP",
@@ -1109,7 +1109,7 @@
       "Zane inda babban birnin tarayya ke zaune a cikin Hub yayin da takamaiman dabaru na haɗin gwiwa ke ware a cikin magana. Avana yana amfani da wannan ƙirar saboda LP yana buƙatar takamaiman ƙimar ƙimar DEX da halayyar liquidation.",
       "Node Liquidation",
       "Matsayin liquidity daga AMM mai goyan baya. Ya danganta da DEX, yana iya zama alamar LP mai banƙyama, mai concentrated-liquidity NFT, ko wani tsarin raba-liquidity da aka amince.",
-      "Collateral Factor",
+      "Factorin tsaro",
       "Ƙimar dalar Amurka wacce za ta iya ƙidaya zuwa ikon aro. A cikin kasuwannin LP, ana amfani da wannan a matakin matsayi maimakon magana gaba ɗaya.",
       "Ƙarfin aro",
       "Adadin da mai amfani zai iya aro a cikin Borrow Spoke bayan kowane matsayi na LP ya kasance mai daraja, daidaita-hadari, kuma ya kara zuwa yawan adadin mai amfani.",
@@ -1121,11 +1121,11 @@
       "Masu karbar bashi suna biyan bashi. Yana nuna yanayin Hub da aka raba da kuma takamaiman abubuwan haɗari na LP.",
       "Yawan Amfani",
       "Matsakaicin adadin kuɗin aro dangane da samuwa da ake samu a cikin babban Layer na Hub mai dacewa.",
-      "Risk Premium",
+      "Karin haɗari",
       "Ƙimar ƙayyadaddun ƙayyadaddun ƙayyadaddun ƙayyadaddun ƙayyadaddun ƙayyadaddun ƙayyadaddun ƙayyadaddun ƙayyadaddun ƙayyadaddun ƙayyadaddun ƙayyadaddun ƙayyadaddun rance don yin la'akari da bayanin martaba na LP da ake ba da kuɗi.",
-      "Reserve Factor",
+      "Factorin ajiya",
       "Bangaren tattalin arziki na yarjejeniya ko riba da aka tanada don tsarin maimakon wucewa gaba ɗaya ga masu samar da liquidity.",
-      "Health Factor",
+      "health factor",
       "Rabo tsakanin gyare-gyaren ƙimar jingina da bashi mai ban mamaki a cikin Borrow Spoke. Lokacin da ya faɗi ƙasa kaɗan, matsayin yana kusanci cancantar liquidation.",
       "Tsarin biyan bashi a kan matsayi mara kyau na LP mai goyan baya, ƙaddamar da isassun lamuni don maido da warwarewa, da dawo da duk wani ragowar darajar bayan sulhu.",
       "Kyautar Liquidation",
@@ -1156,7 +1156,7 @@
       "Kariyar matakin kwangila wanda ke hana sake shigar da tsarin aiki na jihar kafin a kammala kisa na farko.",
       "LP & Lantarki",
       "Bashi & Riba",
-      "Liquidation",
+      "Rufi",
       "Oracle & Sauya",
       "Babu Shawarar Zuba Jari:",
       "Avana yarjejeniya ce ta software. Wannan takaddun ba ya zama shawarar saka hannun jari ba.",
@@ -1176,7 +1176,7 @@
     "toc": [
       {
         "id": "core-insight",
-        "title": "Core Insight"
+        "title": "Babban fahimta"
       },
       {
         "id": "user-flow",
@@ -1202,7 +1202,7 @@
     "strings": [
       "Muhimman Ra'ayoyi",
       "Fahimtar mahimman ra'ayoyin da ke bayan Avana, gami da halayen haɗin kai na LP, ƙimar ra'ayin mazan jiya, aro na Hub, da kuma liquidation.",
-      "Core Insight",
+      "Babban fahimta",
       "Samfurin Lamuni",
       "Oracle & Kima",
       "Ƙarfin aro",
@@ -1426,7 +1426,7 @@
       },
       {
         "id": "multi-position-account",
-        "title": "Multi-Position Account"
+        "title": "Asusun matsayi da yawa"
       },
       {
         "id": "edge-cases",
@@ -1444,7 +1444,7 @@
       "Misalin LP mai ƙarfi",
       "Misalin Maɗaukaki Mai Liquidity",
       "Liquidation NFT",
-      "Multi-Position Account",
+      "Asusun matsayi da yawa",
       "Matsalolin Gefe",
       "Taƙaitaccen bayani",
       "Matsayin na iya zama mafi yawa gefe ɗaya ta hanyar lokacin farawa liquidation, musamman ga yawan liquidation mai yawa.",
@@ -1643,7 +1643,7 @@
       "Matsayin Jiha",
       "Rarraba Sarrafa",
       "Model mai aiki",
-      "Liquidation Design",
+      "Zanen Rushewa",
       "Yadda shigar liquidation liquidation, kame vault, da sulhu na LP ke raba tsakanin Aave da Avana.",
       "Aave shine tsarin da ke yanke shawarar lokacin da za'a iya liquidation, amma bai san yadda za'a daidaita LP ba. Avana yana amfani da Aave don lissafin bashi, bincikar lafiya, da wurin shigar liquidation, sannan ya ɗauki sama don warware ainihin matsayin da ke bayan jinginar vault.",
       "Mahimmin ƙaƙƙarfan ƙira shine cewa ra'ayoyi biyu na haɗin gwiwa dole ne su kasance cikin layi ɗaya. Aave yana ganin ma'auni na ERC-20 vault, yayin da Avana ke bibiyar matsayin LP wanda a zahiri ke goyan bayan wannan ma'auni. Liquidation ya kasance mai sauti kawai idan ƙwace wakilcin vault koyaushe yana kaiwa ga madaidaiciyar hanyar sulhu ta LP.",
@@ -1756,7 +1756,7 @@
   },
   "safety/bug-bounty": {
     "meta": {
-      "title": "Bug Bounty",
+      "title": "Lambar Ladabi ga Kwari",
       "description": "Avana Bug Bounty alhakin bayyana ikon iyawarsa, LP-haɗarin haɗin kai, da falsafar tsananin tasirin tattalin arziki."
     },
     "toc": [
@@ -1774,7 +1774,7 @@
       }
     ],
     "strings": [
-      "Bug Bounty",
+      "Lambar Ladabi ga Kwari",
       "Avana Bug Bounty alhakin bayyana ikon iyawarsa, LP-haɗarin haɗin kai, da falsafar tsananin tasirin tattalin arziki.",
       "Bayani",
       "Girma & Tsarin Gine-gine",
@@ -1864,7 +1864,7 @@
       },
       {
         "id": "core-contract-surfaces",
-        "title": "Core Contract Surfaces"
+        "title": "Samanin kwangilolin asali"
       },
       {
         "id": "trust-boundaries",
@@ -1881,7 +1881,7 @@
       "Bayani",
       "Kalubalen Tsaro",
       "Multi-Layer Tsaro",
-      "Core Contract Surfaces",
+      "Samanin kwangilolin asali",
       "Amincewa Iyakoki",
       "Shirye-shiryen Audit",
       "Borrow Spoke dabaru",
@@ -1905,7 +1905,7 @@
       "Gwaji girgiza kasuwa, Oracle baki lokuta, da liquidation routing kasawa, ba kawai naúrar-matakin kwangila hali.",
       "Tashoshin bita na waje",
       "Bincika na yau da kullun da kuma",
-      "Bug Bounty",
+      "Lambar Ladabi ga Kwari",
       "Ya kamata shirin duka su kasance masu aiki. Daya baya maye gurbin daya.",
       "• Tattalin Arziki na Onchain da sasantawa ya kamata su kasance masu ƙima da zarar an jawo.",
       "• Maɓuɓɓukan Oracle, adaftar DEX, da kayan aikin liquidation mai aiki sune abubuwan dogaro na waje kuma yakamata a kula dasu kamar haka.",
@@ -2009,7 +2009,7 @@
       "Rarraba Rawar Matsala",
       "Tsarin yana ba da shawarwari, bita, da tsare gaggawa ga 'yan wasan kwaikwayo daban-daban don kada wani bangare ya mallaki cikakkiyar hanyar ita kadai.",
       "Takurawa Kisa",
-      "Routine risk changes execute only when they remain inside predefined policy bounds and pass validation checks.",
+      "Canje-canjen haɗari na yau da kullum suna aiwatuwa kawai lokacin da suka kasance a cikin iyakokin manufofi da aka ayyana kuma sun wuce binciken tabbatarwa.",
       "Daidaiton Jama'a",
       "Sabuntawar da aka bayyana a bainar jama'a yakamata ya zama sabuntawa iri ɗaya wanda a zahiri ke layi don aiwatarwa.",
       "Spoke Fadakarwa",
@@ -2037,7 +2037,7 @@
       "Sanarwa Jama'a",
       "Mai Haɗarin Haɗari ya buga canjin da aka yi niyya, dalilin da yasa ake buƙatarsa, da kuma iyakar da ake sa ran zai shafa.",
       "Mai ƙaddamar da haɗarin yana sanya canjin da aka tsara zuwa hanyar aiwatar da tsarin.",
-      "Framework checks confirm that the update stays inside predefined constraints and approved policy bounds.",
+      "Binciken tsarin yana tabbatar da cewa sabuntawa tana kasancewa a cikin iyakokin da aka ayyana da iyakokin manufofi da aka amince da su.",
       "Idan tabbatarwa ya wuce, canjin zai shiga taga kulle lokaci maimakon aiwatarwa nan da nan.",
       "Mai gadi Sharhi",
       "A lokacin kulle-kulle, mai gadi mai haɗari yana duba ainihin kayan aikin da aka yi layi kuma zai iya soke shi idan an buƙata.",

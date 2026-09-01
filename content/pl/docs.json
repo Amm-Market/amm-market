@@ -1,7 +1,7 @@
 {
   "architecture/collateral-factors": {
     "meta": {
-      "title": "Collateral Factors",
+      "title": "Czynniki zabezpieczenia",
       "description": "Jak collateral factors zamieniają wartość pozycji LP w zdolność pożyczkową wewnątrz Borrow Spoke."
     },
     "toc": [
@@ -23,7 +23,7 @@
       }
     ],
     "strings": [
-      "Collateral Factors",
+      "Czynniki zabezpieczenia",
       "Jak collateral factors zamieniają wartość pozycji LP w zdolność pożyczkową wewnątrz Borrow Spoke.",
       "Przegląd",
       "Jak to działa",
@@ -43,7 +43,7 @@
   },
   "architecture/health-factor": {
     "meta": {
-      "title": "Health Factor",
+      "title": "health factor",
       "description": "Jak Avana mierzy, czy konto zabezpieczone LP ma wystarczające zabezpieczenie, by wspierać swój dług."
     },
     "toc": [
@@ -69,7 +69,7 @@
       }
     ],
     "strings": [
-      "Health Factor",
+      "health factor",
       "Jak Avana mierzy, czy konto zabezpieczone LP ma wystarczające zabezpieczenie, by wspierać swój dług.",
       "Przegląd",
       "Obliczanie",
@@ -79,7 +79,7 @@
       "Stosunek skorygowanej o ryzyko wartości zabezpieczenia do niespłaconego długu wewnątrz Borrow Spoke.",
       "Współczynnik zdrowia mierzy relację między skorygowaną o ryzyko wartością zabezpieczenia a niespłaconym długiem w Borrow Spoke. Skorygowana wartość zabezpieczenia obejmuje już wycenę LP Avana, collateral factors, traktowanie ryzyka na poziomie poola oraz założenia wartości odzyskiwalnej.",
       "Jeśli zdrowie spadnie poniżej granicy likwidacji, pozycja staje się kwalifikowana do likwidacji. Zobacz",
-      "Liquidation Framework",
+      "Ram likwidacji",
       "Zdrowie jest liczone per Borrow Spoke. Licznik to skorygowana wartość zabezpieczenia — już zdyskontowana przez rekonstrukcję, pricing, collateral factors i założenia wartości odzyskiwalnej.",
       "healthFactor = adjustedCollateralValue / outstandingDebt",
       "Jeśli użytkownik ma zabezpieczenie w więcej niż jednym Borrow Spoke, każde spoke liczy zdrowie niezależnie. Nadwyżka w jednym rynku nie pokrywa deficytu w innym.",
@@ -96,12 +96,12 @@
       "Spłata długu poprawia zdrowie natychmiast.",
       "Dodanie zatwierdzonego zabezpieczenia może zwiększyć headroom, jeśli spoke je przyjmie i wyceni.",
       "Odbiór opłat, wycofanie zabezpieczenia lub zmiana pozycji mogą obniżyć zdrowie — najpierw sprawdź stan po akcji.",
-      "Collateral Factors"
+      "Czynniki zabezpieczenia"
     ]
   },
   "architecture/incentives": {
     "meta": {
-      "title": "Incentives Programs",
+      "title": "Programy motywacyjne",
       "description": "Jak opcjonalne kampanie nagród odnoszą się do Avana bez zmiany core mechaniki lendingu."
     },
     "toc": [
@@ -127,7 +127,7 @@
       }
     ],
     "strings": [
-      "Incentives Programs",
+      "Programy motywacyjne",
       "Jak opcjonalne kampanie nagród odnoszą się do Avana bez zmiany core mechaniki lendingu.",
       "Przegląd",
       "Typy programów",
@@ -200,7 +200,7 @@
   },
   "architecture": {
     "meta": {
-      "title": "Protocol Architecture - Borrow Spoke",
+      "title": "Architektura protokołu – Borrow Spoke",
       "description": "Jak Borrow Spoke przyjmuje zabezpieczenie LP, wycenia pozycje i pożycza z płynności Hubu."
     },
     "toc": [
@@ -234,7 +234,7 @@
       }
     ],
     "strings": [
-      "Protocol Architecture - Borrow Spoke",
+      "Architektura protokołu – Borrow Spoke",
       "Jak Borrow Spoke przyjmuje zabezpieczenie LP, wycenia pozycje i pożycza z płynności Hubu.",
       "Przegląd",
       "Doświadczenie użytkownika",
@@ -259,7 +259,7 @@
       "Dodatkowe zatwierdzone pozycje LP można wpłacić później. Każda pozycja jest wyceniana osobno, zanim wniesie wkład do łącznej mocy.",
       "Pożyczkobiorcy",
       "Użytkownicy wchodzą w interakcję z Borrow Spoke, by wpłacać zabezpieczenie, pożyczać, spłacać i zarządzać pożyczką.",
-      "Borrow Spoke (Avana)",
+      "Spoke pożyczkowy (Avana)",
       "Wycenia pozycje LP, egzekwuje kontrole zdrowia i koordynuje likwidację, gdy zabezpieczenie nie wspiera już długu.",
       "Aave v4 Hub",
       "Wspólna warstwa płynności i księgowości. Borrow Spokes czerpią z rezerw Hubu po przejściu kontroli po stronie spoke.",
@@ -299,7 +299,7 @@
   },
   "architecture/platform-fees": {
     "meta": {
-      "title": "Platform Fees",
+      "title": "Opłaty platformy",
       "description": "Czym różnią się opłaty interfejsu na frontendach Avana od ekonomii pożyczania protokołu."
     },
     "toc": [
@@ -325,7 +325,7 @@
       }
     ],
     "strings": [
-      "Platform Fees",
+      "Opłaty platformy",
       "Czym różnią się opłaty interfejsu na frontendach Avana od ekonomii pożyczania protokołu.",
       "Przegląd",
       "Interfejs vs protokół",
@@ -347,7 +347,7 @@
   },
   "getting-started/borrow-assets": {
     "meta": {
-      "title": "Borrow Assets",
+      "title": "Pożycz aktywa",
       "description": "Jak pożyczać pod wpłacone zabezpieczenie LP w Avana."
     },
     "toc": [
@@ -361,7 +361,7 @@
       },
       {
         "id": "health-check",
-        "title": "Health Check"
+        "title": "Kontrola kondycji"
       },
       {
         "id": "internal-accounting",
@@ -377,11 +377,11 @@
       }
     ],
     "strings": [
-      "Borrow Assets",
+      "Pożycz aktywa",
       "Jak pożyczać pod wpłacone zabezpieczenie LP w Avana.",
       "Przegląd",
       "Kontrole pożyczki",
-      "Health Check",
+      "Kontrola kondycji",
       "Wewnętrzna księgowość",
       "Aktywa do pożyczania",
       "Moc pożyczkowa",
@@ -399,8 +399,8 @@
       "Zanim pożyczka zostanie zatwierdzona, Avana sprawdza, że Twoje konto pozostaje zdrowe po nowym długu. Współczynnik zdrowia to skorygowana wartość zabezpieczenia podzielona przez niespłacony dług. Skorygowana wartość zabezpieczenia obejmuje już wycenę LP, collateral factors oraz dyskonta wartości odzyskiwalnej.",
       "healthFactor = adjustedCollateralValue / outstandingDebt",
       "Jeśli zdrowie spadnie poniżej granicy likwidacji, pozycja staje się kwalifikowana do likwidacji. Zobacz",
-      "Health Factor",
-      "Debt shares:",
+      "health factor",
+      "Udziały długu:",
       "Pobranie z Hubu:",
       "Borrow Spoke żąda aktywa z Hubu dopiero po zakończeniu kontroli zabezpieczenia, mocy i zdrowia po stronie spoke.",
       "Aktualizacja stanu:",
@@ -409,12 +409,12 @@
       "Sprawdź interfejs Avana na docelowym wdrożeniu, by zobaczyć aktualną listę pożyczek.",
       "Moc pożyczkowa to suma Twoich zatwierdzonych pozycji LP w jednym Borrow Spoke, po collateral factors i dyskontach ryzyka. Każda pozycja wnosi wkład według własnego poola, zakresu, płynności i ustawień ryzyka.",
       "Im bliżej maksimum pożyczasz, tym mniej masz miejsca na ruchy cen lub zmienność. Zobacz",
-      "Collateral Factors"
+      "Czynniki zabezpieczenia"
     ]
   },
   "getting-started/claim-lp-fees": {
     "meta": {
-      "title": "Claim LP Fees",
+      "title": "Odbierz opłaty LP",
       "description": "Jak odebrać naliczone opłaty tradingowe LP w Avana bez wychodzenia z pozycji zabezpieczenia."
     },
     "toc": [
@@ -440,7 +440,7 @@
       }
     ],
     "strings": [
-      "Claim LP Fees",
+      "Odbierz opłaty LP",
       "Jak odebrać naliczone opłaty tradingowe LP w Avana bez wychodzenia z pozycji zabezpieczenia.",
       "Przegląd",
       "Jak to działa",
@@ -457,8 +457,8 @@
       "Najpierw spłać dług lub dodaj zabezpieczenie, jeśli odbiór opłat zostawiłby konto poniżej wymaganego progu.",
       "Model oracle Avana oddziela wartość principalu od wartości opłat, żeby protokół wiedział, ile pozycji to płynność bazowa, a ile — odbieralny dochód z opłat.",
       "Podczas likwidacji naliczone opłaty mogą być zastosowane, zanim odwijana jest płynność principalu — to zmniejsza, ile rdzennej pozycji LP trzeba naruszyć, by pokryć dług.",
-      "Price Oracles",
-      "Liquidation Framework",
+      "Wyrocznie cenowe",
+      "Ram likwidacji",
       "Twój principal LP nadal zarabia opłaty i pozostaje aktywny w poolu, gdy pożyczasz.",
       "Możesz zrealizować dochód z opłat bez odwijania pozycji zabezpieczenia.",
       "Kontrole zdrowia chronią przed takimi odbiorami opłat, które wyciągnęłyby zbyt dużo wartości i zostawiły dług niedostatecznie zabezpieczony."
@@ -466,7 +466,7 @@
   },
   "getting-started/manage-loans": {
     "meta": {
-      "title": "Manage Loans",
+      "title": "Zarządzaj pożyczkami",
       "description": "Jak monitorować i zarządzać otwartą pożyczką zabezpieczoną LP w Avana."
     },
     "toc": [
@@ -496,7 +496,7 @@
       }
     ],
     "strings": [
-      "Manage Loans",
+      "Zarządzaj pożyczkami",
       "Jak monitorować i zarządzać otwartą pożyczką zabezpieczoną LP w Avana.",
       "Przegląd",
       "Pożyczanie więcej",
@@ -514,7 +514,7 @@
       "konto nadal przechodzi kontrole, ale bufor jest cienki. Rozważ spłatę, dodanie zabezpieczenia lub zmniejszenie ekspozycji.",
       "Do likwidacji:",
       "zdrowie przekroczyło próg likwidacji. Framework likwidacji może przejąć kontrolę.",
-      "Health Factor",
+      "health factor",
       "Spłać część długu, by odbudować bufor",
       "Dodaj więcej zatwierdzonego zabezpieczenia LP do tego samego Borrow Spoke",
       "Odbierz naliczone opłaty, gdy konto nadal przechodzi kontrole zdrowia po odbiorze",
@@ -525,13 +525,13 @@
       "Nowe lub zastępcze pozycje muszą pozostawać w zatwierdzonym zestawie pooli",
       "Akcje pożyczki nadal zależą od płynności Hubu i aktywnych capów",
       "Spłać lub dodaj zabezpieczenie, zanim zdrowie wejdzie w strefę likwidacji",
-      "Liquidation Framework",
-      "Collateral Factors"
+      "Ram likwidacji",
+      "Czynniki zabezpieczenia"
     ]
   },
   "getting-started": {
     "meta": {
-      "title": "Getting Started - Deposit LP",
+      "title": "Wprowadzenie – wpłata LP",
       "description": "Jak wpłacić obsługiwaną pozycję LP do Avana i zacząć budować zdolność pożyczkową."
     },
     "toc": [
@@ -557,7 +557,7 @@
       }
     ],
     "strings": [
-      "Getting Started - Deposit LP",
+      "Wprowadzenie – wpłata LP",
       "Jak wpłacić obsługiwaną pozycję LP do Avana i zacząć budować zdolność pożyczkową.",
       "Przegląd",
       "Przepływ wpłaty",
@@ -573,20 +573,20 @@
       "LP ważone i multi-asset",
       "Ważone koszyki i poole multi-token",
       "Każda obsługiwana rodzina jest dopuszczana wyłącznie przez zatwierdzone szablony pooli.",
-      "Deposit LP",
+      "Wpłać LP",
       "Wpłać obsługiwaną pozycję LP do Avana, by użyć jej jako zabezpieczenia, podczas gdy nadal zarabia opłaty w poolu.",
       "Aby pożyczać pod zabezpieczenie LP w Avana, zacznij od wpłaty obsługiwanej pozycji w aplikacji. Wybierz zatwierdzony pool, połącz wallet i wyślij wpłatę dla LP, które już trzymasz na obsługiwanym DEX-ie.",
       "Avana rejestruje pozycję, wycenia ją i dodaje do Twojej zdolności pożyczkowej w odpowiednim Borrow Spoke. Twoja płynność pozostaje w poolu i nadal nalicza opłaty. Wpłata nie pożycza za Ciebie — przygotowuje zabezpieczenie, pod które możesz następnie pożyczać.",
       "1. Wybierz obsługiwany pool",
       "Otwórz interfejs Avana i wybierz rynek LP aktywny na Twoim wdrożeniu. Wpłacać można tylko zatwierdzone poole. Zobacz",
-      "Allowed LP Pools",
+      "Dozwolone LP pule",
       "2. Zatwierdź i wpłać LP",
       "W razie potrzeby zatwierdź token LP lub NFT pozycji, potem potwierdź wpłatę. Avana kieruje pozycję do Borrow Spoke dla tego rynku.",
       "3. Poczekaj na wycenę",
       "Spoke sprawdza, że pool jest zatwierdzony, rekonstruuje pozycję i stosuje collateral factors, by policzyć, ile zdolności pożyczkowej dodaje wpłata.",
       "4. Pożyczaj, gdy gotowy",
       "Gdy wpłata przejdzie, zdolność pożyczkowa aktualizuje się w interfejsie. Możesz przejść do",
-      "Borrow Assets",
+      "Pożycz aktywa",
       "gdy chcesz wypłacić płynność z Hubu.",
       "Moc pożyczkowa aktualizuje się wraz z rynkiem.",
       "Twoja moc jest przeliczana na podstawie żywej pozycji LP, gdy zmieniają się ceny, opłaty i stan poola — nie jest zablokowana na wycenie z chwili wpłaty.",
@@ -603,7 +603,7 @@
   },
   "getting-started/repay-loans": {
     "meta": {
-      "title": "Repay Loans",
+      "title": "Spłać pożyczki",
       "description": "Jak spłacać dług w Avana i przywracać zdrowie pożyczki zabezpieczonej LP."
     },
     "toc": [
@@ -625,7 +625,7 @@
       }
     ],
     "strings": [
-      "Repay Loans",
+      "Spłać pożyczki",
       "Jak spłacać dług w Avana i przywracać zdrowie pożyczki zabezpieczonej LP.",
       "Przegląd",
       "Proces spłaty",
@@ -641,16 +641,16 @@
       "Gdy spłata się potwierdzi, współczynnik zdrowia i pozostała zdolność pożyczkowa aktualizują się w interfejsie.",
       "Częściowa spłata wystarczy, by poprawić bezpieczeństwo, gdy konto dryfuje w stronę likwidacji. Nie musisz czyścić pełnego salda, żeby spłata miała znaczenie.",
       "Pełna spłata czyści cały dług dla tej pożyczki. W tym momencie ograniczenia zabezpieczenia powiązane z pożyczką zostają zwolnione i możesz wycofać LP przez",
-      "Withdraw Collateral",
+      "Wycofaj zabezpieczenie",
       "Odsetki naliczają się od otwartego długu, aż go spłacisz. Kwota w interfejsie obejmuje naliczone odsetki, nie tylko pierwotną pożyczkę.",
       "Gdy zdrowie jest blisko progu likwidacji, spłata to najszybszy sposób poprawy bezpieczeństwa. Bezpośrednio zmniejsza dług — bez czekania na odbicie rynków ani wcześniejszego dodawania zabezpieczenia.",
       "Gdy zdrowie przekroczy granicę likwidacji, zobacz",
-      "Liquidation Framework"
+      "Ram likwidacji"
     ]
   },
   "getting-started/withdraw-collateral": {
     "meta": {
-      "title": "Withdraw Collateral",
+      "title": "Wycofaj zabezpieczenie",
       "description": "Jak wycofać zabezpieczenie LP z Avana po spłacie długu lub gdy konto pozostaje zdrowe."
     },
     "toc": [
@@ -672,7 +672,7 @@
       }
     ],
     "strings": [
-      "Withdraw Collateral",
+      "Wycofaj zabezpieczenie",
       "Jak wycofać zabezpieczenie LP z Avana po spłacie długu lub gdy konto pozostaje zdrowe.",
       "Przegląd",
       "Proces wycofania",
@@ -691,12 +691,12 @@
       "Twój LP wraca do walletu i znów masz nad nim bezpośrednią kontrolę",
       "Możesz zostawić go w poolu, dostosować zakres na DEX-ie albo całkowicie wyjść z płynności",
       "Możesz wpłacić go ponownie później przez",
-      "Deposit LP"
+      "Wpłać LP"
     ]
   },
   "integrations/allowed-pools": {
     "meta": {
-      "title": "Allowed LP Pools",
+      "title": "Dozwolone LP pule",
       "description": "Zdefiniowany przez governance allowlist i kryteria przeglądu dla pooli LP, które Avana jest gotowa dopuścić jako zabezpieczenie."
     },
     "toc": [
@@ -722,7 +722,7 @@
       }
     ],
     "strings": [
-      "Allowed LP Pools",
+      "Dozwolone LP pule",
       "Zdefiniowany przez governance allowlist i kryteria przeglądu dla pooli LP, które Avana jest gotowa dopuścić jako zabezpieczenie.",
       "Przegląd",
       "Kryteria przeglądu",
@@ -745,8 +745,8 @@
       "Allowlist kontrolowany przez governance dla pooli i rodzin LP, które Avana jest gotowa przyjąć jako zabezpieczenie.",
       "Avana przyjmuje zabezpieczenie LP tylko z pooli, które zostały przejrzane i zatwierdzone. Allowlist istnieje, bo support LP nie jest automatyczny dla każdego poola na DEX-ie. Protokół potrzebuje wystarczających informacji, by wycenić pozycję, zarządzać likwidacją i ograniczyć podejmowane ryzyko.",
       "Zatwierdzenie poola działa razem z",
-      "Collateral Factors",
-      "Risk Framework",
+      "Czynniki zabezpieczenia",
+      "Ramy ryzyka",
       ". Allowlist decyduje, czy pool może wejść do systemu; collateral factors decydują, ile wartości do pożyczania może wnieść każda dopuszczona pozycja.",
       "Pool wchodzi na allowlist tylko wtedy, gdy protokół za każdym razem potrafi odpowiedzieć na te same podstawowe pytania: czy potrafi wycenić pozycję, czy potrafi z niej wyjść i czy potrafi monitorować ryzyko w produkcji.",
       "Zatwierdzenie poola nie oznacza hojnego traktowania kredytowego pozycji. Po dopuszczeniu poola każda pozycja LP jest nadal wyceniana osobno, dyskontowana według swojego traktowania ryzyka, a potem dodawana do zdolności pożyczkowej użytkownika w Borrow Spoke.",
@@ -853,8 +853,8 @@
       "Z którymi DEX-ami Avana może współpracować i co trzeba przejrzeć, zanim support pójdzie live.",
       "Avana obsługuje kuratorowane rynki zabezpieczenia LP na AMM-ach takich jak Uniswap, Balancer, Curve i Aerodrome w miarę uruchamiania rynków. Support jest zatwierdzany pool po poolu, nie automatycznie dla każdego poola na DEX-ie.",
       "Każdy obsługiwany rynek potrzebuje wiarygodnego pricingu aktywów, wystarczającej głębokości płynności, zdefiniowanej trasy unwind, market caps oraz ustawień zabezpieczenia dopasowanych do typu poola. Zobacz",
-      "Allowed LP Pools",
-      "Price Oracles",
+      "Dozwolone LP pule",
+      "Wyrocznie cenowe",
       "AppKit pozwala DEX-om, walletom i aplikacjom portfolio osadzać kredyt Avana w istniejących flow użytkownika zamiast wysyłać użytkowników do osobnej aplikacji lendingu.",
       "Zobacz",
       "przewodnik AppKit",
@@ -869,7 +869,7 @@
   },
   "integrations/price-oracles": {
     "meta": {
-      "title": "Price Oracles",
+      "title": "Wyrocznie cenowe",
       "description": "Jak Avana Oracle wycenia zabezpieczenie LP przez zewnętrzne feedy, deterministyczną rekonstrukcję pozycji i dyskonta wartości odzyskiwalnej."
     },
     "toc": [
@@ -903,7 +903,7 @@
       }
     ],
     "strings": [
-      "Price Oracles",
+      "Wyrocznie cenowe",
       "Jak Avana Oracle wycenia zabezpieczenie LP przez zewnętrzne feedy, deterministyczną rekonstrukcję pozycji i dyskonta wartości odzyskiwalnej.",
       "Przegląd",
       "Interfejs Oracle",
@@ -967,14 +967,14 @@
       "Uwagi",
       "Obliczanie TWAP według DEX-a",
       "TWAP-y to wejścia weryfikacyjne. Siedzą obok zewnętrznych cen aktywów i deterministycznej rekonstrukcji pozycji, by sprawdzić, czy obserwowany stan poola jest spójny z wiarygodną ścieżką unwindu. Pomagają odrzucać podejrzane lub krótkotrwałe zniekształcenia, ale same nie zastępują szerszego modelu oracle.",
-      "Uniswap V2 & SushiSwap",
+      "Uniswap V2 i SushiSwap",
       "Uniswap V3",
       "Kontrole świadome pozycji uwzględniają zakres ticków, rozkład płynności i naliczone opłaty, żeby protokół mógł zweryfikować rozłożoną ekspozycję tokenową każdego LP NFT — zamiast traktować NFT jak black box.",
       "Balancer",
       "Ważone obserwacje tokenów są łączone z wagami poola, by zwalidować podziały inventory multi-asset, zanim oracle przypisze konserwatywną wartość zabezpieczenia.",
       "Curve",
       "Obserwacje stablecoinów służą głównie do wykrywania stale feedów, dryfu rezerw i krótkoterminowych anomalii, podczas gdy zewnętrzne ceny pozostają główną kotwicą.",
-      "Trader Joe & Aerodrome",
+      "Trader Joe i Aerodrome",
       "Skumulowane obserwacje cen w oknie 30–60 minut pomagają walidować stan pooli o niższej płynności i opierać się manipulacji same-transaction podczas kontroli zabezpieczenia.",
       "Progi odchylenia",
       "Nowe pożyczki lub likwidacje mogą zostać wstrzymane, gdy dane weryfikacyjne wyprowadzone z poola oddalą się zbyt daleko od zewnętrznych cen referencyjnych poza",
@@ -983,9 +983,9 @@
       "To utrzymuje stan implied przez pool w zgodzie z cenami bazowych tokenów i ogranicza natychmiastową manipulację poola lub nadużycie oracle w tej samej transakcji.",
       "Capy open interest",
       "Ekspozycja jest ograniczana według rodziny LP, głębokości poola i złożoności zabezpieczenia, żeby cieńsze rynki dostawały ciaśniejsze limity pożyczki.",
-      "Recovery Haircuts",
+      "Potrącenia recovery",
       "Oracle dyskontuje teoretyczną wartość LP o impermanent loss, slippage unwindu i założenia stresowej likwidacji, zanim przyznana zostanie jakakolwiek moc pożyczkowa.",
-      "Oracle Sentinel",
+      "Strażnik oracle",
       "Oracle Sentinel obserwuje zdrowie feedów i wejścia weryfikacyjne oraz może uruchomić zachowanie fallback, gdy dane są stale, skompromitowane lub niespójne z kontrolami stanu pozycji.",
       "Konfigurowalne parametry Oracle",
       "Ustawienia oracle właściwe dla poola są konfigurowane per token przez",
@@ -993,17 +993,17 @@
       ". Tabela poniżej pokazuje parametry, które definiują, jak token i powiązany pool powinny być sprawdzane:",
       "Parametr",
       "Opis",
-      "Token",
+      "Token aktywa",
       "Adres tokena zabezpieczenia",
       "AggregatorV3Interface",
       "Feed Chainlink dla bazowego tokena",
       "maxFeedAge",
       "Maksymalny akceptowalny wiek feedu Chainlink",
-      "Pool",
+      "Pula płynności",
       "Konkretny pool DEX (Uniswap V3, Balancer, Curve itd.)",
       "twapSeconds",
       "Okno obliczania TWAP",
-      "Mode",
+      "Tryb",
       "Tryb operacyjny oracle (standard/fallback)",
       "Maksymalne dozwolone odchylenie między ceną DEX a ceną weryfikacji",
       "W praktyce zachowanie oracle wynika z połączenia zewnętrznego pricingu aktywów, logiki rekonstrukcji LP, traktowania wartości odzyskiwalnej oraz ustawień per token skonfigurowanych przez"
@@ -1011,7 +1011,7 @@
   },
   "integrations/router-contract": {
     "meta": {
-      "title": "Router Contract",
+      "title": "Kontrakt routera",
       "description": "Jak router Avana koordynuje akcje wpłaty, wycofania, opłat i likwidacji właściwe dla DEX-a."
     },
     "toc": [
@@ -1037,7 +1037,7 @@
       }
     ],
     "strings": [
-      "Router Contract",
+      "Kontrakt routera",
       "Jak router Avana koordynuje akcje wpłaty, wycofania, opłat i likwidacji właściwe dla DEX-a.",
       "Przegląd",
       "Rola w systemie",
@@ -1052,7 +1052,7 @@
       "Router koordynuje mechaniki właściwe dla DEX-a — wpłaty, wycofania, odbiór opłat i kroki unwindu — żeby te akcje nie musiały być rozsiane po każdym flow, które dotyka zabezpieczenia LP.",
       "Router nie decyduje o ryzyku. Collateral factors, kontrole zdrowia i kwalifikacja do likwidacji pozostają w Borrow Spoke, Hubie, stacku oracle i frameworku ryzyka. Zobacz",
       "Borrow Spoke",
-      "Liquidation Framework",
+      "Ram likwidacji",
       "Różne DEX-y udostępniają różne metody wejścia, wyjścia i odbioru opłat. Router daje Avana jedną warstwę integracji dla tych mechanik, żeby builderzy nie musieli implementować każdego DEX-a osobno w każdym flow.",
       "Każda obsługiwana rodzina DEX ma adapter, który wie, jak odbierać opłaty, usuwać płynność i udostępniać akcje potrzebne protokołowi dla tego formatu LP. To utrzymuje zachowanie właściwe dla DEX-a w izolacji zamiast wyciekać do każdej ścieżki kodu skierowanej do użytkownika.",
       "Support adaptera ma znaczenie dopiero wtedy, gdy istnieje support wyceny i likwidacji dla tego DEX-a. Sam nowy adapter nie czyni poola bezpiecznym do dopuszczenia jako zabezpieczenie.",
@@ -1063,7 +1063,7 @@
   },
   "introduction/glossary": {
     "meta": {
-      "title": "Glossary",
+      "title": "Słownik",
       "description": "Glosariusz DeFi dla Avana — definicje Spoke, Hub, LP NFT, collateral factor, debt shares, likwidacji, oracle i innych pojęć protokołu."
     },
     "toc": [
@@ -1093,7 +1093,7 @@
       }
     ],
     "strings": [
-      "Glossary",
+      "Słownik",
       "Glosariusz DeFi dla Avana — definicje Spoke, Hub, LP NFT, collateral factor, debt shares, likwidacji, oracle i innych pojęć protokołu.",
       "Kluczowe pojęcia",
       "Komponenty protokołu",
@@ -1105,58 +1105,58 @@
       "Spoke Avana po stronie pożyczkobiorcy, które przyjmuje zabezpieczenie LP, wycenia pozycje, śledzi dług oraz koordynuje pożyczanie i likwidację wobec płynności Hubu.",
       "Punkt wejścia kapitału po stronie pożyczkodawcy, który kieruje dostarczone aktywa do Hubu, żeby Borrow Spokes mogły czerpać ze wspólnej płynności.",
       "Wspólna warstwa monetarna w Aave v4, która zarządza płynnością, rezerwami, księgowością i koordynacją kapitału w całym protokole pomiędzy połączonymi spokes.",
-      "Hub-and-Spoke Architecture",
+      "Architektura hub-and-spoke",
       "Projekt, w którym wspólny kapitał żyje w Hubie, a logika właściwa dla zabezpieczenia jest izolowana w spokes. Avana używa tego modelu, bo zabezpieczenie LP potrzebuje wyceny i zachowania likwidacji właściwych dla DEX-a.",
-      "Liquidation Node",
+      "Węzeł likwidacji",
       "Pozycja płynności z obsługiwanego AMM. W zależności od DEX-a może to być fungible token LP, NFT concentrated liquidity albo inny zatwierdzony format udziału w poolu.",
-      "Collateral Factor",
+      "Współczynnik zabezpieczenia",
       "Część wartości zabezpieczenia w USD, która może liczyć się do mocy pożyczkowej. Na rynkach LP jest stosowana na poziomie pozycji, a nie do spoke jako całości.",
       "Zdolność pożyczkowa",
       "Kwota, którą użytkownik może pożyczyć w Borrow Spoke po tym, jak każda wpłacona pozycja LP została wyceniona, skorygowana o ryzyko i dodana do łącznej mocy użytkownika.",
-      "Allowed Pool",
+      "Dozwolony pool",
       "Pool zatwierdzony przez governance, który spełnia wymagania dopuszczenia — coverage oracle, głębokość płynności, jakość unwindu i kompatybilność ze spoke.",
-      "Loan-to-Value (LTV)",
+      "Wskaźnik LTV",
       "Wskaźnik pożyczki powiązany z zabezpieczeniem po wycenie pozycji Avana i kontrolach ryzyka właściwych dla poola.",
       "Wewnętrzna jednostka księgowa używana do śledzenia zobowiązań pożyczkobiorcy, gdy odsetki naliczają się w czasie bez ciągłego przepisywania każdego salda pożyczki.",
       "Stopa, którą pożyczkobiorcy płacą od niespłaconego długu. Odzwierciedla zarówno wspólne warunki Hubu, jak i ryzyka właściwe dla LP.",
-      "Utilization Rate",
+      "Wskaźnik wykorzystania",
       "Udział pożyczonej płynności względem dostępnej podaży w odpowiedniej warstwie kapitału podłączonej do Hubu.",
-      "Risk Premium",
+      "Premia za ryzyko",
       "Składnik ryzyka nakładany na bazowe warunki pożyczki, by odzwierciedlić profil zabezpieczenia LP, które jest finansowane.",
-      "Reserve Factor",
+      "Współczynnik rezerwy",
       "Część ekonomii protokołu lub przepływów odsetkowych zarezerwowana dla systemu, a nie w całości przekazywana dostawcom płynności.",
-      "Health Factor",
+      "health factor",
       "Stosunek skorygowanej wartości zabezpieczenia do niespłaconego długu w Borrow Spoke. Gdy spada zbyt nisko, pozycja zbliża się do kwalifikacji do likwidacji.",
       "Proces spłaty długu wobec niezdrowej pozycji zabezpieczonej LP, odwijania wystarczającej ilości zabezpieczenia, by przywrócić wypłacalność, oraz zwrotu ewentualnej wartości rezydualnej po rozliczeniu.",
-      "Liquidation Bonus",
+      "Premia likwidacyjna",
       "Premia likwidacyjna wypłacana stronie, która wykonuje unwind — rekompensuje użycie kapitału, złożoność routingu i ryzyko egzekucji.",
       "Silnik wyceny Avana dla zabezpieczenia LP. Łączy zewnętrzne ceny aktywów, rekonstrukcję pozycji LP oraz zabezpieczenia wartości odzyskiwalnej.",
-      "Recoverable Value",
+      "Wartość do odzyskania",
       "Kwota, którą protokół uznaje za realistycznie możliwą do zrealizowania przy stresowym unwindzie — po uwzględnieniu slippage likwidacji, warunków poola i buforów ryzyka.",
       "Kontrolowana modyfikacja zabezpieczonej pozycji LP, np. rebalance lub zmiana zakresu, dozwolona tylko wtedy, gdy wynikowa pozycja nadal spełnia kontrole zdrowia protokołu.",
       "Łączna wartość aktywów dostarczonych jako zabezpieczenie LP lub kapitał w komponentach połączonych z Avana.",
-      "Outstanding Debt",
+      "Zaległy dług",
       "Kwota obecnie pożyczona pod zatwierdzone pozycje zabezpieczenia.",
-      "Borrow Utilization",
+      "Wykorzystanie pożyczki",
       "Udział dostępnej płynności Hubu, która została pobrana przez pożyczkobiorców.",
-      "Borrowing Headroom",
+      "Pozostała zdolność pożyczkowa",
       "Różnica między bieżącym długiem użytkownika a pozostałą łączną zdolnością pożyczkową w Borrow Spoke.",
-      "Residual Value",
+      "Wartość resztkowa",
       "Wartość pozostała w pozycji po rozliczeniu długu, premii likwidacyjnej i kosztów egzekucji.",
-      "Pool Approval",
+      "Zatwierdzenie pool",
       "Zasada, że jako zabezpieczenie mogą być dopuszczone tylko wcześniej zatwierdzone poole — ogranicza ekspozycję na niewspierane lub słabo monitorowane rynki.",
-      "Recovery Haircut",
-      "Exposure Caps",
+      "Potrącenie recovery",
+      "Limity ekspozycji",
       "Limity ryzyka ograniczające ekspozycję pożyczkową według rodziny pooli, klasy zabezpieczenia lub głębokości płynności.",
-      "Circuit Breaker",
+      "Wyłącznik awaryjny",
       "Kontrola ryzyka, która może wstrzymać lub ograniczyć akcje, gdy ceny, zachowanie rynku lub zależności protokołu stają się niespójne lub niebezpieczne.",
-      "Governance Safety",
+      "Bezpieczeństwo governance",
       "Zestaw ról przeglądu, timelocka, veta i awaryjnych używanych przez Risk Framework, by zmiany parametrów pozostały zdyscyplinowane.",
-      "Reentrancy Protection",
+      "Ochrona przed reentrancy",
       "Ochrona na poziomie kontraktu, która zapobiega ponownemu wejściu w workflow zmieniający stan, zanim pierwsze wykonanie się zakończy.",
       "LP i zabezpieczenie",
       "Dług i odsetki",
-      "Liquidation",
+      "Likwidacja",
       "Oracle i transform",
       "Brak porady inwestycyjnej:",
       "Avana to protokół software. Ta dokumentacja nie stanowi porady inwestycyjnej.",
@@ -1170,7 +1170,7 @@
   },
   "introduction/key-concepts": {
     "meta": {
-      "title": "Key Concepts",
+      "title": "Kluczowe pojęcia",
       "description": "Zrozum kluczowe pojęcia stojące za Avana — zachowanie zabezpieczenia LP, konserwatywną wycenę, pożyczanie z Hubu i likwidację."
     },
     "toc": [
@@ -1200,7 +1200,7 @@
       }
     ],
     "strings": [
-      "Key Concepts",
+      "Kluczowe pojęcia",
       "Zrozum kluczowe pojęcia stojące za Avana — zachowanie zabezpieczenia LP, konserwatywną wycenę, pożyczanie z Hubu i likwidację.",
       "Główny insight",
       "Model pożyczania",
@@ -1218,14 +1218,14 @@
       "Avana używa frameworku wyceny dual-oracle dla zabezpieczenia LP. Feedy cenowe Chainlink dają główne odniesienie dla bazowych aktywów, a TWAP wyprowadzone z AMM działają jako niezależna warstwa weryfikacji z onchainowej płynności.",
       "Zdolność pożyczkowa pochodzi ze skorygowanej o ryzyko wartości zatwierdzonych pozycji LP w Borrow Spoke. Avana rekonstruuje każdą pozycję, wycenia bazową ekspozycję, stosuje traktowanie ryzyka na poziomie poola, a następnie stosuje collateral factor rynku.",
       "Borrow Spoke raportuje tę moc do Hubu w celu egzekwowania. Gdy użytkownik ma wiele zatwierdzonych pozycji na tym samym rynku, Avana agreguje ich moc, nadal wyceniając każdą pozycję według własnego poola, zakresu, płynności i założeń ryzyka.",
-      "Collateral Factors",
+      "Czynniki zabezpieczenia",
       "jak każdy rynek ustawia collateral factors, progi likwidacji i liquidation bonus per asset.",
       "Avana monitoruje zdrowie konta w każdym Borrow Spoke tą samą ścieżką wyceny, która rządzi pożyczaniem. Skorygowana wartość zabezpieczenia — już zdyskontowana przez rekonstrukcję LP, pricing, collateral factors i założenia wartości odzyskiwalnej — jest porównywana z niespłaconym długiem.",
       "Gdy zdrowie spadnie poniżej progu likwidacji, Aave obsługuje księgowość długu i punkt wejścia likwidacji wobec zabezpieczenia vault ERC-20. Avana obsługuje rozliczenie LP stojące za tym vault tokenem: spalanie vault collateral, mapowanie likwidacji z powrotem na rzeczywistą pozycję LP oraz podążanie trasą rynku, by odwinąć, sprzedać, zaukcjonować lub przenieść pozycję zabezpieczającą.",
       "Pozycje LP mogą nadal naliczać opłaty tradingowe, gdy służą jako zabezpieczenie. Avana może rozpoznawać te opłaty w wycenie i — pod warunkiem kontroli zdrowia — pozwalać użytkownikom je odbierać bez pełnego wychodzenia z pozycji principal LP.",
       "Powiązane docs:",
-      "Price Oracles",
-      "Claim LP Fees"
+      "Wyrocznie cenowe",
+      "Odbierz opłaty LP"
     ]
   },
   "introduction": {
@@ -1238,7 +1238,7 @@
   },
   "legal/disclaimer": {
     "meta": {
-      "title": "Legal Disclaimer",
+      "title": "Zastrzeżenie prawne",
       "description": "Zastrzeżenie prawne Avana — ogólne zastrzeżenie, brak porady finansowej, ryzyka, gwarancje i ograniczenie odpowiedzialności."
     },
     "toc": [
@@ -1272,7 +1272,7 @@
       }
     ],
     "strings": [
-      "Legal Disclaimer",
+      "Zastrzeżenie prawne",
       "Zastrzeżenie prawne Avana — ogólne zastrzeżenie, brak porady finansowej, ryzyka, gwarancje i ograniczenie odpowiedzialności.",
       "Przegląd",
       "Ogólne zastrzeżenie",
@@ -1284,8 +1284,8 @@
       "Zawiadomienia prawne regulujące korzystanie z protokołu i dokumentacji.",
       "Ważne:",
       "Przeczytaj uważnie to zastrzeżenie przed użyciem Avana. Korzystając z protokołu, potwierdzasz, że przeczytałeś, zrozumiałeś i zgadzasz się być związany tymi warunkami. Pełne warunki znajdziesz w",
-      "Terms of Service",
-      "Privacy Policy",
+      "Regulamin",
+      "Polityka prywatności",
       "To zastrzeżenie uzupełnia i należy czytać je łącznie z pełnymi",
       ". Terms of Service stanowią prawnie wiążącą umowę między Tobą a Avana dotyczącą dostępu do protokołu i powiązanych usług oraz korzystania z nich.",
       "Z naszej strony głównej:",
@@ -1304,25 +1304,25 @@
       "• Inwestycje w kryptowaluty są wysoce zmienne i ryzykowne",
       "Sekcja 8 naszych Terms of Service opisuje ryzyka związane z korzystaniem z Avana:",
       "Technologia eksperymentalna",
-      "\"The Services may incorporate experimental and novel technology and the use of such technology involves a high degree of risk. There are numerous reasons the Services or underlying blockchain networks could fail in an unexpected way, resulting in the total and absolute loss of any crypto assets held in your digital wallet.\"",
+      "\"Usługi mogą obejmować eksperymentalną i nowatorską technologię, a korzystanie z niej wiąże się z wysokim stopniem ryzyka. Istnieje wiele powodów, dla których Usługi lub podstawowe sieci blockchain mogą ulec nieoczekiwanej awarii, co skutkuje całkowitą i bezwzględną utratą wszelkich aktywów kryptograficznych przechowywanych w Twoim portfelu cyfrowym.\"",
       "Wyzwania operacyjne",
-      "\"The Services and/or underlying blockchain networks may experience or be the subject of cyber-attacks, unexpected surges in transaction volume, or other operational or technical difficulties or vulnerabilities that may cause interruptions related to your use of the Services.\"",
+      "\"Usługi i/lub podstawowe sieci blockchain mogą doświadczać cyberataków, nieoczekiwanych wzrostów wolumenu transakcji lub innych trudności operacyjnych lub technicznych bądź podatności, które mogą powodować przerwy związane z korzystaniem z Usług.\"",
       "Niepewność regulacyjna",
-      "\"The Services, the Avana Protocol and/or any underlying blockchain networks may not be available or appropriate for use in all jurisdictions and you may be subject to legal and regulatory compliance obligations in connection with your use of the Services in certain jurisdictions.\"",
+      "\"Usługi, Avana Protocol i/lub podstawowe sieci blockchain mogą nie być dostępne lub odpowiednie do użytku we wszystkich jurysdykcjach, a Ty możesz podlegać prawnym i regulacyjnym obowiązkom zgodności w związku z korzystaniem z Usług w określonych jurysdykcjach.\"",
       "Ryzyka właściwe dla LP",
       "• Impermanent loss może obniżyć wartość zabezpieczenia",
       "• Ryzyko likwidacji, jeśli warunki rynkowe obrócą się przeciwko Twojej pozycji",
       "• Ryzyko smart kontraktu bazowego DEX-a",
       "• Pozycje concentrated liquidity mogą stać się bezwartościowe poza zakresem",
       "Jak stwierdzono w Sekcji 9.1 naszych Terms of Service:",
-      "\"THE SERVICES ARE ISSUED ON AN 'AS-IS' AND 'AS AVAILABLE' BASIS AND AVANA DOES NOT MAKE ANY WARRANTIES WITH RESPECT TO SUCH 'AS-IS' AND 'AS AVAILABLE' BASIS OR OTHERWISE IN CONNECTION WITH THE TERMS AND AVANA HEREBY DISCLAIMS ANY AND ALL EXPRESS, IMPLIED OR STATUTORY WARRANTIES AND CONDITIONS, INCLUDING ANY WARRANTIES OR CONDITIONS OF NON-INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AVAILABILITY, ERROR-FREE OR UNINTERRUPTED OPERATION.\"",
+      "\"USŁUGI SĄ UDOSTĘPNIANE NA ZASADZIE 'TAK JAK JEST' I 'W MIARĘ DOSTĘPNOŚCI', A AVANA NIE UDZIELA ŻADNYCH GWARANCJI W ODNIESIENIU DO TAKIEJ PODSTAWY 'TAK JAK JEST' I 'W MIARĘ DOSTĘPNOŚCI' ANI W INNY SPOSÓB W ZWIĄZKU Z WARUNKAMI, A AVANA NINIEJSZYM ZRZEKA SIĘ WSZYSTKICH WYRAŹNYCH, DOROZUMIANYCH LUB USTAWOWYCH GWARANCJI I WARUNKÓW, W TYM WSZELKICH GWARANCJI LUB WARUNKÓW NIENARUSZANIA PRAW, PRZYDATNOŚCI HANDLOWEJ, PRZYDATNOŚCI DO OKREŚLONEGO CELU, DOSTĘPNOŚCI, BEZBŁĘDNEJ LUB NIEPRZERWANEJ PRACY.\"",
       "Jak stwierdzono w Sekcji 9.2 naszych Terms of Service:",
-      "\"IN NO EVENT SHALL AVANA BE LIABLE TO YOU FOR ANY CONSEQUENTIAL, INDIRECT, INCIDENTAL OR SPECIAL DAMAGES OF ANY TYPE OR NATURE HOWEVER ARISING, INCLUDING, WITHOUT LIMITATION, EXEMPLARY OR PUNITIVE DAMAGES, LOST DATA, LOST PROFITS OR REVENUES OR DIMINUTION IN VALUE, ARISING OUT OF OR RELATING TO THE SERVICES OR YOUR USE OF THE AVANA PROTOCOL.\"",
+      "\"W ŻADNYM WYPADKU AVANA NIE PONOSI WOBEC CIEBIE ODPOWIEDZIALNOŚCI ZA SZKODY WYNIKOWE, POŚREDNIE, PRZYPADKOWE LUB SZCZEGÓLNE JAKIEGOKOLWIEK RODZAJU LUB CHARAKTERU, NIEZALEŻNIE OD TEGO, JAK POWSTAŁY, W TYM, BEZ OGRANICZEŃ, SZKODY PRZYKŁADOWE LUB KARNE, UTRATĘ DANYCH, UTRATĘ ZYSKÓW LUB PRZYCHODÓW LUB SPADEK WARTOŚCI, WYNIKAJĄCE Z USŁUG LUB TWOJEGO KORZYSTANIA Z AVANA PROTOCOL LUB Z NIM ZWIĄZANE.\"",
       "To ograniczenie obowiązuje niezależnie od teorii odpowiedzialności (umowa, delikt, strict liability lub inna), nawet jeśli zostaliśmy poinformowani o możliwości takich szkód. W żadnym wypadku łączna odpowiedzialność Avana nie przekroczy stu dolarów amerykańskich (100,00 USD).",
       "Pełne informacje prawne znajdziesz w następujących dokumentach:",
       "Pełna, prawnie wiążąca umowa regulująca korzystanie z Avana — w tym kwalifikowalność, zabronione działania, własność intelektualna, rozstrzyganie sporów i więcej.",
       "Jak zbieramy, używamy i chronimy Twoje dane osobowe — w tym retencję danych, cookies oraz Twoje prawa wynikające z GDPR, CCPA i innych regulacji prywatności.",
-      "Restricted Territories",
+      "Terytoria objęte ograniczeniami",
       "Aktualna lista jurysdykcji z ograniczonym dostępem do usług Avana.",
       "Ostatnia aktualizacja:",
       "styczeń 2026",
@@ -1331,7 +1331,7 @@
   },
   "legal": {
     "meta": {
-      "title": "Legal & Compliance - Security Disclosures",
+      "title": "Prawo i zgodność – ujawnienia bezpieczeństwa",
       "description": "Informacje prawne Avana — ograniczenia dostępu, ograniczone jurysdykcje, wymagania compliance i ujawnienia bezpieczeństwa."
     },
     "toc": [
@@ -1349,7 +1349,7 @@
       },
       {
         "id": "compliance",
-        "title": "Compliance"
+        "title": "Zgodność"
       },
       {
         "id": "related-policies",
@@ -1357,20 +1357,20 @@
       }
     ],
     "strings": [
-      "Legal & Compliance - Security Disclosures",
+      "Prawo i zgodność – ujawnienia bezpieczeństwa",
       "Informacje prawne Avana — ograniczenia dostępu, ograniczone jurysdykcje, wymagania compliance i ujawnienia bezpieczeństwa.",
       "Przegląd",
       "Ograniczenia dostępu",
       "Ograniczone jurysdykcje",
-      "Compliance",
+      "Zgodność",
       "Powiązane polityki",
       "Sankcje OFAC",
       "Ukraina (regiony Krymu, Doniecka i Ługańska)",
       "Stany Zjednoczone Ameryki",
       "Oczekiwanie na klarowność regulacyjną",
-      "Restricted Territories",
+      "Terytoria objęte ograniczeniami",
       "Ta strona jest utrzymywana tak, by odzwierciedlać najbardziej aktualną listę Restricted Jurisdictions dla domeny Avana.",
-      "Terms of Use",
+      "Warunki użytkowania",
       ", dostęp do strony Avana i powiązanych usług jest ograniczony dla osób lub podmiotów w określonych jurysdykcjach. Ta strona podaje aktualną listę ograniczonych terytoriów i wyjaśnia obowiązujące ograniczenia dostępu.",
       "Ważne:",
       "Każda próba dostępu do platformy Avana z Restricted Jurisdiction skutkuje natychmiastowym przekierowaniem do Terms of Use i odmową dostępu.",
@@ -1394,11 +1394,11 @@
       "• Zlokalizowany, zorganizowany lub rezydent w kraju lub terytorium, które jest — albo którego rząd jest — przedmiotem sankcji ekonomicznych",
       "Użytkownicy ponoszą wyłączną odpowiedzialność za zapewnienie, że korzystanie z protokołu jest zgodne ze wszystkimi obowiązującymi prawami i regulacjami w ich jurysdykcji.",
       "Pełne informacje o Twoich prawach i obowiązkach przy korzystaniu z Avana znajdziesz w:",
-      "Terms of Service",
+      "Regulamin",
       "Pełne warunki korzystania z usług Avana — w tym wymagania kwalifikowalności, zabronione działania i rozstrzyganie sporów.",
-      "Privacy Policy",
+      "Polityka prywatności",
       "Informacje o tym, jak zbieramy, używamy i chronimy Twoje dane osobowe, gdy korzystasz z naszych usług.",
-      "Legal Disclaimer",
+      "Zastrzeżenie prawne",
       "Ważne zastrzeżenia dotyczące ryzyk, gwarancji i ograniczeń odpowiedzialności."
     ]
   },
@@ -1453,7 +1453,7 @@
       "Pożyczkobiorca może mieć kilka pozycji wnoszących wkład do jednej zdolności pożyczkowej na poziomie spoke — dlatego sekwencja likwidacji ma znaczenie.",
       "Przepracowane scenariusze pokazujące, jak jeden framework likwidacji jest stosowany do różnych kształtów zabezpieczenia LP.",
       "Te przykłady pokazują, jak likwidacja przebiega na typowych formatach LP w ramach",
-      "Liquidation Framework",
+      "Ram likwidacji",
       "W każdym przypadku zadanie jest to samo: użyć konserwatywnych wycen zabezpieczenia, spłacić dług do warstwy kredytu, odwinąć LP obsługiwaną ścieżką i zwrócić ewentualną wartość rezydualną po kosztach egzekucji oraz nagrodzie likwidacyjnej.",
       "Pożyczkobiorca wpłacił fungible token LP z zatwierdzonego poola stable lub ważonego. Z czasem skład poola i wejścia oracle ruszają się na tyle, że konto nie ma już wystarczającej skorygowanej wartości zabezpieczenia względem długu.",
       "• Liquidation node wykrywa niedobór i pozyskuje płynność egzekucyjną.",
@@ -1533,10 +1533,10 @@
       "Likwidacja zaczyna się, gdy współczynnik zdrowia konta spadnie poniżej progu likwidacji. Aave obsługuje księgowość długu i punkt wejścia likwidacji wobec zabezpieczenia vault ERC-20. Avana obsługuje settlement LP stojący za tym vault tokenem.",
       "Dług jest spłacany, vault collateral przejmowane, odpowiadający vault token spalany, rzeczywista pozycja LP rozliczana, a ewentualna wartość rezydualna zwracana według reguły rynku.",
       "Polityka likwidacji żyje na stronie",
-      "Liquidation Framework",
+      "Ram likwidacji",
       ". Ten przepływ zakłada model wartości odzyskiwalnej w",
-      "Price Oracles",
-      "Collateral Factors",
+      "Wyrocznie cenowe",
+      "Czynniki zabezpieczenia",
       "Różne rodziny LP dążą do tego samego stanu końcowego, ale nie dochodzą tam przez identyczne wyjścia. Obsługa oparta na adapterach pozwala każdej rodzinie pooli podążać ścieżką unwindu dopasowaną do własnej mechaniki.",
       "Boty likwidacyjne powinny indeksować aktywne pozycje, odświeżać dryf długu i wyceniać konta z tego samego stacku oracle, którego używa protokół — a nie wyłącznie z surowego stanu spot AMM.",
       "Kontrole rentowności powinny uwzględniać slippage, głębokość trasy, koszty flashloan i ryzyko egzekucji. Duże lub nietypowe unwindy mogą skorzystać z prywatnych ścieżek egzekucji, by ograniczyć niekorzystną ekspozycję MEV.",
@@ -1595,7 +1595,7 @@
   },
   "liquidation": {
     "meta": {
-      "title": "Liquidation Framework",
+      "title": "Ram likwidacji",
       "description": "Jak Avana obsługuje likwidację zabezpieczenia LP opartego na vault, gdy Aave uruchomi punkt wejścia likwidacji."
     },
     "toc": [
@@ -1633,7 +1633,7 @@
       }
     ],
     "strings": [
-      "Liquidation Framework",
+      "Ram likwidacji",
       "Jak Avana obsługuje likwidację zabezpieczenia LP opartego na vault, gdy Aave uruchomi punkt wejścia likwidacji.",
       "Przegląd",
       "Trzy warstwy",
@@ -1693,13 +1693,13 @@
   },
   "hub": {
     "meta": {
-      "title": "Welcome",
+      "title": "Witamy",
       "description": "Pożyczkobiorca wpłaca zatwierdzoną pozycję LP do odpowiedniego Borrow Spoke, ale sama płynność pozostaje wdrożona w bazowym poolu zamiast być wcześniej redeemowana."
     },
     "toc": [
       {
         "id": "welcome",
-        "title": "Welcome"
+        "title": "Witamy"
       },
       {
         "id": "what-is-avana",
@@ -1719,7 +1719,7 @@
       }
     ],
     "strings": [
-      "Welcome",
+      "Witamy",
       "Czym jest Avana?",
       "Jak to działa",
       "Dlaczego zabezpieczenie LP ma znaczenie",
@@ -1756,7 +1756,7 @@
   },
   "safety/bug-bounty": {
     "meta": {
-      "title": "Bug Bounty",
+      "title": "Program nagród za błędy",
       "description": "Avana Bug Bounty — zakres responsible disclosure, powierzchnie ryzyka zabezpieczenia LP oraz filozofia severity oparta na impakcie ekonomicznym."
     },
     "toc": [
@@ -1774,12 +1774,12 @@
       }
     ],
     "strings": [
-      "Bug Bounty",
+      "Program nagród za błędy",
       "Avana Bug Bounty — zakres responsible disclosure, powierzchnie ryzyka zabezpieczenia LP oraz filozofia severity oparta na impakcie ekonomicznym.",
       "Przegląd",
       "Zakres i architektura systemu",
       "Filozofia severity",
-      "Program A - Core Lending",
+      "Program A – podstawowe pożyczanie",
       "Obejmuje główny silnik kredytu, w którym integralność księgowości, collateralization i egzekucja likwidacji bezpośrednio chronią środki użytkowników.",
       "Przepływy wpłaty / wycofania",
       "Logika pożyczki / spłaty",
@@ -1821,13 +1821,13 @@
       "Skompromitowane ścieżki likwidacji lub relay oracle",
       "Strata środków użytkownika przez zaufane integracje",
       "Przestoje operacyjne zamrażające krytyczne akcje",
-      "Critical",
+      "Krytyczny",
       "border-red-400 bg-red-50/70",
       "Bezpośrednia lub pośrednia strata środków, powstanie bad debt, niewypłacalność protokołu lub systemowa manipulacja wyceną zabezpieczenia.",
-      "High",
+      "Wysoki",
       "border-amber-400 bg-amber-50/70",
       "Istotne, ale ograniczone szkody — np. niepoprawne zachowanie likwidacji, częściowy bypass kontroli ryzyka lub zawarte awarie księgowości.",
-      "Medium / Low",
+      "Średni / Niski",
       "border-gray-300 bg-gray-50",
       "Findingi o ograniczonym impakcie, niespójności brzegowe, niekrytyczne problemy logiki lub podatności bez wiarygodnej ścieżki do poważnej szkody ekonomicznej.",
       "Zakres responsible disclosure i wskazówki triage według impaktu ekonomicznego dla badań bezpieczeństwa Avana.",
@@ -1846,7 +1846,7 @@
   },
   "safety/contracts": {
     "meta": {
-      "title": "Smart Contract Security",
+      "title": "Bezpieczeństwo smart kontraktów",
       "description": "Referencja bezpieczeństwa smart kontraktów Avana — granice zaufania, powierzchnie kontraktów oraz to, jak audyty i bug bounty pasują do designu lendingu zabezpieczonego LP."
     },
     "toc": [
@@ -1876,7 +1876,7 @@
       }
     ],
     "strings": [
-      "Smart Contract Security",
+      "Bezpieczeństwo smart kontraktów",
       "Referencja bezpieczeństwa smart kontraktów Avana — granice zaufania, powierzchnie kontraktów oraz to, jak audyty i bug bounty pasują do designu lendingu zabezpieczonego LP.",
       "Przegląd",
       "Wyzwania bezpieczeństwa",
@@ -1892,7 +1892,7 @@
       "Tłumaczą pozycje LP na konserwatywne wartości zabezpieczenia przy użyciu zewnętrznych cen, rekonstrukcji pozycji i założeń wartości odzyskiwalnej.",
       "Warstwa egzekucji likwidacji",
       "Koordynuje ścieżki unwindu, realizację opłat, routing i settlement, gdy niezdrowe konto trzeba zamknąć lub przeskalować.",
-      "Contracts & Security",
+      "Umowy i bezpieczeństwo",
       "Referencja bezpieczeństwa dla powierzchni kontraktów, zależności zewnętrznych i granic przeglądu stojących za lendingiem zabezpieczonym LP.",
       "Avana pożycza pod zabezpieczenie LP, więc przegląd bezpieczeństwa musi obejmować więcej niż to, czy kontrakt się kompiluje albo poprawnie transferuje salda. Musi też obejmować, jak pricing, custody, likwidacja i uprzywilejowane kontrole zachowują się, gdy rynek jest pod stresem.",
       "Przegląd kontraktów, przegląd ekonomiczny i przegląd operacyjny — wszystkie mają znaczenie dla rynków LP. Wzajemnie się wzmacniają i powinny być traktowane jako jeden program bezpieczeństwa, a nie trzy niepowiązane checklisty.",
@@ -1905,7 +1905,7 @@
       "Testuj szoki rynkowe, przypadki brzegowe oracle i awarie routingu likwidacji — nie tylko zachowanie kontraktów na poziomie unit.",
       "Zewnętrzne kanały przeglądu",
       "Formalne audyty oraz",
-      "Bug Bounty",
+      "Program nagród za błędy",
       "program powinny pozostać aktywne. Jeden nie zastępuje drugiego.",
       "• Onchainowa księgowość i settlement likwidacji powinny być deterministyczne po uruchomieniu.",
       "• Źródła oracle, adaptery DEX i operacyjna infrastruktura likwidatorów to zależności zewnętrzne i powinny być monitorowane jako takie.",
@@ -1916,7 +1916,7 @@
   },
   "safety/insurance": {
     "meta": {
-      "title": "Insurance Funds",
+      "title": "Fundusze ubezpieczeniowe",
       "description": "Planowany design backstopu Avana — opisuje, jak przyszły fundusz ubezpieczeniowy mógłby adresować niedobory likwidacji bez zmiany core modelu lendingu zabezpieczonego LP."
     },
     "toc": [
@@ -1942,7 +1942,7 @@
       }
     ],
     "strings": [
-      "Insurance Funds",
+      "Fundusze ubezpieczeniowe",
       "Planowany design backstopu Avana — opisuje, jak przyszły fundusz ubezpieczeniowy mógłby adresować niedobory likwidacji bez zmiany core modelu lendingu zabezpieczonego LP.",
       "Przegląd",
       "Cel",
@@ -1963,7 +1963,7 @@
   },
   "safety": {
     "meta": {
-      "title": "Safety Mechanisms - Risk Framework",
+      "title": "Mechanizmy bezpieczeństwa – Risk Framework",
       "description": "Zarządzanie ryzykiem w skali protokołu dla Hubu Avana i LP Collateral Spokes — w tym role, ograniczone aktualizacje i kontrole awaryjne."
     },
     "toc": [
@@ -1997,7 +1997,7 @@
       }
     ],
     "strings": [
-      "Safety Mechanisms - Risk Framework",
+      "Mechanizmy bezpieczeństwa – Risk Framework",
       "Zarządzanie ryzykiem w skali protokołu dla Hubu Avana i LP Collateral Spokes — w tym role, ograniczone aktualizacje i kontrole awaryjne.",
       "Przegląd",
       "Core zasady",
@@ -2084,7 +2084,7 @@
       "Podjęta akcja",
       "Zamierzony czas trwania",
       "Ścieżka powrotu do normalnej operacji",
-      "Risk Framework",
+      "Ramy ryzyka",
       "Jak Avana proponuje, przegląda i wykonuje zmiany ryzyka w Hubie i LP Collateral Spokes.",
       "Avana Risk Framework definiuje, jak zmiany parametrów są proponowane, sprawdzane i wykonywane w Hubie oraz LP Collateral Spokes. Obejmuje kontrole używane, gdy protokół dostosowuje supply i borrow caps, ustawienia LT/LTV, wejścia stóp procentowych, status rynku i inne parametry zależne od cen, utilization, głębokości poola, koncentracji, zmienności, zachowania pegu, circuit breakerów, zdrowia pozycji i powiązanego stanu.",
       "Zabezpieczenie LP nie jest jedną homogeniczną klasą aktywów. Stable LP, LP skorelowanych aktywów, poole ważone, concentrated liquidity i inne designy AMM mogą mieć własne ścieżki wyceny, likwidacji i tryby awarii właściwe dla spoke. Framework istnieje po to, by te różnice były odzwierciedlone w procesie aktualizacji zamiast być ukryte za jednym generycznym ustawieniem ryzyka.",

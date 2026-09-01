@@ -78,7 +78,7 @@
     "notFound": {
       "title": "Ця сторінка недоступна.",
       "body": "Адреса може бути неправильною або сторінка могла переміститися.",
-      "home": "Go to homepage",
+      "home": "На головну",
       "faq": "Часті запитання"
     },
     "sandboxNotice": "Sandbox дані показані лише для попереднього перегляду. APYs, ціни та прибутки є ілюстративними і можуть відрізнятися від умов реального ринку.",
@@ -89,7 +89,7 @@
       "shareOnLinkedIn": "Поділитися на LinkedIn",
       "previousPost": "Попередній пост",
       "nextPost": "Наступний пост",
-      "onThisPage": "On this page"
+      "onThisPage": "На цій сторінці"
     },
     "docs": {
       "previous": "Попередній",
@@ -101,7 +101,8 @@
         "liquidation": "Рамки ліквідації",
         "integrations": "Підтримувані інтеграції",
         "safety": "Механізми безпеки",
-        "legal": "Юридичний та комплаєнс"
+        "legal": "Юридичний та комплаєнс",
+        "copilot": "Запитати ШІ"
       },
       "items": {
         "overview": "Огляд",
@@ -133,7 +134,11 @@
         "bugBounty": "Програма винагороди за помилки",
         "insuranceFunds": "Страхові фонди",
         "securityDisclosures": "Розкриття інформації про безпеку",
-        "legalDisclaimer": "Юридична заява"
+        "legalDisclaimer": "Юридична заява",
+        "aiIntroduction": "Вступ до ШІ",
+        "copilotProtocols": "Підтримувані протоколи",
+        "copilotPrompts": "Приклади промптів",
+        "copilotWorkflow": "Робочий процес агента"
       }
     },
     "faqUi": {
@@ -164,6 +169,19 @@
       "darkMode": "Темний режим",
       "systemMode": "Система",
       "tapToChange": "Натисніть, щоб змінити"
+    },
+    "exportMenu": {
+      "copyPage": "Копіювати сторінку",
+      "copied": "Скопійовано",
+      "copyPageMarkdown": "Копіювати сторінку як Markdown",
+      "copyPageLink": "Копіювати посилання на сторінку",
+      "copyPageLinkDescription": "Скопіювати URL цієї сторінки в буфер обміну",
+      "openInChatGPT": "Відкрити в ChatGPT",
+      "openInClaude": "Відкрити в Claude",
+      "openInGrok": "Відкрити в Grok",
+      "openInPerplexity": "Відкрити в Perplexity",
+      "askAboutPage": "Поставити запитання про цю сторінку",
+      "reviewPrompt": "Перегляньте вміст сторінки Avana нижче та дайте відповіді на запитання."
     }
   },
   "meta": {
@@ -230,12 +248,12 @@
       "subtitle": "Продовжуйте отримувати комісію за торгівлю, одночасно розблоковуючи ліквідність з позицій Uniswap, Curve та Balancer.",
       "subtitleMobileLines": [
         "Отримайте доступ до 80% вартості вашого пулу ліквідності",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "під 5,5% APR без виведення ліквідності чи",
+        "відмови від торгових комісій."
       ],
       "subtitleDesktopLines": [
         "Отримайте доступ до 80% вартості вашого Пулу Ліквідності за 5,5% APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "під 5,5% APR без виведення ліквідності чи відмови від торгових комісій."
       ],
       "primaryCta": "Спробуй Sandbox",
       "secondaryCta": "Читати документи"

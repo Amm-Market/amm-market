@@ -78,7 +78,7 @@
     "notFound": {
       "title": "Ta strona jest niedostępna.",
       "body": "Adres może być nieprawidłowy lub strona mogła zostać przeniesiona.",
-      "home": "Go to homepage",
+      "home": "Przejdź do strony głównej",
       "faq": "Najczęściej zadawane pytania"
     },
     "sandboxNotice": "Sandbox dane pokazane tylko w podglądzie. APYs, ceny i zwroty są przykładowe i mogą różnić się od rzeczywistych warunków rynkowych.",
@@ -89,7 +89,7 @@
       "shareOnLinkedIn": "Udostępnij na LinkedIn",
       "previousPost": "Poprzedni wpis",
       "nextPost": "Następny post",
-      "onThisPage": "On this page"
+      "onThisPage": "Na tej stronie"
     },
     "docs": {
       "previous": "Poprzedni",
@@ -101,7 +101,8 @@
         "liquidation": "Ramowy plan likwidacji",
         "integrations": "Obsługiwane integracje",
         "safety": "Mechanizmy bezpieczeństwa",
-        "legal": "Prawo i zgodność"
+        "legal": "Prawo i zgodność",
+        "copilot": "Zapytaj AI"
       },
       "items": {
         "overview": "Przegląd",
@@ -133,7 +134,11 @@
         "bugBounty": "Program nagród za błędy",
         "insuranceFunds": "Fundusze ubezpieczeniowe",
         "securityDisclosures": "Ujawnienia bezpieczeństwa",
-        "legalDisclaimer": "Zastrzeżenie prawne"
+        "legalDisclaimer": "Zastrzeżenie prawne",
+        "aiIntroduction": "Wprowadzenie do AI",
+        "copilotProtocols": "Obsługiwane protokoły",
+        "copilotPrompts": "Przykłady promptów",
+        "copilotWorkflow": "Przepływ agenta"
       }
     },
     "faqUi": {
@@ -162,8 +167,21 @@
     "theme": {
       "lightMode": "Tryb jasny",
       "darkMode": "Tryb ciemny",
-      "systemMode": "System",
+      "systemMode": "Systemowy",
       "tapToChange": "Dotknij, aby zmienić"
+    },
+    "exportMenu": {
+      "copyPage": "Kopiuj stronę",
+      "copied": "Skopiowano",
+      "copyPageMarkdown": "Kopiuj stronę jako Markdown",
+      "copyPageLink": "Kopiuj link do strony",
+      "copyPageLinkDescription": "Skopiuj adres URL tej strony do schowka",
+      "openInChatGPT": "Otwórz w ChatGPT",
+      "openInClaude": "Otwórz w Claude",
+      "openInGrok": "Otwórz w Grok",
+      "openInPerplexity": "Otwórz w Perplexity",
+      "askAboutPage": "Zadaj pytania o tę stronę",
+      "reviewPrompt": "Przejrzyj treść tej strony Avana i odpowiedz na pytania."
     }
   },
   "meta": {
@@ -230,12 +248,12 @@
       "subtitle": "Kontynuuj zarabianie opłat handlowych, jednocześnie uwalniając płynność z pozycji Uniswap, Curve i Balancer.",
       "subtitleMobileLines": [
         "Uzyskaj dostęp do nawet 80% wartości swojego Poolu Płynności",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "przy 5,5% APR bez wycofywania płynności ani",
+        "rezygnacji z opłat transakcyjnych."
       ],
       "subtitleDesktopLines": [
         "Uzyskaj dostęp do nawet 80% wartości swojego Puli Płynności przy 5,5% APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "przy 5,5% APR bez wycofywania płynności ani rezygnacji z opłat transakcyjnych."
       ],
       "primaryCta": "Spróbuj Sandbox",
       "secondaryCta": "Czytaj dokumentację"

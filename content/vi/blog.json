@@ -6,7 +6,7 @@
       "date": "July 24, 2026",
       "description": "Cách Avana quản trị rủi ro tài sản thế chấp LP trên các thị trường Spoke với cập nhật có giới hạn, rà soát độc lập và kiểm soát khẩn cấp.",
       "image": "/images/blog/lp-risk-governance.png",
-      "category": "Developers",
+      "category": "Nhà phát triển",
       "tag": "Giao thức",
       "sections": [
         {
@@ -47,12 +47,12 @@
       "date": "July 22, 2026",
       "description": "Vì sao Avana dùng Smart Agents để theo dõi health, xử lý vị thế theo từng venue và giữ độ phủ thanh lý ổn định khi thị trường căng thẳng.",
       "image": "/images/blog/smart-agents-lp-collateral.png",
-      "category": "Developers",
+      "category": "Nhà phát triển",
       "tag": "Giao thức",
       "sections": [
         {
           "id": "lp-loans-are-operational",
-          "title": "LP loans are operational work",
+          "title": "Khoản vay LP là công việc vận hành",
           "paragraphs": [
             "Vào Avana, LP tài sản đảm bảo đang hoạt động, phụ thuộc vào đường đi, và đòi hỏi vận hành cao. Nó tạo ra phí, thay đổi thành phần, thay đổi rủi ro khi thị trường biến động, và có thể yêu cầu các hành động riêng cho từng sàn giao dịch đúng lúc một vị thế gặp áp lực. Một thị trường token tiêu chuẩn thường có thể giảm việc thanh lý và giám sát xuống một kích hoạt và đường trao đổi đơn giản hơn. LP tài sản đảm bảo thì khác. Hệ thống phải biết vị thế nào đang hoạt động, nợ đang biến động như thế nào, tài sản đảm bảo sẽ trông như thế nào khi thực hiện thoái lui thực, phí có thể được thực hiện ra sao, con đường loại bỏ riêng theo từng sàn nào áp dụng, và liệu việc thanh lý còn khả thi sau khi trượt giá, định tuyến, và chi phí thực hiện. Những chi tiết đó chính là những gì phân biệt sự bao phủ lý thuyết trên giấy tờ với sự bao phủ vẫn hoạt động khi thị trường trở nên khó khăn."
           ]
@@ -82,7 +82,7 @@
       "date": "July 20, 2026",
       "description": "Cách Avana thanh lý tài sản thế chấp LP với unwind có kiểm soát, can thiệp một phần, ưu tiên phí khi có thể, và lộ trình theo từng venue.",
       "image": "/images/blog/lp-liquidation-workflow.png",
-      "category": "Developers",
+      "category": "Nhà phát triển",
       "tag": "Giao thức",
       "sections": [
         {
@@ -123,7 +123,7 @@
       "date": "July 17, 2026",
       "description": "Cách Avana Oracle định giá tài sản thế chấp LP bằng giá trị có thể thu hồi, tái dựng xác định và haircut thu hồi thận trọng.",
       "image": "/images/blog/lp-collateral-oracle-problem.png",
-      "category": "Developers",
+      "category": "Nhà phát triển",
       "tag": "Giao thức",
       "sections": [
         {
@@ -164,7 +164,7 @@
       "date": "July 15, 2026",
       "description": "Cách Avana cấu trúc bảo mật nhiều lớp cho tài sản thế chấp LP, từ kiến trúc và oracle đến health, thanh lý và vận hành.",
       "image": "/images/blog/security-deep-dive.png",
-      "category": "Developers",
+      "category": "Nhà phát triển",
       "tag": "Giao thức",
       "sections": [
         {
@@ -206,7 +206,7 @@
       "date": "July 13, 2026",
       "description": "Cách LP dùng Avana để tài trợ buffer, offset hướng và thói quen hedge kỷ luật hơn mà không cần thoát hoàn toàn khỏi pool.",
       "image": "/images/blog/hedge-lp-position.png",
-      "category": "For LPs",
+      "category": "Dành cho LP",
       "tag": "Hướng dẫn",
       "sections": [
         {
@@ -247,7 +247,7 @@
       "date": "July 10, 2026",
       "description": "Cách nghĩ về yield looping với tài sản thế chấp LP của Avana: buffer, stress test, kỷ luật thoát lệnh và đòn bẩy bền vững.",
       "image": "/images/blog/yield-looping-playbook.png",
-      "category": "For LPs",
+      "category": "Dành cho LP",
       "tag": "Hướng dẫn",
       "sections": [
         {
@@ -288,7 +288,7 @@
       "date": "July 8, 2026",
       "description": "Những gì tài sản thế chấp LP của Avana cho phép: vay, hedge, linh hoạt ngân quỹ và dùng vốn thanh khoản hiệu quả hơn.",
       "image": "/images/blog/unleashing-lp-tokens.png",
-      "category": "For LPs",
+      "category": "Dành cho LP",
       "tag": "Hướng dẫn",
       "sections": [
         {
@@ -329,7 +329,7 @@
       "date": "July 6, 2026",
       "description": "Cách Avana hỗ trợ vị thế LP Aerodrome trên Base để chúng vẫn hoạt động trong khi hỗ trợ vay qua Spoke Aave v4 riêng.",
       "image": "/images/blog/aerodrome-lp-collateral.png",
-      "category": "Developers",
+      "category": "Nhà phát triển",
       "tag": "Giao thức",
       "sections": [
         {
@@ -357,7 +357,7 @@
         },
         {
           "id": "if-health-breaks",
-          "title": "If health breaks",
+          "title": "Khi chỉ số sức khỏe suy giảm",
           "paragraphs": [
             "Nếu một vị trí trở nên không an toàn, Avana sẽ giải phóng vị trí thanh khoản đang hoạt động, tính toán các tài sản cơ sở, và khôi phục khả năng thanh toán với mức gián đoạn tối thiểu theo khả năng của thị trường. Cấu trúc của quỹ quyết định cách thức thanh lý hoạt động. Đó là một lý do khác mà tài sản bảo đảm Aerodrome nên thuộc về một nhánh riêng, thay vì là một phần mở rộng tự do của thị trường cho vay rộng hơn."
           ]
@@ -370,7 +370,7 @@
       "date": "July 3, 2026",
       "description": "Cách Avana xử lý tài sản thế chấp LP Curve cho pool ổn định và tương quan qua Spoke Aave v4 riêng.",
       "image": "/images/blog/curve-lp-collateral.png",
-      "category": "Developers",
+      "category": "Nhà phát triển",
       "tag": "Giao thức",
       "sections": [
         {
@@ -411,7 +411,7 @@
       "date": "July 1, 2026",
       "description": "Cách Avana hỗ trợ LP pool có trọng số của Balancer làm tài sản thế chấp trên Aave v4 trong khi mức phơi nhiễm vẫn hoạt động.",
       "image": "/images/blog/balancer-lp-collateral.png",
-      "category": "Developers",
+      "category": "Nhà phát triển",
       "tag": "Giao thức",
       "sections": [
         {
@@ -446,7 +446,7 @@
       "date": "June 28, 2026",
       "description": "Cách Avana biến vị thế LP Uniswap thành tài sản thế chấp Aave v4 trong khi chúng vẫn trong pool và tiếp tục nhận phí.",
       "image": "/images/blog/uniswap-lp-collateral.png",
-      "category": "Developers",
+      "category": "Nhà phát triển",
       "tag": "Giao thức",
       "sections": [
         {
@@ -516,7 +516,7 @@
       "date": "June 23, 2026",
       "description": "Vì sao nhà cung cấp thanh khoản không phải chọn giữa nhận phí và tiếp cận vốn, và cách Avana mở rộng tài sản thế chấp LP trên Aave v4.",
       "image": "/images/blog/avana-next-step-liquidity-providers.png",
-      "category": "Community",
+      "category": "Cộng đồng",
       "tag": "Chiến lược",
       "sections": [
         {
@@ -551,7 +551,7 @@
       "date": "June 20, 2026",
       "description": "Cách tài sản thế chấp LP của Avana giúp DAO, treasury, quỹ và công ty crypto tiếp cận vốn mà không tháo thanh khoản đang tạo doanh thu.",
       "image": "/images/blog/lp-collateral-for-institutions.png",
-      "category": "For Institutions",
+      "category": "Dành cho tổ chức",
       "tag": "Tổ chức",
       "sections": [
         {
@@ -593,12 +593,12 @@
       "date": "June 17, 2026",
       "description": "Góc nhìn developer về hạ tầng tài sản thế chấp LP của Avana: giám sát, tự động hóa, dịch vụ thanh lý và cơ hội cho builder.",
       "image": "/images/blog/developer-view-lp-collateral.png",
-      "category": "Developers",
+      "category": "Nhà phát triển",
       "tag": "Giao thức",
       "sections": [
         {
           "id": "a-new-design-surface",
-          "title": "A new design surface",
+          "title": "Một bề mặt thiết kế mới",
           "paragraphs": [
             "Hầu hết cơ sở hạ tầng DeFi được xây dựng xung quanh tài sản thế chấp đơn giản. Các tài sản đơn lẻ dễ định giá, theo dõi và thanh lý. Các vị thế LP hoạt động, có hai bên, và cấu trúc phức tạp hơn. Giá trị của chúng thay đổi theo tài sản cơ sở, thành phần của quỹ, phí tích lũy và phạm vi. Sự phức tạp đó là lý do tại sao tài sản thế chấp LP khó được tích hợp vào hệ thống cho vay, và đó cũng là lý do tại sao Avana tạo ra một bề mặt thiết kế mới cho các nhà phát triển."
           ]
@@ -628,7 +628,7 @@
       "date": "June 14, 2026",
       "description": "Bên trong kiến trúc tài sản thế chấp LP của Avana trên Aave v4, gồm Hub, Spoke, định giá, thiết kế oracle và logic thanh lý.",
       "image": "/images/blog/inside-avana-architecture.png",
-      "category": "Developers",
+      "category": "Nhà phát triển",
       "tag": "Giao thức",
       "sections": [
         {
@@ -739,7 +739,7 @@
       "date": "June 4, 2026",
       "description": "Hướng dẫn cơ bản về tài sản thế chấp LP trên Avana: hành vi LP, LTV, impermanent loss, thanh lý và các bước đầu thận trọng.",
       "image": "/images/blog/beginners-guide-lp-collateral.png",
-      "category": "For LPs",
+      "category": "Dành cho LP",
       "tag": "Hướng dẫn",
       "sections": [
         {
@@ -767,7 +767,7 @@
         },
         {
           "id": "first-steps",
-          "title": "A sensible first path",
+          "title": "Con đường đầu tiên hợp lý",
           "paragraphs": [
             "Ngay cả khi được dùng làm tài sản đảm bảo, một vị trí LP vẫn tiếp tục kiếm phí và duy trì tiếp xúc với thị trường. Đó là lợi ích của hiệu quả sử dụng vốn. Đối với người mới bắt đầu, cách tiếp cận an toàn nhất là bắt đầu thận trọng với Avana: vay một cách vừa phải, sử dụng các loại pool đơn giản và ổn định trước, và chú ý đến cách sức khỏe vị trí thay đổi khi thị trường biến động. Khi bạn hiểu cách giá trị LP, nợ và ngưỡng thanh lý tương tác với nhau, mô hình trở nên dễ sử dụng hơn để quản lý một cách có trách nhiệm."
           ]

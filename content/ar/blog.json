@@ -6,7 +6,7 @@
       "date": "July 24, 2026",
       "description": "كيف يحكم Avana مخاطر ضمان LP عبر أسواق Spoke بتحديثات محدودة ومراجعة مستقلة واحتواء طارئ.",
       "image": "/images/blog/lp-risk-governance.png",
-      "category": "Developers",
+      "category": "المطورون",
       "tag": "البروتوكول",
       "sections": [
         {
@@ -47,12 +47,12 @@
       "date": "July 22, 2026",
       "description": "لماذا يستخدم Avana Smart Agents لمراقبة الصحة وخدمة المراكز الخاصة بكل مكان وإبقاء تغطية التصفية موثوقة تحت الضغط.",
       "image": "/images/blog/smart-agents-lp-collateral.png",
-      "category": "Developers",
+      "category": "المطورون",
       "tag": "البروتوكول",
       "sections": [
         {
           "id": "lp-loans-are-operational",
-          "title": "LP loans are operational work",
+          "title": "قروض LP عمل تشغيلي",
           "paragraphs": [
             "في Avana، LP الضمان نشط، يعتمد على المسار، ويتطلب جهودًا تشغيلية كبيرة. يكسب الرسوم، يغير التكوين، يغير المخاطر مع تحرك الأسواق، وقد يتطلب إجراءات محددة في المكان بالضبط عندما تصبح المراكز مضغوطة. غالبًا ما يمكن لسوق الرموز المعيارية أن يقلل من التصفية والمراقبة إلى مجرد محفز ومسار تبادل أبسط. يختلف الضمان LP. يجب أن يعرف النظام أي المراكز نشطة، كيف ينحرف الدين، كيف سيبدو الضمان في حالة تصفية حقيقية، كيف يمكن تحقيق الرسوم، أي مسار إزالة محدد بالمكان ينطبق، وما إذا كانت التصفية لا تزال ممكنة بعد الانزلاق، والتوجيه، وتكلفة التنفيذ. هذه التفاصيل هي ما يميز التغطية النظرية على الورق عن التغطية التي تعمل بالفعل عندما تصبح الأسواق صعبة."
           ]
@@ -82,7 +82,7 @@
       "date": "July 20, 2026",
       "description": "كيف يصفّي Avana ضمان LP بفكّ مضبوط وتدخل جزئي والرسوم أولًا حيث أمكن ومسارات خاصة بكل مكان.",
       "image": "/images/blog/lp-liquidation-workflow.png",
-      "category": "Developers",
+      "category": "المطورون",
       "tag": "البروتوكول",
       "sections": [
         {
@@ -123,7 +123,7 @@
       "date": "July 17, 2026",
       "description": "كيف يقيّم Avana Oracle ضمان LP عبر القيمة القابلة للاسترداد وإعادة بناء حتمية وخصومات استرداد محافظة.",
       "image": "/images/blog/lp-collateral-oracle-problem.png",
-      "category": "Developers",
+      "category": "المطورون",
       "tag": "البروتوكول",
       "sections": [
         {
@@ -164,7 +164,7 @@
       "date": "July 15, 2026",
       "description": "كيف يبني Avana أمانًا طبقيًا لضمان LP من الهندسة والأوراكل حتى الصحة والتصفية والعمليات.",
       "image": "/images/blog/security-deep-dive.png",
-      "category": "Developers",
+      "category": "المطورون",
       "tag": "البروتوكول",
       "sections": [
         {
@@ -206,7 +206,7 @@
       "date": "July 13, 2026",
       "description": "كيف يمكن لمزوّدي السيولة استخدام Avana لتمويل الهوامش والتحوط الاتجاهي وعادات تحوط أكثر انضباطًا دون الخروج الكامل من المجمّع.",
       "image": "/images/blog/hedge-lp-position.png",
-      "category": "For LPs",
+      "category": "لمزودي السيولة",
       "tag": "أدلة",
       "sections": [
         {
@@ -247,7 +247,7 @@
       "date": "July 10, 2026",
       "description": "كيف تفكّر في حلقات العائد مع ضمان LP في Avana: هوامش واختبارات ضغط وانضباط خروج ورافعة مستدامة.",
       "image": "/images/blog/yield-looping-playbook.png",
-      "category": "For LPs",
+      "category": "لمزودي السيولة",
       "tag": "أدلة",
       "sections": [
         {
@@ -288,7 +288,7 @@
       "date": "July 8, 2026",
       "description": "ما يتيحه ضمان LP في Avana: اقتراض وتحوط ومرونة خزينة واستخدام أكثر كفاءة لرأس مال السيولة المنتج.",
       "image": "/images/blog/unleashing-lp-tokens.png",
-      "category": "For LPs",
+      "category": "لمزودي السيولة",
       "tag": "أدلة",
       "sections": [
         {
@@ -329,7 +329,7 @@
       "date": "July 6, 2026",
       "description": "كيف يدعم Avana مراكز LP في Aerodrome على Base لتبقى نشطة بينما تدعم الاقتراض عبر Spoke مخصّص من Aave v4.",
       "image": "/images/blog/aerodrome-lp-collateral.png",
-      "category": "Developers",
+      "category": "المطورون",
       "tag": "البروتوكول",
       "sections": [
         {
@@ -357,7 +357,7 @@
         },
         {
           "id": "if-health-breaks",
-          "title": "If health breaks",
+          "title": "إذا تدهورت الصحة",
           "paragraphs": [
             "إذا أصبح الموقف غير آمن، تقوم Avana بتصفية موقف السيولة النشط، وتحسب الأصول الأساسية، وتستعيد الملاءة بأقل قدر ممكن من الاضطراب بحسب ما يسمح به السوق. تحدد هيكلية المجمع كيفية عمل التصفية. هذا سبب آخر يجعل ضمانة Aerodrome يجب أن تكون في محور مخصص بدلاً من أن تكون امتدادًا فضفاضًا لسوق الإقراض الأوسع."
           ]
@@ -370,7 +370,7 @@
       "date": "July 3, 2026",
       "description": "كيف يعالج Avana ضمان LP من Curve للمجمّعات المستقرة والمترابطة عبر Spoke مخصّص من Aave v4.",
       "image": "/images/blog/curve-lp-collateral.png",
-      "category": "Developers",
+      "category": "المطورون",
       "tag": "البروتوكول",
       "sections": [
         {
@@ -411,7 +411,7 @@
       "date": "July 1, 2026",
       "description": "كيف يدعم Avana LP لمجمّعات Balancer المرجّحة كضمان على Aave v4 بينما يبقى التعرّض نشطًا.",
       "image": "/images/blog/balancer-lp-collateral.png",
-      "category": "Developers",
+      "category": "المطورون",
       "tag": "البروتوكول",
       "sections": [
         {
@@ -446,7 +446,7 @@
       "date": "June 28, 2026",
       "description": "كيف يحوّل Avana مراكز LP في Uniswap إلى ضمان Aave v4 بينما تبقى في المجمّع وتواصل كسب الرسوم.",
       "image": "/images/blog/uniswap-lp-collateral.png",
-      "category": "Developers",
+      "category": "المطورون",
       "tag": "البروتوكول",
       "sections": [
         {
@@ -516,7 +516,7 @@
       "date": "June 23, 2026",
       "description": "لماذا لا ينبغي لمزوّدي السيولة الاختيار بين كسب الرسوم والوصول إلى رأس المال، وكيف يوسّع Avana ضمان LP على Aave v4.",
       "image": "/images/blog/avana-next-step-liquidity-providers.png",
-      "category": "Community",
+      "category": "المجتمع",
       "tag": "استراتيجية",
       "sections": [
         {
@@ -551,7 +551,7 @@
       "date": "June 20, 2026",
       "description": "كيف يمكن لضمان LP في Avana مساعدة DAO والخزائن والصناديق والشركات المشفّرة الأصلية على الوصول إلى رأس المال دون فكّ سيولة منتجة.",
       "image": "/images/blog/lp-collateral-for-institutions.png",
-      "category": "For Institutions",
+      "category": "للمؤسسات",
       "tag": "مؤسسات",
       "sections": [
         {
@@ -593,12 +593,12 @@
       "date": "June 17, 2026",
       "description": "عرض مطوّر لبنية ضمان LP في Avana: المراقبة والأتمتة وخدمات التصفية وفرص البنّائين.",
       "image": "/images/blog/developer-view-lp-collateral.png",
-      "category": "Developers",
+      "category": "المطورون",
       "tag": "البروتوكول",
       "sections": [
         {
           "id": "a-new-design-surface",
-          "title": "A new design surface",
+          "title": "سطح تصميم جديد",
           "paragraphs": [
             "يتم بناء معظم DeFi البنية التحتية حول الضمانات البسيطة. الأصول الفردية سهلة التسعير والرصد والتصفية. LP المراكز نشطة، مزدوجة الجانب، وأكثر تعقيدًا من الناحية الهيكلية. تتغير قيمتها حسب الأصول الأساسية، وتكوين المجموعة، وتراكم الرسوم، والنطاق. هذا التعقيد هو السبب في أن ضمانات LP كانت صعبة الدمج في أنظمة الإقراض، ولهذا السبب تخلق Avana سطح تصميم جديد للمطورين."
           ]
@@ -628,7 +628,7 @@
       "date": "June 14, 2026",
       "description": "داخل هندسة ضمان LP في Avana على Aave v4: Hub وSpokes والتقييم وتصميم الأوراكل ومنطق التصفية.",
       "image": "/images/blog/inside-avana-architecture.png",
-      "category": "Developers",
+      "category": "المطورون",
       "tag": "البروتوكول",
       "sections": [
         {
@@ -739,7 +739,7 @@
       "date": "June 4, 2026",
       "description": "دليل مبتدئ لضمان LP على Avana: سلوك LP وLTV والخسارة غير الدائمة والتصفية وخطوات أولى حذرة.",
       "image": "/images/blog/beginners-guide-lp-collateral.png",
-      "category": "For LPs",
+      "category": "لمزودي السيولة",
       "tag": "أدلة",
       "sections": [
         {
@@ -767,7 +767,7 @@
         },
         {
           "id": "first-steps",
-          "title": "A sensible first path",
+          "title": "مسار أول معقول",
           "paragraphs": [
             "حتى كضمان، يواصل المركز LP جني الرسوم والحفاظ على التعرض للسوق. هذه هي المكاسب في كفاءة رأس المال. بالنسبة للمبتدئين، النهج الأكثر أمانًا هو البدء بحذر على Avana: اقترض بمستوى معتدل، استخدم أنواع المجمعات الأبسط والأكثر استقرارًا أولاً، وكن منتبهًا لكيفية تغير صحة المركز مع تحرك الأسواق. بمجرد أن تفهم كيفية تفاعل قيمة LP والديون وعوامل التصفية، يصبح النموذج أسهل بكثير للاستخدام بمسؤولية."
           ]

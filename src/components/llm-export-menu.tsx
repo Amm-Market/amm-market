@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useRef, useState, type ComponentType, type SVGProps } from "react"
+import { useEffect, useMemo, useRef, useState, type ComponentType, type SVGProps } from "react"
 import { Bot, Check, ChevronDown, Copy, Link } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { exportElementToMarkdown, getExportRootFromElement } from "@/lib/developer-doc-export"
 
 interface LlmExportMenuProps {
@@ -75,11 +76,11 @@ function PerplexityMark(props: SVGProps<SVGSVGElement>) {
   )
 }
 
-function buildPagePrompt(root: HTMLElement): string {
+function buildPagePrompt(root: HTMLElement, reviewPrompt: string): string {
   const title = document.title.replace(/\s+\|\s+Avana$/, "")
   const markdown = exportElementToMarkdown(root)
   return [
-    `Review this Avana developer page and answer questions using the content below.`,
+    reviewPrompt,
     `Page title: ${title}`,
     `Page URL: ${window.location.href}`,
     "",
@@ -92,51 +93,6 @@ function buildPagePrompt(root: HTMLElement): string {
 function openPrefilledUrl(baseUrl: string, prompt: string) {
   window.open(`${baseUrl}${encodeURIComponent(prompt)}`, "_blank", "noopener,noreferrer")
 }
-
-const topAction: MenuItem = {
-  title: "Copy page",
-  description: "Copy page as Markdown",
-  icon: Copy,
-  action: "copy-markdown",
-}
-
-const TopActionIcon = topAction.icon ?? Copy
-
-const aiItems: MenuItem[] = [
-  {
-    title: "Open in ChatGPT",
-    description: "Ask questions about this page",
-    mark: OpenAiMark,
-    action: "open-chatgpt",
-  },
-  {
-    title: "Open in Claude",
-    description: "Ask questions about this page",
-    mark: AnthropicMark,
-    action: "open-claude",
-  },
-  {
-    title: "Open in Grok",
-    description: "Ask questions about this page",
-    mark: XaiMark,
-    action: "open-grok",
-  },
-  {
-    title: "Open in Perplexity",
-    description: "Ask questions about this page",
-    mark: PerplexityMark,
-    action: "open-perplexity",
-  },
-]
-
-const utilityItems: MenuItem[] = [
-  {
-    title: "Copy page link",
-    description: "Copy this page URL to clipboard",
-    icon: Link,
-    action: "copy-link",
-  },
-]
 
 function MenuIcon({ item }: { item: MenuItem }) {
   if (item.mark) {
@@ -180,10 +136,63 @@ function MenuRow({
 }
 
 export function LlmExportMenu({ className }: LlmExportMenuProps) {
+  const t = useTranslations("common.exportMenu")
   const containerRef = useRef<HTMLDivElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [copied, setCopied] = useState(false)
+
+  const topAction = useMemo<MenuItem>(
+    () => ({
+      title: t("copyPage"),
+      description: t("copyPageMarkdown"),
+      icon: Copy,
+      action: "copy-markdown",
+    }),
+    [t],
+  )
+
+  const aiItems = useMemo<MenuItem[]>(
+    () => [
+      {
+        title: t("openInChatGPT"),
+        description: t("askAboutPage"),
+        mark: OpenAiMark,
+        action: "open-chatgpt",
+      },
+      {
+        title: t("openInClaude"),
+        description: t("askAboutPage"),
+        mark: AnthropicMark,
+        action: "open-claude",
+      },
+      {
+        title: t("openInGrok"),
+        description: t("askAboutPage"),
+        mark: XaiMark,
+        action: "open-grok",
+      },
+      {
+        title: t("openInPerplexity"),
+        description: t("askAboutPage"),
+        mark: PerplexityMark,
+        action: "open-perplexity",
+      },
+    ],
+    [t],
+  )
+
+  const utilityItems = useMemo<MenuItem[]>(
+    () => [
+      {
+        title: t("copyPageLink"),
+        description: t("copyPageLinkDescription"),
+        icon: Link,
+        action: "copy-link",
+      },
+    ],
+    [t],
+  )
 
   useEffect(() => {
     if (!isOpen) return
@@ -233,7 +242,7 @@ export function LlmExportMenu({ className }: LlmExportMenuProps) {
     const root = getExportRoot()
     if (!root) return
 
-    const prompt = buildPagePrompt(root)
+    const prompt = buildPagePrompt(root, t("reviewPrompt"))
 
     switch (target) {
       case "chatgpt":
@@ -276,6 +285,8 @@ export function LlmExportMenu({ className }: LlmExportMenuProps) {
     }
   }
 
+  const TopActionIcon = topAction.icon ?? Copy
+
   return (
     <div ref={containerRef} className={className}>
       <div ref={menuRef} className="relative self-start" data-export-skip>
@@ -287,7 +298,7 @@ export function LlmExportMenu({ className }: LlmExportMenuProps) {
           aria-haspopup="menu"
         >
           {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-          <span className="text-[0.82rem] font-medium">{copied ? "Copied" : "Copy page"}</span>
+          <span className="text-[0.82rem] font-medium">{copied ? t("copied") : t("copyPage")}</span>
           <span className="h-3.5 w-px bg-border" aria-hidden="true" />
           <ChevronDown className={`h-3.5 w-3.5 transition ${isOpen ? "rotate-180" : ""}`} />
         </button>
@@ -320,7 +331,7 @@ export function LlmExportMenu({ className }: LlmExportMenuProps) {
 
               <div className="space-y-0">
                 {[...aiItems, ...utilityItems].map((item) => (
-                  <MenuRow key={item.title} item={item} onClick={handleAction} />
+                  <MenuRow key={item.action} item={item} onClick={handleAction} />
                 ))}
               </div>
             </div>
