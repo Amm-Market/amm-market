@@ -146,14 +146,14 @@ export default function HeaderDesktopMenuPanel({
       }`}
       aria-hidden={!isOpen}
     >
-      <div className="border-b border-[#01AACF] bg-white shadow-[0_24px_72px_rgba(0,0,0,0.04)]">
+      <div className="border-b border-border bg-white shadow-[0_24px_72px_rgba(0,0,0,0.04)]">
         <div className="w-full bg-white px-4 py-5 sm:px-6 md:px-5 md:py-5 lg:px-6 xl:px-8">
           <div
             key={`${menu.id}-${animationCycle}`}
             className="grid gap-6 lg:min-h-[14.75rem] lg:grid-cols-[minmax(0,19rem)_minmax(15rem,18rem)] lg:gap-2.5 xl:grid-cols-[minmax(0,20rem)_minmax(15rem,18rem)] xl:gap-3"
           >
             <div className="space-y-2.5">
-              <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-[#01AACF]">
+              <p className="type-meta-label text-type-tertiary">
                 {toSentenceCase(menu.eyebrow)}
               </p>
               <div className="space-y-1">
@@ -183,7 +183,7 @@ export default function HeaderDesktopMenuPanel({
               style={{ transitionDelay: "280ms" }}
             >
               {menu.supportingTitle ? (
-                <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-[#01AACF]">{menu.supportingTitle}</p>
+                <p className="type-meta-label text-type-tertiary">{menu.supportingTitle}</p>
               ) : null}
               <div className="space-y-3">
                 {menu.supportingItems.map((item, index) => (

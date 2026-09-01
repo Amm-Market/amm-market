@@ -129,7 +129,7 @@ export default async function Footer(): Promise<React.JSX.Element> {
 
   return (
     <footer className="w-full">
-      <div className="h-px w-full bg-[#01AACF]" aria-hidden="true" />
+      <div className="h-px w-full bg-border" aria-hidden="true" />
       <div className="site-content-shell pt-12 pb-6">
         <div className="grid gap-x-8 gap-y-12 lg:grid-cols-[minmax(16rem,1.2fr)_minmax(0,1fr)] lg:gap-x-8 xl:gap-x-10">
           <div className="space-y-5 lg:max-w-sm lg:justify-self-start">
@@ -158,7 +158,7 @@ export default async function Footer(): Promise<React.JSX.Element> {
                   aria-label={link.label}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#2F414B]/12 bg-white text-[#0F1518] transition hover:border-[#01AACF]/40 hover:bg-[#01AACF]/8"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#2F414B]/12 bg-white text-[#0F1518] transition hover:border-type-accent/40 hover:bg-type-accent/8"
                 >
                   {link.icon}
                 </a>
@@ -172,7 +172,7 @@ export default async function Footer(): Promise<React.JSX.Element> {
                 key={section.title}
                 className={`flex flex-col gap-4 text-sm font-normal text-gray-900 ${section.className ?? ""}`}
               >
-                <span className={`font-medium ${index < 3 ? "text-[#01AACF]" : ""}`}>{section.title}</span>
+                <span className="font-medium text-type-tertiary">{section.title}</span>
                 <div className="flex flex-col gap-2 opacity-70">
                   {section.links.map((link) =>
                     link.external ? (
@@ -181,7 +181,7 @@ export default async function Footer(): Promise<React.JSX.Element> {
                         href={link.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="transition-colors hover:text-[#01AACF]"
+                        className="transition-colors hover:text-type-accent"
                       >
                         {link.label}
                       </a>
@@ -190,7 +190,7 @@ export default async function Footer(): Promise<React.JSX.Element> {
                         key={`${section.title}-${link.label}-${link.href}`}
                         href={link.href}
                         prefetch={false}
-                        className="transition-colors hover:text-[#01AACF]"
+                        className="transition-colors hover:text-type-accent"
                       >
                         {link.label}
                       </Link>

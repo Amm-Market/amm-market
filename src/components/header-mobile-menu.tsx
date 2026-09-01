@@ -87,7 +87,7 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
                     <span className="text-[clamp(1.7rem,7.1vw,2.45rem)] font-medium leading-[0.98] tracking-[-0.03em] text-black/95">
                       {link.label}
                     </span>
-                    <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-[#01AACF]">
+                    <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-type-tertiary">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </a>
@@ -101,7 +101,7 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
                     <span className="text-[clamp(1.7rem,7.1vw,2.45rem)] font-medium leading-[0.98] tracking-[-0.03em] text-black/95">
                       {link.label}
                     </span>
-                    <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-[#01AACF]">
+                    <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-type-tertiary">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </Link>
