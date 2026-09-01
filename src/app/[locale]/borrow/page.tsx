@@ -397,7 +397,7 @@ export default async function BorrowPage() {
                   <div className="flex h-[150px] w-full flex-col items-center justify-center rounded-lg bg-gradient-to-b from-blue-50 to-blue-100 p-2 text-center sm:h-auto">
                     <div className="flex size-full flex-col items-center justify-center rounded-md border border-blue-200 bg-white">
                       <div className="text-base font-medium leading-normal text-blue-600 md:text-lg">
-                        <div className={`flex items-center text-[32px] font-semibold md:text-[48px] ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>
+                        <div className={`flex items-center text-[32px] font-bold md:text-[48px] ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>
                           12+
                         </div>
                         <span>DEX Integrations</span>

@@ -261,7 +261,6 @@
   font-weight: 400;
   line-height: 1.35;
   letter-spacing: var(--type-tracking-label);
-  color: var(--type-color-tertiary);
 }
 
 .type-sidebar-link {

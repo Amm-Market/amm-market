@@ -158,7 +158,7 @@ function FaqCategoryCard({
     >
       <Icon className="h-6 w-6 text-[#01AACF]" strokeWidth={1.8} />
 
-      <h3 className="type-meta-label mt-5 text-[#01AACF] normal-case tracking-[-0.02em]">
+      <h3 className="mt-5 text-[0.95rem] font-semibold leading-[1.2] tracking-[-0.04em] text-[#01AACF]">
         {category.name}
       </h3>
 
@@ -255,7 +255,7 @@ export function FaqView({
         {searchTerm ? (
           <>
             <div className="mb-7 flex items-center justify-between gap-4">
-              <h2 className="type-section-title text-foreground">
+              <h2 className="text-[1.45rem] font-semibold leading-[1.15] tracking-[-0.03em] text-gray-950 sm:text-[1.7rem]">
                 {t("searchResults")}
               </h2>
               <Link
@@ -296,7 +296,7 @@ export function FaqView({
             {categories.map((category) => (
               <section key={category.id} id={category.id} className="scroll-mt-32 py-12 first:pt-0">
                 <div className="mb-6">
-                  <h2 className="type-section-title text-[#01AACF]">
+                  <h2 className="text-[1.7rem] font-semibold leading-[1.15] tracking-[-0.04em] text-[#01AACF]">
                     {category.name}
                   </h2>
                 </div>
