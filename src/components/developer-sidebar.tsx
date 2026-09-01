@@ -175,16 +175,24 @@ export const navigationSections = [
   },
 ] as const
 
-// Color palette per section
-const sectionColors: Record<string, { headerBg: string; headerText: string; itemBg: string; itemText: string; icon: string }> = {
-  introduction: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  "getting-started": { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  architecture: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  liquidation: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  copilot: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  integrations: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  safety: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  legal: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
+// Active section styling — accent tints work in both light and dark mode
+const activeSectionStyles = {
+  headerBg: "bg-type-accent/10",
+  headerText: "text-type-accent",
+  itemBg: "bg-type-accent/15",
+  itemText: "text-type-accent",
+  icon: "text-type-accent",
+} as const
+
+const sectionColors: Record<string, typeof activeSectionStyles> = {
+  introduction: activeSectionStyles,
+  "getting-started": activeSectionStyles,
+  architecture: activeSectionStyles,
+  liquidation: activeSectionStyles,
+  copilot: activeSectionStyles,
+  integrations: activeSectionStyles,
+  safety: activeSectionStyles,
+  legal: activeSectionStyles,
 }
 
 export default function DeveloperSidebar() {
