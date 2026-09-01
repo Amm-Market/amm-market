@@ -7,8 +7,8 @@ import { Gauge, Layers, LockKeyhole, MoveRight, TrendingUp, WalletCards } from "
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import { FeatureCardDescription, FeatureCardTitle, SectionIntro } from "@/components/shared"
 import { LocalizedMarketing } from "@/components/localized-marketing"
+import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 
-const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
 const PlatformToolsShowcaseSection = dynamic(() => import("@/components/platform-tools-showcase-section"))
 const InvestApySection = dynamic(() => import("@/components/invest-apy-section"))
 const InvestGrowthCalculatorSection = dynamic(() => import("@/components/invest-growth-calculator-section"))

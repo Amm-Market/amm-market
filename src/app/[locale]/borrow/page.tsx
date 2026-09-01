@@ -10,10 +10,10 @@ import { PerformanceSection } from "@/components/ui/performance-section"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 import { cn } from "@/lib/utils"
 import { getTokenIconSrc } from "@/lib/token-icons"
+import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 
 const BorrowPowerSection = dynamic(() => import("@/components/borrow-power-section"))
 const PositionSafetyCardsSection = dynamic(() => import("@/components/position-safety-cards-section"))
-const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
 
 const openSpokeFaqItems: InlineFaqItem[] = [
   {

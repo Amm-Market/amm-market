@@ -48,7 +48,7 @@ export default async function HomepageNewsroomSection({
   const hasTopBorder = showTopBorder ?? showDividers
 
   return withMarketingI18n(["homepage/HomepageNewsroomSection"], (
-    <section className="deferred-viewport" data-section="newsroom-teasers">
+    <section data-section="newsroom-teasers">
       <div className="mb-8 flex max-w-[48rem] flex-col gap-3 md:mb-10">
         <SectionEyebrow tone={eyebrowTone}>{resolvedEyebrow}</SectionEyebrow>
         <SectionTitle>{resolvedTitle}</SectionTitle>
