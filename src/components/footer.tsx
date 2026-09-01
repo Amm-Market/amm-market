@@ -167,7 +167,7 @@ export default async function Footer(): Promise<React.JSX.Element> {
           </div>
 
           <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:justify-self-center lg:grid-cols-3 lg:gap-x-6 lg:gap-y-10 xl:gap-x-8">
-            {footerSections.map((section, index) => (
+            {footerSections.map((section) => (
               <div
                 key={section.title}
                 className={`flex flex-col gap-4 text-sm font-normal text-gray-900 ${section.className ?? ""}`}
