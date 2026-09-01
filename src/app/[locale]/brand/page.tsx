@@ -81,16 +81,16 @@ export default async function BrandPage() {
       <section className="bg-white pt-14 pb-0 md:pt-20">
         <div className="site-content-shell">
           <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
-            <h1 className="text-[clamp(3rem,7vw,5.25rem)] font-semibold tracking-[-0.08em] text-[#0F1518]">
+            <h1 className="type-index-title text-foreground">
               Brand
             </h1>
-            <p className="max-w-xl text-[1rem] font-medium leading-[1.55] tracking-[-0.03em] text-[#2F414B] md:text-[1.05rem]">
+            <p className="max-w-xl text-[1rem] leading-[1.55] tracking-[-0.02em] text-type-secondary md:text-[1.05rem]">
               Official Avana logos, colors, typography, and rules for using the brand clearly.
             </p>
             <a
               href={BRAND_KIT_URL}
               download
-              className="group inline-flex h-10 items-center justify-center gap-2 rounded-full border border-[#151c22]/80 bg-white px-5 text-[0.98rem] font-[620] tracking-[-0.035em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white"
+              className="group inline-flex h-10 items-center justify-center gap-2 rounded-full border border-[#151c22]/80 bg-white px-5 text-[0.98rem] font-semibold tracking-[-0.02em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white"
             >
               <span>Download Kit</span>
               <Download className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-y-0.5" />

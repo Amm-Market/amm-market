@@ -238,7 +238,7 @@ export function BlogIndex({
                         </span>
                         <span className={`font-mono text-sm ${theme.number}`}>{getBookNumber(index)}</span>
                       </div>
-                      <h2 className={`relative z-10 mt-auto max-w-[13ch] break-words pb-2 text-[1.25rem] font-medium leading-[1.16] tracking-[-0.055em] sm:text-[1.45rem] md:text-[1.58rem] ${theme.text}`}>
+                      <h2 className={`type-card-title relative z-10 mt-auto max-w-[13ch] break-words pb-2 ${theme.text}`}>
                         {post.title}
                       </h2>
                       <span className={`relative z-10 mt-4 text-xs font-medium ${theme.muted}`}>

@@ -104,13 +104,13 @@ export default async function Home() {
         <div className="site-content-shell">
           <div className="mx-auto grid w-fit max-w-full grid-cols-1 gap-5 text-center md:grid-cols-[auto_auto] md:items-end md:gap-10 md:text-left lg:gap-14">
             <div className="space-y-4">
-              <SectionTitle className="text-center font-medium md:text-left">
+              <SectionTitle variant="display" className="text-center md:text-left">
                 <span className="block lg:whitespace-nowrap">{t("hero.titleLine1")}</span>
                 <span className="block lg:whitespace-nowrap">{t("hero.titleLine2")}</span>
               </SectionTitle>
             </div>
             <div className="space-y-8">
-              <p className="mx-auto max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] text-[#39515b] md:mx-0 lg:text-[1.18rem]">
+              <p className="mx-auto max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] text-type-secondary md:mx-0 lg:text-[1.18rem]">
                 <span className="md:hidden">
                   {t("hero.subtitleMobileLines.0")}
                   <br />
