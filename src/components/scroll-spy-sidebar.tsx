@@ -203,14 +203,14 @@ export function ScrollSpySidebar({
   return (
     <div className="w-full max-w-[17rem]">
       <div className="flex w-full flex-col items-start justify-start gap-0">
-        <p className="mb-2.5 flex items-center gap-1.5 pl-6 text-[0.8125rem] font-normal tracking-[-0.01em] text-gray-500">
+        <p className="type-sidebar-link mb-2.5 flex items-center gap-1.5 pl-6 tracking-[-0.01em] text-gray-500">
           <AlignLeft aria-hidden="true" className="h-3.5 w-3.5 shrink-0" strokeWidth={2.25} />
           On this page
         </p>
 
         {/* Page summary at top */}
         {pageSummary && (
-          <p className="mb-3 max-w-[220px] pl-6 text-[0.75rem] leading-relaxed text-gray-500">
+          <p className="type-sidebar-summary mb-3 max-w-[220px] pl-6 leading-relaxed text-gray-500">
             {pageSummary}
           </p>
         )}
@@ -260,7 +260,7 @@ export function ScrollSpySidebar({
                       : "text-gray-500 hover:text-gray-900 hover:opacity-80"
                   }`}
                 >
-                  <p className="line-clamp-2 text-[0.8125rem] leading-snug">{section.title}</p>
+                  <p className="type-sidebar-link line-clamp-2 leading-snug">{section.title}</p>
                 </a>
               </div>
             )
