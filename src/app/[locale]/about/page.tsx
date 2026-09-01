@@ -16,7 +16,7 @@ export default async function AboutPage() {
     <LocalizedMarketing keys={["about/page", "protocol-roadmap-section"]}>
     <main className="bg-white">
       <section className="pb-16 pt-24 lg:pb-24 lg:pt-40">
-        <div className="site-content-shell">
+        <div className="mx-auto w-full max-w-[90rem] px-4 sm:px-6 2xl:px-0">
           <div className="mx-auto text-center">
             <h1
               aria-label={`Introducing ${SITE_NAME}: A lending protocol for LP-backed loans`}
