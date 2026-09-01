@@ -9,7 +9,9 @@
       "closeMenu": "إغلاق القائمة",
       "language": "اللغة: {language}",
       "logo": "شعار {site}",
-      "helpfulLinks": "روابط مفيدة"
+      "helpfulLinks": "روابط مفيدة",
+      "helpCenter": "مركز المساعدة: راسل الدعم",
+      "themeToggle": "التبديل بين الوضع الفاتح والداكن"
     },
     "nav": {
       "products": "المنتجات",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "آخر الأخبار من Avana",
       "readNewsroom": "اقرأ غرفة الأخبار"
+    },
+    "theme": {
+      "lightMode": "الوضع الفاتح",
+      "darkMode": "الوضع الداكن"
     }
   },
   "meta": {

@@ -9,7 +9,9 @@
       "closeMenu": "Rufe menu",
       "language": "Harshe: {language}",
       "logo": "Logo na {site}",
-      "helpfulLinks": "Mahimman hanyoyi"
+      "helpfulLinks": "Mahimman hanyoyi",
+      "helpCenter": "Cibiyar taimako: aika imel zuwa tallafi",
+      "themeToggle": "Canza yanayin haske da duhu"
     },
     "nav": {
       "products": "Kayayyaki",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "Sabo daga Avana",
       "readNewsroom": "Karanta ɗakin labarai"
+    },
+    "theme": {
+      "lightMode": "Yanayin haske",
+      "darkMode": "Yanayin duhu"
     }
   },
   "meta": {

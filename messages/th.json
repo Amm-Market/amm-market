@@ -9,7 +9,9 @@
       "closeMenu": "ปิดเมนู",
       "language": "ภาษา: {language}",
       "logo": "โลโก้ {site}",
-      "helpfulLinks": "ลิงก์ที่เป็นประโยชน์"
+      "helpfulLinks": "ลิงก์ที่เป็นประโยชน์",
+      "helpCenter": "ศูนย์ช่วยเหลือ: อีเมลฝ่ายสนับสนุน",
+      "themeToggle": "สลับโหมดสว่างและมืด"
     },
     "nav": {
       "products": "ผลิตภัณฑ์",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "ล่าสุดจาก Avana",
       "readNewsroom": "อ่านห้องข่าว"
+    },
+    "theme": {
+      "lightMode": "โหมดสว่าง",
+      "darkMode": "โหมดมืด"
     }
   },
   "meta": {

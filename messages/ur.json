@@ -9,7 +9,9 @@
       "closeMenu": "مینو بند کریں",
       "language": "زبان: {language}",
       "logo": "{site} لوگو",
-      "helpfulLinks": "مددگار روابط"
+      "helpfulLinks": "مددگار روابط",
+      "helpCenter": "مدد مرکز: سپورٹ کو ای میل کریں",
+      "themeToggle": "لائٹ اور ڈارک موڈ تبدیل کریں"
     },
     "nav": {
       "products": "مصنوعات",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "تازہ ترین Avana سے",
       "readNewsroom": "نیوز روم پڑھیں"
+    },
+    "theme": {
+      "lightMode": "لائٹ موڈ",
+      "darkMode": "ڈارک موڈ"
     }
   },
   "meta": {

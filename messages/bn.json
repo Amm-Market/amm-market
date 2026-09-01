@@ -9,7 +9,9 @@
       "closeMenu": "মেনু বন্ধ করুন",
       "language": "ভাষা: {language}",
       "logo": "{site} লোগো",
-      "helpfulLinks": "সহায়ক লিঙ্কসমূহ"
+      "helpfulLinks": "সহায়ক লিঙ্কসমূহ",
+      "helpCenter": "সহায়তা কেন্দ্র: সাপোর্টে ইমেইল করুন",
+      "themeToggle": "লাইট ও ডার্ক মোড পরিবর্তন করুন"
     },
     "nav": {
       "products": "পণ্য",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "সর্বশেষ  থেকে",
       "readNewsroom": "সংবাদ কক্ষ পড়ুন"
+    },
+    "theme": {
+      "lightMode": "লাইট মোড",
+      "darkMode": "ডার্ক মোড"
     }
   },
   "meta": {

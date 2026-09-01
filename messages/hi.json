@@ -9,7 +9,9 @@
       "closeMenu": "मेनू बंद करें",
       "language": "भाषा: {language}",
       "logo": "{site} लोगो",
-      "helpfulLinks": "सहायक लिंक"
+      "helpfulLinks": "सहायक लिंक",
+      "helpCenter": "सहायता केंद्र: सपोर्ट को ईमेल करें",
+      "themeToggle": "लाइट और डार्क मोड बदलें"
     },
     "nav": {
       "products": "उत्पाद",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "Avana से नवीनतम",
       "readNewsroom": "न्यूज़रूम पढ़ें"
+    },
+    "theme": {
+      "lightMode": "लाइट मोड",
+      "darkMode": "डार्क मोड"
     }
   },
   "meta": {

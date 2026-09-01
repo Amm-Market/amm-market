@@ -9,7 +9,9 @@
       "closeMenu": "Đóng menu",
       "language": "Ngôn ngữ: {language}",
       "logo": "Logo {site}",
-      "helpfulLinks": "Liên kết hữu ích"
+      "helpfulLinks": "Liên kết hữu ích",
+      "helpCenter": "Trung tâm trợ giúp: gửi email hỗ trợ",
+      "themeToggle": "Chuyển chế độ sáng và tối"
     },
     "nav": {
       "products": "Sản phẩm",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "Mới nhất từ Avana",
       "readNewsroom": "Đọc phòng tin"
+    },
+    "theme": {
+      "lightMode": "Chế độ sáng",
+      "darkMode": "Chế độ tối"
     }
   },
   "meta": {

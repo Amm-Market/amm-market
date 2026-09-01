@@ -9,7 +9,9 @@
       "closeMenu": "Chiudi menu",
       "language": "Lingua: {language}",
       "logo": "logo di {site}",
-      "helpfulLinks": "Link utili"
+      "helpfulLinks": "Link utili",
+      "helpCenter": "Centro assistenza: invia email al supporto",
+      "themeToggle": "Passa tra modalità chiara e scura"
     },
     "nav": {
       "products": "Prodotti",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "Ultime da Avana",
       "readNewsroom": "Leggi la redazione"
+    },
+    "theme": {
+      "lightMode": "Modalità chiara",
+      "darkMode": "Modalità scura"
     }
   },
   "meta": {

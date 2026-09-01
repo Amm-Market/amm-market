@@ -9,7 +9,13 @@
       "closeMenu": "Close menu",
       "language": "Language: {language}",
       "logo": "{site} logo",
-      "helpfulLinks": "Helpful links"
+      "helpfulLinks": "Helpful links",
+      "helpCenter": "Help Center: email support",
+      "themeToggle": "Toggle light and dark mode"
+    },
+    "theme": {
+      "lightMode": "Light Mode",
+      "darkMode": "Dark Mode"
     },
     "nav": {
       "products": "Products",

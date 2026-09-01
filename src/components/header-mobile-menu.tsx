@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 import { useTranslations } from "next-intl"
+import { HeaderHelpCenterMobileRow } from "@/components/header-help-center-button"
+import { HeaderThemeToggleMobileRow } from "@/components/header-theme-toggle"
 import { Link } from "@/i18n/navigation"
 import { siteRoutes } from "@/lib/site"
 
@@ -110,6 +112,16 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
             )
           })}
         </ol>
+
+        <div
+          className={`transition-all duration-300 ease-out ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+          }`}
+          style={{ transitionDelay: `${120 + mobileLinks.length * 35}ms` }}
+        >
+          <HeaderThemeToggleMobileRow />
+          <HeaderHelpCenterMobileRow onNavigate={onClose} />
+        </div>
       </nav>
     </div>,
     document.body,

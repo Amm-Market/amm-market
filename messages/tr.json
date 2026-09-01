@@ -9,7 +9,9 @@
       "closeMenu": "Menüyü kapat",
       "language": "Dil: {language}",
       "logo": "{site} logosu",
-      "helpfulLinks": "Yararlı bağlantılar"
+      "helpfulLinks": "Yararlı bağlantılar",
+      "helpCenter": "Yardım merkezi: desteğe e-posta gönder",
+      "themeToggle": "Açık ve koyu mod arasında geçiş yap"
     },
     "nav": {
       "products": "Ürünler",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "Avana'den en son",
       "readNewsroom": "Haber odasını oku"
+    },
+    "theme": {
+      "lightMode": "Açık mod",
+      "darkMode": "Koyu mod"
     }
   },
   "meta": {

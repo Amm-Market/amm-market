@@ -9,7 +9,9 @@
       "closeMenu": "關閉菜單",
       "language": "語言：{language}",
       "logo": "{site} 徽標",
-      "helpfulLinks": "有用的鏈接"
+      "helpfulLinks": "有用的鏈接",
+      "helpCenter": "幫助中心：寄信至支援團隊",
+      "themeToggle": "切換淺色與深色模式"
     },
     "nav": {
       "products": "產品",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "來自Avana的最新消息",
       "readNewsroom": "閱讀新聞編輯部"
+    },
+    "theme": {
+      "lightMode": "淺色模式",
+      "darkMode": "深色模式"
     }
   },
   "meta": {

@@ -9,7 +9,9 @@
       "closeMenu": "Закрыть меню",
       "language": "Язык: {language}",
       "logo": "логотип {site}",
-      "helpfulLinks": "Полезные ссылки"
+      "helpfulLinks": "Полезные ссылки",
+      "helpCenter": "Центр помощи: написать в поддержку",
+      "themeToggle": "Переключить светлый и тёмный режим"
     },
     "nav": {
       "products": "Продукты",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "Последнее с Avana",
       "readNewsroom": "Читать новостную редакцию"
+    },
+    "theme": {
+      "lightMode": "Светлый режим",
+      "darkMode": "Тёмный режим"
     }
   },
   "meta": {

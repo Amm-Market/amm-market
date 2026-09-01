@@ -9,7 +9,9 @@
       "closeMenu": "メニューを閉じる",
       "language": "言語: {language}",
       "logo": "{site} ロゴ",
-      "helpfulLinks": "役立つリンク"
+      "helpfulLinks": "役立つリンク",
+      "helpCenter": "ヘルプセンター：サポートにメール",
+      "themeToggle": "ライトモードとダークモードを切り替え"
     },
     "nav": {
       "products": "製品",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "Avanaからの最新情報",
       "readNewsroom": "ニュースルームを読む"
+    },
+    "theme": {
+      "lightMode": "ライトモード",
+      "darkMode": "ダークモード"
     }
   },
   "meta": {

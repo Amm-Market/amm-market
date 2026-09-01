@@ -9,7 +9,9 @@
       "closeMenu": "بستن منو",
       "language": "زبان: {language}",
       "logo": "لوگوی {site}",
-      "helpfulLinks": "لینک‌های مفید"
+      "helpfulLinks": "لینک‌های مفید",
+      "helpCenter": "مرکز راهنما: ایمیل به پشتیبانی",
+      "themeToggle": "تغییر حالت روشن و تاریک"
     },
     "nav": {
       "products": "محصولات",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "جدیدترین‌ها از Avana",
       "readNewsroom": "خواندن اتاق خبر"
+    },
+    "theme": {
+      "lightMode": "حالت روشن",
+      "darkMode": "حالت تاریک"
     }
   },
   "meta": {

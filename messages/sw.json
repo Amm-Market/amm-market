@@ -9,7 +9,9 @@
       "closeMenu": "Funga menyu",
       "language": "Lugha: {language}",
       "logo": "Nembo ya {site}",
-      "helpfulLinks": "Viungo vinavyosaidia"
+      "helpfulLinks": "Viungo vinavyosaidia",
+      "helpCenter": "Kituo cha msaada: tuma barua pepe kwa usaidizi",
+      "themeToggle": "Badilisha hali ya mwanga na giza"
     },
     "nav": {
       "products": "Bidhaa",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "Hivi karibuni kutoka Avana",
       "readNewsroom": "Soma chumba cha habari"
+    },
+    "theme": {
+      "lightMode": "Hali ya mwanga",
+      "darkMode": "Hali ya giza"
     }
   },
   "meta": {

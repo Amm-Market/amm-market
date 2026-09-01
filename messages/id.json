@@ -9,7 +9,9 @@
       "closeMenu": "Tutup menu",
       "language": "Bahasa: {language}",
       "logo": "logo {site}",
-      "helpfulLinks": "Tautan yang berguna"
+      "helpfulLinks": "Tautan yang berguna",
+      "helpCenter": "Pusat Bantuan: email dukungan",
+      "themeToggle": "Alihkan mode terang dan gelap"
     },
     "nav": {
       "products": "Produk",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "Terbaru dari Avana",
       "readNewsroom": "Baca ruang berita"
+    },
+    "theme": {
+      "lightMode": "Mode Terang",
+      "darkMode": "Mode Gelap"
     }
   },
   "meta": {

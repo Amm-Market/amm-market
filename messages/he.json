@@ -9,7 +9,9 @@
       "closeMenu": "סגור תפריט",
       "language": "שפה: {language}",
       "logo": "לוגו {site}",
-      "helpfulLinks": "קישורים מועילים"
+      "helpfulLinks": "קישורים מועילים",
+      "helpCenter": "מרכז עזרה: שליחת אימייל לתמיכה",
+      "themeToggle": "החלפה בין מצב בהיר לכהה"
     },
     "nav": {
       "products": "מוצרים",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "העדכונים האחרונים מ-Avana",
       "readNewsroom": "קרא חדר חדשות"
+    },
+    "theme": {
+      "lightMode": "מצב בהיר",
+      "darkMode": "מצב כהה"
     }
   },
   "meta": {

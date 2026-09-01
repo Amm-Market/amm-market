@@ -9,7 +9,9 @@
       "closeMenu": "메뉴 닫기",
       "language": "언어: {language}",
       "logo": "{site} 로고",
-      "helpfulLinks": "유용한 링크"
+      "helpfulLinks": "유용한 링크",
+      "helpCenter": "도움말 센터: 지원팀에 이메일",
+      "themeToggle": "라이트/다크 모드 전환"
     },
     "nav": {
       "products": "제품",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "Avana의 최신 소식",
       "readNewsroom": "뉴스룸을 읽다"
+    },
+    "theme": {
+      "lightMode": "라이트 모드",
+      "darkMode": "다크 모드"
     }
   },
   "meta": {

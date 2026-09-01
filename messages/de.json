@@ -9,7 +9,9 @@
       "closeMenu": "Menü schließen",
       "language": "Sprache: {language}",
       "logo": "{site}-Logo",
-      "helpfulLinks": "Hilfreiche Links"
+      "helpfulLinks": "Hilfreiche Links",
+      "helpCenter": "Hilfezentrum: Support per E-Mail",
+      "themeToggle": "Hell- und Dunkelmodus umschalten"
     },
     "nav": {
       "products": "Produkte",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "Neueste von Avana",
       "readNewsroom": "Nachrichtenraum lesen"
+    },
+    "theme": {
+      "lightMode": "Hellmodus",
+      "darkMode": "Dunkelmodus"
     }
   },
   "meta": {

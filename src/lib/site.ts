@@ -1,5 +1,6 @@
 export const SITE_NAME = "Avana"
 export const SITE_URL = "https://avana.cc"
+export const SUPPORT_EMAIL = "support@avana.cc"
 export const LOGO_PATH = "/Avana%20Logo.png"
 export const HEADER_WORDMARK_PATH = "/images/avana-wordmark.webp"
 export const SOCIAL_HANDLE = "@dexmini"

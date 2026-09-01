@@ -9,7 +9,9 @@
       "closeMenu": "关闭菜单",
       "language": "语言：{language}",
       "logo": "{site} 徽标",
-      "helpfulLinks": "有用的链接"
+      "helpfulLinks": "有用的链接",
+      "helpCenter": "帮助中心：发送邮件至支持团队",
+      "themeToggle": "切换浅色和深色模式"
     },
     "nav": {
       "products": "产品",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "来自Avana的最新消息",
       "readNewsroom": "阅读新闻编辑部"
+    },
+    "theme": {
+      "lightMode": "浅色模式",
+      "darkMode": "深色模式"
     }
   },
   "meta": {

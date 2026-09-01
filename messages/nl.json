@@ -9,7 +9,9 @@
       "closeMenu": "Sluit menu",
       "language": "Taal: {language}",
       "logo": "{site}-logo",
-      "helpfulLinks": "Handige links"
+      "helpfulLinks": "Handige links",
+      "helpCenter": "Helpcentrum: e-mail naar support",
+      "themeToggle": "Schakel tussen lichte en donkere modus"
     },
     "nav": {
       "products": "Producten",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "Laatste van Avana",
       "readNewsroom": "Lees nieuwsredactie"
+    },
+    "theme": {
+      "lightMode": "Lichte modus",
+      "darkMode": "Donkere modus"
     }
   },
   "meta": {

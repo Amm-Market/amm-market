@@ -9,7 +9,9 @@
       "closeMenu": "Cerrar menú",
       "language": "Idioma: {language}",
       "logo": "logo de {site}",
-      "helpfulLinks": "Enlaces útiles"
+      "helpfulLinks": "Enlaces útiles",
+      "helpCenter": "Centro de ayuda: escribir a soporte",
+      "themeToggle": "Alternar modo claro y oscuro"
     },
     "nav": {
       "products": "Productos",
@@ -156,6 +158,10 @@
     "newsroom": {
       "latestFrom": "Lo último de Avana",
       "readNewsroom": "Leer sala de redacción"
+    },
+    "theme": {
+      "lightMode": "Modo claro",
+      "darkMode": "Modo oscuro"
     }
   },
   "meta": {
