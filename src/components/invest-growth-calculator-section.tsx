@@ -96,8 +96,8 @@ export default function InvestGrowthCalculatorSection() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start lg:gap-10">
           <div className="space-y-6 lg:space-y-8 lg:pt-4">
-            <div className="flex items-center justify-between gap-6 border-b border-gray-200 pb-4 lg:pb-6">
-              <p className="text-sm font-semibold tracking-[-0.03em] text-[#728196]">
+            <div className="flex items-center justify-between gap-6 border-b border-border pb-4 lg:pb-6">
+              <p className="text-sm font-semibold tracking-[-0.03em] text-type-tertiary">
                 {t("Avana APY")}
               </p>
               <div className="inline-flex items-center rounded-full bg-[#01AACF]/10 px-4 py-2 text-[#01AACF] ring-1 ring-[#01AACF]/25">
@@ -108,11 +108,11 @@ export default function InvestGrowthCalculatorSection() {
             </div>
 
             <div className="space-y-2.5">
-              <label htmlFor={inputId} className="block text-[1.2rem] font-semibold tracking-[-0.03em] text-[#203650]">
+              <label htmlFor={inputId} className="block text-[1.2rem] font-semibold tracking-[-0.03em] text-foreground">
                 {t("Initial Deposit")}
               </label>
               <div className="relative">
-                <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[1.6rem] tracking-[-0.04em] text-[#395273]">
+                <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[1.6rem] tracking-[-0.04em] text-type-secondary">
                   $
                 </span>
                 <input
@@ -121,17 +121,17 @@ export default function InvestGrowthCalculatorSection() {
                   inputMode="numeric"
                   value={depositInputDisplay}
                   onChange={(event) => setDepositInput(event.target.value.replace(/[^\d]/g, ""))}
-                  className={`h-14 w-full rounded-[20px] border border-gray-200 bg-white pl-11 pr-5 tracking-[-0.05em] text-[#163042] outline-none transition focus:border-[#8b98a7] md:h-16 ${depositInputSize}`}
+                  className={`h-14 w-full rounded-[20px] border border-border bg-card pl-11 pr-5 tracking-[-0.05em] text-foreground outline-none transition focus:border-type-accent/50 md:h-16 ${depositInputSize}`}
                 />
               </div>
             </div>
 
             <div className="space-y-4">
               <div className="flex items-end justify-between gap-4">
-                <label htmlFor={rangeId} className="block text-[1.2rem] font-semibold tracking-[-0.03em] text-[#203650]">
+                <label htmlFor={rangeId} className="block text-[1.2rem] font-semibold tracking-[-0.03em] text-foreground">
                   {t("Time Period (months)")}
                 </label>
-                <p className="text-sm text-[#728196]">
+                <p className="text-sm text-type-tertiary">
                   {months} {months === 1 ? t("month") : t("months")}
                 </p>
               </div>
@@ -144,10 +144,10 @@ export default function InvestGrowthCalculatorSection() {
                   max={MAX_MONTHS}
                   value={months}
                   onChange={(event) => setMonths(Number(event.target.value))}
-                  className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-gray-200 accent-[#163042]"
+                  className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-muted accent-type-accent"
                 />
                 <div
-                  className="absolute top-6 -translate-x-1/2 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-center text-[#163042] shadow-sm md:top-8 md:px-4 md:py-2"
+                  className="absolute top-6 -translate-x-1/2 rounded-full border border-border bg-card px-3 py-1.5 text-center text-foreground shadow-sm md:top-8 md:px-4 md:py-2"
                   style={{ left: `calc(${thumbPosition}% * 0.96 + 2%)` }}
                 >
                   <div className="text-[0.92rem] font-semibold leading-none tracking-[-0.03em] md:text-[1rem]">
@@ -171,10 +171,10 @@ export default function InvestGrowthCalculatorSection() {
                     </p>
                   </div>
                   <div className="space-y-1 text-right">
-                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#8b98a7]">
+                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-type-tertiary">
                       {t("Avana Interest")}
                     </p>
-                    <p className="text-[1.05rem] font-semibold tracking-[-0.04em] text-[#163042]">
+                    <p className="text-[1.05rem] font-semibold tracking-[-0.04em] text-foreground">
                       {currencyFormatter.format(avanaInterest)}
                     </p>
                   </div>
@@ -189,20 +189,20 @@ export default function InvestGrowthCalculatorSection() {
                   {projectedValueDisplay}
                 </p>
                 <div className="flex flex-wrap items-center gap-3">
-                  <p className="text-sm text-[#728196]">
+                  <p className="text-sm text-type-tertiary">
                     {t("Avana Interest")}
                   </p>
-                  <p className="text-[1.2rem] font-semibold tracking-[-0.04em] text-[#163042]">
+                  <p className="text-[1.2rem] font-semibold tracking-[-0.04em] text-foreground">
                     {currencyFormatter.format(avanaInterest)}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-baseline justify-between gap-4 border-t border-gray-200 pt-4 md:pt-5">
-                <p className="text-sm font-medium text-[#728196]">
+              <div className="flex items-baseline justify-between gap-4 border-t border-border pt-4 md:pt-5">
+                <p className="text-sm font-medium text-type-tertiary">
                   {t("3.5% APY")}
                 </p>
-                <p className="text-[1.15rem] font-semibold tracking-[-0.04em] text-[#163042] md:text-[1.35rem]">
+                <p className="text-[1.15rem] font-semibold tracking-[-0.04em] text-foreground md:text-[1.35rem]">
                   {fluidValueDisplay}
                 </p>
               </div>
