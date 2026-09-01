@@ -11,7 +11,7 @@
       "logo": "شعار {site}",
       "helpfulLinks": "روابط مفيدة",
       "helpCenter": "مركز المساعدة: راسل الدعم",
-      "themeToggle": "التبديل بين الوضع الفاتح والداكن"
+      "themeToggle": "تفضيل المظهر"
     },
     "nav": {
       "products": "المنتجات",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "الوضع الفاتح",
-      "darkMode": "الوضع الداكن"
+      "darkMode": "الوضع الداكن",
+      "systemMode": "النظام"
     }
   },
   "meta": {

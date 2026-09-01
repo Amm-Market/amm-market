@@ -11,7 +11,7 @@
       "logo": "{site} 로고",
       "helpfulLinks": "유용한 링크",
       "helpCenter": "도움말 센터: 지원팀에 이메일",
-      "themeToggle": "라이트/다크 모드 전환"
+      "themeToggle": "테마 설정"
     },
     "nav": {
       "products": "제품",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "라이트 모드",
-      "darkMode": "다크 모드"
+      "darkMode": "다크 모드",
+      "systemMode": "시스템"
     }
   },
   "meta": {

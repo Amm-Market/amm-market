@@ -11,7 +11,7 @@
       "logo": "لوگوی {site}",
       "helpfulLinks": "لینک‌های مفید",
       "helpCenter": "مرکز راهنما: ایمیل به پشتیبانی",
-      "themeToggle": "تغییر حالت روشن و تاریک"
+      "themeToggle": "ترجیح پوسته"
     },
     "nav": {
       "products": "محصولات",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "حالت روشن",
-      "darkMode": "حالت تاریک"
+      "darkMode": "حالت تاریک",
+      "systemMode": "سیستم"
     }
   },
   "meta": {

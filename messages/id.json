@@ -11,7 +11,7 @@
       "logo": "logo {site}",
       "helpfulLinks": "Tautan yang berguna",
       "helpCenter": "Pusat Bantuan: email dukungan",
-      "themeToggle": "Alihkan mode terang dan gelap"
+      "themeToggle": "Preferensi tema"
     },
     "nav": {
       "products": "Produk",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "Mode Terang",
-      "darkMode": "Mode Gelap"
+      "darkMode": "Mode Gelap",
+      "systemMode": "Sistem"
     }
   },
   "meta": {

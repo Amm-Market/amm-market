@@ -11,7 +11,7 @@
       "logo": "Logo {site}",
       "helpfulLinks": "Przydatne linki",
       "helpCenter": "Centrum pomocy: napisz do wsparcia",
-      "themeToggle": "Przełącz tryb jasny i ciemny"
+      "themeToggle": "Preferencje motywu"
     },
     "nav": {
       "products": "Produkty",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "Tryb jasny",
-      "darkMode": "Tryb ciemny"
+      "darkMode": "Tryb ciemny",
+      "systemMode": "System"
     }
   },
   "meta": {

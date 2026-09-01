@@ -11,7 +11,7 @@
       "logo": "logo di {site}",
       "helpfulLinks": "Link utili",
       "helpCenter": "Centro assistenza: invia email al supporto",
-      "themeToggle": "Passa tra modalità chiara e scura"
+      "themeToggle": "Preferenza tema"
     },
     "nav": {
       "products": "Prodotti",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "Modalità chiara",
-      "darkMode": "Modalità scura"
+      "darkMode": "Modalità scura",
+      "systemMode": "Sistema"
     }
   },
   "meta": {

@@ -11,7 +11,7 @@
       "logo": "{site} لوگو",
       "helpfulLinks": "مددگار روابط",
       "helpCenter": "مدد مرکز: سپورٹ کو ای میل کریں",
-      "themeToggle": "لائٹ اور ڈارک موڈ تبدیل کریں"
+      "themeToggle": "تھیم کی ترجیح"
     },
     "nav": {
       "products": "مصنوعات",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "لائٹ موڈ",
-      "darkMode": "ڈارک موڈ"
+      "darkMode": "ڈارک موڈ",
+      "systemMode": "سسٹم"
     }
   },
   "meta": {

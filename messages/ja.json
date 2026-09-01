@@ -11,7 +11,7 @@
       "logo": "{site} ロゴ",
       "helpfulLinks": "役立つリンク",
       "helpCenter": "ヘルプセンター：サポートにメール",
-      "themeToggle": "ライトモードとダークモードを切り替え"
+      "themeToggle": "テーマ設定"
     },
     "nav": {
       "products": "製品",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "ライトモード",
-      "darkMode": "ダークモード"
+      "darkMode": "ダークモード",
+      "systemMode": "システム"
     }
   },
   "meta": {

@@ -6,8 +6,10 @@ import { notFound } from "next/navigation"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { diatypeFont } from "@/app/site-fonts"
+import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import { themeInitScript } from "@/lib/theme"
 import { getLocaleDefinition, getLocaleDir } from "@/i18n/locales"
 import { routing } from "@/i18n/routing"
 import { languageAlternates } from "@/lib/i18n/path"
@@ -134,8 +136,9 @@ export default async function LocaleLayout({ children, params }: Props) {
   const dir = getLocaleDir(locale)
 
   return (
-    <html lang={locale} dir={dir} className={diatypeFont.variable}>
+    <html lang={locale} dir={dir} className={diatypeFont.variable} suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(organizationSchema) }}
@@ -145,8 +148,9 @@ export default async function LocaleLayout({ children, params }: Props) {
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteSchema) }}
         />
       </head>
-      <body className="overflow-x-clip bg-white font-sans">
-        <NextIntlClientProvider locale={locale} messages={messages}>
+      <body className="overflow-x-clip bg-background font-sans text-foreground">
+        <ThemeProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:start-4 focus:z-[100] focus:rounded-lg focus:bg-[#01AACF] focus:px-4 focus:py-2 focus:text-[#0F1518] focus:outline-none focus:ring-2 focus:ring-[#01AACF] focus:ring-offset-2"
@@ -160,7 +164,8 @@ export default async function LocaleLayout({ children, params }: Props) {
             </main>
             <Footer />
           </div>
-        </NextIntlClientProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
         {shouldRenderVercelInsights ? <SpeedInsights /> : null}
         {shouldRenderVercelInsights ? <Analytics /> : null}
       </body>

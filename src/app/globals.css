@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --font-weight-thin: 400;
   --font-weight-extralight: 400;
@@ -129,6 +131,50 @@
   --type-color-secondary: color-mix(in oklab, var(--foreground) 68%, transparent);
   --type-color-tertiary: color-mix(in oklab, var(--foreground) 52%, transparent);
   --type-color-accent: var(--avana-cyan);
+  --header-surface: rgba(255, 255, 255, 0.94);
+  --surface-muted: #eef3f5;
+  --surface-elevated: #ffffff;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #0a1014;
+  --foreground: #f3f6f8;
+  --card: #121a20;
+  --card-foreground: #f3f6f8;
+  --popover: #151d24;
+  --popover-foreground: #f3f6f8;
+  --primary: #f3f6f8;
+  --primary-foreground: #0a1014;
+  --secondary: #1a232b;
+  --secondary-foreground: #f3f6f8;
+  --muted: #1a232b;
+  --muted-foreground: #9fb0bb;
+  --accent: #1a232b;
+  --accent-foreground: #f3f6f8;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.14);
+  --ring: var(--avana-cyan);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: #10171c;
+  --sidebar-foreground: #f3f6f8;
+  --sidebar-primary: #f3f6f8;
+  --sidebar-primary-foreground: #0a1014;
+  --sidebar-accent: #1a232b;
+  --sidebar-accent-foreground: #f3f6f8;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: rgba(255, 255, 255, 0.2);
+  --type-color-secondary: color-mix(in oklab, var(--foreground) 72%, transparent);
+  --type-color-tertiary: color-mix(in oklab, var(--foreground) 56%, transparent);
+  --header-surface: rgba(10, 16, 20, 0.94);
+  --surface-muted: #1a232b;
+  --surface-elevated: #151d24;
 }
 
 @layer base {
@@ -1037,4 +1083,107 @@
 
 body:has([data-developer-doc-shell]) footer.site-content-shell {
   display: none;
+}
+
+/* Dark mode: remap common hardcoded utility surfaces */
+.dark .bg-white {
+  background-color: var(--background);
+}
+
+.dark .bg-gray-50,
+.dark .bg-gray-50\/50,
+.dark .bg-gray-50\/80 {
+  background-color: var(--muted);
+}
+
+.dark .bg-gray-100 {
+  background-color: color-mix(in oklab, var(--muted) 88%, var(--foreground));
+}
+
+.dark .bg-\[\#e8edf5\],
+.dark .bg-\[\#eef3f5\] {
+  background-color: var(--surface-muted);
+}
+
+.dark .border-gray-100,
+.dark .border-gray-100\/80,
+.dark .border-gray-200,
+.dark .border-gray-300,
+.dark .border-\[\#bcc8d6\],
+.dark .border-\[\#d8e1ef\],
+.dark .border-\[\#8ec5e2\] {
+  border-color: var(--border);
+}
+
+.dark .border-black\/8,
+.dark .border-black\/10,
+.dark .border-black\/30 {
+  border-color: var(--border);
+}
+
+.dark .text-gray-400,
+.dark .text-gray-500,
+.dark .text-gray-600,
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-gray-900 {
+  color: var(--type-color-secondary);
+}
+
+.dark .text-black,
+.dark .text-black\/46,
+.dark .text-black\/58,
+.dark .text-black\/62,
+.dark .text-black\/74,
+.dark .text-black\/76,
+.dark .text-black\/95 {
+  color: var(--type-color-secondary);
+}
+
+.dark .text-\[\#303236\] {
+  color: var(--type-color-secondary);
+}
+
+.dark .hover\:bg-black\/\[0\.045\]:hover {
+  background-color: color-mix(in oklab, var(--foreground) 6%, transparent);
+}
+
+.dark .bg-black\/\[0\.025\] {
+  background-color: color-mix(in oklab, var(--foreground) 4%, transparent);
+}
+
+.dark .feature-card {
+  background-color: var(--surface-muted);
+}
+
+.dark .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section h2,
+.dark .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section h3 {
+  color: var(--foreground);
+}
+
+.dark .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section :is(p, li, td, dd) {
+  color: var(--type-color-secondary);
+}
+
+.dark .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] pre {
+  border-color: var(--border);
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.dark .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] :not(pre) > code {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.dark .site-header-nav-link {
+  color: color-mix(in oklab, var(--foreground) 62%, transparent);
+}
+
+.dark .site-header-nav-link:hover {
+  color: color-mix(in oklab, var(--foreground) 94%, transparent);
+}
+
+.dark img.dark\:brightness-0.dark\:invert {
+  filter: brightness(0) invert(1);
 }

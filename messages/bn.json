@@ -11,7 +11,7 @@
       "logo": "{site} লোগো",
       "helpfulLinks": "সহায়ক লিঙ্কসমূহ",
       "helpCenter": "সহায়তা কেন্দ্র: সাপোর্টে ইমেইল করুন",
-      "themeToggle": "লাইট ও ডার্ক মোড পরিবর্তন করুন"
+      "themeToggle": "থিম পছন্দ"
     },
     "nav": {
       "products": "পণ্য",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "লাইট মোড",
-      "darkMode": "ডার্ক মোড"
+      "darkMode": "ডার্ক মোড",
+      "systemMode": "সিস্টেম"
     }
   },
   "meta": {

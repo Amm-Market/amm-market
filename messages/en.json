@@ -11,9 +11,10 @@
       "logo": "{site} logo",
       "helpfulLinks": "Helpful links",
       "helpCenter": "Help Center: email support",
-      "themeToggle": "Toggle light and dark mode"
+      "themeToggle": "Theme preference"
     },
     "theme": {
+      "systemMode": "System",
       "lightMode": "Light Mode",
       "darkMode": "Dark Mode"
     },

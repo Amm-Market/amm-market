@@ -11,7 +11,7 @@
       "logo": "{site}-logo",
       "helpfulLinks": "Handige links",
       "helpCenter": "Helpcentrum: e-mail naar support",
-      "themeToggle": "Schakel tussen lichte en donkere modus"
+      "themeToggle": "Themavoorkeur"
     },
     "nav": {
       "products": "Producten",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "Lichte modus",
-      "darkMode": "Donkere modus"
+      "darkMode": "Donkere modus",
+      "systemMode": "Systeem"
     }
   },
   "meta": {

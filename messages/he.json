@@ -11,7 +11,7 @@
       "logo": "לוגו {site}",
       "helpfulLinks": "קישורים מועילים",
       "helpCenter": "מרכז עזרה: שליחת אימייל לתמיכה",
-      "themeToggle": "החלפה בין מצב בהיר לכהה"
+      "themeToggle": "העדפת ערכת נושא"
     },
     "nav": {
       "products": "מוצרים",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "מצב בהיר",
-      "darkMode": "מצב כהה"
+      "darkMode": "מצב כהה",
+      "systemMode": "מערכת"
     }
   },
   "meta": {

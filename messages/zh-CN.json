@@ -11,7 +11,7 @@
       "logo": "{site} 徽标",
       "helpfulLinks": "有用的链接",
       "helpCenter": "帮助中心：发送邮件至支持团队",
-      "themeToggle": "切换浅色和深色模式"
+      "themeToggle": "主题偏好"
     },
     "nav": {
       "products": "产品",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "浅色模式",
-      "darkMode": "深色模式"
+      "darkMode": "深色模式",
+      "systemMode": "跟随系统"
     }
   },
   "meta": {

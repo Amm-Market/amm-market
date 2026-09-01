@@ -11,7 +11,7 @@
       "logo": "{site}-Logo",
       "helpfulLinks": "Hilfreiche Links",
       "helpCenter": "Hilfezentrum: Support per E-Mail",
-      "themeToggle": "Hell- und Dunkelmodus umschalten"
+      "themeToggle": "Design-Einstellung"
     },
     "nav": {
       "products": "Produkte",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "Hellmodus",
-      "darkMode": "Dunkelmodus"
+      "darkMode": "Dunkelmodus",
+      "systemMode": "System"
     }
   },
   "meta": {

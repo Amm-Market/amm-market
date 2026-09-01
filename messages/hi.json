@@ -11,7 +11,7 @@
       "logo": "{site} लोगो",
       "helpfulLinks": "सहायक लिंक",
       "helpCenter": "सहायता केंद्र: सपोर्ट को ईमेल करें",
-      "themeToggle": "लाइट और डार्क मोड बदलें"
+      "themeToggle": "थीम वरीयता"
     },
     "nav": {
       "products": "उत्पाद",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "लाइट मोड",
-      "darkMode": "डार्क मोड"
+      "darkMode": "डार्क मोड",
+      "systemMode": "सिस्टम"
     }
   },
   "meta": {

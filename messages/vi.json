@@ -11,7 +11,7 @@
       "logo": "Logo {site}",
       "helpfulLinks": "Liên kết hữu ích",
       "helpCenter": "Trung tâm trợ giúp: gửi email hỗ trợ",
-      "themeToggle": "Chuyển chế độ sáng và tối"
+      "themeToggle": "Tùy chọn giao diện"
     },
     "nav": {
       "products": "Sản phẩm",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "Chế độ sáng",
-      "darkMode": "Chế độ tối"
+      "darkMode": "Chế độ tối",
+      "systemMode": "Hệ thống"
     }
   },
   "meta": {

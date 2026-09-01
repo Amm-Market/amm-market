@@ -21,7 +21,7 @@ function BrandLogo({ alt }: { alt: string }) {
         width={480}
         height={240}
         quality={85}
-        className="h-[56px] w-auto scale-[1.08] origin-left md:h-[52px]"
+        className="h-[56px] w-auto scale-[1.08] origin-left dark:brightness-0 dark:invert md:h-[52px]"
       />
     </span>
   )
@@ -45,7 +45,7 @@ export default function Header(): React.JSX.Element {
   }, [])
 
   return (
-    <header className={`sticky top-0 z-50 border-b bg-[linear-gradient(rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.94)_100%)] backdrop-blur-[10px] transition-colors duration-200 ${hasScrolled ? "border-type-accent" : "border-transparent"}`}>
+    <header className={`sticky top-0 z-50 border-b bg-[var(--header-surface)] backdrop-blur-[10px] transition-colors duration-200 ${hasScrolled ? "border-type-accent" : "border-transparent"}`}>
       <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 md:h-[54px] md:gap-3 md:px-6 lg:px-6 xl:px-8">
         <div className="inline-flex shrink-0 items-center">
           <Link href={siteRoutes.home} prefetch={false} aria-label={SITE_NAME} data-framer-name="Logo" className="inline-flex items-center">
@@ -64,7 +64,7 @@ export default function Header(): React.JSX.Element {
             href="https://app.avana.cc"
             target="_blank"
             rel="noreferrer"
-            className="site-header-cta group inline-flex h-8 items-center justify-center rounded-full border border-[#151c22]/80 bg-white px-2.5 font-semibold tracking-[-0.02em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-type-accent hover:bg-type-accent hover:text-white xl:h-[34px] xl:px-3.5"
+            className="site-header-cta group inline-flex h-8 items-center justify-center rounded-full border border-foreground/80 bg-background px-2.5 font-semibold tracking-[-0.02em] text-foreground transition-[background-color,border-color,color] duration-200 ease-out hover:border-type-accent hover:bg-type-accent hover:text-white xl:h-[34px] xl:px-3.5"
           >
             <span className="inline-flex items-center gap-1.5 xl:gap-2.5">
               <span className="xl:hidden">{t("cta.sandboxShort")}</span>

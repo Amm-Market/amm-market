@@ -144,10 +144,10 @@ export default async function Footer(): Promise<React.JSX.Element> {
                 width={480}
                 height={240}
                 quality={85}
-                className="h-[56px] w-auto origin-left scale-[1.08] -translate-x-[10%]"
+                className="h-[56px] w-auto origin-left scale-[1.08] -translate-x-[10%] dark:brightness-0 dark:invert"
               />
             </Link>
-            <p className="max-w-sm text-[1.02rem] font-normal leading-7 tracking-[-0.02em] text-gray-700">
+            <p className="max-w-sm text-[1.02rem] font-normal leading-7 tracking-[-0.02em] text-type-secondary">
               {t("footer.blurb")}
             </p>
             <div className="flex flex-wrap items-center gap-3">
@@ -158,7 +158,7 @@ export default async function Footer(): Promise<React.JSX.Element> {
                   aria-label={link.label}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#2F414B]/12 bg-white text-[#0F1518] transition hover:border-type-accent/40 hover:bg-type-accent/8"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:border-type-accent/40 hover:bg-type-accent/8"
                 >
                   {link.icon}
                 </a>
@@ -170,7 +170,7 @@ export default async function Footer(): Promise<React.JSX.Element> {
             {footerSections.map((section) => (
               <div
                 key={section.title}
-                className={`flex flex-col gap-4 text-sm font-normal text-gray-900 ${section.className ?? ""}`}
+                className={`flex flex-col gap-4 text-sm font-normal text-foreground ${section.className ?? ""}`}
               >
                 <span className="font-medium text-type-tertiary">{section.title}</span>
                 <div className="flex flex-col gap-2 opacity-70">
@@ -201,7 +201,7 @@ export default async function Footer(): Promise<React.JSX.Element> {
             ))}
           </div>
 
-          <div className="pt-6 text-xs leading-5 text-gray-500 [content-visibility:auto] [contain-intrinsic-block-size:20rem] lg:col-span-2">
+          <div className="pt-6 text-xs leading-5 text-type-tertiary [content-visibility:auto] [contain-intrinsic-block-size:20rem] lg:col-span-2">
             <div className="space-y-3">
               {footerDisclosure.map((paragraph, index) => (
                 <p key={`footer-disclosure-${index}`}>{paragraph}</p>

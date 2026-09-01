@@ -11,7 +11,7 @@
       "logo": "โลโก้ {site}",
       "helpfulLinks": "ลิงก์ที่เป็นประโยชน์",
       "helpCenter": "ศูนย์ช่วยเหลือ: อีเมลฝ่ายสนับสนุน",
-      "themeToggle": "สลับโหมดสว่างและมืด"
+      "themeToggle": "การตั้งค่าธีม"
     },
     "nav": {
       "products": "ผลิตภัณฑ์",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "โหมดสว่าง",
-      "darkMode": "โหมดมืด"
+      "darkMode": "โหมดมืด",
+      "systemMode": "ระบบ"
     }
   },
   "meta": {

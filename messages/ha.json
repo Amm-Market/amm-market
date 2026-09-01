@@ -11,7 +11,7 @@
       "logo": "Logo na {site}",
       "helpfulLinks": "Mahimman hanyoyi",
       "helpCenter": "Cibiyar taimako: aika imel zuwa tallafi",
-      "themeToggle": "Canza yanayin haske da duhu"
+      "themeToggle": "Zaɓin jigo"
     },
     "nav": {
       "products": "Kayayyaki",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "Yanayin haske",
-      "darkMode": "Yanayin duhu"
+      "darkMode": "Yanayin duhu",
+      "systemMode": "Tsarin"
     }
   },
   "meta": {

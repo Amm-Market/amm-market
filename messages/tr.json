@@ -11,7 +11,7 @@
       "logo": "{site} logosu",
       "helpfulLinks": "Yararlı bağlantılar",
       "helpCenter": "Yardım merkezi: desteğe e-posta gönder",
-      "themeToggle": "Açık ve koyu mod arasında geçiş yap"
+      "themeToggle": "Tema tercihi"
     },
     "nav": {
       "products": "Ürünler",
@@ -161,7 +161,8 @@
     },
     "theme": {
       "lightMode": "Açık mod",
-      "darkMode": "Koyu mod"
+      "darkMode": "Koyu mod",
+      "systemMode": "Sistem"
     }
   },
   "meta": {
