@@ -74,7 +74,7 @@ const DeferredHomepageFaqSection = dynamic(() => import("@/components/homepage/H
  */
 function PoolCard({ pool }: { pool: HomepagePool }) {
   return (
-    <div className="flex h-[58px] flex-shrink-0 items-center gap-2.5 rounded-full border border-[#d8e1ef] bg-white px-3.5 shadow-[0_2px_10px_rgba(15,23,42,0.03)] transition duration-150 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(15,23,42,0.06)]">
+    <div className="flex h-[58px] flex-shrink-0 items-center gap-2.5 rounded-full border border-border bg-card px-3.5 shadow-[0_2px_10px_rgba(15,23,42,0.03)] transition duration-150 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(15,23,42,0.06)] dark:shadow-[0_3px_8px_rgba(0,0,0,0.25)] dark:hover:shadow-[0_10px_24px_rgba(0,0,0,0.35)]">
       <div className="relative flex items-center shrink-0">
         <TokenLogo symbol={pool.token0.symbol} className="z-10" />
         <TokenLogo symbol={pool.token1.symbol} className="-ml-2" />
@@ -673,11 +673,9 @@ function HeroSectionBody() {
           </div>
         </LazySection>
 
-        <LazySection minHeight="520px" fallback={<SectionSkeleton minHeight="520px" />}>
-          <div className="-mt-8 md:-mt-12">
-            <HomepageNewsroomSection eyebrowTone="rose" />
-          </div>
-        </LazySection>
+        <div className="-mt-8 md:-mt-12">
+          <HomepageNewsroomSection eyebrowTone="rose" />
+        </div>
 
         <LazySection minHeight="480px" fallback={<SectionSkeleton minHeight="480px" />}>
           <div className="pb-16 md:pb-24 2xl:pb-22">
