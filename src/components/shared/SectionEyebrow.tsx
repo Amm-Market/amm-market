@@ -16,13 +16,13 @@ interface SectionEyebrowProps {
 }
 
 const toneClasses: Record<SectionEyebrowTone, string> = {
-  blue: "text-type-tertiary",
-  emerald: "text-type-tertiary",
-  violet: "text-type-tertiary",
-  amber: "text-type-tertiary",
-  cyan: "text-type-tertiary",
-  rose: "text-type-tertiary",
-  slate: "text-type-tertiary",
+  blue: "text-type-accent",
+  emerald: "text-type-accent",
+  violet: "text-type-accent",
+  amber: "text-type-accent",
+  cyan: "text-type-accent",
+  rose: "text-type-accent",
+  slate: "text-type-accent",
 }
 
 export function SectionEyebrow({ children, className = "", tone = "blue" }: SectionEyebrowProps) {
