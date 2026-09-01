@@ -9,7 +9,6 @@ import { diatypeFont } from "@/app/site-fonts"
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import { themeInitScript } from "@/lib/theme"
 import { getLocaleDefinition, getLocaleDir } from "@/i18n/locales"
 import { routing } from "@/i18n/routing"
 import { languageAlternates } from "@/lib/i18n/path"
@@ -138,7 +137,6 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} dir={dir} className={diatypeFont.variable} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(organizationSchema) }}
