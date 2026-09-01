@@ -144,7 +144,7 @@ export default async function Footer(): Promise<React.JSX.Element> {
                 width={480}
                 height={240}
                 quality={85}
-                className="h-[56px] w-auto origin-left scale-[1.08] -translate-x-[10%] dark:brightness-0 dark:invert"
+                className="h-[56px] w-auto origin-left scale-[1.08] -translate-x-[10%]"
               />
             </Link>
             <p className="max-w-sm text-[1.02rem] font-normal leading-7 tracking-[-0.02em] text-type-secondary">

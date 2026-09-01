@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "浅色模式",
       "darkMode": "深色模式",
-      "systemMode": "跟随系统"
+      "systemMode": "跟随系统",
+      "tapToChange": "点击切换"
     }
   },
   "meta": {

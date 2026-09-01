@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "Modo claro",
       "darkMode": "Modo oscuro",
-      "systemMode": "Sistema"
+      "systemMode": "Sistema",
+      "tapToChange": "Toca para cambiar"
     }
   },
   "meta": {

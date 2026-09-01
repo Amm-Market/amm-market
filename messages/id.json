@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "Mode Terang",
       "darkMode": "Mode Gelap",
-      "systemMode": "Sistem"
+      "systemMode": "Sistem",
+      "tapToChange": "Ketuk untuk mengubah"
     }
   },
   "meta": {

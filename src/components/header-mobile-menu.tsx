@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 import { useTranslations } from "next-intl"
 import { HeaderHelpCenterMobileRow } from "@/components/header-help-center-button"
-import { HeaderThemeToggleMobileRows } from "@/components/header-theme-toggle"
+import { HeaderThemeToggleMobileRow } from "@/components/header-theme-toggle"
 import { Link } from "@/i18n/navigation"
 import { siteRoutes } from "@/lib/site"
 
@@ -119,7 +119,7 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
           }`}
           style={{ transitionDelay: `${120 + mobileLinks.length * 35}ms` }}
         >
-          <HeaderThemeToggleMobileRows />
+          <HeaderThemeToggleMobileRow />
           <HeaderHelpCenterMobileRow onNavigate={onClose} />
         </div>
       </nav>

@@ -21,7 +21,7 @@ function BrandLogo({ alt }: { alt: string }) {
         width={480}
         height={240}
         quality={85}
-        className="h-[56px] w-auto scale-[1.08] origin-left dark:brightness-0 dark:invert md:h-[52px]"
+        className="h-[56px] w-auto scale-[1.08] origin-left md:h-[52px]"
       />
     </span>
   )

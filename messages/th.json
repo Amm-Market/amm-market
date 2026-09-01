@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "โหมดสว่าง",
       "darkMode": "โหมดมืด",
-      "systemMode": "ระบบ"
+      "systemMode": "ระบบ",
+      "tapToChange": "แตะเพื่อเปลี่ยน"
     }
   },
   "meta": {

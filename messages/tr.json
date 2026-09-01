@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "Açık mod",
       "darkMode": "Koyu mod",
-      "systemMode": "Sistem"
+      "systemMode": "Sistem",
+      "tapToChange": "Değiştirmek için dokunun"
     }
   },
   "meta": {

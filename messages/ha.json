@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "Yanayin haske",
       "darkMode": "Yanayin duhu",
-      "systemMode": "Tsarin"
+      "systemMode": "Tsarin",
+      "tapToChange": "Matsa don canza"
     }
   },
   "meta": {

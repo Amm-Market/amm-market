@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "Hellmodus",
       "darkMode": "Dunkelmodus",
-      "systemMode": "System"
+      "systemMode": "System",
+      "tapToChange": "Tippen zum Wechseln"
     }
   },
   "meta": {

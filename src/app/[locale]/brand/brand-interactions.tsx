@@ -107,23 +107,23 @@ export function BrandLogoShowcase() {
           <button
             key={variant.id}
             type="button"
-            className={`flex w-full flex-col gap-3 border-t border-gray-200 py-5 text-left transition-all duration-200 ${
+            className={`flex w-full flex-col gap-3 border-t border-border py-5 text-left transition-all duration-200 ${
               activeLogoVariant === variant.id ? "opacity-100" : "opacity-50 hover:opacity-75"
             }`}
             onMouseEnter={() => setActiveLogoVariant(variant.id)}
             onFocus={() => setActiveLogoVariant(variant.id)}
             onClick={() => setActiveLogoVariant(variant.id)}
           >
-            <div className="relative flex aspect-[7/3] items-center justify-center rounded-[20px] border border-[#0F1518]/15 md:hidden">
+            <div className="brand-logo-preview relative flex aspect-[7/3] items-center justify-center rounded-[20px] border border-[#0F1518]/15 bg-white md:hidden">
               <BrandAssetImage src={variant.src} alt={variant.alt} className={variant.mobileImageClassName} />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900">{variant.title}</h3>
+            <h3 className="text-xl font-semibold text-foreground">{variant.title}</h3>
             <p className="text-sm leading-relaxed text-gray-500">{variant.description}</p>
           </button>
         ))}
       </div>
 
-      <div className="group relative hidden h-[400px] items-center justify-center rounded-[20px] border border-[#0F1518]/15 md:flex">
+      <div className="brand-logo-preview group relative hidden h-[400px] items-center justify-center rounded-[20px] border border-[#0F1518]/15 bg-white md:flex">
         {logoVariants.map((variant) => (
           <div
             key={variant.id}
@@ -174,7 +174,7 @@ export function BrandColorPalette() {
       {colorGroups.map((group) => (
         <div key={group.title} className="grid items-start gap-8 md:grid-cols-2">
           <div className="flex flex-col gap-3">
-            <h3 className="text-xl font-semibold text-[#0F1518]">{group.title}</h3>
+            <h3 className="text-xl font-semibold text-foreground">{group.title}</h3>
             <p className="text-sm leading-relaxed text-gray-500">{group.description}</p>
           </div>
 
@@ -199,7 +199,7 @@ export function BrandColorPalette() {
                   </span>
                 </button>
                 <div className="flex min-w-0 flex-1 flex-col justify-center py-3 pr-3">
-                  <p className="font-semibold text-[#0F1518]">{color.name}</p>
+                  <p className="font-semibold text-foreground">{color.name}</p>
                   <p className="mt-0.5 text-sm text-gray-500">{color.usage}</p>
                 </div>
               </div>

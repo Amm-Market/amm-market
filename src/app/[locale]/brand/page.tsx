@@ -77,8 +77,8 @@ function BrandAssetImage({
 export default async function BrandPage() {
   return (
     <LocalizedMarketing keys={["brand/page", "brand/brand-interactions"]}>
-    <div className="flex min-h-screen flex-col bg-white">
-      <section className="bg-white pt-14 pb-0 md:pt-20">
+    <div className="flex min-h-screen flex-col bg-background">
+      <section className="bg-background pt-14 pb-0 md:pt-20">
         <div className="site-content-shell">
           <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
             <h1 className="type-index-title text-foreground">
@@ -90,7 +90,7 @@ export default async function BrandPage() {
             <a
               href={BRAND_KIT_URL}
               download
-              className="group inline-flex h-10 items-center justify-center gap-2 rounded-full border border-[#151c22]/80 bg-white px-5 text-[0.98rem] font-semibold tracking-[-0.02em] text-[#151c22] transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white"
+              className="group inline-flex h-10 items-center justify-center gap-2 rounded-full border border-foreground/80 bg-background px-5 text-[0.98rem] font-semibold tracking-[-0.02em] text-foreground transition-[background-color,border-color,color] duration-200 ease-out hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white"
             >
               <span>Download Kit</span>
               <Download className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-y-0.5" />
@@ -99,7 +99,7 @@ export default async function BrandPage() {
         </div>
       </section>
 
-      <main className="flex-1 bg-white">
+      <main className="flex-1 bg-background">
         <div className="site-content-shell">
           <section className="site-section-gap">
             <div className="mb-8 space-y-3 md:mb-12">
@@ -118,7 +118,7 @@ export default async function BrandPage() {
 
             <div className="grid items-start gap-8 md:grid-cols-2">
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-[#0F1518]">Diatype</h3>
+                <h3 className="text-xl font-semibold text-foreground">Diatype</h3>
                 <p className="text-sm leading-relaxed text-gray-500">
                   Avana uses Diatype for product and marketing surfaces. It keeps dense protocol content readable while
                   still feeling sharp and editorial.
@@ -126,7 +126,7 @@ export default async function BrandPage() {
               </div>
 
               <div className="relative flex flex-col gap-5 border-b border-gray-200 pb-4">
-                <div className="w-full overflow-hidden leading-none tracking-[-0.04em] text-[#0F1518]">
+                <div className="w-full overflow-hidden leading-none tracking-[-0.04em] text-foreground">
                   <div className="text-[120px] font-normal whitespace-nowrap md:text-[160px]">AaBbCc</div>
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default async function BrandPage() {
 
             <div className="mt-8 grid items-start gap-8 md:grid-cols-2">
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-[#0F1518]">Outfit</h3>
+                <h3 className="text-xl font-semibold text-foreground">Outfit</h3>
                 <p className="text-sm leading-relaxed text-gray-500">
                   Outfit is a fallback specimen for contexts where Diatype is unavailable. Diatype remains the primary
                   typeface for the product experience.
@@ -142,7 +142,7 @@ export default async function BrandPage() {
               </div>
 
               <div className="relative flex flex-col gap-5 md:border-b-0">
-                <div className="w-full overflow-hidden leading-none text-[#0F1518]">
+                <div className="w-full overflow-hidden leading-none text-foreground">
                   <div className={`${brandOutfitFont.className} text-[120px] font-semibold italic whitespace-nowrap tracking-[-0.02em] md:text-[160px]`}>
                     AaBbCc
                   </div>
@@ -168,14 +168,14 @@ export default async function BrandPage() {
 
             <div className="grid items-center gap-8 md:grid-cols-2">
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-[#0F1518]">Primary Token Mark</h3>
+                <h3 className="text-xl font-semibold text-foreground">Primary Token Mark</h3>
                 <p className="text-sm leading-relaxed text-gray-500">
                   Avana token uses the circular mark as the default asset image for exchange listings, token pages,
                   market tables, and launch materials.
                 </p>
               </div>
 
-              <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[20px] border border-[#2F414B]/10 bg-white p-6">
+              <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[20px] border border-border bg-background p-6 dark:bg-white">
                 <Image
                   src="/images/brand/avana-token-circle.jpg"
                   alt="Avana circular 3D token icon"
@@ -189,14 +189,14 @@ export default async function BrandPage() {
 
             <div className="mt-12 grid items-center gap-8 md:grid-cols-2">
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-[#0F1518]">Framed Token Mark</h3>
+                <h3 className="text-xl font-semibold text-foreground">Framed Token Mark</h3>
                 <p className="text-sm leading-relaxed text-gray-500">
                   Avana token uses the rounded-square mark for interfaces that expect a square asset tile, including
                   wallets, app grids, dashboards, and compact product views.
                 </p>
               </div>
 
-              <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[20px] border border-[#2F414B]/10 bg-white p-6">
+              <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[20px] border border-border bg-background p-6 dark:bg-white">
                 <Image
                   src="/images/brand/avana-token-square.jpg"
                   alt="Avana rounded-square 3D token icon"
@@ -217,7 +217,7 @@ export default async function BrandPage() {
 
             <div className="mb-12 grid items-start gap-8 md:grid-cols-2">
               <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-[#0F1518]">Things to avoid</h3>
+                <h3 className="text-xl font-semibold text-foreground">Things to avoid</h3>
                 <p className="text-sm leading-relaxed text-gray-500">
                   Keep the Avana mark intact. These examples show the treatments that make the logo harder to read or
                   less recognizable.

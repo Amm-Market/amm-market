@@ -16,7 +16,8 @@
     "theme": {
       "systemMode": "System",
       "lightMode": "Light Mode",
-      "darkMode": "Dark Mode"
+      "darkMode": "Dark Mode",
+      "tapToChange": "Tap to change"
     },
     "nav": {
       "products": "Products",

@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "الوضع الفاتح",
       "darkMode": "الوضع الداكن",
-      "systemMode": "النظام"
+      "systemMode": "النظام",
+      "tapToChange": "اضغط للتغيير"
     }
   },
   "meta": {

@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "لائٹ موڈ",
       "darkMode": "ڈارک موڈ",
-      "systemMode": "سسٹم"
+      "systemMode": "سسٹم",
+      "tapToChange": "تبدیل کرنے کے لیے ٹیپ کریں"
     }
   },
   "meta": {

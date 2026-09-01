@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "Chế độ sáng",
       "darkMode": "Chế độ tối",
-      "systemMode": "Hệ thống"
+      "systemMode": "Hệ thống",
+      "tapToChange": "Chạm để thay đổi"
     }
   },
   "meta": {

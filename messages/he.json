@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "מצב בהיר",
       "darkMode": "מצב כהה",
-      "systemMode": "מערכת"
+      "systemMode": "מערכת",
+      "tapToChange": "הקש לשינוי"
     }
   },
   "meta": {

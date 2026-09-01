@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "حالت روشن",
       "darkMode": "حالت تاریک",
-      "systemMode": "سیستم"
+      "systemMode": "سیستم",
+      "tapToChange": "برای تغییر ضربه بزنید"
     }
   },
   "meta": {

@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "Hali ya mwanga",
       "darkMode": "Hali ya giza",
-      "systemMode": "Mfumo"
+      "systemMode": "Mfumo",
+      "tapToChange": "Gusa kubadilisha"
     }
   },
   "meta": {

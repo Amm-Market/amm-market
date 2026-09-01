@@ -276,7 +276,7 @@ function HeroSectionBody() {
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                        <div className="hero-feature-mockup relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                           <Image
                             src="/images/avana-tokens-rewards-v2.jpg"
                             alt="Avana token rewards"
@@ -300,7 +300,7 @@ function HeroSectionBody() {
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                        <div className="hero-feature-mockup relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(16,185,129,0.05),transparent_55%)]" />
                           <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
                             <div className="w-full max-w-[16rem] overflow-hidden">
@@ -406,7 +406,7 @@ function HeroSectionBody() {
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                        <div className="hero-feature-mockup relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                           <div className="absolute inset-0 flex items-center justify-center p-5">
                             <div className="w-full max-w-[15.75rem]">
                               <div className="overflow-hidden rounded-[20px] border border-gray-200 bg-white p-4">
@@ -455,7 +455,7 @@ function HeroSectionBody() {
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                        <div className="hero-feature-mockup relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                           <div className="absolute inset-0 flex items-center justify-center px-5">
                             <div className="w-full max-w-[16rem] rounded-[22px] border border-gray-200 bg-white p-4">
                               <div className="relative overflow-hidden rounded-[18px] border border-gray-200 bg-gray-50/50 p-4">

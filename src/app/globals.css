@@ -1184,6 +1184,26 @@ body:has([data-developer-doc-shell]) footer.site-content-shell {
   color: color-mix(in oklab, var(--foreground) 94%, transparent);
 }
 
-.dark img.dark\:brightness-0.dark\:invert {
-  filter: brightness(0) invert(1);
+.dark .hero-feature-mockup,
+.dark .hero-feature-mockup.bg-white {
+  background-color: #ffffff !important;
+  border-color: rgb(229 231 235) !important;
+}
+
+.dark .hero-feature-mockup .bg-white {
+  background-color: #ffffff !important;
+}
+
+.dark .hero-feature-mockup .bg-gray-50,
+.dark .hero-feature-mockup .bg-gray-50\/80 {
+  background-color: rgb(249 250 251) !important;
+}
+
+.dark .hero-feature-mockup .bg-gray-100 {
+  background-color: rgb(243 244 246) !important;
+}
+
+.dark .brand-logo-preview {
+  background-color: #ffffff !important;
+  border-color: rgba(15, 23, 24, 0.12) !important;
 }

@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "লাইট মোড",
       "darkMode": "ডার্ক মোড",
-      "systemMode": "সিস্টেম"
+      "systemMode": "সিস্টেম",
+      "tapToChange": "পরিবর্তন করতে ট্যাপ করুন"
     }
   },
   "meta": {

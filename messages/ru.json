@@ -162,7 +162,8 @@
     "theme": {
       "lightMode": "Светлый режим",
       "darkMode": "Тёмный режим",
-      "systemMode": "Система"
+      "systemMode": "Система",
+      "tapToChange": "Нажмите, чтобы изменить"
     }
   },
   "meta": {
