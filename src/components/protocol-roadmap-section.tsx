@@ -197,10 +197,10 @@ export default async function ProtocolRoadmapSection() {
                       {group.items.map((milestone) => (
                         <div
                           key={milestone.label}
-                          className="flex items-center gap-2 rounded-md bg-gray-100 px-2.5 py-1.5"
+                          className="flex items-center gap-2 rounded-md border border-border bg-muted px-2.5 py-1.5"
                         >
                           <RoadmapMilestoneIcon label={milestone.label} />
-                          <span className="type-meta-label text-foreground">
+                          <span className="text-sm font-medium leading-tight text-foreground">
                             {getRoadmapDisplayLabel(milestone.label)}
                           </span>
                         </div>
