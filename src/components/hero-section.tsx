@@ -591,7 +591,7 @@ function HeroSectionBody() {
 
             return (
               <article key={item.title} className="flex flex-col bg-transparent">
-                <Icon className="h-10 w-10 text-type-tertiary sm:h-11 sm:w-11" strokeWidth={1.5} aria-hidden="true" />
+                <Icon className="h-10 w-10 text-[#01AACF] sm:h-11 sm:w-11" strokeWidth={1.5} aria-hidden="true" />
                 <FeatureCardTitle className="mt-4 sm:mt-5">{item.title}</FeatureCardTitle>
                 <FeatureCardDescription className="mt-2 max-w-[22rem]">
                   {item.description}

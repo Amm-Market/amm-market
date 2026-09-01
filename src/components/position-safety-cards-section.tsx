@@ -40,7 +40,7 @@ function LiquidationCard({
 }) {
   return (
     <article className="flex flex-col feature-card rounded-[1.75rem] p-5 md:p-6">
-      <div className="flex h-8 w-8 items-center justify-center text-type-tertiary">
+      <div className="flex h-8 w-8 items-center justify-center text-[#01AACF]">
         <Icon className="h-8 w-8" strokeWidth={1.85} />
       </div>
 

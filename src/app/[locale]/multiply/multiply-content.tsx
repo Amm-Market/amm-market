@@ -258,7 +258,7 @@ export default async function MultiplyPage() {
                     key={feature.title}
                     className="flex w-[15rem] shrink-0 snap-start flex-col bg-transparent md:w-auto md:shrink"
                   >
-                    <feature.icon className="h-11 w-11 text-type-tertiary" strokeWidth={1.5} aria-hidden="true" />
+                    <feature.icon className="h-11 w-11 text-[#01AACF]" strokeWidth={1.5} aria-hidden="true" />
                     <FeatureCardTitle className="mt-5">{feature.title}</FeatureCardTitle>
                     <FeatureCardDescription className="mt-2 max-w-[22rem]">
                       {feature.description}
