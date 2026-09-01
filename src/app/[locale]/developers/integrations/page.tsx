@@ -48,20 +48,20 @@ export default async function SupportedIntegrationsPage() {
         />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+          <h2 className="mb-4">Overview</h2>
+          <p className="mb-4">
             Avana supports curated LP collateral markets across AMMs such as Uniswap, Balancer,
             Curve, and Aerodrome as markets are launched. Support is approved pool by approved pool,
             not automatically granted to every pool on a DEX.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p>
             Each supported market needs reliable asset pricing, enough liquidity depth, a defined
             unwind route, market caps, and collateral settings that match the pool type. See{" "}
-            <Link href="/developers/integrations/allowed-pools" className="text-[#01AACF] hover:underline">
+            <Link href="/developers/integrations/allowed-pools" className="text-type-accent hover:underline">
               Allowed LP Pools
             </Link>{" "}
             and{" "}
-            <Link href="/developers/integrations/price-oracles" className="text-[#01AACF] hover:underline">
+            <Link href="/developers/integrations/price-oracles" className="text-type-accent hover:underline">
               Price Oracles
             </Link>{" "}
             for admission and valuation details.
@@ -69,14 +69,14 @@ export default async function SupportedIntegrationsPage() {
         </section>
 
         <section id="appkit" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">AppKit</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+          <h2 className="mb-4">AppKit</h2>
+          <p className="mb-4">
             AppKit lets DEXs, wallets, and portfolio apps embed Avana credit inside their existing
             user flows instead of sending users to a separate lending app.
           </p>
-          <p className="text-sm text-gray-600">
+          <p>
             See the{" "}
-            <Link href="/developers/integrations/appkit" className="text-[#01AACF] hover:underline">
+            <Link href="/developers/integrations/appkit" className="text-type-accent hover:underline">
               AppKit guide
             </Link>{" "}
             for partner controls, handoff patterns, and launch notes.
@@ -84,33 +84,33 @@ export default async function SupportedIntegrationsPage() {
         </section>
 
         <section id="dex-families" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">DEX Families</h2>
+          <h2 className="mb-4">DEX Families</h2>
           <div className="space-y-4">
             {dexFamilies.map((family) => (
-              <div key={family.title} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
-                <h3 className="mb-2 font-semibold text-gray-900">{family.title}</h3>
-                <p className="text-sm text-gray-600">{family.body}</p>
+              <div key={family.title} className="rounded-lg border border-border bg-muted/40 p-4">
+                <h3 className="mb-2">{family.title}</h3>
+                <p>{family.body}</p>
               </div>
             ))}
           </div>
         </section>
 
         <section id="enablement-status" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Enablement Status</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+          <h2 className="mb-4">Enablement Status</h2>
+          <p className="mb-4">
             Whether a DEX is enabled on a given network is a deployment decision. A DEX family can
             be supportable in theory but still disabled on a specific deployment until oracle
             coverage, liquidation routing, and risk parameters are ready.
           </p>
-          <p className="text-sm text-gray-600">
+          <p>
             Check the Avana interface, release notes, or contract registry for what is live on your
             target deployment.
           </p>
         </section>
 
         <section id="review-requirements" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Review Requirements</h2>
-          <ul className="list-disc space-y-2 ps-5 text-sm text-gray-600">
+          <h2 className="mb-4">Review Requirements</h2>
+          <ul className="list-disc space-y-2 ps-5 text-sm text-type-secondary">
             <li>Conservative position valuation from robust external prices and verifiable state reconstruction</li>
             <li>A dependable unwind path for liquidation, including fee collection and routing into the debt asset</li>
             <li>Pool depth, concentration risk, correlation assumptions, and operational monitoring that fit the risk framework</li>

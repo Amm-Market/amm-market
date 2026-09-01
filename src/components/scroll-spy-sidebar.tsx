@@ -63,57 +63,57 @@ const colorClasses = {
   blue: {
     bar: "bg-[#01AACF]",
     dot: "bg-[#01AACF]",
-    text: "text-[#01AACF]",
-    labelText: "text-[#01AACF]",
-    summary: "text-[#01AACF]/70",
+    text: "text-type-accent",
+    labelText: "text-type-accent",
+    summary: "text-type-accent/70",
     glow: "shadow-[0_0_0_4px_rgba(1,170,207,0.14)]",
   },
   emerald: {
     bar: "bg-[#01AACF]",
     dot: "bg-[#01AACF]",
-    text: "text-[#01AACF]",
-    labelText: "text-[#01AACF]",
-    summary: "text-[#01AACF]/70",
+    text: "text-type-accent",
+    labelText: "text-type-accent",
+    summary: "text-type-accent/70",
     glow: "shadow-[0_0_0_4px_rgba(1,170,207,0.14)]",
   },
   violet: {
     bar: "bg-[#01AACF]",
     dot: "bg-[#01AACF]",
-    text: "text-[#01AACF]",
-    labelText: "text-[#01AACF]",
-    summary: "text-[#01AACF]/70",
+    text: "text-type-accent",
+    labelText: "text-type-accent",
+    summary: "text-type-accent/70",
     glow: "shadow-[0_0_0_4px_rgba(1,170,207,0.14)]",
   },
   amber: {
     bar: "bg-[#01AACF]",
     dot: "bg-[#01AACF]",
-    text: "text-[#01AACF]",
-    labelText: "text-[#01AACF]",
-    summary: "text-[#01AACF]/70",
+    text: "text-type-accent",
+    labelText: "text-type-accent",
+    summary: "text-type-accent/70",
     glow: "shadow-[0_0_0_4px_rgba(1,170,207,0.14)]",
   },
   cyan: {
     bar: "bg-[#01AACF]",
     dot: "bg-[#01AACF]",
-    text: "text-[#01AACF]",
-    labelText: "text-[#01AACF]",
-    summary: "text-[#01AACF]/70",
+    text: "text-type-accent",
+    labelText: "text-type-accent",
+    summary: "text-type-accent/70",
     glow: "shadow-[0_0_0_4px_rgba(1,170,207,0.14)]",
   },
   rose: {
     bar: "bg-[#01AACF]",
     dot: "bg-[#01AACF]",
-    text: "text-[#01AACF]",
-    labelText: "text-[#01AACF]",
-    summary: "text-[#01AACF]/70",
+    text: "text-type-accent",
+    labelText: "text-type-accent",
+    summary: "text-type-accent/70",
     glow: "shadow-[0_0_0_4px_rgba(1,170,207,0.14)]",
   },
   slate: {
     bar: "bg-[#01AACF]",
     dot: "bg-[#01AACF]",
-    text: "text-[#01AACF]",
-    labelText: "text-[#01AACF]",
-    summary: "text-[#01AACF]/70",
+    text: "text-type-accent",
+    labelText: "text-type-accent",
+    summary: "text-type-accent/70",
     glow: "shadow-[0_0_0_4px_rgba(1,170,207,0.14)]",
   },
 }
@@ -203,7 +203,7 @@ export function ScrollSpySidebar({
   return (
     <div className="w-full max-w-[17rem]">
       <div className="flex w-full flex-col items-start justify-start gap-0">
-        <p className="mb-2.5 flex items-center gap-1.5 pl-6 text-[0.8125rem] font-normal tracking-[-0.01em] text-gray-500">
+        <p className="type-meta-label mb-2.5 flex items-center gap-1.5 pl-6 text-type-tertiary">
           <AlignLeft aria-hidden="true" className="h-3.5 w-3.5 shrink-0" strokeWidth={2.25} />
           On this page
         </p>
@@ -216,7 +216,7 @@ export function ScrollSpySidebar({
         )}
 
         <div className="relative pl-6 pb-1">
-          <div className="absolute bottom-0 left-0 top-0 w-1 overflow-hidden rounded-full bg-gray-100">
+          <div className="absolute bottom-0 left-0 top-0 w-1 overflow-hidden rounded-full bg-muted">
             <div
               className={`absolute left-0 top-0 w-full rounded-full ${colors.bar} transition-[height] duration-500 ease-out`}
               style={{ height: `${barProgress}%` }}
@@ -235,7 +235,7 @@ export function ScrollSpySidebar({
                       ? `${colors.dot} ${colors.glow} scale-125`
                       : isPast
                         ? `${colors.dot} opacity-80`
-                        : "bg-gray-300"
+                        : "bg-border"
                   }`}
                 />
                 <a
@@ -257,7 +257,7 @@ export function ScrollSpySidebar({
                   className={`group relative inline-flex max-w-full cursor-pointer items-center px-3 py-1 transition-all duration-200 ease-in-out ${
                     isActive
                       ? `${colors.text}`
-                      : "text-gray-500 hover:text-gray-900 hover:opacity-80"
+                      : "text-type-tertiary hover:text-foreground hover:opacity-80"
                   }`}
                 >
                   <p className="type-sidebar-link line-clamp-2 break-words font-normal">{section.title}</p>

@@ -663,17 +663,17 @@
   font-size: var(--type-supporting-size);
   font-weight: var(--type-weight-emphasis);
   line-height: 1.5;
-  color: rgb(17 24 39);
+  color: var(--foreground);
 }
 
 .developer-content[data-developer-doc-shell] section strong,
 .site-article-content strong,
 .site-editorial-content strong {
-  color: rgb(17 24 39);
+  color: var(--foreground);
 }
 
 .developer-content[data-developer-doc-shell] a {
-  color: #01aacf;
+  color: var(--avana-cyan);
 }
 
 .developer-content[data-developer-doc-shell] a:hover {
@@ -681,55 +681,37 @@
 }
 
 .site-blog-article section[id] > h2 {
-  --site-eyebrow-color: #b45309;
+  --site-eyebrow-color: var(--avana-cyan);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.35rem;
   margin-bottom: 1rem;
   text-align: left;
-  font-size: 1.375rem;
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  color: #18323c;
+  font-size: var(--type-section-title-size);
+  font-weight: var(--type-weight-emphasis);
+  line-height: 1.3;
+  letter-spacing: var(--type-tracking-section);
+  color: var(--foreground);
 }
 
-.site-blog-article section[id] > h2.site-eyebrow-tone-blue {
-  --site-eyebrow-color: #2563eb;
-}
-
-.site-blog-article section[id] > h2.site-eyebrow-tone-emerald {
-  --site-eyebrow-color: #059669;
-}
-
-.site-blog-article section[id] > h2.site-eyebrow-tone-violet {
-  --site-eyebrow-color: #7c3aed;
-}
-
-.site-blog-article section[id] > h2.site-eyebrow-tone-amber {
-  --site-eyebrow-color: #d97706;
-}
-
-.site-blog-article section[id] > h2.site-eyebrow-tone-cyan {
-  --site-eyebrow-color: #0891b2;
-}
-
-.site-blog-article section[id] > h2.site-eyebrow-tone-rose {
-  --site-eyebrow-color: #e11d48;
-}
-
+.site-blog-article section[id] > h2.site-eyebrow-tone-blue,
+.site-blog-article section[id] > h2.site-eyebrow-tone-emerald,
+.site-blog-article section[id] > h2.site-eyebrow-tone-violet,
+.site-blog-article section[id] > h2.site-eyebrow-tone-amber,
+.site-blog-article section[id] > h2.site-eyebrow-tone-cyan,
+.site-blog-article section[id] > h2.site-eyebrow-tone-rose,
 .site-blog-article section[id] > h2.site-eyebrow-tone-slate {
-  --site-eyebrow-color: #475569;
+  --site-eyebrow-color: var(--avana-cyan);
 }
 
 .site-blog-article section[id] > h2[data-eyebrow]::before {
   content: attr(data-eyebrow);
   display: inline-flex;
-  font-size: 0.75rem;
+  font-size: var(--type-eyebrow-size);
   font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  line-height: 1.35;
+  letter-spacing: var(--type-tracking-label);
   margin-bottom: 0.05rem;
   color: var(--site-eyebrow-color);
 }
@@ -750,7 +732,7 @@
   }
 
   .site-blog-article section[id] > h2 {
-    font-size: 1.5rem;
+    font-size: var(--type-section-title-size);
   }
 
   .developer-content[data-developer-doc-shell] section :is(p, li, td, dd),
@@ -774,13 +756,12 @@
 
   .site-blog-article section[id] > h2 {
     margin-bottom: 1.15rem;
-    font-size: 1.625rem;
   }
 }
 
 @media (min-width: 1280px) {
   .site-blog-article section[id] > h2 {
-    font-size: 1.75rem;
+    margin-bottom: 1.15rem;
   }
 }
 
@@ -884,42 +865,7 @@
   animation: scroll-right 45s linear infinite;
 }
 
-/* Developer documentation typography */
-.developer-content h1 {
-  font-size: 1.5rem;
-  line-height: 2rem;
-  font-weight: 400;
-  color: #111827;
-  margin-bottom: 0.5rem;
-}
-
-.developer-content h2 {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  font-weight: 400;
-  color: #111827;
-  margin-bottom: 1rem;
-}
-
-.developer-content h3 {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 400;
-  color: #111827;
-  margin-bottom: 0.5rem;
-}
-
-.developer-content p {
-  font-size: 0.875rem;
-  line-height: 1.625;
-  color: #4b5563;
-}
-
-.developer-content li {
-  font-size: 0.875rem;
-  color: #4b5563;
-}
-
+/* Developer documentation tables and code */
 .developer-content code {
   font-size: 0.75rem;
 }

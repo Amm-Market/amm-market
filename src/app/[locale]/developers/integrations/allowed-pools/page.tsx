@@ -60,20 +60,20 @@ export default async function AllowedPoolsPage() {
         />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+          <h2 className="mb-4">Overview</h2>
+          <p className="mb-4">
             Avana only accepts LP collateral from pools that have been reviewed and approved. The
             allowlist exists because LP support is not automatic for every pool on a DEX. The
             protocol needs enough information to price the position, manage liquidation, and bound
             the risk it is taking on.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p>
             Pool approval works alongside{" "}
-            <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
+            <Link href="/developers/architecture/collateral-factors" className="text-type-accent hover:underline">
               Collateral Factors
             </Link>{" "}
             and{" "}
-            <Link href="/developers/safety" className="text-[#01AACF] hover:underline">
+            <Link href="/developers/safety" className="text-type-accent hover:underline">
               Risk Framework
             </Link>
             . The allowlist decides whether a pool may enter the system; collateral factors decide how
@@ -82,15 +82,15 @@ export default async function AllowedPoolsPage() {
         </section>
 
         <section id="review-criteria" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Review Criteria</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+          <h2 className="mb-4">Review Criteria</h2>
+          <p className="mb-4">
             A pool enters the allowlist only when the protocol can answer the same basic questions
             every time: can it price the position, can it exit the position, and can it monitor the
             risk in production.
           </p>
-          <ul className="space-y-3 text-sm text-gray-600">
+          <ul className="space-y-3 text-sm text-type-secondary">
             {reviewCriteria.map((criterion) => (
-              <li key={criterion} className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+              <li key={criterion} className="rounded-lg border border-border bg-muted/40 px-4 py-3">
                 {criterion}
               </li>
             ))}
@@ -98,25 +98,25 @@ export default async function AllowedPoolsPage() {
         </section>
 
         <section id="pool-families" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Pool Families</h2>
+          <h2 className="mb-4">Pool Families</h2>
           <div className="space-y-4">
             {poolFamilies.map((family) => (
               <div key={family.family} className="border-b border-gray-100 pb-4 last:border-b-0 last:pb-0">
-                <h3 className="mb-1 font-semibold text-gray-900">{family.family}</h3>
-                <p className="text-sm text-gray-600">{family.treatment}</p>
+                <h3 className="mb-1">{family.family}</h3>
+                <p>{family.treatment}</p>
               </div>
             ))}
           </div>
         </section>
 
         <section id="risk-application" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Risk Application</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+          <h2 className="mb-4">Risk Application</h2>
+          <p className="mb-4">
             Pool approval does not mean a position gets generous credit treatment. After a pool is
             admitted, each LP position is still valued on its own, discounted according to its risk
             treatment, and then added to the user&apos;s borrowing capacity inside the Borrow Spoke.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p>
             That is why pool approval and collateral valuation are tightly linked. A pool can be
             safe enough to admit while still requiring conservative caps, lower LTVs, or stricter
             liquidation handling once it is live.
@@ -124,8 +124,8 @@ export default async function AllowedPoolsPage() {
         </section>
 
         <section id="integration-notes" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Integration Notes</h2>
-          <div className="space-y-3 text-sm text-gray-600">
+          <h2 className="mb-4">Integration Notes</h2>
+          <div className="space-y-3 text-sm text-type-secondary">
             <p>
               Builders should think in terms of approved pool templates and deployment-specific
               allowlists, not as if every LP on a DEX is automatically supported.

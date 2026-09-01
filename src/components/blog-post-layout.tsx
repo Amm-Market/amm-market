@@ -11,7 +11,7 @@ const DeferredLlmExportMenu = dynamic(
     loading: () => (
       <div
         aria-hidden="true"
-        className="h-10 w-32 rounded-full border border-slate-200 bg-slate-50"
+        className="h-10 w-32 rounded-full border border-border bg-muted/40"
       />
     ),
   },
@@ -61,7 +61,7 @@ export default async function BlogPostLayout({
       <Link
         href="/newsroom"
         prefetch={false}
-        className="type-supporting mb-5 inline-flex items-center text-gray-500 transition hover:text-gray-900 xl:mb-8"
+        className="type-supporting mb-5 inline-flex items-center text-type-tertiary transition hover:text-foreground xl:mb-8"
       >
         <ChevronLeft className="h-5 w-5 rtl:rotate-180" />
         {t("blogChrome.back")}
@@ -72,11 +72,11 @@ export default async function BlogPostLayout({
         <div className="min-w-0 w-full flex-1">
           <div data-developer-doc-export-root className="min-w-0 w-full max-w-[48rem]">
             <header className="mb-8 space-y-4 md:mb-10">
-              <SectionTitle as="h1" className="break-words">
+              <SectionTitle as="h1" variant="index" className="break-words">
                 {title}
               </SectionTitle>
               <div className="space-y-3">
-                <div className="type-supporting text-gray-500">
+                <div className="type-supporting text-type-tertiary">
                   <p>{date}</p>
                 </div>
                 <div className="flex justify-start" data-export-skip>
@@ -84,12 +84,12 @@ export default async function BlogPostLayout({
                 </div>
               </div>
             </header>
-            <div className="mb-8 border-b border-gray-200 md:mb-10" />
+            <div className="mb-8 border-b border-border md:mb-10" />
 
             <article className="min-w-0">
               <div className="site-article-content site-blog-article prose prose-gray max-w-none break-words">
                 {image ? (
-                  <div className="relative mb-8 hidden aspect-[16/9] w-full overflow-hidden rounded-lg border border-gray-200 md:block">
+                  <div className="relative mb-8 hidden aspect-[16/9] w-full overflow-hidden rounded-lg border border-border md:block">
                     <Image
                       src={image}
                       alt={title}
@@ -106,13 +106,13 @@ export default async function BlogPostLayout({
           </div>
 
           <div className="block py-8 xl:hidden">
-            <div className="type-supporting text-gray-500">{t("blogChrome.share")}</div>
+            <div className="type-supporting text-type-tertiary">{t("blogChrome.share")}</div>
             <div className="mt-4 flex items-center gap-4">
               <a
                 aria-label={t("blogChrome.shareOnX")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-gray-900"
+                className="text-type-tertiary hover:text-foreground"
                 href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}`}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-5 w-5">
@@ -123,7 +123,7 @@ export default async function BlogPostLayout({
                 aria-label={t("blogChrome.shareOnLinkedIn")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-gray-900"
+                className="text-type-tertiary hover:text-foreground"
                 href={`https://www.linkedin.com/shareArticle?mini=true&title=${encodeURIComponent(title)}`}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-5 w-5">
@@ -137,10 +137,10 @@ export default async function BlogPostLayout({
             {prevPost ? (
               <div className="h-full min-w-0">
                 <Link href={`/newsroom/${prevPost.slug}`} prefetch={false}>
-                  <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-gray-200 p-3.5 transition hover:bg-gray-50 md:min-h-[8.25rem] md:p-4">
+                  <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-border p-3.5 transition hover:bg-muted/40 md:min-h-[8.25rem] md:p-4">
                     <div className="space-y-3">
-                      <p className="text-[0.88rem] font-medium tracking-[-0.01em] text-gray-500 md:text-[0.92rem]">{t("blogChrome.previousPost")}</p>
-                      <p className="line-clamp-2 text-[0.9rem] font-medium leading-5 tracking-[-0.02em] text-gray-900 md:text-[0.96rem]">
+                      <p className="type-meta-label">{t("blogChrome.previousPost")}</p>
+                      <p className="type-body-copy line-clamp-2 text-foreground">
                         {prevPost.title}
                       </p>
                     </div>
@@ -153,8 +153,8 @@ export default async function BlogPostLayout({
                 <Link href={`/newsroom/${nextPost.slug}`} prefetch={false}>
                   <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-gray-200 p-3.5 text-end transition hover:bg-gray-50 md:min-h-[8.25rem] md:p-4">
                     <div className="space-y-3">
-                      <p className="text-[0.88rem] font-medium tracking-[-0.01em] text-gray-500 md:text-[0.92rem]">{t("blogChrome.nextPost")}</p>
-                      <p className="line-clamp-2 text-[0.9rem] font-medium leading-5 tracking-[-0.02em] text-gray-900 md:text-[0.96rem]">
+                      <p className="type-meta-label">{t("blogChrome.nextPost")}</p>
+                      <p className="type-body-copy line-clamp-2 text-foreground">
                         {nextPost.title}
                       </p>
                     </div>

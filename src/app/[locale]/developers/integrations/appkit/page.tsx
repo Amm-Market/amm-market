@@ -60,14 +60,14 @@ export default async function DeveloperAppKitPage() {
         />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+          <h2 className="mb-4">Overview</h2>
+          <p className="mb-4">
             AppKit is for third-party products that already own the user relationship, such as
             DEXs, wallets, and portfolio apps where LP positions are already visible. The partner
             product frames the moment, captures context, and decides where the borrow entry appears.
             Avana runs the actual loan path.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p>
             AppKit is for partners that already own the user relationship — DEXs, wallets, and
             portfolio apps where LP positions are already visible. The partner controls placement
             and handoff. Avana runs the actual loan path.
@@ -75,26 +75,26 @@ export default async function DeveloperAppKitPage() {
         </section>
 
         <section id="integration-model" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Integration Model</h2>
+          <h2 className="mb-4">Integration Model</h2>
           <div className="space-y-4">
             {integrationPoints.map((item) => (
-              <div key={item.title} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
-                <h3 className="mb-2 font-semibold text-gray-900">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.body}</p>
+              <div key={item.title} className="rounded-lg border border-border bg-muted/40 p-4">
+                <h3 className="mb-2">{item.title}</h3>
+                <p>{item.body}</p>
               </div>
             ))}
           </div>
         </section>
 
         <section id="partner-controls" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Partner Controls</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+          <h2 className="mb-4">Partner Controls</h2>
+          <p className="mb-4">
             AppKit does not force one presentation model. Partners control the entry points and the
             amount of surrounding guidance, while leaving protocol decisions inside Avana.
           </p>
-          <ul className="space-y-3 text-sm text-gray-600">
+          <ul className="space-y-3 text-sm text-type-secondary">
             {partnerControls.map((item) => (
-              <li key={item} className="rounded-lg border border-gray-200 bg-white px-4 py-3">
+              <li key={item} className="rounded-lg border border-border bg-white px-4 py-3">
                 {item}
               </li>
             ))}
@@ -102,15 +102,15 @@ export default async function DeveloperAppKitPage() {
         </section>
 
         <section id="implementation-notes" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Implementation Notes</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+          <h2 className="mb-4">Implementation Notes</h2>
+          <p className="mb-4">
             The best integrations feel like a continuation of the existing product flow, not a hard
             jump into an unrelated lending app. These notes are the practical baseline for getting
             that handoff right.
           </p>
-          <div className="space-y-3 text-sm text-gray-600">
+          <div className="space-y-3 text-sm text-type-secondary">
             {implementationNotes.map((item) => (
-              <p key={item} className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+              <p key={item} className="rounded-lg border border-border bg-muted/40 px-4 py-3">
                 {item}
               </p>
             ))}
@@ -118,13 +118,13 @@ export default async function DeveloperAppKitPage() {
         </section>
 
         <section id="launch-notes" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Launch Notes</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+          <h2 className="mb-4">Launch Notes</h2>
+          <p className="mb-4">
             Launch AppKit as an integration project, not just a link placement. Confirm the user
             path, review where the entry sits, and make sure the Avana credit path stays clearly
             separated from the partner shell where responsibility changes.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p>
             Also check what happens when the credit surface is hidden, whether deep links into the
             borrow flow are safe, and how missing wallet, market, or collateral context is handled.
           </p>

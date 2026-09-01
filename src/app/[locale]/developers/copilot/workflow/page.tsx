@@ -41,10 +41,10 @@ const steps: Step[] = [
     label: "Query Processing",
     title: "Conversational intelligence",
     body: (
-      <ul className="space-y-2 text-sm leading-7 text-gray-600">
-        <li><span className="font-medium text-gray-900">Natural language interface.</span> Ask questions like &ldquo;What is Aave&apos;s current borrowing APR?&rdquo; or issue commands such as &ldquo;Swap ETH for USDC when gas drops below 10 Gwei.&rdquo;</li>
-        <li><span className="font-medium text-gray-900">Multi-query support.</span> Handle market analysis, strategy validation, direct execution commands, and portfolio optimization in one request.</li>
-        <li><span className="font-medium text-gray-900">Validation layer.</span> Checks input integrity, user authentication, and compliance before anything proceeds.</li>
+      <ul className="space-y-2 text-sm leading-7 text-type-secondary">
+        <li><span className="font-medium text-foreground">Natural language interface.</span> Ask questions like &ldquo;What is Aave&apos;s current borrowing APR?&rdquo; or issue commands such as &ldquo;Swap ETH for USDC when gas drops below 10 Gwei.&rdquo;</li>
+        <li><span className="font-medium text-foreground">Multi-query support.</span> Handle market analysis, strategy validation, direct execution commands, and portfolio optimization in one request.</li>
+        <li><span className="font-medium text-foreground">Validation layer.</span> Checks input integrity, user authentication, and compliance before anything proceeds.</li>
       </ul>
     ),
   },
@@ -56,12 +56,12 @@ const steps: Step[] = [
     title: "Turning context into actionable insight",
     body: (
       <>
-        <ul className="space-y-2 text-sm leading-7 text-gray-600">
-          <li><span className="font-medium text-gray-900">Intent classification.</span> Identifies the goal, such as arbitrage or liquidity migration.</li>
-          <li><span className="font-medium text-gray-900">Parameter extraction.</span> Gathers assets, timeframes, and risk tolerances.</li>
-          <li><span className="font-medium text-gray-900">Risk &amp; strategy validation.</span> Cross-checks the request against historical data and preferences for viability.</li>
+        <ul className="space-y-2 text-sm leading-7 text-type-secondary">
+          <li><span className="font-medium text-foreground">Intent classification.</span> Identifies the goal, such as arbitrage or liquidity migration.</li>
+          <li><span className="font-medium text-foreground">Parameter extraction.</span> Gathers assets, timeframes, and risk tolerances.</li>
+          <li><span className="font-medium text-foreground">Risk &amp; strategy validation.</span> Cross-checks the request against historical data and preferences for viability.</li>
         </ul>
-        <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+        <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3">
           Ask AI does not account for personal financial goals. Always validate suggestions against your own risk profile.
         </p>
       </>
@@ -76,16 +76,16 @@ const steps: Step[] = [
     body: (
       <>
         <div className="grid gap-3 sm:grid-cols-2">
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-3">
-            <h4 className="mb-1 text-sm font-semibold text-gray-900">On-chain metrics</h4>
-            <p className="text-sm text-gray-600">Real-time prices, liquidity depths, large-wallet activity, gas trends, and contract interactions.</p>
+          <div className="rounded-lg border border-border bg-muted/40 p-3">
+            <h4 className="mb-1 text-sm text-foreground">On-chain metrics</h4>
+            <p>Real-time prices, liquidity depths, large-wallet activity, gas trends, and contract interactions.</p>
           </div>
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-3">
-            <h4 className="mb-1 text-sm font-semibold text-gray-900">Market indicators</h4>
-            <p className="text-sm text-gray-600">Volume and momentum analysis, sentiment scores, and volatility indices.</p>
+          <div className="rounded-lg border border-border bg-muted/40 p-3">
+            <h4 className="mb-1 text-sm text-foreground">Market indicators</h4>
+            <p>Volume and momentum analysis, sentiment scores, and volatility indices.</p>
           </div>
         </div>
-        <p className="mt-3 text-sm leading-7 text-gray-600">
+        <p className="mt-3 leading-7">
           This lets users define compound triggers, such as &ldquo;initiate ETH staking when APR is above 5%, gas is under 15 Gwei, and sentiment turns positive.&rdquo;
         </p>
       </>
@@ -99,22 +99,22 @@ const steps: Step[] = [
     title: "Risk-aware execution planning",
     body: (
       <>
-        <ul className="space-y-2 text-sm leading-7 text-gray-600">
-          <li><span className="font-medium text-gray-900">Risk assessment.</span> Evaluates volatility, liquidity gaps, and slippage modeling.</li>
-          <li><span className="font-medium text-gray-900">Opportunity validation.</span> Assesses profit potential, cost-benefit ratios, and timing.</li>
+        <ul className="space-y-2 text-sm leading-7 text-type-secondary">
+          <li><span className="font-medium text-foreground">Risk assessment.</span> Evaluates volatility, liquidity gaps, and slippage modeling.</li>
+          <li><span className="font-medium text-foreground">Opportunity validation.</span> Assesses profit potential, cost-benefit ratios, and timing.</li>
         </ul>
         <div className="mt-3 grid gap-3 sm:grid-cols-3">
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-3 text-sm">
-            <span className="font-semibold text-gray-900">Time-based</span>
-            <p className="mt-1 text-gray-600">&ldquo;Unstake assets after 7 days.&rdquo;</p>
+          <div className="rounded-lg border border-border bg-muted/40 p-3 text-sm">
+            <span className="text-foreground">Time-based</span>
+            <p className="mt-1">&ldquo;Unstake assets after 7 days.&rdquo;</p>
           </div>
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-3 text-sm">
-            <span className="font-semibold text-gray-900">Gas-based</span>
-            <p className="mt-1 text-gray-600">&ldquo;Claim rewards only if Gwei is under 10.&rdquo;</p>
+          <div className="rounded-lg border border-border bg-muted/40 p-3 text-sm">
+            <span className="text-foreground">Gas-based</span>
+            <p className="mt-1">&ldquo;Claim rewards only if Gwei is under 10.&rdquo;</p>
           </div>
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-3 text-sm">
-            <span className="font-semibold text-gray-900">Price-based</span>
-            <p className="mt-1 text-gray-600">&ldquo;Sell 50% if BTC drops below $60K.&rdquo;</p>
+          <div className="rounded-lg border border-border bg-muted/40 p-3 text-sm">
+            <span className="text-foreground">Price-based</span>
+            <p className="mt-1">&ldquo;Sell 50% if BTC drops below $60K.&rdquo;</p>
           </div>
         </div>
       </>
@@ -127,10 +127,10 @@ const steps: Step[] = [
     label: "Trade Execution",
     title: "Precision and security in every transaction",
     body: (
-      <div className="space-y-3 text-sm leading-7 text-gray-600">
-        <p><span className="font-medium text-gray-900">Pre-execution checklist.</span> Verifies balances, optimizes gas, and prioritizes the routing path.</p>
-        <p><span className="font-medium text-gray-900">Transaction flow.</span> Interacts with the relevant contracts, handles signing and network broadcast, and monitors confirmations in real time.</p>
-        <p><span className="font-medium text-gray-900">Supported actions.</span> Executes a wide range of operations across lending, staking, and yield protocols.</p>
+      <div className="space-y-3 text-sm leading-7 text-type-secondary">
+        <p><span className="font-medium text-foreground">Pre-execution checklist.</span> Verifies balances, optimizes gas, and prioritizes the routing path.</p>
+        <p><span className="font-medium text-foreground">Transaction flow.</span> Interacts with the relevant contracts, handles signing and network broadcast, and monitors confirmations in real time.</p>
+        <p><span className="font-medium text-foreground">Supported actions.</span> Executes a wide range of operations across lending, staking, and yield protocols.</p>
       </div>
     ),
   },
@@ -142,13 +142,13 @@ const steps: Step[] = [
     title: "Continuous improvement and transparency",
     body: (
       <div className="grid gap-3 sm:grid-cols-2">
-        <div className="rounded-lg border border-gray-200 bg-gray-50 p-3">
-          <h4 className="mb-1 text-sm font-semibold text-gray-900">Post-trade analytics</h4>
-          <p className="text-sm text-gray-600">Execution audit with confirmation status, finalized vs. expected price, gas breakdown, and slippage analysis.</p>
+        <div className="rounded-lg border border-border bg-muted/40 p-3">
+          <h4 className="mb-1 text-sm text-foreground">Post-trade analytics</h4>
+          <p>Execution audit with confirmation status, finalized vs. expected price, gas breakdown, and slippage analysis.</p>
         </div>
-        <div className="rounded-lg border border-gray-200 bg-gray-50 p-3">
-          <h4 className="mb-1 text-sm font-semibold text-gray-900">User reporting</h4>
-          <p className="text-sm text-gray-600">Real-time alerts, performance dashboards, and strategy-tweak suggestions based on evolving conditions.</p>
+        <div className="rounded-lg border border-border bg-muted/40 p-3">
+          <h4 className="mb-1 text-sm text-foreground">User reporting</h4>
+          <p>Real-time alerts, performance dashboards, and strategy-tweak suggestions based on evolving conditions.</p>
         </div>
       </div>
     ),
@@ -168,23 +168,23 @@ export default async function CopilotWorkflowPage() {
           {steps.map(({ id, step, icon: Icon, label, title, body }) => (
             <section key={id} id={id} className="scroll-mt-32">
               <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-sm font-semibold text-[#01AACF]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-sm font-semibold text-type-accent">
                   {step}
                 </div>
                 <div className="flex items-center gap-2">
-                  <Icon className="h-4 w-4 text-[#01AACF]" />
-                  <span className="text-xs font-medium uppercase tracking-wide text-[#01AACF]">{label}</span>
+                  <Icon className="h-4 w-4 text-type-accent" />
+                  <span className="text-xs font-medium uppercase tracking-wide text-type-accent">{label}</span>
                 </div>
               </div>
-              <h2 className="mb-3 type-section-title text-gray-900">{title}</h2>
+              <h2 className="mb-3">{title}</h2>
               {body}
             </section>
           ))}
         </div>
 
-        <div className="mt-12 rounded-lg border border-gray-200 bg-gray-50 p-6">
-          <h2 className="mb-2 type-section-title text-gray-900">From question to outcome</h2>
-          <p className="text-sm leading-7 text-gray-600">
+        <div className="mt-12 rounded-lg border border-border bg-muted/40 p-6">
+          <h2 className="mb-2">From question to outcome</h2>
+          <p className="leading-7">
             Ask AI goes beyond simple trade execution. It turns unstructured queries into
             auditable, optimized strategies, with every action backed by real-time data and executed
             through the router&apos;s standardized protocol adapters.

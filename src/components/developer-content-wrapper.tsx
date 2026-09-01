@@ -9,7 +9,7 @@ import { stripLocale } from "@/lib/i18n/path"
 const DeferredPageNavigation = dynamic(
   () => import("./page-navigation").then((module) => module.PageNavigation),
   {
-    loading: () => <div aria-hidden="true" className="mt-12 border-t border-gray-200 pt-6" />,
+    loading: () => <div aria-hidden="true" className="mt-12 border-t border-border pt-6" />,
   },
 )
 

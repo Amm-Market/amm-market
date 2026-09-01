@@ -301,12 +301,12 @@ export default function DeveloperSidebar() {
                 <div
                   className={`type-sidebar-link flex items-center py-2.5 px-3 rounded-lg font-semibold leading-5 transition-all duration-200 group cursor-default ${sectionActive
                       ? `${colors.headerBg} ${colors.headerText}`
-                      : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                      : "text-type-tertiary hover:bg-muted/40 hover:text-type-secondary"
                     }`}
                 >
                   <div className="flex items-center gap-2.5">
                     <SectionIcon
-                      className={`h-4 w-4 transition-all duration-300 group-hover-wiggle ${sectionActive ? colors.icon : "text-gray-500 group-hover:text-gray-700"
+                      className={`h-4 w-4 transition-all duration-300 group-hover-wiggle ${sectionActive ? colors.icon : "text-type-tertiary group-hover:text-type-secondary"
                         }`}
                     />
                     <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
@@ -316,7 +316,7 @@ export default function DeveloperSidebar() {
                 </div>
 
                 {/* Section Items */}
-                <ul className="mt-1 ms-3 ps-3 border-s border-gray-200 space-y-0.5">
+                <ul className="mt-1 ms-3 ps-3 border-s border-border space-y-0.5">
                   {section.items.map((item) => {
                     const ItemIcon = item.icon
                     const itemActive = isActive(item.href)
@@ -329,13 +329,13 @@ export default function DeveloperSidebar() {
                           prefetch={false}
                           className={`type-sidebar-link flex items-center gap-2 py-2 px-2.5 rounded-md font-medium leading-5 transition-all duration-200 group ${itemActive
                               ? `${colors.itemBg} ${colors.itemText} font-medium`
-                              : "text-gray-500 hover:bg-gray-50 hover:text-gray-800"
+                              : "text-type-tertiary hover:bg-muted/40 hover:text-foreground"
                             }`}
                         >
                           <ItemIcon
                             className={`h-3.5 w-3.5 transition-all duration-300 group-hover-pulse ${itemActive
                                 ? colors.icon
-                                : "text-gray-400 group-hover:text-gray-500"
+                                : "text-type-tertiary group-hover:text-type-secondary"
                               }`}
                           />
                           <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">

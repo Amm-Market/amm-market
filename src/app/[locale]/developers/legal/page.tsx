@@ -43,29 +43,29 @@ export default async function SecurityDisclosuresPage() {
         />
 
         <section id="overview" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-4">Overview</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+          <h2 className="mb-4">Overview</h2>
+          <p className="mb-4">
             In accordance with our <Link href="/terms" className="text-blue-600 hover:underline">Terms of Use</Link>, 
             access to the Avana website and its associated services is restricted for individuals or entities 
             in certain jurisdictions. This page provides the current list of restricted territories and explains 
             the access restrictions in place.
           </p>
-          <p className="text-red-700 text-sm border-l-4 border-red-400 pl-3">
+          <p className="border-l-4 border-red-400 pl-3">
             <strong>Important:</strong> Any attempt to access the Avana platform from a Restricted 
             Jurisdiction will result in immediate redirection to the Terms of Use and a denial of access.
           </p>
         </section>
 
         <section id="access-restrictions" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-4">Access Restrictions</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+          <h2 className="mb-4">Access Restrictions</h2>
+          <p className="mb-4">
             Access to the Avana website and its associated services is restricted for individuals or 
             entities who:
           </p>
           
           <div className="space-y-3">
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <ul className="text-gray-600 text-sm space-y-2">
+            <div className="p-4 bg-muted/40 rounded-lg border border-border">
+              <ul className="text-type-secondary text-sm space-y-2">
                 <li>• <strong>Reside within</strong> any of the Restricted Jurisdictions</li>
                 <li>• <strong>Are citizens of</strong> any of the Restricted Jurisdictions</li>
                 <li>• <strong>Are physically located within</strong> any of the Restricted Jurisdictions</li>
@@ -75,38 +75,38 @@ export default async function SecurityDisclosuresPage() {
             </div>
           </div>
 
-          <p className="text-gray-600 leading-relaxed mt-4">
+          <p className="mt-4">
             These restrictions are defined in Avana&apos;s <Link href="/terms" className="text-blue-600 hover:underline">Terms of Use</Link> and 
             are enforced to comply with applicable laws and regulations.
           </p>
         </section>
 
         <section id="restricted-jurisdictions" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-4">Current Restricted Jurisdictions</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+          <h2 className="mb-4">Current Restricted Jurisdictions</h2>
+          <p className="mb-4">
             The following jurisdictions are currently restricted from accessing Avana services:
           </p>
           
           <div className="overflow-x-auto">
-            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-              <thead className="bg-gray-50">
+            <table className="w-full text-sm border border-border rounded-lg overflow-hidden">
+              <thead className="bg-muted/40">
                 <tr>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Jurisdiction</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Reason</th>
+                  <th className="text-left px-4 py-2 text-foreground">Jurisdiction</th>
+                  <th className="text-left px-4 py-2 text-foreground">Reason</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {restrictedJurisdictions.map((item) => (
                   <tr key={item.country}>
-                    <td className="px-4 py-2 text-gray-900 font-medium">{item.country}</td>
-                    <td className="px-4 py-2 text-gray-600">{item.reason}</td>
+                    <td className="px-4 py-2 text-foreground font-medium">{item.country}</td>
+                    <td className="px-4 py-2 text-type-secondary">{item.reason}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          <p className="mt-4 text-gray-500 text-sm">
+          <p className="mt-4">
             <strong>Note:</strong> This list may be updated from time to time in response to changes in 
             applicable laws, regulations, or sanctions programs. Users are responsible for ensuring their 
             continued compliance with these restrictions.
@@ -114,13 +114,13 @@ export default async function SecurityDisclosuresPage() {
         </section>
 
         <section id="compliance" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-4">Compliance</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+          <h2 className="mb-4">Compliance</h2>
+          <p className="mb-4">
             As stated in our Terms of Use (Section 1.2), you may not access or use the Services if you are:
           </p>
           
-          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <ul className="text-gray-600 text-sm space-y-2">
+          <div className="p-4 bg-muted/40 rounded-lg border border-border">
+            <ul className="text-type-secondary text-sm space-y-2">
               <li>• The subject of any sanctions administered or enforced by the U.S. Department of the 
                 Treasury&apos;s Office of Foreign Assets Control (OFAC), the U.S. Department of State, or any 
                 other governmental authority with jurisdiction</li>
@@ -131,38 +131,38 @@ export default async function SecurityDisclosuresPage() {
             </ul>
           </div>
 
-          <p className="text-gray-600 leading-relaxed mt-4">
+          <p className="mt-4">
             Users are solely responsible for ensuring their use of the protocol complies with all applicable 
             laws and regulations in their jurisdiction.
           </p>
         </section>
 
         <section id="related-policies" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-4">Related Policies</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+          <h2 className="mb-4">Related Policies</h2>
+          <p className="mb-4">
             For complete information about your rights and obligations when using Avana, please review:
           </p>
           
           <div className="space-y-3">
-            <Link href="/terms" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50/50 transition-colors">
-              <h3 className="font-semibold text-gray-900 mb-1">Terms of Service</h3>
-              <p className="text-gray-600 text-sm">
+            <Link href="/terms" className="block p-4 border border-border rounded-lg hover:border-gray-300 hover:bg-muted/40/50 transition-colors">
+              <h3 className="text-foreground mb-1">Terms of Service</h3>
+              <p>
                 Complete terms and conditions governing your use of Avana services, including 
                 eligibility requirements, prohibited activities, and dispute resolution.
               </p>
             </Link>
 
-            <Link href="/privacy" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50/50 transition-colors">
-              <h3 className="font-semibold text-gray-900 mb-1">Privacy Policy</h3>
-              <p className="text-gray-600 text-sm">
+            <Link href="/privacy" className="block p-4 border border-border rounded-lg hover:border-gray-300 hover:bg-muted/40/50 transition-colors">
+              <h3 className="text-foreground mb-1">Privacy Policy</h3>
+              <p>
                 Information about how we collect, use, and protect your personal information when 
                 you use our services.
               </p>
             </Link>
 
-            <Link href="/developers/legal/disclaimer" className="block p-4 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-gray-50/50 transition-colors">
-              <h3 className="font-semibold text-gray-900 mb-1">Legal Disclaimer</h3>
-              <p className="text-gray-600 text-sm">
+            <Link href="/developers/legal/disclaimer" className="block p-4 border border-border rounded-lg hover:border-gray-300 hover:bg-muted/40/50 transition-colors">
+              <h3 className="text-foreground mb-1">Legal Disclaimer</h3>
+              <p>
                 Important disclaimers regarding risks, warranties, and liability limitations.
               </p>
             </Link>

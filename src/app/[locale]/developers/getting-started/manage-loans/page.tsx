@@ -31,8 +31,8 @@ export default async function ManageLoansPage() {
         />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="leading-relaxed text-gray-600">
+          <h2 className="mb-4">Overview</h2>
+          <p>
             An open loan on Avana is not static. Your LP keeps earning fees, token prices move, and
             interest accrues on debt. Check health factor in the interface regularly and act before
             you are close to liquidation.
@@ -40,36 +40,36 @@ export default async function ManageLoansPage() {
         </section>
 
         <section id="borrowing-more" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Borrowing More</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+          <h2 className="mb-4">Borrowing More</h2>
+          <p className="mb-4">
             You can borrow more if you still have unused capacity and the Hub has liquidity for the
             asset you want. Each additional borrow runs the same checks as the first one.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p>
             Partial repayment frees capacity immediately. It lowers debt, improves health, and can
             make room for withdrawals or fee claims later.
           </p>
         </section>
 
         <section id="monitoring-health" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Monitoring Health</h2>
-          <div className="space-y-4 text-sm text-gray-600">
+          <h2 className="mb-4">Monitoring Health</h2>
+          <div className="space-y-4 text-sm text-type-secondary">
             <p>
-              <strong className="text-gray-900">Healthy:</strong> collateral value stays comfortably
+              <strong className="text-foreground">Healthy:</strong> collateral value stays comfortably
               above debt, with room for normal market movement.
             </p>
             <p>
-              <strong className="text-gray-900">Watchlist:</strong> the account still passes checks,
+              <strong className="text-foreground">Watchlist:</strong> the account still passes checks,
               but the buffer is thin. Consider repaying, adding collateral, or reducing exposure.
             </p>
             <p>
-              <strong className="text-gray-900">Liquidatable:</strong> health has crossed the
+              <strong className="text-foreground">Liquidatable:</strong> health has crossed the
               liquidation threshold. The liquidation framework can take over.
             </p>
           </div>
-          <p className="mt-4 text-sm text-gray-600">
+          <p className="mt-4">
             See{" "}
-            <Link href="/developers/architecture/health-factor" className="text-[#01AACF] hover:underline">
+            <Link href="/developers/architecture/health-factor" className="text-type-accent hover:underline">
               Health Factor
             </Link>{" "}
             for how health is calculated.
@@ -77,8 +77,8 @@ export default async function ManageLoansPage() {
         </section>
 
         <section id="operational-control" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Operational Control</h2>
-          <ol className="list-decimal space-y-3 ps-5 text-gray-600">
+          <h2 className="mb-4">Operational Control</h2>
+          <ol className="list-decimal space-y-3 ps-5 text-type-secondary">
             <li>Repay part of the debt to rebuild buffer</li>
             <li>Add more approved LP collateral to the same Borrow Spoke</li>
             <li>Claim accrued fees when the account still passes post-claim health checks</li>
@@ -87,8 +87,8 @@ export default async function ManageLoansPage() {
         </section>
 
         <section id="position-changes" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Position Changes</h2>
-          <div className="space-y-4 text-sm text-gray-600">
+          <h2 className="mb-4">Position Changes</h2>
+          <div className="space-y-4 text-sm text-type-secondary">
             <p>
               While debt is open, your LP position keeps running in the pool. Price moves, fee
               accrual, and pool inventory shifts can change your collateral value without you taking
@@ -103,20 +103,20 @@ export default async function ManageLoansPage() {
         </section>
 
         <section id="key-constraints" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Key Constraints</h2>
-          <ul className="list-disc space-y-2 ps-5 text-gray-600">
+          <h2 className="mb-4">Key Constraints</h2>
+          <ul className="list-disc space-y-2 ps-5 text-type-secondary">
             <li>Collateral changes cannot leave remaining debt above allowed spoke capacity</li>
             <li>New or replacement positions must stay inside the approved pool set</li>
             <li>Borrow actions still depend on Hub liquidity and active caps</li>
             <li>Repay or add collateral before health reaches liquidation territory</li>
           </ul>
-          <p className="mt-4 text-sm text-gray-600">
+          <p className="mt-4">
             See{" "}
-            <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
+            <Link href="/developers/liquidation" className="text-type-accent hover:underline">
               Liquidation Framework
             </Link>{" "}
             and{" "}
-            <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
+            <Link href="/developers/architecture/collateral-factors" className="text-type-accent hover:underline">
               Collateral Factors
             </Link>{" "}
             when making changes to a live loan.

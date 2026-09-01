@@ -107,7 +107,7 @@ const severityLevels = [
   },
   {
     title: "Medium / Low",
-    style: "border-gray-300 bg-gray-50",
+    style: "border-gray-300 bg-muted/40",
     text: "Limited-impact findings, edge-case inconsistencies, non-critical logic issues, or vulnerabilities without a credible path to major economic harm.",
   },
 ]
@@ -125,17 +125,17 @@ export default async function BugBountyPage() {
         />
 
         <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 text-gray-600 leading-relaxed">
+          <h2 className="mb-4">Overview</h2>
+          <p className="mb-4">
             The Avana Bug Bounty covers responsible disclosure across contracts, risk systems, and
             supporting infrastructure that can affect user funds or protocol solvency.
           </p>
-          <p className="mb-4 text-gray-600 leading-relaxed">
+          <p className="mb-4">
             Because Avana uses AMM liquidity positions as collateral, scope includes both direct
             contract bugs and failures where liquidity, pricing, or market state can be turned into
             bad collateral value or broken liquidations.
           </p>
-          <p className="text-gray-600 text-sm border-l-4 border-rose-400 pl-3">
+          <p className="border-l-4 border-rose-400 pl-3">
             <strong>Severity is economic first:</strong> rewards track exploitability and outcomes
             such as fund loss, insolvency, bad debt, or systemic collateral mispricing, not only
             how large the code change looks.
@@ -143,8 +143,8 @@ export default async function BugBountyPage() {
         </section>
 
         <section id="scope-and-system-architecture" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Scope & System Architecture</h2>
-          <p className="mb-6 text-gray-600 leading-relaxed">
+          <h2 className="mb-4">Scope & System Architecture</h2>
+          <p className="mb-6">
             Scope is split into subsystems so researchers can map a finding to the part of the
             stack it actually threatens: core lending, LP valuation, governance and admin, or
             offchain integrations.
@@ -157,13 +157,13 @@ export default async function BugBountyPage() {
                 className={`rounded-xl border p-5 ${
                   program.highlighted
                     ? "border-rose-300 bg-gradient-to-br from-rose-50 via-white to-amber-50 shadow-sm"
-                    : "border-gray-200 bg-white"
+                    : "border-border bg-white"
                 }`}
               >
                 <div className="mb-4 flex items-start justify-between gap-3">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">{program.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-gray-600">{program.summary}</p>
+                    <h3 className="text-lg">{program.title}</h3>
+                    <p className="mt-2">{program.summary}</p>
                   </div>
                   {program.highlighted ? (
                     <span className="shrink-0 rounded-full bg-rose-100 px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-rose-700">
@@ -173,9 +173,9 @@ export default async function BugBountyPage() {
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
-                  <div className="rounded-lg bg-gray-50 p-4">
-                    <h4 className="mb-2 text-sm font-semibold text-gray-900">Includes</h4>
-                    <ul className="space-y-2 text-sm text-gray-600">
+                  <div className="rounded-lg bg-muted/40 p-4">
+                    <h4 className="mb-2 text-sm font-semibold text-foreground">Includes</h4>
+                    <ul className="space-y-2 text-sm text-type-secondary">
                       {program.includes.map((item) => (
                         <li key={item} className="border-l-4 border-gray-300 pl-3">
                           {item}
@@ -184,9 +184,9 @@ export default async function BugBountyPage() {
                     </ul>
                   </div>
 
-                  <div className="rounded-lg bg-gray-50 p-4">
-                    <h4 className="mb-2 text-sm font-semibold text-gray-900">Primary risks</h4>
-                    <ul className="space-y-2 text-sm text-gray-600">
+                  <div className="rounded-lg bg-muted/40 p-4">
+                    <h4 className="mb-2 text-sm font-semibold text-foreground">Primary risks</h4>
+                    <ul className="space-y-2 text-sm text-type-secondary">
                       {program.risks.map((item) => (
                         <li
                           key={item}
@@ -204,7 +204,7 @@ export default async function BugBountyPage() {
                 </div>
 
                 {program.note ? (
-                  <p className="mt-4 border-l-4 border-rose-500 pl-3 text-sm text-rose-800">
+                  <p className="mt-4 border-l-4 border-rose-500 pl-3">
                     <strong>Why it matters:</strong> {program.note}
                   </p>
                 ) : null}
@@ -212,15 +212,15 @@ export default async function BugBountyPage() {
             ))}
           </div>
 
-          <p className="mt-6 text-gray-600 text-sm">
+          <p className="mt-6">
             Subsystems are triaged separately, but impact is still scored across solvency, user fund
             safety, liquidation integrity, and related protocol risk.
           </p>
         </section>
 
         <section id="severity-philosophy" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Severity Philosophy</h2>
-          <p className="mb-6 text-gray-600 leading-relaxed">
+          <h2 className="mb-4">Severity Philosophy</h2>
+          <p className="mb-6">
             Generic vulnerability scores are not the main ranking method here. Findings are judged
             by credible exploit paths and by the economic outcome they can create.
           </p>
@@ -231,13 +231,13 @@ export default async function BugBountyPage() {
                 key={level.title}
                 className={`rounded-xl border p-4 ${level.style}`}
               >
-                <h3 className="mb-1 text-base font-semibold text-gray-900">{level.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-700">{level.text}</p>
+                <h3 className="mb-1 text-base">{level.title}</h3>
+                <p>{level.text}</p>
               </div>
             ))}
           </div>
 
-          <p className="mt-6 text-sm text-gray-600">
+          <p className="mt-6">
             A bug that looks small in code can still be critical if it enables LP overvaluation or
             bad debt. A technically interesting issue can rank lower if it does not have a credible
             path to meaningful financial damage.
