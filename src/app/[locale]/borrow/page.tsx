@@ -5,10 +5,9 @@ import { Link } from "@/i18n/navigation"
 import { LocalizedMarketing } from "@/components/localized-marketing"
 import { Activity, BadgeDollarSign, Compass, Layers, LineChart, ShieldCheck } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
-import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionIntro } from "@/components/shared"
 import { TokenLogo } from "@/components/token-logo"
 import { PerformanceSection } from "@/components/ui/performance-section"
-import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
 
 const BorrowPowerSection = dynamic(() => import("@/components/borrow-power-section"))
 const PositionSafetyCardsSection = dynamic(() => import("@/components/position-safety-cards-section"))
@@ -165,14 +164,12 @@ function HubTokenGroup({
 }) {
   return (
     <div className="mt-5 first:mt-0">
-      <p className="mb-2 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[#7b858c]">
-        {label}
-      </p>
+      <p className="mb-2 type-meta-label">{label}</p>
       <div className="flex flex-wrap gap-2">
         {tokens.map((token) => (
           <span
             key={`${label}-${token}`}
-            className="inline-flex h-8 items-center gap-2 rounded-full border border-gray-200 bg-white px-3 text-sm font-semibold tracking-[-0.015em] text-[#2f3940]"
+            className="inline-flex h-8 items-center gap-2 rounded-full border border-border bg-white px-3 text-sm tracking-[-0.015em] text-foreground"
           >
             {withPoolIcons ? <HubPoolIcon pool={token} /> : null}
             {withTokenIcons ? <HubSingleTokenIcon token={token} /> : null}
@@ -195,7 +192,7 @@ function BorrowMarketCard({
 }) {
   return (
     <div className="flex h-full flex-col feature-card rounded-2xl p-6 md:p-8">
-      <span className="text-4xl text-gray-300/80 md:text-5xl">{number}</span>
+      <span className="type-step-index">{number}</span>
       <FeatureCardTitle className="mt-6">{title}</FeatureCardTitle>
       <FeatureCardDescription className="mt-3">{description}</FeatureCardDescription>
     </div>
@@ -239,7 +236,7 @@ export default async function BorrowPage() {
                     <span>AMM positions</span>
                   </h1>
 
-                  <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-type-secondary sm:max-w-[38ch] md:mb-6 md:text-lg">
+                  <p className="type-display-lead mb-5 max-w-[34ch] sm:max-w-[38ch] md:mb-6">
                     Turn your liquidity pool positions into collateral and borrow against them here without leaving the pool.
                   </p>
 
@@ -256,7 +253,7 @@ export default async function BorrowPage() {
                     <Link
                       href="/developers"
                       prefetch={false}
-                      className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-900 transition-colors hover:bg-gray-100"
+                      className="inline-flex items-center justify-center rounded-full border border-border bg-white px-4 py-2 text-xs text-foreground transition-colors hover:bg-muted"
                     >
                       View Docs
                     </Link>
@@ -268,13 +265,16 @@ export default async function BorrowPage() {
         </div>
       </div>
 
-      <section className="border-t border-[#01AACF] bg-white site-section-gap">
+      <section className="border-t border-border/80 bg-white site-section-gap">
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[90rem]">
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="violet">How it works</SectionEyebrow>
-                <SectionTitle>Borrowing in three steps</SectionTitle>
+                <SectionIntro
+                  eyebrow="How it works"
+                  eyebrowTone="violet"
+                  title="Borrowing in three steps"
+                />
               </div>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 <BorrowMarketCard
@@ -305,10 +305,12 @@ export default async function BorrowPage() {
           <div className="mx-auto w-full max-w-[90rem]">
             <div className="flex flex-col gap-6">
               <div className="max-w-none">
-                <SectionEyebrow tone="blue">Avana Hubs Strategy</SectionEyebrow>
-                <SectionTitle className="mt-2 max-w-none lg:whitespace-nowrap">
-                  Choose the market type for your collateral
-                </SectionTitle>
+                <SectionIntro
+                  eyebrow="Avana Hubs Strategy"
+                  eyebrowTone="blue"
+                  title="Choose the market type for your collateral"
+                  titleClassName="mt-2 max-w-none lg:whitespace-nowrap"
+                />
               </div>
             </div>
 
@@ -318,7 +320,7 @@ export default async function BorrowPage() {
                   key={hub.title}
                   className="flex h-full flex-col feature-card rounded-2xl border border-gray-200 !bg-white p-6 md:p-8"
                 >
-                  <p className="text-sm font-semibold tracking-[-0.01em] text-[#01AACF]">
+                  <p className="type-meta-label">
                     {hub.category}
                   </p>
                   <FeatureCardTitle className="mt-4">{hub.title}</FeatureCardTitle>
@@ -342,17 +344,23 @@ export default async function BorrowPage() {
         <div className="site-content-shell">
           <div className="mx-auto w-full max-w-[76rem]">
             <div className="max-w-[58rem] space-y-3 text-left sm:space-y-4">
-              <SectionEyebrow tone="blue">Borrow with Confidence</SectionEyebrow>
-              <SectionTitle className="max-w-[18ch] sm:max-w-[22ch] lg:max-w-none">
-                <span className="block sm:inline">Protected at the</span>{" "}
-                <span className="block sm:inline">pool level</span>
-              </SectionTitle>
+              <SectionIntro
+                eyebrow="Borrow with Confidence"
+                eyebrowTone="blue"
+                title={
+                  <>
+                    <span className="block sm:inline">Protected at the</span>{" "}
+                    <span className="block sm:inline">pool level</span>
+                  </>
+                }
+                titleClassName="max-w-[18ch] sm:max-w-[22ch] lg:max-w-none"
+              />
             </div>
 
             <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-10 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 md:mt-16 md:gap-x-16 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
               {borrowPartnerFeatures.map((feature) => (
                 <article key={feature.title} className="flex flex-col bg-transparent">
-                  <feature.icon className="h-10 w-10 text-[#01AACF] sm:h-11 sm:w-11" strokeWidth={1.5} aria-hidden="true" />
+                  <feature.icon className="h-10 w-10 text-type-tertiary sm:h-11 sm:w-11" strokeWidth={1.5} aria-hidden="true" />
                   <FeatureCardTitle className="mt-4 sm:mt-5">{feature.title}</FeatureCardTitle>
                   <FeatureCardDescription className="mt-2 max-w-[22rem]">
                     {feature.description}
@@ -369,8 +377,11 @@ export default async function BorrowPage() {
           <div className="mx-auto w-full max-w-[76rem] flex flex-col site-section-stack">
             <div className="flex flex-col gap-8 md:gap-12">
               <div className="flex flex-col gap-2">
-                <SectionEyebrow tone="emerald">DEX Coverage</SectionEyebrow>
-                <SectionTitle>Supported across top DEXs</SectionTitle>
+                <SectionIntro
+                  eyebrow="DEX Coverage"
+                  eyebrowTone="emerald"
+                  title="Supported across top DEXs"
+                />
               </div>
               <div className="flex flex-1 items-stretch gap-2 flex-col sm:flex-row">
                 <div className="grid w-full flex-1 grid-cols-3 gap-2">
@@ -396,8 +407,8 @@ export default async function BorrowPage() {
                 <div className="flex w-full flex-1">
                   <div className="flex h-[150px] w-full flex-col items-center justify-center rounded-lg bg-gradient-to-b from-blue-50 to-blue-100 p-2 text-center sm:h-auto">
                     <div className="flex size-full flex-col items-center justify-center rounded-md border border-blue-200 bg-white">
-                      <div className="text-base font-medium leading-normal text-blue-600 md:text-lg">
-                        <div className={`flex items-center text-[32px] font-semibold md:text-[48px] ${CYAN_HIGHLIGHT_TEXT_CLASS}`}>
+                      <div className="text-base leading-normal text-type-secondary md:text-lg">
+                        <div className="text-foreground text-[clamp(2rem,4vw,3rem)] leading-none tracking-[-0.04em]">
                           12+
                         </div>
                         <span>DEX Integrations</span>
@@ -430,10 +441,12 @@ export default async function BorrowPage() {
 
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="blue">Liquidity pools</SectionEyebrow>
-                <SectionTitle className="md:whitespace-nowrap">
-                  Every Pool details, fully explained
-                </SectionTitle>
+                <SectionIntro
+                  eyebrow="Liquidity pools"
+                  eyebrowTone="blue"
+                  title="Every Pool details, fully explained"
+                  titleClassName="md:whitespace-nowrap"
+                />
               </div>
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.35rem] sm:aspect-[2/1] md:rounded-[1.6rem]">
                 <Image

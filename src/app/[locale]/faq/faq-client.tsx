@@ -114,7 +114,7 @@ function FaqAccordionList({
             <div className="flex flex-col text-start">
               <span>{faq.q}</span>
               {showCategory && faq.category ? (
-                <span className="mt-2 text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-[#01AACF]">
+                <span className="type-meta-label mt-2 normal-case">
                   {categoryLabel(faq.category)}
                 </span>
               ) : null}
@@ -153,16 +153,16 @@ function FaqCategoryCard({
       aria-selected={active}
       aria-controls={`faq-panel-${category.id}`}
       className={`group flex h-full w-[14rem] shrink-0 snap-start flex-col rounded-[1.1rem] border border-black/8 border-t-2 bg-white p-4 text-start transition-all duration-300 sm:w-[14.5rem] md:w-[15rem] ${
-        active ? "border-t-[#01AACF]" : "border-t-[#01AACF]/30"
+        active ? "border-t-foreground/30" : "border-t-border"
       }`}
     >
-      <Icon className="h-6 w-6 text-[#01AACF]" strokeWidth={1.8} />
+      <Icon className="h-6 w-6 text-type-tertiary" strokeWidth={1.8} />
 
-      <h3 className="type-meta-label mt-5 text-[#01AACF] normal-case tracking-[-0.02em]">
+      <h3 className="type-meta-label mt-5 text-foreground normal-case tracking-[-0.02em]">
         {category.name}
       </h3>
 
-      <div className="mt-auto pt-5 text-[0.8rem] font-medium tracking-[-0.02em] text-[#01AACF]">
+      <div className="type-meta-label mt-auto pt-5">
         {articlesLabel}
       </div>
     </Link>
@@ -296,7 +296,7 @@ export function FaqView({
             {categories.map((category) => (
               <section key={category.id} id={category.id} className="scroll-mt-32 py-12 first:pt-0">
                 <div className="mb-6">
-                  <h2 className="type-section-title text-[#01AACF]">
+                  <h2 className="type-section-title text-foreground">
                     {category.name}
                   </h2>
                 </div>
@@ -307,7 +307,7 @@ export function FaqView({
           </div>
 
           <div className="hidden self-start xl:block xl:sticky xl:top-28 xl:justify-self-end xl:pt-4">
-            <ScrollSpySidebar sections={sidebarSections} sectionColor="cyan" />
+            <ScrollSpySidebar sections={sidebarSections} sectionColor="slate" />
           </div>
         </div>
       ) : null}

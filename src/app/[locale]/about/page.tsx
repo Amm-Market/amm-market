@@ -2,7 +2,7 @@ import { createPageMetadata } from "@/lib/i18n/page-metadata"
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 import ProtocolRoadmapSection from "@/components/protocol-roadmap-section"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { SectionEyebrow, SectionLead, SectionTitle } from "@/components/shared"
 import { SITE_NAME } from "@/lib/site"
 import { LocalizedMarketing } from "@/components/localized-marketing"
 
@@ -20,13 +20,11 @@ export default async function AboutPage() {
           <div className="mx-auto text-center">
             <h1
               aria-label={`Introducing ${SITE_NAME}: A lending protocol for LP-backed loans`}
-              className="type-display-title text-gray-950"
+              className="type-display-title text-foreground"
             >
-              <span className="text-gray-950">{`Introducing ${SITE_NAME}:`}</span>
+              <span>{`Introducing ${SITE_NAME}:`}</span>
               <br />
-              <span className="text-[#01AACF]">
-                A lending protocol for LP-backed loans
-              </span>
+              <span>A lending protocol for LP-backed loans</span>
             </h1>
           </div>
 
@@ -42,22 +40,22 @@ export default async function AboutPage() {
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl space-y-8 lg:mt-14">
-            <p className="text-[1.06rem] leading-[1.55] tracking-[-0.02em] text-foreground sm:text-[1.18rem]">
+            <p className="type-display-lead">
               One of crypto&apos;s most important sources of collateral is hiding in plain sight:{" "}
-              <span className="text-[#01AACF]">AMM liquidity.</span>
+              <span className="text-type-accent">AMM liquidity.</span>
             </p>
-            <p className="text-[0.98rem] leading-[1.65] tracking-[-0.02em] text-type-secondary sm:text-[1.08rem]">
+            <p className="type-body-copy">
               Major AMMs already hold billions in liquidity, yet LP positions are still treated mostly as passive
               positions rather than productive collateral. Avana brings that liquidity into lending markets for
               today&apos;s DEXs and LP types, using dual oracles and stronger risk controls.
             </p>
-            <p className="text-[0.98rem] leading-[1.65] tracking-[-0.02em] text-type-secondary sm:text-[1.08rem]">
+            <p className="type-body-copy">
               That requires more than listing LP tokens as collateral. Avana is built around specialized Aave v4 Spokes
               for different DEX designs, several Aave v4 Hubs organized around lowest-risk, correlated, and higher-range
               LP markets, and an Aave v4 Lend Spoke that supplies the capital behind those markets.
             </p>
-            <p className="text-[0.98rem] leading-[1.65] tracking-[-0.02em] text-type-secondary sm:text-[1.08rem]">
-              <span className="font-semibold text-gray-950">The end state is simple:</span> LP positions that can earn
+            <p className="type-body-copy">
+              <span className="text-foreground">The end state is simple:</span> LP positions that can earn
               in AMMs, back loans in lending markets, and carry risk controls specific to the pools they come from.
             </p>
             <div className="space-y-5 pt-8">
