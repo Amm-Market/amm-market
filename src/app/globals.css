@@ -1207,3 +1207,66 @@ body:has([data-developer-doc-shell]) footer.site-content-shell {
   background-color: #ffffff !important;
   border-color: rgba(15, 23, 24, 0.12) !important;
 }
+
+.dark .type-doc-inline-code {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+.dark .type-doc-panel {
+  border-color: var(--border);
+  background-color: var(--muted);
+  color: var(--type-color-secondary);
+}
+
+.dark .type-doc-table {
+  border-color: var(--border);
+}
+
+.dark .type-doc-table thead {
+  background-color: color-mix(in oklab, var(--muted) 88%, var(--foreground));
+}
+
+.dark .type-doc-table :is(th, td) {
+  border-bottom-color: var(--border);
+}
+
+.dark .type-doc-table th {
+  color: var(--foreground);
+}
+
+.dark .type-doc-table td {
+  color: var(--type-color-secondary);
+}
+
+.dark .bg-amber-50,
+.dark .bg-amber-50\/70 {
+  background-color: color-mix(in oklab, #f59e0b 16%, var(--muted)) !important;
+}
+
+.dark .bg-red-50,
+.dark .bg-red-50\/70 {
+  background-color: color-mix(in oklab, #ef4444 16%, var(--muted)) !important;
+}
+
+.dark .bg-cyan-50,
+.dark .bg-cyan-50\/70 {
+  background-color: color-mix(in oklab, var(--avana-cyan) 14%, var(--muted)) !important;
+}
+
+.dark .border-amber-200 {
+  border-color: color-mix(in oklab, #f59e0b 35%, var(--border)) !important;
+}
+
+.dark .border-red-200 {
+  border-color: color-mix(in oklab, #ef4444 35%, var(--border)) !important;
+}
+
+.dark .border-cyan-200 {
+  border-color: color-mix(in oklab, var(--avana-cyan) 35%, var(--border)) !important;
+}
+
+.dark .text-amber-800,
+.dark .text-amber-700 {
+  color: color-mix(in oklab, #fbbf24 85%, var(--foreground)) !important;
+}
