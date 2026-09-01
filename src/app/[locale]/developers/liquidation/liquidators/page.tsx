@@ -59,52 +59,52 @@ export default async function DeveloperLiquidatorsPage() {
           description="Who can liquidate unhealthy positions and what execution infrastructure is required."
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="overview" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Overview</h2>
+          <p className="mb-4 type-doc-body">
             Liquidations are permissionless once a position crosses the liquidation threshold. Any
             eligible liquidator can repay the allowed debt amount and trigger the settlement path.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p className="type-doc-body">
             LP collateral is harder to unwind than simple token collateral. Liquidators track the
             same risk state, vault-token mapping, route depth, and unwind assumptions used by the
             protocol.
           </p>
         </section>
 
-        <section id="coverage-model" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Coverage Model</h2>
+        <section id="coverage-model" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Coverage Model</h2>
           <div className="space-y-4">
             {coverageModel.map((item) => (
               <div key={item.title}>
-                <h3 className="mb-1 font-semibold text-gray-900">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-600">{item.body}</p>
+                <h3 className="mb-1 type-doc-subsection-title">{item.title}</h3>
+                <p className="type-doc-body">{item.body}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section id="execution-requirements" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Execution Requirements</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="execution-requirements" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Execution Requirements</h2>
+          <p className="mb-4 type-doc-body">
             A liquidator for Avana needs infrastructure to value positions, simulate exits, source
             capital, and deliver a transaction that completes the unwind path.
           </p>
-          <ul className="list-disc space-y-2 ps-5 text-sm text-gray-600">
+          <ul className="list-disc space-y-2 ps-5 type-doc-body">
             {executionRequirements.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </section>
 
-        <section id="operational-notes" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Operational Notes</h2>
-          <ul className="list-disc space-y-2 ps-5 text-sm text-gray-600">
+        <section id="operational-notes" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Operational Notes</h2>
+          <ul className="list-disc space-y-2 ps-5 type-doc-body">
             {operationalChecklist.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
-          <p className="mt-4 text-sm leading-relaxed text-gray-600">
+          <p className="mt-4 type-doc-body">
             Build DEX-specific unwind, fee realization, and debt repayment as one workflow.
             Disconnected steps make it easier for a coverable liquidation to fail in execution.
           </p>

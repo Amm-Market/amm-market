@@ -116,7 +116,7 @@ const moreScenarios: Array<{ title: string; scenario: string; checks: Array<{ ok
 
 function Terminal({ children }: { children: string }) {
   return (
-    <pre className="mt-2 overflow-x-auto rounded-md bg-gray-900 p-3 font-mono text-sm text-cyan-300">
+    <pre className="type-doc-code-block-dark mt-2 text-cyan-300">
       {children}
     </pre>
   )
@@ -131,19 +131,19 @@ export default async function CopilotQueryExamplePage() {
           description="Craft precise, actionable prompts so Ask AI executes exactly what you intend."
         />
 
-        <section id="principles" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Core Principles</h2>
+        <section id="principles" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Core Principles</h2>
           <div className="space-y-4">
             {principles.map(({ icon: Icon, title, intro, examples }) => (
-              <div key={title} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+              <div key={title} className="type-doc-panel">
                 <div className="mb-2 flex items-center gap-2.5">
                   <Icon className="h-5 w-5 text-[#01AACF]" />
-                  <h3 className="font-semibold text-gray-900">{title}</h3>
+                  <h3 className="type-doc-subsection-title">{title}</h3>
                 </div>
-                <p className="mb-2 text-sm text-gray-600">{intro}</p>
+                <p className="mb-2 type-doc-body">{intro}</p>
                 <div className="space-y-1.5">
                   {examples.map((ex) => (
-                    <code key={ex} className="block rounded-md bg-white px-3 py-2 font-mono text-sm text-gray-800 ring-1 ring-gray-200">
+                    <code key={ex} className="type-doc-code-block block">
                       {ex}
                     </code>
                   ))}
@@ -153,25 +153,25 @@ export default async function CopilotQueryExamplePage() {
           </div>
         </section>
 
-        <section id="interpretation" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">How Prompts Are Read</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="interpretation" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">How Prompts Are Read</h2>
+          <p className="mb-4 type-doc-body">
             Ask AI breaks each prompt into three components before it acts.
           </p>
           <div className="grid gap-4 sm:grid-cols-3">
             {interpretation.map(({ title, body }) => (
-              <div key={title} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
-                <h3 className="mb-1 font-semibold text-gray-900">{title}</h3>
-                <p className="text-sm text-gray-600">{body}</p>
+              <div key={title} className="type-doc-panel">
+                <h3 className="mb-1 type-doc-subsection-title">{title}</h3>
+                <p className="type-doc-body">{body}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section id="mistakes" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Common Mistakes</h2>
+        <section id="mistakes" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Common Mistakes</h2>
           <div className="rounded-lg border border-rose-200 bg-rose-50 p-4">
-            <ul className="space-y-2 text-sm text-gray-700">
+            <ul className="space-y-2 type-doc-body">
               <li className="flex items-start gap-2">
                 <XCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose-500" />
                 <span><span className="font-semibold">Missing network.</span> &ldquo;@makerdao: Repay DAI loan&rdquo; fails without a network.</span>
@@ -184,9 +184,9 @@ export default async function CopilotQueryExamplePage() {
           </div>
         </section>
 
-        <section id="workflow-detailed" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Worked Example</h2>
-          <p className="mb-6 text-sm leading-relaxed text-gray-600">
+        <section id="workflow-detailed" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Worked Example</h2>
+          <p className="mb-6 type-doc-body">
             A price-conditional trade, from prompt to settlement.
           </p>
           <ol className="space-y-6">
@@ -196,8 +196,8 @@ export default async function CopilotQueryExamplePage() {
                   {i + 1}
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-base font-semibold text-gray-900">{s.title}</h3>
-                  <p className="mt-1 text-sm leading-7 text-gray-600">{s.body}</p>
+                  <h3 className="type-doc-subsection-title">{s.title}</h3>
+                  <p className="mt-1 type-doc-body">{s.body}</p>
                   {s.terminal ? <Terminal>{s.terminal}</Terminal> : null}
                 </div>
               </li>
@@ -205,16 +205,16 @@ export default async function CopilotQueryExamplePage() {
           </ol>
         </section>
 
-        <section id="workflow-more" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">More Scenarios</h2>
+        <section id="workflow-more" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">More Scenarios</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             {moreScenarios.map((w) => (
               <div key={w.title} className="flex flex-col rounded-lg border border-gray-200 bg-white p-4">
-                <h3 className="font-semibold text-gray-900">{w.title}</h3>
-                <p className="mt-2 text-sm text-gray-600">{w.scenario}</p>
+                <h3 className="type-doc-subsection-title">{w.title}</h3>
+                <p className="mt-2 type-doc-body">{w.scenario}</p>
                 <ul className="mt-3 space-y-1.5">
                   {w.checks.map((c) => (
-                    <li key={c.text} className="flex items-start gap-2 text-sm text-gray-700">
+                    <li key={c.text} className="flex items-start gap-2 type-doc-body">
                       {c.ok ? (
                         <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
                       ) : (
@@ -225,7 +225,7 @@ export default async function CopilotQueryExamplePage() {
                   ))}
                 </ul>
                 <pre
-                  className={`mt-3 overflow-x-auto rounded-md bg-gray-900 p-3 font-mono text-xs ${
+                  className={`type-doc-code-block-dark mt-3 text-xs ${
                     w.tone === "warn" ? "text-amber-300" : "text-cyan-300"
                   }`}
                 >

@@ -28,36 +28,36 @@ export default async function RepayLoansPage() {
           description="Repay debt to improve health and regain control over your LP collateral."
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="leading-relaxed text-gray-600">
+        <section id="overview" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Overview</h2>
+          <p className="type-doc-body">
             Repayment sends the borrowed asset back to the protocol and reduces your outstanding debt.
             Your LP collateral stays in place — only the debt side of the account changes. Health
             improves immediately because the same collateral now supports a smaller liability.
           </p>
         </section>
 
-        <section id="repay-process" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Repay Process</h2>
-          <div className="space-y-5 text-sm text-gray-600">
+        <section id="repay-process" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Repay Process</h2>
+          <div className="space-y-5 type-doc-body">
             <div>
-              <p className="font-semibold text-gray-900">1. Choose an amount</p>
-              <p className="mt-1 leading-relaxed">
+              <p className="type-doc-subsection-title">1. Choose an amount</p>
+              <p className="mt-1 type-doc-body">
                 Select partial repayment to regain buffer, or repay the full balance to clear debt
                 entirely.
               </p>
             </div>
             <div>
-              <p className="font-semibold text-gray-900">2. Submit the debt asset</p>
-              <p className="mt-1 leading-relaxed">
+              <p className="type-doc-subsection-title">2. Submit the debt asset</p>
+              <p className="mt-1 type-doc-body">
                 Approve and confirm the repayment transaction. The payment is routed through the
                 Borrow Spoke and applied against your outstanding liability, including accrued
                 interest.
               </p>
             </div>
             <div>
-              <p className="font-semibold text-gray-900">3. Health updates</p>
-              <p className="mt-1 leading-relaxed">
+              <p className="type-doc-subsection-title">3. Health updates</p>
+              <p className="mt-1 type-doc-body">
                 Once the repayment confirms, your health factor and remaining borrowing capacity
                 update in the interface.
               </p>
@@ -65,13 +65,13 @@ export default async function RepayLoansPage() {
           </div>
         </section>
 
-        <section id="partial-vs-full" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Partial vs Full Repayment</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="partial-vs-full" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Partial vs Full Repayment</h2>
+          <p className="mb-4 type-doc-body">
             Partial repayment is enough to improve safety when your account is drifting toward
             liquidation. You do not need to clear the full balance for repayment to matter.
           </p>
-          <p className="mb-4 text-sm leading-relaxed text-gray-600">
+          <p className="mb-4 type-doc-body">
             Full repayment clears all debt for that borrow. At that point, collateral restrictions
             tied to the loan are released and you can withdraw your LP through{" "}
             <Link href="/developers/getting-started/withdraw-collateral" className="text-[#01AACF] hover:underline">
@@ -79,20 +79,20 @@ export default async function RepayLoansPage() {
             </Link>
             .
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="type-doc-body">
             Interest keeps accruing on open debt until you repay. The amount shown in the interface
             includes accrued interest, not just the original borrow.
           </p>
         </section>
 
-        <section id="when-urgent" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">When Repayment Is Urgent</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="when-urgent" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">When Repayment Is Urgent</h2>
+          <p className="mb-4 type-doc-body">
             When health is near the liquidation threshold, repayment is the fastest way to improve
             safety. It directly reduces debt without waiting for markets to recover or adding more
             collateral first.
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="type-doc-body">
             Once health crosses the liquidation boundary, see the{" "}
             <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
               Liquidation Framework

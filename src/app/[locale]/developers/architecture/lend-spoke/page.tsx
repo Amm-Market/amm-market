@@ -53,23 +53,23 @@ export default async function LendSpokePage() {
           description="How lenders supply assets that fund borrowing against LP collateral."
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 text-gray-600 leading-relaxed">
+        <section id="overview" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Overview</h2>
+          <p className="mb-4 type-doc-body">
             Lenders supply assets such as ETH, BTC, GHO, USDC, USDT, or other supported tokens into
             the lender-facing side of the protocol. That capital routes through the Hub to support
             borrowing across LP-collateral markets.
           </p>
-          <p className="text-gray-600 leading-relaxed">
+          <p className="type-doc-body">
             Lenders do not manage LP ranges, impermanent loss, or AMM-specific collateral
             operations. Borrow Spokes handle LP underwriting and liquidation logic, while lender
             capital powers the credit layer.
           </p>
         </section>
 
-        <section id="capital-entry-point" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Capital Entry Point</h2>
-          <p className="mb-6 text-gray-600 leading-relaxed">
+        <section id="capital-entry-point" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Capital Entry Point</h2>
+          <p className="mb-6 type-doc-body">
             Lender deposits come through the Lend Spoke first, then move into the shared Hub reserve
             layer. Capital does not need to be partitioned per LP market, even though borrowing
             rules stay separate on the spoke side.
@@ -81,48 +81,48 @@ export default async function LendSpokePage() {
                 key={item.title}
                 className="rounded-xl border border-gray-200 bg-white p-4"
               >
-                <h3 className="mb-1 text-base font-semibold text-gray-900">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-600">{item.description}</p>
+                <h3 className="mb-1 type-doc-subsection-title">{item.title}</h3>
+                <p className="type-doc-body">{item.description}</p>
               </div>
             ))}
           </div>
 
-          <p className="mt-6 text-sm text-gray-600 border-l-4 border-violet-400 pl-3">
+          <p className="mt-6 type-doc-body type-doc-callout type-doc-callout-info">
             Early in the protocol lifecycle, Hub liquidity may also be supplemented by Aave v4 credit
             lines. Over time, Lend Spoke deposits can become a larger share of native lending
             capital.
           </p>
         </section>
 
-        <section id="risk-adjusted-yield" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Risk-Adjusted Yield</h2>
-          <p className="mb-4 text-gray-600 leading-relaxed">
+        <section id="risk-adjusted-yield" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Risk-Adjusted Yield</h2>
+          <p className="mb-4 type-doc-body">
             Supplier yield comes from borrowers paying interest to access liquidity backed by LP
             collateral. Avana combines the shared Hub base rate with spoke-level risk premiums tied
             to the LP markets being funded.
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="type-doc-body">
             Rates move with market conditions, available liquidity, utilization, and the risk
             profile of underlying borrower markets. Actual returns depend on live configuration, not
             a fixed assumption from documentation.
           </p>
         </section>
 
-        <section id="dynamic-risk-controls" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Dynamic Risk Controls</h2>
-          <p className="mb-4 text-gray-600 leading-relaxed">
+        <section id="dynamic-risk-controls" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Dynamic Risk Controls</h2>
+          <p className="mb-4 type-doc-body">
             LP collateral changes with pool composition, volume, divergence, volatility, and unwind
             depth. Risk controls can respond to those signals rather than relying on static settings
             alone.
           </p>
 
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-5">
-            <h3 className="mb-3 text-base font-semibold text-gray-900">
+          <div className="type-doc-panel">
+            <h3 className="mb-3 type-doc-subsection-title">
               Signals that may inform risk updates
             </h3>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul className="space-y-2 type-doc-body">
               {dynamicSignals.map((item) => (
-                <li key={item} className="border-l-4 border-violet-300 pl-3">
+                <li key={item} className="type-doc-callout type-doc-callout-info">
                   {item}
                 </li>
               ))}

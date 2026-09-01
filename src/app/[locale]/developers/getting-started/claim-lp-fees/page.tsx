@@ -29,22 +29,22 @@ export default async function ClaimLPFeesPage() {
           description="Claim trading fees from your LP position while it stays active as collateral."
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="overview" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Overview</h2>
+          <p className="mb-4 type-doc-body">
             Avana tracks principal liquidity and accrued fees separately. That means you can claim
             fee income from your LP without closing the position that backs your loan.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p className="type-doc-body">
             Fee claims still affect your collateral value, so Avana runs a health check before and
             after the claim. If claiming fees would push your account below the required collateral
             boundary, the claim is blocked until you repay debt or add more collateral.
           </p>
         </section>
 
-        <section id="how-it-works" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">How It Works</h2>
-          <div className="space-y-4 text-sm text-gray-600">
+        <section id="how-it-works" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">How It Works</h2>
+          <div className="space-y-4 type-doc-body">
             <p>
               In the Avana interface, open the claim-fees action for your deposited position. Avana
               routes the claim through the DEX-specific path for that LP type.
@@ -61,22 +61,22 @@ export default async function ClaimLPFeesPage() {
           </div>
         </section>
 
-        <section id="health-checks" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Health Checks</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="health-checks" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Health Checks</h2>
+          <p className="mb-4 type-doc-body">
             Accrued fees can count toward your collateral buffer until they are claimed. When you
             claim fees, that value leaves the position, which can lower health if your account is
             already close to the liquidation threshold.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p className="type-doc-body">
             Repay debt or add collateral first if a fee claim would leave your account under the
             required boundary.
           </p>
         </section>
 
-        <section id="fee-accounting" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Fee Accounting</h2>
-          <div className="space-y-4 text-sm text-gray-600">
+        <section id="fee-accounting" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Fee Accounting</h2>
+          <div className="space-y-4 type-doc-body">
             <p>
               Avana&apos;s oracle model separates principal value from fee value so the protocol
               knows how much of the position is core liquidity and how much is claimable fee income.
@@ -86,7 +86,7 @@ export default async function ClaimLPFeesPage() {
               reducing how much of the core LP position has to be disturbed to cover debt.
             </p>
           </div>
-          <p className="mt-4 text-sm text-gray-600">
+          <p className="mt-4 type-doc-body">
             See{" "}
             <Link href="/developers/integrations/price-oracles" className="text-[#01AACF] hover:underline">
               Price Oracles
@@ -99,9 +99,9 @@ export default async function ClaimLPFeesPage() {
           </p>
         </section>
 
-        <section id="key-benefits" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Key Benefits</h2>
-          <ul className="space-y-2 text-gray-600">
+        <section id="key-benefits" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Key Benefits</h2>
+          <ul className="space-y-2 type-doc-body">
             <li>Your LP principal keeps earning fees and stays active in the pool while you borrow.</li>
             <li>You can realize fee income without unwinding the collateral position.</li>
             <li>Health checks prevent fee claims from pulling out too much value and leaving debt undersecured.</li>

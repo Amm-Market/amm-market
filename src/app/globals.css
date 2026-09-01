@@ -103,8 +103,9 @@
   --type-page-lead-size: 0.9375rem;
   --type-page-lead-size-sm: 1rem;
   --type-section-title-size: clamp(1.75rem, 2.2vw, 2rem);
-  --type-doc-section-title-size: 1.125rem;
-  --type-doc-section-title-size-sm: 1.25rem;
+  --type-doc-section-title-size: 1.25rem;
+  --type-doc-body-size: 0.9375rem;
+  --type-doc-subsection-size: 1rem;
   --type-card-title-size: 1.25rem;
   --type-eyebrow-size: 0.9375rem;
   --type-body-size: 1rem;
@@ -227,6 +228,123 @@
 .type-page-lead {
   font-size: var(--type-page-lead-size);
   line-height: 1.65;
+}
+
+.type-doc-section-title {
+  font-size: var(--type-doc-section-title-size);
+  font-weight: 600;
+  line-height: 1.25;
+  color: #111827;
+}
+
+.type-doc-body {
+  font-size: var(--type-doc-body-size);
+  line-height: 1.625;
+  color: #6b7280;
+}
+
+.type-doc-subsection-title {
+  font-size: var(--type-doc-subsection-size);
+  font-weight: 600;
+  line-height: 1.5;
+  color: #111827;
+}
+
+.type-doc-callout {
+  border-left: 4px solid #d1d5db;
+  padding-left: 0.75rem;
+  font-size: var(--type-doc-body-size);
+  line-height: 1.625;
+  color: #6b7280;
+}
+
+.type-doc-callout-warning {
+  border-left-color: #fbbf24;
+}
+
+.type-doc-callout-danger {
+  border-left-color: #f87171;
+  color: #b91c1c;
+}
+
+.type-doc-callout-info {
+  border-left-color: #01aacf;
+}
+
+.type-doc-code-block {
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  padding: 0.75rem 1rem;
+  font-size: var(--type-doc-body-size);
+  line-height: 1.625;
+  color: #111827;
+}
+
+.type-doc-code-block code {
+  font-size: inherit;
+  color: inherit;
+}
+
+.type-doc-code-block-dark {
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  background-color: #111827;
+  padding: 0.75rem 1rem;
+  font-size: var(--type-doc-body-size);
+  line-height: 1.625;
+  color: #6ee7b7;
+}
+
+.type-doc-code-block-dark code,
+.type-doc-code-block-dark pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: inherit;
+  color: inherit;
+}
+
+.type-doc-inline-code {
+  border-radius: 0.25rem;
+  background-color: #f3f4f6;
+  padding: 0.125rem 0.25rem;
+  font-size: 0.875em;
+  color: #1f2937;
+}
+
+.type-doc-table {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: var(--type-doc-body-size);
+}
+
+.type-doc-table thead {
+  background-color: #f9fafb;
+}
+
+.type-doc-table :is(th, td) {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0.625rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.type-doc-table th {
+  font-size: var(--type-supporting-size);
+  font-weight: 600;
+  color: #111827;
+}
+
+.type-doc-table td {
+  color: #6b7280;
+}
+
+.type-doc-panel {
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  padding: 1rem;
 }
 
 .type-section-title {
@@ -644,10 +762,17 @@
 
 .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section h2 {
   font-size: var(--type-doc-section-title-size);
-  font-weight: var(--type-weight-emphasis);
+  font-weight: 600;
   line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--foreground);
+  letter-spacing: 0;
+  color: #111827;
+}
+
+.developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section h3 {
+  font-size: var(--type-doc-subsection-size);
+  font-weight: 600;
+  line-height: 1.5;
+  color: #111827;
 }
 
 .developer-content[data-developer-doc-shell] section h3,
@@ -662,8 +787,9 @@
 .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section :is(p, li, td, dd),
 .site-article-content :is(p, li, td),
 .site-editorial-content :is(p, li, td) {
-  font-size: var(--type-body-size);
-  line-height: 1.75;
+  font-size: var(--type-doc-body-size);
+  line-height: 1.625;
+  color: #6b7280;
 }
 
 .developer-content[data-developer-doc-shell] section :is(th),
@@ -687,6 +813,25 @@
 
 .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] a:hover {
   text-decoration: underline;
+}
+
+.developer-content[data-developer-doc-shell] [data-developer-doc-export-root] pre {
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  padding: 0.75rem 1rem;
+  font-size: var(--type-doc-body-size);
+  line-height: 1.625;
+  color: #111827;
+}
+
+.developer-content[data-developer-doc-shell] [data-developer-doc-export-root] :not(pre) > code {
+  border-radius: 0.25rem;
+  background-color: #f3f4f6;
+  padding: 0.125rem 0.25rem;
+  font-size: 0.875em;
+  color: #1f2937;
 }
 
 .site-blog-article section[id] > h2 {
@@ -734,10 +879,6 @@
     font-size: var(--type-page-lead-size-sm);
   }
 
-  .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section h2 {
-    font-size: var(--type-doc-section-title-size-sm);
-  }
-
   .site-article-content h2,
   .site-editorial-content h3 {
     font-size: var(--type-section-title-size);
@@ -747,7 +888,6 @@
     font-size: var(--type-section-title-size);
   }
 
-  .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section :is(p, li, td, dd),
   .site-article-content :is(p, li, td),
   .site-editorial-content :is(p, li, td) {
     font-size: var(--type-body-size-sm);

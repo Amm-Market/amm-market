@@ -30,68 +30,68 @@ export default async function BorrowAssetsPage() {
           description="Borrow stablecoins, ETH, or other enabled assets against the LP collateral you have already deposited."
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="overview" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Overview</h2>
+          <p className="mb-4 type-doc-body">
             After your LP is deposited and valued, you can borrow from the Hub using the capacity
             shown in the interface. Choose the asset and amount, confirm the transaction, and the
             borrowed tokens are sent to your wallet.
           </p>
-          <p className="leading-relaxed text-gray-600">
+          <p className="type-doc-body">
             Interest accrues on open debt, so your health factor can change even if you do nothing.
             Leave a buffer below your maximum borrow rather than drawing the full amount.
           </p>
         </section>
 
-        <section id="borrow-checks" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Borrow Checks</h2>
-          <div className="space-y-5 text-sm text-gray-600">
+        <section id="borrow-checks" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Borrow Checks</h2>
+          <div className="space-y-5 type-doc-body">
             <div>
-              <p className="font-semibold text-gray-900">Position and ownership checks</p>
-              <p className="mt-1 leading-relaxed">
+              <p className="type-doc-subsection-title">Position and ownership checks</p>
+              <p className="mt-1 type-doc-body">
                 The spoke confirms your LP positions are still in the account, still approved, and
                 still recognized as collateral.
               </p>
             </div>
             <div>
-              <p className="font-semibold text-gray-900">Capacity check</p>
-              <p className="mt-1 leading-relaxed">
+              <p className="type-doc-subsection-title">Capacity check</p>
+              <p className="mt-1 type-doc-body">
                 The borrow amount must fit within your remaining borrowing capacity in that Borrow
                 Spoke.
               </p>
             </div>
             <div>
-              <p className="font-semibold text-gray-900">Hub liquidity and cap checks</p>
-              <p className="mt-1 leading-relaxed">
+              <p className="type-doc-subsection-title">Hub liquidity and cap checks</p>
+              <p className="mt-1 type-doc-body">
                 The Hub must have enough of the requested asset available, and protocol caps must
                 allow the borrow.
               </p>
             </div>
             <div>
-              <p className="font-semibold text-gray-900">Post-borrow health check</p>
-              <p className="mt-1 leading-relaxed">
+              <p className="type-doc-subsection-title">Post-borrow health check</p>
+              <p className="mt-1 type-doc-body">
                 Your account must stay above the liquidation threshold after the new debt is added.
               </p>
             </div>
           </div>
         </section>
 
-        <section id="health-check" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Health Check</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="health-check" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Health Check</h2>
+          <p className="mb-4 type-doc-body">
             Before a borrow is approved, Avana checks that your account stays healthy after the new
             debt. Health factor is adjusted collateral value divided by outstanding debt. The
             adjusted collateral value already includes LP valuation, collateral factors, and
             recoverable-value discounts.
           </p>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
-            <code className="text-sm text-gray-900">
+          <div className="type-doc-code-block">
+            <code className="type-doc-body text-gray-900">
               healthFactor = adjustedCollateralValue / outstandingDebt
             </code>
           </div>
 
-          <p className="mt-4 text-sm leading-relaxed text-gray-600">
+          <p className="mt-4 type-doc-body">
             If health falls below the liquidation boundary, the position becomes eligible for
             liquidation. See{" "}
             <Link href="/developers/architecture/health-factor" className="text-[#01AACF] hover:underline">
@@ -101,9 +101,9 @@ export default async function BorrowAssetsPage() {
           </p>
         </section>
 
-        <section id="internal-accounting" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Internal Accounting</h2>
-          <div className="space-y-4 text-sm text-gray-600">
+        <section id="internal-accounting" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Internal Accounting</h2>
+          <div className="space-y-4 type-doc-body">
             <p>
               <strong className="text-gray-900">Debt shares:</strong> new debt is recorded through a
               debt-share model so interest can accrue over time without rewriting the full account
@@ -122,27 +122,27 @@ export default async function BorrowAssetsPage() {
           </div>
         </section>
 
-        <section id="borrowable-assets" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Borrowable Assets</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="borrowable-assets" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Borrowable Assets</h2>
+          <p className="mb-4 type-doc-body">
             Each market shows which assets you can borrow — typically major stablecoins, GHO, ETH,
             BTC, and other liquid assets configured for that deployment. A supported LP collateral
             type does not unlock every borrow asset automatically; each debt asset is part of the
             market configuration.
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="type-doc-body">
             Check the Avana interface on your target deployment for the live borrow list.
           </p>
         </section>
 
-        <section id="borrowing-power" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Borrowing Power</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="borrowing-power" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Borrowing Power</h2>
+          <p className="mb-4 type-doc-body">
             Borrowing power is the sum of your approved LP positions in one Borrow Spoke, after
             collateral factors and risk discounts. Each position contributes based on its own pool,
             range, liquidity, and risk settings.
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="type-doc-body">
             The closer you borrow to your maximum, the less room you have for price moves or
             volatility. See{" "}
             <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">

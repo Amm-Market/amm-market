@@ -29,15 +29,15 @@ export default async function HealthFactorPage() {
           description="The ratio between risk-adjusted collateral value and outstanding debt inside a Borrow Spoke."
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="overview" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Overview</h2>
+          <p className="mb-4 type-doc-body">
             Health factor measures the relationship between risk-adjusted collateral value and
             outstanding debt inside a Borrow Spoke. Adjusted collateral value already includes
             Avana&apos;s LP valuation, collateral factors, pool-level risk treatment, and
             recoverable-value assumptions.
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="type-doc-body">
             If health falls below the liquidation boundary, the position becomes eligible for
             liquidation. See the{" "}
             <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
@@ -47,29 +47,29 @@ export default async function HealthFactorPage() {
           </p>
         </section>
 
-        <section id="calculation" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Calculation</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="calculation" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Calculation</h2>
+          <p className="mb-4 type-doc-body">
             Health is computed per Borrow Spoke. The numerator is adjusted collateral value — already
             discounted through reconstruction, pricing, collateral factors, and recoverable-value
             assumptions.
           </p>
 
-          <div className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
-            <code className="text-sm text-gray-900">
+          <div className="type-doc-code-block">
+            <code className="type-doc-body text-gray-900">
               healthFactor = adjustedCollateralValue / outstandingDebt
             </code>
           </div>
 
-          <p className="mt-4 text-sm text-gray-600">
+          <p className="mt-4 type-doc-body">
             If a user has collateral in more than one Borrow Spoke, each spoke computes health
             independently. Extra margin in one market does not cover a deficit in another.
           </p>
         </section>
 
-        <section id="health-bands" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Monitoring Bands</h2>
-          <div className="space-y-4 text-sm text-gray-600">
+        <section id="health-bands" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Monitoring Bands</h2>
+          <div className="space-y-4 type-doc-body">
             <p>
               <strong className="text-gray-900">Healthy:</strong> collateral stays comfortably above
               debt, with room for normal market movement.
@@ -83,15 +83,15 @@ export default async function HealthFactorPage() {
               liquidation threshold. The recovery path can begin.
             </p>
           </div>
-          <p className="mt-4 text-sm text-gray-600">
+          <p className="mt-4 type-doc-body">
             Interface warnings may appear earlier than the hard liquidation threshold to give users
             time to act.
           </p>
         </section>
 
-        <section id="response-path" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Response Path</h2>
-          <div className="space-y-4 text-sm text-gray-600">
+        <section id="response-path" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Response Path</h2>
+          <div className="space-y-4 type-doc-body">
             <p>
               When health weakens, the borrower can repay debt, add approved LP collateral, or take
               other actions that improve the account under the spoke&apos;s health checks.
@@ -103,15 +103,15 @@ export default async function HealthFactorPage() {
           </div>
         </section>
 
-        <section id="user-actions" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">User Actions</h2>
-          <ul className="space-y-2 text-gray-600">
+        <section id="user-actions" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">User Actions</h2>
+          <ul className="space-y-2 type-doc-body">
             <li>Borrowing more reduces health because debt rises against the same collateral.</li>
             <li>Repaying debt improves health immediately.</li>
             <li>Adding approved collateral can increase headroom if the spoke accepts and values it.</li>
             <li>Claiming fees, withdrawing collateral, or changing positions can reduce health — check the post-action state first.</li>
           </ul>
-          <p className="mt-4 text-sm text-gray-600">
+          <p className="mt-4 type-doc-body">
             See{" "}
             <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
               Collateral Factors

@@ -40,15 +40,15 @@ export default async function CopilotProtocolsPage() {
           description="The protocols and functions the Avana router supports through standardized adapter interfaces."
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
-            The router&apos;s reach is built on <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-gray-800">ILiquidityAdapter</code>{" "}
+        <section id="overview" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Overview</h2>
+          <p className="mb-4 type-doc-body">
+            The router&apos;s reach is built on <code className="type-doc-inline-code">ILiquidityAdapter</code>{" "}
             contracts. Each adapter is a standardized interface that bridges the router and Ask
             AI to a specific DeFi protocol, abstracting away protocol-specific complexity so
             new integrations can be added without changing the caller.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p className="type-doc-body">
             For developers, this means intricate cross-protocol transactions can be composed with
             simple, uniform calls. See the{" "}
             <Link href="/developers/integrations/router-contract" className="text-[#01AACF] hover:underline">
@@ -58,24 +58,24 @@ export default async function CopilotProtocolsPage() {
           </p>
         </section>
 
-        <section id="responsibilities" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Adapter Responsibilities</h2>
+        <section id="responsibilities" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Adapter Responsibilities</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             {responsibilities.map(({ icon: Icon, title, body }) => (
-              <div key={title} className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+              <div key={title} className="type-doc-panel">
                 <div className="flex items-center gap-2.5">
                   <Icon className="h-5 w-5 text-[#01AACF]" />
-                  <h3 className="font-semibold text-gray-900">{title}</h3>
+                  <h3 className="type-doc-subsection-title">{title}</h3>
                 </div>
-                <p className="mt-2 text-sm text-gray-600">{body}</p>
+                <p className="mt-2 type-doc-body">{body}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section id="adapters" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Supported Adapters</h2>
-          <p className="mb-6 text-sm leading-relaxed text-gray-600">
+        <section id="adapters" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Supported Adapters</h2>
+          <p className="mb-6 type-doc-body">
             The adapter set grows over time as new protocols are reviewed and added. The list below
             reflects the families currently supported through the router.
           </p>
@@ -96,7 +96,7 @@ export default async function CopilotProtocolsPage() {
                     </span>
                   </div>
                 </div>
-                <p className="mt-3 text-sm text-gray-600">{protocol.purpose}</p>
+                <p className="mt-3 type-doc-body">{protocol.purpose}</p>
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {protocol.features.map((feature) => (
                     <span

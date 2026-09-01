@@ -103,20 +103,20 @@ export default async function PriceOraclesPage() {
 
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-4">Overview</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+        <section id="overview" className="mb-10">
+          <h2 className="type-doc-section-title mb-4">Overview</h2>
+          <p className="type-doc-body mb-4">
             Avana prices LP collateral by reconstructing the position and valuing the assets inside
             it. For fungible LPs, the protocol derives value from external asset prices and pool
             balance reconstruction. For concentrated liquidity, it decomposes the position by
             liquidity, range, current tick, token exposure, and accrued fees.
           </p>
-          <p className="text-gray-600 leading-relaxed mb-4">
+          <p className="type-doc-body mb-4">
             The result is discounted into recoverable collateral value. Borrow power is based on what
             the position can realistically support under the market&apos;s risk assumptions, not on
             an optimistic net asset value.
           </p>
-          <p className="text-gray-600 leading-relaxed mb-6">
+          <p className="type-doc-body mb-6">
             That distinction between mark value and recoverable value is what keeps the oracle
             useful for lending instead of just analytics. ERC-20 LPs, NFT LPs, and multi-asset
             pools can share one high-level interface only because each class goes through its own
@@ -124,10 +124,10 @@ export default async function PriceOraclesPage() {
           </p>
 
           <div className="rounded-xl border border-cyan-200 bg-cyan-50/70 p-5">
-            <h3 className="text-base font-semibold text-gray-900 mb-3">LP collateral value depends on:</h3>
+            <h3 className="type-doc-subsection-title mb-3">LP collateral value depends on:</h3>
             <ul className="space-y-3">
               {collateralValueDrivers.map((item) => (
-                <li key={item} className="border-l-4 border-cyan-500 pl-3 text-sm text-gray-700">
+                <li key={item} className="type-doc-callout type-doc-callout-info">
                   {item}
                 </li>
               ))}
@@ -135,17 +135,17 @@ export default async function PriceOraclesPage() {
           </div>
         </section>
 
-        <section id="oracle-interface" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-4">Oracle Interface: IOracle</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+        <section id="oracle-interface" className="mb-10">
+          <h2 className="type-doc-section-title mb-4">Oracle Interface: IOracle</h2>
+          <p className="type-doc-body mb-4">
             Borrow Spokes need one contract surface even though LP formats differ a lot across
             DEXs. `IOracle` provides that common shape and keeps principal value, accrued fees, and
             reserved buffers separate so later risk logic does not have to guess which part of the
             position it is looking at:
           </p>
           
-          <div className="p-4 bg-gray-900 rounded-lg mb-4">
-            <code className="text-green-400 text-sm">
+          <div className="type-doc-code-block-dark mb-4">
+            <code>
               function getValue(uint256 tokenId, address asset)<br/>
               &nbsp;&nbsp;external view returns (<br/>
               &nbsp;&nbsp;&nbsp;&nbsp;uint256 fullValue,<br/>
@@ -156,30 +156,30 @@ export default async function PriceOraclesPage() {
           </div>
 
           <div className="space-y-3">
-            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-              <span className="font-semibold text-gray-900">fullValue</span>
-              <span className="text-gray-600 text-sm ml-2">Reconstructed value of the principal liquidity before later liquidation stress adjustments are applied.</span>
+            <div className="type-doc-panel">
+              <span className="type-doc-subsection-title">fullValue</span>
+              <span className="type-doc-body ml-2">Reconstructed value of the principal liquidity before later liquidation stress adjustments are applied.</span>
             </div>
-            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-              <span className="font-semibold text-gray-900">feeValue</span>
-              <span className="text-gray-600 text-sm ml-2">Value of the fees accrued by the position that can be recognized alongside principal.</span>
+            <div className="type-doc-panel">
+              <span className="type-doc-subsection-title">feeValue</span>
+              <span className="type-doc-body ml-2">Value of the fees accrued by the position that can be recognized alongside principal.</span>
             </div>
-            <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-              <span className="font-semibold text-gray-900">reserveValue</span>
-              <span className="text-gray-600 text-sm ml-2">Reserved portion held back for oracle, unwind, and protocol risk buffers.</span>
+            <div className="type-doc-panel">
+              <span className="type-doc-subsection-title">reserveValue</span>
+              <span className="type-doc-body ml-2">Reserved portion held back for oracle, unwind, and protocol risk buffers.</span>
             </div>
           </div>
 
-          <p className="mt-4 text-gray-600 text-sm">
+          <p className="mt-4 type-doc-body">
             The interface hides DEX-specific plumbing from the spoke. That lets the same caller
             handle ERC-20 LPs, NFT LPs, and multi-asset pools through one return shape while still
             leaving room for conservative, collateral-family-specific treatment behind the scenes.
           </p>
         </section>
 
-        <section id="multi-layer-architecture" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-4">Multi-Layer Architecture</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+        <section id="multi-layer-architecture" className="mb-10">
+          <h2 className="type-doc-section-title mb-4">Multi-Layer Architecture</h2>
+          <p className="type-doc-body mb-4">
             LP valuation is a staged process rather than a single spot-price read. The oracle path
             moves through the following steps:
           </p>
@@ -192,8 +192,8 @@ export default async function PriceOraclesPage() {
                     {index + 1}
                   </span>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
+                    <h3 className="type-doc-subsection-title mb-1">{item.title}</h3>
+                    <p className="type-doc-body">{item.description}</p>
                   </div>
                 </div>
               </div>
@@ -201,29 +201,29 @@ export default async function PriceOraclesPage() {
           </div>
         </section>
 
-        <section id="dex-handling" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-4">DEX-Specific Handling</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+        <section id="dex-handling" className="mb-10">
+          <h2 className="type-doc-section-title mb-4">DEX-Specific Handling</h2>
+          <p className="type-doc-body mb-4">
             Different DEXs expose different pieces of state, and the oracle uses those inputs to
             reconstruct the position and verify pricing. Pool-derived data is not accepted blindly
             as a direct collateral mark.
           </p>
           
           <div className="overflow-x-auto">
-            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+            <table className="type-doc-table">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="text-left px-3 py-2 font-semibold text-gray-900">DEX / LP Type</th>
-                  <th className="text-left px-3 py-2 font-semibold text-gray-900">Oracle Source</th>
-                  <th className="text-left px-3 py-2 font-semibold text-gray-900">Notes</th>
+                  <th className="text-left px-3 py-2 type-doc-subsection-title">DEX / LP Type</th>
+                  <th className="text-left px-3 py-2 type-doc-subsection-title">Oracle Source</th>
+                  <th className="text-left px-3 py-2 type-doc-subsection-title">Notes</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {dexOracleTable.map((item) => (
                   <tr key={item.dex}>
                     <td className="px-3 py-2 text-gray-900 font-medium">{item.dex}</td>
-                    <td className="px-3 py-2 text-gray-600">{item.source}</td>
-                    <td className="px-3 py-2 text-gray-600 text-xs">{item.notes}</td>
+                    <td className="px-3 py-2">{item.source}</td>
+                    <td className="px-3 py-2 text-xs">{item.notes}</td>
                   </tr>
                 ))}
               </tbody>
@@ -231,9 +231,9 @@ export default async function PriceOraclesPage() {
           </div>
         </section>
 
-        <section id="twap-computation" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-4">TWAP Computation by DEX</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+        <section id="twap-computation" className="mb-10">
+          <h2 className="type-doc-section-title mb-4">TWAP Computation by DEX</h2>
+          <p className="type-doc-body mb-4">
             TWAPs are verification inputs. They sit beside external asset prices and deterministic
             position reconstruction to check whether the pool state being observed is consistent
             with a credible unwind path. They help reject suspicious or short-lived distortions,
@@ -242,38 +242,38 @@ export default async function PriceOraclesPage() {
           
           <div className="space-y-3">
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Uniswap V2 & SushiSwap</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="type-doc-subsection-title mb-1">Uniswap V2 & SushiSwap</h3>
+              <p className="type-doc-body">
                 On-chain cumulative price data over a 1-hour window is used to cross-check the
                 reconstructed reserve picture and reduce sensitivity to flash swaps or other
                 short-lived pool distortions.
               </p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Uniswap V3</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="type-doc-subsection-title mb-1">Uniswap V3</h3>
+              <p className="type-doc-body">
                 Position-aware checks incorporate tick range, liquidity distribution, and accrued
                 fees so the protocol can verify the decomposed token exposure of each NFT LP rather
                 than treating the NFT as a black box.
               </p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Balancer</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="type-doc-subsection-title mb-1">Balancer</h3>
+              <p className="type-doc-body">
                 Weighted token observations are combined with pool weights to validate multi-asset
                 inventory splits before the oracle assigns a conservative collateral value.
               </p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Curve</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="type-doc-subsection-title mb-1">Curve</h3>
+              <p className="type-doc-body">
                 Stablecoin observations are used mainly to detect stale feeds, reserve drift, and
                 short-term anomalies while external prices remain the primary anchor.
               </p>
             </div>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Trader Joe & Aerodrome</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="type-doc-subsection-title mb-1">Trader Joe & Aerodrome</h3>
+              <p className="type-doc-body">
                 Cumulative price observations over a 30-60 minute window help validate
                 lower-liquidity pool state and resist same-transaction manipulation during
                 collateral checks.
@@ -282,42 +282,42 @@ export default async function PriceOraclesPage() {
           </div>
         </section>
 
-        <section id="safety-measures" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-4">Safety & Manipulation Prevention</h2>
+        <section id="safety-measures" className="mb-10">
+          <h2 className="type-doc-section-title mb-4">Safety & Manipulation Prevention</h2>
           
           <ul className="space-y-3">
-            <li className="border-l-4 border-red-400 pl-3">
-              <span className="font-semibold text-gray-900">Deviation Thresholds</span>
-              <p className="text-gray-600 text-sm mt-0.5">
+            <li className="type-doc-callout type-doc-callout-danger">
+              <span className="type-doc-subsection-title">Deviation Thresholds</span>
+              <p className="type-doc-body mt-0.5">
                 New loans or liquidations can be paused when pool-derived verification data moves
                 too far away from external reference prices beyond{" "}
-                <code className="bg-gray-100 px-1 rounded text-gray-800">maxDifference</code>.
+                <code className="type-doc-inline-code">maxDifference</code>.
               </p>
             </li>
             <li>
-              <span className="font-semibold text-gray-900">maxPoolPriceDifference</span>
-              <p className="text-gray-600 text-sm mt-0.5">
+              <span className="type-doc-subsection-title">maxPoolPriceDifference</span>
+              <p className="type-doc-body mt-0.5">
                 This keeps pool-implied state aligned with underlying token prices and limits
                 instantaneous pool manipulation or same-transaction oracle abuse.
               </p>
             </li>
             <li>
-              <span className="font-semibold text-gray-900">Open Interest Caps</span>
-              <p className="text-gray-600 text-sm mt-0.5">
+              <span className="type-doc-subsection-title">Open Interest Caps</span>
+              <p className="type-doc-body mt-0.5">
                 Exposure is capped by LP family, pool depth, and collateral complexity so thinner
                 markets receive tighter borrow limits.
               </p>
             </li>
             <li>
-              <span className="font-semibold text-gray-900">Recovery Haircuts</span>
-              <p className="text-gray-600 text-sm mt-0.5">
+              <span className="type-doc-subsection-title">Recovery Haircuts</span>
+              <p className="type-doc-body mt-0.5">
                 The oracle discounts theoretical LP value for impermanent loss, unwind slippage,
                 and stressed liquidation assumptions before any borrow power is granted.
               </p>
             </li>
             <li>
-              <span className="font-semibold text-gray-900">Oracle Sentinel</span>
-              <p className="text-gray-600 text-sm mt-0.5">
+              <span className="type-doc-subsection-title">Oracle Sentinel</span>
+              <p className="type-doc-body mt-0.5">
                 Oracle Sentinel watches feed health and verification inputs and can trigger fallback
                 behavior when data is stale, compromised, or inconsistent with position-state
                 checks.
@@ -326,59 +326,59 @@ export default async function PriceOraclesPage() {
           </ul>
         </section>
 
-        <section id="configurable-parameters" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-4">Configurable Oracle Parameters</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+        <section id="configurable-parameters" className="mb-10">
+          <h2 className="type-doc-section-title mb-4">Configurable Oracle Parameters</h2>
+          <p className="type-doc-body mb-4">
             Pool-specific oracle settings are configured per token through{" "}
-            <code className="bg-gray-200 px-1 rounded">setTokenConfig</code>. The table below shows
+            <code className="type-doc-inline-code">setTokenConfig</code>. The table below shows
             the parameters that define how a token and its associated pool should be checked:
           </p>
           
           <div className="overflow-x-auto">
-            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+            <table className="type-doc-table">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Parameter</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-900">Description</th>
+                  <th className="text-left px-4 py-2 type-doc-subsection-title">Parameter</th>
+                  <th className="text-left px-4 py-2 type-doc-subsection-title">Description</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
                 <tr>
-                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">Token</td>
-                  <td className="px-4 py-2 text-gray-600">Collateral token address</td>
+                  <td className="px-4 py-2 type-doc-inline-code">Token</td>
+                  <td className="px-4 py-2">Collateral token address</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">AggregatorV3Interface</td>
-                  <td className="px-4 py-2 text-gray-600">Chainlink feed for underlying token</td>
+                  <td className="px-4 py-2 type-doc-inline-code">AggregatorV3Interface</td>
+                  <td className="px-4 py-2">Chainlink feed for underlying token</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">maxFeedAge</td>
-                  <td className="px-4 py-2 text-gray-600">Maximum acceptable age for Chainlink feed</td>
+                  <td className="px-4 py-2 type-doc-inline-code">maxFeedAge</td>
+                  <td className="px-4 py-2">Maximum acceptable age for Chainlink feed</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">Pool</td>
-                  <td className="px-4 py-2 text-gray-600">Specific DEX pool (Uniswap V3, Balancer, Curve, etc.)</td>
+                  <td className="px-4 py-2 type-doc-inline-code">Pool</td>
+                  <td className="px-4 py-2">Specific DEX pool (Uniswap V3, Balancer, Curve, etc.)</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">twapSeconds</td>
-                  <td className="px-4 py-2 text-gray-600">Window for TWAP computation</td>
+                  <td className="px-4 py-2 type-doc-inline-code">twapSeconds</td>
+                  <td className="px-4 py-2">Window for TWAP computation</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">Mode</td>
-                  <td className="px-4 py-2 text-gray-600">Oracle operational mode (standard/fallback)</td>
+                  <td className="px-4 py-2 type-doc-inline-code">Mode</td>
+                  <td className="px-4 py-2">Oracle operational mode (standard/fallback)</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 text-gray-900 font-mono text-xs">maxDifference</td>
-                  <td className="px-4 py-2 text-gray-600">Max allowed deviation between DEX and verification price</td>
+                  <td className="px-4 py-2 type-doc-inline-code">maxDifference</td>
+                  <td className="px-4 py-2">Max allowed deviation between DEX and verification price</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <p className="mt-4 text-gray-600 text-sm">
+          <p className="mt-4 type-doc-body">
             In practice, oracle behavior comes from the combination of external asset pricing, LP
             reconstruction logic, recoverable-value treatment, and the per-token settings configured
-            through <code className="bg-gray-200 px-1 rounded">setTokenConfig</code>.
+            through <code className="type-doc-inline-code">setTokenConfig</code>.
           </p>
         </section>
       </div>

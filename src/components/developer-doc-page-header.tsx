@@ -33,7 +33,7 @@ export function DeveloperDocPageHeader({ title, description }: DeveloperDocPageH
       <div className="mt-4 border-b border-slate-200" />
 
       {description ? (
-        <p className="type-page-lead mt-6 max-w-4xl text-slate-600">{description}</p>
+        <p className="type-doc-body mt-6 max-w-4xl">{description}</p>
       ) : null}
     </div>
   )

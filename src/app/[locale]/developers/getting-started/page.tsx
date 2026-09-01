@@ -47,26 +47,26 @@ export default async function DepositLPPage() {
           description="Deposit a supported LP position into Avana to use it as collateral while it keeps earning fees in the pool."
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="overview" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Overview</h2>
+          <p className="mb-4 type-doc-body">
             To borrow against LP collateral on Avana, start by depositing a supported position into
             the app. Pick an approved pool, connect your wallet, and submit the deposit for the LP
             you already hold on a supported DEX.
           </p>
-          <p className="leading-relaxed text-gray-600">
+          <p className="type-doc-body">
             Avana records the position, values it, and adds it to your borrowing capacity in the
             relevant Borrow Spoke. Your liquidity stays in the pool and keeps accruing fees. Deposit
             does not borrow for you — it sets up the collateral you can borrow against next.
           </p>
         </section>
 
-        <section id="deposit-flow" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Deposit Flow</h2>
+        <section id="deposit-flow" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Deposit Flow</h2>
           <div className="space-y-5">
             <div>
-              <h3 className="mb-2 font-semibold text-gray-900">1. Choose a supported pool</h3>
-              <p className="text-sm leading-relaxed text-gray-600">
+              <h3 className="mb-2 type-doc-subsection-title">1. Choose a supported pool</h3>
+              <p className="type-doc-body">
                 Open the Avana interface and select an LP market that is live on your deployment.
                 Only approved pools can be deposited. See{" "}
                 <Link href="/developers/integrations/allowed-pools" className="text-[#01AACF] hover:underline">
@@ -76,22 +76,22 @@ export default async function DepositLPPage() {
               </p>
             </div>
             <div>
-              <h3 className="mb-2 font-semibold text-gray-900">2. Approve and deposit your LP</h3>
-              <p className="text-sm leading-relaxed text-gray-600">
+              <h3 className="mb-2 type-doc-subsection-title">2. Approve and deposit your LP</h3>
+              <p className="type-doc-body">
                 Approve the LP token or position NFT if needed, then confirm the deposit. Avana
                 routes the position into the Borrow Spoke for that market.
               </p>
             </div>
             <div>
-              <h3 className="mb-2 font-semibold text-gray-900">3. Wait for valuation</h3>
-              <p className="text-sm leading-relaxed text-gray-600">
+              <h3 className="mb-2 type-doc-subsection-title">3. Wait for valuation</h3>
+              <p className="type-doc-body">
                 The spoke checks that the pool is approved, reconstructs the position, and applies
                 collateral factors to calculate how much borrowing capacity the deposit adds.
               </p>
             </div>
             <div>
-              <h3 className="mb-2 font-semibold text-gray-900">4. Borrow when ready</h3>
-              <p className="text-sm leading-relaxed text-gray-600">
+              <h3 className="mb-2 type-doc-subsection-title">4. Borrow when ready</h3>
+              <p className="type-doc-body">
                 Once the deposit clears, your borrowing capacity updates in the interface. You can
                 move on to{" "}
                 <Link href="/developers/getting-started/borrow-assets" className="text-[#01AACF] hover:underline">
@@ -103,9 +103,9 @@ export default async function DepositLPPage() {
           </div>
         </section>
 
-        <section id="technical-details" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Technical Details</h2>
-          <div className="space-y-4 text-sm text-gray-600">
+        <section id="technical-details" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Technical Details</h2>
+          <div className="space-y-4 type-doc-body">
             <p>
               <strong className="text-gray-900">Borrowing power updates with the market.</strong>{" "}
               Your capacity is recalculated from the live LP position as prices, fees, and pool state
@@ -124,23 +124,23 @@ export default async function DepositLPPage() {
           </div>
         </section>
 
-        <section id="supported-lp-tokens" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Supported LP Position Types</h2>
+        <section id="supported-lp-tokens" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Supported LP Position Types</h2>
           <div className="overflow-x-auto">
             <table className="w-full overflow-hidden rounded-lg border border-gray-200 text-sm">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-4 py-2 text-left font-semibold text-gray-900">Family</th>
-                  <th className="px-4 py-2 text-left font-semibold text-gray-900">Examples</th>
-                  <th className="px-4 py-2 text-left font-semibold text-gray-900">Admission Notes</th>
+                  <th className="px-4 py-2 text-left type-doc-subsection-title">Family</th>
+                  <th className="px-4 py-2 text-left type-doc-subsection-title">Examples</th>
+                  <th className="px-4 py-2 text-left type-doc-subsection-title">Admission Notes</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {supportedFamilies.map((item) => (
                   <tr key={item.family}>
                     <td className="px-4 py-2 font-medium text-gray-900">{item.family}</td>
-                    <td className="px-4 py-2 text-gray-600">{item.examples}</td>
-                    <td className="px-4 py-2 text-gray-600">{item.notes}</td>
+                    <td className="px-4 py-2">{item.examples}</td>
+                    <td className="px-4 py-2">{item.notes}</td>
                   </tr>
                 ))}
               </tbody>
@@ -148,9 +148,9 @@ export default async function DepositLPPage() {
           </div>
         </section>
 
-        <section id="after-deposit" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">After Deposit</h2>
-          <ul className="space-y-2 text-gray-600">
+        <section id="after-deposit" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">After Deposit</h2>
+          <ul className="space-y-2 type-doc-body">
             <li>Your LP keeps earning trading fees in the underlying pool</li>
             <li>Borrowing capacity appears in the interface for that Borrow Spoke</li>
             <li>You can deposit more approved positions in the same market to add capacity</li>

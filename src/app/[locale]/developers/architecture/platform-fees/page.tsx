@@ -28,52 +28,52 @@ export default async function PlatformFeesPage() {
           description="Interface-level fees on Avana frontends, separate from protocol borrowing economics."
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="overview" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Overview</h2>
+          <p className="mb-4 type-doc-body">
             Avana may charge frontend or service fees on official interfaces. Those charges are
             separate from the protocol&apos;s collateral, oracle, and liquidation rules.
           </p>
-          <p className="border-l-4 border-violet-400 pl-3 text-sm text-gray-600">
+          <p className="type-doc-callout type-doc-callout-info type-doc-body">
             Fee rates, exemptions, and rollout status are operational settings. Verify them in the
             live interface or release materials before relying on them.
           </p>
         </section>
 
-        <section id="interface-vs-protocol" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Interface vs Protocol</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="interface-vs-protocol" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Interface vs Protocol</h2>
+          <p className="mb-4 type-doc-body">
             Core contracts govern LP admission, borrowing capacity, and liquidation. Interface fees,
             if enabled, sit on top as frontend business policy rather than as a change to the borrow
             or risk engine.
           </p>
-          <ul className="list-disc space-y-2 ps-5 text-sm text-gray-600">
+          <ul className="list-disc space-y-2 ps-5 type-doc-body">
             <li>Protocol economics determine debt accrual, collateral treatment, and liquidation outcomes</li>
             <li>Interface fees are tied to a specific frontend or service path</li>
             <li>Direct contract integrations may follow different fee assumptions than the official UI</li>
           </ul>
         </section>
 
-        <section id="disclosure" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Disclosure</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="disclosure" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Disclosure</h2>
+          <p className="mb-4 type-doc-body">
             Any interface fee should be shown clearly before signature so users can distinguish it
             from gas costs, swap fees, and protocol-level debt or liquidation effects.
           </p>
         </section>
 
-        <section id="treasury-usage" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Treasury Usage</h2>
-          <p className="leading-relaxed text-gray-600">
+        <section id="treasury-usage" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Treasury Usage</h2>
+          <p className="type-doc-body">
             If interface fees are collected, they typically fund product operations such as
             infrastructure, monitoring, security work, and support. Governance may formalize or
             revise those policies over time.
           </p>
         </section>
 
-        <section id="integration-notes" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Integration Notes</h2>
-          <ul className="list-disc space-y-2 ps-5 text-sm text-gray-600">
+        <section id="integration-notes" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Integration Notes</h2>
+          <ul className="list-disc space-y-2 ps-5 type-doc-body">
             <li>Verify current fee policy before quoting end-user costs</li>
             <li>Do not hard-code interface-fee assumptions into protocol integrations unless policy is formally versioned</li>
             <li>Keep fee policy separate from borrow capacity and liquidation logic in integration docs</li>

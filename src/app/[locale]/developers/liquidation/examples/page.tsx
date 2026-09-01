@@ -38,31 +38,31 @@ export default async function LiquidationExamplesPage() {
           description="Worked scenarios that show how one liquidation framework is applied to different LP collateral shapes."
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="overview" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Overview</h2>
+          <p className="mb-4 type-doc-body">
             These examples show how liquidation plays out across common LP formats under the{" "}
             <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
               Liquidation Framework
             </Link>
             .
           </p>
-          <p className="type-body-copy text-gray-600">
+          <p className="type-doc-body">
             In every case the job is the same: use conservative collateral marks, repay debt into
             the credit layer, unwind the LP through a supported path, and return any residual value
             left after execution costs and the liquidation reward.
           </p>
         </section>
 
-        <section id="fungible-lp" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Fungible LP Example</h2>
+        <section id="fungible-lp" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Fungible LP Example</h2>
           <div>
-            <p className="mb-4 type-body-copy text-gray-600">
+            <p className="mb-4 type-doc-body">
               A borrower has deposited a fungible LP token from an approved stable or weighted pool.
               Over time, pool composition and oracle inputs move enough that the account no longer
               has sufficient adjusted collateral value for its debt.
             </p>
-            <ul className="space-y-2 type-body-copy text-gray-600">
+            <ul className="space-y-2 type-doc-body">
               <li>• The liquidation node detects the shortfall and sources execution liquidity.</li>
               <li>• Debt is repaid and the LP token is redeemed into its underlying assets.</li>
               <li>• Claimable fees are realized if available and helpful to recovery.</li>
@@ -72,15 +72,15 @@ export default async function LiquidationExamplesPage() {
           </div>
         </section>
 
-        <section id="concentrated-liquidity" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Concentrated Liquidity Example</h2>
+        <section id="concentrated-liquidity" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Concentrated Liquidity Example</h2>
           <div>
-            <p className="mb-4 type-body-copy text-gray-600">
+            <p className="mb-4 type-doc-body">
               A concentrated-liquidity position drifts toward the edge of its active range. The
               account may remain healthy for a while, then tip into liquidation once debt outpaces
               the recoverable value of the current position state.
             </p>
-            <ul className="space-y-2 type-body-copy text-gray-600">
+            <ul className="space-y-2 type-doc-body">
               <li>• The node values the position from its current range, liquidity, and token split.</li>
               <li>• Once liquidation begins, claimable fees are checked before principal is unwound.</li>
               <li>• Routing adapts to the actual inventory recovered rather than a static token mix.</li>
@@ -89,15 +89,15 @@ export default async function LiquidationExamplesPage() {
           </div>
         </section>
 
-        <section id="nft-liquidity" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">NFT Liquidation</h2>
+        <section id="nft-liquidity" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">NFT Liquidation</h2>
           <div>
-            <p className="mb-4 type-body-copy text-gray-600">
+            <p className="mb-4 type-doc-body">
               A borrower deposits a Uniswap v3 NFT and later the position becomes underwater. The
               unwind is handled at the position level, not as a loose token slice, because the NFT
               represents one specific backing position.
             </p>
-            <ul className="space-y-2 type-body-copy text-gray-600">
+            <ul className="space-y-2 type-doc-body">
               <li>• Aave seizes the vault token balance tied to the NFT-backed position.</li>
               <li>• Avana burns the vault token and moves the real LP position into settlement.</li>
               <li>• The settlement module unwinds, sells, auctions, or transfers the position.</li>
@@ -107,15 +107,15 @@ export default async function LiquidationExamplesPage() {
           </div>
         </section>
 
-        <section id="multi-position-account" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Multi-Position Account</h2>
+        <section id="multi-position-account" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Multi-Position Account</h2>
           <div>
-            <p className="mb-4 type-body-copy text-gray-600">
+            <p className="mb-4 type-doc-body">
               A borrower may hold several LP positions inside one Borrow Spoke. Capacity is
               aggregated across those positions, but the unwind still has to happen at the position
               level once the account turns unhealthy.
             </p>
-            <ul className="space-y-2 type-body-copy text-gray-600">
+            <ul className="space-y-2 type-doc-body">
               <li>• The spoke reports one aggregate borrowing capacity to the Hub.</li>
               <li>• When the account becomes unhealthy, the liquidation node chooses the unwind path that best restores solvency.</li>
               <li>• One position may be enough to close the shortfall, or several may need to be partially or fully unwound.</li>
@@ -124,9 +124,9 @@ export default async function LiquidationExamplesPage() {
           </div>
         </section>
 
-        <section id="edge-cases" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Edge Cases</h2>
-          <ul className="space-y-3 type-body-copy text-gray-600">
+        <section id="edge-cases" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Edge Cases</h2>
+          <ul className="space-y-3 type-doc-body">
             {edgeCases.map((item) => (
               <li key={item}>
                 {item}
@@ -135,9 +135,9 @@ export default async function LiquidationExamplesPage() {
           </ul>
         </section>
 
-        <section id="summary" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Summary</h2>
-          <p className="type-body-copy leading-relaxed text-gray-600">
+        <section id="summary" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Summary</h2>
+          <p className="type-doc-body">
             Fungible LPs, concentrated ranges, NFT positions, and multi-position accounts have
             different unwind details. The shared goal is to repay debt from recoverable LP value,
             not optimistic NAV assumptions.
