@@ -1176,14 +1176,6 @@ body:has([data-developer-doc-shell]) footer.site-content-shell {
   color: var(--foreground);
 }
 
-.dark .site-header-nav-link {
-  color: color-mix(in oklab, var(--foreground) 62%, transparent);
-}
-
-.dark .site-header-nav-link:hover {
-  color: color-mix(in oklab, var(--foreground) 94%, transparent);
-}
-
 .dark .hero-feature-mockup,
 .dark .hero-feature-mockup.bg-white {
   background-color: #ffffff !important;

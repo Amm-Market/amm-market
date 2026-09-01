@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl"
 import { SUPPORT_EMAIL } from "@/lib/site"
 
 const iconButtonClassName =
-  "inline-flex h-9 w-9 items-center justify-center text-black/62 transition-colors duration-200 ease-out hover:text-type-accent dark:text-white/70 dark:hover:text-type-accent"
+  "inline-flex h-9 w-9 items-center justify-center text-foreground/62 transition-colors duration-200 ease-out hover:text-type-accent"
 
 export function HeaderHelpCenterButton() {
   const t = useTranslations("common")

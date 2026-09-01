@@ -8,7 +8,7 @@ import { useSyncExternalStore } from "react"
 export type ThemePreference = "light" | "dark" | "system"
 
 const iconButtonClassName =
-  "inline-flex h-9 w-9 items-center justify-center text-black/62 transition-colors duration-200 ease-out hover:text-type-accent dark:text-white/70 dark:hover:text-type-accent"
+  "inline-flex h-9 w-9 items-center justify-center text-foreground/62 transition-colors duration-200 ease-out hover:text-type-accent"
 
 const THEME_CYCLE: ThemePreference[] = ["system", "light", "dark"]
 
