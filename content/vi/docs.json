@@ -1,7 +1,7 @@
 {
   "architecture/collateral-factors": {
     "meta": {
-      "title": "Collateral Factors",
+      "title": "Yếu tố tài sản đảm bảo",
       "description": "Làm thế nào các yếu tố thế chấp biến giá trị vị thế LP thành khả năng vay bên trong Borrow Spoke."
     },
     "toc": [
@@ -23,7 +23,7 @@
       }
     ],
     "strings": [
-      "Collateral Factors",
+      "Yếu tố tài sản đảm bảo",
       "Làm thế nào các yếu tố thế chấp biến giá trị vị thế LP thành khả năng vay bên trong Borrow Spoke.",
       "Tổng quan",
       "Cách hoạt động",
@@ -43,7 +43,7 @@
   },
   "architecture/health-factor": {
     "meta": {
-      "title": "Health Factor",
+      "title": "health factor",
       "description": "Cách Avana đo lường xem tài khoản được hỗ trợ bởi LP có đủ tài sản thế chấp để hỗ trợ khoản nợ của mình hay không."
     },
     "toc": [
@@ -69,7 +69,7 @@
       }
     ],
     "strings": [
-      "Health Factor",
+      "health factor",
       "Cách Avana đo lường xem tài khoản được hỗ trợ bởi LP có đủ tài sản thế chấp để hỗ trợ khoản nợ của mình hay không.",
       "Tổng quan",
       "Tính toán",
@@ -79,7 +79,7 @@
       "Tỷ lệ giữa giá trị tài sản thế chấp được điều chỉnh theo rủi ro và số dư nợ bên trong Borrow Spoke.",
       "Yếu tố sức khỏe đo lường mối quan hệ giữa giá trị tài sản thế chấp được điều chỉnh theo rủi ro và số dư nợ bên trong Borrow Spoke. Giá trị tài sản thế chấp được điều chỉnh đã bao gồm định giá LP của Avana, các yếu tố tài sản thế chấp, xử lý rủi ro ở cấp độ pool và các giả định về giá trị có thể thu hồi.",
       "Nếu tình trạng giảm xuống dưới ranh giới thanh lý, vị trí đó sẽ đủ điều kiện để thanh lý. Xem",
-      "Liquidation Framework",
+      "Khung thanh lý",
       "Sức khỏe được tính theo Borrow Spoke. Tử số là giá trị tài sản thế chấp được điều chỉnh - đã được chiết khấu thông qua việc tái thiết, định giá, các yếu tố tài sản thế chấp và các giả định về giá trị có thể thu hồi được.",
       "healthFactor = adjustedCollateralValue / outstandingDebt",
       "Nếu người dùng có tài sản thế chấp bằng nhiều Borrow Spoke thì mỗi spoke sẽ tính toán tình trạng một cách độc lập. Lợi nhuận tăng thêm ở một thị trường không bù đắp được thâm hụt ở thị trường khác.",
@@ -96,7 +96,7 @@
       "Trả nợ cải thiện sức khỏe ngay lập tức.",
       "Việc thêm tài sản thế chấp được phê duyệt có thể tăng khoảng trống nếu spoke chấp nhận và đánh giá cao nó.",
       "Yêu cầu phí, rút ​​tài sản thế chấp hoặc thay đổi vị thế có thể làm giảm sức khỏe - trước tiên hãy kiểm tra trạng thái sau hành động.",
-      "Collateral Factors"
+      "Yếu tố tài sản đảm bảo"
     ]
   },
   "architecture/incentives": {
@@ -259,7 +259,7 @@
       "Các vị trí LP được phê duyệt bổ sung có thể được gửi sau. Mỗi vị trí đều có giá trị riêng trước khi đóng góp vào năng lực tổng hợp.",
       "Người vay",
       "Người dùng tương tác với Borrow Spoke để gửi tài sản thế chấp, vay, trả nợ và quản lý khoản vay của họ.",
-      "Borrow Spoke (Avana)",
+      "Spoke vay (Avana)",
       "Định giá các vị trí LP, thực thi kiểm tra tình trạng và điều phối việc thanh lý khi tài sản thế chấp không còn hỗ trợ cho khoản nợ.",
       "Aave v4 Hub",
       "Lớp thanh khoản và kế toán được chia sẻ. Borrow Spoke được rút từ khoản dự trữ Hub sau khi các bước kiểm tra bên spoke-được vượt qua.",
@@ -399,7 +399,7 @@
       "Trước khi khoản vay được phê duyệt, Avana sẽ kiểm tra xem tài khoản của bạn có hoạt động tốt sau khoản nợ mới hay không. Yếu tố sức khỏe được điều chỉnh giá trị tài sản thế chấp chia cho số dư nợ. Giá trị tài sản thế chấp được điều chỉnh đã bao gồm định giá LP, các yếu tố tài sản thế chấp và chiết khấu giá trị có thể thu hồi.",
       "healthFactor = adjustedCollateralValue / outstandingDebt",
       "Nếu tình trạng giảm xuống dưới ranh giới thanh lý, vị trí đó sẽ đủ điều kiện để thanh lý. Xem",
-      "Health Factor",
+      "health factor",
       "Cổ phần nợ:",
       "Hub rút thăm:",
       "Borrow Spoke chỉ yêu cầu tài sản từ Hub sau khi spoke hoàn thành việc kiểm tra tài sản thế chấp, năng lực và tình trạng.",
@@ -409,7 +409,7 @@
       "Kiểm tra giao diện Avana trong quá trình triển khai mục tiêu của bạn để biết danh sách mượn trực tiếp.",
       "Sức mạnh vay mượn là tổng số vị thế LP được phê duyệt của bạn trong một Borrow Spoke, sau các yếu tố tài sản thế chấp và chiết khấu rủi ro. Mỗi vị trí đóng góp dựa trên cài đặt pool, phạm vi, tính thanh khoản và rủi ro của riêng nó.",
       "Bạn vay càng gần mức tối đa thì bạn càng có ít chỗ cho những biến động hoặc biến động về giá. Xem",
-      "Collateral Factors"
+      "Yếu tố tài sản đảm bảo"
     ]
   },
   "getting-started/claim-lp-fees": {
@@ -457,8 +457,8 @@
       "Trả nợ hoặc thêm tài sản thế chấp trước nếu yêu cầu bồi thường phí sẽ khiến tài khoản của bạn nằm trong giới hạn bắt buộc.",
       "Mô hình oracle của Avana tách biệt giá trị gốc khỏi giá trị phí để giao thức biết bao nhiêu phần là thanh khoản cốt lõi của vị thế và thu nhập từ phí có thể yêu cầu là bao nhiêu.",
       "Trong quá trình thanh lý, phí tích lũy có thể được áp dụng trước khi thanh khoản gốc được giải phóng, làm giảm mức độ cần phải can thiệp vào vị thế LP cốt lõi để trang trải nợ.",
-      "Price Oracles",
-      "Liquidation Framework",
+      "Đồng hồ báo giá",
+      "Khung thanh lý",
       "Tiền gốc LP của bạn tiếp tục thu phí và duy trì hoạt động trong pool trong khi bạn vay.",
       "Bạn có thể nhận ra thu nhập từ phí mà không cần hủy bỏ vị thế tài sản thế chấp.",
       "Kiểm tra sức khỏe ngăn chặn việc yêu cầu thanh toán phí rút ra quá nhiều giá trị và khiến khoản nợ không được đảm bảo."
@@ -514,7 +514,7 @@
       "tài khoản vẫn vượt qua kiểm tra, nhưng bộ đệm mỏng. Xem xét hoàn trả, thêm tài sản thế chấp hoặc giảm mức độ rủi ro.",
       "Có thể thanh lý:",
       "sức khỏe đã vượt qua ngưỡng thanh lý. Khung thanh lý có thể tiếp quản.",
-      "Health Factor",
+      "health factor",
       "Trả một phần nợ để xây dựng lại vùng đệm",
       "Thêm tài sản thế chấp LP được phê duyệt khác vào cùng Borrow Spoke",
       "Yêu cầu các khoản phí tích lũy khi tài khoản vẫn vượt qua kiểm tra tình trạng sau yêu cầu",
@@ -525,8 +525,8 @@
       "Các vị trí mới hoặc thay thế phải nằm trong bộ pool đã được phê duyệt",
       "Hoạt động vay vẫn phụ thuộc vào tính thanh khoản Hub và giới hạn hoạt động",
       "Hoàn trả hoặc bổ sung tài sản thế chấp trước khi sức khỏe đạt đến lãnh thổ thanh lý",
-      "Liquidation Framework",
-      "Collateral Factors"
+      "Khung thanh lý",
+      "Yếu tố tài sản đảm bảo"
     ]
   },
   "getting-started": {
@@ -579,7 +579,7 @@
       "Avana ghi lại vị thế, định giá nó và thêm nó vào khả năng vay của bạn trong Borrow Spoke có liên quan. Thanh khoản của bạn vẫn ở mức pool và tiếp tục tích lũy phí. Tiền gửi không vay cho bạn - nó thiết lập tài sản thế chấp mà bạn có thể vay tiếp theo.",
       "1. Chọn pool được hỗ trợ",
       "Mở giao diện Avana và chọn thị trường LP đang hoạt động trong quá trình triển khai của bạn. Chỉ pools được phê duyệt mới có thể được gửi tiền. Xem",
-      "Allowed LP Pools",
+      "Hồ bơi được phép LP",
       "2. Phê duyệt và gửi LP của bạn",
       "Phê duyệt token LP hoặc vị trí NFT nếu cần, sau đó xác nhận khoản tiền gửi. Avana định tuyến vị thế vào Borrow Spoke cho thị trường đó.",
       "3. Chờ định giá",
@@ -645,7 +645,7 @@
       "Tiền lãi tiếp tục tích lũy trên khoản nợ chưa thanh toán cho đến khi bạn trả nợ. Số tiền hiển thị trên giao diện đã bao gồm lãi tích lũy chứ không chỉ riêng khoản vay ban đầu.",
       "Khi sức khỏe gần đến ngưỡng thanh lý, trả nợ là cách nhanh nhất để nâng cao mức độ an toàn. Nó trực tiếp giảm nợ mà không cần đợi thị trường phục hồi hoặc bổ sung thêm tài sản thế chấp trước.",
       "Khi sức khỏe vượt qua ranh giới thanh lý, hãy xem",
-      "Liquidation Framework"
+      "Khung thanh lý"
     ]
   },
   "getting-started/withdraw-collateral": {
@@ -696,7 +696,7 @@
   },
   "integrations/allowed-pools": {
     "meta": {
-      "title": "Allowed LP Pools",
+      "title": "Hồ bơi được phép LP",
       "description": "Danh sách cho phép do quản trị xác định và các tiêu chí đánh giá đối với LP pools mà Avana sẵn sàng thừa nhận làm tài sản thế chấp."
     },
     "toc": [
@@ -722,7 +722,7 @@
       }
     ],
     "strings": [
-      "Allowed LP Pools",
+      "Hồ bơi được phép LP",
       "Danh sách cho phép do quản trị xác định và các tiêu chí đánh giá đối với LP pools mà Avana sẵn sàng thừa nhận làm tài sản thế chấp.",
       "Tổng quan",
       "Tiêu chí đánh giá",
@@ -745,8 +745,8 @@
       "Danh sách cho phép do quản trị viên kiểm soát đối với các gia đình pools và LP Avana đã sẵn sàng chấp nhận làm tài sản thế chấp.",
       "Avana chỉ chấp nhận tài sản thế chấp LP từ pools đã được xem xét và phê duyệt. Danh sách cho phép tồn tại vì hỗ trợ LP không tự động cho mọi pool trên DEX. Giao thức cần có đủ thông tin để định giá vị thế, quản lý thanh lý và hạn chế rủi ro mà nó đang gặp phải.",
       "Phê duyệt nhóm hoạt động cùng với",
-      "Collateral Factors",
-      "Risk Framework",
+      "Yếu tố tài sản đảm bảo",
+      "Khung rủi ro",
       ". Danh sách cho phép quyết định liệu pool có thể vào hệ thống hay không; các yếu tố thế chấp quyết định giá trị có thể vay được mà mỗi vị thế được thừa nhận có thể đóng góp bao nhiêu.",
       "pool chỉ được đưa vào danh sách cho phép khi giao thức có thể trả lời các câu hỏi cơ bản giống nhau mọi lúc: nó có thể định giá vị thế không, có thể thoát vị thế không và có thể giám sát rủi ro trong sản xuất hay không.",
       "Phê duyệt nhóm không có nghĩa là một vị trí được đối xử tín dụng hào phóng. Sau khi pool được chấp nhận, mỗi vị thế LP vẫn có giá trị riêng, được chiết khấu theo cách xử lý rủi ro và sau đó được thêm vào khả năng vay của người dùng bên trong Borrow Spoke.",
@@ -853,8 +853,8 @@
       "DEXs Avana nào có thể hoạt động và những gì phải được xem xét trước khi hỗ trợ đi vào hoạt động.",
       "Avana hỗ trợ các thị trường tài sản thế chấp LP được quản lý trên AMM chẳng hạn như Uniswap, Balancer, Curve và Aerodrome khi thị trường được ra mắt. Hỗ trợ được phê duyệt pool bởi pool được phê duyệt, không được cấp tự động cho mọi pool trên DEX.",
       "Mỗi thị trường được hỗ trợ cần định giá tài sản đáng tin cậy, đủ độ sâu thanh khoản, lộ trình giải phóng xác định, giới hạn thị trường và cài đặt tài sản thế chấp phù hợp với loại pool. Xem",
-      "Allowed LP Pools",
-      "Price Oracles",
+      "Hồ bơi được phép LP",
+      "Đồng hồ báo giá",
       "AppKit cho phép DEXs, ví và ứng dụng danh mục đầu tư nhúng tín dụng Avana vào luồng người dùng hiện tại của họ thay vì gửi người dùng đến một ứng dụng cho vay riêng biệt.",
       "Xem",
       "hướng dẫn AppKit",
@@ -869,7 +869,7 @@
   },
   "integrations/price-oracles": {
     "meta": {
-      "title": "Price Oracles",
+      "title": "Đồng hồ báo giá",
       "description": "Cách Avana Oracle định giá tài sản thế chấp LP thông qua nguồn cấp dữ liệu bên ngoài, tái thiết vị trí xác định và chiết khấu giá trị có thể thu hồi."
     },
     "toc": [
@@ -903,7 +903,7 @@
       }
     ],
     "strings": [
-      "Price Oracles",
+      "Đồng hồ báo giá",
       "Cách Avana Oracle định giá tài sản thế chấp LP thông qua nguồn cấp dữ liệu bên ngoài, tái thiết vị trí xác định và chiết khấu giá trị có thể thu hồi.",
       "Tổng quan",
       "Giao diện Oracle",
@@ -985,7 +985,7 @@
       "Mức độ tiếp xúc bị giới hạn bởi dòng LP, độ sâu pool và độ phức tạp của tài sản thế chấp nên các thị trường mỏng hơn nhận được giới hạn vay chặt chẽ hơn.",
       "Cắt tóc phục hồi",
       "Oracle giảm giá trị lý thuyết LP đối với tổn thất tạm thời, trượt giá và các giả định thanh lý căng thẳng trước khi bất kỳ quyền vay nào được cấp.",
-      "Oracle Sentinel",
+      "Lính canh oracle",
       "Oracle Sentinel theo dõi cung cấp thông tin đầu vào về tình trạng và xác minh, đồng thời có thể kích hoạt hành vi dự phòng khi dữ liệu đã cũ, bị xâm phạm hoặc không nhất quán với các bước kiểm tra trạng thái vị trí.",
       "Các tham số Oracle có thể cấu hình",
       "Cài đặt oracle dành riêng cho nhóm được định cấu hình cho mỗi token thông qua",
@@ -1052,7 +1052,7 @@
       "Bộ định tuyến điều phối các cơ chế cụ thể của DEX - ​​gửi tiền, rút ​​tiền, yêu cầu phí và các bước hủy bỏ - vì vậy những hành động đó không cần phải phân tán trên mọi luồng chạm vào tài sản thế chấp LP.",
       "Bộ định tuyến không quyết định rủi ro. Các yếu tố tài sản thế chấp, kiểm tra tình trạng và khả năng đủ điều kiện thanh lý vẫn nằm trong Borrow Spoke, Hub, oracle stack và khung rủi ro. Xem",
       "Borrow Spoke",
-      "Liquidation Framework",
+      "Khung thanh lý",
       "Các DEX khác nhau thể hiện các phương thức vào, ra và thu phí khác nhau. Bộ định tuyến cung cấp Avana một lớp tích hợp cho các cơ chế đó để các nhà xây dựng không bị buộc phải triển khai từng DEX riêng biệt trong mỗi luồng.",
       "Mỗi dòng DEX được hỗ trợ đều có một bộ điều hợp biết cách yêu cầu phí, loại bỏ tính thanh khoản và hiển thị các hành động mà giao thức cần cho định dạng LP đó. Điều đó giúp tách biệt hành vi cụ thể DEX thay vì rò rỉ vào mọi đường dẫn mã mà người dùng phải đối mặt.",
       "Hỗ trợ bộ điều hợp chỉ quan trọng khi có hỗ trợ định giá và thanh lý cho DEX đó. Bản thân bộ chuyển đổi mới không tạo ra pool an toàn cho việc tiếp nhận tài sản thế chấp.",
@@ -1125,7 +1125,7 @@
       "Thành phần rủi ro cụ thể được xếp chồng lên trên các điều kiện vay cơ bản để phản ánh hồ sơ tài sản thế chấp LP đang được tài trợ.",
       "Hệ số dự trữ",
       "Phần kinh tế giao thức hoặc dòng lãi suất dành riêng cho hệ thống thay vì được chuyển hoàn toàn cho các nhà cung cấp thanh khoản.",
-      "Health Factor",
+      "health factor",
       "Tỷ lệ giữa giá trị tài sản thế chấp được điều chỉnh và số dư nợ bên trong Borrow Spoke. Khi nó giảm xuống quá thấp, vị thế sẽ đạt đến mức đủ điều kiện thanh lý.",
       "Quá trình trả nợ đối với vị thế được hỗ trợ LP không lành mạnh, giải quyết đủ tài sản thế chấp để khôi phục khả năng thanh toán và hoàn trả mọi giá trị còn lại sau khi thanh toán.",
       "Tiền thưởng thanh lý",
@@ -1218,13 +1218,13 @@
       "Avana sử dụng khung định giá oracle kép cho tài sản thế chấp LP. Nguồn cấp dữ liệu giá Chainlink cung cấp tham chiếu chính cho các tài sản cơ bản, trong khi AMM có nguồn gốc từ TWAP hoạt động như một lớp xác minh độc lập có nguồn gốc từ tính thanh khoản trên chuỗi.",
       "Khả năng vay đến từ giá trị được điều chỉnh theo rủi ro của các vị thế LP được phê duyệt bên trong Borrow Spoke. Avana xây dựng lại từng vị thế, định giá mức rủi ro cơ bản, áp dụng xử lý rủi ro ở cấp độ pool và sau đó áp dụng hệ số tài sản thế chấp của thị trường.",
       "Borrow Spoke báo cáo khả năng đó cho Hub để thực thi. Khi người dùng có nhiều vị thế được phê duyệt trong cùng một thị trường, Avana sẽ tổng hợp năng lực của họ trong khi vẫn định giá từng vị thế theo các giả định pool, phạm vi, tính thanh khoản và rủi ro của riêng họ.",
-      "Collateral Factors",
+      "Yếu tố tài sản đảm bảo",
       "về cách mỗi thị trường đặt ra các yếu tố tài sản thế chấp, ngưỡng thanh lý và tiền thưởng thanh lý cho mỗi tài sản.",
       "Avana theo dõi tình trạng tài khoản bên trong mỗi Borrow Spoke bằng cách sử dụng cùng một lộ trình định giá chi phối việc vay. Giá trị tài sản thế chấp đã điều chỉnh — đã được chiết khấu thông qua hoạt động tái thiết LP, giá cả, các yếu tố tài sản thế chấp và các giả định về giá trị có thể thu hồi — được so sánh với số dư nợ.",
       "Khi sức khỏe giảm xuống dưới ngưỡng thanh lý, Aave xử lý việc tính toán nợ và điểm vào thanh lý đối với tài sản thế chấp kho tiền ERC-20. Avana xử lý việc thanh toán LP đằng sau token vault đó: đốt tài sản thế chấp của vault, ánh xạ thanh lý trở lại vị trí LP thực và đi theo lộ trình thị trường để thu hồi, bán, đấu giá hoặc chuyển vị trí hỗ trợ.",
       "Các vị thế LP có thể tiếp tục tích lũy phí giao dịch trong khi chúng được sử dụng làm tài sản thế chấp. Avana có thể ghi nhận các khoản phí đó khi định giá và tùy thuộc vào kiểm tra tình trạng, cho phép người dùng yêu cầu chúng mà không cần thoát hoàn toàn vị trí gốc LP.",
       "Tài liệu liên quan:",
-      "Price Oracles",
+      "Đồng hồ báo giá",
       "Yêu cầu phí LP"
     ]
   },
@@ -1284,8 +1284,8 @@
       "Thông báo pháp lý quản lý việc sử dụng giao thức và tài liệu.",
       "Quan trọng:",
       "Vui lòng đọc kỹ tuyên bố từ chối trách nhiệm này trước khi sử dụng Avana. Bằng cách sử dụng giao thức, bạn thừa nhận rằng bạn đã đọc, hiểu và đồng ý bị ràng buộc bởi các điều khoản này. Để biết các điều khoản đầy đủ, vui lòng xem lại của chúng tôi",
-      "Terms of Service",
-      "Privacy Policy",
+      "Điều khoản dịch vụ",
+      "Chính sách quyền riêng tư",
       "Tuyên bố từ chối trách nhiệm này bổ sung và nên được đọc cùng với bản đầy đủ của chúng tôi.",
       ". Terms of Service cấu thành một thỏa thuận ràng buộc về mặt pháp lý giữa bạn và Avana liên quan đến việc bạn truy cập và sử dụng giao thức cũng như các dịch vụ liên quan.",
       "Từ trang chủ của chúng tôi:",
@@ -1322,10 +1322,10 @@
       "Để biết thông tin pháp lý đầy đủ, vui lòng xem các tài liệu sau:",
       "Thỏa thuận ràng buộc pháp lý đầy đủ chi phối việc bạn sử dụng Avana, bao gồm tính đủ điều kiện, các hoạt động bị cấm, sở hữu trí tuệ, giải quyết tranh chấp, v.v.",
       "Cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của bạn, bao gồm lưu giữ dữ liệu, cookie và các quyền của bạn theo GDPR, CCPA và các quy định về quyền riêng tư khác.",
-      "Restricted Territories",
+      "Lãnh thổ bị hạn chế",
       "Danh sách khu vực pháp lý hiện tại bị hạn chế truy cập các dịch vụ Avana.",
       "Cập nhật lần cuối:",
-      "January 2026",
+      "Tháng 1 năm 2026",
       "Tuyên bố từ chối trách nhiệm này có thể được cập nhật theo thời gian. Việc tiếp tục sử dụng giao thức có nghĩa là chấp nhận mọi thay đổi. Hãy tham khảo của chúng tôi"
     ]
   },
@@ -1368,9 +1368,9 @@
       "Ukraine (khu vực Crimea, Donetsk và Luhansk)",
       "Hoa Kỳ",
       "Đang chờ quy định rõ ràng",
-      "Restricted Territories",
+      "Lãnh thổ bị hạn chế",
       "Trang này được duy trì để phản ánh danh sách Khu vực pháp lý bị hạn chế mới nhất dành cho miền Avana.",
-      "Terms of Use",
+      "Điều khoản sử dụng",
       ", quyền truy cập vào trang web Avana và các dịch vụ liên quan của nó bị hạn chế đối với các cá nhân hoặc tổ chức ở một số khu vực pháp lý nhất định. Trang này cung cấp danh sách các lãnh thổ bị hạn chế hiện tại và giải thích các hạn chế truy cập hiện hành.",
       "Quan trọng:",
       "Mọi nỗ lực truy cập vào nền tảng Avana từ Khu vực pháp lý bị hạn chế sẽ dẫn đến việc chuyển hướng ngay lập tức sang Terms of Use và bị từ chối quyền truy cập.",
@@ -1394,9 +1394,9 @@
       "• Tọa lạc, tổ chức hoặc cư trú tại một quốc gia hoặc vùng lãnh thổ hoặc chính phủ của quốc gia đó là đối tượng của các biện pháp trừng phạt kinh tế",
       "Người dùng hoàn toàn chịu trách nhiệm đảm bảo việc sử dụng giao thức của họ tuân thủ tất cả các luật và quy định hiện hành trong phạm vi quyền hạn của họ.",
       "Để biết thông tin đầy đủ về quyền và nghĩa vụ của bạn khi sử dụng Avana, vui lòng xem lại:",
-      "Terms of Service",
+      "Điều khoản dịch vụ",
       "Hoàn thành các điều khoản và điều kiện chi phối việc bạn sử dụng dịch vụ Avana, bao gồm các yêu cầu về tính đủ điều kiện, các hoạt động bị cấm và giải quyết tranh chấp.",
-      "Privacy Policy",
+      "Chính sách quyền riêng tư",
       "Thông tin về cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của bạn khi bạn sử dụng dịch vụ của chúng tôi.",
       "Tuyên bố miễn trừ trách nhiệm pháp lý",
       "Tuyên bố từ chối trách nhiệm quan trọng liên quan đến rủi ro, bảo đảm và giới hạn trách nhiệm pháp lý."
@@ -1453,7 +1453,7 @@
       "Người đi vay có thể có nhiều vị thế đóng góp vào khả năng vay ở mức spoke, vì vậy trình tự thanh lý là vấn đề quan trọng.",
       "Các kịch bản đã hoạt động cho thấy cách áp dụng một khung thanh lý cho các hình dạng tài sản thế chấp LP khác nhau.",
       "Những ví dụ này cho thấy quá trình thanh lý diễn ra như thế nào trên các định dạng LP phổ biến trong",
-      "Liquidation Framework",
+      "Khung thanh lý",
       "Trong mọi trường hợp, công việc đều giống nhau: sử dụng nhãn hiệu tài sản thế chấp thận trọng, trả nợ vào lớp tín dụng, giải phóng LP thông qua đường dẫn được hỗ trợ và trả lại mọi giá trị còn lại còn lại sau chi phí thực hiện và phần thưởng thanh lý.",
       "Người đi vay đã gửi token LP có thể thay thế được từ một pool ổn định hoặc có trọng số đã được phê duyệt. Theo thời gian, thành phần pool và đầu vào oracle di chuyển đủ để tài khoản không còn đủ giá trị tài sản thế chấp đã điều chỉnh cho khoản nợ của nó nữa.",
       "• Nút thanh lý phát hiện sự thiếu hụt và tạo nguồn thanh khoản thực thi.",
@@ -1533,10 +1533,10 @@
       "Việc thanh lý bắt đầu khi hệ số sức khỏe của tài khoản giảm xuống dưới ngưỡng thanh lý. Aave xử lý việc hạch toán nợ và điểm vào thanh lý đối với tài sản thế chấp kho quỹ ERC-20. Avana xử lý việc thanh toán LP đằng sau token vault đó.",
       "Nợ được hoàn trả, tài sản thế chấp trong kho tiền bị tịch thu, token kho tiền phù hợp bị đốt cháy, vị thế thực LP được thanh toán và mọi giá trị còn lại sẽ được trả lại theo quy luật thị trường.",
       "Chính sách thanh lý tồn tại trên",
-      "Liquidation Framework",
+      "Khung thanh lý",
       "trang. Luồng này giả định mô hình giá trị có thể phục hồi trong",
-      "Price Oracles",
-      "Collateral Factors",
+      "Đồng hồ báo giá",
+      "Yếu tố tài sản đảm bảo",
       "Các họ LP khác nhau đều đang cố gắng đạt đến cùng một trạng thái cuối, nhưng họ không đạt được điều đó thông qua các lối thoát giống hệt nhau. Việc xử lý dựa trên bộ điều hợp cho phép mỗi dòng pool đi theo con đường thư giãn phù hợp với cơ chế riêng của nó.",
       "Các bot thanh lý phải lập chỉ mục các vị trí đang hoạt động, làm mới tình trạng trôi dạt nợ và các tài khoản giá từ cùng một ngăn xếp tiên tri được sử dụng bởi giao thức thay vì chỉ từ trạng thái giao ngay AMM thô.",
       "Việc kiểm tra khả năng sinh lời phải tính đến độ trượt, độ sâu của tuyến đường, chi phí cho vay nhanh và rủi ro thực hiện. Các bước gỡ bỏ lớn hoặc bất thường có thể được hưởng lợi từ các đường dẫn thực thi riêng tư để giảm mức độ tiếp xúc bất lợi MEV.",
@@ -1595,7 +1595,7 @@
   },
   "liquidation": {
     "meta": {
-      "title": "Liquidation Framework",
+      "title": "Khung thanh lý",
       "description": "Cách Avana xử lý việc thanh lý đối với tài sản thế chấp LP được bảo đảm bằng vault sau khi Aave kích hoạt điểm vào thanh lý."
     },
     "toc": [
@@ -1633,7 +1633,7 @@
       }
     ],
     "strings": [
-      "Liquidation Framework",
+      "Khung thanh lý",
       "Cách Avana xử lý việc thanh lý đối với tài sản thế chấp LP được bảo đảm bằng vault sau khi Aave kích hoạt điểm vào thanh lý.",
       "Tổng quan",
       "Ba lớp",
@@ -1756,7 +1756,7 @@
   },
   "safety/bug-bounty": {
     "meta": {
-      "title": "Bug Bounty",
+      "title": "Tiền thưởng lỗi phần mềm",
       "description": "Avana Bug Bounty phạm vi tiết lộ có trách nhiệm, LP bề mặt rủi ro tài sản thế chấp và triết lý về mức độ nghiêm trọng của tác động kinh tế."
     },
     "toc": [
@@ -1774,7 +1774,7 @@
       }
     ],
     "strings": [
-      "Bug Bounty",
+      "Tiền thưởng lỗi phần mềm",
       "Avana Bug Bounty phạm vi tiết lộ có trách nhiệm, LP bề mặt rủi ro tài sản thế chấp và triết lý về mức độ nghiêm trọng của tác động kinh tế.",
       "Tổng quan",
       "Kiến trúc phạm vi và hệ thống",
@@ -1884,7 +1884,7 @@
       "Bề mặt hợp đồng cốt lõi",
       "Ranh giới tin cậy",
       "Sẵn sàng kiểm toán",
-      "Borrow Spoke logic",
+      "Logic Borrow Spoke",
       "Xử lý việc tiếp nhận tài sản thế chấp, kế toán người dùng và vòng đời bên spoke cho các khoản vay được hỗ trợ bằng LP.",
       "Hub tích hợp",
       "Kết nối khả năng vay ở cấp độ spoke với các hạn chế về tín dụng và thanh khoản chung trong lớp Hub.",
@@ -1905,7 +1905,7 @@
       "Kiểm tra các cú sốc thị trường, các trường hợp cạnh oracle và lỗi định tuyến thanh lý, không chỉ hành vi hợp đồng cấp đơn vị.",
       "Các kênh đánh giá bên ngoài",
       "Kiểm toán chính thức và",
-      "Bug Bounty",
+      "Tiền thưởng lỗi phần mềm",
       "cả hai chương trình đều phải hoạt động. Cái này không thay thế cái kia.",
       "• Kế toán onchain và giải quyết thanh lý phải mang tính quyết định một khi được kích hoạt.",
       "• Các nguồn Oracle, bộ điều hợp DEX và cơ sở hạ tầng thanh lý hoạt động là những phần phụ thuộc bên ngoài và cần được giám sát như vậy.",
@@ -2084,7 +2084,7 @@
       "Hành động được thực hiện",
       "Thời lượng dự định",
       "Đường dẫn trở lại hoạt động bình thường",
-      "Risk Framework",
+      "Khung rủi ro",
       "Cách Avana đề xuất, đánh giá và thực hiện các thay đổi rủi ro trên Hub và LP Tài sản thế chấp Spoke.",
       "Avana Risk Framework xác định cách đề xuất, kiểm tra và thực thi các thay đổi tham số trên Hub và LP Tài sản thế chấp Spoke. Nó bao gồm các biện pháp kiểm soát được sử dụng khi giao thức điều chỉnh giới hạn cung và vay, cài đặt LT/LTV, đầu vào lãi suất, trạng thái thị trường và các thông số khác phụ thuộc vào giá cả, mức sử dụng, độ sâu pool, sự tập trung, biến động, hành vi chốt, bộ ngắt mạch, tình trạng vị thế và trạng thái liên quan.",
       "Tài sản thế chấp LP không phải là một loại tài sản đồng nhất. LP ổn định, tài sản tương quan LPs, pools có trọng số, thanh khoản tập trung và các thiết kế AMM khác, mỗi thiết kế có thể có đường dẫn định giá spoke- cụ thể, đường dẫn thanh lý và chế độ thất bại của riêng chúng. Khung này tồn tại để những khác biệt đó được phản ánh trong quá trình cập nhật thay vì bị ẩn sau một cài đặt rủi ro chung duy nhất.",

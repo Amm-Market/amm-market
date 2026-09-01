@@ -53,7 +53,7 @@ export default function HeaderMobileNavigation() {
 
       <button
         type="button"
-        className="inline-flex h-11 w-11 items-center justify-center text-[#01AACF] transition hover:text-[#01AACF]/80"
+        className="inline-flex h-11 w-11 items-center justify-center text-type-accent transition hover:text-type-accent/80"
         aria-label={mobileMenuOpen ? t("a11y.closeMenu") : t("a11y.openMenu")}
         aria-expanded={mobileMenuOpen}
         aria-controls="mobile-site-nav"

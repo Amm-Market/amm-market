@@ -98,7 +98,7 @@ function LogoPill({ ticker }: { ticker: string }) {
     return (
       <span
         aria-hidden="true"
-        className="inline-flex h-[2.25rem] w-[2.25rem] shrink-0 items-center justify-center rounded-full bg-[#e6eefc] text-[0.6rem] font-semibold text-[#1f2937]"
+        className="inline-flex h-[2.25rem] w-[2.25rem] shrink-0 items-center justify-center rounded-full bg-muted text-[0.6rem] font-semibold text-foreground"
       >
         {initials}
       </span>
@@ -120,13 +120,13 @@ function LogoPill({ ticker }: { ticker: string }) {
 
 function MarketChip({ item }: { item: MarketItem }) {
   return (
-    <article className="flex h-[3.45rem] w-[8.6rem] shrink-0 items-center gap-2.5 rounded-full border border-[#d8e1ef] bg-white px-2.5 shadow-[0_3px_8px_rgba(15,23,42,0.02)] sm:w-[8.95rem]">
+    <article className="flex h-[3.45rem] w-[8.6rem] shrink-0 items-center gap-2.5 rounded-full border border-border bg-card px-2.5 shadow-[0_3px_8px_rgba(15,23,42,0.02)] sm:w-[8.95rem] dark:shadow-[0_3px_8px_rgba(0,0,0,0.25)]">
       <LogoPill ticker={item.ticker} />
       <div className="min-w-0">
-        <div className="truncate text-[0.8rem] font-semibold leading-tight tracking-[-0.02em] text-slate-800">
+        <div className="truncate text-[0.8rem] font-semibold leading-tight tracking-[-0.02em] text-foreground">
           {item.name}
         </div>
-        <div className="mt-0.5 text-[0.62rem] font-medium uppercase tracking-[0.1em] text-slate-500">
+        <div className="mt-0.5 text-[0.62rem] font-medium uppercase tracking-[0.1em] text-type-tertiary">
           {item.ticker}
         </div>
       </div>
@@ -147,8 +147,8 @@ function MarqueeRow({
 
   return (
     <div className="relative overflow-hidden py-1">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-white to-transparent sm:w-16" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-white to-transparent sm:w-16" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-background to-transparent sm:w-16" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-background to-transparent sm:w-16" />
       <div className={`flex w-max items-center gap-2.5 ${trackClass}`} style={{ animationDuration: `${duration}s` }}>
         {items.map((item, index) => (
           <MarketChip key={`${item.name}-${item.ticker}-${index}-a`} item={item} />
@@ -205,7 +205,7 @@ export default function TradeMarketShowcase() {
                       "inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-semibold transition-colors",
                       active
                         ? "bg-[#01AACF] text-white hover:bg-[#00a0c2]"
-                        : "border border-gray-300 bg-white text-gray-900 hover:bg-gray-100",
+                        : "border border-border bg-card text-foreground hover:bg-muted",
                     ].join(" ")}
                     aria-pressed={active}
                   >

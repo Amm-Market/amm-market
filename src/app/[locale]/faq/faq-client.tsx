@@ -110,7 +110,7 @@ function FaqAccordionList({
     <Accordion type="single" collapsible orientation="vertical" className="w-full">
       {items.map((faq) => (
         <AccordionItem key={faq.id} value={faq.id} className="border-b border-gray-200 py-6 last:border-b-0">
-          <AccordionTrigger className="group gap-4 p-0 text-start text-[1.08rem] font-medium leading-[1.45] tracking-[-0.025em] text-gray-900 hover:underline sm:text-[1.16rem] lg:text-[1.24rem] xl:font-normal [&>svg.size-4]:hidden">
+          <AccordionTrigger className="type-accordion-question group gap-4 p-0 text-start text-foreground hover:underline [&>svg.size-4]:hidden">
             <div className="flex flex-col text-start">
               <span>{faq.q}</span>
               {showCategory && faq.category ? (
@@ -121,7 +121,7 @@ function FaqAccordionList({
             </div>
             <FaqToggleIcons />
           </AccordionTrigger>
-          <AccordionContent className="whitespace-pre-line pt-5 text-[0.98rem] leading-[1.75] text-gray-600 sm:text-[1.02rem]">
+          <AccordionContent className="type-accordion-answer whitespace-pre-line pt-5 text-type-secondary">
             {faq.a}
           </AccordionContent>
         </AccordionItem>
@@ -196,7 +196,7 @@ export function FaqView({
   return (
     <>
       <div className="mb-10 py-8 text-center lg:mb-8 lg:py-14">
-        <h1 className="mb-8 text-[clamp(3rem,7vw,5.25rem)] font-semibold not-italic tracking-[-0.08em] text-black">
+        <h1 className="type-index-title mb-8 text-center text-foreground">
           {t("heading")}
         </h1>
 

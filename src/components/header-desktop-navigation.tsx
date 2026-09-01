@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl"
 import { useEffect, useRef, useState } from "react"
 import { desktopMenuButtons, type DesktopMenuId } from "@/components/header-nav-data"
 import { Link, usePathname } from "@/i18n/navigation"
-import { siteRoutes } from "@/lib/site"
+import { AAVE_ARFC_LABEL, siteRoutes } from "@/lib/site"
 
 const DeferredHeaderDesktopMenuPanel = dynamic(() => import("@/components/header-desktop-menu-panel"), { ssr: false })
 
@@ -89,7 +89,7 @@ export default function HeaderDesktopNavigation() {
               onMouseEnter={() => openDesktopMenu(menu.id)}
               onFocus={() => openDesktopMenu(menu.id)}
               onClick={() => openDesktopMenu(menu.id)}
-              className={`site-header-nav-link group relative inline-flex items-center gap-1 px-0 py-1 font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out xl:gap-1.5 ${isHighlighted ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`}
+              className={`site-header-nav-link group relative inline-flex items-center gap-1 px-0 py-1 font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out xl:gap-1.5 ${isHighlighted ? "text-type-accent" : "text-foreground/62 hover:text-foreground/94"}`}
             >
               <span>{menuLabels[menu.id]}</span>
               <ChevronDown
@@ -107,7 +107,7 @@ export default function HeaderDesktopNavigation() {
           onFocus={closeDesktopMenu}
           aria-label={t("nav.helpCenter")}
           title={t("nav.helpCenter")}
-          className={`site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 font-[560] tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${pathname === siteRoutes.faq ? "text-[#01AACF]" : "text-black/62 hover:text-[#01AACF]"}`}
+          className={`site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${pathname === siteRoutes.faq ? "text-type-accent" : "text-foreground/62 hover:text-type-accent"}`}
         >
           <span className="hidden xl:inline">{t("nav.helpCenter")}</span>
           <BookOpenText
@@ -122,11 +122,11 @@ export default function HeaderDesktopNavigation() {
           rel="noreferrer"
           onMouseEnter={closeDesktopMenu}
           onFocus={closeDesktopMenu}
-          aria-label={t("nav.aaveArfc")}
-          title={t("nav.aaveArfc")}
-          className="site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 font-[560] tracking-[-0.02em] text-black/62 transition-[color,opacity] duration-200 ease-out hover:text-[#01AACF]"
+          aria-label={AAVE_ARFC_LABEL}
+          title={AAVE_ARFC_LABEL}
+          className="site-header-nav-link group relative inline-flex items-center gap-1.5 px-0 py-1 font-medium tracking-[-0.02em] text-foreground/62 transition-[color,opacity] duration-200 ease-out hover:text-type-accent"
         >
-          <span className="hidden xl:inline">{t("nav.aaveArfc")}</span>
+          <span className="hidden xl:inline">{AAVE_ARFC_LABEL}</span>
           <ArrowUpRight
             aria-hidden="true"
             className="h-[17px] w-[17px] shrink-0 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 xl:h-[15px] xl:w-[15px]"

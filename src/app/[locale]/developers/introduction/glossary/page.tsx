@@ -184,15 +184,15 @@ export default async function GlossaryPage() {
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader title="Glossary" />
 
-        <section id="core-concepts" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-6 pb-2 border-b border-gray-200">
+        <section id="core-concepts" className="mb-10">
+          <h2 className="type-doc-section-title mb-6 pb-2 border-b border-gray-200">
             Core Concepts
           </h2>
           <dl className="space-y-4">
             {glossaryTerms.coreComponents.map((item) => (
               <div key={item.term} className="group">
-                <dt className="font-semibold text-gray-900 mb-1">{item.term}</dt>
-                <dd className="text-gray-600 text-sm leading-relaxed pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
+                <dt className="type-doc-subsection-title mb-1">{item.term}</dt>
+                <dd className="type-doc-body pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
                   {item.definition}
                 </dd>
               </div>
@@ -200,15 +200,15 @@ export default async function GlossaryPage() {
           </dl>
         </section>
 
-        <section id="protocol-components" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-6 pb-2 border-b border-gray-200">
+        <section id="protocol-components" className="mb-10">
+          <h2 className="type-doc-section-title mb-6 pb-2 border-b border-gray-200">
             LP & Collateral
           </h2>
           <dl className="space-y-4">
             {glossaryTerms.lpAndCollateral.map((item) => (
               <div key={item.term} className="group">
-                <dt className="font-semibold text-gray-900 mb-1">{item.term}</dt>
-                <dd className="text-gray-600 text-sm leading-relaxed pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
+                <dt className="type-doc-subsection-title mb-1">{item.term}</dt>
+                <dd className="type-doc-body pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
                   {item.definition}
                 </dd>
               </div>
@@ -216,39 +216,39 @@ export default async function GlossaryPage() {
           </dl>
         </section>
 
-        <section id="financial-terms" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-6 pb-2 border-b border-gray-200">
+        <section id="financial-terms" className="mb-10">
+          <h2 className="type-doc-section-title mb-6 pb-2 border-b border-gray-200">
             Debt & Interest
           </h2>
           <dl className="space-y-4">
             {glossaryTerms.debtAndInterest.map((item) => (
               <div key={item.term} className="group">
-                <dt className="font-semibold text-gray-900 mb-1">{item.term}</dt>
-                <dd className="text-gray-600 text-sm leading-relaxed pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
+                <dt className="type-doc-subsection-title mb-1">{item.term}</dt>
+                <dd className="type-doc-body pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
                   {item.definition}
                 </dd>
               </div>
             ))}
           </dl>
 
-          <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Liquidation</h3>
+          <h3 className="text-xl type-doc-subsection-title mt-8 mb-4">Liquidation</h3>
           <dl className="space-y-4">
             {glossaryTerms.liquidationTerms.map((item) => (
               <div key={item.term} className="group">
-                <dt className="font-semibold text-gray-900 mb-1">{item.term}</dt>
-                <dd className="text-gray-600 text-sm leading-relaxed pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
+                <dt className="type-doc-subsection-title mb-1">{item.term}</dt>
+                <dd className="type-doc-body pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
                   {item.definition}
                 </dd>
               </div>
             ))}
           </dl>
 
-          <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Oracle & Transform</h3>
+          <h3 className="text-xl type-doc-subsection-title mt-8 mb-4">Oracle & Transform</h3>
           <dl className="space-y-4">
             {glossaryTerms.oracleAndTransform.map((item) => (
               <div key={item.term} className="group">
-                <dt className="font-semibold text-gray-900 mb-1">{item.term}</dt>
-                <dd className="text-gray-600 text-sm leading-relaxed pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
+                <dt className="type-doc-subsection-title mb-1">{item.term}</dt>
+                <dd className="type-doc-body pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
                   {item.definition}
                 </dd>
               </div>
@@ -256,15 +256,15 @@ export default async function GlossaryPage() {
           </dl>
         </section>
 
-        <section id="risk-security" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-6 pb-2 border-b border-gray-200">
+        <section id="risk-security" className="mb-10">
+          <h2 className="type-doc-section-title mb-6 pb-2 border-b border-gray-200">
             Risk & Security
           </h2>
           <dl className="space-y-4">
             {glossaryTerms.riskMitigation.map((item) => (
               <div key={item.term} className="group">
-                <dt className="font-semibold text-gray-900 mb-1">{item.term}</dt>
-                <dd className="text-gray-600 text-sm leading-relaxed pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
+                <dt className="type-doc-subsection-title mb-1">{item.term}</dt>
+                <dd className="type-doc-body pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
                   {item.definition}
                 </dd>
               </div>
@@ -272,15 +272,15 @@ export default async function GlossaryPage() {
           </dl>
         </section>
 
-        <section id="metrics" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-6 pb-2 border-b border-gray-200">
+        <section id="metrics" className="mb-10">
+          <h2 className="type-doc-section-title mb-6 pb-2 border-b border-gray-200">
             Metrics
           </h2>
           <dl className="space-y-4">
             {glossaryTerms.metrics.map((item) => (
               <div key={item.term} className="group">
-                <dt className="font-semibold text-gray-900 mb-1">{item.term}</dt>
-                <dd className="text-gray-600 text-sm leading-relaxed pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
+                <dt className="type-doc-subsection-title mb-1">{item.term}</dt>
+                <dd className="type-doc-body pl-4 border-l-2 border-gray-200 group-hover:border-blue-400 transition-colors">
                   {item.definition}
                 </dd>
               </div>
@@ -288,12 +288,12 @@ export default async function GlossaryPage() {
           </dl>
         </section>
 
-        <section id="disclaimers" className="mb-12">
-          <h2 className="type-section-title text-gray-900 mb-6 pb-2 border-b border-gray-200">
+        <section id="disclaimers" className="mb-10">
+          <h2 className="type-doc-section-title mb-6 pb-2 border-b border-gray-200">
             Disclaimers
           </h2>
-          <div className="border-l-4 border-amber-400 pl-4">
-            <ul className="text-gray-600 text-sm space-y-2">
+          <div className="type-doc-callout type-doc-callout-warning">
+            <ul className="type-doc-body space-y-2">
               <li><strong>No Investment Advice:</strong> Avana is a software protocol. This documentation does not constitute investment advice.</li>
               <li><strong>Risk of Loss:</strong> Users can lose funds through smart contract vulnerabilities, market volatility, liquidation, or oracle manipulation.</li>
               <li><strong>Regulatory Status:</strong> The regulatory status of Avana and its tokens (if any) is not guaranteed and may vary by jurisdiction.</li>

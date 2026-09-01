@@ -9,7 +9,9 @@
       "closeMenu": "Fechar menu",
       "language": "Idioma: {language}",
       "logo": "logotipo do {site}",
-      "helpfulLinks": "Links úteis"
+      "helpfulLinks": "Links úteis",
+      "helpCenter": "Central de ajuda: enviar e-mail ao suporte",
+      "themeToggle": "Preferência de tema"
     },
     "nav": {
       "products": "Produtos",
@@ -64,7 +66,7 @@
       "explore": "Explorar",
       "resources": "Recursos",
       "docs": "Documentos",
-      "social": "Social",
+      "social": "Redes sociais",
       "twitter": "Twitter",
       "github": "GitHub",
       "telegram": "Telegrama",
@@ -76,7 +78,7 @@
     "notFound": {
       "title": "Esta página não está disponível.",
       "body": "O endereço pode estar errado ou a página pode ter sido movida.",
-      "home": "Go to homepage",
+      "home": "Ir para a página inicial",
       "faq": "Perguntas frequentes"
     },
     "sandboxNotice": "Sandbox dados exibidos apenas para visualização. APYs, preços e retornos são ilustrativos e podem diferir das condições reais de mercado.",
@@ -87,7 +89,7 @@
       "shareOnLinkedIn": "Compartilhar no LinkedIn",
       "previousPost": "Postagem anterior",
       "nextPost": "Próximo post",
-      "onThisPage": "On this page"
+      "onThisPage": "Nesta página"
     },
     "docs": {
       "previous": "Anterior",
@@ -99,7 +101,8 @@
         "liquidation": "Estrutura de Liquidação",
         "integrations": "Integrações Suportadas",
         "safety": "Mecanismos de Segurança",
-        "legal": "Jurídico e Conformidade"
+        "legal": "Jurídico e Conformidade",
+        "copilot": "Perguntar à IA"
       },
       "items": {
         "overview": "Visão geral",
@@ -131,7 +134,11 @@
         "bugBounty": "Programa de Recompensa por Bugs",
         "insuranceFunds": "Fundos de Seguro",
         "securityDisclosures": "Divulgações de Segurança",
-        "legalDisclaimer": "Aviso Legal"
+        "legalDisclaimer": "Aviso Legal",
+        "aiIntroduction": "Introdução à IA",
+        "copilotProtocols": "Protocolos suportados",
+        "copilotPrompts": "Exemplos de prompts",
+        "copilotWorkflow": "Fluxo do agente"
       }
     },
     "faqUi": {
@@ -156,6 +163,25 @@
     "newsroom": {
       "latestFrom": "Último de Avana",
       "readNewsroom": "Ler redação"
+    },
+    "theme": {
+      "lightMode": "Modo claro",
+      "darkMode": "Modo escuro",
+      "systemMode": "Sistema",
+      "tapToChange": "Toque para alterar"
+    },
+    "exportMenu": {
+      "copyPage": "Copiar página",
+      "copied": "Copiado",
+      "copyPageMarkdown": "Copiar página como Markdown",
+      "copyPageLink": "Copiar link da página",
+      "copyPageLinkDescription": "Copiar o URL desta página para a área de transferência",
+      "openInChatGPT": "Abrir no ChatGPT",
+      "openInClaude": "Abrir no Claude",
+      "openInGrok": "Abrir no Grok",
+      "openInPerplexity": "Abrir no Perplexity",
+      "askAboutPage": "Fazer perguntas sobre esta página",
+      "reviewPrompt": "Revise o conteúdo desta página da Avana e responda às perguntas."
     }
   },
   "meta": {
@@ -222,12 +248,12 @@
       "subtitle": "Continue ganhando taxas de negociação enquanto desbloqueia liquidez das posições Uniswap, Curve e Balancer.",
       "subtitleMobileLines": [
         "Acesse até 80% do valor do seu Pool de Liquidez",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "a 5,5% APR sem retirar liquidez ou",
+        "abrir mão das taxas de trading."
       ],
       "subtitleDesktopLines": [
         "Acesse até 80% do valor do seu Pool de Liquidez a 5,5% APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "a 5,5% APR sem retirar liquidez ou abrir mão das taxas de trading."
       ],
       "primaryCta": "Tente Sandbox",
       "secondaryCta": "Ler documentos"

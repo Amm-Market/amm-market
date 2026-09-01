@@ -44,7 +44,7 @@ export default async function PositionSafetySection() {
                     <circle cx="50" cy="50" r="38" fill="none" stroke="#10b981" strokeWidth="7" strokeLinecap="round" strokeDasharray="238.76" strokeDashoffset="35.81" />
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <div className="h-[1.1rem] overflow-hidden"><div className="panel-ticker-v-fast">{["1.82","1.85","1.80","1.82"].map((v,i) => (<div key={i} className="flex h-[1.1rem] items-center justify-center"><span className="text-[1rem] font-bold tabular-nums text-emerald-600">{v}</span></div>))}</div></div>
+                    <div className="h-[1.1rem] overflow-hidden"><div className="panel-ticker-v-fast">{["1.82","1.85","1.80","1.82"].map((v,i) => (<div key={i} className="flex h-[1.1rem] items-center justify-center"><span className="text-[1rem] font-semibold tabular-nums text-emerald-600">{v}</span></div>))}</div></div>
                   </div>
                 </div>
                 <div className="min-w-0 flex-1 space-y-2">
@@ -85,7 +85,7 @@ export default async function PositionSafetySection() {
                     <circle cx="50" cy="50" r="38" fill="none" stroke="#f59e0b" strokeWidth="7" strokeLinecap="round" strokeDasharray="238.76" strokeDashoffset="95.5" />
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <div className="h-[1.1rem] overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: "5s" }}>{["1.22","1.18","1.25","1.22"].map((v,i) => (<div key={i} className="flex h-[1.1rem] items-center justify-center"><span className="text-[1rem] font-bold tabular-nums text-amber-500">{v}</span></div>))}</div></div>
+                    <div className="h-[1.1rem] overflow-hidden"><div className="panel-ticker-v-fast" style={{ animationDuration: "5s" }}>{["1.22","1.18","1.25","1.22"].map((v,i) => (<div key={i} className="flex h-[1.1rem] items-center justify-center"><span className="text-[1rem] font-semibold tabular-nums text-amber-500">{v}</span></div>))}</div></div>
                   </div>
                 </div>
                 <div className="min-w-0 flex-1">
@@ -146,7 +146,7 @@ export default async function PositionSafetySection() {
                   ].map((s, i) => (
                     <div key={s.step} className="flex flex-1 flex-col items-center">
                       <div className={`flex w-full items-center justify-center gap-1 rounded-lg border px-1 py-1.5 ${s.c}`}>
-                        <span className="text-[8px] font-bold">{s.step}</span>
+                        <span className="text-[8px] font-semibold">{s.step}</span>
                         <span className="text-[8px] font-medium">{s.l}</span>
                       </div>
                       {i < 2 && <svg width="12" height="8" viewBox="0 0 12 8" className="mt-0.5 text-gray-300"><path d="M6 1v5M3 4l3 3 3-3" stroke="currentColor" strokeWidth="1" strokeLinecap="round" fill="none" /></svg>}

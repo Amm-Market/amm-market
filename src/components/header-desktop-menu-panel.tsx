@@ -146,14 +146,14 @@ export default function HeaderDesktopMenuPanel({
       }`}
       aria-hidden={!isOpen}
     >
-      <div className="border-b border-[#01AACF] bg-white shadow-[0_24px_72px_rgba(0,0,0,0.04)]">
-        <div className="w-full bg-white px-4 py-5 sm:px-6 md:px-5 md:py-5 lg:px-6 xl:px-8">
+      <div className="border-b border-border bg-background shadow-[0_24px_72px_rgba(0,0,0,0.04)] dark:shadow-[0_24px_72px_rgba(0,0,0,0.35)]">
+        <div className="w-full bg-background px-4 py-5 sm:px-6 md:px-5 md:py-5 lg:px-6 xl:px-8">
           <div
             key={`${menu.id}-${animationCycle}`}
             className="grid gap-6 lg:min-h-[14.75rem] lg:grid-cols-[minmax(0,19rem)_minmax(15rem,18rem)] lg:gap-2.5 xl:grid-cols-[minmax(0,20rem)_minmax(15rem,18rem)] xl:gap-3"
           >
             <div className="space-y-2.5">
-              <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-[#01AACF]">
+              <p className="type-meta-label text-type-tertiary">
                 {toSentenceCase(menu.eyebrow)}
               </p>
               <div className="space-y-1">
@@ -163,12 +163,12 @@ export default function HeaderDesktopMenuPanel({
                     href={item.href}
                     prefetch={false}
                     suppressHydrationWarning
-                    className={`group flex items-start gap-4 py-1.5 text-start text-black transition-[opacity,color,filter] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-black/74 ${
+                    className={`group flex items-start gap-4 py-1.5 text-start text-foreground transition-[opacity,color,filter] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-foreground/74 ${
                       isOpen ? "opacity-100 blur-0" : "opacity-[0.18] blur-[0.2px]"
                     }`}
                     style={{ transitionDelay: `${180 + index * 55}ms` }}
                   >
-                    <span className="text-[clamp(1.5rem,1.95vw,2.45rem)] font-[430] leading-[1.04] tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+                    <span className="text-[clamp(1.5rem,1.95vw,2.45rem)] font-normal leading-[1.04] tracking-[-0.03em] transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
                       {item.label}
                     </span>
                   </Link>
@@ -183,7 +183,7 @@ export default function HeaderDesktopMenuPanel({
               style={{ transitionDelay: "280ms" }}
             >
               {menu.supportingTitle ? (
-                <p className="text-[0.78rem] font-medium tracking-[-0.02em] text-[#01AACF]">{menu.supportingTitle}</p>
+                <p className="type-meta-label text-type-tertiary">{menu.supportingTitle}</p>
               ) : null}
               <div className="space-y-3">
                 {menu.supportingItems.map((item, index) => (
@@ -196,15 +196,15 @@ export default function HeaderDesktopMenuPanel({
                     className="group block min-h-[2.8rem] text-start"
                   >
                     <div className="flex items-start gap-[0.6875rem]">
-                      <span aria-hidden="true" className="pt-1 text-[0.56rem] font-medium tracking-[0.16em] text-black/24">
+                      <span aria-hidden="true" className="pt-1 text-[0.56rem] font-medium tracking-[0.16em] text-foreground/24">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <div>
-                        <p className="line-clamp-2 text-[0.78rem] font-medium leading-[1.24] tracking-[-0.02em] text-black/76 transition-colors duration-200 group-hover:text-black">
+                        <p className="line-clamp-2 text-[0.78rem] font-medium leading-[1.24] tracking-[-0.02em] text-foreground/76 transition-colors duration-200 group-hover:text-foreground">
                           {item.label}
                         </p>
                         {item.description ? (
-                          <p className="mt-1 line-clamp-2 max-w-[24rem] text-[0.68rem] leading-[1.42] tracking-[-0.01em] text-black/46 transition-colors duration-200 group-hover:text-black/58">
+                          <p className="mt-1 line-clamp-2 max-w-[24rem] text-[0.68rem] leading-[1.42] tracking-[-0.01em] text-foreground/46 transition-colors duration-200 group-hover:text-foreground/58">
                             {item.description}
                           </p>
                         ) : null}

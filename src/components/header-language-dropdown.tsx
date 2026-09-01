@@ -70,10 +70,10 @@ export default function HeaderLanguageDropdown({
         onClick={() => setIsOpen((current) => !current)}
         aria-label={t("a11y.language", { language: selected.label })}
         disabled={isPending}
-        className={`site-header-nav-link group relative inline-flex items-center justify-center px-0 py-1 font-[560] tracking-[-0.035em] transition-[color,opacity] duration-200 ease-out ${
+        className={`site-header-nav-link group relative inline-flex items-center justify-center px-0 py-1 font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${
           isMobile
-            ? "h-10 gap-2 text-[1rem] text-[#01AACF]"
-            : `h-9 gap-1.5 xl:gap-2 ${isOpen ? "text-[#01AACF]" : "text-black/62 hover:text-black/94"}`
+            ? "h-10 gap-2 text-[1rem] text-type-accent"
+            : `h-9 gap-1.5 xl:gap-2 ${isOpen ? "text-type-accent" : "text-foreground/62 hover:text-foreground/94"}`
         }`}
       >
         <Globe2 aria-hidden="true" className="h-[19px] w-[19px] shrink-0" strokeWidth={2.25} />
@@ -90,7 +90,7 @@ export default function HeaderLanguageDropdown({
       {isOpen ? (
         <div role="menu" className={`absolute z-50 pt-2 ${isMobile ? "end-[-3.25rem]" : "end-0"}`}>
           <div
-            className={`max-h-[28rem] overflow-y-auto rounded-[16px] border border-black/10 bg-white py-3 shadow-[0_18px_50px_rgba(15,23,42,0.12)] ${
+            className={`max-h-[28rem] overflow-y-auto rounded-[16px] border border-border bg-popover py-3 shadow-[0_18px_50px_rgba(15,23,42,0.12)] dark:shadow-[0_18px_50px_rgba(0,0,0,0.45)] ${
               isMobile ? "w-[20rem]" : "w-[23rem]"
             }`}
           >
@@ -103,8 +103,8 @@ export default function HeaderLanguageDropdown({
                   type="button"
                   role="menuitem"
                   onClick={() => selectLocale(language.code)}
-                  className={`flex h-12 w-full items-center justify-between gap-4 px-5 text-start text-[1rem] font-[520] tracking-[-0.03em] transition-colors duration-150 ease-out hover:bg-black/[0.045] ${
-                    isSelected ? "bg-black/[0.025] text-[#01AACF]" : "text-[#303236]"
+                  className={`flex h-12 w-full items-center justify-between gap-4 px-5 text-start text-[1rem] font-medium tracking-[-0.03em] transition-colors duration-150 ease-out hover:bg-foreground/5 ${
+                    isSelected ? "bg-foreground/[0.04] text-type-accent" : "text-foreground/80"
                   }`}
                 >
                   <span>{language.label}</span>

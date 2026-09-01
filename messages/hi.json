@@ -9,7 +9,9 @@
       "closeMenu": "मेनू बंद करें",
       "language": "भाषा: {language}",
       "logo": "{site} लोगो",
-      "helpfulLinks": "सहायक लिंक"
+      "helpfulLinks": "सहायक लिंक",
+      "helpCenter": "सहायता केंद्र: सपोर्ट को ईमेल करें",
+      "themeToggle": "थीम वरीयता"
     },
     "nav": {
       "products": "उत्पाद",
@@ -76,7 +78,7 @@
     "notFound": {
       "title": "यह पृष्ठ उपलब्ध नहीं है।",
       "body": "पता गलत हो सकता है या पेज स्थानांतरित हो गया हो सकता है।",
-      "home": "Go to homepage",
+      "home": "होमपेज पर जाएं",
       "faq": "अक्सर पूछे जाने वाले प्रश्न"
     },
     "sandboxNotice": "Sandbox डेटा केवल पूर्वावलोकन के लिए दिखाया गया है। APYs, कीमतें, और रिटर्न केवल उदाहरणात्मक हैं और वास्तविक बाजार की परिस्थितियों से भिन्न हो सकते हैं।",
@@ -87,7 +89,7 @@
       "shareOnLinkedIn": "LinkedIn पर साझा करें",
       "previousPost": "पिछला पोस्ट",
       "nextPost": "अगला पोस्ट",
-      "onThisPage": "On this page"
+      "onThisPage": "इस पृष्ठ पर"
     },
     "docs": {
       "previous": "पिछला",
@@ -99,7 +101,8 @@
         "liquidation": "विलय ढांचा",
         "integrations": "सपोर्टेड इंटिग्रेशन",
         "safety": "सुरक्षा तंत्र",
-        "legal": "कानूनी और अनुपालन"
+        "legal": "कानूनी और अनुपालन",
+        "copilot": "AI से पूछें"
       },
       "items": {
         "overview": "सारांश",
@@ -131,7 +134,11 @@
         "bugBounty": "बग बाउंटी",
         "insuranceFunds": "बीमा कोष",
         "securityDisclosures": "सुरक्षा प्रकटीकरण",
-        "legalDisclaimer": "कानूनी अस्वीकरण"
+        "legalDisclaimer": "कानूनी अस्वीकरण",
+        "aiIntroduction": "AI परिचय",
+        "copilotProtocols": "समर्थित प्रोटोकॉल",
+        "copilotPrompts": "प्रॉम्प्ट उदाहरण",
+        "copilotWorkflow": "एजेंट वर्कफ़्लो"
       }
     },
     "faqUi": {
@@ -156,6 +163,25 @@
     "newsroom": {
       "latestFrom": "Avana से नवीनतम",
       "readNewsroom": "न्यूज़रूम पढ़ें"
+    },
+    "theme": {
+      "lightMode": "लाइट मोड",
+      "darkMode": "डार्क मोड",
+      "systemMode": "सिस्टम",
+      "tapToChange": "बदलने के लिए टैप करें"
+    },
+    "exportMenu": {
+      "copyPage": "पृष्ठ कॉपी करें",
+      "copied": "कॉपी हो गया",
+      "copyPageMarkdown": "पृष्ठ को Markdown के रूप में कॉपी करें",
+      "copyPageLink": "पृष्ठ लिंक कॉपी करें",
+      "copyPageLinkDescription": "इस पृष्ठ का URL क्लिपबोर्ड पर कॉपी करें",
+      "openInChatGPT": "ChatGPT में खोलें",
+      "openInClaude": "Claude में खोलें",
+      "openInGrok": "Grok में खोलें",
+      "openInPerplexity": "Perplexity में खोलें",
+      "askAboutPage": "इस पृष्ठ के बारे में प्रश्न पूछें",
+      "reviewPrompt": "नीचे दिए Avana पृष्ठ की सामग्री की समीक्षा करें और प्रश्नों के उत्तर दें।"
     }
   },
   "meta": {
@@ -222,12 +248,12 @@
       "subtitle": "Uniswap, Curve, और Balancer पोज़िशन से लिक्विडिटी अनलॉक करते हुए ट्रेडिंग फीस कमाना जारी रखें।",
       "subtitleMobileLines": [
         "अपने लिक्विडिटी पूल मूल्य का 80% तक एक्सेस पाएँ",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "5.5% APR पर, तरलता निकाले बिना या",
+        "ट्रेडिंग शुल्क छोड़े बिना।"
       ],
       "subtitleDesktopLines": [
         "5.5% APR की दर पर अपनी लिक्विडिटी पूल मूल्य का 80% तक उपयोग करें",
-        "without withdrawing liquidity or giving up trading fees."
+        "5.5% APR पर, तरलता निकाले या ट्रेडिंग शुल्क छोड़े बिना।"
       ],
       "primaryCta": "कोशिश करें Sandbox",
       "secondaryCta": "दस्तावेज़ पढ़ें"

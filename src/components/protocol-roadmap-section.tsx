@@ -61,7 +61,7 @@ const roadmapPhases: {
 ]
 
 function getRoadmapStatusClass() {
-  return "text-[#01AACF]"
+  return "text-type-accent"
 }
 
 function getRoadmapStatusLabel(status: RoadmapStatus) {
@@ -105,7 +105,7 @@ function getRoadmapDisplayLabel(label: string) {
 
 function RoadmapMilestoneIcon({ label }: { label: string }) {
   const normalized = label.toLowerCase()
-  const iconClassName = "h-3.5 w-3.5 text-[#01AACF]"
+  const iconClassName = "h-3.5 w-3.5 text-type-accent"
 
   if (
     normalized.includes("risk") ||
@@ -163,7 +163,7 @@ export default async function ProtocolRoadmapSection() {
         <SectionTitle>Roadmap</SectionTitle>
       </div>
 
-      <p className="text-[1.08rem] leading-[1.68] tracking-[-0.025em] text-gray-600 sm:text-[1.12rem]">
+      <p className="type-body-copy">
         Avana develops in three phases. Each phase builds on the one before it: Borrow Markets,
         Lend Markets, then Multiply Markets.
       </p>
@@ -181,26 +181,26 @@ export default async function ProtocolRoadmapSection() {
           return (
             <div key={phase.title} className={index === 0 ? "space-y-4" : "space-y-4 pt-2"}>
               <div className="space-y-2">
-                <h3 className={`mb-0 text-base font-semibold ${index === 2 ? "text-gray-700" : "text-gray-900"}`}>
+                <h3 className="type-body-copy text-foreground">
                   {phase.title}
                 </h3>
-                <p className="text-sm leading-6 text-gray-600">{phase.summary}</p>
+                <p className="type-body-copy">{phase.summary}</p>
               </div>
 
               <div className="space-y-3">
                 {groupedMilestones.map((group) => (
                   <div key={`${phase.title}-${group.status}`} className={`space-y-2 ${getRoadmapGroupOpacity(group.status)}`}>
-                    <p className={`text-xs font-semibold uppercase tracking-[0.12em] ${getRoadmapStatusClass()}`}>
+                    <p className={`type-meta-label ${getRoadmapStatusClass()}`}>
                       {getRoadmapStatusLabel(group.status)}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {group.items.map((milestone) => (
                         <div
                           key={milestone.label}
-                          className="flex items-center gap-2 rounded-md bg-gray-100 px-2.5 py-1.5"
+                          className="flex items-center gap-2 rounded-md border border-border bg-muted px-2.5 py-1.5"
                         >
                           <RoadmapMilestoneIcon label={milestone.label} />
-                          <span className={`text-[12px] font-medium leading-5 ${index === 2 ? "text-gray-700" : "text-gray-800"}`}>
+                          <span className="text-sm font-medium leading-tight text-foreground">
                             {getRoadmapDisplayLabel(milestone.label)}
                           </span>
                         </div>

@@ -9,7 +9,9 @@
       "closeMenu": "Rufe menu",
       "language": "Harshe: {language}",
       "logo": "Logo na {site}",
-      "helpfulLinks": "Mahimman hanyoyi"
+      "helpfulLinks": "Mahimman hanyoyi",
+      "helpCenter": "Cibiyar taimako: aika imel zuwa tallafi",
+      "themeToggle": "Zaɓin jigo"
     },
     "nav": {
       "products": "Kayayyaki",
@@ -76,7 +78,7 @@
     "notFound": {
       "title": "Wannan shafi ba ya samuwa.",
       "body": "Adireshin na iya zama ba daidai ba ko shafin na iya yin motsi.",
-      "home": "Go to homepage",
+      "home": "Je shafin gida",
       "faq": "Tambayoyin da ake yawan yi"
     },
     "sandboxNotice": "Sandbox bayanai an nuna su don duba kawai. APYs, farashi, da ribar suna misali ne kuma na iya bambanta da yanayin kasuwa na ainihi.",
@@ -87,7 +89,7 @@
       "shareOnLinkedIn": "Raba a LinkedIn",
       "previousPost": "Sakon da ya gabata",
       "nextPost": "Sakon na gaba",
-      "onThisPage": "On this page"
+      "onThisPage": "A wannan shafi"
     },
     "docs": {
       "previous": "Na baya",
@@ -99,7 +101,8 @@
         "liquidation": "Tsarin Ƙarshewa",
         "integrations": "Haɗin da ake tallafawa",
         "safety": "Hanyoyin Tsaro",
-        "legal": "Shari'a da Bin Doka"
+        "legal": "Shari'a da Bin Doka",
+        "copilot": "Tambayi AI"
       },
       "items": {
         "overview": "Bayanin Gabaɗaya",
@@ -131,7 +134,11 @@
         "bugBounty": "Lambar Ladabi ga Kwari",
         "insuranceFunds": "Kudaden Inshora",
         "securityDisclosures": "Bayanan Tsaro",
-        "legalDisclaimer": "Bayani na Shari'a"
+        "legalDisclaimer": "Bayani na Shari'a",
+        "aiIntroduction": "Gabatarwar AI",
+        "copilotProtocols": "Protocols da ake goyan baya",
+        "copilotPrompts": "Misalan prompt",
+        "copilotWorkflow": "Tsarin aikin wakili"
       }
     },
     "faqUi": {
@@ -156,6 +163,25 @@
     "newsroom": {
       "latestFrom": "Sabo daga Avana",
       "readNewsroom": "Karanta ɗakin labarai"
+    },
+    "theme": {
+      "lightMode": "Yanayin haske",
+      "darkMode": "Yanayin duhu",
+      "systemMode": "Tsarin",
+      "tapToChange": "Matsa don canza"
+    },
+    "exportMenu": {
+      "copyPage": "Kwafi shafi",
+      "copied": "An kwafa",
+      "copyPageMarkdown": "Kwafi shafi a matsayin Markdown",
+      "copyPageLink": "Kwafi hanyar shafi",
+      "copyPageLinkDescription": "Kwafi URL na wannan shafi zuwa allo",
+      "openInChatGPT": "Bude a ChatGPT",
+      "openInClaude": "Bude a Claude",
+      "openInGrok": "Bude a Grok",
+      "openInPerplexity": "Bude a Perplexity",
+      "askAboutPage": "Yi tambayoyi game da wannan shafi",
+      "reviewPrompt": "Duba abun cikin shafin Avana a kasa kuma ka amsa tambayoyi."
     }
   },
   "meta": {
@@ -222,12 +248,12 @@
       "subtitle": "Ci gaba da samun kudin ciniki yayin bude kudaden shigar daga matsayi Uniswap, Curve, da Balancer.",
       "subtitleMobileLines": [
         "Samun dama zuwa kashi 80% na ƙimar Tafkin Ruwa naka",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "a APR 5.5% ba tare da cire liquidity ko",
+        "barin kuɗin ciniki ba."
       ],
       "subtitleDesktopLines": [
         "Samu damar amfani da har zuwa kashi 80% na ƙimar Ruwan Kuɗi naka a 5.5% APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "a APR 5.5% ba tare da cire liquidity ko barin kuɗin ciniki ba."
       ],
       "primaryCta": "Gwada Sandbox",
       "secondaryCta": "Karanta takardu"

@@ -1,0 +1,3235 @@
+{
+  "generated_by": "scripts/generate-gap-map.py",
+  "policy": "Hand-written translations only. Do not use translate-fast.py for production copy.",
+  "ui_messages": {
+    "locales": {
+      "zh-CN": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "zh-TW": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "hi": {
+        "untranslated_count": 1,
+        "gaps": [
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "es": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "ar": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "fr": {
+        "untranslated_count": 1,
+        "gaps": [
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "bn": {
+        "untranslated_count": 1,
+        "gaps": [
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "pt": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "ru": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "ur": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "id": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "de": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "ja": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "fa": {
+        "untranslated_count": 1,
+        "gaps": [
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "sw": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "vi": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "tr": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "ko": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "ha": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "it": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "th": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "pl": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "uk": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "nl": {
+        "untranslated_count": 2,
+        "gaps": [
+          {
+            "path": "common.nav.aaveArfc",
+            "en": "Aave ARFC",
+            "status": "identical_to_en"
+          },
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      },
+      "he": {
+        "untranslated_count": 1,
+        "gaps": [
+          {
+            "path": "meta.titleTemplate",
+            "en": "{title} | Avana",
+            "status": "identical_to_en"
+          }
+        ]
+      }
+    },
+    "keys_by_frequency": {
+      "meta.titleTemplate": 25,
+      "common.nav.aaveArfc": 20
+    }
+  },
+  "content_catalogs": {
+    "faq.json": {
+      "locales": {
+        "zh-CN": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "zh-TW": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "hi": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "es": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "ar": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "fr": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "bn": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "pt": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "ru": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "ur": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "id": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "de": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "ja": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "fa": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "sw": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "vi": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "tr": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "ko": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "ha": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "it": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "th": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "pl": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "uk": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "nl": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "he": {
+          "untranslated_count": 0,
+          "samples": []
+        }
+      }
+    },
+    "marketing.json": {
+      "locales": {
+        "zh-CN": {
+          "untranslated_count": 13,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[4]",
+              "en": "USD Coin",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "zh-TW": {
+          "untranslated_count": 13,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[4]",
+              "en": "USD Coin",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "hi": {
+          "untranslated_count": 13,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[4]",
+              "en": "USD Coin",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "es": {
+          "untranslated_count": 12,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[4]",
+              "en": "USD Coin",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[6]",
+              "en": "Curve USD",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ar": {
+          "untranslated_count": 13,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[4]",
+              "en": "USD Coin",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "fr": {
+          "untranslated_count": 10,
+          "samples": [
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[4]",
+              "en": "USD Coin",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[6]",
+              "en": "Curve USD",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[9]",
+              "en": "PayPal USD",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "bn": {
+          "untranslated_count": 13,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[4]",
+              "en": "USD Coin",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "pt": {
+          "untranslated_count": 12,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[4]",
+              "en": "USD Coin",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[6]",
+              "en": "Curve USD",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ru": {
+          "untranslated_count": 7,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "position-safety-section.strings[17]",
+              "en": "border-amber-200 bg-amber-50",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ur": {
+          "untranslated_count": 7,
+          "samples": [
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[2]",
+              "en": "Avana APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "position-safety-section.strings[17]",
+              "en": "border-amber-200 bg-amber-50",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "id": {
+          "untranslated_count": 13,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[4]",
+              "en": "USD Coin",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "de": {
+          "untranslated_count": 4,
+          "samples": [
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "position-safety-section.strings[17]",
+              "en": "border-amber-200 bg-amber-50",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "position-safety-section.strings[21]",
+              "en": "border-gray-200 bg-gray-50",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ja": {
+          "untranslated_count": 9,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[2]",
+              "en": "Avana APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "fa": {
+          "untranslated_count": 6,
+          "samples": [
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[6]",
+              "en": "Curve USD",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "position-safety-section.strings[17]",
+              "en": "border-amber-200 bg-amber-50",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "sw": {
+          "untranslated_count": 13,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[4]",
+              "en": "USD Coin",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "vi": {
+          "untranslated_count": 13,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[4]",
+              "en": "USD Coin",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "tr": {
+          "untranslated_count": 10,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[2]",
+              "en": "Avana APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ko": {
+          "untranslated_count": 9,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[2]",
+              "en": "Avana APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ha": {
+          "untranslated_count": 13,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[4]",
+              "en": "USD Coin",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "it": {
+          "untranslated_count": 12,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[4]",
+              "en": "USD Coin",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[6]",
+              "en": "Curve USD",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "th": {
+          "untranslated_count": 15,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[2]",
+              "en": "Avana APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "pl": {
+          "untranslated_count": 5,
+          "samples": [
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[9]",
+              "en": "PayPal USD",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "position-safety-section.strings[17]",
+              "en": "border-amber-200 bg-amber-50",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "position-safety-section.strings[21]",
+              "en": "border-gray-200 bg-gray-50",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "uk": {
+          "untranslated_count": 7,
+          "samples": [
+            {
+              "path": "hero-section.strings[44]",
+              "en": "$2.4M",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "position-safety-section.strings[17]",
+              "en": "border-amber-200 bg-amber-50",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "nl": {
+          "untranslated_count": 5,
+          "samples": [
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "trade-market-showcase.strings[9]",
+              "en": "PayPal USD",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "position-safety-section.strings[17]",
+              "en": "border-amber-200 bg-amber-50",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "position-safety-section.strings[21]",
+              "en": "border-gray-200 bg-gray-50",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "he": {
+          "untranslated_count": 6,
+          "samples": [
+            {
+              "path": "BuildTomorrowSection.strings[6]",
+              "en": "object-cover object-top",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "homepage/HomepageTestimonialSection.strings[10]",
+              "en": "@keyframes feature-highlight-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "invest-growth-calculator-section.strings[9]",
+              "en": "3.5% APY",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "position-safety-section.strings[17]",
+              "en": "border-amber-200 bg-amber-50",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "position-safety-section.strings[21]",
+              "en": "border-gray-200 bg-gray-50",
+              "status": "identical_to_en"
+            }
+          ]
+        }
+      }
+    },
+    "blog.json": {
+      "locales": {
+        "zh-CN": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "zh-TW": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "hi": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "es": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ar": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "fr": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "bn": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "pt": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ru": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ur": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "id": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "de": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ja": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "fa": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "sw": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "vi": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "tr": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ko": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ha": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "it": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "th": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "pl": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "uk": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "nl": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "he": {
+          "untranslated_count": 20,
+          "samples": [
+            {
+              "path": "posts[0].date",
+              "en": "July 24, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[1].date",
+              "en": "July 22, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[2].date",
+              "en": "July 20, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[3].date",
+              "en": "July 17, 2026",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "posts[4].date",
+              "en": "July 15, 2026",
+              "status": "identical_to_en"
+            }
+          ]
+        }
+      }
+    },
+    "legal.json": {
+      "locales": {
+        "zh-CN": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "zh-TW": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "hi": {
+          "untranslated_count": 1,
+          "samples": [
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "es": {
+          "untranslated_count": 1,
+          "samples": [
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ar": {
+          "untranslated_count": 2,
+          "samples": [
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "fr": {
+          "untranslated_count": 2,
+          "samples": [
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[19]",
+              "en": "Avana,",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "bn": {
+          "untranslated_count": 3,
+          "samples": [
+            {
+              "path": "privacy.strings[105]",
+              "en": "privacy@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "pt": {
+          "untranslated_count": 2,
+          "samples": [
+            {
+              "path": "terms.strings[19]",
+              "en": "Avana,",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ru": {
+          "untranslated_count": 1,
+          "samples": [
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ur": {
+          "untranslated_count": 3,
+          "samples": [
+            {
+              "path": "privacy.strings[105]",
+              "en": "privacy@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "id": {
+          "untranslated_count": 2,
+          "samples": [
+            {
+              "path": "terms.strings[19]",
+              "en": "Avana,",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "de": {
+          "untranslated_count": 2,
+          "samples": [
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ja": {
+          "untranslated_count": 2,
+          "samples": [
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "fa": {
+          "untranslated_count": 3,
+          "samples": [
+            {
+              "path": "privacy.strings[105]",
+              "en": "privacy@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "sw": {
+          "untranslated_count": 3,
+          "samples": [
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[19]",
+              "en": "Avana,",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "vi": {
+          "untranslated_count": 3,
+          "samples": [
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[19]",
+              "en": "Avana,",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "tr": {
+          "untranslated_count": 2,
+          "samples": [
+            {
+              "path": "terms.strings[19]",
+              "en": "Avana,",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ko": {
+          "untranslated_count": 2,
+          "samples": [
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ha": {
+          "untranslated_count": 3,
+          "samples": [
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[19]",
+              "en": "Avana,",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "it": {
+          "untranslated_count": 4,
+          "samples": [
+            {
+              "path": "privacy.strings[105]",
+              "en": "privacy@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[19]",
+              "en": "Avana,",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "th": {
+          "untranslated_count": 2,
+          "samples": [
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "pl": {
+          "untranslated_count": 0,
+          "samples": []
+        },
+        "uk": {
+          "untranslated_count": 4,
+          "samples": [
+            {
+              "path": "privacy.strings[105]",
+              "en": "privacy@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[19]",
+              "en": "Avana,",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "nl": {
+          "untranslated_count": 4,
+          "samples": [
+            {
+              "path": "privacy.strings[105]",
+              "en": "privacy@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[19]",
+              "en": "Avana,",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "he": {
+          "untranslated_count": 4,
+          "samples": [
+            {
+              "path": "privacy.strings[105]",
+              "en": "privacy@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "privacy.strings[107]",
+              "en": "support@avana.cc",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[19]",
+              "en": "Avana,",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "terms.strings[111]",
+              "en": "legal@avana.cc",
+              "status": "identical_to_en"
+            }
+          ]
+        }
+      }
+    },
+    "docs.json": {
+      "locales": {
+        "zh-CN": {
+          "untranslated_count": 24,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "zh-TW": {
+          "untranslated_count": 26,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "hi": {
+          "untranslated_count": 26,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "es": {
+          "untranslated_count": 31,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ar": {
+          "untranslated_count": 27,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "fr": {
+          "untranslated_count": 27,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "bn": {
+          "untranslated_count": 26,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "pt": {
+          "untranslated_count": 26,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[51]",
+              "en": "getUserAggregate(user)",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ru": {
+          "untranslated_count": 31,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ur": {
+          "untranslated_count": 25,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "id": {
+          "untranslated_count": 28,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "de": {
+          "untranslated_count": 35,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[25]",
+              "en": "Borrow Spoke (Avana)",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ja": {
+          "untranslated_count": 24,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "fa": {
+          "untranslated_count": 26,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "sw": {
+          "untranslated_count": 27,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "vi": {
+          "untranslated_count": 28,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "tr": {
+          "untranslated_count": 27,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ko": {
+          "untranslated_count": 24,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "ha": {
+          "untranslated_count": 33,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "it": {
+          "untranslated_count": 26,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[51]",
+              "en": "getUserAggregate(user)",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "th": {
+          "untranslated_count": 25,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "pl": {
+          "untranslated_count": 31,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "uk": {
+          "untranslated_count": 31,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "nl": {
+          "untranslated_count": 29,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[25]",
+              "en": "Borrow Spoke (Avana)",
+              "status": "identical_to_en"
+            }
+          ]
+        },
+        "he": {
+          "untranslated_count": 27,
+          "samples": [
+            {
+              "path": "architecture/health-factor.strings[12]",
+              "en": "healthFactor = adjustedCollateralValue / outstandingDebt",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.meta.title",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture/lend-spoke.strings[0]",
+              "en": "Lend Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[9]",
+              "en": "Borrow Spoke",
+              "status": "identical_to_en"
+            },
+            {
+              "path": "architecture.strings[27]",
+              "en": "Aave v4 Hub",
+              "status": "identical_to_en"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "blog_editorial": {
+    "zh-CN": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "zh-TW": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "hi": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "es": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "ar": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "fr": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "bn": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "pt": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "ru": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "ur": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "id": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "de": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "ja": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "fa": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "sw": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "vi": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "tr": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "ko": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "ha": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "it": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "th": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "pl": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "uk": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "nl": {
+      "posts_needing_review": 0,
+      "posts": []
+    },
+    "he": {
+      "posts_needing_review": 0,
+      "posts": []
+    }
+  },
+  "priority": [
+    "DONE: UI chrome overlays applied (content/i18n/ui-overlays.json)",
+    "DONE: Blog articles — 0 untranslated body/title units across all 25 locales",
+    "DONE: Marketing phrase maps — 0 translatable gaps",
+    "DONE: Developer docs phrase maps — 0 translatable gaps",
+    "DONE: FAQ + legal — 0 translatable gaps"
+  ]
+}

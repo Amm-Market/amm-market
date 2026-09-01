@@ -18,7 +18,7 @@ export default async function BlogPage({
   return (
     <div className="site-content-shell py-12">
       <section className="flex justify-center pt-4 md:pt-8">
-        <h1 className="text-[clamp(3rem,7vw,5.25rem)] font-[600] tracking-[-0.08em] text-black">
+        <h1 className="type-index-title text-foreground">
           {t("indexTitle")}
         </h1>
       </section>

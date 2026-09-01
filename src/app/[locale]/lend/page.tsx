@@ -5,10 +5,10 @@ import { Link } from "@/i18n/navigation"
 import type { LucideIcon } from "lucide-react"
 import { Gauge, Layers, LockKeyhole, MoveRight, TrendingUp, WalletCards } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
-import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardDescription, FeatureCardTitle, SectionIntro } from "@/components/shared"
 import { LocalizedMarketing } from "@/components/localized-marketing"
+import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 
-const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
 const PlatformToolsShowcaseSection = dynamic(() => import("@/components/platform-tools-showcase-section"))
 const InvestApySection = dynamic(() => import("@/components/invest-apy-section"))
 const InvestGrowthCalculatorSection = dynamic(() => import("@/components/invest-growth-calculator-section"))
@@ -103,7 +103,7 @@ function KeyFeatureCard({
 }) {
   return (
     <article className="flex flex-col feature-card rounded-[1.5rem] p-5 md:p-6">
-      <Icon className="h-8 w-8 text-[#01AACF]" strokeWidth={1.85} />
+      <Icon className="h-8 w-8 text-type-accent" strokeWidth={1.85} />
       <FeatureCardTitle className="mt-5">{title}</FeatureCardTitle>
       <FeatureCardDescription className="mt-3 max-w-[22rem]">{description}</FeatureCardDescription>
     </article>
@@ -145,11 +145,11 @@ export default async function LendPage() {
 
               {/* Right Column - Text Content */}
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
-                  <h1 className="mb-3 max-w-[18ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:max-w-[16ch] md:text-5xl lg:text-5xl xl:text-6xl">
+                  <h1 className="type-display-title mb-3 max-w-[18ch] text-foreground md:mb-5 md:max-w-[16ch]">
                     Earn interest on your assets
                   </h1>
 
-                  <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
+                  <p className="type-display-lead mb-5 max-w-[34ch] sm:max-w-[38ch] md:mb-6">
                     Supply single assets and earn yields where LP collateral creates real borrow utilization.
                   </p>
 
@@ -166,7 +166,7 @@ export default async function LendPage() {
                     <Link
                       href="/developers"
                       prefetch={false}
-                      className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-semibold text-gray-900 transition-colors hover:bg-gray-100"
+                      className="inline-flex items-center justify-center rounded-full border border-border bg-white px-4 py-2 text-xs text-foreground transition-colors hover:bg-muted"
                     >
                       View Docs
                     </Link>
@@ -178,16 +178,15 @@ export default async function LendPage() {
         </div>
       </div>
 
-      <section className="border-t border-[#01AACF] bg-white site-section-gap">
+      <section className="border-t border-border/80 bg-white site-section-gap">
         <div className="site-content-shell">
           <div className="flex flex-col gap-3">
-            <SectionEyebrow tone="emerald">How it works</SectionEyebrow>
-            <SectionTitle>Lending in three steps</SectionTitle>
+            <SectionIntro eyebrow="How it works" eyebrowTone="emerald" title="Lending in three steps" />
           </div>
 
           <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
             <div className="feature-card rounded-2xl p-6 md:p-8">
-              <span className="text-5xl font-bold text-gray-300 md:text-6xl">1</span>
+              <span className="type-step-index">1</span>
               <FeatureCardTitle className="mt-6">Pick a market</FeatureCardTitle>
               <FeatureCardDescription className="mt-3">
                 Browse lending markets like GHO, USDC, USDT, ETH, and WBTC while tracking APY, utilization, and borrower demand.
@@ -195,7 +194,7 @@ export default async function LendPage() {
             </div>
 
             <div className="feature-card rounded-2xl p-6 md:p-8">
-              <span className="text-5xl font-bold text-gray-300 md:text-6xl">2</span>
+              <span className="type-step-index">2</span>
               <FeatureCardTitle className="mt-6">Supply assets</FeatureCardTitle>
               <FeatureCardDescription className="mt-3">
                 Connect your wallet, approve the asset, and supply so your funds enter the pool and start earning right away.
@@ -203,7 +202,7 @@ export default async function LendPage() {
             </div>
 
             <div className="feature-card rounded-2xl p-6 md:p-8">
-              <span className="text-5xl font-bold text-gray-300 md:text-6xl">3</span>
+              <span className="type-step-index">3</span>
               <FeatureCardTitle className="mt-6">Earn and withdraw</FeatureCardTitle>
               <FeatureCardDescription className="mt-3">
                 Interest accrues continuously, and you can withdraw principal plus yield anytime with no lock-up period.
@@ -213,15 +212,18 @@ export default async function LendPage() {
         </div>
       </section>
 
-      <section className="deferred-viewport-tall bg-white">
+      <section className="bg-white">
         <DeferredTradeMarketShowcase />
       </section>
 
       <section className="relative z-10 site-section-gap">
         <div className="site-content-shell">
           <div className="mb-8 max-w-[600px] space-y-3 md:mb-10">
-            <SectionEyebrow tone="emerald">Why supply</SectionEyebrow>
-            <SectionTitle>Clear rates, flexible capital, one place to manage it</SectionTitle>
+            <SectionIntro
+              eyebrow="Why supply"
+              eyebrowTone="emerald"
+              title="Clear rates, flexible capital, one place to manage it"
+            />
           </div>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {keyFeatureCards.map((card) => (

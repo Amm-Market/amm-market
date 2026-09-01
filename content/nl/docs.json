@@ -1,7 +1,7 @@
 {
   "architecture/collateral-factors": {
     "meta": {
-      "title": "Collateral Factors",
+      "title": "Onderpandfactoren",
       "description": "Hoe collateral factors LP-positiewaarde omzetten in leencapaciteit binnen een Borrow Spoke."
     },
     "toc": [
@@ -23,7 +23,7 @@
       }
     ],
     "strings": [
-      "Collateral Factors",
+      "Onderpandfactoren",
       "Hoe collateral factors LP-positiewaarde omzetten in leencapaciteit binnen een Borrow Spoke.",
       "Overzicht",
       "Hoe het werkt",
@@ -43,7 +43,7 @@
   },
   "architecture/health-factor": {
     "meta": {
-      "title": "Health Factor",
+      "title": "health factor",
       "description": "Hoe Avana meet of een LP-gedekt account genoeg onderpand heeft om zijn schuld te dragen."
     },
     "toc": [
@@ -69,7 +69,7 @@
       }
     ],
     "strings": [
-      "Health Factor",
+      "health factor",
       "Hoe Avana meet of een LP-gedekt account genoeg onderpand heeft om zijn schuld te dragen.",
       "Overzicht",
       "Berekening",
@@ -96,7 +96,7 @@
       "Schuld terugbetalen verbetert gezondheid meteen.",
       "Goedgekeurd onderpand toevoegen kan headroom vergroten als de Spoke het accepteert en waardeert.",
       "Fees claimen, onderpand opnemen of posities wijzigen kan gezondheid verlagen — controleer eerst de status na de actie.",
-      "Collateral Factors"
+      "Onderpandfactoren"
     ]
   },
   "architecture/incentives": {
@@ -399,7 +399,7 @@
       "Voordat een lening wordt goedgekeurd, controleert Avana dat je account gezond blijft na de nieuwe schuld. Gezondheidsfactor is aangepaste onderpandwaarde gedeeld door uitstaande schuld. Die aangepaste onderpandwaarde bevat al LP-waardering, collateral factors en kortingen op herstelbare waarde.",
       "healthFactor = adjustedCollateralValue / outstandingDebt",
       "Als de gezondheid onder de liquidatiegrens daalt, komt de positie in aanmerking voor liquidatie. Zie",
-      "Health Factor",
+      "health factor",
       "Schuldaandelen:",
       "Hub-opname:",
       "de Borrow Spoke vraagt het asset pas bij de Hub aan nadat de Spoke de onderpand-, capaciteits- en gezondheidscontroles heeft afgerond.",
@@ -409,7 +409,7 @@
       "Controleer in de Avana-interface op je doeldeployment de actuele leenlijst.",
       "Leenvermogen is de som van je goedgekeurde LP-posities in één Borrow Spoke, na collateral factors en risicokortingen. Elke positie draagt bij op basis van eigen pool, range, liquiditeit en risico-instellingen.",
       "Hoe dichter je bij je maximum leent, hoe minder ruimte je hebt voor prijsbewegingen of volatiliteit. Zie",
-      "Collateral Factors"
+      "Onderpandfactoren"
     ]
   },
   "getting-started/claim-lp-fees": {
@@ -514,7 +514,7 @@
       "het account doorstaat de controles nog, maar de buffer is dun. Overweeg terugbetalen, meer onderpand of minder exposure.",
       "Liquideerbaar:",
       "gezondheid heeft de liquidatiedrempel overschreden. Het liquidation framework kan overnemen.",
-      "Health Factor",
+      "health factor",
       "Betaal een deel van de schuld terug om de buffer weer op te bouwen",
       "Voeg meer goedgekeurd LP-collateral toe in dezelfde Borrow Spoke",
       "Claim opgelopen fees wanneer het account de gezondheidscontroles na de claim nog doorstaat",
@@ -526,7 +526,7 @@
       "Leenacties hangen nog steeds af van Hub-liquiditeit en actieve caps",
       "Betaal terug of voeg onderpand toe voordat gezondheid in liquidatiegebied belandt",
       "Liquidatiekader",
-      "Collateral Factors"
+      "Onderpandfactoren"
     ]
   },
   "getting-started": {
@@ -745,7 +745,7 @@
       "Door governance gestuurde allowlist voor de pools en LP-families die Avana als onderpand wil accepteren.",
       "Avana accepteert alleen LP-collateral van pools die zijn gereviewd en goedgekeurd. De allowlist bestaat omdat LP-support niet automatisch is voor elke pool op een DEX. Het protocol heeft genoeg informatie nodig om de positie te prijzen, liquidatie te beheren en het genomen risico te begrenzen.",
       "Poolgoedkeuring werkt samen met",
-      "Collateral Factors",
+      "Onderpandfactoren",
       "Risicokader",
       ". De allowlist bepaalt of een pool het systeem mag binnenkomen; collateral factors bepalen hoeveel leenbare waarde elke toegelaten positie kan bijdragen.",
       "Een pool komt alleen op de allowlist wanneer het protocol dezelfde basale vragen elke keer kan beantwoorden: kan het de positie prijzen, kan het de positie exitten, en kan het het risico in productie monitoren.",
@@ -985,21 +985,21 @@
       "Exposure wordt begrensd per LP-familie, pooldiepte en collateralcomplexiteit zodat dunnere markten strengere leenlimieten krijgen.",
       "Herstel kapsels",
       "De oracle disconteert theoretische LP-waarde voor impermanent loss, unwind-slippage en gestresste liquidatieaannames voordat enig leenvermogen wordt toegekend.",
-      "Oracle Sentinel",
+      "Oracle-wachter",
       "Oracle Sentinel bewaakt feedgezondheid en verificatie-inputs en kan fallbackgedrag triggeren wanneer data stale, gecompromitteerd of inconsistent met positiestatuscontroles is.",
       "Configureerbare oracle-parameters",
       "Poolspecifieke oracle-instellingen worden per token geconfigureerd via",
       "setTokenConfig",
       ". De tabel hieronder toont de parameters die bepalen hoe een token en de bijbehorende pool moeten worden gecontroleerd:",
-      "Parameter",
+      "Configuratieparameter",
       "Beschrijving",
-      "Token",
+      "Activum-token",
       "Adres van het collateral-token",
       "AggregatorV3Interface",
       "Chainlink-feed voor onderliggend token",
       "maxFeedAge",
       "Maximaal acceptabele leeftijd voor Chainlink-feed",
-      "Pool",
+      "Liquiditeitspool",
       "Specifieke DEX-pool (Uniswap V3, Balancer, Curve, enz.)",
       "twapSeconds",
       "Venster voor TWAP-berekening",
@@ -1089,7 +1089,7 @@
       },
       {
         "id": "disclaimers",
-        "title": "Disclaimers"
+        "title": "Vrijwaringen"
       }
     ],
     "strings": [
@@ -1100,7 +1100,7 @@
       "Financiële termen",
       "Risico & beveiliging",
       "Statistieken",
-      "Disclaimers",
+      "Vrijwaringen",
       "Borrow Spoke",
       "De Avana-Spoke aan de leenkant die LP-collateral ontvangt, posities waardeert, schuld bijhoudt en lenen en liquidatie coördineert tegen Hub-liquiditeit.",
       "Het kapitaalingangspunt aan de uitlenerskant dat aangeboden assets naar de Hub routeert zodat Borrow Spokes gedeelde liquiditeit kunnen trekken.",
@@ -1125,7 +1125,7 @@
       "De risicospecifieke component bovenop basaleenvoorwaarden die het gefinancierde LP-collateralprofiel weerspiegelt.",
       "Reservefactor",
       "Het deel van protocol-economie of rentestromen dat voor het systeem wordt gereserveerd in plaats van volledig doorgegeven aan liquiditeitsaanbieders.",
-      "Health Factor",
+      "health factor",
       "De ratio tussen aangepaste onderpandwaarde en uitstaande schuld in een Borrow Spoke. Wordt die te laag, nadert de positie liquidatiegeschiktheid.",
       "Het proces waarbij schuld tegen een ongezonde LP-gedekte positie wordt terugbetaald, genoeg onderpand wordt afgewikkeld om solvabiliteit te herstellen, en restwaarde na settlement wordt teruggegeven.",
       "Liquidatiebonus",
@@ -1218,7 +1218,7 @@
       "Avana gebruikt een dual-oracle-pricingframework voor LP-collateral. Chainlink-prijsfeeds leveren de primaire referentie voor de onderliggende assets, terwijl AMM-afgeleide TWAP's als onafhankelijke verificatielaag dienen vanuit onchain-liquiditeit.",
       "Leencapaciteit komt uit de risico-aangepaste waarde van goedgekeurde LP-posities in een Borrow Spoke. Avana reconstrueert elke positie, prijst de onderliggende exposure, past risicobehandeling op poolniveau toe en past daarna de collateral factor van de markt toe.",
       "De Borrow Spoke rapporteert die capaciteit aan de Hub voor handhaving. Wanneer een gebruiker meerdere goedgekeurde posities in dezelfde markt heeft, aggregeert Avana hun capaciteit terwijl elke positie nog steeds onder eigen pool-, range-, liquiditeits- en risicoaannames wordt gewaardeerd.",
-      "Collateral Factors",
+      "Onderpandfactoren",
       "hoe elke markt collateral factors, liquidatiedrempels en liquidation bonus per asset vastlegt.",
       "Avana monitort accountgezondheid in elke Borrow Spoke via hetzelfde waarderingspad dat ook lenen stuurt. Aangepaste onderpandwaarde — al gedisconteerd via LP-reconstructie, pricing, collateral factors en aannames over herstelbare waarde — wordt vergeleken met uitstaande schuld.",
       "Wanneer gezondheid onder de liquidatiedrempel daalt, handelt Aave schuldboekhouding en het liquidatie-invoerpunt af tegen het ERC-20 vault-collateral. Avana handelt de LP-settlement achter dat vault token af: vault-collateral verbranden, liquidatie terugkoppelen aan de echte LP-positie, en de marktroute volgen om de backingpositie af te wikkelen, te verkopen, te veilen of over te dragen.",
@@ -1325,7 +1325,7 @@
       "Beperkte regio's",
       "Actuele lijst van jurisdicties die geen toegang hebben tot Avana-diensten.",
       "Laatst bijgewerkt:",
-      "January 2026",
+      "januari 2026",
       "Deze disclaimer kan van tijd tot tijd worden bijgewerkt. Voortgezet gebruik van het protocol geldt als aanvaarding van wijzigingen. Raadpleeg onze"
     ]
   },
@@ -1536,7 +1536,7 @@
       "Liquidatiekader",
       "pagina. Deze flow gaat uit van het herstelbare-waardemodel in",
       "Prijsoracles",
-      "Collateral Factors",
+      "Onderpandfactoren",
       "Verschillende LP-families mikken op dezelfde eindstatus, maar bereiken die niet via identieke exits. Adapter-gebaseerde afhandeling laat elke poolfamilie het unwind-pad volgen dat bij haar eigen mechanica past.",
       "Liquidatiebots moeten actieve posities indexeren, schulddrift verversen en accounts prijzen vanuit dezelfde oracle-stack als het protocol — niet alleen vanuit ruwe AMM-spotstate.",
       "Winstgevendheidscontroles moeten rekening houden met slippage, routediepte, flashloan-kosten en uitvoeringsrisico. Grote of ongebruikelijke unwinds kunnen baat hebben bij private execution paths om nadelige MEV-exposure te verlagen.",

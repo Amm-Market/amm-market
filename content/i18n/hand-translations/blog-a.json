@@ -1,0 +1,804 @@
+{
+  "blog.json": {
+    "LP loans are operational work": {
+      "ar": "قروض LP عمل تشغيلي",
+      "bn": "LP ঋণ হলো অপারেশনাল কাজ",
+      "de": "LP-Darlehen sind operative Arbeit",
+      "es": "Los préstamos con LP son trabajo operativo",
+      "fa": "وام‌های LP کار عملیاتی هستند",
+      "fr": "Les prêts LP sont un travail opérationnel",
+      "ha": "Lamunin LP aiki ne na aiki",
+      "he": "הלוואות LP הן עבודה תפעולית",
+      "hi": "LP ऋण परिचालन कार्य हैं",
+      "id": "Pinjaman LP adalah pekerjaan operasional",
+      "it": "I prestiti LP sono lavoro operativo",
+      "ja": "LPローンは運用業務である",
+      "ko": "LP 대출은 운영 업무다",
+      "nl": "LP-leningen zijn operationeel werk",
+      "pl": "Pożyczki LP to praca operacyjna",
+      "pt": "Empréstimos LP são trabalho operacional",
+      "ru": "Кредиты под LP — это операционная работа",
+      "sw": "Mikopo ya LP ni kazi ya uendeshaji",
+      "th": "สินเชื่อ LP คืองานเชิงปฏิบัติการ",
+      "tr": "LP kredileri operasyonel iştir",
+      "uk": "Кредити під LP — це операційна робота",
+      "ur": "LP قرضے آپریشنل کام ہیں",
+      "vi": "Khoản vay LP là công việc vận hành"
+    },
+    "If health breaks": {
+      "ar": "إذا تدهورت الصحة",
+      "bn": "স্বাস্থ্য ভেঙে গেলে",
+      "de": "Wenn die Gesundheit bricht",
+      "es": "Si la salud se rompe",
+      "fa": "اگر سلامت از بین برود",
+      "fr": "Si la santé se dégrade",
+      "ha": "Idan lafiya ta lalace",
+      "he": "אם מדד הבריאות נשבר",
+      "hi": "यदि स्वास्थ्य बिगड़ जाए",
+      "id": "Jika kesehatan memburuk",
+      "it": "Se la salute si rompe",
+      "ja": "ヘルスが崩れた場合",
+      "ko": "건강 지표가 무너지면",
+      "nl": "Als de gezondheid breekt",
+      "pl": "Gdy zdrowie się pogarsza",
+      "pt": "Se a saúde se deteriorar",
+      "ru": "Если health factor ломается",
+      "sw": "Ikiwa afya inavunjika",
+      "th": "หากสุขภาพพอร์ตเสื่อม",
+      "tr": "Sağlık bozulursa",
+      "uk": "Якщо health factor ламається",
+      "ur": "اگر ہیلتھ ٹوٹ جائے",
+      "vi": "Khi chỉ số sức khỏe suy giảm"
+    },
+    "A new design surface": {
+      "ar": "سطح تصميم جديد",
+      "bn": "একটি নতুন ডিজাইন সারফেস",
+      "de": "Eine neue Designfläche",
+      "es": "Una nueva superficie de diseño",
+      "fa": "یک سطح طراحی جدید",
+      "fr": "Une nouvelle surface de conception",
+      "ha": "Sabuwar fuskar tsari",
+      "he": "משטח עיצוב חדש",
+      "hi": "एक नई डिज़ाइन सतह",
+      "id": "Permukaan desain baru",
+      "it": "Una nuova superficie di progettazione",
+      "ja": "新しい設計領域",
+      "ko": "새로운 설계 영역",
+      "nl": "Een nieuw ontwerpvlak",
+      "pl": "Nowa powierzchnia projektowa",
+      "pt": "Uma nova superfície de design",
+      "ru": "Новая поверхность для разработки",
+      "sw": "Uso mpya wa muundo",
+      "th": "พื้นที่ออกแบบใหม่",
+      "tr": "Yeni bir tasarım yüzeyi",
+      "uk": "Нова поверхня для розробки",
+      "ur": "ڈیزائن کی نئی سطح",
+      "vi": "Một bề mặt thiết kế mới"
+    },
+    "A sensible first path": {
+      "ar": "مسار أول معقول",
+      "bn": "একটি যুক্তিসঙ্গত প্রথম পথ",
+      "de": "Ein vernünftiger erster Weg",
+      "es": "Un primer camino sensato",
+      "fa": "مسیر اول منطقی",
+      "fr": "Un premier chemin raisonnable",
+      "ha": "Hanya ta farko mai ma'ana",
+      "he": "נתיב ראשון הגיוני",
+      "hi": "एक समझदारी भरा पहला मार्ग",
+      "id": "Jalur pertama yang masuk akal",
+      "it": "Un primo percorso sensato",
+      "ja": "堅実な最初の一歩",
+      "ko": "합리적인 첫 번째 경로",
+      "nl": "Een verstandig eerste pad",
+      "pl": "Rozsądna pierwsza ścieżka",
+      "pt": "Um primeiro caminho sensato",
+      "ru": "Разумный первый путь",
+      "sw": "Njia ya kwanza yenye busara",
+      "th": "เส้นทางแรกที่สมเหตุสมผล",
+      "tr": "Mantıklı bir ilk yol",
+      "uk": "Розумний перший шлях",
+      "ur": "عقلمندانہ پہلا راستہ",
+      "vi": "Con đường đầu tiên hợp lý"
+    },
+    "Developers": {
+      "ar": "المطورون",
+      "de": "Entwickler",
+      "fr": "Développeurs",
+      "it": "Sviluppatori",
+      "ja": "開発者",
+      "ko": "개발자",
+      "nl": "Ontwikkelaars",
+      "pl": "Deweloperzy",
+      "ru": "Разработчики",
+      "sw": "Wasanidi programu",
+      "th": "นักพัฒนา",
+      "tr": "Geliştiriciler",
+      "uk": "Розробники",
+      "vi": "Nhà phát triển"
+    },
+    "For LPs": {
+      "ar": "لمزودي السيولة",
+      "de": "Für LPs",
+      "fr": "Pour les LPs",
+      "it": "Per gli LP",
+      "ja": "LP向け",
+      "ko": "LP용",
+      "nl": "Voor LPs",
+      "pl": "Dla LP",
+      "ru": "Для LP",
+      "sw": "Kwa LPs",
+      "th": "สำหรับ LP",
+      "tr": "LP'ler için",
+      "uk": "Для LP",
+      "vi": "Dành cho LP"
+    },
+    "Community": {
+      "ar": "المجتمع",
+      "de": "Community",
+      "fr": "Communauté",
+      "it": "Community",
+      "ja": "コミュニティ",
+      "ko": "커뮤니티",
+      "nl": "Community",
+      "pl": "Społeczność",
+      "ru": "Сообщество",
+      "sw": "Jumuiya",
+      "th": "ชุมชน",
+      "tr": "Topluluk",
+      "uk": "Спільнота",
+      "vi": "Cộng đồng"
+    },
+    "For Institutions": {
+      "ar": "للمؤسسات",
+      "de": "Für Institutionen",
+      "fr": "Pour les institutions",
+      "it": "Per le istituzioni",
+      "ja": "機関投資家向け",
+      "ko": "기관용",
+      "nl": "Voor instellingen",
+      "pl": "Dla instytucji",
+      "ru": "Для институтов",
+      "sw": "Kwa taasisi",
+      "th": "สำหรับสถาบัน",
+      "tr": "Kurumlar için",
+      "uk": "Для інституцій",
+      "vi": "Dành cho tổ chức"
+    },
+    "Guides": {
+      "fr": "Guides"
+    },
+    "Institutions": {
+      "fr": "Institutions"
+    },
+    "Why LP risk is different": {
+      "ja": "LPリスクが異なる理由",
+      "ko": "LP 위험이 다른 이유",
+      "ru": "Почему риск LP отличается",
+      "tr": "LP riski neden farklıdır",
+      "uk": "Чому ризик LP відрізняється"
+    },
+    "Avana cannot govern LP collateral the way a generic lending market governs a list of tokens. Each spoke market has its own pool structure, failure modes, and stress behavior. A stable pool is not the same product as a concentrated range. A weighted Balancer style basket is not the same product as a tightly correlated Curve style market. Avana's risk framework is built around that variety. It watches volatility, peg quality, utilization, liquidity depth, concentration, oracle health, market status, supply and borrow caps, LTV and liquidation thresholds, interest rate models, and position health across the hub and the LP spokes together.": {
+      "ja": "Avanaは、一般的なレンディング市場がトークンリストを管理するのと同じ方法でLP担保を管理することはできません。各spoke市場には独自のプール構造、障害モード、ストレス時の挙動があります。ステーブルプールは集中レンジと同じプロダクトではありません。Balancer型の加重バスケットは、Curve型の高相関市場と同じプロダクトでもありません。Avanaのリスクフレームワークはこの多様性を前提に構築されています。ボラティリティ、ペッグ品質、利用率、流動性の深さ、集中度、オラクルの健全性、市場ステータス、供給・借入上限、LTVと清算閾値、金利モデル、そしてhubとLP spoke全体のポジション健全性を監視します。",
+      "ko": "Avana는 일반 대출 시장이 토큰 목록을 관리하는 방식으로 LP 담보를 관리할 수 없습니다. 각 spoke 시장은 고유한 풀 구조, 실패 모드, 스트레스 행동을 가집니다. 스테이블 풀은 집중 범위와 같은 상품이 아닙니다. Balancer 스타일 가중 바스켓은 Curve 스타일의 높은 상관 시장과 같은 상품이 아닙니다. Avana의 리스크 프레임워크는 이러한 다양성을 중심으로 구축됩니다. 변동성, 페그 품질, 이용률, 유동성 깊이, 집중도, 오라클 상태, 시장 상태, 공급 및 차입 한도, LTV와 청산 임계값, 이자율 모델, hub와 LP spoke 전반의 포지션 건강을 함께 감시합니다.",
+      "ru": "Avana не может управлять LP-залогом так же, как обычный кредитный рынок управляет списком токенов. У каждого spoke-рынка своя структура пула, режимы отказа и поведение под стрессом. Стабильный пул — не то же самое, что концентрированный диапазон. Взвешенная корзина в стиле Balancer — не то же самое, что тесно коррелированный рынок в стиле Curve. Риск-фреймворк Avana построен вокруг этого разнообразия. Он отслеживает волатильность, качество привязки, утилизацию, глубину ликвидности, концентрацию, здоровье оракулов, статус рынка, лимиты supply и borrow, LTV и пороги ликвидации, модели процентных ставок и здоровье позиций по hub и LP spoke вместе.",
+      "tr": "Avana, LP teminatını genel bir kredi piyasasının token listesini yönettiği gibi yönetemez. Her spoke piyasasının kendi havuz yapısı, arıza modları ve stres davranışı vardır. Stabil bir havuz, konsantre bir aralıkla aynı ürün değildir. Balancer tarzı ağırlıklı bir sepet, Curve tarzı sıkı korelasyonlu bir piyasayla aynı ürün değildir. Avana'nın risk çerçevesi bu çeşitlilik etrafında kurulmuştur. Volatilite, peg kalitesi, kullanım oranı, likidite derinliği, konsantrasyon, oracle sağlığı, piyasa durumu, arz ve borç limitleri, LTV ve likidasyon eşikleri, faiz oranı modelleri ile hub ve LP spoke'lar genelinde pozisyon sağlığını izler.",
+      "uk": "Avana не може керувати LP-заставою так, як звичайний кредитний ринок керує списком токенів. Кожен spoke-ринок має власну структуру пулу, режими відмови та поведінку під стресом. Стабільний пул — не те саме, що концентрований діапазон. Зважена корзина у стилі Balancer — не те саме, що тісно корельований ринок у стилі Curve. Ризик-фреймворк Avana побудований навколо цієї різноманітності. Він відстежує волатильність, якість прив'язки, утилізацію, глибину ліквідності, концентрацію, здоров'я оракулів, статус ринку, ліміти supply і borrow, LTV та пороги ліквідації, моделі процентних ставок і здоров'я позицій по hub і LP spoke разом."
+    },
+    "Three roles, clear jobs": {
+      "ja": "3つの役割、明確な責務",
+      "ko": "세 가지 역할, 명확한 업무",
+      "ru": "Три роли, чёткие задачи",
+      "tr": "Üç rol, net görevler",
+      "uk": "Три ролі, чіткі завдання"
+    },
+    "Avana separates routine recommendation, independent review, and emergency containment into three roles: the Risk Initiator, the Risk Guardian, and the Risk Defender. The Initiator proposes routine updates inside approved templates, including caps, collateral settings, rates, and pool onboarding. Each proposal is labeled defensive or growth oriented before it enters the normal path. The Guardian is the review and veto layer. It checks that the public disclosure matches what is queued, confirms the action stays inside policy bounds, and can cancel during the timelock. The Defender is narrow by design. It can reduce caps, freeze borrowing, or disable a compromised adapter when waiting for the routine path would leave Avana exposed.": {
+      "ja": "Avanaは、日常的な提言、独立したレビュー、緊急封じ込めを3つの役割に分けます：Risk Initiator、Risk Guardian、Risk Defenderです。Initiatorは上限、担保設定、金利、プールのオンボーディングなど、承認済みテンプレート内でのルーティン更新を提案します。各提案は通常の経路に入る前に防御的か成長志向かがラベル付けされます。Guardianはレビューと拒否権のレイヤーです。公開開示がキュー内容と一致するか確認し、行動がポリシー範囲内かを検証し、タイムロック中にキャンセルできます。Defenderは設計上狭い権限です。ルーティン経路を待つとAvanaが露出する場合、上限を下げ、借入を凍結し、侵害されたアダプターを無効化できます。",
+      "ko": "Avana는 일상적인 권고, 독립적 검토, 비상 봉쇄를 세 가지 역할로 분리합니다: Risk Initiator, Risk Guardian, Risk Defender. Initiator는 한도, 담보 설정, 금리, 풀 온보딩 등 승인된 템플릿 내에서 일상 업데이트를 제안합니다. 각 제안은 일반 경로에 들어가기 전에 방어적 또는 성장 지향으로 라벨링됩니다. Guardian은 검토 및 거부 계층입니다. 공개 공시가 대기열과 일치하는지 확인하고, 조치가 정책 범위 내인지 검증하며, 타임락 중 취소할 수 있습니다. Defender는 설계상 좁은 권한을 가집니다. 일반 경로를 기다리면 Avana가 노출될 때 한도를 줄이고, 차입을 동결하며, 손상된 어댑터를 비활성화할 수 있습니다.",
+      "ru": "Avana разделяет рутинные рекомендации, независимую проверку и экстренное сдерживание на три роли: Risk Initiator, Risk Guardian и Risk Defender. Initiator предлагает рутинные обновления в рамках утверждённых шаблонов, включая лимиты, настройки залога, ставки и онбординг пулов. Каждое предложение маркируется как оборонительное или ориентированное на рост до входа в обычный путь. Guardian — слой проверки и вето. Он проверяет, что публичное раскрытие соответствует очереди, подтверждает соблюдение политики и может отменить во время timelock. Defender по замыслу узок. Он может снизить лимиты, заморозить заимствование или отключить скомпрометированный адаптер, когда ожидание обычного пути оставит Avana уязвимой.",
+      "tr": "Avana, rutin öneri, bağımsız inceleme ve acil kontrolü üç role ayırır: Risk Initiator, Risk Guardian ve Risk Defender. Initiator, limitler, teminat ayarları, oranlar ve havuz onboarding dahil onaylı şablonlar içinde rutin güncellemeler önerir. Her öneri normal yola girmeden önce savunmacı veya büyüme odaklı olarak etiketlenir. Guardian inceleme ve veto katmanıdır. Kamuya açık açıklamanın kuyruktakiyle eşleştiğini kontrol eder, eylemin politika sınırları içinde kaldığını doğrular ve timelock sırasında iptal edebilir. Defender tasarım gereği dar yetkilidir. Rutin yolu beklemek Avana'yı açık bırakacaksa limitleri düşürebilir, borçlanmayı dondurabilir veya tehlikeye girmiş bir adaptörü devre dışı bırakabilir.",
+      "uk": "Avana розділяє рутинні рекомендації, незалежний огляд і екстрене стримування на три ролі: Risk Initiator, Risk Guardian і Risk Defender. Initiator пропонує рутинні оновлення в межах затверджених шаблонів, включно з лімітами, налаштуваннями застави, ставками та онбордингом пулів. Кожну пропозицію маркують як оборонну або орієнтовану на зростання до входу в звичайний шлях. Guardian — шар перевірки та вето. Він перевіряє, що публічне розкриття відповідає черзі, підтверджує дотримання політики й може скасувати під час timelock. Defender за задумом вузький. Він може знизити ліміти, заморозити запозичення або вимкнути скомпрометований адаптер, коли очікування звичайного шляху залишить Avana вразливою."
+    },
+    "How routine changes ship": {
+      "ja": "ルーティン変更の出荷方法",
+      "ko": "일상 변경이 적용되는 방식",
+      "ru": "Как выкатываются рутинные изменения",
+      "tr": "Rutin değişiklikler nasıl devreye girer",
+      "uk": "Як застосовуються рутинні зміни"
+    },
+    "The standard update path on Avana is public notice, submission, validation against predefined bounds, timelock, Guardian review, and execution if nobody vetoes. Developers, users, and governance participants can read the rationale before a change lands and compare the written policy to the queued action. For a protocol built on complex collateral, that public consistency is a basic requirement rather than a marketing extra.": {
+      "ja": "Avanaの標準更新パスは、公開通知、提出、事前定義された範囲での検証、タイムロック、Guardianレビュー、拒否がなければ実行です。開発者、ユーザー、ガバナンス参加者は変更が適用される前に根拠を読み、文書化されたポリシーとキューされた行動を比較できます。複雑な担保を基盤とするプロトコルにとって、この公開的一貫性はマーケティングの付加物ではなく基本的要件です。",
+      "ko": "Avana의 표준 업데이트 경로는 공개 공지, 제출, 사전 정의된 범위에 대한 검증, 타임락, Guardian 검토, 거부가 없으면 실행입니다. 개발자, 사용자, 거버넌스 참여자는 변경이 적용되기 전에 근거를 읽고 문서화된 정책과 대기 중인 조치를 비교할 수 있습니다. 복잡한 담보 위에 구축된 프로토콜에게 이러한 공개적 일관성은 마케팅 부가물이 아니라 기본 요건입니다.",
+      "ru": "Стандартный путь обновления на Avana: публичное уведомление, подача, валидация по заранее заданным границам, timelock, проверка Guardian и исполнение, если никто не наложит вето. Разработчики, пользователи и участники governance могут прочитать обоснование до вступления изменения в силу и сравнить письменную политику с действием в очереди. Для протокола на сложном залоге такая публичная согласованность — базовое требование, а не маркетинговая опция.",
+      "tr": "Avana'daki standart güncelleme yolu kamuya açık bildirim, gönderim, önceden tanımlı sınırlara karşı doğrulama, timelock, Guardian incelemesi ve kimse veto etmezse yürütmeyi içerir. Geliştiriciler, kullanıcılar ve yönetişim katılımcıları bir değişiklik devreye girmeden önce gerekçeyi okuyabilir ve yazılı politikayı kuyruktaki eylemle karşılaştırabilir. Karmaşık teminat üzerine kurulu bir protokol için bu kamusal tutarlılık pazarlama ekstrası değil, temel bir gerekliliktir.",
+      "uk": "Стандартний шлях оновлення на Avana: публічне сповіщення, подання, валідація за заздалегідь визначеними межами, timelock, перевірка Guardian і виконання, якщо ніхто не накладе вето. Розробники, користувачі та учасники governance можуть прочитати обґрунтування до набуття змінами чинності й порівняти письмову політику з дією в черзі. Для протоколу на складній заставі така публічна узгодженість — базова вимога, а не маркетингова опція."
+    },
+    "Not every change uses that path. Cutting risk is meant to be easier than adding risk. Modest tuning inside approved ranges follows the standard flow. Larger moves, such as new spoke families, new LP primitives, new oracle models, or new liquidation adapters, sit outside routine process because they expand Avana's risk surface and need heavier review.": {
+      "ja": "すべての変更がそのパスを使うわけではありません。リスクの削減はリスクの追加より容易であるべきです。承認済み範囲内の控えめな調整は標準フローに従います。新しいspokeファミリー、新しいLPプリミティブ、新しいオラクルモデル、新しい清算アダプターなどの大きな変更は、Avanaのリスク表面を拡大し、より重いレビューを必要とするため、ルーティンプロセスの外に位置します。",
+      "ko": "모든 변경이 그 경로를 사용하는 것은 아닙니다. 리스크 축소는 리스크 추가보다 쉬워야 합니다. 승인된 범위 내의 소폭 조정은 표준 흐름을 따릅니다. 새 spoke 패밀리, 새 LP 프리미티브, 새 오라클 모델, 새 청산 어댑터와 같은 큰 변경은 Avana의 리스크 표면을 확대하고 더 무거운 검토가 필요하므로 일상 프로세스 밖에 있습니다.",
+      "ru": "Не каждое изменение идёт этим путём. Сокращение риска должно быть проще, чем его добавление. Скромная настройка в утверждённых диапазонах следует стандартному потоку. Крупные шаги — новые семейства spoke, новые LP-примитивы, новые модели оракулов или новые адаптеры ликвидации — выходят за рамки рутинного процесса, поскольку расширяют поверхность риска Avana и требуют более тщательной проверки.",
+      "tr": "Her değişiklik bu yolu kullanmaz. Riski azaltmak risk eklemekten daha kolay olmalıdır. Onaylı aralıklar içindeki mütevazı ayarlamalar standart akışı izler. Yeni spoke aileleri, yeni LP primitifleri, yeni oracle modelleri veya yeni likidasyon adaptörleri gibi daha büyük hamleler, Avana'nın risk yüzeyini genişlettiği ve daha ağır inceleme gerektirdiği için rutin sürecin dışında kalır.",
+      "uk": "Не кожна зміна йде цим шляхом. Скорочення ризику має бути простішим, ніж його додавання. Скромне налаштування в затверджених діапазонах слідує стандартному потоку. Великі кроки — нові сімейства spoke, нові LP-примітиви, нові моделі оракулів або нові адаптери ліквідації — виходять за межі рутинного процесу, оскільки розширюють поверхню ризику Avana і потребують ретельнішого огляду."
+    },
+    "When Avana uses emergency power": {
+      "ja": "Avanaが緊急権限を使うとき",
+      "ko": "Avana가 비상 권한을 사용할 때",
+      "ru": "Когда Avana использует экстренные полномочия",
+      "tr": "Avana acil yetkiyi ne zaman kullanır",
+      "uk": "Коли Avana використовує надзвичайні повноваження"
+    },
+    "Emergency cases include oracle inconsistency, liquidation path degradation, abnormal pool behavior, wrapper failure, adapter compromise, or sudden spoke level instability. Even then the framework stays careful. Emergency authority on Avana is narrow, defensive, and reversible. It exists for moments when assumptions are failing faster than timelock governance can respond. It is not a shadow path for everyday optimization.": {
+      "ja": "緊急ケースには、オラクルの不整合、清算パスの劣化、異常なプール挙動、ラッパーの障害、アダプターの侵害、spokeレベルの突然の不安定さが含まれます。それでもフレームワークは慎重さを保ちます。Avanaの緊急権限は狭く、防御的で、可逆的です。前提がタイムロックガバナンスの対応より速く崩れる瞬間のために存在します。日常の最適化のための影の経路ではありません。",
+      "ko": "비상 사례에는 오라클 불일치, 청산 경로 악화, 비정상적인 풀 행동, 래퍼 실패, 어댑터 침해, spoke 수준의 갑작스러운 불안정이 포함됩니다. 그럼에도 프레임워크는 신중함을 유지합니다. Avana의 비상 권한은 좁고, 방어적이며, 가역적입니다. 가정이 타임락 거버넌스의 대응보다 빠르게 실패하는 순간을 위해 존재합니다. 일상적 최적화를 위한 그림자 경로가 아닙니다.",
+      "ru": "Экстренные случаи включают несогласованность оракулов, деградацию пути ликвидации, аномальное поведение пула, отказ wrapper, компрометацию адаптера или внезапную нестабильность на уровне spoke. Даже тогда фреймворк остаётся осторожным. Экстренные полномочия на Avana узкие, оборонительные и обратимые. Они существуют для моментов, когда допущения рушатся быстрее, чем timelock governance может отреагировать. Это не теневой путь для повседневной оптимизации.",
+      "tr": "Acil durumlar oracle tutarsızlığı, likidasyon yolu bozulması, anormal havuz davranışı, wrapper arızası, adaptör ihlali veya ani spoke düzeyinde istikrarsızlığı içerir. Yine de çerçeve dikkatli kalır. Avana'daki acil yetki dar, savunmacı ve geri alınabilirdir. Varsayımların timelock yönetişiminin yanıt verebileceğinden daha hızlı başarısız olduğu anlar için vardır. Günlük optimizasyon için gölge bir yol değildir.",
+      "uk": "Надзвичайні випадки включають неузгодженість оракулів, деградацію шляху ліквідації, аномальну поведінку пулу, відмову wrapper, компрометацію адаптера або раптову нестабільність на рівні spoke. Навіть тоді фреймворк залишається обережним. Надзвичайні повноваження на Avana вузькі, оборонні й зворотні. Вони існують для моментів, коли припущення руйнуються швидше, ніж timelock governance може відреагувати. Це не тіньовий шлях для щоденної оптимізації."
+    },
+    "Taken together, Avana matches governance structure to collateral complexity. LP backed lending needs market templates, bounded execution, transparent disclosure, and a hard line between normal growth, defensive adjustment, and emergency containment. Each spoke keeps its own oracle assumptions, liquidation logic, admission rules, and operational constraints. Avana does not pretend every LP market is interchangeable.": {
+      "ja": "総合すると、Avanaはガバナンス構造を担保の複雑さに合わせます。LP担保レンディングには、市場テンプレート、境界のある実行、透明な開示、通常の成長・防御的調整・緊急封じ込めの間の明確な線が必要です。各spokeは独自のオラクル前提、清算ロジック、准入ルール、運用制約を保持します。AvanaはすべてのLP市場が互換可能であるかのように振る舞いません。",
+      "ko": "종합하면 Avana는 거버넌스 구조를 담보 복잡성에 맞춥니다. LP 담보 대출에는 시장 템플릿, 제한된 실행, 투명한 공시, 일반 성장·방어적 조정·비상 봉쇄 사이의 명확한 경계가 필요합니다. 각 spoke는 고유한 오라클 가정, 청산 로직, 승인 규칙, 운영 제약을 유지합니다. Avana는 모든 LP 시장이 상호 교환 가능한 것처럼 가정하지 않습니다.",
+      "ru": "В совокупности Avana согласует структуру governance со сложностью залога. Кредитование под LP требует рыночных шаблонов, ограниченного исполнения, прозрачного раскрытия и чёткой границы между обычным ростом, оборонительной корректировкой и экстренным сдерживанием. Каждый spoke сохраняет свои допущения оракулов, логику ликвидации, правила допуска и операционные ограничения. Avana не притворяется, что каждый LP-рынок взаимозаменяем.",
+      "tr": "Birlikte ele alındığında Avana, yönetişim yapısını teminat karmaşıklığına uyarlar. LP destekli kredi, piyasa şablonları, sınırlı yürütme, şeffaf açıklama ve normal büyüme, savunmacı ayarlama ve acil kontrol arasında net bir çizgi gerektirir. Her spoke kendi oracle varsayımlarını, likidasyon mantığını, kabul kurallarını ve operasyonel kısıtlamalarını korur. Avana her LP piyasasının birbirinin yerine geçebilir olduğunu varsaymaz.",
+      "uk": "У сукупності Avana узгоджує структуру governance зі складністю застави. Кредитування під LP потребує ринкових шаблонів, обмеженого виконання, прозорого розкриття та чіткої межі між звичайним зростанням, оборонною корекцією й екстреним стримуванням. Кожен spoke зберігає власні припущення оракулів, логіку ліквідації, правила допуску та операційні обмеження. Avana не вдає, що кожен LP-ринок взаємозамінний."
+    },
+    "On Avana, LP collateral is active, path dependent, and operationally demanding. It earns fees, shifts composition, changes risk as markets move, and can require venue specific actions exactly when a position becomes stressed. A standard token market can often reduce liquidation and monitoring to a simpler trigger and swap path. LP collateral is different. The system has to know which positions are active, how debt is drifting, what the collateral would look like under a real unwind, how fees can be realized, which venue specific removal path applies, and whether liquidation is still viable after slippage, routing, and execution cost. Those details are what separate theoretical coverage on paper from coverage that still works when markets get hard.": {
+      "ja": "Avanaでは、LP担保はアクティブで、パス依存であり、運用上要求が高いものです。手数料を稼ぎ、構成が変わり、市場の動きに応じてリスクが変化し、ポジションがストレスを受けるまさにその時にvenue固有のアクションが必要になることがあります。標準的なトークン市場は、清算とモニタリングをより単純なトリガーとスワップパスに還元できることが多いです。LP担保は異なります。システムはどのポジションがアクティブか、負債がどう漂流しているか、実際のアンウィンド下で担保がどう見えるか、手数料をどう実現できるか、どのvenue固有の除去パスが適用されるか、スリッページ、ルーティング、実行コスト後も清算が実行可能かを知る必要があります。これらの詳細が、紙上の理論的カバレッジと、市場が厳しくなっても機能するカバレッジを分けます。",
+      "ko": "Avana에서 LP 담보는 활성적이고, 경로 의존적이며, 운영상 까다롭습니다. 수수료를 벌고, 구성이 변하며, 시장이 움직이면서 리스크가 바뀌고, 포지션이 스트레스를 받을 때 정확히 venue별 조치가 필요할 수 있습니다. 표준 토큰 시장은 청산과 모니터링을 더 단순한 트리거와 스왑 경로로 줄일 수 있는 경우가 많습니다. LP 담보는 다릅니다. 시스템은 어떤 포지션이 활성인지, 부채가 어떻게 표류하는지, 실제 unwind 하에서 담보가 어떻게 보이는지, 수수료를 어떻게 실현할 수 있는지, 어떤 venue별 제거 경로가 적용되는지, 슬리피지, 라우팅, 실행 비용 후에도 청산이 가능한지 알아야 합니다. 이러한 세부 사항이 이론적 커버리지와 시장이 어려워져도 작동하는 커버리지를 구분합니다.",
+      "ru": "На Avana LP-залог активен, зависит от пути и требователен в эксплуатации. Он приносит комиссии, меняет состав, изменяет риск по мере движения рынков и может требовать venue-специфичных действий именно когда позиция находится под стрессом. Стандартный токен-рынок часто сводит ликвидацию и мониторинг к более простому триггеру и swap-пути. LP-залог другой. Система должна знать, какие позиции активны, как дрейфует долг, как будет выглядеть залог при реальном unwind, как можно реализовать комиссии, какой venue-специфичный путь удаления применим и остаётся ли ликвидация жизнеспособной после slippage, маршрутизации и стоимости исполнения. Эти детали отделяют теоретическое покрытие на бумаге от покрытия, которое работает, когда рынки ужесточаются.",
+      "tr": "Avana'da LP teminatı aktif, yol bağımlı ve operasyonel olarak zorludur. Ücret kazanır, bileşim değişir, piyasalar hareket ettikçe risk değişir ve bir pozisyon stres altına girdiğinde tam o anda venue'ye özgü eylemler gerekebilir. Standart bir token piyasası likidasyon ve izlemeyi genellikle daha basit bir tetikleyici ve swap yoluna indirgeyebilir. LP teminatı farklıdır. Sistem hangi pozisyonların aktif olduğunu, borcun nasıl sürüklendiğini, gerçek bir unwind altında teminatın nasıl görüneceğini, ücretlerin nasıl gerçekleştirilebileceğini, hangi venue'ye özgü çıkarma yolunun geçerli olduğunu ve slippage, yönlendirme ve yürütme maliyetinden sonra likidasyonun hâlâ uygulanabilir olup olmadığını bilmelidir. Bu ayrıntılar, kağıt üzerindeki teorik kapsamı piyasalar zorlaştığında hâlâ çalışan kapsamdan ayırır.",
+      "uk": "На Avana LP-застава активна, залежить від шляху й вимоглива в експлуатації. Вона приносить комісії, змінює склад, змінює ризик у міру руху ринків і може вимагати venue-специфічних дій саме коли позиція під стресом. Стандартний токен-ринок часто зводить ліквідацію й моніторинг до простішого тригера та swap-шляху. LP-застава інша. Система має знати, які позиції активні, як дрейфує борг, як виглядатиме застава при реальному unwind, як можна реалізувати комісії, який venue-специфічний шлях видалення застосовний і чи залишається ліквідація життєздатною після slippage, маршрутизації та вартості виконання. Ці деталі відокремлюють теоретичне покриття на папері від покриття, яке працює, коли ринки ускладнюються."
+    },
+    "What Avana Smart Agents do": {
+      "ja": "Avana Smart Agentsの役割",
+      "ko": "Avana Smart Agents가 하는 일",
+      "ru": "Что делают Avana Smart Agents",
+      "tr": "Avana Smart Agents ne yapar",
+      "uk": "Що роблять Avana Smart Agents"
+    },
+    "Avana's node runtime reads onchain activity, keeps a live map of active positions, refreshes drifting debt on short intervals, and runs broader sweeps to catch stale or missed state. The app UI, dashboards, monitoring logic, and liquidation workflows are meant to draw from that same operational picture, rather than each layer inventing its own version of the market.": {
+      "ja": "Avanaのノードランタイムはオンチェーン活動を読み取り、アクティブなポジションのライブマップを維持し、短い間隔で漂流する負債を更新し、古いまたは見逃された状態を捕捉するための広範なスイープを実行します。アプリUI、ダッシュボード、モニタリングロジック、清算ワークフローは、各レイヤーが独自の市場バージョンを作るのではなく、この同じ運用像から描画されることを意図しています。",
+      "ko": "Avana의 노드 런타임은 온체인 활동을 읽고, 활성 포지션의 라이브 맵을 유지하며, 짧은 간격으로 표류하는 부채를 갱신하고, 오래되거나 누락된 상태를 잡기 위한 광범위한 스윕을 실행합니다. 앱 UI, 대시보드, 모니터링 로직, 청산 워크플로는 각 계층이 자체 시장 버전을 만들기보다 이 동일한 운영 그림에서 그려지도록 설계되었습니다.",
+      "ru": "Node runtime Avana читает onchain-активность, ведёт живую карту активных позиций, обновляет дрейфующий долг на коротких интервалах и выполняет более широкие проходы для обнаружения устаревшего или пропущенного состояния. UI приложения, дашборды, логика мониторинга и workflow ликвидации должны опираться на ту же операционную картину, а не каждый слой изобретает свою версию рынка.",
+      "tr": "Avana'nın node runtime'ı onchain aktiviteyi okur, aktif pozisyonların canlı haritasını tutar, sürüklenen borcu kısa aralıklarla yeniler ve eski veya kaçırılmış durumu yakalamak için daha geniş taramalar yapar. Uygulama UI'sı, panolar, izleme mantığı ve likidasyon iş akışları, her katmanın kendi piyasa versiyonunu icat etmesi yerine aynı operasyonel tablodan beslenmek üzere tasarlanmıştır.",
+      "uk": "Node runtime Avana читає onchain-активність, веде живу карту активних позицій, оновлює дрейфуючий борг на коротких інтервалах і виконує ширші проходи для виявлення застарілого або пропущеного стану. UI додатка, дашборди, логіка моніторингу та workflow ліквідації мають спиратися на ту саму операційну картину, а не кожен шар вигадує власну версію ринку."
+    },
+    "Liquidation is where this matters most. When an Avana position falls below allowed borrowing capacity, the execution layer has to evaluate whether the job can be serviced profitably, source temporary liquidity, repay debt into the credit layer, claim fees, unwind the collateral through the correct venue path, route the resulting assets, settle the flash path, distribute the liquidation premium, and preserve borrower residual value when anything remains. That is a chain of work, not a single transaction type.": {
+      "ja": "清算はここが最も重要です。Avanaポジションが許容借入容量を下回ると、実行レイヤーはジョブが利益を出して処理できるか評価し、一時的な流動性を調達し、クレジットレイヤーに負債を返済し、手数料を請求し、正しいvenueパスで担保をアンウィンドし、結果の資産をルーティングし、フラッシュパスを決済し、清算プレミアムを分配し、残りがあれば借り手の残余価値を保持する必要があります。これは単一のトランザクションタイプではなく、作業の連鎖です。",
+      "ko": "청산은 여기서 가장 중요합니다. Avana 포지션이 허용 차입 용량 아래로 떨어지면 실행 계층은 작업을 수익성 있게 처리할 수 있는지 평가하고, 임시 유동성을 조달하며, 신용 계층에 부채를 상환하고, 수수료를 청구하고, 올바른 venue 경로로 담보를 unwind하며, 결과 자산을 라우팅하고, 플래시 경로를 정산하고, 청산 프리미엄을 분배하며, 남은 것이 있으면 차입자 잔여 가치를 보존해야 합니다. 이것은 단일 트랜잭션 유형이 아니라 작업의 연쇄입니다.",
+      "ru": "Ликвидация — здесь это важнее всего. Когда позиция Avana падает ниже допустимой заёмной ёмкости, слой исполнения должен оценить, можно ли обслужить задачу с прибылью, найти временную ликвидность, погасить долг в кредитном слое, забрать комиссии, развернуть залог через правильный venue-путь, маршрутизировать полученные активы, закрыть flash-путь, распределить премию ликвидации и сохранить остаточную стоимость заёмщика, если что-то остаётся. Это цепочка работ, а не один тип транзакции.",
+      "tr": "Likidasyon burada en çok önem taşır. Bir Avana pozisyonu izin verilen borçlanma kapasitesinin altına düştüğünde, yürütme katmanı işin kârlı şekilde hizmet edilip edilemeyeceğini değerlendirmeli, geçici likidite sağlamalı, borcu kredi katmanına geri ödemeli, ücretleri talep etmeli, teminatı doğru venue yoluyla çözmeli, ortaya çıkan varlıkları yönlendirmeli, flash yolunu kapatmalı, likidasyon primini dağıtmalı ve kalan bir şey varsa borçlunun artık değerini korumalıdır. Bu tek bir işlem türü değil, bir iş zinciridir.",
+      "uk": "Ліквідація — тут це найважливіше. Коли позиція Avana падає нижче дозволеної позикової ємності, шар виконання має оцінити, чи можна обслуговувати завдання з прибутком, знайти тимчасову ліквідність, погасити борг у кредитному шарі, забрати комісії, розгорнути заставу через правильний venue-шлях, маршрутизувати отримані активи, закрити flash-шлях, розподілити премію ліквідації й зберегти залишкову вартість позичальника, якщо щось залишається. Це ланцюг робіт, а не один тип транзакції."
+    },
+    "Before liquidation, and across venues": {
+      "ja": "清算前、そしてvenueを横断して",
+      "ko": "청산 전, 그리고 venue 전반에서",
+      "ru": "До ликвидации и между venue",
+      "tr": "Likidasyondan önce ve venue'ler arasında",
+      "uk": "До ліквідації та між venue"
+    },
+    "Smart Agents also matter before liquidation happens. Indexing Avana positions, watching debt drift, and keeping the protocol aligned with its own oracle and risk assumptions improve readiness. Operational delay is not free when collateral keeps moving with the market.": {
+      "ja": "Smart Agentsは清算が起きる前にも重要です。Avanaポジションのインデックス化、負債漂流の監視、プロトコルを自身のオラクルとリスク前提に整合させることで、準備態勢が向上します。担保が市場とともに動き続けるとき、運用の遅延は無料ではありません。",
+      "ko": "Smart Agents는 청산이 발생하기 전에도 중요합니다. Avana 포지션 인덱싱, 부채 표류 감시, 프로토콜을 자체 오라클 및 리스크 가정에 맞추는 것이 준비 상태를 개선합니다. 담보가 시장과 함께 계속 움직일 때 운영 지연은 공짜가 아닙니다.",
+      "ru": "Smart Agents важны и до ликвидации. Индексация позиций Avana, наблюдение за дрейфом долга и поддержание протокола в соответствии с собственными допущениями оракулов и риска повышают готовность. Операционная задержка не бесплатна, когда залог продолжает двигаться вместе с рынком.",
+      "tr": "Smart Agents likidasyon gerçekleşmeden önce de önemlidir. Avana pozisyonlarını indekslemek, borç sürüklenmesini izlemek ve protokolü kendi oracle ve risk varsayımlarıyla uyumlu tutmak hazırlığı artırır. Teminat piyasayla hareket etmeye devam ettiğinde operasyonel gecikme bedelsiz değildir.",
+      "uk": "Smart Agents важливі й до ліквідації. Індексація позицій Avana, спостереження за дрейфом боргу та підтримка протоколу відповідно до власних припущень оракулів і ризику підвищують готовність. Операційна затримка не безкоштовна, коли застава продовжує рухатися разом із ринком."
+    },
+    "LP collateral is an adapter problem as much as a valuation problem. Fungible LPs, concentrated ranges, and custom pool designs need different venue aware handling. Smart Agents are Avana's layer for respecting those differences instead of forcing one generic pathway onto every market. The oracle tells Avana what a position might be worth as credit. The agent layer helps determine whether that value can actually be recovered in practice.": {
+      "ja": "LP担保は評価問題と同時にアダプター問題でもあります。代替可能なLP、集中レンジ、カスタムプール設計には異なるvenue対応の処理が必要です。Smart Agentsは、すべての市場に汎用パスを強制するのではなく、これらの違いを尊重するAvanaのレイヤーです。オラクルはポジションがクレジットとしてどれだけの価値があるかをAvanaに伝えます。エージェントレイヤーは、その価値が実際に回収可能かを判断するのに役立ちます。",
+      "ko": "LP 담보는 평가 문제만큼 어댑터 문제입니다. 대체 가능한 LP, 집중 범위, 커스텀 풀 설계는 서로 다른 venue 인식 처리가 필요합니다. Smart Agents는 모든 시장에 하나의 범용 경로를 강제하는 대신 이러한 차이를 존중하는 Avana의 계층입니다. 오라클은 포지션이 신용으로 얼마나 가치 있는지 Avana에 알려줍니다. 에이전트 계층은 그 가치가 실제로 회수 가능한지 판단하는 데 도움을 줍니다.",
+      "ru": "LP-залог — это проблема адаптеров не меньше, чем проблема оценки. Взаимозаменяемые LP, концентрированные диапазоны и кастомные дизайны пулов требуют разной venue-осведомлённой обработки. Smart Agents — слой Avana для уважения этих различий вместо навязывания одного универсального пути каждому рынку. Оракул говорит Avana, сколько позиция может стоить как кредит. Слой агентов помогает определить, можно ли эту стоимость реально восстановить на практике.",
+      "tr": "LP teminatı bir değerleme sorunu kadar bir adaptör sorunudur. Değiştirilebilir LP'ler, konsantre aralıklar ve özel havuz tasarımları farklı venue farkındalıklı işlem gerektirir. Smart Agents, her piyasaya tek bir genel yol zorlamak yerine bu farklara saygı duyan Avana katmanıdır. Oracle, bir pozisyonun kredi olarak ne kadar değerli olabileceğini Avana'ya söyler. Ajan katmanı bu değerin pratikte gerçekten kurtarılıp kurtarılamayacağını belirlemeye yardımcı olur.",
+      "uk": "LP-застава — це проблема адаптерів не менше, ніж проблема оцінки. Взаємозамінні LP, концентровані діапазони та кастомні дизайни пулів потребують різної venue-обізнаної обробки. Smart Agents — шар Avana для поваги до цих відмінностей замість нав'язування одного універсального шляху кожному ринку. Оракул каже Avana, скільки позиція може коштувати як кредит. Шар агентів допомагає визначити, чи можна цю вартість реально відновити на практиці."
+    },
+    "Avana does not replace permissionless liquidation. External builders can still monitor and act. Protocol operated runtimes improve baseline coverage for collateral that is structurally harder to service. In stress that matters a lot. The worst moment to discover that a market lacks reliable execution coverage is during the liquidation event itself.": {
+      "ja": "Avanaはパーミッションレス清算を置き換えません。外部ビルダーは引き続き監視し行動できます。プロトコル運用のランタイムは、構造的にサービスが難しい担保のベースラインカバレッジを改善します。ストレス時にはそれが大きく重要になります。市場に信頼できる実行カバレッジがないことを発見する最悪の瞬間は、清算イベントそのものの最中です。",
+      "ko": "Avana는 무허가 청산을 대체하지 않습니다. 외부 빌더는 여전히 모니터링하고 행동할 수 있습니다. 프로토콜 운영 런타임은 구조적으로 서비스하기 어려운 담보의 기본 커버리지를 개선합니다. 스트레스 상황에서 이는 매우 중요합니다. 시장에 신뢰할 수 있는 실행 커버리지가 없다는 것을 발견하는 최악의 순간은 청산 이벤트 자체입니다.",
+      "ru": "Avana не заменяет permissionless ликвидацию. Внешние билдеры по-прежнему могут мониторить и действовать. Управляемые протоколом runtime улучшают базовое покрытие для залога, который структурно сложнее обслуживать. Под стрессом это очень важно. Худший момент обнаружить, что у рынка нет надёжного покрытия исполнения — во время самого события ликвидации.",
+      "tr": "Avana izinsiz likidasyonun yerini almaz. Harici geliştiriciler hâlâ izleyebilir ve harekete geçebilir. Protokol tarafından işletilen runtime'lar, yapısal olarak hizmet vermesi daha zor teminat için temel kapsamı iyileştirir. Stres altında bu çok önemlidir. Bir piyasanın güvenilir yürütme kapsamından yoksun olduğunu keşfetmenin en kötü anı, likidasyon olayının kendisidir.",
+      "uk": "Avana не замінює permissionless ліквідацію. Зовнішні білдери досі можуть моніторити й діяти. Керовані протоколом runtime покращують базове покриття для застави, яку структурно важче обслуговувати. Під стресом це дуже важливо. Найгірший момент виявити, що ринок не має надійного покриття виконання — під час самої події ліквідації."
+    },
+    "Not a simple token sale": {
+      "ja": "単純なトークン売却ではない",
+      "ko": "단순한 토큰 매도가 아니다",
+      "ru": "Не простая продажа токена",
+      "tr": "Basit bir token satışı değil",
+      "uk": "Не простий продаж токена"
+    },
+    "Liquidating LP collateral on Avana is not the same as liquidating a token balance. The collateral may contain multiple assets, uncollected fees, concentrated range exposure, and venue specific exit mechanics. If a position becomes unhealthy, Avana needs a controlled unwind, not a panic sale that treats the LP like a single fungible chip.": {
+      "ja": "AvanaでのLP担保の清算は、トークン残高の清算と同じではありません。担保には複数の資産、未回収の手数料、集中レンジのエクスポージャー、venue固有の出口メカニズムが含まれる場合があります。ポジションが不健全になると、AvanaにはLPを単一の代替可能チップのように扱うパニック売りではなく、制御されたアンウィンドが必要です。",
+      "ko": "Avana에서 LP 담보 청산은 토큰 잔액 청산과 같지 않습니다. 담보에는 여러 자산, 미수령 수수료, 집중 범위 노출, venue별 출구 메커니즘이 포함될 수 있습니다. 포지션이 불건전해지면 Avana는 LP를 단일 대체 가능 칩처럼 다루는 패닉 매도가 아니라 통제된 unwind가 필요합니다.",
+      "ru": "Ликвидация LP-залога на Avana — не то же самое, что ликвидация баланса токена. Залог может содержать несколько активов, несобранные комиссии, экспозицию концентрированного диапазона и venue-специфичную механику выхода. Если позиция становится нездоровой, Avana нужен контролируемый unwind, а не паническая продажа, относящаяся к LP как к одной взаимозаменяемой фишке.",
+      "tr": "Avana'da LP teminatını likide etmek, bir token bakiyesini likide etmekle aynı değildir. Teminat birden fazla varlık, toplanmamış ücretler, konsantre aralık maruziyeti ve venue'ye özgü çıkış mekanizmaları içerebilir. Bir pozisyon sağlıksız hale gelirse Avana'nın LP'yi tek bir değiştirilebilir fiş gibi ele alan panik satışı değil, kontrollü bir unwind'a ihtiyacı vardır.",
+      "uk": "Ліквідація LP-застави на Avana — не те саме, що ліквідація балансу токена. Застава може містити кілька активів, невибрані комісії, експозицію концентрованого діапазону та venue-специфічну механіку виходу. Якщо позиція стає нездоровою, Avana потребує контрольованого unwind, а не панічного продажу, що ставиться до LP як до однієї взаємозамінної фішки."
+    },
+    "The runtime sequence": {
+      "ja": "ランタイムシーケンス",
+      "ko": "런타임 시퀀스",
+      "ru": "Последовательность runtime",
+      "tr": "Runtime sırası",
+      "uk": "Послідовність runtime"
+    },
+    "In practice, liquidation is a runtime sequence. Unhealthy accounts are detected using Avana's risk adjusted collateral values rather than raw AMM spot state. Execution liquidity is sourced, often through a flashloan style path. Debt is repaid into the credit layer. The position moves into controlled custody. Claimable fees are realized where that helps. The LP is unwound through the correct venue path. After the underlyings are recovered, they are routed into the debt asset, execution liquidity is repaid, the liquidation premium is distributed, and any residual borrower value is returned.": {
+      "ja": "実際には、清算はランタイムシーケンスです。不健全なアカウントは生のAMMスポット状態ではなく、Avanaのリスク調整済み担保価値で検出されます。実行流動性は、多くの場合flashloanスタイルのパスで調達されます。負債はクレジットレイヤーに返済されます。ポジションは制御されたカストディに移動します。役立つ場合は請求可能な手数料が実現されます。LPは正しいvenueパスでアンウィンドされます。原資産が回収された後、負債資産にルーティングされ、実行流動性が返済され、清算プレミアムが分配され、残余の借り手価値が返還されます。",
+      "ko": "실제로 청산은 런타임 시퀀스입니다. 불건전한 계정은 원시 AMM 스팟 상태가 아니라 Avana의 리스크 조정 담보 가치로 감지됩니다. 실행 유동성은 종종 flashloan 스타일 경로로 조달됩니다. 부채는 신용 계층에 상환됩니다. 포지션은 통제된 커스터디로 이동합니다. 도움이 되는 경우 청구 가능한 수수료가 실현됩니다. LP는 올바른 venue 경로로 unwind됩니다. 기초 자산이 회수된 후 부채 자산으로 라우팅되고, 실행 유동성이 상환되며, 청산 프리미엄이 분배되고, 잔여 차입자 가치가 반환됩니다.",
+      "ru": "На практике ликвидация — это последовательность runtime. Нездоровые аккаунты обнаруживаются по риск-скорректированным значениям залога Avana, а не по сырому AMM spot-состоянию. Исполнительная ликвидность находится, часто через flashloan-путь. Долг погашается в кредитный слой. Позиция переходит под контролируемое хранение. Заявляемые комиссии реализуются, где это помогает. LP разворачивается через правильный venue-путь. После восстановления underlyings они маршрутизируются в долговой актив, исполнительная ликвидность возвращается, премия ликвидации распределяется, а остаточная стоимость заёмщика возвращается.",
+      "tr": "Pratikte likidasyon bir runtime sırasıdır. Sağlıksız hesaplar ham AMM spot durumu yerine Avana'nın risk ayarlı teminat değerleri kullanılarak tespit edilir. Yürütme likiditesi, genellikle flashloan tarzı bir yol üzerinden sağlanır. Borç kredi katmanına geri ödenir. Pozisyon kontrollü saklamaya geçer. Yardımcı olduğu yerde talep edilebilir ücretler gerçekleştirilir. LP doğru venue yoluyla çözülür. Altta yatan varlıklar kurtarıldıktan sonra borç varlığına yönlendirilir, yürütme likiditesi geri ödenir, likidasyon primi dağıtılır ve kalan borçlu değeri iade edilir.",
+      "uk": "На практиці ліквідація — це послідовність runtime. Нездорові акаунти виявляються за ризик-скоригованими значеннями застави Avana, а не за сирим AMM spot-станом. Виконавча ліквідність знаходиться, часто через flashloan-шлях. Борг погашається в кредитний шар. Позиція переходить під контрольоване зберігання. Заявні комісії реалізуються, де це допомагає. LP розгортається через правильний venue-шлях. Після відновлення underlyings вони маршрутизуються в борговий актив, виконавча ліквідність повертається, премія ліквідації розподіляється, а залишкова вартість позичальника повертається."
+    },
+    "Different LP families on Avana do not share one exit path. Fungible LPs are removed from the pool and broken into underlyings. Concentrated ranges have to be handled according to their actual inventory at unwind time, which can look very different from what users assume if price has pushed the position to one side. Custom or hook based pools may need dedicated adapters before Avana treats them as safe enough for liquidation coverage at all. If Avana cannot unwind a collateral type correctly, it should not pretend the market is fully supported.": {
+      "ja": "Avana上の異なるLPファミリーは1つの出口パスを共有しません。代替可能なLPはプールから除去され、原資産に分解されます。集中レンジはアンウィンド時の実際のインベントリに応じて処理する必要があり、価格がポジションを片側に押し出した場合、ユーザーの想定と大きく異なることがあります。カスタムまたはhookベースのプールは、Avanaが清算カバレッジに十分安全と見なす前に専用アダプターが必要な場合があります。Avanaが担保タイプを正しくアンウィンドできないなら、市場が完全にサポートされているかのように装うべきではありません。",
+      "ko": "Avana의 서로 다른 LP 패밀리는 하나의 출구 경로를 공유하지 않습니다. 대체 가능한 LP는 풀에서 제거되어 기초 자산으로 분해됩니다. 집중 범위는 unwind 시점의 실제 재고에 따라 처리해야 하며, 가격이 포지션을 한쪽으로 밀어내면 사용자 가정과 매우 다를 수 있습니다. 커스텀 또는 hook 기반 풀은 Avana가 청산 커버리지에 충분히 안전하다고 보기 전에 전용 어댑터가 필요할 수 있습니다. Avana가 담보 유형을 올바르게 unwind할 수 없다면 시장이 완전히 지원되는 것처럼 가장해서는 안 됩니다.",
+      "ru": "Разные семейства LP на Avana не делят один путь выхода. Взаимозаменяемые LP удаляются из пула и разбиваются на underlyings. Концентрированные диапазоны нужно обрабатывать согласно фактическому инвентарю на момент unwind, что может сильно отличаться от предположений пользователей, если цена сдвинула позицию в одну сторону. Кастомные или hook-based пулы могут потребовать выделенных адаптеров, прежде чем Avana сочтёт их достаточно безопасными для покрытия ликвидации. Если Avana не может правильно развернуть тип залога, она не должна притворяться, что рынок полностью поддерживается.",
+      "tr": "Avana'daki farklı LP aileleri tek bir çıkış yolunu paylaşmaz. Değiştirilebilir LP'ler havuzdan çıkarılır ve altta yatan varlıklara ayrılır. Konsantre aralıklar, unwind anındaki gerçek envantere göre ele alınmalıdır; fiyat pozisyonu bir tarafa ittiyse bu kullanıcıların varsayımlarından çok farklı görünebilir. Özel veya hook tabanlı havuzlar, Avana onları likidasyon kapsamı için yeterince güvenli görmeden önce özel adaptörler gerektirebilir. Avana bir teminat türünü doğru şekilde çözemiyorsa, piyasanın tam desteklendiğini iddia etmemelidir.",
+      "uk": "Різні сімейства LP на Avana не ділять один шлях виходу. Взаємозамінні LP видаляються з пулу й розбиваються на underlyings. Концентровані діапазони потрібно обробляти згідно з фактичним інвентарем на момент unwind, що може сильно відрізнятися від припущень користувачів, якщо ціна зсунула позицію в один бік. Кастомні або hook-based пули можуть потребувати виділених адаптерів, перш ніж Avana вважатиме їх достатньо безпечними для покриття ліквідації. Якщо Avana не може правильно розгорнути тип застави, вона не повинна вдавати, що ринок повністю підтримується."
+    },
+    "Partial cuts and fees first": {
+      "ja": "部分削減と手数料優先",
+      "ko": "부분 축소와 수수료 우선",
+      "ru": "Частичные сокращения и комиссии в первую очередь",
+      "tr": "Kısmi kesintiler ve önce ücretler",
+      "uk": "Часткові скорочення та комісії насамперед"
+    },
+    "Avana aims to restore target health rather than defaulting to full liquidation. Partial liquidation is preferred because it reduces unnecessary borrower loss and limits disruption to the underlying pool. The framework computes the debt needed to put the loan back on safer ground and targets that amount first. Full liquidation remains the fallback when solvency cannot be recovered with a smaller cut.": {
+      "ja": "Avanaは完全清算をデフォルトにするのではなく、目標ヘルスを回復することを目指します。部分清算は、不要な借り手の損失を減らし、原資産プールへの混乱を制限するため優先されます。フレームワークはローンをより安全な状態に戻すために必要な負債を計算し、まずその金額を対象とします。より小さな削減でソルベンシーを回復できない場合、完全清算がフォールバックとなります。",
+      "ko": "Avana는 전체 청산을 기본으로 하기보다 목표 건강을 회복하는 것을 목표로 합니다. 부분 청산은 불필요한 차입자 손실을 줄이고 기초 풀의 혼란을 제한하기 때문에 선호됩니다. 프레임워크는 대출을 더 안전한 상태로 되돌리는 데 필요한 부채를 계산하고 먼저 그 금액을 대상으로 합니다. 더 작은 축소로 지급 능력을 회복할 수 없을 때 전체 청산이 대안이 됩니다.",
+      "ru": "Avana стремится восстановить целевое здоровье, а не по умолчанию прибегать к полной ликвидации. Частичная ликвидация предпочтительна, поскольку снижает ненужные потери заёмщика и ограничивает нарушение базового пула. Фреймворк вычисляет долг, необходимый для возврата кредита на более безопасную позицию, и нацеливается на эту сумму в первую очередь. Полная ликвидация остаётся запасным вариантом, когда платёжеспособность нельзя восстановить меньшим сокращением.",
+      "tr": "Avana, tam likidasyona varsayılan yapmak yerine hedef sağlığı geri kazanmayı amaçlar. Kısmi likidasyon tercih edilir çünkü gereksiz borçlu kaybını azaltır ve altta yatan havuza verilen rahatsızlığı sınırlar. Çerçeve, krediyi daha güvenli bir zemine döndürmek için gereken borcu hesaplar ve önce bu tutarı hedefler. Daha küçük bir kesintiyle ödeme gücü kurtarılamadığında tam likidasyon yedek kalır.",
+      "uk": "Avana прагне відновити цільове здоров'я, а не за замовчуванням вдаватися до повної ліквідації. Часткова ліквідація переважна, оскільки зменшує непотрібні втрати позичальника й обмежує порушення базового пулу. Фреймворк обчислює борг, потрібний для повернення кредиту на безпечнішу позицію, і спочатку націлюється на цю суму. Повна ліквідація залишається запасним варіантом, коли платоспроможність не можна відновити меншим скороченням."
+    },
+    "Fees matter too. LP positions often contain claimable value that has not been realized yet. If fees can reduce how much principal must be unwound, Avana should use them before cutting deeper into the position. That improves borrower outcomes and makes liquidation more precise. LP positions are live financial objects, not passive token balances, and Avana's process is written to match that.": {
+      "ja": "手数料も重要です。LPポジションにはまだ実現されていない請求可能な価値が含まれることが多いです。手数料がアンウィンドすべき元本を減らせるなら、Avanaはポジションをより深く削る前にそれを使うべきです。それは借り手の結果を改善し、清算をより精密にします。LPポジションは受動的なトークン残高ではなく、生きた金融オブジェクトであり、Avanaのプロセスはそれに合わせて書かれています。",
+      "ko": "수수료도 중요합니다. LP 포지션에는 아직 실현되지 않은 청구 가능한 가치가 포함되는 경우가 많습니다. 수수료가 unwind해야 할 원금을 줄일 수 있다면 Avana는 포지션을 더 깊이 자르기 전에 이를 사용해야 합니다. 이는 차입자 결과를 개선하고 청산을 더 정밀하게 만듭니다. LP 포지션은 수동적 토큰 잔액이 아니라 살아 있는 금융 객체이며, Avana의 프로세스는 이에 맞게 작성되었습니다.",
+      "ru": "Комиссии тоже важны. LP-позиции часто содержат заявляемую стоимость, которая ещё не реализована. Если комиссии могут уменьшить объём principal, который нужно развернуть, Avana должна использовать их, прежде чем глубже резать позицию. Это улучшает исход для заёмщика и делает ликвидацию точнее. LP-позиции — живые финансовые объекты, а не пассивные балансы токенов, и процесс Avana написан с учётом этого.",
+      "tr": "Ücretler de önemlidir. LP pozisyonları genellikle henüz gerçekleştirilmemiş talep edilebilir değer içerir. Ücretler çözülmesi gereken anaparayı azaltabiliyorsa Avana, pozisyona daha derin kesmeden önce bunları kullanmalıdır. Bu borçlu sonuçlarını iyileştirir ve likidasyonu daha hassas kılar. LP pozisyonları pasif token bakiyeleri değil, canlı finansal nesnelerdir ve Avana'nın süreci buna uygun yazılmıştır.",
+      "uk": "Комісії теж важливі. LP-позиції часто містять заявну вартість, яка ще не реалізована. Якщо комісії можуть зменшити обсяг principal, який потрібно розгорнути, Avana має використати їх, перш ніж глибше різати позицію. Це покращує результат для позичальника й робить ліквідацію точнішою. LP-позиції — живі фінансові об'єкти, а не пасивні баланси токенів, і процес Avana написаний з урахуванням цього."
+    },
+    "Who runs liquidation": {
+      "ja": "誰が清算を実行するか",
+      "ko": "누가 청산을 실행하는가",
+      "ru": "Кто выполняет ликвидацию",
+      "tr": "Likidasyonu kim yürütür",
+      "uk": "Хто виконує ліквідацію"
+    },
+    "Specialized liquidation runtimes make a difference here. Nodes built for Avana LP liquidation watch active positions, refresh debt drift, index market state, simulate unwind paths, source execution liquidity, route assets, and close transactions atomically. Liquidation remains permissionless, but LP collateral is harder for purely generic liquidators to service because the workflow is longer and more venue specific. Liquidators also have to price in slippage, route depth, flashloan cost, and MEV exposure. Large or unusual unwinds may need quieter execution paths so a recoverable job does not turn into a destructive one.": {
+      "ja": "専用の清算ランタイムがここで違いを生みます。Avana LP清算用に構築されたノードは、アクティブなポジションを監視し、負債漂流を更新し、市場状態をインデックス化し、アンウィンドパスをシミュレートし、実行流動性を調達し、資産をルーティングし、トランザクションをアトミックにクローズします。清算はパーミッションレスのままですが、ワークフローが長くvenue固有であるため、LP担保は純粋に汎用的な清算者にはサービスが難しいです。清算者はスリッページ、ルート深度、flashloanコスト、MEVエクスポージャーも価格に織り込む必要があります。大規模または異例のアンウィンドには、回収可能なジョブが破壊的なものにならないよう、より静かな実行パスが必要な場合があります。",
+      "ko": "전문 청산 런타임이 여기서 차이를 만듭니다. Avana LP 청산용으로 구축된 노드는 활성 포지션을 감시하고, 부채 표류를 갱신하며, 시장 상태를 인덱싱하고, unwind 경로를 시뮬레이션하고, 실행 유동성을 조달하며, 자산을 라우팅하고, 트랜잭션을 원자적으로 종료합니다. 청산은 무허가로 유지되지만 워크플로가 더 길고 venue별이므로 LP 담보는 순수 범용 청산자가 서비스하기 어렵습니다. 청산자는 슬리피지, 경로 깊이, flashloan 비용, MEV 노출도 가격에 반영해야 합니다. 대규모 또는 비정상적인 unwind는 회수 가능한 작업이 파괴적이 되지 않도록 더 조용한 실행 경로가 필요할 수 있습니다.",
+      "ru": "Специализированные runtime ликвидации здесь имеют значение. Ноды, построенные для ликвидации LP Avana, следят за активными позициями, обновляют дрейф долга, индексируют состояние рынка, симулируют пути unwind, находят исполнительную ликвидность, маршрутизируют активы и атомарно закрывают транзакции. Ликвидация остаётся permissionless, но LP-залог сложнее обслуживать чисто универсальным ликвидаторам, поскольку workflow длиннее и более venue-специфичен. Ликвидаторы также должны учитывать slippage, глубину маршрута, стоимость flashloan и MEV-экспозицию. Крупные или необычные unwind могут требовать более тихих путей исполнения, чтобы восстанавливаемая задача не превратилась в разрушительную.",
+      "tr": "Özelleşmiş likidasyon runtime'ları burada fark yaratır. Avana LP likidasyonu için inşa edilen node'lar aktif pozisyonları izler, borç sürüklenmesini yeniler, piyasa durumunu indeksler, unwind yollarını simüle eder, yürütme likiditesi sağlar, varlıkları yönlendirir ve işlemleri atomik olarak kapatır. Likidasyon izinsiz kalır, ancak iş akışı daha uzun ve venue'ye özgü olduğu için LP teminatı tamamen genel likidatörler için hizmet vermek daha zordur. Likidatörler ayrıca slippage, rota derinliği, flashloan maliyeti ve MEV maruziyetini fiyatlandırmalıdır. Büyük veya olağandışı unwind'lar, kurtarılabilir bir işin yıkıcı bir işe dönüşmemesi için daha sessiz yürütme yolları gerektirebilir.",
+      "uk": "Спеціалізовані runtime ліквідації тут мають значення. Ноди, побудовані для ліквідації LP Avana, стежать за активними позиціями, оновлюють дрейф боргу, індексують стан ринку, симулюють шляхи unwind, знаходять виконавчу ліквідність, маршрутизують активи й атомарно закривають транзакції. Ліквідація залишається permissionless, але LP-заставу важче обслуговувати чисто універсальним ліквідаторам, оскільки workflow довший і більш venue-специфічний. Ліквідатори також мають враховувати slippage, глибину маршруту, вартість flashloan і MEV-експозицію. Великі або незвичні unwind можуть потребувати тихіших шляхів виконання, щоб відновлюване завдання не перетворилося на руйнівне."
+    },
+    "What Avana Oracle is asking": {
+      "ja": "Avana Oracleが問うていること",
+      "ko": "Avana Oracle이 묻는 것",
+      "ru": "О чём спрашивает Avana Oracle",
+      "tr": "Avana Oracle ne soruyor",
+      "uk": "Про що питає Avana Oracle"
+    },
+    "An LP's value depends on the prices of the underlyings, the structure of the pool, the current inventory split, accrued fees, and for concentrated liquidity the relationship between current price and the active range. For a lending system, the important question is not only what a dashboard mark might say. It is what can realistically be recovered if the position has to cover a loan. If Avana lends against best case assumptions, it is financing collateral inflation. Avana Oracle is built around recoverable value, not optimistic net asset value.": {
+      "ja": "LPの価値は原資産の価格、プール構造、現在のインベントリ分割、未収手数料、集中流動性の場合は現在価格とアクティブレンジの関係に依存します。レンディングシステムにとって重要なのは、ダッシュボードのマークが何と言うかだけではありません。ポジションがローンをカバーしなければならない場合に現実的に回収できるものは何か、です。Avanaが最良ケースの前提で貸し出すなら、担保インフレを資金提供していることになります。Avana Oracleは楽観的な純資産価値ではなく、回収可能価値を中心に構築されています。",
+      "ko": "LP의 가치는 기초 자산 가격, 풀 구조, 현재 재고 분할, 누적 수수료, 집중 유동성의 경우 현재 가격과 활성 범위의 관계에 달려 있습니다. 대출 시스템에서 중요한 질문은 대시보드 마크가 무엇이라고 하는지만이 아닙니다. 포지션이 대출을 커버해야 할 때 현실적으로 회수할 수 있는 것이 무엇인지입니다. Avana가 최선의 경우 가정에 대해 대출한다면 담보 인플레이션을 자금 지원하는 것입니다. Avana Oracle은 낙관적 순자산 가치가 아니라 회수 가능 가치를 중심으로 구축되었습니다.",
+      "ru": "Стоимость LP зависит от цен underlyings, структуры пула, текущего разделения инвентаря, накопленных комиссий и для концентрированной ликвидности — от соотношения текущей цены и активного диапазона. Для кредитной системы важен не только mark на дашборде. Важно, что реально можно восстановить, если позиция должна покрыть кредит. Если Avana кредитует по допущениям лучшего случая, она финансирует инфляцию залога. Avana Oracle построен вокруг восстанавливаемой стоимости, а не оптимистичной чистой стоимости активов.",
+      "tr": "Bir LP'nin değeri, altta yatan varlıkların fiyatlarına, havuz yapısına, mevcut envanter dağılımına, birikmiş ücretlere ve konsantre likidite için mevcut fiyat ile aktif aralık arasındaki ilişkiye bağlıdır. Bir kredi sistemi için önemli soru yalnızca bir pano işaretinin ne dediği değildir. Pozisyonun bir krediyi karşılaması gerekirse gerçekçi olarak ne kurtarılabileceğidir. Avana en iyi senaryo varsayımlarına karşı borç verirse, teminat enflasyonunu finanse ediyor demektir. Avana Oracle iyimser net varlık değeri değil, kurtarılabilir değer etrafında inşa edilmiştir.",
+      "uk": "Вартість LP залежить від цін underlyings, структури пулу, поточного розподілу інвентарю, накопичених комісій і для концентрованої ліквідності — від співвідношення поточної ціни та активного діапазону. Для кредитної системи важливе питання не лише в тому, що каже mark на дашборді. Важливо, що реально можна відновити, якщо позиція має покрити кредит. Якщо Avana кредитує за припущеннями найкращого випадку, вона фінансує інфляцію застави. Avana Oracle побудований навколо відновлюваної вартості, а не оптимістичної чистої вартості активів."
+    },
+    "How valuation is built": {
+      "ja": "評価の構築方法",
+      "ko": "평가가 구축되는 방식",
+      "ru": "Как строится оценка",
+      "tr": "Değerleme nasıl oluşturulur",
+      "uk": "Як будується оцінка"
+    },
+    "The oracle is a multi layer collateral valuation engine. First, Avana prices the underlying assets from robust external references rather than leaning on raw AMM spot state. Second, it reconstructs the LP position deterministically: pool balance reconstruction for fungible LPs, or direct decomposition of concentrated positions by range, liquidity, and current price. Third, it discounts that reconstructed value with recovery haircuts that reflect liquidation slippage, unwind friction, and impermanent loss risk. Impermanent loss is the difference in value between holding assets in a pool and holding them separately. It grows when the paired assets diverge in price. Borrowing power on Avana comes from the discounted value, not from the most flattering mark.": {
+      "ja": "オラクルは多層の担保評価エンジンです。まず、Avanaは生のAMMスポット状態に頼るのではなく、堅牢な外部参照から原資産を価格付けします。次に、LPポジションを決定論的に再構築します：代替可能LPのプール残高再構築、またはレンジ、流動性、現在価格による集中ポジションの直接分解。第三に、清算スリッページ、アンウィンド摩擦、インパーマネントロスリスクを反映する回収ヘアカットで再構築価値を割引します。インパーマネントロスは、プールで資産を保有することと別々に保有することの価値の差です。ペア資産の価格が乖離すると増大します。Avanaの借入力は最も好意的なマークではなく、割引後の価値から生まれます。",
+      "ko": "오라클은 다층 담보 평가 엔진입니다. 먼저 Avana는 원시 AMM 스팟 상태에 의존하지 않고 견고한 외부 참조에서 기초 자산을 가격 책정합니다. 둘째, LP 포지션을 결정론적으로 재구성합니다: 대체 가능 LP의 풀 잔액 재구성, 또는 범위, 유동성, 현재 가격에 따른 집중 포지션의 직접 분해. 셋째, 청산 슬리피지, unwind 마찰, impermanent loss 리스크를 반영하는 회수 헤어컷으로 재구성 가치를 할인합니다. Impermanent loss는 풀에서 자산을 보유하는 것과 별도로 보유하는 것의 가치 차이입니다. 페어 자산 가격이 벌어지면 커집니다. Avana의 차입력은 가장 호의적인 마크가 아니라 할인된 가치에서 나옵니다.",
+      "ru": "Оракул — многослойный движок оценки залога. Сначала Avana ценообразует underlyings по надёжным внешним референсам, а не по сырому AMM spot-состоянию. Затем детерминированно реконструирует LP-позицию: реконструкция баланса пула для взаимозаменяемых LP или прямая декомпозиция концентрированных позиций по диапазону, ликвидности и текущей цене. Третье — дисконтирует реконструированную стоимость recovery haircuts, отражающими slippage ликвидации, трение unwind и риск impermanent loss. Impermanent loss — разница в стоимости между удержанием активов в пуле и отдельно. Он растёт, когда цены парных активов расходятся. Заёмная мощность на Avana исходит из дисконтированной стоимости, а не из самого льстивого mark.",
+      "tr": "Oracle çok katmanlı bir teminat değerleme motorudur. Önce Avana, ham AMM spot durumuna dayanmak yerine dayanıklı harici referanslardan altta yatan varlıkları fiyatlandırır. İkinci olarak LP pozisyonunu deterministik olarak yeniden oluşturur: değiştirilebilir LP'ler için havuz bakiyesi yeniden yapılandırması veya aralık, likidite ve mevcut fiyata göre konsantre pozisyonların doğrudan ayrıştırılması. Üçüncü olarak, likidasyon slippage'ı, unwind sürtünmesi ve impermanent loss riskini yansıtan kurtarma kesintileriyle yeniden oluşturulan değeri indirimler. Impermanent loss, varlıkları havuzda tutmak ile ayrı tutmak arasındaki değer farkıdır. Eşleştirilmiş varlıklar fiyatta ayrıştığında büyür. Avana'daki borçlanma gücü en çekici işaretten değil, indirimli değerden gelir.",
+      "uk": "Оракул — багатошаровий движок оцінки застави. Спочатку Avana ціноутворює underlyings за надійними зовнішніми референсами, а не за сирим AMM spot-станом. Потім детерміновано реконструює LP-позицію: реконструкція балансу пулу для взаємозамінних LP або пряма декомпозиція концентрованих позицій за діапазоном, ліквідністю та поточною ціною. Третє — дисконтує реконструйовану вартість recovery haircuts, що відображають slippage ліквідації, тертя unwind і ризик impermanent loss. Impermanent loss — різниця вартості між утриманням активів у пулі та окремо. Він зростає, коли ціни парних активів розходяться. Позикова потужність на Avana походить від дисконтованої вартості, а не від найбільш лестивого mark."
+    },
+    "Why simple marks fail": {
+      "ja": "単純なマークが失敗する理由",
+      "ko": "단순 마크가 실패하는 이유",
+      "ru": "Почему простые marks не работают",
+      "tr": "Basit işaretler neden başarısız olur",
+      "uk": "Чому прості marks не працюють"
+    },
+    "LP collateral is one of the easiest places for a lending system to fool itself. AMM pool state can look healthy while being locally distorted. A concentrated position can look strong while sitting in a riskier inventory mix than users assume. Thin depth, same transaction manipulation, and stale inputs can all produce numbers that look precise without being trustworthy. Avana separates apparent value from reliable collateral value by combining external asset pricing, deterministic LP reconstruction, and protocol level safeguards.": {
+      "ja": "LP担保は、レンディングシステムが自分自身を欺く最も容易な場所の一つです。AMMプール状態は局所的に歪んでいながら健全に見えることがあります。集中ポジションは、ユーザーが想定するよりリスクの高いインベントリミックスに座りながら強く見えることがあります。薄い深度、同一トランザクション操作、古い入力はすべて、信頼できないのに正確に見える数値を生み出すことがあります。Avanaは外部資産価格付け、決定論的LP再構築、プロトコルレベルのセーフガードを組み合わせて、見かけの価値と信頼できる担保価値を分離します。",
+      "ko": "LP 담보는 대출 시스템이 스스로를 속이기 가장 쉬운 곳 중 하나입니다. AMM 풀 상태는 국소적으로 왜곡되면서 건강해 보일 수 있습니다. 집중 포지션은 사용자가 가정하는 것보다 위험한 재고 믹스에 있으면서 강해 보일 수 있습니다. 얕은 깊이, 동일 트랜잭션 조작, 오래된 입력은 모두 신뢰할 수 없으면서 정밀해 보이는 숫자를 만들 수 있습니다. Avana는 외부 자산 가격 책정, 결정론적 LP 재구성, 프로토콜 수준 안전장치를 결합하여 겉보기 가치와 신뢰할 수 있는 담보 가치를 분리합니다.",
+      "ru": "LP-залог — одно из самых лёгких мест, где кредитная система может обмануть себя. Состояние AMM-пула может выглядеть здоровым при локальном искажении. Концентрированная позиция может выглядеть сильной, находясь в более рискованном инвентарном миксе, чем предполагают пользователи. Тонкая глубина, манипуляция в той же транзакции и устаревшие входы могут давать числа, которые выглядят точными, но не заслуживают доверия. Avana разделяет кажущуюся стоимость и надёжную стоимость залога, сочетая внешнее ценообразование активов, детерминированную реконструкцию LP и защиту на уровне протокола.",
+      "tr": "LP teminatı, bir kredi sisteminin kendini kandırmasının en kolay yerlerinden biridir. AMM havuz durumu yerel olarak bozulmuşken sağlıklı görünebilir. Konsantre bir pozisyon, kullanıcıların varsaydığından daha riskli bir envanter karışımında otururken güçlü görünebilir. İnce derinlik, aynı işlem manipülasyonu ve bayat girdiler, güvenilir olmadan hassas görünen sayılar üretebilir. Avana, harici varlık fiyatlandırması, deterministik LP yeniden yapılandırması ve protokol düzeyinde güvenlik önlemlerini birleştirerek görünen değeri güvenilir teminat değerinden ayırır.",
+      "uk": "LP-застава — одне з найлегших місць, де кредитна система може обдурити себе. Стан AMM-пулу може виглядати здоровим при локальному спотворенні. Концентрована позиція може виглядати сильною, перебуваючи в ризикованішому інвентарному міксі, ніж припускають користувачі. Тонка глибина, маніпуляція в тій самій транзакції та застарілі входи можуть давати числа, які виглядають точними, але не заслуговують довіри. Avana розділяє видиму вартість і надійну вартість застави, поєднуючи зовнішнє ціноутворення активів, детерміновану реконструкцію LP і захист на рівні протоколу."
+    },
+    "The oracle interface can also distinguish reconstructed principal value, fee value, and reserved value used for protocol risk buffers. Those components do not deserve identical treatment inside a lending market. By standardizing them across LP types, the spoke layer can reason about fungible LPs, NFT based LPs, and multi asset positions consistently while still respecting how different venues expose state.": {
+      "ja": "オラクルインターフェースは、再構築された元本価値、手数料価値、プロトコルリスクバッファに使用される予約価値も区別できます。これらのコンポーネントはレンディング市場内で同一の扱いに値しません。LPタイプ間で標準化することで、spokeレイヤーは代替可能LP、NFTベースLP、マルチアセットポジションについて一貫して推論でき、異なるvenueが状態を公開する方法も尊重できます。",
+      "ko": "오라클 인터페이스는 재구성된 원금 가치, 수수료 가치, 프로토콜 리스크 버퍼에 사용되는 예약 가치도 구분할 수 있습니다. 이러한 구성 요소는 대출 시장 내에서 동일한 처리를 받을 자격이 없습니다. LP 유형 간에 표준화함으로써 spoke 계층은 대체 가능 LP, NFT 기반 LP, 다중 자산 포지션에 대해 일관되게 추론하면서도 서로 다른 venue가 상태를 노출하는 방식을 존중할 수 있습니다.",
+      "ru": "Интерфейс оракула также может различать реконструированную стоимость principal, стоимость комиссий и зарезервированную стоимость для буферов риска протокола. Эти компоненты не заслуживают одинакового обращения внутри кредитного рынка. Стандартизируя их по типам LP, слой spoke может рассуждать о взаимозаменяемых LP, NFT-based LP и мультиактивных позициях последовательно, уважая при этом то, как разные venue раскрывают состояние.",
+      "tr": "Oracle arayüzü, yeniden oluşturulan anapara değeri, ücret değeri ve protokol risk tamponları için kullanılan ayrılmış değeri de ayırt edebilir. Bu bileşenler bir kredi piyasasında aynı muameleyi hak etmez. LP türleri arasında standartlaştırarak spoke katmanı, farklı venue'lerin durumu nasıl açıkladığına saygı gösterirken değiştirilebilir LP'ler, NFT tabanlı LP'ler ve çok varlıklı pozisyonlar hakkında tutarlı şekilde akıl yürütebilir.",
+      "uk": "Інтерфейс оракула також може розрізняти реконструйовану вартість principal, вартість комісій і зарезервовану вартість для буферів ризику протоколу. Ці компоненти не заслуговують однакового ставлення всередині кредитного ринку. Стандартизуючи їх за типами LP, шар spoke може міркувати про взаємозамінні LP, NFT-based LP і мультиактивні позиції послідовно, поважаючи при цьому те, як різні venue розкривають стан."
+    },
+    "Checks and safeguards": {
+      "ja": "チェックとセーフガード",
+      "ko": "검사와 안전장치",
+      "ru": "Проверки и защита",
+      "tr": "Kontroller ve güvenlik önlemleri",
+      "uk": "Перевірки та захист"
+    },
+    "Different AMM families need different verification paths. Curve stable LPs, Uniswap pairs and NFTs, Balancer weighted pools, and Aerodrome pairs all expose collateral state differently. On Avana, external prices remain the main anchor. Pool specific data and time weighted checks help verify whether the reconstructed collateral state is coherent and harder to game. Those time weighted checks are not the primary price Avana relies on for loans. They are an extra consistency check so Avana can tell whether the collateral state still lines up before that state is treated as credit.": {
+      "ja": "異なるAMMファミリーには異なる検証パスが必要です。CurveステーブルLP、UniswapペアとNFT、Balancer加重プール、Aerodromeペアはすべて異なる方法で担保状態を公開します。Avanaでは外部価格が主なアンカーです。プール固有のデータと時間加重チェックは、再構築された担保状態が一貫しており、操作が難しいかを検証するのに役立ちます。これらの時間加重チェックは、Avanaがローンに依存する主要価格ではありません。その状態がクレジットとして扱われる前に、担保状態がまだ整合しているかをAvanaが判断できる追加の一貫性チェックです。",
+      "ko": "서로 다른 AMM 패밀리는 서로 다른 검증 경로가 필요합니다. Curve 스테이블 LP, Uniswap 페어와 NFT, Balancer 가중 풀, Aerodrome 페어는 모두 담보 상태를 다르게 노출합니다. Avana에서 외부 가격이 주요 앵커로 남습니다. 풀별 데이터와 시간 가중 검사는 재구성된 담보 상태가 일관되고 조작하기 어려운지 검증하는 데 도움이 됩니다. 이러한 시간 가중 검사는 Avana가 대출에 의존하는 주요 가격이 아닙니다. 해당 상태가 신용으로 취급되기 전에 담보 상태가 여전히 일치하는지 Avana가 판단할 수 있는 추가 일관성 검사입니다.",
+      "ru": "Разным семействам AMM нужны разные пути верификации. Curve stable LP, пары и NFT Uniswap, взвешенные пулы Balancer и пары Aerodrome по-разному раскрывают состояние залога. На Avana внешние цены остаются главным якорем. Данные по пулу и time-weighted проверки помогают верифицировать, согласовано ли реконструированное состояние залога и сложнее ли его подделать. Эти time-weighted проверки — не основная цена, на которую Avana полагается для кредитов. Это дополнительная проверка согласованности, чтобы Avana могла определить, совпадает ли состояние залога, прежде чем оно будет считаться кредитом.",
+      "tr": "Farklı AMM aileleri farklı doğrulama yolları gerektirir. Curve stabil LP'ler, Uniswap çiftleri ve NFT'leri, Balancer ağırlıklı havuzları ve Aerodrome çiftleri teminat durumunu farklı şekilde açığa çıkarır. Avana'da harici fiyatlar ana çapa olarak kalır. Havuza özgü veriler ve zaman ağırlıklı kontroller, yeniden oluşturulan teminat durumunun tutarlı ve oynanması daha zor olup olmadığını doğrulamaya yardımcı olur. Bu zaman ağırlıklı kontroller, Avana'nın krediler için güvendiği birincil fiyat değildir. Bu durum kredi olarak değerlendirilmeden önce teminat durumunun hâlâ uyumlu olup olmadığını Avana'nın anlayabilmesi için ek bir tutarlılık kontrolüdür.",
+      "uk": "Різним сімействам AMM потрібні різні шляхи верифікації. Curve stable LP, пари та NFT Uniswap, зважені пули Balancer і пари Aerodrome по-різному розкривають стан застави. На Avana зовнішні ціни залишаються головним якорем. Дані по пулу та time-weighted перевірки допомагають верифікувати, чи узгоджений реконструйований стан застави й чи важче його підробити. Ці time-weighted перевірки — не основна ціна, на яку Avana покладається для кредитів. Це додаткова перевірка узгодженості, щоб Avana могла визначити, чи збігається стан застави, перш ніж він вважатиметься кредитом."
+    },
+    "Manipulation resistance on Avana includes deviation thresholds, pool price difference constraints, recovery haircuts, open interest caps, and an oracle sentinel that reacts when feed health degrades or verification inputs stop agreeing. LP collateral is unusually exposed to same transaction abuse, thin market distortions, and stale or contradictory signals because the collateral is more structurally complex than a simple token balance. A protocol that supports LP credit has to assume the pricing surface will eventually be tested. Avana Oracle is written for that assumption.": {
+      "ja": "Avanaの操作耐性には、偏差閾値、プール価格差制約、回収ヘアカット、オープンインタレスト上限、フィード健全性が低下したり検証入力が一致しなくなったときに反応するオラクルセンチネルが含まれます。LP担保は単純なトークン残高より構造的に複雑なため、同一トランザクション悪用、薄い市場の歪み、古いまたは矛盾するシグナルに異常にさらされます。LPクレジットをサポートするプロトコルは、価格設定面がいずれテストされることを前提にする必要があります。Avana Oracleはその前提のために書かれています。",
+      "ko": "Avana의 조작 저항에는 편차 임계값, 풀 가격 차이 제약, 회수 헤어컷, 미결제약정 한도, 피드 상태가 악화되거나 검증 입력이 일치하지 않을 때 반응하는 오라클 센티널이 포함됩니다. LP 담보는 단순 토큰 잔액보다 구조적으로 복잡하므로 동일 트랜잭션 남용, 얕은 시장 왜곡, 오래되거나 모순되는 신호에 비정상적으로 노출됩니다. LP 신용을 지원하는 프로토콜은 가격 설정 표면이 결국 테스트될 것이라고 가정해야 합니다. Avana Oracle은 그 가정을 위해 작성되었습니다.",
+      "ru": "Устойчивость к манипуляциям на Avana включает пороги отклонения, ограничения разницы цен пула, recovery haircuts, лимиты open interest и oracle sentinel, реагирующий при ухудшении здоровья feed или расхождении входов верификации. LP-залог необычно подвержен злоупотреблению в той же транзакции, искажениям тонких рынков и устаревшим или противоречивым сигналам, поскольку залог структурно сложнее простого баланса токена. Протокол, поддерживающий LP-кредит, должен предполагать, что поверхность ценообразования рано или поздно будет проверена. Avana Oracle написан для этого допущения.",
+      "tr": "Avana'daki manipülasyon direnci, sapma eşikleri, havuz fiyat farkı kısıtlamaları, kurtarma kesintileri, açık pozisyon limitleri ve feed sağlığı bozulduğunda veya doğrulama girdileri uyuşmayı bıraktığında tepki veren bir oracle sentinel içerir. LP teminatı, basit bir token bakiyesinden yapısal olarak daha karmaşık olduğu için aynı işlem kötüye kullanımına, ince piyasa bozulmalarına ve bayat veya çelişkili sinyallere olağandışı derecede maruz kalır. LP kredisini destekleyen bir protokol, fiyatlandırma yüzeyinin sonunda test edileceğini varsaymalıdır. Avana Oracle bu varsayım için yazılmıştır.",
+      "uk": "Стійкість до маніпуляцій на Avana включає пороги відхилення, обмеження різниці цін пулу, recovery haircuts, ліміти open interest і oracle sentinel, що реагує при погіршенні здоров'я feed або розбіжності входів верифікації. LP-застава незвично піддається зловживанню в тій самій транзакції, спотворенням тонких ринків і застарілим або суперечливим сигналам, оскільки застава структурно складніша за простий баланс токена. Протокол, що підтримує LP-кредит, має припускати, що поверхня ціноутворення рано чи пізно буде перевірена. Avana Oracle написаний для цього припущення."
+    },
+    "More than a price and an LTV": {
+      "ja": "価格とLTV以上のもの",
+      "ko": "가격과 LTV 그 이상",
+      "ru": "Больше, чем цена и LTV",
+      "tr": "Bir fiyat ve LTV'den fazlası",
+      "uk": "Більше, ніж ціна та LTV"
+    },
+    "A simple token can usually be priced with a direct market reference and liquidated with standard logic. An LP position cannot. Its value depends on underlyings, pool structure, the relationship between those assets, fee accrual, liquidity depth, and for concentrated liquidity the active range. Under stress those variables compound. A protocol that supports LP backed borrowing on Aave v4 has to do more than assign a price and set a loan to value ratio. That is the problem Avana is built around.": {
+      "ja": "単純なトークンは通常、直接的な市場参照で価格付けされ、標準ロジックで清算できます。LPポジションはできません。その価値は原資産、プール構造、資産間の関係、手数料の発生、流動性の深さ、集中流動性の場合はアクティブレンジに依存します。ストレス下ではこれらの変数が複合します。Aave v4でLP担保借入をサポートするプロトコルは、価格を割り当てLTVを設定する以上のことをしなければなりません。それがAvanaが構築されている問題です。",
+      "ko": "단순 토큰은 보통 직접 시장 참조로 가격이 책정되고 표준 로직으로 청산될 수 있습니다. LP 포지션은 그렇지 않습니다. 그 가치는 기초 자산, 풀 구조, 자산 간 관계, 수수료 발생, 유동성 깊이, 집중 유동성의 경우 활성 범위에 달려 있습니다. 스트레스 상황에서 이러한 변수는 복합됩니다. Aave v4에서 LP 담보 차입을 지원하는 프로토콜은 가격을 할당하고 LTV를 설정하는 것 이상을 해야 합니다. 그것이 Avana가 구축된 문제입니다.",
+      "ru": "Простой токен обычно можно оценить прямой рыночной ссылкой и ликвидировать стандартной логикой. LP-позицию — нет. Её стоимость зависит от underlyings, структуры пула, отношения между активами, начисления комиссий, глубины ликвидности и для концентрированной ликвидности — активного диапазона. Под стрессом эти переменные усиливают друг друга. Протокол, поддерживающий заимствование под LP на Aave v4, должен делать больше, чем назначать цену и устанавливать LTV. Вокруг этой проблемы построена Avana.",
+      "tr": "Basit bir token genellikle doğrudan piyasa referansıyla fiyatlandırılabilir ve standart mantıkla likide edilebilir. Bir LP pozisyonu yapılamaz. Değeri altta yatan varlıklara, havuz yapısına, bu varlıklar arasındaki ilişkiye, ücret birikimine, likidite derinliğine ve konsantre likidite için aktif aralığa bağlıdır. Stres altında bu değişkenler birleşir. Aave v4'te LP destekli borçlanmayı destekleyen bir protokol, fiyat atamak ve LTV belirlemekten fazlasını yapmalıdır. Avana bu sorun etrafında inşa edilmiştir.",
+      "uk": "Простий токен зазвичай можна оцінити прямим ринковим референсом і ліквідувати стандартною логікою. LP-позицію — ні. Її вартість залежить від underlyings, структури пулу, відношення між активами, нарахування комісій, глибини ліквідності і для концентрованої ліквідності — активного діапазону. Під стресом ці змінні посилюють одна одну. Протокол, що підтримує запозичення під LP на Aave v4, має робити більше, ніж призначати ціну й встановлювати LTV. Навколо цієї проблеми побудована Avana."
+    },
+    "Architecture and valuation": {
+      "ja": "アーキテクチャと評価",
+      "ko": "아키텍처와 평가",
+      "ru": "Архитектура и оценка",
+      "tr": "Mimari ve değerleme",
+      "uk": "Архітектура та оцінка"
+    },
+    "The first security layer is architectural. Avana uses Aave v4's hub and spoke structure. The hub holds the common liquidity layer, manages reserve accounting, and enforces solvency constraints. The spoke is where LP specific collateral logic lives: admission, valuation rules, pool specific risk parameters, and liquidation behavior. If an LP market becomes stressed, that stress is meant to stay contained in the spoke rather than rewriting assumptions across unrelated collateral types. On Avana, the spoke is part of the security boundary.": {
+      "ja": "第一のセキュリティレイヤーはアーキテクチャです。AvanaはAave v4のhub-and-spoke構造を使用します。hubは共通流動性レイヤーを保持し、リザーブ会計を管理し、ソルベンシー制約を強制します。spokeはLP固有の担保ロジックが存在する場所です：准入、評価ルール、プール固有のリスクパラメータ、清算動作。LP市場がストレスを受けた場合、そのストレスは無関係な担保タイプ全体の前提を書き換えるのではなく、spoke内に封じ込められることを意図しています。Avanaでは、spokeはセキュリティ境界の一部です。",
+      "ko": "첫 번째 보안 계층은 아키텍처입니다. Avana는 Aave v4의 hub-and-spoke 구조를 사용합니다. hub는 공통 유동성 계층을 보유하고, 준비금 회계를 관리하며, 지급 능력 제약을 시행합니다. spoke는 LP별 담보 로직이 존재하는 곳입니다: 승인, 평가 규칙, 풀별 리스크 매개변수, 청산 행동. LP 시장이 스트레스를 받으면 그 스트레스는 관련 없는 담보 유형 전반의 가정을 다시 쓰기보다 spoke 내에 봉쇄되도록 설계되었습니다. Avana에서 spoke는 보안 경계의 일부입니다.",
+      "ru": "Первый слой безопасности — архитектурный. Avana использует hub-and-spoke структуру Aave v4. Hub хранит общий слой ликвидности, управляет учётом резервов и обеспечивает ограничения платёжеспособности. Spoke — место, где живёт LP-специфичная логика залога: допуск, правила оценки, параметры риска по пулу и поведение ликвидации. Если LP-рынок попадает под стресс, этот стресс должен оставаться в spoke, а не переписывать допущения по несвязанным типам залога. На Avana spoke — часть границы безопасности.",
+      "tr": "İlk güvenlik katmanı mimaridir. Avana, Aave v4'ün hub-and-spoke yapısını kullanır. Hub ortak likidite katmanını tutar, rezerv muhasebesini yönetir ve ödeme gücü kısıtlamalarını uygular. Spoke, LP'ye özgü teminat mantığının yaşadığı yerdir: kabul, değerleme kuralları, havuza özgü risk parametreleri ve likidasyon davranışı. Bir LP piyasası stres altına girerse, bu stresin ilgisiz teminat türleri genelinde varsayımları yeniden yazmak yerine spoke içinde kalması amaçlanır. Avana'da spoke, güvenlik sınırının bir parçasıdır.",
+      "uk": "Перший шар безпеки — архітектурний. Avana використовує hub-and-spoke структуру Aave v4. Hub зберігає спільний шар ліквідності, керує обліком резервів і забезпечує обмеження платоспроможності. Spoke — місце, де живе LP-специфічна логіка застави: допуск, правила оцінки, параметри ризику по пулу та поведінка ліквідації. Якщо LP-ринок потрапляє під стрес, цей стрес має залишатися в spoke, а не переписувати припущення по несуміжних типах застави. На Avana spoke — частина межі безпеки."
+    },
+    "The second layer is oracle and valuation design. LP positions cannot be safely priced with a single flat feed. Avana uses a dual source framework. External price feeds provide the primary reference for underlyings, while AMM derived pricing acts as independent verification. Borrowing power exists only when both sources stay coherent within tolerance. Risk is assigned at the market level. Pool structure, asset correlation, liquidity depth, and range concentration all shape collateral treatment. Borrowing power is anchored to the weaker aspects of the position, with pool level adjustments for volatility, liquidity quality, and stress assumptions.": {
+      "ja": "第二のレイヤーはオラクルと評価設計です。LPポジションは単一のフラットフィードで安全に価格付けできません。Avanaはデュアルソースフレームワークを使用します。外部価格フィードが原資産の主要参照を提供し、AMM由来の価格付けが独立した検証として機能します。借入力は両ソースが許容範囲内で一貫している場合にのみ存在します。リスクは市場レベルで割り当てられます。プール構造、資産相関、流動性深度、レンジ集中度がすべて担保処理を形成します。借入力はポジションの弱い側面に固定され、ボラティリティ、流動性品質、ストレス前提に対するプールレベルの調整が加わります。",
+      "ko": "두 번째 계층은 오라클과 평가 설계입니다. LP 포지션은 단일 평탄 피드로 안전하게 가격 책정될 수 없습니다. Avana는 이중 소스 프레임워크를 사용합니다. 외부 가격 피드가 기초 자산의 주요 참조를 제공하고, AMM 파생 가격 책정이 독립적 검증 역할을 합니다. 차입력은 두 소스가 허용 범위 내에서 일관될 때만 존재합니다. 리스크는 시장 수준에서 할당됩니다. 풀 구조, 자산 상관관계, 유동성 깊이, 범위 집중도가 모두 담보 처리를 형성합니다. 차입력은 포지션의 약한 측면에 고정되며, 변동성, 유동성 품질, 스트레스 가정에 대한 풀 수준 조정이 적용됩니다.",
+      "ru": "Второй слой — дизайн оракулов и оценки. LP-позиции нельзя безопасно оценить одним плоским feed. Avana использует dual-source фреймворк. Внешние price feeds дают основной референс для underlyings, а AMM-derived ценообразование служит независимой верификацией. Заёмная мощность существует только когда оба источника остаются согласованными в пределах допуска. Риск назначается на уровне рынка. Структура пула, корреляция активов, глубина ликвидности и концентрация диапазона формируют обращение с залогом. Заёмная мощность привязана к более слабым аспектам позиции с корректировками на уровне пула для волатильности, качества ликвидности и стресс-допущений.",
+      "tr": "İkinci katman oracle ve değerleme tasarımıdır. LP pozisyonları tek bir düz feed ile güvenle fiyatlandırılamaz. Avana çift kaynaklı bir çerçeve kullanır. Harici fiyat feed'leri altta yatan varlıklar için birincil referans sağlarken, AMM türevli fiyatlandırma bağımsız doğrulama görevi görür. Borçlanma gücü yalnızca her iki kaynak tolerans dahilinde tutarlı kaldığında vardır. Risk piyasa düzeyinde atanır. Havuz yapısı, varlık korelasyonu, likidite derinliği ve aralık konsantrasyonu teminat muamelesini şekillendirir. Borçlanma gücü, volatilite, likidite kalitesi ve stres varsayımları için havuz düzeyinde ayarlamalarla pozisyonun daha zayıf yönlerine sabitlenir.",
+      "uk": "Другий шар — дизайн оракулів і оцінки. LP-позиції не можна безпечно оцінити одним плоским feed. Avana використовує dual-source фреймворк. Зовнішні price feeds дають основний референс для underlyings, а AMM-derived ціноутворення слугує незалежною верифікацією. Позикова потужність існує лише коли обидва джерела залишаються узгодженими в межах допуску. Ризик призначається на рівні ринку. Структура пулу, кореляція активів, глибина ліквідності та концентрація діапазону формують ставлення до застави. Позикова потужність прив'язана до слабших аспектів позиції з коригуваннями на рівні пулу для волатильності, якості ліквідності та стрес-припущень."
+    },
+    "Health and liquidation": {
+      "ja": "ヘルスと清算",
+      "ko": "건강과 청산",
+      "ru": "Здоровье и ликвидация",
+      "tr": "Sağlık ve likidasyon",
+      "uk": "Здоров'я та ліквідація"
+    },
+    "The third layer is health monitoring. LP positions remain active after they are posted as collateral, so risk does not freeze once a loan opens. Value changes with price moves, fee generation, range migration, and shifts in pool quality. Avana runs continuous per position health assessment rather than relying on occasional snapshots. Health factor is the live signal of whether the collateral model still holds for that loan.": {
+      "ja": "第三のレイヤーはヘルスモニタリングです。LPポジションは担保として投稿された後もアクティブなままなので、ローンが開かれた後もリスクは凍結しません。価値は価格変動、手数料生成、レンジ移行、プール品質の変化とともに変わります。Avanaは時折のスナップショットに頼るのではなく、ポジションごとの継続的なヘルス評価を実行します。ヘルスファクターは、そのローンに対して担保モデルがまだ成立しているかのライブシグナルです。",
+      "ko": "세 번째 계층은 건강 모니터링입니다. LP 포지션은 담보로 게시된 후에도 활성 상태를 유지하므로 대출이 열린 후에도 리스크가 고정되지 않습니다. 가치는 가격 변동, 수수료 생성, 범위 이동, 풀 품질 변화와 함께 바뀝니다. Avana는 가끔의 스냅샷에 의존하지 않고 포지션별 지속적인 건강 평가를 실행합니다. 건강 지표는 해당 대출에 대해 담보 모델이 여전히 유효한지의 실시간 신호입니다.",
+      "ru": "Третий слой — мониторинг здоровья. LP-позиции остаются активными после размещения в залог, поэтому риск не замораживается после открытия кредита. Стоимость меняется с движением цен, генерацией комиссий, миграцией диапазона и изменением качества пула. Avana проводит непрерывную оценку здоровья по позициям, а не полагается на редкие снимки. Health factor — живой сигнал того, сохраняется ли модель залога для этого кредита.",
+      "tr": "Üçüncü katman sağlık izlemesidir. LP pozisyonları teminat olarak gönderildikten sonra aktif kalır, bu yüzden risk bir kredi açıldığında donmaz. Değer fiyat hareketleri, ücret üretimi, aralık göçü ve havuz kalitesindeki değişimlerle değişir. Avana, ara sıra anlık görüntülere güvenmek yerine pozisyon başına sürekli sağlık değerlendirmesi yapar. Health factor, teminat modelinin o kredi için hâlâ geçerli olup olmadığının canlı sinyalidir.",
+      "uk": "Третій шар — моніторинг здоров'я. LP-позиції залишаються активними після розміщення в заставу, тому ризик не заморожується після відкриття кредиту. Вартість змінюється з рухом цін, генерацією комісій, міграцією діапазону та зміною якості пулу. Avana проводить безперервну оцінку здоров'я по позиціях, а не покладається на рідкі знімки. Health factor — живий сигнал того, чи зберігається модель застави для цього кредиту."
+    },
+    "Liquidation is where the assumptions get tested. LP collateral cannot be liquidated like a normal token. Avana's approach is to collect fees embedded in the position before destroying principal where possible, remove only enough liquidity to repair the loan, and route the unwind through execution paths that favor deterministic settlement. Smart Agents provide the execution infrastructure: monitoring positions, reconciling data, simulating execution, and unwinding under adverse conditions. They are part of Avana's safety system, not an afterthought bolted on later.": {
+      "ja": "清算は前提が試される場所です。LP担保は通常のトークンのように清算できません。Avanaのアプローチは、可能な場合は元本を破壊する前にポジションに埋め込まれた手数料を回収し、ローンを修復するのに十分な流動性のみを除去し、決定論的決済を優先する実行パスでアンウィンドをルーティングすることです。Smart Agentsは実行インフラを提供します：ポジションの監視、データの照合、実行のシミュレーション、逆境下でのアンウィンド。それらは後から取り付けられた考え余りではなく、Avanaの安全システムの一部です。",
+      "ko": "청산은 가정이 시험받는 곳입니다. LP 담보는 일반 토큰처럼 청산될 수 없습니다. Avana의 접근법은 가능한 경우 원금을 파괴하기 전에 포지션에 내장된 수수료를 수집하고, 대출을 복구하는 데 필요한 만큼만 유동성을 제거하며, 결정론적 정산을 선호하는 실행 경로로 unwind를 라우팅하는 것입니다. Smart Agents는 실행 인프라를 제공합니다: 포지션 모니터링, 데이터 조정, 실행 시뮬레이션, 불리한 조건에서의 unwind. 이들은 나중에 덧붙인 사후적 요소가 아니라 Avana 안전 시스템의 일부입니다.",
+      "ru": "Ликвидация — место, где проверяются допущения. LP-залог нельзя ликвидировать как обычный токен. Подход Avana — собирать комиссии, встроенные в позицию, прежде чем уничтожать principal, где возможно, удалять только достаточно ликвидности для восстановления кредита и направлять unwind через пути исполнения, благоприятствующие детерминированному расчёту. Smart Agents обеспечивают инфраструктуру исполнения: мониторинг позиций, сверку данных, симуляцию исполнения и unwind в неблагоприятных условиях. Они — часть системы безопасности Avana, а не запоздалая доработка.",
+      "tr": "Likidasyon, varsayımların test edildiği yerdir. LP teminatı normal bir token gibi likide edilemez. Avana'nın yaklaşımı, mümkün olduğunda anaparayı yok etmeden önce pozisyona gömülü ücretleri toplamak, krediyi onarmak için yalnızca yeterli likiditeyi kaldırmak ve unwind'ı deterministik uzlaşmayı tercih eden yürütme yollarından geçirmektir. Smart Agents yürütme altyapısını sağlar: pozisyonları izlemek, verileri uzlaştırmak, yürütmeyi simüle etmek ve olumsuz koşullarda unwind yapmak. Bunlar sonradan eklenen bir düşünce değil, Avana'nın güvenlik sisteminin parçasıdır.",
+      "uk": "Ліквідація — місце, де перевіряються припущення. LP-заставу не можна ліквідувати як звичайний токен. Підхід Avana — збирати комісії, вбудовані в позицію, перш ніж знищувати principal, де можливо, видаляти лише достатньо ліквідності для відновлення кредиту й направляти unwind через шляхи виконання, що сприяють детермінованому розрахунку. Smart Agents забезпечують інфраструктуру виконання: моніторинг позицій, звірку даних, симуляцію виконання та unwind у несприятливих умовах. Вони — частина системи безпеки Avana, а не запізніла доробка."
+    },
+    "Operations and change control": {
+      "ja": "オペレーションと変更管理",
+      "ko": "운영과 변경 통제",
+      "ru": "Операции и контроль изменений",
+      "tr": "Operasyonlar ve değişiklik kontrolü",
+      "uk": "Операції та контроль змін"
+    },
+    "The operational layer assumes governance and risk configuration need the same discipline as collateral treatment. Risk parameters change through structured process. Sensitive changes sit behind timelocks and review. Emergency controls exist for genuinely adverse conditions. Monitoring extends beyond individual positions to whole market categories. A protocol that supports LP collateral cannot rely on static configuration alone.": {
+      "ja": "運用レイヤーは、ガバナンスとリスク設定が担保処理と同じ規律を必要とすることを前提とします。リスクパラメータは構造化されたプロセスを通じて変更されます。機密性の高い変更はタイムロックとレビューの背後にあります。緊急コントロールは真に不利な状況のために存在します。モニタリングは個別ポジションを超えて市場カテゴリ全体に及びます。LP担保をサポートするプロトコルは静的設定だけに頼ることはできません。",
+      "ko": "운영 계층은 거버넌스와 리스크 구성이 담보 처리와 동일한 규율을 필요로 한다고 가정합니다. 리스크 매개변수는 구조화된 프로세스를 통해 변경됩니다. 민감한 변경은 타임락과 검토 뒤에 있습니다. 비상 통제는 진정으로 불리한 조건을 위해 존재합니다. 모니터링은 개별 포지션을 넘어 전체 시장 카테고리까지 확장됩니다. LP 담보를 지원하는 프로토콜은 정적 구성만으로 의존할 수 없습니다.",
+      "ru": "Операционный слой предполагает, что governance и конфигурация риска требуют той же дисциплины, что и обращение с залогом. Параметры риска меняются через структурированный процесс. Чувствительные изменения стоят за timelock и проверкой. Экстренные контроли существуют для действительно неблагоприятных условий. Мониторинг распространяется за пределы отдельных позиций на целые категории рынков. Протокол, поддерживающий LP-залог, не может полагаться только на статическую конфигурацию.",
+      "tr": "Operasyonel katman, yönetişim ve risk yapılandırmasının teminat muamelesiyle aynı disipline ihtiyaç duyduğunu varsayar. Risk parametreleri yapılandırılmış süreçle değişir. Hassas değişiklikler timelock ve incelemenin arkasındadır. Acil kontroller gerçekten olumsuz koşullar içindir. İzleme bireysel pozisyonların ötesine tüm piyasa kategorilerine uzanır. LP teminatını destekleyen bir protokol yalnızca statik yapılandırmaya güvenemez.",
+      "uk": "Операційний шар припускає, що governance і конфігурація ризику потребують тієї ж дисципліни, що й ставлення до застави. Параметри ризику змінюються через структурований процес. Чутливі зміни стоять за timelock і перевіркою. Екстрені контролі існують для справді несприятливих умов. Моніторинг поширюється за межі окремих позицій на цілі категорії ринків. Протокол, що підтримує LP-заставу, не може покладатися лише на статичну конфігурацію."
+    },
+    "LP collateral is viable on Avana only if security is treated as a system. Architecture isolates risk. Oracles validate reality. Valuation turns complexity into conservative borrowing power. Health checks monitor drift. Liquidation restores solvency with as much precision as the venue allows. Operational controls govern how the framework evolves. None of those layers is enough by itself.": {
+      "ja": "LP担保は、セキュリティがシステムとして扱われる場合にのみAvanaで実現可能です。アーキテクチャがリスクを分離します。オラクルが現実を検証します。評価が複雑さを保守的な借入力に変換します。ヘルスチェックが漂流を監視します。清算がvenueが許す限りの精度でソルベンシーを回復します。運用コントロールがフレームワークの進化を統治します。これらのレイヤーのどれも単独では十分ではありません。",
+      "ko": "LP 담보는 보안이 시스템으로 취급될 때만 Avana에서 실현 가능합니다. 아키텍처가 리스크를 격리합니다. 오라클이 현실을 검증합니다. 평가가 복잡성을 보수적 차입력으로 전환합니다. 건강 검사가 표류를 모니터링합니다. 청산이 venue가 허용하는 한 정밀하게 지급 능력을 회복합니다. 운영 통제가 프레임워크의 진화를 관리합니다. 이 계층들 중 어느 것도 그 자체로는 충분하지 않습니다.",
+      "ru": "LP-залог жизнеспособен на Avana только если безопасность рассматривается как система. Архитектура изолирует риск. Оракулы валидируют реальность. Оценка превращает сложность в консервативную заёмную мощность. Проверки здоровья мониторят дрейф. Ликвидация восстанавливает платёжеспособность с максимальной точностью, которую позволяет venue. Операционные контроли управляют эволюцией фреймворка. Ни один из этих слоёв сам по себе недостаточен.",
+      "tr": "LP teminatı, güvenlik bir sistem olarak ele alındığında yalnızca Avana'da uygulanabilir. Mimari riski izole eder. Oracle'lar gerçekliği doğrular. Değerleme karmaşıklığı muhafazakâr borçlanma gücüne dönüştürür. Sağlık kontrolleri sürüklenmeyi izler. Likidasyon, venue'nun izin verdiği ölçüde ödeme gücünü geri kazandırır. Operasyonel kontroller çerçevenin nasıl evrildiğini yönetir. Bu katmanların hiçbiri tek başına yeterli değildir.",
+      "uk": "LP-застава життєздатна на Avana лише якщо безпека розглядається як система. Архітектура ізолює ризик. Оракули валідують реальність. Оцінка перетворює складність на консервативну позикову потужність. Перевірки здоров'я моніторять дрейф. Ліквідація відновлює платоспроможність з максимальною точністю, яку дозволяє venue. Операційні контролі керують еволюцією фреймворку. Жоден із цих шарів сам по собі недостатній."
+    },
+    "More than fees": {
+      "ja": "手数料以上のもの",
+      "ko": "수수료 그 이상",
+      "ru": "Больше, чем комиссии",
+      "tr": "Ücretlerden fazlası",
+      "uk": "Більше, ніж комісії"
+    },
+    "An LP position is never only about fees. Price divergence, impermanent loss, range drift, and collateral pressure can all hit the same book at once. Impermanent loss is what happens when the pool's asset mix shifts and the LP ends up worth less than holding the tokens separately. Once a supported position can back borrowing through Avana on Aave v4, borrowed capital can fund protection rather than only leverage. A position that would otherwise need to be fully withdrawn can stay active while the borrowed capital is used to reduce stress or balance exposure.": {
+      "ja": "LPポジションは決して手数料だけの話ではありません。価格乖離、インパーマネントロス、レンジドリフト、担保圧力がすべて同時に同じブックに襲いかかることがあります。インパーマネントロスは、プールの資産ミックスがシフトし、LPがトークンを別々に保有するより価値が低くなるときに起こります。サポートされたポジションがAave v4上のAvanaを通じて借入を裏付けできるようになると、借りた資本はレバレッジだけでなく保護にも使えます。そうでなければ完全に引き出す必要があるポジションは、借りた資本がストレスを軽減したりエクスポージャーをバランスさせるために使われながらアクティブなままでいられます。",
+      "ko": "LP 포지션은 결코 수수료만의 문제가 아닙니다. 가격 괴리, impermanent loss, 범위 표류, 담보 압력이 모두 동시에 같은 장부를 칠 수 있습니다. Impermanent loss는 풀의 자산 믹스가 변하고 LP가 토큰을 별도로 보유하는 것보다 가치가 낮아질 때 발생합니다. 지원되는 포지션이 Aave v4의 Avana를 통해 차입을 뒷받침할 수 있게 되면, 차입한 자본은 레버리지뿐 아니라 보호에도 사용할 수 있습니다. 그렇지 않으면 완전히 인출해야 할 포지션이 차입 자본으로 스트레스를 줄이거나 노출을 균형 잡는 동안 활성 상태를 유지할 수 있습니다.",
+      "ru": "LP-позиция — это никогда не только комиссии. Расхождение цен, impermanent loss, дрейф диапазона и давление залога могут одновременно ударить по одному и тому же портфелю. Impermanent loss — когда состав активов пула смещается и LP оказывается дешевле, чем удержание токенов отдельно. Когда поддерживаемая позиция может обеспечивать заимствование через Avana на Aave v4, заёмный капитал может финансировать защиту, а не только плечо. Позиция, которую иначе пришлось бы полностью вывести, может оставаться активной, пока заёмный капитал используется для снижения стресса или балансировки экспозиции.",
+      "tr": "Bir LP pozisyonu asla yalnızca ücretlerle ilgili değildir. Fiyat ayrışması, impermanent loss, aralık sürüklenmesi ve teminat baskısı aynı anda aynı deftere vurabilir. Impermanent loss, havuzun varlık karışımı değiştiğinde ve LP'nin tokenları ayrı tutmaktan daha az değerli hale geldiğinde olur. Desteklenen bir pozisyon Aave v4'te Avana aracılığıyla borçlanmayı destekleyebildiğinde, borçlanılan sermaye yalnızca kaldıraç değil koruma için de kullanılabilir. Aksi halde tamamen çekilmesi gereken bir pozisyon, borçlanılan sermaye stresi azaltmak veya maruziyeti dengelemek için kullanılırken aktif kalabilir.",
+      "uk": "LP-позиція — це ніколи не лише комісії. Розбіжність цін, impermanent loss, дрейф діапазону та тиск застави можуть одночасно вдарити по одному портфелю. Impermanent loss — коли склад активів пулу зміщується і LP виявляється дешевшим, ніж утримання токенів окремо. Коли підтримувана позиція може забезпечувати запозичення через Avana на Aave v4, позиковий капітал може фінансувати захист, а не лише плече. Позиція, яку інакше довелося б повністю вивести, може залишатися активною, поки позиковий капітал використовується для зниження стресу або балансування експозиції."
+    },
+    "Buffers and directional offsets": {
+      "ja": "バッファと方向性オフセット",
+      "ko": "버퍼와 방향성 오프셋",
+      "ru": "Буферы и направленные хеджи",
+      "tr": "Tamponlar ve yönsel dengelemeler",
+      "uk": "Буфери та напрямлені хеджі"
+    },
+    "The simplest hedge is often the most practical: a stablecoin buffer. Borrow conservatively on Avana and keep part of the proceeds in stables. If health starts to compress or volatility picks up, that liquidity can repay debt or reduce stress without forcing a reactive sale of the LP. This is not primarily about return enhancement. It is about buying time and preserving control, which on its own can matter a lot.": {
+      "ja": "最もシンプルなヘッジはしばしば最も実用的です：ステーブルコインバッファー。Avanaで保守的に借り、収益の一部をステーブルで保持します。ヘルスが圧縮され始めたりボラティリティが上がったりした場合、その流動性はLPの反応的な売却を強制せずに負債を返済したりストレスを軽減できます。これは主にリターン向上のためではありません。時間を買い、コントロールを維持することであり、それ自体が大きな意味を持つことがあります。",
+      "ko": "가장 단순한 헤지가 종종 가장 실용적입니다: 스테이블코인 버퍼. Avana에서 보수적으로 차입하고 수익의 일부를 스테이블로 보유합니다. 건강이 압축되기 시작하거나 변동성이 커지면 그 유동성으로 LP의 반응적 매도 없이 부채를 상환하거나 스트레스를 줄일 수 있습니다. 이것은 주로 수익 향상을 위한 것이 아닙니다. 시간을 사고 통제력을 유지하는 것이며, 그 자체로 큰 의미가 있을 수 있습니다.",
+      "ru": "Самый простой хедж часто самый практичный: буфер стейблкоинов. Занимайте консервативно на Avana и держите часть средств в стейблах. Если health начинает сжиматься или волатильность растёт, эта ликвидность может погасить долг или снизить стресс без вынужденной реактивной продажи LP. Речь не столько о повышении доходности, сколько о выигрыше времени и сохранении контроля, что само по себе может иметь большое значение.",
+      "tr": "En basit hedge genellikle en pratik olandır: bir stablecoin tamponu. Avana'da muhafazakâr borçlanın ve gelirin bir kısmını stable'da tutun. Sağlık sıkışmaya başlarsa veya volatilite artarsa, bu likidite LP'nin reaktif satışını zorlamadan borcu geri ödeyebilir veya stresi azaltabilir. Bu öncelikle getiri artırımıyla ilgili değildir. Zaman kazanmak ve kontrolü korumakla ilgilidir; bu tek başına çok önemli olabilir.",
+      "uk": "Найпростіший хедж часто найпрактичніший: буфер стейблкоїнів. Позичайте консервативно на Avana і тримайте частину коштів у стейблах. Якщо health починає стискатися або волатильність зростає, ця ліквідність може погасити борг або знизити стрес без вимушеного реактивного продажу LP. Мова не стільки про підвищення доходності, скільки про виграш часу та збереження контролю, що само по собі може мати велике значення."
+    },
+    "A second form is directional offset. If the LP already carries clear exposure to one volatile asset, borrowed capital can reduce net directional risk instead of increasing it. Methods vary with user sophistication, but the principle is straightforward. If the LP already embeds market exposure, borrowing can balance that exposure. Hedging works best as risk narrowing, not as a second speculative trade sitting next to the first one.": {
+      "ja": "第二の形は方向性オフセットです。LPがすでに1つのボラタイル資産への明確なエクスポージャーを持っている場合、借りた資本はそれを増やすのではなく、純方向性リスクを減らせます。方法はユーザーの熟練度によって異なりますが、原則は単純です。LPがすでに市場エクスポージャーを内包しているなら、借入はそのエクスポージャーをバランスできます。ヘッジは最初の投機的取引の隣に座る第二の投機的取引ではなく、リスクの絞り込みとして最も効果的です。",
+      "ko": "두 번째 형태는 방향성 오프셋입니다. LP가 이미 하나의 변동성 자산에 대한 명확한 노출을 가지고 있다면, 차입 자본은 이를 늘리는 대신 순 방향성 리스크를 줄일 수 있습니다. 방법은 사용자 숙련도에 따라 다르지만 원칙은 간단합니다. LP가 이미 시장 노출을 내포하고 있다면 차입으로 그 노출을 균형 잡을 수 있습니다. 헤지는 첫 번째 투기적 거래 옆에 놓인 두 번째 투기적 거래가 아니라 리스크 축소로 가장 잘 작동합니다.",
+      "ru": "Вторая форма — направленный хедж. Если LP уже несёт явную экспозицию к одному волатильному активу, заёмный капитал может снизить чистый направленный риск вместо его увеличения. Методы зависят от опыта пользователя, но принцип прост. Если LP уже встраивает рыночную экспозицию, заимствование может её сбалансировать. Хеджирование лучше работает как сужение риска, а не как вторая спекулятивная сделка рядом с первой.",
+      "tr": "İkinci bir biçim yönsel dengelemedir. LP zaten tek bir oynak varlığa net maruziyet taşıyorsa, borçlanılan sermaye bunu artırmak yerine net yönsel riski azaltabilir. Yöntemler kullanıcı deneyimine göre değişir, ancak ilke basittir. LP zaten piyasa maruziyetini içeriyorsa borçlanma bu maruziyeti dengeleyebilir. Hedge, ilk spekülatif işlemin yanında duran ikinci bir spekülatif işlem olarak değil, risk daraltma olarak en iyi çalışır.",
+      "uk": "Друга форма — напрямлений хедж. Якщо LP уже несе явну експозицію до одного волатильного активу, позиковий капітал може знизити чистий напрямлений ризик замість його збільшення. Методи залежать від досвіду користувача, але принцип простий. Якщо LP уже вбудовує ринкову експозицію, запозичення може її збалансувати. Хеджування найкраще працює як звуження ризику, а не як друга спекулятивна угода поруч із першою."
+    },
+    "Neutrality and softer hedges": {
+      "ja": "ニュートラリティとソフトヘッジ",
+      "ko": "중립성과 부드러운 헤지",
+      "ru": "Нейтральность и мягкие хеджи",
+      "tr": "Nötrlük ve daha yumuşak hedge'ler",
+      "uk": "Нейтральність і м'які хеджі"
+    },
+    "A more advanced approach is to think in terms of neutrality: reducing directional sensitivity and leaning on fee income. That kind of structure can be more stable, but it requires active monitoring and rebalancing. LP positions evolve as markets move, so a neutral setup has to be maintained, not declared once. For larger positions, protective downside structures can define worst case scenarios instead of only reacting to them, though they introduce their own costs and timing decisions.": {
+      "ja": "より高度なアプローチは、ニュートラリティの観点で考えることです：方向性感度を下げ、手数料収入に頼る。そうした構造はより安定し得ますが、積極的なモニタリングとリバランスが必要です。LPポジションは市場の動きとともに進化するため、ニュートラル設定は一度宣言するのではなく維持されなければなりません。大きなポジションでは、保護的なダウンサイド構造が最悪ケースに単に反応するのではなくそれを定義できますが、独自のコストとタイミング判断を伴います。",
+      "ko": "더 고급 접근법은 중립성 관점에서 생각하는 것입니다: 방향성 민감도를 줄이고 수수료 수입에 의존합니다. 그런 구조는 더 안정적일 수 있지만 적극적인 모니터링과 리밸런싱이 필요합니다. LP 포지션은 시장이 움직이면서 진화하므로 중립 설정은 한 번 선언하는 것이 아니라 유지되어야 합니다. 더 큰 포지션의 경우 보호적 하방 구조가 최악의 시나리오에 단순히 반응하는 대신 이를 정의할 수 있지만, 자체 비용과 타이밍 결정을 수반합니다.",
+      "ru": "Более продвинутый подход — думать в терминах нейтральности: снижать направленную чувствительность и опираться на доход от комиссий. Такая структура может быть стабильнее, но требует активного мониторинга и ребалансировки. LP-позиции эволюционируют с движением рынков, поэтому нейтральную настройку нужно поддерживать, а не объявлять один раз. Для крупных позиций защитные downside-структуры могут определять худшие сценарии вместо того, чтобы только реагировать на них, хотя они вносят свои издержки и решения по таймингу.",
+      "tr": "Daha gelişmiş bir yaklaşım, nötrlük açısından düşünmektir: yönsel duyarlılığı azaltmak ve ücret gelirine dayanmak. Bu tür bir yapı daha istikrarlı olabilir, ancak aktif izleme ve yeniden dengeleme gerektirir. LP pozisyonları piyasalar hareket ettikçe evrilir, bu yüzden nötr bir kurulum bir kez ilan edilmez, sürdürülmelidir. Daha büyük pozisyonlar için koruyucu aşağı yönlü yapılar, yalnızca onlara tepki vermek yerine en kötü senaryoları tanımlayabilir, ancak kendi maliyetlerini ve zamanlama kararlarını getirirler.",
+      "uk": "Більш просунутий підхід — думати в термінах нейтральності: знижувати напрямлену чутливість і спиратися на дохід від комісій. Така структура може бути стабільнішою, але потребує активного моніторингу та ребалансування. LP-позиції еволюціонують із рухом ринків, тому нейтральне налаштування потрібно підтримувати, а не оголошувати один раз. Для великих позицій захисні downside-структури можуть визначати найгірші сценарії замість того, щоб лише реагувати на них, хоча вони вносять власні витрати та рішення щодо таймінгу."
+    },
+    "A softer hedge that is often overlooked is reallocating marginal exposure rather than touching the core LP. In practice that means shifting incremental capital toward more defensive pools or stable deployments when conditions deteriorate, without fully unwinding the original position. Avana helps by keeping the core LP available as collateral so every liquidity need does not become an all or nothing exit.": {
+      "ja": "見落とされがちなソフトヘッジは、コアLPに触れるのではなく限界的エクスポージャーを再配分することです。実際には、状況が悪化したときに元のポジションを完全にアンウィンドせず、増分資本をより防御的なプールやステーブル配置にシフトすることを意味します。AvanaはコアLPを担保として利用可能に保つことで、すべての流動性ニーズがオールオアナッシングの出口にならないよう助けます。",
+      "ko": "종종 간과되는 부드러운 헤지는 핵심 LP를 건드리기보다 한계 노출을 재배치하는 것입니다. 실제로는 조건이 악화될 때 원래 포지션을 완전히 unwind하지 않고 증분 자본을 더 방어적인 풀이나 스테이블 배치로 이동하는 것을 의미합니다. Avana는 핵심 LP를 담보로 사용 가능하게 유지하여 모든 유동성 필요가 전부 아니면 전무의 출구가 되지 않도록 돕습니다.",
+      "ru": "Мягкий хедж, который часто упускают из виду — перераспределение маржинальной экспозиции вместо затрагивания ядра LP. На практике это означает сдвиг инкрементального капитала к более защитным пулам или стейбл-размещениям при ухудшении условий, без полного unwind исходной позиции. Avana помогает, сохраняя ядро LP доступным как залог, чтобы каждая потребность в ликвидности не превращалась в выход «всё или ничего».",
+      "tr": "Genellikle gözden kaçan daha yumuşak bir hedge, çekirdek LP'ye dokunmak yerine marjinal maruziyeti yeniden tahsis etmektir. Pratikte bu, koşullar kötüleştiğinde orijinal pozisyonu tamamen çözmeden artımlı sermayeyi daha savunmacı havuzlara veya stabil dağıtımlara kaydırmak anlamına gelir. Avana, çekirdek LP'yi teminat olarak kullanılabilir tutarak her likidite ihtiyacının hep ya hep çıkışına dönüşmemesine yardımcı olur.",
+      "uk": "М'який хедж, який часто упускають з уваги — перерозподіл маржинальної експозиції замість торкання ядра LP. На практиці це означає зсув інкрементального капіталу до більш захисних пулів або стейбл-розміщень при погіршенні умов, без повного unwind вихідної позиції. Avana допомагає, зберігаючи ядро LP доступним як заставу, щоб кожна потреба в ліквідності не перетворювалася на вихід «все або нічого»."
+    },
+    "Practical rules that travel well": {
+      "ja": "どこでも通用する実践的ルール",
+      "ko": "어디서나 통하는 실용적 규칙",
+      "ru": "Практичные правила, которые работают везде",
+      "tr": "Her yerde işe yarayan pratik kurallar",
+      "uk": "Практичні правила, що працюють скрізь"
+    },
+    "Across approaches, a few habits travel well on Avana. Borrow conservatively. Keep a real buffer. Assume conditions can worsen faster than expected. Treat maximum borrowing capacity as a boundary rather than a target. Use monitoring with predefined de risking rules instead of relying on constant manual reaction. If a hedge strategy becomes so complicated that you no longer understand what is being hedged and what is being added, it has gone too far.": {
+      "ja": "アプローチを横断して、Avanaで通用する習慣がいくつかあります。保守的に借りる。実際のバッファーを持つ。条件が予想より速く悪化しうると想定する。最大借入容量を目標ではなく境界として扱う。常に手動で反応するのではなく、事前定義されたデリスクルールでモニタリングを使う。ヘッジ戦略が複雑すぎて何がヘッジされ何が追加されているか理解できなくなったら、行き過ぎです。",
+      "ko": "접근법을 가로질러 Avana에서 통하는 습관이 몇 가지 있습니다. 보수적으로 차입하세요. 실제 버퍼를 유지하세요. 조건이 예상보다 빠르게 악화될 수 있다고 가정하세요. 최대 차입 용량을 목표가 아닌 경계로 취급하세요. 지속적인 수동 반응 대신 사전 정의된 디리스킹 규칙으로 모니터링을 사용하세요. 헤지 전략이 너무 복잡해져 무엇이 헤지되고 무엇이 추가되는지 더 이상 이해할 수 없다면 너무 멀리 간 것입니다.",
+      "ru": "В разных подходах несколько привычек хорошо работают на Avana. Занимайте консервативно. Держите реальный буфер. Предполагайте, что условия могут ухудшиться быстрее ожидаемого. Относитесь к максимальной заёмной ёмкости как к границе, а не цели. Используйте мониторинг с заранее заданными правилами de-risking вместо постоянной ручной реакции. Если хедж-стратегия стала настолько сложной, что вы больше не понимаете, что хеджируется и что добавляется, — это перебор.",
+      "tr": "Yaklaşımlar arasında Avana'da iyi işleyen birkaç alışkanlık vardır. Muhafazakâr borçlanın. Gerçek bir tampon tutun. Koşulların beklenenden daha hızlı kötüleşebileceğini varsayın. Maksimum borçlanma kapasitesini hedef değil sınır olarak görün. Sürekli manuel tepkiye güvenmek yerine önceden tanımlanmış risk azaltma kurallarıyla izleme kullanın. Bir hedge stratejisi o kadar karmaşık hale gelirse ki neyin hedge edildiğini ve neyin eklendiğini artık anlamıyorsanız, çok ileri gitmişsiniz demektir.",
+      "uk": "У різних підходах кілька звичок добре працюють на Avana. Позичайте консервативно. Тримайте реальний буфер. Припускайте, що умови можуть погіршитися швидше, ніж очікувалося. Ставтеся до максимальної позикової ємності як до межі, а не цілі. Використовуйте моніторинг із заздалегідь заданими правилами de-risking замість постійної ручної реакції. Якщо хедж-стратегія стала настільки складною, що ви більше не розумієте, що хеджується й що додається, — це перебір."
+    },
+    "What looping means on Avana": {
+      "ja": "Avanaでのルーピングの意味",
+      "ko": "Avana에서 루핑의 의미",
+      "ru": "Что означает looping на Avana",
+      "tr": "Avana'da looping ne anlama gelir",
+      "uk": "Що означає looping на Avana"
+    },
+    "Yield looping means holding an LP position, borrowing against it, and redeploying the borrowed capital into another yield producing strategy, or in some cases back into liquidity itself. Avana on Aave v4 makes that collateral step possible for supported LP markets. The attraction is obvious: looping can increase effective exposure and amplify fee generation. The danger is equally obvious: it can compress safety margins, raise liquidation sensitivity, and make a position much more fragile when conditions shift. The real objective should be sustainable amplification, not maximum leverage on day one.": {
+      "ja": "イールドルーピングとは、LPポジションを保有し、それに対して借り、借りた資本を別のイールド生成戦略、場合によっては流動性自体に再配分することです。Aave v4上のAvanaは、サポートされたLP市場でその担保ステップを可能にします。魅力は明らかです：ルーピングは実効エクスポージャーを増やし、手数料生成を増幅できます。危険も同様に明らかです：安全マージンを圧縮し、清算感度を高め、条件が変わるとポジションをはるかに脆弱にできます。真の目標は初日の最大レバレッジではなく、持続可能な増幅であるべきです。",
+      "ko": "수익 루핑은 LP 포지션을 보유하고 이를 담보로 차입한 뒤, 차입한 자본을 다른 수익 생성 전략에, 경우에 따라 유동성 자체에 재배치하는 것을 의미합니다. Aave v4의 Avana는 지원되는 LP 시장에서 그 담보 단계를 가능하게 합니다. 매력은 분명합니다: 루핑은 실효 노출을 늘리고 수수료 생성을 증폭할 수 있습니다. 위험도 마찬가지로 분명합니다: 안전 마진을 압축하고, 청산 민감도를 높이며, 조건이 변하면 포지션을 훨씬 취약하게 만들 수 있습니다. 진정한 목표는 첫날의 최대 레버리지가 아니라 지속 가능한 증폭이어야 합니다.",
+      "ru": "Yield looping означает удержание LP-позиции, заимствование под неё и переразмещение заёмного капитала в другую доходную стратегию или в некоторых случаях обратно в ликвидность. Avana на Aave v4 делает этот залоговый шаг возможным для поддерживаемых LP-рынков. Привлекательность очевидна: looping может увеличить эффективную экспозицию и усилить генерацию комиссий. Опасность столь же очевидна: он может сжать запас прочности, повысить чувствительность к ликвидации и сделать позицию гораздо более хрупкой при смене условий. Настоящая цель — устойчивое усиление, а не максимальное плечо в первый день.",
+      "tr": "Yield looping, bir LP pozisyonu tutmak, ona karşı borçlanmak ve borçlanılan sermayeyi başka bir getiri üreten stratejiye veya bazı durumlarda likiditenin kendisine yeniden dağıtmak anlamına gelir. Aave v4'te Avana, desteklenen LP piyasaları için bu teminat adımını mümkün kılar. Çekicilik açıktır: looping etkin maruziyeti artırabilir ve ücret üretimini güçlendirebilir. Tehlike de aynı derecede açıktır: güvenlik marjlarını sıkıştırabilir, likidasyon duyarlılığını artırabilir ve koşullar değiştiğinde pozisyonu çok daha kırılgan hale getirebilir. Gerçek hedef, ilk günden maksimum kaldıraç değil, sürdürülebilir amplifikasyon olmalıdır.",
+      "uk": "Yield looping означає утримання LP-позиції, запозичення під неї та перерозміщення позикового капіталу в іншу дохідну стратегію або в деяких випадках назад у ліквідність. Avana на Aave v4 робить цей заставний крок можливим для підтримуваних LP-ринків. Привабливість очевидна: looping може збільшити ефективну експозицію та посилити генерацію комісій. Небезпека так само очевидна: він може стиснути запас міцності, підвищити чутливість до ліквідації та зробити позицію набагато крихкішою при зміні умов. Справжня мета — стійке посилення, а не максимальне плече в перший день."
+    },
+    "Keeping the first loop modest": {
+      "ja": "最初のループは控えめに",
+      "ko": "첫 루프는 소규모로",
+      "ru": "Держите первый loop скромным",
+      "tr": "İlk döngüyü mütevazı tutun",
+      "uk": "Тримайте перший loop скромним"
+    },
+    "The safest form of looping is modest. Borrow a relatively small amount against a supported Avana LP position and redeploy into a second yield source without pushing near the borrowing limit. That is a controlled extension of the original position, not a recursive bet that conditions stay perfect. For many users, especially early on, that is the right starting point. You still get better capital use, but you leave room if the LP mark, fee income, or borrow rate moves against you.": {
+      "ja": "最も安全なルーピングの形は控えめです。サポートされたAvana LPポジションに対して比較的少額を借り、借入限度に近づけずに第二のイールド源に再配分します。それは条件が完璧なままであるという再帰的な賭けではなく、元のポジションの制御された拡張です。多くのユーザー、特に初期には、それが正しい出発点です。資本効率は向上しますが、LPマーク、手数料収入、借入金利が不利に動いた場合の余地を残せます。",
+      "ko": "가장 안전한 루핑 형태는 소규모입니다. 지원되는 Avana LP 포지션에 대해 상대적으로 적은 금액을 차입하고 차입 한도에 가깝게 밀지 않고 두 번째 수익원에 재배치합니다. 이것은 조건이 완벽하게 유지된다는 재귀적 베팅이 아니라 원래 포지션의 통제된 확장입니다. 많은 사용자, 특히 초기에는 그것이 올바른 출발점입니다. 자본 효율은 개선되지만 LP 마크, 수수료 수입, 차입 금리가 불리하게 움직일 여지를 남깁니다.",
+      "ru": "Самая безопасная форма looping — скромная. Занимайте относительно небольшую сумму под поддерживаемую LP-позицию Avana и переразмещайте во второй источник дохода, не приближаясь к лимиту заимствования. Это контролируемое расширение исходной позиции, а не рекурсивная ставка на идеальные условия. Для многих пользователей, особенно на старте, это правильная отправная точка. Вы всё ещё получаете лучшее использование капитала, но оставляете запас, если mark LP, доход от комиссий или ставка заимствования пойдут против вас.",
+      "tr": "Looping'in en güvenli biçimi mütevazıdır. Desteklenen bir Avana LP pozisyonuna karşı nispeten küçük bir miktar borçlanın ve borçlanma limitine yaklaşmadan ikinci bir getiri kaynağına yeniden dağıtın. Bu, koşulların mükemmel kalacağına dair özyinelemeli bir bahis değil, orijinal pozisyonun kontrollü bir uzantısıdır. Birçok kullanıcı için, özellikle başlangıçta, bu doğru başlangıç noktasıdır. Hâlâ daha iyi sermaye kullanımı elde edersiniz, ancak LP işareti, ücret geliri veya borçlanma oranı aleyhinize hareket ederse alan bırakırsınız.",
+      "uk": "Найбезпечніша форма looping — скромна. Позичайте відносно невелику суму під підтримувану LP-позицію Avana і перерозміщуйте в друге джерело доходу, не наближаючись до ліміту запозичення. Це контрольоване розширення вихідної позиції, а не рекурсивна ставка на ідеальні умови. Для багатьох користувачів, особливо на старті, це правильна відправна точка. Ви все ще отримуєте краще використання капіталу, але залишаєте запас, якщо mark LP, дохід від комісій або ставка запозичення підуть проти вас."
+    },
+    "More advanced versions redeploy borrowed capital back into liquidity. That can increase fee generation in favorable environments, but it also makes the structure more reflexive. You become exposed to a layered book where price movement, collateral quality, and debt safety interact more aggressively. Leverage does not only amplify returns. It also amplifies the speed at which a healthy Avana position can become a stressed one.": {
+      "ja": "より高度なバージョンは借りた資本を流動性に戻します。好環境では手数料生成を増やせますが、構造をより反射的にします。価格変動、担保品質、負債の安全性がより攻撃的に相互作用する多層のブックにさらされます。レバレッジはリターンを増幅するだけではありません。健全なAvanaポジションがストレス状態になる速度も増幅します。",
+      "ko": "더 고급 버전은 차입한 자본을 다시 유동성에 재배치합니다. 호황에서는 수수료 생성을 늘릴 수 있지만 구조를 더 반사적으로 만듭니다. 가격 변동, 담보 품질, 부채 안전이 더 공격적으로 상호작용하는 다층 장부에 노출됩니다. 레버리지는 수익만 증폭하지 않습니다. 건강한 Avana 포지션이 스트레스 상태가 되는 속도도 증폭합니다.",
+      "ru": "Более продвинутые версии переразмещают заёмный капитал обратно в ликвидность. Это может увеличить генерацию комиссий в благоприятных условиях, но делает структуру более рефлексивной. Вы подвергаетесь многослойному портфелю, где движение цен, качество залога и безопасность долга взаимодействуют агрессивнее. Плечо усиливает не только доходность. Оно также усиливает скорость, с которой здоровая позиция Avana может стать стрессовой.",
+      "tr": "Daha gelişmiş sürümler borçlanılan sermayeyi tekrar likiditeye dağıtır. Bu elverişli ortamlarda ücret üretimini artırabilir, ancak yapıyı daha refleksif hale getirir. Fiyat hareketi, teminat kalitesi ve borç güvenliğinin daha agresif etkileşime girdiği katmanlı bir deftere maruz kalırsınız. Kaldıraç yalnızca getirileri güçlendirmez. Sağlıklı bir Avana pozisyonunun stresli hale gelme hızını da güçlendirir.",
+      "uk": "Більш просунуті версії перерозміщують позиковий капітал назад у ліквідність. Це може збільшити генерацію комісій у сприятливих умовах, але робить структуру більш рефлексивною. Ви піддаєтеся багатошаровому портфелю, де рух цін, якість застави та безпека боргу взаємодіють агресивніше. Плече посилює не лише дохідність. Воно також посилює швидкість, з якою здорова позиція Avana може стати стресовою."
+    },
+    "Stress testing and exit discipline": {
+      "ja": "ストレステストと出口規律",
+      "ko": "스트레스 테스트와 출구 규율",
+      "ru": "Стресс-тестирование и дисциплина выхода",
+      "tr": "Stres testi ve çıkış disiplini",
+      "uk": "Стрес-тестування та дисципліна виходу"
+    },
+    "Stress testing is essential. Any serious looping approach should be evaluated under adverse conditions. What happens if one side of the pair moves sharply, if trading volume weakens, if borrow costs rise, or if collateral quality deteriorates faster than expected. A structure that looks attractive when fees are high and volatility is calm can look uncomfortable once those conditions reverse. If the only favorable scenario is a calm fee month, the thinking is not finished.": {
+      "ja": "ストレステストは不可欠です。真剣なルーピングアプローチは不利な条件下で評価されるべきです。ペアの片側が急激に動いたら、取引量が弱まったら、借入コストが上がったら、担保品質が予想より速く悪化したらどうなるか。手数料が高くボラティリティが穏やかなとき魅力的に見える構造は、条件が逆転すると不快に見えることがあります。好ましいシナリオが穏やかな手数料の月だけなら、思考は終わっていません。",
+      "ko": "스트레스 테스트는 필수입니다. 진지한 루핑 접근법은 불리한 조건에서 평가되어야 합니다. 페어 한쪽이 급격히 움직이면, 거래량이 약해지면, 차입 비용이 오르면, 담보 품질이 예상보다 빠르게 악화되면 어떻게 되는지. 수수료가 높고 변동성이 잔잔할 때 매력적으로 보이는 구조는 조건이 뒤집히면 불편해 보일 수 있습니다. 유리한 시나리오가 잔잔한 수수료의 달뿐이라면 사고가 끝나지 않은 것입니다.",
+      "ru": "Стресс-тестирование необходимо. Любой серьёзный подход к looping должен оцениваться в неблагоприятных условиях. Что произойдёт, если одна сторона пары резко сдвинется, объём торгов ослабнет, стоимость заимствования вырастет или качество залога ухудшится быстрее ожидаемого. Структура, привлекательная при высоких комиссиях и спокойной волатильности, может стать некомфортной при развороте условий. Если единственный благоприятный сценарий — спокойный месяц комиссий, размышления не завершены.",
+      "tr": "Stres testi şarttır. Ciddi bir looping yaklaşımı olumsuz koşullar altında değerlendirilmelidir. Çiftin bir tarafı keskin hareket ederse, işlem hacmi zayıflarsa, borçlanma maliyetleri artarsa veya teminat kalitesi beklenenden hızlı bozulursa ne olur? Ücretler yüksek ve volatilite sakin olduğunda çekici görünen bir yapı, bu koşullar tersine döndüğünde rahatsız edici görünebilir. Tek olumlu senaryo sakin bir ücret ayıysa, düşünce tamamlanmamış demektir.",
+      "uk": "Стрес-тестування необхідне. Будь-який серйозний підхід до looping має оцінюватися в несприятливих умовах. Що станеться, якщо одна сторона пари різко зсунеться, обсяг торгів ослабне, вартість запозичення зросте або якість застави погіршиться швидше, ніж очікувалося. Структура, приваблива при високих комісіях і спокійній волатильності, може стати незручною при розвороті умов. Якщо єдиний сприятливий сценарій — спокійний місяць комісій, роздуми не завершені."
+    },
+    "Exit discipline matters as much as entry. Many poor leverage decisions are not created by the first borrow. They are created by having no plan for reducing risk. If volatility rises, health buffers compress, or the economics weaken, exposure should be reduced in stages rather than defended blindly. Avana Automate can help with fee harvesting, debt reduction, and rule based de risking, but automation only helps if the underlying rules are honest. A looped strategy is only as strong as the assumptions behind it.": {
+      "ja": "出口規律はエントリーと同じくらい重要です。多くの悪いレバレッジ判断は最初の借入で生まれるのではありません。リスクを減らす計画がないことで生まれます。ボラティリティが上がり、ヘルスバッファーが圧縮され、経済性が弱まるなら、盲目的に守るのではなく段階的にエクスポージャーを減らすべきです。Avana Automateは手数料収穫、負債削減、ルールベースのデリスクに役立ちますが、基盤のルールが誠実でなければ自動化は助けになりません。ループ戦略はその背後にある前提と同じくらい強いだけです。",
+      "ko": "출구 규율은 진입만큼 중요합니다. 많은 나쁜 레버리지 결정은 첫 차입에서 만들어지지 않습니다. 리스크를 줄이는 계획이 없어서 만들어집니다. 변동성이 오르고, 건강 버퍼가 압축되고, 경제성이 약해지면 맹목적으로 방어하기보다 단계적으로 노출을 줄여야 합니다. Avana Automate는 수수료 수확, 부채 감소, 규칙 기반 디리스킹에 도움이 되지만, 기본 규칙이 정직하지 않으면 자동화는 도움이 되지 않습니다. 루프 전략은 그 뒤의 가정만큼 강할 뿐입니다.",
+      "ru": "Дисциплина выхода важна не меньше входа. Многие плохие решения о плече создаются не первым займом. Они создаются отсутствием плана снижения риска. Если волатильность растёт, буферы health сжимаются или экономика слабеет, экспозицию следует снижать поэтапно, а не слепо защищать. Avana Automate помогает с harvesting комиссий, сокращением долга и rule-based de-risking, но автоматизация помогает только если базовые правила честны. Loop-стратегия сильна ровно настолько, насколько сильны допущения за ней.",
+      "tr": "Çıkış disiplini giriş kadar önemlidir. Birçok kötü kaldıraç kararı ilk borçlanmayla oluşmaz. Riski azaltma planı olmamasıyla oluşur. Volatilite artarsa, sağlık tamponları sıkışırsa veya ekonomi zayıflarsa, maruziyet körü körüne savunulmak yerine aşamalı olarak azaltılmalıdır. Avana Automate ücret toplama, borç azaltma ve kural tabanlı risk azaltmada yardımcı olabilir, ancak otomasyon yalnızca temel kurallar dürüstse işe yarar. Döngülü bir strateji, arkasındaki varsayımlar kadar güçlüdür.",
+      "uk": "Дисципліна виходу важлива не менше входу. Багато поганих рішень про плече створюються не першим запозиченням. Вони створюються відсутністю плану зниження ризику. Якщо волатильність зростає, буфери health стискаються або економіка слабшає, експозицію слід знижувати поетапно, а не сліпо захищати. Avana Automate допомагає з harvesting комісій, скороченням боргу та rule-based de-risking, але автоматизація допомагає лише якщо базові правила чесні. Loop-стратегія сильна рівно настільки, наскільки сильні припущення за нею."
+    },
+    "Balance sheet design, not free yield": {
+      "ja": "バランスシート設計であり、タダのイールドではない",
+      "ko": "대차대조표 설계이지 공짜 수익이 아니다",
+      "ru": "Дизайн баланса, а не бесплатная доходность",
+      "tr": "Bilanço tasarımı, bedava getiri değil",
+      "uk": "Дизайн балансу, а не безкоштовна дохідність"
+    },
+    "Yield looping is a capital structure decision, not a shortcut to free yield. Used carefully on Avana, it lets productive onchain liquidity support a broader set of returns without forcing the original position to be fully unwound. Used carelessly, it turns a healthy LP position into a fragile one. The difference is usually discipline, buffer management, and a willingness to treat leverage as something to control rather than something to maximize.": {
+      "ja": "イールドルーピングは資本構造の決定であり、タダのイールドへの近道ではありません。Avanaで慎重に使えば、生産的なオンチェーン流動性が元のポジションを完全にアンウィンドすることなく、より広いリターンセットを支えられます。不注意に使えば、健全なLPポジションを脆弱なものに変えます。違いは通常、規律、バッファー管理、レバレッジを最大化するものではなく制御するものとして扱う意志です。",
+      "ko": "수익 루핑은 자본 구조 결정이지 공짜 수익으로 가는 지름길이 아닙니다. Avana에서 신중하게 사용하면 생산적인 온체인 유동성이 원래 포지션을 완전히 unwind하지 않고도 더 넓은 수익 세트를 지원할 수 있습니다. 부주의하게 사용하면 건강한 LP 포지션을 취약한 것으로 바꿉니다. 차이는 보통 규율, 버퍼 관리, 레버리지를 극대화할 것이 아니라 통제할 것으로 대하는 의지입니다.",
+      "ru": "Yield looping — решение о структуре капитала, а не короткий путь к бесплатной доходности. При осторожном использовании на Avana он позволяет продуктивной onchain-ликвидности поддерживать более широкий набор доходов без полного unwind исходной позиции. При небрежном использовании превращает здоровую LP-позицию в хрупкую. Разница обычно в дисциплине, управлении буфером и готовности рассматривать плечо как то, что нужно контролировать, а не максимизировать.",
+      "tr": "Yield looping bir sermaye yapısı kararıdır, bedava getiriye kısayol değildir. Avana'da dikkatli kullanıldığında, üretken onchain likiditenin orijinal pozisyonu tamamen çözmeden daha geniş bir getiri setini desteklemesini sağlar. Dikkatsiz kullanıldığında sağlıklı bir LP pozisyonunu kırılgan hale getirir. Fark genellikle disiplin, tampon yönetimi ve kaldıraçı maksimize edilecek bir şey değil kontrol edilecek bir şey olarak görme isteğidir.",
+      "uk": "Yield looping — рішення про структуру капіталу, а не короткий шлях до безкоштовної дохідності. При обережному використанні на Avana він дозволяє продуктивній onchain-ліквідності підтримувати ширший набір доходів без повного unwind вихідної позиції. При недбалому використанні перетворює здорову LP-позицію на крихку. Різниця зазвичай у дисципліні, управлінні буфером і готовності розглядати плече як те, що потрібно контролювати, а не максимізувати."
+    },
+    "From trapped capital to usable capital": {
+      "ja": "閉じ込められた資本から使える資本へ",
+      "ko": "갇힌 자본에서 사용 가능한 자본으로",
+      "ru": "От замороженного капитала к пригодному",
+      "tr": "Hapsolmuş sermayeden kullanılabilir sermayeye",
+      "uk": "Від замороженого капіталу до придатного"
+    },
+    "LP positions have traditionally been productive but inflexible. They earn trading fees and support market depth, but if you want liquidity from that position, the usual path is to unwind it: break the position apart, interrupt fee generation, and turn a productive asset into idle balances. LP collateral changes that. Through Avana on Aave v4, supported LP positions can stay active in the underlying AMM while also supporting borrowing.": {
+      "ja": "LPポジションは伝統的に生産的ですが柔軟性がありませんでした。取引手数料を稼ぎ市場深度を支えますが、そのポジションから流動性が欲しければ、通常の道はアンウィンドすることです：ポジションを分解し、手数料生成を中断し、生産的資産を遊休残高に変えます。LP担保はそれを変えます。Aave v4上のAvanaを通じて、サポートされたLPポジションは借入も支えながら基盤AMMでアクティブなままでいられます。",
+      "ko": "LP 포지션은 전통적으로 생산적이지만 유연하지 않았습니다. 거래 수수료를 벌고 시장 깊이를 지원하지만, 그 포지션에서 유동성을 원하면 일반적인 경로는 unwind하는 것입니다: 포지션을 분해하고, 수수료 생성을 중단하고, 생산적 자산을 유휴 잔액으로 바꿉니다. LP 담보가 이를 바꿉니다. Aave v4의 Avana를 통해 지원되는 LP 포지션은 차입도 지원하면서 기초 AMM에서 활성 상태를 유지할 수 있습니다.",
+      "ru": "LP-позиции традиционно были продуктивными, но негибкими. Они приносят торговые комиссии и поддерживают глубину рынка, но если нужна ликвидность из позиции, обычный путь — unwind: разобрать позицию, прервать генерацию комиссий и превратить продуктивный актив в неактивные балансы. LP-залог меняет это. Через Avana на Aave v4 поддерживаемые LP-позиции могут оставаться активными в базовом AMM и одновременно поддерживать заимствование.",
+      "tr": "LP pozisyonları geleneksel olarak üretken ama esnek değildi. İşlem ücretleri kazanır ve piyasa derinliğini destekler, ancak o pozisyondan likidite istiyorsanız olağan yol onu çözmektir: pozisyonu parçalamak, ücret üretimini kesmek ve üretken bir varlığı boşta bakiyelere dönüştürmek. LP teminatı bunu değiştirir. Aave v4'te Avana aracılığıyla desteklenen LP pozisyonları, borçlanmayı da desteklerken altta yatan AMM'de aktif kalabilir.",
+      "uk": "LP-позиції традиційно були продуктивними, але негнучкими. Вони приносять торгові комісії й підтримують глибину ринку, але якщо потрібна ліквідність із позиції, звичний шлях — unwind: розібрати позицію, перервати генерацію комісій і перетворити продуктивний актив на неактивні баланси. LP-застава змінює це. Через Avana на Aave v4 підтримувані LP-позиції можуть залишатися активними в базовому AMM і одночасно підтримувати запозичення."
+    },
+    "Conservative liquidity and second yield paths": {
+      "ja": "保守的流動性と第二のイールド経路",
+      "ko": "보수적 유동성과 두 번째 수익 경로",
+      "ru": "Консервативная ликвидность и вторые пути дохода",
+      "tr": "Muhafazakâr likidite ve ikinci getiri yolları",
+      "uk": "Консервативна ліквідність і другі шляхи доходу"
+    },
+    "The most conservative use case is straightforward. You borrow stable assets against a supported Avana LP position and use that liquidity for working capital, reserve management, or lower volatility yield while the LP stays active and keeps earning fees. The main value here is not leverage for its own sake. It is access to cash without forcing a full exit from the original position.": {
+      "ja": "最も保守的なユースケースは単純です。サポートされたAvana LPポジションに対してステーブル資産を借り、その流動性を運転資本、リザーブ管理、または低ボラティリティイールドに使いながらLPはアクティブなまま手数料を稼ぎ続けます。ここでの主な価値はそれ自体のためのレバレッジではありません。元のポジションから完全に退出することなくキャッシュにアクセスすることです。",
+      "ko": "가장 보수적인 사용 사례는 간단합니다. 지원되는 Avana LP 포지션에 대해 스테이블 자산을 차입하고, LP가 활성 상태로 수수료를 계속 벌면서 그 유동성을 운전 자본, 준비금 관리 또는 낮은 변동성 수익에 사용합니다. 여기서 주요 가치는 그 자체를 위한 레버리지가 아닙니다. 원래 포지션에서 완전히 나가지 않고 현금에 접근하는 것입니다.",
+      "ru": "Самый консервативный сценарий прост. Вы занимаете стейблы под поддерживаемую LP-позицию Avana и используете эту ликвидность для оборотного капитала, управления резервами или доходности с меньшей волатильностью, пока LP остаётся активным и продолжает зарабатывать комиссии. Главная ценность здесь — не плечо ради плеча. Это доступ к наличности без полного выхода из исходной позиции.",
+      "tr": "En muhafazakâr kullanım durumu basittir. Desteklenen bir Avana LP pozisyonuna karşı stabil varlıklar borçlanır ve LP aktif kalıp ücret kazanmaya devam ederken bu likiditeyi işletme sermayesi, rezerv yönetimi veya daha düşük volatiliteli getiri için kullanırsınız. Buradaki asıl değer kendi başına kaldıraç değildir. Orijinal pozisyondan tam çıkış yapmadan nakde erişmektir.",
+      "uk": "Найконсервативніший сценарій простий. Ви позичаєте стейбли під підтримувану LP-позицію Avana і використовуєте цю ліквідність для оборотного капіталу, управління резервами або дохідності з меншою волатильністю, поки LP залишається активним і продовжує заробляти комісії. Головна цінність тут — не плече заради плеча. Це доступ до готівки без повного виходу з вихідної позиції."
+    },
+    "Borrowed stables can also go into conservative onchain yield, such as stable oriented lending, reserve management, or other lower volatility opportunities. The LP keeps generating fees while borrowed capital follows a separate path. That is not yield stacking out of thin air. It is a more efficient use of capital that would otherwise require unwinding the position first.": {
+      "ja": "借りたステーブルは、ステーブル志向のレンディング、リザーブ管理、その他の低ボラティリティ機会など、保守的なオンチェーンイールドにも回せます。LPは手数料を生成し続け、借りた資本は別の経路を辿ります。それは空中からのイールドスタッキングではありません。そうでなければまずポジションをアンウィンドする必要がある資本の、より効率的な使い方です。",
+      "ko": "차입한 스테이블은 스테이블 지향 대출, 준비금 관리 또는 기타 낮은 변동성 기회와 같은 보수적 온체인 수익에도 투입할 수 있습니다. LP는 수수료를 계속 생성하고 차입 자본은 별도 경로를 따릅니다. 이것은 공중에서 나온 수익 스태킹이 아닙니다. 그렇지 않으면 먼저 포지션을 unwind해야 할 자본의 더 효율적인 사용입니다.",
+      "ru": "Заёмные стейблы также могут идти в консервативную onchain-доходность: стейбл-ориентированное кредитование, управление резервами или другие возможности с меньшей волатильностью. LP продолжает генерировать комиссии, пока заёмный капитал идёт отдельным путём. Это не yield stacking из воздуха. Это более эффективное использование капитала, который иначе потребовал бы сначала unwind позиции.",
+      "tr": "Borçlanılan stable'lar ayrıca stabil odaklı kredi, rezerv yönetimi veya diğer daha düşük volatiliteli fırsatlar gibi muhafazakâr onchain getiriye de gidebilir. LP ücret üretmeye devam ederken borçlanılan sermaye ayrı bir yol izler. Bu havada getiri istiflemesi değildir. Aksi halde önce pozisyonu çözmeyi gerektirecek sermayenin daha verimli kullanımıdır.",
+      "uk": "Позикові стейбли також можуть йти в консервативну onchain-дохідність: стейбл-орієнтоване кредитування, управління резервами або інші можливості з меншою волатильністю. LP продовжує генерувати комісії, поки позиковий капітал йде окремим шляхом. Це не yield stacking з повітря. Це ефективніше використання капіталу, який інакше вимагав би спочатку unwind позиції."
+    },
+    "Hedging and more active strategies": {
+      "ja": "ヘッジとよりアクティブな戦略",
+      "ko": "헤지와 더 적극적인 전략",
+      "ru": "Хеджирование и более активные стратегии",
+      "tr": "Hedge ve daha aktif stratejiler",
+      "uk": "Хеджування та активніші стратегії"
+    },
+    "Hedging is another category. LP positions expose users to changing asset composition and impermanent loss, especially in pools where one side is more volatile. Credit against LP collateral on Avana can create room to manage that exposure: reduce directional concentration, improve liquidity planning, or build a more balanced portfolio around an existing position.": {
+      "ja": "ヘッジは別のカテゴリーです。LPポジションは、特に片側がよりボラタイルなプールでは、変化する資産構成とインパーマネントロスにユーザーをさらします。AvanaでのLP担保に対するクレジットは、そのエクスポージャーを管理する余地を作れます：方向性の集中を減らし、流動性計画を改善し、既存ポジションの周りによりバランスの取れたポートフォリオを構築します。",
+      "ko": "헤지는 또 다른 범주입니다. LP 포지션은 특히 한쪽이 더 변동성이 큰 풀에서 변화하는 자산 구성과 impermanent loss에 사용자를 노출시킵니다. Avana의 LP 담보에 대한 신용은 그 노출을 관리할 여지를 만들 수 있습니다: 방향성 집중을 줄이고, 유동성 계획을 개선하고, 기존 포지션 주변에 더 균형 잡힌 포트폴리오를 구축합니다.",
+      "ru": "Хеджирование — ещё одна категория. LP-позиции подвергают пользователей изменению состава активов и impermanent loss, особенно в пулах, где одна сторона более волатильна. Кредит под LP-залог на Avana может создать пространство для управления этой экспозицией: снизить направленную концентрацию, улучшить планирование ликвидности или построить более сбалансированный портфель вокруг существующей позиции.",
+      "tr": "Hedge başka bir kategoridir. LP pozisyonları, özellikle bir tarafın daha oynak olduğu havuzlarda, kullanıcıları değişen varlık bileşimine ve impermanent loss'a maruz bırakır. Avana'da LP teminatına karşı kredi, bu maruziyeti yönetmek için alan yaratabilir: yönsel konsantrasyonu azaltmak, likidite planlamasını iyileştirmek veya mevcut bir pozisyon etrafında daha dengeli bir portföy oluşturmak.",
+      "uk": "Хеджування — ще одна категорія. LP-позиції піддають користувачів зміні складу активів і impermanent loss, особливо в пулах, де одна сторона більш волатильна. Кредит під LP-заставу на Avana може створити простір для управління цією експозицією: знизити напрямлену концентрацію, покращити планування ліквідності або побудувати збалансованіший портфель навколо існуючої позиції."
+    },
+    "More active strategies redeploy borrowed capital back into liquidity, increasing market exposure and fee generation. That can work, but you are now managing a recursive structure whose risk changes quickly with market conditions. Once borrowed assets are recycled into additional LP exposure, discipline becomes more important than ambition. Avana opens the option set. Health, borrow limits, and liquidation rules still decide what is sane for a given pool.": {
+      "ja": "よりアクティブな戦略は借りた資本を流動性に戻し、市場エクスポージャーと手数料生成を増やします。それは機能し得ますが、リスクが市場条件とともに急速に変わる再帰的構造を管理することになります。借りた資産が追加のLPエクスポージャーにリサイクルされると、野心より規律が重要になります。Avanaはオプションセットを開きます。ヘルス、借入限度、清算ルールが特定のプールにとって何が健全かを依然として決めます。",
+      "ko": "더 적극적인 전략은 차입한 자본을 다시 유동성에 재배치하여 시장 노출과 수수료 생성을 늘립니다. 작동할 수 있지만, 리스크가 시장 조건과 함께 빠르게 변하는 재귀적 구조를 관리하게 됩니다. 차입한 자산이 추가 LP 노출로 재활용되면 야심보다 규율이 더 중요해집니다. Avana는 옵션 세트를 엽니다. 건강, 차입 한도, 청산 규칙이 여전히 특정 풀에 무엇이 합리적인지 결정합니다.",
+      "ru": "Более активные стратегии переразмещают заёмный капитал обратно в ликвидность, увеличивая рыночную экспозицию и генерацию комиссий. Это может работать, но вы управляете рекурсивной структурой, чей риск быстро меняется с рыночными условиями. Когда заёмные активы перерабатываются в дополнительную LP-экспозицию, дисциплина важнее амбиций. Avana открывает набор опций. Health, лимиты заимствования и правила ликвидации по-прежнему решают, что разумно для данного пула.",
+      "tr": "Daha aktif stratejiler borçlanılan sermayeyi tekrar likiditeye dağıtarak piyasa maruziyetini ve ücret üretimini artırır. Bu işe yarayabilir, ancak artık riski piyasa koşullarıyla hızla değişen özyinelemeli bir yapıyı yönetiyorsunuz. Borçlanılan varlıklar ek LP maruziyetine geri dönüştürüldüğünde, hırs yerine disiplin daha önemli hale gelir. Avana seçenek setini açar. Sağlık, borçlanma limitleri ve likidasyon kuralları belirli bir havuz için neyin mantıklı olduğuna hâlâ karar verir.",
+      "uk": "Активніші стратегії перерозміщують позиковий капітал назад у ліквідність, збільшуючи ринкову експозицію та генерацію комісій. Це може працювати, але ви керуєте рекурсивною структурою, чий ризик швидко змінюється з ринковими умовами. Коли позикові активи переробляються в додаткову LP-експозицію, дисципліна важливіша за амбіції. Avana відкриває набір опцій. Health, ліміти запозичення та правила ліквідації досі вирішують, що розумно для даного пулу."
+    },
+    "What changes for LPs": {
+      "ja": "LPにとって何が変わるか",
+      "ko": "LP에게 무엇이 바뀌는가",
+      "ru": "Что меняется для LP",
+      "tr": "LP'ler için ne değişir",
+      "uk": "Що змінюється для LP"
+    },
+    "LP collateral turns liquidity provision from a relatively isolated yield activity into something more connected to broader DeFi capital use. A position that used to be productive only inside its pool can support borrowing, liquidity planning, and portfolio design without first being dismantled. The right use still depends on your risk tolerance and your understanding of how LP value, borrowing capacity, and liquidation thresholds interact on Avana.": {
+      "ja": "LP担保は流動性提供を比較的孤立したイールド活動から、より広いDeFi資本利用につながるものに変えます。かつてプール内でのみ生産的だったポジションが、まず分解されることなく借入、流動性計画、ポートフォリオ設計を支えられます。正しい使い方は依然としてリスク許容度と、AvanaでLP価値、借入容量、清算閾値がどう相互作用するかの理解に依存します。",
+      "ko": "LP 담보는 유동성 공급을 비교적 고립된 수익 활동에서 더 넓은 DeFi 자본 활용과 연결된 것으로 바꿉니다. 한때 풀 내에서만 생산적이던 포지션이 먼저 해체되지 않고 차입, 유동성 계획, 포트폴리오 설계를 지원할 수 있습니다. 올바른 사용은 여전히 리스크 허용도와 Avana에서 LP 가치, 차입 용량, 청산 임계값이 어떻게 상호작용하는지에 대한 이해에 달려 있습니다.",
+      "ru": "LP-залог превращает предоставление ликвидности из относительно изолированной доходной активности в нечто более связанное с широким использованием капитала в DeFi. Позиция, которая раньше была продуктивной только внутри своего пула, может поддерживать заимствование, планирование ликвидности и дизайн портфеля без предварительного разбора. Правильное использование по-прежнему зависит от вашей толерантности к риску и понимания того, как стоимость LP, заёмная ёмкость и пороги ликвидации взаимодействуют на Avana.",
+      "tr": "LP teminatı, likidite sağlamayı nispeten izole bir getiri faaliyetinden daha geniş DeFi sermaye kullanımına bağlı bir şeye dönüştürür. Eskiden yalnızca kendi havuzunda üretken olan bir pozisyon, önce parçalanmadan borçlanmayı, likidite planlamasını ve portföy tasarımını destekleyebilir. Doğru kullanım hâlâ risk toleransınıza ve Avana'da LP değeri, borçlanma kapasitesi ve likidasyon eşiklerinin nasıl etkileştiğine dair anlayışınıza bağlıdır.",
+      "uk": "LP-застава перетворює надання ліквідності з відносно ізольованої дохідної активності на щось більш пов'язане з широким використанням капіталу в DeFi. Позиція, яка раніше була продуктивною лише всередині свого пулу, може підтримувати запозичення, планування ліквідності та дизайн портфеля без попереднього розбору. Правильне використання досі залежить від вашої толерантності до ризику та розуміння того, як вартість LP, позикова ємність і пороги ліквідації взаємодіють на Avana."
+    },
+    "Aerodrome liquidity on Avana": {
+      "ja": "Avana上のAerodrome流動性",
+      "ko": "Avana의 Aerodrome 유동성",
+      "ru": "Ликвидность Aerodrome на Avana",
+      "tr": "Avana'da Aerodrome likiditesi",
+      "uk": "Ліквідність Aerodrome на Avana"
+    },
+    "Aerodrome LP positions sit at the center of onchain activity on Base, where liquidity supports trading fees, token distribution, and ecosystem depth. As collateral, those positions need evaluation by pool structure, asset quality, liquidity depth, and stress behavior, not by headline TVL or fee generation alone. Avana is built to support this kind of collateral on Aave v4 with market specific rules rather than a venue wide blanket.": {
+      "ja": "Aerodrome LPポジションはBaseのオンチェーン活動の中心にあり、流動性は取引手数料、トークン配布、エコシステム深度を支えます。担保として、それらのポジションは見出しTVLや手数料生成だけでなく、プール構造、資産品質、流動性深度、ストレス時の挙動で評価される必要があります。Avanaはvenue全体の一律ではなく、市場固有のルールでAave v4上のこの種の担保をサポートするよう構築されています。",
+      "ko": "Aerodrome LP 포지션은 Base의 온체인 활동 중심에 있으며, 유동성은 거래 수수료, 토큰 배포, 생태계 깊이를 지원합니다. 담보로서 그 포지션은 헤드라인 TVL이나 수수료 생성만이 아니라 풀 구조, 자산 품질, 유동성 깊이, 스트레스 행동으로 평가되어야 합니다. Avana는 venue 전체 일괄 적용이 아니라 시장별 규칙으로 Aave v4에서 이러한 담보를 지원하도록 구축되었습니다.",
+      "ru": "LP-позиции Aerodrome находятся в центре onchain-активности на Base, где ликвидность поддерживает торговые комиссии, распределение токенов и глубину экосистемы. Как залог, эти позиции нуждаются в оценке по структуре пула, качеству активов, глубине ликвидности и поведению под стрессом, а не только по headline TVL или генерации комиссий. Avana построена для поддержки такого залога на Aave v4 с рыночно-специфичными правилами, а не venue-wide blanket.",
+      "tr": "Aerodrome LP pozisyonları Base'deki onchain aktivitenin merkezinde oturur; likidite işlem ücretlerini, token dağıtımını ve ekosistem derinliğini destekler. Teminat olarak bu pozisyonların başlık TVL veya ücret üretimiyle değil, havuz yapısı, varlık kalitesi, likidite derinliği ve stres davranışına göre değerlendirilmesi gerekir. Avana, venue genelinde tek tip bir yaklaşım yerine piyasaya özgü kurallarla Aave v4'te bu tür teminatı desteklemek için inşa edilmiştir.",
+      "uk": "LP-позиції Aerodrome знаходяться в центрі onchain-активності на Base, де ліквідність підтримує торгові комісії, розподіл токенів і глибину екосистеми. Як застава, ці позиції потребують оцінки за структурою пулу, якістю активів, глибиною ліквідності та поведінкою під стресом, а не лише за headline TVL або генерацією комісій. Avana побудована для підтримки такої застави на Aave v4 з ринково-специфічними правилами, а не venue-wide blanket."
+    },
+    "Hub, spoke, and pool quality": {
+      "ja": "Hub、spoke、プール品質",
+      "ko": "Hub, spoke, 풀 품질",
+      "ru": "Hub, spoke и качество пула",
+      "tr": "Hub, spoke ve havuz kalitesi",
+      "uk": "Hub, spoke і якість пулу"
+    },
+    "Aave v4's hub and spoke architecture is what makes the product shape work. The hub manages shared liquidity. The Avana spoke handles Aerodrome specific collateral logic. A stable pool on Base should not be treated the same as a volatile ecosystem pair just because both are Aerodrome LPs. The spoke defines how different categories of Aerodrome liquidity are valued, how much borrowing power they support, and how liquidation works if a position becomes unsafe.": {
+      "ja": "Aave v4のhub-and-spokeアーキテクチャがプロダクト形状を機能させます。hubは共有流動性を管理します。Avana spokeはAerodrome固有の担保ロジックを処理します。Baseのステーブルプールは、両方がAerodrome LPだからといってボラタイルなエコシステムペアと同じ扱いをされるべきではありません。spokeは異なるカテゴリーのAerodrome流動性がどう評価され、どれだけ借入力を支え、ポジションが不安全になった場合に清算がどう機能するかを定義します。",
+      "ko": "Aave v4의 hub-and-spoke 아키텍처가 제품 형태를 작동하게 합니다. hub는 공유 유동성을 관리합니다. Avana spoke는 Aerodrome별 담보 로직을 처리합니다. Base의 스테이블 풀은 둘 다 Aerodrome LP라는 이유만으로 변동성 생태계 페어와 같이 취급되어서는 안 됩니다. spoke는 서로 다른 Aerodrome 유동성 카테고리가 어떻게 평가되고, 얼마나 차입력을 지원하며, 포지션이 불안전해지면 청산이 어떻게 작동하는지 정의합니다.",
+      "ru": "Hub-and-spoke архитектура Aave v4 делает продуктовую форму работоспособной. Hub управляет общей ликвидностью. Spoke Avana обрабатывает Aerodrome-специфичную логику залога. Стабильный пул на Base не должен обрабатываться так же, как волатильная экосистемная пара, только потому что оба — Aerodrome LP. Spoke определяет, как оцениваются разные категории ликвидности Aerodrome, сколько заёмной мощности они поддерживают и как работает ликвидация, если позиция становится небезопасной.",
+      "tr": "Aave v4'ün hub-and-spoke mimarisi ürün şeklinin çalışmasını sağlar. Hub paylaşılan likiditeyi yönetir. Avana spoke Aerodrome'a özgü teminat mantığını işler. Base'deki stabil bir havuz, ikisi de Aerodrome LP olduğu için oynak bir ekosistem çiftiyle aynı muameleyi görmemelidir. Spoke, farklı Aerodrome likidite kategorilerinin nasıl değerlendirildiğini, ne kadar borçlanma gücü desteklediklerini ve bir pozisyon güvensiz hale gelirse likidasyonun nasıl çalıştığını tanımlar.",
+      "uk": "Hub-and-spoke архітектура Aave v4 робить продуктову форму працездатною. Hub керує спільною ліквідністю. Spoke Avana обробляє Aerodrome-специфічну логіку застави. Стабільний пул на Base не повинен оброблятися так само, як волатильна екосистемна пара, лише тому що обидва — Aerodrome LP. Spoke визначає, як оцінюються різні категорії ліквідності Aerodrome, скільки позикової потужності вони підтримують і як працює ліквідація, якщо позиція стає небезпечною."
+    },
+    "Aerodrome pools vary widely. Some involve established assets with stronger liquidity. Others center on faster moving ecosystem tokens with higher volatility and thinner depth. Positions that look similar on the surface can behave very differently as collateral. Avana's spoke model assigns treatment by pool structure and quality, not by venue name alone.": {
+      "ja": "Aerodromeプールは大きく異なります。確立された資産とより強い流動性を伴うものもあれば、より高いボラティリティと薄い深度の速く動くエコシステムトークンを中心とするものもあります。表面は似て見えるポジションでも、担保としては大きく異なる挙動を示すことがあります。Avanaのspokeモデルはvenue名だけでなく、プール構造と品質で処理を割り当てます。",
+      "ko": "Aerodrome 풀은 크게 다양합니다. 확립된 자산과 더 강한 유동성을 포함하는 것도 있고, 더 높은 변동성과 얇은 깊이의 빠르게 움직이는 생태계 토큰을 중심으로 하는 것도 있습니다. 겉보기에 비슷해 보이는 포지션이 담보로서 매우 다르게 행동할 수 있습니다. Avana의 spoke 모델은 venue 이름만이 아니라 풀 구조와 품질로 처리를 할당합니다.",
+      "ru": "Пулы Aerodrome сильно различаются. Некоторые включают устоявшиеся активы с более сильной ликвидностью. Другие сосредоточены на быстро движущихся экосистемных токенах с более высокой волатильностью и меньшей глубиной. Позиции, похожие на поверхности, могут вести себя очень по-разному как залог. Spoke-модель Avana назначает обращение по структуре и качеству пула, а не только по названию venue.",
+      "tr": "Aerodrome havuzları büyük ölçüde farklılık gösterir. Bazıları daha güçlü likiditeye sahip yerleşik varlıkları içerir. Diğerleri daha yüksek volatilite ve daha ince derinliğe sahip daha hızlı hareket eden ekosistem tokenlarına odaklanır. Yüzeyde benzer görünen pozisyonlar teminat olarak çok farklı davranabilir. Avana'nın spoke modeli, yalnızca venue adına göre değil, havuz yapısı ve kalitesine göre muamele atar.",
+      "uk": "Пули Aerodrome сильно різняться. Деякі включають усталені активи з сильнішою ліквідністю. Інші зосереджені на швидко рухомих екосистемних токенах з вищою волатильністю та меншою глибиною. Позиції, схожі на поверхні, можуть поводитися дуже по-різному як застава. Spoke-модель Avana призначає ставлення за структурою та якістю пулу, а не лише за назвою venue."
+    },
+    "Valuation and the borrow flow": {
+      "ja": "評価と借入フロー",
+      "ko": "평가와 차입 흐름",
+      "ru": "Оценка и поток заимствования",
+      "tr": "Değerleme ve borçlanma akışı",
+      "uk": "Оцінка та потік запозичення"
+    },
+    "An Aerodrome LP is not a single price token. It is a claim on underlying pool assets whose composition and quality matter directly. Avana judges collateral value conservatively, factoring in liquidity quality, volatility, asset correlation, and how the pool behaves if the market turns. A position may have substantial notional value, but borrowing power reflects what can be recovered under stress.": {
+      "ja": "Aerodrome LPは単一価格トークンではありません。構成と品質が直接重要な原資産プール資産への請求権です。Avanaは流動性品質、ボラティリティ、資産相関、市場が転換した場合のプール挙動を考慮して担保価値を保守的に判断します。ポジションは名目価値が大きいかもしれませんが、借入力はストレス下で回収できるものを反映します。",
+      "ko": "Aerodrome LP는 단일 가격 토큰이 아닙니다. 구성과 품질이 직접 중요한 기초 풀 자산에 대한 청구권입니다. Avana는 유동성 품질, 변동성, 자산 상관관계, 시장이 전환될 때 풀 행동을 고려하여 담보 가치를 보수적으로 판단합니다. 포지션은 명목 가치가 클 수 있지만 차입력은 스트레스 하에서 회수할 수 있는 것을 반영합니다.",
+      "ru": "Aerodrome LP — не токен с единой ценой. Это право на активы базового пула, чей состав и качество напрямую важны. Avana оценивает стоимость залога консервативно, учитывая качество ликвидности, волатильность, корреляцию активов и поведение пула при развороте рынка. Позиция может иметь существенную номинальную стоимость, но заёмная мощность отражает то, что можно восстановить под стрессом.",
+      "tr": "Bir Aerodrome LP tek fiyatlı bir token değildir. Bileşimi ve kalitesi doğrudan önemli olan altta yatan havuz varlıklarına bir hak talebidir. Avana, likidite kalitesi, volatilite, varlık korelasyonu ve piyasa dönerse havuzun nasıl davrandığını dikkate alarak teminat değerini muhafazakâr şekilde değerlendirir. Bir pozisyon önemli nominal değere sahip olabilir, ancak borçlanma gücü stres altında kurtarılabilecekleri yansıtır.",
+      "uk": "Aerodrome LP — не токен з єдиною ціною. Це право на активи базового пулу, чий склад і якість безпосередньо важливі. Avana оцінює вартість застави консервативно, враховуючи якість ліквідності, волатильність, кореляцію активів і поведінку пулу при розвороті ринку. Позиція може мати суттєву номінальну вартість, але позикова потужність відображає те, що можна відновити під стресом."
+    },
+    "The borrowing flow is concrete. You supply a supported Aerodrome LP through the Avana spoke, where it stays active and earns fees. The spoke evaluates the position using pool specific collateral logic. Based on that, you can borrow supported assets from hub liquidity. Stable and blue chip style pools may support stronger collateral treatment. Volatile or thinner pairs get tighter limits and lower factors.": {
+      "ja": "借入フローは具体的です。Avana spokeを通じてサポートされたAerodrome LPを供給し、そこでアクティブなまま手数料を稼ぎます。spokeはプール固有の担保ロジックでポジションを評価します。それに基づき、hub流動性からサポートされた資産を借りられます。ステーブルおよびブルーチップスタイルのプールはより強い担保処理を支え得ます。ボラタイルまたは薄いペアはより厳しい限度と低いファクターを受けます。",
+      "ko": "차입 흐름은 구체적입니다. Avana spoke를 통해 지원되는 Aerodrome LP를 공급하면 활성 상태로 수수료를 법니다. spoke는 풀별 담보 로직으로 포지션을 평가합니다. 이를 바탕으로 hub 유동성에서 지원되는 자산을 차입할 수 있습니다. 스테이블 및 블루칩 스타일 풀은 더 강한 담보 처리를 지원할 수 있습니다. 변동성이 크거나 얇은 페어는 더 엄격한 한도와 낮은 팩터를 받습니다.",
+      "ru": "Поток заимствования конкретен. Вы поставляете поддерживаемый Aerodrome LP через spoke Avana, где он остаётся активным и зарабатывает комиссии. Spoke оценивает позицию с помощью pool-specific логики залога. На этой основе вы можете занимать поддерживаемые активы из ликвидности hub. Стабильные и blue chip пулы могут поддерживать более сильное обращение с залогом. Волатильные или более тонкие пары получают более жёсткие лимиты и более низкие факторы.",
+      "tr": "Borçlanma akışı somuttur. Avana spoke aracılığıyla desteklenen bir Aerodrome LP sağlarsınız; burada aktif kalır ve ücret kazanır. Spoke, havuza özgü teminat mantığıyla pozisyonu değerlendirir. Buna dayanarak hub likiditesinden desteklenen varlıklar borçlanabilirsiniz. Stabil ve blue chip tarzı havuzlar daha güçlü teminat muamelesini destekleyebilir. Oynak veya daha ince çiftler daha sıkı limitler ve daha düşük faktörler alır.",
+      "uk": "Потік запозичення конкретний. Ви постачаєте підтримуваний Aerodrome LP через spoke Avana, де він залишається активним і заробляє комісії. Spoke оцінює позицію за допомогою pool-specific логіки застави. На цій основі ви можете позичати підтримувані активи з ліквідності hub. Стабільні та blue chip пули можуть підтримувати сильніше ставлення до застави. Волатильні або тонші пари отримують суворіші ліміти та нижчі фактори."
+    },
+    "If a position becomes unsafe, Avana unwinds the active liquidity position, accounts for the underlyings, and restores solvency with as little disruption as the market allows. The pool's structure determines how liquidation works. That is another reason Aerodrome collateral belongs in a dedicated spoke rather than as a loose extension of a broader lending market.": {
+      "ja": "ポジションが不安全になると、Avanaはアクティブな流動性ポジションをアンウィンドし、原資産を計上し、市場が許す限り最小の混乱でソルベンシーを回復します。プール構造が清算の仕組みを決定します。それがAerodrome担保がより広いレンディング市場の緩い拡張ではなく、専用spokeに属するべきであるもう一つの理由です。",
+      "ko": "포지션이 불안전해지면 Avana는 활성 유동성 포지션을 unwind하고, 기초 자산을 반영하며, 시장이 허용하는 한 최소한의 혼란으로 지급 능력을 회복합니다. 풀 구조가 청산이 어떻게 작동하는지 결정합니다. 이것이 Aerodrome 담보가 더 넓은 대출 시장의 느슨한 확장이 아니라 전용 spoke에 속해야 하는 또 다른 이유입니다.",
+      "ru": "Если позиция становится небезопасной, Avana разворачивает активную ликвидную позицию, учитывает underlyings и восстанавливает платёжеспособность с минимальным нарушением, которое позволяет рынок. Структура пула определяет, как работает ликвидация. Это ещё одна причина, почему залог Aerodrome должен быть в выделенном spoke, а не как свободное расширение более широкого кредитного рынка.",
+      "tr": "Bir pozisyon güvensiz hale gelirse Avana aktif likidite pozisyonunu çözer, altta yatan varlıkları hesaba katar ve piyasanın izin verdiği ölçüde en az rahatsızlıkla ödeme gücünü geri kazandırır. Havuzun yapısı likidasyonun nasıl çalıştığını belirler. Bu, Aerodrome teminatının daha geniş bir kredi piyasasının gevşek bir uzantısı olarak değil, özel bir spoke'ta olması gerektiğinin bir başka nedenidir.",
+      "uk": "Якщо позиція стає небезпечною, Avana розгортає активну ліквідну позицію, враховує underlyings і відновлює платоспроможність з мінімальним порушенням, яке дозволяє ринок. Структура пулу визначає, як працює ліквідація. Це ще одна причина, чому застава Aerodrome має бути в виділеному spoke, а не як вільне розширення ширшого кредитного ринку."
+    },
+    "Why Curve matters on Avana": {
+      "ja": "AvanaでCurveが重要な理由",
+      "ko": "Avana에서 Curve가 중요한 이유",
+      "ru": "Почему Curve важен на Avana",
+      "tr": "Avana'da Curve neden önemlidir",
+      "uk": "Чому Curve важливий на Avana"
+    },
+    "Curve LP positions often sit at the center of stablecoin markets and correlated asset trading, some of the deepest and lowest slippage pools onchain. That makes them attractive as collateral, but their structural behavior still needs specialized handling inside a lending system. Avana supports Curve LP collateral on Aave v4 through a dedicated spoke with its own collateral treatment, borrowing constraints, and liquidation rules shaped around Curve's market structure.": {
+      "ja": "Curve LPポジションはしばしばステーブルコイン市場と相関資産取引の中心にあり、オンチェーンで最も深くスリッページの低いプールの一部です。それが担保として魅力的にしますが、構造的挙動はレンディングシステム内で依然として専門的な処理が必要です。AvanaはCurveの市場構造に沿った独自の担保処理、借入制約、清算ルールを持つ専用spokeを通じて、Aave v4でCurve LP担保をサポートします。",
+      "ko": "Curve LP 포지션은 종종 스테이블코인 시장과 상관 자산 거래의 중심에 있으며, 온체인에서 가장 깊고 슬리피지가 낮은 풀 중 일부입니다. 이것이 담보로 매력적이지만 구조적 행동은 대출 시스템 내에서 여전히 전문적 처리가 필요합니다. Avana는 Curve 시장 구조에 맞춘 자체 담보 처리, 차입 제약, 청산 규칙을 가진 전용 spoke를 통해 Aave v4에서 Curve LP 담보를 지원합니다.",
+      "ru": "LP-позиции Curve часто находятся в центре рынков стейблкоинов и торговли коррелированными активами — одних из самых глубоких пулов с наименьшим slippage onchain. Это делает их привлекательными как залог, но их структурное поведение всё ещё требует специализированной обработки внутри кредитной системы. Avana поддерживает LP-залог Curve на Aave v4 через выделенный spoke с собственным обращением с залогом, ограничениями заимствования и правилами ликвидации, сформированными вокруг рыночной структуры Curve.",
+      "tr": "Curve LP pozisyonları genellikle stablecoin piyasalarının ve korelasyonlu varlık ticaretinin merkezinde oturur; onchain'deki en derin ve en düşük slippage'lı havuzlardan bazılarıdır. Bu onları teminat olarak çekici kılar, ancak yapısal davranışları bir kredi sistemi içinde hâlâ özel işlem gerektirir. Avana, Curve'un piyasa yapısına göre şekillendirilmiş kendi teminat muamelesi, borçlanma kısıtlamaları ve likidasyon kurallarına sahip özel bir spoke aracılığıyla Aave v4'te Curve LP teminatını destekler.",
+      "uk": "LP-позиції Curve часто знаходяться в центрі ринків стейблкоїнів і торгівлі корельованими активами — одних із найглибших пулів з найменшим slippage onchain. Це робить їх привабливими як застава, але їхня структурна поведінка досі потребує спеціалізованої обробки всередині кредитної системи. Avana підтримує LP-заставу Curve на Aave v4 через виділений spoke з власним ставленням до застави, обмеженнями запозичення та правилами ліквідації, сформованими навколо ринкової структури Curve."
+    }
+  }
+}

@@ -9,7 +9,9 @@
       "closeMenu": "ปิดเมนู",
       "language": "ภาษา: {language}",
       "logo": "โลโก้ {site}",
-      "helpfulLinks": "ลิงก์ที่เป็นประโยชน์"
+      "helpfulLinks": "ลิงก์ที่เป็นประโยชน์",
+      "helpCenter": "ศูนย์ช่วยเหลือ: อีเมลฝ่ายสนับสนุน",
+      "themeToggle": "การตั้งค่าธีม"
     },
     "nav": {
       "products": "ผลิตภัณฑ์",
@@ -76,7 +78,7 @@
     "notFound": {
       "title": "หน้านี้ไม่สามารถใช้ได้",
       "body": "ที่อยู่อาจไม่ถูกต้องหรือหน้าเว็บอาจถูกย้าย",
-      "home": "Go to homepage",
+      "home": "ไปที่หน้าแรก",
       "faq": "คำถามที่พบบ่อย"
     },
     "sandboxNotice": "Sandbox ข้อมูลที่แสดงเพื่อการดูตัวอย่างเท่านั้น APY ราคา ผลตอบแทน และผลลัพธ์เป็นเพียงตัวอย่างและอาจแตกต่างจากสภาวะตลาดจริง",
@@ -87,7 +89,7 @@
       "shareOnLinkedIn": "แชร์บน LinkedIn",
       "previousPost": "โพสต์ก่อนหน้า",
       "nextPost": "โพสต์ถัดไป",
-      "onThisPage": "On this page"
+      "onThisPage": "ในหน้านี้"
     },
     "docs": {
       "previous": "ก่อนหน้า",
@@ -99,7 +101,8 @@
         "liquidation": "กรอบงานการชำระบัญชี",
         "integrations": "การรวมระบบที่รองรับ",
         "safety": "กลไกความปลอดภัย",
-        "legal": "กฎหมายและการปฏิบัติตาม"
+        "legal": "กฎหมายและการปฏิบัติตาม",
+        "copilot": "ถาม AI"
       },
       "items": {
         "overview": "ภาพรวม",
@@ -131,7 +134,11 @@
         "bugBounty": "โปรแกรมรายงานช่องโหว่",
         "insuranceFunds": "กองทุนประกันภัย",
         "securityDisclosures": "การเปิดเผยด้านความปลอดภัย",
-        "legalDisclaimer": "ข้อจำกัดความรับผิดทางกฎหมาย"
+        "legalDisclaimer": "ข้อจำกัดความรับผิดทางกฎหมาย",
+        "aiIntroduction": "แนะนำ AI",
+        "copilotProtocols": "โปรโตคอลที่รองรับ",
+        "copilotPrompts": "ตัวอย่างพรอมต์",
+        "copilotWorkflow": "เวิร์กโฟลว์ของเอเจนต์"
       }
     },
     "faqUi": {
@@ -156,6 +163,25 @@
     "newsroom": {
       "latestFrom": "ล่าสุดจาก Avana",
       "readNewsroom": "อ่านห้องข่าว"
+    },
+    "theme": {
+      "lightMode": "โหมดสว่าง",
+      "darkMode": "โหมดมืด",
+      "systemMode": "ระบบ",
+      "tapToChange": "แตะเพื่อเปลี่ยน"
+    },
+    "exportMenu": {
+      "copyPage": "คัดลอกหน้า",
+      "copied": "คัดลอกแล้ว",
+      "copyPageMarkdown": "คัดลอกหน้าเป็น Markdown",
+      "copyPageLink": "คัดลอกลิงก์หน้า",
+      "copyPageLinkDescription": "คัดลอก URL ของหน้านี้ไปยังคลิปบอร์ด",
+      "openInChatGPT": "เปิดใน ChatGPT",
+      "openInClaude": "เปิดใน Claude",
+      "openInGrok": "เปิดใน Grok",
+      "openInPerplexity": "เปิดใน Perplexity",
+      "askAboutPage": "ถามคำถามเกี่ยวกับหน้านี้",
+      "reviewPrompt": "ตรวจสอบเนื้อหาหน้า Avana ด้านล่างและตอบคำถาม"
     }
   },
   "meta": {
@@ -222,12 +248,12 @@
       "subtitle": "ทำรายได้ค่าธรรมเนียมการซื้อขายต่อไปในขณะที่ปลดล็อกสภาพคล่องจากตำแหน่ง Uniswap, Curve, และ Balancer",
       "subtitleMobileLines": [
         "เข้าถึงมูลค่าของสภาพคล่องพูลของคุณได้สูงสุด 80%",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "ที่ APR 5.5% โดยไม่ถอนสภาพคล่องหรือ",
+        "สละค่าธรรมเนียมการเทรด"
       ],
       "subtitleDesktopLines": [
         "เข้าถึงมูลค่าของสภาพคล่องของคุณได้สูงสุดถึง 80% ในอัตรา 5.5% APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "ที่ APR 5.5% โดยไม่ถอนสภาพคล่องหรือสละค่าธรรมเนียมการเทรด"
       ],
       "primaryCta": "ลอง Sandbox",
       "secondaryCta": "อ่านเอกสาร"

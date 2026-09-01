@@ -6,7 +6,7 @@
       "date": "July 24, 2026",
       "description": "Wie Avana LP-Collateral-Risiko über Spoke-Märkte steuert — mit begrenzten Updates, unabhängiger Prüfung und Notfall-Containment.",
       "image": "/images/blog/lp-risk-governance.png",
-      "category": "Developers",
+      "category": "Entwickler",
       "tag": "Protokoll",
       "sections": [
         {
@@ -47,12 +47,12 @@
       "date": "July 22, 2026",
       "description": "Warum Avana Smart Agents nutzt, um Health zu überwachen, venue-spezifische Positionen zu bedienen und Liquidationsabdeckung unter Stress zuverlässig zu halten.",
       "image": "/images/blog/smart-agents-lp-collateral.png",
-      "category": "Developers",
+      "category": "Entwickler",
       "tag": "Protokoll",
       "sections": [
         {
           "id": "lp-loans-are-operational",
-          "title": "LP loans are operational work",
+          "title": "LP-Darlehen sind operative Arbeit",
           "paragraphs": [
             "Bei Avana ist LP-Sicherheit aktiv, pfadabhängig und operativ anspruchsvoll. Sie erwirtschaftet Gebühren, verändert die Zusammensetzung, ändert das Risiko mit den Marktbewegungen und kann genau dann venuespezifische Maßnahmen erfordern, wenn eine Position unter Stress gerät. Ein standardisierter Token-Markt kann Liquidation und Überwachung oft auf einen einfacheren Auslöser und Swap-Pfad reduzieren. LP-Sicherheit ist anders. Das System muss wissen, welche Positionen aktiv sind, wie sich die Schulden entwickeln, wie die Sicherheit unter einer realen Auflösung aussehen würde, wie Gebühren realisiert werden können, welcher venuespezifische Entferungspfad gilt und ob eine Liquidation nach Slippage, Routing und Ausführungskosten noch möglich ist. Diese Details unterscheiden theoretische Deckung auf dem Papier von der Deckung, die auch bei schwierigen Marktbedingungen funktioniert."
           ]
@@ -82,7 +82,7 @@
       "date": "July 20, 2026",
       "description": "Wie Avana LP-Collateral mit kontrollierten Unwinds, teilweisem Eingriff, Fees zuerst wo möglich und venue-spezifischen Pfaden liquidiert.",
       "image": "/images/blog/lp-liquidation-workflow.png",
-      "category": "Developers",
+      "category": "Entwickler",
       "tag": "Protokoll",
       "sections": [
         {
@@ -123,7 +123,7 @@
       "date": "July 17, 2026",
       "description": "Wie Avana Oracle LP-Collateral über recoverable value, deterministische Rekonstruktion und konservative Recovery-Haircuts bepreist.",
       "image": "/images/blog/lp-collateral-oracle-problem.png",
-      "category": "Developers",
+      "category": "Entwickler",
       "tag": "Protokoll",
       "sections": [
         {
@@ -164,7 +164,7 @@
       "date": "July 15, 2026",
       "description": "Wie Avana geschichtete Security für LP-Collateral strukturiert — von Architektur und Oracles über Health, Liquidation und Operations.",
       "image": "/images/blog/security-deep-dive.png",
-      "category": "Developers",
+      "category": "Entwickler",
       "tag": "Protokoll",
       "sections": [
         {
@@ -206,7 +206,7 @@
       "date": "July 13, 2026",
       "description": "Wie LPs Avana nutzen können, um Buffer, direktionale Offsets und diszipliniertere Hedge-Habits zu finanzieren — ohne den Pool vollständig zu verlassen.",
       "image": "/images/blog/hedge-lp-position.png",
-      "category": "For LPs",
+      "category": "Für LPs",
       "tag": "Leitfäden",
       "sections": [
         {
@@ -247,7 +247,7 @@
       "date": "July 10, 2026",
       "description": "Wie man Yield-Looping mit Avana LP-Collateral denkt — inklusive Buffer, Stress-Tests, Exit-Disziplin und nachhaltigem Hebel.",
       "image": "/images/blog/yield-looping-playbook.png",
-      "category": "For LPs",
+      "category": "Für LPs",
       "tag": "Leitfäden",
       "sections": [
         {
@@ -288,7 +288,7 @@
       "date": "July 8, 2026",
       "description": "Was Avana LP-Collateral über Ausleihen, Hedging, Treasury-Flexibilität und kapitaleffizientere Nutzung produktiver Liquidität ermöglicht.",
       "image": "/images/blog/unleashing-lp-tokens.png",
-      "category": "For LPs",
+      "category": "Für LPs",
       "tag": "Leitfäden",
       "sections": [
         {
@@ -329,7 +329,7 @@
       "date": "July 6, 2026",
       "description": "Wie Avana Aerodrome-LP-Positionen auf Base unterstützt, damit sie aktiv bleiben und Ausleihen über einen dedizierten Aave-v4-Spoke tragen.",
       "image": "/images/blog/aerodrome-lp-collateral.png",
-      "category": "Developers",
+      "category": "Entwickler",
       "tag": "Protokoll",
       "sections": [
         {
@@ -357,7 +357,7 @@
         },
         {
           "id": "if-health-breaks",
-          "title": "If health breaks",
+          "title": "Wenn die Gesundheit bricht",
           "paragraphs": [
             "Wenn eine Position unsicher wird, Avana wickelt die aktive Liquiditätsposition ab, berücksichtigt die zugrunde liegenden Werte und stellt die Zahlungsfähigkeit mit so wenig Störung wie der Markt zulässt wieder her. Die Struktur des Pools bestimmt, wie die Liquidation funktioniert. Das ist ein weiterer Grund, warum Aerodrome Sicherheiten in einem eigenen Zweig und nicht als lockere Erweiterung eines größeren Kreditmarktes gehören."
           ]
@@ -370,7 +370,7 @@
       "date": "July 3, 2026",
       "description": "Wie Avana Curve-LP-Collateral für stabile und korrelierte Pools über einen dedizierten Aave-v4-Spoke behandelt.",
       "image": "/images/blog/curve-lp-collateral.png",
-      "category": "Developers",
+      "category": "Entwickler",
       "tag": "Protokoll",
       "sections": [
         {
@@ -411,7 +411,7 @@
       "date": "July 1, 2026",
       "description": "Wie Avana gewichtete Balancer-Pool-LPs als Collateral auf Aave v4 unterstützt — während das Exposure aktiv bleibt.",
       "image": "/images/blog/balancer-lp-collateral.png",
-      "category": "Developers",
+      "category": "Entwickler",
       "tag": "Protokoll",
       "sections": [
         {
@@ -446,7 +446,7 @@
       "date": "June 28, 2026",
       "description": "Wie Avana Uniswap-LP-Positionen zu Aave-v4-Collateral macht — während sie im Pool bleiben und weiter Fees verdienen.",
       "image": "/images/blog/uniswap-lp-collateral.png",
-      "category": "Developers",
+      "category": "Entwickler",
       "tag": "Protokoll",
       "sections": [
         {
@@ -516,7 +516,7 @@
       "date": "June 23, 2026",
       "description": "Warum Liquidity Provider nicht zwischen Fees verdienen und Kapitalzugang wählen müssen — und wie Avana LP-Collateral auf Aave v4 erweitert.",
       "image": "/images/blog/avana-next-step-liquidity-providers.png",
-      "category": "Community",
+      "category": "Gemeinschaft",
       "tag": "Strategie",
       "sections": [
         {
@@ -551,7 +551,7 @@
       "date": "June 20, 2026",
       "description": "Wie Avana LP-Collateral DAOs, Treasuries, Funds und crypto-native Companies helfen kann, Kapital zu nutzen — ohne produktive Liquidität zu unwinden.",
       "image": "/images/blog/lp-collateral-for-institutions.png",
-      "category": "For Institutions",
+      "category": "Für Institutionen",
       "tag": "Institutionen",
       "sections": [
         {
@@ -593,12 +593,12 @@
       "date": "June 17, 2026",
       "description": "Eine Entwickler-Sicht auf Avana LP-Collateral-Infrastruktur — inklusive Monitoring, Automation, Liquidationsservices und Builder-Chancen.",
       "image": "/images/blog/developer-view-lp-collateral.png",
-      "category": "Developers",
+      "category": "Entwickler",
       "tag": "Protokoll",
       "sections": [
         {
           "id": "a-new-design-surface",
-          "title": "A new design surface",
+          "title": "Eine neue Designfläche",
           "paragraphs": [
             "Die meiste DeFi Infrastruktur ist um einfaches Collateral aufgebaut. Einzelne Vermögenswerte sind leicht zu bewerten, zu überwachen und zu liquidieren. LP Positionen sind aktiv, zweiseitig und strukturell komplexer. Ihr Wert ändert sich mit den zugrunde liegenden Vermögenswerten, der Zusammensetzung des Pools, den Gebührenansprüchen und dem Bereich. Diese Komplexität ist der Grund, warum LP Collateral schwer in Kreditsysteme zu integrieren war, und sie ist der Grund, warum Avana eine neue Entwurfsfläche für Entwickler schafft."
           ]
@@ -628,7 +628,7 @@
       "date": "June 14, 2026",
       "description": "Innenansicht der Avana LP-Collateral-Architektur auf Aave v4 — inklusive Hub, Spokes, Bewertung, Oracle-Design und Liquidationslogik.",
       "image": "/images/blog/inside-avana-architecture.png",
-      "category": "Developers",
+      "category": "Entwickler",
       "tag": "Protokoll",
       "sections": [
         {
@@ -739,7 +739,7 @@
       "date": "June 4, 2026",
       "description": "Ein Einsteiger-Guide zu LP-Collateral auf Avana — LP-Verhalten, LTV, Impermanent Loss, Liquidation und konservative erste Schritte.",
       "image": "/images/blog/beginners-guide-lp-collateral.png",
-      "category": "For LPs",
+      "category": "Für LPs",
       "tag": "Leitfäden",
       "sections": [
         {
@@ -767,7 +767,7 @@
         },
         {
           "id": "first-steps",
-          "title": "A sensible first path",
+          "title": "Ein vernünftiger erster Weg",
           "paragraphs": [
             "Selbst als Sicherheit verdient eine LP-Position weiterhin Gebühren und behält die Marktexposition bei. Das ist der Gewinn an Kapitaleffizienz. Für Anfänger ist der sicherste Ansatz, bei Avana zunächst konservativ zu beginnen: moderat leihen, zuerst einfachere und stabilere Pool-Typen verwenden und darauf achten, wie sich die Positionsgesundheit verändert, wenn sich die Märkte bewegen. Sobald man versteht, wie LP-Wert, Schulden und Liquidationsschwellen interagieren, wird das Modell viel einfacher verantwortungsvoll zu nutzen."
           ]

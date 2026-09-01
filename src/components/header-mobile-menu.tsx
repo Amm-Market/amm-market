@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 import { useTranslations } from "next-intl"
+import { HeaderHelpCenterMobileRow } from "@/components/header-help-center-button"
+import { HeaderThemeToggleMobileRow } from "@/components/header-theme-toggle"
 import { Link } from "@/i18n/navigation"
-import { siteRoutes } from "@/lib/site"
+import { AAVE_ARFC_LABEL, siteRoutes } from "@/lib/site"
 
 interface HeaderMobileMenuProps {
   open: boolean
@@ -23,7 +25,7 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
     { href: siteRoutes.newsroom, label: t("nav.newsroom") },
     { href: siteRoutes.faq, label: t("nav.helpCenter") },
     { href: siteRoutes.developers, label: t("nav.developers") },
-    { href: "https://governance.aave.com/", label: t("nav.aaveArfc"), external: true },
+    { href: "https://governance.aave.com/", label: AAVE_ARFC_LABEL, external: true },
     { href: "https://app.avana.cc", label: t("cta.sandboxLong"), external: true },
   ] as const
 
@@ -50,7 +52,7 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
 
   return createPortal(
     <div
-      className={`fixed inset-x-0 bottom-0 top-16 z-40 bg-white transition-opacity duration-300 ease-out md:top-[54px] lg:hidden ${
+      className={`fixed inset-x-0 bottom-0 top-16 z-40 bg-background transition-opacity duration-300 ease-out md:top-[54px] lg:hidden ${
         isVisible ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
       }`}
       role="dialog"
@@ -71,7 +73,7 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
             return (
               <li
                 key={`${link.label}-${link.href}`}
-                className={`border-b border-black/10 transition-all duration-300 ease-out ${
+                className={`border-b border-border transition-all duration-300 ease-out ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
                 }`}
                 style={{ transitionDelay: `${120 + index * 35}ms` }}
@@ -84,10 +86,10 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
                     className="flex items-end justify-between gap-5 py-3"
                     onClick={onClose}
                   >
-                    <span className="text-[clamp(1.7rem,7.1vw,2.45rem)] font-[560] leading-[0.98] tracking-[-0.05em] text-black/95">
+                    <span className="text-[clamp(1.7rem,7.1vw,2.45rem)] font-medium leading-[0.98] tracking-[-0.03em] text-foreground">
                       {link.label}
                     </span>
-                    <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-[#01AACF]">
+                    <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-type-tertiary">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </a>
@@ -98,10 +100,10 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
                     className="flex items-end justify-between gap-5 py-3"
                     onClick={onClose}
                   >
-                    <span className="text-[clamp(1.7rem,7.1vw,2.45rem)] font-[560] leading-[0.98] tracking-[-0.05em] text-black/95">
+                    <span className="text-[clamp(1.7rem,7.1vw,2.45rem)] font-medium leading-[0.98] tracking-[-0.03em] text-foreground">
                       {link.label}
                     </span>
-                    <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-[#01AACF]">
+                    <span className="shrink-0 pb-0.5 text-[0.95rem] font-medium tracking-[-0.03em] text-type-tertiary">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </Link>
@@ -110,6 +112,16 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
             )
           })}
         </ol>
+
+        <div
+          className={`transition-all duration-300 ease-out ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+          }`}
+          style={{ transitionDelay: `${120 + mobileLinks.length * 35}ms` }}
+        >
+          <HeaderThemeToggleMobileRow />
+          <HeaderHelpCenterMobileRow onNavigate={onClose} />
+        </div>
       </nav>
     </div>,
     document.body,

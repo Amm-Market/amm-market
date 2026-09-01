@@ -12,7 +12,7 @@ export const diatypeFont = localFont({
   src: [
     {
       path: "../../public/fonts/diatype/ABCDiatypeVariable-Site-Trial.woff2",
-      weight: "100 900",
+      weight: "400",
       style: "normal",
     },
   ],

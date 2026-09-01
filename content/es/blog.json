@@ -52,7 +52,7 @@
       "sections": [
         {
           "id": "lp-loans-are-operational",
-          "title": "LP loans are operational work",
+          "title": "Los préstamos con LP son trabajo operativo",
           "paragraphs": [
             "El Avana, LP colateral está activo, es dependiente del camino y exige operaciones complejas. Genera comisiones, cambia de composición, modifica el riesgo a medida que los mercados se mueven y puede requerir acciones específicas del lugar exactamente cuando una posición se vuelve estresada. Un mercado de tokens estándar a menudo puede reducir la liquidación y el monitoreo a un activador y ruta de intercambio más simple. El colateral LP es diferente. El sistema tiene que saber qué posiciones están activas, cómo se está desplazando la deuda, cómo se vería el colateral en un desarme real, cómo se pueden realizar las comisiones, qué ruta específica de remoción del lugar aplica y si la liquidación sigue siendo viable después de la desviación, el enrutamiento y el costo de ejecución. Esos detalles son lo que separa la cobertura teórica en papel de la cobertura que aún funciona cuando los mercados se vuelven difíciles."
           ]
@@ -357,7 +357,7 @@
         },
         {
           "id": "if-health-breaks",
-          "title": "If health breaks",
+          "title": "Si la salud se rompe",
           "paragraphs": [
             "Si una posición se vuelve insegura, Avana liquida la posición de liquidez activa, contabiliza los subyacentes y restaura la solvencia con la menor interrupción posible según lo permita el mercado. La estructura del fondo determina cómo funciona la liquidación. Esa es otra razón por la que el colateral de Aerodrome pertenece a un segmento dedicado en lugar de ser una extensión suelta de un mercado de préstamos más amplio."
           ]
@@ -598,7 +598,7 @@
       "sections": [
         {
           "id": "a-new-design-surface",
-          "title": "A new design surface",
+          "title": "Una nueva superficie de diseño",
           "paragraphs": [
             "La mayor parte de la infraestructura DeFi se construye alrededor de garantías simples. Los activos individuales son fáciles de valorar, monitorear y liquidar. Las posiciones LP son activas, de doble signo y estructuralmente más complejas. Su valor cambia con los subyacentes, la composición del grupo, la acumulación de tarifas y el rango. Esa complejidad es la razón por la que las garantías LP han sido difíciles de integrar en los sistemas de préstamo, y es la razón por la que Avana crea una nueva superficie de diseño para desarrolladores."
           ]
@@ -767,7 +767,7 @@
         },
         {
           "id": "first-steps",
-          "title": "A sensible first path",
+          "title": "Un primer camino sensato",
           "paragraphs": [
             "Incluso como garantía, una posición LP sigue generando comisiones y manteniendo exposición al mercado. Esa es la ganancia en eficiencia de capital. Para los principiantes, el enfoque más seguro es comenzar de manera conservadora en Avana: pedir prestado de manera modesta, usar primero tipos de pools más simples y estables, y prestar atención a cómo cambia la salud de la posición a medida que los mercados se mueven. Una vez que entiendes cómo interactúan el valor LP, la deuda y los umbrales de liquidación, el modelo se vuelve mucho más sencillo de usar de manera responsable."
           ]

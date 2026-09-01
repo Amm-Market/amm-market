@@ -9,7 +9,9 @@
       "closeMenu": "Закрыть меню",
       "language": "Язык: {language}",
       "logo": "логотип {site}",
-      "helpfulLinks": "Полезные ссылки"
+      "helpfulLinks": "Полезные ссылки",
+      "helpCenter": "Центр помощи: написать в поддержку",
+      "themeToggle": "Настройка темы"
     },
     "nav": {
       "products": "Продукты",
@@ -76,7 +78,7 @@
     "notFound": {
       "title": "Эта страница недоступна.",
       "body": "Адрес может быть неверным или страница могла быть перемещена.",
-      "home": "Go to homepage",
+      "home": "На главную",
       "faq": "Частые вопросы"
     },
     "sandboxNotice": "Sandbox данные показаны только для предварительного просмотра. APYs, цены и доходность являются иллюстративными и могут отличаться от реальных рыночных условий.",
@@ -87,7 +89,7 @@
       "shareOnLinkedIn": "Поделиться в LinkedIn",
       "previousPost": "Предыдущий пост",
       "nextPost": "Следующий пост",
-      "onThisPage": "On this page"
+      "onThisPage": "На этой странице"
     },
     "docs": {
       "previous": "Предыдущий",
@@ -99,7 +101,8 @@
         "liquidation": "Рамки ликвидации",
         "integrations": "Поддерживаемые интеграции",
         "safety": "Механизмы безопасности",
-        "legal": "Юридические вопросы и соответствие требованиям"
+        "legal": "Юридические вопросы и соответствие требованиям",
+        "copilot": "Спросить ИИ"
       },
       "items": {
         "overview": "Обзор",
@@ -131,7 +134,11 @@
         "bugBounty": "Награда за баг",
         "insuranceFunds": "Страховые фонды",
         "securityDisclosures": "Раскрытие информации о безопасности",
-        "legalDisclaimer": "Юридический отказ от ответственности"
+        "legalDisclaimer": "Юридический отказ от ответственности",
+        "aiIntroduction": "Введение в ИИ",
+        "copilotProtocols": "Поддерживаемые протоколы",
+        "copilotPrompts": "Примеры промптов",
+        "copilotWorkflow": "Рабочий процесс агента"
       }
     },
     "faqUi": {
@@ -156,6 +163,25 @@
     "newsroom": {
       "latestFrom": "Последнее с Avana",
       "readNewsroom": "Читать новостную редакцию"
+    },
+    "theme": {
+      "lightMode": "Светлый режим",
+      "darkMode": "Тёмный режим",
+      "systemMode": "Система",
+      "tapToChange": "Нажмите, чтобы изменить"
+    },
+    "exportMenu": {
+      "copyPage": "Копировать страницу",
+      "copied": "Скопировано",
+      "copyPageMarkdown": "Копировать страницу как Markdown",
+      "copyPageLink": "Копировать ссылку на страницу",
+      "copyPageLinkDescription": "Скопировать URL этой страницы в буфер обмена",
+      "openInChatGPT": "Открыть в ChatGPT",
+      "openInClaude": "Открыть в Claude",
+      "openInGrok": "Открыть в Grok",
+      "openInPerplexity": "Открыть в Perplexity",
+      "askAboutPage": "Задать вопросы об этой странице",
+      "reviewPrompt": "Изучите содержимое страницы Avana ниже и ответьте на вопросы."
     }
   },
   "meta": {
@@ -222,12 +248,12 @@
       "subtitle": "Продолжайте зарабатывать комиссионные за торговлю, одновременно освобождая ликвидность из позиций Uniswap, Curve и Balancer.",
       "subtitleMobileLines": [
         "Получите доступ до 80% стоимости вашего пула ликвидности",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "под 5,5% APR без вывода ликвидности и",
+        "без отказа от торговых комиссий."
       ],
       "subtitleDesktopLines": [
         "Получите доступ до 80% стоимости вашего пула ликвидности под 5,5% APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "под 5,5% APR без вывода ликвидности и без отказа от торговых комиссий."
       ],
       "primaryCta": "Попробуй Sandbox",
       "secondaryCta": "Читать документы"

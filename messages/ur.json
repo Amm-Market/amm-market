@@ -9,7 +9,9 @@
       "closeMenu": "مینو بند کریں",
       "language": "زبان: {language}",
       "logo": "{site} لوگو",
-      "helpfulLinks": "مددگار روابط"
+      "helpfulLinks": "مددگار روابط",
+      "helpCenter": "مدد مرکز: سپورٹ کو ای میل کریں",
+      "themeToggle": "تھیم کی ترجیح"
     },
     "nav": {
       "products": "مصنوعات",
@@ -76,7 +78,7 @@
     "notFound": {
       "title": "یہ صفحہ دستیاب نہیں ہے۔",
       "body": "پتہ غلط ہو سکتا ہے یا صفحہ منتقل ہو چکا ہے۔",
-      "home": "Go to homepage",
+      "home": "ہوم پیج پر جائیں",
       "faq": "عمومی سوالات"
     },
     "sandboxNotice": "Sandbox صرف پیش نظارہ کے لیے دکھایا گیا ڈیٹا۔ APY، قیمتیں، اور منافع مثالی ہیں اور حقیقی مارکیٹ کی صورتحال سے مختلف ہو سکتے ہیں۔",
@@ -87,7 +89,7 @@
       "shareOnLinkedIn": "لنکڈ اِن پر شیئر کریں",
       "previousPost": "پچھلا پوسٹ",
       "nextPost": "اگلا پوسٹ",
-      "onThisPage": "On this page"
+      "onThisPage": "اس صفحے پر"
     },
     "docs": {
       "previous": "پچھلا",
@@ -99,7 +101,8 @@
         "liquidation": "لیکویڈیشن فریم ورک",
         "integrations": "معاونت یافتہ انضمام",
         "safety": "حفاظتی میکنزم",
-        "legal": "قانونی اور تعمیل"
+        "legal": "قانونی اور تعمیل",
+        "copilot": "AI سے پوچھیں"
       },
       "items": {
         "overview": "جائزہ",
@@ -131,7 +134,11 @@
         "bugBounty": "بگ باؤنٹی",
         "insuranceFunds": "انشورنس فنڈز",
         "securityDisclosures": "سیکیورٹی انکشافات",
-        "legalDisclaimer": "قانونی دستبرداری"
+        "legalDisclaimer": "قانونی دستبرداری",
+        "aiIntroduction": "AI تعارف",
+        "copilotProtocols": "معاون پروٹوکولز",
+        "copilotPrompts": "پرامپٹ مثالیں",
+        "copilotWorkflow": "ایجنٹ ورک فلو"
       }
     },
     "faqUi": {
@@ -156,6 +163,25 @@
     "newsroom": {
       "latestFrom": "تازہ ترین Avana سے",
       "readNewsroom": "نیوز روم پڑھیں"
+    },
+    "theme": {
+      "lightMode": "لائٹ موڈ",
+      "darkMode": "ڈارک موڈ",
+      "systemMode": "سسٹم",
+      "tapToChange": "تبدیل کرنے کے لیے ٹیپ کریں"
+    },
+    "exportMenu": {
+      "copyPage": "صفحہ کاپی کریں",
+      "copied": "کاپی ہو گیا",
+      "copyPageMarkdown": "صفحہ Markdown کے طور پر کاپی کریں",
+      "copyPageLink": "صفحے کا لنک کاپی کریں",
+      "copyPageLinkDescription": "اس صفحے کا URL کلپ بورڈ پر کاپی کریں",
+      "openInChatGPT": "ChatGPT میں کھولیں",
+      "openInClaude": "Claude میں کھولیں",
+      "openInGrok": "Grok میں کھولیں",
+      "openInPerplexity": "Perplexity میں کھولیں",
+      "askAboutPage": "اس صفحے کے بارے میں سوالات پوچھیں",
+      "reviewPrompt": "نیچے دیے گئے Avana صفحے کا مواد دیکھیں اور سوالات کے جوابات دیں۔"
     }
   },
   "meta": {
@@ -222,12 +248,12 @@
       "subtitle": "Uniswap، Curve، اور Balancer پوزیشنز سے لیکویڈیٹی کھولتے ہوئے تجارتی فیسیں کمانا جاری رکھیں۔",
       "subtitleMobileLines": [
         "اپنی لیکویڈیٹی پول کی قیمت کا 80٪ تک رسائی حاصل کریں",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "5.5% APR پر، لیکویڈیٹی نکالے بغیر یا",
+        "ٹریڈنگ فیس چھوڑے بغیر۔"
       ],
       "subtitleDesktopLines": [
         "اپنی لیکویڈیٹی پول کی قیمت کا 80% تک 5.5% پر حاصل کریں APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "5.5% APR پر، لیکویڈیٹی نکالے یا ٹریڈنگ فیس چھوڑے بغیر۔"
       ],
       "primaryCta": "کوشش کریں Sandbox",
       "secondaryCta": "دستاویزات پڑھیں"

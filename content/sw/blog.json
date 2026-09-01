@@ -6,7 +6,7 @@
       "date": "July 24, 2026",
       "description": "Jinsi Avana inavyosimamia hatari ya dhamana ya LP katika masoko ya Spoke kwa masasisho yenye mipaka, ukaguzi huru, na udhibiti wa dharura.",
       "image": "/images/blog/lp-risk-governance.png",
-      "category": "Developers",
+      "category": "Wasanidi programu",
       "tag": "Itifaki",
       "sections": [
         {
@@ -47,12 +47,12 @@
       "date": "July 22, 2026",
       "description": "Kwa nini Avana hutumia Smart Agents kufuatilia health, kuhudumia nafasi mahususi za venue, na kuweka cakupan ya uuzaji dhamana kuwa ya kuaminika chini ya mkazo.",
       "image": "/images/blog/smart-agents-lp-collateral.png",
-      "category": "Developers",
+      "category": "Wasanidi programu",
       "tag": "Itifaki",
       "sections": [
         {
           "id": "lp-loans-are-operational",
-          "title": "LP loans are operational work",
+          "title": "Mikopo ya LP ni kazi ya uendeshaji",
           "paragraphs": [
             "Kwenye Avana, LP dhamana ni hai, inategemea njia, na inahitaji uendeshaji mkubwa. Inapata ada, hubadilisha muundo, hubadilisha hatari kadiri soko linavyosogea, na inaweza kuhitaji hatua maalum za eneo wazi hasa wakati nafasi inapoanza kuwa na msongo. Soko la ishara la kawaida mara nyingi linaweza kupunguza uuzaji na ufuatiliaji kuwa kitufe rahisi na njia rahisi ya kubadilisha. Dhamana ya LP ni tofauti. Mfumo lazima ujue ni nafasi gani zinazoendelea, jinsi deni linavyosogea, dhamana itakavyokuwa ikifanyika uondaji halisi, jinsi ada zinaweza kutimizwa, ni njia gani maalum ya kuondoa eneo inayoanza kutumika, na kama uuzaji bado unawezekana baada ya kupoteza, kuongoza, na gharama ya utekelezaji. Maelezo hayo ndizo zinazotofautisha ulinzi wa nadharia kwenye karatasi na ulinzi unaofanya kazi bado pale soko linapokuwa gumu."
           ]
@@ -82,7 +82,7 @@
       "date": "July 20, 2026",
       "description": "Jinsi Avana inavyouza dhamana ya LP kwa unwind iliyodhibitiwa, uingiliaji wa sehemu, ada kwanza inapowezekana, na njia mahususi za venue.",
       "image": "/images/blog/lp-liquidation-workflow.png",
-      "category": "Developers",
+      "category": "Wasanidi programu",
       "tag": "Itifaki",
       "sections": [
         {
@@ -123,7 +123,7 @@
       "date": "July 17, 2026",
       "description": "Jinsi Avana Oracle inavyopanga bei ya dhamana ya LP kwa kutumia thamani inayoweza kurejeshwa, ujenzi wa upya wa uhakika, na haircut za kurejesha zenye tahadhari.",
       "image": "/images/blog/lp-collateral-oracle-problem.png",
-      "category": "Developers",
+      "category": "Wasanidi programu",
       "tag": "Itifaki",
       "sections": [
         {
@@ -164,7 +164,7 @@
       "date": "July 15, 2026",
       "description": "Jinsi Avana inavyounda usalama wa tabaka kwa dhamana ya LP, kutoka usanifu na oracle hadi health, uuzaji dhamana, na uendeshaji.",
       "image": "/images/blog/security-deep-dive.png",
-      "category": "Developers",
+      "category": "Wasanidi programu",
       "tag": "Itifaki",
       "sections": [
         {
@@ -206,7 +206,7 @@
       "date": "July 13, 2026",
       "description": "Jinsi LP zinavyoweza kutumia Avana kufadhili buffer, fidia za mwelekeo, na tabia bora za hedge bila kuondoka kabisa kwenye pool.",
       "image": "/images/blog/hedge-lp-position.png",
-      "category": "For LPs",
+      "category": "Kwa LPs",
       "tag": "Mwongozo",
       "sections": [
         {
@@ -247,7 +247,7 @@
       "date": "July 10, 2026",
       "description": "Jinsi ya kufikiria yield looping kwa dhamana ya LP ya Avana, ikiwa ni pamoja na buffer, majaribio ya mkazo, nidhamu ya kutoka, na leverage endelevu.",
       "image": "/images/blog/yield-looping-playbook.png",
-      "category": "For LPs",
+      "category": "Kwa LPs",
       "tag": "Mwongozo",
       "sections": [
         {
@@ -288,7 +288,7 @@
       "date": "July 8, 2026",
       "description": "Yale ambayo dhamana ya LP ya Avana inawezesha katika ukopaji, hedging, unyumbufu wa hazina, na matumizi bora ya mtaji wa ukwasi wenye tija.",
       "image": "/images/blog/unleashing-lp-tokens.png",
-      "category": "For LPs",
+      "category": "Kwa LPs",
       "tag": "Mwongozo",
       "sections": [
         {
@@ -329,7 +329,7 @@
       "date": "July 6, 2026",
       "description": "Jinsi Avana inavyosaidia nafasi za LP za Aerodrome kwenye Base zibaki hai huku zikiunga mkono ukopaji kupitia Spoke maalum ya Aave v4.",
       "image": "/images/blog/aerodrome-lp-collateral.png",
-      "category": "Developers",
+      "category": "Wasanidi programu",
       "tag": "Itifaki",
       "sections": [
         {
@@ -357,7 +357,7 @@
         },
         {
           "id": "if-health-breaks",
-          "title": "If health breaks",
+          "title": "Ikiwa afya inavunjika",
           "paragraphs": [
             "Iwapo nafasi inakuwa hatari, Avana inafutwa nafasi ya mali inayofanya kazi, inahesabu mali zinazojumuishwa, na kurekebisha uwezo wa kulipa deni kwa usumbufu mdogo iwezekanavyo sokoni. Muundo wa bwawa unaamua jinsi uuzaji wa mali unavyofanya kazi. Hii ni sababu nyingine kwa nini dhamana ya Aerodrome inapaswa kuwemo kwenye tawi lililojitolea badala ya kuwa kama nyongeza isiyo rasmi kwa soko kubwa la mikopo."
           ]
@@ -370,7 +370,7 @@
       "date": "July 3, 2026",
       "description": "Jinsi Avana inavyoshughulikia dhamana ya LP ya Curve kwa pool thabiti na zinazohusiana kupitia Spoke maalum ya Aave v4.",
       "image": "/images/blog/curve-lp-collateral.png",
-      "category": "Developers",
+      "category": "Wasanidi programu",
       "tag": "Itifaki",
       "sections": [
         {
@@ -411,7 +411,7 @@
       "date": "July 1, 2026",
       "description": "Jinsi Avana inavyosaidia LP za weighted pool za Balancer kama dhamana kwenye Aave v4 huku mfiduo ukibaki hai.",
       "image": "/images/blog/balancer-lp-collateral.png",
-      "category": "Developers",
+      "category": "Wasanidi programu",
       "tag": "Itifaki",
       "sections": [
         {
@@ -446,7 +446,7 @@
       "date": "June 28, 2026",
       "description": "Jinsi Avana inavyogeuza nafasi za LP za Uniswap kuwa dhamana ya Aave v4 huku zikiendelea kuwa kwenye pool na kupata ada.",
       "image": "/images/blog/uniswap-lp-collateral.png",
-      "category": "Developers",
+      "category": "Wasanidi programu",
       "tag": "Itifaki",
       "sections": [
         {
@@ -516,7 +516,7 @@
       "date": "June 23, 2026",
       "description": "Kwa nini watoa ukwasi hawapaswi kuchagua kati ya kupata ada na kupata mtaji, na jinsi Avana inavyopanua dhamana ya LP kwenye Aave v4.",
       "image": "/images/blog/avana-next-step-liquidity-providers.png",
-      "category": "Community",
+      "category": "Jumuiya",
       "tag": "Mkakati",
       "sections": [
         {
@@ -551,7 +551,7 @@
       "date": "June 20, 2026",
       "description": "Jinsi dhamana ya LP ya Avana inavyoweza kusaidia DAO, hazina, fedha, na kampuni za crypto kupata mtaji bila kufungua ukwasi wenye tija.",
       "image": "/images/blog/lp-collateral-for-institutions.png",
-      "category": "For Institutions",
+      "category": "Kwa taasisi",
       "tag": "Taasisi",
       "sections": [
         {
@@ -593,12 +593,12 @@
       "date": "June 17, 2026",
       "description": "Mtazamo wa msanidi wa miundombinu ya dhamana ya LP ya Avana, ikijumuisha ufuatiliaji, otomatiki, huduma za uuzaji dhamana, na fursa za wajenzi.",
       "image": "/images/blog/developer-view-lp-collateral.png",
-      "category": "Developers",
+      "category": "Wasanidi programu",
       "tag": "Itifaki",
       "sections": [
         {
           "id": "a-new-design-surface",
-          "title": "A new design surface",
+          "title": "Uso mpya wa muundo",
           "paragraphs": [
             "Kiwango kikubwa cha miundombinu kimejengwa kuzunguka dhamana rahisi. Mali moja ni rahisi kuweka bei, kufuatilia, na kuuza. Nafasi LP ni hai, ya pande mbili, na yenye muundo mgumu zaidi. Thamani yake hubadilika kwa kulingana na mali msingi, muundo wa bwawa, mradi wa ada, na wigo. Ugumu huo ndio sababu dhamana za LP zimekuwa ngumu kuingizwa kwenye mifumo ya mikopo, na ndiyo sababu Avana inaunda uso mpya wa muundo kwa waendelezaji."
           ]
@@ -628,7 +628,7 @@
       "date": "June 14, 2026",
       "description": "Ndani ya usanifu wa dhamana ya LP ya Avana kwenye Aave v4, ikijumuisha Hub, Spoke, uthamini, muundo wa oracle, na mantiki ya uuzaji dhamana.",
       "image": "/images/blog/inside-avana-architecture.png",
-      "category": "Developers",
+      "category": "Wasanidi programu",
       "tag": "Itifaki",
       "sections": [
         {
@@ -739,7 +739,7 @@
       "date": "June 4, 2026",
       "description": "Mwongozo wa kompyuta kwa dhamana ya LP kwenye Avana, ukijumuisha tabia ya LP, LTV, impermanent loss, uuzaji dhamana, na hatua za kwanza za tahadhari.",
       "image": "/images/blog/beginners-guide-lp-collateral.png",
-      "category": "For LPs",
+      "category": "Kwa LPs",
       "tag": "Mwongozo",
       "sections": [
         {
@@ -767,7 +767,7 @@
         },
         {
           "id": "first-steps",
-          "title": "A sensible first path",
+          "title": "Njia ya kwanza yenye busara",
           "paragraphs": [
             "Hata kama dhamana, nafasi ya LP inaendelea kupata ada na kudumisha uwepo sokoni. Hiyo ndiyo faida ya ufanisi wa mtaji. Kwa wanaoanza, njia salama zaidi ni kuanza kwa tahadhari kwenye Avana: kukopa kwa kiasi kidogo, kutumia aina rahisi na thabiti za mabwawa kwanza, na kuzingatia jinsi afya ya nafasi inavyobadilika kadiri masoko yanavyobadilika. Mara tu unapoelewa jinsi thamani ya LP, deni, na viwango vya kufutwa vinavyoshirikiana, mfano unakuwa rahisi zaidi kutumia kwa uwajibikaji."
           ]

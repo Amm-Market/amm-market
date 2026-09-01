@@ -6,37 +6,37 @@
       "date": "July 24, 2026",
       "description": "Avana’nın Spoke piyasalarında LP teminat riskini sınırlı güncellemeler, bağımsız inceleme ve acil durdurma ile nasıl yönettiği.",
       "image": "/images/blog/lp-risk-governance.png",
-      "category": "Developers",
+      "category": "Geliştiriciler",
       "tag": "Protokol",
       "sections": [
         {
           "id": "why-lp-risk-is-different",
-          "title": "Why LP risk is different",
+          "title": "LP riski neden farklıdır",
           "paragraphs": [
-            "Avana cannot govern LP collateral the way a generic lending market governs a list of tokens. Each spoke market has its own pool structure, failure modes, and stress behavior. A stable pool is not the same product as a concentrated range. A weighted Balancer style basket is not the same product as a tightly correlated Curve style market. Avana's risk framework is built around that variety. It watches volatility, peg quality, utilization, liquidity depth, concentration, oracle health, market status, supply and borrow caps, LTV and liquidation thresholds, interest rate models, and position health across the hub and the LP spokes together."
+            "Avana, LP teminatını genel bir kredi piyasasının token listesini yönettiği gibi yönetemez. Her spoke piyasasının kendi havuz yapısı, arıza modları ve stres davranışı vardır. Stabil bir havuz, konsantre bir aralıkla aynı ürün değildir. Balancer tarzı ağırlıklı bir sepet, Curve tarzı sıkı korelasyonlu bir piyasayla aynı ürün değildir. Avana'nın risk çerçevesi bu çeşitlilik etrafında kurulmuştur. Volatilite, peg kalitesi, kullanım oranı, likidite derinliği, konsantrasyon, oracle sağlığı, piyasa durumu, arz ve borç limitleri, LTV ve likidasyon eşikleri, faiz oranı modelleri ile hub ve LP spoke'lar genelinde pozisyon sağlığını izler."
           ]
         },
         {
           "id": "three-roles",
-          "title": "Three roles, clear jobs",
+          "title": "Üç rol, net görevler",
           "paragraphs": [
-            "Avana separates routine recommendation, independent review, and emergency containment into three roles: the Risk Initiator, the Risk Guardian, and the Risk Defender. The Initiator proposes routine updates inside approved templates, including caps, collateral settings, rates, and pool onboarding. Each proposal is labeled defensive or growth oriented before it enters the normal path. The Guardian is the review and veto layer. It checks that the public disclosure matches what is queued, confirms the action stays inside policy bounds, and can cancel during the timelock. The Defender is narrow by design. It can reduce caps, freeze borrowing, or disable a compromised adapter when waiting for the routine path would leave Avana exposed."
+            "Avana, rutin öneri, bağımsız inceleme ve acil kontrolü üç role ayırır: Risk Initiator, Risk Guardian ve Risk Defender. Initiator, limitler, teminat ayarları, oranlar ve havuz onboarding dahil onaylı şablonlar içinde rutin güncellemeler önerir. Her öneri normal yola girmeden önce savunmacı veya büyüme odaklı olarak etiketlenir. Guardian inceleme ve veto katmanıdır. Kamuya açık açıklamanın kuyruktakiyle eşleştiğini kontrol eder, eylemin politika sınırları içinde kaldığını doğrular ve timelock sırasında iptal edebilir. Defender tasarım gereği dar yetkilidir. Rutin yolu beklemek Avana'yı açık bırakacaksa limitleri düşürebilir, borçlanmayı dondurabilir veya tehlikeye girmiş bir adaptörü devre dışı bırakabilir."
           ]
         },
         {
           "id": "how-changes-ship",
-          "title": "How routine changes ship",
+          "title": "Rutin değişiklikler nasıl devreye girer",
           "paragraphs": [
-            "The standard update path on Avana is public notice, submission, validation against predefined bounds, timelock, Guardian review, and execution if nobody vetoes. Developers, users, and governance participants can read the rationale before a change lands and compare the written policy to the queued action. For a protocol built on complex collateral, that public consistency is a basic requirement rather than a marketing extra.",
-            "Not every change uses that path. Cutting risk is meant to be easier than adding risk. Modest tuning inside approved ranges follows the standard flow. Larger moves, such as new spoke families, new LP primitives, new oracle models, or new liquidation adapters, sit outside routine process because they expand Avana's risk surface and need heavier review."
+            "Avana'daki standart güncelleme yolu kamuya açık bildirim, gönderim, önceden tanımlı sınırlara karşı doğrulama, timelock, Guardian incelemesi ve kimse veto etmezse yürütmeyi içerir. Geliştiriciler, kullanıcılar ve yönetişim katılımcıları bir değişiklik devreye girmeden önce gerekçeyi okuyabilir ve yazılı politikayı kuyruktaki eylemle karşılaştırabilir. Karmaşık teminat üzerine kurulu bir protokol için bu kamusal tutarlılık pazarlama ekstrası değil, temel bir gerekliliktir.",
+            "Her değişiklik bu yolu kullanmaz. Riski azaltmak risk eklemekten daha kolay olmalıdır. Onaylı aralıklar içindeki mütevazı ayarlamalar standart akışı izler. Yeni spoke aileleri, yeni LP primitifleri, yeni oracle modelleri veya yeni likidasyon adaptörleri gibi daha büyük hamleler, Avana'nın risk yüzeyini genişlettiği ve daha ağır inceleme gerektirdiği için rutin sürecin dışında kalır."
           ]
         },
         {
           "id": "emergency-power",
-          "title": "When Avana uses emergency power",
+          "title": "Avana acil yetkiyi ne zaman kullanır",
           "paragraphs": [
-            "Emergency cases include oracle inconsistency, liquidation path degradation, abnormal pool behavior, wrapper failure, adapter compromise, or sudden spoke level instability. Even then the framework stays careful. Emergency authority on Avana is narrow, defensive, and reversible. It exists for moments when assumptions are failing faster than timelock governance can respond. It is not a shadow path for everyday optimization.",
-            "Taken together, Avana matches governance structure to collateral complexity. LP backed lending needs market templates, bounded execution, transparent disclosure, and a hard line between normal growth, defensive adjustment, and emergency containment. Each spoke keeps its own oracle assumptions, liquidation logic, admission rules, and operational constraints. Avana does not pretend every LP market is interchangeable."
+            "Acil durumlar oracle tutarsızlığı, likidasyon yolu bozulması, anormal havuz davranışı, wrapper arızası, adaptör ihlali veya ani spoke düzeyinde istikrarsızlığı içerir. Yine de çerçeve dikkatli kalır. Avana'daki acil yetki dar, savunmacı ve geri alınabilirdir. Varsayımların timelock yönetişiminin yanıt verebileceğinden daha hızlı başarısız olduğu anlar için vardır. Günlük optimizasyon için gölge bir yol değildir.",
+            "Birlikte ele alındığında Avana, yönetişim yapısını teminat karmaşıklığına uyarlar. LP destekli kredi, piyasa şablonları, sınırlı yürütme, şeffaf açıklama ve normal büyüme, savunmacı ayarlama ve acil kontrol arasında net bir çizgi gerektirir. Her spoke kendi oracle varsayımlarını, likidasyon mantığını, kabul kurallarını ve operasyonel kısıtlamalarını korur. Avana her LP piyasasının birbirinin yerine geçebilir olduğunu varsaymaz."
           ]
         }
       ]
@@ -47,31 +47,31 @@
       "date": "July 22, 2026",
       "description": "Avana’nın sağlığı izlemek, venue’ye özgü pozisyonları yönetmek ve stres altında likidasyon kapsamını güvenilir tutmak için neden Smart Agents kullandığı.",
       "image": "/images/blog/smart-agents-lp-collateral.png",
-      "category": "Developers",
+      "category": "Geliştiriciler",
       "tag": "Protokol",
       "sections": [
         {
           "id": "lp-loans-are-operational",
-          "title": "LP loans are operational work",
+          "title": "LP kredileri operasyonel iştir",
           "paragraphs": [
-            "On Avana, LP collateral is active, path dependent, and operationally demanding. It earns fees, shifts composition, changes risk as markets move, and can require venue specific actions exactly when a position becomes stressed. A standard token market can often reduce liquidation and monitoring to a simpler trigger and swap path. LP collateral is different. The system has to know which positions are active, how debt is drifting, what the collateral would look like under a real unwind, how fees can be realized, which venue specific removal path applies, and whether liquidation is still viable after slippage, routing, and execution cost. Those details are what separate theoretical coverage on paper from coverage that still works when markets get hard."
+            "Avana'da LP teminatı aktif, yol bağımlı ve operasyonel olarak zorludur. Ücret kazanır, bileşim değişir, piyasalar hareket ettikçe risk değişir ve bir pozisyon stres altına girdiğinde tam o anda venue'ye özgü eylemler gerekebilir. Standart bir token piyasası likidasyon ve izlemeyi genellikle daha basit bir tetikleyici ve swap yoluna indirgeyebilir. LP teminatı farklıdır. Sistem hangi pozisyonların aktif olduğunu, borcun nasıl sürüklendiğini, gerçek bir unwind altında teminatın nasıl görüneceğini, ücretlerin nasıl gerçekleştirilebileceğini, hangi venue'ye özgü çıkarma yolunun geçerli olduğunu ve slippage, yönlendirme ve yürütme maliyetinden sonra likidasyonun hâlâ uygulanabilir olup olmadığını bilmelidir. Bu ayrıntılar, kağıt üzerindeki teorik kapsamı piyasalar zorlaştığında hâlâ çalışan kapsamdan ayırır."
           ]
         },
         {
           "id": "what-agents-do",
-          "title": "What Avana Smart Agents do",
+          "title": "Avana Smart Agents ne yapar",
           "paragraphs": [
-            "Avana's node runtime reads onchain activity, keeps a live map of active positions, refreshes drifting debt on short intervals, and runs broader sweeps to catch stale or missed state. The app UI, dashboards, monitoring logic, and liquidation workflows are meant to draw from that same operational picture, rather than each layer inventing its own version of the market.",
-            "Liquidation is where this matters most. When an Avana position falls below allowed borrowing capacity, the execution layer has to evaluate whether the job can be serviced profitably, source temporary liquidity, repay debt into the credit layer, claim fees, unwind the collateral through the correct venue path, route the resulting assets, settle the flash path, distribute the liquidation premium, and preserve borrower residual value when anything remains. That is a chain of work, not a single transaction type."
+            "Avana'nın node runtime'ı onchain aktiviteyi okur, aktif pozisyonların canlı haritasını tutar, sürüklenen borcu kısa aralıklarla yeniler ve eski veya kaçırılmış durumu yakalamak için daha geniş taramalar yapar. Uygulama UI'sı, panolar, izleme mantığı ve likidasyon iş akışları, her katmanın kendi piyasa versiyonunu icat etmesi yerine aynı operasyonel tablodan beslenmek üzere tasarlanmıştır.",
+            "Likidasyon burada en çok önem taşır. Bir Avana pozisyonu izin verilen borçlanma kapasitesinin altına düştüğünde, yürütme katmanı işin kârlı şekilde hizmet edilip edilemeyeceğini değerlendirmeli, geçici likidite sağlamalı, borcu kredi katmanına geri ödemeli, ücretleri talep etmeli, teminatı doğru venue yoluyla çözmeli, ortaya çıkan varlıkları yönlendirmeli, flash yolunu kapatmalı, likidasyon primini dağıtmalı ve kalan bir şey varsa borçlunun artık değerini korumalıdır. Bu tek bir işlem türü değil, bir iş zinciridir."
           ]
         },
         {
           "id": "before-and-across-venues",
-          "title": "Before liquidation, and across venues",
+          "title": "Likidasyondan önce ve venue'ler arasında",
           "paragraphs": [
-            "Smart Agents also matter before liquidation happens. Indexing Avana positions, watching debt drift, and keeping the protocol aligned with its own oracle and risk assumptions improve readiness. Operational delay is not free when collateral keeps moving with the market.",
-            "LP collateral is an adapter problem as much as a valuation problem. Fungible LPs, concentrated ranges, and custom pool designs need different venue aware handling. Smart Agents are Avana's layer for respecting those differences instead of forcing one generic pathway onto every market. The oracle tells Avana what a position might be worth as credit. The agent layer helps determine whether that value can actually be recovered in practice.",
-            "Avana does not replace permissionless liquidation. External builders can still monitor and act. Protocol operated runtimes improve baseline coverage for collateral that is structurally harder to service. In stress that matters a lot. The worst moment to discover that a market lacks reliable execution coverage is during the liquidation event itself."
+            "Smart Agents likidasyon gerçekleşmeden önce de önemlidir. Avana pozisyonlarını indekslemek, borç sürüklenmesini izlemek ve protokolü kendi oracle ve risk varsayımlarıyla uyumlu tutmak hazırlığı artırır. Teminat piyasayla hareket etmeye devam ettiğinde operasyonel gecikme bedelsiz değildir.",
+            "LP teminatı bir değerleme sorunu kadar bir adaptör sorunudur. Değiştirilebilir LP'ler, konsantre aralıklar ve özel havuz tasarımları farklı venue farkındalıklı işlem gerektirir. Smart Agents, her piyasaya tek bir genel yol zorlamak yerine bu farklara saygı duyan Avana katmanıdır. Oracle, bir pozisyonun kredi olarak ne kadar değerli olabileceğini Avana'ya söyler. Ajan katmanı bu değerin pratikte gerçekten kurtarılıp kurtarılamayacağını belirlemeye yardımcı olur.",
+            "Avana izinsiz likidasyonun yerini almaz. Harici geliştiriciler hâlâ izleyebilir ve harekete geçebilir. Protokol tarafından işletilen runtime'lar, yapısal olarak hizmet vermesi daha zor teminat için temel kapsamı iyileştirir. Stres altında bu çok önemlidir. Bir piyasanın güvenilir yürütme kapsamından yoksun olduğunu keşfetmenin en kötü anı, likidasyon olayının kendisidir."
           ]
         }
       ]
@@ -82,37 +82,37 @@
       "date": "July 20, 2026",
       "description": "Avana’nın LP teminatını kontrollü unwind, kısmi müdahale, mümkünse ücretler önce ve venue’ye özgü yollarla nasıl likide ettiği.",
       "image": "/images/blog/lp-liquidation-workflow.png",
-      "category": "Developers",
+      "category": "Geliştiriciler",
       "tag": "Protokol",
       "sections": [
         {
           "id": "not-a-token-sale",
-          "title": "Not a simple token sale",
+          "title": "Basit bir token satışı değil",
           "paragraphs": [
-            "Liquidating LP collateral on Avana is not the same as liquidating a token balance. The collateral may contain multiple assets, uncollected fees, concentrated range exposure, and venue specific exit mechanics. If a position becomes unhealthy, Avana needs a controlled unwind, not a panic sale that treats the LP like a single fungible chip."
+            "Avana'da LP teminatını likide etmek, bir token bakiyesini likide etmekle aynı değildir. Teminat birden fazla varlık, toplanmamış ücretler, konsantre aralık maruziyeti ve venue'ye özgü çıkış mekanizmaları içerebilir. Bir pozisyon sağlıksız hale gelirse Avana'nın LP'yi tek bir değiştirilebilir fiş gibi ele alan panik satışı değil, kontrollü bir unwind'a ihtiyacı vardır."
           ]
         },
         {
           "id": "runtime-sequence",
-          "title": "The runtime sequence",
+          "title": "Runtime sırası",
           "paragraphs": [
-            "In practice, liquidation is a runtime sequence. Unhealthy accounts are detected using Avana's risk adjusted collateral values rather than raw AMM spot state. Execution liquidity is sourced, often through a flashloan style path. Debt is repaid into the credit layer. The position moves into controlled custody. Claimable fees are realized where that helps. The LP is unwound through the correct venue path. After the underlyings are recovered, they are routed into the debt asset, execution liquidity is repaid, the liquidation premium is distributed, and any residual borrower value is returned.",
-            "Different LP families on Avana do not share one exit path. Fungible LPs are removed from the pool and broken into underlyings. Concentrated ranges have to be handled according to their actual inventory at unwind time, which can look very different from what users assume if price has pushed the position to one side. Custom or hook based pools may need dedicated adapters before Avana treats them as safe enough for liquidation coverage at all. If Avana cannot unwind a collateral type correctly, it should not pretend the market is fully supported."
+            "Pratikte likidasyon bir runtime sırasıdır. Sağlıksız hesaplar ham AMM spot durumu yerine Avana'nın risk ayarlı teminat değerleri kullanılarak tespit edilir. Yürütme likiditesi, genellikle flashloan tarzı bir yol üzerinden sağlanır. Borç kredi katmanına geri ödenir. Pozisyon kontrollü saklamaya geçer. Yardımcı olduğu yerde talep edilebilir ücretler gerçekleştirilir. LP doğru venue yoluyla çözülür. Altta yatan varlıklar kurtarıldıktan sonra borç varlığına yönlendirilir, yürütme likiditesi geri ödenir, likidasyon primi dağıtılır ve kalan borçlu değeri iade edilir.",
+            "Avana'daki farklı LP aileleri tek bir çıkış yolunu paylaşmaz. Değiştirilebilir LP'ler havuzdan çıkarılır ve altta yatan varlıklara ayrılır. Konsantre aralıklar, unwind anındaki gerçek envantere göre ele alınmalıdır; fiyat pozisyonu bir tarafa ittiyse bu kullanıcıların varsayımlarından çok farklı görünebilir. Özel veya hook tabanlı havuzlar, Avana onları likidasyon kapsamı için yeterince güvenli görmeden önce özel adaptörler gerektirebilir. Avana bir teminat türünü doğru şekilde çözemiyorsa, piyasanın tam desteklendiğini iddia etmemelidir."
           ]
         },
         {
           "id": "partial-and-fees",
-          "title": "Partial cuts and fees first",
+          "title": "Kısmi kesintiler ve önce ücretler",
           "paragraphs": [
-            "Avana aims to restore target health rather than defaulting to full liquidation. Partial liquidation is preferred because it reduces unnecessary borrower loss and limits disruption to the underlying pool. The framework computes the debt needed to put the loan back on safer ground and targets that amount first. Full liquidation remains the fallback when solvency cannot be recovered with a smaller cut.",
-            "Fees matter too. LP positions often contain claimable value that has not been realized yet. If fees can reduce how much principal must be unwound, Avana should use them before cutting deeper into the position. That improves borrower outcomes and makes liquidation more precise. LP positions are live financial objects, not passive token balances, and Avana's process is written to match that."
+            "Avana, tam likidasyona varsayılan yapmak yerine hedef sağlığı geri kazanmayı amaçlar. Kısmi likidasyon tercih edilir çünkü gereksiz borçlu kaybını azaltır ve altta yatan havuza verilen rahatsızlığı sınırlar. Çerçeve, krediyi daha güvenli bir zemine döndürmek için gereken borcu hesaplar ve önce bu tutarı hedefler. Daha küçük bir kesintiyle ödeme gücü kurtarılamadığında tam likidasyon yedek kalır.",
+            "Ücretler de önemlidir. LP pozisyonları genellikle henüz gerçekleştirilmemiş talep edilebilir değer içerir. Ücretler çözülmesi gereken anaparayı azaltabiliyorsa Avana, pozisyona daha derin kesmeden önce bunları kullanmalıdır. Bu borçlu sonuçlarını iyileştirir ve likidasyonu daha hassas kılar. LP pozisyonları pasif token bakiyeleri değil, canlı finansal nesnelerdir ve Avana'nın süreci buna uygun yazılmıştır."
           ]
         },
         {
           "id": "who-runs-it",
-          "title": "Who runs liquidation",
+          "title": "Likidasyonu kim yürütür",
           "paragraphs": [
-            "Specialized liquidation runtimes make a difference here. Nodes built for Avana LP liquidation watch active positions, refresh debt drift, index market state, simulate unwind paths, source execution liquidity, route assets, and close transactions atomically. Liquidation remains permissionless, but LP collateral is harder for purely generic liquidators to service because the workflow is longer and more venue specific. Liquidators also have to price in slippage, route depth, flashloan cost, and MEV exposure. Large or unusual unwinds may need quieter execution paths so a recoverable job does not turn into a destructive one."
+            "Özelleşmiş likidasyon runtime'ları burada fark yaratır. Avana LP likidasyonu için inşa edilen node'lar aktif pozisyonları izler, borç sürüklenmesini yeniler, piyasa durumunu indeksler, unwind yollarını simüle eder, yürütme likiditesi sağlar, varlıkları yönlendirir ve işlemleri atomik olarak kapatır. Likidasyon izinsiz kalır, ancak iş akışı daha uzun ve venue'ye özgü olduğu için LP teminatı tamamen genel likidatörler için hizmet vermek daha zordur. Likidatörler ayrıca slippage, rota derinliği, flashloan maliyeti ve MEV maruziyetini fiyatlandırmalıdır. Büyük veya olağandışı unwind'lar, kurtarılabilir bir işin yıkıcı bir işe dönüşmemesi için daha sessiz yürütme yolları gerektirebilir."
           ]
         }
       ]
@@ -123,37 +123,37 @@
       "date": "July 17, 2026",
       "description": "Avana Oracle’ın recoverable value, deterministik yeniden kurulum ve muhafazakâr recovery haircut’larıyla LP teminatını nasıl fiyatladığı.",
       "image": "/images/blog/lp-collateral-oracle-problem.png",
-      "category": "Developers",
+      "category": "Geliştiriciler",
       "tag": "Protokol",
       "sections": [
         {
           "id": "what-avana-oracle-asks",
-          "title": "What Avana Oracle is asking",
+          "title": "Avana Oracle ne soruyor",
           "paragraphs": [
-            "An LP's value depends on the prices of the underlyings, the structure of the pool, the current inventory split, accrued fees, and for concentrated liquidity the relationship between current price and the active range. For a lending system, the important question is not only what a dashboard mark might say. It is what can realistically be recovered if the position has to cover a loan. If Avana lends against best case assumptions, it is financing collateral inflation. Avana Oracle is built around recoverable value, not optimistic net asset value."
+            "Bir LP'nin değeri, altta yatan varlıkların fiyatlarına, havuz yapısına, mevcut envanter dağılımına, birikmiş ücretlere ve konsantre likidite için mevcut fiyat ile aktif aralık arasındaki ilişkiye bağlıdır. Bir kredi sistemi için önemli soru yalnızca bir pano işaretinin ne dediği değildir. Pozisyonun bir krediyi karşılaması gerekirse gerçekçi olarak ne kurtarılabileceğidir. Avana en iyi senaryo varsayımlarına karşı borç verirse, teminat enflasyonunu finanse ediyor demektir. Avana Oracle iyimser net varlık değeri değil, kurtarılabilir değer etrafında inşa edilmiştir."
           ]
         },
         {
           "id": "three-step-pipeline",
-          "title": "How valuation is built",
+          "title": "Değerleme nasıl oluşturulur",
           "paragraphs": [
-            "The oracle is a multi layer collateral valuation engine. First, Avana prices the underlying assets from robust external references rather than leaning on raw AMM spot state. Second, it reconstructs the LP position deterministically: pool balance reconstruction for fungible LPs, or direct decomposition of concentrated positions by range, liquidity, and current price. Third, it discounts that reconstructed value with recovery haircuts that reflect liquidation slippage, unwind friction, and impermanent loss risk. Impermanent loss is the difference in value between holding assets in a pool and holding them separately. It grows when the paired assets diverge in price. Borrowing power on Avana comes from the discounted value, not from the most flattering mark."
+            "Oracle çok katmanlı bir teminat değerleme motorudur. Önce Avana, ham AMM spot durumuna dayanmak yerine dayanıklı harici referanslardan altta yatan varlıkları fiyatlandırır. İkinci olarak LP pozisyonunu deterministik olarak yeniden oluşturur: değiştirilebilir LP'ler için havuz bakiyesi yeniden yapılandırması veya aralık, likidite ve mevcut fiyata göre konsantre pozisyonların doğrudan ayrıştırılması. Üçüncü olarak, likidasyon slippage'ı, unwind sürtünmesi ve impermanent loss riskini yansıtan kurtarma kesintileriyle yeniden oluşturulan değeri indirimler. Impermanent loss, varlıkları havuzda tutmak ile ayrı tutmak arasındaki değer farkıdır. Eşleştirilmiş varlıklar fiyatta ayrıştığında büyür. Avana'daki borçlanma gücü en çekici işaretten değil, indirimli değerden gelir."
           ]
         },
         {
           "id": "why-simple-marks-fail",
-          "title": "Why simple marks fail",
+          "title": "Basit işaretler neden başarısız olur",
           "paragraphs": [
-            "LP collateral is one of the easiest places for a lending system to fool itself. AMM pool state can look healthy while being locally distorted. A concentrated position can look strong while sitting in a riskier inventory mix than users assume. Thin depth, same transaction manipulation, and stale inputs can all produce numbers that look precise without being trustworthy. Avana separates apparent value from reliable collateral value by combining external asset pricing, deterministic LP reconstruction, and protocol level safeguards.",
-            "The oracle interface can also distinguish reconstructed principal value, fee value, and reserved value used for protocol risk buffers. Those components do not deserve identical treatment inside a lending market. By standardizing them across LP types, the spoke layer can reason about fungible LPs, NFT based LPs, and multi asset positions consistently while still respecting how different venues expose state."
+            "LP teminatı, bir kredi sisteminin kendini kandırmasının en kolay yerlerinden biridir. AMM havuz durumu yerel olarak bozulmuşken sağlıklı görünebilir. Konsantre bir pozisyon, kullanıcıların varsaydığından daha riskli bir envanter karışımında otururken güçlü görünebilir. İnce derinlik, aynı işlem manipülasyonu ve bayat girdiler, güvenilir olmadan hassas görünen sayılar üretebilir. Avana, harici varlık fiyatlandırması, deterministik LP yeniden yapılandırması ve protokol düzeyinde güvenlik önlemlerini birleştirerek görünen değeri güvenilir teminat değerinden ayırır.",
+            "Oracle arayüzü, yeniden oluşturulan anapara değeri, ücret değeri ve protokol risk tamponları için kullanılan ayrılmış değeri de ayırt edebilir. Bu bileşenler bir kredi piyasasında aynı muameleyi hak etmez. LP türleri arasında standartlaştırarak spoke katmanı, farklı venue'lerin durumu nasıl açıkladığına saygı gösterirken değiştirilebilir LP'ler, NFT tabanlı LP'ler ve çok varlıklı pozisyonlar hakkında tutarlı şekilde akıl yürütebilir."
           ]
         },
         {
           "id": "checks-and-safeguards",
-          "title": "Checks and safeguards",
+          "title": "Kontroller ve güvenlik önlemleri",
           "paragraphs": [
-            "Different AMM families need different verification paths. Curve stable LPs, Uniswap pairs and NFTs, Balancer weighted pools, and Aerodrome pairs all expose collateral state differently. On Avana, external prices remain the main anchor. Pool specific data and time weighted checks help verify whether the reconstructed collateral state is coherent and harder to game. Those time weighted checks are not the primary price Avana relies on for loans. They are an extra consistency check so Avana can tell whether the collateral state still lines up before that state is treated as credit.",
-            "Manipulation resistance on Avana includes deviation thresholds, pool price difference constraints, recovery haircuts, open interest caps, and an oracle sentinel that reacts when feed health degrades or verification inputs stop agreeing. LP collateral is unusually exposed to same transaction abuse, thin market distortions, and stale or contradictory signals because the collateral is more structurally complex than a simple token balance. A protocol that supports LP credit has to assume the pricing surface will eventually be tested. Avana Oracle is written for that assumption."
+            "Farklı AMM aileleri farklı doğrulama yolları gerektirir. Curve stabil LP'ler, Uniswap çiftleri ve NFT'leri, Balancer ağırlıklı havuzları ve Aerodrome çiftleri teminat durumunu farklı şekilde açığa çıkarır. Avana'da harici fiyatlar ana çapa olarak kalır. Havuza özgü veriler ve zaman ağırlıklı kontroller, yeniden oluşturulan teminat durumunun tutarlı ve oynanması daha zor olup olmadığını doğrulamaya yardımcı olur. Bu zaman ağırlıklı kontroller, Avana'nın krediler için güvendiği birincil fiyat değildir. Bu durum kredi olarak değerlendirilmeden önce teminat durumunun hâlâ uyumlu olup olmadığını Avana'nın anlayabilmesi için ek bir tutarlılık kontrolüdür.",
+            "Avana'daki manipülasyon direnci, sapma eşikleri, havuz fiyat farkı kısıtlamaları, kurtarma kesintileri, açık pozisyon limitleri ve feed sağlığı bozulduğunda veya doğrulama girdileri uyuşmayı bıraktığında tepki veren bir oracle sentinel içerir. LP teminatı, basit bir token bakiyesinden yapısal olarak daha karmaşık olduğu için aynı işlem kötüye kullanımına, ince piyasa bozulmalarına ve bayat veya çelişkili sinyallere olağandışı derecede maruz kalır. LP kredisini destekleyen bir protokol, fiyatlandırma yüzeyinin sonunda test edileceğini varsaymalıdır. Avana Oracle bu varsayım için yazılmıştır."
           ]
         }
       ]
@@ -164,38 +164,38 @@
       "date": "July 15, 2026",
       "description": "Avana’nın mimari ve oracle’lardan health, likidasyon ve operasyonlara kadar LP teminatı için katmanlı güvenliği nasıl kurduğu.",
       "image": "/images/blog/security-deep-dive.png",
-      "category": "Developers",
+      "category": "Geliştiriciler",
       "tag": "Protokol",
       "sections": [
         {
           "id": "more-than-a-price",
-          "title": "More than a price and an LTV",
+          "title": "Bir fiyat ve LTV'den fazlası",
           "paragraphs": [
-            "A simple token can usually be priced with a direct market reference and liquidated with standard logic. An LP position cannot. Its value depends on underlyings, pool structure, the relationship between those assets, fee accrual, liquidity depth, and for concentrated liquidity the active range. Under stress those variables compound. A protocol that supports LP backed borrowing on Aave v4 has to do more than assign a price and set a loan to value ratio. That is the problem Avana is built around."
+            "Basit bir token genellikle doğrudan piyasa referansıyla fiyatlandırılabilir ve standart mantıkla likide edilebilir. Bir LP pozisyonu yapılamaz. Değeri altta yatan varlıklara, havuz yapısına, bu varlıklar arasındaki ilişkiye, ücret birikimine, likidite derinliğine ve konsantre likidite için aktif aralığa bağlıdır. Stres altında bu değişkenler birleşir. Aave v4'te LP destekli borçlanmayı destekleyen bir protokol, fiyat atamak ve LTV belirlemekten fazlasını yapmalıdır. Avana bu sorun etrafında inşa edilmiştir."
           ]
         },
         {
           "id": "architecture-and-oracles",
-          "title": "Architecture and valuation",
+          "title": "Mimari ve değerleme",
           "paragraphs": [
-            "The first security layer is architectural. Avana uses Aave v4's hub and spoke structure. The hub holds the common liquidity layer, manages reserve accounting, and enforces solvency constraints. The spoke is where LP specific collateral logic lives: admission, valuation rules, pool specific risk parameters, and liquidation behavior. If an LP market becomes stressed, that stress is meant to stay contained in the spoke rather than rewriting assumptions across unrelated collateral types. On Avana, the spoke is part of the security boundary.",
-            "The second layer is oracle and valuation design. LP positions cannot be safely priced with a single flat feed. Avana uses a dual source framework. External price feeds provide the primary reference for underlyings, while AMM derived pricing acts as independent verification. Borrowing power exists only when both sources stay coherent within tolerance. Risk is assigned at the market level. Pool structure, asset correlation, liquidity depth, and range concentration all shape collateral treatment. Borrowing power is anchored to the weaker aspects of the position, with pool level adjustments for volatility, liquidity quality, and stress assumptions."
+            "İlk güvenlik katmanı mimaridir. Avana, Aave v4'ün hub-and-spoke yapısını kullanır. Hub ortak likidite katmanını tutar, rezerv muhasebesini yönetir ve ödeme gücü kısıtlamalarını uygular. Spoke, LP'ye özgü teminat mantığının yaşadığı yerdir: kabul, değerleme kuralları, havuza özgü risk parametreleri ve likidasyon davranışı. Bir LP piyasası stres altına girerse, bu stresin ilgisiz teminat türleri genelinde varsayımları yeniden yazmak yerine spoke içinde kalması amaçlanır. Avana'da spoke, güvenlik sınırının bir parçasıdır.",
+            "İkinci katman oracle ve değerleme tasarımıdır. LP pozisyonları tek bir düz feed ile güvenle fiyatlandırılamaz. Avana çift kaynaklı bir çerçeve kullanır. Harici fiyat feed'leri altta yatan varlıklar için birincil referans sağlarken, AMM türevli fiyatlandırma bağımsız doğrulama görevi görür. Borçlanma gücü yalnızca her iki kaynak tolerans dahilinde tutarlı kaldığında vardır. Risk piyasa düzeyinde atanır. Havuz yapısı, varlık korelasyonu, likidite derinliği ve aralık konsantrasyonu teminat muamelesini şekillendirir. Borçlanma gücü, volatilite, likidite kalitesi ve stres varsayımları için havuz düzeyinde ayarlamalarla pozisyonun daha zayıf yönlerine sabitlenir."
           ]
         },
         {
           "id": "health-and-liquidation",
-          "title": "Health and liquidation",
+          "title": "Sağlık ve likidasyon",
           "paragraphs": [
-            "The third layer is health monitoring. LP positions remain active after they are posted as collateral, so risk does not freeze once a loan opens. Value changes with price moves, fee generation, range migration, and shifts in pool quality. Avana runs continuous per position health assessment rather than relying on occasional snapshots. Health factor is the live signal of whether the collateral model still holds for that loan.",
-            "Liquidation is where the assumptions get tested. LP collateral cannot be liquidated like a normal token. Avana's approach is to collect fees embedded in the position before destroying principal where possible, remove only enough liquidity to repair the loan, and route the unwind through execution paths that favor deterministic settlement. Smart Agents provide the execution infrastructure: monitoring positions, reconciling data, simulating execution, and unwinding under adverse conditions. They are part of Avana's safety system, not an afterthought bolted on later."
+            "Üçüncü katman sağlık izlemesidir. LP pozisyonları teminat olarak gönderildikten sonra aktif kalır, bu yüzden risk bir kredi açıldığında donmaz. Değer fiyat hareketleri, ücret üretimi, aralık göçü ve havuz kalitesindeki değişimlerle değişir. Avana, ara sıra anlık görüntülere güvenmek yerine pozisyon başına sürekli sağlık değerlendirmesi yapar. Health factor, teminat modelinin o kredi için hâlâ geçerli olup olmadığının canlı sinyalidir.",
+            "Likidasyon, varsayımların test edildiği yerdir. LP teminatı normal bir token gibi likide edilemez. Avana'nın yaklaşımı, mümkün olduğunda anaparayı yok etmeden önce pozisyona gömülü ücretleri toplamak, krediyi onarmak için yalnızca yeterli likiditeyi kaldırmak ve unwind'ı deterministik uzlaşmayı tercih eden yürütme yollarından geçirmektir. Smart Agents yürütme altyapısını sağlar: pozisyonları izlemek, verileri uzlaştırmak, yürütmeyi simüle etmek ve olumsuz koşullarda unwind yapmak. Bunlar sonradan eklenen bir düşünce değil, Avana'nın güvenlik sisteminin parçasıdır."
           ]
         },
         {
           "id": "operations",
-          "title": "Operations and change control",
+          "title": "Operasyonlar ve değişiklik kontrolü",
           "paragraphs": [
-            "The operational layer assumes governance and risk configuration need the same discipline as collateral treatment. Risk parameters change through structured process. Sensitive changes sit behind timelocks and review. Emergency controls exist for genuinely adverse conditions. Monitoring extends beyond individual positions to whole market categories. A protocol that supports LP collateral cannot rely on static configuration alone.",
-            "LP collateral is viable on Avana only if security is treated as a system. Architecture isolates risk. Oracles validate reality. Valuation turns complexity into conservative borrowing power. Health checks monitor drift. Liquidation restores solvency with as much precision as the venue allows. Operational controls govern how the framework evolves. None of those layers is enough by itself."
+            "Operasyonel katman, yönetişim ve risk yapılandırmasının teminat muamelesiyle aynı disipline ihtiyaç duyduğunu varsayar. Risk parametreleri yapılandırılmış süreçle değişir. Hassas değişiklikler timelock ve incelemenin arkasındadır. Acil kontroller gerçekten olumsuz koşullar içindir. İzleme bireysel pozisyonların ötesine tüm piyasa kategorilerine uzanır. LP teminatını destekleyen bir protokol yalnızca statik yapılandırmaya güvenemez.",
+            "LP teminatı, güvenlik bir sistem olarak ele alındığında yalnızca Avana'da uygulanabilir. Mimari riski izole eder. Oracle'lar gerçekliği doğrular. Değerleme karmaşıklığı muhafazakâr borçlanma gücüne dönüştürür. Sağlık kontrolleri sürüklenmeyi izler. Likidasyon, venue'nun izin verdiği ölçüde ödeme gücünü geri kazandırır. Operasyonel kontroller çerçevenin nasıl evrildiğini yönetir. Bu katmanların hiçbiri tek başına yeterli değildir."
           ]
         }
       ]
@@ -206,37 +206,37 @@
       "date": "July 13, 2026",
       "description": "LP’lerin havuzdan tamamen çıkmadan Avana ile buffer, yönlü offset ve daha disiplinli hedge alışkanlıklarını nasıl finanse edebileceği.",
       "image": "/images/blog/hedge-lp-position.png",
-      "category": "For LPs",
+      "category": "LP'ler için",
       "tag": "Rehberler",
       "sections": [
         {
           "id": "more-than-fees",
-          "title": "More than fees",
+          "title": "Ücretlerden fazlası",
           "paragraphs": [
-            "An LP position is never only about fees. Price divergence, impermanent loss, range drift, and collateral pressure can all hit the same book at once. Impermanent loss is what happens when the pool's asset mix shifts and the LP ends up worth less than holding the tokens separately. Once a supported position can back borrowing through Avana on Aave v4, borrowed capital can fund protection rather than only leverage. A position that would otherwise need to be fully withdrawn can stay active while the borrowed capital is used to reduce stress or balance exposure."
+            "Bir LP pozisyonu asla yalnızca ücretlerle ilgili değildir. Fiyat ayrışması, impermanent loss, aralık sürüklenmesi ve teminat baskısı aynı anda aynı deftere vurabilir. Impermanent loss, havuzun varlık karışımı değiştiğinde ve LP'nin tokenları ayrı tutmaktan daha az değerli hale geldiğinde olur. Desteklenen bir pozisyon Aave v4'te Avana aracılığıyla borçlanmayı destekleyebildiğinde, borçlanılan sermaye yalnızca kaldıraç değil koruma için de kullanılabilir. Aksi halde tamamen çekilmesi gereken bir pozisyon, borçlanılan sermaye stresi azaltmak veya maruziyeti dengelemek için kullanılırken aktif kalabilir."
           ]
         },
         {
           "id": "buffers-and-offsets",
-          "title": "Buffers and directional offsets",
+          "title": "Tamponlar ve yönsel dengelemeler",
           "paragraphs": [
-            "The simplest hedge is often the most practical: a stablecoin buffer. Borrow conservatively on Avana and keep part of the proceeds in stables. If health starts to compress or volatility picks up, that liquidity can repay debt or reduce stress without forcing a reactive sale of the LP. This is not primarily about return enhancement. It is about buying time and preserving control, which on its own can matter a lot.",
-            "A second form is directional offset. If the LP already carries clear exposure to one volatile asset, borrowed capital can reduce net directional risk instead of increasing it. Methods vary with user sophistication, but the principle is straightforward. If the LP already embeds market exposure, borrowing can balance that exposure. Hedging works best as risk narrowing, not as a second speculative trade sitting next to the first one."
+            "En basit hedge genellikle en pratik olandır: bir stablecoin tamponu. Avana'da muhafazakâr borçlanın ve gelirin bir kısmını stable'da tutun. Sağlık sıkışmaya başlarsa veya volatilite artarsa, bu likidite LP'nin reaktif satışını zorlamadan borcu geri ödeyebilir veya stresi azaltabilir. Bu öncelikle getiri artırımıyla ilgili değildir. Zaman kazanmak ve kontrolü korumakla ilgilidir; bu tek başına çok önemli olabilir.",
+            "İkinci bir biçim yönsel dengelemedir. LP zaten tek bir oynak varlığa net maruziyet taşıyorsa, borçlanılan sermaye bunu artırmak yerine net yönsel riski azaltabilir. Yöntemler kullanıcı deneyimine göre değişir, ancak ilke basittir. LP zaten piyasa maruziyetini içeriyorsa borçlanma bu maruziyeti dengeleyebilir. Hedge, ilk spekülatif işlemin yanında duran ikinci bir spekülatif işlem olarak değil, risk daraltma olarak en iyi çalışır."
           ]
         },
         {
           "id": "more-advanced-options",
-          "title": "Neutrality and softer hedges",
+          "title": "Nötrlük ve daha yumuşak hedge'ler",
           "paragraphs": [
-            "A more advanced approach is to think in terms of neutrality: reducing directional sensitivity and leaning on fee income. That kind of structure can be more stable, but it requires active monitoring and rebalancing. LP positions evolve as markets move, so a neutral setup has to be maintained, not declared once. For larger positions, protective downside structures can define worst case scenarios instead of only reacting to them, though they introduce their own costs and timing decisions.",
-            "A softer hedge that is often overlooked is reallocating marginal exposure rather than touching the core LP. In practice that means shifting incremental capital toward more defensive pools or stable deployments when conditions deteriorate, without fully unwinding the original position. Avana helps by keeping the core LP available as collateral so every liquidity need does not become an all or nothing exit."
+            "Daha gelişmiş bir yaklaşım, nötrlük açısından düşünmektir: yönsel duyarlılığı azaltmak ve ücret gelirine dayanmak. Bu tür bir yapı daha istikrarlı olabilir, ancak aktif izleme ve yeniden dengeleme gerektirir. LP pozisyonları piyasalar hareket ettikçe evrilir, bu yüzden nötr bir kurulum bir kez ilan edilmez, sürdürülmelidir. Daha büyük pozisyonlar için koruyucu aşağı yönlü yapılar, yalnızca onlara tepki vermek yerine en kötü senaryoları tanımlayabilir, ancak kendi maliyetlerini ve zamanlama kararlarını getirirler.",
+            "Genellikle gözden kaçan daha yumuşak bir hedge, çekirdek LP'ye dokunmak yerine marjinal maruziyeti yeniden tahsis etmektir. Pratikte bu, koşullar kötüleştiğinde orijinal pozisyonu tamamen çözmeden artımlı sermayeyi daha savunmacı havuzlara veya stabil dağıtımlara kaydırmak anlamına gelir. Avana, çekirdek LP'yi teminat olarak kullanılabilir tutarak her likidite ihtiyacının hep ya hep çıkışına dönüşmemesine yardımcı olur."
           ]
         },
         {
           "id": "practical-rules",
-          "title": "Practical rules that travel well",
+          "title": "Her yerde işe yarayan pratik kurallar",
           "paragraphs": [
-            "Across approaches, a few habits travel well on Avana. Borrow conservatively. Keep a real buffer. Assume conditions can worsen faster than expected. Treat maximum borrowing capacity as a boundary rather than a target. Use monitoring with predefined de risking rules instead of relying on constant manual reaction. If a hedge strategy becomes so complicated that you no longer understand what is being hedged and what is being added, it has gone too far."
+            "Yaklaşımlar arasında Avana'da iyi işleyen birkaç alışkanlık vardır. Muhafazakâr borçlanın. Gerçek bir tampon tutun. Koşulların beklenenden daha hızlı kötüleşebileceğini varsayın. Maksimum borçlanma kapasitesini hedef değil sınır olarak görün. Sürekli manuel tepkiye güvenmek yerine önceden tanımlanmış risk azaltma kurallarıyla izleme kullanın. Bir hedge stratejisi o kadar karmaşık hale gelirse ki neyin hedge edildiğini ve neyin eklendiğini artık anlamıyorsanız, çok ileri gitmişsiniz demektir."
           ]
         }
       ]
@@ -247,37 +247,37 @@
       "date": "July 10, 2026",
       "description": "Avana LP teminatıyla yield looping’e nasıl bakmalı: buffer’lar, stres testleri, çıkış disiplini ve sürdürülebilir kaldıraç.",
       "image": "/images/blog/yield-looping-playbook.png",
-      "category": "For LPs",
+      "category": "LP'ler için",
       "tag": "Rehberler",
       "sections": [
         {
           "id": "what-looping-means",
-          "title": "What looping means on Avana",
+          "title": "Avana'da looping ne anlama gelir",
           "paragraphs": [
-            "Yield looping means holding an LP position, borrowing against it, and redeploying the borrowed capital into another yield producing strategy, or in some cases back into liquidity itself. Avana on Aave v4 makes that collateral step possible for supported LP markets. The attraction is obvious: looping can increase effective exposure and amplify fee generation. The danger is equally obvious: it can compress safety margins, raise liquidation sensitivity, and make a position much more fragile when conditions shift. The real objective should be sustainable amplification, not maximum leverage on day one."
+            "Yield looping, bir LP pozisyonu tutmak, ona karşı borçlanmak ve borçlanılan sermayeyi başka bir getiri üreten stratejiye veya bazı durumlarda likiditenin kendisine yeniden dağıtmak anlamına gelir. Aave v4'te Avana, desteklenen LP piyasaları için bu teminat adımını mümkün kılar. Çekicilik açıktır: looping etkin maruziyeti artırabilir ve ücret üretimini güçlendirebilir. Tehlike de aynı derecede açıktır: güvenlik marjlarını sıkıştırabilir, likidasyon duyarlılığını artırabilir ve koşullar değiştiğinde pozisyonu çok daha kırılgan hale getirebilir. Gerçek hedef, ilk günden maksimum kaldıraç değil, sürdürülebilir amplifikasyon olmalıdır."
           ]
         },
         {
           "id": "keeping-the-first-loop-modest",
-          "title": "Keeping the first loop modest",
+          "title": "İlk döngüyü mütevazı tutun",
           "paragraphs": [
-            "The safest form of looping is modest. Borrow a relatively small amount against a supported Avana LP position and redeploy into a second yield source without pushing near the borrowing limit. That is a controlled extension of the original position, not a recursive bet that conditions stay perfect. For many users, especially early on, that is the right starting point. You still get better capital use, but you leave room if the LP mark, fee income, or borrow rate moves against you.",
-            "More advanced versions redeploy borrowed capital back into liquidity. That can increase fee generation in favorable environments, but it also makes the structure more reflexive. You become exposed to a layered book where price movement, collateral quality, and debt safety interact more aggressively. Leverage does not only amplify returns. It also amplifies the speed at which a healthy Avana position can become a stressed one."
+            "Looping'in en güvenli biçimi mütevazıdır. Desteklenen bir Avana LP pozisyonuna karşı nispeten küçük bir miktar borçlanın ve borçlanma limitine yaklaşmadan ikinci bir getiri kaynağına yeniden dağıtın. Bu, koşulların mükemmel kalacağına dair özyinelemeli bir bahis değil, orijinal pozisyonun kontrollü bir uzantısıdır. Birçok kullanıcı için, özellikle başlangıçta, bu doğru başlangıç noktasıdır. Hâlâ daha iyi sermaye kullanımı elde edersiniz, ancak LP işareti, ücret geliri veya borçlanma oranı aleyhinize hareket ederse alan bırakırsınız.",
+            "Daha gelişmiş sürümler borçlanılan sermayeyi tekrar likiditeye dağıtır. Bu elverişli ortamlarda ücret üretimini artırabilir, ancak yapıyı daha refleksif hale getirir. Fiyat hareketi, teminat kalitesi ve borç güvenliğinin daha agresif etkileşime girdiği katmanlı bir deftere maruz kalırsınız. Kaldıraç yalnızca getirileri güçlendirmez. Sağlıklı bir Avana pozisyonunun stresli hale gelme hızını da güçlendirir."
           ]
         },
         {
           "id": "stress-and-exit",
-          "title": "Stress testing and exit discipline",
+          "title": "Stres testi ve çıkış disiplini",
           "paragraphs": [
-            "Stress testing is essential. Any serious looping approach should be evaluated under adverse conditions. What happens if one side of the pair moves sharply, if trading volume weakens, if borrow costs rise, or if collateral quality deteriorates faster than expected. A structure that looks attractive when fees are high and volatility is calm can look uncomfortable once those conditions reverse. If the only favorable scenario is a calm fee month, the thinking is not finished.",
-            "Exit discipline matters as much as entry. Many poor leverage decisions are not created by the first borrow. They are created by having no plan for reducing risk. If volatility rises, health buffers compress, or the economics weaken, exposure should be reduced in stages rather than defended blindly. Avana Automate can help with fee harvesting, debt reduction, and rule based de risking, but automation only helps if the underlying rules are honest. A looped strategy is only as strong as the assumptions behind it."
+            "Stres testi şarttır. Ciddi bir looping yaklaşımı olumsuz koşullar altında değerlendirilmelidir. Çiftin bir tarafı keskin hareket ederse, işlem hacmi zayıflarsa, borçlanma maliyetleri artarsa veya teminat kalitesi beklenenden hızlı bozulursa ne olur? Ücretler yüksek ve volatilite sakin olduğunda çekici görünen bir yapı, bu koşullar tersine döndüğünde rahatsız edici görünebilir. Tek olumlu senaryo sakin bir ücret ayıysa, düşünce tamamlanmamış demektir.",
+            "Çıkış disiplini giriş kadar önemlidir. Birçok kötü kaldıraç kararı ilk borçlanmayla oluşmaz. Riski azaltma planı olmamasıyla oluşur. Volatilite artarsa, sağlık tamponları sıkışırsa veya ekonomi zayıflarsa, maruziyet körü körüne savunulmak yerine aşamalı olarak azaltılmalıdır. Avana Automate ücret toplama, borç azaltma ve kural tabanlı risk azaltmada yardımcı olabilir, ancak otomasyon yalnızca temel kurallar dürüstse işe yarar. Döngülü bir strateji, arkasındaki varsayımlar kadar güçlüdür."
           ]
         },
         {
           "id": "balance-sheet-not-magic",
-          "title": "Balance sheet design, not free yield",
+          "title": "Bilanço tasarımı, bedava getiri değil",
           "paragraphs": [
-            "Yield looping is a capital structure decision, not a shortcut to free yield. Used carefully on Avana, it lets productive onchain liquidity support a broader set of returns without forcing the original position to be fully unwound. Used carelessly, it turns a healthy LP position into a fragile one. The difference is usually discipline, buffer management, and a willingness to treat leverage as something to control rather than something to maximize."
+            "Yield looping bir sermaye yapısı kararıdır, bedava getiriye kısayol değildir. Avana'da dikkatli kullanıldığında, üretken onchain likiditenin orijinal pozisyonu tamamen çözmeden daha geniş bir getiri setini desteklemesini sağlar. Dikkatsiz kullanıldığında sağlıklı bir LP pozisyonunu kırılgan hale getirir. Fark genellikle disiplin, tampon yönetimi ve kaldıraçı maksimize edilecek bir şey değil kontrol edilecek bir şey olarak görme isteğidir."
           ]
         }
       ]
@@ -288,37 +288,37 @@
       "date": "July 8, 2026",
       "description": "Avana LP teminatının borçlanma, hedge, hazine esnekliği ve daha sermaye verimli kullanımda neleri mümkün kıldığı.",
       "image": "/images/blog/unleashing-lp-tokens.png",
-      "category": "For LPs",
+      "category": "LP'ler için",
       "tag": "Rehberler",
       "sections": [
         {
           "id": "from-trapped-to-usable",
-          "title": "From trapped capital to usable capital",
+          "title": "Hapsolmuş sermayeden kullanılabilir sermayeye",
           "paragraphs": [
-            "LP positions have traditionally been productive but inflexible. They earn trading fees and support market depth, but if you want liquidity from that position, the usual path is to unwind it: break the position apart, interrupt fee generation, and turn a productive asset into idle balances. LP collateral changes that. Through Avana on Aave v4, supported LP positions can stay active in the underlying AMM while also supporting borrowing."
+            "LP pozisyonları geleneksel olarak üretken ama esnek değildi. İşlem ücretleri kazanır ve piyasa derinliğini destekler, ancak o pozisyondan likidite istiyorsanız olağan yol onu çözmektir: pozisyonu parçalamak, ücret üretimini kesmek ve üretken bir varlığı boşta bakiyelere dönüştürmek. LP teminatı bunu değiştirir. Aave v4'te Avana aracılığıyla desteklenen LP pozisyonları, borçlanmayı da desteklerken altta yatan AMM'de aktif kalabilir."
           ]
         },
         {
           "id": "simple-and-yield-use",
-          "title": "Conservative liquidity and second yield paths",
+          "title": "Muhafazakâr likidite ve ikinci getiri yolları",
           "paragraphs": [
-            "The most conservative use case is straightforward. You borrow stable assets against a supported Avana LP position and use that liquidity for working capital, reserve management, or lower volatility yield while the LP stays active and keeps earning fees. The main value here is not leverage for its own sake. It is access to cash without forcing a full exit from the original position.",
-            "Borrowed stables can also go into conservative onchain yield, such as stable oriented lending, reserve management, or other lower volatility opportunities. The LP keeps generating fees while borrowed capital follows a separate path. That is not yield stacking out of thin air. It is a more efficient use of capital that would otherwise require unwinding the position first."
+            "En muhafazakâr kullanım durumu basittir. Desteklenen bir Avana LP pozisyonuna karşı stabil varlıklar borçlanır ve LP aktif kalıp ücret kazanmaya devam ederken bu likiditeyi işletme sermayesi, rezerv yönetimi veya daha düşük volatiliteli getiri için kullanırsınız. Buradaki asıl değer kendi başına kaldıraç değildir. Orijinal pozisyondan tam çıkış yapmadan nakde erişmektir.",
+            "Borçlanılan stable'lar ayrıca stabil odaklı kredi, rezerv yönetimi veya diğer daha düşük volatiliteli fırsatlar gibi muhafazakâr onchain getiriye de gidebilir. LP ücret üretmeye devam ederken borçlanılan sermaye ayrı bir yol izler. Bu havada getiri istiflemesi değildir. Aksi halde önce pozisyonu çözmeyi gerektirecek sermayenin daha verimli kullanımıdır."
           ]
         },
         {
           "id": "hedge-and-active",
-          "title": "Hedging and more active strategies",
+          "title": "Hedge ve daha aktif stratejiler",
           "paragraphs": [
-            "Hedging is another category. LP positions expose users to changing asset composition and impermanent loss, especially in pools where one side is more volatile. Credit against LP collateral on Avana can create room to manage that exposure: reduce directional concentration, improve liquidity planning, or build a more balanced portfolio around an existing position.",
-            "More active strategies redeploy borrowed capital back into liquidity, increasing market exposure and fee generation. That can work, but you are now managing a recursive structure whose risk changes quickly with market conditions. Once borrowed assets are recycled into additional LP exposure, discipline becomes more important than ambition. Avana opens the option set. Health, borrow limits, and liquidation rules still decide what is sane for a given pool."
+            "Hedge başka bir kategoridir. LP pozisyonları, özellikle bir tarafın daha oynak olduğu havuzlarda, kullanıcıları değişen varlık bileşimine ve impermanent loss'a maruz bırakır. Avana'da LP teminatına karşı kredi, bu maruziyeti yönetmek için alan yaratabilir: yönsel konsantrasyonu azaltmak, likidite planlamasını iyileştirmek veya mevcut bir pozisyon etrafında daha dengeli bir portföy oluşturmak.",
+            "Daha aktif stratejiler borçlanılan sermayeyi tekrar likiditeye dağıtarak piyasa maruziyetini ve ücret üretimini artırır. Bu işe yarayabilir, ancak artık riski piyasa koşullarıyla hızla değişen özyinelemeli bir yapıyı yönetiyorsunuz. Borçlanılan varlıklar ek LP maruziyetine geri dönüştürüldüğünde, hırs yerine disiplin daha önemli hale gelir. Avana seçenek setini açar. Sağlık, borçlanma limitleri ve likidasyon kuralları belirli bir havuz için neyin mantıklı olduğuna hâlâ karar verir."
           ]
         },
         {
           "id": "what-changes",
-          "title": "What changes for LPs",
+          "title": "LP'ler için ne değişir",
           "paragraphs": [
-            "LP collateral turns liquidity provision from a relatively isolated yield activity into something more connected to broader DeFi capital use. A position that used to be productive only inside its pool can support borrowing, liquidity planning, and portfolio design without first being dismantled. The right use still depends on your risk tolerance and your understanding of how LP value, borrowing capacity, and liquidation thresholds interact on Avana."
+            "LP teminatı, likidite sağlamayı nispeten izole bir getiri faaliyetinden daha geniş DeFi sermaye kullanımına bağlı bir şeye dönüştürür. Eskiden yalnızca kendi havuzunda üretken olan bir pozisyon, önce parçalanmadan borçlanmayı, likidite planlamasını ve portföy tasarımını destekleyebilir. Doğru kullanım hâlâ risk toleransınıza ve Avana'da LP değeri, borçlanma kapasitesi ve likidasyon eşiklerinin nasıl etkileştiğine dair anlayışınıza bağlıdır."
           ]
         }
       ]
@@ -329,37 +329,37 @@
       "date": "July 6, 2026",
       "description": "Avana’nın Base’deki Aerodrome LP pozisyonlarını aktif tutarak özel bir piyasa üzerinden borçlanmayı nasıl desteklediği.",
       "image": "/images/blog/aerodrome-lp-collateral.png",
-      "category": "Developers",
+      "category": "Geliştiriciler",
       "tag": "Protokol",
       "sections": [
         {
           "id": "aerodrome-on-avana",
-          "title": "Aerodrome liquidity on Avana",
+          "title": "Avana'da Aerodrome likiditesi",
           "paragraphs": [
-            "Aerodrome LP positions sit at the center of onchain activity on Base, where liquidity supports trading fees, token distribution, and ecosystem depth. As collateral, those positions need evaluation by pool structure, asset quality, liquidity depth, and stress behavior, not by headline TVL or fee generation alone. Avana is built to support this kind of collateral on Aave v4 with market specific rules rather than a venue wide blanket."
+            "Aerodrome LP pozisyonları Base'deki onchain aktivitenin merkezinde oturur; likidite işlem ücretlerini, token dağıtımını ve ekosistem derinliğini destekler. Teminat olarak bu pozisyonların başlık TVL veya ücret üretimiyle değil, havuz yapısı, varlık kalitesi, likidite derinliği ve stres davranışına göre değerlendirilmesi gerekir. Avana, venue genelinde tek tip bir yaklaşım yerine piyasaya özgü kurallarla Aave v4'te bu tür teminatı desteklemek için inşa edilmiştir."
           ]
         },
         {
           "id": "hub-spoke-and-pool-quality",
-          "title": "Hub, spoke, and pool quality",
+          "title": "Hub, spoke ve havuz kalitesi",
           "paragraphs": [
-            "Aave v4's hub and spoke architecture is what makes the product shape work. The hub manages shared liquidity. The Avana spoke handles Aerodrome specific collateral logic. A stable pool on Base should not be treated the same as a volatile ecosystem pair just because both are Aerodrome LPs. The spoke defines how different categories of Aerodrome liquidity are valued, how much borrowing power they support, and how liquidation works if a position becomes unsafe.",
-            "Aerodrome pools vary widely. Some involve established assets with stronger liquidity. Others center on faster moving ecosystem tokens with higher volatility and thinner depth. Positions that look similar on the surface can behave very differently as collateral. Avana's spoke model assigns treatment by pool structure and quality, not by venue name alone."
+            "Aave v4'ün hub-and-spoke mimarisi ürün şeklinin çalışmasını sağlar. Hub paylaşılan likiditeyi yönetir. Avana spoke Aerodrome'a özgü teminat mantığını işler. Base'deki stabil bir havuz, ikisi de Aerodrome LP olduğu için oynak bir ekosistem çiftiyle aynı muameleyi görmemelidir. Spoke, farklı Aerodrome likidite kategorilerinin nasıl değerlendirildiğini, ne kadar borçlanma gücü desteklediklerini ve bir pozisyon güvensiz hale gelirse likidasyonun nasıl çalıştığını tanımlar.",
+            "Aerodrome havuzları büyük ölçüde farklılık gösterir. Bazıları daha güçlü likiditeye sahip yerleşik varlıkları içerir. Diğerleri daha yüksek volatilite ve daha ince derinliğe sahip daha hızlı hareket eden ekosistem tokenlarına odaklanır. Yüzeyde benzer görünen pozisyonlar teminat olarak çok farklı davranabilir. Avana'nın spoke modeli, yalnızca venue adına göre değil, havuz yapısı ve kalitesine göre muamele atar."
           ]
         },
         {
           "id": "valuation-and-borrow",
-          "title": "Valuation and the borrow flow",
+          "title": "Değerleme ve borçlanma akışı",
           "paragraphs": [
-            "An Aerodrome LP is not a single price token. It is a claim on underlying pool assets whose composition and quality matter directly. Avana judges collateral value conservatively, factoring in liquidity quality, volatility, asset correlation, and how the pool behaves if the market turns. A position may have substantial notional value, but borrowing power reflects what can be recovered under stress.",
-            "The borrowing flow is concrete. You supply a supported Aerodrome LP through the Avana spoke, where it stays active and earns fees. The spoke evaluates the position using pool specific collateral logic. Based on that, you can borrow supported assets from hub liquidity. Stable and blue chip style pools may support stronger collateral treatment. Volatile or thinner pairs get tighter limits and lower factors."
+            "Bir Aerodrome LP tek fiyatlı bir token değildir. Bileşimi ve kalitesi doğrudan önemli olan altta yatan havuz varlıklarına bir hak talebidir. Avana, likidite kalitesi, volatilite, varlık korelasyonu ve piyasa dönerse havuzun nasıl davrandığını dikkate alarak teminat değerini muhafazakâr şekilde değerlendirir. Bir pozisyon önemli nominal değere sahip olabilir, ancak borçlanma gücü stres altında kurtarılabilecekleri yansıtır.",
+            "Borçlanma akışı somuttur. Avana spoke aracılığıyla desteklenen bir Aerodrome LP sağlarsınız; burada aktif kalır ve ücret kazanır. Spoke, havuza özgü teminat mantığıyla pozisyonu değerlendirir. Buna dayanarak hub likiditesinden desteklenen varlıklar borçlanabilirsiniz. Stabil ve blue chip tarzı havuzlar daha güçlü teminat muamelesini destekleyebilir. Oynak veya daha ince çiftler daha sıkı limitler ve daha düşük faktörler alır."
           ]
         },
         {
           "id": "if-health-breaks",
-          "title": "If health breaks",
+          "title": "Sağlık bozulursa",
           "paragraphs": [
-            "If a position becomes unsafe, Avana unwinds the active liquidity position, accounts for the underlyings, and restores solvency with as little disruption as the market allows. The pool's structure determines how liquidation works. That is another reason Aerodrome collateral belongs in a dedicated spoke rather than as a loose extension of a broader lending market."
+            "Bir pozisyon güvensiz hale gelirse Avana aktif likidite pozisyonunu çözer, altta yatan varlıkları hesaba katar ve piyasanın izin verdiği ölçüde en az rahatsızlıkla ödeme gücünü geri kazandırır. Havuzun yapısı likidasyonun nasıl çalıştığını belirler. Bu, Aerodrome teminatının daha geniş bir kredi piyasasının gevşek bir uzantısı olarak değil, özel bir spoke'ta olması gerektiğinin bir başka nedenidir."
           ]
         }
       ]
@@ -370,37 +370,37 @@
       "date": "July 3, 2026",
       "description": "Avana’nın stabil ve korele havuzlar için Curve LP teminatını Aave v4’te özel bir Spoke üzerinden nasıl ele aldığı.",
       "image": "/images/blog/curve-lp-collateral.png",
-      "category": "Developers",
+      "category": "Geliştiriciler",
       "tag": "Protokol",
       "sections": [
         {
           "id": "why-curve-matters",
-          "title": "Why Curve matters on Avana",
+          "title": "Avana'da Curve neden önemlidir",
           "paragraphs": [
-            "Curve LP positions often sit at the center of stablecoin markets and correlated asset trading, some of the deepest and lowest slippage pools onchain. That makes them attractive as collateral, but their structural behavior still needs specialized handling inside a lending system. Avana supports Curve LP collateral on Aave v4 through a dedicated spoke with its own collateral treatment, borrowing constraints, and liquidation rules shaped around Curve's market structure."
+            "Curve LP pozisyonları genellikle stablecoin piyasalarının ve korelasyonlu varlık ticaretinin merkezinde oturur; onchain'deki en derin ve en düşük slippage'lı havuzlardan bazılarıdır. Bu onları teminat olarak çekici kılar, ancak yapısal davranışları bir kredi sistemi içinde hâlâ özel işlem gerektirir. Avana, Curve'un piyasa yapısına göre şekillendirilmiş kendi teminat muamelesi, borçlanma kısıtlamaları ve likidasyon kurallarına sahip özel bir spoke aracılığıyla Aave v4'te Curve LP teminatını destekler."
           ]
         },
         {
           "id": "stable-is-not-riskless",
-          "title": "Stable looking is not riskless",
+          "title": "Stabil görünmek risksiz değildir",
           "paragraphs": [
-            "Curve pools are built around assets that trade with tighter relationships than standard volatile pairs. Stablecoin pools, liquid staking pools, and correlated asset pools can produce deeper and more stable liquidity profiles. Stable relationships can still break, correlations can weaken, and pools that appear conservative can behave badly under stress. Avana's collateral framework has to account for both the relative strength of Curve's pool design and the possibility that stress shows up exactly where users expect stability.",
-            "A Curve LP position is a claim on a pool of underlyings, not a simple token with a flat price. Avana determines what assets sit beneath the position, what they are worth, and how much of that value should count toward borrowing power. That last step is critical. Collateral value under a conservative lending framework gives real weight to pool composition, asset correlation, liquidity quality, and how the position would behave in a stressed state."
+            "Curve havuzları, standart volatil çiftlerden daha sıkı ilişkilerle işlem gören varlıklar etrafında inşa edilir. Stablecoin havuzları, liquid staking havuzları ve korele varlık havuzları daha derin ve daha istikrarlı likidite profilleri üretebilir. İstikrarlı ilişkiler yine de bozulabilir, korelasyonlar zayıflayabilir ve muhafazakâr görünen havuzlar stres altında kötü davranabilir. Avana'nın teminat çerçevesi hem Curve'un havuz tasarımının göreli gücünü hem de stresin tam kullanıcıların istikrar beklediği yerde ortaya çıkma olasılığını hesaba katmalıdır.",
+            "Bir Curve LP pozisyonu, sabit fiyatlı basit bir token değil, temel varlık havuzuna karşı bir hak talebidir. Avana, pozisyonun altında hangi varlıkların bulunduğunu, ne kadar değerli olduklarını ve bu değerin ne kadarının borçlanma gücüne sayılması gerektiğini belirler. Bu son adım kritiktir. Muhafazakâr bir kredi çerçevesinde teminat değeri; havuz bileşimi, varlık korelasyonu, likidite kalitesi ve pozisyonun stresli durumdaki davranışına gerçek ağırlık verir."
           ]
         },
         {
           "id": "users-and-flow",
-          "title": "Who uses it and how borrowing works",
+          "title": "Kim kullanır ve borçlanma nasıl işler",
           "paragraphs": [
-            "Many Curve positions are already used by sophisticated DeFi participants as core liquidity exposure. Stablecoin pools, liquid staking pairs, and correlated asset markets represent large amounts of economically important capital. If these positions can support borrowing without requiring withdrawal, that expands the usefulness of some of the most foundational liquidity in DeFi while leaving it in the pool.",
-            "The borrowing flow on Avana is supply a supported Curve LP through the spoke, where it stays active and earns fees. The spoke evaluates the position, and you can borrow supported assets from hub liquidity. Stablecoin pools may support one form of collateral treatment, correlated asset pools another, and pools with weaker liquidity or more fragile relationships get tighter constraints."
+            "Birçok Curve pozisyonu, sofistike DeFi katılımcıları tarafından temel likidite maruziyeti olarak zaten kullanılıyor. Stablecoin havuzları, liquid staking çiftleri ve korele varlık piyasaları, ekonomik açıdan önemli büyük miktarda sermayeyi temsil eder. Bu pozisyonlar çekim gerektirmeden borçlanmayı destekleyebilirse, DeFi'deki en temel likiditenin bir kısmının faydası havuzda kalırken genişler.",
+            "Avana'daki borçlanma akışı, desteklenen bir Curve LP'yi Spoke üzerinden sağlamaktır; burada aktif kalır ve ücret kazanır. Spoke pozisyonu değerlendirir ve Hub likiditesinden desteklenen varlıkları borçlanabilirsiniz. Stablecoin havuzları bir tür teminat muamelesi alabilir, korele varlık havuzları başka bir tür, daha zayıf likiditeye veya daha kırılgan ilişkilere sahip havuzlar ise daha sıkı kısıtlamalar alır."
           ]
         },
         {
           "id": "liquidation",
-          "title": "Liquidation follows the pool",
+          "title": "Likidasyon havuzu takip eder",
           "paragraphs": [
-            "If a Curve LP becomes unsafe, Avana unwinds only what is necessary to restore solvency where possible, respects the underlying pool structure, and minimizes disruption while repaying debt. Different pool types require different assumptions. That is the point of the spoke model, and it is how Avana can scale Curve family by family without one generic LP rule for every AMM."
+            "Bir Curve LP güvensiz hale gelirse, Avana mümkün olduğunca yalnızca ödeme gücünü geri kazanmak için gerekli olanı tasfiye eder, temel havuz yapısına saygı gösterir ve borcu öderken aksamayı en aza indirir. Farklı havuz türleri farklı varsayımlar gerektirir. Spoke modelinin amacı budur ve Avana'nın her AMM için tek bir genel LP kuralı olmadan Curve ailesini aile aile ölçeklendirmesinin yoludur."
           ]
         }
       ]
@@ -411,31 +411,31 @@
       "date": "July 1, 2026",
       "description": "Avana’nın Balancer weighted pool LP’lerini ekspozisyon aktif kalırken Aave v4 teminatı olarak nasıl desteklediği.",
       "image": "/images/blog/balancer-lp-collateral.png",
-      "category": "Developers",
+      "category": "Geliştiriciler",
       "tag": "Protokol",
       "sections": [
         {
           "id": "portfolio-style-lps",
-          "title": "Portfolio style LP collateral",
+          "title": "Portföy tarzı LP teminatı",
           "paragraphs": [
-            "A Balancer LP position is often a structured portfolio inside an AMM, with custom weights, diversified exposure, and liquidity that behaves differently from standard two asset pools. That makes Balancer LPs interesting as collateral, and also harder to support in a lending system built for simpler assets. Avana handles this through a dedicated spoke on Aave v4."
+            "Bir Balancer LP pozisyonu genellikle AMM içinde özel ağırlıklar, çeşitlendirilmiş maruziyet ve standart iki varlıklı havuzlardan farklı davranan likiditeye sahip yapılandırılmış bir portföydür. Bu, Balancer LP'leri teminat olarak ilginç kılar ve aynı zamanda daha basit varlıklar için inşa edilmiş bir kredi sisteminde desteklemeyi zorlaştırır. Avana bunu Aave v4 üzerindeki özel bir Spoke ile ele alır."
           ]
         },
         {
           "id": "weighted-variety",
-          "title": "Why weighted pools need market rules",
+          "title": "Ağırlıklı havuzlar neden piyasa kurallarına ihtiyaç duyar",
           "paragraphs": [
-            "Balancer pools are inherently varied. A stable style pool does not behave like an 80/20 weighted pool. A correlated asset basket does not behave like a broader index style composition. Even pools with similar total value can have materially different risk as collateral, depending on liquidity depth, asset concentration, volatility, and the relationship between underlyings. The Avana spoke defines how each weighted pool is valued, how borrowing capacity is constrained, and how liquidation works.",
-            "From a collateral perspective, a Balancer LP represents a portfolio rather than a simple asset pair. Its value depends on the underlyings, their relative weights, market pricing, and pool structure. Avana has to understand what sits underneath, how that composition behaves under stress, and what portion of the value translates into safe borrowing power."
+            "Balancer havuzları doğası gereği çeşitlidir. Stable tarzı bir havuz, 80/20 ağırlıklı bir havuz gibi davranmaz. Korele varlık sepeti, daha geniş bir endeks tarzı kompozisyon gibi davranmaz. Benzer toplam değere sahip havuzlar bile likidite derinliği, varlık yoğunlaşması, volatilite ve temel varlıklar arasındaki ilişkiye bağlı olarak teminat olarak önemli ölçüde farklı risk taşıyabilir. Avana Spoke, her ağırlıklı havuzun nasıl değerlendirileceğini, borçlanma kapasitesinin nasıl kısıtlanacağını ve likidasyonun nasıl çalışacağını tanımlar.",
+            "Teminat perspektifinden bir Balancer LP, basit bir varlık çifti yerine bir portföyü temsil eder. Değeri temel varlıklara, göreceli ağırlıklara, piyasa fiyatlamasına ve havuz yapısına bağlıdır. Avana, altta ne olduğunu, bu kompozisyonun stres altında nasıl davrandığını ve değerin hangi kısmının güvenli borçlanma gücüne dönüştüğünü anlamalıdır."
           ]
         },
         {
           "id": "borrow-and-unwind",
-          "title": "Borrowing and unwind",
+          "title": "Borçlanma ve tasfiye",
           "paragraphs": [
-            "Many Balancer pools express deliberate portfolio views: governance token pairs, weighted index allocations, stable and correlated baskets. If these positions become borrowable collateral on Avana, users do not have to choose between maintaining structured market exposure and accessing liquidity. The same pool position stays active, earns fees, and supports borrowing through Aave v4.",
-            "The flow is supply a supported Balancer LP through the Avana spoke, where the position remains active and earns fees. The spoke evaluates it using market specific collateral logic. Safer pool types support stronger treatment. Concentrated or volatile structures get more conservative assumptions. Market structure drives lending treatment, not venue branding alone.",
-            "If a position becomes unsafe, Avana cannot assume that unwinding a Balancer LP looks like unwinding a simpler two asset position. It has to account for actual pool structure, underlyings, and the execution path needed to restore solvency with minimal disruption. The collateral determines what safe liquidation looks like."
+            "Birçok Balancer havuzu kasıtlı portföy görüşlerini ifade eder: yönetişim token çiftleri, ağırlıklı endeks tahsisleri, stable ve korele sepetler. Bu pozisyonlar Avana'da borçlanılabilir teminat haline gelirse, kullanıcılar yapılandırılmış piyasa maruziyetini sürdürmek ile likiditeye erişmek arasında seçim yapmak zorunda kalmaz. Aynı havuz pozisyonu aktif kalır, ücret kazanır ve Aave v4 üzerinden borçlanmayı destekler.",
+            "Akış, Avana Spoke üzerinden desteklenen bir Balancer LP sağlamaktır; pozisyon aktif kalır ve ücret kazanır. Spoke, piyasaya özgü teminat mantığıyla değerlendirir. Daha güvenli havuz türleri daha güçlü muamele alır. Konsantre veya volatil yapılar daha muhafazakâr varsayımlar alır. Kredi muamelesini belirleyen piyasa yapısıdır, yalnızca venue markası değil.",
+            "Bir pozisyon güvensiz hale gelirse, Avana bir Balancer LP'nin tasfiyesinin daha basit bir iki varlıklı pozisyonun tasfiyesine benzediğini varsayamaz. Gerçek havuz yapısını, temel varlıkları ve aksamayı en aza indirerek ödeme gücünü geri kazanmak için gereken yürütme yolunu hesaba katmalıdır. Teminat, güvenli likidasyonun neye benzediğini belirler."
           ]
         }
       ]
@@ -446,31 +446,31 @@
       "date": "June 28, 2026",
       "description": "Avana’nın Uniswap LP pozisyonlarını havuzda ücret kazanmaya devam ederken Aave v4 teminatına nasıl dönüştürdüğü.",
       "image": "/images/blog/uniswap-lp-collateral.png",
-      "category": "Developers",
+      "category": "Geliştiriciler",
       "tag": "Protokol",
       "sections": [
         {
           "id": "uniswap-on-avana",
-          "title": "Uniswap liquidity on Avana",
+          "title": "Avana'da Uniswap likiditesi",
           "paragraphs": [
-            "Uniswap LP positions provide market depth, facilitate trading, and earn fees, but they have traditionally been hard to use inside lending systems without first being withdrawn or restructured. Avana is designed to change that on Aave v4. The hub manages shared liquidity. The Avana spoke is a dedicated market for LP backed borrowing, including Uniswap concentrated liquidity. The spoke defines how collateral is evaluated, how borrowing power is assigned, and how risk is handled at position level."
+            "Uniswap LP pozisyonları piyasa derinliği sağlar, işlemleri kolaylaştırır ve ücret kazanır, ancak geleneksel olarak önce çekilmeden veya yeniden yapılandırılmadan kredi sistemleri içinde kullanılması zordu. Avana, Aave v4 üzerinde bunu değiştirmek için tasarlandı. Hub paylaşılan likiditeyi yönetir. Avana Spoke, Uniswap konsantre likiditesi dahil LP destekli borçlanma için özel bir piyasadır. Spoke, teminatın nasıl değerlendirileceğini, borçlanma gücünün nasıl atanacağını ve riskin pozisyon düzeyinde nasıl ele alınacağını tanımlar."
           ]
         },
         {
           "id": "why-cl-is-hard",
-          "title": "Why concentrated ranges are hard collateral",
+          "title": "Konsantre aralıklar neden zor teminattır",
           "paragraphs": [
-            "Uniswap concentrated liquidity positions are not simple fungible tokens. Value depends on the current price of the underlyings, the amount of liquidity provided, the selected price range, and fees accrued over time. A position can be active and earning, or it can move out of range and behave very differently. Avana has to understand position composition in real time and evaluate what it is worth as collateral under changing conditions, not only as a notional paper value.",
-            "Valuation sits at the center. Avana determines what underlyings the position currently represents, applies reliable pricing, and translates that into borrowing capacity through a conservative collateral framework. The important question is not pure paper value. It is collateral value inside a live lending system. Concentrated positions can become nonlinear as price moves through or beyond the active range, which requires deliberate risk treatment."
+            "Uniswap konsantre likidite pozisyonları basit değiştirilebilir tokenlar değildir. Değer, temel varlıkların güncel fiyatına, sağlanan likidite miktarına, seçilen fiyat aralığına ve zaman içinde biriken ücretlere bağlıdır. Bir pozisyon aktif olabilir ve kazanç sağlayabilir veya aralık dışına çıkabilir ve çok farklı davranabilir. Avana, pozisyon kompozisyonunu gerçek zamanlı anlamalı ve yalnızca nominal defter değeri olarak değil, değişen koşullar altında teminat olarak ne kadar değerli olduğunu değerlendirmelidir.",
+            "Değerleme merkezdedir. Avana, pozisyonun şu anda neyi temsil ettiğini belirler, güvenilir fiyatlandırma uygular ve bunu muhafazakâr bir teminat çerçevesi aracılığıyla borçlanma kapasitesine dönüştürür. Önemli sorun saf defter değeri değildir. Canlı bir kredi sistemindeki teminat değeridir. Konsantre pozisyonlar, fiyat aktif aralıktan geçerken veya ötesine giderken doğrusal olmayan hale gelebilir; bu da kasıtlı risk muamelesi gerektirir."
           ]
         },
         {
           "id": "borrow-monitor-liquidate",
-          "title": "Borrow, monitor, liquidate",
+          "title": "Borçlan, izle, likide et",
           "paragraphs": [
-            "The borrowing flow is supply a supported Uniswap LP through the Avana spoke. The position stays in the AMM and keeps earning fees. The spoke evaluates collateral and applies risk logic. You borrow supported assets from hub liquidity. Collateralizing the position does not turn it off. Liquidity stays deployed, market exposure stays intact, and fees keep accruing.",
-            "Because LP positions are live and changing, Avana monitors health continuously. As prices move, fees accumulate, and the position structure shifts, borrowing safety shifts with them. A healthy position today may be less healthy tomorrow even if the user has not touched anything.",
-            "If a position becomes too risky, liquidation must unwind part of an active AMM position, account for underlyings, and restore solvency with as little disruption as practical. The collateral's market structure determines the liquidation structure. That is one of the main reasons Uniswap LP collateral belongs in a dedicated Avana spoke rather than a generalized collateral bucket."
+            "Borçlanma akışı, Avana Spoke üzerinden desteklenen bir Uniswap LP sağlamaktır. Pozisyon AMM'de kalır ve ücret kazanmaya devam eder. Spoke teminatı değerlendirir ve risk mantığını uygular. Hub likiditesinden desteklenen varlıkları borçlanırsınız. Pozisyonu teminat göstermek onu kapatmaz. Likidite dağıtılmış kalır, piyasa maruziyeti korunur ve ücretler birikmeye devam eder.",
+            "LP pozisyonları canlı ve değişken olduğundan, Avana sağlığı sürekli izler. Fiyatlar hareket ettikçe, ücretler biriktikçe ve pozisyon yapısı değiştikçe borçlanma güvenliği de onlarla birlikte değişir. Kullanıcı hiçbir şeye dokunmamış olsa bile, bugün sağlıklı bir pozisyon yarın daha az sağlıklı olabilir.",
+            "Bir pozisyon çok riskli hale gelirse, likidasyon aktif bir AMM pozisyonunun bir kısmını tasfiye etmeli, temel varlıkları hesaba katmalı ve pratik olduğu ölçüde aksamayı en aza indirerek ödeme gücünü geri kazanmalıdır. Teminatın piyasa yapısı likidasyon yapısını belirler. Bu, Uniswap LP teminatının genel bir teminat kovası yerine özel bir Avana Spoke'a ait olmasının başlıca nedenlerinden biridir."
           ]
         }
       ]
@@ -486,26 +486,26 @@
       "sections": [
         {
           "id": "power-is-not-enough",
-          "title": "Power is not enough",
+          "title": "Güç yeterli değil",
           "paragraphs": [
-            "LP collateral is powerful in concept and hard to deliver cleanly. On Avana you are not only managing a loan. You are managing a live liquidity position whose value, composition, and risk all change over time. That makes the product more demanding than a standard lending flow, and it is one of the main reasons LP collateral has been operationally difficult even when the idea sounded appealing."
+            "LP teminatı kavramsal olarak güçlüdür ve temiz bir şekilde sunulması zordur. Avana'da yalnızca bir krediyi yönetmiyorsunuz. Değeri, kompozisyonu ve riski zamanla değişen canlı bir likidite pozisyonunu yönetiyorsunuz. Bu, ürünü standart bir kredi akışından daha zorlu kılar ve fikir cazip görünse bile LP teminatının operasyonel olarak zor olmasının başlıca nedenlerinden biridir."
           ]
         },
         {
           "id": "make-the-lifecycle-legible",
-          "title": "Make the lifecycle legible",
+          "title": "Yaşam döngüsünü anlaşılır kıl",
           "paragraphs": [
-            "The challenge is making the full lifecycle understandable: collateral valuation, borrowing limits, health monitoring, and what happens as conditions change. If those pieces stay opaque, the product stays limited to highly technical users no matter how strong the underlying mechanism is.",
-            "In LP collateral markets, good UX is part of risk design. Users need to understand what a position is worth as collateral, not just its market value. They need to see how borrowing affects flexibility, how range drift or price divergence changes risk, and how close a position is to stress. A platform that hides those realities behind vague dashboards may look simpler on the surface and still create more danger for the user."
+            "Zorluk, teminat değerlemesi, borçlanma limitleri, sağlık izleme ve koşullar değiştikçe ne olduğunu kapsayan tam yaşam döngüsünü anlaşılır kılmaktır. Bu parçalar opak kalırsa, altta yatan mekanizma ne kadar güçlü olursa olsun ürün yüksek teknik kullanıcılarla sınırlı kalır.",
+            "LP teminat piyasalarında iyi UX, risk tasarımının bir parçasıdır. Kullanıcılar bir pozisyonun yalnızca piyasa değerini değil, teminat olarak ne kadar değerli olduğunu anlamalıdır. Borçlanmanın esnekliği nasıl etkilediğini, aralık kaymasının veya fiyat sapmasının riski nasıl değiştirdiğini ve bir pozisyonun strese ne kadar yakın olduğunu görmelidirler. Bu gerçekleri belirsiz panellerin arkasına gizleyen bir platform yüzeyde daha basit görünebilir ve yine de kullanıcı için daha fazla tehlike yaratabilir."
           ]
         },
         {
           "id": "one-system",
-          "title": "One connected system",
+          "title": "Tek bağlantılı sistem",
           "paragraphs": [
-            "LP backed borrowing on Avana should present as one connected system. Depositing liquidity, using it as collateral, monitoring health, collecting fees, and managing risk are all part of the same financial object. The relationship between LP position and debt should be visible from the beginning, so you can understand both sides at once rather than stitching the picture together across separate interfaces.",
-            "LP positions are not static. They evolve with trading activity, underlying asset movement, and in concentrated liquidity systems with the position range itself. Borrowing against that kind of asset requires a more expressive interface and a more disciplined product structure. Fee generation, collateral quality, and liquidation risk interact in ways that are easy to misunderstand if the product is designed carelessly.",
-            "The goal is making advanced financial primitives usable without making them misleading. Avana's LP backed borrowing needs to be clear enough to use, disciplined enough to trust, and coherent enough to become a real part of how onchain capital is managed."
+            "Avana'daki LP destekli borçlanma, tek bağlantılı bir sistem olarak sunulmalıdır. Likidite yatırma, teminat olarak kullanma, sağlık izleme, ücret toplama ve risk yönetimi aynı finansal nesnenin parçalarıdır. LP pozisyonu ile borç arasındaki ilişki baştan görünür olmalıdır; böylece ayrı arayüzler arasında resmi birleştirmek yerine her iki tarafı aynı anda anlayabilirsiniz.",
+            "LP pozisyonları statik değildir. İşlem faaliyeti, temel varlık hareketi ve konsantre likidite sistemlerinde pozisyon aralığının kendisiyle birlikte evrilirler. Bu tür bir varlığa karşı borçlanma, daha ifade gücü yüksek bir arayüz ve daha disiplinli bir ürün yapısı gerektirir. Ücret üretimi, teminat kalitesi ve likidasyon riski, ürün dikkatsizce tasarlanırsa yanlış anlaşılması kolay şekillerde etkileşir.",
+            "Amaç, gelişmiş finansal ilkelere yanıltıcı olmadan kullanılabilir kılmaktır. Avana'nın LP destekli borçlanması kullanmak için yeterince açık, güvenmek için yeterince disiplinli ve onchain sermayenin yönetilme biçiminin gerçek bir parçası olmak için yeterince tutarlı olmalıdır."
           ]
         }
       ]
@@ -516,31 +516,31 @@
       "date": "June 23, 2026",
       "description": "Likidite sağlayıcıların ücret kazanmak ile sermayeye erişmek arasında seçim yapmak zorunda kalmaması ve Avana’nın LP kullanımını nasıl genişlettiği.",
       "image": "/images/blog/avana-next-step-liquidity-providers.png",
-      "category": "Community",
+      "category": "Topluluk",
       "tag": "Strateji",
       "sections": [
         {
           "id": "the-old-tradeoff",
-          "title": "The old tradeoff",
+          "title": "Eski ödünleşim",
           "paragraphs": [
-            "Liquidity providers supply depth, absorb volatility, and earn trading fees, but the capital inside those positions has often felt trapped. If you wanted access to that capital, the usual answer was still to withdraw, break the position apart, and stop doing the thing that made the position useful in the first place."
+            "Likidite sağlayıcıları derinlik sağlar, volatiliteyi emer ve işlem ücretleri kazanır, ancak bu pozisyonlardaki sermaye genellikle hapsolmuş hissedilmiştir. Bu sermayeye erişmek istediyseniz, olağan cevap hâlâ çekmek, pozisyonu parçalamak ve pozisyonu baştan yararlı kılan şeyi yapmayı bırakmaktı."
           ]
         },
         {
           "id": "what-avana-changes",
-          "title": "What Avana changes",
+          "title": "Avana neyi değiştirir",
           "paragraphs": [
-            "Avana allows supported LP positions to function as collateral on Aave v4 while keeping the liquidity active in the underlying AMM. Instead of forcing a choice between fee generation and liquidity access, the same position can do both. It stays in the market, keeps earning fees, and supports borrowing capacity inside a lending system designed for LP collateral.",
-            "LP positions are more complex than standard collateral. They change with underlying prices, pool composition, fee accrual, and in concentrated liquidity systems with active range placement. Most lending systems were not built to understand that value properly. Treating LPs like ordinary token balances misses how they actually behave. Avana exists because that gap is structural, not cosmetic."
+            "Avana, desteklenen LP pozisyonlarının temel AMM'de likiditeyi aktif tutarken Aave v4 üzerinde teminat olarak işlev görmesine olanak tanır. Ücret üretimi ile likidite erişimi arasında seçim yaptırmak yerine, aynı pozisyon her ikisini de yapabilir. Piyasada kalır, ücret kazanmaya devam eder ve LP teminatı için tasarlanmış bir kredi sisteminde borçlanma kapasitesini destekler.",
+            "LP pozisyonları standart teminattan daha karmaşıktır. Temel fiyatlar, havuz kompozisyonu, ücret birikimi ve konsantre likidite sistemlerinde aktif aralık yerleşimiyle değişirler. Çoğu kredi sistemi bu değeri doğru anlamak için inşa edilmemiştir. LP'leri sıradan token bakiyeleri gibi ele almak gerçek davranışlarını kaçırır. Avana, bu boşluğun kozmetik değil yapısal olması nedeniyle vardır."
           ]
         },
         {
           "id": "how-the-stack-fits",
-          "title": "How the stack fits together",
+          "title": "Yığın nasıl bir araya gelir",
           "paragraphs": [
-            "Avana uses Aave v4's hub and spoke design. Shared liquidity stays at the hub level. LP specific valuation, collateral treatment, and liquidation logic live inside dedicated spoke markets. Stable pools, correlated asset pools, and concentrated liquidity positions each get appropriate risk treatment rather than being flattened into one generic framework.",
-            "For LPs, the result is more capital efficient participation. A supported position stays productive in the AMM while becoming useful inside a credit system. You keep exposure, keep earning, and access liquidity without fully unwinding. For the broader system, LP collateral means DeFi capital can be less fragmented. Liquidity does not have to leave the market every time it needs to become useful elsewhere.",
-            "If LP positions can remain active while supporting borrowing, they become more than fee generating pool shares. They function as structured financial positions with fee generation, market exposure, and collateral value. Avana is that bridge between trading infrastructure and credit infrastructure."
+            "Avana, Aave v4'ün hub and spoke tasarımını kullanır. Paylaşılan likidite Hub düzeyinde kalır. LP'ye özgü değerleme, teminat muamelesi ve likidasyon mantığı özel Spoke piyasalarında yaşar. Stable havuzlar, korele varlık havuzları ve konsantre likidite pozisyonları tek bir genel çerçeveye düzleştirilmek yerine uygun risk muamelesi alır.",
+            "LP'ler için sonuç, daha sermaye verimli katılımdır. Desteklenen bir pozisyon AMM'de üretken kalırken kredi sisteminde faydalı hale gelir. Maruziyeti korursunuz, kazanmaya devam edersiniz ve tamamen tasfiye etmeden likiditeye erişirsiniz. Daha geniş sistem için LP teminatı, DeFi sermayesinin daha az parçalanmış olabileceği anlamına gelir. Likidite, başka yerde faydalı olması gerektiğinde her seferinde piyasadan ayrılmak zorunda değildir.",
+            "LP pozisyonları borçlanmayı desteklerken aktif kalabilirse, ücret üreten havuz paylarından daha fazlası olurlar. Üretim, piyasa maruziyeti ve teminat değeri olan yapılandırılmış finansal pozisyonlar olarak işlev görürler. Avana, işlem altyapısı ile kredi altyapısı arasındaki köprüdür."
           ]
         }
       ]
@@ -551,38 +551,38 @@
       "date": "June 20, 2026",
       "description": "Avana LP teminatının DAO’lar, hazineler, fonlar ve crypto-native şirketlerin pozisyonları bozmadan sermayeye erişmesine nasıl yardımcı olabileceği.",
       "image": "/images/blog/lp-collateral-for-institutions.png",
-      "category": "For Institutions",
+      "category": "Kurumlar için",
       "tag": "Kurumlar",
       "sections": [
         {
           "id": "treasury-function",
-          "title": "Capital efficiency as a treasury function",
+          "title": "Hazine fonksiyonu olarak sermaye verimliliği",
           "paragraphs": [
-            "For institutions operating onchain, capital efficiency is a treasury function. DAOs, protocol treasuries, funds, and crypto native companies often hold large positions across tokens, stable reserves, and liquidity pools, yet much of that capital remains operationally rigid. LP positions may generate fees and support strategic market exposure, but they are still hard to use as flexible treasury assets without withdrawing liquidity and changing market posture."
+            "Onchain faaliyet gösteren kurumlar için sermaye verimliliği bir hazine fonksiyonudur. DAO'lar, protokol hazineleri, fonlar ve kripto yerel şirketler genellikle tokenlar, stable rezervler ve likidite havuzları genelinde büyük pozisyonlar tutar, ancak bu sermayenin çoğu operasyonel olarak katı kalır. LP pozisyonları ücret üretebilir ve stratejik piyasa maruziyetini destekleyebilir, ancak likiditeyi çekmeden ve piyasa duruşunu değiştirmeden esnek hazine varlıkları olarak kullanmak hâlâ zordur."
           ]
         },
         {
           "id": "what-avana-enables",
-          "title": "What Avana enables for teams",
+          "title": "Avana ekiplere ne sağlar",
           "paragraphs": [
-            "Through Avana, LP positions can stay active in the AMM while supporting borrowing on Aave v4. A DAO treasury can fund grants or contributor payments without reducing core market exposure. A fund can maintain LP positions while accessing stable liquidity for tactical repositioning. A corporate treasury can manage payroll or vendor obligations without forcing a full rebalance of onchain reserves. The common thread is that borrowing creates working capital without realizing positions, without interrupting fee generation, and without forcing every liquidity need to become a sell decision.",
-            "For DAOs and protocol treasuries specifically, LP positions held as liquidity support or treasury strategy are often treated as immobile unless governance decides to unwind them. LP collateral offers a more capital efficient path. Treasury positions can stay active while supporting controlled access to liquidity for runway, ecosystem spending, or operational planning."
+            "Avana aracılığıyla LP pozisyonları Aave v4 üzerinde borçlanmayı desteklerken AMM'de aktif kalabilir. Bir DAO hazinesi temel piyasa maruziyetini azaltmadan hibeler veya katkıda bulunan ödemelerini finanse edebilir. Bir fon, taktik yeniden konumlandırma için stabil likiditeye erişirken LP pozisyonlarını koruyabilir. Bir kurumsal hazine, onchain rezervlerin tam yeniden dengelenmesini zorlamadan bordro veya tedarikçi yükümlülüklerini yönetebilir. Ortak nokta, borçlanmanın pozisyonları realize etmeden, ücret üretimini kesmeden ve her likidite ihtiyacını satış kararına dönüştürmeden işletme sermayesi yaratmasıdır.",
+            "DAO'lar ve protokol hazineleri için özellikle, likidite desteği veya hazine stratejisi olarak tutulan LP pozisyonları, yönetişim tasfiye etmeye karar vermedikçe genellikle hareketsiz kabul edilir. LP teminatı daha sermaye verimli bir yol sunar. Hazine pozisyonları, runway, ekosistem harcaması veya operasyonel planlama için kontrollü likidite erişimini desteklerken aktif kalabilir."
           ]
         },
         {
           "id": "funds-and-corps",
-          "title": "Funds and corporate treasuries",
+          "title": "Fonlar ve kurumsal hazineler",
           "paragraphs": [
-            "Funds and professional managers care about tactical flexibility. In fast moving markets, unwinding a position before accessing capital can be slow, costly, and strategically awkward. Avana LP collateral lets a manager preserve exposure and market presence while freeing liquidity for new deployment, hedging, or repositioning.",
-            "Corporate treasuries in crypto native businesses hold onchain reserves but still need predictable access to capital for operations. Payroll, vendor payments, and working capital needs do not always align with ideal market conditions. Borrowing against LP positions allows a treasury to manage obligations without untimely asset sales or over reliance on offchain financing."
+            "Fonlar ve profesyonel yöneticiler taktik esnekliğe önem verir. Hızlı hareket eden piyasalarda, sermayeye erişmeden önce bir pozisyonu tasfiye etmek yavaş, maliyetli ve stratejik olarak sakıncalı olabilir. Avana LP teminatı, bir yöneticinin maruziyeti ve piyasa varlığını korurken yeni dağıtım, hedge veya yeniden konumlandırma için likiditeyi serbest bırakmasını sağlar.",
+            "Kripto yerel işletmelerdeki kurumsal hazineler onchain rezervler tutar, ancak operasyonlar için hâlâ öngörülebilir sermaye erişimine ihtiyaç duyar. Bordro, tedarikçi ödemeleri ve işletme sermayesi ihtiyaçları her zaman ideal piyasa koşullarıyla uyumlu değildir. LP pozisyonlarına karşı borçlanma, bir hazinenin zamanında olmayan varlık satışları veya offchain finansmana aşırı bağımlılık olmadan yükümlülükleri yönetmesine olanak tanır."
           ]
         },
         {
           "id": "controls",
-          "title": "Controls come first",
+          "title": "Kontroller önce gelir",
           "paragraphs": [
-            "Institutional adoption depends on controls: clear policy boundaries around what can be borrowed, against which collateral, under what approval path, and with what de risking rules. Avana spoke markets mean risk can be defined around collateral structure. Stables, correlated pairs, concentrated liquidity, and volatile pools can be governed under different assumptions. Operational controls include role separation, permissions, health monitoring, auditability, and multi signature approval thresholds. Those are central to whether LP collateral becomes a credible treasury primitive rather than just a leverage tool.",
-            "LP positions already play a major role in how protocols, funds, and crypto native firms allocate capital. The next step is making those positions financially useful beyond fee generation, with the governance surface institutions require. That is the job Avana is built for."
+            "Kurumsal benimseme kontrollere bağlıdır: neyin, hangi teminata karşı, hangi onay yolunda ve hangi risk azaltma kurallarıyla borçlanılabileceğine dair net politika sınırları. Avana Spoke piyasaları, riskin teminat yapısı etrafında tanımlanabileceği anlamına gelir. Stablecoin'ler, korele çiftler, konsantre likidite ve volatil havuzlar farklı varsayımlar altında yönetilebilir. Operasyonel kontroller rol ayrımı, izinler, sağlık izleme, denetlenebilirlik ve çoklu imza onay eşiklerini içerir. Bunlar, LP teminatının yalnızca bir kaldıraç aracı değil, güvenilir bir hazine ilkesi olup olmayacağının merkezindedir.",
+            "LP pozisyonları, protokollerin, fonların ve kripto yerel firmaların sermayeyi nasıl tahsis ettiğinde zaten büyük bir rol oynuyor. Bir sonraki adım, bu pozisyonları kurumların gerektirdiği yönetişim yüzeyiyle birlikte, ücret üretiminin ötesinde finansal olarak faydalı kılmaktır. Avana bunun için inşa edildi."
           ]
         }
       ]
@@ -593,31 +593,31 @@
       "date": "June 17, 2026",
       "description": "İzleme, otomasyon, likidasyon servisleri ve entegrasyonlar dahil Avana LP teminat altyapısına geliştirici bakışı.",
       "image": "/images/blog/developer-view-lp-collateral.png",
-      "category": "Developers",
+      "category": "Geliştiriciler",
       "tag": "Protokol",
       "sections": [
         {
           "id": "a-new-design-surface",
-          "title": "A new design surface",
+          "title": "Yeni bir tasarım yüzeyi",
           "paragraphs": [
-            "Most DeFi infrastructure is built around simple collateral. Single assets are easy to price, monitor, and liquidate. LP positions are active, two sided, and structurally more complex. Their value changes with underlyings, pool composition, fee accrual, and range. That complexity is why LP collateral has been hard to integrate into lending systems, and it is why Avana creates a new design surface for developers."
+            "DeFi altyapısının çoğu basit teminat etrafında inşa edilmiştir. Tek varlıkların fiyatlandırılması, izlenmesi ve likide edilmesi kolaydır. LP pozisyonları aktif, iki taraflı ve yapısal olarak daha karmaşıktır. Değerleri temel varlıklar, havuz kompozisyonu, ücret birikimi ve aralıkla değişir. Bu karmaşıklık, LP teminatının kredi sistemlerine entegre edilmesini zorlaştıran ve Avana'nın geliştiriciler için yeni bir tasarım yüzeyi oluşturmasının nedenidir."
           ]
         },
         {
           "id": "what-builders-get",
-          "title": "What builders get from Avana",
+          "title": "Geliştiriciler Avana'dan ne kazanır",
           "paragraphs": [
-            "Avana makes LP positions usable as collateral through Aave v4. Hub and spoke architecture means LP positions are evaluated, risk adjusted, and liquidated according to market specific logic, not a generic lending market that happens to accept LPs. For builders, that opens applications around interfaces, monitoring systems, treasury tools, strategy layers, and risk aware products built on LP backed credit.",
-            "Portfolio and monitoring infrastructure is a natural category. LP backed borrowing creates a more dynamic relationship between collateral and debt than most DeFi users are used to. Dashboards can surface health factor, collateral efficiency, fee generation, and liquidation sensitivity, helping users decide when to rebalance, reduce debt, or treat a position as more stressed than its headline value suggests."
+            "Avana, Aave v4 aracılığıyla LP pozisyonlarını teminat olarak kullanılabilir hale getirir. Hub and spoke mimarisi, LP pozisyonlarının tesadüfen LP kabul eden genel bir kredi piyasasına göre değil, piyasaya özgü mantığa göre değerlendirildiği, risk ayarlandığı ve likide edildiği anlamına gelir. Geliştiriciler için bu, arayüzler, izleme sistemleri, hazine araçları, strateji katmanları ve LP destekli kredi üzerine inşa edilmiş risk farkındalıklı ürünler etrafında uygulamalar açar.",
+            "Portföy ve izleme altyapısı doğal bir kategoridir. LP destekli borçlanma, çoğu DeFi kullanıcısının alışık olduğundan daha dinamik bir teminat-borç ilişkisi yaratır. Panolar sağlık faktörü, teminat verimliliği, ücret üretimi ve likidasyon hassasiyetini gösterebilir; kullanıcıların ne zaman yeniden dengeleme yapacağına, borcu azaltacağına veya bir pozisyonu başlık değerinin önerdiğinden daha stresli kabul edeceğine karar vermesine yardımcı olur."
           ]
         },
         {
           "id": "automation-liquidation-treasury",
-          "title": "Automation, liquidation, and treasury tooling",
+          "title": "Otomasyon, likidasyon ve hazine araçları",
           "paragraphs": [
-            "Automation and strategy infrastructure is another line of work. Because LP positions stay active while supporting borrowing, developers can build systems that respond to changing conditions on both sides of the position: maintaining target borrowing bands, monitoring collateral drift, or routing position data into treasury and portfolio systems that sit on top of Avana.",
-            "Liquidation and risk infrastructure also matter. LP collateral requires more than simple threshold watching. It requires understanding how position quality changes as markets move and how liquidation paths differ by venue and pool type. External bots, monitoring services, and analytics systems can all become important pieces of the ecosystem around Avana.",
-            "For treasury and institutional tooling, if DAOs, funds, or crypto native companies use LP positions as collateral, they will need systems for policy limits, permissions, borrowing conditions, and risk thresholds across wallets or teams. Developers can use Avana as a source of collateral state, debt state, and market level structure rather than treating LP exposure and lending exposure as disconnected worlds."
+            "Otomasyon ve strateji altyapısı başka bir çalışma hattıdır. LP pozisyonları borçlanmayı desteklerken aktif kaldığından, geliştiriciler pozisyonun her iki tarafındaki değişen koşullara yanıt veren sistemler oluşturabilir: hedef borçlanma bantlarını koruma, teminat kaymasını izleme veya pozisyon verilerini Avana üzerindeki hazine ve portföy sistemlerine yönlendirme.",
+            "Likidasyon ve risk altyapısı da önemlidir. LP teminatı basit eşik izlemesinden daha fazlasını gerektirir. Piyasalar hareket ettikçe pozisyon kalitesinin nasıl değiştiğini ve likidasyon yollarının venue ve havuz türüne göre nasıl farklılaştığını anlamayı gerektirir. Harici botlar, izleme hizmetleri ve analitik sistemlerin tümü Avana etrafındaki ekosistemin önemli parçaları olabilir.",
+            "Hazine ve kurumsal araçlar için, DAO'lar, fonlar veya kripto yerel şirketler LP pozisyonlarını teminat olarak kullanıyorsa, cüzdanlar veya ekipler genelinde politika limitleri, izinler, borçlanma koşulları ve risk eşikleri için sistemlere ihtiyaç duyacaklardır. Geliştiriciler LP maruziyeti ile kredi maruziyetini bağlantısız dünyalar olarak ele almak yerine Avana'yı teminat durumu, borç durumu ve piyasa düzeyi yapı kaynağı olarak kullanabilir."
           ]
         }
       ]
@@ -628,31 +628,31 @@
       "date": "June 14, 2026",
       "description": "Aave v4 üzerinde Avana LP teminat mimarisi: Hub, Spokes, değerleme, oracle tasarımı ve likidasyon.",
       "image": "/images/blog/inside-avana-architecture.png",
-      "category": "Developers",
+      "category": "Geliştiriciler",
       "tag": "Protokol",
       "sections": [
         {
           "id": "why-hub-and-spoke",
-          "title": "Why hub and spoke",
+          "title": "Neden hub and spoke",
           "paragraphs": [
-            "LP collateral cannot be supported with a generic lending design. It needs a system that handles active liquidity positions, changing collateral composition, market specific valuation, and liquidation paths that differ from standard token collateral. Avana is built on Aave v4's hub and spoke model because LP backed borrowing needs shared liquidity and isolated market logic at the same time."
+            "LP teminatı genel bir kredi tasarımıyla desteklenemez. Aktif likidite pozisyonlarını, değişen teminat kompozisyonunu, piyasaya özgü değerlemeyi ve standart token teminatından farklı likidasyon yollarını işleyen bir sistem gerektirir. Avana, Aave v4'ün hub and spoke modeli üzerine inşa edilmiştir çünkü LP destekli borçlanma aynı anda paylaşılan likidite ve izole piyasa mantığına ihtiyaç duyar."
           ]
         },
         {
           "id": "hub-and-spoke-roles",
-          "title": "What the hub and spokes do",
+          "title": "Hub ve Spoke'lar ne yapar",
           "paragraphs": [
-            "The hub holds borrowable assets and coordinates shared liquidity across markets: reserve management, utilization tracking, and credit allocation. A hub is how Avana connects LP collateral to a broader lending framework without forcing every collateral type to share the same assumptions. A stable LP market, a concentrated liquidity market, and a volatile AMM pair should not all be governed the same way just because they draw from the same liquidity pool.",
-            "Spokes are where LP specific logic lives: collateral registration, valuation, risk adjustment, monitoring, and liquidation. Each spoke defines how different pool types are treated. A Uniswap concentrated position behaves differently from a fungible Curve LP, which behaves differently from a Balancer weighted pool. The spoke is where LP collateral becomes a real lending market with its own rules inside Avana."
+            "Hub, borçlanılabilir varlıkları tutar ve piyasalar arasında paylaşılan likiditeyi koordine eder: rezerv yönetimi, kullanım takibi ve kredi tahsisi. Hub, Avana'nın her teminat türünü aynı varsayımları paylaşmaya zorlamadan LP teminatını daha geniş bir kredi çerçevesine bağlamasının yoludur. Stable LP piyasası, konsantre likidite piyasası ve volatil bir AMM çifti, aynı likidite havuzundan çekiyor diye hepsi aynı şekilde yönetilmemelidir.",
+            "Spoke'lar LP'ye özgü mantığın yaşadığı yerdir: teminat kaydı, değerleme, risk ayarı, izleme ve likidasyon. Her Spoke farklı havuz türlerinin nasıl ele alınacağını tanımlar. Bir Uniswap konsantre pozisyonu, fungible bir Curve LP'den farklı davranır; o da bir Balancer ağırlıklı havuzdan farklı davranır. Spoke, LP teminatının Avana içinde kendi kurallarıyla gerçek bir kredi piyasası haline geldiği yerdir."
           ]
         },
         {
           "id": "valuation-oracle-liquidation",
-          "title": "Valuation, oracles, and liquidation",
+          "title": "Değerleme, oracle'lar ve likidasyon",
           "paragraphs": [
-            "Valuation uses a layered approach. First, what does the LP position actually contain at the current market state. Second, price those underlyings from reliable oracle inputs. Third, adjust through collateral logic that reflects actual pool risk rather than notional size. Not every dollar inside an LP position translates into the same borrowing power on Avana.",
-            "Oracle design sits close to the core. For LP collateral, the protocol cannot rely on a single number or a simplistic asset feed. Avana uses a dual source philosophy where external price feeds and AMM derived pricing work together for more reliable valuation. The goal is reducing the chance that temporary dislocations, stale updates, or local pool distortions create unsafe collateral assumptions.",
-            "For liquidation, Avana must unwind active LP positions in a controlled way, convert the resulting assets, and settle debt without avoidable loss. The spoke specializes liquidation for the underlying market structure. The hub provides liquidity. The spoke defines collateral logic. Each layer does what it is suited for: clean separation, strong isolation, and a realistic path to scaling LP collateral pool by pool."
+            "Değerleme katmanlı bir yaklaşım kullanır. Önce, mevcut piyasa durumunda LP pozisyonunun gerçekte ne içerdiği. İkinci, temel varlıkları güvenilir oracle girdilerinden fiyatlandırmak. Üçüncü, nominal büyüklük yerine gerçek havuz riskini yansıtan teminat mantığıyla ayarlamak. LP pozisyonundaki her dolar Avana'da aynı borçlanma gücüne dönüşmez.",
+            "Oracle tasarımı çekirdeğe yakındır. LP teminatı için protokol tek bir sayıya veya basit bir varlık akışına güvenemez. Avana, harici fiyat akışları ile AMM türevli fiyatlandırmanın daha güvenilir değerleme için birlikte çalıştığı çift kaynak felsefesini kullanır. Amaç, geçici sapmaların, eski güncellemelerin veya yerel havuz bozulmalarının güvensiz teminat varsayımları yaratma olasılığını azaltmaktır.",
+            "Likidasyon için Avana, aktif LP pozisyonlarını kontrollü bir şekilde tasfiye etmeli, ortaya çıkan varlıkları dönüştürmeli ve kaçınılabilir kayıp olmadan borcu kapatmalıdır. Spoke, temel piyasa yapısı için likidasyonu uzmanlaştırır. Hub likidite sağlar. Spoke teminat mantığını tanımlar. Her katman uygun olduğu işi yapar: temiz ayrım, güçlü izolasyon ve LP teminatını havuz havuz ölçeklemenin gerçekçi yolu."
           ]
         }
       ]
@@ -668,26 +668,26 @@
       "sections": [
         {
           "id": "what-shipped",
-          "title": "What shipped in v1.1",
+          "title": "v1.1'de neler geldi",
           "paragraphs": [
-            "Avana v1.1 makes LP backed borrowing more flexible, more efficient, and easier to manage. This update expands how users structure collateral, improves position evaluation, reduces transaction overhead, and refines the dashboard for managing live LP positions on Aave v4."
+            "Avana v1.1, LP destekli borçlanmayı daha esnek, daha verimli ve yönetmesi daha kolay hale getirir. Bu güncelleme, kullanıcıların teminatı nasıl yapılandırdığını genişletir, pozisyon değerlemesini iyileştirir, işlem yükünü azaltır ve Aave v4 üzerinde canlı LP pozisyonlarını yönetmek için panoyu geliştirir."
           ]
         },
         {
           "id": "multi-position-and-markets",
-          "title": "Multi position collateral and more markets",
+          "title": "Çoklu pozisyon teminatı ve daha fazla piyasa",
           "paragraphs": [
-            "The main change is multi position collateral. Users can deposit multiple LP positions and have borrowing capacity evaluated across the full collateral set rather than position by position. That gives more flexibility for managing liquidity across different pools, assets, or strategy types. The release also expands supported pools across Uniswap v3 and v4. Each new market still includes additional valuation, collateral treatment, and liquidation work, so broader access does not weaken Avana's risk standards.",
-            "Partial position withdrawal is also new. Users can reduce part of an LP position's liquidity without fully exiting the collateral position, provided the remaining collateral still supports the loan safely. That makes capital management less binary. You can adjust exposure, release liquidity, or reshape positions without treating every change as all or nothing."
+            "Ana değişiklik çoklu pozisyon teminatıdır. Kullanıcılar birden fazla LP pozisyonu yatırabilir ve borçlanma kapasitesi pozisyon pozisyon değil, tüm teminat seti genelinde değerlendirilebilir. Bu, farklı havuzlar, varlıklar veya strateji türleri genelinde likidite yönetiminde daha fazla esneklik sağlar. Sürüm ayrıca Uniswap v3 ve v4 genelinde desteklenen havuzları genişletir. Her yeni piyasa hâlâ ek değerleme, teminat muamelesi ve likidasyon çalışması içerir; daha geniş erişim Avana'nın risk standartlarını zayıflatmaz.",
+            "Kısmi pozisyon çekimi de yenidir. Kalan teminat krediyi güvenle desteklemeye devam ettiği sürece, kullanıcılar teminat pozisyonundan tamamen çıkmadan bir LP pozisyonunun likiditesinin bir kısmını azaltabilir. Bu, sermaye yönetimini daha az ikili hale getirir. Her değişikliği ya hep ya hiç olarak ele almadan maruziyeti ayarlayabilir, likidite serbest bırakabilir veya pozisyonları yeniden şekillendirebilirsiniz."
           ]
         },
         {
           "id": "ops-and-dashboard",
-          "title": "Ops tools and a clearer dashboard",
+          "title": "Operasyon araçları ve daha net panel",
           "paragraphs": [
-            "Delegation support helps DAOs, teams, and structured operators separate responsibilities across wallets or roles: who manages deposits, who handles debt actions, who does operational maintenance. Health factor alerts give earlier visibility into changing position conditions before stress develops. LP collateral can shift quickly, especially when price divergence affects both earning efficiency and collateral quality at the same time.",
-            "Performance improvements lower transaction costs across deposits, borrows, repays, and management. Oracle handling improved for latency, fallback behavior, and reliability during changing market conditions. For LP collateral, backend execution quality is as important as frontend features.",
-            "The dashboard is refined to show LP backed borrowing as it actually works on Avana: collateral health, position composition, and the relationship between active liquidity and debt. Better transaction previews and a more responsive design make position management more legible before you commit a change onchain."
+            "Delegasyon desteği, DAO'ların, ekiplerin ve yapılandırılmış operatörlerin cüzdanlar veya roller genelinde sorumlulukları ayırmasına yardımcı olur: yatırımları kim yönetir, borç işlemlerini kim yapar, operasyonel bakımı kim üstlenir. Sağlık faktörü uyarıları, stres gelişmeden önce değişen pozisyon koşullarına erken görünürlük sağlar. LP teminatı, özellikle fiyat sapması hem kazanç verimliliğini hem de teminat kalitesini aynı anda etkilediğinde hızla değişebilir.",
+            "Performans iyileştirmeleri, yatırma, borçlanma, geri ödeme ve yönetim genelinde işlem maliyetlerini düşürür. Oracle işleme, gecikme, yedek davranış ve değişen piyasa koşullarında güvenilirlik açısından iyileştirildi. LP teminatı için backend yürütme kalitesi, frontend özellikleri kadar önemlidir.",
+            "Panel, Avana'da gerçekte nasıl çalıştığını gösterecek şekilde LP destekli borçlanmayı göstermek üzere geliştirildi: teminat sağlığı, pozisyon kompozisyonu ve aktif likidite ile borç arasındaki ilişki. Daha iyi işlem önizlemeleri ve daha duyarlı bir tasarım, onchain bir değişikliği onaylamadan önce pozisyon yönetimini daha okunabilir kılar."
           ]
         }
       ]
@@ -703,32 +703,32 @@
       "sections": [
         {
           "id": "why-automation",
-          "title": "Why LP collateral needs automation",
+          "title": "LP teminatı neden otomasyona ihtiyaç duyar",
           "paragraphs": [
-            "Managing an LP position that also serves as collateral is demanding. Fees accumulate but do not always stay productive. Liquidity ranges drift as markets move. Health factors weaken as price divergence changes the collateral profile. Both sides of the balance sheet stay live. The LP position evolves, and the debt against it evolves with borrowing conditions. For users borrowing against LPs through Avana on Aave v4, that is the day to day reality."
+            "Teminat olarak da hizmet veren bir LP pozisyonunu yönetmek zordur. Ücretler birikir ancak her zaman verimli kalmaz. Piyasalar hareket ettikçe likidite aralıkları kayar. Fiyat sapması teminat profilini değiştirdikçe sağlık faktörleri zayıflar. Bilançonun her iki tarafı da canlı kalır. LP pozisyonu evrilir ve buna karşı borç da borçlanma koşullarıyla birlikte evrilir. Aave v4 üzerinde Avana aracılığıyla LP'lere karşı borçlanan kullanıcılar için bu günlük gerçekliktir."
           ]
         },
         {
           "id": "what-automate-is",
-          "title": "What Avana Automate is",
+          "title": "Avana Automate nedir",
           "paragraphs": [
-            "Automate is Avana's non custodial automation layer. It executes user approved actions when predefined conditions are met. Users keep full control of assets and permissions. Automate handles repetitive maintenance and enforces position discipline. It is not a replacement for strategy or judgment. It is a way to reduce the operational burden of managing LP collateral on Avana."
+            "Automate, Avana'nın saklamasız otomasyon katmanıdır. Önceden tanımlanmış koşullar karşılandığında kullanıcı onaylı eylemleri yürütür. Kullanıcılar varlıklar ve izinler üzerinde tam kontrolü korur. Automate tekrarlayan bakımı üstlenir ve pozisyon disiplinini uygular. Strateji veya yargının yerine geçmez. Avana'da LP teminatını yönetmenin operasyonel yükünü azaltmanın bir yoludur."
           ]
         },
         {
           "id": "fees-ranges-protection",
-          "title": "Fees, ranges, and protection",
+          "title": "Ücretler, aralıklar ve koruma",
           "paragraphs": [
-            "Trading fees accumulate gradually, but idle fees do not contribute to position efficiency. Automate can collect and redeploy them according to user preferences, so positions stay more productive without constant manual intervention. Over time, disciplined fee maintenance can matter as much as headline yield, especially for larger LP backed borrowing strategies.",
-            "In concentrated liquidity systems, capital stops working efficiently when price moves outside the active range, and the position may also become less efficient as collateral on Avana. Automate can rebalance according to user defined rules, reducing the burden of reacting to every move by hand. That is especially useful because collateral efficiency and liquidity productivity are closely linked.",
-            "Positions can also move from healthy to stressed faster than expected, particularly during sharp volatility or when paired assets diverge. Automate monitors conditions and executes defensive actions based on user defined thresholds. Passive neglect of LP collateral that supports debt gets expensive. Avana Automate is built for that earlier response."
+            "İşlem ücretleri kademeli olarak birikir, ancak atıl ücretler pozisyon verimliliğine katkıda bulunmaz. Automate, kullanıcı tercihlerine göre bunları toplayabilir ve yeniden dağıtabilir; böylece pozisyonlar sürekli manuel müdahale olmadan daha verimli kalır. Zamanla, disiplinli ücret bakımı özellikle daha büyük LP destekli borçlanma stratejileri için başlık getirisi kadar önemli olabilir.",
+            "Konsantre likidite sistemlerinde, fiyat aktif aralığın dışına çıktığında sermaye verimli çalışmayı durdurur ve pozisyon Avana'da teminat olarak da daha az verimli hale gelebilir. Automate, kullanıcı tanımlı kurallara göre yeniden dengeleyerek her harekete elle tepki verme yükünü azaltır. Teminat verimliliği ve likidite verimliliği yakından bağlantılı olduğu için özellikle faydalıdır.",
+            "Pozisyonlar, özellikle keskin volatilite sırasında veya eşleştirilmiş varlıklar ayrıştığında, beklenenden daha hızlı sağlıklı durumdan stresli duruma geçebilir. Automate koşulları izler ve kullanıcı tanımlı eşiklere dayalı savunma eylemleri yürütür. Borcu destekleyen LP teminatının pasif ihmal edilmesi pahalıya mal olur. Avana Automate bu erken müdahale için inşa edilmiştir."
           ]
         },
         {
           "id": "day-two-ops",
-          "title": "Day two operations",
+          "title": "İkinci gün operasyonları",
           "paragraphs": [
-            "Automate is built around the actual nature of LP collateral: positions that earn, drift, and change risk while serving as collateral on Aave v4. It gives users a way to maintain positions consistently, respond to changing conditions with less friction, and manage LP backed borrowing with discipline that would otherwise require constant manual attention. Same non custodial principle throughout. Avana runs your policy. It does not become a black box fund manager."
+            "Automate, LP teminatının gerçek doğası etrafında inşa edilmiştir: Aave v4 üzerinde teminat olarak hizmet verirken kazanç sağlayan, kayan ve riski değişen pozisyonlar. Kullanıcılara pozisyonları tutarlı şekilde sürdürme, değişen koşullara daha az sürtünmeyle yanıt verme ve aksi halde sürekli manuel dikkat gerektiren disiplinle LP destekli borçlanmayı yönetme yolu sunar. Her yerde aynı saklamasız ilke. Avana sizin politikanızı çalıştırır. Kara kutu bir fon yöneticisi olmaz."
           ]
         }
       ]
@@ -739,37 +739,37 @@
       "date": "June 4, 2026",
       "description": "Avana’da LP teminatına giriş: LP davranışı, LTV, impermanent loss, likidasyon ve muhafazakâr alışkanlıklar.",
       "image": "/images/blog/beginners-guide-lp-collateral.png",
-      "category": "For LPs",
+      "category": "LP'ler için",
       "tag": "Rehberler",
       "sections": [
         {
           "id": "the-basic-idea",
-          "title": "The basic idea",
+          "title": "Temel fikir",
           "paragraphs": [
-            "Providing liquidity is one of the most common ways to earn yield in DeFi. You deposit assets into a pool, facilitate trading, and earn fees in return. LP positions have also been inflexible. If you wanted to use that capital elsewhere, you usually withdrew first. LP collateral changes that. Through Avana on Aave v4, supported LP positions can back borrowing while staying active in the pool and earning fees the whole time."
+            "Likidite sağlamak, DeFi'de getiri elde etmenin en yaygın yollarından biridir. Varlıkları bir havuza yatırır, işlemleri kolaylaştırır ve karşılığında ücret kazanırsınız. LP pozisyonları da esnek değildi. Bu sermayeyi başka yerde kullanmak istediyseniz, genellikle önce çekmeniz gerekirdi. LP teminatı bunu değiştirir. Aave v4 üzerinde Avana aracılığıyla desteklenen LP pozisyonları, havuzda aktif kalırken ve sürekli ücret kazanırken borçlanmayı destekleyebilir."
           ]
         },
         {
           "id": "what-an-lp-is",
-          "title": "What an LP actually is",
+          "title": "Bir LP gerçekte nedir",
           "paragraphs": [
-            "An LP position is a live position inside a market. Its value depends on the underlyings, how they move relative to each other, accrued fees, and in concentrated liquidity systems whether the position is still in its active price range. It changes over time in ways ordinary token collateral does not. That is why LP collateral needs a more specialized lending model, and why Avana exists for that use case."
+            "Bir LP pozisyonu, bir piyasa içindeki canlı bir pozisyondur. Değeri temel varlıklara, birbirlerine göre nasıl hareket ettiklerine, biriken ücretlere ve konsantre likidite sistemlerinde pozisyonun hâlâ aktif fiyat aralığında olup olmadığına bağlıdır. Sıradan token teminatının yapmadığı şekillerde zamanla değişir. Bu yüzden LP teminatı daha özelleşmiş bir kredi modeli gerektirir ve Avana bu kullanım durumu için vardır."
           ]
         },
         {
           "id": "ltv-il-liquidation",
-          "title": "LTV, impermanent loss, and liquidation",
+          "title": "LTV, IL ve likidasyon",
           "paragraphs": [
-            "Loan to value, often shortened to LTV, is the portion of a position's accepted collateral value that can be borrowed against. A lower LTV means more buffer. If collateral value drops, there is room before the loan becomes stressed. A higher LTV gives more immediate liquidity and less safety margin. In LP markets this matters more because position value can move for several reasons at once: underlying prices, pool composition, fee accrual, and range placement.",
-            "Impermanent loss, often shortened to IL, is what happens when the two assets in a pool move relative to each other and the LP position ends up worth less than holding those assets outside the pool. For someone using the LP as collateral on Avana, IL directly affects borrowing capacity. It does not make LP collateral unsafe by definition, but it means users need to understand that positions are dynamic rather than fixed.",
-            "If collateral value falls too far relative to debt, Avana restores safety through liquidation. With LP collateral this is more complex than selling a simple token. There is fee accrual, changing asset composition, and venue specific liquidity structure. Avana values and liquidates LP positions according to those realities rather than treating them as generic assets. The practical lesson for beginners is simple. Borrow conservatively, especially at the start."
+            "Loan to value, kısaca LTV, bir pozisyonun kabul edilen teminat değerinin ne kadarının karşılığında borçlanılabileceğidir. Düşük LTV daha fazla tampon anlamına gelir. Teminat değeri düşerse, kredi stresli hale gelmeden önce alan vardır. Yüksek LTV daha fazla anında likidite ve daha az güvenlik marjı sağlar. LP piyasalarında temel fiyatlar, havuz kompozisyonu, ücret birikimi ve aralık yerleşimi gibi birkaç nedenden aynı anda hareket edebildiği için bu daha önemlidir.",
+            "Impermanent loss, kısaca IL, havuzdaki iki varlık birbirine göre hareket ettiğinde ve LP pozisyonu bu varlıkları havuz dışında tutmaktan daha az değerli hale geldiğinde olur. Avana'da LP'yi teminat olarak kullanan biri için IL doğrudan borçlanma kapasitesini etkiler. Tanım gereği LP teminatını güvensiz kılmaz, ancak pozisyonların sabit değil dinamik olduğunu anlamaları gerektiği anlamına gelir.",
+            "Teminat değeri borca göre çok fazla düşerse, Avana likidasyon yoluyla güvenliği geri kazanır. LP teminatıyla bu, basit bir token satmaktan daha karmaşıktır. Ücret birikimi, değişen varlık kompozisyonu ve venue'ye özgü likidite yapısı vardır. Avana LP pozisyonlarını genel varlıklar olarak ele almak yerine bu gerçeklere göre değerlendirir ve likide eder. Yeni başlayanlar için pratik ders basittir. Özellikle başlangıçta muhafazakâr borçlanın."
           ]
         },
         {
           "id": "first-steps",
-          "title": "A sensible first path",
+          "title": "Mantıklı bir ilk yol",
           "paragraphs": [
-            "Even as collateral, an LP position keeps earning fees and maintaining market exposure. That is the capital efficiency gain. For beginners, the safest approach is to start conservative on Avana: borrow modestly, use simpler and more stable pool types first, and pay attention to how position health changes as markets move. Once you understand how LP value, debt, and liquidation thresholds interact, the model becomes much more straightforward to use responsibly."
+            "Teminat olsa bile bir LP pozisyonu ücret kazanmaya devam eder ve piyasa maruziyetini korur. Bu, sermaye verimliliği kazancıdır. Yeni başlayanlar için en güvenli yaklaşım Avana'da muhafazakâr başlamaktır: ölçülü borçlanın, önce daha basit ve daha stabil havuz türlerini kullanın ve piyasalar hareket ettikçe pozisyon sağlığının nasıl değiştiğine dikkat edin. LP değeri, borç ve likidasyon eşiklerinin nasıl etkileşime girdiğini anladığınızda, modeli sorumlu kullanmak çok daha straightforward hale gelir."
           ]
         }
       ]

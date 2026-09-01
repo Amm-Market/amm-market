@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic"
 import Image from "next/image"
 import type { LucideIcon } from "lucide-react"
 import {
@@ -13,40 +12,14 @@ import {
   Zap,
 } from "lucide-react"
 import { DeFiTerm } from "@/components/defi-term"
+import HomepageFaqSection from "@/components/homepage/HomepageFaqSection"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
-import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
+import HomepageTestimonialSection from "@/components/homepage/HomepageTestimonialSection"
+import { FeatureCardDescription, FeatureCardTitle, SectionIntro } from "@/components/shared"
 import { homepagePools, type HomepagePool } from "@/data/homepage"
-import { LazySection } from "@/components/ui/lazy-section"
 import { PerformanceDiv } from "@/components/ui/performance-section"
 import { TokenLogo } from "@/components/token-logo"
 import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
-function SectionSkeleton({
-  lines = 3,
-  minHeight = "320px",
-}: {
-  lines?: number
-  minHeight?: string
-}) {
-  return (
-    <div
-      aria-hidden="true"
-      className="feature-card rounded-[28px] border border-gray-200 p-6"
-      style={{ minHeight }}
-    >
-      <div className="animate-pulse space-y-4">
-        <div className="h-3 w-28 rounded-full bg-gray-200" />
-        <div className="h-10 w-72 max-w-full rounded-2xl bg-gray-200" />
-        {Array.from({ length: lines }).map((_, index) => (
-          <div
-            key={index}
-            className="h-4 rounded-full bg-gray-200"
-            style={{ width: `${92 - index * 14}%` }}
-          />
-        ))}
-      </div>
-    </div>
-  )
-}
 
 function repeatItems<T>(items: T[], count: number, offset: number) {
   if (items.length === 0) return []
@@ -58,37 +31,26 @@ function repeatItems<T>(items: T[], count: number, offset: number) {
   return output
 }
 
-const DeferredTestimonialSection = dynamic(() => import("@/components/homepage/HomepageTestimonialSection"), {
-  loading: () => <SectionSkeleton minHeight="360px" />,
-})
-
-const DeferredHomepageFaqSection = dynamic(() => import("@/components/homepage/HomepageFaqSection"), {
-  loading: () => <SectionSkeleton lines={4} minHeight="420px" />,
-})
-
 /**
  * HeroSection - Homepage secondary content shell.
- *
- * Static sections render on the server while heavier interactive islands are
- * deferred until they approach the viewport.
  */
 function PoolCard({ pool }: { pool: HomepagePool }) {
   return (
-    <div className="flex h-[58px] flex-shrink-0 items-center gap-2.5 rounded-full border border-[#d8e1ef] bg-white px-3.5 shadow-[0_2px_10px_rgba(15,23,42,0.03)] transition duration-150 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(15,23,42,0.06)]">
+    <div className="flex h-[58px] flex-shrink-0 items-center gap-2.5 rounded-full border border-border bg-card px-3.5 shadow-[0_2px_10px_rgba(15,23,42,0.03)] transition duration-150 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(15,23,42,0.06)] dark:shadow-[0_3px_8px_rgba(0,0,0,0.25)] dark:hover:shadow-[0_10px_24px_rgba(0,0,0,0.35)]">
       <div className="relative flex items-center shrink-0">
         <TokenLogo symbol={pool.token0.symbol} className="z-10" />
         <TokenLogo symbol={pool.token1.symbol} className="-ml-2" />
       </div>
       <div className="min-w-0">
         <div className="flex items-baseline gap-1.5 whitespace-nowrap">
-          <span className="text-[0.88rem] font-semibold tracking-[-0.02em] text-[#18323c]">
+          <span className="text-[0.88rem] tracking-[-0.02em] text-foreground">
             {pool.token0.symbol} / {pool.token1.symbol}
           </span>
-          <span className="text-[0.8rem] text-[#6b7280]">{pool.dex}</span>
+          <span className="text-[0.8rem] text-type-tertiary">{pool.dex}</span>
         </div>
         <div className="mt-0.5 flex items-center gap-1.5">
-          <span className="text-[0.72rem] font-medium uppercase tracking-[0.12em] text-[#8a97a6]">TVL</span>
-          <span className="text-[0.76rem] font-semibold text-[#18323c]">{pool.tvl}</span>
+          <span className="type-meta-label">TVL</span>
+          <span className="text-[0.76rem] text-type-secondary">{pool.tvl}</span>
         </div>
       </div>
     </div>
@@ -175,15 +137,16 @@ export default async function HeroSection() {
 
 function HeroSectionBody() {
   return (
-    <section className="marketing-secondary-shell pb-0">
+    <section className="pb-0">
       <div className="site-content-shell site-section-gap">
         <PerformanceDiv className="flex flex-col gap-8 md:gap-12">
             <div className="flex flex-col gap-6">
           <div className="flex max-w-[600px] flex-col gap-2">
-            <SectionEyebrow tone="cyan">Borrow Markets</SectionEyebrow>
-            <SectionTitle>
-              Access loans using hundreds of LP collateral
-            </SectionTitle>
+            <SectionIntro
+              eyebrow="Borrow Markets"
+              eyebrowTone="cyan"
+              title="Access loans using hundreds of LP collateral"
+            />
           </div>
             </div>
 
@@ -216,18 +179,20 @@ function HeroSectionBody() {
       <div className="site-content-shell site-section-gap">
         <div className="mx-auto grid w-full max-w-[90rem] items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-18">
           <div className="max-w-[33rem]">
-            <SectionEyebrow tone="emerald">Lend Markets</SectionEyebrow>
-            <SectionTitle className="mt-5 max-w-none">
-              Earn interest from LP borrower demand
-            </SectionTitle>
+            <SectionIntro
+              eyebrow="Lend Markets"
+              eyebrowTone="emerald"
+              title="Earn interest from LP borrower demand"
+              titleClassName="mt-5 max-w-none"
+            />
 
             <div className="mt-7 grid max-w-[32rem] gap-5">
               {lendingSavingsCards.map((card, index) => (
-                <div key={card.title} className="flex gap-3 text-[0.98rem] leading-[1.55] tracking-[-0.01em] md:text-[1.04rem]">
-                  <span className="mt-0.5 shrink-0 font-semibold text-[#01AACF]">{index + 1}.</span>
+                <div key={card.title} className="flex gap-3">
+                  <span className="type-meta-label mt-0.5 shrink-0">{index + 1}.</span>
                   <div>
-                    <p className="font-semibold text-[#111111]">{card.title}</p>
-                    <p className="mt-1 text-[#111111]/80">{card.description}</p>
+                    <FeatureCardTitle as="p">{card.title}</FeatureCardTitle>
+                    <FeatureCardDescription className="mt-1">{card.description}</FeatureCardDescription>
                   </div>
                 </div>
               ))}
@@ -252,10 +217,11 @@ function HeroSectionBody() {
         <PerformanceDiv>
             <div className="flex flex-col gap-6">
               <div className="flex max-w-[600px] flex-col gap-2">
-                <SectionEyebrow tone="amber">Multiply Markets</SectionEyebrow>
-                <SectionTitle>
-                  <span className="block">Increase Your Yield with Built-In Risk Controls</span>
-                </SectionTitle>
+                <SectionIntro
+                  eyebrow="Multiply Markets"
+                  eyebrowTone="amber"
+                  title={<span className="block">Increase Your Yield with Built-In Risk Controls</span>}
+                />
               </div>
             </div>
             <div className="relative mt-10 md:mt-16">
@@ -268,11 +234,11 @@ function HeroSectionBody() {
                         <FeatureCardTitle>Loop LP capital</FeatureCardTitle>
                         <FeatureCardDescription className="max-w-[16rem]">Supply LP collateral, borrow against it, resupply the borrowed capital, and repeat until your risk limit.</FeatureCardDescription>
                       </div>
-                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">01</div>
+                      <div className="type-meta-label shrink-0">01</div>
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                        <div className="hero-feature-mockup relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                           <Image
                             src="/images/avana-tokens-rewards-v2.jpg"
                             alt="Avana token rewards"
@@ -292,11 +258,11 @@ function HeroSectionBody() {
                         <FeatureCardTitle>Risk tuned to pools</FeatureCardTitle>
                         <FeatureCardDescription className="max-w-[16rem]">Continuous risk scoring tracks pool volatility and health quality.</FeatureCardDescription>
                       </div>
-                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">02</div>
+                      <div className="type-meta-label shrink-0">02</div>
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                        <div className="hero-feature-mockup relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(16,185,129,0.05),transparent_55%)]" />
                           <div className="absolute inset-0 flex flex-col items-center justify-center px-5">
                             <div className="w-full max-w-[16rem] overflow-hidden">
@@ -398,11 +364,11 @@ function HeroSectionBody() {
                           Transparent risk parameters and predictable liquidation behavior for peg-aligned pools.
                         </FeatureCardDescription>
                       </div>
-                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">03</div>
+                      <div className="type-meta-label shrink-0">03</div>
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                        <div className="hero-feature-mockup relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                           <div className="absolute inset-0 flex items-center justify-center p-5">
                             <div className="w-full max-w-[15.75rem]">
                               <div className="overflow-hidden rounded-[20px] border border-gray-200 bg-white p-4">
@@ -447,11 +413,11 @@ function HeroSectionBody() {
                           Track health, usage, and pool-specific limits with a clearer LP-first borrowing workflow.
                         </FeatureCardDescription>
                       </div>
-                      <div className="shrink-0 text-sm font-medium tracking-[0.16em] text-gray-400">04</div>
+                      <div className="type-meta-label shrink-0">04</div>
                     </div>
                     <div className="relative z-0 mt-auto">
                       <div className="flex items-end justify-center">
-                        <div className="relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+                        <div className="hero-feature-mockup relative h-[18rem] w-full overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
                           <div className="absolute inset-0 flex items-center justify-center px-5">
                             <div className="w-full max-w-[16rem] rounded-[22px] border border-gray-200 bg-white p-4">
                               <div className="relative overflow-hidden rounded-[18px] border border-gray-200 bg-gray-50/50 p-4">
@@ -573,10 +539,12 @@ function HeroSectionBody() {
 
       <div>
         <div className="max-w-[58rem] space-y-3 text-left sm:space-y-4">
-          <SectionEyebrow tone="rose">Who it&apos;s for</SectionEyebrow>
-          <SectionTitle className="max-w-[18ch] sm:max-w-[22ch] lg:max-w-none">
-            Ways teams put LP credit to work
-          </SectionTitle>
+          <SectionIntro
+            eyebrow="Who it's for"
+            eyebrowTone="rose"
+            title="Ways teams put LP credit to work"
+            titleClassName="max-w-[18ch] sm:max-w-[22ch] lg:max-w-none"
+          />
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-10 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 md:mt-16 md:gap-x-16 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-20">
@@ -596,34 +564,36 @@ function HeroSectionBody() {
         </div>
       </div>
 
-        <LazySection minHeight="400px" fallback={<SectionSkeleton minHeight="360px" />}>
-          <DeferredTestimonialSection />
-        </LazySection>
+        <HomepageTestimonialSection />
 
-        <LazySection minHeight="660px" fallback={<SectionSkeleton minHeight="660px" />}>
-          <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 xl:gap-16">
+        <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 xl:gap-16">
             <div className="max-w-[36rem] space-y-6">
               <div className="space-y-4">
-                <SectionEyebrow tone="slate">Engineered for resilience</SectionEyebrow>
-                <SectionTitle>
-                  <span className="block">
-                    Backed by{" "}
-                    <span className="inline-flex translate-y-[-0.02em] items-center align-middle">
-                      <Image
-                        src="/images/brand/avana-token-circle.jpg"
-                        alt="Avana"
-                        width={56}
-                        height={56}
-                        className="h-[1.2em] w-[1.2em] rounded-full object-cover"
-                      />
-                    </span>
-                    ,
-                  </span>
-                  <span className="block">Powered by Aave v4</span>
-                </SectionTitle>
+                <SectionIntro
+                  eyebrow="Engineered for resilience"
+                  eyebrowTone="slate"
+                  title={
+                    <>
+                      <span className="block">
+                        Backed by{" "}
+                        <span className="inline-flex translate-y-[-0.02em] items-center align-middle">
+                          <Image
+                            src="/images/brand/avana-token-circle.jpg"
+                            alt="Avana"
+                            width={56}
+                            height={56}
+                            className="h-[1.2em] w-[1.2em] rounded-full object-cover"
+                          />
+                        </span>
+                        ,
+                      </span>
+                      <span className="block">Powered by Aave v4</span>
+                    </>
+                  }
+                />
               </div>
-              <div className="text-left text-[#39515b]">
-                <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
+              <div className="text-left text-type-secondary">
+                <p className="type-display-lead max-w-[42rem]">
                   Aave v4 uses{" "}
                   <DeFiTerm term="hub" className="text-[0.92em]">
                     Hub
@@ -660,19 +630,14 @@ function HeroSectionBody() {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_68%,rgba(255,255,255,0.28)_86%,#fff_100%)]" />
             </article>
           </div>
-        </LazySection>
 
-        <LazySection minHeight="520px" fallback={<SectionSkeleton minHeight="520px" />}>
-          <div className="-mt-8 md:-mt-12">
-            <HomepageNewsroomSection eyebrowTone="rose" />
-          </div>
-        </LazySection>
+        <div className="-mt-8 md:-mt-12">
+          <HomepageNewsroomSection eyebrowTone="rose" />
+        </div>
 
-        <LazySection minHeight="480px" fallback={<SectionSkeleton minHeight="480px" />}>
-          <div className="pb-16 md:pb-24 2xl:pb-22">
-            <DeferredHomepageFaqSection />
-          </div>
-        </LazySection>
+        <div className="pb-16 md:pb-24 2xl:pb-22">
+          <HomepageFaqSection />
+        </div>
       </div>
     </section>
   )

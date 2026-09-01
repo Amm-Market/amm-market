@@ -9,7 +9,9 @@
       "closeMenu": "메뉴 닫기",
       "language": "언어: {language}",
       "logo": "{site} 로고",
-      "helpfulLinks": "유용한 링크"
+      "helpfulLinks": "유용한 링크",
+      "helpCenter": "도움말 센터: 지원팀에 이메일",
+      "themeToggle": "테마 설정"
     },
     "nav": {
       "products": "제품",
@@ -76,7 +78,7 @@
     "notFound": {
       "title": "이 페이지를 사용할 수 없습니다.",
       "body": "주소가 잘못되었거나 페이지가 이동했을 수 있습니다.",
-      "home": "Go to homepage",
+      "home": "홈으로 이동",
       "faq": "자주 묻는 질문"
     },
     "sandboxNotice": "Sandbox 데이터는 미리 보기용으로만 표시됩니다. APY초, 가격 및 수익률은 예시일 뿐이며 실제 시장 상황과 다를 수 있습니다.",
@@ -87,7 +89,20 @@
       "shareOnLinkedIn": "LinkedIn에 공유",
       "previousPost": "이전 게시물",
       "nextPost": "다음 글",
-      "onThisPage": "On this page"
+      "onThisPage": "이 페이지에서"
+    },
+    "exportMenu": {
+      "copyPage": "페이지 복사",
+      "copied": "복사됨",
+      "copyPageMarkdown": "Markdown으로 페이지 복사",
+      "copyPageLink": "페이지 링크 복사",
+      "copyPageLinkDescription": "이 페이지 URL을 클립보드에 복사",
+      "openInChatGPT": "ChatGPT에서 열기",
+      "openInClaude": "Claude에서 열기",
+      "openInGrok": "Grok에서 열기",
+      "openInPerplexity": "Perplexity에서 열기",
+      "askAboutPage": "이 페이지에 대해 질문하기",
+      "reviewPrompt": "아래 Avana 페이지 내용을 검토하고 질문에 답해 주세요."
     },
     "docs": {
       "previous": "이전",
@@ -99,7 +114,8 @@
         "liquidation": "청산 프레임워크",
         "integrations": "지원되는 통합",
         "safety": "안전 장치",
-        "legal": "법률 및 준수"
+        "legal": "법률 및 준수",
+        "copilot": "AI에게 묻기"
       },
       "items": {
         "overview": "개요",
@@ -131,7 +147,11 @@
         "bugBounty": "버그 바운티",
         "insuranceFunds": "보험 기금",
         "securityDisclosures": "보안 공개",
-        "legalDisclaimer": "법적 고지"
+        "legalDisclaimer": "법적 고지",
+        "aiIntroduction": "AI 소개",
+        "copilotProtocols": "지원 프로토콜",
+        "copilotPrompts": "프롬프트 예시",
+        "copilotWorkflow": "에이전트 워크플로"
       }
     },
     "faqUi": {
@@ -156,6 +176,12 @@
     "newsroom": {
       "latestFrom": "Avana의 최신 소식",
       "readNewsroom": "뉴스룸을 읽다"
+    },
+    "theme": {
+      "lightMode": "라이트 모드",
+      "darkMode": "다크 모드",
+      "systemMode": "시스템",
+      "tapToChange": "탭하여 변경"
     }
   },
   "meta": {
@@ -222,12 +248,12 @@
       "subtitle": "Uniswap, Curve, Balancer 포지션에서 유동성을 해제하면서 거래 수수료를 계속 벌어보세요.",
       "subtitleMobileLines": [
         "유동성 풀이 값의 최대 80%까지 이용 가능",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "연 5.5% APR로 유동성을 인출하지 않고도",
+        "거래 수수료를 포기하지 않고"
       ],
       "subtitleDesktopLines": [
         "유동성 풀 가치의 최대 80%를 5.5%로 이용하세요 APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "유동성을 인출하거나 거래 수수료를 포기하지 않고 연 5.5% APR로 이용할 수 있습니다."
       ],
       "primaryCta": "Sandbox을 시도해 보세요",
       "secondaryCta": "문서 읽기"

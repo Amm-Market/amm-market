@@ -42,10 +42,10 @@ const HEATMAP_ROWS = 5
 const HEATMAP_COLUMNS_LINEAR = 20
 const STAGE_FILLED_COUNTS = [20, 60, 100] as const
 const BAND_COLORS = {
-  inactive: "#eef2f6",
-  base: "#d5f3fa",
-  premium: "#7dd4e8",
-  risk: "#01AACF",
+  inactive: "var(--apy-band-inactive)",
+  base: "var(--apy-band-base)",
+  premium: "var(--apy-band-premium)",
+  risk: "var(--apy-band-risk)",
 } as const
 
 function buildHeatmap(stageIndex: number): HeatmapCell[][] {
@@ -117,7 +117,7 @@ export default function InvestApySection() {
   }
 
   return (
-    <section className="deferred-viewport bg-white site-section-gap">
+    <section className="bg-white site-section-gap">
       <div className="site-content-shell">
         <div className="space-y-4">
           <SectionEyebrow tone="cyan">{eyebrow}</SectionEyebrow>
@@ -129,10 +129,10 @@ export default function InvestApySection() {
         <div className="mt-10">
           <div className="space-y-5">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="text-[clamp(1.4rem,2vw,2rem)] font-semibold tracking-[-0.05em] text-[#163042]">
+              <span className="type-card-title text-[clamp(1.4rem,2vw,2rem)] tracking-[-0.05em]">
                 {`${activeStage.minApy.toFixed(1)}% ${t("to")} ${activeStage.maxApy.toFixed(1)}%`}
               </span>
-              <span className="text-sm text-[#728196]">
+              <span className="type-meta-label">
                 {t(activeStage.title)}
               </span>
             </div>
@@ -179,19 +179,19 @@ export default function InvestApySection() {
                   <div
                     className={cn(
                       "mb-5 h-[3px] w-full rounded-full transition-colors duration-200",
-                      active ? "bg-[#01AACF]" : "bg-[#eceff3]",
+                      active ? "bg-[#01AACF]" : "bg-muted",
                     )}
                   />
                   <h3
                     className={cn(
-                      "text-[clamp(0.92rem,3.6vw,1.9rem)] font-semibold leading-[1.06] tracking-[-0.05em] transition-colors duration-200",
-                      active ? "text-[#01AACF]" : "text-[#9ea3aa]",
+                      "type-card-title text-[clamp(0.92rem,3.6vw,1.9rem)] leading-[1.06] tracking-[-0.05em] transition-colors duration-200",
+                      active ? "text-type-accent" : "text-type-tertiary",
                     )}
                   >
                     {t(stage.title)}
                   </h3>
                   {active ? (
-                    <p className="mt-4 hidden max-w-[20rem] text-base leading-[1.7] text-[#6f7681] md:block">
+                    <p className="type-body-copy mt-4 hidden max-w-[20rem] md:block">
                       {t(stage.description)}
                     </p>
                   ) : null}
@@ -200,7 +200,7 @@ export default function InvestApySection() {
             })}
           </div>
 
-          <p className="mt-4 text-sm leading-[1.7] text-[#6f7681] md:hidden">
+          <p className="type-body-copy mt-4 md:hidden">
             {t(activeStage.description)}
           </p>
         </div>

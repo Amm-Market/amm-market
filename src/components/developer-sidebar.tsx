@@ -175,16 +175,24 @@ export const navigationSections = [
   },
 ] as const
 
-// Color palette per section
-const sectionColors: Record<string, { headerBg: string; headerText: string; itemBg: string; itemText: string; icon: string }> = {
-  introduction: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  "getting-started": { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  architecture: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  liquidation: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  copilot: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  integrations: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  safety: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
-  legal: { headerBg: "bg-cyan-50", headerText: "text-[#01AACF]", itemBg: "bg-cyan-100", itemText: "text-[#01AACF]", icon: "text-[#01AACF]" },
+// Active section styling — accent tints work in both light and dark mode
+const activeSectionStyles = {
+  headerBg: "bg-type-accent/10",
+  headerText: "text-type-accent",
+  itemBg: "bg-type-accent/15",
+  itemText: "text-type-accent",
+  icon: "text-type-accent",
+} as const
+
+const sectionColors: Record<string, typeof activeSectionStyles> = {
+  introduction: activeSectionStyles,
+  "getting-started": activeSectionStyles,
+  architecture: activeSectionStyles,
+  liquidation: activeSectionStyles,
+  copilot: activeSectionStyles,
+  integrations: activeSectionStyles,
+  safety: activeSectionStyles,
+  legal: activeSectionStyles,
 }
 
 export default function DeveloperSidebar() {
@@ -251,7 +259,7 @@ export default function DeveloperSidebar() {
 
   return (
     <aside
-      className="sticky top-[73px] hidden h-[calc(100vh-73px)] w-64 shrink-0 border-r border-gray-200 xl:block"
+      className="sticky top-[73px] hidden h-[calc(100vh-73px)] w-64 shrink-0 border-r border-border xl:block"
       style={sidebarTypeScale}
     >
       {/* Scrollable content */}
@@ -301,12 +309,12 @@ export default function DeveloperSidebar() {
                 <div
                   className={`type-sidebar-link flex items-center py-2.5 px-3 rounded-lg font-semibold leading-5 transition-all duration-200 group cursor-default ${sectionActive
                       ? `${colors.headerBg} ${colors.headerText}`
-                      : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                      : "text-type-tertiary hover:bg-muted hover:text-foreground"
                     }`}
                 >
                   <div className="flex items-center gap-2.5">
                     <SectionIcon
-                      className={`h-4 w-4 transition-all duration-300 group-hover-wiggle ${sectionActive ? colors.icon : "text-gray-500 group-hover:text-gray-700"
+                      className={`h-4 w-4 transition-all duration-300 group-hover-wiggle ${sectionActive ? colors.icon : "text-type-tertiary group-hover:text-foreground"
                         }`}
                     />
                     <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
@@ -316,7 +324,7 @@ export default function DeveloperSidebar() {
                 </div>
 
                 {/* Section Items */}
-                <ul className="mt-1 ms-3 ps-3 border-s border-gray-200 space-y-0.5">
+                <ul className="mt-1 ms-3 ps-3 border-s border-border space-y-0.5">
                   {section.items.map((item) => {
                     const ItemIcon = item.icon
                     const itemActive = isActive(item.href)
@@ -329,13 +337,13 @@ export default function DeveloperSidebar() {
                           prefetch={false}
                           className={`type-sidebar-link flex items-center gap-2 py-2 px-2.5 rounded-md font-medium leading-5 transition-all duration-200 group ${itemActive
                               ? `${colors.itemBg} ${colors.itemText} font-medium`
-                              : "text-gray-500 hover:bg-gray-50 hover:text-gray-800"
+                              : "text-type-tertiary hover:bg-muted hover:text-foreground"
                             }`}
                         >
                           <ItemIcon
                             className={`h-3.5 w-3.5 transition-all duration-300 group-hover-pulse ${itemActive
                                 ? colors.icon
-                                : "text-gray-400 group-hover:text-gray-500"
+                                : "text-type-tertiary group-hover:text-foreground/70"
                               }`}
                           />
                           <span className="transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">

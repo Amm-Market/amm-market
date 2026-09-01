@@ -6,13 +6,14 @@ import { LocalizedMarketing } from "@/components/localized-marketing"
 import { Activity, BadgeDollarSign, Compass, Layers, LineChart, ShieldCheck } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
-import { TokenLogo } from "@/components/token-logo"
 import { PerformanceSection } from "@/components/ui/performance-section"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
+import { cn } from "@/lib/utils"
+import { getTokenIconSrc } from "@/lib/token-icons"
+import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
 
 const BorrowPowerSection = dynamic(() => import("@/components/borrow-power-section"))
 const PositionSafetyCardsSection = dynamic(() => import("@/components/position-safety-cards-section"))
-const HomepageNewsroomSection = dynamic(() => import("@/components/homepage/HomepageNewsroomSection"))
 
 const openSpokeFaqItems: InlineFaqItem[] = [
   {
@@ -119,10 +120,41 @@ const lpHubMarkets = [
   },
 ] as const
 
+function HubTokenImage({ symbol, overlap = false }: { symbol: string; overlap?: boolean }) {
+  const src = getTokenIconSrc(symbol)
+
+  if (!src) {
+    const initials = symbol.slice(0, 3).toUpperCase()
+    return (
+      <span
+        aria-hidden="true"
+        className={cn(
+          "inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted text-[0.5rem] font-semibold text-foreground",
+          overlap && "-ml-1.5",
+        )}
+      >
+        {initials}
+      </span>
+    )
+  }
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+      className={cn("h-5 w-5 shrink-0 rounded-full object-contain", overlap && "-ml-1.5")}
+    />
+  )
+}
+
 function HubPoolIcon({ pool }: { pool: string }) {
   if (pool.includes("More")) {
     return (
-      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#01AACF] text-[0.7rem] font-bold text-white">
+      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#01AACF] text-[0.7rem] font-semibold text-white">
         +
       </span>
     )
@@ -133,23 +165,14 @@ function HubPoolIcon({ pool }: { pool: string }) {
   return (
     <span className="flex items-center">
       {[first, second].map((token, index) => (
-        <TokenLogo
-          key={`${pool}-${token}`}
-          symbol={token}
-          className={`h-5 w-5 rounded-full ring-2 ring-white ${index > 0 ? "-ml-1.5" : ""}`}
-        />
+        <HubTokenImage key={`${pool}-${token}`} symbol={token} overlap={index > 0} />
       ))}
     </span>
   )
 }
 
 function HubSingleTokenIcon({ token }: { token: string }) {
-  return (
-    <TokenLogo
-      symbol={token}
-      className="h-5 w-5 rounded-full ring-2 ring-white"
-    />
-  )
+  return <HubTokenImage symbol={token} />
 }
 
 function HubTokenGroup({
@@ -165,14 +188,14 @@ function HubTokenGroup({
 }) {
   return (
     <div className="mt-5 first:mt-0">
-      <p className="mb-2 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[#7b858c]">
+      <p className="mb-2 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-type-tertiary">
         {label}
       </p>
       <div className="flex flex-wrap gap-2">
         {tokens.map((token) => (
           <span
             key={`${label}-${token}`}
-            className="inline-flex h-8 items-center gap-2 rounded-full border border-gray-200 bg-white px-3 text-sm font-semibold tracking-[-0.015em] text-[#2f3940]"
+            className="inline-flex h-8 items-center gap-2 rounded-full border border-border bg-card px-3 text-sm font-semibold tracking-[-0.015em] text-foreground"
           >
             {withPoolIcons ? <HubPoolIcon pool={token} /> : null}
             {withTokenIcons ? <HubSingleTokenIcon token={token} /> : null}
@@ -195,7 +218,7 @@ function BorrowMarketCard({
 }) {
   return (
     <div className="flex h-full flex-col feature-card rounded-2xl p-6 md:p-8">
-      <span className="text-5xl font-bold text-gray-300 md:text-6xl">{number}</span>
+      <span className="text-4xl text-gray-300/80 md:text-5xl">{number}</span>
       <FeatureCardTitle className="mt-6">{title}</FeatureCardTitle>
       <FeatureCardDescription className="mt-3">{description}</FeatureCardDescription>
     </div>
@@ -233,13 +256,13 @@ export default async function BorrowPage() {
 
               {/* Right Column - Text Content */}
                 <div className="order-1 mb-8 w-full text-left lg:order-2 lg:mb-0 lg:w-[45%]">
-                  <h1 className="mb-3 max-w-[11ch] text-4xl font-medium leading-[1.02] tracking-tight text-gray-900 sm:text-5xl md:mb-5 md:text-5xl lg:text-5xl xl:text-6xl">
+                  <h1 className="type-display-title mb-3 max-w-[11ch] text-foreground md:mb-5">
                     <span>Borrow against</span>
                     <br />
                     <span>AMM positions</span>
                   </h1>
 
-                  <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-gray-600 sm:max-w-[38ch] md:mb-6 md:text-lg">
+                  <p className="mb-5 max-w-[34ch] text-base leading-relaxed text-type-secondary sm:max-w-[38ch] md:mb-6 md:text-lg">
                     Turn your liquidity pool positions into collateral and borrow against them here without leaving the pool.
                   </p>
 
@@ -316,7 +339,7 @@ export default async function BorrowPage() {
               {lpHubMarkets.map((hub) => (
                 <article
                   key={hub.title}
-                  className="flex h-full flex-col feature-card rounded-2xl border border-gray-200 !bg-white p-6 md:p-8"
+                  className="flex h-full flex-col feature-card rounded-2xl border border-border p-6 md:p-8"
                 >
                   <p className="text-sm font-semibold tracking-[-0.01em] text-[#01AACF]">
                     {hub.category}
@@ -326,7 +349,7 @@ export default async function BorrowPage() {
                     {hub.description}
                   </FeatureCardDescription>
 
-                  <div className="mt-8 border-t border-gray-200 pt-6">
+                  <div className="mt-8 border-t border-border pt-6">
                     <HubTokenGroup label="LP pool collateral" tokens={hub.pools} withPoolIcons />
                     <HubTokenGroup label="Borrowable" tokens={hub.borrowable} withTokenIcons />
                   </div>

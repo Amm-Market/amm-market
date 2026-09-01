@@ -222,7 +222,7 @@
     "strings": [
       "N’ajoutez pas d’ombres, de dégradés, de contours ni d’effets.",
       "Marque primaire",
-      "Logo",
+      "Logotype",
       "Voix et rythme",
       "Typographie",
       "Système de palette",
@@ -275,16 +275,16 @@
       "Cyan complet",
       "Utilisez le wordmark cyan quand la page a déjà une mise en page calme et a besoin d’un signal Avana plus fort. Gardez-le sur fonds blancs ou très clairs.",
       "Logo Avana cyan complet",
-      "Logo",
+      "Logotype",
       "Utilisez l’icône quand le wordmark complet serait trop petit pour rester lisible : icônes d’app, avatars sociaux, favicons ou listes partenaires compactes.",
       "logo Avana",
       "Couleurs de base",
       "La palette Avana est volontairement simple : blanc pour l’espace, encre pour la clarté, cyan pour la reconnaissance.",
-      "Avana White",
+      "Blanc Avana",
       "Surface principale pour pages produit, cartes, documentation et mises en page qui ont besoin d’air.",
-      "Avana Ink",
+      "Encre Avana",
       "Texte principal et couleur de logo sombre. À utiliser quand le contraste et l’autorité comptent.",
-      "Avana Cyan",
+      "Cyan Avana",
       "Accent principal pour états actifs, liens, highlights clés et CTA portés par Avana."
     ]
   },
@@ -327,12 +327,12 @@
       "Emprunt activé",
       "Risque de volatilité minimal",
       "Paramètres de risque transparents et liquidations prévisibles pour les pools alignés sur le peg.",
-      "Range",
+      "Fourchette",
       "Vol. 30j",
-      "Buffer",
+      "Tampon",
       "Suivi de position plus clair",
       "Suivez santé, utilisation et limites par pool avec un parcours d’emprunt pensé pour les LP.",
-      "Console",
+      "Console de contrôle",
       "Santé",
       "2,4 M$",
       "Pour qui",
@@ -346,9 +346,9 @@
       "pour une liquidité partagée et des contrôles de risque flexibles. Avana s’appuie dessus pour sécuriser",
       "l’emprunt adossé aux LP",
       ", des vérifications",
-      "oracle",
+      "Oracle de prix",
       "résilientes, et une",
-      "liquidation",
+      "Liquidation de position",
       "Icônes de jetons Avana",
       "sans retirer de liquidité ni renoncer aux frais de trading.",
       "à 5,5 % d’APR sans retirer de liquidité ni renoncer aux frais de trading.",
@@ -378,7 +378,7 @@
       "En 2021,",
       "Aave",
       "a lancé",
-      "AMM Market",
+      "Marché AMM",
       "et a montré que les",
       "positions LP",
       "pouvaient servir de garantie, mais pour les DEX plus simples de l’époque.",
@@ -420,7 +420,7 @@
       "garantie",
       "Combien puis-je emprunter ?",
       "Jusqu’à 70 % de la valeur de votre LP, selon le type de pool, la volatilité et la",
-      "oracle",
+      "Oracle de prix",
       "confiance. Aucun montant minimum. Une garantie de meilleure qualité ouvre davantage de marge d’emprunt.",
       "Que se passe-t-il si la valeur de mon LP baisse ?",
       "Si votre",
@@ -433,7 +433,7 @@
       "Oui. Chaque",
       "position LP",
       "est gérée indépendamment, avec un risque isolé. La sécurité à l’échelle du système s’appuie sur l’architecture",
-      "-and-",
+      "-et-",
       "Spoke",
       "d’Aave v4.",
       "Puis-je rembourser tôt ou clôturer ma position ?",
@@ -444,7 +444,7 @@
       ", ou",
       "retirez",
       "Questions fréquentes",
-      "questions",
+      "Questions fréquentes",
       "Questions fréquentes"
     ]
   },
@@ -455,7 +455,7 @@
       "Les dernières actualités d’Avana",
       "Lire l’article",
       "Cadre de risque",
-      "Smart Agents",
+      "Agents intelligents",
       "Modèle de liquidation",
       "Guide d’emprunt",
       "Garantie Uniswap",
@@ -466,7 +466,7 @@
       "Stratégie de levier",
       "Contrôles de position",
       "Conception du risque",
-      "Architecture",
+      "L'Architecture",
       "Conception des oracles",
       "Vue développeur"
     ]
@@ -490,7 +490,7 @@
   },
   "trade-market-showcase": {
     "strings": [
-      "Stablecoins",
+      "Monnaies stables",
       "Ethereum",
       "Bitcoin",
       "Autres",
@@ -590,7 +590,7 @@
       "Facteur de santé > 1,5. L’utilisation d’emprunt reste dans la capacité, les frais continuent de s’accumuler, et votre LP reste intact.",
       "Zone d’alerte",
       "Facteur de santé 1,0–1,5. Vous êtes averti de rembourser la dette, d’ajouter de la garantie, ou de laisser l’automatisation réduire l’exposition.",
-      "Liquidation",
+      "Liquidation Judiciaire",
       "Facteur de santé < 1,0. Les frais s’appliquent d’abord, le principal LP nécessaire est désengagé, et la valeur résiduelle vous revient.",
       "Sécurité de position",
       "Chaque état de santé, clairement expliqué",
@@ -642,7 +642,7 @@
       "La liquidation vise le montant nécessaire pour rétablir la sécurité, pas une sortie forcée de toute la position.",
       "L’excédent vous revient",
       "Une fois la dette et les récompenses du liquidateur couvertes, la valeur résiduelle de garantie est renvoyée via le chemin de règlement.",
-      "Liquidations",
+      "Liquidations de positions",
       "Conçu pour que vous ne perdiez pas simplement la position",
       "En savoir plus sur le fonctionnement du règlement dans",
       "Conception de liquidation"
@@ -670,7 +670,7 @@
       "Questions fréquentes",
       "Questions fréquentes.",
       "Questions fréquentes",
-      "questions"
+      "Questions fréquentes"
     ]
   }
 }

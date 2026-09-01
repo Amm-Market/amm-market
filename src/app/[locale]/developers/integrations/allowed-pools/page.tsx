@@ -59,15 +59,15 @@ export default async function AllowedPoolsPage() {
 
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="overview" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Overview</h2>
+          <p className="mb-4 type-doc-body">
             Avana only accepts LP collateral from pools that have been reviewed and approved. The
             allowlist exists because LP support is not automatic for every pool on a DEX. The
             protocol needs enough information to price the position, manage liquidation, and bound
             the risk it is taking on.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p className="type-doc-body">
             Pool approval works alongside{" "}
             <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
               Collateral Factors
@@ -81,51 +81,51 @@ export default async function AllowedPoolsPage() {
           </p>
         </section>
 
-        <section id="review-criteria" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Review Criteria</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="review-criteria" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Review Criteria</h2>
+          <p className="mb-4 type-doc-body">
             A pool enters the allowlist only when the protocol can answer the same basic questions
             every time: can it price the position, can it exit the position, and can it monitor the
             risk in production.
           </p>
-          <ul className="space-y-3 text-sm text-gray-600">
+          <ul className="space-y-3 type-doc-body">
             {reviewCriteria.map((criterion) => (
-              <li key={criterion} className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+              <li key={criterion} className="type-doc-code-block">
                 {criterion}
               </li>
             ))}
           </ul>
         </section>
 
-        <section id="pool-families" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Pool Families</h2>
+        <section id="pool-families" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Pool Families</h2>
           <div className="space-y-4">
             {poolFamilies.map((family) => (
               <div key={family.family} className="border-b border-gray-100 pb-4 last:border-b-0 last:pb-0">
-                <h3 className="mb-1 font-semibold text-gray-900">{family.family}</h3>
-                <p className="text-sm text-gray-600">{family.treatment}</p>
+                <h3 className="mb-1 type-doc-subsection-title">{family.family}</h3>
+                <p className="type-doc-body">{family.treatment}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section id="risk-application" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Risk Application</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="risk-application" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Risk Application</h2>
+          <p className="mb-4 type-doc-body">
             Pool approval does not mean a position gets generous credit treatment. After a pool is
             admitted, each LP position is still valued on its own, discounted according to its risk
             treatment, and then added to the user&apos;s borrowing capacity inside the Borrow Spoke.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p className="type-doc-body">
             That is why pool approval and collateral valuation are tightly linked. A pool can be
             safe enough to admit while still requiring conservative caps, lower LTVs, or stricter
             liquidation handling once it is live.
           </p>
         </section>
 
-        <section id="integration-notes" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Integration Notes</h2>
-          <div className="space-y-3 text-sm text-gray-600">
+        <section id="integration-notes" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Integration Notes</h2>
+          <div className="space-y-3 type-doc-body">
             <p>
               Builders should think in terms of approved pool templates and deployment-specific
               allowlists, not as if every LP on a DEX is automatically supported.

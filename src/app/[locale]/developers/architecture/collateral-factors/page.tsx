@@ -27,9 +27,9 @@ export default async function CollateralFactorsPage() {
           description="How much of an LP position counts toward borrowing capacity after risk discounts."
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="leading-relaxed text-gray-600">
+        <section id="overview" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Overview</h2>
+          <p className="type-doc-body">
             Collateral factors define what fraction of an LP position&apos;s recoverable value can
             support debt. Avana does not use the LP&apos;s headline mark alone. The Borrow Spoke
             first reconstructs and discounts the position, then applies the market&apos;s collateral
@@ -37,14 +37,14 @@ export default async function CollateralFactorsPage() {
           </p>
         </section>
 
-        <section id="how-it-works" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">How It Works</h2>
+        <section id="how-it-works" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">How It Works</h2>
           <ol className="space-y-4">
             <li className="flex gap-4">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-sm font-semibold text-[#01AACF]">
                 01
               </div>
-              <p className="text-sm leading-7 text-gray-600">
+              <p className="type-doc-body">
                 The spoke admits only approved pools. Unlisted positions never reach valuation.
               </p>
             </li>
@@ -52,7 +52,7 @@ export default async function CollateralFactorsPage() {
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-sm font-semibold text-[#01AACF]">
                 02
               </div>
-              <p className="text-sm leading-7 text-gray-600">
+              <p className="type-doc-body">
                 The position is reconstructed, underlying assets are priced, and the result is
                 discounted to recoverable collateral value.
               </p>
@@ -61,7 +61,7 @@ export default async function CollateralFactorsPage() {
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-sm font-semibold text-[#01AACF]">
                 03
               </div>
-              <p className="text-sm leading-7 text-gray-600">
+              <p className="type-doc-body">
                 Collateral factors and market settings are applied. The spoke reports aggregate
                 borrowing capacity to the Hub for enforcement.
               </p>
@@ -69,22 +69,22 @@ export default async function CollateralFactorsPage() {
           </ol>
         </section>
 
-        <section id="borrowable-value" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Borrowable Value</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="borrowable-value" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Borrowable Value</h2>
+          <p className="mb-4 type-doc-body">
             Borrowable value is calculated per position, not as one flat number for the whole
             account. Two positions in different pools can produce different recoverable values and
             clear different collateral factors even if they look similar.
           </p>
-          <div className="rounded-lg border border-cyan-200 bg-cyan-50/60 p-4 text-sm text-gray-700">
+          <div className="type-doc-panel type-doc-body">
             A supported LP position contributes borrowing capacity only after the spoke has admitted
             it, valued it conservatively, and applied the market&apos;s collateral factor.
           </div>
         </section>
 
-        <section id="notes" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Notes</h2>
-          <ul className="space-y-3 text-sm text-gray-600">
+        <section id="notes" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Notes</h2>
+          <ul className="space-y-3 type-doc-body">
             <li>• Exact collateral factors live in each supported pool&apos;s configuration.</li>
             <li>• Different LP families can have different factors, liquidation thresholds, and bonuses.</li>
             <li>• Read this together with Health Factor and Liquidation Framework when building monitoring tools.</li>

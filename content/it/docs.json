@@ -259,7 +259,7 @@
       "Posizioni LP approvate aggiuntive possono essere depositate in seguito. Ogni posizione viene valorizzata autonomamente prima di contribuire alla capacità aggregata.",
       "Borrower",
       "Gli utenti interagiscono con il Borrow Spoke per depositare collaterale, prendere in prestito, rimborsare e gestire il prestito.",
-      "Borrow Spoke (Avana)",
+      "Spoke di prestito (Avana)",
       "Valorizza le posizioni LP, applica i controlli di salute e coordina la liquidazione quando il collaterale non sostiene più il debito.",
       "Hub Aave v4",
       "Layer condiviso di liquidità e contabilità. I Borrow Spoke attingono alle riserve dell'Hub dopo che i controlli lato Spoke sono superati.",
@@ -313,7 +313,7 @@
       },
       {
         "id": "disclosure",
-        "title": "Disclosure"
+        "title": "Informativa"
       },
       {
         "id": "treasury-usage",
@@ -329,7 +329,7 @@
       "Come le fee di interfaccia sui frontend Avana differiscono dall'economia di prestito del protocollo.",
       "Panoramica",
       "Interfaccia vs protocollo",
-      "Disclosure",
+      "Informativa",
       "Uso del treasury",
       "Note di integrazione",
       "Fee a livello di interfaccia sui frontend Avana, separate dall'economia di prestito del protocollo.",
@@ -746,7 +746,7 @@
       "Avana accetta collaterale LP solo da pool revisionati e approvati. L'allowlist esiste perché il supporto LP non è automatico per ogni pool di un DEX. Il protocollo ha bisogno di informazioni sufficienti per prezzare la posizione, gestire la liquidazione e delimitare il rischio che assume.",
       "L'approvazione del pool lavora insieme a",
       "Fattori di collaterale",
-      "Risk Framework",
+      "Quadro di rischio",
       ". L'allowlist decide se un pool può entrare nel sistema; i fattori di collaterale decidono quanto valore prendibile ogni posizione ammessa può contribuire.",
       "Un pool entra nell'allowlist solo quando il protocollo può rispondere ogni volta alle stesse domande di base: può prezzare la posizione, può uscirne e può monitorare il rischio in produzione.",
       "L'approvazione del pool non significa che una posizione riceva un trattamento di credito generoso. Dopo che un pool è ammesso, ogni posizione LP viene comunque valorizzata autonomamente, scontata secondo il suo trattamento di rischio e poi aggiunta alla capacità di prestito dell'utente nel Borrow Spoke.",
@@ -985,7 +985,7 @@
       "L'esposizione è limitata per famiglia LP, profondità del pool e complessità del collaterale, così i mercati più sottili ricevono limiti di prestito più stretti.",
       "Haircut di recovery",
       "L'oracolo sconta il valore LP teorico per impermanent loss, slippage di unwind e assunzioni di liquidazione sotto stress prima che venga concessa qualsiasi capacità di prestito.",
-      "Oracle Sentinel",
+      "Sentinella oracle",
       "Oracle Sentinel monitora la salute dei feed e gli input di verifica e può attivare un comportamento di fallback quando i dati sono stale, compromessi o inconsistenti con i controlli sullo stato della posizione.",
       "Parametri oracolo configurabili",
       "Le impostazioni oracolo specifiche del pool vengono configurate per token tramite",
@@ -993,17 +993,17 @@
       ". La tabella seguente mostra i parametri che definiscono come un token e il pool associato devono essere controllati:",
       "Parametro",
       "Descrizione",
-      "Token",
+      "Gettone",
       "Indirizzo del token di collaterale",
       "AggregatorV3Interface",
       "Feed Chainlink per il token sottostante",
       "maxFeedAge",
       "Età massima accettabile per il feed Chainlink",
-      "Pool",
+      "Pool di liquidità",
       "Pool DEX specifico (Uniswap V3, Balancer, Curve, ecc.)",
       "twapSeconds",
       "Finestra per il calcolo TWAP",
-      "Mode",
+      "Modo",
       "Modalità operativa dell'oracolo (standard/fallback)",
       "Deviazione massima consentita tra prezzo DEX e prezzo di verifica",
       "In pratica, il comportamento dell'oracolo nasce dalla combinazione di pricing esterno degli asset, logica di ricostruzione LP, trattamento del valore recuperabile e impostazioni per token configurate tramite"
@@ -1011,7 +1011,7 @@
   },
   "integrations/router-contract": {
     "meta": {
-      "title": "Router Contract",
+      "title": "Contratto router",
       "description": "Come il router Avana coordina depositi, prelievi, fee e azioni di liquidazione specifici per DEX."
     },
     "toc": [
@@ -1037,7 +1037,7 @@
       }
     ],
     "strings": [
-      "Router Contract",
+      "Contratto router",
       "Come il router Avana coordina depositi, prelievi, fee e azioni di liquidazione specifici per DEX.",
       "Panoramica",
       "Ruolo nel sistema",
@@ -1115,7 +1115,7 @@
       "L'importo che un utente può prendere in prestito in un Borrow Spoke dopo che ogni posizione LP depositata è stata valorizzata, rettificata per il rischio e aggiunta alla capacità aggregata dell'utente.",
       "Pool ammesso",
       "Un pool approvato dalla governance che soddisfa i requisiti di ammissibilità come copertura degli oracoli, profondità di liquidità, qualità di unwind e compatibilità con lo Spoke.",
-      "Loan-to-Value (LTV)",
+      "Rapporto prestito-valore (LTV)",
       "Il rapporto di prestito associato al collaterale dopo che la valorizzazione della posizione e i controlli di rischio specifici del pool di Avana sono stati applicati.",
       "L'unità di contabilità interna usata per tracciare le obbligazioni del borrower mentre gli interessi maturano nel tempo senza riscrivere continuamente ogni saldo del prestito.",
       "Il tasso che i borrower pagano sul debito in essere. Riflette sia le condizioni condivise dell'Hub sia considerazioni di rischio specifiche dell'LP.",
@@ -1285,7 +1285,7 @@
       "Importante:",
       "Leggi attentamente questo disclaimer prima di usare Avana. Usando il protocollo, riconosci di aver letto, compreso e accettato di essere vincolato da questi termini. Per i termini completi, consulta i nostri",
       "Termini di servizio",
-      "Privacy Policy",
+      "Informativa sulla privacy",
       "Questo disclaimer integra e va letto insieme ai nostri",
       ". I Termini di servizio costituiscono un accordo legalmente vincolante tra te e Avana relativo all'accesso e all'uso del protocollo e dei servizi correlati.",
       "Dalla nostra homepage:",
@@ -1349,7 +1349,7 @@
       },
       {
         "id": "compliance",
-        "title": "Compliance"
+        "title": "Conformità"
       },
       {
         "id": "related-policies",
@@ -1362,7 +1362,7 @@
       "Panoramica",
       "Restrizioni di accesso",
       "Giurisdizioni soggette a restrizioni",
-      "Compliance",
+      "Conformità",
       "Policy correlate",
       "Sanzioni OFAC",
       "Ucraina (regioni di Crimea, Donetsk e Luhansk)",
@@ -1396,7 +1396,7 @@
       "Per informazioni complete su diritti e obblighi nell'uso di Avana, consulta:",
       "Termini di servizio",
       "Termini e condizioni completi che regolano l'uso dei servizi Avana, inclusi requisiti di eleggibilità, attività vietate e risoluzione delle controversie.",
-      "Privacy Policy",
+      "Informativa sulla privacy",
       "Informazioni su come raccogliamo, usiamo e proteggiamo le tue informazioni personali quando usi i nostri servizi.",
       "Disclaimer legale",
       "Disclaimer importanti relativi a rischi, garanzie e limitazioni di responsabilità."
@@ -1756,7 +1756,7 @@
   },
   "safety/bug-bounty": {
     "meta": {
-      "title": "Bug Bounty",
+      "title": "Premio per la scoperta di bug",
       "description": "Scope di disclosure responsabile del Bug Bounty Avana, superfici di rischio del collaterale LP e filosofia di severity basata sull'impatto economico."
     },
     "toc": [
@@ -1774,7 +1774,7 @@
       }
     ],
     "strings": [
-      "Bug Bounty",
+      "Premio per la scoperta di bug",
       "Scope di disclosure responsabile del Bug Bounty Avana, superfici di rischio del collaterale LP e filosofia di severity basata sull'impatto economico.",
       "Panoramica",
       "Scope e architettura di sistema",
@@ -1821,13 +1821,13 @@
       "Percorsi di liquidazione o relay oracolo compromessi",
       "Perdita di fondi utente tramite integrazioni fidate",
       "Outage operativi che congelano azioni critiche",
-      "Critical",
+      "Critico",
       "border-red-400 bg-red-50/70",
       "Perdita di fondi diretta o indiretta, creazione di bad debt, insolvenza del protocollo o manipolazione sistemica della valorizzazione del collaterale.",
-      "High",
+      "Alto",
       "border-amber-400 bg-amber-50/70",
       "Danno significativo ma delimitato, come comportamento di liquidazione errato, bypass parziale dei controlli di rischio o fallimenti contabili contenuti.",
-      "Medium / Low",
+      "Medio / Basso",
       "border-gray-300 bg-gray-50",
       "Finding a impatto limitato, inconsistenze di edge case, problemi di logica non critici o vulnerabilità senza un percorso credibile verso un danno economico rilevante.",
       "Scope di disclosure responsabile e guida al triage per impatto economico per la ricerca di sicurezza su Avana.",
@@ -1905,7 +1905,7 @@
       "Testa shock di mercato, edge case degli oracoli e fallimenti di routing di liquidazione, non solo il comportamento unit-level dei contratti.",
       "Canali di revisione esterni",
       "Gli audit formali e il programma",
-      "Bug Bounty",
+      "Premio per la scoperta di bug",
       "dovrebbero restare entrambi attivi. Uno non sostituisce l'altro.",
       "• Contabilità onchain e settlement di liquidazione dovrebbero essere deterministici una volta attivati.",
       "• Fonti oracolo, adapter DEX e infrastruttura operativa dei liquidatori sono dipendenze esterne e andrebbero monitorate come tali.",
@@ -2084,7 +2084,7 @@
       "L'azione intrapresa",
       "La durata prevista",
       "Il percorso di ritorno al funzionamento normale",
-      "Risk Framework",
+      "Quadro di rischio",
       "Come Avana propone, revisiona ed esegue le modifiche di rischio sull'Hub e sugli LP Collateral Spoke.",
       "L'Avana Risk Framework definisce come le modifiche ai parametri vengono proposte, controllate ed eseguite sull'Hub e sugli LP Collateral Spoke. Copre i controlli usati quando il protocollo regola supply e borrow cap, impostazioni LT/LTV, input dei tassi di interesse, stato di mercato e altri parametri che dipendono da prezzi, utilizzo, profondità del pool, concentrazione, volatilità, comportamento del peg, circuit breaker, salute della posizione e stato correlato.",
       "Il collaterale LP non è una classe di asset omogenea. LP stable, LP di asset correlati, pool weighted, liquidità concentrata e altri design AMM possono ciascuno avere il proprio percorso di valorizzazione specifico dello Spoke, percorso di liquidazione e failure mode. Il framework esiste perché quelle differenze siano riflesse nel processo di aggiornamento invece di restare nascoste dietro un'unica impostazione di rischio generica.",

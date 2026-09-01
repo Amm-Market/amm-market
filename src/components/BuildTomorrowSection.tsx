@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
-import { SectionEyebrow, SectionTitle } from "@/components/shared"
+import { FeatureCardTitle, SectionIntro, SectionLead } from "@/components/shared"
 import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 import { siteRoutes } from "@/lib/site"
 
@@ -50,24 +50,22 @@ export default async function BuildTomorrowSection() {
       <div className="site-content-shell">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
           <div className="space-y-4">
-            <SectionEyebrow tone="violet">Meet Avana</SectionEyebrow>
-            <SectionTitle>
-              A lending protocol for LP-backed loans
-            </SectionTitle>
+            <SectionIntro eyebrow="Meet Avana" eyebrowTone="violet" title="A lending protocol for LP-backed loans" />
           </div>
-          <div className="min-w-0 text-left text-[#39515b]">
-            <p className="max-w-[42rem] text-[1.08rem] leading-[1.6] tracking-[-0.02em] lg:text-[1.18rem]">
+          <div className="min-w-0 text-left text-type-secondary">
+            <SectionLead variant="display" className="max-w-[42rem]">
               {MEET_PARAGRAPH}
-            </p>
+            </SectionLead>
           </div>
         </div>
 
         <div className="mt-24 md:mt-32 2xl:mt-28">
           <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
-            <SectionEyebrow tone="violet">Avana Markets</SectionEyebrow>
-            <SectionTitle>
-              Unlock Capital from AMM Markets
-            </SectionTitle>
+            <SectionIntro
+              eyebrow="Avana Markets"
+              eyebrowTone="violet"
+              title="Unlock Capital from AMM Markets"
+            />
           </div>
 
           <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-3">
@@ -87,17 +85,15 @@ export default async function BuildTomorrowSection() {
                 </div>
                 <div className="mt-7 flex flex-col">
                   <div className="flex items-center justify-between gap-4">
-                    <h3 className="text-[1.7rem] font-medium leading-none tracking-[-0.055em] text-[#1b2028] md:text-[1.9rem]">
-                      {card.title}
-                    </h3>
+                    <FeatureCardTitle as="h3">{card.title}</FeatureCardTitle>
                     <Link
                       href={card.href}
-                      className="inline-flex h-11 shrink-0 items-center justify-center rounded-full border border-[#8ec5e2] px-5 text-sm font-semibold tracking-[-0.02em] text-[#187da8] transition-colors hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white"
+                      className="inline-flex h-11 shrink-0 items-center justify-center rounded-full border border-[#8ec5e2] px-5 text-sm tracking-[-0.02em] text-type-accent transition-colors hover:border-[#01AACF] hover:bg-[#01AACF] hover:text-white"
                     >
                       Learn more
                     </Link>
                   </div>
-                  <p className="mt-5 max-w-[25rem] text-[1.05rem] leading-[1.48] tracking-[-0.035em] text-[#667184] md:text-[1.12rem]">
+                  <p className="type-body-copy mt-5 max-w-[25rem]">
                     {card.description}
                   </p>
                 </div>

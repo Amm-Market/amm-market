@@ -9,7 +9,9 @@
       "closeMenu": "Sluit menu",
       "language": "Taal: {language}",
       "logo": "{site}-logo",
-      "helpfulLinks": "Handige links"
+      "helpfulLinks": "Handige links",
+      "helpCenter": "Helpcentrum: e-mail naar support",
+      "themeToggle": "Themavoorkeur"
     },
     "nav": {
       "products": "Producten",
@@ -24,7 +26,7 @@
       "newsroom": "Nieuwsredactie",
       "brand": "Merk",
       "faq": "Veelgestelde vragen",
-      "privacy": "Privacy",
+      "privacy": "Privacybeleid",
       "terms": "Voorwaarden",
       "overview": "Overzicht",
       "architecture": "Architectuur",
@@ -76,7 +78,7 @@
     "notFound": {
       "title": "Deze pagina is niet beschikbaar.",
       "body": "Het adres kan verkeerd zijn of de pagina kan verplaatst zijn.",
-      "home": "Go to homepage",
+      "home": "Naar homepage",
       "faq": "Veelgestelde vragen"
     },
     "sandboxNotice": "Sandbox gegevens getoond voor voorbeeldweergave alleen. APYs, prijzen en rendementen zijn illustratief en kunnen afwijken van de actuele marktomstandigheden.",
@@ -87,7 +89,7 @@
       "shareOnLinkedIn": "Delen op LinkedIn",
       "previousPost": "Vorige post",
       "nextPost": "Volgende post",
-      "onThisPage": "On this page"
+      "onThisPage": "Op deze pagina"
     },
     "docs": {
       "previous": "Vorige",
@@ -99,7 +101,8 @@
         "liquidation": "Liquidatiekader",
         "integrations": "Ondersteunde integraties",
         "safety": "Veiligheidsmechanismen",
-        "legal": "Juridisch & Compliance"
+        "legal": "Juridisch & Compliance",
+        "copilot": "Vraag AI"
       },
       "items": {
         "overview": "Overzicht",
@@ -131,7 +134,11 @@
         "bugBounty": "Bug-bounty",
         "insuranceFunds": "Verzekeringsfondsen",
         "securityDisclosures": "Beveiligingsmeldingen",
-        "legalDisclaimer": "Juridische disclaimer"
+        "legalDisclaimer": "Juridische disclaimer",
+        "aiIntroduction": "AI-introductie",
+        "copilotProtocols": "Ondersteunde protocollen",
+        "copilotPrompts": "Promptvoorbeelden",
+        "copilotWorkflow": "Agentworkflow"
       }
     },
     "faqUi": {
@@ -147,15 +154,34 @@
     },
     "tags": {
       "all": "Alles",
-      "product": "Product",
+      "product": "Productaanbod",
       "strategy": "Strategie",
       "guides": "Gidsen",
-      "protocol": "Protocol",
+      "protocol": "Protocolstack",
       "institutions": "Instellingen"
     },
     "newsroom": {
       "latestFrom": "Laatste van Avana",
       "readNewsroom": "Lees nieuwsredactie"
+    },
+    "theme": {
+      "lightMode": "Lichte modus",
+      "darkMode": "Donkere modus",
+      "systemMode": "Systeem",
+      "tapToChange": "Tik om te wijzigen"
+    },
+    "exportMenu": {
+      "copyPage": "Pagina kopiëren",
+      "copied": "Gekopieerd",
+      "copyPageMarkdown": "Pagina kopiëren als Markdown",
+      "copyPageLink": "Paginalink kopiëren",
+      "copyPageLinkDescription": "Kopieer de URL van deze pagina naar het klembord",
+      "openInChatGPT": "Openen in ChatGPT",
+      "openInClaude": "Openen in Claude",
+      "openInGrok": "Openen in Grok",
+      "openInPerplexity": "Openen in Perplexity",
+      "askAboutPage": "Stel vragen over deze pagina",
+      "reviewPrompt": "Bekijk de inhoud van deze Avana-pagina en beantwoord de vragen."
     }
   },
   "meta": {
@@ -166,7 +192,7 @@
     "twitterTitle": "Avana - Lenen tegen LP Posities",
     "twitterDescription": "Ontgrendel liquiditeit van je LP tokens op Aave v4",
     "titleTemplate": "{title} | Avana",
-    "team": "Avana Team",
+    "team": "Avana-team",
     "ogAlt": "Avana - DeFi Liquiditeitsprotocol",
     "home": {
       "title": "Lenen tegen LP posities op Aave v4",
@@ -222,12 +248,12 @@
       "subtitle": "Blijf handelskosten verdienen terwijl je liquiditeit vrijmaakt uit Uniswap, Curve en Balancer posities.",
       "subtitleMobileLines": [
         "Krijg toegang tot maximaal 80% van de waarde van je liquiditeitspool",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "tegen 5,5% APR zonder liquiditeit op te nemen of",
+        "handelskosten op te geven."
       ],
       "subtitleDesktopLines": [
         "Toegang tot maximaal 80% van de waarde van uw liquiditeitspool tegen 5,5% APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "tegen 5,5% APR zonder liquiditeit op te nemen of handelskosten op te geven."
       ],
       "primaryCta": "Probeer Sandbox",
       "secondaryCta": "Lees documenten"

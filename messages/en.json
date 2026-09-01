@@ -9,7 +9,15 @@
       "closeMenu": "Close menu",
       "language": "Language: {language}",
       "logo": "{site} logo",
-      "helpfulLinks": "Helpful links"
+      "helpfulLinks": "Helpful links",
+      "helpCenter": "Help Center: email support",
+      "themeToggle": "Theme preference"
+    },
+    "theme": {
+      "systemMode": "System",
+      "lightMode": "Light Mode",
+      "darkMode": "Dark Mode",
+      "tapToChange": "Tap to change"
     },
     "nav": {
       "products": "Products",
@@ -88,6 +96,19 @@
       "previousPost": "Previous post",
       "nextPost": "Next post",
       "onThisPage": "On this page"
+    },
+    "exportMenu": {
+      "copyPage": "Copy page",
+      "copied": "Copied",
+      "copyPageMarkdown": "Copy page as Markdown",
+      "copyPageLink": "Copy page link",
+      "copyPageLinkDescription": "Copy this page URL to clipboard",
+      "openInChatGPT": "Open in ChatGPT",
+      "openInClaude": "Open in Claude",
+      "openInGrok": "Open in Grok",
+      "openInPerplexity": "Open in Perplexity",
+      "askAboutPage": "Ask questions about this page",
+      "reviewPrompt": "Review this Avana page and answer questions using the content below."
     },
     "docs": {
       "previous": "Previous",

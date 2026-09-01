@@ -29,7 +29,7 @@ export function SectionEyebrow({ children, className = "", tone = "blue" }: Sect
   return (
     <span
       className={cn(
-        "inline-flex text-[0.98rem] font-semibold tracking-[-0.02em]",
+        "type-eyebrow inline-flex",
         toneClasses[tone],
         className,
       )}

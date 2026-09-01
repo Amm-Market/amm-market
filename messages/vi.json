@@ -9,7 +9,9 @@
       "closeMenu": "Đóng menu",
       "language": "Ngôn ngữ: {language}",
       "logo": "Logo {site}",
-      "helpfulLinks": "Liên kết hữu ích"
+      "helpfulLinks": "Liên kết hữu ích",
+      "helpCenter": "Trung tâm trợ giúp: gửi email hỗ trợ",
+      "themeToggle": "Tùy chọn giao diện"
     },
     "nav": {
       "products": "Sản phẩm",
@@ -76,7 +78,7 @@
     "notFound": {
       "title": "Trang này không khả dụng.",
       "body": "Địa chỉ có thể sai hoặc trang có thể đã bị di chuyển.",
-      "home": "Go to homepage",
+      "home": "Về trang chủ",
       "faq": "Câu hỏi thường gặp"
     },
     "sandboxNotice": "Sandbox dữ liệu chỉ hiển thị để xem trước. APYs, giá cả và lợi nhuận chỉ mang tính minh họa và có thể khác với điều kiện thị trường thực tế.",
@@ -87,7 +89,7 @@
       "shareOnLinkedIn": "Chia sẻ trên LinkedIn",
       "previousPost": "Bài viết trước",
       "nextPost": "Bài viết tiếp theo",
-      "onThisPage": "On this page"
+      "onThisPage": "Trên trang này"
     },
     "docs": {
       "previous": "Trước",
@@ -99,7 +101,8 @@
         "liquidation": "Khung pháp lý thanh lý",
         "integrations": "Các tích hợp được hỗ trợ",
         "safety": "Cơ chế an toàn",
-        "legal": "Pháp lý & Tuân thủ"
+        "legal": "Pháp lý & Tuân thủ",
+        "copilot": "Hỏi AI"
       },
       "items": {
         "overview": "Tổng quan",
@@ -131,7 +134,11 @@
         "bugBounty": "Tiền thưởng lỗi phần mềm",
         "insuranceFunds": "Quỹ bảo hiểm",
         "securityDisclosures": "Công bố bảo mật",
-        "legalDisclaimer": "Tuyên bố pháp lý"
+        "legalDisclaimer": "Tuyên bố pháp lý",
+        "aiIntroduction": "Giới thiệu AI",
+        "copilotProtocols": "Giao thức được hỗ trợ",
+        "copilotPrompts": "Ví dụ prompt",
+        "copilotWorkflow": "Quy trình tác nhân"
       }
     },
     "faqUi": {
@@ -156,6 +163,25 @@
     "newsroom": {
       "latestFrom": "Mới nhất từ Avana",
       "readNewsroom": "Đọc phòng tin"
+    },
+    "theme": {
+      "lightMode": "Chế độ sáng",
+      "darkMode": "Chế độ tối",
+      "systemMode": "Hệ thống",
+      "tapToChange": "Chạm để thay đổi"
+    },
+    "exportMenu": {
+      "copyPage": "Sao chép trang",
+      "copied": "Đã sao chép",
+      "copyPageMarkdown": "Sao chép trang dưới dạng Markdown",
+      "copyPageLink": "Sao chép liên kết trang",
+      "copyPageLinkDescription": "Sao chép URL trang này vào bảng nhớ tạm",
+      "openInChatGPT": "Mở trong ChatGPT",
+      "openInClaude": "Mở trong Claude",
+      "openInGrok": "Mở trong Grok",
+      "openInPerplexity": "Mở trong Perplexity",
+      "askAboutPage": "Đặt câu hỏi về trang này",
+      "reviewPrompt": "Xem nội dung trang Avana bên dưới và trả lời các câu hỏi."
     }
   },
   "meta": {
@@ -222,12 +248,12 @@
       "subtitle": "Tiếp tục kiếm phí giao dịch trong khi mở khóa thanh khoản từ các vị trí Uniswap, Curve và Balancer.",
       "subtitleMobileLines": [
         "Truy cập lên đến 80% giá trị của Bể Thanh Khoản của bạn",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "với APR 5,5% mà không rút thanh khoản hay",
+        "từ bỏ phí giao dịch."
       ],
       "subtitleDesktopLines": [
         "Truy cập tới 80% giá trị của Quỹ Thanh khoản của bạn với lãi suất 5,5% APR",
-        "without withdrawing liquidity or giving up trading fees."
+        "với APR 5,5% mà không rút thanh khoản hay từ bỏ phí giao dịch."
       ],
       "primaryCta": "Thử Sandbox",
       "secondaryCta": "Đọc tài liệu"

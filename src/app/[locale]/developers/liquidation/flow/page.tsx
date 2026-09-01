@@ -75,22 +75,22 @@ export default async function LiquidationFlowPage() {
           description="Runtime sequence for how unhealthy LP-backed positions move from detection through settlement once liquidation starts."
         />
 
-        <section id="overview" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Overview</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="overview" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Overview</h2>
+          <p className="mb-4 type-doc-body">
             Liquidation starts when an account&apos;s health factor falls below the liquidation
             threshold. Aave handles debt accounting and the liquidation entry point against the
             ERC-20 vault collateral. Avana handles the LP settlement behind that vault token.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p className="type-doc-body">
             Debt is repaid, vault collateral is seized, the matching vault token is burned, the real
             LP position is settled, and any residual value is returned according to the market rule.
           </p>
         </section>
 
-        <section id="related-docs" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Related Docs</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="related-docs" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Related Docs</h2>
+          <p className="mb-4 type-doc-body">
             Liquidation policy lives on the{" "}
             <Link href="/developers/liquidation" className="text-[#01AACF] hover:underline">
               Liquidation Framework
@@ -107,24 +107,24 @@ export default async function LiquidationFlowPage() {
           </p>
         </section>
 
-        <section id="runtime-sequence" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Runtime Sequence</h2>
+        <section id="runtime-sequence" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Runtime Sequence</h2>
           <div className="space-y-4">
             {runtimeSteps.map((step, index) => (
               <div key={step.title}>
                 <div className="mb-2 flex items-center gap-3">
                   <span className="font-semibold text-[#01AACF]">{index + 1}.</span>
-                  <h3 className="font-semibold text-gray-900">{step.title}</h3>
+                  <h3 className="type-doc-subsection-title">{step.title}</h3>
                 </div>
-                <p className="type-body-copy text-gray-600">{step.body}</p>
+                <p className="type-doc-body">{step.body}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section id="state-transitions" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">State Transitions</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="state-transitions" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">State Transitions</h2>
+          <p className="mb-4 type-doc-body">
             Different LP families are all trying to reach the same end state, but they do not get
             there through identical exits. Adapter-based handling lets each pool family follow the
             unwind path that matches its own mechanics.
@@ -132,16 +132,16 @@ export default async function LiquidationFlowPage() {
           <div className="space-y-4">
             {stateTransitions.map((item) => (
               <div key={item.title}>
-                <h3 className="mb-1 font-semibold text-gray-900">{item.title}</h3>
-                <p className="type-body-copy text-gray-600">{item.body}</p>
+                <h3 className="mb-1 type-doc-subsection-title">{item.title}</h3>
+                <p className="type-doc-body">{item.body}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section id="operator-notes" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Operator Notes</h2>
-          <div className="space-y-3 type-body-copy text-gray-600">
+        <section id="operator-notes" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Operator Notes</h2>
+          <div className="space-y-3 type-doc-body">
             <p>
               Liquidation bots should index active positions, refresh debt drift, and price
               accounts from the same oracle stack used by the protocol rather than from raw AMM

@@ -27,24 +27,24 @@ export default async function KeyConceptsPage() {
       <div data-developer-doc-export-root className="min-w-0 w-full max-w-3xl flex-1">
         <DeveloperDocPageHeader title="Key Concepts" />
 
-        <section id="core-insight" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Core Insight</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="core-insight" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Core Insight</h2>
+          <p className="mb-4 type-doc-body">
             Standard lending markets usually treat collateral as simple token balances: ETH, BTC,
             stablecoins, or other ERC-20 assets. Avana is built for collateral that changes shape
             over time. LP positions can contain multiple assets, accrue fees, drift with price
             movement, become one-sided, or require a specific unwind path.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p className="type-doc-body">
             Because of that, Avana underwrites collateral at the LP market level. Each supported
             pool or LP family can have its own valuation logic, collateral factors, borrowable
             assets, liquidation assumptions, and risk limits.
           </p>
         </section>
 
-        <section id="user-flow" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Borrowing Model</h2>
-          <div className="space-y-4 text-sm text-gray-600">
+        <section id="user-flow" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Borrowing Model</h2>
+          <div className="space-y-4 type-doc-body">
             <p>
               Users deposit supported LP positions into a Borrow Spoke. The positions can remain
               active in their pools while the protocol takes custody for collateral accounting.
@@ -61,39 +61,39 @@ export default async function KeyConceptsPage() {
           </div>
         </section>
 
-        <section id="oracle-valuation" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Oracle & Valuation</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="oracle-valuation" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Oracle & Valuation</h2>
+          <p className="mb-4 type-doc-body">
             Avana prices LP collateral by reconstructing the position and valuing the assets
             inside it. For fungible LPs, the protocol derives value from external asset prices and
             pool balance reconstruction. For concentrated liquidity, it decomposes the position by
             liquidity, range, current tick, token exposure, and accrued fees.
           </p>
-          <p className="mb-4 text-sm leading-relaxed text-gray-600">
+          <p className="mb-4 type-doc-body">
             The result is then discounted into recoverable collateral value. Borrow power is based
             on what the position can realistically support under the market&apos;s risk assumptions,
             not on an optimistic net asset value.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p className="type-doc-body">
             Avana uses a dual-oracle pricing framework for LP collateral. Chainlink price feeds
             provide the primary reference for the underlying assets, while AMM-derived TWAPs act as
             an independent verification layer sourced from onchain liquidity.
           </p>
         </section>
 
-        <section id="borrowing-process" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Borrowing Capacity</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="borrowing-process" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Borrowing Capacity</h2>
+          <p className="mb-4 type-doc-body">
             Borrowing capacity comes from the risk-adjusted value of approved LP positions inside a
             Borrow Spoke. Avana reconstructs each position, prices the underlying exposure, applies
             pool-level risk treatment, and then applies the market&apos;s collateral factor.
           </p>
-          <p className="mb-4 text-sm leading-relaxed text-gray-600">
+          <p className="mb-4 type-doc-body">
             The Borrow Spoke reports that capacity to the Hub for enforcement. When a user has
             multiple approved positions in the same market, Avana aggregates their capacity while
             still valuing each position under its own pool, range, liquidity, and risk assumptions.
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="type-doc-body">
             See{" "}
             <Link href="/developers/architecture/collateral-factors" className="text-[#01AACF] hover:underline">
               Collateral Factors
@@ -103,15 +103,15 @@ export default async function KeyConceptsPage() {
           </p>
         </section>
 
-        <section id="health-monitoring" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Health & Liquidation</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="health-monitoring" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Health & Liquidation</h2>
+          <p className="mb-4 type-doc-body">
             Avana monitors account health inside each Borrow Spoke using the same valuation path
             that governs borrowing. Adjusted collateral value — already discounted through LP
             reconstruction, pricing, collateral factors, and recoverable-value assumptions — is
             compared against outstanding debt.
           </p>
-          <p className="text-sm leading-relaxed text-gray-600">
+          <p className="type-doc-body">
             When health falls below the liquidation threshold, Aave handles debt accounting and the
             liquidation entry point against the ERC-20 vault collateral. Avana handles the LP
             settlement behind that vault token: burning vault collateral, mapping liquidation back
@@ -120,14 +120,14 @@ export default async function KeyConceptsPage() {
           </p>
         </section>
 
-        <section id="fee-collection" className="mb-12">
-          <h2 className="mb-4 type-section-title text-gray-900">Fee Treatment</h2>
-          <p className="mb-4 leading-relaxed text-gray-600">
+        <section id="fee-collection" className="mb-10">
+          <h2 className="mb-4 type-doc-section-title">Fee Treatment</h2>
+          <p className="mb-4 type-doc-body">
             LP positions may keep accruing trading fees while they are used as collateral. Avana
             can recognize those fees in valuation and, subject to health checks, let users claim
             them without fully exiting the principal LP position.
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="type-doc-body">
             <strong>Related docs:</strong>{" "}
             <Link href="/developers/integrations/price-oracles" className="text-[#01AACF] hover:underline">
               Price Oracles

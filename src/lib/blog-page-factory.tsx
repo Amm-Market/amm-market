@@ -60,7 +60,7 @@ export function renderBlogSections(sections: readonly BlogSection[]) {
     <section
       key={section.id}
       id={section.id}
-      className={`space-y-4 scroll-mt-24 ${index > 0 ? "deferred-viewport" : ""}`}
+      className={`space-y-4 scroll-mt-24`}
     >
       {section.title ? (
         <h2

@@ -12,6 +12,7 @@ import {
 } from "lucide-react"
 import { DeveloperScrollSpyRail } from "@/components/developer-scroll-spy-rail"
 import { DeveloperDocPageHeader } from "@/components/developer-doc-page-header"
+import { DeveloperDocSectionHeader } from "@/components/developer-doc-section-header"
 
 const sections = [
   { id: "welcome", title: "Welcome" },
@@ -99,14 +100,7 @@ function SectionHeader({
   title: string
   description: string
 }) {
-  return (
-    <div className="mb-6">
-      <h2 className="type-section-title text-slate-950">
-        {title}
-      </h2>
-      <p className="mt-3 max-w-3xl type-body-copy text-slate-600">{description}</p>
-    </div>
-  )
+  return <DeveloperDocSectionHeader title={title} description={description} />
 }
 
 export async function generateMetadata() {
@@ -140,25 +134,25 @@ export default async function DevelopersPage() {
           </div>
         </section>
 
-        <section id="what-is-avana" className="deferred-viewport mt-12 scroll-mt-32">
+        <section id="what-is-avana" className="mt-10 scroll-mt-32">
           <SectionHeader
             title="What is Avana?"
             description="Avana is a lending protocol built for LP collateral. It lets users deposit supported AMM positions, keep those positions active in the underlying pool, and borrow against them through Aave v4 infrastructure."
           />
 
-          <p className="max-w-3xl text-sm leading-7 text-slate-600">
+          <p className="max-w-3xl type-doc-body">
             Liquidity providers often have to remove liquidity before they can borrow against their
             capital. That means exiting the pool, giving up fee exposure, and interrupting the
             market position they already built.
           </p>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
+          <p className="mt-3 max-w-3xl type-doc-body">
             Avana solves this by making supported LP positions usable as collateral. The LP stays
             live, Avana tracks and values the position, and Aave v4 handles the borrow-side
             accounting through an internal vault collateral token.
           </p>
         </section>
 
-        <section id="how-it-works" className="deferred-viewport mt-12 scroll-mt-32">
+        <section id="how-it-works" className="mt-10 scroll-mt-32">
           <SectionHeader
             title="How It Works"
             description="The user-facing flow is short, but each stage hides LP-specific underwriting work. Later pages break down the mechanics behind each step."
@@ -171,15 +165,15 @@ export default async function DevelopersPage() {
                   {step}
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-base font-semibold text-slate-950">{title}</h3>
-                  <p className="mt-1 text-sm leading-7 text-slate-600">{description}</p>
+                  <h3 className="type-doc-subsection-title">{title}</h3>
+                  <p className="mt-1 type-doc-body">{description}</p>
                 </div>
               </li>
             ))}
           </ol>
         </section>
 
-        <section id="unlocking-lp-collateral" className="deferred-viewport mt-12 scroll-mt-32">
+        <section id="unlocking-lp-collateral" className="mt-10 scroll-mt-32">
           <SectionHeader
             title="Why LP Collateral Matters"
             description="LP positions already sit in working capital. Without a lending layer, getting cash back out usually means shrinking or closing the pool position first."
@@ -192,15 +186,15 @@ export default async function DevelopersPage() {
                   <Icon className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-slate-950">{title}</h3>
-                  <p className="mt-1 text-sm leading-7 text-slate-600">{description}</p>
+                  <h3 className="type-doc-subsection-title">{title}</h3>
+                  <p className="mt-1 type-doc-body">{description}</p>
                 </div>
               </li>
             ))}
           </ul>
         </section>
 
-        <section id="architecture" className="deferred-viewport mt-12 scroll-mt-32">
+        <section id="architecture" className="mt-10 scroll-mt-32">
           <SectionHeader
             title="Architecture"
             description="Avana uses Aave v4 because LP collateral needs shared liquidity and isolated risk logic at the same time. The Hub handles the common monetary layer while spokes handle LP-specific work: pool collateral registration, position valuation, risk enforcement, and liquidation execution."
@@ -212,13 +206,13 @@ export default async function DevelopersPage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-50 text-[#01AACF]">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-slate-950">{title}</h3>
-                <p className="mt-2 text-sm leading-7 text-slate-600">{description}</p>
+                <h3 className="mt-4 type-doc-subsection-title">{title}</h3>
+                <p className="mt-2 type-doc-body">{description}</p>
               </div>
             ))}
           </div>
 
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
+          <p className="mt-4 max-w-3xl type-doc-body">
             Builders should think of the system in two halves. The Hub is the common balance sheet
             and debt engine, while Borrow Spokes decide what each LP market can safely support and
             how that market must be unwound if it fails. The Lend Spoke feeds capital into the Hub

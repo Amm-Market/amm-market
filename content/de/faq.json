@@ -189,7 +189,7 @@
     },
     {
       "id": "liquidations",
-      "name": "Health & Liquidation",
+      "name": "Gesundheit und Liquidation",
       "summary": "",
       "questions": [
         {
@@ -248,7 +248,7 @@
     },
     {
       "id": "gho-stablecoin",
-      "name": "GHO Stablecoin",
+      "name": "GHO-Stablecoin",
       "summary": "",
       "questions": [
         {
@@ -297,7 +297,7 @@
     },
     {
       "id": "automation-features",
-      "name": "Automation Features",
+      "name": "Automatisierungsfunktionen",
       "summary": "",
       "questions": [
         {

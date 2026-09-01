@@ -1,4 +1,6 @@
 export { SectionEyebrow, type SectionEyebrowTone } from './SectionEyebrow'
 export { SectionTitle } from './SectionTitle'
+export { SectionIntro } from './SectionIntro'
+export { SectionLead } from './SectionLead'
 export { FeatureCardTitle, FeatureCardDescription } from './FeatureCardText'
 export { SandboxNotice } from './SandboxNotice'

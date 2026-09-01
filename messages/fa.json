@@ -9,7 +9,9 @@
       "closeMenu": "بستن منو",
       "language": "زبان: {language}",
       "logo": "لوگوی {site}",
-      "helpfulLinks": "لینک‌های مفید"
+      "helpfulLinks": "لینک‌های مفید",
+      "helpCenter": "مرکز راهنما: ایمیل به پشتیبانی",
+      "themeToggle": "ترجیح پوسته"
     },
     "nav": {
       "products": "محصولات",
@@ -76,7 +78,7 @@
     "notFound": {
       "title": "این صفحه در دسترس نیست.",
       "body": "آدرس ممکن است اشتباه باشد یا صفحه ممکن است منتقل شده باشد.",
-      "home": "Go to homepage",
+      "home": "رفتن به صفحه اصلی",
       "faq": "سوالات متداول"
     },
     "sandboxNotice": "Sandbox داده‌ها تنها برای پیش‌نمایش نمایش داده شده‌اند. APYها، قیمت‌ها و بازده‌ها نمونه‌ای هستند و ممکن است با شرایط واقعی بازار متفاوت باشند.",
@@ -87,7 +89,7 @@
       "shareOnLinkedIn": "به اشتراک‌گذاری در لینکدین",
       "previousPost": "پست قبلی",
       "nextPost": "پست بعدی",
-      "onThisPage": "On this page"
+      "onThisPage": "در این صفحه"
     },
     "docs": {
       "previous": "قبلی",
@@ -99,7 +101,8 @@
         "liquidation": "چارچوب تصفیه",
         "integrations": "ادغام‌های پشتیبانی‌شده",
         "safety": "مکانیسم‌های ایمنی",
-        "legal": "حقوقی و انطباق"
+        "legal": "حقوقی و انطباق",
+        "copilot": "پرسش از هوش مصنوعی"
       },
       "items": {
         "overview": "مرور کلی",
@@ -131,7 +134,11 @@
         "bugBounty": "جایزه باگ",
         "insuranceFunds": "صندوق‌های بیمه",
         "securityDisclosures": "افشای امنیتی",
-        "legalDisclaimer": "سلب مسئولیت قانونی"
+        "legalDisclaimer": "سلب مسئولیت قانونی",
+        "aiIntroduction": "معرفی هوش مصنوعی",
+        "copilotProtocols": "پروتکل‌های پشتیبانی‌شده",
+        "copilotPrompts": "نمونه پرامپت‌ها",
+        "copilotWorkflow": "گردش کار عامل"
       }
     },
     "faqUi": {
@@ -156,6 +163,25 @@
     "newsroom": {
       "latestFrom": "جدیدترین‌ها از Avana",
       "readNewsroom": "خواندن اتاق خبر"
+    },
+    "theme": {
+      "lightMode": "حالت روشن",
+      "darkMode": "حالت تاریک",
+      "systemMode": "سیستم",
+      "tapToChange": "برای تغییر ضربه بزنید"
+    },
+    "exportMenu": {
+      "copyPage": "کپی صفحه",
+      "copied": "کپی شد",
+      "copyPageMarkdown": "کپی صفحه به‌صورت Markdown",
+      "copyPageLink": "کپی لینک صفحه",
+      "copyPageLinkDescription": "کپی URL این صفحه در کلیپ‌بورد",
+      "openInChatGPT": "باز کردن در ChatGPT",
+      "openInClaude": "باز کردن در Claude",
+      "openInGrok": "باز کردن در Grok",
+      "openInPerplexity": "باز کردن در Perplexity",
+      "askAboutPage": "پرسش درباره این صفحه",
+      "reviewPrompt": "محتوای صفحه Avana زیر را بررسی کنید و به سؤالات پاسخ دهید."
     }
   },
   "meta": {
@@ -222,12 +248,12 @@
       "subtitle": "همچنان با کسب کارمزدهای معامله در حالی که نقدینگی را از موقعیت‌های Uniswap، Curve و Balancer آزاد می‌کنید، دریافت کنید.",
       "subtitleMobileLines": [
         "دسترسی به تا ۸۰٪ از ارزش استخر نقدینگی خود",
-        "at 5.5% APR without withdrawing liquidity or",
-        "giving up trading fees."
+        "با APR 5.5٪ بدون برداشت نقدینگی یا",
+        "چشم‌پوشی از کارمزد معاملات."
       ],
       "subtitleDesktopLines": [
         "دسترسی به حداکثر ۸۰٪ ارزش استخر نقدینگی خود با نرخ ۵.۵٪ ",
-        "without withdrawing liquidity or giving up trading fees."
+        "با APR 5.5٪ بدون برداشت نقدینگی یا چشم‌پوشی از کارمزد معاملات."
       ],
       "primaryCta": "تلاش Sandbox",
       "secondaryCta": "مطالعه مستندات"
