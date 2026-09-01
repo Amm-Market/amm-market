@@ -6,9 +6,10 @@ import { LocalizedMarketing } from "@/components/localized-marketing"
 import { Activity, BadgeDollarSign, Compass, Layers, LineChart, ShieldCheck } from "lucide-react"
 import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSection"
 import { FeatureCardDescription, FeatureCardTitle, SectionEyebrow, SectionTitle } from "@/components/shared"
-import { TokenLogo } from "@/components/token-logo"
 import { PerformanceSection } from "@/components/ui/performance-section"
 import { CYAN_HIGHLIGHT_TEXT_CLASS } from "@/lib/highlight"
+import { cn } from "@/lib/utils"
+import { getTokenIconSrc } from "@/lib/token-icons"
 
 const BorrowPowerSection = dynamic(() => import("@/components/borrow-power-section"))
 const PositionSafetyCardsSection = dynamic(() => import("@/components/position-safety-cards-section"))
@@ -119,6 +120,37 @@ const lpHubMarkets = [
   },
 ] as const
 
+function HubTokenImage({ symbol, overlap = false }: { symbol: string; overlap?: boolean }) {
+  const src = getTokenIconSrc(symbol)
+
+  if (!src) {
+    const initials = symbol.slice(0, 3).toUpperCase()
+    return (
+      <span
+        aria-hidden="true"
+        className={cn(
+          "inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted text-[0.5rem] font-semibold text-foreground",
+          overlap && "-ml-1.5",
+        )}
+      >
+        {initials}
+      </span>
+    )
+  }
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+      className={cn("h-5 w-5 shrink-0 rounded-full object-contain", overlap && "-ml-1.5")}
+    />
+  )
+}
+
 function HubPoolIcon({ pool }: { pool: string }) {
   if (pool.includes("More")) {
     return (
@@ -133,23 +165,14 @@ function HubPoolIcon({ pool }: { pool: string }) {
   return (
     <span className="flex items-center">
       {[first, second].map((token, index) => (
-        <TokenLogo
-          key={`${pool}-${token}`}
-          symbol={token}
-          className={`h-5 w-5 rounded-full ring-2 ring-white ${index > 0 ? "-ml-1.5" : ""}`}
-        />
+        <HubTokenImage key={`${pool}-${token}`} symbol={token} overlap={index > 0} />
       ))}
     </span>
   )
 }
 
 function HubSingleTokenIcon({ token }: { token: string }) {
-  return (
-    <TokenLogo
-      symbol={token}
-      className="h-5 w-5 rounded-full ring-2 ring-white"
-    />
-  )
+  return <HubTokenImage symbol={token} />
 }
 
 function HubTokenGroup({

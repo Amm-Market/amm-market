@@ -1,5 +1,6 @@
 "use client"
 
+import { cn } from "@/lib/utils"
 import { getTokenIconSrc } from "@/lib/token-icons"
 
 interface TokenLogoProps {
@@ -7,7 +8,7 @@ interface TokenLogoProps {
   className?: string
 }
 
-export function TokenLogo({ symbol, className = "" }: TokenLogoProps) {
+export function TokenLogo({ symbol, className }: TokenLogoProps) {
   const src = getTokenIconSrc(symbol)
 
   if (!src) {
@@ -15,7 +16,10 @@ export function TokenLogo({ symbol, className = "" }: TokenLogoProps) {
     return (
       <span
         aria-hidden="true"
-        className={`inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e6eefc] text-[0.55rem] font-semibold text-[#1f2937] ${className}`}
+        className={cn(
+          "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-muted text-[0.55rem] font-semibold text-foreground",
+          className,
+        )}
       >
         {initials}
       </span>
@@ -30,7 +34,7 @@ export function TokenLogo({ symbol, className = "" }: TokenLogoProps) {
       aria-hidden="true"
       loading="lazy"
       decoding="async"
-      className={`h-7 w-7 shrink-0 rounded-full object-contain ${className}`}
+      className={cn("h-7 w-7 shrink-0 rounded-full object-contain", className)}
     />
   )
 }
