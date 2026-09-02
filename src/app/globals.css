@@ -174,8 +174,8 @@
   --sidebar-accent-foreground: #f3f6f8;
   --sidebar-border: rgba(255, 255, 255, 0.1);
   --sidebar-ring: rgba(255, 255, 255, 0.2);
-  --type-color-secondary: color-mix(in oklab, var(--foreground) 72%, transparent);
-  --type-color-tertiary: color-mix(in oklab, var(--foreground) 56%, transparent);
+  --type-color-secondary: color-mix(in oklab, var(--foreground) 82%, transparent);
+  --type-color-tertiary: color-mix(in oklab, var(--foreground) 64%, transparent);
   --header-surface: rgba(10, 16, 20, 0.94);
   --surface-muted: #1a232b;
   --surface-elevated: #151d24;
@@ -1123,6 +1123,15 @@ body:has([data-developer-doc-shell]) footer.site-content-shell {
   color: var(--type-color-secondary);
 }
 
+.dark .text-slate-700,
+.dark .text-slate-950 {
+  color: var(--type-color-secondary);
+}
+
+.dark .hover\:text-slate-950:hover {
+  color: var(--foreground);
+}
+
 .dark .text-black,
 .dark .text-black\/46,
 .dark .text-black\/58,
@@ -1157,6 +1166,44 @@ body:has([data-developer-doc-shell]) footer.site-content-shell {
 
 .dark .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] section :is(p, li, td, dd) {
   color: var(--type-color-secondary);
+}
+
+.dark .type-doc-body,
+.dark .type-doc-callout {
+  color: var(--type-color-secondary);
+}
+
+.dark .type-doc-section-title,
+.dark .type-doc-subsection-title {
+  color: var(--foreground);
+}
+
+.dark .site-article-content :is(p, li, td),
+.dark .site-editorial-content :is(p, li, td) {
+  color: var(--type-color-secondary);
+}
+
+.dark .site-article-content :is(h2, h3, h4),
+.dark .site-editorial-content :is(h2, h3, h4) {
+  color: var(--foreground);
+}
+
+.dark .site-editorial-content :is(strong, em.text-gray-500) {
+  color: var(--type-color-secondary);
+}
+
+.dark .site-editorial-content .text-gray-900,
+.dark .site-editorial-content .text-lg.font-medium.text-gray-900,
+.dark .type-page-title.text-gray-900 {
+  color: var(--foreground);
+}
+
+.dark .prose-gray :where(p, li, td, blockquote) {
+  color: var(--type-color-secondary);
+}
+
+.dark .prose-gray :where(h2, h3, h4, strong) {
+  color: var(--foreground);
 }
 
 .dark .developer-content[data-developer-doc-shell] [data-developer-doc-export-root] pre {

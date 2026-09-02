@@ -7,7 +7,6 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { diatypeFont } from "@/app/site-fonts"
 import { ThemeProvider } from "@/components/theme-provider"
-import { ThemeInitScript } from "@/components/theme-init-script"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { getLocaleDefinition, getLocaleDir } from "@/i18n/locales"
@@ -20,6 +19,7 @@ import {
   SOCIAL_HANDLE,
 } from "@/lib/site"
 import { organizationSchema, serializeJsonLd, websiteSchema } from "@/lib/structured-data"
+import { THEME_INIT_SCRIPT } from "@/lib/theme"
 
 type Props = {
   children: React.ReactNode
@@ -139,6 +139,9 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html lang={locale} dir={dir} className={diatypeFont.variable} suppressHydrationWarning>
       <head>
         <script
+          dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(organizationSchema) }}
         />
@@ -148,7 +151,6 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
       </head>
       <body className="overflow-x-clip bg-background font-sans text-foreground">
-        <ThemeInitScript />
         <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={{ common: messages.common }}>
           <a

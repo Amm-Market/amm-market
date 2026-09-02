@@ -4,7 +4,7 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
+  useLayoutEffect,
   useMemo,
   useState,
   type Dispatch,
@@ -46,8 +46,14 @@ function resolveTheme(theme: ThemePreference): "light" | "dark" {
 }
 
 function applyResolvedTheme(resolved: "light" | "dark") {
-  document.documentElement.classList.toggle("dark", resolved === "dark")
-  document.documentElement.style.colorScheme = resolved
+  const root = document.documentElement
+  const isDark = resolved === "dark"
+
+  if (root.classList.contains("dark") !== isDark) {
+    root.classList.toggle("dark", isDark)
+  }
+
+  root.style.colorScheme = resolved
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
@@ -58,7 +64,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     typeof window === "undefined" ? "light" : getSystemTheme(),
   )
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)")
     const onSystemChange = (event: MediaQueryListEvent) => {
       setSystemTheme(event.matches ? "dark" : "light")
@@ -68,7 +74,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     return () => media.removeEventListener("change", onSystemChange)
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     applyResolvedTheme(resolveTheme(theme))
   }, [theme, systemTheme])
 
@@ -85,6 +91,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         localStorage.setItem(THEME_STORAGE_KEY, normalized)
       } catch {}
 
+      applyResolvedTheme(resolveTheme(normalized))
       return normalized
     })
   }, [])
@@ -106,4 +113,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
 export function useTheme() {
   return useContext(ThemeContext)
+}
+
+export function readResolvedThemeFromDocument(): "light" | "dark" {
+  if (typeof document === "undefined") return "light"
+  return document.documentElement.classList.contains("dark") ? "dark" : "light"
 }
