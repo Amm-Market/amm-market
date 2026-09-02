@@ -1236,9 +1236,12 @@ body:has([data-developer-doc-shell]) footer.site-content-shell {
   background-color: rgb(243 244 246) !important;
 }
 
-.dark .brand-logo-preview {
-  background-color: #ffffff !important;
-  border-color: rgba(15, 23, 24, 0.12) !important;
+.brand-token-image {
+  mix-blend-mode: multiply;
+}
+
+.dark .brand-token-image {
+  filter: saturate(1.05) contrast(1.02);
 }
 
 .dark .type-doc-inline-code {

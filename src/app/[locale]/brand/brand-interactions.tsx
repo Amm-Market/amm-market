@@ -1,9 +1,15 @@
 "use client"
 
-import Image from "next/image"
 import { Check, Copy } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useRef, useState } from "react"
+import { ThemeAwareBrandImage } from "@/components/theme-aware-brand-image"
+import {
+  brandGuidelineSurfaceClassName,
+  brandLogoAssets,
+  brandPreviewSurfaceClassName,
+  brandTokenSurfaceClassName,
+} from "@/lib/brand-assets"
 
 type LogoVariant = "horizontal" | "vertical" | "icon"
 
@@ -11,13 +17,12 @@ interface BrandLogoVariant {
   id: LogoVariant
   title: string
   description: string
-  src: string
+  asset: (typeof brandLogoAssets)[keyof typeof brandLogoAssets]
   alt: string
   mobileImageClassName: string
   desktopImageClassName: string
 }
 
-const brandAssetPath = (path: string) => encodeURI(path)
 const mobileLogoImageClassName = "w-full max-w-[11rem]"
 const logoImageClassName = "w-full max-w-[27rem]"
 
@@ -27,7 +32,7 @@ const logoVariants: readonly BrandLogoVariant[] = [
     title: "Full Black",
     description:
       "Use this as the default Avana wordmark. It has the clearest contrast and works best on light backgrounds, product pages, partner decks, and documentation.",
-    src: brandAssetPath("/Full (Horizontal).png"),
+    asset: brandLogoAssets.fullBlack,
     alt: "Avana full black logo",
     mobileImageClassName: mobileLogoImageClassName,
     desktopImageClassName: logoImageClassName,
@@ -37,7 +42,7 @@ const logoVariants: readonly BrandLogoVariant[] = [
     title: "Full Cyan",
     description:
       "Use the cyan wordmark when the page already has a quiet layout and needs a stronger Avana signal. Keep it on white or very light backgrounds.",
-    src: brandAssetPath("/Full (Personal).png"),
+    asset: brandLogoAssets.fullCyan,
     alt: "Avana full cyan logo",
     mobileImageClassName: mobileLogoImageClassName,
     desktopImageClassName: logoImageClassName,
@@ -47,7 +52,7 @@ const logoVariants: readonly BrandLogoVariant[] = [
     title: "Logo",
     description:
       "Use the icon when the full wordmark would be too small to read, such as app icons, social avatars, favicons, or compact partner lists.",
-    src: brandAssetPath("/Logo.png"),
+    asset: brandLogoAssets.icon,
     alt: "Avana logo",
     mobileImageClassName: mobileLogoImageClassName,
     desktopImageClassName: logoImageClassName,
@@ -78,26 +83,6 @@ const colorGroups = [
   },
 ] as const
 
-function BrandAssetImage({
-  src,
-  alt,
-  className,
-}: {
-  src: string
-  alt: string
-  className: string
-}) {
-  return (
-    <Image
-      src={src}
-      alt={alt}
-      width={3000}
-      height={1500}
-      className={`h-auto object-contain ${className}`}
-    />
-  )
-}
-
 export function BrandLogoShowcase() {
   const [activeLogoVariant, setActiveLogoVariant] = useState<LogoVariant>("horizontal")
 
@@ -115,8 +100,12 @@ export function BrandLogoShowcase() {
             onFocus={() => setActiveLogoVariant(variant.id)}
             onClick={() => setActiveLogoVariant(variant.id)}
           >
-            <div className="brand-logo-preview relative flex aspect-[7/3] items-center justify-center rounded-[20px] border border-[#0F1518]/15 bg-white md:hidden">
-              <BrandAssetImage src={variant.src} alt={variant.alt} className={variant.mobileImageClassName} />
+            <div className={`brand-logo-preview relative flex aspect-[7/3] items-center justify-center p-4 ${brandPreviewSurfaceClassName} md:hidden`}>
+              <ThemeAwareBrandImage
+                asset={variant.asset}
+                alt={variant.alt}
+                className={variant.mobileImageClassName}
+              />
             </div>
             <h3 className="text-xl font-semibold text-foreground">{variant.title}</h3>
             <p className="text-sm leading-relaxed text-gray-500">{variant.description}</p>
@@ -124,7 +113,7 @@ export function BrandLogoShowcase() {
         ))}
       </div>
 
-      <div className="brand-logo-preview group relative hidden h-[400px] items-center justify-center rounded-[20px] border border-[#0F1518]/15 bg-white md:flex">
+      <div className={`brand-logo-preview group relative hidden h-[400px] items-center justify-center p-6 ${brandPreviewSurfaceClassName} md:flex`}>
         {logoVariants.map((variant) => (
           <div
             key={variant.id}
@@ -132,14 +121,123 @@ export function BrandLogoShowcase() {
               activeLogoVariant === variant.id ? "scale-100 opacity-100" : "scale-50 opacity-0"
             }`}
           >
-            <BrandAssetImage
-              src={variant.src}
+            <ThemeAwareBrandImage
+              asset={variant.asset}
               alt={variant.alt}
               className={variant.desktopImageClassName}
             />
           </div>
         ))}
       </div>
+    </div>
+  )
+}
+
+const guidelineAvoidItems = [
+  { text: "Do not stretch or compress the logo.", icon: "stretch" },
+  { text: "Do not rotate or flip the mark.", icon: "rotate" },
+  { text: "Do not recolor the logo outside approved colorways.", icon: "recolor" },
+  { text: "Do not crop the mark or place it too close to an edge.", icon: "crop" },
+  { text: "Do not add shadows, gradients, outlines, or effects.", icon: "effects" },
+  { text: "Do not crowd the mark with partner logos or UI labels.", icon: "spacing" },
+] as const
+
+export function BrandGuidelinesGrid() {
+  return (
+    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+      {guidelineAvoidItems.map((item, index) => (
+        <div key={index} className="relative flex flex-col items-center gap-3">
+          <div className={`relative flex aspect-square w-full items-center justify-center overflow-hidden p-4 ${brandGuidelineSurfaceClassName}`}>
+            {item.icon === "stretch" ? (
+              <div className="origin-center scale-x-125 scale-y-75 opacity-45 grayscale">
+                <ThemeAwareBrandImage
+                  asset={brandLogoAssets.fullPersonal}
+                  alt="Stretched logo example"
+                  className="w-full max-w-[8rem]"
+                />
+              </div>
+            ) : null}
+            {item.icon === "rotate" ? (
+              <div className="rotate-45 opacity-45 grayscale">
+                <ThemeAwareBrandImage
+                  asset={brandLogoAssets.iconBlack}
+                  alt="Rotated icon example"
+                  className="w-full max-w-[5rem]"
+                />
+              </div>
+            ) : null}
+            {item.icon === "recolor" ? (
+              <div className="flex items-center gap-1.5">
+                <div className="text-[#9E5537] hue-rotate-60 saturate-150">
+                  <ThemeAwareBrandImage
+                    asset={brandLogoAssets.iconPersonal}
+                    alt="Recolored logo example"
+                    className="w-full max-w-[4rem]"
+                  />
+                </div>
+                <div className="text-[#BC846F] hue-rotate-180 saturate-150">
+                  <ThemeAwareBrandImage
+                    asset={brandLogoAssets.iconPersonal}
+                    alt="Second recolored logo example"
+                    className="w-full max-w-[4rem]"
+                  />
+                </div>
+              </div>
+            ) : null}
+            {item.icon === "crop" ? (
+              <div className="-mr-16 overflow-hidden opacity-45 grayscale">
+                <ThemeAwareBrandImage
+                  asset={brandLogoAssets.iconBlack}
+                  alt="Cropped logo example"
+                  className="w-full max-w-[6rem]"
+                />
+              </div>
+            ) : null}
+            {item.icon === "effects" ? (
+              <div className="blur-[2px] drop-shadow-[0_16px_12px_rgba(1,170,207,0.45)] opacity-45 grayscale">
+                <ThemeAwareBrandImage
+                  asset={brandLogoAssets.iconBlack}
+                  alt="Logo with effects example"
+                  className="w-full max-w-[5rem]"
+                />
+              </div>
+            ) : null}
+            {item.icon === "spacing" ? (
+              <div className="flex items-center gap-0.5 opacity-45 grayscale">
+                <ThemeAwareBrandImage
+                  asset={brandLogoAssets.iconBlack}
+                  alt="Crowded spacing example"
+                  className="w-full max-w-[3rem]"
+                />
+                <span className="text-base font-semibold text-[#2F414B] dark:text-foreground">Partner</span>
+              </div>
+            ) : null}
+            <span className="pointer-events-none absolute inset-x-5 top-1/2 h-1 -translate-y-1/2 rotate-[-48deg] rounded-full bg-[#ff8f6f]" />
+          </div>
+          <p className="text-center text-xs leading-tight text-gray-600 dark:text-type-secondary">{item.text}</p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+export function BrandTokenPreview({
+  src,
+  alt,
+  imageClassName,
+}: {
+  src: string
+  alt: string
+  imageClassName: string
+}) {
+  return (
+    <div className={`relative flex aspect-[4/3] items-center justify-center overflow-hidden p-6 ${brandTokenSurfaceClassName}`}>
+      <ThemeAwareBrandImage
+        asset={{ light: src, dark: src }}
+        alt={alt}
+        className={imageClassName}
+        knockOutLightBackground
+      />
     </div>
   )
 }
