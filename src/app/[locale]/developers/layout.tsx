@@ -1,9 +1,11 @@
 import { createPageMetadata } from "@/lib/i18n/page-metadata"
 import type React from "react"
-import dynamic from "next/dynamic"
+import nextDynamic from "next/dynamic"
 import { DeveloperContentWrapper } from "@/components/developer-content-wrapper"
 
-const DeferredDeveloperSidebar = dynamic(
+export const dynamic = "force-static"
+
+const DeferredDeveloperSidebar = nextDynamic(
   () => import("@/components/developer-sidebar"),
   {
     loading: () => (

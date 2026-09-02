@@ -147,7 +147,6 @@ function FaqCategoryCard({
     <Link
       id={`faq-tab-${category.id}`}
       href={href}
-      prefetch={false}
       scroll={false}
       role="tab"
       aria-selected={active}
@@ -260,7 +259,6 @@ export function FaqView({
               </h2>
               <Link
                 href={clearHref}
-                prefetch={false}
                 className="text-sm font-medium text-gray-700 underline decoration-black/20 underline-offset-4 hover:text-black hover:decoration-black/50"
               >
                 {t("clearSearch")}

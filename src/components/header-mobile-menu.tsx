@@ -96,7 +96,6 @@ export default function HeaderMobileMenu({ open, onClose }: HeaderMobileMenuProp
                 ) : (
                   <Link
                     href={link.href}
-                    prefetch={false}
                     className="flex items-end justify-between gap-5 py-3"
                     onClick={onClose}
                   >

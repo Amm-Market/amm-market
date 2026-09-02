@@ -8,6 +8,8 @@ import { LocalizedMarketing } from "@/components/localized-marketing"
 import { languageAlternates } from "@/lib/i18n/path"
 import { buildOgImagePath, SITE_NAME, SITE_URL, siteRoutes } from "@/lib/site"
 
+export const dynamic = "force-static"
+
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
   const t = await getTranslations({ locale, namespace: "meta" })

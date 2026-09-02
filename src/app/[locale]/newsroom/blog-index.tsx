@@ -192,7 +192,6 @@ export function BlogIndex({
                   <Link
                     key={tag}
                     href={buildTagHref(tag)}
-                    prefetch={false}
                     scroll={false}
                     aria-current={active ? "page" : undefined}
                     className={`inline-flex shrink-0 items-center justify-center rounded-full px-4 py-2 text-xs font-semibold transition-colors ${
@@ -219,7 +218,6 @@ export function BlogIndex({
               <div key={post.id}>
                 <Link
                   href={`/newsroom/${post.slug}`}
-                  prefetch={false}
                   className="group block h-full touch-manipulation"
                 >
                 <div className="flex flex-col gap-3">

@@ -35,7 +35,6 @@ export function PageNavigation() {
         {prevPage ? (
           <Link
             href={prevPage.href}
-            prefetch={false}
             className="group max-w-[50%] flex-1 rounded-lg border border-gray-200 p-4 transition-colors hover:border-cyan-200 hover:bg-cyan-50/40"
           >
             <div className="type-supporting mb-1 flex items-center gap-1 text-[#01AACF] transition-colors group-hover:text-[#008fb0]">
@@ -53,7 +52,6 @@ export function PageNavigation() {
         {nextPage ? (
           <Link
             href={nextPage.href}
-            prefetch={false}
             className="group max-w-[50%] flex-1 rounded-lg border border-gray-200 p-4 text-end transition-colors hover:border-cyan-200 hover:bg-cyan-50/40"
           >
             <div className="type-supporting mb-1 flex items-center justify-end gap-1 text-[#01AACF] transition-colors group-hover:text-[#008fb0]">

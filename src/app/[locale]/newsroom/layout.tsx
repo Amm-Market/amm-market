@@ -1,5 +1,7 @@
 import { createPageMetadata } from "@/lib/i18n/page-metadata"
 
+export const dynamic = "force-static"
+
 /**
  * Newsroom section layout with SEO metadata
  */

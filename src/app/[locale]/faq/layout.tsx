@@ -6,6 +6,8 @@ import { languageAlternates } from "@/lib/i18n/path"
 import { buildOgImagePath, siteRoutes } from "@/lib/site"
 import { serializeJsonLd } from "@/lib/structured-data"
 
+export const dynamic = "force-static"
+
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
   const t = await getTranslations({ locale, namespace: "meta" })
