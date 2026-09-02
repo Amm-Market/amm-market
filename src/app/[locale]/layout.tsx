@@ -131,7 +131,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   setRequestLocale(locale)
 
-  const messages = await getMessages()
+  const messages = await getMessages({ locale })
   const t = await getTranslations({ locale, namespace: "common" })
   const dir = getLocaleDir(locale)
 
