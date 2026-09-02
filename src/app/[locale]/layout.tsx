@@ -150,7 +150,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body className="overflow-x-clip bg-background font-sans text-foreground">
         <ThemeInitScript />
         <ThemeProvider>
-          <NextIntlClientProvider locale={locale} messages={messages}>
+          <NextIntlClientProvider locale={locale} messages={{ common: messages.common }}>
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:start-4 focus:z-[100] focus:rounded-lg focus:bg-[#01AACF] focus:px-4 focus:py-2 focus:text-[#0F1518] focus:outline-none focus:ring-2 focus:ring-[#01AACF] focus:ring-offset-2"

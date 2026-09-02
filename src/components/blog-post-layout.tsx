@@ -60,7 +60,6 @@ export default async function BlogPostLayout({
     <div className="site-article-layout site-content-shell min-w-0 py-5 md:py-9 xl:py-12">
       <Link
         href="/newsroom"
-        prefetch={false}
         className="type-supporting mb-5 inline-flex items-center text-type-tertiary transition hover:text-foreground xl:mb-8"
       >
         <ChevronLeft className="h-5 w-5 rtl:rotate-180" />
@@ -136,7 +135,7 @@ export default async function BlogPostLayout({
           <div className={`grid py-8 ${prevPost && nextPost ? "grid-cols-2 gap-3 md:gap-4" : "grid-cols-1 gap-4"}`}>
             {prevPost ? (
               <div className="h-full min-w-0">
-                <Link href={`/newsroom/${prevPost.slug}`} prefetch={false}>
+                <Link href={`/newsroom/${prevPost.slug}`}>
                   <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-border p-3.5 transition hover:bg-muted/40 md:min-h-[8.25rem] md:p-4">
                     <div className="space-y-3">
                       <p className="type-meta-label">{t("blogChrome.previousPost")}</p>
@@ -150,7 +149,7 @@ export default async function BlogPostLayout({
             ) : null}
             {nextPost ? (
               <div className={`${prevPost ? "" : "col-start-1"} h-full min-w-0`}>
-                <Link href={`/newsroom/${nextPost.slug}`} prefetch={false}>
+                <Link href={`/newsroom/${nextPost.slug}`}>
                   <div className="flex h-full min-h-[7.5rem] cursor-pointer flex-col rounded-2xl border border-gray-200 p-3.5 text-end transition hover:bg-gray-50 md:min-h-[8.25rem] md:p-4">
                     <div className="space-y-3">
                       <p className="type-meta-label">{t("blogChrome.nextPost")}</p>

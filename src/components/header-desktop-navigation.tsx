@@ -102,7 +102,6 @@ export default function HeaderDesktopNavigation() {
         })}
         <Link
           href={siteRoutes.faq}
-          prefetch={false}
           onMouseEnter={closeDesktopMenu}
           onFocus={closeDesktopMenu}
           aria-label={t("nav.helpCenter")}

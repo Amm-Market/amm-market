@@ -76,7 +76,6 @@ export default async function PositionSafetyCardsSection() {
         Read more about how settlement works in{" "}
         <Link
           href="/developers/liquidation"
-          prefetch={false}
           className="text-type-accent transition-colors hover:text-[#0097b8]"
         >
           Liquidation Design

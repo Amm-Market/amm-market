@@ -135,7 +135,6 @@ export default async function Footer(): Promise<React.JSX.Element> {
           <div className="space-y-5 lg:max-w-sm lg:justify-self-start">
             <Link
               href={siteRoutes.home}
-              prefetch={false}
               className="inline-flex w-fit items-start justify-start"
             >
               <Image
@@ -189,7 +188,6 @@ export default async function Footer(): Promise<React.JSX.Element> {
                       <Link
                         key={`${section.title}-${link.label}-${link.href}`}
                         href={link.href}
-                        prefetch={false}
                         className="transition-colors hover:text-type-accent"
                       >
                         {link.label}

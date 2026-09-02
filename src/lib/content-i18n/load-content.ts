@@ -75,7 +75,12 @@ export async function loadBlogContent(locale: string) {
       const enData = await loadJson(defaultLocale, "blog")
       const enPosts =
         (enData as {
-          posts?: Array<{ slug: string; image?: string; sections?: Array<{ id: string }> }>
+          posts?: Array<{
+            slug: string
+            image?: string
+            tag?: string
+            sections?: Array<{ id: string }>
+          }>
         } | null)?.posts ?? []
       parsed.posts = parsed.posts.map((post, index) => {
         const enPost = enPosts[index]
@@ -84,6 +89,10 @@ export async function loadBlogContent(locale: string) {
           ...post,
           slug: enPost.slug,
           image: enPost.image ?? post.image,
+          // Tags are stable identifiers translated by the UI. Translation
+          // catalogs may localize their display values, which must not become
+          // lookup keys or filter values.
+          tag: enPost.tag ?? post.tag,
           sections: post.sections.map((section, sIndex) => ({
             ...section,
             id: enPost.sections?.[sIndex]?.id ?? section.id,

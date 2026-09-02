@@ -1,45 +1,41 @@
-import createMiddleware from "next-intl/middleware"
 import { NextRequest, NextResponse } from "next/server"
-import { routing } from "@/i18n/routing"
+import { defaultLocale, localeCodes } from "@/i18n/locales"
 
-const handleI18n = createMiddleware(routing)
+const localeSet = new Set<string>(localeCodes)
+const internalRewriteHeader = "x-avana-locale-rewrite"
 
 /**
- * next-intl routing + request header so RSC can resolve the active path
- * for docs/marketing localization maps.
- *
- * Path is set on the *request* (not only the response) so `headers().get`
- * works during SSG/SSR.
+ * Keep the default locale out of public URLs while serving the pre-rendered
+ * `[locale]` route. This avoids request-time locale detection and the
+ * rewrite/redirect loop produced by `localePrefix: "as-needed"`.
  */
 export default function proxy(request: NextRequest) {
-  const pathname = request.nextUrl.pathname
-
-  const requestHeaders = new Headers(request.headers)
-  requestHeaders.set("x-pathname", pathname)
-
-  // Pass expanded headers into the next-intl middleware request.
-  const intlRequest = new NextRequest(request.url, {
-    headers: requestHeaders,
-    method: request.method,
-  })
-
-  const response = handleI18n(intlRequest)
-
-  if (response instanceof NextResponse) {
-    response.headers.set("x-pathname", pathname)
-    // Next.js request-header override convention (forwards into RSC).
-    response.headers.set("x-middleware-request-x-pathname", pathname)
-    const existing = response.headers.get("x-middleware-override-headers")
-    const names = new Set(
-      (existing ? existing.split(",") : [])
-        .map((s) => s.trim())
-        .filter(Boolean)
-        .concat("x-pathname"),
-    )
-    response.headers.set("x-middleware-override-headers", Array.from(names).join(","))
+  if (request.headers.get(internalRewriteHeader) === "1") {
+    return NextResponse.next()
   }
 
-  return response
+  const pathname = request.nextUrl.pathname
+  const firstSegment = pathname.split("/")[1]
+
+  if (firstSegment === defaultLocale) {
+    const url = request.nextUrl.clone()
+    url.pathname = pathname.slice(defaultLocale.length + 1) || "/"
+    return NextResponse.redirect(url, 308)
+  }
+
+  if (localeSet.has(firstSegment)) {
+    return NextResponse.next()
+  }
+
+  const url = request.nextUrl.clone()
+  url.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`
+
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set(internalRewriteHeader, "1")
+
+  return NextResponse.rewrite(url, {
+    request: { headers: requestHeaders },
+  })
 }
 
 export const config = {

@@ -161,7 +161,6 @@ export default function HeaderDesktopMenuPanel({
                   <Link
                     key={item.href}
                     href={item.href}
-                    prefetch={false}
                     suppressHydrationWarning
                     className={`group flex items-start gap-4 py-1.5 text-start text-foreground transition-[opacity,color,filter] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-foreground/74 ${
                       isOpen ? "opacity-100 blur-0" : "opacity-[0.18] blur-[0.2px]"
@@ -190,7 +189,6 @@ export default function HeaderDesktopMenuPanel({
                   <Link
                     key={`${item.href}-${item.label}`}
                     href={item.href}
-                    prefetch={false}
                     aria-label={item.label}
                     suppressHydrationWarning
                     className="group block min-h-[2.8rem] text-start"
