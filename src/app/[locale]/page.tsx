@@ -1,17 +1,18 @@
 import type { Metadata } from "next"
-import { getLocale, getTranslations } from "next-intl/server"
+import { getTranslations } from "next-intl/server"
 import BuildTomorrowSection from "@/components/BuildTomorrowSection"
 import HeroSection from "@/components/hero-section"
 import WebappHero from "@/components/webapp-hero"
 import { SectionTitle } from "@/components/shared"
 import { LocalizedMarketing } from "@/components/localized-marketing"
+import { resolveLocaleParam, type LocaleParamsProps } from "@/lib/i18n/locale-params"
 import { languageAlternates } from "@/lib/i18n/path"
 import { buildOgImagePath, SITE_NAME, SITE_URL, siteRoutes } from "@/lib/site"
 
 export const dynamic = "force-static"
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale()
+export async function generateMetadata({ params }: LocaleParamsProps): Promise<Metadata> {
+  const locale = await resolveLocaleParam(params)
   const t = await getTranslations({ locale, namespace: "meta" })
 
   return {
@@ -57,11 +58,12 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function Home() {
-  const t = await getTranslations("home")
+export default async function Home({ params }: LocaleParamsProps) {
+  const locale = await resolveLocaleParam(params)
+  const t = await getTranslations({ locale, namespace: "home" })
 
   return (
-    <LocalizedMarketing keys={["page","BuildTomorrowSection","hero-section","homepage/HomepageTestimonialSection","homepage/HomepageFaqSection","homepage/HomepageNewsroomSection","webapp-hero"]}>
+    <LocalizedMarketing locale={locale} keys={["page","BuildTomorrowSection","hero-section","homepage/HomepageTestimonialSection","homepage/HomepageFaqSection","homepage/HomepageNewsroomSection","webapp-hero"]}>
       <section className="bg-white pt-10 pb-10 md:pt-14 md:pb-12 2xl:pt-12 2xl:pb-11">
         <div className="site-content-shell">
           <div className="mx-auto grid w-fit max-w-full grid-cols-1 gap-5 text-center md:grid-cols-[auto_auto] md:items-end md:gap-10 md:text-left lg:gap-14">
@@ -90,12 +92,12 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      <WebappHero />
+      <WebappHero locale={locale} />
       <div className="pt-8 md:pt-10">
         <div className="border-t border-border/80" aria-hidden="true" />
       </div>
-      <BuildTomorrowSection />
-      <HeroSection />
+      <BuildTomorrowSection locale={locale} />
+      <HeroSection locale={locale} />
     </LocalizedMarketing>
   )
 }

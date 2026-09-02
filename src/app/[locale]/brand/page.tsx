@@ -42,9 +42,12 @@ const faqItems: InlineFaqItem[] = [
   },
 ]
 
-export default async function BrandPage() {
+import { resolveLocaleParam, type LocaleParamsProps } from "@/lib/i18n/locale-params"
+
+export default async function BrandPage({ params }: LocaleParamsProps) {
+  const locale = await resolveLocaleParam(params)
   return (
-    <LocalizedMarketing keys={["brand/page", "brand/brand-interactions"]}>
+    <LocalizedMarketing locale={locale} keys={["brand/page", "brand/brand-interactions"]}>
     <div className="flex min-h-screen flex-col bg-background">
       <section className="bg-background pt-14 pb-0 md:pt-20">
         <div className="site-content-shell">

@@ -5,15 +5,18 @@ import ProtocolRoadmapSection from "@/components/protocol-roadmap-section"
 import { SectionIntro, SectionLead } from "@/components/shared"
 import { SITE_NAME } from "@/lib/site"
 import { LocalizedMarketing } from "@/components/localized-marketing"
+import { resolveLocaleParam, type LocaleParamsProps } from "@/lib/i18n/locale-params"
 
-export async function generateMetadata() {
-  return createPageMetadata("about", "/about")
+export async function generateMetadata({ params }: LocaleParamsProps) {
+  const locale = await resolveLocaleParam(params)
+  return createPageMetadata(locale, "about", "/about")
 }
 
 
-export default async function AboutPage() {
+export default async function AboutPage({ params }: LocaleParamsProps) {
+  const locale = await resolveLocaleParam(params)
   return (
-    <LocalizedMarketing keys={["about/page", "protocol-roadmap-section"]}>
+    <LocalizedMarketing locale={locale} keys={["about/page", "protocol-roadmap-section"]}>
     <main className="bg-white">
       <section className="pb-16 pt-24 lg:pb-24 lg:pt-40">
         <div className="mx-auto w-full max-w-[90rem] px-4 sm:px-6 2xl:px-0">
@@ -123,7 +126,7 @@ export default async function AboutPage() {
               </div>
             </div>
             <div className="pt-8">
-              <ProtocolRoadmapSection />
+              <ProtocolRoadmapSection locale={locale} />
             </div>
             <SectionLead variant="section" className="text-foreground">
               We are a small team working on a large problem. If you&apos;re interested in joining this research
