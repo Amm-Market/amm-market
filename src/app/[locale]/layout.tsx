@@ -117,7 +117,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#FFFFFF",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a1014" },
+  ],
 }
 
 const shouldRenderVercelInsights = process.env.VERCEL === "1" || Boolean(process.env.VERCEL_ENV)
@@ -136,7 +139,12 @@ export default async function LocaleLayout({ children, params }: Props) {
   const dir = getLocaleDir(locale)
 
   return (
-    <html lang={locale} dir={dir} className={diatypeFont.variable} suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={dir}
+      suppressHydrationWarning
+      style={{ "--font-diatype": diatypeFont.style.fontFamily } as React.CSSProperties}
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
@@ -150,7 +158,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteSchema) }}
         />
       </head>
-      <body className="overflow-x-clip bg-background font-sans text-foreground">
+      <body className={`${diatypeFont.variable} overflow-x-clip bg-background font-sans text-foreground`}>
         <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={{ common: messages.common }}>
           <a

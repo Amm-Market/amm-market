@@ -45,7 +45,7 @@ export default function Header(): React.JSX.Element {
   }, [])
 
   return (
-    <header className={`sticky top-0 z-50 border-b bg-[var(--header-surface)] backdrop-blur-[10px] transition-colors duration-200 ${hasScrolled ? "border-type-accent" : "border-transparent"}`}>
+    <header className={`sticky top-0 z-50 border-b bg-[var(--header-surface)] backdrop-blur-[10px] transition-[border-color] duration-200 ${hasScrolled ? "border-type-accent" : "border-transparent"}`}>
       <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6 md:h-[54px] md:gap-3 md:px-6 lg:px-6 xl:px-8">
         <div className="inline-flex shrink-0 items-center">
           <Link href={siteRoutes.home} aria-label={SITE_NAME} data-framer-name="Logo" className="inline-flex items-center">

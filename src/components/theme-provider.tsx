@@ -45,15 +45,44 @@ function resolveTheme(theme: ThemePreference): "light" | "dark" {
   return theme === "system" ? getSystemTheme() : theme
 }
 
+let themeTransitionLock: HTMLStyleElement | null = null
+let themeTransitionUnlock: number | null = null
+
+function disableThemeTransitions() {
+  if (typeof document === "undefined") return
+
+  if (!themeTransitionLock) {
+    themeTransitionLock = document.createElement("style")
+    themeTransitionLock.setAttribute("data-avana-theme-lock", "")
+    themeTransitionLock.appendChild(
+      document.createTextNode("*,*::before,*::after{transition:none!important}"),
+    )
+  }
+
+  if (!themeTransitionLock.isConnected) {
+    document.head.appendChild(themeTransitionLock)
+  }
+
+  if (themeTransitionUnlock !== null) {
+    window.cancelAnimationFrame(themeTransitionUnlock)
+  }
+
+  themeTransitionUnlock = window.requestAnimationFrame(() => {
+    themeTransitionUnlock = window.requestAnimationFrame(() => {
+      themeTransitionLock?.remove()
+      themeTransitionUnlock = null
+    })
+  })
+}
+
 function applyResolvedTheme(resolved: "light" | "dark") {
   const root = document.documentElement
   const isDark = resolved === "dark"
 
-  if (root.classList.contains("dark") !== isDark) {
-    root.classList.toggle("dark", isDark)
-  }
+  if (root.classList.contains("dark") === isDark) return
 
-  root.style.colorScheme = resolved
+  disableThemeTransitions()
+  root.classList.toggle("dark", isDark)
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
@@ -63,6 +92,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [systemTheme, setSystemTheme] = useState<"light" | "dark">(() =>
     typeof window === "undefined" ? "light" : getSystemTheme(),
   )
+
+  if (typeof document !== "undefined") {
+    applyResolvedTheme(resolveTheme(theme))
+  }
 
   useLayoutEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)")
@@ -75,7 +108,16 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [])
 
   useLayoutEffect(() => {
-    applyResolvedTheme(resolveTheme(theme))
+    const sync = () => applyResolvedTheme(resolveTheme(theme))
+    sync()
+
+    const observer = new MutationObserver(sync)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    })
+
+    return () => observer.disconnect()
   }, [theme, systemTheme])
 
   const setTheme = useCallback<Dispatch<SetStateAction<string>>>((value) => {

@@ -60,6 +60,7 @@
 }
 
 :root {
+  color-scheme: light;
   --avana-white: #FFFFFF;
   --avana-ink: #0F1518;
   --avana-charcoal: #2F414B;
