@@ -158,20 +158,20 @@ export function BrandGuidelinesGrid() {
         <div key={index} className="relative flex flex-col items-center gap-3">
           <div className={`relative flex aspect-square w-full items-center justify-center overflow-hidden p-4 ${brandGuidelineSurfaceClassName}`}>
             {item.icon === "stretch" ? (
-              <div className="origin-center scale-x-125 scale-y-75 opacity-45 grayscale">
+              <div className="origin-center scale-x-125 scale-y-75">
                 <ThemeAwareBrandImage
-                  asset={brandLogoAssets.fullPersonal}
+                  asset={brandLogoAssets.fullBlack}
                   alt={t("Stretched logo example")}
-                  className="w-full max-w-[8rem]"
+                  className="w-full max-w-[11rem]"
                 />
               </div>
             ) : null}
             {item.icon === "rotate" ? (
-              <div className="rotate-45 opacity-45 grayscale">
+              <div className="rotate-45">
                 <ThemeAwareBrandImage
                   asset={brandLogoAssets.iconBlack}
                   alt={t("Rotated icon example")}
-                  className="w-full max-w-[5rem]"
+                  className="w-full max-w-[7rem]"
                 />
               </div>
             ) : null}
@@ -181,42 +181,42 @@ export function BrandGuidelinesGrid() {
                   <ThemeAwareBrandImage
                     asset={brandLogoAssets.iconPersonal}
                     alt={t("Recolored logo example")}
-                    className="w-full max-w-[4rem]"
+                    className="w-full max-w-[5.5rem]"
                   />
                 </div>
                 <div className="text-[#BC846F] hue-rotate-180 saturate-150">
                   <ThemeAwareBrandImage
                     asset={brandLogoAssets.iconPersonal}
                     alt={t("Second recolored logo example")}
-                    className="w-full max-w-[4rem]"
+                    className="w-full max-w-[5.5rem]"
                   />
                 </div>
               </div>
             ) : null}
             {item.icon === "crop" ? (
-              <div className="-mr-16 overflow-hidden opacity-45 grayscale">
+              <div className="-mr-16 overflow-hidden">
                 <ThemeAwareBrandImage
                   asset={brandLogoAssets.iconBlack}
                   alt={t("Cropped logo example")}
-                  className="w-full max-w-[6rem]"
+                  className="w-full max-w-[8rem]"
                 />
               </div>
             ) : null}
             {item.icon === "effects" ? (
-              <div className="blur-[2px] drop-shadow-[0_16px_12px_rgba(1,170,207,0.45)] opacity-45 grayscale">
+              <div className="blur-[1.5px] drop-shadow-[0_16px_12px_rgba(1,170,207,0.45)]">
                 <ThemeAwareBrandImage
                   asset={brandLogoAssets.iconBlack}
                   alt={t("Logo with effects example")}
-                  className="w-full max-w-[5rem]"
+                  className="w-full max-w-[7rem]"
                 />
               </div>
             ) : null}
             {item.icon === "spacing" ? (
-              <div className="flex items-center gap-0.5 opacity-45 grayscale">
+              <div className="flex items-center gap-0.5">
                 <ThemeAwareBrandImage
                   asset={brandLogoAssets.iconBlack}
                   alt={t("Crowded spacing example")}
-                  className="w-full max-w-[3rem]"
+                  className="w-full max-w-[4.5rem]"
                 />
                 <span className="text-base font-semibold text-[#2F414B] dark:text-foreground">{t("Partner")}</span>
               </div>
