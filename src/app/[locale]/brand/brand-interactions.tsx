@@ -3,6 +3,7 @@
 import { Check, Copy } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useRef, useState } from "react"
+import { lookupPhrase, usePhraseMap } from "@/components/phrase-map-context"
 import { ThemeAwareBrandImage } from "@/components/theme-aware-brand-image"
 import {
   brandGuidelineSurfaceClassName,
@@ -83,7 +84,13 @@ const colorGroups = [
   },
 ] as const
 
+function useMarketingPhrase() {
+  const map = usePhraseMap()
+  return (text: string) => lookupPhrase(map, text)
+}
+
 export function BrandLogoShowcase() {
+  const t = useMarketingPhrase()
   const [activeLogoVariant, setActiveLogoVariant] = useState<LogoVariant>("horizontal")
 
   return (
@@ -103,12 +110,12 @@ export function BrandLogoShowcase() {
             <div className={`brand-logo-preview relative flex aspect-[7/3] items-center justify-center p-4 ${brandPreviewSurfaceClassName} md:hidden`}>
               <ThemeAwareBrandImage
                 asset={variant.asset}
-                alt={variant.alt}
+                alt={t(variant.alt)}
                 className={variant.mobileImageClassName}
               />
             </div>
-            <h3 className="text-xl font-semibold text-foreground">{variant.title}</h3>
-            <p className="text-sm leading-relaxed text-gray-500">{variant.description}</p>
+            <h3 className="text-xl font-semibold text-foreground">{t(variant.title)}</h3>
+            <p className="text-sm leading-relaxed text-gray-500">{t(variant.description)}</p>
           </button>
         ))}
       </div>
@@ -123,7 +130,7 @@ export function BrandLogoShowcase() {
           >
             <ThemeAwareBrandImage
               asset={variant.asset}
-              alt={variant.alt}
+              alt={t(variant.alt)}
               className={variant.desktopImageClassName}
             />
           </div>
@@ -143,6 +150,8 @@ const guidelineAvoidItems = [
 ] as const
 
 export function BrandGuidelinesGrid() {
+  const t = useMarketingPhrase()
+
   return (
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
       {guidelineAvoidItems.map((item, index) => (
@@ -152,7 +161,7 @@ export function BrandGuidelinesGrid() {
               <div className="origin-center scale-x-125 scale-y-75 opacity-45 grayscale">
                 <ThemeAwareBrandImage
                   asset={brandLogoAssets.fullPersonal}
-                  alt="Stretched logo example"
+                  alt={t("Stretched logo example")}
                   className="w-full max-w-[8rem]"
                 />
               </div>
@@ -161,7 +170,7 @@ export function BrandGuidelinesGrid() {
               <div className="rotate-45 opacity-45 grayscale">
                 <ThemeAwareBrandImage
                   asset={brandLogoAssets.iconBlack}
-                  alt="Rotated icon example"
+                  alt={t("Rotated icon example")}
                   className="w-full max-w-[5rem]"
                 />
               </div>
@@ -171,14 +180,14 @@ export function BrandGuidelinesGrid() {
                 <div className="text-[#9E5537] hue-rotate-60 saturate-150">
                   <ThemeAwareBrandImage
                     asset={brandLogoAssets.iconPersonal}
-                    alt="Recolored logo example"
+                    alt={t("Recolored logo example")}
                     className="w-full max-w-[4rem]"
                   />
                 </div>
                 <div className="text-[#BC846F] hue-rotate-180 saturate-150">
                   <ThemeAwareBrandImage
                     asset={brandLogoAssets.iconPersonal}
-                    alt="Second recolored logo example"
+                    alt={t("Second recolored logo example")}
                     className="w-full max-w-[4rem]"
                   />
                 </div>
@@ -188,7 +197,7 @@ export function BrandGuidelinesGrid() {
               <div className="-mr-16 overflow-hidden opacity-45 grayscale">
                 <ThemeAwareBrandImage
                   asset={brandLogoAssets.iconBlack}
-                  alt="Cropped logo example"
+                  alt={t("Cropped logo example")}
                   className="w-full max-w-[6rem]"
                 />
               </div>
@@ -197,7 +206,7 @@ export function BrandGuidelinesGrid() {
               <div className="blur-[2px] drop-shadow-[0_16px_12px_rgba(1,170,207,0.45)] opacity-45 grayscale">
                 <ThemeAwareBrandImage
                   asset={brandLogoAssets.iconBlack}
-                  alt="Logo with effects example"
+                  alt={t("Logo with effects example")}
                   className="w-full max-w-[5rem]"
                 />
               </div>
@@ -206,15 +215,15 @@ export function BrandGuidelinesGrid() {
               <div className="flex items-center gap-0.5 opacity-45 grayscale">
                 <ThemeAwareBrandImage
                   asset={brandLogoAssets.iconBlack}
-                  alt="Crowded spacing example"
+                  alt={t("Crowded spacing example")}
                   className="w-full max-w-[3rem]"
                 />
-                <span className="text-base font-semibold text-[#2F414B] dark:text-foreground">Partner</span>
+                <span className="text-base font-semibold text-[#2F414B] dark:text-foreground">{t("Partner")}</span>
               </div>
             ) : null}
             <span className="pointer-events-none absolute inset-x-5 top-1/2 h-1 -translate-y-1/2 rotate-[-48deg] rounded-full bg-[#ff8f6f]" />
           </div>
-          <p className="text-center text-xs leading-tight text-gray-600 dark:text-type-secondary">{item.text}</p>
+          <p className="text-center text-xs leading-tight text-gray-600 dark:text-type-secondary">{t(item.text)}</p>
         </div>
       ))}
     </div>
@@ -244,6 +253,7 @@ export function BrandTokenPreview({
 
 export function BrandColorPalette() {
   const t = useTranslations("common.exportMenu")
+  const phrase = useMarketingPhrase()
   const [copiedColor, setCopiedColor] = useState<string | null>(null)
   const resetTimerRef = useRef<number | null>(null)
 
@@ -274,8 +284,8 @@ export function BrandColorPalette() {
       {colorGroups.map((group) => (
         <div key={group.title} className="grid items-start gap-8 md:grid-cols-2">
           <div className="flex flex-col gap-3">
-            <h3 className="text-xl font-semibold text-foreground">{group.title}</h3>
-            <p className="text-sm leading-relaxed text-gray-500">{group.description}</p>
+            <h3 className="text-xl font-semibold text-foreground">{phrase(group.title)}</h3>
+            <p className="text-sm leading-relaxed text-gray-500">{phrase(group.description)}</p>
           </div>
 
           <div className="flex flex-col gap-4">
@@ -299,8 +309,8 @@ export function BrandColorPalette() {
                   </span>
                 </button>
                 <div className="flex min-w-0 flex-1 flex-col justify-center py-3 pr-3">
-                  <p className="font-semibold text-foreground">{color.name}</p>
-                  <p className="mt-0.5 text-sm text-gray-500">{color.usage}</p>
+                  <p className="font-semibold text-foreground">{phrase(color.name)}</p>
+                  <p className="mt-0.5 text-sm text-gray-500">{phrase(color.usage)}</p>
                 </div>
               </div>
             ))}
