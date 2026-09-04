@@ -33,7 +33,7 @@ export default async function AboutPage({ params }: LocaleParamsProps) {
             </h1>
           </div>
 
-          <div className="relative mt-10 aspect-[1630/965] w-full overflow-hidden rounded-sm border border-black/8 bg-gray-100 lg:mt-14">
+          <div className="relative mt-10 aspect-[1630/965] w-full overflow-hidden lg:mt-14">
             <Image
               src="/avana-pool-hero.png"
               alt="Avana about hero image"
