@@ -242,9 +242,9 @@
   "home": {
     "hero": {
       "eyebrow": "Desenvolvido por Aave v4",
-      "title": "The Lending Market For AMM Liquidity",
-      "titleLine1": "The Lending Market",
-      "titleLine2": "For AMM Liquidity",
+      "title": "The lending market for AMM liquidity",
+      "titleLine1": "The lending market",
+      "titleLine2": "for AMM liquidity",
       "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",

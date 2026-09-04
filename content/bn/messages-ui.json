@@ -216,9 +216,9 @@
   "home": {
     "hero": {
       "eyebrow": "চার্জ করা হয়েছে Aave v4 দ্বারা",
-      "title": "The Lending Market For AMM Liquidity",
-      "titleLine1": "The Lending Market",
-      "titleLine2": "For AMM Liquidity",
+      "title": "The lending market for AMM liquidity",
+      "titleLine1": "The lending market",
+      "titleLine2": "for AMM liquidity",
       "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
