@@ -12,7 +12,7 @@ export default async function WebappHero({ locale }: { locale: AppLocale }) {
         fill
         priority
         unoptimized
-        sizes="(max-width: 768px) 100vw, (max-width: 1536px) 72rem, 80rem"
+        sizes="(max-width: 768px) 100vw, (max-width: 1536px) 64rem, 72rem"
         className="object-cover object-center dark:hidden"
       />
       <Image
@@ -21,7 +21,7 @@ export default async function WebappHero({ locale }: { locale: AppLocale }) {
         fill
         priority
         unoptimized
-        sizes="(max-width: 768px) 100vw, (max-width: 1536px) 72rem, 80rem"
+        sizes="(max-width: 768px) 100vw, (max-width: 1536px) 64rem, 72rem"
         className="hidden object-cover object-center dark:block"
       />
     </div>

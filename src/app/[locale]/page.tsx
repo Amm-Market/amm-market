@@ -96,7 +96,7 @@ export default async function Home({ params }: LocaleParamsProps) {
           </div>
         </div>
 
-        <div className="site-content-shell mt-10 md:mt-12 lg:mt-14">
+        <div className="site-content-shell mt-6 md:mt-7 lg:mt-8">
           <WebappHero locale={locale} />
         </div>
       </section>
