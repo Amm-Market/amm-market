@@ -102,6 +102,16 @@ export default async function Home({ params }: LocaleParamsProps) {
         </div>
       </section>
 
+      <section className="bg-background">
+        <div className="site-content-shell py-16 md:py-20 lg:py-24">
+          <p className="max-w-[48rem] text-[1.125rem] leading-[1.55] tracking-[-0.015em] text-type-secondary md:text-[1.25rem] lg:max-w-[60rem] lg:text-[1.625rem] lg:leading-[1.45] lg:tracking-[-0.0125em]">
+            {t.rich("intro.text", {
+              ink: (chunks) => <span className="text-foreground">{chunks}</span>,
+            })}
+          </p>
+        </div>
+      </section>
+
       <BuildTomorrowSection locale={locale} />
       <HeroSection locale={locale} />
     </LocalizedMarketing>
