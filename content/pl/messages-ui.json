@@ -216,9 +216,9 @@
   "home": {
     "hero": {
       "eyebrow": "Zasilany przez Aave v4",
-      "title": "The lending market for AMM liquidity",
-      "titleLine1": "The lending market",
-      "titleLine2": "for AMM liquidity",
+      "title": "Avana is the lending market built for AMM liquidity pools.",
+      "titleLine1": "Avana is the lending market",
+      "titleLine2": "built for AMM liquidity pools.",
       "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
@@ -229,8 +229,8 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Spróbuj Sandbox",
-      "secondaryCta": "Czytaj dokumentację"
+      "primaryCta": "Read the ARFC",
+      "secondaryCta": "Try Sandbox"
     },
     "features": {
       "eyebrow": "Kluczowe funkcje",
