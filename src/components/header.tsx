@@ -12,14 +12,14 @@ import { HEADER_WORDMARK_PATH, SITE_NAME, siteRoutes } from "@/lib/site"
 
 function BrandLogo({ alt }: { alt: string }) {
   return (
-    <span className="inline-flex items-center overflow-hidden">
+    <span className="inline-flex items-center">
       <Image
         src={HEADER_WORDMARK_PATH}
         alt={alt}
         width={480}
         height={240}
         quality={85}
-        className="h-[56px] w-auto origin-left scale-[1.08] md:h-[52px]"
+        className="h-[56px] w-auto origin-left -translate-x-[10%] scale-[1.08] md:h-[52px]"
       />
     </span>
   )
@@ -30,8 +30,8 @@ export default function Header(): React.JSX.Element {
 
   return (
     <header className="sticky top-0 z-50 bg-[var(--header-surface)] backdrop-blur-[10px]">
-      <div className="site-content-shell flex h-16 items-center justify-between gap-4 md:h-[54px] md:gap-3">
-        <div className="inline-flex shrink-0 items-center">
+      <div className="site-content-shell flex h-16 items-center justify-between gap-4 md:h-[54px] md:gap-3 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+        <div className="inline-flex shrink-0 items-center lg:justify-self-start">
           <Link href={siteRoutes.home} aria-label={SITE_NAME} data-framer-name="Logo" className="inline-flex items-center">
             <BrandLogo alt={t("a11y.logo", { site: SITE_NAME })} />
           </Link>
@@ -39,7 +39,7 @@ export default function Header(): React.JSX.Element {
 
         <HeaderDesktopNavigation />
 
-        <div className="hidden items-center gap-1.5 lg:flex xl:gap-2">
+        <div className="hidden items-center gap-1.5 lg:flex lg:justify-self-end xl:gap-2">
           <HeaderHelpCenterButton />
           <HeaderThemeToggle />
           <HeaderLanguageDropdown />
