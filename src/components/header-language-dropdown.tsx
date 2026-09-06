@@ -80,11 +80,13 @@ export default function HeaderLanguageDropdown({
         <span className={isMobile ? undefined : "hidden max-w-[9rem] truncate xl:inline"}>
           {selected.label}
         </span>
-        <ChevronDown
-          aria-hidden="true"
-          className={`h-[17px] w-[17px] shrink-0 transition-transform duration-200 ease-out ${isMobile ? "" : "hidden xl:inline"} ${isOpen ? "rotate-180" : "rotate-0"}`}
-          strokeWidth={2.4}
-        />
+        {isMobile ? (
+          <ChevronDown
+            aria-hidden="true"
+            className={`h-[17px] w-[17px] shrink-0 transition-transform duration-200 ease-out ${isOpen ? "rotate-180" : "rotate-0"}`}
+            strokeWidth={2.4}
+          />
+        ) : null}
       </button>
 
       {isOpen ? (

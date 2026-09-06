@@ -1,7 +1,7 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import { BookOpenText, ChevronDown } from "lucide-react"
+import { BookOpenText } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useRef, useState } from "react"
 import { desktopMenuButtons, type DesktopMenuId } from "@/components/header-nav-data"
@@ -91,14 +91,9 @@ export default function HeaderDesktopNavigation() {
               onMouseEnter={() => openDesktopMenu(menu.id)}
               onFocus={() => openDesktopMenu(menu.id)}
               onClick={() => openDesktopMenu(menu.id)}
-              className={`site-header-nav-link group relative inline-flex items-center gap-1 px-0 py-1 font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out xl:gap-1.5 ${isHighlighted ? "text-type-accent" : "text-foreground/62 hover:text-foreground/94"}`}
+              className={`site-header-nav-link group relative inline-flex items-center px-0 py-1 font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${isHighlighted ? "text-type-accent" : "text-foreground/62 hover:text-foreground/94"}`}
             >
               <span>{menuLabels[menu.id]}</span>
-              <ChevronDown
-                aria-hidden="true"
-                className={`h-[15px] w-[15px] shrink-0 transition-transform duration-200 ease-out ${isOpen ? "rotate-180" : "rotate-0"}`}
-                strokeWidth={2.35}
-              />
             </button>
           )
         })}

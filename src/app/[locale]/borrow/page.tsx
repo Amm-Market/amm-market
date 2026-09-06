@@ -236,7 +236,7 @@ export default async function BorrowPage({ params }: LocaleParamsProps) {
   return (
     <LocalizedMarketing locale={locale} keys={["borrow/page", "borrow-power-section", "position-safety-cards-section", "position-safety-section", "homepage/HomepageNewsroomSection", "InlineFaqSection"]}>
     <main className="bg-white">
-      <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">
+      <div className="site-content-shell flex min-h-screen flex-col pt-10 sm:pt-12 md:pt-20 lg:min-h-0">
         <div className="relative z-0">
           <section className="pb-0 lg:pb-10 xl:pb-12">
             <div className="w-full pt-3 pb-0 md:pt-5">
@@ -479,7 +479,7 @@ export default async function BorrowPage({ params }: LocaleParamsProps) {
         </div>
       </PerformanceSection>
 
-      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
+      <div className="site-content-shell flex flex-col">
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
         <div className="site-content-width flex flex-col site-section-stack site-section-gap pb-16 md:pb-20 2xl:pb-18">

@@ -34,7 +34,7 @@ export default function DevelopersLayout({
 }) {
   return (
     <div className="flex min-h-screen min-w-0 flex-1 overflow-x-clip bg-background">
-      <div className="mx-auto flex min-w-0 w-full max-w-[1200px] flex-1">
+      <div className="site-content-width flex min-w-0 w-full flex-1">
         <DeferredDeveloperSidebar />
         <div className="min-w-0 flex-1 px-4 py-8 sm:px-6 lg:px-10">
           <DeveloperContentWrapper>{children}</DeveloperContentWrapper>
