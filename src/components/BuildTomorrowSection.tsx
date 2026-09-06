@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
-import { FeatureCardTitle, SectionIntro, SectionLead } from "@/components/shared"
+import { FeatureCardTitle, SectionIntro } from "@/components/shared"
 import type { AppLocale } from "@/i18n/locales"
 import { withMarketingI18n } from "@/lib/content-i18n/with-marketing-i18n"
 import { siteRoutes } from "@/lib/site"
@@ -39,9 +39,6 @@ const productCards = [
   },
 ] as const
 
-const MEET_PARAGRAPH =
-  "In 2021, Aave launched AMM Market and proved LP positions could serve as collateral, but it was built for the simpler DEXs of that era. Avana picks up where that left off, designed for today's DEXs and LP types, treating each position as collateral shaped by dual oracles and stronger risk controls."
-
 export default async function BuildTomorrowSection({ locale }: { locale: AppLocale }) {
   return withMarketingI18n(locale, ["BuildTomorrowSection"], (
     <section
@@ -49,27 +46,15 @@ export default async function BuildTomorrowSection({ locale }: { locale: AppLoca
       className="w-full bg-inherit site-section-gap"
     >
       <div className="site-content-shell">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,29rem)_minmax(0,1fr)] md:gap-10 lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,1fr)]">
-          <div className="space-y-4">
-            <SectionIntro eyebrow="Meet Avana" eyebrowTone="violet" title="A lending protocol for LP-backed loans" />
-          </div>
-          <div className="min-w-0 text-left text-type-secondary">
-            <SectionLead variant="display" className="max-w-[42rem]">
-              {MEET_PARAGRAPH}
-            </SectionLead>
-          </div>
+        <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
+          <SectionIntro
+            eyebrow="Avana Markets"
+            eyebrowTone="violet"
+            title="Unlock Capital from AMM Markets"
+          />
         </div>
 
-        <div className="mt-24 md:mt-32 2xl:mt-28">
-          <div className="mb-6 flex max-w-[600px] flex-col gap-2 sm:mb-8 md:max-w-none">
-            <SectionIntro
-              eyebrow="Avana Markets"
-              eyebrowTone="violet"
-              title="Unlock Capital from AMM Markets"
-            />
-          </div>
-
-          <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:mt-12 md:grid-cols-3">
             {productCards.map((card) => (
               <article
                 key={card.title}
@@ -100,7 +85,6 @@ export default async function BuildTomorrowSection({ locale }: { locale: AppLoca
                 </div>
               </article>
             ))}
-          </div>
         </div>
       </div>
     </section>
