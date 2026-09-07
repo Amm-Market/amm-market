@@ -242,10 +242,10 @@
   "home": {
     "hero": {
       "eyebrow": "Aangedreven door Aave v4",
-      "title": "Avana is the lending market built for AMM liquidity pools.",
-      "titleLine1": "Avana is the lending market",
-      "titleLine2": "built for AMM liquidity pools.",
-      "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
+      "title": "Avana is de leenmarkt, gebouwd voor AMM-liquiditeitspools.",
+      "titleLine1": "Avana is de leenmarkt,",
+      "titleLine2": "gebouwd voor AMM-liquiditeitspools.",
+      "subtitle": "Leen onchain crypto, grondstoffen, FX en real-world assets (RWA) met je AMM-liquiditeitsposities als onderpand.",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
         "onchain using your AMM liquidity positions",
@@ -255,11 +255,11 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Read the ARFC",
-      "secondaryCta": "Try Sandbox"
+      "primaryCta": "Lees het ARFC",
+      "secondaryCta": "Probeer Sandbox"
     },
     "intro": {
-      "text": "<ink>Back in March 2021, Aave Protocol released AMM Market.</ink> It became the first protocol to use AMM liquidity as collateral and prove that LP positions could serve as collateral, but it was built for the simpler DEXs and liquidity models of its time. <ink>Avana takes that idea into the next generation</ink>, purpose built for today’s increasingly sophisticated DEXs and liquidity positions, enabling users to <ink>borrow crypto, FX, and real world assets onchain against their AMM liquidity pool positions</ink>."
+      "text": "<ink>In maart 2021 lanceerde Aave Protocol de AMM Market.</ink> Het was het allereerste protocol dat AMM-liquiditeit als onderpand benutte en bewees dat LP-posities als kredietwaarborg kunnen dienen. Destijds was het echter gebouwd voor de eenvoudigere DEX’en en liquiditeitsmodellen van toen. <ink>Avana brengt dat baanbrekende idee naar de volgende generatie</ink>: speciaal ontworpen voor de geavanceerde, geconcentreerde DEX’en van nu, zodat gebruikers <ink>onchain crypto, FX en real-world assets kunnen lenen tegen hun AMM-liquiditeitspoolposities</ink>."
     },
     "features": {
       "eyebrow": "Belangrijkste kenmerken",
@@ -275,6 +275,9 @@
     "buildTomorrow": {
       "title": "Aan Avana",
       "body": "Avana biedt ondersteuning voor LP posities als bruikbaar onderpand op Aave v4 zodat liquiditeitsverschaffers kunnen lenen zonder het fonds te verlaten."
+    },
+    "trustedBy": {
+      "caption": "Het vertrouwen van toonaangevende teams die hoogwaardige Web3-producten bouwen en lanceren"
     }
   },
   "product": {

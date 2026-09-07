@@ -216,10 +216,10 @@
   "home": {
     "hero": {
       "eyebrow": "מופעל על ידי Aave v4",
-      "title": "Avana is the lending market built for AMM liquidity pools.",
-      "titleLine1": "Avana is the lending market",
-      "titleLine2": "built for AMM liquidity pools.",
-      "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
+      "title": "Avana היא זירת הלוואות מבוזרת, שפותחה במיוחד עבור מאגרי נזילות AMM.",
+      "titleLine1": "Avana היא זירת הלוואות מבוזרת,",
+      "titleLine2": "שפותחה במיוחד עבור מאגרי נזילות AMM.",
+      "subtitle": "לוו קריפטו, סחורות, מט\"ח (FX) ונכסי עולם אמיתי (RWA) ישירות על גבי הבלוקצ'יין, תוך שימוש בפוזיציות נזילות AMM כבטוחה.",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
         "onchain using your AMM liquidity positions",
@@ -229,11 +229,11 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Read the ARFC",
-      "secondaryCta": "Try Sandbox"
+      "primaryCta": "קראו את הצעת ה-ARFC",
+      "secondaryCta": "התנסו ב-Sandbox"
     },
     "intro": {
-      "text": "<ink>Back in March 2021, Aave Protocol released AMM Market.</ink> It became the first protocol to use AMM liquidity as collateral and prove that LP positions could serve as collateral, but it was built for the simpler DEXs and liquidity models of its time. <ink>Avana takes that idea into the next generation</ink>, purpose built for today’s increasingly sophisticated DEXs and liquidity positions, enabling users to <ink>borrow crypto, FX, and real world assets onchain against their AMM liquidity pool positions</ink>."
+      "text": "<ink>במרץ 2021, השיק פרוטוקול Aave את שוק ה-AMM Market.</ink> הוא היה לפרוטוקול הראשון שהשתמש בנזילות AMM כבטוחה והוכיח כי פוזיציות LP יכולות לשמש כערובה להלוואה, אך הוא הותאם למודלי הנזילות וה-DEXs הבסיסיים של אותה תקופה. <ink>Avana מקפיצה את הרעיון הזה לדור הבא של ה-DeFi</ink>: מערכת שנבנתה במיוחד עבור ה-DEXs המתוחכמים של ימינו בעלי נזילות מרוכזת, ומאפשרת למשתמשים <ink>ללוות קריפטו, מט״ח ונכסי עולם אמיתי Onchain כנגד פוזיציות מאגרי הנזילות של ה-AMM שלהם</ink>."
     },
     "features": {
       "eyebrow": "תכונות מפתח",
@@ -249,6 +249,9 @@
     "buildTomorrow": {
       "title": "פגוש Avana",
       "body": "Avana הופך LP עמדות לבלתי ניתנות לשימוש בערבות על Aave v4 כך שספקי נזילות יכולים ללוות מבלי לעזוב את הבריכה."
+    },
+    "trustedBy": {
+      "caption": "הבחירה של צוותים מובילים המפתחים ומשיקים מוצרי Web3 מהשורה הראשונה"
     }
   },
   "product": {

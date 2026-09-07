@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react"
 import BuildTomorrowSection from "@/components/BuildTomorrowSection"
 import HeroSection from "@/components/hero-section"
 import WebappHero from "@/components/webapp-hero"
+import { TrustedBySection } from "@/components/trusted-by-section"
 import { LocalizedMarketing } from "@/components/localized-marketing"
 import { Link } from "@/i18n/navigation"
 import { resolveLocaleParam, type LocaleParamsProps } from "@/lib/i18n/locale-params"
@@ -101,6 +102,8 @@ export default async function Home({ params }: LocaleParamsProps) {
           <WebappHero locale={locale} />
         </div>
       </section>
+
+      <TrustedBySection caption={t("trustedBy.caption")} />
 
       <section className="bg-background">
         <div className="site-content-shell py-16 md:py-20 lg:py-24">

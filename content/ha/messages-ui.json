@@ -216,10 +216,10 @@
   "home": {
     "hero": {
       "eyebrow": "Ana amfani da Aave v4",
-      "title": "Avana is the lending market built for AMM liquidity pools.",
-      "titleLine1": "Avana is the lending market",
-      "titleLine2": "built for AMM liquidity pools.",
-      "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
+      "title": "Avana ita ce kasuwar bayar da lamuni ta DeFi wadda aka kera ta musamman don matattaran samar da kudaden AMM.",
+      "titleLine1": "Avana ita ce kasuwar bayar da lamuni ta DeFi",
+      "titleLine2": "wadda aka kera ta musamman don matattaran samar da kudaden AMM.",
+      "subtitle": "Ranci kudaden crypto, kayayyaki, FX, da kadarorin zahiri na duniya (RWA) a kan sarka ta hanyar amfani da matsayin samar da kudaden AMM dinka a matsayin jinginar lamuni.",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
         "onchain using your AMM liquidity positions",
@@ -229,11 +229,11 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Read the ARFC",
-      "secondaryCta": "Try Sandbox"
+      "primaryCta": "Karanta Shawarar ARFC",
+      "secondaryCta": "Gwada Sandbox"
     },
     "intro": {
-      "text": "<ink>Back in March 2021, Aave Protocol released AMM Market.</ink> It became the first protocol to use AMM liquidity as collateral and prove that LP positions could serve as collateral, but it was built for the simpler DEXs and liquidity models of its time. <ink>Avana takes that idea into the next generation</ink>, purpose built for today’s increasingly sophisticated DEXs and liquidity positions, enabling users to <ink>borrow crypto, FX, and real world assets onchain against their AMM liquidity pool positions</ink>."
+      "text": "<ink>A watan Maris na 2021, Aave Protocol ya kaddamar da AMM Market.</ink> Ya zama yarjejeniyar farko da ta yi amfani da samar da kudaden AMM a matsayin jingina tare da tabbatar da cewa matsayin LP zai iya zama jinginar bashi, kodayake an gina shi ne don DEXs masu sauki na wancan lokacin. <ink>Avana yana daga wannan fasahar zuwa sabon zamani na DeFi</ink>, an tsara shi na musamman don DEXs na zamani masu fasaha, yana baiwa masu amfani damar <ink>karbar rancen crypto, FX, da kadarorin duniya na zahiri a kan sarka ta hanyar jinginar matsayinsu na matattarar AMM</ink>."
     },
     "features": {
       "eyebrow": "Manyan Fasali",
@@ -249,6 +249,9 @@
     "buildTomorrow": {
       "title": "Sadu Avana",
       "body": "Avana yana sauya goyon bayan LP matsayi zuwa abin amfani a matsayin jinginar kudi a Aave v4 don haka masu bayar da ruwa za su iya aro ba tare da barin tafkin ba."
+    },
+    "trustedBy": {
+      "caption": "Wanda kungiyoyi masu kera tare da kaddamar da ingantattun kayayyakin Web3 suka amince da shi"
     }
   },
   "product": {

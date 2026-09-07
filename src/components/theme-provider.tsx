@@ -11,7 +11,8 @@ import {
   type ReactNode,
   type SetStateAction,
 } from "react"
-import { THEME_STORAGE_KEY } from "@/lib/theme"
+import { THEME_INIT_SCRIPT, THEME_STORAGE_KEY } from "@/lib/theme"
+import { useServerInsertedHTML } from "next/navigation"
 
 export type ThemePreference = "light" | "dark" | "system"
 
@@ -86,6 +87,13 @@ function applyResolvedTheme(resolved: "light" | "dark") {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
+  useServerInsertedHTML(() => (
+    <script
+      id="theme-init"
+      dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
+    />
+  ))
+
   const [theme, setThemeState] = useState<ThemePreference>(() =>
     typeof window === "undefined" ? "system" : readStoredTheme(),
   )

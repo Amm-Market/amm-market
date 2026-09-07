@@ -242,10 +242,10 @@
   "home": {
     "hero": {
       "eyebrow": "द्वारा संचालित Aave v4",
-      "title": "Avana is the lending market built for AMM liquidity pools.",
-      "titleLine1": "Avana is the lending market",
-      "titleLine2": "built for AMM liquidity pools.",
-      "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
+      "title": "Avana एक विकेंद्रीकृत लेंडिंग मार्केट है, विशेष रूप से AMM लिक्विडिटी पूल्स के लिए निर्मित।",
+      "titleLine1": "Avana एक विकेंद्रीकृत लेंडिंग मार्केट है,",
+      "titleLine2": "विशेष रूप से AMM लिक्विडिटी पूल्स के लिए निर्मित।",
+      "subtitle": "अपनी AMM लिक्विडिटी पोजीशन को संपार्श्विक (कोलैटरल) के रूप में उपयोग करके ऑन-चेन क्रिप्टो, कमोडिटीज़, FX और रियल वर्ल्ड एसेट्स (RWA) उधार लें।",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
         "onchain using your AMM liquidity positions",
@@ -255,11 +255,11 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Read the ARFC",
-      "secondaryCta": "Try Sandbox"
+      "primaryCta": "ARFC प्रस्ताव पढ़ें",
+      "secondaryCta": "Sandbox आज़माएँ"
     },
     "intro": {
-      "text": "<ink>Back in March 2021, Aave Protocol released AMM Market.</ink> It became the first protocol to use AMM liquidity as collateral and prove that LP positions could serve as collateral, but it was built for the simpler DEXs and liquidity models of its time. <ink>Avana takes that idea into the next generation</ink>, purpose built for today’s increasingly sophisticated DEXs and liquidity positions, enabling users to <ink>borrow crypto, FX, and real world assets onchain against their AMM liquidity pool positions</ink>."
+      "text": "<ink>मार्च 2021 में, Aave Protocol ने AMM Market लॉन्च किया था।</ink> यह AMM लिक्विडिटी को कोलैटरल के रूप में उपयोग करने और यह सिद्ध करने वाला पहला प्रोटोकॉल बना कि LP पोजीशन ऋण संपार्श्विक बन सकती हैं; हालाँकि वह उस समय के सरल DEXs के लिए था। <ink>Avana इस विचार को अगली पीढ़ी के DeFi में ले जाता है</ink>—आज के परिष्कृत व कंसंट्रेटेड लिक्विडिटी DEXs के लिए विशेष रूप से डिज़ाइन किया गया, जिससे उपयोगकर्ता <ink>अपनी AMM लिक्विडिटी पूल पोजीशन के बदले ऑन-चेन क्रिप्टो, FX और रियल वर्ल्ड एसेट्स उधार ले सकें</ink>।"
     },
     "features": {
       "eyebrow": "मुख्य विशेषताएँ",
@@ -275,6 +275,9 @@
     "buildTomorrow": {
       "title": "मिलें Avana",
       "body": "Avana टर्न LP पोजीशन को Aave v4 पर उपयोग योग्य संपार्श्विक में बदल देता है ताकि लिक्विडिटी प्रदाता बिना पूल छोड़ें उधार ले सकें।"
+    },
+    "trustedBy": {
+      "caption": "उच्च गुणवत्ता वाले Web3 उत्पाद लॉन्च करने वाली शीर्ष टीमों का विश्वसनीय विकल्प"
     }
   },
   "product": {

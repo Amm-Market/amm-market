@@ -242,10 +242,10 @@
   "home": {
     "hero": {
       "eyebrow": "قدرت گرفته از Aave v4",
-      "title": "Avana is the lending market built for AMM liquidity pools.",
-      "titleLine1": "Avana is the lending market",
-      "titleLine2": "built for AMM liquidity pools.",
-      "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
+      "title": "Avana بازار وام‌دهی آن‌چین است که منحصراً برای استخرهای نقدینگی AMM طراحی شده است.",
+      "titleLine1": "Avana بازار وام‌دهی آن‌چین است",
+      "titleLine2": "که منحصراً برای استخرهای نقدینگی AMM طراحی شده است.",
+      "subtitle": "با استفاده از موقعیت‌های نقدینگی AMM خود به عنوان وثیقه، رمزارزها، کالاها، فارکس و دارایی‌های دنیای واقعی (RWA) را به صورت آن‌چین وام بگیرید.",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
         "onchain using your AMM liquidity positions",
@@ -255,11 +255,11 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Read the ARFC",
-      "secondaryCta": "Try Sandbox"
+      "primaryCta": "خواندن پروپوزال ARFC",
+      "secondaryCta": "امتحان محیط Sandbox"
     },
     "intro": {
-      "text": "<ink>Back in March 2021, Aave Protocol released AMM Market.</ink> It became the first protocol to use AMM liquidity as collateral and prove that LP positions could serve as collateral, but it was built for the simpler DEXs and liquidity models of its time. <ink>Avana takes that idea into the next generation</ink>, purpose built for today’s increasingly sophisticated DEXs and liquidity positions, enabling users to <ink>borrow crypto, FX, and real world assets onchain against their AMM liquidity pool positions</ink>."
+      "text": "<ink>در مارس ۲۰۲۱، پروتکل Aave بازار نوآورانه AMM Market را راه‌اندازی کرد.</ink> این نخستین پروتکلی بود که از نقدینگی AMM به عنوان وثیقه استفاده نمود و نشان داد موقعیت‌های LP می‌توانند پشتوانه تسهیلات باشند؛ هرچند برای صرافی‌های غیرمتمرکز اولیه و مدل‌های ساده آن زمان ساخته شده بود. <ink>اکنون Avana این ایده بنیادین را به نسل نوین DeFi ارتقا داده است</ink>؛ پروتکلی که اختصاصاً برای صرافی‌های غیرمتمرکز پیشرفته و نقدینگی متمرکز امروزی مهندسی شده تا کاربران بتوانند <ink>در ازای موقعیت‌های استخر نقدینگی AMM خود، رمزارز، فارکس و دارایی‌های دنیای واقعی را به صورت آن‌چین وام بگیرند</ink>."
     },
     "features": {
       "eyebrow": "ویژگی‌های کلیدی",
@@ -275,6 +275,9 @@
     "buildTomorrow": {
       "title": "با Avana ملاقات کنید",
       "body": "Avana باعث می‌شود LP موقعیت به وثیقه قابل استفاده در Aave v4 تبدیل شوند تا فراهم‌کنندگان نقدینگی بتوانند بدون ترک استخر وام بگیرند."
+    },
+    "trustedBy": {
+      "caption": "مورد اعتماد تیم‌های برتری که محصولات باکیفیت و پیشرو Web3 را عرضه می‌کنند"
     }
   },
   "product": {

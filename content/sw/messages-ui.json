@@ -216,10 +216,10 @@
   "home": {
     "hero": {
       "eyebrow": "Iliyotiwa nguvu na Aave v4",
-      "title": "Avana is the lending market built for AMM liquidity pools.",
-      "titleLine1": "Avana is the lending market",
-      "titleLine2": "built for AMM liquidity pools.",
-      "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
+      "title": "Avana ni soko la ukopeshaji la DeFi lililoundwa mahususi kwa ajili ya mabwawa ya ukwasi ya AMM.",
+      "titleLine1": "Avana ni soko la ukopeshaji la DeFi",
+      "titleLine2": "lililoundwa mahususi kwa ajili ya mabwawa ya ukwasi ya AMM.",
+      "subtitle": "Kopa sarafu fiche, bidhaa, FX, na rasilimali za ulimwengu halisi (RWA) kwenye mnyororo ukitumia nafasi zako za ukwasi za AMM kama dhamana ya mkopo.",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
         "onchain using your AMM liquidity positions",
@@ -229,11 +229,11 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Read the ARFC",
-      "secondaryCta": "Try Sandbox"
+      "primaryCta": "Soma Pendekezo la ARFC",
+      "secondaryCta": "Jaribu Sandbox"
     },
     "intro": {
-      "text": "<ink>Back in March 2021, Aave Protocol released AMM Market.</ink> It became the first protocol to use AMM liquidity as collateral and prove that LP positions could serve as collateral, but it was built for the simpler DEXs and liquidity models of its time. <ink>Avana takes that idea into the next generation</ink>, purpose built for today’s increasingly sophisticated DEXs and liquidity positions, enabling users to <ink>borrow crypto, FX, and real world assets onchain against their AMM liquidity pool positions</ink>."
+      "text": "<ink>Mnamo Machi 2021, Aave Protocol ilizindua AMM Market.</ink> Ilikuwa itifaki ya kwanza kabisa kutumia ukwasi wa AMM kama dhamana na kuthibitisha kwamba nafasi za LP zinaweza kutumika kama dhamana ya mkopo, ingawa iliundwa kwa ajili ya DEX rahisi za wakati huo. <ink>Avana inaleta uvumbuzi huo katika kizazi kijacho cha DeFi</ink>, ikiwa imeundwa mahususi kwa ajili ya DEX za kisasa zenye ukwasi uliokolea, ikiwezesha watumiaji <ink>kukopa sarafu fiche, FX, na rasilimali za ulimwengu halisi moja kwa moja kwenye mnyororo dhidi ya nafasi zao za mabwawa ya ukwasi ya AMM</ink>."
     },
     "features": {
       "eyebrow": "Vipengele Muhimu",
@@ -249,6 +249,9 @@
     "buildTomorrow": {
       "title": "Kutana Avana",
       "body": "Avana ingegeuzwa ikawa rasilimali ya kutumia kutoka kwenye nafasi LP kwenye Aave v4 ili watoa kioevu waweze kukopa bila kuondoka kwenye bwawa."
+    },
+    "trustedBy": {
+      "caption": "Inaaminiwa na timu zinazobuni na kuzindua bidhaa bora za kiwango cha juu za Web3"
     }
   },
   "product": {

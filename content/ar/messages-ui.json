@@ -216,10 +216,10 @@
   "home": {
     "hero": {
       "eyebrow": "مدعوم بواسطة Aave v4",
-      "title": "Avana is the lending market built for AMM liquidity pools.",
-      "titleLine1": "Avana is the lending market",
-      "titleLine2": "built for AMM liquidity pools.",
-      "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
+      "title": "Avana هو سوق الإقراض اللامركزي المصمم خصيصاً لمجمعات سيولة AMM.",
+      "titleLine1": "Avana هو سوق الإقراض اللامركزي",
+      "titleLine2": "المصمم خصيصاً لمجمعات سيولة AMM.",
+      "subtitle": "اقترض العملات المشفرة، السلع، العملات الأجنبية (FX)، وأصول العالم الحقيقي (RWA) على السلسلة باستخدام مراكز سيولة AMM كضمان.",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
         "onchain using your AMM liquidity positions",
@@ -229,11 +229,11 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Read the ARFC",
-      "secondaryCta": "Try Sandbox"
+      "primaryCta": "اقرأ مقترح ARFC",
+      "secondaryCta": "جرّب Sandbox"
     },
     "intro": {
-      "text": "<ink>Back in March 2021, Aave Protocol released AMM Market.</ink> It became the first protocol to use AMM liquidity as collateral and prove that LP positions could serve as collateral, but it was built for the simpler DEXs and liquidity models of its time. <ink>Avana takes that idea into the next generation</ink>, purpose built for today’s increasingly sophisticated DEXs and liquidity positions, enabling users to <ink>borrow crypto, FX, and real world assets onchain against their AMM liquidity pool positions</ink>."
+      "text": "<ink>في مارس 2021، أطلق بروتوكول Aave سوق AMM Market.</ink> وكان أول بروتوكول يتيح استخدام سيولة AMM كضمان مالي ويثبت أن مراكز مزودي السيولة (LP) يمكن أن تعمل كضمان للإقراض، لكنه صُمم للنماذج البسيطة لمنصات DEX آنذاك. <ink>ينقل Avana هذه الرؤية إلى الجيل القادم من DeFi</ink>، حيث تم تصميمه خصيصاً لمنصات DEX الحديثة ذات السيولة المركزة، مما يتيح للمستخدمين <ink>اقتراض العملات الرقمية والعملات الأجنبية وأصول العالم الحقيقي على السلسلة مقابل مراكزهم في مجمعات سيولة AMM</ink>."
     },
     "features": {
       "eyebrow": "الميزات الرئيسية",
@@ -249,6 +249,9 @@
     "buildTomorrow": {
       "title": "قابل Avana",
       "body": "Avana يحول المواقع المدعومة LP إلى ضمان قابل للاستخدام على Aave v4 بحيث يمكن لمقدمي السيولة الاقتراض دون مغادرة المجمع."
+    },
+    "trustedBy": {
+      "caption": "يحظى بثقة الفرق الرائدة التي تبني وتطلق أفضل منتجات Web3"
     }
   },
   "product": {

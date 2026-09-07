@@ -242,10 +242,10 @@
   "home": {
     "hero": {
       "eyebrow": "চার্জ করা হয়েছে Aave v4 দ্বারা",
-      "title": "Avana is the lending market built for AMM liquidity pools.",
-      "titleLine1": "Avana is the lending market",
-      "titleLine2": "built for AMM liquidity pools.",
-      "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
+      "title": "Avana হলো একটি অন-চেন ঋণ বাজার, বিশেষভাবে AMM লিকুইডিটি পুলের জন্য নির্মিত।",
+      "titleLine1": "Avana হলো একটি অন-চেন ঋণ বাজার,",
+      "titleLine2": "বিশেষভাবে AMM লিকুইডিটি পুলের জন্য নির্মিত।",
+      "subtitle": "আপনার AMM লিকুইডিটি পজিশনকে জামানত হিসেবে ব্যবহার করে অন-চেন ক্রিপ্টো, পণ্য, FX এবং বাস্তব বিশ্বের সম্পদ (RWA) ঋণ নিন।",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
         "onchain using your AMM liquidity positions",
@@ -255,11 +255,11 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Read the ARFC",
-      "secondaryCta": "Try Sandbox"
+      "primaryCta": "ARFC প্রস্তাব পড়ুন",
+      "secondaryCta": "Sandbox ব্যবহার করে দেখুন"
     },
     "intro": {
-      "text": "<ink>Back in March 2021, Aave Protocol released AMM Market.</ink> It became the first protocol to use AMM liquidity as collateral and prove that LP positions could serve as collateral, but it was built for the simpler DEXs and liquidity models of its time. <ink>Avana takes that idea into the next generation</ink>, purpose built for today’s increasingly sophisticated DEXs and liquidity positions, enabling users to <ink>borrow crypto, FX, and real world assets onchain against their AMM liquidity pool positions</ink>."
+      "text": "<ink>২০২১ সালের মার্চে Aave Protocol প্রথমবারের মতো AMM Market চালু করেছিল।</ink> এটি AMM লিকুইডিটিকে কোল্যাটারাল হিসেবে ব্যবহার করার এবং প্রমাণ করার প্রথম প্রোটোকল ছিল যে LP পজিশন ঋণের জামানত হতে পারে; তবে তা তৎকালীন সাধারণ DEX-এর জন্য তৈরি ছিল। <ink>Avana সেই ধারণাকে পরবর্তী প্রজন্মের DeFi-তে উন্নীত করেছে</ink>—আজকের জটিল কনসেনট্রেটেড লিকুইডিটি DEX-এর জন্য বিশেষভাবে তৈরি, যার মাধ্যমে ব্যবহারকারীরা <ink>তাদের AMM লিকুইডিটি পুল পজিশনের বিপরীতে অন-চেন ক্রিপ্টো, FX এবং বাস্তব বিশ্বের সম্পদ ঋণ নিতে পারেন</ink>।"
     },
     "features": {
       "eyebrow": "মূল বৈশিষ্ট্য",
@@ -275,6 +275,9 @@
     "buildTomorrow": {
       "title": "মিলিত Avana",
       "body": "Avana ঘূর্ণন LP অবস্থানকে Aave v4-এ ব্যবহারযোগ্য জামানতে পরিণত করে যাতে তরলতা প্রদানকারীরা পুল ছাড়াই ধার করতে পারে।"
+    },
+    "trustedBy": {
+      "caption": "উচ্চমানের Web3 পণ্য তৈরি ও উন্মোচনকারী শীর্ষস্থানীয় দলগুলোর বিশ্বস্ত পছন্দ"
     }
   },
   "product": {

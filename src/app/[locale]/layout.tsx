@@ -19,7 +19,6 @@ import {
   SOCIAL_HANDLE,
 } from "@/lib/site"
 import { organizationSchema, serializeJsonLd, websiteSchema } from "@/lib/structured-data"
-import { THEME_INIT_SCRIPT } from "@/lib/theme"
 
 type Props = {
   children: React.ReactNode
@@ -146,9 +145,6 @@ export default async function LocaleLayout({ children, params }: Props) {
       style={{ "--font-diatype": diatypeFont.style.fontFamily } as React.CSSProperties}
     >
       <head>
-        <script
-          dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(organizationSchema) }}

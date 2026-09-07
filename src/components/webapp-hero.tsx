@@ -7,8 +7,8 @@ export default async function WebappHero({ locale }: { locale: AppLocale }) {
   return withMarketingI18n(locale, ['webapp-hero'], (
     <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[2/1] lg:aspect-[1672/941]">
       <Image
-        src={brandAssetPath("/images/Avana Express Page 1.png")}
-        alt="Avana homepage hero visual"
+        src={brandAssetPath("/images/Avana Express Light.png")}
+        alt="Avana Express homepage hero interface"
         fill
         priority
         unoptimized
@@ -16,8 +16,8 @@ export default async function WebappHero({ locale }: { locale: AppLocale }) {
         className="object-cover object-center dark:hidden"
       />
       <Image
-        src={brandAssetPath("/images/Avana Express Page 2.png")}
-        alt="Avana homepage hero visual"
+        src={brandAssetPath("/images/Avana Express Night.png")}
+        alt="Avana Express homepage hero interface"
         fill
         priority
         unoptimized

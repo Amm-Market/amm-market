@@ -216,10 +216,10 @@
   "home": {
     "hero": {
       "eyebrow": "Aave v4により提供",
-      "title": "Avana is the lending market built for AMM liquidity pools.",
-      "titleLine1": "Avana is the lending market",
-      "titleLine2": "built for AMM liquidity pools.",
-      "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
+      "title": "AvanaはAMM流動性プールに特化した分散型レンディング市場です。",
+      "titleLine1": "AvanaはAMM流動性プールに特化した",
+      "titleLine2": "分散型レンディング市場です。",
+      "subtitle": "AMM流動性ポジションを担保として活用し、暗号資産、コモディティ、為替（FX）、実世界資産（RWA）をオンチェーンで借り入れ。",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
         "onchain using your AMM liquidity positions",
@@ -229,11 +229,11 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Read the ARFC",
-      "secondaryCta": "Try Sandbox"
+      "primaryCta": "ARFC提案を読む",
+      "secondaryCta": "Sandboxを試す"
     },
     "intro": {
-      "text": "<ink>Back in March 2021, Aave Protocol released AMM Market.</ink> It became the first protocol to use AMM liquidity as collateral and prove that LP positions could serve as collateral, but it was built for the simpler DEXs and liquidity models of its time. <ink>Avana takes that idea into the next generation</ink>, purpose built for today’s increasingly sophisticated DEXs and liquidity positions, enabling users to <ink>borrow crypto, FX, and real world assets onchain against their AMM liquidity pool positions</ink>."
+      "text": "<ink>2021年3月、Aave Protocolは「AMM Market」をローンチしました。</ink>これはAMMの流動性を担保として採用し、LPポジションが融資の担保として機能することを世界で初めて実証しましたが、当時のシンプルなDEXと初期の流動性モデル向けに設計されたものでした。<ink>Avanaはその革新的なアイデアを次世代へと進化させました</ink>。現在の高度な集中流動性DEXや洗練されたLPポジション専用に設計されており、利用者はプールから流動性を引き出すことなく、<ink>AMM流動性プールポジションを担保に暗号資産、為替、実世界資産をオンチェーンで借り入れる</ink>ことができます。"
     },
     "features": {
       "eyebrow": "主な特徴",
@@ -249,6 +249,9 @@
     "buildTomorrow": {
       "title": "会う Avana",
       "body": "Avanaは、LPのポジションをAave v4で使用可能な担保に変換するため、流動性提供者はプールを離れることなく借入が可能になります。"
+    },
+    "trustedBy": {
+      "caption": "高品質なWeb3プロダクトを開発・リリースするトップチームから信頼されています"
     }
   },
   "product": {

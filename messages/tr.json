@@ -242,10 +242,10 @@
   "home": {
     "hero": {
       "eyebrow": "Aave v4 tarafından desteklenmektedir",
-      "title": "Avana is the lending market built for AMM liquidity pools.",
-      "titleLine1": "Avana is the lending market",
-      "titleLine2": "built for AMM liquidity pools.",
-      "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
+      "title": "Avana, AMM likidite havuzları için geliştirilmiş borç verme ve kredi piyasasıdır.",
+      "titleLine1": "Avana, AMM likidite havuzları için",
+      "titleLine2": "geliştirilmiş borç verme ve kredi piyasasıdır.",
+      "subtitle": "AMM likidite pozisyonlarınızı teminat göstererek zincir üzerinde kripto, emtia, döviz (FX) ve gerçek dünya varlıkları (RWA) borç alın.",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
         "onchain using your AMM liquidity positions",
@@ -255,11 +255,11 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Read the ARFC",
-      "secondaryCta": "Try Sandbox"
+      "primaryCta": "ARFC Önerisini Oku",
+      "secondaryCta": "Sandbox'ı Dene"
     },
     "intro": {
-      "text": "<ink>Back in March 2021, Aave Protocol released AMM Market.</ink> It became the first protocol to use AMM liquidity as collateral and prove that LP positions could serve as collateral, but it was built for the simpler DEXs and liquidity models of its time. <ink>Avana takes that idea into the next generation</ink>, purpose built for today’s increasingly sophisticated DEXs and liquidity positions, enabling users to <ink>borrow crypto, FX, and real world assets onchain against their AMM liquidity pool positions</ink>."
+      "text": "<ink>Mart 2021’de Aave Protocol, AMM Market’i hayata geçirdi.</ink> AMM likiditesini teminat olarak kullanan ve LP pozisyonlarının kredi teminatı olabileceğini kanıtlayan ilk protokol oldu; ancak o dönemin basit DEX’leri ve likidite modelleri için tasarlanmıştı. <ink>Avana bu vizyonu yeni nesil DeFi’ye taşıyor</ink>. Günümüzün gelişmiş konsantre likiditeye sahip DEX’leri için özel olarak inşa edilen Avana, kullanıcıların <ink>AMM likidite havuzu pozisyonları karşılığında zincir üzerinde kripto, döviz ve gerçek dünya varlıkları borç almalarına</ink> olanak tanır."
     },
     "features": {
       "eyebrow": "Temel Özellikler",
@@ -275,6 +275,9 @@
     "buildTomorrow": {
       "title": "Tanış Avana",
       "body": "Avana, LP pozisyonu kullanılabilir teminat haline getirir Aave v4 üzerinde, böylece likidite sağlayıcıları havuzdan çıkmadan borç alabilir."
+    },
+    "trustedBy": {
+      "caption": "Üst düzey Web3 ürünleri geliştiren ve yayınlayan ekiplerin güvenilir tercihi"
     }
   },
   "product": {

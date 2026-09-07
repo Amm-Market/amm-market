@@ -1038,6 +1038,20 @@
   animation: scroll-right 45s linear infinite;
 }
 
+@keyframes logo-marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-logo-marquee {
+  animation: logo-marquee 22s linear infinite;
+}
+
 /* Developer documentation tables and code */
 .developer-content code {
   font-size: 0.75rem;

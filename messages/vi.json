@@ -242,10 +242,10 @@
   "home": {
     "hero": {
       "eyebrow": "Được cung cấp bởi Aave v4",
-      "title": "Avana is the lending market built for AMM liquidity pools.",
-      "titleLine1": "Avana is the lending market",
-      "titleLine2": "built for AMM liquidity pools.",
-      "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
+      "title": "Avana là thị trường cho vay DeFi được tối ưu hóa cho các pool thanh khoản AMM.",
+      "titleLine1": "Avana là thị trường cho vay DeFi",
+      "titleLine2": "được tối ưu hóa cho các pool thanh khoản AMM.",
+      "subtitle": "Vay crypto, hàng hóa, ngoại hối (FX) và tài sản thế giới thực (RWA) onchain bằng cách sử dụng vị thế thanh khoản AMM làm tài sản thế chấp.",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
         "onchain using your AMM liquidity positions",
@@ -255,11 +255,11 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Read the ARFC",
-      "secondaryCta": "Try Sandbox"
+      "primaryCta": "Đọc đề xuất ARFC",
+      "secondaryCta": "Trải nghiệm Sandbox"
     },
     "intro": {
-      "text": "<ink>Back in March 2021, Aave Protocol released AMM Market.</ink> It became the first protocol to use AMM liquidity as collateral and prove that LP positions could serve as collateral, but it was built for the simpler DEXs and liquidity models of its time. <ink>Avana takes that idea into the next generation</ink>, purpose built for today’s increasingly sophisticated DEXs and liquidity positions, enabling users to <ink>borrow crypto, FX, and real world assets onchain against their AMM liquidity pool positions</ink>."
+      "text": "<ink>Tháng 3 năm 2021, Aave Protocol đã giới thiệu AMM Market.</ink> Đây là giao thức tiên phong đưa thanh khoản AMM vào làm tài sản thế chấp và chứng minh vị thế LP hoàn toàn có thể làm tài sản đảm bảo cho khoản vay; tuy nhiên nó chỉ phù hợp với các DEX sơ khai thời bấy giờ. <ink>Avana nâng tầm ý tưởng đó lên thế hệ tiếp theo</ink>: được thiết kế chuyên biệt cho các DEX thanh khoản tập trung tinh vi hiện nay, giúp người dùng <ink>vay crypto, FX và tài sản thế giới thực onchain trực tiếp từ vị thế pool thanh khoản AMM của mình</ink>."
     },
     "features": {
       "eyebrow": "Các tính năng chính",
@@ -275,6 +275,9 @@
     "buildTomorrow": {
       "title": "Gặp Avana",
       "body": "Avana chuyển LP vị trí thành tài sản đảm bảo có thể sử dụng trên Aave v4 để các nhà cung cấp thanh khoản có thể vay mà không rời khỏi nhóm."
+    },
+    "trustedBy": {
+      "caption": "Được tin dùng bởi các đội ngũ phát triển và triển khai sản phẩm Web3 hàng đầu"
     }
   },
   "product": {

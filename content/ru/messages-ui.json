@@ -216,10 +216,10 @@
   "home": {
     "hero": {
       "eyebrow": "Работает на Aave v4",
-      "title": "Avana is the lending market built for AMM liquidity pools.",
-      "titleLine1": "Avana is the lending market",
-      "titleLine2": "built for AMM liquidity pools.",
-      "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
+      "title": "Avana — кредитный рынок, созданный для пулов ликвидности AMM.",
+      "titleLine1": "Avana — кредитный рынок,",
+      "titleLine2": "созданный для пулов ликвидности AMM.",
+      "subtitle": "Занимайте криптовалюту, биржевые товары, валюту (FX) и реальные активы (RWA) ончейн под залог своих позиций ликвидности AMM.",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
         "onchain using your AMM liquidity positions",
@@ -229,11 +229,11 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Read the ARFC",
-      "secondaryCta": "Try Sandbox"
+      "primaryCta": "Читать ARFC",
+      "secondaryCta": "Попробовать Sandbox"
     },
     "intro": {
-      "text": "<ink>Back in March 2021, Aave Protocol released AMM Market.</ink> It became the first protocol to use AMM liquidity as collateral and prove that LP positions could serve as collateral, but it was built for the simpler DEXs and liquidity models of its time. <ink>Avana takes that idea into the next generation</ink>, purpose built for today’s increasingly sophisticated DEXs and liquidity positions, enabling users to <ink>borrow crypto, FX, and real world assets onchain against their AMM liquidity pool positions</ink>."
+      "text": "<ink>В марте 2021 года Aave Protocol запустил AMM Market.</ink> Он стал первым в истории протоколом, использовавшим ликвидность AMM в качестве залога и доказавшим, что LP-позиции могут служить обеспечением кредитов. Однако он создавался для простых DEX и ранних моделей ликвидности того времени. <ink>Avana выводит эту концепцию на новый уровень</ink>: протокол разработан специально под современные концентрированные DEX и сложные LP-позиции, позволяя пользователям <ink>занимать криптовалюту, валютные активы и реальные активы ончейн под залог своих позиций в пулах ликвидности AMM</ink>."
     },
     "features": {
       "eyebrow": "Основные характеристики",
@@ -249,6 +249,9 @@
     "buildTomorrow": {
       "title": "Встреться Avana",
       "body": "Avana превращает поддерживаемые LP позиции в используемую залоговую базу на Aave v4, чтобы поставщики ликвидности могли брать взаймы, не покидая пул."
+    },
+    "trustedBy": {
+      "caption": "Выбор команд, создающих и запускающих ведущие продукты Web3"
     }
   },
   "product": {

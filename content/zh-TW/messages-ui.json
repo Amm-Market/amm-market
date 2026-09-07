@@ -216,10 +216,10 @@
   "home": {
     "hero": {
       "eyebrow": "由Aave v4提供支持",
-      "title": "Avana is the lending market built for AMM liquidity pools.",
-      "titleLine1": "Avana is the lending market",
-      "titleLine2": "built for AMM liquidity pools.",
-      "subtitle": "Borrow crypto, commodities, FX, and real world assets onchain using your AMM liquidity positions as collateral.",
+      "title": "Avana 是專為 AMM 流動性池打造的鏈上借貸市場。",
+      "titleLine1": "Avana 是專為 AMM 流動性池",
+      "titleLine2": "打造的鏈上借貸市場。",
+      "subtitle": "以您的 AMM 流動性部位為抵押品，在鏈上借入加密資產、大宗商品、外匯及現實世界資產（RWA）。",
       "subtitleMobileLines": [
         "Borrow crypto, commodities, FX, and real world assets",
         "onchain using your AMM liquidity positions",
@@ -229,11 +229,11 @@
         "Borrow crypto, commodities, FX, and real world assets onchain",
         "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Read the ARFC",
-      "secondaryCta": "Try Sandbox"
+      "primaryCta": "閱讀 ARFC 提案",
+      "secondaryCta": "體驗 Sandbox"
     },
     "intro": {
-      "text": "<ink>Back in March 2021, Aave Protocol released AMM Market.</ink> It became the first protocol to use AMM liquidity as collateral and prove that LP positions could serve as collateral, but it was built for the simpler DEXs and liquidity models of its time. <ink>Avana takes that idea into the next generation</ink>, purpose built for today’s increasingly sophisticated DEXs and liquidity positions, enabling users to <ink>borrow crypto, FX, and real world assets onchain against their AMM liquidity pool positions</ink>."
+      "text": "<ink>早在 2021 年 3 月，Aave 協議就推出了 AMM Market。</ink>它開創性地將 AMM 流動性引入抵押品領域，首次證明 LP 部位可用於借貸擔保；但它受限於當時早期的簡單 DEX 與恆定乘積流動性模型。<ink>Avana 將這一開拓性理念帶入下一代 DeFi</ink>，專門面向當今日益精密的集中流動性 DEX 與複雜 LP 部位量身打造，讓流動性提供者能夠<ink>直接以其 AMM 流動性池部位為抵押，在鏈上借入加密資產、外匯和現實世界資產</ink>。"
     },
     "features": {
       "eyebrow": "主要特點",
@@ -249,6 +249,9 @@
     "buildTomorrow": {
       "title": "遇見Avana",
       "body": "Avana 將 LP 個倉位轉化為在 Aave v4 上可用的抵押品，以便流動性提供者可以在不離開資金池的情況下借款。"
+    },
+    "trustedBy": {
+      "caption": "深受打造與發布高品質 Web3 產品團隊的信賴"
     }
   },
   "product": {
