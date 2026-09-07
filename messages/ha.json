@@ -242,21 +242,24 @@
   "home": {
     "hero": {
       "eyebrow": "Ana amfani da Aave v4",
-      "title": "Arziki daidai da LP matsayi",
-      "titleLine1": "Arziki da",
-      "titleLine2": "Matsayin Ruwa",
-      "subtitle": "Ci gaba da samun kudin ciniki yayin bude kudaden shigar daga matsayi Uniswap, Curve, da Balancer.",
+      "title": "Avana ita ce kasuwar bayar da lamuni ta DeFi wadda aka kera ta musamman don matattaran samar da kudaden AMM.",
+      "titleLine1": "Avana ita ce kasuwar bayar da lamuni ta DeFi",
+      "titleLine2": "wadda aka kera ta musamman don matattaran samar da kudaden AMM.",
+      "subtitle": "Ranci kudaden crypto, kayayyaki, FX, da kadarorin zahiri na duniya (RWA) a kan sarka ta hanyar amfani da matsayin samar da kudaden AMM dinka a matsayin jinginar lamuni.",
       "subtitleMobileLines": [
-        "Samun dama zuwa kashi 80% na ƙimar Tafkin Ruwa naka",
-        "a APR 5.5% ba tare da cire liquidity ko",
-        "barin kuɗin ciniki ba."
+        "Borrow crypto, commodities, FX, and real world assets",
+        "onchain using your AMM liquidity positions",
+        "as collateral."
       ],
       "subtitleDesktopLines": [
-        "Samu damar amfani da har zuwa kashi 80% na ƙimar Ruwan Kuɗi naka a 5.5% APR",
-        "a APR 5.5% ba tare da cire liquidity ko barin kuɗin ciniki ba."
+        "Borrow crypto, commodities, FX, and real world assets onchain",
+        "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "Gwada Sandbox",
-      "secondaryCta": "Karanta takardu"
+      "primaryCta": "Karanta Shawarar ARFC",
+      "secondaryCta": "Gwada Sandbox"
+    },
+    "intro": {
+      "text": "<ink>A watan Maris na 2021, Aave Protocol ya kaddamar da AMM Market.</ink> Ya zama yarjejeniyar farko da ta yi amfani da samar da kudaden AMM a matsayin jingina tare da tabbatar da cewa matsayin LP zai iya zama jinginar bashi, kodayake an gina shi ne don DEXs masu sauki na wancan lokacin. <ink>Avana yana daga wannan fasahar zuwa sabon zamani na DeFi</ink>, an tsara shi na musamman don DEXs na zamani masu fasaha, yana baiwa masu amfani damar <ink>karbar rancen crypto, FX, da kadarorin duniya na zahiri a kan sarka ta hanyar jinginar matsayinsu na matattarar AMM</ink>."
     },
     "features": {
       "eyebrow": "Manyan Fasali",
@@ -272,6 +275,9 @@
     "buildTomorrow": {
       "title": "Sadu Avana",
       "body": "Avana yana sauya goyon bayan LP matsayi zuwa abin amfani a matsayin jinginar kudi a Aave v4 don haka masu bayar da ruwa za su iya aro ba tare da barin tafkin ba."
+    },
+    "trustedBy": {
+      "caption": "Wanda kungiyoyi masu kera tare da kaddamar da ingantattun kayayyakin Web3 suka amince da shi"
     }
   },
   "product": {

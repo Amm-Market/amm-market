@@ -7,7 +7,6 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { diatypeFont } from "@/app/site-fonts"
 import { ThemeProvider } from "@/components/theme-provider"
-import { ThemeInitScript } from "@/components/theme-init-script"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { getLocaleDefinition, getLocaleDir } from "@/i18n/locales"
@@ -117,7 +116,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#FFFFFF",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#050505" },
+  ],
 }
 
 const shouldRenderVercelInsights = process.env.VERCEL === "1" || Boolean(process.env.VERCEL_ENV)
@@ -131,12 +133,17 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   setRequestLocale(locale)
 
-  const messages = await getMessages()
+  const messages = await getMessages({ locale })
   const t = await getTranslations({ locale, namespace: "common" })
   const dir = getLocaleDir(locale)
 
   return (
-    <html lang={locale} dir={dir} className={diatypeFont.variable} suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={dir}
+      suppressHydrationWarning
+      style={{ "--font-diatype": diatypeFont.style.fontFamily } as React.CSSProperties}
+    >
       <head>
         <script
           type="application/ld+json"
@@ -147,8 +154,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteSchema) }}
         />
       </head>
-      <body className="overflow-x-clip bg-background font-sans text-foreground">
-        <ThemeInitScript />
+      <body className={`${diatypeFont.variable} overflow-x-clip bg-background font-sans text-foreground`}>
         <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={{ common: messages.common }}>
           <a

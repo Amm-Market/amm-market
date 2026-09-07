@@ -8,6 +8,7 @@ import { InlineFaqSection, type InlineFaqItem } from "@/components/InlineFaqSect
 import { FeatureCardDescription, FeatureCardTitle, SectionIntro } from "@/components/shared"
 import { LocalizedMarketing } from "@/components/localized-marketing"
 import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSection"
+import { resolveLocaleParam, type LocaleParamsProps } from "@/lib/i18n/locale-params"
 
 const PlatformToolsShowcaseSection = dynamic(() => import("@/components/platform-tools-showcase-section"))
 const InvestApySection = dynamic(() => import("@/components/invest-apy-section"))
@@ -110,19 +111,21 @@ function KeyFeatureCard({
   )
 }
 
-export async function generateMetadata() {
-  return createPageMetadata("lend", "/lend", {
+export async function generateMetadata({ params }: LocaleParamsProps) {
+  const locale = await resolveLocaleParam(params)
+  return createPageMetadata(locale, "lend", "/lend", {
     keywords: [
       "LP-backed credit","DeFi lending","stablecoin yield","Aave v4","onchain yield","supply markets",
     ],
   })
 }
 
-export default async function LendPage() {
+export default async function LendPage({ params }: LocaleParamsProps) {
+  const locale = await resolveLocaleParam(params)
   return (
-    <LocalizedMarketing keys={["lend/page", "invest-apy-section", "invest-growth-calculator-section", "platform-tools-showcase-section", "InlineFaqSection", "homepage/HomepageNewsroomSection"]}>
+    <LocalizedMarketing locale={locale} keys={["lend/page", "invest-apy-section", "invest-growth-calculator-section", "platform-tools-showcase-section", "InlineFaqSection", "homepage/HomepageNewsroomSection"]}>
     <main className="bg-white">
-      <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">
+      <div className="site-content-shell flex min-h-screen flex-col pt-10 sm:pt-12 md:pt-20 lg:min-h-0">
         <div className="relative z-0">
           <section className="pb-0 lg:pb-10 xl:pb-12">
             <div className="w-full pt-3 pb-0 md:pt-5">
@@ -238,15 +241,15 @@ export default async function LendPage() {
 
       <InvestApySection />
 
-      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 flex flex-col">
+      <div className="site-content-shell flex flex-col">
         <div className="flex-1 flex flex-col relative z-0">
         {/* Rest of page content */}
         <div className="site-content-width flex flex-col site-section-stack site-section-gap pb-16 md:pb-20 2xl:pb-18">
           <InvestGrowthCalculatorSection />
 
-          <PlatformToolsShowcaseSection />
+          <PlatformToolsShowcaseSection locale={locale} />
 
-          <HomepageNewsroomSection collection="invest" eyebrowTone="emerald" />
+          <HomepageNewsroomSection locale={locale} collection="invest" eyebrowTone="emerald" />
 
           <div className="pb-16 md:pb-24 2xl:pb-22">
             <InlineFaqSection title="Frequently asked questions" items={stableSpokeFaqItems} eyebrowTone="emerald" withTopBorder={false} />

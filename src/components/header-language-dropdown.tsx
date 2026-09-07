@@ -73,18 +73,20 @@ export default function HeaderLanguageDropdown({
         className={`site-header-nav-link group relative inline-flex items-center justify-center px-0 py-1 font-medium tracking-[-0.02em] transition-[color,opacity] duration-200 ease-out ${
           isMobile
             ? "h-10 gap-2 text-[1rem] text-type-accent"
-            : `h-9 gap-1.5 xl:gap-2 ${isOpen ? "text-type-accent" : "text-foreground/62 hover:text-foreground/94"}`
+            : `h-9 gap-1.5 xl:gap-2 ${isOpen ? "text-type-accent" : "text-foreground hover:text-type-accent"}`
         }`}
       >
         <Globe2 aria-hidden="true" className="h-[19px] w-[19px] shrink-0" strokeWidth={2.25} />
         <span className={isMobile ? undefined : "hidden max-w-[9rem] truncate xl:inline"}>
           {selected.label}
         </span>
-        <ChevronDown
-          aria-hidden="true"
-          className={`h-[17px] w-[17px] shrink-0 transition-transform duration-200 ease-out ${isMobile ? "" : "hidden xl:inline"} ${isOpen ? "rotate-180" : "rotate-0"}`}
-          strokeWidth={2.4}
-        />
+        {isMobile ? (
+          <ChevronDown
+            aria-hidden="true"
+            className={`h-[17px] w-[17px] shrink-0 transition-transform duration-200 ease-out ${isOpen ? "rotate-180" : "rotate-0"}`}
+            strokeWidth={2.4}
+          />
+        ) : null}
       </button>
 
       {isOpen ? (

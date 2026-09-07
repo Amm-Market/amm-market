@@ -242,21 +242,24 @@
   "home": {
     "hero": {
       "eyebrow": "מופעל על ידי Aave v4",
-      "title": "לוות נגד LP עמדות",
-      "titleLine1": "ללוות כנגד",
-      "titleLine2": "מעמדות נזילות",
-      "subtitle": "המשך להרוויח עמלות מסחר תוך פתיחת נזילות מהעמדות Uniswap, Curve ו-Balancer.",
+      "title": "Avana היא זירת הלוואות מבוזרת, שפותחה במיוחד עבור מאגרי נזילות AMM.",
+      "titleLine1": "Avana היא זירת הלוואות מבוזרת,",
+      "titleLine2": "שפותחה במיוחד עבור מאגרי נזילות AMM.",
+      "subtitle": "לוו קריפטו, סחורות, מט\"ח (FX) ונכסי עולם אמיתי (RWA) ישירות על גבי הבלוקצ'יין, תוך שימוש בפוזיציות נזילות AMM כבטוחה.",
       "subtitleMobileLines": [
-        "קבל גישה עד ל-80% מערך בריכת הנזילות שלך",
-        "ב-5.5% APR בלי למשוך נזילות או",
-        "לוותר על עמלות מסחר."
+        "Borrow crypto, commodities, FX, and real world assets",
+        "onchain using your AMM liquidity positions",
+        "as collateral."
       ],
       "subtitleDesktopLines": [
-        "גש עד ל-80% מערך בריכת הנזילות שלך בריבית של 5.5% APR",
-        "ב-5.5% APR בלי למשוך נזילות או לוותר על עמלות מסחר."
+        "Borrow crypto, commodities, FX, and real world assets onchain",
+        "using your AMM liquidity positions as collateral."
       ],
-      "primaryCta": "נסה Sandbox",
-      "secondaryCta": "קרא מסמכים"
+      "primaryCta": "קראו את הצעת ה-ARFC",
+      "secondaryCta": "התנסו ב-Sandbox"
+    },
+    "intro": {
+      "text": "<ink>במרץ 2021, השיק פרוטוקול Aave את שוק ה-AMM Market.</ink> הוא היה לפרוטוקול הראשון שהשתמש בנזילות AMM כבטוחה והוכיח כי פוזיציות LP יכולות לשמש כערובה להלוואה, אך הוא הותאם למודלי הנזילות וה-DEXs הבסיסיים של אותה תקופה. <ink>Avana מקפיצה את הרעיון הזה לדור הבא של ה-DeFi</ink>: מערכת שנבנתה במיוחד עבור ה-DEXs המתוחכמים של ימינו בעלי נזילות מרוכזת, ומאפשרת למשתמשים <ink>ללוות קריפטו, מט״ח ונכסי עולם אמיתי Onchain כנגד פוזיציות מאגרי הנזילות של ה-AMM שלהם</ink>."
     },
     "features": {
       "eyebrow": "תכונות מפתח",
@@ -272,6 +275,9 @@
     "buildTomorrow": {
       "title": "פגוש Avana",
       "body": "Avana הופך LP עמדות לבלתי ניתנות לשימוש בערבות על Aave v4 כך שספקי נזילות יכולים ללוות מבלי לעזוב את הבריכה."
+    },
+    "trustedBy": {
+      "caption": "הבחירה של צוותים מובילים המפתחים ומשיקים מוצרי Web3 מהשורה הראשונה"
     }
   },
   "product": {

@@ -16,6 +16,7 @@ import HomepageNewsroomSection from "@/components/homepage/HomepageNewsroomSecti
 import { FeatureCardDescription, FeatureCardTitle, SectionIntro } from "@/components/shared"
 import { siteRoutes } from "@/lib/site"
 import { LocalizedMarketing } from "@/components/localized-marketing"
+import { resolveLocaleParam, type LocaleParamsProps } from "@/lib/i18n/locale-params"
 
 const loopingBenefits: {
   title: string
@@ -141,17 +142,19 @@ const leverageFaqItems: InlineFaqItem[] = [
   },
 ] as const
 
-export async function generateMetadata() {
-  return createPageMetadata("multiply", "/multiply", {
+export async function generateMetadata({ params }: LocaleParamsProps) {
+  const locale = await resolveLocaleParam(params)
+  return createPageMetadata(locale, "multiply", "/multiply", {
     keywords: ["LP leverage","AMM leverage","DeFi leverage","DeFi perps","LP perps","LP collateral","Aave v4"],
   })
 }
 
-export default async function MultiplyPage() {
+export default async function MultiplyPage({ params }: LocaleParamsProps) {
+  const locale = await resolveLocaleParam(params)
   return (
-    <LocalizedMarketing keys={["multiply/multiply-content", "leverage-glance-showcase-section", "position-safety-section", "InlineFaqSection"]}>
+    <LocalizedMarketing locale={locale} keys={["multiply/multiply-content", "leverage-glance-showcase-section", "position-safety-section", "InlineFaqSection"]}>
     <main className="bg-white">
-      <div className="mx-auto flex min-h-screen w-full max-w-[1200px] flex-col px-5 pt-10 sm:px-6 sm:pt-12 md:px-8 md:pt-20 lg:max-w-[64rem] 2xl:max-w-[72rem] lg:min-h-0 lg:px-0">
+      <div className="site-content-shell flex min-h-screen flex-col pt-10 sm:pt-12 md:pt-20 lg:min-h-0">
         <div className="relative z-0">
           <section className="pb-0 lg:pb-10 xl:pb-12">
             <div className="w-full pt-3 pb-0 md:pt-5">
@@ -234,7 +237,7 @@ export default async function MultiplyPage() {
 
       <section className="bg-white site-section-gap">
         <div className="site-content-shell">
-          <LeverageGlanceShowcaseSection />
+          <LeverageGlanceShowcaseSection locale={locale} />
         </div>
       </section>
 
@@ -314,10 +317,11 @@ export default async function MultiplyPage() {
       </section>
 
 
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col px-4 sm:px-6">
+      <div className="site-content-shell flex flex-col">
         <div className="relative z-0 flex flex-1 flex-col">
           <div className="site-content-width flex flex-col site-section-stack site-section-gap pb-16 md:pb-20 2xl:pb-18">
             <HomepageNewsroomSection
+              locale={locale}
               collection="leverage"
               eyebrowTone="rose"
             />
